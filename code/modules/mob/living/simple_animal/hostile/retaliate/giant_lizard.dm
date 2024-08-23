@@ -495,7 +495,7 @@
 
 //Do not stop hunting targets even if they're not visible anymore.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/ListTargets(dist = 9)
-	if(!enemies.len)
+	if(!length(enemies))
 		return list()
 	var/list/see = orange(src, dist)
 	see &= enemies

@@ -9,6 +9,8 @@
 	var/value_upgrade = 1000
 	///In which tab the upgrade should be.
 	var/upgrade_type
+	///Path to the item, upgrade, if any.
+	var/item_reference
 	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
@@ -18,8 +20,11 @@
 	///the maximum price which we cant go any more expensive, usually dont need to set this if change price is 0 or negative
 	var/maximum_price = INFINITY
 
-///gets called once the product is purchased, spawn items, etc.
+///gets called once the product is purchased, override if you need to pass any special arguments or have special behavior on purchase.
 /datum/research_upgrades/proc/on_purchase(turf/machine_loc)
+	if(isnull(item_reference))
+		return
+	new item_reference(machine_loc)
 	return
 
 /datum/research_upgrades/machinery
@@ -77,11 +82,9 @@
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 500
+	item_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 1
-
-/datum/research_upgrades/machinery/sleeper/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/sleeper(machine_loc)
 
 /datum/research_upgrades/item
 	name = "Items"
@@ -93,12 +96,10 @@
 	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/research_upgrades/credits
 	change_purchase = 500
 	maximum_price = 5000
 	clearance_req = 5
-
-/datum/research_upgrades/item/research_credits/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/credits(machine_loc)
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"
@@ -106,10 +107,8 @@
 	value_upgrade = 3000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
 	clearance_req = 3
-
-/datum/research_upgrades/item/laser_scalpel/on_purchase(turf/machine_loc)
-	new /obj/item/tool/surgery/scalpel/laser/advanced(machine_loc)
 
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
@@ -118,9 +117,8 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 4
+	item_reference = /obj/item/tool/surgery/scalpel/manager
 
-/datum/research_upgrades/item/incision_management/on_purchase(turf/machine_loc)
-	new /obj/item/tool/surgery/scalpel/manager(machine_loc)
 
 /datum/research_upgrades/item/nanosplints
 	name = "Reinforced Fiber Splints"
@@ -145,9 +143,7 @@
 	maximum_price = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-
-/datum/research_upgrades/item/flamer_tank/on_purchase(turf/machine_loc)
-	new /obj/item/ammo_magazine/flamer_tank/custom/upgraded(machine_loc)
+	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
 
 /datum/research_upgrades/item/flamer_tank/smoke
 	name = "Upgraded Incinerator Smoke Tank"
@@ -157,9 +153,7 @@
 	change_purchase = 50
 	minimum_price = 100
 	maximum_price = 500
-
-/datum/research_upgrades/item/flamer_tank/smoke/on_purchase(turf/machine_loc)
-	new /obj/item/ammo_magazine/flamer_tank/smoke/upgraded(machine_loc)
+	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/armor
 	name = "Armor"
@@ -172,9 +166,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 6
 	upgrade_type = ITEM_ARMOR_UPGRADE
-
-/datum/research_upgrades/armor/translator/on_purchase(turf/machine_loc)
-	new /obj/item/clothing/accessory/health/research_plate/translator(machine_loc)
+	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
 
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
@@ -185,9 +177,8 @@
 	change_purchase = -200
 	minimum_price = 200
 	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/research_plate/coagulator
 
-/datum/research_upgrades/armor/coagulator/on_purchase(turf/machine_loc)
-	new /obj/item/clothing/accessory/health/research_plate/coagulator(machine_loc)
 
 /datum/research_upgrades/armor/emergency_injector
 	name = "Medical Emergency Injector"
@@ -198,9 +189,7 @@
 	change_purchase = -100
 	minimum_price = 100
 	upgrade_type = ITEM_ARMOR_UPGRADE
-
-/datum/research_upgrades/armor/emergency_injector/on_purchase(turf/machine_loc)
-	new /obj/item/clothing/accessory/health/research_plate/emergency_injector(machine_loc)
+	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
@@ -211,9 +200,7 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -50
 	minimum_price = 200
-
-/datum/research_upgrades/armor/ceramic/on_purchase(turf/machine_loc)
-	new /obj/item/clothing/accessory/health/ceramic_plate(machine_loc)
+	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 
 /datum/research_upgrades/armor/preservation
 	name = "Death Preservation Plate"
@@ -224,6 +211,4 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -100
 	minimum_price = 100
-
-/datum/research_upgrades/armor/preservation/on_purchase(turf/machine_loc)
-	new /obj/item/clothing/accessory/health/research_plate/anti_decay(machine_loc)
+	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay

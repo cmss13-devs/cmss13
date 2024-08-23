@@ -161,14 +161,6 @@
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
 
-/obj/docking_port/mobile/marine_dropship/saipan
-	name = "Saipan"
-	id = DROPSHIP_SAIPAN
-	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
-
-/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
-	return /turf/open/space/transit/dropship/saipan
-
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
@@ -176,6 +168,14 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/saipan
+	name = "Saipan"
+	id = DROPSHIP_SAIPAN
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
+	return /turf/open/space/transit/dropship/saipan
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()

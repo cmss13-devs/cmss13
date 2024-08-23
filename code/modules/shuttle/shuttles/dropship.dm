@@ -147,14 +147,6 @@
 			set_security_level(SEC_LEVEL_RED)
 			return
 
-/obj/docking_port/mobile/marine_dropship/saipan
-	name = "Saipan"
-	id = DROPSHIP_SAIPAN
-	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
-
-/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
-	return /turf/open/space/transit/dropship/saipan
-
 /obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/place in shuttle_areas)
@@ -168,6 +160,14 @@
 
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
+
+/obj/docking_port/mobile/marine_dropship/saipan
+	name = "Saipan"
+	id = DROPSHIP_SAIPAN
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
+	return /turf/open/space/transit/dropship/saipan
 
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
@@ -334,10 +334,6 @@
 		var/obj/docking_port/mobile/marine_dropship/ds = arriving_shuttle
 		ds.hijack.crash_landing()
 
-/datum/map_template/shuttle/saipan
-	name = "Saipan"
-	shuttle_id = DROPSHIP_SAIPAN
-
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
 	arriving_shuttle.set_mode(SHUTTLE_CRASHED)
@@ -362,3 +358,7 @@
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/saipan
+	name = "Saipan"
+	shuttle_id = DROPSHIP_SAIPAN

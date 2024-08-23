@@ -37,8 +37,8 @@
 		"Armor" = xeno.armor_deflection,
 		"Plasma" = xeno.plasma_max,
 		"Plasma Regeneration" = xeno.plasma_gain,
-		"Minimum Melee Damage" = xeno.melee_damage_lower,
-		"Maximum Melee Damage" = xeno.melee_damage_upper,
+		"Minimum Slash Damage" = xeno.melee_damage_lower,
+		"Maximum Slash Damage" = xeno.melee_damage_upper,
 		"Claw Strength" = xeno.claw_type,
 		"Evasion" = xeno.evasion,
 		// Mob speed is relatively non-obvious, we we convert it into a very intuitive

@@ -110,28 +110,6 @@
 			emissive_overlay = em_block
 			overlays += list(em_block)
 
-/*
-
-///Updates this movables emissive overlay
-/atom/movable/proc/update_emissive_block()
-	if(!blocks_emissive)
-		return
-	else if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
-		var/mutable_appearance/gen_emissive_blocker = emissive_blocker(icon, icon_state, alpha = src.alpha, appearance_flags = src.appearance_flags)
-		gen_emissive_blocker.dir = dir
-	if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
-		if(!em_block)
-			render_target = ref(src)
-			em_block = new(src, render_target)
-		return em_block
-
-/atom/movable/update_overlays()
-	. = ..()
-
-	. += update_emissive_block()
-
-*/
-
 /atom/movable/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")

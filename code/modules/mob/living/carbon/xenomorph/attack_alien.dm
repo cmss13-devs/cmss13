@@ -795,6 +795,8 @@
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
+		if(shuttle_tag == DROPSHIP_SAIPAN)
+			ship_id = "sh_dropship3"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)

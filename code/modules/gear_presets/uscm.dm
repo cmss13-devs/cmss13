@@ -976,11 +976,6 @@
 		var/obj/item/clothing/mask/new_mask = pick(possible_masks)
 		new_human.equip_to_slot_or_del(new new_mask, WEAR_FACE)
 
-	var/list/possible_glasses = list(/obj/item/clothing/glasses/regular, /obj/item/clothing/glasses/regular/hipster, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/sunglasses/big) + subtypesof(/obj/item/clothing/glasses/mgoggles)
-	if(prob(50))
-		var/obj/item/clothing/mask/new_glasses = pick(possible_glasses)
-		new_human.equip_to_slot_or_del(new new_glasses, WEAR_EYES)
-
 //## Rifleman ##//
 /datum/equipment_preset/uscm/rifleman_pve
 	name = "USCM Solar Devils Rifleman"

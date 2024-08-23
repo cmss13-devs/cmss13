@@ -253,6 +253,11 @@
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
+/obj/item/clothing/suit/storage/jacket/marine/provost/chief
+	name = "\improper Provost Command Jacket"
+	desc = "A crisp jacket with the Provost sigil."
+	icon_state = "provostci_jacket"
+
 /obj/item/clothing/suit/storage/jacket/marine/provost/coat
 	name = "\improper Provost Coat"
 	desc = "The crisp coat of a Provost Officer."

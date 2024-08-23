@@ -48,3 +48,8 @@
 				if(P.volatile)
 					holder.trigger_volatiles = TRUE
 					break
+
+/datum/reagent/generated/make_alike(datum/reagent/generated/chemical_to_copy)
+	. = ..()
+	reagent_recipe_hint = chemical_to_copy.reagent_recipe_hint
+	property_hint = chemical_to_copy.property_hint

@@ -473,7 +473,7 @@
 				if(target_property.level >= GLOB.chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && GLOB.chemical_data.clearance_level < 5)
 					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
 					return FALSE
-		else
+		else if(mode != MODE_ADD)
 			status_bar = "TARGET NOT SELECTED"
 			return FALSE
 		if(target && length(target.data.properties) < 2)

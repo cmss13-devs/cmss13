@@ -447,23 +447,7 @@ export const ModeAdd = (props) => {
               height={10}
             >
               {map(target_data, (property) => (
-                <Button
-                  bold
-                  m={0.6}
-                  width={8}
-                  textAlign={'center'}
-                  onClick={() => {
-                    act('select_target_property', {
-                      property_code: property.code,
-                    });
-                    setSelectedTargetProperty(property.code);
-                  }}
-                  selected={
-                    selectedTargetProperty === property.code ? true : false
-                  }
-                  disabled={lock_control || property.is_locked}
-                  tooltip={property.tooltip}
-                >
+                <Button bold m={0.6} width={8} textAlign={'center'}>
                   {property.code} {property.level}
                 </Button>
               ))}

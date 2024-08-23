@@ -181,15 +181,10 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				else if(roll<=15)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C4"])
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"])
 			if(3)
 				C.credit_reward = 7
-				if(roll<=50)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
-				else if(roll<=70)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C4"])
-				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C5"])
+				C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
 		C.property_hint = pick(C.properties)
 		contract_chems[C.id] = C
 	to_world("Contract chemical batch generated, names are [contract_chems[1]], [contract_chems[2]], and [contract_chems[3]] ")

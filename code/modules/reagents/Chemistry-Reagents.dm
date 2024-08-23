@@ -257,6 +257,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	falloff_modifier =  C.falloff_modifier
 	flags = C.flags
 	lockdown_chem = C.lockdown_chem
+	credit_reward = C.credit_reward
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)

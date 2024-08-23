@@ -58,16 +58,16 @@
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")
 		if(user.client)
 			//Create the appearance so we have something to apply the filter to.
-			var/mutable_appearance/apc_appearnce = new /mutable_appearance()
-			apc_appearnce.appearance = APC
-			apc_appearnce.filters += list("type" = "outline", "size" = 1, "color" = COLOR_GREEN)
-			var/image/final_image = image(apc_appearnce)
+			var/mutable_appearance/apc_appearance = new /mutable_appearance()
+			apc_appearance.appearance = APC
+			apc_appearance.filters += list("type" = "outline", "size" = 1, "color" = COLOR_GREEN)
 			//Make it an image we can give to the client
+			var/image/final_image = image(apc_appearance)
 
 			final_image.layer = WALL_OBJ_LAYER
 			final_image.plane = GAME_PLANE
 			final_image.loc = get_turf(APC)
-			final_image.dir = apc_appearnce.dir
+			final_image.dir = apc_appearance.dir
 			final_image.alpha = 225
 			user.client.images += final_image
 			addtimer(CALLBACK(src, PROC_REF(remove_apc_highlight), user.client, final_image), 1.4 SECONDS)

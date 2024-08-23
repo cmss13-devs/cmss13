@@ -573,6 +573,24 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
+/obj/item/storage/box/stompers
+	name = "\improper Reebok shoe box"
+	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
+	icon_state = "stomper_box"
+	w_class = SIZE_MEDIUM
+	bypass_w_limit = /obj/item/clothing/shoes
+	max_storage_space = 3
+	can_hold = list(/obj/item/clothing/shoes)
+
+/obj/item/storage/box/stompers/fill_preset_inventory()
+	new /obj/item/clothing/shoes/stompers(src)
+
+/obj/item/storage/box/stompers/update_icon()
+	if(!length(contents))
+		icon_state = "stomper_box_e"
+	else
+		icon_state = "stomper_box"
+
 ////////// MARINES BOXES //////////////////////////
 
 
@@ -643,6 +661,8 @@
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/high_explosive)
 	var/base_icon
+	var/model_icon = "model_m40"
+	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
 	has_gamemode_skin = TRUE
 
@@ -672,49 +692,61 @@
 		new grenade_type(src)
 
 /obj/item/storage/box/nade_box/update_icon()
+	overlays.Cut()
 	if(!length(contents))
 		icon_state = "[base_icon]_e"
 	else
 		icon_state = base_icon
+		if(type_icon)
+			overlays += image(icon, type_icon)
+		if(model_icon)
+			overlays += image(icon, model_icon)
 
 
 /obj/item/storage/box/nade_box/frag
 	name = "\improper M40 HEFA grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
-	icon_state = "frag_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	type_icon = "hefa"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/frag)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
-	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/phophorus
-	name = "\improper M40 HPDP grenade box"
-	desc = "A secure box holding 25 M40 HPDP white phosphorus grenade. High explosive, don't store near the flamer fuel."
-	icon_state = "phos_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	name = "\improper M40 CCDP grenade box"
+	desc = "A secure box holding 25 M40 CCDP chemical compound grenade. High explosive, don't store near the flamer fuel."
+	type_icon = "ccdp"
 	can_hold = list(/obj/item/explosive/grenade/phosphorus)
 	grenade_type = /obj/item/explosive/grenade/phosphorus
-	has_gamemode_skin = FALSE
+
+/obj/item/storage/box/nade_box/incen
+	name = "\improper M40 HIDP grenade box"
+	desc = "A secure box holding 25 M40 HIDP white incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	type_icon = "hidp"
+	can_hold = list(/obj/item/explosive/grenade/incendiary)
+	grenade_type = /obj/item/explosive/grenade/incendiary
 
 /obj/item/storage/box/nade_box/airburst
 	name = "\improper M74 AGM-F grenade box"
 	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
-	icon_state = "airburst_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	model_icon = "model_m74"
+	type_icon = "agmf"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst
-	has_gamemode_skin = FALSE
+
+/obj/item/storage/box/nade_box/airburstincen
+	name = "\improper M74 AGM-I grenade box"
+	desc = "A secure box holding 25 M74 AGM Incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	model_icon = "model_m74"
+	type_icon = "agmi"
+	can_hold = list(/obj/item/explosive/grenade/incendiary/airburst)
+	grenade_type = /obj/item/explosive/grenade/incendiary/airburst
+
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
+	model_icon = "model_mo7"
+	type_icon = null
 	grenade_type = /obj/item/explosive/grenade/high_explosive/training
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
 	has_gamemode_skin = FALSE
@@ -723,6 +755,8 @@
 	name = "\improper M66 tear gas grenade box"
 	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
 	icon_state = "teargas_nade_placeholder"
+	model_icon = "model_m66"
+	type_icon = null
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
 	has_gamemode_skin = FALSE

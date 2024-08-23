@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - code_imp: "Research datum now supports more broad ideas in the future."

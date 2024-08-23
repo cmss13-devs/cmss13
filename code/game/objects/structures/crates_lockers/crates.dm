@@ -144,6 +144,7 @@
 			deconstruct(FALSE)
 			return
 
+
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
 	desc = "A crate with alpha squad's symbol on it. "

@@ -48,7 +48,7 @@
 /obj/structure/machinery/defenses/planetary_anti_air/get_examine_text(mob/user)
 	var/message = ""
 	if(stat == DEFENSE_DAMAGED)
-		message += "It does not appear to be working."
+		message += "It does not appear to be working.\n"
 	if(ishuman(user))
 		if (FACTION_UPP in faction_group)
 			message += SPAN_INFO("It is currently allied to [FACTION_UPP].") + "\n"

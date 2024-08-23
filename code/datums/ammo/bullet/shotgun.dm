@@ -52,6 +52,21 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
 
+/datum/ammo/bullet/shotgun/beanbag/electric
+	name = "X21 slug"
+	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
+	handful_state = "elec_slug"
+	icon_state = "cm_laser"
+	sound_override = 'sound/weapons/gun_shockgun.ogg'
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	max_range = 12
+	shrapnel_chance = 0
+	damage = 0
+	stamina_damage = 45
+	accuracy = HIT_ACCURACY_TIER_3
+	shell_speed = AMMO_SPEED_TIER_3
+	handful_state = "elec_slug"
+
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer) return
 	if(ishuman(M))

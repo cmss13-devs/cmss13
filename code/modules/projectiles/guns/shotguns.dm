@@ -233,7 +233,70 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
-//-------------------------------------------------------
+
+//-------------------------------------------------------------
+//SHOCKGUN - Non-Lethal Fast firing shotgun
+/obj/item/weapon/gun/shotgun/shockgun
+	name = "\improper ES-7-SAO Model Electrostatic shockgun"
+	icon_state = "es7"
+	item_state = "es7"
+	desc = "The Weyland-Yutani ES-7 Supernova Electrostatic shockgun, a Dual-Action shotgun with a quick fire rate, it uses Electrostatic propulsion similiar to the ES-4. Originally made for corporate security, this one has been modified for MP use, specfically by removing the option to use Pump action mode and being chambered in 20 gauge, Takes X21 Slug rounds only."
+	gauge = "20g"
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
+	fire_sound = "gun_shockgun"
+	firesound_volume = 20
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/stock/riot,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/verticalgrip,
+	)
+
+/obj/item/weapon/gun/shotgun/shockgun/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/shotgun/shockgun/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/riot/stock = new(src)
+	stock.Attach(src)
+	update_attachable(stock.slot)
+
+/obj/item/weapon/gun/shotgun/shockgun/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 11, "stock_y" = 13.)
+
+
+
+/obj/item/weapon/gun/shotgun/shockgun/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11*2)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+
+/obj/item/weapon/gun/shotgun/shockgun/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
+
+//-------------------------
 //TACTICAL SHOTGUN
 
 /obj/item/weapon/gun/shotgun/combat
@@ -257,6 +320,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/tactical,
+		/obj/item/attachable/stock/riot,
 	)
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
@@ -277,7 +341,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	update_attachable(stock.slot)
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 11, "stock_y" = 13.)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 9, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 11, "stock_y" = 13.)
 
 
 
@@ -299,13 +363,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(in_chamber) . += "It has a chambered round."
 
 
-/obj/item/weapon/gun/shotgun/combat/riot
-	name = "\improper MK221 riot shotgun"
-	icon_state = "mp220"
-	item_state = "mp220"
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a steel blue finish to signify use in riot control. It has been modified to only fire 20G beanbags."
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
-	gauge = "20g"
+
 
 /obj/item/weapon/gun/shotgun/combat/guard
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Guards."

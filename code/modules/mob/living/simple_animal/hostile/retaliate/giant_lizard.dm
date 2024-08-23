@@ -137,7 +137,7 @@
 
 //procs for handling sleeping icons when resting
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AddSleepingIcon()
-	var/image/sleeping_icon = new /image('icons/mob/hud/hud.dmi', "slept_icon_centered")
+	var/image/sleeping_icon = new('icons/mob/hud/hud.dmi', "slept_icon_centered")
 	if(sleep_overlay)
 		return
 	sleep_overlay = sleeping_icon
@@ -300,11 +300,11 @@
 	. = ..()
 
 	if(client)
-		return .
+		return
 
 	//if we haven't gotten hurt in a while, calm down and go back to idling
 	if(aggression_value == 0 && stance == HOSTILE_STANCE_ATTACKING)
-		enemies = new()
+		enemies = list()
 		LoseTarget()
 		if(COOLDOWN_FINISHED(src, emote_cooldown))
 			manual_emote("calms down.")
@@ -585,7 +585,7 @@
 
 //Replaced walk_to() with MoveTo().
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/MoveToTarget()
-	stop_automated_movement = 1
+	stop_automated_movement = TRUE
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
 	if(target_mob in ListTargets(10))

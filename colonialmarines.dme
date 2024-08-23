@@ -537,6 +537,7 @@
 #include "code\datums\emergency_calls\provost.dm"
 #include "code\datums\emergency_calls\riot.dm"
 #include "code\datums\emergency_calls\royal_marines.dm"
+#include "code\datums\emergency_calls\solar_devils.dm"
 #include "code\datums\emergency_calls\souto.dm"
 #include "code\datums\emergency_calls\supplies.dm"
 #include "code\datums\emergency_calls\tank_crew.dm"

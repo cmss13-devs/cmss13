@@ -42,5 +42,15 @@
 	else
 		icon_state = icon_full
 
+/obj/item/storage/toolkit/full/fill_preset_inventory()
+	new /obj/item/stack/cable_coil/random(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/clothing/glasses/welding(src)
+
+
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return

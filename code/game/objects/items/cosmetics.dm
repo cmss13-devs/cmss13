@@ -160,7 +160,7 @@
 	if(!newname)
 		return
 
-	var/verify = tgui_input_list(usr, "Are you SURE you wish to be named: [newname]?", "Confirm", list("yes", "no"))
+	var/verify = tgui_input_list(user, "Are you SURE you wish to be named: [newname]?", "Confirm", list("Yes", "No"))
 	if(verify != "yes")
 		return
 

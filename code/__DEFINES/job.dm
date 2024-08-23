@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_CONSCRIPT "UPP Conscript"
 #define JOB_UPP_ENGI "UPP Korporal Sapper"
 #define JOB_UPP_MEDIC "UPP Korporal Medic"
-#define JOB_UPP_SPECIALIST "UPP Serzhant"
+#define JOB_UPP_SPECIALIST "UPP Specialist"
 #define JOB_UPP_LEADER "UPP Master Serzhant"
 #define JOB_UPP_POLICE "UPP Politsiya"
 #define JOB_UPP_SUPPLY "UPP Logistics Technician"

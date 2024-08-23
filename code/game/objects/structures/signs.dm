@@ -112,6 +112,19 @@
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uaflag"
 
+
+//============//
+//  Flags    //
+//==========//
+
+/obj/structure/sign/flag
+	icon = 'icons/obj/structures/props/flags.dmi'
+
+/obj/structure/sign/flag/upp
+	name = "\improper Union of Progressive Peoples Flag"
+	desc = "Unity through Strength, Freedom through Unity"
+	icon_state = "upp_flag"
+
 //=====================//
 // SEMIOTIC STANDARD  //
 //===================//
@@ -577,6 +590,58 @@
 	name = "\improper USCM Requisitions Office Guidelines"
 	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
+
+/obj/structure/sign/ROcreed
+	name = "\improper QMC Creed Plaque"
+	desc = "The short version of the Quartermaster Creed made by the US Quartermaster Corps, this on is purely decorative and ceremonial version which is much shorter and doesn't include more modern edits."
+	desc_lore = {"I am Quartermaster
+		My story is enfolded in the history of this nation.
+		Sustainer of Armies...
+
+		My forges burned at Valley Forge.
+		Down frozen, rutted roads my oxen hauled
+		the meager foods a bankrupt Congress sent me...
+		Scant rations for the cold and starving troops,
+		Gunpowder, salt, and lead.
+
+		In 1812 we sailed to war in ships my boatwrights built.
+		I fought beside you in the deserts of our great Southwest.
+		My pack mules perished seeking water holes,
+		And I went on with camels.
+		I gave flags to serve.
+		The medals and crest you wear are my design.
+
+		Since 1862, I have sought our fallen brothers
+		from Private to President.
+		In war or peace I bring them home
+		And lay them gently down in fields of honor.
+
+		Provisioner, transporter.
+		In 1898 I took you to Havana Harbor and the Philippines.
+		I brought you tents, your khaki cloth for uniforms.
+		When yellow fever struck, I brought the mattresses you lay upon.
+
+		In 1917, we crossed the ocean to fight in the trenches and fields of France,
+		New weapons, training, technologies, and tactics for the Great War.
+		But always the need for food, water, ammunition, and now fuel.
+
+		We shed first blood together at Pearl Harbor and Corregidor.
+		Then begin the long march to Victory - Guadalcanal and North Africa, Sicily and the Solomons.
+		I was there with you at Omaha Beach on D-Day and even the night before from Glider and Parachute.
+		Across Europe and the Pacific, I drove and dug and fought till the job was done.
+
+		When war came to the Peninsula in 1950, it was my 'chutes that filled the grey Korean skies.
+		From the perimeter at Pusan to the cold roads of the Chosin, I was there.
+		In 1965, I established the fire bases and depots across South Vietnam,
+		The Hueys and Chinooks carried my supplies forward.
+
+		I AM QUARTERMASTER.
+		I can shape the course of combat,
+		Change the outcome of battle.
+		Look to me: Sustainer of Armies...Since 1775.
+
+		I AM QUARTERMASTER. I AM PROUD."}
+	icon_state = "rocreed"
 
 /obj/structure/sign/prop1
 	name = "\improper USCM Poster"

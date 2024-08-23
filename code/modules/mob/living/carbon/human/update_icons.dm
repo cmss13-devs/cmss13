@@ -762,7 +762,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/I
 	switch(fire_stacks)
 		if(1 to 14)
-			I = image("icon"=fire_sprite_sheet, "icon_state"="[fire_sprite_prefix]_weak", "layer"= -FIRE_LAYER)
+			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_weak", layer = -FIRE_LAYER)
 			set_light_range(2)
 		if(15 to INFINITY)
 			I = image("icon"=fire_sprite_sheet, "icon_state"="[fire_sprite_prefix]_medium", "layer"= -FIRE_LAYER)

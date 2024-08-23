@@ -88,6 +88,10 @@
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
+			if(JOB_PLT_MED)
+				marine_rk = "med"
+			if(JOB_PLT_SL)
+				marine_rk = "leader"
 			if(JOB_SQUAD_TECH)
 				marine_rk = "tech"
 			if(JOB_INTEL)

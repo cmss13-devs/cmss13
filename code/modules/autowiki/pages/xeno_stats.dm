@@ -36,12 +36,15 @@
 		"Health" = xeno.maxHealth,
 		"Armor" = xeno.armor_deflection,
 		"Plasma" = xeno.plasma_max,
-		"Damage Range" = "[xeno.melee_damage_lower]\u2014[xeno.melee_damage_upper]",
+		"Plasma Regeneration" = xeno.plasma_gain,
+		"Minimum Melee Damage" = xeno.melee_damage_lower,
+		"Maximum Melee Damage" = xeno.melee_damage_upper,
 		"Claw Strength" = xeno.claw_type,
 		"Evasion" = xeno.evasion,
 		// Mob speed is relatively non-obvious, we we convert it into a very intuitive
 		// range for wiki-readability.
 		"Speed" = humanize_speed(xeno.speed),
+		"Explosion Resistance" = xeno.caste.xeno_explosion_resistance,
 	)
 
 	var/sanitized_name = url_encode(replacetext(name, " ", "_"))

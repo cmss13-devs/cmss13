@@ -404,7 +404,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/points_per_slip = 1
 	var/points_per_crate = 2
 
-
 	//black market stuff
 	///in Weyland-Yutani dollars - Not Stan_Albatross.
 	var/black_market_points = 5 // 5 to start with to buy the scanner.

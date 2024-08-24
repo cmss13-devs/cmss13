@@ -90,7 +90,6 @@
 
 		for(var/turf/vis_turf in elevator_animation.vis_contents)
 			for(var/atom/movable/vis_content in vis_turf.contents)
-				to_world(vis_content)
 				vis_content.blocks_emissive = FALSE
 				vis_content.update_emissive_block()
 

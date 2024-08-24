@@ -1,6 +1,11 @@
-/obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
+/obj/effect/landmark/supply_elevator/uscm/Initialize(mapload, ...)
 	. = ..()
-	GLOB.supply_elevator = get_turf(src)
+	GLOB.supply_controller.supply_elevator = get_turf(src)
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/supply_elevator/upp/Initialize(mapload, ...)
+	. = ..()
+	GLOB.supply_controller_upp.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL
 
 /datum/shuttle/ferry/supply
@@ -26,14 +31,20 @@
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
 
+/datum/shuttle/ferry/supply/upp
+
+/datum/shuttle/ferry/supply/upp/New()
+	. = ..()
+	linked_supply = GLOB.supply_controller_upp
+
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return GLOB.supply_elevator
+	return linked_supply.supply_elevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	linked_supply = GLOB.supply_controller_upp
+	linked_supply = GLOB.supply_controller
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80
@@ -84,7 +95,7 @@
 				lower_railings()
 				return
 		else //at centcom
-			GLOB.supply_controller_upp.buy() //FIX THIS HOLY FUCK FIX!
+			linked_supply.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
 		var/area/away_area = get_location_area(away_location)

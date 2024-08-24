@@ -17,16 +17,28 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station
+/area/supply/station //this is for common subtype of faction stations
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
-/area/supply/dock
+/area/supply/station/uscm
+	name = "Supply Shuttle USCM"
+
+/area/supply/station/upp
+	name = "Supply Shuttle UPP"
+
+/area/supply/dock //this is just for common subtype
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
+
+/area/supply/dock/uscm
+	name = "Supply Shuttle USCM"
+
+/area/supply/dock/upp
+	name = "Supply Shuttle UPP"
 
 /area/supply/station_vehicle
 	name = "Vehicle ASRS"
@@ -392,6 +404,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/approvedby = null
 
 /datum/controller/supply
+	var/supply_elevator
 	var/processing = 1
 	var/processing_interval = 30 SECONDS
 	var/iteration = 0
@@ -402,6 +415,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/points_per_process = 1.5
 	var/points_per_slip = 1
 	var/points_per_crate = 2
+
 
 	//black market stuff
 	///in Weyland-Yutani dollars - Not Stan_Albatross.

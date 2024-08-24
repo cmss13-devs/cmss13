@@ -28,20 +28,42 @@
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in GLOB.all_areas)
-		if(A.type == /area/supply/dock)
-			shuttle.area_offsite = A
+	var/area/uscm_dock
+	var/area/uscm_station
+	for(uscm_dock in GLOB.all_areas)
+		if(uscm_dock.type == /area/supply/dock/uscm)
+			shuttle.area_offsite = uscm_dock
 			break
 
-	for(var/area/A in GLOB.all_areas)
-		if(A.type == /area/supply/station)
-			shuttle.area_station = A
+	for(uscm_station in GLOB.all_areas)
+		if(uscm_station.type == /area/supply/station/uscm)
+			shuttle.area_station = uscm_station
 			break
 
-	shuttles["Supply"] = shuttle
+
+	shuttles["Supply USCM"] = shuttle
 	process_shuttles += shuttle
 	GLOB.supply_controller.shuttle = shuttle
-	GLOB.supply_controller_upp.shuttle = shuttle
+
+	var/area/upp_dock
+	var/area/upp_station
+	var/datum/shuttle/ferry/supply/upp_shuttle = new/datum/shuttle/ferry/supply/upp()
+	for(upp_dock in GLOB.all_areas)
+		if(upp_dock.type == /area/supply/dock/upp)
+			upp_shuttle.area_offsite = upp_dock
+			break
+
+	for(upp_station in GLOB.all_areas)
+		if(upp_station.type == /area/supply/station/upp)
+			upp_shuttle.area_station = upp_station
+			break
+	if(upp_dock && upp_station)
+		shuttles["Supply UPP"] = upp_shuttle
+		process_shuttles += upp_shuttle
+		GLOB.supply_controller_upp.shuttle = upp_shuttle
+	else
+		qdel(shuttle)
+
 
 
 //---ELEVATOR---//

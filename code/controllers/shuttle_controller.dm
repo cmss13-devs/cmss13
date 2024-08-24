@@ -21,10 +21,10 @@
 	process_shuttles = list()
 	locs_crash = list()
 
-	var/datum/shuttle/ferry/supply/shuttle
+	var/datum/shuttle/ferry/supply/uscm/shuttle
 
 	// Supply shuttle
-	shuttle = new/datum/shuttle/ferry/supply()
+	shuttle = new/datum/shuttle/ferry/supply/uscm()
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION

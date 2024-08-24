@@ -31,8 +31,15 @@
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
 
-/datum/shuttle/ferry/supply/upp
+/datum/shuttle/ferry/supply/uscm
 
+/datum/shuttle/ferry/supply/uscm/New()
+	. = ..()
+	linked_supply = GLOB.supply_controller
+
+
+/datum/shuttle/ferry/supply/upp
+	//redifine new ids here when mapping to the game
 /datum/shuttle/ferry/supply/upp/New()
 	. = ..()
 	linked_supply = GLOB.supply_controller_upp
@@ -202,4 +209,3 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
-

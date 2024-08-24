@@ -668,10 +668,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/right_spiders)
 "acx" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/medseceng)
 "acA" = (
@@ -4131,8 +4128,7 @@
 	req_access_txt = "100";
 	specialfunctions = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
+/obj/structure/machinery/power/apc/power/east{
 	start_charge = 50
 	},
 /turf/open/floor/shiva/floor3,
@@ -6162,8 +6158,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "bFP" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
+/obj/structure/machinery/power/apc/power/east{
 	start_charge = 10
 	},
 /turf/open/floor/shiva/north,
@@ -6544,7 +6539,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "ccu" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating,
 /area/shiva/exterior/telecomm/lz1_north)
 "ccI" = (
@@ -7848,10 +7843,7 @@
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "dVw" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
 "dWp" = (
@@ -7999,10 +7991,7 @@
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/exterior/cp_lz2)
 "edW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/shiva/exterior/cp_colony_grounds)
 "eep" = (
@@ -9685,10 +9674,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "grd" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/caves/s_lz2)
 "grk" = (
@@ -12038,10 +12024,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "iZX" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "jac" = (
@@ -12709,11 +12692,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse/caves)
 "jWL" = (
-/obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "jXD" = (
@@ -13847,10 +13830,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "liD" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "ljz" = (
@@ -13893,8 +13873,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "lnk" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "telecomms relay power controller";
 	start_charge = 10
 	},
@@ -14005,10 +13984,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "lro" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "telecomms relay power controller";
-	start_charge = 0
+/obj/structure/machinery/power/apc/no_power/west{
+	name = "telecomms relay power controller"
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
@@ -14267,10 +14244,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "lKJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "lKQ" = (
@@ -14400,10 +14374,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "lTN" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/darkbrown2/east,
 /area/shiva/interior/valley_huts/disposals)
 "lUF" = (
@@ -14746,10 +14717,7 @@
 /area/shiva/interior/bar)
 "mpt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "mpI" = (
@@ -15534,6 +15502,10 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
+"niD" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/aux_power)
 "niL" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -15575,9 +15547,7 @@
 /turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "nmt" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/plating,
 /area/shiva/exterior/telecomm/lz2_southeast)
 "nmT" = (
@@ -16005,10 +15975,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "nNX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/warehouse/caves)
 "nOd" = (
@@ -16552,7 +16519,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "owY" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating,
 /area/shiva/exterior/telecomm/lz2_northeast)
 "oxP" = (
@@ -16560,10 +16527,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "oyc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "oyw" = (
@@ -17111,10 +17075,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "prb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/garage)
 "prO" = (
@@ -17660,10 +17621,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "pOM" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/delivery,
 /area/shiva/interior/telecomm/lz1_biceps)
 "pPt" = (
@@ -18300,10 +18258,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "qEt" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/shiva/exterior/junkyard)
 "qEB" = (
@@ -18594,10 +18549,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
 "raQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/shiva/exterior/junkyard/cp_bar)
 "rbc" = (
@@ -19202,6 +19154,9 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/machinery/power/smes/buildable{
+	pixel_x = 1
+	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "rUW" = (
@@ -19322,10 +19277,7 @@
 /turf/open/floor/shiva/wred/northwest,
 /area/shiva/interior/colony/medseceng)
 "san" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "sax" = (
@@ -20310,10 +20262,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "tnU" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/shiva/exterior/cp_lz2)
 "too" = (
@@ -20828,10 +20777,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "tRq" = (
@@ -21101,10 +21047,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/fortbiceps)
 "ufb" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "ufd" = (
@@ -22404,9 +22347,7 @@
 /area/shiva/interior/aerodrome)
 "vIi" = (
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts/no2)
 "vIy" = (
@@ -22591,10 +22532,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "vXw" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/shiva/interior/caves/cp_camp)
 "vYm" = (
@@ -23717,6 +23655,10 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
+"xEU" = (
+/obj/structure/machinery/power/smes/buildable,
+/turf/open/floor/shiva/yellowfull/west,
+/area/shiva/interior/garage)
 "xFp" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
@@ -23799,10 +23741,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/bar)
 "xMH" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/deck)
 "xMQ" = (
@@ -33996,7 +33935,7 @@ puZ
 puZ
 anc
 anc
-ctz
+niD
 cJu
 cJu
 nTC
@@ -50751,11 +50690,11 @@ ktd
 ktd
 ktd
 ktd
-ktd
+xEU
 tXd
 ado
 pSD
-ktd
+xEU
 ktd
 ktd
 ktd

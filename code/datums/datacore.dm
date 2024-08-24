@@ -263,7 +263,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"
 	record_general.fields["m_stat"] = "Stable"
-	record_general.fields["sex"] = target.gender
+	record_general.fields["sex"] = capitalize(target.gender)
 	record_general.fields["species"] = target.get_species()
 	record_general.fields["origin"] = target.origin
 	record_general.fields["faction"] = target.personal_faction

@@ -83,6 +83,7 @@
 	starting_attachment_types = list(
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
+		/obj/item/attachable/stock/m60,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -95,7 +96,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 39, "under_y" = 7, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
@@ -147,9 +148,9 @@
 /obj/item/weapon/gun/m60/update_icon()
 	. = ..()
 	if(cover_open)
-		overlays += "+[base_gun_icon]_cover_open"
+		overlays += image("+[base_gun_icon]_cover_open", pixel_x = -2, pixel_y = 8)
 	else
-		overlays += "+[base_gun_icon]_cover_closed"
+		overlays += image("+[base_gun_icon]_cover_closed", pixel_x = -10, pixel_y = 0)
 
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()

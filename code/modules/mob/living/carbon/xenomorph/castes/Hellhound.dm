@@ -30,6 +30,8 @@
 	minimap_icon = "hellhound"
 
 /mob/living/carbon/xenomorph/hellhound
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
 	desc = "A disgusting beast from hell, it has four menacing spikes growing from its head."

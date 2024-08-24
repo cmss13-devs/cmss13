@@ -1,5 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "APCs are now emissive"
-  - code_imp: "Added emissive blockers to a bunch of stuff"

@@ -1,6 +1,0 @@
-author: "TheManWithNoHands"
-delete-after: True
-changes:
-  - balance: "IFF, scatter based on minigun rev up, rev up time increase, firing delay decrease"
-  - code_imp: "Places minigun aMmo in the Tank ammo File"
-  - soundadd: "adds a hit sound for 20mm flak"

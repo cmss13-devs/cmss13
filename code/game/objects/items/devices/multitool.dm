@@ -58,8 +58,7 @@
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")
 		if(user.client)
 			//Create the appearance so we have something to apply the filter to.
-			var/mutable_appearance/apc_appearance = new /mutable_appearance()
-			apc_appearance.appearance = APC
+			var/mutable_appearance/apc_appearance = new(APC)
 			apc_appearance.filters += list("type" = "outline", "size" = 1, "color" = COLOR_GREEN)
 			//Make it an image we can give to the client
 			var/image/final_image = image(apc_appearance)

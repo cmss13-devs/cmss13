@@ -1,11 +1,6 @@
-/obj/effect/landmark/supply_elevator/uscm/Initialize(mapload, ...)
+/obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
 	. = ..()
 	GLOB.supply_controller.supply_elevator = get_turf(src)
-	return INITIALIZE_HINT_QDEL
-
-/obj/effect/landmark/supply_elevator/upp/Initialize(mapload, ...)
-	. = ..()
-	GLOB.supply_controller_upp.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL
 
 /datum/shuttle/ferry/supply

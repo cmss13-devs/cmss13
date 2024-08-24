@@ -17,13 +17,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station //this is for common subtype of faction stations
+/area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
-/area/supply/dock //this is just for common subtype
+/area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0

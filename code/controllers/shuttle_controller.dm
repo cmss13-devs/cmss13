@@ -17,7 +17,7 @@
 	process_shuttles = list()
 	locs_crash = list()
 
-	var/datum/shuttle/ferry/shuttle
+	var/datum/shuttle/ferry/supply/shuttle
 
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()

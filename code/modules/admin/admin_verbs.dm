@@ -73,11 +73,12 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
+	/datum/admins/proc/announce, /*priority announce something to all clients.*/
+	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
-	/datum/admins/proc/announce, /*priority announce something to all clients.*/
 	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
 	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
 	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
@@ -154,7 +155,6 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,

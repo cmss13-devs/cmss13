@@ -5,6 +5,7 @@
 //Synth K9 Emotes
 /datum/emote/living/carbon/human/synthetic/synth_k9
 	species_type_allowed_typecache = list(/datum/species/synthetic/synth_k9)
+	species_type_blacklist_typecache = list()
 	keybind_category = CATEGORY_SYNTH_EMOTE
 	volume = 75
 

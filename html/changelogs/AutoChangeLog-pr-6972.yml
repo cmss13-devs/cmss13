@@ -1,5 +1,0 @@
-author: "Noname995"
-delete-after: True
-changes:
-  - bugfix: "Varadero, Strata, Kutjevo, Shiva maps now don't have infinity energy"
-  - rscadd: "Added SMES on Shiva generators points"

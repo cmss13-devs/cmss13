@@ -174,7 +174,7 @@
 			if(ID.assignment)
 				ID.name += " ([ID.assignment])"
 
-	var/genderswap = tgui_input_list(user, "Which Gender?", "Gender", list("male", "female"))
+	var/genderswap = tgui_input_list(user, "Which Gender?", "Gender", list("Male", "Female"))
 	if(!genderswap)
 		return
 	user.gender = genderswap

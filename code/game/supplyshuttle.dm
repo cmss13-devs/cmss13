@@ -500,6 +500,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply/Destroy(force, ...)
 	. = ..()
+	qdel(supply_elevator)
 	for(var/console in bound_supply_computer_list) //removal of this datum breakes the consoles anyway
 		qdel(console)
 

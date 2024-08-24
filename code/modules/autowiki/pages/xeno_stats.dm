@@ -32,19 +32,19 @@
 		name = "[strain.name] [name]"
 
 	var/xeno_data = list(
-		"Name" = name,
-		"Health" = xeno.maxHealth,
-		"Armor" = xeno.armor_deflection,
-		"Plasma" = xeno.plasma_max,
-		"Plasma Regeneration" = xeno.plasma_gain,
-		"Minimum Slash Damage" = xeno.melee_damage_lower,
-		"Maximum Slash Damage" = xeno.melee_damage_upper,
-		"Claw Strength" = xeno.claw_type,
-		"Evasion" = xeno.evasion,
+		"name" = name,
+		"health" = xeno.maxHealth,
+		"armor" = xeno.armor_deflection,
+		"plasma" = xeno.plasma_max,
+		"plasma_regeneration" = xeno.plasma_gain,
+		"minimum_slash_damage" = xeno.melee_damage_lower,
+		"maximum_slash_damage" = xeno.melee_damage_upper,
+		"claw_strength" = xeno.claw_type,
+		"evasion" = xeno.evasion,
 		// Mob speed is relatively non-obvious, we we convert it into a very intuitive
 		// range for wiki-readability.
-		"Speed" = humanize_speed(xeno.speed),
-		"Explosion Resistance" = xeno.caste.xeno_explosion_resistance,
+		"speed" = humanize_speed(xeno.speed),
+		"explosion_resistance" = xeno.caste.xeno_explosion_resistance,
 	)
 
 	var/sanitized_name = url_encode(replacetext(name, " ", "_"))

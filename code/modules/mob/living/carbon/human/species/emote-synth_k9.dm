@@ -1,6 +1,5 @@
 /datum/emote/living/carbon/human/synthetic/synth_k9/New()  //K9's are blacklisted from human emotes on emote.dm, we need to not block the new emotes below
 	. = ..()
-	species_type_blacklist_typecache = null
 
 //Synth K9 Emotes
 /datum/emote/living/carbon/human/synthetic/synth_k9

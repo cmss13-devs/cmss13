@@ -211,7 +211,7 @@
 				victim.reagents.set_source_mob(xeno, /datum/reagent/toxin/flesh_plasma_toxin)
 				to_chat(xeno, SPAN_XENOWARNING("We inject our target with toxin!"))
 	else
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws infront of it as tendrils of resin rapidly shoot out, extending their reach and piercing [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"), \
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws infront of it as tendrils of resin whip outwards, piercing [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"), \
 		SPAN_XENOWARNING("We strike [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 	reaper.flesh_plasma += 30
@@ -239,11 +239,12 @@
 		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma!"))
 		return
 
-	var/datum/cause_data/cause_data = create_cause_data("reaper extra pheros smoke", owner)
+	var/datum/cause_data/cause_data = create_cause_data("reaper miasma", owner)
 	cloud = new /datum/effect_system/smoke_spread/reaper_mist
-	cloud.set_up(4, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
+	cloud.set_up(3, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
 	cloud.start()
-	to_chat(xeno, SPAN_XENONOTICE("We consume some of our stored flesh plasma to create a toxic miasma!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly green miasma, forming a cloud around it!"), \
+		SPAN_XENOWARNING("We consume flesh plasma and breath a cloud of miasma!"))
 
 	reaper.flesh_plasma -= flesh_plasma_cost
 	apply_cooldown()

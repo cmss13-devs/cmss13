@@ -21,9 +21,10 @@
 	placed = FALSE
 	static = TRUE
 	encryptable = FALSE
+	var/anchor_time = 40
+
 	//CAS cant operate in area
 	var/restricted_range = 20
-	var/anchor_time = 40
 	//CAS can operate but will get some effects
 	var/covered_range = 40
 
@@ -32,7 +33,6 @@
 
 	var/last_fired = 0
 	var/fire_delay = 30
-	var/fire_angle = 90
 
 /obj/structure/machinery/defenses/planetary_anti_air/proc/fire()
 	if(!(world.time - last_fired >= fire_delay) || !turned_on || health <= 0)
@@ -40,13 +40,17 @@
 
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 	sleep(3)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] fire projectiles into air!")]")
-	playsound(loc, 'sound/weapons/gun_rifle.ogg', 60, 1)
-
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] fires projectiles into air!")]")
+	playsound(loc, 'sound/weapons/vehicles/autocannon_fire.ogg', 50, 1)
+	sleep(0.5)
+	playsound(loc, 'sound/weapons/vehicles/autocannon_fire.ogg', 50, 1)
 	last_fired = world.time
 
 /obj/structure/machinery/defenses/planetary_anti_air/get_examine_text(mob/user)
 	var/message = ""
+	if (health <= 0)
+		message += "It appears to be completely broken."
+		return list(message)
 	if(stat == DEFENSE_DAMAGED)
 		message += "It does not appear to be working.\n"
 	if(ishuman(user))
@@ -172,7 +176,7 @@
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]."),
 			SPAN_NOTICE("You begin repairing [src]."))
-			if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				if(stat == DEFENSE_DAMAGED)
@@ -240,20 +244,22 @@
 
 /obj/structure/machinery/defenses/planetary_anti_air/Destroy()
 	remove_protected_area()
+	update_icon()
 	. = ..()
 
 /obj/structure/machinery/defenses/planetary_anti_air/destroyed_action()
 	remove_protected_area()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-
 	sleep(10)
-
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("AA tower explosion"))
+	cell_explosion(loc, 20, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("AA tower explosion"))
+	update_icon()
 
 /obj/structure/machinery/defenses/planetary_anti_air/damaged_action(damage)
 	if(health < health_max * 0.15)
 		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED
-		power_off_action()
+		turned_on = FALSE
+		remove_protected_area()
+		set_light(0)
+		update_icon()

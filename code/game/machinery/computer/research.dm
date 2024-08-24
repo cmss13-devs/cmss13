@@ -92,6 +92,8 @@
 	var/list/contract = list()
 	for(var/i in 1 to length(GLOB.chemical_data.contract_chems))
 		var/datum/reagent/generated/contract_chem = GLOB.chemical_data.contract_chems["contract-chem-[i]"]
+		if(!contract_chem)
+			continue
 		var/datum/reagent/temp = GLOB.chemical_reagents_list[contract_chem.reagent_recipe_hint]
 		contract += list(list(
 			"name" = contract_chem.name,

@@ -793,6 +793,8 @@
 /obj/item/paper/research_notes/ciph_hint/Initialize()
 	. = ..()
 	hint = GLOB.combining_properties[PROPERTY_CIPHERING]
+	if(length(hint) < CIPHERING_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/paper/research_notes/ciph_hint_complete
 	note_type = "ciph_hint_complete"
@@ -801,9 +803,11 @@
 	note_type = "leg_hint"
 
 /obj/item/paper/research_notes/leg_hint/Initialize()
+	. = ..()
 	picked_property = pick(PROPERTY_LEGENDARY_LIST)
 	hint = GLOB.combining_properties[picked_property]
-	. = ..()
+	if(length(hint) < LEGENDARY_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL //shouldnt happen, will happen.
 
 
 /obj/item/paper/research_notes/grant

@@ -499,6 +499,7 @@ export const ModeAdd = (props) => {
                         property_code: property.code,
                       });
                       setSelectedReferenceProperty(property.code);
+                      setSelectedTargetProperty(0);
                     }}
                     selected={
                       selectedReferenceProperty === property.code ? true : false
@@ -597,7 +598,6 @@ export const ChemSimulator = () => {
         {selectedMode === 4 && (
           <ModeAdd
             setSelectedTargetProperty={setSelectedTargetProperty}
-            selectedTargetProperty={selectedTargetProperty}
             setSelectedReferenceProperty={setSelectedReferenceProperty}
             selectedReferenceProperty={selectedReferenceProperty}
           />

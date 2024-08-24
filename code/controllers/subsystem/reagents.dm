@@ -46,14 +46,20 @@ SUBSYSTEM_DEF(reagents)
 				GLOB.chemical_properties_list["positive"][prop.name] = prop
 	//preparing combining properties
 	var/list/special_chemicals = subtypesof(/datum/chem_property/special)//preparing random generation for legendary properties
-	var/list/recipe = list()
 	for(var/property in special_chemicals)
+		var/list/recipe = list()
 		var/datum/chem_property/prop = property
-		if(prop.rarity == PROPERTY_LEGENDARY && prop.name != PROPERTY_CIPHERING && prop.category != PROPERTY_TYPE_ANOMALOUS)
-			recipe = list(pick(GLOB.chemical_properties_list["positive"]), pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")]), pick(GLOB.chemical_properties_list[pick("neutral", "negative")]))
-		else if(prop.name == PROPERTY_CIPHERING)
-			recipe = list(pick(GLOB.chemical_properties_list["positive"]), pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")]), pick(GLOB.chemical_properties_list[pick("neutral", "negative")]), PROPERTY_ENCRYPTED)
-		GLOB.combining_properties[prop.name] = recipe
+		if(prop.rarity == PROPERTY_LEGENDARY && prop.category != PROPERTY_TYPE_ANOMALOUS)
+			for(var/recipe_attempts in 1 to 5) //five attempts at generating valid recipe.
+				for(var/properties in 1 to LEGENDARY_COMBINE_PROPERTIES)
+					recipe += pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")])
+				if(length(recipe) == LEGENDARY_COMBINE_PROPERTIES)
+					if(prop.name == PROPERTY_CIPHERING)
+						recipe += PROPERTY_ENCRYPTED
+					break
+					recipe = list()//reset the list if its invalid
+		if(length(recipe) >= 3)
+			GLOB.combining_properties[prop.name] = recipe
 
 
 

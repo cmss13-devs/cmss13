@@ -151,10 +151,10 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 /datum/chemical_data/proc/reroll_chemicals()
 	if(!isnull(contract_chems))
-		to_world("qdelling unclaimed chems.")
 		for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
 			if(contract_chems["contract-chem-[i]"] != null) //chances are, player picked something and list is shorter now.
 				qdel(contract_chems["contract-chem-[i]"])
+
 	contract_chems = list()
 	for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
 		var/datum/reagent/generated/C = new /datum/reagent/generated
@@ -204,7 +204,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 ///Adds coontract chemicals to global lists and given proper ID, aswell as removed from contract chems since those are qdelled on reroll. only used when we are 100% certain its in user hands and not going to be removed
 /datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem) // we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
-	LAZYREMOVE(contract_chems, chem)
+	contract_chems[chem.id] = null
 	chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	GLOB.chemical_gen_classes_list["tau"] += chem.id
 	GLOB.chemical_reagents_list[chem.id] = chem

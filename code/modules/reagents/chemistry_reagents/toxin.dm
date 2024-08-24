@@ -272,7 +272,7 @@
 	description = "A polymerized form of formaldehyde, that is slowly formed in a cold aqueous solution."
 	color = "#E0E0E0"
 	reagent_state = SOLID
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/molecular_acid

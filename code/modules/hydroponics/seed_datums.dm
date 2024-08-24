@@ -199,16 +199,6 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	if(prob(20))
 		harvest_repeat = 1
 
-	if(prob(5))
-		consume_gasses = list()
-		var/gas = pick("oxygen","nitrogen","phoron","carbon_dioxide")
-		consume_gasses[gas] = rand(3,9)
-
-	if(prob(5))
-		exude_gasses = list()
-		var/gas = pick("oxygen","nitrogen","phoron","carbon_dioxide")
-		exude_gasses[gas] = rand(3,9)
-
 	chems = list()
 	if(prob(80))
 		chems["nutriment"] = list(rand(1,10),rand(10,20))
@@ -384,10 +374,9 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
-											prob(15);pick(GLOB.chemical_gen_classes_list["T1"]),\
-											prob(5);pick(GLOB.chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
-				if(prob(50) && chems_special)
-					chem_to_add = list(pick(chems_special) = 8)
+											) = list(1,rand(1,2)))
+				if(prob(20) && chems_special)
+					chem_to_add = list(pick(chems_special) = list(1,rand(1,2)))
 				chems += chem_to_add
 
 
@@ -640,11 +629,18 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	new_seed.roundstart = 0
 
 	//Copy over everything else.
-	if(products)    new_seed.products = products.Copy()
-	if(mutants) new_seed.mutants = mutants.Copy()
-	if(chems)   new_seed.chems = chems.Copy()
-	if(consume_gasses) new_seed.consume_gasses = consume_gasses.Copy()
-	if(exude_gasses)   new_seed.exude_gasses = exude_gasses.Copy()
+	if(products)
+		new_seed.products = products.Copy()
+	if(mutants)
+		new_seed.mutants = mutants.Copy()
+	if(chems)
+		new_seed.chems = chems.Copy()
+	if(chems_special)
+		new_seed.chems_special = chems_special.Copy()
+	if(consume_gasses)
+		new_seed.consume_gasses = consume_gasses.Copy()
+	if(exude_gasses)
+		new_seed.exude_gasses = exude_gasses.Copy()
 
 	new_seed.seed_name = "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
 	new_seed.display_name =  "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"

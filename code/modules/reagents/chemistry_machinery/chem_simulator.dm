@@ -112,6 +112,7 @@
 	. = ..()
 	var/list/data = list()
 	data["status"] = status_bar
+	data["credits"] = GLOB.chemical_data.rsc_credits
 	ready = check_ready()
 	data["is_ready"] = ready
 	data["can_simulate"] = (ready && simulating == SIMULATION_STAGE_OFF)
@@ -120,9 +121,13 @@
 	data["is_picking_recipe"] = (simulating == SIMULATION_STAGE_FINAL)
 	data["lock_control"] = (simulating != SIMULATION_STAGE_OFF)
 	data["can_cancel_simulation"] = (simulating <= SIMULATION_STAGE_WAIT)
-	data["estimated_cost"] = (!target_property ? "NULL" : property_costs[target_property.name])
-	calculate_new_od_level()
-	data["od_level"] = new_od_level
+	if(mode != MODE_ADD)
+		data["estimated_cost"] = (!target_property  ? "NULL" : property_costs[target_property.name])
+	else
+		data["estimated_cost"] = (!reference_property  ? "NULL" : property_costs[reference_property.name])
+	if(target?.data)
+		calculate_new_od_level()
+		data["od_level"] = new_od_level
 	data["chemical_name"] = (isnull(target) ? "CHEMICAL DATA NOT INSERTED" : target.data.name)
 	data["reference_name"] = (isnull(reference) ? "CHEMICAL DATA NOT INSERTED" : reference.data.name)
 
@@ -186,7 +191,6 @@
 			"mode_id" = modes_datum.mode_id,
 			"icon_type" = modes_datum.icon_type
 		))
-	static_data["credits"] = GLOB.chemical_data.rsc_credits
 	return static_data
 
 /obj/structure/machinery/chem_simulator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -197,9 +201,11 @@
 		if("change_mode")
 			mode = params["mode_id"]
 			update_costs()
+			if(mode == MODE_ADD)
+				target_property = null
 		if("eject_target")
 			if(target)
-				if(!usr.put_in_active_hand(target))
+				if(!ui.user.put_in_active_hand(target))
 					target.forceMove(loc)
 				target = null
 			target_property = null
@@ -208,7 +214,7 @@
 			flick("[icon_state]_printing",src)
 		if("eject_reference")
 			if(reference)
-				if(!usr.put_in_active_hand(reference))
+				if(!ui.user.put_in_active_hand(reference))
 					reference.forceMove(loc)
 				reference = null
 			reference_property = null
@@ -222,7 +228,7 @@
 					continue
 				target_property = target_prop
 			if(!target_property)
-				to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
 				return
 		if("select_reference_property")
 			if(!reference)
@@ -232,7 +238,7 @@
 					continue
 				reference_property = reference_prop
 			if(!reference_property)
-				to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
 				return
 		if("simulate")
 			if(!ready)
@@ -253,44 +259,6 @@
 			stop_processing()
 			icon_state = "modifier"
 			simulating = SIMULATION_STAGE_OFF
-		if("toggle_flag")
-			var/flag_value = params["flag_id"]
-			if(template_filter & flag_value)
-				template_filter &= ~flag_value
-			else
-				template_filter |= flag_value
-		if("change_create_target_level")
-			var/level_to_set = 1
-			if(GLOB.chemical_data.clearance_level <= 2)
-				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
-			else if(GLOB.chemical_data.clearance_level <= 4)
-				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
-			else
-				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
-			if(!level_to_set)
-				return
-			if(!LAZYISIN(creation_template, target_property))
-				LAZYADD(creation_template, target_property)
-			target_property.level = level_to_set
-			if(target_property.max_level && target_property.level > target_property.max_level)
-				target_property.level = target_property.max_level
-				to_chat(usr, "Max level for [target_property.name] is [target_property.max_level].")
-			calculate_creation_cost()
-		if("change_complexity")
-			var/slot = params["complexity_slot"]
-			var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:", "[src]", list("BASIC (+7)", "COMMON (+4)", "UNCOMMON (1)", "RARE (-5)"))
-			if(!new_rarity || simulating != SIMULATION_STAGE_OFF)
-				return
-			switch(new_rarity)
-				if("BASIC (+7)")
-					creation_complexity[slot] = CHEM_CLASS_BASIC
-				if("COMMON (+4)")
-					creation_complexity[slot] = CHEM_CLASS_COMMON
-				if("UNCOMMON (1)")
-					creation_complexity[slot] = CHEM_CLASS_UNCOMMON
-				if("RARE (-5)")
-					creation_complexity[slot] = CHEM_CLASS_RARE
-			calculate_creation_cost()
 		if("keyboard_sound")//only exists to give sound
 			playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
 			return
@@ -338,61 +306,50 @@
 	else
 		ready = check_ready()
 		stop_processing()
-	SSnano.nanomanager.update_uis(src)
 
 /obj/structure/machinery/chem_simulator/proc/update_costs()
 	property_costs = list()
 	var/only_positive = TRUE
 	if(target && target.data && target.completed)
-		for(var/datum/chem_property/P in target.data.properties)
-			if(!isPositiveProperty(P))
-				only_positive = FALSE
-			if(P.category & PROPERTY_TYPE_ANOMALOUS)
-				property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_ANOMALOUS
-				continue
-			switch(mode)
-				if(MODE_AMPLIFY)
-					property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
-				if(MODE_SUPPRESS)
-					property_costs[P.name] = 2
-				if(MODE_RELATE)
-					if(reference_property)
-						if(reference_property.category & PROPERTY_TYPE_ANOMALOUS)
-							property_costs[P.name] = P.level * 10
-						else if(reference_property.rarity < PROPERTY_RARE)
-							property_costs[P.name] = P.level
+		if(mode == MODE_ADD && reference?.completed)
+			var/total_target_value
+			for(var/datum/chem_property/reference_property in reference.data.properties)
+				property_costs[reference_property.name] = max(min(reference_property.level - 1, PROPERTY_COST_MAX), 1)
+				if(length(target.data.properties) > 5)
+					property_costs[reference_property.name] += PROPERTY_MULTIPLIER_ADD_BULK
+			for(var/datum/chem_property/target_property in target.data.properties)
+				total_target_value += target_property.value
+				if(!isPositiveProperty(target_property))
+					only_positive = FALSE
+			if(total_target_value > 10)
+				for(var/property_penalty in property_costs)
+					property_costs[property_penalty] += PROPERTY_MULTIPLIER_ADD_VALUE
+		if(!property_costs)
+			for(var/datum/chem_property/P in target.data.properties)
+				if(!isPositiveProperty(P))
+					only_positive = FALSE
+				if(P.category & PROPERTY_TYPE_ANOMALOUS)
+					property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_ANOMALOUS
+					continue
+				switch(mode)
+					if(MODE_AMPLIFY)
+						property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
+					if(MODE_SUPPRESS)
+						property_costs[P.name] = 2
+					if(MODE_RELATE)
+						if(reference_property)
+							if(reference_property.category & PROPERTY_TYPE_ANOMALOUS)
+								property_costs[P.name] = P.level * 10
+							else if(reference_property.rarity < PROPERTY_RARE)
+								property_costs[P.name] = P.level
+							else
+								property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_RARE
 						else
-							property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_RARE
-					else
-						property_costs[P.name] = P.level * 1
+							property_costs[P.name] = P.level * 1
 		if(only_positive)
 			for(var/P in property_costs)
 				property_costs[P] = property_costs[P] + 1
 	GLOB.chemical_data.has_new_properties = FALSE
-
-//Here the cost for creating a chemical is calculated. If you're looking to rebalance create mode, this is where you do it
-/obj/structure/machinery/chem_simulator/proc/calculate_creation_cost()
-	creation_cost = 0
-	min_creation_cost = 5 //min cost of 5
-	var/slots_used = LAZYLEN(creation_template)
-	creation_cost += slots_used * 3 - 6 //3 cost for each slot after the 2nd
-	min_creation_cost += slots_used - 2
-	for(var/datum/chem_property/P in creation_template)
-		creation_cost += max(abs(P.value), 1) * P.level
-		if(P.level > 5 && P.cost_penalty) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
-			creation_cost += P.level - 6 + ceil((P.level - 5) / 2)
-	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
-	for(var/rarity in creation_complexity)
-		switch(rarity)
-			if(CHEM_CLASS_BASIC)
-				creation_cost += 7
-			if(CHEM_CLASS_COMMON)
-				creation_cost += 4
-			if(CHEM_CLASS_UNCOMMON)
-				creation_cost++
-			if(CHEM_CLASS_RARE)
-				creation_cost -= 5
-	creation_cost = max(creation_cost, min_creation_cost) //checks against minimum cost
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)
@@ -565,7 +522,7 @@
 
 
 /obj/structure/machinery/chem_simulator/proc/add(datum/reagent/generated/C)
-	if(!target || !reference || !target_property || !reference_property)
+	if(!target || !reference || !reference_property)
 		return
 	C.make_alike(target.data)
 	C.insert_property(reference_property.name, reference_property.level)
@@ -622,7 +579,10 @@
 	C.overdose_critical = max(min(new_od_level * 2, new_od_level + 30), 10)
 
 	//Pay
-	GLOB.chemical_data.update_credits(property_costs[target_property.name] * -1)
+	if(mode != MODE_ADD)
+		GLOB.chemical_data.update_credits(property_costs[target_property.name] * -1)
+	else
+		GLOB.chemical_data.update_credits(property_costs[reference_property.name] * -1)
 	//Refund 1 credit if a rare or rarer target was added
 	var/datum/reagent/component = GLOB.chemical_reagents_list[recipe_target]
 	if(component && component.chemclass >= CHEM_CLASS_RARE)

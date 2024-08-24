@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(reagents)
 	for(var/property in special_chemicals)
 		var/list/recipe = list()
 		var/datum/chem_property/prop = property
-		if(prop.rarity == PROPERTY_LEGENDARY && prop.category != PROPERTY_TYPE_ANOMALOUS)
+		if((prop.rarity == PROPERTY_LEGENDARY && prop.category != PROPERTY_TYPE_ANOMALOUS) || prop.name == PROPERTY_CIPHERING)
 			for(var/recipe_attempts in 1 to 5) //five attempts at generating valid recipe.
 				for(var/properties in 1 to LEGENDARY_COMBINE_PROPERTIES)
 					recipe += pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")])
@@ -58,8 +58,8 @@ SUBSYSTEM_DEF(reagents)
 						recipe += PROPERTY_ENCRYPTED
 					break
 					recipe = list()//reset the list if its invalid
-		if(length(recipe) >= 3)
-			GLOB.combining_properties[prop.name] = recipe
+			if(length(recipe) >= 3)
+				GLOB.combining_properties[prop.name] = recipe
 
 
 

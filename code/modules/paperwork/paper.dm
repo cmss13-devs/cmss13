@@ -801,7 +801,7 @@
 	if(length(hint) < CIPHERING_COMBINE_PROPERTIES)
 		return INITIALIZE_HINT_QDEL
 
-/obj/item/paper/research_notes/ciph_hint_complete
+/obj/item/paper/research_notes/ciph_hint/complete
 	note_type = "ciph_hint_complete"
 
 /obj/item/paper/research_notes/leg_hint

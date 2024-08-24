@@ -51,7 +51,7 @@
 	wearer.add_filter("synth_immobile_form", priority = 1, params = list("type" = "outline", "color" = "#2B719E", "size" = 1))
 
 /obj/item/clothing/gloves/synth/proc/disable_anchor()
-	if(!active_ability == SIMI_ABILITY_ANCHOR)
+	if(!(active_ability == SIMI_ABILITY_ANCHOR))
 		return FALSE
 	wearer.status_flags |= CANPUSH
 	wearer.anchored = FALSE

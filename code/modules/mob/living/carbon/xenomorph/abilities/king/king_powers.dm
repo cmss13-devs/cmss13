@@ -42,7 +42,7 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
 	xeno.create_shriekwave()
 
-	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new /datum/effect_system/smoke_spread/king_doom
+	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new()
 	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 

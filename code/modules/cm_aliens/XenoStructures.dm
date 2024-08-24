@@ -933,7 +933,7 @@
 	if(chosen_candidate || rolling_candidates)
 		return
 
-	if(icon_state == "hatching" || icon_state == "hatched")
+	if(hatched)
 		return
 
 	var/groundside_humans = 0
@@ -991,7 +991,7 @@
 	if(playtime_restricted)
 		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)
 			return FALSE
-	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
+	if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)
@@ -1192,8 +1192,8 @@
 		pylon.protection_level = initial(pylon.protection_level)
 		pylon.update_icon()
 
-/obj/effect/alien/resin/king_cocoon/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.can_destroy_special() || hatched)
+/obj/effect/alien/resin/king_cocoon/attack_alien(mob/living/carbon/xenomorph/attacking_alien)
+	if(attacking_alien.can_destroy_special() || hatched)
 		return	..()
 
 	return XENO_NO_DELAY_ACTION

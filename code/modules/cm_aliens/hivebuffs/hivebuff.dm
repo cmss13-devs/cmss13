@@ -91,7 +91,6 @@
 	LAZYREMOVE(hive.used_hivebuffs, src)
 	LAZYREMOVE(hive.cooldown_hivebuffs, src)
 	hive = null
-	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 	return ..()
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.

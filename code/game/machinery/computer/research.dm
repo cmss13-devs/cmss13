@@ -20,6 +20,7 @@
 
 /obj/structure/machinery/computer/research/Destroy()
 	QDEL_NULL(photocopier)
+	GLOB.chemical_data.research_computers -= src
 	. = ..()
 
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)

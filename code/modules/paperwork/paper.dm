@@ -661,6 +661,11 @@
 	. = ..()
 	generate()
 
+/obj/item/paper/research_notes/Destroy()
+	data = null
+	hint = null
+	. = ..()
+
 /obj/item/paper/research_notes/proc/generate()
 	is_objective = TRUE
 	if(!note_type)

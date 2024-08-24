@@ -20605,6 +20605,14 @@
 	},
 /turf/open/floor/almayer/tcomms,
 /area/almayer/engineering/upper_engineering/starboard)
+"exE" = (
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_x = 24
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "exQ" = (
 /turf/open/floor/almayer/greencorner,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -32554,6 +32562,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -57676,6 +57688,14 @@
 "tQV" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south1)
+"tQZ" = (
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/silver/west,
+/area/almayer/hallways/upper/midship_hallway)
 "tRs" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
@@ -106184,7 +106204,7 @@ rpV
 cGO
 cGO
 cGO
-cGO
+tQZ
 cGO
 kaO
 cGO
@@ -108214,7 +108234,7 @@ ryn
 ryn
 mOi
 xdA
-qQS
+exE
 uUB
 aqU
 aHq

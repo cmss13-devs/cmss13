@@ -1,5 +1,5 @@
 #define GAMEMODE_DECORATOR(type, mode, list_edits) \
-/datum/decorator/gamemode/##type { \
+/datum/decorator/gamemode##type##mode { \
 	gamemode = mode; \
 	apply_type = type; \
 	edits = list_edits; \

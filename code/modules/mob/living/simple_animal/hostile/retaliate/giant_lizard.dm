@@ -227,8 +227,9 @@
 				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.", "flicks its tongue at [attacking_mob].")
 				if(prob(50))
 					playsound(loc, "giant_lizard_hiss", 25)
-	if(attacking_mob.a_intent == INTENT_DISARM && prob(75))
-		step_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
+	if(attacking_mob.a_intent == INTENT_DISARM && prob(25))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		KnockDown(0.4)
 
 //apply blood splatter when attacked by a sufficently damaging sharp weapon
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)

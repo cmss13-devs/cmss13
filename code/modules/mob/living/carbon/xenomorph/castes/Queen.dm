@@ -252,6 +252,8 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/queen
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_QUEEN
 	name = XENO_CASTE_QUEEN
 	desc = "A huge, looming alien creature. The biggest and the baddest."
@@ -370,28 +372,44 @@
 	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/queen/forsaken
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /mob/living/carbon/xenomorph/queen/forsaken/combat_ready
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/queen/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/queen/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/queen/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/queen/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready

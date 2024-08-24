@@ -4,6 +4,7 @@
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	layer = ITEM_LAYER
 	light_system = MOVABLE_LIGHT
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	/// this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/randpixel = 6
@@ -162,6 +163,9 @@
 	var/ground_offset_x = 0
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
+
+	/// Special storages this item prioritizes
+	var/list/preferred_storage
 
 /obj/item/Initialize(mapload, ...)
 	. = ..()

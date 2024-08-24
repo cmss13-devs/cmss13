@@ -10289,7 +10289,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/telecomm/lz1_biceps)
 "hfm" = (
-/obj/item/paper/research_notes/good/unique/tier_three,
+/obj/item/paper/research_notes/unique/tier_three,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "hfw" = (

@@ -39,8 +39,6 @@
 
 	GLOB.supply_controller.shuttle = shuttle
 
-
-
 //---ELEVATOR---//
 	// Elevator I
 	shuttle = new /datum/shuttle/ferry/elevator()

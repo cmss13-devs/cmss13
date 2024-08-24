@@ -104,6 +104,7 @@
 					P.trigger()
 				else
 					return
+
 			GLOB.chemical_data.complete_chemical(S)
 	else
 		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)

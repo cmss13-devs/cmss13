@@ -74,6 +74,10 @@
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
+						if(istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents))
+							break
+						if(istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume)
+							break
 						detected = TRUE
 
 		if(human_user && detected)

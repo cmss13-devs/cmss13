@@ -735,7 +735,7 @@
 			txt += "Dear valued Research department aboard [MAIN_SHIP_NAME], We believe [MAIN_SHIP_NAME] is above Weyland-Yutani Sponsored colony, thus we decided to share colony research findings. <BR>\n\n"
 			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[1]], Recent discovery made us believe the one of the missing pieces has [isNeutralProperty(hint[3]) ? "neutral" : "negative"] effects.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
-		if("ciph_hint_complete")
+		if("ciph_hint_complete") //todo, rewrite this, same for ^^^
 			icon_state = "paper_wy_words"
 			name = "Research Opportunity"
 			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"

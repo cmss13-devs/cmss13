@@ -9610,7 +9610,7 @@
 /area/almayer/squads/req)
 "bpR" = (
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
+/area/supply/station)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -9899,7 +9899,7 @@
 "bsK" = (
 /obj/effect/landmark/supply_elevator/uscm,
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
+/area/supply/station)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;

@@ -2,67 +2,42 @@
 	var/list/shuttles //maps shuttle tags to shuttle datums, so that they can be looked up.
 	var/list/process_shuttles //simple list of shuttles, for processing
 	var/list/locs_crash
-
 /datum/controller/shuttle_controller/process()
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
-
 		// Hacky bullshit that should only apply for shuttle/marine's for now.
 		if (shuttle.move_scheduled && shuttle.already_moving == 0)
 			shuttle.already_moving = 1
 			spawn(-1)
 				move_shuttle_to(shuttle.target_turf, 0, shuttle.shuttle_turfs, 0, shuttle.target_rotation, shuttle)
-
 		if (shuttle.process_state)
 			shuttle.process()
-
 /datum/controller/shuttle_controller/New()
 	shuttles = list()
 	process_shuttles = list()
 	locs_crash = list()
 
-	var/datum/shuttle/ferry/supply/uscm/shuttle
+	var/datum/shuttle/ferry/shuttle
 
 	// Supply shuttle
-	shuttle = new/datum/shuttle/ferry/supply/uscm()
+	shuttle = new/datum/shuttle/ferry/supply()
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	var/area/uscm_dock
-	var/area/uscm_station
-	for(uscm_dock in GLOB.all_areas)
-		if(uscm_dock.type == /area/supply/dock/uscm)
-			shuttle.area_offsite = uscm_dock
+	for(var/area/A in GLOB.all_areas)
+		if(A.type == /area/supply/dock)
+			shuttle.area_offsite = A
 			break
 
-	for(uscm_station in GLOB.all_areas)
-		if(uscm_station.type == /area/supply/station/uscm)
-			shuttle.area_station = uscm_station
+	for(var/area/A in GLOB.all_areas)
+		if(A.type == /area/supply/station)
+			shuttle.area_station = A
 			break
 
-
-	shuttles["Supply USCM"] = shuttle
+	shuttles["Supply"] = shuttle
 	process_shuttles += shuttle
+
 	GLOB.supply_controller.shuttle = shuttle
-
-	var/area/upp_dock
-	var/area/upp_station
-	var/datum/shuttle/ferry/supply/upp_shuttle = new/datum/shuttle/ferry/supply/upp()
-	for(upp_dock in GLOB.all_areas)
-		if(upp_dock.type == /area/supply/dock/upp)
-			upp_shuttle.area_offsite = upp_dock
-			break
-
-	for(upp_station in GLOB.all_areas)
-		if(upp_station.type == /area/supply/station/upp)
-			upp_shuttle.area_station = upp_station
-			break
-	if(upp_dock && upp_station)
-		shuttles["Supply UPP"] = upp_shuttle
-		process_shuttles += upp_shuttle
-		GLOB.supply_controller_upp.shuttle = upp_shuttle
-	else
-		qdel(shuttle)
 
 
 

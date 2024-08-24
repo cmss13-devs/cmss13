@@ -27,22 +27,8 @@
 	var/Elevator_y
 	var/Elevator_z
 	var/elevator_loc
-	var/datum/controller/supply/linked_supply
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
-
-/datum/shuttle/ferry/supply/uscm
-
-/datum/shuttle/ferry/supply/uscm/New()
-	. = ..()
-	linked_supply = GLOB.supply_controller
-
-
-/datum/shuttle/ferry/supply/upp
-	//redifine new ids here when mapping to the game
-/datum/shuttle/ferry/supply/upp/New()
-	. = ..()
-	linked_supply = GLOB.supply_controller_upp
 
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
@@ -51,7 +37,6 @@
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	linked_supply = GLOB.supply_controller
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80

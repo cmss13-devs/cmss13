@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "s&w revolver now has belt/pouch and inhand icons"
-  - imageadd: "resprite of mac15, m60, ppsh, s&w revolver, basira bolt action rifle"

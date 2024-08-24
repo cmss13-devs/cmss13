@@ -1,4 +1,0 @@
-author: "efzapa"
-delete-after: True
-changes:
-  - qol: "Changes the M44 heavy speed loader description to reflect it's actual use-case."

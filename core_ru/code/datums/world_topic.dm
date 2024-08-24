@@ -4,8 +4,8 @@
 	data["round_name"] = "Loading..."
 
 	data["round_id"] = "Loading..."
-	if(SSperf_logging.round?.id)
-		data["round_id"] = SSperf_logging.round.id
+	if(GLOB.round_id)
+		data["round_id"] = GLOB.round_id
 
 	data["map_name"] = "Loading..."
 	if(SSmapping.configs?[GROUND_MAP])

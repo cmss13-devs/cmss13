@@ -33,7 +33,7 @@
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return linked_supply.supply_elevator
+	return GLOB.supply_elevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
@@ -87,7 +87,7 @@
 				lower_railings()
 				return
 		else //at centcom
-			linked_supply.buy()
+			GLOB.supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
 		var/area/away_area = get_location_area(away_location)
@@ -147,7 +147,7 @@
 			recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()
-	linked_supply.sell() // fix this make it expandable
+	GLOB.supply_controller.sell() // fix this make it expandable
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()

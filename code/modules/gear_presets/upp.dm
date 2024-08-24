@@ -2039,7 +2039,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/officer/Podpolkovnik/get_antag_clothing_equipment()
+/datum/equipment_preset/upp/officer/podpolkovnik/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2150,7 +2150,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/officer/Polkovnik
+/datum/equipment_preset/upp/officer/polkovnik
 	name = "UPP General Mayjor"
 	assignment = JOB_UPP_BRIG_GENERAL
 	rank = JOB_UPP_BRIG_GENERAL
@@ -2158,7 +2158,7 @@
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/Polkovnik/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/officer/polkovnik/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
@@ -2200,7 +2200,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/officer/Polkovnik/get_antag_clothing_equipment()
+/datum/equipment_preset/upp/officer/polkovnik/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2250,7 +2250,7 @@
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
-/datum/equipment_preset/upp/officer/Polkovnik/get_antag_gear_equipment()
+/datum/equipment_preset/upp/officer/polkovnik/get_antag_gear_equipment()
 	return list(
 		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),

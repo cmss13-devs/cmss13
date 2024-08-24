@@ -177,5 +177,5 @@
 	var/genderswap = tgui_input_list(user, "Which Gender?", "Gender", list("Male", "Female"))
 	if(!genderswap)
 		return
-	user.gender = genderswap
+	user.gender = lowertext(genderswap)
 	qdel(src)

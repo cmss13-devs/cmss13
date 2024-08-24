@@ -53978,7 +53978,7 @@
 /area/almayer/shipboard/brig/processing)
 "slW" = (
 /obj/effect/landmark/late_join/aist,
-/obj/effect/landmark/start/aist,
+/obj/effect/landmark/start/ai_tech,
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "smi" = (

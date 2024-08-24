@@ -29,6 +29,10 @@
 /obj/effect/landmark/start/marine/medic,
 /turf/open/floor/almayer/plating,
 /area/event)
+"m" = (
+/obj/effect/landmark/start/ai_tech,
+/turf/open/floor/almayer/plating,
+/area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
 /turf/open/floor/almayer/plating,
@@ -247,7 +251,7 @@ a
 W
 F
 Q
-b
+m
 b
 b
 b

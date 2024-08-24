@@ -74,6 +74,8 @@ SUBSYSTEM_DEF(decorator)
 			return
 
 /datum/controller/subsystem/decorator/proc/handle_mode_specific()
+	SIGNAL_HANDLER
+
 	for(var/decorator_type in typesof(/datum/decorator/gamemode))
 		var/datum/decorator/gamemode/gamemode_decorator = new decorator_type()
 

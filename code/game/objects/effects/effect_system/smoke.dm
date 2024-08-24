@@ -716,10 +716,10 @@
 	time_to_live = 10
 	color = "#c5bc81"
 	anchored = TRUE
-	spread_speed = 6
+	spread_speed = 3
 	smokeranking = SMOKE_RANK_HIGH
 	opacity = FALSE
-	alpha = 50
+	alpha = 80
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/toxin_damage = 2
@@ -758,7 +758,7 @@
 
 	if(ishuman(affected_mob) && affected_mob.getToxLoss() >= 40)
 		var/mob/living/carbon/human/affected_human = affected_mob
-		if(!affected_human.lastpuke && prob(50))
+		if(!affected_human.lastpuke && prob(30))
 			affected_human.lastpuke = 1
 			to_chat(affected_human, SPAN_WARNING("You need to vomit!"))
 			affected_human.do_vomit()
@@ -767,12 +767,12 @@
 		to_chat(affected_mob, SPAN_XENODANGER("We feel lethargic as the miasma envelops our body!"))
 		affected_mob.Slow(1)
 	else
-		to_chat(affected_mob, SPAN_DANGER("Oh God, this smell makes you feel sick!"))
+		to_chat(affected_mob, SPAN_DANGER("You feel sick and lightheaded as you breath in the foul-smelling miasma!"))
 		affected_mob.apply_damage(toxin_damage, TOX)
 
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob) && !affected_mob.lastpuke)
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
-		if(prob(50))
+		if(prob(20))
 			affected_mob.emote("cough")
 
 	affected_mob.last_damage_data = cause_data

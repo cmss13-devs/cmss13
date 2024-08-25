@@ -34,7 +34,7 @@
 
 /obj/structure/cargo_container/ex_act(severity, direction)
 	. = ..()
-	update_health(severity*explosion_damage_multiplier)
+	update_health(severity * explosion_damage_multiplier)
 
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi

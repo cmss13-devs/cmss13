@@ -27,10 +27,6 @@
 
 /datum/autowiki/xeno_stats/proc/template_from_xeno(mob/living/carbon/xenomorph/xeno, datum/xeno_strain/strain)
 	var/name = xeno.caste_type
-	if(istype(xeno, /mob/living/carbon/xenomorph/queen))
-		var/mob/living/carbon/xenomorph/queen/queen = xeno
-		if(!queen.queen_aged)
-			name = queen.real_name
 	if(!isnull(strain))
 		strain.apply_strain(xeno)
 		name = "[strain.name] [name]"

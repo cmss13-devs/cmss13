@@ -49,7 +49,7 @@
 		return 0
 
 	if(!gibbed)
-		visible_message("<b>\The [src.name]</b> [deathmessage]")
+		visible_message("<b>[src.name]</b> [deathmessage]")
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause ([cause_data]) instead of datum")

@@ -40,14 +40,6 @@
 	var/status_bar = "READY"
 	var/ready = FALSE
 
-	var/template_filter = PROPERTY_TYPE_ALL
-	var/creation_template
-	var/creation_complexity = list(CHEM_CLASS_COMMON, CHEM_CLASS_UNCOMMON, CHEM_CLASS_RARE)
-	var/creation_name = ""
-	var/creation_cost = 0
-	var/min_creation_cost = 0
-	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
-
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -56,7 +48,6 @@
 	LAZYINITLIST(simulations)
 	LAZYINITLIST(property_costs)
 	LAZYINITLIST(recipe_targets)
-	LAZYINITLIST(creation_template)
 
 /obj/structure/machinery/chem_simulator/power_change()
 	..()
@@ -527,21 +518,6 @@
 	C.make_alike(target.data)
 	C.insert_property(reference_property.name, reference_property.level)
 	reference.data.lockdown_chem = TRUE
-
-/obj/structure/machinery/chem_simulator/proc/create(datum/reagent/generated/C)
-	C.chemclass = CHEM_CLASS_RARE
-	C.name = creation_name
-	if(LAZYLEN(C.name) < 2) //Don't know how this would even happen, but here's a safety
-		C.generate_name()
-	C.id = C.name
-	C.properties = list()
-	C.custom_metabolism = REAGENTS_METABOLISM
-	C.color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	C.burncolor = C.color
-	for(var/datum/chem_property/P in creation_template)
-		C.insert_property(P.name, P.level)
-	creation_name = "" //reset it
-	end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/end_simulation(datum/reagent/C)
 	//Set tier

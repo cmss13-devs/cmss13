@@ -17366,6 +17366,7 @@
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
 /obj/item/reagent_container/food/drinks/bottle/wine,
 /obj/item/reagent_container/food/drinks/bottle/pwine,
+/obj/item/storage/box/stompers,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "nPG" = (

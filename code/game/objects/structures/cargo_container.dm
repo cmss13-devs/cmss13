@@ -8,6 +8,34 @@
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
+	var/bullet_multiplier = 0.2
+	var/explosion_multiplier = 2
+
+/obj/structure/cargo_container/bullet_act(obj/projectile/P)
+	. = ..()
+	update_health(P.damage * bullet_multiplier)
+
+/obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/X)
+	. = ..()
+	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) )
+
+	//Frenzy bonus
+	if(X.frenzy_aura > 0)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+
+	X.animation_attack_on(src)
+
+	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+	SPAN_DANGER("You slash [src]!"))
+
+	update_health(damage)
+
+	return XENO_ATTACK_ACTION
+
+/obj/structure/cargo_container/ex_act(severity, direction)
+	. = ..()
+	update_health(severity*explosion_multiplier)
+
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"

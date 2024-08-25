@@ -396,6 +396,30 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	onboard = 1
 	density = TRUE
 
+/obj/structure/machinery/computer/shuttle_control/dropship3
+	name = "\improper 'Saipan' dropship console"
+	desc = "The remote controls for the 'Saipan' Dropship."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	exproof = 1
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship3/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_SAIPAN
+
+/obj/structure/machinery/computer/shuttle_control/dropship3/onboard
+	name = "\improper 'Saipan' flight controls"
+	desc = "The flight controls for the 'Saipan' Dropship."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	onboard = 1
+	density = TRUE
+
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony

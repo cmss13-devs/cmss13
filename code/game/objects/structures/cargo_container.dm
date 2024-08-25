@@ -25,7 +25,7 @@
 
 	xenomorph.animation_attack_on(src)
 
-	xenomorph.visible_message(SPAN_DANGER("\The [xenomorph] slashes [src]!"), \
+	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
 
 	update_health(damage)

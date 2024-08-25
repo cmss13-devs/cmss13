@@ -11,9 +11,9 @@
 	var/bullet_multiplier = 0.2
 	var/explosion_multiplier = 2
 
-/obj/structure/cargo_container/bullet_act(obj/projectile/P)
+/obj/structure/cargo_container/bullet_act(obj/projectile/projectile)
 	. = ..()
-	update_health(P.damage * bullet_multiplier)
+	update_health(projectile.damage * bullet_multiplier)
 
 /obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/X)
 	. = ..()

@@ -73,12 +73,11 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
-	/datum/admins/proc/announce, /*priority announce something to all clients.*/
-	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
+	/datum/admins/proc/announce, /*priority announce something to all clients.*/
 	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
 	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
 	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
@@ -94,8 +93,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
-	/client/proc/matrix_editor,
-	/datum/admins/proc/open_shuttlepanel
+	/client/proc/matrix_editor
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
@@ -144,6 +142,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,
+	/datum/admins/proc/open_shuttlepanel
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -155,6 +154,7 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
+	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
@@ -220,6 +220,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
+	/datum/admins/proc/open_shuttlepanel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(

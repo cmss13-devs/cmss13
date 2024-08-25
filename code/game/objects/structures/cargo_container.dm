@@ -15,17 +15,17 @@
 	. = ..()
 	update_health(projectile.damage * bullet_multiplier)
 
-/obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/xenomorph)
 	. = ..()
-	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) )
+	var/damage = ((floor((xenomorph.melee_damage_lower+xenomorph.melee_damage_upper)/2)) )
 
 	//Frenzy bonus
-	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+	if(xenomorph.frenzy_aura > 0)
+		damage += (xenomorph.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
-	X.animation_attack_on(src)
+	xenomorph.animation_attack_on(src)
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+	xenomorph.visible_message(SPAN_DANGER("\The [xenomorph] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
 
 	update_health(damage)

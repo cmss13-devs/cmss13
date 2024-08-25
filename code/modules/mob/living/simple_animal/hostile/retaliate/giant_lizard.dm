@@ -509,7 +509,7 @@
 		playsound(loc,'sound/items/eatfood.ogg', 25, 1)
 
 	for(var/mob/living/carbon/nearest_mob in view(7, src))
-		if(nearest_mob != food.last_dropped_by || (nearest_mob in faction_group))
+		if(nearest_mob != food.last_dropped_by || (nearest_mob.faction in faction_group))
 			continue
 		face_atom(nearest_mob)
 		manual_emote("stares curiously at [nearest_mob].")

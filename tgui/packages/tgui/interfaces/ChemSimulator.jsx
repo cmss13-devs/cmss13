@@ -433,7 +433,6 @@ export const ModeAdd = (props) => {
     setSelectedTargetProperty,
     setSelectedReferenceProperty,
     selectedReferenceProperty,
-    selectedTargetProperty,
   } = props;
   return (
     (target_data && reference_data && (
@@ -499,7 +498,7 @@ export const ModeAdd = (props) => {
                         property_code: property.code,
                       });
                       setSelectedReferenceProperty(property.code);
-                      setSelectedTargetProperty(0);
+                      setSelectedTargetProperty(null);
                     }}
                     selected={
                       selectedReferenceProperty === property.code ? true : false
@@ -516,15 +515,15 @@ export const ModeAdd = (props) => {
         </Flex.Item>
         <Flex.Item maxWidth={25} grow>
           {map(
-            target_data,
+            reference_data,
             (property) =>
-              property.code === selectedTargetProperty && (
+              property.code === selectedReferenceProperty && (
                 <Stack vertical>
                   <Stack.Item>
                     <Section title={property.name}>{property.desc}</Section>
                   </Stack.Item>
                   <Stack.Item bold backgroundColor={'#191b22'} p={1}>
-                    Price of the operatfion : {property.cost}
+                    Price of the operation : {property.cost}
                   </Stack.Item>
                 </Stack>
               ),

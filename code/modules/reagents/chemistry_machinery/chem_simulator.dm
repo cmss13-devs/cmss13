@@ -419,7 +419,7 @@
 				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
-		if(target_property)
+		if(target_property && mode != MODE_ADD)
 			if(property_costs[target_property.name] > GLOB.chemical_data.rsc_credits)
 				status_bar = "INSUFFICIENT FUNDS"
 				return FALSE
@@ -436,7 +436,7 @@
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
-		if(mode == MODE_RELATE && isnull(reference))
+		if((mode == MODE_RELATE || mode == MODE_ADD) && isnull(reference))
 			status_bar = "NO REFERENCE DATA DETECTED"
 			return FALSE
 		if(mode == MODE_RELATE || mode == MODE_ADD)
@@ -451,13 +451,13 @@
 					if(target.data.get_property(reference_property.name))
 						status_bar = "REFERENCE PROPERTY ALREADY IN TARGET"
 						return FALSE
-					if(target_property)
+					if(target_property || mode != MODE_ADD)
 						if(target_property.level != reference_property.level)
 							status_bar = "REFERENCE AND TARGET PROPERTY MUST BE OF EQUAL LEVELS"
 							return FALSE
-						if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
-							status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
-							return FALSE
+					if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
+						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
+						return FALSE
 				else
 					status_bar = "REFERENCE PROPERTY NOT SELECTED"
 					return FALSE

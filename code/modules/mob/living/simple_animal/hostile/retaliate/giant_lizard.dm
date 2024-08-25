@@ -299,6 +299,20 @@
 		bleed_ticks--
 		add_splatter_floor(loc, is_small_pool)
 
+	//done before the parent proccall because it would result in it moving before resting
+	if(stance == HOSTILE_STANCE_IDLE && !client)
+		stop_automated_movement = FALSE
+		//if there's a friend on the same tile as us, don't bother getting up (cute!)
+		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
+		if((friend?.faction in faction_group) && resting)
+			chance_to_rest = 0
+
+		if(prob(chance_to_rest))
+			set_resting(!resting)
+			chance_to_rest = 0
+
+		chance_to_rest += rand(1, 2)
+
 	. = ..()
 
 	if(client)
@@ -316,19 +330,6 @@
 	//no longer interested in food when we're in combat
 	if(stance > HOSTILE_STANCE_ALERT)
 		is_eating = FALSE
-
-	if(stance == HOSTILE_STANCE_IDLE)
-		stop_automated_movement = FALSE
-		//if there's a friend on the same tile as us, don't bother getting up (cute!)
-		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
-		if((friend?.faction in faction_group) && resting)
-			chance_to_rest = 0
-
-		if(prob(chance_to_rest))
-			set_resting(!resting)
-			chance_to_rest = 0
-
-		chance_to_rest += rand(1, 2)
 
 	//if we're resting and something catches our interest, get up
 	if(stance != HOSTILE_STANCE_IDLE && resting)

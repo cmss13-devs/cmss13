@@ -48,7 +48,7 @@
 	)
 
 	var/sanitized_name = url_encode(replacetext(name, " ", "_"))
-	return list(list(title = "Tempalte:AutoWiki/Content/XenoStats/[sanitized_name]", text = include_template("Autowiki/XenoStats", xeno_data)))
+	return list(list(title = "Template:Autowiki/Content/XenoStats/[sanitized_name]", text = include_template("Autowiki/XenoStats", xeno_data)))
 
 /datum/autowiki/xeno_stats/proc/humanize_speed(speed)
 	return speed * -1 + 1

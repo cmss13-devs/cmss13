@@ -718,7 +718,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	remote_control = !remote_control

@@ -275,9 +275,9 @@
 	edge = TRUE
 	force = 0
 	throwforce = 0
+	garbage = TRUE
 	var/damage_on_move = 3
 	var/count = 1
-	garbage = TRUE
 
 /obj/item/sharp/Initialize(mapload, dir)
 	. = ..()

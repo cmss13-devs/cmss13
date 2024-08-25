@@ -371,7 +371,7 @@
 			active = TRUE
 
 /obj/item/explosive/mine/sharp/prime(mob/user)
-	set waitfor = 0
+	set waitfor = FALSE
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
 	if(mine_level == 1)
@@ -419,7 +419,7 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 60 SECONDS, TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 90 SECONDS, TIMER_DELETE_ME)
 	for(var/mob/living/carbon/mob in range(1, src))
-		src.try_to_prime(mob)
+		try_to_prime(mob)
 
 /obj/item/explosive/mine/sharp/attack_alien()
 	if(disarmed)
@@ -433,11 +433,11 @@
 	icon_state = "sharp_incendiary_mine"
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
-	set waitfor = 0
+	set waitfor = FALSE
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
 	if(mine_level == 1)
-		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new()
 		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, loc)
 		smoke.start()

@@ -8,8 +8,8 @@
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
-	var/bullet_multiplier = 0.2
-	var/explosion_multiplier = 2
+	var/bullet_damage_multiplier = 0.2
+	var/explosion_damage_multiplier = 2
 
 /obj/structure/cargo_container/bullet_act(obj/projectile/projectile)
 	. = ..()

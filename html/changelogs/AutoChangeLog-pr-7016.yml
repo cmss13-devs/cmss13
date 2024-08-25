@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - bugfix: "Fixes not being able to see the preview in the character selection screen"

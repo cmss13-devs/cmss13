@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added visual flavour to use of psychic whisper or radiance. It now flickers in the chat window like the Yautja Translator."
-  - rscadd: "Added an ability button for the human version of psychic whisper, and replaces the existing verb for it in the ESP chem property."

@@ -252,8 +252,6 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/queen
-	AUTOWIKI_SKIP(TRUE)
-
 	caste_type = XENO_CASTE_QUEEN
 	name = XENO_CASTE_QUEEN
 	desc = "A huge, looming alien creature. The biggest and the baddest."

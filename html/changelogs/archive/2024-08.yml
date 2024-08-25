@@ -414,3 +414,33 @@
   - qol: Late joiners will no longer wake up in thin air in the main cryo area.
   zzzmike:
   - soundadd: revive notification has new sound (rather than the ahelp sound)
+2024-08-25:
+  Doubleumc:
+  - bugfix: fixed ERT boarding shuttle able to spawn and dock
+  - rscadd: Added toggle fullscreen hotkey, default F11
+  - qol: fullscreening hides the menu bar
+  - bugfix: toggling fullscreen preserves your non-fullscreened window options
+  Git-Nivrak:
+  - bugfix: Fixes not being able to see the preview in the character selection screen
+  Kitsunemitsu:
+  - balance: CMO now has access of squad comms.
+  Mister-moon1:
+  - balance: Keycard swipers no longer require two unique keycards to function.
+  - bugfix: fixed the description text for the card swipe to reduce confusion
+  TheGamerdk:
+  - rscadd: APCs are now highlighted when found via a Multitool/Security Access Tuner.
+  Unknownity:
+  - code_imp: The renegade hive is now more visually distinct from the normal hive
+      to decrease the chance of marines accidentally attacking them.
+  VileBeggar, SubjectD9341:
+  - rscadd: LV-624 now contains giant lizards. You can feed them with specific food
+      items in order to make them non-hostile to your faction.
+  - code_imp: Simple mobs can now process fire, though the functionality is turned
+      off by default.
+  realforest2001:
+  - rscadd: Added visual flavour to use of psychic whisper or radiance. It now flickers
+      in the chat window like the Yautja Translator.
+  - rscadd: Added an ability button for the human version of psychic whisper, and
+      replaces the existing verb for it in the ESP chem property.
+  zzzmike:
+  - bugfix: bursting+facehugger stats disregard NPCs

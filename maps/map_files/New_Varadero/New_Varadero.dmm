@@ -16842,6 +16842,12 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/medical)
+"nnO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "old_shack"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/north_research)
 "noj" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
@@ -29672,6 +29678,12 @@
 /obj/item/tool/extinguisher,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"xpi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = storage_building
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security)
 "xpk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/stack/tile/plasteel{
@@ -34690,7 +34702,7 @@ xCn
 srg
 qul
 qul
-qul
+nnO
 yks
 mbu
 qMY
@@ -54178,7 +54190,7 @@ kbQ
 kbQ
 sgk
 eyt
-wqb
+xpi
 xJZ
 viK
 xJZ

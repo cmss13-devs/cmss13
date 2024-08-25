@@ -483,7 +483,7 @@
 /area/fiorina/station/lowsec)
 "arn" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "research_prestine"
+	insert_tag = "researchprestine"
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/research_cells)
@@ -1151,7 +1151,7 @@
 "aQH" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/nightmare{
-	insert_tag = "yard_basketball"
+	insert_tag = "yardbasketball"
 	},
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/central_ring)
@@ -3191,7 +3191,7 @@
 /area/fiorina/tumor/ice_lab)
 "cvL" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "gamer_time"
+	insert_tag = "gamertime"
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -5860,7 +5860,7 @@
 	pixel_y = 21
 	},
 /obj/effect/landmark/nightmare{
-	insert_tag = "no_gear"
+	insert_tag = "nogear"
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)
@@ -8037,7 +8037,7 @@
 /area/fiorina/oob)
 "ggh" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "birthday_party"
+	insert_tag = "birthdayparty"
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
@@ -10207,7 +10207,7 @@
 /area/fiorina/lz/near_lzII)
 "hMK" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "pizza_time"
+	insert_tag = "pizzatime"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/power_ring)
@@ -12657,7 +12657,7 @@
 /area/fiorina/tumor/ice_lab)
 "jFO" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "pool_party"
+	insert_tag = "poolparty"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
@@ -17307,7 +17307,7 @@
 /area/fiorina/tumor/civres)
 "nie" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "repair_panelslz"
+	insert_tag = "repairpanelslz"
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
@@ -18488,7 +18488,7 @@
 /area/fiorina/station/flight_deck)
 "obI" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "engineer_office"
+	insert_tag = "engineeroffice"
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/civres)
@@ -19725,7 +19725,7 @@
 "oUP" = (
 /obj/structure/lattice,
 /obj/effect/landmark/nightmare{
-	insert_tag = "warden_officedecorated"
+	insert_tag = "wardenofficedecorated"
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -27778,7 +27778,7 @@
 /area/fiorina/lz/near_lzI)
 "vmj" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "pod_holder"
+	insert_tag = "podholder"
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1"
@@ -28960,7 +28960,7 @@
 /area/fiorina/tumor/ice_lab)
 "wgi" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "scav_shipholder"
+	insert_tag = "scavshipholder"
 	},
 /turf/open/space,
 /area/fiorina/oob)

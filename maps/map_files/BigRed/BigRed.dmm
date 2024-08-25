@@ -11996,6 +11996,9 @@
 "aVa" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
+/obj/item/storage/box/stompers{
+	pixel_y = 15
+	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aVb" = (
@@ -19764,7 +19767,7 @@
 /area/space)
 "cns" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "se_checkpoint"
+	insert_tag = "se-checkpoint"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/rock,

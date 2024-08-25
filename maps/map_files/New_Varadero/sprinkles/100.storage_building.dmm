@@ -1,0 +1,22 @@
+"a" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/template_noop)
+"d" = (/obj/structure/largecrate/random/mini,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"h" = (/turf/closed/wall/r_wall,/area/template_noop)
+"j" = (/obj/structure/largecrate/random/barrel/red,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"o" = (/obj/structure/largecrate/random/barrel/green,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"p" = (/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"q" = (/turf/closed/wall/rock/brown,/area/template_noop)
+"r" = (/obj/structure/largecrate/random/barrel,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"A" = (/obj/structure/largecrate,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"L" = (/obj/structure/machinery/door/airlock/almayer/generic,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"P" = (/obj/structure/closet/crate,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+"R" = (/obj/item/pizzabox/mystery,/turf/open/floor/plating/icefloor/asteroidplating,/area/template_noop)
+
+(1,1,1) = {"
+hhhhhhhhhhhh
+aAdpRAPjpAAa
+LpArAppppApL
+hpppppoAppph
+hhhhhhhhhhhh
+qqqqqqqqqqhh
+hhhhhhhhhhPp
+"}

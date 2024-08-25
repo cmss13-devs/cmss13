@@ -574,7 +574,7 @@
 
 //Immediately retaliate after being attacked.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Retaliate()
-	if(stat == DEAD || target_mob || on_fire)
+	if(stat == DEAD || get_dist(src, target_mob) < 6 || on_fire)
 		return
 	aggression_value = clamp(aggression_value + 5, 0, 15)
 

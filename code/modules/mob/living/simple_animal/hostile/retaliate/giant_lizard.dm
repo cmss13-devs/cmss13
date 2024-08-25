@@ -90,6 +90,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Initialize()
 	. = ..()
+	GLOB.giant_lizards_alive++
 	change_real_name(src, "[name] ([rand(1, 999)])")
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper)
@@ -194,8 +195,15 @@
 		RemoveSleepingIcon()
 	update_transform()
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/rejuvenate()
+	//if the mob was dead beforehand, it's now alive and therefore it's an extra lizard to the count
+	if(stat == DEAD)
+		GLOB.giant_lizards_alive++
+	return ..()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
 	playsound(loc, 'sound/effects/giant_lizard_death.ogg', 70)
+	GLOB.giant_lizards_alive--
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_hand(mob/living/carbon/human/attacking_mob)

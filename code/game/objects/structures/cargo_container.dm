@@ -17,7 +17,7 @@
 
 /obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/xenomorph)
 	. = ..()
-	var/damage = ((floor((xenomorph.melee_damage_lower+xenomorph.melee_damage_upper)/2)) )
+	var/damage = ((floor((xenomorph.melee_damage_lower + xenomorph.melee_damage_upper)/2)) )
 
 	//Frenzy bonus
 	if(xenomorph.frenzy_aura > 0)

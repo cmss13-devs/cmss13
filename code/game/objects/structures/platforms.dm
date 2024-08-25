@@ -11,11 +11,12 @@
 	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
-	breakable = FALSE
+	breakable = TRUE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
+	var/stat = 0
 
 /obj/structure/platform/stair_cut
 	icon_state = "platform_stair"//icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1)
@@ -62,6 +63,15 @@
 /obj/structure/platform/ex_act()
 	return
 
+/obj/structure/platform/update_icon()
+	if(stat & BROKEN) //if we require maintenance, then it is completely "_broken"
+		overlays += image(icon, "[initial(icon_state)]_broken")
+
+/obj/structure/platform/proc/broken()
+	stat |= BROKEN
+	density = FALSE
+	update_icon()
+
 /obj/structure/platform/attackby(obj/item/W, mob/user)
 	. = ..()
 	if(user.pulling)
@@ -79,6 +89,36 @@
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
 			user.pulling.forceMove(move_to_turf)
 
+/obj/structure/platform/attack_alien(mob/living/carbon/xenomorph/user)
+	if(stat & BROKEN || indestructible)
+		to_chat(user, SPAN_WARNING("Its already destroyed!"))
+		return XENO_NO_DELAY_ACTION
+
+	if(user.action_busy)
+		return XENO_NO_DELAY_ACTION
+	if(user.a_intent == INTENT_HELP)
+		user.set_interaction(src)
+		tgui_interact(user)
+		return XENO_ATTACK_ACTION
+	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
+	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
+	var/shove_time = 80
+	if(user.mob_size >= MOB_SIZE_BIG)
+		shove_time = 30
+	if(istype(user,/mob/living/carbon/xenomorph/crusher))
+		shove_time = 30
+
+	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
+
+	if(do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		user.animation_attack_on(src)
+		user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
+		SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		broken()
+	return XENO_NO_DELAY_ACTION
+
 /obj/structure/platform_decoration
 	name = "platform"
 	desc = "A square metal surface resting on four legs."
@@ -88,7 +128,7 @@
 	density = FALSE
 	throwpass = TRUE
 	layer = OBJ_LAYER
-	breakable = FALSE
+	breakable = TRUE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 

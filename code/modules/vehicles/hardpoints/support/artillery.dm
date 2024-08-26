@@ -12,7 +12,11 @@
 
 	var/is_active = 0
 	var/view_buff = 10 //This way you can VV for more or less fun
-	var/view_tile_offset = 7
+	var/view_tile_offset = 8
+
+	buff_multipliers = list(
+		"accuracy" = 2
+	)
 
 /obj/item/hardpoint/support/artillery_module/handle_fire(atom/target, mob/living/user, params)
 	if(!user.client)

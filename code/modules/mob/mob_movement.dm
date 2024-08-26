@@ -146,7 +146,9 @@
 
 	if(!(living_mob.mobility_flags & MOBILITY_MOVE))
 		return
-	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl || living_mob.body_position == LYING_DOWN && mob.pulledby)
+	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
+		return
+	if(living_mob.body_position == LYING_DOWN && mob.pulledby)
 		next_movement = world.time + 20 //Good Idea
 		to_chat(usr, SPAN_NOTICE("You can not crawl right now."))
 		return

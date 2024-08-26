@@ -9,6 +9,7 @@
 /obj/item/storage/firstaid
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -254,6 +255,7 @@
 /obj/item/storage/syringe_case
 	name = "syringe case"
 	desc = "It's a medical case for storing syringes and bottles."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -308,7 +310,7 @@
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
-
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "surgical_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8

@@ -281,3 +281,23 @@
 	desc = "The flag of the United Americas. Semper fi."
 	icon_state = "flag_ua_planted"
 	flag_type = /obj/item/flag/plantable/ua
+
+// UNION OF PROGRESSIVE PEOPLES FLAG //
+//////////////////////////
+
+/obj/item/flag/plantable/upp
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "The flag of the Union of Progressive Peoples. This one looks ready to be planted into the ground."
+	icon = 'icons/obj/structures/plantable_flag.dmi'
+	icon_state = "flag_upp"
+	flag_type = /obj/structure/flag/plantable/upp
+	faction = FACTION_UPP
+	play_warcry = TRUE
+	warcry_sound = 'sound/effects/flag_upp_warcry.ogg'
+	warcry_extra_sound = 'sound/effects/flag_upp_warcry_extra.ogg'
+
+/obj/structure/flag/plantable/upp
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "The flag of the Union of Progressive Peoples. Unity through Strength, Freedom through Unity."
+	icon_state = "flag_upp_planted"
+	flag_type = /obj/item/flag/plantable/upp

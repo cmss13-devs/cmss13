@@ -226,7 +226,7 @@
 
 	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
 	prefs.save_preferences()
-	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+	update_fullscreen()
 
 /client/verb/toggle_ambient_occlusion()
 	set name = "Toggle Ambient Occlusion"

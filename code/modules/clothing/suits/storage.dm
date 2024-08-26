@@ -10,6 +10,10 @@
 	pockets.max_storage_space = 4
 	flags_atom |= USES_HEARING
 
+/obj/item/clothing/suit/storage/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
+
 /obj/item/clothing/suit/storage/get_pockets()
 	if(pockets)
 		return pockets

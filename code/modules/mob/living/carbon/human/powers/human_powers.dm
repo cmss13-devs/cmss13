@@ -186,7 +186,7 @@
 	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
-		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[whisper]</i>"))
+		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[SPAN_PSYTALK(whisper)]</i>"))
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
 		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 			if(!ghost.client || isnewplayer(ghost))
@@ -195,7 +195,7 @@
 				var/rendered_message
 				var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
 				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
-				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return
 

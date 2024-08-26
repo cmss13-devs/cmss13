@@ -565,48 +565,28 @@ GLOBAL_LIST_EMPTY(vending_products)
 								to_chat(user, SPAN_WARNING("Only specialists can take specialist sets."))
 								vend_fail()
 								return FALSE
+
 							else if(!user.skills || user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
 								to_chat(user, SPAN_WARNING("You already have a specialization."))
 								vend_fail()
 								return FALSE
+
 							var/p_name = itemspec[1]
-							if(!GLOB.available_specialist_sets.Find(p_name))
+							if(!(p_name in GLOB.specialist_set_name_dict))
+								return
+
+							if(GLOB.specialist_set_name_dict[p_name].get_available_vendor_num() <= 0)
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
+
 							var/obj/item/card/id/card = human_user.get_idcard()
-							if(!card?.check_biometrics(user))
+							if(!istype(card) || !card.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
-							var/specialist_assignment
-							switch(p_name)
-								if("Scout Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-									specialist_assignment = "Scout"
-								if("Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Sniper"
-									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
-								if("Anti-materiel Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Heavy Sniper"
-									GLOB.available_specialist_sets -= "Sniper Set"
-								if("Demolitionist Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-									specialist_assignment = "Demo"
-								if("Heavy Grenadier Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-									specialist_assignment = "Grenadier"
-								if("Pyro Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-									specialist_assignment = "Pyro"
-								else
-									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
-									vend_fail()
-									return FALSE
-							card.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
-							GLOB.available_specialist_sets -= p_name
+
+							GLOB.specialist_set_name_dict[p_name].redeem_set(human_user)
+
 						else if(vendor_role.Find(JOB_SYNTH))
 							if(user.job != JOB_SYNTH)
 								to_chat(user, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
@@ -1236,6 +1216,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
 		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
 		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+		/obj/item/ammo_box/magazine/lever_action/xm88/empty = /obj/item/ammo_box/magazine/lever_action/xm88,
 
 		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
 		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
@@ -1366,7 +1347,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vend_delay)
 			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
+			flick("[initial(icon_state)]_vend", src)
 			if(vend_sound)
 				playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vend_delay)

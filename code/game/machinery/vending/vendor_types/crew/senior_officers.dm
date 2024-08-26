@@ -176,10 +176,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 		list("Quartermaster Uniform", 0, /obj/item/clothing/under/rank/qm_suit, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/qm, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/tech, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Quartermaster Jacket", 0, /obj/item/clothing/suit/storage/RO, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Quartermaster Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/RO, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("Headgear (CHOOSE 1)", 0, null, null, null),
 		list("Quartermaster Cap", 0, /obj/item/clothing/head/cmcap/req/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Quartermaster Beret", 0, /obj/item/clothing/head/beret/marine/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Requisitions Cap", 0, /obj/item/clothing/head/cmcap/req, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
@@ -283,7 +284,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Revival Mix)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

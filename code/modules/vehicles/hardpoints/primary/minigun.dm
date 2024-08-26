@@ -26,16 +26,16 @@
 		"8" = list(-77, 0)
 	)
 
-	scatter = 7
+	scatter = 18
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	fire_delay = 0.8 SECONDS //base fire rate, modified by stage_delay_mult
+	fire_delay = 0.7 SECONDS //base fire rate, modified by stage_delay_mult
 
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
 	/// Active firing time to reach max spin_stage.
-	var/spinup_time = 8 SECONDS
+	var/spinup_time = 10 SECONDS
 	/// Grace period before losing spin_stage.
 	var/spindown_grace_time = 2 SECONDS
 	COOLDOWN_DECLARE(spindown_grace_cooldown)
@@ -52,7 +52,7 @@
 
 /obj/item/hardpoint/primary/minigun/set_fire_delay(value)
 	fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult, scatter * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/set_fire_cooldown()
 	calculate_stage_delay_mult() //needs to check grace_cooldown before refreshed
@@ -79,5 +79,11 @@
 	var/new_stage_rate = stage_rate[floor(spin_stage)]
 
 	if(old_stage_rate != new_stage_rate)
+		scatter = initial(scatter) * (1/new_stage_rate)
 		stage_delay_mult = 1 / new_stage_rate
 		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
+
+/obj/item/hardpoint/primary/minigun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))

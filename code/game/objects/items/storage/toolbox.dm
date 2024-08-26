@@ -1,6 +1,7 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
+	icon = 'icons/obj/items/storage/toolbox.dmi'
 	icon_state = "red"
 	item_state = "toolbox_red"
 	pickup_sound = 'sound/handling/toolbox_pickup.ogg'

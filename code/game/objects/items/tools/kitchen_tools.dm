@@ -136,6 +136,42 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /*
+ * Plastic Pizza Cutter
+ */
+/obj/item/tool/kitchen/pizzacutter
+	name = "pizza cutter"
+	icon_state = "plasticpizzacutter"
+	desc = "A circular blade used for cutting pizzas. This one has a cheap plastic handle."
+	flags_atom = FPRINT|CONDUCT
+	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = TRUE
+	force = 10
+	w_class = SIZE_MEDIUM
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throwforce = 6
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	matter = list("metal" = 12000)
+
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/*
+ * Wood Pizza Cutter
+ */
+/obj/item/tool/kitchen/pizzacutter/wood
+	icon_state = "woodpizzacutter"
+	desc = "A circular blade used for cutting pizzas. This one has an authentic wooden handle."
+
+/*
+ * Holy Relic Pizza Cutter
+ */
+/obj/item/tool/kitchen/pizzacutter/holyrelic
+	name = "\improper PIZZA TIME"
+	icon_state = "holyrelicpizzacutter"
+	desc = "Before you is a holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
+	force = MELEE_FORCE_VERY_STRONG
+
+/*
  * Bucher's cleaver
  */
 /obj/item/tool/kitchen/knife/butcher

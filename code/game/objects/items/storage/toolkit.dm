@@ -1,6 +1,7 @@
 /obj/item/storage/toolkit
 	name = "engineer kit"
 	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat. With engineering training you can fit this in a backpack."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "toolkit"
 	item_state = "fulton"
 	throw_speed = SPEED_FAST
@@ -40,6 +41,16 @@
 		icon_state = "toolkit_empty"
 	else
 		icon_state = icon_full
+
+/obj/item/storage/toolkit/full/fill_preset_inventory()
+	new /obj/item/stack/cable_coil/random(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/clothing/glasses/welding(src)
+
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return

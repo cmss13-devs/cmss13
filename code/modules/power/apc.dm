@@ -118,6 +118,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/printout = FALSE
 	power_machine = TRUE
+	light_range = 1
+	light_power = 0.5
 
 	appearance_flags = TILE_BOUND
 
@@ -426,6 +428,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
+	
+	set_light(0)
 
 	if(update & 1) //Updating the icon state
 		if(update_state & UPSTATE_ALLGOOD)
@@ -457,12 +461,32 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
-			overlays += status_overlays_lock[locked + 1]
-			overlays += status_overlays_charging[charging + 1]
+			var/image/_lock = status_overlays_lock[locked + 1]
+			var/image/_charging = status_overlays_charging[charging + 1]
+			var/image/_equipment = status_overlays_equipment[equipment + 1]
+			var/image/_lighting = status_overlays_lighting[lighting + 1]
+			var/image/_environ = status_overlays_environ[environ + 1]
+
+			overlays += emissive_appearance(_lock.icon, _lock.icon_state)
+			overlays += mutable_appearance(_lock.icon, _lock.icon_state)
+			overlays += emissive_appearance(_charging.icon, _charging.icon_state)
+			overlays += mutable_appearance(_charging.icon, _charging.icon_state)
 			if(operating)
-				overlays += status_overlays_equipment[equipment + 1]
-				overlays += status_overlays_lighting[lighting + 1]
-				overlays += status_overlays_environ[environ + 1]
+				overlays += emissive_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += mutable_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += emissive_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
+				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
+			
+			switch(charging)
+				if(APC_NOT_CHARGING)
+					set_light_color(LIGHT_COLOR_RED)
+				if(APC_CHARGING)
+					set_light_color(LIGHT_COLOR_BLUE)
+				if(APC_FULLY_CHARGED)
+					set_light_color(LIGHT_COLOR_GREEN)
+			set_light(initial(light_range))
 
 /obj/structure/machinery/power/apc/proc/check_updates()
 

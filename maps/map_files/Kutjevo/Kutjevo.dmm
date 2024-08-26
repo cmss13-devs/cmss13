@@ -1287,6 +1287,11 @@
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/power)
+"bVI" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/item/storage/box/stompers,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
 "bVK" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 9;
@@ -37000,7 +37005,7 @@ wuL
 juz
 oUP
 vfr
-gew
+bVI
 wAo
 uDm
 sCG

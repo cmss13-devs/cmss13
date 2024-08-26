@@ -5,7 +5,7 @@
 /obj/item/device/portable_vendor
 	name = "\improper Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8

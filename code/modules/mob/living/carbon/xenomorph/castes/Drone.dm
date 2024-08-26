@@ -83,6 +83,7 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 /mob/living/carbon/xenomorph/drone/tutorial
+	AUTOWIKI_SKIP(TRUE)
 
 /mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)

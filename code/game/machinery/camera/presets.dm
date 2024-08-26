@@ -79,6 +79,9 @@
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
 
+/obj/structure/machinery/camera/autoname/almayer/dropship_three
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_RESEARCH)
+
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
 	network = list(CAMERA_NET_ALMAYER)

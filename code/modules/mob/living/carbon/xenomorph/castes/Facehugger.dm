@@ -18,6 +18,8 @@
 	minimap_icon = "facehugger"
 
 /mob/living/carbon/xenomorph/facehugger
+	AUTOWIKI_SKIP(TRUE)
+
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")

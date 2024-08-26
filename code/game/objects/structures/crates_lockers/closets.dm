@@ -5,6 +5,7 @@
 	icon_state = "closed"
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 	var/opened = 0

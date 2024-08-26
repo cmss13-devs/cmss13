@@ -341,7 +341,7 @@
 		if(burstcount)
 			step(larva_embryo, pick(GLOB.cardinals))
 
-		if(GLOB.round_statistics)
+		if(GLOB.round_statistics && (ishuman(victim)) && (SSticker.current_state == GAME_STATE_PLAYING) && (ROUND_TIME > 1 MINUTES))
 			GLOB.round_statistics.total_larva_burst++
 		GLOB.larva_burst_by_hive[hive] = (GLOB.larva_burst_by_hive[hive] || 0) + 1
 		burstcount++

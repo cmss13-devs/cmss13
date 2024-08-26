@@ -40,7 +40,7 @@
 			for(var/list in output)
 				all_page_names += autowiki.include_template(list["title"])
 
-			total_output += json_encode(list("title" = autowiki.page, "text" = all_page_names))
+			total_output += json_encode(list("title" = autowiki.page, "text" = all_page_names.Join(" "))) + "\n"
 			continue
 
 		var/output = autowiki.generate()

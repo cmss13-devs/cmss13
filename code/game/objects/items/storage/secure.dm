@@ -97,7 +97,7 @@
 			else if ((code == l_code) && (l_set == 1))
 				locked = 0
 				overlays = null
-				overlays += image('icons/obj/items/storage.dmi', icon_opened)
+				overlays += image('icons/obj/items/storage/briefcases.dmi', icon_opened)
 				code = null
 			else
 				code = "ERROR"
@@ -123,7 +123,7 @@
 // -----------------------------
 /obj/item/storage/secure/briefcase
 	name = "secure briefcase"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "secure"
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
@@ -155,8 +155,8 @@
 
 /obj/item/storage/secure/safe
 	name = "secure safe"
-	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "safe"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "wallsafe"
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"

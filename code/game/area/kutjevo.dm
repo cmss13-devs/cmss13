@@ -7,6 +7,7 @@
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "kutjevo"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = 308.7 //kelvin, 35c, 95f
 	minimap_color = MINIMAP_AREA_ENGI
 

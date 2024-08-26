@@ -381,6 +381,12 @@
 	icon_state = "provost_tml"
 	worn_state = "provost_tml"
 
+/obj/item/clothing/under/marine/mp/provost/chief
+	name = "\improper Provost Command Uniform"
+	desc = "The crisp uniform of a commanding member of the Provost Office."
+	icon_state = "provost_ci"
+	worn_state = "provost_ci"
+
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
@@ -840,7 +846,7 @@
 	worn_state = "liaison_formal"
 
 /obj/item/clothing/under/liaison_suit/suspenders
-	name = "liaison's attire"
+	name = "liaison's suspenders"
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
@@ -862,6 +868,12 @@
 	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
 	icon_state = "corporate_ivy"
 	worn_state = "corporate_ivy"
+
+/obj/item/clothing/under/liaison_suit/orange
+	name = "orange outfit"
+	desc = "A pair of black pants paired with a very Wey-Yu orange shirt. A popular look with those in the corporate world that conduct the majority of their business from Weyland Yutani offices."
+	icon_state = "corporate_orange"
+	worn_state = "corporate_orange"
 
 /obj/item/clothing/under/liaison_suit/corporate_formal
 	name = "white suit pants"

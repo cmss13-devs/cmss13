@@ -2386,6 +2386,33 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/type71/New()
 	..()
 
+/obj/item/attachable/stock/m60
+	name = "M60 stock"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "m60_stock"
+	attach_icon = "m60_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 15
+	size_mod = 0
+
+
+/obj/item/attachable/stock/ppsh
+	name = "PPSh-17b stock"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "ppsh17b_stock"
+	attach_icon = "ppsh17b_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 10
+	size_mod = 0
+
+
+
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"

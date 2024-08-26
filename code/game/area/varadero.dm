@@ -7,6 +7,7 @@
 	ambience_exterior = AMBIENCE_NV
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = TROPICAL_TEMP
 	minimap_color = MINIMAP_AREA_COLONY
 

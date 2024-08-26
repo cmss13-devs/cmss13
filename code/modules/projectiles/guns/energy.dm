@@ -117,6 +117,7 @@
 	icon_state = "rxfm5_eva"
 	item_state = "eva"
 	muzzle_flash = "muzzle_laser"
+	muzzle_flash_color = COLOR_LASER_RED
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	w_class = SIZE_MEDIUM
 	gun_category = GUN_CATEGORY_HANDGUN
@@ -174,6 +175,7 @@
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
 	muzzle_flash = "muzzle_laser"
+	muzzle_flash_color = COLOR_LASER_RED
 	gun_category = GUN_CATEGORY_SMG
 	flags_equip_slot = SLOT_WAIST
 	charge_cost = 200

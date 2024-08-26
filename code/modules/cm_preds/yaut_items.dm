@@ -916,6 +916,7 @@
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."
 	icon_state = "medicomp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
 	w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_DEFAULT

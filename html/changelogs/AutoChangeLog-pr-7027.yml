@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - admin: "All staff now have Admin Announcement and Toggle Remote Control verbs."
-  - admin: "Moved shuttle manipulator to minor event perms rather than admin."
-  - code_imp: "Changed rights check on Toggle Remote Control and Shuttle Manipulator to check for mod/minor event perms respectively, or debug."

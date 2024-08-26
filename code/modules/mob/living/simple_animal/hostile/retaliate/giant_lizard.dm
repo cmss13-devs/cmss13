@@ -45,6 +45,8 @@
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 
+	///How far the mob is willing to chase before losing its target.
+	var/max_attack_distance = 16
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
 	///Every type of structure that can get attacked in the DestroySurroundings() proc.
@@ -515,7 +517,7 @@
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
 		return
-	if(get_dist(src, target_mob) > 18)
+	if(get_dist(src, target_mob) > max_attack_distance)
 		LoseTarget()
 		return
 	if(in_range(src, target_mob)) //Attacking
@@ -669,7 +671,7 @@
 	stop_automated_movement = TRUE
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
-	if(get_dist(src, target_mob) <= 18)
+	if(get_dist(src, target_mob) <= max_attack_distance)
 		if(MoveTo(target_mob))
 			stance = HOSTILE_STANCE_ATTACKING
 

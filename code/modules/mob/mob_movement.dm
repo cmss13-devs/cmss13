@@ -148,9 +148,9 @@
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
 		return
-	if(living_mob.body_position == LYING_DOWN && mob.pulledby)
+	if(living_mob.body_position == LYING_DOWN && mob.pulledby && mob.pulledby.grab_level >= GRAB_AGGRESSIVE || living_mob.body_position == LYING_DOWN && isxeno(mob.pulledby))
 		next_movement = world.time + 20 //Good Idea
-		to_chat(usr, SPAN_NOTICE("You can not crawl right now."))
+		to_chat(src, SPAN_NOTICE("You can not crawl right now."))
 		return
 
 	//Check if you are being grabbed and if so attemps to break it

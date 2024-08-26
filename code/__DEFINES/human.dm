@@ -181,19 +181,25 @@
 //////////////////////////////////
 
 //Synthetic Defines
-#define SYNTH_COLONY "Third Generation Colonial Synthetic"
+#define SYNTH_COLONY "Third Generation Colonial Industrial Synthetic"
+#define SYNTH_COLONY_SUPPORT "Third Generation Colonial Support Synthetic"
 #define SYNTH_COLONY_GEN_TWO "Second Generation Colonial Synthetic"
+#define SYNTH_COLONY_GEN_TWO_SUPPORT "Second Generation Colonial Support Synthetic"
 #define SYNTH_COLONY_GEN_ONE "First Generation Colonial Synthetic"
+#define SYNTH_COLONY_GEN_ONE_SUPPORT "First Generation Colonial Support Synthetic"
 #define SYNTH_COMBAT "Combat Synthetic"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_GEN_ONE "First Generation Synthetic"
+#define SYNTH_GEN_ONE_INDUSTRIAL "First Generation Industrial Synthetic"
 #define SYNTH_GEN_TWO "Second Generation Synthetic"
+#define SYNTH_GEN_TWO_INDUSTRIAL "Second Generation Industrial Synthetic"
 #define SYNTH_GEN_THREE "Third Generation Synthetic"
+#define SYNTH_GEN_THREE_INDUSTRIAL "Third Generation Industrial Synthetic"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_TWO, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_SUPPORT, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_ONE_SUPPORT, SYNTH_COLONY_GEN_TWO, SYNTH_COLONY_GEN_TWO_SUPPORT, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_ONE_INDUSTRIAL, SYNTH_GEN_TWO, SYNTH_GEN_TWO_INDUSTRIAL, SYNTH_GEN_THREE, SYNTH_GEN_THREE_INDUSTRIAL)
 
 // Human religion defines
 #define RELIGION_PROTESTANT "Christianity (Protestant)"

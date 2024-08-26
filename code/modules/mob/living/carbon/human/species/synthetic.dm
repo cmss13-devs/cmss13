@@ -60,10 +60,10 @@
 	SIGNAL_HANDLER
 	return COMPONENT_NO_IMPREGNATE
 
-/datum/species/synthetic/gen_one
-	name = SYNTH_GEN_ONE
-	uses_skin_color = FALSE
-	special_body_types = FALSE
+/datum/species/synthetic/synth_colonial_support
+	name = SYNTH_COLONY_SUPPORT
+	uses_skin_color = TRUE
+	special_body_types = TRUE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
 
 	hair_color = "#000000"
@@ -74,6 +74,37 @@
 	name = SYNTH_GEN_TWO
 	uses_skin_color = FALSE //2nd gen uses generic human look
 	special_body_types = FALSE
+
+/datum/species/synthetic/colony_gen_two_support
+	name = SYNTH_COLONY_GEN_TWO_SUPPORT
+	uses_skin_color = TRUE
+	special_body_types = TRUE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+/datum/species/synthetic/gen_one
+	name = SYNTH_GEN_ONE
+	uses_skin_color = FALSE
+	special_body_types = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+/datum/species/synthetic/colonial_gen_one_support
+	name = SYNTH_COLONY_GEN_ONE_SUPPORT
+	uses_skin_color = FALSE
+	special_body_types = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
@@ -93,14 +124,39 @@
 	knock_down_reduction = 3.5
 	stun_reduction = 3.5
 
+/datum/species/synthetic/gen_three_industrial
+	name = SYNTH_GEN_THREE_INDUSTRIAL
+	uses_skin_color = TRUE
+	special_body_types = TRUE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
 	uses_skin_color = FALSE //2nd gen uses generic human look
 	special_body_types = FALSE
 
+/datum/species/synthetic/synthetic/gen_two_industrial
+	name = SYNTH_GEN_TWO
+	uses_skin_color = FALSE //2nd gen uses generic human look
+	special_body_types = FALSE
+
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE
+	uses_skin_color = FALSE
+	special_body_types = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+	//sets colonial_gen_one synth's hair to black
+	hair_color = "#000000"
+	//sets colonial_gen_one synth's icon to WJ sprite
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+/datum/species/synthetic/synthetic/gen_one_industrial
+	name = SYNTH_GEN_ONE
 	uses_skin_color = FALSE
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)

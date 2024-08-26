@@ -148,7 +148,7 @@
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
 		return
-	if(living_mob.body_position == LYING_DOWN && mob.pulledby && mob.pulledby.grab_level >= GRAB_AGGRESSIVE || living_mob.body_position == LYING_DOWN && isxeno(mob.pulledby))
+	if(living_mob.body_position == LYING_DOWN && (mob.pulledby?.grab_level >= GRAB_AGGRESSIVE || isxeno(mob.pulledby)))
 		next_movement = world.time + 20 //Good Idea
 		to_chat(src, SPAN_NOTICE("You can not crawl right now."))
 		return

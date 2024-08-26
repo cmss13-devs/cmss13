@@ -15,7 +15,7 @@
 	var/view_tile_offset = 8
 
 	buff_multipliers = list(
-		"accuracy" = 2
+		"accuracy" = 2,
 	)
 
 /obj/item/hardpoint/support/artillery_module/handle_fire(atom/target, mob/living/user, params)

@@ -444,3 +444,11 @@
       replaces the existing verb for it in the ESP chem property.
   zzzmike:
   - bugfix: bursting+facehugger stats disregard NPCs
+2024-08-26:
+  Zonespace27:
+  - bugfix: Specialists cryoing now refunds their sets correctly.
+  realforest2001:
+  - admin: All staff now have Admin Announcement and Toggle Remote Control verbs.
+  - admin: Moved shuttle manipulator to minor event perms rather than admin.
+  - code_imp: Changed rights check on Toggle Remote Control and Shuttle Manipulator
+      to check for mod/minor event perms respectively, or debug.

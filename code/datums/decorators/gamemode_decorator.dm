@@ -52,7 +52,7 @@
 GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/medium, /datum/game_mode/extended/faction_clash, list(
 	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
 	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
-	(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
 ))
 
 //**** Light Armor ****//

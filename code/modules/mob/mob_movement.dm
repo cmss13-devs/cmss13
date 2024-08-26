@@ -150,7 +150,7 @@
 		return
 	if(living_mob.body_position == LYING_DOWN && mob.pulledby)
 		next_movement = world.time + 20 //Good Idea
-		to_chat(usr, SPAN_NOTICE("You can not crawl right now."))
+		to_chat(src, SPAN_NOTICE("You can not crawl right now."))
 		return
 
 	//Check if you are being grabbed and if so attemps to break it

@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -37,7 +37,7 @@
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
 					event_source.confirmed = 1
-					event_source.event_confirmed_by = usr
+					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices

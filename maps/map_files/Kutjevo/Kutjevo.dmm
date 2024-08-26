@@ -1287,6 +1287,11 @@
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/power)
+"bVI" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/item/storage/box/stompers,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
 "bVK" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 9;
@@ -11208,9 +11213,8 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/oob)
 "qwT" = (
-/obj/item/tool/wirecutters/clippers,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/sand/layer0,
+/turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "qxc" = (
 /obj/structure/barricade/metal/wired{
@@ -33382,7 +33386,7 @@ lHs
 kDS
 xQM
 mbS
-nCM
+qwT
 bds
 qGA
 mbS
@@ -33884,7 +33888,7 @@ kDS
 alh
 mbS
 mbS
-qwT
+qGA
 xfW
 nCM
 mbS
@@ -37001,7 +37005,7 @@ wuL
 juz
 oUP
 vfr
-gew
+bVI
 wAo
 uDm
 sCG

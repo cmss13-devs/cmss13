@@ -74,6 +74,8 @@
 	var/retreat_attempts = 0
 	///Tied directly to retreat_attempts. If our retreat fail, then we will completely stop trying to retreat for the length of this cooldown.
 	COOLDOWN_DECLARE(retreat_cooldown)
+	///Can this mob be tamed?
+	var/tameable = TRUE
 	///The food object that the mob is trying to eat.
 	var/food_target
 	///A list of foods the mob is interested in eating.
@@ -140,7 +142,7 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/find_target_on_trait_loss()
 	is_retreating = FALSE
 	if(stance > HOSTILE_STANCE_ALERT)
-		FindTarget()
+		target_mob = FindTarget()
 		MoveToTarget()
 
 //procs for handling sleeping icons when resting
@@ -301,6 +303,12 @@
 	if(aggression_value > 0)
 		aggression_value--
 
+	//it is possible for the mob to keep a target_mob saved, yet be stuck in alert stance and never lose said target.
+	//this will cause it to be paralyzed and do nothing for the rest of its life, so this specific check is here to remedy that (hopefully)
+	if(!client && stance == HOSTILE_STANCE_ALERT && target_mob && !is_retreating && !on_fire)
+		target_mob = FindTarget()
+		MoveToTarget()
+
 	if(resting && stat != DEAD)
 		health += maxHealth * 0.05
 		if(prob(33) && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
@@ -365,7 +373,7 @@
 		stance = HOSTILE_STANCE_IDLE
 
 	//if we're hungry and we don't have already have our eyes on a snack, try eating food if possible
-	if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
+	if(tameable && !food_target && COOLDOWN_FINISHED(src, food_cooldown))
 		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
 			var/is_meat = FALSE
 			for(var/datum/reagent/nutriment/meat/meat in food.reagents.reagent_list)
@@ -442,6 +450,11 @@
 		playsound(loc, attack_type ? "alien_claw_flesh" : "alien_bite", 25, 1)
 		target.attack_animal(src)
 		animation_attack_on(target)
+
+		//xenos take extra damage
+		if(isxeno(target))
+			var/extra_damage = rand(melee_damage_lower, melee_damage_upper) * 0.33
+			target.apply_damage(extra_damage, BRUTE)
 
 		if(prob(33))
 			if(client && !is_retreating)
@@ -632,7 +645,7 @@
 	if(!return_to_combat)
 		//can't retreat? go back to fighting
 		if(retreat_attempts >= 2)
-			FindTarget()
+			target_mob = FindTarget()
 			MoveToTarget()
 			retreat_attempts = 0
 			//seems like it's a life or death situation. we will stop trying to run away.
@@ -648,7 +661,7 @@
 		retreat_attempts = 0
 		LoseTarget()
 	else
-		FindTarget()
+		target_mob = FindTarget()
 		MoveToTarget()
 
 //Replaced walk_to() with MoveTo().
@@ -677,6 +690,9 @@
 	for(var/times_to_attack = 3, times_to_attack > 0, times_to_attack--)
 		if(Adjacent(target))
 			var/damage = rand(melee_damage_lower, melee_damage_upper) * 0.4
+			//xenos take extra damage
+			if(isxeno(target))
+				damage *= 1.33
 			var/attack_type = pick(ATTACK_SLASH, ATTACK_BITE)
 			attacktext = attack_type ? "claws" : "bites"
 			flick_attack_overlay(target, attack_type ? "slash" : "animalbite")
@@ -692,6 +708,7 @@
 			face_atom(target)
 			sleep(0.5 SECONDS)
 			successful_attacks++
+
 	if(successful_attacks == 3 && !COOLDOWN_FINISHED(src, pounce_cooldown))
 		to_chat(src, SPAN_BOLDWARNING("The bloodlust invigorates you! You will be ready to pounce much sooner."))
 		COOLDOWN_START(src, pounce_cooldown, COOLDOWN_TIMELEFT(src, pounce_cooldown) * 0.5)

@@ -777,7 +777,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	name = "nettle"
 	seed_name = "nettle"
 	display_name = "nettles"
-	products = list(/obj/item/grown/nettle)
+	products = list(/obj/item/reagent_container/food/snacks/grown/nettle)
 	mutants = list("deathnettle")
 	packet_icon = "seed-nettle"
 	plant_icon = "nettle"
@@ -794,7 +794,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	name = "deathnettle"
 	seed_name = "death nettle"
 	display_name = "death nettles"
-	products = list(/obj/item/grown/nettle/death)
+	products = list(/obj/item/reagent_container/food/snacks/grown/nettle/death )
 	mutants = null
 	packet_icon = "seed-deathnettle"
 	plant_icon = "deathnettle"

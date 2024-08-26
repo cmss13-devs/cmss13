@@ -75,6 +75,61 @@
 	plantname = "poppies"
 	black_market_value = 25
 
+/obj/item/reagent_container/food/snacks/grown/nettle
+	plantname = "nettle"
+	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	name = "nettle"
+	icon_state = "nettle"
+	damtype = "fire"
+	force = 15
+	flags_atom = NO_FLAGS
+	throwforce = 1
+	w_class = SIZE_SMALL
+	throw_speed = SPEED_FAST
+	throw_range = 3
+
+	attack_verb = list("stung")
+	hitsound = ""
+
+	var/potency_divisior = 5
+
+/obj/item/reagent_container/food/snacks/grown/nettle/Initialize()
+	. = ..()
+	force = round((5+potency/potency_divisior), 1)
+
+/obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
+	. = ..()
+	if(istype(user) && !user.gloves)
+		to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
+		if(istype(user, /mob/living/carbon/human))
+			var/organ = ((user.hand ? "l_":"r_") + "arm")
+			var/obj/limb/affecting = user.get_limb(organ)
+			if(affecting.take_damage(0, force))
+				user.UpdateDamageIcon()
+		else
+			user.take_limb_damage(0, force)
+		return TRUE
+	return FALSE
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death
+	plantname = "deathnettle"
+	desc = "The glowing nettle incites <B>rage</B> in you just from looking at it!"
+	name = "deathnettle"
+	icon_state = "deathnettle"
+
+	potency_divisior = 2.5
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death/On_Consume(mob/living/carbon/human/user)
+	. = ..()
+	user.apply_internal_damage(potency/potency_divisior, user.internal_organs_by_name["liver"])
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death/pickup(mob/living/carbon/human/user)
+
+	if(..() && prob(50))
+		user.apply_effect(5, PARALYZE)
+		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle when you try picking it up!"))
+
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
 	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweeten'd not thy breath.\""

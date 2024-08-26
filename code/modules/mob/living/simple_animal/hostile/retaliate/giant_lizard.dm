@@ -367,13 +367,18 @@
 	//if we're hungry and we don't have already have our eyes on a snack, try eating food if possible
 	if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
 		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
-			if(!is_type_in_list(food, acceptable_foods))
-				continue
-			food_target = food
-			stance = HOSTILE_STANCE_ALERT
-			stop_automated_movement = TRUE
-			MoveTo(food_target)
-			break
+			var/is_meat = FALSE
+			for(var/datum/reagent/nutriment/meat/meat in food.reagents.reagent_list)
+				if(istype(meat))
+					is_meat = TRUE
+					break
+
+			if(is_type_in_list(food, acceptable_foods) || is_meat)
+				food_target = food
+				stance = HOSTILE_STANCE_ALERT
+				stop_automated_movement = TRUE
+				MoveTo(food_target)
+				break
 
 	//handling mobs that are invading our personal space
 	if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
@@ -749,7 +754,7 @@
 	playsound(loc, "giant_lizard_hiss", 25)
 	pounced_mob.KnockDown(0.5)
 	step_to(src, pounced_mob)
-	if(!client)
+	if(!client && !(pounced_mob.faction in faction_group))
 		ravagingattack(pounced_mob)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf(turf/turf_target)

@@ -63,9 +63,3 @@
 	. = ..()
 
 	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
-
-/obj/item/clothing/suit/storage/marine/smartgunner/Initialize(mapload)
-	. = ..()
-	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_internaldamage = CLOTHING_ARMOR_HIGH

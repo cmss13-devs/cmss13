@@ -24,13 +24,6 @@
 
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
 
-/obj/item/clothing/suit/storage/marine/ghillie/Initialize(mapload)
-	. = ..()
-	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_bomb = CLOTHING_ARMOR_MEDIUM
-		armor_internaldamage = CLOTHING_ARMOR_HIGH
-
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)

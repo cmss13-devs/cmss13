@@ -168,26 +168,19 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				C.credit_reward = 3
 				if(roll<=80)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
-				else if(roll<=55)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 			if(2)
 				C.credit_reward = 5
 				if(roll<=60)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
-				else if(roll<=35)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
-				else if(roll<=15)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"])
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
 				C.credit_reward = 7
 				C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
 		C.property_hint = pick(C.properties)
 		contract_chems[C.id] = C
-	to_world("Contract chemical batch generated, names are [contract_chems[1]], [contract_chems[2]], and [contract_chems[3]] ")
 	next_reroll = world.time + 2 MINUTES
 	if(picked_chem)
 		picked_chem = FALSE
@@ -202,7 +195,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	comp.visible_message("[icon2html(comp, viewers(comp))] \The <b>[comp]</b> speaks: [message]")
 	playsound(comp.loc, 'sound/machines/twobeep.ogg', 50, 1, 7)
 
-///Adds coontract chemicals to global lists and given proper ID, aswell as removed from contract chems since those are qdelled on reroll. only used when we are 100% certain its in user hands and not going to be removed
+///Makes the chemical "exist", given a proper ID, proper reaction, and added to global lists. Used when contract chemical is picked and it needs to be completed.
 /datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem) // we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
 	contract_chems[chem.id] = null
 	chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"

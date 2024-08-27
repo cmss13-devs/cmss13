@@ -169,13 +169,6 @@
 	begin_day = 1
 	end_day = 2
 
-/datum/holiday/employee
-	name = "Employee Appreciation Day"
-	begin_day = 7
-	begin_month = MARCH
-	greet_text = "On this day, we must remember to respect and value our dear employees and workers!"
-	holiday_faction = FACTION_WY
-
 
 /datum/holiday/spess
 	name = "Cosmonautics Day"

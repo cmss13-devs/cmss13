@@ -30,6 +30,8 @@
 	minimap_icon = "predalien"
 
 /mob/living/carbon/xenomorph/predalien
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
@@ -114,6 +116,8 @@ You must still listen to the queen.
 	. += "It has [predalienkills.kills] kills to its name!"
 
 /mob/living/carbon/xenomorph/predalien/tutorial
+	AUTOWIKI_SKIP(TRUE)
+
 	should_announce_spawn = FALSE
 
 /mob/living/carbon/xenomorph/predalien/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))

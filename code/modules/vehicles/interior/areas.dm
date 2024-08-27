@@ -32,6 +32,3 @@
 /area/interior/vehicle/arc
 	name = "\improper ARC interior"
 	icon_state = "arc"
-
-/area/interior/fancylocker
-	name = "closet interior"

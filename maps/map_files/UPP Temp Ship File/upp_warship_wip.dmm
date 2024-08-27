@@ -5045,6 +5045,14 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"ilf" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/weapon/gun/shotgun/type23,
+/obj/item/weapon/gun/shotgun/type23,
+/obj/item/weapon/gun/shotgun/type23,
+/obj/item/weapon/gun/shotgun/type23,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "ili" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -7842,6 +7850,10 @@
 /area/event/metal/dynamic)
 "nex" = (
 /obj/structure/closet/crate/supply,
+/obj/item/weapon/gun/smg/bizon,
+/obj/item/weapon/gun/smg/bizon,
+/obj/item/weapon/gun/smg/bizon,
+/obj/item/weapon/gun/smg/bizon,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "nfn" = (
@@ -9262,6 +9274,14 @@
 	name = "\improper Cell U-6"
 	},
 /turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
+"pqM" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "prl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -13185,6 +13205,10 @@
 /area/event/metal/dynamic)
 "wfL" = (
 /obj/structure/closet/crate/explosives,
+/obj/item/weapon/gun/pistol/t73,
+/obj/item/weapon/gun/pistol/t73,
+/obj/item/weapon/gun/pistol/t73,
+/obj/item/weapon/gun/pistol/t73,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "wfO" = (
@@ -34478,7 +34502,7 @@ oco
 xyL
 siL
 sYA
-mfo
+ilf
 sYA
 sYA
 ipV
@@ -34883,7 +34907,7 @@ xyL
 kxB
 sYA
 sYA
-mfo
+pqM
 dYw
 sYA
 cif

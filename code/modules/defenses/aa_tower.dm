@@ -183,8 +183,7 @@
 					stat &= ~DEFENSE_DAMAGED
 				update_health(-50)
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			else
-				return
+			return
 		return
 
 	return TRUE

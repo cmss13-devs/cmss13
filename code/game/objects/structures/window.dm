@@ -105,7 +105,7 @@
 		return
 	if(health <= 0)
 		if(user && istype(user))
-			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+			user.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 			if(is_mainship_level(z))
@@ -121,13 +121,22 @@
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
-		return 0
+		return FALSE
 
 	if(!not_damageable) //Impossible to destroy
 		health -= Proj.damage
+
 	..()
 	healthcheck(user = Proj.firer)
-	return 1
+
+	if(health > 0)
+		return TRUE
+
+	if(istype(Proj.firer, /mob))
+		var/mob/user = Proj.firer
+		user.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
+
+	return TRUE
 
 /obj/structure/window/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy
@@ -146,7 +155,7 @@
 		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
 	if(M)
-		M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		M.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
 		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
@@ -541,7 +550,7 @@
 		return
 
 	if(M)
-		M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		M.count_statistic_stat(STATISTICS_DESTRUCTION_WINDOWS)
 		SEND_SIGNAL(M, COMSIG_MOB_EXPLODE_W_FRAME, src)
 
 	if(health >= -3000)

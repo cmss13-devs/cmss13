@@ -36,6 +36,16 @@
 
 //=================================================
 
+#define MODE_NAME_EXTENDED			"Extended"
+#define MODE_NAME_EXTENDED_NO_SPAWN	"Extended - No Spawn"
+#define MODE_NAME_DISTRESS_SIGNAL	"Distress Signal"
+#define MODE_NAME_FACTION_CLASH		"Faction Clash"
+#define MODE_NAME_WISKEY_OUTPOST	"Whiskey Outpost"
+#define MODE_NAME_HUNTER_GAMES		"Hunter Games"
+#define MODE_NAME_HIVE_WARS			"Hive Wars"
+#define MODE_NAME_INFECTION			"Infection"
+
+//=================================================
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
@@ -307,6 +317,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_XENOMORPH_DELTA "Delta Xenomorph"
 
 #define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA)
+#define FACTION_LIST_ALL FACTION_LIST_HUMANOID + FACTION_LIST_XENOMORPH + FACTION_PREDALIEN
 
 // Faction allegiances within a certain faction.
 

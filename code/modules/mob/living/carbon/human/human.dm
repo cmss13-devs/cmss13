@@ -1694,7 +1694,6 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
-		new_player.mind.setup_human_stats()
 
 	target.sec_hud_set_ID()
 	target.hud_set_squad()

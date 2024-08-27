@@ -1,7 +1,7 @@
 //THIS IS A BLANK LABEL ONLY SO PEOPLE CAN SEE WHEN WE RUNNIN DIS BITCH.   Should probably write a real one one day.  Maybe.
 /datum/game_mode/infection
-	name = "Infection"
-	config_tag = "Infection"
+	name = MODE_NAME_INFECTION
+	config_tag = MODE_NAME_INFECTION
 	required_players = 0 //otherwise... no zambies
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.

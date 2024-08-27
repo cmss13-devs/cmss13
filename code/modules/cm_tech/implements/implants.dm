@@ -87,11 +87,25 @@
 
 /obj/item/device/implanter/attack_self(mob/user)
 	..()
+
+	if(!uses || !implant_type)
+		return ..()
+
+	if(LAZYISIN(user.implants, implant_type))
+		to_chat(user, SPAN_WARNING("You already have this implant!"))
+		return
+
+	if(length(user.implants) >= user.max_implants)
+		to_chat(user, SPAN_WARNING("You can't take any more implants!"))
+		return
+
 	implant(user, TRUE)
 
 /obj/item/device/implanter/proc/implant(mob/M, self_inject)
 	if(uses <= 0)
 		return
+
+	M.count_statistic_stat(STATISTICS_IMPLANTS_IMPLANTED)
 
 	if(LAZYISIN(M.implants, implant_type))
 		QDEL_NULL(M.implants[implant_type])
@@ -191,7 +205,9 @@
 		INVOKE_ASYNC(src, PROC_REF(revive), M)
 
 /obj/item/device/internal_implant/rejuv/proc/revive(mob/living/M)
+	M.track_revive()
 	M.heal_all_damage()
+	M.count_statistic_stat(STATISTICS_REVIVED_BY_IMPLANT)
 
 	for(var/i in stimulant_to_inject)
 		var/reagent_id = i

@@ -96,7 +96,7 @@
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
-			user.count_niche_stat(STATISTICS_NICHE_CORGI)
+			user.count_statistic_stat(STATISTICS_CORGI)
 
 /obj/item/reagent_container/food/snacks/meat/corgi
 	name = "Corgi meat"

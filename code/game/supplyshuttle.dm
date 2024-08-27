@@ -326,7 +326,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	COOLDOWN_START(src, next_fire, drop_cooldown)
 	if(ismob(usr))
 		var/mob/M = usr
-		M.count_niche_stat(STATISTICS_NICHE_CRATES)
+		M.count_statistic_stat(STATISTICS_CRATES)
 
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)

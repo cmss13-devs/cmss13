@@ -8,6 +8,8 @@
 
 	act = lowertext(act)
 	var/list/key_emotes = GLOB.emote_list[act]
+	if(act == "scream")
+		track_scream()
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)

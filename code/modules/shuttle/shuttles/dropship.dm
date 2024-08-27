@@ -36,10 +36,10 @@
 		return
 	for(var/area/internal_area in shuttle_areas)
 		for(var/turf/internal_turf in internal_area)
-			for(var/mob/M in internal_turf)
-				to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
-				to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
-				shake_camera(M, 60, 2)
+			for(var/mob/shuttle_turf in internal_turf)
+				to_chat(shuttle_turf, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
+				to_chat(shuttle_turf, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+				shake_camera(shuttle_turf, 60, 2)
 		playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
 	//Removing some time as penalty
 	modTimer(DROPSIP_TIME_REDUCTION_IF_IN_AA_ZONE)
@@ -49,9 +49,9 @@
 		return
 	for(var/area/internal_area in shuttle_areas)
 		for(var/turf/internal_turf in internal_area)
-			for(var/mob/M in internal_turf)
-				to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
-				shake_camera(M, 60, 2)
+			for(var/mob/shuttle_turf in internal_turf)
+				to_chat(shuttle_turf, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
+				shake_camera(shuttle_turf, 60, 2)
 		playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
 
 

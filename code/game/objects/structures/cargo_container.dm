@@ -8,8 +8,10 @@
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
-	var/bullet_damage_multiplier = 0.2	///multiples any demage taken from bullets
-	var/explosion_damage_multiplier = 2	///multiples any demage taken from explosion
+	///multiples any demage taken from bullets
+	var/bullet_damage_multiplier = 0.2
+	///multiples any demage taken from explosion
+	var/explosion_damage_multiplier = 2
 
 /obj/structure/cargo_container/bullet_act(obj/projectile/projectile)
 	. = ..()

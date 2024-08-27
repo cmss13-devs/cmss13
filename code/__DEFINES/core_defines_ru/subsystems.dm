@@ -1,1 +1,0 @@
-#define SS_INIT_ENTITYMANAGER 87

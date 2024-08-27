@@ -519,6 +519,10 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 30;
+	pixel_x = -4
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -2342,6 +2346,9 @@
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "ajn" = (
@@ -12240,6 +12247,9 @@
 	dir = 8
 	},
 /obj/structure/surface/table,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/outside/admin_building)
 "aVY" = (
@@ -18172,6 +18182,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -20440,6 +20453,12 @@
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"dCh" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
 "dCA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/folded_metal_chair,
@@ -20923,6 +20942,15 @@
 /obj/structure/window,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
+"etV" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/office_complex)
 "eup" = (
 /obj/structure/bed/chair,
 /obj/item/trash/cigbutt,
@@ -21306,6 +21334,9 @@
 "fhy" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
 	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
@@ -24637,6 +24668,13 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"lMl" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28;
+	pixel_x = 9
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "lMw" = (
 /obj/structure/machinery/sensortower{
 	pixel_x = -9
@@ -28149,6 +28187,15 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"soN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/storage)
 "sqc" = (
 /obj/effect/decal/cleanable/blood{
 	base_icon = 'icons/obj/items/weapons/grenade.dmi';
@@ -48624,7 +48671,7 @@ aXg
 aOM
 aUb
 aof
-aZC
+dCh
 aZU
 aZC
 aZU
@@ -53474,7 +53521,7 @@ aBy
 bzp
 bzA
 aBE
-byM
+soN
 ycP
 rTq
 aBE
@@ -58618,7 +58665,7 @@ aZF
 beL
 bfo
 asv
-bgh
+etV
 bgu
 bgh
 bgf
@@ -70065,7 +70112,7 @@ anS
 apv
 adZ
 adZ
-auY
+lMl
 asr
 aqc
 amX

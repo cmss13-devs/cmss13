@@ -14446,6 +14446,10 @@
 /area/strata/ag/interior/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/administration)
 "beU" = (
@@ -24661,6 +24665,13 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/hotsprings)
+"dQI" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "dSA" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -25102,6 +25113,10 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/guestpass,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/landingzone_checkpoint)
 "eNF" = (
@@ -25521,6 +25536,13 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/outpost/med)
+"fCg" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/dorms/flight_control)
 "fCo" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -28020,6 +28042,16 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
+"kHz" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "kHV" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -28307,6 +28339,14 @@
 /obj/structure/surface/rack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/engi/drome)
+"lhT" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 3
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/deep/structures/res)
 "lij" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -37937,7 +37977,7 @@ aac
 aac
 kSU
 kSU
-coO
+fCg
 cjb
 cjb
 coP
@@ -55337,7 +55377,7 @@ blb
 blb
 boV
 blb
-bTF
+dQI
 byF
 bBX
 ryK
@@ -59599,7 +59639,7 @@ bXv
 gAm
 bWM
 ijo
-isj
+kHz
 gAm
 gAm
 gAm
@@ -77318,7 +77358,7 @@ aad
 aad
 aad
 uux
-adT
+lhT
 aei
 aeB
 adz

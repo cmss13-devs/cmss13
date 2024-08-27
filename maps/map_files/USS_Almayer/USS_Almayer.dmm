@@ -5501,6 +5501,9 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer/blue/southeast,
 /area/almayer/command/cichallway)
 "aJq" = (
@@ -15464,6 +15467,10 @@
 /area/almayer/shipboard/brig/cryo)
 "cuq" = (
 /obj/structure/machinery/computer/arcade,
+/obj/structure/machinery/alarm/almayer{
+	pixel_x = 32;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "cus" = (
@@ -26985,6 +26992,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/hydroponics)
 "hnt" = (
@@ -27763,8 +27773,9 @@
 /turf/open/floor/almayer/greencorner/east,
 /area/almayer/hallways/lower/port_fore_hallway)
 "hEl" = (
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30;
+	pixel_x = -9
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -29167,6 +29178,10 @@
 /obj/item/tool/pen/blue/clicky{
 	pixel_x = -6;
 	pixel_y = -3
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 31;
+	pixel_x = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -62482,6 +62497,9 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper)
 "vQf" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 29
+	},
 /turf/open/floor/almayer/silvercorner/north,
 /area/almayer/command/securestorage)
 "vQq" = (
@@ -63424,6 +63442,9 @@
 	},
 /obj/item/storage/donut_box{
 	pixel_y = 8
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 26
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
@@ -68182,6 +68203,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/pizzabox/margherita{
 	pixel_y = 8
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 29
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)

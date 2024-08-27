@@ -225,18 +225,18 @@
 	set_light(luminosity_strength)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 
-	for(var/turf/turf_in_close_range as anything in RANGE_TURFS(covered_range, loc))
-		LAZYADD(turf_in_close_range.linked_aa, src)
-		linked_turfs_covered += turf_in_close_range
-	for(var/turf/turf_in_big_range as anything in RANGE_TURFS(restricted_range, loc))
-		linked_turfs_restricted += turf_in_big_range
+	for(var/turf/turf_in_big_range as anything in RANGE_TURFS(covered_range, loc))
+		LAZYADD(turf_in_big_range.linked_aa, src)
+		linked_turfs_covered += turf_in_big_range
+	for(var/turf/turf_in_close_range as anything in RANGE_TURFS(restricted_range, loc))
+		linked_turfs_restricted += turf_in_close_range
 
 /obj/structure/machinery/defenses/planetary_anti_air/proc/remove_protected_area()
-	for(var/turf/turf_in_close_range as anything in RANGE_TURFS(covered_range, loc))
-		LAZYREMOVE(turf_in_close_range.linked_aa, src)
-		linked_turfs_covered -= turf_in_close_range
-	for(var/turf/turf_in_big_range as anything in RANGE_TURFS(restricted_range, loc))
-		linked_turfs_restricted -= turf_in_big_range
+	for(var/turf/turf_in_big_range as anything in RANGE_TURFS(covered_range, loc))
+		LAZYREMOVE(turf_in_big_range.linked_aa, src)
+		linked_turfs_covered -= turf_in_big_range
+	for(var/turf/turf_in_close_range as anything in RANGE_TURFS(restricted_range, loc))
+		linked_turfs_restricted -= turf_in_close_range
 
 /obj/structure/machinery/defenses/planetary_anti_air/power_off_action(mob/user)
 	set_light(0)

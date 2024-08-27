@@ -108,7 +108,6 @@ export const XenomorphExtractor = () => {
                                 onClick={() =>
                                   act('produce', {
                                     ref: upgrades.ref,
-                                    vari: upgrades.vari,
                                   })
                                 }
                               >

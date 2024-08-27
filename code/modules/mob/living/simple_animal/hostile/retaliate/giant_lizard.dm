@@ -101,11 +101,11 @@
 	icon = 'icons/mob/mob_64.dmi'
 
 //Due to being constrained to 64x64, we need to change the icon's offsets manually whenever the mob's dir is changed.
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir, rest_update = FALSE)
+//apparantly movement sets both olddir and newdir to the same value, in comparison to manually switching facing which returns the right values.
+//i don't know if there's any worthwhile performance gain in having a second signal exclusively for movement so we can check if the olddir and newdir are same.
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
 
-	if(newdir == olddir && !rest_update)
-		return
 	if(!newdir)
 		newdir = dir
 
@@ -134,10 +134,15 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/face_dir(ndir, specific_dir)
 	//there is no north or south facing rest sprite, so updating the direction would mess up tongue flicking.
-	if(resting && ndir == NORTH || ndir == SOUTH)
+	if(resting && (ndir == NORTH || ndir == SOUTH))
 		return
 	return ..()
 
+//we also have to check for the keybind apparantly...
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/keybind_face_direction(direction)
+	if(resting && (direction == NORTH || direction == SOUTH))
+		return
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Initialize()
 	. = ..()
@@ -234,7 +239,7 @@
 	else
 		icon_state = icon_living
 	update_wounds()
-	change_tongue_offset(rest_update = TRUE)
+	change_tongue_offset()
 	return ..()
 
 
@@ -934,7 +939,7 @@
 
 /datum/emote/living/giant_lizard/flicktongue
 	key = "flicktongue"
-	message = "flicks its tongue."
+	message = null
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/giant_lizard/flicktongue/run_emote(mob/living/simple_animal/hostile/retaliate/giant_lizard/user, params, type_override, intentional)

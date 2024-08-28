@@ -61,7 +61,7 @@
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 */
 		//RUCM START
-		REDIS_PUBLISH("byond.round", "type" = "round", "state" = "predator")
+		REDIS_PUBLISH("byond.round", "type" = "predator", "state" = "predator")
 		//RUCM END
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR

@@ -191,13 +191,6 @@
 			return 0
 	return 1
 
-/obj/item/clothing/suit/proc/get_collar()
-	var/icon/C = new('icons/mob/humans/onmob/collar.dmi')
-	if(icon_state in C.IconStates())
-		var/image/I = image(C, icon_state)
-		I.color = color
-		return I
-
 /////////////////////////////////////////////////////////
 //Gloves
 /obj/item/clothing/gloves

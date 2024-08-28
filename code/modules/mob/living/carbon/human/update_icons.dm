@@ -558,8 +558,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		update_inv_shoes()
 		update_inv_gloves()
 
-	update_collar()
-
 
 
 /mob/living/carbon/human/update_inv_pockets()
@@ -676,20 +674,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
-
-
-//Adds a collar overlay above the helmet layer if the suit has one
-// Suit needs an identically named sprite in icons/mob/collar.dmi
-/mob/living/carbon/human/proc/update_collar()
-	remove_overlay(COLLAR_LAYER)
-	if(!istype(wear_suit,/obj/item/clothing/suit))
-		return
-	var/obj/item/clothing/suit/S = wear_suit
-	var/image/I = S.get_collar()
-	if(I)
-		I.layer = -COLLAR_LAYER
-		overlays_standing[COLLAR_LAYER] = I
-		apply_overlay(COLLAR_LAYER)
 
 /mob/living/carbon/human/update_burst()
 	remove_overlay(BURST_LAYER)

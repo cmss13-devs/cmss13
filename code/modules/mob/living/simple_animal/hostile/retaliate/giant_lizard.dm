@@ -54,7 +54,7 @@
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
 	///Every type of structure that can get attacked in the DestroySurroundings() proc.
-	var/list/destruction_targets = list(/obj/structure/window, /obj/structure/closet, /obj/structure/surface/table, /obj/structure/grille, /obj/structure/barricade, /obj/structure/machinery/door, /obj/structure/largecrate)
+	var/list/destruction_targets = list(/obj/structure/mineral_door/resin, /obj/structure/window, /obj/structure/closet, /obj/structure/surface/table, /obj/structure/grille, /obj/structure/barricade, /obj/structure/machinery/door, /obj/structure/largecrate)
 
 	///Emotes to play when being pet by a friend.
 	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "rolls on the ground.")
@@ -580,10 +580,17 @@
 		if(structure.unslashable)
 			return
 
+		var/is_xeno_structure = FALSE
+		if(structure.flags_obj & OBJ_ORGANIC)
+			is_xeno_structure = TRUE
+
 		animation_attack_on(structure)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		playsound(loc, is_xeno_structure ? "alien_resin_break" : 'sound/effects/metalhit.ogg', 25)
 		visible_message(SPAN_DANGER("[src] slashes [structure]!"), SPAN_DANGER("You slash [structure]!"), null, 5, CHAT_TYPE_COMBAT_ACTION)
-		structure.update_health(rand(melee_damage_lower, melee_damage_upper) * 2)
+		var/damage_multiplier = 2
+		if(is_xeno_structure)
+			damage_multiplier = !client ? 15 : 5 //ai mobs need that extra oomph else they won't be able to break anything before they die
+		structure.update_health(rand(melee_damage_lower, melee_damage_upper) * damage_multiplier)
 		return
 
 	//if it's not an object or a structure, just swipe at it

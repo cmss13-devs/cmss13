@@ -18733,7 +18733,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18743,7 +18743,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18753,7 +18753,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18763,7 +18763,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";

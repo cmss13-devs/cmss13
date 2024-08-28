@@ -149,6 +149,7 @@
 		return FALSE
 	. = ..()
 	handle_cloaking()
+
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."

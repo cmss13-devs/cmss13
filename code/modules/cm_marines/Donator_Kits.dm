@@ -1,6 +1,7 @@
 /obj/item/storage/box/donator_kit
 	name = "donated box"
 	desc = "A cardboard box stamped with a dollar sign and filled with trinkets. Appears to have been donated by a wealthy sponsor."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "donator_kit"
 	item_state = "giftbag"
 	var/list/donor_gear = list()
@@ -436,9 +437,9 @@
 	donor_key = "sasoperative"
 	kit_variant = "Legion"
 	donor_gear = list(
-		/obj/item/clothing/suit/storage/marine/fluff/sas_legion,
-		/obj/item/clothing/under/marine/fluff/sas_legion,
-		/obj/item/clothing/mask/fluff/sas_legion,
+		/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion,
+		/obj/item/clothing/head/helmet/marine/fluff/sas_legion,
+		/obj/item/storage/backpack/marine/satchel/fluff/sas_legion,
 	)
 
 /obj/item/storage/box/donator_kit/seloc_aferah

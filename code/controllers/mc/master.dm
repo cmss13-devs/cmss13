@@ -263,6 +263,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
+	//RUCM START
+	REDIS_PUBLISH("byond.round", "type" = "round", "state" = "start")
+	//RUCM END
 
 
 	// Set world options.

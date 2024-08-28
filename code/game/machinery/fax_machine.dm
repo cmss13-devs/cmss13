@@ -208,6 +208,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 			copy_fax_paper()
 
+			//RUCM START
+			REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "fax", "sender" = usr.client.ckey, "sender_name" = usr, "fax_name" = original_fax.name, "departament" = "[network], [target_department]", "message" = original_fax.info, "admins" = length(GLOB.admins))
+			//RUCM END
+
 			outgoing_fax_message(ui.user)
 
 			COOLDOWN_START(src, send_cooldown, fax_cooldown)

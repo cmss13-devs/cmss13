@@ -2,7 +2,7 @@
 /obj/item/clothing/accessory/health
 	name = "armor plate"
 	desc = "A metal trauma plate, able to absorb some blows."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/ceramic_plates.dmi'
 	icon_state = "regular2_100"
 	var/base_icon_state = "regular2"
 
@@ -372,7 +372,7 @@
 	action_icon_state = "plate_research"
 	button.name = name
 	button.overlays.Cut()
-	button.overlays += image('icons/obj/items/items.dmi', button, action_icon_state)
+	button.overlays += image('icons/obj/items/devices.dmi', button, action_icon_state)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/ui_action_click(mob/owner, obj/item/holder)
 	if(used)

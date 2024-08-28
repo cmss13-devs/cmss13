@@ -11,7 +11,7 @@
  */
 
 /obj/item/storage/donut_box
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "\improper Yum! donuts"
 	desc = "A box of mouth-watering \"<i>Yum!</i>\" brand donuts."

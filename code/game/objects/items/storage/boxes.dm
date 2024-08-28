@@ -313,7 +313,7 @@
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
 
 /obj/item/storage/box/monkeycubes/fill_preset_inventory()
@@ -485,7 +485,7 @@
 /obj/item/storage/box/matches
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_state = "matchbox"
 	item_state = "zippo"
 	w_class = SIZE_TINY

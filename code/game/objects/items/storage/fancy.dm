@@ -17,7 +17,7 @@
  */
 
 /obj/item/storage/fancy
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
@@ -45,7 +45,7 @@
 // EGG BOX
 
 /obj/item/storage/fancy/egg_box
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/eggs.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg carton"
@@ -83,7 +83,7 @@
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
 	desc = "A box of every flavor of crayon."
-	icon = 'icons/obj/items/crayons.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonbox"
 	w_class = SIZE_SMALL
 	storage_slots = 6
@@ -101,9 +101,9 @@
 
 /obj/item/storage/fancy/crayons/update_icon()
 	overlays = list() //resets list
-	overlays += image('icons/obj/items/crayons.dmi',"crayonbox")
+	overlays += image('icons/obj/items/paint.dmi',"crayonbox")
 	for(var/obj/item/toy/crayon/crayon in contents)
-		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
+		overlays += image('icons/obj/items/paint.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/toy/crayon))
@@ -119,7 +119,7 @@
 // CIGARETTES BOX
 
 /obj/item/storage/fancy/cigarettes
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/packets/normal.dmi'
 	icon_state = "cigpacket"
 	name = "cigarette packet"
 	desc = "A packet of cigarettes with a built-in lighter compartment."
@@ -266,7 +266,7 @@
 	desc = "A case for holding your cigars when you are not smoking them."
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST

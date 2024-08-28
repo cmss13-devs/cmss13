@@ -121,7 +121,7 @@
 *********/
 /obj/item/device/camera
 	name = "camera"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "camera"
@@ -313,7 +313,7 @@
 
 	var/icon/small_img = icon(photoimage)
 	var/icon/tiny_img = icon(photoimage)
-	var/icon/item_icon = icon('icons/obj/items/items.dmi',"photo")
+	var/icon/item_icon = icon('icons/obj/items/paper.dmi',"photo_item")
 	var/icon/paper_icon = icon('icons/obj/items/paper.dmi', "photo")
 	small_img.Scale(8, 8)
 	tiny_img.Scale(4, 4)

@@ -1216,6 +1216,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
 		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
 		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+		/obj/item/ammo_box/magazine/lever_action/xm88/empty = /obj/item/ammo_box/magazine/lever_action/xm88,
 
 		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
 		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
@@ -1346,7 +1347,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vend_delay)
 			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
+			flick("[initial(icon_state)]_vend", src)
 			if(vend_sound)
 				playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vend_delay)

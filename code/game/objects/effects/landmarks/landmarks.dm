@@ -121,7 +121,7 @@
 	GLOB.monkey_spawns -= src
 	return ..()
 
-#define MAXIMUM_LIZARD_AMOUNT 5
+#define MAXIMUM_LIZARD_AMOUNT 4
 
 /obj/effect/landmark/lizard_spawn
 	name = "lizard spawn"

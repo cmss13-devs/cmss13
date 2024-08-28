@@ -25,6 +25,10 @@ SUBSYSTEM_DEF(redis)
 
 /datum/controller/subsystem/redis/Initialize()
 	instance_name = CONFIG_GET(string/instance_name)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
+	if(api?.instance_name)
+		instance_name = api.instance_name
+
 	redis_logging = CONFIG_GET(flag/redis_logging)
 
 	if(connect() == CONFIG_DISABLED)

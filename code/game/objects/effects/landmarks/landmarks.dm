@@ -131,8 +131,7 @@
 	. = ..()
 	if(prob(66))
 		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
-		if(prob(50))
-			addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(35 MINUTES, 50 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(35 MINUTES, 50 MINUTES))
 
 /obj/effect/landmark/lizard_spawn/proc/latespawn_lizard()
 	//if there's already a ton of lizards alive, try again later

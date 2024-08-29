@@ -71,6 +71,9 @@
 
 	message = trim(strip_html(message))
 
+	if(!filter_message(src, message))
+		return
+
 	if(stat == DEAD)
 		return say_dead(message)
 

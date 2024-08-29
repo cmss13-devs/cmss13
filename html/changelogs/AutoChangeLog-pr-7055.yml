@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "taking apart plasteel baricade gives back 8 not 4 plasteel"

@@ -27,7 +27,7 @@
 	supervisors = "the acting commanding officer"
 	total_positions = 1
 	spawn_positions = 1
-	flags_startup_parameters = ROLE_WHITELISTED
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	gear_preset = /datum/equipment_preset/uscm_event/ai_tech
 
 	// job option

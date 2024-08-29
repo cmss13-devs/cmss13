@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - rscadd: "CIC groundside operations console now correctly sorts FTLs and SGs"

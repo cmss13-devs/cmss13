@@ -43,6 +43,9 @@
 /// UO4, Mayjor
 #define PAY_SHORT_UO4 "UO4"
 
+/// UO4P, Political Commissar
+#define PAY_SHORT_UO4P "UO4P"
+
 /// UO5, Leytenant Kolonel
 #define PAY_SHORT_UO5 "UO5"
 

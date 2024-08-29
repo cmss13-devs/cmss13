@@ -137,7 +137,7 @@ export const PlayerPanel = (props) => {
                 disabled={!hasPermission(data, 'show_notes')}
                 onClick={() => act('access_statistics')}
               >
-                View Playtimes
+                View Statistic
               </Button>
             </Stack.Item>
           </Stack>

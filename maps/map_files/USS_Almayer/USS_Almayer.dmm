@@ -4994,7 +4994,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
@@ -20314,7 +20314,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -23957,7 +23957,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -35578,7 +35578,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -36574,7 +36574,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -37346,7 +37346,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -50597,7 +50597,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -62176,7 +62176,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)

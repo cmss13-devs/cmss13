@@ -51,6 +51,7 @@
 	var/list/data = datacore.get_interface_data()
 
 	data["is_pda"] = FALSE
+	data["admin_access_log"] = admin_interface.access_list
 
 	data["local_current_menu"] = admin_interface.current_menu
 	data["local_last_page"] = admin_interface.last_menu

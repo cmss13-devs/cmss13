@@ -58,9 +58,10 @@
 
 /datum/job/special/uscm/ai_tech/proc/handle_wakeup(mob/living/carbon/human/ai_tech)
 	ares_apollo_talk("AI Service Technician, [ai_tech.get_paygrade(0)] [ai_tech.real_name], is now awake.")
-	var/radio_prefix = ":p"
+	var/radio_prefix = ":n"
 	if(corporate)
 		radio_prefix = ":y"
+	ai_silent_announcement("AI Service Technician, [ai_tech.get_paygrade(0)] [ai_tech.real_name], is now awake.", ":v")
 	ai_silent_announcement("AI Service Technician, [ai_tech.get_paygrade(0)] [ai_tech.real_name], is now awake.", radio_prefix)
 
 /obj/effect/landmark/start/ai_tech

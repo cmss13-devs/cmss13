@@ -838,7 +838,7 @@
 		/obj/item/storage/bible,
 		/obj/item/storage/toolkit,
 		)
-	storage_flags = NONE //no verb, no quick draw, no tile gathering
+	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"

@@ -575,7 +575,7 @@
 /datum/equipment_preset/uscm_event/ai_tech/corporate
 	name = "AI Technician (Contractor)"
 	faction_group =	FACTION_LIST_ARES_ALL
-	paygrades = list(PAY_SHORT_MO1 = PAY_SHORT_WYC4, PAY_SHORT_MO2 = PAY_SHORT_WYC5, PAY_SHORT_MO3 = PAY_SHORT_WYC6)
+	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_3)
 
 	idtype = /obj/item/card/id/silver/cl
 

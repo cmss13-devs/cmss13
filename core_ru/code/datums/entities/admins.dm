@@ -68,6 +68,8 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 	var/text_rights
 	var/rights = NO_FLAGS
 
+BSQL_PROTECT_DATUM(/datum/view_record/admin_rank)
+
 /datum/entity_view_meta/admin_rank
 	root_record_type = /datum/entity/admin_rank
 	destination_entity = /datum/view_record/admin_rank
@@ -140,6 +142,8 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_holder)
 	var/rank_name
 	var/datum/view_record/admin_rank/admin_rank
 	var/list/ref_vars
+
+BSQL_PROTECT_DATUM(/datum/view_record/admin_holder)
 
 /datum/entity_view_meta/admin_holder
 	root_record_type = /datum/entity/admin_holder

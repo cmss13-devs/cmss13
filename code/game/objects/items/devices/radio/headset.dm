@@ -612,6 +612,9 @@
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/ai
+	name = "USCM AI Headset"
+	desc = "The integrated headset of a W-Y built USCM Ship AI"
+
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
 	volume = RADIO_VOLUME_CRITICAL
 

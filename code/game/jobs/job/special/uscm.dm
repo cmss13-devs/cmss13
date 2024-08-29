@@ -45,7 +45,7 @@
 		gear_preset = /datum/equipment_preset/uscm_event/ai_tech
 
 /datum/job/special/uscm/ai_tech/check_whitelist_status(mob/user)
-	if(check_rights(R_PERMISSIONS, show_msg = FALSE))
+	if(check_rights(R_PERMISSIONS, show_msg = FALSE) || user.client.check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL))
 		return TRUE
 	return FALSE
 

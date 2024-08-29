@@ -5,7 +5,7 @@
 	icon_state = "karnak_off"
 	unacidable = TRUE
 	indestructible = TRUE
-	req_access = list(ACCESS_ARES_DEBUG)
+	req_one_access = list(ACCESS_ARES_DEBUG, ACCESS_MARINE_AI)
 
 	/// The ID used to link all devices.
 	var/datum/ares_link/link
@@ -130,7 +130,7 @@
 		set_ui = "WorkingJoe"
 	else if(access_code == GLOB.ares_link.code_interface)
 		set_ui = "AresInterface"
-	else if(access_code == GLOB.ares_link.code_debug)
+	else if((access_code == GLOB.ares_link.code_debug) && (check_debug_login(user)))
 		set_ui = "AresAdmin"
 	else
 		access_code = 0
@@ -138,6 +138,25 @@
 	if(!ui)
 		ui = new(user, src, set_ui, name)
 		ui.open()
+
+/obj/item/device/ai_tech_pda/proc/check_debug_login(mob/user)
+	var/mob/living/carbon/human/human_user = user
+	if(!ishuman(human_user))
+		return FALSE
+	var/failed = FALSE
+	var/obj/item/card/id/idcard = human_user.get_active_hand()
+	if(!istype(idcard))
+		if(human_user.wear_id)
+			idcard = human_user.wear_id
+			if(!istype(idcard))
+				failed = TRUE
+	if(!idcard?.check_biometrics(human_user) || !(ACCESS_ARES_DEBUG in idcard?.access))
+		failed = TRUE
+	if(failed)
+		to_chat(human_user, SPAN_WARNING("You require an authenticated ID card to access this device!"))
+		playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
+		return FALSE
+	return TRUE
 
 /obj/item/device/ai_tech_pda/ui_close(mob/user)
 	. = ..()

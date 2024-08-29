@@ -324,7 +324,7 @@
 
 
 	if(spawn_max_amount && i < mob_max)
-		for(var/c in i to mob_max-1)
+		for(var/c in i to mob_max - 1)
 			create_member(null, override_spawn_loc)
 
 	candidates = list()

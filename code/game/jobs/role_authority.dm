@@ -219,7 +219,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		*/
 		//RUCM START
-		REDIS_PUBLISH("byond.round", "type" = "round", "state" = "predator")
+		REDIS_PUBLISH("byond.round", "type" = "predator", "state" = "predator")
 		//RUCM END
 
 	// Assign the roles, this time for real, respecting limits we have established.

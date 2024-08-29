@@ -1,5 +1,5 @@
 /datum/redis_callback/asay
-	channel = "byond.asay"
+	channel = "byond.admin"
 
 /datum/redis_callback/asay/on_message(message)
 	var/list/data = json_decode(message)

@@ -42,6 +42,18 @@
 
 	CEI.handle_event_info_update(faction)
 
+/client/proc/get_whitelisted_clients()
+	set name = "Find Whitelisted Players"
+	set category = "Admin.Events"
+
+	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+
+	var/list/ckeys = list()
+	for(var/client/test_client in GLOB.clients)
+		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
+			ckeys += test_client.ckey
+	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
+
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return

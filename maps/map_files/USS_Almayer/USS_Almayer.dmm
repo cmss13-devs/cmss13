@@ -2773,6 +2773,7 @@
 	id = "tcomms_apc";
 	name = "\improper Telecommunications Power Storage"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/telecomms)
 "atm" = (
@@ -4199,6 +4200,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/telecomms)
 "aBh" = (
@@ -10609,6 +10611,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "tcomms"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/telecomms)
 "bzI" = (

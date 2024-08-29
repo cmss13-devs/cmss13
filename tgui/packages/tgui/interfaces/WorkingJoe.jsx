@@ -292,7 +292,7 @@ const MainMenu = (props) => {
                   act('update_sentries', { chosen_iff: value })
                 }
                 width="90px"
-                disabled={access_level < 6}
+                disabled={local_access_level < 6}
               />
             </Stack.Item>
           </Stack>

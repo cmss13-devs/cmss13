@@ -442,7 +442,7 @@ const MainMenu = (props) => {
                   act('update_sentries', { chosen_iff: value })
                 }
                 width="90px"
-                disabled={access_level < 9}
+                disabled={local_access_level < 9}
                 tooltip="Change core sentries IFF settings."
               />
             </Stack.Item>

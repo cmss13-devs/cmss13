@@ -5909,6 +5909,9 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
+"gSE" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/telecomm/lz2_south)
 "gSM" = (
 /obj/structure/machinery/chem_dispenser/medbay,
 /turf/open/floor/kutjevo/colors/purple/inner_corner/north,
@@ -8601,7 +8604,7 @@
 "kyd" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/closed/wall/kutjevo/rock,
-/area/kutjevo/exterior/scrubland/north)
+/area/kutjevo/interior/oob)
 "kyH" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
 /turf/open/auto_turf/sand/layer1,
@@ -13638,7 +13641,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/complex/botany)
+/area/kutjevo/exterior/runoff_river)
 "qSL" = (
 /obj/effect/landmark/corpsespawner/colonist/kutjevo,
 /turf/open/floor/kutjevo/multi_tiles/north,
@@ -14141,9 +14144,6 @@
 "rAS" = (
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med)
-"rCf" = (
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/exterior/scrubland/north)
 "rCm" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
@@ -18732,9 +18732,6 @@
 /obj/structure/largecrate/supply,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
-"xiq" = (
-/turf/closed/wall/kutjevo/rock/border,
-/area/kutjevo/exterior/scrubland/north)
 "xiM" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand/layer0,
@@ -23186,7 +23183,7 @@ pci
 pci
 pci
 pci
-nTw
+gSE
 mxB
 dxF
 dxF
@@ -23353,8 +23350,8 @@ pci
 mgn
 mgn
 pci
-nTw
-nTw
+gSE
+gSE
 mxB
 dxF
 dxF
@@ -23521,7 +23518,7 @@ mgn
 bGL
 mgn
 dmz
-nTw
+gSE
 mxB
 dxF
 dxF
@@ -24344,7 +24341,7 @@ fmO
 fmO
 fmO
 nOu
-nTw
+iFz
 dxF
 dxF
 dxF
@@ -24510,8 +24507,8 @@ ikQ
 fmO
 fmO
 fmO
-nTw
-nTw
+iFz
+iFz
 dxF
 dxF
 dxF
@@ -29237,7 +29234,7 @@ wnX
 xXI
 dxF
 dxF
-gBl
+ePx
 cTz
 cTz
 cTz
@@ -30802,11 +30799,11 @@ mNa
 ugh
 tZW
 suX
-xiq
-rCf
+mxB
 dxF
-rCf
-rCf
+dxF
+dxF
+dxF
 fmY
 dMY
 dMY
@@ -30969,11 +30966,11 @@ gBl
 tZW
 tZW
 qNZ
-xiq
-rCf
-rCf
-rCf
-rCf
+mxB
+dxF
+dxF
+dxF
+dxF
 dIY
 dMY
 dMY
@@ -31137,8 +31134,8 @@ gBl
 dMY
 pfO
 mQJ
-xiq
-rCf
+mxB
+dxF
 dIY
 dIY
 dMY
@@ -31312,7 +31309,7 @@ dMY
 gOs
 dIY
 dIY
-rCf
+dxF
 dxF
 dxF
 dxF
@@ -31479,7 +31476,7 @@ dMY
 uwQ
 dMY
 dIY
-rCf
+dxF
 dxF
 dxF
 dxF
@@ -31809,8 +31806,8 @@ dIY
 edi
 dMY
 uBm
-xiq
-xiq
+mxB
+mxB
 vPO
 dIY
 dIY
@@ -31976,8 +31973,8 @@ dxF
 dMY
 dMY
 uBm
-xiq
-xiq
+mxB
+mxB
 vPO
 dIY
 dIY
@@ -32144,8 +32141,8 @@ dIY
 dMY
 pfO
 jiR
-xiq
-rCf
+mxB
+dxF
 dIY
 jiO
 dIY
@@ -32312,7 +32309,7 @@ dIY
 dMY
 pfO
 kyd
-rCf
+dxF
 dIY
 dIY
 dMY
@@ -33934,7 +33931,7 @@ xJg
 xJg
 xJg
 jfS
-tOu
+xJg
 vea
 vea
 xIK
@@ -34042,7 +34039,7 @@ iuz
 dxF
 dxF
 dxF
-hkO
+dxF
 qSs
 qSs
 qSs
@@ -34101,7 +34098,7 @@ bgU
 xJg
 xJg
 xJg
-tOu
+xJg
 xJg
 vea
 ajE

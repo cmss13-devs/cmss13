@@ -455,3 +455,8 @@
 2024-08-28:
   MistChristmas:
   - spellcheck: Req vendor descs remove RO. Fix Corpsman Typo
+2024-08-29:
+  SubjectD9341:
+  - rscadd: xenos don't kill crit allies by dragging/devouring anymore
+  TheGamerdk:
+  - rscadd: CIC groundside operations console now correctly sorts FTLs and SGs

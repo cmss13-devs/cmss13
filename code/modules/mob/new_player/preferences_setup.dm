@@ -324,6 +324,10 @@
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
+		if(JOB_AI_TECH)
+			var/datum/job/aist_job = GLOB.RoleAuthority.roles_by_name[JOB_AI_TECH]
+			return aist_job.gear_preset
+
 
 	return /datum/equipment_preset/uscm/private_equipped
 

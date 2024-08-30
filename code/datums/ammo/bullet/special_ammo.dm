@@ -9,6 +9,7 @@
 	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
@@ -31,6 +32,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 32
 	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = 0
 	damage = 40
 	penetration = 0
 

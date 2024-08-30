@@ -380,15 +380,22 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	//RUCM END
 
 /datum/entity/player/proc/auto_unjobban()
+	//RUCM START
+	var/any_jobbans_lifted = FALSE
+	//RUCM END
 	for(var/key in job_bans)
 		var/datum/entity/player_job_ban/value = job_bans[key]
 		var/time_left = value.expiration - MINUTES_STAMP
 		if(value.ban_time && time_left < 0)
 			value.delete()
 			job_bans -= value
+			//RUCM START
+			any_jobbans_lifted = TRUE
+			//RUCM END
 
 	//RUCM START
-	REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "auto_unjobban", "ref_player_id" = id)
+	if(any_jobbans_lifted)
+		REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "auto_unjobban", "ref_player_id" = id)
 	//RUCM END
 
 /datum/entity_meta/player/on_read(datum/entity/player/player)

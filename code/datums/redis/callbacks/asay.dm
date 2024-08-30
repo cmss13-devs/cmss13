@@ -7,7 +7,7 @@
 	if(data["source"] == SSredis.instance_name)
 		return
 
-	var/msg = SPAN_MOD("<EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")
+	var/msg = SPAN_MOD("<EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"], MAX_BOOK_MESSAGE_LEN)]</span>")
 
 	for(var/client/client in GLOB.admins)
 		if(!(R_ADMIN & client.admin_holder.rights) && !(R_MOD & client.admin_holder.rights))

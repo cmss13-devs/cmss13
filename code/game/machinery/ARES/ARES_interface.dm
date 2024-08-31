@@ -330,7 +330,7 @@
 			datacore.records_talking += convo
 
 		if("clear_conversation")
-			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+			var/datum/ares_record/talk_log/conversation = locate(params["passed_active_convo"])
 			if(!istype(conversation))
 				return FALSE
 			var/datum/ares_record/deleted_talk/deleted = new
@@ -343,7 +343,7 @@
 		if("message_ares")
 			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				message_ares(message, user, params["active_convo"])
+				message_ares(message, user, params["passed_active_convo"])
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])

@@ -536,7 +536,7 @@
 // M3-EOD pattern heavy armor
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and biological threats."
+	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, biological, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts."
 	desc_lore = "This configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"

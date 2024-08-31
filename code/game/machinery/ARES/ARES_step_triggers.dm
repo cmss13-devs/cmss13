@@ -89,6 +89,15 @@
 	alert_id = "AresCore"
 	pass_accesses = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
 
+/obj/effect/step_trigger/ares_alert/core/Crossed(mob/living/passer)
+	if(isxeno(passer))
+		if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
+			return FALSE
+		aicore_lockdown(user, "ATTENTION! \n\nUNIDENTIFIED BIOSIGN DETECTED IN AI CORE! \n\nAI CORE UNDER LOCKDOWN.")
+		return TRUE
+	else
+		..()
+
 /obj/effect/step_trigger/ares_alert/mainframe
 	alert_id = "AresMainframe"
 	alert_message = "ALERT: Unauthorized movement detected in ARES Mainframe!"

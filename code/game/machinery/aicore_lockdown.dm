@@ -84,8 +84,10 @@
 		return PROC_BLOCKED
 
 	var/log = "[key_name(user)] triggered AI core lockdown!"
-	var/ares_log = "Triggered triggered AI Core Emergency Lockdown."
+	var/ares_log = "Triggered AI Core Emergency Lockdown."
 	var/person = user.name
+	if(isxeno(user))
+		person = MAIN_AI_SYSTEM
 	if(message)
 		log = "[key_name(user)] triggered AI core emergency lockdown! (Using a custom announcement)."
 	if(admin)

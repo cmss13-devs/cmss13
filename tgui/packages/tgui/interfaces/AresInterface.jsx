@@ -1049,7 +1049,7 @@ const ARESTalk = (props) => {
             px="2rem"
             bold
             onClick={() =>
-              act('message_ares', { local_active_convo: local_active_ref })
+              act('message_ares', { passed_active_convo: local_active_ref })
             }
           >
             Send Message
@@ -1065,7 +1065,7 @@ const ARESTalk = (props) => {
           fontSize="1.5rem"
           bold
           onClick={() =>
-            act('clear_conversation', { local_active_convo: local_active_ref })
+            act('clear_conversation', { passed_active_convo: local_active_ref })
           }
           disabled={!local_active_convo.length}
         >

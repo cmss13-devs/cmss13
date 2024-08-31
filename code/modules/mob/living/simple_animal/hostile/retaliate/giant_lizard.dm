@@ -378,7 +378,7 @@
 
 ///Proc that forces the mob to disengage and try to extinguish itself. Will not be called if the mob is already retreating.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/try_to_extinguish()
-	if(is_retreating || !on_fire || client)
+	if(is_retreating || !on_fire || client || stat == DEAD || body_position == LYING_DOWN)
 		return
 
 	//forget EVERYTHING. we need to stop the flames!!!

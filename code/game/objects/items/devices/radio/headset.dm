@@ -371,21 +371,6 @@
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)
 
-/obj/item/device/radio/headset/ai_integrated //No need to care about icons, it should be hidden inside the AI anyway.
-	name = "AI Subspace Transceiver"
-	desc = "Integrated AI radio transceiver."
-	icon = 'icons/obj/items/robot_component.dmi'
-	icon_state = "radio"
-	item_state = "headset"
-	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
-	var/myAi = null // Atlantis: Reference back to the AI which has this radio.
-	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
-
-/obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
-	if (disabledAi)
-		return -1 //Transceiver Disabled.
-	return ..(freq, level, 1)
-
 //MARINE HEADSETS
 
 /obj/item/device/radio/headset/almayer
@@ -451,7 +436,7 @@
 	icon_state = "eng_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/engi)
 
-/obj/item/device/radio/headset/almayer/mt
+/obj/item/device/radio/headset/almayer/mt/joe
 	name = "working joe radio headset"
 	desc = "The headset used by working joe synthetics. To access the engineering channel, use :n. To access the AI Core internal network, use :q."
 	icon_state = "eng_headset"

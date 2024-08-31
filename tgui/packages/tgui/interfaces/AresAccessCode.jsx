@@ -24,8 +24,8 @@ const PAGES = {
 
 export const AresAccessCode = (props) => {
   const { data } = useBackend();
-  const { current_menu, sudo } = data;
-  const PageComponent = PAGES[current_menu]();
+  const { local_current_menu } = data;
+  const PageComponent = PAGES[local_current_menu]();
 
   let themecolor = 'crtyellow';
 

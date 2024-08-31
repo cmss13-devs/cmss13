@@ -65,7 +65,7 @@
 
 	var/list/active_convo = list()
 	var/active_ref
-	for(var/datum/ares_record/talk_log/log as anything in data["logged_convos"])
+	for(var/datum/ares_record/talk_log/log as anything in datacore.records_talking)
 		if(!istype(log))
 			continue
 		if(log.user == interface.last_login)

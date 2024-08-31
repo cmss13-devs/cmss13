@@ -16,6 +16,8 @@
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	/// If the motion alert is sent over a radio channel, what is that prefix?
+	var/broadcast_prefix
 
 /obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
@@ -75,6 +77,8 @@
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
 	ares_apollo_talk(broadcast_message)
+	if(broadcast_prefix)
+		ai_silent_announcement(broadcast_message, broadcast_prefix)
 	COOLDOWN_START(src, sensor_cooldown, cooldown_duration)
 	if(alert_id && link)
 		for(var/obj/effect/step_trigger/ares_alert/sensor in link.linked_alerts)
@@ -88,6 +92,7 @@
 /obj/effect/step_trigger/ares_alert/core
 	alert_id = "AresCore"
 	pass_accesses = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	broadcast_prefix = ":p"
 
 /obj/effect/step_trigger/ares_alert/core/Crossed(mob/living/passer)
 	if(isxeno(passer))
@@ -101,6 +106,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe
 	alert_id = "AresMainframe"
 	alert_message = "ALERT: Unauthorized movement detected in ARES Mainframe!"
+	broadcast_prefix = ":n"
 
 /obj/effect/step_trigger/ares_alert/terminals
 	alert_id = "AresTerminals"
@@ -110,6 +116,7 @@
 	area_based = TRUE
 	alert_id = "TComms"
 	pass_accesses = list(ACCESS_MARINE_CE)
+	broadcast_prefix = ":n"
 
 
 /// Trigger will remove ACCESS_MARINE_AI_TEMP unless ACCESS_MARINE_AI is also present.

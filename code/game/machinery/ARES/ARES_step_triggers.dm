@@ -96,9 +96,9 @@
 
 /obj/effect/step_trigger/ares_alert/core/Crossed(mob/living/passer)
 	if(isxeno(passer))
-		if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
+		if(!COOLDOWN_FINISHED(link.datacore, aicore_lockdown))
 			return FALSE
-		aicore_lockdown(user, "ATTENTION! \n\nUNIDENTIFIED BIOSIGN DETECTED IN AI CORE! \n\nAI CORE UNDER LOCKDOWN.")
+		aicore_lockdown(passer, "ATTENTION! \n\nUNIDENTIFIED BIOSIGN DETECTED IN AI CORE! \n\nAI CORE UNDER LOCKDOWN.")
 		return TRUE
 	else
 		..()

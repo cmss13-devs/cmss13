@@ -350,56 +350,6 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 11 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Maintenance Access</h3>
-            </Stack.Item>
-            {sudo === 0 && (
-              <Stack.Item>
-                <Button
-                  tooltip="Remote Login."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo')}
-                >
-                  Sudo Login
-                </Button>
-              </Stack.Item>
-            )}
-            {sudo >= 1 && (
-              <Stack.Item>
-                <Button
-                  tooltip="Logout of Sudo mode."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo_logout')}
-                >
-                  Sudo Logout
-                </Button>
-              </Stack.Item>
-            )}
-            <Stack.Item>
-              <Button
-                icon="satellite"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('bioscan')}
-                tooltip="Trigger an immediate bioscan for diagnostics."
-              >
-                Bioscan
-              </Button>
-            </Stack.Item>
-          </Stack>
-        )}
       </Section>
       {(access_level === 3 || access_level >= 6) && (
         <Section>
@@ -445,6 +395,60 @@ const MainMenu = (props) => {
                 disabled={access_level < 9}
                 tooltip="Change core sentries IFF settings."
               />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
+      {access_level >= 11 && (
+        <Section>
+          <h1 align="center">Maintenance Protocols</h1>
+
+          <Stack>
+            <Stack.Item grow>
+              <h3>Maintenance Access</h3>
+            </Stack.Item>
+            {sudo === 0 && (
+              <Stack.Item>
+                <Button
+                  tooltip="Login as another user."
+                  icon="user-secret"
+                  ml="auto"
+                  px="2rem"
+                  width="25vw"
+                  bold
+                  onClick={() => act('sudo')}
+                >
+                  Sudo Login
+                </Button>
+              </Stack.Item>
+            )}
+            {sudo >= 1 && (
+              <Stack.Item>
+                <Button
+                  tooltip="Logout of Sudo mode."
+                  icon="user-secret"
+                  ml="auto"
+                  px="2rem"
+                  width="25vw"
+                  bold
+                  onClick={() => act('sudo_logout')}
+                >
+                  Sudo Logout
+                </Button>
+              </Stack.Item>
+            )}
+            <Stack.Item>
+              <Button
+                icon="satellite"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('bioscan')}
+                tooltip="Trigger an immediate bioscan for diagnostics."
+              >
+                Bioscan
+              </Button>
             </Stack.Item>
           </Stack>
         </Section>

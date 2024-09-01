@@ -319,7 +319,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/last_damage_source = null
 	var/last_damage_mob = null
 	if (damage > 5)
-		last_damage_source = initial(AM.name)
+		last_damage_source = initial(thrown_atom.name)
 		animation_flash_color(src)
 		var/obj/item/thrown_item = thrown_object
 		if(istype(thrown_item) && thrown_item.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.

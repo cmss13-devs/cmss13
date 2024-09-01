@@ -88,6 +88,16 @@
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
 
+/obj/item/clothing/head/beret/cm/white/civilian
+	name = "White Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black/civilian
+	name = "Black Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "beret_black"
+
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
 	self_set()
@@ -479,6 +489,10 @@
 	icon_state = "coblackberet"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
+/obj/item/clothing/head/beret/marine/mp/provost/chief
+	name = "\improper USCM provost command beret"
+	icon_state = "pvciberet"
+
 /obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
 	icon_state = "berettis"
@@ -566,6 +580,15 @@
 	name = "logistics officer beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
 	icon_state = "beret_badge"
+
+/obj/item/clothing/head/beret/marine/ro
+	name = "\improper USCM quartermaster beret"
+	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "ro_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\

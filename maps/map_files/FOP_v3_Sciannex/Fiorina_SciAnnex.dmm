@@ -845,7 +845,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "aFp" = (
-/obj/structure/machinery/defenses/tesla_coil{
+/obj/structure/machinery/defenses/tesla_coil/premade/smart{
 	faction_group = list("CLF")
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -30182,7 +30182,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/medbay)
 "xgx" = (
-/obj/structure/machinery/defenses/tesla_coil{
+/obj/structure/machinery/defenses/tesla_coil/premade{
 	faction_group = list("USCM")
 	},
 /turf/open/organic/grass/astroturf,

@@ -35,7 +35,7 @@
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
-	desc = "A horrifying, almost angelic-looking alien. Strange stenches follow it wherever it goes."
+	desc = "A horrifying alien with a grim visage. A vile stench follows it wherever it goes."
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/reaper.dmi'
 	icon_state = "Reaper Walking"
@@ -53,13 +53,12 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction/not_primary,
-		/datum/action/xeno_action/onclick/plant_weeds/not_primary,
-		/datum/action/xeno_action/activable/flesh_harvest, //first macro
-		/datum/action/xeno_action/activable/rapture, //second macro
-		/datum/action/xeno_action/onclick/emit_miasma, //third macro
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/activable/flesh_harvest, //second macro
+		/datum/action/xeno_action/activable/rapture, //third macro
+		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -79,24 +78,49 @@
 
 	var/flesh_plasma = 0
 	var/flesh_plasma_max = 1000
+	var/passive_flesh_regen = 1
+	var/passive_flesh_multi= 1
+	var/passive_multi_max = 5
+	var/pause_decay = FALSE
+	var/pause_dur = 10 SECONDS
+	var/unpause_incoming = FALSE
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
+
+/datum/behavior_delegate/base_reaper/proc/mult_decay()
+	if(passive_flesh_multi < 1)
+		passive_flesh_multi = 1
+	if(pause_decay == FALSE && passive_flesh_multi > 1)
+		passive_flesh_multi -= 1
+
+/datum/behavior_delegate/base_reaper/proc/unpause_decay()
+	pause_decay = FALSE
+	unpause_incoming = FALSE
+	pause_dur = 10 SECONDS
 
 /datum/behavior_delegate/base_reaper/append_to_stat()
 	. = ..()
 	. += "Flesh Resin: [flesh_plasma]"
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	flesh_plasma += 5
+	passive_flesh_multi += 0.25
 
 /datum/behavior_delegate/base_reaper/on_life()
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
-	holder.overlays.Cut()
-	var/percentage_flesh = round((flesh_plasma / flesh_plasma_max) * 100, 10)
-	if(percentage_flesh)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_flesh]")
-
+	if(passive_flesh_multi > passive_multi_max)
+		passive_flesh_multi = passive_multi_max
 	if(flesh_plasma > flesh_plasma_max)
 		flesh_plasma = flesh_plasma_max
 	if(flesh_plasma < 0)
 		flesh_plasma = 0
 
+	flesh_plasma += passive_flesh_regen * passive_flesh_multi
+
+	mult_decay()
+	if(pause_decay == TRUE && unpause_incoming == FALSE)
+		unpause_incoming = TRUE
+		addtimer(CALLBACK(src, PROC_REF(unpause_decay)), pause_dur)
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_flesh = round((flesh_plasma / flesh_plasma_max) * 100, 10)
+	if(percentage_flesh)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_flesh]")

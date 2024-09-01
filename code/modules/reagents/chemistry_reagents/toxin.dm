@@ -284,11 +284,11 @@
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)
 
-/datum/reagent/toxin/flesh_plasma_toxin
-	name = "Flesh Venom"
-	id = "fleshplasmatoxin"
-	description = "A thick, horrid-smelling venom of unknown composition, produced by certain specialized Xenomorphs. Contains several toxic byproducts with neurotoxic effects, causing large amounts of pain."
-	color = "#6A4666"
+/datum/reagent/toxin/sepsicine
+	name = "Sepsicine"
+	id = "sepsicine"
+	description = "An aromatic substance utilized by certain types of Xenomorph, with evidence to suggestion it is a microbial toxin. It has neurotoxic properties that noticably affect pain receptors, and a foul cadaverous scent."
+	color = "#c5bc81"
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_TOXIC = 2, PROPERTY_PAINING = 4, PROPERTY_CROSSMETABOLIZING = 3)

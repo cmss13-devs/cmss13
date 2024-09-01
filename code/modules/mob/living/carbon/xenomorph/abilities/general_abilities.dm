@@ -20,7 +20,7 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
-/datum/action/xeno_action/onclick/plant_weeds/not_primary // For those who can weed but might benefit having macros for other abilities
+/datum/action/xeno_action/onclick/plant_weeds/not_primary // Good for futureproofing
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 // Resting

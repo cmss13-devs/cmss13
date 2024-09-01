@@ -719,10 +719,11 @@
 	spread_speed = 3
 	smokeranking = SMOKE_RANK_HIGH
 	opacity = FALSE
-	alpha = 80
+	alpha = 60
 
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/toxin_damage = 2
+	var/tox_damage = 2
+	var/toxin_amount = 1
 
 /obj/effect/particle_effect/smoke/reaper_mist/Initialize(mapload, amount, datum/cause_data/cause_data)
 	if(istype(cause_data))
@@ -756,24 +757,30 @@
 
 	affected_mob.last_damage_data = cause_data
 
-	if(ishuman(affected_mob) && affected_mob.getToxLoss() >= 40)
+	if(ishuman(affected_mob) && affected_mob.getToxLoss() >= 30)
 		var/mob/living/carbon/human/affected_human = affected_mob
-		if(!affected_human.lastpuke && prob(30))
+		if(!affected_human.lastpuke && prob(20))
 			affected_human.lastpuke = 1
 			to_chat(affected_human, SPAN_WARNING("You need to vomit!"))
 			affected_human.do_vomit()
 
 	if(isxeno(affected_mob) && !(istype(affected_mob, /mob/living/carbon/xenomorph/reaper)))
-		to_chat(affected_mob, SPAN_XENODANGER("We feel lethargic as the miasma envelops our body!"))
+		to_chat(affected_mob, SPAN_XENODANGER("We feel lethargic!"))
 		affected_mob.Slow(1)
 	else
-		to_chat(affected_mob, SPAN_DANGER("You feel sick and lightheaded as you breath in the foul-smelling miasma!"))
-		affected_mob.apply_damage(toxin_damage, TOX)
+		if(!issynth(affected_mob))
+			to_chat(affected_mob, SPAN_DANGER("You feel pain and sick!"))
+			affected_mob.apply_damage(tox_damage, TOX)
+			affected_mob.Slow(0.5)
+			affected_mob.reagents.add_reagent("sepsicine", toxin_amount)
+			affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
 
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob) && !affected_mob.lastpuke)
-		affected_mob.coughedtime = world.time + 1.5 SECONDS
-		if(prob(20))
+		affected_mob.coughedtime = world.time + 2 SECONDS
+		if(prob(30))
 			affected_mob.emote("cough")
+		else if(prob(15))
+			affected_mob.emote("gasp")
 
 	affected_mob.last_damage_data = cause_data
 	return TRUE

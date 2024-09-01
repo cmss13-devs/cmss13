@@ -12,9 +12,9 @@
 	var/action_name = "Rapture"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_miasma()
+/datum/action/xeno_action/verb/verb_mist()
 	set category = "Alien"
-	set name = "Emit Miasma"
+	set name = "Emit Mist"
 	set hidden = TRUE
-	var/action_name = "Emit Miasma"
+	var/action_name = "Emit Mist"
 	handle_xeno_macro(src, action_name)

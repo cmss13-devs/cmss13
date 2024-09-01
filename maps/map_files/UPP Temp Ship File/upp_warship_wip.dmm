@@ -12175,13 +12175,12 @@
 /turf/open/floor/strata/cyan2,
 /area/event/metal/dynamic)
 "rdd" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "Military Police Headquarters";
-	dir = 2;
-	req_access = list();
-	req_one_access = list(233, 240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+	name = "Military Police Headquarters";
+	req_one_access = list(233, 240);
+	req_access = null
+	},
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "rdj" = (
@@ -39910,8 +39909,8 @@ uME
 uME
 mvj
 cwD
-dFb
-cwD
+kdK
+nJK
 sVy
 fcu
 sVy

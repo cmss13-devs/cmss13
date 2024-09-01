@@ -216,10 +216,11 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 	if(!match_detail_statistic)
 		return FALSE
 
-	var/datum/entity/statistic/statistic = match_detail_statistic.statistics[statistic_name]
-	if(!statistic)
-		return FALSE
-	return statistic
+	for(var/datum/entity/statistic/statistic as anything in match_detail_statistic.statistics)
+		if(statistic.statistic_name != statistic_name)
+			continue
+		return statistic
+	return FALSE
 
 /datum/player_entity/proc/setup_entity()
 	set waitfor = FALSE

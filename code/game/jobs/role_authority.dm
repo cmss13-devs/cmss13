@@ -215,7 +215,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
+		/*
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
+		*/
+		//RUCM START
+		REDIS_PUBLISH("byond.round", "type" = "predator", "state" = "predator")
+		//RUCM END
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)

@@ -113,7 +113,12 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				/*
 				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
+				*/
+				//RUCM START
+				REDIS_PUBLISH("byond.round", "type" = "round", "state" = "end")
+				//RUCM END
 				flash_clients()
 				addtimer(CALLBACK(
 					SSvote,
@@ -147,7 +152,12 @@ SUBSYSTEM_DEF(ticker)
 	current_state = GAME_STATE_SETTING_UP
 	INVOKE_ASYNC(src, PROC_REF(setup_start))
 
+/*
 	REDIS_PUBLISH("byond.round", "type" = "round-start")
+*/
+	//RUCM START
+	REDIS_PUBLISH("byond.round", "type" = "round", "state" = "started")
+	//RUCM START
 
 	for(var/client/C in GLOB.admins)
 		remove_verb(C, GLOB.roundstart_mod_verbs)

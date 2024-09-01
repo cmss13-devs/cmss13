@@ -37,6 +37,10 @@
 	if(!attempt_talking(msg))
 		return
 
+	//RUCM START
+	REDIS_PUBLISH("byond.round", "type" = "ooc", "state" = "ooc", "author" = key, "message" = msg)
+	//RUCM END
+
 	log_ooc("[mob.name]/[key] : [msg]")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT

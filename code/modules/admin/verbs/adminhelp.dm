@@ -289,6 +289,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		embed.url = ahelp_link
 	return embed
 
+/*
 /datum/admin_help/proc/send_message_to_external(message, urgent = FALSE)
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
@@ -314,6 +315,21 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			embed.footer = "This player sent an ahelp when no admins are available [urgent? "and also requested an admin": ""]"
 			send2adminchat_webhook(embed, urgent = FALSE)
 			webhook_sent = WEBHOOK_NON_URGENT
+*/
+/datum/admin_help/proc/send_message_to_external(message)
+	var/list/adm = get_admin_counts(R_BAN)
+	var/list/activemins = adm["present"]
+	var/admin_number_present = activemins.len
+
+	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
+	heard_by_no_admins = TRUE
+	var/extra_message = CONFIG_GET(string/ahelp_message)
+	var/list/actions = format_embed_discord(message)
+	actions["content"] = extra_message
+	if(admin_number_present <= 0)
+		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
+		actions["footer"] = "This player sent an ahelp when no admins are available and also requested an admin"
+	REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "ahelp", "embed" = actions)
 
 /proc/send2adminchat_webhook(message_or_embed, urgent)
 	var/webhook = CONFIG_GET(string/urgent_adminhelp_webhook_url)
@@ -858,9 +874,15 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 	if(user_client.current_ticket)
 		user_client.current_ticket.TimeoutVerb()
+/*
 		if(urgent)
 			var/sanitized_message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
 			user_client.current_ticket.send_message_to_external(sanitized_message, urgent = TRUE)
+*/
+		//RUCM START
+		var/sanitized_message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
+		user_client.current_ticket.send_message_to_external(sanitized_message)
+		//RUCM END
 		user_client.current_ticket.MessageNoRecipient(message, urgent)
 		return
 

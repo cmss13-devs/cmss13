@@ -1,0 +1,6 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "LV522 changes relating to the overall size of the map, redefining chokepoints in the reactor, changes to engineering and the west side of the map and removing the poplock"
+  - maptweak: "LV522, LZ1 Tunnel (the place FORECON holds) has been given fog for the start of the round meaning FORECON will have to adapt to survive."
+  - maptweak: "buffed crashed ship lootspawns on LV522"

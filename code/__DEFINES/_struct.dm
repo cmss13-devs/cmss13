@@ -3,20 +3,20 @@
 #define DEFSTRUCTPROP(type, prop, _can_qdel) \
 /datum/struct/##type/var/##prop; \
 /datum/struct/##type/add_props() { \
-    ..(); \
+	..(); \
 	can_qdel += _can_qdel; \
-    ##prop = STRUCTS.current_struct_idx++; \
+	##prop = STRUCTS.current_struct_idx++; \
 }
 
 #define ENDDEFSTRUCT(type) \
 /datum/struct/##type/proc/generate() { \
-    var/list/struct = new /list(src.len); \
-    struct[1] = #type; \
-    return struct; \
+	var/list/struct = new /list(src.len); \
+	struct[1] = #type; \
+	return struct; \
 } \
 /datum/controller/structs/var/datum/struct/##type/##type; \
 /datum/controller/structs/proc/generate_struct_##type() { \
-    ##type = new(); \
+	##type = new(); \
 }
 
 #define STRUCT(type) STRUCTS.##type.generate();

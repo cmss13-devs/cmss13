@@ -283,3 +283,12 @@
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)
+
+/datum/reagent/toxin/sepsicine
+	name = "Sepsicine"
+	id = "sepsicine"
+	description = "An aromatic substance utilized by certain types of Xenomorph, with evidence to suggestion it is a microbial toxin. It has neurotoxic properties that noticably affect pain receptors, and a foul cadaverous scent."
+	color = "#c5bc81"
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_PAINING = 4, PROPERTY_CROSSMETABOLIZING = 3)

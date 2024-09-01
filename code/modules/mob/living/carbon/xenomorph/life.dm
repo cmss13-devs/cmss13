@@ -101,7 +101,7 @@
 		var/use_current_aura = FALSE
 		var/use_leader_aura = FALSE
 		var/aura_center = src
-		if(aura_strength > aura_plasma_cost) //Ignoring pheromone underflow
+		if(aura_strength > 0) //Ignoring pheromone underflow
 			if(current_aura && plasma_stored > 5)
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
 					var/mob/living/carbon/xenomorph/queen/Q = src

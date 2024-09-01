@@ -122,7 +122,7 @@
 	. = ..()
 
 /obj/item/explosive/grenade/launch_towards(list/launch_metadata)
-	var/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	var/thrower = GETPROP(launch_metadata, thrower)
 	if(active && ismob(thrower))
 		var/mob/mob_thrower = thrower
 		mob_thrower.count_niche_stat(STATISTICS_NICHE_GRENADES)

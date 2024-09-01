@@ -415,7 +415,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 	if(!ISSTRUCT(launch_metadata, launch_metadata) || !src)
 		return
-	var/target = launch_metadata[PROP(launch_metadata, target)]
+	var/target = GETPROP(launch_metadata, target)
 	if(!target)
 		return
 

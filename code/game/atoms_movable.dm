@@ -40,7 +40,7 @@
 		qdel(I)
 	if(pulledby)
 		pulledby.stop_pulling()
-	QDEL_STRUCT(launch_metadata, launch_metadata)
+	QDEL_STRUCT(launch_metadata)
 	QDEL_NULL(em_block)
 	QDEL_NULL(emissive_overlay)
 

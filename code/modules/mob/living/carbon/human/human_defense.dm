@@ -288,7 +288,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/impact_damage = (1 + thrown_object.throwforce*THROWFORCE_COEFF)*thrown_object.throwforce*THROW_SPEED_IMPACT_COEFF*thrown_object.cur_speed
 
 	var/zone
-	var/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	var/thrower = GETPROP(launch_metadata, thrower)
 	if (istype(thrower, /mob/living))
 		var/mob/living/living_thrower = thrower
 		zone = check_zone(living_thrower.zone_selected)

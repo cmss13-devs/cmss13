@@ -65,11 +65,11 @@ do { \
 } while(FALSE);
 
 // Second struct check to handle items that LAZYREMOVE on qdel.
-#define QDEL_NULL_STRUCT(struct, type) \
+#define QDEL_NULL_STRUCT(struct) \
 do { \
 	if(struct) { \
-		for(var/i in 1 to length(struct)) { \
-			if(STRUCTS.##type.can_qdel[i] && !isnull(struct[i])) { \
+		for(var/i in STRUCT_PROP_STARTING_INDEX to length(struct)) { \
+			if(struct[1].can_qdel[i] && !isnull(struct[i])) { \
 				qdel(struct[i]); \
 			} \
 		} \
@@ -84,10 +84,10 @@ do { \
 #define QDEL_LIST_IN(L, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(______qdel_list_wrapper), L), time, TIMER_STOPPABLE)
 #define QDEL_LIST_ASSOC(L) if(L) { for(var/I in L) { qdel(L[I]); qdel(I); } L.Cut(); }
 #define QDEL_LIST_ASSOC_VAL(L) if(L) { for(var/I in L) qdel(L[I]); L.Cut(); }
-#define QDEL_STRUCT(struct, type) \
+#define QDEL_STRUCT(struct) \
 if(struct) { \
-	for(var/i in 1 to length(struct)) { \
-		if(!isnull(struct[i]) && STRUCTS.##type.can_qdel[i]) { \
+	for(var/i in STRUCT_PROP_STARTING_INDEX to length(struct)) { \
+		if(struct[1].can_qdel[i] && !isnull(struct[i])) { \
 			qdel(struct[i]); \
 		} \
 	}; \

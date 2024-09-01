@@ -43,8 +43,8 @@
 	var/dist = 2
 	var/thrower
 	if(ISSTRUCT(launch_metadata, launch_metadata))
-		dist = launch_metadata[PROP(launch_metadata, dist)]
-		thrower = launch_metadata[PROP(launch_metadata, thrower)]
+		dist = GETPROP(launch_metadata, dist)
+		thrower = GETPROP(launch_metadata, thrower)
 	var/miss_chance = min(15*(dist - 2), 0)
 
 	if (prob(miss_chance))
@@ -89,7 +89,7 @@
 	L.Move(get_step_away(L, src))
 
 /mob/living/obj_launch_collision(obj/O)
-	var/atom/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	var/atom/thrower = GETPROP(launch_metadata, thrower)
 	if(!rebounding && thrower != src)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
@@ -99,7 +99,7 @@
 
 //This is called when the mob or human is thrown into a dense turf or wall
 /mob/living/turf_launch_collision(turf/T)
-	var/atom/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	var/atom/thrower = GETPROP(launch_metadata, thrower)
 	if(!rebounding && thrower != src)
 		if(thrower)
 			last_damage_data = create_cause_data("wall tossing", thrower)

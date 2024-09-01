@@ -179,7 +179,7 @@
 			anchored = FALSE
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
-	var/source = AM.launch_metadata[PROP(launch_metadata, thrower)]
+	var/source = GETPROP(AM.launch_metadata, thrower)
 	healthcheck(user = source)
 
 /obj/structure/window/attack_hand(mob/user as mob)

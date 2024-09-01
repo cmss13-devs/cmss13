@@ -133,7 +133,7 @@
 
 /obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
 	. = ..()
-	var/user = launch_metadata[PROP(launch_metadata, thrower)]
+	var/user = GETPROP(launch_metadata, thrower)
 	if(!detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))

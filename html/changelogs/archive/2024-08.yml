@@ -455,3 +455,30 @@
 2024-08-28:
   MistChristmas:
   - spellcheck: Req vendor descs remove RO. Fix Corpsman Typo
+2024-08-29:
+  SubjectD9341:
+  - rscadd: xenos don't kill crit allies by dragging/devouring anymore
+  TheGamerdk:
+  - rscadd: CIC groundside operations console now correctly sorts FTLs and SGs
+2024-08-30:
+  FOFFLES105:
+  - bugfix: fixed issue where nightmare inserts would not spawn
+  - bugfix: moved unused nightmare inserts to "unused" folder so that they don't cause
+      errors.
+  Willzadl:
+  - qol: changed reinforced treads item description
+  cuberound:
+  - bugfix: taking apart plasteel baricade gives back 8 not 4 plasteel
+  kiVts:
+  - bugfix: ERT no longer gets one extra free member in freed mobs if the beacon wasnt
+      completely taken
+  zzzmike:
+  - bugfix: CL intro text is more clear regarding legal orders
+2024-08-31:
+  Git-Nivrak:
+  - bugfix: Fixes crates showing up pitch black while the ASRS platform is moving
+  Steelpoint:
+  - balance: If the 'Faction Clash' human versus human game mode is enabled, all marine
+      armours will have their defensive values significantly buffed to make marine
+      armour far more valuable and effective in resisting permanent damage. The average
+      Marine should experience less fractures and other permanent wounds from gunfire.

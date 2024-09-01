@@ -44,3 +44,79 @@
 /datum/decorator/gamemode/decorate(atom/object)
 	for(var/edit in edits)
 		object.vars[edit] = edits[edit]
+
+//*********************** Human Versus Human ***********************//
+//************ USCM Armour Values ************//
+
+//**** Medium Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/medium, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Light Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/light, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUMLOW),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_MEDIUMHIGH)
+))
+
+//**** Heavy Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/heavy, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Smartgunner ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/smartgunner, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Military Police and Command ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/MP, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUMHIGH),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** B18 Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/specialist, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGHPLUS),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGHPLUS)
+))
+
+//**** Grenadier Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M3G, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** RPG Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M3T, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Scout Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M3S, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Sniper Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/ghillie, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//**** Pyro Spec Armor ****//
+GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M35, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+//*********************** ------------------ ***********************//

@@ -329,6 +329,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Lucky feather, blue"
 	path = /obj/item/prop/helmetgarb/lucky_feather/blue
 
+/datum/gear/helmet_garb/lucky_feather/squadfeather
+	display_name = "Lucky feather, squad specific"
+	path = /obj/item/prop/helmetgarb/lucky_feather/squadfeather
+
 /datum/gear/helmet_garb/broken_nvgs
 	display_name = "Night vision goggles, broken"
 	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic
@@ -499,6 +503,18 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Card, ace of spades"
 	path = /obj/item/toy/handcard/aceofspades
 
+/datum/gear/toy/card/ace_of_clubs
+	display_name = "Card, ace of clubs"
+	path = /obj/item/toy/handcard/aceofclubs
+
+/datum/gear/toy/card/ace_of_hearts
+	display_name = "Card, ace of hearts"
+	path = /obj/item/toy/handcard/aceofhearts
+
+/datum/gear/toy/card/ace_of_diamonds
+	display_name = "Card, ace of diamonds"
+	path = /obj/item/toy/handcard/aceofdiamonds
+
 /datum/gear/toy/card/uno_reverse_red
 	display_name = "Card, Uno Reverse - red"
 	path = /obj/item/toy/handcard/uno_reverse_red
@@ -549,7 +565,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 
 /datum/gear/toy/pride
 	display_name = "Box of Prideful Crayons"
-	path = /obj/item/storage/box/pride
+	path = /obj/item/storage/fancy/crayons/pride
 
 /datum/gear/plush
 	category = "Plushies"
@@ -583,6 +599,18 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/plush/rock
 	display_name = "Rock plush"
 	path = /obj/item/toy/plush/rock
+
+/datum/gear/plush/axolotl
+	display_name = "Axolotl plush"
+	path = /obj/item/toy/plush/axolotl
+
+/datum/gear/plush/slugcat
+	display_name = "Slugcat plush"
+	path = /obj/item/toy/plush/slugcat
+
+/datum/gear/plush/fox
+	display_name = "Fox plush"
+	path = /obj/item/toy/plush/fox
 
 /datum/gear/plush/therapy
 	display_name = "Therapy plush"

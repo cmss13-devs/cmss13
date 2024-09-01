@@ -83,6 +83,7 @@
 	uses = 0
 
 /obj/item/toy/crayon/pride/pan
+	desc = "This crayon can perfectly draw on everything. Almost like it doesnt care on what it draws, and is just happy to draw."
 	icon_state = "crayonpan"
 	crayon_color = "#da1778"
 	shade_color = "#229bff"
@@ -90,6 +91,7 @@
 	uses = 0
 
 /obj/item/toy/crayon/pride/ace
+	desc = "It seems like it doesnt really care about drawing. Almost like its happy without drawing."
 	icon_state = "crayonace"
 	crayon_color = "#272727"
 	shade_color = "#570c3e"
@@ -97,6 +99,7 @@
 	uses = 0
 
 /obj/item/toy/crayon/pride/trans
+	desc = "It looks like this crayon used to be a pencil. It looks happier now."
 	icon_state = "crayontrans"
 	crayon_color = "#f57ecd"
 	shade_color = "#4bbdeb"
@@ -104,6 +107,7 @@
 	uses = 0
 
 /obj/item/toy/crayon/pride/enby
+	desc = "Your not really sure if this is a crayon or a pencil. Seems like non really."
 	icon_state = "crayonenby"
 	crayon_color = "#272727"
 	shade_color = "#e9cf3a"
@@ -111,6 +115,7 @@
 	uses = 0
 
 /obj/item/toy/crayon/pride/fluid
+	desc = "It looks like a crayon, but with a second look it seems like a pencil. But the next look it seems like a crayon again. Almost like its both."
 	icon_state = "crayonfluid"
 	crayon_color = "#b64791"
 	shade_color = "#000FFF"

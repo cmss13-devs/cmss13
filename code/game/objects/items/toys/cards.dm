@@ -285,6 +285,18 @@
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
 
+/obj/item/toy/handcard/aceofclubs
+	icon_state = "clubs_ace"
+	desc = "An Ace of Clubs"
+
+/obj/item/toy/handcard/aceofhearts
+	icon_state = "hearts_ace"
+	desc = "An Ace of Hearts"
+
+/obj/item/toy/handcard/aceofdiamonds
+	icon_state = "diamonds_ace"
+	desc = "An Ace of Diamonds"
+
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."

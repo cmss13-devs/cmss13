@@ -525,6 +525,21 @@
 	desc = "It says it is a plush on the tag, at least."
 	icon_state = "rock"
 
+/obj/item/toy/plush/axolotl// More PLUSHIES!!! If you say we have enough your a liar/in denial
+	name = "axolotl plush"
+	desc = "A plush doll of a amphibian. Supposedly they where quite cute before they went extinct."
+	icon_state = "axolotl"
+
+/obj/item/toy/plush/slugcat
+	name = "slugcat plush"
+	desc = "A little plushie resembling somewhat a cat, just somehow cuter. You hope nothing bad ever happens to it."
+	icon_state = "slugcat"
+
+/obj/item/toy/plush/fox
+	name = "fox plush"
+	desc = "Its a plush depitcting a little fox cub. Almost as cute as they are little."
+	icon_state = "fox"
+
 /obj/item/toy/plush/therapy
 	name = "therapy plush"
 	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles."
@@ -575,6 +590,9 @@
 		/obj/item/toy/plush/shark,
 		/obj/item/toy/plush/moth,
 		/obj/item/toy/plush/rock,
+		/obj/item/toy/plush/axolotl,
+		/obj/item/toy/plush/slugcat,
+		/obj/item/toy/plush/fox,
 	)
 	///Therapy plushies left separately to not flood the entire list
 	var/list/therapy_plush_list = list(

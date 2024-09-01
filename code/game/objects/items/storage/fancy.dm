@@ -116,6 +116,29 @@
 				return
 	..()
 
+/obj/item/storage/fancy/crayons/pride
+	name = "box of prideful crayons"
+	desc = "A box of every flavor of pride. You can almost taste the ranibow with these. "
+	icon_state = "crayonbox_pride"
+	storage_slots = 8
+	can_hold = list(/obj/item/toy/crayon/pride)
+
+/obj/item/storage/fancy/crayons/pride/fill_preset_inventory()
+	new /obj/item/toy/crayon/pride/gay(src)
+	new /obj/item/toy/crayon/pride/lesbian(src)
+	new /obj/item/toy/crayon/pride/bi(src)
+	new /obj/item/toy/crayon/pride/ace(src)
+	new /obj/item/toy/crayon/pride/pan(src)
+	new /obj/item/toy/crayon/pride/trans(src)
+	new /obj/item/toy/crayon/pride/enby(src)
+	new /obj/item/toy/crayon/pride/fluid(src)
+
+/obj/item/storage/fancy/crayons/update_icon()
+	overlays = list() //resets list
+	overlays += image('icons/obj/items/crayons.dmi',"crayonbox_pride")
+	for(var/obj/item/toy/crayon/crayon in contents)
+		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
+
 // CIGARETTES BOX
 
 /obj/item/storage/fancy/cigarettes

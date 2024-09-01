@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Fixes crates showing up pitch black while the ASRS platform is moving"

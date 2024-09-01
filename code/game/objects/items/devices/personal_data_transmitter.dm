@@ -161,6 +161,7 @@
 	name = "\improper Boots! PDT/L Battle Buddy kit"
 	desc = "Contains a PDT/L set, consisting of the PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
 	desc_lore = "This kit was distributed in the 200th (Season 4) Issue of the Boots! magazine, 'Privates die without their battlebuddy!', to drive up sales. Many have noted the poor battery life of these units, leading many to speculate that these were faulty units that were repackaged and shipped off to various USCM-adjacent mil-surplus good stores. The Department of the Navy Observation in Photographs (DNOP) has not released a statement regarding these theories."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pdt_box"
 	can_hold = list(/obj/item/device/pdt_locator_tube, /obj/item/clothing/accessory/pdt_bracelet)
 	foldable = /obj/item/stack/sheet/cardboard

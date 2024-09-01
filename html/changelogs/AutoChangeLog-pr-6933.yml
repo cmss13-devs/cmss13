@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - bugfix: "Fixed heavy sniper spec opening up the wrong specialist slot on admin cryo"

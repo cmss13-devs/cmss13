@@ -410,13 +410,17 @@
 
 	..()
 
-/mob/living/launch_towards(datum/launch_metadata/LM)
+/mob/living/launch_towards(list/launch_metadata)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	if(!istype(LM) || !LM.target || !src)
+	if(!ISSTRUCT(launch_metadata, launch_metadata) || !src)
 		return
+	var/target = launch_metadata[PROP(launch_metadata, target)]
+	if(!target)
+		return
+
 	if(buckled)
-		LM.invoke_end_throw_callbacks(src)
+		invoke_end_throw_callbacks(launch_metadata, src)
 		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.

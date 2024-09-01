@@ -265,96 +265,98 @@ Contains most of the procs that are called when a mob is attacked by something
 	return TRUE
 
 //this proc handles being hit by a thrown atom
-/mob/living/carbon/human/hitby(atom/movable/AM)
-	if (!isobj(AM))
+/mob/living/carbon/human/hitby(atom/movable/thrown_atom)
+	if (!isobj(thrown_atom))
 		return
 
-	var/obj/O = AM
-	var/datum/launch_metadata/LM = O.launch_metadata
+	var/obj/thrown_object = thrown_atom
+	var/list/launch_metadata = thrown_object.launch_metadata
 
 	//empty active hand and we're in throw mode
-	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
+	var/can_catch = (!(thrown_object.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
 	if (throw_mode && can_catch && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
-		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
+		!is_mob_incapacitated() && isturf(thrown_object.loc) && put_in_active_hand(thrown_object)
 	)
-		visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
+		visible_message(SPAN_WARNING("[src] catches [thrown_object]!"), null, null, 5)
 		toggle_throw_mode(THROW_MODE_OFF)
 		return
 
 	var/dtype = BRUTE
-	if (istype(O, /obj/item/weapon))
-		var/obj/item/weapon/W = O
-		dtype = W.damtype
-	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
+	if (istype(thrown_object, /obj/item/weapon))
+		var/obj/item/weapon/thrown_weapon = thrown_object
+		dtype = thrown_weapon.damtype
+	var/impact_damage = (1 + thrown_object.throwforce*THROWFORCE_COEFF)*thrown_object.throwforce*THROW_SPEED_IMPACT_COEFF*thrown_object.cur_speed
 
 	var/zone
-	if (istype(LM.thrower, /mob/living))
-		var/mob/living/L = LM.thrower
-		zone = check_zone(L.zone_selected)
+	var/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	if (istype(thrower, /mob/living))
+		var/mob/living/living_thrower = thrower
+		zone = check_zone(living_thrower.zone_selected)
 	else
 		zone = rand_zone("chest", 75) //Hits a random part of the body, geared towards the chest
 
 	if (!zone)
-		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
+		visible_message(SPAN_NOTICE("\The [thrown_object] misses [src] narrowly!"), null, null, 5)
 		return
-	O.throwing = FALSE //it hit, so stop moving
+	thrown_object.throwing = FALSE //it hit, so stop moving
 
-	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
+	if ((thrower != src) && check_shields(impact_damage, "[thrown_object]"))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)
 	var/hit_area = affecting.display_name
 
-	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)
+	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [thrown_object]."), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
-	var/weapon_sharp = is_sharp(O)
-	var/weapon_edge = has_edge(O)
+	var/weapon_sharp = is_sharp(thrown_object)
+	var/weapon_edge = has_edge(thrown_object)
 
 	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
-	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
+	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=thrown_object)
 
 	var/last_damage_source = null
 	var/last_damage_mob = null
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
 		animation_flash_color(src)
-		var/obj/item/I = O
-		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
+		var/obj/item/thrown_item = thrown_object
+		if(istype(thrown_item) && thrown_item.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
 			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, 5, falloff = 2)
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, 5, falloff = 2)
 
-	if (ismob(LM.thrower))
-		var/mob/M = LM.thrower
-		var/client/assailant = M.client
+	if (ismob(thrower))
+		var/mob/mob_thrower = thrower
+		var/client/assailant = mob_thrower.client
 		if (damage > 5)
-			last_damage_mob = M
-			M.track_hit(initial(O.name))
-			if (M.faction == faction)
-				M.track_friendly_fire(initial(O.name))
+			last_damage_mob = mob_thrower
+			mob_thrower.track_hit(initial(thrown_object.name))
+			if (mob_thrower.faction == faction)
+				mob_thrower.track_friendly_fire(initial(thrown_object.name))
 		if (assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [thrown_object], thrown by [key_name(mob_thrower)]</font>")
+			mob_thrower.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [thrown_object]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
-				msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				msg_admin_attack("[key_name(src)] was hit by \a [thrown_object], thrown by [key_name(mob_thrower)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
-	if(last_damage_source)
+	if (last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, last_damage_mob)
 
 	//thrown weapon embedded object code.
-	if (dtype == BRUTE && istype(O,/obj/item))
-		var/obj/item/I = O
-		var/sharp = is_sharp(I)
+	if (dtype == BRUTE && istype(thrown_object, /obj/item))
+		var/obj/item/thrown_item = thrown_object
+		var/sharp = is_sharp(thrown_item)
+		var/weight_class = thrown_item.w_class
 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
-		var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-		var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
+		var/embed_chance = sharp ? damage/weight_class : damage/(weight_class*3)
+		var/embed_threshold = sharp ? 5*weight_class : 15*weight_class
 
 		//Sharp objects will always embed if they do enough damage.
 		//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-		if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
-			affecting.embed(I)
+		if (!isyautja(src) && ((sharp && prob(damage/(10*weight_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			affecting.embed(thrown_item)
 
 /mob/living/carbon/human/proc/get_id_faction_group()
 	var/obj/item/card/id/C = wear_id

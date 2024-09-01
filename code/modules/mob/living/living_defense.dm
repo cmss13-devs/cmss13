@@ -39,10 +39,12 @@
 		dtype = W.damtype
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
-	var/datum/launch_metadata/LM = O.launch_metadata
+	var/list/launch_metadata = O.launch_metadata
 	var/dist = 2
-	if(istype(LM))
-		dist = LM.dist
+	var/thrower
+	if(ISSTRUCT(launch_metadata, launch_metadata))
+		dist = launch_metadata[PROP(launch_metadata, dist)]
+		thrower = launch_metadata[PROP(launch_metadata, thrower)]
 	var/miss_chance = min(15*(dist - 2), 0)
 
 	if (prob(miss_chance))
@@ -64,31 +66,31 @@
 
 	O.throwing = 0 //it hit, so stop moving
 
-	var/mob/M
-	if(ismob(LM.thrower))
-		M = LM.thrower
+	var/mob/mob_thrower
+	if(ismob(thrower))
+		mob_thrower = thrower
 		if(damage_done > 5)
-			M.track_hit(initial(O.name))
-			if (M.faction == faction)
-				M.track_friendly_fire(initial(O.name))
-		var/client/assailant = M.client
+			mob_thrower.track_hit(initial(O.name))
+			if (mob_thrower.faction == faction)
+				mob_thrower.track_friendly_fire(initial(O.name))
+		var/client/assailant = mob_thrower.client
 		if(assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(mob_thrower)]</font>")
+			mob_thrower.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				if(src.loc)
-					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(mob_thrower)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 				else
-					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(mob_thrower)] in [get_area(mob_thrower)] ([mob_thrower.loc.x],[mob_thrower.loc.y],[mob_thrower.loc.z]).", mob_thrower.loc.x, mob_thrower.loc.y, mob_thrower.loc.z)
 	if(last_damage_source)
-		last_damage_data = create_cause_data(last_damage_source, M)
+		last_damage_data = create_cause_data(last_damage_source, mob_thrower)
 
 /mob/living/mob_launch_collision(mob/living/L)
 	L.Move(get_step_away(L, src))
 
 /mob/living/obj_launch_collision(obj/O)
-	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+	var/atom/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	if(!rebounding && thrower != src)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
@@ -97,10 +99,10 @@
 
 //This is called when the mob or human is thrown into a dense turf or wall
 /mob/living/turf_launch_collision(turf/T)
-	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
-		if(LM.thrower)
-			last_damage_data = create_cause_data("wall tossing", LM.thrower)
+	var/atom/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	if(!rebounding && thrower != src)
+		if(thrower)
+			last_damage_data = create_cause_data("wall tossing", thrower)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [T]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt

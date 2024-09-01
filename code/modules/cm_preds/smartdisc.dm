@@ -20,7 +20,7 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(list/launch_metadata)
 	..()
 	var/mob/user = usr
 	if(!active && isyautja(user) && (icon_state == initial(icon_state)))

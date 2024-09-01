@@ -121,10 +121,11 @@
 		dangerous = FALSE
 	. = ..()
 
-/obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
-	if(active && ismob(LM.thrower))
-		var/mob/M = LM.thrower
-		M.count_niche_stat(STATISTICS_NICHE_GRENADES)
+/obj/item/explosive/grenade/launch_towards(list/launch_metadata)
+	var/thrower = launch_metadata[PROP(launch_metadata, thrower)]
+	if(active && ismob(thrower))
+		var/mob/mob_thrower = thrower
+		mob_thrower.count_niche_stat(STATISTICS_NICHE_GRENADES)
 	. = ..()
 
 

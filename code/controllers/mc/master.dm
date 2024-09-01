@@ -123,6 +123,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	if(!GLOB)
 		new /datum/controller/global_vars
+	if(!STRUCTS)
+		new /datum/controller/structs
 
 /datum/controller/master/Destroy()
 	..()

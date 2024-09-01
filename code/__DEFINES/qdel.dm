@@ -56,8 +56,40 @@
 #define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (time) > GC_FILTER_QUEUE ? WEAKREF(item) : item), time, TIMER_STOPPABLE)
 #define QDEL_IN_CLIENT_TIME(item, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), item), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 #define QDEL_NULL(item) qdel(item); item = null
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) }}; if(x) {x.Cut(); x = null } // Second x check to handle items that LAZYREMOVE on qdel.
+
+// Second x check to handle items that LAZYREMOVE on qdel.
+#define QDEL_NULL_LIST(x) \
+do { \
+	if(x) { for(var/y in x) { qdel(y) }}; \
+	if(x) {x.Cut(); x = null } \
+} while(FALSE);
+
+// Second struct check to handle items that LAZYREMOVE on qdel.
+#define QDEL_NULL_STRUCT(struct, type) \
+do { \
+	if(struct) { \
+		for(var/i in 1 to length(struct)) { \
+			if(STRUCTS.##type.can_qdel[i] && !isnull(struct[i])) { \
+				qdel(struct[i]); \
+			} \
+		} \
+	}; \
+	if(struct) { \
+		struct.Cut(); \
+		struct = null; \
+	}; \
+} while(FALSE);
+
 #define QDEL_LIST(L) if(L) { for(var/I in L) qdel(I); L.Cut(); }
 #define QDEL_LIST_IN(L, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(______qdel_list_wrapper), L), time, TIMER_STOPPABLE)
 #define QDEL_LIST_ASSOC(L) if(L) { for(var/I in L) { qdel(L[I]); qdel(I); } L.Cut(); }
 #define QDEL_LIST_ASSOC_VAL(L) if(L) { for(var/I in L) qdel(L[I]); L.Cut(); }
+#define QDEL_STRUCT(struct, type) \
+if(struct) { \
+	for(var/i in 1 to length(struct)) { \
+		if(!isnull(struct[i]) && STRUCTS.##type.can_qdel[i]) { \
+			qdel(struct[i]); \
+		} \
+	}; \
+	struct.Cut(); \
+}

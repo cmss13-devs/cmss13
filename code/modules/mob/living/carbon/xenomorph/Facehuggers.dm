@@ -209,7 +209,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
+/obj/item/clothing/mask/facehugger/launch_towards(list/launch_metadata)
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
 	..()

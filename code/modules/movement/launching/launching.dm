@@ -1,36 +1,8 @@
-/datum/launch_metadata
-	// Parameters
-	var/pass_flags = NO_FLAGS // Pass flags to add temporarily
-	var/call_all = FALSE // Whether to perform all callback calls or none of them
-
-	var/atom/target
-	var/range
-	var/speed
-	var/atom/thrower
-	var/spin
-
-	// A list of callbacks to invoke when an atom of a specific type is hit (keys are typepaths and values are proc paths)
-	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
-	// the appropriate mob/obj/turf collision procs
-	// The callbacks can be standard or dynamic, though dynamic callbacks can only be called by the atom being thrown
-	var/list/collision_callbacks
-
-	/// A list of callbacks to invoke when the throw completes successfully
-	var/list/end_throw_callbacks
-
-	// Tracked information
-	var/dist = 0
-
-/datum/launch_metadata/Destroy(force, ...)
-	target = null
-	thrower = null
-	return ..()
-
-
-/datum/launch_metadata/proc/get_collision_callbacks(atom/A)
+/proc/get_collision_callbacks(list/launch_metadata, atom/A)
 	var/highest_matching = null
 	var/list/matching = list()
 
+	var/collision_callbacks = launch_metadata[PROP(launch_metadata, collision_callbacks)]
 	if (isnull(collision_callbacks))
 		return null
 
@@ -42,6 +14,7 @@
 				highest_matching = path
 			matching += path
 
+	var/call_all = launch_metadata[PROP(launch_metadata, call_all)]
 	if (!call_all)
 		if (isnull(highest_matching))
 			return null
@@ -56,7 +29,8 @@
 
 /// Invoke end_throw_callbacks on this metadata.
 /// Takes argument of type /atom/movable
-/datum/launch_metadata/proc/invoke_end_throw_callbacks(atom/movable/movable_atom)
+/proc/invoke_end_throw_callbacks(list/launch_metadata, atom/movable/movable_atom)
+	var/end_throw_callbacks = launch_metadata[PROP(launch_metadata, end_throw_callbacks)]
 	if(length(end_throw_callbacks))
 		for(var/datum/callback/callback as anything in end_throw_callbacks)
 			if(istype(callback, /datum/callback/dynamic))
@@ -64,14 +38,16 @@
 			else
 				callback.Invoke()
 
-/atom/movable/var/datum/launch_metadata/launch_metadata = null
+/// Struct containing information to process when a mob is thrown
+/// and how impacting mobs react to it
+/atom/movable/var/list/launch_metadata
 
 //called when src is thrown into hit_atom
 /atom/movable/proc/launch_impact(atom/hit_atom)
 	if (isnull(launch_metadata))
 		CRASH("launch_impact called without any stored metadata")
 
-	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
+	var/list/collision_callbacks = get_collision_callbacks(launch_metadata, hit_atom)
 	if (islist(collision_callbacks))
 		for(var/datum/callback/CB as anything in collision_callbacks)
 			if(istype(CB, /datum/callback/dynamic))
@@ -117,14 +93,13 @@
 /atom/movable/proc/rebound(oldloc, launched_speed)
 	if (loc == oldloc)
 		rebounding = TRUE
-		var/datum/launch_metadata/LM = new()
-		LM.target = get_step(src, turn(dir, 180))
-		LM.range = 1
-		LM.speed = launched_speed
-		LM.pass_flags = PASS_UNDER
-		LM.pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
+		var/list/launch_metadata = STRUCT(launch_metadata)
+		launch_metadata[PROP(launch_metadata, target)] = get_step(src, turn(dir, 180))
+		launch_metadata[PROP(launch_metadata, range)] = 1
+		launch_metadata[PROP(launch_metadata, speed)] = launched_speed
+		launch_metadata[PROP(launch_metadata, pass_flags)] = PASS_UNDER|(ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
 
-		launch_towards(LM)
+		launch_towards(launch_metadata)
 
 /atom/movable/proc/try_to_throw(mob/living/user)
 	return TRUE
@@ -138,68 +113,77 @@
 		if (HIGH_LAUNCH)
 			temp_pass_flags |= PASS_HIGH_OVER
 
-	var/datum/launch_metadata/LM = new()
-	LM.pass_flags = temp_pass_flags
-	LM.target = target
-	LM.range = range
-	LM.speed = speed
-	LM.thrower = thrower
-	LM.spin = spin
+	var/list/launch_metadata = STRUCT(launch_metadata)
+	launch_metadata[PROP(launch_metadata, pass_flags)] = temp_pass_flags
+	launch_metadata[PROP(launch_metadata, target)] = target
+	launch_metadata[PROP(launch_metadata, range)] = range
+	launch_metadata[PROP(launch_metadata, speed)] = speed
+	launch_metadata[PROP(launch_metadata, thrower)] = thrower
+	launch_metadata[PROP(launch_metadata, spin)] = spin
 	if(end_throw_callbacks)
-		LM.end_throw_callbacks = end_throw_callbacks
+		launch_metadata[PROP(launch_metadata, end_throw_callbacks)] = end_throw_callbacks
 	if(collision_callbacks)
-		LM.collision_callbacks = collision_callbacks
+		launch_metadata[PROP(launch_metadata, collision_callbacks)] = collision_callbacks
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, launch_metadata) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-	launch_towards(LM)
+	launch_towards(launch_metadata)
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/LM)
-	if (!istype(LM))
+/atom/movable/proc/launch_towards(list/new_launch_metadata)
+	if (!ISSTRUCT(new_launch_metadata, launch_metadata))
 		CRASH("invalid launch_metadata passed to launch_towards")
-	if (!LM.target || !src)
+
+	var/target = new_launch_metadata[PROP(launch_metadata, target)]
+	if (!target || !src)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
+	var/thrower = new_launch_metadata[PROP(launch_metadata, thrower)]
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, thrower) & COMPONENT_CANCEL_THROW)
 		return
 
 	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
-	if (istype(launch_metadata))
-		qdel(launch_metadata)
-	launch_metadata = LM
+	if (ISSTRUCT(launch_metadata, launch_metadata))
+		QDEL_STRUCT(launch_metadata, launch_metadata)
+	launch_metadata = new_launch_metadata
 
-	if (LM.spin)
-		animation_spin(5, 1 + min(1, LM.range/20))
+	var/spin = new_launch_metadata[PROP(launch_metadata, spin)]
+	if (spin)
+		var/range = new_launch_metadata[PROP(launch_metadata, spin)]
+		animation_spin(5, 1 + min(1, range/20))
 
 	var/old_speed = cur_speed
-	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	var/metadata_speed = new_launch_metadata[PROP(launch_metadata, speed)]
+	cur_speed = clamp(metadata_speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
-	var/pass_flags = LM.pass_flags
+	var/pass_flags = new_launch_metadata[PROP(launch_metadata, pass_flags)]
 
 	throwing = TRUE
 
 	add_temp_pass_flags(pass_flags)
 
-	var/turf/start_turf = get_step_towards(src, LM.target)
-	var/list/turf/path = get_line(start_turf, LM.target)
+	var/turf/start_turf = get_step_towards(src, target)
+	var/list/turf/path = get_line(start_turf, target)
 	var/last_loc = loc
 
 	var/early_exit = FALSE
-	LM.dist = 0
+	launch_metadata[PROP(launch_metadata, dist)] = 0
 	for (var/turf/T in path)
 		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
 			break
-		if (!LM || QDELETED(LM))
+		if (!ISSTRUCT(launch_metadata, launch_metadata))
 			early_exit = TRUE
 			break
-		if (LM.dist >= LM.range)
+		var/dist = launch_metadata[PROP(launch_metadata, dist)]
+		var/range = launch_metadata[PROP(launch_metadata, range)]
+		if (dist >= range)
 			break
 		if (!Move(T)) // If this returns FALSE, then a collision happened
 			break
 		last_loc = loc
-		if (++LM.dist >= LM.range)
+		dist = ++launch_metadata[PROP(launch_metadata, dist)]
+		if (dist >= range)
 			break
 		sleep(delay)
 
@@ -208,10 +192,10 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
+		var/atom/hit_atom = ismob(target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
 		if(!hit_atom)
 			for(var/atom/A in T)
-				if(A == LM.target)
+				if(A == target)
 					hit_atom = A
 					break
 		launch_impact(hit_atom)
@@ -220,8 +204,8 @@
 		rebounding = FALSE
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
-		LM.invoke_end_throw_callbacks(src)
-	QDEL_NULL(launch_metadata)
+		invoke_end_throw_callbacks(new_launch_metadata, src)
+	QDEL_NULL_STRUCT(launch_metadata, launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/throw_direction = pick(CARDINAL_ALL_DIRS)

@@ -779,15 +779,15 @@
 			return
 		var/mob/unlucky_mob = AM
 		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
-		var/datum/launch_metadata/LM = new()
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
+		var/list/launch_metadata = STRUCT(launch_metadata)
+		launch_metadata[PROP(launch_metadata, target)] = target_turf
+		launch_metadata[PROP(launch_metadata, range)] = get_dist(AM.loc, target_turf)
+		launch_metadata[PROP(launch_metadata, speed)] = SPEED_FAST
+		launch_metadata[PROP(launch_metadata, thrower)] = unlucky_mob
+		launch_metadata[PROP(launch_metadata, spin)] = TRUE
+		launch_metadata[PROP(launch_metadata, pass_flags)] = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
-		unlucky_mob.launch_towards(LM)
+		unlucky_mob.launch_towards(launch_metadata)
 		return
 
 	if(world.time % 5)

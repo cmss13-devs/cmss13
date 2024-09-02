@@ -207,6 +207,10 @@
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
 		undeploy_sentry()
 
+/obj/structure/dropship_equipment/sentry_holder/on_arrival()
+	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
+		deploy_sentry()
+
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
 	if(deployed_turret)
 		if(deployment_cooldown > world.time)
@@ -353,6 +357,10 @@
 /obj/structure/dropship_equipment/mg_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically undeployed
 		undeploy_mg()
+
+/obj/structure/dropship_equipment/mg_holder/on_arrival()
+	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically deployed
+		deploy_mg(null)
 
 /obj/structure/dropship_equipment/mg_holder/attack_hand(user as mob)
 	if(ship_base)

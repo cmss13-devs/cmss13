@@ -24,7 +24,7 @@ const SentryPanel = (props: DropshipEquipment) => {
           </Stack.Item>
           <Stack.Item>
             <h3>
-              Ammo {sentryData.rounds} / {sentryData.max_rounds}
+              Ammo: {sentryData.rounds} / {sentryData.max_rounds}
             </h3>
           </Stack.Item>
           <Stack.Item>
@@ -37,6 +37,11 @@ const SentryPanel = (props: DropshipEquipment) => {
                 : sentryData.deployed === 1
                   ? 'STANDBY'
                   : 'OFFLINE'}
+            </h3>
+          </Stack.Item>
+          <Stack.Item>
+            <h3>
+              Auto-Deploy: {sentryData.auto_deploy === 1 ? 'ENABLED' : 'DISABLED'}
             </h3>
           </Stack.Item>
         </Stack>
@@ -58,6 +63,9 @@ export const SentryMfdPanel = (props: MfdProps) => {
   const deployLabel =
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 
+  const autoDeployLabel =
+    (sentry?.data?.auto_deploy ?? 0) === 1 ? 'AUTO-DEPLOY OFF' : 'AUTO-DEPLOY ON';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -74,6 +82,11 @@ export const SentryMfdPanel = (props: MfdProps) => {
           children: sentry?.data?.camera_available ? 'CAMERA' : undefined,
           onClick: () =>
             act('set-camera-sentry', { equipment_id: sentry?.mount_point }),
+        },
+        {
+          children: autoDeployLabel,
+          onClick: () =>
+            act('auto-deploy', { equipment_id: sentry?.mount_point }),
         },
       ]}
       bottomButtons={[

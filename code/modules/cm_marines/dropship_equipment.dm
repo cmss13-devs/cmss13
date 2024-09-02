@@ -168,6 +168,7 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
+	var/auto_deploy = TRUE // allows dropship turrets to be auto deployed, a toggle
 
 /obj/structure/dropship_equipment/sentry_holder/Initialize()
 	. = ..()
@@ -196,6 +197,7 @@
 	.["health"] = defense.health
 	.["health_max"] = defense.health_max
 	.["deployed"] = is_deployed
+	.["auto_deploy"] = auto_deploy
 
 	if(istype(defense, /obj/structure/machinery/defenses/sentry))
 		var/obj/structure/machinery/defenses/sentry/sentrygun = defense
@@ -208,7 +210,7 @@
 		undeploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/on_arrival()
-	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
+	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
 		deploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
@@ -327,6 +329,7 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
+	var/auto_deploy = TRUE
 
 /obj/structure/dropship_equipment/mg_holder/Initialize()
 	. = ..()
@@ -348,6 +351,7 @@
 	.["rounds"] = deployed_mg.rounds
 	.["max_rounds"] = deployed_mg.rounds_max
 	.["deployed"] = is_deployed
+	.["auto_deploy"] = auto_deploy
 
 /obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
 	. = ..()
@@ -359,7 +363,7 @@
 		undeploy_mg()
 
 /obj/structure/dropship_equipment/mg_holder/on_arrival()
-	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically deployed
+	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically deployed
 		deploy_mg(null)
 
 /obj/structure/dropship_equipment/mg_holder/attack_hand(user as mob)

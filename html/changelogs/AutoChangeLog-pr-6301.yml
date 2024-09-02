@@ -1,8 +1,0 @@
-author: "SpypigDev"
-delete-after: True
-changes:
-  - refactor: "SO armory vendor code refactored into the main SO gear vendor code"
-  - balance: "XO weapon and clothing vendors fitted with a more modernized equipment set"
-  - balance: "XO weapon vendor now offers Medic or Engineer essentials sets"
-  - bugfix: "Vending an autoinjector pouch as SO or XO now produces a full pouch, rather than empty"
-  - balance: "SO's mod88 removed from cryo spawn and moved to their vendor instead"

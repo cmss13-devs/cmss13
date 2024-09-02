@@ -261,12 +261,12 @@
 
 		if(istype(src,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
 			var/mob/living/carbon/human/H = src
-			if((istype(turf,/turf/open/floor)) && (src.lastarea.has_gravity == 0) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
+			if((istype(turf,/turf/open/floor)) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 				continue
 
 
 		else
-			if((istype(turf,/turf/open/floor)) && (src.lastarea && src.lastarea.has_gravity == 0)) // No one else gets a chance.
+			if(istype(turf,/turf/open/floor)) // No one else gets a chance.
 				continue
 
 

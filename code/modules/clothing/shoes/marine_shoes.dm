@@ -99,6 +99,12 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
+/obj/item/clothing/shoes/stompers
+	name = "Reebok Stompers"
+	desc = "A pair of sneakers designed to elicit a morale boosting response within anyone that witnesses them."
+	icon_state = "stompers"
+	flags_inventory = NOSLIPPING
+
 /obj/item/clothing/shoes/veteran/pmc
 	name = "polished shoes"
 	desc = "The height of fashion, but these look to be woven with protective fiber."
@@ -163,6 +169,8 @@
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
+
+/obj/item/clothing/shoes/marine/corporate/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress

@@ -337,12 +337,6 @@
 
 	//Animate the visuals from starting position to new position
 
-	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
-		alpha = alpha_new
-		pixel_x = pixel_x_rel_new
-		pixel_y = pixel_y_rel_new
-		return
-
 	var/anim_time = delta_time * 0.1
 	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
 
@@ -660,7 +654,7 @@
 
 //Used by machines and structures to calculate shooting past cover
 /obj/proc/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
-	if(istype(P.shot_from, /obj/item/hardpoint) || istype(P.ammo, /datum/ammo/xeno)) //anything shot from a tank or a xeno gets a bonus to bypassing cover
+	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
 	if(distance < 1 || (distance > 3 && cade_direction_correct))
@@ -668,9 +662,10 @@
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
 	var/effective_accuracy = P.get_effective_accuracy()
+	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
-	var/hitchance = min(projectile_coverage, (projectile_coverage * distance / (projectile_coverage_distance_limit * (cade_direction_correct ? 3 : 1))) + accuracy_factor * (1 - effective_accuracy/100))
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))

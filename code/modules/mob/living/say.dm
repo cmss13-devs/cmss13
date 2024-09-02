@@ -62,6 +62,24 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /proc/prefix_to_channel(prefix)
 	return GLOB.department_radio_keys[prefix]
 
+/proc/filter_message(client/user, message)
+	if(!config.word_filter_regex)
+		return TRUE
+
+	if(config.word_filter_regex.Find(message))
+		to_chat(user,
+			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
+			)
+		to_chat(user,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
+			)
+		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
+		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		return FALSE
+
+	return TRUE
+
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
 
@@ -78,6 +96,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
+
+	if(!filter_message(src, message))
+		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
 

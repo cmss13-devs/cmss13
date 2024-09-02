@@ -1,5 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - balance: "Healer drone apply salve now has a 1 second cooldown."
-  - balance: "Salve wound now heals slightly quicker."

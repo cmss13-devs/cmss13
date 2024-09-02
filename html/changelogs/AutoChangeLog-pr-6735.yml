@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - balance: "The VP78 pistol will now deal maximum damage up to 6 tiles from the shooters position before experiencing gradual damage falloff. This is up from a previous maximum range of 3 tiles."

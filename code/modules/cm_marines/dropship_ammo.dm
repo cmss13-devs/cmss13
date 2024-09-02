@@ -161,9 +161,7 @@
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 
@@ -243,9 +241,7 @@
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(3, impact)) //This is its area of effect
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(3, impact) //This is its area of effect
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
 		var/turf/U = pick(turf_list)
@@ -322,14 +318,13 @@
 
 /obj/structure/ship_ammo/rocket/harpoon
 	name = "\improper AGM-184 'Harpoon II'"
-	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals and can be seen as a cheaper alternative to conventional ordnance. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "harpoon"
 	ammo_id = "s"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 200
 	fire_mission_delay = 4
 
-//Looks kinda OP but all it can actually do is just to blow windows and some of other things out, cant do much damage.
 /obj/structure/ship_ammo/rocket/harpoon/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 16, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS)

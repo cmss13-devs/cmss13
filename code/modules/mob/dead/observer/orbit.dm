@@ -148,7 +148,7 @@
 				else
 					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
+				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT_ALL))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
@@ -156,7 +156,7 @@
 					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
-				else if(human.faction in FACTION_LIST_ERT)
+				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)

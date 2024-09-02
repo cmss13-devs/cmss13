@@ -1,4 +1,0 @@
-author: "VileBeggar"
-delete-after: True
-changes:
-  - code_imp: "removed an unneeded var in mob_hud.dm"

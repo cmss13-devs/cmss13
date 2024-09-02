@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - balance: "Barricades are now far better at blocking bullets from the front. They will not block most bullets if the shooter is within 2 tiles, however."

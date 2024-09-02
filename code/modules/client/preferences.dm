@@ -204,6 +204,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/playtime_perks = TRUE
 
+	// TTS
+	var/voice = ""
+	var/voice_pitch = 0
+	var/xeno_voice = ""
+	var/xeno_pitch = ""
+	var/synth_voice = ""
+	var/synth_pitch = 0
+	var/tts_mode = TTS_SOUND_ENABLED
+
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
@@ -337,6 +346,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
+			dat += "<b>Voice:</b> <a href='?_src_=prefs;preference=voice;task=input'><b>[voice]</b></a><br>"
+			dat += "<b>Voice Pitch:</b> <a href='?_src_=prefs;preference=voice_pitch;task=input'><b>[voice]</b></a><br>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
@@ -1505,7 +1516,26 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_age = tgui_input_number(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
 					if(new_age)
 						age = max(min( floor(text2num(new_age)), AGE_MAX),AGE_MIN)
-
+				if("voice", "synth_voice", "xeno_voice")
+					var/new_voice = tgui_input_list(user, "Choose your character's voice", "Voice selection", SStts.available_speakers)
+					if(new_voice)
+						switch(href_list["preference"])
+							if("voice")
+								voice = new_voice
+							if("synth_voice")
+								synth_voice = new_voice
+							if("xeno_voice")
+								xeno_voice = new_voice
+				if("voice_pitch", "synth_voice_pitch", "xeno_voice_pitch")
+					var/new_voice_pitch = input(user, "Choose your voice's pitch:\n([-12] to [12])", "Character Preferences") as num|null
+					if(new_voice_pitch)
+						switch(href_list["preference"])
+							if("voice_pitch")
+								voice_pitch = new_voice_pitch
+							if("synth_voice_pitch")
+								synth_pitch = new_voice_pitch
+							if("xeno_voice_pitch")
+								xeno_pitch = new_voice_pitch
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)

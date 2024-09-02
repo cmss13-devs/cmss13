@@ -262,6 +262,14 @@
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
 
+	/// Text to speech voice. Set to null if no voice.
+	var/voice
+	/// Text to speech filter. Filter that gets applied when passed in.
+	var/voice_filter = ""
+	/// Text to speech pitch. Used to determine the pitch of the voice.
+	var/voice_pitch = 0
+
+
 	// contains /atom/movable/screen/alert only
 	var/list/alerts = list()
 

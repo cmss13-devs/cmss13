@@ -65,6 +65,13 @@
 			template.frequency = vary
 		else
 			template.frequency = GET_RANDOM_FREQ // Same frequency for everybody
+	return template
+
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
+	if(isarea(source))
+		error("[source] is an area and is trying to make the sound: [soundin]")
+		return FALSE
+	var/datum/sound_template/S = get_sound_template(soundin, vol, vary, vol_cat, channel, status, falloff, echo, y_s_offset, x_s_offset)
 
 	if(!sound_range)
 		sound_range = floor(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
@@ -101,40 +108,9 @@
 	SSsound.queue(template, null, extra_interiors)
 	return template.channel
 
-
-
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
-	if(!istype(client) || !client.soundOutput)
-		return FALSE
-
-	var/datum/sound_template/template = new()
-	if(origin)
-		var/turf/T = get_turf(origin)
-		if(T)
-			template.x = T.x
-			template.y = T.y
-			template.z = T.z
-	if(istype(soundin))
-		template.file = soundin.file
-		template.wait = soundin.wait
-		template.repeat = soundin.repeat
-	else
-		template.file = get_sfx(soundin)
-
-	if(random_freq)
-		template.frequency = GET_RANDOM_FREQ
-	template.volume = vol
-	template.volume_cat = vol_cat
-	template.channel = channel
-	template.status = status
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
-	template.x_s_offset = x_s_offset
-	SSsound.queue(template, list(client))
+	SSsound.queue(get_sound_template(soundin, origin, vol, random_freq, vol_cat, channel, status, echo, y_s_offset, x_s_offset), list(C))
 
 /// Plays sound to all mobs that are map-level contents of an area
 /proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)

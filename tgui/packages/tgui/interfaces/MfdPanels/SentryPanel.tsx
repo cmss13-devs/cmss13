@@ -28,10 +28,14 @@ const SentryPanel = (props: DropshipEquipment) => {
             </h3>
           </Stack.Item>
           <Stack.Item>
-            <h3>{sentryData.deployed === 1 ? 'DEPLOYED' : 'UNDEPLOYED'}</h3>
+            <h3>
+              Deploy Status:{' '}
+              {sentryData.deployed === 1 ? 'DEPLOYED' : 'UNDEPLOYED'}
+            </h3>
           </Stack.Item>
           <Stack.Item>
             <h3>
+              Sentry Status:{' '}
               {sentryData.engaged === 1
                 ? 'ENGAGED'
                 : sentryData.deployed === 1
@@ -41,7 +45,8 @@ const SentryPanel = (props: DropshipEquipment) => {
           </Stack.Item>
           <Stack.Item>
             <h3>
-              Auto-Deploy: {sentryData.auto_deploy === 1 ? 'ENABLED' : 'DISABLED'}
+              Auto-Deploy:{' '}
+              {sentryData.auto_deploy === 1 ? 'ENABLED' : 'DISABLED'}
             </h3>
           </Stack.Item>
         </Stack>
@@ -64,7 +69,9 @@ export const SentryMfdPanel = (props: MfdProps) => {
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 
   const autoDeployLabel =
-    (sentry?.data?.auto_deploy ?? 0) === 1 ? 'AUTO-DEPLOY OFF' : 'AUTO-DEPLOY ON';
+    (sentry?.data?.auto_deploy ?? 0) === 1
+      ? 'AUTO-DEPLOY OFF'
+      : 'AUTO-DEPLOY ON';
 
   return (
     <MfdPanel

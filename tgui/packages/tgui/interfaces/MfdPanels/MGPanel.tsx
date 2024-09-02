@@ -29,7 +29,9 @@ const MgPanel = (props: DropshipEquipment) => {
             </h3>
           </Stack.Item>
           <Stack.Item>
-            <h3>{mgData.deployed === 1 ? 'DEPLOYED' : 'UNDEPLOYED'}</h3>
+            <h3>
+              Deploy Status: {mgData.deployed === 1 ? 'DEPLOYED' : 'UNDEPLOYED'}
+            </h3>
           </Stack.Item>
           <Stack.Item>
             <h3>
@@ -50,8 +52,7 @@ export const MgMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
-  const deployLabel = 
-    (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
+  const deployLabel = (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 
   const autoDeployLabel =
     (mg?.data?.auto_deploy ?? 0) === 1 ? 'AUTO-DEPLOY OFF' : 'AUTO-DEPLOY ON';
@@ -70,8 +71,7 @@ export const MgMfdPanel = (props: MfdProps) => {
         },
         {
           children: autoDeployLabel,
-          onClick: () =>
-            act('auto-deploy', { equipment_id: mg?.mount_point }),
+          onClick: () => act('auto-deploy', { equipment_id: mg?.mount_point }),
         },
       ]}
       bottomButtons={[

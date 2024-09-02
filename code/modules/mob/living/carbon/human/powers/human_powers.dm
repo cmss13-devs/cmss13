@@ -199,6 +199,40 @@
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return
 
+/mob/living/carbon/human/proc/psychic_radiance()
+	set name = "Psychic Radiance"
+	set desc = "Whisper silently to multiple people over a distance."
+	set category = "Abilities"
+
+	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
+	var/list/target_list = list()
+	if(!whisper)
+		return FALSE
+	FOR_DVIEW(var/mob/living/possible_target, 12, src, HIDE_INVISIBLE_OBSERVER)
+		if(possible_target == src || !possible_target.client)
+			continue
+		target_list += possible_target
+		if(!istype(possible_target, /mob/living/carbon/xenomorph))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+	FOR_DVIEW_END
+	if(!length(target_list))
+		to_chat(src, SPAN_XENOWARNING("There is no one around to hear you..."))
+		return FALSE
+	var/targetstring = english_list(target_list)
+	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	log_say("PsychicRadiance: [key_name(src)]->[targetstring] : [whisper] (AREA: [get_area_name(src)])")
+	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		if(!ghost.client || isnewplayer(ghost))
+			continue
+		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+			var/rendered_message
+			var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [src.real_name][human_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
+			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+	return TRUE
+
 /mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"

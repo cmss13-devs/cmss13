@@ -31,26 +31,19 @@
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "av" = (
 /obj/structure/closet/crate,
 /obj/item/explosive/grenade/phosphorus/clf,
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/adminlevel/ert_station/clf_station)
 "ax" = (
 /turf/closed/wall/rock/brown,
 /area/adminlevel/ert_station/clf_station)
 "az" = (
 /obj/structure/prop/brazier/frame/full,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/north,
 /area/adminlevel/ert_station/clf_station)
 "aA" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -87,9 +80,7 @@
 /obj/structure/machinery/light/small/built{
 	dir = 8
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "aO" = (
 /obj/structure/stairs/perspective{
@@ -142,9 +133,7 @@
 "cc" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/item/reagent_container/food/condiment/enzyme,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "ce" = (
 /obj/item/trash/chips,
@@ -160,32 +149,21 @@
 /obj/structure/mirror{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/adminlevel/ert_station/clf_station)
 "cB" = (
 /obj/vehicle/powerloader/ft,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "cH" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "dd" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/adminlevel/ert_station/clf_station)
 "dg" = (
 /obj/item/prop/helmetgarb/spent_buckshot,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "dI" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -256,9 +234,7 @@
 "fd" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /obj/structure/machinery/light/small/built,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "fk" = (
 /obj/structure/pipes/vents/pump,
@@ -294,9 +270,7 @@
 "gi" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "gj" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -304,17 +278,13 @@
 /area/adminlevel/ert_station/clf_station)
 "gN" = (
 /obj/effect/decal/cleanable/egg_smudge,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "hd" = (
 /obj/structure/reagent_dispensers/beerkeg{
 	density = 0
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "hr" = (
 /obj/structure/machinery/light/small/built{
@@ -355,9 +325,7 @@
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "hO" = (
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
@@ -421,9 +389,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "jp" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -517,10 +483,7 @@
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "lT" = (
 /obj/structure/platform/kutjevo{
@@ -548,10 +511,7 @@
 /area/adminlevel/ert_station/clf_station)
 "me" = (
 /obj/structure/platform_decoration/kutjevo,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "mk" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -567,9 +527,7 @@
 	},
 /obj/structure/surface/table/reinforced,
 /obj/item/spacecash/c50,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "mt" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -586,9 +544,7 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "ne" = (
 /obj/structure/bed{
@@ -620,9 +576,7 @@
 "nC" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "nJ" = (
 /obj/item/clothing/shoes/jackboots,
@@ -651,10 +605,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "om" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/adminlevel/ert_station/clf_station)
 "ow" = (
 /obj/structure/window/reinforced{
@@ -682,9 +633,7 @@
 	pixel_y = 13
 	},
 /obj/item/stock_parts/subspace/crystal,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "oy" = (
 /obj/item/trash/candy,
@@ -692,10 +641,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "oI" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "oN" = (
 /obj/structure/flora/jungle/vines,
@@ -718,9 +664,7 @@
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "pE" = (
 /obj/structure/platform/kutjevo,
@@ -730,36 +674,25 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "pF" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "pY" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/adminlevel/ert_station/clf_station)
 "qa" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "qb" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "ql" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "qy" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -774,9 +707,7 @@
 /area/adminlevel/ert_station/clf_station)
 "rz" = (
 /obj/structure/curtain/red,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "rD" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -804,15 +735,12 @@
 "sx" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "sC" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/adminlevel/ert_station/clf_station)
 "sK" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -840,9 +768,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
 	},
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "tt" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -904,9 +830,7 @@
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "uF" = (
 /obj/structure/platform/kutjevo{
@@ -975,9 +899,7 @@
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "wW" = (
-/turf/open/gm/coast{
-	dir = 9
-	},
+/turf/open/gm/coast/south_east,
 /area/adminlevel/ert_station/clf_station)
 "xi" = (
 /obj/structure/platform/kutjevo{
@@ -987,10 +909,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "xE" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/adminlevel/ert_station/clf_station)
 "xJ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -1012,9 +931,7 @@
 	pixel_y = -10
 	},
 /obj/item/tool/soap,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/adminlevel/ert_station/clf_station)
 "xO" = (
 /obj/item/holder/cat/kitten{
@@ -1042,9 +959,7 @@
 "yE" = (
 /obj/structure/closet/crate,
 /obj/item/explosive/grenade/incendiary/molotov,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "yH" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -1058,18 +973,14 @@
 /obj/item/ammo_magazine/pistol/clfpistol,
 /obj/item/ammo_magazine/pistol/clfpistol,
 /obj/item/ammo_magazine/pistol/clfpistol,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "yO" = (
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "yU" = (
 /turf/open/gm/river,
@@ -1083,9 +994,7 @@
 /area/adminlevel/ert_station/clf_station)
 "yY" = (
 /obj/structure/prop/brazier/frame/full,
-/turf/open/floor/plating{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning,
 /area/adminlevel/ert_station/clf_station)
 "zy" = (
 /obj/structure/machinery/light/small/built{
@@ -1117,10 +1026,7 @@
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/adminlevel/ert_station/clf_station)
 "Aj" = (
 /obj/structure/flora/jungle/planttop1,
@@ -1130,9 +1036,7 @@
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/adminlevel/ert_station/clf_station)
 "AK" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -1193,9 +1097,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Bx" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "BB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -1213,9 +1115,7 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "BQ" = (
 /obj/structure/platform/kutjevo{
@@ -1267,9 +1167,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/adminlevel/ert_station/clf_station)
 "DF" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "DN" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1294,9 +1192,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/adminlevel/ert_station/clf_station)
 "Ee" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/adminlevel/ert_station/clf_station)
 "Ez" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1315,9 +1211,7 @@
 /obj/structure/machinery/light/small/built{
 	dir = 4
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "Fj" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1368,10 +1262,7 @@
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "GV" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/west,
 /area/adminlevel/ert_station/clf_station)
 "Hs" = (
 /obj/docking_port/stationary/emergency_response/idle_port1,
@@ -1388,15 +1279,10 @@
 /obj/structure/machinery/power/apc/antag{
 	dir = 1
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "Ie" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/adminlevel/ert_station/clf_station)
 "Ig" = (
 /obj/structure/largecrate/black_market/clf_supplies,
@@ -1418,23 +1304,16 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "IH" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/adminlevel/ert_station/clf_station)
 "IT" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "IW" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/mask/gas/swat,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "Jg" = (
 /obj/structure/platform/kutjevo,
@@ -1482,10 +1361,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Me" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "MD" = (
 /obj/structure/platform/kutjevo{
@@ -1532,17 +1408,13 @@
 /obj/item/bedsheet/brown{
 	pixel_y = 13
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "MQ" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "MT" = (
 /obj/item/tank/anesthetic,
@@ -1565,10 +1437,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Ng" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/adminlevel/ert_station/clf_station)
 "Ni" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1588,9 +1457,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "NB" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/adminlevel/ert_station/clf_station)
 "NV" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1598,9 +1465,7 @@
 /area/adminlevel/ert_station/clf_station)
 "NY" = (
 /obj/effect/decal/cleanable/tomato_smudge,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Of" = (
 /obj/structure/surface/table/reinforced,
@@ -1616,16 +1481,11 @@
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Oi" = (
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "Op" = (
 /obj/structure/platform/kutjevo{
@@ -1660,9 +1520,7 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/light/small/built,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "Oy" = (
 /obj/item/spacecash/c1,
@@ -1702,10 +1560,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "OY" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "OZ" = (
 /obj/structure/platform/kutjevo{
@@ -1715,10 +1570,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Ph" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "Pj" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -1730,9 +1582,7 @@
 /mob/living/simple_animal/cat{
 	name = "Edwin"
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "PC" = (
 /obj/item/trash/candle,
@@ -1773,9 +1623,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Qx" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/adminlevel/ert_station/clf_station)
 "QA" = (
 /obj/structure/platform/kutjevo{
@@ -1817,22 +1665,17 @@
 "Ro" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Rr" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/adminlevel/ert_station/clf_station)
 "Rv" = (
 /obj/structure/curtain/red,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "RB" = (
 /obj/structure/flora/jungle/plantbot1{
@@ -1847,9 +1690,7 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Sc" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -1863,17 +1704,13 @@
 /obj/structure/machinery/light/small/built{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/adminlevel/ert_station/clf_station)
 "Sj" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/adminlevel/ert_station/clf_station)
 "Sy" = (
 /obj/structure/platform/kutjevo,
@@ -1888,15 +1725,10 @@
 /area/adminlevel/ert_station/clf_station)
 "Tk" = (
 /obj/structure/bed/chair,
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/adminlevel/ert_station/clf_station)
 "Tr" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/adminlevel/ert_station/clf_station)
 "Tt" = (
 /obj/structure/platform/kutjevo,
@@ -1906,10 +1738,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Tu" = (
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/east,
 /area/adminlevel/ert_station/clf_station)
 "TM" = (
 /obj/structure/machinery/recharger,
@@ -1932,9 +1761,7 @@
 /obj/structure/closet/crate,
 /obj/item/clothing/head/welding,
 /obj/item/tool/weldingtool/experimental,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "Um" = (
 /obj/structure/largecrate/random/secure,
@@ -1945,15 +1772,10 @@
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
 "Uu" = (
-/turf/open/floor/plating{
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning,
 /area/adminlevel/ert_station/clf_station)
 "UB" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/north,
 /area/adminlevel/ert_station/clf_station)
 "Vf" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
@@ -1961,9 +1783,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Vi" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/adminlevel/ert_station/clf_station)
 "Vk" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1976,9 +1796,7 @@
 /obj/structure/machinery/processor{
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "VE" = (
 /obj/structure/platform/kutjevo{
@@ -2022,9 +1840,7 @@
 /obj/structure/machinery/light/small/built{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Wz" = (
 /obj/structure/closet/crate,
@@ -2057,9 +1873,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Xp" = (
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Xv" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -2092,9 +1906,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "YB" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "Ze" = (
 /obj/structure/bed/chair{
@@ -2102,16 +1914,12 @@
 	},
 /obj/item/reagent_container/food/drinks/flask/barflask,
 /obj/structure/machinery/light/small/built,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "Zj" = (
 /obj/structure/closet/crate,
 /obj/item/reagent_container/food/snacks/appletart,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "ZE" = (
 /obj/structure/surface/table/woodentable/poor,

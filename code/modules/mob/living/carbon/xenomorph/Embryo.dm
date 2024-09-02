@@ -191,7 +191,7 @@
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates(hive)
+		var/list/candidates = get_alien_candidates(hive, abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
 		if(candidates && length(candidates))
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)
@@ -341,7 +341,7 @@
 		if(burstcount)
 			step(larva_embryo, pick(GLOB.cardinals))
 
-		if(GLOB.round_statistics)
+		if(GLOB.round_statistics && (ishuman(victim)) && (SSticker.current_state == GAME_STATE_PLAYING) && (ROUND_TIME > 1 MINUTES))
 			GLOB.round_statistics.total_larva_burst++
 		GLOB.larva_burst_by_hive[hive] = (GLOB.larva_burst_by_hive[hive] || 0) + 1
 		burstcount++

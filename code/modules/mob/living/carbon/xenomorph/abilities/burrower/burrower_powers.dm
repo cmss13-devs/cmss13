@@ -36,6 +36,7 @@
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
 	invisibility = 101
+	alpha = 100
 	anchored = TRUE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
@@ -72,6 +73,7 @@
 		))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
+	alpha = initial(alpha)
 	anchored = FALSE
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
@@ -126,7 +128,7 @@
 		return
 
 	var/area/A = get_area(T)
-	if(A.flags_area & AREA_NOTUNNEL)
+	if(A.flags_area & AREA_NOTUNNEL || get_dist(src, T) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 

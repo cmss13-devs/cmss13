@@ -155,7 +155,7 @@
 	if(!gear_preset)
 		return ""
 	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].paygrade
+		return GLOB.gear_path_presets_list[gear_preset].paygrades[1]
 	return ""
 
 /datum/job/proc/get_comm_title()
@@ -176,7 +176,7 @@
 	var/datum/money_account/generated_account
 	//Give them an account in the database.
 	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-		var/obj/item/card/id/card = account_user.wear_id
+		var/obj/item/card/id/card = account_user.get_idcard()
 		var/user_has_preexisting_account = account_user.mind?.initial_account
 		if(card && !user_has_preexisting_account)
 			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
@@ -188,7 +188,7 @@
 				remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
 				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
-				if(generated_account.transaction_log.len)
+				if(length(generated_account.transaction_log))
 					var/datum/transaction/T = generated_account.transaction_log[1]
 					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 				account_user.mind.store_memory(remembered_info)
@@ -318,3 +318,7 @@
 
 	if(user.client.check_whitelist_status(flags_whitelist))
 		return TRUE
+
+/// Called when the job owner enters deep cryogenic storage
+/datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
+	return

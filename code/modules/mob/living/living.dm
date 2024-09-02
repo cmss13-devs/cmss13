@@ -66,7 +66,7 @@
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
-		var/divided_damage = (burn_amount)/(H.limbs.len)
+		var/divided_damage = (burn_amount)/(length(H.limbs))
 		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting) continue
@@ -472,7 +472,7 @@
 
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()
-	src.clone.hud_list = new /list(src.hud_list.len)
+	src.clone.hud_list = new /list(length(src.hud_list))
 	for(var/h in src.hud_possible) //Clone HUD
 		src.clone.hud_list[h] = new /image("loc" = src.clone, "icon" = src.hud_list[h].icon)
 
@@ -503,12 +503,10 @@
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 			add_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
-				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
 //			remove_from_dead_mob_list()
@@ -518,12 +516,10 @@
 		if(CONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_NONE
 			remove_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED, /*TRAIT_CRITICAL_CONDITION*/), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_NONE
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
 //			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)

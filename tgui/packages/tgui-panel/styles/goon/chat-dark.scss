@@ -488,6 +488,11 @@ em {
   font-size: 90%;
 }
 
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
+}
+
 .boldnotice {
   color: #6685f5;
   font-weight: bold;
@@ -805,6 +810,10 @@ em {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -845,6 +854,15 @@ em {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {
@@ -1020,6 +1038,26 @@ em {
 
 .echoradio {
   color: #3eb489;
+}
+
+.opforcmd {
+  color: #68bcec;
+}
+
+.opformed {
+  color: #52c724;
+}
+
+.opforeng {
+  color: #e9812d;
+}
+
+.opforcct {
+  color: #ec3018;
+}
+
+.opforspe {
+  color: #7221cf;
 }
 
 .medium {
@@ -1411,6 +1449,14 @@ em {
   animation: glitch 0.5s infinite;
 }
 
+.psy_talk {
+  color: #c400aa;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: psy_glitch 0.5s infinite;
+}
+
 /*Keyframes*/
 
 @keyframes glitch {
@@ -1431,6 +1477,28 @@ em {
 
   100% {
     color: #830000;
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes psy_glitch {
+  25% {
+    color: #c400aa;
+    transform: translate(-2px, -1px);
+  }
+
+  50% {
+    color: #91007d;
+    transform: translate(1px, -2px);
+  }
+
+  75% {
+    color: #750066;
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    color: #7c016c;
     transform: translate(1px, 1px);
   }
 }

@@ -201,7 +201,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
@@ -214,7 +214,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")

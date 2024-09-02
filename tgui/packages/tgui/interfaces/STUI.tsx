@@ -1,6 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Box, Flex, Input, Slider, LabeledList } from '../components';
+import React, { useEffect, useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Flex,
+  Input,
+  LabeledList,
+  Section,
+  Slider,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
 type STUIData = {
@@ -8,32 +17,11 @@ type STUIData = {
   logs: Map<string, Array<string>>;
 };
 
-const useSearchTerm = () => {
-  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
-  return { searchTerm, setSearchTerm };
-};
-
-const useLogFont = () => {
-  const [logsfontnumber, setLogsFontSize] = useLocalState('logsfontnumber', 7);
-  return {
-    logsfontnumber,
-    setLogsFontSize,
-  };
-};
-
-const useTabs = () => {
-  const [selectedTab, setSelectedTab] = useLocalState('progress', 'Attack');
-  return {
-    selectedTab,
-    setSelectedTab,
-  };
-};
-
 export const STUI = () => {
   const { data } = useBackend<STUIData>();
-  const { selectedTab } = useTabs();
-  const { searchTerm, setSearchTerm } = useSearchTerm();
-  const { logsfontnumber, setLogsFontSize } = useLogFont();
+  const [selectedTab, setSelectedTab] = useState('Attack');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [logsfontnumber, setLogsFontSize] = useState(7);
 
   const [logs, setLogs] = useState<Array<string>>([]);
 
@@ -47,7 +35,10 @@ export const STUI = () => {
         <Flex height="100%" direction="column">
           <Flex.Item>
             <Section fitted>
-              <STUItabs />
+              <STUItabs
+                selectedTab={selectedTab}
+                setSelectedTab={setSelectedTab}
+              />
             </Section>
           </Flex.Item>
           <Box height="10px" />
@@ -75,7 +66,11 @@ export const STUI = () => {
             </LabeledList>
           </Flex.Item>
           <Flex.Item mt={1} grow={1} basis={0}>
-            <RenderLogs logs={logs} />
+            <RenderLogs
+              logs={logs}
+              searchTerm={searchTerm}
+              logsfontnumber={logsfontnumber}
+            />
           </Flex.Item>
         </Flex>
       </Window.Content>
@@ -83,17 +78,19 @@ export const STUI = () => {
   );
 };
 
-const RenderLogs = (props: { readonly logs: Array<string> }) => {
-  const { searchTerm } = useSearchTerm();
-  const { logs } = props;
-  const { logsfontnumber } = useLogFont();
+const RenderLogs = (props: {
+  readonly logs: Array<string>;
+  readonly searchTerm: string;
+  readonly logsfontnumber: number;
+}) => {
+  const { logs, searchTerm, logsfontnumber } = props;
   const bigfontsize = logsfontnumber + 5 + 'pt';
   return (
     <Section fill scrollable>
       {logs
         .filter((x) => x.toLowerCase().match(searchTerm) !== null)
         .map((log, i) => (
-          <RenderLog log={log} key={i} />
+          <RenderLog log={log} key={i} logsfontnumber={logsfontnumber} />
         ))}
       <Box align="center" fontSize={bigfontsize}>
         {logs.length > 1 ? '--- End of Logs --' : '--- No Logs --'}
@@ -102,34 +99,42 @@ const RenderLogs = (props: { readonly logs: Array<string> }) => {
   );
 };
 
-const RenderLog = (props: { readonly log: string }) => {
-  const { logsfontnumber } = useLogFont();
+const RenderLog = (props: {
+  readonly log: string;
+  readonly logsfontnumber: number;
+}) => {
+  const { log, logsfontnumber } = props;
   const logsfontsize = logsfontnumber + 'pt';
   return (
-    <Box fontSize={logsfontsize} key={props.log}>
-      {props.log}
+    <Box fontSize={logsfontsize} key={log}>
+      {log}
     </Box>
   );
 };
 
-const STUItabs = () => {
+const STUItabs = (props: {
+  readonly selectedTab: string;
+  readonly setSelectedTab: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  const { selectedTab, setSelectedTab } = props;
   const { act, data } = useBackend<STUIData>();
   const tabs = data.tabs ?? [''];
-  const { selectedTab, setSelectedTab } = useTabs();
   return (
     <Tabs fluid textAlign="center">
       <Tabs.Tab
         color="green"
         icon="sync-alt"
-        selected={1}
-        onClick={() => act('update')}>
+        selected
+        onClick={() => act('update')}
+      >
         Update
       </Tabs.Tab>
       {tabs.map((tab) => (
         <Tabs.Tab
           key={tab}
           selected={tab === selectedTab}
-          onClick={() => setSelectedTab(tab)}>
+          onClick={() => setSelectedTab(tab)}
+        >
           {tab}
         </Tabs.Tab>
       ))}

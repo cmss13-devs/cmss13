@@ -13,6 +13,7 @@
 #define XENO_HOSTILE_SLOW "13" // xeno-inflicted slow. used by a bunch of MOBA xenos stuff
 #define XENO_HOSTILE_TAG "14" // dancer prae 'tag'
 #define XENO_HOSTILE_FREEZE "15" // Any xeno-inflifcted root
+#define XENO_EXECUTE "28" // Execute thershold, vampire
 
 #define HEALTH_HUD_XENO "16" // health HUD for xenos
 #define PLASMA_HUD "17" // indicates the plasma level of xenos.
@@ -45,6 +46,7 @@
 #define MOB_HUD_FACTION_PMC 15
 #define MOB_HUD_HUNTER 16
 #define MOB_HUD_HUNTER_CLAN 17
+#define MOB_HUD_EXECUTE 18
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"
@@ -52,6 +54,7 @@
 #define TRACKER_LZ "track_lz"
 #define TRACKER_CO "track_co"
 #define TRACKER_XO "track_xo"
+#define TRACKER_CMP "track_cmp"
 #define TRACKER_CL "track_cl"
 
 #define TRACKER_ASL "_asl" // Alpha Squad Leader

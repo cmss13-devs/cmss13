@@ -130,7 +130,7 @@
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name].")
 				var/msg
-				for(var/i in 1 to min(10, potential_cache.len))
+				for(var/i in 1 to min(10, length(potential_cache)))
 					msg += "[potential_cache[i]],"
 				if(msg)
 					log_reftracker("List contents: [msg]")
@@ -148,7 +148,7 @@
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name]\[[element_in_list]\]")
 				var/msg
-				for(var/i in 1 to min(10, potential_cache.len))
+				for(var/i in 1 to min(10, length(potential_cache)))
 					msg += "[potential_cache[i]],"
 				if(msg)
 					log_reftracker("List contents: [msg]")

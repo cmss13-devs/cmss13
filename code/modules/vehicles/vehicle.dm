@@ -6,6 +6,7 @@
 	anchored = TRUE
 	animate_movement = 1
 	can_buckle = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/mob/seats = list(
@@ -159,10 +160,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)

@@ -142,10 +142,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	else
 		zone = 360 - starting_angle + ending_angle
 
-	max_elements = round(zone / min_angle)
-	var/paged = max_elements < choices.len
-	if(elements.len < max_elements)
-		var/elements_to_add = max_elements - elements.len
+	max_elements = floor(zone / min_angle)
+	var/paged = max_elements < length(choices)
+	if(length(elements) < max_elements)
+		var/elements_to_add = max_elements - length(elements)
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/atom/movable/screen/radial/slice/new_element = new /atom/movable/screen/radial/slice
 			new_element.tooltips = use_tooltips
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /datum/radial_menu/proc/update_screen_objects(anim = FALSE)
 	var/list/page_choices = page_data[current_page]
-	var/angle_per_element = round(zone / length(page_choices))
+	var/angle_per_element = floor(zone / length(page_choices))
 	for(var/i in 1 to length(elements))
 		var/atom/movable/screen/radial/E = elements[i]
 		var/angle = WRAP(starting_angle + (i - 1) * angle_per_element,0,360)
@@ -197,8 +197,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /datum/radial_menu/proc/SetElement(atom/movable/screen/radial/slice/E,choice_id,angle,anim,anim_order)
 	//Position
-	var/py = round(cos(angle) * radius) + py_shift
-	var/px = round(sin(angle) * radius)
+	var/py = floor(cos(angle) * radius) + py_shift
+	var/px = floor(sin(angle) * radius)
 	if(anim)
 		var/timing = anim_order * 0.5
 		var/matrix/starting = matrix()
@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	selected_choice = choices_values[choice_id]
 
 /datum/radial_menu/proc/get_next_id()
-	return "c_[choices.len]"
+	return "c_[length(choices)]"
 
 /datum/radial_menu/proc/set_choices(list/new_choices, use_tooltips, use_labels)
 	if(length(choices))
@@ -271,8 +271,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		if(use_labels)
 			MA.maptext_width = 64
 			MA.maptext_height = 64
-			MA.maptext_x = -round(MA.maptext_width / 2) + 16
-			MA.maptext_y = -round(MA.maptext_height / 2) + 16
+			MA.maptext_x = -floor(MA.maptext_width / 2) + 16
+			MA.maptext_y = -floor(MA.maptext_height / 2) + 16
 			MA.maptext = SMALL_FONTS_CENTRED(7, label)
 	return MA
 

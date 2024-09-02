@@ -37,6 +37,8 @@ You can filter out the Xenomorphs displayed in hive status by health, allowing y
 Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by other means it will reset everyone's tackle counters and they may get up!
 As a Xenomorph, the list of available tunnels is sorted by their distance to the player!
 As a Xenomorph, pay attention to what a marine is wearing. If they have no helmet, aiming for the head will be significantly more damaging, if they aren't wearing gloves, then think about going for their hands.
+The M540-A Armored Recon Carrier can be crawled under as a xenomorph when destroyed.
+The M540-A Armored Recon Carrier is very vulnerable to acid damage.
 Applying acid to flares makes them burn faster.
 Melting weapons, ammo or other valuables owned by marines is a good way to debilitate them.
 The secrete acid shortcut is (by default) Shift + C.

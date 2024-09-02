@@ -20,6 +20,7 @@
 	cooldown = COMMAND_ORDER_COOLDOWN
 
 /datum/action/human_action/issue_order/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
@@ -58,6 +59,7 @@
 		return FALSE
 
 /datum/action/human_action/smartpack/action_activate()
+	. = ..()
 	if(!istype(owner, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = owner
@@ -116,6 +118,33 @@
 /datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
 	return S.repairing
 
+
+/datum/action/human_action/psychic_whisper
+	name = "Psychic Whipser"
+	action_icon_state = "cultist_channel_hivemind"
+
+/datum/action/human_action/psychic_whisper/action_activate()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/human_owner = owner
+
+	if(human_owner.client.prefs.muted & MUTE_IC)
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		return
+
+	var/list/target_list = list()
+	for(var/mob/living/carbon/possible_target in view(7, human_owner))
+		if(possible_target == human_owner || !possible_target.client) 
+			continue
+		target_list += possible_target
+
+	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "hive_status")
+	if(!target_mob) 
+		return
+
+	human_owner.psychic_whisper(target_mob)
+
 /*
 CULT
 */
@@ -129,6 +158,7 @@ CULT
 
 // Called when the action is clicked on.
 /datum/action/human_action/activable/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
@@ -250,7 +280,7 @@ CULT
 		to_send_to = list(H)
 	message_admins("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
-		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
+		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
@@ -286,6 +316,7 @@ CULT
 	action_icon_state = "cultist_channel_hivemind"
 
 /datum/action/human_action/activable/cult/speak_hivemind/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -316,6 +347,7 @@ CULT
 	var/list/items_to_spawn = list(/obj/item/clothing/suit/cultist_hoodie/, /obj/item/clothing/head/cultist_hood/)
 
 /datum/action/human_action/activable/cult/obtain_equipment/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -515,6 +547,7 @@ CULT
 	action_icon_state = "mutineer_begin"
 
 /datum/action/human_action/activable/mutineer/mutineer_begin/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -549,6 +582,7 @@ CULT
 	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/cancel_view/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -575,6 +609,7 @@ CULT
 	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/vehicle_unbuckle/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -600,8 +635,33 @@ CULT
 	action_icon_state = "cancel_view"
 
 /datum/action/human_action/mg_exit/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
+
+/datum/action/human_action/toggle_arc_antenna
+	name = "Toggle Sensor Antenna"
+	action_icon_state = "recoil_compensation"
+
+/datum/action/human_action/toggle_arc_antenna/give_to(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))
+
+/datum/action/human_action/toggle_arc_antenna/remove_from(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+
+/datum/action/human_action/toggle_arc_antenna/action_activate()
+	. = ..()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/human_user = owner
+	if(istype(human_user.buckled, /obj/structure/bed/chair/comfy/vehicle))
+		var/obj/structure/bed/chair/comfy/vehicle/vehicle_chair = human_user.buckled
+		if(istype(vehicle_chair.vehicle, /obj/vehicle/multitile/arc))
+			var/obj/vehicle/multitile/arc/vehicle = vehicle_chair.vehicle
+			vehicle.toggle_antenna(human_user)

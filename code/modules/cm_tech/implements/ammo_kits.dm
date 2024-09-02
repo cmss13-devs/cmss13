@@ -68,6 +68,7 @@
 /obj/item/storage/box/shotgun
 	name = "incendiary shotgun kit"
 	desc = "A kit containing incendiary shotgun shells."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "incenbuck"
 	storage_slots = 5
 	var/amount = 5

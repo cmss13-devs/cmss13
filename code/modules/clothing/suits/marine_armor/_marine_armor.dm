@@ -50,7 +50,7 @@
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
@@ -191,7 +191,7 @@
 	if(. != CHECKS_PASSED)
 		return
 	set_light_range(initial(light_range))
-	set_light_power(Floor(initial(light_power) * 0.5))
+	set_light_power(floor(initial(light_power) * 0.5))
 	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
@@ -254,7 +254,7 @@
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "mp_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -270,7 +270,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -287,19 +287,17 @@
 	black_market_value = 20
 
 /obj/item/clothing/suit/storage/marine/MP/warden
-	icon_state = "warden"
 	name = "\improper M3 pattern warden MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
-	icon_state = "warrant_officer"
 	name = "\improper M3 pattern chief MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
@@ -361,6 +359,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
 	specialty = "B12 pattern marine"
 	light_range = 5
 
@@ -521,6 +520,19 @@
 	icon_state = "c_VL_syn_camo"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
+/obj/item/clothing/suit/storage/marine/light/recon
+	name = "M3-R pattern light armor"
+	desc = "Special issue light armor for forward econnaissance Marines. Offers similar protection as M3 armor but none of the slowdown."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	movement_compensation = SLOWDOWN_ARMOR_LIGHT
+
 // M3-EOD pattern heavy armor
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"
@@ -534,6 +546,7 @@
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
@@ -578,6 +591,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
@@ -619,6 +633,7 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
@@ -649,15 +664,6 @@
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
-
-/obj/item/clothing/suit/storage/RO
-	name = "quartermaster jacket"
-	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
-	icon_state = "RO_jacket"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 //==================Combat Correspondent==================\\
 

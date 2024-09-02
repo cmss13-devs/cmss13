@@ -39,7 +39,7 @@
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0) filling.icon_state = null
 			if(1 to 20) filling.icon_state = "[icon_state]-20"

@@ -112,7 +112,7 @@
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,

@@ -645,7 +645,7 @@
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
 					SPAN_NOTICE("You repair [src]."))
-				update_health(-round(health_max*0.2))
+				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
@@ -679,7 +679,7 @@
 	operator.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
-	var/health_percent = round(health/health_max * 100)
+	var/health_percent = floor(health/health_max * 100)
 	switch(health_percent)
 		if(0 to 25) damage_state = M56D_DMG_HEAVY
 		if(25 to 50) damage_state = M56D_DMG_MODERATE
@@ -689,7 +689,7 @@
 /obj/structure/machinery/m56d_hmg/bullet_act(obj/projectile/P) //Nope.
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
-	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
+	update_health(floor(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
 /obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/xeno) // Those Ayy lmaos.

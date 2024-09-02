@@ -14,7 +14,7 @@
 
 /datum/equipment_preset/survivor/cmb/standard
 	name = "Survivor - Colonial Marshal Deputy(Riot Response)"
-	paygrade = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
@@ -50,7 +50,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
@@ -63,7 +63,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
@@ -76,17 +76,20 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 
-// cmb synth
+// cmb synth (of note /datum/equipment_preset/synth/survivor/cmb_synth also exists)
+/datum/equipment_preset/synth/survivor/cmb
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/synth/survivor/cmb/synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
-	paygrade = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -120,8 +123,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/candy, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/imidazoline, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB, WEAR_JACKET)
@@ -147,7 +150,7 @@
 
 /datum/equipment_preset/survivor/cmb/ua
 	name = "Survivor - United Americas Riot Officer(Riot Response)"
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA RCP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "United Americas Police Officer"
@@ -163,8 +166,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield, WEAR_IN_HELMET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
@@ -226,7 +229,7 @@
 // ua synth
 /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	name = "Survivor - Synthetic - UA Police Synthetic(Riot Response)"
-	paygrade = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "UA Police Synthetic"
@@ -240,8 +243,8 @@
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/baton_slug, WEAR_IN_BACK)
@@ -256,9 +259,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot/synth, WEAR_JACKET)

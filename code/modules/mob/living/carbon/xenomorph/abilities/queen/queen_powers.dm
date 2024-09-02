@@ -87,7 +87,9 @@
 			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/xenomorph/burrower
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
 
@@ -214,8 +216,8 @@
 		return
 	var/datum/hive_status/hive = X.hive
 	if(X.observed_xeno)
-		if(!hive.open_xeno_leader_positions.len && X.observed_xeno.hive_pos == NORMAL_XENO)
-			to_chat(X, SPAN_XENOWARNING("You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows."))
+		if(!length(hive.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
+			to_chat(X, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/T = X.observed_xeno
 		if(T == X)
@@ -237,12 +239,12 @@
 		for(var/mob/living/carbon/xenomorph/T in hive.xeno_leader_list)
 			possible_xenos += T
 
-		if(possible_xenos.len > 1)
+		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.overwatch(selected_xeno)
-		else if(possible_xenos.len)
+		else if(length(possible_xenos))
 			X.overwatch(possible_xenos[1])
 		else
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
@@ -305,7 +307,7 @@
 		return
 
 	if(world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
+		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
 	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
@@ -371,10 +373,17 @@
 		xeno.use_plasma(plasma_cost_jelly)
 		return
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
-	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
+	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",)
+	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
+		var/datum/hive_status/corrupted/hive = queen_manager.hive
+		options += "Add Personal Ally"
+		if(length(hive.personal_allies))
+			options += "Remove Personal Ally"
+			options += "Clear Personal Allies"
 
-	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",), theme="hive_status")
+	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
 			banish()
@@ -383,9 +392,119 @@
 		if("De-evolve (500)")
 			de_evolve_other()
 		if("Reward Jelly (500)")
-			give_jelly_reward(queenbanish.hive)
+			give_jelly_reward(queen_manager.hive)
 		if("Exchange larva for evolution (100)")
 			give_evo_points()
+		if("Add Personal Ally")
+			add_personal_ally()
+		if("Remove Personal Ally")
+			remove_personal_ally()
+		if("Clear Personal Allies")
+			clear_personal_allies()
+	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
+	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
+		return
+
+	if(!user_xeno.check_state())
+		return
+
+	var/datum/hive_status/corrupted/hive = user_xeno.hive
+	var/list/target_list = list()
+	if(!user_xeno.client)
+		return
+	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.eye))
+		if(possible_target.stat == DEAD)
+			continue
+		if(possible_target.status_flags & CORRUPTED_ALLY)
+			continue
+		if(possible_target.hivenumber)
+			continue
+		target_list += possible_target
+
+	if(!length(target_list))
+		to_chat(user_xeno, SPAN_WARNING("No talls in view."))
+		return
+	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
+
+	if(!user_xeno.check_state(TRUE))
+		return
+
+	if(!target_mob)
+		return
+
+	if(target_mob.hivenumber)
+		to_chat(user_xeno, SPAN_WARNING("We cannot set up a personal alliance with a hive cultist."))
+		return
+
+	hive.add_personal_ally(target_mob)
+
+/datum/action/xeno_action/onclick/manage_hive/proc/remove_personal_ally()
+	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
+		return
+
+	if(!user_xeno.check_state())
+		return
+
+	var/datum/hive_status/corrupted/hive = user_xeno.hive
+
+	if(!length(hive.personal_allies))
+		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		return
+
+	var/list/mob/living/allies = list()
+	var/list/datum/weakref/dead_refs = list()
+	for(var/datum/weakref/ally_ref as anything in hive.personal_allies)
+		var/mob/living/ally = ally_ref.resolve()
+		if(ally)
+			allies += ally
+			continue
+		dead_refs += ally_ref
+
+	hive.personal_allies -= dead_refs
+
+	if(!length(allies))
+		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		return
+
+	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Break the Personal Alliance With...", allies, theme="hive_status")
+
+	if(!target_mob)
+		return
+
+	var/target_mob_ref = WEAKREF(target_mob)
+
+	if(!(target_mob_ref in hive.personal_allies))
+		return
+
+	if(!user_xeno.check_state(TRUE))
+		return
+
+	hive.remove_personal_ally(target_mob_ref)
+
+/datum/action/xeno_action/onclick/manage_hive/proc/clear_personal_allies()
+	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
+		return
+
+	if(!user_xeno.check_state())
+		return
+
+	var/datum/hive_status/corrupted/hive = user_xeno.hive
+	if(!length(hive.personal_allies))
+		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		return
+
+	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) != "Yes")
+		return
+
+	if(!length(hive.personal_allies))
+		return
+
+	hive.clear_personal_allies()
 
 
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()
@@ -703,7 +822,7 @@
 		return
 
 	var/list/alerts = list()
-	for(var/i in RANGE_TURFS(Floor(width/2), T))
+	for(var/i as anything in RANGE_TURFS(floor(width/2), T))
 		alerts += new /obj/effect/warning/alien(i)
 
 	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
@@ -717,7 +836,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	var/turf/new_turf = locate(max(T.x - Floor(width/2), 1), max(T.y - Floor(height/2), 1), T.z)
+	var/turf/new_turf = locate(max(T.x - floor(width/2), 1), max(T.y - floor(height/2), 1), T.z)
 	to_chat(Q, SPAN_XENONOTICE("You raise a blockade!"))
 	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
 	RP.start_decay(brittle_time, decay_time)

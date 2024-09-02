@@ -90,9 +90,10 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 	GLOB.STUI?.debug.Add("\[[time]]DEBUG: [text]")
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
-	for(var/client/C in GLOB.admins)
-		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+	for(var/client/client in GLOB.admins)
+		if(CLIENT_IS_STAFF(client))
+			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
+				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)

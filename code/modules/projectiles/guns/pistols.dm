@@ -653,6 +653,7 @@
 	current_mag = /obj/item/ammo_magazine/pistol/es4
 	force = 8
 	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
@@ -715,7 +716,7 @@
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_4)
+	set_fire_delay(FIRE_DELAY_TIER_7)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
 	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT

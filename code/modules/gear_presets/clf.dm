@@ -3,7 +3,7 @@
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
 	rank = FACTION_CLF
-	paygrade = PAY_SHORT_REB
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
@@ -71,6 +71,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	if(prob(50))
 		spawn_rebel_smg(new_human)
 	else
@@ -169,13 +170,13 @@
 
 	spawn_rebel_suit(new_human)
 	spawn_rebel_shoes(new_human)
-	spawn_rebel_gloves(new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
@@ -282,7 +283,7 @@
 	assignment = JOB_CLF_MEDIC
 	rank = JOB_CLF_MEDIC
 	role_comm_title = "MED"
-	paygrade = PAY_SHORT_CDOC
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/clf/combat_medic
 
 /datum/equipment_preset/clf/medic/load_gear(mob/living/carbon/human/new_human)
@@ -300,6 +301,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/medic(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
@@ -455,6 +457,7 @@
 	//clothing
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
@@ -574,6 +577,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
@@ -711,7 +715,7 @@
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
-	paygrade = PAY_SHORT_SYN
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/clf/synth/New()
@@ -955,7 +959,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
 	rank = JOB_CLF_COMMANDER
-	paygrade = PAY_SHORT_REBC
+	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 	skills = /datum/skills/clf/commander
 

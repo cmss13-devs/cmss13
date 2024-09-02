@@ -160,6 +160,13 @@
 	if(wear_id)
 		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
 
+	//Restraints
+	if(handcuffed)
+		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
+
+	if(legcuffed)
+		msg += SPAN_ORANGE("[capitalize(t_his)] ankles are restrained by [legcuffed].\n")
+
 	//Admin-slept
 	if(sleeping > 8000000)
 		msg += SPAN_HIGHDANGER("<B>This player has been slept by staff.</B>\n")
@@ -256,7 +263,7 @@
 						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
 				if(wound_flavor_text["[temp.display_name]"])
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
-			else if(temp.wounds.len > 0)
+			else if(length(temp.wounds) > 0)
 				var/list/wound_descriptors = list()
 				for(var/datum/wound/W as anything in temp.wounds)
 					if(W.internal && incision_depths[temp.name] == SURGERY_DEPTH_SURFACE)
@@ -279,37 +286,37 @@
 						wound_descriptors[this_wound_desc] += W.amount
 						continue
 					wound_descriptors[this_wound_desc] = W.amount
-				if(wound_descriptors.len)
+				if(length(wound_descriptors))
 					var/list/flavor_text = list()
 					var/list/no_exclude = list("gaping wound", "big gaping wound", "massive wound", "large bruise",\
 					"huge bruise", "massive bruise", "severe burn", "large burn", "deep burn", "carbonised area")
 					for(var/wound in wound_descriptors)
 						switch(wound_descriptors[wound])
 							if(1)
-								if(!flavor_text.len)
+								if(!length(flavor_text))
 									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude)  ? " what might be" : ""] a [wound]")
 								else
 									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a [wound]"
 							if(2)
-								if(!flavor_text.len)
+								if(!length(flavor_text))
 									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s")
 								else
 									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s"
 							if(3 to 5)
-								if(!flavor_text.len)
+								if(!length(flavor_text))
 									flavor_text += SPAN_WARNING("[t_He] has several [wound]s")
 								else
 									flavor_text += " several [wound]s"
 							if(6 to INFINITY)
-								if(!flavor_text.len)
+								if(!length(flavor_text))
 									flavor_text += SPAN_WARNING("[t_He] has a bunch of [wound]s")
 								else
 									flavor_text += " a ton of [wound]\s"
 					var/flavor_text_string = ""
-					for(var/text = 1, text <= flavor_text.len, text++)
-						if(text == flavor_text.len && flavor_text.len > 1)
+					for(var/text = 1, text <= length(flavor_text), text++)
+						if(text == length(flavor_text) && length(flavor_text) > 1)
 							flavor_text_string += ", and"
-						else if(flavor_text.len > 1 && text > 1)
+						else if(length(flavor_text) > 1 && text > 1)
 							flavor_text_string += ","
 						flavor_text_string += flavor_text[text]
 					flavor_text_string += " on [t_his] [temp.display_name].</span><br>"

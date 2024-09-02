@@ -61,8 +61,8 @@
 
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = PAY_SHORT_CPO
-	skills = /datum/skills/MP
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/wy_goon
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -70,13 +70,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
@@ -88,14 +88,48 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_BACK)
 
 
+/datum/equipment_preset/goon/engineer
+	name = "Weyland-Yutani Corporate Security Technician (Goon Engineer)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_WY_GOON_TECH
+	rank = JOB_WY_GOON_TECH
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/wy_goon_tech
+
+/datum/equipment_preset/goon/engineer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_JACKET)
+
+
 /datum/equipment_preset/goon/lead
 	name = "Weyland-Yutani Corporate Security Lead (Goon Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = PAY_SHORT_CSPO
-	skills = /datum/skills/MP
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/wy_goon_lead
 
 /datum/equipment_preset/goon/lead/New()
 	. = ..()
@@ -107,13 +141,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
@@ -130,15 +164,83 @@
 
 	assignment = JOB_WY_GOON_RESEARCHER
 	rank = JOB_WY_GOON_RESEARCHER
-	paygrade = PAY_SHORT_CCMO
+	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
+
+	dress_under = list(
+		/obj/item/clothing/under/liaison_suit/black,
+		/obj/item/clothing/under/liaison_suit/blue,
+		/obj/item/clothing/under/liaison_suit/brown,
+		/obj/item/clothing/under/liaison_suit/corporate_formal,
+		/obj/item/clothing/under/liaison_suit,
+		/obj/item/clothing/under/liaison_suit/charcoal,
+		/obj/item/clothing/under/liaison_suit/formal,
+		/obj/item/clothing/under/liaison_suit/blazer,
+		/obj/item/clothing/under/liaison_suit/suspenders,
+		/obj/item/clothing/under/blackskirt,
+		/obj/item/clothing/under/suit_jacket/trainee,
+		/obj/item/clothing/under/liaison_suit/ivy,
+		/obj/item/clothing/under/liaison_suit/orange,
+		/obj/item/clothing/under/liaison_suit/field,
+		/obj/item/clothing/under/colonist/workwear,
+		/obj/item/clothing/under/colonist/workwear/khaki,
+		/obj/item/clothing/under/colonist/workwear/pink,
+		/obj/item/clothing/under/colonist/workwear/green,
+	)
+	dress_over = list(
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
+		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
+		/obj/item/clothing/suit/storage/jacket/marine/bomber,
+		/obj/item/clothing/suit/storage/bomber,
+		/obj/item/clothing/suit/storage/bomber/alt,
+		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/labcoat,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
+		/obj/item/clothing/suit/storage/jacket/marine/vest,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
+		/obj/item/clothing/suit/storage/webbing,
+	)
+	dress_extra = list(
+		/obj/item/clothing/accessory/black,
+		/obj/item/clothing/accessory/red,
+		/obj/item/clothing/accessory/purple,
+		/obj/item/clothing/accessory/blue,
+		/obj/item/clothing/accessory/green,
+		/obj/item/clothing/accessory/gold,
+		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/glasses/sunglasses/big,
+		/obj/item/clothing/glasses/sunglasses/aviator,
+		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/clothing/glasses/regular/hipster,
+	)
+	dress_gloves = list(
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/gloves/marine/dress,
+	)
+	dress_shoes = list(
+		/obj/item/clothing/shoes/laceup,
+		/obj/item/clothing/shoes/laceup/brown,
+		/obj/item/clothing/shoes/black,
+		/obj/item/clothing/shoes/marine/corporate,
+	)
+	dress_hat = list(
+		/obj/item/clothing/head/fedora,
+		/obj/item/clothing/head/beret/cm/black/civilian,
+		/obj/item/clothing/head/beret/cm/white/civilian,
+	)
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon, WEAR_IN_BACK)

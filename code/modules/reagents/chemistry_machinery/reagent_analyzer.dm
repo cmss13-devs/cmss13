@@ -33,7 +33,7 @@
 				to_chat(user, SPAN_WARNING("Someone else removed the sample. Make up your mind!"))
 				return
 			processing = TRUE
-			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+			if(sample.reagents.total_volume < 30 || length(sample.reagents.reagent_list) > 1)
 				icon_state = "reagent_analyzer_error"
 				reagent_process()
 			else
@@ -54,12 +54,12 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/reagent_analyzer, finish_reagent_process)), 4 SECONDS)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
-	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || length(sample.reagents.reagent_list) > 1)
 		if(!sample || !sample.reagents)
 			print_report(0, "SAMPLE EMPTY.")
 		else if(sample.reagents.total_volume < 30)
 			print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
-		else if(sample.reagents.reagent_list.len > 1)
+		else if(length(sample.reagents.reagent_list) > 1)
 			print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")
 		else
 			print_report(0, "UNKNOWN.")

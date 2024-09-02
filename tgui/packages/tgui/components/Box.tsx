@@ -5,63 +5,56 @@
  */
 
 import { BooleanLike, classes } from 'common/react';
-import { createElement, ReactNode } from 'react';
-import { CSS_COLORS } from '../constants';
+import {
+  createElement,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  UIEventHandler,
+} from 'react';
 
-export type BoxProps = {
-  [key: string]: any;
-  readonly as?: string;
-  readonly className?: string | BooleanLike;
-  readonly children?: ReactNode;
-  readonly position?: string | BooleanLike;
-  readonly overflow?: string | BooleanLike;
-  readonly overflowX?: string | BooleanLike;
-  readonly overflowY?: string | BooleanLike;
-  readonly top?: string | BooleanLike;
-  readonly bottom?: string | BooleanLike;
-  readonly left?: string | BooleanLike;
-  readonly right?: string | BooleanLike;
-  readonly width?: string | BooleanLike;
-  readonly minWidth?: string | BooleanLike;
-  readonly maxWidth?: string | BooleanLike;
-  readonly height?: string | BooleanLike;
-  readonly minHeight?: string | BooleanLike;
-  readonly maxHeight?: string | BooleanLike;
-  readonly fontSize?: string | BooleanLike;
-  readonly fontFamily?: string;
-  readonly lineHeight?: string | BooleanLike;
-  readonly opacity?: number;
-  readonly textAlign?: string | BooleanLike;
-  readonly verticalAlign?: string | BooleanLike;
-  readonly inline?: BooleanLike;
-  readonly bold?: BooleanLike;
-  readonly italic?: BooleanLike;
-  readonly nowrap?: BooleanLike;
-  readonly preserveWhitespace?: BooleanLike;
-  readonly m?: string | BooleanLike;
-  readonly mx?: string | BooleanLike;
-  readonly my?: string | BooleanLike;
-  readonly mt?: string | BooleanLike;
-  readonly mb?: string | BooleanLike;
-  readonly ml?: string | BooleanLike;
-  readonly mr?: string | BooleanLike;
-  readonly p?: string | BooleanLike;
-  readonly px?: string | BooleanLike;
-  readonly py?: string | BooleanLike;
-  readonly pt?: string | BooleanLike;
-  readonly pb?: string | BooleanLike;
-  readonly pl?: string | BooleanLike;
-  readonly pr?: string | BooleanLike;
-  readonly color?: string | BooleanLike;
-  readonly textColor?: string | BooleanLike;
-  readonly backgroundColor?: string | BooleanLike;
-  readonly fillPositionedParent?: boolean;
+import { CSS_COLORS } from '../constants';
+import { logger } from '../logging';
+
+type BooleanProps = Partial<Record<keyof typeof booleanStyleMap, boolean>>;
+type StringProps = Partial<
+  Record<keyof typeof stringStyleMap, string | BooleanLike>
+>;
+
+export type EventHandlers = Partial<{
+  onClick: MouseEventHandler<HTMLDivElement>;
+  onContextMenu: MouseEventHandler<HTMLDivElement>;
+  onDoubleClick: MouseEventHandler<HTMLDivElement>;
+  onKeyDown: KeyboardEventHandler<HTMLDivElement>;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
+  onMouseDown: MouseEventHandler<HTMLDivElement>;
+  onMouseMove: MouseEventHandler<HTMLDivElement>;
+  onMouseOver: MouseEventHandler<HTMLDivElement>;
+  onMouseUp: MouseEventHandler<HTMLDivElement>;
+  onScroll: UIEventHandler<HTMLDivElement>;
+}>;
+
+export type BoxProps = Partial<{
+  as: string;
+  children: ReactNode;
+  className: string | BooleanLike;
+  style: Partial<CSSStyleDeclaration>;
+}> &
+  BooleanProps &
+  StringProps &
+  EventHandlers;
+
+// Don't you dare put this elsewhere
+type DangerDoNotUse = {
+  readonly dangerouslySetInnerHTML?: {
+    __html: any;
+  };
 };
 
 /**
  * Coverts our rem-like spacing unit into a CSS unit.
  */
-export const unit = (value: unknown): string | undefined => {
+export const unit = (value: unknown) => {
   if (typeof value === 'string') {
     // Transparently convert pixels into rem units
     if (value.endsWith('px')) {
@@ -77,7 +70,7 @@ export const unit = (value: unknown): string | undefined => {
 /**
  * Same as `unit`, but half the size for integers numbers.
  */
-export const halfUnit = (value: unknown): string | undefined => {
+export const halfUnit = (value: unknown) => {
   if (typeof value === 'string') {
     return unit(value);
   }
@@ -89,7 +82,7 @@ export const halfUnit = (value: unknown): string | undefined => {
 const isColorCode = (str: unknown) => !isColorClass(str);
 
 const isColorClass = (str: unknown): boolean => {
-  return typeof str === 'string' && CSS_COLORS.includes(str);
+  return typeof str === 'string' && CSS_COLORS.includes(str as any);
 };
 
 const mapRawPropTo = (attrName) => (style, value) => {
@@ -126,9 +119,11 @@ const mapColorPropTo = (attrName) => (style, value) => {
 
 // String / number props
 const stringStyleMap = {
+  align: mapRawPropTo('textAlign'),
   bottom: mapUnitPropTo('bottom', unit),
   fontFamily: mapRawPropTo('fontFamily'),
   fontSize: mapUnitPropTo('fontSize', unit),
+  fontWeight: mapRawPropTo('fontWeight'),
   height: mapUnitPropTo('height', unit),
   left: mapUnitPropTo('left', unit),
   maxHeight: mapUnitPropTo('maxHeight', unit),
@@ -160,12 +155,12 @@ const stringStyleMap = {
     'Left',
     'Right',
   ]),
-  mx: mapDirectionalUnitPropTo('margin', halfUnit, ['Left', 'Right']),
-  my: mapDirectionalUnitPropTo('margin', halfUnit, ['Top', 'Bottom']),
-  mt: mapUnitPropTo('marginTop', halfUnit),
   mb: mapUnitPropTo('marginBottom', halfUnit),
   ml: mapUnitPropTo('marginLeft', halfUnit),
   mr: mapUnitPropTo('marginRight', halfUnit),
+  mt: mapUnitPropTo('marginTop', halfUnit),
+  mx: mapDirectionalUnitPropTo('margin', halfUnit, ['Left', 'Right']),
+  my: mapDirectionalUnitPropTo('margin', halfUnit, ['Top', 'Bottom']),
   // Padding
   p: mapDirectionalUnitPropTo('padding', halfUnit, [
     'Top',
@@ -173,18 +168,21 @@ const stringStyleMap = {
     'Left',
     'Right',
   ]),
-  px: mapDirectionalUnitPropTo('padding', halfUnit, ['Left', 'Right']),
-  py: mapDirectionalUnitPropTo('padding', halfUnit, ['Top', 'Bottom']),
-  pt: mapUnitPropTo('paddingTop', halfUnit),
   pb: mapUnitPropTo('paddingBottom', halfUnit),
   pl: mapUnitPropTo('paddingLeft', halfUnit),
   pr: mapUnitPropTo('paddingRight', halfUnit),
+  pt: mapUnitPropTo('paddingTop', halfUnit),
+  px: mapDirectionalUnitPropTo('padding', halfUnit, ['Left', 'Right']),
+  py: mapDirectionalUnitPropTo('padding', halfUnit, ['Top', 'Bottom']),
   // Color props
   color: mapColorPropTo('color'),
   textColor: mapColorPropTo('color'),
   backgroundColor: mapColorPropTo('backgroundColor'),
+} as const;
 
-  // Utility props
+// Boolean props
+const booleanStyleMap = {
+  bold: mapBooleanPropTo('fontWeight', 'bold'),
   fillPositionedParent: (style, value) => {
     if (value) {
       style['position'] = 'absolute';
@@ -194,11 +192,6 @@ const stringStyleMap = {
       style['right'] = 0;
     }
   },
-} as const;
-
-// Boolean props
-const booleanStyleMap = {
-  bold: mapBooleanPropTo('fontWeight', 'bold'),
   inline: mapBooleanPropTo('display', 'inline-block'),
   italic: mapBooleanPropTo('fontStyle', 'italic'),
   nowrap: mapBooleanPropTo('whiteSpace', 'nowrap'),
@@ -242,7 +235,7 @@ export const computeBoxClassName = (props: BoxProps) => {
   ]);
 };
 
-export const Box = (props: BoxProps) => {
+export const Box = (props: BoxProps & DangerDoNotUse) => {
   const { as = 'div', className, children, ...rest } = props;
 
   // Compute class name and styles
@@ -252,7 +245,9 @@ export const Box = (props: BoxProps) => {
   const computedProps = computeBoxProps(rest);
 
   if (as === 'img') {
-    computedProps.style['-ms-interpolation-mode'] = 'nearest-neighbor';
+    logger.error(
+      'Box component cannot be used as an image. Use Image component instead.',
+    );
   }
 
   // Render the component
@@ -262,6 +257,6 @@ export const Box = (props: BoxProps) => {
       ...computedProps,
       className: computedClassName,
     },
-    children
+    children,
   );
 };

@@ -12,8 +12,8 @@ SUBSYSTEM_DEF(playtime)
 
 	var/list/currentrun = src.currentrun
 
-	while (currentrun.len)
-		var/client/C = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/client/C = currentrun[length(currentrun)]
 		currentrun.len--
 
 		var/mob/M = C.mob

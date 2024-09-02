@@ -125,10 +125,11 @@ GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 		check_range = 1 // everything else, like infect-on-contact things, only infect things on top of it
 
 	if(isturf(source.loc))
-		for(var/mob/living/carbon/victim in oview(check_range, source))
+		FOR_DOVIEW(var/mob/living/carbon/victim, check_range, source, HIDE_INVISIBLE_OBSERVER)
 			if(isturf(victim.loc) && victim.can_pass_disease())
 				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
 					victim.contract_disease(src, 0, 1, force_spread)
+		FOR_DOVIEW_END
 
 	return
 

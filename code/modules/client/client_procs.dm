@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -187,39 +188,21 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.add_note(add, FALSE, NOTE_MERIT)
 
-	if(href_list["add_wl_info_1"])
-		var/key = href_list["add_wl_info_1"]
-		var/add = input("Add Commander Note") as null|message
+	if(href_list["add_wl_info"])
+		var/key = href_list["add_wl_info"]
+		var/add = input("Add Whitelist Note") as null|message
 		if(!add)
 			return
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_COMMANDER)
-
-	if(href_list["add_wl_info_2"])
-		var/key = href_list["add_wl_info_2"]
-		var/add = input("Add Synthetic Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_SYNTHETIC)
-
-	if(href_list["add_wl_info_3"])
-		var/key = href_list["add_wl_info_3"]
-		var/add = input("Add Yautja Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_YAUTJA)
+		P.add_note(add, FALSE, NOTE_WHITELIST)
 
 	if(href_list["remove_wl_info"])
 		var/key = href_list["remove_wl_info"]
 		var/index = text2num(href_list["remove_index"])
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.remove_note(index)
+		P.remove_note(index, whitelist = TRUE)
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -283,7 +266,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
 		return 0
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
@@ -314,7 +297,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
 	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	player_entity = setup_player_entity(ckey)
@@ -436,11 +419,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
-		toggle_fullscreen(TRUE)
-	else
-		toggle_fullscreen(FALSE)
-
+	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -750,12 +729,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
-/client/proc/toggle_fullscreen(new_value)
-	if(new_value)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+/client/proc/update_fullscreen()
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
-		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
-	winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")
+
+	if(prefs.adaptive_zoom)
+		adaptive_zoom()
+	else if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.

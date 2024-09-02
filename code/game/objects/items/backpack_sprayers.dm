@@ -333,7 +333,7 @@
 				return
 		//actually firing the launcher
 		if(tank.launcher_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [round(tank.launcher_cooldown/10)] seconds."))
+			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [floor(tank.launcher_cooldown/10)] seconds."))
 			return
 		if(tank.reagents.has_reagent("water", launcher_cost))
 			tank.reagents.remove_reagent("water", launcher_cost)

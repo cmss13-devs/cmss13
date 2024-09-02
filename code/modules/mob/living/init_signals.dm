@@ -26,6 +26,7 @@
 	if(stat < UNCONSCIOUS)
 		set_stat(UNCONSCIOUS)
 	sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+	client?.soundOutput?.update_mob_environment_override()
 
 /// Called when [TRAIT_KNOCKEDOUT] is removed from the mob.
 /mob/living/proc/on_knockedout_trait_loss(datum/source)
@@ -33,6 +34,7 @@
 	if(stat <= UNCONSCIOUS)
 		update_stat()
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
+	client?.soundOutput?.update_mob_environment_override()
 
 /// Called when [TRAIT_IMMOBILIZED] is added to the mob.
 /mob/living/proc/on_immobilized_trait_gain(datum/source)

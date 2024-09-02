@@ -126,6 +126,7 @@
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	max_w_class = SIZE_TINY
 	storage_slots = 20
 	can_hold = list(

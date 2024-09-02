@@ -326,6 +326,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/toy/crayon/blue = "crayonblue",
 	/obj/item/toy/crayon/purple = "crayonpurple",
 	/obj/item/toy/crayon/rainbow = "crayonrainbow",
+	/obj/item/toy/crayon/pride/trans = "crayontrans",
+	/obj/item/toy/crayon/pride/gay = "crayongay",
+	/obj/item/toy/crayon/pride/lesbian = "crayonlesbian",
+	/obj/item/toy/crayon/pride/bi = "crayonbi",
+	/obj/item/toy/crayon/pride/pan = "crayonpan",
+	/obj/item/toy/crayon/pride/ace = "crayonace",
+	/obj/item/toy/crayon/pride/trans = "crayontrans",
+	/obj/item/toy/crayon/pride/enby = "crayonenby",
+	/obj/item/toy/crayon/pride/fluid = "crayonfluid",
 	/obj/item/paper = "paper",
 	/obj/item/device/flashlight/flare = "flare",
 	/obj/item/clothing/head/headset = "headset",
@@ -354,7 +363,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
@@ -379,8 +388,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 
 	var/obj/item/storage/internal/headgear/pockets
-	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
-	var/storage_slots_reserved_for_garb = 2
+	var/storage_slots = 2 // Small items like injectors, bandages, etc
+	var/storage_slots_reserved_for_garb = 2 // Cosmetic items & now cigarettes and lighters for RP
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
 
@@ -557,7 +566,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// the human sprite is the only thing that reliably renders things, so
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
-	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+	if(pockets && length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		var/list/above_band_layer = list()
 		var/list/below_band_layer = list()
 		var/has_helmet_band = FALSE
@@ -799,6 +808,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+/obj/item/clothing/head/helmet/marine/medic/white
+	name = "\improper M10 white corpsman helmet"
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
+	icon_state = "med_helmet_white"
+	specialty = "M10 pattern medic white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"

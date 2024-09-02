@@ -1,7 +1,7 @@
 /datum/xeno_strain/vanguard
 	name = PRAETORIAN_VANGUARD
-	description = "You forfeit all of your acid-based abilities and some health for some extra speed and a rechargable shield that can block one attack. Use your Pierce from up to three paces away to stab through talls, while stabbing through several will completely recharge your shield. Use your charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. You also have a Cleave ability, amplified by your shield, which you can toggle to either immobilize or fling a target away."
-	flavor_description = "They are my bulwark against the tallhosts. They are my Vanguard and they shall know no fear."
+	description = "You forfeit all of your acid-based abilities and some health for some extra speed and a rechargable shield that can block one attack. Use your Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge your shield. Use your charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. You also have a Cleave ability, amplified by your shield, which you can toggle to either immobilize or fling a target away."
+	flavor_description = "Fearless you are born, fearless you serve, fearless you die. This one will become my Vanguard"
 	icon_state_prefix = "Vanguard"
 
 	actions_to_remove = list(
@@ -54,7 +54,7 @@
 	last_combat_time = world.time
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
+	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
 	if (istype(pAction))
 		pAction.should_spin_instead = TRUE
 
@@ -62,7 +62,7 @@
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
+	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
 	if (istype(pAction))
 		pAction.should_spin_instead = FALSE
 	return
@@ -88,6 +88,6 @@
 		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
 
-	var/datum/action/xeno_action/activable/cleave/caction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
 	if (istype(caction))
 		caction.buffed = TRUE

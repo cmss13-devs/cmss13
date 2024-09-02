@@ -5,63 +5,45 @@
 "b" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "c" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "e" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "f" = (
 /obj/structure/surface/table,
 /obj/item/storage/toolbox,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "g" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "h" = (
 /obj/structure/surface/table,
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "i" = (
 /obj/item/ore,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "j" = (
 /obj/effect/decal/remains/human,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "k" = (
 /obj/structure/barricade/wooden{
@@ -69,9 +51,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "l" = (
 /obj/structure/surface/rack,
@@ -81,61 +61,45 @@
 /obj/item/lightstick/red,
 /obj/item/storage/box/lightstick/red,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "m" = (
 /obj/item/tool/shovel,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "n" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "o" = (
 /obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "p" = (
 /obj/item/tool/warning_cone,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "q" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "r" = (
 /obj/structure/surface/table,
 /obj/item/pizzabox,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "s" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "t" = (
 /obj/structure/ore_box,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "u" = (
 /obj/structure/sign/safety/hazard,
@@ -150,16 +114,12 @@
 /area/bigredv2/outside/space_port)
 "A" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "P" = (
 /obj/item/ore,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 
 (1,1,1) = {"

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox } from '../components';
+import { Button, Flex, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const CommandTablet = () => {
@@ -40,39 +40,42 @@ export const CommandTablet = () => {
           <Flex height="100%" direction="column">
             <Flex.Item>
               {!canAnnounce && (
-                <Button color="bad" warning={1} fluid={1} icon="ban">
+                <Button color="bad" warning={1} fluid icon="ban">
                   Announcement recharging:{' '}
                   {Math.ceil((data.endtime - data.worldtime) / 10)} secs
                 </Button>
               )}
               {!!canAnnounce && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="bullhorn"
                   title="Make an announcement"
-                  content="Make an announcement"
                   onClick={() => act('announce')}
                   disabled={!canAnnounce}
-                />
+                >
+                  Make an announcement
+                </Button>
               )}
             </Flex.Item>
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 icon="medal"
                 title="Give a medal"
-                content="Give a medal"
                 onClick={() => act('award')}
-              />
+              >
+                Give a medal
+              </Button>
             </Flex.Item>
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 icon="globe-africa"
                 title="View tactical map"
-                content="View tactical map"
                 onClick={() => act('mapview')}
-              />
+              >
+                View tactical map
+              </Button>
             </Flex.Item>
             {data.faction === 'USCM' && (
               <Section title="Evacuation">
@@ -86,38 +89,41 @@ export const CommandTablet = () => {
                   {!canDistress && (
                     <Button
                       disabled={1}
-                      content={'Distress Beacon disabled'}
                       tooltip={distress_reason}
-                      fluid={1}
+                      fluid
                       icon="ban"
-                    />
+                    >
+                      {'Distress Beacon disabled'}
+                    </Button>
                   )}
                   {canDistress && (
                     <Button.Confirm
-                      fluid={1}
+                      fluid
                       color="orange"
                       icon="phone-volume"
-                      content={'Send Distress Beacon'}
                       confirmColor="bad"
                       confirmContent="Confirm?"
                       confirmIcon="question"
                       onClick={() => act('distress')}
-                    />
+                    >
+                      {'Send Distress Beacon'}
+                    </Button.Confirm>
                   )}
                 </Flex.Item>
                 {evacstatus === 0 && (
                   <Flex.Item>
                     <Button.Confirm
-                      fluid={1}
+                      fluid
                       color="orange"
                       icon="door-open"
-                      content={'Initiate Evacuation'}
                       confirmColor="bad"
                       confirmContent="Confirm?"
                       confirmIcon="question"
                       onClick={() => act('evacuation_start')}
                       disabled={!canEvac}
-                    />
+                    >
+                      {'Initiate Evacuation'}
+                    </Button.Confirm>
                   </Flex.Item>
                 )}
                 {evacstatus === 1 && (

@@ -1054,6 +1054,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.name = name
 
 /datum/action/item_action/toggle_zoom_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/G = holder_item
 	var/obj/item/attachable/scope/variable_zoom/S = G.attachments["rail"]
 	S.toggle_zoom_level()
@@ -1674,6 +1675,7 @@ Defined in conflicts.dm of the #defines folder.
 /datum/action/item_action/vulture
 
 /datum/action/item_action/vulture/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/gun_holder = holder_item
 	var/obj/item/attachable/vulture_scope/scope = gun_holder.attachments["rail"]
 	if(!istype(scope))
@@ -1760,8 +1762,6 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
-
-	matter = list("wood" = 2000)
 
 	select_gamemode_skin(type)
 
@@ -2386,6 +2386,33 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/type71/New()
 	..()
 
+/obj/item/attachable/stock/m60
+	name = "M60 stock"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "m60_stock"
+	attach_icon = "m60_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 15
+	size_mod = 0
+
+
+/obj/item/attachable/stock/ppsh
+	name = "PPSh-17b stock"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "ppsh17b_stock"
+	attach_icon = "ppsh17b_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 10
+	size_mod = 0
+
+
+
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
@@ -2975,7 +3002,7 @@ Defined in conflicts.dm of the #defines folder.
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
 
-			var/amount_of_reagents = FT.reagents.reagent_list.len
+			var/amount_of_reagents = length(FT.reagents.reagent_list)
 			var/amount_removed_per_reagent = transfered_rounds / amount_of_reagents
 			for(var/datum/reagent/R in FT.reagents.reagent_list)
 				R.volume -= amount_removed_per_reagent
@@ -3225,6 +3252,10 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 
+	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
+		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
+		return
+
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 
@@ -3233,13 +3264,13 @@ Defined in conflicts.dm of the #defines folder.
 	ammo_datum.flamer_reagent_id = flamer_reagent.id
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
-	P.color = flamer_reagent.color
+	P.color = flamer_reagent.burncolor
 	P.hit_effect_color = flamer_reagent.burncolor
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null)
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
-	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"
@@ -3513,6 +3544,7 @@ Defined in conflicts.dm of the #defines folder.
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/bipod/toggle_full_auto_switch/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/holder_gun = holder_item
 	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
 

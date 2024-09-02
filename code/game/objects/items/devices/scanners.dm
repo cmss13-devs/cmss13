@@ -191,7 +191,7 @@ FORENSIC SCANNER
 		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	if(env_pressure > 0)
 		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [round(env_temp-T0C)]&deg;C"), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C"), 1)
 
 	src.add_fingerprint(user)
 	return
@@ -276,7 +276,7 @@ FORENSIC SCANNER
 
 	if(!QDELETED(O.reagents))
 		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
+		if(length(O.reagents.reagent_list) > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
 				if(prob(reliability))
@@ -329,7 +329,7 @@ FORENSIC SCANNER
 	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
 		return
 	if(!istype(O))
@@ -340,6 +340,21 @@ FORENSIC SCANNER
 	ex_potential = 0
 	int_potential = 0
 	rad_potential = 0
+
+	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
+		var/obj/item/ammo_magazine/flamer_tank/tank = O
+		if(!length(tank.reagents.reagent_list))
+			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			return
+		var/result
+		var/datum/reagent/chem = tank.reagents.reagent_list[1]
+		result += SPAN_BLUE("Fuel Statistics:")
+		result += SPAN_BLUE("<br>Intensity: [min(chem.intensityfire, tank.max_intensity)]")
+		result += SPAN_BLUE("<br>Duration: [min(chem.durationfire, tank.max_duration)]")
+		result += SPAN_BLUE("<br>Range: [min(chem.rangefire, tank.max_range)]")
+		to_chat(user, SPAN_NOTICE("[result]"))
+		return
+
 	if(istype(O,/obj/item/explosive))
 		var/obj/item/explosive/E = O
 		if(!E.customizable)
@@ -381,7 +396,7 @@ FORENSIC SCANNER
 /obj/item/device/demo_scanner/proc/scan(obj/O)
 	if(QDELETED(O.reagents))
 		return
-	if(O.reagents.reagent_list.len > 0)
+	if(length(O.reagents.reagent_list) > 0)
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			dat += SPAN_BLUE("<br>[R.name]: [R.volume]u")
 			if(R.explosive)

@@ -264,7 +264,7 @@
 		bullet.damage = bullet.damage * brute_projectile_multiplier
 
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(round(50 * burn_multiplier))
+		take_damage(floor(50 * burn_multiplier))
 
 	else if(bullet.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		take_damage(bullet.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
@@ -279,9 +279,9 @@
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type)
 			var/stack_amt
-			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
-				stack_amt += round(2 * (health/starting_maxhealth))
+				stack_amt += floor(2 * (health/starting_maxhealth))
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
@@ -304,7 +304,7 @@
 		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
-		update_health(round(severity * explosive_multiplier))
+		update_health(floor(severity * explosive_multiplier))
 
 /obj/structure/barricade/get_explosion_resistance(direction)
 	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
@@ -359,7 +359,7 @@
 	update_icon()
 
 /obj/structure/barricade/proc/update_damage_state()
-	var/health_percent = round(health/maxhealth * 100)
+	var/health_percent = floor(health/maxhealth * 100)
 	switch(health_percent)
 		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
 		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
@@ -453,6 +453,10 @@
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
 		return FALSE
 
+	if(material.amount < nailgun.material_per_repair)
+		to_chat(user, SPAN_WARNING("You'll need more adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
 	var/repair_value = 0
 	for(var/validSheetType in repair_materials)
 		if(validSheetType == material.sheettype)
@@ -469,7 +473,7 @@
 		return FALSE
 
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		to_chat(user, SPAN_WARNING("You seem to have misplaced the repair material!"))
 		return FALSE
 
 	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
@@ -479,7 +483,7 @@
 	update_health(-repair_value*maxhealth)
 	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
 	update_damage_state()
-	material.use(1)
+	material.use(nailgun.material_per_repair)
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()

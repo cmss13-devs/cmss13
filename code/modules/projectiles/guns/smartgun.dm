@@ -178,6 +178,7 @@
 //---ability actions--\\
 
 /datum/action/item_action/smartgun/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(!ishuman(owner))
 		return
@@ -501,7 +502,7 @@
 
 		path = get_line(user, M)
 
-		if(path.len)
+		if(length(path))
 			var/blocked = FALSE
 			for(T in path)
 				if(T.density || T.opacity)
@@ -524,9 +525,9 @@
 			else
 				conscious_targets += M
 
-	if(conscious_targets.len)
+	if(length(conscious_targets))
 		. = pick(conscious_targets)
-	else if(unconscious_targets.len)
+	else if(length(unconscious_targets))
 		. = pick(unconscious_targets)
 
 /obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
@@ -595,6 +596,7 @@
 // ID lock action \\
 
 /datum/action/item_action/co_sg/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/smartgun/co/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
@@ -715,7 +717,7 @@
 	requires_harness = FALSE
 
 /obj/item/smartgun_battery
-	name = "smartgun DV9 battery"
+	name = "\improper DV9 smartgun battery"
 	desc = "A standard-issue 9-volt lithium dry-cell battery, most commonly used within the USCMC to power smartguns. Per the manual, one battery is good for up to 50000 rounds and plugs directly into the smartgun's power receptacle, which is only compatible with this type of battery. Various auxiliary modes usually bring the round count far lower. While this cell is incompatible with most standard electrical system, it can be charged by common rechargers in a pinch. USCMC smartgunners often guard them jealously."
 
 	icon = 'icons/obj/structures/machinery/power.dmi'

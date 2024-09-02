@@ -63,17 +63,11 @@
 /area/lv624/ground/caves/south_central_caves)
 "o" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/northwest,
 /area/lv624/ground/barrens/containers)
 "p" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "s" = (
 /obj/effect/decal/grass_overlay/grass1/inner{

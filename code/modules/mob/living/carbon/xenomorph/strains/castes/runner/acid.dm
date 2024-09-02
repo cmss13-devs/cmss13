@@ -1,7 +1,7 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
 	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
-	flavor_description = "Burn their walls, maim their faces! Your life, for The Hive!"
+	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
 	actions_to_remove = list(
@@ -96,7 +96,7 @@
 		var/amplitude = 50 + 50 * (caboom_timer - caboom_left) / caboom_timer
 		playsound(bound_xeno, caboom_sound[caboom_loop], amplitude, FALSE, 10)
 		caboom_loop++
-		if(caboom_loop > caboom_sound.len)
+		if(caboom_loop > length(caboom_sound))
 			caboom_loop = 1
 	if(caboom_left <= 0)
 		caboom_trigger = FALSE
@@ -120,7 +120,7 @@
 	var/max_burn_damage = acid_amount / caboom_burn_damage_ratio
 	var/burn_range = acid_amount / caboom_burn_range_ratio
 
-	for(var/barricades in view(bound_xeno, acid_range))
+	for(var/barricades in dview(acid_range, bound_xeno))
 		if(istype(barricades, /obj/structure/barricade))
 			new caboom_struct_acid_type(get_turf(barricades), barricades)
 			continue
@@ -129,7 +129,7 @@
 			continue
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y
-	for(var/mob/living/target_living in view(bound_xeno, burn_range))
+	FOR_DVIEW(var/mob/living/target_living, burn_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
 		if (!isxeno_human(target_living) || bound_xeno.can_not_harm(target_living))
 			continue
 		var/dist = 0
@@ -140,13 +140,15 @@
 			dist = (0.934*dx) + (0.427*dy)
 		else
 			dist = (0.427*dx) + (0.934*dy)
-		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
+		var/damage = floor((burn_range - dist) * max_burn_damage / burn_range)
 		if(isxeno(target_living))
 			damage *= XVX_ACID_DAMAGEMULT
 
 		target_living.apply_damage(damage, BURN)
-	for(var/turf/T in view(bound_xeno, acid_range))
+	FOR_DVIEW_END
+	FOR_DVIEW(var/turf/T, acid_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
 		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
+	FOR_DVIEW_END
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
 		var/datum/hive_status/hive_status = bound_xeno.hive

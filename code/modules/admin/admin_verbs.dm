@@ -72,6 +72,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
+	/client/proc/other_records,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -92,8 +93,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
-	/client/proc/matrix_editor,
-	/datum/admins/proc/open_shuttlepanel
+	/client/proc/matrix_editor
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
@@ -138,9 +138,11 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,
+	/datum/admins/proc/open_shuttlepanel
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -218,6 +220,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
+	/datum/admins/proc/open_shuttlepanel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(

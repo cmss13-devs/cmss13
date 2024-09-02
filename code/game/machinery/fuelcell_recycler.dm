@@ -3,7 +3,6 @@
 	desc = "A large machine with whirring fans and two cylindrical holes in the top. Used to regenerate fuel cells."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "recycler"
-	density = TRUE
 	active_power_usage = 15000
 	unslashable = TRUE
 	unacidable = TRUE
@@ -20,6 +19,11 @@
 	. = ..()
 	QDEL_NULL(cell_left)
 	QDEL_NULL(cell_right)
+
+/obj/structure/machinery/fuelcell_recycler/ex_act(severity)
+	if(indestructible)
+		return
+	. = ..()
 
 /obj/structure/machinery/fuelcell_recycler/get_examine_text(mob/user)
 	. = ..()
@@ -151,11 +155,6 @@
 		return
 	icon_state = "recycler_on"
 
-/obj/structure/machinery/fuelcell_recycler/ex_act(severity)
-	if(indestructible)
-		return
-	. = ..()
-
 /obj/structure/machinery/fuelcell_recycler/proc/turn_off()
 	visible_message(SPAN_NOTICE("[src] stops whirring as it turns off."))
 	stop_processing()
@@ -206,7 +205,7 @@
 
 ///Percentage of fuel left in the cell
 /obj/item/fuel_cell/proc/get_fuel_percent()
-	return round(100 * fuel_amount/max_fuel_amount)
+	return floor(100 * fuel_amount/max_fuel_amount)
 
 ///Whether the fuel cell is full
 /obj/item/fuel_cell/proc/is_regenerated()

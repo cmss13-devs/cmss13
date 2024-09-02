@@ -24,6 +24,8 @@
 	/// The datacore storing all the information.
 	var/datum/ares_datacore/datacore
 
+	COOLDOWN_DECLARE(printer_cooldown)
+
 /obj/structure/machinery/computer/ares_console/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
@@ -93,6 +95,8 @@
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = datacore.nuke_available
+
+	data["printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
@@ -247,8 +251,8 @@
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
 			else if(operator.wear_id)
-				idcard = operator.wear_id
-				if(istype(idcard))
+				idcard = operator.get_idcard()
+				if(idcard)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
@@ -337,6 +341,72 @@
 			last_menu = current_menu
 			current_menu = "core_security"
 
+		// -- Print ASRS Audit Log -- //
+		if("print_req")
+			playsound = FALSE
+			if(!COOLDOWN_FINISHED(src, printer_cooldown))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!length(datacore.records_asrs))
+				to_chat(user, SPAN_WARNING("There are no records to print!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			COOLDOWN_START(src, printer_cooldown, 20 SECONDS)
+			playsound(src, 'sound/machines/fax.ogg', 15, 1)
+			sleep(3.4 SECONDS)
+			var/contents = {"
+						<style>
+							#container { width: 500px; min-height: 500px; margin: 25px auto;  \
+									font-family: monospace; padding: 0; font-size: 130% }  \
+							#title { font-size: 250%; letter-spacing: 8px; \
+									font-weight: bolder; margin: 20px auto }   \
+							.header { font-size: 130%; text-align: center; }   \
+							.important { font-variant: small-caps; font-size = 130%;   \
+										font-weight: bolder; }    \
+							.tablelabel { width: 150px; }  \
+							.field { font-style: italic; } \
+							table { table-layout: fixed }  \
+						</style><div id='container'>   \
+						<div class='header'>   \
+							<p id='title' class='important'>A.S.R.S.</p>   \
+							<p class='important'>Automatic Storage Retrieval System</p>    \
+							<p class='field'>Audit Log</p> \
+						</div><hr>
+						<u>Printed By:</u> [last_login]<br>
+						<u>Print Time:</u> [worldtime2text()]<br>
+						<hr>
+						<center>
+						<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>
+						<thead>
+							<tr>
+							<th scope="col">Time</th>
+							<th scope="col">User</th>
+							<th scope="col">Source</th>
+							<th scope="col">Order</th>
+							</tr>
+						</thead>
+						<tbody>
+						"}
+
+			for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
+
+				contents += {"
+							<tr>
+							<th scope="row">[req_order.time]</th>
+							<td>[req_order.user]</td>
+							<td>[req_order.title]</td>
+							<td>[req_order.details]</td>
+							</tr>
+							"}
+
+			contents += "</center></tbody></table>"
+
+			var/obj/item/paper/log = new(loc)
+			log.name = "ASRS Audit Log"
+			log.info += contents
+			log.icon_state = "paper_uscm_words"
+			visible_message(SPAN_NOTICE("[src] prints out a paper."))
+
 		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])
@@ -368,6 +438,10 @@
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					datacore.records_tech -= record
+				if(ARES_RECORD_FLIGHT)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_flight -= record
 
 			new_delete.details = new_details
 			new_delete.user = last_login
@@ -416,7 +490,7 @@
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(user)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(user)] has called for general quarters via ARES.")
-			log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			log_ares_security("General Quarters", "Called for general quarters via ARES.", last_login)
 			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
@@ -438,7 +512,7 @@
 
 			log_game("[key_name(user)] has called for an emergency evacuation via ARES.")
 			message_admins("[key_name_admin(user)] has called for an emergency evacuation via ARES.")
-			log_ares_security("Initiate Evacuation", "[last_login] has called for an emergency evacuation via ARES.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation via ARES.", last_login)
 			. = TRUE
 
 		if("distress")
@@ -492,7 +566,7 @@
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
 			message_admins("[key_name(user)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[user]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
-			log_ares_security("Nuclear Ordnance Request", "[last_login] has sent a request for nuclear ordnance for the following reason: [reason]")
+			log_ares_security("Nuclear Ordnance Request", "Sent a request for nuclear ordnance for the following reason: [reason]", last_login)
 			if(ares_can_interface())
 				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")
 				ai_silent_announcement("Reason given: [reason].", ".V")
@@ -514,9 +588,16 @@
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
 			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
-			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
+			log_ares_security("Nerve Gas Release", "Released Nerve Gas from Vent '[sec_vent.vent_tag]'.", last_login)
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
+
+		if("security_lockdown")
+			if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
+				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
+				return FALSE
+			aicore_lockdown(user)
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

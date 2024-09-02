@@ -58,6 +58,7 @@
 	tier = 2
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
+	organ_value = 1000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -108,7 +109,7 @@
 		hugger_image_index.Cut()
 		return
 
-	update_clinger_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
+	update_clinger_maths(floor(( huggers_cur / huggers_max ) * 3.999) + 1)
 
 	for(var/i in hugger_image_index)
 		if(stat == DEAD)

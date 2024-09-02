@@ -1,8 +1,8 @@
 /datum/caste_datum/facehugger
 	caste_type = XENO_CASTE_FACEHUGGER
 	tier = 0
-	plasma_gain = 0.1
-	plasma_max = 10
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_max = XENO_NO_PLASMA
 	melee_damage_lower = 5
 	melee_damage_upper = 5
 	max_health = XENO_HEALTH_LARVA
@@ -18,6 +18,8 @@
 	minimap_icon = "facehugger"
 
 /mob/living/carbon/xenomorph/facehugger
+	AUTOWIKI_SKIP(TRUE)
+
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
@@ -221,6 +223,20 @@
 	// Custom emote
 	if(act == "me")
 		return ..()
+
+	switch(stat)
+		if(UNCONSCIOUS)
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			return FALSE
+		if(DEAD)
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			return FALSE
+	if(client)
+		if(client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			return FALSE
+		if(!client.attempt_talking())
+			return FALSE
 
 	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)

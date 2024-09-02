@@ -74,7 +74,7 @@
 	lazy_list[key] |= value;
 
 // Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
-#define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
+#define ADD_SORTED(list, A, cmp_proc) if(!length(list)) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 
 //Currently used in SDQL2 stuff
 #define send_output(target, msg, control) target << output(msg, control)
@@ -95,6 +95,9 @@
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 
 #define RECT new /datum/shape/rectangle
+#define SQUARE new /datum/shape/rectangle/square
+#define ELLIPSE new /datum/shape/ellipse
+#define CIRCLE new /datum/shape/ellipse/circle
 #define QTREE new /datum/quadtree
 #define SEARCH_QTREE(qtree, shape_range, flags) qtree.query_range(shape_range, null, flags)
 

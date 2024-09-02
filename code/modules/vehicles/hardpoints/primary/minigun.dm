@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/minigun
-	name = "LTAA-AP Minigun"
+	name = "\improper LTAA-AP Minigun"
 	desc = "A primary weapon for tanks that spews bullets"
 
 	icon_state = "ltaaap_minigun"
@@ -8,8 +8,6 @@
 
 	health = 350
 	firing_arc = 90
-
-	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	max_clips = 1
@@ -28,16 +26,16 @@
 		"8" = list(-77, 0)
 	)
 
-	scatter = 7
+	scatter = 18
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	fire_delay = 0.8 SECONDS //base fire rate, modified by stage_delay_mult
+	fire_delay = 0.7 SECONDS //base fire rate, modified by stage_delay_mult
 
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
 	/// Active firing time to reach max spin_stage.
-	var/spinup_time = 8 SECONDS
+	var/spinup_time = 10 SECONDS
 	/// Grace period before losing spin_stage.
 	var/spindown_grace_time = 2 SECONDS
 	COOLDOWN_DECLARE(spindown_grace_cooldown)
@@ -54,7 +52,7 @@
 
 /obj/item/hardpoint/primary/minigun/set_fire_delay(value)
 	fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult, scatter * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/set_fire_cooldown()
 	calculate_stage_delay_mult() //needs to check grace_cooldown before refreshed
@@ -63,7 +61,7 @@
 	COOLDOWN_START(src, fire_cooldown, fire_delay * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/proc/calculate_stage_delay_mult()
-	var/stage_rate_len = stage_rate.len
+	var/stage_rate_len = length(stage_rate)
 	var/delta_time = world.time - last_fired
 
 	var/old_spin_stage = spin_stage
@@ -77,9 +75,15 @@
 		return
 	spin_stage = clamp(spin_stage, 1, stage_rate_len)
 
-	var/old_stage_rate = stage_rate[Floor(old_spin_stage)]
-	var/new_stage_rate = stage_rate[Floor(spin_stage)]
+	var/old_stage_rate = stage_rate[floor(old_spin_stage)]
+	var/new_stage_rate = stage_rate[floor(spin_stage)]
 
 	if(old_stage_rate != new_stage_rate)
+		scatter = initial(scatter) * (1/new_stage_rate)
 		stage_delay_mult = 1 / new_stage_rate
 		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
+
+/obj/item/hardpoint/primary/minigun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))

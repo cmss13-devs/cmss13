@@ -97,6 +97,8 @@
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /obj/item/explosive/grenade/high_explosive/frag/toy
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "toy HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. Wait, the labeling on the side indicates this is a toy, what the hell?"
 	explosion_power = 0
@@ -419,9 +421,9 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
-	name = "\improper M40 HPDP grenade"
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
-	icon_state = "grenade_phos"
+	name = "\improper M40 CCDP grenade"
+	desc = "The M40 CCDP is a small, but powerful chemical compound grenade, similar in effect to WPDP. Word on the block says that the CCDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	icon_state = "grenade_chem"
 	det_time = 20
 	item_state = "grenade_phos"
 	underslug_launchable = TRUE
@@ -435,7 +437,9 @@
 	return ..()
 
 /obj/item/explosive/grenade/phosphorus/weak
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	name = "\improper M40 WPDP grenade"
+	icon_state = "grenade_phos"
+	desc = "The M40 WPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
 	. = ..()
@@ -464,6 +468,187 @@
 	desc = "An improvised version of gas grenade designed to spill white phosphorus on the target. It explodes 2 seconds after the pin has been pulled."
 	icon_state = "grenade_phos_clf"
 	item_state = "grenade_phos_clf"
+
+/obj/item/explosive/grenade/sebb
+	name = "\improper G2 Electroshock grenade"
+	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, \
+		after a rash of incidents where the intense 1.2 gV sonic payload caused... rupturing. \
+		A bounding landmine mode is available for this weapon which activates a small drill to self-bury itself when planted. Simply plant it at your feet and walk away."
+	icon_state = "grenade_sebb"
+	item_state = "grenade_sebb"
+	det_time = 3 SECONDS
+	underslug_launchable = TRUE
+	/// Maximum range of effect
+	var/range = 5
+	/// Maximum possible damage before falloff.
+	var/damage = 110
+	/// Factor to mutiply the effect range has on damage.
+	var/falloff_dam_reduction_mult = 20
+	/// Post falloff calc damage is divided by this to get xeno slowdown
+	var/xeno_slowdown_numerator = 12
+	/// Post falloff calc damage is multipled by this to get human stamina damage
+	var/human_stam_dam_factor = 0.9
+
+/obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
+
+/obj/item/explosive/grenade/sebb/afterattack(atom/target, mob/user, proximity)
+	var/turf/user_turf = get_turf(user)
+	if(active)
+		return
+
+	if(!isturf(target))
+		return
+
+	if(user.action_busy)
+		return
+
+	if(target != get_turf(user))
+		return
+
+	if(locate(/obj/item/explosive/mine) in get_turf(src))
+		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		return
+
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
+		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return
+
+	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		return
+
+	if(Adjacent(/obj/item/explosive/mine)) // bit more strict on this than normal mines
+		to_chat(user, SPAN_WARNING("Too close to another mine! Plant it somewhere less obvious."))
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
+		SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
+	playsound(user.loc, 'sound/effects/thud.ogg', 40)
+	if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You stop planting."))
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
+		SPAN_NOTICE("You finish deploying [src]."))
+	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
+	planted.activate_sensors()
+	planted.iff_signal = user.faction // assuring IFF is set
+	planted.pixel_x += rand(-5, 5)
+	planted.pixel_y += rand(-5, 5)
+	qdel(src)
+
+/obj/item/explosive/grenade/sebb/activate()
+	..()
+	var/beeplen = 6 // Actual length of the sound rounded up to nearest decisecond
+	var/soundtime = det_time - beeplen
+	if(det_time < beeplen) // just play sound if detonation shorter than the sound
+		playsound(loc, 'sound/effects/sebb_explode.ogg', 90, 0, 10)
+	else
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), loc, 'sound/effects/sebb_beep.ogg', 60, 0, 10), soundtime)
+
+
+
+/obj/item/explosive/grenade/sebb/prime()
+	var/datum/effect_system/spark_spread/sparka = new
+	var/turf/sebb_turf = get_turf(src)
+	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview
+	new /obj/effect/overlay/temp/sebb(sebb_turf)
+
+	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 90, 0, 10)
+
+	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
+		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
+		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))  // sprites are meh but we need visual indication that the sentry was messed up
+		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 5 SECONDS) // assure to set it back
+		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickes violently as it's shocked!"))
+		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
+		sparka.set_up(1, 1, sentry_stun)
+		sparka.start()
+
+	for(var/turf/turf in full_range)
+		if(prob(8))
+			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for differant things
+			sparkTurf.set_up(1, 1, turf)
+			sparkTurf.start()
+		if(prob(10))
+			new /obj/effect/overlay/temp/emp_sparks(turf)
+
+	for(var/mob/living/carbon/mob in full_range) // no legacy mob support
+
+		var/mob_dist = get_dist(src, mob) // Distance from mob
+
+		/**
+		 * Damage equation: damage - (mob distance * falloff_dam_reduction_mult)
+		 * Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
+		 * The raw damage is minused by falloff to get actual damage
+		*/
+
+		var/falloff = mob_dist * falloff_dam_reduction_mult
+		var/damage_applied = damage - falloff // Final damage applied after falloff calc
+		sparka.set_up(1, 1, mob)
+		sparka.start()
+		shake_camera(mob, 1, 1)
+		if(ishuman(mob))
+			var/mob/living/carbon/human/shocked_human = mob
+			if(isspeciessynth(shocked_human)) // Massive overvoltage to ungrounded robots is pretty bad
+				shocked_human.Stun(1 + (damage_applied/40))
+				damage_applied *= 1.5
+				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
+				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
+			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
+			shocked_human.make_dizzy(damage_applied)
+			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
+			shocked_human.emote("pain")
+		else //nonhuman damage + slow
+			mob.apply_damage(damage_applied, BURN)
+			if((mob_dist < (range-3))) // 2 tiles around small superslow
+				mob.Superslow(2)
+			mob.Slow(damage_applied/11)
+
+		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
+			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
+			mob.eye_blurry = damage_applied/4
+			mob.Daze(1)
+		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
+			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
+			mob.eye_blurry = damage_applied/8
+
+		else
+			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
+
+
+		new /obj/effect/overlay/temp/emp_sparks(mob)
+		mob.make_jittery(damage_applied*2)
+	empulse(src, 1, 2) // mini EMP
+	qdel(src)
+
+
+/obj/item/explosive/grenade/sebb/primed
+	desc = "A G2 Electroshock Grenade, looks like it's quite angry! Oh shit!"
+	det_time = 7 // 0.7 seconds to blow up. We want them to get caught if they go through.
+
+/obj/item/explosive/grenade/sebb/primed/Initialize()
+	. = ..()
+	src.visible_message(SPAN_HIGHDANGER("[src] pops out of the ground!"))
+	activate()
+
+/obj/effect/overlay/temp/sebb
+	icon = 'icons/effects/sebb.dmi'
+	icon_state = "sebb_explode"
+	layer = ABOVE_LIGHTING_PLANE
+	pixel_x = -175 // We need these offsets to force center the sprite because BYOND is dumb
+	pixel_y = -175
+	appearance_flags = RESET_COLOR
 
 /*
 //================================================
@@ -684,6 +869,8 @@
 	return
 
 /obj/item/explosive/grenade/high_explosive/holy_hand_grenade
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Holy Hand Grenade of Antioch"
 	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
 	icon_state = "grenade_antioch"

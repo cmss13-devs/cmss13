@@ -327,7 +327,7 @@
 		return
 
 	var/health_threshold
-	health_threshold = max(Ceiling((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
+	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"
@@ -340,6 +340,8 @@
 			wound_icon_holder.icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
 			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
+	if(organ_removed)
+		wound_icon_holder.icon_state = "[caste.caste_type]_dissection"
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj

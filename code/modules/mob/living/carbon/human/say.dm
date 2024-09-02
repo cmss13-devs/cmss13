@@ -26,7 +26,7 @@
 			else
 				headset.last_multi_broadcast = world.time
 		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [floor(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
@@ -71,6 +71,9 @@
 
 	message = trim(strip_html(message))
 
+	if(!filter_message(src, message))
+		return
+
 	if(stat == DEAD)
 		return say_dead(message)
 
@@ -87,6 +90,10 @@
 		to_chat(src, SPAN_WARNING(fail_message))
 		return
 	message = parsed["message"]
+
+	if(!filter_message(src, message))
+		return
+
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()
@@ -134,9 +141,10 @@
 				return
 			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				FOR_DVIEW(var/obj/item/device/radio/intercom/I, 1, src, HIDE_INVISIBLE_OBSERVER)
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
+				FOR_DVIEW_END
 			else
 				if(message_mode != MESSAGE_MODE_LOCAL)
 					var/earpiece = get_type_in_ears(/obj/item/device/radio)
@@ -158,7 +166,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] talks into [length(used_radios) ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 

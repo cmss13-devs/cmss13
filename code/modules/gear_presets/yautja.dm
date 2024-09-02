@@ -12,13 +12,13 @@
 
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_species(SPECIES_YAUTJA)
-	new_human.ethnicity = "tan"
+	new_human.skin_color = "tan"
 	new_human.body_type = "pred" //can be removed in future for body types
 	if(!mob_client)
 		mob_client = new_human.client
 	if(mob_client?.prefs)
 		new_human.h_style = mob_client.prefs.predator_h_style
-		new_human.ethnicity = mob_client.prefs.predator_skin_color
+		new_human.skin_color = mob_client.prefs.predator_skin_color
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/new_human)
 	new_human.job = rank

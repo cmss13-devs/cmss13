@@ -24,7 +24,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -88,6 +88,16 @@
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "pilot_alt"
+
+/obj/item/clothing/suit/storage/jacket/marine/RO
+	name = "quartermaster jacket"
+	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
+	icon_state = "RO_jacket"
+	icon = 'icons/obj/items/clothing/suits.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
+	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
@@ -242,6 +252,11 @@
 	icon_state = "provost_jacket"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
+
+/obj/item/clothing/suit/storage/jacket/marine/provost/chief
+	name = "\improper Provost Command Jacket"
+	desc = "A crisp jacket with the Provost sigil."
+	icon_state = "provostci_jacket"
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/coat
 	name = "\improper Provost Coat"

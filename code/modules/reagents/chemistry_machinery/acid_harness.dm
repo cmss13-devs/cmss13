@@ -107,41 +107,41 @@
 
 	// damage
 
-	damagelist["Brute"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRUTE), "value" = ACID_SCAN_DAMAGE_BRUTE)
-	damagelist["Burn"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BURN), "value" = ACID_SCAN_DAMAGE_BURN)
-	damagelist["Toxin"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN), "value" = ACID_SCAN_DAMAGE_TOXIN)
-	damagelist["Oxygen"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN), "value" = ACID_SCAN_DAMAGE_OXYGEN)
-	damagelist["Genetic"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_CLONE), "value" = ACID_SCAN_DAMAGE_CLONE)
-	damagelist["Heart"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_HEART), "value" = ACID_SCAN_DAMAGE_HEART)
-	damagelist["Liver"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LIVER), "value" = ACID_SCAN_DAMAGE_LIVER)
-	damagelist["Lungs"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LUNGS), "value" = ACID_SCAN_DAMAGE_LUNGS)
-	damagelist["Kidneys"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_KIDNEYS), "value" = ACID_SCAN_DAMAGE_KIDNEYS)
-	damagelist["Brain"] = list("flag" = check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRAIN), "value" = ACID_SCAN_DAMAGE_BRAIN)
+	damagelist["Brute"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRUTE), "value" = ACID_SCAN_DAMAGE_BRUTE)
+	damagelist["Burn"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BURN), "value" = ACID_SCAN_DAMAGE_BURN)
+	damagelist["Toxin"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN), "value" = ACID_SCAN_DAMAGE_TOXIN)
+	damagelist["Oxygen"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN), "value" = ACID_SCAN_DAMAGE_OXYGEN)
+	damagelist["Genetic"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_CLONE), "value" = ACID_SCAN_DAMAGE_CLONE)
+	damagelist["Heart"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_HEART), "value" = ACID_SCAN_DAMAGE_HEART)
+	damagelist["Liver"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LIVER), "value" = ACID_SCAN_DAMAGE_LIVER)
+	damagelist["Lungs"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LUNGS), "value" = ACID_SCAN_DAMAGE_LUNGS)
+	damagelist["Kidneys"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_KIDNEYS), "value" = ACID_SCAN_DAMAGE_KIDNEYS)
+	damagelist["Brain"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRAIN), "value" = ACID_SCAN_DAMAGE_BRAIN)
 
 	// conditions
 
-	conditionslist["Vitals Level"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_VITALS), "value" = ACID_SCAN_CONDITION_VITALS)
-	conditionslist["Bleeding"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING), "value" = ACID_SCAN_CONDITION_BLEEDING)
-	conditionslist["Internal"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING_INTERNAL), "value" = ACID_SCAN_CONDITION_BLEEDING_INTERNAL)
-	conditionslist["Bloodloss"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLOODLOSS_HIGH), "value" = ACID_SCAN_CONDITION_BLOODLOSS_HIGH)
-	conditionslist["Fracture"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FRACTURE), "value" = ACID_SCAN_CONDITION_FRACTURE)
-	conditionslist["Splinted"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_SPLINT), "value" = ACID_SCAN_CONDITION_SPLINT)
-	conditionslist["Organ Damage"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_DAMAGED), "value" = ACID_SCAN_CONDITION_ORGAN_DAMAGED)
-	conditionslist["Organ Failure"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_FAILURE), "value" = ACID_SCAN_CONDITION_ORGAN_FAILURE)
-	conditionslist["Death"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEATH), "value" = ACID_SCAN_CONDITION_DEATH)
-	conditionslist["Defibrillation"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEFIB), "value" = ACID_SCAN_CONDITION_DEFIB)
-	conditionslist["Concussion"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_CONCUSSION), "value" = ACID_SCAN_CONDITION_CONCUSSION)
-	conditionslist["Intoxication"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION), "value" = ACID_SCAN_CONDITION_INTOXICATION)
-	conditionslist["Foreign Object"] = list("flag" = check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FOREIGN_OBJECT), "value" = ACID_SCAN_CONDITION_FOREIGN_OBJECT)
+	conditionslist["Vitals Level"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_VITALS), "value" = ACID_SCAN_CONDITION_VITALS)
+	conditionslist["Bleeding"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING), "value" = ACID_SCAN_CONDITION_BLEEDING)
+	conditionslist["Internal"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING_INTERNAL), "value" = ACID_SCAN_CONDITION_BLEEDING_INTERNAL)
+	conditionslist["Bloodloss"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLOODLOSS_HIGH), "value" = ACID_SCAN_CONDITION_BLOODLOSS_HIGH)
+	conditionslist["Fracture"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_FRACTURE), "value" = ACID_SCAN_CONDITION_FRACTURE)
+	conditionslist["Splinted"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_SPLINT), "value" = ACID_SCAN_CONDITION_SPLINT)
+	conditionslist["Organ Damage"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_DAMAGED), "value" = ACID_SCAN_CONDITION_ORGAN_DAMAGED)
+	conditionslist["Organ Failure"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_FAILURE), "value" = ACID_SCAN_CONDITION_ORGAN_FAILURE)
+	conditionslist["Death"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEATH), "value" = ACID_SCAN_CONDITION_DEATH)
+	conditionslist["Defibrillation"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEFIB), "value" = ACID_SCAN_CONDITION_DEFIB)
+	conditionslist["Concussion"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_CONCUSSION), "value" = ACID_SCAN_CONDITION_CONCUSSION)
+	conditionslist["Intoxication"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION), "value" = ACID_SCAN_CONDITION_INTOXICATION)
+	conditionslist["Foreign Object"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_FOREIGN_OBJECT), "value" = ACID_SCAN_CONDITION_FOREIGN_OBJECT)
 
 	// vitals
 
-	vitalslist["Optimal"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_OPTIMAL), "value" =  ACID_VITALS_OPTIMAL)
-	vitalslist["Nominal"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_NOMINAL), "value" =  ACID_VITALS_NOMINAL)
-	vitalslist["Low"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_DROPPING), "value" =  ACID_VITALS_DROPPING)
-	vitalslist["Very low"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_LOW), "value" =  ACID_VITALS_LOW)
-	vitalslist["Critical"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_CRITICAL), "value" =  ACID_VITALS_CRITICAL)
-	vitalslist["Emergency"] = list("flag" = check_bitflag(acid_core.inject_vitals, ACID_VITALS_EMERGENCY), "value" =  ACID_VITALS_EMERGENCY)
+	vitalslist["Optimal"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_OPTIMAL), "value" =  ACID_VITALS_OPTIMAL)
+	vitalslist["Nominal"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_NOMINAL), "value" =  ACID_VITALS_NOMINAL)
+	vitalslist["Low"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_DROPPING), "value" =  ACID_VITALS_DROPPING)
+	vitalslist["Very low"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_LOW), "value" =  ACID_VITALS_LOW)
+	vitalslist["Critical"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_CRITICAL), "value" =  ACID_VITALS_CRITICAL)
+	vitalslist["Emergency"] = list("flag" = HAS_FLAG(acid_core.inject_vitals, ACID_VITALS_EMERGENCY), "value" =  ACID_VITALS_EMERGENCY)
 
 	// compile above lists into config list
 
@@ -162,13 +162,13 @@
 
 	switch(action)
 		if("set_inject_amount")
-			var/inject = round(text2num(params["value"]))
+			var/inject = floor(text2num(params["value"]))
 			if(inject < 1)
 				inject = 1
 			acid_core.inject_amount = inject
 			. = TRUE
 		if("set_inject_damage_threshold")
-			acid_core.inject_damage_threshold = round(text2num(params["value"]))
+			acid_core.inject_damage_threshold = floor(text2num(params["value"]))
 			. = TRUE
 		if("inject_logic")
 			if(acid_core.inject_logic == ACID_LOGIC_OR)

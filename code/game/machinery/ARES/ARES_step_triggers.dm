@@ -33,9 +33,10 @@
 			return FALSE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/trespasser = passer
-		if(pass_accesses && (trespasser.wear_id))
+		var/obj/item/card/id/card = trespasser.get_idcard()
+		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
-				if(tag in trespasser.wear_id.access)
+				if(tag in card.access)
 					return FALSE
 	Trigger(passer)
 	return TRUE
@@ -123,11 +124,9 @@
 	var/check_contents = TRUE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/human_passer = passer
-		idcard = human_passer.wear_id
-		if(istype(idcard))
+		idcard = human_passer.get_idcard()
+		if(idcard)
 			check_contents = FALSE
-		else
-			idcard = null
 
 	if(istype(passer, /obj/item/card/id))
 		idcard = passer

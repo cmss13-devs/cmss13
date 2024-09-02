@@ -23,7 +23,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
 		)
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	light_system = DIRECTIONAL_LIGHT
 
@@ -33,6 +33,8 @@
 	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
+	///Color of the muzzle flash light effect.
+	var/muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 
 	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 	/// If fire_sound is null, it will pick a sound from the list here instead.
@@ -427,6 +429,10 @@
 	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /obj/item/weapon/gun/proc/handle_random_attachments()
+	#ifdef AUTOWIKI // no randomness for my gun pictures, please
+	return
+	#endif
+
 	var/attachmentchoice
 
 	var/randchance = random_spawn_chance
@@ -471,7 +477,7 @@
 
 
 /obj/item/weapon/gun/proc/handle_starting_attachment()
-	if(starting_attachment_types && starting_attachment_types.len)
+	if(LAZYLEN(starting_attachment_types))
 		for(var/path in starting_attachment_types)
 			var/obj/item/attachable/A = new path(src)
 			A.Attach(src)
@@ -503,13 +509,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user)))
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
+			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
-		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
+		// we force the light off and turn it back on again when the gun is equipped. Otherwise bad things happen.
+		if(light_sources())
+			force_light(on = FALSE)
+			ADD_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 
 	return ..()
 
@@ -609,14 +617,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		gun_recoil = recoil_buildup
 
 	var/penetration = 0
-	var/armor_punch = 0
 	var/accuracy = 0
 	var/min_accuracy = 0
 	var/max_range = 0
+	var/effective_range = 0
 	var/scatter = 0
 	var/list/damage_armor_profile_xeno = list()
 	var/list/damage_armor_profile_marine = list()
-	var/list/damage_armor_profile_armorbreak = list()
 	var/list/damage_armor_profile_headers = list()
 
 	var/datum/ammo/in_ammo
@@ -639,24 +646,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		falloff = in_ammo.damage_falloff * damage_falloff_mult
 
 		penetration = in_ammo.penetration
-		armor_punch = in_ammo.damage_armor_punch
 
 		accuracy = in_ammo.accurate_range
 
 		min_accuracy = in_ammo.accurate_range_min
 
 		max_range = in_ammo.max_range
+		effective_range = in_ammo.effective_range_max
 		scatter = in_ammo.scatter
 
 		for(var/i = 0; i<=CODEX_ARMOR_MAX; i+=CODEX_ARMOR_STEP)
 			damage_armor_profile_headers.Add(i)
-			damage_armor_profile_marine.Add(round(armor_damage_reduction(GLOB.marine_ranged_stats, damage, i, penetration)))
-			damage_armor_profile_xeno.Add(round(armor_damage_reduction(GLOB.xeno_ranged_stats, damage, i, penetration)))
-			if(!GLOB.xeno_general.armor_ignore_integrity)
-				if(i != 0)
-					damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(GLOB.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
-				else
-					damage_armor_profile_armorbreak.Add("N/A")
+			damage_armor_profile_marine.Add(floor(armor_damage_reduction(GLOB.marine_ranged_stats, damage, i, penetration)))
+			damage_armor_profile_xeno.Add(floor(armor_damage_reduction(GLOB.xeno_ranged_stats, damage, i, penetration)))
 
 	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
@@ -669,8 +671,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	data["recoil"] = max(gun_recoil, 0.1)
 	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
-	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
-	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
+	data["firerate"] = floor(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
+	data["burst_firerate"] = floor(1 MINUTES / burst_rpm)
 	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
 	data["burst_firerate_second"] = round(1 SECONDS / burst_rpm, 0.01)
 	data["scatter"] = max(0.1, scatter + src.scatter)
@@ -685,19 +687,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["damage"] = damage
 	data["falloff"] = falloff
 	data["total_projectile_amount"] = bonus_projectile_amount+1
-	data["armor_punch"] = armor_punch
 	data["penetration"] = penetration
 	data["accuracy"] = accuracy * accuracy_mult
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
+	data["effective_range"] = effective_range
 
 	// damage table data
 
 	data["damage_armor_profile_headers"] = damage_armor_profile_headers
 	data["damage_armor_profile_marine"] = damage_armor_profile_marine
 	data["damage_armor_profile_xeno"] = damage_armor_profile_xeno
-	data["damage_armor_profile_armorbreak"] = damage_armor_profile_armorbreak
 
 	return data
 
@@ -712,10 +713,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["damage_max"] = 100
 	data["accuracy_max"] = 32
 	data["range_max"] = 32
+	data["effective_range_max"] = EFFECTIVE_RANGE_MAX_TIER_4
 	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
 	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
 	data["punch_max"] = 5
-	data["glob_armourbreak"] = GLOB.xeno_general.armor_ignore_integrity
 	data["automatic"] = (GUN_FIREMODE_AUTOMATIC in gun_firemode_list)
 	data["auto_only"] = ((length(gun_firemode_list) == 1) && (GUN_FIREMODE_AUTOMATIC in gun_firemode_list))
 
@@ -870,6 +871,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(!current_mag || QDELETED(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
+		current_mag = null
+		update_icon()
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
@@ -1222,7 +1225,7 @@ and you're good to go.
 		return TRUE
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
-	var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
+	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.
 	muzzle_flash(angle,user)
 
 	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
@@ -1332,6 +1335,8 @@ and you're good to go.
 	if(EXECUTION_CHECK) //Execution
 		if(!able_to_fire(user)) //Can they actually use guns in the first place?
 			return ..()
+		if(flags_gun_features & GUN_CANT_EXECUTE)
+			return ..()
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return TRUE
@@ -1415,9 +1420,9 @@ and you're good to go.
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/projectile(attacked_mob.loc, create_cause_data(initial(name), user))
+				BP = new /obj/projectile(null, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
-				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
+				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
 
 				BP.bonus_projectile_check = 2
@@ -1608,6 +1613,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		user = gun_user
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+		// toggleable spam control.
+		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 
@@ -1644,7 +1652,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
-	projectile_to_fire.accuracy = round(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
 
 	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
@@ -1658,7 +1666,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.scatter *= scatter_debuff
 
-	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
+	projectile_to_fire.damage = floor(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
 	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
@@ -1774,6 +1782,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!light_on && (light_range <= muzzle_flash_lum))
 		set_light_range(muzzle_flash_lum)
 		set_light_on(TRUE)
+		set_light_color(muzzle_flash_color)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)

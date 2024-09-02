@@ -524,6 +524,11 @@ h2.alert {
   font-size: 90%;
 }
 
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
+}
+
 .boldnotice {
   color: #000099;
   font-weight: bold;
@@ -841,6 +846,10 @@ h2.alert {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -881,6 +890,15 @@ h2.alert {
 
 .resonate {
   color: #298f85;
+}
+
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 
 .monkeyhive {
@@ -1052,6 +1070,26 @@ h2.alert {
 
 .echoradio {
   color: #3a7e65;
+}
+
+.opforcmd {
+  color: #568dad;
+}
+
+.opformed {
+  color: #3e921d;
+}
+
+.opforeng {
+  color: #b16222;
+}
+
+.opforcct {
+  color: #c42b17;
+}
+
+.opforspe {
+  color: #611fad;
 }
 
 .medium {
@@ -1433,6 +1471,14 @@ h2.alert {
   animation: glitch 0.5s infinite;
 }
 
+.psy_talk {
+  color: #a70090;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: psy_glitch 0.5s infinite;
+}
+
 /*Keyframes*/
 
 @keyframes glitch {
@@ -1453,6 +1499,28 @@ h2.alert {
 
   100% {
     color: #830000;
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes psy_glitch {
+  25% {
+    color: #a70090;
+    transform: translate(-2px, -1px);
+  }
+
+  50% {
+    color: #91007d;
+    transform: translate(1px, -2px);
+  }
+
+  75% {
+    color: #750066;
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    color: #7c016c;
     transform: translate(1px, 1px);
   }
 }

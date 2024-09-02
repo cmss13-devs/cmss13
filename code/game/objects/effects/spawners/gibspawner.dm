@@ -43,7 +43,7 @@
 	qdel(src)
 
 /obj/effect/spawner/gibspawner/proc/Gib(list/viruses = list(), mob/living/ml = null)
-	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
+	if(length(gibtypes) != length(gibamounts) || length(gibamounts) != length(gibdirections))
 		to_world(SPAN_DANGER("Gib list length mismatch!"))
 		return
 
@@ -58,7 +58,7 @@
 		s.set_up(2, 1, loc)
 		s.start()
 
-	for(var/i = 1, i<= gibtypes.len, i++)
+	for(var/i = 1, i<= length(gibtypes), i++)
 		if(gibamounts[i])
 			for(var/j = 1, j<= gibamounts[i], j++)
 				var/gibType = gibtypes[i]
@@ -72,7 +72,7 @@
 
 				gib.update_icon()
 
-				if(viruses.len > 0)
+				if(length(viruses) > 0)
 					for(var/datum/disease/D in viruses)
 						if(prob(virusProb))
 							var/datum/disease/viruus = D.Copy(1)
@@ -80,7 +80,7 @@
 							viruus.holder = gib
 
 				var/list/directions = gibdirections[i]
-				if(directions.len)
+				if(length(directions))
 					INVOKE_ASYNC(gib, /obj/effect/decal/cleanable/blood/gibs/proc/streak, directions)
 
 

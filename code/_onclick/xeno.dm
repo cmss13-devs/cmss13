@@ -3,7 +3,7 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //No attacks while laying down
+	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || cannot_slash) //No attacks while laying down
 		return FALSE
 	var/mob/alt
 
@@ -13,6 +13,7 @@
 
 	if(isturf(target) && tile_attack) //Attacks on turfs must be done indirectly through directional attacks or clicking own sprite.
 		var/turf/T = target
+		var/mob/living/non_xeno_target
 		for(var/mob/living/L in T)
 			if (!iscarbon(L))
 				if (!alt)
@@ -21,13 +22,19 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
+			var/isxeno = isxeno(L)
+			if(!isxeno)
+				non_xeno_target = L
 			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
+			else if (!isxeno)
+				break
 			target = L
-			break
 		if (target == T && alt)
 			target = alt
+		if(non_xeno_target)
+			target = non_xeno_target
 		if (T && ignores_resin) // Will not target resin walls and doors if this is set to true. This is normally only set to true through a directional attack.
 			if(istype(T, /obj/structure/mineral_door/resin))
 				var/obj/structure/mineral_door/resin/attacked_door = T
@@ -54,6 +61,9 @@
 					var/turf/target_turf = target
 					for(var/obj/flamer_fire/fire in target_turf)
 						firepatted = TRUE
+						if(!(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire.tied_reagent?.fire_penetrating)
+							var/firedamage = max(fire.burnlevel - check_fire_intensity_resistance(), 0) * 0.5
+							apply_damage(firedamage, BURN, fire)
 						if((fire.firelevel > fire_level_to_extinguish) && (!fire.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 							fire.firelevel -= fire_level_to_extinguish
 							fire.update_flame()

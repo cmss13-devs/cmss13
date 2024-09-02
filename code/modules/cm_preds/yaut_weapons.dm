@@ -147,7 +147,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
@@ -166,13 +166,13 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
@@ -190,14 +190,14 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
@@ -214,7 +214,7 @@
 	..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 15
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
 
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
@@ -234,7 +234,7 @@
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
@@ -438,7 +438,7 @@
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -475,7 +475,7 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -486,7 +486,7 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
@@ -584,7 +584,6 @@
 					SPAN_DANGER("<B>[victim] is missing \his head. Pelts like this just aren't the same... You peel the skin around the stump loose with your [tool.name].</B>"))
 			else
 				victim.apply_damage(10, BRUTE, v_head, sharp = TRUE)
-				v_head.disfigured = TRUE
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
 					user.visible_message(SPAN_DANGER("<B>[user] makes some rough cuts on [victim]'s head and face with \a [tool].</B>"),
@@ -759,7 +758,7 @@
 	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
 
@@ -769,7 +768,7 @@
 		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -894,6 +893,8 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null
 	works_in_recharger = FALSE
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
@@ -908,7 +909,6 @@
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = null // TO DO, add a decent one.
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
@@ -993,6 +993,7 @@
 
 #define FIRE_MODE_STANDARD "Standard"
 #define FIRE_MODE_INCENDIARY "Incendiary"
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
@@ -1003,7 +1004,8 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_MEDIUM
 	/// Max amount of shots
 	var/charge_time = 40
@@ -1128,11 +1130,12 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE

@@ -15,7 +15,7 @@
 #define TOGGLE_AUTOMATIC_PUNCTUATION (1<<7) // Whether your sentences will automatically be punctuated with a period
 #define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE (1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 #define TOGGLE_ALTERNATING_DUAL_WIELD (1<<9) // Whether dual-wielding fires both guns at once or swaps between them, OUTDATED, used to update savefiles, now dual_wield_pref
-#define TOGGLE_FULLSCREEN (1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
+#define TOGGLE_FULLSCREEN (1<<10) // See /client/proc/update_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC (1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG (1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS (1<<13) //Toggle whether middle click swaps your hands
@@ -24,6 +24,7 @@
 #define TOGGLE_START_JOIN_CURRENT_SLOT (1<<16) // Whether joining at roundstart ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17) //Whether joining during the round ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_ABILITY_DEACTIVATION_OFF (1<<18) // This toggles whether selecting the same ability again can toggle it off
+#define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)/// limit how often the ammo is displayed when using semi-automatic fire
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0

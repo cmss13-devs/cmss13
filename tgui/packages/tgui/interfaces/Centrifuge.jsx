@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Flex, Button, Box, Input, NoticeBox } from '../components';
+import { Box, Button, Flex, Input, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Centrifuge = () => {
@@ -26,36 +26,37 @@ export const Centrifuge = () => {
             </Flex.Item>
             <Flex.Item>
               <Button
-                content={data.mode ? 'Mode : distribute' : 'Mode : split'}
                 fluid
                 icon={data.mode ? 'equals' : 'arrows-split-up-and-left'}
                 onClick={() => act('togglemode')}
-              />
+              >
+                {data.mode ? 'Mode : distribute' : 'Mode : split'}
+              </Button>
               <Box width="2px" />
             </Flex.Item>
             <Flex.Item>
               <Button
-                content={
-                  data.input_source
-                    ? 'Input : Turing Dispenser'
-                    : 'Input : Container'
-                }
                 icon="flask"
                 fluid
                 disabled={!data.turing}
                 onClick={() => act('togglesource')}
-              />
+              >
+                {data.input_source
+                  ? 'Input : Turing Dispenser'
+                  : 'Input : Container'}
+              </Button>
               <Box width="2px" />
             </Flex.Item>
             {!data.turing && (
               <Flex.Item>
                 <Button
-                  content="Connect a Turing Dispenser"
                   icon="link"
                   fluid
                   disabled={!data.turing}
                   onClick={() => act('attempt_connection')}
-                />
+                >
+                  Connect a Turing Dispenser
+                </Button>
                 <Box width="2px" />
               </Flex.Item>
             )}

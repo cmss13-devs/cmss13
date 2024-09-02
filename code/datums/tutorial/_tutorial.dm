@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial
 	/// What the tutorial is called, is player facing
 	var/name = "Base"
-	/// Internal ID of the tutorial, kept for save files
+	/// Internal ID of the tutorial, kept for save files. Format is "tutorialtype_specifictutorial_number". So, the first basic xeno tutorial would be "xeno_basic_1", and the 2nd marine medical tutorial would be "marine_medical_2"
 	var/tutorial_id = "base"
 	/// A short 1-2 sentence description of the tutorial itself
 	var/desc = ""
@@ -101,13 +101,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/verify_template_loaded()
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
-	// We subtract 1 from x and y here because the bottom left corner counts as the first tile
-	var/turf/top_right_corner = locate(
-		true_bottom_left_corner.x + initial(tutorial_template.width) - 1,
-		true_bottom_left_corner.y + initial(tutorial_template.height) - 1,
-		true_bottom_left_corner.z
-	)
-	for(var/turf/tile as anything in block(true_bottom_left_corner, top_right_corner))
+	for(var/turf/tile as anything in CORNER_BLOCK(true_bottom_left_corner, initial(tutorial_template.width), initial(tutorial_template.height)))
 		// For some reason I'm unsure of, the template will not always fully load, leaving some tiles to be space tiles. So, we check all tiles in the (small) tutorial area
 		// and tell start_tutorial to abort if there's any space tiles.
 		if(istype(tile, /turf/open/space))
@@ -150,6 +144,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Ends the tutorial after a certain amount of time.
 /datum/tutorial/proc/tutorial_end_in(time = 5 SECONDS, completed = TRUE)
+	if(completed)
+		mark_completed() // This is done because if you're calling this proc with completed == TRUE, then the tutorial's a done deal. We shouldn't penalize the player if they exit a few seconds before it actually completes.
 	tutorial_ending = TRUE
 	addtimer(CALLBACK(src, PROC_REF(end_tutorial), completed), time)
 
@@ -227,6 +223,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tutorial = WEAKREF(selected_tutorial)
 
 /datum/action/tutorial_end/action_activate()
+	. = ..()
 	if(!tutorial)
 		return
 

@@ -1,10 +1,12 @@
-import { useBackend, useLocalState } from '../backend';
-import { Flex, Section, Box, Tabs, LabeledList } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const ResearchMemories = () => {
   const { data } = useBackend();
-  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
+  const [clueCategory, setClueCategory] = useState(0);
 
   const { clearance, research_credits, theme, clue_categories } = data;
 
@@ -26,7 +28,8 @@ export const ResearchMemories = () => {
                   color="blue"
                   selected={i === clueCategory}
                   icon={clue_category.icon}
-                  onClick={() => setClueCategory(i)}>
+                  onClick={() => setClueCategory(i)}
+                >
                   {clue_category.name}
                   {!!clue_category.clues.length &&
                     ' (' + clue_category.clues.length + ')'}
@@ -55,7 +58,8 @@ const CluesAdvanced = (props) => {
               className="candystripe"
               justify="space-between"
               px="1rem"
-              py=".5rem">
+              py=".5rem"
+            >
               <Flex.Item>{clue.text}</Flex.Item>
             </Flex>
           );
@@ -78,7 +82,8 @@ const Objectives = (props) => {
                 <Box
                   color={page.content_color ? page.content_color : 'white'}
                   inline
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {page.content + ' '}
                 </Box>
               )}

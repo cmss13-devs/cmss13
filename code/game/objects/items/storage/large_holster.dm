@@ -3,7 +3,7 @@
 /obj/item/storage/large_holster
 	name = "\improper Rifle Holster"
 	desc = "holster"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "m37_holster"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -90,6 +90,28 @@
 
 /obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/machete/arnold(src)
+
+/obj/item/storage/large_holster/machete/smartgunner
+	name = "\improper M56 harness machete scabbard"
+	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete."
+	icon_state = "smartgun_machete_holster"
+	flags_equip_slot = SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+
+/obj/item/storage/large_holster/machete/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	. = ..()
+
+	var/mob/living/carbon/human/user = equipping_mob
+	if(!ishuman(user))
+		return FALSE
+
+	if(!user.wear_suit || !(user.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+		if(!disable_warning)
+			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] without a harness."))
+		return FALSE
+
+/obj/item/storage/large_holster/machete/smartgunner/full/fill_preset_inventory()
+	new /obj/item/weapon/sword/machete(src)
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
@@ -321,7 +343,7 @@
 		fuel.forceMove(get_turf(user))
 		fuel = new_fuel
 	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
-	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [round(new_fuel.get_ammo_percent())]% fuel.")
+	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [floor(new_fuel.get_ammo_percent())]% fuel.")
 	user.temp_drop_inv_item(new_fuel)
 	new_fuel.moveToNullspace() //necessary to not confuse the storage system
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
@@ -332,15 +354,15 @@
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len)
+	if(length(contents))
 		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."
+			. += "The [fuel.caliber] currently contains: [floor(fuel.get_ammo_percent())]% fuel."
 		if(fuelB)
-			. += "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel."
+			. += "The [fuelB.caliber] currently contains: [floor(fuelB.get_ammo_percent())]% fuel."
 		if(fuelX)
-			. += "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel."
+			. += "The [fuelX.caliber] currently contains: [floor(fuelX.get_ammo_percent())]% fuel."
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1
@@ -375,6 +397,7 @@
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_fuel/action_activate()
+	. = ..()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
 	if (!istype(FP))
 		return

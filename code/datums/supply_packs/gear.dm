@@ -63,3 +63,32 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
 	group = "Gear"
+
+/datum/supply_packs/parachute
+	name = "parachute crate (x20)"
+	contains = list(
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/supply
+	containername = "parachute crate"
+	group = "Gear"

@@ -1,7 +1,7 @@
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
 import { EquipmentContext } from './types';
 
@@ -11,7 +11,7 @@ const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
 const DrawWeapon = (props: { readonly x: number; readonly y: number }) => {
   return (
     <path
-      fill-opacity="1"
+      fillOpacity="1"
       fill="#00e94e"
       stroke="#00e94e"
       d={`M ${props.x + 5} ${props.y} l 0 20 l 10 0 l 0 -20 l -10 0`}
@@ -25,7 +25,7 @@ const DrawEquipmentBox = (props: {
 }) => {
   return (
     <path
-      fill-opacity="1"
+      fillOpacity="1"
       fill="#00e94e"
       stroke="#00e94e"
       d={`M ${props.x} ${props.y} l 0 20 l 20 0 l 0 -20 l -20 0`}
@@ -45,7 +45,7 @@ const DrawWeaponText = (props: {
   readonly sub_desc?: string;
 }) => {
   return (
-    <text stroke="#00e94e" x={props.x} y={props.y} text-anchor="middle">
+    <text stroke="#00e94e" x={props.x} y={props.y} textAnchor="middle">
       {props.desc.split(' ').map((x) => (
         <tspan x={props.x} dy="1.2em" key={x}>
           {x}
@@ -119,47 +119,47 @@ const DrawDropshipOutline = () => {
     <>
       {/* cockpit */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 200 120 l 0 -80 l 100 0 l 0 80 m -40 0 l 20 0 l 0 -60 l -60 0 l 0 60 l 20 0"
       />
 
       {/* left body */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 200 120 L 160 120 L 160 280 L 180 280 L 180 400 L 220 400 L 220 380 L 200 380 L 200 260 L 180 260 L 180 140 L 240 140 L 240 120"
       />
 
       {/* left weapon */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 160 140 l -20 0 l 0 40 l 20 0"
       />
       {/* left engine */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 180 380 L 140 380 L 140 300 L 180 300"
       />
 
       {/* left tail */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 200 400 l 0 40 l -40 0 l 0 20 l 60 0 l 0 -60"
       />
 
       {/* right body */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 300 120 L 340 120 L 340 280 L 320 280 L 320 400 L 280 400 L 280 380 L 300 380 L 300 260 L 320 260 L 320 140 L 260 140 L 260 120"
       />
       {/* right weapon */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 340 140 L 360 140 L 360 180 L 340 180"
       />
@@ -167,14 +167,14 @@ const DrawDropshipOutline = () => {
       {/* right engine */}
       <path
         className="dropshipImage"
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 320 380 L 360 380 L 360 300 L 320 300"
       />
 
       {/* right tail */}
       <path
-        fill-opacity="0"
+        fillOpacity="0"
         stroke="#00e94e"
         d="M 300 400 L 300 440 L 340 440 L 340 460 L 280 460 L 280 400"
       />
@@ -186,7 +186,7 @@ const DrawAirlocks = () => {
     <>
       {/* cockpit door */}
       <path
-        fill-opacity="1"
+        fillOpacity="1"
         fill="url(#diagonalHatch)"
         stroke="#00e94e"
         d="M 240 140 L 260 140 L 260 120 L 240 120 L 240 140"
@@ -222,10 +222,11 @@ const EquipmentPanel = () => {
             id="diagonalHatch"
             patternUnits="userSpaceOnUse"
             width="4"
-            height="4">
+            height="4"
+          >
             <path
               stroke="#00e94e"
-              stroke-width="1"
+              strokeWidth="1"
               d="M-1,1 l2,-2 M 0,4 l4,-4 M3,5 l2,-2"
             />
           </pattern>
@@ -233,25 +234,27 @@ const EquipmentPanel = () => {
             id="smallGrid"
             width="20"
             height="20"
-            patternUnits="userSpaceOnUse">
+            patternUnits="userSpaceOnUse"
+          >
             <path
               d="M 20 0 L 0 0 0 20"
               fill="none"
               stroke="gray"
-              stroke-width="0.5"
+              strokeWidth="0.5"
             />
           </pattern>
           <pattern
             id="grid"
             width="100"
             height="100"
-            patternUnits="userSpaceOnUse">
+            patternUnits="userSpaceOnUse"
+          >
             <rect width="100" height="100" fill="url(#smallGrid)" />
             <path
               d="M 100 0 L 0 0 0 100"
               fill="none"
               stroke="gray"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </pattern>
         </defs>
@@ -336,7 +339,8 @@ export const EquipmentMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <EquipmentPanel />
     </MfdPanel>
   );

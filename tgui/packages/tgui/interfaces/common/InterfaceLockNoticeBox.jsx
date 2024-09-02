@@ -22,6 +22,7 @@ export const InterfaceLockNoticeBox = (props) => {
     locked = data.locked,
     onLockStatusChange = () => act('lock'),
     accessText = 'an ID card or dogtags',
+    preventLocking = data.preventLocking,
   } = props;
   // For silicon users
   if (siliconUser) {
@@ -35,13 +36,15 @@ export const InterfaceLockNoticeBox = (props) => {
               m={0}
               color={locked ? 'red' : 'green'}
               icon={locked ? 'lock' : 'unlock'}
-              content={locked ? 'Locked' : 'Unlocked'}
+              disabled={preventLocking}
               onClick={() => {
                 if (onLockStatusChange) {
                   onLockStatusChange(!locked);
                 }
               }}
-            />
+            >
+              {locked ? 'Locked' : 'Unlocked'}
+            </Button>
           </Flex.Item>
         </Flex>
       </NoticeBox>

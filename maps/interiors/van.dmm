@@ -10,9 +10,7 @@
 	pixel_x = -32;
 	tag = "back_right"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_10"
-	},
+/turf/open/shuttle/vehicle/floor_1_10,
 /area/interior/vehicle/van)
 "e" = (
 /obj/structure/interior_wall/van{
@@ -35,9 +33,7 @@
 	alpha = 100;
 	pixel_y = -2
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_1"
-	},
+/turf/open/shuttle/vehicle/floor_1_1,
 /area/interior/vehicle/van)
 "i" = (
 /obj/structure/interior_wall/van{
@@ -68,9 +64,7 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_3"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_8"
-	},
+/turf/open/shuttle/vehicle/floor_1_8,
 /area/interior/vehicle/van)
 "r" = (
 /obj/structure/interior_wall/van{
@@ -91,9 +85,7 @@
 	pixel_x = -32;
 	tag = "back_left"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_7"
-	},
+/turf/open/shuttle/vehicle/floor_1_7,
 /area/interior/vehicle/van)
 "t" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -112,9 +104,7 @@
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
 	icon_state = "windshield_viewport_bottom"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_11"
-	},
+/turf/open/shuttle/vehicle/floor_3_11,
 /area/interior/vehicle/van)
 "v" = (
 /obj/structure/interior_wall/van{
@@ -146,12 +136,9 @@
 	tag = "right"
 	},
 /obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "comfychair"
+	dir = 4
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_12"
-	},
+/turf/open/shuttle/vehicle/floor_3_12,
 /area/interior/vehicle/van)
 "z" = (
 /obj/structure/interior_wall/van{
@@ -178,9 +165,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_9"
-	},
+/turf/open/shuttle/vehicle/floor_1_9,
 /area/interior/vehicle/van)
 "J" = (
 /obj/structure/interior_wall/van{
@@ -199,9 +184,7 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_2"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_2"
-	},
+/turf/open/shuttle/vehicle/floor_1_2,
 /area/interior/vehicle/van)
 "O" = (
 /turf/open/void/vehicle,

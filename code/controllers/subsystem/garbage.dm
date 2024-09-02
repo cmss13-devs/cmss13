@@ -297,7 +297,7 @@ SUBSYSTEM_DEF(garbage)
 /datum/controller/subsystem/garbage/Recover()
 	InitQueues() //We first need to create the queues before recovering data
 	if (istype(SSgarbage.queues))
-		for (var/i in 1 to SSgarbage.queues.len)
+		for (var/i in 1 to length(SSgarbage.queues))
 			queues[i] |= SSgarbage.queues[i]
 
 /// Qdel Item: Holds statistics on each type that passes thru qdel

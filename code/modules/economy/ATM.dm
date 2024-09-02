@@ -63,7 +63,7 @@ log transactions
 			var/obj/item/spacecash/spacecash = I
 			//consume the money
 			if(spacecash.counterfeit)
-				authenticated_account.money += round(spacecash.worth * 0.25)
+				authenticated_account.money += floor(spacecash.worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else
@@ -284,7 +284,7 @@ log transactions
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -316,7 +316,7 @@ log transactions
 						withdrawal_timer = world.time + 20
 			if("withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -428,26 +428,28 @@ log transactions
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
 /obj/structure/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
+	if(authenticated_account)
+		return
+	var/obj/item/card/id/card = human_user.get_idcard()
+	if(!card)
+		return
+
+	authenticated_account = attempt_account_access(card.associated_account_number)
 	if(!authenticated_account)
-		if(human_user.wear_id)
-			var/obj/item/card/id/I
-			if(istype(human_user.wear_id, /obj/item/card/id))
-				I = human_user.wear_id
-			if(I)
-				authenticated_account = attempt_account_access(I.associated_account_number)
-				if(authenticated_account)
-					to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+		return
 
-					//create a transaction log entry
-					var/datum/transaction/T = new()
-					T.target_name = authenticated_account.owner_name
-					T.purpose = "Remote terminal access"
-					T.source_terminal = machine_id
-					T.date = GLOB.current_date_string
-					T.time = worldtime2text()
-					authenticated_account.transaction_log.Add(T)
+	to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
-					view_screen = NO_SCREEN
+	//create a transaction log entry
+	var/datum/transaction/log = new()
+	log.target_name = authenticated_account.owner_name
+	log.purpose = "Remote terminal access"
+	log.source_terminal = machine_id
+	log.date = GLOB.current_date_string
+	log.time = worldtime2text()
+	authenticated_account.transaction_log.Add(log)
+
+	view_screen = NO_SCREEN
 
 // put the currently held id on the ground or in the hand of the user
 /obj/structure/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)

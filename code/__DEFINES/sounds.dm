@@ -31,6 +31,28 @@
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
+
+//default byond sound echo list index positions.
+//ECHO_DIRECT and ECHO_ROOM are the only two that actually appear to do anything, and represent the dry and wet channels of the environment effects, respectively.
+#define ECHO_DIRECT 1
+#define ECHO_DIRECTHF 2
+#define ECHO_ROOM 3
+#define ECHO_ROOMHF 4
+#define ECHO_OBSTRUCTION 5
+#define ECHO_OBSTRUCTIONLFRATIO 6
+#define ECHO_OCCLUSION 7
+#define ECHO_OCCLUSIONLFRATIO 8
+#define ECHO_OCCLUSIONROOMRATIO 9
+#define ECHO_OCCLUSIONDIRECTRATIO 10
+#define ECHO_EXCLUSION 11
+#define ECHO_EXCLUSIONLFRATIO 12
+#define ECHO_OUTSIDEVOLUMEHF 13
+#define ECHO_DOPPLERFACTOR 14
+#define ECHO_ROLLOFFFACTOR 15
+#define ECHO_ROOMROLLOFFFACTOR 16
+#define ECHO_AIRABSORPTIONFACTOR 17
+#define ECHO_FLAGS 18
+
 //default byond sound environments
 #define SOUND_ENVIRONMENT_NONE -1
 #define SOUND_ENVIRONMENT_GENERIC 0
@@ -59,6 +81,9 @@
 #define SOUND_ENVIRONMENT_DRUGGED 23
 #define SOUND_ENVIRONMENT_DIZZY 24
 #define SOUND_ENVIRONMENT_PSYCHOTIC 25
+
+#define SOUND_ECHO_REVERB_ON list(0, 0, 0, 0, 0, 0.0, 0, 0.25, 1.5, 1.0, 0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 0)
+#define SOUND_ECHO_REVERB_OFF list(0, 0, -10000, -10000, 0, 0.0, 0, 0.25, 1.5, 1.0, 0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 0) //-10000 to Room & RoomHF makes enviromental reverb effectively inaudible
 
 #define AMBIENCE_SHIP 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'

@@ -39,7 +39,7 @@
 			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
 			var/maximum_oxyloss = clamp((100 - blood_percentage) / 2, oxyloss, 100)
 			if(oxyloss < maximum_oxyloss)
-				oxyloss += round(max(additional_oxyloss, 0))
+				oxyloss += floor(max(additional_oxyloss, 0))
 
 		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
@@ -88,7 +88,8 @@
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_ethnicity = TRUE
+	uses_skin_color = TRUE
+	special_body_types = TRUE
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()

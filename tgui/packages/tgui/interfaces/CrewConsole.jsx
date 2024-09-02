@@ -1,6 +1,7 @@
 import { sortBy } from 'common/collections';
+
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Icon } from '../components';
+import { Box, Button, Icon, Section, Table } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -102,7 +103,7 @@ export const CrewConsole = () => {
 
 const CrewTable = (props) => {
   const { act, data } = useBackend();
-  const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
+  const sensors = sortBy(data.sensors ?? [], (s) => s.ijob);
   return (
     <Table>
       <Table.Row>
@@ -159,14 +160,14 @@ const CrewTableEntry = (props) => {
               toxdam,
               burndam,
               brutedam,
-              HEALTH_ICON_BY_LEVEL
+              HEALTH_ICON_BY_LEVEL,
             )}
             color={healthToAttribute(
               oxydam,
               toxdam,
               burndam,
               brutedam,
-              HEALTH_COLOR_BY_LEVEL
+              HEALTH_COLOR_BY_LEVEL,
             )}
             size={1}
           />
@@ -198,7 +199,8 @@ const CrewTableEntry = (props) => {
           side !== undefined
             ? COLORS.damageType['oxy']
             : COLORS.damageType['brute']
-        }>
+        }
+      >
         {area !== undefined ? (
           area
         ) : (
@@ -208,14 +210,15 @@ const CrewTableEntry = (props) => {
       {!!link_allowed && (
         <Table.Cell collapsing>
           <Button
-            content="Track"
             disabled={!can_track}
             onClick={() =>
               act('select_person', {
                 name: name,
               })
             }
-          />
+          >
+            Track
+          </Button>
         </Table.Cell>
       )}
     </Table.Row>

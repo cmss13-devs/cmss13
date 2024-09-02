@@ -4,24 +4,22 @@
  * @license MIT
  */
 
-import { useLocalState } from '../backend';
 import { Input, LabeledList, Section } from '../components';
 
 export const meta = {
   title: 'Themes',
-  render: () => <Story />,
+  render: (theme, setTheme) => <Story theme={theme} setTheme={setTheme} />,
 };
 
 const Story = (props) => {
-  const [theme, setTheme] = useLocalState('kitchenSinkTheme');
   return (
     <Section>
       <LabeledList>
         <LabeledList.Item label="Use theme">
           <Input
             placeholder="theme_name"
-            value={theme}
-            onInput={(e, value) => setTheme(value)}
+            value={props.theme}
+            onInput={(e, value) => props.setTheme(value)}
           />
         </LabeledList.Item>
       </LabeledList>

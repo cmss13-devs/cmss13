@@ -3,7 +3,7 @@
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/shorthand
@@ -457,7 +457,7 @@
 //================= FUEL EQUIPMENT =================//
 
 /obj/structure/dropship_equipment/fuel
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
@@ -622,7 +622,7 @@
 /// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
@@ -780,7 +780,6 @@
 	name = "\improper LAU-229 Rocket Pod"
 	icon_state = "minirocket_pod"
 	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter. Accepts the AGR-59 series of minirockets."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
@@ -788,7 +787,11 @@
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
-		icon_state = "minirocket_pod_loaded"
+		var/ammo_stage = ammo_equipped.ammo_count / ammo_equipped.ammo_used_per_firing
+		icon_state = "[initial(icon_state)]_loaded_[ammo_stage]"
+
+		if (ammo_equipped.ammo_count == ammo_equipped.max_ammo_count)
+			icon_state = "[initial(icon_state)]_loaded"
 	else
 		if(ship_base) icon_state = "minirocket_pod_installed"
 		else icon_state = "minirocket_pod"
@@ -802,7 +805,6 @@
 	name = "\improper LWU-6B Laser Cannon"
 	icon_state = "laser_beam"
 	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter. Accepts the BTU-17/LW Hi-Cap Laser Batteries."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
 	point_cost = 500
@@ -821,7 +823,7 @@
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	bound_height = 32

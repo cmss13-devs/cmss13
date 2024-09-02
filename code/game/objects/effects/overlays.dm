@@ -46,6 +46,22 @@
 	if(start_on_spawn)
 		QDEL_IN(src, effect_duration)
 
+/obj/effect/overlay/temp/pointer1
+	name = "Pointer"
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "danger"
+	layer = ABOVE_FLY_LAYER
+	anchored = TRUE
+	effect_duration = 2.5 SECONDS
+
+/obj/effect/overlay/temp/pointer2
+	name = "Pointer"
+	icon = 'icons/mob/hud/screen1.dmi'
+	icon_state = "arrow"
+	layer = ABOVE_FLY_LAYER
+	anchored = TRUE
+	effect_duration = 2.5 SECONDS
+
 /obj/effect/overlay/temp/point
 	name = "arrow"
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."

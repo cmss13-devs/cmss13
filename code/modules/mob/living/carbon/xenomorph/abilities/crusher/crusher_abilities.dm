@@ -125,27 +125,27 @@
 	if(body_position == LYING_DOWN)
 		handle_movement(xeno)
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
-	if(Xeno.pulling)
+	if(xeno.pulling)
 		if(!momentum)
 			steps_taken = 0
 			return
 		else
-			Xeno.stop_pulling()
+			xeno.stop_pulling()
 
-	if(Xeno.is_mob_incapacitated())
+	if(xeno.is_mob_incapacitated())
 		if(!momentum)
 			return
-		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
+		var/lol = get_ranged_target_turf(xeno, charge_dir, momentum/2)
+		INVOKE_ASYNC(xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
-	if(!isturf(Xeno.loc))
+	if(!isturf(xeno.loc))
 		stop_momentum()
 		return
 	// Don't build up charge if you move via getting propelled by something
-	if(Xeno.throwing)
+	if(HAS_TRAIT(xeno, TRAIT_LAUNCHED))
 		stop_momentum()
 		return
 
@@ -160,7 +160,7 @@
 
 	if(do_stop_momentum)
 		stop_momentum()
-	if(Xeno.plasma_stored <= plasma_per_step)
+	if(xeno.plasma_stored <= plasma_per_step)
 		stop_momentum()
 		return
 	last_charge_move = world.time
@@ -169,24 +169,24 @@
 		return
 	if(momentum < max_momentum)
 		momentum++
-		ADD_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
-		Xeno.update_icons()
+		ADD_TRAIT(xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
+		xeno.update_icons()
 		if(momentum == max_momentum)
-			Xeno.emote("roar")
+			xeno.emote("roar")
 	//X.use_plasma(plasma_per_step) // take if you are in toggle charge mode
 	if(momentum > 0)
-		Xeno.use_plasma(plasma_per_step) // take plasma when you have momentum
+		xeno.use_plasma(plasma_per_step) // take plasma when you have momentum
 
 	noise_timer = noise_timer ? --noise_timer : 3
 	if(noise_timer == 3)
-		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
+		playsound(xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
 
-	for(var/mob/living/carbon/human/Mob in Xeno.loc)
+	for(var/mob/living/carbon/human/Mob in xeno.loc)
 		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
-			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
+			xeno.visible_message(SPAN_DANGER("[xeno] runs [Mob] over!"),
 				SPAN_DANGER("We run [Mob] over!")
 			)
-			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
+			var/ram_dir = pick(get_perpen_dir(xeno.dir))
 			var/dist = 1
 			if(momentum == max_momentum)
 				dist = momentum * 0.25
@@ -196,7 +196,7 @@
 			shake_camera(Mob, 7,3)
 			animation_flash_color(Mob)
 
-	Xeno.recalculate_speed()
+	xeno.recalculate_speed()
 
 /datum/action/xeno_action/onclick/charger_charge/proc/handle_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
@@ -269,18 +269,22 @@
 		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
 
 
-/datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
+/datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(atom/_collided_with)
+	if (!ishuman(_collided_with))
+		return
+
+	var/mob/living/carbon/human/collided_with = _collided_with
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
-	var/turf/target_turf = get_turf(Mob)
-	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	Mob.apply_damage(15,BRUTE)
-	if(ishuman(Mob))
-		var/mob/living/carbon/human/Human = Mob
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [collided_with]!"), SPAN_XENODANGER("We knock over [collided_with] as we sweep to the side!"))
+	var/turf/target_turf = get_turf(collided_with)
+	playsound(collided_with,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	collided_with.apply_damage(15,BRUTE)
+	if(ishuman(collided_with))
+		var/mob/living/carbon/human/Human = collided_with
 		Xeno.throw_carbon(Human, distance = 1)
 		Human.apply_effect(1, WEAKEN)
 	else
-		Mob.apply_effect(1, WEAKEN)
+		collided_with.apply_effect(1, WEAKEN)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
 

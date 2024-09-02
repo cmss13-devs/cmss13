@@ -129,13 +129,14 @@
 
 	return ..()
 
-/obj/structure/bed/chair/hitby(atom/movable/AM)
+/obj/structure/bed/chair/hitby(atom/movable/_launched, datum/launch_result/lauch_result)
 	. = ..()
-	if(istype(AM, /mob/living) && stacked_size)
-		var/mob/living/M = AM
+
+	var/mob/living/launched = _launched
+	if(isliving(launched) && stacked_size)
 		stack_collapse()
-		M.apply_effect(2, STUN)
-		M.apply_effect(2, WEAKEN)
+		launched.apply_effect(2, STUN)
+		launched.apply_effect(2, WEAKEN)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 

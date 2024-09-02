@@ -100,7 +100,7 @@
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		icon_state = "[get_strain_icon()] [caste.caste_type] Thrown"
 
 /mob/living/carbon/xenomorph/facehugger/start_pulling(atom/movable/AM)

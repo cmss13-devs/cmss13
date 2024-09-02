@@ -256,7 +256,7 @@
 	flush_contents()
 	.  = ..()
 
-/obj/structure/dartboard/hitby(obj/item/thrown_item)
+/obj/structure/dartboard/hitby(obj/item/thrown_item, datum/launch_result/launch_result)
 	if(thrown_item.sharp != IS_SHARP_ITEM_ACCURATE && !istype(thrown_item, /obj/item/weapon/dart))
 		visible_message(SPAN_DANGER("[thrown_item] hits [src], collapsing it!"))
 		collapse()

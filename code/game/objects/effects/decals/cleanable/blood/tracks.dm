@@ -17,9 +17,6 @@
 	/// Amount of pixels to shift either way in an attempt to make the tracks more organic
 	var/transverse_amplitude = 3
 
-/obj/effect/decal/cleanable/blood/tracks/Crossed()
-	return
-
 /obj/effect/decal/cleanable/blood/tracks/can_place_cleanable()
 	return FALSE
 

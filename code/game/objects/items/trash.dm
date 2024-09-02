@@ -167,7 +167,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throwforce = 5
 
-/obj/item/trash/ceramic_plate/launch_impact(atom/hit_atom)
+/obj/item/trash/ceramic_plate/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	. = ..()
 	playsound(get_turf(src), "shatter", 50, TRUE)
 	visible_message(SPAN_DANGER("\The [src] shatters into a thousand tiny fragments!"))

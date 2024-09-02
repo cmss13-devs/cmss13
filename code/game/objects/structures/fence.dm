@@ -54,14 +54,14 @@
 		if(EXPLOSION_THRESHOLD_LOW to INFINITY)
 			deconstruct(TRUE)
 
-/obj/structure/fence/hitby(atom/movable/AM)
+/obj/structure/fence/hitby(atom/movable/launched, datum/launch_result/launch_result)
 	..()
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	visible_message(SPAN_DANGER("[src] was hit by [launched]."))
 	var/tforce = 0
-	if(ismob(AM))
+	if(ismob(launched))
 		tforce = 40
-	else if(isobj(AM))
-		var/obj/item/I = AM
+	else if(isobj(launched))
+		var/obj/item/I = launched
 		tforce = I.throwforce
 	health = max(0, health - tforce)
 	healthcheck()

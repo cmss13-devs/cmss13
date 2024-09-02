@@ -225,16 +225,18 @@
 	var/throw_speed = SPEED_FAST // Throw speed
 	var/tracks_target = TRUE // Does it track the target atom?
 
-	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
-										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
-
 /datum/action/xeno_action/activable/pounce/New()
 	. = ..()
 	initialize_pounce_pass_flags()
-	pounce_callbacks = list()
-	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper)
-	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper)
-	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper)
+
+/datum/action/xeno_action/activable/pounce/proc/handle_collision(mob/living/carbon/xenomorph/launching, atom/collided_with, datum/launch_result/launch_result)
+	if (ismob(collided_with))
+		launching.pounced_mob(collided_with, launch_result)
+	else if (isobj(collided_with))
+		launching.pounced_obj(collided_with, launch_result)
+	else if (isturf(collided_with))
+		launching.pounced_turf(collided_with, launch_result)
+	return LAUNCH_COLLISION_SKIP_LAUNCH_IMPACT
 
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_OVER_THROW_MOB

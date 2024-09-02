@@ -192,7 +192,6 @@
 
 	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
 
-	var/obstacle
 	var/turf/T
 	var/atom/A
 
@@ -201,10 +200,9 @@
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(T)
 		return FALSE
-	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+	for (A as anything in T) //First, check objects to block exit
+		if (mover == A || forget == A)
 			continue
-		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
 			continue
 		blocking_dir |= A.BlockedExitDirs(mover, fdir)
@@ -222,10 +220,9 @@
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(forget == obstacle)
+			for(A as anything in T)
+				if(forget == A)
 					continue
-				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
 					continue
 				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
@@ -242,10 +239,9 @@
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(forget == obstacle)
+			for(A as anything in T)
+				if(forget == A)
 					continue
-				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
 					continue
 				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
@@ -260,10 +256,9 @@
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(src)
 		return FALSE
-	for(obstacle in src) //Then, check atoms in the target turf
-		if(forget == obstacle)
+	for(A as anything in src) //Then, check atoms in the target turf
+		if(forget == A)
 			continue
-		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
 			continue
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)

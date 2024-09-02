@@ -701,16 +701,17 @@
 		SPAN_DANGER("The sentry's steel tusks cut into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		M.apply_damage(20)
 
-/obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
-	if(AM.throwing && turned_on)
-		if(ismob(AM))
-			var/mob/living/L = AM
-			L.apply_damage(20)
-			playsound(L, "bonk", 75, FALSE)
-			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
-			SPAN_DANGER("The sentry's steel tusks impale you!"))
-			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
-				L.apply_effect(1, WEAKEN)
+/obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/_launched, datum/launch_result/launch_result)
+	var/mob/living/launched = _launched
+	if(!turned_on || !isliving(launched))
+		return
+
+	launched.apply_damage(20)
+	playsound(launched, "bonk", 75, FALSE)
+	launched.visible_message(SPAN_DANGER("The sentry's steel tusks impale [launched]!"),
+	SPAN_DANGER("The sentry's steel tusks impale you!"))
+	if(launched.mob_size <= MOB_SIZE_XENO_SMALL)
+		launched.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "\improper UA 512-M mini sentry"

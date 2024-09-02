@@ -64,7 +64,7 @@
 	src.update_icon()
 	return
 
-/obj/item/toy/balloon/launch_impact(atom/hit_atom)
+/obj/item/toy/balloon/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	if(src.reagents.total_volume >= 1)
 		src.visible_message(SPAN_DANGER("[src] bursts!"),"You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
@@ -144,7 +144,7 @@
 	icon_state = "snappop"
 	w_class = SIZE_TINY
 
-/obj/item/toy/snappop/launch_impact(atom/hit_atom)
+/obj/item/toy/snappop/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
@@ -155,6 +155,7 @@
 	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
+	..()
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		to_chat(M, SPAN_WARNING("You step on the snap pop!"))

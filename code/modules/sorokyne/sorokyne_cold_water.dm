@@ -19,6 +19,7 @@
 
 
 /obj/effect/blocker/sorokyne_cold_water/Crossed(mob/living/M as mob)
+	..()
 
 	if(!istype(M))
 		return

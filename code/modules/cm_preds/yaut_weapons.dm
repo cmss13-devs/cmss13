@@ -471,7 +471,7 @@
 			..()
 	else ..()
 
-/obj/item/weapon/yautja/combistick/launch_impact(atom/hit_atom)
+/obj/item/weapon/yautja/combistick/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))

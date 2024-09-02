@@ -168,7 +168,7 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
-	var/auto_deploy = TRUE // allows dropship turrets to be auto deployed, a toggle
+	var/auto_deploy = FALSE // allows dropship turrets to be auto deployed, a toggle
 
 /obj/structure/dropship_equipment/sentry_holder/Initialize()
 	. = ..()
@@ -329,7 +329,7 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
-	var/auto_deploy = TRUE
+	var/auto_deploy = FALSE
 
 /obj/structure/dropship_equipment/mg_holder/Initialize()
 	. = ..()

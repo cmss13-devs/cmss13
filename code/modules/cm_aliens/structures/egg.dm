@@ -244,6 +244,7 @@
 		Burst(TRUE)
 
 /obj/effect/alien/egg/Crossed(atom/movable/AM)
+	..()
 	HasProximity(AM)
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM)
@@ -299,6 +300,7 @@
 
 
 /obj/effect/egg_trigger/Crossed(atom/movable/AM)
+	..()
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong

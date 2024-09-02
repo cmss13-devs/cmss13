@@ -114,6 +114,8 @@ Each var depends on others
 
 
 /obj/effect/blocker/toxic_water/Crossed(atom/A)
+	..()
+
 	if(toxic == 0)
 		return
 

@@ -62,6 +62,7 @@
 	if (hivenumber != XENO_HIVE_TUTORIAL)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(handle_launched))
 
 /obj/item/clothing/mask/facehugger/Destroy()
 	. = ..()
@@ -199,6 +200,8 @@
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
+	..()
+
 	has_proximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
@@ -210,12 +213,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
-	if(stat == CONSCIOUS)
-		icon_state = "[initial(icon_state)]_thrown"
-	..()
-
-/obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom)
+/obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	. = ..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
@@ -229,18 +227,12 @@
 	if(stat == UNCONSCIOUS)
 		return
 
-	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
-	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
-	throwing = FALSE
-	rebounding = FALSE
-
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
 	else if(L.density)
-		step(src, turn(dir, 180)) //We want the hugger to bounce off if it hits a mob.
+	 	//We want the hugger to bounce off if it hits a mob.
+		INVOKE_NEXT_TICK(GLOBAL_PROC, GLOBAL_PROC_REF(step_wrapper), src, turn(dir, 180))
 		go_idle()
-
-
 
 /obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
 	if(!isturf(loc))
@@ -570,3 +562,9 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/clothing/mask/facehugger/proc/handle_launched()
+	SIGNAL_HANDLER
+
+	if(stat == CONSCIOUS)
+		icon_state = "[initial(icon_state)]_thrown"

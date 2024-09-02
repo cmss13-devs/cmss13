@@ -262,17 +262,16 @@
 	move_delay = .
 
 
-/mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
+/mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L, datum/launch_result/launch_result)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state())
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
-		throwing = FALSE
+	if (M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		return
 
 	if (pounceAction.can_be_shield_blocked)
@@ -283,7 +282,6 @@
 					SPAN_XENODANGER("We slam into [H]!"), null, 5)
 				KnockDown(1)
 				Stun(1)
-				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
@@ -291,7 +289,6 @@
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
-					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
@@ -299,14 +296,12 @@
 						SPAN_XENODANGER("[H] body slams us!"), null, 5)
 					KnockDown(3)
 					Stun(3)
-					throwing = FALSE
 					return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
 				Stun(1.5)
-				throwing = FALSE
 				return
 
 
@@ -315,7 +310,7 @@
 	if (pounceAction.knockdown)
 		M.KnockDown(pounceAction.knockdown_duration)
 		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
-		step_to(src, M)
+		INVOKE_NEXT_TICK(GLOBAL_PROC, GLOBAL_PROC_REF(step_to_wrapper), src, M)
 
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
@@ -327,46 +322,36 @@
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
 
-	throwing = FALSE //Reset throwing since something was hit.
-
 /mob/living/carbon/xenomorph/proc/unfreeze_pounce()
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 
-/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(mob/living/L)
-	pounced_mob(L)
-
-/mob/living/carbon/xenomorph/proc/pounced_obj(obj/O)
+/mob/living/carbon/xenomorph/proc/pounced_obj(obj/O, datum/launch_result/launch_result)
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
-		obj_launch_collision(O)
+	if (!check_state() || !pounceAction.action_cooldown_check())
+		obj_launch_collision(O, launch_result)
 		return
 
+	// TODO: Refactor this part to use signals
 	if (pounceAction.should_destroy_objects)
-		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
+		if (istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
 			S.deconstruct(FALSE) //We want to continue moving, so we do not reset throwing.
 		else
-			O.hitby(src) //This resets throwing.
+			O.hitby(src, launch_result) //This resets throwing.
 	else
-		if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
-			O.hitby(src) //This resets throwing.
+		if (!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
+			O.hitby(src, launch_result) //This resets throwing.
 
-/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper(obj/O)
-	pounced_obj(O)
-
-/mob/living/carbon/xenomorph/proc/pounced_turf(turf/T)
+/mob/living/carbon/xenomorph/proc/pounced_turf(turf/T, datum/launch_result/launch_result)
 	if(!T.density)
 		for(var/mob/living/mob in T)
-			pounced_mob(mob)
+			pounced_mob(mob, launch_result)
 			break
 	else
-		turf_launch_collision(T)
-
-/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper(turf/T)
-	pounced_turf(T)
+		turf_launch_collision(T, launch_result)
 
 //Bleuugh
 /mob/living/carbon/xenomorph/proc/empty_gut()
@@ -473,16 +458,6 @@
 			return
 
 	. = ..()
-
-/mob/living/carbon/xenomorph/proc/get_diagonal_step(atom/movable/A, direction)
-	if(!A)
-		return FALSE
-	switch(direction)
-		if(EAST, WEST)
-			return get_step(A, pick(NORTH,SOUTH))
-		if(NORTH,SOUTH)
-			return get_step(A, pick(EAST,WEST))
-
 
 //Welp
 /mob/living/carbon/xenomorph/proc/xeno_jitter(jitter_time = 25)
@@ -737,12 +712,12 @@
 		direction = get_dir(src, target)
 	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
 
-	var/list/end_throw_callbacks
+	var/datum/callback/end_throw_callback
 	if(immobilize)
-		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
+		end_throw_callback = CALLBACK(src, PROC_REF(throw_carbon_end), target)
 		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
-	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks = end_throw_callbacks)
+	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callback = end_throw_callback)
 	if(shake_camera)
 		shake_camera(target, 10, 1)
 

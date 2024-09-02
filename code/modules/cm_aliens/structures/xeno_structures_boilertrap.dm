@@ -70,7 +70,7 @@
 	else if(ishuman(A))
 		trigger_trap(A)
 
-	return ..()
+	..()
 
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
@@ -86,6 +86,7 @@
 	return ..()
 
 /obj/effect/hole_tripwire_boiler/Crossed(atom/A)
+	..()
 	if(!linked_trap)
 		qdel(src)
 		return

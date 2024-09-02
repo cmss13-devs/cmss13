@@ -671,7 +671,7 @@
 	var/rigged = 0 // true if rigged to explode
 	var/brightness = 2 //how much light it gives off
 
-/obj/item/light_bulb/launch_impact(atom/hit_atom)
+/obj/item/light_bulb/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	shatter()
 

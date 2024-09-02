@@ -131,6 +131,7 @@
 			qdel(src)
 
 /obj/projectile/Crossed(atom/movable/AM)
+	..()
 	/* Fun fact: Crossed is called for any contents involving operations.
 	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
 	if(!loc?.z)

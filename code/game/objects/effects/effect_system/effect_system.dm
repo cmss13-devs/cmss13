@@ -107,7 +107,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 /datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
 
-/datum/effect_system/spark_spread/set_up(n = 3, c = 0, loca)
+/datum/effect_system/spark_spread/set_up(n = 3, c = FALSE, loca)
 	if(n > 10)
 		n = 10
 	number = n
@@ -140,7 +140,16 @@ would spawn and follow the beaker, even if it is carried or thrown.
 					qdel(sparks)
 				total_sparks--
 
+/datum/effect_system/spark_spread/proc/_setup_and_start(particle_count = 3, cardinal_dirs_only = FALSE, target)
+	set_up(particle_count, cardinal_dirs_only, target)
+	start()
 
+/datum/effect_system/spark_spread/proc/setup_and_start(particle_count = 3, cardinal_dirs_only = FALSE, target, delay = null)
+	var/datum/callback/callback = CALLBACK(src, PROC_REF(_setup_and_start), particle_count, cardinal_dirs_only, target)
+	if (delay)
+		addtimer(callback, delay)
+	else
+		callback.Invoke()
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)

@@ -4,13 +4,12 @@
 	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
-	var/throwing = 0
 	var/throw_speed = SPEED_FAST // Speed that an atom will go when thrown by a carbon mob
 	var/throw_range = 7
 	var/cur_speed = MIN_SPEED // Current speed of an atom (account for speed when launched/thrown as well)
 	var/mob/pulledby = null
+	// TODO: Trait this
 	var/rebounds = FALSE
-	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
@@ -40,7 +39,6 @@
 		qdel(I)
 	if(pulledby)
 		pulledby.stop_pulling()
-	QDEL_NULL(launch_metadata)
 	QDEL_NULL(em_block)
 	QDEL_NULL(emissive_overlay)
 

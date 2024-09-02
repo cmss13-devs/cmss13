@@ -67,28 +67,25 @@
 		icon_state = "beartrap[armed]"
 		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]"))
 
-/obj/item/restraint/legcuffs/beartrap/Crossed(atom/movable/AM)
-	if(armed)
-		if(ismob(AM))
-			var/mob/M = AM
-			if(!M.buckled)
-				if(ishuman(AM))
-					if(isturf(src.loc))
-						var/mob/living/carbon/H = AM
-						if(!H.legcuffed)
-							H.legcuffed = src
-							forceMove(H)
-							H.legcuff_update()
-						armed = 0
-						icon_state = "beartrap0"
-						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-						to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
-						for(var/mob/O in viewers(H, null))
-							if(O == H)
-								continue
-							O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
-				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
-					armed = 0
-					var/mob/living/simple_animal/SA = AM
-					SA.health -= 20
+/obj/item/restraint/legcuffs/beartrap/Crossed(atom/movable/crossed_by)
+	var/mob/mob_crossed_by = crossed_by
+	var/mob/living/simple_animal/animal_crossed_by = crossed_by
+	var/mob/living/carbon/human/human_crossed_by = crossed_by
+	if(armed && ismob(mob_crossed_by) && !mob_crossed_by.buckled)
+		if(ishuman(human_crossed_by) && isturf(src.loc))
+			if(!human_crossed_by.legcuffed)
+				human_crossed_by.legcuffed = src
+				forceMove(human_crossed_by)
+				human_crossed_by.legcuff_update()
+			armed = 0
+			icon_state = "beartrap0"
+			playsound(loc, 'sound/effects/snap.ogg', 25, 1)
+			to_chat(human_crossed_by, SPAN_DANGER("<B>You step on \the [src]!</B>"))
+			for(var/mob/observer in viewers(human_crossed_by, null))
+				if(observer == human_crossed_by)
+					continue
+				observer.show_message(SPAN_DANGER("<B>[human_crossed_by] steps on \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
+		if(isanimal(animal_crossed_by) && !istype(animal_crossed_by, /mob/living/simple_animal/parrot))
+			armed = 0
+			animal_crossed_by.health -= 20
 	..()

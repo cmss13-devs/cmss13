@@ -18,6 +18,7 @@
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
+	var/affect_on_cross = TRUE
 	var/datum/cause_data/cause_data = null
 
 	//Remove this bit to use the old smoke
@@ -72,7 +73,7 @@
 	if(istype(moveable, /obj/projectile/beam))
 		var/obj/projectile/beam/beam = moveable
 		beam.damage /= 2
-	if(iscarbon(moveable))
+	if(iscarbon(moveable) && affect_on_cross)
 		affect(moveable)
 
 /obj/effect/particle_effect/smoke/proc/apply_smoke_effect(turf/cur_turf)
@@ -497,6 +498,7 @@
 	anchored = TRUE
 	spread_speed = 6
 	smokeranking = SMOKE_RANK_BOILER
+	affect_on_cross = FALSE
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/gas_damage = 20
@@ -523,10 +525,6 @@
 
 	for(var/obj/structure/machinery/m56d_hmg/auto/gun in cur_turf)
 		gun.update_health(XENO_ACID_HMG_DAMAGE)
-
-//No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/affected_mob as mob)
-	return
 
 /obj/effect/particle_effect/smoke/xeno_burn/affect(mob/living/carbon/affected_mob)
 	. = ..()
@@ -577,13 +575,12 @@
 	spread_speed = 5
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
+	affect_on_cross = FALSE
+
 	/// How much neuro is dosed per tick
 	var/neuro_dose = 6
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
-//No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/moob as mob)
-	return
 
 /obj/effect/particle_effect/smoke/xeno_weak/affect(mob/living/carbon/moob) // This applies every tick someone is in the smoke
 	. = ..()
@@ -636,12 +633,10 @@
 	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/moob as mob)
-	if(!istype(moob))
-		return
-
-	moob.ExtinguishMob()
-	. = ..()
+/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/moob)
+	if(istype(moob))
+		moob.ExtinguishMob()
+	..()
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/affect(mob/living/carbon/moob)
 	. = ..()

@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 	M.apply_effect(2, DAZE)
 	qdel(src)
 
-/obj/item/snowball/launch_impact(atom/hit_atom)
+/obj/item/snowball/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	. = ..()
 	qdel(src)
 

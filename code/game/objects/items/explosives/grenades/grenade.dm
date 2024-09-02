@@ -26,6 +26,7 @@
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = max(0, rand(det_time - 5, det_time + 5))
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(handle_launched))
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
@@ -121,12 +122,13 @@
 		dangerous = FALSE
 	. = ..()
 
-/obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
-	if(active && ismob(LM.thrower))
-		var/mob/M = LM.thrower
-		M.count_niche_stat(STATISTICS_NICHE_GRENADES)
-	. = ..()
+/obj/item/explosive/grenade/proc/handle_launched(self, datum/launch_result/launch_result)
+	SIGNAL_HANDLER
 
+	var/thrower = launch_result.thrower_ref?.resolve()
+	if(active && ismob(thrower))
+		var/mob/mob_thrower = thrower
+		mob_thrower.count_niche_stat(STATISTICS_NICHE_GRENADES)
 
 /obj/item/explosive/grenade/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

@@ -33,7 +33,7 @@
 		return
 
 	var/mob/living/LM = parent
-	if(LM.buckled || LM.throwing || LM.is_ventcrawling || LM.stat == DEAD)
+	if(LM.buckled || HAS_TRAIT(LM, TRAIT_LAUNCHED) || LM.is_ventcrawling || LM.stat == DEAD)
 		return
 
 	if(LM.life_steps_total % steps)

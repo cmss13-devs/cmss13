@@ -55,6 +55,7 @@
 
 	return NO_BLOCKED_MOVEMENT
 
+// TODO: Remove any and all overrides of this proc
 /atom/movable/Move(NewLoc, direct)
 	// If Move is not valid, exit
 	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
@@ -74,19 +75,24 @@
 	if (.)
 		Moved(oldloc, direct)
 
-/// Called when a movable atom has hit an atom via movement
-/atom/movable/proc/Collide(atom/A)
-	if (throwing)
-		launch_impact(A)
+/atom/Crossed(atom/movable/crossed_by)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_CROSSED, crossed_by)
 
-	if (A && !QDELETED(A))
-		A.last_bumped = world.time
-		A.Collided(src)
+	..()
+
+/// Called when a movable atom has hit an atom via movement
+/atom/movable/proc/Collide(atom/collide_target)
+	var/result = SEND_SIGNAL(src, COMSIG_MOVABLE_COLLIDE, collide_target)
+
+	if (collide_target && !QDELETED(collide_target) && !(result & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE))
+		collide_target.last_bumped = world.time
+		collide_target.Collided(src)
 
 /// Called when an atom has been hit by a movable atom via movement
-/atom/movable/Collided(atom/movable/AM)
-	if(isliving(AM) && !anchored)
-		var/target_dir = get_dir(AM, src)
+/atom/movable/Collided(atom/movable/collided_by)
+	if(isliving(collided_by) && !anchored)
+		var/target_dir = get_dir(collided_by, src)
 		var/turf/target_turf = get_step(loc, target_dir)
 		Move(target_turf)
 

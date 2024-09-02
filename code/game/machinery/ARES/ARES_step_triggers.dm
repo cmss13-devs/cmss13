@@ -18,28 +18,29 @@
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
 
 /obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
+	..()
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
-		return FALSE
+		return
 	if(!passer)
-		return FALSE
+		return
 	if(!(ishuman(passer) || isxeno(passer)))
-		return FALSE
+		return
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))
-		return FALSE
+		return
 	if(pass_jobs)
 		if(passer.job in pass_jobs)
-			return FALSE
+			return
 		if(isxeno(passer) && (JOB_XENOMORPH in pass_jobs))
-			return FALSE
+			return
 	if(ishuman(passer))
 		var/mob/living/carbon/human/trespasser = passer
 		var/obj/item/card/id/card = trespasser.get_idcard()
 		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
 				if(tag in card.access)
-					return FALSE
+					return
 	Trigger(passer)
-	return TRUE
+	return
 
 
 /obj/effect/step_trigger/ares_alert/Initialize(mapload, ...)
@@ -111,15 +112,16 @@
 
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
+	..()
 	if(isobserver(passer) || isxeno(passer))
-		return FALSE
+		return
 	if(!passer)
-		return FALSE
+		return
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))//Can't be seen/detected to trigger alert.
-		return FALSE
+		return
 	var/area/pass_area = get_area(get_step(passer, passer.dir))
 	if(istype(pass_area, /area/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
-		return FALSE
+		return
 	var/obj/item/card/id/idcard
 	var/check_contents = TRUE
 	if(ishuman(passer))
@@ -141,13 +143,13 @@
 					break
 	if(!istype(idcard) && ismob(passer))
 		Trigger(passer, failure = TRUE)
-		return FALSE
+		return
 	if(!(ACCESS_MARINE_AI_TEMP in idcard.access))//No temp access, don't care
-		return FALSE
+		return
 	if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))//Permanent access prevents loss of temporary
-		return FALSE
+		return
 	Trigger(passer, idcard)
-	return TRUE
+	return
 
 /obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
 	var/broadcast_message = get_broadcast(passer, idcard, failure)

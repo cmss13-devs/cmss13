@@ -285,8 +285,8 @@ directive is properly returned.
 /atom/proc/fire_act()
 	return
 
-/atom/proc/hitby(atom/movable/AM)
-	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM)
+/atom/proc/hitby(atom/movable/launched, datum/launch_result/launch_result)
+	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, launched, launch_result)
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
@@ -406,6 +406,7 @@ Parameters are passed from New.
 		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
+
 	Decorate(mapload)
 
 	return INITIALIZE_HINT_NORMAL

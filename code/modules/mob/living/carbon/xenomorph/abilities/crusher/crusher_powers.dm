@@ -81,19 +81,21 @@
 
 
 // This ties the pounce/throwing backend into the old collision backend
-/mob/living/carbon/xenomorph/crusher/pounced_obj(obj/O)
+/mob/living/carbon/xenomorph/crusher/pounced_obj(obj/O, datum/launch_result/launch_result)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_action(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
 
 	gain_plasma(10)
 
-	if (!handle_collision(O)) // Check old backend
-		obj_launch_collision(O)
+	var/result = O.handle_crusher_charge(src)
+	if (result & CRUSHER_CHARGED_DEFAULT_BEHAVIOR)
+		update_icons()
+		obj_launch_collision(O, launch_result)
 
-/mob/living/carbon/xenomorph/crusher/pounced_turf(turf/T)
+/mob/living/carbon/xenomorph/crusher/pounced_turf(turf/T, datum/launch_result/launch_result)
 	T.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
-	..(T)
+	..()
 
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -304,9 +306,9 @@
 	Xeno.use_plasma(plasma_cost)
 
 	var/target = get_step(get_step(Xeno, target_dir), target_dir)
-	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
-	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
-	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
+	var/datum/callback/collision_callback = CALLBACK(src, PROC_REF(handle_mob_collision))
+	var/datum/callback/end_throw_callback = CALLBACK(src, PROC_REF(on_end_throw), start_charging)
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callback = end_throw_callback, collision_callback = collision_callback)
 
 	apply_cooldown()
 	return ..()

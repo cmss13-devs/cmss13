@@ -684,6 +684,7 @@
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	..()
 	atom_movable.handle_flamer_fire_crossed(src)
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(mob/living/carbon/xenomorph/X)

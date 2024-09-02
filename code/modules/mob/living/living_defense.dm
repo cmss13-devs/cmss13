@@ -28,83 +28,79 @@
 		O.emp_act(severity)
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM)
-	if(!isobj(AM))
+/mob/living/hitby(atom/movable/_launched, datum/launch_result/launch_result)
+	if(!isobj(_launched))
 		return
 
-	var/obj/O = AM
+	var/obj/launched = _launched
 	var/dtype = BRUTE
-	if(istype(O, /obj/item/weapon))
-		var/obj/item/weapon/W = O
+	if(istype(launched, /obj/item/weapon))
+		var/obj/item/weapon/W = launched
 		dtype = W.damtype
-	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
+	var/impact_damage = (1 + launched.throwforce*THROWFORCE_COEFF)*launched.throwforce*THROW_SPEED_IMPACT_COEFF*launched.cur_speed
 
-	var/datum/launch_metadata/LM = O.launch_metadata
 	var/dist = 2
-	if(istype(LM))
-		dist = LM.dist
+	if(!isnull(launch_result))
+		dist = launch_result.dist
 	var/miss_chance = min(15*(dist - 2), 0)
 
 	if (prob(miss_chance))
-		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
+		visible_message(SPAN_NOTICE("\The [launched] misses [src] narrowly!"), null, null, 5)
 		return
 
-	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
+	src.visible_message(SPAN_DANGER("[src] has been hit by [launched]."), null, null, 5)
+	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(launched), has_edge(launched), null)
 
 	var/last_damage_source
 	if (damage_done > 5)
-		last_damage_source = initial(O.name)
+		last_damage_source = initial(launched.name)
 		animation_flash_color(src)
-		var/obj/item/I = O
+		var/obj/item/I = launched
 		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
 			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, falloff = 2)
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, falloff = 2)
 
-	O.throwing = 0 //it hit, so stop moving
-
-	var/mob/M
-	if(ismob(LM.thrower))
-		M = LM.thrower
+	var/mob/thrower = launch_result.thrower_ref?.resolve()
+	if(ismob(thrower))
 		if(damage_done > 5)
-			M.track_hit(initial(O.name))
-			if (M.faction == faction)
-				M.track_friendly_fire(initial(O.name))
-		var/client/assailant = M.client
+			thrower.track_hit(initial(launched.name))
+			if (thrower.faction == faction)
+				thrower.track_friendly_fire(initial(launched.name))
+		var/client/assailant = thrower.client
 		if(assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [launched], thrown by [key_name(thrower)]</font>")
+			thrower.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [launched]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				if(src.loc)
-					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [launched], thrown by [key_name(thrower)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 				else
-					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [launched], thrown by [key_name(thrower)] in [get_area(thrower)] ([thrower.loc.x],[thrower.loc.y],[thrower.loc.z]).", thrower.loc.x, thrower.loc.y, thrower.loc.z)
 	if(last_damage_source)
-		last_damage_data = create_cause_data(last_damage_source, M)
+		last_damage_data = create_cause_data(last_damage_source, thrower)
 
 /mob/living/mob_launch_collision(mob/living/L)
 	L.Move(get_step_away(L, src))
 
-/mob/living/obj_launch_collision(obj/O)
-	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+/mob/living/obj_launch_collision(obj/hit_obj, datum/launch_result/launch_result)
+	var/thrower = launch_result.thrower_ref?.resolve()
+	if(!HAS_TRAIT(src, TRAIT_REBOUNDING) && thrower != src)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
-		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		playsound(O,"slam", 50, 1)
+		visible_message(SPAN_DANGER("\The [name] slams into [hit_obj]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
+		playsound(hit_obj,"slam", 50, 1)
 	..()
 
 //This is called when the mob or human is thrown into a dense turf or wall
-/mob/living/turf_launch_collision(turf/T)
-	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
-		if(LM.thrower)
-			last_damage_data = create_cause_data("wall tossing", LM.thrower)
+/mob/living/turf_launch_collision(turf/hit_turf, datum/launch_result/launch_result)
+	var/thrower = launch_result.thrower_ref?.resolve()
+	if(!HAS_TRAIT(src, TRAIT_REBOUNDING) && thrower != src)
+		if(thrower)
+			last_damage_data = create_cause_data("wall tossing", thrower)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
-		visible_message(SPAN_DANGER("\The [name] slams into [T]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		playsound(T,"slam", 50, 1)
+		visible_message(SPAN_DANGER("\The [name] slams into [hit_turf]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
+		playsound(hit_turf,"slam", 50, 1)
 	..()
 
 /mob/living/proc/near_wall(direction, distance=1)

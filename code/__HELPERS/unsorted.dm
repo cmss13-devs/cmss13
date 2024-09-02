@@ -1698,3 +1698,12 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 
 	return FALSE
+
+/proc/get_diagonal_step(atom/movable/A, direction)
+	if(!A)
+		return FALSE
+	switch(direction)
+		if(EAST, WEST)
+			return get_step(A, pick(NORTH,SOUTH))
+		if(NORTH,SOUTH)
+			return get_step(A, pick(EAST,WEST))

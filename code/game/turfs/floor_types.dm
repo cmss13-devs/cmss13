@@ -789,7 +789,7 @@
 	return
 
 /turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
-	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
+	if(!HAS_TRAIT(AM, TRAIT_LAUNCHED) && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 		if(!ishuman(AM))
 			qdel(AM)

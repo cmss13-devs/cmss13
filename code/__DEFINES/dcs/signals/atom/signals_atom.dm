@@ -55,3 +55,10 @@
 
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+
+/// Called when an atom is hit by a crusher
+#define COMSIG_ATOM_CRUSHER_CHARGED "atom_crusher_charged"
+	#define COMPONENT_DO_DEFAULT_POUNCE_HANDLING (1<<0)
+
+/// Called when an atom is crossed by a movable atom
+#define COMSIG_ATOM_CROSSED "atom_crossed"

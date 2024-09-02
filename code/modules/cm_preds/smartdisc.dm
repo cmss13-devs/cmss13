@@ -20,18 +20,23 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
-	..()
-	var/mob/user = usr
-	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(smartdisc_launched), override = TRUE)
+
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/smartdisc_launched(self, datum/launch_result/launch_result)
+	SIGNAL_HANDLER
+
+	var/mob/user = launch_result.thrower_ref?.resolve()
+	if (!active && isyautja(user) && (icon_state == initial(icon_state)))
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
-	if(L)
-		throw_atom(L.loc, 4, SPEED_FAST, usr)
-	throw_atom(usr, 12, SPEED_SLOW, usr)
+	if (L)
+		throw_atom(L.loc, 4, SPEED_FAST, user)
+	throw_atom(user, 12, SPEED_SLOW, user)
 	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
@@ -101,12 +106,11 @@
 	qdel(src)
 	return
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
-			throwing = FALSE
 		return
 	..()
 

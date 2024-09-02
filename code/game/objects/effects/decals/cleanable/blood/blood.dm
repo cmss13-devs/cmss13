@@ -43,7 +43,7 @@
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	// Check if the blood is dry and only humans
 	// can make footprints
 	if(!amount || !ishuman(AM))

@@ -308,8 +308,6 @@ cases. Override_icon_state should be a list.*/
 		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, user.loc)
 
-	throwing = 0
-
 	if(loc == user)
 		if(!user.drop_inv_item_on_ground(src))
 			return

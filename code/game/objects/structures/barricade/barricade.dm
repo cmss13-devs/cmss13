@@ -118,10 +118,10 @@
 
 	..()
 
-/obj/structure/barricade/hitby(atom/movable/atom_movable)
-	if(atom_movable.throwing && is_wired)
-		if(iscarbon(atom_movable))
-			var/mob/living/carbon/living_carbon = atom_movable
+/obj/structure/barricade/hitby(atom/movable/launched, datum/launch_result/launch_result)
+	if(is_wired)
+		if(iscarbon(launched))
+			var/mob/living/carbon/living_carbon = launched
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
 				living_carbon.visible_message(SPAN_DANGER("The barbed wire slices into [living_carbon]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
@@ -129,25 +129,6 @@
 				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(living_carbon, "bonk", 75, FALSE)
 	..()
-
-/obj/structure/barricade/Collided(atom/movable/atom_movable)
-	..()
-
-	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
-		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
-
-		if (!living_carbon.throwing)
-			return
-
-		if(crusher_resistant)
-			visible_message(SPAN_DANGER("[living_carbon] smashes into [src]!"))
-			take_damage(150)
-			playsound(src, barricade_hitsound, 25, TRUE)
-
-		else if(!living_carbon.stat)
-			visible_message(SPAN_DANGER("[living_carbon] smashes through [src]!"))
-			deconstruct(FALSE)
-			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
  * Checks whether an atom can leave its current turf through the barricade.

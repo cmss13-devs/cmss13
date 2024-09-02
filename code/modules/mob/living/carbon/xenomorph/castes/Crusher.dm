@@ -72,141 +72,144 @@
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
 	weed_food_states_flipped = list("Crusher_1","Crusher_2","Crusher_3")
 
-// Refactored to handle all of crusher's interactions with object during charge.
-/mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
-	if(!target)
-		return FALSE
+// TODO: Replace Collided calls with collision interceptors using signals
+/atom/proc/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	return
 
-	//Barricade collision
-	else if (istype(target, /obj/structure/barricade))
-		var/obj/structure/barricade/B = target
-		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("We ram into [B] and skid to a halt!"))
+/obj/structure/barricade/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_DEFAULT_BEHAVIOR
+	crusher.visible_message(SPAN_DANGER("[crusher] rams into [src] and skids to a halt!"), SPAN_XENOWARNING("We ram into [src] and skid to a halt!"))
 
-		B.Collided(src)
-		. =  FALSE
+	if(crusher_resistant)
+		visible_message(SPAN_DANGER("[crusher] smashes into [src]!"))
+		take_damage(150)
+		playsound(src, barricade_hitsound, 25, TRUE)
 
-	else if (istype(target, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/M = target
-		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("We ram into [M] and skid to a halt!"))
+	else if(!crusher.stat)
+		visible_message(SPAN_DANGER("[crusher] smashes through [src]!"))
+		deconstruct(FALSE)
+		playsound(src, barricade_hitsound, 25, TRUE)
 
-		M.Collided(src)
-		. = FALSE
+	Collided(crusher)
 
-	else if (istype(target, /obj/structure/machinery/m56d_hmg))
-		var/obj/structure/machinery/m56d_hmg/HMG = target
-		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("We ram [HMG]!"))
-		playsound(loc, "punch", 25, 1)
-		HMG.CrusherImpact()
-		. =  FALSE
+/obj/vehicle/multitile/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_DEFAULT_BEHAVIOR
+	crusher.visible_message(SPAN_DANGER("[crusher] rams into [src] and skids to a halt!"), SPAN_XENOWARNING("We ram into [src] and skid to a halt!"))
 
-	else if (istype(target, /obj/structure/window))
-		var/obj/structure/window/W = target
-		if (W.unacidable)
-			. = FALSE
-		else
-			W.deconstruct(FALSE)
-			. =  TRUE // Continue throw
+	Collided(crusher)
 
-	else if (istype(target, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/A = target
+	var/do_move = TRUE
+	if(health > 0)
+		take_damage_type(100, "blunt", crusher)
+		visible_message(SPAN_DANGER("\The [crusher] rams \the [src]!"))
+		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+			if(Loco.health > 0)
+				do_move = FALSE
+				break
+	if(do_move)
+		try_move(crusher.dir, force=TRUE)
+		visible_message(SPAN_DANGER("The sheer force of the impact makes \the [src] slide back!"))
+	log_attack("\The [src] was rammed [do_move ? "and pushed " : " "]by [key_name(crusher)].")
+	playsound(loc, 'sound/effects/metal_crash.ogg', 35)
+	interior_crash_effect()
 
-		if (A.unacidable)
-			. = FALSE
-		else
-			A.deconstruct()
+/obj/structure/machinery/m56d_hmg/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_DEFAULT_BEHAVIOR
+	crusher.visible_message(SPAN_DANGER("[crusher] rams [src]!"), SPAN_XENODANGER("We ram [src]!"))
+	playsound(crusher.loc, "punch", 25, 1)
+	CrusherImpact()
 
-	else if (istype(target, /obj/structure/grille))
-		var/obj/structure/grille/G = target
-		if(G.unacidable)
-			. =  FALSE
-		else
-			G.health -=  80 //Usually knocks it down.
-			G.healthcheck()
-			. = TRUE
+/obj/structure/window/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	if (unacidable)
+		return CRUSHER_CHARGED_DEFAULT_BEHAVIOR
 
-	else if (istype(target, /obj/structure/surface/table))
-		var/obj/structure/surface/table/T = target
-		T.Crossed(src)
-		. = TRUE
+	deconstruct(FALSE)
 
-	else if (istype(target, /obj/structure/machinery/defenses))
-		var/obj/structure/machinery/defenses/DF = target
-		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("We ram [DF]!"))
+/obj/structure/machinery/door/airlock/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_DEFAULT_BEHAVIOR
+	if (unacidable)
+		return
 
-		if (!DF.unacidable)
-			playsound(loc, "punch", 25, 1)
-			DF.stat = 1
-			DF.update_icon()
-			DF.update_health(40)
+	deconstruct()
 
-		. =  FALSE
+/obj/structure/grille/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	if(unacidable)
+		return CRUSHER_CHARGED_DEFAULT_BEHAVIOR
 
-	else if (istype(target, /obj/structure/machinery/vending))
-		var/obj/structure/machinery/vending/V = target
+	health -=  80 //Usually knocks it down.
+	healthcheck()
 
-		if (V.unslashable)
-			. = FALSE
-		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
-			playsound(loc, "punch", 25, 1)
-			V.tip_over()
+/obj/structure/surface/table/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	Crossed(src)
 
-			var/impact_range = 1
-			var/turf/TA = get_diagonal_step(V, dir)
-			TA = get_step_away(TA, src)
-			var/launch_speed = 2
-			launch_towards(TA, impact_range, launch_speed)
+/obj/structure/machinery/defenses/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_DEFAULT_BEHAVIOR
+	crusher.visible_message(SPAN_DANGER("[crusher] rams [src]!"), SPAN_XENODANGER("We ram [src]!"))
 
-			. =  TRUE
+	if (unacidable)
+		return
 
-	else if (istype(target, /obj/structure/machinery/cm_vending))
-		var/obj/structure/machinery/cm_vending/V = target
-		if (V.unslashable)
-			. = FALSE
-		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
-			playsound(loc, "punch", 25, 1)
-			V.tip_over()
+	playsound(crusher.loc, "punch", 25, 1)
+	stat = 1
+	update_icon()
+	update_health(40)
 
-			var/impact_range = 1
-			var/turf/TA = get_diagonal_step(V, dir)
-			TA = get_step_away(TA, src)
-			var/launch_speed = 2
-			throw_atom(TA, impact_range, launch_speed)
+/obj/structure/machinery/vending/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	if (unslashable)
+		return CRUSHER_CHARGED_DEFAULT_BEHAVIOR
 
-			. =  TRUE
+	crusher.visible_message(SPAN_DANGER("[crusher] smashes straight into [src]!"), SPAN_XENODANGER("We smash straight into [crusher]!"))
+	playsound(crusher.loc, "punch", 25, 1)
+	tip_over()
 
-	// Anything else?
-	else
-		if (isobj(target))
-			var/obj/O = target
-			if (O.unacidable)
-				. = FALSE
-			else if (O.anchored)
-				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
-				if(length(O.contents)) //Hopefully won't auto-delete things inside crushed stuff.
-					var/turf/T = get_turf(src)
-					for(var/atom/movable/S in T.contents) S.forceMove(T)
+	var/impact_range = 1
+	var/turf/TA = get_diagonal_step(src, dir)
+	TA = get_step_away(TA, crusher)
+	var/launch_speed = 2
+	crusher.launch_towards(TA, impact_range, launch_speed)
 
-				qdel(O)
-				. = TRUE
+/obj/structure/machinery/cm_vending/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	if (unslashable)
+		return CRUSHER_CHARGED_DEFAULT_BEHAVIOR
 
-			else
-				if(O.buckled_mob)
-					O.unbuckle()
-				visible_message(SPAN_WARNING("[src] knocks [O] aside!"), SPAN_XENOWARNING("We knock [O] aside.")) //Canisters, crates etc. go flying.
-				playsound(loc, "punch", 25, 1)
+	crusher.visible_message(SPAN_DANGER("[crusher] smashes straight into [src]!"), SPAN_XENODANGER("We smash straight into [src]!"))
+	playsound(crusher.loc, "punch", 25, 1)
+	tip_over()
 
-				var/impact_range = 2
-				var/turf/TA = get_diagonal_step(O, dir)
-				TA = get_step_away(TA, src)
-				var/launch_speed = 2
-				throw_atom(TA, impact_range, launch_speed)
+	var/impact_range = 1
+	var/turf/TA = get_diagonal_step(src, dir)
+	TA = get_step_away(TA, crusher)
+	var/launch_speed = 2
+	crusher.throw_atom(TA, impact_range, launch_speed)
 
-				. = TRUE
+/obj/handle_crusher_charge(mob/living/carbon/xenomorph/crusher/crusher)
+	. = CRUSHER_CHARGED_CONTINUE_THROW
+	if (unacidable)
+		return CRUSHER_CHARGED_DEFAULT_BEHAVIOR
 
-	if (!.)
-		update_icons()
+	if (anchored)
+		crusher.visible_message(SPAN_DANGER("[crusher] crushes [src]!"), SPAN_XENODANGER("We crush [src]!"))
+		if(length(contents))
+			for(var/atom/movable/S in contents) S.forceMove(crusher.loc)
+
+		qdel(src)
+		return
+
+	if(buckled_mob)
+		unbuckle()
+	crusher.visible_message(SPAN_WARNING("[crusher] knocks [src] aside!"), SPAN_XENOWARNING("We knock [src] aside.")) //Canisters, crates etc. go flying.
+	playsound(crusher.loc, "punch", 25, 1)
+
+	var/impact_range = 2
+	var/turf/TA = get_diagonal_step(src, dir)
+	TA = get_step_away(TA, crusher)
+	var/launch_speed = 2
+	crusher.throw_atom(TA, impact_range, launch_speed)
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base
@@ -279,6 +282,6 @@
 	. += "Shield: [shield_total]"
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
-	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
+	if(HAS_TRAIT(bound_xeno, TRAIT_LAUNCHED) || is_charging) //Let it build up a bit so we're not changing icons every single turf
 		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE

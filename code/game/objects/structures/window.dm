@@ -163,23 +163,23 @@
 
 	return health/EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-/obj/structure/window/hitby(atom/movable/AM)
+/obj/structure/window/hitby(atom/movable/launched, datum/launch_result/launch_result)
 	..()
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	visible_message(SPAN_DANGER("[src] was hit by [launched]."))
 	var/tforce = 0
-	if(ismob(AM))
+	if (ismob(launched))
 		tforce = 40
-	else if(isobj(AM))
-		var/obj/item/I = AM
-		tforce = I.throwforce
-	if(reinf) tforce *= 0.25
-	if(!not_damageable) //Impossible to destroy
+	else if (isobj(launched))
+		var/obj/item/launched_item = launched
+		tforce = launched_item.throwforce
+	if (reinf) tforce *= 0.25
+	if (!not_damageable) //Impossible to destroy
 		health = max(0, health - tforce)
-		if(health <= 7 && !reinf && !static_frame)
+		if (health <= 7 && !reinf && !static_frame)
 			anchored = FALSE
 			update_nearby_icons()
-			step(src, get_dir(AM, src))
-	healthcheck(user = AM.launch_metadata.thrower)
+			step(src, get_dir(launched, src))
+	healthcheck(user = launch_result.thrower_ref?.resolve())
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HARM && ishuman(user))

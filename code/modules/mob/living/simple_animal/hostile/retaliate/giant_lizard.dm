@@ -61,8 +61,6 @@
 	///Cooldown to stop generic emote spam.
 	COOLDOWN_DECLARE(emote_cooldown)
 
-	///Collision callbacks for the pounce proc.
-	var/list/pounce_callbacks = list()
 	///Are we currently mauling a mob after pouncing them? Used to stop normal attacks on pounced targets.
 	var/is_ravaging = FALSE
 	///Length of the cooldown for pouncing.
@@ -156,14 +154,6 @@
 
 	GLOB.giant_lizards_alive++
 	change_real_name(src, "[name] ([rand(1, 999)])")
-	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper)
-	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper)
-	pounce_callbacks[/obj] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_obj_wrapper)
-
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
-	..()
-	if(pass_flags_container)
-		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()
@@ -870,14 +860,18 @@
 	COOLDOWN_START(src, pounce_cooldown, pounce_cooldown_length)
 	var/pounce_distance = clamp((get_dist(src, target)), 1, 5)
 	manual_emote("pounces at [target]!")
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, pounce_distance, SPEED_FAST, src, null, LOW_LAUNCH, PASS_OVER_THROW_MOB, null, pounce_callbacks)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, pounce_distance, SPEED_FAST, src, null, LOW_LAUNCH, PASS_OVER_THROW_MOB, null, PROC_REF(pounce_callback))
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper(mob/living/pounced_mob)
-	pounced_mob(pounced_mob)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounce_callback(self, atom/collided_with, datum/launch_result/launch_result)
+	if (ismob(collided_with))
+		pounced_mob(collided_with, launch_result)
+	else if (isturf(collided_with))
+		pounced_turf(collided_with, launch_result)
+	else if (isobj(collided_with))
+		pounced_obj(collided_with, launch_result)
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob(mob/living/pounced_mob)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob(mob/living/pounced_mob, datum/launch_result/launch_result)
 	if(stat == DEAD || pounced_mob.stat == DEAD || pounced_mob.mob_size >= MOB_SIZE_BIG || pounced_mob == src)
-		throwing = FALSE
 		return
 
 	if(ishuman(pounced_mob) && (pounced_mob.dir in reverse_nearby_direction(dir)))
@@ -886,7 +880,6 @@
 			visible_message(SPAN_DANGER("[src] slams into [human]!"))
 			KnockDown(1)
 			Stun(1)
-			throwing = FALSE //Reset throwing manually.
 			playsound(human, "bonk", 75, FALSE) //bonk
 			return
 
@@ -894,43 +887,37 @@
 			if(human.check_shields(0, "the pounce", 1))
 				visible_message(SPAN_DANGER("[human] blocks the pounce of [src] with the combistick!"))
 				apply_effect(3, WEAKEN)
-				throwing = FALSE
 				playsound(human, "bonk", 75, FALSE)
 				return
 			else if(prob(75)) //Body slam.
 				visible_message(SPAN_DANGER("[human] body slams [src]!"))
 				KnockDown(3)
 				Stun(3)
-				throwing = FALSE
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				return
 		if(iscolonysynthetic(human) && prob(60))
 			visible_message(SPAN_DANGER("[human] withstands being pounced and slams down [src]!"))
 			KnockDown(1.5)
 			Stun(1.5)
-			throwing = FALSE
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 
 	playsound(loc, "giant_lizard_hiss", 25)
 	pounced_mob.KnockDown(0.5)
-	step_to(src, pounced_mob)
+	INVOKE_NEXT_TICK(src, PROC_REF(step_over), pounced_mob)
 	if(!client && !(pounced_mob.faction in faction_group))
 		ravagingattack(pounced_mob)
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf(turf/turf_target)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/step_over(mob/living/pounced_mob, datum/launch_result/launch_result)
+	step_to(src, pounced_mob)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf(turf/turf_target, datum/launch_result/launch_result)
 	if(!turf_target.density)
 		for(var/mob/living/mob in turf_target)
-			pounced_mob(mob)
+			pounced_mob(mob, launch_result)
 			break
 	else
-		turf_launch_collision(turf_target)
-
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper(turf/turf_target)
-	pounced_turf(turf_target)
-
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_obj_wrapper(obj/O)
-	pounced_obj(O)
+		turf_launch_collision(turf_target, launch_result)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_obj(obj/O)
 	// Unconscious or dead, or not throwing but used pounce

@@ -142,6 +142,12 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom/movable traits --
+/// Apply this trait for when movable is launched
+#define TRAIT_LAUNCHED "launched"
+/// Apply this trait for when movable is rebounding
+#define TRAIT_REBOUNDING "rebounding"
+
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
@@ -309,6 +315,7 @@
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
+	TRAIT_LAUNCHED,
 	TRAIT_YAUTJA_TECH,
 	TRAIT_SUPER_STRONG,
 	TRAIT_FOREIGN_BIO,
@@ -333,6 +340,9 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	quirks have it's own panel so we don't need them here.
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
+	/atom/movable = list(
+		"TRAIT_LAUNCHED" = TRAIT_LAUNCHED,
+	),
 	/mob = list(
 		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
@@ -509,3 +519,7 @@ GLOBAL_LIST(trait_name_map)
 #define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"
+/// traits from being launched
+#define LAUNCHED_TRAIT "launched"
+/// traits from rebounding
+#define REBOUNDING_TRAIT "rebounding"

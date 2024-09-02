@@ -498,7 +498,7 @@
 	. = ..()
 	reagents.add_reagent("egg", 1)
 
-/obj/item/reagent_container/food/snacks/egg/launch_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/egg/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	new/obj/effect/decal/cleanable/egg_smudge(loc)
 	if(reagents)
@@ -929,7 +929,7 @@
 	reagents.add_reagent("banana",5)
 	bitesize = 3
 
-/obj/item/reagent_container/food/snacks/pie/launch_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/pie/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
 	src.visible_message(SPAN_DANGER("[src.name] splats."),SPAN_DANGER("You hear a splat."))

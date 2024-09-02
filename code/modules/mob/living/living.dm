@@ -324,10 +324,6 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
-		launch_impact(AM)
-		return
-
 	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_COLLIDE, AM) & COMPONENT_LIVING_COLLIDE_HANDLED)
 		return
 
@@ -412,20 +408,6 @@
 		return
 
 	..()
-
-/mob/living/launch_towards(datum/launch_metadata/LM)
-	if(src)
-		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	if(!istype(LM) || !LM.target || !src)
-		return
-	if(buckled)
-		LM.invoke_end_throw_callbacks(src)
-		return
-	if(pulling)
-		stop_pulling() //being thrown breaks pulls.
-	if(pulledby)
-		pulledby.stop_pulling()
-	. = ..()
 
 //to make an attack sprite appear on top of the target atom.
 /mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state, duration = 4)

@@ -167,23 +167,22 @@
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/projectile))
-			return BLOCKED_MOVEMENT
-		if(prob(50))
-			I.forceMove(src.loc)
-			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
-				if(X.id == id)
-					X.score(side)
-					// no break, to update multiple scoreboards
-			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
-		else
-			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
-		return NO_BLOCKED_MOVEMENT
+	if(!istype(mover,/obj/item) || !HAS_TRAIT(mover, TRAIT_LAUNCHED))
+		return ..()
 
-	return ..()
-
+	var/obj/item/I = mover
+	if(istype(I, /obj/projectile))
+		return BLOCKED_MOVEMENT
+	if(prob(50))
+		I.forceMove(src.loc)
+		for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
+			if(X.id == id)
+				X.score(side)
+				// no break, to update multiple scoreboards
+		visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
+	else
+		visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
+	return NO_BLOCKED_MOVEMENT
 
 /obj/structure/machinery/readybutton
 	name = "Ready Declaration Device"

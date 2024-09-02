@@ -1109,7 +1109,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(isxeno(mover))
 		var/mob/living/carbon/xenomorph/X = mover
-		if(X.hivenumber != hivenumber || X.throwing)
+		if(X.hivenumber != hivenumber || HAS_TRAIT(X, TRAIT_LAUNCHED))
 			return
 
 		if(X.pulling == src)
@@ -1225,18 +1225,18 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	alpha = 210
 
 
-/turf/closed/wall/resin/hitby(atom/movable/AM)
+/turf/closed/wall/resin/hitby(atom/movable/launched)
 	..()
-	if(isxeno(AM))
+	if(isxeno(launched))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [launched]."), \
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
-	if(ismob(AM))
+	if(ismob(launched))
 		tforce = 10
-	else if (isobj(AM))
-		var/obj/O = AM
-		tforce = O.throwforce
+	else if (isobj(launched))
+		var/obj/launched_obj = launched
+		tforce = launched_obj.throwforce
 	playsound(src, "alien_resin_break", 25)
 	take_damage(tforce)
 

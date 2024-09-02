@@ -131,11 +131,10 @@
 	thrown = 1
 	return TRUE
 
-/obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
+/obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	. = ..()
-	var/datum/launch_metadata/LM = src.launch_metadata
-	var/user = LM.thrower
-	if(!detonating && prob(impact_sensitivity))
+	var/user = launch_result.thrower_ref?.resolve()
+	if(hit_atom && !detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))
 		vehicle_impact(hit_atom, user)

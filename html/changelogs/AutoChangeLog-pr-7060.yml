@@ -1,4 +1,0 @@
-author: "hislittlecuzingames"
-delete-after: True
-changes:
-  - qol: "Deletes empty pill packets when dropped."

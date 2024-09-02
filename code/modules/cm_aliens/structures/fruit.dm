@@ -385,7 +385,25 @@
 
 // Xenos eating fruit
 /obj/item/reagent_container/food/snacks/resin_fruit/attack(mob/living/carbon/xenomorph/affected_xeno, mob/user)
-	if(istype(user, /mob/living/carbon/xenomorph)) // Prevents xenos from feeding capped/dead marines fruit
+
+	if(istype(affected_xeno, /mob/living/carbon/human))
+		var/mob/living/carbon/human/humanus = affected_xeno
+		if(HAS_TRAIT(humanus, TRAIT_NESTED) && humanus.stat == !DEAD) // if they are not nested or dead they cant be feed.
+			user.visible_message(SPAN_BOLDWARNING("[user] starts forcefully feeding [humanus] with resin."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, affected_xeno, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				return
+			playsound(src, 'sound/effects/alien_resinfeed.ogg', 25, 1)
+			to_chat(user, SPAN_HELPFUL("We forcefully feed [humanus] with fruit."))
+			to_chat(humanus, SPAN_BOLDWARNING("Your are forcefully fed with slimy resin. GROSS!"))
+			humanus.heal_limb_damage(30, 30)
+			humanus.reagents.add_reagent("fruit_resin", 10)
+			qdel(src)
+			return
+		if(humanus.stat == DEAD)
+			to_chat(user, SPAN_WARNING("[humanus] already is dead."))
+			return
+
+	if(istype(user, /mob/living/carbon/xenomorph))
 		var/mob/living/carbon/xenomorph/feeding_xeno = user
 		if(!feeding_xeno.can_not_harm(affected_xeno))
 			to_chat(feeding_xeno, SPAN_WARNING("[affected_xeno] refuses to eat [src]."))

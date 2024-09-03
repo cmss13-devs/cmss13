@@ -25,7 +25,6 @@
 	icon_state = "platform_stair_alt"
 	dir = 1
 
-
 /obj/structure/platform/Initialize()
 	. = ..()
 	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
@@ -60,11 +59,25 @@
 
 	return ..()
 
-/obj/structure/platform/ex_act()
+/obj/structure/platform/ex_act(severity)
+	if(indestructible)
+		return
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_VLOW to EXPLOSION_THRESHOLD_LOW)
+			if (prob(15))
+				broken()
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(35))
+				broken()
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			broken()
+			return
 	return
 
 /obj/structure/platform/update_icon()
-	if(stat & BROKEN) //if we require maintenance, then it is completely "_broken"
+	if(stat & BROKEN)
 		overlays += image(icon, "[initial(icon_state)]_broken")
 
 /obj/structure/platform/proc/broken()
@@ -96,18 +109,24 @@
 
 	if(user.action_busy)
 		return XENO_NO_DELAY_ACTION
-	if(user.a_intent == INTENT_HELP)
+	if(user.a_intent != INTENT_DISARM)
 		user.set_interaction(src)
 		tgui_interact(user)
 		return XENO_ATTACK_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
-	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	SPAN_WARNING("You start to pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
-	var/shove_time = 80
+	var/shove_time = 90
+	if(istype(user,/mob/living/carbon/xenomorph/defender))
+		shove_time = 70
+	if(istype(user,/mob/living/carbon/xenomorph/burrower))
+		shove_time = 50
+	if(istype(user,/mob/living/carbon/xenomorph/boiler))
+		shove_time = 40
 	if(user.mob_size >= MOB_SIZE_BIG)
 		shove_time = 30
-	if(istype(user,/mob/living/carbon/xenomorph/crusher))
-		shove_time = 30
+	if(istype(user,/mob/living/carbon/xenomorph/queen))
+		shove_time = 15 //Queen is just too fat for it to keep her weight.
 
 	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
 
@@ -128,7 +147,7 @@
 	density = FALSE
 	throwpass = TRUE
 	layer = OBJ_LAYER
-	breakable = TRUE
+	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 

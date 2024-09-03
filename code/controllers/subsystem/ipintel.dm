@@ -202,8 +202,8 @@ SUBSYSTEM_DEF(ipintel)
 	var/admin_ckey
 
 /datum/entity_view_meta/vpn_whitelist
-	root_record_type = /datum/entity/intel
-	destination_entity = /datum/view/intel
+	root_record_type = /datum/entity/vpn_whitelist
+	destination_entity = /datum/view/vpn_whitelist
 	fields = list(
 		"id",
 		"ckey",

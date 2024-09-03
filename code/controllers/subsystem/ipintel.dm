@@ -92,6 +92,8 @@ SUBSYSTEM_DEF(ipintel)
 	var/datum/http_response/response = request.into_response()
 	var/list/data = json_decode(response.body)
 
+	debug_log("IPIntel: [response.body]")
+
 	var/datum/ip_intel/intel = new
 	intel.query_status = data["status"]
 	if(intel.query_status != "success")

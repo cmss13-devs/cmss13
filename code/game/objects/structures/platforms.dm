@@ -117,6 +117,8 @@
 	SPAN_WARNING("You start to pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
 	var/shove_time = 90
+	if(istype(user,/mob/living/carbon/xenomorph/lesser_drone))
+		shove_time = 300 //They are very light and weak, thats why they will take 30s to break one edge.
 	if(istype(user,/mob/living/carbon/xenomorph/defender))
 		shove_time = 70
 	if(istype(user,/mob/living/carbon/xenomorph/burrower))

@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(ipintel)
 	field_types = list(
 		"ip" = DB_FIELDTYPE_STRING_SMALL,
 		"intel" = DB_FIELDTYPE_DECIMAL,
-		"date" = DB_FIELDTYPE_DATE
+		"date" = DB_FIELDTYPE_DATE,
 	)
 
 /datum/view/intel
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(ipintel)
 	fields = list(
 		"ip",
 		"intel",
-		"date"
+		"date",
 	)
 
 /datum/controller/subsystem/ipintel/proc/add_intel_to_database(datum/ip_intel/intel)
@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(ipintel)
 	fields = list(
 		"id",
 		"ckey",
-		"admin_ckey"
+		"admin_ckey",
 	)
 
 /datum/controller/subsystem/ipintel/proc/is_whitelisted(ckey)

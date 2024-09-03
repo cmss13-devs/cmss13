@@ -12,6 +12,20 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
+	var/list/datum/build_queue_entry/build_queue = list()
+
+/datum/build_queue_entry
+	var/item
+	var/cost
+
+/datum/build_queue_entry/New(item, cost)
+	src.item = item
+	src.cost = cost
+
+/obj/structure/machinery/part_fabricator/examine(mob/user)
+	. = ..()
+	to_chat(user, build_queue ? "it has [build_queue.len] items in the queue" : "the build queue is empty")
+
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
@@ -27,9 +41,22 @@
 	return
 
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
+	var/index = 1
+	var/list/build_queue_formatted = list()
+	for(var/datum/build_queue_entry/entry in build_queue)
+		var/obj/structure/build_item = entry.item
+		build_queue_formatted += list(list(
+			"name" = build_item.name,
+			"cost" = entry.cost,
+			"index" = index
+		))
+
+		index += 1
+
 	return list(
 		"points" = get_point_store(),
-		"omnisentrygun_price" = omnisentry_price
+		"omnisentrygun_price" = omnisentry_price,
+		"BuildQueue" = build_queue_formatted
 	)
 
 /obj/structure/machinery/part_fabricator/power_change()
@@ -40,46 +67,52 @@
 /obj/structure/machinery/part_fabricator/process()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
-	if(stat & NOPOWER)
-		icon_state = "drone_fab_nopower"
-		return
-	if(busy)
-		icon_state = "drone_fab_active"
-		return
-	else
-		icon_state = "drone_fab_idle"
+
+	process_build_queue()
+
 	if(generate_points)
 		add_to_point_store()
 
-/obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
-	set waitfor = 0
+	update_icon()
+
+/obj/structure/machinery/part_fabricator/proc/process_build_queue()
 	if(stat & NOPOWER) return
-	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
+
+	if(busy) return
+
+	if(build_queue.len)
+		busy = TRUE
+		var/datum/build_queue_entry/entry = build_queue[1]
+
+		if(ispath(entry.item, /obj/structure/ship_ammo/sentry))
+			omnisentry_price += omnisentry_price_scale
+
+		visible_message(SPAN_NOTICE("[src] starts printing something."))
+		spend_point_store(entry.cost)
+		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 10 SECONDS)
+
+/obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
+	set waitfor = FALSE
+	if(stat & NOPOWER) return
+	if(ispath(part_type, /obj/structure/ship_ammo/sentry))
 		cost = omnisentry_price
 	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
-	visible_message(SPAN_NOTICE("[src] starts printing something."))
-	spend_point_store(cost)
-	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
-		omnisentry_price += omnisentry_price_scale
-	icon_state = "drone_fab_active"
-	busy = TRUE
-	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
 
-/obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
+	build_queue += new /datum/build_queue_entry(part_type, cost)
+
+/obj/structure/machinery/part_fabricator/proc/produce_part(datum/build_queue_entry/entry)
+	build_queue.Remove(entry)
+
 	busy = FALSE
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	new part_type(get_step(src, SOUTHEAST))
+	new entry.item(get_step(src, SOUTHEAST))
 	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
-		return
-
-	if(busy)
-		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
 
 	var/mob/user = ui.user
@@ -107,6 +140,20 @@
 			build_part(produce, cost, user)
 			return
 
+	if(action == "cancel")
+		var/index = params["index"]
+
+		if(build_queue.len)
+			if(index == 1)
+				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
+				return
+
+			var/datum/build_queue_entry/entry = build_queue[index]
+
+			build_queue.Remove(entry)
+			add_to_point_store(entry.cost)
+			return
+
 	else
 		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")
 		return
@@ -122,6 +169,17 @@
 	if(!ui)
 		ui = new(user, src, "PartFabricator", "Part Fabricator")
 		ui.open()
+
+/obj/structure/machinery/part_fabricator/update_icon()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "drone_fab_nopower"
+		return
+	if(busy)
+		icon_state = "drone_fab_active"
+		return
+
+	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/dropship
 	name = "dropship part fabricator"

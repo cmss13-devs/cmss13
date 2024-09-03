@@ -510,7 +510,7 @@
 	is_interactable = TRUE
 	point_cost = 50
 	var/spotlights_cooldown
-	var/brightness = 11
+	var/brightness = 14
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)

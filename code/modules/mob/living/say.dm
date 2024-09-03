@@ -94,6 +94,19 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
+/proc/treat_tts_message(tts_message)
+	var/static/regex/length_regex = regex(@"(.+)\1\1\1", "gi")
+	while(length_regex.Find(tts_message))
+		var/replacement = tts_message[length_regex.index]+tts_message[length_regex.index]+tts_message[length_regex.index]
+		tts_message = replacetext(tts_message, length_regex.match, replacement, length_regex.index)
+
+	// removes repeated consonants at the start of a word: ex: sss
+	var/static/regex/word_start_regex = regex(@"\b([^aeiou\L])\1", "gi")
+	while(word_start_regex.Find(tts_message))
+		var/replacement = tts_message[word_start_regex.index]
+		tts_message = replacetext(tts_message, word_start_regex.match, replacement, word_start_regex.index)
+	return tts_message
+
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
@@ -171,7 +184,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
 		if(tts_voice && length(listening))
-			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(raw_message), speaking, tts_voice, tts_voice_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
+			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(raw_message)), speaking, tts_voice, tts_voice_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
 
 		overlays += speech_bubble
 

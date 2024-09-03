@@ -14,6 +14,9 @@ SUBSYSTEM_DEF(tts)
 	/// TTS audio files that are being processed on when to be played.
 	var/list/current_processing_tts_messages = list()
 
+	/// Current duplicate messages in the same tick. Hash (key) -> TTS packet (value)
+	var/list/duplicates_in_tick = list()
+
 	/// HTTP requests currently in progress but not being processed yet
 	var/list/in_process_http_messages = list()
 
@@ -105,7 +108,22 @@ SUBSYSTEM_DEF(tts)
 		return SS_INIT_FAILURE
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0, directional = TRUE)
+/datum/controller/subsystem/tts/proc/should_play_hivemind_tts(client/listener, target)
+	var/hivemind_preference = listener?.prefs.tts_hivemind_mode
+	if(hivemind_preference == TTS_HIVEMIND_ALL)
+		return TRUE
+	else if(hivemind_preference == TTS_HIVEMIND_LEADERS)
+		var/mob/living/carbon/xenomorph/xeno = target
+		if(!istype(xeno))
+			return FALSE
+		if(isqueen(xeno) || IS_XENO_LEADER(xeno))
+			return TRUE
+	else if(hivemind_preference == TTS_HIVEMIND_QUEEN)
+		if(isqueen(target))
+			return TRUE
+	return FALSE
+
+/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0, directional = TRUE, flags)
 	var/turf/turf_source = get_turf(target)
 	if(!turf_source)
 		return
@@ -123,7 +141,9 @@ SUBSYSTEM_DEF(tts)
 			stack_trace("TTS tried to play a sound to a deleted mob.")
 			continue
 		var/tts_pref = listening_mob.client?.prefs.tts_mode
-		if(tts_pref == TTS_SOUND_OFF)
+		if(tts_pref == TTS_SOUND_OFF || !listening_mob.client)
+			continue
+		if((flags & TTS_FLAG_HIVEMIND) && !should_play_hivemind_tts(listening_mob.client, target))
 			continue
 		var/sound_volume = ((listening_mob == target)? 60 : 85) + volume_offset
 		var/audio_to_use = (tts_pref == TTS_SOUND_BLIPS) ? audio_blips : audio
@@ -154,6 +174,8 @@ SUBSYSTEM_DEF(tts)
 	if(!tts_enabled)
 		flags |= SS_NO_FIRE
 		return
+
+	duplicates_in_tick.Cut()
 
 	if(!resumed)
 		while(length(in_process_http_messages) < max_concurrent_requests && length(queued_http_messages.L) > 0)
@@ -246,7 +268,7 @@ SUBSYSTEM_DEF(tts)
 				audio_file_blips = new(current_target.audio_file_blips)
 				if(current_target.start_noise)
 					playsound(tts_target, current_target.start_noise, 5, TRUE)
-				play_tts(tts_target, current_target.listeners, audio_file, audio_file_blips, current_target.language, current_target.message_range, current_target.volume_offset, current_target.directional)
+				play_tts(tts_target, current_target.listeners, audio_file, audio_file_blips, current_target.language, current_target.message_range, current_target.volume_offset, current_target.directional, current_target.flags)
 				if(length(data) != 1)
 					var/datum/tts_request/next_target = data[2]
 					next_target.when_to_play = world.time + current_target.audio_length
@@ -261,7 +283,7 @@ SUBSYSTEM_DEF(tts)
 
 #undef TTS_ARBRITRARY_DELAY
 
-/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", start_noise = null, directional = TRUE)
+/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", start_noise = null, directional = TRUE, flags = NONE)
 	if(!tts_enabled)
 		return
 
@@ -281,6 +303,12 @@ SUBSYSTEM_DEF(tts)
 	if(!(speaker in available_speakers))
 		return
 
+	if(flags & TTS_FLAG_MERGE_DUPLICATES)
+		var/datum/tts_request/packet = duplicates_in_tick[identifier]
+		if(packet)
+			packet.listeners |= listeners
+			return
+
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
 	headers["Authorization"] = CONFIG_GET(string/tts_http_token)
@@ -290,7 +318,7 @@ SUBSYSTEM_DEF(tts)
 	var/file_name_blips = "tmp/tts/[identifier]_blips.ogg"
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts?voice=[speaker]&identifier=[identifier]&filter=[url_encode(filter)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]", json_encode(list("text" = shell_scrubbed_input)), headers, file_name)
 	request_blips.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts-blips?voice=[speaker]&identifier=[identifier]&filter=[url_encode(filter)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]", json_encode(list("text" = shell_scrubbed_input)), headers, file_name_blips)
-	var/datum/tts_request/current_request = new /datum/tts_request(identifier, request, request_blips, shell_scrubbed_input, target, local, language, message_range, volume_offset, listeners, pitch, start_noise, directional)
+	var/datum/tts_request/current_request = new /datum/tts_request(identifier, request, request_blips, shell_scrubbed_input, target, local, language, message_range, volume_offset, listeners, pitch, start_noise, directional, flags)
 	var/list/player_queued_tts_messages = queued_tts_messages[target]
 	if(!player_queued_tts_messages)
 		player_queued_tts_messages = list()
@@ -301,6 +329,9 @@ SUBSYSTEM_DEF(tts)
 		in_process_http_messages += current_request
 	else
 		queued_http_messages.insert(current_request)
+
+	if(flags & TTS_FLAG_MERGE_DUPLICATES)
+		duplicates_in_tick[identifier] = current_request
 
 /// A struct containing information on an individual player or mob who has made a TTS request
 /datum/tts_request
@@ -346,9 +377,11 @@ SUBSYSTEM_DEF(tts)
 	var/start_noise
 	/// Whether this TTS is directional or not. If set to FALSE, message_range does not matter.
 	var/directional = TRUE
+	/// The flags for this TTS packet. Used to determine specific preferences on whether this TTS request should be heard in some cases or not
+	var/flags = NONE
 
 
-/datum/tts_request/New(identifier, datum/http_request/request, datum/http_request/request_blips, message, target, local, datum/language/language, message_range, volume_offset, list/listeners, pitch, start_noise, directional)
+/datum/tts_request/New(identifier, datum/http_request/request, datum/http_request/request_blips, message, target, local, datum/language/language, message_range, volume_offset, list/listeners, pitch, start_noise, directional, flags)
 	. = ..()
 	src.identifier = identifier
 	src.request = request
@@ -363,6 +396,7 @@ SUBSYSTEM_DEF(tts)
 	src.pitch = pitch
 	src.start_noise = start_noise
 	src.directional = directional
+	src.flags = flags
 	start_time = world.time
 
 /datum/tts_request/proc/start_requests()

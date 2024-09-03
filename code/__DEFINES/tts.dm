@@ -12,3 +12,16 @@
 
 
 #define TTS_FILTER_XENO @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.8,aresample=%SAMPLE_RATE%,atempo=1/0.8,aformat=channel_layouts=mono [p0]; [out2] asetrate=%SAMPLE_RATE%*1.2,aresample=%SAMPLE_RATE%,atempo=1/1.2,aformat=channel_layouts=mono[p2]; [p0][0][p2] amix=inputs=3"}
+
+#define TTS_HIVEMIND_ALL 3
+#define TTS_HIVEMIND_LEADERS 2
+#define TTS_HIVEMIND_QUEEN 1
+#define TTS_HIVEMIND_OFF 0
+
+#define TTS_RADIO_ALL 2
+#define TTS_RADIO_BIG_VOICE_ONLY 1
+#define TTS_RADIO_OFF 0
+
+#define TTS_FLAG_HIVEMIND (1<<0)
+#define TTS_FLAG_RADIO (1<<1)
+#define TTS_FLAG_MERGE_DUPLICATES (1<<2)

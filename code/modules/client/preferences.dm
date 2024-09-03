@@ -212,6 +212,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/synth_voice = "Random"
 	var/synth_pitch = 0
 	var/tts_mode = TTS_SOUND_ENABLED
+	var/tts_hivemind_mode = TTS_HIVEMIND_LEADERS
+	var/tts_radio_mode = TTS_RADIO_BIG_VOICE_ONLY
 
 	var/stylesheet = "Modern"
 
@@ -275,6 +277,17 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()
+
+/datum/preferences/proc/tts_hivemind_to_text(value)
+	switch(value)
+		if(TTS_HIVEMIND_OFF)
+			return "Disabled"
+		if(TTS_HIVEMIND_QUEEN)
+			return "Queen"
+		if(TTS_HIVEMIND_LEADERS)
+			return "Queen and leaders"
+		if(TTS_HIVEMIND_ALL)
+			return "Everyone"
 
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
@@ -467,6 +480,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
+			dat += "<b>Hivemind TTS:</b> <a href='?_src_=prefs;preference=hivemind_tts;task=input'><b>[tts_hivemind_to_text(tts_hivemind_mode)]</b></a><br>"
 
 			var/tempnumber = rand(1, 999)
 			var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
@@ -1545,7 +1559,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!SStts.tts_enabled)
 						return
 					var/new_voice_pitch = input(user, "Choose your voice's pitch:\n([-12] to [12])", "Character Preferences") as num|null
-					if(new_voice_pitch)
+					if(!isnull(new_voice_pitch))
 						switch(href_list["preference"])
 							if("voice_pitch")
 								voice_pitch = new_voice_pitch
@@ -1579,7 +1593,18 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 
 					INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), user.client, "Hello, this is my voice.", speaker = target_voice, pitch = target_pitch, filter = target_filter, local = TRUE)
-
+				if("hivemind_tts")
+					var/list/options = list(
+						tts_hivemind_to_text(TTS_HIVEMIND_ALL) = TTS_HIVEMIND_ALL,
+						tts_hivemind_to_text(TTS_HIVEMIND_LEADERS) = TTS_HIVEMIND_LEADERS,
+						tts_hivemind_to_text(TTS_HIVEMIND_QUEEN) = TTS_HIVEMIND_QUEEN,
+						tts_hivemind_to_text(TTS_HIVEMIND_OFF) = TTS_HIVEMIND_OFF
+					)
+					var/result_text = tgui_input_list(user, "Select hivemind TTS mode.", "Hivemind TTS Mode Selection", options, theme = "hive_status")
+					if(!result_text)
+						return
+					var/result_value = options[result_text]
+					tts_hivemind_mode = result_value
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)

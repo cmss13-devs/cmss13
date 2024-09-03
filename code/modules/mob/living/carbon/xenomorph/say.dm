@@ -96,8 +96,8 @@
 		return
 
 	var/list/listeners = hivemind_broadcast(message, hive)
-	if(listeners && (IS_XENO_LEADER(src) || isqueen(src)))
-		INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(message)), speaking, tts_voice, tts_voice_filter, listeners, pitch = tts_voice_pitch, directional = FALSE)
+	if(listeners)
+		INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(message)), speaking, tts_voice, tts_voice_filter, listeners, pitch = tts_voice_pitch, directional = FALSE, flags = TTS_FLAG_HIVEMIND)
 
 
 /mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)

@@ -114,14 +114,17 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
-	if(!tts_message)
+	if(isnull(tts_message))
 		tts_message = message
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
+		var/mob/tts_target = src
 		if(!dst && src.clone) //Will speak in src's location and the clone's
+			tts_target = src.clone
 			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
 		else
+			tts_target = src
 			T = get_turf(src)
 			dst++ //Only speak once
 
@@ -191,8 +194,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			else
 				compiled_filter = tts_temp_filter
 
-		if(tts_voice && length(listening))
-			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(tts_message)), speaking, tts_voice, compiled_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
+		if(tts_voice && tts_message != "" && length(listening))
+			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), tts_target, treat_tts_message(html_decode(tts_message)), speaking, tts_voice, compiled_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
 
 		overlays += speech_bubble
 

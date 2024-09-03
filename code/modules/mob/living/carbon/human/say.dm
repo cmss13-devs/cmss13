@@ -125,10 +125,9 @@
 		return
 
 	message = capitalize(trim(message))
-	message = process_chat_markup(message, list("~", "_"))
 
 	var/list/handle_r = handle_speech_problems(message)
-	message = handle_r[SPEECH_PROBLEMS_MESSAGE]
+	message = process_chat_markup(handle_r[SPEECH_PROBLEMS_MESSAGE], list("~", "_"))
 	verb = handle_r[SPEECH_PROBLEMS_VERB]
 	var/tts_message = handle_r[SPEECH_PROBLEMS_TTS_MESSAGE]
 	var/tts_filter = handle_r[SPEECH_PROBLEMS_TTS_FILTER]
@@ -140,6 +139,7 @@
 		if(!(copytext(message, -1) in ENDING_PUNCT))
 			message += "."
 
+	var/spoken_count = 0
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
@@ -180,7 +180,13 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode, tts_message = tts_message, tts_temp_filter = tts_filter) //ohgod we should really be passing a datum here.
+		var/tts_pass_msg = tts_message
+		if(spoken_count >= 1)
+			tts_pass_msg = ""
+
+		// This code is so painfully bad, why is it calling it 4 times when you do ,abcd??
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode, tts_message = tts_pass_msg, tts_temp_filter = tts_filter) //ohgod we should really be passing a datum here.
+		spoken_count++
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 

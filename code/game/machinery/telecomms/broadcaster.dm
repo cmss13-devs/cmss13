@@ -83,7 +83,7 @@
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
 						data, compression, list/level, freq, verbage = "says",
-						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE)
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE, tts_voice = null, tts_voice_filter = null)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq

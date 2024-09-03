@@ -196,6 +196,7 @@
 	S["toggles_ghost"] >> toggles_ghost
 	S["toggles_langchat"] >> toggles_langchat
 	S["tts_mode"] >> tts_mode
+	S["tts_hivemind_mode"] >> tts_hivemind_mode
 	S["toggles_sound"] >> toggles_sound
 	S["toggle_prefs"] >> toggle_prefs
 	S["dual_wield_pref"] >> dual_wield_pref
@@ -349,6 +350,7 @@
 	synth_pitch = sanitize_integer(synth_pitch, -12, 12, 0)
 	xeno_pitch = sanitize_integer(xeno_pitch, -12, 12, 0)
 	tts_mode = sanitize_inlist(tts_mode, list(TTS_SOUND_ENABLED, TTS_SOUND_BLIPS, TTS_SOUND_OFF), TTS_SOUND_ENABLED)
+	tts_hivemind_mode = sanitize_integer(tts_hivemind_mode, TTS_HIVEMIND_OFF, TTS_HIVEMIND_ALL, TTS_HIVEMIND_LEADERS)
 	vars["fps"] = fps
 
 	check_keybindings()
@@ -409,6 +411,7 @@
 	S["toggles_ghost"] << toggles_ghost
 	S["toggles_langchat"] << toggles_langchat
 	S["tts_mode"] << tts_mode
+	S["tts_hivemind_mode"] << tts_hivemind_mode
 	S["toggles_sound"] << toggles_sound
 	S["toggle_prefs"] << toggle_prefs
 	S["dual_wield_pref"] << dual_wield_pref

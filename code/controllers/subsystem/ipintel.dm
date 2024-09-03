@@ -150,7 +150,7 @@ SUBSYSTEM_DEF(ipintel)
 		return
 
 	var/ipintel_cache_length = CONFIG_GET(number/ipintel_cache_length)
-	var/sql_args = list("address" = address)
+
 	var/filter
 	if(ipintel_cache_length > 1)
 		var/length_time = world.realtime - (ipintel_cache_length * 24 HOURS)

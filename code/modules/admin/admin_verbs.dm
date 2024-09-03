@@ -99,6 +99,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/stickyban_panel,
+	/client/proc/ipintel_allow,
+	/client/proc/ipintel_revoke,
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 

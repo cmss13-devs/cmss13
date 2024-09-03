@@ -593,6 +593,10 @@
 		structure.update_health(rand(melee_damage_lower, melee_damage_upper) * damage_multiplier)
 		return
 
+	if(client && !is_eating && istype(inherited_target, /obj/item/reagent_container/food/snacks))
+		handle_food_client(inherited_target)
+		return
+
 	//if it's not an object or a structure, just swipe at it
 	animation_attack_on(inherited_target)
 	visible_message(SPAN_DANGER("[src] swipes at [inherited_target]!"), SPAN_DANGER("You swipe at [inherited_target]!"), null, 5, CHAT_TYPE_COMBAT_ACTION)
@@ -657,11 +661,30 @@
 		faction_group += nearest_mob.faction_group
 		break
 
+	health += maxHealth * 0.15
+	update_wounds()
 	qdel(food)
 	food_target = null
 	is_eating = FALSE
 	stance = HOSTILE_STANCE_IDLE
 	COOLDOWN_START(src, food_cooldown, 30 SECONDS)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/handle_food_client(obj/item/reagent_container/food/snacks/food)
+	manual_emote("starts gnawing [food].")
+	playsound(loc,'sound/items/eatfood.ogg', 25, 1)
+	is_eating = TRUE
+	if(!do_after(src, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
+		is_eating = FALSE
+		return
+
+	is_eating = FALSE
+	if(!Adjacent(food))
+		return
+
+	playsound(loc,'sound/items/eatfood.ogg', 25, 1)
+	health += maxHealth * 0.10
+	update_wounds()
+	qdel(food)
 
 ///Proc for checking if someone picked our food target.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/check_food_loc(obj/food)

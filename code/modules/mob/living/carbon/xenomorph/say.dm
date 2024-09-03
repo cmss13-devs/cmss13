@@ -75,11 +75,9 @@
 			message += "."
 
 	if(forced)
-		if(speaking_noise)
-			playsound(loc, speaking_noise, 25, 1)
 		..(message, speaking, verb, null, null, message_range, null)
 	else
-		hivemind_talk(message)
+		hivemind_talk(message, speaking)
 
 /mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 
@@ -89,7 +87,7 @@
 
 
 //General proc for hivemind. Lame, but effective.
-/mob/living/carbon/xenomorph/proc/hivemind_talk(message)
+/mob/living/carbon/xenomorph/proc/hivemind_talk(message, datum/language/speaking)
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
@@ -97,7 +95,10 @@
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
-	hivemind_broadcast(message, hive)
+	var/list/listeners = hivemind_broadcast(message, hive)
+	if(listeners && (IS_XENO_LEADER(src) || isqueen(src)))
+		INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), speaking, tts_voice, tts_voice_filter, listeners, pitch = tts_voice_pitch, directional = FALSE)
+
 
 /mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
 	if(!message || stat || !hive)
@@ -115,6 +116,8 @@
 	var/overwatch_insert = ""
 	var/ghostrend
 	var/rendered
+
+	var/list/heard = list()
 
 	for (var/mob/S in GLOB.player_list)
 		var/hear_hivemind = 0
@@ -153,4 +156,7 @@
 					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 
 				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
+				heard += S
+
+	return heard
 

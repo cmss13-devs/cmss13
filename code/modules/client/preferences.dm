@@ -205,11 +205,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/playtime_perks = TRUE
 
 	// TTS
-	var/voice = ""
+	var/voice = "Random"
 	var/voice_pitch = 0
-	var/xeno_voice = ""
-	var/xeno_pitch = ""
-	var/synth_voice = ""
+	var/xeno_voice = "Random"
+	var/xeno_pitch = 0
+	var/synth_voice = "Random"
 	var/synth_pitch = 0
 	var/tts_mode = TTS_SOUND_ENABLED
 
@@ -256,6 +256,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/list/completed_tutorials = list()
 	/// If this client has auto observe enabled, used by /datum/orbit_menu
 	var/auto_observe = TRUE
+
+	COOLDOWN_DECLARE(tts_test_cooldown)
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -346,8 +348,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
-			dat += "<b>Voice:</b> <a href='?_src_=prefs;preference=voice;task=input'><b>[voice]</b></a><br>"
-			dat += "<b>Voice Pitch:</b> <a href='?_src_=prefs;preference=voice_pitch;task=input'><b>[voice]</b></a><br>"
+			if(SStts.tts_enabled)
+				dat += "<b>Voice:</b> <a href='?_src_=prefs;preference=voice;task=input'><b>[voice]</b></a><br>"
+				dat += "<b>Voice Pitch:</b> <a href='?_src_=prefs;preference=voice_pitch;task=input'><b>[voice_pitch]</b></a><br>"
+				dat += "<a href='?_src_=prefs;preference=test_voice;target_voice=human;task=input'><b>Hear Voice</b></a><br>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
@@ -456,6 +460,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			var/display_postfix = xeno_postfix ? xeno_postfix : "------"
 			dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'><b>[display_prefix]</b></a><br>"
 			dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
+			if(SStts.tts_enabled)
+				dat += "<b>Voice:</b> <a href='?_src_=prefs;preference=xeno_voice;task=input'><b>[xeno_voice]</b></a><br>"
+				dat += "<b>Voice Pitch:</b> <a href='?_src_=prefs;preference=xeno_voice_pitch;task=input'><b>[xeno_pitch]</b></a><br>"
+				dat += "<a href='?_src_=prefs;preference=test_voice;target_voice=xeno;task=input'><b>Hear Voice</b></a><br>"
 
 			dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
@@ -514,6 +522,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
 				dat += "<b>Synthetic Name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'><b>[synthetic_name]</b></a><br>"
+				if(SStts.tts_enabled)
+					dat += "<b>Voice:</b> <a href='?_src_=prefs;preference=synth_voice;task=input'><b>[synth_voice]</b></a><br>"
+					dat += "<b>Voice Pitch:</b> <a href='?_src_=prefs;preference=synth_voice_pitch;task=input'><b>[synth_pitch]</b></a><br>"
+					dat += "<a href='?_src_=prefs;preference=test_voice;target_voice=synth;task=input'><b>Hear Voice</b></a><br>"
 				dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'><b>[synthetic_type]</b></a><br>"
 				dat += "<b>Synthetic Whitelist Status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'><b>[synth_status]</b></a><br>"
 				dat += "</div>"
@@ -595,6 +607,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
 			dat += "<b>Abovehead Chat:</b> <a href='?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "Hide" : "Show"]</b></a><br>"
 			dat += "<b>Abovehead Emotes:</b> <a href='?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "Show" : "Hide"]</b></a><br>"
+			dat += "<b>TTS Mode:</b> <a href='?_src_=prefs;preference=tts_mode'><b>[tts_mode]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -1517,6 +1530,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_age)
 						age = max(min( floor(text2num(new_age)), AGE_MAX),AGE_MIN)
 				if("voice", "synth_voice", "xeno_voice")
+					if(!SStts.tts_enabled)
+						return
 					var/new_voice = tgui_input_list(user, "Choose your character's voice", "Voice selection", SStts.available_speakers)
 					if(new_voice)
 						switch(href_list["preference"])
@@ -1527,6 +1542,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 							if("xeno_voice")
 								xeno_voice = new_voice
 				if("voice_pitch", "synth_voice_pitch", "xeno_voice_pitch")
+					if(!SStts.tts_enabled)
+						return
 					var/new_voice_pitch = input(user, "Choose your voice's pitch:\n([-12] to [12])", "Character Preferences") as num|null
 					if(new_voice_pitch)
 						switch(href_list["preference"])
@@ -1536,6 +1553,33 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 								synth_pitch = new_voice_pitch
 							if("xeno_voice_pitch")
 								xeno_pitch = new_voice_pitch
+				if("test_voice")
+					if(!SStts.tts_enabled)
+						return
+					if(!COOLDOWN_FINISHED(src, tts_test_cooldown))
+						return
+
+					COOLDOWN_START(src, tts_test_cooldown, 0.5 SECONDS)
+					var/target_voice
+					var/target_pitch
+					var/target_filter = ""
+					switch(href_list["target_voice"])
+						if("human")
+							target_voice = voice
+							target_pitch = voice_pitch
+						if("synth")
+							target_voice = synth_voice
+							target_pitch = synth_pitch
+						if("xeno")
+							target_voice = xeno_voice
+							target_pitch = xeno_pitch
+							target_filter = TTS_FILTER_XENO
+
+					if(!target_voice)
+						return
+
+					INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), user.client, "Hello, this is my voice.", speaker = target_voice, pitch = target_pitch, filter = target_filter, local = TRUE)
+
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
@@ -1912,6 +1956,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("langchat_emotes")
 					toggles_langchat ^= LANGCHAT_SEE_EMOTES
 
+				if("tts_mode")
+					var/new_mode = tgui_input_list(user, "Select the new TTS mode for yourself.", "Set TTS mode", list(TTS_SOUND_ENABLED, TTS_SOUND_BLIPS, TTS_SOUND_OFF))
+					if(new_mode)
+						tts_mode = new_mode
+
 				if("lang_chat_disabled")
 					lang_chat_disabled = !lang_chat_disabled
 
@@ -2111,6 +2160,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
+	if(SStts.tts_enabled)
+		character.tts_voice = sanitize_inlist(voice, SStts.available_speakers, pick(SStts.available_speakers))
+		character.tts_voice_pitch = voice_pitch
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes

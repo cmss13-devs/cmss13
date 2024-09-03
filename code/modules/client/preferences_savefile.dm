@@ -195,6 +195,7 @@
 	S["chat_display_preferences"] >> chat_display_preferences
 	S["toggles_ghost"] >> toggles_ghost
 	S["toggles_langchat"] >> toggles_langchat
+	S["tts_mode"] >> tts_mode
 	S["toggles_sound"] >> toggles_sound
 	S["toggle_prefs"] >> toggle_prefs
 	S["dual_wield_pref"] >> dual_wield_pref
@@ -220,6 +221,8 @@
 
 	S["xeno_prefix"] >> xeno_prefix
 	S["xeno_postfix"] >> xeno_postfix
+	S["xeno_pitch"] >> xeno_pitch
+	S["xeno_voice"] >> xeno_voice
 	S["xeno_name_ban"] >> xeno_name_ban
 	S["playtime_perks"] >> playtime_perks
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
@@ -229,6 +232,8 @@
 	S["pref_job_slots"] >> pref_job_slots
 
 	S["synth_name"] >> synthetic_name
+	S["synth_voice"] >> synth_voice
+	S["synth_pitch"] >> synth_pitch
 	S["synth_type"] >> synthetic_type
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
@@ -338,6 +343,12 @@
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
+	if(SStts.tts_enabled)
+		synth_voice = sanitize_inlist(synth_voice, SStts.available_speakers, pick(SStts.available_speakers))
+		xeno_voice = sanitize_inlist(xeno_voice, SStts.available_speakers, pick(SStts.available_speakers))
+	synth_pitch = sanitize_integer(synth_pitch, -12, 12, 0)
+	xeno_pitch = sanitize_integer(xeno_pitch, -12, 12, 0)
+	tts_mode = sanitize_inlist(tts_mode, list(TTS_SOUND_ENABLED, TTS_SOUND_BLIPS, TTS_SOUND_OFF), TTS_SOUND_ENABLED)
 	vars["fps"] = fps
 
 	check_keybindings()
@@ -397,6 +408,7 @@
 	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_ghost"] << toggles_ghost
 	S["toggles_langchat"] << toggles_langchat
+	S["tts_mode"] << tts_mode
 	S["toggles_sound"] << toggles_sound
 	S["toggle_prefs"] << toggle_prefs
 	S["dual_wield_pref"] << dual_wield_pref
@@ -413,6 +425,8 @@
 
 	S["xeno_prefix"] << xeno_prefix
 	S["xeno_postfix"] << xeno_postfix
+	S["xeno_voice"] << xeno_voice
+	S["xeno_pitch"] << xeno_pitch
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
 	S["playtime_perks"] << playtime_perks
@@ -423,6 +437,8 @@
 	S["pref_job_slots"] << pref_job_slots
 
 	S["synth_name"] << synthetic_name
+	S["synth_voice"] << synth_voice
+	S["synth_pitch"] << synth_pitch
 	S["synth_type"] << synthetic_type
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
@@ -491,6 +507,8 @@
 	S["body_size"] >> body_size
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
+	S["human_voice"] >> voice
+	S["human_pitch"] >> voice_pitch
 
 	//colors to be consolidated into hex strings (requires some work with dna code)
 	S["hair_red"] >> r_hair
@@ -600,6 +618,9 @@
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
+	if(SStts.tts_enabled)
+		voice = sanitize_inlist(voice, SStts.available_speakers, pick(SStts.available_speakers))
+	voice_pitch = sanitize_integer(voice_pitch, -12, 12, 0)
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -665,6 +686,8 @@
 	S["underwear"] << underwear
 	S["undershirt"] << undershirt
 	S["backbag"] << backbag
+	S["human_voice"] << voice
+	S["human_pitch"] << voice_pitch
 	//S["b_type"] << b_type
 	S["spawnpoint"] << spawnpoint
 

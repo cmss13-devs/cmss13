@@ -153,6 +153,11 @@ menu "menu"
 		command = "Adjust-Volume-Admin-Music"
 		category = "Volume"
 		saved-params = "is-checked"
+	elem
+		name = "&TTS"
+		command = "Adjust-Volume-TTS"
+		category = "Volume"
+		saved-params = "is-checked"
 
 
 window "mainwindow"

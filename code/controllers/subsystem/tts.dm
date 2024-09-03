@@ -39,12 +39,23 @@ SUBSYSTEM_DEF(tts)
 	/// 7 seconds (or whatever the value of message_timeout is) to receive back a response.
 	var/average_tts_messages_time = 0
 
+/datum/controller/subsystem/tts/vv_edit_var(var_name, var_value)
+	// tts being enabled depends on whether it actually exists
+	if(NAMEOF(src, tts_enabled) == var_name)
+		return FALSE
+	return ..()
+
 /datum/controller/subsystem/tts/stat_entry(msg)
 	msg = "Active:[length(in_process_http_messages)]|Standby:[length(queued_http_messages?.L)]|Avg:[average_tts_messages_time]"
 	return ..()
 
 /proc/cmp_word_length_asc(datum/tts_request/a, datum/tts_request/b)
 	return length(b.message) - length(a.message)
+
+/datum/controller/subsystem/tts/Shutdown()
+	if (fexists("tmp/tts/"))
+		fdel("tmp/tts/")
+
 
 /// Establishes (or re-establishes) a connection to the TTS server and updates the list of available speakers.
 /// This is blocking, so be careful when calling.
@@ -86,50 +97,42 @@ SUBSYSTEM_DEF(tts)
 
 /datum/controller/subsystem/tts/Initialize()
 	if(!CONFIG_GET(string/tts_http_url))
-		return
+		return SS_INIT_NO_NEED
 
-	queued_http_messages = new /datum/heap(/proc/cmp_word_length_asc))
+	queued_http_messages = new /datum/heap(GLOBAL_PROC_REF(cmp_word_length_asc))
 	max_concurrent_requests = CONFIG_GET(number/tts_max_concurrent_requests)
 	if(!establish_connection_to_tts())
-		var/msg = "Failed to initialize [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-		to_chat(world, "<span class='danger'>[msg]</span>")
-		return
-	return ..()
+		return SS_INIT_FAILURE
+	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0)
+/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0, directional = TRUE)
 	var/turf/turf_source = get_turf(target)
 	if(!turf_source)
 		return
-
-	var/channel = get_free_channel()
-	for(var/mob/listening_mob in listeners | SSmobs.dead_players_by_zlevel[turf_source.z])//observers always hear through walls
+	var/datum/sound_template/template = get_sound_template(
+		audio,
+		60 + volume_offset,
+		vol_cat = VOLUME_TTS
+	)
+	if(directional)
+		template.x = turf_source.x
+		template.y = turf_source.y
+		template.z = turf_source.z
+	for(var/mob/listening_mob as anything in listeners)//observers always hear through walls
 		if(QDELING(listening_mob))
 			stack_trace("TTS tried to play a sound to a deleted mob.")
 			continue
-		var/volume_to_play_at = listening_mob.client?.prefs.read_preference(/datum/preference/numeric/sound_tts_volume)
-		var/tts_pref = listening_mob.client?.prefs.read_preference(/datum/preference/choiced/sound_tts)
-		if(volume_to_play_at == 0 || (tts_pref == TTS_SOUND_OFF))
+		var/tts_pref = listening_mob.client?.prefs.tts_mode
+		if(tts_pref == TTS_SOUND_OFF)
 			continue
 		var/sound_volume = ((listening_mob == target)? 60 : 85) + volume_offset
-		sound_volume = sound_volume * (volume_to_play_at / 100)
 		var/audio_to_use = (tts_pref == TTS_SOUND_BLIPS) ? audio_blips : audio
-		if(!listening_mob.say_understands(language))
+		if(!listening_mob.say_understands(null, language))
 			continue
-
-		if(get_dist(listening_mob, turf_source) <= range)
-			var/datum/sound_template/template = get_sound_template(audio_to_use, turf_source, volume_to_play_at, )
-			listening_mob.playsound_local(
-				turf_source,
-				vol = sound_volume,
-				falloff_exponent = SOUND_FALLOFF_EXPONENT,
-				channel = channel,
-				pressure_affected = TRUE,
-				sound_to_use = audio_to_use,
-				max_distance = SOUND_RANGE,
-				falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE,
-				distance_multiplier = 1,
-				use_reverb = TRUE
-			)
+		template.file = audio_to_use
+		template.volume = sound_volume
+		if(!directional || get_dist(listening_mob, turf_source) <= range)
+			listening_mob.client?.soundOutput.process_sound(template)
 
 // Need to wait for all HTTP requests to complete here because of a rustg crash bug that causes crashes when dd restarts whilst HTTP requests are ongoing.
 /datum/controller/subsystem/tts/Shutdown()
@@ -241,7 +244,9 @@ SUBSYSTEM_DEF(tts)
 			else if(current_target.when_to_play < world.time)
 				audio_file = new(current_target.audio_file)
 				audio_file_blips = new(current_target.audio_file_blips)
-				play_tts(tts_target, current_target.listeners, audio_file, audio_file_blips, current_target.language, current_target.message_range, current_target.volume_offset)
+				if(current_target.start_noise)
+					playsound(tts_target, current_target.start_noise, 5, TRUE)
+				play_tts(tts_target, current_target.listeners, audio_file, audio_file_blips, current_target.language, current_target.message_range, current_target.volume_offset, current_target.directional)
 				if(length(data) != 1)
 					var/datum/tts_request/next_target = data[2]
 					next_target.when_to_play = world.time + current_target.audio_length
@@ -254,10 +259,9 @@ SUBSYSTEM_DEF(tts)
 					queued_tts_messages[tts_target] += arbritrary_delay
 				SHIFT_DATA_ARRAY(queued_tts_messages, tts_target, data)
 
-
 #undef TTS_ARBRITRARY_DELAY
 
-/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "")
+/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", start_noise = null, directional = TRUE)
 	if(!tts_enabled)
 		return
 
@@ -286,7 +290,7 @@ SUBSYSTEM_DEF(tts)
 	var/file_name_blips = "tmp/tts/[identifier]_blips.ogg"
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts?voice=[speaker]&identifier=[identifier]&filter=[url_encode(filter)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]", json_encode(list("text" = shell_scrubbed_input)), headers, file_name)
 	request_blips.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts-blips?voice=[speaker]&identifier=[identifier]&filter=[url_encode(filter)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]", json_encode(list("text" = shell_scrubbed_input)), headers, file_name_blips)
-	var/datum/tts_request/current_request = new /datum/tts_request(identifier, request, request_blips, shell_scrubbed_input, target, local, language, message_range, volume_offset, listeners, pitch)
+	var/datum/tts_request/current_request = new /datum/tts_request(identifier, request, request_blips, shell_scrubbed_input, target, local, language, message_range, volume_offset, listeners, pitch, start_noise, directional)
 	var/list/player_queued_tts_messages = queued_tts_messages[target]
 	if(!player_queued_tts_messages)
 		player_queued_tts_messages = list()
@@ -338,9 +342,13 @@ SUBSYSTEM_DEF(tts)
 	var/use_blips = FALSE
 	/// What's the pitch adjustment?
 	var/pitch = 0
+	/// Sfx to play when the voice is ready to play.
+	var/start_noise
+	/// Whether this TTS is directional or not. If set to FALSE, message_range does not matter.
+	var/directional = TRUE
 
 
-/datum/tts_request/New(identifier, datum/http_request/request, datum/http_request/request_blips, message, target, local, datum/language/language, message_range, volume_offset, list/listeners, pitch)
+/datum/tts_request/New(identifier, datum/http_request/request, datum/http_request/request_blips, message, target, local, datum/language/language, message_range, volume_offset, list/listeners, pitch, start_noise, directional)
 	. = ..()
 	src.identifier = identifier
 	src.request = request
@@ -353,14 +361,16 @@ SUBSYSTEM_DEF(tts)
 	src.volume_offset = volume_offset
 	src.listeners = listeners
 	src.pitch = pitch
+	src.start_noise = start_noise
+	src.directional = directional
 	start_time = world.time
 
 /datum/tts_request/proc/start_requests()
 	if(istype(target, /client))
 		var/client/current_client = target
-		use_blips = (current_client?.prefs.read_preference(/datum/preference/choiced/sound_tts) == TTS_SOUND_BLIPS)
+		use_blips = (current_client?.prefs.tts_mode == TTS_SOUND_BLIPS)
 	else if(istype(target, /mob))
-		use_blips = (target.client?.prefs.read_preference(/datum/preference/choiced/sound_tts) == TTS_SOUND_BLIPS)
+		use_blips = (target.client?.prefs.tts_mode == TTS_SOUND_BLIPS)
 	if(local)
 		if(use_blips)
 			request_blips.begin_async()

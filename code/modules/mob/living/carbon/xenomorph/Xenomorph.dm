@@ -75,7 +75,7 @@
 	//////////////////////////////////////////////////////////////////
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	var/speaking_key = "x"
-	var/speaking_noise = "alien_talk"
+	speaking_noise = "alien_talk"
 	slash_verb = "slash"
 	slashes_verb = "slashes"
 	var/slash_sound = "alien_claw_flesh"
@@ -346,6 +346,8 @@
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
 
+	tts_voice_filter = TTS_FILTER_XENO
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
 	if(old_xeno && old_xeno.hivenumber)
@@ -556,6 +558,14 @@
 	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
 
+/mob/living/carbon/xenomorph/proc/init_voice()
+	if(!client)
+		return
+	if(!SStts.tts_enabled)
+		return
+	tts_voice = sanitize_inlist(client.prefs?.xeno_voice, SStts.available_speakers, pick(SStts.available_speakers))
+	tts_voice_pitch = client.prefs?.xeno_pitch
+
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
@@ -581,6 +591,7 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+		init_voice()
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))

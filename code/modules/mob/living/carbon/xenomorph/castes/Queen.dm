@@ -451,6 +451,7 @@
 	if(!nicknumber)
 		generate_and_set_nicknumber()
 	var/name_prefix = hive.prefix
+	init_voice()
 	if(queen_aged)
 		age_xeno()
 		switch(age)

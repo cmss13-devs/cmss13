@@ -47,6 +47,7 @@
 	var/custom_slashed_sound
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
+	var/speaking_noise
 
 	//Emotes
 	var/recent_audio_emote = FALSE

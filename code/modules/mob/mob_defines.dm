@@ -263,12 +263,11 @@
 	var/thinking_IC = FALSE
 
 	/// Text to speech voice. Set to null if no voice.
-	var/voice
+	var/tts_voice
 	/// Text to speech filter. Filter that gets applied when passed in.
-	var/voice_filter = ""
+	var/tts_voice_filter = ""
 	/// Text to speech pitch. Used to determine the pitch of the voice.
-	var/voice_pitch = 0
-
+	var/tts_voice_pitch = 0
 
 	// contains /atom/movable/screen/alert only
 	var/list/alerts = list()

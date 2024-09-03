@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
-
+	var/raw_message = message
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
@@ -169,6 +169,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+
+		if(tts_voice && length(listening))
+			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(raw_message), speaking, tts_voice, tts_voice_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
+
 		overlays += speech_bubble
 
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)

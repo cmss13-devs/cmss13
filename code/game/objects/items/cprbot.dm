@@ -108,5 +108,3 @@
                 I.forceMove(user.loc)  // Place it at user's location if hands are full
         else
             I.forceMove(user.loc)  // Place at the original location if not in hand
-
-

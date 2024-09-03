@@ -1,3 +1,8 @@
+#define SPEECH_PROBLEMS_MESSAGE 1
+#define SPEECH_PROBLEMS_VERB 2
+#define SPEECH_PROBLEMS_TTS_MESSAGE 3
+#define SPEECH_PROBLEMS_TTS_FILTER 4
+
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
@@ -123,8 +128,10 @@
 	message = process_chat_markup(message, list("~", "_"))
 
 	var/list/handle_r = handle_speech_problems(message)
-	message = handle_r[1]
-	verb = handle_r[2]
+	message = handle_r[SPEECH_PROBLEMS_MESSAGE]
+	verb = handle_r[SPEECH_PROBLEMS_VERB]
+	var/tts_message = handle_r[SPEECH_PROBLEMS_TTS_MESSAGE]
+	var/tts_filter = handle_r[SPEECH_PROBLEMS_TTS_FILTER]
 	if(!message)
 		return
 
@@ -173,7 +180,7 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode, tts_message = tts_message, tts_temp_filter = tts_filter) //ohgod we should really be passing a datum here.
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
@@ -265,8 +272,10 @@ for it but just ignore it.
 	return verb
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
-	var/list/returns[2]
+	var/list/returns[4]
 	var/verb = "says"
+	var/tts_message = message
+	var/tts_filter = ""
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)
@@ -276,16 +285,20 @@ for it but just ignore it.
 		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
 		verb = pick("stammers","stutters")
 	if(stuttering)
 		message = NewStutter(message)
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
 		verb = pick("stammers", "stutters")
 	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
 		verb = pick("mumbles", "babbles")
 	if(braindam >= 60)
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
+			tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
 			verb = pick("stammers", "stutters")
 		if(prob(braindam))
 			message = uppertext(message)
@@ -293,11 +306,14 @@ for it but just ignore it.
 	if(HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message
 		message = lisp_replace(message)
+		tts_message = message
 		if(old_message != message)
 			verb = "lisps"
 
-	returns[1] = message
-	returns[2] = verb
+	returns[SPEECH_PROBLEMS_MESSAGE] = message
+	returns[SPEECH_PROBLEMS_VERB] = verb
+	returns[SPEECH_PROBLEMS_TTS_MESSAGE] = tts_message
+	returns[SPEECH_PROBLEMS_TTS_FILTER] = tts_filter
 	return returns
 
 /mob/living/carbon/human/hear_apollo()
@@ -307,3 +323,8 @@ for it but just ignore it.
 	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE
+
+#undef SPEECH_PROBLEMS_MESSAGE
+#undef SPEECH_PROBLEMS_VERB
+#undef SPEECH_PROBLEMS_TTS_MESSAGE
+#undef SPEECH_PROBLEMS_TTS_FILTER

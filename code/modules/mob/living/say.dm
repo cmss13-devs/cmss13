@@ -107,14 +107,15 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		tts_message = replacetext(tts_message, word_start_regex.match, replacement, word_start_regex.index)
 	return tts_message
 
-/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon, tts_message = null, tts_temp_filter = null)
 	var/turf/T
 
 	if(!filter_message(src, message))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
-	var/raw_message = message
+	if(!tts_message)
+		tts_message = message
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
@@ -183,8 +184,15 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		for(var/mob/M as anything in listening)
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
+		var/compiled_filter = tts_voice_filter
+		if(tts_temp_filter)
+			if(compiled_filter && compiled_filter == "")
+				compiled_filter = "[tts_voice_filter],[tts_temp_filter]"
+			else
+				compiled_filter = tts_temp_filter
+
 		if(tts_voice && length(listening))
-			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(raw_message)), speaking, tts_voice, tts_voice_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
+			INVOKE_ASYNC_DIRECT(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, treat_tts_message(html_decode(tts_message)), speaking, tts_voice, compiled_filter, listening, FALSE, message_range, 0, tts_voice_pitch, start_noise = speaking_noise)
 
 		overlays += speech_bubble
 

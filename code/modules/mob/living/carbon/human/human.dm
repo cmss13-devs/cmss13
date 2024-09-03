@@ -21,6 +21,11 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+/mob/living/carbon/human/Login()
+	. = ..()
+	if(!tts_voice && SStts.tts_enabled && species.has_tts_voice)
+		tts_voice = pick(SStts.available_speakers)
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

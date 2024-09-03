@@ -94,6 +94,8 @@
 
 	ignores_stripdrag_flag = TRUE
 
+	has_tts_voice = FALSE
+
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 

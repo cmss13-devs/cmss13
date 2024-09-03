@@ -119,6 +119,9 @@
 
 	var/has_species_tab_items = FALSE
 
+	/// Whether they have a TTS voice or not.
+	var/has_tts_voice = TRUE
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()

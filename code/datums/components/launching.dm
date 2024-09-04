@@ -106,7 +106,8 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 		// Component has outlived its usefulness, time to die :salute:
 		qdel(src)
 		if (launch_hint & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE)
-			return COMPONENT_SKIP_DEFAULT_COLLIDE
+			. |= COMPONENT_SKIP_DEFAULT_COLLIDE
+		return
 
 
 	launch_hint |= launched.launch_impact(collided_with, launch_result)

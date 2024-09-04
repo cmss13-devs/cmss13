@@ -111,6 +111,7 @@
 		var/mob/living/carbon/pulled = xeno.pulling
 		if(islarva(M) || islesserdrone(M))
 			to_chat(xeno, SPAN_WARNING("We aren't big enough to devour that."))
+			return 0
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))

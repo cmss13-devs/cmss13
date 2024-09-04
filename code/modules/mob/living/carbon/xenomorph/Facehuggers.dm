@@ -230,7 +230,7 @@
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
 	else if(L.density)
-	 	//We want the hugger to bounce off if it hits a mob.
+		//We want the hugger to bounce off if it hits a mob.
 		INVOKE_NEXT_TICK(GLOBAL_PROC, GLOBAL_PROC_REF(step_wrapper), src, turn(dir, 180))
 		go_idle()
 

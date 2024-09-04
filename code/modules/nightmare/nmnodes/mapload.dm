@@ -94,7 +94,7 @@
 	. = ..()
 	if(!.) return
 	var/dir_path = context.get_file_path(filepath, "map")
-	var/regex/matcher = new(@"^([0-9]+)([\.\+])(([^_]+)(_.*))?\.dmm$", "i")
+	var/regex/matcher = new(@"^([0-9]+)([\.\+])(([^_]+)(.*))?\.dmm$", "i")
 	var/list/dircontents = flist(dir_path)
 	for(var/filename in dircontents)
 		if(!matcher.Find(filename))

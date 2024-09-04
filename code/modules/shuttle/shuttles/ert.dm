@@ -169,6 +169,7 @@
 	port_direction = NORTH
 	width = 17
 	height = 29
+	dwidth = 8
 	var/port_door
 	var/starboard_door
 

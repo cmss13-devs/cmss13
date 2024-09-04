@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -36,9 +36,6 @@
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
-					if(event_source.event_triggered_by == user)
-						user.visible_message(SPAN_DANGER("Your ID is rejected, as it is the one that triggered the event!"))
-						return
 					event_source.confirmed = 1
 					event_source.event_confirmed_by = user
 			else if(screen == 2)

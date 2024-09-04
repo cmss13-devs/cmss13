@@ -43,6 +43,17 @@
 	targ_y = deobfuscate_y(0)
 	internal_camera = new(loc)
 
+	var/new_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("classic")
+			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+		if("desert")
+			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+		if("snow")
+			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+		if("urban")
+			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+
 /obj/structure/mortar/Destroy()
 	QDEL_NULL(internal_camera)
 	return ..()
@@ -399,6 +410,10 @@
 	icon_state = "mortar_m402_carry"
 	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
+
+/obj/item/mortar_kit/Initialize(...)
+	. = ..()
+	select_gamemode_skin(type)
 
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)

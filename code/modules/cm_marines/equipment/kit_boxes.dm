@@ -2,7 +2,7 @@
 //******************************************Spec Kits****************************************************************/
 
 /obj/item/storage/box/spec
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	var/kit_overlay = null
 	w_class = SIZE_HUGE
@@ -178,7 +178,7 @@
 /obj/item/spec_kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
@@ -274,7 +274,7 @@
 //******************************************PFC Kits****************************************************************/
 
 /obj/item/storage/box/kit
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pro_case_mini"//to-do redo these sprites, they're out of date by current standards
 	w_class = SIZE_HUGE
 	storage_slots = 12
@@ -288,7 +288,7 @@
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
 	if(pro_case_overlay)
-		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
+		overlays += image('icons/obj/items/storage/kits.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))

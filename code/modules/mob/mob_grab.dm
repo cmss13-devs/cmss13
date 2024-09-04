@@ -109,6 +109,8 @@
 	else if(M == user && user.pulling && isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/mob/living/carbon/pulled = xeno.pulling
+		if(islarva(M) || islesserdrone(M))
+			to_chat(xeno, SPAN_WARNING("We aren't big enough to devour that."))
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))

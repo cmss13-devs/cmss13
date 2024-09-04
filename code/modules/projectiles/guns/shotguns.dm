@@ -1286,18 +1286,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
 
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/corporate
-	name = "\improper WY 37-17 pump shotgun"
-	desc = "Licensed from Henjin-Garcia and manufactured by Weyland-Yutani, this corporate white version of the iconic shotgun is mostly back-issued to security teams stationed at low-priority facilities."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
-	icon_state = "wy3712"
-	item_state = "wy3712"
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WY_RESTRICTED
-
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/corporate/no_lock
-	desc = "Licensed from Henjin-Garcia and manufactured by Weyland-Yutani, this corporate white version of the iconic shotgun is mostly back-issued to security teams stationed at low-priority facilities. A button on the side toggles the internal tubes. This one had its IFF electronics removed."
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3

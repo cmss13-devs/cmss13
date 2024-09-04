@@ -565,10 +565,6 @@
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
-"uL" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/corporate/no_lock,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
 "va" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -1630,7 +1626,7 @@ zl
 aD
 Ko
 aW
-uL
+bc
 bn
 NZ
 jx

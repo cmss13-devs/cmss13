@@ -327,7 +327,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
 
+/* RUCM CHANGE
 	notify_login()
+*/
 
 	load_xeno_name()
 

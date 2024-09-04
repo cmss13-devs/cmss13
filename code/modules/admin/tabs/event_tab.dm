@@ -46,7 +46,6 @@
 	set name = "Find Whitelisted Players"
 	set category = "Admin.Events"
 	if(!admin_holder)
-		to_chat(usr, "Only administrators may use this command.")
 		return
 	
 	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])

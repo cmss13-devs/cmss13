@@ -74,6 +74,13 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/bigredv2/outside/general_offices)
 "aS" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/obj/item/device/motiondetector/hacked/pmc,
+/obj/item/defenses/handheld/planted_flag/wy,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
 "aT" = (
@@ -147,6 +154,12 @@
 	icon_state = "wy15"
 	},
 /area/bigredv2/outside/general_offices)
+"bH" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/m94,
+/obj/item/storage/box/m94,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "bJ" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -167,6 +180,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cc" = (
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/bigredv2/outside/general_offices)
 "cd" = (
@@ -223,7 +237,8 @@
 /area/bigredv2/outside/general_offices)
 "cA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Dormitories Tool Storage"
+	name = "\improper Dormitories Tool Storage";
+	welded = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -302,6 +317,10 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"de" = (
+/obj/item/stack/sheet/cardboard/small_stack,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "di" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -321,8 +340,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"dT" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
 "dX" = (
 /obj/item/stack/rods,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"ex" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "eF" = (
@@ -330,7 +358,8 @@
 /area/template_noop)
 "eL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	welded = 1
 	},
 /turf/open/shuttle/dropship/can_surgery,
 /area/bigredv2/outside/general_offices)
@@ -376,7 +405,10 @@
 /area/bigredv2/outside/general_offices)
 "id" = (
 /obj/structure/surface/rack,
-/obj/item/xeno_restraints,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "ig" = (
@@ -401,9 +433,28 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/general_offices)
+"jh" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/general_offices)
+"ji" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/general_offices)
 "jr" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"jM" = (
+/obj/item/xeno_restraints,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "jQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -553,10 +604,17 @@
 "tQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "uj" = (
 /turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
+"um" = (
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "uw" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
@@ -567,6 +625,11 @@
 /area/bigredv2/outside/general_offices)
 "vU" = (
 /turf/open/floor/plating/wood_broken6,
+/area/bigredv2/outside/general_offices)
+"wI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "wM" = (
 /obj/structure/girder,
@@ -585,6 +648,14 @@
 /obj/item/clothing/under/darkred,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"xR" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "xU" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 1;
@@ -594,6 +665,9 @@
 /area/bigredv2/outside/hydroponics)
 "xW" = (
 /obj/item/stack/rods,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/general_offices)
 "yy" = (
@@ -617,6 +691,7 @@
 /area/bigredv2/outside/general_offices)
 "AX" = (
 /obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "Bb" = (
@@ -664,6 +739,10 @@
 /area/bigredv2/outside/ne)
 "Dg" = (
 /obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/general_offices)
 "Dh" = (
@@ -723,6 +802,10 @@
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
+"Hs" = (
+/obj/item/ammo_box/magazine/nsg23/heap/empty,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "Hw" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/corpsespawner/wygoon,
@@ -740,6 +823,9 @@
 /area/bigredv2/outside/general_offices)
 "HS" = (
 /obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "Id" = (
@@ -751,6 +837,12 @@
 /area/bigredv2/outside/general_offices)
 "Ie" = (
 /turf/open/floor/plating/wood_broken4,
+/area/bigredv2/outside/general_offices)
+"Ix" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "Jl" = (
 /turf/open/floor/platingdmg1,
@@ -771,6 +863,24 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
+"KO" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "Lw" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
@@ -780,6 +890,27 @@
 	pixel_y = 4
 	},
 /turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
+"LM" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/down,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"Ma" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/obj/item/ammo_box/rounds{
+	bullet_amount = 145
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"Mb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "Mc" = (
 /obj/item/stack/sheet/metal,
@@ -850,6 +981,16 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"Sj" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/ammo_magazine/rifle/ap,
+/obj/item/ammo_magazine/rifle/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "Tz" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
@@ -876,6 +1017,10 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/ne)
+"VO" = (
+/obj/item/ammo_magazine/smg/m39,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "VQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -912,6 +1057,12 @@
 "YB" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
+/area/bigredv2/outside/general_offices)
+"YE" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibleg"
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "YL" = (
 /obj/structure/machinery/light{
@@ -1237,8 +1388,8 @@ Yg
 Yg
 wM
 PE
-Yg
-Yg
+qb
+um
 cA
 Yg
 Yg
@@ -1267,9 +1418,9 @@ bf
 PN
 Yg
 pt
-Yg
+um
 PO
-PO
+TX
 aK
 ge
 qb
@@ -1299,12 +1450,12 @@ HG
 Yg
 Yg
 Yg
-PO
-Yg
+Mb
+dT
 pt
 OI
 dX
-Yg
+Ix
 aB
 aB
 aB
@@ -1333,8 +1484,8 @@ dX
 Yg
 tQ
 oW
-PO
-OI
+wI
+jh
 PO
 rv
 vU
@@ -1385,8 +1536,8 @@ eF
 aQ
 cI
 aG
-AX
-Ul
+bH
+jM
 Hq
 Hq
 Hq
@@ -1420,11 +1571,11 @@ aR
 bi
 bt
 bF
-bF
-bF
+Ma
+xR
 cc
 Ul
-Ul
+Hs
 Ul
 eL
 gP
@@ -1454,8 +1605,8 @@ bJ
 Hw
 bJ
 aS
-bk
-bk
+KO
+Sj
 bk
 cJ
 OI
@@ -1483,9 +1634,9 @@ bk
 bk
 bk
 bk
-bk
+de
 cd
-Ul
+VO
 qo
 Ul
 eL
@@ -1571,15 +1722,15 @@ eF
 XK
 an
 Dg
-OI
-PO
-PO
-OI
+Ml
+Ro
+Ro
+ji
 Yg
 pt
-Yg
-Yg
-Yg
+qb
+Ix
+um
 pt
 PO
 fB
@@ -1605,12 +1756,12 @@ aB
 PN
 PO
 xW
-Yg
+ex
 fB
 dX
 kL
-Yg
-Yg
+YE
+LM
 JW
 PO
 OI

@@ -510,6 +510,10 @@
 /obj/structure/girder,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
+"rV" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "si" = (
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
@@ -562,7 +566,7 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "uL" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/corporate/no_lock,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "va" = (
@@ -570,6 +574,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "ve" = (
+/obj/item/map/big_red_map,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top,
 /area/bigredv2/outside/office_complex)
 "vl" = (
@@ -624,7 +629,7 @@
 /area/bigredv2/outside/c)
 "xx" = (
 /obj/structure/surface/rack,
-/obj/item/map/big_red_map,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "xU" = (
@@ -1631,7 +1636,7 @@ NZ
 jx
 dE
 dE
-bc
+rV
 bc
 bc
 bc

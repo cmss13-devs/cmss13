@@ -8,6 +8,7 @@
 #define COMSIG_MOVABLE_MOVED "movable_moved"
 /// From base of atom/movable/Collide(): (atom/collide_target)
 #define COMSIG_MOVABLE_COLLIDE "movable_collide"
+	#define COMPONENT_SKIP_DEFAULT_COLLIDE (1<<0)
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)

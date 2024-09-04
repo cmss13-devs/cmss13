@@ -6,6 +6,11 @@
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/marine_rk
 	var/used_icon_file = hud_icon_file
+	var/used_icon_prefix = hud_icon_prefix
+	var/squad_clr
+
+	if(current_human.rank_icon_file_override)
+		used_icon_file = current_human.rank_icon_file_override
 
 	var/obj/item/card/id/id_card = current_human.get_idcard()
 	var/_role
@@ -16,7 +21,7 @@
 
 	var/datum/squad/squad = current_human.assigned_squad
 	if(istype(squad))
-		var/squad_clr = current_human.assigned_squad.equipment_color
+		squad_clr = current_human.assigned_squad.equipment_color
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
@@ -48,20 +53,12 @@
 
 		if(!marine_rk)
 			marine_rk = current_human.rank_icon_state_override
-		if(marine_rk)
-			var/image/IMG = image(used_icon_file, current_human, "hudsquad")
-			if(squad_clr)
-				IMG.color = squad_clr
-			else
-				IMG.color = "#5A934A"
-			holder.overlays += IMG
-			holder.overlays += image(used_icon_file, current_human, "[hud_icon_prefix][marine_rk]")
 		if(current_human.assigned_squad && current_human.assigned_fireteam)
-			var/image/IMG2 = image(used_icon_file, current_human, "[hud_icon_prefix][current_human.assigned_fireteam]")
+			var/image/IMG2 = image(used_icon_file, current_human, "[used_icon_prefix][current_human.assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
 			if(current_human.assigned_squad.fireteam_leaders[current_human.assigned_fireteam] == current_human)
-				var/image/IMG3 = image(used_icon_file, current_human, "[hud_icon_prefix]ftl")
+				var/image/IMG3 = image(used_icon_file, current_human, "[used_icon_prefix]ftl")
 				IMG3.color = squad_clr
 				holder.overlays += IMG3
 	else
@@ -177,19 +174,19 @@
 			// Colonial Marshals
 			if(JOB_CMB_TL)
 				marine_rk = "mar"
-				hud_icon_prefix = "cmb_"
+				used_icon_prefix = "cmb_"
 			if(JOB_CMB)
 				marine_rk = "dep"
-				hud_icon_prefix = "cmb_"
+				used_icon_prefix = "cmb_"
 			if(JOB_CMB_SYN)
 				marine_rk = "syn"
-				hud_icon_prefix = "cmb_"
+				used_icon_prefix = "cmb_"
 			if(JOB_CMB_ICC)
 				marine_rk = "icc"
-				hud_icon_prefix = "cmb_"
+				used_icon_prefix = "cmb_"
 			if(JOB_CMB_OBS)
 				marine_rk = "obs"
-				hud_icon_prefix = "cmb_"
+				used_icon_prefix = "cmb_"
 			// Check squad marines here too, for the unique ones
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"
@@ -204,17 +201,17 @@
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
 
-		if(current_human.rank_icon_file_override)
-			used_icon_file = current_human.rank_icon_file_override
-		if(current_human.rank_icon_state_override)
-			marine_rk = current_human.rank_icon_state_override
-		if(current_human.rank_icon_prefix_override)
-			hud_icon_prefix = current_human.rank_icon_prefix_override
 
+	if(current_human.rank_icon_state_override)
+		marine_rk = current_human.rank_icon_state_override
+	if(current_human.rank_icon_prefix_override)
+		used_icon_prefix = current_human.rank_icon_prefix_override
 
-
-		if(marine_rk)
-			var/image/I = image(used_icon_file, current_human, "hudsquad")
-			I.color = "#5A934A"
-			holder.overlays += I
-			holder.overlays += image(used_icon_file, current_human, "[hud_icon_prefix][marine_rk]")
+	if(marine_rk)
+		var/image/underlay = image(used_icon_file, current_human, "hudsquad")
+		if(squad_clr)
+			underlay.color = squad_clr
+		else
+			underlay.color = "#5A934A"
+		holder.overlays += underlay
+		holder.overlays += image(used_icon_file, current_human, "[used_icon_prefix][marine_rk]")

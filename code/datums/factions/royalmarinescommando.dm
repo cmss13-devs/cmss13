@@ -6,6 +6,7 @@
 /datum/faction/royal_marines_commando/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/hud_icon_state
 	var/used_icon_file = hud_icon_file
+	var/used_icon_prefix = hud_icon_prefix
 	var/obj/item/card/id/dogtag/ID = current_human.get_idcard()
 	var/_role
 	if(current_human.mind)
@@ -31,9 +32,9 @@
 	if(current_human.rank_icon_state_override)
 		hud_icon_state = current_human.rank_icon_state_override
 	if(current_human.rank_icon_prefix_override)
-		hud_icon_prefix = current_human.rank_icon_prefix_override
+		used_icon_prefix = current_human.rank_icon_prefix_override
 	if(hud_icon_state)
-		holder.overlays += image(used_icon_file, current_human, "[hud_icon_prefix][hud_icon_state]")
+		holder.overlays += image(used_icon_file, current_human, "[used_icon_prefix][hud_icon_state]")
 
 /datum/faction/royal_marines_commando/get_antag_guns_snowflake_equipment()
 	return list(

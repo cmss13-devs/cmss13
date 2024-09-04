@@ -9,7 +9,7 @@
 	caste_desc = "Ewwww, that's disgusting!"
 	speed = XENO_SPEED_TIER_8
 
-	available_strains = list(/datum/xeno_strain/watcher)
+	available_strains = FALSE
 	behavior_delegate_type = /datum/behavior_delegate/facehugger_base
 
 	evolution_allowed = FALSE

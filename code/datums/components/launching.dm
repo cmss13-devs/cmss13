@@ -62,9 +62,7 @@
 	return ..()
 
 #define CLEAR_SIGNALS \
-UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); \
-var/target = target_ref?.resolve(); \
-if (target) { UnregisterSignal(target, COMSIG_ATOM_CROSSED); };
+UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resolve(); if (target) { UnregisterSignal(target, COMSIG_ATOM_CROSSED); };
 
 /datum/component/launching/RegisterWithParent()
 	..()
@@ -105,7 +103,7 @@ if (target) { UnregisterSignal(target, COMSIG_ATOM_CROSSED); };
 		. |= collision_callback.Invoke(launched, collided_with, launch_result)
 
 	if (. & LAUNCH_COLLISION_SKIP_LAUNCH_IMPACT)
-	 	// Component has outlived its usefulness, time to die :salute:
+		// Component has outlived its usefulness, time to die :salute:
 		qdel(src)
 		return
 

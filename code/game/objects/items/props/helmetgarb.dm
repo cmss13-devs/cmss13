@@ -102,26 +102,20 @@
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)
 				if(SQUAD_MARINE_1)
+					name = "\improper Red Lucky Feather"
 					color = "red"
 					desc = "Often found atop heads, slightly less found on those still attached."
 				if(SQUAD_MARINE_2)
 					color = "yellow"
 					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
 				if(SQUAD_MARINE_3)
+					name = "\improper Purple Lucky Feather"
 					color = "purple"
 					desc = "Still has some morning toast crumbs on it."
 				if(SQUAD_MARINE_4)
+					name = "\improper Blue Lucky Feather"
 					color = "blue"
 					desc = "Hard to consider protection, but these types of people don't seek protection."
-				if(SQUAD_MARINE_5)
-					color = "green"
-					desc = "Tightly Woven, as it should be."
-				if(SQUAD_MARINE_CRYO)
-					color = "brown"
-					desc = "Looks and feels starched, cold to the touch."
-				if(SQUAD_MARINE_INTEL)
-					color = "black"
-					desc = "Looks more intellegent than the person wearing it."
 		else
 			icon_state = "lucky_feather"
 			desc = initial(desc)

@@ -1,0 +1,4 @@
+author: "benbot16"
+delete-after: True
+changes:
+  - bugfix: "Fixes stacking explosions in overloaded escape pods."

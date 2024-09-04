@@ -98,16 +98,18 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 	SIGNAL_HANDLER
 
 	CLEAR_SIGNALS
-	. = LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE
+	var/launch_hint = LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE
 	if (!isnull(collision_callback) && !isnull(collided_with))
-		. |= collision_callback.Invoke(launched, collided_with, launch_result)
+		launch_hint |= collision_callback.Invoke(launched, collided_with, launch_result)
 
-	if (. & LAUNCH_COLLISION_SKIP_LAUNCH_IMPACT)
+	if (launch_hint & LAUNCH_COLLISION_SKIP_LAUNCH_IMPACT)
 		// Component has outlived its usefulness, time to die :salute:
 		qdel(src)
-		return
+		if (launch_hint & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE)
+			return COMPONENT_SKIP_DEFAULT_COLLIDE
 
-	. |= launched.launch_impact(collided_with, launch_result)
+
+	launch_hint |= launched.launch_impact(collided_with, launch_result)
 
 	// Cleanup
 	if (launched.loc)
@@ -117,6 +119,8 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 
 	// Component has outlived its usefulness, time to die :salute:
 	qdel(src)
+	if (launch_hint & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE)
+		return COMPONENT_SKIP_DEFAULT_COLLIDE
 
 #undef CLEAR_SIGNALS
 

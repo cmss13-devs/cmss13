@@ -85,7 +85,7 @@
 /atom/movable/proc/Collide(atom/collide_target)
 	var/result = SEND_SIGNAL(src, COMSIG_MOVABLE_COLLIDE, collide_target)
 
-	if (collide_target && !QDELETED(collide_target) && !(result & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE))
+	if (collide_target && !QDELETED(collide_target) && !(result & COMPONENT_SKIP_DEFAULT_COLLIDE))
 		collide_target.last_bumped = world.time
 		collide_target.Collided(src)
 

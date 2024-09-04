@@ -92,7 +92,7 @@
 
 /obj/item/pamphlet/skill/spotter/on_use(mob/living/carbon/human/user)
 	. = ..()
-	user.rank_fallback = "ass"
+	user.rank_icon_state_override = "ass"
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.get_idcard()

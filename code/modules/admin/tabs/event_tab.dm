@@ -52,6 +52,9 @@
 	for(var/client/test_client in GLOB.clients)
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
+	if(!length(ckeys))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
 /client/proc/change_security_level()

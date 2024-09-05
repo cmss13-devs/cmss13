@@ -116,7 +116,7 @@
 			return PAY_SHORT_ME2
 		else
 			GLOB.data_core.leveled_riflemen++
-			log_debug("Leveled up rifleman: [key_name(new_human)] to [final_paygrade]")
+			log_debug("Leveled up rifleman: [key_name(new_human)] to [final_paygrade], Assoc client [mob_client].")
 			return final_paygrade
 	if(!final_paygrade)
 		. = "???"

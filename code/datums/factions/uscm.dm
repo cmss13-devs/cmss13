@@ -164,13 +164,13 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			if(JOB_AI_TECH)
-				marine_rk = "aist"
 			// TIS
 			if(JOB_TIS_IO)
 				marine_rk = "tisio"
 			if(JOB_TIS_SA)
 				marine_rk = "tissa"
+			if(JOB_AI_TECH)
+				marine_rk = "aist"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

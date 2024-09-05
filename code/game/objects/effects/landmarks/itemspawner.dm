@@ -21,36 +21,11 @@
 	new /obj/item/clothing/head/helmet/gladiator(src.loc)
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/costume/madscientist/Initialize()
-	. = ..()
-	new /obj/item/clothing/under/gimmick/rank/captain/suit(src.loc)
-	new /obj/item/clothing/head/flatcap(src.loc)
-	new /obj/item/clothing/suit/storage/labcoat/mad(src.loc)
-	new /obj/item/clothing/glasses/gglasses(src.loc)
-	return INITIALIZE_HINT_QDEL
-
-/obj/effect/landmark/costume/elpresidente/Initialize()
-	. = ..()
-	new /obj/item/clothing/under/gimmick/rank/captain/suit(src.loc)
-	new /obj/item/clothing/head/flatcap(src.loc)
-	new /obj/item/clothing/mask/cigarette/cigar/havana(src.loc)
-	new /obj/item/clothing/shoes/jackboots(src.loc)
-	return INITIALIZE_HINT_QDEL
-
 /obj/effect/landmark/costume/butler/Initialize()
 	. = ..()
 	new /obj/item/clothing/suit/storage/wcoat(src.loc)
 	new /obj/item/clothing/under/suit_jacket(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
-	return INITIALIZE_HINT_QDEL
-
-/obj/effect/landmark/costume/scratch/Initialize()
-	. = ..()
-	new /obj/item/clothing/gloves/white(src.loc)
-	new /obj/item/clothing/shoes/white(src.loc)
-	new /obj/item/clothing/under/scratch(src.loc)
-	if (prob(30))
-		new /obj/item/clothing/head/cueball(src.loc)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/costume/prig/Initialize()

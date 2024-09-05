@@ -35,12 +35,6 @@
 	desc = "<i>'I guess it's a redhead.'</i>"
 	flags_armor_protection = 0
 
-/obj/item/clothing/head/mailman
-	name = "station cap"
-	icon_state = "mailman"
-	desc = "<i>Choo-choo</i>!"
-	flags_armor_protection = 0
-
 /obj/item/clothing/head/plaguedoctorhat
 	name = "plague doctor's hat"
 	desc = "These were once used by Plague doctors. They're pretty much useless."

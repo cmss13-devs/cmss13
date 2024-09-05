@@ -185,17 +185,3 @@
 	name = "black glove"
 	desc = "Something to cover up that artificial hand... Who says heroes can't be self-conscious?"
 	icon_state = "skywalker_gloves"
-
-
-
-/obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "captain's suit"
-	desc = "A green suit and yellow necktie. Exemplifies authority."
-	icon_state = "green_suit"
-	item_state = "dg_suit"
-
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
-	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
-	icon_state = "teal_suit"
-	item_state = "g_suit"

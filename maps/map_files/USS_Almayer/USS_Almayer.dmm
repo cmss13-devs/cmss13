@@ -29371,6 +29371,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "inr" = (
 /obj/effect/landmark/start/intel,
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "ins" = (
@@ -60970,6 +60971,7 @@
 	pixel_y = 29;
 	serial_number = 12
 	},
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "vjg" = (

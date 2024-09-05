@@ -350,24 +350,6 @@
 	new /obj/item/clothing/shoes/leather(src)
 	return
 
-/obj/structure/closet/wardrobe/tactical
-	name = "tactical equipment"
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1_open"
-
-/obj/structure/closet/wardrobe/tactical/Initialize()
-	. = ..()
-	new /obj/item/clothing/under/tactical(src)
-	new /obj/item/clothing/suit/armor/tactical(src)
-	new /obj/item/clothing/head/helmet/tactical(src)
-	new /obj/item/clothing/mask/balaclava/tactical(src)
-	new /obj/item/clothing/glasses/sunglasses/sechud/tactical(src)
-	new /obj/item/storage/belt/security/tactical(src)
-	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/gloves/black(src)
-	return
-
 /obj/structure/closet/wardrobe/suit
 	name = "suit locker"
 	icon_state = "black"

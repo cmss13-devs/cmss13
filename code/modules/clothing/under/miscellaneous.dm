@@ -117,12 +117,6 @@
 	icon_state = "kutjevo_drysuit"
 	item_state = "kutjevo_drysuit"
 
-
-/obj/item/clothing/under/soviet
-	name = "soviet uniform"
-	desc = "For the Motherland!"
-	icon_state = "soviet"
-
 /obj/item/clothing/under/rank/veteran/soviet_uniform_01
 	name = "soviet military uniform"
 	desc = "Made with fabric so strong and unified it would make the capitalist tailors jealous."
@@ -145,34 +139,6 @@
 	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_FEET
-
-//wedding stuff
-/obj/item/clothing/under/wedding
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
-/obj/item/clothing/under/wedding/bride_orange
-	name = "orange wedding dress"
-	desc = "A big and puffy orange dress."
-	icon_state = "bride_orange"
-	flags_inv_hide = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_purple
-	name = "purple wedding dress"
-	desc = "A big and puffy purple dress."
-	icon_state = "bride_purple"
-	flags_inv_hide = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_blue
-	name = "blue wedding dress"
-	desc = "A big and puffy blue dress."
-	icon_state = "bride_blue"
-	flags_inv_hide = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_red
-	name = "red wedding dress"
-	desc = "A big and puffy red dress."
-	icon_state = "bride_red"
-	flags_inv_hide = HIDESHOES
 
 /obj/item/clothing/under/wedding/bride_white
 	name = "silky wedding dress"
@@ -216,11 +182,6 @@
 	name = "dirty suit"
 	desc = "A dirty suit with a yellow tie. It looks very weathered."
 	icon_state = "stowaway_uniform"
-
-/obj/item/clothing/under/serviceoveralls
-	name = "Workman outfit"
-	desc = "The very image of a working man. Not that you're probably doing work."
-	icon_state = "mechanic"
 
 /obj/item/clothing/under/suit_jacket/director
 	name = "director's suit"

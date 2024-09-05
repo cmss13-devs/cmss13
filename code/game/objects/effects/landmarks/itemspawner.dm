@@ -53,12 +53,6 @@
 		new /obj/item/clothing/head/cueball(src.loc)
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/costume/highlander/Initialize()
-	. = ..()
-	new /obj/item/clothing/under/kilt(src.loc)
-	new /obj/item/clothing/head/beret(src.loc)
-	return INITIALIZE_HINT_QDEL
-
 /obj/effect/landmark/costume/prig/Initialize()
 	. = ..()
 	new /obj/item/clothing/suit/storage/wcoat(src.loc)
@@ -86,8 +80,3 @@
 	new /obj/item/clothing/glasses/eyepatch(src.loc)
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/costume/commie/Initialize()
-	. = ..()
-	new /obj/item/clothing/under/soviet(src.loc)
-	new /obj/item/clothing/head/ushanka(src.loc)
-	return INITIALIZE_HINT_QDEL

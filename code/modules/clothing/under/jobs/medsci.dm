@@ -144,22 +144,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/rank/orderly
-	desc = "A white suit to be worn by orderly people who love orderly things."
-	name = "orderly's uniform"
-	icon_state = "orderly"
-	permeability_coefficient = 0.50
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = FALSE
-	item_state_slots = list(WEAR_BODY = "orderly")
-
 /obj/item/clothing/under/rank/medical
 	desc = "They're made of a special fiber that provides minor protection against biohazards. They have a cross on the chest denoting that the wearer is trained medical personnel."
 	name = "medical doctor's uniform"
@@ -224,18 +208,3 @@
 	icon_state = "scrubsorange"
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsorange")
-
-/obj/item/clothing/under/rank/psych
-	desc = "A basic white jumpsuit. It has turquoise markings that denote the wearer as a psychiatrist."
-	name = "psychiatrist's jumpsuit"
-	icon_state = "psych"
-	item_state = "w_suit"
-	flags_jumpsuit = FALSE
-
-
-/obj/item/clothing/under/rank/psych/turtleneck
-	desc = "A turquoise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
-	name = "psychologist's turtleneck"
-	icon_state = "psychturtle"
-	item_state = "b_suit"
-	flags_jumpsuit = FALSE

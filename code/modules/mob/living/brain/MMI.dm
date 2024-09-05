@@ -20,8 +20,12 @@
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 
 /obj/item/device/mmi/attackby(obj/item/O, mob/user)
-	if(istype(O,/obj/item/organ/brain) && !brainmob) //Time to stick a brain in it --NEO
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(istype(O,/obj/item/organ/brain) && !brainmob) //Time to stick a brain in it --NEO
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/organ/brain/B = O
 		if(B.health <= 0)
 			to_chat(user, SPAN_DANGER("That brain is well and truly dead."))
@@ -52,6 +56,7 @@
 		return
 
 	if((istype(O,/obj/item/card/id)) && brainmob)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(allowed(user))
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the brain holder."))
@@ -59,9 +64,9 @@
 			to_chat(user, SPAN_DANGER("Access denied."))
 		return
 	if(brainmob)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		O.attack(brainmob, user)//Oh noooeeeee
 		return
-	..()
 
 /obj/item/device/mmi/attack_self(mob/user)
 	..()

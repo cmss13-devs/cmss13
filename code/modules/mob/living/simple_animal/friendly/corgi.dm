@@ -104,17 +104,19 @@
 
 
 /mob/living/simple_animal/corgi/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
-	if(istype(O, /obj/item/newspaper))
-		if(!stat)
-			for(var/mob/M as anything in viewers(user, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"), SHOW_MESSAGE_VISIBLE)
-			spawn(0)
-				for(var/i in list(1,2,4,8,4,2,1,2))
-					setDir(i)
-					sleep(1)
-	else
-		..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(istype(O, /obj/item/newspaper) && !stat)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		for(var/mob/M as anything in viewers(user, null))
+			if ((M.client && !( M.blinded )))
+				M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"), SHOW_MESSAGE_VISIBLE)
+		spawn(0)
+			for(var/i in list(1,2,4,8,4,2,1,2))
+				setDir(i)
+				sleep(1)
 
 /mob/living/simple_animal/corgi/regenerate_icons()
 	overlays = list()

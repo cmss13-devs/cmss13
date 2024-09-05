@@ -183,8 +183,13 @@
 
 //Throwing Shiet
 /obj/structure/ladder/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Throwing Grenades
 	if(istype(W,/obj/item/explosive/grenade))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/explosive/grenade/G = W
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
@@ -223,6 +228,7 @@
 
 	//Throwing Flares and flashlights
 	else if(istype(W,/obj/item/device/flashlight))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/flashlight/F = W
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
@@ -250,8 +256,7 @@
 			F.forceMove(ladder_dest.loc)
 			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 			step_away(F,src,rand(1, 5))
-	else
-		return attack_hand(user)
+	. |= attack_hand(user)
 
 /obj/structure/ladder/fragile_almayer //goes away on hijack
 	name = "rickety ladder"

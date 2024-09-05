@@ -32,11 +32,15 @@
 	return
 
 /obj/structure/machinery/constructable_frame/porta_comms/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	var/area/A = get_area(src)
 	if (!A.can_build_special)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
 	if(istype(I, /obj/item/circuitboard/machine) && !istype(I, /obj/item/circuitboard/machine/telecomms/relay/tower))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
-	..()
-

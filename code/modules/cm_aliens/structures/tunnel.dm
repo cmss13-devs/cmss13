@@ -98,8 +98,13 @@
 	healthcheck()
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!isxeno(user))
 		if(istype(W, /obj/item/tool/shovel))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/tool/shovel/destroying_shovel = W
 
 			if(destroying_shovel.folded)
@@ -118,8 +123,8 @@
 
 			qdel(src)
 
-		return ..()
-	return attack_alien(user)
+		return
+	. |= attack_alien(user)
 
 /obj/structure/tunnel/verb/use_tunnel()
 	set name = "Use Tunnel"

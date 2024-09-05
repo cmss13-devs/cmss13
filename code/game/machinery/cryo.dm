@@ -152,6 +152,10 @@
 	updateUsrDialog(ui.user)
 
 /obj/structure/machinery/cryo_cell/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))

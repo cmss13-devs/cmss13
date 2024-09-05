@@ -84,15 +84,19 @@
 
 
 /obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W)) return
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(W))
+		return
 
 	if (can_puncture(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		visible_message(SPAN_DANGER("<b>[user] pierces [src] with [W]!</b>"))
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
-		..()
-	return
 
 /obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)

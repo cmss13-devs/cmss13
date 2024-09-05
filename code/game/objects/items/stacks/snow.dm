@@ -23,7 +23,12 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 	return ..()
 
 /obj/item/stack/snow/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/tool/shovel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/shovel/ET = W
 		if(isturf(loc))
 			if(ET.dirt_amt)
@@ -48,12 +53,8 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 				to_chat(user, SPAN_NOTICE("You take snow from [src]."))
 				ET.update_icon()
 				use(transf_amt)
-				return TRUE
-	else
-		. = ..()
-
-
-
+				. |= ATTACK_HINT_NO_AFTERATTACK
+				return
 
 /obj/item/stack/snow/afterattack(atom/target, mob/user, proximity)
 	if(!proximity) return

@@ -316,20 +316,24 @@
 
 
 /obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large/))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		switch_fuel(A, user)
 		return
 
 	var/obj/item/weapon/gun/flamer/M240T/F = A
 	if(istype(F) && !(F.fuelpack))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		F.link_fuelpack(user)
 		if(F.current_mag && !(F.current_mag in list(fuel,fuelB,fuelX)))
 			to_chat(user, SPAN_WARNING("\The [F.current_mag] is ejected by the Broiler-T back harness and replaced with \the [active_fuel]!"))
 			F.unload(user, drop_override = TRUE)
 			F.current_mag = active_fuel
 			F.update_icon()
-
-	. = ..()
 
 /obj/item/storage/large_holster/fuelpack/proc/switch_fuel(obj/item/ammo_magazine/flamer_tank/large/new_fuel, mob/user)
 	// Switch out the currently stored fuel and drop it

@@ -102,9 +102,15 @@
 
 
 /obj/structure/machinery/navbeacon/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/turf/T = loc
+	// prevent intraction when T-scanner revealed
 	if(T.intact_tile)
-		return // prevent intraction when T-scanner revealed
+		return
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
@@ -123,7 +129,6 @@
 			updateDialog()
 		else
 			to_chat(user, "You must open the cover first!")
-	return
 
 /obj/structure/machinery/navbeacon/attack_remote(mob/user)
 	interact(user, 1)

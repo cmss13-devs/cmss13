@@ -280,6 +280,11 @@
 	visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] point\s."))
 
 /obj/structure/dartboard/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	user.visible_message(SPAN_DANGER("[user] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
 	collapse()
 

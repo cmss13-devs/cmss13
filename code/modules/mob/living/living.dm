@@ -16,7 +16,6 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
-	register_init_signals()
 	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()

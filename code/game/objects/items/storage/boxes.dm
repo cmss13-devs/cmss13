@@ -498,7 +498,12 @@
 		new /obj/item/tool/match(src)
 
 /obj/item/storage/box/matches/attackby(obj/item/tool/match/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W) && !W.heat_source && !W.burnt)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		W.light_match()
 
 /obj/item/storage/box/lights

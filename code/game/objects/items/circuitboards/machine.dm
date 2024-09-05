@@ -138,11 +138,15 @@ to destroy them and players will be able to make replacements.
 	var/init_dirs = SOUTH
 
 /obj/item/circuitboard/machine/unary_atmos/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		machine_dir = turn(machine_dir, 90)
 		init_dirs = machine_dir
 		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s port configuration pins."), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))
-	return
 
 /obj/item/circuitboard/machine/unary_atmos/get_examine_text(mob/user)
 	. = ..()

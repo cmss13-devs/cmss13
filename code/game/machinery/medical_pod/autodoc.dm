@@ -635,6 +635,11 @@
 	updateUsrDialog()
 
 /obj/structure/machinery/autodoc_console/attackby(obj/item/with, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(with, /obj/item/research_upgrades/autodoc))
 		var/obj/item/research_upgrades/autodoc/upgrd = with
 		for(var/iter in upgrades)

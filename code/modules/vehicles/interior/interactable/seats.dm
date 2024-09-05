@@ -117,9 +117,6 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
-	return
-
 /obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 
 	if(X.is_mob_incapacitated() || !Adjacent(X))
@@ -402,7 +399,12 @@
 
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if((iswelder(W) && broken))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return

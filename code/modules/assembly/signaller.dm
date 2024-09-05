@@ -19,7 +19,12 @@
 	set_frequency(frequency)
 
 /obj/item/device/assembly/signaller/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(issignaller(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/assembly/signaller/S = O
 		code = S.code
 		set_frequency(S.frequency)
@@ -27,7 +32,6 @@
 		SStgui.update_uis(src)
 		to_chat(user, SPAN_NOTICE("You set the frequence of [src] to [frequency] and code to [code]."))
 		return
-	. = ..()
 
 /obj/item/device/assembly/signaller/activate()
 	if(cooldown > 0) return 0

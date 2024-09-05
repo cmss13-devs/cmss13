@@ -106,7 +106,7 @@
 	else
 		insert_cell(attack_obj, attacker)
 
-	return COMPONENT_NO_AFTERATTACK|COMPONENT_CANCEL_ITEM_ATTACK
+	return ATTACK_HINT_NO_AFTERATTACK
 
 /datum/component/cell/proc/insert_cell(obj/item/cell/power_cell, mob/living/user)
 	if(inserted_cell)

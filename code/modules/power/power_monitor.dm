@@ -101,7 +101,12 @@
 
 //copied from computer.dm
 /obj/structure/machinery/power/monitor/attackby(obj/item/I, user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			var/obj/structure/computerframe/A = new( src.loc )
@@ -121,6 +126,4 @@
 				A.icon_state = "4"
 			M.deconstruct(src)
 			qdel(src)
-	else
-		src.attack_hand(user)
-	return
+	. |= src.attack_hand(user)

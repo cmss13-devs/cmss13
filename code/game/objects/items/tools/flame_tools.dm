@@ -30,6 +30,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	var/wax = 800
 
+/obj/item/tool/candle/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/tool/candle/get_ignitable_flavor_text()
+	return list(
+		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
+		ANY_TYPE_MATCHER = SPAN_NOTICE("{user} lights {ignitable} with {igniter}."),
+	)
+
+
+/obj/item/tool/candle/check_can_ignite()
+	return heat_source > 200
+
 /obj/item/tool/candle/update_icon()
 	var/i
 	if(wax>150)
@@ -45,26 +59,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	. = ..()
 
-/obj/item/tool/candle/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.isOn()) //Badasses dont get blinded by lighting their candle with a blowtorch
-			light(SPAN_NOTICE("[user] casually lights [src] with [W]."))
-	else if(W.heat_source > 400)
-		light()
-	else
-		return ..()
+/obj/item/tool/candle/ignite(obj/item/igniter, mob/user, flavor_text)
+	if(heat_source)
+		return
 
-/obj/item/tool/candle/proc/light(flavor_text)
-	if(!heat_source)
-		heat_source = 1000
-		if(!flavor_text)
-			flavor_text = SPAN_NOTICE("[usr] lights [src].")
-		for(var/mob/O in viewers(usr, null))
-			O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
-		set_light(CANDLE_LUM)
-		update_icon()
-		START_PROCESSING(SSobj, src)
+	heat_source = 1000
+	for(var/mob/O in viewers(user, null))
+		O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
+	set_light(CANDLE_LUM)
+	update_icon()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/tool/candle/process()
 	if(!heat_source)
@@ -102,6 +106,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	light_power = 1
 
 	attack_verb = list("burnt", "singed")
+
+/obj/item/tool/match/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/tool/lighter/check_can_ignite()
+	return heat_source
 
 /obj/item/tool/match/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
 	if(istype(user) && istype(target, /obj/item/clothing/shoes/marine) && user.shoes == target && light_match())
@@ -197,77 +208,38 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	reagents.add_reagent("nicotine",10)
 	if(w_class == SIZE_TINY)
 		AddElement(/datum/element/mouth_drop_item)
+	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
-/obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
-	..()
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.isOn())//Badasses dont get blinded while lighting their cig with a blowtorch
-			light(SPAN_NOTICE("[user] casually lights the [name] with [W]."))
+/obj/item/clothing/mask/cigarette/get_ignitable_flavor_text()
+	return list(
+		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights the {ignitable} with {igniter}."),
+		/obj/item/tool/lighter/zippo = SPAN_ROSE("With a flick of their wrist, {user} lights their {ignitable} with {igniter}."),
+		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
+		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
+		/obj/item/weapon/energy/sword = SPAN_WARNING("{user} swings their {igniter}, barely missing their nose. They light their {ignitable} in the process."),
+		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable}."),
+		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}."),
+		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+		/obj/item/clothing/mask/cigarette = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
+		/obj/item/tool/candle = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
+	)
 
-	else if(istype(W, /obj/item/tool/lighter/zippo))
-		var/obj/item/tool/lighter/zippo/Z = W
-		if(Z.heat_source)
-			light(SPAN_ROSE("With a flick of their wrist, [user] lights their [name] with [W]."))
+/obj/item/clothing/mask/cigarette/check_can_ignite()
+	return item_state == icon_on
 
-	else if(istype(W, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/FL = W
-		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/lighter))
-		var/obj/item/tool/lighter/L = W
-		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to light their [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/match))
-		var/obj/item/tool/match/M = W
-		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
-
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
-		if(S.active)
-			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
-
-	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name]."))
-
-	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [name] with [W]."))
-
-	else if(istype(W, /obj/item/weapon/gun/flamer))
-		var/obj/item/weapon/gun/flamer/F = W
-		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [name] with the pilot light of [F]."))
-		else
-			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
-
-	else if(isgun(W))
-		var/obj/item/weapon/gun/G = W
-		for(var/slot in G.attachments)
-			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
-				light(SPAN_NOTICE("[user] lights their [name] with [G.attachments[slot]]."))
-				break
-
-	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [name] with [W]."))
-
-	else if(istype(W, /obj/item/clothing/mask/cigarette))
-		var/obj/item/clothing/mask/cigarette/C = W
-		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [name] with [C] after a few attempts."))
-
-	else if(istype(W, /obj/item/tool/candle))
-		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [name] with [W] after a few attempts."))
-
+// TODO: Refactor this to use signals holy shit
+/obj/item/clothing/mask/cigarette/proc/try_light(obj/item/W, mob/user)
 	return
 
 
 /obj/item/clothing/mask/cigarette/afterattack(atom/target, mob/living/user, proximity)
 	..()
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/item/reagent_container/glass)) //you can dip cigarettes into beakers
 		var/obj/item/reagent_container/glass/glass = target
 		var/transfered = glass.reagents.trans_to(src, chem_volume)
@@ -297,36 +269,41 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(fixture.is_broken())
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
+/obj/item/clothing/mask/cigarette/ignite(obj/item/igniter, mob/user, flavor_text)
+	light(flavor_text)
+
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
 	SIGNAL_HANDLER
 
-	if(!heat_source)
-		heat_source = 1000
-		damtype = "fire"
-		if(reagents.handle_volatiles())
-			qdel(src)
-			return
-		flags_atom &= ~NOREACT // allowing reagents to react after being lit
-		reagents.handle_reactions()
-		icon_state = icon_on
-		item_state = icon_on
-		set_light_range(1)
-		set_light_power(0.5)
-		set_light_on(TRUE)
-		if(iscarbon(loc))
-			var/mob/living/carbon/C = loc
-			if(C.r_hand == src)
-				C.update_inv_r_hand()
-			else if(C.l_hand == src)
-				C.update_inv_l_hand()
-			else if(ishuman(loc))
-				var/mob/living/carbon/human/H = loc
-				if(H.wear_mask == src)
-					H.update_inv_wear_mask()
-		if(flavor_text)
-			var/turf/T = get_turf(src)
-			T.visible_message(flavor_text)
-		START_PROCESSING(SSobj, src)
+	if(heat_source)
+		return
+
+	heat_source = 1000
+	damtype = "fire"
+	if(reagents.handle_volatiles())
+		qdel(src)
+		return
+	flags_atom &= ~NOREACT // allowing reagents to react after being lit
+	reagents.handle_reactions()
+	icon_state = icon_on
+	item_state = icon_on
+	set_light_range(1)
+	set_light_power(0.5)
+	set_light_on(TRUE)
+	if(iscarbon(loc))
+		var/mob/living/carbon/C = loc
+		if(C.r_hand == src)
+			C.update_inv_r_hand()
+		else if(C.l_hand == src)
+			C.update_inv_l_hand()
+		else if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			if(H.wear_mask == src)
+				H.update_inv_wear_mask()
+	if(flavor_text)
+		var/turf/T = get_turf(src)
+		T.visible_message(flavor_text)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/cigarette/process(delta_time)
 	var/mob/living/M = loc
@@ -495,68 +472,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 7200
 	chem_volume = 30
 
-/obj/item/clothing/mask/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.isOn())
-			light(SPAN_NOTICE("[user] insults [name] by lighting it with [W]."))
-
-	else if(istype(W, /obj/item/tool/lighter/zippo))
-		var/obj/item/tool/lighter/zippo/Z = W
-		if(Z.heat_source)
-			light(SPAN_ROSE("With a flick of their wrist, [user] lights their [name] with their [W]."))
-
-	else if(istype(W, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/FL = W
-		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/lighter))
-		var/obj/item/tool/lighter/L = W
-		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to offend their [name] by lighting it with [W]."))
-
-	else if(istype(W, /obj/item/tool/match))
-		var/obj/item/tool/match/M = W
-		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
-
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
-		if(S.active)
-			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
-
-	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
-
-	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [name] with [W], bet that would have looked cooler if it was attached to something first!"))
-
-	else if(istype(W, /obj/item/weapon/gun/flamer))
-		var/obj/item/weapon/gun/flamer/F = W
-		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [name] with the pilot light of [F], the glint of pyromania in their eye."))
-		else
-			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
-
-	else if(isgun(W))
-		var/obj/item/weapon/gun/G = W
-		for(var/slot in G.attachments)
-			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
-				light(SPAN_NOTICE("[user] lights their [src] with [G.attachments[slot]] like a complete badass."))
-				break
-
-	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [name] with [W], that can't be sterile!"))
-
-	else if(istype(W, /obj/item/clothing/mask/cigarette))
-		var/obj/item/clothing/mask/cigarette/C = W
-		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [name] with [C] after a few attempts."))
-
-	else if(istype(W, /obj/item/tool/candle))
-		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [name] with [W] after a few attempts."))
+/obj/item/clothing/mask/cigarette/cigar/havana/get_ignitable_flavor_text()
+	. = ..()
+	. += list(
+		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} insults {ignitable} by lighting it with {igniter}."),
+		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to offend their {ignitable} by lighting it with {igniter}."),
+		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable} with the power of science."),
+		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, bet that would have looked cooler if it was attached to something first!"),
+		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}, the glint of pyromania in their eye."),
+		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} like a complete badass."),
+		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, that can't be sterile!"),
+	)
 
 /////////////////
 //SMOKING PIPES//
@@ -598,34 +524,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		smoketime = initial(smoketime)
 	..()
 
-/obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.isOn())//
-			light(SPAN_NOTICE("[user] recklessly lights [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/lighter/zippo))
-		var/obj/item/tool/lighter/zippo/Z = W
-		if(Z.heat_source)
-			light(SPAN_ROSE("With much care, [user] lights their [name] with their [W]."))
-
-	else if(istype(W, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/FL = W
-		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/lighter))
-		var/obj/item/tool/lighter/L = W
-		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to light their [name] with [W]."))
-
-	else if(istype(W, /obj/item/tool/match))
-		var/obj/item/tool/match/M = W
-		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
-
-	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with \the [W], and manages to light their [name] with the power of science."))
+/obj/item/clothing/mask/cigarette/pipe/get_ignitable_flavor_text()
+	. = ..()
+	. += list(
+		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} recklessly lights {ignitable} with {igniter}."),
+		/obj/item/tool/lighter/zippo = SPAN_ROSE("With much care, {user} lights their {ignitable} with their {igniter}."),
+		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
+		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
+		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with \the {igniter}, and manages to light their {ignitable} with the power of science."),
+	)
 
 /obj/item/clothing/mask/cigarette/pipe/light()
 	if(smoketime > 0)
@@ -697,6 +605,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	attack_verb = list("burnt", "singed")
 
+/obj/item/tool/lighter/proc/check_ignite()
+	return heat_source
+
 /obj/item/tool/lighter/zippo
 	name = "\improper Zippo lighter"
 	desc = "A fancy steel Zippo lighter. Ignite in style."
@@ -760,42 +671,40 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/lighter/random
 
 /obj/item/tool/lighter/random/Initialize()
-		. = ..()
-		clr = pick("r","c","y","g")
-		icon_on = "lighter_[clr]_on"
-		icon_off = "lighter_[clr]"
-		icon_state = icon_off
+	. = ..()
+	clr = pick("r","c","y","g")
+	icon_on = "lighter_[clr]_on"
+	icon_off = "lighter_[clr]"
+	icon_state = icon_off
 
 /obj/item/tool/lighter/attack_self(mob/living/user)
-	if(user.r_hand == src || user.l_hand == src)
-		if(!heat_source)
-			heat_source = 1500
-			icon_state = icon_on
-			item_state = icon_on
-			if(istype(src, /obj/item/tool/lighter/zippo) )
-				user.visible_message(SPAN_ROSE("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."))
-				playsound(src.loc,"zippo_open",10, 1, 3)
-			else
-				playsound(src.loc,"lighter",10, 1, 3)
-				if(prob(95))
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src]."))
-
-				else
-					to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
-					if (user.l_hand == src)
-						user.apply_damage(2,BURN,"l_hand")
-					else
-						user.apply_damage(2,BURN,"r_hand")
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src], they however burn their finger in the process."))
-
-			set_light_range(2)
-			set_light_on(TRUE)
-			START_PROCESSING(SSobj, src)
-		else
-			turn_off(user, 0)
-	else
+	if(user.r_hand != src && user.l_hand == src)
 		return ..()
-	return
+	if(heat_source)
+		turn_off(user, 0)
+		return
+	heat_source = 1500
+	icon_state = icon_on
+	item_state = icon_on
+	if(istype(src, /obj/item/tool/lighter/zippo) )
+		user.visible_message(SPAN_ROSE("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."))
+		playsound(src.loc,"zippo_open",10, 1, 3)
+	else
+		playsound(src.loc,"lighter",10, 1, 3)
+		if(prob(95))
+			user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src]."))
+
+		else
+			to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
+			if (user.l_hand == src)
+				user.apply_damage(2,BURN,"l_hand")
+			else
+				user.apply_damage(2,BURN,"r_hand")
+			user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src], they however burn their finger in the process."))
+
+	set_light_range(2)
+	set_light_on(TRUE)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/tool/lighter/proc/turn_off(mob/living/bearer, silent = 1)
 	if(heat_source)
@@ -814,21 +723,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return 1
 	return 0
 
-/obj/item/tool/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/tool/lighter/attack(mob/living/carbon/M, mob/living/carbon/user)
 	if(!isliving(M))
 		return
 	M.IgniteMob()
 	if(!istype(M, /mob))
 		return
 
-	if(istype(M.wear_mask, /obj/item/clothing/mask/cigarette) && user.zone_selected == "mouth" && heat_source)
-		var/obj/item/clothing/mask/cigarette/cig = M.wear_mask
-		if(M == user)
-			cig.attackby(src, user)
-		else
-			if(istype(src, /obj/item/tool/lighter/zippo))
-				cig.light(SPAN_ROSE("[user] whips the [name] out and holds it for [M]."))
-			else
-				cig.light(SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
+	if(!istype(M.wear_mask, /obj/item/clothing/mask/cigarette) || user.zone_selected != "mouth" || !heat_source)
+		return ..()
+	var/obj/item/clothing/mask/cigarette/cig = M.wear_mask
+	if(M == user)
+		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user)
+	else if(istype(src, /obj/item/tool/lighter/zippo))
+		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user, SPAN_ROSE("[user] whips the [name] out and holds it for [M]."))
 	else
-		..()
+		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user, SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
+

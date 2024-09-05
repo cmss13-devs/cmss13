@@ -10,19 +10,22 @@
 	layer = BELOW_ATMOS_PIPE_LAYER
 
 /obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	var/turf/T = src.loc
 	if(T.intact_tile)
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(usr, SPAN_NOTICE(" These cables are too tough to be cut with those [W.name]."))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(usr, SPAN_NOTICE(" You will need heavier cables to connect to these."))
 		return
-	else
-		..()
 
 /obj/structure/cable/heavyduty/cableColor(colorC)
 	return

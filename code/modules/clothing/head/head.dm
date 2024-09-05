@@ -314,8 +314,12 @@
 		..()
 
 /obj/item/clothing/head/cmcap/attackby(obj/item/W, mob/user)
-	..()
-	return pockets.attackby(W, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	// TODO: Replace this when storage component is added
+	. |= pockets.attackby(W, user)
 
 /obj/item/clothing/head/cmcap/on_pocket_insertion()
 	update_icon()

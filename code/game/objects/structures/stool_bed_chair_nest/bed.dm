@@ -155,29 +155,33 @@
 
 
 /obj/structure/bed/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(buildstacktype)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			new buildstacktype(loc, buildstackamount)
 			qdel(src)
 
 	else if(istype(W, /obj/item/grab) && !buckled_mob)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
 			if(!Adjacent(M))
 				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
-				return FALSE
+				return
 			if(blocker)
 				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
 			M.forceMove(loc)
-		return TRUE
-
-	else
-		. = ..()
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 /obj/structure/bed/alien
 	icon_state = "abed"
@@ -198,7 +202,12 @@
 	base_bed_icon = "roller"
 
 /obj/structure/bed/roller/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(buckled_mob || buckled_bodybag)
 			manual_unbuckle()
 		else
@@ -206,7 +215,6 @@
 			new/obj/item/roller(get_turf(src))
 			qdel(src)
 		return
-	. = ..()
 
 /obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
 	if(iscarbon(M))
@@ -253,14 +261,18 @@
 			deploy_roller(user, target)
 
 /obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/roller_holder) && rollertype == /obj/structure/bed/roller)
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_NOTICE("You pick up [src]."))
 			forceMove(RH)
 			RH.held = src
 			return
-	. = ..()
 
 /obj/item/roller/proc/deploy_roller(mob/user, atom/location)
 	var/obj/structure/bed/roller/R = new rollertype(location)

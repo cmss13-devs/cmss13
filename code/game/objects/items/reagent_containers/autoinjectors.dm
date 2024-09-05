@@ -284,9 +284,6 @@
 			name += " expended"
 			flags_atom &= ~OPENCONTAINER
 
-/obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
-	return
-
 /obj/item/reagent_container/hypospray/autoinjector/skillless/get_examine_text(mob/user)
 	. = ..()
 	if(reagents && length(reagents.reagent_list))

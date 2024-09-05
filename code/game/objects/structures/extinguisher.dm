@@ -24,6 +24,11 @@
 	icon_state = "extinguisher_alt"
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(item, /obj/item/tool/extinguisher))
 		if(!has_extinguisher && opened)
 			user.drop_held_item()

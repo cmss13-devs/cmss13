@@ -47,7 +47,12 @@
 		cell.emp_act(severity)
 
 /obj/structure/machinery/space_heater/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/cell))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(open)
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
@@ -65,15 +70,13 @@
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		open = !open
 		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
 			close_browser(user, "spaceheater")
 			user.unset_interaction()
-	else
-		..()
-	return
 
 /obj/structure/machinery/space_heater/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)

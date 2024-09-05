@@ -130,14 +130,19 @@
 	return TRUE
 
 /obj/structure/machinery/sensortower/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(iswelder(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
+				return
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
 
@@ -146,53 +151,57 @@
 				SPAN_NOTICE("You start welding \the [src]'s internal damage."))
 				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != SENSORTOWER_BUILDSTATE_BLOWTORCH || is_on || !WT.isOn())
-						return FALSE
+						return
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = SENSORTOWER_BUILDSTATE_WIRECUTTERS
 					user.visible_message(SPAN_NOTICE("[user] welds \the [src]'s internal damage."),
 					SPAN_NOTICE("You weld \the [src]'s internal damage."))
 					update_icon()
-					return TRUE
+					. |= ATTACK_HINT_NO_TELEGRAPH
+					return
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS && !is_on)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
+				return
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing \the [src]'s wiring."),
 			SPAN_NOTICE("You start securing \the [src]'s wiring."))
 			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
 				if(buildstate != SENSORTOWER_BUILDSTATE_WIRECUTTERS || is_on)
-					return FALSE
+					return
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = SENSORTOWER_BUILDSTATE_WRENCH
 				user.visible_message(SPAN_NOTICE("[user] secures \the [src]'s wiring."),
 				SPAN_NOTICE("You secure \the [src]'s wiring."))
 				update_icon()
-				return TRUE
+				. |= COMSIG_PARENT_AFTERATTACK
+				return
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH && !is_on)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
-				return FALSE
+				return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing \the [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing \the [src]'s tubing and plating."))
 			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != SENSORTOWER_BUILDSTATE_WRENCH || is_on)
-					return FALSE
+					return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = SENSORTOWER_BUILDSTATE_WORKING
 				user.visible_message(SPAN_NOTICE("[user] repairs \the [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair \the [src]'s tubing and plating."))
 				update_icon()
-				return TRUE
-	else
-		return ..() //Deal with everything else, like hitting with stuff
+				. |= ATTACK_HINT_NO_AFTERATTACK
+				return
 
 /obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/xenomorph/M)
 	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)

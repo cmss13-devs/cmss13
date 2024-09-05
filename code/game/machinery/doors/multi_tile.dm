@@ -248,7 +248,12 @@
 	return
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/direction
 		switch(id)
 			if("starboard_door")
@@ -258,10 +263,10 @@
 			if("aft_door")
 				direction = "aft"
 		if(!linked_dropship || !linked_dropship.door_control.door_controllers[direction])
-			return ..()
+			return
 		var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
 		if (control.status != SHUTTLE_DOOR_BROKEN)
-			return ..()
+			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
 			return
@@ -277,7 +282,6 @@
 		control.status = SHUTTLE_DOOR_UNLOCKED
 		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
 		return
-	..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
 	if(is_reserved_level(z) && !forced)

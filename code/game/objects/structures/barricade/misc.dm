@@ -25,12 +25,18 @@
 
 //Item Attack
 /obj/structure/barricade/snow/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 	//Removing the barricades
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/shovel/ET = W
 		if(ET.folded)
 			return
@@ -44,8 +50,6 @@
 			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))
 			deconstruct(TRUE)
 		return
-
-	return ..()
 
 /obj/structure/barricade/snow/hit_barricade(obj/item/I)
 	switch(I.damtype)
@@ -80,11 +84,17 @@
 	metallic = FALSE
 
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 	if(istype(W, /obj/item/stack/sheet/wood))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/wood/D = W
 		if(health < maxhealth)
 			if(D.get_amount() < 1)
@@ -99,9 +109,8 @@
 		return
 
 	if(try_nailgun_usage(W, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
-
-	return ..()
 
 /obj/structure/barricade/wooden/hit_barricade(obj/item/I)
 	switch(I.damtype)

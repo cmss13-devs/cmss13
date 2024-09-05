@@ -46,10 +46,13 @@
 		M.apply_effect(5, SLOW)
 
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(cooldown < world.time - 25)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
-	else
-		..()

@@ -56,17 +56,24 @@
 			. = step(src, direction)
 
 /obj/vehicle/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!locked)
 			open = !open
 			update_icon()
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [open ? "opened" : "closed"]."))
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && cell && open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		remove_cell(user)
-
 	else if(istype(W, /obj/item/cell) && !cell && open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		insert_cell(W, user)
 	else if(iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -81,7 +88,6 @@
 					user.visible_message(SPAN_NOTICE("[user] repairs [src]."),SPAN_NOTICE("You repair [src]."))
 			else
 				to_chat(user, SPAN_NOTICE("[src] does not need repairs."))
-
 	else if(W.force)
 		switch(W.damtype)
 			if("fire")
@@ -91,8 +97,6 @@
 		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
-	else
-		..()
 
 /obj/vehicle/attack_animal(mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0) return

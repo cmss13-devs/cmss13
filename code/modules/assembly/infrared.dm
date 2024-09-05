@@ -79,9 +79,6 @@
 	QDEL_NULL(first)
 	..()
 
-/obj/item/device/assembly/infra/attackby()
-	return
-
 /obj/item/device/assembly/infra/Move()
 	var/t = dir
 	. = ..()

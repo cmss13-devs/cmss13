@@ -26,10 +26,15 @@
 	black_market_value = worth // While money can be inserted directly into the console, this will allow CTs to detect if the money is 'counterfeit' with their scanner.
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/spacecash))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/spacecash/attack_cash = W
 		if(istype(attack_cash, /obj/item/spacecash/ewallet))
-			return FALSE
+			return
 		if(attack_cash.counterfeit != src.counterfeit)
 			to_chat(user, SPAN_NOTICE("These two stacks of money seem different, somehow..."))
 			return

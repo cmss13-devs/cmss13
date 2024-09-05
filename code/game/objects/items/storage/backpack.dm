@@ -26,14 +26,26 @@
 	var/list/xeno_types = null //what xeno types can equip this backpack
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/card/id/card = W
 		toggle_lock(card, H)
 		return
 
-	if (..() && use_sound)
+	if (use_sound)
 		playsound(loc, use_sound, 15, TRUE, 6)
+
+/obj/item/storage/backpack/can_be_inserted(obj/item/W, mob/user, stop_messages)
+	. = ..()
+	if (!.)
+		return
+	if (istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
+		return FALSE
 
 /obj/item/storage/backpack/attack(mob/living/target_mob, mob/living/user)
 	if(!xeno_icon_state)
@@ -204,14 +216,19 @@
 	max_storage_space = 28
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(crit_fail)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
 		return
 	if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
 		qdel(W)
 		return
-	..()
 
 /obj/item/storage/backpack/holding/proc/failcheck(mob/user as mob)
 	if (prob(src.reliability)) return 1 //No failure
@@ -626,10 +643,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(internal_transmitter && internal_transmitter.attached_to == W)
-		internal_transmitter.attackby(W, user)
-	else
-		. = ..()
+		internal_transmitter.recall_phone()
 
 /obj/item/storage/backpack/marine/satchel/rto/upp_net
 	name = "\improper UPP Radio Telephone Pack"
@@ -688,10 +707,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
-	else
-		return ..()
 
 /obj/item/storage/backpack/marine/mortarpack
 	name = "\improper USCM mortar shell backpack"
@@ -897,8 +918,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 
 /obj/item/storage/backpack/marine/engineerpack/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(reagents.total_volume)
 		if(iswelder(W))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/tool/weldingtool/T = W
 			if(T.welding)
 				to_chat(user, SPAN_WARNING("That was close! However, you realized you had the welder on and prevented disaster."))
@@ -909,6 +935,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 				playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 				return
 		else if(istype(W, /obj/item/ammo_magazine/flamer_tank))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/ammo_magazine/flamer_tank/FT = W
 			if(!FT.current_rounds && reagents.total_volume)
 				var/fuel_available = reagents.total_volume < FT.max_rounds ? reagents.total_volume : FT.max_rounds
@@ -920,6 +947,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 				FT.update_icon()
 				return
 		else if(isgun(W))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/weapon/gun/G = W
 			for(var/slot in G.attachments)
 				if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
@@ -935,7 +963,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 					else
 						to_chat(user, SPAN_WARNING("[F] is full."))
 					return
-	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
@@ -1024,12 +1051,17 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/FTL = W
 		var/missing_volume = FTL.max_rounds - FTL.current_rounds
 
 		//Fuel has to be standard napalm OR tank needs to be empty. We need to have a non-full tank and our backpack be dry
 		if (((FTL.caliber == "UT-Napthal Fuel") || (!FTL.current_rounds)) && missing_volume && reagents.total_volume)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/fuel_available = reagents.total_volume < missing_volume ? reagents.total_volume : missing_volume
 			reagents.remove_reagent("fuel", fuel_available)
 			FTL.current_rounds = FTL.current_rounds + fuel_available
@@ -1037,7 +1069,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			FTL.caliber = "UT-Napthal Fuel"
 			to_chat(user, SPAN_NOTICE("You refill [FTL] with [FTL.caliber]."))
 			FTL.update_icon()
-	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
 	name = "\improper USCM Pyrotechnician G4-1 fueltank"

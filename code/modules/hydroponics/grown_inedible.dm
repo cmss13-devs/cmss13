@@ -44,19 +44,24 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 
 /obj/item/grown/log/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.sharp == IS_SHARP_ITEM_BIG)
-		user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), SHOW_MESSAGE_VISIBLE)
-		for(var/i=0,i<2,i++)
-			var/obj/item/stack/sheet/wood/NG = new (user.loc)
-			for (var/obj/item/stack/sheet/wood/G in user.loc)
-				if(G==NG)
-					continue
-				if(G.amount>=G.max_amount)
-					continue
-				G.attackby(NG, user)
-				to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
-		qdel(src)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
+
+	if(!W.sharp == IS_SHARP_ITEM_BIG)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), SHOW_MESSAGE_VISIBLE)
+	for(var/i=0,i<2,i++)
+		var/obj/item/stack/sheet/wood/NG = new (user.loc)
+		for (var/obj/item/stack/sheet/wood/G in user.loc)
+			if(G==NG)
+				continue
+			if(G.amount>=G.max_amount)
+				continue
+			G.merge_with(NG, user)
+			to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
+	qdel(src)
 
 /obj/item/grown/sunflower // FLOWER POWER!
 	plantname = "sunflowers"
@@ -175,9 +180,12 @@
 	throw_range = 20
 
 /obj/item/corncob/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You use [W] to fashion a pipe out of the corn cob!"))
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
-	else
-		return ..()

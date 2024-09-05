@@ -1,5 +1,5 @@
-GLOBAL_LIST_EMPTY(gear_datums_by_category)
-GLOBAL_LIST_EMPTY(gear_datums_by_name)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_category, /list/datum/gear)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /proc/populate_gear_list()
 	var/datum/gear/G

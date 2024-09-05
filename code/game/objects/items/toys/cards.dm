@@ -75,7 +75,12 @@
 	return ..()
 
 /obj/item/toy/deck/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/toy/handcard))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/toy/handcard/H = O
 		for(var/datum/playing_card/P as anything in H.cards)
 			cards += P
@@ -83,8 +88,6 @@
 		update_icon()
 		qdel(O)
 		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
-		return
-	..()
 
 /obj/item/toy/deck/update_icon()
 	var/cards_length = length(cards)
@@ -339,7 +342,12 @@
 	usr.visible_message(SPAN_NOTICE("\The [usr] sorts \his hand."), SPAN_NOTICE("You sort your hand."))
 
 /obj/item/toy/handcard/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/toy/handcard))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/toy/handcard/H = O
 		var/cards_length = length(H.cards)
 		for(var/datum/playing_card/P in H.cards)
@@ -359,7 +367,6 @@
 				user.put_in_hands(src)
 		update_icon()
 		return
-	..()
 
 /obj/item/toy/handcard/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src)

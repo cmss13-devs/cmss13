@@ -132,7 +132,7 @@
 /obj/structure/machinery/door/proc/try_to_activate_door(mob/user)
 	add_fingerprint(user)
 	if(operating)
-		return
+		return FALSE
 	if(!Adjacent(user) || !requiresID())
 		user = null //so allowed(user) always succeeds
 	if(allowed(user))
@@ -140,14 +140,21 @@
 			open()
 		else
 			close()
-		return
+		return TRUE
 	if(density)
 		flick("door_deny", src)
+	return FALSE
 
 /obj/structure/machinery/door/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!(I.flags_item & NOBLUDGEON))
-		try_to_activate_door(user)
-		return TRUE
+		if (try_to_activate_door(user))
+			. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 /obj/structure/machinery/door/emp_act(severity)
 	. = ..()

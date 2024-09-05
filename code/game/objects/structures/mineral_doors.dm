@@ -94,20 +94,25 @@
 		icon_state = mineralType
 
 /obj/structure/mineral_door/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/tool/pickaxe))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/pickaxe/digTool = W
 		to_chat(user, "You start digging the [name].")
 		if(do_after(user,digTool.digspeed*hardness, INTERRUPT_ALL, BUSY_ICON_GENERIC) && src)
 			to_chat(user, "You finished digging.")
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.animation_attack_on(src)
 		hardness -= W.force/100 * W.demolition_mod
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		CheckHardness()
 	else
-		attack_hand(user)
-	return
+		. |= attack_hand(user)
 
 /obj/structure/mineral_door/proc/CheckHardness()
 	if(hardness <= 0)
@@ -181,11 +186,13 @@
 	mineralType = "phoron"
 
 /obj/structure/mineral_door/transparent/phoron/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.remove_fuel(0, user))
-			TemperatureAct(100)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	var/obj/item/tool/weldingtool/WT = W
+	if(iswelder(WT) && WT.remove_fuel(0, user))
+		TemperatureAct(100)
 
 /obj/structure/mineral_door/transparent/phoron/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)

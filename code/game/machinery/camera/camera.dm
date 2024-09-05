@@ -152,20 +152,28 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		toggle_cam_status(user, TRUE)
 
 /obj/structure/machinery/camera/attackby(obj/item/W, mob/living/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	// DECONSTRUCTION
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		//to_chat(user, SPAN_NOTICE("You start to [panel_open ? ")close" : "open"] the camera's panel.")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
 		user.visible_message(SPAN_WARNING("[user] screws the camera's panel [panel_open ? "open" : "closed"]!"),
 		SPAN_NOTICE("You screw the camera's panel [panel_open ? "open" : "closed"]."))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		return
 
-	else if((HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL)) && panel_open)
+	if((HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL)) && panel_open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		interact(user)
+		return
 
-	else if(iswelder(W) && canDeconstruct())
+	if(iswelder(W) && canDeconstruct())
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -174,34 +182,33 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 				assembly.forceMove(loc)
 				assembly.state = 1
 			qdel(src)
+		return
 
+	if (!istype(W, /obj/item/paper) || !isliving(user))
+		return
 
 	// OTHER
-	else if ((istype(W, /obj/item/paper)) && isliving(user))
-		var/mob/living/U = user
-		var/obj/item/paper/X = null
+	var/mob/living/U = user
+	var/obj/item/paper/X = null
 
-		var/itemname = ""
-		var/info = ""
-		if(istype(W, /obj/item/paper))
-			X = W
-			itemname = X.name
-			info = X.info
-		to_chat(U, "You hold \a [itemname] up to the camera ...")
-		for(var/mob/living/silicon/ai/O in GLOB.alive_mob_list)
-			if(!O.client) continue
-			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
-			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
-			show_browser(O, info, itemname, itemname)
-		for(var/mob/O in GLOB.player_list)
-			if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
-				var/obj/structure/machinery/computer/cameras/S = O.interactee
-				if (S.current == src)
-					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
-					show_browser(O, info, itemname, itemname)
-	else
-		..()
-	return
+	var/itemname = ""
+	var/info = ""
+	if(istype(W, /obj/item/paper))
+		X = W
+		itemname = X.name
+		info = X.info
+	to_chat(U, "You hold \a [itemname] up to the camera ...")
+	for(var/mob/living/silicon/ai/O in GLOB.alive_mob_list)
+		if(!O.client) continue
+		if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+		else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
+		show_browser(O, info, itemname, itemname)
+	for(var/mob/O in GLOB.player_list)
+		if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
+			var/obj/structure/machinery/computer/cameras/S = O.interactee
+			if (S.current == src)
+				to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
+				show_browser(O, info, itemname, itemname)
 
 /obj/structure/machinery/camera/proc/toggle_cam_status(mob/user, silent)
 	status = !status

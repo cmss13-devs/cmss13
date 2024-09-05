@@ -45,19 +45,28 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(icon_tag)
 		icon_state = "[icon_tag]_[rand(1,variations)]"
 
-/obj/structure/flora/attackby(obj/item/W, mob/living/user)
-	if(cut_level &~PLANT_NO_CUT && W.sharp > IS_SHARP_ITEM_SIMPLE)
-		if(cut_level & PLANT_CUT_MACHETE && W.sharp == IS_SHARP_ITEM_ACCURATE)
-			cut_hits--
-		else
-			cut_hits = 0
-		user.animation_attack_on(src)
-		to_chat(user, SPAN_WARNING("You cut [cut_hits > 0 ? "some of" : "all of"] \the [src] away with \the [W]."))
-		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
-		if(cut_hits <= 0)
-			qdel(src)
+/obj/structure/flora/attackby(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(cut_level & ~PLANT_NO_CUT)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		try_cut(attacking_item, user)
+		return
+
+/obj/structure/flora/proc/try_cut(obj/item/cutting_with, mob/living/user)
+	if (cutting_with.sharp <= IS_SHARP_ITEM_SIMPLE)
+		return
+	if(cut_level & PLANT_CUT_MACHETE && cutting_with.sharp == IS_SHARP_ITEM_ACCURATE)
+		cut_hits--
 	else
-		. = ..()
+		cut_hits = 0
+	user.animation_attack_on(src)
+	to_chat(user, SPAN_WARNING("You cut [cut_hits > 0 ? "some of" : "all of"] \the [src] away with \the [cutting_with]."))
+	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+	if(cut_hits <= 0)
+		qdel(src)
 
 /obj/structure/flora/flamer_fire_act()
 	fire_act()
@@ -540,6 +549,11 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 		stashed_item = new prestashed_item(src)
 
 /obj/structure/flora/pottedplant/attackby(obj/item/stash, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(stashed_item)
 		to_chat(user, SPAN_WARNING("There's already something stashed here!"))
 		return
@@ -716,8 +730,13 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/damage = rand(2,5)
 		if(istype(I,/obj/item/weapon/sword))
 			damage = rand(8,18)
@@ -731,8 +750,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 			if(health < 0)
 				to_chat(user, SPAN_NOTICE("You clear away [src]."))
 			healthcheck()
-	else
-		return ..()
 
 /obj/structure/flora/jungle/thickbush/proc/healthcheck()
 	if(health < 35 && opacity)

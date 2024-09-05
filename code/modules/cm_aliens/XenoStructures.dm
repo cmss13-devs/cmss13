@@ -117,7 +117,12 @@
 	to_chat(usr, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!(W.flags_item & NOBLUDGEON))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/damage = W.force * W.demolition_mod * RESIN_MELEE_DAMAGE_MULTIPLIER
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
@@ -125,7 +130,6 @@
 		else
 			playsound(loc, "alien_resin_break", 25)
 		healthcheck()
-	return ..()
 
 /obj/effect/alien/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
@@ -387,16 +391,20 @@
 	return 1
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.pry_capable == IS_PRY_CAPABLE_FORCE && user.a_intent != INTENT_HARM)
 		return // defer to item afterattack
 	if(!(W.flags_item & NOBLUDGEON) && W.force)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.animation_attack_on(src)
 		health -= W.force * RESIN_MELEE_DAMAGE_MULTIPLIER * W.demolition_mod
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
-	else
-		return attack_hand(user)
+	. |= attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))
@@ -747,7 +755,7 @@
 	RegisterSignal(T, COMSIG_TURF_BULLET_ACT, PROC_REF(handle_bullet))
 	RegisterSignal(T, COMSIG_ATOM_HITBY, PROC_REF(handle_hitby))
 	RegisterSignal(T, COMSIG_WALL_RESIN_XENO_ATTACK, PROC_REF(handle_attack_alien))
-	RegisterSignal(T, COMSIG_WALL_RESIN_ATTACKBY, PROC_REF(handle_attackby))
+	RegisterSignal(T, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_attackby))
 
 /obj/effect/alien/resin/resin_pillar/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -765,7 +773,7 @@
 /obj/effect/alien/resin/resin_pillar/proc/handle_attackby(turf/T, obj/item/I, mob/M)
 	SIGNAL_HANDLER
 	attackby(I, M)
-	return COMPONENT_CANCEL_ATTACKBY
+	return ATTACK_HINT_BREAK_ATTACK
 
 /obj/effect/alien/resin/resin_pillar/proc/handle_hitby(turf/T, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -836,13 +844,17 @@
 	return ..()
 
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	user.animation_attack_on(src)
 	if(!brittle)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"), \
 			SPAN_DANGER("You hit \the [name], but \the [W] bounces off!"))
 		return
 
-	return ..()
 
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"

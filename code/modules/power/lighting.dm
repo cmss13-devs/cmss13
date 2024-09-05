@@ -49,8 +49,13 @@
 	return ..()
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.add_fingerprint(user)
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.stage == 1)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(usr, "You begin deconstructing [src].")
@@ -68,6 +73,7 @@
 			return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.stage != 2) return
 		src.stage = 1
 		switch(fixture_type)
@@ -82,6 +88,7 @@
 		return
 
 	if(istype(W, /obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.stage != 1) return
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.use(1))
@@ -96,6 +103,7 @@
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.stage == 2)
 			switch(fixture_type)
 				if ("tube")
@@ -118,7 +126,6 @@
 			src.transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
-	..()
 
 /obj/structure/machinery/light_construct/small
 	name = "small light fixture frame"
@@ -346,9 +353,13 @@
 // attack with item - insert light (if right type), otherwise try to break the light
 
 /obj/structure/machinery/light/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	//Light replacer code
 	if(istype(W, /obj/item/device/lightreplacer))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/lightreplacer/LR = W
 		if(isliving(user))
 			var/mob/living/U = user
@@ -357,41 +368,36 @@
 
 	// attempt to insert light
 	if(istype(W, /obj/item/light_bulb))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(status != LIGHT_EMPTY)
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
-		else
-			src.add_fingerprint(user)
-			var/obj/item/light_bulb/L = W
-			if(istype(L, light_type))
-				status = L.status
-				to_chat(user, "You insert the [L.name].")
-				switchcount = L.switchcount
-				rigged = L.rigged
-				brightness = L.brightness
-				on = has_power()
-				update()
+		src.add_fingerprint(user)
+		var/obj/item/light_bulb/L = W
+		if(!istype(L, light_type))
+			to_chat(user, "This type of light requires a [fitting].")
+			return
+		status = L.status
+		to_chat(user, "You insert the [L.name].")
+		switchcount = L.switchcount
+		rigged = L.rigged
+		brightness = L.brightness
+		on = has_power()
+		update()
 
-				if(user.temp_drop_inv_item(L))
-					qdel(L)
-
-					if(on && rigged)
-
-						message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
-
-						explode()
-			else
-				to_chat(user, "This type of light requires a [fitting].")
-				return
+		if(user.temp_drop_inv_item(L))
+			qdel(L)
+			if(on && rigged)
+				message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+				explode()
+		return
 
 		// attempt to break the light
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-
-
 		if(prob(1+W.force * W.demolition_mod * 5))
-
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M as anything in viewers(src))
 				if(M == user)
@@ -407,6 +413,7 @@
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			user.visible_message("[user.name] opens [src]'s casing.", \

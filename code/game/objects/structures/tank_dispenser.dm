@@ -48,7 +48,12 @@
 
 
 /obj/structure/dispenser/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/tank/oxygen) || istype(I, /obj/item/tank/air) || istype(I, /obj/item/tank/anesthetic))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(oxygentanks < 10)
 			user.drop_held_item()
 			I.forceMove(src)
@@ -62,6 +67,7 @@
 		updateUsrDialog()
 		return
 	if(istype(I, /obj/item/tank/phoron))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(phorontanks < 10)
 			user.drop_held_item()
 			I.forceMove(src)
@@ -74,16 +80,7 @@
 			to_chat(user, SPAN_NOTICE("[src] is full."))
 		updateUsrDialog()
 		return
-/*
-	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
-		if(anchored)
-			to_chat(user, SPAN_NOTICE("You lean down and unwrench [src]."))
-			anchored = FALSE
-		else
-			to_chat(user, SPAN_NOTICE("You wrench [src] into place."))
-			anchored = TRUE
-		return
-*/
+
 /obj/structure/dispenser/Topic(href, href_list)
 	. = ..()
 	if(.)

@@ -168,9 +168,6 @@
 	turned_on = TRUE
 	static = TRUE
 
-/obj/structure/machinery/defenses/tesla_coil/premade/attackby(obj/item/O, mob/user)
-	return
-
 /obj/structure/machinery/defenses/tesla_coil/premade/smart
 	attack_defenses = FALSE
 

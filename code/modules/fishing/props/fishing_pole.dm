@@ -38,15 +38,21 @@
 		to_chat(user, SPAN_WARNING("It doesn't have any bait attached!"))
 
 /obj/structure/prop/fishing/pole_interactive/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/fish_bait))
-		if(loaded_bait)
-			to_chat(user, SPAN_WARNING("\The [src] already has bait loaded onto the hook!"))
-			return
-		if(user.drop_inv_item_to_loc(I, src))
-			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
-			return
-	return ..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(I, /obj/item/fish_bait))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(loaded_bait)
+		to_chat(user, SPAN_WARNING("\The [src] already has bait loaded onto the hook!"))
+		return
+	if(user.drop_inv_item_to_loc(I, src))
+		loaded_bait = I
+		user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+		return
 
 /obj/structure/prop/fishing/pole_interactive/MouseDrop(obj/over_object)
 	if(CAN_PICKUP(usr, src) && over_object == usr)

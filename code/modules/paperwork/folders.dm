@@ -45,12 +45,18 @@
 		overlays += "folder_paper"
 	return
 
-/obj/item/folder/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/folder/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo) || istype(W, /obj/item/paper_bundle))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.drop_inv_item_to_loc(W, src))
 			to_chat(user, SPAN_NOTICE("You put [W] into [src]."))
 			update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/n_name = strip_html(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text)
 		if((loc == usr && usr.stat == 0))
 			name = "folder[(n_name ? text("- '[n_name]'") : null)]"

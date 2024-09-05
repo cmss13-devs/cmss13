@@ -127,6 +127,10 @@
 		icon_state = initial(icon_state)
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/attackby(obj/item/object, mob/living/mobber)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(length(allowed_items))
 		for (var/i in allowed_items)
 			if(istype(object, i))
@@ -138,7 +142,6 @@
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break
-	. = ..()
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete
 	stored_item = new /obj/item/weapon/sword/machete

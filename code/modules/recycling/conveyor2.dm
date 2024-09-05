@@ -101,6 +101,11 @@
 
 // attack with item, place item on conveyor
 /obj/structure/machinery/conveyor/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/grab/G = I
 	if(istype(G)) // handle grabbed mob
 		if(ismob(G.grabbed_thing))

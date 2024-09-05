@@ -80,9 +80,14 @@
 	black_market_value = 35
 
 /obj/item/coin/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/stack/cable_coil))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (istype(W,/obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/cable_coil/CC = W
-		if(string_attached)
+		if (string_attached)
 			to_chat(user, SPAN_NOTICE("There already is a string attached to this coin."))
 			return
 		if (CC.use(1))
@@ -92,18 +97,19 @@
 		else
 			to_chat(user, SPAN_NOTICE("This cable coil appears to be empty."))
 		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(!string_attached)
-			..()
-			return
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		return
 
-		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
-		CC.amount = 1
-		CC.updateicon()
-		overlays = list()
-		string_attached = null
-		to_chat(user, SPAN_NOTICE(" You detach the string from the coin."))
-	else ..()
+	if (!string_attached)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
+	CC.amount = 1
+	CC.updateicon()
+	overlays = list()
+	string_attached = null
+	to_chat(user, SPAN_NOTICE(" You detach the string from the coin."))
 
 /obj/item/coin/attack_self(mob/user)
 	..()
@@ -124,9 +130,6 @@
 	black_market_value = 0
 	/// What is the token for?
 	var/token_type = VEND_TOKEN_VOID
-
-/obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
-	return
 
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"

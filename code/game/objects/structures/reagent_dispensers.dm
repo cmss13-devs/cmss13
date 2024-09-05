@@ -151,9 +151,13 @@
 	return ..()
 
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
-	if(istype(hit_item, /obj/item/reagent_container))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	..()
+
+	if(istype(hit_item, /obj/item/reagent_container))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		return
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -228,35 +232,34 @@
 		. = ..()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.add_fingerprint(user)
 
 	if(user.action_busy)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
 		return
 
-	/*if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
-			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
-		modded = modded ? 0 : 1
-		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. [ADMIN_JMP(loc)]")
-			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
-			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
 
 		if(rig)
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
-			return ..()
+			return
 
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			return
 
 		if(rig)
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
-			return ..()
+			return
 
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
 
 		var/obj/item/device/assembly_holder/H = W
@@ -270,6 +273,7 @@
 		update_icon()
 
 	else if(istype(W,/obj/item/stack/sheet/plasteel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/plasteel/M = W
 		if(M.get_amount() < STACK_10)
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
@@ -292,6 +296,7 @@
 		update_icon()
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
@@ -305,9 +310,6 @@
 
 		reinforced = FALSE
 		update_icon()
-
-	return ..()
-
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
 	if(exploding) return 0

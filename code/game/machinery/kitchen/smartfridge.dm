@@ -84,11 +84,15 @@
 //********************/
 
 /obj/structure/machinery/smartfridge/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		. = ..()
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		overlays.Cut()
@@ -98,21 +102,25 @@
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL)||HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(panel_open)
 			attack_hand(user)
 		return
 
 	if(!ispowered)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("\The [src] is unpowered and useless."))
 		return
 
 	if(accept_check(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.drop_held_item())
 			add_local_item(O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/bag/plants/P = O
 		var/plants_loaded = 0
 		for(var/obj/G in P.contents)
@@ -129,8 +137,9 @@
 				to_chat(user, SPAN_NOTICE("Some items are refused."))
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
-		return 1
+		return
 
 /obj/structure/machinery/smartfridge/attack_remote(mob/user)
 	return 0

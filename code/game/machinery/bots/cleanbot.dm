@@ -133,7 +133,12 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			src.updateUsrDialog()
 
 /obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
@@ -142,8 +147,6 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
 				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
-	else
-		return ..()
 
 /obj/structure/machinery/bot/cleanbot/process()
 	set background = 1

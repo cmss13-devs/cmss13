@@ -4,18 +4,16 @@
 	name = "supply spawner"
 	var/list/supply = list()
 
-/obj/effect/landmark/supplyspawner/New()
-	..()
-	if(/turf/open in range(1))
-		var/list/T = list()
-		for(var/turf/open/O in range(1))
-			T += O
-		if(length(supply))
-			for(var/s in supply)
-				var/amount = supply[s]
-				for(var/i = 1, i <= amount, i++)
-					new s (pick(T))
-		sleep(-1)
+/obj/effect/landmark/supplyspawner/Initialize(mapload, ...)
+	. = ..()
+	var/list/T = list()
+	for(var/turf/open/O in range(1))
+		T += O
+	if(length(supply) && length(T))
+		for(var/s in supply)
+			var/amount = supply[s]
+			for(var/i = 1, i <= amount, i++)
+				new s (pick(T))
 	qdel(src)
 
 
@@ -343,18 +341,25 @@
 	playsound(src, unpacking_sound, 35)
 	qdel(src)
 
-/obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		if(turf_blocked_check())
-			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
-			return
-		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") != "Yes")
-			return
+/obj/structure/largecrate/machine/attackby(obj/item/attacked_with, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))
-		unpack()
-	else
-		return attack_hand(user)
+	if(!HAS_TRAIT(attacked_with, TRAIT_TOOL_CROWBAR))
+		. |= attack_hand(user)
+		return
+
+/obj/structure/largecrate/machine/can_unpack(obj/item/unpack_with, mob/user)
+	if (turf_blocked_check())
+		return FALSE
+	if (alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") != "Yes")
+		return FALSE
+	return ..()
+
+/obj/structure/largecrate/machine/on_unpack_failure(obj/item/unpack_with, mob/user)
+	..()
+	to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
 
 /obj/structure/largecrate/machine/proc/turf_blocked_check()
 	var/turf/T
@@ -443,19 +448,20 @@
 	name = "sleeper machine crate (x1)"
 	desc = "A crate containing one medical sleeper."
 
-/obj/structure/largecrate/machine/sleeper/unpack()
+/obj/structure/largecrate/machine/sleeper/can_unpack()
 	var/turf/T = get_turf(loc)
-	if(!istype(T, /turf/open))
+	if (!istype(T, /turf/open))
 		return FALSE
+	return ..()
 
+/obj/structure/largecrate/machine/sleeper/unpack()
+	..()
 	if(parts_type)
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/medical_pod/sleeper/E = new (T)
-	var/obj/structure/machinery/sleep_console/C = new (get_step(T, dir_needed))
+	var/turf/current_turf = get_turf(src)
+	var/obj/structure/machinery/medical_pod/sleeper/E = new (current_turf)
+	var/obj/structure/machinery/sleep_console/C = new (get_step(current_turf, dir_needed))
 	E.connected = C
 	C.connected = E
-
-	qdel(src)
-	return TRUE

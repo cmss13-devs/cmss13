@@ -197,46 +197,56 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		return "[nominative] is being affected by some power-related issue."
 
 /obj/structure/machinery/vending/attackby(obj/item/item, mob/user)
-	if(is_tipped_over)
-		to_chat(user, "Tip it back upright first!")
-		return FALSE
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+	if (is_tipped_over)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		to_chat(user, "Tip it back upright first!")
+		return
+
+	if (HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(stat == WORKING)
 			panel_open = !panel_open
 			to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
-			return FALSE
+			return
 		else if(stat & BROKEN)
 			to_chat(user, SPAN_NOTICE("You start to unscrew [src]'s broken panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop unscrewing [src]'s broken panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You unscrew [src]'s broken panel and remove it, exposing many broken wires."))
 			stat &= ~BROKEN
 			stat |= REPAIR_STEP_ONE
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else if(stat & REPAIR_STEP_FOUR)
 			to_chat(user, SPAN_NOTICE("You start to fasten [src]'s new panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop fastening [src]'s new panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You fasten [src]'s new panel, fully repairing the vendor."))
 			stat &= ~REPAIR_STEP_FOUR
 			stat |= FULLY_REPAIRED
 			update_icon()
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
-			return FALSE
+			return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
-			return FALSE
+			return
 		else if(stat == WORKING && panel_open)
 			attack_hand(user)
 			return
@@ -244,19 +254,21 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_NOTICE("You start to remove [src]'s broken wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop removing [src]'s broken wires."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You remove [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
-			return FALSE
+			return
 	else if(istype(item, /obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
-			return FALSE
+			return
 		var/obj/item/stack/cable_coil/CC = item
 		if(stat & REPAIR_STEP_TWO)
 			if(CC.amount < 5)
@@ -264,40 +276,44 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_NOTICE("You start to replace [src]'s removed wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop replacing [src]'s removed wires."))
-				return FALSE
+				return
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You remove [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(item, /obj/item/stack/sheet/metal))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
-			return FALSE
+			return
 		var/obj/item/stack/sheet/metal/M = item
 		if(stat & REPAIR_STEP_THREE)
 			to_chat(user, SPAN_NOTICE("You start to construct a new panel for [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop constructing a new panel for [src]."))
-				return FALSE
+				return
 			if(!M || !M.use(1))
 				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You construct a new panel for [src]."))
 			stat &= ~REPAIR_STEP_THREE
 			stat |= REPAIR_STEP_FOUR
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!wrenchable) return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -312,10 +328,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 					anchored = FALSE
 		return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(panel_open)
 			attack_hand(user)
 		return
 	else if(istype(item, /obj/item/coin))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(coin)
 			user.balloon_alert(user, "already a coin!")
 			return
@@ -325,6 +343,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			tgui_interact(user)
 		return
 	else if(istype(item, /obj/item/spacecash))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(inoperable())
 			return
 		user.set_interaction(src)
@@ -332,8 +351,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			return
 		tgui_interact(user)
 		return
-
-	..()
 
 /obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
 	if(!currently_vending) return

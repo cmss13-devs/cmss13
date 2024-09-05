@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
-	
+
 	set_light(0)
 
 	if(update & 1) //Updating the icon state
@@ -478,7 +478,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
 				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
 				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
-			
+
 			switch(charging)
 				if(APC_NOT_CHARGING)
 					set_light_color(LIGHT_COLOR_RED)
@@ -566,12 +566,19 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
 /obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(isRemoteControlling(user) && get_dist(src, user) > 1)
-		return attack_hand(user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= attack_hand(user)
+		return
+
 	add_fingerprint(user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(user.action_busy) return
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
@@ -595,9 +602,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_APC_REMOVE_BOARD, src)
 
 		else if(opened != APC_COVER_REMOVED) //Cover isn't removed
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			opened = APC_COVER_CLOSED
 			update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && !(stat & BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(coverlocked && !(stat & MAINT))
 			to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
 			return
@@ -605,6 +614,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			opened = APC_COVER_OPEN
 			update_icon()
 	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea how to fit [W] into [src]."))
 			return
@@ -622,6 +632,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				chargecount = 0
 				update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //Haxing
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(opened)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("\The [src]'s wiring confuses you."))
@@ -657,6 +668,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe \the [W] on [src]."))
 			return
@@ -675,6 +687,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
@@ -702,6 +715,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				make_terminal()
 				terminal.connect_to_network()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
@@ -726,6 +740,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			qdel(terminal)
 			terminal = null
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
@@ -738,12 +753,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(W)
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
 	else if(iswelder(W) && opened && has_electronics == 0 && !terminal)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -764,6 +781,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			deconstruct()
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
@@ -790,9 +808,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			update_icon()
 		else
 			if(isRemoteControlling(user))
-				return attack_hand(user)
+				. |= attack_hand(user)
+				return
 			if(!opened && wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
-				return attack_hand(user)
+				. |= attack_hand(user)
+				return
 			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
 			SPAN_DANGER("You hit [src] with \the [W]!"))
 

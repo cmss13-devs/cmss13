@@ -152,12 +152,14 @@
 	matter = list("metal" = 2000)
 
 /obj/item/weapon/gun/pill/attackby(obj/item/I as obj, mob/user as mob)
-	if(I.loc == current_mag)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
 	if(!istype(I, /obj/item/reagent_container/pill))
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(current_mag.current_rounds >= current_mag.max_rounds)
 		to_chat(user, SPAN_WARNING("[src] is at maximum ammo capacity!"))
 		return

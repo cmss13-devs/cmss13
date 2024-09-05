@@ -25,10 +25,14 @@
 	return ..()
 
 /obj/item/iff_tag/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && ishuman(user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		handle_reprogramming(user)
 		return
-	return ..()
 
 /obj/item/iff_tag/proc/handle_reprogramming(mob/living/carbon/human/programmer, mob/living/carbon/xenomorph/xeno)
 	var/list/id_faction_groups = programmer.get_id_faction_group()

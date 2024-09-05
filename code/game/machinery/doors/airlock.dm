@@ -551,11 +551,17 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(SEND_SIGNAL(attacking_item, COMSIG_ITEM_ATTACK_AIRLOCK, src, user) & COMPONENT_CANCEL_AIRLOCK_ATTACK)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 
 	if(istype(attacking_item, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/clothing/mask/cigarette/L = attacking_item
 			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from [src]"))
 			return
@@ -568,6 +574,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"), \
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
 			SPAN_NOTICE("You hear tearing noises!"))
@@ -585,6 +592,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return
 
 	if((iswelder(attacking_item) && !operating && density))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/weldingtool/W = attacking_item
 		var/weldtime = 50
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
@@ -610,6 +618,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
 			return
@@ -620,12 +629,15 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
-		return attack_hand(user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= attack_hand(user)
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_MULTITOOL))
-		return attack_hand(user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= attack_hand(user)
 
 	else if(isgun(attacking_item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/weapon/gun/gun_item = attacking_item
 		for(var/slot in gun_item.attachments)
 			if(istype(gun_item.attachments[slot], /obj/item/attachable/bayonet))
@@ -649,6 +661,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	else if(attacking_item.pry_capable)
 		if(attacking_item.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
@@ -695,32 +708,31 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
 				deconstruct()
 				return
+			return
 
-		else if(arePowerSystemsOn() && attacking_item.pry_capable != IS_PRY_CAPABLE_FORCE)
+		if (!operating)
+			return
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if(arePowerSystemsOn() && attacking_item.pry_capable != IS_PRY_CAPABLE_FORCE)
 			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
-
 		else if(locked)
 			to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
-
 		else if(welded)
 			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
-
+		//handled by the item's afterattack
 		else if(attacking_item.pry_capable == IS_PRY_CAPABLE_FORCE)
-			return FALSE //handled by the item's afterattack
+			return
+		else
+			if(density)
+				INVOKE_ASYNC(src, PROC_REF(open), 1)
+			else
+				INVOKE_ASYNC(src, PROC_REF(close), 1)
 
-		else if(!operating)
-			spawn(0)
-				if(density)
-					open(1)
-				else
-					close(1)
-
-		return TRUE //no afterattack call
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if(istype(attacking_item, /obj/item/large_shrapnel))
-		return FALSE //trigger afterattack call
-	else
-		return ..()
+		return
 
 
 /obj/structure/machinery/door/airlock/open(forced=0)

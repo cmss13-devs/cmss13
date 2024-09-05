@@ -142,6 +142,10 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom traits --
+/// This item can be ignited by items that can ignite (have the trait TRAIT_IGNITES)
+#define TRAIT_IGNITABLE "ignitable"
+
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
@@ -299,6 +303,12 @@
 
 // This item can't be implanted into someone, regardless of the size of the item.
 #define TRAIT_ITEM_NOT_IMPLANTABLE "t_item_not_implantable"
+
+/// This item can ignite other atoms
+#define TRAIT_IGNITER "t_item_igniter"
+
+/// This item can write on writable objs
+#define TRAIT_WRITABLE "t_item_writable"
 
 //-- structure traits --
 // TABLE TRAITS

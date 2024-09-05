@@ -414,9 +414,14 @@
 	is_groundmap_turf = TRUE
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
 			to_chat(user, "There's already \a [L] at this position!")
@@ -1067,8 +1072,13 @@
 			P.Spread(probability - prob_loss)
 
 /turf/open/jungle/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
 			to_chat(user, "There's already \a [L] at this position!")

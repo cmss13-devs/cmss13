@@ -28,16 +28,22 @@
 	inv_overlay = null
 	. = ..()
 
+/obj/item/clothing/accessory/proc/interact_with_item(obj/item/interacting_with, mob/user)
+	return
+
 /obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
 //when user attached an accessory to S
+// TODO: change this to use signals
 /obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	if(!istype(S))
 		return
 	has_suit = S
 	forceMove(has_suit)
 	has_suit.overlays += get_inv_overlay()
+	RegisterSignal(S, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_clothing_attackby))
+	RegisterSignal(S, COMSIG_PARENT_QDELETING, PROC_REF(clear_signals_from_attached))
 
 	if(user)
 		if(!silent)
@@ -45,21 +51,24 @@
 		src.add_fingerprint(user)
 	return TRUE
 
+/obj/item/clothing/accessory/proc/handle_clothing_attackby(obj/item/clothing/attached_to, obj/item/attacked_with, mob/living/user)
+	return interact_with_item(attacked_with, user)
+
+/obj/item/clothing/accessory/proc/clear_signals_from_attached(obj/item/clothing/attached_to)
+	UnregisterSignal(attached_to, list(COMSIG_PARENT_ATTACKBY, COMSIG_PARENT_QDELETING))
+
 /obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
 	if(!has_suit)
 		return
 	has_suit.overlays -= get_inv_overlay()
 	has_suit = null
+	clear_signals_from_attached(C)
 	if(usr)
 		usr.put_in_hands(src)
 		src.add_fingerprint(usr)
 	else
 		src.forceMove(get_turf(src))
 	return TRUE
-
-//default attackby behaviour
-/obj/item/clothing/accessory/attackby(obj/item/I, mob/user)
-	..()
 
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user as mob)
@@ -499,8 +508,21 @@
 	if (hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
+/obj/item/clothing/accessory/storage/interact_with_item(obj/item/interacting_with, mob/user)
+	return hold.attackby(interacting_with, user)
+
+// TODO: Storage component, no more of these attackby calls please
 /obj/item/clothing/accessory/storage/attackby(obj/item/W, mob/user)
-	return hold.attackby(W, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (interact_with_item(W, user))
+		. |= ATTACK_HINT_NO_AFTERATTACK
+
+// TODO: Storage component, no more of these attackby calls please
+/obj/item/clothing/accessory/storage/handle_clothing_attackby(obj/item/clothing/attached_to, obj/item/attacked_with, mob/living/user)
+	interact_with_item(attacked_with, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
 	. = ..()
@@ -560,7 +582,12 @@
 	hold = /obj/item/storage/internal/accessory/black_vest
 
 /obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/vial
 		var/obj/item/cell/battery
@@ -590,7 +617,6 @@
 			AH.hold.handle_item_insertion(battery)
 			qdel(src)
 			return
-	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/brown_vest
 	name = "brown webbing vest"
@@ -661,7 +687,12 @@
 	)
 
 /obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/surgical_tray))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/surgical_tray/ST = W
 		if(!length(ST.contents))
 			return
@@ -677,7 +708,6 @@
 			attempt_item_insertion(I, TRUE, user)
 		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
 		return
-	return ..()
 
 /obj/item/storage/internal/accessory/surg_vest/equipped/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/pict_system(src)
@@ -956,7 +986,12 @@
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
 /obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		var/obj/item/card/id/id_card = null
 
@@ -971,7 +1006,6 @@
 		else
 			to_chat(user, "[src] rejects your insufficient access rights.")
 		return
-	..()
 
 /obj/item/clothing/accessory/holobadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))

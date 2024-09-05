@@ -245,6 +245,11 @@
 	take_victim(H, H)
 
 /obj/structure/machinery/optable/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W, /obj/item/tank/anesthetic))
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)

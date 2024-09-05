@@ -12,8 +12,13 @@
 	var/meattype = 0 // 0 - Nothing, 1 - Monkey, 2 - Xeno
 
 /obj/structure/kitchenspike/attackby(obj/item/grab/G, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(G, /obj/item/grab))
 		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	to_chat(user, SPAN_DANGER("They are too big for the spike, try something smaller!"))
 
 // MouseDrop_T(atom/movable/C, mob/user)

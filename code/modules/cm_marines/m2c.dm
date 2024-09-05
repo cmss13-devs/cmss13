@@ -148,12 +148,19 @@
 		HMG.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
-	if(!iswelder(O) || user.action_busy)
+	if(!iswelder(O))
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (user.action_busy)
+		return
 	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return
@@ -330,10 +337,16 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
+
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/m2c/M = O
 		if(rounds)
 			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))

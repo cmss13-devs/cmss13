@@ -243,13 +243,16 @@
 	plantname = "ambrosia"
 
 /obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/paper))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You scoop up the ambrosia vulgaris and wrap it in the paper, making a joint."))
 		new /obj/item/clothing/mask/cigarette/weed (user.loc)
 		qdel(src)
 		qdel(W)
-	else
-		return ..()
 
 
 /obj/item/reagent_container/food/snacks/grown/ambrosiadeus
@@ -304,12 +307,15 @@
 	plantname = "pumpkin"
 
 /obj/item/reagent_container/food/snacks/grown/pumpkin/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You carve a face into [src]!"))
 		new /obj/item/clothing/head/pumpkinhead (user.loc)
 		qdel(src)
-	else
-		return ..()
 
 /obj/item/reagent_container/food/snacks/grown/lime
 	name = "lime"

@@ -10,7 +10,12 @@
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
@@ -19,7 +24,6 @@
 		S.sign_state = icon_state
 		S.icon = icon
 		deconstruct(FALSE)
-	else ..()
 
 /obj/item/sign
 	name = "sign"
@@ -28,8 +32,14 @@
 	w_class = SIZE_MEDIUM //big
 	var/sign_state = ""
 
-/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
+//construction
+/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel") return
 		var/obj/structure/sign/S = new(user.loc)
@@ -49,7 +59,6 @@
 		S.icon = icon
 		to_chat(user, "You fasten \the [S] with your [tool].")
 		qdel(src)
-	else ..()
 
 //=====================//
 // Miscellaneous Signs //

@@ -60,6 +60,11 @@
 // tgui \\
 
 /obj/structure/machinery/sleep_console/attackby(obj/item/with, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!istype(with, /obj/item/research_upgrades/sleeper))
 		return
 	if(connected.upgraded)

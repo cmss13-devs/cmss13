@@ -43,7 +43,7 @@
 		if(target.cut_level > 1)
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			target.attackby(src, user)
+			target.try_cut(src, user)
 
 	return ..()
 

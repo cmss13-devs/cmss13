@@ -391,13 +391,17 @@
 	return TRUE
 
 /obj/item/hardpoint/attackby(obj/item/O, mob/user)
-	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		handle_repair(O, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	..()
+
+	if(!iswelder(O))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+	handle_repair(O, user)
 
 //repair procs
 /obj/item/hardpoint/proc/handle_repair(obj/item/tool/weldingtool/WT, mob/user)

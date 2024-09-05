@@ -9,6 +9,7 @@
 	throwpass = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
+	wrenchable = FALSE
 	/// The type of stack the barricade dropped when disassembled if any.
 	var/stack_type
 	/// The amount of stack dropped when disassembled at full health
@@ -190,7 +191,12 @@
 	return attack_alien(user)
 
 /obj/structure/barricade/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(item, /obj/item/weapon/zombie_claws))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
@@ -200,10 +206,12 @@
 
 	for(var/obj/effect/xenomorph/acid/acid in src.loc)
 		if(acid.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	if(istype(item, /obj/item/stack/barbed_wire))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/barbed_wire/barbed_wire = item
 		if(can_wire)
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [item.name] on [src]."),
@@ -229,6 +237,7 @@
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(is_wired)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
@@ -250,7 +259,6 @@
 		return
 
 	if(item.force > force_level_absorption)
-		..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)

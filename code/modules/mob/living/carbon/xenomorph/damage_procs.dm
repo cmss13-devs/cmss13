@@ -1,7 +1,13 @@
 /mob/living/carbon/xenomorph/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(user.a_intent != INTENT_HELP)
-		return ..()
+		return
+
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) && ishuman(user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/mob/living/carbon/human/programmer = user
 		if(!iff_tag)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to reprogram."))
@@ -17,6 +23,7 @@
 		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
 		return
 	if(stat == DEAD)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!istype(item, /obj/item/reagent_container/syringe))
 			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 			if(current_surgery)
@@ -26,23 +33,23 @@
 				if(initiate_surgery_moment(item, src, "head" , user))
 					return
 		return
-	if(item.type in SURGERY_TOOLS_PINCH)
-		if(!iff_tag)
-			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))
-			return
-		user.visible_message(SPAN_NOTICE("[user] starts removing \the [src]'s IFF tag..."), SPAN_NOTICE("You start removing \the [src]'s IFF tag..."), max_distance = 3)
-		if(!do_after(user, 5 SECONDS * SURGERY_TOOLS_PINCH[item.type], INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
-			return
-		if(!iff_tag)
-			to_chat(user, SPAN_WARNING("\The [src]'s tag got removed while you were removing it!"))
-			return
-		user.put_in_hands(iff_tag)
-		iff_tag = null
-		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
-		if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
-			to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
+	if(!(item.type in SURGERY_TOOLS_PINCH))
 		return
-	return ..()
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!iff_tag)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] starts removing \the [src]'s IFF tag..."), SPAN_NOTICE("You start removing \the [src]'s IFF tag..."), max_distance = 3)
+	if(!do_after(user, 5 SECONDS * SURGERY_TOOLS_PINCH[item.type], INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
+		return
+	if(!iff_tag)
+		to_chat(user, SPAN_WARNING("\The [src]'s tag got removed while you were removing it!"))
+		return
+	user.put_in_hands(iff_tag)
+	iff_tag = null
+	user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+	if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+		to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
 

@@ -16,6 +16,12 @@
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/attackby(obj/item/C as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+
 	add_fingerprint(user)
 	if(!C.pry_capable)
 		return
@@ -29,7 +35,6 @@
 			set_opacity(0)
 			operating = 0
 			return
-	return
 
 /obj/structure/machinery/door/poddoor/shutters/open()
 	if(operating) //doors can still open when emag-disabled
@@ -152,9 +157,13 @@
 		return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	..()
+
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft
 	name = "Anti-Theft Shutters"

@@ -7,6 +7,18 @@
 	density = TRUE
 	opacity = TRUE
 
+/obj/structure/bookcase/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/structure/bookcase/write(obj/item/writer, mob/user, mods, color, crayon)
+	var/newname = stripped_input(user, "What would you like to title this bookshelf?")
+	if(!newname)
+		return
+	else
+		name = ("bookcase ([strip_html(newname)])")
+		playsound(src, "paper_writing", 15, TRUE)
+
 /obj/structure/bookcase/deconstruct(disassembled)
 	new /obj/item/stack/sheet/metal(loc)
 	return ..()
@@ -33,25 +45,22 @@
 	update_icon()
 
 /obj/structure/bookcase/attackby(obj/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/book))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		O.forceMove(src)
 		update_icon()
-	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
-		var/newname = stripped_input(user, "What would you like to title this bookshelf?")
-		if(!newname)
-			return
-		else
-			name = ("bookcase ([strip_html(newname)])")
-			playsound(src, "paper_writing", 15, TRUE)
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
 			user.visible_message("[user] deconstructs [src].", \
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
-	else
-		..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(length(contents))

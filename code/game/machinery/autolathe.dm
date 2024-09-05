@@ -268,7 +268,12 @@
 // --- END TGUI --- \\
 
 /obj/structure/machinery/autolathe/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
@@ -278,6 +283,7 @@
 		return
 
 	if(panel_open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		//Don't eat multitools or wirecutters used on an open lathe.
 		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 			attack_hand(user)
@@ -291,6 +297,7 @@
 	if(inoperable())
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	//Resources are being loaded.
 	var/obj/item/eating = O
 	if(!eating.matter)
@@ -345,7 +352,7 @@
 
 	update_printables()
 	updateUsrDialog()
-	return TRUE //so the item's afterattack isn't called
+	. |= ATTACK_HINT_NO_AFTERATTACK //so the item's afterattack isn't called
 
 //Updates overall lathe storage size.
 /obj/structure/machinery/autolathe/RefreshParts()

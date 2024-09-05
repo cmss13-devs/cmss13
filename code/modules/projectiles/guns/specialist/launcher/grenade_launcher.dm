@@ -102,10 +102,15 @@
 
 
 /obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		attach_to_gun(user,I)
 		return
-	return cylinder.attackby(I, user)
+	. |= cylinder.attackby(I, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))

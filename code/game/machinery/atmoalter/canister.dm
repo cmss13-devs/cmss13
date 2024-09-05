@@ -97,11 +97,14 @@ update_flag
 	return 1
 
 /obj/structure/machinery/portable_atmospherics/canister/attackby(obj/item/W as obj, mob/user as mob)
-	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		visible_message(SPAN_DANGER("[user] hits [src] with [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)
-	..()
 
 	SSnano.nanomanager.update_uis(src) // Update all NanoUIs attached to src
 

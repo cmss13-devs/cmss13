@@ -18,13 +18,17 @@
 	var/table_type = /obj/structure/surface/table //what type of table it creates when assembled
 
 /obj/item/frame/table/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-	..()
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/stack/sheet/metal(user.loc)
 		qdel(src)
 
 	if(istype(W, /obj/item/stack/rods))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/rods/R = W
 		if(R.use(4))
 			new /obj/item/frame/table/reinforced(get_turf(src))
@@ -35,6 +39,7 @@
 			to_chat(user, SPAN_WARNING("You need at least four rods to reinforce [src]."))
 
 	if(istype(W, /obj/item/stack/sheet/wood))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/wood/S = W
 		if(S.use(2))
 			new /obj/item/frame/table/wood(get_turf(src))
@@ -85,7 +90,12 @@
 	table_type = /obj/structure/surface/table/reinforced
 
 /obj/item/frame/table/reinforced/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		deconstruct()
 
 /obj/item/frame/table/reinforced/deconstruct(disassembled = TRUE)
@@ -107,13 +117,18 @@
 	table_type = /obj/structure/surface/table/woodentable
 
 /obj/item/frame/table/wood/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		deconstruct()
 
 	if(istype(W, /obj/item/stack/tile/carpet) && table_type == /obj/structure/surface/table/woodentable)
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
 			new /obj/item/frame/table/gambling(get_turf(src))
 			qdel(src)
@@ -148,10 +163,15 @@
 	table_type = /obj/structure/surface/table/gamblingtable
 
 /obj/item/frame/table/gambling/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		deconstruct()
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You pry the carpet out of [src]."))
 		new /obj/item/stack/tile/carpet(get_turf(src))
 		new /obj/item/frame/table/wood(get_turf(src))

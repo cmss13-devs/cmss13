@@ -94,13 +94,18 @@
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
 
 /obj/vehicle/powerloader/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = W
 		if(PC.linked_powerloader == src)
 			unbuckle() //clicking the powerloader with its own clamp unbuckles the pilot.
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
-			return 1
-	. = ..()
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 /obj/vehicle/powerloader/buckle_mob(mob/M, mob/user)
 	if(M != user)

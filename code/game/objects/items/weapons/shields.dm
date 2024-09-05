@@ -88,13 +88,16 @@
 	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(cooldown < world.time - 25)
 		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
-	else
-		..()
 
 /obj/item/weapon/shield/energy
 	name = "energy combat shield"

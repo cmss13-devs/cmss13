@@ -29,6 +29,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	icon_state = "terminal"
 
+	deconstructible = FALSE
+
 	var/mob/hologram/railgun/eye
 	var/turf/last_location
 	var/turf/start_location
@@ -59,9 +61,6 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 #endif
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos
-
-/obj/structure/machinery/computer/railgun/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
-	return
 
 /obj/structure/machinery/computer/railgun/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE

@@ -44,8 +44,12 @@
 	return
 
 /obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		W.forceMove(src)
 		if(istype(W, /obj/item/paper))
@@ -53,11 +57,11 @@
 		to_chat(user, SPAN_NOTICE("You clip [W] onto [src]."))
 		update_icon()
 
-	else if(istype(toppaper) && HAS_TRAIT(W, TRAIT_TOOL_PEN))
+	else if(istype(toppaper))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		SEND_SIGNAL(toppaper, COMSIG_ITEM_WRITE, W, user)
 		toppaper.attackby(W, usr)
 		update_icon()
-
-	return
 
 /obj/item/clipboard/attack_self(mob/user)
 	..()
@@ -113,10 +117,8 @@
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) && (P == toppaper) )
 
 				var/obj/item/I = usr.get_active_hand()
-
-				if(HAS_TRAIT(I, TRAIT_TOOL_PEN))
-
-					P.attackby(I, usr)
+				if (!isnull(I))
+					SEND_SIGNAL(P, COMSIG_ITEM_WRITE, I, usr)
 
 		else if(href_list["remove"])
 			var/obj/item/P = locate(href_list["remove"])

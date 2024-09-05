@@ -59,10 +59,15 @@
 	. = ..()
 
 /obj/structure/pipes/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		return ..()
+		return
 
 	var/turf/T = src.loc
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(level == 1 && isturf(T) && T.intact_tile)
 		to_chat(user, SPAN_WARNING("You must remove the plating first."))
 		return

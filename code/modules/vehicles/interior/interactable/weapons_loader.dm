@@ -14,10 +14,15 @@
 
 // Loading new magazines
 /obj/structure/weapons_loader/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(I, /obj/item/ammo_magazine/hardpoint))
-		return ..()
+		return
 
 	if(!skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_LARGE))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You have no idea how to operate this thing!"))
 		return
 
@@ -32,8 +37,8 @@
 			break
 
 	if(isnull(reloading_hardpoint))
-		return ..()
-
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	// Reload the hardpoint
 	reloading_hardpoint.try_add_clip(I, user)
 

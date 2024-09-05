@@ -265,13 +265,20 @@
 		. += SPAN_NOTICE("Contains a warhead.")
 
 /obj/item/ammo_magazine/rocket/custom/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(current_rounds <= 0)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("The rocket tube has been used already."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!warhead)
 			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
 			return
@@ -282,6 +289,7 @@
 		locked = !locked
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(fuel)
 			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
 			return
@@ -292,6 +300,7 @@
 			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/rocket) && !locked)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(warhead)
 			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
 			return

@@ -173,8 +173,12 @@
 // attackby item
 // wrench: (un)anchor
 // weldingtool: convert to real pipe
-
+// TODO: Datumized states jesus fucking christ
 /obj/structure/disposalconstruct/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	var/nicetype = "pipe"
 	var/ispipe = 0 // Indicates if we should change the level of this pipe
 	src.add_fingerprint(user)
@@ -200,12 +204,14 @@
 
 	var/turf/T = src.loc
 	if(T.intact_tile)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, "You can only attach the [nicetype] if the floor plating is removed.")
 		return
 
 	var/obj/structure/disposalpipe/CP = locate() in T
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(anchored)
 			anchored = FALSE
 			if(ispipe)
@@ -244,6 +250,7 @@
 		update()
 
 	else if(iswelder(I))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return

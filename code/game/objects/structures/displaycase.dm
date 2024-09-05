@@ -57,10 +57,12 @@
 
 
 /obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.health -= W.force * W.demolition_mod
 	src.healthcheck()
-	..()
-	return
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)

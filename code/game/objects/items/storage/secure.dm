@@ -32,7 +32,12 @@
 	. += "The service panel is [src.open ? "open" : "closed"]."
 
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(locked)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
@@ -58,10 +63,6 @@
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
 		return
-
-	// -> storage/attackby() what with handle insertion, etc
-	..()
-
 
 /obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
 	if (locked)

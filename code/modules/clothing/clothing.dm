@@ -419,7 +419,10 @@
 
 /obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
 	. = ..()
-	attempt_insert_item(user, attacking_item)
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if (attempt_insert_item(user, attacking_item))
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
 	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?

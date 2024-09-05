@@ -35,6 +35,11 @@
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Turing Dispenser connected."))
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(machine_processing)
 		to_chat(user, SPAN_WARNING("The [src] is still running!"))
 		return

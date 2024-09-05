@@ -6,9 +6,6 @@
 
 	var/armed = 0
 
-/obj/item/device/assembly/mousetrap/attackby()
-	return
-
 /obj/item/device/assembly/mousetrap/get_examine_text(mob/user)
 	. = ..()
 	if(armed)

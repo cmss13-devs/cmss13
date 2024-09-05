@@ -129,9 +129,9 @@
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/attackby(obj/item/W, mob/user)
-	if(isxeno(user))
-		return
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 /turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	return
@@ -432,8 +432,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	..()
 
 /turf/closed/wall/mineral/uranium/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	radiate()
-	..()
 
 /turf/closed/wall/mineral/uranium/Collided(atom/movable/AM)
 	radiate()
@@ -1044,12 +1047,15 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
-	if(!(W.flags_item & NOBLUDGEON))
-		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
-		playsound(src, "alien_resin_break", 25)
-	else
-		return attack_hand(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(W.flags_item & NOBLUDGEON)
+		return
+	user.animation_attack_on(src)
+	take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
+	playsound(src, "alien_resin_break", 25)
 
 /obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
@@ -1277,15 +1283,17 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
-	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_ATTACKBY, W, user) & COMPONENT_CANCEL_ATTACKBY)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
 	if(!(W.flags_item & NOBLUDGEON))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
-	else
-		return attack_hand(user)
+		return
+	. |= attack_hand(user)
 
 /turf/closed/wall/resin/ChangeTurf(newtype, ...)
 	var/hive = hivenumber

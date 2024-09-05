@@ -16,15 +16,17 @@
 
 
 /obj/structure/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	// Using a multitool lets you access the receiver's interface
 	if(istype(P, /obj/item/device/multitool))
 		attack_hand(user)
-
-	else
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
-			return 0
+	else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
+		return
 
 	switch(construct_op)
 		if(0)

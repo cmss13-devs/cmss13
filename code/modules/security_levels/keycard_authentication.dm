@@ -27,20 +27,27 @@
 	return
 
 /obj/structure/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return
-	if(istype(W,/obj/item/card/id))
-		var/obj/item/card/id/ID = W
-		if(ACCESS_MARINE_COMMAND in ID.access)
-			if(active == 1)
-				//This is not the device that made the initial request. It is the device confirming the request.
-				if(event_source)
-					event_source.confirmed = 1
-					event_source.event_confirmed_by = user
-			else if(screen == 2)
-				event_triggered_by = usr
-				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
+	if(!istype(W,/obj/item/card/id))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/card/id/ID = W
+	if(ACCESS_MARINE_COMMAND in ID.access)
+		if(active == 1)
+			//This is not the device that made the initial request. It is the device confirming the request.
+			if(event_source)
+				event_source.confirmed = 1
+				event_source.event_confirmed_by = user
+		else if(screen == 2)
+			event_triggered_by = usr
+			broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
 /obj/structure/machinery/keycard_auth/power_change()
 	..()
@@ -183,11 +190,17 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 	window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks, which can be found in the security offices of various cell blocks around the station."
 
 /obj/structure/machinery/keycard_auth/lockdown/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return
 	if(!istype(W, card_type))
 		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 
 	var/obj/item/card/data/cID = W
 	stored_id = cID

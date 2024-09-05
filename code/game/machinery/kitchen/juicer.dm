@@ -35,12 +35,19 @@
 
 
 /obj/structure/machinery/juicer/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		. = ..()
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (istype(O,/obj/item/reagent_container/glass) || \
 		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass))
 		if (beaker)
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			if(user.drop_held_item())
 				O.forceMove(src)
@@ -48,14 +55,15 @@
 				verbs += /obj/structure/machinery/juicer/verb/detach
 				update_icon()
 			updateUsrDialog()
-			return 0
+			return
 	if (!is_type_in_list(O, allowed_items))
 		to_chat(user, "It looks as not containing any juice.")
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	if(user.drop_held_item())
 		O.forceMove(src)
 	updateUsrDialog()
-	return 0
+	return
 
 /obj/structure/machinery/juicer/attack_remote(mob/user as mob)
 	return 0

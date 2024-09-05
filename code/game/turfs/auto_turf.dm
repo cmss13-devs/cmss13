@@ -179,8 +179,13 @@
 	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
 			to_chat(user, "There's already \a [L] at this position!")

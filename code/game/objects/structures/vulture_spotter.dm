@@ -53,15 +53,19 @@
 	. += SPAN_NOTICE("You can rotate [src] with <b>Alt-click</b>.")
 
 /obj/structure/vulture_spotter_tripod/attackby(obj/item/thing, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(thing, /obj/item/device/vulture_spotter_scope))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		on_scope_attach(user, thing)
 		return
 
 	if(HAS_TRAIT(thing, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		on_screwdriver(user)
 		return
-
-	return ..()
 
 /obj/structure/vulture_spotter_tripod/MouseDrop(over_object, src_location, over_location)
 	if(!ishuman(usr))

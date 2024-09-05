@@ -101,7 +101,12 @@
 //Step one - dehairing.
 
 /obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.sharp)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		//visible message on mobs is defined as visible_message(message, self_message, blind_message)
 		user.visible_message(SPAN_NOTICE("\the [usr] starts cutting hair off \the [src]"), SPAN_NOTICE("You start cutting the hair off \the [src]"), "You hear the sound of a knife rubbing against flesh")
 		if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -116,9 +121,6 @@
 			var/obj/item/stack/sheet/hairlesshide/HS = new(usr.loc)
 			HS.amount = 1
 			src.use(1)
-	else
-		return ..()
-
 
 //Step two - washing..... it's actually in washing machine code.
 

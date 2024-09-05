@@ -30,7 +30,12 @@
 
 
 /turf/open/floor/plating/attackby(obj/item/C, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istypestrict(C, /obj/item/stack/rods))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/rods/R = C
 		if(R.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more rods."))
@@ -45,10 +50,12 @@
 				playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		return
 	if(istype(C, /obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
 		return
 	if(iswelder(C))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -64,6 +71,7 @@
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 		return
 	if(istype(C, /obj/item/stack/tile))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(broken || burnt)
 			to_chat(user, SPAN_NOTICE("This section is too damaged to support a tile. Use a welder to fix the damage."))
 			return
@@ -75,6 +83,7 @@
 		T.build(src)
 		return
 	if(istype(C, /obj/item/stack/catwalk))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(broken || burnt)
 			to_chat(user, SPAN_NOTICE("This section is too damaged to support a catwalk. Use a welder to fix the damage."))
 			return
@@ -85,7 +94,6 @@
 		T.use(1)
 		T.build(src)
 		return
-	return ..()
 
 /turf/open/floor/plating/make_plating()
 	return
@@ -278,7 +286,12 @@
 		overlays += image(icon, src, "catwalk", CATWALK_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
@@ -288,6 +301,7 @@
 			update_icon()
 			return
 	if(istype(W, /obj/item/stack/catwalk))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
@@ -296,7 +310,6 @@
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 			update_icon()
 			return
-	return ..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile()
 	if(covered)
@@ -775,9 +788,6 @@
 /turf/open/floor/almayer/empty/fire_act(exposed_temperature, exposed_volume)
 	return
 
-/turf/open/floor/almayer/empty/attackby() //This should fix everything else. No cables, etc
-	return
-
 /turf/open/floor/almayer/empty/Entered(atom/movable/AM)
 	..()
 	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
@@ -1149,19 +1159,25 @@
 	return
 
 /turf/open/floor/engine/attackby(obj/item/C as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!C)
 		return
 	if(!user)
 		return
-	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
-		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
-		SPAN_NOTICE("You start removing [src]'s protective cover."))
-		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			new /obj/item/stack/rods(src, 2)
-			var/turf/open/floor/F = ScrapeAway()
-			if(istype(/turf/open/floor, F))
-				F.make_plating()
+	if(!HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
+	SPAN_NOTICE("You start removing [src]'s protective cover."))
+	playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
+	if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		new /obj/item/stack/rods(src, 2)
+		var/turf/open/floor/F = ScrapeAway()
+		if(istype(/turf/open/floor, F))
+			F.make_plating()
 
 
 /turf/open/floor/engine/ex_act(severity)

@@ -322,7 +322,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			A.moveToNullspace()
 
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
-	if(ishuman(occupant))
+	// Monkeys, farwas, etc do not have jobs
+	if(ishuman(occupant) && job)
 		var/mob/living/carbon/human/H = occupant
 		job.on_cryo(H)
 		if(H.assigned_squad)
@@ -369,56 +370,65 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	stop_processing()
 
 /obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)
-	if(isxeno(user))
-		return FALSE
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		if(occupant)
-			to_chat(user, SPAN_WARNING("[src] is occupied."))
-			return FALSE
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-		if(!isliving(G.grabbed_thing))
-			return FALSE
+	if (isxeno(user))
+		return
+	if (!istype(W, /obj/item/grab))
+		return
 
-		var/willing = FALSE //We don't want to allow people to be forced into despawning.
-		var/mob/living/M = G.grabbed_thing
+	var/obj/item/grab/G = W
+	if (occupant)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		to_chat(user, SPAN_WARNING("[src] is occupied."))
+		return
 
-		if(M.stat == DEAD) //This mob is dead
-			to_chat(user, SPAN_WARNING("[src] immediately rejects [M]. \He passed away!"))
-			return FALSE
+	if (!isliving(G.grabbed_thing))
+		return
+	. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+	var/willing = FALSE //We don't want to allow people to be forced into despawning.
+	var/mob/living/M = G.grabbed_thing
 
-		if(isxeno(M))
-			to_chat(user, SPAN_WARNING("There is no way [src] will accept [M]!"))
-			return FALSE
+	if (M.stat == DEAD) //This mob is dead
+		to_chat(user, SPAN_WARNING("[src] immediately rejects [M]. \He passed away!"))
+		return
 
-		if(M.client)
-			if(alert(M,"Would you like to enter cryosleep?", , "Yes", "No") == "Yes")
-				if(!M || !G || !G.grabbed_thing)
-					return FALSE
-				willing = TRUE
-		else
+	if (isxeno(M))
+		to_chat(user, SPAN_WARNING("There is no way [src] will accept [M]!"))
+		return
+
+	if (M.client)
+		if(alert(M,"Would you like to enter cryosleep?", , "Yes", "No") == "Yes")
+			if(!M || !G || !G.grabbed_thing)
+				return
 			willing = TRUE
+	else
+		willing = TRUE
 
-		if(willing)
+	if (!willing)
+		return
 
-			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
-			SPAN_NOTICE("You start putting [M] into [src]."))
+	visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
+	SPAN_NOTICE("You start putting [M] into [src]."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			if(!M || !G || !G.grabbed_thing) return
-			if(occupant)
-				to_chat(user, SPAN_WARNING("[src] is occupied."))
-				return FALSE
+	if (!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+	if (!M || !G || !G.grabbed_thing) return
+	if (occupant)
+		to_chat(user, SPAN_WARNING("[src] is occupied."))
+		return
 
-			go_in_cryopod(M)
+	go_in_cryopod(M)
 
-			//Book keeping!
-			var/area/location = get_area(src)
-			message_admins("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
+	//Book keeping!
+	var/area/location = get_area(src)
+	message_admins("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
 
-			//Despawning occurs when process() is called with an occupant without a client.
-			add_fingerprint(user)
-			return TRUE
+	//Despawning occurs when process() is called with an occupant without a client.
+	add_fingerprint(user)
+	. |= ATTACK_HINT_NO_AFTERATTACK
+	return
 
 /obj/structure/machinery/cryopod/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))

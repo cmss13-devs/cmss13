@@ -77,6 +77,10 @@
 
 ///Attack by item places it in to disposal
 /obj/structure/machinery/disposal/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(stat & BROKEN || !I || !user)
 		return
 
@@ -84,8 +88,10 @@
 		return
 
 	add_fingerprint(user)
+
 	if(mode <= 0) //It's off
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -100,6 +106,7 @@
 				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
 		else if(iswelder(I) && mode == DISPOSALS_DOUBLE_OFF)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
@@ -141,7 +148,7 @@
 			var/mob/grabbed_mob = grab_effect.grabbed_thing
 			if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
 				to_chat(user, SPAN_WARNING("You can't fit that in there!"))
-				return FALSE
+				return
 			var/max_grab_size = user.mob_size
 			/// Amazing what you can do with a bit of dexterity.
 			if(HAS_TRAIT(user, TRAIT_DEXTROUS))
@@ -151,16 +158,16 @@
 				max_grab_size++
 			if(grabbed_mob.mob_size > max_grab_size || !(grabbed_mob.status_flags & CANPUSH))
 				to_chat(user, SPAN_WARNING("You don't have the strength to move [grabbed_mob]!"))
-				return FALSE//can't tighten your grip on mobs bigger than you and mobs you can't push.
+				return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 			if(!user.grab_level >= GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to force [grabbed_mob] in there!"))
-				return FALSE
+				return
 			user.visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob] into [src]."),
 			SPAN_WARNING("You start putting [grabbed_mob] into [src]."))
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				user.visible_message(SPAN_WARNING("[user] stops putting [grabbed_mob] into [src]."),
 				SPAN_WARNING("You stop putting [grabbed_mob] into [src]."))
-				return FALSE
+				return
 
 			grabbed_mob.forceMove(src)
 			user.visible_message(SPAN_WARNING("[user] puts [grabbed_mob] into [src]."),
@@ -169,12 +176,14 @@
 			grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
 			msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 			flush(TRUE)//Forcibly flushing someone if forced in by another player.
-			return TRUE
-		return FALSE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
+		return
 
 	if(!I)
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 	if(user.drop_inv_item_to_loc(I, src))
 		user.visible_message(SPAN_NOTICE("[user] places [I] into [src]."),
 		SPAN_NOTICE("You place [I] into [src]."))
@@ -791,32 +800,38 @@
 
 //Attack by item. Weldingtool: unfasten and convert to obj/disposalconstruct
 /obj/structure/disposalpipe/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	var/turf/T = loc
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
-	if(iswelder(I))
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		var/obj/item/tool/weldingtool/W = I
+	if(!iswelder(I))
+		return
 
-		if(W.remove_fuel(0, user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			//Check if anything changed over 2 seconds
-			var/turf/uloc = user.loc
-			var/atom/wloc = W.loc
-			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
-			SPAN_NOTICE("You start slicing [src]."))
-			sleep(30)
-			if(!W.isOn()) return
-			if(user.loc == uloc && wloc == W.loc)
-				welded()
-			else
-				to_chat(user, SPAN_WARNING("You must stay still while welding [src]."))
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+	var/obj/item/tool/weldingtool/W = I
+
+	if(W.remove_fuel(0, user))
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		//Check if anything changed over 2 seconds
+		var/turf/uloc = user.loc
+		var/atom/wloc = W.loc
+		user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+		SPAN_NOTICE("You start slicing [src]."))
+		sleep(30)
+		if(!W.isOn()) return
+		if(user.loc == uloc && wloc == W.loc)
+			welded()
 		else
-			to_chat(user, SPAN_WARNING("You need more welding fuel to cut [src]."))
+			to_chat(user, SPAN_WARNING("You must stay still while welding [src]."))
+	else
+		to_chat(user, SPAN_WARNING("You need more welding fuel to cut [src]."))
 
 //Called when pipe is cut with blowtorch
 /obj/structure/disposalpipe/proc/welded()
@@ -1106,18 +1121,22 @@
 		name = initial(name)
 
 /obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
-	if(..())
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
-	if(istype(I, /obj/item/device/destTagger))
-		var/obj/item/device/destTagger/O = I
+	if(!istype(I, /obj/item/device/destTagger))
+		return
 
-		if(O.currTag) //Tag set
-			sort_tag = O.currTag
-			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("Changed tag to '[sort_tag]'."))
-			updatename()
-			updatedesc()
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/device/destTagger/O = I
+
+	if(O.currTag) //Tag set
+		sort_tag = O.currTag
+		playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
+		to_chat(user, SPAN_NOTICE("Changed tag to '[sort_tag]'."))
+		updatename()
+		updatedesc()
 
 /obj/structure/disposalpipe/tagger/transfer(obj/structure/disposalholder/H)
 	if(sort_tag)
@@ -1176,18 +1195,22 @@
 	dpdir = sortdir|posdir|negdir
 
 /obj/structure/disposalpipe/sortjunction/attackby(obj/item/I, mob/user)
-	if(..())
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
-	if(istype(I, /obj/item/device/destTagger))
-		var/obj/item/device/destTagger/O = I
+	if (!istype(I, /obj/item/device/destTagger))
+		return
 
-		if(O.currTag) //Tag set
-			sortType = O.currTag
-			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("Changed filter to '[sortType]'."))
-			updatename()
-			updatedesc()
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/device/destTagger/O = I
+
+	if(O.currTag) //Tag set
+		sortType = O.currTag
+		playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
+		to_chat(user, SPAN_NOTICE("Changed filter to '[sortType]'."))
+		updatename()
+		updatedesc()
 
 /obj/structure/disposalpipe/sortjunction/proc/divert_check(checkTag)
 	return sortType == checkTag
@@ -1279,35 +1302,43 @@
 
 //Override attackby so we disallow trunkremoval when somethings ontop
 /obj/structure/disposalpipe/trunk/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	//Disposal constructors
 	var/obj/structure/disposalconstruct/C = locate() in loc
-	if(C && C.anchored)
+	if (C && C.anchored)
 		return
+
 	var/turf/T = loc
-	if(T.intact_tile)
+	if (T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
+
 	add_fingerprint(user)
-	if(iswelder(I))
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		var/obj/item/tool/weldingtool/W = I
-		if(W.remove_fuel(0, user))
-			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			//Check if anything changed over 2 seconds
-			var/turf/uloc = user.loc
-			var/atom/wloc = W.loc
-			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
-			SPAN_NOTICE("You start slicing [src]."))
-			sleep(30)
-			if(!W.isOn()) return
-			if(user.loc == uloc && wloc == W.loc)
-				welded()
-			else
-				to_chat(user, SPAN_WARNING("You must stay still while welding the pipe."))
+	if (!iswelder(I))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+	var/obj/item/tool/weldingtool/W = I
+	if (W.remove_fuel(0, user))
+		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
+		//Check if anything changed over 2 seconds
+		var/turf/uloc = user.loc
+		var/atom/wloc = W.loc
+		user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+		SPAN_NOTICE("You start slicing [src]."))
+		sleep(30)
+		if(!W.isOn()) return
+		if(user.loc == uloc && wloc == W.loc)
+			welded()
 		else
-			to_chat(user, SPAN_WARNING("You need more welding fuel to cut the pipe."))
+			to_chat(user, SPAN_WARNING("You must stay still while welding the pipe."))
+	else
+		to_chat(user, SPAN_WARNING("You need more welding fuel to cut the pipe."))
 
 //Would transfer to next pipe segment, but we are in a trunk. If not entering from disposal bin, transfer to linked object (outlet or bin)
 /obj/structure/disposalpipe/trunk/transfer(obj/structure/disposalholder/H)
@@ -1386,10 +1417,16 @@
 		qdel(H)
 
 /obj/structure/disposaloutlet/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!I || !user)
 		return
+
 	add_fingerprint(user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(mode == 0)
 			mode = 1
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -1399,6 +1436,7 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 	else if(iswelder(I) && mode == 1)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -1432,9 +1470,6 @@
 /obj/structure/disposaloutlet/retrieval/Destroy()
 	GLOB.disposal_retrieval_list -= src
 	return ..()
-
-/obj/structure/disposaloutlet/retrieval/attackby(obj/item/I, mob/user)
-	return
 
 //Called when movable is expelled from a disposal pipe or outlet, by default does nothing, override for special behaviour
 /atom/movable/proc/pipe_eject(direction)

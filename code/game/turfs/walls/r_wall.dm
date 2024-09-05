@@ -12,11 +12,17 @@
 	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(hull)
 		return
 
 	//get the user's location
 	if( !istype(user.loc, /turf) ) return //can't do this stuff whilst inside objects and such
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting walls and the relevant effects
 	if(thermite)
@@ -166,9 +172,6 @@
 		place_poster(W,user)
 		return
 
-	return
-
-
 
 /turf/closed/wall/r_wall/can_be_dissolved()
 	if(hull)
@@ -193,9 +196,6 @@
 	icon_state = "heavy_r_wall_mapicon"
 	walltype = WALL_REINFORCED
 	hull = 1
-
-/turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
-	return
 
 //Chigusa
 
@@ -245,9 +245,6 @@
 /turf/closed/wall/r_wall/prison_unmeltable/fire_act(exposed_temperature, exposed_volume)
 		return
 
-/turf/closed/wall/r_wall/prison_unmeltable/attackby() //This should fix everything else. No cables, etc
-		return
-
 //Biodome
 
 /turf/closed/wall/r_wall/biodome
@@ -267,10 +264,6 @@
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/fire_act(exposed_temperature, exposed_volume)
 		return
-
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable/attackby() //This should fix everything else. No cables, etc
-		return
-
 
 /// Destructible elevator walls, for when you want the elevator to act as a prop rather than an actual elevator
 /turf/closed/wall/r_wall/elevator

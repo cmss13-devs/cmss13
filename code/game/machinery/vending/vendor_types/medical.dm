@@ -152,7 +152,12 @@
 	return ..()
 
 /obj/structure/restock_cart/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.action_busy)
 			return
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
@@ -169,7 +174,6 @@
 		deconstruct(TRUE)
 		return
 
-	return ..()
 
 /obj/structure/restock_cart/proc/healthcheck(mob/user)
 	if(health <= 0)
@@ -386,10 +390,15 @@
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(stat != WORKING)
-		return ..()
+		return
 
 	if(istype(I, /obj/item/reagent_container))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
@@ -402,16 +411,16 @@
 		var/obj/item/reagent_container/container = I
 		if(istype(I, /obj/item/reagent_container/syringe) || istype(I, /obj/item/reagent_container/dropper))
 			if(!stock(container, user))
-				return ..()
+				return
 			return
 
 		if(container.reagents.total_volume == container.reagents.maximum_volume)
 			if(!stock(container, user))
-				return ..()
+				return
 			return
 
 		if(!try_deduct_chem(container, user))
-			return ..()
+			return
 
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
 		var/obj/item/reagent_container/new_container = new container.type(src)
@@ -420,16 +429,16 @@
 		return
 
 	if(ishuman(user) && istype(I, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/grabbed = I
 		if(istype(grabbed.grabbed_thing, /obj/structure/restock_cart/medical))
 			cart_restock(grabbed.grabbed_thing, user)
 			return
 
 	if(hacked || (allowed(user) && (!LAZYLEN(vendor_role) || vendor_role.Find(user.job))))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(stock(I, user))
 			return
-
-	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/medical/MouseDrop(obj/over_object as obj)
 	if(stat == WORKING && over_object == usr && CAN_PICKUP(usr, src))

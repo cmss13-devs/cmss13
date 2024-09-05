@@ -653,58 +653,69 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 
 /obj/structure/machinery/cm_vending/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	// Repairing process
 	if(stat & TIPPED_OVER)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You need to set [src] back upright first."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
-			return FALSE
+			return
 		else if(stat & MAINT)
 			to_chat(user, SPAN_NOTICE("You start to unscrew \the [src]'s broken panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
 			stat &= ~MAINT
 			stat |= REPAIR_STEP_ONE
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else if(stat & REPAIR_STEP_FOUR)
 			to_chat(user, SPAN_NOTICE("You start to fasten \the [src]'s new panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
 			stat &= ~(REPAIR_STEP_FOUR|MAINT|BROKEN)
 			stat |= WORKING
 			update_icon()
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
-			return FALSE
+			return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
-			return FALSE
+			return
 		else if(stat & REPAIR_STEP_ONE)
 			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
-			return FALSE
+			return
 	else if(iswire(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
-			return FALSE
+			return
 		var/obj/item/stack/cable_coil/CC = W
 		if(stat & REPAIR_STEP_TWO)
 			if(CC.amount < 5)
@@ -712,66 +723,70 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_NOTICE("You start to replace \the [src]'s removed wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop replacing \the [src]'s removed wires."))
-				return FALSE
+				return
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(W, /obj/item/stack/sheet/metal))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
-			return FALSE
+			return
 		var/obj/item/stack/sheet/metal/M = W
 		if(stat & REPAIR_STEP_THREE)
 			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
-				return FALSE
+				return
 			if(!M || !M.use(1))
 				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
-				return FALSE
+				return
 			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
 			stat &= ~REPAIR_STEP_THREE
 			stat |= REPAIR_STEP_FOUR
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
-			return FALSE
+			return
 		if(stat != WORKING)
 			to_chat(user, SPAN_WARNING("[src] must be in working condition and powered for you to hack it."))
-			return FALSE
+			return
 		if(!hackable)
 			to_chat(user, SPAN_WARNING("You are unable to hack access restrictions in [src]."))
-			return FALSE
+			return
 		to_chat(user, SPAN_WARNING("You start tweaking access restrictions in [src]."))
 		if(!do_after(user, MT.hack_speed * sqrt(user.get_skill_duration_multiplier(SKILL_ENGINEER)), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 			to_chat(user, SPAN_WARNING("You stop tweaking access restrictions in [src]."))
-			return FALSE
+			return
 		hack_access(user)
-		return TRUE
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	///If we want to redeem a token
 	else if(istype(W, /obj/item/coin/marine))
 		if(!can_access_to_vend(user, ignore_hack = TRUE))
-			return FALSE
-		. = redeem_token(W, user)
+			return
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= redeem_token(W, user)
 		return
-
-	..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products

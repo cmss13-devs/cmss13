@@ -1,11 +1,13 @@
 // attach a wire to a power machine - leads from the turf you are standing on
 
 /obj/structure/machinery/power/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(istype(W, /obj/item/stack/cable_coil))
-
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/cable_coil/coil = W
-
 		var/turf/T = user.loc
 
 		if(T.intact_tile || !istype(T, /turf/open/floor))
@@ -19,9 +21,6 @@
 
 		coil.turf_place(T, user)
 		return
-	else
-		..()
-	return
 
 // the power cable object
 /obj/structure/cable
@@ -91,14 +90,17 @@
 
 
 /obj/structure/cable/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	var/turf/T = src.loc
 	if(T.intact_tile)
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-
-///// Z-Level Stuff
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		///// Z-Level Stuff
 		if(src.d1 == 12 || src.d2 == 12)
 			to_chat(user, SPAN_WARNING("You must cut this cable from above."))
 			return
@@ -108,8 +110,7 @@
 
 		if(src.d1 == 12 || src.d2 == 12)
 			return
-
-///// Z-Level Stuff
+		///// Z-Level Stuff
 
 		if(breaker_box)
 			to_chat(user, SPAN_DANGER("This cable is connected to nearby breaker box. Use breaker box to interact with it."))
@@ -128,15 +129,16 @@
 
 
 	else if(istype(W, /obj/item/stack/cable_coil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/cable_coil/coil = W
 		coil.cable_join(src, user)
 
 	else
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (W.flags_atom & CONDUCT)
 			shock(user, 50, 0.7)
 
 	src.add_fingerprint(user)
-
 // shock the user with probability prb
 
 /obj/structure/cable/proc/shock(mob/user, prb, siemens_coeff = 1.0)

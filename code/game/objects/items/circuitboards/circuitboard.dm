@@ -53,7 +53,12 @@
 	desc = "Heavy-duty switching circuits for power control."
 
 /obj/item/circuitboard/apc/attackby(obj/item/W , mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/circuitboard/machine/ghettosmes/newcircuit = new(user.loc)
 		user.put_in_hands(newcircuit)
 		qdel(src)

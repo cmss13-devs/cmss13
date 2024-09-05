@@ -83,7 +83,12 @@
 			return
 
 /obj/structure/window_frame/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, sheet_type))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/sheet = W
 		if(sheet.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
@@ -100,6 +105,7 @@
 			qdel(src)
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(buildstacktype)
 			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -110,6 +116,7 @@
 				deconstruct()
 
 	else if(istype(W, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/G = W
 		if(isxeno(user)) return
 		if(isliving(G.grabbed_thing))
@@ -131,8 +138,6 @@
 					M.forceMove(loc)
 			else
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
-	else
-		. = ..()
 
 /obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
 	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
@@ -190,10 +195,14 @@
 	window_type = /obj/structure/window/framed/almayer/aicore/black
 
 /obj/structure/window_frame/almayer/requisitions/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, sheet_type))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return
-	..()
 
 /obj/structure/window_frame/colony
 	icon_state = "col_window0_frame"

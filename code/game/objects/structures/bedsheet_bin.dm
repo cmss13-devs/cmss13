@@ -111,13 +111,19 @@ LINEN BINS
 
 
 /obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/bedsheet))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.drop_held_item())
 			I.forceMove(src)
 			sheets.Add(I)
 			amount++
 			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
 	else if(amount && !hidden && I.w_class < 4) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I

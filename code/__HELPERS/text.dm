@@ -383,6 +383,47 @@
 
 	return message
 
+/**
+ * Proc for inserting strings into locations that are only known at runtime
+ *
+ * Every nth argument passed after `text_template` replaces any `{n}` in `message`
+ *
+ * Example:
+ * > If first argument is `chicken`, the second argument is `pie`, and the string template is "I love {1} and {2}",
+ * then the resulting text is "I love `chicken` and `pie`"
+ */
+/proc/text_dynamic_insertion(text_template, ...)
+	var/base_arg_count = 1
+	if (length(args) <= base_arg_count)
+		CRASH("No args passed for string template")
+	var/result = text_template
+	// Start after text_template
+	for (var/i in base_arg_count + 1 to length(args))
+		result = replacetext(result, "{[i-base_arg_count]}", "[args[i]]")
+	return result
+
+/**
+ * Proc for inserting strings into locations that are only known at runtime
+ *
+ * The length `index_keys` MUST match the number of args to be inserted into the string template.
+ * Every nth argument passed after `index_keys` replaces any `{index_keys[n]}` in `message`.
+ *
+ * Example:
+ * > If index_keys=list("name", "age"), the first argument is `Lother`, the last argument is `5`, and the string template is "You are {age} years old now, {name}",
+ * then the resulting text is "You are `5` years old now, `Lother`"
+ */
+/proc/text_dynamic_insertion_custom(text_template, index_keys, ...)
+	var/base_arg_count = 2
+	if (!length(index_keys))
+		CRASH("No index keys passed")
+	if (length(index_keys) != (length(args) - base_arg_count))
+		CRASH("The size of index_keys MUST match the number of characters to insert")
+	var/result = text_template
+	// Start after index_keys
+	for (var/i in base_arg_count + 1 to length(args))
+		result = replacetext(result, "{[index_keys[i-base_arg_count]]}", "[args[i]]")
+	return result
+
 #define SMALL_FONTS(FONTSIZE, MSG) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"

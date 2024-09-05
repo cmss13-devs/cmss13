@@ -37,14 +37,18 @@
 	return
 
 /obj/structure/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			O.forceMove(src)
 			scan = O
 			last_user_name = scan.registered_name
 			last_user_rank = scan.rank
 			to_chat(user, "You insert [O].")
-	..()
 
 /obj/structure/machinery/computer/med_data/attack_remote(user as mob)
 	return src.attack_hand(user)

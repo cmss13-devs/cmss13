@@ -47,10 +47,16 @@ log transactions
 	return ..()
 
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(inoperable())
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
 		return //so it doesnt brazil IDs when unpowered
 	if(istype(I, /obj/item/card))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
 			usr.drop_held_item()
@@ -58,36 +64,34 @@ log transactions
 			held_card = idcard
 			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_number)
 				authenticated_account = null
-	else if(authenticated_account)
-		if(istype(I,/obj/item/spacecash))
-			var/obj/item/spacecash/spacecash = I
-			//consume the money
-			if(spacecash.counterfeit)
-				authenticated_account.money += floor(spacecash.worth * 0.25)
-				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
-				spark_system.start()
-			else
-				authenticated_account.money += spacecash.worth
-			if(prob(50))
-				playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
-			else
-				playsound(loc, 'sound/items/polaroid2.ogg', 15, 1)
+	else if(authenticated_account && istype(I,/obj/item/spacecash))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/spacecash/spacecash = I
+		//consume the money
+		if(spacecash.counterfeit)
+			authenticated_account.money += floor(spacecash.worth * 0.25)
+			visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
+			spark_system.start()
+		else
+			authenticated_account.money += spacecash.worth
+		if(prob(50))
+			playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
+		else
+			playsound(loc, 'sound/items/polaroid2.ogg', 15, 1)
 
-			//create a transaction log entry
-			var/datum/transaction/T = new()
-			T.target_name = authenticated_account.owner_name
-			T.purpose = "Credit deposit"
-			T.amount = I:worth
-			T.source_terminal = machine_id
-			T.date = GLOB.current_date_string
-			T.time = worldtime2text()
-			authenticated_account.transaction_log.Add(T)
+		//create a transaction log entry
+		var/datum/transaction/T = new()
+		T.target_name = authenticated_account.owner_name
+		T.purpose = "Credit deposit"
+		T.amount = I:worth
+		T.source_terminal = machine_id
+		T.date = GLOB.current_date_string
+		T.time = worldtime2text()
+		authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
-			src.attack_hand(user)
-			qdel(I)
-	else
-		..()
+		to_chat(user, SPAN_INFO("You insert [I] into [src]."))
+		src.attack_hand(user)
+		qdel(I)
 
 /obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)

@@ -48,20 +48,22 @@
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
-		..()
-	else
-		for(var/allowed_type in allowed_types)
-			if(istype(P, allowed_type))
-				to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
-				if(user.drop_inv_item_to_loc(P, src))
-					icon_state = "[initial(icon_state)]-open"
-					sleep(5)
-					icon_state = initial(icon_state)
-					updateUsrDialog()
-					break
-			else
-				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	for(var/allowed_type in allowed_types)
+		if(istype(P, allowed_type))
+			to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
+			if(user.drop_inv_item_to_loc(P, src))
+				icon_state = "[initial(icon_state)]-open"
+				sleep(5)
+				icon_state = initial(icon_state)
+				updateUsrDialog()
+				break
+		else
+			to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
 	if(length(contents) <= 0)

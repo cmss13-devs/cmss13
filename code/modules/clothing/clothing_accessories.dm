@@ -48,7 +48,12 @@
 			return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/clothing/accessory))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		if(!LAZYLEN(valid_accessory_slots))
 			to_chat(usr, SPAN_WARNING("You cannot attach accessories of any kind to \the [src]."))
@@ -59,17 +64,18 @@
 			if(!user.drop_held_item())
 				return
 			attach_accessory(user, A)
-			return TRUE //For some suit/storage items which both allow attaching accessories and also have their own internal storage.
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return //For some suit/storage items which both allow attaching accessories and also have their own internal storage.
 		else
 			to_chat(user, SPAN_WARNING("You cannot attach more accessories of this type to [src]."))
 		return
 
 	if(LAZYLEN(accessories))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attackby(I, user)
+		 	// TODO: switch to signals
+			A.interact_with_item(I, user)
 		return
-
-	..()
 
 /obj/item/clothing/attack_hand(mob/user, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)

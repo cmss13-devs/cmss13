@@ -51,14 +51,19 @@
 	new /obj/item/device/radio/headset( src )
 
 /obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (src.opened)
-		return ..()
+		return
 	if(istype(W, /obj/item/card/id))
 		if(src.broken)
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return
 		var/obj/item/card/id/I = W
 		if(!I || !I.registered_name) return
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(src.allowed(user) || !src.registered_name || (istype(I) && (src.registered_name == I.registered_name)))
 			//they can open all lockers, or nobody owns this, or they own this locker
 			src.locked = !( src.locked )
@@ -72,7 +77,6 @@
 			to_chat(user, SPAN_DANGER("Access Denied"))
 	else
 		to_chat(user, SPAN_DANGER("Access Denied"))
-	return
 
 /obj/structure/closet/secure_closet/personal/verb/reset()
 	set src in oview(1) // One square distance

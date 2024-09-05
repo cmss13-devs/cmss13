@@ -354,15 +354,18 @@
 	REMOVE_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
 
 /obj/item/clothing/under/attackby(obj/item/B, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(B, /obj/item/attachable/bayonet) && (user.a_intent == INTENT_HARM))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		cut_suit_jacket(TRUE, user, B)
 
 	else if(loc == user && istype(B, /obj/item/clothing/under) && src != B && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.w_uniform == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			H.drop_inv_item_on_ground(src)
 			if(H.equip_to_appropriate_slot(B))
 				H.put_in_active_hand(src)
-
-	else
-		..()

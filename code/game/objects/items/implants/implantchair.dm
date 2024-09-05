@@ -70,13 +70,17 @@
 		return
 
 /obj/structure/machinery/implantchair/attackby(obj/item/I, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(ismob(G.grabbed_thing))
 			put_mob(G.grabbed_thing)
 		return
 	updateUsrDialog()
-	return
 
 
 /obj/structure/machinery/implantchair/proc/go_out(mob/M)

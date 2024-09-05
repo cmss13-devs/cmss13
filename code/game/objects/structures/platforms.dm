@@ -64,7 +64,11 @@
 
 /obj/structure/platform/attackby(obj/item/W, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(user.pulling)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!can_climb(user))
 			return
 		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),\

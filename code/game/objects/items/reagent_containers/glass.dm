@@ -47,6 +47,32 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/reagent_container/glass/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), user)
+
+/obj/item/reagent_container/glass/proc/write_async(mob/user)
+	var/prior_label_text
+	var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+	if(labelcomponent)
+		prior_label_text = labelcomponent.label_name
+	var/tmp_label = sanitize(input(user, "Enter a label for [name]", "Label", prior_label_text))
+	if(tmp_label == "" || !tmp_label)
+		if(labelcomponent)
+			labelcomponent.remove_label()
+			user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+			SPAN_NOTICE("You remove the label from \the [src]."))
+			return
+		else
+			return
+	if(length(tmp_label) > MAX_NAME_LEN)
+		to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
+	else
+		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+		AddComponent(/datum/component/label, tmp_label)
+		playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()
@@ -164,31 +190,6 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
-			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
-				SPAN_NOTICE("You remove the label from \the [src]."))
-				return
-			else
-				return
-		if(length(tmp_label) > MAX_NAME_LEN)
-			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
-	else
-		. = ..()
-
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"
 	desc = "A beaker. Can hold up to 60 units."
@@ -273,7 +274,12 @@
 
 
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
 			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
@@ -544,9 +550,6 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
-	return
-
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return
@@ -575,13 +578,19 @@
 	flags_atom = FPRINT|OPENCONTAINER
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(isprox(I))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, "You add \the [I] to \the [src].")
 		qdel(I)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
 		qdel(src)
 	else if(istype(I, /obj/item/tool/mop))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_WARNING("\The [src] is out of water!"))
@@ -591,8 +600,6 @@
 			to_chat(user, SPAN_NOTICE("You wet \the [mop] in \the [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
-	else
-		..()
 
 /obj/item/reagent_container/glass/bucket/on_reagent_change()
 	update_icon()

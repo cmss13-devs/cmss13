@@ -45,12 +45,12 @@
 			return
 
 /obj/structure/lattice/attackby(obj/item/C as obj, mob/user as mob)
-
-	if (istype(C, /obj/item/stack/tile/plasteel))
-		var/turf/T = get_turf(src)
-		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
+
 	if (iswelder(C))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -58,7 +58,6 @@
 		if(WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("Slicing lattice joints..."))
 		deconstruct()
-	return
 
 /obj/structure/lattice/deconstruct(disassembled = TRUE)
 	if(disassembled)

@@ -232,9 +232,12 @@
 
 //apply blood splatter when attacked by a sufficently damaging sharp weapon
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(weapon.force > 10 && weapon.sharp && attacker.a_intent != INTENT_HELP)
 		handle_blood_splatter(get_dir(attacker.loc, loc))
-	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	Retaliate()

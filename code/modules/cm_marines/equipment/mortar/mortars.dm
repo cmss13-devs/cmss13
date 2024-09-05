@@ -220,7 +220,12 @@
 	SStgui.update_uis(src)
 
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(item, /obj/item/mortar_shell))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/mortar_shell/mortar_shell = item
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
 		var/area/target_area = get_area(target_turf)
@@ -288,6 +293,7 @@
 			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
@@ -312,6 +318,7 @@
 			qdel(src)
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))

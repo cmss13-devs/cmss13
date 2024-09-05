@@ -384,12 +384,18 @@ Buildable meters
 	rotate()
 
 /obj/item/pipe/attackby(obj/item/W, mob/user)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//*
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		return ..()
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (!isturf(loc))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	var/turf/T = loc
 	var/pipelevel = T.intact_tile ? 2 : 1
 
@@ -405,7 +411,8 @@ Buildable meters
 	for(var/obj/structure/pipes/M in src.loc)
 		if((M.valid_directions & pipe_dir)) // matches at least one direction on either type of pipe & same connection type
 			to_chat(user, SPAN_WARNING("There is already a pipe of the same type at this location."))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 	// no conflicts found
 
 	//TODO: Move all of this stuff into the various pipe constructors.
@@ -642,13 +649,18 @@ Buildable meters
 	w_class = SIZE_LARGE
 
 /obj/item/pipe_meter/attackby(obj/item/W as obj, mob/user as mob)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		return ..()
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!locate(/obj/structure/pipes/standard/, src.loc))
 		to_chat(user, SPAN_WARNING("You need to fasten it to a pipe."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	new/obj/structure/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	to_chat(user, SPAN_NOTICE(" You have fastened the meter to the pipe"))

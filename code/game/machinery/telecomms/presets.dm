@@ -22,10 +22,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	//We dont want anyone to mess with it
-/obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
-	return
-
 /obj/structure/machinery/telecomms/relay/preset/tower
 	name = "TC-4T telecommunications tower"
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
@@ -116,7 +112,12 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attackby(obj/item/I, mob/user)
-	if(iswelder(I))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (iswelder(I))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -142,9 +143,9 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
+	else if (HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
-	else return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attack_hand(mob/user)
 	if(isSilicon(user))
@@ -262,7 +263,12 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	toggle_cooldown = world.time + 40
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(inoperable() || (health <= initial(health) * 0.5))
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
 			return
@@ -294,7 +300,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= DEPT_FREQS
 			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
 			return
-	. = ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
 	..()

@@ -144,11 +144,14 @@
 
 
 /obj/item/prop/helmetgarb/helmet_nvg/attackby(obj/item/A as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(A, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		repair(user)
 
-	else
-		..()
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/cell_try_recharge(datum/source, mob/living/user)
 	SIGNAL_HANDLER
@@ -553,6 +556,25 @@
 	///Text written on the back
 	var/scribble
 
+/obj/item/prop/helmetgarb/family_photo/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/prop/helmetgarb/family_photo/write(obj/item/writer, mob/user, mods, color, crayon)
+	if(scribble)
+		to_chat(user, SPAN_NOTICE("[src] has already been written on."))
+		return
+	var/new_text = copytext(strip_html(tgui_input_text(user, "What would you like to write on the back of [src]?", "Photo Writing")), 1, 128)
+
+	if(!loc == user)
+		to_chat(user, SPAN_NOTICE("You need to be holding [src] to write on it."))
+		return
+	if(!user.stat == CONSCIOUS)
+		to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
+		return
+	scribble = new_text
+	playsound(src, "paper_writing", 15, TRUE)
+
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
 	if(!owner)
@@ -579,24 +601,6 @@
 		. += "A photo of [owner_name] and their family."
 		return
 	. += "A photo of a family you do not know."
-
-/obj/item/prop/helmetgarb/family_photo/attackby(obj/item/attacking_item, mob/user)
-	. = ..()
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN) || istype(attacking_item, /obj/item/toy/crayon))
-		if(scribble)
-			to_chat(user, SPAN_NOTICE("[src] has already been written on."))
-			return
-		var/new_text = copytext(strip_html(tgui_input_text(user, "What would you like to write on the back of [src]?", "Photo Writing")), 1, 128)
-
-		if(!loc == user)
-			to_chat(user, SPAN_NOTICE("You need to be holding [src] to write on it."))
-			return
-		if(!user.stat == CONSCIOUS)
-			to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
-			return
-		scribble = new_text
-		playsound(src, "paper_writing", 15, TRUE)
-	return TRUE
 
 /obj/item/prop/helmetgarb/compass
 	name = "compass"

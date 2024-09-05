@@ -53,6 +53,9 @@ GLOBAL_LIST_EMPTY(codebook_data)
 	author = "Weyland-Yutani Communications Division"
 
 /obj/item/book/codebook/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	..()
+
+	if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH

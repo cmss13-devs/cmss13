@@ -213,8 +213,12 @@
 	created_full_window = /obj/structure/window/phoronbasic/full
 
 /obj/item/stack/sheet/glass/phoronglass/attackby(obj/item/W, mob/user)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if( istype(W, /obj/item/stack/rods) )
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/rods/V  = W
 		var/obj/item/stack/sheet/glass/phoronrglass/RG = new (user.loc)
 		RG.add_fingerprint(user)
@@ -226,8 +230,6 @@
 		G.use(1)
 		if (!G && !RG && replace)
 			user.put_in_hands(RG)
-	else
-		return ..()
 
 /*
  * Reinforced phoron glass sheets

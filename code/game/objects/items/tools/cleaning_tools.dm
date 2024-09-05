@@ -69,19 +69,6 @@
 				update_icon(TRUE)
 			to_chat(user, SPAN_NOTICE("You have finished mopping!"))
 
-
-/obj/effect/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/mop) || istype(I, /obj/item/tool/soap))
-		return
-	..()
-
-
-
-
-
-
-
-
 /obj/item/tool/wet_sign
 	name = "wet floor sign"
 	desc = "Caution! Wet Floor!"

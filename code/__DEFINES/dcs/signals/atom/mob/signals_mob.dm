@@ -154,9 +154,6 @@
 /// From /obj/item/reagent_container/food/snacks/proc/on_Consume() : (obj/item/reagent_container/food/snacks/eaten_food)
 #define COMSIG_MOB_EATEN_SNACK "mob_eaten_snack"
 
-/// From /atom/proc/attackby() : (atom/attacked, obj/item/attacked_with)
-#define COMSIG_MOB_PARENT_ATTACKBY "mob_parent_attackby"
-
 /// From /obj/item/weapon/gun/proc/reload_into_chamber() : (obj/item/weapon/gun/empty_gun)
 #define COMSIG_MOB_GUN_EMPTY "mob_gun_empty"
 

@@ -24,11 +24,17 @@
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
 /obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(iswelder(item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		try_weld_cade(item, user)
 		return
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
@@ -43,9 +49,8 @@
 			to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
 
 	if(try_nailgun_usage(item, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
-
-	return ..()
 
 /obj/structure/barricade/deployable/MouseDrop(obj/over_object as obj)
 	if(!ishuman(usr))
@@ -166,7 +171,12 @@
 	use(1)
 
 /obj/item/stack/folding_barricade/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(item, /obj/item/stack/folding_barricade))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/folding_barricade/folding = item
 		if(!ismob(loc)) //gather from ground
 			if(amount >= max_amount)
@@ -192,6 +202,7 @@
 		return
 
 	if(iswelder(item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -236,8 +247,6 @@
 
 		playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 		return
-
-	return ..()
 
 /obj/item/stack/folding_barricade/attack_hand(mob/user)
 	var/mob/living/carbon/human/human = user

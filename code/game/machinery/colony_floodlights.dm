@@ -123,139 +123,146 @@
 		icon_state = "flood_s_off"
 
 /obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
-	if(damaged)
-		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return FALSE
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if(!damaged)
+		return
 
-			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
-				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
-				SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
-				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
-						return
-					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					repair_state = FLOODLIGHT_REPAIR_CROWBAR
-					user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance hatch."), \
-					SPAN_NOTICE("You unscrew [src]'s maintenance hatch."))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+			return
 
-			else if(repair_state == FLOODLIGHT_REPAIR_SCREW)
-				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
-				SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
-				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
-						return
-					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					damaged = FALSE
-					repair_state = FLOODLIGHT_REPAIR_UNSCREW
-					health = initial(health)
-					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
-					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
-					if(is_lit)
-						set_light(lum_value)
-					update_icon()
-			return TRUE
-
-		else if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return FALSE
-
-			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
-				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s damaged lighting assembly out."),\
-				SPAN_NOTICE("You start prying [src]'s damaged lighting assembly out."))
-				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
-						return
-					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-					repair_state = FLOODLIGHT_REPAIR_WELD
-					user.visible_message(SPAN_NOTICE("[user] pries [src]'s damaged lighting assembly out."),\
-					SPAN_NOTICE("You pry [src]'s damaged lighting assembly out."))
-			return TRUE
-
-		else if(iswelder(I))
-			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
-				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-				return
-			var/obj/item/tool/weldingtool/welder = I
-
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return FALSE
-
-			if(repair_state == FLOODLIGHT_REPAIR_WELD)
-				if(welder.remove_fuel(1, user))
-					playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-					user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
-					SPAN_NOTICE("You start welding [src]'s damage."))
-					if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-						if(QDELETED(src) || !welder.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
-							return
-						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-						repair_state = FLOODLIGHT_REPAIR_CABLE
-						user.visible_message(SPAN_NOTICE("[user] welds [src]'s damage."),
-						SPAN_NOTICE("You weld [src]'s damage."))
-						return TRUE
-				else
-					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-			return TRUE
-
-		else if(iscoil(I))
-			var/obj/item/stack/cable_coil/coil = I
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return FALSE
-
-			if(repair_state == FLOODLIGHT_REPAIR_CABLE)
-				if(coil.get_amount() < 2)
-					to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
+		if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
+			SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 					return
-				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
-				SPAN_NOTICE("You start replacing [src]'s damaged cables."))
-				if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
-						return
-					if(coil.use(2))
-						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-						repair_state = FLOODLIGHT_REPAIR_SCREW
-						user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged cables."),\
-						SPAN_NOTICE("You replace [src]'s damaged cables."))
-			return TRUE
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				repair_state = FLOODLIGHT_REPAIR_CROWBAR
+				user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance hatch."), \
+				SPAN_NOTICE("You unscrew [src]'s maintenance hatch."))
 
-		else if(istype(I, /obj/item/device/lightreplacer))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return FALSE
+		else if(repair_state == FLOODLIGHT_REPAIR_SCREW)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
+			SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
+					return
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				damaged = FALSE
+				repair_state = FLOODLIGHT_REPAIR_UNSCREW
+				health = initial(health)
+				user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
+				SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
+				if(is_lit)
+					set_light(lum_value)
+				update_icon()
+		return
 
-			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
-				to_chat(user, SPAN_WARNING("You need to unscrew [src]'s maintenance hatch."))
-				return FALSE
-			if(repair_state == FLOODLIGHT_REPAIR_SCREW)
-				to_chat(user, SPAN_WARNING("You need to screw [src]'s maintenance hatch."))
-				return FALSE
+	else if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+			return FALSE
 
-			var/obj/item/device/lightreplacer/replacer = I
-			if(!replacer.CanUse(user))
-				to_chat(user, replacer.failmsg)
-				return FALSE
+		if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged lighting assembly."),\
-			SPAN_NOTICE("You start replacing [src]'s damaged lighting assembly."))
-			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				if(QDELETED(src) || repair_state == FLOODLIGHT_REPAIR_SCREW)
+			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s damaged lighting assembly out."),\
+			SPAN_NOTICE("You start prying [src]'s damaged lighting assembly out."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 					return
-				replacer.Use(user)
-				repair_state = FLOODLIGHT_REPAIR_SCREW
-				user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
-				SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
-			return TRUE
+				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+				repair_state = FLOODLIGHT_REPAIR_WELD
+				user.visible_message(SPAN_NOTICE("[user] pries [src]'s damaged lighting assembly out."),\
+				SPAN_NOTICE("You pry [src]'s damaged lighting assembly out."))
+		return
 
-	return ..()
+	else if(iswelder(I))
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
+		var/obj/item/tool/weldingtool/welder = I
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+			return
+
+		if(repair_state == FLOODLIGHT_REPAIR_WELD)
+			if(welder.remove_fuel(1, user))
+				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
+				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
+				SPAN_NOTICE("You start welding [src]'s damage."))
+				if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					if(QDELETED(src) || !welder.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
+						return
+					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
+					repair_state = FLOODLIGHT_REPAIR_CABLE
+					user.visible_message(SPAN_NOTICE("[user] welds [src]'s damage."),
+					SPAN_NOTICE("You weld [src]'s damage."))
+					return
+			else
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+		return
+
+	else if(iscoil(I))
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/stack/cable_coil/coil = I
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+			return
+
+		if(repair_state == FLOODLIGHT_REPAIR_CABLE)
+			if(coil.get_amount() < 2)
+				to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
+				return
+			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+			user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
+			SPAN_NOTICE("You start replacing [src]'s damaged cables."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
+					return
+				if(coil.use(2))
+					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+					repair_state = FLOODLIGHT_REPAIR_SCREW
+					user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged cables."),\
+					SPAN_NOTICE("You replace [src]'s damaged cables."))
+		return
+
+	else if(istype(I, /obj/item/device/lightreplacer))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+			return FALSE
+
+		if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
+			to_chat(user, SPAN_WARNING("You need to unscrew [src]'s maintenance hatch."))
+			return FALSE
+		if(repair_state == FLOODLIGHT_REPAIR_SCREW)
+			to_chat(user, SPAN_WARNING("You need to screw [src]'s maintenance hatch."))
+			return FALSE
+
+		var/obj/item/device/lightreplacer/replacer = I
+		if(!replacer.CanUse(user))
+			to_chat(user, replacer.failmsg)
+			return FALSE
+		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+		user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged lighting assembly."),\
+		SPAN_NOTICE("You start replacing [src]'s damaged lighting assembly."))
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(QDELETED(src) || repair_state == FLOODLIGHT_REPAIR_SCREW)
+				return
+			replacer.Use(user)
+			repair_state = FLOODLIGHT_REPAIR_SCREW
+			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
+			SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
+		return
 
 /obj/structure/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))

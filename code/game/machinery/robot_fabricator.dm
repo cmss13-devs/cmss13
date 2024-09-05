@@ -12,25 +12,31 @@
 	active_power_usage = 10000
 
 /obj/structure/machinery/robotic_fabricator/attackby(obj/item/O as obj, mob/user as mob)
-	if (istype(O, /obj/item/stack/sheet/metal))
-		var/obj/item/stack/sheet/metal/M = O
-		if (src.metal_amount < 150000.0)
-			var/count = 0
-			src.overlays += "fab-load-metal"
-			spawn(15)
-				if(M)
-					if(!M.get_amount())
-						return
-					while(metal_amount < 150000 && M.amount)
-						src.metal_amount += O.matter["metal"] /*O:height * O:width * O:length * 100000.0*/
-						M.use(1)
-						count++
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-					to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
-					src.overlays -= "fab-load-metal"
-					updateDialog()
-		else
-			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
+	if (!istype(O, /obj/item/stack/sheet/metal))
+		return
+	var/obj/item/stack/sheet/metal/M = O
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (src.metal_amount < 150000.0)
+		var/count = 0
+		src.overlays += "fab-load-metal"
+		spawn(15)
+			if(M)
+				if(!M.get_amount())
+					return
+				while(metal_amount < 150000 && M.amount)
+					src.metal_amount += O.matter["metal"] /*O:height * O:width * O:length * 100000.0*/
+					M.use(1)
+					count++
+
+				to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
+				src.overlays -= "fab-load-metal"
+				updateDialog()
+	else
+		to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
 
 /obj/structure/machinery/robotic_fabricator/attack_hand(user as mob)
 	var/dat

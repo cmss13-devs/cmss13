@@ -10,6 +10,7 @@
 	icon_state = "dummy"
 	req_access = list(ACCESS_MARINE_DATABASE)
 	unacidable = TRUE
+	deconstructible = TRUE
 
 	var/datum/squad/current_squad = null
 	var/state = 0
@@ -48,9 +49,6 @@
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
 	return ..()
-
-/obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
-	return
 
 /obj/structure/machinery/computer/overwatch/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE

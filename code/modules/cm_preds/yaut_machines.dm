@@ -32,6 +32,11 @@
 		. += SPAN_NOTICE("You will then clean and polish the resulting bones with a polishing rag, making it ready to be attached to your armor.")
 
 /obj/structure/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
 		return

@@ -414,7 +414,12 @@
 	return data
 
 /obj/structure/machinery/computer/card/attackby(obj/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!operable())
 			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
 			return
@@ -442,8 +447,6 @@
 					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
-	else
-		..()
 
 /obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -636,11 +639,16 @@
 	return data
 
 /obj/structure/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(user)
 		add_fingerprint(user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(istype(O, /obj/item/card/id))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!operable())
 				to_chat(usr, SPAN_NOTICE("You tried to insert [O] but \the [src] remains silent."))
 				return
@@ -653,6 +661,7 @@
 			else
 				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
 		else if(istype(O, /obj/item/grab))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/grab/G = O
 			if(ismob(G.grabbed_thing))
 				if(!operable())
@@ -665,9 +674,6 @@
 				// No Xeno Squads, please!
 				if(!isxenos)
 					person_to_modify = G.grabbed_thing
-	else
-		..()
-
 
 /obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
 	return attack_hand(user)

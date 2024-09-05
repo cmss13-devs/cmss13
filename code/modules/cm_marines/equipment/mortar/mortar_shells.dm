@@ -112,10 +112,16 @@
 	icon_state = initial(icon_state)
 
 /obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!warhead)
 			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
 			return
@@ -132,6 +138,7 @@
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 		return
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(fuel)
 			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
 			return
@@ -142,6 +149,7 @@
 			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/mortar) && !locked)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(warhead)
 			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
 			return
@@ -168,7 +176,7 @@
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
 	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	
+
 	if(burning)
 		return
 	burning = TRUE
@@ -200,7 +208,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
-		
+
 
 /obj/item/mortar_shell/proc/explode(flame_cause_data)
 	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)

@@ -121,12 +121,18 @@
 // cell: insert it
 // other: chance to knock rider off bot
 /obj/structure/machinery/bot/mulebot/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I,/obj/item/cell) && open && !cell)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/cell/C = I
 		if(user.drop_inv_item_to_loc(C, src))
 			cell = C
 			updateDialog()
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(locked)
 			to_chat(user, SPAN_NOTICE(" The maintenance hatch cannot be opened or closed while the controls are locked."))
 			return
@@ -142,6 +148,7 @@
 
 		updateDialog()
 	else if (HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
@@ -151,14 +158,12 @@
 		else
 			to_chat(user, SPAN_NOTICE(" [src] does not need a repair!"))
 	else if(load && ismob(load))  // chance to knock off rider
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(prob(1+I.force * 2))
 			unload(0)
 			user.visible_message(SPAN_DANGER("[user] knocks [load] off [src] with \the [I]!"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
-	else
-		..()
-	return
 
 
 /obj/structure/machinery/bot/mulebot/ex_act(severity)

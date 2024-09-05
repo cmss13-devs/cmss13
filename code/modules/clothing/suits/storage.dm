@@ -33,8 +33,10 @@
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W, mob/user)
 	. = ..()
-	if(!.) //To prevent bugs with accessories being moved into storage slots after being attached.
-		return pockets.attackby(W, user)
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	// TODO: replace this with storage component
+	. |= pockets.attackby(W, user)
 
 /obj/item/clothing/suit/storage/emp_act(severity)
 	. = ..()

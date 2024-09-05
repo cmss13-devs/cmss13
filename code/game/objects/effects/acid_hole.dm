@@ -119,7 +119,11 @@
 
 //Throwing Shiet
 /obj/effect/acid_hole/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/mob_dir = get_dir(user, src)
 	var/crawl_dir = dir & mob_dir
 	if(!crawl_dir)

@@ -54,6 +54,7 @@
 
 	update_icon()
 	updateinfolinks()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
@@ -337,47 +338,51 @@
 
 /obj/item/paper/Topic(href, href_list)
 	..()
-	if(!usr || (usr.stat || usr.is_mob_restrained()))
+	if (!usr || (usr.stat || usr.is_mob_restrained()))
 		return
 
-	if(usr.client.prefs.muted & MUTE_IC)
+	if (usr.client.prefs.muted & MUTE_IC)
 		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
 		return
 
-	if(href_list["write"])
-		var/id = href_list["write"]
-		var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", "", MAX_MESSAGE_LEN)
-		var/shortened_t = copytext(t,1,100)
-		msg_admin_niche("PAPER: [key_name(usr)] tried to write something. First 100 characters: [shortened_t]")
+	if (!href_list["write"])
+		return
 
-		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
-		var/iscrayon = 0
-		if(!HAS_TRAIT(i, TRAIT_TOOL_PEN))
-			if(!istype(i, /obj/item/toy/crayon))
-				return
-			iscrayon = 1
+	var/id = href_list["write"]
+	var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", "", MAX_MESSAGE_LEN)
+	var/shortened_t = copytext(t,1,100)
+	msg_admin_niche("PAPER: [key_name(usr)] tried to write something. First 100 characters: [shortened_t]")
 
+	var/obj/item/in_hand = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
+	if (isnull(in_hand))
+		return
 
-		// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
-			return
+	var/datum/write_check_metadata/metadata = new /datum/write_check_metadata()
+	SEND_SIGNAL(in_hand, COMSIG_ITEM_CAN_WRITE_CHECK, metadata)
+	var/is_crayon = metadata.crayon
+	// TODO: WHYYY, refactor this
+	// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
+	if (src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		return
 
-		t = replacetext(t, "\n", "<BR>")
-		t = parsepencode(t, i, usr, iscrayon) // Encode everything from pencode to html
+	t = replacetext(t, "\n", "<BR>")
+	t = parsepencode(t, in_hand, usr, is_crayon) // Encode everything from pencode to html
 
-		if(id!="end")
-			addtofield(text2num(id), t) // He wants to edit a field, let him.
-		else
-			info += t // Oh, he wants to edit to the end of the file, let him.
-			updateinfolinks()
+	if (id!="end")
+		addtofield(text2num(id), t) // He wants to edit a field, let him.
+	else
+		info += t // Oh, he wants to edit to the end of the file, let him.
+		updateinfolinks()
 
-		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+	show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
-		update_icon()
-		playsound(src, "paper_writing", 15, TRUE)
+	update_icon()
+	playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
 		if (istype(P, /obj/item/paper/carbon))
@@ -386,7 +391,8 @@
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		if(loc != user) return
+		if(loc != user)
+			return
 		var/obj/item/paper_bundle/B = new(get_turf(user))
 		if (name != "paper")
 			B.name = name
@@ -398,16 +404,6 @@
 		B.attach_doc(src, user, TRUE)
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
-
-	else if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
-		if(HAS_TRAIT(P, TRAIT_TOOL_PEN))
-			var/obj/item/tool/pen/p = P
-			if(!p.on)
-				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
-				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
-		//openhelp(user)
-		return
 
 	else if(istype(P, /obj/item/tool/stamp))
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
@@ -446,7 +442,9 @@
 		burnpaper(P, user)
 
 	add_fingerprint(user)
-	return
+
+/obj/item/paper/write(obj/item/writer, mob/user, mods, color, crayon)
+	show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 /obj/item/paper/proc/convert_to_chem_report()
 	if(istype(src, /obj/item/paper/research_report))

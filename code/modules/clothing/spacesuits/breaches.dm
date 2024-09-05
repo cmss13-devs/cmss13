@@ -175,8 +175,12 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 //Handles repairs (and also upgrades).
 
 /obj/item/clothing/suit/space/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/stack/sheet/mineral/plastic) || istype(W,/obj/item/stack/sheet/metal))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(istype(W,/obj/item/stack/sheet/mineral/plastic) || istype(W,/obj/item/stack/sheet/metal))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(istype(src.loc,/mob/living))
 			to_chat(user, SPAN_DANGER("How do you intend to patch a hardsuit while someone is wearing it?"))
 			return
@@ -195,6 +199,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 		return
 
 	else if(iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -215,8 +220,6 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 
 		repair_breaches(BRUTE, 3, user)
 		return
-
-	..()
 
 /obj/item/clothing/suit/space/get_examine_text(mob/user)
 	. = ..()

@@ -43,27 +43,34 @@
 
 
 
-/obj/item/shard/attackby(obj/item/W, mob/user)
-	if ( iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		var/obj/item/tool/weldingtool/WT = W
-		if(source_sheet_type) //can be melted into something
-			if(WT.remove_fuel(0, user))
-				var/obj/item/stack/sheet/NG = new source_sheet_type(user.loc)
-				for (var/obj/item/stack/sheet/G in user.loc)
-					if(G==NG)
-						continue
-					if(!istype(G, source_sheet_type))
-						continue
-					if(G.amount>=G.max_amount)
-						continue
-					G.attackby(NG, user)
-					to_chat(user, "You add the newly-formed glass to the stack. It now contains [NG.amount] sheets.")
-				qdel(src)
-				return
-	return ..()
+/obj/item/shard/attackby(obj/item/attacked_by, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	var/obj/item/tool/weldingtool/welding_tool = attacked_by
+	if (!iswelder(welding_tool))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (!HAS_TRAIT(attacked_by, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+
+	if (!source_sheet_type || !welding_tool.remove_fuel(0, user))
+		return
+
+	//can be melted into something and welding tool has fuel
+	var/obj/item/stack/sheet/produced_sheet = new source_sheet_type(user.loc)
+	for (var/obj/item/stack/sheet/to_merge_with in user.loc)
+		if (to_merge_with == produced_sheet)
+			continue
+		if (!istype(to_merge_with, source_sheet_type))
+			continue
+		if (to_merge_with.amount >= to_merge_with.max_amount)
+			continue
+		to_merge_with.merge_with(produced_sheet, user)
+		to_chat(user, "You add the newly-formed glass to the stack. It now contains [produced_sheet.amount] sheets.")
+	qdel(src)
 
 /obj/item/shard/phoron
 	name = "phoron shard"

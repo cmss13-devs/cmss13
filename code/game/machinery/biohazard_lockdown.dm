@@ -19,19 +19,27 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	return FALSE
 
 /obj/structure/machinery/biohazard_lockdown/attackby(obj/item/attacking_item, mob/user)
-	return attack_hand(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	. |= attack_hand(user)
 
 /obj/structure/machinery/biohazard_lockdown/attack_hand(mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 	if(isxeno(user))
-		return FALSE
+		return
+
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		flick(initial(icon_state) + "-denied", src)
-		return FALSE
+		return
 
 	if(!COOLDOWN_FINISHED(src, containment_lockdown))
 		to_chat(user, SPAN_BOLDWARNING("Biohazard Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(src, containment_lockdown)] seconds!"))
-		return FALSE
+		return
 
 	add_fingerprint(user)
 	biohazard_lockdown(user)

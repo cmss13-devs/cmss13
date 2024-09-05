@@ -15,7 +15,11 @@
 	var/screen = 0
 
 /obj/item/paper_bundle/attackby(obj/item/W, mob/user)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/paper/P
 	if(istype(W, /obj/item/paper))
 		P = W
@@ -42,12 +46,12 @@
 			to_chat(user, SPAN_NOTICE("You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name]."))
 			qdel(W)
 	else
-		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
+		if(SEND_SIGNAL(W, COMSIG_ITEM_CAN_WRITE_CHECK) & COMPONENT_IS_WRITER)
 			close_browser(usr, name) //Closes the dialog
 		if(page < length(contents))
 			page = length(contents)
 		P = contents[page]
-		P.attackby(W, user)
+		SEND_SIGNAL(P, COMSIG_ITEM_WRITE, W, user)
 
 	update_icon()
 	attack_self(user) //Update the browsed page.

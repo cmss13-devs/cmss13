@@ -37,6 +37,11 @@
 		. += SPAN_INFO("The right cell is at [cell_right.get_fuel_percent()]%.")
 
 /obj/structure/machinery/fuelcell_recycler/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!istype(attacking_item, /obj/item/fuel_cell))
 		to_chat(user, SPAN_NOTICE("[src] rejects [attacking_item]. It can only regenerate fuel cells."))
 		return

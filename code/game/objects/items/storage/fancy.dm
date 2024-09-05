@@ -106,6 +106,10 @@
 		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/toy/crayon))
 		switch(W:colorName)
 			if("mime")
@@ -114,7 +118,6 @@
 			if("rainbow")
 				to_chat(usr, "This crayon is too powerful to be contained in this box.")
 				return
-	..()
 
 // CIGARETTES BOX
 
@@ -251,10 +254,12 @@
 	return ..()
 
 /obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(attacked_by_item, /obj/item/toy/trading_card))
 		trading_card = attacked_by_item
-
-	return ..()
 
 /////////////
 //CIGAR BOX//
@@ -337,8 +342,14 @@
 	plural = "es"
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(user))
 		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(prob(light_chance))
 		if(istype(W) && !W.heat_source && !W.burnt)
 			if(prob(burn_chance))
@@ -414,14 +425,18 @@
 	start_vials = 0
 
 /obj/item/storage/fancy/vials/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/pouch/vials))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/pouch/vials/M = W
 		dump_into(M,user)
 	else if(istype(W, /obj/item/storage/box/autoinjectors))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/box/autoinjectors/M = W
 		dump_into(M,user)
-	else
-		return ..()
 
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"
@@ -507,10 +522,12 @@
 	return ..()
 
 /obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(attacked_by_item, /obj/item/toy/trading_card))
 		top_trading_card = attacked_by_item
-
-	return ..()
 
 /obj/item/storage/fancy/trading_card/red
 	collection_color = "red"

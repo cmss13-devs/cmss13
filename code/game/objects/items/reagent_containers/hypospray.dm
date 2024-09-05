@@ -91,15 +91,19 @@
 		hypoload(V)
 
 /obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(magfed && !mag) //Is there a vial?
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 		if(istype(B,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand()) //Is this a new vial being inserted into a hypospray held in the other hand?
 			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))
 			user.drop_inv_item_to_loc(B, src)
 			hypoload(B)
 		else
 			to_chat(user, SPAN_DANGER("[src] has no vial.")) //Can't fill a hypo with no storage.
-		return TRUE
-	return ..()
+		return
 
 /obj/item/reagent_container/hypospray/attack_hand(mob/user as mob)
 	if(mag && src == user.get_inactive_hand())

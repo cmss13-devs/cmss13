@@ -6,6 +6,7 @@
 	anchored = TRUE
 	/// if something's being washed at the moment
 	var/busy = FALSE
+	var/busy_icon_state
 
 
 /obj/structure/sink/Initialize()
@@ -41,7 +42,11 @@
 	playsound(loc, 'sound/effects/sinkrunning.ogg', 25, TRUE)
 
 	busy = TRUE
+	if (busy_icon_state)
+		icon_state = busy_icon_state
 	sleep(40)
+	if (busy_icon_state)
+		icon_state = initial(icon_state)
 	busy = FALSE
 
 	if(!Adjacent(user)) return //Person has moved away from the sink
@@ -54,17 +59,24 @@
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(busy)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
 	var/obj/item/reagent_container/RG = O
 	if (istype(RG) && RG.is_open_container())
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
 	else if (istype(O, /obj/item/weapon/baton))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/weapon/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
@@ -84,11 +96,16 @@
 	var/obj/item/I = O
 	if(!I || !istype(I,/obj/item)) return
 
-	to_chat(usr, SPAN_NOTICE(" You start washing \the [I]."))
+	. |= ATTACK_HINT_NO_TELEGRAPH
+
+	to_chat(user, SPAN_NOTICE(" You start washing \the [I]."))
 
 	busy = TRUE
+	if (busy_icon_state)
+		icon_state = busy_icon_state
 	sleep(40)
-	busy = FALSE
+	if (busy_icon_state)
+		icon_state = initial(icon_state)
 
 	if(user.loc != location) return //User has moved
 	if(!I) return //Item's been destroyed while washing
@@ -108,15 +125,4 @@
 /obj/structure/sink/puddle //splishy splashy ^_^
 	name = "puddle"
 	icon_state = "puddle"
-
-
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
-	icon_state = "puddle-splash"
-	..()
-	icon_state = "puddle"
-
-
-/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
-	icon_state = "puddle-splash"
-	..()
-	icon_state = "puddle"
+	busy_icon_state = "puddle-splash"

@@ -40,8 +40,12 @@
 	speak_emote = list("beeps","clicks","chirps")
 
 /mob/living/simple_animal/spiderbot/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(istype(O, /obj/item/device/mmi))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/mmi/B = O
 		if(src.mmi) //There's already a brain in it.
 			to_chat(user, SPAN_DANGER("There's already a brain in [src]!"))
@@ -68,16 +72,16 @@
 			to_chat(user, SPAN_DANGER("[O] does not seem to fit."))
 			return
 
-
-
 		user.drop_inv_item_to_loc(O, src)
 		to_chat(user, SPAN_NOTICE(" You install [O] in [src]!"))
 		mmi = O
 		transfer_personality(O)
 		update_icon()
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if (iswelder(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -96,9 +100,10 @@
 			to_chat(user, "Need more welding fuel!")
 			return
 	else if(istype(O, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (!mmi)
 			to_chat(user, SPAN_DANGER("There's no reason to swipe your ID - the spiderbot has no brain to remove."))
-			return 0
+			return
 
 		var/obj/item/card/id/id_card
 
@@ -113,24 +118,20 @@
 				held_item.forceMove(src.loc)
 				held_item = null
 
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		else
 			to_chat(user, SPAN_DANGER("You swipe your card, with no effect."))
-			return 0
+			return
 	else
 		if(O.force)
 			var/damage = O.force
 			if (O.damtype == HALLOSS)
 				damage = 0
 			apply_damage(damage, BRUTE)
-			for(var/mob/M as anything in viewers(src, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[src] has been attacked with \the [O] by [user]."), SHOW_MESSAGE_VISIBLE)
 		else
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
-			for(var/mob/M as anything in viewers(src, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
 

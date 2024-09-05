@@ -427,13 +427,16 @@
 
 
 /obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			error_idlock(user)
 			return
 		dump_into(W,user)
-	else
-		return ..()
 
 
 /obj/item/storage/pill_bottle/open(mob/user)

@@ -34,6 +34,14 @@
 	. = ..()
 	update_icon()
 
+/obj/item/weapon/gun/flamer/get_igniter_failure_message()
+	return SPAN_WARNING("Turn on the pilot light first!")
+
+/obj/item/weapon/gun/flamer/check_can_ignite()
+	. = !(flags_gun_features & GUN_TRIGGER_SAFETY)
+	if (!.)
+		return ..()
+
 /obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 

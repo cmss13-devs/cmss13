@@ -142,13 +142,18 @@
 	ChangeTurf(plating_type)
 
 /turf/open/floor/attackby(obj/item/hitting_item, mob/user)
-	if(hull_floor) //no interaction for hulls
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
-	if(src.weeds)
-		return weeds.attackby(hitting_item,user)
+	if(hull_floor)
+		return
+
+	if(weeds)
+		. |= ATTACK_HINT_NO_TELEGRAPH|weeds.attackby(hitting_item,user)
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(broken || burnt)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
@@ -163,13 +168,12 @@
 		return
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You unscrew the planks."))
 		new tile_type(src, 1, type)
 		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 		make_plating()
 		return
-
-	return ..()
 
 /turf/open/floor/wet_floor(wet_level = FLOOR_WET_WATER)
 	if(wet >= wet_level) return

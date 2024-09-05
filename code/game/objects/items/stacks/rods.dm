@@ -22,9 +22,14 @@
 	recipes = GLOB.rod_recipes
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
-	if (!iswelder(W))
-		return ..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if (!iswelder(W))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return
@@ -65,9 +70,14 @@ GLOBAL_LIST_INIT(rod_recipes, list (
 	recipes = null
 
 /obj/item/stack/rods/plasteel/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W, /obj/item/stack/sheet/metal))
-		return ..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(!istype(W, /obj/item/stack/sheet/metal))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/stack/sheet/metal/M = W
 
 	if(amount < 5) // Placeholder until we get an elaborate crafting system created

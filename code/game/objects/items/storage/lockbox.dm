@@ -19,6 +19,10 @@
 
 
 /obj/item/storage/lockbox/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/card/id))
 		if(src.broken)
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
@@ -35,11 +39,8 @@
 				return
 		else
 			to_chat(user, SPAN_DANGER("Access denied"))
-	if(!locked)
-		..()
-	else
+	if(locked)
 		to_chat(user, SPAN_DANGER("It's locked!"))
-	return
 
 
 /obj/item/storage/lockbox/show_to(mob/user as mob)

@@ -81,7 +81,12 @@
 		to_chat(user, SPAN_NOTICE("Access Denied"))
 
 /obj/structure/closet/secure_closet/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(src.opened)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
@@ -96,11 +101,13 @@
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
 	else if(iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		return ..(W,user)
+		return
 	else
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)

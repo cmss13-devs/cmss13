@@ -27,13 +27,20 @@
 	return ..()
 
 /obj/item/toy/gun/attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(A, /obj/item/toy/gun_ammo))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.bullets >= 7)
 			to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		if (A.amount_left <= 0)
 			to_chat(user, SPAN_DANGER("There is no more caps!"))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		if (A.amount_left < (7 - bullets))
 			src.bullets += A.amount_left
 			to_chat(user, SPAN_DANGER("You reload [A.amount_left] caps\s!"))
@@ -44,7 +51,7 @@
 			bullets = 7
 		A.update_icon()
 		A.desc = "There are [A.amount_left] caps\s left! Make sure to recycle the box in an autolathe when it gets empty."
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
 
 /obj/item/toy/gun/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if (flag)
@@ -98,7 +105,12 @@
 		to_chat(user, SPAN_NOTICE(" It is loaded with [bullets] foam darts!"))
 
 /obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/toy/crossbow_ammo))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(bullets <= 4)
 			if(user.drop_held_item())
 				qdel(I)

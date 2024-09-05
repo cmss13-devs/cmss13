@@ -180,26 +180,31 @@
 
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
-	if(user.z != z)
-		return ..()
-
-	if(iswelder(O) && health >= initial(health))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		var/obj/item/hardpoint/H
-		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
-			if(potential_hardpoint.health < initial(potential_hardpoint.health))
-				H = potential_hardpoint
-				break
-
-		if(H)
-			H.handle_repair(O, user)
-			update_icon()
-			return
-
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if (user.z != z)
+		return
+
+	if (!iswelder(O) || health < initial(health))
+		return
+
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+
+	var/obj/item/hardpoint/H
+	for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
+		if(potential_hardpoint.health < initial(potential_hardpoint.health))
+			H = potential_hardpoint
+			break
+
+	if(H)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		H.handle_repair(O, user)
+		update_icon()
 
 /obj/vehicle/multitile/van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods["shift"] && !mods["alt"])

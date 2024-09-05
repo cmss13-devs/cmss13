@@ -41,10 +41,13 @@
 	icon_state = "purpleflag"
 
 /obj/item/stack/flag/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(upright && istype(W,src.type))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		src.attack_hand(user)
-	else
-		..()
 
 /obj/item/stack/flag/attack_hand(user)
 	if(upright)
@@ -156,7 +159,12 @@
 	return TRUE
 
 /obj/structure/flag/plantable/attackby(obj/item/weapon, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!indestructible)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		visible_message(SPAN_DANGER("[src] has been hit by [user] with [weapon]!"), null, 5, CHAT_TYPE_MELEE_HIT)
 		user.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

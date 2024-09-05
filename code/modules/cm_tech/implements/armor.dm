@@ -137,9 +137,14 @@
 		slashdata["slash_noise"] = armor_hitsound
 
 /obj/item/clothing/accessory/health/attackby(obj/item/clothing/accessory/health/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(I, src.type) || !scrappable || has_suit || I.has_suit || !is_armor)
 		return
 
+	. |=  ATTACK_HINT_NO_TELEGRAPH
 	if(!I.armor_health && !armor_health)
 		to_chat(user, SPAN_NOTICE("You use the shards of armor to cobble together an improvised ceramic plate."))
 		qdel(I)

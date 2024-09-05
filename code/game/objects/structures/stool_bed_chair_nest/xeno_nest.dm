@@ -84,13 +84,19 @@
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			to_chat(user, SPAN_NOTICE("You place \the [M] on \the [src]."))
 			M.forceMove(loc)
-		return TRUE
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	if(W.flags_item & NOBLUDGEON)
 		return
 	if(iscarbon(user))

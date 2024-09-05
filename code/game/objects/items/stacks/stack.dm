@@ -324,7 +324,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			continue
 		if (item.amount>=item.max_amount)
 			continue
-		oldsrc.attackby(item, user)
+		oldsrc.merge_with(item, user)
 		to_chat(user, "You add new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.")
 		if(!oldsrc)
 			break
@@ -365,27 +365,32 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
-/obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/stack))
-		var/obj/item/stack/other_stack = W
-		if(other_stack.stack_id == stack_id) //same stack type
-			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The stack is full!"))
-				return TRUE
-			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
-			if(to_transfer <= 0)
-				return
-			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			other_stack.add(to_transfer)
-			if(other_stack && user.interactee == other_stack)
-				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
-			use(to_transfer)
-			if(!QDELETED(src) && user.interactee == src)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
-			user.next_move = world.time + 0.3 SECONDS
-			return TRUE
+/obj/item/stack/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if(istype(W, /obj/item/stack)&& merge_with(W, user) == TRUE)
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
 
-	return ..()
+/// Proc to merge two stacks together, return whether merge was successful
+/obj/item/stack/proc/merge_with(obj/item/stack/stack, mob/user)
+	if(stack.stack_id != stack_id) //same stack type
+		return FALSE
+	if(stack.amount >= max_amount)
+		to_chat(user, SPAN_WARNING("The stack is full!"))
+		return FALSE
+	var/to_transfer = min(amount, stack.max_amount - stack.amount)
+	if(to_transfer <= 0)
+		return FALSE
+	to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
+	stack.add(to_transfer)
+	if(stack && user.interactee == stack)
+		INVOKE_ASYNC(stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+	use(to_transfer)
+	if(!QDELETED(src) && user.interactee == src)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+	user.next_move = world.time + 0.3 SECONDS
+	return TRUE
 
 /*
  * Recipe datum

@@ -160,6 +160,9 @@
 	return try_to_activate_door(user)
 
 /obj/structure/machinery/door/window/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -211,10 +214,10 @@
 		visible_message(SPAN_DANGER("<B>[src] was hit by [I].</B>"))
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
-		return 1
-	else
-		return try_to_activate_door(user)
-
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
+	else if (try_to_activate_door(user))
+		. |= ATTACK_HINT_NO_AFTERATTACK
 /obj/structure/machinery/door/window/brigdoor
 	name = "Secure glass door"
 	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
@@ -300,7 +303,11 @@
 
 // No damage taken.
 /obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
-	return try_to_activate_door(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	try_to_activate_door(user)
 
 /obj/structure/machinery/door/window/ultra/proc/impact()
 	qdel(src)

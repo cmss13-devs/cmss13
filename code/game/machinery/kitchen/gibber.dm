@@ -52,14 +52,19 @@
 		startgibbing(user)
 
 /obj/structure/machinery/gibber/attackby(obj/item/grab/grabbed as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(occupant)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
 
 	if(HAS_TRAIT(grabbed, TRAIT_TOOL_WRENCH))
-		. = ..()
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!(istype(grabbed, /obj/item/grab)) )
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return

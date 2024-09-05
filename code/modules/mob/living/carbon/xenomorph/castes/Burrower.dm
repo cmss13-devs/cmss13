@@ -93,10 +93,10 @@
 		return
 	..()
 
-/mob/living/carbon/xenomorph/burrower/attackby()
+DEFINE_ATTACK_CONDITIONS_FOR(/mob/living/carbon/xenomorph/burrower)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-	..()
+		return FALSE
+	return ..()
 
 /mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()

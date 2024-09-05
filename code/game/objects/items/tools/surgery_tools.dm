@@ -57,6 +57,10 @@
 
 	attack_verb = list("burnt")
 
+/obj/item/tool/surgery/cautery/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
 /obj/item/tool/surgery/cautery/predatorcautery
 	name = "cauterizer"
 	desc = "This stops bleeding."
@@ -425,10 +429,16 @@ t. optimisticdude
 		icon_state = "healing_gun_empty"
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You have no idea how to put \the [O] into \the [src]!"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(loaded)
 			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
 			return
@@ -438,7 +448,6 @@ t. optimisticdude
 		update_icon()
 		qdel(O)
 		return
-	return ..()
 
 /obj/item/tool/surgery/healing_gel
 	name = "healing gel capsule"

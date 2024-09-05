@@ -6,7 +6,13 @@
 	density = TRUE
 
 /obj/structure/machinery/gel_refiller/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(attacking_item, /obj/item/tool/surgery/bonegel))
-		return ..()
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/tool/surgery/bonegel/gel = attacking_item
 	gel.refill_gel(src, user)

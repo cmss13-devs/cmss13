@@ -72,9 +72,12 @@
 	return
 
 /atom/movable/overlay/attackby(a, b)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (src.master)
-		return src.master.attackby(a, b)
-	return
+		. |= src.master.attackby(a, b)
 
 /atom/movable/overlay/attack_hand(a, b, c)
 	if (src.master)
@@ -261,7 +264,11 @@
 	return src.mstr.attack_animal(M)
 
 /atom/movable/clone/attackby(obj/item/I, mob/living/user)
-	return src.mstr.attackby(I, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= src.mstr.attackby(I, user)
 
 /atom/movable/clone/get_examine_text(mob/user)
 	return src.mstr.get_examine_text(user)

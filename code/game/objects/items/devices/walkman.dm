@@ -39,14 +39,18 @@
 	. = ..()
 
 /obj/item/device/walkman/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/device/cassette_tape))
-		if(W == user.get_active_hand() && (src in user))
-			if(!tape)
-				insert_tape(W)
-				playsound(src,'sound/weapons/handcuffs.ogg',20,1)
-				to_chat(user,SPAN_INFO("You insert \the [W] into \the [src]"))
-			else
-				to_chat(user,SPAN_WARNING("Remove the other tape first!"))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(istype(W,/obj/item/device/cassette_tape) && W == user.get_active_hand() && (src in user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if(!tape)
+			insert_tape(W)
+			playsound(src,'sound/weapons/handcuffs.ogg',20,1)
+			to_chat(user,SPAN_INFO("You insert \the [W] into \the [src]"))
+		else
+			to_chat(user,SPAN_WARNING("Remove the other tape first!"))
 
 /obj/item/device/walkman/attack_self(mob/user)
 	..()

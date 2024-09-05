@@ -15,11 +15,16 @@
 		update_icon()
 
 /obj/structure/coatrack/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	var/can_hang = 0
 	for (var/T in allowed)
 		if(istype(W,T))
 			can_hang = 1
 	if (can_hang && !coat)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message("[user] hangs [W] on \the [src].", "You hang [W] on the \the [src]")
 		coat = W
 		user.drop_held_item(src)
@@ -27,7 +32,7 @@
 		update_icon()
 	else
 		to_chat(user, SPAN_NOTICE("You cannot hang [W] on [src]"))
-		return ..()
+		return
 
 /obj/structure/coatrack/Crossed(atom/movable/AM)
 	..()

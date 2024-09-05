@@ -12,13 +12,19 @@
 	var/status = 0
 
 /obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(processing)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("[src] is still processing!"))
 		return
 	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(sample || status)
 			to_chat(user, SPAN_WARNING("Something is already loaded into [src]."))
 			return

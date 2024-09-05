@@ -75,6 +75,10 @@
 
 /obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && !HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		return
 

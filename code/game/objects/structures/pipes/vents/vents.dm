@@ -71,7 +71,12 @@
 	update_underlays()
 
 /obj/structure/pipes/vents/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/weldtime = 50
 		if(HAS_TRAIT(W, TRAIT_TOOL_SIMPLE_BLOWTORCH))
 			weldtime = 60
@@ -81,7 +86,7 @@
 			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !WT.isOn()) return 0
+				if(!src || !WT.isOn()) return
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
 					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."), \
@@ -89,27 +94,32 @@
 					welded = 1
 					update_icon()
 					msg_admin_niche("[key_name(user)] welded a vent pump.")
-					return 1
+					. |= ATTACK_HINT_NO_AFTERATTACK
+					return
 				else
 					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."), \
 					SPAN_NOTICE("You weld \the [src] open."))
 					welded = 0
 					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
 					update_icon()
-					return 1
+					. |= ATTACK_HINT_NO_AFTERATTACK
+					return
 			else
 				to_chat(user, SPAN_WARNING("\The [W] needs to be on to start this task."))
-				return 0
+				return
 		else
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		return ..()
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/turf/T = src.loc
 	if(isturf(T) && T.intact_tile)
 		to_chat(user, SPAN_WARNING("You must remove the plating first."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),

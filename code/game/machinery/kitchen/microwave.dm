@@ -59,6 +59,14 @@
 //********************/
 
 /obj/structure/machinery/microwave/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
@@ -90,11 +98,9 @@
 				to_chat(user, SPAN_DANGER("It's broken! Use a screwdriver and a wrench to fix it!"))
 			else
 				to_chat(user, SPAN_DANGER("It's broken! Use a wrench to fix it!"))
-			return 1
-	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		. = ..()
-		return
-	else if(dirty==100) // The microwave is all dirty so can't be used!
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
+	else if(dirty == 100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to clean the microwave."), \
@@ -111,13 +117,15 @@
 				flags_atom = OPENCONTAINER
 		else //Otherwise bad luck!!
 			to_chat(user, SPAN_DANGER("It's dirty! Clean it with a spray cleaner!"))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
 		if (length(contents)>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O
 			new O.type (src)
@@ -134,16 +142,20 @@
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
 				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
-				return 1
+				. |= ATTACK_HINT_NO_AFTERATTACK
+				return
 	else if(istype(O,/obj/item/grab))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	else
 		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/attack_remote(mob/user as mob)

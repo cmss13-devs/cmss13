@@ -59,7 +59,12 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/interior_exit/vehicle/attackby(obj/item/O, mob/M)
-	attack_hand(M)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	. |= attack_hand(M)
 
 /obj/structure/interior_exit/attack_ghost(mob/dead/observer/user)
 	if(!interior)

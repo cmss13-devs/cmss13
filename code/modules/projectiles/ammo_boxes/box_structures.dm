@@ -126,11 +126,17 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(burning)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
-	if(!item_box.handfuls)
-		if(istypestrict(W,item_box.magazine_type))
+	if(istypestrict(W,item_box.magazine_type))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if(!item_box.handfuls)
 			if(istype(W, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = W
 				if(length(flare_pack.contents) < flare_pack.max_storage_space)
@@ -167,36 +173,36 @@
 				to_chat(user, SPAN_WARNING("[src] is full."))
 		else
 			to_chat(user, SPAN_WARNING("You don't want to mix different magazines in one box."))
-	else
-		if(istype(W, /obj/item/ammo_magazine/shotgun))
-			var/obj/item/ammo_magazine/O = W
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine/shotgun) in item_box.contents
-			if(!O || !W)
+	else if(istype(W, /obj/item/ammo_magazine/shotgun))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/ammo_magazine/O = W
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine/shotgun) in item_box.contents
+		if(!O || !W)
+			return
+		if(O.default_ammo == AM.default_ammo)
+			if(O.current_rounds <= 0)
+				to_chat(user, SPAN_WARNING("[O] is empty."))
 				return
-			if(O.default_ammo == AM.default_ammo)
-				if(O.current_rounds <= 0)
-					to_chat(user, SPAN_WARNING("[O] is empty."))
-					return
-				if(AM.current_rounds >= AM.max_rounds)
-					to_chat(user, SPAN_WARNING("[src] is full."))
-					return
-				else
-					if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-						return
-					playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
-					var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
-					AM.current_rounds += S
-					O.current_rounds -= S
-					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]"))
-					update_icon()
-					O.update_icon()
+			if(AM.current_rounds >= AM.max_rounds)
+				to_chat(user, SPAN_WARNING("[src] is full."))
+				return
 			else
-				to_chat(user, SPAN_WARNING("Wrong type of shells."))
-
-		if(istype(W, /obj/item/ammo_magazine/handful))
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
-			AM.attackby(W, user, 1)
-			update_icon()
+				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+					return
+				playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
+				var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
+				AM.current_rounds += S
+				O.current_rounds -= S
+				to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]"))
+				update_icon()
+				O.update_icon()
+		else
+			to_chat(user, SPAN_WARNING("Wrong type of shells."))
+	else if(istype(W, /obj/item/ammo_magazine/handful))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
+		AM.attackby(W, user, 1)
+		update_icon()
 
 //---------------------FIRE HANDLING PROCS
 /obj/structure/magazine_box/flamer_fire_act(damage, datum/cause_data/flame_cause_data)

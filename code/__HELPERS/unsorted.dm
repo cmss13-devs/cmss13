@@ -713,7 +713,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		return GLOB.action_purple_power_up
 
 
-/*
+// TODO: Transform this into an element
+/**
  * do_after handles timed actions
  * The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
  * This proc can handle timed actions with one person alone or one person and a target atom.

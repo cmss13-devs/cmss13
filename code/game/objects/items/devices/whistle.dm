@@ -17,10 +17,13 @@
 	add_fingerprint(user)
 
 /obj/item/device/whistle/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(user.wear_mask == src)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		whistle_playsound(user)
-	else
-		..()
 
 /obj/item/device/whistle/attack_hand(mob/user)
 	if(user.wear_mask == src)

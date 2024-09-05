@@ -64,6 +64,11 @@
 		icon_state = "modifier_off"
 
 /obj/structure/machinery/chem_simulator/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return

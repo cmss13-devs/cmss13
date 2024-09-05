@@ -13,7 +13,12 @@
 	name = made_from_player + name
 
 /obj/item/reagent_container/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/turf/T = get_turf(src)
 		var/cutlet_amt = roll(1,4)
 		for(var/i in 1 to cutlet_amt)
@@ -21,8 +26,6 @@
 		to_chat(user, "You slice up the meat.")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		qdel(src)
-	else
-		..()
 
 /obj/item/reagent_container/food/snacks/meat/synthmeat
 	name = "synthetic meat"

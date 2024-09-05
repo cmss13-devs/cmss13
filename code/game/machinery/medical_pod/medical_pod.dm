@@ -166,9 +166,14 @@
 // attackby code
 
 /obj/structure/machinery/medical_pod/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	// no
 	if(!ishuman(user))
-		return // no
+		return
 	if(inoperable())
 		to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
@@ -216,6 +221,10 @@
 
 /obj/structure/machinery/medical_pod/autodoc/attackby(obj/item/W, mob/living/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W, /obj/item/stack/sheet/metal))
 		if(stored_metal == max_metal)
 			to_chat(user, SPAN_WARNING("\The [src] is full!"))

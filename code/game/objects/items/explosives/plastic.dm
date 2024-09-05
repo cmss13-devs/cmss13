@@ -27,7 +27,11 @@
 	var/req_skill = SKILL_ENGINEER
 	var/req_skill_level = SKILL_ENGINEER_NOVICE
 
+#define CLEAR_SIGNALS(loc) UnregisterSignal(loc, list(COMSIG_PARENT_ATTACKBY, COMSIG_PARENT_QDELETING))
+
 /obj/item/explosive/plastic/Destroy()
+	if (loc)
+		CLEAR_SIGNALS(loc)
 	disarm()
 	return ..()
 
@@ -127,24 +131,33 @@
 		active = TRUE
 		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
-/obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-		if(active)
-			if(user.action_busy)
-				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
-			SPAN_NOTICE("You start disarming [src]."))
-			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
-					SPAN_WARNING("You stop disarming [src]."))
-				return
-			if(!active)//someone beat us to it
-				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
-			SPAN_NOTICE("You finish disarming [src]."))
-			disarm()
-	else
-		return ..()
+/obj/item/explosive/plastic/Moved(atom/oldloc, direction, forced)
+	. = ..()
+	CLEAR_SIGNALS(oldloc)
+	RegisterSignal(loc, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_container_attackby))
+	RegisterSignal(loc, COMSIG_PARENT_QDELETING, PROC_REF(handle_container_qdeleting))
+
+/obj/item/explosive/plastic/proc/handle_container_qdeleting(atom/container)
+	CLEAR_SIGNALS(container)
+
+/obj/item/explosive/plastic/proc/handle_container_attackby(container, obj/item/attackedby, mob/user)
+	if (!HAS_TRAIT(attackedby, TRAIT_TOOL_MULTITOOL))
+		return
+	if (!active)
+		return
+	if (user.action_busy)
+		return
+	user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+	SPAN_NOTICE("You start disarming [src]."))
+	if (!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+			SPAN_WARNING("You stop disarming [src]."))
+		return
+	if (!active)//someone beat us to it
+		return
+	user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+	SPAN_NOTICE("You finish disarming [src]."))
+	disarm()
 
 /obj/item/explosive/plastic/pull_response(mob/puller)
 	if(active)
@@ -392,3 +405,4 @@
 		return FALSE
 	. = ..()
 
+#undef CLEAR_SIGNALS

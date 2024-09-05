@@ -320,9 +320,14 @@
 	return FALSE
 
 /obj/effect/alien/resin/special/pylon/core/attackby(obj/item/attack_item, mob/user)
-	if(!istype(attack_item, /obj/item/grab) || !isxeno(user))
-		return ..(attack_item, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(!istype(attack_item, /obj/item/grab) || !isxeno(user))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/larva_amount = 0 // The amount of larva they get
 
 	var/obj/item/grab/grab = attack_item

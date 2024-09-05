@@ -174,7 +174,7 @@
 
 	var/mob/dead/observer/G = target.get_ghost()
 	if(istype(G) && G.client)
-		playsound_client(G.client, 'sound/effects/revive_notify.ogg')
+		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 

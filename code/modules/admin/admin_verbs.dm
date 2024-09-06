@@ -142,7 +142,8 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,
-	/datum/admins/proc/open_shuttlepanel
+	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/get_whitelisted_clients,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(

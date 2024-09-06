@@ -32,6 +32,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	minimap_icon = "reaper"
+
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
@@ -80,9 +82,9 @@
 	var/flesh_plasma_max = 1000
 	var/passive_flesh_regen = 1
 	var/passive_flesh_multi= 1
-	var/passive_multi_max = 5
+	var/passive_multi_max = 10
 	var/pause_decay = FALSE
-	var/pause_dur = 10 SECONDS
+	var/pause_dur = 5 SECONDS
 	var/unpause_incoming = FALSE
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
 
@@ -95,14 +97,15 @@
 /datum/behavior_delegate/base_reaper/proc/unpause_decay()
 	pause_decay = FALSE
 	unpause_incoming = FALSE
-	pause_dur = 10 SECONDS
+	pause_dur = 5 SECONDS
 
 /datum/behavior_delegate/base_reaper/append_to_stat()
 	. = ..()
-	. += "Flesh Resin: [flesh_plasma]"
+	. += "Flesh Plasma: [flesh_plasma]"
+	. += "Passive Gain: [passive_flesh_regen * passive_flesh_multi]"
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	passive_flesh_multi += 0.25
+	passive_flesh_multi += 1
 
 /datum/behavior_delegate/base_reaper/on_life()
 	if(passive_flesh_multi > passive_multi_max)

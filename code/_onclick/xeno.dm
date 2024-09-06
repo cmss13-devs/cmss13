@@ -114,9 +114,11 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 		handle_queued_action(target)
 		return TRUE
 
-	var/alt_pressed = mods["alt"] == "1"
-	var/shift_pressed = mods["shift"] == "1"
-	var/middle_pressed = mods["middle"] == "1"
+	var/left_pressed = mods[LEFT_CLICK] == "1"
+	var/alt_pressed = mods[ALT_CLICK] == "1"
+	var/shift_pressed = mods[SHIFT_CLICK] == "1"
+	var/middle_pressed = mods[MIDDLE_CLICK] == "1"
+	var/right_pressed = mods[RIGHT_CLICK] == "1"
 
 	if(alt_pressed && shift_pressed)
 		if(istype(target, /mob/living/carbon/xenomorph))
@@ -126,15 +128,24 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
 				return TRUE
 
-	var/middle_pref = client.prefs && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK) != 0 // client is already tested to be non-null by caller
-	if(selected_ability && shift_pressed == !middle_pref && middle_pressed == middle_pref)
+	var/preference = get_ability_mouse_key() // client is already tested to be non-null by caller
+	var/activate_ability = FALSE
+	switch(preference)
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			activate_ability = middle_pressed
+		if(XENO_ABILITY_CLICK_RIGHT)
+			activate_ability = right_pressed
+		if(XENO_ABILITY_CLICK_SHIFT)
+			activate_ability = left_pressed && shift_pressed
+
+	if(activate_ability && selected_ability)
 		if(istype(target, /atom/movable/screen))
 			// Click through the UI: Currently this won't attempt to sprite click any mob there, just the turf
 			var/turf/turf = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if(turf)
 				target = turf
-		if(selected_ability.use_ability_wrapper(target, mods))
-			return TRUE
+		selected_ability.use_ability_wrapper(target, mods)
+		return TRUE
 
 	if(next_move >= world.time)
 		return FALSE

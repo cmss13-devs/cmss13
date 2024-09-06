@@ -12,22 +12,28 @@
 
 
 /mob/living/carbon/human/click(atom/A, list/mods)
-	if(mods["shift"] && !mods["middle"])
-		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			selected_ability.use_ability(A)
-			return TRUE
+	var/use_ability = FALSE
+	switch(get_ability_mouse_key())
+		if(XENO_ABILITY_CLICK_SHIFT)
+			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
+				use_ability = TRUE
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			if(mods[MIDDLE_CLICK])
+				use_ability = TRUE
+		if(XENO_ABILITY_CLICK_RIGHT)
+			if(mods[RIGHT_CLICK])
+				use_ability = TRUE
 
-	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return TRUE
+	if(selected_ability && use_ability)
+		selected_ability.use_ability(A)
+		return TRUE
 
 	if(interactee)
 		var/result = interactee.handle_click(src, A, mods)
 		if(result != HANDLE_CLICK_PASS_THRU)
 			return result
 
-	if (mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
+	if (mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK] && ishuman(A) && get_dist(src, A) <= 1)
 		var/mob/living/carbon/human/H = A
 		H.receive_from(src)
 		return TRUE

@@ -4,6 +4,8 @@
 	var/mob/living/carbon/human/victim = carbon
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
+	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
+
 	if(!action_cooldown_check())
 		return
 
@@ -32,7 +34,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("This one still lives, they are not suitable."))
 		return
 
-	if(!victim.undefibbable || victim.is_revivable())
+	if(victim.is_revivable(TRUE) && victim.check_tod())
 		to_chat(xeno, SPAN_XENOWARNING("This one still pulses with life, they are not suitable."))
 		return
 
@@ -52,35 +54,34 @@
 			cannot_harvest()
 			return ..()
 		else
+			xeno.face_atom(carbon)
+			var/obj/limb/limb = target_limb
+			switch(limb.name)
+				if("l_hand")
+					limb = carbon.get_limb("l_arm")
+				if("r_hand")
+					limb = carbon.get_limb("r_arm")
+				if("l_foot")
+					limb = carbon.get_limb("l_leg")
+				if("r_foot")
+					limb = carbon.get_limb("r_leg")
+			reaper.harvesting = TRUE
+			xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
+			SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
+			playsound(victim, limb_remove_start, 50, TRUE)
+			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				reaper.harvesting = FALSE
+				return
 			do_harvest(carbon, target_limb)
 			return ..()
 
-/datum/action/xeno_action/activable/flesh_harvest/proc/do_harvest(mob/living/carbon/carbon, obj/limb/target_limb)
+/datum/action/xeno_action/activable/flesh_harvest/proc/do_harvest(mob/living/carbon/carbon, obj/limb/limb)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/mob/living/carbon/human/victim = carbon
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-	var/obj/limb/limb = target_limb
 
-	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
 	var/limb_remove_end = pick('sound/scp/firstpersonsnap.ogg','sound/scp/firstpersonsnap2.ogg')
 
-	xeno.face_atom(carbon)
-	switch(limb.name)
-		if("l_hand")
-			limb = carbon.get_limb("l_arm")
-		if("r_hand")
-			limb = carbon.get_limb("r_arm")
-		if("l_foot")
-			limb = carbon.get_limb("l_leg")
-		if("r_foot")
-			limb = carbon.get_limb("r_leg")
-	reaper.harvesting = TRUE
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
-	SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
-	playsound(victim, limb_remove_start, 50, TRUE)
-	if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		reaper.harvesting = FALSE
-		return
 	playsound(xeno, limb_remove_end, 25, TRUE)
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion!"), \
@@ -93,7 +94,6 @@
 		reaper.flesh_plasma += harvest_gain
 	reaper.harvesting = FALSE
 	reaper.pause_decay = TRUE
-	reaper.pause_dur = 3 SECONDS
 	apply_cooldown()
 
 /datum/action/xeno_action/activable/flesh_harvest/proc/cannot_harvest()
@@ -114,6 +114,12 @@
 		return
 
 	if(!xeno.check_state())
+		return
+
+	if(carbon.stat == DEAD)
+		return
+
+	if(HAS_TRAIT(carbon, TRAIT_NESTED))
 		return
 
 	if(distance > max_range)
@@ -138,12 +144,6 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
-
-	if(carbon.stat == DEAD)
-		return
-
-	if(HAS_TRAIT(carbon, TRAIT_NESTED))
-		return
 
 	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
 	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
@@ -186,12 +186,12 @@
 	if(!xeno.check_state())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(reaper.flesh_plasma < flesh_plasma_cost)
 		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma!"))
-		return FALSE
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
 
 	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
 	cloud = new /datum/effect_system/smoke_spread/reaper_mist

@@ -402,9 +402,10 @@
 		try_to_extinguish()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Life(delta_time)
-	//simplemobs don't have innate knockdown reduction so we'll manually lower it here.
-	AdjustKnockDown(-0.5)
-	AdjustStun(-0.5)
+	//simplemobs don't have innate knockdown reduction so we'll just remove the status effects manually. works alright due to the 2 second delay on life()
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
 	if(aggression_value > 0)
 		aggression_value--
 

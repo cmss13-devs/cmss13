@@ -132,7 +132,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	var/activate_ability = FALSE
 	switch(preference)
 		if(XENO_ABILITY_CLICK_MIDDLE)
-			activate_ability = middle_pressed
+			activate_ability = middle_pressed && !shift_pressed
 		if(XENO_ABILITY_CLICK_RIGHT)
 			activate_ability = right_pressed
 		if(XENO_ABILITY_CLICK_SHIFT)

@@ -18,7 +18,7 @@
 			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
 				use_ability = TRUE
 		if(XENO_ABILITY_CLICK_MIDDLE)
-			if(mods[MIDDLE_CLICK])
+			if(mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])
 				use_ability = TRUE
 		if(XENO_ABILITY_CLICK_RIGHT)
 			if(mods[RIGHT_CLICK])

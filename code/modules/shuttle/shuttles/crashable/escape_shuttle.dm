@@ -78,11 +78,11 @@
 			cryos += list(cryotube)
 	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
+		mode = SHUTTLE_CRASHED
 		sleep(31)
 		var/turf/sploded = return_center_turf()
 		cell_explosion(sploded, 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("escape pod malfunction")) //Clears out walls
 		sleep(25)
-		mode = SHUTTLE_CRASHED
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in cryos)
 			cryotube.go_out()
 		door_handler.control_doors("force-unlock")

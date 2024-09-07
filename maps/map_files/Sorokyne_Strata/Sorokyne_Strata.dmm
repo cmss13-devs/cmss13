@@ -84,12 +84,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/deep/minehead)
 "aau" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -110,9 +106,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aay" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -159,12 +153,8 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "aaE" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -180,9 +170,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aaH" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -343,9 +331,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abq" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -374,7 +360,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abw" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -471,16 +457,10 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abO" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "abP" = (
@@ -496,13 +476,9 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/cabin_area)
 "abR" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "abS" = (
@@ -566,7 +542,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "acc" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -583,28 +559,20 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "acg" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "ach" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "aci" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -673,28 +641,22 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 8
 	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "acv" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "acw" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
 	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -834,7 +796,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "acY" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
 "acZ" = (
@@ -1031,7 +993,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "adI" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -1039,7 +1001,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
 	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -1508,10 +1470,8 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "afv" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/interior/dorms)
@@ -1811,12 +1771,8 @@
 "agA" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "agB" = (
@@ -2107,7 +2063,7 @@
 "ahB" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "ahG" = (
@@ -2451,9 +2407,7 @@
 "aiP" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "aiT" = (
@@ -2520,12 +2474,8 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ajf" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "ajg" = (
@@ -2623,10 +2573,8 @@
 "ajw" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "ajx" = (
@@ -2865,10 +2813,8 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/interior/nearlz1)
@@ -2876,10 +2822,8 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/interior/nearlz1)
@@ -3164,9 +3108,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/nearlz1)
 "alA" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -3174,9 +3116,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/nearlz1)
 "alB" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -3187,9 +3127,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/nearlz1)
 "alD" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/nearlz1)
@@ -3235,9 +3173,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "alM" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "alN" = (
@@ -3334,9 +3270,7 @@
 /area/strata/ag/interior/restricted/devroom)
 "aml" = (
 /obj/item/lightstick/planted,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/restricted/devroom)
 "amm" = (
@@ -3349,9 +3283,7 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "amo" = (
 /obj/structure/largecrate/random/barrel/green,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
 "amp" = (
@@ -3389,9 +3321,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "amw" = (
@@ -3415,9 +3345,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "amG" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
@@ -3450,9 +3378,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "amU" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/restricted/devroom)
 "amX" = (
@@ -3481,9 +3407,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/engi/drome)
 "anb" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/restricted/devroom)
 "anc" = (
@@ -3696,9 +3620,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anN" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
 "anP" = (
@@ -4060,9 +3982,7 @@
 "apA" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "apC" = (
@@ -4099,7 +4019,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "apK" = (
@@ -4478,9 +4398,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/strata/ag/interior/dorms)
 "arj" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms)
 "ark" = (
@@ -4638,13 +4556,11 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/canteen)
 "arK" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "arL" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "arM" = (
@@ -4716,10 +4632,8 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/dorms)
 "arZ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -4727,7 +4641,7 @@
 /turf/open/gm/river,
 /area/strata/ag/interior/dorms)
 "asb" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/dorms)
 "asc" = (
@@ -4785,9 +4699,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/research_decks)
 "asm" = (
@@ -4805,9 +4717,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "asq" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -5056,9 +4966,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/strata/ug/interior/jungle/deep/minehead)
 "atf" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "atg" = (
@@ -5108,12 +5016,8 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ato" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "atp" = (
@@ -5161,25 +5065,19 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms)
 "atz" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "atA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "atB" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 9
 	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "atC" = (
@@ -5191,9 +5089,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "atE" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/outpost/engi)
@@ -5525,9 +5421,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 8
 	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -5754,9 +5648,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "avR" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/structure/machinery/light/small,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -5914,15 +5806,11 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/restricted/devroom)
 "awr" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "aws" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "awt" = (
@@ -6061,12 +5949,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/adminext)
 "awR" = (
@@ -6101,9 +5985,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "awX" = (
@@ -6121,9 +6003,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "awZ" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "axa" = (
@@ -6479,16 +6359,12 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "ayt" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/north_outpost)
 "ayu" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "ayv" = (
@@ -6511,9 +6387,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "ayA" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/paths/adminext)
 "ayC" = (
@@ -6889,19 +6763,17 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "aAe" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/research_decks)
 "aAf" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aAg" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/engi)
 "aAh" = (
@@ -7320,12 +7192,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aBU" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -7347,9 +7215,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aBY" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -7445,9 +7311,7 @@
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aCq" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "aCr" = (
@@ -7461,9 +7325,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "aCt" = (
@@ -7601,9 +7463,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aCY" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -7770,9 +7630,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aDL" = (
@@ -7781,9 +7639,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aDM" = (
@@ -7843,21 +7699,15 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "aDY" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/research_decks)
 "aDZ" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aEa" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/engi)
 "aEb" = (
@@ -8127,9 +7977,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aFf" = (
@@ -8455,30 +8303,22 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "aGd" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "aGe" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "aGf" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 8;
 	layer = 2.9
@@ -8529,15 +8369,11 @@
 /area/strata/ag/interior/outpost/security)
 "aGt" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aGu" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aGw" = (
@@ -8707,9 +8543,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "aGX" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -8848,35 +8682,25 @@
 /area/strata/ag/interior/outpost/engi)
 "aHy" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aHz" = (
 /turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aHB" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aHC" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aHD" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aHJ" = (
@@ -8925,9 +8749,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aHS" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aHT" = (
@@ -8972,9 +8794,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
 "aIg" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement/cement3,
 /area/strata/ag/interior/landingzone_1)
@@ -9047,12 +8867,8 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aIz" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aIC" = (
@@ -9061,19 +8877,13 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aIG" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aIH" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -9129,9 +8939,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aIX" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/item/stack/sheet/plasteel/medium_stack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/floor3,
@@ -9185,9 +8993,7 @@
 /turf/open/floor/strata/red2,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aJl" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aJm" = (
@@ -9216,9 +9022,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "aJp" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aJr" = (
@@ -9419,9 +9223,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "aKf" = (
 /obj/item/lightstick/planted,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aKi" = (
@@ -9439,15 +9241,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "aKk" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aKl" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aKm" = (
@@ -9476,44 +9274,30 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aKr" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aKs" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aKt" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "aKu" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "aKv" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "aKw" = (
@@ -9736,9 +9520,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aLp" = (
@@ -9785,15 +9567,11 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/mountain)
 "aLy" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aLz" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aLB" = (
@@ -9823,12 +9601,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aLM" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aLO" = (
@@ -10059,27 +9833,19 @@
 /area/strata/ag/interior/dorms)
 "aMG" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMH" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMI" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMJ" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMK" = (
@@ -10088,7 +9854,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aML" = (
@@ -10134,28 +9900,20 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aMS" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMT" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMU" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMV" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMW" = (
@@ -10207,9 +9965,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "aNe" = (
 /obj/item/bodybag/tarp/snow,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aNf" = (
@@ -10244,7 +10000,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aNq" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aNs" = (
@@ -10303,11 +10059,11 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "aNB" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aNC" = (
@@ -10431,7 +10187,7 @@
 /area/strata/ag/exterior/research_decks)
 "aNU" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aNV" = (
@@ -10468,39 +10224,35 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aOc" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aOd" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aOe" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aOf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aOg" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aOh" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aOi" = (
@@ -10526,9 +10278,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aOm" = (
@@ -10624,7 +10374,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aOz" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOA" = (
@@ -10632,7 +10382,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aOB" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOD" = (
@@ -10641,11 +10391,11 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aOE" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOF" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOG" = (
@@ -10717,9 +10467,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aOX" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOY" = (
@@ -10728,9 +10476,7 @@
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOZ" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPa" = (
@@ -10743,9 +10489,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/dorms/south)
 "aPc" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aPd" = (
@@ -10792,9 +10536,7 @@
 /area/strata/ag/interior/outpost/admin)
 "aPn" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPo" = (
@@ -10819,9 +10561,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/dorms/south)
 "aPr" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPs" = (
@@ -10882,16 +10622,12 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aPE" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aPF" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aPG" = (
@@ -10907,9 +10643,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "aPH" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aPI" = (
@@ -10918,9 +10652,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aPJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aPK" = (
@@ -10993,7 +10725,7 @@
 /area/strata/ag/interior/outpost/admin)
 "aPT" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
@@ -11002,7 +10734,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "aPX" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPY" = (
@@ -11013,7 +10745,7 @@
 /area/strata/ag/interior/restricted)
 "aQa" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aQb" = (
@@ -11054,18 +10786,14 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aQg" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aQh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aQi" = (
@@ -11110,9 +10838,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "aQn" = (
 /obj/structure/flora/grass/tallgrass/ice/corner,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aQp" = (
@@ -11200,9 +10926,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/dorms/south)
 "aQH" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
@@ -11226,7 +10950,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aQP" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/foyer)
 "aQQ" = (
@@ -11323,16 +11047,12 @@
 /area/strata/ag/interior/outpost/admin)
 "aRi" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "aRj" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "aRk" = (
@@ -11394,9 +11114,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/ag/interior/landingzone_1)
 "aRy" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aRz" = (
@@ -11486,9 +11204,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aRR" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aRV" = (
@@ -11511,16 +11227,12 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/engi)
 "aRZ" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aSb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aSc" = (
@@ -11556,9 +11268,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aSj" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "aSk" = (
@@ -11666,9 +11376,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aSG" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement/cement14,
 /area/strata/ag/interior/landingzone_1)
@@ -11682,15 +11390,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aSK" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aSL" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aSN" = (
@@ -11822,9 +11526,7 @@
 /area/strata/ag/interior/outpost/gen/foyer)
 "aTv" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "aTy" = (
@@ -11941,9 +11643,7 @@
 /area/strata/ag/interior/outpost/admin)
 "aTR" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "aTT" = (
@@ -12023,13 +11723,11 @@
 /turf/open/gm/coast/east,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aUn" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aUo" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
@@ -12070,7 +11768,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/river)
 "aUx" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 9;
@@ -12079,19 +11777,15 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aUz" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aUA" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aUC" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "aUD" = (
@@ -12229,9 +11923,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/admin)
 "aVg" = (
@@ -12240,9 +11932,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/admin)
 "aVh" = (
@@ -12287,9 +11977,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "aVp" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aVq" = (
@@ -12397,13 +12085,11 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aVW" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/nearlz1)
 "aVX" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
@@ -12419,9 +12105,7 @@
 /area/strata/ag/interior/administration)
 "aWa" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aWc" = (
@@ -12429,15 +12113,11 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aWd" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aWe" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aWf" = (
@@ -12463,9 +12143,7 @@
 "aWk" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "aWl" = (
@@ -12559,28 +12237,20 @@
 /area/strata/ag/interior/outpost/admin)
 "aWQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aWR" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aWS" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aWU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "aWV" = (
@@ -12589,9 +12259,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "aWW" = (
@@ -12619,9 +12287,7 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "aXb" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -12707,16 +12373,12 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aXv" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/nearlz1)
 "aXw" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
 "aXx" = (
@@ -12787,9 +12449,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aXW" = (
@@ -12824,17 +12484,15 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aYh" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aYi" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aYj" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aYm" = (
@@ -13007,10 +12665,8 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/north_lz_caves)
 "aZe" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aZh" = (
@@ -13023,9 +12679,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen/bar)
 "aZi" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aZj" = (
@@ -13056,9 +12710,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aZo" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aZp" = (
@@ -13131,24 +12783,16 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZA" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aZB" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "aZC" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aZD" = (
@@ -13195,9 +12839,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "aZI" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "aZJ" = (
@@ -13224,9 +12866,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aZS" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "aZV" = (
@@ -13238,7 +12878,7 @@
 "aZW" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "aZX" = (
@@ -13278,9 +12918,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/administration)
 "baf" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/north_lz_caves)
 "bag" = (
@@ -13293,9 +12931,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/administration)
 "bah" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "bai" = (
@@ -13474,15 +13110,11 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/gen/foyer)
 "baT" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "baU" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "baV" = (
@@ -13621,9 +13253,7 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "bbA" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bbB" = (
@@ -13721,9 +13351,7 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/nearlz1)
 "bbZ" = (
@@ -13747,15 +13375,11 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "bce" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "bcf" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
@@ -13777,9 +13401,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "bck" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
 "bcm" = (
@@ -13805,9 +13427,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/engi/drome)
 "bcr" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -13931,22 +13551,16 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "bcT" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "bcU" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "bcV" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bcW" = (
@@ -13956,9 +13570,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "bcX" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_ew_full_cap";
@@ -14094,14 +13706,12 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "bdB" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/river)
 "bdC" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdD" = (
@@ -14113,9 +13723,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bdG" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bdI" = (
@@ -14142,27 +13750,23 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bdM" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "bdN" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bdO" = (
 /obj/structure/barricade/snow{
 	dir = 8
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "bdP" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "bdQ" = (
@@ -14172,14 +13776,12 @@
 "bdS" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/belt/utility/full,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdT" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdU" = (
@@ -14187,21 +13789,15 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/research_decks/security)
 "bdV" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bdW" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bdX" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bdY" = (
@@ -14210,24 +13806,18 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "bdZ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bea" = (
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bec" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "bed" = (
@@ -14260,9 +13850,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/admin)
 "bei" = (
@@ -14270,10 +13858,8 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/river)
 "bek" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/river)
 "bel" = (
@@ -14402,7 +13988,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "beK" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "beL" = (
@@ -14504,33 +14090,23 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bfe" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/shed_five_caves)
 "bff" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bfg" = (
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bfh" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bfi" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bfk" = (
@@ -14538,10 +14114,8 @@
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bfl" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bfm" = (
@@ -14558,9 +14132,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/gen/bball)
 "bfo" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bfp" = (
@@ -14630,9 +14202,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bfE" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "bfF" = (
@@ -14706,45 +14276,35 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bga" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bgb" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bgc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bgd" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bge" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bgf" = (
@@ -14765,9 +14325,7 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "bgi" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bgj" = (
@@ -14785,9 +14343,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/crash)
 "bgl" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bgn" = (
@@ -14809,15 +14365,11 @@
 /area/strata/ag/exterior/marsh)
 "bgr" = (
 /obj/structure/fence,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bgs" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bgt" = (
@@ -14827,15 +14379,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bgu" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bgv" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bgw" = (
@@ -14851,7 +14399,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bgy" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -14870,14 +14418,14 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/canteen)
 "bgB" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "bgF" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -14925,9 +14473,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/shed_five_caves)
 "bgN" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -15018,15 +14564,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
 "bhk" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bhp" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
 "bhq" = (
@@ -15037,18 +14579,12 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/nearlz1)
 "bhr" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bhs" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bht" = (
@@ -15167,9 +14703,7 @@
 /area/strata/ag/exterior/marsh/river)
 "bhK" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bhL" = (
@@ -15199,9 +14733,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/crash)
 "bhP" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bhQ" = (
@@ -15231,9 +14763,7 @@
 /area/strata/ag/interior/outpost/gen/foyer)
 "bhX" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bhY" = (
@@ -15262,17 +14792,15 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "bif" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "big" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bih" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bii" = (
@@ -15299,35 +14827,33 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/north_outpost)
 "bin" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "biq" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bis" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bit" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
 	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "biu" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
 	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "biv" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/vanyard)
 "biw" = (
@@ -15372,15 +14898,11 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "biE" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "biF" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -15409,29 +14931,21 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "biN" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "biP" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "biQ" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
 "biR" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
 "biT" = (
@@ -15573,23 +15087,15 @@
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "bjv" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/crash)
 "bjA" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bjB" = (
@@ -15602,45 +15108,31 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/shed_five_caves)
 "bjE" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "bjG" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bjH" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bjI" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bjJ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bjK" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bjL" = (
@@ -15710,21 +15202,15 @@
 /turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/dorms/hive)
 "bkb" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/shed_five_caves)
 "bkd" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bke" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bkh" = (
@@ -15737,22 +15223,16 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bkl" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bkm" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bkn" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh)
 "bko" = (
@@ -15762,14 +15242,12 @@
 /area/strata/ag/exterior/marsh/water)
 "bkp" = (
 /obj/item/lightstick/red/planted,
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
 "bkq" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
 "bkr" = (
@@ -15917,18 +15395,12 @@
 /obj/structure/largecrate/random/secure{
 	layer = 3.1
 	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "bkX" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "bkY" = (
@@ -16000,9 +15472,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "blp" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "blq" = (
@@ -16010,9 +15480,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "blr" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "bls" = (
@@ -16021,22 +15489,16 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "blu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/mountain)
 "blv" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/structure/machinery/space_heater,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "blx" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/machinery/space_heater,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -16047,9 +15509,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "blz" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/inflatable,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -16058,9 +15518,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/paths/cabin_area/central)
 "blB" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/item/toy/deck,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -16076,9 +15534,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "blE" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/barricade/wooden,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -16108,21 +15564,15 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "blK" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "blL" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "blM" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/bed/chair,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -16366,9 +15816,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/exterior/paths/cabin_area)
 "bnb" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "bnc" = (
@@ -16381,9 +15829,7 @@
 "bne" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bng" = (
@@ -16520,15 +15966,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bnP" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bnQ" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bnR" = (
@@ -16759,18 +16201,14 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "boG" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "boH" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 5
 	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "boI" = (
@@ -16786,13 +16224,11 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/research_decks)
 "boL" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/foyer)
 "boM" = (
@@ -16838,9 +16274,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "boT" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "boU" = (
@@ -16863,9 +16297,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/strata/ag/interior/dorms/maintenance)
 "boX" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "boY" = (
@@ -16875,16 +16307,12 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/foyer)
 "boZ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bpa" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bpc" = (
@@ -17271,13 +16699,11 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/southresearch)
 "bqM" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bqN" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bqP" = (
@@ -17374,9 +16800,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "brm" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/southresearch)
@@ -17453,16 +16877,12 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/foyer)
 "brE" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "brF" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "brG" = (
@@ -17470,15 +16890,11 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "brH" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "brJ" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "brK" = (
@@ -17518,7 +16934,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
 "brU" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
@@ -17527,9 +16943,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "brW" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "brX" = (
@@ -17541,27 +16955,19 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "bsa" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh/crash)
 "bsc" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "bsd" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "bse" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "bsf" = (
@@ -17589,10 +16995,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bsn" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bso" = (
@@ -17614,9 +17018,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/med)
 "bsr" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bss" = (
@@ -17629,7 +17031,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/med)
 "bsu" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bsv" = (
@@ -17710,12 +17112,12 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "bsM" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bsN" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bsO" = (
@@ -17730,18 +17132,12 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bsQ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bsR" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bsS" = (
@@ -17753,9 +17149,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bsT" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bsU" = (
@@ -17776,9 +17170,7 @@
 "bsX" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/largecrate/random,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bsY" = (
@@ -17788,9 +17180,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
 "bsZ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bta" = (
@@ -17829,9 +17219,7 @@
 /area/strata/ag/exterior/marsh)
 "btg" = (
 /obj/structure/largecrate/random,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bth" = (
@@ -17849,16 +17237,16 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "btl" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "btm" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh/center)
 "btn" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh/center)
 "bto" = (
@@ -17973,9 +17361,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "btN" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
@@ -18149,9 +17535,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "buD" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "buF" = (
@@ -18175,15 +17559,11 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "buK" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "buM" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "buN" = (
@@ -18418,9 +17798,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "bvR" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bvU" = (
@@ -18435,15 +17813,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bvW" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bvZ" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwb" = (
@@ -18470,9 +17844,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "bwg" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -18510,9 +17882,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "bwm" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwn" = (
@@ -18537,15 +17907,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/canteen)
 "bwr" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bws" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwt" = (
@@ -18562,11 +17928,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bww" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwx" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwy" = (
@@ -18582,15 +17948,15 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwB" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwC" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwD" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bwE" = (
@@ -18613,9 +17979,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bwI" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bwL" = (
@@ -18625,22 +17989,16 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bwO" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwP" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bwQ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/nearlz2)
 "bwR" = (
@@ -18648,9 +18006,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/gen/bball)
 "bwT" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bwU" = (
@@ -18668,36 +18024,24 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "bwW" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwX" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bwY" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bwZ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bxa" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bxb" = (
@@ -18717,9 +18061,7 @@
 /area/strata/ag/exterior/marsh)
 "bxe" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -18781,7 +18123,7 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh)
 "bxz" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/nearlz2)
 "bxA" = (
@@ -18799,7 +18141,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bxD" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bxE" = (
@@ -18810,16 +18152,12 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/administration)
 "bxG" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bxH" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/nearlz2)
 "bxI" = (
@@ -18873,9 +18211,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/med)
 "bxQ" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/nearlz2)
 "bxR" = (
@@ -18902,12 +18238,8 @@
 /turf/open/floor/strata/white_cyan3/west,
 /area/strata/ag/interior/outpost/med)
 "bxW" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bxX" = (
@@ -18921,27 +18253,17 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bxZ" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bya" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "byb" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byc" = (
@@ -18959,10 +18281,8 @@
 /turf/open/floor/strata/white_cyan3/north,
 /area/strata/ag/interior/outpost/med)
 "byf" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "byh" = (
@@ -18972,12 +18292,8 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/restricted)
 "byj" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "byk" = (
@@ -19032,30 +18348,26 @@
 /turf/open/floor/strata/white_cyan2,
 /area/strata/ag/interior/outpost/med)
 "byN" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "byO" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "byP" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "byQ" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
@@ -19243,12 +18555,8 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/dorms/canteen)
 "bAu" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -19440,9 +18748,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/med)
 "bCd" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -19665,16 +18971,12 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bDD" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "bDE" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -19717,10 +19019,8 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/outpost/gen/bball)
 "bEh" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -19746,9 +19046,7 @@
 "bEV" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "bEX" = (
@@ -19781,12 +19079,8 @@
 "bFi" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "bFl" = (
@@ -19875,10 +19169,8 @@
 /turf/open/floor/strata/cyan3/west,
 /area/strata/ag/interior/outpost/med)
 "bGg" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -20122,9 +19414,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bIu" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "bIv" = (
@@ -20398,9 +19688,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "bKT" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/tcomms)
@@ -20594,7 +19882,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "bOp" = (
@@ -20843,9 +20131,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "bRb" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "bRe" = (
@@ -20937,9 +20223,7 @@
 "bSD" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "bSE" = (
@@ -20986,9 +20270,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/research_decks/security)
 "bTb" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "bTk" = (
@@ -21100,9 +20382,7 @@
 /area/strata/ag/interior/outpost/med)
 "bUx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "bUF" = (
@@ -21185,9 +20465,7 @@
 /area/strata/ag/interior/research_decks/security)
 "bVc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "bVd" = (
@@ -21353,9 +20631,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/paths/north_outpost)
 "bWH" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "bWK" = (
@@ -21477,9 +20753,7 @@
 /area/strata/ag/interior/dorms)
 "bYb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "bYg" = (
@@ -21488,9 +20762,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/research_decks)
 "bYk" = (
@@ -21642,7 +20914,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/minehead)
 "bZT" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "bZV" = (
@@ -21731,9 +21003,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/dorms)
 "caI" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/paths/adminext)
 "caL" = (
@@ -21942,18 +21212,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "ccI" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "ccK" = (
@@ -22618,9 +21884,7 @@
 "cjg" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "cji" = (
@@ -22693,25 +21957,17 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/adminext)
 "cjG" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/research_decks)
 "cjH" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/research_decks)
 "cjI" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/research_decks)
@@ -23063,9 +22319,7 @@
 /area/strata/ag/interior/landingzone_1)
 "cmB" = (
 /obj/structure/bed/nest,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/dorms/hive)
 "cmC" = (
@@ -23109,9 +22363,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "cnc" = (
@@ -23278,17 +22530,13 @@
 /turf/open/gm/coast/west,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "cot" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "cou" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "cov" = (
@@ -23405,9 +22653,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/dorms/flight_control)
 "cpR" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/nearlz1)
 "cpU" = (
@@ -23441,9 +22687,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/administration)
 "cqu" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/nearlz1)
 "cqE" = (
@@ -23451,12 +22695,8 @@
 /area/strata/ag/interior/nearlz1)
 "cqG" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "cqH" = (
@@ -23716,20 +22956,14 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "cti" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "ctl" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -23791,9 +23025,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/dorms)
 "ctH" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
@@ -23812,16 +23044,12 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/administration)
 "ctZ" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cuc" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
@@ -23836,9 +23064,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "cuy" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "cuz" = (
@@ -23887,9 +23113,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/research_decks)
 "cvb" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/research_decks)
 "cvc" = (
@@ -23949,9 +23173,7 @@
 /turf/open/gm/coast/west,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "cvY" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
@@ -24119,7 +23341,7 @@
 /area/strata/ag/interior/dorms/hive)
 "cFg" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "cFj" = (
@@ -24174,12 +23396,8 @@
 "cNg" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "cOc" = (
@@ -24301,9 +23519,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "dbg" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "dcc" = (
@@ -24390,10 +23606,8 @@
 "dmd" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "dnz" = (
@@ -24455,7 +23669,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/tcomms)
 "duq" = (
@@ -24468,15 +23682,9 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "dvf" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -24515,9 +23723,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "dBV" = (
@@ -24541,10 +23747,8 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "dDW" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -24587,9 +23791,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/tcomms)
 "dGv" = (
@@ -24911,9 +24113,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "euc" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "euN" = (
@@ -25009,7 +24209,7 @@
 /area/strata/ag/interior/outpost/med)
 "eGq" = (
 /obj/structure/cryofeed,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "eGD" = (
@@ -25032,9 +24232,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh)
 "eHv" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/nearlz2)
 "eIB" = (
@@ -25140,9 +24338,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "eOI" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/interior/restricted)
@@ -25158,9 +24354,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "eRJ" = (
@@ -25199,9 +24393,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "eVc" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "eVA" = (
@@ -25273,9 +24465,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "fjZ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/nearlz2)
 "fkw" = (
@@ -25338,9 +24528,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "fre" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -25448,9 +24636,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/item/fuel_cell,
 /turf/open/floor/strata/red2,
 /area/strata/ag/interior/outpost/engi)
@@ -25468,9 +24654,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -25535,9 +24719,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks)
 "fCI" = (
@@ -25563,9 +24745,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/dorms)
 "fHW" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "fIF" = (
@@ -25620,12 +24800,8 @@
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "fMP" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "fMS" = (
@@ -25635,10 +24811,8 @@
 /area/strata/ag/interior/tcomms)
 "fNs" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "fNH" = (
@@ -25667,9 +24841,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/administration)
 "fRi" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "fRv" = (
@@ -25859,13 +25031,9 @@
 "gjN" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata,
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "gjP" = (
@@ -25941,9 +25109,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "gqa" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
 "gqF" = (
@@ -25976,9 +25142,7 @@
 	dir = 8;
 	icon_state = "commb"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "grP" = (
@@ -25987,23 +25151,15 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "gtZ" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "guz" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "guF" = (
@@ -26067,9 +25223,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/restricted/devroom)
 "gEo" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /obj/structure/flora/grass/tallgrass/ice{
 	layer = 2.9
 	},
@@ -26081,7 +25235,7 @@
 /area/strata/ag/interior/tcomms)
 "gFH" = (
 /obj/structure/cryofeed/right,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "gFT" = (
@@ -26109,16 +25263,12 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "gIY" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "gLF" = (
@@ -26141,9 +25291,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/red3,
 /area/strata/ag/interior/outpost/med)
 "gOC" = (
@@ -26194,9 +25342,7 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "gTa" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "gTk" = (
@@ -26206,9 +25352,7 @@
 /area/strata/ag/exterior/research_decks)
 "gTx" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "gTB" = (
@@ -26253,13 +25397,9 @@
 "gVJ" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "gWE" = (
@@ -26306,9 +25446,7 @@
 "haZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
 "hcg" = (
@@ -26335,9 +25473,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "hfq" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -26359,13 +25495,9 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "hhW" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "hhX" = (
@@ -26387,16 +25519,14 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkn" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "hkA" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -26442,12 +25572,8 @@
 "hqw" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "hsg" = (
@@ -26467,13 +25593,9 @@
 "hto" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "htD" = (
@@ -26493,9 +25615,7 @@
 /turf/open/floor/strata/cyan3/west,
 /area/strata/ag/interior/outpost/med)
 "hwD" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
@@ -26545,9 +25665,7 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "hGd" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/red3,
 /area/strata/ag/interior/outpost/med)
 "hGm" = (
@@ -26556,9 +25674,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "hGH" = (
@@ -26568,7 +25684,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/administration)
 "hGO" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -26635,9 +25751,7 @@
 "hPZ" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/small,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "hQq" = (
@@ -26826,15 +25940,9 @@
 "iqV" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "irq" = (
@@ -26859,9 +25967,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/landingzone_checkpoint)
 "isd" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/marsh)
 "isj" = (
@@ -26943,13 +26049,9 @@
 "ixu" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "ixD" = (
@@ -27047,10 +26149,8 @@
 "iIz" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "iJh" = (
@@ -27066,12 +26166,8 @@
 "iJJ" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "iKI" = (
@@ -27152,7 +26248,7 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "iRk" = (
@@ -27266,12 +26362,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "jbI" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -27411,12 +26503,8 @@
 "jsP" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "jsW" = (
@@ -27470,9 +26558,7 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "jAo" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "jAE" = (
@@ -27510,9 +26596,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "jEB" = (
@@ -27593,13 +26677,9 @@
 "jMD" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "jMV" = (
@@ -27616,9 +26696,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "jOV" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "jPc" = (
@@ -27662,9 +26740,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 1
 	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "jVg" = (
@@ -27908,7 +26984,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "ksA" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "kuB" = (
@@ -27930,18 +27006,14 @@
 /turf/open/asphalt/cement/cement3,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "kwU" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/paths/dorms_quad)
 "kxF" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "kxN" = (
@@ -28023,12 +27095,8 @@
 "kHV" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "kIu" = (
@@ -28213,12 +27281,8 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ag/exterior/landingzone_2)
 "kZL" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "kZU" = (
@@ -28237,10 +27301,8 @@
 "laM" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "lbh" = (
@@ -28260,13 +27322,9 @@
 /area/strata/ag/exterior/marsh)
 "ldp" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "ldO" = (
@@ -28431,18 +27489,14 @@
 "luA" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "lvw" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lvE" = (
@@ -28511,7 +27565,7 @@
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "lDz" = (
 /obj/structure/cryofeed,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
@@ -28553,10 +27607,8 @@
 /area/strata/ag/interior/landingzone_checkpoint)
 "lIR" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lJz" = (
@@ -28625,13 +27677,9 @@
 "lOT" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lPk" = (
@@ -28658,9 +27706,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lRT" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/tcomms)
@@ -28702,12 +27748,8 @@
 /area/strata/ag/exterior/research_decks)
 "lVF" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "lVJ" = (
@@ -28772,9 +27814,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "mde" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -28844,12 +27884,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "mip" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -28864,9 +27900,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "miR" = (
@@ -28878,15 +27912,9 @@
 /area/strata/ag/exterior/research_decks)
 "mjp" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "mjt" = (
@@ -29093,9 +28121,7 @@
 "mEk" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "mEL" = (
@@ -29198,9 +28224,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "mOj" = (
@@ -29223,10 +28247,8 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "mPz" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "mQe" = (
@@ -29367,10 +28389,8 @@
 "nla" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "nmS" = (
@@ -29384,9 +28404,7 @@
 "nnY" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "noq" = (
@@ -29464,12 +28482,8 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "nun" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "nxh" = (
@@ -29492,12 +28506,8 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "nAM" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "nAV" = (
@@ -29512,10 +28522,8 @@
 "nCD" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "nCJ" = (
@@ -29778,12 +28786,8 @@
 /area/strata/ag/interior/outpost/med)
 "oiV" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "okE" = (
@@ -29917,9 +28921,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/red2,
 /area/strata/ag/interior/outpost/engi)
 "oDw" = (
@@ -29995,9 +28997,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/dorms_quad)
 "oLz" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "oMa" = (
@@ -30067,9 +29067,7 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "oSP" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "oSV" = (
@@ -30154,9 +29152,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/research_decks)
 "pbF" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/cryofeed,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
@@ -30175,9 +29171,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "pfQ" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/nearlz1)
@@ -30207,15 +29201,9 @@
 "piO" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "piY" = (
@@ -30223,7 +29211,7 @@
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "pje" = (
 /obj/structure/cryofeed/right,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
@@ -30292,10 +29280,8 @@
 /area/strata/ag/interior/outpost/med)
 "pqy" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "pqE" = (
@@ -30331,10 +29317,8 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "psl" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "psE" = (
@@ -30370,10 +29354,8 @@
 "psV" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "ptr" = (
@@ -30476,9 +29458,7 @@
 /turf/open/floor/plating/platebot,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "pDY" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
@@ -30559,9 +29539,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/engi/drome)
 "pJz" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "pJA" = (
@@ -30569,9 +29547,7 @@
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "pKq" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "pLA" = (
@@ -30683,12 +29659,8 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/tcomms)
 "pWp" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -30712,7 +29684,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "pZe" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "pZS" = (
@@ -30773,15 +29745,13 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/red3/north,
 /area/strata/ag/interior/outpost/med)
 "qfi" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/crash)
 "qfC" = (
@@ -30887,13 +29857,9 @@
 "qtn" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "quT" = (
@@ -31132,10 +30098,8 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "qTp" = (
@@ -31192,9 +30156,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "qXN" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -31212,9 +30174,7 @@
 /area/strata/ag/exterior/research_decks)
 "qYF" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "qYZ" = (
@@ -31259,9 +30219,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "rel" = (
@@ -31326,14 +30284,12 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 1
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "riS" = (
@@ -31418,9 +30374,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "rrV" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "rsm" = (
@@ -31463,7 +30417,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/exterior/nearlz2)
 "ryf" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
@@ -31492,9 +30446,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
 "rAv" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "rDl" = (
@@ -31506,9 +30458,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
 "rEr" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "rFn" = (
@@ -31601,7 +30551,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/exterior/vanyard)
 "rPA" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
@@ -31617,9 +30567,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/dorms/flight_control)
 "rQX" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "rRl" = (
@@ -31661,9 +30609,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/tcomms)
 "rWk" = (
@@ -31899,9 +30845,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "sxr" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "sxT" = (
@@ -31964,12 +30908,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/med)
 "sEG" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
@@ -32114,22 +31054,14 @@
 "sXF" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "sXU" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "sZP" = (
@@ -32239,9 +31171,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "tkq" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "tlc" = (
@@ -32308,23 +31238,15 @@
 "tru" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "trz" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "tsz" = (
@@ -32334,9 +31256,7 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/strata/ag/exterior/research_decks)
 "tsX" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "ttQ" = (
@@ -32357,9 +31277,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "tvk" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
@@ -32392,10 +31310,8 @@
 "tyD" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "tBn" = (
@@ -32598,16 +31514,12 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "tSl" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "tSo" = (
@@ -32619,13 +31531,9 @@
 "tSt" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "tTk" = (
@@ -32659,9 +31567,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/gen/bball)
 "tUZ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "tVN" = (
@@ -32766,12 +31672,8 @@
 "ueK" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "ueP" = (
@@ -32853,9 +31755,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/research_decks/security)
 "ulL" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /obj/structure/cryofeed/right,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
@@ -32905,10 +31805,8 @@
 /area/strata/ag/exterior/research_decks)
 "urQ" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "usI" = (
@@ -32998,9 +31896,7 @@
 	dir = 4
 	},
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "uBz" = (
@@ -33030,9 +31926,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/item/stack/sheet/wood,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
@@ -33200,9 +32094,7 @@
 /turf/open/asphalt/cement/cement14,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "uXY" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "uZh" = (
@@ -33214,7 +32106,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "vaW" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "vaZ" = (
@@ -33342,7 +32234,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/tcomms)
 "vms" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/red3/north,
 /area/strata/ag/interior/outpost/med)
 "vmI" = (
@@ -33371,9 +32263,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "voe" = (
@@ -33383,10 +32273,8 @@
 "vox" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "vpi" = (
@@ -33470,9 +32358,7 @@
 "vvh" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "vvl" = (
@@ -33513,16 +32399,12 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/tcomms)
 "vwR" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "vwV" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "vwX" = (
@@ -33574,11 +32456,9 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "vCD" = (
@@ -33732,9 +32612,7 @@
 /area/strata/ug/interior/jungle/deep/south_engi)
 "wab" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "waZ" = (
@@ -33768,9 +32646,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/strata/ag/interior/outpost/med)
 "wdN" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/interior/restricted)
@@ -33846,17 +32722,13 @@
 "woP" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "wqm" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "wrp" = (
@@ -33874,9 +32746,7 @@
 /area/strata/ag/exterior/marsh/center)
 "wsh" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "wsi" = (
@@ -34058,10 +32928,8 @@
 /area/strata/ug/interior/jungle/deep/east_engi)
 "wPp" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "wPq" = (
@@ -34095,7 +32963,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/tcomms)
 "wWS" = (
@@ -34162,9 +33030,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/tcomms)
 "xes" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "xeJ" = (
@@ -34244,9 +33110,7 @@
 /obj/effect/spawner/random/toolbox{
 	pixel_y = 12
 	},
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata/red3/north,
 /area/strata/ag/interior/outpost/med)
 "xnZ" = (
@@ -34313,12 +33177,8 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "xuE" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "xuY" = (
@@ -34469,7 +33329,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "xHW" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 5;
@@ -34518,12 +33378,8 @@
 /area/strata/ag/interior/tcomms)
 "xKy" = (
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "xKC" = (
@@ -34574,13 +33430,9 @@
 "xOx" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "xOL" = (

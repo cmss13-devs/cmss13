@@ -1,0 +1,135 @@
+/obj/structure/platform{dir=1} : /obj/structure/platform/metal/almayer/north{@OLD;dir=@SKIP}
+/obj/structure/platform{dir=4} : /obj/structure/platform/metal/almayer/east{@OLD;dir=@SKIP}
+/obj/structure/platform{dir=8} : /obj/structure/platform/metal/almayer/west{@OLD;dir=@SKIP}
+/obj/structure/platform : /obj/structure/platform/metal/almayer{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration{dir=1} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=4} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=5} : /obj/structure/platform_decoration/metal/almayer/northeast{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=6} : /obj/structure/platform_decoration/metal/almayer/southeast{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=8} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=9} : /obj/structure/platform_decoration/metal/almayer/northwest{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration{dir=10} : /obj/structure/platform_decoration/metal/almayer/southwest{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/kutjevo{dir=1} : /obj/structure/platform/metal/kutjevo/north{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo{dir=4} : /obj/structure/platform/metal/kutjevo/east{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo{dir=8} : /obj/structure/platform/metal/kutjevo/west{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo : /obj/structure/platform/metal/kutjevo{@OLD;dir=@SKIP}
+
+/obj/structure/platform/kutjevo/smooth{dir=1} : /obj/structure/platform/metal/kutjevo_smooth/north{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=4} : /obj/structure/platform/metal/kutjevo_smooth/east{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=8} : /obj/structure/platform/metal/kutjevo_smooth/west{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/smooth : /obj/structure/platform/metal/kutjevo_smooth{@OLD;dir=@SKIP}
+
+/obj/structure/platform/kutjevo/rock{dir=1} : /obj/structure/platform/stone/kutjevo/north{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=4} : /obj/structure/platform/stone/kutjevo/east{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=8} : /obj/structure/platform/stone/kutjevo/west{@OLD;dir=@SKIP}
+/obj/structure/platform/kutjevo/rock : /obj/structure/platform/stone/kutjevo{@OLD;dir=@SKIP}
+
+/obj/structure/platform/kutjevo/smooth/stair_plate : /obj/structure/platform/metal/kutjevo_smooth/stair_plate{@OLD}
+
+/obj/structure/platform_decoration/kutjevo{dir=1} : /obj/structure/platform_decoration/metal/kutjevo/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo{dir=4} : /obj/structure/platform_decoration/metal/kutjevo/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo{dir=8} : /obj/structure/platform_decoration/metal/kutjevo/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo : /obj/structure/platform_decoration/metal/kutjevo{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/kutjevo/smooth{dir=1} : /obj/structure/platform_decoration/metal/kutjevo_smooth/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth{dir=4} : /obj/structure/platform_decoration/metal/kutjevo_smooth/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth{dir=8} : /obj/structure/platform_decoration/metal/kutjevo_smooth/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth : /obj/structure/platform_decoration/metal/kutjevo_smooth{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/kutjevo/rock{dir=1} : /obj/structure/platform_decoration/stone/kutjevo/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock{dir=4} : /obj/structure/platform_decoration/stone/kutjevo/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock{dir=8} : /obj/structure/platform_decoration/stone/kutjevo/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock : /obj/structure/platform_decoration/stone/kutjevo{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/shiva{dir=1} : /obj/structure/platform/metal/almayer/north{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva{dir=4} : /obj/structure/platform/metal/almayer/east{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva{dir=8} : /obj/structure/platform/metal/almayer/west{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva : /obj/structure/platform/metal/almayer{@OLD;dir=@SKIP}
+
+/obj/structure/platform/shiva/catwalk{dir=1} : /obj/structure/platform/metal/shiva/north{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=4} : /obj/structure/platform/metal/shiva/east{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=8} : /obj/structure/platform/metal/shiva/west{@OLD;dir=@SKIP}
+/obj/structure/platform/shiva/catwalk : /obj/structure/platform/metal/shiva{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/shiva{dir=1} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva{dir=4} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva{dir=8} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/shiva/catwalk{dir=1} : /obj/structure/platform_decoration/metal/shiva/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk{dir=4} : /obj/structure/platform_decoration/metal/shiva/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk{dir=8} : /obj/structure/platform_decoration/metal/shiva/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk : /obj/structure/platform_decoration/metal/shiva{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/strata{dir=1} : /obj/structure/platform/stone/strata/north{@OLD;dir=@SKIP}
+/obj/structure/platform/strata{dir=4} : /obj/structure/platform/stone/strata/east{@OLD;dir=@SKIP}
+/obj/structure/platform/strata{dir=8} : /obj/structure/platform/stone/strata/west{@OLD;dir=@SKIP}
+/obj/structure/platform/strata : /obj/structure/platform/stone/strata{@OLD;dir=@SKIP}
+
+/obj/structure/platform/strata/metal{dir=1} : /obj/structure/platform/metal/strata/north{@OLD;dir=@SKIP}
+/obj/structure/platform/strata/metal{dir=4} : /obj/structure/platform/metal/strata/east{@OLD;dir=@SKIP}
+/obj/structure/platform/strata/metal{dir=8} : /obj/structure/platform/metal/strata/west{@OLD;dir=@SKIP}
+/obj/structure/platform/strata/metal : /obj/structure/platform/metal/strata{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/strata{dir=1} : /obj/structure/platform_decoration/stone/strata/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata{dir=4} : /obj/structure/platform_decoration/stone/strata/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata{dir=8} : /obj/structure/platform_decoration/stone/strata/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata : /obj/structure/platform_decoration/stone/strata{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/strata/metal{dir=1} : /obj/structure/platform_decoration/metal/strata/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata/metal{dir=4} : /obj/structure/platform_decoration/metal/strata/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata/metal{dir=8} : /obj/structure/platform_decoration/metal/strata/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/strata/metal : /obj/structure/platform_decoration/metal/strata{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/mineral{dir=1} : /obj/structure/platform/stone/mineral/north{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral{dir=4} : /obj/structure/platform/stone/mineral/east{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral{dir=8} : /obj/structure/platform/stone/mineral/west{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral : /obj/structure/platform/stone/mineral{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/mineral{dir=1} : /obj/structure/platform_decoration/stone/mineral/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral{dir=4} : /obj/structure/platform_decoration/stone/mineral/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral{dir=8} : /obj/structure/platform_decoration/stone/mineral/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral : /obj/structure/platform_decoration/stone/mineral{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/mineral/sandstone{dir=1} : /obj/structure/platform/stone/sandstone/north{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=4} : /obj/structure/platform/stone/sandstone/east{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=8} : /obj/structure/platform/stone/sandstone/west{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone : /obj/structure/platform/stone/sandstone{@OLD;dir=@SKIP}
+
+/obj/structure/platform/mineral/sandstone/runed{dir=1} : /obj/structure/platform/stone/runed_sandstone/north{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=4} : /obj/structure/platform/stone/runed_sandstone/east{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=8} : /obj/structure/platform/stone/runed_sandstone/west{@OLD;dir=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed : /obj/structure/platform/stone/runed_sandstone{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform_decoration/mineral/sandstone{dir=1} : /obj/structure/platform_decoration/stone/sandstone/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone{dir=4} : /obj/structure/platform_decoration/stone/sandstone/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone{dir=8} : /obj/structure/platform_decoration/stone/sandstone/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone : /obj/structure/platform_decoration/stone/sandstone{@OLD;dir=@SKIP}
+
+/obj/structure/platform_decoration/mineral/sandstone/rune{dir=1} : /obj/structure/platform_decoration/stone/runed_sandstone/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/rune{dir=4} : /obj/structure/platform_decoration/stone/runed_sandstone/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/rune{dir=8} : /obj/structure/platform_decoration/stone/runed_sandstone/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed : /obj/structure/platform_decoration/stone/runed_sandstone{@OLD;dir=@SKIP}
+
+
+
+/obj/structure/platform/stair_cut : /obj/structure/platform/metal/stair_cut/platform_left
+/obj/structure/platform/stair_cut/alt : /obj/structure/platform/metal/stair_cut/platform_right
+
+/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair"} : /obj/structure/platform/metal/stair_cut/kutjev_smooth_left{@OLD;icon_state=@SKIP}
+/obj/structure/platform/stair_cut/alt{icon_state="kutjevo_platform_sm_stair_alt"} : /obj/structure/platform/metal/stair_cut/kutjev_smooth_right{@OLD;icon_state=@SKIP}

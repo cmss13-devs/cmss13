@@ -30,9 +30,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "aaR" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
@@ -238,9 +236,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "aju" = (
@@ -259,7 +255,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "ajx" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "ajP" = (
@@ -456,14 +452,14 @@
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/tumor/civres)
 "apO" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "aqj" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "aqo" = (
@@ -488,9 +484,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/research_cells)
 "art" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/greenblue/southwest,
 /area/fiorina/station/botany)
 "arG" = (
@@ -539,13 +533,9 @@
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/central_ring)
 "asE" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
@@ -560,21 +550,11 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "atl" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "atp" = (
@@ -680,7 +660,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "ayo" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)
 "ayB" = (
@@ -787,13 +767,9 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/civres_blue)
 "aBD" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "aBJ" = (
@@ -964,9 +940,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/fiorina/station/medbay)
 "aKA" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space,
 /area/fiorina/oob)
 "aKN" = (
@@ -1016,7 +990,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/ice_lab)
 "aMr" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "aMu" = (
@@ -1058,9 +1032,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "aNz" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	layer = 3.5
 	},
@@ -1121,7 +1093,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "aPv" = (
@@ -1168,9 +1140,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "aQY" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "aRk" = (
@@ -1184,7 +1154,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "aRv" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/closet/firecloset/full,
 /obj/item/paper/prison_station/inmate_handbook,
 /turf/open/floor/prison,
@@ -1357,19 +1327,11 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/tumor/servers)
 "aZD" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "aZL" = (
@@ -1380,9 +1342,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "aZW" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "baC" = (
@@ -1453,7 +1413,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "bcT" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "bcX" = (
@@ -1495,9 +1455,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/civres_blue)
 "bem" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "ber" = (
@@ -1563,7 +1521,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "bhu" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/closet/crate/bravo,
 /obj/item/stack/sheet/plasteel,
 /obj/item/tool/wirecutters,
@@ -1738,7 +1696,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "bpe" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "bpo" = (
@@ -1758,15 +1716,11 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells)
 "bqC" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/greenblue/west,
 /area/fiorina/station/botany)
 "bqD" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "bqF" = (
@@ -1788,9 +1742,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/central_ring)
 "brl" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
@@ -1811,9 +1763,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
 "bsk" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "bsm" = (
@@ -1945,9 +1895,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/fiorina/lz/near_lzI)
 "bxA" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "bxE" = (
@@ -1999,7 +1947,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "bym" = (
@@ -2016,13 +1964,9 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "byF" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/whitegreen/southeast,
 /area/fiorina/tumor/ice_lab)
 "byG" = (
@@ -2033,7 +1977,7 @@
 /turf/open/floor/prison/green/west,
 /area/fiorina/tumor/civres)
 "byT" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "byY" = (
@@ -2111,9 +2055,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "bDv" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
 "bDx" = (
@@ -2179,9 +2121,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/station/civres_blue)
 "bFi" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkbrown2/west,
 /area/fiorina/station/park)
 "bFr" = (
@@ -2255,10 +2195,8 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "bHU" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -2471,7 +2409,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "bQk" = (
@@ -2593,7 +2531,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/chapel)
 "bTo" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/fiorina/oob)
 "bTp" = (
@@ -2633,9 +2571,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "bUB" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space,
 /area/fiorina/oob)
 "bVE" = (
@@ -2752,9 +2688,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "cbN" = (
@@ -2894,13 +2828,9 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "ciy" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -2952,7 +2882,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/medbay)
 "ckA" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/tumor/ice_lab)
 "ckS" = (
@@ -2960,7 +2890,7 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "ckZ" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "clb" = (
@@ -3029,9 +2959,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "cpv" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
@@ -3089,7 +3017,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "crM" = (
@@ -3297,15 +3225,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "cBn" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "cBG" = (
@@ -3416,9 +3338,7 @@
 /area/fiorina/tumor/ship)
 "cEG" = (
 /obj/item/tool/pickaxe,
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/tumor/ice_lab)
 "cEW" = (
@@ -3583,9 +3503,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "cKH" = (
@@ -3610,9 +3528,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/botany)
 "cLu" = (
@@ -3623,9 +3539,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "cLy" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "cLC" = (
@@ -3716,7 +3630,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "cQe" = (
@@ -3833,9 +3747,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "cVu" = (
@@ -3903,9 +3815,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/central_ring)
 "cYT" = (
@@ -3919,7 +3829,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "cZe" = (
@@ -3955,9 +3865,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security/wardens)
 "cZP" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "cZR" = (
@@ -3981,10 +3889,8 @@
 /turf/open/floor/prison/chapel_carpet/doubleside,
 /area/fiorina/station/chapel)
 "daD" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/fiorina/oob)
 "daK" = (
@@ -4018,9 +3924,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside,
 /area/fiorina/station/chapel)
 "dbr" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "dbI" = (
@@ -4165,7 +4069,7 @@
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/disco)
 "dhi" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "dhL" = (
@@ -4195,9 +4099,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "dje" = (
@@ -4284,9 +4186,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "dnj" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
 	desc = "Its a telephone, and a computer. Woah.";
@@ -4354,9 +4254,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "dpH" = (
@@ -4368,9 +4266,7 @@
 /turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "dqa" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/gm/river/red_pool,
 /area/fiorina/station/park)
 "dqE" = (
@@ -4485,7 +4381,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "dvB" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/tumor/ice_lab)
 "dwf" = (
@@ -4599,7 +4495,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "dAg" = (
@@ -4822,9 +4718,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/tumor/civres)
 "dIx" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco)
 "dJd" = (
@@ -4833,9 +4727,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "dJe" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "dJh" = (
@@ -4884,9 +4776,7 @@
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/fiorina/tumor/aux_engi)
 "dNc" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -4933,9 +4823,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/lz/near_lzI)
 "dOZ" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -4958,9 +4846,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_tram)
 "dPZ" = (
@@ -4975,9 +4861,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "dQV" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "dQW" = (
@@ -5153,7 +5037,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells)
 "dXT" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
@@ -5223,9 +5107,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/lowsec)
 "eca" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/medical_decals{
 	icon_state = "cryomid"
 	},
@@ -5277,7 +5159,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "edy" = (
@@ -5285,9 +5167,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "edY" = (
@@ -5372,9 +5252,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/station/civres_blue)
 "egz" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "egL" = (
@@ -5394,13 +5272,11 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "ehO" = (
-/obj/structure/platform/shiva,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "eim" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "eio" = (
@@ -5412,7 +5288,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "ejf" = (
@@ -5579,15 +5455,11 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
 "eqw" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring)
 "eqJ" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "eqQ" = (
@@ -5639,15 +5511,11 @@
 /area/fiorina/station/power_ring)
 "erD" = (
 /obj/structure/largecrate/supply,
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/medbay)
 "erT" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space,
 /area/fiorina/oob)
 "erU" = (
@@ -5680,9 +5548,7 @@
 /turf/open/floor/prison/green/northeast,
 /area/fiorina/station/chapel)
 "etq" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/disco)
 "etL" = (
@@ -5877,12 +5743,8 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells)
 "eze" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -5932,9 +5794,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "eBr" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "eBO" = (
@@ -6013,9 +5873,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
 "eEX" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "eFa" = (
@@ -6061,9 +5919,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "eGO" = (
@@ -6073,7 +5929,7 @@
 /area/fiorina/tumor/civres)
 "eHa" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/fiorina/oob)
 "eHk" = (
@@ -6163,9 +6019,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "eJQ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -6205,9 +6059,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "eLX" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -6266,18 +6118,12 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "eOy" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eOF" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/fiorina/oob)
 "eOI" = (
@@ -6348,7 +6194,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/flight_deck)
 "eQY" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "eRl" = (
@@ -6456,9 +6302,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "eVm" = (
@@ -6546,7 +6390,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "eXY" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/reagent_dispensers/fueltank/oxygentank{
 	layer = 2.6
 	},
@@ -6625,9 +6469,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco)
 "fac" = (
-/obj/structure/platform/shiva{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "faw" = (
@@ -6710,19 +6552,15 @@
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "fdR" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/fiorina/station/park)
 "fdV" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "fer" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -6742,7 +6580,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "fgM" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/item/ammo_casing{
 	dir = 2;
 	icon_state = "casing_5"
@@ -6813,9 +6651,7 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco)
 "fjg" = (
@@ -6863,9 +6699,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "fkH" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
@@ -6896,9 +6730,7 @@
 /area/fiorina/tumor/ice_lab)
 "fno" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/tumor/ice_lab)
 "fnD" = (
@@ -6911,9 +6743,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "fob" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -6930,9 +6760,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "fpg" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -7020,13 +6848,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "ftd" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "fth" = (
@@ -7075,9 +6899,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "fvr" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/park)
 "fvH" = (
@@ -7166,14 +6988,12 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "fyC" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/fiorina/oob)
 "fyL" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "fyO" = (
@@ -7377,9 +7197,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fGi" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/fiorina/station/park)
 "fGA" = (
@@ -7403,9 +7221,7 @@
 /turf/open/floor/prison/yellow,
 /area/fiorina/station/lowsec)
 "fHI" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "fHK" = (
@@ -7463,9 +7279,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "fKm" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/fiorina/station/chapel)
 "fKn" = (
@@ -7519,8 +7333,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "fMc" = (
-/obj/structure/platform{
-	dir = 8;
+/obj/structure/platform/metal/almayer/west{
 	layer = 2.5
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -7605,18 +7418,14 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "fQI" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "fQV" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/fiorina/oob)
 "fQY" = (
@@ -7688,7 +7497,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "fTs" = (
@@ -7770,9 +7579,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "fWy" = (
@@ -7928,9 +7735,7 @@
 /turf/open/floor/prison/greenblue/west,
 /area/fiorina/station/botany)
 "gbO" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/fiorina/station/medbay)
@@ -7984,9 +7789,7 @@
 /area/fiorina/station/civres_blue)
 "gef" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/fiorina/oob)
 "ger" = (
@@ -8059,12 +7862,8 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/fiorina/oob)
 "ghw" = (
@@ -8084,9 +7883,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/tumor/servers)
 "giw" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "giA" = (
@@ -8119,9 +7916,7 @@
 /turf/open/floor/prison/bluecorner,
 /area/fiorina/station/chapel)
 "gkv" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/ice_lab)
 "gkC" = (
@@ -8243,7 +8038,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "gqM" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "gqU" = (
@@ -8268,13 +8063,9 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "gsL" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "gsN" = (
@@ -8300,7 +8091,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "gtg" = (
@@ -8390,15 +8181,9 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/disco)
 "gvZ" = (
@@ -8468,9 +8253,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/fiorina/station/park)
 "gyy" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "gyA" = (
@@ -8579,9 +8362,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "gBR" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/barricade/handrail/type_b{
 	dir = 4;
 	layer = 3.5
@@ -8651,7 +8432,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "gFg" = (
@@ -8659,9 +8440,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "gFj" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/item/fuel_cell,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
@@ -8684,9 +8463,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/fiorina/station/telecomm/lz1_cargo)
 "gGc" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "gGx" = (
@@ -8738,9 +8515,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "gIa" = (
@@ -8823,15 +8598,9 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/tumor/civres)
 "gNx" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomright"
 	},
@@ -8844,9 +8613,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "gNU" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "gNY" = (
@@ -8901,9 +8668,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "gPE" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/disco)
 "gPS" = (
@@ -8979,7 +8744,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "gSg" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
@@ -9001,9 +8766,7 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "gSX" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "gTc" = (
@@ -9023,7 +8786,7 @@
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/fiorina/tumor/ice_lab)
 "gTW" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/transit_hub)
 "gUj" = (
@@ -9224,7 +8987,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "hbt" = (
@@ -9260,9 +9023,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/flight_deck)
 "hcY" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "hds" = (
@@ -9307,9 +9068,7 @@
 /turf/closed/shuttle/elevator,
 /area/fiorina/station/civres_blue)
 "heT" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
 "hfc" = (
@@ -9325,9 +9084,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "hfd" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "hfT" = (
@@ -9411,9 +9168,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/research_cells)
 "hjC" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_half_cap"
@@ -9600,15 +9355,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "hqG" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/fiorina/tumor/ice_lab)
 "hqO" = (
@@ -9626,9 +9375,7 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "hre" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/item/device/flashlight,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
@@ -9837,7 +9584,7 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "hxq" = (
@@ -9845,12 +9592,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
 "hxG" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "hxJ" = (
@@ -10021,9 +9764,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "hDS" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -10171,9 +9912,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/civres_blue)
 "hKP" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/tool/shovel/spade,
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/botany)
@@ -10244,9 +9983,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/fiorina/station/medbay)
 "hOQ" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "hPi" = (
@@ -10254,7 +9991,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "hPq" = (
@@ -10307,16 +10044,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "hQv" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/item/fuel_cell,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "hQM" = (
@@ -10361,7 +10092,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/civres_blue)
 "hSl" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "hSo" = (
@@ -10372,7 +10103,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/medbay)
 "hSA" = (
@@ -10476,7 +10207,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "hVS" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -10507,9 +10238,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "hWz" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "hWF" = (
@@ -10674,9 +10403,7 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "idP" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -10691,9 +10418,7 @@
 /turf/open/floor/prison/whitegreencorner/north,
 /area/fiorina/station/medbay)
 "ieu" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/barricade/handrail/type_b{
 	dir = 4;
 	layer = 3.5
@@ -10717,9 +10442,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/tumor/civres)
 "ifk" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/chapel_carpet/doubleside,
 /area/fiorina/station/chapel)
 "ifm" = (
@@ -10853,9 +10576,7 @@
 /turf/open/floor/prison/blue_plate/west,
 /area/fiorina/station/botany)
 "iiY" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "ijd" = (
@@ -10942,7 +10663,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "imN" = (
@@ -10968,9 +10689,7 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "iox" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "ioE" = (
@@ -10989,9 +10708,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "ioW" = (
@@ -11203,9 +10920,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/souto_land/pole,
 /obj/structure/prop/souto_land/pole{
 	dir = 4;
@@ -11237,9 +10952,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/fiorina/station/chapel)
 "izh" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -11262,7 +10975,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "iAr" = (
@@ -11270,7 +10983,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "iAA" = (
@@ -11368,7 +11081,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/fiorina/station/chapel)
 "iEl" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "iEA" = (
@@ -11470,7 +11183,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -11725,9 +11438,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "iTt" = (
@@ -11776,9 +11487,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/central_ring)
 "iUO" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "iUS" = (
@@ -11823,9 +11532,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/lowsec)
 "iWq" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -11849,7 +11556,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "iXJ" = (
@@ -11891,12 +11598,8 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/tumor/servers)
 "jaB" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "jbg" = (
@@ -11982,15 +11685,9 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "jeL" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/chapel)
 "jfc" = (
@@ -12018,9 +11715,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/central_ring)
 "jfT" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
@@ -12076,9 +11771,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "jiz" = (
@@ -12183,9 +11876,7 @@
 /turf/open/floor/prison/blue/north,
 /area/fiorina/station/civres_blue)
 "jlH" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/fiorina/oob)
 "jlI" = (
@@ -12205,9 +11896,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/tumor/aux_engi)
 "jmr" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -12373,9 +12062,7 @@
 /turf/open/floor/prison/platingdmg1,
 /area/fiorina/tumor/aux_engi)
 "jrO" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/blue/northwest,
 /area/fiorina/station/power_ring)
 "jrT" = (
@@ -12440,7 +12127,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "jvi" = (
@@ -12575,9 +12262,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/tumor/fiberbush)
 "jCO" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
@@ -12635,9 +12320,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "jFl" = (
@@ -12686,9 +12369,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells)
 "jGC" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "jHj" = (
@@ -12712,7 +12393,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "jHU" = (
@@ -12784,12 +12465,8 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "jKI" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -12815,9 +12492,7 @@
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/fiorina/station/telecomm/lz1_cargo)
 "jLD" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	layer = 3.5
 	},
@@ -12869,9 +12544,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "jOd" = (
@@ -12884,9 +12557,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/flight_deck)
 "jOv" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/blue/northeast,
 /area/fiorina/station/power_ring)
 "jOY" = (
@@ -12954,13 +12625,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "jRC" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "jRF" = (
@@ -13024,9 +12691,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "jUa" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "jUs" = (
@@ -13132,7 +12797,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "jYn" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "jYs" = (
@@ -13167,9 +12832,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "jZc" = (
@@ -13196,7 +12859,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "kaF" = (
@@ -13408,15 +13071,9 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "kle" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "klh" = (
@@ -13549,9 +13206,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/flight_deck)
 "koY" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "kpe" = (
@@ -13640,7 +13295,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "ksV" = (
@@ -13757,9 +13412,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "kyh" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "kyF" = (
@@ -13861,9 +13514,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "kCj" = (
@@ -13901,9 +13552,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "kDa" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "kDw" = (
@@ -13962,7 +13611,7 @@
 /turf/open/floor/prison/whitepurple,
 /area/fiorina/station/research_cells)
 "kGB" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "kGD" = (
@@ -13970,15 +13619,9 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "kGZ" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "kHa" = (
@@ -13986,15 +13629,11 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "kHc" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "kHf" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/fiorina/station/chapel)
 "kHv" = (
@@ -14112,13 +13751,11 @@
 /turf/open/floor/prison/greenfull/east,
 /area/fiorina/tumor/civres)
 "kKP" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/power_ring)
 "kKQ" = (
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
@@ -14310,8 +13947,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/platform{
-	dir = 8;
+/obj/structure/platform/metal/almayer/west{
 	layer = 2.5
 	},
 /turf/open/floor/plating/prison,
@@ -14320,9 +13956,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/maintenance)
 "kTD" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/blue/southwest,
 /area/fiorina/station/power_ring)
 "kTL" = (
@@ -14354,9 +13988,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "kUR" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
 "kVg" = (
@@ -14526,7 +14158,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "lbK" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -14539,9 +14171,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco)
 "lbZ" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "lcm" = (
@@ -14558,10 +14188,8 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/flight_deck)
 "lcq" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "lcE" = (
@@ -14710,9 +14338,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "ljx" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "ljV" = (
@@ -14782,24 +14408,18 @@
 /turf/open/floor/prison/platingdmg3,
 /area/fiorina/station/security)
 "llQ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "lml" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "lmn" = (
 /obj/structure/machinery/shower{
 	pixel_y = 13
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/medbay)
 "lmu" = (
@@ -14872,9 +14492,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "lpW" = (
@@ -15264,10 +14882,8 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "lDC" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "lDG" = (
@@ -15299,12 +14915,8 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "lEp" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer_hull,
 /area/fiorina/station/medbay)
@@ -15426,15 +15038,9 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "lIl" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/whitegreen/northeast,
 /area/fiorina/tumor/ice_lab)
 "lIt" = (
@@ -15627,9 +15233,7 @@
 /area/fiorina/maintenance)
 "lQL" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/tumor/ice_lab)
 "lRk" = (
@@ -15668,9 +15272,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells)
 "lSS" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -15714,9 +15316,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/civres_blue)
 "lUv" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "lUE" = (
@@ -15772,8 +15372,7 @@
 	icon_state = "Corner"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform{
-	dir = 1;
+/obj/structure/platform/metal/almayer/north{
 	layer = 2.1
 	},
 /turf/open/ice/noweed,
@@ -15911,10 +15510,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "mdJ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/fiorina/oob)
 "mdS" = (
@@ -16023,7 +15620,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/servers)
 "mjB" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/gm/river/pool,
 /area/fiorina/station/park)
 "mkn" = (
@@ -16153,13 +15750,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
 "mpB" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -16189,9 +15782,7 @@
 /obj/structure/barricade/handrail/type_b{
 	dir = 1
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "mqB" = (
@@ -16240,9 +15831,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "msd" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "msj" = (
@@ -16331,9 +15920,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "mvV" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/tumor/ice_lab)
@@ -16535,7 +16122,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
 "mCR" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/bed/chair{
 	dir = 1;
 	layer = 2.7
@@ -16613,9 +16200,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "mGN" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/prop/almayer/handheld1,
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
@@ -16656,7 +16241,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "mIr" = (
@@ -16727,12 +16312,8 @@
 /turf/open/floor/prison/blue_plate,
 /area/fiorina/station/botany)
 "mKS" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -16741,9 +16322,7 @@
 /turf/open/space,
 /area/fiorina/oob)
 "mLm" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "mLL" = (
@@ -16813,15 +16392,9 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "mOm" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "mOE" = (
@@ -16829,7 +16402,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/power_ring)
 "mOI" = (
@@ -17041,9 +16614,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "mWX" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/chapel_carpet/doubleside,
 /area/fiorina/station/chapel)
 "mWY" = (
@@ -17239,7 +16810,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/medbay)
 "nfA" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
@@ -17274,9 +16845,7 @@
 /turf/open/floor/prison/whitepurple,
 /area/fiorina/station/research_cells)
 "nho" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -17433,9 +17002,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "nmM" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "nmT" = (
@@ -17459,13 +17026,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "nnG" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
@@ -17485,9 +17048,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "noz" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "npx" = (
@@ -17507,13 +17068,9 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/security)
 "nrd" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "nre" = (
@@ -17591,8 +17148,7 @@
 	icon_state = "Straight"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform{
-	dir = 1;
+/obj/structure/platform/metal/almayer/north{
 	layer = 2.1
 	},
 /turf/open/ice/noweed,
@@ -17639,7 +17195,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "nvi" = (
@@ -17653,9 +17209,7 @@
 /turf/open/floor/prison/bluecorner/north,
 /area/fiorina/station/chapel)
 "nvs" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
@@ -17726,7 +17280,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/medbay)
 "nyq" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
@@ -17749,12 +17303,8 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "nyS" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/item/tool/extinguisher/mini,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
@@ -17934,9 +17484,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "nGp" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "nGy" = (
@@ -18007,9 +17555,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
 "nJq" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "nJu" = (
@@ -18027,15 +17573,9 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "nKl" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/gm/river/desert/deep,
 /area/fiorina/lz/near_lzII)
 "nKo" = (
@@ -18104,9 +17644,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/central_ring)
 "nMI" = (
@@ -18241,9 +17779,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/station/flight_deck)
 "nRT" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -18260,9 +17796,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "nSx" = (
@@ -18431,12 +17965,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "nYT" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -18473,9 +18003,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "oby" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/botany)
 "obz" = (
@@ -18590,16 +18118,12 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/transit_hub)
 "ofA" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "ofQ" = (
@@ -18635,7 +18159,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "ohF" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/ice_lab)
 "ohY" = (
@@ -18852,9 +18376,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "omN" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "omO" = (
@@ -18882,9 +18404,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "ont" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "onB" = (
@@ -18905,9 +18425,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/research_cells)
 "ooq" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco)
 "oou" = (
@@ -18975,9 +18493,7 @@
 /turf/open/floor/prison/green/west,
 /area/fiorina/station/chapel)
 "orB" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkpurple2,
 /area/fiorina/tumor/servers)
 "orC" = (
@@ -18997,9 +18513,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/tumor/civres)
 "osv" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/fiorina/station/park)
 "osN" = (
@@ -19054,9 +18568,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
 "ove" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "ovk" = (
@@ -19096,8 +18608,7 @@
 /turf/open/floor/prison/whitepurple/west,
 /area/fiorina/station/research_cells)
 "oxp" = (
-/obj/structure/platform{
-	dir = 4;
+/obj/structure/platform/metal/almayer/east{
 	layer = 2
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -19130,15 +18641,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "oyk" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "oyo" = (
@@ -19167,7 +18672,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/power_ring)
 "oyS" = (
@@ -19217,15 +18722,9 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/park)
 "oCn" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "oDe" = (
@@ -19276,7 +18775,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/civres_blue)
 "oEu" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
@@ -19373,9 +18872,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/ice_lab)
 "oGR" = (
@@ -19412,8 +18909,7 @@
 	icon_state = "Corner"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform{
-	dir = 1;
+/obj/structure/platform/metal/almayer/north{
 	layer = 2.1
 	},
 /turf/open/ice/noweed,
@@ -19478,7 +18974,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "oKn" = (
@@ -19560,9 +19056,7 @@
 	dir = 4;
 	layer = 3.5
 	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "oOh" = (
@@ -19581,7 +19075,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/fiorina/maintenance)
 "oOk" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/bed/chair{
 	dir = 1;
 	layer = 2.7
@@ -19708,15 +19202,11 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "oTT" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "oUg" = (
@@ -19776,9 +19266,7 @@
 /turf/open/floor/prison/yellow/southwest,
 /area/fiorina/station/lowsec)
 "oXI" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal1"
 	},
@@ -19849,9 +19337,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "oZy" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "oZz" = (
@@ -19890,9 +19376,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "pah" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "pai" = (
@@ -19935,17 +19419,13 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "pbV" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/fiorina/oob)
 "pbX" = (
@@ -20044,9 +19524,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/tumor/ice_lab)
 "phQ" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/tumor/ice_lab)
 "pim" = (
@@ -20054,15 +19532,9 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/lowsec)
 "piw" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "pjf" = (
@@ -20238,9 +19710,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "prG" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/surface/rack,
 /obj/item/stack/flag/yellow,
 /obj/item/stack/flag/yellow,
@@ -20273,7 +19743,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "psx" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/botany)
 "psL" = (
@@ -20389,9 +19859,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/maintenance)
 "pxW" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/item/tool/pickaxe,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
@@ -20510,9 +19978,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "pFi" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "pFA" = (
@@ -20543,7 +20009,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "pGH" = (
@@ -20552,9 +20018,7 @@
 	},
 /area/fiorina/tumor/ship)
 "pGK" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/gm/river/pool,
 /area/fiorina/station/park)
 "pGS" = (
@@ -20765,7 +20229,7 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells)
 "pRp" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
@@ -20823,11 +20287,11 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "pUo" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
@@ -21126,13 +20590,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "qfc" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/gm/river/desert/deep,
 /area/fiorina/lz/near_lzII)
 "qfg" = (
@@ -21230,9 +20690,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "qiK" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
@@ -21411,7 +20869,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/medbay)
 "qre" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "qrn" = (
@@ -21458,9 +20916,7 @@
 	icon_state = "large";
 	name = "ice shard"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/tumor/ice_lab)
 "qsF" = (
@@ -21574,9 +21030,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "qzo" = (
@@ -21760,9 +21214,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "qFE" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "qFO" = (
@@ -21947,7 +21399,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/lowsec)
 "qLv" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "qLH" = (
@@ -21968,9 +21420,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/tumor/aux_engi)
 "qMi" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/tumor/ice_lab)
@@ -21982,13 +21432,9 @@
 /turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "qNj" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -22019,9 +21465,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/lowsec)
 "qOk" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "qOq" = (
@@ -22120,9 +21564,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "qRa" = (
@@ -22202,7 +21644,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "qTQ" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /obj/item/reagent_container/food/drinks/sillycup,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
@@ -22360,9 +21802,7 @@
 /turf/open/floor/prison/greenbluecorner/north,
 /area/fiorina/station/botany)
 "rdt" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "red" = (
@@ -22462,7 +21902,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "rko" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "rkp" = (
@@ -22507,7 +21947,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "rmJ" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/item/fuel_cell,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -22520,9 +21960,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "rmZ" = (
@@ -22575,9 +22013,7 @@
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/fiorina/tumor/ice_lab)
 "roE" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
@@ -22625,7 +22061,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "rqq" = (
@@ -22668,7 +22104,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "rsg" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "rsp" = (
@@ -22681,13 +22117,9 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "rsQ" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "rsR" = (
@@ -22786,12 +22218,8 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "rxL" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -22801,9 +22229,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "rxM" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "ryJ" = (
@@ -22882,9 +22308,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/flight_deck)
 "rCe" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/disco)
 "rCq" = (
@@ -22902,7 +22326,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.4
 	},
@@ -23038,12 +22462,8 @@
 /area/fiorina/station/power_ring)
 "rKa" = (
 /obj/structure/stairs/perspective,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "rKd" = (
@@ -23075,7 +22495,7 @@
 /turf/open/floor/prison/blue_plate/west,
 /area/fiorina/station/botany)
 "rLA" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/fiorina/station/botany)
 "rLG" = (
@@ -23256,9 +22676,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "rSN" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/autolathe/full{
 	layer = 2.98
 	},
@@ -23290,12 +22708,8 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "rTV" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gibup1"
 	},
@@ -23505,13 +22919,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "scZ" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "sda" = (
@@ -23582,9 +22992,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/telecomm/lz1_cargo)
 "sfi" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/chapel_carpet/doubleside,
 /area/fiorina/station/chapel)
 "sfn" = (
@@ -23615,9 +23023,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "sfW" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "sfZ" = (
@@ -23829,9 +23235,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
 "snr" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/stool,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
@@ -23884,9 +23288,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/souto_land/pole{
 	dir = 1
 	},
@@ -23929,9 +23331,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "srt" = (
@@ -23966,9 +23366,7 @@
 /area/fiorina/lz/near_lzI)
 "ssJ" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/fiorina/oob)
 "ssM" = (
@@ -24068,7 +23466,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "swg" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/space,
 /area/fiorina/oob)
 "swj" = (
@@ -24081,9 +23479,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
 "swT" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/ice_lab)
 "sxc" = (
@@ -24098,9 +23494,7 @@
 /turf/open/floor/prison/redcorner,
 /area/fiorina/station/power_ring)
 "sxH" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
@@ -24163,9 +23557,7 @@
 /turf/open/floor/prison/yellow/north,
 /area/fiorina/station/lowsec)
 "sBf" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -24195,9 +23587,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "sBW" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "sBY" = (
@@ -24280,13 +23670,11 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "sGa" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "sGg" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
@@ -24353,12 +23741,8 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "sHO" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/fiorina/oob)
 "sIg" = (
@@ -24450,7 +23834,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "sKY" = (
@@ -24516,16 +23900,14 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "sNN" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "sNQ" = (
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_tram)
 "sNU" = (
@@ -24581,7 +23963,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/shiva,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "sPJ" = (
@@ -24613,7 +23995,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
 "sQL" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/gm/river/red_pool,
 /area/fiorina/station/park)
 "sRv" = (
@@ -24621,7 +24003,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "sRE" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
@@ -24637,9 +24019,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "sSY" = (
@@ -24693,13 +24073,9 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/fiorina/station/telecomm/lz1_cargo)
 "sTU" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "sUc" = (
@@ -24747,15 +24123,11 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/botany)
 "sVv" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/fiorina/oob)
 "sVS" = (
@@ -24943,13 +24315,9 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "tcL" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/chapel)
 "tcW" = (
@@ -24968,9 +24336,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "tdq" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "tdr" = (
@@ -25086,9 +24452,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "til" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/stool,
 /obj/item/clothing/shoes/slippers_worn,
 /turf/open/floor/prison/bluefull,
@@ -25110,9 +24474,7 @@
 	icon_state = "medium";
 	name = "ice shard"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/tumor/ice_lab)
 "tiX" = (
@@ -25145,7 +24507,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
 "tjw" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /obj/structure/inflatable,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
@@ -25177,7 +24539,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "tkZ" = (
@@ -25223,15 +24585,9 @@
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "tlC" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "tlF" = (
@@ -25239,7 +24595,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -25310,7 +24666,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/fiorina/tumor/aux_engi)
 "tnY" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "tob" = (
@@ -25393,13 +24749,9 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "tqP" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -25502,15 +24854,9 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/telecomm/lz1_tram)
 "tuX" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "tvi" = (
@@ -25587,16 +24933,12 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "tzM" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "tzN" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -25652,9 +24994,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "tCZ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "tDB" = (
@@ -25723,13 +25063,11 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "tFA" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "tFY" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
 /obj/structure/machinery/light/double/blue{
@@ -25764,9 +25102,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/tumor/aux_engi)
 "tHF" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "tHJ" = (
@@ -25794,12 +25130,8 @@
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "tIp" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "tIC" = (
@@ -25947,7 +25279,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "tOP" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/closet/radiation,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
@@ -26008,15 +25340,9 @@
 /turf/open/floor/prison/greenblue/west,
 /area/fiorina/station/botany)
 "tSL" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
@@ -26106,10 +25432,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "tWI" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/fiorina/oob)
 "tXt" = (
@@ -26124,9 +25448,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "tXT" = (
@@ -26153,7 +25475,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/civres)
 "tYD" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/power_ring)
 "tYQ" = (
@@ -26370,13 +25692,9 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "ugv" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "ugI" = (
@@ -26428,9 +25746,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "uiV" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -26468,13 +25784,9 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
 "uky" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/fiorina/tumor/ice_lab)
 "ulc" = (
@@ -26555,9 +25867,7 @@
 /area/fiorina/station/civres_blue)
 "unF" = (
 /obj/item/tool/wirecutters,
-/obj/structure/platform/shiva{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "uou" = (
@@ -26583,7 +25893,7 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/fiorina/maintenance)
 "upr" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "upw" = (
@@ -26619,9 +25929,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/fiorina/station/park)
 "uqV" = (
@@ -26633,7 +25941,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "urJ" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "usg" = (
@@ -26747,7 +26055,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "uwT" = (
@@ -26849,9 +26157,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "uBV" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "uCO" = (
@@ -26865,7 +26171,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "uDX" = (
@@ -26926,9 +26232,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "uFC" = (
@@ -27046,7 +26350,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security/wardens)
 "uLf" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "uLj" = (
@@ -27059,12 +26363,8 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "uLr" = (
 /obj/vehicle/powerloader,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "uLJ" = (
@@ -27181,15 +26481,9 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/fiorina/station/telecomm/lz1_cargo)
 "uPA" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/gm/river/desert/deep,
 /area/fiorina/lz/near_lzII)
 "uPX" = (
@@ -27256,12 +26550,8 @@
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uSY" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
 /obj/vehicle/powerloader/ft,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -27371,17 +26661,13 @@
 /turf/open/floor/prison/greenfull/east,
 /area/fiorina/tumor/civres)
 "uWO" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "uWQ" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/gm/river/desert/deep,
 /area/fiorina/lz/near_lzII)
 "uXn" = (
@@ -27428,7 +26714,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "uYx" = (
@@ -27512,9 +26798,7 @@
 /turf/open/floor/prison/blue_plate/west,
 /area/fiorina/station/botany)
 "vcu" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "vcv" = (
@@ -27595,7 +26879,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "vfz" = (
@@ -27658,7 +26942,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "vhy" = (
@@ -27676,12 +26960,8 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "viX" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -27739,14 +27019,6 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/station/medbay)
-"vkt" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "vlK" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison/whitegreen/northwest,
@@ -27852,9 +27124,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "vov" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "voI" = (
@@ -27865,9 +27135,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "voO" = (
@@ -27889,7 +27157,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "vql" = (
@@ -27936,7 +27204,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "vrR" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /obj/structure/barricade/handrail/type_b{
 	dir = 4;
 	layer = 3.5
@@ -27948,9 +27216,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/transit_hub)
 "vrT" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "vsr" = (
@@ -28030,9 +27296,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/fiorina/station/power_ring)
 "vuV" = (
@@ -28043,9 +27307,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "vuX" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "vvp" = (
@@ -28078,9 +27340,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "vwx" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "vwD" = (
@@ -28107,9 +27367,7 @@
 /turf/open/floor/prison/whitepurple,
 /area/fiorina/station/research_cells)
 "vxm" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/greenblue/east,
 /area/fiorina/station/botany)
 "vxs" = (
@@ -28137,9 +27395,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "vyv" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/inflatable/popped,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
@@ -28223,9 +27479,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vBP" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -28237,7 +27491,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
@@ -28248,7 +27502,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
 "vCm" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "vCu" = (
@@ -28296,9 +27550,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/civres_blue)
 "vEi" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "vEK" = (
@@ -28403,9 +27655,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "vJn" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/transit_hub)
 "vJo" = (
@@ -28450,9 +27700,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "vLO" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/central_ring)
 "vLX" = (
@@ -28471,9 +27719,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/power_ring)
 "vMN" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fiorina/station/park)
 "vMT" = (
@@ -28492,7 +27738,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "vNQ" = (
 /obj/item/fuel_cell,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -28537,9 +27783,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
 "vPM" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -28618,9 +27862,7 @@
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fiorina/station/flight_deck)
 "vTI" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "vTL" = (
@@ -28641,7 +27883,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "vUf" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "vUl" = (
@@ -28669,9 +27911,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells)
 "vUZ" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "vVi" = (
@@ -28683,7 +27923,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "vVN" = (
@@ -28771,15 +28011,9 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "waN" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "waQ" = (
@@ -28818,9 +28052,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "wbL" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/prop/almayer/comp_open{
 	pixel_y = 6
 	},
@@ -28999,9 +28231,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/civres)
 "wis" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "wiR" = (
@@ -29109,15 +28339,11 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/maintenance)
 "woh" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/medbay)
 "wol" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
@@ -29238,9 +28464,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "wua" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/bluecorner/west,
 /area/fiorina/station/power_ring)
 "wun" = (
@@ -29250,9 +28474,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "wuA" = (
@@ -29344,15 +28566,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "wyd" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "wyl" = (
@@ -29401,20 +28617,14 @@
 /turf/open/floor/prison/blue/northeast,
 /area/fiorina/station/chapel)
 "wzK" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/prop/almayer/flight_recorder,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "wzT" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/structure/reagent_dispensers/fueltank{
 	layer = 2.6
 	},
@@ -29587,9 +28797,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/telecomm/lz1_cargo)
 "wHl" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "wHq" = (
@@ -29607,9 +28815,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "wHC" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
@@ -29636,10 +28842,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "wIG" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -29895,9 +29099,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "wSo" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/station/park)
 "wSt" = (
@@ -29958,12 +29160,8 @@
 /turf/open/floor/greengrid,
 /area/fiorina/station/security)
 "wWW" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/almayer_hull,
 /area/fiorina/station/medbay)
 "wXe" = (
@@ -30001,7 +29199,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "wYP" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
@@ -30095,9 +29293,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "xcS" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -30111,12 +29307,8 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "xdt" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "xdE" = (
@@ -30253,13 +29445,9 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "xkq" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "xkv" = (
@@ -30365,7 +29553,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "xpM" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "xpO" = (
@@ -30422,7 +29610,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/station/medbay)
 "xst" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "xsC" = (
@@ -30445,7 +29633,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "xte" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "xtm" = (
@@ -30453,17 +29641,13 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "xtP" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/fiorina/oob)
 "xuQ" = (
@@ -30594,9 +29778,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "xBu" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
@@ -30632,9 +29814,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/tumor/civres)
 "xCv" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "xCV" = (
@@ -30756,9 +29936,7 @@
 /area/fiorina/station/park)
 "xIq" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "xIx" = (
@@ -30784,12 +29962,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "xKA" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -30872,12 +30046,8 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/fiorina/oob)
 "xMX" = (
@@ -30898,9 +30068,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "xNG" = (
@@ -30957,10 +30125,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "xQC" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
@@ -31246,7 +30412,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "ybx" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -31320,7 +30486,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -31361,13 +30527,11 @@
 /turf/open/floor/prison/yellowcorner,
 /area/fiorina/station/lowsec)
 "ygr" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/security)
 "ygs" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
@@ -65304,7 +64468,7 @@ imI
 oEH
 oEH
 oEH
-vkt
+sPt
 bLJ
 rcg
 xZN
@@ -66576,7 +65740,7 @@ imI
 oEH
 oEH
 oEH
-vkt
+sPt
 bLJ
 xKX
 iaa

@@ -52,7 +52,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "aam" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aan" = (
@@ -77,9 +77,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aap" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /obj/structure/stairs/perspective/ice{
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
@@ -87,10 +85,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaq" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aar" = (
@@ -98,10 +94,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "aas" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aat" = (
@@ -125,7 +119,7 @@
 	pixel_x = -7;
 	pixel_y = 16
 	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aay" = (
@@ -160,9 +154,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaF" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aaG" = (
@@ -176,9 +168,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaI" = (
@@ -186,9 +176,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaJ" = (
@@ -206,10 +194,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aaM" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaN" = (
@@ -238,9 +224,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaT" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaV" = (
@@ -251,7 +235,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaW" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "aaX" = (
@@ -299,18 +283,12 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "abf" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abg" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
 "abh" = (
@@ -319,41 +297,25 @@
 	},
 /area/shiva/interior/colony/central)
 "abi" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abj" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abk" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abl" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abm" = (
@@ -368,42 +330,28 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "abo" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abp" = (
 /turf/closed/shuttle/elevator/gears,
 /area/shiva/interior/colony/research_hab)
 "abq" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abr" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abs" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abt" = (
@@ -613,9 +561,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "acn" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "aco" = (
@@ -968,18 +914,12 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
 "aeG" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "aeH" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "aeM" = (
@@ -1338,9 +1278,7 @@
 /turf/open/floor/shiva/bluefull/west,
 /area/shiva/interior/aerodrome)
 "ahh" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/colony/central)
 "ahl" = (
@@ -3088,10 +3026,8 @@
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "aui" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
@@ -3180,9 +3116,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "avx" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "avz" = (
@@ -4041,12 +3975,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "aED" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "aEH" = (
@@ -4079,11 +4009,11 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aFb" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "aFc" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "aFd" = (
@@ -4661,12 +4591,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "aNy" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "aNE" = (
@@ -4902,12 +4828,8 @@
 /turf/open/ice/noweed,
 /area/shiva/interior/colony/research_hab)
 "aRL" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "aRS" = (
@@ -5515,9 +5437,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "aZh" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aZp" = (
@@ -5688,10 +5608,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "bcE" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
@@ -5704,12 +5622,8 @@
 	},
 /area/shiva/interior/aerodrome)
 "bcV" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "bdT" = (
@@ -5988,7 +5902,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/colony/medseceng)
 "bvb" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/structure/flora/bush/snow,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
@@ -6013,9 +5927,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "bwk" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
@@ -6082,9 +5994,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/cp_colony_grounds)
 "bzh" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "bzK" = (
@@ -6116,9 +6026,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
 "bAX" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/shiva/west,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "bBs" = (
@@ -6164,9 +6072,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "bFS" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -6194,9 +6100,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "bHC" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "bHN" = (
@@ -6210,9 +6114,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "bHZ" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /obj/structure/stairs/perspective/ice{
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
@@ -6595,7 +6497,7 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "cgR" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/junkyard/cp_bar)
 "chq" = (
@@ -6606,10 +6508,8 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "cid" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_s_research)
 "cio" = (
@@ -6620,7 +6520,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/research_caves)
 "cko" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "ckH" = (
@@ -6804,9 +6704,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "cxJ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "cyd" = (
@@ -6994,9 +6892,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "cJC" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "cKb" = (
@@ -7033,9 +6929,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "cLQ" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0;
 	pixel_x = -17;
@@ -7229,12 +7123,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "cXU" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_s_research)
 "cYa" = (
@@ -7535,7 +7425,7 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/central)
 "dro" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
@@ -7999,9 +7889,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "eeD" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/cp_camp)
 "efD" = (
@@ -8027,9 +7915,7 @@
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
 "ehV" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "eit" = (
@@ -8327,10 +8213,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "eGq" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "eGs" = (
@@ -8802,10 +8686,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "fmo" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "fnw" = (
@@ -8829,7 +8711,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "foc" = (
-/obj/structure/platform_decoration/shiva/catwalk,
+/obj/structure/platform_decoration/metal/shiva,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/valley)
 "fof" = (
@@ -9017,9 +8899,7 @@
 /turf/open/floor/shiva/red/southeast,
 /area/shiva/interior/colony/medseceng)
 "fEl" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "fEC" = (
@@ -9240,12 +9120,8 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/medseceng)
 "fNf" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "fNE" = (
@@ -9559,9 +9435,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "gkG" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "gkK" = (
@@ -9678,9 +9552,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/caves/s_lz2)
 "grk" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /obj/structure/stairs/perspective/ice{
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
@@ -9688,7 +9560,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse/caves)
 "gso" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "gss" = (
@@ -9851,9 +9723,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "gCW" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "gDz" = (
@@ -10020,9 +9890,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/central)
 "gNJ" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "gNM" = (
@@ -10082,13 +9950,9 @@
 	},
 /area/shiva/interior/aerodrome)
 "gQK" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "gQL" = (
@@ -10255,7 +10119,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "hbo" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "hbp" = (
@@ -10314,15 +10178,11 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/telecomm/lz1_biceps)
 "hhT" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "hic" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "hif" = (
@@ -10339,10 +10199,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "hip" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "hju" = (
@@ -10456,9 +10314,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "hpn" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	pixel_x = -17;
 	pixel_y = -19
@@ -10595,9 +10451,7 @@
 /obj/structure/prop/ice_colony/flamingo{
 	dir = 1
 	},
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/shiva/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "hyu" = (
@@ -10738,9 +10592,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
 "hEa" = (
@@ -10748,9 +10600,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/deck)
 "hEx" = (
@@ -11149,9 +10999,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/deck)
 "idR" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "iek" = (
@@ -11261,10 +11109,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "ijE" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "ijP" = (
@@ -11394,10 +11240,8 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "irT" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "isr" = (
@@ -11463,9 +11307,7 @@
 /turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/medseceng)
 "iuX" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /obj/structure/largecrate/random/mini/med,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
@@ -11490,12 +11332,8 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "ivE" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "ivS" = (
@@ -11656,9 +11494,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
 "iEi" = (
@@ -11683,9 +11519,7 @@
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/botany)
 "iHu" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/shiva/west,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/junkyard)
 "iHN" = (
@@ -11747,9 +11581,7 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "iKW" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "iLf" = (
@@ -12028,9 +11860,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "jac" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "jay" = (
@@ -12055,9 +11885,7 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/valley)
 "jbY" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "jcv" = (
@@ -12101,9 +11929,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "jhm" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/junkyard)
 "jhq" = (
@@ -12134,9 +11960,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "jjX" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "jkH" = (
@@ -12167,9 +11991,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "jlY" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/cp_camp)
 "jmq" = (
@@ -12203,7 +12025,7 @@
 /turf/open/floor/shiva/red/northwest,
 /area/shiva/interior/colony/medseceng)
 "joF" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "joP" = (
@@ -12233,7 +12055,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "jqx" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "jqT" = (
@@ -12277,10 +12099,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "jvz" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "jvT" = (
@@ -12445,9 +12265,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "jHg" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "jIF" = (
@@ -12458,10 +12276,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/n_admin)
 "jIP" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "jIR" = (
@@ -12475,13 +12291,9 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/valley)
 "jJv" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "jJZ" = (
@@ -12568,12 +12380,8 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
 "jPo" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "jPU" = (
@@ -12618,7 +12426,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/caves/s_lz2)
 "jQW" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
@@ -12905,9 +12713,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "khx" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "khz" = (
@@ -13581,12 +13387,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "kSO" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "kTd" = (
@@ -14114,9 +13916,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "lCB" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "lDv" = (
@@ -14164,9 +13964,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
 "lGC" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "lGT" = (
@@ -14397,9 +14195,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "lVF" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/colony/central)
 "lWr" = (
@@ -14602,9 +14398,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "mfc" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "mfe" = (
@@ -14928,12 +14722,8 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "mCG" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "mCQ" = (
@@ -15164,7 +14954,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "mNs" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "mNK" = (
@@ -15176,9 +14966,7 @@
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/research_hab)
 "mOv" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/lz1_valley)
 "mOY" = (
@@ -15206,9 +14994,7 @@
 /turf/open/floor/darkgreen2/northwest,
 /area/shiva/interior/colony/botany)
 "mRa" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/shiva/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "mRc" = (
@@ -15225,9 +15011,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "mRo" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "mRv" = (
@@ -15507,9 +15291,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aux_power)
 "niL" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "njg" = (
@@ -15519,13 +15301,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "nlx" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "nlG" = (
@@ -15602,7 +15380,7 @@
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/interior/colony/central)
 "nqK" = (
-/obj/structure/platform/shiva/catwalk,
+/obj/structure/platform/metal/shiva,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "nrf" = (
@@ -15649,9 +15427,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "nud" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "nur" = (
@@ -15673,15 +15449,9 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "nvu" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "nvS" = (
@@ -15703,9 +15473,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "nxt" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/item/lightstick/red/variant/planted{
 	pixel_x = -7;
 	pixel_y = -5
@@ -15724,10 +15492,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "nyS" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "nzf" = (
@@ -15884,9 +15650,7 @@
 /area/shiva/interior/colony/research_hab)
 "nIA" = (
 /obj/item/lightstick/red/variant/planted,
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/aerodrome)
 "nIB" = (
@@ -15942,9 +15706,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "nMR" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "nMZ" = (
@@ -15982,9 +15744,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/colony/s_admin)
 "nOi" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "nOB" = (
@@ -15992,19 +15752,13 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "nOK" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_s_research)
 "nPb" = (
 /obj/structure/prop/ice_colony/soil_net,
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "nPH" = (
@@ -16070,9 +15824,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "nUk" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
 "nUn" = (
@@ -16225,9 +15977,7 @@
 /turf/open/floor/shiva/green,
 /area/shiva/interior/colony/botany)
 "ofl" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "ofw" = (
@@ -16384,9 +16134,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "oqH" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "oqQ" = (
@@ -16503,9 +16251,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "owB" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "owD" = (
@@ -16531,7 +16277,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "oyw" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "oAo" = (
@@ -16555,9 +16301,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/aerodrome)
 "oDi" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/item/lightstick/red/variant/planted{
 	pixel_x = -7;
 	pixel_y = -5
@@ -16602,10 +16346,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "oFl" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "oFG" = (
@@ -16694,9 +16436,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "oLu" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "oMG" = (
@@ -16825,9 +16565,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "oZq" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
@@ -16915,9 +16653,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "pey" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/s_lz2)
 "peQ" = (
@@ -16960,9 +16696,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/exterior/telecomm/lz2_southeast)
 "pgQ" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "piW" = (
@@ -16992,7 +16726,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "pkT" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "plm" = (
@@ -17038,12 +16772,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "poz" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "ppb" = (
@@ -17069,9 +16799,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/valley)
 "pqq" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "prb" = (
@@ -17083,9 +16811,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/research_caves)
 "prU" = (
@@ -17247,9 +16973,7 @@
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/exterior/cp_colony_grounds)
 "pAx" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/valley)
 "pAE" = (
@@ -17385,9 +17109,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "pFg" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "pFt" = (
@@ -17424,9 +17146,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
 "pGL" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "pHz" = (
@@ -17652,10 +17372,8 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "pRM" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata/north,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "pRU" = (
@@ -17808,12 +17526,8 @@
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/medseceng)
 "qdh" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "qdH" = (
@@ -17938,9 +17652,7 @@
 /turf/open/shuttle/elevator,
 /area/shiva/interior/aerodrome)
 "qkF" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "qkI" = (
@@ -18193,10 +17905,8 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/medseceng)
 "qBM" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "qCa" = (
@@ -18227,12 +17937,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "qCW" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/research_caves)
 "qDg" = (
@@ -18281,7 +17987,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "qEQ" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
@@ -18358,10 +18064,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "qNB" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "qNK" = (
@@ -18414,7 +18118,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "qRl" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/s_lz2)
 "qRo" = (
@@ -18648,7 +18352,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "rfi" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "rfU" = (
@@ -18747,9 +18451,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "rnB" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/shiva/west,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "rov" = (
@@ -18856,7 +18558,7 @@
 /turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/aux_power)
 "rzw" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "rzz" = (
@@ -18900,12 +18602,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "rBk" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "rBr" = (
@@ -18977,9 +18675,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "rJI" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "rKk" = (
@@ -19000,9 +18696,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "rLu" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "rLD" = (
@@ -19303,9 +18997,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "scp" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "scN" = (
@@ -19520,9 +19212,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/central)
 "stv" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "stN" = (
@@ -20025,15 +19715,9 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "tad" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "taq" = (
@@ -20080,9 +19764,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tdG" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "tdR" = (
@@ -20101,7 +19783,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
 "tes" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
@@ -20191,12 +19873,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "tlr" = (
-/obj/structure/platform_decoration/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "tlB" = (
@@ -20367,10 +20045,8 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/valley)
 "tuz" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata/north,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "tuA" = (
@@ -20470,7 +20146,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "tBB" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/junkyard/cp_bar)
 "tCi" = (
@@ -20478,7 +20154,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "tDb" = (
-/obj/structure/platform/shiva/catwalk,
+/obj/structure/platform/metal/shiva,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
 "tDg" = (
@@ -20497,9 +20173,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "tDr" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /obj/item/lightstick/red/spoke/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
@@ -20519,10 +20193,8 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "tFd" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "tFk" = (
@@ -20539,13 +20211,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "tFy" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "tGs" = (
@@ -20645,9 +20313,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "tKV" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/telecomm/lz2_southeast)
 "tLz" = (
@@ -20656,18 +20322,12 @@
 /area/shiva/interior/colony/medseceng)
 "tLC" = (
 /obj/item/lightstick/red/variant/planted,
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/aerodrome)
 "tLP" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/north,
+/obj/structure/platform/metal/shiva/east,
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/colony/central)
 "tLW" = (
@@ -20748,11 +20408,11 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts/no2)
 "tPB" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/interior/caves/cp_camp)
 "tPJ" = (
-/obj/structure/platform/shiva/catwalk,
+/obj/structure/platform/metal/shiva,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "tQn" = (
@@ -21203,7 +20863,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-4-8"
 	},
-/obj/structure/platform/shiva/catwalk,
+/obj/structure/platform/metal/shiva,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/junkyard/fortbiceps)
 "ulI" = (
@@ -21211,7 +20871,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "ulZ" = (
-/obj/structure/platform/shiva/catwalk,
+/obj/structure/platform/metal/shiva,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-4-8"
 	},
@@ -21451,7 +21111,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "uEo" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
@@ -21619,12 +21279,8 @@
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/aerodrome)
 "uLf" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform_decoration/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/north,
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0;
 	pixel_x = -10;
@@ -21703,9 +21359,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/deck)
 "uQA" = (
@@ -21932,7 +21586,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "veu" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
@@ -21950,7 +21604,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/central)
 "vgR" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/interior/caves/cp_camp)
 "vhp" = (
@@ -21977,9 +21631,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "vip" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/shiva/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "viy" = (
@@ -22023,9 +21675,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts)
 "vlh" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/cp_camp)
 "vlD" = (
@@ -22036,7 +21686,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "vnc" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "vno" = (
@@ -22091,7 +21741,7 @@
 /turf/open/floor/shiva/radiator_tile,
 /area/shiva/interior/colony/central)
 "vqw" = (
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "vqT" = (
@@ -22099,9 +21749,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "vqV" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 1
-	},
+/obj/structure/platform/metal/shiva/north,
 /obj/structure/prop/ice_colony/flamingo{
 	dir = 9
 	},
@@ -22234,10 +21882,8 @@
 /turf/open/floor/shiva/green/northeast,
 /area/shiva/interior/colony/botany)
 "vAU" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "vBg" = (
@@ -22361,7 +22007,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "vIJ" = (
-/obj/structure/platform_decoration/strata,
+/obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "vIL" = (
@@ -22416,12 +22062,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/warehouse/caves)
 "vPK" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "vPR" = (
@@ -22439,10 +22081,8 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/cp_colony_grounds)
 "vRM" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "vRW" = (
@@ -22549,9 +22189,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "vZS" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/lz1_valley)
 "wag" = (
@@ -22628,9 +22266,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "wfW" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
+/obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "wgp" = (
@@ -22938,9 +22574,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
 "wCX" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/s_lz2)
 "wFa" = (
@@ -23067,9 +22701,7 @@
 	id = "hangar_ice_2";
 	pixel_y = 28
 	},
-/obj/structure/platform/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "wOq" = (
@@ -23190,9 +22822,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "wVJ" = (
-/obj/structure/platform_decoration/shiva/catwalk{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "wWu" = (
@@ -23428,10 +23058,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "xtc" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "xtI" = (
@@ -23439,12 +23067,8 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
 "xui" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "xun" = (
@@ -23496,9 +23120,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "xwo" = (
-/obj/structure/platform/shiva/catwalk{
-	dir = 8
-	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "xwL" = (
@@ -23666,9 +23288,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "xFM" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "xFN" = (
@@ -23718,10 +23338,8 @@
 /turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/research_hab)
 "xLy" = (
-/obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/exterior/cp_s_research)
 "xMs" = (

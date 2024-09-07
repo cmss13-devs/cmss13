@@ -20,27 +20,8 @@
 	var/creaking_sound
 	var/breaking_sound
 
-/obj/structure/platform/stair_cut
-	icon_state = "platform_stair"//icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1)
-	dir = 1
-
-/obj/structure/platform/stair_cut/alt
-	icon_state = "platform_stair_alt"
-	dir = 1
-
 /obj/structure/platform/Initialize()
 	. = ..()
-	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
-	switch(dir)
-		if(SOUTH)
-			I.pixel_y = -16
-		if(NORTH)
-			I.pixel_y = 16
-		if(EAST)
-			I.pixel_x = 16
-		if(WEST)
-			I.pixel_x = -16
-	overlays += I
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -180,9 +161,12 @@
 
 //Map variants//
 
-//Parent to attach sounds depending on material they are made from.
+//
+//Parent used to attach sounds depending on material they are made from.//
+//
+
 /obj/structure/platform/metal
-	icon_state = "strata_metalplatform"
+	icon_state = "platform"
 	creaking_sound = 'sound/effects/metal_creaking.ogg'
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
@@ -191,134 +175,290 @@
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
 
-//Strata purple ice//
-/obj/structure/platform_decoration/strata
-	name = "ice rock corner"
-	desc = "A solid chunk of desolate rocks and ice."
-	icon_state = "strata_platform_deco"
+//------------------------------------//
+//   Cut Platform for stairs sprite   //
+//------------------------------------//
 
-/obj/structure/platform/strata
-	name = "ice rock edge"
-	desc = "A solid chunk of desolate rocks and ice. Looks like you could climb it with some difficulty."
-	icon_state = "strata_platform"
+/obj/structure/platform/metal/stair_cut
+	icon_state = "platform_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
+	dir = 1
 
-//Strata wall metal platforms
-/obj/structure/platform_decoration/strata/metal
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
-	icon_state = "strata_metalplatform_deco"
+/obj/structure/platform/metal/stair_cut/platform_left
+	icon_state = "platform_stair"
 
-/obj/structure/platform/strata/metal
-	name = "raised metal edge"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/metal/stair_cut/platform_right
+	icon_state = "platform_stair_alt"
 
-//Kutjevo metal platforms
+/obj/structure/platform/metal/stair_cut/kutjev_smooth_left
+	icon_state = "kutjevo_platform_sm_stair"
 
-/obj/structure/platform/kutjevo
-	icon_state = "kutjevo_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right
+	icon_state = "kutjevo_platform_sm_stair_alt"
 
-/obj/structure/platform_decoration/kutjevo
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
-	icon_state = "kutjevo_platform_deco"
+//------------------------------------//
+//       Metal based Platforms        //
+//------------------------------------//
+
+/obj/structure/platform/metal/almayer/north //I didn't have good name so... they will be called almayer for now as replacement for "platform".
+	dir = NORTH
+/obj/structure/platform/metal/almayer/east
+	dir = EAST
+/obj/structure/platform/metal/almayer/west
+	dir = WEST
 
 
-/obj/structure/platform/kutjevo/smooth
-	icon_state = "kutjevo_platform_sm"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
-
-/obj/structure/platform/kutjevo/smooth/stair_plate
-	icon_state = "kutjevo_stair_plate"
-
-/obj/structure/platform_decoration/kutjevo/smooth
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
-	icon_state = "kutjevo_platform_sm_deco"
-
-/obj/structure/platform/kutjevo/rock
-	icon_state = "kutjevo_rock"
-	name = "raised rock edges"
-	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
-
-/obj/structure/platform_decoration/kutjevo/rock
-	name = "raised rock corner"
-	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
-	icon_state = "kutjevo_rock_deco"
-
-
-/obj/structure/platform/mineral
-	icon_state = "stone"
-/obj/structure/platform_decoration/mineral
-	icon_state = "stone_deco"
-
-/obj/structure/platform/mineral/sandstone
-	name = "sandstone platform"
-	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
-	color = "#c6a480"
-
-/obj/structure/platform/mineral/sandstone/runed
-	name = "sandstone temple platform"
-	color = "#b29082"
-
-
-
-/obj/structure/platform_decoration/mineral/sandstone
-	name = "sandstone platform corner"
-	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
-	color = "#c6a480"
-
-/obj/structure/platform/shiva/catwalk
-	icon_state = "shiva"
-	name = "raised rubber cord platform"
-	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
-
-/obj/structure/platform_decoration/shiva/catwalk
-	icon_state = "shiva_deco"
-	name = "raised rubber cord platform"
-	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
-
-/obj/structure/platform_decoration/mineral/sandstone/runed
-	name = "sandstone temple platform corner"
-	color = "#b29082"
-
-
-
-//Metal based Platforms
 /obj/structure/platform/metal/kutjevo
 	icon_state = "kutjevo_platform"
 	name = "raised metal edge"
 	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
 
-/obj/structure/platform/metal/kutjevo/smooth
+/obj/structure/platform/metal/kutjevo/north
+	dir = NORTH
+/obj/structure/platform/metal/kutjevo/east
+	dir = EAST
+/obj/structure/platform/metal/kutjevo/west
+	dir = WEST
+
+
+/obj/structure/platform/metal/kutjevo_smooth
 	icon_state = "kutjevo_platform_sm"
 	name = "raised metal edge"
 	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
 
-/obj/structure/platform/metal/kutjevo/smooth/stair_plate
+/obj/structure/platform/metal/kutjevo_smooth/north
+	dir = NORTH
+/obj/structure/platform/metal/kutjevo_smooth/east
+	dir = EAST
+/obj/structure/platform/metal/kutjevo_smooth/west
+	dir = WEST
+
+
+/obj/structure/platform/metal/kutjevo_smooth/stair_plate
 	icon_state = "kutjevo_stair_plate"
 
-//Rock based Platforms
-/obj/structure/platform/stone/kutjevo/rock
+
+/obj/structure/platform/metal/shiva
+	icon_state = "shiva"
+	name = "raised rubber cord platform"
+	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+
+/obj/structure/platform/metal/shiva/north
+	dir = NORTH
+/obj/structure/platform/metal/shiva/east
+	dir = EAST
+/obj/structure/platform/metal/shiva/west
+	dir = WEST
+
+
+/obj/structure/platform/metal/strata
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	icon_state = "strata_metalplatform"
+
+/obj/structure/platform/metal/strata/north
+	dir = NORTH
+/obj/structure/platform/metal/strata/east
+	dir = EAST
+/obj/structure/platform/metal/strata/west
+	dir = WEST
+
+//------------------------------------//
+//       Rock based Platforms         //
+//------------------------------------//
+
+/obj/structure/platform/stone/kutjevo
 	name = "raised rock edges"
 	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
 
-//Metal based Platforms "decoration"
+/obj/structure/platform/stone/kutjevo/north
+	dir = NORTH
+/obj/structure/platform/stone/kutjevo/east
+	dir = EAST
+/obj/structure/platform/stone/kutjevo/west
+	dir = WEST
+
+
+/obj/structure/platform/stone/strata
+	name = "ice rock edge"
+	desc = "A solid chunk of desolate rocks and ice. Looks like you could climb it with some difficulty."
+	icon_state = "strata_platform"
+
+/obj/structure/platform/stone/strata/north
+	dir = NORTH
+/obj/structure/platform/stone/strata/east
+	dir = EAST
+/obj/structure/platform/stone/strata/west
+	dir = WEST
+
+
+/obj/structure/platform/stone/mineral
+	icon_state = "stone"
+
+/obj/structure/platform/stone/mineral/north
+	dir = NORTH
+/obj/structure/platform/stone/mineral/east
+	dir = EAST
+/obj/structure/platform/stone/mineral/west
+	dir = WEST
+
+
+/obj/structure/platform/stone/sandstone
+	name = "sandstone platform"
+	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	icon_state = "stone"
+	color = "#c6a480"
+
+/obj/structure/platform/stone/sandstone/north
+	dir = NORTH
+/obj/structure/platform/stone/sandstone/east
+	dir = EAST
+/obj/structure/platform/stone/sandstone/west
+	dir = WEST
+
+
+/obj/structure/platform/stone/runed_sandstone
+	name = "sandstone temple platform"
+	icon_state = "stone"
+	color = "#b29082"
+
+/obj/structure/platform/stone/runed_sandstone/north
+	dir = NORTH
+/obj/structure/platform/stone/runed_sandstone/east
+	dir = EAST
+/obj/structure/platform/stone/runed_sandstone/west
+	dir = WEST
+
+//------------------------------------//
+// Metal based Platforms "decoration" //
+//------------------------------------//
+
+/obj/structure/platform_decoration/metal/almayer/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/almayer/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/almayer/west
+	dir = WEST
+/obj/structure/platform_decoration/metal/almayer/northeast
+	dir = NORTHEAST
+/obj/structure/platform_decoration/metal/almayer/northwest
+	dir = NORTHWEST
+/obj/structure/platform_decoration/metal/almayer/southeast
+	dir = SOUTHEAST
+/obj/structure/platform_decoration/metal/almayer/southwest
+	dir = SOUTHWEST
+
+
 /obj/structure/platform_decoration/metal/kutjevo
 	name = "raised metal corner"
 	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "kutjevo_platform_deco"
 
-/obj/structure/platform_decoration/metal/kutjevo/smooth
+/obj/structure/platform_decoration/metal/kutjevo/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/kutjevo/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/kutjevo/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/metal/kutjevo_smooth
 	name = "raised metal corner"
 	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "kutjevo_platform_sm_deco"
 
-//Rock based Platforms "decoration"
-/obj/structure/platform_decoration/stone/kutjevo/rock
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/metal/shiva
+	icon_state = "shiva_deco"
+	name = "raised rubber cord platform"
+	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+
+/obj/structure/platform_decoration/metal/shiva/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/shiva/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/shiva/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/metal/strata
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	icon_state = "strata_metalplatform_deco"
+
+/obj/structure/platform_decoration/metal/strata/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/strata/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/strata/west
+	dir = WEST
+
+//------------------------------------//
+// Rock based Platforms "decoration"  //
+//------------------------------------//
+
+/obj/structure/platform_decoration/stone/kutjevo
 	name = "raised rock corner"
 	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
 	icon_state = "kutjevo_rock_deco"
+
+/obj/structure/platform_decoration/stone/kutjevo/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/kutjevo/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/kutjevo/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/stone/strata
+	name = "ice rock corner"
+	desc = "A solid chunk of desolate rocks and ice."
+	icon_state = "strata_platform_deco"
+
+/obj/structure/platform_decoration/stone/strata/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/strata/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/strata/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/stone/mineral
+	icon_state = "stone_deco"
+
+/obj/structure/platform_decoration/stone/mineral/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/mineral/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/mineral/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/stone/sandstone
+	name = "sandstone platform corner"
+	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	color = "#c6a480"
+
+/obj/structure/platform_decoration/stone/sandstone/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/sandstone/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/sandstone/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/runed_sandstone
+	name = "sandstone temple platform corner"
+	color = "#b29082"
+
+/obj/structure/platform_decoration/stone/runed_sandstone/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/runed_sandstone/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/runed_sandstone/west
+	dir = WEST

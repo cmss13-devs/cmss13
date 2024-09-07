@@ -1,0 +1,297 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_lambda)
+"b" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"c" = (
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_lambda)
+"d" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/caves/lambda/virology)
+"e" = (
+/turf/open/floor/bluegrid/damaged3,
+/area/bigredv2/caves/lambda/virology)
+"f" = (
+/turf/open/floor/darkgreen2/northwest,
+/area/bigredv2/caves/lambda/virology)
+"g" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/darkgreencorners2/north,
+/area/bigredv2/caves/lambda/virology)
+"h" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_lambda)
+"i" = (
+/turf/open/floor/whitegreen/southwest,
+/area/bigredv2/caves/lambda/virology)
+"j" = (
+/turf/open/floor/bluegrid/damaged5,
+/area/bigredv2/caves/lambda/virology)
+"k" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/darkgreencorners2/west,
+/area/bigredv2/caves/lambda/virology)
+"l" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_lambda)
+"m" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_lambda)
+"n" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/lambda/virology)
+"o" = (
+/obj/structure/curtain/medical,
+/obj/structure/machinery/alarm{
+	dir = 1;
+	pixel_y = -30
+	},
+/turf/open/floor/whitegreen/southwest,
+/area/bigredv2/caves/lambda/virology)
+"p" = (
+/turf/open/floor/darkgreen2/southwest,
+/area/bigredv2/caves/lambda/virology)
+"q" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave,
+/obj/structure/machinery/light,
+/turf/open/floor/whitegreen/southwest,
+/area/bigredv2/caves/lambda/virology)
+"r" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"w" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_lambda)
+"F" = (
+/turf/open/mars_cave/mars_cave_8,
+/area/bigredv2/caves_lambda)
+"H" = (
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves_lambda)
+"I" = (
+/turf/open/mars_cave/mars_cave_12,
+/area/bigredv2/caves_lambda)
+"K" = (
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_lambda)
+"O" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/caves_lambda)
+"P" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
+"X" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_8,
+/area/bigredv2/caves_lambda)
+
+(1,1,1) = {"
+a
+h
+H
+c
+b
+b
+"}
+(2,1,1) = {"
+b
+b
+l
+l
+b
+b
+"}
+(3,1,1) = {"
+b
+b
+c
+r
+I
+b
+"}
+(4,1,1) = {"
+b
+b
+r
+O
+H
+h
+"}
+(5,1,1) = {"
+h
+F
+I
+X
+h
+c
+"}
+(6,1,1) = {"
+b
+O
+I
+I
+c
+b
+"}
+(7,1,1) = {"
+b
+b
+c
+K
+c
+b
+"}
+(8,1,1) = {"
+b
+b
+K
+F
+I
+O
+"}
+(9,1,1) = {"
+b
+h
+c
+K
+I
+c
+"}
+(10,1,1) = {"
+h
+H
+m
+c
+O
+I
+"}
+(11,1,1) = {"
+I
+h
+H
+H
+O
+O
+"}
+(12,1,1) = {"
+b
+c
+O
+K
+I
+c
+"}
+(13,1,1) = {"
+b
+b
+c
+c
+w
+O
+"}
+(14,1,1) = {"
+b
+b
+c
+O
+c
+c
+"}
+(15,1,1) = {"
+b
+b
+c
+O
+c
+b
+"}
+(16,1,1) = {"
+b
+I
+K
+P
+b
+b
+"}
+(17,1,1) = {"
+b
+c
+h
+O
+b
+b
+"}
+(18,1,1) = {"
+b
+c
+m
+c
+b
+b
+"}
+(19,1,1) = {"
+c
+K
+K
+c
+b
+b
+"}
+(20,1,1) = {"
+H
+O
+K
+b
+b
+b
+"}
+(21,1,1) = {"
+h
+c
+b
+b
+b
+b
+"}
+(22,1,1) = {"
+d
+d
+n
+b
+b
+b
+"}
+(23,1,1) = {"
+e
+i
+n
+n
+b
+b
+"}
+(24,1,1) = {"
+f
+j
+o
+n
+n
+b
+"}
+(25,1,1) = {"
+g
+k
+p
+q
+n
+b
+"}

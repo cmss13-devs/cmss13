@@ -1,0 +1,546 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/inflatable/popped/door,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"ab" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 6
+	},
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"ac" = (
+/obj/item/tool/pickaxe/drill,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
+"ad" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave,
+/area/bigredv2/caves_lambda)
+"ae" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"af" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"ag" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"ah" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_lambda)
+"ai" = (
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_lambda)
+"aj" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_lambda)
+"ak" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"al" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"am" = (
+/obj/structure/machinery/door_control{
+	id = "sci_br";
+	name = "Observation Shutters";
+	pixel_y = 28
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"an" = (
+/obj/effect/decal/cleanable/mucus,
+/obj/structure/machinery/door_control{
+	id = "sci_br";
+	name = "Observation Shutters";
+	pixel_y = 28
+	},
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"ao" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"ap" = (
+/obj/structure/sign/safety/bulkhead_door,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/lambda/breakroom)
+"aq" = (
+/turf/open/floor/almayer/w_y0/north,
+/area/bigredv2/caves/lambda/breakroom)
+"ar" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	layer = 3.1;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"as" = (
+/obj/structure/filingcabinet{
+	pixel_x = 7
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -7;
+	pixel_y = 19
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -9
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"at" = (
+/turf/open/floor/plating/almayer,
+/area/bigredv2/caves/lambda/breakroom)
+"au" = (
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"av" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aw" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"ax" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"aA" = (
+/turf/template_noop,
+/area/template_noop)
+"aB" = (
+/turf/open/floor/almayer/w_y1/north,
+/area/bigredv2/caves/lambda/breakroom)
+"aC" = (
+/obj/structure/machinery/light,
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aD" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aE" = (
+/turf/open/floor/darkpurplecorners2/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aF" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/door/window/brigdoor/southright,
+/obj/item/clothing/accessory/medal/gold{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/medal/bronze/science{
+	pixel_x = -5
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aG" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "sci_br";
+	name = "\improper Lambda Observation Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/lambda/breakroom)
+"aH" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/darkpurplecorners2,
+/area/bigredv2/caves/lambda/breakroom)
+"aI" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/lambda/breakroom)
+"aJ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control{
+	id = "vault";
+	name = "Vault Lockdown"
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aM" = (
+/turf/open/floor/almayer/w_y2/north,
+/area/bigredv2/caves/lambda/breakroom)
+"aN" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_lambda)
+"aP" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"aQ" = (
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_lambda)
+"aR" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 19
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/bigredv2/caves/lambda/breakroom)
+"aS" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
+"aT" = (
+/turf/open/mars_cave/mars_cave_4,
+/area/bigredv2/caves_lambda)
+"aV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
+"aW" = (
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony{
+	icon_state = "door_locked"
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "vault";
+	name = "Vault Lockdown"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/caves/lambda/breakroom)
+"aX" = (
+/turf/open/mars_cave/mars_cave_8,
+/area/bigredv2/caves_lambda)
+"aY" = (
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_lambda)
+"aZ" = (
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_lambda)
+"ba" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
+"vm" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_lambda)
+"zP" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_lambda)
+"EW" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "sci_br";
+	name = "\improper Lambda Observation Shutters"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/lambda/breakroom)
+"Gv" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "sci_br";
+	name = "\improper Lambda Observation Shutters"
+	},
+/obj/item/shard,
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/lambda/breakroom)
+"RW" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_lambda)
+
+(1,1,1) = {"
+aA
+aA
+aA
+aA
+aA
+aI
+am
+al
+aI
+aA
+aA
+aY
+aT
+ak
+"}
+(2,1,1) = {"
+aA
+aA
+aA
+aA
+zP
+aG
+aw
+aD
+aG
+ai
+ai
+aZ
+ba
+aX
+"}
+(3,1,1) = {"
+aA
+aA
+ah
+ai
+ai
+aG
+aH
+aE
+aG
+aP
+ba
+aP
+ai
+aZ
+"}
+(4,1,1) = {"
+aA
+ae
+aP
+ba
+aZ
+aI
+ax
+aC
+aI
+ae
+RW
+ac
+ba
+aZ
+"}
+(5,1,1) = {"
+ai
+ai
+aj
+ad
+aZ
+aG
+ao
+ag
+EW
+af
+ba
+ba
+ba
+aZ
+"}
+(6,1,1) = {"
+aY
+ai
+ai
+ba
+ba
+aG
+aa
+aD
+Gv
+vm
+aN
+aS
+ba
+aZ
+"}
+(7,1,1) = {"
+ba
+ba
+ak
+ak
+ak
+aI
+an
+ab
+ap
+aA
+aA
+aP
+aS
+aZ
+"}
+(8,1,1) = {"
+ba
+ak
+ak
+aI
+aI
+aI
+aI
+aW
+aI
+aI
+aA
+ba
+aP
+aZ
+"}
+(9,1,1) = {"
+aZ
+ak
+ak
+aI
+aR
+as
+au
+au
+aK
+aI
+aA
+aY
+ba
+aZ
+"}
+(10,1,1) = {"
+ak
+aA
+aA
+aI
+au
+at
+aq
+at
+au
+aI
+aA
+aP
+ba
+aZ
+"}
+(11,1,1) = {"
+ak
+aA
+aA
+aI
+aF
+at
+aB
+at
+aJ
+aI
+aA
+aP
+ba
+aZ
+"}
+(12,1,1) = {"
+aA
+aA
+aA
+aI
+au
+at
+aM
+at
+aL
+aI
+aA
+aQ
+aV
+ba
+"}
+(13,1,1) = {"
+aA
+aA
+aA
+aI
+ar
+av
+aL
+aL
+aL
+aI
+aA
+ba
+ba
+ba
+"}
+(14,1,1) = {"
+aA
+aA
+aA
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aA
+ba
+ba
+ba
+"}

@@ -1,0 +1,1342 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/outside/lz2_south_cas)
+"au" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/shield/riot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"az" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
+"bu" = (
+/obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/suit/storage/CMB,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cj" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cR" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"dx" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_research)
+"fo" = (
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/outside/lz2_south_cas)
+"fK" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/lz2_south_cas)
+"fQ" = (
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/outside/lz2_south_cas)
+"gQ" = (
+/turf/open/mars_cave/mars_cave_9,
+/area/bigredv2/caves_sw)
+"ie" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/lz2_south_cas)
+"ii" = (
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves_sw)
+"ik" = (
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/outside/lz2_south_cas)
+"io" = (
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_research)
+"iF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3
+	},
+/obj/item/newspaper,
+/obj/item/shard{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"jj" = (
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/lz2_south_cas)
+"ki" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/explosive/grenade/slug/baton{
+	dir = 1;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/explosive/grenade/slug/baton{
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/obj/item/explosive/grenade/high_explosive/airburst/hornet_shell{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/explosive/grenade/high_explosive/airburst{
+	pixel_y = 8
+	},
+/obj/item/storage/box/packet/baton_slug{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kS" = (
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves_sw)
+"lQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves_sw)
+"mT" = (
+/obj/item/clothing/head/helmet/riot,
+/turf/open/floor/plating/burnt_platingdmg3/west,
+/area/bigredv2/caves/mining)
+"nx" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/lz2_south_cas)
+"pn" = (
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves_sw)
+"qm" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/lz2_south_cas)
+"qW" = (
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves_sw)
+"sJ" = (
+/obj/item/clothing/suit/storage/CMB,
+/obj/structure/closet/secure_closet/marshal,
+/obj/structure/machinery/light/double,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"sV" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_sw)
+"uJ" = (
+/obj/item/shard{
+	pixel_x = 11;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"vX" = (
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves_sw)
+"wn" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/outside/lz2_south_cas)
+"wJ" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/lz2_south_cas)
+"wK" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"wW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/helmetgarb/riot_shield{
+	pixel_y = -15
+	},
+/obj/item/weapon/gun/launcher/grenade/m81/m79{
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/obj/item/explosive/grenade/high_explosive/airburst/starshell{
+	pixel_x = -11;
+	pixel_y = 1
+	},
+/obj/item/restraint/handcuffs{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"xS" = (
+/obj/item/trash/cigbutt,
+/obj/item/shard{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/lz2_south_cas)
+"yw" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves)
+"zB" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_sw)
+"zP" = (
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/outside/lz2_south_cas)
+"AD" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	pixel_y = 20
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Be" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Marshals Mining Security Post"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Bm" = (
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves_sw)
+"Bz" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"BO" = (
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/lz2_south_cas)
+"BY" = (
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_research)
+"En" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/item/shard{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/item/shard{
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Et" = (
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_research)
+"Fp" = (
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves_sw)
+"FB" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/clothing/under/marine/ua_riot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"FW" = (
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/outside/lz2_south_cas)
+"Jm" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/lz2_south_cas)
+"Jy" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/revolver/cmb,
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = -5;
+	pixel_y = 17
+	},
+/obj/item/clothing/mask/cigarette/cigar/havana,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"JV" = (
+/turf/closed/wall/wood,
+/area/bigredv2/outside/lz2_south_cas)
+"JW" = (
+/obj/structure/machinery/light/double,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/outside/lz2_south_cas)
+"KI" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Le" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
+"MN" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/blood{
+	base_icon = 'icons/obj/items/weapons/grenade.dmi';
+	desc = "An expended M55C tear gas grenade that was used for nonlethal riot control. These used to be used on USCM ships until they found out that marines are already used to teargas so the U.S.S Re-education made a better model through 'extensive trials' that works on marines, which is now the M66 used by MPs today. Being now utterly useless to marines and phased out by the M66, M55Cs were spread around the colonies across the UA galaxy like salt to be used on poor colonists instead.";
+	icon = 'icons/obj/items/weapons/grenade.dmi';
+	icon_state = "grenade_custom";
+	name = "M55C Teargas grenade"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Nu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_sw)
+"OV" = (
+/obj/structure/surface/rack,
+/obj/item/restraint/handcuffs{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 11
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"OY" = (
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/outside/lz2_south_cas)
+"Qn" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"QO" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_research)
+"QS" = (
+/obj/structure/machinery/door/poddoor/two_tile{
+	name = "\improper Eta Tunnel Lockdown"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/lz2_south_cas)
+"QV" = (
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves_sw)
+"Rm" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/lz2_south_cas)
+"Sy" = (
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Tm" = (
+/obj/effect/decal/cleanable/blood{
+	base_icon = 'icons/obj/items/weapons/grenade.dmi';
+	desc = "An expended M55C tear gas grenade that was used for nonlethal riot control. These used to be used on USCM ships until they found out that marines are already used to teargas so the U.S.S Re-education made a better model through 'extensive trials' that works on marines, which is now the M66 used by MPs today. Being now utterly useless to marines and phased out by the M66, M55Cs were spread around the colonies across the UA galaxy like salt to be used on poor colonists instead.";
+	icon = 'icons/obj/items/weapons/grenade.dmi';
+	icon_state = "grenade_custom";
+	name = "M55C Teargas grenade"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ue" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bundle,
+/obj/item/restraint/handcuffs{
+	pixel_y = -3
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Uh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves_sw)
+"UG" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_sw)
+"UX" = (
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves_sw)
+"VR" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"Wy" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"WV" = (
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves_sw)
+"Xl" = (
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/lz2_south_cas)
+"Xm" = (
+/turf/open/floor/plating/burnt_platingdmg3/west,
+/area/bigredv2/caves/mining)
+"XE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"XV" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window{
+	dir = 1
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Yt" = (
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/lz2_south_cas)
+"Zk" = (
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves_sw)
+"Zz" = (
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+
+(1,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+JV
+fK
+wn
+ik
+JW
+VR
+Ue
+XE
+MN
+Tm
+sJ
+VR
+cR
+cR
+cR
+"}
+(2,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+qm
+fo
+jj
+jj
+ie
+En
+iF
+wK
+Bz
+AD
+bu
+VR
+cR
+cR
+cR
+"}
+(3,1,1) = {"
+cR
+Xl
+zP
+cR
+yw
+qm
+fo
+fQ
+Xl
+xS
+Qn
+Jy
+uJ
+Sy
+mT
+OV
+VR
+cR
+cR
+cR
+"}
+(4,1,1) = {"
+ao
+Xl
+Xl
+yw
+yw
+yw
+OY
+Xl
+nx
+Rm
+XV
+cj
+KI
+Zz
+Xm
+FB
+VR
+cR
+cR
+cR
+"}
+(5,1,1) = {"
+fo
+jj
+jj
+QS
+wJ
+QS
+jj
+fQ
+Xl
+BO
+Wy
+ki
+Zz
+kq
+wW
+au
+VR
+cR
+cR
+cR
+"}
+(6,1,1) = {"
+fo
+jj
+jj
+wJ
+wJ
+wJ
+jj
+jj
+jj
+BO
+VR
+VR
+Be
+VR
+VR
+VR
+VR
+cR
+cR
+cR
+"}
+(7,1,1) = {"
+qm
+Yt
+Yt
+yw
+yw
+yw
+Zk
+gQ
+UX
+pn
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+"}
+(8,1,1) = {"
+FW
+Jm
+Jm
+cR
+yw
+cR
+cR
+zB
+Zk
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+"}
+(9,1,1) = {"
+BO
+qm
+cR
+cR
+cR
+cR
+cR
+zB
+zB
+Nu
+zB
+zB
+zB
+zB
+qW
+cR
+cR
+cR
+cR
+cR
+"}
+(10,1,1) = {"
+BO
+qm
+qm
+cR
+cR
+cR
+cR
+cR
+zB
+sV
+sV
+sV
+sV
+ii
+UX
+cR
+cR
+cR
+cR
+cR
+"}
+(11,1,1) = {"
+BO
+qm
+qm
+Jm
+Jm
+cR
+cR
+cR
+cR
+sV
+sV
+sV
+sV
+Uh
+UX
+vX
+cR
+cR
+cR
+cR
+"}
+(12,1,1) = {"
+qm
+ik
+ik
+qm
+Jm
+qm
+cR
+cR
+cR
+cR
+cR
+sV
+sV
+ii
+vX
+vX
+cR
+cR
+cR
+cR
+"}
+(13,1,1) = {"
+fo
+jj
+Xl
+BO
+ik
+ik
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+ii
+vX
+vX
+cR
+cR
+cR
+cR
+"}
+(14,1,1) = {"
+cR
+cR
+cR
+OY
+jj
+jj
+BO
+cR
+cR
+cR
+cR
+cR
+zB
+ii
+UX
+vX
+cR
+cR
+cR
+cR
+"}
+(15,1,1) = {"
+cR
+cR
+cR
+UX
+kS
+kS
+pn
+cR
+cR
+cR
+cR
+zB
+zB
+ii
+kS
+UX
+cR
+cR
+cR
+cR
+"}
+(16,1,1) = {"
+cR
+cR
+cR
+cR
+UX
+UX
+pn
+zB
+cR
+cR
+cR
+zB
+zB
+Uh
+UX
+kS
+cR
+cR
+cR
+cR
+"}
+(17,1,1) = {"
+cR
+cR
+cR
+cR
+UX
+Fp
+zB
+zB
+zB
+cR
+cR
+zB
+zB
+ii
+UX
+cR
+cR
+cR
+cR
+cR
+"}
+(18,1,1) = {"
+zB
+cR
+cR
+WV
+UX
+pn
+zB
+zB
+cR
+cR
+cR
+zB
+zB
+zB
+Zk
+cR
+cR
+cR
+cR
+cR
+"}
+(19,1,1) = {"
+zB
+cR
+cR
+cR
+Fp
+zB
+zB
+zB
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+"}
+(20,1,1) = {"
+zB
+zB
+zB
+zB
+zB
+qW
+qW
+cR
+cR
+cR
+zB
+zB
+Nu
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+"}
+(21,1,1) = {"
+pn
+zB
+zB
+qW
+Bm
+UX
+UX
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+"}
+(22,1,1) = {"
+pn
+zB
+ii
+UX
+UX
+vX
+vX
+cR
+cR
+cR
+UG
+UG
+UG
+UG
+UG
+cR
+cR
+cR
+cR
+cR
+"}
+(23,1,1) = {"
+QV
+qW
+Bm
+UX
+kS
+UX
+vX
+cR
+cR
+cR
+cR
+zB
+zB
+zB
+qW
+cR
+cR
+cR
+cR
+cR
+"}
+(24,1,1) = {"
+UX
+UX
+UX
+kS
+Fp
+gQ
+UX
+UX
+cR
+cR
+cR
+zB
+zB
+ii
+kS
+cR
+cR
+cR
+cR
+cR
+"}
+(25,1,1) = {"
+UX
+UX
+kS
+UX
+pn
+ii
+kS
+UX
+cR
+cR
+cR
+zB
+qW
+qW
+kS
+kS
+cR
+cR
+cR
+cR
+"}
+(26,1,1) = {"
+Fp
+Zk
+Zk
+Zk
+zB
+cR
+UX
+UX
+cR
+cR
+cR
+cR
+UX
+lQ
+kS
+kS
+cR
+cR
+cR
+cR
+"}
+(27,1,1) = {"
+pn
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+UX
+kS
+kS
+UX
+cR
+cR
+cR
+cR
+"}
+(28,1,1) = {"
+pn
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+gQ
+UX
+UX
+Fp
+zB
+cR
+cR
+cR
+"}
+(29,1,1) = {"
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+Zk
+Zk
+zB
+zB
+cR
+cR
+cR
+"}
+(30,1,1) = {"
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+Nu
+zB
+zB
+cR
+cR
+cR
+"}
+(31,1,1) = {"
+cR
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+"}
+(32,1,1) = {"
+cR
+cR
+zB
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+zB
+cR
+cR
+"}
+(33,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+"}
+(34,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+zB
+zB
+zB
+zB
+cR
+cR
+cR
+"}
+(35,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+UG
+UG
+UG
+cR
+cR
+cR
+"}
+(36,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+Le
+cR
+cR
+"}
+(37,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+az
+Le
+Le
+Le
+Le
+"}
+(38,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+Le
+Le
+Le
+Le
+Le
+"}
+(39,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+Le
+Le
+Le
+Le
+az
+"}
+(40,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+Le
+Le
+io
+Le
+dx
+"}
+(41,1,1) = {"
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+QO
+Le
+Le
+Le
+Le
+Le
+"}
+(42,1,1) = {"
+yw
+yw
+yw
+yw
+cR
+cR
+cR
+cR
+cR
+cR
+Le
+Le
+Le
+Et
+az
+Le
+Le
+dx
+BY
+cR
+"}

@@ -1,0 +1,249 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"b" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/telecomm)
+"c" = (
+/turf/open/floor/damaged5/west,
+/area/bigredv2/outside/telecomm)
+"d" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm)
+"e" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm)
+"f" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm)
+"g" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/damaged4/west,
+/area/bigredv2/outside/telecomm)
+"h" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm)
+"j" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm)
+"k" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/damaged4/west,
+/area/bigredv2/outside/telecomm)
+"l" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/damaged5/west,
+/area/bigredv2/outside/telecomm)
+"m" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/damaged5/west,
+/area/bigredv2/outside/telecomm)
+"n" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/damaged4/west,
+/area/bigredv2/outside/telecomm)
+"o" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/damaged3/west,
+/area/bigredv2/outside/telecomm)
+"p" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/damaged4/west,
+/area/bigredv2/outside/telecomm)
+"q" = (
+/turf/open/floor/damaged3/west,
+/area/bigredv2/outside/telecomm)
+"r" = (
+/turf/open/floor/damaged4/west,
+/area/bigredv2/outside/telecomm)
+"s" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/damaged5/west,
+/area/bigredv2/outside/telecomm)
+"t" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/telecomm)
+"u" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/telecomm)
+"v" = (
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/telecomm)
+"w" = (
+/obj/structure/sign/safety/hazard,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/telecomm)
+"x" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/telecomm)
+"y" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"z" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"A" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"B" = (
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"C" = (
+/turf/open/mars_cave,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"D" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigred/ground/garage_workshop)
+"E" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"F" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"G" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"U" = (
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/outside/lz1_telecomm_cas)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+b
+b
+b
+b
+t
+b
+z
+B
+A
+A
+A
+"}
+(3,1,1) = {"
+j
+j
+j
+n
+q
+w
+y
+A
+A
+B
+G
+"}
+(4,1,1) = {"
+d
+e
+g
+s
+o
+x
+y
+A
+A
+A
+U
+"}
+(5,1,1) = {"
+e
+c
+m
+k
+p
+u
+y
+A
+A
+A
+A
+"}
+(6,1,1) = {"
+e
+f
+h
+l
+q
+b
+y
+A
+A
+A
+A
+"}
+(7,1,1) = {"
+e
+e
+j
+e
+r
+b
+a
+A
+C
+C
+C
+"}
+(8,1,1) = {"
+e
+e
+j
+e
+v
+w
+a
+a
+E
+F
+F
+"}
+(9,1,1) = {"
+b
+b
+b
+b
+b
+b
+a
+a
+D
+D
+D
+"}

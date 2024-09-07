@@ -1,0 +1,96 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/plating,
+/area/corsat/gamma/airlock/north)
+"b" = (
+/turf/open/floor/corsat/plate,
+/area/corsat/gamma/airlock/north)
+"c" = (
+/turf/open/floor/corsat/retrosquares,
+/area/corsat/gamma/airlock/north)
+"d" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/corsat/gamma/airlock/north)
+"e" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/gamma/airlock/north)
+"f" = (
+/obj/structure/window/framed/corsat/security,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "GammaDSC2";
+	name = "Security Shutters"
+	},
+/turf/open/floor/plating,
+/area/corsat/gamma/airlock/north)
+"g" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/corsat/gamma/airlock/north)
+"h" = (
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
+	id = "GammaNorthS";
+	name = "Gamma North Airlock"
+	},
+/turf/open/floor/corsat/marked,
+/area/corsat/gamma/airlock/north)
+"i" = (
+/turf/open/floor/corsat/marked,
+/area/corsat/gamma/airlock/north)
+"j" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/marked,
+/area/corsat/gamma/airlock/north)
+"k" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/turf/open/snow/layer3,
+/area/corsat/gamma/biodome)
+"l" = (
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
+"m" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
+"n" = (
+/turf/open/snow/layer3,
+/area/corsat/gamma/biodome)
+
+(1,1,1) = {"
+a
+g
+k
+"}
+(2,1,1) = {"
+b
+h
+l
+"}
+(3,1,1) = {"
+c
+i
+l
+"}
+(4,1,1) = {"
+d
+j
+m
+"}
+(5,1,1) = {"
+e
+i
+l
+"}
+(6,1,1) = {"
+f
+g
+n
+"}

@@ -1,0 +1,388 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"b" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/eta/xenobiology)
+"c" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/caves/eta/xenobiology)
+"d" = (
+/turf/open/floor/darkredcorners2/west,
+/area/bigredv2/caves/eta/xenobiology)
+"e" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"f" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkredcorners2,
+/area/bigredv2/caves/eta/xenobiology)
+"g" = (
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"h" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"i" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/xenobiology)
+"j" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/darkred2/west,
+/area/bigredv2/caves/eta/xenobiology)
+"k" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"l" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkredcorners2,
+/area/bigredv2/caves/eta/xenobiology)
+"m" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/darkred2/east,
+/area/bigredv2/caves/eta/xenobiology)
+"n" = (
+/obj/item/toy/beach_ball,
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"o" = (
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"p" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"q" = (
+/obj/structure/machinery/door/airlock/almayer/research/glass/colony{
+	name = "\improper Eta Lab Cell"
+	},
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"r" = (
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"s" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"t" = (
+/mob/living/simple_animal/hostile/carp{
+	faction = "neutral";
+	name = "strange fish"
+	},
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"u" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"v" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/darkredcorners2/west,
+/area/bigredv2/caves/eta/xenobiology)
+"w" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"x" = (
+/obj/item/toy/plush/farwa,
+/turf/open/ice,
+/area/bigredv2/caves/eta/xenobiology)
+"y" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/darkredcorners2,
+/area/bigredv2/caves/eta/xenobiology)
+"z" = (
+/turf/open/mars/mars_dirt_12,
+/area/bigredv2/caves/eta/xenobiology)
+"A" = (
+/turf/open/floor/darkredcorners2,
+/area/bigredv2/caves/eta/xenobiology)
+"B" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/eta/xenobiology)
+"C" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars/mars_dirt_10,
+/area/bigredv2/caves/eta/xenobiology)
+"D" = (
+/turf/open/mars/mars_dirt_10,
+/area/bigredv2/caves/eta/xenobiology)
+"E" = (
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/eta/xenobiology)
+"F" = (
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/eta/xenobiology)
+"G" = (
+/turf/open/mars_cave/mars_cave_22,
+/area/bigredv2/caves/eta/xenobiology)
+"H" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves/eta/xenobiology)
+"O" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/xenobiology)
+"P" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"X" = (
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/xenobiology)
+
+(1,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+g
+p
+h
+b
+h
+p
+g
+b
+z
+B
+P
+b
+"}
+(3,1,1) = {"
+b
+h
+g
+g
+b
+w
+g
+g
+b
+g
+C
+E
+G
+"}
+(4,1,1) = {"
+b
+g
+g
+h
+b
+g
+g
+h
+b
+g
+D
+F
+O
+"}
+(5,1,1) = {"
+b
+i
+q
+i
+b
+i
+q
+i
+b
+i
+q
+X
+O
+"}
+(6,1,1) = {"
+c
+j
+r
+j
+c
+j
+r
+j
+c
+j
+r
+O
+H
+"}
+(7,1,1) = {"
+d
+d
+s
+d
+v
+d
+s
+d
+d
+d
+k
+d
+H
+"}
+(8,1,1) = {"
+e
+k
+k
+k
+r
+k
+k
+k
+r
+k
+r
+r
+O
+"}
+(9,1,1) = {"
+f
+l
+a
+l
+l
+l
+k
+l
+y
+A
+r
+l
+X
+"}
+(10,1,1) = {"
+c
+m
+r
+m
+c
+m
+r
+m
+c
+m
+r
+m
+b
+"}
+(11,1,1) = {"
+b
+i
+q
+i
+b
+i
+q
+i
+b
+i
+q
+i
+b
+"}
+(12,1,1) = {"
+b
+n
+o
+t
+b
+o
+o
+o
+b
+t
+o
+o
+b
+"}
+(13,1,1) = {"
+b
+o
+t
+o
+b
+o
+t
+o
+b
+t
+o
+t
+b
+"}
+(14,1,1) = {"
+b
+o
+u
+o
+b
+t
+u
+x
+b
+o
+u
+o
+b
+"}
+(15,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}

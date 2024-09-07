@@ -162,13 +162,6 @@
 	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/officer/technical
-	name = "technical officer uniform"
-	icon_state = "johnny"
-	worn_state = "johnny"
-	specialty = "technical officer"
-	flags_atom = NO_SNOW_TYPE
-
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
 	desc = "A bodysuit worn by pilot officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

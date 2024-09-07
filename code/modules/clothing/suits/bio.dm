@@ -5,7 +5,6 @@
 	name = "bio hood"
 	icon_state = "bio_general"
 	desc = "A hood that protects the head and face from biological contaminants."
-	permeability_coefficient = 0.2
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -32,7 +31,6 @@
 	item_state = "bio_suit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.2
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	slowdown = 1
 	armor_melee = CLOTHING_ARMOR_NONE

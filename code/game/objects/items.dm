@@ -90,13 +90,8 @@
 	var/list/actions
 	/// list of paths of action datums to give to the item on New().
 	var/list/actions_types
-
-	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-
 	/// for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/gas_transfer_coefficient = 1
-	/// for chemicals/diseases
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up

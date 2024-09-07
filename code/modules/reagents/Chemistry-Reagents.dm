@@ -93,24 +93,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(method == TOUCH && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 			var/chance = 1
-			var/block = FALSE
 
 			for(var/obj/item/clothing/clothing in M.get_equipped_items())
-				if(clothing.permeability_coefficient < chance)
-					chance = clothing.permeability_coefficient
-				if(istype(clothing, /obj/item/clothing/suit/bio_suit))
-					// bio suits are just about completely fool-proof - Doohl
-					// kind of a hacky way of making bio suits more resistant to chemicals but w/e
-					if(prob(75))
-						block = TRUE
+				if(clothing.armor_bio > chance)
+					chance = clothing.armor_bio
 
-				if(istype(clothing, /obj/item/clothing/head/bio_hood))
-					if(prob(75))
-						block = TRUE
+			chance = (100 - chance)
 
-			chance *= 100
-
-			if(prob(chance) && !block)
+			if(prob(chance))//This will need testing, I'm not confident I did it correctly.
 				if(M.reagents)
 					M.reagents.add_reagent(self.id, self.volume * 0.5)
 

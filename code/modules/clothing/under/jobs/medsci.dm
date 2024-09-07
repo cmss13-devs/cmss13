@@ -7,7 +7,7 @@
 	name = "research director's uniform"
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -22,7 +22,7 @@
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
 	name = "research director's jumpsuit"
 	icon_state = "rdalt"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -38,7 +38,7 @@
 	name = "scientist's jumpsuit"
 	icon_state = "science"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -53,7 +53,7 @@
 	name = "chemist's jumpsuit"
 	icon_state = "chemistry"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -71,7 +71,7 @@
 	name = "chief medical officer's jumpsuit"
 	icon_state = "cmo"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -86,7 +86,7 @@
 	name = "geneticist's jumpsuit"
 	icon_state = "genetics"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -101,7 +101,7 @@
 	name = "virologist's jumpsuit"
 	icon_state = "virology"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -116,7 +116,7 @@
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
 	name = "nurse's suit"
 	icon_state = "nursesuit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -132,7 +132,7 @@
 	desc = "A dress commonly worn by the nursing staff in the medical department."
 	name = "nurse's dress"
 	icon_state = "nurse"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -148,7 +148,7 @@
 	desc = "A white suit to be worn by orderly people who love orderly things."
 	name = "orderly's uniform"
 	icon_state = "orderly"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -165,7 +165,7 @@
 	name = "medical doctor's uniform"
 	icon_state = "medical"
 	item_state = "w_suit"
-	permeability_coefficient = 0.50
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE

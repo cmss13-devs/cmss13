@@ -209,7 +209,7 @@
 	icon_state = "y-boots1_ebony"
 
 	unacidable = TRUE
-	permeability_coefficient = 0.01
+
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR

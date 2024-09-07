@@ -234,6 +234,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		if(istype(hud, /datum/mob_hud/xeno)) //this one is xeno only
 			continue
 		hud.add_to_hud(src)
+	hud_set_new_player()
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)

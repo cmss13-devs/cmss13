@@ -52,7 +52,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "cU" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/wood,
 /area/template_noop)
 "dB" = (

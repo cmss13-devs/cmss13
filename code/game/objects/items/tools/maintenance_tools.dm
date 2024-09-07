@@ -29,6 +29,7 @@
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_WRENCH)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /*
@@ -52,7 +53,7 @@
 	attack_verb = list("stabbed")
 	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
-
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /obj/item/tool/screwdriver/Initialize()
@@ -135,6 +136,7 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/wirecutters/tactical
 	name = "tactical wirecutters"
@@ -189,6 +191,7 @@
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -472,6 +475,7 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/items/items.dmi'

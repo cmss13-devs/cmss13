@@ -1072,6 +1072,26 @@ h2.alert {
   color: #3a7e65;
 }
 
+.opforcmd {
+  color: #568dad;
+}
+
+.opformed {
+  color: #3e921d;
+}
+
+.opforeng {
+  color: #b16222;
+}
+
+.opforcct {
+  color: #c42b17;
+}
+
+.opforspe {
+  color: #611fad;
+}
+
 .medium {
   font-size: 110%;
 }
@@ -1451,6 +1471,14 @@ h2.alert {
   animation: glitch 0.5s infinite;
 }
 
+.psy_talk {
+  color: #a70090;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: psy_glitch 0.5s infinite;
+}
+
 /*Keyframes*/
 
 @keyframes glitch {
@@ -1471,6 +1499,28 @@ h2.alert {
 
   100% {
     color: #830000;
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes psy_glitch {
+  25% {
+    color: #a70090;
+    transform: translate(-2px, -1px);
+  }
+
+  50% {
+    color: #91007d;
+    transform: translate(1px, -2px);
+  }
+
+  75% {
+    color: #750066;
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    color: #7c016c;
     transform: translate(1px, 1px);
   }
 }

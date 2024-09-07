@@ -554,10 +554,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	set waitfor = 0
 
 	var/range_num = 12
-	var/list/turf_list = list()
-
-	for(var/turf/T in range(range_num, target))
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(range_num, target)
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
@@ -681,7 +678,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(..())
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
 		return TRUE
 

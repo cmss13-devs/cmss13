@@ -147,6 +147,7 @@
 /datum/tutorial/xenomorph/abomination/proc/frenzy_tutorial_4()
 	var/mob/living/carbon/human/marine = new(loc_from_corner(4, 2))
 	add_to_tracking_atoms(marine)
+	RegisterSignal(marine, COMSIG_MOB_DEATH, PROC_REF(on_marine_early_death))
 	arm_equipment(marine, /datum/equipment_preset/uscm/private_equipped)
 
 	var/datum/action/frenzy = give_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
@@ -202,6 +203,7 @@
 		return
 
 	UnregisterSignal(frenzy, COMSIG_XENO_ACTION_USED)
+	UnregisterSignal(marine, COMSIG_MOB_DEATH)
 	remove_highlight(frenzy.button)
 	message_to_player("Good. As you may have noticed, the AOE version of <b>Feral Frenzy</b> takes longer to wind up, in addition to doing less overall damage.")
 	addtimer(CALLBACK(src, PROC_REF(kill_marines)), 6 SECONDS)
@@ -245,3 +247,10 @@
 	tutorial_end_in(7 SECONDS, TRUE)
 
 // END OF SCRIPTING
+
+/// In case a marine dies early to prevent softlocks
+/datum/tutorial/xenomorph/abomination/proc/on_marine_early_death(datum/source)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine)
+	marine.rejuvenate()

@@ -31,6 +31,28 @@
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
+
+//default byond sound echo list index positions.
+//ECHO_DIRECT and ECHO_ROOM are the only two that actually appear to do anything, and represent the dry and wet channels of the environment effects, respectively.
+#define ECHO_DIRECT 1
+#define ECHO_DIRECTHF 2
+#define ECHO_ROOM 3
+#define ECHO_ROOMHF 4
+#define ECHO_OBSTRUCTION 5
+#define ECHO_OBSTRUCTIONLFRATIO 6
+#define ECHO_OCCLUSION 7
+#define ECHO_OCCLUSIONLFRATIO 8
+#define ECHO_OCCLUSIONROOMRATIO 9
+#define ECHO_OCCLUSIONDIRECTRATIO 10
+#define ECHO_EXCLUSION 11
+#define ECHO_EXCLUSIONLFRATIO 12
+#define ECHO_OUTSIDEVOLUMEHF 13
+#define ECHO_DOPPLERFACTOR 14
+#define ECHO_ROLLOFFFACTOR 15
+#define ECHO_ROOMROLLOFFFACTOR 16
+#define ECHO_AIRABSORPTIONFACTOR 17
+#define ECHO_FLAGS 18
+
 //default byond sound environments
 #define SOUND_ENVIRONMENT_NONE -1
 #define SOUND_ENVIRONMENT_GENERIC 0

@@ -189,7 +189,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/gen_record = ""
 	var/exploit_record = ""
 
-	var/nanotrasen_relation = "Neutral"
+	var/weyland_yutani_relation = "Neutral"
 
 	var/uplinklocation = "PDA"
 
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'><b>[origin]</b></a><br/>"
 			dat += "<b>Religion:</b> <a href='?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
-			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
+			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
 			dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
 
 			dat += "<h2><b><u>Fluff Information:</u></b></h2>"
@@ -1641,10 +1641,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_backbag)
 						backbag = GLOB.backbaglist.Find(new_backbag)
 
-				if("nt_relation")
+				if("wy_relation")
 					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
 					if(new_relation)
-						nanotrasen_relation = new_relation
+						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")

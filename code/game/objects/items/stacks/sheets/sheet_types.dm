@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT_TYPED(metal_recipes, /datum/stack_recipe, list ( \
  * Plasteel
  */
 GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 8, time = 4 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
+	new/datum/stack_recipe("folding plasteel barricade", /obj/structure/barricade/plasteel, 8, time = 4 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/metal/plasteel, 6, time = 8 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
 	null, \
 	new/datum/stack_recipe("reinforced window frame", /obj/structure/window_frame/colony/reinforced, 5, time = 40, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI),
 	null, \
@@ -311,6 +312,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
 		new/datum/stack_recipe("empty box of M89 Signal Flare Packs", /obj/item/ammo_box/magazine/misc/flares/signal/empty), \
 		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
+		new/datum/stack_recipe("empty box of combat flashlights", /obj/item/ammo_box/magazine/misc/flashlight/combat/empty), \
 		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (Desert Eagle)", /obj/item/ammo_box/magazine/deagle/empty), \

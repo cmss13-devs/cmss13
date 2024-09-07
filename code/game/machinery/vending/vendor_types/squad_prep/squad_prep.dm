@@ -148,7 +148,7 @@
 		list("M276 Pattern General Pistol Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", floor(scale * 15), /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig And Pouch", floor(scale * 10), /obj/item/storage/belt/gun/m39, VENDOR_ITEM_REGULAR),
-		list("M276 Pattern M44 Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
+		list("M276 Pattern General Revolver Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M82F Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig (Full)", floor(scale * 15), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 G8-A General Utility Pouch", floor(scale * 15), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
@@ -339,7 +339,8 @@
 		list("Binoculars", floor(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", floor(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", floor(scale * 3), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
-		list("W-Y brand rechargeable mini-battery", floor(scale * 2.5), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
+		list("W-Y brand rechargeable mini-battery", floor(scale * 2.5), /obj/item/cell/crap, VENDOR_ITEM_REGULAR),
+		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR)
 		)
 
 //--------------SQUAD ATTACHMENTS VENDOR--------------

@@ -29621,6 +29621,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
+"sab" = (
+/obj/structure/closet/l3closet/general,
+/turf/open/floor/white,
+/area/bigredv2/outside/virology)
 "sao" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -43539,7 +43543,7 @@ nIY
 nof
 mnV
 aoD
-nGL
+sab
 bPC
 aoD
 aQz

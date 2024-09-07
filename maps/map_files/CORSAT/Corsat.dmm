@@ -12958,7 +12958,7 @@
 /turf/open/floor/corsat/bluecorner/east,
 /area/corsat/sigma/airlock/control)
 "gbg" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/general,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
@@ -27468,7 +27468,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/complex)
 "nIj" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/janitor,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/omega/maint)
 "nIu" = (
@@ -27832,7 +27832,7 @@
 /turf/open/floor/corsat/redcorner,
 /area/corsat/sigma/south/security)
 "nUw" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/general,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
 "nUS" = (
@@ -41549,7 +41549,7 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/hydroeast)
 "vpD" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/general,
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/control)
 "vpG" = (

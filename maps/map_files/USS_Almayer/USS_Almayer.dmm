@@ -17932,7 +17932,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gid" = (
-/obj/structure/closet/l3closet/scientist,
+/obj/structure/closet/l3closet/general,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -22593,7 +22593,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/upper/u_m_p)
 "hRs" = (
-/obj/structure/closet/l3closet/medical,
+/obj/structure/closet/l3closet/virology,
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
 "hRu" = (
@@ -28361,7 +28361,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "jOh" = (
-/obj/structure/closet/l3closet/scientist,
+/obj/structure/closet/l3closet/general,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -35531,7 +35531,7 @@
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
 "mrS" = (
-/obj/structure/closet/l3closet/scientist,
+/obj/structure/closet/l3closet/general,
 /obj/structure/machinery/light{
 	dir = 8
 	},

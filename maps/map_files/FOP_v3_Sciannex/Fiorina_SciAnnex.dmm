@@ -6907,7 +6907,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "fkl" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/general,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "fkL" = (
@@ -11428,6 +11428,10 @@
 /area/fiorina/lz/near_lzI)
 "iFn" = (
 /obj/structure/janitorialcart,
+/obj/item/clothing/head/bio_hood/janitor{
+	pixel_x = -4;
+	pixel_y = 5
+	},
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "iFO" = (
@@ -30036,8 +30040,9 @@
 /area/fiorina/station/medbay)
 "wXf" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/suit/bio_suit,
-/obj/item/clothing/head/bio_hood,
+/obj/item/clothing/under/rank/janitor,
+/obj/item/clothing/suit/bio_suit/janitor,
+/obj/item/clothing/head/bio_hood/janitor,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "wXy" = (

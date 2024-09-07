@@ -8325,7 +8325,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNa" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNb" = (

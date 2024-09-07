@@ -11859,7 +11859,7 @@
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
 "iXV" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "iYa" = (

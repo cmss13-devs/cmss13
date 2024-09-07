@@ -7,11 +7,10 @@
 		to_chat(src, "Only mentors may use this HUD!")
 		return FALSE
 
-	var/hud_choice = "New Player Markers"
-	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
+	prefs.observer_huds[HUD_MENTOR_SIGHT] = !prefs.observer_huds[HUD_MENTOR_SIGHT]
 	prefs.save_preferences()
 
-	to_chat(src, SPAN_BOLDNOTICE("You toggled [hud_choice] to be [prefs.observer_huds[hud_choice] ? "ON" : "OFF"] by default when you are observer."))
+	to_chat(src, SPAN_BOLDNOTICE("You toggled [HUD_MENTOR_SIGHT] to be [prefs.observer_huds[HUD_MENTOR_SIGHT] ? "ON" : "OFF"] by default when you are observer."))
 
 	if(!isobserver(usr))
 		return
@@ -19,8 +18,8 @@
 	var/datum/mob_hud/the_hud
 	the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
 
-	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-	if(observer_user.HUD_toggled[hud_choice])
+	observer_user.HUD_toggled[HUD_MENTOR_SIGHT] = prefs.observer_huds[HUD_MENTOR_SIGHT]
+	if(observer_user.HUD_toggled[HUD_MENTOR_SIGHT])
 		the_hud.add_hud_to(observer_user, observer_user)
 	else
 		the_hud.remove_hud_from(observer_user, observer_user)

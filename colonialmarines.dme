@@ -432,6 +432,7 @@
 #include "code\datums\construction\construction_template.dm"
 #include "code\datums\construction\xenomorph\construction_template_xenomorph.dm"
 #include "code\datums\decorators\decorator.dm"
+#include "code\datums\decorators\gamemode_decorator.dm"
 #include "code\datums\diseases\addiction.dm"
 #include "code\datums\diseases\beesease.dm"
 #include "code\datums\diseases\black_goo.dm"

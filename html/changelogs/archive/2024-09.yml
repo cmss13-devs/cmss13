@@ -1,0 +1,24 @@
+2024-09-02:
+  SpartanBobby:
+  - maptweak: LV522 changes relating to the overall size of the map, redefining chokepoints
+      in the reactor, changes to engineering and the west side of the map and removing
+      the poplock
+  - maptweak: LV522, LZ1 Tunnel (the place FORECON holds) has been given fog for the
+      start of the round meaning FORECON will have to adapt to survive.
+  - maptweak: buffed crashed ship lootspawns on LV522
+  Steelpoint:
+  - maptweak: The northern half of the main colony of Solaris Ridge has received an
+      aesthetic upgrade.
+  hislittlecuzingames:
+  - qol: Deletes empty pill packets when dropped.
+2024-09-05:
+  benbot16:
+  - bugfix: Fixes stacking explosions in overloaded escape pods.
+  joookschad:
+  - sounddel: removed the new revive notification
+  realforest2001:
+  - rscadd: Added a staff event verb to check for a particular whitelist and report
+      online players that have it. Code for the proc from HarryOB
+2024-09-06:
+  hislittlecuzingames:
+  - config: Adjusted XO Hour Requirements.

@@ -1,7 +1,0 @@
-author: "ItsVyzo"
-delete-after: True
-changes:
-  - rscadd: "Provost Chief Inspector"
-  - rscadd: "missing Provost Presets per ML Hierarchy"
-  - imageadd: "added PCI sprites"
-  - imageadd: "PCI and Dep. Marshal HUD icons"

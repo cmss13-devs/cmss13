@@ -121,6 +121,15 @@
 	GLOB.monkey_spawns -= src
 	return ..()
 
+/obj/effect/landmark/lizard_spawn
+	name = "lizard spawn"
+	icon_state = "lizard_spawn"
+
+/obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(66))
+		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"
 

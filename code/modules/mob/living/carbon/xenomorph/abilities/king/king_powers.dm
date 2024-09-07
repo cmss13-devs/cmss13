@@ -77,7 +77,7 @@
 			to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
 			shake_camera(human, 6, 1)
 
-			var/time_to_extinguish = get_dist(owner, human) SECONDS
+			var/time_to_extinguish = get_dist(owner, human) DECISECONDS
 			var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
 			if(istype(suit, /obj/item/clothing/suit/storage/marine))
 				var/obj/item/clothing/suit/storage/marine/armour = suit

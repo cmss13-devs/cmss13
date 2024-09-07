@@ -10789,8 +10789,8 @@
 "igQ" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "igV" = (
@@ -24592,7 +24592,7 @@
 /area/fiorina/tumor/civres)
 "sQr" = (
 /obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
+/obj/item/clothing/head/bio_hood{
 	pixel_x = -4;
 	pixel_y = 5
 	},

@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - code_imp: "Join as freed mobs will now notify the user if there is no freed mobs to take."

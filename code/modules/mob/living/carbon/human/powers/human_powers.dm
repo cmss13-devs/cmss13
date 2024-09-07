@@ -188,8 +188,8 @@
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
 		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[SPAN_PSYTALK(whisper)]</i>"))
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
-		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-			if(!ghost.client || isnewplayer(ghost))
+		FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
+			if(!isobserver(ghost) || !ghost.client)
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 				var/rendered_message
@@ -223,8 +223,8 @@
 	var/targetstring = english_list(target_list)
 	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(src)]->[targetstring] : [whisper] (AREA: [get_area_name(src)])")
-	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-		if(!ghost.client || isnewplayer(ghost))
+	FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
+		if(!isobserver(ghost) || !ghost.client)
 			continue
 		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 			var/rendered_message

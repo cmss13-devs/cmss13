@@ -181,7 +181,7 @@
 			datacore.records_talking += convo
 
 		if("clear_conversation")
-			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+			var/datum/ares_record/talk_log/conversation = locate(params["local_active_convo"])
 			if(!istype(conversation))
 				return FALSE
 			var/datum/ares_record/deleted_talk/deleted = new
@@ -194,12 +194,12 @@
 		if("fake_message_ares")
 			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				interface.message_ares(message, user, params["active_convo"], TRUE)
+				interface.message_ares(message, user, params["local_active_convo"], TRUE)
 		if("ares_reply")
 			var/message = tgui_input_text(user, "What do you wish to reply with?", "ARES Response", encode = FALSE)
 			if(message)
-				interface.response_from_ares(message, params["active_convo"])
-				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+				interface.response_from_ares(message, params["local_active_convo"])
+				var/datum/ares_record/talk_log/conversation = locate(params["local_active_convo"])
 				if(!istype(conversation))
 					return FALSE
 				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>")

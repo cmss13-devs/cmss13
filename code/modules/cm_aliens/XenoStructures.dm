@@ -991,7 +991,7 @@
 	if(playtime_restricted)
 		if(candidate.client.get_total_xeno_playtime() < KING_PLAYTIME_HOURS)
 			return FALSE
-	if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
+	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == candidate.ckey)

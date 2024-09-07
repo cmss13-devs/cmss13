@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Removes a overpowered shotgun from Solaris."

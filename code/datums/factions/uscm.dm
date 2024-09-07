@@ -88,6 +88,10 @@
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
+			if(JOB_PLT_MED)
+				marine_rk = "med"
+			if(JOB_PLT_SL)
+				marine_rk = "leader"
 			if(JOB_SQUAD_TECH)
 				marine_rk = "tech"
 			if(JOB_INTEL)
@@ -145,8 +149,17 @@
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
 				border_rk = "command"
+			if(JOB_PROVOST_UNDERCOVER)
+				marine_rk = "pvuc"
+				border_rk = "command"
+			if(JOB_PROVOST_CINSPECTOR)
+				marine_rk = "pvci"
+				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
+				border_rk = "command"
+			if(JOB_PROVOST_DMARSHAL)
+				marine_rk = "pvdm"
 				border_rk = "command"
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"

@@ -30851,6 +30851,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_p)
+"iXF" = (
+/obj/effect/landmark/late_join/responder/clf,
+/turf/open/floor/almayer/redcorner/east,
+/area/almayer/living/briefing)
 "iXT" = (
 /obj/item/trash/uscm_mre,
 /turf/open/floor/almayer,
@@ -30887,6 +30891,10 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/hydroponics)
+"iYl" = (
+/obj/effect/landmark/late_join/responder/wey_yu,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "iYm" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/plate,
@@ -35982,6 +35990,10 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
+"lbb" = (
+/obj/effect/landmark/late_join/responder/twe,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "lbf" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -42382,6 +42394,10 @@
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/command/airoom)
+"nKl" = (
+/obj/effect/landmark/late_join/responder/uscm/provost,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "nKq" = (
 /obj/structure/machinery/status_display{
 	pixel_x = 16;
@@ -51756,6 +51772,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
+"rAq" = (
+/obj/effect/landmark/late_join/responder/uscm,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "rAw" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -65657,6 +65677,10 @@
 "xaS" = (
 /turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/command/lifeboat)
+"xaY" = (
+/obj/effect/landmark/late_join/responder/upp,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "xba" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/cryo_cells)
@@ -102832,7 +102856,7 @@ bqZ
 bCg
 beH
 fUA
-beH
+lbb
 bCg
 bqZ
 beH
@@ -103041,7 +103065,7 @@ beH
 beH
 beH
 beH
-beH
+iYl
 fUA
 beH
 beH
@@ -103639,7 +103663,7 @@ yfg
 fZE
 nyw
 bqZ
-beH
+rAq
 bgO
 boq
 boq
@@ -105264,6 +105288,7 @@ meQ
 fZE
 bdg
 bqZ
+nKl
 beH
 beH
 beH
@@ -105271,8 +105296,7 @@ beH
 beH
 beH
 beH
-beH
-beH
+xaY
 beH
 beH
 beH
@@ -105675,7 +105699,7 @@ bCu
 bCu
 bCu
 bCu
-wCI
+iXF
 moQ
 flW
 fvf

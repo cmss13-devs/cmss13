@@ -500,6 +500,7 @@
 		/obj/item/ammo_magazine/shotgun/buckshot,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/ap,
+		/obj/item/ammo_magazine/rifle/m4ra/extended,
 		/obj/item/ammo_magazine/rifle/m4ra,
 	)
 	cost = 60

@@ -31727,16 +31727,16 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "qUf" = (
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
 /obj/structure/closet/crate/ammo,

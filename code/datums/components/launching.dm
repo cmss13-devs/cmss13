@@ -31,7 +31,7 @@
 	VAR_PRIVATE/datum/launch_result/launch_result
 
 /datum/component/launching/proc/operator""()
-	var/target = VALORDEFAULT(target_ref?.resolve(), "<was deleted>")
+	var/target = VAL_OR_DEFAULT(target_ref?.resolve(), "<was deleted>")
 	return "launching(target=[target], range=[range], speed=[speed], spin=[spin], pass_flags=[pass_flags], collision_callback=[collision_callback], end_throw_callback=[end_throw_callback])"
 
 /datum/component/launching/Initialize(atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback)

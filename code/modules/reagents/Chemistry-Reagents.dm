@@ -58,6 +58,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
+	///all the variations of the chemical that was ever created from this exact base.
+	var/list/modified_chemicals_list = list()
 	var/flags = 0 // Flags for misc. stuff
 	var/credit_reward = 2 //credit reward for scanning
 

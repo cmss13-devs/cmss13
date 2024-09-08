@@ -517,7 +517,17 @@
 		return
 	C.make_alike(target.data)
 	C.insert_property(reference_property.name, reference_property.level)
-	reference.data.lockdown_chem = TRUE
+	retroactively_lockdown(C)
+
+
+/obj/structure/machinery/chem_simulator/proc/retroactively_lockdown(datum/reagent/chemical)
+	if(!chemical.original_id)
+		return
+	var/datum/reagent/parent_chemical = GLOB.chemical_reagents_list[chemical.original_id]
+	parent_chemical.lockdown_chem = TRUE
+	for(var/chemical_id in parent_chemical.modified_chemicals_list)
+		var/datum/reagent/chemical_lock = GLOB.chemical_reagents_list[chemical_id]
+		chemical_lock.lockdown_chem = TRUE
 
 /obj/structure/machinery/chem_simulator/proc/end_simulation(datum/reagent/C)
 	//Set tier
@@ -570,6 +580,11 @@
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
 	GLOB.chemical_reagents_list[C.id] = C
 	LAZYADD(simulations, C.id) //Remember we've simulated this
+
+	//link the chemical to parent chemical
+	if(C.original_id)
+		var/datum/reagent/parent_chemical = GLOB.chemical_reagents_list[C.original_id]
+		parent_chemical.modified_chemicals_list += C.id
 
 	//Save the reaction
 	R.id = C.id

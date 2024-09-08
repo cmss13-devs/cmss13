@@ -36193,7 +36193,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "rfl" = (
 /obj/structure/surface/table/almayer,
-/obj/item/grown/nettle/death{
+/obj/item/reagent_container/food/snacks/grown/nettle{
 	pixel_x = -3;
 	pixel_y = 7
 	},

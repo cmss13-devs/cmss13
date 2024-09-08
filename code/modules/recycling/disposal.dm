@@ -610,6 +610,7 @@
 	desc = "An underfloor disposal pipe."
 	anchored = TRUE
 	density = FALSE
+	can_block_movement = FALSE
 
 	level = 1 //Underfloor only
 	var/dpdir = 0 //Bitmask of pipe directions

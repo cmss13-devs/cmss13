@@ -302,6 +302,12 @@
 /obj/structure/window/proc/is_full_window()
 	return !(flags_atom & ON_BORDER)
 
+/obj/structure/window/proc/destroy(play_sound = TRUE)
+	if (play_sound)
+		playsound(src, "windowshatter", 50, 1)
+	handle_debris()
+	qdel(src)
+
 /obj/structure/window/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		if(reinf)

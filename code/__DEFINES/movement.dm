@@ -1,6 +1,10 @@
 #define BLOCKED_MOVEMENT (NORTH|SOUTH|EAST|WEST)
 #define NO_BLOCKED_MOVEMENT 0
 
+/// Whether after Collide, movement is NOT blocked.
+/// Mainly for vehicles at the moment
+#define MOVABLE_COLLIDE_NOT_BLOCKED (1<<0)
+
 #define LOW_LAUNCH   0
 #define NORMAL_LAUNCH   1
 #define HIGH_LAUNCH  2

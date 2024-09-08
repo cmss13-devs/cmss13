@@ -191,6 +191,20 @@
 
 	GLOB.all_multi_vehicles += src
 
+	// Call Entered() on all turfs that do no include the root of the tank
+	var/bound_x_tiles = bound_x / world.icon_size
+	var/bound_y_tiles = bound_y / world.icon_size
+	var/turf/min_turf = locate(x + bound_x_tiles, y + bound_y_tiles, z)
+
+	var/bound_width_tiles = bound_width / world.icon_size
+	var/bound_height_tiles = bound_height / world.icon_size
+	var/list/covered_turfs = CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles)
+	for (var/turf/covered_turf as anything in covered_turfs)
+		// Entered() already called for the root
+		if (covered_turf == loc)
+			continue
+		covered_turf.Entered(src)
+
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/vehicle/multitile/LateInitialize()

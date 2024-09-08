@@ -38,4 +38,4 @@
 /obj/effect/particle_effect/water/Collide(atom/A)
 	if(reagents)
 		reagents.reaction(A)
-	return ..()
+	return

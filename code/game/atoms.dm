@@ -45,12 +45,12 @@
 	//Z-Level Transitions
 	var/atom/movable/clone/clone = null
 
-	// Bitflag of which test cases this atom is exempt from
-	// See #define/tests.dm
+	/**
+	 * Bitflag of which test cases this atom is exempt from
+	 *
+	 * See #define/tests.dm
+	 */
 	var/test_exemptions = 0
-
-	// Whether the atom is an obstacle that should be considered for passing
-	var/can_block_movement = FALSE
 
 	var/datum/component/orbiter/orbiters
 

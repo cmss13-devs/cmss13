@@ -224,12 +224,12 @@
 	if(src == P.original) //clicking on the van itself will hit it.
 		var/hitchance = P.get_effective_accuracy()
 		if(prob(hitchance))
-			return TRUE
-	return FALSE
+			return MOVABLE_COLLIDE_NOT_BLOCKED
+	return
 
 /obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
-		return FALSE
+		return
 
 	if(istype(A, /obj/structure/barricade/plasteel))
 		return ..()
@@ -240,7 +240,7 @@
 	   istype(A, /obj/structure/barricade/deployable) || \
 	   istype(A, /obj/structure/machinery/cryopod)) //Can no longer runover cryopods
 
-		return FALSE
+		return
 
 	return ..()
 

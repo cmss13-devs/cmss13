@@ -26,10 +26,22 @@
 		return NO_BLOCKED_MOVEMENT
 
 	if (flags_atom & ON_BORDER)
+		var/tile_width = mover.bound_width/world.icon_size
+		var/tile_height = mover.bound_height/world.icon_size
+		// Assumes that bounds (in terms of tiles) are always gonna to be odd numbers, even tile widths with custom bounds will need to be calculated separately
+		if (tile_height > 1 || tile_width > 1)
+			var/bound_west = mover.x - floor(tile_width/2)
+			var/bound_east = mover.x + floor(tile_width/2)
+			var/bound_south = mover.y - floor(tile_height/2)
+			var/bound_north = mover.y + floor(tile_height/2)
+			if ((x > bound_west || dir & EAST) && (x < bound_east || dir & WEST))
+				return BLOCKED_MOVEMENT
+			if ((y > bound_south || dir & NORTH) && (y < bound_north || dir & SOUTH))
+				return BLOCKED_MOVEMENT
 		if (!(target_dir & reverse_dir))
 			return NO_BLOCKED_MOVEMENT
 
-		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
+		// This is to properly handle diagonal movement (a cade to your NE facwg west when you are trying to move NE should block for north instead of east)
 		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
 			return target_dir - (target_dir & reverse_dir)
 		return target_dir & reverse_dir

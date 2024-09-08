@@ -117,6 +117,7 @@
 #define ROLE_WHITELISTED 16
 #define ROLE_NO_ACCOUNT 32
 #define ROLE_CUSTOM_SPAWN 64
+#define ROLE_HIDDEN 128
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.

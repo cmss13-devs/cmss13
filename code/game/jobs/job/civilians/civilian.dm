@@ -7,3 +7,10 @@
 /datum/timelock/medic/New(name, time_required, list/roles)
 	. = ..()
 	src.roles = JOB_MEDIC_ROLES_LIST
+
+/datum/timelock/corporate
+	name = "Corporate Roles"
+
+/datum/timelock/corporate/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_CORPORATE_ROLES_LIST

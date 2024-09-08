@@ -44,8 +44,9 @@
 #define WL_PANEL_RIGHT_YAUTJA (1<<2)
 #define WL_PANEL_RIGHT_MENTOR (1<<3)
 #define WL_PANEL_RIGHT_OVERSEER (1<<4)
+#define WL_PANEL_RIGHT_MANAGER (1<<5)
 #define WL_PANEL_ALL_COUNCILS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA)
-#define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER)
+#define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER|WL_PANEL_RIGHT_MANAGER)
 
 /datum/whitelist_panel
 	var/viewed_player = list()
@@ -68,7 +69,7 @@
 	if(person.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		rights |= WL_PANEL_RIGHT_YAUTJA
 	if(rights == WL_PANEL_ALL_COUNCILS)
-		return WL_PANEL_ALL_RIGHTS
+		rights |= WL_PANEL_RIGHT_OVERSEER
 	return rights
 
 /datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -122,6 +123,7 @@ GLOBAL_LIST_INIT(yaut_flags, list(
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
 	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Fax Responder", bitflag = WHITELIST_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
 ))
 
 /datum/whitelist_panel/ui_static_data(mob/user)

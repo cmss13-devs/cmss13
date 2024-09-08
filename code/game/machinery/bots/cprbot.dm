@@ -1,3 +1,9 @@
+#define STATE_CPRBOT_IDLE "idle"
+#define STATE_CPRBOT_MOVING "moving"
+#define STATE_CPRBOT_CPR "cpr"
+#define STATE_CPRBOT_FOLLOWING_OWNER "following_owner"
+
+
 /obj/structure/machinery/bot/cprbot
 	name = "\improper CPRbot"
 	desc = "Designed for urgent medical intervention, this CPRbot offers high-tech support in a compact form."
@@ -10,24 +16,24 @@
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 	/// Radius to search for patients
-	var/const/search_radius = 7
+	var/static/search_radius = 7
 	/// Radius to check for nearby CPRbots
-	var/const/cprbot_proximity_check_radius = 2
-	/// Indicates whether the bot is processing
-	var/processing = TRUE
-	/// Current target for CPR
-	var/mob/living/carbon/human/target = null
-	/// Time when the bot can perform CPR again
-	var/cpr_cooldown = 0
-	/// Path for movement logic
-	var/path = list()
+	var/static/cprbot_proximity_check_radius = 2
+	/// Current target for CPR (using weak reference)
+	var/datum/weakref/human
 	/// Indicates whether the bot is currently healing
 	var/currently_healing = FALSE
+	var/cpr_ready = TRUE
 	/// IFF signal to check for valid targets
 	var/iff_signal = FACTION_MARINE
 	/// Cooldown for the random idle messages and medical facts
 	var/cooldown_time = 60 SECONDS
+	var/movement_delay = 4
+	var/owner
+	var/fast_processing = FALSE
 	COOLDOWN_DECLARE(message_cooldown)
+
+	var/state = STATE_CPRBOT_IDLE
 
 	var/static/list/medical_facts = list(
 		"Did you know? The human heart beats over 100,000 times a day.",
@@ -64,21 +70,43 @@
 	/// Tracks the last time a message was spoken
 	var/last_message_time = 0
 
-/obj/structure/machinery/bot/cprbot/New()
-	..()
-	src.initialize_cprbot()
+/obj/structure/machinery/bot/cprbot/Initialize(mapload, ...)
+	. = ..()
+	start_processing()
 
-/obj/structure/machinery/bot/cprbot/proc/initialize_cprbot()
-	while (processing && health > 0)
-		src.find_and_move_to_patient()
-		if (target && world.time >= cpr_cooldown)
-			src.perform_cpr(target)
-		src.random_message() // Check if it's time to send a random message
-		sleep(0.5 SECONDS) // Slower processing loop, moves once every 2 seconds
+/obj/structure/machinery/bot/cprbot/process()
+	if (health > 0)
+		think()
+		// this makes it halt for whole minute, find different way to do cooldown
+		//random_message() // Check if it's time to send a random message
+	else
+		stop_processing()
+
+/obj/structure/machinery/bot/cprbot/proc/think()
+	switch (state)
+		if (STATE_CPRBOT_IDLE)
+			find_and_move_to_patient()
+		if (STATE_CPRBOT_MOVING)
+			move_to_target()
+		if (STATE_CPRBOT_CPR)
+			try_perform_cpr()
+		if (STATE_CPRBOT_FOLLOWING_OWNER)
+			find_and_move_to_patient()
+
+
+/obj/structure/machinery/bot/cprbot/start_processing()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/machinery/bot/cprbot/stop_processing()
+	if (fast_processing)
+		STOP_PROCESSING(SSfastobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/machinery/bot/cprbot/Destroy()
-	target = null
-	path = null
+	human = null
+
+	stop_processing()
 	return ..()
 
 /obj/structure/machinery/bot/cprbot/proc/random_message()
@@ -98,85 +126,143 @@
 	COOLDOWN_START(src, message_cooldown, cooldown_time)
 
 /obj/structure/machinery/bot/cprbot/proc/speak(message)
-	if (!processing || !message)
+	if (!message)
 		return
 	visible_message("[src] beeps, \"[message]\"")
 
+/obj/structure/machinery/bot/cprbot/proc/go_idle()
+	human = null
+	state = STATE_CPRBOT_IDLE
+	cpr_ready = TRUE
+	currently_healing = FALSE
+	walk_to(src, 0) // make sure we stop walking
+	update_icon()
+
+/obj/structure/machinery/bot/cprbot/proc/valid_cpr_target(mob/living/carbon/human/patient)
+	return patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.get_target_lock(iff_signal)
+
 /obj/structure/machinery/bot/cprbot/proc/find_and_move_to_patient()
-	var/list/humans = list()
-	for (var/mob/living/carbon/human/patient in range(search_radius))
-		if (patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.get_target_lock(iff_signal) && !src.has_nearby_cprbot(patient))
-			humans += patient
+	var/list/potential_patients = list()
+	has_said_to_patient = list()
+	for (var/mob/living/carbon/human/patient in view(search_radius, src))
+		if (valid_cpr_target(patient))
+			potential_patients += patient
 
-	if (length(humans) > 0)
-		target = src.get_nearest(humans)
-		if (target && !has_said_to_patient.Find(target))
-			visible_message("[target] is injured! I'm coming!")
-			has_said_to_patient += target
-		src.move_to_target(target)
+	for (var/obj/structure/machinery/bot/cprbot/another_cpr_bot in view(search_radius, src))
+		if (another_cpr_bot == src)
+			continue
+
+		var/mob/living/carbon/human/another_bot_patient
+
+		// sanity checks
+		if (another_cpr_bot.human != null)
+			another_bot_patient = another_cpr_bot.human.resolve()
+
+		// sanity checks
+		if (another_bot_patient == null)
+			continue
+
+		// Another CPR bot is targetting this patient, skip
+		if (another_bot_patient in potential_patients)
+			potential_patients.Remove(another_bot_patient)
+
+	if (potential_patients.len)
+		var/mob/living/carbon/human/patient = potential_patients[1]
+		human = WEAKREF(patient)
+		if (patient && !(patient in has_said_to_patient))
+			visible_message("[patient] is injured! I'm coming!")
+			has_said_to_patient += patient
+
+		move_to_target()
 	else
-		target = null
-
-/obj/structure/machinery/bot/cprbot/proc/has_nearby_cprbot(mob/living/carbon/human/H)
-	// Check if there are any other CPRbots within a two-tile radius of the target
-	for (var/obj/structure/machinery/bot/cprbot/nearby_cprbot in range(H, cprbot_proximity_check_radius))
-		if (nearby_cprbot != src) // Ignore self
-			return TRUE
-	return FALSE
-
-/obj/structure/machinery/bot/cprbot/proc/get_nearest(list/humans)
-	var/mob/living/carbon/human/nearest = null
-	var/distance = search_radius + 1
-
-	for (var/mob/living/carbon/human/patient in humans)
-		var/length = get_dist(src, patient)
-		if (length < distance)
-			nearest = patient
-			distance = length
-
-	return nearest
-
-/obj/structure/machinery/bot/cprbot/proc/move_to_target(mob/living/carbon/human/H)
-	if (H)
-		var/pathfinding_result = AStar(src.loc, get_turf(H), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30)
-		if (length(pathfinding_result) == 0)
-			// No reachable path to the target, so stop looking for this patient
-			target = null
-			return
-		path = pathfinding_result
-
-		// Begin moving towards the target if a path exists
-		if (get_dist(src, H) > 1)
-			if (length(path) > 0)
-				step_to(src, path[1])
-				path -= path[1]
-				sleep(0.5 SECONDS)
-				if (length(path))
-					step_to(src, path[1])
-					path -= path[1]
+		// If no patients are found, check if owner is nearby and follow them if idle
+		if (state == STATE_CPRBOT_IDLE && (owner && (owner in view(search_radius, src))))
+			state = STATE_CPRBOT_FOLLOWING_OWNER
+			walk_to(src, owner, 0, movement_delay)
+		else if (state == STATE_CPRBOT_FOLLOWING_OWNER)
+			// Continue following the owner if no patient is in sight
+			walk_to(src, owner, 0, movement_delay)
 		else
-			currently_healing = TRUE
+			go_idle()
+
+/obj/structure/machinery/bot/cprbot/proc/can_still_see_patient()
+	if (human == null)
+		return FALSE
+
+	var/mob/living/carbon/human/patient = human.resolve()
+	if (patient == null)
+		return FALSE
+
+	return patient in view(search_radius, src)
+
+/obj/structure/machinery/bot/cprbot/proc/patient_in_range()
+	if (human == null)
+		return FALSE
+
+	var/mob/living/carbon/human/patient = human.resolve()
+	if (patient == null)
+		return FALSE
+
+	return get_dist(src, patient) == 0
+
+/obj/structure/machinery/bot/cprbot/proc/move_to_target()
+	var/mob/living/carbon/human/patient = human.resolve()
+	// If we cannot see them anymore then stop moving
+	if (!can_still_see_patient())
+		go_idle()
+		return
+
+	// It might not exist anymore or something
+	if (patient == null)
+		go_idle()
+		return
+
+	if (!patient_in_range())
+		// We are already moving
+		if (state == STATE_CPRBOT_MOVING)
+			return
+
+		state = STATE_CPRBOT_MOVING
+		walk_to(src, patient, 0, movement_delay)
 	else
-		target = null
+		walk_to(src, 0) // make sure we stop walking
+		state = STATE_CPRBOT_CPR
+		switch_to_faster_processing()
+		try_perform_cpr()
 
-
-/obj/structure/machinery/bot/cprbot/proc/perform_cpr(mob/living/carbon/human/H)
-	if (!H || H.stat != DEAD || !H.is_revivable() || !ishuman_strict(H))
-		target = null
-		icon_state = "cprbot0"
-		currently_healing = 0
+/obj/structure/machinery/bot/cprbot/proc/perform_cpr(mob/living/carbon/human/target)
+	if (!cpr_ready)
 		return
 
-	if (get_dist(src, H) > 1)
-		src.move_to_target(H)
-		return
-
-	icon_state = "cprbot_active"
-	H.revive_grace_period += 4 SECONDS
-	cpr_cooldown = world.time + 7 SECONDS
-	H.visible_message(SPAN_NOTICE("<b>[src]</b> automatically performs <b>CPR</b> on <b>[H]</b>."))
-	H.visible_message(SPAN_DANGER("Currently performing CPR on <b>[H]</b> do not intervene!"))
 	currently_healing = TRUE
+
+	update_icon()
+
+	target.revive_grace_period += 4 SECONDS
+	target.visible_message(SPAN_NOTICE("<b>[src]</b> automatically performs <b>CPR</b> on <b>[target]</b>."))
+	target.visible_message(SPAN_DANGER("Currently performing CPR on <b>[target]</b> do not intervene!"))
+	currently_healing = TRUE
+
+	cpr_ready = FALSE
+	addtimer(VARSET_CALLBACK(src, cpr_ready, TRUE), 7 SECONDS)
+
+/obj/structure/machinery/bot/cprbot/proc/try_perform_cpr()
+	currently_healing = TRUE
+	// Resolve the weak reference to check if the target still exists
+	var/mob/living/carbon/human/target = human.resolve()
+
+	if (!patient_in_range())
+		go_idle()
+		switch_to_slower_processing()
+		return
+
+	// Check if the target is valid and still needs CPR
+	if (!target || target.stat != DEAD || !target.is_revivable() || !ishuman_strict(target))
+		go_idle()
+		switch_to_slower_processing()
+		return
+
+	perform_cpr(target)
 
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
 	var/obj/item/cprbot_item/I = new /obj/item/cprbot_item(src.loc)
@@ -194,12 +280,25 @@
 	if (..())
 		return TRUE
 
+	if (!issynth(user))
+		visible_message(SPAN_DANGER("<B>[user] tries to undeploy [src]!</B>"))
+		return FALSE
+
 	SEND_SIGNAL(user, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
 	if (user != src)
 		visible_message(SPAN_DANGER("<B>[user] begins to undeploy [src]!</B>"))
 	src.self_destruct(user)
 	return TRUE
+
+/obj/structure/machinery/bot/cprbot/update_icon()
+	. = ..()
+
+	switch(state)
+		if (STATE_CPRBOT_IDLE)
+			icon_state = "cprbot0"
+		if (STATE_CPRBOT_CPR)
+			icon_state = "cprbot_active"
 
 /obj/structure/machinery/bot/cprbot/explode()
 	src.on = 0
@@ -214,3 +313,13 @@
 
 	qdel(src)
 	return
+
+/obj/structure/machinery/bot/cprbot/proc/switch_to_faster_processing()
+	STOP_PROCESSING(SSobj, src)
+	START_PROCESSING(SSfastobj, src)
+	fast_processing = TRUE
+
+/obj/structure/machinery/bot/cprbot/proc/switch_to_slower_processing()
+	STOP_PROCESSING(SSfastobj, src)
+	START_PROCESSING(SSobj, src)
+	fast_processing = FALSE

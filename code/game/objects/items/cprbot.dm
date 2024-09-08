@@ -11,15 +11,12 @@
 		return
 	// Attempt to delete the item first
 	qdel(src)
-	world << "Deleting item [src]. Deploying CPRbot at [location]."
 
 	// Proceed with the CPRbot deployment
 	var/obj/structure/machinery/bot/cprbot/R = new deployment_path(location)
 	if(R)
 		R.add_fingerprint(user)
-		world << "CPRbot deployed successfully at [location]."
-	else
-		world << "Failed to deploy CPRbot at [location]."
+		R.owner = user
 
 /obj/item/cprbot_item/attack_self(mob/user)
 	if (..())

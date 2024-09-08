@@ -413,6 +413,7 @@
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
+	AUTOWIKI_SKIP(FALSE)
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/Initialize()

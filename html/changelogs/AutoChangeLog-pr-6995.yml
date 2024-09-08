@@ -1,5 +1,0 @@
-author: "Mister-moon1"
-delete-after: True
-changes:
-  - balance: "Keycard swipers no longer require two unique keycards to function."
-  - bugfix: "fixed the description text for the card swipe to reduce confusion"

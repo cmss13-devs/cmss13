@@ -7394,8 +7394,8 @@
 /area/shiva/interior/colony/research_hab)
 "dgG" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/lz1_valley)
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/interior/caves/cp_camp)
 "dgS" = (
 /obj/vehicle/train/cargo/engine,
 /turf/open/auto_turf/snow/layer0,
@@ -26918,7 +26918,7 @@ xAS
 xAS
 kvQ
 uqb
-dgG
+uqb
 kLM
 kLM
 kLM
@@ -27072,7 +27072,7 @@ tlB
 xAS
 aFO
 xAS
-xAS
+dgG
 oRH
 oRH
 rzw

@@ -1042,6 +1042,7 @@
 #include "code\game\objects\effects\step_triggers.dm"
 #include "code\game\objects\effects\temporary_visuals.dm"
 #include "code\game\objects\effects\decals\crayon.dm"
+#include "code\game\objects\effects\decals\floor_symbol.dm"
 #include "code\game\objects\effects\decals\hefa_cult_decals.dm"
 #include "code\game\objects\effects\decals\kutjevo_decals.dm"
 #include "code\game\objects\effects\decals\medical_decals.dm"

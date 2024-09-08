@@ -54,7 +54,10 @@
 		if("urban")
 			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 /obj/structure/mortar/Destroy()
 	QDEL_NULL(internal_camera)
 	return ..()

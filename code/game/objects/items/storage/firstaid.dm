@@ -320,7 +320,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/tool/surgery/hemostat,
-		/obj/item/tool/surgery/retractor
+		/obj/item/tool/surgery/retractor,
 	)
 
 /obj/item/storage/surgical_case/regular

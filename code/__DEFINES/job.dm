@@ -366,6 +366,16 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define DUTCH_JOB_LIST list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
+//---------- RESPONDERS ----------//
+#define JOB_RESPONDER_USCM_HC "USCM HC Fax Responder"
+#define JOB_RESPONDER_USCM_PVST "USCM Provost Fax Responder"
+#define JOB_RESPONDER_WY "Weyland-Yutani Fax Responder"
+#define JOB_RESPONDER_UPP "UPP Fax Responder"
+#define JOB_RESPONDER_TWE "TWE Fax Responder"
+#define JOB_RESPONDER_CLF "CLF Fax Responder"
+
+
+//---------- ANTAG ----------//
 #define JOB_PREDATOR "Predator"
 #define JOB_XENOMORPH    "Xenomorph"
 #define JOB_XENOMORPH_QUEEN  "Queen"

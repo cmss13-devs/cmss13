@@ -99,6 +99,7 @@
 
 
 /mob/living/simple_animal/hostile/bear/on_attacked_by(obj/item/attacked_by, mob/living/user, attack_hints)
+	..()
 	if(stance != HOSTILE_STANCE_ATTACK && stance != HOSTILE_STANCE_ATTACKING)
 		stance = HOSTILE_STANCE_ALERT
 		stance_step = 6

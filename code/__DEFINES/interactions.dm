@@ -1,5 +1,13 @@
+/**
+ * Block any attack-related behavior of parent type (if set by a signal listener) or subtypes (if set by a parent type)
+ *
+ * Meant to enforce paradigm that subtypes do not override behavior of parents and attached signals, any custom configurations
+ * of the behavior from signal listeners or parent types should be properly defined
+ */
 #define ATTACK_HINT_BREAK_ATTACK (1<<0)
+/// Whether afterattack() should be called, to support legacy behavior
 #define ATTACK_HINT_NO_AFTERATTACK (1<<1)
+/// Whether "was hit by" messages and animation should occur upon successful attack
 #define ATTACK_HINT_NO_TELEGRAPH (1<<2)
 
 // Note: This only works for 515.1635 at the moment, see: http://www.byond.com/forum/post/2942885

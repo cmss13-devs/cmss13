@@ -532,7 +532,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
 		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
 		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
-		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with \the {igniter}, and manages to light their {ignitable} with the power of science."),
+		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with the {igniter}, and manages to light their {ignitable} with the power of science."),
 	)
 
 /obj/item/clothing/mask/cigarette/pipe/light()

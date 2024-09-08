@@ -73,7 +73,7 @@
 	if(LAZYLEN(accessories))
 		. |= ATTACK_HINT_NO_TELEGRAPH
 		for(var/obj/item/clothing/accessory/A in accessories)
-		 	// TODO: switch to signals
+			// TODO: switch to signals
 			A.interact_with_item(I, user)
 		return
 

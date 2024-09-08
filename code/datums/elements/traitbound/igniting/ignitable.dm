@@ -52,8 +52,7 @@
 	var/atom/igniter_override
 
 /// Proc to overwrite for any ignitables with custom flavor text
-/atom/proc/get_ignitable_flavor_text()
-	RETURN_TYPE(/list)
+/atom/proc/get_ignitable_flavor_text() as /list
 	return
 
 /**

@@ -83,9 +83,10 @@ SUBSYSTEM_DEF(profiler)
 
 	var/datum/discord_embed/embed = new()
 	embed.title = "Profile of Round #[GLOB.round_id] - Highest Overtiming Procs"
+	embed.fields = list()
 	for(var/i in 1 to 10)
 		var/list/entry = data[i]
-		embed.description += "### [i] - [entry["name"]]\n**Overtime:** [entry["over"]]\n**Self Cost:** [entry["self"]]\n**Total Cost:** [entry["total"]]\n**Calls:** [entry["calls"]]\n"
+		embed.fields[entry["name"]] = "**Overtime:** [entry["over"]], **Self Cost:** [entry["self"]], **Total Cost:** [entry["total"]], **Calls:** [entry["calls"]]"
 	send2webhook(embed, CONFIG_GET(string/profiler_webhook_url))
 
 #undef PROFILER_FILENAME

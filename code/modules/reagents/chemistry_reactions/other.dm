@@ -119,7 +119,7 @@
 	id = "sleen"
 	result = "sleen"
 	required_reagents = list("oxycodone" = 1, "souto_lime" = 1)
-	result_amount = 2
+	result_amount = 1
 
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"

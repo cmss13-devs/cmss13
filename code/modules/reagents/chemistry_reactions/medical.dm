@@ -147,7 +147,7 @@
 	name = "Oxycodone"
 	id = "oxycodone"
 	result = "oxycodone"
-	required_reagents = list("ethanol" = 1, "methane" = 1 , "nitrogen" = 1)
+	required_reagents = list("ethanol" = 1, "inaprovaline" = 1 , "nitrogen" = 1)
 	required_catalysts = list("phoron" = 5)
 	result_amount = 3
 

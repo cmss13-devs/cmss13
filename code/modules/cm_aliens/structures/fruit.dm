@@ -388,7 +388,7 @@
 
 	if(istype(affected_xeno, /mob/living/carbon/human))
 		var/mob/living/carbon/human/humanus = affected_xeno
-		if(HAS_TRAIT(humanus, TRAIT_NESTED) && humanus.stat == !DEAD) // if they are not nested or dead they cant be feed.
+		if(HAS_TRAIT(humanus, TRAIT_NESTED) && humanus.stat != DEAD) // if they are not nested or dead they cant be feed.
 			user.visible_message(SPAN_BOLDWARNING("[user] starts forcefully feeding [humanus] with resin."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, affected_xeno, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				return

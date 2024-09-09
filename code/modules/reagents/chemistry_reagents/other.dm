@@ -169,7 +169,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6 ,PROPERTY_PNEUMOTOXIC = 0.03)
+	properties = list(PROPERTY_PAINKILLING = 3.5 ,PROPERTY_PNEUMOTOXIC = 0.03)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"

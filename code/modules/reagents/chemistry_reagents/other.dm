@@ -162,13 +162,14 @@
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct green color. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
-	color = "#C21D24" // rgb: 194, 29, 36
-	overdose = MED_REAGENTS_OVERDOSE
-	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
+	color = "#91ff00" // rgb: 145, 255, 0
+	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES)
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 6 ,PROPERTY_PNEUMOTOXIC = 0.05)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"

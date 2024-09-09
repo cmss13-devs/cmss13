@@ -147,9 +147,9 @@
 	name = "Oxycodone"
 	id = "oxycodone"
 	result = "oxycodone"
-	required_reagents = list("ethanol" = 1, "tramadol" = 1)
-	required_catalysts = list("phoron" = 1)
-	result_amount = 1
+	required_reagents = list("ethanol" = 1, "methane" = 1 , "nitrogen" = 1)
+	required_catalysts = list("phoron" = 5)
+	result_amount = 3
 
 /datum/chemical_reaction/leporazine
 	name = "Leporazine"

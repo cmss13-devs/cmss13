@@ -23,6 +23,7 @@
 	id = "pttoxin"
 	description = "A toxic chemical."
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
+	properties = list(PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"

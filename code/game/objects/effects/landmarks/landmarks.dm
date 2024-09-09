@@ -321,10 +321,10 @@
 	job = /datum/job/logistics/engineering/whiskey
 
 /obj/effect/landmark/start/whiskey/maint
-	job = /datum/job/logistics/tech/maint/whiskey
+	job = /datum/job/logistics/maint/whiskey
 
 /obj/effect/landmark/start/whiskey/tech
-	job = /datum/job/logistics/tech //Need to create a WO variant in the future
+	job = /datum/job/logistics/otech //Need to create a WO variant in the future
 
 //****************************************** MILITARY POLICE- HONOR-GUARD ************************************************/
 /obj/effect/landmark/start/whiskey/warrant

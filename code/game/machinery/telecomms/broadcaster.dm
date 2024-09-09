@@ -83,7 +83,7 @@
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
 						data, compression, list/level, freq, verbage = "says",
-						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE)
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE, tts_heard_list)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -232,6 +232,10 @@
 		// --- Filter the message; place it in quotes apply a verb ---
 
 		/* ###### Send the message ###### */
+
+		//RUCM START
+		tts_heard_list[2] += heard_masked + heard_normal
+		//RUCM END
 
 		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))

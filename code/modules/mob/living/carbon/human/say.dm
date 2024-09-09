@@ -53,7 +53,7 @@
 	else
 		.["message"] = message_and_language
 
-/mob/living/carbon/human/say(message)
+/mob/living/carbon/human/say(message, tts_heard_list)
 
 	var/verb = "says"
 	var/alt_name = ""
@@ -126,6 +126,12 @@
 		if(!(copytext(message, -1) in ENDING_PUNCT))
 			message += "."
 
+	//RUCM START
+	if(!length(tts_heard_list))
+		tts_heard_list = list(list(), list())
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(handle_r[3]), tts_voice, handle_r[4], tts_heard_list, FALSE, 0, tts_voice_pitch, speaking_noise)
+	//RUCM END
+
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
@@ -166,13 +172,13 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode, tts_heard_list = tts_heard_list) //ohgod we should really be passing a datum here.
 
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking, tts_heard_list)
 
-/mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
+/mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking, tts_heard_list)
 	for(var/obj/item/device/radio/R in used_radios)
-		R.talk_into(src, message, message_mode, verb, speaking)
+		R.talk_into(src, message, message_mode, verb, speaking, tts_heard_list = tts_heard_list)
 
 /mob/living/carbon/human/proc/forcesay(forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)
@@ -258,8 +264,12 @@ for it but just ignore it.
 	return verb
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
-	var/list/returns[2]
+	var/list/returns[4]
 	var/verb = "says"
+	//RUCM START
+	var/tts_message = message
+	var/tts_filter = ""
+	//RUCM END
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)
@@ -269,16 +279,28 @@ for it but just ignore it.
 		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
+		//RUCM START
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
+		//RUCM END
 		verb = pick("stammers","stutters")
 	if(stuttering)
 		message = NewStutter(message)
+		//RUCM START
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
+		//RUCM END
 		verb = pick("stammers", "stutters")
 	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
+		//RUCM START
+		tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
+		//RUCM END
 		verb = pick("mumbles", "babbles")
 	if(braindam >= 60)
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
+			//RUCM START
+			tts_filter = "tremolo=f=10:d=0.8,rubberband=tempo=0.5"
+			//RUCM END
 			verb = pick("stammers", "stutters")
 		if(prob(braindam))
 			message = uppertext(message)
@@ -286,11 +308,18 @@ for it but just ignore it.
 	if(HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message
 		message = lisp_replace(message)
+		//RUCM START
+		tts_message = message
+		//RUCM END
 		if(old_message != message)
 			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb
+	//RUCM START
+	returns[3] = tts_message
+	returns[4] = tts_filter
+	//RUCM END
 	return returns
 
 /mob/living/carbon/human/hear_apollo()

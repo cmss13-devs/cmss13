@@ -14,7 +14,7 @@
 	flags_atom = FPRINT|USES_HEARING
 
 
-/obj/item/falcon_drone/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+/obj/item/falcon_drone/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics, tts_heard_list)
 	var/mob/hologram/falcon/hologram = loc
 	if(!istype(hologram))
 		return FALSE
@@ -25,6 +25,7 @@
 	to_chat(user, SPAN_YAUTJABOLD("Falcon Relay: [sourcemob.name] [verb], <span class='[language.color]'>\"[message]\"</span>"))
 	if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled \
 	   && !user.ear_deaf && user.say_understands(sourcemob, language))
+		tts_heard_list[2] += user
 		sourcemob.langchat_display_image(user)
 
 	return TRUE

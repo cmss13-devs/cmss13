@@ -48,7 +48,7 @@
 		return
 	..()
 
-/obj/item/clothing/hear_talk(mob/M, msg)
+/obj/item/clothing/hear_talk(mob/M, msg, tts_heard_list)
 	for(var/obj/item/clothing/accessory/attached in accessories)
 		attached.hear_talk(M, msg)
 	..()

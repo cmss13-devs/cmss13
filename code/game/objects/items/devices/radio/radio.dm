@@ -206,7 +206,7 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE)
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE, tts_heard_list)
 	if(!on) return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
 	if(!M || !message) return
@@ -291,11 +291,11 @@
 	if(use_volume)
 		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 						src, message, displayname, jobname, real_name, M.voice_name,
-						filter_type, 0, target_zs, connection.frequency, verb, speaking, volume, listening_device)
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, volume, listening_device, tts_heard_list = tts_heard_list)
 	else
 		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 						src, message, displayname, jobname, real_name, M.voice_name,
-						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET, listening_device)
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET, listening_device, tts_heard_list = tts_heard_list)
 
 /obj/item/device/radio/proc/get_target_zs(frequency)
 	var/turf/position = get_turf(src)
@@ -322,10 +322,10 @@
 				return null
 	return target_zs
 
-/obj/item/device/radio/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null)
+/obj/item/device/radio/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null, tts_heard_list)
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
-			talk_into(M, msg,null,verb,speaking)
+			talk_into(M, msg,null,verb,speaking, tts_heard_list = tts_heard_list)
 
 
 /*

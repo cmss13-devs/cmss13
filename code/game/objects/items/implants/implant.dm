@@ -155,7 +155,7 @@ Implant Specifics:<BR>"}
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 	return dat
 
-/obj/item/implant/explosive/hear_talk(mob/M as mob, msg)
+/obj/item/implant/explosive/hear_talk(mob/M as mob, msg, tts_heard_list)
 	hear(msg)
 	return
 

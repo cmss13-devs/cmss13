@@ -191,7 +191,7 @@
 		master.receive_signal()
 	return 1
 
-/obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg)
+/obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg, tts_heard_list)
 	if(a_right)
 		a_right.hear_talk(M,msg)
 	if(a_left)

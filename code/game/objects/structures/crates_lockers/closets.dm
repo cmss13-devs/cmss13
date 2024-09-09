@@ -361,16 +361,16 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/hear_talk(mob/M as mob, text, verb, language, italics)
+/obj/structure/closet/hear_talk(mob/M as mob, text, verb, language, italics, tts_heard_list)
 	for (var/atom/A in src)
 		if(istype(A,/obj/))
 			var/obj/O = A
-			O.hear_talk(M, text)
+			O.hear_talk(M, text, tts_heard_list = tts_heard_list)
 #ifdef OBJECTS_PROXY_SPEECH
 			continue
 		var/mob/living/TM = A
 		if(istype(TM) && TM.stat != DEAD)
-			proxy_object_heard(src, M, TM, text, verb, language, italics)
+			proxy_object_heard(src, M, TM, text, verb, language, italics, tts_heard_list = tts_heard_list)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/closet/proc/break_open()

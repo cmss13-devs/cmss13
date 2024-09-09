@@ -7,6 +7,7 @@
 #include "controllers\subsystem\playtime.dm"
 #include "controllers\subsystem\queue.dm"
 #include "controllers\subsystem\techtree.dm"
+#include "controllers\subsystem\tts.dm"
 #include "datums\shuttles.dm"
 #include "datums\skills.dm"
 #include "datums\world_topic.dm"

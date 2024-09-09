@@ -120,8 +120,8 @@
 	. = ..()
 	container.emp_act(severity)
 
-/obj/structure/vehicle_locker/hear_talk(mob/M, msg)
-	container.hear_talk(M, msg)
+/obj/structure/vehicle_locker/hear_talk(mob/M, msg, tts_heard_list)
+	container.hear_talk(M, msg, tts_heard_list = tts_heard_list)
 	..()
 
 //Cosmetically opens/closes the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.

@@ -173,8 +173,6 @@
 /turf/process()
 	return
 
-#define BLOCKER_IDX 1
-#define BLOCKING_DIR_IDX 2
 #define START_TURF 1
 #define DIAGONAL_TURF_LONG 2
 #define DIAGONAL_TURF_LAT 3

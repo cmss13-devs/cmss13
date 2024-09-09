@@ -260,10 +260,10 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/check_responder_late_join(mob/responder, show_warning = TRUE)
+/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
 	if(!responder.client)
 		return FALSE
-	if(!(responder?.client.check_whitelist_status(WHITELIST_RESPONDER)))
+	if(!(responder?.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
 		if(show_warning)
 			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
 		return FALSE
@@ -275,51 +275,61 @@ Additional game mode variables.
 	var/list/options = list()
 	if(!responder_candidate.client)
 		return FALSE
-	if(!(responder_candidate.client.check_whitelist_status(WHITELIST_RESPONDER)))
+	if(!(responder_candidate.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
 		to_chat(responder_candidate, SPAN_WARNING("You are not whitelisted!"))
 		return FALSE
 
-	for(var/job in RESPONDER_JOB_LIST)
-		var/datum/job/responder_job = GLOB.RoleAuthority.roles_by_name[job]
-		var/job_max = responder_job.total_positions
-		if((responder_job.current_positions < job_max) && responder_job.can_play_role(responder_candidate.client))
+	for(var/job in FAX_RESPONDER_JOB_LIST)
+		var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[job]
+		var/job_max = fax_responder_job.total_positions
+		if((fax_responder_job.current_positions < job_max) && fax_responder_job.can_play_role(responder_candidate.client))
 			options += job
+	return options
 
-/datum/game_mode/proc/attempt_to_join_as_responder(mob/responder_candidate)
-	var/choice = tgui_input_list(src, "What Fax Responder do you want to join as?", "Which Responder?", get_fax_responder_slots(responder_candidate), 30 SECONDS)
-	if(!(choice in RESPONDER_JOB_LIST))
-		to_chat(src, SPAN_WARNING("Error: No valid responder selected."))
+/datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate)
+	var/list/options = get_fax_responder_slots(responder_candidate)
+	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
+	if(!(choice in FAX_RESPONDER_JOB_LIST))
+		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
 		return FALSE
 
-	var/mob/living/carbon/human/new_responder = transform_responder(responder_candidate, choice) //Initialized and ready.
+	var/mob/living/carbon/human/new_responder = transform_fax_responder(responder_candidate, choice) //Initialized and ready.
 	if(!new_responder)
 		return FALSE
 
 	message_admins("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name].")
 
 	if(responder_candidate) responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+	return TRUE
 
-/datum/game_mode/proc/transform_responder(mob/responder_candidate, sub_job)
+/datum/game_mode/proc/transform_fax_responder(mob/responder_candidate, sub_job)
 	set waitfor = FALSE
 
-	if(!(sub_job in RESPONDER_JOB_LIST))
+	if(!(sub_job in FAX_RESPONDER_JOB_LIST))
 		return
 
 	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
-		log_debug("Null client attempted to transform_responder")
+		log_debug("Null client attempted to transform_fax_responder")
 		return
+
+	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
 	var/mob/living/carbon/human/new_responder = new(spawn_point)
 	responder_candidate.mind.transfer_to(new_responder, TRUE)
-	var/datum/job/responder_job = GLOB.RoleAuthority.roles_by_name[sub_job]
+	new_responder.client?.prefs.copy_all_to(new_responder, JOB_FAX_RESPONDER, TRUE, FALSE)
 
-	if(!responder_job)
+	var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[sub_job]
+
+	if(!fax_responder_job)
 		qdel(new_responder)
 		return
-	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
-	responder_job.current_positions++
-	GLOB.RoleAuthority.equip_role(new_responder, responder_job, new_responder.loc)
+
+	arm_equipment(new_responder, fax_responder_job.gear_preset, !new_responder.mind, TRUE)
+
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
+	fax_responder_job.current_positions++
+	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
 	SSticker.minds += new_responder.mind
 	return new_responder
 

@@ -883,7 +883,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((flag_to_check & WHITELIST_MENTOR) && CLIENT_IS_MENTOR(src))
 		return TRUE
 
-	if(CLIENT_IS_STAFF(src) && (flag_to_check & WHITELIST_JOE|WHITELIST_RESPONDER))
+	if(CLIENT_IS_STAFF(src) && (flag_to_check & WHITELIST_JOE|WHITELIST_FAX_RESPONDER))
 		return TRUE
 
 	if(!player_data)

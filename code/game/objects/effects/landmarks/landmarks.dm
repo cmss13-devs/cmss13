@@ -455,27 +455,27 @@
 
 /obj/effect/landmark/late_join/responder/uscm
 	name = "USCM HC Fax Responder late join"
-	job = JOB_RESPONDER_USCM_HC
+	job = JOB_FAX_RESPONDER_USCM_HC
 
 /obj/effect/landmark/late_join/responder/uscm/provost
 	name = "USCM Provost Fax Responder late join"
-	job = JOB_RESPONDER_USCM_PVST
+	job = JOB_FAX_RESPONDER_USCM_PVST
 
 /obj/effect/landmark/late_join/responder/wey_yu
 	name = "W-Y Fax Responder late join"
-	job = JOB_RESPONDER_WY
+	job = JOB_FAX_RESPONDER_WY
 
 /obj/effect/landmark/late_join/responder/upp
 	name = "UPP Fax Responder late join"
-	job = JOB_RESPONDER_UPP
+	job = JOB_FAX_RESPONDER_UPP
 
 /obj/effect/landmark/late_join/responder/twe
 	name = "TWE Fax Responder late join"
-	job = JOB_RESPONDER_TWE
+	job = JOB_FAX_RESPONDER_TWE
 
 /obj/effect/landmark/late_join/responder/clf
 	name = "CLF Fax Responder late join"
-	job = JOB_RESPONDER_CLF
+	job = JOB_FAX_RESPONDER_CLF
 
 
 

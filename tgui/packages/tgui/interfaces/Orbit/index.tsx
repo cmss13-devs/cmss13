@@ -283,6 +283,7 @@ const ObservableContent = () => {
   const { data } = useBackend<OrbitData>();
   const {
     humans = [],
+    responders = [],
     marines = [],
     survivors = [],
     xenos = [],
@@ -370,6 +371,11 @@ const ObservableContent = () => {
         color="dark-blue"
         section={marshal}
         title="Colonial Marshal Bureau"
+      />
+      <ObservableSection
+        color="pink"
+        section={responders}
+        title="Fax Responders"
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />

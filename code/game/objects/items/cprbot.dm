@@ -6,23 +6,29 @@
 	w_class = SIZE_MEDIUM
 	var/deployment_path = /obj/structure/machinery/bot/cprbot
 
+/obj/item/cprbot_item/attack_self(mob/user as mob)
+	if (..())
+		return TRUE
+
+	if(user)
+		deploy_cprbot(user, user.loc)
+
 /obj/item/cprbot_item/proc/deploy_cprbot(mob/user, atom/location)
 	if(!user || !location)
 		return
-	// Attempt to delete the item first
+
+	if (istype(user))
+		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			return
+
 	qdel(src)
 
 	// Proceed with the CPRbot deployment
-	var/obj/structure/machinery/bot/cprbot/R = new deployment_path(location)
-	if(R)
-		R.add_fingerprint(user)
-		R.owner = user
-
-/obj/item/cprbot_item/attack_self(mob/user)
-	if (..())
-		return TRUE
-	if(user)
-		deploy_cprbot(user, user.loc)
+	var/obj/structure/machinery/bot/cprbot/entity = new deployment_path(location)
+	if(entity)
+		entity.add_fingerprint(user)
+		entity.owner = user
 
 /obj/item/cprbot_item/afterattack(atom/target, mob/user, proximity)
 	if(proximity && isturf(target))

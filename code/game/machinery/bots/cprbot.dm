@@ -60,7 +60,8 @@
 		"I should have been a plastic surgeon.",
 		"What kind of medbay is this? Everyone’s dropping like flies.",
 		"Each breath a day keeps me at bay!",
-		"I sense a disturbance in my circuit board, as if a million people stopped breathing and were suddenly silent."
+		"I sense a disturbance in my circuit board, as if a million people stopped breathing and were suddenly silent.",
+		"It's a Dyer situation it is!"
 	)
 
 	/// Message to display when performing CPR
@@ -77,8 +78,6 @@
 /obj/structure/machinery/bot/cprbot/process()
 	if (health > 0)
 		think()
-		// this makes it halt for whole minute, find different way to do cooldown
-		//random_message() // Check if it's time to send a random message
 	else
 		stop_processing()
 
@@ -257,7 +256,7 @@
 		return
 
 	// Check if the target is valid and still needs CPR
-	if (!target || target.stat != DEAD || !target.is_revivable() || !ishuman_strict(target))
+	if ((target.stat != DEAD) || (target.stat == DEAD && !target.check_tod()))
 		go_idle()
 		switch_to_slower_processing()
 		return
@@ -280,8 +279,8 @@
 	if (..())
 		return TRUE
 
-	if (!issynth(user))
-		visible_message(SPAN_DANGER("<B>[user] tries to undeploy [src]!</B>"))
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		visible_message(SPAN_DANGER("<B>[user] fails to undeploy [src] </B>"))
 		return FALSE
 
 	SEND_SIGNAL(user, COMSIG_LIVING_ATTACKHAND_HUMAN, src)

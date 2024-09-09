@@ -1,29 +1,3 @@
-/*
-/turf
-
-	/open - all turfs with density = FALSE are turf/open
-
-		/floor - floors are constructed floor as opposed to natural grounds
-
-		/space
-
-		/shuttle - shuttle floors are separated from real floors because they're magic
-
-		/snow - snow is one type of non-floor open turf
-
-	/closed - all turfs with density = TRUE are turf/closed
-
-		/wall - walls are constructed walls as opposed to natural solid turfs
-
-			/r_wall
-
-		/shuttle - shuttle walls are separated from real walls because they're magic, and don't smoothes with walls.
-
-		/ice_rock - ice_rock is one type of non-wall closed turf
-
-*/
-
-
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).

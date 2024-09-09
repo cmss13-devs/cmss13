@@ -68,7 +68,7 @@ GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadat
 	GLOB.multitile_movement_metadata.entered.Cut()
 	GLOB.multitile_movement_metadata.exited.Cut()
 	if(!can_move(direction, GLOB.multitile_movement_metadata))
-	 	// Crashed with something that stopped us
+		// Crashed with something that stopped us
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()

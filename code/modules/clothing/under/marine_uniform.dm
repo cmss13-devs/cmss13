@@ -381,6 +381,12 @@
 	icon_state = "provost_tml"
 	worn_state = "provost_tml"
 
+/obj/item/clothing/under/marine/mp/provost/chief
+	name = "\improper Provost Command Uniform"
+	desc = "The crisp uniform of a commanding member of the Provost Office."
+	icon_state = "provost_ci"
+	worn_state = "provost_ci"
+
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."

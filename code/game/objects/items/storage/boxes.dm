@@ -560,6 +560,24 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
+/obj/item/storage/box/stompers
+	name = "\improper Reebok shoe box"
+	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
+	icon_state = "stomper_box"
+	w_class = SIZE_MEDIUM
+	bypass_w_limit = /obj/item/clothing/shoes
+	max_storage_space = 3
+	can_hold = list(/obj/item/clothing/shoes)
+
+/obj/item/storage/box/stompers/fill_preset_inventory()
+	new /obj/item/clothing/shoes/stompers(src)
+
+/obj/item/storage/box/stompers/update_icon()
+	if(!length(contents))
+		icon_state = "stomper_box_e"
+	else
+		icon_state = "stomper_box"
+
 ////////// MARINES BOXES //////////////////////////
 
 

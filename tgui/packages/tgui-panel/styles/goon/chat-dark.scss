@@ -1449,6 +1449,14 @@ em {
   animation: glitch 0.5s infinite;
 }
 
+.psy_talk {
+  color: #c400aa;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: psy_glitch 0.5s infinite;
+}
+
 /*Keyframes*/
 
 @keyframes glitch {
@@ -1469,6 +1477,28 @@ em {
 
   100% {
     color: #830000;
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes psy_glitch {
+  25% {
+    color: #c400aa;
+    transform: translate(-2px, -1px);
+  }
+
+  50% {
+    color: #91007d;
+    transform: translate(1px, -2px);
+  }
+
+  75% {
+    color: #750066;
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    color: #7c016c;
     transform: translate(1px, 1px);
   }
 }

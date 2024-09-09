@@ -3,6 +3,7 @@
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 

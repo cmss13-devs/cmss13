@@ -39996,6 +39996,7 @@
 /area/almayer/squads/req)
 "mMP" = (
 /obj/effect/landmark/start/intel,
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "mMV" = (
@@ -44339,6 +44340,7 @@
 	pixel_y = 29;
 	serial_number = 12
 	},
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "oyO" = (
@@ -113802,7 +113804,7 @@ vub
 bPL
 bCM
 xSM
-tez
+cgE
 gsm
 bCM
 bbr
@@ -114005,7 +114007,7 @@ qlz
 tez
 bCN
 ccQ
-tez
+cgE
 ccQ
 bCN
 bbr
@@ -114208,7 +114210,7 @@ qlz
 tez
 bpV
 ccQ
-tez
+cgE
 ccQ
 cdn
 bbr
@@ -114411,7 +114413,7 @@ qlz
 tez
 bCM
 ccQ
-tez
+cgE
 ccQ
 bCM
 bbr
@@ -114614,7 +114616,7 @@ vub
 tez
 bCN
 ccQ
-tez
+cgE
 ccQ
 bCN
 jhb

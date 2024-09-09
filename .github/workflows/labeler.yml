@@ -35,5 +35,5 @@ jobs:
           python add_labels.py
         env:
           REPO: ${{ github.repository }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ steps.app-token-generation.outputs.token }}
           PR_NUMBER: ${{ github.event.number }}

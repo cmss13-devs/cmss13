@@ -187,7 +187,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "apr" = (
@@ -1696,7 +1696,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2157,7 +2157,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -4165,7 +4165,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "gjK" = (
@@ -6073,7 +6073,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -6941,7 +6941,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/locks)
 "kOD" = (
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
@@ -8451,7 +8451,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "nhT" = (
@@ -9243,7 +9243,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "onk" = (
@@ -10564,7 +10564,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -11110,7 +11110,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/scrubland)
 "roS" = (
@@ -12754,7 +12754,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "tRp" = (
@@ -13394,7 +13394,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "uPE" = (
@@ -14190,7 +14190,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "waW" = (
@@ -14889,7 +14889,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_bridge)
 "xnk" = (
@@ -15342,7 +15342,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "yaE" = (

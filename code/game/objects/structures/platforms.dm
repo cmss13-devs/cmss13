@@ -49,7 +49,7 @@
 				broken()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_HIGH)
-			if (prob(35))
+			if (prob(30))
 				broken()
 				return
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)

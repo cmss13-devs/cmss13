@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Survivor CL now draws ranks from CL playtime as previously."
-  - rscadd: "Provost Advisor, Team Lead and Enforcer now use military ranks again."

@@ -311,6 +311,11 @@ Additional game mode variables.
 	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_fax_responder")
 		return
+	if(!loaded_fax_base)
+		loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+		if(!loaded_fax_base)
+			log_debug("Error loading fax response base!")
+			return
 
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 

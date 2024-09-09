@@ -451,12 +451,30 @@
 	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_VLOW * level)
 	..()
 
+/datum/chem_property/negative/opioid
+	name = PROPERTY_OPIOID
+	code = "OPD"
+	description = "This chemical contains opiate traces , making it highly addictive"
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_METABOLITE
+
+/datum/chem_property/negative/opioid/process(mob/living/user, potency = 1, delta_time)
+	var/has_addiction
+	var/mob/living/carbon/human/humanus = user
+	for(var/datum/disease/addiction/opioid/human_addiction in humanus.viruses)
+		human_addiction.handle_chem(potency * delta_time)
+		has_addiction = TRUE
+		break
+	if(!has_addiction)
+		var/datum/disease/addiction/opioid/opioid_addiction = new /datum/disease/addiction/opioid
+		humanus.contract_disease(opioid_addiction, TRUE)
+
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE
 	code = "ADT"
 	description = "Causes addiction. Higher potency results in a higher chance of causing an addiction when metabolized."
 	rarity = PROPERTY_RARE
-	category = PROPERTY_TYPE_STIMULANT
+	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/negative/addictive/process(mob/living/M, potency = 1, delta_time)
 	var/has_addiction

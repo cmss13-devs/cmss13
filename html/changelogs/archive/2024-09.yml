@@ -40,3 +40,7 @@
   kiVts:
   - code_imp: Join as freed mobs will now notify the user if there is no freed mobs
       to take.
+2024-09-09:
+  realforest2001:
+  - bugfix: Survivor CL now draws ranks from CL playtime as previously.
+  - rscadd: Provost Advisor, Team Lead and Enforcer now use military ranks again.

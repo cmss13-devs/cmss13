@@ -4622,10 +4622,6 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
-"asP" = (
-/obj/structure/flora/grass/desert/lightgrass_6,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "asQ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/emails,
@@ -14049,10 +14045,6 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_central_north)
-"bfQ" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bfR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
@@ -14282,10 +14274,6 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bgR" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bgT" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bgU" = (
 /obj/structure/platform/metal/almayer,
@@ -14530,10 +14518,6 @@
 /obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bie" = (
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bif" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -14831,16 +14815,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
-"bjs" = (
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/west,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bjt" = (
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bju" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -14900,19 +14874,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
-"bjJ" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bjK" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bjL" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bjM" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -15176,11 +15137,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/lobby)
-"blg" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "blh" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
@@ -23451,8 +23407,9 @@
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXj" = (
-/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXk" = (
@@ -23523,21 +23480,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
-"bXy" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/gm/river/desert/shallow_corner,
-/area/desert_dam/exterior/river/riverside_central_north)
-"bXz" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/gm/river/desert/shallow_edge/northeast,
-/area/desert_dam/exterior/river/riverside_central_north)
-"bXA" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/west,
-/area/desert_dam/exterior/river/riverside_central_north)
 "bXB" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_mining)
@@ -45580,6 +45522,14 @@
 	},
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_south)
+"hFg" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_central_north)
 "hIO" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -46049,6 +45999,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
+"jCh" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
 "jCJ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall,
@@ -46107,6 +46063,11 @@
 "jOe" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_hydro)
+"jOS" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/gm/river/desert/shallow,
+/area/desert_dam/exterior/river/riverside_central_north)
 "jSS" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -47855,6 +47816,14 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"rgR" = (
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_central_north)
 "rgT" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -47866,6 +47835,11 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/floor/filtrationside/northwest,
 /area/desert_dam/exterior/valley/valley_medical)
+"rks" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/desert_dam/exterior/river/riverside_central_north)
 "rlU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -48871,6 +48845,11 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_civilian)
+"uQu" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/shallow_corner,
+/area/desert_dam/exterior/river/riverside_central_north)
 "uRx" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/blue,
@@ -79635,16 +79614,16 @@ dTs
 dTs
 dTs
 dTs
-bcY
-bcY
+and
+ard
 anb
 bcY
 bdK
 bdt
-aKw
-aZe
-aXS
-bXv
+jOS
+rks
+uQu
+jCh
 bYc
 bTi
 bTi
@@ -79870,16 +79849,16 @@ dTs
 dTs
 dTs
 dTs
-and
-and
+hFg
+rgR
 and
 and
 bek
 bXj
-bdt
-aZe
-bXy
-bYc
+bhk
+bhk
+bhk
+blM
 bTi
 bTi
 bTi
@@ -80109,11 +80088,11 @@ bif
 biS
 bhk
 bhk
-bfQ
-bdK
-bdt
-bXz
-bYc
+bhk
+bhk
+bhk
+bhk
+blM
 bYF
 bYF
 bYF
@@ -80340,13 +80319,13 @@ dTs
 dTs
 bgP
 biw
-biT
-bit
-bjs
-bjJ
-bgj
-bdK
-bXA
+bmv
+bhk
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 biP
@@ -80574,13 +80553,13 @@ dTs
 dTs
 bgQ
 bhi
-bhD
-bia
-bjt
-bjK
-bgj
-asP
-bgT
+bmv
+bhk
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 bki
@@ -80808,13 +80787,13 @@ dTs
 bhH
 bhj
 bhi
-bhD
-bhZ
+bmv
 bhk
-bjL
-bie
-bie
-blg
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 biP
@@ -81042,8 +81021,8 @@ dTs
 bgA
 bgP
 bix
-bhD
-bia
+biT
+bit
 bit
 bjM
 bjM

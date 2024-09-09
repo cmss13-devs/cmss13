@@ -470,7 +470,6 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "\improper CMB Incident Command Center Fax Machine"
-	department = "Colonial Marshal Bureau, Anchorpoint Station"
 	network = "NC4 UA Federal Secure Network - CMB Relay"
 	department = DEPARTMENT_CMB
 
@@ -517,6 +516,38 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"
 
+/obj/structure/machinery/faxmachine/upp
+	name = "\improper UPP Military Fax Machine"
+	department = "UPP Local Operations"
+	network = "UPP Encrypted Network"
+	target_department = DEPARTMENT_UPP
+
+/obj/structure/machinery/faxmachine/upp/highcom
+	department = DEPARTMENT_UPP
+	network = "UPP High Command Quantum Relay"
+	target_department = "UPP Local Operations"
+
+/obj/structure/machinery/faxmachine/clf
+	name = "\improper Hacked General Purpose Fax Machine"
+	department = "CLF Local Operations"
+	network = "Perseus Encrypted Network"
+	target_department = DEPARTMENT_CLF
+
+/obj/structure/machinery/faxmachine/clf/highcom
+	department = DEPARTMENT_CLF
+	network = "Perseus Quantum Relay"
+	target_department = "UPP Local Operations"
+
+/obj/structure/machinery/faxmachine/twe
+	name = "\improper TWE Military Fax Machine"
+	department = "TWE Local Operations"
+	network = "TWE Encrypted Network"
+	target_department = DEPARTMENT_TWE
+
+/obj/structure/machinery/faxmachine/twe/highcom
+	department = DEPARTMENT_TWE
+	network = "TWE High Command Quantum Relay"
+	target_department = "TWE Local Operations"
 
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack

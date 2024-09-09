@@ -10,7 +10,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist","UPP");
+	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
 	phone_id = "UPP High Command";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
@@ -18,6 +18,13 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"bl" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "bT" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/almayer{
@@ -49,6 +56,10 @@
 "gu" = (
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"hh" = (
+/obj/effect/landmark/late_join/responder/upp,
+/turf/open/floor/wood/ship,
+/area/space)
 "id" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
@@ -113,6 +124,19 @@
 "jh" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
+"jG" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = 9
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "jV" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -124,7 +148,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist","TWE");
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
 	phone_id = "TWE High Command";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
@@ -132,6 +156,19 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"kz" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"ny" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/cmb{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "nB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -24
@@ -145,6 +182,13 @@
 "ov" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/command/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"oA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/twe/highcom{
 	pixel_y = 8
 	},
 /turf/open/floor/wood/ship,
@@ -175,7 +219,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist");
+	networks_transmit = list("USCM","Colonist","Fax Responders");
 	phone_id = "USCM High Command";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
@@ -187,6 +231,51 @@
 /obj/effect/landmark/late_join/responder/clf,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"tR" = (
+/turf/open/floor/wood/ship,
+/area/space)
+"uX" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/clf/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"vf" = (
+/obj/item/bedsheet/ce,
+/obj/structure/bed,
+/turf/open/floor/wood/ship,
+/area/space)
+"wx" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "Colonial Marshal";
+	name = "CMB monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "wz" = (
 /turf/closed/wall/r_wall/bunker{
 	hull = 1
@@ -201,6 +290,9 @@
 	hull = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
+"xX" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/space)
 "yv" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
@@ -285,6 +377,25 @@
 "BC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
+"BQ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary{
+	pixel_x = -6;
+	pixel_y = 6;
+	networks_transmit = list("USCM","Colonist","Colonial Marshal","Fax Responders");
+	phone_id = "UPP High Command";
+	phone_category = "Comms Relay";
+	networks_receive = list("Fax Responders");
+	phone_color = "green"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "CT" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -349,7 +460,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC");
+	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
 	phone_id = "Weyland-Yutani Operations Manager";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders")
@@ -373,6 +484,39 @@
 /obj/structure/bed,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"Js" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Almayer","Research","Containment","Containment Hidden");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"Le" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -24
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "NP" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
@@ -385,7 +529,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist");
+	networks_transmit = list("USCM","Colonist","Fax Responders");
 	phone_id = "USCM Provost Office";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
@@ -433,6 +577,17 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"TW" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = -6
+	},
+/obj/item/folder/white,
+/obj/item/folder/white{
+	pixel_x = 6
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "UB" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/brig/provost{
@@ -469,11 +624,26 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Wp" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/corporate/highcom{
+/obj/structure/machinery/faxmachine/upp/highcom{
 	pixel_y = 8
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"Ww" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "XZ" = (
 /obj/effect/landmark/late_join/responder/twe,
 /turf/open/floor/wood/ship,
@@ -489,7 +659,7 @@
 /obj/structure/transmitter/rotary{
 	pixel_x = -6;
 	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist","CLF");
+	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
 	phone_id = "CLF Command";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
@@ -1577,12 +1747,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy
@@ -1624,12 +1794,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+Le
+bl
+hh
+vf
+xX
 Yy
 Yy
 Yy
@@ -1671,12 +1841,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+jG
+tR
+tR
+tR
+xX
 Yy
 Yy
 Yy
@@ -1718,12 +1888,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+ny
+kz
+tR
+BQ
+xX
 Yy
 Yy
 Yy
@@ -1765,12 +1935,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+wx
+Js
+Ww
+TW
+xX
 Yy
 Yy
 Yy
@@ -1812,12 +1982,12 @@ wz
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy
@@ -2124,7 +2294,7 @@ Yy
 Yy
 Yy
 jh
-Wp
+uX
 ST
 gu
 Yv
@@ -2133,7 +2303,7 @@ Yy
 Yy
 Yy
 xc
-Wp
+oA
 ST
 gu
 jV

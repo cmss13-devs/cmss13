@@ -949,10 +949,6 @@
 /datum/chem_property/positive/aiding/process(mob/living/M, potency = 1, delta_time)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.status_flags &= ~DISFIGURED
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.name = H.get_visible_name()
 
 /datum/chem_property/positive/aiding/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.confused = max(M.confused, 20 * potency) //Confusion and some toxins

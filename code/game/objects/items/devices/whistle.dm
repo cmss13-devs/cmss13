@@ -5,7 +5,7 @@
 	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_FACE
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 
 	var/volume = 60
 	var/spam_cooldown_time = 10 SECONDS
@@ -50,7 +50,6 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
-
 
 /obj/item/device/hailer
 	name = "hailer"

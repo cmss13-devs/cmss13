@@ -102,3 +102,6 @@ ARES will periodically report the amount of available tech points on Command Cha
 The quick wield keys generally prioritize wieldable gear going from left to right on your inventory bar.
 Orbital Bombardment warheads respect roofing and hive core protection. They won't hit inside of protected areas.
 The Queen can unbolt and break dropship doors by prying them open, even if they are unlocked. Pilots, Dropship Crew Chiefs, Engineers and Synths can repair these doors with a multitool.
+If you jump out of a dropship with a parachute on (when there is no paradrop system active), you will land at a random location on the map.
+If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
+When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.

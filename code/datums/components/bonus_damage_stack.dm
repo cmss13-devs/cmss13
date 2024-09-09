@@ -60,7 +60,7 @@
 	var/color = COLOR_BONUS_DAMAGE
 	var/intensity = bonus_damage_stacks / (initial(bonus_damage_cap) * 2)
 	// if intensity is too high of a value, the hex code will become invalid
-	color += num2text(BONUS_DAMAGE_MAX_ALPHA * clamp(intensity, 0, 0.5), 1, 16)
+	color += num2text(BONUS_DAMAGE_MAX_ALPHA * clamp(intensity, 0, 0.5), 2, 16)
 	if(parent)
 		var/atom/A = parent
 		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1 + clamp(intensity, 0, 1)))

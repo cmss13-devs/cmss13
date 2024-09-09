@@ -14,10 +14,10 @@
 		/area/almayer/medical/medical_science,
 	)
 
-/datum/cm_objective/retrieve_item/New(T)
-	..()
-	if(T)
-		target_item = T
+/datum/cm_objective/retrieve_item/New(atom/target)
+	. = ..()
+	if(target)
+		target_item = target
 		initial_area = get_area(target_item)
 	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_ref))
 
@@ -74,7 +74,7 @@
 	qdel(src)
 	return
 
-/datum/cm_objective/retrieve_item/fulton/New()
+/datum/cm_objective/retrieve_item/fulton/New(atom/target)
 	. = ..()
 	GLOB.failed_fultons += target_item
 	activate()
@@ -92,10 +92,6 @@
 	clue["location"] = initial_area.name
 
 	return clue
-
-/datum/cm_objective/retrieve_item/fulton/complete()
-	..()
-
 
 // -----------------------------------------------------------
 // *** Documents and data disks after they have been read ***

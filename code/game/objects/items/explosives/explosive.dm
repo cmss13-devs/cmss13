@@ -259,7 +259,7 @@
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
 		return
 
-	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_DANGER("You have no idea how to use this..."))
 		return
 

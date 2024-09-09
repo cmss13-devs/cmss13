@@ -291,17 +291,15 @@
 				if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 		else if(href_list["change_pill"])
-			#define MAX_PILL_SPRITE 20 //max icon state of the pill sprites
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&pill_sprite=[i]\"><img src=\"pill[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Pill Type", "chem_master")
 			return
 		else if(href_list["change_bottle"])
-			#define MAX_BOTTLE_SPRITE 4 //max icon state of the bottle sprites
 			var/dat = "<table>"
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[i]\"><img src=\"bottle-[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "Change Bottle Type", "chem_master")
@@ -345,9 +343,9 @@
 	if(!(user.client in has_sprites))
 		spawn()
 			has_sprites += user.client
-			for(var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to PILL_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "pill" + num2text(i)), "pill[i].png")
-			for(var/i = 1 to MAX_BOTTLE_SPRITE)
+			for(var/i = 1 to BOTTLE_ICON_CHOICES)
 				user << browse_rsc(icon('icons/obj/items/chemistry.dmi', "bottle-" + num2text(i)), "bottle-[i].png")
 	var/dat = ""
 	if(!beaker)
@@ -434,7 +432,7 @@
 	icon_state = "industry_mixer0"
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER
-	req_skill_level = SKILL_ENGINEER_ENGI
+	req_skill_level = SKILL_ENGINEER_TRAINED
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0

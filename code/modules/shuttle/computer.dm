@@ -364,14 +364,47 @@
 	icon_state = "terminal"
 	req_access = list()
 	breakable = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
+	var/override_being_removed = FALSE
+	///How long it takes to unlock the console
+	var/remaining_time = 180 SECONDS 
+
+/obj/structure/machinery/computer/shuttle/lifeboat/ex_act(severity)
+	return
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-		to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
+		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
+			return
+		if(user.action_busy || override_being_removed)
+			return
+		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
+		override_being_removed = TRUE
+		user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+			SPAN_NOTICE("You try to take back control over the lifeboat. It will take around [remaining_time / 10] seconds."))
+		while(remaining_time > 20 SECONDS)
+			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
+				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
+				override_being_removed = FALSE
+				return
+			remaining_time = remaining_time - 20 SECONDS 
+			if(remaining_time > 0)
+				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
+		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		lifeboat.status = LIFEBOAT_ACTIVE
+		lifeboat.available = TRUE
+		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+			SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
+		override_being_removed = FALSE
+		return
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
@@ -451,6 +484,8 @@
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
 			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			launch_initiated = FALSE
+			remaining_time = initial(remaining_time)
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

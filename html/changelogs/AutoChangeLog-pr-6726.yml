@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscdel: "Removed Rapid-Service-Fabricator, rapid construction device and  Rapid-Seed-Producer (old ss13 junk)"

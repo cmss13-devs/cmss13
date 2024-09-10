@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Commanding Officer's M3 Armor (No Pauldrons)", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Commanding Officer's M3 Armor (No Pauldrons)", 0, /obj/item/clothing/suit/storage/marine/MP/CO/no_pauldrons, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Commanding Officer's M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/CO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),

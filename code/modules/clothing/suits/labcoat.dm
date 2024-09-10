@@ -93,12 +93,6 @@
 	icon_state = "green_labcoat"
 	item_state = "green_labcoat"
 
-/obj/item/clothing/suit/storage/labcoat/cmo
-	name = "chief medical officer's labcoat"
-	desc = "Bluer than the standard model."
-	icon_state = "labcoat_cmo"
-	item_state = "labcoat_cmo"
-
 /obj/item/clothing/suit/storage/labcoat/mad
 	name = "The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."

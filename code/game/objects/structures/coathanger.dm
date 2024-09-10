@@ -45,7 +45,5 @@
 	overlays.Cut()
 	if(istype(coat, /obj/item/clothing/suit/storage/labcoat))
 		overlays += image(icon, icon_state = "coat_lab")
-	if(istype(coat, /obj/item/clothing/suit/storage/labcoat/cmo))
-		overlays += image(icon, icon_state = "coat_cmo")
 	if(istype(coat, /obj/item/clothing/suit/storage/det_suit))
 		overlays += image(icon, icon_state = "coat_det")

@@ -243,7 +243,7 @@
 
 	target.revive_grace_period += 4 SECONDS
 	target.visible_message(SPAN_NOTICE("<b>[src]</b> automatically performs <b>CPR</b> on <b>[target]</b>."))
-	target.visible_message(SPAN_DANGER("Currently performing CPR on <b>[target]</b> do not intervene!"))
+	target.balloon_alert_to_viewers("Performing CPR on [target], do not intervene!")
 	currently_healing = TRUE
 	playsound(loc, 'sound/CPRbot/CPR.ogg', 25, 1)
 	cpr_ready = FALSE

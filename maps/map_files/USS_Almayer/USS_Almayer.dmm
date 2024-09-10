@@ -36286,7 +36286,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/upper/fore_hallway)
 "lls" = (
-/obj/structure/filingcabinet/documentation/liaison,
+/obj/structure/filingcabinet,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "llK" = (
@@ -48219,13 +48219,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
-"qiS" = (
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 16;
-	density = 0
-	},
-/turf/open/floor/almayer/red/north,
-/area/almayer/shipboard/brig/processing)
 "qjz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/clipboard,
@@ -80006,7 +79999,7 @@ cmM
 tzd
 tzd
 sgi
-qiS
+bju
 wSm
 kAL
 xkd

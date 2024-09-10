@@ -115,7 +115,7 @@
 		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
 			return PAY_SHORT_ME2
 		else
-			GLOB.data_core.leveled_riflemen_max++
+			GLOB.data_core.leveled_riflemen++
 			return final_paygrade
 	if(!final_paygrade)
 		. = "???"

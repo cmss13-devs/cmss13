@@ -24,6 +24,7 @@
 
 /obj/item/ammo_magazine/revolver/heavy
 	name = "\improper M44 heavy speed loader (.44)"
+	desc = "A revolver speed loader containing heavy bullets. While less damaging overall than the traditional rounds, they are more accurate."
 	default_ammo = /datum/ammo/bullet/revolver/heavy
 	caliber = ".44"
 	ammo_band_color = REVOLVER_TIP_COLOR_HEAVY

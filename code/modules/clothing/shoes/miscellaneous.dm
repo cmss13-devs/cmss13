@@ -141,6 +141,7 @@
 	icon_state = "laceups"
 
 /obj/item/clothing/shoes/laceup/brown
+	name = "brown laceup shoes"
 	icon_state = "laceups_brown"
 
 /obj/item/clothing/shoes/swimmingfins

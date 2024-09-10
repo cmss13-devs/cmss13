@@ -25,7 +25,13 @@
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov, /obj/item/explosive/grenade/flashbang)
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade,
+										/obj/item/explosive/grenade/alien,
+										/obj/item/explosive/grenade/nerve_gas,
+										/obj/item/explosive/grenade/incendiary/bursting_pipe,
+										/obj/item/explosive/grenade/xeno_acid_grenade,
+										/obj/item/explosive/grenade/incendiary/molotov,
+										/obj/item/explosive/grenade/flashbang)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 

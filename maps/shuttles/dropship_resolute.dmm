@@ -1,0 +1,902 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/shuttle/drop3/sulaco)
+"aC" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "89"
+	},
+/area/shuttle/drop3/sulaco)
+"bc" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "37"
+	},
+/area/shuttle/drop3/sulaco)
+"br" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "25"
+	},
+/area/shuttle/drop3/sulaco)
+"cd" = (
+/obj/item/device/radio/intercom/saipan{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop3/sulaco)
+"cB" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"cQ" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "27"
+	},
+/area/shuttle/drop3/sulaco)
+"cX" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "64"
+	},
+/area/shuttle/drop3/sulaco)
+"dl" = (
+/obj/structure/shuttle/part/dropship3/transparent/upper_right_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"eh" = (
+/obj/item/device/radio/intercom/saipan{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop3/sulaco)
+"ey" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "86"
+	},
+/area/shuttle/drop3/sulaco)
+"fb" = (
+/obj/structure/shuttle/part/dropship3/right_inner_wing_connector,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"fh" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/shuttle/drop3/sulaco)
+"gt" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/cameras/dropship/three,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"gD" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "36"
+	},
+/area/shuttle/drop3/sulaco)
+"gF" = (
+/obj/item/device/radio/intercom/saipan{
+	layer = 3.5;
+	pixel_x = 10
+	},
+/turf/closed/shuttle/dropship3{
+	icon_state = "54"
+	},
+/area/shuttle/drop3/sulaco)
+"gK" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "67"
+	},
+/area/shuttle/drop3/sulaco)
+"hO" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "63"
+	},
+/area/shuttle/drop3/sulaco)
+"hV" = (
+/obj/effect/attach_point/crew_weapon/dropship3/floor{
+	attach_id = 8
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"hX" = (
+/obj/effect/attach_point/weapon/dropship3/left_fore,
+/obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"iP" = (
+/obj/structure/shuttle/part/dropship3/lower_right_wall,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"iX" = (
+/obj/effect/attach_point/crew_weapon/dropship3/floor{
+	attach_id = 7
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"jf" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "75"
+	},
+/area/shuttle/drop3/sulaco)
+"jk" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "22"
+	},
+/area/shuttle/drop3/sulaco)
+"jI" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"jP" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/dropship/flight,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"jZ" = (
+/obj/structure/shuttle/part/dropship3/transparent/middle_left_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"kP" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "43"
+	},
+/area/shuttle/drop3/sulaco)
+"lr" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "47"
+	},
+/area/shuttle/drop3/sulaco)
+"ls" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "32"
+	},
+/area/shuttle/drop3/sulaco)
+"lH" = (
+/obj/effect/attach_point/weapon/dropship3/right_fore,
+/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"mg" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "39"
+	},
+/area/shuttle/drop3/sulaco)
+"nq" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "81"
+	},
+/area/shuttle/drop3/sulaco)
+"nB" = (
+/obj/item/device/radio/intercom/saipan{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop3/sulaco)
+"nI" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "18"
+	},
+/area/shuttle/drop3/sulaco)
+"og" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_three{
+	dir = 4;
+	pixel_x = -16
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"pg" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "77"
+	},
+/area/shuttle/drop3/sulaco)
+"qP" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3{
+	dir = 1;
+	id = "starboard_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"qU" = (
+/obj/docking_port/mobile/marine_dropship/saipan,
+/turf/closed/shuttle/dropship3{
+	icon_state = "53"
+	},
+/area/shuttle/drop3/sulaco)
+"rb" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "73"
+	},
+/area/shuttle/drop3/sulaco)
+"rB" = (
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_right,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"sJ" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"tm" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "50"
+	},
+/area/shuttle/drop3/sulaco)
+"tJ" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "76"
+	},
+/area/shuttle/drop3/sulaco)
+"tP" = (
+/obj/structure/shuttle/part/dropship3/nose_front_left,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"ul" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "19"
+	},
+/area/shuttle/drop3/sulaco)
+"uD" = (
+/obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"uH" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/three{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"vm" = (
+/obj/structure/shuttle/part/dropship3/transparent/upper_left_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"vo" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "23"
+	},
+/area/shuttle/drop3/sulaco)
+"wl" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "34"
+	},
+/area/shuttle/drop3/sulaco)
+"wr" = (
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"wt" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "48"
+	},
+/area/shuttle/drop3/sulaco)
+"wW" = (
+/obj/structure/shuttle/part/dropship3/lower_left_wall,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"wY" = (
+/obj/structure/shuttle/part/dropship3/left_inner_wing_connector,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"xi" = (
+/obj/item/device/radio/intercom/saipan{
+	layer = 3.5;
+	pixel_x = 21;
+	pixel_y = 43
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"xB" = (
+/obj/effect/attach_point/weapon/dropship3/left_wing,
+/obj/structure/shuttle/part/dropship3/transparent/lower_left_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"yM" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "69"
+	},
+/area/shuttle/drop3/sulaco)
+"yQ" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "35"
+	},
+/area/shuttle/drop3/sulaco)
+"zW" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3{
+	id = "port_door";
+	dir = 2
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"BR" = (
+/obj/structure/machinery/door_control{
+	id = "dropship_saipan";
+	name = "Dropship Lockdown";
+	normaldoorcontrol = 3;
+	pixel_y = -19;
+	req_one_access_txt = "3;22";
+	throw_range = 15
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/area/shuttle/drop3/sulaco)
+"Cz" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"Dx" = (
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_left,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"El" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "59"
+	},
+/area/shuttle/drop3/sulaco)
+"EG" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "98"
+	},
+/area/shuttle/drop3/sulaco)
+"FG" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "68"
+	},
+/area/shuttle/drop3/sulaco)
+"FV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"Gl" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"GH" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "26"
+	},
+/area/shuttle/drop3/sulaco)
+"Hm" = (
+/obj/structure/shuttle/part/dropship3/nose_front_right,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Hu" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "72"
+	},
+/area/shuttle/drop3/sulaco)
+"HF" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "97"
+	},
+/area/shuttle/drop3/sulaco)
+"HW" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "24"
+	},
+/area/shuttle/drop3/sulaco)
+"Iu" = (
+/obj/effect/attach_point/fuel/dropship3{
+	dir = 1;
+	attach_id = 10
+	},
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "28"
+	},
+/area/shuttle/drop3/sulaco)
+"IF" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "51"
+	},
+/area/shuttle/drop3/sulaco)
+"Jc" = (
+/obj/effect/attach_point/weapon/dropship3/right_wing,
+/obj/structure/shuttle/part/dropship3/transparent/lower_right_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Kc" = (
+/obj/structure/shuttle/part/dropship3/right_outer_wing_connector,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Kn" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "83"
+	},
+/area/shuttle/drop3/sulaco)
+"KR" = (
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop3/sulaco)
+"Mj" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "94"
+	},
+/area/shuttle/drop3/sulaco)
+"Mu" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "38"
+	},
+/area/shuttle/drop3/sulaco)
+"MM" = (
+/obj/structure/shuttle/part/dropship3/transparent/right_inner_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"MR" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "31"
+	},
+/area/shuttle/drop3/sulaco)
+"Na" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "80"
+	},
+/area/shuttle/drop3/sulaco)
+"Nf" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Ns" = (
+/obj/structure/shuttle/part/dropship3/transparent/middle_right_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Nt" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "14"
+	},
+/area/shuttle/drop3/sulaco)
+"NV" = (
+/obj/effect/attach_point/electronics/dropship3{
+	dir = 1;
+	attach_id = 6
+	},
+/obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Of" = (
+/obj/effect/attach_point/crew_weapon/dropship3/floor{
+	attach_id = 9
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"OK" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_three{
+	pixel_x = 8;
+	pixel_y = -16
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"OU" = (
+/obj/structure/shuttle/part/dropship3/bottom_right_wall,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"OZ" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "29"
+	},
+/area/shuttle/drop3/sulaco)
+"Pb" = (
+/obj/structure/shuttle/part/dropship3/bottom_left_wall,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Pc" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"Pv" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "30"
+	},
+/area/shuttle/drop3/sulaco)
+"PS" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "78"
+	},
+/area/shuttle/drop3/sulaco)
+"PY" = (
+/obj/structure/shuttle/part/dropship3/left_outer_wing_connector,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Qy" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"QI" = (
+/obj/structure/machinery/computer/dropship_weapons/dropship3,
+/obj/structure/transmitter/rotary{
+	name = "saipan Telephone";
+	phone_category = "Dropship";
+	phone_id = "saipan";
+	pixel_x = 11;
+	pixel_y = 16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"Rj" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "92"
+	},
+/area/shuttle/drop3/sulaco)
+"Rn" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "82"
+	},
+/area/shuttle/drop3/sulaco)
+"Sj" = (
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Sx" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"SD" = (
+/turf/template_noop,
+/area/template_noop)
+"SH" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_three{
+	dir = 8;
+	pixel_x = 16
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"SM" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "10"
+	},
+/area/shuttle/drop3/sulaco)
+"SP" = (
+/obj/effect/attach_point/electronics/dropship3{
+	dir = 1
+	},
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Tc" = (
+/obj/structure/shuttle/part/dropship3/transparent/nose_center,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Tq" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap,
+/turf/template_noop,
+/area/shuttle/drop3/sulaco)
+"Tx" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds3{
+	id = "aft_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"TZ" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "42"
+	},
+/area/shuttle/drop3/sulaco)
+"Vf" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "62"
+	},
+/area/shuttle/drop3/sulaco)
+"Vl" = (
+/obj/item/device/radio/intercom/saipan{
+	layer = 3.5;
+	pixel_x = -10
+	},
+/turf/closed/shuttle/dropship3{
+	icon_state = "52"
+	},
+/area/shuttle/drop3/sulaco)
+"VM" = (
+/obj/effect/attach_point/fuel/dropship3{
+	dir = 1;
+	pixel_x = -32;
+	attach_id = 11
+	},
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "33"
+	},
+/area/shuttle/drop3/sulaco)
+"VQ" = (
+/turf/closed/shuttle/dropship3{
+	icon_state = "56"
+	},
+/area/shuttle/drop3/sulaco)
+"Zk" = (
+/turf/closed/shuttle/dropship3/transparent{
+	icon_state = "96"
+	},
+/area/shuttle/drop3/sulaco)
+
+(1,1,1) = {"
+SD
+SD
+SD
+SD
+SD
+vm
+jZ
+xB
+SD
+SD
+SD
+SD
+SD
+Sx
+wl
+Iu
+jk
+Nf
+SD
+SD
+SD
+"}
+(2,1,1) = {"
+SD
+SD
+SD
+hX
+jf
+Hu
+gK
+Vf
+Cz
+zW
+Vl
+tm
+wW
+Tq
+yQ
+OZ
+vo
+jI
+SD
+SD
+Sj
+"}
+(3,1,1) = {"
+SD
+SD
+SD
+SP
+tJ
+Pc
+og
+Pc
+Cz
+Cz
+Pc
+cB
+lr
+TZ
+gD
+Pv
+HW
+nI
+Pb
+SD
+wr
+"}
+(4,1,1) = {"
+Dx
+tP
+Rj
+ey
+pg
+eh
+sJ
+sJ
+sJ
+sJ
+sJ
+fh
+Pc
+Qy
+Pc
+cB
+Pc
+cB
+SM
+wY
+PY
+"}
+(5,1,1) = {"
+Tc
+Zk
+gt
+OK
+PS
+KR
+Pc
+cB
+Pc
+cB
+Pc
+KR
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+Tx
+SD
+SD
+"}
+(6,1,1) = {"
+Tc
+HF
+jP
+xi
+uH
+BR
+FG
+hO
+El
+VQ
+qU
+cd
+sJ
+iX
+sJ
+hV
+sJ
+Of
+Cz
+SD
+SD
+"}
+(7,1,1) = {"
+Tc
+EG
+QI
+Gl
+Na
+KR
+Pc
+cB
+Pc
+cB
+Pc
+KR
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+Cz
+SD
+SD
+"}
+(8,1,1) = {"
+rB
+Hm
+Mj
+aC
+nq
+nB
+sJ
+sJ
+sJ
+sJ
+sJ
+ai
+Pc
+FV
+SH
+cB
+Pc
+cB
+Nt
+fb
+Kc
+"}
+(9,1,1) = {"
+SD
+SD
+SD
+NV
+Rn
+Pc
+cB
+Pc
+Cz
+Cz
+Pc
+cB
+wt
+kP
+bc
+MR
+br
+ul
+OU
+SD
+MM
+"}
+(10,1,1) = {"
+SD
+SD
+SD
+lH
+Kn
+rb
+yM
+cX
+Cz
+qP
+gF
+IF
+iP
+Sx
+Mu
+ls
+GH
+Nf
+SD
+SD
+uD
+"}
+(11,1,1) = {"
+SD
+SD
+SD
+SD
+SD
+dl
+Ns
+Jc
+SD
+SD
+SD
+SD
+SD
+Tq
+mg
+VM
+cQ
+jI
+SD
+SD
+SD
+"}

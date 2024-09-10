@@ -108,13 +108,13 @@
 			if(ghost && (!check_client || ghost.client) && (!check_can_reenter || ghost.can_reenter_corpse))
 				return ghost
 
-/mob/living/carbon/human/proc/is_revivable()
+/mob/living/carbon/human/proc/is_revivable(ignore_heart = FALSE)
 	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
 		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 	var/obj/limb/head = get_limb("head")
 
-	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.organ_status >= ORGAN_BROKEN || !has_brain() || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !ignore_heart && (!heart || heart.organ_status >= ORGAN_BROKEN) || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
 	return TRUE
 

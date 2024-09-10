@@ -454,7 +454,7 @@
 /datum/chem_property/negative/opioid
 	name = PROPERTY_OPIOID
 	code = "OPD"
-	description = "This chemical contains opiate traces , making it highly addictive"
+	description = "This chemical contains opiate traces, making it highly addictive."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_METABOLITE
 

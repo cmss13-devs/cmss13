@@ -6,7 +6,7 @@
 
 /obj/effect/landmark/wo_supplies/New()
 	..()
-	if(stuff.len)
+	if(length(stuff))
 		for(var/s in stuff)
 			var/amt = rand(amount[1], amount[2])
 			for(var/i = 1, i <= amt, i++)
@@ -106,7 +106,6 @@
 
 
 /obj/effect/landmark/wo_supplies/storage
-	icon = 'icons/obj/items/storage.dmi'
 	icon_state = null
 	amount = list(1,5)
 
@@ -117,6 +116,7 @@
 
 /obj/effect/landmark/wo_supplies/storage/machete
 	icon_state = "machete_holster_full"
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	stuff = list(/obj/item/storage/large_holster/machete/full)
 
 /obj/effect/landmark/wo_supplies/storage/m56d
@@ -126,15 +126,18 @@
 
 /obj/effect/landmark/wo_supplies/storage/mines
 	icon_state = "minebox"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	stuff = list(/obj/item/storage/box/explosive_mines)
 
 /obj/effect/landmark/wo_supplies/storage/grenades
 	amount = list(0,2)
 	icon_state = "nade_placeholder"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	stuff = list(/obj/item/storage/box/nade_box)
 
 /obj/effect/landmark/wo_supplies/storage/m37holster
 	icon_state = "m37_holster"
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	stuff = list(/obj/item/storage/large_holster/m37)
 
 /obj/effect/landmark/wo_supplies/storage/belts

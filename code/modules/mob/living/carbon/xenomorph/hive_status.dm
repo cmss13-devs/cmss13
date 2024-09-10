@@ -292,15 +292,15 @@
 	//No leaders for a Hive without a Queen!
 	queen_leader_limit = living_xeno_queen ? 4 : 0
 
-	if (xeno_leader_list.len > queen_leader_limit)
+	if (length(xeno_leader_list) > queen_leader_limit)
 		var/diff = 0
-		for (var/i in queen_leader_limit + 1 to xeno_leader_list.len)
+		for (var/i in queen_leader_limit + 1 to length(xeno_leader_list))
 			if(!open_xeno_leader_positions.Remove(i))
 				remove_hive_leader(xeno_leader_list[i])
 			diff++
 		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
-	else if (xeno_leader_list.len < queen_leader_limit)
-		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
+	else if (length(xeno_leader_list) < queen_leader_limit)
+		for (var/i in length(xeno_leader_list) + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
 
@@ -309,7 +309,7 @@
 /datum/hive_status/proc/add_hive_leader(mob/living/carbon/xenomorph/xeno)
 	if(!xeno)
 		return FALSE //How did this even happen?
-	if(!open_xeno_leader_positions.len)
+	if(!length(open_xeno_leader_positions))
 		return FALSE //Too many leaders already (no available xeno leader positions)
 	if(xeno.hive_pos != NORMAL_XENO)
 		return FALSE //Already on the list
@@ -342,7 +342,7 @@
 
 	// Need to maintain ascending order of open_xeno_leader_positions
 	for (var/i in 1 to queen_leader_limit)
-		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
+		if (i > length(open_xeno_leader_positions) || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 
@@ -595,16 +595,16 @@
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	var/effective_total = round(burrowed_factor)
+	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -626,7 +626,7 @@
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
 		return FALSE
-	if(hive_structures[structure_name] && hive_structures[structure_name].len)
+	if(LAZYLEN(hive_structures[structure_name]))
 		return TRUE
 	return FALSE
 
@@ -636,7 +636,7 @@
 	var/name_ref = initial(S.template.name)
 	if(!hive_constructions[name_ref])
 		hive_constructions[name_ref] = list()
-	if(hive_constructions[name_ref].len >= hive_structures_limit[name_ref])
+	if(length(hive_constructions[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
 	hive_constructions[name_ref] += src
 	return TRUE
@@ -654,7 +654,7 @@
 	var/name_ref = initial(S.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()
-	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
+	if(length(hive_structures[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
 	hive_structures[name_ref] += S
 	return TRUE
@@ -667,9 +667,9 @@
 	return TRUE
 
 /datum/hive_status/proc/has_special_structure(name_ref)
-	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
+	if(!name_ref || !LAZYLEN(hive_structures[name_ref]))
 		return 0
-	return hive_structures[name_ref].len
+	return length(hive_structures[name_ref])
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
@@ -686,7 +686,7 @@
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
+				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
@@ -696,7 +696,7 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
+				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
@@ -726,7 +726,7 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
@@ -832,7 +832,7 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
+	playable_hugger_limit = max(floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -844,10 +844,10 @@
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
 	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
-	if(totalXenos.len <= 0)
+	if(length(totalXenos) <= 0)
 		//This is to prevent people from joining as Forsaken Huggers on the pred ship
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
@@ -874,6 +874,13 @@
 
 	return TRUE
 
+/datum/hive_status/proc/get_current_playable_facehugger_count()
+	var/count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(isfacehugger(mob))
+			count++
+	return count
+
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
 	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
@@ -888,7 +895,7 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
+	lesser_drone_limit = max(floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -899,11 +906,11 @@
 		return FALSE
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(totalXenos.len <= 0)
+	if(length(totalXenos) <= 0)
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 
@@ -1192,8 +1199,8 @@
 	reporting_id = "renegade"
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
-	color = "#9c7a4d"
-	ui_color ="#80705c"
+	color = "#ffae00"
+	ui_color ="#ad732c"
 
 	dynamic_evolution = FALSE
 	allow_queen_evolve = FALSE

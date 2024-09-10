@@ -42,6 +42,23 @@
 
 	CEI.handle_event_info_update(faction)
 
+/client/proc/get_whitelisted_clients()
+	set name = "Find Whitelisted Players"
+	set category = "Admin.Events"
+	if(!admin_holder)
+		return
+	
+	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+
+	var/list/ckeys = list()
+	for(var/client/test_client in GLOB.clients)
+		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
+			ckeys += test_client.ckey
+	if(!length(ckeys))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		return
+	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
+
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return
@@ -81,6 +98,8 @@
 
 /client/proc/handle_bomb_drop(atom/epicenter)
 	var/custom_limit = 5000
+	var/power_warn_threshold = 500
+	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
@@ -113,6 +132,11 @@
 
 			if(power > custom_limit)
 				return
+
+			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
+				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
+					return
+
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
 			message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_admins("[ckey] used 'Drop Bomb' at [epicenter.loc].")
@@ -438,7 +462,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0 || hive.total_dead_xenos.len > 0)
+		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -492,8 +516,8 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			if(H.wear_id)
-				var/obj/item/card/id/card = H.wear_id
+			var/obj/item/card/id/card = H.get_idcard()
+			if(card)
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 
@@ -711,7 +735,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	remote_control = !remote_control

@@ -35,7 +35,7 @@
 		if (D.id == id)
 			targets += D
 
-	if(targets.len == 0)
+	if(length(targets) == 0)
 		stat |= BROKEN
 	update_icon()
 
@@ -203,7 +203,7 @@
 		if(F.id == id)
 			targets += F
 	if(has_wall_divider)
-		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in ORANGE_TURFS(8, src))
 			targets += W
 
 /obj/structure/machinery/door_display/research_cell/Destroy()

@@ -3,14 +3,10 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "b" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/escapepod/floor8,
 /area/shuttle/trijent_shuttle/elevator)
 "c" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor9"
-	},
+/turf/open/shuttle/escapepod/floor9,
 /area/shuttle/trijent_shuttle/elevator)
 "d" = (
 /turf/closed/shuttle/elevator{
@@ -28,9 +24,7 @@
 	dir = 4;
 	id = "east"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/trijent_shuttle/elevator)
 "k" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller,
@@ -44,11 +38,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "n" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 26;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/tool/wirecutters{
 	pixel_y = -7
 	},
@@ -105,9 +95,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/shuttle/escapepod{
-	icon_state = "floor11"
-	},
+/turf/open/shuttle/escapepod/floor11,
 /area/shuttle/trijent_shuttle/elevator)
 "A" = (
 /turf/closed/shuttle/elevator{
@@ -137,9 +125,7 @@
 	dir = 4;
 	id = "west"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/trijent_shuttle/elevator)
 "O" = (
 /obj/item/limb/hand/r_hand,
@@ -154,9 +140,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "Q" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor11"
-	},
+/turf/open/shuttle/escapepod/floor11,
 /area/shuttle/trijent_shuttle/elevator)
 "R" = (
 /obj/structure/bed/chair/dropship/passenger,
@@ -185,14 +169,10 @@
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "W" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor12"
-	},
+/turf/open/shuttle/escapepod/floor12,
 /area/shuttle/trijent_shuttle/elevator)
 "Y" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/escapepod/floor7,
 /area/shuttle/trijent_shuttle/elevator)
 
 (1,1,1) = {"

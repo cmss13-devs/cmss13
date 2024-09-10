@@ -107,7 +107,7 @@
 						knock_chance += 2 * attacking_xeno.frenzy_aura
 					if(attacking_xeno.caste && attacking_xeno.caste.is_intelligent)
 						knock_chance += 2
-					knock_chance += min(round(damage * 0.25), 10) //Maximum of 15% chance.
+					knock_chance += min(floor(damage * 0.25), 10) //Maximum of 15% chance.
 					if(prob(knock_chance))
 						playsound(loc, "alien_claw_metal", 25, 1)
 						attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] smashes off [src]'s [wear_mask.name]!"), \
@@ -258,14 +258,16 @@
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
+			M.animation_attack_on(src)
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				M.animation_attack_on(src)
+
 				M.visible_message(SPAN_DANGER("[M] lunges at [src]!"), \
 				SPAN_DANGER("We lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
+			handle_blood_splatter(get_dir(M.loc, loc))
 			last_damage_data = create_cause_data(initial(M.name), M)
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -504,7 +506,7 @@
 //Slashing fences
 /obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
-	var/damage_dealt = 5
+	var/damage_dealt = 25
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
 	SPAN_DANGER("We mangle [src]!"), \
 	SPAN_DANGER("We hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
@@ -798,6 +800,8 @@
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
+		if(shuttle_tag == DROPSHIP_SAIPAN)
+			ship_id = "sh_dropship3"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)
@@ -925,7 +929,7 @@
 		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
-	health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
+	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
 	if(health <= 0)
 		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)

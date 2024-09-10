@@ -1,10 +1,20 @@
-import { useBackend, useLocalState } from '../backend';
-import { Section, Flex, ProgressBar, Box, Button, Tabs, Stack, Input } from '../components';
 import { capitalize } from 'common/string';
+import { Fragment, useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
-import { ElectricalPanel } from './common/ElectricalPanel';
-import { Fragment } from 'react';
 import { createLogger } from '../logging';
+import { ElectricalPanel } from './common/ElectricalPanel';
 
 export const Autolathe = () => {
   const { act, data } = useBackend();
@@ -49,7 +59,8 @@ const MaterialsData = (props) => {
           <Flex.Item key={category} grow>
             <ProgressBar
               width="99%"
-              value={materials[category] / capacity[category]}>
+              value={materials[category] / capacity[category]}
+            >
               <Box textAlign="center">
                 {capitalize(category)}: {materials[category]}/
                 {capacity[category]}
@@ -77,7 +88,9 @@ const CurrentlyMaking = (props) => {
   return (
     <>
       <Box height="5px" />
-      <Button fluid textAlign="center" content={MakingName} />
+      <Button fluid textAlign="center">
+        {MakingName}
+      </Button>
     </>
   );
 };
@@ -100,14 +113,12 @@ const QueueList = (props) => {
           <Flex.Item key={index}>
             <Flex direction="row">
               <Flex.Item>
-                <Button
-                  content={
-                    item.index +
+                <Button>
+                  {item.index +
                     ': ' +
                     capitalize(item.name) +
-                    (item.multiplier > 1 ? ' (x' + item.multiplier + ')' : '')
-                  }
-                />
+                    (item.multiplier > 1 ? ' (x' + item.multiplier + ')' : '')}
+                </Button>
                 <Box width="5px" />
               </Flex.Item>
               <Flex.Item>
@@ -146,22 +157,19 @@ const PrintablesSection = (props) => {
     queuemax,
   } = data;
 
-  const [currentSearch, setSearch] = useLocalState('current_search', '');
+  const [currentSearch, setSearch] = useState('');
 
   const categories = [];
   printables
     .filter((x) => categories.includes(x.recipe_category))
     .map((x) => x.recipe_category);
 
-  const [currentCategory, setCategory] = useLocalState(
-    'current_category',
-    'All'
-  );
+  const [currentCategory, setCategory] = useState('All');
 
   const filteredPrintables = printables.filter(
     (val) =>
       (val.recipe_category === currentCategory || currentCategory === 'All') &&
-      val.name.toLowerCase().match(currentSearch)
+      val.name.toLowerCase().match(currentSearch),
   );
 
   return (
@@ -174,7 +182,8 @@ const PrintablesSection = (props) => {
                 <Tabs.Tab
                   selected={val === currentCategory}
                   onClick={() => setCategory(val)}
-                  key={val}>
+                  key={val}
+                >
                   {val}
                 </Tabs.Tab>
               ))}
@@ -198,7 +207,6 @@ const PrintablesSection = (props) => {
                     <Flex.Item grow>
                       <Button
                         fluid
-                        content={capitalize(val.name)}
                         disabled={!val.can_make}
                         color={val.hidden ? 'red' : null}
                         onClick={() =>
@@ -206,13 +214,15 @@ const PrintablesSection = (props) => {
                             index: val.index,
                             multiplier: 1,
                           })
-                        }>
-                        {' (' + // sorry for this shitcode, also yes this will break if an autolathe uses more than 2 material types
+                        }
+                      >
+                        {capitalize(val.name) +
+                          ' (' + // sorry for this shitcode, also yes this will break if an autolathe uses more than 2 material types
                           (val.materials[Object.keys(materials)[0]] &&
                           val.materials[Object.keys(materials)[1]]
                             ? val.materials[Object.keys(materials)[0]] +
-                            ', ' +
-                            val.materials[Object.keys(materials)[1]]
+                              ', ' +
+                              val.materials[Object.keys(materials)[1]]
                             : val.materials[Object.keys(materials)[0]]
                               ? val.materials[Object.keys(materials)[0]]
                               : val.materials[Object.keys(materials)[1]]) +
@@ -231,17 +241,18 @@ const PrintablesSection = (props) => {
                                   {index !== 0 ? <Box width="2.5px" /> : null}
                                   <Flex.Item>
                                     <Button
-                                      content={'x' + entry}
                                       onClick={() =>
                                         act('make', {
                                           index: val.index,
                                           multiplier: entry,
                                         })
                                       }
-                                    />
+                                    >
+                                      {'x' + entry}
+                                    </Button>
                                   </Flex.Item>
                                 </Fragment>
-                              )
+                              ),
                             )}
                           </Flex>
                         </Flex.Item>

@@ -22,6 +22,8 @@
 		verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
+	if(!anchored && is_ground_level(z) && prob(70))
+		anchored = TRUE
 
 /obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -32,7 +34,7 @@
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc) return
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else

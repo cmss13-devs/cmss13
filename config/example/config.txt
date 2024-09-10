@@ -253,3 +253,8 @@ GAMEMODE_DEFAULT Extended
 CLIENT_ERROR_VERSION 514
 #CLIENT_ERROR_BUILD 1589
 #CLIENT_ERROR_MESSAGE Your version of BYOND is too old, may have issues, and is blocked from accessing this server.
+
+## GITHUB API
+#GITHUB_APP_API
+#REPO_NAME cmss13
+#ORG cmss13-devs

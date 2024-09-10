@@ -81,8 +81,8 @@
 				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
-				I = C.wear_id
-				if(istype(I))
+				I = C.get_idcard()
+				if(I)
 					if(check_access(I)) authenticated = 1
 					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
@@ -117,8 +117,8 @@
 				var/obj/item/card/id/idcard = human_user.get_active_hand()
 				var/bio_fail = FALSE
 				if(!istype(idcard))
-					idcard = human_user.wear_id
-				if(!istype(idcard))
+					idcard = human_user.get_idcard()
+				if(idcard)
 					bio_fail = TRUE
 				else if(!idcard.check_biometrics(human_user))
 					bio_fail = TRUE
@@ -134,7 +134,7 @@
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
 				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in view(1,src)))
+				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in dview(1, src)))
 					return FALSE
 
 				marine_announcement(input)
@@ -171,8 +171,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
@@ -302,7 +302,7 @@
 					to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
 					return FALSE
 				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) return FALSE
+				if(!input || !(usr in dview(1, src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) return FALSE
 
 				high_command_announce(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
@@ -366,7 +366,7 @@
 						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 					dat += "<BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-					dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+					dat += length(GLOB.admins) > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
@@ -393,7 +393,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
+			for(var/i = 1; i<=length(messagetitle); i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
@@ -466,7 +466,7 @@
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
+			for(var/i = 1; i<=length(messagetitle); i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)

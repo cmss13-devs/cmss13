@@ -62,7 +62,7 @@ GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")
-	msg = "[text], AQ:[queries_active.len]; SQ:[queries_standby.len]; P:[queries_current.len]; C:[in_callback]"
+	msg = "[text], AQ:[length(queries_active)]; SQ:[length(queries_standby)]; P:[length(queries_current)]; C:[in_callback]"
 	return ..()
 
 /datum/controller/subsystem/database_query_manager/fire(resumed = FALSE)

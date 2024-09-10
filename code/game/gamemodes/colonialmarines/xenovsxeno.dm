@@ -44,8 +44,8 @@
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
-		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+		if(length(monkey_types))
+			for(var/i = min(floor(monkey_amount*length(GLOB.clients)), length(GLOB.monkey_spawns)), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
@@ -265,7 +265,7 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
 		GLOB.round_statistics.log_round_statistics()
 

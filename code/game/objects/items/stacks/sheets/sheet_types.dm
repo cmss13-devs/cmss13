@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT_TYPED(metal_recipes, /datum/stack_recipe, list ( \
  * Plasteel
  */
 GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 8, time = 4 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
+	new/datum/stack_recipe("folding plasteel barricade", /obj/structure/barricade/plasteel, 8, time = 4 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/metal/plasteel, 6, time = 8 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 2 SECONDS),
 	null, \
 	new/datum/stack_recipe("reinforced window frame", /obj/structure/window_frame/colony/reinforced, 5, time = 40, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI),
 	null, \
@@ -311,6 +312,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
 		new/datum/stack_recipe("empty box of M89 Signal Flare Packs", /obj/item/ammo_box/magazine/misc/flares/signal/empty), \
 		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
+		new/datum/stack_recipe("empty box of combat flashlights", /obj/item/ammo_box/magazine/misc/flashlight/combat/empty), \
 		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (Desert Eagle)", /obj/item/ammo_box/magazine/deagle/empty), \
@@ -327,6 +329,34 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (AR10)", /obj/item/ammo_box/magazine/ar10/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (MP5)", /obj/item/ammo_box/magazine/mp5/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MAR30)", /obj/item/ammo_box/magazine/mar30/empty), \
+		new/datum/stack_recipe("empty magazine box (MAR30 EX)", /obj/item/ammo_box/magazine/mar30/ext/empty), \
+		new/datum/stack_recipe("empty magazine box (MAR50)", /obj/item/ammo_box/magazine/mar50/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (UZI)", /obj/item/ammo_box/magazine/uzi/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MAC-15)", /obj/item/ammo_box/magazine/mac15/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MP27)", /obj/item/ammo_box/magazine/mp27/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (M1911)", /obj/item/ammo_box/magazine/m1911/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (MK-45)", /obj/item/ammo_box/magazine/mk45/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (KT-42)", /obj/item/ammo_box/magazine/kt42/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Beretta 92FS)", /obj/item/ammo_box/magazine/b92fs/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (FN FP9000)", /obj/item/ammo_box/magazine/fp9000/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Type19)", /obj/item/ammo_box/magazine/type19/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (ZhNK-72)", /obj/item/ammo_box/magazine/zhnk/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (Type64 Bizon)", /obj/item/ammo_box/magazine/type64/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (S&W .38)", /obj/item/ammo_box/magazine/snw/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (NSG 23)", /obj/item/ammo_box/magazine/nsg23/empty), \
 		new/datum/stack_recipe("empty magazine box (NSG 23 AP)", /obj/item/ammo_box/magazine/nsg23/ap/empty), \

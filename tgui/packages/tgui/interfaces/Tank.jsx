@@ -1,6 +1,14 @@
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
-import { Button, LabeledControls, NoticeBox, NumberInput, RoundGauge, Section } from '../components';
+import {
+  Button,
+  LabeledControls,
+  NoticeBox,
+  NumberInput,
+  RoundGauge,
+  Section,
+} from '../components';
 import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
 
@@ -48,9 +56,10 @@ export const Tank = (props) => {
                 value={parseFloat(data.ReleasePressure)}
                 width="65px"
                 unit="kPa"
+                step={1}
                 minValue={data.minReleasePressure}
                 maxValue={data.maxReleasePressure}
-                onChange={(e, value) =>
+                onChange={(value) =>
                   act('pressure', {
                     pressure: value,
                   })
@@ -67,7 +76,6 @@ export const Tank = (props) => {
               />
               <Button
                 icon="undo"
-                content=""
                 disabled={data.ReleasePressure === data.defaultReleasePressure}
                 onClick={() =>
                   act('pressure', {
@@ -84,10 +92,11 @@ export const Tank = (props) => {
                 fontSize="11px"
                 disabled={!data.mask_connected}
                 color={data.valve_open ? 'danger' : null}
-                content={data.valve_open ? 'Open' : 'Closed'}
                 icon={data.valve_open ? 'lock-open' : 'lock'}
                 onClick={() => act('valve')}
-              />
+              >
+                {data.valve_open ? 'Open' : 'Closed'}
+              </Button>
             </LabeledControls.Item>
           </LabeledControls>
         </Section>

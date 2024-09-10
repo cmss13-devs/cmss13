@@ -87,7 +87,9 @@ $mandatory-color: rgb(128, 83, 0);
     display: block;
     &:hover,
     &:focus {
-      transition: colors.$primary 0ms, background-color 0ms;
+      transition:
+        colors.$primary 0ms,
+        background-color 0ms;
       background-color: colors.$primary;
     }
 
@@ -102,10 +104,14 @@ $mandatory-color: rgb(128, 83, 0);
   .RecommendedVendButton {
     background-color: rgba($recommended-color, $button-bg-opacity);
     border: 1px solid rgba($recommended-color, 1);
-    transition: $recommended-color 50ms, background-color 50ms;
+    transition:
+      $recommended-color 50ms,
+      background-color 50ms;
     &:hover,
     &:focus {
-      transition: $recommended-color 0ms, background-color 0ms;
+      transition:
+        $recommended-color 0ms,
+        background-color 0ms;
       background-color: $recommended-color;
     }
   }
@@ -113,12 +119,16 @@ $mandatory-color: rgb(128, 83, 0);
   .MandatoryVendButton {
     background-color: rgba($mandatory-color, $button-bg-opacity);
     border: 1px solid rgba($mandatory-color, 1);
-    transition: $mandatory-color 50ms, background-color 50ms;
+    transition:
+      $mandatory-color 50ms,
+      background-color 50ms;
 
     &:hover,
     &:focus {
       background-color: $mandatory-color;
-      transition: $mandatory-color 0ms, background-color 0ms;
+      transition:
+        $mandatory-color 0ms,
+        background-color 0ms;
     }
   }
 
@@ -133,10 +143,6 @@ $mandatory-color: rgb(128, 83, 0);
 
   .ButtonCell {
     width: 100%;
-  }
-
-  .ItemTable {
-    width: 95vw;
   }
 
   .IconCell {
@@ -170,6 +176,11 @@ $mandatory-color: rgb(128, 83, 0);
 
   .RegularItemText {
     color: white;
+  }
+
+  .SmallIcon {
+    min-width: 20px;
+    max-width: 20px;
   }
 
   .MandatoryItemText {

@@ -50,7 +50,7 @@
 	pixel_x = -16
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
-
+	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -90,7 +90,7 @@
 /datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
+	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(slash_charge_cdr)
 

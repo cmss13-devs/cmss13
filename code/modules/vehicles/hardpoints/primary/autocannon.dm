@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/autocannon
-	name = "AC3-E Autocannon"
+	name = "\improper AC3-E Autocannon"
 	desc = "A primary autocannon for tanks that shoots explosive flak rounds"
 
 	icon_state = "ace_autocannon"
@@ -9,8 +9,6 @@
 
 	health = 500
 	firing_arc = 60
-
-	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ace_autocannon
 	max_clips = 2

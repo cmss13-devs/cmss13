@@ -7,6 +7,15 @@
 	plasma internally. Bear that in mind. -4khan
 */
 
+/mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
+
 /datum/action/xeno_action/onclick/plant_weeds
 	name = "Plant Weeds (75)"
 	ability_name = "Plant Weeds"
@@ -485,6 +494,7 @@
 	listen_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.do_evolve()
 
@@ -566,3 +576,18 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_tacmap()
 	return ..()
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision
+	name = "Toggle Meson Vision"
+	action_icon_state = "project_xeno"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
+	. = ..()
+	owner.sight |= SEE_TURFS
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
+	. = ..()
+	owner.sight &= ~SEE_TURFS

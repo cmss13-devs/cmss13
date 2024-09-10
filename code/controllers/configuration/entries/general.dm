@@ -523,6 +523,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/regular_adminhelp_webhook_url
 
+/datum/config_entry/string/profiler_webhook_url
+
 /datum/config_entry/string/adminhelp_webhook_pfp
 
 /datum/config_entry/string/adminhelp_webhook_name
@@ -664,3 +666,11 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/client_error_message
 	default = "Your version of BYOND is too old, may have issues, and is blocked from accessing this server."
+
+// GitHub API, used for anonymous bug report handling.
+/datum/config_entry/string/github_app_api
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/repo_name
+
+/datum/config_entry/string/org

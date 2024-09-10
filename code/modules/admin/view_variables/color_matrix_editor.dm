@@ -69,6 +69,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		proxy_view.appearance = image('icons/misc/colortest.dmi', "colors")
 
 	proxy_view.color = current_color
+	proxy_view.appearance_flags |= TILE_BOUND
 	proxy_view.register_to_client(owner)
 
 /datum/color_matrix_editor/Destroy(force, ...)

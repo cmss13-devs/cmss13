@@ -5,7 +5,7 @@
 /obj/item/device/portable_vendor
 	name = "\improper Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8
@@ -58,8 +58,8 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
-	var/obj/item/card/id/idcard = human_user.wear_id
-	if(!istype(idcard)) //not wearing an ID
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	if(!idcard) //not wearing an ID
 		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
@@ -117,7 +117,7 @@
 
 	.["vendor_name"] = name
 	.["show_points"] = use_points
-	.["current_points"] = round(points)
+	.["current_points"] = floor(points)
 	.["max_points"] = max_points
 	.["displayed_records"] = available_items
 
@@ -178,7 +178,7 @@
 
 	if(special_prod_time_lock && (product[3] in special_prods))
 		if(ROUND_TIME < special_prod_time_lock)
-			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [floor((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
 			return
 
 	if(use_points)

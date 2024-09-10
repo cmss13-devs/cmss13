@@ -65,7 +65,7 @@
 	if(!new_hp)
 		new_hp = 0
 
-	new_hp = (new_hp % usable_hps.len) + 1
+	new_hp = (new_hp % length(usable_hps)) + 1
 	var/obj/item/hardpoint/HP = usable_hps[new_hp]
 	if(!HP)
 		return
@@ -167,7 +167,7 @@
 		))
 
 	data["resistance_data"] = resist_data_list
-	data["integrity"] = round(100 * health / initial(health))
+	data["integrity"] = floor(100 * health / initial(health))
 	data["door_locked"] = door_locked
 	data["total_passenger_slots"] = interior.passengers_slots
 	data["total_taken_slots"] = interior.passengers_taken_slots

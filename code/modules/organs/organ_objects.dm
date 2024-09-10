@@ -114,6 +114,17 @@
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
 
+/obj/item/organ/xeno
+	name = "acidic heart"
+	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often."
+	icon_state = "heart_t1"
+	organ_tag = "heart"
+	black_market_value = 60
+	///value of the organ in the recycler, heavily varies from size and tier
+	var/research_value = 1 //depending on the size and tier
+	///the caste in a string, which is used in a xenoanalyzer
+	var/caste_origin // used for desc in xenoanalyzer
+
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic
 	name = "circulatory pump"

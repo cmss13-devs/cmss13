@@ -624,7 +624,7 @@
 	return
 
 /obj/effect/alien/weeds/node/pylon/cluster
-	spread_on_semiweedable = FALSE
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	if(!resin_parent)

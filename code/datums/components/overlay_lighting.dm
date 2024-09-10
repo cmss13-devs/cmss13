@@ -175,7 +175,7 @@
 	LAZYINITLIST(affected_turfs)
 	if(range <= 2)
 		//Range here is 1 because actual range of lighting mask is 1 tile even if it says that range is 2
-		for(var/turf/lit_turf in RANGE_TURFS(1, current_holder.loc))
+		for(var/turf/lit_turf as anything in RANGE_TURFS(1, current_holder.loc))
 			lit_turf.dynamic_lumcount += lum_power
 			affected_turfs += lit_turf
 	else
@@ -340,7 +340,7 @@
 		turn_off()
 	range = clamp(CEILING(new_range, 0.5), 1, 7)
 	var/pixel_bounds = ((range - 1) * 64) + 32
-	lumcount_range = Ceiling(range)
+	lumcount_range = ceil(range)
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays -= visible_mask
 	visible_mask.icon = light_overlays["[pixel_bounds]"]
@@ -356,7 +356,7 @@
 	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
 		current_holder.underlays += visible_mask
 	if(directional)
-		cast_range = clamp(round(new_range * 0.5), 1, 3)
+		cast_range = clamp(floor(new_range * 0.5), 1, 3)
 	if(overlay_lighting_flags & LIGHTING_ON)
 		make_luminosity_update()
 

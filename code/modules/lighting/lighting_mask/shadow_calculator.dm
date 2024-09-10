@@ -95,7 +95,7 @@
 	SSlighting.total_shadow_calculations ++
 
 	//Ceiling the range since we need it in integer form
-	var/range = Ceiling(radius)
+	var/range = ceil(radius)
 	DO_SOMETHING_IF_DEBUGGING_SHADOWS(var/timer = TICK_USAGE)
 
 	//Work out our position

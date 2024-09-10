@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, NoticeBox } from '../components';
+import { Button, LabeledList, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Wires = (props) => {
@@ -26,34 +26,38 @@ export const Wires = (props) => {
                     <Button
                       width="60px"
                       color={wire.cut ? 'green' : 'red'}
-                      content={wire.cut ? 'Mend' : 'Cut'}
                       icon={wire.cut ? 'link' : 'cut'}
                       onClick={() =>
                         act('cut', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      {wire.cut ? 'Mend' : 'Cut'}
+                    </Button>
                     <Button
-                      content="Pulse"
                       icon="wave-square"
                       onClick={() =>
                         act('pulse', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      Pulse
+                    </Button>
                     <Button
-                      content={wire.attached ? 'Detach' : 'Attach'}
                       icon="paperclip"
                       onClick={() =>
                         act('attach', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      {wire.attached ? 'Detach' : 'Attach'}
+                    </Button>
                   </>
-                }>
+                }
+              >
                 {!!wire.wire && <i>({wire.wire})</i>}
               </LabeledList.Item>
             ))}

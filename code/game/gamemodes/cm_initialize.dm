@@ -74,6 +74,7 @@ Additional game mode variables.
 	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
+	var/latejoin_larva_drop_early = LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 	/// Amount of latejoin_tally already awarded as larvas
 	var/latejoin_larva_used = 0
@@ -117,7 +118,7 @@ Additional game mode variables.
 /datum/game_mode/proc/initialize_special_clamps()
 	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
 	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
-	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
+	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
 	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
@@ -175,43 +176,46 @@ Additional game mode variables.
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
-#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+/datum/game_mode/proc/calculate_pred_max()
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
 
-/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
-
+/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
-		return
+	if(!pred_job)
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
 
 	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		return FALSE
 
 	if(!(flags_round_type & MODE_PREDATOR))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
+		return FALSE
 
 	if(pred_candidate.ckey in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
-		return
+		return FALSE
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
-		return
-	if(J.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
-		var/pred_max = calculate_pred_max
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_job.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(pred_job.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
+		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
-			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
-			return
+			if(show_warning)
+				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+			return FALSE
 
-	return 1
-
-#undef calculate_pred_max
+	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
@@ -262,7 +266,7 @@ Additional game mode variables.
 /datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(possible_xenomorphs.len < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
+	if(length(possible_xenomorphs) < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
@@ -309,14 +313,14 @@ Additional game mode variables.
 
 			xenomorphs[hive] += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
-			remaining_slots = round((xeno_starting_num - i))
+			remaining_slots = floor((xeno_starting_num - i))
 			break
 
 		current_index++
 
 
 	if(remaining_slots)
-		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
+		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
 		for(var/hivenumb in hives)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
 			hive.stored_larva = larva_per_hive
@@ -384,7 +388,7 @@ Additional game mode variables.
 			available_xenos += larva_option
 			available_xenos[larva_option] = list(hive)
 
-	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
+	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
 		if(!xeno_candidate.client?.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
 			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
 				You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in \
@@ -520,16 +524,16 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(length(hive.totalXenos) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
 
-	if(active_hives.len <= 0)
+	if(length(active_hives) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
-	if(active_hives.len > 1)
+	if(length(active_hives) > 1)
 		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
@@ -554,7 +558,7 @@ Additional game mode variables.
 				var/descriptive_name = "[morpher.name] in [area_name]"
 				available_facehugger_sources[descriptive_name] = morpher
 
-	if(available_facehugger_sources.len <= 0)
+	if(length(available_facehugger_sources) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try again later!"))
 		return FALSE
 
@@ -586,16 +590,16 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(length(hive.totalXenos) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
 
-	if(active_hives.len <= 0)
+	if(length(active_hives) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
-	if(active_hives.len > 1)
+	if(length(active_hives) > 1)
 		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
@@ -822,7 +826,7 @@ Additional game mode variables.
 	H.name = H.get_visible_name()
 
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
-		if(spawner.intro_text && spawner.intro_text.len)
+		if(LAZYLEN(spawner.intro_text))
 			spawn(4)
 				for(var/line in spawner.intro_text)
 					to_chat(H, line)
@@ -889,7 +893,7 @@ Additional game mode variables.
 	var/story //The actual story they will get to read.
 	var/random_name
 	var/datum/mind/survivor
-	while(current_survivors.len)
+	while(length(current_survivors))
 		survivor = pick(current_survivors)
 		if(!istype(survivor))
 			current_survivors -= survivor
@@ -901,8 +905,8 @@ Additional game mode variables.
 			current_survivors -= survivor
 			continue
 
-		if(current_survivors.len > 1) //If we have another survivor to pick from.
-			if(survivor_multi_story.len) //Unlikely.
+		if(length(current_survivors) > 1) //If we have another survivor to pick from.
+			if(length(survivor_multi_story)) //Unlikely.
 				var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
 				current_survivors -= another_survivor
 				if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
@@ -917,7 +921,7 @@ Additional game mode variables.
 					to_chat(another_survivor.current, temp_story)
 					another_survivor.memory += temp_story
 		else
-			if(survivor_story.len) //Shouldn't happen, but technically possible.
+			if(length(survivor_story)) //Shouldn't happen, but technically possible.
 				story = pick(survivor_story)
 				survivor_story -= story
 				spawn(6)
@@ -944,7 +948,7 @@ Additional game mode variables.
 		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	GLOB.supply_controller.points += round(GLOB.supply_controller.points_scale * gear_scale)
+	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 
 ///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
 /datum/game_mode/proc/init_gear_scale()
@@ -972,7 +976,7 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
-		GLOB.supply_controller.points += round(gear_delta * GLOB.supply_controller.points_scale)
+		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)

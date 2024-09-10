@@ -8,15 +8,15 @@ SUBSYSTEM_DEF(disease)
 	var/list/datum/disease/currentrun = list()
 
 /datum/controller/subsystem/disease/stat_entry(msg)
-	msg = "P:[all_diseases.len]"
+	msg = "P:[length(all_diseases)]"
 	return ..()
 
 /datum/controller/subsystem/disease/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = all_diseases.Copy()
 
-	while (currentrun.len)
-		var/datum/disease/D = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/datum/disease/D = currentrun[length(currentrun)]
 		currentrun.len--
 
 		if (!D || QDELETED(D))

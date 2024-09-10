@@ -31,7 +31,7 @@
 	if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
@@ -95,6 +95,7 @@
 
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 	icon_state = "folding-1"
 	item_state = "folding"
 	item_state_slots = list(
@@ -269,7 +270,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(round(min(stack_health)/maxhealth * 100) <= 75)
+	if(floor(min(stack_health)/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three

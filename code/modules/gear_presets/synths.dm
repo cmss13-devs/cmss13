@@ -3,7 +3,7 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic
-	paygrade = PAY_SHORT_SYN
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 
 	minimap_icon = "synth"
 
@@ -41,7 +41,6 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = PAY_SHORT_SYN
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
@@ -65,7 +64,6 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = PAY_SHORT_SYN
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
@@ -91,7 +89,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/RO(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
@@ -146,6 +144,9 @@
 /datum/equipment_preset/synth/survivor/pmc/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC)
+
+/datum/equipment_preset/synth/survivor/wy
+	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -267,6 +268,9 @@
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/corporate_synth
+	name = "Survivor - Synthetic - Corporate Synth"
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -473,6 +477,7 @@
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/wy/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
@@ -495,6 +500,7 @@
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
@@ -517,6 +523,7 @@
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
@@ -751,7 +758,7 @@
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
-	paygrade = PAY_SHORT_CIV
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()

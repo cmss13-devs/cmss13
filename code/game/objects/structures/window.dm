@@ -247,6 +247,10 @@
 					if(!not_damageable) //Impossible to destroy
 						health -= 50
 
+			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(M)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
+
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
 		return
 
@@ -360,7 +364,7 @@
 /obj/structure/window/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
 		if(!not_damageable)
-			health -= round(exposed_volume / 100)
+			health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -373,7 +377,7 @@
 
 /obj/structure/window/phoronbasic/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 32000)
-		health -= round(exposed_volume / 1000)
+		health -= floor(exposed_volume / 1000)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 

@@ -224,16 +224,16 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(strength < 1)
 		return phrase
 	else
-		strength = Ceiling(strength/5)
+		strength = ceil(strength/5)
 
 	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
 	var/list/unstuttered_words = split_phrase.Copy()
 
-	var/max_stutter = min(strength, split_phrase.len)
+	var/max_stutter = min(strength, length(split_phrase))
 	var/stutters = rand(max(max_stutter - 3, 1), max_stutter)
 
 	for(var/i = 0, i < stutters, i++)
-		if (!unstuttered_words.len)
+		if (!length(unstuttered_words))
 			break
 
 		var/word = pick(unstuttered_words)
@@ -268,7 +268,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				else // normal stutter
 					word = R.Replace(word, "$1$2-$2$3$4")
 
-		if(prob(3 * strength) && index != unstuttered_words.len - 1) // stammer / pause - don't pause at the end of sentences!
+		if(prob(3 * strength) && index != length(unstuttered_words) - 1) // stammer / pause - don't pause at the end of sentences!
 			word = R.Replace(word, "$0 ...")
 
 		split_phrase[index] = word
@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		message = replace_X.Replace(message, "CKTH")
 	return message
 
-#define PIXELS_PER_STRENGTH_VAL 24
+#define PIXELS_PER_STRENGTH_VAL 28
 
 /proc/shake_camera(mob/M, steps = 1, strength = 1, time_per_step = 1)
 	if(!M?.client || (M.shakecamera > world.time))
@@ -326,12 +326,12 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/old_X = M.client.pixel_x
 	var/old_y = M.client.pixel_y
 
-	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step, flags = ANIMATION_PARALLEL)
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1
 	while(i < steps)
-		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step)
 		i++
-	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
+	animate(pixel_x = old_X, pixel_y = old_y,time = clamp(floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
 #undef PIXELS_PER_STRENGTH_VAL
 
@@ -420,8 +420,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
 			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				return DURATION_MULTIPLIER_TIER_2
+				return (DURATION_MULTIPLIER_TIER_3 + DURATION_MULTIPLIER_TIER_2) / 2
 			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
@@ -475,7 +477,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return TRUE
 
 /mob/proc/can_see_reagents()
-	return stat == DEAD || issynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+	return stat == DEAD || issynth(src) || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
 /**
  * Examine a mob
@@ -484,7 +486,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view(28, usr))
 	set name = "Examine"
 	set category = "IC"
 
@@ -613,3 +615,24 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	sync_lighting_plane_alpha()
+
+/mob/proc/get_ability_mouse_key()
+	if(!client)
+		return XENO_ABILITY_CLICK_MIDDLE
+
+	return client.prefs.xeno_ability_click_mode
+
+/proc/xeno_ability_mouse_pref_to_string(preference_value)
+	switch(preference_value)
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			return "middle click"
+		if(XENO_ABILITY_CLICK_RIGHT)
+			return "right click"
+		if(XENO_ABILITY_CLICK_SHIFT)
+			return "shift click"
+	return "middle click"
+
+/mob/proc/get_ability_mouse_name()
+	var/ability = get_ability_mouse_key()
+
+	return xeno_ability_mouse_pref_to_string(ability)

@@ -4,8 +4,8 @@
 
 /obj/item/device/flashlight/combat
 	name = "combat flashlight"
-	desc = "A Flashlight designed to be held in the hand, or attached to a rifle"
-	icon_state = "flashlight"
+	desc = "A Flashlight designed to be held in the hand, or attached to a rifle, has better bulb compared to a normal flashlight."
+	icon_state = "combat_flashlight"
 	item_state = "flashlight"
 	light_range = 5 //Pretty luminous, but still a flashlight that fits in a pocket
 
@@ -108,7 +108,7 @@
 			continue
 		mobs_can_store += H
 	var/mob/living/carbon/human/mob_to_store
-	if(mobs_can_store.len)
+	if(length(mobs_can_store))
 		mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
 		mob_to_store.unset_interaction()

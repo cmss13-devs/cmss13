@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
-import { useBackend } from '../backend';
-import { Section, Box, Button, Divider } from '../components';
-import { Window } from '../layouts';
 import { capitalize } from 'common/string';
+import { Fragment } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Divider, Section } from '../components';
+import { Window } from '../layouts';
 
 export const LanguageMenu = (props) => {
   const { act, data } = useBackend();
@@ -28,7 +29,6 @@ const LanguagesView = (props) => {
     <Fragment key={index}>
       <Button
         fluid
-        content={capitalize(lang.name) + ' (:' + lang.key + ')'}
         tooltip={index === 0 ? 'Default language' : 'Make default'}
         color={index === 0 ? 'good' : null}
         onClick={() =>
@@ -36,7 +36,9 @@ const LanguagesView = (props) => {
             key: lang.key,
           })
         }
-      />
+      >
+        {capitalize(lang.name) + ' (:' + lang.key + ')'}
+      </Button>
       <Box height="3px" />
       <Box>{lang.desc}</Box>
       <Divider />

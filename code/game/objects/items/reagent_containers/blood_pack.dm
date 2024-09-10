@@ -28,7 +28,7 @@
 	update_icon()
 
 /obj/item/reagent_container/blood/update_icon()
-	var/percent = round((reagents.total_volume / volume) * 100)
+	var/percent = floor((reagents.total_volume / volume) * 100)
 	overlays = null
 	underlays = null
 

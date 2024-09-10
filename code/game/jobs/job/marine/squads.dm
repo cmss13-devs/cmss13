@@ -221,6 +221,29 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/forecon
+	name = SQUAD_FORECON
+	equipment_color = "#32CD32"
+	chat_color = "#32CD32"
+	radio_freq = FORECON_FREQ
+	minimap_color = "#32CD32"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+/datum/squad/marine/solardevils
+	name = SQUAD_SOLAR
+	equipment_color = "#5a2c2c"
+	chat_color = "#5a2c2c"
+	radio_freq = SOF_FREQ
+	minimap_color = "#5a2c2c"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"
@@ -452,7 +475,7 @@
 
 	var/obj/item/card/id/C = ID
 	if(!C)
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!C)
 		C = M.get_active_hand()
 	if(!istype(C))
@@ -554,7 +577,7 @@
 		return //not assigned to the correct squad
 	var/obj/item/card/id/C = ID
 	if(!istype(C))
-		C = M.wear_id
+		C = M.get_idcard()
 	if(!istype(C))
 		return FALSE //Abort, no ID found
 
@@ -637,9 +660,9 @@
 				R.keys -= key
 				qdel(key)
 			R.recalculateChannels()
-		if(istype(old_lead.wear_id, /obj/item/card/id))
-			var/obj/item/card/id/ID = old_lead.wear_id
-			ID.access -= ACCESS_MARINE_LEADER
+		var/obj/item/card/id/card = old_lead.get_idcard()
+		if(card)
+			card.access -= ACCESS_MARINE_LEADER
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
@@ -649,7 +672,7 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || length(GLOB.RoleAuthority.squads) == 0)
 		return null
 	var/datum/squad/S
 	for(S in GLOB.RoleAuthority.squads)

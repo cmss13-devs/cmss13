@@ -64,7 +64,7 @@
 /obj/item/weapon/gun/flamer/get_examine_text(mob/user)
 	. = ..()
 	if(current_mag)
-		. += "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
+		. += "The fuel gauge shows the current tank is [floor(current_mag.get_ammo_percent())]% full!"
 	else
 		. += "There's no tank in [src]!"
 
@@ -136,10 +136,13 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		if(current_mag.reagents.has_reagent("stablefoam"))
-			unleash_foam(target, user)
+		if(istype(current_mag, /obj/item/ammo_magazine/flamer_tank/smoke))
+			unleash_smoke(target, user)
 		else
-			unleash_flame(target, user)
+			if(current_mag.reagents.has_reagent("stablefoam"))
+				unleash_foam(target, user)
+			else
+				unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -200,7 +203,7 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -229,9 +232,69 @@
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
+/obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
+		return
+
+	var/source_turf = get_turf(user)
+	var/smoke_range = 5 // the max range the smoke will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 3 // if you want to increase the ammount of units drained from the tank
+	var/units_in_smoke = 35 // the smoke overlaps a little so this much is probably already good
+
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+	var/datum/reagents/to_disperse = new() // this is the chemholder that will be used by the chemsmoke
+	to_disperse.add_reagent(chemical.id, units_in_smoke)
+	to_disperse.my_atom = src
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/turf/second_turf = turfs[2]
+	var/ammount_required = (min(length(turfs), smoke_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			smoke_range = floor(chemical.volume / use_multiplier)
+
+		if(distance >= smoke_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/smoke/chem/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		playsound(turf, 'sound/effects/smoke.ogg', 25, 1)
+		if(turf != first_turf && turf != second_turf) // we skip the first tile and make it small on the second so the smoke doesn't touch the user
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 5, loca = turf)
+			smoke.start()
+		if(turf == second_turf)
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 1, loca = turf)
+			smoke.start()
+		sleep(4)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of smoke, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
+
 /obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/source_turf = get_turf(user)
@@ -242,11 +305,11 @@
 
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
-	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
+	var/ammount_required = (min(length(turfs), foam_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
-			foam_range = round(chemical.volume / use_multiplier)
+			foam_range = floor(chemical.volume / use_multiplier)
 
 		if(distance >= foam_range)
 			break
@@ -284,7 +347,7 @@
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
+		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
 /obj/item/weapon/gun/flamer/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
@@ -584,7 +647,7 @@
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-					ignited_morb.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 				else
 					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
@@ -642,7 +705,7 @@
 		return
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
-	var/burn_damage = round(burnlevel * 0.5)
+	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
@@ -661,7 +724,7 @@
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 

@@ -21,9 +21,9 @@
 
 	var/wait_time = 10
 
-	var/turf/T = get_turf(O)
+	var/turf/turf = get_turf(O)
 
-	for(var/obj/effect/xenomorph/acid/A in T)
+	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
 			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
@@ -47,22 +47,22 @@
 				to_chat(src, SPAN_WARNING("[O] is already weakened."))
 				return
 
-		var/dissolvability = T.can_be_dissolved()
+		var/dissolvability = turf.can_be_dissolved()
 		switch(dissolvability)
 			if(0)
-				to_chat(src, SPAN_WARNING("We cannot dissolve [T]."))
+				to_chat(src, SPAN_WARNING("We cannot dissolve [turf]."))
 				return
 			if(1)
 				wait_time = 50
 			if(2)
 				if(acid_type != /obj/effect/xenomorph/acid/strong)
-					to_chat(src, SPAN_WARNING("This [T.name] is too tough to be melted by our weak acid."))
+					to_chat(src, SPAN_WARNING("This [turf.name] is too tough to be melted by our weak acid."))
 					return
 				wait_time = 100
 			else
 				return
-		if(istype(T, /turf/closed/wall))
-			var/turf/closed/wall/W = T
+		if(istype(turf, /turf/closed/wall))
+			var/turf/closed/wall/W = turf
 
 			// Direction from wall to the mob generating acid on the wall turf
 			var/ambiguous_dir_msg = SPAN_XENOWARNING("We are unsure which direction to melt through [W]. Face it directly and try again.")
@@ -92,7 +92,7 @@
 			var/acided_hole_type = W.acided_hole_dir & (EAST|WEST) ? "a hole horizontally" : "a hole vertically"
 			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt [acided_hole_type] through [W]."))
 		else
-			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [T]."))
+			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [turf]."))
 	else
 		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
 		return
@@ -101,10 +101,14 @@
 		return
 
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
-	for(var/obj/effect/xenomorph/acid/A in T)
+	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
 			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
+		return
 
 	if(!check_state())
 		return
@@ -127,7 +131,7 @@
 
 	use_plasma(plasma_cost)
 
-	var/obj/effect/xenomorph/acid/A = new acid_type(T, O)
+	var/obj/effect/xenomorph/acid/A = new acid_type(turf, O)
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
@@ -163,8 +167,8 @@
 	REMOVE_TRAIT(H, TRAIT_IMMOBILIZED, trait_source)
 
 	if(ishuman(H))
-		var/mob/living/carbon/human/T = H
-		T.update_xeno_hostile_hud()
+		var/mob/living/carbon/human/turf = H
+		turf.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
@@ -211,28 +215,28 @@
 		action.on_zoom_out()
 		return
 
-/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/turf, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
-	var/facing = get_cardinal_dir(src, T)
+	var/facing = get_cardinal_dir(src, turf)
 	setDir(facing)
 
-	T = loc
+	turf = loc
 	for(var/i in 0 to range - 1)
-		var/turf/next_turf = get_step(T, facing)
+		var/turf/next_turf = get_step(turf, facing)
 		var/atom/movable/temp = new/obj/effect/xenomorph/spray()
-		var/atom/movable/AM = LinkBlocked(temp, T, next_turf)
+		var/atom/movable/AM = LinkBlocked(temp, turf, next_turf)
 		qdel(temp)
 		if(AM)
 			AM.acid_spray_act(src)
 			return
-		T = next_turf
-		var/obj/effect/xenomorph/spray/S = new spray_type(T, create_cause_data(initial( caste_type), src), hivenumber)
-		do_acid_spray_cone_normal(T, i, facing, S, spray_type)
+		turf = next_turf
+		var/obj/effect/xenomorph/spray/S = new spray_type(turf, create_cause_data(initial( caste_type), src), hivenumber)
+		do_acid_spray_cone_normal(turf, i, facing, S, spray_type)
 		sleep(2)
 
 // Normal refers to the mathematical normal
-/mob/living/carbon/xenomorph/proc/do_acid_spray_cone_normal(turf/T, distance, facing, obj/effect/xenomorph/spray/source_spray, spray_type = /obj/effect/xenomorph/spray)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone_normal(turf/turf, distance, facing, obj/effect/xenomorph/spray/source_spray, spray_type = /obj/effect/xenomorph/spray)
 	if(!distance)
 		return
 
@@ -242,8 +246,8 @@
 	var/normal_dir = turn(facing, 90)
 	var/inverse_normal_dir = turn(facing, -90)
 
-	var/turf/normal_turf = T
-	var/turf/inverse_normal_turf = T
+	var/turf/normal_turf = turf
+	var/turf/inverse_normal_turf = turf
 
 	var/normal_density_flag = FALSE
 	var/inverse_normal_density_flag = FALSE
@@ -282,27 +286,26 @@
 	var/turf/prev_turf = loc
 
 	var/distance = 0
-	for(var/turf/T in turflist)
+	for(var/turf/turf in turflist)
 		distance++
 
-		if(!prev_turf && turflist.len > 1)
+		if(!prev_turf && length(turflist) > 1)
 			prev_turf = get_turf(src)
 			continue //So we don't burn the tile we be standin on
 
-		if(T.density || istype(T, /turf/open/space))
+		if(turf.density || istype(turf, /turf/open/space))
 			break
 		if(distance > distance_max)
 			break
-
 		var/atom/movable/temp = new spray_path()
-		var/atom/movable/AM = LinkBlocked(temp, prev_turf, T)
+		var/atom/movable/blocker = LinkBlocked(temp, prev_turf, turf)
 		qdel(temp)
-		if(AM)
-			AM.acid_spray_act(src)
+		if(blocker)
+			blocker.acid_spray_act(src)
 			break
 
-		prev_turf = T
-		new spray_path(T, create_cause_data(initial(caste_type), src), hivenumber)
+		prev_turf = turf
+		new spray_path(turf, create_cause_data(initial(caste_type), src), hivenumber)
 		sleep(2)
 
 

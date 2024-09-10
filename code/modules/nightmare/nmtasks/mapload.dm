@@ -70,11 +70,9 @@
 	var/list/bounds = parsed.bounds
 	if(length(bounds) < 6)
 		return
-	var/list/turf_block = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	var/list/area/arealist = list()
 	var/list/atom/atomlist = list()
-	for(var/turf/turf as anything in turf_block)
+	for(var/turf/turf as anything in block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 		atomlist += turf
 		if(turf.loc)
 			arealist |= turf.loc

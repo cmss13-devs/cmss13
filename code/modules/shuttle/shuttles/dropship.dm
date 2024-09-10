@@ -29,6 +29,7 @@
 	var/automated_lz_id
 	var/automated_delay
 	var/automated_timer
+	var/datum/cas_signal/paradrop_signal
 
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
@@ -144,6 +145,14 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/saipan
+	name = "Saipan"
+	id = DROPSHIP_SAIPAN
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
+	return /turf/open/space/transit/dropship/saipan
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
@@ -326,3 +335,7 @@
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/saipan
+	name = "Saipan"
+	shuttle_id = DROPSHIP_SAIPAN

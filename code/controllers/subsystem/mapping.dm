@@ -161,11 +161,11 @@ SUBSYSTEM_DEF(mapping)
 	if (!length(traits))  // null or empty - default
 		for (var/i in 1 to total_z)
 			traits += list(default_traits)
-	else if (total_z != traits.len)  // mismatch
-		INIT_ANNOUNCE("WARNING: [traits.len] trait sets specified for [total_z] z-levels in [path]!")
-		if (total_z < traits.len)  // ignore extra traits
+	else if (total_z != length(traits))  // mismatch
+		INIT_ANNOUNCE("WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!")
+		if (total_z < length(traits))  // ignore extra traits
 			traits.Cut(total_z + 1)
-		while (total_z > traits.len)  // fall back to defaults on extra levels
+		while (total_z > length(traits))  // fall back to defaults on extra levels
 			traits += list(default_traits)
 
 	// preload the relevant space_level datums
@@ -187,9 +187,9 @@ SUBSYSTEM_DEF(mapping)
 		var/x_offset = 1
 		var/y_offset = 1
 		if(bounds && world.maxx > bounds[MAP_MAXX])
-			x_offset = round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
+			x_offset = floor(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
 		if(bounds && world.maxy > bounds[MAP_MAXY])
-			y_offset = round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
+			y_offset = floor(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 		// CM Snowflake for Mass Screenshot dimensions auto detection
@@ -236,8 +236,8 @@ SUBSYSTEM_DEF(mapping)
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
-		if(FailedZs.len > 1)
-			for(var/I in 2 to FailedZs.len)
+		if(length(FailedZs) > 1)
+			for(var/I in 2 to length(FailedZs))
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(mapping)
 	. = list()
 	var/list/Lines = file2list(filename)
 
-	if(!Lines.len)
+	if(!length(Lines))
 		return
 	for (var/t in Lines)
 		if (!t)
@@ -363,9 +363,7 @@ SUBSYSTEM_DEF(mapping)
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
-	var/turf/A = get_turf(locate(SHUTTLE_TRANSIT_BORDER,SHUTTLE_TRANSIT_BORDER,z))
-	var/turf/B = get_turf(locate(world.maxx - SHUTTLE_TRANSIT_BORDER,world.maxy - SHUTTLE_TRANSIT_BORDER,z))
-	var/block = block(A, B)
+	var/block = block(SHUTTLE_TRANSIT_BORDER, SHUTTLE_TRANSIT_BORDER, z, world.maxx - SHUTTLE_TRANSIT_BORDER, world.maxy - SHUTTLE_TRANSIT_BORDER, z)
 	for(var/turf/T as anything in block)
 		// No need to empty() these, because they just got created and are already /turf/open/space/basic.
 		T.turf_flags = UNUSED_RESERVATION_TURF

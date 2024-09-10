@@ -1,5 +1,6 @@
-import { Box } from '../components';
 import { Component, createRef } from 'react';
+
+import { Box } from '../components';
 
 export class DrawnMap extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ export class DrawnMap extends Component {
   getSize() {
     const ratio = Math.min(
       (self.innerWidth - 50) / 650,
-      (self.innerHeight - 150) / 600
+      (self.innerHeight - 150) / 600,
     );
     return { width: 650 * ratio, height: 600 * ratio };
   }
@@ -89,7 +90,8 @@ export class DrawnMap extends Component {
               position: 'absolute',
               zIndex: 1,
               left: '18px',
-            }}>
+            }}
+          >
             {parsedSvgData.map((line, index) => (
               <line
                 key={index}

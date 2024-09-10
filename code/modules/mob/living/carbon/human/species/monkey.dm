@@ -70,7 +70,7 @@
 		for(var/obj/O in range(1,get_turf(H)))
 			if(O.Adjacent(H))
 				touchables += O
-		if(touchables.len)
+		if(length(touchables))
 			var/obj/touchy = pick(touchables)
 			touchy.attack_hand(H)
 

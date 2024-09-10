@@ -1,15 +1,28 @@
 /* eslint-disable react/jsx-no-undef */
-import { useBackend, useLocalState } from '../../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../../backend';
 import { Button, LabeledList, Section } from '../../components';
 import { Window } from '../../layouts';
 import { ParticleUIData } from './data';
+import {
+  EntryCoord,
+  EntryFloat,
+  EntryGradient,
+  EntryIcon,
+  EntryIconState,
+  EntryTransform,
+} from './EntriesBasic';
+import {
+  EntryGeneratorNumbersList,
+  FloatGenerator,
+  FloatGeneratorColor,
+} from './EntriesGenerators';
 import { ShowDesc } from './Tutorial';
-import { EntryFloat, EntryCoord, EntryGradient, EntryTransform, EntryIcon, EntryIconState } from './EntriesBasic';
-import { FloatGenerator, FloatGeneratorColor, EntryGeneratorNumbersList } from './EntriesGenerators';
 
 export const ParticleEdit = (props) => {
   const { act, data } = useBackend<ParticleUIData>();
-  const [desc, setdesc] = useLocalState('desc', '');
+  const [desc, setDesc] = useState('');
 
   const {
     width,
@@ -42,7 +55,7 @@ export const ParticleEdit = (props) => {
 
   return (
     <Window title={data.target_name + "'s particles"} width={940} height={890}>
-      {desc ? <ShowDesc /> : null}
+      {desc ? <ShowDesc desc={desc} setDesc={setDesc} /> : null}
       <Window.Content scrollable>
         <LabeledList>
           <Section
@@ -51,7 +64,7 @@ export const ParticleEdit = (props) => {
               <>
                 <Button
                   icon={'question'}
-                  onClick={() => setdesc('generator')}
+                  onClick={() => setDesc('generator')}
                   tooltip={'Generator information'}
                 />
                 <Button
@@ -66,96 +79,148 @@ export const ParticleEdit = (props) => {
                   tooltip={'Delete and close UI'}
                 />
               </>
-            }>
-            <EntryFloat name={'Width'} var_name={'width'} float={width} />
-            <EntryFloat name={'Height'} var_name={'height'} float={height} />
-            <EntryFloat name={'Count'} var_name={'count'} float={count} />
+            }
+          >
             <EntryFloat
+              setDesc={setDesc}
+              name={'Width'}
+              var_name={'width'}
+              float={width}
+            />
+            <EntryFloat
+              setDesc={setDesc}
+              name={'Height'}
+              var_name={'height'}
+              float={height}
+            />
+            <EntryFloat
+              setDesc={setDesc}
+              name={'Count'}
+              var_name={'count'}
+              float={count}
+            />
+            <EntryFloat
+              setDesc={setDesc}
               name={'Spawning'}
               var_name={'spawning'}
               float={spawning}
             />
             <EntryCoord
+              setDesc={setDesc}
               name={'Bound corner 1'}
               var_name={'bound1'}
               coord={bound1}
             />
             <EntryCoord
+              setDesc={setDesc}
               name={'Bound corner 2'}
               var_name={'bound2'}
               coord={bound2}
             />
-            <EntryCoord name={'Gravity'} var_name={'gravity'} coord={gravity} />
+            <EntryCoord
+              setDesc={setDesc}
+              name={'Gravity'}
+              var_name={'gravity'}
+              coord={gravity}
+            />
             <EntryGradient
+              setDesc={setDesc}
               name={'Gradient'}
               var_name={'gradient'}
               gradient={gradient}
             />
             <EntryTransform
+              setDesc={setDesc}
               name={'Transform'}
               var_name={'transform'}
               transform={transform}
             />
           </Section>
           <Section title={'Evaluated on particle creation'}>
-            <EntryIcon name={'Icon'} var_name={'icon'} icon_state={icon} />
+            <EntryIcon
+              setDesc={setDesc}
+              name={'Icon'}
+              var_name={'icon'}
+              icon_state={icon}
+            />
             <EntryIconState
+              setDesc={setDesc}
               name={'Icon State'}
               var_name={'icon_state'}
               icon_state={icon_state}
             />
             <FloatGenerator
+              setDesc={setDesc}
               name={'Lifespan'}
               var_name={'lifespan'}
               float={lifespan}
             />
-            <FloatGenerator name={'Fade out'} var_name={'fade'} float={fade} />
             <FloatGenerator
+              setDesc={setDesc}
+              name={'Fade out'}
+              var_name={'fade'}
+              float={fade}
+            />
+            <FloatGenerator
+              setDesc={setDesc}
               name={'Fade in'}
               var_name={'fadein'}
               float={fadein}
             />
             <FloatGeneratorColor
+              setDesc={setDesc}
               name={'Color'}
               var_name={'color'}
               float={color}
             />
             <FloatGenerator
+              setDesc={setDesc}
               name={'Color change'}
               var_name={'color_change'}
               float={color_change}
             />
             <EntryGeneratorNumbersList
+              setDesc={setDesc}
               name={'Position'}
               var_name={'position'}
               allow_z
               input={position}
             />
             <EntryGeneratorNumbersList
+              setDesc={setDesc}
               name={'Velocity'}
               var_name={'velocity'}
               allow_z
               input={velocity}
             />
             <EntryGeneratorNumbersList
+              setDesc={setDesc}
               name={'Scale'}
               var_name={'scale'}
               allow_z={false}
               input={scale}
             />
             <EntryGeneratorNumbersList
+              setDesc={setDesc}
               name={'Grow'}
               var_name={'grow'}
               allow_z={false}
               input={grow}
             />
             <FloatGenerator
+              setDesc={setDesc}
               name={'Rotation'}
               var_name={'rotation'}
               float={rotation}
             />
-            <FloatGenerator name={'Spin'} var_name={'spin'} float={spin} />
             <FloatGenerator
+              setDesc={setDesc}
+              name={'Spin'}
+              var_name={'spin'}
+              float={spin}
+            />
+            <FloatGenerator
+              setDesc={setDesc}
               name={'Friction'}
               var_name={'friction'}
               float={friction}
@@ -163,6 +228,7 @@ export const ParticleEdit = (props) => {
           </Section>
           <Section title={'Evaluated every tick'}>
             <EntryGeneratorNumbersList
+              setDesc={setDesc}
               name={'Drift'}
               var_name={'drift'}
               allow_z

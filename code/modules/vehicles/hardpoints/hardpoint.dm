@@ -132,6 +132,12 @@
 //------GENERAL PROCS----------
 //-----------------------------
 
+/obj/item/hardpoint/p_s(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender == PLURAL)
+		. = "s"
+
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
@@ -301,7 +307,7 @@
 	if(health <= 0)
 		data["health"] = null
 	else
-		data["health"] = round(get_integrity_percent())
+		data["health"] = floor(get_integrity_percent())
 
 	if(ammo)
 		data["uses_ammo"] = TRUE
@@ -313,45 +319,6 @@
 		data["uses_ammo"] = FALSE
 
 	return data
-
-/// Traces backwards from the gun origin to the vehicle to check for obstacles between the vehicle and the muzzle.
-/obj/item/hardpoint/proc/clear_los()
-	if(origins[1] == 0 && origins[2] == 0) //skipping check for modules we don't need this
-		return TRUE
-
-	var/turf/muzzle_turf = get_origin_turf()
-
-	var/turf/checking_turf = muzzle_turf
-	while(!(owner in checking_turf))
-		// Dense turfs block LoS
-		if(checking_turf.density)
-			return FALSE
-
-		// Ensure that we can pass over all objects in the turf
-		for(var/obj/object in checking_turf)
-			// Since vehicles are multitile the
-			if(object == owner)
-				continue
-
-			// Non-dense objects are irrelevant
-			if(!object.density)
-				continue
-
-			// Make sure we can pass object from all directions
-			if(!HAS_FLAG(object.pass_flags.flags_can_pass_all, PASS_OVER_THROW_ITEM))
-				if(!HAS_FLAG(object.flags_atom, ON_BORDER))
-					return FALSE
-				//If we're behind the object, check the behind pass flags
-				else if(dir == object.dir && !HAS_FLAG(object.pass_flags.flags_can_pass_behind, PASS_OVER_THROW_ITEM))
-					return FALSE
-				//If we're in front, check front pass flags
-				else if(dir == turn(object.dir, 180) && !HAS_FLAG(object.pass_flags.flags_can_pass_front, PASS_OVER_THROW_ITEM))
-					return FALSE
-
-		// Trace back towards the vehicle
-		checking_turf = get_step(checking_turf, turn(dir,180))
-
-	return TRUE
 
 //-----------------------------
 //------INTERACTION PROCS----------
@@ -369,7 +336,7 @@
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
@@ -500,13 +467,13 @@
 		health += initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
 		if(health >= initial(health))
 			health = initial(health)
-			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 			being_repaired = FALSE
 			return
-		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 
 	being_repaired = FALSE
-	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 	return
 
 /// Setter proc for the automatic firing flag.
@@ -613,10 +580,6 @@
 		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
 		return NONE
 
-	if(!clear_los())
-		to_chat(user, SPAN_WARNING("<b>The muzzle is obstructed!</b>"))
-		return NONE
-
 	return handle_fire(target, user, params)
 
 /// Actually fires the gun, sets up the projectile and fires it.
@@ -696,7 +659,7 @@
 	if(muzzle_turf == target_turf)
 		return FALSE
 
-	var/angle_diff = SIMPLIFY_DEGREES(dir2angle(dir) - Get_Angle(muzzle_turf, target_turf))
+	var/angle_diff = (dir2angle(dir) - Get_Angle(muzzle_turf, target_turf)) %% 360
 	if(angle_diff < -180)
 		angle_diff += 360
 	else if(angle_diff > 180)
@@ -724,7 +687,7 @@
 /obj/item/hardpoint/proc/get_icon_image(x_offset, y_offset, new_dir)
 	var/is_broken = health <= 0
 	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
-	switch(round((health / initial(health)) * 100))
+	switch(floor((health / initial(health)) * 100))
 		if(0)
 			I.color = "#888888"
 		if(1 to 20)

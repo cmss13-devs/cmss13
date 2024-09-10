@@ -266,6 +266,7 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	w_class = SIZE_TINY
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 
 	var/concealed = FALSE
 	var/pile_state = FALSE
@@ -462,7 +463,7 @@
 		overlays += I
 		return
 
-	var/offset = Floor(80/cards_length)
+	var/offset = floor(80/cards_length)
 
 	var/matrix/M = matrix()
 	if(direction)
@@ -482,13 +483,13 @@
 		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		switch(direction)
 			if(SOUTH)
-				I.pixel_x = 8 - Floor(offset*i/4)
+				I.pixel_x = 8 - floor(offset*i/4)
 			if(WEST)
-				I.pixel_y = -6 + Floor(offset*i/4)
+				I.pixel_y = -6 + floor(offset*i/4)
 			if(EAST)
-				I.pixel_y = 8 - Floor(offset*i/4)
+				I.pixel_y = 8 - floor(offset*i/4)
 			else
-				I.pixel_x = -7 + Floor(offset*i/4)
+				I.pixel_x = -7 + floor(offset*i/4)
 		I.transform = M
 		overlays += I
 		i++

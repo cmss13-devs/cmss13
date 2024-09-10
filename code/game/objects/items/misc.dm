@@ -164,7 +164,7 @@
 	desc = "A debug item for research."
 
 /obj/item/moneybag
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
 	force = 10
@@ -178,7 +178,7 @@
 /obj/item/evidencebag
 	name = "evidence bag"
 	desc = "An empty evidence bag."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "evidenceobj"
 	item_state = ""
 	w_class = SIZE_SMALL
@@ -224,7 +224,7 @@
 		to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
 		return
 
-	if(contents.len)
+	if(length(contents))
 		to_chat(user, SPAN_NOTICE("[src] already has something inside it."))
 		return
 
@@ -257,7 +257,7 @@
 /obj/item/evidencebag/attack_self(mob/user)
 	..()
 
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
 		"You hear someone rustle around in a plastic bag, and remove something.")
@@ -292,11 +292,12 @@
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
 
-/obj/item/rappel_harness
-	name = "rappel harness"
-	desc = "A simple, uncomfortable rappel harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition."
-	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state = "rappel_harness"
-	item_state = "rappel_harness"
+/obj/item/parachute
+	name = "parachute"
+	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon_state = "parachute_pack"
+	item_state = "parachute_pack"
 	w_class = SIZE_MASSIVE
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE

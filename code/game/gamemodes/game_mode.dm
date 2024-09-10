@@ -108,7 +108,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	log_game("Round started at [time2text(world.realtime)]")
 	log_game("Operation time at round start is [worldtime2text()]")
 	if(SSticker.mode)
-		log_game("Game mode set to [SSticker.mode]")
+		log_game("Game mode set to [SSticker.mode] on the [SSmapping.configs[GROUND_MAP].map_name] map")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
 

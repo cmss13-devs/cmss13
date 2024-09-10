@@ -523,7 +523,6 @@
 /area/corsat/omega/hangar
 	name = "\improper Landing Bay Omega"
 	icon_state = "omega_hangar"
-	is_landing_zone = TRUE
 
 /area/corsat/omega/hangar/office
 	name = "\improper Omega Hangar Office"

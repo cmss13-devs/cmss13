@@ -106,9 +106,15 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 	if(!id_tag_final)
 		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
+	if(id_tag_final in GLOB.all_faxcodes)
+		generate_id_tag()
+		return FALSE
 
 	machine_id_tag = id_tag_final
+	if(machine_id_tag == network)
+		return TRUE
 	GLOB.all_faxcodes += id_tag_final
+	return TRUE
 
 /obj/structure/machinery/faxmachine/Destroy()
 	GLOB.all_faxmachines -= src

@@ -162,7 +162,7 @@
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct green color.The chemical flavoring increase the painkilling power , usually used by junkies as a replacement of the real deal"
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct green color. The chemical flavoring increase the painkilling power, usually used by junkies as a replacement of the real deal."
 	reagent_state = LIQUID
 	color = "#91ff00" // rgb: 145, 255, 0
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES)

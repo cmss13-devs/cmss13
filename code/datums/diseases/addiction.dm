@@ -198,7 +198,7 @@
 				return
 
 			if(prob(5))
-				var/message = SPAN_DANGER( pick("I NEED IT NOW", "If I dont get some soon, I dont know what is going to happen.", "I cant think straight. I need it", "I cant handle the pain anymore." ) )
+				var/message = SPAN_DANGER( pick("I NEED IT NOW!", "If I don't get some soon, I don't know what is going to happen.", "I cant think straight. I need it", "I cant handle the pain anymore." ) )
 				to_chat(affected_mob, message)
 				return
 

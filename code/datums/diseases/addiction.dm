@@ -194,7 +194,7 @@
 		if(4) // Tolerance
 			if(!CHECK_BITFIELD(affected_mob.disabilities, OPIATE_RECEPTOR_DEFICIENCY))
 				ENABLE_BITFIELD(affected_mob.disabilities, OPIATE_RECEPTOR_DEFICIENCY)
-				to_chat(affected_mob, SPAN_HIGHDANGER("Your stomach drops down . something terrible has happened"))
+				to_chat(affected_mob, SPAN_HIGHDANGER("You feel your stomach drop, something terrible has happened."))
 				return
 
 			if(prob(5))

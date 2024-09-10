@@ -171,7 +171,7 @@
 
 		if(2) // Regular Use
 			if(prob(5))
-				var/message = SPAN_INFO( pick("One more wont hurt; everything is under control.", "I will quit when things settle down, but right now I just need this.", "I have been through worse. I can handle this for now.", "I am CURED ; I am ready to use painkillers again" ) )
+				var/message = SPAN_INFO( pick("One more won't hurt; everything is under control.", "I will quit when things settle down, but right now I just need this.", "I have been through worse. I can handle this for now.", "I am CURED; I am ready to use painkillers again." ) )
 				to_chat(affected_mob, message)
 				return
 

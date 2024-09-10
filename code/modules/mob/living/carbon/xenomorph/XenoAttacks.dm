@@ -100,7 +100,7 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
-	if(islarva(M) || islesserdrone(M)) //Larvas can't eat people, now neither can Lessers
+	if(islarva(M)) //Larvas can't eat people
 		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
 		SPAN_DANGER("We nudge our head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return

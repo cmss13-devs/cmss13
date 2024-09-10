@@ -19,7 +19,6 @@
 /datum/equipment_preset/fax_responder/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/fountain(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new headset_type(new_human), WEAR_L_EAR)
 
 

@@ -202,10 +202,9 @@
 				return
 
 			if(alert(src,"Are you sure you want to attempt joining as a Fax Responder?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
+				if(SSticker.mode.check_fax_responder_late_join(src, FALSE, TRUE))
 					close_spawn_windows()
-					if(!SSticker.mode.attempt_to_join_as_fax_responder(src))
-						new_player_panel()
+					SSticker.mode.attempt_to_join_as_fax_responder(src)
 				else
 					to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
 					new_player_panel()

@@ -260,14 +260,20 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
+/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE, lobby_attempt = FALSE)
 	if(!responder.client)
 		return FALSE
 	if(!(responder?.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
 		if(show_warning)
 			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
+		if(lobby_attempt)
+			var/mob/new_player/lobbied = responder
+			lobbied.new_player_panel()
 		return FALSE
 	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		if(lobby_attempt)
+			var/mob/new_player/lobbied = responder
+			lobbied.new_player_panel()
 		return FALSE
 	return TRUE
 
@@ -299,7 +305,8 @@ Additional game mode variables.
 
 	message_admins("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name].")
 
-	if(responder_candidate) responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+	if(responder_candidate)
+		responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 	return TRUE
 
 /datum/game_mode/proc/transform_fax_responder(mob/responder_candidate, sub_job)

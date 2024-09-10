@@ -177,7 +177,7 @@
 
 		if(3) // Dependance
 			if(prob(5))
-				var/message = SPAN_DANGER( pick("I am not strong enough , I NEED IT", "If I dont get some soon, I dont know what is going to happen.", "I cant think straight. I need it", "I cant handle this pain anymore, I need it now." ) )
+				var/message = SPAN_DANGER( pick("I am not strong enough, I NEED IT!", "If I don't get some soon, I don't know what is going to happen.", "I cant think straight. I need it.", "I cant handle this pain anymore, I need it now." ) )
 				to_chat(affected_mob, message)
 				return
 

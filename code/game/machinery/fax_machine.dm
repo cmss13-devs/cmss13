@@ -1,5 +1,6 @@
-GLOBAL_LIST_INIT_TYPED(allfaxes, /obj/structure/machinery/faxmachine, list())
-GLOBAL_LIST_EMPTY(alldepartments)
+GLOBAL_LIST_INIT_TYPED(all_faxmachines, /obj/structure/machinery/faxmachine, list())
+GLOBAL_LIST_EMPTY(all_fax_departments)
+GLOBAL_LIST_EMPTY(all_faxcodes)
 
 #define DEPARTMENT_WY "Weyland-Yutani"
 #define DEPARTMENT_HC "USCM High Command"
@@ -9,6 +10,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 #define DEPARTMENT_TWE "Three World Empire"
 #define DEPARTMENT_UPP "Union of Progress Peoples"
 #define DEPARTMENT_CLF "Colonial Liberation Front"
+#define DEPARTMENT_TARGET "Specific Machine Code"//Used to send to a single specific machine.
 #define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS, DEPARTMENT_TWE, DEPARTMENT_UPP, DEPARTMENT_CLF)
 
 #define FAX_NET_USCM "USCM Encrypted Network"
@@ -49,6 +51,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 	///Target department
 	var/target_department = DEPARTMENT_WY
+	var/target_machine_id = "No ID Selected"
 
 	// list for img and their photo reference to be stored into the admin's cache.
 	var/list/photo_list = list()
@@ -64,11 +67,14 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	GLOB.allfaxes += src
+	GLOB.all_faxmachines += src
 	update_departments()
 	generate_id_tag()
 
 /obj/structure/machinery/faxmachine/proc/generate_id_tag()
+	if(machine_id_tag)
+		GLOB.all_faxcodes -= machine_id_tag
+
 	var/id_tag_prefix
 	var/id_tag_suffix = "[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
 	var/id_tag_final
@@ -102,9 +108,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
 
 	machine_id_tag = id_tag_final
+	GLOB.all_faxcodes += id_tag_final
 
 /obj/structure/machinery/faxmachine/Destroy()
-	GLOB.allfaxes -= src
+	GLOB.all_faxmachines -= src
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -181,24 +188,26 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
-	if( !("[department]" in GLOB.alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		GLOB.alldepartments += department
-	if(!(DEPARTMENT_WY in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_PROVOST
-	if(!(DEPARTMENT_CMB in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_CMB
-	if(!(DEPARTMENT_PRESS in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_PRESS
-	if(!(DEPARTMENT_TWE in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_TWE
-	if(!(DEPARTMENT_UPP in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_UPP
-	if(!(DEPARTMENT_CLF in GLOB.alldepartments))
-		GLOB.alldepartments += DEPARTMENT_CLF
+	if(!(DEPARTMENT_TARGET in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_TARGET
+	if( !("[department]" in GLOB.all_fax_departments) ) //Initialize departments. This will work with multiple fax machines.
+		GLOB.all_fax_departments += department
+	if(!(DEPARTMENT_WY in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_PROVOST
+	if(!(DEPARTMENT_CMB in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_CMB
+	if(!(DEPARTMENT_PRESS in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_PRESS
+	if(!(DEPARTMENT_TWE in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_TWE
+	if(!(DEPARTMENT_UPP in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_UPP
+	if(!(DEPARTMENT_CLF in GLOB.all_fax_departments))
+		GLOB.all_fax_departments += DEPARTMENT_CLF
 
 // TGUI SHIT \\
 
@@ -234,7 +243,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		data["paper_name"] = original_fax.name
 
 	data["authenticated"] = authenticated
+
 	data["target_department"] = target_department
+	if(target_department == DEPARTMENT_TARGET)
+		data["target_department"] = target_machine_id
 
 	data["worldtime"] = world.time
 	data["nextfaxtime"] = send_cooldown
@@ -319,8 +331,15 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(ui.user, "Which department?", "Choose a department", GLOB.alldepartments)
-			if(!target_department) target_department = last_target_department
+			target_department = tgui_input_list(ui.user, "Which department?", "Choose a department", GLOB.all_fax_departments)
+			if(!target_department)
+				target_department = last_target_department
+			if(target_department == DEPARTMENT_TARGET)
+				var/new_target_machine_id = tgui_input_list(ui.user, "Which machine?", "Choose a machine code", GLOB.all_faxcodes)
+				if(!new_target_machine_id)
+					target_department = last_target_department
+				else
+					target_machine_id = new_target_machine_id
 			. = TRUE
 
 		if("auth")
@@ -388,10 +407,13 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	GLOB.fax_contents += faxcontents
 
 	var/scan_department = target_department
+	var/the_target_department = target_department
 	if(department in HIGHCOM_DEPARTMENTS)
 		scan_department = department
+	else if(target_department == DEPARTMENT_TARGET)
+		the_target_department = "Fax Machine [target_machine_id]"
 
-	var/msg_admin = SPAN_STAFF_IC("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
+	var/msg_admin = SPAN_STAFF_IC("<b><font color='#006100'>[the_target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "[CC_MARK(user)] [ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_JMP_USER(user)] "
 
 	switch(scan_department)
@@ -425,7 +447,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")
 
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[the_target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	send_fax(faxcontents)
@@ -457,54 +479,62 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
-	for(var/obj/structure/machinery/faxmachine/F in GLOB.allfaxes)
-		if(F != src && F.department == target_department)
-			if(!faxcontents)
-				return
-			if(! (F.inoperable() ) )
+	var/list/target_machines = list()
+	for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.all_faxmachines)
+		if(target_department == DEPARTMENT_TARGET)
+			if(pos_target != src && pos_target.machine_id_tag == target_machine_id)
+				target_machines += pos_target
+		else
+			if(pos_target != src && pos_target.department == target_department)
+				target_machines += pos_target
 
-				flick("[initial(icon_state)]receive", F)
+	for(var/obj/structure/machinery/faxmachine/target in target_machines)
+		if(!faxcontents)
+			return
+		if(!(target.inoperable()))
 
-				// give the sprite some time to flick
-				spawn(30)
-					var/obj/item/paper/P = new(F.loc,faxcontents.photo_list)
-					P.name = "faxed message"
-					P.info = "[faxcontents.data]"
-					P.update_icon()
-					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					var/encrypted = FALSE
+			flick("[initial(icon_state)]receive", target)
 
-					switch(network)
-						if(FAX_NET_USCM_HC)
-							stampoverlay.icon_state = "paper_stamp-uscm"
-							encrypted = TRUE
-						if(FAX_NET_CMB)
-							stampoverlay.icon_state = "paper_stamp-cmb"
-							network = "NC4 UA Federal Secure Network."
-							encrypted = TRUE
-						if(FAX_NET_WY_HC)
-							stampoverlay.icon_state = "paper_stamp-weyyu"
-							encrypted = TRUE
-						if(FAX_NET_TWE_HC)
-							stampoverlay.icon_state = "paper_stamp-twe"
-							encrypted = TRUE
-						if(FAX_NET_UPP_HC)
-							stampoverlay.icon_state = "paper_stamp-upp"
-							encrypted = TRUE
-						if(FAX_NET_CLF_HC)
-							stampoverlay.icon_state = "paper_stamp-clf"
-							encrypted = TRUE
+			// give the sprite some time to flick
+			spawn(30)
+				var/obj/item/paper/P = new(target.loc,faxcontents.photo_list)
+				P.name = "faxed message"
+				P.info = "[faxcontents.data]"
+				P.update_icon()
+				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+				var/encrypted = FALSE
+
+				switch(network)
+					if(FAX_NET_USCM_HC)
+						stampoverlay.icon_state = "paper_stamp-uscm"
+						encrypted = TRUE
+					if(FAX_NET_CMB)
+						stampoverlay.icon_state = "paper_stamp-cmb"
+						network = "NC4 UA Federal Secure Network."
+						encrypted = TRUE
+					if(FAX_NET_WY_HC)
+						stampoverlay.icon_state = "paper_stamp-weyyu"
+						encrypted = TRUE
+					if(FAX_NET_TWE_HC)
+						stampoverlay.icon_state = "paper_stamp-twe"
+						encrypted = TRUE
+					if(FAX_NET_UPP_HC)
+						stampoverlay.icon_state = "paper_stamp-upp"
+						encrypted = TRUE
+					if(FAX_NET_CLF_HC)
+						stampoverlay.icon_state = "paper_stamp-clf"
+						encrypted = TRUE
 
 
-					if(encrypted)
-						if(!P.stamped)
-							P.stamped = new
-						P.stamped += /obj/item/tool/stamp
-						P.overlays += stampoverlay
-						P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
-					else
-						P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
-					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
+				if(encrypted)
+					if(!P.stamped)
+						P.stamped = new
+					P.stamped += /obj/item/tool/stamp
+					P.overlays += stampoverlay
+					P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
+				else
+					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
+				playsound(target.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb

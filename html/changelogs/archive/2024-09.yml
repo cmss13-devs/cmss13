@@ -44,3 +44,14 @@
   realforest2001:
   - bugfix: Survivor CL now draws ranks from CL playtime as previously.
   - rscadd: Provost Advisor, Team Lead and Enforcer now use military ranks again.
+2024-09-10:
+  Watermelon914:
+  - rscadd: Added a webhook to send the top 10 most overtiming procs to a discord
+      webhook on server shutdown.
+  - qol: 'Adds a new preference option for activating xeno abilities: Right click.
+      Prevents the context menu from opening whenever you have an ability active,
+      and the ability can then be triggered with right click. Context menu can still
+      be forced open by holding shift before right clicking, even if the ability is
+      active.'
+  realforest2001:
+  - bugfix: You can build on tiles with fire doors again.

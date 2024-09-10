@@ -2910,6 +2910,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic)
+"dAN" = (
+/obj/structure/machinery/light{
+	light_color = "#ccecff"
+	},
+/turf/open/floor/corsat/lightplate,
+/area/event/metal/dynamic)
 "dBx" = (
 /obj/structure/platform{
 	dir = 4;
@@ -4024,7 +4030,8 @@
 "eJQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
-	pixel_x = 17
+	pixel_x = 17;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
@@ -7027,7 +7034,8 @@
 "hLh" = (
 /obj/structure/machinery/light{
 	pixel_x = 17;
-	dir = 1
+	dir = 1;
+	light_color = "#ccecff"
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/box/bodybags,
@@ -8136,7 +8144,8 @@
 /area/event/metal/dynamic)
 "iYM" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/corsat/lightplate,
 /area/event/metal/dynamic)
@@ -9095,7 +9104,8 @@
 	stored_metal = 1000
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/almayer/sterile_green_corner{
 	dir = 4
@@ -10877,7 +10887,8 @@
 	pixel_y = 2
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/corsat/lightplate,
 /area/event/metal/dynamic)
@@ -12137,6 +12148,13 @@
 	dir = 8
 	},
 /area/event/metal/dynamic)
+"nGF" = (
+/obj/structure/machinery/light/small{
+	dir = 4;
+	light_color = "#ccecff"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "nGP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -12220,7 +12238,7 @@
 	},
 /obj/structure/machinery/light/small{
 	dir = 4;
-	light_color = "#ffd4d4"
+	light_color = "#ccecff"
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
@@ -12433,7 +12451,8 @@
 /area/event/metal/dynamic)
 "oao" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/almayer/sterile_green_corner{
 	dir = 8
@@ -14439,7 +14458,7 @@
 	},
 /obj/structure/machinery/light/small{
 	dir = 8;
-	light_color = "#ffd4d4"
+	light_color = "#ccecff"
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
@@ -18949,7 +18968,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
 /obj/structure/machinery/light{
 	dir = 4;
-	invisibility = 101
+	invisibility = 101;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic)
@@ -19357,7 +19377,8 @@
 /area/space)
 "vCn" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#ccecff"
 	},
 /turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic)
@@ -19898,6 +19919,13 @@
 "wbk" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/prison/bright_clean_marked,
+/area/event/metal/dynamic)
+"wbq" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	light_color = "#ccecff"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "wdo" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -41798,7 +41826,7 @@ pPQ
 sYA
 rNC
 tYK
-mdv
+wbq
 chA
 chA
 iZg
@@ -41907,7 +41935,7 @@ gWH
 rNC
 jkS
 pgW
-iHn
+dAN
 rNC
 bho
 dSU
@@ -42917,7 +42945,7 @@ bYr
 rNC
 dPb
 dPb
-iHn
+dAN
 rNC
 klc
 etC
@@ -43414,7 +43442,7 @@ pPQ
 tjY
 mKc
 uBe
-kqc
+nGF
 xgw
 xgw
 xgw

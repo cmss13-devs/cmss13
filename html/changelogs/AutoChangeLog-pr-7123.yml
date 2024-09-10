@@ -1,0 +1,4 @@
+author: "Watermelon914"
+delete-after: True
+changes:
+  - qol: "Adds a new preference option for activating xeno abilities: Right click. Prevents the context menu from opening whenever you have an ability active, and the ability can then be triggered with right click. Context menu can still be forced open by holding shift before right clicking, even if the ability is active."

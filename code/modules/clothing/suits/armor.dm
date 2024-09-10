@@ -312,12 +312,3 @@
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEJUMPSUIT
 	siemens_coefficient = 0.6
-
-/obj/item/clothing/suit/armor/hos/jensen
-	name = "armored trenchcoat"
-	desc = "A trenchcoat augmented with a special alloy for some protection and style."
-	icon_state = "jensencoat"
-	item_state = "jensencoat"
-	flags_inv_hide = NO_FLAGS
-	siemens_coefficient = 0.6
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS

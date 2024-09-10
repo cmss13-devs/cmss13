@@ -11,6 +11,20 @@ GLOBAL_LIST_EMPTY(alldepartments)
 #define DEPARTMENT_CLF "Colonial Liberation Front"
 #define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS, DEPARTMENT_TWE, DEPARTMENT_UPP, DEPARTMENT_CLF)
 
+#define FAX_NET_USCM "USCM Encrypted Network"
+#define FAX_NET_USCM_HC "USCM High Command Quantum Relay"
+#define FAX_NET_WY "Weyland-Yutani Secure Network"
+#define FAX_NET_WY_COL "Weyland-Yutani Public Network"
+#define FAX_NET_WY_HC "Weyland-Yutani Quantum Relay"
+#define FAX_NET_CMB "NC4 UA Federal Secure Network - CMB Relay"
+#define FAX_NET_TWE "TWE Encrypted Network"
+#define FAX_NET_TWE_HC "TWE Imperial Command Quantum Relay"
+#define FAX_NET_UPP "UPP Encrypted Network"
+#define FAX_NET_UPP_HC "UPP High Command Quantum Relay"
+#define FAX_NET_CLF "Peridia Encrypted Network"
+#define FAX_NET_CLF_HC "Peridia Quantum Relay"
+#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC)
+
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
 	icon = 'icons/obj/structures/machinery/library.dmi'
@@ -40,16 +54,54 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	var/list/photo_list = list()
 
 	///Fluff network shown by fax machine when logged in
-	var/network = "Weyland-Yutani Public Network"
+	var/network = FAX_NET_WY_COL
 
 	///storer var for cooldown on sending faxes
 	var/fax_cooldown = 300
 	COOLDOWN_DECLARE(send_cooldown)
 
+	var/machine_id_tag
+
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 	GLOB.allfaxes += src
 	update_departments()
+	generate_id_tag()
+
+/obj/structure/machinery/faxmachine/proc/generate_id_tag()
+	var/id_tag_prefix
+	var/id_tag_suffix = "[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	var/id_tag_final
+	switch(network)
+		if(FAX_NET_USCM)
+			id_tag_prefix = "UA-M"//United Americas Military
+		if(FAX_NET_USCM_HC)
+			id_tag_final = FAX_NET_USCM_HC
+		if(FAX_NET_CMB)
+			id_tag_final = FAX_NET_CMB
+		if(FAX_NET_WY)
+			id_tag_prefix = "WY-SCN"//Weyland Yutani Secure Corporate Network
+		if(FAX_NET_WY_COL)
+			id_tag_prefix = "WYC"//Weyland Yutani Communications
+		if(FAX_NET_WY_HC)
+			id_tag_final = FAX_NET_WY_HC
+		if(FAX_NET_TWE)
+			id_tag_prefix = "ICN"//Imperial Communication Network
+		if(FAX_NET_TWE_HC)
+			id_tag_final = FAX_NET_TWE_HC
+		if(FAX_NET_UPP)
+			id_tag_prefix = "UFR"//Union Fax Relay
+		if(FAX_NET_UPP_HC)
+			id_tag_final = FAX_NET_UPP_HC
+		if(FAX_NET_CLF)
+			id_tag_prefix = "PRD"//PeRiDia
+		if(FAX_NET_CLF_HC)
+			id_tag_final = FAX_NET_CLF_HC
+
+	if(!id_tag_final)
+		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
+
+	machine_id_tag = id_tag_final
 
 /obj/structure/machinery/faxmachine/Destroy()
 	GLOB.allfaxes -= src
@@ -169,6 +221,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 	data["department"] = department
 	data["network"] = network
+	data["machine_id_tag"] = machine_id_tag
 
 	return data
 
@@ -418,65 +471,51 @@ GLOBAL_LIST_EMPTY(alldepartments)
 					P.name = "faxed message"
 					P.info = "[faxcontents.data]"
 					P.update_icon()
+					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+					var/encrypted = FALSE
 
 					switch(network)
-						if("USCM High Command Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						if(FAX_NET_USCM_HC)
 							stampoverlay.icon_state = "paper_stamp-uscm"
-							P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
-						if("NC4 UA Federal Secure Network - CMB Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							encrypted = TRUE
+						if(FAX_NET_CMB)
 							stampoverlay.icon_state = "paper_stamp-cmb"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
-						if("Weyland-Yutani Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							network = "NC4 UA Federal Secure Network."
+							encrypted = TRUE
+						if(FAX_NET_WY_HC)
 							stampoverlay.icon_state = "paper_stamp-weyyu"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
-						if("TWE Royal Marines Commando Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							encrypted = TRUE
+						if(FAX_NET_TWE_HC)
 							stampoverlay.icon_state = "paper_stamp-twe"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by the TWE Royal Marines Commando Quantum Relay.</i>"
-						if("UPP High Kommand Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							encrypted = TRUE
+						if(FAX_NET_UPP_HC)
 							stampoverlay.icon_state = "paper_stamp-upp"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by the UPP High Kommand Quantum Relay.</i>"
-						if("CLF Gureilla Command Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							encrypted = TRUE
+						if(FAX_NET_CLF_HC)
 							stampoverlay.icon_state = "paper_stamp-clf"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped and encrypted by the CLF Gureilla Command Quantum Relay.</i>"
+							encrypted = TRUE
 
+
+					if(encrypted)
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
+					else
+						P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "\improper CMB Incident Command Center Fax Machine"
-	network = "NC4 UA Federal Secure Network - CMB Relay"
+	network = FAX_NET_CMB
 	department = DEPARTMENT_CMB
 
 /obj/structure/machinery/faxmachine/corporate
 	name = "\improper W-Y Corporate Fax Machine"
 	department = "W-Y Local Office"
-	network = "Weyland-Yutani Secure Network"
+	network = FAX_NET_WY
 
 /obj/structure/machinery/faxmachine/corporate/liaison
 	department = "W-Y Liaison"
@@ -484,12 +523,12 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = DEPARTMENT_WY
 	target_department = "W-Y Liaison"
-	network = "Weyland-Yutani Quantum Relay"
+	network = FAX_NET_WY_HC
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "\improper USCM Military Fax Machine"
 	department = "USCM Local Operations"
-	network = "USCM Encrypted Network"
+	network = FAX_NET_USCM
 	target_department = DEPARTMENT_HC
 
 /obj/structure/machinery/faxmachine/uscm/command
@@ -501,7 +540,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/structure/machinery/faxmachine/uscm/command/highcom
 	department = DEPARTMENT_HC
 	target_department = "Commanding Officer"
-	network = "USCM High Command Quantum Relay"
+	network = FAX_NET_USCM_HC
 
 /obj/structure/machinery/faxmachine/uscm/brig
 	name = "\improper USCM Provost Fax Machine"
@@ -514,39 +553,39 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/structure/machinery/faxmachine/uscm/brig/provost
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
-	network = "USCM High Command Quantum Relay"
+	network = FAX_NET_USCM_HC
 
 /obj/structure/machinery/faxmachine/upp
 	name = "\improper UPP Military Fax Machine"
 	department = "UPP Local Operations"
-	network = "UPP Encrypted Network"
+	network = FAX_NET_UPP
 	target_department = DEPARTMENT_UPP
 
 /obj/structure/machinery/faxmachine/upp/highcom
 	department = DEPARTMENT_UPP
-	network = "UPP High Command Quantum Relay"
+	network = FAX_NET_UPP_HC
 	target_department = "UPP Local Operations"
 
 /obj/structure/machinery/faxmachine/clf
 	name = "\improper Hacked General Purpose Fax Machine"
 	department = "CLF Local Operations"
-	network = "Perseus Encrypted Network"
+	network = FAX_NET_CLF
 	target_department = DEPARTMENT_CLF
 
 /obj/structure/machinery/faxmachine/clf/highcom
 	department = DEPARTMENT_CLF
-	network = "Perseus Quantum Relay"
-	target_department = "UPP Local Operations"
+	network = FAX_NET_CLF_HC
+	target_department = "CLF Local Operations"
 
 /obj/structure/machinery/faxmachine/twe
 	name = "\improper TWE Military Fax Machine"
 	department = "TWE Local Operations"
-	network = "TWE Encrypted Network"
+	network = FAX_NET_TWE
 	target_department = DEPARTMENT_TWE
 
 /obj/structure/machinery/faxmachine/twe/highcom
 	department = DEPARTMENT_TWE
-	network = "TWE High Command Quantum Relay"
+	network = FAX_NET_TWE_HC
 	target_department = "TWE Local Operations"
 
 ///The deployed fax machine backpack

@@ -680,6 +680,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 	)
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/marine/quackers
 	name = "Mr. Quackers"

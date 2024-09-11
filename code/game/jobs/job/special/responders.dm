@@ -14,10 +14,6 @@
 	gear_preset = /datum/equipment_preset/fax_responder
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job</a> is to answer faxes sent to your fax machine. You are answering on behalf of the CMSS13 staff team and are therefore expected to behave appropriately. You are not able to authorise ERTs."
 
-AddTimelock(/datum/job/fax_responder, list(
-	JOB_COMMAND_ROLES = 75 HOURS,
-))
-
 /datum/job/fax_responder/uscm_hc
 	title = JOB_FAX_RESPONDER_USCM_HC
 	gear_preset = /datum/equipment_preset/fax_responder/uscm
@@ -59,3 +55,8 @@ AddTimelock(/datum/job/fax_responder/wy, list(
 /datum/job/fax_responder/cmb
 	title = JOB_FAX_RESPONDER_CMB
 	gear_preset = /datum/equipment_preset/fax_responder/cmb
+
+AddTimelock(/datum/job/fax_responder/uscm_pvst, list(
+	JOB_POLICE_ROLES = 75 HOURS,
+	JOB_COMMAND_ROLES = 25 HOURS,
+))

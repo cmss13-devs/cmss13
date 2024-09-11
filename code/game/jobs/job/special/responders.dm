@@ -6,6 +6,8 @@
 	total_positions = 1
 	spawn_positions = 1
 
+	late_joinable = FALSE
+
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_HIDDEN
 	flags_whitelist = WHITELIST_FAX_RESPONDER
 

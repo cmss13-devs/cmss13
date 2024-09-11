@@ -229,6 +229,10 @@
 "vc" = (
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/fax_response_station)
+"wv" = (
+/obj/effect/landmark/late_join/responder/cmb,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "wx" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
@@ -2184,7 +2188,7 @@ Yy
 xX
 nB
 CT
-gu
+wv
 fr
 xX
 Yy

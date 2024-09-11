@@ -70,25 +70,6 @@
 	icon_state = "bear_mask"
 	anti_hug = 2
 
-
-
-
-//Plague Dr suit can be found in clothing/suits/bio.dm
-/obj/item/clothing/mask/gas/plaguedoctor
-	name = "plague doctor mask"
-	desc = "A modernised version of the classic design, this mask will not only filter out phoron but it can also be connected to an air supply."
-	icon_state = "plaguedoctor"
-	item_state = "gas_mask"
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_NONE
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
-
 /obj/item/clothing/mask/gas/swat
 	name = "\improper SWAT mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."

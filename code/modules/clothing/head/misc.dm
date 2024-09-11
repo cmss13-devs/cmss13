@@ -35,14 +35,6 @@
 	desc = "<i>'I guess it's a redhead.'</i>"
 	flags_armor_protection = 0
 
-/obj/item/clothing/head/plaguedoctorhat
-	name = "plague doctor's hat"
-	desc = "These were once used by Plague doctors. They're pretty much useless."
-	icon_state = "plaguedoctor"
-	permeability_coefficient = 0.01
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
-
 /obj/item/clothing/head/nursehat
 	name = "nurse's hat"
 	desc = "It allows quick identification of trained medical personnel."

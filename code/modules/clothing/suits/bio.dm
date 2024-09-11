@@ -112,10 +112,3 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
-//Plague Dr mask can be found in clothing/masks/gasmask.dm
-/obj/item/clothing/suit/bio_suit/plaguedoctorsuit
-	name = "Plague doctor suit"
-	desc = "It protected doctors from the Black Death, back then. You bet your arse it's gonna help you against viruses."
-	icon_state = "plaguedoctor"
-	item_state = "bio_suit"
-	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL

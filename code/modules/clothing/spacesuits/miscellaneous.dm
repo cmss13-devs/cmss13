@@ -18,46 +18,6 @@
 	slowdown = 0
 	allowed = list(/obj/item) //for stuffing extra special presents
 
-//Space pirate outfit
-/obj/item/clothing/head/helmet/space/pirate
-	name = "pirate hat"
-	desc = "Yarr."
-	icon_state = "pirate"
-	item_state = "pirate"
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEYES
-	flags_armor_protection = 0
-	siemens_coefficient = 0.9
-
-/obj/item/clothing/suit/space/pirate
-	name = "pirate coat"
-	desc = "Yarr."
-	icon_state = "pirate"
-	item_state = "pirate"
-	w_class = SIZE_MEDIUM
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank/emergency_oxygen)
-	slowdown = 0
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	siemens_coefficient = 0.9
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-
-
-
 /obj/item/clothing/head/helmet/space/compression
 	name = "\improper MK.50 compression helmet"
 	desc = "A heavy space helmet, designed to be coupled with the MK.50 compression suit, though it is less resilient than the suit. Feels like you could hotbox in here."

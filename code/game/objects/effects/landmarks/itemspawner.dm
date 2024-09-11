@@ -40,12 +40,6 @@
 	new /obj/item/clothing/mask/fakemoustache(src.loc)
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/costume/plaguedoctor/Initialize()
-	. = ..()
-	new /obj/item/clothing/suit/bio_suit/plaguedoctorsuit(src.loc)
-	new /obj/item/clothing/head/plaguedoctorhat(src.loc)
-	return INITIALIZE_HINT_QDEL
-
 /obj/effect/landmark/costume/pirate/Initialize()
 	. = ..()
 	new /obj/item/clothing/under/pirate(src.loc)

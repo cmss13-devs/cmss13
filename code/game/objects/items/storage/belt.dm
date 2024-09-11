@@ -441,21 +441,6 @@
 		/obj/item/device/clue_scanner,
 	)
 
-
-
-/obj/item/storage/belt/security/tactical
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
-	icon_state = "swatbelt"
-	item_state = "swatbelt"
-	item_state_slots = list(
-		WEAR_L_HAND = "upp_belt",
-		WEAR_R_HAND = "upp_belt")
-	storage_slots = 9
-	max_w_class = SIZE_MEDIUM
-	max_storage_space = 21
-
-
 /obj/item/storage/belt/security/MP
 	name = "\improper M276 pattern military police rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."

@@ -303,7 +303,7 @@ Additional game mode variables.
 	if(!new_responder)
 		return FALSE
 
-	message_admins("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name].")
+	message_admins(SPAN_HIGHDANGER("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name]."))
 
 	if(responder_candidate)
 		responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.

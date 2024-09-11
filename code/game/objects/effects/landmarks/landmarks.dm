@@ -477,7 +477,9 @@
 	name = "CLF Fax Responder late join"
 	job = JOB_FAX_RESPONDER_CLF
 
-
+/obj/effect/landmark/late_join/responder/cmb
+	name = "CMB Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CMB
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms

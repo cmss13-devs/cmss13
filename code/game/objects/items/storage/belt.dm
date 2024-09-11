@@ -681,6 +681,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 	)
 	has_gamemode_skin = FALSE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 /obj/item/storage/belt/marine/quackers
 	name = "Mr. Quackers"

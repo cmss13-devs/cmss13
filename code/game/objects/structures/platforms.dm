@@ -108,7 +108,7 @@
 		tgui_interact(user)
 		return XENO_ATTACK_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
-	SPAN_WARNING("You start to pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
 
 	var/shove_time = 90

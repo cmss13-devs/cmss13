@@ -243,7 +243,7 @@
 
 	target.revive_grace_period += 4 SECONDS
 	target.visible_message(SPAN_NOTICE("<b>[src]</b> automatically performs <b>CPR</b> on <b>[target]</b>."))
-	target.balloon_alert_to_viewers("Performing CPR on [target], do not intervene!")
+	target.balloon_alert_to_viewers("Performing CPR, stay clear!")
 	currently_healing = TRUE
 	playsound(loc, 'sound/CPRbot/CPR.ogg', 25, 1)
 	cpr_ready = FALSE
@@ -270,6 +270,8 @@
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
 	var/obj/item/cprbot_item/I = new /obj/item/cprbot_item(src.loc)
 
+	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
+
 	if (user)
 		if (!user.put_in_active_hand(I))
 			if (!user.put_in_inactive_hand(I))
@@ -291,7 +293,7 @@
 
 	if (user != src)
 		visible_message(SPAN_DANGER("<B>[user] begins to undeploy [src]!</B>"))
-	src.self_destruct(user)
+	self_destruct(user)
 	return TRUE
 
 /obj/structure/machinery/bot/cprbot/update_icon()
@@ -307,6 +309,8 @@
 	src.on = 0
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
+
+	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
 
 	new /obj/item/cprbot_broken(Tsec)
 

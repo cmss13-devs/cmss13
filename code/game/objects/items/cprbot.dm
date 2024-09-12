@@ -93,7 +93,7 @@
 			return
 
 		// Create the repaired item
-		var/obj/item/cprbot_item/I = new /obj/item/cprbot_item(src.loc)
+		var/obj/item/cprbot_item/Item = new /obj/item/cprbot_item(src.loc)
 
 		// Check if the broken item is in the user's hand
 		var/hand_was_active = user.get_active_hand() == src
@@ -104,10 +104,10 @@
 
 		// Attempt to place the new item into the user's hands
 		if (hand_was_active)
-			if (!user.put_in_active_hand(I))
-				I.forceMove(user.loc)  // Place it at user's location if hands are full
+			if (!user.put_in_active_hand(Item))
+				Item.forceMove(user.loc)  // Place it at user's location if hands are full
 		else if (hand_was_inactive)
-			if (!user.put_in_inactive_hand(I))
-				I.forceMove(user.loc)  // Place it at user's location if hands are full
+			if (!user.put_in_inactive_hand(Item))
+				Item.forceMove(user.loc)  // Place it at user's location if hands are full
 		else
-			I.forceMove(user.loc)  // Place at the original location if not in hand
+			Item.forceMove(user.loc)  // Place at the original location if not in hand

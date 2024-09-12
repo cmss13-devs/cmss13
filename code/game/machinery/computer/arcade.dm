@@ -46,7 +46,7 @@
 							/obj/item/facepaint/lipstick/jade = 1
 							)
 
-/obj/structure/machinery/computer/arcade
+obj/structure/machinery/computer/arcade
 	var/turtle = 0
 
 /obj/structure/machinery/computer/arcade/attack_remote(mob/user as mob)

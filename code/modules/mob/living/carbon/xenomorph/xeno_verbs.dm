@@ -102,22 +102,6 @@
 
 	xeno_hostile_hud = !xeno_hostile_hud
 
-
-/mob/living/carbon/xenomorph/verb/middle_mouse_toggle()
-	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using middle mouse click and shift click for selected ability use."
-	set category = "Alien"
-
-	if (!client || !client.prefs)
-		return
-
-	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
-	client.prefs.save_preferences()
-	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
-	else
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
-
 /mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
 	set name = "Toggle Ability Deactivation"
 	set desc = "Toggles whether you can deactivate your currently active ability when re-selecting it."

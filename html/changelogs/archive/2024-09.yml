@@ -11,3 +11,51 @@
       aesthetic upgrade.
   hislittlecuzingames:
   - qol: Deletes empty pill packets when dropped.
+2024-09-05:
+  benbot16:
+  - bugfix: Fixes stacking explosions in overloaded escape pods.
+  joookschad:
+  - sounddel: removed the new revive notification
+  realforest2001:
+  - rscadd: Added a staff event verb to check for a particular whitelist and report
+      online players that have it. Code for the proc from HarryOB
+2024-09-06:
+  hislittlecuzingames:
+  - config: Adjusted XO Hour Requirements.
+2024-09-08:
+  BOBAMA:
+  - bugfix: fixed monkey spawn on Shiva's LZ2 in fog
+  Blundir:
+  - imageadd: replaces ancient close backpack red cross with a modern icon
+  Nihisohel:
+  - qol: Throwing Knives can now perform basic surgery on par with glass shards
+  SpartanBobby:
+  - maptweak: Widens trijent platform (the one northeast of engineering west of the
+      padlock)
+  - maptweak: Changes to the handrails and tiles on predship
+  Steelpoint:
+  - maptweak: Removes a overpowered shotgun from Solaris.
+  Steelpoint, Crowford:
+  - imageadd: A UPP faction floor symbol has been added for mappers to use.
+  kiVts:
+  - code_imp: Join as freed mobs will now notify the user if there is no freed mobs
+      to take.
+2024-09-09:
+  realforest2001:
+  - bugfix: Survivor CL now draws ranks from CL playtime as previously.
+  - rscadd: Provost Advisor, Team Lead and Enforcer now use military ranks again.
+2024-09-10:
+  Watermelon914:
+  - rscadd: Added a webhook to send the top 10 most overtiming procs to a discord
+      webhook on server shutdown.
+  - qol: 'Adds a new preference option for activating xeno abilities: Right click.
+      Prevents the context menu from opening whenever you have an ability active,
+      and the ability can then be triggered with right click. Context menu can still
+      be forced open by holding shift before right clicking, even if the ability is
+      active.'
+  realforest2001:
+  - bugfix: You can build on tiles with fire doors again.
+2024-09-11:
+  rythenx:
+  - bugfix: drop pouch's switch storage drawing method now works correctly instead
+      of doing nothing

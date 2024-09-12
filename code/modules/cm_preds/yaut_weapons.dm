@@ -187,7 +187,7 @@
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = xeno_interfere_amount
+		xenomorph.AddComponent(/datum/component/status_effect/interference, xeno_interfere_amount, xeno_interfere_amount)
 
 	if(!ability_cost || !(HAS_TRAIT(user, TRAIT_YAUTJA_TECH)))
 		return
@@ -862,13 +862,12 @@
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = xeno_interfere_amount
+		xenomorph.AddComponent(/datum/component/status_effect/interference, xeno_interfere_amount, xeno_interfere_amount)
 
 	if(!ability_cost || !(HAS_TRAIT(user, TRAIT_YAUTJA_TECH)))
 		return
 
 	progress_ability(target, user)
-
 
 /obj/item/weapon/twohanded/yautja/proc/progress_ability(mob/living/target, mob/living/carbon/human/user)
 	if(target == user || target.stat == DEAD || isanimal(target))
@@ -882,6 +881,29 @@
 	if(ability_charge >= ability_cost)
 		ready_ability(target, user)
 	return TRUE
+
+/obj/item/weapon/twohanded/yautja/unique_action(mob/user)
+	if(user.get_active_hand() != src)
+		return FALSE
+	if(ability_charge < ability_cost)
+		to_chat(user, SPAN_WARNING("The blood reservoir is not full enough to do this!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/twohanded/yautja/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user) && ability_cost)
+		. += SPAN_WARNING("It currently has <b>[ability_charge]/[ability_charge_max]</b> blood charge(s).")
+		. += SPAN_ORANGE("It requires <b>[ability_cost]</b> blood charge(s) to use its ability.")
+
+/obj/item/weapon/twohanded/yautja/proc/ready_ability(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(ability_charge >= ability_cost)
+		var/color = target.get_blood_color()
+		var/alpha = 70
+		color += num2text(alpha, 2, 16)
+		add_filter(ABILITY_FILTER_NAME, 1, list("type" = "outline", "color" = color, "size" = 2))
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
 	name = "hunter spear"

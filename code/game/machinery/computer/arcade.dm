@@ -33,12 +33,20 @@
 							/obj/item/toy/prize/seraph = 2,
 							/obj/item/toy/prize/mauler = 2,
 							/obj/item/toy/prize/odysseus = 2,
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/tool/lighter/zippo = 2,
+							/obj/item/toy/bikehorn = 2, // honk
+							/obj/item/clothing/head/collectable/tophat/super = 2,
+							/obj/item/toy/plush/farwa = 2,
+							/obj/item/toy/plush/barricade = 2,
+							/obj/item/toy/plush/shark = 2,
+							/obj/item/toy/plush/bee = 2,
+							/obj/item/toy/plush/moth = 2
+							/obj/item/toy/plush/rock =2
+							/obj/item/tool/lighter/zippo
+							/obj/item/tool/lighter/zippo
+							/obj/item/tool/lighter/zippo
+							/obj/item/tool/lighter/zippo
+							/obj/item/tool/lighter/zippo
+							/obj/item/tool/lighter/zippo
 							)
 
 /obj/structure/machinery/computer/arcade

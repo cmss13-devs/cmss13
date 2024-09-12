@@ -32,7 +32,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/uscm
-	name = JOB_FAX_RESPONDER_USCM_HC
+	name = "Fax Responder - USCM HC"
 	assignment = JOB_FAX_RESPONDER_USCM_HC
 	rank = JOB_FAX_RESPONDER_USCM_HC
 
@@ -54,7 +54,7 @@
 	. = ..()
 
 /datum/equipment_preset/fax_responder/uscm/provost
-	name = JOB_FAX_RESPONDER_USCM_PVST
+	name = "Fax Responder - USCM Provost"
 	assignment = JOB_FAX_RESPONDER_USCM_PVST
 	rank = JOB_FAX_RESPONDER_USCM_PVST
 	idtype = /obj/item/card/id/provost
@@ -74,7 +74,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/wey_yu
-	name = JOB_FAX_RESPONDER_WY
+	name = "Fax Responder - WY"
 	assignment = JOB_FAX_RESPONDER_WY
 	rank = JOB_FAX_RESPONDER_WY
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_3)
@@ -92,7 +92,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/upp
-	name = JOB_FAX_RESPONDER_UPP
+	name = "Fax Responder - UPP"
 	assignment = JOB_FAX_RESPONDER_UPP
 	rank = JOB_FAX_RESPONDER_UPP
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_3)
@@ -116,7 +116,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/twe
-	name = JOB_FAX_RESPONDER_TWE
+	name = "Fax Responder - TWE"
 	assignment = JOB_FAX_RESPONDER_TWE
 	rank = JOB_FAX_RESPONDER_TWE
 	headset_type = /obj/item/device/radio/headset/distress/royal_marine
@@ -134,7 +134,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/clf
-	name = JOB_FAX_RESPONDER_CLF
+	name = "Fax Responder - CLF"
 	assignment = JOB_FAX_RESPONDER_CLF
 	rank = JOB_FAX_RESPONDER_CLF
 	headset_type = /obj/item/device/radio/headset/distress/CLF/command
@@ -148,7 +148,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/cmb
-	name = JOB_FAX_RESPONDER_CMB
+	name = "Fax Responder - CMB"
 	assignment = JOB_FAX_RESPONDER_CMB
 	rank = JOB_FAX_RESPONDER_CMB
 	headset_type = /obj/item/device/radio/headset/distress/CMB

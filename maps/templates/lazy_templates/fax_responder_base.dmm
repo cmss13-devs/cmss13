@@ -11,7 +11,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
-	phone_id = "UPP High Command";
+	phone_id = "UPP Communications Officer";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "green"
@@ -32,7 +32,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
 	pixel_x = 16;
 	layer = 2.99;
 	name = "USS Almayer Cameras";
@@ -92,7 +92,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("WY","Colony");
+	network = list("WY","Containment Hidden","Colony");
 	pixel_x = 16;
 	name = "WY Cameras";
 	colony_camera_mapload = 0
@@ -100,7 +100,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment");
 	pixel_x = 16;
 	layer = 2.99;
 	name = "USS Almayer Cameras";
@@ -124,7 +124,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
-	phone_id = "TWE High Command";
+	phone_id = "TWE Communications Officer";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "yellow"
@@ -208,7 +208,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM High Command";
+	phone_id = "USCM-HC Communications Officer";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "blue"
@@ -375,25 +375,6 @@
 "BC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
-"BL" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/folder/red{
-	pixel_x = 6
-	},
-/obj/item/folder/black{
-	pixel_x = 12
-	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
-	networks_transmit = list("USCM","Colonist","Colonial Marshal","Fax Responders");
-	phone_id = "Colonial Marshal Bureau";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
-	phone_color = "green"
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "CT" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -459,7 +440,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
-	phone_id = "Weyland-Yutani Operations Manager";
+	phone_id = "WY Communications Executive";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders")
 	},
@@ -477,6 +458,25 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"Nb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary{
+	pixel_x = -6;
+	pixel_y = 6;
+	networks_transmit = list("USCM","Colonist","Colonial Marshal","Fax Responders");
+	phone_id = "CMB Deputy Operations Officer";
+	phone_category = "Comms Relay";
+	networks_receive = list("Fax Responders");
+	phone_color = "green"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "NP" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
@@ -490,7 +490,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM Provost Office";
+	phone_id = "Provost Communications Officer";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "red"
@@ -549,7 +549,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
 	pixel_x = 16;
 	layer = 2.99;
 	name = "USS Almayer Cameras";
@@ -594,7 +594,7 @@
 	pixel_x = -6;
 	pixel_y = 6;
 	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
-	phone_id = "CLF Command";
+	phone_id = "CLF Information Correspondant";
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "orange"
@@ -820,6 +820,53 @@ Yy
 Yy
 Yy
 Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(6,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
 Ei
 Ei
 Ei
@@ -854,7 +901,7 @@ Yy
 Yy
 Yy
 "}
-(6,1,1) = {"
+(7,1,1) = {"
 Yy
 Yy
 Yy
@@ -901,53 +948,6 @@ Yy
 Yy
 Yy
 "}
-(7,1,1) = {"
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-xX
-xX
-Ei
-EI
-gu
-gu
-gu
-Pn
-EI
-gu
-gu
-gu
-Ei
-xX
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-"}
 (8,1,1) = {"
 Yy
 Yy
@@ -960,19 +960,19 @@ Yy
 Yy
 Yy
 xX
-vc
-pH
-gu
+xX
+Ei
+EI
 gu
 gu
 gu
 Pn
+EI
 gu
 gu
 gu
-gu
-pH
-vc
+Ei
+xX
 xX
 Yy
 Yy
@@ -1008,7 +1008,7 @@ Yy
 Yy
 xX
 vc
-Ei
+pH
 gu
 gu
 gu
@@ -1018,7 +1018,7 @@ gu
 gu
 gu
 gu
-Ei
+pH
 vc
 xX
 Yy
@@ -2047,7 +2047,7 @@ xX
 xX
 xX
 xX
-vc
+wK
 xX
 xX
 xX
@@ -2077,100 +2077,6 @@ Yy
 Yy
 "}
 (32,1,1) = {"
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-xX
-vc
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-"}
-(33,1,1) = {"
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-xX
-xX
-xX
-wK
-xX
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-"}
-(34,1,1) = {"
 Yy
 Yy
 Yy
@@ -2217,7 +2123,7 @@ Yy
 Yy
 Yy
 "}
-(35,1,1) = {"
+(33,1,1) = {"
 Yy
 Yy
 Yy
@@ -2264,7 +2170,7 @@ Yy
 Yy
 Yy
 "}
-(36,1,1) = {"
+(34,1,1) = {"
 Yy
 Yy
 Yy
@@ -2311,7 +2217,7 @@ Yy
 Yy
 Yy
 "}
-(37,1,1) = {"
+(35,1,1) = {"
 Yy
 Yy
 Yy
@@ -2330,7 +2236,7 @@ xX
 ny
 ST
 gu
-BL
+Nb
 xX
 Yy
 Yy
@@ -2358,7 +2264,7 @@ Yy
 Yy
 Yy
 "}
-(38,1,1) = {"
+(36,1,1) = {"
 Yy
 Yy
 Yy
@@ -2405,6 +2311,100 @@ Yy
 Yy
 Yy
 "}
+(37,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(38,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
 (39,1,1) = {"
 Yy
 Yy
@@ -2420,12 +2420,12 @@ Yy
 Yy
 Yy
 Yy
-xX
-xX
-xX
-xX
-xX
-xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
 Yy
 Yy
 Yy

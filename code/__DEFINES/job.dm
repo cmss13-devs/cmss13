@@ -370,14 +370,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define DUTCH_JOB_LIST list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
 //---------- RESPONDERS ----------//
+/// This root job should never appear ingame, it's used to select the character slot.
 #define JOB_FAX_RESPONDER "Fax Responder"
-#define JOB_FAX_RESPONDER_USCM_HC "USCM HC Fax Responder"
-#define JOB_FAX_RESPONDER_USCM_PVST "USCM Provost Fax Responder"
-#define JOB_FAX_RESPONDER_WY "Weyland-Yutani Fax Responder"
-#define JOB_FAX_RESPONDER_UPP "UPP Fax Responder"
-#define JOB_FAX_RESPONDER_TWE "TWE Fax Responder"
-#define JOB_FAX_RESPONDER_CLF "CLF Fax Responder"
-#define JOB_FAX_RESPONDER_CMB "CMB Fax Responder"
+#define JOB_FAX_RESPONDER_USCM_HC "USCM-HC Communications Officer"
+#define JOB_FAX_RESPONDER_USCM_PVST "Provost Communications Officer"
+#define JOB_FAX_RESPONDER_WY "WY Communications Executive"
+#define JOB_FAX_RESPONDER_UPP "UPP Communications Officer"
+#define JOB_FAX_RESPONDER_TWE "TWE Communications Officer"
+#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondant"
+#define JOB_FAX_RESPONDER_CMB "CMB Deputy Operations Officer"
 
 #define FAX_RESPONDER_JOB_LIST list(JOB_FAX_RESPONDER_USCM_HC, JOB_FAX_RESPONDER_USCM_PVST, JOB_FAX_RESPONDER_WY, JOB_FAX_RESPONDER_UPP, JOB_FAX_RESPONDER_TWE, JOB_FAX_RESPONDER_CLF, JOB_FAX_RESPONDER_CMB)
 

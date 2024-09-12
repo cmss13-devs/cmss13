@@ -171,7 +171,7 @@
 		desc = "A large, wolf-like reptile."
 		if(user == src)
 			. += SPAN_NOTICE("\nRest on the ground to restore 5% of your health every second.")
-			. += SPAN_NOTICE("You're able to pounce targets by using [client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+			. += SPAN_NOTICE("You're able to pounce targets by using [get_ability_mouse_name()].")
 			. += SPAN_NOTICE("You will aggressively maul targets that are prone. Any click on yourself will be passed down to mobs below you, so feel free to click on your sprite in order to attack pounced targets.")
 	else if((user.faction in faction_group))
 		desc = "[initial(desc)] There's a hint of warmth in them."
@@ -718,15 +718,22 @@
 
 //Middle mouse button/shift click to pounce.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/click(atom/clicked_atom, list/mods)
-	if(mods["shift"] && !mods["middle"])
-		if(client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			pounce(clicked_atom)
-			return TRUE
+	var/should_pounce = FALSE
+	switch(get_ability_mouse_key())
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			if(mods[MIDDLE_CLICK] && mods[LEFT_CLICK])
+				should_pounce = TRUE
+		if(XENO_ABILITY_CLICK_RIGHT)
+			if(mods[RIGHT_CLICK])
+				should_pounce = TRUE
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			if(mods[MIDDLE_CLICK])
+				should_pounce = TRUE
 
-	if(mods["middle"] && !mods["shift"])
-		if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			pounce(clicked_atom)
-			return TRUE
+	if(should_pounce)
+		pounce(clicked_atom)
+		return TRUE
+
 	return ..()
 
 

@@ -183,7 +183,7 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
 		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[SPAN_PSYTALK(whisper)]</i>"))
@@ -204,7 +204,7 @@
 	set desc = "Whisper silently to multiple people over a distance."
 	set category = "Abilities"
 
-	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
+	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Radiance")
 	var/list/target_list = list()
 	if(!whisper)
 		return FALSE

@@ -141,7 +141,7 @@
 			M.gib(create_cause_data("gutting", usr))
 
 /mob/living/carbon/human/proc/commune()
-	set category = "Abilities"
+	set category = "Abilities.Psychic"
 	set name = "Commune with creature"
 	set desc = "Send a telepathic message to an unlucky recipient."
 
@@ -181,7 +181,7 @@
 /mob/living/carbon/human/proc/psychic_whisper(mob/target_mob as mob in oview())
 	set name = "Psychic Whisper"
 	set desc = "Whisper silently to someone over a distance."
-	set category = "Abilities"
+	set category = "Abilities.Psychic"
 
 	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
@@ -202,7 +202,7 @@
 /mob/living/carbon/human/proc/psychic_radiance()
 	set name = "Psychic Radiance"
 	set desc = "Whisper silently to multiple people over a distance."
-	set category = "Abilities"
+	set category = "Abilities.Psychic"
 
 	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Radiance")
 	var/list/target_list = list()

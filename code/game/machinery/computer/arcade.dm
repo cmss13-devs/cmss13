@@ -16,12 +16,12 @@
 	var/gameover = 0
 	var/blocked = 0 //Player cannot attack/heal while set
 	var/list/prizes = list( 
-							/obj/item/tool/lighter/zippo = 2,
-							/obj/item/facepaint/sniper = 2,
-							/obj/item/toy/gun = 2,
-							/obj/item/toy/crossbow = 2,
-							/obj/item/toy/sword = 2,
-							/obj/item/toy/katana = 2,
+							/obj/item/tool/lighter/zippo = 10,
+							/obj/item/facepaint/sniper = 10,
+							/obj/item/toy/gun = 10,
+							/obj/item/toy/crossbow = 10,
+							/obj/item/toy/sword = 5,
+							/obj/item/toy/katana = 1,
 							/obj/item/toy/spinningtoy = 2,
 							/obj/item/toy/prize/ripley = 2,
 							/obj/item/toy/prize/fireripley = 2,
@@ -40,13 +40,11 @@
 							/obj/item/toy/plush/shark = 2,
 							/obj/item/toy/plush/bee = 2,
 							/obj/item/toy/plush/moth = 2
-							/obj/item/toy/plush/rock =2
-							/obj/item/tool/lighter/zippo
-							/obj/item/tool/lighter/zippo
-							/obj/item/tool/lighter/zippo
-							/obj/item/tool/lighter/zippo
-							/obj/item/tool/lighter/zippo
-							/obj/item/tool/lighter/zippo
+							/obj/item/toy/plush/rock = 5
+							/obj/item/storage/box/snappops = 5
+							/obj/item/clothing/mask/owlf_mask = 1
+							/obj/item/facepaint/lipstick = 1
+							/obj/item/facepaint/lipstick/jade = 1
 							)
 
 /obj/structure/machinery/computer/arcade

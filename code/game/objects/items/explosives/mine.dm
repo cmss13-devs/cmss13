@@ -437,7 +437,7 @@
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
 	if(mine_level == 1)
-		var/datum/effect_system/smoke_spread/phosphorus/smoke = new()
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, loc)
 		smoke.start()

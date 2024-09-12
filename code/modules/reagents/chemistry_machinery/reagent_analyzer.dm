@@ -123,4 +123,4 @@
 	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
-	report.generate(src, admin_spawned)
+	report.generate(GLOB.chemical_reagents_list[id], admin_spawned)

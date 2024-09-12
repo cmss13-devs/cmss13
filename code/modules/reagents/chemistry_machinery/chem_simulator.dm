@@ -315,7 +315,7 @@
 			if(total_target_value > 10)
 				for(var/property_penalty in property_costs)
 					property_costs[property_penalty] += PROPERTY_MULTIPLIER_ADD_VALUE
-		if(!property_costs)
+		if(!length(property_costs))
 			for(var/datum/chem_property/P in target.data.properties)
 				if(!isPositiveProperty(P))
 					only_positive = FALSE
@@ -340,7 +340,7 @@
 		if(only_positive)
 			for(var/P in property_costs)
 				property_costs[P] = property_costs[P] + 1
-	GLOB.chemical_data.has_new_properties = FALSE
+ 	GLOB.chemical_data.has_new_properties = FALSE
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)
@@ -469,7 +469,7 @@
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	report.name = "Simulation result for [D.id]"
 	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
-	report.generate(D)
+	report.generate(GLOB.chemical_reagents_list[id])
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	if(is_new)
@@ -517,11 +517,12 @@
 		return
 	C.make_alike(target.data)
 	C.insert_property(reference_property.name, reference_property.level)
-	retroactively_lockdown(C)
+	retroactively_lockdown(reference.data)
 
 
 /obj/structure/machinery/chem_simulator/proc/retroactively_lockdown(datum/reagent/chemical)
 	if(!chemical.original_id)
+		chemical.lockdown_chem = TRUE
 		return
 	var/datum/reagent/parent_chemical = GLOB.chemical_reagents_list[chemical.original_id]
 	parent_chemical.lockdown_chem = TRUE
@@ -583,8 +584,7 @@
 
 	//link the chemical to parent chemical
 	if(C.original_id)
-		var/datum/reagent/parent_chemical = GLOB.chemical_reagents_list[C.original_id]
-		parent_chemical.modified_chemicals_list += C.id
+		GLOB.chemical_reagents_list[C.original_id].modified_chemicals_list += C.id
 
 	//Save the reaction
 	R.id = C.id

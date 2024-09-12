@@ -15,9 +15,7 @@
 /area/shiva/interior/caves/left_spiders)
 "bP" = (
 /obj/structure/prop/static_tank/fuel,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "cf" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -181,24 +179,18 @@
 /obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/caves/left_spiders)
 "xG" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "yu" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/caves/left_spiders)
 "yS" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "Am" = (
 /obj/effect/spider/cocoon,
@@ -211,9 +203,7 @@
 /area/shiva/interior/caves/left_spiders)
 "Ar" = (
 /obj/structure/prop/static_tank,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "AW" = (
 /obj/structure/barricade/handrail/wire{

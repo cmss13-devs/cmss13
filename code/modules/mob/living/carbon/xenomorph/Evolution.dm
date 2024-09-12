@@ -130,7 +130,9 @@
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 
@@ -330,7 +332,9 @@
 			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/xenomorph/burrower
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	new_xeno.built_structures = built_structures.Copy()

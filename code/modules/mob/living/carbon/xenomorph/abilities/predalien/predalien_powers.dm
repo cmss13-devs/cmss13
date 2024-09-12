@@ -13,7 +13,7 @@
 	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
-	for(var/mob/living/carbon/carbon in view(7, xeno))
+	FOR_DVIEW(var/mob/living/carbon/carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)
 		if(ishuman(carbon))
 			var/mob/living/carbon/human/human = carbon
 			human.disable_special_items()
@@ -29,6 +29,7 @@
 			if(!istype(behavior))
 				continue
 			new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
+	FOR_DVIEW_END
 
 	apply_cooldown()
 	return ..()
@@ -117,7 +118,7 @@
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
-		return ..()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
@@ -149,6 +150,7 @@
 	predatoralien.recalculate_armor()
 	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
@@ -180,7 +182,7 @@
 	if(!xeno.check_state())
 		return
 
-	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
 	if(!guttype)
 		return
 
@@ -218,7 +220,6 @@
 		return
 
 	if(predalien_smash.can_not_harm(affected_atom) || !ismob(affected_atom))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 
@@ -248,7 +249,7 @@
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 
-	return TRUE
+	return ..()
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)

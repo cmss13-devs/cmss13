@@ -34,7 +34,7 @@
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc) return
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else

@@ -345,7 +345,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
+			if(!length(hive.totalXenos))
 				return
 			xeno_announcement(SPAN_XENOANNOUNCE(warning), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
@@ -358,7 +358,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human purification device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
+			if(!length(hive.totalXenos))
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [get_area_name(loc)]! Stop it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	else
@@ -367,7 +367,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
+			if(!length(hive.totalXenos))
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	return
@@ -594,7 +594,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
+			if(!length(hive.totalXenos))
 				return
 			xeno_announcement(SPAN_XENOANNOUNCE(warning), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return

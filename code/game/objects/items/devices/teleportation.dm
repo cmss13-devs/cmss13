@@ -152,11 +152,11 @@
 			else
 				L["[com.id] (Inactive)"] = com.locked
 	var/list/turfs = list( )
-	for(var/turf/T in orange(10))
+	for(var/turf/T as anything in ORANGE_TURFS(10, src))
 		if(T.x>world.maxx-8 || T.x<8) continue //putting them at the edge is dumb
 		if(T.y>world.maxy-8 || T.y<8) continue
 		turfs += T
-	if(turfs.len)
+	if(length(turfs))
 		L["None (Dangerous)"] = pick(turfs)
 	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))

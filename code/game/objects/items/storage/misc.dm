@@ -30,7 +30,7 @@
 	to_chat(user, message)
 	open = !open
 	update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		..()
 	return
 
@@ -55,7 +55,7 @@
  */
 
 /obj/item/storage/mateba_case
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
 	name = "mateba customization kit case"
 	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
@@ -100,7 +100,7 @@
 		new /obj/item/reagent_container/food/drinks/cans/aspen(src)
 
 /obj/item/storage/beer_pack/update_icon()
-	if(contents.len == 1)
+	if(length(contents) == 1)
 		var/turf/T = get_turf(src)
 		var/obj/item/reagent_container/food/drinks/cans/aspen/B = new(T)
 		if(ishuman(loc))
@@ -109,12 +109,12 @@
 			H.put_in_inactive_hand(B)
 		qdel(src)
 	else
-		icon_state = "6_pack_[contents.len]"
+		icon_state = "6_pack_[length(contents)]"
 
 /obj/item/storage/box/clf
 	name = "D18-storing box"
 	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_TINY
@@ -128,7 +128,7 @@
 /obj/item/storage/box/upp //war trophy luger
 	name = "Type 73 storing case"
 	desc = "A small case containing the once-standard sidearm of the UPP, the Type 73, and two additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
 	w_class = SIZE_MEDIUM
 	max_w_class = SIZE_MEDIUM
@@ -143,6 +143,7 @@
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"
 	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "co2_box"
 	foldable = TRUE
 	storage_slots = 3

@@ -10,7 +10,7 @@
 
 /obj/item/poster/New(turf/loc, given_serial = 0)
 	if(given_serial == 0)
-		serial_number = rand(1, GLOB.poster_designs.len)
+		serial_number = rand(1, length(GLOB.poster_designs))
 	else
 		serial_number = given_serial
 	name += " - No. [serial_number]"
@@ -33,7 +33,7 @@
 		serial_number = serial
 
 	if(!isnum(serial_number))
-		serial_number = rand(1, GLOB.poster_designs.len)
+		serial_number = rand(1, length(GLOB.poster_designs))
 
 	var/designtype = GLOB.poster_designs[serial_number]
 	var/datum/poster/design=new designtype

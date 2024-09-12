@@ -60,12 +60,12 @@
 /datum/language/proc/add_to_cache(input, scrambled_text)
 	// Add it to cache, cutting old entries if the list is too long
 	scramble_cache[input] = scrambled_text
-	if(scramble_cache.len > SCRAMBLE_CACHE_LEN)
-		scramble_cache.Cut(1, scramble_cache.len-SCRAMBLE_CACHE_LEN-1)
+	if(length(scramble_cache) > SCRAMBLE_CACHE_LEN)
+		scramble_cache.Cut(1, length(scramble_cache)-SCRAMBLE_CACHE_LEN-1)
 
 /datum/language/proc/scramble(input)
 
-	if(!syllables || !syllables.len)
+	if(!LAZYLEN(syllables))
 		return stars(input)
 
 	// If the input is cached already, move it to the end of the cache and return it

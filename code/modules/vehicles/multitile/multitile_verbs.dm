@@ -65,7 +65,7 @@
 	if(!new_hp)
 		new_hp = 0
 
-	new_hp = (new_hp % usable_hps.len) + 1
+	new_hp = (new_hp % length(usable_hps)) + 1
 	var/obj/item/hardpoint/HP = usable_hps[new_hp]
 	if(!HP)
 		return

@@ -64,11 +64,11 @@
 	var/home_base = /datum/lazy_template/ert/freelancer_station
 
 /datum/game_mode/proc/initialize_emergency_calls()
-	if(all_calls.len) //It's already been set up.
+	if(length(all_calls)) //It's already been set up.
 		return
 
 	var/list/total_calls = typesof(/datum/emergency_call)
-	if(!total_calls.len)
+	if(!length(total_calls))
 		to_world(SPAN_DANGER("\b Error setting up emergency calls, no datums found."))
 		return FALSE
 	for(var/S in total_calls)
@@ -154,7 +154,7 @@
 	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
 		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
-	if(!SSticker.mode || !SSticker.mode.picked_calls.len)
+	if(!SSticker.mode || !length(SSticker.mode.picked_calls))
 		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return
 
@@ -224,14 +224,18 @@
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
+/datum/emergency_call/proc/remove_nonqualifiers(list/datum/mind/candidates_list)
+	return candidates_list //everyone gets selected on 99% of distress beacons.
+
 /datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
 	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
+	candidates = remove_nonqualifiers(candidates)
 
-	if(candidates.len < mob_min && !spawn_max_amount)
-		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
+	if(length(candidates) < mob_min && !spawn_max_amount)
+		message_admins("Aborting distress beacon, not enough candidates: found [length(candidates)].")
 		members = list() //Empty the members list.
 		candidates = list()
 
@@ -244,7 +248,7 @@
 	var/list/datum/mind/picked_candidates = list()
 	if(mob_max > 0)
 		var/mob_count = 0
-		while (mob_count < mob_max && candidates.len)
+		while (mob_count < mob_max && length(candidates))
 			var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
 			if(!istype(M))//Something went horrifically wrong
 				candidates.Remove(M)
@@ -254,13 +258,13 @@
 				continue
 			if(M.current && M.current.stat != DEAD)
 				candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-				if(!candidates.len)
+				if(!length(candidates))
 					break //NO picking from empty lists
 				continue
 			picked_candidates.Add(M)
 			candidates.Remove(M)
 			mob_count++
-		if(candidates.len)
+		if(length(candidates))
 			for(var/datum/mind/I in candidates)
 				if(I.current)
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
@@ -310,7 +314,7 @@
 		SSshuttle.moveShuttleToDock(shuttle, pick(active_lzs), TRUE)
 
 	var/i = 0
-	if(picked_candidates.len)
+	if(length(picked_candidates))
 		for(var/datum/mind/M in picked_candidates)
 			members += M
 			i++
@@ -320,7 +324,7 @@
 
 
 	if(spawn_max_amount && i < mob_max)
-		for(var/c in i to mob_max)
+		for(var/c in i to mob_max - 1)
 			create_member(null, override_spawn_loc)
 
 	candidates = list()

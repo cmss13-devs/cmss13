@@ -6,6 +6,7 @@
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "shiva"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = ICE_COLONY_TEMPERATURE
 	minimap_color = MINIMAP_AREA_COLONY
 
@@ -239,6 +240,10 @@
 	name = "Shiva's Snowball - Blue Warehouse"
 	icon_state = "hangars1"
 
+/area/shiva/interior/warehouse/caves
+	name = "Shiva's Snowball - Blue Warehouse Ice Cave"
+	icon_state = "caves1"
+
 /area/shiva/interior/valley_huts
 	name = "Shiva's Snowball - Valley Bunker 1"
 	icon_state = "hangars1"
@@ -251,10 +256,6 @@
 	name = "Shiva's Snowball - Valley Disposals"
 	icon_state = "hangars3"
 
-/area/shiva/interior/warehouse/caves
-	name = "Shiva's Snowball - Blue Warehouse Ice Cave"
-	icon_state = "caves1"
-
 /area/shiva/interior/garage
 	name = "Shiva's Snowball - Cargo Tug Repair Station"
 	icon_state = "hangars2"
@@ -262,3 +263,8 @@
 /area/shiva/interior/lz2_habs
 	name = "Shiva's Snowball - Argentinian Research Headquarters"
 	icon_state = "bar1"
+	is_landing_zone = TRUE
+
+/area/shiva/interior/aux_power
+	name = "Shiva's Snowball - Auxiliary Generator Station"
+	icon_state = "hangars0"

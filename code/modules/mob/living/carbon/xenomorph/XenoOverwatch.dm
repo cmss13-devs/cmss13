@@ -18,6 +18,7 @@
 		return TRUE
 
 /datum/action/xeno_action/watch_xeno/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/X = owner
 	if (!X.check_state(TRUE))
 		return FALSE
@@ -89,7 +90,11 @@
 			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
-		if(targetXeno.interference)
+		if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(src, SPAN_XENOWARNING("Our psychic connection is cut off!"))
+			return
+
+		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
 			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			return
 
@@ -132,8 +137,19 @@
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if (observed_xeno && (observed_xeno.stat == DEAD || QDELETED(observed_xeno)))
+	if(observed_xeno)
+		if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
+			overwatch(null, TRUE)
+			return
+
+		if(HAS_TRAIT(observed_xeno, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			overwatch(null, TRUE)
+			return
+
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		overwatch(null, TRUE)
+		return
 
 /mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER

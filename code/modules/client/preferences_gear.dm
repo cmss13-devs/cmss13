@@ -547,6 +547,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Crayon"
 	path = /obj/item/toy/crayon/rainbow
 
+/datum/gear/toy/pride
+	display_name = "Box of Prideful Crayons"
+	path = /obj/item/storage/box/pride
+
 /datum/gear/plush
 	category = "Plushies"
 	cost = 4
@@ -950,6 +954,13 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM issue sunscreen"
 	path = /obj/item/facepaint/sunscreen_stick
 	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/misc/dogtags
+	display_name = "Attachable Dogtags"
+	path = /obj/item/clothing/accessory/dogtags
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm

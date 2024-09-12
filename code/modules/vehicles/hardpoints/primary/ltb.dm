@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/cannon
-	name = "LTB Cannon"
+	name = "\improper LTB Cannon"
 	desc = "A primary cannon for tanks that shoots explosive rounds"
 
 	icon_state = "ltb_cannon"
@@ -9,8 +9,6 @@
 
 	health = 500
 	firing_arc = 60
-
-	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltb_cannon
 	max_clips = 3

@@ -73,9 +73,9 @@
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
 	charge_diff = charge_diff / CELLRATE // Deconvert from Charge to Joules
 	if(chargemode) // Decide if use passive or active power
-		charge_diff = between(0, charge_diff, charging_cap_active) // Trim the values to limits
+		charge_diff = clamp(charge_diff, 0, charging_cap_active) // Trim the values to limits
 	else // We should have load for this tick in Watts
-		charge_diff = between(0, charge_diff, charging_cap_passive)
+		charge_diff = clamp(charge_diff, 0, charging_cap_passive)
 
 	charge_diff += 50 // 50W for circuitry
 
@@ -167,7 +167,7 @@
 				doing_stuff = TRUE
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
-					if(current_limb.implants.len)
+					if(length(current_limb.implants))
 						doing_stuff = TRUE
 						to_chat(occupant, "Foreign material detected. Beginning removal process...")
 						for(var/obj/item/current_implant in current_limb.implants)

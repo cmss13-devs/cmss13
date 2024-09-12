@@ -9,6 +9,7 @@
 /obj/item/storage/firstaid
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -254,6 +255,7 @@
 /obj/item/storage/syringe_case
 	name = "syringe case"
 	desc = "It's a medical case for storing syringes and bottles."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -308,7 +310,7 @@
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
-
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "surgical_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -383,7 +385,7 @@
 
 /obj/item/storage/pill_bottle/get_examine_text(mob/user)
 	. = ..()
-	var/pills_amount = contents.len
+	var/pills_amount = length(contents)
 	if(pills_amount)
 		var/percentage_filled = floor(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
@@ -409,7 +411,7 @@
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		error_idlock(user)
 		return
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
 			playsound(loc, use_sound, 10, TRUE, 3)
@@ -464,7 +466,7 @@
 	if(C.is_mob_restrained())
 		to_chat(user, SPAN_WARNING("You are restrained!"))
 		return FALSE
-	if(!contents.len)
+	if(!length(contents))
 		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return FALSE
 	var/obj/item/I = contents[1]
@@ -683,8 +685,8 @@
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	var/obj/item/card/id/idcard = human_user.wear_id
-	if(!istype(idcard)) //not wearing an ID
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	if(!idcard) //not wearing an ID
 		to_chat(human_user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
@@ -759,6 +761,24 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX
 	display_maptext = FALSE
+
+/obj/item/storage/pill_bottle/packet/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/pill_bottle/packet/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(locate(/obj/item/reagent_container/pill) in src)
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

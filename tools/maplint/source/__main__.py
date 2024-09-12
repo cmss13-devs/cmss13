@@ -45,17 +45,45 @@ def print_error(message: str, filename: str, line_number: int, github_error_styl
 
 def print_maplint_error(error: MaplintError, github_error_style: bool):
     print_error(
-        f"{f'(in pop {error.pop_id}) ' if error.pop_id else ''}{f'(at {error.coordinates}) ' if error.coordinates else ''}{error}",
+        f"{f'(in pop {error.pop_id}) ' if error.pop_id else ''}{f'(at {error.coordinates}) ' if error.coordinates else ''}{error}" + (f"\n  {error.help}" if error.help is not None else ""),
         error.file_name,
         error.line_number,
         github_error_style,
     )
+
+def print_maplint_suggestions(all_suggestions: dict[str, MaplintError], github_error_style: bool):
+    # being a dict, we can already assume MaplintError were de-duped based on path_suggestions
+    if(len(all_suggestions) == 0):
+        return
+
+    # sort all suggestions so its easier for the user to verify
+    suggestions = sorted(all_suggestions.items(), key=lambda x:str(x[1].path_suggestion))
+
+    # combine all suggestions into two strings, de-duping dm suggestions where necessary
+    path_suggestions = ""
+    dm_suggestions = ""
+    dm_sub_suggestions = set()
+    for key, failure in suggestions: # key is path_suggestion, but may as well be explicit
+        path_suggestions += failure.path_suggestion
+        if(failure.dm_sub_suggestion not in dm_sub_suggestions):
+            dm_sub_suggestions.add(failure.dm_sub_suggestion)
+            dm_suggestions += failure.dm_sub_suggestion
+        if(failure.dm_suggestion not in dm_sub_suggestions):
+            dm_suggestions += failure.dm_suggestion
+
+    if github_error_style:
+        print(f"::error title=DMM Linter::UpdatePath suggestions:\n{path_suggestions}")
+        print(f"::error title=DMM Linter::Code suggestions:\n{dm_suggestions}")
+    else:
+        print(red(f"- UpdatePath suggestions:\n{path_suggestions}"))
+        print(red(f"- Code suggestions:\n{dm_suggestions}"))
 
 def main(args):
     any_failed = False
     github_error_style = args.github
 
     lints: dict[str, lint.Lint] = {}
+    all_suggestions: dict[str, MaplintError] = {}
 
     lint_base = pathlib.Path(__file__).parent.parent / "lints"
     lint_filenames = []
@@ -104,6 +132,14 @@ def main(args):
 
         for failure in all_failures:
             print_maplint_error(failure, github_error_style)
+
+            # also collect any suggestions
+            if(failure.path_suggestion == ""):
+                continue
+            if(failure.path_suggestion not in all_suggestions):
+                all_suggestions[failure.path_suggestion] = failure
+
+    print_maplint_suggestions(all_suggestions, github_error_style)
 
     if any_failed:
         exit(1)

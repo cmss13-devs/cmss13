@@ -93,7 +93,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
 	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
-	for(var/i = 1; i <= recipe_list.len, i++)
+	for(var/i = 1; i <= length(recipe_list), i++)
 		var/E = recipe_list[i]
 		if(isnull(E))
 			t1 += "<hr>"
@@ -196,6 +196,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(tunnel)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
 				return
+
+			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
+				for(var/obj/object in usr.loc)
+					if(object.density || istype(object, /obj/structure/machinery/door/airlock))
+						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
+						return
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))

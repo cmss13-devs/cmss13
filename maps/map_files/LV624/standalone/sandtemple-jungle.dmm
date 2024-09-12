@@ -63,6 +63,10 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
+"lZ" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/lv624/ground/jungle/south_west_jungle)
 "ny" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -206,6 +210,10 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
+"Ng" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_west_jungle)
 "Nq" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
@@ -243,12 +251,6 @@
 "TE" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_west_jungle)
-"Wp" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 3
-	},
-/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "WQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -342,7 +344,7 @@ oD
 LW
 dy
 Ok
-NU
+Ng
 NU
 Ge
 AQ
@@ -389,7 +391,7 @@ uj
 uj
 uj
 eV
-Lz
+lZ
 Kn
 IP
 oD
@@ -415,7 +417,7 @@ LW
 DF
 oD
 oD
-Wp
+cP
 uj
 uj
 WQ

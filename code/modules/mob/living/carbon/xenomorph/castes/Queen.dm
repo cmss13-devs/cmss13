@@ -252,6 +252,8 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/queen
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_QUEEN
 	name = XENO_CASTE_QUEEN
 	desc = "A huge, looming alien creature. The biggest and the baddest."
@@ -270,6 +272,7 @@
 	hive_pos = XENO_QUEEN
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	organ_value = 8000 // queen is expensive
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
@@ -360,32 +363,57 @@
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
 
+/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
+	if(ovipositor)
+		return
+	return ..()
+
+/mob/living/carbon/xenomorph/queen/get_organ_icon()
+	return "heart_t3"
+
 /mob/living/carbon/xenomorph/queen/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/queen/forsaken
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /mob/living/carbon/xenomorph/queen/forsaken/combat_ready
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/queen/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/queen/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/queen/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/queen/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
+	AUTOWIKI_SKIP(FALSE)
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/Initialize()
@@ -410,6 +438,14 @@
 		make_combat_effective()
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
+
+/mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
+	SIGNAL_HANDLER
+	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno.hivenumber == hivenumber)
+			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
+			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
@@ -455,6 +491,9 @@
 
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE
+	if(queen_age_timer_id != TIMER_ID_NULL)
+		deltimer(queen_age_timer_id)
+		queen_age_timer_id = TIMER_ID_NULL
 
 	give_combat_abilities()
 	recalculate_actions()
@@ -521,20 +560,19 @@
 			if(egg_amount >= 1)
 				if(isturf(loc))
 					var/turf/T = loc
-					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
+					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
-	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
+	var/xeno_leader_num = hive?.queen_leader_limit - length(hive?.open_xeno_leader_positions)
 
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
-	if(queen_age_timer_id != TIMER_ID_NULL)
-		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
-		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
+	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
+		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"
@@ -794,10 +832,10 @@
 /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor()
 	if(ovipositor)
 		return //sanity check
-	ovipositor = TRUE
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
 	set_body_position(STANDING_UP)
 	set_resting(FALSE)
+	ovipositor = TRUE
 
 	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
 	for(var/datum/action/xeno_action/action in actions)

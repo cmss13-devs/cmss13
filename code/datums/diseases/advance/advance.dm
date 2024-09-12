@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 /datum/disease/advance/New(process = 1, datum/disease/advance/D)
 
 	// Setup our dictionary if it hasn't already.
-	if(!GLOB.dictionary_symptoms.len)
+	if(!length(GLOB.dictionary_symptoms))
 		for(var/symp in GLOB.list_symptoms)
 			var/datum/symptom/S = new symp
 			GLOB.dictionary_symptoms[S.id] = symp
@@ -59,9 +59,9 @@ GLOBAL_LIST_INIT(advance_cures, list(
 		D = null
 	// Generate symptoms if we weren't given any.
 
-	if(!symptoms || !symptoms.len)
+	if(!LAZYLEN(symptoms))
 
-		if(!D || !D.symptoms || !D.symptoms.len)
+		if(!D || !LAZYLEN(D.symptoms))
 			symptoms = GenerateSymptoms()
 		else
 			for(var/datum/symptom/S in D.symptoms)
@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 // Randomly pick a symptom to activate.
 /datum/disease/advance/stage_act()
 	..()
-	if(symptoms && symptoms.len)
+	if(LAZYLEN(symptoms))
 
 		if(!processing)
 			processing = 1
@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 			if(!HasSymptom(S))
 				possible_symptoms += S
 
-	if(!possible_symptoms.len)
+	if(!length(possible_symptoms))
 		return
 		//error("Advance Disease - We weren't able to get any possible symptoms in GenerateSymptoms([type_level_limit], [amount_get])")
 
@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 //Generate disease properties based on the effects. Returns an associated list.
 /datum/disease/advance/proc/GenerateProperties()
 
-	if(!symptoms || !symptoms.len)
+	if(!LAZYLEN(symptoms))
 		CRASH("We did not have any symptoms before generating properties.")
 
 	var/list/properties = list("resistance" = 1, "stealth" = 1, "stage_rate" = 1, "transmittable" = 1, "severity" = 1)
@@ -200,11 +200,11 @@ GLOBAL_LIST_INIT(advance_cures, list(
 // Assign the properties that are in the list.
 /datum/disease/advance/proc/AssignProperties(list/properties = list())
 
-	if(properties && properties.len)
+	if(LAZYLEN(properties))
 
 		hidden = list( (properties["stealth"] > 2), (properties["stealth"] > 3) )
 		// The more symptoms we have, the less transmittable it is but some symptoms can make up for it.
-		SetSpread(clamp(properties["transmittable"] - symptoms.len, BLOOD, AIRBORNE))
+		SetSpread(clamp(properties["transmittable"] - length(symptoms), BLOOD, AIRBORNE))
 		permeability_mod = max(ceil(0.4 * properties["transmittable"]), 1)
 		cure_chance = 15 - clamp(properties["resistance"], -5, 5) // can be between 10 and 20
 		stage_prob = max(properties["stage_rate"], 2)
@@ -253,8 +253,8 @@ GLOBAL_LIST_INIT(advance_cures, list(
 
 // Will generate a random cure, the less resistance the symptoms have, the harder the cure.
 /datum/disease/advance/proc/GenerateCure(list/properties = list())
-	if(properties && properties.len)
-		var/res = clamp(properties["resistance"] - (symptoms.len / 2), 1, GLOB.advance_cures.len)
+	if(LAZYLEN(properties))
+		var/res = clamp(properties["resistance"] - (length(symptoms) / 2), 1, length(GLOB.advance_cures))
 		cure_id = GLOB.advance_cures[res]
 
 		// Get the cure name from the cure_id
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 
 // Randomly remove a symptom.
 /datum/disease/advance/proc/Devolve()
-	if(symptoms.len > 1)
+	if(length(symptoms) > 1)
 		var/s = SAFEPICK(symptoms)
 		if(s)
 			RemoveSymptom(s)
@@ -305,7 +305,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 	if(HasSymptom(S))
 		return
 
-	if(symptoms.len < 5 + rand(-1, 1))
+	if(length(symptoms) < 5 + rand(-1, 1))
 		symptoms += S
 	else
 		RemoveSymptom(pick(symptoms))
@@ -331,14 +331,14 @@ GLOBAL_LIST_INIT(advance_cures, list(
 	for(var/datum/disease/advance/A in D_list)
 		diseases += A.Copy()
 
-	if(!diseases.len)
+	if(!length(diseases))
 		return null
-	if(diseases.len <= 1)
+	if(length(diseases) <= 1)
 		return pick(diseases) // Just return the only entry.
 
 	var/i = 0
 	// Mix our diseases until we are left with only one result.
-	while(i < 20 && diseases.len > 1)
+	while(i < 20 && length(diseases) > 1)
 
 		i++
 
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 			R.data_properties = data.Copy()
 		else
 			R.data_properties = data
-		if(preserve.len)
+		if(length(preserve))
 			R.data_properties["viruses"] = preserve
 
 /proc/AdminCreateVirus(mob/user)
@@ -385,7 +385,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 				i--
 	while(i > 0)
 
-	if(D.symptoms.len > 0)
+	if(length(D.symptoms) > 0)
 
 		var/new_name = input(user, "Name your new disease.", "New Name")
 		D.AssignName(new_name)

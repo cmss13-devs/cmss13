@@ -15,7 +15,7 @@
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 1)
-	if (src.req_access && src.req_access.len)
+	if (LAZYLEN(src.req_access))
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
 
@@ -105,9 +105,9 @@
 			ae = new/obj/item/circuitboard/airlock( src.loc )
 			if(!src.req_access)
 				src.check_access()
-			if(src.req_access.len)
+			if(length(src.req_access))
 				ae.conf_access = src.req_access
-			else if (src.req_one_access && src.req_one_access.len)
+			else if (LAZYLEN(src.req_one_access))
 				ae.conf_access = src.req_one_access
 				ae.one_access = 1
 		else
@@ -189,9 +189,9 @@
 				ae = new/obj/item/circuitboard/airlock( src.loc )
 				if(!src.req_access)
 					src.check_access()
-				if(src.req_access.len)
+				if(length(src.req_access))
 					ae.conf_access = src.req_access
-				else if (src.req_one_access.len)
+				else if (length(src.req_one_access))
 					ae.conf_access = src.req_one_access
 					ae.one_access = 1
 			else

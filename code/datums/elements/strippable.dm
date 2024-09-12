@@ -126,6 +126,14 @@
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 
+	if (user.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return FALSE
+
+	if (HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return FALSE
+
 	if ((item.flags_inventory & CANTSTRIP) || ((item.flags_item & NODROP) && !(item.flags_item & FORCEDROP_CONDITIONAL)) || (item.flags_item & ITEM_ABSTRACT))
 		return FALSE
 

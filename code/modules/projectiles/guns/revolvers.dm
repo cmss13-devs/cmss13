@@ -6,7 +6,7 @@
 	w_class = SIZE_MEDIUM
 
 	matter = list("metal" = 2000)
-	fire_sound = 'sound/weapons/gun_44mag_v3.ogg'
+	fire_sound = 'sound/weapons/gun_44mag_v4.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
 	unload_sound = 'sound/weapons/gun_44mag_open_chamber.wav'
@@ -314,7 +314,7 @@
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 16, "stock_y" = 20)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
@@ -498,7 +498,7 @@
 	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "sw357"
-	item_state = "ny762" //PLACEHOLDER
+	item_state = "sw357"
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6

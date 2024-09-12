@@ -94,7 +94,8 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.apply_effect(10, WEAKEN)
+				M.KnockDown(10)
+				M.Stun(10)
 
 		else if(isSilicon(M))
 			M.apply_effect(rand(5,10), WEAKEN)

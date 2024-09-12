@@ -1,5 +1,5 @@
 /obj/item/hardpoint/holder/tank_turret
-	name = "M34A2-A Multipurpose Turret"
+	name = "\improper M34A2-A Multipurpose Turret"
 	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt smoke screen deployment system."
 
 	icon = 'icons/obj/vehicles/tank.dmi'
@@ -27,7 +27,7 @@
 	slot = HDPT_TURRET
 
 	// big beefy chonk of metal
-	health = 750
+	health = 450
 	damage_multiplier = 0.05
 
 	accepted_hardpoints = list(
@@ -212,8 +212,3 @@
 		target = L
 
 	return ..()
-
-/obj/item/hardpoint/holder/tank_turret/get_origin_turf()
-	var/origin_turf = ..()
-	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
-	return origin_turf

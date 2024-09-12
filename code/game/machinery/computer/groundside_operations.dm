@@ -113,7 +113,7 @@
 	if(show_command_squad)
 		dat += format_list_of_marines(list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO]) + GLOB.marine_leaders[JOB_SO], list(JOB_CO, JOB_XO, JOB_SO))
 	else if(current_squad)
-		dat += format_list_of_marines(current_squad.marines_list, list(JOB_SQUAD_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MARINE))
+		dat += format_list_of_marines(current_squad.marines_list, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE))
 	else
 		dat += "No Squad selected!<BR>"
 	dat += "<br><hr>"
@@ -153,12 +153,11 @@
 			if(A)
 				area_name = sanitize_area(A.name)
 
+			var/obj/item/card/id/card = H.get_idcard()
 			if(H.job)
 				role = H.job
-			else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-				var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
-				if(ID.rank)
-					role = ID.rank
+			else if(card?.rank) //decapitated marine is mindless,
+				role = card.rank
 
 			switch(H.stat)
 				if(CONSCIOUS)
@@ -216,8 +215,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
@@ -236,7 +235,7 @@
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !is_announcement_active || !(usr in view(1,src)))
+			if(!input || !is_announcement_active || !(usr in dview(1, src)))
 				return FALSE
 
 			is_announcement_active = FALSE
@@ -244,8 +243,8 @@
 			var/signed = null
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
-				if(istype(id))
+				var/obj/item/card/id/id = H.get_idcard()
+				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 
@@ -322,8 +321,8 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
-				idcard = human_user.wear_id
-			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
 				bio_fail = TRUE
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
@@ -362,7 +361,7 @@
 
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad)
+	if(current_squad || show_command_squad)
 		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
@@ -389,5 +388,9 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/structure/machinery/computer/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
 
 #undef COMMAND_SQUAD

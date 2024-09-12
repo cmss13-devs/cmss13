@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -164,7 +164,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -349,7 +349,7 @@
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
+			if(length(crash_turfs)) T_trg = pick(crash_turfs)
 			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 

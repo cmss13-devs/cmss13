@@ -761,10 +761,10 @@
 	if(ishuman(C))
 		C.emote("pain")
 	if(isxeno(C))
-		var/mob/living/carbon/xenomorph/X = C
+		var/mob/living/carbon/xenomorph/xeno = C
 		C.emote("needhelp")
-		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
-		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
+		xeno.AddComponent(/datum/component/status_effect/interference, 100) // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
+		RegisterSignal(xeno, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
@@ -916,6 +916,7 @@
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."
 	icon_state = "medicomp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
 	w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_DEFAULT
@@ -944,7 +945,7 @@
 	new /obj/item/tool/surgery/healing_gel/(src)
 
 /obj/item/storage/medicomp/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "medicomp_open"
 	else
 		icon_state = "medicomp"

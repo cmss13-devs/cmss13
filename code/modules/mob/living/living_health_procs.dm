@@ -446,7 +446,7 @@
 
 /mob/living/proc/AdjustEarDeafness(amount)
 	var/prev_deaf = ear_deaf
-	ear_deaf = max(ear_deaf + amount, 0)
+	ear_deaf = clamp(ear_deaf + amount, 0, 30) //roughly 1 minute
 	if(prev_deaf)
 		if(ear_deaf == 0)
 			on_deafness_loss()
@@ -526,7 +526,7 @@
 	jitteriness = 0
 	dizziness = 0
 	stamina.apply_damage(-stamina.max_stamina)
-	
+
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

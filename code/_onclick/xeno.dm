@@ -3,7 +3,7 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //No attacks while laying down
+	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || cannot_slash) //No attacks while laying down
 		return FALSE
 	var/mob/alt
 
@@ -13,6 +13,7 @@
 
 	if(isturf(target) && tile_attack) //Attacks on turfs must be done indirectly through directional attacks or clicking own sprite.
 		var/turf/T = target
+		var/mob/living/non_xeno_target
 		for(var/mob/living/L in T)
 			if (!iscarbon(L))
 				if (!alt)
@@ -21,13 +22,19 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
+			var/isxeno = isxeno(L)
+			if(!isxeno)
+				non_xeno_target = L
 			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
+			else if (!isxeno)
+				break
 			target = L
-			break
 		if (target == T && alt)
 			target = alt
+		if(non_xeno_target)
+			target = non_xeno_target
 		if (T && ignores_resin) // Will not target resin walls and doors if this is set to true. This is normally only set to true through a directional attack.
 			if(istype(T, /obj/structure/mineral_door/resin))
 				var/obj/structure/mineral_door/resin/attacked_door = T
@@ -54,6 +61,9 @@
 					var/turf/target_turf = target
 					for(var/obj/flamer_fire/fire in target_turf)
 						firepatted = TRUE
+						if(!(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire.tied_reagent?.fire_penetrating)
+							var/firedamage = max(fire.burnlevel - check_fire_intensity_resistance(), 0) * 0.5
+							apply_damage(firedamage, BURN, fire)
 						if((fire.firelevel > fire_level_to_extinguish) && (!fire.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 							fire.firelevel -= fire_level_to_extinguish
 							fire.update_flame()
@@ -104,9 +114,11 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 		handle_queued_action(target)
 		return TRUE
 
-	var/alt_pressed = mods["alt"] == "1"
-	var/shift_pressed = mods["shift"] == "1"
-	var/middle_pressed = mods["middle"] == "1"
+	var/left_pressed = mods[LEFT_CLICK] == "1"
+	var/alt_pressed = mods[ALT_CLICK] == "1"
+	var/shift_pressed = mods[SHIFT_CLICK] == "1"
+	var/middle_pressed = mods[MIDDLE_CLICK] == "1"
+	var/right_pressed = mods[RIGHT_CLICK] == "1"
 
 	if(alt_pressed && shift_pressed)
 		if(istype(target, /mob/living/carbon/xenomorph))
@@ -116,15 +128,24 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
 				return TRUE
 
-	var/middle_pref = client.prefs && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK) != 0 // client is already tested to be non-null by caller
-	if(selected_ability && shift_pressed == !middle_pref && middle_pressed == middle_pref)
+	var/preference = get_ability_mouse_key() // client is already tested to be non-null by caller
+	var/activate_ability = FALSE
+	switch(preference)
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			activate_ability = middle_pressed && !shift_pressed
+		if(XENO_ABILITY_CLICK_RIGHT)
+			activate_ability = right_pressed
+		if(XENO_ABILITY_CLICK_SHIFT)
+			activate_ability = left_pressed && shift_pressed
+
+	if(activate_ability && selected_ability)
 		if(istype(target, /atom/movable/screen))
 			// Click through the UI: Currently this won't attempt to sprite click any mob there, just the turf
 			var/turf/turf = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if(turf)
 				target = turf
-		if(selected_ability.use_ability_wrapper(target, mods))
-			return TRUE
+		selected_ability.use_ability_wrapper(target, mods)
+		return TRUE
 
 	if(next_move >= world.time)
 		return FALSE

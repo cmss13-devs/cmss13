@@ -274,8 +274,15 @@
 	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
+/obj/item/ammo_magazine/rifle/lmg/ap
+	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
+	desc = "A semi-rectangular box of armor-piercing rounds for the M41AE2 Heavy Pulse Rifle."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 300
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
 /obj/item/ammo_magazine/rifle/lmg/heap
-	name = "\improper M41AE2 HEAP ammo box (10x24mm)"
+	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box of rounds for the M41AE2 Heavy Pulse Rifle. This one contains the standard Armor-Piercing explosive tipped round of the USCM."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	max_rounds = 300

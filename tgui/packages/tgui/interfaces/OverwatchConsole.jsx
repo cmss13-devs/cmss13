@@ -361,7 +361,7 @@ const SquadMonitor = (props) => {
   );
   const [showDeadMarines, setShowDeadMarines] = useSharedState(
     'showdead',
-    false,
+    true,
   );
 
   const [marineSearch, setMarineSearch] = useSharedState('marinesearch', null);
@@ -763,7 +763,7 @@ const SavedCoordinates = (props) => {
               <Input
                 width="100%"
                 value={coords.comment}
-                onChange={(value) =>
+                onChange={(e, value) =>
                   act('change_coordinate_comment', {
                     comment: value,
                     index: coords.index,

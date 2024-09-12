@@ -7,6 +7,9 @@
 		to_chat(src, "Guests may not use OOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -42,7 +45,8 @@
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		display_colour = CONFIG_GET(string/ooc_color_other)
+		if(admin_holder.rights & R_MENTOR)
+			display_colour = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
 			display_colour = CONFIG_GET(string/ooc_color_debug)
 		if(admin_holder.rights & R_MOD)
@@ -98,6 +102,9 @@
 	if(!mob) return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use LOOC.")
+		return
+
+	if(!filter_message(src, msg))
 		return
 
 	msg = trim(strip_html(msg))

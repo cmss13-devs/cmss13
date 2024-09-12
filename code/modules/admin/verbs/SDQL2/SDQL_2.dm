@@ -595,7 +595,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 
 	// 1 and 2 are type and FROM.
 	var/i = 3
-	while (i <= tree.len)
+	while (i <= length(tree))
 		var/key = tree[i++]
 		var/list/expression = tree[i++]
 		switch (key)
@@ -805,7 +805,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 					out += d
 				SDQL2_TICK_CHECK
 				SDQL2_HALT_CHECK
-	obj_count_all = out.len
+	obj_count_all = length(out)
 	return out
 
 /datum/sdql2_query/proc/Execute(list/found)
@@ -1092,7 +1092,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	for(var/val in query_list)
 		if(val == ";")
 			do_parse = 1
-		else if(pos >= query_list.len)
+		else if(pos >= length(query_list))
 			query_tree += val
 			do_parse = 1
 
@@ -1192,7 +1192,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		else if(expression[start + 1] == "\[" && islist(v))
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
-			if(isnum(index) && ((floor(index) != index) || L.len < index))
+			if(isnum(index) && ((floor(index) != index) || length(L) < index))
 				to_chat(usr, SPAN_DANGER("Invalid list index: [index]"), confidential = TRUE)
 				return null
 			return L[index]

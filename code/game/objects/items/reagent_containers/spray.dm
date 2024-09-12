@@ -15,17 +15,18 @@
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	matter = list("plastic" = 500)
 	transparent = TRUE
-	var/spray_size = 3
-	var/list/spray_sizes = list(1,3)
-	var/safety = FALSE
 	volume = 250
+	has_set_transfer_action = FALSE
+	///How many tiles the spray will move
+	var/spray_size = 3
+	/// The spray_size based on the transfer amount
+	var/list/spray_sizes = list(1,3)
+	/// Whether you can spray the bottle
+	var/safety = FALSE
+	/// The world.time it was last used
 	var/last_use = 1
+	/// The delay between uses
 	var/use_delay = 0.5 SECONDS
-
-
-/obj/item/reagent_container/spray/Initialize()
-	. = ..()
-	verbs -= /obj/item/reagent_container/verb/set_APTFT
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
@@ -190,7 +191,7 @@
 	var/turf/T2 = get_step(T,turn(direction, -90))
 	var/list/the_targets = list(T,T1,T2)
 
-	for(var/i=1, i<=Sprays.len, i++)
+	for(var/i=1, i<=length(Sprays), i++)
 		spawn()
 			var/obj/effect/decal/chempuff/D = Sprays[i]
 			if(!D) continue

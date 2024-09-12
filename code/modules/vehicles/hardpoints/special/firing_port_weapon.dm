@@ -1,6 +1,6 @@
 //this is Cupola guns that are fired from the sides of APC by support gunners
 /obj/item/hardpoint/special/firing_port_weapon
-	name = "M56 FPW"
+	name = "\improper M56 FPW"
 	desc = "A modified M56B Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. Used by support gunners to cover friendly infantry at APC sides."
 
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
@@ -19,8 +19,6 @@
 	use_muzzle_flash = TRUE
 
 	allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
-
-	origins = list(0, 0)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/firing_port_weapon
 	max_clips = 1

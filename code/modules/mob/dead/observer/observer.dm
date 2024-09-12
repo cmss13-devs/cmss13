@@ -314,6 +314,8 @@
 	if(observe_target_mob)
 		clean_observe_target()
 
+	set_huds_from_prefs()
+
 /mob/dead/observer/Destroy(force)
 	GLOB.observer_list -= src
 	QDEL_NULL(orbit_menu)
@@ -471,6 +473,12 @@ Works together with spawning an observer, noted above.
 
 	mind = null
 
+	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+	// if they died as facehugger or lesser drone, bypass typical TOD checks
+	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
@@ -485,13 +493,12 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
-		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
-		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
-		// if they died as facehugger or lesser drone, bypass typical TOD checks
-		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
-
-		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+	else if(persistent_ckey)
+		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+		if(details)
+			details.larva_queue_time = max(details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -621,7 +628,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/value = SStechtree.trees[1]
 
-	if(trees.len > 1)
+	if(length(trees) > 1)
 		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
 
 	if(!value)
@@ -648,14 +655,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/turf/T in get_area_turfs(thearea.type))
 		L+=T
 
-	if(!L || !L.len)
+	if(!LAZYLEN(L))
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 		return
 
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/target in view(src.client))
+/mob/dead/observer/proc/scan_health(mob/living/target in GLOB.living_mob_list)
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -688,7 +695,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
-/mob/dead/observer/verb/follow_local(mob/target)
+/mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
@@ -872,7 +879,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0)
+		if(length(hive.totalXenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -1031,7 +1038,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/role in mobs_by_role)
 		for(var/freed_mob in mobs_by_role[role])
 			freed_mob_choices["[freed_mob] ([role])"] = freed_mob
-
+	if(!length(freed_mob_choices))
+		to_chat(src, SPAN_WARNING("There are no Freed Mobs available."))
+		return
 	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", freed_mob_choices)
 	if(!choice)
 		return

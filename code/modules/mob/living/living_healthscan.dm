@@ -159,6 +159,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 		//snowflake :3
 		data["lung_ruptured"] = human_target_mob.is_lung_ruptured()
+		data["heart_broken"] = human_target_mob.is_heart_broken()
 
 		//shrapnel, limbs, limb damage, limb statflags, cyber limbs
 		var/core_fracture_detected = FALSE
@@ -439,7 +440,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "window-close",
 						"color" = "red"
 						))
-		if(advice.len)
+		if(length(advice))
 			data["advice"] = advice
 		else
 			data["advice"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
@@ -457,7 +458,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					"cure" = disease.cure
 				)
 				diseases += list(current_disease)
-		if(diseases.len)
+		if(length(diseases))
 			data["diseases"] = diseases
 		else
 			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
@@ -633,7 +634,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
-		if(H.embedded_items.len > 0)
+		if(length(H.embedded_items) > 0)
 			embedded_item_detected = TRUE
 
 		var/core_fracture = 0
@@ -665,7 +666,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume > R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
 				else
 					unknown++
-			if(reagentdata.len)
+			if(length(reagentdata))
 				dat += "\n\tBeneficial reagents:\n"
 				for(var/d in reagentdata)
 					dat += "\t\t [reagentdata[d]]\n"

@@ -269,3 +269,87 @@
       single bullet.
   - bugfix: Light attachments will no longer automatically turn on when the weapon
       is equipped from suit storage
+2024-05-23:
+  Drathek:
+  - ui: TGSay is now opened the same way it used to for more responsiveness
+2024-05-24:
+  Drathek:
+  - bugfix: Fixed some winset errors with some nanoui windows
+  - admin: Fixed the adjust_predator_round verb
+  TheGamerdk:
+  - rscadd: Adds a sensor tower to the far East of Shivas, between Med-Sec and the
+      Research labs
+2024-05-25:
+  Doubleumc:
+  - qol: vehicle weapon projectiles start from the weapon
+  Git-Nivrak:
+  - balance: AMR will now reset its focus after two fully charged aimed shots on the
+      same target.
+  JackieEstegado:
+  - qol: Requisition drop pads will now no longer launch open crates
+  Steelpoint:
+  - rscadd: The Compact Nailgun that the USCM Synthetic can vend now comes with a
+      unique nailgun holster, capable of holding the nailgun and two spare magazines.
+  Tyranicranger4:
+  - bugfix: Fixes improperly placed APCs on Shivas Snowball
+  realforest2001:
+  - bugfix: Fixed ARES remote interface UI crash relating to flight logs.
+  - rscadd: Added access check for use of escape pod consoles, and access requirement
+      on the CLs pod.
+2024-05-26:
+  realforest2001:
+  - imageadd: added sprites for floor-mounted sentry deployment systems.
+  - rscadd: Added mini-sentry deployment systems, and an AI Core subtype.
+2024-05-27:
+  neeshacark:
+  - rscadd: lifeboats now come stocked with uno cards, for all your fun-filled needs
+  vero5123:
+  - bugfix: Fixes non-synthetic mobs getting stuck in the gibber
+2024-05-29:
+  iloveloopers:
+  - balance: MST now conflicts with NST, you can only have one in your stim, not both
+  - balance: Boosting now only boosts other properties by 0.5 levels for each level
+  - balance: Regulating is now a common property and turns any overdose ammount into
+      sugar
+  - balance: Flowing no longer decreases intensity and duration, it is now possible
+      to make a blueflame equivalent fire chemical with clearance 5 and around 25
+      credits (30 if fire penetrating)
+  - balance: Bonemending is now only 2 levels less efficient when not using a splint
+      on the broken limb as opposed to 5 levels less efficient and can be made by
+      combining nutritious and hyper-densificating
+  - balance: Anti-xeno properties, fire properties and most healing properties no
+      longer have a cost penalty when above level 5 in create mode
+  - balance: All anti-xeno properties are now available roundstart at low levels from
+      basic chemicals
+  - balance: Fire penetrating is now a rare property and can be made by combining
+      oxygenating and viscous (both roundstart available)
+  - balance: Many other various changes to flamers, chemsmoke and anti-xeno properties
+  - balance: Resin fruits and Warden debuff rejuvenate now clear warcrime's effects
+      and give a short immunity
+  - code_imp: Refactored interference to be a component and added new traits for it
+  - balance: Daze no longer stops xenos from talking and is slightly less punishing
+      when applied to humans from the neurotoxic property
+  - code_imp: New snowflake daze component for neurotoxic property
+2024-05-30:
+  Drathek:
+  - admin: Logging for chem smoke is now niche logged and less spammy
+  mullenpaul:
+  - ui: orbit menu now splits marine squads
+  - ui: orbit menu now splits xeno hives
+  - ui: orbit menu sorts marines by job
+2024-05-31:
+  Kaga:
+  - balance: The Heavy Sniper's XM43E1 rounds are now actually heavy. Targets hit
+      will get screenshake, like slugs and impact rounds, scaling with damage dealt.
+  - balance: XM43E1 shots can now potentially interrupt targets if it deals enough
+      damage. The heavier the target, the more force is needed to interrupt them.
+      Big xenos require a full-damage shot with no piercing, while smaller targets
+      can also be knocked back with enough damage.
+  - balance: XM43E1 Aimed Shots can now potentially apply a slow to the main target
+      only, scaling with base damage and target size. If a slow is applied, vision
+      range is reduced for a moment as a warning.
+  - balance: XM43E1 and M42C ammo AP increased to 75 (from 50)
+  - balance: Removed the Defender exception from the AMR Aimed Shot calculations.
+  Tyranicranger4:
+  - bugfix: Fixed an exploit that allowed Burrowers to apply acid to objects while
+      underground

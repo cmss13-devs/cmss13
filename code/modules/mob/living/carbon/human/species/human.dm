@@ -88,7 +88,8 @@
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_ethnicity = TRUE
+	uses_skin_color = TRUE
+	special_body_types = TRUE
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()

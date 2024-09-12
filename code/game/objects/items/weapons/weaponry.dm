@@ -248,7 +248,7 @@
 			showname = "."
 
 		var/used_verb = "attacked"
-		if(attack_verb && attack_verb.len)
+		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
 		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),\
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)

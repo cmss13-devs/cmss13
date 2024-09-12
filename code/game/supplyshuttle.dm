@@ -316,6 +316,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	if(crate.opened)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Please close it!")]")
+		return
+
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
 	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
@@ -433,6 +437,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Seized Items",
 		"Shipside Contraband",
 		"Surplus Equipment",
+		"Contraband Ammo",
 		"Deep Storage",
 		"Miscellaneous"
 		)
@@ -467,7 +472,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 	for(var/pool in base_random_crate_intervals)
 		var/interval = base_random_crate_intervals[pool]
-		if(interval && iteration % interval == 0 && shoppinglist.len <= 20)
+		if(interval && iteration % interval == 0 && length(shoppinglist) <= 20)
 			add_random_crates(pool)
 		crate_iteration++
 
@@ -527,14 +532,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	for(var/datum/supply_packs_asrs/crate in cratelist)
 		var/weight = (floor(10000/crate.cost))
 		weighted_crate_list[crate] = weight
-	return pickweight(weighted_crate_list)
+	return pick_weight(weighted_crate_list)
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
 	if(istype(A,/mob/living) && !black_market_enabled)
 		return TRUE
 
-	for(var/i=1, i<=A.contents.len, i++)
+	for(var/i=1, i<=length(A.contents), i++)
 		var/atom/B = A.contents[i]
 		if(.(B))
 			return 1
@@ -555,7 +560,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	for(var/atom/movable/movable_atom in area_shuttle)
 		if(istype(movable_atom, /obj/item/paper/manifest))
 			var/obj/item/paper/manifest/M = movable_atom
-			if(M.stamped && M.stamped.len)
+			if(LAZYLEN(M.stamped))
 				points += points_per_slip
 
 		//black market points
@@ -596,19 +601,19 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 //Buyin
 /datum/controller/supply/proc/buy()
 	var/area/area_shuttle = shuttle?.get_location_area()
-	if(!area_shuttle || !shoppinglist.len)
+	if(!area_shuttle || !length(shoppinglist))
 		return
 
 	// Try to find an available turf to place our package
 	var/list/turf/clear_turfs = list()
 	for(var/turf/T in area_shuttle)
-		if(T.density || T.contents?.len)
+		if(T.density || LAZYLEN(T.contents))
 			continue
 		clear_turfs += T
 
 	for(var/datum/supply_order/order in shoppinglist)
 		// No space! Forget buying, it's no use.
-		if(!clear_turfs.len)
+		if(!length(clear_turfs))
 			shoppinglist.Cut()
 			return
 
@@ -711,7 +716,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		<tr><td>Approved by:</td>  \
 		<td>[approvedby]</td></tr> \
 		<tr><td># packages:</td>   \
-		<td class='field'>[packages.len]</td></tr> \
+		<td class='field'>[length(packages)]</td></tr> \
 		</table><hr><p class='header important'>Contents</p>   \
 		<ul class='field'>"
 
@@ -1045,11 +1050,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		temp = "Invalid Request"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
-		if(GLOB.supply_controller.shoppinglist.len > 20)
+		if(length(GLOB.supply_controller.shoppinglist) > 20)
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
-		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
 			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				supply_order = SO
@@ -1065,7 +1070,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
-					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
+					msg_admin_niche("[key_name(usr)] confirmed supply order of [supply_pack.name].")
 					if(GLOB.supply_controller.black_market_heat == 100)
 						GLOB.supply_controller.black_market_investigation()
 					var/pack_source = "Cargo Hold"
@@ -1110,7 +1115,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
-		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
 			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				GLOB.supply_controller.requestlist.Cut(i,i+1)
@@ -1254,7 +1259,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!area_shuttle)
 		return
 	for(var/turf/elevator_turfs in area_shuttle)
-		if(elevator_turfs.density || elevator_turfs.contents?.len)
+		if(elevator_turfs.density || LAZYLEN(elevator_turfs.contents))
 			continue
 		clear_turfs |= elevator_turfs
 	var/turf/chosen_turf = pick(clear_turfs)
@@ -1318,9 +1323,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
-	var/spent = TRUE
-	var/tank_unlocked = FALSE
-	var/list/allowed_roles = list(JOB_CREWMAN)
+	var/spent = FALSE
+	var/tank_unlocked = TRUE
+	var/list/allowed_roles = list(JOB_TANK_CREW)
 
 	var/list/vehicles
 
@@ -1379,9 +1384,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	. = ..()
 
 	vehicles = list(
-		new /datum/vehicle_order/apc(),
-		new /datum/vehicle_order/apc/med(),
-		new /datum/vehicle_order/apc/cmd(),
+		new /datum/vehicle_order/tank/plain
 	)
 
 	if(!GLOB.VehicleElevatorConsole)
@@ -1472,7 +1475,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
-
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))

@@ -48,6 +48,11 @@
 	name = "Chance's Claim - Landing Zone One Tunnels"
 	ceiling = CEILING_METAL
 
+/area/lv522/landing_zone_1/tunnel/far
+	name = "Chance's Claim - Landing Zone One Tunnels"
+	ceiling = CEILING_METAL
+	is_landing_zone = FALSE
+
 /area/shuttle/drop1/lv522
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"

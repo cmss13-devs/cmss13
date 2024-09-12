@@ -44,7 +44,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_ammo_display_type,
-	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -297,7 +296,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
 	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	player_entity = setup_player_entity(ckey)
@@ -419,11 +418,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
-		toggle_fullscreen(TRUE)
-	else
-		toggle_fullscreen(FALSE)
-
+	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -684,33 +679,39 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = SOUTH
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+						var/say = tgui_say_create_open_command(SAY_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(COMMS_CHANNEL)
 					if(prefs.tgui_say)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(ME_CHANNEL)
 					if(prefs.tgui_say)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+						var/me = tgui_say_create_open_command(ME_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if(OOC_CHANNEL)
 					if(prefs.tgui_say)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if(LOOC_CHANNEL)
 					if(prefs.tgui_say)
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
 					else
@@ -718,7 +719,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(MENTOR_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
 						else
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
@@ -726,12 +728,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
-/client/proc/toggle_fullscreen(new_value)
-	if(new_value)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+/client/proc/update_fullscreen()
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
-		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
-	winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")
+
+	if(prefs.adaptive_zoom)
+		adaptive_zoom()
+	else if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.
@@ -905,3 +911,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	return FALSE
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")

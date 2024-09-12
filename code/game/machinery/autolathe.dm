@@ -106,7 +106,7 @@
 /obj/structure/machinery/autolathe/ui_data(mob/user)
 	var/list/data = list()
 
-	if(queue.len)
+	if(length(queue))
 		var/list/queue_list = list()
 		var/i = 0
 		for(var/params in queue)
@@ -119,7 +119,7 @@
 	else
 		data["queued"] = null
 
-	if(currently_making_data.len)
+	if(length(currently_making_data))
 		data["currently_making"] = currently_making_data
 	else
 		data["currently_making"] = null
@@ -129,7 +129,7 @@
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to wire_descriptions.len)
+	for(var/wire = 1 to length(wire_descriptions))
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	data["electrical"] = list(
@@ -164,7 +164,7 @@
 	switch(action)
 		if("cancel")
 			var/index = params["index"]
-			if(index < 1 || index > queue.len)
+			if(index < 1 || index > length(queue))
 				return
 
 			var/list/to_del = queue[index]
@@ -198,7 +198,7 @@
 			if(!initial(make_loc))
 				make_loc = get_step(loc, get_dir(src,usr))
 
-			if(index > 0 && index <= recipes.len)
+			if(index > 0 && index <= length(recipes))
 				making = recipes[index]
 
 			//Exploit detection, not sure if necessary after rewrite.
@@ -224,7 +224,7 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -238,7 +238,7 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -251,7 +251,7 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -269,7 +269,7 @@
 
 /obj/structure/machinery/autolathe/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
 		panel_open = !panel_open
@@ -358,7 +358,7 @@
 		storage_capacity[material] = tot_rating  * 30000
 
 /obj/structure/machinery/autolathe/proc/try_queue(mob/living/carbon/human/user, datum/autolathe/recipe/making, turf/make_loc, multiplier = 1)
-	if(queue.len >= queue_max)
+	if(length(queue) >= queue_max)
 		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
@@ -392,7 +392,7 @@
 
 	busy = TRUE
 
-	while (queue.len)
+	while (length(queue))
 		print_params = queue[1]
 		queue -= list(print_params)
 		print_item(arglist(print_params))
@@ -526,7 +526,7 @@
 
 		max_print_amt = -1
 
-		if(!R.resources || !R.resources.len)
+		if(!LAZYLEN(R.resources))
 			print_data["materials"] = "No resources required"
 		else
 			//Make sure it's buildable and list requires resources.
@@ -586,7 +586,7 @@
 	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
 		return FALSE
 	. = ..()

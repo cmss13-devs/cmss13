@@ -115,7 +115,7 @@ export const SettingsGeneral = (props) => {
                 <Input
                   width="15em"
                   value={fontFamily}
-                  onChange={(value) =>
+                  onChange={(e, value) =>
                     dispatch(
                       updateSettings({
                         fontFamily: value,

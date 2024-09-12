@@ -425,7 +425,7 @@
 	desc = "It can carry pistol magazines and revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
-	storage_slots = 3
+	storage_slots = 4
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
@@ -802,6 +802,28 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/syringe(src)
 
+/obj/item/storage/pouch/engikit
+	name = "engineer kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
+	icon_state = "construction"
+	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	storage_slots = 6
+	can_hold_skill = list(
+		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/flashlight = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/clothing/glasses/welding = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/analyzer = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/demo_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/reagent_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/t_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/cable_coil = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/cell = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/assembly = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+	)
+	can_hold_skill_only = TRUE
+
 /obj/item/storage/pouch/medkit
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
@@ -871,13 +893,13 @@
 	inner = new /obj/item/reagent_container/glass/pressurized_canister()
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	if(contents.len == 0)
+	if(length(contents) == 0)
 		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
 		A.reagents.add_reagent(ragent, A.volume)
 		A.update_uses_left()
@@ -897,17 +919,32 @@
 	. = ..()
 	fill_with("oxycodone")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
+	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("peridaxon", A.volume/3)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
@@ -973,7 +1010,7 @@
 
 
 	var/obj/O = target
-	if(!O.reagents || O.reagents.reagent_list.len < 1)
+	if(!O.reagents || length(O.reagents.reagent_list) < 1)
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
@@ -986,7 +1023,7 @@
 	O.reagents.trans_to(inner, amt_to_remove)
 
 	//Refill our autoinjector
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
@@ -1032,14 +1069,14 @@
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
-	if(inner && inner.reagents && inner.reagents.reagent_list && inner.reagents.reagent_list.len)
+	if(inner && inner.reagents && LAZYLEN(inner.reagents.reagent_list))
 		var/datum/reagent/R = inner.reagents.reagent_list[1]
 		. = "[R.name]([R.volume]u)"
 
-		if(inner.reagents.reagent_list.len < 2)
+		if(length(inner.reagents.reagent_list) < 2)
 			return
 
-		for(var/i in 2 to inner.reagents.reagent_list.len)
+		for(var/i in 2 to length(inner.reagents.reagent_list))
 			R = inner.reagents.reagent_list[i]
 
 			if(!R)
@@ -1404,7 +1441,7 @@
 /obj/item/storage/pouch/machete
 	name = "\improper H6B pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "macheteB_holster"
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE

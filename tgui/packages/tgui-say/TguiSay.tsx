@@ -11,6 +11,7 @@ import { byondMessages } from './timers';
 
 type ByondOpen = {
   channel: Channel;
+  mapfocus: BooleanLike;
 };
 
 type ByondProps = {
@@ -246,11 +247,15 @@ export class TguiSay extends Component<{}, State> {
   }
 
   handleOpen = (data: ByondOpen) => {
+    const { channel, mapfocus } = data;
+    if (!mapfocus) {
+      return;
+    }
+
     setTimeout(() => {
       this.innerRef.current?.focus();
     }, 0);
 
-    const { channel } = data;
     // Catches the case where the modal is already open
     if (this.channelIterator.isSay()) {
       this.channelIterator.set(channel);

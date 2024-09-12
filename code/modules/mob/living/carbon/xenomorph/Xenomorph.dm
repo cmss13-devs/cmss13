@@ -218,11 +218,11 @@
 	//////////////////////////////////////////////////////////////////
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
 	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
+	var/execute_hud = FALSE // Crit HUD, only visible to vampire lurkers
 	var/list/plasma_types = list() //The types of plasma the caste contains
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
-	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
@@ -249,6 +249,11 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
+	//Research organ harvesting.
+	var/organ_removed = FALSE
+	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	var/organ_value = 0
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -263,6 +268,7 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
+
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
@@ -337,6 +343,8 @@
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
+	/// If TRUE, the xeno cannot slash anything
+	var/cannot_slash = FALSE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
@@ -344,6 +352,13 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+	//putting the organ in for research
+	if(organ_value != 0)
+		var/obj/item/organ/xeno/organ = new() //give
+		organ.forceMove(src)
+		organ.research_value = organ_value
+		organ.caste_origin = caste_type
+		organ.icon_state = get_organ_icon()
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
@@ -664,6 +679,8 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+	if(organ_removed)
+		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
@@ -982,6 +999,9 @@
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
+
+/mob/living/carbon/xenomorph/proc/get_organ_icon()
+	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)

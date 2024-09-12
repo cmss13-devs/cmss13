@@ -182,14 +182,17 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(potency <= 0)
 			continue
 		P.process(M, potency, delta_time)
-		if(flags & REAGENT_CANNOT_OVERDOSE)
-			continue
 		if(overdose && volume > overdose)
-			P.process_overdose(M, potency, delta_time)
-			if(overdose_critical && volume > overdose_critical)
-				P.process_critical(M, potency, delta_time)
-			var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
-			M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
+			if(flags & REAGENT_CANNOT_OVERDOSE)
+				var/ammount_overdosed = volume - overdose
+				holder.remove_reagent(id, ammount_overdosed)
+				holder.add_reagent("sugar", ammount_overdosed)
+			else
+				P.process_overdose(M, potency, delta_time)
+				if(overdose_critical && volume > overdose_critical)
+					P.process_critical(M, potency, delta_time)
+				var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
+				M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,mods[REAGENT_PURGE] * delta_time)
@@ -343,7 +346,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			R = new P.type()
 			break
 		i++
-		if(i > properties.len)
+		if(i > length(properties))
 			return FALSE
 	R.level = new_level
 	R.holder = src

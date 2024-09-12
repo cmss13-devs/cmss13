@@ -1,4 +1,0 @@
-author: "rythenx"
-delete-after: True
-changes:
-  - bugfix: "drop pouch's switch storage drawing method now works correctly instead of doing nothing"

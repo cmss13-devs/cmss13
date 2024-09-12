@@ -62,26 +62,33 @@
 				var/obj/item/device/flashlight/flashlight = potential_lightsource
 				addtimer(CALLBACK(flashlight, TYPE_PROC_REF(/obj/item/device/flashlight, turn_off_light)), time_to_extinguish)
 
-		else if(ishuman(current_atom))
+		else if(iscarbon(current_atom))
 			// "Confuse" and slow humans in the area and turn off their armour lights.
-			var/mob/living/carbon/human/human = current_atom
+			var/mob/living/carbon/carbon = current_atom
+			if(xeno.can_not_harm(carbon))
+				continue
+			
+			carbon.EyeBlur(daze_length_seconds)
+			carbon.Daze(daze_length_seconds)
+			carbon.Superslow(slow_length_seconds)
+			carbon.add_client_color_matrix("doom", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
+			carbon.overlay_fullscreen("doom", /atom/movable/screen/fullscreen/flash/noise/nvg)
+			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)
+			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, clear_fullscreen), "doom", 0.5 SECONDS), 5 SECONDS)
 
-			human.EyeBlur(daze_length_seconds)
-			human.Daze(daze_length_seconds)
-			human.Superslow(slow_length_seconds)
-			human.add_client_color_matrix("doom", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
-			human.overlay_fullscreen("doom", /atom/movable/screen/fullscreen/flash/noise/nvg)
-			addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)
-			addtimer(CALLBACK(human, TYPE_PROC_REF(/mob, clear_fullscreen), "doom", 0.5 SECONDS), 5 SECONDS)
+			to_chat(carbon, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
+			shake_camera(carbon, 6, 1)
+			
+			if(ishuman(current_atom))
+				var/mob/living/carbon/human/human = carbon
+				var/time_to_extinguish = get_dist(owner, human) DECISECONDS
+				var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
+				if(istype(suit, /obj/item/clothing/suit/storage/marine))
+					var/obj/item/clothing/suit/storage/marine/armour = suit
+					addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
+				for(var/datum/reagent/x in human.reagents.reagent_list)
+					human.reagents.remove_reagent(x.id, 100)
 
-			to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
-			shake_camera(human, 6, 1)
-
-			var/time_to_extinguish = get_dist(owner, human) DECISECONDS
-			var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
-			if(istype(suit, /obj/item/clothing/suit/storage/marine))
-				var/obj/item/clothing/suit/storage/marine/armour = suit
-				addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
 		
 		if(!istype(current_atom, /mob/dead))
 			var/power = current_atom.light_power
@@ -266,17 +273,9 @@
 	for(var/mob/living/carbon/carbon in orange(1, owner) - owner)
 		if(xeno.can_not_harm(carbon))
 			continue
-		carbon.adjustBruteLoss(75)
-		if(!QDELETED(carbon)) // Some mobs are deleted on death
-			log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
-			carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
-			var/throw_dir = get_dir(owner, carbon)
-			if(carbon.loc == owner.loc)
-				throw_dir = pick(GLOB.alldirs)
-			var/throwtarget = get_edge_target_turf(owner, throw_dir)
-			carbon.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
-			carbon.KnockDown(0.5)
-			xeno.visible_message(SPAN_WARNING("[carbon] is thrown clear of [owner]!"))
+
+		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
+		carbon.gib()
 
 	// Any items get thrown away
 	for(var/obj/item/item in orange(1, owner))
@@ -288,7 +287,7 @@
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
 	for(var/obj/structure/structure in orange(1, owner))
-		structure.ex_act(300, get_dir(owner, structure))
+		structure.ex_act(1000, get_dir(owner, structure))
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)

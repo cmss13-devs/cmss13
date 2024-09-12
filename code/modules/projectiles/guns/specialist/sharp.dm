@@ -36,7 +36,7 @@
 /obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	fire_delay = FIRE_DELAY_TIER_AMR
+	fire_delay = FIRE_DELAY_TIER_SNIPER
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -72,14 +72,6 @@
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
 
-//code for changing flechette ammo rate of fire
-
-/obj/item/weapon/gun/rifle/sharp/reload(mob/user, obj/item/ammo_magazine/magazine)
-	. = ..()
-	if(magazine.type == /obj/item/ammo_magazine/rifle/sharp/flechette)
-		set_fire_delay(FIRE_DELAY_TIER_SNIPER)
-	else
-		set_fire_delay(FIRE_DELAY_TIER_AMR)
 
 
 /*

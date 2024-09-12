@@ -229,7 +229,7 @@
 		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 			var/rendered_message
 			var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
-			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [src.real_name][human_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [real_name][human_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return TRUE
 

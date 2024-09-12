@@ -38,11 +38,11 @@
 							/obj/item/toy/plush/barricade = 2,
 							/obj/item/toy/plush/shark = 2,
 							/obj/item/toy/plush/bee = 2,
-							/obj/item/toy/plush/moth = 2
-							/obj/item/toy/plush/rock = 5
-							/obj/item/storage/box/snappops = 5
-							/obj/item/clothing/mask/owlf_mask = 1
-							/obj/item/facepaint/lipstick = 1
+							/obj/item/toy/plush/moth = 2,
+							/obj/item/toy/plush/rock = 5,
+							/obj/item/storage/box/snappops = 5,
+							/obj/item/clothing/mask/owlf_mask = 1,
+							/obj/item/facepaint/lipstick = 1,
 							/obj/item/facepaint/lipstick/jade = 1
 							)
 

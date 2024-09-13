@@ -507,7 +507,7 @@
 	hold.emp_act(severity)
 
 /obj/item/clothing/accessory/storage/hear_talk(mob/M, msg, tts_heard_list)
-	hold.hear_talk(M, msg)
+	hold.hear_talk(M, msg, tts_heard_list = tts_heard_list)
 	..()
 
 /obj/item/clothing/accessory/storage/attack_self(mob/user)

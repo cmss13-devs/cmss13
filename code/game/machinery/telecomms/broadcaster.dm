@@ -233,17 +233,19 @@
 
 		/* ###### Send the message ###### */
 
-		//RUCM START
-		tts_heard_list[2] += heard_masked + heard_normal
-		//RUCM END
-
 		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
+			//RUCM START
+			tts_heard_list[2] += heard_masked
+			//RUCM END
 			for (var/mob/R in heard_masked)
 				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)
 
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 		if (length(heard_normal))
+			//RUCM START
+			tts_heard_list[2] += heard_normal
+			//RUCM END
 			for (var/mob/R in heard_normal)
 				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
 

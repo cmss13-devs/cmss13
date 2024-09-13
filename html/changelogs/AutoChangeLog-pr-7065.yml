@@ -1,6 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Removed far-sight from SG sights"
-  - balance: "Increased smartgun bullet falloff to 4 from 1"
-  - balance: "Increased smartgun bullet effective range to 7 from 0"

@@ -3,7 +3,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::TARGET_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.none_directional_blocker_configuration,
 			),
@@ -16,7 +16,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::TARGET_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.north_directional_blocker_configuration,
 			),
@@ -29,7 +29,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::MOVER_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.south_directional_blocker_configuration,
 			),
@@ -42,7 +42,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::MOVER_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.none_directional_blocker_configuration,
 			),
@@ -55,7 +55,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::TARGET_TURF, movement_helper_constants::TARGET_TURF, movement_helper_constants::TARGET_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.east_directional_blocker_configuration,
 				GLOB.south_directional_blocker_configuration,
@@ -70,7 +70,7 @@
 	movement_test(
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::MOVER_TURF, movement_helper_constants::MOVER_TURF, movement_helper_constants::MOVER_TURF),
-		blocker_directions = list(
+		blocker_parameters_entries = list(
 			list(
 				GLOB.east_directional_blocker_configuration,
 				GLOB.north_directional_blocker_configuration,

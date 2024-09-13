@@ -129,7 +129,7 @@
 
 
 /datum/action/human_action/psychic_whisper
-	name = "Psychic Whipser"
+	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"
 
 /datum/action/human_action/psychic_whisper/action_activate()

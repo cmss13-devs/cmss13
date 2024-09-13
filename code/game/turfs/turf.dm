@@ -56,13 +56,8 @@
 
 	levelupdate()
 
-	pass_flags = GLOB.pass_flags_cache[type]
-	if (isnull(pass_flags))
-		pass_flags = new()
-		initialize_pass_flags(pass_flags)
-		GLOB.pass_flags_cache[type] = pass_flags
-	else
-		initialize_pass_flags()
+	pass_flags = new()
+	initialize_pass_flags(pass_flags)
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
@@ -176,6 +171,7 @@ if (blocking_dir & target_dir) { \
 	if (blocker.flags_atom & ON_BORDER) { LAZYSET(border_blockers, blocker, blocking_dir); } \
 	else { LAZYSET(non_border_blockers, blocker, blocking_dir); } \
 }
+
 #define PROCESS_POTENTIAL_BLOCKERS \
 if ((!longitudinal_dir || longitudinal_dir_count) && (!latitudinal_dir || latitudinal_dir_count)) { \
 	was_blocked = FALSE; \
@@ -335,6 +331,7 @@ if ((!longitudinal_dir || longitudinal_dir_count) && (!latitudinal_dir || latitu
 	if (mover.can_block_movement)
 		LAZYADD(movement_blockers, mover)
 
+// No need to register deletion signal, this call happens automatically when any movable is destroyed via `moveToNullspace()` call
 /turf/Exited(atom/movable/mover)
 	if (!istype(mover))
 		return

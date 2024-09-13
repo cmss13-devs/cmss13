@@ -86,7 +86,13 @@
 	if (.)
 		Moved(oldloc, direct)
 
-/// Called when a movable atom has hit an atom via movement
+// TODO: Revisit the logic for vehicle collisions and see if there is a less snowflake way to handle vehicles plowing through atoms
+/**
+ * Called when a movable atom has hit an atom via movement
+ *
+ * Normally returns FALSE to indicate movement was blocked, returns TRUE for special
+ * situations where during the collision movement was actually not blocked (i.e. for vehicles)
+ */
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)
 		launch_impact(A)

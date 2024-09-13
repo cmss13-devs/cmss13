@@ -134,7 +134,7 @@
  * Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
  * Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
  *
- * This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications of LinkBlocked
+ * This has very similar logic to turf/Enter() but with different handling of blockers
  */
 /proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
 	if (!mover)
@@ -166,9 +166,7 @@
 	blocking_dir |= start_turf.BlockedExitDirs(mover, target_dir)
 	if (blocking_dir == target_dir)
 		return start_turf
-	for (obstacle in start_turf) //First, check objects to block exit
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-			continue
+	for (obstacle in start_turf.movement_blockers) //First, check objects to block exit
 		if (mover == obstacle || (obstacle in forget))
 			continue
 		blocking_dir |= obstacle.BlockedExitDirs(mover, target_dir)
@@ -189,8 +187,6 @@
 			if ((blocking_dir & target_dir) == target_dir)
 				return turf_to_check
 		for (obstacle in turf_to_check.movement_blockers)
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-				continue
 			if (obstacle in forget)
 				continue
 			if (obstacle.BlockedExitDirs(mover, latitudinal_dir) || obstacle.BlockedPassDirs(mover, longitudinal_dir))
@@ -212,8 +208,6 @@
 			if ((blocking_dir & target_dir) == target_dir)
 				return turf_to_check
 		for (obstacle in turf_to_check.movement_blockers)
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-				continue
 			if(obstacle in forget)
 				continue
 			if (obstacle.BlockedExitDirs(mover, longitudinal_dir) || obstacle.BlockedPassDirs(mover, latitudinal_dir))

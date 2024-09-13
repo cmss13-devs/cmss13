@@ -98,6 +98,7 @@ GLOBAL_DATUM_INIT(collide_allows_movement_blocker_configuration, /datum/blocker_
 		var/list/blocker_parameters_entry = blocker_parameters_entries[i]
 		for (var/j in 1 to length(blocker_parameters_entry))
 			var/datum/blocker_parameters/blocker_parameters = blocker_parameters_entry[j]
+			TEST_ASSERT(istype(blocker_parameters), "Blocker parameters not passed for entry [i]")
 			var/direction = blocker_parameters.direction
 			if (direction == movement_helper_constants::NOT_BLOCKING)
 				blockers[j].density = FALSE

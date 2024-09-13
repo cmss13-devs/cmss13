@@ -4,7 +4,9 @@
 		target_direction = SOUTH,
 		blocker_positions = list(movement_helper_constants::TARGET_TURF),
 		blocker_parameters_entries = list(
-			list(movement_helper_constants::NONE_DIRECTIONAL)
+			list(
+				GLOB.non_directional_can_pass_all_blocker_configuration
+			),
 		),
 		test_callback = CALLBACK(src, PROC_REF(collision_validation), TRUE),
 	)

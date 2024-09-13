@@ -55,3 +55,12 @@
       active.'
   realforest2001:
   - bugfix: You can build on tiles with fire doors again.
+2024-09-11:
+  rythenx:
+  - bugfix: drop pouch's switch storage drawing method now works correctly instead
+      of doing nothing
+2024-09-13:
+  Git-Nivrak:
+  - balance: Removed far-sight from SG sights
+  - balance: Increased smartgun bullet falloff to 4 from 1
+  - balance: Increased smartgun bullet effective range to 7 from 0

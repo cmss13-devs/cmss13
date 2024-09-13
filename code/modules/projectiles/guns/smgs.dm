@@ -648,17 +648,6 @@
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 	)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WY_RESTRICTED
-
-/obj/item/weapon/gun/smg/fp9000/corporate
-	desc = "An older, officially licensed version of the FN FP9000 issued to corporate security teams too under-funded to afford the upgraded version."
-	icon_state = "fp9000_corp"
-	item_state = "fp9000_pmc"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WY_RESTRICTED
-
-/obj/item/weapon/gun/smg/fp9000/corporate/no_lock
-	desc = "An older, officially licensed version of the FN FP9000 issued to corporate security teams too under-funded to afford the upgraded version. This one had its IFF electronics removed."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()

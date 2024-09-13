@@ -150,8 +150,9 @@
 				for (var/turf/turf as anything in locs)
 					turf.Exited(src, destination)
 					var/area/turf_area = get_area(turf)
-					if(turf_area && (turf_area != destarea || !isturf(destination)))
+					if(turf_area && !(turf_area in processed_areas) && (turf_area != destarea || !isturf(destination)))
 						turf_area.Exited(src, destination)
+						processed_areas += turf_area
 			// Processing single tile atoms
 			else if(oldloc)
 				oldloc.Exited(src, destination)

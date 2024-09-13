@@ -340,7 +340,7 @@
 		if(only_positive)
 			for(var/P in property_costs)
 				property_costs[P] = property_costs[P] + 1
- 	GLOB.chemical_data.has_new_properties = FALSE
+	GLOB.chemical_data.has_new_properties = FALSE
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)

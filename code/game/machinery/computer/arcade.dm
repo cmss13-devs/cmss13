@@ -42,9 +42,9 @@
 							/obj/item/toy/plush/rock = 5,
 							/obj/item/storage/box/snappops = 5,
 							/obj/item/facepaint/lipstick = 1,
-							/obj/item/facepaint/lipstick/jade = 1
-							/obj/item/clothing/head/headband/gray = 5
-							/obj/item/clothing/head/headband/red = 5
+							/obj/item/facepaint/lipstick/jade = 1,
+							/obj/item/clothing/head/headband/gray = 5,
+							/obj/item/clothing/head/headband/red = 5,
 							/obj/item/clothing/mask/tornscarf = 5
 							)
 

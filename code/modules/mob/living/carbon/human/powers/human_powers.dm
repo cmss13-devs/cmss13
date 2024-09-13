@@ -186,8 +186,11 @@
 	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
-		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[SPAN_PSYTALK(whisper)]</i>"))
-		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
+		if(!istype(target_mob, /mob/living/carbon/xenomorph))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
+		to_chat(src, SPAN_XENOWARNING("You said: \"[whisper]\" to [target_mob]"))
 		FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
 			if(!isobserver(ghost) || !ghost.client)
 				continue
@@ -213,9 +216,9 @@
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
 	FOR_DVIEW_END
 	if(!length(target_list))
 		to_chat(src, SPAN_XENOWARNING("There is no one around to hear you..."))

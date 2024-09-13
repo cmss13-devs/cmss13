@@ -71,6 +71,7 @@
 	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
+	user.balloon_alert(user, "[icon2html(src, user)] Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")].")
 
 
 

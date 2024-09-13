@@ -37,10 +37,6 @@
 /area/template_noop)
 "cq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/head/cueball{
-	pixel_x = 32;
-	pixel_y = -2
-	},
 /obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo{
 	pixel_x = -9;
 	pixel_y = 9

@@ -8,28 +8,6 @@
 	desc = "The commander in chef's head wear."
 	siemens_coefficient = 0.9
 
-//Captain: This probably shouldn't be space-worthy
-/obj/item/clothing/head/caphat
-	name = "captain's hat"
-	icon_state = "captain"
-	desc = "It's good being the king."
-	item_state = "caphat"
-	siemens_coefficient = 0.9
-	anti_hug = 1
-
-//Captain: This probably shouldn't be space-worthy
-/obj/item/clothing/head/helmet/cap
-	name = "captain's cap"
-	desc = "You fear to wear it for the negligence it brings."
-	icon_state = "capcap"
-	flags_inventory = NO_FLAGS
-	flags_inv_hide = NO_FLAGS
-	flags_armor_protection = 0
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
-
 //Cult
 /obj/item/clothing/head/cultist_hood
 	name = "black hood"

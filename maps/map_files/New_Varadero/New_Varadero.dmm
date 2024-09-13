@@ -26254,10 +26254,6 @@
 /area/varadero/interior_protected/maintenance/south)
 "uLP" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/head/caphat{
-	pixel_x = 2;
-	pixel_y = 9
-	},
 /obj/item/clothing/head/cmcap,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)

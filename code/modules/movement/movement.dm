@@ -136,6 +136,7 @@
 		if(pulledby && (get_dist(pulledby, destination) > 1 || !isturf(destination) || !isturf(pulledby.loc)))
 			pulledby.stop_pulling()
 		var/atom/oldloc = loc
+		var/list/atom/oldlocs = locs
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
@@ -143,7 +144,16 @@
 		loc = destination
 
 		if(!same_loc)
-			if(oldloc)
+			// Processing multitile atoms
+			if(length(oldlocs) > 1)
+				var/list/area/processed_areas = list()
+				for (var/turf/turf as anything in locs)
+					turf.Exited(src, destination)
+					var/area/turf_area = get_area(turf)
+					if(turf_area && (turf_area != destarea || !isturf(destination)))
+						turf_area.Exited(src, destination)
+			// Processing single tile atoms
+			else if(oldloc)
 				oldloc.Exited(src, destination)
 				if(old_area && (old_area != destarea || !isturf(destination)))
 					old_area.Exited(src, destination)

@@ -126,7 +126,7 @@
 	final_participants[faction]++
 
 /datum/entity/statistic_round/proc/track_round_end()
-	real_time_end = time2text(world.realtime)
+	real_time_end = world.realtime
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/M = i
 		if(M.mind && M.faction)
@@ -153,7 +153,7 @@
 		if(M.mind)
 			track_hijack_participant(M.faction)
 
-	round_hijack_time = duration2text(world.time)
+	round_hijack_time = world.time
 	save()
 	if(current_map)
 		current_map.total_hijacks++

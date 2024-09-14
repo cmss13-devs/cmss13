@@ -454,11 +454,11 @@
 	health -= damage
 	..()
 	healthcheck()
-	return 1
+	return TRUE
 
 /obj/item/explosive/mine/sharp/proc/healthcheck()
 	if(health <= 0)
-		src.prime()
+		prime()
 
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"

@@ -1,0 +1,4 @@
+author: "tallfission"
+delete-after: True
+changes:
+  - rscadd: "FTL vendors get signal flare packs for 5 points."

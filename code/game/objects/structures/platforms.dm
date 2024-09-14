@@ -443,6 +443,7 @@
 /obj/structure/platform_decoration/stone/sandstone
 	name = "sandstone platform corner"
 	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	icon_state = "sandstone_deco"
 	color = "#c6a480"
 
 /obj/structure/platform_decoration/stone/sandstone/north
@@ -454,6 +455,7 @@
 
 /obj/structure/platform_decoration/stone/runed_sandstone
 	name = "sandstone temple platform corner"
+	icon_state = "sandstone_deco"
 	color = "#b29082"
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north

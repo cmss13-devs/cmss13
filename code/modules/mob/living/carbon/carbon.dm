@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -512,7 +512,7 @@
 		last_special = world.time + 100
 		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
-		if(do_after(src, 1200, INTERRUPT_ALL^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
 			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\

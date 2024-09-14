@@ -4,6 +4,8 @@
 GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_title)
 /obj/structure/filingcabinet/documentation
 	name = "documents cabinet"
+	color = "#e78738"
+
 	/// The categories available from this cabinet. Manually populated.
 	var/list/available_categories = list()
 	/// The possible options that can be withdrawn. Automatically populated by get_possible_documents().
@@ -70,9 +72,24 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
+
 /obj/structure/filingcabinet/documentation/liaison
 	available_categories = list(PAPER_CATEGORY_LIAISON)
 	remaining_documents = 45 //CL likely using more of these than most people.
+
+/obj/structure/filingcabinet/documentation/highcom
+	remaining_documents = 60
+
+/obj/structure/filingcabinet/documentation/highcom/wy
+	available_categories = list(PAPER_CATEGORY_WEYYU)
+
+/obj/structure/filingcabinet/documentation/highcom/uscm
+	available_categories = list(PAPER_CATEGORY_USCM_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/provost
+	available_categories = list(PAPER_CATEGORY_PROVOST)
+
+
 //########################################
 //########################################
 //########################################
@@ -104,6 +121,25 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "NJ910 - Apology Notice"
 	doc_datum_type = /datum/prefab_document/provost/mp/apology_notice
 
+/obj/item/paper/prefab/carbon/provost
+	name = "Blank Provost Document"
+	document_category = PAPER_CATEGORY_PROVOST
+
+/obj/item/paper/prefab/provost/standard
+	document_title = "PR201 - Provost Missive"
+	doc_datum_type = /datum/prefab_document/provost/highcom/standard
+
+/obj/item/paper/prefab/provost/dao_response
+	document_title = "PR301c - Delayed Action Order"
+	doc_datum_type = /datum/prefab_document/provost/highcom/dao_response
+
+/obj/item/paper/prefab/uscm_highcom
+	name = "Blank USCMHC Document"
+	document_category = PAPER_CATEGORY_USCM_HC
+
+/obj/item/paper/prefab/uscm_highcom/standard
+	document_title = "UAM422 - USCM High Command Missive"
+	doc_datum_type = /datum/prefab_document/uscm/highcom/standard
 
 /obj/item/paper/prefab/liaison
 	name = "Blank WY Document"
@@ -129,3 +165,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "WY442 - Non Disclosure Agreement"
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long
 
+
+/obj/item/paper/prefab/wey_yu
+	name = "Blank WYC Document"
+	document_category = PAPER_CATEGORY_WEYYU
+
+/obj/item/paper/prefab/wey_yu/standard
+	document_title = "WY101 - Directorate Communication"
+	doc_datum_type = /datum/prefab_document/wey_yu/highcom/standard

@@ -131,7 +131,7 @@
 	dat += "</p>"
 	dat += "<hr style=\"margin-bottom:10px;\">"
 	dat += "<p class=\"subheading\"><b style=\"color:blue;\"><u>To be completed by Military Police</u></b></p><br>"
-	dat += "<b>Appeal Reference Number:</b> <span class=\"paper_field\"></span><br>"
+	dat += "<b>Appeal Reference Number:</b> [generate_appeal_ref()]<br>"
 	dat += "<b>Arresting Officer:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Department Representative:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Testimonial:</b><br><span class=\"paper_field\"></span><br><br>"
@@ -175,3 +175,6 @@
 
 
 	contents = dat
+
+/datum/prefab_document/provost/mp/appeal_form/proc/generate_appeal_ref()
+	return "PR_A[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"

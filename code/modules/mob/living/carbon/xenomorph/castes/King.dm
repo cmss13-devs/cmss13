@@ -94,6 +94,9 @@
 
 		playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
+/mob/living/carbon/xenomorph/king/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, 1)
+
 /datum/behavior_delegate/king_base
 	name = "Base King Behavior Delegate"
 

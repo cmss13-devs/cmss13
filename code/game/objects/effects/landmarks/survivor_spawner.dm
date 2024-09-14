@@ -169,7 +169,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
-	equipment = /datum/equipment_preset/survivor/doctor
+	equipment = /datum/equipment_preset/survivor/doctor/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -179,7 +179,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
-	equipment = /datum/equipment_preset/survivor/scientist
+	equipment = /datum/equipment_preset/survivor/scientist/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
 	intro_text = list("<h2>You are a Weyland-Yutani Scientist on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\

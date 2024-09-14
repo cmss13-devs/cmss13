@@ -2198,6 +2198,7 @@
 #include "code\modules\paperwork\prefab_papers\provost\military_police\appeal_form.dm"
 #include "code\modules\paperwork\prefab_papers\provost\military_police\confiscation_receipt.dm"
 #include "code\modules\paperwork\prefab_papers\provost\military_police\dao_request.dm"
+#include "code\modules\paperwork\prefab_papers\uscm\high_command\standard.dm"
 #include "code\modules\paperwork\prefab_papers\wey_yu\high_command\standard.dm"
 #include "code\modules\paperwork\prefab_papers\wey_yu\liaison\liability.dm"
 #include "code\modules\paperwork\prefab_papers\wey_yu\liaison\nda_long.dm"

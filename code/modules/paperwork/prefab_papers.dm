@@ -121,7 +121,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "NJ910 - Apology Notice"
 	doc_datum_type = /datum/prefab_document/provost/mp/apology_notice
 
-/obj/item/paper/prefab/carbon/provost
+/obj/item/paper/prefab/provost
 	name = "Blank Provost Document"
 	document_category = PAPER_CATEGORY_PROVOST
 

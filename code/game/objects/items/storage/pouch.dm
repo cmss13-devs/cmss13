@@ -1467,3 +1467,13 @@
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/machete(src)
+
+/obj/item/storage/pouch/zipcuff
+	name = "zip-cuffs pouch"
+	desc = "A black pouch specially designed to hold zip cuffs , usually used for tactical enforcement."
+	icon_state = "zip_pouch"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/restraint/handcuffs/zip
+	)
+

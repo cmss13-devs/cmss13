@@ -24,7 +24,7 @@
 
 /obj/structure/machinery/part_fabricator/examine(mob/user)
 	. = ..()
-	to_chat(user, build_queue ? "it has [build_queue.len] items in the queue" : "the build queue is empty")
+	to_chat(user, build_queue ? "it has [length(build_queue)] items in the queue" : "the build queue is empty")
 
 
 /obj/structure/machinery/part_fabricator/New()
@@ -76,11 +76,12 @@
 	update_icon()
 
 /obj/structure/machinery/part_fabricator/proc/process_build_queue()
-	if(stat & NOPOWER) return
+	if(stat & NOPOWER)
+		return
 
 	if(busy) return
 
-	if(build_queue.len)
+	if(length(build_queue))
 		busy = TRUE
 		var/datum/build_queue_entry/entry = build_queue[1]
 
@@ -93,9 +94,12 @@
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = FALSE
-	if(stat & NOPOWER) return
+	if(stat & NOPOWER)
+		return
+
 	if(ispath(part_type, /obj/structure/ship_ammo/sentry))
 		cost = omnisentry_price
+
 	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
@@ -143,7 +147,7 @@
 	if(action == "cancel")
 		var/index = params["index"]
 
-		if(build_queue.len)
+		if(length(build_queue))
 			if(index == 1)
 				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
 				return

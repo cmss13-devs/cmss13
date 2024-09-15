@@ -292,15 +292,21 @@ Additional game mode variables.
 			options += job
 	return options
 
-/datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate)
+/datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
 	var/list/options = get_fax_responder_slots(responder_candidate)
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
 		return FALSE
 
 	var/mob/living/carbon/human/new_responder = transform_fax_responder(responder_candidate, choice) //Initialized and ready.
 	if(!new_responder)
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
 		return FALSE
 
 	message_admins(SPAN_HIGHDANGER("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name]."))

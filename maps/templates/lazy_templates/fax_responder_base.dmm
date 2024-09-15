@@ -18,29 +18,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"bT" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("Overwatch");
-	pixel_x = 16;
-	pixel_y = 8;
-	name = "Overwatch Cameras";
-	colony_camera_mapload = 0
-	},
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
-	pixel_x = 16;
-	layer = 2.99;
-	name = "USS Almayer Cameras";
-	pixel_y = -6;
-	colony_camera_mapload = 0
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "fr" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/wood/ship,
@@ -78,37 +55,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"im" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("Overwatch");
-	pixel_x = 16;
-	pixel_y = 16;
-	name = "Overwatch Cameras";
-	colony_camera_mapload = 0
-	},
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("WY","Containment Hidden","Colony");
-	pixel_x = 16;
-	name = "WY Cameras";
-	colony_camera_mapload = 0
-	},
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment");
-	pixel_x = 16;
-	layer = 2.99;
-	name = "USS Almayer Cameras";
-	pixel_y = -16;
-	colony_camera_mapload = 0
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "jh" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
@@ -128,6 +74,29 @@
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "yellow"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"kT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -193,6 +162,29 @@
 /obj/item/folder/white,
 /obj/item/folder/white{
 	pixel_x = 6
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"sZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -321,29 +313,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"Ab" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/blue/clicky{
-	pixel_y = 8
-	},
-/obj/item/tool/pen/green/clicky{
-	pixel_y = 8;
-	pixel_x = -8
-	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -8
-	},
-/obj/structure/machinery/computer/crew/alt{
-	pixel_y = 24;
-	name = "USCM monitoring computer"
-	},
-/obj/item/paper_bin/uscm{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "Ba" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -375,10 +344,26 @@
 "BC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
-"CT" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (EAST)"
+"Du" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	name = "USCM monitoring computer"
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -458,6 +443,37 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"IO" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 16;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("WY","Containment Hidden","Colony");
+	pixel_x = 16;
+	name = "WY Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -16;
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "Nb" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -494,6 +510,13 @@
 	phone_category = "Comms Relay";
 	networks_receive = list("Fax Responders");
 	phone_color = "red"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"OA" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -541,29 +564,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/brig/provost{
 	pixel_y = 8
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"Vs" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
-	pixel_x = 16;
-	layer = 2.99;
-	name = "USS Almayer Cameras";
-	pixel_y = -6;
-	colony_camera_mapload = 0
-	},
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 8;
-	admin_console = 1;
-	network = list("Overwatch");
-	pixel_x = 16;
-	pixel_y = 8;
-	name = "Overwatch Cameras";
-	colony_camera_mapload = 0
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -916,12 +916,12 @@ Yy
 Yy
 Ei
 YR
-CT
+OA
 rV
 fr
 Ei
 nB
-CT
+OA
 YO
 fr
 Ei
@@ -1103,13 +1103,13 @@ Yy
 xX
 vc
 Ei
-Ab
-bT
+Du
+sZ
 Bp
 sx
 Ei
-Ab
-bT
+Du
+sZ
 Bp
 sx
 Ei
@@ -1338,14 +1338,14 @@ Yy
 xX
 BC
 YR
-CT
+OA
 xb
 fr
 BC
 vc
 wz
 YR
-CT
+OA
 VV
 fr
 wz
@@ -1526,14 +1526,14 @@ Yy
 xX
 BC
 EK
-im
+IO
 Bp
 sx
 BC
 vc
 wz
 id
-Vs
+kT
 Bp
 sx
 wz
@@ -1761,14 +1761,14 @@ Yy
 xX
 jh
 YR
-CT
+OA
 tM
 fr
 jh
 vc
 xc
 YR
-CT
+OA
 XZ
 fr
 xc
@@ -1949,14 +1949,14 @@ Yy
 xX
 jh
 Rh
-Vs
+kT
 Bp
 sx
 jh
 vc
 xc
 yv
-Vs
+kT
 Bp
 sx
 xc
@@ -2093,7 +2093,7 @@ Yy
 Yy
 xX
 nB
-CT
+OA
 wv
 fr
 xX
@@ -2281,7 +2281,7 @@ Yy
 Yy
 xX
 wx
-Vs
+kT
 Bp
 sx
 xX

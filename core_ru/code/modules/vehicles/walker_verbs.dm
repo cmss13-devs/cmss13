@@ -3,6 +3,9 @@
 	set name = "Enter Into Walker"
 	set src in oview(1)
 
+	if(!istype(usr, /mob/living))
+		return
+
 	if(usr.skills.get_skill_level(SKILL_POWERLOADER) >= SKILL_POWERLOADER_TRAINED)
 		move_in(usr)
 	else
@@ -14,12 +17,18 @@
 	set hidden = FALSE
 	set src in range(0)
 
+	if(!istype(usr, /mob/living))
+		return
+
 	move_out()
 
 /obj/vehicle/walker/verb/toggle_lights()
 	set name = "Lights on/off"
 	set category = "Vehicle"
 	set src in range(0)
+
+	if(!istype(usr, /mob/living))
+		return
 
 	lights()
 
@@ -28,12 +37,18 @@
 	set category = "Vehicle"
 	set src in range(0)
 
+	if(!istype(usr, /mob/living))
+		return
+
 	deploy_magazine()
 
 /obj/vehicle/walker/verb/get_stats()
 	set name = "Status Display"
 	set category = "Vehicle"
 	set src in range(0)
+
+	if(!istype(usr, /mob/living))
+		return
 
 	tgui_interact(usr)
 
@@ -42,11 +57,17 @@
 	set category = "Vehicle"
 	set src in range(0)
 
+	if(!istype(usr, /mob/living))
+		return
+
 	cycle_weapons()
 
 /obj/vehicle/walker/verb/toggle_zoom()
 	set name = "Zoom on/off"
 	set category = "Vehicle"
 	set src in range(0)
+
+	if(!istype(usr, /mob/living))
+		return
 
 	zoom_activate()

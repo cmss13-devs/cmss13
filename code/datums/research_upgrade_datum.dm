@@ -90,14 +90,14 @@
 	behavior = RESEARCH_UPGRADE_CATEGORY
 
 /datum/research_upgrades/item/research_credits
-	name = "Research Credits"
-	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for 8 or 9 points."
-	value_upgrade = 2000
+	name = "Research Contract Reroll"
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team to request new contract chemicals."
+	value_upgrade = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	item_reference = /obj/item/research_upgrades/credits
 	change_purchase = 500
-	maximum_price = 5000
+	maximum_price = 3000
 	clearance_req = 5
 
 /datum/research_upgrades/item/laser_scalpel

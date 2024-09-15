@@ -55,12 +55,12 @@
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
 		GLOB.chemical_data.save_document(CR, response, CR.name)
 		return
-	//biomass credits rewards
-	if(istype(B, /obj/item/research_upgrades/credits))
-		var/obj/item/research_upgrades/credits/cred = B
-		GLOB.chemical_data.update_credits(cred.credit_value)
-		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
-		qdel(cred)
+	//biomass rewards
+	if(istype(B, /obj/item/research_upgrades/reroll))
+		var/obj/item/research_upgrades/reroll/reroll = B
+		GLOB.chemical_data.reroll_chemicals()
+		visible_message(SPAN_NOTICE("[user] inserts [reroll] in [src], Rerolling contract chemicals."))
+		qdel(reroll)
 	//Clearance Card Updating
 	if(!istype(B, /obj/item/card/id))
 		return

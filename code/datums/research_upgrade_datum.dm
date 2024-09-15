@@ -95,7 +95,7 @@
 	value_upgrade = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/research_upgrades/credits
+	item_reference = /obj/item/research_upgrades/reroll
 	change_purchase = 500
 	maximum_price = 3000
 	clearance_req = 5

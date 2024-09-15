@@ -18,7 +18,7 @@
 	auto_retrieval_slot = WEAR_J_STORE
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WIELD_DELAY_VERY_SLOW
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 	flags_item = TWOHANDED|NO_CRYO_STORE

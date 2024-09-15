@@ -154,9 +154,9 @@
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/projectile/shot_dart, mob/target, mob/shooter)
 	if(ismob(target))
 		var/explosion_size = 100
-		var/falloff_size = 50
+		var/falloff_size = 35
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
-		cell_explosion(get_turf(target), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, shot_dart.dir, cause_data)
+		cell_explosion(get_turf(target), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 
 /datum/ammo/rifle/sharp/incendiary

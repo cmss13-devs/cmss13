@@ -40,3 +40,37 @@
   kiVts:
   - code_imp: Join as freed mobs will now notify the user if there is no freed mobs
       to take.
+2024-09-09:
+  realforest2001:
+  - bugfix: Survivor CL now draws ranks from CL playtime as previously.
+  - rscadd: Provost Advisor, Team Lead and Enforcer now use military ranks again.
+2024-09-10:
+  Watermelon914:
+  - rscadd: Added a webhook to send the top 10 most overtiming procs to a discord
+      webhook on server shutdown.
+  - qol: 'Adds a new preference option for activating xeno abilities: Right click.
+      Prevents the context menu from opening whenever you have an ability active,
+      and the ability can then be triggered with right click. Context menu can still
+      be forced open by holding shift before right clicking, even if the ability is
+      active.'
+  realforest2001:
+  - bugfix: You can build on tiles with fire doors again.
+2024-09-11:
+  rythenx:
+  - bugfix: drop pouch's switch storage drawing method now works correctly instead
+      of doing nothing
+2024-09-13:
+  Git-Nivrak:
+  - balance: Removed far-sight from SG sights
+  - balance: Increased smartgun bullet falloff to 4 from 1
+  - balance: Increased smartgun bullet effective range to 7 from 0
+2024-09-14:
+  MistChristmas:
+  - balance: Buffs MW Fireman skill in line with the rest of MPs
+2024-09-15:
+  realforest2001:
+  - bugfix: Scientists and Doctors from the Shiva panic room nightmare insert now
+      spawn with snow gear as intended.
+  - bugfix: Fixes uniform vendor shutters being openable without access.
+  tallfission:
+  - rscadd: FTL vendors get signal flare packs for 5 points.

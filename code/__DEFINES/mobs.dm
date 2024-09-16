@@ -333,13 +333,13 @@ GLOBAL_LIST_INIT(default_onmob_icons, list(
 		))
 
 GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
-		/mob/living/carbon/xenomorph/runner = 'icons/mob/xenos/onmob/runner.dmi',
-		/mob/living/carbon/xenomorph/praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
+		/mob/living/carbon/xenomorph/runner = 'icons/mob/xenos/onmob/castes/tier_1/runner.dmi',
+		/mob/living/carbon/xenomorph/praetorian = 'icons/mob/xenos/onmob/castes/tier_3/praetorian.dmi',
 		/mob/living/carbon/xenomorph/drone = 'icons/mob/xenos/onmob/drone.dmi',
-		/mob/living/carbon/xenomorph/warrior = 'icons/mob/xenos/onmob/warrior.dmi',
-		/mob/living/carbon/xenomorph/defender = 'icons/mob/xenos/onmob/defender.dmi',
+		/mob/living/carbon/xenomorph/warrior = 'icons/mob/xenos/onmob/castes/tier_2/warrior.dmi',
+		/mob/living/carbon/xenomorph/defender = 'icons/mob/xenos/onmob/castes/tier_1/defender.dmi',
 		/mob/living/carbon/xenomorph/sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
-		/mob/living/carbon/xenomorph/spitter = 'icons/mob/xenos/onmob/spitter.dmi'
+		/mob/living/carbon/xenomorph/spitter = 'icons/mob/xenos/onmob/castes/tier_2/spitter.dmi'
 		))
 
 // species names

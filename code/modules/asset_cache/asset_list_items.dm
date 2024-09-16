@@ -373,7 +373,7 @@
 	retrieved_icon.Scale(128, 128)
 	Insert("intents", retrieved_icon)
 
-	retrieved_icon = icon('icons/mob/xenos/predalien.dmi', "Normal Predalien Walking")
+	retrieved_icon = icon('icons/mob/xenos/castes/tier_4/predalien.dmi', "Normal Predalien Walking")
 	retrieved_icon.Scale(128, 128)
 	Insert("predalien", retrieved_icon)
 

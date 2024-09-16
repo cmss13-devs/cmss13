@@ -200,8 +200,13 @@
 	. = ..()
 	find_target_on_trait_loss()
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/on_floored_trait_loss(datum/source)
+	. = ..()
+	find_target_on_trait_loss()
+
 ///Proc for handling the AI post-status effect.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/find_target_on_trait_loss()
+	update_transform()
 	is_retreating = FALSE
 	if(stance > HOSTILE_STANCE_ALERT)
 		target_mob = FindTarget()
@@ -758,8 +763,7 @@
 
 ///Proc for moving to targets. walk_to() doesn't check for resting and status effects so we will do it ourselves.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/MoveTo(target, distance = 1, retreat = FALSE, time = 6 SECONDS, return_to_combat = FALSE)
-	//we have to check the icon_state because somehow it's still possible that it moves even if it looks like its stunned.
-	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED) || icon_state == "Giant Lizard Knocked Down")
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED))
 		return FALSE
 	if(resting)
 		set_resting(FALSE)
@@ -827,6 +831,9 @@
 
 	var/successful_attacks = 0
 	for(var/times_to_attack = 3, times_to_attack > 0, times_to_attack--)
+		if(body_position == LYING_DOWN)
+			return
+
 		if(Adjacent(target))
 			var/damage = rand(melee_damage_lower, melee_damage_upper) * 0.4
 			//xenos take extra damage

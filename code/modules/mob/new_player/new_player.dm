@@ -202,7 +202,7 @@
 				return
 
 			if(alert(src,"Are you sure you want to attempt joining as a Fax Responder?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_fax_responder_late_join(src, FALSE, TRUE))
+				if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
 					close_spawn_windows()
 					SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
 				else

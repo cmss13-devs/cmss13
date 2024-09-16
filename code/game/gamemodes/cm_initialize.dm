@@ -260,20 +260,18 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE, lobby_attempt = FALSE)
+/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
 	if(!responder.client)
 		return FALSE
 	if(!(responder?.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
 		if(show_warning)
 			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
-		if(lobby_attempt)
-			var/mob/new_player/lobbied = responder
-			lobbied.new_player_panel()
 		return FALSE
 	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
-		if(lobby_attempt)
-			var/mob/new_player/lobbied = responder
-			lobbied.new_player_panel()
+		return FALSE
+	if(!get_fax_responder_slots(responder))
+		if(show_warning)
+			to_chat(responder, SPAN_WARNING("No slots available!"))
 		return FALSE
 	return TRUE
 
@@ -294,6 +292,13 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
 	var/list/options = get_fax_responder_slots(responder_candidate)
+	if(!options || !options.len)
+		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
+		return FALSE
+
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
@@ -302,33 +307,30 @@ Additional game mode variables.
 			lobbied.new_player_panel()
 		return FALSE
 
-	var/mob/living/carbon/human/new_responder = transform_fax_responder(responder_candidate, choice) //Initialized and ready.
-	if(!new_responder)
+	if(!transform_fax_responder(responder_candidate, choice))
 		if(from_lobby)
 			var/mob/new_player/lobbied = responder_candidate
 			lobbied.new_player_panel()
 		return FALSE
-
-	message_admins(SPAN_HIGHDANGER("([new_responder.key]) joined as a Fax Responder, [new_responder.real_name]."))
 
 	if(responder_candidate)
 		responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 	return TRUE
 
 /datum/game_mode/proc/transform_fax_responder(mob/responder_candidate, sub_job)
-	set waitfor = FALSE
+	//set waitfor = FALSE
 
 	if(!(sub_job in FAX_RESPONDER_JOB_LIST))
-		return
+		return FALSE
 
 	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_fax_responder")
-		return
+		return FALSE
 	if(!loaded_fax_base)
 		loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
 		if(!loaded_fax_base)
 			log_debug("Error loading fax response base!")
-			return
+			return FALSE
 
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 
@@ -341,15 +343,16 @@ Additional game mode variables.
 
 	if(!fax_responder_job)
 		qdel(new_responder)
-		return
-
-	arm_equipment(new_responder, fax_responder_job.gear_preset, !new_responder.mind, TRUE)
+		return FALSE
 
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
 	fax_responder_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
 	SSticker.minds += new_responder.mind
-	return new_responder
+
+	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
+
+	return TRUE
 
 
 //===================================================\\

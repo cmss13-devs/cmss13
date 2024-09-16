@@ -62,7 +62,7 @@
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/facehugger.dmi'
-	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/facehugger.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")

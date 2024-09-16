@@ -54,8 +54,8 @@
 	var/state_override
 	var/is_bloody = TRUE //We're still "bloody"
 
-	icon_xeno = 'icons/mob/xenos/larva.dmi'
-	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
 	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...

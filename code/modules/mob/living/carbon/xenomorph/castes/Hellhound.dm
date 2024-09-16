@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
 	desc = "A disgusting beast from hell, it has four menacing spikes growing from its head."
-	icon = 'icons/mob/xenos/hellhound.dmi'
+	icon = 'icons/mob/xenos/castes/hellhound.dmi'
 	icon_state = "Hellhound Walking"
 	icon_size = 32
 	layer = MOB_LAYER
@@ -67,8 +67,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
-	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/hellhound.dmi'
+	icon_xenonid = 'icons/mob/xenos/castes/hellhound.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")

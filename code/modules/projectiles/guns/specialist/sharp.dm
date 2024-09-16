@@ -36,7 +36,7 @@
 /obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	fire_delay = FIRE_DELAY_TIER_SNIPER
+	fire_delay = FIRE_DELAY_TIER_AMR
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT

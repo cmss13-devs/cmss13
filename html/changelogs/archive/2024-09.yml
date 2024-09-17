@@ -74,3 +74,7 @@
   - bugfix: Fixes uniform vendor shutters being openable without access.
   tallfission:
   - rscadd: FTL vendors get signal flare packs for 5 points.
+2024-09-17:
+  deathrobotpunch:
+  - bugfix: Pred wristblades now del on drop
+  - bugfix: fixes UPP ammo storage boxes

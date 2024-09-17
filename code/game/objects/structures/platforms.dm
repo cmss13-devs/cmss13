@@ -63,7 +63,7 @@
 		return
 
 	if(stat & BROKEN)
-		. += SPAN_WARNING("It look destroyed.")
+		. += SPAN_WARNING("It looks destroyed.")
 
 /obj/structure/platform/update_icon()
 	if(stat & BROKEN)
@@ -111,28 +111,27 @@
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
 
-	var/shove_time = 90
-	if(istype(user,/mob/living/carbon/xenomorph/lesser_drone))
-		shove_time = 300 //They are very light and weak, thats why they will take 30s to break one edge.
-	if(istype(user,/mob/living/carbon/xenomorph/defender))
+	var/shove_time
+	if(user.mob_size == MOB_SIZE_XENO_VERY_SMALL)
+		shove_time = 300
+	if(user.mob_size == MOB_SIZE_XENO_SMALL)
+		shove_time = 90
+	if(user.mob_size == MOB_SIZE_XENO)
 		shove_time = 70
-	if(istype(user,/mob/living/carbon/xenomorph/burrower))
-		shove_time = 50
-	if(istype(user,/mob/living/carbon/xenomorph/boiler))
+	if(user.mob_size == MOB_SIZE_BIG)
 		shove_time = 40
-	if(user.mob_size >= MOB_SIZE_BIG)
-		shove_time = 30
-	if(istype(user,/mob/living/carbon/xenomorph/queen))
-		shove_time = 15 //Queen is just too fat for it to keep her weight.
+	if(user.mob_size == MOB_SIZE_IMMOBILE)
+		shove_time = 20
 
 	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
 
-	if(do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.animation_attack_on(src)
-		user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
-		SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, breaking_sound, 25, 1)
-		broken()
+	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+	user.animation_attack_on(src)
+	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
+	SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	playsound(loc, breaking_sound, 25, 1)
+	broken()
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/platform_decoration

@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - rscadd: "All ColMarTech Food Vendors now have 15 MREs"

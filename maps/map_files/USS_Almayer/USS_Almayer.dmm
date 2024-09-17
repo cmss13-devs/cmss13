@@ -22861,7 +22861,11 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/living/offices/flight)
 "fAr" = (
-/obj/structure/closet/secure_closet/guncabinet/red/mp_armory_m39_submachinegun,
+/obj/structure/closet/secure_closet/guncabinet/red{
+	name = "red level EOD cabinet"
+	},
+/obj/item/clothing/suit/bomb_suit/security,
+/obj/item/clothing/head/bomb_hood/security,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "fBi" = (

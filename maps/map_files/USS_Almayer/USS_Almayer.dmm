@@ -18318,7 +18318,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/bombcloset,
+/obj/structure/closet/bombclosetsecurity,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "dFk" = (

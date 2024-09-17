@@ -87,14 +87,6 @@
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. It seems to house some odd electronics."
 
-/obj/item/clothing/mask/gas/voice/space_ninja
-	name = "ninja mask"
-	desc = "A close-fitting mask that acts both as an air filter and a post-modern fashion statement."
-	icon_state = "s-ninja"
-	item_state = "s-ninja_mask"
-	siemens_coefficient = 0.2
-	vision_impair = VISION_IMPAIR_NONE
-
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
 	desc = "A true prankster's facial attire. A clown is incomplete without their wig and mask."
@@ -102,21 +94,6 @@
 	item_state = "clown_hat"
 	vision_impair = VISION_IMPAIR_NONE
 	black_market_value = 25
-
-/obj/item/clothing/mask/gas/mime
-	name = "mime mask"
-	desc = "The traditional mime's mask. It has an eerie facial posture."
-	icon_state = "mime"
-	item_state = "mime"
-	vision_impair = VISION_IMPAIR_NONE
-
-/obj/item/clothing/mask/gas/monkeymask
-	name = "monkey mask"
-	desc = "A mask used when acting as a monkey."
-	icon_state = "monkeymask"
-	item_state = "monkeymask"
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/mask/gas/fake_mustache
 	name = "fake mustache"

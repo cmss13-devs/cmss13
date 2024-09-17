@@ -22866,6 +22866,7 @@
 	},
 /obj/item/clothing/suit/bomb_suit/security,
 /obj/item/clothing/head/bomb_hood/security,
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "fBi" = (

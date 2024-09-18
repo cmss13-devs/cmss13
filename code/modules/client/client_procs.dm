@@ -44,7 +44,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_ammo_display_type,
-	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -419,11 +418,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
-		toggle_fullscreen(TRUE)
-	else
-		toggle_fullscreen(FALSE)
-
+	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -733,12 +728,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
-/client/proc/toggle_fullscreen(new_value)
-	if(new_value)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+/client/proc/update_fullscreen()
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
-		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
-	winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")
+
+	if(prefs.adaptive_zoom)
+		adaptive_zoom()
+	else if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.
@@ -912,3 +911,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	return FALSE
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")

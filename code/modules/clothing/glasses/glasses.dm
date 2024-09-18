@@ -221,8 +221,8 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/regular/hipster
-	name = "Sunglasses"
-	desc = "They cut the sun and keep things fun. Why would you ever wear these indoors, or on a night operation. Are you trying to get yourself hurt?"
+	name = "Prescription Glasses"
+	desc = "Boring glasses, makes you look smart and potentially reputable."
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE

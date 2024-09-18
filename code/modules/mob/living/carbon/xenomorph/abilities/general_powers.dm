@@ -398,7 +398,7 @@
 		return
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
 		if(hide)
 			hide.post_attack()
 
@@ -709,11 +709,11 @@
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
 		for(var/turf/TA in range(tem.block_range, T))
-			if(!X.check_alien_construction(TA, FALSE, TRUE))
+			if(!X.check_alien_construction(TA, FALSE, TRUE, ignore_nest = TRUE))
 				to_chat(X, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
 				return FALSE
-		if(!X.check_alien_construction(T))
+		if(!X.check_alien_construction(T, ignore_nest = TRUE))
 			to_chat(X, SPAN_WARNING("We need more open space to build here."))
 			qdel(tem)
 			return FALSE
@@ -911,7 +911,7 @@
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if(!stabbing_xeno.check_state())
+	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
 		return FALSE
 
 	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)

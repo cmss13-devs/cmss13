@@ -20,37 +20,6 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
-//auto-gibs anything that bumps into it
-/obj/structure/machinery/gibber/autogibber
-	var/turf/input_plate
-
-/obj/structure/machinery/gibber/autogibber/New()
-	..()
-	spawn(5)
-		for(var/i in GLOB.cardinals)
-			var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(loc, i) )
-			if(input_obj)
-				if(isturf(input_obj.loc))
-					input_plate = input_obj.loc
-					qdel(input_obj)
-					break
-
-		if(!input_plate)
-			log_misc("a [src] didn't find an input plate.")
-			return
-
-/obj/structure/machinery/gibber/autogibber/Collided(atom/A)
-	if(!input_plate) return
-
-	if(ismob(A))
-		var/mob/M = A
-
-		if(M.loc == input_plate
-		)
-			M.forceMove(src)
-			M.gib()
-
-
 /obj/structure/machinery/gibber/New()
 	..()
 	overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")

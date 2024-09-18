@@ -99,7 +99,7 @@
 		if(!deconstructible)
 			to_chat(user, SPAN_WARNING("You can't figure out how to deconstruct [src]..."))
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know how to deconstruct [src]..."))
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)

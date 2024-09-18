@@ -9,10 +9,12 @@
 	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"
@@ -31,6 +33,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 32
 	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	damage = 40
 	penetration = 0
 
@@ -149,14 +152,9 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(setup_hvh_damage))
 
 /datum/ammo/bullet/minigun/proc/setup_hvh_damage()
+	SIGNAL_HANDLER
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		damage = 15
-
-/datum/ammo/bullet/minigun/tank
-	accuracy = -HIT_ACCURACY_TIER_1
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_8
-	accurate_range = 12
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"

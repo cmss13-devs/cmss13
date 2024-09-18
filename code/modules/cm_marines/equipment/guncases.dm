@@ -1,6 +1,7 @@
 /obj/item/storage/box/guncase
 	name = "\improper gun case"
 	desc = "It has space for firearm(s). Sometimes magazines or other munitions as well."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "guncase"
 	w_class = SIZE_HUGE
 	max_w_class = SIZE_HUGE //shouldn't be a problem since we can only store the guns and ammo.
@@ -67,7 +68,6 @@
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
 	new /obj/item/attachable/flashlight
-	new /obj/item/attachable/bipod
 
 //------------
 /obj/item/storage/box/guncase/m41aMK1

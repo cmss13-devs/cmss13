@@ -401,6 +401,7 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+	return ..()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner

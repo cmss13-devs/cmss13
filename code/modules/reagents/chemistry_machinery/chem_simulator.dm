@@ -586,7 +586,9 @@
 
 	//link the chemical to parent chemical
 	if(C.original_id)
-		GLOB.chemical_reagents_list[C.original_id].modified_chemicals_list += C.id
+		var/datum/reagent/chem_to_add
+		chem_to_add = GLOB.chemical_reagents_list[C.original_id]
+		chem_to_add.modified_chemicals_list += C.id
 
 	//Save the reaction
 	R.id = C.id

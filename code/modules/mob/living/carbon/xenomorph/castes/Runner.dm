@@ -48,6 +48,7 @@
 	pull_speed = -0.5
 	viewsize = 9
 	organ_value = 500 //worthless
+	organ_chem_value = 1
 
 	mob_size = MOB_SIZE_XENO_SMALL
 

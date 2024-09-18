@@ -53,6 +53,7 @@
 	base_pixel_y = -20
 	tier = 2
 	organ_value = 1500
+	organ_chem_value = 4
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

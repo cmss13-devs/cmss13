@@ -253,6 +253,8 @@
 	var/organ_removed = FALSE
 	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
 	var/organ_value = 0
+	///value of chem credits of organ in each caste. Main way of research to gain more chem credits.
+	var/organ_chem_value = 0
 
 
 	//////////////////////////////////////////////////////////////////
@@ -356,6 +358,7 @@
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
 		organ.forceMove(src)
+		organ.credit_value = organ_chem_value
 		organ.research_value = organ_value
 		organ.caste_origin = caste_type
 		organ.icon_state = get_organ_icon()

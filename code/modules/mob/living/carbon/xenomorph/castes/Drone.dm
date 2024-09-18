@@ -54,6 +54,7 @@
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
 	organ_value = 800
+	organ_chem_value = 2
 	pixel_x = -12
 	old_x = -12
 	base_actions = list(

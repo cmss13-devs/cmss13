@@ -12,6 +12,7 @@
 	///assoc list containing the path to every upgrade followed by a number representing times this tech was bought. used by price inflation mechanic to increase/decrease price depending on the amount of times you bought it.
 	var/list/technology_purchased = list()
 	var/biomass_points = 0 //most important thing in this
+	var/chem_credit_points = 0 //research main chem point gain
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
@@ -81,6 +82,7 @@
 		data["organ"] = TRUE
 		data["caste"] = caste_of_organ
 		data["value"] = organ.research_value
+		data["credit"] = organ.credit_value
 	else
 		data["organ"] = FALSE
 	data["upgrades"] = list()

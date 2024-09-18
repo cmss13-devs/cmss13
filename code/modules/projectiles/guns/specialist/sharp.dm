@@ -70,8 +70,8 @@
 	. = ..()
 	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
-	user.balloon_alert(user, "explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")].")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")]."))
+	user.balloon_alert(user, "explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")].")
 
 
 
@@ -136,7 +136,7 @@
 			if(weapon && weapon.explosion_delay_sharp)
 				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 5 SECONDS)
 			else
-				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 1 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 2.5 SECONDS)
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(loc, obj/projectile/shot_dart, mob/shooter)
 	var/signal_explosion = FALSE
@@ -153,7 +153,7 @@
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/projectile/shot_dart, mob/target, mob/shooter)
 	if(ismob(target))
-		var/explosion_size = 80
+		var/explosion_size = 60
 		var/falloff_size = 35
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(target), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -177,7 +177,7 @@
 			if(weapon && weapon.explosion_delay_sharp)
 				addtimer(CALLBACK(src, PROC_REF(delayed_fire), shot_dart, target, shooter), 5 SECONDS)
 			else
-				addtimer(CALLBACK(src, PROC_REF(delayed_fire), shot_dart, target, shooter), 1 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_fire), shot_dart, target, shooter), 2.5 SECONDS)
 
 /datum/ammo/rifle/sharp/incendiary/drop_dart(loc, obj/projectile/shot_dart, mob/shooter)
 	var/signal_explosion = FALSE

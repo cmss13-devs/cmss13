@@ -265,7 +265,7 @@
 		. += SPAN_NOTICE("Contains a warhead.")
 
 /obj/item/ammo_magazine/rocket/custom/attackby(obj/item/W as obj, mob/user as mob)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(current_rounds <= 0)

@@ -437,14 +437,6 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/hydro_floodlight/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
-		return FALSE
-	playsound(V, 'sound/effects/metal_crash.ogg', 20)
-	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
-	qdel(src)
-	return TRUE
-
 /obj/structure/machinery/floodlight/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE

@@ -110,9 +110,7 @@
 	if(flare_amount > 0)
 		handle_side_effects(host_box, TRUE)
 
-		var/list/turf_list = list()
-		for(var/turf/T in range(5, (host_box ? host_box : src)))
-			turf_list += T
+		var/list/turf_list = RANGE_TURFS(5, (host_box ? host_box : src))
 		for(var/i = 1, i <= flare_amount, i++)
 			addtimer(CALLBACK(src, PROC_REF(explode), (host_box ? host_box : src), turf_list), rand(1, 6) SECONDS)
 		return
@@ -164,6 +162,19 @@
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
 	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat
+	name = "\improper box of combat flashlights"
+	desc = "A box of flashlights to brighten your day!"
+	magazine_type = /obj/item/device/flashlight/combat
+	num_of_magazines = 8
+	icon_state = "flashlightbox_combat"
+	icon_state_deployed = "flashlightbox_combat_deployed"
+	overlay_content = "_flashlight"
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat/empty
+	empty = TRUE
+
 
 //------------------------Battery Box--------------------------
 

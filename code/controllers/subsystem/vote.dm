@@ -414,6 +414,7 @@ SUBSYSTEM_DEF(vote)
 	qdel(src)
 
 /datum/action/innate/vote/action_activate()
+	. = ..()
 	owner.vote()
 
 /datum/action/innate/vote/proc/remove_from_client()

@@ -352,6 +352,10 @@
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
+/obj/structure/machinery/computer/cameras/almayer_brig
+	name = "Brig Cameras Console"
+	network = list(CAMERA_NET_BRIG)
+
 /obj/structure/machinery/computer/cameras/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
@@ -387,5 +391,9 @@
 /obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/three
+	name = "\improper 'Saipan' camera controls"
+	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

@@ -45,7 +45,7 @@
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/turf/T in range(radius, centerturf))
+	for(var/turf/T as anything in RANGE_TURFS(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -235,7 +235,7 @@
  * * hive - The hive we're filling a slot for to check if the player is banished
  * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
  */
-/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE)
+/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE, abomination = FALSE)
 	var/list/candidates = list()
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
@@ -273,6 +273,11 @@
 					banished = TRUE
 					break
 			if(banished)
+				continue
+
+		if(abomination)
+			if(!(/datum/tutorial/xenomorph/abomination::tutorial_id in cur_obs.client.prefs.completed_tutorials))
+				to_chat(cur_obs, SPAN_BOLDNOTICE("You were passed over for playing as an Abomination because you have not completed its tutorial."))
 				continue
 
 		candidates += cur_obs

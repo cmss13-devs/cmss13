@@ -269,6 +269,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/play_pause/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.attack_self(owner)
@@ -282,6 +283,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/next_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.next_song(owner)
@@ -295,6 +297,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/restart_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)

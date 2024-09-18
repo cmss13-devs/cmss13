@@ -19,8 +19,7 @@ SUBSYSTEM_DEF(sound)
 		if(!run_hearers) // Initialize for handling next template
 			run_hearers = run_queue[run_template] // get base hearers
 			if(run_template.range) // ranging
-				var/datum/shape/rectangle/zone = RECT(run_template.x, run_template.y, run_template.range * 2, run_template.range * 2)
-				run_hearers |= SSquadtree.players_in_range(zone, run_template.z)
+				run_hearers |= SSquadtree.players_in_range(SQUARE(run_template.x, run_template.y, run_template.range * 2), run_template.z)
 			if(MC_TICK_CHECK)
 				return
 		while(length(run_hearers)) // Output sound to hearers

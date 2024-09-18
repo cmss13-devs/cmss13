@@ -60,25 +60,30 @@ export const TutorialMenu = (props) => {
                 {tutorial_categories.map(
                   (tutorial_category) =>
                     tutorial_category.name === categoryIndex &&
-                    tutorial_category.tutorials.map((tutorial) => (
-                      <div style={{ paddingBottom: '12px' }} key={tutorial.id}>
-                        <Button
-                          fontSize="15px"
-                          textAlign="center"
-                          selected={tutorial === chosenTutorial}
-                          color={
-                            completed_tutorials.indexOf(tutorial.id) === -1
-                              ? 'good'
-                              : 'default'
-                          }
-                          width="100%"
+                    tutorial_category.tutorials
+                      .sort((a, b) => (a.name < b.name ? -1 : 1))
+                      .map((tutorial) => (
+                        <div
+                          style={{ paddingBottom: '12px' }}
                           key={tutorial.id}
-                          onClick={() => setTutorial(tutorial)}
                         >
-                          {tutorial.name}
-                        </Button>
-                      </div>
-                    )),
+                          <Button
+                            fontSize="15px"
+                            textAlign="center"
+                            selected={tutorial === chosenTutorial}
+                            color={
+                              completed_tutorials.indexOf(tutorial.id) === -1
+                                ? 'good'
+                                : 'default'
+                            }
+                            width="100%"
+                            key={tutorial.id}
+                            onClick={() => setTutorial(tutorial)}
+                          >
+                            {tutorial.name}
+                          </Button>
+                        </div>
+                      )),
                 )}
               </Section>
             </Stack.Item>

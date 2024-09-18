@@ -62,22 +62,21 @@
 		ACTIONS SPECIALSIT SNIPER CAN TAKE
 */
 /datum/action/item_action/specialist/aimed_shot/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/item_action/specialist/aimed_shot/can_use_action()
 	var/mob/living/carbon/human/H = owner
@@ -276,6 +275,7 @@
 	return TRUE
 
 /datum/action/item_action/specialist/toggle_laser/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
 	if(owner.get_held_item() != sniper_rifle)

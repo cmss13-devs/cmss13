@@ -188,6 +188,10 @@
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
+	
+	preview_dummy.blocks_emissive = FALSE
+	preview_dummy.update_emissive_block()
+	
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)

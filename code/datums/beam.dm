@@ -215,13 +215,7 @@
 	return newbeam
 
 /proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
-	var/list/zap_data = list()
-	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
-		zap_data += beno
-	for(var/xeno in zap_data)
-		var/mob/living/carbon/xenomorph/living = xeno
-		if(!living)
-			return
+	FOR_DOVIEW(var/mob/living/carbon/xenomorph/living, zap_range, source, HIDE_INVISIBLE_OBSERVER)
 		if(living.stat == DEAD)
 			continue
 		if(living in blacklistmobs)
@@ -229,3 +223,4 @@
 		source.beam(living, icon_state="lightning[rand(1,12)]", time = 3, maxdistance = zap_range + 2)
 		living.set_effect(2, SLOW)
 		log_attack("[living] was zapped by [source]")
+	FOR_DOVIEW_END

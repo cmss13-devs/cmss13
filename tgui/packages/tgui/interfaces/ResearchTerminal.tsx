@@ -480,7 +480,7 @@ const Contracts = () => {
       : Array.from(Array(data.contract_chems.length).keys());
   return (
     <Box px={'7px'}>
-      <Section title={'Chemical Contracts'}>
+      <Section title={'Chemical Contracts'} mt={'5px'}>
         <ProgressBar
           width="100%"
           value={timeLeftPct}

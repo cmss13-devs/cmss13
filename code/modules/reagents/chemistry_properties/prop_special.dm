@@ -69,7 +69,7 @@
 	name = PROPERTY_DNA_DISINTEGRATING
 	code = "DDI"
 	description = "Immediately disintegrates the DNA of all organic cells it comes into contact with. This property is highly valued by WY."
-	rarity = PROPERTY_LEGENDARY
+	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 

@@ -9,7 +9,7 @@
 /datum/reagent/generated
 	reagent_state = LIQUID //why isn't this default, seriously
 	chemclass = CHEM_CLASS_ULTRA
-	objective_value = OBJECTIVE_HIGH_VALUE
+	objective_value = OBJECTIVE_NO_VALUE
 	flags = REAGENT_SCANNABLE
 	/// One reagent for the recipe picked at the creation of chem without creating recipe datum but is guranteed to be a part of recipe when recipe datum is created. Used as a hint for research contracts.
 	var/reagent_recipe_hint = null

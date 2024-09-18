@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(objectives)
 		spawn_objective_at_landmark(dest, /obj/item/paper/research_notes)
 	for(var/i=0;i<research_legendary_hints;i++)//;-;
 		var/dest = pick(5;"close", 8;"medium", 7;"far", 20;"science", 13;"close_documents", 9;"medium_documents", 13;"far_documents", 25;"science_documents")
-		spawn_objective_at_landmark(dest, pick_weight(list(/obj/item/paper/research_notes/leg_hint = 5, /obj/item/paper/research_notes/ciph_hint = 1)))
+		spawn_objective_at_landmark(dest, pick_weight(list(/obj/item/paper/research_notes/leg_hint = 5, /obj/item/paper/research_notes/ciph_hint/complete = 3)))
 	for(var/i=0;i<vial_boxes;i++)
 		var/dest = pick(40;"medium", 20;"far", 40;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)

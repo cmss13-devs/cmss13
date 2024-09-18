@@ -212,9 +212,8 @@
 		if("take_contract")
 			if(!GLOB.chemical_data.picked_chem)
 				var/chem_id = params["id"]
-				to_world(chem_id)
 				var/new_id = GLOB.chemical_data.legalize_chem(GLOB.chemical_data.contract_chems[chem_id])
 				new /obj/item/paper/research_notes(photocopier.loc, GLOB.chemical_reagents_list[new_id], "synthesis")
 				GLOB.chemical_data.picked_chem = TRUE
-				GLOB.chemical_data.next_reroll = world.time + 5 MINUTES
+				GLOB.chemical_data.next_reroll = world.time + RESEARCH_CONTRACT_PICKED
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

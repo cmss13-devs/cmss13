@@ -4,9 +4,6 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
-	var/research_reroll_interval = 2 MINUTES
-	var/research_picked_interval = 5 MINUTES
-	var/next_research_allocation = 0
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
 /datum/game_mode/announce()

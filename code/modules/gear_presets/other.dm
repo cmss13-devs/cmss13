@@ -28,6 +28,30 @@
 	for(var/type in abilities)
 		give_action(new_human, type)
 
+/datum/equipment_preset/other/loyalist
+	name = "Loyalist"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/loyalist/load_status(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.mob_flags |= LOYALIST
+	new_human.hud_set_squad()
+
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist!"))
+	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a loyalist.<hr>"))
+
+/datum/equipment_preset/other/loyalist/leader
+	name = "Loyalist Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/loyalist/leader/load_status(mob/living/carbon/human/new_human)
+	for(var/datum/action/human_action/activable/loyalist/A in new_human.actions)
+		A.remove_from(new_human)
+
+	var/list/abilities = subtypesof(/datum/action/human_action/activable/loyalist)
+	for(var/type in abilities)
+		give_action(new_human, type)
+
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 

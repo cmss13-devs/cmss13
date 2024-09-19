@@ -135,12 +135,12 @@
 
 	var/list/target_list = list()
 	for(var/mob/living/carbon/possible_target in view(7, human_owner))
-		if(possible_target == human_owner || !possible_target.client) 
+		if(possible_target == human_owner || !possible_target.client)
 			continue
 		target_list += possible_target
 
 	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "hive_status")
-	if(!target_mob) 
+	if(!target_mob)
 		return
 
 	human_owner.psychic_whisper(target_mob)
@@ -567,6 +567,39 @@ CULT
 
 	message_admins("[key_name_admin(H)] has begun the mutiny.")
 	remove_from(H)
+
+
+/datum/action/human_action/activable/loyalist
+	name = "Loyalist abilities"
+
+/datum/action/human_action/activable/loyalist/loyalist_convert
+	name = "Convert"
+	action_icon_state = "mutineer_convert" //need someone to sprite icon
+
+
+/datum/action/human_action/activable/loyalist/loyalist_convert/use_ability(mob/M)
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/chosen = M
+
+	if(!istype(chosen))
+		return
+
+	to_chat(H, SPAN_NOTICE("Loyalist join request sent to [chosen]!"))
+
+	if(tgui_alert(chosen, "Do you want to be a loyalist?", "Become Loyalist", list("Yes", "No")) != "Yes")
+		return
+	var/datum/equipment_preset/other/loyalist/XC = new()
+	XC.load_status(chosen)
+	to_chat(chosen, SPAN_WARNING("You'll become a loyalist when the mutiny begins. Prepare yourself and do not cause any harm until you've been made into a loyalist."))
+
+	message_admins("[key_name_admin(chosen)] has been converted into a loyalist by [key_name_admin(H)].")
+
+
+
+
 
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button

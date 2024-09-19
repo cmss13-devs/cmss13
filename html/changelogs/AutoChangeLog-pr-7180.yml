@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "Ravager scissor cut will now destroy fences."

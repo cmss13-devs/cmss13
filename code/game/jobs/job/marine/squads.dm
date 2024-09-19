@@ -834,7 +834,7 @@
 /datum/squad/proc/manage_fireteams(mob/living/carbon/human/target)
 	var/obj/item/card/id/ID = target.get_idcard()
 
-	if(!ID || (!(ID.rank in GLOB.ROLES_MARINES) && faction == FACTION_MARINE || !(ID.rank in GLOB.ROLES_MARINES_ANTAG) && faction == FACTION_UPP))
+	if(!ID || ((!(ID.rank in GLOB.ROLES_MARINES) && faction == FACTION_MARINE) || (!(ID.rank in GLOB.ROLES_MARINES_ANTAG) && faction == FACTION_UPP)))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))

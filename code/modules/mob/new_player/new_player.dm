@@ -56,7 +56,7 @@
 		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
 		if(GLOB.master_mode == "Faction Clash UPP CM")
-			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!!</A></p>"
+			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
 			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"

@@ -72,7 +72,8 @@
 	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
 		return FALSE
 
-	var/atom/oldloc = loc
+	var/atom/old_loc = loc
+	var/list/atom/old_locs = locs
 	var/old_dir = dir
 
 	. = ..()
@@ -81,10 +82,10 @@
 	else if(old_dir != direct)
 		setDir(direct)
 	l_move_time = world.time
-	if ((oldloc != loc && oldloc && oldloc.z == z))
-		last_move_dir = get_dir(oldloc, loc)
+	if ((old_loc != loc && old_loc && old_loc.z == z))
+		last_move_dir = get_dir(old_loc, loc)
 	if (.)
-		Moved(oldloc, direct)
+		Moved(old_loc, old_locs, direct)
 
 // TODO: Revisit the logic for vehicle collisions and see if there is a less snowflake way to handle vehicles plowing through atoms
 /**
@@ -108,14 +109,18 @@
 		var/turf/target_turf = get_step(loc, target_dir)
 		Move(target_turf)
 
-/atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, direction, Forced)
+/atom/movable/proc/Moved(atom/old_loc, list/atom/old_locs, direction, Forced = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, old_locs, direction, Forced)
 	for(var/datum/dynamic_light_source/light as anything in hybrid_light_sources)
 		light.source_atom.update_light()
 		if(!isturf(loc))
 			light.find_containing_atom()
 	for(var/datum/static_light_source/L as anything in static_light_sources) // Cycle through the light sources on this atom and tell them to update.
 		L.source_atom.static_update_light()
+	return TRUE
+
+/atom/movable/proc/moved_to_nullspace(atom/old_loc, list/atom/old_locs, direction)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED_TO_NULLSPACE, old_loc, old_locs, direction)
 	return TRUE
 
 /atom/movable/proc/forceMove(atom/destination)
@@ -131,63 +136,54 @@
 
 
 /atom/movable/proc/doMove(atom/destination)
-	. = FALSE
-	if(destination)
-		if(pulledby && (get_dist(pulledby, destination) > 1 || !isturf(destination) || !isturf(pulledby.loc)))
+	if (destination)
+		if (pulledby && (get_dist(pulledby, destination) > 1 || !isturf(destination) || !isturf(pulledby.loc)))
 			pulledby.stop_pulling()
-		var/atom/oldloc = loc
-		var/list/atom/oldlocs = locs
-		var/same_loc = oldloc == destination
-		var/area/old_area = get_area(oldloc)
-		var/area/destarea = get_area(destination)
+		var/atom/old_loc = loc
+		var/list/atom/old_locs = locs
+		var/same_loc = old_loc == destination
+		var/area/old_area = get_area(old_loc)
+		var/area/dest_area = get_area(destination)
 
 		loc = destination
 
-		if(!same_loc)
-			// Processing multitile atoms
-			if(length(oldlocs) > 1)
-				var/list/area/processed_areas = list()
-				for (var/turf/turf as anything in locs)
-					turf.Exited(src, destination)
-					var/area/turf_area = get_area(turf)
-					if(turf_area && !(turf_area in processed_areas) && (turf_area != destarea || !isturf(destination)))
-						turf_area.Exited(src, destination)
-						processed_areas += turf_area
-			// Processing single tile atoms
-			else if(oldloc)
-				oldloc.Exited(src, destination)
-				if(old_area && (old_area != destarea || !isturf(destination)))
+		if (!same_loc)
+			if (old_loc)
+				old_loc.Exited(src, destination)
+				if (old_area && (old_area != dest_area || !isturf(destination)))
 					old_area.Exited(src, destination)
-			for(var/atom/movable/AM in oldloc)
-				AM.Uncrossed(src)
-			var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
-			var/turf/destturf = get_turf(destination)
-			var/old_z = (oldturf ? oldturf.z : null)
-			var/dest_z = (destturf ? destturf.z : null)
-			if(old_z != dest_z)
+			for (var/atom/movable/movable in old_loc)
+				movable.Uncrossed(src)
+			var/turf/old_turf = get_turf(old_loc)  // TODO: maploader
+			var/turf/dest_turf = get_turf(destination)
+			var/old_z = (old_turf ? old_turf.z : null)
+			var/dest_z = (dest_turf ? dest_turf.z : null)
+			if (old_z != dest_z)
 				onTransitZ(old_z, dest_z)
-			destination.Entered(src, oldloc)
-			if(destarea && (old_area != destarea || !isturf(oldloc)))
-				destarea.Entered(src, oldloc)
-			if(!(SEND_SIGNAL(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
-				for(var/atom/movable/AM in destination)
-					if(AM == src)
-						continue
-					AM.Crossed(src, oldloc)
 
-		Moved(oldloc, NONE, TRUE)
+			destination.Entered(src, old_loc)
+			if (dest_area && (old_area != dest_area || !isturf(old_loc)))
+				dest_area.Entered(src, old_loc)
+			if (!(SEND_SIGNAL(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
+				for(var/atom/movable/movable in destination)
+					if(movable == src)
+						continue
+					movable.Crossed(src, old_loc)
+		Moved(old_loc, old_locs, NONE, TRUE)
 		. = TRUE
 
-	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
+	// If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
 	else
 		. = TRUE
+		var/atom/old_loc = loc
+		var/list/atom/old_locs = locs
 		if (loc)
-			var/atom/oldloc = loc
-			var/area/old_area = get_area(oldloc)
-			oldloc.Exited(src, null)
-			if(old_area)
+			var/area/old_area = get_area(old_loc)
+			old_loc.Exited(src, null)
+			if (old_area)
 				old_area.Exited(src, null)
 		loc = null
+		moved_to_nullspace(old_loc, old_locs, NONE, TRUE)
 
 // resets our langchat position if we get forcemoved out of a locker or something
 /mob/doMove(atom/destination)

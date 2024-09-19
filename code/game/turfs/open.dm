@@ -661,54 +661,48 @@
 
 /turf/open/gm/river/ex_act(severity)
 	if(covered & severity >= EXPLOSION_THRESHOLD_LOW)
-		covered = 0
+		covered = TRUE
 		update_icon()
-		spawn(10)
-			for(var/atom/movable/AM in src)
-				src.Entered(AM)
-				for(var/atom/movable/AM1 in src)
-					if(AM == AM1)
-						continue
-					AM1.Crossed(AM)
+		for(var/atom/movable/AM in src)
+			addtimer(CALLBACK(src, PROC_REF(Entered_wrapper), AM), 1 SECONDS)
 	if(!covered && supports_fishing && prob(5))
 		var/obj/item/caught_item = get_fishing_loot(src, get_area(src), 15, 35, 10, 2)
 		caught_item.sway_jitter(3, 6)
 
-/turf/open/gm/river/Entered(atom/movable/AM)
+/turf/open/gm/river/proc/Entered_wrapper(atom/movable/entered)
+	Entered(entered)
+
+/turf/open/gm/river/Entered(atom/movable/entered)
 	..()
 
-	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
+	SEND_SIGNAL(entered, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
 
-	if(!iscarbon(AM) || AM.throwing)
+	if (covered || !iscarbon(entered) || entered.throwing)
 		return
+	apply_river_effects(entered)
 
-	if(!covered)
-		var/mob/living/carbon/C = AM
-		var/river_slowdown = base_river_slowdown
+/turf/open/gm/river/proc/apply_river_effects(mob/living/carbon/target)
+	var/river_slowdown = base_river_slowdown
 
-		if(ishuman(C))
-			var/mob/living/carbon/human/H = AM
-			cleanup(H)
-			if(H.gloves && rand(0,100) < 60)
-				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
-					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
-					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
-						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
-						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
+	if(ishuman(target))
+		var/mob/living/carbon/human/target_human = target
+		cleanup(target_human)
+		if(target_human.gloves && rand(0,100) < 60)
+			if(istype(target_human.gloves,/obj/item/clothing/gloves/yautja/hunter))
+				var/obj/item/clothing/gloves/yautja/hunter/yautja_gloves = target_human.gloves
+				if(yautja_gloves && istype(yautja_gloves) && HAS_TRAIT(target_human, TRAIT_CLOAKED))
+					to_chat(target_human, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
+					yautja_gloves.decloak(target_human, TRUE, DECLOAK_SUBMERGED)
+		if(target_human.bloody_footsteps)
+			SEND_SIGNAL(target_human, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
-		else if(isxeno(C))
-			river_slowdown -= 0.7
-			if(isboiler(C))
-				river_slowdown -= 1
+	else if(isxeno(target))
+		river_slowdown -= 0.7
+		if(isboiler(target))
+			river_slowdown -= 1
 
-		var/new_slowdown = C.next_move_slowdown + river_slowdown
-		C.next_move_slowdown = new_slowdown
-
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.bloody_footsteps)
-			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
-
+	var/new_slowdown = target.next_move_slowdown + river_slowdown
+	target.next_move_slowdown = new_slowdown
 
 /turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M)) return

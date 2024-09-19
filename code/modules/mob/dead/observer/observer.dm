@@ -8,9 +8,10 @@
 	var/turf/new_turf = get_turf(destination)
 	if (old_turf?.z != new_turf?.z)
 		onTransitZ(old_turf?.z, new_turf?.z)
-	var/oldloc = loc
+	var/old_loc = loc
+	var/old_locs = locs
 	loc = destination
-	Moved(oldloc, NONE, TRUE)
+	Moved(old_loc, old_locs, NONE, TRUE)
 
 /mob/dead/abstract_move(atom/destination)
 	var/turf/old_turf = get_turf(src)

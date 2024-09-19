@@ -294,7 +294,8 @@
 	var/list/vehicle_dimensions = V.get_dimensions()
 	// The door should be facing east/west when the vehicle is facing north/south, and north/south when the vehicle is facing east/west
 	// The door must also be wide enough for the vehicle to fit inside
-	if(((V.dir & (NORTH|SOUTH) && dir & (EAST|WEST)) || (V.dir & (EAST|WEST) && dir & (NORTH|SOUTH))) && width >= vehicle_dimensions["width"])
+	// TODO: handling for asymmetric vehicles
+	if(((V.dir & (NORTH|SOUTH) && dir & (EAST|WEST)) || (V.dir & (EAST|WEST) && dir & (NORTH|SOUTH))) && height >= vehicle_dimensions["width"])
 	// Driver needs access
 		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 		if(!requiresID() || (driver && allowed(driver)))

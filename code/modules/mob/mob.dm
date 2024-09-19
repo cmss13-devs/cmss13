@@ -64,8 +64,6 @@
 		GLOB.alive_mob_list += src
 		life_time_start = world.time
 	var/area/current_area = get_area(loc)
-	if(current_area)
-		current_area.Entered(src)
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 
@@ -934,25 +932,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			if(istype(B) && B.buckled_bodybag)
 				conga_line += B.buckled_bodybag
 			end_of_conga = TRUE //Only mobs can continue the cycle.
-	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
-		if(AM.loc)
-			oldLoc = AM.loc
-			AM.loc.Exited(AM,destination)
-		AM.loc = destination
-		AM.loc.Entered(AM,oldLoc)
-		var/area/old_area
-		if(oldLoc)
-			old_area = get_area(oldLoc)
-		if(new_area && old_area != new_area)
-			new_area.Entered(AM,oldLoc)
-		for(var/atom/movable/CR in destination)
-			if(CR in conga_line)
-				continue
-			CR.Crossed(AM)
-		if(oldLoc)
-			AM.Moved(oldLoc)
+		AM.forceMove(destination)
 
 	return TRUE
 

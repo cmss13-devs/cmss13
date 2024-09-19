@@ -96,12 +96,8 @@
 		AddComponent(/datum/component/overlay_lighting)
 	if(light_system == DIRECTIONAL_LIGHT)
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
-	if(!mapload)
-		if (length(locs))
-			for (var/turf/turf in locs)
-				turf.Entered(src)
-		else if (isturf(loc))
-			loc.Entered(src)
+	if (loc)
+		loc.Entered(src)
 
 /atom/movable/proc/update_emissive_block()
 	if(emissive_overlay)
@@ -240,8 +236,9 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
+	var/list/atom/old_locs = locs
 	loc = new_loc
-	Moved(old_loc)
+	Moved(old_loc, old_locs)
 
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)

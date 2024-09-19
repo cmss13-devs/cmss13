@@ -68,7 +68,8 @@
 
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
-	if(!(target_turf in locs)) // Exited the tent
+	// Exited the tent
+	if(!(target_turf in locs))
 		mob_exited_tent(subject)
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)

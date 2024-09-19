@@ -235,7 +235,6 @@
 					door.name = created_name
 				else
 					door.name = base_name
-				door.handle_multidoor()
 				electronics.forceMove(door)
 				qdel(src)
 				return

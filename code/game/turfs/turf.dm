@@ -59,9 +59,6 @@
 	pass_flags = new()
 	initialize_pass_flags(pass_flags)
 
-	for(var/atom/movable/AM in src)
-		Entered(AM)
-
 	if(light_power && light_range)
 		update_light()
 
@@ -83,6 +80,7 @@
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		C.cleanup_cleanable()
+	LAZYCLEARLIST(movement_blockers)
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -430,6 +428,7 @@ if ((!longitudinal_dir || longitudinal_dir_count) && (!latitudinal_dir || latitu
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
+// TODO: Consider making it so that any registered signals and components are transferred to the new turf
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
@@ -911,9 +910,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.icon_state = icon_state
 	if(T.icon != icon)
 		T.icon = icon
-	//if(color)
-	// T.atom_colours = atom_colours.Copy()
-	// T.update_atom_colour()
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T

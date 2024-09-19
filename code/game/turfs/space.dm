@@ -146,10 +146,3 @@
 			else if (A.y >= (world.maxy - TRANSITIONEDGE - 1))
 				A.y = TRANSITIONEDGE + 1
 				A.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-
-
-
-			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)

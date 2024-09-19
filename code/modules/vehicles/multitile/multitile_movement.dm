@@ -24,14 +24,6 @@
 
 		Any questions? Ask Atebite
 */
-
-/datum/multitile_movement_metadata
-	/// Turfs that are being entered into
-	var/list/turf/entered = list()
-	/// Turfs that are being exited from
-	var/list/turf/exited = list()
-
-GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadata, new)
 // Called when someone tries to move the vehicle
 /obj/vehicle/multitile/relaymove(mob/user, direction)
 	if(user != seats[VEHICLE_DRIVER])
@@ -65,9 +57,7 @@ GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadat
 
 // Attempts to execute the given movement input
 /obj/vehicle/multitile/proc/try_move(direction, force=FALSE)
-	GLOB.multitile_movement_metadata.entered.Cut()
-	GLOB.multitile_movement_metadata.exited.Cut()
-	if(!can_move(direction, GLOB.multitile_movement_metadata))
+	if(!can_move(direction))
 		// Crashed with something that stopped us
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
@@ -80,12 +70,6 @@ GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadat
 
 		if(!should_move)
 			return FALSE
-
-	for (var/turf/exited as anything in GLOB.multitile_movement_metadata.exited)
-		exited.Exited(src)
-	for (var/turf/entered as anything in GLOB.multitile_movement_metadata.entered)
-		entered.Entered(src)
-
 
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
@@ -157,7 +141,7 @@ GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadat
 
 
 // This just checks if the vehicle can physically move in the given direction
-/obj/vehicle/multitile/proc/can_move(direction, datum/multitile_movement_metadata/metadata)
+/obj/vehicle/multitile/proc/can_move(direction)
 	var/bound_x_tiles = bound_x / world.icon_size
 	var/bound_y_tiles = bound_y / world.icon_size
 	var/turf/min_turf = locate(x + bound_x_tiles, y + bound_y_tiles, z)
@@ -168,20 +152,16 @@ GLOBAL_DATUM_INIT(multitile_movement_metadata, /datum/multitile_movement_metadat
 
 	var/turf/new_loc = get_step(src, direction)
 	min_turf = locate(new_loc.x + bound_x_tiles, new_loc.y + bound_y_tiles, z)
-	metadata.exited = old_turfs
 
 	// Iterate through all blocks in the new location for tank
 	for(var/turf/to_enter as anything in CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles))
 		if(to_enter in old_turfs)
-			metadata.exited -= to_enter
 			// Handling for barricades and other structures that we did not collide with originally
 			// since they were facing the same direction as the movement
 			for (var/atom/movable/obstacle as anything in to_enter.movement_blockers)
 				if (obstacle.BlockedExitDirs(src, direction))
 					Collide(obstacle)
 			continue
-		else
-			metadata.entered += to_enter
 
 		if(!to_enter.Enter(src))
 			return FALSE

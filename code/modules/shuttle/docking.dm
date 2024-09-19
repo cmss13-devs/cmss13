@@ -134,25 +134,40 @@
 
 		old_turfs[oldT] = move_mode
 
+/datum/takeoff_turfs_to_process
+	var/turf/old_turf
+	var/turf/new_turf
+
+/datum/takeoff_turfs_to_process/New(turf/old_turf, turf/new_turf)
+	src.old_turf = old_turf
+	src.new_turf = new_turf
+
 /obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/underlying_old_area)
+	var/list/datum/takeoff_turfs_to_process/turfs_to_process
 	for(var/i in 1 to length(old_turfs))
-		var/turf/oldT = old_turfs[i]
-		var/turf/newT = new_turfs[i]
-		var/move_mode = old_turfs[oldT]
-		if(move_mode & MOVE_CONTENTS)
-			for(var/k in oldT)
-				var/atom/movable/moving_atom = k
-				if(moving_atom.loc != oldT) //fix for multi-tile objects
+		var/turf/old_turf = old_turfs[i]
+		var/turf/new_turf = new_turfs[i]
+		var/move_mode = old_turfs[old_turf]
+
+		if (move_mode & MOVE_TURF)
+			new_turf = old_turf.onShuttleMove(new_turf, movement_force, movement_direction) //turfs
+
+		if (move_mode & MOVE_AREA)
+			var/area/shuttle_area = old_turf.loc
+			shuttle_area.onShuttleMove(old_turf, new_turf, underlying_old_area) //areas
+
+		// TODO: Update the logic so that contents are processed AFTER all of the turfs are changed, otherwise things are funky with multitiles
+		if (move_mode & MOVE_CONTENTS)
+			LAZYADD(turfs_to_process, new /datum/takeoff_turfs_to_process(old_turf, new_turf))
+	if (length(turfs_to_process))
+		for (var/datum/takeoff_turfs_to_process/to_process as anything in turfs_to_process)
+			var/turf/old_turf = to_process.old_turf
+			var/turf/new_turf = to_process.new_turf
+			for(var/atom/movable/in_shuttle as anything in old_turf)
+				if (in_shuttle.loc != old_turf)
 					continue
-				moving_atom.onShuttleMove(newT, oldT, movement_force, movement_direction, old_dock, src) //atoms
-				moved_atoms[moving_atom] = oldT
-
-		if(move_mode & MOVE_TURF)
-			oldT.onShuttleMove(newT, movement_force, movement_direction) //turfs
-
-		if(move_mode & MOVE_AREA)
-			var/area/shuttle_area = oldT.loc
-			shuttle_area.onShuttleMove(oldT, newT, underlying_old_area) //areas
+				in_shuttle.onShuttleMove(new_turf, old_turf, movement_force, movement_direction, old_dock, src) //atoms
+				moved_atoms[in_shuttle] = old_turf
 
 /obj/docking_port/mobile/proc/cleanup_runway(obj/docking_port/stationary/new_dock, list/old_turfs, list/new_turfs, list/areas_to_move, list/moved_atoms, rotation, movement_direction, area/underlying_old_area)
 	underlying_old_area.afterShuttleMove()

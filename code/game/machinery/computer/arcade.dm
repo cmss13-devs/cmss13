@@ -15,10 +15,11 @@
 	var/enemy_mp = 25
 	var/gameover = 0
 	var/blocked = 0 //Player cannot attack/heal while set
-	var/list/prizes = list( /obj/item/tool/lighter/zippo = 10,
-							/obj/item/facepaint/sniper = 10,
-							/obj/item/toy/gun = 10,
-							/obj/item/toy/crossbow = 10,
+	var/list/prizes = list( /obj/item/tool/lighter/zippo = 4,
+							obj/item/spacecash/ewallet = 4, worth = 25
+							/obj/item/facepaint/sniper = 4,
+							/obj/item/toy/gun = 4,
+							/obj/item/toy/crossbow = 4,
 							/obj/item/toy/sword = 5,
 							/obj/item/toy/katana = 1,
 							/obj/item/toy/spinningtoy = 2,

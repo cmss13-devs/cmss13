@@ -60,7 +60,7 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|DELONDROP|ITEM_PREDATOR
+	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6

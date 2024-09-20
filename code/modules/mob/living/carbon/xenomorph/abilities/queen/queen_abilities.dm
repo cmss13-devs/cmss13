@@ -93,9 +93,7 @@
 /datum/action/xeno_action/activable/bombard/queen
 	// Range and other config
 	interrupt_flags = NO_FLAGS
-	xeno_cooldown = 4 SECONDS
-
-	charges = 0
+	xeno_cooldown = 30 SECONDS
 
 /datum/action/xeno_action/activable/bombard/queen/give_to(mob/living/carbon/xenomorph/queen/Q)
 	. = ..()

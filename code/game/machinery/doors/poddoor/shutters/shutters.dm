@@ -161,7 +161,7 @@
 	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable))
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)
 		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 

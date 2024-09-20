@@ -35,7 +35,7 @@
 	. = ..()
 	layer = density ? closed_layer : open_layer
 	if (height > 1)
-		AddElement(/datum/element/multitile/door, 1, height, TRUE, can_block_movement)
+		AddElement(/datum/element/multitile/door, 1, height, can_block_movement, dynamic = TRUE)
 
 /obj/structure/machinery/door/Destroy()
 	. = ..()

@@ -51,6 +51,8 @@
 	var/iff_group = LAZYACCESS(iff_group_cache, user)
 	if(isnull(iff_group))
 		iff_group = user.get_id_faction_group()
+		// Sanity so that when we pull user again we do not register signals again
+		LAZYINITLIST(iff_group)
 		LAZYSET(iff_group_cache, user, iff_group)
 		// Remove them from the cache if they are deleted
 		RegisterSignal(user, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(handle_id_equip))

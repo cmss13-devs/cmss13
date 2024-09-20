@@ -3,24 +3,36 @@
 	element_flags = ELEMENT_BESPOKE
 	id_arg_index = 2
 
-	/// The width of the movable (in tiles) when facing NORTH/SOUTH
+	/// The width of the movable when facing NORTH/SOUTH.
+	/// The value is in whatever scale is define by the variable `scale`.
 	var/width
-	/// The height of the movable (in tiles) when facing NORTH/SOUTH
+	/// The height of the movable when facing NORTH/SOUTH.
+	/// The value is in whatever scale is define by the variable `scale`.
 	var/height
+	/// The horizontal offset of the movable's hitbox from the left border towards the center when facing NORTH/SOUTH.
+	/// The value is in whatever scale is define by the variable `scale`.
+	var/x_offset
+	/// The verticle offset of the movable's hitbox from the bottom border towards the center when facing NORTH/SOUTH.
+	/// The value is in whatever scale is define by the variable `scale`.
+	var/y_offset
+
+	/// Whether the movable can block movement.
+	var/can_block_movement
 
 	/// Whether the width and height of the movable are subject to change based on direction.
-	/// Mainly used by asymmetric multitile movables
+	/// Mainly used by asymmetric multitile movables.
 	var/dynamic
+	/// Scale for both the hitbox dimensions and offsets.
+	/// Defaults to the size of a tile in pixels.
+	var/scale
 
-	/// Whether the movable can block movement
-	var/can_block_movement
 
 	/// Proc ref to be called when set bounds is called, specify in any child definitions
 	var/on_set_bounds
 	/// Proc ref to be called when movable is moved, specify in any child definitions
 	var/on_moved
 
-/datum/element/multitile/Attach(datum/target, width, height, dynamic, can_block_movement)
+/datum/element/multitile/Attach(datum/target, width, height, can_block_movement, x_offset = 0, y_offset = 0, dynamic = FALSE, scale = world.icon_size)
 	. = ..()
 	if (. == ELEMENT_INCOMPATIBLE)
 		return
@@ -32,10 +44,15 @@
 
 	src.width = width
 	src.height = height
-	src.dynamic = dynamic
 	src.can_block_movement = can_block_movement
+	src.x_offset = x_offset
+	src.y_offset = y_offset
+	src.dynamic = dynamic
+	src.scale = scale
 
 	RegisterSignal(target, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, PROC_REF(set_bounds))
+	RegisterSignal(target, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(move_override))
+	RegisterSignal(target, COMSIG_MOVABLE_DO_MOVE, PROC_REF(set_do_move_flags))
 	RegisterSignal(target, list(
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOVABLE_MOVED_TO_NULLSPACE,
@@ -49,6 +66,7 @@
 /datum/element/multitile/Detach(atom/movable/multitile, force)
 	UnregisterSignal(multitile, list(
 		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON,
+		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOVABLE_MOVED_TO_NULLSPACE,
 		COMSIG_ATOM_DIR_CHANGE,
@@ -66,33 +84,72 @@
 	ASSERT(multitile.dir in CARDINAL_DIRS, "Trying to set bounds for a multitile that is not facing a cardinal direction")
 	var/list/atom/old_locs = multitile.locs
 	if (multitile.dir in list(NORTH, SOUTH))
-		multitile.bound_width = width * world.icon_size
-		multitile.bound_height = height * world.icon_size
+		multitile.bound_width = width * scale
+		multitile.bound_x = x_offset * scale
+		multitile.bound_height = height * scale
+		multitile.bound_y = y_offset * scale
 	else
-		multitile.bound_width = height * world.icon_size
-		multitile.bound_height = width * world.icon_size
+		multitile.bound_width = height * scale
+		multitile.bound_x = y_offset * scale
+		multitile.bound_height = width * scale
+		multitile.bound_y = x_offset * scale
 	if (can_block_movement)
 		process_turf_blockers(multitile, multitile.loc, old_locs)
 	if (on_set_bounds)
 		call(src, on_set_bounds)(multitile, old_locs)
 
+// Native BYOND handling for multitile movement is not compatible with how we calculate collisions
+/datum/element/multitile/proc/move_override(atom/movable/multitile, turf/new_turf)
+	SIGNAL_HANDLER
+	var/direction = get_dir(multitile, new_turf)
+	var/turf/min_turf = locate(multitile.x + x_offset, multitile.y + y_offset, multitile.z)
+
+	var/list/old_turfs = CORNER_BLOCK(min_turf, width, height)
+
+	min_turf = locate(new_turf.x + x_offset, new_turf.y + y_offset, new_turf.z)
+
+	var/movement_blocked = FALSE
+	// Iterate through all blocks in the new location for tank
+	for(var/turf/to_enter as anything in CORNER_BLOCK(min_turf, width, height))
+		if(to_enter in old_turfs)
+			// Handling for barricades and other structures that we did not collide with originally
+			// since they were facing the same direction as the movement
+			for (var/atom/movable/obstacle as anything in to_enter.movement_blockers)
+				if (obstacle == multitile)
+					continue
+				if (obstacle.BlockedExitDirs(multitile, direction) && !multitile.Collide(obstacle))
+					movement_blocked = TRUE
+			continue
+
+		if(!to_enter.Enter(multitile))
+			movement_blocked = TRUE
+
+	if (!movement_blocked)
+		multitile.forceMove(new_turf)
+
+	return (movement_blocked ? COMPONENT_MOVE_OVERRIDE_FAILURE : COMPONENT_MOVE_OVERRIDE_SUCCESSFUL)|COMPONENT_SKIP_MOVED
+
+/// Force handling of Entered() and Exited() in doMove() to be in process_turf_blockers()
+/datum/element/multitile/proc/set_do_move_flags(atom/movable/multitile, turf/new_turf)
+	SIGNAL_HANDLER
+	return COMPONENT_SKIP_OLD_LOC_PROCESSING|COMPONENT_SKIP_NEW_LOC_PROCESSING
+
 /datum/element/multitile/proc/handle_moved(atom/movable/multitile, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
+
 	process_turf_blockers(multitile, old_loc, old_locs)
 	if (on_moved)
 		call(src, on_moved)(multitile, old_locs)
 
 /datum/element/multitile/proc/process_turf_blockers(atom/movable/multitile, atom/old_loc, list/atom/old_locs)
 	LAZYINITLIST(old_locs)
-	// old_loc should already be processed
-	var/list/atom/exited = old_locs - old_loc
+	var/list/atom/exited = old_locs | list(old_loc)
 	var/list/atom/entered = list()
 	if (multitile.loc)
-		for (var/destination_atom in multitile.locs)
+		for (var/destination_atom in multitile.locs | list(multitile.loc))
 			if (destination_atom in exited)
 				exited -= destination_atom
-			// loc should already be processed
-			else if (destination_atom != multitile.loc)
+			else
 				entered |= destination_atom
 	var/list/area/processed_areas = list(get_area(old_loc))
 	if (length(exited))

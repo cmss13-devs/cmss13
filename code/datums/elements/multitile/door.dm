@@ -3,7 +3,7 @@
 	on_set_bounds = /datum/element/multitile/door::set_filler_turfs()
 	on_moved = /datum/element/multitile/door::set_filler_turfs()
 
-/datum/element/multitile/door/Attach(datum/target, width, height, dynamic, can_block_movement)
+/datum/element/multitile/door/Attach(datum/target, width, height, can_block_movement, x_offset = 0, y_offset = 0, dynamic = FALSE, scale = world.icon_size)
 	. = ..()
 	if (. == ELEMENT_INCOMPATIBLE)
 		return

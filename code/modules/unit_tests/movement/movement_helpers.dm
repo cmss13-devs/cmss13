@@ -14,6 +14,9 @@
 
 GLOBAL_REAL(movement_helper_constants, /movement_helper_constants)
 
+/atom/movable/test_mover
+	can_block_movement = TRUE
+
 /atom/movable/test_mover/Collide(atom/A)
 	. = ..()
 	if (HAS_TRAIT(A, movement_helper_constants::TRAIT_TEST))

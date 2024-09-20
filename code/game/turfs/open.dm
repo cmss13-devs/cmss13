@@ -664,13 +664,10 @@
 		covered = TRUE
 		update_icon()
 		for(var/atom/movable/AM in src)
-			addtimer(CALLBACK(src, PROC_REF(Entered_wrapper), AM), 1 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(apply_river_effects), AM), 1 SECONDS)
 	if(!covered && supports_fishing && prob(5))
 		var/obj/item/caught_item = get_fishing_loot(src, get_area(src), 15, 35, 10, 2)
 		caught_item.sway_jitter(3, 6)
-
-/turf/open/gm/river/proc/Entered_wrapper(atom/movable/entered)
-	Entered(entered)
 
 /turf/open/gm/river/Entered(atom/movable/entered)
 	..()

@@ -164,6 +164,7 @@
 	if(isturf(hit_atom) && hit_atom.density && !rebounding)
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
+		var/delay
 		if(ismob(hit_atom))
 			var/mob/M = hit_atom
 			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
@@ -171,11 +172,19 @@
 			shrapnel_count -= direct_hit_shrapnel
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-		apply_explosion_overlay()
-		if(explosion_power)
-			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
-		qdel(src)
+			//so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+			delay = 0.2 SECONDS
+		var/datum/callback/explode_callback = CALLBACK(src, PROC_REF(explode))
+		if (delay)
+			addtimer(explode_callback, delay)
+		else
+			explode_callback.Invoke()
+
+/obj/item/explosive/grenade/high_explosive/airburst/proc/explode()
+	apply_explosion_overlay()
+	if(explosion_power)
+		cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+	qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell
 	name = "\improper M74 AGM-H 40mm Hornet Shell"

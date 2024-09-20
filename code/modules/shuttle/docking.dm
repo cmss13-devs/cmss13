@@ -144,7 +144,7 @@
 
 /obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/underlying_old_area)
 	var/list/datum/takeoff_turfs_to_process/turfs_to_process
-	for(var/i in 1 to length(old_turfs))
+	for (var/i in 1 to length(old_turfs))
 		var/turf/old_turf = old_turfs[i]
 		var/turf/new_turf = new_turfs[i]
 		var/move_mode = old_turfs[old_turf]
@@ -156,14 +156,15 @@
 			var/area/shuttle_area = old_turf.loc
 			shuttle_area.onShuttleMove(old_turf, new_turf, underlying_old_area) //areas
 
-		// TODO: Update the logic so that contents are processed AFTER all of the turfs are changed, otherwise things are funky with multitiles
+		// Will process all movables after all turfs are processed in case they are dependent on multiple turfs in an area
+		// For example: multitiles
 		if (move_mode & MOVE_CONTENTS)
 			LAZYADD(turfs_to_process, new /datum/takeoff_turfs_to_process(old_turf, new_turf))
 	if (length(turfs_to_process))
 		for (var/datum/takeoff_turfs_to_process/to_process as anything in turfs_to_process)
 			var/turf/old_turf = to_process.old_turf
 			var/turf/new_turf = to_process.new_turf
-			for(var/atom/movable/in_shuttle as anything in old_turf)
+			for (var/atom/movable/in_shuttle as anything in old_turf)
 				if (in_shuttle.loc != old_turf)
 					continue
 				in_shuttle.onShuttleMove(new_turf, old_turf, movement_force, movement_direction, old_dock, src) //atoms

@@ -12,11 +12,11 @@
 	pixel_x = -16
 	pixel_y = -16
 
-	bound_width = 64
-	bound_height = 64
+	width = 2
+	height = 2
 
-	bound_x = 0
-	bound_y = 0
+	x_offset = 0
+	y_offset = 0
 
 	interior_map = /datum/map_template/interior/van
 

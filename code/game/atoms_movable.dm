@@ -58,7 +58,8 @@
 	if(length(vis_contents))
 		vis_contents.Cut()
 	. = ..()
-	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	//so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	moveToNullspace()
 
 	QDEL_NULL(light)
 	QDEL_NULL(static_light)

@@ -68,23 +68,26 @@
 	return NO_BLOCKED_MOVEMENT
 
 /atom/movable/Move(NewLoc, direct)
-	// If Move is not valid, exit
-	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
-		return FALSE
-
 	var/atom/old_loc = loc
 	var/list/atom/old_locs = locs
 	var/old_dir = dir
 
-	. = ..()
+	var/sigresult = SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc)
+	if (sigresult & COMPONENT_CANCEL_MOVE)
+		return FALSE
+	if (sigresult & (COMPONENT_MOVE_OVERRIDE_FAILURE|COMPONENT_MOVE_OVERRIDE_SUCCESSFUL))
+		. = sigresult & COMPONENT_MOVE_OVERRIDE_SUCCESSFUL
+	else
+		. = ..()
+
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)
-	else if(old_dir != direct)
+	else if(!isnull(direct) && old_dir != direct)
 		setDir(direct)
 	l_move_time = world.time
-	if ((old_loc != loc && old_loc && old_loc.z == z))
+	if ((old_loc != loc && old_loc?.z == z))
 		last_move_dir = get_dir(old_loc, loc)
-	if (.)
+	if (. && !(sigresult & COMPONENT_SKIP_MOVED))
 		Moved(old_loc, old_locs, direct)
 
 // TODO: Revisit the logic for vehicle collisions and see if there is a less snowflake way to handle vehicles plowing through atoms
@@ -125,6 +128,7 @@
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
+
 	if(destination)
 		. = doMove(destination)
 	else
@@ -136,6 +140,9 @@
 
 
 /atom/movable/proc/doMove(atom/destination)
+	var/sigresult = SEND_SIGNAL(src, COMSIG_MOVABLE_DO_MOVE, destination)
+	var/skip_old_loc_processing = sigresult & COMPONENT_SKIP_OLD_LOC_PROCESSING
+	var/skip_new_loc_processing = sigresult & COMPONENT_SKIP_NEW_LOC_PROCESSING
 	if (destination)
 		if (pulledby && (get_dist(pulledby, destination) > 1 || !isturf(destination) || !isturf(pulledby.loc)))
 			pulledby.stop_pulling()
@@ -148,27 +155,27 @@
 		loc = destination
 
 		if (!same_loc)
-			if (old_loc)
+			if (old_loc && !skip_old_loc_processing)
 				old_loc.Exited(src, destination)
 				if (old_area && (old_area != dest_area || !isturf(destination)))
 					old_area.Exited(src, destination)
-			for (var/atom/movable/movable in old_loc)
-				movable.Uncrossed(src)
+				for (var/atom/movable/movable in old_loc)
+					movable.Uncrossed(src)
 			var/turf/old_turf = get_turf(old_loc)  // TODO: maploader
 			var/turf/dest_turf = get_turf(destination)
 			var/old_z = (old_turf ? old_turf.z : null)
 			var/dest_z = (dest_turf ? dest_turf.z : null)
 			if (old_z != dest_z)
 				onTransitZ(old_z, dest_z)
-
-			destination.Entered(src, old_loc)
-			if (dest_area && (old_area != dest_area || !isturf(old_loc)))
-				dest_area.Entered(src, old_loc)
-			if (!(SEND_SIGNAL(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
-				for(var/atom/movable/movable in destination)
-					if(movable == src)
-						continue
-					movable.Crossed(src, old_loc)
+			if (!skip_new_loc_processing)
+				destination.Entered(src, old_loc)
+				if (dest_area && (old_area != dest_area || !isturf(old_loc)))
+					dest_area.Entered(src, old_loc)
+				if (!(SEND_SIGNAL(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED) & COMPONENT_IGNORE_CROSS))
+					for(var/atom/movable/movable in destination)
+						if(movable == src)
+							continue
+						movable.Crossed(src, old_loc)
 		Moved(old_loc, old_locs, NONE, TRUE)
 		. = TRUE
 
@@ -186,6 +193,6 @@
 		moved_to_nullspace(old_loc, old_locs, NONE, TRUE)
 
 // resets our langchat position if we get forcemoved out of a locker or something
-/mob/doMove(atom/destination)
+/mob/doMove(atom/destination, process_old_loc, process_new_loc)
 	. = ..()
 	langchat_image?.loc = src

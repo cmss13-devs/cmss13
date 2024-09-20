@@ -288,22 +288,21 @@
 
 //-------------------------MACHINERY------------------------
 
-/obj/structure/machinery/door/handle_vehicle_bump(obj/vehicle/multitile/V)
+/obj/structure/machinery/door/handle_vehicle_bump(obj/vehicle/multitile/vehicle)
 	// We attempt to open doors before crushing them
 	// Check if we can even fit through first
-	var/list/vehicle_dimensions = V.get_dimensions()
 	// The door should be facing east/west when the vehicle is facing north/south, and north/south when the vehicle is facing east/west
 	// The door must also be wide enough for the vehicle to fit inside
 	// TODO: handling for asymmetric vehicles
-	if(((V.dir & (NORTH|SOUTH) && dir & (EAST|WEST)) || (V.dir & (EAST|WEST) && dir & (NORTH|SOUTH))) && height >= vehicle_dimensions["width"])
+	if(((vehicle.dir & (NORTH|SOUTH) && dir & (EAST|WEST)) || (vehicle.dir & (EAST|WEST) && dir & (NORTH|SOUTH))) && height >= vehicle.width)
 	// Driver needs access
-		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
+		var/mob/living/driver = vehicle.get_seat_mob(VEHICLE_DRIVER)
 		if(!requiresID() || (driver && allowed(driver)))
 			open(TRUE)
 			return
 	if(!unacidable)
-		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
-		playsound(V, 'sound/effects/metal_crash.ogg', 20)
+		visible_message(SPAN_DANGER("\The [vehicle] pushes [src] over!"))
+		playsound(vehicle, 'sound/effects/metal_crash.ogg', 20)
 		qdel(src)
 
 /obj/structure/machinery/door/poddoor/handle_vehicle_bump(obj/vehicle/multitile/V)

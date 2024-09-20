@@ -167,7 +167,7 @@
 	if (blocking_dir == target_dir)
 		return start_turf
 	for (obstacle in start_turf.movement_blockers) //First, check objects to block exit
-		if (mover == obstacle || (obstacle in forget))
+		if (obstacle in forget | list(mover))
 			continue
 		blocking_dir |= obstacle.BlockedExitDirs(mover, target_dir)
 		if ((blocking_dir & target_dir) == target_dir)
@@ -187,7 +187,7 @@
 			if ((blocking_dir & target_dir) == target_dir)
 				return turf_to_check
 		for (obstacle in turf_to_check.movement_blockers)
-			if (obstacle in forget)
+			if (obstacle in forget | list(mover))
 				continue
 			if (obstacle.BlockedExitDirs(mover, latitudinal_dir) || obstacle.BlockedPassDirs(mover, longitudinal_dir))
 				blocking_dir |= longitudinal_dir
@@ -208,7 +208,7 @@
 			if ((blocking_dir & target_dir) == target_dir)
 				return turf_to_check
 		for (obstacle in turf_to_check.movement_blockers)
-			if(obstacle in forget)
+			if(obstacle in forget | list(mover))
 				continue
 			if (obstacle.BlockedExitDirs(mover, longitudinal_dir) || obstacle.BlockedPassDirs(mover, latitudinal_dir))
 				blocking_dir |= latitudinal_dir
@@ -226,9 +226,8 @@
 	if ((blocking_dir & target_dir) == target_dir)
 		return target_turf
 	for (obstacle in target_turf.movement_blockers) // Finally, check atoms in the target turf
-		if (obstacle in forget)
+		if (obstacle in forget | list(mover))
 			continue
-		obstacle = obstacle
 		blocking_dir |= obstacle.BlockedPassDirs(mover, target_dir)
 		if((blocking_dir & target_dir) == target_dir)
 			return obstacle

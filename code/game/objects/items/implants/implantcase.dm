@@ -3,7 +3,7 @@
 /obj/item/implantcase
 	name = "Glass Case"
 	desc = "A case containing an implant."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "implantcase-0"
 	item_state = "implantcase"
 	throw_speed = SPEED_FAST

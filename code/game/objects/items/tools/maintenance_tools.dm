@@ -38,7 +38,7 @@
 /obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "screwdriver"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
@@ -119,7 +119,7 @@
 	name = "wirecutters"
 	gender = PLURAL
 	desc = "This cuts wires."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
@@ -671,7 +671,7 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

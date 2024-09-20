@@ -63,8 +63,6 @@ GLOBAL_DATUM_INIT(collide_allows_movement_blocker_configuration, /datum/blocker_
 /proc/length_cmp(list/a, list/b)
 	return length(a) == length(b)
 
-TEST_FOCUS(/datum/unit_test/create_and_destroy)
-
 /**
  * Test whether a movement collision will happen for a mover given a set of configurations for blockers
  *

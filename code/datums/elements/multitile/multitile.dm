@@ -1,6 +1,6 @@
 /// Element for movables that cover more than one turf and interact with the turfs (i.e. can block movement)
 /datum/element/multitile
-	element_flags = ELEMENT_BESPOKE
+	element_flags = ELEMENT_BESPOKE|ELEMENT_DETACH
 	id_arg_index = 2
 
 	/// The width of the movable when facing NORTH/SOUTH.
@@ -56,7 +56,6 @@
 	RegisterSignal(target, list(
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOVABLE_MOVED_TO_NULLSPACE,
-		COMSIG_MOVABLE_AFTER_SHUTTLE_MOVE,
 	), PROC_REF(handle_moved))
 	if (dynamic)
 		RegisterSignal(target, list(
@@ -67,6 +66,7 @@
 	UnregisterSignal(multitile, list(
 		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON,
 		COMSIG_MOVABLE_PRE_MOVE,
+		COMSIG_MOVABLE_DO_MOVE,
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOVABLE_MOVED_TO_NULLSPACE,
 		COMSIG_ATOM_DIR_CHANGE,

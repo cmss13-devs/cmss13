@@ -33,10 +33,6 @@
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
 
-/// Any special handling after being transported via shuttle, especially if dependent on multiple shuttle turfs
-/// that could have been changed after shuttle move
-#define COMSIG_MOVABLE_AFTER_SHUTTLE_MOVE "movable_after_shuttle_move"
-
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 

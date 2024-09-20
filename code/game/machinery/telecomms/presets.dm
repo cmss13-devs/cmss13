@@ -204,8 +204,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
 	icon_state = "static1"
 	toggled = FALSE
-	bound_height = 64
-	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
 
@@ -220,6 +218,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
 	register_with_turf()

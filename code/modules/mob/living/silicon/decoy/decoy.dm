@@ -5,12 +5,14 @@
 	icon_state = "hydra"
 	anchored = TRUE
 	density = TRUE //Do not want to see past it.
-	bound_height = 64 //putting this in so we can't walk through our machine.
-	bound_width = 96
 	custom_slashed_sound = "alien_claw_metal"
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
 	maxHealth = 1000
 	health = 1000
+
+/mob/living/silicon/decoy/Initialize()
+	. = ..()
+	AddElement(/datum/element/multitile, 3, 2, can_block_movement)
 
 /mob/living/silicon/decoy/ship_ai //For the moment, pending better pathing.
 	var/silent_announcement_cooldown = 0

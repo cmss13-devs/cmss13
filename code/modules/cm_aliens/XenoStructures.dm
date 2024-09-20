@@ -724,8 +724,7 @@
 /obj/effect/alien/resin/resin_pillar/Initialize(mapload, ...)
 	. = ..()
 	//playsound(granite shuffling)
-	bound_width = width * world.icon_size
-	bound_height = height * world.icon_size
+	AddElement(/datum/element/multitile, width, height, can_block_movement)
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, FALSE)
 	if(mapload) //this should never be called in mapload, but in case it is
 		name = "calcified resin pillar"

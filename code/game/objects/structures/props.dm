@@ -49,10 +49,12 @@
 	desc = "An old truck, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "truck"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/dam/truck/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 /obj/structure/prop/dam/truck/damaged
 	icon_state = "truck_damaged"
@@ -72,10 +74,12 @@
 	desc = "An old van, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/dam/van/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 /obj/structure/prop/dam/van/damaged
 	icon_state = "van_damaged"
@@ -84,10 +88,12 @@
 	name = "cargo crane"
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "crane"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/dam/crane/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 /obj/structure/prop/dam/crane/damaged
 	icon_state = "crane_damaged"
@@ -216,10 +222,13 @@
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/boulder_large.dmi'
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/dam/large_boulder/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
+
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2
@@ -229,8 +238,10 @@
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/boulder_wide.dmi'
-	bound_height = 32
-	bound_width = 64
+
+/obj/structure/prop/dam/wide_boulder/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 1, can_block_movement)
 
 /obj/structure/prop/dam/wide_boulder/boulder1
 	icon_state = "boulder1"
@@ -288,8 +299,10 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/on = FALSE
-	bound_width = 32
-	bound_height = 96
+
+/obj/structure/prop/turbine/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 1, 3, can_block_movement)
 
 /obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
 	. = ..()
@@ -344,9 +357,11 @@
 	name = "power transformer"
 	icon = 'icons/obj/structures/props/power_transformer.dmi'
 	icon_state = "transformer"
-	bound_width = 64
-	bound_height = 64
 	desc = "A passive electrical component that controls where and which circuits power flows into."
+
+/obj/structure/prop/power_transformer/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 //cash registers
 
@@ -775,10 +790,12 @@
 	desc = "An old van, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van"
-	bound_height = 64
-	bound_width = 64
 	unslashable = FALSE
 	unacidable = FALSE
+
+/obj/structure/prop/vehicles/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
@@ -831,7 +848,7 @@
 	name = "Spirit Phone, The Game, The Movie: II"
 
 //INVULNERABLE PROPS
-
+// TODO: Fix this because there are conflicting obj paths LOL
 /obj/structure/prop/invuln
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
@@ -877,8 +894,6 @@
 	icon_state = "fab"
 	density = TRUE
 	layer = 3
-	bound_width = 32
-	bound_height = 32
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
@@ -897,8 +912,10 @@
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
-	bound_width = 64
-	bound_height = 64
+
+/obj/structure/prop/invuln/ice_prefab/standalone/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 2, can_block_movement)
 
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons

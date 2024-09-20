@@ -2,12 +2,17 @@
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container.\nYou aren't supposed to see this."
 	icon = 'icons/obj/structures/props/contain.dmi'
-	bound_width = 32
-	bound_height = 64
 	density = TRUE
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
+	var/width = 1
+	var/height = 2
+
+/obj/structure/cargo_container/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, width, height, can_block_movement)
+
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"
@@ -193,8 +198,8 @@
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container."
 	icon = 'icons/obj/structures/props/containHorizont.dmi'
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	density = TRUE
 	health = 200
 	opacity = TRUE

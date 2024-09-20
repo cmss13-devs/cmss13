@@ -8,7 +8,6 @@
 
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_TANK_CREW)
-	bound_width = 64
 
 	unslashable = TRUE
 
@@ -25,6 +24,7 @@
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
+	AddElement(/datum/element/multitile, 2, 1, can_block_movement)
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
 	if(!GLOB.VehicleGearConsole)
 		GLOB.VehicleGearConsole = src

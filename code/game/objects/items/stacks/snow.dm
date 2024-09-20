@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 /obj/item/snowball
 	name = "snowball"
 	desc = "A weapon of mass destruction, this perfectly crafted item can be used to decimate the enemy forces, provided there isn't a shoebill to block your shot..."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/toys.dmi'
 	icon_state = "snowball"
 	item_state = "lgloves"
 	flags_atom = ITEM_UNCATCHABLE

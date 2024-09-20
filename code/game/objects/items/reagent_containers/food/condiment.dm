@@ -184,7 +184,7 @@
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/reagent_container/food/condiment/hotsauce
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60

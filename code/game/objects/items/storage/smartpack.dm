@@ -116,7 +116,7 @@
 	if(!light_on)
 		light = "+lamp_off"
 
-	var/image/lamp = overlay_image('icons/mob/humans/onmob/back.dmi', light, color, RESET_COLOR)
+	var/image/lamp = overlay_image('icons/mob/humans/onmob/clothing/back/smartpack.dmi.dmi', light, color, RESET_COLOR)
 	ret.overlays += lamp
 
 	return ret

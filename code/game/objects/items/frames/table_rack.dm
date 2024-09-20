@@ -9,7 +9,7 @@
 	name = "tan table parts"
 	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/table_parts.dmi'
 	icon_state = "tan_table_parts"
 	item_state = "tan_table_parts"
 	matter = list("metal" = 7500) //A table, takes two sheets to build
@@ -79,7 +79,7 @@
 /obj/item/frame/table/reinforced
 	name = "reinforced table parts"
 	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/table_parts.dmi'
 	icon_state = "reinf_tableparts"
 	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
 	table_type = /obj/structure/surface/table/reinforced

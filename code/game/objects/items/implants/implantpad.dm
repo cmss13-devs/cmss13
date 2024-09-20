@@ -3,7 +3,7 @@
 /obj/item/implantpad
 	name = "implantpad"
 	desc = "Used to modify implants."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "implantpad-0"
 	item_state = "electronic"
 	throw_speed = SPEED_FAST

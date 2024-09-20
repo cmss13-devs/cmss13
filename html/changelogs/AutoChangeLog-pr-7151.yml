@@ -1,4 +1,0 @@
-author: "tallfission"
-delete-after: True
-changes:
-  - qol: "Decreased dropship equipment printing time to 3 seconds from 10 seconds."

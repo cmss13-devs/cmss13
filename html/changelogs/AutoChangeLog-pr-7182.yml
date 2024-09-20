@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Xenos with USCM IFF tags no longer trigger code red when on dropships."

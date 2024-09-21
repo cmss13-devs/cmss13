@@ -236,69 +236,69 @@
 			go_idle()
 
 /obj/structure/machinery/bot/cprbot/proc/call_astar_pathfinding(mob/living/carbon/human/target = null)
-    if (target == null)
-        return FALSE
+	if (target == null)
+		return FALSE
 
-    var/turf/target_turf = get_turf(target)
-    if (!target_turf)
-        return FALSE
+	var/turf/target_turf = get_turf(target)
+	if (!target_turf)
+		return FALSE
 
-    // Calculate the path using your A* function
-    var/list/path = AStar(src.loc, target_turf, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
+	// Calculate the path using your A* function
+	var/list/path = AStar(src.loc, target_turf, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
 
-    if (!path || !length(path))
-        return FALSE
+	if (!path || !length(path))
+		return FALSE
 
-    // Delete the straight line sections since walk_to moves better without that.
-    var/list/path_new = list()
-    var/turf/last = path[path.len]
-    path_new.Add(path[1])
+	// Delete the straight line sections since walk_to moves better without that.
+	var/list/path_new = list()
+	var/turf/last = path[path.len]
+	path_new.Add(path[1])
 
-    // Iterate over the path, trimming unnecessary straight-line turfs
-    for (var/i = 2; i <= path.len; i++)
-        var/turf/current_turf = path[i]
-        var/turf/next_turf = (i + 1 <= path.len) ? path[i + 1] : null
+	// Iterate over the path, trimming unnecessary straight-line turfs
+	for (var/i = 2; i <= path.len; i++)
+		var/turf/current_turf = path[i]
+		var/turf/next_turf = (i + 1 <= path.len) ? path[i + 1] : null
 
-        if (next_turf && (next_turf.x == current_turf.x || next_turf.y == current_turf.y))
-            path_new.Add(current_turf)
+		if (next_turf && (next_turf.x == current_turf.x || next_turf.y == current_turf.y))
+			path_new.Add(current_turf)
 
-            // Scan ahead to find the end of this straight line section
-            for (var/j = i + 1; j <= path.len; j++)
-                var/turf/next_next_turf = (j + 1 <= path.len) ? path[j + 1] : null
-                var/turf/previous_turf = path[j - 1]
+			// Scan ahead to find the end of this straight line section
+			for (var/j = i + 1; j <= path.len; j++)
+				var/turf/next_next_turf = (j + 1 <= path.len) ? path[j + 1] : null
+				var/turf/previous_turf = path[j - 1]
 
-                // If this is a corner or end of straight line, add it to path_new
-                if (next_next_turf && (next_next_turf.x != previous_turf.x || next_next_turf.y != previous_turf.y))
-                    path_new.Add(path[j])
-                    i = j // Move i to the end of this segment
-                    break
-                else if (j == path.len) // End of path
-                    path = path_new.Copy()
-                    path.Add(last)
-                    src.path = path
-                    return TRUE
-        else
-            path_new.Add(current_turf)
+				// If this is a corner or end of straight line, add it to path_new
+				if (next_next_turf && (next_next_turf.x != previous_turf.x || next_next_turf.y != previous_turf.y))
+					path_new.Add(path[j])
+					i = j // Move i to the end of this segment
+					break
+				else if (j == path.len) // End of path
+					path = path_new.Copy()
+					path.Add(last)
+					src.path = path
+					return TRUE
+		else
+			path_new.Add(current_turf)
 
-    path = path_new.Copy()
-    path.Add(last)
+	path = path_new.Copy()
+	path.Add(last)
 
-    // Set the final path
-    if (length(path) > 0)
-        src.path = path
-        return TRUE
-    else
-        return FALSE
+	// Set the final path
+	if (length(path) > 0)
+		src.path = path
+		return TRUE
+	else
+		return FALSE
 
 /obj/structure/machinery/bot/cprbot/proc/can_still_see_patient()
-    if (human == null)
-        return FALSE
+	if (human == null)
+		return FALSE
 
-    var/mob/living/carbon/human/patient = human.resolve()
-    if (patient == null)
-        return FALSE
+	var/mob/living/carbon/human/patient = human.resolve()
+	if (patient == null)
+		return FALSE
 
-    return patient in view(search_radius, src)
+	return patient in view(search_radius, src)
 
 /obj/structure/machinery/bot/cprbot/proc/patient_in_range(mob/living/carbon/human/patient = null)
 	if (human == null)

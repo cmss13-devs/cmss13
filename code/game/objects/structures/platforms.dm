@@ -19,6 +19,7 @@
 	var/stat = 0
 	var/creaking_sound
 	var/breaking_sound
+	var/shove_time
 
 /obj/structure/platform/Initialize()
 	. = ..()
@@ -112,16 +113,17 @@
 	playsound(loc, creaking_sound, 30, 1)
 
 	var/shove_time
-	if(user.mob_size == MOB_SIZE_XENO_VERY_SMALL)
-		shove_time = 300
-	if(user.mob_size == MOB_SIZE_XENO_SMALL)
-		shove_time = 90
-	if(user.mob_size == MOB_SIZE_XENO)
-		shove_time = 70
-	if(user.mob_size == MOB_SIZE_BIG)
-		shove_time = 40
-	if(user.mob_size == MOB_SIZE_IMMOBILE)
-		shove_time = 20
+	switch(user.mob_size)
+		if(MOB_SIZE_XENO_VERY_SMALL)
+			shove_time = 30 SECONDS
+		if(MOB_SIZE_XENO_SMALL)
+			shove_time = 9 SECONDS
+		if(MOB_SIZE_XENO)
+			shove_time = 7 SECONDS
+		if(MOB_SIZE_BIG)
+			shove_time = 4 SECONDS
+		if(MOB_SIZE_IMMOBILE)
+			shove_time = 2 SECONDS
 
 	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
 

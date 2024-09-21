@@ -20,7 +20,7 @@
 	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_gain))
 	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_loss))
 
-	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(handle_launched))
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHING, PROC_REF(handle_launched))
 
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)

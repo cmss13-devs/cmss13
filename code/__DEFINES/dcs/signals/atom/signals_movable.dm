@@ -25,7 +25,7 @@
 #define COMSIG_MOVABLE_PULLED "movable_pulled"
 	#define COMPONENT_IGNORE_ANCHORED (1<<0)
 
-#define COMSIG_MOVABLE_LAUNCHED "movable_launched"
+#define COMSIG_MOVABLE_LAUNCHING "movable_launched"
 #define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
 	#define COMPONENT_LAUNCH_CANCEL (1<<0)
 

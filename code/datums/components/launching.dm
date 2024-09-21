@@ -1,5 +1,5 @@
 /datum/component/launching
-	dupe_mode = COMPONENT_DUPE_HIGHLANDER
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
 	var/const/LAUNCH_RESULT_SUCCESSFUL = 1
 	var/const/LAUNCH_RESULT_STOPPED = 2
@@ -16,6 +16,13 @@
 	VAR_PRIVATE/pass_flags = NO_FLAGS
 	VAR_PRIVATE/datum/callback/collision_callback
 	VAR_PRIVATE/datum/callback/end_throw_callback
+	/**
+	 * A predetermined path to follow for a launch.
+	 *
+	 * This list is processed as a STACK, so order of the list should be from the target destination to the first
+	 * turf the launched object is moved to.
+	 */
+	VAR_PRIVATE/list/turf/custom_turf_path
 
 	// Tracked information
 	/// The path of movable reversed
@@ -31,13 +38,19 @@
 	VAR_PRIVATE/datum/launch_result/launch_result
 
 /datum/component/launching/proc/operator""()
-	var/target = VAL_OR_DEFAULT(target_ref?.resolve(), "<was deleted>")
+	var/target = VAL_OR_DEFAULT(target_ref?.resolve(), VAL_OR_DEFAULT(target_turf, "<was deleted>"))
 	return "launching(target=[target], range=[range], speed=[speed], spin=[spin], pass_flags=[pass_flags], collision_callback=[collision_callback], end_throw_callback=[end_throw_callback])"
 
-/datum/component/launching/Initialize(atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback)
-	if (target)
-		src.target_ref = isturf(target) ? null : WEAKREF(target)
-		src.target_turf = get_turf(target)
+/datum/component/launching/Initialize(atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
+	if (!target)
+		return COMPONENT_INCOMPATIBLE
+
+	setup_launching_parameters(arglist(args))
+	SSlaunching.in_launch |= src
+
+/datum/component/launching/proc/setup_launching_parameters(atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
+	src.target_ref = isturf(target) ? null : WEAKREF(target)
+	src.target_turf = get_turf(target)
 	src.range = range
 	src.speed = speed
 	src.thrower_ref = WEAKREF(thrower)
@@ -45,13 +58,13 @@
 	src.pass_flags = pass_flags
 	src.collision_callback = collision_callback
 	src.end_throw_callback = end_throw_callback
+	src.custom_turf_path = custom_turf_path
 
 	var/zone_selected = null
 	if (isliving(thrower))
 		var/mob/living/living_thrower = thrower
 		zone_selected = living_thrower.zone_selected
 	src.launch_result = new(thrower_ref, zone_selected)
-	SSlaunching.in_launch |= src
 
 /datum/component/launching/Destroy(force, ...)
 	target_ref = null
@@ -65,8 +78,7 @@
 UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resolve(); if (target) { UnregisterSignal(target, COMSIG_ATOM_CROSSED); };
 
 /datum/component/launching/RegisterWithParent()
-	..()
-	SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHED, src)
+	SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING, src)
 	// TODO: Add function here for movable to call when it is launched
 	RegisterSignal(parent, COMSIG_MOVABLE_COLLIDE, PROC_REF(complete_launch))
 	ADD_TRAIT(parent, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
@@ -78,9 +90,31 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 		RegisterSignal(target, COMSIG_ATOM_CROSSED, PROC_REF(handle_target_crossed))
 
 /datum/component/launching/UnregisterFromParent()
-	. = ..()
 	CLEAR_SIGNALS
 	REMOVE_TRAIT(parent, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+	// Cleanup
+	var/atom/movable/launched = parent
+	if (launched.loc)
+		launched.cur_speed = old_speed
+		launched.remove_temp_pass_flags(pass_flags)
+		end_throw_callback?.Invoke(launched)
+
+/datum/component/launching/InheritComponent(datum/component/C, i_am_original, atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
+	// Uses of `src` here to distinguish between this proc's arguments and parameters of previous launch
+	var/atom/movable/launched = parent
+	if (launched.loc)
+		launched.cur_speed = src.old_speed
+		launched.remove_temp_pass_flags(src.pass_flags)
+		var/datum/callback/to_call = src.end_throw_callback
+		src.end_throw_callback = null
+		to_call?.Invoke(launched)
+	ASSERT(target, "Launched [parent.type] ([text_ref(parent)]) with no target")
+	var/list/args_copy = args.Copy()
+	args_copy.Cut(1,3)
+	setup_launching_parameters(arglist(args_copy))
+	src.turf_path = null
+	SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING, src)
+
 
 /datum/component/launching/proc/handle_target_crossed(atom/target, atom/movable/launched)
 	if (isturf(target.loc))
@@ -112,12 +146,6 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 
 	launch_hint |= launched.launch_impact(collided_with, launch_result)
 
-	// Cleanup
-	if (launched.loc)
-		launched.cur_speed = old_speed
-		launched.remove_temp_pass_flags(pass_flags)
-		end_throw_callback?.Invoke(launched)
-
 	// Component has outlived its usefulness, time to die :salute:
 	qdel(src)
 	if (launch_hint & LAUNCH_COLLISION_SKIP_DEFAULT_COLLIDE)
@@ -133,8 +161,11 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 
 	var/moved = turf_path
 	if (!moved)
-		var/turf/start_turf = get_step_towards(launched, target_turf)
-		turf_path = reverselist(get_line(start_turf, target_turf))
+		if (custom_turf_path)
+			turf_path = custom_turf_path
+		else
+			var/turf/start_turf = get_step_towards(launched, target_turf)
+			turf_path = reverselist(get_line(start_turf, target_turf))
 		launched.add_temp_pass_flags(pass_flags)
 		old_speed = launched.cur_speed
 		launched.cur_speed = clamp(speed, MIN_SPEED, MAX_SPEED)
@@ -183,9 +214,10 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 
 	// If we are not at end of path or throw was not forcefully stopped
 	// THEN keep going
-	if (length(turf_path) && . != LAUNCH_RESULT_STOPPED)
+	if (launched.loc != target_turf && length(turf_path) && . != LAUNCH_RESULT_STOPPED)
 		return
 
 	// End of the road, did not hit our intended target (if it existed)
-	complete_launch(launched, get_turf(launched))
+	var/atom/collided_with = VAL_OR_DEFAULT(launched.loc == target_turf && target_ref?.resolve(), get_turf(launched))
+	complete_launch(launched, collided_with)
 	. = LAUNCH_RESULT_STOPPED

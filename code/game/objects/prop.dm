@@ -167,7 +167,7 @@
 	name = "portable game kit"
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 
 /obj/item/prop/gripper
 	name = "magnetic gripper"

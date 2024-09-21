@@ -91,7 +91,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
 	w_class = SIZE_LARGE
@@ -123,7 +123,7 @@
 /obj/item/toy/crayon
 	name = "crayon"
 	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
-	icon = 'icons/obj/items/crayons.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "colored")
@@ -375,7 +375,7 @@
 /obj/item/toy/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throwforce = 3
@@ -479,7 +479,7 @@
 /obj/item/toy/plush
 	name = "generic plushie"
 	desc = "perfectly generic"
-	icon = 'icons/obj/items/plush.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
 	COOLDOWN_DECLARE(last_hug_time)

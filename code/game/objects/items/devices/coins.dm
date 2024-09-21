@@ -1,7 +1,7 @@
 //*****************************Coin********************************/
 
 /obj/item/coin
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	name = "Coin"
 	icon_state = "coin"
 	flags_atom = FPRINT|CONDUCT

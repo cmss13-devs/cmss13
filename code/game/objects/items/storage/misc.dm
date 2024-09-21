@@ -43,7 +43,7 @@
 	var/i = 0
 	for(var/obj/item/reagent_container/food/snacks/donut/D in contents)
 		i++
-		var/image/img = image('icons/obj/items/food.dmi', "[D.overlay_state]-[i]")
+		var/image/img = image('icons/obj/items/food/donuts.dmi', "[D.overlay_state]-[i]")
 		overlays += img
 
 /obj/item/storage/donut_box/empty

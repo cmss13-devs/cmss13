@@ -1,6 +1,5 @@
 /obj/item
 	name = "item"
-	icon = 'icons/obj/items/items.dmi'
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	layer = ITEM_LAYER
 	light_system = MOVABLE_LIGHT

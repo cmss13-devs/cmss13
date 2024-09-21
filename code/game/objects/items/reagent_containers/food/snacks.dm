@@ -2950,7 +2950,7 @@
 /obj/item/reagent_container/food/snacks/dough
 	name = "dough"
 	desc = "A piece of dough."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "dough"
 	bitesize = 2
 
@@ -2969,7 +2969,7 @@
 /obj/item/reagent_container/food/snacks/sliceable/flatdough
 	name = "flat dough"
 	desc = "A flattened dough."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "flat dough"
 	slice_path = /obj/item/reagent_container/food/snacks/doughslice
 
@@ -2980,7 +2980,7 @@
 /obj/item/reagent_container/food/snacks/doughslice
 	name = "dough slice"
 	desc = "A building block of an impressive dish."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "doughslice"
 	bitesize = 2
 
@@ -2991,7 +2991,7 @@
 /obj/item/reagent_container/food/snacks/bun
 	name = "bun"
 	desc = "A base for any self-respecting burger."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "bun"
 	bitesize = 2
 
@@ -3056,7 +3056,7 @@
 /obj/item/reagent_container/food/snacks/rawcutlet
 	name = "raw cutlet"
 	desc = "A thin piece of raw meat."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawcutlet"
 
 /obj/item/reagent_container/food/snacks/rawcutlet/Initialize()
@@ -3066,7 +3066,7 @@
 /obj/item/reagent_container/food/snacks/cutlet
 	name = "cutlet"
 	desc = "A tasty meat slice."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "cutlet"
 	bitesize = 2
 
@@ -3077,7 +3077,7 @@
 /obj/item/reagent_container/food/snacks/rawmeatball
 	name = "raw meatball"
 	desc = "A raw meatball."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawmeatball"
 	bitesize = 2
 
@@ -3099,7 +3099,7 @@
 /obj/item/reagent_container/food/snacks/flatbread
 	name = "flatbread"
 	desc = "Bland but filling."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "flatbread"
 	bitesize = 2
 
@@ -3119,7 +3119,7 @@
 /obj/item/reagent_container/food/snacks/rawsticks
 	name = "raw potato sticks"
 	desc = "Raw fries, not very tasty."
-	icon = 'icons/obj/items/food_ingredients.dmi'
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawsticks"
 	bitesize = 2
 

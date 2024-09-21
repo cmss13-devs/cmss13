@@ -90,7 +90,7 @@
 
 		visible_message(SPAN_NOTICE("[src] starts printing something."))
 		spend_point_store(entry.cost)
-		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = FALSE
@@ -285,7 +285,7 @@
 	var/thing_to_recycle = powerloader_clamp_used.loaded
 	to_chat(user, SPAN_WARNING("You start recycling \the [powerloader_clamp_used.loaded]!"))
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	if(!user || !do_after(user, (7 SECONDS) * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, powerloader_clamp_used.loaded, INTERRUPT_ALL))
+	if(!user || !do_after(user, (3 SECONDS) * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, powerloader_clamp_used.loaded, INTERRUPT_ALL))
 		to_chat(user, SPAN_NOTICE("You stop recycling \the [thing_to_recycle]."))
 		return
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))

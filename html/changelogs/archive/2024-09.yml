@@ -74,3 +74,24 @@
   - bugfix: Fixes uniform vendor shutters being openable without access.
   tallfission:
   - rscadd: FTL vendors get signal flare packs for 5 points.
+2024-09-17:
+  deathrobotpunch:
+  - bugfix: Pred wristblades now del on drop
+  - bugfix: fixes UPP ammo storage boxes
+2024-09-18:
+  TheManWithNoHands:
+  - qol: added Grenade satchel in Comtec and req vendor, making it more accesible
+  - balance: Added Fix-o-vein in HM squad vendor. Allows surgicalline, synth grath,
+      fix-o-vein, cautery to be stored in Hm surgical case.
+  efzapa:
+  - rscadd: All ColMarTech Food Vendors now have 15 MREs
+  realforest2001:
+  - bugfix: Fixes the duration of the AI Core nerve gas, will no longer last a full
+      minute.
+2024-09-20:
+  iloveloopers:
+  - balance: Ravager scissor cut will now destroy fences.
+  realforest2001:
+  - rscadd: Xenos with USCM IFF tags no longer trigger code red when on dropships.
+  tallfission:
+  - qol: Decreased dropship equipment printing time to 3 seconds from 10 seconds.

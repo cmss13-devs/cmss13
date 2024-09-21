@@ -95,7 +95,6 @@
 		if (STATE_CPRBOT_FOLLOWING_OWNER)
 			find_and_move_to_patient()
 
-
 /obj/structure/machinery/bot/cprbot/start_processing()
 	START_PROCESSING(SSobj, src)
 
@@ -268,16 +267,16 @@
 	perform_cpr(target)
 
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
-	var/obj/item/cprbot_item/I = new /obj/item/cprbot_item(src.loc)
+	var/obj/item/cprbot_item/cprbot_item = new /obj/item/cprbot_item(src.loc)
 
 	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
 
 	if (user)
-		if (!user.put_in_active_hand(I))
-			if (!user.put_in_inactive_hand(I))
-				I.forceMove(src.loc)
+		if (!user.put_in_active_hand(cprbot_item))
+			if (!user.put_in_inactive_hand(cprbot_item))
+				cprbot_item.forceMove(src.loc)
 	else
-		I.forceMove(src.loc)
+		cprbot_item.forceMove(src.loc)
 
 	qdel(src)
 
@@ -306,7 +305,7 @@
 			icon_state = "cprbot_active"
 
 /obj/structure/machinery/bot/cprbot/explode()
-	src.on = 0
+	src.on = FALSE
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 

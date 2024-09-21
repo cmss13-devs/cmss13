@@ -1,6 +1,6 @@
 /obj/item/cprbot_item
 	name = "CPRbot"
-	desc = "A compact CPRbot 9000 asemply"
+	desc = "A compact CPRbot 9000 assembly"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot"
 	w_class = SIZE_MEDIUM
@@ -17,44 +17,43 @@
 	if(!user || !location)
 		return
 
-	if (istype(user))
-		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return
+	if (istype(user) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return
 
 	qdel(src)
 
 	// Proceed with the CPRbot deployment
-	var/obj/structure/machinery/bot/cprbot/entity = new deployment_path(location)
-	if(entity)
-		entity.add_fingerprint(user)
-		entity.owner = user
+	var/obj/structure/machinery/bot/cprbot/cprbot_entity = new deployment_path(location)
+	if(cprbot_entity)
+		cprbot_entity.add_fingerprint(user)
+		cprbot_entity.owner = user
 
 /obj/item/cprbot_item/afterattack(atom/target, mob/user, proximity)
 	if(proximity && isturf(target))
-		var/turf/T = target
-		if(!T.density)
-			deploy_cprbot(user, T)
+		var/turf/target_turf = target
+		if(!target_turf.density)
+			deploy_cprbot(user, target_turf)
 
 /obj/item/cprbot_broken
 	name = "CPRbot"
-	desc = "A compact CPRbot 9000 asemply it appears to be in bad shape"
+	desc = "A compact CPRbot 9000 assembly, it appears to be in bad shape"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot_broken"
 	w_class = SIZE_MEDIUM
 
-/obj/item/cprbot_broken/attackby(obj/item/W, mob/living/user)
-	if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+/obj/item/cprbot_broken/attackby(obj/item/attacked_by, mob/living/user)
+	if(iswelder(attacked_by))
+		if(!HAS_TRAIT(attacked_by, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 
-		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		var/obj/item/tool/weldingtool/welder_tool = attacked_by
+		if(!welder_tool.isOn())
+			to_chat(user, SPAN_WARNING("The [welder_tool] needs to be on!"))
 			return
 
-		if(!WT.remove_fuel(5, user))  // Ensure the welder has enough fuel to operate
+		if(!welder_tool.remove_fuel(5, user))  // Ensure the welder has enough fuel to operate
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return
 
@@ -63,27 +62,27 @@
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
-		var/obj/item/cprbot_item/I = new /obj/item/cprbot_item(src.loc)
+		var/obj/item/cprbot_item/new_cprbot_item = new /obj/item/cprbot_item(src.loc)
 
 		if(user)
-			if(!user.put_in_active_hand(I))
-				if(!user.put_in_inactive_hand(I))
-					I.forceMove(src.loc)
+			if(!user.put_in_active_hand(new_cprbot_item))
+				if(!user.put_in_inactive_hand(new_cprbot_item))
+					new_cprbot_item.forceMove(src.loc)
 		else
-			I.forceMove(src.loc)
+			new_cprbot_item.forceMove(src.loc)
 
-/obj/item/cprbot_broken/attackby(obj/item/W, mob/living/user)
-	if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+/obj/item/cprbot_broken/attackby(obj/item/attacked_by, mob/living/user)
+	if(iswelder(attacked_by))
+		if(!HAS_TRAIT(attacked_by, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 
-		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		var/obj/item/tool/weldingtool/welder_tool = attacked_by
+		if(!welder_tool.isOn())
+			to_chat(user, SPAN_WARNING("The [welder_tool] needs to be on!"))
 			return
 
-		if(!WT.remove_fuel(5, user))  // Ensure enough fuel is available
+		if(!welder_tool.remove_fuel(5, user))  // Ensure enough fuel is available
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return
 
@@ -93,7 +92,7 @@
 			return
 
 		// Create the repaired item
-		var/obj/item/cprbot_item/Item = new /obj/item/cprbot_item(src.loc)
+		var/obj/item/cprbot_item/repaired_cprbot_item = new /obj/item/cprbot_item(src.loc)
 
 		// Check if the broken item is in the user's hand
 		var/hand_was_active = user.get_active_hand() == src
@@ -104,10 +103,10 @@
 
 		// Attempt to place the new item into the user's hands
 		if (hand_was_active)
-			if (!user.put_in_active_hand(Item))
-				Item.forceMove(user.loc)  // Place it at user's location if hands are full
+			if (!user.put_in_active_hand(repaired_cprbot_item))
+				repaired_cprbot_item.forceMove(user.loc)  // Place it at user's location if hands are full
 		else if (hand_was_inactive)
-			if (!user.put_in_inactive_hand(Item))
-				Item.forceMove(user.loc)  // Place it at user's location if hands are full
+			if (!user.put_in_inactive_hand(repaired_cprbot_item))
+				repaired_cprbot_item.forceMove(user.loc)  // Place it at user's location if hands are full
 		else
-			Item.forceMove(user.loc)  // Place at the original location if not in hand
+			repaired_cprbot_item.forceMove(user.loc)  // Place at the original location if not in hand

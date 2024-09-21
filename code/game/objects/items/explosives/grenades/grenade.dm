@@ -26,7 +26,7 @@
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = max(0, rand(det_time - 5, det_time + 5))
-	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(handle_launched))
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHING, PROC_REF(handle_launched))
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)

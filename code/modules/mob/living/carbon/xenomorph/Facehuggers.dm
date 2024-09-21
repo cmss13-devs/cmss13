@@ -62,7 +62,7 @@
 	if (hivenumber != XENO_HIVE_TUTORIAL)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
-	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(handle_launched))
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHING, PROC_REF(handle_launched))
 
 /obj/item/clothing/mask/facehugger/Destroy()
 	. = ..()

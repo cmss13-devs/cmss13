@@ -31,18 +31,25 @@
 	apply_cooldown()
 	..()
 
-	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
-
-	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user)
-
-	if (lunge_user.Adjacent(carbon))
-		lunge_user.start_pulling(carbon,1)
-		if(ishuman(carbon))
-			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
-	else
-		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
-
+	adbuct_user.visible_message(SPAN_XENOWARNING("[adbuct_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
+	var/datum/callback/grab_target_callback = CALLBACK(src, PROC_REF(grab_target), WEAKREF(carbon))
+	adbuct_user.throw_atom(get_step_towards(affected_atom, adbuct_user), grab_range, SPEED_FAST, adbuct_user, end_throw_callback = grab_target_callback)
 	return TRUE
+
+/datum/action/xeno_action/activable/lunge/proc/grab_target(datum/weakref/target_ref)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/target = target_ref.resolve()
+	if (!target || !xeno)
+		return
+	if (xeno.Adjacent(target))
+		xeno.start_pulling(target, 1)
+		if(ishuman(target))
+			INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "scream")
+	else
+		xeno.visible_message(
+			SPAN_XENOWARNING("[xeno]'s claws twitch."),
+			SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."),
+		)
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/fling_user = owner

@@ -161,7 +161,10 @@
 
 	//has sleep
 	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, PROC_REF(disable_flying_movement))
-	user.throw_atom(t_turf, max_distance, speed, launch_type = HIGH_LAUNCH)
+	var/datum/callback/complete_hover_callback = CALLBACK(src, PROC_REF(complete_hover), warning)
+	user.throw_atom(t_turf, max_distance, speed, launch_type = HIGH_LAUNCH, end_throw_callback = complete_hover_callback)
+
+/obj/item/hoverpack/proc/complete_hover(obj/effect/warning/hover/warning, mob/living/carbon/human/user)
 	UnregisterSignal(user, COMSIG_CLIENT_MOB_MOVE)
 	qdel(warning)
 	last_fuel = null

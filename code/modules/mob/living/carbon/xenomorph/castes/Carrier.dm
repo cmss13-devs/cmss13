@@ -310,11 +310,13 @@
 		F.throw_atom(T, 4, caste.throwspeed)
 		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
 			SPAN_XENOWARNING("We throw a facehugger towards \the [T]!"))
-		spawn(caste.hugger_delay)
-			threw_a_hugger = 0
-			for(var/X in actions)
-				var/datum/action/A = X
-				A.update_button_icon()
+		addtimer(CALLBACK(src, PROC_REF(reset_hugger_throw_cooldown)), caste.hugger_delay)
+
+/mob/living/carbon/xenomorph/carrier/proc/reset_hugger_throw_cooldown()
+	threw_a_hugger = FALSE
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
 
 /mob/living/carbon/xenomorph/carrier/proc/store_egg(obj/item/xeno_egg/E)
 	if(E.hivenumber != hivenumber)

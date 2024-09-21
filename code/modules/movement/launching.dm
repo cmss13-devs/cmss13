@@ -18,10 +18,10 @@
 	thrower_ref = null
 
 /// Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(atom/target, range, speed, atom/thrower, spin, pass_flags = NO_FLAGS, datum/callback/collision_callback, datum/callback/end_throw_callback)
+/atom/movable/proc/launch_towards(atom/target, range, speed, atom/thrower, spin, pass_flags = NO_FLAGS, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	ASSERT(!QDELETED(target), "Launch towards called with qdel'd target")
-	AddComponent(/datum/component/launching, target, range, speed, thrower, spin, pass_flags, collision_callback, end_throw_callback)
+	_AddComponent(list(/datum/component/launching) + args)
 
 
 // Called when src is thrown into hit_atom
@@ -46,7 +46,7 @@
 	if (!O.anchored && !isxeno(src))
 		O.Move(get_step(O, dir))
 	else if (rebounds)
-		
+
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5 DECISECONDS)
@@ -84,18 +84,19 @@
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH,  pass_flags = NO_FLAGS, collision_callback, end_throw_callback)
-	var/temp_pass_flags = pass_flags
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH,  pass_flags = NO_FLAGS, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
-			temp_pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
+			pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
 		if (HIGH_LAUNCH)
-			temp_pass_flags |= PASS_HIGH_OVER
+			pass_flags |= PASS_HIGH_OVER
 
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-	launch_towards(target, range, speed, thrower, spin, temp_pass_flags, collision_callback, end_throw_callback)
+	// Changes to pass_flags above will propagate to args
+	launch_towards(target, range, speed, thrower, spin, pass_flags, collision_callback, end_throw_callback, custom_turf_path)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/throw_direction = pick(CARDINAL_ALL_DIRS)

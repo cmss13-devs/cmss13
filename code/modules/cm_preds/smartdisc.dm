@@ -20,27 +20,34 @@
 	force = 15
 	throwforce = 25
 
+	var/boomeranging = FALSE
+
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHED, PROC_REF(smartdisc_launched), override = TRUE)
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHING, PROC_REF(smartdisc_launched), override = TRUE)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/smartdisc_launched(self, datum/launch_result/launch_result)
 	SIGNAL_HANDLER
 
 	var/mob/user = launch_result.thrower_ref?.resolve()
-	if (!active && isyautja(user) && (icon_state == initial(icon_state)))
+	if (!active && isyautja(user) && !boomeranging)
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
+	boomeranging = TRUE
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if (L)
-		throw_atom(L.loc, 4, SPEED_FAST, user)
-	throw_atom(user, 12, SPEED_SLOW, user)
-	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
+		throw_atom(L, 4, SPEED_FAST, user, end_throw_callback = CALLBACK(src, PROC_REF(return_to_sender), user))
+	else
+		return_to_sender(user)
+
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/return_to_sender(mob/living/sender)
+	throw_atom(sender, 12, SPEED_SLOW, sender, end_throw_callback = CALLBACK(src, PROC_REF(clear_boomerang)))
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
+	boomeranging = FALSE
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/find_target(mob/user)
 	var/atom/T = null
@@ -89,7 +96,7 @@
 		msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	icon_state = initial(icon_state) + "_active"
-	active = 1
+	active = TRUE
 	playsound(loc, 'sound/items/countdown.ogg', 25, 1)
 	update_icon()
 	spawn(det_time)

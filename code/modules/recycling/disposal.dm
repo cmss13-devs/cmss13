@@ -440,9 +440,7 @@
 			AM.forceMove(loc)
 			AM.pipe_eject(0)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
-				spawn(1)
-					if(AM)
-						AM.throw_atom(target, 5, SPEED_FAST)
+				INVOKE_NEXT_TICK(AM, TYPE_PROC_REF(/atom/movable, throw_atom), target, 5, SPEED_FAST)
 		qdel(H)
 
 /obj/structure/machinery/disposal/hitby(atom/movable/mover)
@@ -714,9 +712,7 @@
 			for(var/atom/movable/AM in H)
 				AM.forceMove(T)
 				AM.pipe_eject(direction)
-				spawn(1)
-					if(AM)
-						AM.throw_atom(target, 100, SPEED_FAST)
+				INVOKE_NEXT_TICK(AM, TYPE_PROC_REF(/atom/movable, throw_atom), target, 100, SPEED_FAST)
 			qdel(H)
 
 	else //No specified direction, so throw in random direction
@@ -728,9 +724,7 @@
 
 				AM.forceMove(T)
 				AM.pipe_eject(0)
-				spawn(1)
-					if(AM)
-						AM.throw_atom(target, 5, SPEED_FAST)
+				INVOKE_NEXT_TICK(AM, TYPE_PROC_REF(/atom/movable, throw_atom), target, 5, SPEED_FAST)
 
 			qdel(H)
 
@@ -1381,8 +1375,7 @@
 			AM.forceMove(loc)
 			AM.pipe_eject(dir)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
-				spawn(5)
-					AM.throw_atom(target, 3, SPEED_FAST)
+				addtimer(CALLBACK(AM, TYPE_PROC_REF(/atom/movable, throw_atom), target, 3, SPEED_FAST), 0.5 SECONDS)
 		qdel(H)
 
 /obj/structure/disposaloutlet/attackby(obj/item/I, mob/user)

@@ -99,3 +99,41 @@
 
 	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"
+/datum/action/xeno_action/activable/hibernate/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/X = owner
+	if (!X.check_state() || X.action_busy)
+		return
+
+	var/turf/current_turf = get_turf(X)
+	if(!current_turf || !istype(current_turf))
+		return
+
+	if (!action_cooldown_check() && check_and_use_plasma_owner())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
+
+	if(!alien_weeds)
+		to_chat(X, SPAN_XENOWARNING("You need to be on weeds in order to hibernate."))
+		return
+
+	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't hibernate here."))
+		return
+
+	new /datum/effects/plasma_over_time(X, plasma_amount, plasma_time, time_between_plasmas)
+	new /datum/effects/heal_over_time(X, regeneration_amount_total, regeneration_ticks, 1)
+	X.SetSleeping(5)
+	addtimer(CALLBACK(src, PROC_REF(sleep_off)), 10 SECONDS, TIMER_UNIQUE)
+	X.add_filter("sleep_on", 1, list("type" = "outline", "color" = "#17991b80", "size" = 1))
+
+	apply_cooldown()
+	to_chat(X, SPAN_XENONOTICE("You fall into a deep sleep, quickly healing your wounds and restoring your plasma."))
+	return ..()
+
+/datum/action/xeno_action/activable/hibernate/proc/sleep_off()
+	var/mob/living/carbon/xenomorph/X = owner
+	X.remove_filter("sleep_on")

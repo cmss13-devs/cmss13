@@ -45,7 +45,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 /datum/entity_link/stickyban_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/stickyban
-	child_field = "adminid"
+	child_foreign_key = "adminid"
 	parent_name = "stickybanning_admin"
 
 /datum/entity/stickyban_matched_ckey

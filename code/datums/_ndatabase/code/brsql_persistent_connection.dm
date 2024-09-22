@@ -91,16 +91,16 @@
 
 /datum/db/connection/brsql_connection/query()
 	if(connection_ready())
-		var/datum/db/query/brsql/pq = new()
+		var/datum/db/query/brsql/parameterized_query = new()
 		var/query_text = args[1]
 		var/query_parameters = (length(args) > 1) ? args.Copy(2) : list()
-		pq.parameters = query_parameters
+		parameterized_query.parameters = query_parameters
 		var/text = json_encode(query_parameters)
-		pq.job_id = rustg_sql_query_async(connection_handle, query_text, text)
+		parameterized_query.job_id = rustg_sql_query_async(connection_handle, query_text, text)
 		query_number++
-		return pq
+		return parameterized_query
 	return null
-	
+
 /datum/db/connection/brsql_connection/get_adapter()
 	var/datum/db/adapter/brsql_adapter/adapter = new()
 	adapter.connection = src

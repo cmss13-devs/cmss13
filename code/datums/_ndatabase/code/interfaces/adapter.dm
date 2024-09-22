@@ -55,28 +55,28 @@
 // DEFAULT IMPLEMENTATIONS
 // DO NOT USE EXCEPT IN ADAPTER CODE
 
-/datum/db/adapter/proc/get_filter_comparison(datum/db/filter/comparison/filter, list/casts, list/pflds)
+/datum/db/adapter/proc/get_filter_comparison(datum/db/filter/comparison/filter, list/casts, list/parameters)
 	var/field_cast = "[filter.field]"
 	if(casts && casts[field_cast])
 		field_cast = casts[field_cast]
 	switch(filter.operator)
 		if(DB_EQUALS)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] = ?"
 		if(DB_NOTEQUAL)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] <> ?"
 		if(DB_GREATER)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] > ?"
 		if(DB_LESS)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] < ?"
 		if(DB_GREATER_EQUAL)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] >= ?"
 		if(DB_LESS_EQUAL)
-			pflds.Add("[filter.value]")
+			parameters.Add("[filter.value]")
 			return "[field_cast] <= ?"
 		if(DB_IS)
 			return "[field_cast] IS NULL"
@@ -88,7 +88,7 @@
 			for(var/item in filter.value)
 				if(!first)
 					text += ","
-				pflds.Add("[item]")
+				parameters.Add("[item]")
 				text += "?"
 				first = FALSE
 			return "[field_cast] IN ([text])"
@@ -98,13 +98,13 @@
 			for(var/item in filter.value)
 				if(!first)
 					text += ","
-				pflds.Add("[item]")
+				parameters.Add("[item]")
 				text += "?"
 				first = FALSE
 			return "[field_cast] NOTIN ([text])"
 	return "1=1" // shunt
 
-/datum/db/adapter/proc/get_filter_comparetwo(datum/db/filter/compare_two/filter, list/casts, list/pflds)
+/datum/db/adapter/proc/get_filter_comparetwo(datum/db/filter/compare_two/filter, list/casts, list/parameters)
 	var/field1_cast = "[filter.field1]"
 	if(casts && casts[field1_cast])
 		field1_cast = casts[field1_cast]
@@ -126,7 +126,7 @@
 			return "[field1_cast] <= [field2_cast]"
 	return "1=1" // shunt
 
-/datum/db/adapter/proc/get_filter_and(datum/db/filter/and/filter, list/casts, list/pflds)
+/datum/db/adapter/proc/get_filter_and(datum/db/filter/and/filter, list/casts, list/parameters)
 	var/first = TRUE
 	var/text = ""
 	for(var/item in filter.subfilters)
@@ -134,12 +134,12 @@
 			first = FALSE
 		else
 			text += " AND "
-		text += "([get_filter(item, casts, pflds)])"
+		text += "([get_filter(item, casts, parameters)])"
 	if(!text)
 		text = "(1=1)"
 	return text
 
-/datum/db/adapter/proc/get_filter_or(datum/db/filter/or/filter, list/casts, list/pflds)
+/datum/db/adapter/proc/get_filter_or(datum/db/filter/or/filter, list/casts, list/parameters)
 	var/first = TRUE
 	var/text = ""
 	for(var/item in filter.subfilters)
@@ -147,7 +147,7 @@
 			first = FALSE
 		else
 			text += " OR "
-		text += "([get_filter(item, casts, pflds)])"
+		text += "([get_filter(item, casts, parameters)])"
 	if(!text)
 		text = "(1=1)"
 	return text
@@ -155,15 +155,15 @@
 /datum/db/adapter/proc/get_filter_link(datum/db/filter/link/filter)
 	return "([filter.a_table].[filter.a_field] = [filter.b_table].[filter.b_field])"
 
-/datum/db/adapter/proc/get_filter(datum/db/filter/filter, list/casts, list/pflds)
+/datum/db/adapter/proc/get_filter(datum/db/filter/filter, list/casts, list/parameters)
 	if(istype(filter,/datum/db/filter/and))
-		return get_filter_and(filter, casts, pflds)
+		return get_filter_and(filter, casts, parameters)
 	if(istype(filter,/datum/db/filter/or))
-		return get_filter_or(filter, casts, pflds)
+		return get_filter_or(filter, casts, parameters)
 	if(istype(filter,/datum/db/filter/comparison))
-		return get_filter_comparison(filter, casts, pflds)
+		return get_filter_comparison(filter, casts, parameters)
 	if(istype(filter,/datum/db/filter/compare_two))
-		return get_filter_comparetwo(filter, casts, pflds)
+		return get_filter_comparetwo(filter, casts, parameters)
 	if(istype(filter,/datum/db/filter/link))
 		return get_filter_link(filter)
 	return "1=1" // shunt

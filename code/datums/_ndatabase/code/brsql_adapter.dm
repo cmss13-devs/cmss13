@@ -48,9 +48,9 @@
 	var/post_filter
 	// casts, because our query is already mapped to internal `T_n` structure, while whatever the hell we get is not
 	var/list/casts = list()
-	// list of pre pflds
+	// list of pre parameters
 	var/list/pre_pflds
-	// list of post pflds
+	// list of post parameters
 	var/list/post_pflds
 
 
@@ -62,13 +62,13 @@
 	pre_pflds = _pre_pflds
 	post_pflds = _post_pflds
 
-// maybe pflds can be changed to named parameters? but that might take time. The contract is set, so changes here shouldn't affect your code besides performance
-/datum/db/brsql_cached_query/proc/spawn_query(datum/db/filter/F, list/pflds)
+// maybe parameters can be changed to named parameters? but that might take time. The contract is set, so changes here shouldn't affect your code besides performance
+/datum/db/brsql_cached_query/proc/spawn_query(datum/db/filter/F, list/parameters)
 	for(var/i in pre_pflds)
-		pflds.Add(i)
-	var/query = "[pre_filter] [adapter.get_filter(F, casts, pflds)] [post_filter]"
+		parameters.Add(i)
+	var/query = "[pre_filter] [adapter.get_filter(F, casts, parameters)] [post_filter]"
 	for(var/i in post_pflds)
-		pflds.Add(i)
+		parameters.Add(i)
 	return query
 
 /datum/db/adapter/brsql_adapter/sync_table_meta()
@@ -93,24 +93,24 @@
 		SSdatabase.create_query(query_gettable, CB)
 
 /datum/db/adapter/brsql_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
-	var/list/qpars = list()
-	var/query_updatetable = getquery_update_table(table_name, values, qpars)
+	var/list/query_parameters = list()
+	var/query_updatetable = getquery_update_table(table_name, values, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_updatetable, qpars, CB)
+		SSdatabase.create_parametric_query_sync(query_updatetable, query_parameters, CB)
 	else
-		SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
+		SSdatabase.create_parametric_query(query_updatetable, query_parameters, CB)
 
 /datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	set waitfor = FALSE
 
 	var/length = length(values)
-	var/list/qpars = list()
-	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
+	var/list/query_parameters = list()
+	var/query_inserttable = getquery_insert_table(table_name, values, query_parameters)
 	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
+		SSdatabase.create_parametric_query_sync(query_inserttable, query_parameters, callback)
 	else
-		SSdatabase.create_parametric_query(query_inserttable, qpars, callback)
+		SSdatabase.create_parametric_query(query_inserttable, query_parameters, callback)
 
 /datum/db/adapter/brsql_adapter/proc/after_insert_table(datum/callback/CB, length, table_name, uid, list/results, datum/db/query/brsql/query)
 	CB.Invoke(query.last_insert_id)
@@ -124,29 +124,29 @@
 		SSdatabase.create_query(query_deletetable, CB)
 
 /datum/db/adapter/brsql_adapter/read_filter(table_name, datum/db/filter, datum/callback/CB, sync = FALSE)
-	var/list/qpars = list()
-	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
+	var/list/query_parameters = list()
+	var/query_gettable = getquery_filter_table(table_name, filter, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
+		SSdatabase.create_parametric_query_sync(query_gettable, query_parameters, CB)
 	else
-		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
+		SSdatabase.create_parametric_query(query_gettable, query_parameters, CB)
 
 /datum/db/adapter/brsql_adapter/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/CB, sync=FALSE)
 	var/v_key = "v_[view.type]"
-	var/list/qpars = list()
+	var/list/query_parameters = list()
 	var/datum/db/brsql_cached_query/cached_view = cached_queries[v_key]
 	if(!istype(cached_view))
 		return null
-	var/query_getview = cached_view.spawn_query(filter, qpars)
+	var/query_getview = cached_view.spawn_query(filter, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_getview, qpars, CB)
+		SSdatabase.create_parametric_query_sync(query_getview, query_parameters, CB)
 	else
-		SSdatabase.create_parametric_query(query_getview, qpars, CB)
+		SSdatabase.create_parametric_query(query_getview, query_parameters, CB)
 
 /datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, list/field_types)
-	var/list/qpars = list()
-	var/query_gettable = getquery_systable_gettable(table_name, qpars)
-	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
+	var/list/query_parameters = list()
+	var/query_gettable = getquery_systable_gettable(table_name, query_parameters)
+	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, query_parameters)
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -172,9 +172,9 @@
 		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
 
 /datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, list/fields, unique, cluster)
-	var/list/qpars = list()
-	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, qpars)
-	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, qpars)
+	var/list/query_parameters = list()
+	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, query_parameters)
+	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, query_parameters)
 	if(index_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system index table, error: '[index_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -201,9 +201,9 @@
 	return TRUE
 
 /datum/db/adapter/brsql_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_types, id)
-	var/list/qpars = list()
-	var/query = getquery_systable_recordtable(type_name, table_name, field_types, qpars, id)
-	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	var/list/query_parameters = list()
+	var/query = getquery_systable_recordtable(type_name, table_name, field_types, query_parameters, id)
+	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, query_parameters)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -218,9 +218,9 @@
 	return TRUE
 
 /datum/db/adapter/brsql_adapter/proc/internal_record_index_in_sys(index_name, table_name, fields, id)
-	var/list/qpars = list()
-	var/query = getquery_sysindex_recordindex(index_name, table_name, fields, qpars, id)
-	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	var/list/query_parameters = list()
+	var/query = getquery_sysindex_recordindex(index_name, table_name, fields, query_parameters, id)
+	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, query_parameters)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for index [index_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -443,12 +443,12 @@
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE id in ([id_text])
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_filter_table(table_name, datum/db/filter, list/pflds, list/fields)
+/datum/db/adapter/brsql_adapter/proc/getquery_filter_table(table_name, datum/db/filter, list/parameters, list/fields)
 	return {"
-		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE [get_filter(filter, null, pflds)]
+		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE [get_filter(filter, null, parameters)]
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, list/values, list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, list/values, list/parameters)
 	var/calltext = ""
 	var/insert_items = ""
 	var/first = TRUE
@@ -465,7 +465,7 @@
 			if(fields[field] == null)
 				local_text += "NULL"
 			else
-				pflds.Add("[fields[field]]")
+				parameters.Add("[fields[field]]")
 				local_text += " ? "
 			if(first)
 				if(!local_first)
@@ -479,7 +479,7 @@
 		INSERT INTO `[connection.database]`.`[table_name]` ([insert_items]) VALUES [calltext];
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, list/values, list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, list/values, list/parameters)
 	var/calltext = ""
 	var/first = TRUE
 	var/id = 0
@@ -493,7 +493,7 @@
 			continue
 		if(values[field])
 			calltext+="[esfield]=?"
-			pflds.Add("[values[field]]")
+			parameters.Add("[values[field]]")
 		else
 			calltext+="[esfield]=NULL"
 		first = FALSE
@@ -640,18 +640,18 @@
 
 	internal_generate_view_query(view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 
-/datum/db/adapter/brsql_adapter/proc/internal_proc_to_text(datum/db/native_function/NF, list/field_alias, list/pflds)
-	switch(NF.type)
+/datum/db/adapter/brsql_adapter/proc/internal_proc_to_text(datum/db/native_function/native_function, list/field_alias, list/parameters)
+	switch(native_function.type)
 		if(/datum/db/native_function/case)
-			var/datum/db/native_function/case/case_f = NF
+			var/datum/db/native_function/case/case_f = native_function
 			var/result_true = case_f.result_true
 			var/result_false = case_f.result_false
-			var/condition_text = get_filter(case_f.condition, field_alias, pflds)
+			var/condition_text = get_filter(case_f.condition, field_alias, parameters)
 			var/true_text
 			if(result_true)
 				var/datum/db/native_function/native_true = result_true
 				if(istype(native_true))
-					true_text = internal_proc_to_text(native_true, field_alias, pflds)
+					true_text = internal_proc_to_text(native_true, field_alias, parameters)
 				else
 					var/field_cast = "[result_true]"
 					if(field_alias && field_alias[field_cast])
@@ -661,7 +661,7 @@
 			if(result_false)
 				var/datum/db/native_function/native_false = result_false
 				if(istype(native_false))
-					false_text = internal_proc_to_text(native_false, field_alias, pflds)
+					false_text = internal_proc_to_text(native_false, field_alias, parameters)
 				else
 					var/field_cast = "[result_false]"
 					if(field_alias && field_alias[field_cast])
@@ -671,17 +671,17 @@
 				false_text = "ELSE ([false_text]) "
 			return "CASE WHEN [condition_text] THEN ([true_text]) [false_text] END"
 		else
-			return NF.default_to_string(field_alias, pflds)
+			return native_function.default_to_string(field_alias, parameters)
 
 /datum/db/adapter/brsql_adapter/proc/internal_generate_view_query(datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
 	var/list/pre_pflds = list()
 	var/query_text = "SELECT "
 	for(var/fld in view.fields)
 		var/field = field_alias[fld]
-		var/datum/db/native_function/NF = field
+		var/datum/db/native_function/native_function = field
 		// this is a function?
-		if(istype(NF))
-			field = internal_proc_to_text(NF, field_alias, pre_pflds)
+		if(istype(native_function))
+			field = internal_proc_to_text(native_function, field_alias, pre_pflds)
 		query_text += "[field] as `[fld]`, "
 	query_text += "1 as is_view "
 	query_text += "FROM `[connection.database]`.`[meta_to_load[BRSQL_ROOT_NAME].table_name]` as `[meta_to_table[BRSQL_ROOT_NAME]]` "
@@ -744,15 +744,15 @@
 
 
 /datum/db/adapter/brsql_adapter/proc/internal_parse_column(field, field_value, datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
-	var/datum/db/native_function/NF = field_value
+	var/datum/db/native_function/native_function = field_value
 	// this is a function?
-	if(istype(NF))
-		var/list/field_list = NF.get_columns()
+	if(istype(native_function))
+		var/list/field_list = native_function.get_columns()
 
 		for(var/sub_field in field_list)
 			internal_parse_column(sub_field, sub_field, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 		if(field)
-			field_alias[field] = NF
+			field_alias[field] = native_function
 
 		return
 	// no, this is a normal field

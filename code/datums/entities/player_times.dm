@@ -24,7 +24,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity_link/player_to_time
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player_time
-	child_field = "player_id"
+	child_foreign_key = "player_id"
 
 	parent_name = "player"
 	child_name = "player_times"

@@ -739,7 +739,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
-	child_field = "time_ban_admin_id"
+	child_foreign_key = "time_ban_admin_id"
 
 	parent_name = "banning_admin"
 
@@ -747,7 +747,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity_link/player_to_permabanning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
-	child_field = "permaban_admin_id"
+	child_foreign_key = "permaban_admin_id"
 	parent_name = "permabanning_admin"
 
 /datum/view_record/players

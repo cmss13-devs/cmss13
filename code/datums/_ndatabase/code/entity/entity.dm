@@ -22,6 +22,7 @@
 /datum/entity
 	var/id
 	var/status
+	var/datum/db_field_type/field_type
 	var/datum/entity_meta/metadata
 	var/__key_synced = FALSE
 

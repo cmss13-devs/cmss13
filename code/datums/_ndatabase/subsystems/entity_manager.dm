@@ -44,22 +44,22 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 /datum/controller/subsystem/entity_manager/New()
 	tables = list()
 	tables_unsorted = list()
-	var/list/all_entities = typesof(/datum/entity_meta) - list(/datum/entity_meta)
+	var/list/all_entities = subtypesof(/datum/entity_meta)
 	for(var/entity_meta in all_entities)
 		var/datum/entity_meta/table = new entity_meta()
 		if(table.active_entity)
 			tables[table.entity_type] = table
 			tables_unsorted.Add(table)
 
-	var/list/all_links = typesof(/datum/entity_link) - list(/datum/entity_link)
-	for(var/entity_link in all_links)
-		var/datum/entity_link/link = new entity_link()
+	var/list/datum/entity_link/entity_links = list()
+	get_entity_links(entity_links)
+	for(var/datum/entity_link/link as anything in entity_links)
 		var/datum/entity_meta/parent = tables[link.parent_entity]
 		var/datum/entity_meta/child = tables[link.child_entity]
 		if(link.child_name)
-			parent.inbound_links[link.child_name] = link
+			parent.inbound_links[link.child_entity] = link
 		if(link.parent_name)
-			child.outbound_links[link.parent_name] = link
+			child.outbound_links[link.parent_entity] = link
 		link.parent_meta = parent
 		link.child_meta = child
 
@@ -67,6 +67,12 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	views_unsorted = list()
 
 	NEW_SS_GLOBAL(SSentity_manager)
+
+// Override this proc to populate entity_links list that is passed as an argument
+/datum/controller/subsystem/entity_manager/proc/get_entity_links(list/datum/entity_link/entity_links)
+	PRIVATE_PROC(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /datum/controller/subsystem/entity_manager/proc/start_up()
 	set waitfor=0

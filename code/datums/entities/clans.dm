@@ -54,7 +54,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 /datum/entity_link/player_to_clan_player
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/clan_player
-	child_field = "player_id"
+	child_foreign_key = "player_id"
 
 	parent_name = "player"
 	child_name = "clan_player"
@@ -62,7 +62,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 /datum/entity_link/clan_to_player
 	parent_entity = /datum/entity/clan
 	child_entity = /datum/entity/clan_player
-	child_field = "clan_id"
+	child_foreign_key = "clan_id"
 
 	parent_name = "clan"
 	child_name = "clan_player"

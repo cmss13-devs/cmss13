@@ -30,7 +30,7 @@
 /datum/entity_link/player_to_discord
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/discord_link
-	child_field = "player_id"
+	child_foreign_key = "player_id"
 
 	parent_name = "player"
 	child_name = "discord_link_id"

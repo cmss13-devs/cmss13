@@ -424,6 +424,7 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/pve
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/pve
+
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
 

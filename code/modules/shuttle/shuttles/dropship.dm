@@ -115,9 +115,8 @@
 
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD)
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno?.iff_tag.faction_groups))
 				continue
-
 			var/name = "Unidentified Lifesigns"
 			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
@@ -145,6 +144,14 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/saipan
+	name = "Saipan"
+	id = DROPSHIP_SAIPAN
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
+	return /turf/open/space/transit/dropship/saipan
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
@@ -327,3 +334,7 @@
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/saipan
+	name = "Saipan"
+	shuttle_id = DROPSHIP_SAIPAN

@@ -252,6 +252,8 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/queen
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_QUEEN
 	name = XENO_CASTE_QUEEN
 	desc = "A huge, looming alien creature. The biggest and the baddest."
@@ -361,36 +363,57 @@
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
 
+/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
+	if(ovipositor)
+		return
+	return ..()
 
 /mob/living/carbon/xenomorph/queen/get_organ_icon()
 	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/queen/forsaken
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /mob/living/carbon/xenomorph/queen/forsaken/combat_ready
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_FORSAKEN
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/queen/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/queen/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/queen/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/queen/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
+	AUTOWIKI_SKIP(FALSE)
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/Initialize()
@@ -809,10 +832,10 @@
 /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor()
 	if(ovipositor)
 		return //sanity check
-	ovipositor = TRUE
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
 	set_body_position(STANDING_UP)
 	set_resting(FALSE)
+	ovipositor = TRUE
 
 	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
 	for(var/datum/action/xeno_action/action in actions)

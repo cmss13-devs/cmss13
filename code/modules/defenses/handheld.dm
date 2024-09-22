@@ -114,7 +114,8 @@
 		. += list("DMR Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld"))
 	. += list(
 		"Shotgun Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld"),
-		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld")
+		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld"),
+		"Omni-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state="Normal uac_sentry_handheld")
 	)
 
 /obj/item/defenses/handheld/sentry/upgrade_string_to_type(upgrade_string)
@@ -125,6 +126,8 @@
 			return /obj/item/defenses/handheld/sentry/shotgun
 		if("Mini-Sentry Upgrade")
 			return /obj/item/defenses/handheld/sentry/mini
+		if("Omni-Sentry Upgrade")
+			return /obj/item/defenses/handheld/sentry/omni
 
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
@@ -142,6 +145,12 @@
 	icon_state = "Mini uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/mini
 	deployment_time = 0.75 SECONDS
+
+/obj/item/defenses/handheld/sentry/omni
+	name = "handheld UA 571-D omnidirectional sentry gun"
+	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
+	icon_state = "Normal uac_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/omni
 
 /obj/item/defenses/handheld/sentry/wy
 	name = "handheld WY 202-GMA1 smart sentry"

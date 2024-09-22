@@ -63,7 +63,7 @@
 		list("M276 Pattern General Pistol Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", floor(scale * 10), /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig And Pouch", floor(scale * 5), /obj/item/storage/belt/gun/m39, VENDOR_ITEM_REGULAR),
-		list("M276 Pattern M44 Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
+		list("M276 Pattern General Revolver Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M82F Holster Rig", floor(scale * 2), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig (Full)", floor(scale * 10), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 G8-A General Utility Pouch", floor(scale * 10), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
@@ -178,6 +178,7 @@
 		list("M42A Flak Magazine (10x28mm)", floor(scale * 1), /obj/item/ammo_magazine/sniper/flak, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine (10x28mm)", floor(scale * 1), /obj/item/ammo_magazine/sniper/incendiary, VENDOR_ITEM_REGULAR),
 		list("M42A Marksman Magazine (10x28mm Caseless)", floor(scale * 1.5), /obj/item/ammo_magazine/sniper, VENDOR_ITEM_REGULAR),
+		list("XM43E1 Marksman Magazine (10x99mm Caseless)", floor(scale * 3), /obj/item/ammo_magazine/sniper/anti_materiel, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA DEMOLITIONIST AMMUNITION", -1, null, null, null),
 		list("84mm Anti-Armor Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket/ap, VENDOR_ITEM_REGULAR),

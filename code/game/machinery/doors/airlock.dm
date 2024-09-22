@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				return
 
 	if(panel_open)
-		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
 			return FALSE
 
@@ -483,7 +483,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(usr)
 
 	if((in_range(src, usr) && istype(loc, /turf)) && panel_open)
-		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
 			return FALSE
 
@@ -649,7 +649,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	else if(attacking_item.pry_capable)
 		if(attacking_item.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)

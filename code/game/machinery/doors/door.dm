@@ -87,10 +87,7 @@
 	return located_turfs
 
 /obj/structure/machinery/door/proc/borders_space()
-	for(var/turf/target in range(1, src))
-		if(istype(target, /turf/open/space))
-			return TRUE
-	return FALSE
+	return !!(locate(/turf/open/space) in range(1, src))
 
 /obj/structure/machinery/door/Collided(atom/movable/AM)
 	if(panel_open || operating)

@@ -55,7 +55,7 @@
 				return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.apply_effect(4, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE

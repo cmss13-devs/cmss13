@@ -56,10 +56,8 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	for(var/datum/entity_link/link as anything in entity_links)
 		var/datum/entity_meta/parent = tables[link.parent_entity]
 		var/datum/entity_meta/child = tables[link.child_entity]
-		if(link.child_name)
-			parent.inbound_links[link.child_entity] = link
-		if(link.parent_name)
-			child.outbound_links[link.parent_entity] = link
+		parent.inbound_links[link.child_entity] = link
+		child.outbound_links[link.parent_entity] = link
 		link.parent_meta = parent
 		link.child_meta = child
 

@@ -130,7 +130,7 @@
 	var/mob/shooter = shot_dart.firer
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
-		target.balloon_alert(target, "you have been hit by an explosive dart!")
+		target.balloon_alert(target, "you have been hit by an explosive dart!", text_color = "#ce1e1e")
 		if(!target.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
@@ -172,7 +172,7 @@
 	var/mob/shooter = shot_dart.firer
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
-		target.balloon_alert(target, "you have been hit by an incendiary dart!")
+		target.balloon_alert(target, "you have been hit by an incendiary dart!", text_color = "#ce1e1e")
 		if(!target.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)

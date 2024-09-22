@@ -7,6 +7,15 @@
 	plasma internally. Bear that in mind. -4khan
 */
 
+/mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
+
 /datum/action/xeno_action/onclick/plant_weeds
 	name = "Plant Weeds (75)"
 	ability_name = "Plant Weeds"

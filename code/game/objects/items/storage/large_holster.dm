@@ -140,7 +140,7 @@
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
 	icon_state = "m39_holster"
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = 5
 	can_hold = list(
@@ -259,7 +259,7 @@
 	var/image/ret = ..()
 	if(slot == WEAR_BACK)
 		if(length(contents))
-			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/back.dmi', "+m240t", color, RESET_COLOR)
+			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/clothing/back/guns/flamers.dmi', "+m240t", color, RESET_COLOR)
 			ret.overlays += weapon_holstered
 
 	return ret

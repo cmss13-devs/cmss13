@@ -92,7 +92,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/match
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_state = "match"
 	var/burnt = 0
 	var/smoketime = 10 SECONDS
@@ -683,7 +683,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/lighter
 	name = "cheap lighter"
 	desc = "A cheap-as-free lighter."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
 	light_color = LIGHT_COLOR_LAVA

@@ -18,7 +18,7 @@
 /obj/item/gift
 	name = "gift"
 	desc = "A wrapped item."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift3"
 	var/size = 3
 	var/obj/item/gift = null
@@ -28,7 +28,7 @@
 /obj/item/weapon/pole
 	name = "wooden pole"
 	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
-	icon = 'icons/obj/items/weapons/weapons/melee/canes.dmi'
+	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
 	force = 20

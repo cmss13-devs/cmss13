@@ -92,9 +92,6 @@
 	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
-	)
 
 /obj/item/clothing/suit/armor/vest/pilot/Initialize()
 	. = ..()
@@ -103,7 +100,7 @@
 /obj/item/clothing/suit/armor/vest/dutch
 	name = "armored jacket"
 	desc = "It's hot in the jungle. Sometimes it's hot and heavy, and sometimes it's hell on earth."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	icon_state = "dutch_armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_HIGH

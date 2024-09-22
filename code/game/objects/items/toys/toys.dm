@@ -320,7 +320,7 @@
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"
 	item_state = "inflatable"
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20
 

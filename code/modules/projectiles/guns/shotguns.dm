@@ -675,14 +675,14 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/cane
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "fancy_cane"
 	item_state = "fancy_cane"
 	pickup_sound = null
 	drop_sound = null
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/canes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/canes_righthand.dmi',
 		)
 	caliber = ".44"
 	gauge = ".44" // misery

@@ -7,7 +7,7 @@ LINEN BINS
 /obj/item/bedsheet
 	name = "bedsheet"
 	desc = "A surprisingly soft linen bedsheet."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/bedsheets.dmi'
 	icon_state = "sheet"
 	item_state = "bedsheet"
 	layer = MOB_LAYER

@@ -1,7 +1,6 @@
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
-	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',

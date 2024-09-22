@@ -33,11 +33,11 @@
 /obj/item/clothing/suit/storage/marine
 	name = "\improper M3 pattern marine armor"
 	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	icon_state = "1"
 	item_state = "marine_armor" //Make unique states for Officer & Intel armors.
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
 	)
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = BLOCKSHARPOBJ
@@ -102,7 +102,7 @@
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 	/// The dmi where the grayscale squad overlays are contained
-	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
+	var/squad_overlay_icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 
 	var/atom/movable/marine_light/light_holder
 

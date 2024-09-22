@@ -2,7 +2,7 @@
 	name = "15 dollars"
 	desc = "You have 15 dollars."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	icon_state = "spacecash1"
 	opacity = FALSE
 	density = FALSE

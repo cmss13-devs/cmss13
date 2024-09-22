@@ -102,7 +102,7 @@
 /mob/living/carbon/xenomorph/larva/predalien
 	AUTOWIKI_SKIP(TRUE)
 
-	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.

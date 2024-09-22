@@ -116,7 +116,7 @@
 	name = "soap"
 	desc = "A cheap bar of soap. Doesn't smell."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/janitor.dmi'
 	icon_state = "soap"
 	w_class = SIZE_TINY
 	throwforce = 0

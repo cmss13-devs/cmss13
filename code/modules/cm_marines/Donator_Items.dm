@@ -1366,7 +1366,7 @@
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex
 	name = "purple zippo lighter"
 	desc = "A Purple Zippo lighter, engraved with the name John Donable... UNIQUE DONOR ITEM."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "bluezippo"
 
 /obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex

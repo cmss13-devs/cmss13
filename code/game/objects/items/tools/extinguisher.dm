@@ -4,7 +4,7 @@
 /obj/item/tool/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'

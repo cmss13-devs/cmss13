@@ -10,7 +10,7 @@
 /obj/item/a_gift
 	name = "gift"
 	desc = "PRESENTS!!!! eek!"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
 

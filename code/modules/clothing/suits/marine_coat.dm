@@ -2,9 +2,9 @@
 	name = "marine jacket"
 	//This really should not be spawned
 	desc = "What the hell is this doing here?"
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	blood_overlay_type = "coat"
@@ -93,9 +93,9 @@
 	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
 	icon_state = "RO_jacket"
-	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	flags_atom = NO_SNOW_TYPE
 

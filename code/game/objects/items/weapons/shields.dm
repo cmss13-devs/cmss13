@@ -57,7 +57,7 @@
 /obj/item/weapon/shield/riot
 	name = "riot shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
 	icon_state = "riot"
 	item_state = "riot"
 	base_icon_state = "riot"
@@ -99,7 +99,7 @@
 /obj/item/weapon/shield/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
 	force = 3

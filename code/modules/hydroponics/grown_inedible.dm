@@ -4,7 +4,7 @@
 
 /obj/item/grown // Grown things that are not edible
 	name = "grown_weapon"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	var/plantname
 	var/potency = 1
 

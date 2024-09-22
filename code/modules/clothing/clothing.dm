@@ -146,7 +146,6 @@
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
-	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS

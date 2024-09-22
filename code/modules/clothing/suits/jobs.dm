@@ -423,7 +423,7 @@
 	name = "suspenders"
 	gender = PLURAL
 	desc = "They suspend pants."
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0

@@ -86,7 +86,7 @@
 **************/
 /obj/item/storage/photo_album
 	name = "Photo album"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "album"
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo,)

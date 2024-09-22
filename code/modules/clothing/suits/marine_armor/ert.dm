@@ -417,10 +417,10 @@
 /obj/item/clothing/suit/storage/militia
 	name = "colonial militia hauberk"
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT

@@ -197,10 +197,9 @@
 
 /datum/equipment_preset/uscm_event/provost/enforcer
 	name = "Provost Enforcer"
-
 	assignment = JOB_PROVOST_ENFORCER
-	rank = "Provost Enforcer"
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_ENFORCER
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -243,10 +242,9 @@
 /datum/equipment_preset/uscm_event/provost/tml
 	name = "Provost Team Leader"
 	skills = /datum/skills/CMP
-
 	assignment = JOB_PROVOST_TML
-	rank = "Provost Team Leader"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_TML
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -289,9 +287,8 @@
 
 /datum/equipment_preset/uscm_event/provost/inspector
 	name = "Provost Inspector"
-
 	assignment = JOB_PROVOST_INSPECTOR
-	rank = "Provost Inspector"
+	rank = JOB_PROVOST_INSPECTOR
 	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -330,7 +327,6 @@
 
 /datum/equipment_preset/uscm_event/provost/inspector/chief
 	name = "Provost Chief Inspector"
-
 	assignment = JOB_PROVOST_CINSPECTOR
 	rank = JOB_PROVOST_CINSPECTOR
 	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
@@ -370,10 +366,9 @@
 
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
 	name = "Provost Advisor"
-
 	assignment = JOB_PROVOST_ADVISOR
-	rank = "Provost Advisor"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_ADVISOR
+	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 

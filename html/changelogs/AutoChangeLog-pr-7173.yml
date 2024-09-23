@@ -1,0 +1,4 @@
+author: "Private-Tristan, KiVts"
+delete-after: True
+changes:
+  - bugfix: "Injector and Coagulator plates are now functional."

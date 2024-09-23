@@ -87,9 +87,9 @@
 	if(charge < charge_max)
 		var/charge_increase = charge_rate
 		if(is_ground_level(human_holder.z))
-			charge_increase = charge_rate / 12
+			charge_increase = charge_rate / 6
 		else if(is_mainship_level(human_holder.z))
-			charge_increase = charge_rate / 9
+			charge_increase = charge_rate / 3
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)

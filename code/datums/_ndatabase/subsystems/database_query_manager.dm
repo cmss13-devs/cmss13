@@ -127,50 +127,50 @@ GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 	return query_actual
 
 /datum/controller/subsystem/database_query_manager/proc/create_query(query_text, success_callback, fail_callback, unique_query_id)
-	var/datum/db/query_response/query_response = new()
-	query_response.query_text = query_text
-	query_response.success_callback = success_callback
-	query_response.fail_callback = fail_callback
+	var/datum/db/query_response/query = new()
+	query.query_text = query_text
+	query.success_callback = success_callback
+	query.fail_callback = fail_callback
 	if(unique_query_id)
-		query_response.unique_query_id = unique_query_id
-	queries_standby[query_response] = query_text
+		query.unique_query_id = unique_query_id
+	queries_standby[query] = query_text
 
 // if DB supports this
 /datum/controller/subsystem/database_query_manager/proc/create_parametric_query(query_text, parameters, success_callback, fail_callback, unique_query_id)
-	var/datum/db/query_response/query_response = new()
+	var/datum/db/query_response/query = new()
 	var/list/query_parameters = list()
 	query_parameters.Add(query_text)
 	if(parameters)
 		query_parameters.Add(parameters)
-	query_response.query_text = query_text
-	query_response.success_callback = success_callback
-	query_response.fail_callback = fail_callback
+	query.query_text = query_text
+	query.success_callback = success_callback
+	query.fail_callback = fail_callback
 	if(unique_query_id)
-		query_response.unique_query_id = unique_query_id
-	queries_standby[query_response] = query_parameters
+		query.unique_query_id = unique_query_id
+	queries_standby[query] = query_parameters
 
 // Do not use this if you don't know why this exists
 /datum/controller/subsystem/database_query_manager/proc/create_query_sync(query_text, success_callback, fail_callback)
-	var/datum/db/query_response/query_response = new()
-	query_response.query = connection.query(query_text)
-	query_response.query_text = query_text
-	query_response.success_callback = success_callback
-	query_response.fail_callback = fail_callback
-	UNTIL(query_response.process())
-	return query_response
+	var/datum/db/query_response/query = new()
+	query.query = connection.query(query_text)
+	query.query_text = query_text
+	query.success_callback = success_callback
+	query.fail_callback = fail_callback
+	UNTIL(query.process())
+	return query
 
 /datum/controller/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, success_callback, fail_callback)
-	var/datum/db/query_response/query_response = new()
+	var/datum/db/query_response/query = new()
 	var/list/query_parameters = list()
 	query_parameters += query_text
 	if(parameters)
 		query_parameters += parameters
-	query_response.query = connection.query(arglist(query_parameters))
-	query_response.query_text = query_text
-	query_response.success_callback = success_callback
-	query_response.fail_callback = fail_callback
-	UNTIL(query_response.process())
-	return query_response
+	query.query = connection.query(arglist(query_parameters))
+	query.query_text = query_text
+	query.success_callback = success_callback
+	query.fail_callback = fail_callback
+	UNTIL(query.process())
+	return query
 
 /proc/loadsql(filename)
 	var/list/Lines = file2list(filename)

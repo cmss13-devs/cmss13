@@ -6,7 +6,7 @@
 /datum/entity_meta/map_vote
 	entity_type = /datum/entity/map_vote
 	table_name = "map_vote"
-	field_types = list(
+	field_typepaths = list(
 		"map_name"=DB_FIELDTYPE_STRING_LARGE,
 		"total_votes"=DB_FIELDTYPE_BIGINT,
 	)

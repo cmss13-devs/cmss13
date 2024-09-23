@@ -131,7 +131,7 @@
 	else
 		SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
-/datum/db/adapter/native_adapter/sync_table(type_name, table_name, list/field_types)
+/datum/db/adapter/native_adapter/sync_table(type_name, table_name, list/field_typepaths)
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
 	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
@@ -139,12 +139,12 @@
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
 	if(!length(table_meta.results)) // Table doesn't exist
-		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
+		return internal_create_table(table_name, field_typepaths) && internal_record_table_in_sys(type_name, table_name, field_typepaths)
 
 	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]
 	var/old_fields = savetext2fields(table_meta.results[1]["fields_current"])
 	var/old_hash = table_meta.results[1]["fields_hash"]
-	var/field_text = fields2savetext(field_types)
+	var/field_text = fields2savetext(field_typepaths)
 	var/new_hash = sha1(field_text)
 
 	if(old_hash == new_hash)
@@ -154,24 +154,24 @@
 	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
-		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
+		return internal_drop_table(table_name) && internal_create_table(table_name, field_typepaths) && internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 
 	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
-		internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_migrate_table(table_name, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
+		internal_drop_table(table_name) && internal_create_table(table_name, field_typepaths) && internal_migrate_table(table_name, old_fields) && internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 
 
 
-/datum/db/adapter/native_adapter/proc/internal_create_table(table_name, field_types)
-	var/query = getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/native_adapter/proc/internal_create_table(table_name, field_typepaths)
+	var/query = getquery_systable_maketable(table_name, field_typepaths)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/native_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_types, id)
+/datum/db/adapter/native_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 	var/list/qpars = list()
-	var/query = getquery_systable_recordtable(type_name, table_name, field_types, qpars, id)
+	var/query = getquery_systable_recordtable(type_name, table_name, field_typepaths, qpars, id)
 	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for table [table_name], error: '[sit_check.error]'"
@@ -214,17 +214,17 @@
 		return 1
 	return value
 
-/datum/db/adapter/native_adapter/proc/internal_create_backup_table(table_name, field_types)
-	var/query = getquery_systable_maketable("[NATIVE_BACKUP_PREFIX][table_name]", field_types)
+/datum/db/adapter/native_adapter/proc/internal_create_backup_table(table_name, field_typepaths)
+	var/query = getquery_systable_maketable("[NATIVE_BACKUP_PREFIX][table_name]", field_typepaths)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create backup for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/native_adapter/proc/internal_migrate_table(table_name, list/field_types_old)
+/datum/db/adapter/native_adapter/proc/internal_migrate_table(table_name, list/field_typepaths_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
-	for(var/field in field_types_old)
+	for(var/field in field_typepaths_old)
 		fields += field
 
 	var/query = getquery_insert_from_backup(table_name, fields)
@@ -234,9 +234,9 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/native_adapter/proc/internal_migrate_to_backup(table_name, list/field_types_old)
+/datum/db/adapter/native_adapter/proc/internal_migrate_to_backup(table_name, list/field_typepaths_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
-	for(var/field in field_types_old)
+	for(var/field in field_typepaths_old)
 		fields += field
 
 	var/query = getquery_insert_into_backup(table_name, fields)
@@ -268,15 +268,15 @@
 		DROP TABLE IF EXISTS [table_name]
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/native_adapter/proc/getquery_systable_maketable(table_name, field_typepaths)
 	return {"
 		CREATE TABLE [table_name] (
-			id BIGINT NOT NULL PRIMARY KEY, [fields2text(field_types)]
+			id BIGINT NOT NULL PRIMARY KEY, [fields2text(field_typepaths)]
 		);
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, list/qpar, id = null)
-	var/field_text = fields2savetext(field_types)
+/datum/db/adapter/native_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_typepaths, list/qpar, id = null)
+	var/field_text = fields2savetext(field_typepaths)
 	var/new_hash = sha1(field_text)
 	qpar.Add("[type_name]")
 	qpar.Add("[table_name]")

@@ -56,7 +56,7 @@
 	entity_type = /datum/entity/statistic/round
 	table_name = "rounds"
 	key_field = "round_id"
-	field_types = list(
+	field_typepaths = list(
 		"round_id" = DB_FIELDTYPE_BIGINT,
 
 		"round_name" = DB_FIELDTYPE_STRING_LARGE,

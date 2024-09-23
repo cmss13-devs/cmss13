@@ -7,7 +7,7 @@
 	table_name = "discord_links"
 	key_field = "discord_id"
 
-	field_types = list(
+	field_typepaths = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"discord_id" = DB_FIELDTYPE_STRING_MEDIUM,
 	)
@@ -31,8 +31,5 @@
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/discord_link
 	child_foreign_key = "player_id"
-
-	parent_name = "player"
-	child_name = "discord_link_id"
 
 

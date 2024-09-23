@@ -85,53 +85,53 @@
 	return TRUE
 
 
-/datum/db/adapter/brsql_adapter/read_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/read_table(table_name, list/ids, datum/callback/on_read_table_callback, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_gettable, CB)
+		SSdatabase.create_query_sync(query_gettable, on_read_table_callback)
 	else
-		SSdatabase.create_query(query_gettable, CB)
+		SSdatabase.create_query(query_gettable, on_read_table_callback)
 
-/datum/db/adapter/brsql_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/update_table(table_name, list/values, datum/callback/on_update_table_callback, sync = FALSE)
 	var/list/query_parameters = list()
 	var/query_updatetable = getquery_update_table(table_name, values, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_updatetable, query_parameters, CB)
+		SSdatabase.create_parametric_query_sync(query_updatetable, query_parameters, on_update_table_callback)
 	else
-		SSdatabase.create_parametric_query(query_updatetable, query_parameters, CB)
+		SSdatabase.create_parametric_query(query_updatetable, query_parameters, on_update_table_callback)
 
-/datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/on_insert_table_callback, sync = FALSE)
 	set waitfor = FALSE
 
 	var/length = length(values)
 	var/list/query_parameters = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, query_parameters)
-	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
+	var/datum/callback/on_insert_table_callback_wrapper = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), on_insert_table_callback, length, table_name)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_inserttable, query_parameters, callback)
+		SSdatabase.create_parametric_query_sync(query_inserttable, query_parameters, on_insert_table_callback_wrapper)
 	else
-		SSdatabase.create_parametric_query(query_inserttable, query_parameters, callback)
+		SSdatabase.create_parametric_query(query_inserttable, query_parameters, on_insert_table_callback_wrapper)
 
-/datum/db/adapter/brsql_adapter/proc/after_insert_table(datum/callback/CB, length, table_name, uid, list/results, datum/db/query/brsql/query)
-	CB.Invoke(query.last_insert_id)
+/// Wrapper to on_insert_table_callback that passes the only value it cares about: the id of the newly inserted table
+/datum/db/adapter/brsql_adapter/proc/after_insert_table(datum/callback/on_insert_table_callback, length, table_name, uid, list/results, datum/db/query/brsql/query)
+	on_insert_table_callback.Invoke(query.last_insert_id)
 
-
-/datum/db/adapter/brsql_adapter/delete_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/delete_table(table_name, list/ids, datum/callback/on_delete_table_callback, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_deletetable, CB)
+		SSdatabase.create_query_sync(query_deletetable, on_delete_table_callback)
 	else
-		SSdatabase.create_query(query_deletetable, CB)
+		SSdatabase.create_query(query_deletetable, on_delete_table_callback)
 
-/datum/db/adapter/brsql_adapter/read_filter(table_name, datum/db/filter, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/read_filter(table_name, datum/db/filter, datum/callback/on_read_filter_callback, sync = FALSE)
 	var/list/query_parameters = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_gettable, query_parameters, CB)
+		SSdatabase.create_parametric_query_sync(query_gettable, query_parameters, on_read_filter_callback)
 	else
-		SSdatabase.create_parametric_query(query_gettable, query_parameters, CB)
+		SSdatabase.create_parametric_query(query_gettable, query_parameters, on_read_filter_callback)
 
-/datum/db/adapter/brsql_adapter/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/CB, sync=FALSE)
+/datum/db/adapter/brsql_adapter/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/on_read_view_callback, sync=FALSE)
 	var/v_key = "v_[view.type]"
 	var/list/query_parameters = list()
 	var/datum/db/brsql_cached_query/cached_view = cached_queries[v_key]
@@ -139,11 +139,11 @@
 		return null
 	var/query_getview = cached_view.spawn_query(filter, query_parameters)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_getview, query_parameters, CB)
+		SSdatabase.create_parametric_query_sync(query_getview, query_parameters, on_read_view_callback)
 	else
-		SSdatabase.create_parametric_query(query_getview, query_parameters, CB)
+		SSdatabase.create_parametric_query(query_getview, query_parameters, on_read_view_callback)
 
-/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, list/field_types)
+/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, list/datum/db_field/field_typepaths)
 	var/list/query_parameters = list()
 	var/query_gettable = getquery_systable_gettable(table_name, query_parameters)
 	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, query_parameters)
@@ -151,12 +151,12 @@
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
 	if(!length(table_meta.results)) // Table doesn't exist
-		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
+		return internal_create_table(table_name, field_typepaths) && internal_record_table_in_sys(type_name, table_name, field_typepaths)
 
 	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]
-	var/old_fields = savetext2fields(table_meta.results[1]["fields_current"])
+	var/old_field_typepaths = savetext2fields(table_meta.results[1]["fields_current"])
 	var/old_hash = table_meta.results[1]["fields_hash"]
-	var/field_text = fields2savetext(field_types)
+	var/field_text = fields2savetext(field_typepaths)
 	var/new_hash = sha1(field_text)
 
 	if(old_hash == new_hash)
@@ -166,10 +166,10 @@
 	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
-		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
+		return internal_drop_table(table_name) && internal_create_table(table_name, field_typepaths) && internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 
-	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
-		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
+	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_field_typepaths) && internal_migrate_to_backup(table_name, old_field_typepaths) && \
+		internal_update_table(table_name, field_typepaths, old_field_typepaths) && internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 
 /datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, list/fields, unique, cluster)
 	var/list/query_parameters = list()
@@ -192,17 +192,17 @@
 	// Index can be updated only by recreating it
 	return internal_drop_index(index_name, table_name) && internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields, id)
 
-/datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, field_types)
-	var/query = getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, field_typepaths)
+	var/query = getquery_systable_maketable(table_name, field_typepaths)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_types, id)
+/datum/db/adapter/brsql_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_typepaths, id)
 	var/list/query_parameters = list()
-	var/query = getquery_systable_recordtable(type_name, table_name, field_types, query_parameters, id)
+	var/query = getquery_systable_recordtable(type_name, table_name, field_typepaths, query_parameters, id)
 	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, query_parameters)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for table [table_name], error: '[sit_check.error]'"
@@ -244,12 +244,7 @@
 	return TRUE
 
 /datum/db/adapter/brsql_adapter/proc/internal_drop_backup_table(table_name)
-	var/query = getcommand_droptable("[BRSQL_BACKUP_PREFIX][table_name]")
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
-	if(sit_check.status != DB_QUERY_FINISHED)
-		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
-		return FALSE // OH SHIT OH FUCK
-	return TRUE
+	return internal_drop_table("[BRSQL_BACKUP_PREFIX][table_name]")
 
 // returns -1 if shit is fucked, otherwise returns count
 /datum/db/adapter/brsql_adapter/proc/internal_table_count(table_name)
@@ -271,29 +266,29 @@
 		return 1
 	return value
 
-/datum/db/adapter/brsql_adapter/proc/internal_create_backup_table(table_name, field_types)
-	var/query = getquery_systable_maketable("[BRSQL_BACKUP_PREFIX][table_name]", field_types)
+/datum/db/adapter/brsql_adapter/proc/internal_create_backup_table(table_name, field_typepaths)
+	var/query = getquery_systable_maketable("[BRSQL_BACKUP_PREFIX][table_name]", field_typepaths)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create backup for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, list/field_types_old)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, list/field_typepaths_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
-	for(var/field in field_types_old)
+	for(var/field in field_typepaths_old)
 		fields += field
 
 	var/query = getquery_insert_from_backup(table_name, fields)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
-		issue_log += "Unable to migrate table [table_name] to backup, error: '[sit_check.error]'"
+		issue_log += "Unable to migrate table [table_name] from backup, error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, list/field_types_old)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, list/field_typepaths_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
-	for(var/field in field_types_old)
+	for(var/field in field_typepaths_old)
 		fields += field
 
 	var/query = getquery_insert_into_backup(table_name, fields)
@@ -303,25 +298,25 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_update_table(table_name, list/field_types_new, list/field_types_old)
-	for(var/field in field_types_old)
-		if(!field_types_new[field])
+/datum/db/adapter/brsql_adapter/proc/internal_update_table(table_name, list/field_typepaths_new, list/field_typepaths_old)
+	for(var/field in field_typepaths_old)
+		if(!field_typepaths_new[field])
 			var/query = getquery_update_table_delete_column(table_name, field)
 			var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 			if(sit_check.status != DB_QUERY_FINISHED)
 				issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 				return FALSE // OH SHIT OH FUCK
 
-	for(var/field in field_types_new)
-		if(!field_types_old[field])
-			var/query = getquery_update_table_add_column(table_name, field, field_types_new[field])
+	for(var/field in field_typepaths_new)
+		if(!field_typepaths_old[field])
+			var/query = getquery_update_table_add_column(table_name, field_typepaths_new[field])
 			var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 			if(sit_check.status != DB_QUERY_FINISHED)
 				issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 				return FALSE // OH SHIT OH FUCK
 		else
-			if(field_types_old[field] != field_types_new[field])
-				var/query = getquery_update_table_change_column(table_name, field, field_types_new[field])
+			if(field_typepaths_old[field] != field_typepaths_new[field])
+				var/query = getquery_update_table_change_column(table_name, field_typepaths_new[field])
 				var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 				if(sit_check.status != DB_QUERY_FINISHED)
 					issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
@@ -377,15 +372,15 @@
 		);
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/brsql_adapter/proc/getquery_systable_maketable(table_name, field_typepaths)
 	return {"
 		CREATE TABLE `[connection.database]`.`[table_name]` (
-			id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, [fields2text(field_types)]
+			id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, [fields2text(field_typepaths)]
 		);
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, list/qpar, id = null)
-	var/field_text = fields2savetext(field_types)
+/datum/db/adapter/brsql_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_typepaths, list/qpar, id = null)
+	var/field_text = fields2savetext(field_typepaths)
 	var/new_hash = sha1(field_text)
 	qpar.Add("[type_name]")
 	qpar.Add("[table_name]")
@@ -559,11 +554,11 @@
 		SELECT max(id) + 1 as total FROM `[connection.database]`.`[table_name]`
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_table_add_column(table_name, column_name, column_type)
-	return "ALTER TABLE `[connection.database]`.`[table_name]` ADD COLUMN `[column_name]` [fieldtype2text(column_type)];"
+/datum/db/adapter/brsql_adapter/proc/getquery_update_table_add_column(table_name, datum/db_field/column)
+	return "ALTER TABLE `[connection.database]`.`[table_name]` ADD COLUMN `[column::name]` [fieldtype2text(column::field_type)];"
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_table_change_column(table_name, column_name, column_type)
-	return "ALTER TABLE `[connection.database]`.`[table_name]` MODIFY COLUMN `[column_name]` [fieldtype2text(column_type)];"
+/datum/db/adapter/brsql_adapter/proc/getquery_update_table_change_column(table_name, datum/db_field/column)
+	return "ALTER TABLE `[connection.database]`.`[table_name]` MODIFY COLUMN `[column::name]` [fieldtype2text(column::field_type)];"
 
 /datum/db/adapter/brsql_adapter/proc/getquery_update_table_delete_column(table_name, column_name)
 	return "ALTER TABLE `[connection.database]`.`[table_name]` DROP COLUMN `[column_name]`;"
@@ -594,25 +589,32 @@
 			return "DECIMAL(18,5)"
 	return FALSE
 
-/datum/db/adapter/brsql_adapter/proc/fields2text(list/L)
+/datum/db/adapter/brsql_adapter/proc/fields2text(list/datum/db_field/field_typepaths)
 	var/list/result = list()
-	for(var/item in L)
-		result += "[item] [fieldtype2text(L[item])]"
+	for(var/field in field_typepaths)
+		var/datum/db_field/field_typepath = field_typepaths[field]
+		result += "[field_typepath::name] [fieldtype2text(field_typepath::field_type)]"
 	return jointext(result, ",")
 
-/datum/db/adapter/brsql_adapter/proc/fields2savetext(list/L)
+/datum/db/adapter/brsql_adapter/proc/fields2savetext(list/datum/db_field/field_typepaths)
 	var/list/result = list()
-	for(var/item in L)
-		result += "[item]:[L[item]]"
+	for(var/field in field_typepaths)
+		var/datum/db_field/field_typepath = field_typepaths[field]
+		result += "[field_typepath::name]:[field_typepath::field_type::type_id]"
 	return jointext(result, ",")
 
+#define FIELD_NAME_IDX 1
+#define FIELD_TYPE_ID_IDX 2
 /datum/db/adapter/brsql_adapter/proc/savetext2fields(text)
 	var/list/result = list()
-	var/list/split1 = splittext(text, ",")
-	for(var/field in split1)
-		var/list/split2 = splittext(field, ":")
-		result[split2[1]] = text2num(split2[2])
+	var/list/fields_as_savetext = splittext(text, ",")
+	for(var/field_as_savetext in fields_as_savetext)
+		var/list/field_information = splittext(field_as_savetext, ":")
+		var/field_type_id = text2num(field_information[FIELD_TYPE_ID_IDX])
+		result[field_information[FIELD_NAME_IDX]] = GLOB.db_field_types[field_type_id]
 	return result
+#undef FIELD_NAME_IDX
+#undef FIELD_TYPE_ID_IDX
 
 /datum/db/adapter/brsql_adapter/prepare_view(datum/entity_view_meta/view)
 	var/list/datum/entity_meta/meta_to_load = list(BRSQL_ROOT_NAME = view.root_entity_meta)
@@ -678,9 +680,8 @@
 	var/query_text = "SELECT "
 	for(var/fld in view.fields)
 		var/field = field_alias[fld]
-		var/datum/db/native_function/native_function = field
-		// this is a function?
-		if(istype(native_function))
+		if(istype(field, /datum/db/native_function))
+			var/datum/db/native_function/native_function = field
 			field = internal_proc_to_text(native_function, field_alias, pre_pflds)
 		query_text += "[field] as `[fld]`, "
 	query_text += "1 as is_view "

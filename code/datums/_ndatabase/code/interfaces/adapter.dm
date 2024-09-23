@@ -24,7 +24,7 @@
 /datum/db/adapter/proc/sync_table_meta()
 	return
 
-/datum/db/adapter/proc/sync_table(type_name, table_name, list/field_types)
+/datum/db/adapter/proc/sync_table(type_name, table_name, list/field_typepaths)
 	return
 
 /datum/db/adapter/proc/sync_index(index_name, table_name, list/fields, unique, cluster)

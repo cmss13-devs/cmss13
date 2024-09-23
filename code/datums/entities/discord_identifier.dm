@@ -14,7 +14,7 @@
 	table_name = "discord_identifiers"
 	key_field = "identifier"
 
-	field_types = list(
+	field_typepaths = list(
 		"identifier" = DB_FIELDTYPE_STRING_LARGE,
 		"playerid" = DB_FIELDTYPE_BIGINT,
 		"realtime" = DB_FIELDTYPE_BIGINT,

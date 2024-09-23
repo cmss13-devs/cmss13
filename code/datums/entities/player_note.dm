@@ -21,7 +21,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 /datum/entity_meta/player_note
 	entity_type = /datum/entity/player_note
 	table_name = "player_notes"
-	field_types = list(
+	field_typepaths = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"admin_id" = DB_FIELDTYPE_BIGINT,
 		"text" = DB_FIELDTYPE_STRING_MAX,
@@ -51,15 +51,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 	child_entity = /datum/entity/player_note
 	child_foreign_key = "player_id"
 
-	parent_name = "player"
-	child_name = "notes"
-
 /datum/entity_link/admin_to_player_notes
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player_note
 	child_foreign_key = "admin_id"
-
-	parent_name = "admin"
 
 /datum/view_record/note_view
 	var/id

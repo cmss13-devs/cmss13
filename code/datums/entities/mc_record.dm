@@ -7,7 +7,7 @@
 /datum/entity_meta/mc_record
 	entity_type = /datum/entity/mc_record
 	table_name = "mc_record"
-	field_types = list(
+	field_typepaths = list(
 		"round_time"=DB_FIELDTYPE_BIGINT,
 		"round_id"=DB_FIELDTYPE_BIGINT,
 		"controller_id"=DB_FIELDTYPE_BIGINT,

@@ -9,7 +9,7 @@
 /datum/entity_meta/mc_timing_info
 	entity_type = /datum/entity/mc_timing_info
 	table_name = "mc_timing_info"
-	field_types = list(
+	field_typepaths = list(
 		"round_id"=DB_FIELDTYPE_BIGINT,
 		"round_time"=DB_FIELDTYPE_INT,
 		"client_count"=DB_FIELDTYPE_INT,

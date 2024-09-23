@@ -61,7 +61,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	entity_type = /datum/entity/player
 	table_name = "players"
 	key_field = "ckey"
-	field_types = list(
+	field_typepaths = list(
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
@@ -741,14 +741,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	child_entity = /datum/entity/player
 	child_foreign_key = "time_ban_admin_id"
 
-	parent_name = "banning_admin"
-
-
 /datum/entity_link/player_to_permabanning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
 	child_foreign_key = "permaban_admin_id"
-	parent_name = "permabanning_admin"
 
 /datum/view_record/players
 	var/id

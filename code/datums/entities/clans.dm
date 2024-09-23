@@ -19,7 +19,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 /datum/entity_meta/clan
 	entity_type = /datum/entity/clan
 	table_name = "clans"
-	field_types = list(
+	field_typepaths = list(
 		"name" = DB_FIELDTYPE_STRING_MEDIUM,
 		"description" = DB_FIELDTYPE_STRING_MAX,
 		"honor" = DB_FIELDTYPE_BIGINT,
@@ -34,7 +34,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 /datum/entity_meta/clan_player
 	entity_type = /datum/entity/clan_player
 	table_name = "clans_player"
-	field_types = list(
+	field_typepaths = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"clan_rank" = DB_FIELDTYPE_BIGINT,
 		"permissions" = DB_FIELDTYPE_BIGINT,
@@ -56,16 +56,10 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	child_entity = /datum/entity/clan_player
 	child_foreign_key = "player_id"
 
-	parent_name = "player"
-	child_name = "clan_player"
-
 /datum/entity_link/clan_to_player
 	parent_entity = /datum/entity/clan
 	child_entity = /datum/entity/clan_player
 	child_foreign_key = "clan_id"
-
-	parent_name = "clan"
-	child_name = "clan_player"
 
 /datum/view_record/clan_playerbase_view
 	var/clan_id

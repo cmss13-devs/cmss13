@@ -21,7 +21,7 @@
 /datum/entity_meta/chemical_information
 	entity_type = /datum/entity/chemical_information
 	table_name = "chemical_information"
-	field_types = list(
+	field_typepaths = list(
 		"nutriment_factor" = DB_FIELDTYPE_DECIMAL,
 		"custom_metabolism" = DB_FIELDTYPE_DECIMAL,
 		"overdose" = DB_FIELDTYPE_INT,

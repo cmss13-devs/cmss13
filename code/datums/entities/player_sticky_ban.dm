@@ -11,7 +11,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 /datum/entity_meta/stickyban
 	entity_type = /datum/entity/stickyban
 	table_name = "stickyban"
-	field_types = list(
+	field_typepaths = list(
 		"identifier" = DB_FIELDTYPE_STRING_LARGE,
 		"reason" = DB_FIELDTYPE_STRING_MAX,
 		"message" = DB_FIELDTYPE_STRING_MAX,
@@ -46,7 +46,6 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/stickyban
 	child_foreign_key = "adminid"
-	parent_name = "stickybanning_admin"
 
 /datum/entity/stickyban_matched_ckey
 	var/ckey
@@ -56,7 +55,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 /datum/entity_meta/stickyban_matched_ckey
 	entity_type = /datum/entity/stickyban_matched_ckey
 	table_name = "stickyban_matched_ckey"
-	field_types = list(
+	field_typepaths = list(
 		"ckey" = DB_FIELDTYPE_STRING_LARGE,
 		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
 		"whitelisted" = DB_FIELDTYPE_INT,
@@ -86,7 +85,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 /datum/entity_meta/stickyban_matched_cid
 	entity_type = /datum/entity/stickyban_matched_cid
 	table_name = "stickyban_matched_cid"
-	field_types = list(
+	field_typepaths = list(
 		"cid" = DB_FIELDTYPE_STRING_LARGE,
 		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
 	)
@@ -113,7 +112,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 /datum/entity_meta/stickyban_matched_ip
 	entity_type = /datum/entity/stickyban_matched_ip
 	table_name = "stickyban_matched_ip"
-	field_types = list(
+	field_typepaths = list(
 		"ip" = DB_FIELDTYPE_STRING_LARGE,
 		"linked_stickyban" = DB_FIELDTYPE_BIGINT,
 	)

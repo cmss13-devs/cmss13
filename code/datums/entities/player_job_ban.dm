@@ -15,7 +15,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 /datum/entity_meta/player_job_ban
 	entity_type = /datum/entity/player_job_ban
 	table_name = "player_job_bans"
-	field_types = list(
+	field_typepaths = list(
 		"player_id"=DB_FIELDTYPE_BIGINT,
 		"admin_id"=DB_FIELDTYPE_BIGINT,
 		"text"=DB_FIELDTYPE_STRING_MAX,
@@ -39,12 +39,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 	child_entity = /datum/entity/player_job_ban
 	child_foreign_key = "player_id"
 
-	parent_name = "player"
-	child_name = "jobbans"
-
 /datum/entity_link/admin_to_player_job_bans
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player_job_ban
 	child_foreign_key = "admin_id"
-
-	parent_name = "admin"

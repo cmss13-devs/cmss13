@@ -22,7 +22,6 @@
 /datum/entity
 	var/id
 	var/status
-	var/datum/db_field_type/field_type
 	var/datum/entity_meta/metadata
 	var/__key_synced = FALSE
 
@@ -85,6 +84,6 @@
 		CB.Invoke(src)
 
 /datum/entity/proc/assign_values(list/values, list/ignore = list())
-	for(var/F in metadata.field_types)
+	for(var/F in metadata.field_typepaths)
 		if(!(ignore.Find(F)))
 			vars[F] = values[F]

@@ -11,7 +11,7 @@
 /datum/entity_meta/login_triplet
 	entity_type = /datum/entity/login_triplet
 	table_name = "login_triplets"
-	field_types = list(
+	field_typepaths = list(
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"ip1" = DB_FIELDTYPE_INT,
 		"ip2" = DB_FIELDTYPE_INT,

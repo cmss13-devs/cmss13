@@ -22,7 +22,8 @@
 /datum/entity_meta
 	var/entity_type
 	var/table_name
-	var/list/datum/db_field/field_types
+	var/list/datum/db_field/field_typepaths
+	/// Whether we are persisting the entity in the DB
 	var/active_entity = TRUE
 	var/key_field = null
 
@@ -52,10 +53,11 @@
 	key_managed = list()
 	inbound_links = list()
 	outbound_links = list()
-	setup_field_types()
+	setup_field_typepaths()
 
-/// Proc to populate field_types list, mainly used for the no-boiler plate entity definitions
-/datum/entity_meta/proc/setup_field_types()
+/// Proc to populate field_typepaths list, mainly used for the no-boiler plate entity definitions
+/datum/entity_meta/proc/setup_field_typepaths()
+	PRIVATE_PROC(TRUE)
 	// Should always be calling other overrides of the proc, entities are final classes any way
 	SHOULD_CALL_PARENT(TRUE)
 	return
@@ -64,7 +66,7 @@
 /datum/entity_meta/proc/map(datum/entity/ET, list/values)
 	var/strid = "[values[DB_DEFAULT_ID_FIELD]]"
 	ET.id = strid
-	for(var/F in field_types)
+	for(var/F in field_typepaths)
 		ET.vars[F] = values[F]
 
 // redefine this for faster operations
@@ -72,7 +74,7 @@
 	var/list/values = list()
 	if(include_id)
 		values[DB_DEFAULT_ID_FIELD] = ET.id
-	for(var/F in field_types)
+	for(var/F in field_typepaths)
 		values[F] = ET.vars[F]
 	return values
 

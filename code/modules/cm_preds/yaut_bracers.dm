@@ -32,7 +32,7 @@
 	var/charge = 1500
 	var/charge_max = 1500
 	/// The amount charged per process
-	var/charge_rate = 30
+	var/charge_rate = 60
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
 	var/cloak_timer = 0
@@ -87,9 +87,9 @@
 	if(charge < charge_max)
 		var/charge_increase = charge_rate
 		if(is_ground_level(human_holder.z))
-			charge_increase = charge_rate / 12
+			charge_increase = charge_rate / 6
 		else if(is_mainship_level(human_holder.z))
-			charge_increase = charge_rate / 9
+			charge_increase = charge_rate / 3
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)

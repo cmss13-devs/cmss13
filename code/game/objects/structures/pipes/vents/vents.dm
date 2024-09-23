@@ -180,5 +180,5 @@
 	if(!gas_holder || welded)
 		return FALSE
 	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	gas_holder.set_up(radius, 0, get_turf(src), null, 10 SECONDS)
+	gas_holder.set_up(radius, 0, get_turf(src), null, 10)
 	gas_holder.start()

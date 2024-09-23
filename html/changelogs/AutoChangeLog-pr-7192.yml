@@ -1,0 +1,4 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - rscadd: "Added more fortunes for fortune cookies."

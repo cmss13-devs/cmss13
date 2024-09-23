@@ -34,6 +34,7 @@
 
 	var/list/datum/entity/managed
 	var/list/datum/entity/key_managed
+	/// List of valid entities that exist in the table
 	var/list/datum/entity/to_read
 	var/list/datum/entity/to_insert
 	var/list/datum/entity/to_update

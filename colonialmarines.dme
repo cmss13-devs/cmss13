@@ -368,8 +368,6 @@
 #include "code\datums\weakrefs.dm"
 #include "code\datums\world_topic.dm"
 #include "code\datums\_ndatabase\include.dm"
-#include "code\datums\_ndatabase\code\entity\db_field.dm"
-#include "code\datums\_ndatabase\code\entity\db_field_type.dm"
 #include "code\datums\agents\tools.dm"
 #include "code\datums\agents\tools\access_tuner.dm"
 #include "code\datums\agents\tools\badass_kit.dm"

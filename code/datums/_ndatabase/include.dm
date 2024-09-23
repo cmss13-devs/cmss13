@@ -1,5 +1,7 @@
 #include "code/database.dm"
 
+#include "code/sql_adapter.dm"
+
 #ifdef NDATABASE_RUSTG_BRSQL_SUPPORT
 #include "code/brsql_persistent_connection.dm"
 #include "code/brsql_persistent_query.dm"
@@ -18,6 +20,8 @@
 #include "code/entity/link.dm"
 #include "code/entity/entity_view.dm"
 #include "code/entity/index.dm"
+#include "code/entity/db_field.dm"
+#include "code/entity/db_field_type.dm"
 
 #include "code/interfaces/adapter.dm"
 #include "code/interfaces/connection.dm"

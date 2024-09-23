@@ -25,7 +25,7 @@ TBD
 TBD
 ### Filters
 TBD
-# Query
+## Query
 ## Read Single (read_single)
 Executes the given query,
 ## Connection
@@ -109,3 +109,9 @@ BYOND internal database driver: http://www.byond.com/docs/ref/#/database
 
 Uses SQLite as its DB
 > A /database datum gives you the ability to create or access a database using SQLite
+# Database Operations
+## Select
+## Delete
+## Update
+## Insert
+

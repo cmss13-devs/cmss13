@@ -102,6 +102,6 @@
 	return null
 
 /datum/db/connection/brsql_connection/get_adapter()
-	var/datum/db/adapter/brsql_adapter/adapter = new()
+	var/datum/db/adapter/sql/brsql/adapter = new()
 	adapter.connection = src
 	return adapter

@@ -185,8 +185,8 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		return
 	meta.to_read = list() // release the list early
 	var/list/ids = list()
-	for(var/datum/entity/item in to_select)
-		ids += item.id
+	for(var/datum/entity/entity in to_select)
+		ids += entity.id
 
 	adapter.read_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select), meta, to_select))
 

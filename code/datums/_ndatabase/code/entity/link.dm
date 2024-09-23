@@ -29,8 +29,9 @@
 	/// Entity that is referencing a different entity
 	var/child_entity
 	/// Column on child entity to reference parent entity.
-	/// A typepath to the db_field datum that represents the column
-	var/child_foreign_key
+	/// A typepath to the db_field datum that represents the column that is casted for access to
+	/// values from the field's type definition
+	var/datum/db_field/child_foreign_key
 
 	var/datum/entity_meta/parent_meta
 	var/datum/entity_meta/child_meta

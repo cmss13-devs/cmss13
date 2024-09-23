@@ -18,5 +18,5 @@
 	destination_entity = /datum/view_record/predround_chance
 	fields = list(
 		"id",
-		"chance"
+		"chance",
 	)

@@ -680,12 +680,12 @@
 				else
 					old_lead.comm_title = "Sld"
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_UPP_LEADER || !leader_killed)
-				var/obj/item/device/radio/headset/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)
-				if(R)
-					for(var/obj/item/device/encryptionkey/upp/command/acting/key in R.keys)
-						R.keys -= key
+				var/obj/item/device/radio/headset/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)
+				if(headset)
+					for(var/obj/item/device/encryptionkey/upp/command/acting/key in headset.keys)
+						headset.keys -= key
 						qdel(key)
-					R.recalculateChannels()
+					headset.recalculateChannels()
 		if (FACTION_MARINE)
 			switch(GET_DEFAULT_ROLE(old_lead.job))
 				if(JOB_SQUAD_SPECIALIST)
@@ -704,12 +704,12 @@
 				else
 					old_lead.comm_title = "RFN"
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
-				var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-				if(R)
-					for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)
-						R.keys -= key
+				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+				if(headset)
+					for(var/obj/item/device/encryptionkey/squadlead/acting/key in headset.keys)
+						headset.keys -= key
 						qdel(key)
-					R.recalculateChannels()
+					headset.recalculateChannels()
 				var/obj/item/card/id/card = old_lead.get_idcard()
 				if(card)
 					card.access -= ACCESS_MARINE_LEADER

@@ -16,7 +16,7 @@
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
-	can_trigger_proc_ref = nameof(/obj/effect/step_trigger/ares_alert.proc/can_trigger)
+	can_trigger_proc_ref = TYPE_PROC_REF(/obj/effect/step_trigger/ares_alert, can_trigger)
 
 /obj/effect/step_trigger/ares_alert/proc/can_trigger(mob/living/passer)
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.

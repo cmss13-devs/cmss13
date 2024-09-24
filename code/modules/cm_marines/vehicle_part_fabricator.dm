@@ -22,9 +22,9 @@
 	src.item = item
 	src.cost = cost
 
-/obj/structure/machinery/part_fabricator/examine(mob/user)
+/obj/structure/machinery/part_fabricator/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, build_queue ? "it has [length(build_queue)] items in the queue" : "the build queue is empty")
+	to_chat(user, build_queue ? "It has [length(build_queue)] items in the queue" : "the build queue is empty")
 
 
 /obj/structure/machinery/part_fabricator/New()
@@ -79,7 +79,8 @@
 	if(stat & NOPOWER)
 		return
 
-	if(busy) return
+	if(busy)
+		return
 
 	if(length(build_queue))
 		busy = TRUE

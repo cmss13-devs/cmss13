@@ -610,6 +610,21 @@
 	else
 		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
 
+//Bracer attachments
+/obj/item/bracer_attachments/wristblades
+	name = "wristblade bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wrist"
+	item_state = "wristblade"
+
+/obj/item/bracer_attachments/scimitars
+	name = "scimitar bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "scim"
+	item_state = "scim"
+
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
 	spawner_type = /mob/living/carbon/xenomorph/hellhound

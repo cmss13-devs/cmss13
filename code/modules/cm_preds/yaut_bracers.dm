@@ -272,9 +272,10 @@
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
 
-	var/wristblades_deployed = FALSE
-	var/obj/item/weapon/wristblades/left_wristblades
-	var/obj/item/weapon/wristblades/right_wristblades
+	var/bracer_attachment_attached = FALSE
+	var/bracer_attachment_deployed = FALSE
+	var/obj/item/weapon/wristblades/left_bracer_attachment
+	var/obj/item/weapon/wristblades/right_bracer_attachment
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
@@ -289,8 +290,6 @@
 	if(new_caster_material)
 		caster_material = new_caster_material
 	caster = new(src, FALSE, caster_material)
-	left_wristblades = new(src)
-	right_wristblades = new(src)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
@@ -375,7 +374,7 @@
 	//we have options from 1 to 7, but we're giving the user a higher probability of being punished if they already rolled this bad
 	switch(option)
 		if(1)
-			. = wristblades_internal(caller, TRUE)
+			. = attachment_internal(caller, TRUE)
 		if(2)
 			. = track_gear_internal(caller, TRUE)
 		if(3)
@@ -407,15 +406,56 @@
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return TRUE
 
+//bracer attachments
+
+//scims
+/obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attachment, mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea how to put \the [attachment] into \the [src]!"))
+		return
+	if(istype(attachment, /obj/item/bracer_attachments/scimitars))
+		if(bracer_attachment_attached)
+			to_chat(user, SPAN_WARNING("There's already a attachment attached to the bracer!"))
+			return
+		attachment_internal(usr, TRUE)
+		qdel(left_bracer_attachment)
+		qdel(right_bracer_attachment)
+		left_bracer_attachment = new /obj/item/weapon/wristblades/scimitar
+		right_bracer_attachment = new /obj/item/weapon/wristblades/scimitar
+		bracer_attachment_attached = TRUE
+		qdel(attachment)
+		return
+	return ..()
+
+//wristblades
+/obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attachment, mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea how to put \the [attachment] into \the [src]!"))
+		return
+	if(istype(attachment, /obj/item/bracer_attachments/wristblades))
+		if(bracer_attachment_attached)
+			to_chat(user, SPAN_WARNING("There's already a attachment attached to the bracer!"))
+			return
+		attachment_internal(usr, TRUE)
+		qdel(left_bracer_attachment)
+		qdel(right_bracer_attachment)
+		left_bracer_attachment = new /obj/item/weapon/wristblades
+		right_bracer_attachment = new /obj/item/weapon/wristblades
+		bracer_attachment_attached = TRUE
+		to_chat(user, SPAN_WARNING("You attach the [attachment] to the bracer"))
+		qdel(attachment)
+		return
+	return ..()
+
 //Should put a cool menu here, like ninjas.
-/obj/item/clothing/gloves/yautja/hunter/verb/wristblades()
-	set name = "Use Wrist Blades"
-	set desc = "Extend your wrist blades. They cannot be dropped, but can be retracted."
+/obj/item/clothing/gloves/yautja/hunter/verb/bracer_attachment()
+	set name = "Use Bracer Attachment"
+	set desc = "Extend your bracer attachment. They cannot be dropped, but can be retracted."
 	set category = "Yautja.Weapons"
 	set src in usr
-	. = wristblades_internal(usr, FALSE)
+	. = attachment_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/attachment_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
 		return
 
@@ -423,18 +463,21 @@
 	if(.)
 		return
 
-	if(wristblades_deployed)
-		if(left_wristblades.loc == caller)
-			caller.drop_inv_item_to_loc(left_wristblades, src, FALSE, TRUE)
-		if(right_wristblades.loc == caller)
-			caller.drop_inv_item_to_loc(right_wristblades, src, FALSE, TRUE)
-		wristblades_deployed = FALSE
-		to_chat(caller, SPAN_NOTICE("You retract your [left_wristblades.name]."))
+	if(bracer_attachment_deployed)
+		if(left_bracer_attachment.loc == caller)
+			caller.drop_inv_item_to_loc(left_bracer_attachment, src, FALSE, TRUE)
+		if(right_bracer_attachment.loc == caller)
+			caller.drop_inv_item_to_loc(right_bracer_attachment, src, FALSE, TRUE)
+		bracer_attachment_deployed = FALSE
+		to_chat(caller, SPAN_NOTICE("You retract your [left_bracer_attachment.name]."))
 		playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
 	else
 		if(!drain_power(caller, 50))
 			return
 		var/deploying_into_left_hand = caller.hand ? TRUE : FALSE
+		if(!bracer_attachment_attached)
+			to_chat(caller, SPAN_WARNING("The bracer does not have anything attached!"))
+			return
 		if(caller.get_active_hand())
 			to_chat(caller, SPAN_WARNING("Your hand must be free to activate your wristblade!"))
 			return
@@ -447,21 +490,21 @@
 		if(caller.get_inactive_hand() || (!istype(off_hand) || !off_hand.is_usable()))
 			is_offhand_full = TRUE
 		if(deploying_into_left_hand)
-			caller.put_in_active_hand(left_wristblades)
+			caller.put_in_active_hand(left_bracer_attachment)
 			if(!is_offhand_full)
-				caller.put_in_inactive_hand(right_wristblades)
+				caller.put_in_inactive_hand(right_bracer_attachment)
 		else
-			caller.put_in_active_hand(right_wristblades)
+			caller.put_in_active_hand(right_bracer_attachment)
 			if(!is_offhand_full)
-				caller.put_in_inactive_hand(left_wristblades)
-		wristblades_deployed = TRUE
-		to_chat(caller, SPAN_NOTICE("You activate your [left_wristblades.plural_name]."))
+				caller.put_in_inactive_hand(left_bracer_attachment)
+		bracer_attachment_deployed = TRUE
+		to_chat(caller, SPAN_NOTICE("You activate your [left_bracer_attachment.plural_name]."))
 		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
 
 	var/datum/action/predator_action/bracer/wristblade/wb_action
 	for(wb_action as anything in caller.actions)
 		if(istypestrict(wb_action, /datum/action/predator_action/bracer/wristblade))
-			wb_action.update_button_icon(wristblades_deployed)
+			wb_action.update_button_icon(bracer_attachment_deployed)
 			break
 
 	return TRUE
@@ -691,7 +734,7 @@
 		if(!drain_power(caller, 50))
 			return
 		if(caller.get_active_hand())
-			to_chat(caller, SPAN_WARNING("Your hand must be free to activate your wristblade!"))
+			to_chat(caller, SPAN_WARNING("Your hand must be free to activate your plasma caster!"))
 			return
 		var/obj/limb/hand = caller.get_limb(caller.hand ? "l_hand" : "r_hand")
 		if(!istype(hand) || !hand.is_usable())

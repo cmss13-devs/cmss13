@@ -123,7 +123,7 @@
 	classic_keys = list("Unbound")
 	name = "wristblades"
 	full_name = "Toggle wristblades"
-	keybind_signal = COMSIG_KB_YAUTJA_WRISTBLADES
+	keybind_signal = COMSIG_KB_YAUTJA_BRACER_ATTACHMENT
 
 /datum/keybinding/yautja/bracer_hunter/track_gear
 	hotkey_keys = list("Unbound")

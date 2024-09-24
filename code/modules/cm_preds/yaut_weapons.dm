@@ -117,7 +117,7 @@
 	..()
 	if(istype(user))
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
-		gloves.wristblades_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
+		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"

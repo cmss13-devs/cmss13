@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - soundadd: "revive notification has new sound (rather than the ahelp sound)"

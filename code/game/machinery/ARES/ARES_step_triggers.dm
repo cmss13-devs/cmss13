@@ -16,32 +16,30 @@
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	can_trigger_proc_ref = nameof(/obj/effect/step_trigger/ares_alert.proc/can_trigger)
 
-/obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
-	..()
+/obj/effect/step_trigger/ares_alert/proc/can_trigger(mob/living/passer)
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
-		return
+		return FALSE
 	if(!passer)
-		return
+		return FALSE
 	if(!(ishuman(passer) || isxeno(passer)))
-		return
+		return FALSE
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))
-		return
+		return FALSE
 	if(pass_jobs)
 		if(passer.job in pass_jobs)
-			return
+			return FALSE
 		if(isxeno(passer) && (JOB_XENOMORPH in pass_jobs))
-			return
+			return FALSE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/trespasser = passer
 		var/obj/item/card/id/card = trespasser.get_idcard()
 		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
 				if(tag in card.access)
-					return
-	Trigger(passer)
-	return
-
+					return FALSE
+	return TRUE
 
 /obj/effect/step_trigger/ares_alert/Initialize(mapload, ...)
 	link_systems(override = FALSE)
@@ -64,7 +62,7 @@
 		link = null
 
 
-/obj/effect/step_trigger/ares_alert/Trigger(mob/living/passer)
+/obj/effect/step_trigger/ares_alert/trigger(mob/living/passer)
 	var/broadcast_message = alert_message
 	if(area_based)
 		var/area_name = get_area_name(src, TRUE)
@@ -142,16 +140,16 @@
 				if(idcard)
 					break
 	if(!istype(idcard) && ismob(passer))
-		Trigger(passer, failure = TRUE)
+		trigger(passer, failure = TRUE)
 		return
 	if(!(ACCESS_MARINE_AI_TEMP in idcard.access))//No temp access, don't care
 		return
 	if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))//Permanent access prevents loss of temporary
 		return
-	Trigger(passer, idcard)
+	trigger(passer, idcard)
 	return
 
-/obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
+/obj/effect/step_trigger/ares_alert/access_control/trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
 	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link

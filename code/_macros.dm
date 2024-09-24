@@ -80,6 +80,13 @@
 /// Returns the value if it is not null, default value otherwise
 #define VAL_OR_DEFAULT(val, default) (!QDELETED(val) ? val : default)
 
+/// If `proc_ref` exists (and assuming it is an actual proc ref), call proc `proc_ref` on `caller` with arguments `args`.
+/// `args` supports named arguments.
+#define CALL_PROC_REF(caller, proc_ref, args...) (proc_ref && call(caller, proc_ref)(args))
+/// If `proc_ref` exists (and assuming it is an actual proc ref), call proc `proc_ref` with arguments `args`.
+/// `args` supports named arguments.
+#define CALL_GLOBAL_PROC_REF(proc_ref, args...) (proc_ref && call(proc_ref)(args))
+
 //Currently used in SDQL2 stuff
 #define send_output(target, msg, control) target << output(msg, control)
 #define send_link(target, url) target << link(url)

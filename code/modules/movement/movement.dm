@@ -75,6 +75,8 @@
 	if (.)
 		Moved(oldloc, direct)
 
+/// Called when `crossed_by` enters the atom's turf (via native Move() or doMove() if allowed).
+/// Does not return anything, only handles side effects from Crossed.
 /atom/Crossed(atom/movable/crossed_by)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_CROSSED, crossed_by)

@@ -25,7 +25,15 @@
 #define COMSIG_MOVABLE_PULLED "movable_pulled"
 	#define COMPONENT_IGNORE_ANCHORED (1<<0)
 
-#define COMSIG_MOVABLE_LAUNCHING "movable_launched"
+/// When an atom is launching from a non-launching state.
+/// From base of /datum/component/launching/RegisterWithParent().
+#define COMSIG_MOVABLE_LAUNCHING "movable_launching"
+/// When an atom is launching and has its original launch overridden by a new one.
+/// From base of /datum/component/launching/InheritComponent().
+#define COMSIG_MOVABLE_LAUNCHING_OVERRIDE "movable_launching_override"
+	/// Indicates a launch should be cancelled, applies for COMSIG_MOVABLE_LAUNCHING and COMSIG_MOVABLE_LAUNCHING_OVERRIDE.
+	#define COMPONENT_CANCEL_LAUNCH (1<<0)
+
 #define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
 	#define COMPONENT_LAUNCH_CANCEL (1<<0)
 

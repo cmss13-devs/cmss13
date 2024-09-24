@@ -9,7 +9,6 @@
 
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
 	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
-	#define COMPONENT_CANCEL_EXTERNAL_XENO_HEAL (1<<1)
 
 /// From ../xeno_action/activable/xeno_spit/use_ability
 #define COMSIG_XENO_POST_SPIT "xeno_spit"

@@ -9,7 +9,6 @@
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 	ADD_TRAIT(parent, TRAIT_HIVEMIND_INTERFERENCE, TRAIT_SOURCE_HIVEMIND_INTERFERENCE)
-	RegisterSignal(parent, COMSIG_XENO_PRE_HEAL, PROC_REF(block_external_heal))
 	src.interference = interference
 	src.max_buildup = max_buildup
 	src.dissipation = dissipation
@@ -52,11 +51,6 @@
 		return
 	L += "Hivemind Interference: [interference]/[max_buildup]"
 
-/datum/component/status_effect/interference/proc/block_external_heal()
-	SIGNAL_HANDLER
-	return COMPONENT_CANCEL_EXTERNAL_XENO_HEAL
-
 /datum/component/status_effect/interference/cleanse()
 	REMOVE_TRAIT(parent, TRAIT_HIVEMIND_INTERFERENCE, TRAIT_SOURCE_HIVEMIND_INTERFERENCE)
-	UnregisterSignal(parent, COMSIG_XENO_PRE_HEAL)
 	return ..()

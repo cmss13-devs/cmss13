@@ -90,8 +90,8 @@
 	if(!check_state())
 		return
 
-	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & (COMPONENT_CANCEL_XENO_HEAL|COMPONENT_CANCEL_EXTERNAL_XENO_HEAL))
-		to_chat(src, SPAN_XENOWARNING("We cannot heal [target_xeno]!"))
+	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(src, SPAN_XENOWARNING("Extinguish [target_xeno] first or the flames will burn our resin salve away!"))
 		return
 
 	if(!can_not_harm(target_xeno)) //We don't wanna heal hostile hives, but we do want to heal our allies!

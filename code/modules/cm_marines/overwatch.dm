@@ -952,6 +952,7 @@
 	for(var/datum/squad/glob_squad in GLOB.RoleAuthority.squads)
 		if(squad == glob_squad.name)
 			glob_squad.drop_pad = null
+	current_orbital_cannon = null
 	return ..()
 
 /obj/structure/supply_drop/alpha

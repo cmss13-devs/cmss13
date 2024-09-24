@@ -3,8 +3,8 @@
 	desc = "Can hold various things."
 	icon_state = "utilitybelt"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST

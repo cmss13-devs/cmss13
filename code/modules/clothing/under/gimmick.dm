@@ -12,7 +12,7 @@
 	displays_id = 0
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
 	)
 
 //JASON

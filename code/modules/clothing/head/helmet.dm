@@ -313,9 +313,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 
 	var/obj/item/storage/internal/headgear/pockets
 	var/storage_slots = 2 // Small items like injectors, bandages, etc
@@ -324,7 +321,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/storage_max_storage_space = 4
 
 	/// The dmi where the grayscale squad overlays are contained
-	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
+	var/helmet_overlay_icon = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 
 	///Any visors built into the helmet
 	var/list/built_in_visors = list(new /obj/item/device/helmet_visor)

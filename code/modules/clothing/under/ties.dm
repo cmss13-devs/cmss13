@@ -9,7 +9,7 @@
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
-	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
+	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi')
 	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
 	var/jumpsuit_hide_states
 	var/high_visibility //if it should appear on examine without detailed view

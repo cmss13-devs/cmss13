@@ -140,9 +140,9 @@
 	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-on")
 		else
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-off")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-off")
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null

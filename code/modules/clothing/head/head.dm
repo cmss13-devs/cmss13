@@ -23,7 +23,7 @@
 	icon_state = "band"
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
 
 /obj/item/clothing/head/cmbandana/Initialize(mapload, ...)
@@ -58,7 +58,7 @@
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "beret"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
 
 /obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
@@ -219,7 +219,7 @@
 	icon = 'icons/obj/items/clothing/hats.dmi'
 	icon_state = "headband_rambo"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi'
+		WEAR_HEAD = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	)
 
 /obj/item/clothing/head/headset
@@ -454,7 +454,7 @@
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
 	black_market_value = 25
 
@@ -504,7 +504,7 @@
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
 	black_market_value = 30
 
@@ -587,7 +587,7 @@
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "ro_beret"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
 
 //==========================//PROTECTIVE\\===============================\\
@@ -846,7 +846,7 @@
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'
 	)
 
 /obj/item/clothing/head/beret/royal_marine/team_leader

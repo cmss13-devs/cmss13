@@ -12,7 +12,7 @@
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/hats.dmi'
-	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
@@ -69,8 +69,8 @@
 	item_state = null
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'  //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
@@ -82,8 +82,8 @@
 	item_state = null
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi' //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
@@ -962,7 +962,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
 	)
 
 //END UNIFORM TEMPLATE
@@ -1221,7 +1221,7 @@
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
 	desc = "A white colored PMC Mask.  DONOR ITEM."
-	icon_override = 'icons/mob/humans/onmob/mask.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH

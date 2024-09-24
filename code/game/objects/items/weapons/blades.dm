@@ -225,8 +225,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 		)
 
 /obj/item/weapon/straight_razor

@@ -22,7 +22,7 @@
 	name = "collectable super top hat"
 	desc = "A super top hat worn by only the highest echelon of hat collectors."
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_64.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
 	icon_state = "super_top_hat"
 	item_state = "super_top_hat"

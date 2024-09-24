@@ -72,8 +72,8 @@
 	w_class = SIZE_LARGE
 	matter = list("glass" = 7500, "metal" = 1000)
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
 		)
 
 	attack_verb = list("shoved", "bashed")

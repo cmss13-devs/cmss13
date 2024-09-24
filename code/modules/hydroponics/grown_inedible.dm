@@ -79,7 +79,7 @@
 /obj/item/grown/nettle // -- Skie
 	plantname = "nettle"
 	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	name = "nettle"
 	icon_state = "nettle"
 	damtype = "fire"

@@ -510,7 +510,7 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/bear)
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
 	)
 
 /obj/item/clothing/under/marine/veteran/UPP
@@ -899,7 +899,7 @@
 	worn_state = "cc_white"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
 
 /obj/item/clothing/under/marine/reporter/black
@@ -1094,7 +1094,7 @@
 	actions_types = list(/datum/action/item_action/specialist/toggle_cbrn_hood)
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
 
 	///Whether the hood and gas mask were worn through the hood toggle verb

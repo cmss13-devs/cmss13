@@ -429,7 +429,7 @@
 	name = "manager's jacket"
 	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
 	)
 	item_state = "manager_suit"
 	icon_state = "manager_suit"
@@ -461,7 +461,7 @@
 	name = "director's jacket"
 	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
 	)
 	item_state = "director_suit"
 	icon_state = "director_suit"

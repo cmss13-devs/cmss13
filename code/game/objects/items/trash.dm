@@ -198,7 +198,7 @@
 /obj/item/trash/c_tube
 	name = "cardboard tube"
 	desc = "A tube... of cardboard."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = SIZE_SMALL

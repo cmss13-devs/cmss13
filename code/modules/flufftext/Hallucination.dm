@@ -73,7 +73,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halitem.icon_state = "sword1"
 								halitem.name = "Sword"
 							if(4) //stun baton
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 								halitem.icon_state = "stunbaton"
 								halitem.name = "Stun Baton"
 							if(5) //emag

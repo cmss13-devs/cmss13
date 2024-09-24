@@ -33,7 +33,7 @@
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xenonid
-			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
+			Q.queen_ovipositor_icon = 'icons/mob/xenonids/castes/tier_4/ovipositor.dmi'
 	else
 		icon = icon_xeno
 		if(isqueen(src))

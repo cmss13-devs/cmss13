@@ -141,7 +141,7 @@
 	stuff = list(/obj/item/storage/large_holster/m37)
 
 /obj/effect/landmark/wo_supplies/storage/belts
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	amount = list(1,3)
 
 /obj/effect/landmark/wo_supplies/storage/belts/grenade

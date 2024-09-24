@@ -52,6 +52,7 @@
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
+	current_orbital_cannon = null
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -952,7 +953,6 @@
 	for(var/datum/squad/glob_squad in GLOB.RoleAuthority.squads)
 		if(squad == glob_squad.name)
 			glob_squad.drop_pad = null
-	current_orbital_cannon = null
 	return ..()
 
 /obj/structure/supply_drop/alpha

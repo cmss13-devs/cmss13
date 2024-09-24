@@ -95,3 +95,15 @@
   - rscadd: Xenos with USCM IFF tags no longer trigger code red when on dropships.
   tallfission:
   - qol: Decreased dropship equipment printing time to 3 seconds from 10 seconds.
+2024-09-24:
+  Mister-moon1:
+  - bugfix: fixes what bracer power should be
+  - code_imp: 'reverts #7159'
+  Private-Tristan, KiVts:
+  - bugfix: Injector and Coagulator plates are now functional.
+  efzapa:
+  - qol: MPs now latejoin in the Brig
+  nauticall:
+  - rscadd: Added more fortunes for fortune cookies.
+  stalkerino:
+  - balance: ' increased recharge for pred bracer'

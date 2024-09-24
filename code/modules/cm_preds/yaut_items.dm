@@ -277,7 +277,6 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 

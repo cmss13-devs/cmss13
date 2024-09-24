@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
-	var/predator_cape_type = "None"
+	var/predator_cape_type = "poncho"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences

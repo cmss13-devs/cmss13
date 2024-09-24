@@ -109,13 +109,14 @@
 	SIGNAL_HANDLER
 	update_density()
 
+/// Called when the mob is launched
 /mob/living/proc/handle_launched(self, datum/launch_result/launch_result)
 	SIGNAL_HANDLER
 
+	// TODO: have this handled by a buckled element
+	if (buckled)
+		return COMPONENT_CANCEL_LAUNCH
 	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	var/target = launch_result.thrower_ref?.resolve()
-	if (target || !src)
-		return
 	if (pulling)
 		stop_pulling() //being thrown breaks pulls.
 	if (pulledby)

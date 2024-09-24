@@ -78,16 +78,14 @@
 UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resolve(); if (target) { UnregisterSignal(target, COMSIG_ATOM_CROSSED); };
 
 /datum/component/launching/RegisterWithParent()
-	SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING, src)
+	var/sigresult = SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING, src)
+	if (sigresult & COMPONENT_CANCEL_LAUNCH)
+		qdel(src)
+		return
+
 	// TODO: Add function here for movable to call when it is launched
 	RegisterSignal(parent, COMSIG_MOVABLE_COLLIDE, PROC_REF(complete_launch))
 	ADD_TRAIT(parent, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
-
-	var/mob/target = target_ref?.resolve()
-	// TODO: Instead of this snowflake check, design a better system for handling
-	// Crossed() launch collisions
-	if (ismob(target))
-		RegisterSignal(target, COMSIG_ATOM_CROSSED, PROC_REF(handle_target_crossed))
 
 /datum/component/launching/UnregisterFromParent()
 	CLEAR_SIGNALS
@@ -100,6 +98,11 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 		end_throw_callback?.Invoke(launched)
 
 /datum/component/launching/InheritComponent(datum/component/C, i_am_original, atom/target, range, speed, atom/thrower, spin, pass_flags, datum/callback/collision_callback, datum/callback/end_throw_callback, list/turf/custom_turf_path)
+	var/sigresult = SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING_OVERRIDE)
+	if (sigresult & COMPONENT_CANCEL_LAUNCH)
+		qdel(src)
+		return
+
 	// Uses of `src` here to distinguish between this proc's arguments and parameters of previous launch
 	var/atom/movable/launched = parent
 	if (launched.loc)
@@ -116,8 +119,9 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 	SEND_SIGNAL(parent, COMSIG_MOVABLE_LAUNCHING, src)
 
 
-/datum/component/launching/proc/handle_target_crossed(atom/target, atom/movable/launched)
-	if (isturf(target.loc))
+/datum/component/launching/proc/handle_target_crossed(atom/target, atom/movable/crossed_by)
+	var/atom/movable/launched = parent
+	if (isturf(target.loc) && crossed_by == launched)
 		complete_launch(launched, target)
 
 /**
@@ -156,6 +160,9 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 /// Handle movement of launched atom to next turf
 /// If launched atom is deleted at any point this should not be called
 /datum/component/launching/process(delta_time)
+	/// Checks whether `launched` and `target` are in the same turf, always assumes `launched` exists and is not qdel'd (there are other checks for this in the proc)
+	#define IN_SAME_TURF(launched, target) (!QDELETED(target) && isturf(launched.loc) && target.loc == launched.loc)
+
 	. = LAUNCH_RESULT_SUCCESSFUL
 	var/atom/movable/launched = parent
 
@@ -181,6 +188,9 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 	var/turf/next_turf
 	if (move_count >= 1)
 		time_since_last_move = time_since_last_move - floor(time_since_last_move)
+	var/atom/target = target_ref?.resolve()
+	if (IN_SAME_TURF(launched, target))
+		. = LAUNCH_RESULT_STOPPED
 	while (. == LAUNCH_RESULT_SUCCESSFUL && move_count >= 1.0)
 		if (!turf_path.len)
 			. = LAUNCH_RESULT_STOPPED
@@ -207,6 +217,9 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 		// changing any calls that launch the object to an INVOKE_NEXT_TICK call
 		if (QDELETED(src))
 			return LAUNCH_RESULT_DELETED
+		if (IN_SAME_TURF(launched, target))
+			. = LAUNCH_RESULT_STOPPED
+			return
 		last_turf = launched.loc
 		launch_result.dist++
 		if (launch_result.dist >= range)
@@ -217,7 +230,13 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 	if (launched.loc != target_turf && length(turf_path) && . != LAUNCH_RESULT_STOPPED)
 		return
 
-	// End of the road, did not hit our intended target (if it existed)
-	var/atom/collided_with = VAL_OR_DEFAULT(launched.loc == target_turf && target_ref?.resolve(), get_turf(launched))
+	// End of the road...
+	var/atom/collided_with = target_turf
+	// If our target is a mob and we are on the same turf, then directly hit them
+	if (IN_SAME_TURF(launched, target) && ismob(target))
+		collided_with = target
 	complete_launch(launched, collided_with)
+	// Need to set this in case the launch stopped because we reached the end of the throw path
 	. = LAUNCH_RESULT_STOPPED
+
+	#undef IN_SAME_TURF

@@ -478,6 +478,10 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+		if(client?.prefs?.show_queen_name)
+			name += " (" + replacetext((name_client_prefix + name_client_postfix), "-","") + ")"
+
+
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = hive.color
 

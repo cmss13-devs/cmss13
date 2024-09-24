@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - qol: "Added a preference to show your tag as Queen, turned off by default."

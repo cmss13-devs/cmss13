@@ -123,7 +123,7 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	slowdown = 1
+	slowdown = 0.75
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
@@ -277,12 +277,11 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -295,7 +294,7 @@
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH

@@ -26,7 +26,7 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
-	var/obj/structure/orbital_cannon/current_orbital_cannon = null
+	var/obj/structure/orbital_cannon/current_orbital_cannon
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -87,9 +87,11 @@
 		return ..()
 	if(mods["alt"]) //Changing UI theme
 		var/tgui_input_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", chosen_theme)
-
-		if(possible_options[tgui_input_theme])
-			ui_theme = possible_options[tgui_input_theme]
+		if(!possible_options)
+			return
+		if(!possible_options[tgui_input_theme])
+			return
+		ui_theme = possible_options[tgui_input_theme]
 		return TRUE
 	. = ..()
 

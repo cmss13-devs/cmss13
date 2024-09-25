@@ -65,7 +65,7 @@
 		omnisentry_price += omnisentry_price_scale
 	icon_state = "drone_fab_active"
 	busy = TRUE
-	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
 	busy = FALSE

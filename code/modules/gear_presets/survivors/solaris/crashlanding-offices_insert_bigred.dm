@@ -77,7 +77,7 @@
 
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 
-/datum/equipment_preset/survivor/wy/manager
+/datum/equipment_preset/survivor/corporate/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
@@ -106,7 +106,7 @@
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/corporate/manager/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])

@@ -1,7 +1,7 @@
 // /obj/effect/landmark/survivor_spawner/lv624_corporate_dome/cl
 // corporatedomehold.dmm
 
-/datum/equipment_preset/survivor/wy/executive
+/datum/equipment_preset/survivor/corporate/executive
 	name = "Survivor - LV-624 Paranoid Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
@@ -28,7 +28,7 @@
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/wy/executive/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/corporate/executive/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/field(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)

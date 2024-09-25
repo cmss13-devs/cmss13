@@ -23598,6 +23598,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/warden,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "fSl" = (
@@ -53062,6 +53063,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "sbZ" = (
@@ -57391,6 +57393,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "tQL" = (
@@ -63260,6 +63263,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "wei" = (

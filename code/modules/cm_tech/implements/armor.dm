@@ -349,7 +349,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
-	activation = new /datum/action/item_action/emergency_plate/inject_chemicals(src, attached_uni)
+	activation = new /datum/action/item_action/toggle/emergency_plate/inject_chemicals(src, attached_uni)
 	activation.give_to(wearer)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
@@ -365,7 +365,7 @@
 	attached_uni = null
 
 //Action buttons
-/datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
+/datum/action/item_action/toggle/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
 	name = "Inject Emergency Plate"
 	action_icon_state = "plate_research"

@@ -9,7 +9,7 @@
 	w_class = SIZE_SMALL
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaller, /obj/item/device/assembly/timer)
 	max_container_volume = 180
-	reaction_limits = list( "max_ex_power" = 280, "base_ex_falloff" = 120, "max_ex_shards" = 128,
+	reaction_limits = list( "max_ex_power" = 280, "base_ex_falloff" = 120, "max_ex_shards" = 100,
 							"max_fire_rad" = 4, "max_fire_int" = 50, "max_fire_dur" = 20,
 							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)

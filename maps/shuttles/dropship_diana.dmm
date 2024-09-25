@@ -1,0 +1,599 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"al" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,7"
+	},
+/area/shuttle/dropTW1/transit)
+"aD" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,13"
+	},
+/area/shuttle/dropTW1/transit)
+"bf" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,14"
+	},
+/area/shuttle/dropTW1/transit)
+"bJ" = (
+/turf/closed/shuttle/twe_dropship,
+/area/shuttle/dropTW1/transit)
+"cs" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,0"
+	},
+/area/shuttle/dropTW1/transit)
+"ds" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,12"
+	},
+/area/shuttle/dropTW1/transit)
+"dL" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,15"
+	},
+/area/shuttle/dropTW1/transit)
+"em" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,4"
+	},
+/area/shuttle/dropTW1/transit)
+"ex" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,13"
+	},
+/area/shuttle/dropTW1/transit)
+"eD" = (
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/dropTW1/transit)
+"fY" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dstw1,
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"hP" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,9"
+	},
+/area/shuttle/dropTW1/transit)
+"hR" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"hU" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/computer/cameras/dropship{
+	dir = 4;
+	pixel_x = -32;
+	can_block_movement = 0
+	},
+/obj/structure/machinery/computer/dropship_weapons/dropshiptw1{
+	dir = 4;
+	pixel_x = 32;
+	can_block_movement = 0
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"ii" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,8"
+	},
+/area/shuttle/dropTW1/transit)
+"kT" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,12"
+	},
+/area/shuttle/dropTW1/transit)
+"lb" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"lK" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,0"
+	},
+/area/shuttle/dropTW1/transit)
+"mm" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,1"
+	},
+/area/shuttle/dropTW1/transit)
+"my" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,2"
+	},
+/area/shuttle/dropTW1/transit)
+"nQ" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,13"
+	},
+/area/shuttle/dropTW1/transit)
+"op" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,15";
+	opacity = 0
+	},
+/area/shuttle/dropTW1/transit)
+"oG" = (
+/obj/docking_port/mobile/marine_dropship/diana,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,9"
+	},
+/area/shuttle/dropTW1/transit)
+"oP" = (
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/dropTW1/transit)
+"oZ" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/dropship/flight{
+	can_block_movement = 0
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,14";
+	opacity = 0
+	},
+/area/shuttle/dropTW1/transit)
+"rw" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"st" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,6"
+	},
+/area/shuttle/dropTW1/transit)
+"tP" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,6"
+	},
+/area/shuttle/dropTW1/transit)
+"uX" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,3"
+	},
+/area/shuttle/dropTW1/transit)
+"vf" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,0"
+	},
+/area/shuttle/dropTW1/transit)
+"vz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/dstw1,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"vT" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,13"
+	},
+/area/shuttle/dropTW1/transit)
+"wE" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,12"
+	},
+/area/shuttle/dropTW1/transit)
+"wO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,1"
+	},
+/area/shuttle/dropTW1/transit)
+"xR" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit{
+	area_has_base_lighting = 1
+	})
+"xY" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,11"
+	},
+/area/shuttle/dropTW1/transit)
+"zW" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,6"
+	},
+/area/shuttle/dropTW1/transit)
+"zX" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,4"
+	},
+/area/shuttle/dropTW1/transit)
+"Al" = (
+/turf/template_noop,
+/area/template_noop)
+"BE" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,4"
+	},
+/area/shuttle/dropTW1/transit)
+"BL" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,2"
+	},
+/area/shuttle/dropTW1/transit)
+"BR" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,1"
+	},
+/area/shuttle/dropTW1/transit)
+"Cy" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/shuttle/dropTW1/transit)
+"CA" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,0"
+	},
+/area/shuttle/dropTW1/transit)
+"CC" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,11"
+	},
+/area/shuttle/dropTW1/transit)
+"Dc" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,7"
+	},
+/area/shuttle/dropTW1/transit)
+"FN" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,1"
+	},
+/area/shuttle/dropTW1/transit)
+"GO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,15"
+	},
+/area/shuttle/dropTW1/transit)
+"Ib" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,4"
+	},
+/area/shuttle/dropTW1/transit)
+"Im" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,2"
+	},
+/area/shuttle/dropTW1/transit)
+"IY" = (
+/turf/open/shuttle/dropship,
+/area/shuttle/dropTW1/transit)
+"Je" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/hatch/cockpit/tw1{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/shuttle/dropTW1/transit)
+"JH" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,5"
+	},
+/area/shuttle/dropTW1/transit)
+"Lm" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,7"
+	},
+/area/shuttle/dropTW1/transit)
+"Lo" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"Nx" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,2"
+	},
+/area/shuttle/dropTW1/transit)
+"NP" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/dstw1{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"PJ" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/shuttle/dropTW1/transit)
+"PW" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,0"
+	},
+/area/shuttle/dropTW1/transit)
+"SI" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,12"
+	},
+/area/shuttle/dropTW1/transit)
+"SO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,5"
+	},
+/area/shuttle/dropTW1/transit)
+"VN" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,10"
+	},
+/area/shuttle/dropTW1/transit)
+"Wd" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,8"
+	},
+/area/shuttle/dropTW1/transit)
+"Wl" = (
+/obj/effect/attach_point/crew_weapon/dropship1/floor{
+	attach_id = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/dropTW1/transit)
+"Yj" = (
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/dropTW1/transit)
+"YB" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,3"
+	},
+/area/shuttle/dropTW1/transit)
+"YP" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,14"
+	},
+/area/shuttle/dropTW1/transit)
+"YZ" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,3"
+	},
+/area/shuttle/dropTW1/transit)
+
+(1,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+"}
+(2,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Wd
+Lm
+zX
+YB
+Al
+Al
+Al
+Al
+"}
+(3,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Wd
+Lm
+st
+JH
+zX
+YB
+Al
+Al
+bJ
+"}
+(4,1,1) = {"
+Al
+Al
+Al
+Al
+SI
+CC
+Lo
+vz
+CC
+CC
+BE
+CC
+BE
+CC
+BL
+wO
+lK
+"}
+(5,1,1) = {"
+Al
+Al
+Al
+aD
+ds
+eD
+hR
+hR
+xR
+hR
+PJ
+lb
+rw
+lb
+Im
+FN
+CA
+"}
+(6,1,1) = {"
+Al
+dL
+bf
+vT
+kT
+Yj
+rw
+lb
+rw
+lb
+Yj
+hR
+hR
+hR
+fY
+Al
+Al
+"}
+(7,1,1) = {"
+Al
+op
+oZ
+hU
+Je
+IY
+VN
+oG
+hP
+Dc
+Yj
+Lo
+Wl
+Lo
+Lo
+Al
+Al
+"}
+(8,1,1) = {"
+Al
+GO
+YP
+ex
+kT
+Yj
+rw
+lb
+rw
+lb
+Yj
+hR
+hR
+hR
+hR
+Al
+Al
+"}
+(9,1,1) = {"
+Al
+Al
+Al
+nQ
+ds
+oP
+hR
+hR
+hR
+hR
+Cy
+lb
+rw
+lb
+my
+BR
+PW
+"}
+(10,1,1) = {"
+Al
+Al
+Al
+Al
+wE
+xY
+Lo
+NP
+uX
+uX
+Ib
+uX
+tP
+uX
+Nx
+mm
+cs
+"}
+(11,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+ii
+al
+zW
+SO
+em
+YZ
+Al
+Al
+vf
+"}
+(12,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+ii
+al
+em
+YZ
+Al
+Al
+Al
+Al
+"}
+(13,1,1) = {"
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+Al
+"}

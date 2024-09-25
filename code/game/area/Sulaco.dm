@@ -168,6 +168,104 @@
 	name = "\improper Saipan Landing Zone"
 	icon_state = "away2"
 
+// TWE SHUTTLES
+
+/area/shuttle/dropTW1
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
+
+/area/shuttle/dropTW1/sulaco
+	name = "\improper Dropship Diana"
+	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 255
+
+/area/shuttle/dropTW1/LV624
+	name = "\improper Dropship Diana"
+	ambience_exterior = AMBIENCE_LV624
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW1/prison
+	name = "\improper Dropship Diana"
+	ambience_exterior = AMBIENCE_PRISON
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW1/BigRed
+	name = "\improper Dropship Diana"
+	ambience_exterior = AMBIENCE_BIGRED
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW1/ice_colony
+	name = "\improper Dropship Diana"
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW1/DesertDam
+	name = "\improper Dropship Diana"
+	ambience_exterior = AMBIENCE_TRIJENT
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW1/transit
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
+	name = "\improper Dropship Diana Transit"
+	icon_state = "shuttlered"
+
+/area/shuttle/dropTW1/lz3
+	name = "\improper Diana Landing Zone"
+	icon_state = "away2"
+
+/area/shuttle/dropTW2
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
+
+/area/shuttle/dropTW2/sulaco
+	name = "\improper Dropship Boudica"
+	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 255
+
+/area/shuttle/dropTW2/LV624
+	name = "\improper Dropship Boudica"
+	ambience_exterior = AMBIENCE_LV624
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW2/prison
+	name = "\improper Dropship Boudica"
+	ambience_exterior = AMBIENCE_PRISON
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW2/BigRed
+	name = "\improper Dropship Boudica"
+	ambience_exterior = AMBIENCE_BIGRED
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW2/ice_colony
+	name = "\improper Dropship Boudica"
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW2/DesertDam
+	name = "\improper Dropship Boudica"
+	ambience_exterior = AMBIENCE_TRIJENT
+	icon_state = "shuttle2"
+
+/area/shuttle/dropTW2/transit
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
+	name = "\improper Dropship Boudica Transit"
+	icon_state = "shuttlered"
+
+/area/shuttle/dropTW2/lz3
+	name = "\improper Boudica Landing Zone"
+	icon_state = "away2"
+
 
 //DISTRESS SHUTTLES
 

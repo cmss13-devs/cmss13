@@ -12,6 +12,6 @@ Format:
 	disabled (disables the map)
 endmap
 
-map almayer
+map cromwell
 	default
 endmap

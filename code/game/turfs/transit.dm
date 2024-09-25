@@ -268,6 +268,14 @@
 	shuttle_tag = DROPSHIP_SAIPAN
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/diana
+	shuttle_tag = DROPSHIP_DIANA
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/boudica
+	shuttle_tag = DROPSHIP_BOUDICA
+	dir = SOUTH
+
 /turf/open/space/transit/south
 	dir = SOUTH
 

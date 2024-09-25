@@ -420,6 +420,54 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	onboard = 1
 	density = TRUE
 
+/obj/structure/machinery/computer/shuttle_control/dropshiptw1
+	name = "\improper 'Diana' dropship console"
+	desc = "The remote controls for the 'Diana' Dropship."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	exproof = 1
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropshiptw1/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_DIANA
+
+/obj/structure/machinery/computer/shuttle_control/dropshiptw1/onboard
+	name = "\improper 'Diana' flight controls"
+	desc = "The flight controls for the 'Diana' Dropship."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropshiptw2
+	name = "\improper 'Boudica' dropship console"
+	desc = "The remote controls for the 'Boudica' Dropship."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	exproof = 1
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropshiptw1/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_BOUDICA
+
+/obj/structure/machinery/computer/shuttle_control/dropshiptw2/onboard
+	name = "\improper 'Boudica' flight controls"
+	desc = "The flight controls for the 'Boudica' Dropship."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	onboard = 1
+	density = TRUE
+
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony

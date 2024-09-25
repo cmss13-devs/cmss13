@@ -904,6 +904,9 @@
 /obj/structure/machinery/door/airlock/hatch/cockpit/three
 	icon = 'icons/obj/structures/doors/dropship3_pilot.dmi'
 
+/obj/structure/machinery/door/airlock/hatch/cockpit/tw1
+	icon = 'icons/obj/structures/doors/dropshiptw1_pilot.dmi'
+
 //PRISON AIRLOCKS
 /obj/structure/machinery/door/airlock/prison
 	name = "cell Door"

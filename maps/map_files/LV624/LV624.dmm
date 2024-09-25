@@ -7937,7 +7937,7 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/lv624/landing/console)
 "aRu" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8

@@ -154,6 +154,22 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/diana
+	name = "Diana"
+	id = DROPSHIP_DIANA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/diana/get_transit_path_type()
+	return /turf/open/space/transit/dropship/diana
+
+/obj/docking_port/mobile/marine_dropship/boudica
+	name = "Boudica"
+	id = DROPSHIP_BOUDICA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/boudica/get_transit_path_type()
+	return /turf/open/space/transit/dropship/boudica
+
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
 
@@ -302,6 +318,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/cromwell_hanger_1
+	name = "Cromwell Hanger bay 1"
+	id = CROMWELL_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/diana
+
+/obj/docking_port/stationary/marine_dropship/cromwell_hanger_2
+	name = "Cromwell Hangar bay 2"
+	id = CROMWELL_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/boudica
+
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
 
@@ -339,3 +367,11 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/diana
+	name = "Diana"
+	shuttle_id = DROPSHIP_DIANA
+
+/datum/map_template/shuttle/boudica
+	name = "Diana"
+	shuttle_id = DROPSHIP_BOUDICA

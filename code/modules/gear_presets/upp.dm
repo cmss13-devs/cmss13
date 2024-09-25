@@ -4,7 +4,7 @@
 
 /datum/job/antag/upp
 	title = FACTION_UPP
-	selection_class = "job_antag"
+	selection_class = "job_marine"
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
@@ -273,7 +273,6 @@
 
 /datum/job/antag/upp/cryo/medic
 	title = JOB_UPP_MEDIC
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/medic
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -468,7 +467,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/sapper
 	title = JOB_UPP_ENGI
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/sapper
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -631,7 +629,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/specialist
 	title = JOB_UPP_SPECIALIST
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/specialist
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -780,7 +777,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/machinegunner
 	title = JOB_UPP_SPECIALIST
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/machinegunner
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -924,7 +920,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/leader
 	title = JOB_UPP_LEADER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/leader
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -1286,7 +1281,7 @@
 
 /datum/job/antag/upp/doctor
 	title = JOB_UPP_LT_DOKTOR
-	selection_class = "job_antag"
+	selection_class = "job_cmo"
 	gear_preset = /datum/equipment_preset/upp/doctor
 
 /datum/equipment_preset/upp/doctor
@@ -1454,7 +1449,7 @@
 
 /datum/job/antag/upp/supply
 	title = JOB_UPP_SUPPLY
-	selection_class = "job_antag"
+	selection_class = "job_ct"
 	gear_preset = /datum/equipment_preset/upp/supply
 
 
@@ -1567,6 +1562,11 @@
 	rank = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
+
+
+/datum/job/antag/upp/officer //this is placeholder for stuff that is supposed to be the same for all officers
+	title = JOB_UPP_SRLT_OFFICER
+	selection_class = "job_command"
 
 /datum/equipment_preset/upp/officer/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -1743,7 +1743,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/senior
 	title = JOB_UPP_SRLT_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/senior
 
 /datum/equipment_preset/upp/officer/senior
@@ -1901,7 +1900,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/kapitan
 
 /datum/equipment_preset/upp/officer/kapitan
@@ -2074,7 +2072,6 @@
 /datum/job/antag/upp/officer/major
 	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/major
 
 /datum/equipment_preset/upp/officer/major
@@ -2250,7 +2247,6 @@
 /datum/job/antag/upp/officer/lt_kolonel
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
 
 /datum/equipment_preset/upp/officer/lt_kolonel
@@ -2430,7 +2426,6 @@
 /datum/job/antag/upp/officer/kolonel
 	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/kolonel
 
 /datum/equipment_preset/upp/officer/kolonel
@@ -2774,7 +2769,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_KOL_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
 /datum/equipment_preset/upp/officer/ley_gen
@@ -2946,7 +2940,6 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_KOL_OFFICER
-	selection_class = "job_antag"
 	gear_preset = /datum/equipment_preset/upp/officer/gen
 
 /datum/equipment_preset/upp/officer/gen
@@ -4119,7 +4112,7 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/commisar
 	title = JOB_UPP_COMMISSAR
-	selection_class = "job_antag"
+	selection_class = "job_cl"
 	gear_preset = /datum/equipment_preset/upp/commissar
 
 /datum/equipment_preset/upp/commissar

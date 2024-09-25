@@ -107,3 +107,9 @@
   - rscadd: Added more fortunes for fortune cookies.
   stalkerino:
   - balance: ' increased recharge for pred bracer'
+2024-09-25:
+  Git-Nivrak:
+  - qol: Added a preference to show your tag as Queen, turned off by default.
+  stalkerino:
+  - balance: Buffed predator armor, thrall armor,  bullet resistance has been raised.
+      Heavy clan armor has slightly less slowdown (by 1 tier)

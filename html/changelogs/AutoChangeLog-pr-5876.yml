@@ -1,9 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - ui: "added section in dropship flight computer for some terminals to select which dropship to control"
-  - maptweak: "reworked CIC remote terminals"
-  - refactor: "some remote terminals can control different dropships"
-  - balance: "queen will randomly select a dropship to call down to the lz on hijack"
-  - balance: "when dropship exists on primary landing pad, the queen can't call down another dropship"
-  - balance: "when a dropship is enroute to the primary landing pad, the queen can't call another dropship"

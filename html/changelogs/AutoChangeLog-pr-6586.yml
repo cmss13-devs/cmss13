@@ -1,5 +1,0 @@
-author: "BlackCrystalic"
-delete-after: True
-changes:
-  - rscadd: "Byond backed function of sound ECHO ported"
-  - refactor: "refactor of weaponhits hardcode"

@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added note of who deletes a comment in a medical record"
-  - bugfix: "Fixed Delete Entry button showing for deleted medical notes"
-  - bugfix: "Fixed medical record prints not showing who printed it"
-  - bugfix: "Fixed initial gender capitalization in records"
-  - code_imp: "Improved some record checks"
-  - admin: "Added mostly niche logging for all record changes"

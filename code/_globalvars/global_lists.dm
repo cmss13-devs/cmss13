@@ -544,26 +544,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 // Timelock
 GLOBAL_LIST_EMPTY(timelocks)
 
-
-//the global list of specialist kits that haven't been claimed yet.
-GLOBAL_LIST_INIT(available_specialist_sets, list(
-			"Scout Set",
-			"Sniper Set",
-			"Anti-materiel Sniper Set",
-			"Demolitionist Set",
-			"Heavy Grenadier Set",
-			"Pyro Set"
-			))
-
-//Similar thing, but used in /obj/item/spec_kit
-GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
-			"Pyro" = 2,
-			"Grenadier" = 2,
-			"Sniper" = 2,
-			"Scout" = 2,
-			"Demo" = 2,
-			"Anti-materiel Sniper" = 2,
-			))
+GLOBAL_LIST_EMPTY_TYPED(specialist_set_name_dict, /datum/specialist_set)
+GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_specialist_sets())
 
 /proc/init_global_referenced_datums()
 	init_keybindings()

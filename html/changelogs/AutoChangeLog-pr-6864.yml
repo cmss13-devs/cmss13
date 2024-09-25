@@ -1,6 +1,0 @@
-author: "MarpleJones"
-delete-after: True
-changes:
-  - bugfix: "Using the hemostat on the final larva surgery step is now better than using wirecutters or the fork."
-  - rscadd: "The final larva surgery step will now apply organ damage when done barehanded. Barehanded is faster than using tools by a couple of seconds, at the cost of the doctor's and the patient's health."
-  - rscadd: "Adds an acidsplash sound effect to doing the barehanded step."

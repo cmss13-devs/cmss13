@@ -4,7 +4,7 @@
 
 /datum/job/antag/upp
 	title = FACTION_UPP
-	selection_class = "job_marine"
+	selection_class = "job_synth"
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
@@ -88,6 +88,10 @@
 	role_comm_title = "Sol"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
+/datum/job/antag/upp/rifleman
+	title = JOB_UPP
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/soldier
 
 /datum/equipment_preset/upp/soldier/dressed
 	name = "UPP Soldier"

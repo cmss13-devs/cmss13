@@ -13552,7 +13552,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/event/metal/dynamic)
 "oca" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -34247,8 +34247,8 @@ oKt
 sqE
 hjf
 bkr
-wnL
-twv
+dCB
+tAA
 oKt
 hol
 qBk
@@ -34282,8 +34282,8 @@ dCc
 tHN
 iBr
 oKt
-twv
-bkr
+sqE
+xOh
 bkr
 tXi
 tAA
@@ -34449,8 +34449,8 @@ emF
 mUM
 tBd
 eiG
-eiG
-sVy
+vIC
+pTu
 dFb
 pKg
 ugK
@@ -34484,8 +34484,8 @@ dCc
 ugK
 upt
 dFb
-sVy
-eiG
+mUM
+qUu
 eiG
 pvi
 pTu
@@ -34651,8 +34651,8 @@ oKt
 lve
 tox
 bkr
-bkr
-twv
+slH
+opt
 oKt
 hIc
 frE
@@ -34687,7 +34687,7 @@ kjq
 xcY
 oKt
 obV
-bkr
+xOh
 bkr
 dCB
 opt

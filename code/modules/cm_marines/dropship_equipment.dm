@@ -686,9 +686,9 @@
 			break
 
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
-	if(ammo_travelling_time)
+	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
-		for(var/i = 0 to total_seconds)
+		for(var/i in 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
 				ammo_accuracy_range++ //accuracy decreases
@@ -698,6 +698,14 @@
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
+
+	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/custom_missile))
+		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
+		var/total_seconds = max(floor(ammo_travelling_time/10),1)
+		for(var/i in 0 to total_seconds)
+			sleep(10)
+			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
+
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 	new /obj/effect/overlay/temp/blinking_laser (impact)

@@ -24,8 +24,8 @@
 	icon_state = "warhead_mortar"
 	max_container_volume = 240
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 120, "max_ex_shards" = 256,
-							"max_fire_rad" = 12, "max_fire_int" = 45, "max_fire_dur" = 48,
+	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 120, "max_ex_shards" = 200,
+							"max_fire_rad" = 8, "max_fire_int" = 45, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE

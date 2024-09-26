@@ -6,7 +6,7 @@
 	entity_type = /datum/entity/predround_chance
 	table_name = "predround_chance"
 	field_types = list(
-		"chance"=DB_FIELDTYPE_BIGINT,
+		"chance" = DB_FIELDTYPE_BIGINT,
 	)
 
 /datum/view_record/predround_chance

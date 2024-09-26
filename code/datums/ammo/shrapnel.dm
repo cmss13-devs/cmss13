@@ -44,7 +44,7 @@
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 	/// inflicts this many holo stacks per bullet hit
-	var/holo_stacks = 10
+	var/holo_stacks = 20
 	/// modifies the default cap limit of 100 by this amount
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount

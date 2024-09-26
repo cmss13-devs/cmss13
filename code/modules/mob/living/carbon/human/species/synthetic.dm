@@ -12,7 +12,7 @@
 	rarity_value = 2
 	insulated = TRUE
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
+	bloodsplatter_type = /obj/effect/bloodsplatter/synthsplatter
 
 	total_health = 150 //more health than regular humans
 
@@ -139,6 +139,6 @@
 	uses_skin_color = TRUE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH, TRAIT_IRON_TEETH)
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+	bloodsplatter_type = /obj/effect/bloodsplatter/human
 
 	blood_color = BLOOD_COLOR_HUMAN

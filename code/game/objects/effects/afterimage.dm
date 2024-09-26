@@ -11,7 +11,7 @@
 /obj/effect/afterimage/Initialize(mapload, atom/to_copy, fading_duration, fading_to_shift_ratio = 0.5)
 	. = ..()
 	if (!to_copy)
-		stack_trace("Created a [type] without `to_copy`")
+		log_debug("Created a [type] without `to_copy`")
 		qdel(src)
 		return
 	AddElement(/datum/element/temporary, fading_duration)

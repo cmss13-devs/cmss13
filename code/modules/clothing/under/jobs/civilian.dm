@@ -7,6 +7,8 @@
 	desc = "It looks like it could use some more flair."
 	name = "bartender's uniform"
 	icon_state = "ba_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargo
@@ -14,6 +16,8 @@
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
 	icon_state = "qm"
 	item_state = "lb_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargotech
@@ -21,6 +25,8 @@
 	desc = "Shooooorts! They're comfy and easy to wear!"
 	icon_state = "cargotech"
 	item_state = "lb_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/rank/chaplain
@@ -28,6 +34,8 @@
 	name = "chaplain's jumpsuit"
 	icon_state = "chaplain"
 	item_state = "chaplain"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/chaplain/cultist
@@ -44,17 +52,23 @@
 	desc = "An outfit fit for the hard-working man."
 	icon_state = "worker_overalls"
 	item_state = "bl_suit"
+	icon = 'icons/obj/items/clothing/uniforms/workwear.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/chef
 	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
 	name = "chef's uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	icon_state = "chef"
 
 /obj/item/clothing/under/rank/clown
 	name = "clown suit"
 	desc = "<i>'HONK!'</i>"
 	icon_state = "clown"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	flags_jumpsuit = FALSE
 	black_market_value = 25
 
@@ -63,12 +77,16 @@
 	name = "botanist's jumpsuit"
 	icon_state = "hydroponics"
 	item_state = "g_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
 	icon_state = "janitor"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -81,6 +99,8 @@
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
 	name = "Lawyer suit"
+	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/lawyer/black
@@ -117,5 +137,7 @@
 	name = "sensible suit"
 	desc = "It's very... sensible."
 	icon_state = "red_suit"
+	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
 	flags_jumpsuit = FALSE
 

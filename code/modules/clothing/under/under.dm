@@ -1,5 +1,5 @@
 /obj/item/clothing/under
-	icon = 'icons/obj/items/clothing/uniforms.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
 	name = "under"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS

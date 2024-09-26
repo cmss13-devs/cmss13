@@ -13,6 +13,8 @@
 	name = "warden's jumpsuit"
 	icon_state = "warden"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -28,6 +30,8 @@
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "security"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -43,6 +47,8 @@
 	name = "dispatcher's uniform"
 	desc = "A dress shirt and khakis with a security patch sewn on."
 	icon_state = "dispatch"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -60,6 +66,8 @@
 	desc = "It's made of a slightly sturdier material, to allow for robust protection."
 	icon_state = "redshirt2"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -87,6 +95,8 @@
 	desc = "Someone who wears this means business."
 	icon_state = "detective"
 	item_state = "det"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE

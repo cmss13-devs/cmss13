@@ -48,6 +48,25 @@
 	var/buttoned = TRUE
 	var/initial_icon_state
 
+/obj/item/clothing/suit/storage/jacket/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
+
 /obj/item/clothing/suit/storage/jacket/marine/proc/toggle()
 	set name = "Toggle Buttons"
 	set category = "Object"

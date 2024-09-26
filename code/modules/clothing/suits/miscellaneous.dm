@@ -339,6 +339,8 @@
 /obj/item/clothing/under/swimsuit
 	siemens_coefficient = 1
 	flags_armor_protection = 0
+	icon = 'icons/obj/items/clothing/uniforms/underwear_uniforms.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi'
 
 /obj/item/clothing/under/swimsuit/black
 	name = "black swimsuit"

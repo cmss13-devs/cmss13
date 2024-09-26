@@ -10093,7 +10093,7 @@
 /area/shiva/interior/caves/research_caves)
 "gQL" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "gQR" = (

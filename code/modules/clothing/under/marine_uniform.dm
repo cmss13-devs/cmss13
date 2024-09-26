@@ -8,6 +8,8 @@
 	siemens_coefficient = 0.9
 	icon_state = "marine_jumpsuit"
 	worn_state = "marine_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -504,6 +506,7 @@
 	name = "\improper Iron Bear uniform"
 	desc = "A uniform worn by Iron Bears mercenaries in the service of Mother Russia. Smells a little like an actual bear."
 	icon_state = "bear_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
 	worn_state = "bear_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_NO_SENSORS
@@ -518,11 +521,16 @@
 	desc = "A set of UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform"
 	worn_state = "upp_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_UPP
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi'
+	)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
@@ -919,6 +927,8 @@
 	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Three World Empire. Expertly crafted to make you look as important as possible."
 	icon_state = "twe_suit"
 	worn_state = "twe_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi'
 
 /obj/item/clothing/under/stowaway
 	name = "dirty suit"
@@ -936,6 +946,8 @@
 	desc = "A nicely-fitting military suit for a quartermaster. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/rank/synthetic
@@ -943,6 +955,8 @@
 	desc = "A simple uniform made for Synthetic crewmembers."
 	icon_state = "rdalt"
 	worn_state = "rdalt"
+	icon = 'icons/obj/items/clothing/uniforms/synthetic_uniforms.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/synthetic_uniforms.dmi'
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic/frontier
@@ -990,6 +1004,8 @@
 	icon_state = "pilot_flightsuit_alt"
 	item_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
@@ -997,12 +1013,16 @@
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi'
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi'
 	flags_item = NO_CRYO_STORE
 	var/obj/structure/machinery/camera/camera
 

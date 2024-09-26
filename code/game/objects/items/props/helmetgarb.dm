@@ -601,7 +601,7 @@
 /obj/item/prop/helmetgarb/compass
 	name = "compass"
 	desc = "It always faces north. Are you sure it is not broken?"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "compass"
 	w_class = SIZE_SMALL
 

@@ -100,6 +100,7 @@
 /obj/item/weapon/twohanded/offhand
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 

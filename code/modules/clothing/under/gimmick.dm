@@ -10,6 +10,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	has_sensor = UNIFORM_NO_SENSORS
 	displays_id = 0
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
 
 	item_icons = list(
 		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',

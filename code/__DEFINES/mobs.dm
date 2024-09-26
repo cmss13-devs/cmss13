@@ -312,24 +312,24 @@
 #define CAN_HOLD_ONE_HAND 2
 
 GLOBAL_LIST_INIT(default_onmob_icons, list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
 		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
 		WEAR_EYES = 'icons/mob/humans/onmob/eyes.dmi',
 		WEAR_ID = 'icons/mob/mob.dmi',
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_0.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi',
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
 		WEAR_FEET = 'icons/mob/humans/onmob/feet.dmi',
-		WEAR_FACE = 'icons/mob/humans/onmob/mask.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi',
 		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
 		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
 		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
-		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/misc.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
 		))
 
 GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(

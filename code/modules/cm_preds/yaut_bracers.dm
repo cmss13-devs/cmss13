@@ -513,8 +513,9 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
 	set name = "Remove Bracer Attachment"
 	set desc = "Remove Bracer Attachment From Your Bracer."
-	set category = "Yautja.Weaponsr"
+	set category = "Yautja.Weapons"
 	set src in usr
+	. = attachment_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/attachment_removal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))

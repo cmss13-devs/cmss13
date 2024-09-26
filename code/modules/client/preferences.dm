@@ -100,7 +100,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
-	var/predator_cape_type = "poncho"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
@@ -540,7 +539,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				dat += "<div id='column3'>"
 				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
-				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[capitalize_first_letters(predator_cape_type)]</b></a><br>"
 				dat += "<b>Cape Color:</b> "
 				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
 				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
@@ -1346,10 +1344,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
 							options += list(capitalize_first_letters(cape_name) = cape_name)
 
-					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
-					if(!new_cape)
-						return
-					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)

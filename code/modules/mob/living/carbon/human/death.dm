@@ -91,7 +91,7 @@
 			last_living_human = cur_human
 
 		if(!see_humans_on_tacmap && shipside_humans_count < (main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
-			xeno_announcement("There are only a clawful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			xeno_announcement("There is only a clawful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			main_hive.see_humans_on_tacmap = TRUE
 		if(last_living_human && shipside_humans_count <= 1 && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
 			GLOB.last_qm_callout = world.time

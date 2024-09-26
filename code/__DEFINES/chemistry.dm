@@ -313,7 +313,7 @@
 
 /// Amount of phosphorus that equals 1 radius of white phosphorus smoke
 #define CHEM_FIRE_PHOSPHORUS_PER_RADIUS 10
-/// The minimum amount of phoron required to turn shrapnel into incendiary shrapnel
+/// The minimum amount of chems required to turn shrapnel into a special type
 #define EXPLOSION_PHORON_THRESHOLD 10
 #define EXPLOSION_ACID_THRESHOLD 10
 #define EXPLOSION_NEURO_THRESHOLD 30
@@ -321,7 +321,7 @@
 #define EXPLOSION_MIN_FALLOFF 25
 #define EXPLOSION_BASE_SHARDS 4
 
-/// The maximum amount of shards is divided by this number if the shards are incendiary
+/// The maximum amount of shards is divided by this number if the shards are of special type
 #define INCENDIARY_SHARDS_MAX_REDUCTION	2
 #define HORNET_SHARDS_MAX_REDUCTION 2
 #define NEURO_SHARDS_MAX_REDUCTION 2

@@ -70,6 +70,19 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/shrapnel/neuro
+	name = "neurotoxin coated shrapnel"
+	icon_state = "neurotoxin"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	shell_speed = AMMO_SPEED_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/M, obj/projectile/P)
+	if(M.slowed < 6)
+		M.adjust_effect(0.8, SLOW)
+
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"
 	icon_state = "shrapnelshot_bit"

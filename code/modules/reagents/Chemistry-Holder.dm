@@ -633,12 +633,20 @@
 				shards += floor(R.volume)
 			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+			else if(R.id == "sulphuric acid" && R.volume >= EXPLOSION_ACID_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+			else if(R.id == "neurotoxinplasma" && R.volume >= EXPLOSION_NEURO_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/neuro
 
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
 		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
 		if(ex_falloff < EXPLOSION_MIN_FALLOFF)

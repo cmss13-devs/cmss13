@@ -1,0 +1,4 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - bugfix: "Steelcrest soak now uses primary ability 3 hotkey instead of ability 5."

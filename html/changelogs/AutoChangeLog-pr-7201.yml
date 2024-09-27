@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Pred round chance now increases by 20% whenever it isn't a pred round and resets back to 20% when it is a pred round"

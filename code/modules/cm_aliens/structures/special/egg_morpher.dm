@@ -14,7 +14,7 @@
 	var/huggers_to_grow_max = 12
 	var/huggers_reserved = 0
 	var/datum/shape/range_bounds
-	var/spawn_cooldown_length = 30 SECONDS
+	var/spawn_cooldown_length = 120 SECONDS
 	COOLDOWN_DECLARE(spawn_cooldown)
 
 

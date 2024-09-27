@@ -6,30 +6,14 @@
 
 	var/honor
 
-/datum/entity/clan
-	var/name
-	var/description
-
-	var/honor
-	var/color
-
 BSQL_PROTECT_DATUM(/datum/entity/clan_player)
 BSQL_PROTECT_DATUM(/datum/entity/clan)
 
-/datum/entity_meta/clan
-	entity_type = /datum/entity/clan
-	table_name = "clans"
-	field_typepaths = list(
-		"name" = DB_FIELDTYPE_STRING_MEDIUM,
-		"description" = DB_FIELDTYPE_STRING_MAX,
-		"honor" = DB_FIELDTYPE_BIGINT,
-		"color" = DB_FIELDTYPE_STRING_SMALL,
-	)
-
-/datum/entity_meta/clan/on_insert(datum/entity/clan/player_clan)
-	player_clan.color = "#FFFFFF"
-
-	player_clan.save()
+DEFINE_ENTITY(clan, "clans")
+FIELD_STRING_MEDIUM(clan, name)
+FIELD_STRING_MAX(clan, description)
+FIELD_BIGINT(clan, honor)
+FIELD_DEFAULT_VALUE_STRING_SMALL(clan, color, "#FFFFFF")
 
 /datum/entity_meta/clan_player
 	entity_type = /datum/entity/clan_player

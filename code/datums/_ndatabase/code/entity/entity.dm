@@ -23,6 +23,7 @@
 	var/id
 	var/status
 	var/datum/entity_meta/metadata
+	var/datum/db_field/field_base_type
 	var/__key_synced = FALSE
 
 /datum/entity/proc/save()

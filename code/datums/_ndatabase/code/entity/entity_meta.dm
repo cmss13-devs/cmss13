@@ -58,7 +58,7 @@
 
 /// Proc to populate field_typepaths list, mainly used for the no-boiler plate entity definitions
 /datum/entity_meta/proc/setup_field_typepaths()
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 	// Should always be calling other overrides of the proc, entities are final classes any way
 	SHOULD_CALL_PARENT(TRUE)
 	return

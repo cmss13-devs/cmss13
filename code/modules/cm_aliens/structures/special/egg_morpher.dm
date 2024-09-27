@@ -49,6 +49,7 @@
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/item, mob/user)
 	if(!isxeno(user))
 		return
+
 	if(istype(item, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/hugger = item
 		if(hugger.stat != DEAD)
@@ -65,6 +66,22 @@
 			qdel(hugger)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
+
+	//refill egg morpher from an egg
+	if(istype(item, /obj/item/xeno_egg))
+		var/obj/item/xeno_egg/egg = item
+		if(stored_huggers >= huggers_to_grow_max)
+			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
+			return
+		if(user)
+			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."), \
+				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
+			user.temp_drop_inv_item(egg)
+		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
+		qdel(egg)
+		return
+
 	return ..(item, user)
 
 /obj/effect/alien/resin/special/eggmorph/update_icon()
@@ -77,7 +94,7 @@
 /obj/effect/alien/resin/special/eggmorph/process()
 	check_facehugger_target()
 
-	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers < huggers_to_grow_max)
+	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
 	COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
 	if(stored_huggers < huggers_to_grow_max)

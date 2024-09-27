@@ -387,8 +387,6 @@
 			. = call_disc_internal(caller, TRUE)
 		if(7)
 			. = translate_internal(caller, TRUE)
-		if(8)
-			. = attachment_removal(caller, TRUE)
 		else
 			. = delimb_user(caller)
 
@@ -409,44 +407,39 @@
 	return TRUE
 
 //bracer attachments
+/obj/item/bracer_attachments
+	var/attached_weapon_type
 
-//scims
-/obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attachment, mob/user)
-	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put \the [attachment] into \the [src]!"))
-		return
-	if(istype(attachment, /obj/item/bracer_attachments/scimitars))
-		if(bracer_attachment_attached)
-			to_chat(user, SPAN_WARNING("There's already a attachment attached to the bracer!"))
-			return
-		attachment_internal(usr, TRUE)
-		qdel(left_bracer_attachment)
-		qdel(right_bracer_attachment)
-		left_bracer_attachment = new /obj/item/weapon/wristblades/scimitar
-		right_bracer_attachment = new /obj/item/weapon/wristblades/scimitar
-		bracer_attachment_attached = TRUE
-		qdel(attachment)
-		return
-	return ..()
+/obj/item/bracer_attachments/wristblades
+	attached_weapon_type = /obj/item/weapon/wristblades
 
-//wristblades
-/obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attachment, mob/user)
+/obj/item/bracer_attachments/scimitars
+	attached_weapon_type = /obj/item/weapon/wristblades/scimitar
+
+/obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/bracer_attachments))
+		return ..()
+
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put \the [attachment] into \the [src]!"))
+		to_chat(user, SPAN_WARNING("You do not know how to attach \the [attacking_item] to \the [src]."))
 		return
-	if(istype(attachment, /obj/item/bracer_attachments/wristblades))
-		if(bracer_attachment_attached)
-			to_chat(user, SPAN_WARNING("There's already a attachment attached to the bracer!"))
-			return
-		attachment_internal(usr, TRUE)
-		qdel(left_bracer_attachment)
-		qdel(right_bracer_attachment)
-		left_bracer_attachment = new /obj/item/weapon/wristblades
-		right_bracer_attachment = new /obj/item/weapon/wristblades
-		bracer_attachment_attached = TRUE
-		to_chat(user, SPAN_WARNING("You attach the [attachment] to the bracer"))
-		qdel(attachment)
+
+	if(left_bracer_attachment || right_bracer_attachment)
+		to_chat(user, SPAN_WARNING("\The [src] already has bracer attachments!"))
 		return
+
+	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
+	if(!bracer_attachment.attached_weapon_type)
+		CRASH("[key_name(user)] attempted to attach \the [bracer_attachment] to \the [src], with no valid attached_weapon.")
+		return
+
+	to_chat(user, SPAN_NOTICE("You attach \the [bracer_attachment] to \the [src]."))
+	qdel(attacking_item)
+	left_bracer_attachment = new bracer_attachment.attached_weapon_type
+	right_bracer_attachment = new bracer_attachment.attached_weapon_type
+
+	bracer_attachment_attached = bracer_attachment
+	bracer_attachment.forceMove(src)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracer_attachment()
@@ -515,23 +508,6 @@
 	set desc = "Remove Bracer Attachment From Your Bracer."
 	set category = "Yautja.Weapons"
 	set src in usr
-	. = attachment_internal(usr, FALSE)
-
-/obj/item/clothing/gloves/yautja/hunter/proc/attachment_removal(mob/living/carbon/human/caller, forced = FALSE)
-	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
-		return
-	if(!HAS_TRAIT(caller, TRAIT_YAUTJA_TECH))
-		to_chat(caller, SPAN_WARNING("You have no idea how to remove \the attachment from \the [src]!"))
-		return
-	if(bracer_attachment_attached)
-		to_chat(caller, SPAN_WARNING("There's no attachment attached to the bracer!"))
-		return
-		attachment_removal(usr, TRUE)
-		qdel(left_bracer_attachment)
-		qdel(right_bracer_attachment)
-		bracer_attachment_attached = FALSE
-		to_chat(caller, SPAN_WARNING("You remove \the attachment from the [src]!"))
-		return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"

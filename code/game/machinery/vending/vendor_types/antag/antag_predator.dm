@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
         list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
         list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

@@ -20,6 +20,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
+	COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
@@ -135,6 +136,10 @@
 	if(!linked_hive || (M.hivenumber != linked_hive.hivenumber))
 		return ..(M)
 	if(stored_huggers)
+		//this way another hugger doesn't immediately spawn after we pick one up
+		if(stored_huggers == huggers_to_grow_max)
+			COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
+
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
 		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)

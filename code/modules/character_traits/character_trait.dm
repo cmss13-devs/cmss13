@@ -1,18 +1,18 @@
-/// The list of traits a client will gives its human mob upon spawn
-/// Store as typepaths
-/datum/preferences/var/list/traits
-/// State var for preferences to track trait points
-/// Change this value to set the amount of trait points you start with
+/// The list of traits a client will gives its human mob upon spawn.
+/// Store as typepaths.
+/datum/preferences/var/list/datum/character_trait/traits
+/// State var for preferences to track trait points.
+/// Change this value to set the amount of trait points you start with.
 /datum/preferences/var/trait_points = 2
-/// State var to check if traits have been read in to modify
-/// trait points
+/// State var to check if traits have been read in to modify.
+/// trait points.
 /datum/preferences/var/read_traits = FALSE
-/// The list of traits a human has
-/// Store as typepaths
-/mob/living/carbon/human/var/list/traits
+/// The list of traits a human has.
+/// Store as typepaths.
+/mob/living/carbon/human/var/list/datum/character_trait/traits
 
 /** Global lists
- * character_trait_groups should be defined BEFORE character_traits because of dependencies
+ * character_trait_groups should be defined BEFORE character_traits because of dependencies.
  * When trying to reference specific traits or trait groups, reference these lists, which
  * store character traits and character trait groups by their type paths
  *
@@ -23,8 +23,8 @@
 GLOBAL_REFERENCE_LIST_INDEXED(character_trait_groups, /datum/character_trait_group, type)
 GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 
-/// Character traits
-/// Similar to the traits from Project Zomboid
+/// Character traits.
+/// Similar to the traits from Project Zomboid.
 /datum/character_trait
 	var/trait_name = "Character Trait"
 	var/trait_desc = "A character trait"
@@ -52,7 +52,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 		CRASH("Invalid trait_group set for character trait [type]")
 	trait_group.traits += src
 
-/// A wrapper to check if the trait can be applied first
+/// A function to check if the trait can be applied (prior to getting it)
 /datum/character_trait/proc/can_give_trait(datum/preferences/target)
 	if(type in target.traits)
 		return FALSE
@@ -105,9 +105,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 
 /// Character trait groups for constraints (if any)
 /datum/character_trait_group
-	/// For player prefs menu
+	// For player prefs menu
+	/// Group name as shown in the preferences menu
 	var/trait_group_name = "Trait Group"
-	var/group_visible = TRUE //Set this to false so the group doesn't show up in preferences
+	/// Whether the group will show up in the preferences menu
+	var/group_visible = TRUE
 
 	// CONSTRAINTS
 	// MODIFY THESE VARS FOR SETTING CONSTRAINTS FOR TRAIT GROUPS

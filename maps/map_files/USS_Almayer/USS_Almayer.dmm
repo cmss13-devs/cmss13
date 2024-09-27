@@ -11595,7 +11595,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bHD" = (
-/obj/structure/ship_ammo/rocket/banshee,
+/obj/structure/dropship_equipment/weapon/launch_bay,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
 "bHG" = (
@@ -23597,6 +23597,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/warden,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "fSl" = (
@@ -34485,8 +34486,7 @@
 "kvL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/warden_office)
@@ -40878,6 +40878,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
+"nfF" = (
+/obj/structure/ship_ammo/sentry,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "ngf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -53061,6 +53065,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "sbZ" = (
@@ -57390,6 +57395,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "tQL" = (
@@ -63259,6 +63265,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "wei" = (
@@ -88625,7 +88632,7 @@ pcl
 bpj
 pcl
 gHZ
-pcl
+nfF
 fgE
 btO
 btO

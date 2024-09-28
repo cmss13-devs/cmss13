@@ -63,7 +63,7 @@
 	ability_name = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 20
 	xeno_cooldown = 17 SECONDS
 

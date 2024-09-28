@@ -211,6 +211,19 @@
 	item_state = "lfpacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
+/obj/item/storage/fancy/cigarettes/spirit
+	name = "\improper Turquoise American Spirit Packet"
+	desc = "A pack of turquoise American Spirit cigarettes."
+	icon_state = "naspacket"
+	item_state = "naspacket"
+	default_cig_type = /obj/item/clothing/mask/cigarette
+
+/obj/item/storage/fancy/cigarettes/spirit/yellow
+	name = "\improper Yellow American Spirit Packet"
+	desc = "A pack of yellow American Spirit cigarettes."
+	icon_state = "y_naspacket"
+	item_state = "y_naspacket"
+
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
 	name = "\improper Lucky Strikes Mini Packet"
 	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."

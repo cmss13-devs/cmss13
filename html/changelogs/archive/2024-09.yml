@@ -88,3 +88,40 @@
   realforest2001:
   - bugfix: Fixes the duration of the AI Core nerve gas, will no longer last a full
       minute.
+2024-09-20:
+  iloveloopers:
+  - balance: Ravager scissor cut will now destroy fences.
+  realforest2001:
+  - rscadd: Xenos with USCM IFF tags no longer trigger code red when on dropships.
+  tallfission:
+  - qol: Decreased dropship equipment printing time to 3 seconds from 10 seconds.
+2024-09-24:
+  Mister-moon1:
+  - bugfix: fixes what bracer power should be
+  - code_imp: 'reverts #7159'
+  Private-Tristan, KiVts:
+  - bugfix: Injector and Coagulator plates are now functional.
+  efzapa:
+  - qol: MPs now latejoin in the Brig
+  nauticall:
+  - rscadd: Added more fortunes for fortune cookies.
+  stalkerino:
+  - balance: ' increased recharge for pred bracer'
+2024-09-25:
+  Git-Nivrak:
+  - qol: Added a preference to show your tag as Queen, turned off by default.
+  stalkerino:
+  - balance: Buffed predator armor, thrall armor,  bullet resistance has been raised.
+      Heavy clan armor has slightly less slowdown (by 1 tier)
+2024-09-27:
+  Git-Nivrak:
+  - balance: Pred round chance now increases by 20% whenever it isn't a pred round
+      and resets back to 20% when it is a pred round
+  - balance: Limits hunting traps duration to 30 seconds.
+  GoldenDarkness55:
+  - bugfix: Steelcrest soak now uses primary ability 3 hotkey instead of ability 5.
+  Ivniinvi:
+  - spellcheck: Fixed BLU-200 description
+2024-09-28:
+  QuickLode:
+  - rscadd: Adds USCM & Falling Falcons patches to Commanding Officer's vendor.

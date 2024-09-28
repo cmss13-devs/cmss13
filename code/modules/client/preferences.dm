@@ -204,6 +204,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/xeno_name_ban = FALSE
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/playtime_perks = TRUE
+	var/show_queen_name = FALSE
 
 	var/stylesheet = "Modern"
 
@@ -448,6 +449,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
 
 			dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Show Queen Name:</b> <a href='?_src_=prefs;preference=show_queen_name'><b>[show_queen_name? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
 
 			var/tempnumber = rand(1, 999)
@@ -1858,6 +1860,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("playtime_perks")
 					playtime_perks = !playtime_perks
+
+				if("show_queen_name")
+					show_queen_name = !show_queen_name
 
 				if("be_special")
 					var/num = text2num(href_list["num"])

@@ -434,6 +434,18 @@
 	name = "Intelligence Officer late join"
 	job = JOB_INTEL
 
+/obj/effect/landmark/late_join/police
+	name = "Military Police late join"
+	job = JOB_POLICE
+
+/obj/effect/landmark/late_join/warden
+	name = "Military Warden late join"
+	job = JOB_WARDEN
+
+/obj/effect/landmark/late_join/chief_police
+	name = "Chief Military Police late join"
+	job = JOB_CHIEF_POLICE
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)

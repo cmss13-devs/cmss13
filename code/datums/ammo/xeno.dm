@@ -43,12 +43,12 @@
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
-			return //species like zombies or synths are immune to neurotoxin
 		if(drain_stims)
 			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
 				H.reagents.remove_reagent(stim.id, power, TRUE)
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
 				H.reagents.remove_reagent(med.id, power, TRUE)

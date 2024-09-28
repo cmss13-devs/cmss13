@@ -149,7 +149,10 @@
 	unslashable = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
-		return
+	return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/emp_act(severity)
+	return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)

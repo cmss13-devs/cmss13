@@ -1,5 +1,0 @@
-author: "VileBeggar, SubjectD9341"
-delete-after: True
-changes:
-  - rscadd: "LV-624 now contains giant lizards. You can feed them with specific food items in order to make them non-hostile to your faction."
-  - code_imp: "Simple mobs can now process fire, though the functionality is turned off by default."

@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - bugfix: "fixed ERT boarding shuttle able to spawn and dock"

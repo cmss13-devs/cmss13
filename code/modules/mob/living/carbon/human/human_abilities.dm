@@ -1,3 +1,12 @@
+/mob/living/carbon/human/proc/set_selected_ability(datum/action/human_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
+
 /datum/action/human_action/update_button_icon()
 	if(action_cooldown_check())
 		button.color = rgb(120,120,120,200)
@@ -118,6 +127,33 @@
 /datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
 	return S.repairing
 
+
+/datum/action/human_action/psychic_whisper
+	name = "Psychic Whipser"
+	action_icon_state = "cultist_channel_hivemind"
+
+/datum/action/human_action/psychic_whisper/action_activate()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/human_owner = owner
+
+	if(human_owner.client.prefs.muted & MUTE_IC)
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		return
+
+	var/list/target_list = list()
+	for(var/mob/living/carbon/possible_target in view(7, human_owner))
+		if(possible_target == human_owner || !possible_target.client) 
+			continue
+		target_list += possible_target
+
+	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "hive_status")
+	if(!target_mob) 
+		return
+
+	human_owner.psychic_whisper(target_mob)
+
 /*
 CULT
 */
@@ -136,23 +172,21 @@ CULT
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/human_action/activable/remove_from(mob/living/carbon/human/H)
 	..()
 	if(H.selected_ability == src)
-		H.selected_ability = null
+		H.set_selected_ability(null)
 
 /datum/action/human_action/activable/proc/use_ability(mob/M)
 	return

@@ -1038,7 +1038,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/role in mobs_by_role)
 		for(var/freed_mob in mobs_by_role[role])
 			freed_mob_choices["[freed_mob] ([role])"] = freed_mob
-
+	if(!length(freed_mob_choices))
+		to_chat(src, SPAN_WARNING("There are no Freed Mobs available."))
+		return
 	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", freed_mob_choices)
 	if(!choice)
 		return

@@ -1,7 +1,7 @@
 // /obj/effect/landmark/survivor_spawner/shivas_assistant_manager
 // panic_room_insert_shivas.dmm
 
-/datum/equipment_preset/survivor/wy/asstmanager
+/datum/equipment_preset/survivor/corporate/asstmanager
 	name = "Survivor - Corporate Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
@@ -28,7 +28,7 @@
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/wy/asstmanager/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/corporate/asstmanager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)

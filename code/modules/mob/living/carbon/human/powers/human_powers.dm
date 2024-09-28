@@ -183,6 +183,10 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities.Psychic"
 
+	if(stat == DEAD)
+		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
+
 	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
@@ -200,12 +204,16 @@
 				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
 				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
-	return
+	return FALSE
 
 /mob/living/carbon/human/proc/psychic_radiance()
 	set name = "Psychic Radiance"
 	set desc = "Whisper silently to multiple people over a distance."
 	set category = "Abilities.Psychic"
+
+	if(stat == DEAD)
+		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
 	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Radiance")
 	var/list/target_list = list()

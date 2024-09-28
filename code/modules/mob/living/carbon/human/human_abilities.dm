@@ -135,12 +135,16 @@
 /datum/action/human_action/psychic_whisper/action_activate()
 	. = ..()
 	if(!ishuman(owner))
-		return
+		return FALSE
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
 		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
-		return
+		return FALSE
+
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
 	var/list/target_list = list()
 	for(var/mob/living/carbon/possible_target in view(7, human_owner))
@@ -150,7 +154,7 @@
 
 	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "wizard")
 	if(!target_mob)
-		return
+		return FALSE
 
 	human_owner.psychic_whisper(target_mob)
 
@@ -162,12 +166,16 @@
 /datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
 	. = ..()
 	if(!ishuman(owner))
-		return
+		return FALSE
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
 		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
-		return
+		return FALSE
+
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
 	human_owner.psychic_radiance()
 

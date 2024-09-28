@@ -38,7 +38,7 @@ AddTimelock(/datum/job/fax_responder/uscm_pvst, list(
 	gear_preset = /datum/equipment_preset/fax_responder/wey_yu
 
 AddTimelock(/datum/job/fax_responder/wy, list(
-	JOB_CORPORATE_ROLES = 150 HOURS,
+	JOB_CORPORATE_ROLES = 75 HOURS,
 ))
 
 /datum/job/fax_responder/upp

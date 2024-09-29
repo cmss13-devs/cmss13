@@ -291,7 +291,7 @@
 	/// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
 	var/movement_slowdown = 0
 
-	/// if true, ignore the check_state() proc. will also stop the ability from being deactivated when resting.
+	/// if true, ignore the check_state() proc.
 	var/ignore_check_state = FALSE
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()

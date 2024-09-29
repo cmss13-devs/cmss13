@@ -276,6 +276,8 @@
 
 	if(user.action_busy)
 		return
+	if(GLOB.master_mode == "Faction Clash UPP CM")
+		indestructible_splints = TRUE
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

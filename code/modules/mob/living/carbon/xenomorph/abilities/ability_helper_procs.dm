@@ -172,7 +172,7 @@
 	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
-	if(stat || resting)
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && (stat || resting))
 		if(is_zoomed)
 			is_zoomed = 0
 			zoom_out()
@@ -212,7 +212,8 @@
 	is_zoomed = 0
 	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
-		action.on_zoom_out()
+		if(!action.ignore_check_state)
+			action.on_zoom_out()
 		return
 
 /mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/turf, spray_type = /obj/effect/xenomorph/spray, range = 3)

@@ -291,6 +291,9 @@
 	/// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
 	var/movement_slowdown = 0
 
+	/// if true, ignore the check_state() proc. will also stop the ability from being deactivated when resting.
+	var/ignore_check_state = FALSE
+
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && !xeno.buckled)
@@ -305,7 +308,7 @@
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!xeno.check_state())
+	if (!ignore_check_state && !xeno.check_state())
 		return
 
 	if(xeno.observed_xeno)

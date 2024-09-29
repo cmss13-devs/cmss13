@@ -564,6 +564,7 @@
 #include "code\datums\entities\player_stat.dm"
 #include "code\datums\entities\player_sticky_ban.dm"
 #include "code\datums\entities\player_times.dm"
+#include "code\datums\entities\predround_chance.dm"
 #include "code\datums\entities\ticket.dm"
 #include "code\datums\entities\logs\player_times_log.dm"
 #include "code\datums\factions\clf.dm"

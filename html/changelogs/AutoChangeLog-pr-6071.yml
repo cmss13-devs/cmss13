@@ -1,0 +1,10 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - maptweak: "Sorokyne Strata - made most indestructable walls destructable."
+  - maptweak: "Sorokyne Strata - changed rooms/hallways with have 1x1 hallways to be wider."
+  - maptweak: "Sorokyne Strata - replaced some small light fixtures with normal light fixtures."
+  - maptweak: "Sorokyne Strata - reduced 2 tiles or more thick walls to 1 tile thick walls."
+  - balance: "Made most areas weedable, except LZ's zones and surrounding LZ's sub-variants."
+  - balance: "Allow LAZ inside Outposts (mining and normal ones) as long as they aim at light blue areas (glass ceiling hallways)."
+  - code_imp: "Changed pixel offset for \"tube\" lights to be closer to \"floor\"."

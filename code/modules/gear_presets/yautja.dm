@@ -23,6 +23,7 @@
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/new_human)
 	new_human.job = rank
 	new_human.faction = faction
+	new_human.marine_buyable_categories = PREDATOR_CAN_BUY_ALL
 
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/new_human)
 	return //No vanity items for Yautja!

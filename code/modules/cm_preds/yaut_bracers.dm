@@ -274,8 +274,8 @@
 
 	var/bracer_attachment_attached = FALSE
 	var/bracer_attachment_deployed = FALSE
-	var/obj/item/weapon/wristblades/left_bracer_attachment
-	var/obj/item/weapon/wristblades/right_bracer_attachment
+	var/obj/item/weapon/left_bracer_attachment
+	var/obj/item/weapon/right_bracer_attachment
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
@@ -408,39 +408,54 @@
 
 //bracer attachments
 /obj/item/bracer_attachments
+	name = "wristblade bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	var/attached_weapon_type
 
 /obj/item/bracer_attachments/wristblades
-	attached_weapon_type = /obj/item/weapon/wristblades
+	name = "wristblade bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon_state = "wrist"
+	item_state = "wristblade"
 
 /obj/item/bracer_attachments/scimitars
-	attached_weapon_type = /obj/item/weapon/wristblades/scimitar
+	name = "scimitar bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon_state = "scim"
+	item_state = "scim"
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach \the [attacking_item] to \the [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
 		return
 
 	if(left_bracer_attachment || right_bracer_attachment)
-		to_chat(user, SPAN_WARNING("\The [src] already has bracer attachments!"))
+		to_chat(user, SPAN_WARNING("The [src] already has bracer attachments!"))
 		return
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach \the [bracer_attachment] to \the [src], with no valid attached_weapon.")
-		return
+		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
 
-	to_chat(user, SPAN_NOTICE("You attach \the [bracer_attachment] to \the [src]."))
-	qdel(attacking_item)
+	to_chat(user, SPAN_NOTICE("You attach the [bracer_attachment] to the [src]."))
+
 	left_bracer_attachment = new bracer_attachment.attached_weapon_type
 	right_bracer_attachment = new bracer_attachment.attached_weapon_type
 
-	bracer_attachment_attached = bracer_attachment
+	bracer_attachment_attached = TRUE
 	bracer_attachment.forceMove(src)
 	return ..()
+
+/obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
+	set name = "Remove Bracer Attachment"
+	set desc = "Remove Bracer Attachment From Your Bracer."
+	set category = "Yautja.Weapons"
+	set src in usr
+
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracer_attachment()
 	set name = "Use Bracer Attachment"
@@ -492,7 +507,7 @@
 			if(!is_offhand_full)
 				caller.put_in_inactive_hand(left_bracer_attachment)
 		bracer_attachment_deployed = TRUE
-		to_chat(caller, SPAN_NOTICE("You activate your [left_bracer_attachment.plural_name]."))
+		to_chat(caller, SPAN_NOTICE("You activate your bracer attachment."))
 		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
 
 	var/datum/action/predator_action/bracer/wristblade/wb_action
@@ -502,12 +517,6 @@
 			break
 
 	return TRUE
-
-/obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
-	set name = "Remove Bracer Attachment"
-	set desc = "Remove Bracer Attachment From Your Bracer."
-	set category = "Yautja.Weapons"
-	set src in usr
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"

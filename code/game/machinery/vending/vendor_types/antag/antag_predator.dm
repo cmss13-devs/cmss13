@@ -1,74 +1,85 @@
 GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("Essential Hunting Supplies", 0, null, null, null),
-        list("Hunting Equipment", 0, list(/obj/item/clothing/shoes/yautja/hunter/knife,/obj/item/clothing/under/chainshirt/hunter, /obj/item/device/radio/headset/yautja,/obj/item/storage/medicomp/full,/obj/item/device/yautja_teleporter,/obj/item/storage/backpack/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+        list("Hunting Equipment", 0, /obj/effect/essentials_set/yautja,	MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-        list("ARMOR", 0, null, null, null),
-        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-        list("Clan Mask", 0, /obj/item/clothing/mask/gas/yautja/hunter, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+        list("Armor", 0, null, null, null),
+        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, PREDATOR_CAN_BUY_PREDATOR_ARMOR , VENDOR_ITEM_MANDATORY),
+        list("Clan Mask", 0, /obj/item/clothing/mask/gas/yautja/hunter, PREDATOR_CAN_BUY_CLAN_MASK, VENDOR_ITEM_MANDATORY),
+		list("Greaves", 0, /obj/item/clothing/shoes/yautja/hunter/knife, PREDATOR_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+
+		list("Support", 0, null, null, null),
+        list("Medical Kit", 0, /obj/item/storage/medicomp/full, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+        list("Telaporter", 0, /obj/item/device/yautja_teleporter, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
         list("Bracer Attachments", 0, null, null, null),
-        list("Wrist Blades", 0, /obj/item/bracer_attachments/wristblades, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+        list("Wrist Blades", 0, /obj/item/bracer_attachments/wristblades, PREDATOR_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
         list("Main Weapons (CHOOSE 1)", 0, null, null, null),
-        list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+        list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
 
         list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
-        list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Swift Plasma Pistol", 0, /obj/item/weapon/gun/energy/yautja/plasmapistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Agile Drone", 0, /obj/item/falcon_drone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Swift Plasma Pistol", 0, /obj/item/weapon/gun/energy/yautja/plasmapistol, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Agile Drone", 0, /obj/item/falcon_drone, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
         list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
-        list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
     ))
 
 GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
         list("Essential Hunting Supplies", 0, null, null, null),
-        list("Hunting Equipment", 0, list(/obj/item/clothing/shoes/yautja/hunter/knife, /obj/item/clothing/under/chainshirt/hunter, /obj/item/device/radio/headset/yautja, /obj/item/storage/medicomp/full, /obj/item/device/yautja_teleporter, /obj/item/storage/backpack/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+        list("Hunting Equipment", 0, /obj/effect/essentials_set/yautja,	MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-        list("ARMOR", 0, null, null, null),
-        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-        list("Clan Mask", 0, /obj/item/clothing/mask/gas/yautja/hunter, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+        list("Armor", 0, null, null, null),
+        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, PREDATOR_CAN_BUY_PREDATOR_ARMOR , VENDOR_ITEM_MANDATORY),
+        list("Clan Mask", 0, /obj/item/clothing/mask/gas/yautja/hunter, PREDATOR_CAN_BUY_CLAN_MASK, VENDOR_ITEM_MANDATORY),
+		list("Greaves", 0, /obj/item/clothing/shoes/yautja/hunter/knife, PREDATOR_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+
+		list("Support", 0, null, null, null),
+        list("Medical Kit", 0, /obj/item/storage/medicomp/full, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+        list("Telaporter", 0, /obj/item/device/yautja_teleporter, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
         list("Bracer Attachments", 0, null, null, null),
-        list("Wrist Blades", 0, /obj/item/bracer_attachments/wristblades, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+        list("Wrist Blades", 0, /obj/item/bracer_attachments/wristblades, PREDATOR_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
         list("Main Weapons (CHOOSE 1)", 0, null, null, null),
-        list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-        list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+        list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+        list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
+		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, PREDATOR_CAN_BUY_MAIN_WEAPON, VENDOR_ITEM_MANDATORY),
 
         list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
-        list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Swift Plasma Pistol", 0, /obj/item/weapon/gun/energy/yautja/plasmapistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Agile Drone", 0, /obj/item/falcon_drone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-        list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Swift Plasma Pistol", 0, /obj/item/weapon/gun/energy/yautja/plasmapistol, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Agile Drone", 0, /obj/item/falcon_drone, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+        list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, PREDATOR_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
         list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
-        list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Ceremonial Cape", 0, /obj/item/clothing/yautja_cape/ceremonial, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-        list("Full-Cape", 0, /obj/item/clothing/yautja_cape, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-    ))
+        list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Ceremonial Cape", 0, /obj/item/clothing/yautja_cape/ceremonial, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+        list("Full-Cape", 0, /obj/item/clothing/yautja_cape, PREDATOR_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	))
+
 /obj/structure/machinery/cm_vending/clothing/yautja
     name = "\improper Yautja Hunting Gear Rack"
     desc = "A gear rack for hunting, expose your bracers ID chip to access."
@@ -87,6 +98,13 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/get_listed_products(mob/user)
     return GLOB.cm_vending_elder_yautja
+
+/obj/effect/essentials_set/yautja
+	spawned_gear_list = list(
+		/obj/item/clothing/under/chainshirt/hunter,
+		/obj/item/device/radio/headset/yautja,
+		/obj/item/storage/backpack/yautja,
+)
 
 //Armour Prefs
 /obj/item/clothing/suit/armor/yautja/post_vendor_spawn_hook(mob/living/carbon/human/user)

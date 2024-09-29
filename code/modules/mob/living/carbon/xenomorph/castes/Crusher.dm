@@ -52,7 +52,7 @@
 
 	rebounds = FALSE // no more fucking pinball crooshers
 	organ_value = 3000
-	organ_chem_value = 6
+	organ_chem_value = 7
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

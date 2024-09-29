@@ -40,6 +40,7 @@
 	old_x = -12
 	tier = 1
 	organ_value = 800
+	organ_chem_value = 2
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

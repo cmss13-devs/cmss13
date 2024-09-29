@@ -41,7 +41,7 @@
 	pixel_x = -12
 	old_x = -12
 	organ_value = 2000
-	organ_chem_value = 4
+	organ_chem_value = 5
 	tier = 2
 
 	base_actions = list(

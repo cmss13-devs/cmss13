@@ -113,3 +113,15 @@
   stalkerino:
   - balance: Buffed predator armor, thrall armor,  bullet resistance has been raised.
       Heavy clan armor has slightly less slowdown (by 1 tier)
+2024-09-27:
+  Git-Nivrak:
+  - balance: Pred round chance now increases by 20% whenever it isn't a pred round
+      and resets back to 20% when it is a pred round
+  - balance: Limits hunting traps duration to 30 seconds.
+  GoldenDarkness55:
+  - bugfix: Steelcrest soak now uses primary ability 3 hotkey instead of ability 5.
+  Ivniinvi:
+  - spellcheck: Fixed BLU-200 description
+2024-09-28:
+  QuickLode:
+  - rscadd: Adds USCM & Falling Falcons patches to Commanding Officer's vendor.

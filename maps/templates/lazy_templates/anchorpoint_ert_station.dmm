@@ -4,10 +4,7 @@
 	icon_state = "triagedecaldir";
 	pixel_y = 1
 	},
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ao" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -24,10 +21,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "ap" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "aN" = (
 /obj/structure/bed/chair{
@@ -40,10 +34,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "bn" = (
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -67,10 +58,7 @@
 	pixel_x = -9
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "bG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -92,9 +80,7 @@
 	pixel_y = 8;
 	pixel_x = 8
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "cF" = (
 /obj/effect/decal/medical_decals{
@@ -106,19 +92,13 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "cW" = (
 /obj/structure/platform{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "dq" = (
 /obj/effect/decal/warning_stripes{
@@ -149,17 +129,11 @@
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "dV" = (
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "dZ" = (
 /obj/structure/machinery/autodoc_console,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "el" = (
 /turf/closed/shuttle/elevator,
@@ -172,10 +146,7 @@
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "eI" = (
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "eL" = (
 /obj/structure/surface/table/almayer,
@@ -186,10 +157,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "fc" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -255,10 +223,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "gE" = (
-/turf/open/floor/strata{
-	icon_state = "green3";
-	dir = 1
-	},
+/turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "gL" = (
 /turf/open/floor/almayer/bluefull,
@@ -273,10 +238,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "hc" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "hh" = (
 /obj/structure/prop/dam/crane,
@@ -310,9 +272,7 @@
 	pixel_x = 8;
 	pixel_y = -9
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "in" = (
 /turf/open/shuttle/elevator/grating,
@@ -419,10 +379,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "lG" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "red3"
-	},
+/turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "lS" = (
 /turf/open/floor/almayer/blue/north,
@@ -431,10 +388,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mm" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -449,10 +403,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mn" = (
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mv" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -463,17 +414,13 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mG" = (
-/turf/open/floor/strata{
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan2,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mH" = (
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mO" = (
-/turf/open/floor/strata{
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "mP" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -499,10 +446,7 @@
 	pixel_x = -11
 	},
 /obj/item/reagent_container/blood/OMinus,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ni" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -514,10 +458,7 @@
 	pixel_x = -9;
 	pixel_y = -9
 	},
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "nv" = (
 /turf/open/floor/almayer_hull/outerhull_dir,
@@ -574,10 +515,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "oK" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "oV" = (
 /obj/structure/foamed_metal,
@@ -594,10 +532,7 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "pd" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -654,10 +589,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "qt" = (
 /obj/effect/decal/medical_decals{
@@ -665,10 +597,7 @@
 	pixel_y = 8;
 	pixel_x = 8
 	},
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "qz" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -711,10 +640,7 @@
 	pixel_x = 8;
 	pixel_y = -9
 	},
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "qX" = (
 /obj/structure/lattice,
@@ -722,10 +648,7 @@
 /area/space)
 "qZ" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ra" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -734,10 +657,7 @@
 "re" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "rh" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -781,10 +701,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "sd" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -815,17 +732,11 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "sQ" = (
 /obj/structure/platform,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "sV" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "tf" = (
 /obj/structure/bed/chair/comfy,
@@ -838,23 +749,14 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "tr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "tz" = (
-/turf/open/floor/strata{
-	icon_state = "white_cyan3";
-	dir = 8
-	},
+/turf/open/floor/strata/white_cyan3/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "tV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ui" = (
 /obj/effect/decal/warning_stripes{
@@ -884,10 +786,7 @@
 "vB" = (
 /obj/structure/machinery/iv_drip,
 /obj/item/reagent_container/blood/OMinus,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "vM" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -905,19 +804,14 @@
 /turf/closed/wall/almayer,
 /area/adminlevel/ert_station/anchorpoint_station)
 "wd" = (
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "red3"
-	},
+/turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "wf" = (
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/turf/open/floor/strata{
-	icon_state = "red4"
-	},
+/turf/open/floor/strata/red4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "wG" = (
 /obj/effect/decal/warning_stripes{
@@ -1033,9 +927,7 @@
 	icon_state = "triagedecaldir";
 	pixel_y = 18
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "AL" = (
 /obj/structure/window/framed/almayer/hull,
@@ -1073,10 +965,7 @@
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Cu" = (
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "CH" = (
 /obj/effect/decal/warning_stripes{
@@ -1110,10 +999,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Di" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
-/turf/open/floor/strata{
-	icon_state = "green3";
-	dir = 1
-	},
+/turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Dl" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -1122,10 +1008,7 @@
 "Do" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Dt" = (
 /obj/structure/blocker/invisible_wall,
@@ -1142,10 +1025,7 @@
 	pixel_y = -32;
 	pixel_x = 7
 	},
-/turf/open/floor/strata{
-	icon_state = "red4";
-	dir = 1
-	},
+/turf/open/floor/strata/red4/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "DQ" = (
 /obj/docking_port/stationary/emergency_response/idle_port1{
@@ -1164,9 +1044,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan2,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ED" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -1210,10 +1088,7 @@
 "Gl" = (
 /obj/structure/platform,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Gm" = (
 /obj/vehicle/powerloader{
@@ -1230,10 +1105,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "GC" = (
 /obj/structure/platform_decoration,
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "GN" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
@@ -1287,10 +1159,7 @@
 "Id" = (
 /obj/structure/machinery/sleep_console,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Iy" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1307,10 +1176,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "ID" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "IH" = (
 /obj/effect/decal/medical_decals{
@@ -1318,10 +1184,7 @@
 	pixel_y = 1;
 	pixel_x = 18
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan3";
-	dir = 8
-	},
+/turf/open/floor/strata/white_cyan3/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "IM" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -1331,16 +1194,11 @@
 /turf/open/space/basic,
 /area/space)
 "IX" = (
-/turf/open/floor/strata{
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Jb" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Jp" = (
 /obj/structure/lattice,
@@ -1351,10 +1209,7 @@
 /area/space)
 "JB" = (
 /obj/structure/platform_decoration,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "JG" = (
 /obj/structure/sign/safety/nonpress_0g{
@@ -1385,10 +1240,7 @@
 /obj/item/storage/box/pillbottles{
 	pixel_y = 11
 	},
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "JX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1401,10 +1253,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Kb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1423,16 +1272,11 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/turf/open/floor/strata{
-	icon_state = "green4"
-	},
+/turf/open/floor/strata/green4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Kw" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/floor/strata{
-	icon_state = "green3";
-	dir = 1
-	},
+/turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "KA" = (
 /obj/structure/bed/chair/comfy,
@@ -1442,10 +1286,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/clothing/gloves/latex,
 /obj/item/storage/surgical_tray,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "KW" = (
 /obj/structure/surface/table/almayer,
@@ -1453,10 +1294,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Li" = (
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Lp" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -1473,10 +1311,7 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Mg" = (
 /obj/structure/blocker/invisible_wall,
@@ -1503,10 +1338,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "MX" = (
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ne" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -1521,10 +1353,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Nl" = (
 /obj/structure/machinery/power/port_gen/pacman/mrs,
@@ -1532,16 +1361,10 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Nu" = (
 /obj/structure/machinery/body_scanconsole,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Nw" = (
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "NU" = (
 /obj/structure/surface/table/almayer,
@@ -1633,9 +1456,7 @@
 	pixel_y = 8;
 	pixel_x = -9
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan3"
-	},
+/turf/open/floor/strata/white_cyan3/south,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Qi" = (
 /turf/open/floor/almayer/red/west,
@@ -1661,23 +1482,14 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Rl" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/strata{
-	icon_state = "green3";
-	dir = 1
-	},
+/turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ro" = (
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Rr" = (
 /turf/open/floor/almayer/plating_striped/north,
@@ -1693,17 +1505,11 @@
 	pixel_x = -9;
 	pixel_y = -9
 	},
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "white_cyan4"
-	},
+/turf/open/floor/strata/white_cyan4/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "RN" = (
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/floor/strata{
-	dir = 1;
-	icon_state = "red3"
-	},
+/turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "RP" = (
 /obj/structure/barricade/handrail/type_b,
@@ -1718,24 +1524,15 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Sk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "SC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "SF" = (
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "SI" = (
 /obj/structure/surface/table/almayer,
@@ -1820,20 +1617,14 @@
 	pixel_y = 1;
 	pixel_x = 10
 	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Vi" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32;
 	pixel_x = 7
 	},
-/turf/open/floor/strata{
-	icon_state = "green4";
-	dir = 1
-	},
+/turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Vo" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1859,10 +1650,7 @@
 /obj/structure/sign/safety/ammunition{
 	pixel_y = 30
 	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "VN" = (
 /obj/structure/barricade/handrail/type_b{
@@ -1917,10 +1705,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Xa" = (
 /obj/item/tool/wet_sign,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Xy" = (
 /obj/effect/decal/cleanable/generic,
@@ -1953,16 +1738,11 @@
 	pixel_y = 1;
 	pixel_x = 18
 	},
-/turf/open/floor/strata{
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan2,
 /area/adminlevel/ert_station/anchorpoint_station)
 "YM" = (
 /obj/structure/bed/roller,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
+/turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "YN" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -2001,10 +1781,7 @@
 	pixel_y = 24
 	},
 /obj/item/reagent_container/glass/bucket,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Zu" = (
 /obj/structure/surface/table/almayer,
@@ -2017,10 +1794,7 @@
 	pixel_y = 1;
 	pixel_x = 10
 	},
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ZG" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -2057,10 +1831,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "ZX" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 
 (1,1,1) = {"
@@ -3982,8 +3753,8 @@ tV
 Gl
 VN
 Ac
-cW
-tr
+qp
+tV
 dV
 kf
 FN
@@ -4045,8 +3816,8 @@ Cu
 sQ
 VN
 Ac
-cW
-MX
+qp
+Cu
 dV
 kf
 FN
@@ -4108,8 +3879,8 @@ Cu
 sQ
 VN
 Ac
-cW
-MX
+qp
+Cu
 dV
 kf
 FN

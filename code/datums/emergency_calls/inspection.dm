@@ -217,7 +217,7 @@
 	mob_max = 4
 	mob_min = 1
 	probability = 0
-	home_base = /datum/lazy_template/ert/weyland_station
+	home_base = /datum/lazy_template/ert/anchorpoint_station
 
 	var/max_synths = 1
 	var/synths = 0

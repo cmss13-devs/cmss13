@@ -1,0 +1,4784 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	pixel_y = 1
+	},
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ao" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_brig_2";
+	pixel_x = -25;
+	pixel_y = 8
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_brig_1";
+	pixel_x = -25;
+	pixel_y = -5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ap" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"aN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"aO" = (
+/obj/structure/machinery/vending/security{
+	req_access = null
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bn" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"bt" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/med{
+	density = 1;
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bE" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalrightup";
+	pixel_y = 8;
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"bG" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"cB" = (
+/obj/structure/machinery/portable_atmospherics/powered/pump,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"cD" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleftup";
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"cF" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"cW" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"dq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"dA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"dP" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	name = "\improper Arrivals Charlie Section"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"dU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"dV" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"dZ" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"el" = (
+/turf/closed/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"et" = (
+/obj/structure/barricade/handrail/type_b,
+/obj/structure/barricade/handrail/type_b{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"eI" = (
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"eM" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"fe" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_brig_1";
+	name = "shutters"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gf" = (
+/obj/structure/barricade/handrail/type_b{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/type_b{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gi" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Anchorpoint Medical Triage Echo-09"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"go" = (
+/turf/closed/shuttle/elevator/freight,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gs" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gz" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_Pub_brig";
+	name = "shutters"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gE" = (
+/turf/open/floor/strata{
+	icon_state = "green3";
+	dir = 1
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"gL" = (
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
+"gX" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"hc" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"hh" = (
+/obj/structure/prop/dam/crane,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	name = "Damaged FS/ACS-9 cooling system";
+	desc = "A cooling system for the Tripoli. It produces additional cooling reducing delays between launch. The pipes are crooked and bent,  hoses are sliced open, and that's not even mentioning the bullet holes. Looks to be an older model as well.";
+	density = 1;
+	pixel_y = 16;
+	layer = 3.1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"hp" = (
+/turf/open/floor/solarpanel,
+/area/space)
+"hP" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/research{
+	name = "\improper Anchorpoint Freight Hatch"
+	},
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ig" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/floor,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ih" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleftdown";
+	pixel_x = 8;
+	pixel_y = -9
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"in" = (
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iu" = (
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iB" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iC" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iI" = (
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iL" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/space)
+"iO" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"iW" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"jf" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/cmb,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"jy" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+	dir = 2;
+	name = "\improper Anchorpoint Security Station Delta-04"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"jJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"jQ" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 34;
+	pixel_y = -18
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kf" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Hanger Delta-021"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kv" = (
+/turf/open/floor/almayer/red/northwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kM" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"lc" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"lS" = (
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"mh" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"mn" = (
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"mv" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"mG" = (
+/turf/open/floor/strata{
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"mH" = (
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"mO" = (
+/turf/open/floor/strata{
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"mU" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"nc" = (
+/obj/structure/largecrate/supply,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 34;
+	pixel_y = -18
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"nf" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ni" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"nr" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalrightdown";
+	pixel_x = -9;
+	pixel_y = -9
+	},
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"nv" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/space)
+"nx" = (
+/obj/structure/closet/secure_closet/brig{
+	name = "Spare Prison Uniforms"
+	},
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ny" = (
+/obj/structure/sign/safety/cryo{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/green/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"nN" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 8;
+	name = "\improper Brig Cell"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "RMC_brig_2";
+	name = "shutters"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"nQ" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/case/small{
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"od" = (
+/turf/open/floor/almayer/blue/northwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"oj" = (
+/turf/closed/shuttle/elevator{
+	dir = 8
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"os" = (
+/turf/open/floor/almayer/green/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"oK" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"oV" = (
+/obj/structure/foamed_metal,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"oZ" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"pc" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"pz" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"pC" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"pH" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"pT" = (
+/turf/open/floor/almayer/greencorner,
+/area/adminlevel/ert_station/anchorpoint_station)
+"qp" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"qt" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleftup";
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"qz" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"qJ" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 1;
+	req_access = null;
+	name = "\improper Delta-04 Breakroom"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"qM" = (
+/turf/open/floor/almayer/green/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"qS" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleftdown";
+	pixel_x = 8;
+	pixel_y = -9
+	},
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"qX" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"qZ" = (
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ra" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"re" = (
+/obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"rp" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/space)
+"rG" = (
+/turf/open/floor/almayer/greencorner/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"rH" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/defibrillator/upgraded,
+/obj/item/device/defibrillator/upgraded,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"rK" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"rZ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32;
+	pixel_x = 7
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"sb" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"sd" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	name = "\improper Arrivals Charlie Section"
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"sf" = (
+/turf/open/floor/almayer/red/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"sj" = (
+/turf/open/space/basic,
+/area/space)
+"sK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"sO" = (
+/turf/closed/shuttle/elevator{
+	dir = 6
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"sQ" = (
+/obj/structure/platform,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"sV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"tb" = (
+/obj/effect/vehicle_spawner/van/fixed,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"tf" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"tl" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"tr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"tz" = (
+/turf/open/floor/strata{
+	icon_state = "white_cyan3";
+	dir = 8
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"tV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ui" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"up" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"uS" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"vg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"vh" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"vB" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"vM" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/safety/north{
+	pixel_x = 32;
+	pixel_y = 7
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"vT" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"vV" = (
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wd" = (
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "red3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"wf" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/strata{
+	icon_state = "red4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"wj" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	name = "\improper Arrivals Echo Section"
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wP" = (
+/turf/closed/shuttle/elevator{
+	dir = 4
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"wX" = (
+/turf/open/floor/almayer/greencorner/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"xh" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"xq" = (
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"xX" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yp" = (
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yH" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yM" = (
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yN" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 26
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yX" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/northwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"za" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"zb" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/research{
+	name = "\improper Anchorpoint Arrivals Hatch"
+	},
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"zL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"zZ" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ac" = (
+/obj/structure/barricade/handrail/type_b,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ak" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32;
+	pixel_x = -25
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Al" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/space)
+"Aq" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "tcomms"
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Av" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/space)
+"Aw" = (
+/turf/open/floor/almayer/greencorner/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"AD" = (
+/turf/closed/shuttle/elevator/gears,
+/area/adminlevel/ert_station/anchorpoint_station)
+"AG" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	pixel_y = 18
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"AL" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Bi" = (
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Bo" = (
+/obj/structure/closet/secure_closet/brig{
+	req_one_access = null
+	},
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"BD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"BE" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ct" = (
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Cu" = (
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"CH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"CL" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"CW" = (
+/obj/structure/lattice,
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/space/basic,
+/area/space)
+"Da" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/multi_tiles,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Dc" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	name = "\improper Arrivals Echo Section"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Dl" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Do" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Dy" = (
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"DL" = (
+/turf/open/floor/almayer_hull,
+/area/space)
+"DO" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32;
+	pixel_x = 7
+	},
+/turf/open/floor/strata{
+	icon_state = "red4";
+	dir = 1
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"DQ" = (
+/obj/docking_port/stationary/emergency_response/idle_port1{
+	name = "Anchorpoint Hanger Delta-20"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ef" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ED" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Fy" = (
+/obj/structure/bed/alien,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"FA" = (
+/obj/structure/barricade/handrail/type_b{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/type_b{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"FN" = (
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/anchorpoint_station)
+"FR" = (
+/obj/structure/sign/safety/fridge{
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gb" = (
+/turf/open/floor/strata/multi_tiles,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gh" = (
+/obj/structure/machinery/door/poddoor/almayer,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gj" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gl" = (
+/obj/structure/platform,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gm" = (
+/obj/vehicle/powerloader{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Gv" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"GC" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"GN" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"GT" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Hd" = (
+/turf/open/floor/almayer/cargo_arrow,
+/area/adminlevel/ert_station/anchorpoint_station)
+"He" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 1;
+	req_access = null;
+	name = "\improper Delta-04 Cryogenics"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Hi" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_y = 8
+	},
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ht" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Hv" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"HI" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Id" = (
+/obj/structure/machinery/sleep_console,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"IC" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ID" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"IH" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 18
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan3";
+	dir = 8
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"IM" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"IX" = (
+/turf/open/floor/strata{
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Jb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Jp" = (
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"JB" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"JG" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = -20;
+	pixel_y = -18
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"JU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/chem_master,
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 11
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"JX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ke" = (
+/obj/structure/machinery/cryopod{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Kj" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/strata{
+	icon_state = "green4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"KA" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer/green/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"KJ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clothing/gloves/latex,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Li" = (
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Lu" = (
+/turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/anchorpoint_station)
+"LM" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Mg" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Hanger Delta-019"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"MA" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 36;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"MM" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"MX" = (
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ne" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"Ni" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Nl" = (
+/obj/structure/machinery/power/port_gen/pacman/mrs,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Nu" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Nw" = (
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"NU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm{
+	pixel_y = 7
+	},
+/obj/item/tool/pen,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"NZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Of" = (
+/turf/closed/shuttle/elevator{
+	dir = 5
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Oj" = (
+/turf/closed/shuttle/elevator/arrivals,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Oz" = (
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"OS" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"OV" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Pj" = (
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ps" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"PD" = (
+/turf/closed/shuttle/elevator{
+	dir = 9
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"PK" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/space)
+"PQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Qd" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Qf" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalrightup";
+	pixel_y = 8;
+	pixel_x = -9
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Qi" = (
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"QA" = (
+/turf/open/floor/almayer/floor,
+/area/adminlevel/ert_station/anchorpoint_station)
+"QJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/safety/north{
+	pixel_x = -17;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ri" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Rj" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ro" = (
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Rr" = (
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"RC" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalrightdown";
+	pixel_x = -9;
+	pixel_y = -9
+	},
+/turf/open/floor/strata{
+	dir = 1;
+	icon_state = "white_cyan4"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"RP" = (
+/obj/structure/barricade/handrail/type_b,
+/obj/structure/barricade/handrail/type_b{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Sf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Sk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"SC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"SF" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"SI" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"SP" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flash{
+	pixel_y = -8
+	},
+/obj/item/device/flash{
+	pixel_y = -8
+	},
+/obj/item/device/flash{
+	pixel_y = -8
+	},
+/obj/item/device/flash{
+	pixel_y = -8
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ST" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer/green,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ta" = (
+/turf/closed/shuttle/elevator{
+	dir = 1
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Tb" = (
+/turf/closed/shuttle/elevator{
+	dir = 10
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ti" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Tt" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Tw" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/tool/portadialysis,
+/obj/item/tool/portadialysis,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"TC" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ub" = (
+/obj/structure/machinery/portable_atmospherics/canister,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ue" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/airlock{
+	pixel_y = 35;
+	pixel_x = 39
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Uk" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Vi" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32;
+	pixel_x = 7
+	},
+/turf/open/floor/strata{
+	icon_state = "green4";
+	dir = 1
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"Vo" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/props/ice_colony/barrel_yard.dmi';
+	icon_state = "pile_0";
+	name = "barrel pile";
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Vy" = (
+/obj/structure/sign/safety/security{
+	pixel_x = 15;
+	pixel_y = 30
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_y = 30
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"VN" = (
+/obj/structure/barricade/handrail/type_b{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VV" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Wk" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Wo" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleftup"
+	},
+/obj/structure/barricade/handrail/type_b,
+/obj/structure/sign/safety/medical{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Wy" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"WK" = (
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space/basic,
+/area/space)
+"WW" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Hanger Delta-019"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Xy" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"XA" = (
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"XE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"XK" = (
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/anchorpoint_station)
+"XX" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Yc" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 18
+	},
+/turf/open/floor/strata{
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"YM" = (
+/obj/structure/bed/roller,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"YN" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"YQ" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	name = "\improper Arrivals Echo Section"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ze" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Zg" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Zo" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZF" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZG" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "RMC_Pub_brig";
+	pixel_x = -29
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZJ" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Hanger Delta-020"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZT" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZV" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+
+(1,1,1) = {"
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+wj
+Dc
+xh
+nv
+qX
+sj
+sj
+qX
+qX
+qX
+sj
+sj
+qX
+Al
+xh
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+Av
+sj
+"}
+(2,1,1) = {"
+xh
+iB
+kM
+OV
+OV
+OV
+xh
+kM
+yH
+yH
+yH
+yH
+kM
+xh
+Zg
+MM
+mU
+Hi
+AL
+yX
+aN
+aN
+yp
+AL
+Fy
+AL
+Fy
+xh
+Cu
+Cu
+xh
+nv
+CW
+Jp
+Jp
+oZ
+sj
+CW
+Jp
+Jp
+oZ
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(3,1,1) = {"
+xh
+iB
+gL
+gP
+gL
+xq
+vh
+xq
+xq
+gL
+gL
+xq
+xq
+vh
+xq
+gP
+gL
+gL
+AL
+Xy
+Pj
+Pj
+Sf
+AL
+Lu
+AL
+Lu
+xh
+SC
+tV
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(4,1,1) = {"
+xh
+Wy
+gL
+gL
+gL
+gP
+He
+gL
+gL
+gL
+gL
+gL
+gL
+qJ
+gL
+gP
+gL
+gL
+vV
+AL
+AL
+vV
+gz
+vV
+nN
+vV
+fe
+xh
+tV
+tV
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(5,1,1) = {"
+xh
+Wy
+vg
+Ps
+vg
+vg
+vh
+xq
+Ps
+xq
+xq
+xq
+xq
+vh
+MA
+xq
+xq
+xq
+xq
+ED
+ED
+ZG
+ED
+ED
+ED
+ao
+ED
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(6,1,1) = {"
+xh
+ED
+ED
+XE
+ED
+FR
+xh
+ny
+qM
+qM
+qM
+iC
+PQ
+xh
+aO
+kv
+Qi
+za
+iu
+iu
+iu
+iu
+iu
+iu
+sK
+iu
+Bo
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+"}
+(7,1,1) = {"
+xh
+Ke
+ED
+XE
+ED
+Ke
+xh
+pT
+os
+os
+wX
+pT
+os
+xh
+aO
+XA
+QA
+XK
+iu
+dU
+NZ
+iu
+iu
+iu
+iu
+iu
+Bo
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+xh
+"}
+(8,1,1) = {"
+xh
+xh
+CH
+xq
+CH
+xh
+xh
+ST
+kM
+kM
+KA
+ST
+kM
+xh
+aO
+XA
+ig
+XK
+iu
+SP
+GT
+mH
+mH
+mH
+mH
+mH
+Bo
+xh
+YQ
+YQ
+xh
+nv
+iO
+IM
+IM
+Ne
+qX
+iO
+IM
+IM
+Ne
+Al
+xh
+lc
+Gb
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+Gb
+gs
+xh
+"}
+(9,1,1) = {"
+xh
+rK
+ED
+zL
+ED
+rK
+xh
+ST
+kM
+kM
+KA
+ST
+kM
+xh
+yN
+XA
+QA
+XK
+iu
+iu
+FN
+gL
+gL
+gP
+gL
+gL
+xh
+xh
+Cu
+tV
+xh
+nv
+CW
+Jp
+Jp
+oZ
+qX
+CW
+Jp
+Jp
+oZ
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(10,1,1) = {"
+xh
+ED
+ED
+XE
+ED
+ED
+xh
+ST
+kM
+kM
+tf
+ST
+kM
+xh
+SI
+Ri
+Pj
+sf
+iu
+iu
+FN
+gL
+od
+Ct
+Ct
+Ct
+Ct
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(11,1,1) = {"
+xh
+uS
+pC
+XE
+uS
+pC
+xh
+rG
+qM
+qM
+Aw
+rG
+qM
+xh
+jf
+NU
+vT
+nx
+nx
+nx
+xh
+gL
+lS
+Dy
+Dy
+Dy
+Dy
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(12,1,1) = {"
+xh
+xh
+xh
+OS
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+yM
+jy
+vh
+yM
+jy
+xh
+YQ
+YQ
+xh
+xh
+iO
+IM
+IM
+Ne
+qX
+iO
+IM
+IM
+Ne
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(13,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Vy
+Cu
+mn
+Cu
+Cu
+Ac
+qp
+Cu
+wd
+AL
+sj
+sj
+sj
+sj
+qX
+qX
+sj
+sj
+sj
+Al
+xh
+Ti
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(14,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Cu
+Cu
+mn
+JB
+iu
+Ac
+qp
+ID
+DO
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+ZV
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(15,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+xh
+xh
+xh
+xh
+xh
+Tt
+Cu
+Cu
+sQ
+VN
+Ac
+cW
+MX
+dV
+WW
+FN
+Oz
+Oz
+Gm
+JG
+Oz
+up
+Oz
+xX
+ra
+Zo
+Vo
+Ht
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(16,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+PD
+el
+el
+el
+Tb
+Tt
+Cu
+tV
+sQ
+VN
+Ac
+cW
+tr
+dV
+Mg
+FN
+iu
+hh
+tl
+iu
+iu
+iu
+gX
+iu
+Dl
+Zo
+jJ
+Da
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+Gb
+Wk
+xh
+"}
+(17,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+iI
+in
+iI
+wP
+Tt
+Cu
+tV
+sQ
+VN
+Ac
+cW
+MX
+dV
+Mg
+FN
+mH
+mH
+Hv
+nc
+Hv
+Hv
+mH
+Nl
+Rr
+Zo
+jJ
+Ue
+qz
+IC
+Ti
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+qz
+IC
+Ti
+lc
+lc
+xh
+"}
+(18,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+in
+in
+in
+zb
+Hd
+Cu
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+wf
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+xh
+xh
+xh
+Gv
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+Gv
+xh
+xh
+xh
+xh
+"}
+(19,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Oj
+in
+iI
+in
+in
+Hd
+Cu
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+wd
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+lc
+lc
+BE
+iW
+mv
+QJ
+lc
+lc
+lc
+lc
+QJ
+lc
+BE
+iW
+mv
+lc
+lc
+xh
+"}
+(20,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+wP
+in
+iI
+in
+in
+Hd
+Cu
+tV
+sQ
+VN
+Ac
+qp
+Cu
+gE
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+lc
+Gb
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+Gb
+gs
+xh
+"}
+(21,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+in
+in
+in
+in
+Hd
+Cu
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+gE
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+Ti
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+DQ
+wG
+lc
+Gh
+"}
+(22,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+iI
+in
+iI
+oj
+Tt
+Cu
+Cu
+sQ
+FA
+et
+qp
+Cu
+Vi
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+rZ
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(23,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Of
+Ta
+Ta
+Ta
+sO
+Tt
+MX
+MX
+pc
+sb
+sb
+eM
+MX
+dV
+ZJ
+FN
+Oz
+Oz
+Oz
+JG
+Oz
+Oz
+Oz
+Oz
+Rr
+ZJ
+Ze
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(24,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Aq
+Tt
+MX
+MX
+MX
+Sk
+dV
+MX
+tr
+Sk
+ZJ
+FN
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+Rr
+ZJ
+Ze
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(25,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+PD
+el
+el
+el
+Tb
+Tt
+MX
+MX
+GC
+mh
+mh
+LM
+MX
+dV
+ZJ
+FN
+mH
+mH
+mH
+jQ
+mH
+mH
+mH
+mH
+Rr
+ZJ
+Ze
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(26,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+iI
+in
+iI
+wP
+Tt
+Cu
+Cu
+sQ
+gf
+RP
+qp
+Cu
+Kj
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+ZV
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(27,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+in
+in
+in
+hP
+Bi
+tV
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+gE
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+mv
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(28,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+go
+in
+iI
+in
+in
+Bi
+Cu
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+gE
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+lc
+Gb
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+Gb
+Wk
+xh
+"}
+(29,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+wP
+in
+iI
+in
+in
+Bi
+Cu
+Cu
+sQ
+VN
+Ac
+qp
+Cu
+wd
+AL
+DL
+nv
+sj
+sj
+qX
+qX
+sj
+sj
+Al
+DL
+xh
+lc
+lc
+qz
+IC
+Ti
+vM
+lc
+lc
+lc
+lc
+vM
+lc
+qz
+IC
+Ti
+lc
+lc
+xh
+"}
+(30,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+in
+in
+in
+in
+Bi
+Cu
+tV
+Gl
+VN
+Ac
+qp
+tV
+DO
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+xh
+xh
+xh
+Gv
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+Gv
+xh
+xh
+xh
+xh
+"}
+(31,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+AD
+iI
+in
+iI
+oj
+Tt
+Cu
+tV
+Gl
+VN
+Ac
+cW
+tr
+dV
+kf
+FN
+Oz
+cB
+bt
+JG
+Qd
+zZ
+YN
+XX
+Rr
+yM
+Ze
+Ak
+BE
+iW
+mv
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+BE
+iW
+mv
+lc
+lc
+xh
+"}
+(32,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Of
+Ta
+Ta
+Ta
+sO
+Tt
+Cu
+Cu
+sQ
+VN
+Ac
+cW
+MX
+dV
+kf
+FN
+HI
+Ub
+nQ
+iu
+iu
+ni
+Ub
+iu
+Rr
+tb
+Ze
+Gb
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+Gb
+gs
+xh
+"}
+(33,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+xh
+xh
+xh
+xh
+xh
+Tt
+Cu
+Cu
+sQ
+VN
+Ac
+cW
+MX
+dV
+kf
+FN
+mH
+mH
+TC
+jQ
+mH
+mH
+mH
+mH
+Rr
+yM
+Ze
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(34,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+Cu
+tV
+ap
+Rj
+iu
+Ac
+qp
+Cu
+wf
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+AL
+AL
+AL
+xh
+xh
+ZV
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(35,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+cF
+Uk
+ZF
+Uk
+Uk
+Wo
+qp
+Cu
+wd
+AL
+sj
+sj
+sj
+sj
+qX
+qX
+sj
+sj
+sj
+Al
+xh
+mv
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(36,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+yM
+gi
+vh
+yM
+gi
+xh
+dP
+dP
+xh
+xh
+CW
+Jp
+Jp
+oZ
+qX
+CW
+Jp
+Jp
+oZ
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(37,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Aq
+mn
+mn
+mn
+mn
+mn
+mn
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(38,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+ih
+IH
+IH
+qt
+CL
+lc
+CL
+IX
+tz
+tz
+tz
+Li
+xh
+Cu
+tV
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(39,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+ae
+Do
+KJ
+AG
+CL
+lc
+dA
+eI
+vB
+YM
+vB
+mO
+xh
+Cu
+Cu
+xh
+nv
+iO
+IM
+IM
+Ne
+qX
+iO
+IM
+IM
+Ne
+Al
+xh
+lc
+dq
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+wG
+lc
+Gh
+"}
+(40,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+ae
+SF
+nf
+AG
+ZT
+lc
+Gj
+eI
+YM
+vB
+YM
+mO
+xh
+dP
+dP
+xh
+nv
+CW
+Jp
+Jp
+oZ
+qX
+CW
+Jp
+Jp
+oZ
+Al
+xh
+lc
+Gb
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+ui
+Gb
+Wk
+xh
+"}
+(41,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+nr
+Ef
+Ef
+Qf
+rH
+lc
+GN
+eI
+mG
+mG
+mG
+mO
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+xh
+"}
+(42,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+qS
+Yc
+Yc
+cD
+bG
+lc
+pz
+eI
+mG
+mG
+mG
+mO
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+"}
+(43,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+ae
+KJ
+Do
+AG
+Tw
+lc
+pz
+eI
+hc
+oK
+qZ
+mO
+xh
+Cu
+tV
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(44,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+ae
+nf
+SF
+AG
+CL
+lc
+CL
+eI
+Nu
+Id
+dZ
+mO
+xh
+Cu
+ID
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(45,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+xh
+mn
+RC
+Ni
+Ni
+bE
+CL
+lc
+CL
+Ro
+Nw
+Nw
+Nw
+bn
+xh
+Cu
+Cu
+xh
+nv
+WK
+hp
+hp
+pH
+sj
+WK
+hp
+hp
+pH
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(46,1,1) = {"
+xh
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Aq
+mn
+JX
+JU
+re
+sV
+Jb
+lc
+lc
+lc
+lc
+lc
+lc
+lc
+xh
+Cu
+Cu
+xh
+nv
+iO
+IM
+IM
+Ne
+sj
+iO
+IM
+IM
+Ne
+Al
+xh
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+nv
+sj
+"}
+(47,1,1) = {"
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+xh
+OS
+OS
+OS
+OS
+OS
+xh
+sd
+sd
+xh
+nv
+qX
+sj
+sj
+qX
+qX
+qX
+sj
+sj
+qX
+Al
+xh
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+iL
+sj
+"}

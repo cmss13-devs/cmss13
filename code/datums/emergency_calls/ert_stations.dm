@@ -18,3 +18,6 @@
 
 /datum/lazy_template/ert/uscm_station
 	map_name = "uscm_ert_station"
+
+/datum/lazy_template/ert/anchorpoint_station
+	map_name = "anchorpoint_ert_station"

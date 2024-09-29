@@ -129,6 +129,10 @@
 	name = "USCM Station"
 	icon_state = "green"
 
+/area/adminlevel/ert_station/anchorpoint_station
+	name = "Anchorpoint"
+	icon_state = "blue"
+
 /area/adminlevel/ert_station/freelancer_station
 	name = "Freelancer Station"
 	icon_state = "yellow"

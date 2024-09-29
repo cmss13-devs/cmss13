@@ -3,6 +3,7 @@
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
 	probability = 10
+	home_base = /datum/lazy_template/ert/weyland_station
 
 	var/max_synths = 1
 	var/synths = 0
@@ -35,7 +36,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
@@ -53,7 +54,7 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/cmb/print_backstory(mob/living/carbon/human/M)
@@ -100,6 +101,19 @@
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 
+
+// A Nearby Colonial Marshal patrol team responding to Marshals in Distress.
+/datum/emergency_call/cmb/alt
+	name = "CMB - Patrol Team - Marshals in Distress (Friendly)"
+	mob_max = 5
+	mob_min = 1
+	probability = 0
+
+/datum/emergency_call/cmb/alt/New()
+	..()
+	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
+	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."
+
 // Anchorpoint Station Colonial Marines, use this primarily for reinforcing or evacuating the CMB, as the CMB themselves are not equipped to handle heavy engagements.
 /datum/emergency_call/cmb/anchorpoint
 	name = "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)"
@@ -113,7 +127,7 @@
 /datum/emergency_call/cmb/anchorpoint/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station. Be advised, a QRF Team of our Colonial Marines is currently attempting to board you. Open your ports, transmitting docking codes now. Standby."
-	objectives = "QRF Team. You are here to reinforce the cmb team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
+	objectives = "QRF Team. You are here to reinforce the CMB team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
 
 /datum/emergency_call/cmb/anchorpoint/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -146,7 +160,7 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/cmb/anchorpoint/print_backstory(mob/living/carbon/human/M)

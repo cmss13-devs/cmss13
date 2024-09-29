@@ -151,6 +151,44 @@
 #undef PPSH_DRUM_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
+//Type-19, based on the PPS-43
+
+/obj/item/ammo_magazine/smg/pps43
+	name = "\improper Type-19 stick magazine (7.62x25mm)"
+	desc = "A stick magazine for the Type-19 submachinegun."
+	caliber = "7.62x25mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "insasu_stickmag"
+	bonus_overlay = "insasu_stickmag_overlay"
+	max_rounds = 35
+	gun_type = /obj/item/weapon/gun/smg/pps43
+	default_ammo = /datum/ammo/bullet/smg/pps43
+	var/bonus_mag_aim_slowdown = 0
+	var/bonus_mag_wield_delay = 0
+
+
+/obj/item/ammo_magazine/smg/pps43/extended
+	name = "\improper Type-19 drum magazine (7.62x25mm)"
+	desc = "A drum magazine for the Type-19 submachinegun."
+	icon_state = "insasu_drum"
+	bonus_overlay = "insasu_drum_overlay"
+	max_rounds = 71
+	w_class = SIZE_MEDIUM
+	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
+	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
+//-------------------------------------------------------
+//Type 64 SMG, based on the PP Bizon.
+
+/obj/item/ammo_magazine/smg/bizon
+	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
+	desc = "A 64 round magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
+	caliber = "7.62x19mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "type64mag"
+	max_rounds = 64
+	gun_type = /obj/item/weapon/gun/smg/bizon
+
+//-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
 /obj/item/ammo_magazine/smg/mac15 //Based on the Uzi.

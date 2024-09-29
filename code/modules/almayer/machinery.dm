@@ -73,20 +73,26 @@
 
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
-	desc = "A table that displays a map of the current target location"
+	desc = "A table that displays a map of the current operation location."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	density = TRUE
 	idle_power_usage = 2
-	///flags that we want to be shown when you interact with this table
 	var/datum/tacmap/map
+	///flags that we want to be shown when you interact with this table
 	var/minimap_type = MINIMAP_FLAG_USCM
+	///The faction that is intended to use this structure (determines type of tacmap used)
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-	map = new(src, minimap_type)
+
+	if (faction == FACTION_MARINE)
+		map = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		map = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	QDEL_NULL(map)
@@ -97,14 +103,24 @@
 
 	map.tgui_interact(user)
 
+/obj/structure/machinery/prop/almayer/CICmap/computer
+	name = "map terminal"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "cicmap_computer"
+	density = FALSE
+
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP
+	faction = FACTION_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
 	minimap_type = MINIMAP_FLAG_CLF
+	faction = FACTION_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_type = MINIMAP_FLAG_PMC
+	faction = FACTION_PMC
 
 //Nonpower using props
 
@@ -196,7 +212,7 @@
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			fallen_list += D.fallen_names
+			GLOB.fallen_list += D.fallen_names
 			qdel(D)
 		return TRUE
 	else
@@ -204,13 +220,13 @@
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
-	if((isobserver(user) || ishuman(user)) && fallen_list)
+	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
 		var/faltext = ""
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				faltext += "[fallen_list[i]], "
+		for(var/i = 1 to length(GLOB.fallen_list))
+			if(i != length(GLOB.fallen_list))
+				faltext += "[GLOB.fallen_list[i]], "
 			else
-				faltext += fallen_list[i]
+				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon

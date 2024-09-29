@@ -3,6 +3,7 @@
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 
@@ -16,19 +17,17 @@
 
 	var/atom/movable/screen/hands = null //robot
 
-	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
-	var/adminhelp_marked_admin = "" // Ckey of last marking admin
-
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/list/observers //The list of people observing this mob.
+	/// The list of people observing this mob.
+	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -65,22 +64,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
 
 	/// bool that tracks if blind
 	var/blinded = FALSE
-	var/sleeping = 0 //Carbon
-	var/resting = 0 //Carbon
+	var/resting = 0
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
@@ -95,9 +86,6 @@
 	var/exploit_record = ""
 
 	var/gibbing = FALSE
-	var/lying = FALSE
-	var/lying_prev = 0
-	var/canmove = 1
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
@@ -126,6 +114,7 @@
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
 	var/life_revives_total = 0
+	var/life_ib_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
@@ -176,7 +165,7 @@
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
-	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+	var/obj/item/restraint/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	var/list/viruses = list() //List of active diseases
 
@@ -185,7 +174,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = DEFAULT_MOB_STATUS_FLAGS //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -205,6 +194,8 @@
 	var/away_timer = 0 //How long the player has not done an action.
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
+
+	var/recently_grabbed = 0 //used as a cooldown for item grabs
 
 	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
@@ -270,6 +261,9 @@
 	var/mutable_appearance/active_thinking_indicator
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
+
+	// contains /atom/movable/screen/alert only
+	var/list/alerts = list()
 
 /mob/vv_get_dropdown()
 	. = ..()
@@ -374,10 +368,6 @@
 		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
-			if(/mob/living/silicon/robot)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
-			if(/mob/living/silicon/ai)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 
@@ -411,7 +401,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(!languages.len)
+		if(!length(languages))
 			to_chat(usr, "This mob knows no languages.")
 			return
 
@@ -441,4 +431,3 @@
 			return
 
 		src.regenerate_icons()
-

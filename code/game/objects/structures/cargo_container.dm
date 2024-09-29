@@ -11,7 +11,7 @@
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products.\nAtleast, that is what is says on the container. You have literally never heard of this company before."
+	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
 
 /obj/structure/cargo_container/watatsumi/left
 	icon_state = "watatsumi_l"

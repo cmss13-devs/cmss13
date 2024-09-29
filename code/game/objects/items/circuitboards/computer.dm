@@ -26,6 +26,12 @@
 	if (..(C))
 		network = C.network
 
+/obj/item/circuitboard/computer/cameras/tv
+	name = "Circuit board (Television Set)"
+	build_path = /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
+	network = list(CAMERA_NET_CORRESPONDENT)
+	req_access = list()
+
 /obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
 	build_path = /obj/structure/machinery/computer/cameras/engineering
@@ -96,9 +102,9 @@
 /obj/item/circuitboard/computer/atmos_alert
 	name = "Circuit board (Atmospheric Alert)"
 	build_path = /obj/structure/machinery/computer/atmos_alert
-/obj/item/circuitboard/computer/pod
-	name = "Circuit board (Massdriver control)"
-	build_path = /obj/structure/machinery/computer/pod
+/obj/item/circuitboard/computer/pod/old
+	name = "Circuit board (DoorMex)"
+	build_path = /obj/structure/machinery/computer/pod/old
 /obj/item/circuitboard/computer/robotics
 	name = "Circuit board (Robotics Control)"
 	build_path = /obj/structure/machinery/computer/robotics
@@ -117,15 +123,6 @@
 /obj/item/circuitboard/computer/powermonitor
 	name = "Circuit board (Power Monitor)"
 	build_path = /obj/structure/machinery/power/monitor
-/obj/item/circuitboard/computer/olddoor
-	name = "Circuit board (DoorMex)"
-	build_path = /obj/structure/machinery/computer/pod/old
-/obj/item/circuitboard/computer/syndicatedoor
-	name = "Circuit board (ProComp Executive)"
-	build_path = /obj/structure/machinery/computer/pod/old/syndicate
-/obj/item/circuitboard/computer/swfdoor
-	name = "Circuit board (Magix)"
-	build_path = /obj/structure/machinery/computer/pod/old/swf
 /obj/item/circuitboard/computer/prisoner
 	name = "Circuit board (Prisoner Management)"
 	build_path = /obj/structure/machinery/computer/prisoner
@@ -158,31 +155,70 @@
 	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp
 
-	var/contraband_enabled = 0
+	var/contraband_enabled = FALSE
+	var/black_market_lock = FALSE
 
 /obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
 
 /obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
+	if(SC.can_order_contraband)
+		contraband_enabled = TRUE
+	if(SC.black_market_lockout)
+		black_market_lock = TRUE
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
+		SC.lock_black_market(black_market_lock)
 
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
-	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
-		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
+		return
+
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 				return
 			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
 			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				if(!contraband_enabled)
-					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [tool], and a red light starts blinking on and off on the board. Put it back in?"))
 					contraband_enabled = TRUE
 				else
-					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now."))
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
 					contraband_enabled = FALSE
+
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
+			return
+
+		if(black_market_lock)
+			to_chat(user, SPAN_NOTICE("[src] has already been reset."))
+			return
+
+		if(user.action_busy)
+			to_chat(user, "You are too busy with other actions to fix any tampering.")
+			return
+
+		playsound(tool, 'sound/machines/lockenable.ogg', 25)
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		SPAN_NOTICE("You begin to fix any tampering to [src]."))
+		tool.icon_state = "[tool.icon_state]_on"
+
+		if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, tool, INTERRUPT_ALL))
+			tool.icon_state = initial(tool.icon_state)
+			return
+
+		playsound(tool, 'sound/machines/ping.ogg', 25)
+		black_market_lock = TRUE
+		contraband_enabled = FALSE
+		tool.icon_state = initial(tool.icon_state)
+
 	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
@@ -248,8 +284,8 @@
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return
 		var/list/tempnetwork = splittext(input, ",")
-		tempnetwork = difflist(tempnetwork,RESTRICTED_CAMERA_NETWORKS,1)
-		if(tempnetwork.len < 1)
+		tempnetwork = difflist(tempnetwork,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
+		if(length(tempnetwork) < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return
 		network = tempnetwork
@@ -257,14 +293,12 @@
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-		user.visible_message(SPAN_NOTICE("\the [user] adjusts the jumper on the [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
+		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/structure/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/robotics
-			to_chat(user, SPAN_NOTICE(" Access protocols set to robotics."))
+			to_chat(user, SPAN_NOTICE("Access protocols set to robotics."))
 		else
 			src.name = "Circuit Board (RD Console)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/core
-			to_chat(user, SPAN_NOTICE(" Access protocols set to default."))
-
-
+			to_chat(user, SPAN_NOTICE("Access protocols set to default."))

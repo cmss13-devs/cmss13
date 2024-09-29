@@ -1,196 +1,189 @@
-/datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
+/datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
 
-	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
+	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
 
-	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
+	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
 
-	P.generate_bullet(ammoDatum)
+	projectile.generate_bullet(ammo_datum)
 
-	P.fire_at(target, X, X, ammoDatum.max_range, ammoDatum.shell_speed)
+	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
 
 	apply_cooldown()
 	return ..()
 
 
-/datum/action/xeno_action/activable/acider_acid/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!istype(A, /obj/item) && !istype(A, /obj/structure/) && !istype(A, /obj/vehicle/multitile))
-		to_chat(X, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
+/datum/action/xeno_action/activable/acider_acid/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(affected_atom, /obj/item) && !istype(affected_atom, /obj/structure/) && !istype(affected_atom, /obj/vehicle/multitile))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
-	var/datum/behavior_delegate/runner_acider/BD = X.behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
+	if (!istype(behavior_delegate))
 		return
-	if(BD.acid_amount < acid_cost)
-		to_chat(X, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
+	if(behavior_delegate.acid_amount < acid_cost)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
 		return
 
-	X.corrosive_acid(A, acid_type, 0)
-	for(var/obj/item/explosive/plastic/E in A.contents)
-		X.corrosive_acid(E,acid_type,0)
+	xeno.corrosive_acid(affected_atom, acid_type, 0)
+	for(var/obj/item/explosive/plastic/plastic_explosive in affected_atom.contents)
+		xeno.corrosive_acid(plastic_explosive, acid_type, 0)
 	return ..()
 
-/mob/living/carbon/xenomorph/runner/corrosive_acid(atom/O, acid_type, plasma_cost)
-	if (mutation_type != RUNNER_ACIDER)
-		..(O, acid_type, plasma_cost)
-		return
-	if(!O.Adjacent(src))
-		if(istype(O,/obj/item/explosive/plastic))
-			var/obj/item/explosive/plastic/E = O
-			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+/mob/living/carbon/xenomorph/runner/corrosive_acid(atom/affected_atom, acid_type, plasma_cost)
+	if(!istype(strain, /datum/xeno_strain/acider))
+		return ..()
+	if(!affected_atom.Adjacent(src))
+		if(istype(affected_atom,/obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/plastic_explosive = affected_atom
+			if(plastic_explosive.plant_target && !plastic_explosive.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("We can't reach [affected_atom]."))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			to_chat(src, SPAN_WARNING("[affected_atom] is too far away."))
 			return
 
-	if(!isturf(loc) || burrow)
-		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
+	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We can't melt [affected_atom] from here!"))
 		return
 
-	face_atom(O)
+	face_atom(affected_atom)
 
 	var/wait_time = 10
 
-	var/turf/T = get_turf(O)
+	var/turf/turf = get_turf(affected_atom)
 
-	for(var/obj/effect/xenomorph/acid/A in T)
-		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+	for(var/obj/effect/xenomorph/acid/acid in turf)
+		if(acid_type == acid.type && acid.acid_t == affected_atom)
+			to_chat(src, SPAN_WARNING("[affected_atom] is already drenched in acid."))
 			return
 
-	var/obj/I
+	var/obj/object
 	//OBJ CHECK
-	if(isobj(O))
-		I = O
+	if(isobj(affected_atom))
+		object = affected_atom
 
-		if(istype(O, /obj/structure/window_frame))
-			var/obj/structure/window_frame/WF = O
-			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
-				return
-
-		wait_time = I.get_applying_acid_time()
+		wait_time = object.get_applying_acid_time()
 		if(wait_time == -1)
-			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))
+			to_chat(src, SPAN_WARNING("We cannot dissolve [object]."))
 			return
 	else
-		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
+		to_chat(src, SPAN_WARNING("We cannot dissolve [affected_atom]."))
 		return
 	wait_time = wait_time / 4
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
-	for(var/obj/effect/xenomorph/acid/A in T)
-		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+	for(var/obj/effect/xenomorph/acid/acid in turf)
+		if(acid_type == acid.type && acid.acid_t == affected_atom)
+			to_chat(src, SPAN_WARNING("[acid] is already drenched in acid."))
 			return
 
 	if(!check_state())
 		return
 
-	if(!O || QDELETED(O)) //Some logic.
+	if(!affected_atom || QDELETED(affected_atom)) //Some logic.
 		return
 
-	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
-		if(istype(O,/obj/item/explosive/plastic))
-			var/obj/item/explosive/plastic/E = O
-			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+	if(!affected_atom.Adjacent(src) || (object && !isturf(object.loc)))//not adjacent or inside something
+		if(istype(affected_atom, /obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/plastic_explosive = affected_atom
+			if(plastic_explosive.plant_target && !plastic_explosive.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("We can't reach [affected_atom]."))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			to_chat(src, SPAN_WARNING("[affected_atom] is too far away."))
 			return
 
-	var/datum/behavior_delegate/runner_acider/BD = behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/runner_acider/behavior_del = behavior_delegate
+	if (!istype(behavior_del))
 		return
-	if(BD.acid_amount < BD.melt_acid_cost)
+	if(behavior_del.acid_amount < behavior_del.melt_acid_cost)
 		to_chat(src, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
 		return
 
-	BD.modify_acid(-BD.melt_acid_cost)
+	behavior_del.modify_acid(-behavior_del.melt_acid_cost)
 
-	var/obj/effect/xenomorph/acid/A = new acid_type(T, O)
+	var/obj/effect/xenomorph/acid/acid = new acid_type(turf, affected_atom)
 
-	if(istype(O, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 20, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
-			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
+	if(istype(affected_atom, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/multitile_vehicle = affected_atom
+		multitile_vehicle.take_damage_type(20 / acid.acid_delay, "acid", src)
+		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at [multitile_vehicle]. It sizzles under the bubbling mess of acid!"), \
+			SPAN_XENOWARNING("We vomit globs of vile stuff at [multitile_vehicle]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
-		QDEL_IN(A, 20)
+		QDEL_IN(acid, 20)
 		return
 
-	A.add_hiddenprint(src)
-	A.name += " ([O])"
+	acid.add_hiddenprint(src)
+	acid.name += " ([affected_atom])"
 
-	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
-	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
+	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"), \
+	SPAN_XENOWARNING("We vomit globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 
-/datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!istype(X))
+	if(!istype(xeno))
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("It is too cramped in here to activate this!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("It is too cramped in here to activate this!"))
 		return
 
-	var/area/xeno_area = get_area(X)
+	var/area/xeno_area = get_area(xeno)
 	if(xeno_area.flags_area & AREA_CONTAINMENT)
-		to_chat(X, SPAN_XENOWARNING("You can't activate this here!"))
+		to_chat(xeno, SPAN_XENOWARNING("We can't activate this here!"))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	if(X.mutation_type != RUNNER_ACIDER)
+	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
+	if(!istype(behavior_delegate))
 		return
 
-	var/datum/behavior_delegate/runner_acider/BD = X.behavior_delegate
-	if(!istype(BD))
-		return
-
-	if(BD.caboom_trigger)
+	if(behavior_delegate.caboom_trigger)
 		cancel_ability()
 		return
 
-	if(BD.acid_amount < minimal_acid)
-		to_chat(X, SPAN_XENOWARNING("Not enough acid built up for an explosion."))
+	if(behavior_delegate.acid_amount < minimal_acid)
+		to_chat(xeno, SPAN_XENOWARNING("Not enough acid built up for an explosion."))
 		return
 
-	to_chat(X, SPAN_XENOWARNING("Your stomach starts turning and twisting, getting ready to compress the built up acid."))
-	X.color = "#22FF22"
-	X.SetLuminosity(3)
+	notify_ghosts(header = "For the Hive!", message = "[xeno] is going to explode for the Hive!", source = xeno, action = NOTIFY_ORBIT)
 
-	BD.caboom_trigger = TRUE
-	BD.caboom_left = BD.caboom_timer
-	BD.caboom_last_proc = 0
-	X.set_effect(BD.caboom_timer*2, SUPERSLOW)
+	to_chat(xeno, SPAN_XENOWARNING("Our stomach starts turning and twisting, getting ready to compress the built up acid."))
+	xeno.color = "#22FF22"
+	xeno.set_light_color("#22FF22")
+	xeno.set_light_range(3)
 
-	X.say(";FOR THE HIVE!!!")
+	behavior_delegate.caboom_trigger = TRUE
+	behavior_delegate.caboom_left = behavior_delegate.caboom_timer
+	behavior_delegate.caboom_last_proc = 0
+	xeno.set_effect(behavior_delegate.caboom_timer*2, SUPERSLOW)
+
+	xeno.say(";FOR THE HIVE!!!")
 	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
@@ -198,17 +191,17 @@
 
 	if(!istype(xeno))
 		return
-	var/datum/behavior_delegate/runner_acider/behavior = xeno.behavior_delegate
-	if(!istype(behavior))
+	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
+	if(!istype(behavior_delegate))
 		return
 
-	behavior.caboom_trigger = FALSE
+	behavior_delegate.caboom_trigger = FALSE
 	xeno.color = null
-	xeno.SetLuminosity(0)
-	behavior.modify_acid(-behavior.max_acid / 4)
+	xeno.set_light_range(0)
+	behavior_delegate.modify_acid(-behavior_delegate.max_acid / 4)
 
 	// Done this way rather than setting to 0 in case something else slowed us
 	// -Original amount set - (time exploding + timer inaccuracy) * how much gets removed per tick / 2
-	xeno.adjust_effect(behavior.caboom_timer * -2 - (behavior.caboom_timer - behavior.caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
+	xeno.adjust_effect(behavior_delegate.caboom_timer * -2 - (behavior_delegate.caboom_timer - behavior_delegate.caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
 
-	to_chat(xeno, SPAN_XENOWARNING("You remove all your explosive acid before it combusted."))
+	to_chat(xeno, SPAN_XENOWARNING("We remove all our explosive acid before it combusted."))

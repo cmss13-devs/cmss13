@@ -30,7 +30,7 @@
 		occupied = 0
 	return ..()
 
-/obj/structure/displaycase/bullet_act(obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(obj/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	src.healthcheck()
@@ -57,7 +57,7 @@
 
 
 /obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
-	src.health -= W.force
+	src.health -= W.force * W.demolition_mod
 	src.healthcheck()
 	..()
 	return

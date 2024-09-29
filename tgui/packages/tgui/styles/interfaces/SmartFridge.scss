@@ -2,6 +2,7 @@
   .ItemIconCell {
     width: 32px;
   }
+
   .ItemIcon {
     min-width: 32px;
     max-width: 32px;
@@ -10,12 +11,21 @@
     margin-bottom: -6px;
   }
 
+  .SmallIcon {
+    min-width: 20px;
+    max-width: 20px;
+  }
+
+  .CategoryTabs {
+    background-color: rgba(#000000, 0.4);
+  }
+
   .ContentsTable {
     .ContentRow {
       margin-top: 2px;
       margin-bottom: 2px;
       &:nth-child(even) {
-        background-color: black;
+        background-color: rgba(#000000, 0.6);
       }
     }
   }
@@ -23,6 +33,12 @@
   .VendButton {
     width: 100%;
     display: block;
+    font-weight: bold;
+    display: block;
+    &:hover,
+    &:focus {
+      transition: background-color 0ms;
+    }
     .Button__content {
       align-self: flex-start;
       text-align: left;

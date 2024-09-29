@@ -51,12 +51,11 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				src.health -= W.force * 0.75
+				health -= W.force * W.demolition_mod * 0.75
 			if("brute")
-				src.health -= W.force * 0.5
-			else
-		if (src.health <= 0)
-			src.explode()
+				health -= W.force * W.demolition_mod * 0.5
+		if (health <= 0)
+			explode()
 		..()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
@@ -66,6 +65,7 @@
 	return
 
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(prob(50/severity))

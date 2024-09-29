@@ -15,19 +15,19 @@
 
 #define DECISECONDS_TO_HOURS /36000
 
-var/midnight_rollovers = 0
-var/rollovercheck_last_timeofday = 0
+GLOBAL_VAR_INIT(midnight_rollovers, 0)
+GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 // Real time that is still reliable even when the round crosses over midnight time reset.
 #define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
-#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
+#define MIDNIGHT_ROLLOVER_CHECK ( GLOB.rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : GLOB.midnight_rollovers )
 
 /proc/update_midnight_rollover()
-	if(world.timeofday < rollovercheck_last_timeofday)
-		midnight_rollovers++
+	if(world.timeofday < GLOB.rollovercheck_last_timeofday)
+		GLOB.midnight_rollovers++
 
-	rollovercheck_last_timeofday = world.timeofday
-	return midnight_rollovers
+	GLOB.rollovercheck_last_timeofday = world.timeofday
+	return GLOB.midnight_rollovers
 
 ///Returns the world time in english. Do not use to get date information - starts at 0 + a random time offset from 10 minutes to 24 hours.
 /proc/worldtime2text(format = "hh:mm", time = world.time)
@@ -48,7 +48,7 @@ var/rollovercheck_last_timeofday = 0
 	return gameTimestamp("mm:ss", time)
 
 /proc/time_left_until(target_time, current_time, time_unit)
-	return CEILING(target_time - current_time, 1) / time_unit
+	return ceil(target_time - current_time) / time_unit
 
 /proc/text2duration(text = "00:00") // Attempts to convert time text back to time value
 	var/split_text = splittext(text, ":")
@@ -91,22 +91,22 @@ var/rollovercheck_last_timeofday = 0
 		return "right now"
 	if(second < 60)
 		return "[second] second[(second != 1)? "s":""]"
-	var/minute = FLOOR(second / 60, 1)
-	second = FLOOR(MODULUS(second, 60), round_seconds_to)
+	var/minute = floor(second / 60)
+	second = FLOOR(second %% 60, round_seconds_to)
 	var/secondT
 	if(second)
 		secondT = " and [second] second[(second != 1)? "s":""]"
 	if(minute < 60)
 		return "[minute] minute[(minute != 1)? "s":""][secondT]"
-	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS(minute, 60)
+	var/hour = floor(minute / 60)
+	minute %%= 60
 	var/minuteT
 	if(minute)
 		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
 		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
-	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS(hour, 24)
+	var/day = floor(hour / 24)
+	hour %%= 24
 	var/hourT
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"

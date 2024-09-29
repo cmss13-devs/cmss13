@@ -89,13 +89,13 @@
 //! ### SS initialization hints
 /**
  * Negative values incidate a failure or warning of some kind, positive are good.
- * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
+ * 0 and 1 are unused so that TRUE and FALSE are guaranteed to be invalid values.
  */
 
 /// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
 #define SS_INIT_FAILURE -2
 
-/// The default return value which must be overriden. Will succeed with a warning.
+/// The default return value which must be overridden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
 /// Subsystem initialized sucessfully.
@@ -109,35 +109,25 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define SS_INIT_TICKER_SPAWN    999
+#define SS_INIT_PROFILER 86
 #define SS_INIT_INPUT   85
-#define SS_INIT_FAIL_TO_TOPIC 84
 #define SS_INIT_TOPIC 83
-#define SS_INIT_RUST    30
+#define SS_INIT_LOBBYART 82
 #define SS_INIT_INFLUXDRIVER 28
-#define SS_INIT_SUPPLY_SHUTTLE  25
 #define SS_INIT_GARBAGE 24
 #define SS_INIT_EVENTS 23.5
-#define SS_INIT_JOB 23
+#define SS_INIT_HIJACK 22.6
 #define SS_INIT_REDIS 22.5
 #define SS_INIT_REAGENTS 22.1
 #define SS_INIT_MAPPING 22
 #define SS_INIT_NIGHTMARE   21.5
 #define SS_INIT_TIMETRACK 21.1
 #define SS_INIT_HUMANS  21
-#define SS_INIT_MAP 20
-#define SS_INIT_COMPONENT   19.5
+#define SS_INIT_WHO 20
 #define SS_INIT_POWER   19
-#define SS_INIT_OBJECT  18
-#define SS_INIT_PIPENET 17.5
-#define SS_INIT_XENOARCH    17
-#define SS_INIT_MORE_INIT   16
-#define SS_INIT_AIR 15
-#define SS_INIT_TELEPORTER  13
 #define SS_INIT_INFLUXMCSTATS 12
 #define SS_INIT_INFLUXSTATS 11
 #define SS_INIT_LIGHTING 10
-#define SS_INIT_DEFCON 9
 #define SS_INIT_LAW 6
 #define SS_INIT_FZ_TRANSITIONS 5
 #define SS_INIT_PROJECTILES 4.1
@@ -151,22 +141,18 @@
 #define SS_INIT_RADIO 2
 #define SS_INIT_TIMER   100
 #define SS_INIT_UNSPECIFIED 0
-#define SS_INIT_EMERGENCY_SHUTTLE -19
 #define SS_INIT_ASSETS -20
 #define SS_INIT_TICKER -21
 #define SS_INIT_VOTE   -23
-#define SS_INIT_FINISH -24
-#define SS_INIT_ADMIN  -26
 #define SS_INIT_DATABASE   -27
 #define SS_INIT_ENTITYMANAGER   -28
 #define SS_INIT_PLAYTIME   -29
-#define SS_INIT_PREDSHIPS  -30
-#define SS_INIT_OBJECTIVES -31
-#define SS_INIT_LOBBYART   -33
+#define SS_INIT_STICKY -30
+#define SS_INIT_PREDSHIPS  -31
+#define SS_INIT_OBJECTIVES -32
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
-#define SS_INIT_EARLYRUNTIMES -500 // Post-init notifier
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
@@ -177,7 +163,6 @@
 #define SS_PRIORITY_SOUND   250
 #define SS_PRIORITY_TICKER  200
 #define SS_PRIORITY_NIGHTMARE   180
-#define SS_PRIORITY_MAPVIEW    170
 #define SS_PRIORITY_QUADTREE    160
 #define SS_PRIORITY_CHAT    155
 #define SS_PRIORITY_STATPANEL    154
@@ -195,20 +180,19 @@
 #define SS_PRIORITY_VOTE    110
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS 104
-#define SS_PRIORITY_FACEHUGGERS 100
 #define SS_PRIORITY_DECORATOR    99
+#define SS_PRIORITY_EFFECTS        97
+#define SS_PRIORITY_FASTEFFECTS    96
+#define SS_PRIORITY_HIJACK 97
 #define SS_PRIORITY_POWER   95
-#define SS_PRIORITY_EFFECTS 92
+#define SS_PRIORITY_OLDEFFECTS 92
 #define SS_PRIORITY_MACHINERY   90
 #define SS_PRIORITY_FZ_TRANSITIONS 88
-#define SS_PRIORITY_PIPENET 85
 #define SS_PRIORITY_ROUND_RECORDING 83
 #define SS_PRIORITY_SHUTTLE 80
-#define SS_PRIORITY_TELEPORTER  75
 #define SS_PRIORITY_EVENT   65
 #define SS_PRIORITY_DISEASE 60
-#define SS_PRIORITY_FAST_MACHINERY 55
-#define SS_PRIORITY_MIDI    40
+#define SS_PRIORITY_DEFENSES 55
 #define SS_PRIORITY_ENTITY    37
 #define SS_PRIORITY_DEFCON  35
 #define SS_PRIORITY_ACID_PILLAR    34
@@ -227,7 +211,6 @@
 #define SS_PRIORITY_INFLUXSTATS 8
 #define SS_PRIORITY_PLAYTIME    5
 #define SS_PRIORITY_PERFLOGGING 4
-#define SS_PRIORITY_CORPSESPAWNER  3
 #define SS_PRIORITY_GARBAGE 2
 #define SS_PRIORITY_INACTIVITY  1
 #define SS_PRIORITY_ADMIN   0

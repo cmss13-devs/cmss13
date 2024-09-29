@@ -1,94 +1,9 @@
-#define QUICK_EQUIP_PRIMARY 1
-#define QUICK_EQUIP_SECONDARY 2
-#define QUICK_EQUIP_TERTIARY 3
-#define QUICK_EQUIP_QUATERNARY 4
-
 /datum/keybinding/human
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
 
 /datum/keybinding/human/can_use(client/user)
 	return ishuman(user.mob)
-
-/datum/keybinding/human/quick_equip
-	hotkey_keys = list("E")
-	classic_keys = list("E")
-	name = "quick_equip"
-	full_name = "Unholster"
-	description = "Take out an available weapon"
-	keybind_signal = COMSIG_KB_HUMAN_QUICKEQUIP_DOWN
-
-/datum/keybinding/human/quick_equip/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_PRIMARY)
-	return TRUE
-
-/datum/keybinding/human/quick_equip_secondary
-	hotkey_keys = list("Shift+E")
-	classic_keys = list("Shift+E")
-	name = "quick_equip_secondary"
-	full_name = "Unholster secondary"
-	description = "Take out your secondary weapon"
-	keybind_signal = COMSIG_KB_HUMAN_SECONDARY_DOWN
-
-/datum/keybinding/human/quick_equip_secondary/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_SECONDARY)
-	return TRUE
-
-/datum/keybinding/human/quick_equip_tertiary
-	hotkey_keys = list("Ctrl+E", "Alt+E")
-	classic_keys = list("Ctrl+E", "Alt+E")
-	name = "quick_equip_tertiary"
-	full_name = "Unholster tertiary"
-	description = "Take out your tertiary item."
-	keybind_signal = COMSIG_KB_HUMAN_TERTIARY_DOWN
-
-/datum/keybinding/human/quick_equip_tertiary/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_TERTIARY)
-	return TRUE
-
-/datum/keybinding/human/quick_equip_quaternary
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
-	name = "quick_equip_quaternary"
-	full_name = "Unholster quaternary"
-	description = "Take out your quaternary item."
-	keybind_signal = COMSIG_KB_HUMAN_QUATERNARY_DOWN
-
-/datum/keybinding/human/quick_equip_quaternary/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_QUATERNARY)
-	return TRUE
-
-/datum/keybinding/human/quick_equip_inventory
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
-	name = "quick_equip_inventory"
-	full_name = "Quick equip inventory"
-	description = "Quickly puts an item in the best slot available"
-	keybind_signal = COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN
-
-/datum/keybinding/human/quick_equip_inventory/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.quick_equip()
-	return TRUE
 
 /datum/keybinding/human/issue_order
 	hotkey_keys = list("Unbound")
@@ -103,8 +18,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.issue_order(order)
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.issue_order(order)
 	return TRUE
 
 /datum/keybinding/human/issue_order/move
@@ -139,8 +54,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_one()
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.spec_activation_one()
 	return TRUE
 
 /datum/keybinding/human/specialist_two
@@ -154,24 +69,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_two()
-	return TRUE
-
-/datum/keybinding/human/pick_up
-	hotkey_keys = list("F")
-	classic_keys = list("Unbound")
-	name = "pick_up"
-	full_name = "Pick Up Dropped Items"
-	keybind_signal = COMSIG_KB_HUMAN_PICK_UP
-
-/datum/keybinding/human/pick_up/down(client/user)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/human_user = user.mob
-	human_user.pickup_recent()
+	var/mob/living/carbon/human/human_mob = user.mob
+	human_mob.spec_activation_two()
 	return TRUE
 
 /datum/keybinding/human/rotate_chair
@@ -209,7 +108,30 @@
 		shown_item.showoff(human_user)
 	return TRUE
 
-#undef QUICK_EQUIP_PRIMARY
-#undef QUICK_EQUIP_SECONDARY
-#undef QUICK_EQUIP_TERTIARY
-#undef QUICK_EQUIP_QUATERNARY
+/datum/keybinding/human/cycle_helmet_hud
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "cycle_helmet_hud"
+	full_name = "Cycle Helmet HUD"
+	keybind_signal = COMSIG_KB_HUMAN_CYCLE_HELMET_HUD
+
+/datum/keybinding/human/cycle_helmet_hud/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	// Get the user's marine helmet (if they're wearing one)
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/clothing/head/helmet/marine/marine_helmet = human_user.head
+	if(!istype(marine_helmet))
+		// If their hat isn't a marine helmet, or is null, return.
+		return
+
+	// Cycle the HUD on the helmet.
+	var/cycled_hud = marine_helmet.cycle_huds(human_user)
+
+	// Update the helmet's 'cycle hud' action button
+	var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in marine_helmet.actions
+	cycle_action?.set_action_overlay(cycled_hud)
+
+	return TRUE

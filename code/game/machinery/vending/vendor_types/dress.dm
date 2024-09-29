@@ -6,11 +6,11 @@
 
 /obj/structure/machinery/cm_vending/clothing/dress/proc/get_listed_products_for_role(list/role_specific_uniforms)
 	. = list()
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -19,7 +19,7 @@
 		. += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -45,18 +45,18 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/obj/item/card/id/id_card = H.get_idcard()
 	var/list/role_specific_uniforms
 	var/list/vended_items
 	var/list/display_list = list()
-	if(istype(id_card))
+	if(id_card)
 		role_specific_uniforms = id_card.uniform_sets
 		vended_items = id_card.vended_items
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -65,7 +65,7 @@
 		display_list += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -83,9 +83,9 @@
 /obj/structure/machinery/cm_vending/clothing/dress/ui_data(mob/user)
 
 	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/obj/item/card/id/id_card = H.get_idcard()
 	var/list/vended_items
-	if(istype(id_card))
+	if(id_card)
 		vended_items = id_card.vended_items
 
 	var/list/data = list()
@@ -120,9 +120,9 @@
 
 			var/item_path = L[3]
 
-			var/obj/item/card/id/id_card = H.wear_id
+			var/obj/item/card/id/id_card = H.get_idcard()
 
-			if(!istype(id_card)) //not wearing an ID
+			if(!id_card) //not wearing an ID
 				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
@@ -134,10 +134,10 @@
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			for(var/category in uniform_categories) // Very Hacky fix
+			for(var/category in GLOB.uniform_categories) // Very Hacky fix
 				if(!exploiting)
 					break
-				for(var/specific_category in uniform_categories[category])
+				for(var/specific_category in GLOB.uniform_categories[category])
 					if(!exploiting)
 						break
 					if(!(specific_category in id_card.uniform_sets))
@@ -197,11 +197,11 @@
 		if(findtext("[path]", item))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/obj/item/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		//If we have multiple options, let them select which one they meant

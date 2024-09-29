@@ -135,8 +135,9 @@
 		deafen_amount = 0
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 
-	M.apply_effect(weaken_amount, WEAKEN)
-	M.apply_effect(paralyze_amount, PARALYZE)
+	M.Stun(weaken_amount)
+	M.KnockDown(weaken_amount)	
+	M.KnockOut(paralyze_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 
@@ -256,6 +257,7 @@
 
 	//decide how banged mob is
 	var/bang_effect = 0
+	var/lying = H.body_position == LYING_DOWN
 
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now
@@ -264,7 +266,7 @@
 		if((get_dist(H, T) <= 1 || src.loc == H.loc || src.loc == H))
 			H.apply_damage(5, BRUTE)
 			H.apply_damage(5, BURN)
-			if(H.lying)
+			if(lying)
 				bang_effect = 1
 			else
 				bang_effect = 2
@@ -277,13 +279,13 @@
 		H.apply_damage(5, BRUTE)
 		H.apply_damage(5, BURN)
 
-		if(H.lying)
+		if(lying)
 			bang_effect = 4
 		else
 			bang_effect = 5
 
 	else if(get_dist(H, T) <= 5)
-		if(H.lying)
+		if(lying)
 			bang_effect = 3
 		else
 			bang_effect = 4

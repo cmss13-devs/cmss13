@@ -8,6 +8,14 @@
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
+// Weyland Yutani Categories
+#define CARDCON_DEPARTMENT_CORP_LEAD "Corporate Leadership"
+#define CARDCON_DEPARTMENT_CORP_SECURITY "Corporate Security"
+#define CARDCON_DEPARTMENT_CORPORATE "Corporate Employees"
+#define CARDCON_DEPARTMENT_PMC "PMC Combat Ops"
+#define CARDCON_DEPARTMENT_INSPECTION "PMC Investigations"
+#define CARDCON_DEPARTMENT_SPECIALTY "PMC Specialists"
+
 /obj/structure/machinery/computer/card
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
@@ -20,8 +28,13 @@
 	var/list/factions = list(FACTION_MARINE)
 	var/printing
 
-	var/is_centcom = FALSE
+	var/is_weyland = FALSE
 	var/authenticated = FALSE
+
+/obj/structure/machinery/computer/card/wey_yu
+	is_weyland = TRUE
+	req_access = list(ACCESS_WY_DATABASE)
+	factions = list(FACTION_WY, FACTION_PMC)
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
@@ -43,12 +56,12 @@
 		ui = new(user, src, "CardMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/card/ui_act(action, params)
+/obj/structure/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
@@ -91,28 +104,24 @@
 					printing = TRUE
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
-					var/faction = "N/A"
-					if(target_id_card.faction_group && islist(target_id_card.faction_group))
-						faction = jointext(target_id_card.faction_group, ", ")
-					if(isnull(target_id_card.faction_group))
-						target_id_card.faction_group = list()
-					else
-						faction = target_id_card.faction_group
 					var/contents = {"<center><h4>Access Report</h4></center>
 								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
 								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
 								<hr>
-								<u>Faction:</u> [faction]<br>
+								<u>Faction:</u> [target_id_card.faction ? target_id_card.faction : "N/A"]<br>
 								<u>Assignment:</u> [target_id_card.assignment]<br>
 								<u>Account Number:</u> #[target_id_card.associated_account_number]<br>
 								<u>Blood Type:</u> [target_id_card.blood_type]<br><br>
 								<u>Access:</u><br>
 								"}
 
-					var/known_access_rights = get_all_main_access()
+					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
-							contents += "  [get_access_desc(A)]"
+							contents += "  [get_access_desc(A)]<br>"
+					contents += "<br><u>Modification Log:</u><br>"
+					for(var/change in target_id_card.modification_log)
+						contents += "  [change]<br>"
 
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
@@ -139,9 +148,9 @@
 					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
-						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>")
+						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>", key_name_admin(user))
 					if(target_id_card.assignment != origin_assignment)
-						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the assignment of the ID to the custom position '[target_id_card.assignment]'. </font>")
+						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the assignment of the ID to the custom position '[target_id_card.assignment]'. </font>", key_name_admin(user))
 				if(ishuman(user))
 					target_id_card.forceMove(user.loc)
 					if(!user.get_active_hand())
@@ -170,8 +179,8 @@
 
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
-			message_admins("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] terminated the ID. </font>", key_name_admin(user))
+			message_admins("[user.real_name] terminated the ID of [target_id_card.registered_name].", key_name_admin(user))
 			return TRUE
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
@@ -196,16 +205,16 @@
 					target_id_card.assignment = custom_name
 			else
 				var/list/new_access = list()
-				if(is_centcom)
-					new_access = get_all_weyland_access()
+				if(is_weyland)
+					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
-					var/datum/job/job = RoleAuthority.roles_for_mode[target]
+					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[target]
 
 					if(!job)
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
-				target_id_card.access -= get_all_weyland_access() + get_all_main_access()
+				target_id_card.access -= get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_MARINE_MAIN)
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
@@ -221,27 +230,27 @@
 					target_id_card.faction_group = list()
 				if(params["access_target"] in target_id_card.faction_group)
 					target_id_card.faction_group -= params["access_target"]
-					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked [access_type] IFF. </font>")
+					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked [access_type] IFF. </font>", key_name_admin(user))
 				else
 					target_id_card.faction_group |= params["access_target"]
-					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
+					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted [access_type] IFF. </font>", key_name_admin(user))
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
+			if(access_type in (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
-					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
+					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				else
 					target_id_card.access |= access_type
-					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted access '[access_type]'. </font>")
+					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				return TRUE
 		if("PRG_grantall")
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
+			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
-			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
+			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyall")
 			if(!authenticated || !target_id_card)
@@ -250,7 +259,7 @@
 			var/list/access = target_id_card.access
 			access.Cut()
 			target_id_card.faction_group -= factions
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] removed all accesses and USCM IFF. </font>")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] removed all accesses and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_grantregion")
 			if(!authenticated || !target_id_card)
@@ -258,14 +267,14 @@
 
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group |= factions
-				log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted USCM IFF. </font>")
+				log_idmod(target_id_card, "<font color='green'> [user.real_name] granted USCM IFF. </font>", key_name_admin(user))
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access |= get_region_accesses(region)
 			var/additions = get_region_accesses_name(region)
-			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted all [additions] accesses. </font>")
+			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyregion")
 			if(!authenticated || !target_id_card)
@@ -273,14 +282,14 @@
 
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group -= factions
-				log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked USCM IFF. </font>")
+				log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked USCM IFF. </font>", key_name_admin(user))
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access -= get_region_accesses(region)
 			var/additions = get_region_accesses_name(region)
-			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked all [additions] accesses. </font>")
+			log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_account")
 			if(!authenticated || !target_id_card)
@@ -288,40 +297,47 @@
 
 			var/account = text2num(params["account"])
 			target_id_card.associated_account_number = account
-			log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the account number to '[account]'. </font>")
+			log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the account number to '[account]'. </font>", key_name_admin(user))
 			return TRUE
 
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data = list()
-	data["station_name"] = station_name
-	data["centcom_access"] = is_centcom
+	data["station_name"] = MAIN_SHIP_NAME
+	data["weyland_access"] = is_weyland
 	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
 	var/list/departments
-	if(is_centcom)
-		departments = list("CentCom" = get_all_centcom_jobs())
+	if(is_weyland)
+		departments = list(
+			CARDCON_DEPARTMENT_CORP_LEAD = ROLES_WY_LEADERSHIP,
+			CARDCON_DEPARTMENT_CORP_SECURITY = ROLES_WY_GOONS,
+			CARDCON_DEPARTMENT_CORPORATE = ROLES_WY_CORPORATE,
+			CARDCON_DEPARTMENT_PMC = ROLES_WY_PMC,
+			CARDCON_DEPARTMENT_SPECIALTY = ROLES_WY_PMC_AUX,
+			CARDCON_DEPARTMENT_INSPECTION = ROLES_WY_PMC_INSPEC,
+		)
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC & ROLES_WO,
-			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT & ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC & ROLES_WO,
-			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE & ROLES_WO,
-			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING & ROLES_WO,
-			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION & ROLES_WO,
-			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL & ROLES_WO,
-			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL & GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	else
 		departments = list(
-			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC - ROLES_WO,
-			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT - ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC - ROLES_WO,
-			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE - ROLES_WO,
-			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING - ROLES_WO,
-			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION - ROLES_WO,
-			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL - ROLES_WO,
-			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+			CARDCON_DEPARTMENT_COMMAND = GLOB.ROLES_CIC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = GLOB.ROLES_AUXIL_SUPPORT - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = GLOB.ROLES_MISC - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = GLOB.ROLES_POLICE - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = GLOB.ROLES_ENGINEERING - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = GLOB.ROLES_REQUISITION - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = GLOB.ROLES_MEDICAL - GLOB.ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = GLOB.ROLES_MARINES
 		)
 	data["jobs"] = list()
 	for(var/department in departments)
@@ -336,18 +352,26 @@
 			data["jobs"][department] = department_jobs
 
 	var/list/regions = list()
-	for(var/i in 1 to 7)
+	for(var/i in 1 to is_weyland ? 6 : 7)
 
 		var/list/accesses = list()
-		for(var/access in get_region_accesses(i))
-			if (get_access_desc(access))
-				accesses += list(list(
-					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
-					"ref" = access,
-				))
+		if(!is_weyland)
+			for(var/access in get_region_accesses(i))
+				if(get_access_desc(access))
+					accesses += list(list(
+						"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+					))
+		else
+			for(var/access in get_region_accesses_wy(i))
+				if(get_weyland_access_desc(access))
+					accesses += list(list(
+						"desc" = replacetext(get_weyland_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+					))
 
 		regions += list(list(
-			"name" = get_region_accesses_name(i),
+			"name" = is_weyland ? get_region_accesses_name_wy(i) : get_region_accesses_name(i),
 			"regid" = i,
 			"accesses" = accesses
 		))
@@ -376,7 +400,7 @@
 /obj/structure/machinery/computer/card/ui_data(mob/user)
 	var/list/data = list()
 
-	data["station_name"] = station_name
+	data["station_name"] = MAIN_SHIP_NAME
 	data["authenticated"] = authenticated
 
 	data["has_id"] = !!target_id_card
@@ -432,7 +456,7 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -479,6 +503,13 @@
 #undef CARDCON_DEPARTMENT_ENGINEERING
 #undef CARDCON_DEPARTMENT_COMMAND
 
+#undef CARDCON_DEPARTMENT_CORP_LEAD
+#undef CARDCON_DEPARTMENT_CORP_SECURITY
+#undef CARDCON_DEPARTMENT_CORPORATE
+#undef CARDCON_DEPARTMENT_PMC
+#undef CARDCON_DEPARTMENT_INSPECTION
+#undef CARDCON_DEPARTMENT_SPECIALTY
+
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
 //Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
@@ -498,7 +529,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -560,7 +591,7 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
-				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
+				if(GLOB.RoleAuthority.check_squad_capacity(person_to_modify, selected))
 					visible_message("[SPAN_BOLD("[src]")] states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
 					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
@@ -594,7 +625,7 @@
 /obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
-	for(var/datum/squad/current_squad in RoleAuthority.squads)
+	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
 				"name" = current_squad.name,
@@ -728,7 +759,10 @@
 /obj/structure/machinery/computer/crew/clf
 	faction = FACTION_CLF
 
-/obj/structure/machinery/computer/crew/pmc
+/obj/structure/machinery/computer/crew/wey_yu
+	faction = FACTION_WY
+
+/obj/structure/machinery/computer/crew/wey_yu/pmc
 	faction = FACTION_PMC
 
 /obj/structure/machinery/computer/crew/colony
@@ -771,7 +805,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		START_PROCESSING(SSprocessing, src)
 	ui_sources[M] = source
 	tgui_interact(M)
@@ -789,7 +823,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_close(mob/M)
 	. = ..()
 	ui_sources -= M
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		STOP_PROCESSING(SSprocessing, src)
 
 /datum/crewmonitor/ui_host(mob/user)
@@ -798,7 +832,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_data(mob/user)
 	. = list(
 		"sensors" = update_data(),
-		"link_allowed" = isAI(user),
+		"link_allowed" = isSilicon(user),
 	)
 
 /datum/crewmonitor/proc/update_data()
@@ -819,7 +853,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		var/turf/pos = get_turf(H)
 		if(!pos)
 			continue
-		if(is_admin_level(pos.z))
+		if(should_block_game_interaction(H))
 			continue
 
 		// The entry for this human
@@ -868,26 +902,17 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 	return results
 
+/*
+ * Unimplemented. Was for AIs tracking but we never had them working.
+ *
 /datum/crewmonitor/ui_act(action,params)
 	. = ..()
 	if(.)
 		return
 	switch (action)
 		if ("select_person")
-			// May work badly cause currently there is no player-controlled AI
-			var/mob/living/silicon/ai/AI = usr
-			if(!istype(AI))
-				return
-			var/mob/living/carbon/human/H
-			for(var/entry in data)
-				if(entry["name"] == params["name"])
-					H = locate(entry["ref"])
-					break
-			if(!H) // Sanity check
-				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
-			else
-				// We do not care is there camera or no - we just know his location
-				AI.ai_actual_track(H)
+
+*/
 
 /datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
@@ -900,9 +925,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PROVOST_CMARSHAL = 00,
 				JOB_GENERAL = 00,
 				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O8
+				JOB_PROVOST_MARSHAL = 02,//Grade O7
+				JOB_PROVOST_DMARSHAL = 03,//Grade O6
 				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_INSPECTOR = 04,
+				JOB_PROVOST_CINSPECTOR = 05,
+				JOB_PROVOST_INSPECTOR = 06,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -913,9 +940,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
-				JOB_PILOT = 22,
-				JOB_DROPSHIP_CREW_CHIEF = 23,
-				JOB_INTEL = 24,
+				JOB_CAS_PILOT = 22,
+				JOB_DROPSHIP_PILOT = 23,
+				JOB_DROPSHIP_CREW_CHIEF = 24,
+				JOB_INTEL = 25,
+				JOB_TANK_CREW = 26,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -1005,7 +1034,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				RAIDER_SQUAD = 131,
 			)
 			var/squad_number = 70
-			for(var/squad_name in ROLES_SQUAD_ALL + "")
+			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")
 				if(!squad_name) squad_number = 120
 				else squad_name += " "
 				jobs += list(
@@ -1041,7 +1070,8 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_JUNIOR_EXECUTIVE = 24,
 				// 30-39: Security
 				JOB_WY_GOON_LEAD = 30,
-				JOB_WY_GOON = 31,
+				JOB_WY_GOON_TECH = 32,
+				JOB_WY_GOON = 32,
 				// 40-49: MedSci
 				JOB_PMC_SYNTH = 40,
 				JOB_PMC_XENO_HANDLER = 41,
@@ -1087,11 +1117,14 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_UPP_COMMANDO = 22,
 				// 30-39: Security
 				JOB_UPP_POLICE = 31,
+				JOB_UPP_COMMISSAR = 41,
 				// 40-49: MedSci
 				JOB_UPP_LT_DOKTOR = 41,
 				// 50-59: Engineering
 				JOB_UPP_COMBAT_SYNTH = 50,
 				JOB_UPP_CREWMAN = 51,
+				JOB_UPP_SUPPORT_SYNTH = 52,
+				JOB_UPP_SUPPLY = 53,
 				// 60-69: Soldiers
 				JOB_UPP_LEADER = 60,
 				JOB_UPP_SPECIALIST = 61,

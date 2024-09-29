@@ -48,7 +48,7 @@
 					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
-			var/d = rand(round(I.force / 4), I.force)
+			var/d = rand(floor(I.force / 4), I.force)
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")
@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(lying)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -110,7 +110,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -192,7 +192,7 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by the [source]!"), \
+			SPAN_DANGER("[src] was shocked by [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
@@ -207,7 +207,7 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by the [source]."), \
+			SPAN_DANGER("[src] was mildly shocked by [source]."), \
 			SPAN_DANGER("You feel a mild shock course through your body."), \
 			SPAN_DANGER("You hear a light zapping.") \
 		)
@@ -260,19 +260,24 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src == M)
 		return
-	var/t_him = "it"
-	if(gender == MALE)
-		t_him = "him"
-	else if(gender == FEMALE)
-		t_him = "her"
-	if(lying || sleeping)
+	var/t_him = p_them()
+
+	var/shake_action
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || sleeping) // incap implies also unconscious or knockedout
+		shake_action = "wake [t_him] up!"
+	else if(HAS_TRAIT(src, TRAIT_FLOORED))
+		shake_action = "get [t_him] up!"
+
+	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		if(sleeping == 0)
-			resting = 0
-			update_canmove()
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"), \
+			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
+
+	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
+		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."), \
+			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
+
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -374,7 +379,7 @@
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)
-		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if(istype(loc, /turf/open/space))
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
@@ -383,9 +388,17 @@
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
@@ -394,22 +407,28 @@
 	bodytemperature = max(bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT+10)
 	recalculate_move_delay = TRUE
 
+/**
+ * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
+ *
+ * Any HUD changes past this point are handled by [/mob/dead/observer/proc/observe_target_screen_add]
+ * and [/mob/dead/observer/proc/observe_target_screen_remove].
+ *
+ * Override on subtype mobs if they have any extra HUD elements/behaviour.
+ */
+/mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
+	SHOULD_CALL_PARENT(TRUE)
 
-/mob/living/carbon/show_inv(mob/living/carbon/user as mob)
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=face'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR>[(handcuffed ? "<A href='?src=\ref[src];item=handcuffs'>Handcuffed</A>" : "<A href='?src=\ref[src];item=handcuffs'>Not Handcuffed</A>")]
-	<BR>[(internal ? "<A href='?src=\ref[src];internal=1'>Remove Internal</A>" : "")]
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
+	LAZYINITLIST(observers)
+	observers |= observer
+	hud_used.show_hud(hud_used.hud_version, observer)
+
+	// Add the player's action buttons (not the actions themselves) to the observer's screen.
+	for(var/datum/action/action as anything in actions)
+		// Skip any hidden ones (of course).
+		if(action.hidden || action.player_hidden)
+			continue
+
+		observer.client.add_to_screen(action.button)
 
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
@@ -437,11 +456,11 @@
 	set name = "Sleep"
 	set category = "IC"
 
-	if(usr.sleeping)
+	if(sleeping)
 		to_chat(usr, SPAN_DANGER("You are already sleeping"))
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.sleeping = 20 //Short nap
+		sleeping = 20 //Short nap
 
 
 /mob/living/carbon/Collide(atom/movable/AM)
@@ -452,26 +471,26 @@
 /mob/living/carbon/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	set waitfor = 0
 	if(buckled) return FALSE //can't slip while buckled
-	if(lying) return FALSE //can't slip if already lying down.
+	if(body_position != STANDING_UP) return FALSE //can't slip if already lying down.
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
 	apply_effect(stun_level, STUN)
 	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
-	if(slide_steps && lying)//lying check to make sure we downed the mob
+	if(slide_steps && HAS_TRAIT(src, TRAIT_FLOORED))//lying check to make sure we downed the mob
 		var/slide_dir = dir
 		for(var/i=1, i<=slide_steps, i++)
 			step(src, slide_dir)
 			sleep(2)
-			if(!lying)
+			if(!HAS_TRAIT(src, TRAIT_FLOORED)) // just watch this break in the most horrible way possible
 				break
 
 
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
 	..()
-	if(stomach_contents.len && ismob(AM))
+	if(length(stomach_contents) && ismob(AM))
 		for(var/X in stomach_contents)
 			if(AM == X)
 				stomach_contents -= AM
@@ -493,7 +512,7 @@
 		last_special = world.time + 100
 		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
-		if(do_after(src, 1200, INTERRUPT_ALL^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
 			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
@@ -518,3 +537,17 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
+
+
+/mob/living/carbon/on_lying_down(new_lying_angle)
+	. = ..()
+	if(!buckled || buckled.buckle_lying != 0)
+		lying_angle_on_lying_down(new_lying_angle)
+
+
+/// Special carbon interaction on lying down, to transform its sprite by a rotation.
+/mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
+	if(!new_lying_angle)
+		set_lying_angle(pick(90, 270))
+	else
+		set_lying_angle(new_lying_angle)

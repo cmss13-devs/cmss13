@@ -52,7 +52,7 @@
 
 	var/turf/T
 	var/dir_away = get_dir(affected_atom, A)
-	for (var/dir in alldirs)
+	for (var/dir in GLOB.alldirs)
 		if (dir & dir_away)
 			continue
 		T = get_step(A, dir)

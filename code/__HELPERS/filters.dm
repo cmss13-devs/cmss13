@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"y" = -1,
 			"size" = 1,
 			"offset" = 0,
-			"color" = COLOUR_HALF_TRANSPARENT_BLACK
+			"color" = COLOR_HALF_TRANSPARENT_BLACK
 		)
 	),
 	"blur" = list(

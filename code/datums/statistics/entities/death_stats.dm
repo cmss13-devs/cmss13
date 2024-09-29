@@ -20,6 +20,7 @@
 	var/total_time_alive
 	var/total_damage_taken
 	var/total_revives_done = 0
+	var/total_ib_fixed = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -53,6 +54,7 @@
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
 		"total_revives_done" = DB_FIELDTYPE_INT,
+		"total_ib_fixed" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -84,6 +86,10 @@
 	if(!mind || statistic_exempt)
 		return
 
+	var/area/area = get_area(death_loc)
+	handle_observer_message(cause_data, cause_mob, death_loc, area)
+
+	// Perform logging above before get_player_from_key to avoid delays
 	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
 	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
 	if(player_entity)
@@ -95,11 +101,8 @@
 	new_death.role_name = get_role_name()
 	new_death.mob_name = real_name
 	new_death.faction_name = faction
-
 	new_death.is_xeno = FALSE
-
-	var/area/A = get_area(death_loc)
-	new_death.area_name = A.name
+	new_death.area_name = area.name
 
 	new_death.cause_name = cause_data?.cause_name
 	var/datum/entity/player/cause_player = get_player_from_key(cause_data?.ckey)
@@ -112,13 +115,13 @@
 		cause_mob.life_kills_total += life_value
 
 	if(getBruteLoss())
-		new_death.total_brute = round(getBruteLoss())
+		new_death.total_brute = floor(getBruteLoss())
 	if(getFireLoss())
-		new_death.total_burn = round(getFireLoss())
+		new_death.total_burn = floor(getFireLoss())
 	if(getOxyLoss())
-		new_death.total_oxy = round(getOxyLoss())
+		new_death.total_oxy = floor(getOxyLoss())
 	if(getToxLoss())
-		new_death.total_tox = round(getToxLoss())
+		new_death.total_tox = floor(getToxLoss())
 
 	new_death.time_of_death = world.time
 
@@ -131,26 +134,25 @@
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
 	new_death.total_revives_done = life_revives_total
+	new_death.total_ib_fixed = life_ib_total
 
-	handle_observer_message(cause_data, cause_mob, death_loc, A)
-
-	if(round_statistics)
-		round_statistics.track_death(new_death)
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
 	new_death.detach()
 	return new_death
 
-/mob/living/carbon/human/track_mob_death(cause, cause_mob)
-	. = ..(cause, cause_mob, job)
+/mob/living/carbon/human/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
+	. = ..()
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 	if(human_stats && human_stats.death_list)
 		human_stats.death_list.Insert(1, .)
 
-/mob/living/carbon/xenomorph/track_mob_death(cause, cause_mob)
-	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
+/mob/living/carbon/xenomorph/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
+	var/datum/entity/statistic/death/new_death = ..()
 	if(!new_death)
 		return
 	new_death.is_xeno = TRUE // this was placed beneath the if below, which meant gibbing as a xeno wouldn't track properly in stats

@@ -18,7 +18,7 @@
 /obj/item/reagent_container/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/food/snacks/csandwich))
 		//No sandwitch inception, it causes some bugs...
-		to_chat(user, SPAN_NOTICE(" You can't put a [W] in the [src]."))
+		to_chat(user, SPAN_NOTICE("You can't put \a [W] in [src]."))
 		return
 
 	var/sandwich_limit = 4
@@ -26,7 +26,7 @@
 		if(istype(O,/obj/item/reagent_container/food/snacks/breadslice))
 			sandwich_limit += 4
 
-	if(src.contents.len > sandwich_limit)
+	if(length(src.contents) > sandwich_limit)
 		to_chat(user, SPAN_DANGER("If you put anything else on \the [src] it's going to collapse."))
 		return
 	else if(istype(W,/obj/item/shard))
@@ -56,7 +56,7 @@
 		i++
 		if(i == 1)
 			fullname += "[O.name]"
-		else if(i == ingredients.len)
+		else if(i == length(ingredients))
 			fullname += " and [O.name]"
 		else
 			fullname += ", [O.name]"
@@ -69,12 +69,12 @@
 
 	var/image/T = new(src.icon, "sandwich_top")
 	T.pixel_x = pick(list(-1,0,1))
-	T.pixel_y = (ingredients.len * 2)+1
+	T.pixel_y = (length(ingredients) * 2)+1
 	overlays += T
 
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = n_ceil(Clamp((ingredients.len/2),1,3))
+	w_class = ceil(clamp((length(ingredients)/2),1,3))
 
 /obj/item/reagent_container/food/snacks/csandwich/Destroy()
 	QDEL_NULL_LIST(ingredients)
@@ -82,7 +82,7 @@
 
 /obj/item/reagent_container/food/snacks/csandwich/get_examine_text(mob/user)
 	. = ..()
-	if(contents && contents.len)
+	if(LAZYLEN(contents))
 		var/obj/item/O = pick(contents)
 		. += SPAN_NOTICE("You think you can see [O.name] in there.")
 

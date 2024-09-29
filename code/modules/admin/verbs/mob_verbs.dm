@@ -24,7 +24,7 @@
 	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
-	M.client?.change_view(world_view_size)
+	M.client?.change_view(GLOB.world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"
@@ -72,16 +72,16 @@
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		else return
 
-	H.add_hud_to(M)
+	H.add_hud_to(M, HUD_SOURCE_ADMIN)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
@@ -164,7 +164,7 @@
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(usr, "The person you are trying to contact is not wearing a headset")
 				return
-			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
+			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
 	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."))
 	message_admins(message, M.x, M.y, M.z)
@@ -203,7 +203,7 @@
 		else
 			return
 
-/client/proc/cmd_admin_object_narrate(obj/selected)
+/client/proc/cmd_admin_object_narrate(obj/selected in view(src))
 	set name = "Object Narrate"
 	set category = null
 
@@ -220,7 +220,7 @@
 				"Narrating as [selected.name]")
 	if(!message) return
 
-	var/list/heard = get_mobs_in_view(world_view_size, selected)
+	var/list/heard = get_mobs_in_view(GLOB.world_view_size, selected)
 
 	switch(type)
 		if(NARRATION_METHOD_SAY)
@@ -234,7 +234,7 @@
 	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
 	message_admins("[key_name(src)] sent an Object Narrate with message [message].")
 
-/client/proc/cmd_admin_direct_narrate(mob/M)
+/client/proc/cmd_admin_direct_narrate(mob/M in GLOB.mob_list)
 	set name = "Narrate"
 	set category = null
 
@@ -330,7 +330,7 @@
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H)
+/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H in GLOB.living_mob_list)
 	set name = "Change Hivenumber"
 	set category = null
 
@@ -370,7 +370,7 @@
 	message_admins("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
-/client/proc/cmd_admin_change_their_name(mob/living/carbon/X)
+/client/proc/cmd_admin_change_their_name(mob/living/carbon/carbon in GLOB.living_mob_list)
 	set name = "Change Name"
 	set category = null
 
@@ -378,19 +378,20 @@
 	if(!newname)
 		return
 
-	if(!X)
+	if(!carbon)
 		to_chat(usr, "This mob no longer exists")
 		return
 
-	var/old_name = X.name
-	X.change_real_name(X, newname)
-	if(istype(X, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = X
-		if(H.wear_id)
-			H.wear_id.name = "[H.real_name]'s ID Card"
-			H.wear_id.registered_name = "[H.real_name]"
-			if(H.wear_id.assignment)
-				H.wear_id.name += " ([H.wear_id.assignment])"
+	var/old_name = carbon.name
+	carbon.change_real_name(carbon, newname)
+	if(ishuman(carbon))
+		var/mob/living/carbon/human/human = carbon
+		var/obj/item/card/id/card = human.get_idcard()
+		if(card)
+			card.name = "[human.real_name]'s ID Card"
+			card.registered_name = "[human.real_name]"
+			if(card.assignment)
+				card.name += " ([card.assignment])"
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 

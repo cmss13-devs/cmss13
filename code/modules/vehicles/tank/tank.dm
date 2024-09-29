@@ -36,7 +36,7 @@
 	move_momentum_build_factor = 1.8
 	move_turn_momentum_loss_factor = 0.6
 
-	luminosity = 7
+	vehicle_light_range = 7
 
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
@@ -90,7 +90,7 @@
 /obj/vehicle/multitile/tank/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 	RRS.total = 2
 	role_reserved_slots += RRS
 
@@ -157,7 +157,7 @@
 	if(!T)
 		return FALSE
 
-	if(direction == reverse_dir[T.dir] || direction == T.dir)
+	if(direction == GLOB.reverse_dir[T.dir] || direction == T.dir)
 		return FALSE
 
 	T.user_rotation(user, turning_angle(T.dir, direction))
@@ -165,6 +165,39 @@
 
 	return TRUE
 
+/obj/vehicle/multitile/tank/MouseDrop_T(mob/dropped, mob/user)
+	. = ..()
+	if((dropped != user) || !isxeno(user))
+		return
+
+	if(health > 0)
+		to_chat(user, SPAN_XENO("We can't jump over [src] until it is destroyed!"))
+		return
+
+	var/turf/current_turf = get_turf(user)
+	var/dir_to_go = get_dir(current_turf, src)
+	for(var/i in 1 to 3)
+		current_turf = get_step(current_turf, dir_to_go)
+		if(!(current_turf in locs))
+			break
+
+		if(current_turf.density)
+			to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+			return
+
+	// Now we check to make sure the turf on the other side of the tank isn't dense too
+	current_turf = get_step(current_turf, dir_to_go)
+	if(current_turf.density)
+		to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+		return
+
+	to_chat(user, SPAN_XENO("We begin to jump over [src]..."))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(user, SPAN_XENO("We stop jumping over [src]."))
+		return
+
+	user.forceMove(current_turf)
+	to_chat(user, SPAN_XENO("We jump to the other side of [src]."))
 /*
 ** PRESETS SPAWNERS
 */
@@ -189,6 +222,8 @@
 	handle_direction(TANK)
 	TANK.update_icon()
 
+	return TANK
+
 /obj/effect/vehicle_spawner/tank/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
@@ -200,6 +235,12 @@
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/tank/hull/load_hardpoints(obj/vehicle/multitile/tank/V)
 	return
+
+//Just the hull and it's broken TOO, you get the full experience
+/obj/effect/vehicle_spawner/tank/hull/broken/spawn_vehicle()
+	var/obj/vehicle/multitile/tank/tonk = ..()
+	load_damage(tonk)
+	tonk.update_icon()
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/tank/decrepit/spawn_vehicle()

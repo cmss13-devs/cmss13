@@ -10,32 +10,32 @@
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/comdoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/security/colony
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_SECURITY)
 
 /obj/structure/machinery/door/airlock/engineering/colony
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
-	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/medical/colony
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
-	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND)
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 
 /obj/structure/machinery/door/airlock/maintenance/colony
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/maintdoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_mai
-	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/external/colony
 	name = "\improper External Airlock"
@@ -61,7 +61,7 @@
 	icon = 'icons/obj/structures/doors/vault.dmi'
 	opacity = TRUE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity //Until somebody makes better sprites.
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_LEADERSHIP)
 
 /obj/structure/machinery/door/airlock/freezer/colony
 	name = "\improper Freezer Airlock"
@@ -83,7 +83,7 @@
 	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 	glass = 1
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/glass_engineering/colony
 	name = "\improper Engineering Airlock"
@@ -130,7 +130,7 @@
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/glass_research/colony
 	name = "\improper Research Airlock"
@@ -138,8 +138,7 @@
 	opacity = 0
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
 	glass = 1
-	heat_proof = 1
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/glass_mining/colony
 	name = "\improper Mining Airlock"
@@ -214,7 +213,7 @@
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/glass_science/colony
 	name = "\improper Research Airlock"
@@ -222,13 +221,13 @@
 	opacity = 0
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
 	glass = 1
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/highsecurity/colony
 	name = "\improper High Tech Security Airlock"
 	icon = 'icons/obj/structures/doors/hightechsecurity.dmi'
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_SECURITY, ACCESS_WY_LEADERSHIP)
 
 
 //STRATA AIRLOCKS // Add me later y'know?
@@ -392,7 +391,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/command/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/almayer/command/autoname
 	autoname = TRUE
@@ -403,7 +402,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/command/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
@@ -521,11 +520,11 @@
 /obj/structure/machinery/door/airlock/almayer/research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
-	req_access = list(ACCESS_MARINE_RESEARCH)
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 
 /obj/structure/machinery/door/airlock/almayer/research/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/almayer/research/autoname
 	autoname = TRUE
@@ -536,7 +535,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
@@ -547,7 +546,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/almayer/research/glass/autoname
 	autoname = TRUE
@@ -558,7 +557,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/almayer/generic
 	name = "\improper Airlock"
@@ -576,7 +575,11 @@
 /obj/structure/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = list(ACCESS_WY_GENERAL)
+
+/obj/structure/machinery/door/airlock/almayer/generic/press
+	name = "Press Office"
+	req_access = list(ACCESS_PRESS)
 
 /obj/structure/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
@@ -897,6 +900,9 @@
 
 /obj/structure/machinery/door/airlock/hatch/cockpit/two
 	icon = 'icons/obj/structures/doors/dropship2_pilot.dmi'
+
+/obj/structure/machinery/door/airlock/hatch/cockpit/three
+	icon = 'icons/obj/structures/doors/dropship3_pilot.dmi'
 
 //PRISON AIRLOCKS
 /obj/structure/machinery/door/airlock/prison

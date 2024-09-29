@@ -86,7 +86,7 @@
 	key_third_person = "faints"
 	message = "faints!"
 
-/datum/emote/living/carbon/human/faint/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/carbon/human/faint/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
 	user.sleeping += 10
 

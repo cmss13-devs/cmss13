@@ -1,6 +1,7 @@
 /obj/item/storage/box/guncase
 	name = "\improper gun case"
 	desc = "It has space for firearm(s). Sometimes magazines or other munitions as well."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "guncase"
 	w_class = SIZE_HUGE
 	max_w_class = SIZE_HUGE //shouldn't be a problem since we can only store the guns and ammo.
@@ -9,6 +10,7 @@
 	can_hold = list()//define on a per case basis for the original firearm.
 	foldable = TRUE
 	foldable = /obj/item/stack/sheet/mineral/plastic//it makes sense
+	ground_offset_y = 5
 
 /obj/item/storage/box/guncase/update_icon()
 	if(LAZYLEN(contents))
@@ -66,7 +68,6 @@
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
 	new /obj/item/attachable/flashlight
-	new /obj/item/attachable/bipod
 
 //------------
 /obj/item/storage/box/guncase/m41aMK1
@@ -79,6 +80,18 @@
 	new /obj/item/weapon/gun/rifle/m41aMK1(src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+
+
+/obj/item/storage/box/guncase/m41aMK1AP
+	name = "\improper M41A pulse rifle MK1 AP case"
+	desc = "A gun case containing the M41A pulse rifle MK1 loaded with AP rounds. It can only use proprietary MK1 magazines."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1)
+
+/obj/item/storage/box/guncase/m41aMK1AP/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
 //------------
 //M79 grenade launcher
@@ -296,13 +309,91 @@
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 
+/obj/item/storage/box/guncase/vulture
+	name = "\improper M707 anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
+	icon_state = "guncase_blue"
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/boltaction/vulture,
+		/obj/item/ammo_magazine/rifle/boltaction/vulture,
+		/obj/item/device/vulture_spotter_tripod,
+		/obj/item/device/vulture_spotter_scope,
+		/obj/item/tool/screwdriver,
+		/obj/item/pamphlet/trait/vulture,
+	)
+
+/obj/item/storage/box/guncase/vulture/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = "guncase_blue"
+	else
+		icon_state = "guncase_blue_e"
+
+/obj/item/storage/box/guncase/vulture/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
+	new /obj/item/pamphlet/trait/vulture(src) //both pamphlets give use of the scope and the rifle
+	new /obj/item/pamphlet/trait/vulture(src)
+
+/obj/item/storage/box/guncase/vulture/skillless
+	storage_slots = 5
+
+/obj/item/storage/box/guncase/vulture/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
+
+/obj/item/storage/box/guncase/vulture/holo_target
+	name = "\improper M707 holo-targetting anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools. This variant is pre-loaded with <b>IFF-CAPABLE</b> holo-targeting rounds."
+
+/obj/item/storage/box/guncase/vulture/holo_target/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+	new /obj/item/pamphlet/trait/vulture(src)
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless
+	storage_slots = 5
+
+/obj/item/storage/box/guncase/vulture/holo_target/skillless/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/skillless(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src)
+
+
+/obj/item/storage/box/guncase/xm51
+	name = "\improper XM51 breaching scattergun case"
+	desc = "A gun case containing the XM51 Breaching Scattergun. Comes with two spare magazines, two spare shell boxes, an optional stock and a belt to holster the weapon."
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/rifle/xm51, /obj/item/ammo_magazine/rifle/xm51, /obj/item/storage/belt/gun/xm51, /obj/item/attachable/stock/xm51)
+
+/obj/item/storage/box/guncase/xm51/fill_preset_inventory()
+	new /obj/item/attachable/stock/xm51(src)
+	new /obj/item/weapon/gun/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/ammo_magazine/rifle/xm51(src)
+	new /obj/item/ammo_magazine/shotgun/light/breaching(src)
+	new /obj/item/ammo_magazine/shotgun/light/breaching(src)
+	new /obj/item/storage/belt/gun/xm51(src)
+
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol
 /obj/item/storage/box/guncase/mod88
 	name = "\improper 88 Mod 4 Combat Pistol case"
 	desc = "A gun case containing an 88 Mod 4 Combat Pistol."
-	storage_slots = 5
+	storage_slots = 8
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/mod88, /obj/item/ammo_magazine/pistol/mod88)
 
 /obj/item/storage/box/guncase/mod88/fill_preset_inventory()
@@ -311,31 +402,40 @@
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
 
 //M44 Combat Revolver
 /obj/item/storage/box/guncase/m44
 	name = "\improper M44 Combat Revolver case"
-	desc = "A gun case containing an M44 Combat Revolver."
-	storage_slots = 5
+	desc = "A gun case containing an M44 Combat Revolver loaded with marksman ammo."
+	storage_slots = 8
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
 
 /obj/item/storage/box/guncase/m44/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
-	new /obj/item/weapon/gun/revolver/m44(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
-	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/weapon/gun/revolver/m44/mp(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
 
 //M4A3 Service Pistol
 /obj/item/storage/box/guncase/m4a3
 	name = "\improper M4A3 Service Pistol case"
 	desc = "A gun case containing an M4A3 Service Pistol."
-	storage_slots = 5
+	storage_slots = 8
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3, /obj/item/ammo_magazine/pistol)
 
 /obj/item/storage/box/guncase/m4a3/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
 	new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)

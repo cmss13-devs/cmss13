@@ -25,11 +25,23 @@
 			hud_icon_state = "lt"
 		if(JOB_UPP_SRLT_OFFICER)
 			hud_icon_state = "slt"
+		if(JOB_UPP_KPT_OFFICER)
+			hud_icon_state = "xo"
 		if(JOB_UPP_MAY_OFFICER)
-			hud_icon_state = "may"
+			hud_icon_state = "co"
+		if(JOB_UPP_LTKOL_OFFICER)
+			hud_icon_state = "co"
 		if(JOB_UPP_KOL_OFFICER)
-			hud_icon_state = "kol"
+			hud_icon_state = "co"
+		if(JOB_UPP_MAY_GENERAL)
+			hud_icon_state = "co"
+		if(JOB_UPP_LT_GENERAL)
+			hud_icon_state = "co"
+		if(JOB_UPP_GENERAL)
+			hud_icon_state = "co"
 		if(JOB_UPP_COMBAT_SYNTH)
+			hud_icon_state = "synth"
+		if(JOB_UPP_SUPPORT_SYNTH)
 			hud_icon_state = "synth"
 		if(JOB_UPP_COMMANDO)
 			hud_icon_state = "com"
@@ -41,30 +53,34 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
+		if(JOB_UPP_SUPPLY)
+			hud_icon_state = "log"
+		if(JOB_UPP_COMMISSAR)
+			hud_icon_state = "commi"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
-		list("CZ-81 Machine Pistol", 20, /obj/item/weapon/gun/pistol/skorpion/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle", 30, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle Carbine", 30, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
+		list("Type 64 Helical Magazine (7.62x19mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 AP Magazine (5.45x39mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (5.45x39mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("Highpower Automag", 15, /obj/item/weapon/gun/pistol/highpower, null, VENDOR_ITEM_REGULAR),
-		list("Korovin PK-9 Pistol", 15, /obj/item/weapon/gun/pistol/c99/upp, null, VENDOR_ITEM_REGULAR),
-		list("N-Y 7.62mm Revolver", 15, /obj/item/weapon/gun/revolver/nagant, null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Pistol", 25, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("NP92 Pistol", 15, /obj/item/weapon/gun/pistol/np92, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("Highpower Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/highpower, null, VENDOR_ITEM_REGULAR),
-		list("N-Y Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
-		list("PK-9 Magazine (.22 Hollowpoint)", 5, /obj/item/ammo_magazine/pistol/c99, null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (7.62x25mm Tokarev)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (9x18mm Makarov)", 40, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
@@ -86,24 +102,24 @@
 /datum/faction/upp/get_antag_guns_sorted_equipment()
 	return list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("CZ-81 Machine Pistol", 20, /obj/item/weapon/gun/pistol/skorpion/upp, VENDOR_ITEM_REGULAR),
+		list("Type 64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
-		list("CZ-81 Magazine (.32ACP)", 60, /obj/item/ammo_magazine/pistol/skorpion, VENDOR_ITEM_REGULAR),
+		list("Type 64 Helical Magazine (7.62x19mm)", 60, /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
 		list("Type 71 AP Magazine (5.45x39mm)", 60, /obj/item/ammo_magazine/rifle/type71/ap, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (5.45x39mm)", 60, /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("Highpower Automag", 20, /obj/item/weapon/gun/pistol/highpower, VENDOR_ITEM_REGULAR),
-		list("Korovin PK-9 Pistol", 20, /obj/item/weapon/gun/pistol/c99/upp, VENDOR_ITEM_REGULAR),
-		list("N-Y 7.62mm Revolver", 20, /obj/item/weapon/gun/revolver/nagant, VENDOR_ITEM_REGULAR),
+		list("Type 73 Pistol", 20, /obj/item/weapon/gun/pistol/t73, VENDOR_ITEM_REGULAR),
+		list("NP02 Pistol", 20, /obj/item/weapon/gun/pistol/np92, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Revolver", 20, /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("Highpower Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/highpower, VENDOR_ITEM_REGULAR),
-		list("N-Y Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
-		list("PK-9 Magazine (.22 Hollowpoint)", 40, /obj/item/ammo_magazine/pistol/c99, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (7.62x25mm Tokarev)", 40, /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (9x18mm Makarov)", 40, /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED),

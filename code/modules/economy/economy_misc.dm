@@ -62,66 +62,40 @@
 //Destroyers are medium sized vessels, often used for escorting larger ships but able to go toe-to-toe with them if need be.
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
-var/global/current_date_string
+GLOBAL_VAR(current_date_string)
 
-var/global/datum/money_account/vendor_account
-var/global/datum/money_account/station_account
-var/global/list/datum/money_account/department_accounts = list()
-var/global/num_financial_terminals = 1
-var/global/list/all_money_accounts = list()
-var/global/economy_init = 0
+GLOBAL_DATUM(vendor_account, /datum/money_account)
+GLOBAL_DATUM(station_account, /datum/money_account)
+GLOBAL_LIST_INIT_TYPED(department_accounts, /datum/money_account, list())
+GLOBAL_VAR_INIT(num_financial_terminals, 1)
+GLOBAL_LIST_EMPTY(all_money_accounts)
+GLOBAL_VAR_INIT(economy_init, FALSE)
 
 /proc/setup_economy()
-	if(economy_init)
+	if(GLOB.economy_init)
 		return 2
-
-	var/datum/feed_channel/newChannel = new /datum/feed_channel
-	newChannel.channel_name = "Public Station Announcements"
-	newChannel.author = "Automated Announcement Listing"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	news_network.network_channels += newChannel
-
-	newChannel = new /datum/feed_channel
-	newChannel.channel_name = "Nyx Daily"
-	newChannel.author = "CentComm Minister of Information"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	news_network.network_channels += newChannel
-
-	newChannel = new /datum/feed_channel
-	newChannel.channel_name = "The Gibson Gazette"
-	newChannel.author = "Editor Mike Hammers"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	news_network.network_channels += newChannel
-
-	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
-		var/datum/trade_destination/D = new loc_type
-		weighted_randomevent_locations[D] = D.viable_random_events.len
-		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
 
 	create_station_account()
 
 	create_department_account("Vendor")
-	vendor_account = department_accounts["Vendor"]
+	GLOB.vendor_account = GLOB.department_accounts["Vendor"]
 
-	current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
+	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GLOB.game_year]"
 
-	economy_init = 1
+	GLOB.economy_init = TRUE
 	return 1
 
 /proc/create_station_account()
-	if(!station_account)
-		station_account = new()
-		station_account.owner_name = "[station_name] Station Account"
-		station_account.account_number = rand(111111, 999999)
-		station_account.remote_access_pin = rand(1111, 111111)
-		station_account.money = 75000
+	if(!GLOB.station_account)
+		GLOB.station_account = new()
+		GLOB.station_account.owner_name = "[MAIN_SHIP_NAME] Station Account"
+		GLOB.station_account.account_number = rand(111111, 999999)
+		GLOB.station_account.remote_access_pin = rand(1111, 111111)
+		GLOB.station_account.money = 75000
 
 		//create an entry in the account transaction log for when it was created
 		var/datum/transaction/T = new()
-		T.target_name = station_account.owner_name
+		T.target_name = GLOB.station_account.owner_name
 		T.purpose = "Account creation"
 		T.amount = 75000
 		T.date = "2nd April, 2555"
@@ -129,8 +103,8 @@ var/global/economy_init = 0
 		T.source_terminal = "Biesel GalaxyNet Terminal #277"
 
 		//add the account
-		station_account.transaction_log.Add(T)
-		all_money_accounts.Add(station_account)
+		GLOB.station_account.transaction_log.Add(T)
+		GLOB.all_money_accounts.Add(GLOB.station_account)
 
 /proc/create_department_account(department)
 	var/datum/money_account/department_account = new()
@@ -150,6 +124,6 @@ var/global/economy_init = 0
 
 	//add the account
 	department_account.transaction_log.Add(T)
-	all_money_accounts.Add(department_account)
+	GLOB.all_money_accounts.Add(department_account)
 
-	department_accounts[department] = department_account
+	GLOB.department_accounts[department] = department_account

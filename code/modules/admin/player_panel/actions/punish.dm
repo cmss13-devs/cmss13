@@ -34,7 +34,7 @@
 	switch(alert("Are you sure you want to EORG ban [target.ckey]?", , "Yes", "No"))
 		if("Yes")
 			mins = 180
-			reason = "EORG"
+			reason = "EORG - Generating combat logs with, or otherwise griefing, friendly/allied players."
 		if("No")
 			return
 
@@ -44,6 +44,58 @@
 	P.add_timed_ban(reason, mins)
 
 	return TRUE
+
+/datum/player_action/permanent_ban
+	action_tag = "permanent_ban"
+	name = "Permanent Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/permanent_ban/act(client/user, mob/target, list/params)
+	var/reason = tgui_input_text(user, "What message should be given to the permabanned user?", "Permanent Ban", encode = FALSE)
+	if(!reason)
+		return
+
+	var/internal_reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "Permanent Ban", multiline = TRUE, encode = FALSE)
+	if(!internal_reason)
+		return
+
+	var/datum/entity/player/target_entity = target.client?.player_data
+	if(!target_entity)
+		target_entity = get_player_from_key(target.ckey || target.persistent_ckey)
+
+	if(!target_entity)
+		return
+
+	if(!target_entity.add_perma_ban(reason, internal_reason, user.player_data))
+		to_chat(user, SPAN_ADMIN("The user is already permabanned! If necessary, you can remove the permaban, and place a new one."))
+
+/datum/player_action/sticky_ban
+	action_tag = "sticky_ban"
+	name = "Sticky Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/sticky_ban/act(client/user, mob/target, list/params)
+	var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
+	if(!player)
+		return
+
+	var/persistent_ip = target.client?.address || player.last_known_ip
+	var/persistent_cid = target.client?.computer_id || player.last_known_cid
+
+	var/message = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
+	if(!message)
+		return
+
+	var/reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+	if(!reason)
+		return
+
+	user.cmd_admin_do_stickyban(target.ckey, reason, message, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+	player.add_note("Stickybanned | [message]", FALSE, NOTE_ADMIN, TRUE)
+	player.add_note("Internal reason: [reason]", TRUE, NOTE_ADMIN)
+
+	if(target.client)
+		qdel(target.client)
 
 /datum/player_action/mute
 	action_tag = "mob_mute"
@@ -67,6 +119,14 @@
 	user.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
+/datum/player_action/check_ckey
+	action_tag = "check_ckey"
+	name = "Check Ckey"
+
+
+/datum/player_action/check_ckey/act(client/user, mob/target, list/params)
+	user.admin_holder.check_ckey(target.ckey)
+	return TRUE
 
 /datum/player_action/reset_xeno_name
 	action_tag = "reset_xeno_name"
@@ -207,11 +267,12 @@
 	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
-		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))
-			target_human.wear_id.name = "[target_human.real_name]'s ID Card"
-			target_human.wear_id.registered_name = "[target_human.real_name]"
-			if(target_human.wear_id.assignment)
-				target_human.wear_id.name += " ([target_human.wear_id.assignment])"
+		var/obj/item/card/id/card = target_human.get_idcard()
+		if(card?.registered_ref == WEAKREF(target_human))
+			card.name = "[target_human.real_name]'s ID Card"
+			card.registered_name = "[target_human.real_name]"
+			if(card.assignment)
+				card.name += " ([card.assignment])"
 
 	target_mob.client.prefs.real_name = new_name
 	target_mob.client.prefs.save_character()

@@ -18,7 +18,7 @@
 	return 0
 
 /mob/proc/get_default_language()
-	if (languages.len > 0)
+	if (length(languages) > 0)
 		return languages[1]
 	return null
 

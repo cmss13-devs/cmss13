@@ -36,7 +36,7 @@
 		LAZYADD(debris, shardtype)
 		update_nearby_icons()
 
-/obj/structure/window/Destroy()
+/obj/structure/window/Destroy(force)
 	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
@@ -81,7 +81,7 @@
 		junction = 0
 		if(anchored)
 			var/turf/TU
-			for(var/dirn in cardinal)
+			for(var/dirn in GLOB.cardinals)
 				TU = get_step(src, dirn)
 				var/obj/structure/window/W = locate() in TU
 				if(W && W.anchored && W.density && W.legacy_full) //Only counts anchored, non-destroyed, legacy full-tile windows.
@@ -117,7 +117,7 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -247,6 +247,10 @@
 					if(!not_damageable) //Impossible to destroy
 						health -= 50
 
+			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(M)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
+
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
 		return
 
@@ -286,7 +290,7 @@
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
 	else
 		if(!not_damageable) //Impossible to destroy
-			health -= W.force
+			health -= W.force * W.demolition_mod
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
 				anchored = FALSE
 				update_nearby_icons()
@@ -353,14 +357,14 @@
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		for(var/obj/structure/window/W in get_step(src, direction))
 			W.update_icon()
 
 /obj/structure/window/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
 		if(!not_damageable)
-			health -= round(exposed_volume / 100)
+			health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -373,7 +377,7 @@
 
 /obj/structure/window/phoronbasic/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 32000)
-		health -= round(exposed_volume / 1000)
+		health -= floor(exposed_volume / 1000)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
@@ -455,11 +459,8 @@
 
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
-
-/obj/structure/window/reinforced/ultra/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/window/reinforced/full
 	flags_atom = FPRINT
@@ -507,7 +508,7 @@
 	relativewall()
 	relativewall_neighbours()
 
-/obj/structure/window/framed/Destroy()
+/obj/structure/window/framed/Destroy(force)
 	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
 		qdel(found_weedwall)
 	var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
@@ -585,11 +586,9 @@
 
 /obj/structure/window/framed/almayer/hull/hijack_bustable/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
-/obj/structure/window/framed/almayer/hull/hijack_bustable/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
 /obj/structure/window/framed/almayer/white
 	icon_state = "white_rwindow0"
 	basestate = "white_rwindow"
@@ -598,6 +597,56 @@
 /obj/structure/window/framed/almayer/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore
+	icon_state = "ai_rwindow0"
+	basestate = "ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore
+
+/obj/structure/window/framed/almayer/aicore/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/white
+	icon_state = "w_ai_rwindow0"
+	basestate = "w_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/white
+
+/obj/structure/window/framed/almayer/aicore/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+
+/obj/structure/window/framed/almayer/aicore/hull/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable //I exist to explode after hijack, that is all.
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
+
+/obj/structure/window/framed/almayer/aicore/white/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -854,26 +903,29 @@
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
-/obj/structure/window/framed/prison/reinforced/hull/Destroy()
+/obj/structure/window/framed/prison/reinforced/hull/Destroy(force)
+	if(force)
+		return ..()
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 
 	triggered = TRUE
-	for(var/direction in cardinal)
-		if(direction == from_dir) continue //doesn't check backwards
+	for(var/direction in GLOB.cardinals)
+		if(direction == from_dir)
+			continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
-	P.close()
+			pressure_door.setDir(EAST)
+	pressure_door.close()
 
 /obj/structure/window/framed/prison/cell
 	name = "cell window"
@@ -943,30 +995,33 @@
 	window_frame = /obj/structure/window_frame/corsat/security
 	health = 400
 
-/obj/structure/window/framed/corsat/hull/Destroy()
+/obj/structure/window/framed/corsat/hull/Destroy(force)
+	if(force)
+		return ..()
+
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 
 	triggered = 1
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(direction == from_dir)
 			continue //doesn't check backwards
 
 		for(var/obj/structure/window/framed/corsat/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
 
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
+			pressure_door.setDir(EAST)
 
-	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	INVOKE_ASYNC(pressure_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/window/framed/corsat/indestructible/
 	name = "hull window"

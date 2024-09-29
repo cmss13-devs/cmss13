@@ -48,11 +48,15 @@
 	name = "Chance's Claim - Landing Zone One Tunnels"
 	ceiling = CEILING_METAL
 
+/area/lv522/landing_zone_1/tunnel/far
+	name = "Chance's Claim - Landing Zone One Tunnels"
+	ceiling = CEILING_METAL
+	is_landing_zone = FALSE
+
 /area/shuttle/drop1/lv522
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_1/lz1_console
 	name = "Chance's Claim - Dropship Alamo Console"
@@ -75,7 +79,6 @@
 	name = "Chance's Claim - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 
 /area/lv522/landing_zone_2/lz2_console
 	name = "Chance's Claim - Dropship Normandy Console"
@@ -180,6 +183,7 @@
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"

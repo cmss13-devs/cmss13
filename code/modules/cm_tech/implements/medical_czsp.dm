@@ -2,6 +2,7 @@
 /obj/item/storage/box/czsp/first_aid
 	name = "first-aid combat support kit"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "medicbox"
 	storage_slots = 3
 
@@ -15,6 +16,7 @@
 /obj/item/storage/box/czsp/medical
 	name = "medical combat support kit"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "medicbox"
 	storage_slots = 4
 
@@ -27,6 +29,7 @@
 
 /obj/item/storage/box/czsp/medic_upgraded_kits
 	name = "medical upgrade kit"
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "upgradedkitbox"
 	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
 	max_w_class = SIZE_MEDIUM
@@ -79,6 +82,9 @@
 	max_amount = 5
 
 	stack_id = "nano splint"
+
+/obj/item/stack/medical/splint/nano/research
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."
 
 /obj/item/device/defibrillator/upgraded
 	name = "upgraded emergency defibrillator"
@@ -203,7 +209,7 @@
 		click_empty(user)
 		return NONE
 
-	var/obj/item/projectile/pill/P = new /obj/item/projectile/pill(src, user, src)
+	var/obj/projectile/pill/P = new /obj/projectile/pill(src, user, src)
 	P.generate_bullet(GLOB.ammo_list[/datum/ammo/pill], 0, 0)
 
 	pill_to_use.forceMove(P)
@@ -221,16 +227,16 @@
 
 	damage = 0
 
-/datum/ammo/pill/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/pill/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 
 	if(!ishuman(M))
 		return
 
-	if(!istype(P, /obj/item/projectile/pill))
+	if(!istype(P, /obj/projectile/pill))
 		return
 
-	var/obj/item/projectile/pill/pill_projectile = P
+	var/obj/projectile/pill/pill_projectile = P
 
 	if(QDELETED(pill_projectile.source_pill))
 		pill_projectile.source_pill = null
@@ -240,9 +246,9 @@
 
 	pill_reagents.trans_to(M, pill_reagents.total_volume)
 
-/obj/item/projectile/pill
+/obj/projectile/pill
 	var/obj/item/reagent_container/pill/source_pill
 
-/obj/item/projectile/pill/Destroy()
+/obj/projectile/pill/Destroy()
 	. = ..()
 	source_pill = null

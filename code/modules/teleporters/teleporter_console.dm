@@ -40,19 +40,13 @@
 	if(linked_teleporter) // Maybe should debug log this because it's indicative of bad logic, but I'll leave it out for the sake of (potential) spam
 		return TRUE
 
-	if(SSteleporter)
-
-		var/datum/teleporter/found_teleporter = SSteleporter.teleporters_by_id[teleporter_id]
-		if(found_teleporter)
-			linked_teleporter = found_teleporter
-			linked_teleporter.linked_consoles += src
-		else
-			log_debug("Couldn't find teleporter matching ID [linked_teleporter]. Code: TELEPORTER_CONSOLE_2")
-			log_admin("Couldn't find teleporter matching ID [linked_teleporter]. Tell the devs. Code: TELEPORTER_CONSOLE_2")
-			return FALSE
+	var/datum/teleporter/found_teleporter = GLOB.teleporters_by_id[teleporter_id]
+	if(found_teleporter)
+		linked_teleporter = found_teleporter
+		linked_teleporter.linked_consoles += src
 	else
-		log_debug("Couldn't find teleporter SS to pull teleporter from. Code: TELEPORTER_CONSOLE_3")
-		log_admin("Couldn't find teleporter SS to pull teleporter from. Tell the devs. Code: TELEPORTER_CONSOLE_3")
+		log_debug("Couldn't find teleporter matching ID [linked_teleporter]. Code: TELEPORTER_CONSOLE_2")
+		log_admin("Couldn't find teleporter matching ID [linked_teleporter]. Tell the devs. Code: TELEPORTER_CONSOLE_2")
 		return FALSE
 
 	return TRUE
@@ -166,7 +160,7 @@
 		..()
 
 
-/obj/structure/machinery/computer/teleporter_console/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/computer/teleporter_console/bullet_act(obj/projectile/P)
 	visible_message("[P] doesn't even scratch [src]!")
 	return FALSE
 
@@ -181,9 +175,9 @@
 	if(SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT) // Bad style, but I'm leaving it here for now until someone wants to add a teleporter to another map
 		return
 
-	if(SSteleporter.teleporters.len) // already made the damn thing
+	if(length(GLOB.teleporters)) // already made the damn thing
 		return
 
 	var/datum/teleporter/corsat/teleporter = new
-	SSteleporter.teleporters_by_id[teleporter.id] = teleporter
-	SSteleporter.teleporters += teleporter
+	GLOB.teleporters_by_id[teleporter.id] = teleporter
+	GLOB.teleporters += teleporter

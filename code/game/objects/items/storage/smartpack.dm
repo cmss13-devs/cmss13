@@ -1,5 +1,5 @@
 #define BACKPACK_LIGHT_LEVEL 6
-#define PROTECTIVE_COST 50
+#define PROTECTIVE_COST 150
 #define REPAIR_COST 100
 #define IMMOBILE_COST 20
 
@@ -21,9 +21,6 @@
 	xeno_types = null
 
 	var/show_exoskeleton = TRUE
-
-	var/flashlight_cooldown = 0 //Cooldown for toggling the light
-	var/light_state = FALSE //Is the light on or off
 
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED //How much power are we storing
 	var/activated_form = FALSE
@@ -83,7 +80,7 @@
 	else
 		LAZYSET(item_state_slots, WEAR_BACK, initial(item_state))
 
-	if(light_state)
+	if(light_on)
 		overlays += "+lamp_on"
 	else
 		overlays += "+lamp_off"
@@ -116,7 +113,7 @@
 	var/image/ret = ..()
 
 	var/light = "+lamp_on"
-	if(!light_state)
+	if(!light_on)
 		light = "+lamp_off"
 
 	var/image/lamp = overlay_image('icons/mob/humans/onmob/back.dmi', light, color, RESET_COLOR)
@@ -134,65 +131,49 @@
 	else
 		to_chat(M, SPAN_DANGER("[name] beeps, \"Unathorized user!\""))
 
-	if(light_state && loc != M)
-		M.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
-		SetLuminosity(0)
 	..()
 
 /obj/item/storage/backpack/marine/smartpack/dropped(mob/living/M)
 	for(var/datum/action/human_action/smartpack/S in M.actions)
 		S.remove_from(M)
 
-	if(light_state && loc != M)
-		toggle_light(M)
+	if(light_on && loc != M)
+		turn_light(M, toggle_on = FALSE)
 
 	if(immobile_form)
 		immobile_form = FALSE
 		M.status_flags |= CANPUSH
 		M.anchored = FALSE
-		M.unfreeze()
+		REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 	..()
-
-/obj/item/storage/backpack/marine/smartpack/Destroy()
-	if(ismob(loc))
-		loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	. = ..()
 
 /obj/item/storage/backpack/marine/smartpack/attack_self(mob/user)
 	..()
 
-	if(!isturf(user.loc) || flashlight_cooldown > world.time || !ishuman(user))
+	if(!isturf(user.loc) || !ishuman(user))
 		return
 
 	var/mob/living/carbon/human/H = user
 	if(H.back != src)
 		return
 
-	toggle_light(user)
+	turn_light(user, toggle_on = !light_on)
 	return TRUE
 
-/obj/item/storage/backpack/marine/smartpack/proc/toggle_light(mob/user)
-	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
-	if(light_state) //Turn it off.
-		if(user)
-			user.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
-		playsound(src, 'sound/handling/click_2.ogg', 50, TRUE)
-	else //Turn it on.
-		if(user)
-			user.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
-		else
-			SetLuminosity(BACKPACK_LIGHT_LEVEL)
+/obj/item/storage/backpack/marine/smartpack/turn_light(mob/user, toggle_on, cooldown, sparks, forced, light_again)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
 
-	light_state = !light_state
+	if(toggle_on)
+		set_light_range(BACKPACK_LIGHT_LEVEL)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
+		playsound(src, 'sound/handling/click_2.ogg', 50, TRUE)
 
 	playsound(src, 'sound/handling/light_on_1.ogg', 50, TRUE)
-
 	update_icon(user)
-
 
 /obj/item/storage/backpack/marine/smartpack/proc/protective_form(mob/living/carbon/human/user)
 	if(!istype(user) || activated_form || immobile_form)
@@ -242,7 +223,7 @@
 	user.remove_filter("synth_protective_form")
 
 
-/obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/user)
+/obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/living/user)
 	if(activated_form)
 		return
 
@@ -255,7 +236,7 @@
 		battery_charge -= IMMOBILE_COST
 		user.status_flags &= ~CANPUSH
 		user.anchored = TRUE
-		user.frozen = TRUE
+		ADD_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 		to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 
@@ -267,7 +248,7 @@
 	else
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE
-		user.unfreeze()
+		REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 		user.remove_filter("synth_immobile_form")
 

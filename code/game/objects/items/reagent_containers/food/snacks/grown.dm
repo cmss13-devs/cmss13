@@ -30,7 +30,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
-		var/datum/seed/S = seed_types[plantname]
+		var/datum/seed/S = GLOB.seed_types[plantname]
 		if(!S)
 			return
 		name = S.seed_name //Copies the name from the seed, important for renamed plants
@@ -42,7 +42,7 @@
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
 			if(length(reagent_data) > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
+				rtotal += floor(potency/reagent_data[2])
 			if(reagents)
 				reagents.add_reagent(rid, max(1, rtotal))
 
@@ -62,7 +62,7 @@
 	name = "cherries"
 	desc = "Great for toppings!"
 	icon_state = "cherry"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	gender = PLURAL
 	plantname = "cherry"
 
@@ -189,26 +189,16 @@
 /obj/item/reagent_container/food/snacks/grown/glowberries
 	name = "bunch of glow-berries"
 	desc = "Nutritious!"
-	var/light_on = 1
 	var/brightness_on = 2 //luminosity when on
 	filling_color = "#D3FF9E"
 	icon_state = "glowberrypile"
 	plantname = "glowberries"
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
+/obj/item/reagent_container/food/snacks/grown/glowberries/Initialize()
 	. = ..()
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
-	. = ..()
-	src.SetLuminosity(0)
-	user.SetLuminosity(round((potency/5),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	src.SetLuminosity(round(potency/5,1))
-	..()
+	set_light_range(brightness_on)
+	set_light_on(TRUE)
 
 /obj/item/reagent_container/food/snacks/grown/cocoapod
 	name = "cocoa pod"
@@ -367,7 +357,7 @@
 	name = "chili"
 	desc = "It's spicy! Wait... IT'S BURNING ME!!"
 	icon_state = "chilipepper"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "chili"
 
 /obj/item/reagent_container/food/snacks/grown/eggplant
@@ -389,7 +379,7 @@
 	name = "tomato"
 	desc = "I say to-mah-to, you say tom-mae-to."
 	icon_state = "tomato"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 10
 	plantname = "tomato"
 
@@ -405,7 +395,7 @@
 	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
 	icon_state = "killertomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 30
 	plantname = "killertomato"
 
@@ -424,7 +414,7 @@
 	desc = "So bloody...so...very...bloody....AHHHH!!!!"
 	icon_state = "bloodtomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "bloodtomato"
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
@@ -512,7 +502,7 @@
 	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
 	icon_state = "amanita"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "amanita"
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/angel
@@ -568,22 +558,6 @@
 
 	to_chat(user, SPAN_NOTICE("You plant the glowshroom."))
 
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
-	. = ..()
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	. = ..()
-	SetLuminosity(0)
-	user.SetLuminosity(round((potency/10),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	SetLuminosity(round(potency/10,1))
-	..()
-
-
 // *************************************
 // Complex Grown Object Defines -
 // Putting these at the bottom so they don't clutter the list up. -Cheridan
@@ -610,19 +584,14 @@
 		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 		qdel(src)
 		return
-	for(var/turf/T in orange(M,outer_teleport_radius))
-		if(T in orange(M,inner_teleport_radius)) continue
+	for(var/turf/T as anything in (RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M)))
 		if(istype(T,/turf/open/space)) continue
 		if(T.density) continue
 		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
 		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
-	if(!turfs.len)
-		var/list/turfs_to_pick_from = list()
-		for(var/turf/T in orange(M,outer_teleport_radius))
-			if(!(T in orange(M,inner_teleport_radius)))
-				turfs_to_pick_from += T
-		turfs += pick(/turf in turfs_to_pick_from)
+	if(!length(turfs))
+		turfs += pick(RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M))
 	var/turf/picked = pick(turfs)
 	if(!isturf(picked)) return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.

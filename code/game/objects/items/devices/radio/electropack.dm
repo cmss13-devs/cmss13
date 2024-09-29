@@ -35,7 +35,7 @@
 		else
 			if(href_list["code"])
 				code += text2num(href_list["code"])
-				code = round(code)
+				code = floor(code)
 				code = min(100, code)
 				code = max(1, code)
 			else

@@ -113,6 +113,10 @@
 
 	switch(action)
 		if("print")
+			if(working)
+				//If we're already printing something then we're too busy to multi task.
+				to_chat(usr, SPAN_NOTICE("[src] is busy at the moment."))
+				return FALSE
 			var/recipe = params["recipe_id"]
 			var/valid_recipe = FALSE
 			for(var/datum/bioprinter_recipe/product_recipes in products)
@@ -124,6 +128,10 @@
 				message_admins("[key_name(usr)] attempted to print an invalid recipe on \the [src].")
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
+			if(stored_metal < recipe_datum.metal)
+				to_chat(usr, SPAN_NOTICE("[src] does not have enough stored metal."))
+				QDEL_NULL(recipe_datum)
+				return FALSE
 			stored_metal -= recipe_datum.metal
 			to_chat(usr, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))
 			working = TRUE
@@ -146,6 +154,8 @@
 
 /obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
+		//In case we lose power or anything between the print and the callback we don't want to permenantly break the printer
+		working = FALSE
 		return
 	new limb_path(get_turf(src))
 	working = FALSE

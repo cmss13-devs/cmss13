@@ -19,6 +19,8 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 	var/info //What's actually written on the paper.
 	var/info_links //A different version of the paper which includes html links at fields and EOF
@@ -42,8 +44,6 @@
 
 /obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	stamps = ""
 	src.photo_list = photo_list
 
@@ -75,26 +75,25 @@
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
-	if(in_range(user, src) || istype(user, /mob/dead/observer))
+	if(in_range(user, src) || isobserver(user))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			if(photo_list)
-				for(var/photo in photo_list)
-					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
-			onclose(user, name)
+			read_paper(user,scramble = TRUE)
 		else
 			read_paper(user)
 	else
 		. += SPAN_NOTICE("It is too far away.")
 
-/obj/item/paper/proc/read_paper(mob/user)
+/obj/item/paper/proc/read_paper(mob/user, scramble = FALSE)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -115,10 +114,7 @@
 
 /obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
-	if(istype(user) && user.camera) //is AI
-		dist = get_dist(src, user.camera)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
+	dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
@@ -227,10 +223,10 @@
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
 	t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
-	t = replacetext(t, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
-	t = replacetext(t, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[game_year]")]</i></font>")
+	t = replacetext(t, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
+	t = replacetext(t, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[GLOB.game_year]")]</i></font>")
 	t = replacetext(t, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
-	t = replacetext(t, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
+	t = replacetext(t, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
 
 	t = replacetext(t, "\[h1\]", "<H1>")
@@ -257,8 +253,9 @@
 		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
 		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
 		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
+		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
+		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
 		t = replacetext(t, "\[hr\]", "")
@@ -272,7 +269,7 @@
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
+		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[t]</b></font>"
 
 // t = replacetext(t, "#", "") // Junk converted to nothing!
 
@@ -361,8 +358,8 @@
 			iscrayon = 1
 
 
-		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
+		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
 			return
 
 		t = replacetext(t, "\n", "<BR>")
@@ -381,9 +378,6 @@
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
-	var/clown = 0
-	if(user.mind && (user.job == "Clown"))
-		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
 		if (istype(P, /obj/item/paper/carbon))
@@ -411,10 +405,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
-			P:RenamePaper(user,src)
-		else
-			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 		//openhelp(user)
 		return
 
@@ -423,11 +414,12 @@
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+		playsound(src, 'sound/effects/alien_footstep_medium3.ogg', 20, TRUE, 6)
 
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/centcomm))
+		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/weyyu))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else
@@ -437,11 +429,6 @@
 		offset_y += y
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
-
-		if(istype(P, /obj/item/tool/stamp/clown))
-			if(!clown)
-				to_chat(user, SPAN_NOTICE("You are totally unable to use the stamp. HONK!"))
-				return
 
 		if(!ico)
 			ico = new
@@ -575,6 +562,10 @@
 	name = "crumpled note"
 	info = "<b>there is cotten candy in the walls</b>"
 
+/obj/item/paper/bigred/lambda
+	name = "ripped diary entry"
+	info = "Director Smith's Diary\nEntry Date: 15 December 2181\nToday, I've felt true progress! The XX-121 reproduction program is in full effect, and Administrator Cooper have given us the all clear to continue producing specimens. To think that all this is coming from just that first specimen, a single 'Queen' form... It's grown to almost 5 meters tall and shows no signs of ceasing egg production! These creatures will be the next Synthetic of our time, we'll show those Seegson bastards."
+
 /obj/item/paper/bigred/union
 	name = "Shaft miners union"
 	info = "Today we have had enough of being underpaid and treated like shit for not reaching the higher up's unreasonable quotas of ore. They say this place has a \"sea of valuable ores,\" yet we have been mining for years and are yet to find a single diamond. We have had it, enough is enough. They think they can control everything we do, they thought wrong! We, the oppressed workers, shall rise up against the capitalist dogs in a mutiny and take back our pay by force. \n If they send their dogs here to bust us, we will kill each and every single one of them."
@@ -672,34 +663,34 @@
 	if(!C)
 		var/random_chem
 		if(tier)
-			random_chem = pick(chemical_gen_classes_list[tier])
+			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 		else
 			if(note_type == "test")
-				random_chem = pick(chemical_gen_classes_list["T4"])
+				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick( prob(55);pick(chemical_gen_classes_list["T2"]),
-									prob(30);pick(chemical_gen_classes_list["T3"]),
-									prob(15);pick(chemical_gen_classes_list["T4"]))
+				random_chem = pick( prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
+									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
+									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
 		if(!random_chem)
-			random_chem = pick(chemical_gen_classes_list["T1"])
-		C = chemical_reagents_list["[random_chem]"]
+			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
+		C = GLOB.chemical_reagents_list["[random_chem]"]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
+			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
-				var/datum/reagent/R = chemical_reagents_list["[I]"]
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(G.required_catalysts && G.required_catalysts.len)
+			if(LAZYLEN(G.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
-					var/datum/reagent/R = chemical_reagents_list["[I]"]
+					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = G.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
@@ -776,16 +767,16 @@
 /obj/item/paper/research_notes/unique/Initialize()
 	//Each one of these get a new unique chem
 	var/datum/reagent/generated/C = new /datum/reagent/generated
-	C.id = "tau-[length(chemical_gen_classes_list["tau"])]"
+	C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	C.generate_name()
 	C.chemclass = CHEM_CLASS_RARE
 	if(gen_tier)
 		C.gen_tier = gen_tier
 	else
-		C.gen_tier = chemical_data.clearance_level
+		C.gen_tier = GLOB.chemical_data.clearance_level
 	C.generate_stats()
-	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
-	chemical_reagents_list[C.id] = C
+	GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
 	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
@@ -809,7 +800,7 @@
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
-		if(chemical_data.clearance_level >= S.gen_tier || info_only)
+		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
@@ -819,7 +810,7 @@
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
+	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
 	else if(S.description)
@@ -831,31 +822,30 @@
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id] && !info_only)
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
-	if(chemical_reactions_list[S.id])
-		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
+	if(GLOB.chemical_reactions_list[S.id])
+		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
-			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
+			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-		if(C.required_catalysts)
-			if(C.required_catalysts.len)
-				info += "<BR>Reaction would require the following catalysts:<BR>\n"
-				for(var/I in C.required_catalysts)
-					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
-						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
-						completed = FALSE
-					else
-						var/U = C.required_catalysts[I]
-						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-	else if(chemical_gen_classes_list["C1"].Find(S.id))
+		if(LAZYLEN(C.required_catalysts))
+			info += "<BR>Reaction would require the following catalysts:<BR>\n"
+			for(var/I in C.required_catalysts)
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+					completed = FALSE
+				else
+					var/U = C.required_catalysts[I]
+					info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+	else if(GLOB.chemical_gen_classes_list["C1"].Find(S.id))
 		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
@@ -866,7 +856,7 @@
 	else
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
-		if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
+		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
 	data = S
@@ -912,3 +902,14 @@
 
 	info = parsepencode(template, null, null, FALSE)
 #undef MAX_FIELDS
+
+/obj/item/paper/colonial_grunts
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_stack_words"
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+
+/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+	. = ..()
+	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
+	update_icon()

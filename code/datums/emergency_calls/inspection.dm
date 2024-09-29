@@ -1,6 +1,6 @@
 //USCM Provost
 /datum/emergency_call/inspection_provost
-	name = "Inspection - USCM Provost - ML knowledge required."
+	name = "Inspection - USCM Provost - ML knowledge and MP playtime required."
 	mob_max = 2
 	mob_min = 1
 	probability = 0
@@ -9,6 +9,15 @@
 	..()
 	objectives = "Investigate any issues with ML enforcement on the [MAIN_SHIP_NAME]."
 
+/datum/emergency_call/inspection_provost/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/candidates_clean = list()
+	for(var/datum/mind/single_candidate in candidates_list)
+		if(check_timelock(single_candidate.current?.client, JOB_POLICE, time_required_for_job))
+			candidates_clean.Add(single_candidate)
+			continue
+		if(single_candidate.current)
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (5 Hours) as military police!"))
+	return candidates_clean
 
 /datum/emergency_call/inspection_provost/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -125,6 +134,7 @@
 	name = "Inspection - Corporate"
 	mob_max = 2
 	mob_min = 1
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
@@ -164,6 +174,42 @@
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 
+/datum/emergency_call/inspection_wy/lawyer
+	name = "Lawyers - Corporate"
+	mob_max = 2
+	mob_min = 1
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
+	probability = 0
+
+/datum/emergency_call/inspection_wy/lawyer/New()
+	..()
+	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate who the Corporate Liaison reported for breaking their contract and any review other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Corporate."
+
+/datum/emergency_call/inspection_wy/lawyer/create_member(datum/mind/M, turf/override_spawn_loc)
+	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(T))
+		return FALSE
+
+	var/mob/living/carbon/human/H = new(T)
+	M.transfer_to(H, TRUE)
+
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SQUAD_LEADER), time_required_for_job))
+		leader = H
+		arm_equipment(H, /datum/equipment_preset/wy/exec_supervisor/lawyer, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Lead Corporate Attorney!"))
+		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the USCM abides by it's signed contracts provided by the local Liaison and that they have not forgotten the real hand that feeds them."))
+		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are to act as legal counsel in any way. Your basic duty is to make a detailed report of anything involving the Liaison, any other WY personnel and of course any contract violations on board the ship."))
+		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
+	else
+		arm_equipment(H, /datum/equipment_preset/wy/exec_spec/lawyer, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Attorney!"))
+		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. The Lead Attorney is in charge, your duty is to provide counsel and any other form of assistance you can render to make sure your mission is a success."))
+		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. You and the Lead Attorney are to avoid open conflict with the Marines. Your main priority is making sure that you both survive to write the report the Company is due."))
+		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+
 
 // Colonial Marshals - UA Law Enforcement / Investigative Federal Agents which usually watch over Colonies. Also a good option for prisoner transfers, investigating corporate corruption, survivor rescues, or illict trade practices(black market).
 /datum/emergency_call/inspection_cmb
@@ -171,6 +217,7 @@
 	mob_max = 4
 	mob_min = 1
 	probability = 0
+	home_base = /datum/lazy_template/ert/weyland_station
 
 	var/max_synths = 1
 	var/synths = 0
@@ -183,7 +230,7 @@
 
 /datum/emergency_call/inspection_cmb/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], This is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
+	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
 	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
 
 	will_spawn_icc_liaison = prob(90)
@@ -202,7 +249,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
@@ -220,7 +267,7 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/inspection_cmb/print_backstory(mob/living/carbon/human/M)
@@ -263,3 +310,44 @@
 		to_chat(M, SPAN_BOLD("The laws of arth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
+
+/datum/emergency_call/inspection_cmb/black_market
+	name = "Inspection - Colonial Marshals Ledger Investigation Team"
+	mob_max = 3 //Marshal, Deputy, ICC CL
+	mob_min = 2
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+
+	max_synths = 0
+	will_spawn_icc_liaison = TRUE
+	will_spawn_cmb_observer = FALSE
+
+/datum/emergency_call/inspection_cmb/black_market/New()
+	..()
+	dispatch_message = "Third Fleet High Command to [MAIN_SHIP_NAME], we have received inconsistent supply manifests and irregularities on the ASRS system aboard your ship, and have requested a CMB Investigation Team to board and clear you of any wrongdoing."
+	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, we are dispatching a team of Marshals to board with you by request of GSO-91. Submitting authorized docking clearances, over."
+	objectives = "Investigate the inconsistencies aboard the [MAIN_SHIP_NAME]'s ASRS. In the case of illegal activity, collect evidence, and submit a report to the CMB Command at Anchorpoint Station. If required, the ICC Liaison's Tradeband is capable of fixing ASRS computers. Work with the [MAIN_SHIP_NAME]'s military police force."
+
+/datum/emergency_call/inspection_cmb/black_market/create_member(datum/mind/current_mind, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/mob = new(spawn_loc)
+	current_mind.transfer_to(mob, TRUE)
+
+	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = mob
+		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
+		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
+	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
+		icc_liaison = mob
+		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
+		arm_equipment(mob, /datum/equipment_preset/cmb/liaison/black_market, TRUE, TRUE) //ICC CL gets a custom item
+	else
+		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
+		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
+
+	print_backstory(mob)
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

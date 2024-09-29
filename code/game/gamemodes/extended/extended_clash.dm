@@ -6,7 +6,7 @@
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'
 
 /datum/game_mode/extended/faction_clash/get_roles_list()
-	return ROLES_FACTION_CLASH
+	return GLOB.ROLES_FACTION_CLASH
 
 /datum/game_mode/extended/faction_clash/post_setup()
 	. = ..()

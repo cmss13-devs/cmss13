@@ -20,6 +20,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -32,6 +33,7 @@
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 4
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //M39 SMG
@@ -49,6 +51,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg/collapsible,
@@ -81,10 +84,11 @@
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
 
 /obj/item/weapon/gun/smg/m39/training
@@ -164,7 +168,8 @@
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
-		/obj/item/attachable/burstfire_assembly
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade/m203,
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -187,6 +192,13 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/mp5/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(prob(10))
+		var/obj/item/attachable/attached_gun/grenade/m203/UGL = new(src)
+		UGL.Attach(src)
+		update_attachable(UGL.slot)
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
@@ -253,10 +265,11 @@
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	starting_attachment_types = list(/obj/item/attachable/stock/ppsh)
 	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
 	..()
@@ -270,6 +283,8 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
+	fa_scatter_peak = 1 // Seems a bit funny, but it works pretty well in the end
 
 /obj/item/weapon/gun/smg/ppsh/with_drum_mag
 	current_mag = /obj/item/ammo_magazine/smg/ppsh/extended
@@ -296,7 +311,7 @@
 /obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
 	if(jammed)
 		if(prob(PPSH_UNJAM_CHANCE))
-			to_chat(user, SPAN_GREEN("You succesfully unjam \the [src]!"))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
@@ -334,6 +349,89 @@
 #undef PPSH_UNJAM_CHANCE
 
 //-------------------------------------------------------
+//Type-19,
+
+/obj/item/weapon/gun/smg/pps43
+	name = "\improper Type-19 Submachinegun" //placeholder
+	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still in limited service in the UPP but is most often used by paramilitary groups or corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "insasu"
+	item_state = "insasu"
+
+	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/pps43
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+	)
+
+/obj/item/weapon/gun/smg/pps43/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 20, "rail_y" = 24, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
+
+/obj/item/weapon/gun/smg/pps43/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/pps43/extended_mag
+	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
+//-------------------------------------------------------
+//Type 64
+
+/obj/item/weapon/gun/smg/bizon
+	name = "\improper Type 64 Submachinegun"
+	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model."
+	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "type64"
+	item_state = "type64"
+
+	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/bizon
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_MIN
+	aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
+
+/obj/item/weapon/gun/smg/bizon/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 18, "rail_y" = 23, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
+
+/obj/item/weapon/gun/smg/bizon/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/bizon/upp
+	name = "\improper Type 64 Submachinegun"
+	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a black polymer grip, denoting it as in-use by the UPP military."
+	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
+	icon_state = "type64_u"
+	item_state = "type64"
+
+//-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
 /obj/item/weapon/gun/smg/mac15
@@ -361,10 +459,9 @@
 		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
-	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 13, "rail_y" = 24, "under_x" = 19, "under_y" = 18, "stock_x" = 22, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/mac15/set_gun_config_values()
 	..()
@@ -410,7 +507,6 @@
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	start_automatic = TRUE
 	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
@@ -451,7 +547,7 @@
 /obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
 	if(jammed)
 		if(prob(UZI_UNJAM_CHANCE))
-			to_chat(user, SPAN_GREEN("You succesfully unjam \the [src]!"))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
@@ -522,7 +618,7 @@
 
 /obj/item/weapon/gun/smg/fp9000/pmc
 	name = "\improper FN FP9000/2 Submachinegun"
-	desc = "Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has recieved several upgrades and tuning to its design over time."
+	desc = "Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has received several upgrades and tuning to its design over time."
 	icon_state = "fp9000_pmc"
 	item_state = "fp9000_pmc"
 	random_spawn_chance = 100
@@ -567,8 +663,10 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	civilian_usable_override = TRUE
+	start_automatic = FALSE
 	var/nailing_speed = 2 SECONDS //Time to apply a sheet for patching. Also haha name. Try to keep sync with soundbyte duration
 	var/repair_sound = 'sound/weapons/nailgun_repair_long.ogg'
+	var/material_per_repair = 1
 
 /obj/item/weapon/gun/smg/nailgun/set_gun_config_values()
 	..()
@@ -593,9 +691,16 @@
 	icon_state = "cnailgun"
 	item_state = "nailgun"
 	w_class = SIZE_SMALL
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_NO_DESCRIPTION
 
 /obj/item/weapon/gun/smg/nailgun/compact/able_to_fire(mob/living/user)
 	. = ..()
-	if(.)
-		click_empty(user)
 	return FALSE
+
+/obj/item/weapon/gun/smg/nailgun/compact/tactical
+	name = "tactical compact nailgun"
+	desc = "A carpentry tool, used to drive nails into tough surfaces. This one is military grade, it's olive drab and tacticool. Cannot fire nails as a projectile."
+	icon_state = "tnailgun"
+	item_state = "tnailgun"
+	w_class = SIZE_SMALL
+	material_per_repair = 2

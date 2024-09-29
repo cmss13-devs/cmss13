@@ -20,7 +20,7 @@
 				cure()
 				return
 */
-			if(affected_mob.lying && prob(40))  //changed FROM prob(10) until sleeping is fixed
+			if(affected_mob.body_position == LYING_DOWN && prob(40))  //changed FROM prob(10) until sleeping is fixed
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				cure()
 				return
@@ -43,7 +43,7 @@
 				cure()
 				return
 */
-			if(affected_mob.lying && prob(25))  //changed FROM prob(5) until sleeping is fixed
+			if(affected_mob.body_position == LYING_DOWN && prob(25))  //changed FROM prob(5) until sleeping is fixed
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				cure()
 				return

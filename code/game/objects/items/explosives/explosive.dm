@@ -24,6 +24,8 @@
 									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
+	var/allow_star_shape = TRUE
 	var/use_dir = FALSE
 	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
@@ -72,13 +74,13 @@
 			detonator=null
 			assembly_stage = ASSEMBLY_EMPTY
 			icon_state = base_icon_state
-		else if(containers.len)
+		else if(length(containers))
 			for(var/obj/B in containers)
 				if(istype(B))
 					containers -= B
 					user.put_in_hands(B)
 			current_container_volume = 0
-		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 		return
 	cause_data = create_cause_data(initial(name), user)
 	return TRUE
@@ -126,11 +128,11 @@
 		det.forceMove(src)
 		detonator = det
 		assembly_stage = ASSEMBLY_UNLOCKED
-		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 		update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
-			if(containers.len)
+			if(length(containers))
 				to_chat(user, SPAN_NOTICE("You lock the assembly."))
 			else
 				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
@@ -141,7 +143,7 @@
 		else if(assembly_stage == ASSEMBLY_LOCKED)
 			to_chat(user, SPAN_NOTICE("You unlock the assembly."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
-			desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+			desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			assembly_stage = ASSEMBLY_UNLOCKED
 		update_icon()
 	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
@@ -159,7 +161,7 @@
 					containers += W
 					current_container_volume += W.reagents.maximum_volume
 					assembly_stage = ASSEMBLY_UNLOCKED
-					desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+					desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			else
 				to_chat(user, SPAN_DANGER("\the [W] is empty."))
 
@@ -185,6 +187,7 @@
 	for(var/obj/item/reagent_container/glass/G in containers)
 		if(G.reagents.total_volume)
 			has_reagents = 1
+			reagents.allow_star_shape = allow_star_shape
 			break
 
 	if(!has_reagents)
@@ -207,7 +210,7 @@
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	if(containers.len < 2)
+	if(length(containers) < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer
 
 	for(var/obj/item/reagent_container/glass/G in containers)
@@ -256,14 +259,14 @@
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
 		return
 
-	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_DANGER("You have no idea how to use this..."))
 		return
 
 	if(falloff_mode == EXPLOSION_FALLOFF_SHAPE_LINEAR)
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
-		to_chat(usr, SPAN_NOTICE("You enable the [src]'s blast wave dampener, limiting the blast radius."))
+		to_chat(usr, SPAN_NOTICE("You enable [src]'s blast wave dampener, limiting the blast radius."))
 	else
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
-		to_chat(usr, SPAN_NOTICE("You disable the [src]'s blast wave dampener, restoring the blast radius to full."))
+		to_chat(usr, SPAN_NOTICE("You disable [src]'s blast wave dampener, restoring the blast radius to full."))
 	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)

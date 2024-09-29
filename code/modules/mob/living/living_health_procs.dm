@@ -81,11 +81,400 @@
 /mob/living/proc/setMaxHealth(newMaxHealth)
 	maxHealth = newMaxHealth
 
+/* STUN (Incapacitation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetStunDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+/mob/living/proc/IsStun() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/stun)
+/mob/living/proc/AmountStun() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+	var/datum/status_effect/incapacitating/stun/S = IsStun()
+	if(S)
+		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
+/mob/living/proc/Stun(amount)
+	if(!(status_flags & CANSTUN))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/stun/S = IsStun()
+	if(S)
+		S.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
+	return S
+/mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
+	if(!(status_flags & CANSTUN))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/stun/S = IsStun()
+	if(amount <= 0)
+		if(S)
+			qdel(S)
+	else
+		if(S)
+			S.update_duration(amount)
+		else
+			S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
+	return S
+/mob/living/proc/AdjustStun(amount, ignore_canstun = FALSE) //Adds to remaining duration
+	if(!(status_flags & CANSTUN))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/stun/S = IsStun()
+	if(S)
+		S.adjust_duration(amount)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
+	return S
+
+/* ROOT (Immobilisation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetRootDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsRoot() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/immobilized)
+
+/mob/living/proc/AmountRoot() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		return root.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return FALSE
+
+/mob/living/proc/Root(amount)
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		root.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
+/mob/living/proc/SetRoot(amount) //Sets remaining duration
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(amount <= 0)
+		if(root)
+			qdel(root)
+	else
+		if(root)
+			root.update_duration(amount)
+		else
+			root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
+/mob/living/proc/AdjustRoot(amount) //Adds to remaining duration
+	if(!(status_flags & CANROOT))
+		return
+	amount = GetRootDuration(amount)
+	var/datum/status_effect/incapacitating/immobilized/root = IsRoot()
+	if(root)
+		root.adjust_duration(amount)
+	else if(amount > 0)
+		root = apply_status_effect(/datum/status_effect/incapacitating/immobilized, amount)
+	return root
+
+/* DAZE (Light incapacitation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetDazeDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsDaze() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/dazed)
+
+/mob/living/proc/AmountDaze() //How many deciseconds remains
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		return dazed.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
+
+/mob/living/proc/Daze(amount)
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
+
+/mob/living/proc/SetDaze(amount, ignore_canstun = FALSE) //Sets remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(amount <= 0)
+		if(dazed)
+			qdel(dazed)
+	else
+		if(dazed)
+			dazed.update_duration(amount)
+		else
+			dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
+
+/mob/living/proc/AdjustDaze(amount, ignore_canstun = FALSE) //Adds to remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.adjust_duration(amount)
+	else if(amount > 0)
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
+
+/mob/living/proc/Slow(amount)
+	if(status_flags & CANSLOW)
+		slowed = max(slowed, amount, 0)
+	return
+
+/mob/living/proc/SetSlow(amount)
+	if(status_flags & CANSLOW)
+		slowed = max(amount,0)
+	return
+
+/mob/living/proc/AdjustSlow(amount)
+	SetSlow(amount + slowed)
+	return
+
+/mob/living/proc/Superslow(amount)
+	if(status_flags & CANSLOW)
+		superslowed = max(superslowed, amount, 0)
+	return
+
+/mob/living/proc/SetSuperslow(amount)
+	if(status_flags & CANSLOW)
+		superslowed = max(amount,0)
+	return
+
+/mob/living/proc/AdjustSuperslow(amount)
+	SetSuperslow(superslowed + amount)
+	return
+
+/* KnockDown (Flooring) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetKnockDownDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsKnockDown()
+	return has_status_effect(/datum/status_effect/incapacitating/knockdown)
+
+///How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+/mob/living/proc/AmountKnockDown()
+	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
+	if(S)
+		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
+
+/mob/living/proc/KnockDown(amount)
+	if(!(status_flags & CANKNOCKDOWN))
+		return
+	amount = GetKnockDownDuration(amount)
+	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
+	if(S)
+		S.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
+	return S
+
+///Sets exact remaining KnockDown duration
+/mob/living/proc/SetKnockDown(amount, ignore_canstun = FALSE)
+	if(!(status_flags & CANKNOCKDOWN))
+		return
+	amount = GetKnockDownDuration(amount)
+	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
+	if(amount <= 0)
+		if(S)
+			qdel(S)
+	else
+		if(S)
+			S.update_duration(amount)
+		else
+			S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
+	return S
+
+///Adds to remaining Knockdown duration
+/mob/living/proc/AdjustKnockDown(amount, ignore_canstun = FALSE)
+	if(!(status_flags & CANKNOCKDOWN))
+		return
+	amount = GetKnockDownDuration(amount)
+	var/datum/status_effect/incapacitating/knockdown/S = IsKnockDown()
+	if(S)
+		S.adjust_duration(amount)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/knockdown, amount)
+	return S
+
+/* KnockOut (Unconscious) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetKnockOutDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsKnockOut()
+	return has_status_effect(/datum/status_effect/incapacitating/unconscious)
+
+/mob/living/proc/AmountKnockOut() //How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
+	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
+	if(S)
+		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
+
+/// Sets Knockout duration to at least the amount provided
+/mob/living/proc/KnockOut(amount)
+	if(!(status_flags & CANKNOCKOUT))
+		return
+	amount = GetKnockOutDuration(amount)
+	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
+	if(S)
+		S.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
+	return S
+
+/// Sets exact remaining Knockout duration
+/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE)
+	if(!(status_flags & CANKNOCKOUT))
+		return
+	amount = GetKnockOutDuration(amount)
+	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
+	if(amount <= 0)
+		if(S)
+			qdel(S)
+	else
+		if(S)
+			S.update_duration(amount)
+		else
+			S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
+	return S
+
+/// Adds to remaining Knockout duration
+/mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE)
+	if(!(status_flags & CANKNOCKOUT))
+		return
+	amount = GetKnockOutDuration(amount)
+	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
+	if(S)
+		S.adjust_duration(amount)
+	else if(amount > 0)
+		S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
+	return S
+
+/mob/living/proc/Sleeping(amount)
+	sleeping = max(max(sleeping,amount),0)
+	return
+
+/mob/living/proc/SetSleeping(amount)
+	sleeping = max(amount,0)
+	return
+
+/mob/living/proc/AdjustSleeping(amount)
+	sleeping = max(sleeping + amount,0)
+	return
+
+/mob/living/proc/EyeBlur(amount)
+	eye_blurry = max(max(eye_blurry, amount), 0)
+	update_eye_blur()
+	return
+
+/mob/living/proc/SetEyeBlur(amount)
+	eye_blurry = max(amount, 0)
+	update_eye_blur()
+	return
+
+/mob/living/proc/AdjustEyeBlur(amount)
+	eye_blurry = max(eye_blurry + amount, 0)
+	update_eye_blur()
+	return
+
+/mob/living/proc/ReduceEyeBlur(amount)
+	eye_blurry = max(eye_blurry - amount, 0)
+	update_eye_blur()
+	return
+
+///Apply the blurry overlays to a mobs clients screen
+/mob/living/proc/update_eye_blur()
+	if(!client)
+		return
+	var/atom/movable/plane_master_controller/game_plane_master_controller = hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+
+	if(!eye_blurry)
+		clear_fullscreen("eye_blur", 0.5 SECONDS)
+		game_plane_master_controller.remove_filter("eye_blur")
+		return
+
+	switch(client.prefs?.pain_overlay_pref_level)
+		if(PAIN_OVERLAY_IMPAIR)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, ceil(clamp(eye_blurry * 0.3, 1, 6)))
+		if(PAIN_OVERLAY_LEGACY)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
+		else // PAIN_OVERLAY_BLURRY
+			game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
 
 
+/mob/living/proc/TalkStutter(amount)
+	stuttering = max(max(stuttering, amount), 0)
+	return
 
 
+/mob/living/proc/SetTalkStutter(amount)
+	stuttering = max(amount, 0)
+	return
 
+/mob/living/proc/AdjustTalkStutter(amount)
+	stuttering = max(stuttering + amount,0)
+	return
+
+
+/mob/living/proc/SetEyeBlind(amount)
+	eye_blind = max(amount, 0)
+	return
+
+
+/mob/living/proc/AdjustEyeBlind(amount)
+	eye_blind = max(eye_blind + amount, 0)
+	return
+
+/mob/living/proc/ReduceEyeBlind(amount)
+	eye_blind = max(eye_blind - amount, 0)
+	return
+
+/mob/living/proc/AdjustEarDeafness(amount)
+	var/prev_deaf = ear_deaf
+	ear_deaf = clamp(ear_deaf + amount, 0, 30) //roughly 1 minute
+	if(prev_deaf)
+		if(ear_deaf == 0)
+			on_deafness_loss()
+	else if(ear_deaf)
+		on_deafness_gain()
+
+
+/mob/living/proc/SetEarDeafness(amount)
+	var/prev_deaf = ear_deaf
+	ear_deaf = max(amount, 0)
+	if(prev_deaf)
+		if(ear_deaf == 0)
+			on_deafness_loss()
+	else if(ear_deaf)
+		on_deafness_gain()
+
+/mob/living/proc/on_deafness_gain()
+	to_chat(src, SPAN_WARNING("You notice you can't hear anything... you're deaf!"))
+	// We should apply deafness here instead of in handle_regular_status_updates
+	SEND_SIGNAL(src, COMSIG_MOB_DEAFENED)
+
+/mob/living/proc/on_deafness_loss()
+	to_chat(src, SPAN_WARNING("You start hearing things again!"))
+	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
+	// Consider moving this to a signal on soundOutput. This is a fallback as handle_regular_status_updates SHOULD do the job.
+	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
+		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+		client.soundOutput.apply_status()
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)
@@ -107,7 +496,7 @@
 	src.updatehealth()
 
 // damage MANY limbs, in random order
-/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null)
+/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE) return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
@@ -125,8 +514,6 @@
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
 
-	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
-
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
@@ -138,6 +525,7 @@
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
+	stamina.apply_damage(-stamina.max_stamina)
 
 	// restore all of a human's blood
 	if(ishuman(src))
@@ -163,9 +551,11 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to conciousness
+	// restore us to consciousness
 	set_stat(CONSCIOUS)
 	regenerate_all_icons()
+
+	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
 
 
 /mob/living/proc/heal_all_damage()
@@ -210,4 +600,5 @@
 		return
 	if(stat >= UNCONSCIOUS)
 		return
+	face_dir(direction)
 	return ..()

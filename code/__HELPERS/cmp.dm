@@ -16,12 +16,12 @@
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
-var/cmp_field = "name"
+GLOBAL_LIST_INIT(cmp_field, "name")
 /proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
-	return sorttext((b ? b.fields[cmp_field] : ""), (a ? a.fields[cmp_field] : a))
+	return sorttext((b ? b.fields[GLOB.cmp_field] : ""), (a ? a.fields[GLOB.cmp_field] : a))
 
 /proc/cmp_records_dsc(datum/data/record/a, datum/data/record/b)
-	return sorttext(a.fields[cmp_field], b.fields[cmp_field])
+	return sorttext(a.fields[GLOB.cmp_field], b.fields[GLOB.cmp_field])
 
 /proc/cmp_ckey_asc(client/a, client/b)
 	return sorttext(b.ckey, a.ckey)
@@ -53,10 +53,12 @@ var/cmp_field = "name"
 	if (!.)
 		. = B.qdels - A.qdels
 
-var/atom/cmp_dist_origin=null
 
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
+
+/proc/cmp_typepaths_name_asc(atom/A, atom/B)
+	return sorttext(initial(A.name), initial(B.name))
 
 /// Compares mobs based on their timeofdeath value in ascending order
 /proc/cmp_mob_deathtime_asc(mob/A, mob/B)

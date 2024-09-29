@@ -101,7 +101,7 @@
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
 	name = "offhand"
-	flags_item = DELONDROP|TWOHANDED|WIELDED
+	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 
 /obj/item/weapon/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)
@@ -132,7 +132,7 @@
 	edge = 1
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
@@ -161,7 +161,7 @@
 	edge = 0
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 
@@ -188,7 +188,7 @@
 	force_wielded = 75
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
-	flags_atom = FPRINT|NOBLOODY
+	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 	flags_item = NOSHIELD|TWOHANDED
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

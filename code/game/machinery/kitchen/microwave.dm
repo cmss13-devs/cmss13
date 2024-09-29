@@ -42,7 +42,7 @@
 			for (var/reagent in recipe.reagents)
 				acceptable_reagents |= reagent
 			if (recipe.items)
-				max_n_of_items = max(max_n_of_items,recipe.items.len)
+				max_n_of_items = max(max_n_of_items,length(recipe.items))
 
 		// This will do until I can think of a fun recipe to use dionaea in -
 		// will also allow anything using the holder item to be microwaved into
@@ -115,7 +115,7 @@
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
-		if (contents.len>=max_n_of_items)
+		if (length(contents)>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
@@ -139,7 +139,6 @@
 			if (!(R.id in acceptable_reagents))
 				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
 				return 1
-		//G.reagents.trans_to(src,G.amount_per_transfer_from_this)
 	else if(istype(O,/obj/item/grab))
 		return 1
 	else
@@ -152,82 +151,87 @@
 
 /obj/structure/machinery/microwave/attack_hand(mob/user as mob)
 	user.set_interaction(src)
-	interact(user)
+	tgui_interact(user)
+
+/obj/structure/machinery/microwave/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "Microwave", "Microwave Controls")
+		ui.open()
 
 //*******************
 //*   Microwave Menu
 //********************/
+/obj/structure/machinery/microwave/ui_data(mob/user)
+	var/list/data = list()
 
-/obj/structure/machinery/microwave/interact(mob/user as mob) // The microwave Menu
-	var/dat = ""
-	if(src.broken > 0)
-		dat = {"<TT>Bzzzzttttt</TT>"}
-	else if(src.operating)
-		dat = {"<TT>Microwaving in progress!<BR>Please wait...!</TT>"}
-	else if(src.dirty==100)
-		dat = {"<TT>This microwave is dirty!<BR>Please clean it before use!</TT>"}
-	else
-		var/list/items_counts = new
-		var/list/items_measures = new
-		var/list/items_measures_p = new
-		for (var/obj/O in contents)
-			var/display_name = O.name
-			if (istype(O,/obj/item/reagent_container/food/snacks/egg))
-				items_measures[display_name] = "egg"
-				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_container/food/snacks/tofu))
-				items_measures[display_name] = "tofu chunk"
-				items_measures_p[display_name] = "tofu chunks"
-			if (istype(O,/obj/item/reagent_container/food/snacks/meat)) //any meat
-				items_measures[display_name] = "slab of meat"
-				items_measures_p[display_name] = "slabs of meat"
-			if (istype(O,/obj/item/reagent_container/food/snacks/donkpocket))
-				display_name = "Turnovers"
-				items_measures[display_name] = "turnover"
-				items_measures_p[display_name] = "turnovers"
-			if (istype(O,/obj/item/reagent_container/food/snacks/carpmeat))
-				items_measures[display_name] = "fillet of meat"
-				items_measures_p[display_name] = "fillets of meat"
-			items_counts[display_name]++
-		for (var/O in items_counts)
-			var/N = items_counts[O]
-			if (!(O in items_measures))
-				dat += {"<B>[capitalize(O)]:</B> [N] [lowertext(O)]\s<BR>"}
-			else
-				if (N==1)
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures[O]]<BR>"}
-				else
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
+	data["operating"] = operating
+	data["broken"] = (broken > 0)
+	data["dirty"] = (dirty == 100)
 
-		for (var/datum/reagent/R in reagents.reagent_list)
-			var/display_name = R.name
-			if (R.id == "hotsauce")
-				display_name = "Hotsauce"
-			if (R.id == "frostoil")
-				display_name = "Coldsauce"
-			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+	var/list/ingredients = list()
+	var/list/items_counts = list()
+	var/list/items_measures = list()
+	var/list/items_measures_p = list()
 
-		if (items_counts.len==0 && reagents.reagent_list.len==0)
-			dat = {"<B>The microwave is empty</B><BR>"}
+	for (var/obj/contents_item as anything in contents)
+		var/display_name = contents_item.name
+
+		if (istype(contents_item, /obj/item/reagent_container/food/snacks/tofu))
+			items_measures[display_name] = "tofu chunk"
+			items_measures_p[display_name] = "tofu chunks"
+		if (istype(contents_item, /obj/item/reagent_container/food/snacks/meat)) //any meat
+			items_measures[display_name] = "slab of meat"
+			items_measures_p[display_name] = "slabs of meat"
+		if (istype(contents_item, /obj/item/reagent_container/food/snacks/donkpocket))
+			display_name = "Turnovers"
+			items_measures[display_name] = "turnover"
+			items_measures_p[display_name] = "turnovers"
+		if (istype(contents_item, /obj/item/reagent_container/food/snacks/carpmeat))
+			items_measures[display_name] = "fillet of meat"
+			items_measures_p[display_name] = "fillets of meat"
+		items_counts[display_name]++
+
+	for (var/contents_item in items_counts)
+		var/list/item = list()
+
+		item["name"] = capitalize(contents_item)
+		item["count"] = items_counts[contents_item]
+
+		if (!(contents_item in items_measures))
+			item["measure"] = "[lowertext(contents_item)][items_counts[contents_item] > 1 ? "s" : ""]" // Adds 's' for plurals.
+		else if (items_counts[contents_item] == 1)
+			item["measure"] = items_measures[contents_item]
 		else
-			dat = {"<b>Ingredients:</b><br>[dat]"}
-		dat += {"<HR><BR>\
-<A href='?src=\ref[src];action=cook'>Turn on!<BR>\
-<A href='?src=\ref[src];action=dispose'>Eject ingredients!<BR>\
-"}
+			item["measure"] = items_measures_p[contents_item]
 
-	show_browser(user, dat, "Microwave Controls", "microwave")
-	return
+		ingredients += list(item)
 
+	for (var/datum/reagent/contents_reagent as anything in reagents.reagent_list)
+		var/list/reagent = list()
 
+		reagent["count"] = contents_reagent.volume
+		reagent["measure"] = contents_reagent.volume > 1 ? "units" : "unit"
+
+		reagent["name"] = contents_reagent.name
+		if (contents_reagent.id == "hotsauce")
+			reagent["name"] = "Hotsauce"
+		if (contents_reagent.id == "frostoil")
+			reagent["name"] = "Coldsauce"
+
+		ingredients += list(reagent)
+
+	data["ingredients"] = ingredients
+	return data
 
 //***********************************
 //*   Microwave Menu Handling/Cooking
 //************************************/
 
 /obj/structure/machinery/microwave/proc/cook(time_multiplier = 1)
-	if(inoperable())
+	if(inoperable() || operating)
 		return
+
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
 		if (!wzhzhzh(10 * time_multiplier))
@@ -267,7 +271,7 @@
 			cooked.forceMove(src.loc)
 			return
 	else
-		var/halftime = round(recipe.time/10/2)
+		var/halftime = floor(recipe.time/10/2)
 		if (!wzhzhzh(halftime * time_multiplier))
 			abort()
 			return
@@ -322,7 +326,7 @@
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()
-	to_chat(usr, SPAN_NOTICE(" You dispose of the microwave contents."))
+	to_chat(usr, SPAN_NOTICE("You dispose of the microwave contents."))
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/muck_start()
@@ -365,19 +369,16 @@
 	ffuu.reagents.add_reagent("toxin", amount/10)
 	return ffuu
 
-/obj/structure/machinery/microwave/Topic(href, href_list)
-	if(..())
+/obj/structure/machinery/microwave/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
 
-	usr.set_interaction(src)
-	if(src.operating)
-		src.updateUsrDialog()
-		return
-
-	switch(href_list["action"])
+	switch (action)
 		if ("cook")
 			cook(usr.get_skill_duration_multiplier(SKILL_DOMESTIC)) // picking the right microwave setting for the right food. when's the last time you used the special setting on the microwave? i bet you just slam the 30 second increment. Do you know how much programming went into putting the Pizza setting into a microwave emitter?
 
-		if ("dispose")
+		if ("eject_all")
 			dispose()
-	return
+
+	return TRUE

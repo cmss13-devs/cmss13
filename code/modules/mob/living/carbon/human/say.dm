@@ -15,7 +15,7 @@
 			if(current_channel == " " || current_channel == ":" || current_channel == ".")
 				i--
 				break
-			.["modes"] += department_radio_keys[":[current_channel]"]
+			.["modes"] += GLOB.department_radio_keys[":[current_channel]"]
 		.["message_and_language"] = copytext(message, i+1)
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
@@ -26,14 +26,14 @@
 			else
 				headset.last_multi_broadcast = world.time
 		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [floor(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
 		var/channel_prefix = copytext(message, 1, 3)
-		if(channel_prefix in department_radio_keys)
+		if(channel_prefix in GLOB.department_radio_keys)
 			.["message_and_language"] = copytext(message, 3)
-			.["modes"] += department_radio_keys[channel_prefix]
+			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 
 	.["message_and_language"] = message
@@ -57,7 +57,7 @@
 
 	var/verb = "says"
 	var/alt_name = ""
-	var/message_range = world_view_size
+	var/message_range = GLOB.world_view_size
 	var/italics = 0
 
 	if(!able_to_speak)
@@ -70,6 +70,9 @@
 			return
 
 	message = trim(strip_html(message))
+
+	if(!filter_message(src, message))
+		return
 
 	if(stat == DEAD)
 		return say_dead(message)
@@ -87,6 +90,10 @@
 		to_chat(src, SPAN_WARNING(fail_message))
 		return
 	message = parsed["message"]
+
+	if(!filter_message(src, message))
+		return
+
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()
@@ -115,12 +122,9 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(speech_problem_flag)
-		var/list/handle_r = handle_speech_problems(message)
-		message = handle_r[1]
-		verb = handle_r[2]
-		speech_problem_flag = handle_r[3]
-
+	var/list/handle_r = handle_speech_problems(message)
+	message = handle_r[1]
+	verb = handle_r[2]
 	if(!message)
 		return
 
@@ -132,19 +136,20 @@
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
-			if(MESSAGE_MODE_LOCAL)
 			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return
 			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				FOR_DVIEW(var/obj/item/device/radio/intercom/I, 1, src, HIDE_INVISIBLE_OBSERVER)
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
+				FOR_DVIEW_END
 			else
-				var/earpiece = get_type_in_ears(/obj/item/device/radio)
-				if(earpiece)
-					used_radios += earpiece
+				if(message_mode != MESSAGE_MODE_LOCAL)
+					var/earpiece = get_type_in_ears(/obj/item/device/radio)
+					if(earpiece)
+						used_radios += earpiece
 
 		var/sound/speech_sound
 		var/sound_vol
@@ -161,7 +166,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] talks into [length(used_radios) ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
@@ -260,40 +265,25 @@ for it but just ignore it.
 	return verb
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
-	var/list/returns[3]
+	var/list/returns[2]
 	var/verb = "says"
-	var/handled = FALSE
 	if(silent)
 		message = ""
-		handled = TRUE
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = TRUE
-	if(wear_mask)
-		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
-			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
-			if(hoers.voicechange)
-				message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-				verb = pick("whinnies","neighs", "says")
-				handled = TRUE
-
 	var/braindam = getBrainLoss()
-	if(slurring || stuttering || dazed || braindam >= 60)
+	if(slurring || stuttering || HAS_TRAIT(src, TRAIT_DAZED) || braindam >= 60)
 		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = TRUE
 	if(stuttering)
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = TRUE
-	if(dazed)
+	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = TRUE
 	if(braindam >= 60)
-		handled = TRUE
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
@@ -301,7 +291,6 @@ for it but just ignore it.
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
-		handled = TRUE
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
@@ -309,8 +298,6 @@ for it but just ignore it.
 
 	returns[1] = message
 	returns[2] = verb
-	returns[3] = handled
-
 	return returns
 
 /mob/living/carbon/human/hear_apollo()

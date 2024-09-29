@@ -17,12 +17,10 @@
 #define NOTE_ADMIN 1
 ///This note is used by staff for positive record keeping.
 #define NOTE_MERIT 2
-///These notes are used by respective whitelist councils for record keeping.
-#define NOTE_COMMANDER 3
-#define NOTE_SYNTHETIC 4
-#define NOTE_YAUTJA 5
+///These notes are automatically applied by the Whitelist Panel.
+#define NOTE_WHITELIST 3
 ///Note categories in text form, in order of their numerical #defines.
-var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja")
+GLOBAL_LIST_INIT(note_categories, list("Admin", "Merit", "Whitelist"))
 
 #define ADMIN_FLW(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservefollow=[REF(user)]'>FLW</a>)"
 #define ADMIN_PP(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=[REF(user)]'>PP</a>)"
@@ -50,6 +48,7 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define OBSERVER_JMP(observer, atom) atom ? "(<a href='?src=[REF(observer)];jumptocoord=1;X=[atom.x];Y=[atom.y];Z=[atom.z]'>JMP</a>)" : ""
 #define ARES_MARK(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresMark=[REF(user)]'>MARK</a>)"
 #define ARES_REPLY(user, ref) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresReply=[REF(user)];AresRef=[ref]'>RPLY</a>)"
+#define ADMIN_VIEW_BUG_REPORT(datum) "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];view_bug_report=[REF(datum)]'>VIEW REPORT</a>"
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)
 	var/turf/T = get_turf(src)

@@ -12,20 +12,23 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "strata"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = SOROKYNE_TEMPERATURE //If not in a building, it'll be cold. All interior areas are set to T20C
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
-	lighting_use_dynamic = 0 //No bad
+	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag
 	name = "Above Ground Area"
@@ -92,6 +95,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landingzone_2
 	name = "Landing Zone 2 Pad - Ice Fields"
@@ -100,6 +104,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/interior/nearlz1
 	name = "Landing Zone 1 - Mining Aerodrome"
@@ -113,6 +118,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "nearlz2"
 	weather_enabled = TRUE //This LZ is outside, but consider disabling if it destroys the meta.
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landingzone_valley
 	name = "Landing Zone Valley"

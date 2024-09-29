@@ -2,8 +2,8 @@
 	var/freq_text
 
 	// the name of the channel
-	for(var/channel in radiochannels)
-		if(radiochannels[channel] == display_freq)
+	for(var/channel in GLOB.radiochannels)
+		if(GLOB.radiochannels[channel] == display_freq)
 			freq_text = channel
 			break
 

@@ -19,14 +19,43 @@
 
 /datum/food_processor_process/process(loc, what)
 	if (src.output && loc)
-		new src.output(loc)
+		var/obj/item/reagent_container/food/snacks/created_food = new src.output(loc)
+		var/obj/item/reagent_container/food/snacks/original_food = what
+		if(original_food.made_from_player)
+			created_food.made_from_player = original_food.made_from_player
+			created_food.name = (created_food.made_from_player + created_food.name)
 	if (what)
 		qdel(what)
 
+/datum/food_processor_process/proc/can_use(mob/user)
+	// By default, anyone can do it.
+	return TRUE
+
 	/* objs */
+
+/datum/food_processor_process/xenomeat
+	input = /obj/item/reagent_container/food/snacks/meat/xenomeat
+	output = /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
+
+/datum/food_processor_process/xenomeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE
+
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
 	output = /obj/item/reagent_container/food/snacks/rawmeatball
+
+/datum/food_processor_process/carpmeat
+	input = /obj/item/reagent_container/food/snacks/carpmeat
+	output = /obj/item/reagent_container/food/snacks/carpmeat/processed
+
+/datum/food_processor_process/carpmeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato
@@ -73,7 +102,7 @@
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
-	if(contents.len > 0) //TODO: several items at once? several different items?
+	if(length(contents) > 0) //TODO: several items at once? several different items?
 		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
 		return 1
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
@@ -88,8 +117,10 @@
 	if (!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
+	if(!P.can_use(user))
+		return 1
 	user.visible_message("[user] put [what] into [src].", \
-		"You put the [what] into [src].")
+		"You put [what] into [src].")
 	user.drop_held_item()
 	what.forceMove(src)
 
@@ -99,7 +130,7 @@
 	if(src.processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
-	if(src.contents.len == 0)
+	if(length(src.contents) == 0)
 		to_chat(user, SPAN_DANGER("The processor is empty."))
 		return 1
 	for(var/O in src.contents)
@@ -118,4 +149,3 @@
 		src.processing = 0
 	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
 		"You hear the food processor stopping/")
-

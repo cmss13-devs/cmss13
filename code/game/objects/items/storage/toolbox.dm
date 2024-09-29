@@ -1,6 +1,7 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
+	icon = 'icons/obj/items/storage/toolbox.dmi'
 	icon_state = "red"
 	item_state = "toolbox_red"
 	pickup_sound = 'sound/handling/toolbox_pickup.ogg'
@@ -56,7 +57,7 @@
 	var/color = pick("red","yellow","green","blue","pink","orange","cyan","white")
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wirecutters(src)
-	new /obj/item/device/t_scanner(src)
+	new /obj/item/circuitboard/apc(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/stack/cable_coil(src,30,color)
 	new /obj/item/stack/cable_coil(src,30,color)

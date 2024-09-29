@@ -71,7 +71,9 @@ explosion resistance exactly as much as their health
 	falloff = max(falloff0, power/100) //prevent explosions with a range larger than 100 tiles
 	minimum_spread_power = -power * reflection_amplification_limit
 
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", src.loc.x, src.loc.y, src.loc.z)
+	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
+	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff],[causing_obj ? " from [causing_obj]" : ""][causing_mob ? " by [key_name(causing_mob)]" : ""] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", loc.x, loc.y, loc.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 	playsound(epicenter, "explosion", 90, 1, max(round(power,1),7) )
@@ -84,9 +86,7 @@ explosion resistance exactly as much as their health
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		sleep(1)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+		new /obj/shrapnel_effect(epicenter)
 
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
@@ -139,7 +139,7 @@ explosion resistance exactly as much as their health
 
 		//spread in each ordinal direction
 		var/direction_angle = dir2angle(direction)
-		for(var/spread_direction in alldirs)
+		for(var/spread_direction in GLOB.alldirs)
 			var/spread_power = power
 
 			if(direction) //false if, for example, this turf was the explosion source
@@ -149,7 +149,7 @@ explosion resistance exactly as much as their health
 
 				switch(angle) //this reduces power when the explosion is going around corners
 					if (0)
-						//no change
+						pass()
 					if (45)
 						if(spread_power >= 0)
 							spread_power *= 0.75
@@ -325,7 +325,7 @@ explosion resistance exactly as much as their health
 		return
 
 	if(!direction)
-		direction = pick(alldirs)
+		direction = pick(GLOB.alldirs)
 	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
 	if(!direction)
 		range = round( range/2 ,1)

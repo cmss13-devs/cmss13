@@ -263,7 +263,7 @@
 	icon_state = "m41ae2"
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
-	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
+	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
 
@@ -274,8 +274,15 @@
 	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
+/obj/item/ammo_magazine/rifle/lmg/ap
+	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
+	desc = "A semi-rectangular box of armor-piercing rounds for the M41AE2 Heavy Pulse Rifle."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 300
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
 /obj/item/ammo_magazine/rifle/lmg/heap
-	name = "\improper M41AE2 HEAP ammo box (10x24mm)"
+	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box of rounds for the M41AE2 Heavy Pulse Rifle. This one contains the standard Armor-Piercing explosive tipped round of the USCM."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	max_rounds = 300
@@ -290,7 +297,9 @@
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "type_71"
+	icon_state = "type71"
+	ammo_band_icon = "+type71_band"
+	ammo_band_icon_empty = "+type71_band_e"
 	default_ammo = /datum/ammo/bullet/rifle/type71
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/type71
@@ -298,16 +307,14 @@
 /obj/item/ammo_magazine/rifle/type71/ap
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing armor piercing rounds for the Type 71 rifle."
-	icon_state = "type_71_ap"
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
-	bonus_overlay = "type71_ap"
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/type71/heap
 	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing the standard high explosive armor piercing rounds for the Type 71 rifle."
-	icon_state = "type_71_heap"
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
-	bonus_overlay = "type71_heap"
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 //-------------------------------------------------------
 //L42A Battle Rifle
@@ -445,3 +452,79 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/boltaction/vulture
+	name = "\improper M707 \"Vulture\" magazine (20x102mm)"
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized rounds."
+	caliber = "20x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "vulture"
+	handful_state = "vulture_bullet"
+	default_ammo = /datum/ammo/bullet/sniper/anti_materiel/vulture
+	max_rounds = 4
+	gun_type = /obj/item/weapon/gun/boltaction/vulture
+	w_class = SIZE_MEDIUM // maybe small? This shit's >4 inches long mind you
+	ammo_band_icon = "+vulture_band"
+	ammo_band_icon_empty = "+vulture_band_e"
+
+/obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
+	name = "\improper M707 \"Vulture\" holo-target magazine (20x102mm)"
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
+	default_ammo =  /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
+	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
+
+//=ROYAL MARINES=\\
+
+/obj/item/ammo_magazine/rifle/rmc_f90
+	name = "\improper F903 magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine used by the royal marines."
+	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
+	icon_state = "aug"
+	item_state = "aug"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90
+	ammo_band_icon = "+aug_band"
+	ammo_band_icon_empty = "+aug_band_e"
+
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman
+	name = "\improper F903A1 Marksman magazine (10x24mm)"
+	desc = "A 10mm armor-piercing assault rifle magazine used by the royal marines."
+	icon_state = "aug_dmr"
+	item_state = "aug_dmr"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90/scope
+	max_rounds = 20
+	ammo_band_color = AMMO_BAND_COLOR_AP
+	ammo_band_icon = "+aug_dmr_band"
+	ammo_band_icon_empty = "+aug_dmr_band_e"
+
+/obj/item/ammo_magazine/rifle/rmc_f90/heap
+	name = "\improper F903 HEAP magazine (10x24mm)"
+	desc = "A 10mm armor piercing high explosive assault rifle magazine used by the royal marines."
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap
+	name = "\improper F903A1 Marksman magazine (10x24mm)"
+	desc = "A 10mm armor piercing high explosive assault rifle magazine used by the royal marines."
+	icon_state = "aug_dmr"
+	item_state = "aug_dmr"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+//--------------------------------------------------------
+//XM51 BREACHING SHOTGUN
+
+/obj/item/ammo_magazine/rifle/xm51
+	name = "\improper XM51 magazine (16g)"
+	desc = "A 16 gauge pump-action shotgun magazine."
+	icon_state = "xm51"
+	caliber = "16g"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/light/breaching
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/rifle/xm51
+	transfer_handful_amount = 6

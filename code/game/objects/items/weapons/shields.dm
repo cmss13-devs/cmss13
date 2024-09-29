@@ -71,6 +71,10 @@
 	throw_range = 4
 	w_class = SIZE_LARGE
 	matter = list("glass" = 7500, "metal" = 1000)
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
@@ -85,7 +89,7 @@
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(cooldown < world.time - 25)
-		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/claymore) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/katana) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
+		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
@@ -97,7 +101,7 @@
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
-	flags_atom = FPRINT|CONDUCT|NOBLOODY
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
 	force = 3
 	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
 	readied_block = 50
@@ -108,3 +112,22 @@
 
 	attack_verb = list("shoved", "bashed")
 	var/active = 0
+
+/obj/item/weapon/shield/riot/metal
+	name = "metal shield"
+	name = "A metal riot shield effective, but heavy."
+	icon_state = "riotmetal"
+	item_state = "riotmetal"
+	base_icon_state = "riotmetal"
+	passive_block = 40
+	readied_block = 60
+
+/obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
+	name = "FBS-B Ballistic shield"
+	desc = "Ballistic shield used by the royal marines commando. This shield is commonly used during boarding actions due to its lightweight but durible design."
+	desc_lore = "The Fox Ballistic Shield-B (FBS-B), was originally introduced as the FBS, attempting to be a solution to high-impact operations following increased counter-insurgency deployments since 2151. It was designed to provide maximum protection, and for the user to be able to utilize their primary armament in tandem. By 2163 tertiary ballistics trials were undertaken to ascertain it's effectiveness against improved munitions, and was additionally used as an opportunity to  deal with user complaints making their way up from quartermasters. The complaints of the original FBS were twofold: weight and extended usage in combat causing the side to melt closest to the barrel. After further material research and in the field tests were conducted, by 2171, the FBS had attained a ballistics protection classification of D, the highest available for a portable shield, by being able to stop a singular armor piercing round. This reported success was due to the usage of a new fibre reinforced lightweight composite.  In the wake of the successful improvements, the FBS was later christened the FBS-B as with the enhanced shield, the user had a tendency for maximum aggression during engagements. The nickname 'Bellicose' was given to breachers by their squaddies and later became it's official designation."
+	icon_state = "ballisticshield"
+	item_state = "ballisticshield"
+	base_icon_state = "ballisticshield"
+	passive_block = 60
+	readied_block = 90

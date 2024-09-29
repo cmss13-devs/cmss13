@@ -13,7 +13,7 @@
 
 /obj/item/device/eftpos/Initialize()
 	. = ..()
-	machine_id = "[station_name] EFTPOS #[num_financial_terminals++]"
+	machine_id = "[MAIN_SHIP_NAME] EFTPOS #[GLOB.num_financial_terminals++]"
 	access_code = rand(1111,111111)
 	spawn(0)
 		print_reference()
@@ -47,19 +47,19 @@
 
 		//stamp the paper
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-		stampoverlay.icon_state = "paper_stamp-cent"
+		stampoverlay.icon_state = "paper_stamp-rd"
 		if(!R.stamped)
 			R.stamped = new
 		R.offset_x += 0
 		R.offset_y += 0
-		R.ico += "paper_stamp-cent"
+		R.ico += "paper_stamp-rd"
 		R.stamped += /obj/item/tool/stamp
 		R.overlays += stampoverlay
 		R.stamps += "<HR><i>This paper has been stamped by the EFTPOS device.</i>"
 
 	//by default, connect to the station account
 	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
-	linked_account = station_account
+	linked_account = GLOB.station_account
 
 /obj/item/device/eftpos/proc/print_reference()
 	var/obj/item/paper/R = new(src.loc)
@@ -70,7 +70,7 @@
 
 	//stamp the paper
 	var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-	stampoverlay.icon_state = "paper_stamp-cent"
+	stampoverlay.icon_state = "paper_stamp-rd"
 	if(!R.stamped)
 		R.stamped = new
 	R.stamped += /obj/item/tool/stamp
@@ -136,7 +136,7 @@
 						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
 						T.amount = transaction_amount
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						linked_account.transaction_log.Add(T)
 					else
@@ -198,7 +198,7 @@
 						transaction_locked = 0
 						transaction_paid = 0
 					else
-						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction")
+						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction", 1000, 999999, 1000)
 						if(attempt_code == access_code)
 							transaction_locked = 0
 							transaction_paid = 0
@@ -234,7 +234,7 @@
 					var/attempt_pin = ""
 					var/datum/money_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
-						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction")
+						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction", 1111, 111111, 1111)
 						D = null
 					D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 					if(D)
@@ -257,7 +257,7 @@
 								else
 									T.amount = "[transaction_amount]"
 								T.source_terminal = machine_id
-								T.date = current_date_string
+								T.date = GLOB.current_date_string
 								T.time = worldtime2text()
 								D.transaction_log.Add(T)
 								//
@@ -266,7 +266,7 @@
 								T.purpose = transaction_purpose
 								T.amount = "[transaction_amount]"
 								T.source_terminal = machine_id
-								T.date = current_date_string
+								T.date = GLOB.current_date_string
 								T.time = worldtime2text()
 								linked_account.transaction_log.Add(T)
 							else

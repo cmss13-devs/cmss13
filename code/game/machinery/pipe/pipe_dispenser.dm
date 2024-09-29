@@ -75,7 +75,7 @@
 /obj/structure/machinery/pipedispenser/Topic(href, href_list)
 	if(..())
 		return
-	if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 		close_browser(usr, "pipedispenser")
 		return
 	usr.set_interaction(src)
@@ -150,7 +150,7 @@ Nah
 
 //Allow you to drag-drop disposal pipes into it
 /obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		return
 
 	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )
@@ -192,7 +192,7 @@ Nah
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 	if(href_list["dmake"])
-		if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+		if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 			close_browser(usr, "pipedispenser")
 			return
 		if(!wait)

@@ -11,8 +11,10 @@
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",
+        "/datum/equipment_preset/survivor/uscm/solaris",
         "/datum/equipment_preset/survivor/colonial_marshal/solaris",
         "/datum/equipment_preset/survivor/corporate/solaris",
+        "/datum/equipment_preset/survivor/flight_control_operator",
         "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],
@@ -24,7 +26,7 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/big_red_map",
-    "announce_text": "We've lost contact with Weyland-Yutani's research facility, Solaris Ridge. The ###SHIPNAME### has been dispatched to assist.",
+    "announce_text": "Weyland-Yutani has lost contact with one of its Biological Storage Facilities, Solaris Ridge, on the planet of LV-1413. The ###SHIPNAME### has been requested to look into the blackout by Weyland-Yutani.",
     "monkey_types": [
         "neaera"
     ],

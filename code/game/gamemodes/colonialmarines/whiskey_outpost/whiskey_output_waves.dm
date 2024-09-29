@@ -32,7 +32,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
+		if(should_block_game_interaction(X) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
 			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
 				available_xenos += X
@@ -43,7 +43,7 @@
 
 	available_xenos += unique_xenos
 
-	if(!available_xenos.len)
+	if(!length(available_xenos))
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs."))
 		return FALSE
 
@@ -52,12 +52,12 @@
 	if(!xeno_candidate)
 		return FALSE
 
-	if(RoleAuthority.castes_by_name[userInput])
+	if(GLOB.RoleAuthority.castes_by_name[userInput])
 		if(!(userInput in xeno_pool))
 			to_chat(xeno_candidate, SPAN_WARNING("The caste type you chose was occupied by someone else."))
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
-		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
+		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
 			new_xeno.hive.construction_allowed = XENO_QUEEN
@@ -198,7 +198,7 @@
 	wave_castes = list(XENO_CASTE_BURROWER)
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 3
-	command_announcement = list("First Lieutenant Ike Saker, Executive Officer of Captain Naiche, speaking. The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occuring nearby, there might be creatures burrowing underground, keep an eye on your defenses. I have also received word that marines from an overrun outpost are evacuating to you and will help you. I used to be stationed with them, they are top notch!", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("First Lieutenant Ike Saker, Executive Officer of Captain Naiche, speaking. The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occurring nearby, there might be creatures burrowing underground, keep an eye on your defenses. I have also received word that marines from an overrun outpost are evacuating to you and will help you. I used to be stationed with them, they are top notch!", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave8
 	wave_number = 8

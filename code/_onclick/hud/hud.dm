@@ -46,7 +46,7 @@
 	var/atom/movable/screen/toggle_burst
 	var/atom/movable/screen/unique_action
 
-	var/atom/movable/screen/zone_sel
+	var/atom/movable/screen/zone_sel/zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/oxygen_icon
@@ -91,19 +91,19 @@
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
 		mymob.hud_used = null
-	if(static_inventory.len)
+	if(length(static_inventory))
 		for(var/thing in static_inventory)
 			qdel(thing)
 		static_inventory.Cut()
-	if(toggleable_inventory.len)
+	if(length(toggleable_inventory))
 		for(var/thing in toggleable_inventory)
 			qdel(thing)
 		toggleable_inventory.Cut()
-	if(hotkeybuttons.len)
+	if(length(hotkeybuttons))
 		for(var/thing in hotkeybuttons)
 			qdel(thing)
 		hotkeybuttons.Cut()
-	if(infodisplay.len)
+	if(length(infodisplay))
 		for(var/thing in infodisplay)
 			qdel(thing)
 		infodisplay.Cut()
@@ -188,48 +188,49 @@
 	switch(display_hud_version)
 		if(HUD_STYLE_STANDARD) //Default HUD
 			hud_shown = 1 //Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen += static_inventory
-			if(toggleable_inventory.len && inventory_shown)
-				screenmob.client.screen += toggleable_inventory
-			if(hotkeybuttons.len && !hotkey_ui_hidden)
-				screenmob.client.screen += hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen += infodisplay
+			if(length(static_inventory))
+				screenmob.client.add_to_screen(static_inventory)
+			if(length(toggleable_inventory) && inventory_shown)
+				screenmob.client.add_to_screen(toggleable_inventory)
+			if(length(hotkeybuttons) && !hotkey_ui_hidden)
+				screenmob.client.add_to_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.add_to_screen(infodisplay)
 
 		if(HUD_STYLE_REDUCED) //Reduced HUD
 			hud_shown = 0 //Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen -= static_inventory
-			if(toggleable_inventory.len)
-				screenmob.client.screen -= toggleable_inventory
-			if(hotkeybuttons.len)
-				screenmob.client.screen -= hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen += infodisplay
+			if(length(static_inventory))
+				screenmob.client.remove_from_screen(static_inventory)
+			if(length(toggleable_inventory))
+				screenmob.client.remove_from_screen(toggleable_inventory)
+			if(length(hotkeybuttons))
+				screenmob.client.remove_from_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.add_to_screen(infodisplay)
 
 			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
 			if(l_hand_hud_object)
-				screenmob.client.screen += l_hand_hud_object //we want the hands to be visible
+				screenmob.client.add_to_screen(l_hand_hud_object) //we want the hands to be visible
 			if(r_hand_hud_object)
-				screenmob.client.screen += r_hand_hud_object //we want the hands to be visible
+				screenmob.client.add_to_screen(r_hand_hud_object) //we want the hands to be visible
 			if(action_intent)
-				screenmob.client.screen += action_intent //we want the intent switcher visible
+				screenmob.client.add_to_screen(action_intent) //we want the intent switcher visible
 
 		if(HUD_STYLE_NOHUD) //No HUD
 			hud_shown = 0 //Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen -= static_inventory
-			if(toggleable_inventory.len)
-				screenmob.client.screen -= toggleable_inventory
-			if(hotkeybuttons.len)
-				screenmob.client.screen -= hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen -= infodisplay
+			if(length(static_inventory))
+				screenmob.client.remove_from_screen(static_inventory)
+			if(length(toggleable_inventory))
+				screenmob.client.remove_from_screen(toggleable_inventory)
+			if(length(hotkeybuttons))
+				screenmob.client.remove_from_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.remove_from_screen(infodisplay)
 
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
 	mymob.update_action_buttons(TRUE)
+	reorganize_alerts(screenmob)
 	mymob.reload_fullscreens()
 
 	// ensure observers get an accurate and up-to-date view
@@ -247,7 +248,7 @@
 	for(var/thing in plane_masters)
 		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
 		PM.backdrop(mymob)
-		mymob.client.screen += PM
+		mymob.client.add_to_screen(PM)
 
 /datum/hud/human/show_hud(version = 0, mob/viewmob)
 	. = ..()
@@ -400,3 +401,50 @@
 		zone_sel.color = ui_color
 	zone_sel.update_icon(mymob)
 	static_inventory += zone_sel
+
+// Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
+/datum/hud/proc/reorganize_alerts(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	if(!screenmob.client)
+		return
+	var/list/alerts = mymob.alerts
+	if(!length(alerts))
+		return FALSE
+	if(!hud_shown)
+		for(var/category in alerts)
+			var/atom/movable/screen/alert/alert = alerts[category]
+			screenmob.client.remove_from_screen(alert)
+		return TRUE
+	var/c = 0
+	for(var/category in alerts)
+		var/atom/movable/screen/alert/alert = alerts[category]
+		c++
+		switch(c)
+			if(1)
+				. = ui_alert1
+			if(2)
+				. = ui_alert2
+			if(3)
+				. = ui_alert3
+			if(4)
+				. = ui_alert4
+			if(5)
+				. = ui_alert5 // Right now there's 5 slots
+			else
+				. = ""
+		alert.screen_loc = .
+		screenmob.client.add_to_screen(alert)
+	if(!viewmob)
+		for(var/obs in mymob.observers)
+			reorganize_alerts(obs)
+	return TRUE
+
+/// Wrapper for adding anything to a client's screen
+/client/proc/add_to_screen(screen_add)
+	screen += screen_add
+	SEND_SIGNAL(src, COMSIG_CLIENT_SCREEN_ADD, screen_add)
+
+/// Wrapper for removing anything from a client's screen
+/client/proc/remove_from_screen(screen_remove)
+	screen -= screen_remove
+	SEND_SIGNAL(src, COMSIG_CLIENT_SCREEN_REMOVE, screen_remove)

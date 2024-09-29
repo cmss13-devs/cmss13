@@ -26,4 +26,11 @@
 	
 /datum/timelock/human/get_role_requirement(client/C)
 	return time_required - C.get_total_human_playtime()
+
+/datum/timelock/dropship
+	name = "Dropship Roles"
+
+/datum/timelock/dropship/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_DROPSHIP_ROLES_LIST
 	

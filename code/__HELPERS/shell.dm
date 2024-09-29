@@ -20,7 +20,7 @@
 				shelleo_id = "[seo_id]"
 				break
 		if(!shelleo_id)
-			shelleo_id = "[shelleo_ids.len + 1]"
+			shelleo_id = "[length(shelleo_ids) + 1]"
 			shelleo_ids += shelleo_id
 			shelleo_ids[shelleo_id] = TRUE
 		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"

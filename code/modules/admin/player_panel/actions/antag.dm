@@ -56,9 +56,8 @@
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 
-
-	preset.load_race(H, params["hivenumber"])
-	preset.load_status(H)
+	preset.load_race(H)
+	preset.load_status(H, params["hivenumber"])
 
 	var/title = params["leader"]? "xeno cultist leader" : "cultist"
 

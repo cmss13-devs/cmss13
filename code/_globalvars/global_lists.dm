@@ -1,13 +1,24 @@
-
-var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
-
 GLOBAL_LIST_EMPTY(PressFaxes)
 GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(CMBFaxes)
+GLOBAL_LIST_EMPTY(UPPFaxes)
+GLOBAL_LIST_EMPTY(TWEFaxes)
+GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
+
+// for all of our various bugs and runtimes
+GLOBAL_LIST_EMPTY(bug_reports)
+
+//datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
+GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
+GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
+
+//datum containing the svg overlay coords in array format.
+GLOBAL_LIST_EMPTY(uscm_svg_tacmap_data)
+GLOBAL_LIST_EMPTY(xeno_svg_tacmap_data)
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)
@@ -15,14 +26,11 @@ GLOBAL_LIST_EMPTY(larva_burst_by_hive)
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
-//Since it didn't really belong in any other category, I'm putting this here
-//This is for procs to replace all the goddamn 'in world's that are chilling around the code
-
-var/readied_players = 0 //How many players are readied up in the lobby
+GLOBAL_VAR_INIT(readied_players, 0) //How many players are readied up in the lobby
 
 GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
-var/global/list/ai_mob_list = list() //List of all AIs
+GLOBAL_LIST_EMPTY(ai_mob_list) //List of all AIs
 
 GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
@@ -31,6 +39,9 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 GLOBAL_LIST_EMPTY(minimap_icons)
 
 GLOBAL_LIST_EMPTY(mainship_pipes)
+
+/// List of all the maps that have been cached for /proc/load_map
+GLOBAL_LIST_EMPTY(cached_maps)
 
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
@@ -104,14 +115,45 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
-var/global/list/chemical_reactions_filtered_list //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-var/global/list/chemical_reactions_list //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-var/global/list/chemical_reagents_list //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-var/global/list/chemical_properties_list //List of all /datum/chem_property datums indexed by property name
+GLOBAL_LIST(chemical_reactions_filtered_list) //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
+GLOBAL_LIST(chemical_reagents_list) //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+GLOBAL_LIST(chemical_properties_list) //List of all /datum/chem_property datums indexed by property name
+//list of all properties that conflict with each other.
+GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
+											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_PAINING = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC, PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC, PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
+											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC, PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
+											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC, PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE, PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
+											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
+											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
+											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
+											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING))
+//list of all properties that combine into something else, now featured in global list
+GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
+											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
+											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
+											PROPERTY_HYPERTHROTTLING = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
+											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
+											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
+											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
+											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
+											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
+											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
+											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
+											PROPERTY_ENCEPHALOPHRASIVE = list(PROPERTY_NERVESTIMULATING, PROPERTY_PSYCHOSTIMULATING)))
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
+GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
+
+GLOBAL_LIST_INIT_TYPED(space_weapons, /datum/space_weapon, setup_ship_weapon())
+GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_ammo())
 
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
@@ -135,13 +177,12 @@ GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 GLOBAL_LIST_INIT_TYPED(gear_path_presets_list, /datum/equipment_preset, setup_gear_path_presets())
 GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_gear_name_presets())
 
-var/global/list/active_areas = list()
-var/global/list/all_areas = list()
+GLOBAL_LIST_EMPTY(active_areas)
+GLOBAL_LIST_EMPTY(all_areas)
 
-var/global/list/turfs = list()
-var/global/list/z1turfs = list()
+GLOBAL_LIST_EMPTY(turfs)
 
-/var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
+GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
 
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
@@ -162,9 +203,6 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
-//Xeno mutators
-GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
-
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_NORMAL = new /datum/hive_status(),
@@ -179,6 +217,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
+	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
@@ -193,10 +232,11 @@ GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
 //Preferences stuff
-	// Ethnicities
-GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name) // Stores /datum/ethnicity indexed by name
-	// Body Types
-GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+	// Skin colors
+GLOBAL_REFERENCE_LIST_INDEXED(skin_color_list, /datum/skin_color, name) // Stores /datum/skin_color indexed by name
+	// Body
+GLOBAL_REFERENCE_LIST_INDEXED(body_type_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(body_size_list, /datum/body_size, name) // Stores /datum/body_size indexed by name
 	//Hairstyles
 GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name) //stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name) //stores /datum/sprite_accessory/facial_hair indexed by name
@@ -204,23 +244,23 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-var/global/list/backbaglist = list("Backpack", "Satchel")
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
 	//Armor styles
 GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
 
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
-var/global/round_should_check_for_win = TRUE
+GLOBAL_VAR_INIT(round_should_check_for_win, TRUE)
 
-var/global/list/key_mods = list("CTRL", "ALT", "SHIFT")
+GLOBAL_LIST_INIT(key_mods, list("CTRL", "ALT", "SHIFT"))
 
 // A list storing the pass flags for specific types of atoms
-var/global/list/pass_flags_cache = list()
+GLOBAL_LIST_EMPTY(pass_flags_cache)
 
 //Parameterss cache
-var/global/list/paramslist_cache = list()
+GLOBAL_LIST_EMPTY(paramslist_cache)
 
 //Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
-var/global/list/turf_edgeinfo_cache = list()
+GLOBAL_LIST_EMPTY(turf_edgeinfo_cache)
 
 #define FULL_EDGE 1
 #define HALF_EDGE_RIGHT 2
@@ -271,11 +311,20 @@ GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
 
 GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
+/// list of categories for working joes
+GLOBAL_LIST_EMPTY(wj_categories)
+/// dict ("category" : (emotes)) of every wj emote typepath
+GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
+/// list of categories for hazard joes
+GLOBAL_LIST_EMPTY(hj_categories)
+/// dict ("category" : (emotes)) of every hj emote typepath
+GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
+
 /proc/cached_params_decode(params_data, decode_proc)
-	. = paramslist_cache[params_data]
+	. = GLOB.paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
-		paramslist_cache[params_data] = .
+		GLOB.paramslist_cache[params_data] = .
 
 /proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
@@ -285,7 +334,7 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
 /proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
-	for(var/i in 1 to L.len)
+	for(var/i in 1 to length(L))
 		L[i] = text2num(L[i])
 	return L
 
@@ -296,8 +345,25 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
+		var/datum/species/existing = all_species[S.name]
+		if(existing)
+			stack_trace("[S.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		all_species[S.name] = S
 	return all_species
+
+/proc/setup_ship_weapon()
+	var/list/ammo_list = list()
+	for(var/weapon_type in subtypesof(/datum/space_weapon))
+		var/datum/space_weapon/new_weapon  = new weapon_type
+		ammo_list[new_weapon.type] = new_weapon
+	return ammo_list
+
+/proc/setup_ship_ammo()
+	var/list/ammo_list = list()
+	for(var/ammo_type in subtypesof(/datum/space_weapon_ammo))
+		var/datum/space_weapon_ammo/new_ammo = new ammo_type
+		ammo_list[new_ammo.type] = new_ammo
+	return ammo_list
 
 /proc/setup_ammo()
 	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
@@ -338,6 +404,9 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		if (!initial(EP.flags))
 			continue
 		EP = new T
+		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
+		if(existing)
+			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
 		gear_path_presets_list[EP.name] = EP
 	return sortAssoc(gear_path_presets_list)
 
@@ -361,7 +430,7 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 	while(gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.247330950103979)
+			gap = floor(gap / 1.247330950103979)
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
@@ -449,17 +518,21 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 /proc/setup_yautja_capes()
 	var/list/cape_list = list()
 	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
-		cape_list[initial(cape_type.name)] = cape_type
+		var/cape_name = initial(cape_type.name)
+		var/obj/item/clothing/yautja_cape/existing = cape_list[cape_name]
+		if(existing)
+			stack_trace("[cape_name] from [cape_type] overlaps with [existing.type]! It must have a unique name for lookup!")
+		cape_list[cape_name] = cape_type
 	return cape_list
 
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_filtered_list)
-		. += "chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[chemical_reactions_filtered_list[reaction]]\"\n"
-		if(islist(chemical_reactions_filtered_list[reaction]))
-			var/list/L = chemical_reactions_filtered_list[reaction]
+	for (var/reaction in GLOB.chemical_reactions_filtered_list)
+		. += "GLOB.chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_filtered_list[reaction]]\"\n"
+		if(islist(GLOB.chemical_reactions_filtered_list[reaction]))
+			var/list/L = GLOB.chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
 				. += " has: [t]\n"
 	world << .
@@ -471,24 +544,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 // Timelock
 GLOBAL_LIST_EMPTY(timelocks)
 
-
-//the global list of specialist kits that haven't been claimed yet.
-var/global/list/available_specialist_sets = list(
-			"Scout Set",
-			"Sniper Set",
-			"Demolitionist Set",
-			"Heavy Grenadier Set",
-			"Pyro Set"
-			)
-
-//Similar thing, but used in /obj/item/spec_kit
-var/global/list/available_specialist_kit_boxes = list(
-			"Pyro" = 2,
-			"Grenadier" = 2,
-			"Sniper" = 2,
-			"Scout" = 2,
-			"Demo" = 2,
-			)
+GLOBAL_LIST_EMPTY_TYPED(specialist_set_name_dict, /datum/specialist_set)
+GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_specialist_sets())
 
 /proc/init_global_referenced_datums()
 	init_keybindings()
@@ -511,6 +568,32 @@ var/global/list/available_specialist_kit_boxes = list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+/// Setup for Working joe emotes and category list, returns data for wj_emotes
+/proc/setup_working_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & WORKING_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.wj_categories))
+			GLOB.wj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for Hazard joe emotes and category list, returns data for hj_emotes
+/proc/setup_hazard_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & HAZARD_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.hj_categories))
+			GLOB.hj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
 
 GLOBAL_LIST_EMPTY(topic_tokens)
 GLOBAL_PROTECT(topic_tokens)

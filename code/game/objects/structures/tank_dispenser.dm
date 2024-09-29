@@ -95,7 +95,7 @@
 		if(href_list["oxygen"])
 			if(oxygentanks > 0)
 				var/obj/item/tank/oxygen/O
-				if(oxytanks.len == oxygentanks)
+				if(length(oxytanks) == oxygentanks)
 					O = oxytanks[1]
 					oxytanks.Remove(O)
 				else
@@ -107,7 +107,7 @@
 		if(href_list["phoron"])
 			if(phorontanks > 0)
 				var/obj/item/tank/phoron/P
-				if(platanks.len == phorontanks)
+				if(length(platanks) == phorontanks)
 					P = platanks[1]
 					platanks.Remove(P)
 				else

@@ -19,8 +19,9 @@
 	var/motd
 	var/policy
 
-	var/static/regex/ic_filter_regex
-	var/list/fail_to_topic_whitelisted_ips
+	var/static/regex/word_filter_regex
+
+	var/is_loaded = FALSE
 
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
@@ -53,10 +54,13 @@
 	loadmaplist(CONFIG_GROUND_MAPS_FILE, GROUND_MAP)
 	loadmaplist(CONFIG_SHIP_MAPS_FILE, SHIP_MAP)
 	LoadChatFilter()
-	LoadTopicRateWhitelist()
+
+	is_loaded = TRUE
 
 	if(Master)
 		Master.OnConfigLoad()
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CONFIG_LOADED)
 
 
 /datum/controller/configuration/proc/loadmaplist(filename, maptype)
@@ -311,38 +315,23 @@
 
 
 /datum/controller/configuration/proc/LoadChatFilter()
-	var/list/in_character_filter = list()
+	var/list/word_filter = list()
 
-	if(!fexists("[directory]/in_character_filter.txt"))
+	if(!fexists("[directory]/word_filter.txt"))
 		return
 
-	log_config("Loading config file in_character_filter.txt...")
+	log_config("Loading config file word_filter.txt...")
 
-	for(var/line in file2list("[directory]/in_character_filter.txt"))
+	for(var/line in file2list("[directory]/word_filter.txt"))
 		if(!line)
 			continue
 		if(findtextEx(line,"#",1,2))
 			continue
-		in_character_filter += REGEX_QUOTE(line)
+		word_filter += REGEX_QUOTE(line)
 
-	ic_filter_regex = in_character_filter.len ? regex("\\b([jointext(in_character_filter, "|")])\\b", "i") : null
+	word_filter_regex = length(word_filter) ? regex("\\b([jointext(word_filter, "|")])\\b", "i") : null
 
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(message_admins), text), 0)
 
-/datum/controller/configuration/proc/LoadTopicRateWhitelist()
-	LAZYINITLIST(fail_to_topic_whitelisted_ips)
-	if(!fexists("[directory]/topic_rate_limit_whitelist.txt"))
-		log_config("Error 404: topic_rate_limit_whitelist.txt not found!")
-		return
-
-	log_config("Loading config file topic_rate_limit_whitelist.txt...")
-
-	for(var/line in file2list("[directory]/topic_rate_limit_whitelist.txt"))
-		if(!line)
-			continue
-		if(findtextEx(line, "#", 1, 2))
-			continue
-
-		fail_to_topic_whitelisted_ips[line] = 1

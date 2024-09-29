@@ -9,11 +9,11 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
-/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	var/datum/reagent/blood/self = src
 	src = null
 	if(self.data_properties && self.data_properties["viruses"])
@@ -85,7 +85,7 @@
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
 
-/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(has_species(M,"Horror"))
 		return
 	var/datum/reagent/vaccine/self = src
@@ -124,7 +124,7 @@
 	src = null
 	O.extinguish()
 
-/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume)//Splashing people with water can help put them out!
+/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
 	if(method == TOUCH)
@@ -185,7 +185,7 @@
 	id = "oxygen"
 	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is nessesary to sustain organic life."
 	reagent_state = GAS
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemfiresupp = TRUE
 	properties = list(PROPERTY_OXIDIZING = 2)
 	intensitymod = 0.75
@@ -212,7 +212,7 @@
 	id = "nitrogen"
 	description = "Chemical element of atomic number 7. Liquid nitrogen is commonly used in cryogenics, with its melting point of 63.15 kelvin. Nitrogen is a component of many explosive compounds and fertilizers."
 	reagent_state = GAS
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemclass = CHEM_CLASS_BASIC
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
@@ -223,7 +223,7 @@
 	id = "hydrogen"
 	description = "Chemical element of atomic number 1. Is the most abundant chemical element in the Universe. Liquid hydrogen was used as one of the first fuel sources for space travel. Very combustible and is used in many chemical reactions."
 	reagent_state = GAS
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemfiresupp = TRUE
 	durationmod = -0.5
 	radiusmod = 0.2
@@ -254,7 +254,7 @@
 	color = "#484848" // rgb: 72, 72, 72
 	overdose = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_NEUROTOXIC = 4)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_NEUROCRYOGENIC = 1, PROPERTY_DISRUPTING = 1)
 
 /datum/reagent/sulfur
 	name = "Sulfur"
@@ -295,7 +295,7 @@
 	id = "chlorine"
 	description = "Chemical element of atomic number 17. High concentrations of elemental chlorine is highly reactive and poisonous for all living organisms. Chlorine gas has been used as a chemical warfare agent. Industrially used in the production of disinfectants, medicines, plastics and purification of water."
 	reagent_state = GAS
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
@@ -306,18 +306,18 @@
 	id = "fluorine"
 	description = "Chemical element of atomic number 9. It is a very reactive and highly toxic pale yellow gas at standard conditions. Mostly used for medical and dental purposes."
 	reagent_state = GAS
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_NEUTRALIZING = 1)
 
 /datum/reagent/sodium
 	name = "Sodium"
 	id = "sodium"
 	description = "Chemical element of atomic number 11. Pure it is a soft and very reactive metal. Many salt compounds contain sodium, such as sodium chloride and sodium bicarbonate. There are more uses for sodium as a salt than as a metal."
 	reagent_state = SOLID
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemclass = CHEM_CLASS_BASIC
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
@@ -343,7 +343,7 @@
 	id = "lithium"
 	description = "Chemical element of atomic number 3. Is a soft alkali metal commonly used in the production of batteries. Highly reactive and flammable. Used as an antidepressant and for treating bipolar disorder."
 	reagent_state = SOLID
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemfiresupp = TRUE
 	intensitymod = 0.15
 	burncolor = "#ff356f"
@@ -358,7 +358,7 @@
 	id = "sugar"
 	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitocondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255, 255, 255
+	color = COLOR_WHITE
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NUTRITIOUS = 1)
 	flags = REAGENT_TYPE_MEDICAL
@@ -368,7 +368,7 @@
 	id = "glycerol"
 	description = "Glycerol is a simple polyol compound. Glycerol is sweet-tasting and of low toxicity, often used in medicines and beverages. Used in the production of plastic, nitroglycerin and other explosives."
 	reagent_state = LIQUID
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	chemclass = CHEM_CLASS_RARE
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
@@ -380,7 +380,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -517,7 +517,7 @@
 	if(volume >= 1 && istype(T))
 		T.clean_cleanables()
 
-/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.r_hand)
@@ -585,18 +585,6 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	flags = REAGENT_NO_GENERATION
 
-/datum/reagent/nanites
-	name = "Nanomachines"
-	id = "nanites"
-	description = "Microscopic construction robots."
-	reagent_state = LIQUID
-	color = "#535E66" // rgb: 83, 94, 102
-
-/datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, volume)
-	src = null
-	if((prob(10) && method==TOUCH) || method==INGEST)
-		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
-
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"
 	id = "xenomicrobes"
@@ -604,7 +592,7 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	src = null
 	if((prob(10) && method==TOUCH) || method==INGEST)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
@@ -624,6 +612,15 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
+
+/datum/reagent/foaming_agent/stabilized
+	name = "Stabilized metallic foam"
+	id = "stablefoam"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	reagent_state = LIQUID
+	color = "#d4b8d1"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 8)
 
 /datum/reagent/nicotine
 	name = "Nicotine"
@@ -676,7 +673,7 @@
 	custom_metabolism = 100 //disappears immediately
 	properties = list(PROPERTY_RAVENING = 1)
 
-/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
@@ -702,6 +699,40 @@
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
+/datum/reagent/napalm/sticky
+	name = "Sticky-Napalm"
+	id = "stickynapalm"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	reagent_state = LIQUID
+	color = "#f8e3b2"
+	burncolor = "#f8e3b2"
+	burn_sprite = "dynamic"
+	intensitymod = -1.5
+	durationmod = -5
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 5,
+	)
+
+/datum/reagent/napalm/high_damage
+	name = "High-Combustion Napalm Fuel"
+	id = "highdamagenapalm"
+	description = "A custom napalm mix, higher damage but not as sticky"
+	reagent_state = LIQUID
+	color = "#c51c1c"
+	burncolor = "#c51c1c"
+	burn_sprite = "dynamic"
+	intensitymod = -4.5
+	durationmod = -1
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
+		PROPERTY_DURATION = BURN_TIME_TIER_1,
+		PROPERTY_RADIUS = 5,
+	)
+
 // This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut
 	name = "UT-Napthal Fuel"
@@ -720,8 +751,8 @@
 	id = "napalmgel"
 	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
-	color = "#00ff00"
-	burncolor = "#00ff00"
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
 	burn_sprite = "green"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
@@ -750,8 +781,8 @@
 	id = "napalmb"
 	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
 	flameshape = FLAMESHAPE_TRIANGLE
-	color = "#00ff00"
-	burncolor = "#00ff00"
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
 	burn_sprite = "green"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
@@ -764,8 +795,8 @@
 	name = "Napalm E"
 	id = "napalme"
 	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
-	color = "#800080"
-	burncolor = "#800080"
+	color = COLOR_PURPLE
+	burncolor = COLOR_PURPLE
 	burn_sprite = "dynamic"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
@@ -788,12 +819,26 @@
 		PROPERTY_FIRE_PENETRATING	= 1
 	)
 
+/datum/reagent/napalm/upp
+	name = "R189"
+	id = "R189"
+	description = "A UPP chemical, it burns at an extremely high tempature and is designed to melt directly through fortified positions or bunkers."
+	color = "#ffe49c"
+	burncolor = "#ffe49c"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_9,
+		PROPERTY_DURATION = BURN_TIME_TIER_3,
+		PROPERTY_RADIUS = 6,
+		PROPERTY_FIRE_PENETRATING = 1,
+	)
+
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
 	description = "A highly reactive interhalogen compound capaple of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
 	reagent_state = LIQUID
-	color = "#00FFFF"
+	color = COLOR_CYAN
 	custom_metabolism = 100
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
@@ -860,7 +905,7 @@
 	id = "nitroglycerin"
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
 	reagent_state = LIQUID
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	explosive = TRUE
 	power = 1

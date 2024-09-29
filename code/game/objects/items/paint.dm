@@ -1,6 +1,6 @@
 //NEVER USE THIS IT SUX -PETETHEGOAT
 
-var/global/list/cached_icons = list()
+GLOBAL_LIST_EMPTY(cached_icons)
 
 /obj/item/reagent_container/glass/paint
 	desc = "It's a paint bucket."
@@ -75,7 +75,7 @@ var/global/list/cached_icons = list()
 	name = "Paint"
 	id = "paint_"
 	reagent_state = 2
-	color = "#808080"
+	color = COLOR_GRAY
 	description = "This paint will only adhere to floor tiles."
 
 /datum/reagent/paint/reaction_turf(turf/T, volume)
@@ -128,7 +128,7 @@ var/global/list/cached_icons = list()
 	id = "paint_remover"
 	description = "Paint remover is used to remove floor paint from floor tiles."
 	reagent_state = 2
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/paint_remover/reaction_turf(turf/T, volume)
 	if(istype(T) && T.icon != initial(T.icon))

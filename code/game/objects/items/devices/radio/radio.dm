@@ -73,7 +73,7 @@
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 
 	flags_atom |= USES_HEARING
 
@@ -196,7 +196,7 @@
 		return radio_connection
 
 	// Otherwise, if a channel is specified, look for it.
-	if(channels && channels.len)
+	if(LAZYLEN(channels))
 		if (message_mode == RADIO_CHANNEL_DEPARTMENT ) // Department radio shortcut
 			message_mode = channels[1]
 
@@ -206,7 +206,7 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null)
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE)
 	if(!on) return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
 	if(!M || !message) return
@@ -252,12 +252,6 @@
 	// --- Carbon Nonhuman ---
 	else if(iscarbon(M)) // Nonhuman carbon mob
 		jobname = "No id"
-	// --- AI ---
-	else if(isAI(M))
-		jobname = "AI"
-	// --- Cyborg ---
-	else if(isrobot(M))
-		jobname = "Cyborg"
 	// --- Unidentifiable mob ---
 	else
 		jobname = "Unknown"
@@ -297,11 +291,11 @@
 	if(use_volume)
 		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 						src, message, displayname, jobname, real_name, M.voice_name,
-						filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, volume, listening_device)
 	else
 		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 						src, message, displayname, jobname, real_name, M.voice_name,
-						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET)
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET, listening_device)
 
 /obj/item/device/radio/proc/get_target_zs(frequency)
 	var/turf/position = get_turf(src)
@@ -425,149 +419,19 @@
 	else return
 
 /obj/item/device/radio/emp_act(severity)
+	. = ..()
 	broadcasting = FALSE
 	listening = FALSE
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
-	..()
-
-///////////////////////////////
-//////////Borg Radios//////////
-///////////////////////////////
-//Giving borgs their own radio to have some more room to work with -Sieve
-
-/obj/item/device/radio/borg
-	var/mob/living/silicon/robot/myborg = null // Cyborg which owns this radio. Used for power checks
-	var/obj/item/device/encryptionkey/keyslot = null//Borg radios can handle a single encryption key
-	var/shut_up = 0
-	icon = 'icons/obj/items/robot_component.dmi' // Cyborgs radio icons should look like the component.
-	icon_state = "radio"
-	canhear_range = 3
-
-/obj/item/device/radio/borg/talk_into()
-	..()
-	if (isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		var/datum/robot_component/C = R.components["radio"]
-		R.cell_use_power(C.active_usage)
-
-/obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
-// ..()
-	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
-		return
-
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(keyslot)
-
-
-			for(var/ch_name in channels)
-				SSradio.remove_object(src, radiochannels[ch_name])
-				secure_radio_connections[ch_name] = null
-
-
-			if(keyslot)
-				var/turf/T = get_turf(user)
-				if(T)
-					keyslot.forceMove(T)
-					keyslot = null
-
-			recalculateChannels()
-			to_chat(user, "You pop out the encryption key in the radio!")
-
-		else
-			to_chat(user, "This radio doesn't have any encryption keys!")
-
-	if(istype(W, /obj/item/device/encryptionkey/))
-		if(keyslot)
-			to_chat(user, "The radio can't hold another key!")
-			return
-
-		if(!keyslot)
-			if(user.drop_held_item())
-				W.forceMove(src)
-				keyslot = W
-
-		recalculateChannels()
-
-	return
-
-/obj/item/device/radio/borg/proc/recalculateChannels()
-	src.channels = list()
-
-	var/mob/living/silicon/robot/D = src.loc
-	if(D.module)
-		for(var/ch_name in D.module.channels)
-			if(ch_name in src.channels)
-				continue
-			src.channels += ch_name
-			src.channels[ch_name] += D.module.channels[ch_name]
-	if(keyslot)
-		for(var/ch_name in keyslot.channels)
-			if(ch_name in src.channels)
-				continue
-			src.channels += ch_name
-			src.channels[ch_name] += keyslot.channels[ch_name]
-
-	for (var/ch_name in src.channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
-
-	SStgui.update_uis(src)
-
-/obj/item/device/radio/borg/Topic(href, href_list)
-	if(usr.stat || !on)
-		return
-	if (href_list["mode"])
-		if(subspace_transmission != 1)
-			subspace_transmission = 1
-			to_chat(usr, "Subspace Transmission is disabled")
-		else
-			subspace_transmission = 0
-			to_chat(usr, "Subspace Transmission is enabled")
-		if(subspace_transmission == 1)//Simple as fuck, clears the channel list to prevent talking/listening over them if subspace transmission is disabled
-			channels = list()
-		else
-			recalculateChannels()
-	if (href_list["shutup"]) // Toggle loudspeaker mode, AKA everyone around you hearing your radio.
-		shut_up = !shut_up
-		if(shut_up)
-			canhear_range = 0
-		else
-			canhear_range = 3
-
-	..()
-
-/obj/item/device/radio/borg/interact(mob/user as mob)
-	if(!on)
-		return
-
-	var/dat = "<html><head><title>[src]</title></head><body><TT>"
-	dat += {"
-				Speaker: [listening ? "<A href='byond://?src=\ref[src];listen=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];listen=1'>Disengaged</A>"]<BR>
-				Frequency:
-				<A href='byond://?src=\ref[src];freq=-10'>-</A>
-				<A href='byond://?src=\ref[src];freq=-2'>-</A>
-				[format_frequency(frequency)]
-				<A href='byond://?src=\ref[src];freq=2'>+</A>
-				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
-				<A href='byond://?src=\ref[src];mode=1'>Toggle Broadcast Mode</A><BR>
-				<A href='byond://?src=\ref[src];shutup=1'>Toggle Loudspeaker</A><BR>
-				"}
-
-	if(!subspace_transmission)//Don't even bother if subspace isn't turned on
-		for (var/ch_name in channels)
-			dat+=text_sec_channel(ch_name, channels[ch_name])
-	dat+={"[text_wires()]</TT></body></html>"}
-	show_browser(user, dat, name, "radio")
-	return
-
 
 /obj/item/device/radio/proc/config(op)
 	for (var/ch_name in channels)
-		SSradio.remove_object(src, radiochannels[ch_name])
+		SSradio.remove_object(src, GLOB.radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
 	for (var/ch_name in op)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/off
 	listening = 0

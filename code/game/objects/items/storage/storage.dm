@@ -7,7 +7,6 @@
 
 /obj/item/storage
 	name = "storage"
-	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
@@ -22,7 +21,7 @@
 	var/atom/movable/screen/storage/storage_start = null //storage UI
 	var/atom/movable/screen/storage/storage_continue = null
 	var/atom/movable/screen/storage/storage_end = null
-	var/datum/item_storage_box/stored_ISB = null // This contains what previously was known as stored_start, stored_continue, and stored_end
+	var/datum/item_storage_box/stored_ISB //! This contains what previously was known as stored_start, stored_continue, and stored_end
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
 	var/use_sound = "rustle" //sound played when used. null for no sound.
@@ -31,6 +30,17 @@
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
+	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
+	var/list/can_hold_skill = list()
+
+	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
+	var/can_hold_skill_only = FALSE
+
+	/// The required skill for opening this storage if it is inside another storage type
+	var/required_skill_for_nest_opening = null
+
+	/// The required level of a skill for opening this storage if it is inside another storage type
+	var/required_skill_level_for_nest_opening = null
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
@@ -93,25 +103,24 @@
 				return
 	if(user.s_active)
 		user.s_active.hide_from(user)
-	user.client.screen -= boxes
-	user.client.screen -= storage_start
-	user.client.screen -= storage_continue
-	user.client.screen -= storage_end
-	user.client.screen -= closer
-	user.client.screen -= contents
-	user.client.screen += closer
-	user.client.screen += contents
+	user.client.remove_from_screen(boxes)
+	user.client.remove_from_screen(storage_start)
+	user.client.remove_from_screen(storage_continue)
+	user.client.remove_from_screen(storage_end)
+	user.client.remove_from_screen(closer)
+	user.client.remove_from_screen(contents)
+	user.client.add_to_screen(closer)
+	user.client.add_to_screen(contents)
 
 	if(storage_slots)
-		user.client.screen += boxes
+		user.client.add_to_screen(boxes)
 	else
-		user.client.screen += storage_start
-		user.client.screen += storage_continue
-		user.client.screen += storage_end
+		user.client.add_to_screen(storage_start)
+		user.client.add_to_screen(storage_continue)
+		user.client.add_to_screen(storage_end)
 
 	user.s_active = src
 	add_to_watchers(user)
-	return
 
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
@@ -126,12 +135,12 @@
 ///Used to hide the storage's inventory screen.
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(user.client)
-		user.client.screen -= src.boxes
-		user.client.screen -= storage_start
-		user.client.screen -= storage_continue
-		user.client.screen -= storage_end
-		user.client.screen -= src.closer
-		user.client.screen -= src.contents
+		user.client.remove_from_screen(src.boxes)
+		user.client.remove_from_screen(storage_start)
+		user.client.remove_from_screen(storage_continue)
+		user.client.remove_from_screen(storage_end)
+		user.client.remove_from_screen(src.closer)
+		user.client.remove_from_screen(src.contents)
 	if(user.s_active == src)
 		user.s_active = null
 	del_from_watchers(user)
@@ -148,6 +157,12 @@
 /obj/item/storage/proc/open(mob/user)
 	if(user.s_active == src) //Spam prevention.
 		return
+
+	if(istype(loc, /obj/item/storage) && required_skill_for_nest_opening)
+		if(!user || user.skills?.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
+			to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
+			return
+
 	if(!opened)
 		orient2hud()
 		opened = 1
@@ -196,16 +211,17 @@
 	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
-var/list/global/item_storage_box_cache = list()
+GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 /datum/item_storage_box
-	var/atom/movable/screen/storage/start = null
-	var/atom/movable/screen/storage/continued = null
-	var/atom/movable/screen/storage/end = null
-	/// The index that indentifies me inside item_storage_box_cache
+	var/atom/movable/screen/storage/start
+	var/atom/movable/screen/storage/continued
+	var/atom/movable/screen/storage/end
+	/// The index that indentifies me inside GLOB.item_storage_box_cache
 	var/index
 
 /datum/item_storage_box/New()
+	. = ..()
 	start = new()
 	start.icon_state = "stored_start"
 	continued = new()
@@ -217,7 +233,7 @@ var/list/global/item_storage_box_cache = list()
 	QDEL_NULL(start)
 	QDEL_NULL(continued)
 	QDEL_NULL(end)
-	item_storage_box_cache[index] = null // Or would it be better to -= src?
+	GLOB.item_storage_box_cache -= index
 	return ..()
 
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
@@ -242,7 +258,7 @@ var/list/global/item_storage_box_cache = list()
 
 	if(!opened) //initialize background box
 		storage_start.screen_loc = "4:16,2:16"
-		storage_continue.screen_loc = "4:[round(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
+		storage_continue.screen_loc = "4:[floor(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
 		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
 
 	var/startpoint = 0
@@ -255,7 +271,7 @@ var/list/global/item_storage_box_cache = list()
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!item_storage_box_cache[isb_index])
+		if(!GLOB.item_storage_box_cache[isb_index])
 			var/datum/item_storage_box/box = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
@@ -268,16 +284,16 @@ var/list/global/item_storage_box_cache = list()
 			box.continued.apply_transform(M_continue)
 			box.end.apply_transform(M_end)
 			box.index = isb_index
-			item_storage_box_cache[isb_index] = box
+			GLOB.item_storage_box_cache[isb_index] = box
 
-		var/datum/item_storage_box/ISB = item_storage_box_cache[isb_index]
+		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
 		stored_ISB = ISB
 
 		storage_start.overlays += ISB.start
 		storage_start.overlays += ISB.continued
 		storage_start.overlays += ISB.end
 
-		O.screen_loc = "4:[round((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
+		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
 
@@ -349,7 +365,7 @@ var/list/global/item_storage_box_cache = list()
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
 
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
@@ -373,37 +389,53 @@ var/list/global/item_storage_box_cache = list()
 		var/row_num = 0
 		var/col_count = min(7,storage_slots) -1
 		if (adjusted_contents > 7)
-			row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
-/obj/item/storage/proc/has_room(obj/item/W as obj, W_class_override = null)
-	if(storage_slots != null && contents.len < storage_slots)
+/obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
+	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
-		var/sum_storage_cost = W_class_override ? W_class_override : W.get_storage_cost() //Takes the override if there is one, the given item otherwise.
+		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
 		for(var/obj/item/I in contents)
 			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
 
 		if(sum_storage_cost <= max_storage_space) //Adding this item won't exceed the maximum.
 			return TRUE
 
-/obj/item/storage/proc/can_hold_type(type_to_hold)
+#define SKILL_TYPE_INDEX 1
+#define SKILL_LEVEL_INDEX 2
+
+/obj/item/storage/proc/can_hold_type(type_to_hold, mob/user)
+	if(length(can_hold_skill))
+		for(var/can_hold_skill_typepath in can_hold_skill)
+			if(ispath(type_to_hold, can_hold_skill_typepath) && user.skills?.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
+				return TRUE
+		if(can_hold_skill_only)
+			return FALSE
+
 	for(var/A in cant_hold)
 		if(ispath(type_to_hold, A))
 			return FALSE
+
 	if(length(can_hold))
 		for(var/A in can_hold)
 			if(ispath(type_to_hold, A))
 				return TRUE
+
 		return FALSE
+
 	return TRUE
+
+#undef SKILL_TYPE_INDEX
+#undef SKILL_LEVEL_INDEX
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if(!istype(W) || (W.flags_item & NODROP)) return //Not an item
 
 	if(src.loc == W)
@@ -419,13 +451,13 @@ var/list/global/item_storage_box_cache = list()
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type))
+	if(!can_hold_type(W.type, user))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return
 
 	var/w_limit_bypassed = 0
-	if(bypass_w_limit.len)
+	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
 			if(istype(W, A))
 				w_limit_bypassed = 1
@@ -455,27 +487,27 @@ That's done by can_be_inserted(). Its checks are whether the item exists, is an 
 The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple
 items at once, such as when picking up all the items on a tile with one click.
 user can be null, it refers to the potential mob doing the insertion.**/
-/obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	if(!istype(W))
+/obj/item/storage/proc/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+	if(!istype(new_item))
 		return FALSE
-	if(user && W.loc == user)
-		if(!user.drop_inv_item_to_loc(W, src))
+	if(user && new_item.loc == user)
+		if(!user.drop_inv_item_to_loc(new_item, src))
 			return FALSE
 	else
-		W.forceMove(src)
+		new_item.forceMove(src)
 
-	_item_insertion(W, prevent_warning, user)
+	_item_insertion(new_item, prevent_warning, user)
 	return TRUE
 
 /**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
 and it therefore isn't safe to override it before calling parent. Updates icon when done.
 Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
 W is always an item. stop_warning prevents messaging. user may be null.**/
-/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
+/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = FALSE, mob/user)
 	W.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
-			user.client.screen -= W
+			user.client.remove_from_screen(W)
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
@@ -501,7 +533,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
 	for(var/mob/M in can_see_content())
 		if(M.client)
-			M.client.screen -= W
+			M.client.remove_from_screen(W)
 
 	if(new_location)
 		if(ismob(new_location))
@@ -526,11 +558,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	if(isrobot(user))
-		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
-		return //Robots can't interact with storage items.
-
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)
@@ -544,7 +571,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
-	if(!can_be_inserted(W))
+	if(!can_be_inserted(W, user))
 		return
 
 	W.add_fingerprint(user)
@@ -557,7 +584,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
 			else
-				I = contents[contents.len]
+				I = contents[length(contents)]
 			I.attack_hand(user)
 		else
 			open(user)
@@ -679,7 +706,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 		item_obj = contents[1]
 	else
-		item_obj = contents[contents.len]
+		item_obj = contents[length(contents)]
 	if(!istype(item_obj))
 		return
 	remove_from_storage(item_obj, tile)
@@ -697,11 +724,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots)
+			if(length(contents) < storage_slots)
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots)
+					if(length(contents) < storage_slots)
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
@@ -721,25 +748,26 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
 	return TRUE
 
-/obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
+/obj/item/storage/proc/dump_into(obj/item/storage/origin_storage, mob/user)
+
 	if(user.action_busy)
 		return
 
-	if(!M.contents.len)
-		to_chat(user, SPAN_WARNING("[M] is empty."))
+	if(!length(origin_storage.contents))
+		to_chat(user, SPAN_WARNING("[origin_storage] is empty."))
 		return
-	if(!has_room(M.contents[1])) //Does it have room for the first item to be inserted?
+	if(!has_room(origin_storage.contents[1])) //Does it have room for the first item to be inserted?
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
+	to_chat(user, SPAN_NOTICE("You start refilling [src] with [origin_storage]."))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	for(var/obj/item/I in M)
-		if(!has_room(I))
+	for(var/obj/item/new_item in origin_storage)
+		if(!has_room(new_item))
 			break
-		M.remove_from_storage(I)
-		handle_item_insertion(I, TRUE, user) //quiet insertion
+		origin_storage.remove_from_storage(new_item)
+		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
@@ -818,6 +846,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return ..()
 
 /obj/item/storage/emp_act(severity)
+	. = ..()
 	if(!istype(src.loc, /mob/living))
 		for(var/obj/O in contents)
 			O.emp_act(severity)
@@ -827,7 +856,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
-	if(contents.len)
+	if(length(contents))
 		empty(user)
 		return
 

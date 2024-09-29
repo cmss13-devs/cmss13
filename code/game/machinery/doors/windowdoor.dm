@@ -11,12 +11,11 @@
 	flags_atom = ON_BORDER
 	opacity = FALSE
 	var/obj/item/circuitboard/airlock/electronics = null
-	air_properties_vary_with_direction = 1
 
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 1)
-	if (src.req_access && src.req_access.len)
+	if (LAZYLEN(src.req_access))
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
 
@@ -106,9 +105,9 @@
 			ae = new/obj/item/circuitboard/airlock( src.loc )
 			if(!src.req_access)
 				src.check_access()
-			if(src.req_access.len)
+			if(length(src.req_access))
 				ae.conf_access = src.req_access
-			else if (src.req_one_access && src.req_one_access.len)
+			else if (LAZYLEN(src.req_one_access))
 				ae.conf_access = src.req_one_access
 				ae.one_access = 1
 		else
@@ -123,10 +122,10 @@
 		qdel(src)
 		return
 
-/obj/structure/machinery/door/window/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/door/window/bullet_act(obj/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
-		take_damage(round(Proj.ammo.damage / 2))
+		take_damage(floor(Proj.ammo.damage / 2))
 		if(Proj.ammo.damage_type == BRUTE)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return 1
@@ -190,9 +189,9 @@
 				ae = new/obj/item/circuitboard/airlock( src.loc )
 				if(!src.req_access)
 					src.check_access()
-				if(src.req_access.len)
+				if(length(src.req_access))
 					ae.conf_access = src.req_access
-				else if (src.req_one_access.len)
+				else if (length(src.req_one_access))
 					ae.conf_access = src.req_one_access
 					ae.one_access = 1
 			else
@@ -296,12 +295,12 @@
 
 /obj/structure/machinery/door/window/ultra/Initialize(mapload, ...)
 	. = ..()
-	GLOB.hijack_deletable_windows += src
-
-/obj/structure/machinery/door/window/ultra/Destroy()
-	GLOB.hijack_deletable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(impact))
 
 // No damage taken.
 /obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
 	return try_to_activate_door(user)
+
+/obj/structure/machinery/door/window/ultra/proc/impact()
+	qdel(src)

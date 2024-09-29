@@ -15,6 +15,7 @@
 	vision_flags = SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	fullscreen_vision = null
+	eye_protection = EYE_PROTECTION_NEGATIVE
 
 /obj/item/clothing/glasses/night/helmet //for the integrated NVGs that are in helmetgarb code
 	name = "\improper M2 night vision goggles"
@@ -93,7 +94,7 @@
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	toggleable = TRUE
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
+	actions_types = list(/datum/action/item_action/toggle)
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
 	req_skill = SKILL_SPEC_WEAPONS
@@ -149,7 +150,7 @@
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.change_view(world_view_size, src)
+				user.client.change_view(GLOB.world_view_size, src)
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
@@ -183,10 +184,11 @@
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/m56_goggles/far_sight/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
-		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [src]'s far sight system."))
+		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [G]'s far sight system."))
 
 /datum/action/item_action/m56_goggles/far_sight/update_button_icon()
 	if(!target)
@@ -201,6 +203,7 @@
 	name = "\improper M56T head mounted sight"
 	desc = "A headset and goggles system for the M56T 'Terminator' Smartgun. Has a low-light vision processor as well as a system allowing detection of thermal signatures though solid surfaces."
 	vision_flags = SEE_TURFS|SEE_MOBS
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"

@@ -279,7 +279,7 @@
 		var/obj/item/card/id/id_card = human.get_idcard()
 
 		if (id_card)
-			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.uscm_highcom_paygrades))
 				return TRUE
 
 	return FALSE
@@ -290,15 +290,15 @@
 	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
-	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
+	for(var/obj/structure/machinery/door/window/brigdoor/M in GLOB.machines)
 		if(M.id == id)
 			targets += M
 
-	for(var/obj/structure/machinery/flasher/F in machines)
+	for(var/obj/structure/machinery/flasher/F in GLOB.machines)
 		if(F.id == id)
 			targets += F
 
-	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in machines)
+	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in GLOB.machines)
 		if(P.id == id)
 			targets += P
 
@@ -389,6 +389,14 @@
 /obj/structure/machinery/brig_cell/cell_4
 	name = "Cell 4"
 	id = "Cell 4"
+
+/obj/structure/machinery/brig_cell/cell_5
+	name = "Cell 5"
+	id = "Cell 5"
+
+/obj/structure/machinery/brig_cell/cell_6
+	name = "Cell 6"
+	id = "Cell 6"
 
 /obj/structure/machinery/brig_cell/perma_1
 	name = "Perma 1"

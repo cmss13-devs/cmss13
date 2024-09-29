@@ -17,7 +17,7 @@
 	flags_inventory = COVERMOUTH
 	flags_armor_protection = 0
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.01
+	permeability_coefficient = 0.3
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -52,22 +52,9 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
-/obj/item/clothing/mask/horsehead
-	name = "horse head mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
-	icon_state = "horsehead"
-	item_state = "horsehead"
-	flags_inventory = COVERMOUTH|COVEREYES
-	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	w_class = SIZE_SMALL
-	var/voicechange = 0
-	siemens_coefficient = 0.9
-
-
 /obj/item/clothing/mask/balaclava
 	name = "balaclava"
-	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
@@ -78,7 +65,7 @@
 
 /obj/item/clothing/mask/balaclava/tactical
 	name = "green balaclava"
-	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
 	icon_state = "swatclava"
 	item_state = "swatclava"
 

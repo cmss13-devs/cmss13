@@ -30,6 +30,10 @@
 	if(!HP)
 		return
 
+	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
+	if(old_HP)
+		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
+
 	V.active_hp[seat] = HP
 	var/msg = "You select \the [HP]."
 	if(HP.ammo)
@@ -61,10 +65,14 @@
 	if(!new_hp)
 		new_hp = 0
 
-	new_hp = (new_hp % usable_hps.len) + 1
+	new_hp = (new_hp % length(usable_hps)) + 1
 	var/obj/item/hardpoint/HP = usable_hps[new_hp]
 	if(!HP)
 		return
+
+	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
+	if(old_HP)
+		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
 
 	V.active_hp[seat] = HP
 	var/msg = "You select \the [HP]."
@@ -159,7 +167,7 @@
 		))
 
 	data["resistance_data"] = resist_data_list
-	data["integrity"] = round(100 * health / initial(health))
+	data["integrity"] = floor(100 * health / initial(health))
 	data["door_locked"] = door_locked
 	data["total_passenger_slots"] = interior.passengers_slots
 	data["total_taken_slots"] = interior.passengers_taken_slots
@@ -225,10 +233,7 @@
 	3. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
 	<font color='#003300'><b><i>Support Gunner verbs:</i></b></font><br> 1. <b>\"Reload Firing Port Weapon\"</b> - initiates automated reloading process for M56 FPW. Requires a confirmation.<br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br> \
-	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
-	2. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
-	3. <b>\"Middle Mouse Button Click (MMB)\"</b> - default shortcut to shoot currently not selected weapon if possible. Won't work if <i>SHIFT + Click</i> firing is toggled ON.<br> \
-	4. <b>\"SHIFT + Click\"</b> - examines target as usual, unless <i>\"G: Toggle Middle/Shift Clicking\"</i> verb was used to toggle <i>SHIFT + Click</i> firing ON. In this case, it will fire currently not selected weapon if possible.<br>"
+	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br>"
 
 	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", "size=900x500")
 	onclose(user, "vehicle_help")

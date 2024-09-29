@@ -37,7 +37,7 @@ log transactions
 
 /obj/structure/machinery/atm/New()
 	..()
-	machine_id = "[station_name] RT #[num_financial_terminals++]"
+	machine_id = "[MAIN_SHIP_NAME] RT #[GLOB.num_financial_terminals++]"
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -63,7 +63,7 @@ log transactions
 			var/obj/item/spacecash/spacecash = I
 			//consume the money
 			if(spacecash.counterfeit)
-				authenticated_account.money += round(spacecash.worth * 0.25)
+				authenticated_account.money += floor(spacecash.worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else
@@ -79,7 +79,7 @@ log transactions
 			T.purpose = "Credit deposit"
 			T.amount = I:worth
 			T.source_terminal = machine_id
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
 			authenticated_account.transaction_log.Add(T)
 
@@ -212,7 +212,7 @@ log transactions
 							T.target_name = "Account #[target_account_number]"
 							T.purpose = transfer_purpose
 							T.source_terminal = machine_id
-							T.date = current_date_string
+							T.date = GLOB.current_date_string
 							T.time = worldtime2text()
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
@@ -254,7 +254,7 @@ log transactions
 									T.target_name = failed_account.owner_name
 									T.purpose = "Unauthorised login attempt"
 									T.source_terminal = machine_id
-									T.date = current_date_string
+									T.date = GLOB.current_date_string
 									T.time = worldtime2text()
 									failed_account.transaction_log.Add(T)
 							else
@@ -275,7 +275,7 @@ log transactions
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Remote terminal access"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
@@ -284,7 +284,7 @@ log transactions
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -307,7 +307,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 						withdrawal_timer = world.time + 20
@@ -316,7 +316,7 @@ log transactions
 						withdrawal_timer = world.time + 20
 			if("withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -338,7 +338,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 						withdrawal_timer = world.time + 20
@@ -353,12 +353,12 @@ log transactions
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
 					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
-					R.info += "<i>Date and time:</i> [worldtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [worldtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -376,7 +376,7 @@ log transactions
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [worldtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [worldtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"
@@ -400,7 +400,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -428,26 +428,28 @@ log transactions
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
 /obj/structure/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
+	if(authenticated_account)
+		return
+	var/obj/item/card/id/card = human_user.get_idcard()
+	if(!card)
+		return
+
+	authenticated_account = attempt_account_access(card.associated_account_number)
 	if(!authenticated_account)
-		if(human_user.wear_id)
-			var/obj/item/card/id/I
-			if(istype(human_user.wear_id, /obj/item/card/id))
-				I = human_user.wear_id
-			if(I)
-				authenticated_account = attempt_account_access(I.associated_account_number)
-				if(authenticated_account)
-					to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+		return
 
-					//create a transaction log entry
-					var/datum/transaction/T = new()
-					T.target_name = authenticated_account.owner_name
-					T.purpose = "Remote terminal access"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = worldtime2text()
-					authenticated_account.transaction_log.Add(T)
+	to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
-					view_screen = NO_SCREEN
+	//create a transaction log entry
+	var/datum/transaction/log = new()
+	log.target_name = authenticated_account.owner_name
+	log.purpose = "Remote terminal access"
+	log.source_terminal = machine_id
+	log.date = GLOB.current_date_string
+	log.time = worldtime2text()
+	authenticated_account.transaction_log.Add(log)
+
+	view_screen = NO_SCREEN
 
 // put the currently held id on the ground or in the hand of the user
 /obj/structure/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)
@@ -465,7 +467,7 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated()) return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")

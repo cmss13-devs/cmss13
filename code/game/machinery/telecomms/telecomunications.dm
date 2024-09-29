@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
 	var/list/autolinkers = list() // list of text/number values to link with
-	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
+	var/list/freq_listening = list(UNIVERSAL_FREQ) // list of frequencies to tune into: if universal frequency is included, will listen to all
 	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
 	var/delay = 10 // how many process() ticks to delay per heat
 	var/long_range_link = 0 // Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
@@ -93,13 +93,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	update_state()
 
 /obj/structure/machinery/telecomms/emp_act(severity)
+	. = ..()
 	if(prob(100/severity))
 		if(!(stat & EMPED))
 			stat |= EMPED
 			var/duration = (300 * 10)/severity
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
-	..()
 
 /*
 	The receiver idles and receives messages from subspace-compatible radio equipment;

@@ -3,7 +3,7 @@
 	desc = "A tool used by great men to placate the frothing masses."
 	icon_state = "chain"
 	item_state = "chain"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK
@@ -27,7 +27,7 @@
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/items/drinks.dmi', "broken")
 
-/obj/item/weapon/broken_bottle/bullet_act(obj/item/projectile/P)
+/obj/item/weapon/broken_bottle/bullet_act(obj/projectile/P)
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)
@@ -50,7 +50,7 @@
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/items/drinks.dmi', "broken")
 
-/obj/item/weapon/broken_glass/bullet_act(obj/item/projectile/P)
+/obj/item/weapon/broken_glass/bullet_act(obj/projectile/P)
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)

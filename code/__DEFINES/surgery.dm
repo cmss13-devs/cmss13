@@ -38,6 +38,15 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 ///A tool that's perfect for the surgery.
 #define SURGERY_TOOL_MULT_IDEAL 1
 
+///The (no) chance of failure for surgery because the correct tools/conditions are used or skill compensates
+#define SURGERY_FAILURE_IMPOSSIBLE 0
+///The chance of failure for surgery because the the tool/ground is SURGERY_TOOL_MULT_BAD_SUBSTITUTE/SURGERY_SURFACE_MULT_UNSUITED and skill can't compensate enough
+#define SURGERY_FAILURE_UNLIKELY 5
+///The chance of failure for surgery because the the tool/ground is SURGERY_TOOL_MULT_AWFUL/SURGERY_SURFACE_MULT_AWFUL and skill can't compensate enough
+#define SURGERY_FAILURE_POSSIBLE 25
+///The chance of failure for surgery because the the tool and ground is some combination worse than awful and skill can't compensate enough
+#define SURGERY_FAILURE_LIKELY 50
+
 //When initiating surgeries, these define their order when listed in initiation selector or 'you can't use this tool for anything, but could x, y, or z' messages.
 ///Appears first in lists. Ex. larva surgery, opening incision. Immediately life-threatening or initiation surgeries.
 #define SURGERY_PRIORITY_MAXIMUM 5
@@ -86,6 +95,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,\
 	/obj/item/shard = SURGERY_TOOL_MULT_AWFUL\
 	)
 
@@ -149,7 +159,7 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 #define SURGERY_TOOLS_SEVER_BONE list(\
 	/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/weapon/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\

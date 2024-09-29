@@ -15,7 +15,7 @@
 	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	flags_atom = NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
@@ -23,7 +23,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -35,7 +35,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -67,7 +67,20 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
-	flags_atom = NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	//DON'T GRAB STUFF BETWEEN THIS LINE
+	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	flags_inventory = BLOCKSHARPOBJ
+	flags_marine_armor = NO_FLAGS
+
+//LIGHT SUIT TEMPLATE (for armor/exosuit)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
+/obj/item/clothing/suit/storage/marine/light/fluff
+	name = "ITEM NAME"
+	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
+	icon_state = null
+	item_state = null
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
@@ -78,7 +91,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -90,7 +103,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -111,6 +124,9 @@
 //END FEET TEMPLATE
 
 /obj/item/storage/backpack/marine/fluff
+	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -198,10 +214,10 @@
 	item_state = "armor_reflec"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Armor"
+	name = "juggernaut armor"
 	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "rig-syndi"
-	item_state = "syndie_hardsuit"
+	icon_state = "skinnerarmor"
+	item_state = "skinnerarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
@@ -223,17 +239,17 @@
 	item_state = "swat_suit"
 
 /obj/item/clothing/suit/storage/marine/fluff/tristan //CKEY=tristan63
-	name = "Sciency Teleport Armor"
-	desc = "Some fancy looking armor, with lots of lights and buttons.  DONOR ITEM"
-	icon_state = "reactive"
-	item_state = "reactive"
-	blood_overlay_type = "armor"
+	name = "M3X Pattern Armor"
+	desc = "A set of experimental M3 pattern armor, modernized to include form fitting ceramic plates for better protection against projectiles. Unfortunately the plates appear to be broken beyond repair, leaving only the base M3 protection.  DONOR ITEM"
+	icon_state = "tristan_armor"
+	item_state = "tristan_armor"
 
-/obj/item/clothing/suit/storage/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
-	name = "Legion Armor"
-	desc = "This armor was custom-made to resemble the small growing Legion within the galaxy started by one man slowly making its way to becoming a larger Corporation.  DONOR ITEM."
-	item_state = "ncrjacket"
-	icon_state = "ncrjacket"
+/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
+	name = "M3 Ranger Armor"
+	desc = "A set of M3 Pattern Ranger Armor, There probably are not many of these laying around.  DONOR ITEM."
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	icon_state = "rangerarmor"
+	item_state = "rangerarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
@@ -266,11 +282,11 @@
 	item_state = "hos"
 	blood_overlay_type = "coat"
 
-/obj/item/clothing/suit/storage/marine/fluff/biolock //CKEY=biolock
-	name = "Medic Armor"
-	desc = "Medical armor, designed to protect medics from things that hurt medics.  DONOR ITEM."
-	item_state = "medarmor"
-	icon_state = "medarmor"
+/obj/item/clothing/suit/storage/marine/light/fluff/biolock //CKEY=biolock
+	name = "M3-L Custom"
+	desc = "A lighter, cut down version of the standard M3 pattern armor. This armor looks to have heavy modifications and a custom paint-job.  DONOR ITEM."
+	item_state = "bio_armor"
+	icon_state = "bio_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Elite Combat Armor"
@@ -406,11 +422,11 @@
 	item_state = "merc_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Armor"
-	desc = "Armor to the M4X!!!!  DONOR ITEM"
+	name = "M4-X Armor"
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
-
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -454,18 +470,6 @@
 	desc = "Armor worn by the Omega Team Medical Corps.  UNIQUE DONOR ITEM"
 	icon_state = "medicae_armor_u"
 	item_state = "medicae_armor_u"
-
-/obj/item/clothing/suit/storage/marine/fluff/Sanctum_heavy
-	name = "Sanctum Founder Armor"
-	desc = "Personal Armor of the Founder of Sanctum Team. It looks more like a Exosuit.  Unique DONOR ITEM" //Add UNIQUE if Unique
-	icon_state = "Sanctum_Heavy_u"
-	item_state = "Sanctum_Heavy_u"
-
-/obj/item/clothing/suit/storage/marine/fluff/Sanctum_medium
-	name = "Sanctum Standard Armor"
-	desc = "The Standard Issue Armor for Sanctum Operatives  Unique DONOR ITEM"
-	icon_state = "Sanctum_Medium_u"
-	item_state = "Sanctum_Medium_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/dudewithatude
 	name = "Rainbow Coat"
@@ -572,13 +576,13 @@
 /obj/item/clothing/head/helmet/marine/fluff/santahat //CKEY=tophatpenguin
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
-	icon_state = "santahat"
+	icon_state = "santa_hat_red"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "rig0-syndi"
+	name = "juggernaut helmet"
+	icon_state = "skinnerhelmet"
 	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
@@ -598,13 +602,6 @@
 	name = "Doom Helmet"
 	icon_state = "doom_helmet"
 	desc = "A Helmet, of a famous Earth warrior... Donor Item"
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
-
-/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut_alt //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "ncrhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -632,9 +629,10 @@
 	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock //CKEY=biolock
-	name = "Medic Helmet"
-	desc = "Medical Helmet designed to protect the head of a medic. DONOR ITEM"
-	icon_state = "helmetm"
+	name = "M10-Custom"
+	desc = "A custom M10 Pattern Helmet. The inside of the helmet has smaller, slicker pads. There is a built-in camera on the right side. DONOR ITEM"
+	icon_state = "bio_helmet"
+	item_state = "bio_helmet"
 
 /obj/item/clothing/head/helmet/marine/fluff/haveatya //CKEY=haveatya
 	name = "Pararescue Beret"
@@ -646,6 +644,13 @@
 	name = "Elite Combat Helmet"
 	icon_state = "hecuhelm_u"
 	desc = "A combat helmet, bearing the scars of many battles. UNIQUE DONOR ITEM"
+
+/obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
+	name = "M3 Ranger Helmet"
+	desc = "A M3 Ranger helmet, probably not many of these laying around. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	icon_state = "rangerhelmet"
+	item_state = "rangerhelmet"
 
 /obj/item/clothing/head/helmet/marine/fluff/officialjake
 	name = "Timothy's Beret"
@@ -833,10 +838,11 @@
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Helmet"
-	desc = "Helmets to the M4X!!!  DONOR ITEM"
+	name = "M4-X Helmet"
+	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -902,14 +908,6 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
-/obj/item/clothing/head/helmet/marine/fluff/Sanctum_helmet
-	name = "Sanctum Combat Helmet"
-	desc = " The Standard Issue helmet of Sanctum Team.  DONOR ITEM" //Add UNIQUE if Unique
-	icon_state = "Sanctum_Helm_u"
-	item_state = "Sanctum_Helm_u"
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
-
 /obj/item/clothing/head/helmet/marine/fluff/dingledangle
 	name = "Rusty's Cap"
 	desc = "A little old and shabby. The color has slightly faded over time.  DONOR ITEM"
@@ -958,12 +956,15 @@
 /obj/item/clothing/under/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
-	flags_atom = NO_NAME_OVERRIDE
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	icon_state = null
 	item_state = null
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	//DON'T GRAB STUFF BETWEEN THIS LINE
-	//AND THIS LINE
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 //END UNIFORM TEMPLATE
 
 /obj/item/clothing/under/marine/fluff/marinemedic //UNUSED
@@ -983,13 +984,6 @@
 	name = "captain's jumpsuit"
 	icon_state = "camojump"
 	worn_state = "camojump"
-	flags_jumpsuit = FALSE
-
-/obj/item/clothing/under/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
-	name = "Legion Suit"
-	desc = "This armor was custom-made to resemble the small growing Legion within the galaxy started by one man slowly making its way to becoming a larger Corporation.  DONOR ITEM."
-	icon_state = "ncr_uni"
-	worn_state = "ncr_uni"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
@@ -1139,8 +1133,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Jumpsuit"
-	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
+	name = "M4-X Jumpsuit"
+	desc = "Jumpsuit issued alongside the M4-X armor. Considered outdated compared to the more modern armor system.  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
 	flags_jumpsuit = FALSE
@@ -1194,13 +1188,6 @@
 	worn_state = "medicae_jumpsuit_u"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/marine/fluff/sanctum_uniform //NO USER
-	name = "Sanctum Fatigues"
-	desc = "Fatigues with Kevlar fibers for a bit more protection than most clothing.  UNIQUE DONOR ITEM"
-	icon_state = "Sanctum_u"
-	worn_state = "Sanctum_u"
-	flags_jumpsuit = FALSE
-
 /obj/item/clothing/under/marine/fluff/sailordave //CKEY=sailordave
 	name = "Eden USCM uniform"
 	desc = "An older model USCM uniform.  UNIQUE DONOR ITEM"
@@ -1230,16 +1217,6 @@
 	desc = "A mask from a famous sith... Wait what?  DONOR ITEM."
 	item_state = "revanmask"
 	icon_state = "revanmask"
-
-
-/obj/item/clothing/mask/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
-	name = "Legion Mask"
-	desc = "This armor was custom-made to resemble the small growing Legion within the galaxy started by one man slowly making its way to becoming a larger Corporation.  DONOR ITEM."
-	icon_override = 'icons/mob/humans/onmob/mask.dmi'
-	item_state = "officer_mask"
-	icon_state = "officer_mask"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH
-	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
@@ -1300,8 +1277,8 @@
 /obj/item/clothing/shoes/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Sandals"
 	desc = "Vintage Sandals, suitable for only the highest class of hipster.  DONOR ITEM"
-	icon_state = "wizard"
-	item_state = "wizard"
+	icon_state = "sandals"
+	item_state = "sandals"
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
@@ -1310,10 +1287,10 @@
 	item_state = "doom_boots"
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Boot"
-	desc = "Boots to the M4X.  DONOR ITEM"
-	icon_state = "jackboots"
-	item_state = "jackboots"
+	name = "M4-X Boot"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
+	icon_state = "marine"
+	item_state = "marine"
 
 //GENERIC GLASSES, GLOVES, AND MISC ////////////////////
 
@@ -1352,6 +1329,20 @@
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
+	name = "tactical radiopack"
+	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
+	icon_state = "skinnerpack"
+	item_state = "securitypack"
+	has_gamemode_skin = FALSE //same sprite for all gamemodes.
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
+	name = "M3 Armored Pack"
+	desc = "Plenty of pouches and pockets. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	icon_state = "skinnerrangerpack"
+	item_state = "skinnerrangerpack"
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"

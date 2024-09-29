@@ -37,6 +37,15 @@
 	/// Has the looping started yet?
 	var/loop_started = FALSE
 
+	/**
+	* Let's you make a "loud" sound that "projects." IE you can hear this sound from a further distance away.
+	* Think of like an air raid siren. They're loud if you're close yeah... but you can hear them from mad far away, bruv
+	* with a longer "falloff distance." Fixes the extra_range stuff
+	*/
+	var/is_sound_projecting = FALSE
+	///only applicable to is_sound_projecting: max range till sound volume starts dropping as distance increases
+	var/falloff_distance = 50
+
 /*	// as of yet unused varen \\
 
 	/// How much the sound will be affected by falloff per tile.
@@ -130,19 +139,18 @@
 		sound_to_play.channel = get_free_channel()
 		sound_to_play.volume = volume_override || volume //Use volume as fallback if theres no override
 		SEND_SOUND(parent, sound_to_play)
-	else
-		playsound(
-			parent,
-			sound_to_play,
-			volume,
-			vary,
-			extra_range//,
-		//	falloff_exponent = falloff_exponent,
-		//	pressure_affected = pressure_affected,
-		//	ignore_walls = ignore_walls,
-		//	falloff_distance = falloff_distance,
-		//	use_reverb = use_reverb
-		)
+		return
+	if (is_sound_projecting)
+		playsound(parent, sound_to_play, volume, vary, extra_range, VOLUME_SFX, 0, 0, falloff_distance)
+		return
+
+	playsound(
+		parent,
+		sound_to_play,
+		volume,
+		vary,
+		extra_range
+	)
 
 /// Returns the sound we should now be playing.
 /datum/looping_sound/proc/get_sound(_mid_sounds)

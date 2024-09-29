@@ -75,7 +75,7 @@
 			to_chat(user,SPAN_WARNING("[src] is cracked open! How are you gonna slip something in that?"))
 		else
 			if(!cookiefortune)
-				to_chat(user, SPAN_NOTICE("You slip the paper into the [src]."))
+				to_chat(user, SPAN_NOTICE("You slip the paper into [src]."))
 				cookiefortune = W
 				user.drop_inv_item_to_loc(W, src)
 			else
@@ -93,7 +93,7 @@
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else
-			to_chat(SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
+			to_chat(user, SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
 	else
 		. = ..()
 
@@ -109,7 +109,7 @@
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else
-			to_chat(SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
+			to_chat(user, SPAN_WARNING("You break open the fortune cookie, but there's no fortune inside! Oh no!"))
 	else
 		. = ..()
 

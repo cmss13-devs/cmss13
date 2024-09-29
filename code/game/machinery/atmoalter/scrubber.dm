@@ -18,15 +18,13 @@
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	if(prob(50/severity))
 		on = !on
 		update_icon()
-
-	..(severity)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/update_icon()
 	src.overlays = 0

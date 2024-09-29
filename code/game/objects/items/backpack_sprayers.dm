@@ -8,6 +8,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
+	possible_transfer_amounts = null//no point giving it possibility when mister can't it just confuse people
 	volume = 500
 	var/fill_reagent = "water"
 	var/spawn_empty = FALSE
@@ -83,7 +84,9 @@
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
+	set src in usr
 	toggle_mister(usr)
+
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
@@ -132,7 +135,7 @@
 	item_state = "nozzle"
 	w_class = SIZE_LARGE
 	flags_equip_slot = null
-	amount_per_transfer_from_this = 50
+	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	spray_size = 5
 	volume = 500
@@ -330,7 +333,7 @@
 				return
 		//actually firing the launcher
 		if(tank.launcher_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [round(tank.launcher_cooldown/10)] seconds."))
+			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [floor(tank.launcher_cooldown/10)] seconds."))
 			return
 		if(tank.reagents.has_reagent("water", launcher_cost))
 			tank.reagents.remove_reagent("water", launcher_cost)

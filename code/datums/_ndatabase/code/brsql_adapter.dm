@@ -101,9 +101,9 @@
 		SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
 
 /datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
-	if(!sync)
-		set waitfor = 0
-	var/length = values.len
+	set waitfor = FALSE
+
+	var/length = length(values)
 	var/list/qpars = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
 	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
@@ -150,7 +150,7 @@
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
-	if(!table_meta.results.len) // Table doesn't exist
+	if(!length(table_meta.results)) // Table doesn't exist
 		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
 
 	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]
@@ -178,7 +178,7 @@
 	if(index_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system index table, error: '[index_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
-	if(!index_meta.results.len) // Index doesn't exist
+	if(!length(index_meta.results)) // Index doesn't exist
 		return internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields)
 
 	var/id =  index_meta.results[1][DB_DEFAULT_ID_FIELD]
@@ -530,7 +530,7 @@
 			if(first && !is_id)
 				if(!items_first)
 					update_items+=","
-				update_items+="`[table_name]`.[esfield]=`__prep_update`.[esfield]"
+				update_items+="`[table_name]`.[esfield]=`subquery`.[esfield]"
 				items_first = FALSE
 			local_first = FALSE
 		calltext += "SELECT [local_text]"
@@ -539,9 +539,7 @@
 		issue_log += "No ID passed to update query."
 		return "" // AAAAAAAAAAAAAH FUCK DON'T JUST KILL THE ENTIRE FUCKING TABLE BRUH
 	return {"
-		WITH __prep_update as (
-			[calltext]
-		) UPDATE `[connection.database]`.`[table_name]` INNER JOIN `__prep_update` ON `[table_name]`.id = `__prep_update`.id SET [update_items]
+		UPDATE `[connection.database]`.`[table_name]` JOIN (WITH `__prep_update` AS ( [calltext] ) SELECT * FROM `__prep_update`) subquery ON `[table_name]`.id = subquery.id SET [update_items]
 	"}
 
 /datum/db/adapter/brsql_adapter/proc/getquery_delete_table(table_name, list/ids)

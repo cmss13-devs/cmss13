@@ -46,13 +46,13 @@ length to avoid portals or something i guess?? Not that they're counted right no
 	cmp = compare
 
 /PriorityQueue/proc/IsEmpty()
-	return !L.len
+	return !length(L)
 
 /PriorityQueue/proc/Enqueue(d)
 	var/i
 	var/j
 	L.Add(d)
-	i = L.len
+	i = length(L)
 	j = i>>1
 	while(i > 1 &&  call(cmp)(L[j],L[i]) > 0)
 		L.Swap(i,j)
@@ -60,22 +60,22 @@ length to avoid portals or something i guess?? Not that they're counted right no
 		j >>= 1
 
 /PriorityQueue/proc/Dequeue()
-	if(!L.len) return 0
+	if(!length(L)) return 0
 	. = L[1]
 	Remove(1)
 
 /PriorityQueue/proc/Remove(i)
-	if(i > L.len) return 0
-	L.Swap(i,L.len)
-	L.Cut(L.len)
-	if(i < L.len)
+	if(i > length(L)) return 0
+	L.Swap(i,length(L))
+	L.Cut(length(L))
+	if(i < length(L))
 		_Fix(i)
 
 /PriorityQueue/proc/_Fix(i)
 	var/child = i + i
 	var/item = L[i]
-	while(child <= L.len)
-		if(child + 1 <= L.len && call(cmp)(L[child],L[child + 1]) > 0)
+	while(child <= length(L))
+		if(child + 1 <= length(L) && call(cmp)(L[child],L[child + 1]) > 0)
 			child++
 		if(call(cmp)(item,L[child]) > 0)
 			L[i] = L[child]
@@ -159,7 +159,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 			var/ng = cur.g + call(cur.source,dist)(d)
 			if(d.bestF)
 				if(ng + call(d,dist)(end) < d.bestF)
-					for(var/i = 1; i <= open.L.len; i++)
+					for(var/i = 1; i <= length(open.L); i++)
 						var/PathNode/n = open.L[i]
 						if(n.source == d)
 							open.Remove(i)
@@ -168,21 +168,21 @@ length to avoid portals or something i guess?? Not that they're counted right no
 					continue
 
 			open.Enqueue(new /PathNode(d,cur,ng,call(d,dist)(end),cur.nt+1))
-			if(maxnodes && open.L.len > maxnodes)
-				open.L.Cut(open.L.len)
+			if(maxnodes && length(open.L) > maxnodes)
+				open.L.Cut(length(open.L))
 	}
 
 	var/PathNode/temp
 	while(!open.IsEmpty())
 		temp = open.Dequeue()
 		temp.source.bestF = 0
-	while(closed.len)
-		temp = closed[closed.len]
+	while(length(closed))
+		temp = closed[length(closed)]
 		temp.bestF = 0
-		closed.Cut(closed.len)
+		closed.Cut(length(closed))
 
 	if(path)
-		for(var/i = 1; i <= path.len/2; i++)
-			path.Swap(i,path.len-i+1)
+		for(var/i = 1; i <= length(path)/2; i++)
+			path.Swap(i,length(path)-i+1)
 
 	return path

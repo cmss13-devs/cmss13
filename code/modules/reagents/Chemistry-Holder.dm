@@ -4,6 +4,7 @@
 	var/maximum_volume = 100
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
+	var/allow_star_shape = TRUE
 	var/exploded = FALSE
 	var/datum/weakref/source_mob
 
@@ -25,7 +26,7 @@
 	maximum_volume = maximum
 
 #ifdef UNIT_TESTS
-	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
+	if(!GLOB.chemical_reagents_list || !GLOB.chemical_reactions_filtered_list || !GLOB.chemical_properties_list)
 		CRASH("Chemistry reagents are not set up!")
 #endif
 
@@ -38,13 +39,13 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1,reagent_list.len)
+	current_list_element = rand(1,length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		remove_reagent(current_reagent.id, 1)
@@ -61,17 +62,17 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1, reagent_list.len)
+	current_list_element = rand(1, length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		if(current_reagent.id == reagent_to_ignore)
-			if(reagent_list.len == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
+			if(length(reagent_list) == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
 			if(current_list_element == 1)
 				current_reagent = reagent_list[current_list_element + 1] //if the selected reagent was number 1, we don't want it trying to draw id.0, so we add 1
 			else
@@ -165,9 +166,13 @@
 		if(specific_reagent)
 			if(istype(R, specific_reagent))
 				R.last_source_mob = WEAKREF(new_source_mob)
+				if(R.data_properties)
+					R.data_properties["last_source_mob"] = R.last_source_mob
 				return
 			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
+		if(R.data_properties)
+			R.data_properties["last_source_mob"] = R.last_source_mob
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
 	if(!target)
@@ -226,9 +231,9 @@
 	if(!my_atom) return
 	if(my_atom.flags_atom & NOREACT) return //Yup, no reactions here. No siree.
 
-	var/reaction_occured = 0
+	var/reaction_occurred = 0
 	do
-		reaction_occured = 0
+		reaction_occurred = 0
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
 			if(R.original_id) //Prevent synthesised chem variants from being mixed
 				for(var/datum/reagent/O in reagent_list)
@@ -240,18 +245,18 @@
 						O.volume += R.volume
 						qdel(R)
 						break
-			for(var/reaction in chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+			for(var/reaction in GLOB.chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
 
 				if(!reaction)
 					continue
 
 				var/datum/chemical_reaction/C = reaction
 
-				var/total_required_reagents = C.required_reagents.len
+				var/total_required_reagents = length(C.required_reagents)
 				var/total_matching_reagents = 0
 				var/total_required_catalysts = 0
 				if(C.required_catalysts)
-					total_required_catalysts = C.required_catalysts.len
+					total_required_catalysts = length(C.required_catalysts)
 				var/total_matching_catalysts= 0
 				var/matching_container = 0
 				var/matching_other = 0
@@ -261,7 +266,7 @@
 					if(!has_reagent(B, C.required_reagents[B]))
 						break
 					total_matching_reagents++
-					multipliers += round(get_reagent_amount(B) / C.required_reagents[B])
+					multipliers += floor(get_reagent_amount(B) / C.required_reagents[B])
 				for(var/B in C.required_catalysts)
 					if(B == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
 						total_matching_catalysts++
@@ -309,10 +314,10 @@
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
 					C.on_reaction(src, created_volume)
-					reaction_occured = 1
+					reaction_occurred = 1
 					break
 
-	while(reaction_occured)
+	while(reaction_occurred)
 	if(trigger_volatiles)
 		handle_volatiles()
 	if(exploded) //clear reagents only when everything has reacted
@@ -355,12 +360,12 @@
 		del_reagent(R.id)
 	return FALSE
 
-/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0)
+/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
 	if(method != TOUCH && method != INGEST)
 		return
 	for(var/datum/reagent/R in reagent_list)
 		if(ismob(A))
-			R.reaction_mob(A, method, R.volume + volume_modifier)
+			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))
 			R.reaction_turf(A, R.volume + volume_modifier)
 		else if(isobj(A))
@@ -374,7 +379,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
+	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]
@@ -417,10 +422,10 @@
 				handle_reactions()
 			return FALSE
 
-	var/datum/reagent/D = chemical_reagents_list[reagent]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(D)
 		if(!istype(D, /datum/reagent))
-			CRASH("Not REAGENT - [reagent] - chemical_reagents_list[reagent]")
+			CRASH("Not REAGENT - [reagent] - GLOB.chemical_reagents_list[reagent]")
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)
@@ -589,9 +594,9 @@
 				dir = E.dir
 
 	//only integers please
-	radius = round(radius)
-	intensity = round(intensity)
-	duration = round(duration)
+	radius = floor(radius)
+	intensity = floor(intensity)
+	duration = floor(duration)
 	if(ex_power > 0)
 		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
 	if(intensity > 0)
@@ -625,7 +630,7 @@
 	if(my_atom) //It exists outside of null space.
 		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
 			if(R.id == "iron")
-				shards += round(R.volume)
+				shards += floor(R.volume)
 			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
 
@@ -674,7 +679,7 @@
 		duration = max_fire_dur
 
 	// shape
-	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD)
+	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD && allow_star_shape)
 		flameshape = FLAMESHAPE_STAR
 
 	if(supplemented < 0 && intensity < CHEM_FIRE_IRREGULAR_THRESHOLD)
@@ -713,5 +718,6 @@
 // Convenience proc to create a reagents holder for an atom
 // Max vol is maximum volume of holder
 /atom/proc/create_reagents(max_vol)
+	QDEL_NULL(reagents)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src

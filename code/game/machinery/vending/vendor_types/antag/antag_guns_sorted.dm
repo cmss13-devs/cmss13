@@ -4,7 +4,8 @@
 	name = "\improper Suspicious Automated Guns Rack"
 	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons."
 	icon_state = "antag_guns"
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 	listed_products = list()
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/Initialize()

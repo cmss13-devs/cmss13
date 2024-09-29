@@ -29,9 +29,9 @@
 		if(ismob(target) || isVehicle(target))
 			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/xenomorph/xeno = target
-				if(xeno.stat == DEAD || is_admin_level(xeno.z) || xeno.aghosted)
+				if(xeno.stat == DEAD || should_block_game_interaction(xeno) || xeno.aghosted)
 					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
-					ManualFollow(xeno)
+					do_observe(xeno)
 					return FALSE
 
 				if(!SSticker.mode.xeno_bypass_timer)
@@ -41,7 +41,7 @@
 							to_wait = XENO_LEAVE_TIMER_LARVA - xeno.away_timer
 						if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
 							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-						ManualFollow(target)
+						do_observe(target)
 						return FALSE
 
 					var/deathtime = world.time - timeofdeath
@@ -49,15 +49,15 @@
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait atleast 2.5 minutes before rejoining the game!"))
-						ManualFollow(target)
+						to_chat(src, SPAN_WARNING("You must wait at least 2.5 minutes before rejoining the game!"))
+						do_observe(target)
 						return FALSE
 
 				if(xeno.hive)
 					for(var/mob_name in xeno.hive.banished_ckeys)
 						if(xeno.hive.banished_ckeys[mob_name] == ckey)
 							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
-							ManualFollow(target)
+							do_observe(target)
 							return FALSE
 
 				if(alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", "Yes", "No") != "Yes")
@@ -67,7 +67,7 @@
 					return FALSE
 				SSticker.mode.transfer_xeno(src, xeno)
 				return TRUE
-			ManualFollow(target)
+			do_observe(target)
 			return TRUE
 
 		if(!istype(target, /atom/movable/screen))

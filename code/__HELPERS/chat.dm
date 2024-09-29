@@ -1,11 +1,12 @@
 /**
- * Sends a message to TGS chat channels.
+ * Asynchronously sends a message to TGS chat channels.
  *
- * message - The message to send.
+ * message - The [/datum/tgs_message_content] to send.
  * channel_tag - Required. If "", the message with be sent to all connected (Game-type for TGS3) channels. Otherwise, it will be sent to TGS4 channels with that tag (Delimited by ','s).
  * admin_only - Determines if this communication can only be sent to admin only channels.
  */
-/proc/send2chat(message, channel_tag, admin_only = FALSE)
+/proc/send2chat(datum/tgs_message_content/message, channel_tag, admin_only = FALSE)
+	set waitfor = FALSE
 	if(channel_tag == null || !world.TgsAvailable())
 		return
 
@@ -21,7 +22,7 @@
 		if((!admin_only || channel.is_admin_channel) && (channel_tag in applicable_tags))
 			channels_to_use += channel
 
-	if(channels_to_use.len)
+	if(length(channels_to_use))
 		world.TgsChatBroadcast(message, channels_to_use)
 
 /**

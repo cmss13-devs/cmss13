@@ -47,7 +47,7 @@
 		return
 
 	icon_state = "stimpack"
-	var/datum/reagent/R = chemical_reagents_list[chemname]
+	var/datum/reagent/R = GLOB.chemical_reagents_list[chemname]
 
 	if(!R)
 		return

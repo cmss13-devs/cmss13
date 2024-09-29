@@ -15,7 +15,7 @@
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
 /datum/game_mode/infection/get_roles_list()
-	return ROLES_USCM
+	return GLOB.ROLES_USCM
 
 /datum/game_mode/infection/pre_setup()
 	return ..()
@@ -45,9 +45,9 @@
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
 
-/datum/game_mode/infection/can_start()
+/datum/game_mode/infection/can_start(bypass_checks = FALSE)
 	initialize_starting_survivor_list()
-	return 1
+	return TRUE
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/infection/proc/initialize_starting_survivor_list()
@@ -61,7 +61,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(A.current.client?.check_whitelist_status(WHITELIST_SYNTHETIC))
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
@@ -71,16 +71,16 @@
 		possible_synth_survivors -= A
 
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
-	if(possible_survivors.len) //We have some, it looks like.
+	if(length(possible_survivors)) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
 			if(A.roundstart_picked)
 				possible_survivors -= A
 
-		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
+		if(length(possible_survivors)) //We may have stripped out all the contendors, so check again.
 			var/i = surv_starting_num
 			var/datum/mind/new_survivor
 			while(i > 0)
-				if(!possible_survivors.len)
+				if(!length(possible_survivors))
 					break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
 				new_survivor = pick(possible_survivors)
 				if(!new_survivor)
@@ -95,7 +95,7 @@
 				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
 
 /datum/game_mode/infection/check_win()
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
 
@@ -120,11 +120,11 @@
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
-		round_statistics.log_round_statistics()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

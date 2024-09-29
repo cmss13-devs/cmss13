@@ -39,16 +39,16 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	fallen_list += fallen_list_cross
-	if(fallen_list.len)
+	GLOB.fallen_list += GLOB.fallen_list_cross
+	if(length(GLOB.fallen_list))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
 		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				dat += "[fallen_list[i]], "
+		for(var/i = 1 to length(GLOB.fallen_list))
+			if(i != length(GLOB.fallen_list))
+				dat += "[GLOB.fallen_list[i]], "
 			else
-				dat += "[fallen_list[i]].<br>"
+				dat += "[GLOB.fallen_list[i]].<br>"
 		to_world("[dat]")
 
 
@@ -87,20 +87,20 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(GLOB.medal_awards.len)
+	if(length(GLOB.medal_awards))
 		var/dat = "<br>"
 		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
-			for(var/i in 1 to recipient_award.medal_names.len)
+			for(var/i in 1 to length(recipient_award.medal_names))
 				dat += "<br><b>[recipient_award.recipient_rank] [recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'."
 		to_world(dat)
-	if(GLOB.jelly_awards.len)
+	if(length(GLOB.jelly_awards))
 		var/dat = "<br>"
 		dat +=  SPAN_ROUNDBODY("<br>Royal Jelly Awards:")
 		for(var/recipient in GLOB.jelly_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient]
-			for(var/i in 1 to recipient_award.medal_names.len)
+			for(var/i in 1 to length(recipient_award.medal_names))
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
@@ -134,7 +134,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(podlock_id)
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
 

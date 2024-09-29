@@ -72,7 +72,7 @@
 /obj/item/clothing/shoes/sandal
 	desc = "A pair of rather plain, wooden sandals."
 	name = "sandals"
-	icon_state = "wizard"
+	icon_state = "sandals"
 	flags_armor_protection = 0
 
 /obj/item/clothing/shoes/sandal/marisa
@@ -140,6 +140,10 @@
 	desc = "The height of fashion, and they're pre-polished!"
 	icon_state = "laceups"
 
+/obj/item/clothing/shoes/laceup/brown
+	name = "brown laceup shoes"
+	icon_state = "laceups_brown"
+
 /obj/item/clothing/shoes/swimmingfins
 	desc = "Help you swim good."
 	name = "swimming fins"
@@ -159,8 +163,8 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/souto
-	name = "\improper Souto Man's boots. Harder than the kick of Souto Red."
-	desc = "Souto Man boots"
+	name = "Souto Man boots"
+	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red"
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	flags_inventory = CANTSTRIP|NOSLIPPING

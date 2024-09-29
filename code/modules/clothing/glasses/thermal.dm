@@ -12,12 +12,13 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	darkness_view = 12
 	invisa_view = 2
-	eye_protection = -1
+	eye_protection = EYE_PROTECTION_NEGATIVE
 	deactive_state = "goggles_off"
 	fullscreen_vision = /atom/movable/screen/fullscreen/thermal
 	var/blinds_on_emp = TRUE
 
 /obj/item/clothing/glasses/thermal/emp_act(severity)
+	. = ..()
 	if(blinds_on_emp)
 		if(istype(src.loc, /mob/living/carbon/human))
 			var/mob/living/carbon/human/M = src.loc
@@ -29,7 +30,6 @@
 					M.disabilities |= NEARSIGHTED
 					spawn(100)
 						M.disabilities &= ~NEARSIGHTED
-	..()
 
 
 /obj/item/clothing/glasses/thermal/syndi //These are now a traitor item, concealed as mesons. -Pete

@@ -50,7 +50,7 @@
 		icon_state += "_out"
 
 	if(dcell && dcell.charge)
-		switch(round(dcell.charge * 100 / dcell.maxcharge))
+		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
 				overlays += "+full"
 			if(34 to 66)
@@ -66,8 +66,8 @@
 	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
-	maxuses = round(dcell.maxcharge / charge_cost)
-	currentuses = round(dcell.charge / charge_cost)
+	maxuses = floor(dcell.maxcharge / charge_cost)
+	currentuses = floor(dcell.charge / charge_cost)
 	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
@@ -108,13 +108,13 @@
 			if(ghost && (!check_client || ghost.client) && (!check_can_reenter || ghost.can_reenter_corpse))
 				return ghost
 
-/mob/living/carbon/human/proc/is_revivable()
+/mob/living/carbon/human/proc/is_revivable(ignore_heart = FALSE)
 	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
 		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 	var/obj/limb/head = get_limb("head")
 
-	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.organ_status >= ORGAN_BROKEN || !has_brain() || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !ignore_heart && (!heart || heart.organ_status >= ORGAN_BROKEN) || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
 	return TRUE
 
@@ -175,7 +175,7 @@
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
-	if(!do_after(user, 7 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [H]'s chest."), \
 		SPAN_WARNING("You stop setting up the paddles on [H]'s chest."))
 		return
@@ -194,18 +194,15 @@
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
-	/// Has the defib already caused the chance of heart damage, to not potentially double up later
-	var/heart_already_damaged = FALSE
-	if(heart && prob(25))
-		heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
-		heart_already_damaged = TRUE
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)
 			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
+			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src] because of heart damage.")
 			return
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
+		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src].")
 		return
 
 	if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
@@ -232,11 +229,12 @@
 				break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
+		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(H)] with [src].")
 		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
 		user.life_revives_total++
 		H.handle_revive()
-		if(heart && !heart_already_damaged)
+		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
@@ -244,7 +242,10 @@
 			window_flash(H.client)
 	else
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
+		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(H)] with [src] because of weak vitals.")
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
+		if(heart && prob(25))
+			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
 /obj/item/device/defibrillator/compact_adv
 	name = "advanced compact defibrillator"

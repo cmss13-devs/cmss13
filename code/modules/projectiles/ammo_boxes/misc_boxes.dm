@@ -34,11 +34,11 @@
 /obj/item/ammo_box/magazine/misc/handle_side_effects(obj/structure/magazine_box/host_box)
 	if(host_box)
 		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 	else
 		apply_fire_overlay()
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 
 /obj/item/ammo_box/magazine/misc/apply_fire_overlay(will_explode = FALSE)
@@ -75,6 +75,15 @@
 	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
 
+//------------------------M89 Signal Flare Packs Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/flares/signal
+	name = "\improper box of M89 signal flare packs"
+	desc = "A box of M89 signal flare packs, to mark up the way."
+	magazine_type = /obj/item/storage/box/m94/signal
+	overlay_gun_type = "_m89"
+	overlay_content = "_flares_signal"
+
 //---------------------FIRE HANDLING PROCS
 
 //flare box has unique stuff
@@ -87,8 +96,8 @@
 /obj/item/ammo_box/magazine/misc/flares/get_severity()
 	var/flare_amount = 0
 	for(var/obj/item/storage/box/m94/flare_box in contents)
-		flare_amount += flare_box.contents.len
-	flare_amount = round(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we can throw out
+		flare_amount += length(flare_box.contents)
+	flare_amount = floor(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we can throw out
 	return flare_amount
 
 /obj/item/ammo_box/magazine/misc/flares/process_burning(datum/cause_data/flame_cause_data)
@@ -101,9 +110,7 @@
 	if(flare_amount > 0)
 		handle_side_effects(host_box, TRUE)
 
-		var/list/turf_list = list()
-		for(var/turf/T in range(5, (host_box ? host_box : src)))
-			turf_list += T
+		var/list/turf_list = RANGE_TURFS(5, (host_box ? host_box : src))
 		for(var/i = 1, i <= flare_amount, i++)
 			addtimer(CALLBACK(src, PROC_REF(explode), (host_box ? host_box : src), turf_list), rand(1, 6) SECONDS)
 		return
@@ -117,11 +124,11 @@
 
 	if(host_box)
 		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING(shown_message))
 	else
 		apply_fire_overlay()
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING(shown_message))
 
 //for flare box, instead of actually exploding, we throw out a flare at random direction
@@ -139,6 +146,9 @@
 /obj/item/ammo_box/magazine/misc/flares/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/misc/flares/signal/empty
+	empty = TRUE
+
 //------------------------Flashlight Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/flashlight
@@ -152,6 +162,19 @@
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
 	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat
+	name = "\improper box of combat flashlights"
+	desc = "A box of flashlights to brighten your day!"
+	magazine_type = /obj/item/device/flashlight/combat
+	num_of_magazines = 8
+	icon_state = "flashlightbox_combat"
+	icon_state_deployed = "flashlightbox_combat_deployed"
+	overlay_content = "_flashlight"
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat/empty
+	empty = TRUE
+
 
 //------------------------Battery Box--------------------------
 

@@ -54,7 +54,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							slots_free += ui_datum.ui_storage1
 						if(!H.r_store)
 							slots_free += ui_datum.ui_storage2
-					if(slots_free.len)
+					if(length(slots_free))
 						halitem.screen_loc = pick(slots_free)
 						halitem.layer = 50
 						switch(rand(1,6))
@@ -85,19 +85,19 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
 						if(client)
-							client.screen += halitem
+							client.add_to_screen(halitem)
 						spawn(rand(100,250))
 							if(client)
-								client.screen -= halitem
+								client.remove_from_screen(halitem)
 							halitem = null
 			if(26 to 40)
 				//Flashes of danger
 				//to_chat(src, "Danger Flash")
 				if(!halimage)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 
 						switch(rand(1,3))
@@ -159,9 +159,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//to_chat(src, "Danger Flash")
 				if(!halbody)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 						switch(rand(1,3))
 							if(1)
@@ -203,12 +203,12 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 
 		if(mid_txts)
-			while(mid_txts.len)
+			while(length(mid_txts))
 				var/mid_txt = pick(mid_txts)
 				mocktxt += mid_txt
 				mid_txts -= mid_txt
 
-		while(buttons.len)
+		while(length(buttons))
 
 			var/button = pick(buttons)
 
@@ -249,7 +249,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 /obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
-	for(var/mob/M in oviewers(world_view_size,my_target))
+	for(var/mob/M in oviewers(GLOB.world_view_size,my_target))
 		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
 	my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
 
@@ -262,7 +262,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	if(M == my_target)
 		step_away(src,my_target,2)
 		if(prob(30))
-			for(var/mob/O in oviewers(world_view_size , my_target))
+			for(var/mob/O in oviewers(GLOB.world_view_size , my_target))
 				to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
 
 /obj/effect/fake_attacker/New()
@@ -341,9 +341,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	QDEL_IN(O, 30 SECONDS)
 	return
 
-var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
+GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	/obj/item/clothing/shoes/magboots, /obj/item/disk/nuclear,\
-	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
+	/obj/item/clothing/suit/space/uscm, /obj/item/tank))
 
 /proc/fake_attack(mob/living/target)
 // var/list/possible_clones = new/list()
@@ -351,23 +351,23 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat || H.lying) continue
+		if(H.stat) continue
 // possible_clones += H
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
-// if(!possible_clones.len) return
+// if(!length(possible_clones)) return
 // clone = pick(possible_clones)
 	if(!clone) return
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)
 	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.l_hand.name
 			F.weap = clone.l_hand
 	else if (clone.r_hand)
-		if(!(locate(clone.r_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.r_hand.name
 			F.weap = clone.r_hand
 

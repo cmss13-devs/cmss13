@@ -15,7 +15,7 @@
 	unslashable = TRUE
 	indestructible = TRUE
 
-	var/list/role_restriction = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	var/list/role_restriction = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 
 	var/obj/item/storage/internal/container
 
@@ -117,8 +117,8 @@
 	return container.attackby(W, user)
 
 /obj/structure/vehicle_locker/emp_act(severity)
+	. = ..()
 	container.emp_act(severity)
-	..()
 
 /obj/structure/vehicle_locker/hear_talk(mob/M, msg)
 	container.hear_talk(M, msg)

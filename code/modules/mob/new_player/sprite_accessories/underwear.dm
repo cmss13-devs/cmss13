@@ -32,14 +32,14 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 /datum/sprite_accessory/underwear/proc/get_image(mob_gender)
 	var/selected_icon_state = icon_state
 	if(camo_conforming)
-		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("classic")
 				selected_icon_state = "c_" + selected_icon_state
-			if(MAP_LV_624, MAP_RUNTIME, MAP_NEW_VARADERO)
+			if("jungle")
 				selected_icon_state = "j_" + selected_icon_state
-			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			if("desert")
 				selected_icon_state = "d_" + selected_icon_state
-			if(MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_ICE_COLONY, MAP_ICE_COLONY_V3)
+			if("snow")
 				selected_icon_state = "s_" + selected_icon_state
 	if(gender == PLURAL)
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
@@ -58,29 +58,33 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 		if("s")
 			name += " (Snow)"
 
-// Plural
+// Both
 /datum/sprite_accessory/underwear/boxers
 	name = "Boxers"
 	icon_state = "boxers"
-	gender = PLURAL
+	gender = NEUTER
 	camo_conforming = TRUE
 
-// Male
 /datum/sprite_accessory/underwear/briefs
 	name = "Briefs"
 	icon_state = "briefs"
-	gender = MALE
+	gender = NEUTER
 	camo_conforming = TRUE
 
-// Female
-/datum/sprite_accessory/underwear/panties
-	name = "Panties"
-	icon_state = "panties"
-	gender = FEMALE
+/datum/sprite_accessory/underwear/lowriders
+	name = "Lowriders"
+	icon_state = "lowriders"
+	gender = NEUTER
 	camo_conforming = TRUE
 
-/datum/sprite_accessory/underwear/thong
-	name = "Thong"
-	icon_state = "thong"
-	gender = FEMALE
+/datum/sprite_accessory/underwear/satin
+	name = "Satin"
+	icon_state = "satin"
+	gender = NEUTER
+	camo_conforming = TRUE
+
+/datum/sprite_accessory/underwear/tanga
+	name = "Tanga"
+	icon_state = "tanga"
+	gender = NEUTER
 	camo_conforming = TRUE

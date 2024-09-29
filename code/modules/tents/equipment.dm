@@ -87,7 +87,7 @@
 	AddComponent(/datum/component/tent_supported_object)
 	update_icon()
 
-/obj/structure/tent_curtain/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/tent_curtain/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/structure/tent_curtain/update_icon()

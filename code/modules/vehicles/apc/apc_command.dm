@@ -43,8 +43,6 @@
 	return ..()
 
 /obj/vehicle/multitile/apc/command/process()
-	. = ..()
-
 	var/turf/apc_turf = get_turf(src)
 	if(health == 0 || !visible_in_tacmap || !is_ground_level(apc_turf.z))
 		return
@@ -59,7 +57,7 @@
 				continue
 
 			SSminimaps.remove_marker(current_xeno)
-			current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO)
+			current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))
 			minimap_added += WEAKREF(current_xeno)
 		else
 			if(WEAKREF(current_xeno) in minimap_added)
@@ -70,7 +68,7 @@
 /obj/vehicle/multitile/apc/command/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 	RRS.total = 2
 	role_reserved_slots += RRS
 
@@ -184,9 +182,9 @@
 
 //stole my own code from techpod_vendor
 /obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
-	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return TRUE
-	else if(SSticker.mode == "Distress Signal" || master_mode == "Distress Signal")
+	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(techpod_access_settings_override)
 			return TRUE
 		else if(user.get_target_lock(techpod_faction_requirement))

@@ -37,6 +37,10 @@
 		return FALSE
 	if(affected_mob.stat == DEAD)
 		return
+
+	if(issynth(affected_atom))
+		return
+	
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
@@ -83,12 +87,12 @@
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
 	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
-		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
+		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
 		affected_mob.apply_damage(2,TOX)
-		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, round(strength*1.5))) //Paralysis of hearing system, aka deafness
+		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")
@@ -123,13 +127,8 @@
 	return TRUE
 
 /datum/effects/neurotoxin/proc/process_hallucination(mob/living/carbon/human/victim)
-	/// area of the victim for areachecks
-	var/hallu_area = get_area(victim)
 	switch(rand(0, 100))
 		if(0 to 5)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Schizo Lurker Pounce' hallucination (5% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			playsound_client(victim?.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
 			victim.KnockDown(3)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1 SECONDS)
@@ -140,18 +139,12 @@
 			victim.apply_effect(AGONY,10)
 			victim.emote("pain")
 		if(6 to 10)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'OB' hallucination (4% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			playsound_client(victim.client,'sound/effects/ob_alert.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
 		if(11 to 16)
 			playsound_client(victim.client,'sound/voice/alien_queen_screech.ogg')
 			victim.KnockDown(1)
 		if(17 to 24)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Fake CAS firemission' hallucination (7% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			hallucination_fakecas_sequence(victim) //Not gonna spam a billion timers for this one so outsourcing to a proc with sleeps is a better async solution
 		if(25 to 42)
 			to_chat(victim,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
@@ -161,7 +154,7 @@
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination
-			playsound_client(victim.client,pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"))
+			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
 
 
 

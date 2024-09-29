@@ -21,6 +21,14 @@
 
 	can_buckle = FALSE
 
+	light_system = MOVABLE_LIGHT
+	light_range = 5
+
+	var/atom/movable/vehicle_light_holder/lighting_holder
+
+	var/vehicle_light_range = 5
+	var/vehicle_light_power = 2
+
 	//Yay! Working cameras in the vehicles at last!!
 	var/obj/structure/machinery/camera/vehicle/camera = null
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
@@ -167,6 +175,17 @@
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
 
+	if(bound_width > world.icon_size || bound_height > world.icon_size)
+		lighting_holder = new(src)
+		lighting_holder.set_light_range(vehicle_light_range)
+		lighting_holder.set_light_power(vehicle_light_power)
+		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)
+	else if(light_range)
+		set_light_on(TRUE)
+
+	light_pixel_x = -bound_x
+	light_pixel_y = -bound_y
+
 	healthcheck()
 	update_icon()
 
@@ -221,26 +240,15 @@
 
 	var/amt_hardpoints = LAZYLEN(hardpoints)
 	if(amt_hardpoints)
-		var/list/hardpoint_images[amt_hardpoints]
-		var/list/C[HDPT_LAYER_MAX]
-
-		// Counting sort the images into a list so we get the hardpoint images sorted by layer
-		for(var/obj/item/hardpoint/H in hardpoints)
-			C[H.hdpt_layer] += 1
-
-		for(var/i = 2 to HDPT_LAYER_MAX)
-			C[i] += C[i-1]
-
-		for(var/obj/item/hardpoint/H in hardpoints)
-			hardpoint_images[C[H.hdpt_layer]] = H.get_hardpoint_image()
-			C[H.hdpt_layer] -= 1
-
-		for(var/i = 1 to amt_hardpoints)
-			var/image/I = hardpoint_images[i]
-			// get_hardpoint_image() can return a list of images
-			if(istype(I))
-				I.layer = layer + (i*0.1)
-			overlays += I
+		for(var/obj/item/hardpoint/hardpoint in hardpoints)
+			var/image/hardpoint_image = hardpoint.get_hardpoint_image()
+			if(istype(hardpoint_image))
+				hardpoint_image.layer = layer + hardpoint.hdpt_layer * 0.1
+			else if(islist(hardpoint_image))
+				var/list/image/hardpoint_image_list = hardpoint_image // Linter will complain about iterating on "an image" otherwise
+				for(var/image/subimage in hardpoint_image_list)
+					subimage.layer = layer + hardpoint.hdpt_layer * 0.1
+			overlays += hardpoint_image
 
 	if(clamped)
 		var/image/J = image(icon, icon_state = "vehicle_clamp", layer = layer+0.1)
@@ -250,7 +258,7 @@
 /obj/vehicle/multitile/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There is \a [H] module installed."
+		. += "There [H.p_are()] \a [H] module[H.p_s()] installed."
 		H.examine(user, TRUE)
 	if(clamped)
 		. += "There is a vehicle clamp attached."
@@ -259,7 +267,7 @@
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
-			. += "You can sense approximately [passengers_amount] hosts inside."
+			. += "You can sense approximately [passengers_amount] host\s inside."
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -285,14 +293,14 @@
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
 		if(H.can_take_damage())
-			H.take_damage(round(damage * get_dmg_multi(type)))
+			H.take_damage(floor(damage * get_dmg_multi(type)))
 			all_broken = FALSE
 
 	// If all hardpoints are broken, the vehicle frame begins taking full damage
 	if(all_broken)
 		health = max(0, health - damage * get_dmg_multi(type))
 	else //otherwise, 1/10th of damage lands on the hull
-		health = max(0, health - round(damage * get_dmg_multi(type) / 10))
+		health = max(0, health - floor(damage * get_dmg_multi(type) / 10))
 
 	if(ismob(attacker))
 		var/mob/M = attacker
@@ -326,19 +334,29 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.set_interaction(src)
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+	return TRUE
 
+/// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)
 	return seats[seat]
 
+/// Get seat of crewmember.
 /obj/vehicle/multitile/proc/get_mob_seat(mob/M)
 	for(var/seat in seats)
 		if(seats[seat] == M)
 			return seat
+	return null
+
+/// Get active hardpoint of crewmember.
+/obj/vehicle/multitile/proc/get_mob_hp(mob/crew)
+	var/seat = get_mob_seat(crew)
+	if(seat)
+		return active_hp[seat]
 	return null
 
 /obj/vehicle/multitile/proc/get_passengers()
@@ -364,8 +382,8 @@
 		handle_all_modules_broken()
 
 	//vehicle is dead, no more lights
-	if(health <= 0 && luminosity)
-		SetLuminosity(0)
+	if(health <= 0 && lighting_holder.light_range)
+		lighting_holder.set_light_on(FALSE)
 	update_icon()
 
 /*
@@ -421,3 +439,20 @@
 /obj/vehicle/multitile/proc/handle_acidic_environment(atom/A)
 	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 		Loco.handle_acid_damage(A)
+
+/atom/movable/vehicle_light_holder
+	light_system = MOVABLE_LIGHT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/vehicle_light_holder/Initialize(mapload, ...)
+	. = ..()
+
+	var/atom/attached_to = loc
+
+	forceMove(attached_to.loc)
+	RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, PROC_REF(handle_parent_move))
+
+/atom/movable/vehicle_light_holder/proc/handle_parent_move(atom/movable/mover, atom/oldloc, direction)
+	SIGNAL_HANDLER
+
+	forceMove(get_turf(mover))

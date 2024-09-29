@@ -1,9 +1,9 @@
 # dmdoc
-[DOCUMENTATION]: **PUT DOCUMENTATION LINK HERE**
+[DOCUMENTATION]: https://docs.cm-ss13.com/
 
 [BYOND]: https://secure.byond.com/
 
-[DMDOC]: https://github.com/SpaceManiac/SpacemanDMM/tree/master/src/dmdoc
+[DMDOC]: https://github.com/SpaceManiac/SpacemanDMM/tree/master/crates/dmdoc
 
 [DMDOC] is a documentation generator for DreamMaker, the scripting language
 of the [BYOND] game engine. It produces simple static HTML files based on
@@ -13,9 +13,9 @@ We use **dmdoc** to generate [DOCUMENTATION] for our code, and that documentatio
 is automatically generated and built on every new commit to the master branch
 
 This gives new developers a clickable reference [DOCUMENTATION] they can browse to better help
-gain understanding of the /tg/station codebase structure and api reference.
+gain understanding of the CM-SS13 codebase structure and api reference.
 
-## Documenting code on /tg/station
+## Documenting code on CM-SS13
 We use block comments to document procs and classes, and we use `///` line comments
 when documenting individual variables.
 

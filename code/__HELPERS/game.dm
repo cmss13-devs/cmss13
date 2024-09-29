@@ -45,15 +45,12 @@
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/turf/T in range(radius, centerturf))
+	for(var/turf/T as anything in RANGE_TURFS(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
 			turfs += T
 	return turfs
-
-
-//var/debug_mob = 0
 
 // Will recursively loop through an atom's contents and check for mobs, then it will loop through every atom in that atom's contents.
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
@@ -61,7 +58,7 @@
 
 /proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
-	//debug_mob += O.contents.len
+	//debug_mob += length(O.contents)
 	if(!recursion_limit)
 		return L
 	for(var/atom/A in O.contents)
@@ -154,16 +151,6 @@
 	var/list/speaker_coverage = list()
 	for(var/obj/item/device/radio/R in radios)
 		if(R)
-			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
-			var/obj/item/device/radio/borg/BR = R
-			if(istype(BR) && BR.myborg)
-				var/mob/living/silicon/robot/borg = BR.myborg
-				var/datum/robot_component/CO = borg.get_component("radio")
-				if(!CO)
-					continue //No radio component (Shouldn't happen)
-				if(!borg.is_component_functioning("radio") || !borg.cell_use_power(CO.active_usage))
-					continue //No power.
-
 			var/turf/speaker = get_turf(R)
 			if(speaker)
 				for(var/turf/T in hear(R.canhear_range,speaker))
@@ -203,7 +190,7 @@
 		if(X1<X2)
 			b+=m
 		while(X1!=X2 || Y1!=Y2)
-			if(round(m*X1+b-Y1))
+			if(floor(m*X1+b-Y1))
 				Y1+=signY //Line exits tile vertically
 			else
 				X1+=signX //Line exits tile horizontally
@@ -248,7 +235,7 @@
  * * hive - The hive we're filling a slot for to check if the player is banished
  * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
  */
-/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE)
+/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE, abomination = FALSE)
 	var/list/candidates = list()
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
@@ -268,7 +255,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN) || !cur_obs.bypass_time_of_death_checks))
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) && !cur_obs.bypass_time_of_death_checks)
 			continue
 
 		// AFK players cannot be drafted
@@ -276,7 +263,7 @@
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+		if(check_client_rights(cur_obs.client, R_MOD, FALSE) && cur_obs.admin_larva_protection)
 			continue
 
 		if(hive)
@@ -288,11 +275,18 @@
 			if(banished)
 				continue
 
+		if(abomination)
+			if(!(/datum/tutorial/xenomorph/abomination::tutorial_id in cur_obs.client.prefs.completed_tutorials))
+				to_chat(cur_obs, SPAN_BOLDNOTICE("You were passed over for playing as an Abomination because you have not completed its tutorial."))
+				continue
+
 		candidates += cur_obs
 
 	// Optionally sort by larva_queue_time
 	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
+
+	GLOB.xeno_queue_candidate_count = length(candidates)
 
 	return candidates
 
@@ -305,15 +299,15 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
-	for(var/i in (1 + dequeued) to candidates.len)
+	for(var/i in (1 + dequeued) to length(candidates))
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
+		var/cached_message = "You are currently [i-dequeued]\th in the larva queue."
 		cur_obs.larva_queue_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
-			to_chat(candidates[i], chat_message)
+			to_chat(candidates[i], SPAN_XENONOTICE(chat_message))
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

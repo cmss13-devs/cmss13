@@ -26,7 +26,7 @@
 			deconstruct(FALSE)
 
 
-/obj/structure/lamarr/bullet_act(obj/item/projectile/Proj)
+/obj/structure/lamarr/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	src.healthcheck()
@@ -53,8 +53,8 @@
 
 
 /obj/structure/lamarr/attackby(obj/item/W as obj, mob/user as mob)
-	src.health -= W.force
-	src.healthcheck()
+	health -= W.force * W.demolition_mod
+	healthcheck()
 	..()
 	return
 

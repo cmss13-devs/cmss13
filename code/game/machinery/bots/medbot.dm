@@ -62,8 +62,8 @@
 		src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
 
 	src.botcard = new /obj/item/card/id(src)
-	if(isnull(src.botcard_access) || (src.botcard_access.len < 1))
-		var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
+	if(!LAZYLEN(src.botcard_access))
+		var/datum/job/J = GLOB.RoleAuthority ? GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
 		botcard.access = J.get_access()
 	else
 		src.botcard.access = src.botcard_access
@@ -278,31 +278,31 @@
 			src.medicate_patient(src.patient)
 		return
 
-	else if(src.patient && (src.path.len) && (get_dist(src.patient,src.path[src.path.len]) > 2))
+	else if(src.patient && (length(src.path)) && (get_dist(src.patient,src.path[length(src.path)]) > 2))
 		src.path = new()
 		src.currently_healing = 0
 		src.last_found = world.time
 
-	if(src.patient && src.path.len == 0 && (get_dist(src,src.patient) > 1))
+	if(src.patient && length(src.path) == 0 && (get_dist(src,src.patient) > 1))
 		spawn(0)
 			src.path = AStar(src.loc, get_turf(src.patient), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30,id=botcard)
 			if (!path) path = list()
-			if(src.path.len == 0)
+			if(length(src.path) == 0)
 				src.oldpatient = src.patient
 				src.patient = null
 				src.currently_healing = 0
 				src.last_found = world.time
 		return
 
-	if(src.path.len > 0 && src.patient)
+	if(length(src.path) > 0 && src.patient)
 		step_to(src, src.path[1])
 		src.path -= src.path[1]
 		spawn(3)
-			if(src.path.len)
+			if(length(src.path))
 				step_to(src, src.path[1])
 				src.path -= src.path[1]
 
-	if(src.path.len > 8 && src.patient)
+	if(length(src.path) > 8 && src.patient)
 		src.frustration++
 
 	return
@@ -487,7 +487,7 @@
 		return
 
 	//Making a medibot!
-	if(src.contents.len >= 1)
+	if(length(src.contents) >= 1)
 		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
 		return
 

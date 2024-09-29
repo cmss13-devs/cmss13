@@ -20,12 +20,12 @@
 	var/hand_throwable = TRUE
 	harmful = TRUE //Is it harmful? Are they banned for synths?
 	antigrief_protection = TRUE //Should it be checked by antigrief?
+	ground_offset_x = 7
+	ground_offset_y = 6
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = max(0, rand(det_time - 5, det_time + 5))
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
@@ -36,7 +36,7 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 
-	if(harmful && !user.allow_gun_usage)
+	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
 

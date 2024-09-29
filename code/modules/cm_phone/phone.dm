@@ -24,18 +24,25 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/range = 7
 
 	var/enabled = TRUE
-	var/callable = TRUE
+	/// Whether or not the phone is receiving calls or not. Varies between on/off or forcibly on/off.
+	var/do_not_disturb = PHONE_DND_OFF
+	/// The Phone_ID of the last person to call this telephone.
+	var/last_caller
 
 	var/base_icon_state
 
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
-	var/network_receive = FACTION_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 
+	var/datum/looping_sound/telephone/busy/busy_loop
+	var/datum/looping_sound/telephone/hangup/hangup_loop
+	var/datum/looping_sound/telephone/ring/outring_loop
+
 /obj/structure/transmitter/hidden
-	callable = FALSE
+	do_not_disturb = PHONE_DND_FORCED
 
 /obj/structure/transmitter/Initialize(mapload, ...)
 	. = ..()
@@ -47,6 +54,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	if(!get_turf(src))
 		return
+
+	outring_loop = new(attached_to)
+	busy_loop = new(attached_to)
+	hangup_loop = new(attached_to)
 
 	GLOB.transmitters += src
 
@@ -80,9 +91,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	for(var/possible_phone in GLOB.transmitters)
 		var/obj/structure/transmitter/target_phone = possible_phone
-		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
+		var/current_dnd = FALSE
+		switch(target_phone.do_not_disturb)
+			if(PHONE_DND_ON, PHONE_DND_FORCED)
+				current_dnd = TRUE
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || current_dnd) // Phone not available
 			continue
-		if(!(target_phone.network_receive in networks_transmit))
+		var/net_link = FALSE
+		for(var/network in networks_transmit)
+			if(network in target_phone.networks_receive)
+				net_link = TRUE
+				continue
+		if(!net_link)
 			continue
 
 		var/id = target_phone.phone_id
@@ -119,8 +139,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			call_phone(user, params["phone_id"])
 			. = TRUE
 			SStgui.close_uis(src)
+		if("toggle_dnd")
+			toggle_dnd(user)
 
 	update_icon()
+
+/obj/structure/transmitter/ui_data(mob/user)
+	var/list/data = list()
+
+	data["availability"] = do_not_disturb
+	data["last_caller"] = last_caller
+
+	return data
 
 /obj/structure/transmitter/ui_static_data(mob/user)
 	. = list()
@@ -156,16 +186,30 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	calling = T
 	T.caller = src
+	T.last_caller = src.phone_id
 	T.update_icon()
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
 	playsound(get_turf(user), "rtb_handset")
 	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
+	outring_loop.start()
 
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, T)
 
 	user.put_in_hands(attached_to)
+
+/obj/structure/transmitter/proc/toggle_dnd(mob/living/carbon/human/user)
+	switch(do_not_disturb)
+		if(PHONE_DND_ON)
+			do_not_disturb = PHONE_DND_OFF
+			to_chat(user, SPAN_NOTICE("Do Not Disturb has been disabled. You can now receive calls."))
+		if(PHONE_DND_OFF)
+			do_not_disturb = PHONE_DND_ON
+			to_chat(user, SPAN_WARNING("Do Not Disturb has been enabled. No calls will be received."))
+		else
+			return FALSE
+	return TRUE
 
 /obj/structure/transmitter/attack_hand(mob/user)
 	. = ..()
@@ -188,6 +232,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T.attached_to && ismob(T.attached_to.loc))
 		var/mob/M = T.attached_to.loc
 		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
+		playsound(T.attached_to.loc, 'sound/machines/telephone/remote_pickup.ogg', 20)
 		if(T.timeout_timer_id)
 			deltimer(T.timeout_timer_id)
 			T.timeout_timer_id = null
@@ -195,6 +240,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
 	playsound(get_turf(user), "rtb_handset")
 
+	T.outring_loop.stop()
 	user.put_in_active_hand(attached_to)
 	update_icon()
 
@@ -219,11 +265,14 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(T.attached_to && ismob(T.attached_to.loc))
 			var/mob/M = T.attached_to.loc
 			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has hung up on you."))
+			T.hangup_loop.start()
 
 		if(attached_to && ismob(attached_to.loc))
 			var/mob/M = attached_to.loc
 			if(timeout)
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, you immediately disconnect the line."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, nobody picked up the phone."))
+				busy_loop.start()
+				outring_loop.stop()
 			else
 				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
 
@@ -246,6 +295,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		T.update_icon()
 		STOP_PROCESSING(SSobj, T)
+
+	outring_loop.stop()
 
 	STOP_PROCESSING(SSobj, src)
 
@@ -284,9 +335,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/mob/M = attached_to.loc
 		M.drop_held_item(attached_to)
 		playsound(get_turf(M), "rtb_handset", 100, FALSE, 7)
+		hangup_loop.stop()
 
 	attached_to.forceMove(src)
 	reset_call()
+	busy_loop.stop()
+	outring_loop.stop()
 
 	update_icon()
 
@@ -312,6 +366,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	P.handle_hear(message, L, speaking)
 	attached_to.handle_hear(message, L, speaking)
+	playsound(P, "talk_phone", 5)
 	log_say("TELEPHONE: [key_name(speaking)] on Phone '[phone_id]' to '[T.phone_id]' said '[message]'")
 
 /obj/structure/transmitter/attackby(obj/item/W, mob/user)
@@ -327,7 +382,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			qdel(attached_to)
 		else
 			attached_to.attached_to = null
-			attached_to = null
+		attached_to = null
 
 	GLOB.transmitters -= src
 	SStgui.close_uis(src)
@@ -538,15 +593,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
-
-/obj/structure/transmitter/colony_net
-	network_receive = FACTION_COLONIST
-	networks_transmit = list(FACTION_COLONIST)
-
-/obj/structure/transmitter/colony_net/rotary
-	name = "rotary telephone"
-	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+/obj/structure/transmitter/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
@@ -554,7 +602,46 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
 
+/obj/structure/transmitter/rotary/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
+
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
 	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+
+/obj/structure/transmitter/colony_net
+	networks_receive = list(FACTION_COLONIST)
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/upp_net
+	networks_receive = list(FACTION_UPP)
+	networks_transmit = list(FACTION_UPP)
+
+/obj/structure/transmitter/upp_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/clf_net
+	networks_receive = list(FACTION_CLF)
+	networks_transmit = list(FACTION_CLF)
+
+/obj/structure/transmitter/clf_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/wy_net
+	networks_receive = list(FACTION_WY)
+	networks_transmit = list(FACTION_WY)
+
+/obj/structure/transmitter/wy_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."

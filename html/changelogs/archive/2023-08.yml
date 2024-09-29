@@ -220,3 +220,283 @@
   - rscdel: Removed Thermal and Meson visors from Yautja mask.
   - bugfix: Squad Specialists can no longer bypass restrictions by not selecting a
       kit to use.
+2023-08-14:
+  Morrow:
+  - rscadd: Rounded oxyloss from bloodloss
+  SpartanBobby:
+  - maptweak: Fixes use of wrong areas inside LV522 reactor
+2023-08-15:
+  Drathek:
+  - rscadd: Queen jellies now use designation rather than ckey for attribution
+  - bugfix: Random facts now only check players.
+  Huffie56:
+  - bugfix: spraying with the hose will no cost 5u of water while spaying 5u of water.
+  - bugfix: fixed the verb to take out the hose.
+  - bugfix: remove the option to change the output as it was confusing for people.
+  MikeKuwait:
+  - bugfix: The plant dies if no nutriment is available
+  realforest2001:
+  - rscadd: Added a proc to calculate item strip delay, taking into account the target's
+      skills and adding 0.5s per level in Policing and CQC.
+  - rscadd: Added an unstrippable mob trait to prevent inventory manipulation. Gave
+      this trait to Working Joes.
+2023-08-17:
+  realforest2001:
+  - bugfix: Players joining as Working Joe after round start now spawn in correct
+      place.
+2023-08-18:
+  Ben10083:
+  - bugfix: Prompt allowing staff to call for ERT with an announcement fixed to actually
+      appear
+  - ui: Prompts for admin-calling ERT converted to TGUI.
+  - maptweak: Combat Information Center pens now use black ink
+  - balance: Zombie attacks deal less damage and only slow down targets (not superslow
+      as they currently do)
+  - balance: Zombie resistances have been reduced heavily, making them far more susceptible
+      to brute damage. Their speed has been doubled to compensate
+  - balance: Black goo on tiles now requires you to not wear shoes to have chance
+      for infection
+  - bugfix: Zombie attacks now only apply effects such as slow and infection if the
+      attack is valid (if the zombie is able to attack)
+  SpartanBobby gdifirehawk:
+  - rscadd: Subtype of tunnel added "Maintenance Tunnel" currently only on LV522 these
+      tunnels act the same as regular tunnels but look different, keep an eye out
+      marines. Description by GDIFIREHAWK
+  ihatethisengine:
+  - rscadd: foxtrot cryomarines spawn as freed mobs if not taken.
+  realforest2001:
+  - rscadd: Added prefixes in OOC for Staff and Mentors. Created a proc to check for
+      these prefixes and Donator.
+  - bugfix: Fixed isCouncil check.
+  spartanbobby:
+  - maptweak: Replaces some cave walls on LV624 with junglewalls (nothing will change
+      gameplay wise)
+  - maptweak: Adds bin to Research Chem/Req room and moves item blocking pillbox
+2023-08-19:
+  Drathek:
+  - bugfix: Fixed mapped in maps for solaris ridge not opening correctly.
+  - refactor: Refactored current_map to use a global list instead to remove the need
+      for duplicate definitions.
+  - ui: Fix Hotkeys TGUI lag and the inability to map Ctrl + R. Also now offers a
+      little bit more time to map combinations of keys.
+2023-08-20:
+  Huffie56:
+  - bugfix: prevent belt flare being filled by dump in action leaving no space for
+      flare gun.
+2023-08-22:
+  CapCamIII:
+  - bugfix: fixes the offset on m4ra custom barrel, it should appropriately be sat
+      right on the gun sprite
+2023-08-23:
+  CapCamIII:
+  - bugfix: UPP soldier preset works again
+  Drathek:
+  - bugfix: Fixed a cade attack exploit
+  Huffie56:
+  - bugfix: you will no longer be able to feed without any limit  with the fork.
+  - bugfix: Whiskey Outpost Chem master will now be connected to the smartfridge.
+  harryob:
+  - rscadd: you always see lobby art while the world is setting up
+  realforest2001:
+  - code_imp: Overhauled how ID accesses are assigned via proc, compiling all the
+      many different procs we used into one.
+  - rscadd: Added faction specific accesses to all major factions.
+  - rscdel: Removed almost all marine accesses from non marine presets. No more free
+      CIC access to CLF.
+  - code_imp: Removed duplicate code in the VAI file.
+  - rscadd: Adds a mapping var to indicate a door has non-standard access tags. This
+      is to make it significantly easier for any future access changes to know if
+      they need to look somewhere.
+  - maptweak: Applied this var to every door I could find on the Almayer that has
+      non-standard access. Colonies and other stuff to come in a future update.
+  - rscadd: Added various new accesses to colonial doors, added WY_SECURITY and WY_RESEARCH
+      to marine research doors.
+  - maptweak: Added reinforced piping to lifeboats area. Didn't make much sense for
+      a cruicial part of the evacuation procedures to be prone to spontaneous explosions
+      that can singlehandedly end a marine evacuation without hostiles ever seeing
+      it.
+  - maptweak: Added reinforced piping to the research closed loop (it's a closed loop).
+      Also removed CIC access from containment shutters as CIC access can't open the
+      doors.
+  - maptweak: Changed a couple walls around research from standard to reinforced,
+      to fit with the containment breach shutters.
+2023-08-24:
+  Morrow:
+  - bugfix: Possible fix for binoc perma zoom
+  - balance: M4RA damage buffed by 10%
+  Zonespace27:
+  - balance: The M41A, M41Amk1, m39, m46c (iff off), mar-30/40/60, type 71, laser
+      uzi, and every SMG now has automatic fire.
+  - balance: The HPR can now fire in full auto when bipodded.
+  - bugfix: Adding/removing attachments now keeps the current firemode, if possible.
+  - bugfix: The dualtube and spec sniper now can switch tubes/toggle laser again.
+  - bugfix: Fixed a long-standing exploit with bipods and scopes.
+  - bugfix: Fixed guns jamming when shooting UI elements.
+  - bugfix: Fixed a bunch of guns unintentionally having burst.
+  - balance: You can transfer ammo between HPR ammo boxes by hitting one with another.
+  realforest2001:
+  - rscadd: Gave the ASO ability to modify IDs.
+  - rscdel: Removed this from the QM.
+2023-08-25:
+  Huffie56:
+  - bugfix: add a check before people start the long process of unlock the DS so that
+      people don't waste time.
+  realforest2001:
+  - rscadd: Added a new lockdown system to research.
+  - rscadd: Added an admin button to interact with above.
+2023-08-26:
+  CapCamIII:
+  - rscadd: Adds 6(8 if you're pedantic) new guns for the UPP, details for each in
+      following lines.
+  - rscadd: Type 19, Replacement for PPsh on colonies and black market.
+  - rscadd: Type 64, replacement for scorpion, full sized SMG, 2 versions, 1 for upp,
+      1 for not upp
+  - rscadd: HJRA-12, RPG for UPP.
+  - rscadd: Type 73, pistol for higher ranked UPP troops, UPP COs get a Type 74 which
+      has high-impact rounds, replaces PK9 in non-UPP use.
+  - rscadd: NP92, pistol, replaces PK9 in UPP use(mostly), integrally suppressed version
+      called NPZ92 for UPP Commandos.
+  - rscadd: QYJ-72, UPP GPMG, replaces minigun with UPP Minigunners
+  - rscadd: Technically resprites but due to changes closer to replaces N-Y revolver
+      with ZHNK-72
+  - rscadd: Adds a character custom loadout Type 73, 2 mags spare.
+  - rscadd: UPP helmets now work as ear protection, intended use with HJRA-12 RPG
+  - rscadd: UPP officers now have regular UM4 helmets instead of UH7 helmets in their
+      vendors as UH7 looked ugly with their combat gear
+  - rscdel: Removes the PK9 entirely
+  - rscdel: Removes tranqs from UPP Commando loadout
+  - rscdel: Removes HEAP ammo from UPP officers and commandos, replaced with normal
+      and AP mags when applicable
+  - balance: UPP jackets no longer have massive armor, in exchange they no longer
+      slow and in clothing vendors a light version of UPP armor is vendable
+  - balance: UPP MPs are now armed with a ZHNK-72 belt on their jacket, with an additional
+      shrapnelshot loader in their belt.
+  - balance: Rebalances Type 71 damage/firerate/AP to be a sidegrade of M41A, about
+      equal DPS, higher damage per shot and AP, lower fire rate, carbine is round-about
+      the exact same as M41A however.
+  - balance: Fixes UPP support armor, given to medics on their person and officers
+      in their vendor, lighter version of UPP armor, exchanges protection for speed.
+  - balance: Seperates SVD bullet damage from crude rifle bullet and buffs it as a
+      hard-hitting AP bullet.
+  - balance: Rebalances UPP revolver(now ZHNK-72), much harder hitting and has higher
+      AP, but rarer, shrapnelshot extremely rare and good.
+  - balance: Due to ammo changes, SVD no longer has burst.
+  - balance: Removes ceramic plates from UPP loadouts
+  - bugfix: UPP Major now has the correct UPP Commander skillset
+  - bugfix: UPP Commander skillset can BE
+  - bugfix: Fixes typepath for UPP support/light armor, actually works now.
+  - spellcheck: Renames SVD to Type 88
+  - spellcheck: Renames UPP Minigunner to UPP Machinegunner
+  - spellcheck: Renames UPP jackets to UL4 all around
+  - soundadd: Adds firing sounds for Type 73 and SVD/UPP MG
+  - imageadd: Resprites the SVD, Type 71, and Type 23, all sprites by wei/esselnek
+  - imageadd: Adds sprites for all above guns, all sprites by wei/esselnek
+  - maptweak: Changes instances of skorpion to non-upp type 64, also changes instances
+      of ppsh to type 19
+  Diegoflores31:
+  - balance: Masterkey and underbarrel extinguisher now must be wielded in order to
+      be used.
+  - bugfix: Underbarrel extinguisher no longer bypass wielding restrictions on flamers.
+  Morrow:
+  - balance: You now lose nutrition when gaining blood rather than losing a ton of
+      nutrition when you have low effective blood
+  Morrow, Frans_Feiffer (beautiful sprites):
+  - rscadd: Added in built HUDs to various helmets
+  - rscadd: Sensormates used by squads without medical skills have been converted
+      to buyable helmet optics
+  realforest2001:
+  - code_imp: Changed backend for the message of walking into an invisible wall to
+      reduce duplication.
+  - rscadd: Telephones can now receive calls from multiple networks.
+  - rscadd: Adds UPP, CLF and WY prefab phones.
+  - bugfix: UPP RTO pack is now titled UPP rather than USCM
+2023-08-27:
+  AnuvKH:
+  - maptweak: Fixed deep ocean around NV monsoon, removed incend ammo.
+  Diegoflores31:
+  - bugfix: Glasses with flash protection can no longer be used for welding.
+  - refactor: Adds defines for negative welding protection.
+  Morrow:
+  - bugfix: fixed a bypass to allow ghost scan health when it should not be allowed
+  cuberound:
+  - rscadd: UPP SL gets proper bag with mini fire extinguisher three WP grenades ,
+      two snacks and an AP mag
+  harryob:
+  - bugfix: whispering no longer uses the old speech bubble
+2023-08-29:
+  CapCamIII:
+  - bugfix: actually fixes m4ra custom barrel offset
+  MikeKuwait:
+  - bugfix: Plants should not grow every time it's sampled
+  - bugfix: Camera console should now close if you step away from it
+  - bugfix: teleporting canister pouch to chemical dispenser
+  Morrow:
+  - bugfix: Fixed pointblanks
+  - bugfix: Fixed western medbay door buttons
+  Steelpoint:
+  - rscadd: IO's and FTL's can now purchase a 'welding visor' from their vendor. This
+      visor grants whichever helmet it is attached with the ability to flip a protective
+      visor that prevents the user's eyes from taking damage while welding.
+  - balance: The M12 Helmet, normally used by FTL's and USCM Officers, can mount two
+      visors at once, instead of only one.
+  TiviPlus, A-lexa, SyncIt21, Azarak, harryob, MorrowWolf, Zonespace:
+  - rscadd: shadows are now in the game, and light follows you.
+  Xufysz:
+  - bugfix: Fixes admin training dummy interaction distance
+  - bugfix: Fixes the kitchen soda fountain being wrenchable.
+  realforest2001:
+  - bugfix: Fixes UPP/CLF access to antag vendors.
+  - rscadd: Adds faction specific accesses to TWE and UPP representatives.
+  - rscdel: Removes pirate access from Press and Corp. Liaison.
+  - bugfix: Areas around LZs (particularly on Sorokyne) are now unweedable as intended.
+  - code_imp: Moved the Request ERT message to a proc to reduce duplication.
+  - admin: Added a detail in ERT request to indicate if a RANDOM ERT was granted by
+      staff already or not. This will not work for manual specific chosen ERTs.
+2023-08-30:
+  Ben10083:
+  - qol: General Quarters via ARES can now be called regardless of alert level.
+  Huffie56:
+  - bugfix: give back marksman ammo to MP's because i remove it in a previous PR by
+      mistake
+  JackieEstegado:
+  - bugfix: Most 'light' vines on LV are no longer invisible.
+  Morrow:
+  - rscadd: Added 3 to hypospray transfer amount option
+  TheGamerdk:
+  - refactor: Refactors the overwatch console in TGUI
+2023-08-31:
+  Huffie56:
+  - rscadd: Add roller bed, mini extinguisher and multi-tool to the utility vendor
+      in small quantity.
+  - balance: divide by two the number of "ME3 hand welder" in utility vendor.
+  - bugfix: remove a duplicate item being sell the flashlight.
+  - bugfix: some clothing items have a minimum of one now.
+  Morrow:
+  - rscadd: Allowed lesser drones to spawn at pylons and core.
+  - rscadd: Created a pool of lesser drones at cores and pylons that regenerate over
+      time. It takes about 10 seconds to get one more when queen is on ovi and about
+      120 seconds when queen is off.
+  - balance: Lesser drones and facehuggers no longer count towards the lesser drone
+      count but lesser drones are still capped at 1/3rd of the hive with a minimum
+      of 3.
+  - balance: Facehuggers have also been changed to not count lesser drones and themselves
+      for max calculations.
+  - bugfix: Fixed dropship hijack offset
+  QuickLode:
+  - bugfix: PMC Survivors now can use WY Comms.
+  Segrain:
+  - bugfix: CL's lockbox can be properly opened once again.
+  Steelpoint:
+  - balance: Large amount of balance changes to UPP survivors on Trijent. New spawn
+      setup guarantee's you'll get 1 Medic and 1 Engineer.
+  - balance: UPP survivors now have access to HUD icons for squad roles, and access
+      to the UPP communications channel if the colony communications is repaired.
+  - balance: UPP surv SL's and Specialists can now drive vehicles.
+  - balance: A second, crashed, UPP dropship can be found somewhere on Trijent if
+      the UPP survivors spawn. It contains extra supplies and stronger firearms. But
+      requires a detour to find.
+  Tkdrg, many TG contributors:
+  - rscadd: dchat notifications now have a better interface
+  harryob:
+  - bugfix: vehicles no longer have two lights
+  - bugfix: vehicles are now properly bright inside

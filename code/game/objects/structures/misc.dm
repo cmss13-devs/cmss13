@@ -7,12 +7,26 @@
 	anchored = TRUE
 	health = 250
 
+/obj/structure/showcase/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
-/obj/structure/showcase/bullet_act(obj/item/projectile/P)
+/obj/structure/showcase/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -189,3 +203,126 @@
 
 /obj/structure/computer3frame/laptop
 	name = "laptop frame"
+
+// Dartboard
+#define DOUBLE_BAND 2
+#define TRIPLE_BAND 3
+
+/obj/structure/dartboard
+	name = "dartboard"
+	desc = "A dartboard, loosely secured."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"
+	density = TRUE
+	unslashable = TRUE
+
+/obj/structure/dartboard/get_examine_text()
+	. = ..()
+	if(length(contents))
+		var/is_are = "is"
+		if(length(contents) != 1)
+			is_are = "are"
+
+		. += SPAN_NOTICE("There [is_are] [length(contents)] item\s embedded into [src].")
+
+/obj/structure/dartboard/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_can_pass_all = PASS_MOB_IS
+
+/obj/structure/dartboard/get_projectile_hit_boolean(obj/projectile/projectile)
+	. = ..()
+	visible_message(SPAN_DANGER("[projectile] hits [src], collapsing it!"))
+	collapse()
+
+/obj/structure/dartboard/proc/flush_contents()
+	for(var/atom/movable/embedded_items as anything in contents)
+		embedded_items.forceMove(loc)
+
+/obj/structure/dartboard/proc/collapse()
+	playsound(src, 'sound/effects/thud1.ogg', 50)
+	new /obj/item/dartboard/(loc)
+	qdel(src)
+
+/obj/structure/dartboard/attack_hand(mob/user)
+	if(length(contents))
+		user.visible_message(SPAN_NOTICE("[user] starts recovering items from [src]..."), SPAN_NOTICE("You start recovering items from [src]..."))
+		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			flush_contents()
+	else
+		to_chat(user, SPAN_WARNING("[src] has nothing embedded!"))
+
+/obj/structure/dartboard/Destroy()
+	flush_contents()
+	.  = ..()
+
+/obj/structure/dartboard/hitby(obj/item/thrown_item)
+	if(thrown_item.sharp != IS_SHARP_ITEM_ACCURATE && !istype(thrown_item, /obj/item/weapon/dart))
+		visible_message(SPAN_DANGER("[thrown_item] hits [src], collapsing it!"))
+		collapse()
+		return
+
+	contents += thrown_item
+	playsound(src, 'sound/weapons/tablehit1.ogg', 50)
+	var/score = rand(1,21)
+	if(score == 21)
+		visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking the bullseye! 50 points."))
+		return
+
+	var/band = "single"
+	var/band_number = rand(1,3)
+	score *= band_number
+	switch(band_number)
+		if(DOUBLE_BAND)
+			band = "double"
+		if(TRIPLE_BAND)
+			band = "triple"
+	visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] point\s."))
+
+/obj/structure/dartboard/attackby(obj/item/item, mob/user)
+	user.visible_message(SPAN_DANGER("[user] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
+	collapse()
+
+/obj/structure/dartboard/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object != usr || !Adjacent(usr))
+		return
+
+	if(!ishuman(usr))
+		return
+
+	visible_message(SPAN_NOTICE("[usr] unsecures [src]."))
+	var/obj/item/dartboard/unsecured_board = new(loc)
+	usr.put_in_hands(unsecured_board)
+	qdel(src)
+
+/obj/item/dartboard
+	name = "dartboard"
+	desc = "A dartboard for darts."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"
+
+/obj/item/dartboard/attack_self(mob/user)
+	. = ..()
+
+	var/turf_ahead = get_step(user, user.dir)
+	if(!istype(turf_ahead, /turf/closed))
+		to_chat(user, SPAN_WARNING("[src] needs a wall to be secured to!"))
+		return
+
+	var/obj/structure/dartboard/secured_board = new(user.loc)
+	switch(user.dir)
+		if(NORTH)
+			secured_board.pixel_y = 32
+		if(EAST)
+			secured_board.pixel_x = 32
+		if(SOUTH)
+			secured_board.pixel_y = -32
+		if(WEST)
+			secured_board.pixel_x = -32
+
+	to_chat(user, SPAN_NOTICE("You secure [secured_board] to [turf_ahead]."))
+	qdel(src)
+
+#undef DOUBLE_BAND
+#undef TRIPLE_BAND

@@ -81,7 +81,7 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							INVOKE_ASYNC(src, PROC_REF(emote), "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, PROC_REF(emote), "stares at [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
 			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases its tail"))
@@ -204,8 +204,6 @@
 					alone = 0
 					break
 			if(alone && ian && puppies < 4)
-				if(near_camera(src) || near_camera(ian))
-					return
 				new /mob/living/simple_animal/corgi/puppy(loc)
 
 

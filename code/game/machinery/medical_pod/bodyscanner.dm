@@ -62,8 +62,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
@@ -124,8 +122,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/body_scanconsole/power_change()
 	..()
@@ -208,7 +204,7 @@
 		"toxloss" = H.getToxLoss(),
 		"cloneloss" = H.getCloneLoss(),
 		"brainloss" = H.getBrainLoss(),
-		"knocked_out" = H.knocked_out,
+		"knocked_out" = H.GetKnockOutDuration(),
 		"bodytemp" = H.bodytemperature,
 		"inaprovaline_amount" = H.reagents.get_reagent_amount("inaprovaline"),
 		"dexalin_amount" = H.reagents.get_reagent_amount("dexalin"),
@@ -267,7 +263,7 @@
 	s_class = occ["brainloss"] < 1 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("&nbsp&nbspApprox. Brain Damage:", INTERFACE_PINK)] [SET_CLASS("[occ["brainloss"]]%", s_class)]<br><br>"
 
-	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% ([round(occ["knocked_out"] / 4)] seconds left!)<br>"
+	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% (approximately [floor(occ["knocked_out"] * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS))] seconds left!)<br>"
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
@@ -337,7 +333,7 @@
 			open = "Open<br>"
 
 		var/unknown_body = 0
-		if (e.implants.len)
+		if (length(e.implants))
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
 					imp += "[I] implanted<br>"

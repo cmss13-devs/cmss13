@@ -1,4 +1,4 @@
-var/list/department_radio_keys = list(
+GLOBAL_LIST_INIT(department_radio_keys, list(
 	":i" = RADIO_CHANNEL_INTERCOM, ".i" = RADIO_CHANNEL_INTERCOM, "#i" = RADIO_CHANNEL_INTERCOM,
 	":h" = RADIO_CHANNEL_DEPARTMENT, ".h" = RADIO_CHANNEL_DEPARTMENT, "#h" = RADIO_CHANNEL_DEPARTMENT,
 	":w" = RADIO_MODE_WHISPER, ".w" = RADIO_MODE_WHISPER, "#w" = RADIO_MODE_WHISPER,
@@ -22,6 +22,8 @@ var/list/department_radio_keys = list(
 	":o" = RADIO_CHANNEL_COLONY, ".o" = RADIO_CHANNEL_COLONY, "#o" = RADIO_CHANNEL_PMC_CCT,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
+	":r" = RADIO_CHANNEL_PROVOST, ".r" = RADIO_CHANNEL_PROVOST, "#r" = RADIO_CHANNEL_PROVOST,
 
 	":I" = RADIO_CHANNEL_INTERCOM, ".I" = RADIO_CHANNEL_INTERCOM, "#I" = RADIO_CHANNEL_INTERCOM,
 	":H" = RADIO_CHANNEL_DEPARTMENT, ".H" = RADIO_CHANNEL_DEPARTMENT, "#H" = RADIO_CHANNEL_DEPARTMENT,
@@ -45,18 +47,38 @@ var/list/department_radio_keys = list(
 	":O" = RADIO_CHANNEL_COLONY, ".O" = RADIO_CHANNEL_COLONY, "#O" = RADIO_CHANNEL_PMC_CCT,
 	":Z" = RADIO_CHANNEL_HIGHCOM, ".Z" = RADIO_CHANNEL_HIGHCOM, "#Z" = RADIO_CHANNEL_PMC_CMD,
 	":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
-)
+	":Q" = RADIO_CHANNEL_ROYAL_MARINE, ".Q" = RADIO_CHANNEL_ROYAL_MARINE,
+	":R" = RADIO_CHANNEL_PROVOST, ".R" = RADIO_CHANNEL_PROVOST, "#R" = RADIO_CHANNEL_PROVOST,
+))
 
 /proc/channel_to_prefix(channel)
 	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == channel)
+	for(var/key in GLOB.department_radio_keys)
+		if(GLOB.department_radio_keys[key] == channel)
 			channel_key = key
 			break
 	return channel_key
 
 /proc/prefix_to_channel(prefix)
-	return department_radio_keys[prefix]
+	return GLOB.department_radio_keys[prefix]
+
+/proc/filter_message(client/user, message)
+	if(!config.word_filter_regex)
+		return TRUE
+
+	if(config.word_filter_regex.Find(message))
+		to_chat(user,
+			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
+			)
+		to_chat(user,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
+			)
+		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
+		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		return FALSE
+
+	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
@@ -72,8 +94,11 @@ var/list/department_radio_keys = list(
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
-/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
+
+	if(!filter_message(src, message))
+		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
 
@@ -114,6 +139,13 @@ var/list/department_radio_keys = list(
 					listening += M
 					hearturfs += M.locs[1]
 					for(var/obj/O in M.contents)
+						var/obj/item/clothing/worn_item = O
+						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= O
+				else if(istype(I, /obj/structure/surface))
+					var/obj/structure/surface/table = I
+					hearturfs += table.locs[1]
+					for(var/obj/O in table.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
 				else if(istype(I, /obj/))
@@ -154,11 +186,11 @@ var/list/department_radio_keys = list(
 		if(message_mode) // we are talking into a radio
 			if(message_mode == "headset") // default value, means general
 				message_mode = "General"
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 		else // we talk normally
-			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 	else
-		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key])")
+		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (AREA: [get_area_name(loc)])")
 
 	return 1
 

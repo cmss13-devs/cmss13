@@ -124,7 +124,6 @@
 			if(V && (V.stat != DEAD) && (V.buckled != src)) // If mob exists and is not dead or captured.
 				V.buckled = src
 				V.forceMove(src.loc)
-				V.update_canmove()
 				src.buckled_mob = V
 				to_chat(V, SPAN_DANGER("The vines [pick("wind", "tangle", "tighten")] around you!"))
 
@@ -139,7 +138,7 @@
 			if(seed.carnivorous == 2)
 				to_chat(buckled_mob, SPAN_DANGER("\The [src] pierces your flesh greedily!"))
 
-				var/damage = rand(round(seed.potency/2),seed.potency)
+				var/damage = rand(floor(seed.potency/2),seed.potency)
 				if(!istype(H))
 					H.apply_damage(damage, BRUTE)
 					return
@@ -157,7 +156,7 @@
 				H.updatehealth()
 
 			// Inject some chems.
-			if(seed.chems && seed.chems.len && istype(H))
+			if(LAZYLEN(seed.chems) && istype(H))
 				to_chat(H, SPAN_DANGER("You feel something seeping into your skin!"))
 				for(var/rid in seed.chems)
 					var/injecting = min(5,max(1,seed.potency/5))
@@ -168,32 +167,32 @@
 
 	// Update bioluminescence.
 	if(seed.biolum)
-		SetLuminosity(1+round(seed.potency/10))
+		set_light(1+floor(seed.potency/10))
 		return
 	else
-		SetLuminosity(0)
+		set_light(0)
 
 	// Update flower/product overlay.
 	overlays.Cut()
 	if(age >= seed.maturation)
-		if(prob(20) && seed.products && seed.products.len && !harvest && ((age-lastproduce) > seed.production))
+		if(prob(20) && LAZYLEN(seed.products) && !harvest && ((age-lastproduce) > seed.production))
 			harvest = 1
 			lastproduce = age
 
 		if(harvest)
 			var/image/fruit_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"")
-			if(seed.product_colour)
-				fruit_overlay.color = seed.product_colour
+			if(seed.product_color)
+				fruit_overlay.color = seed.product_color
 			overlays += fruit_overlay
 
 		if(seed.flowers)
 			var/image/flower_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"[seed.flower_icon]")
-			if(seed.flower_colour)
-				flower_overlay.color = seed.flower_colour
+			if(seed.flower_color)
+				flower_overlay.color = seed.flower_color
 			overlays += flower_overlay
 
 /obj/effect/plantsegment/proc/spread()
-	var/direction = pick(cardinal)
+	var/direction = pick(GLOB.cardinals)
 	var/step = get_step(src,direction)
 	if(istype(step,/turf/open/floor))
 		var/turf/open/floor/F = step
@@ -252,11 +251,7 @@
 
 	var/area/A = T.loc
 	if(A)
-		var/light_available
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
+		var/light_available = max(0,min(10,T.dynamic_lumcount)-5)
 		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
 			die()
 			return
@@ -324,9 +319,9 @@
 		return
 
 	// Check if we're too big for our own good.
-	if(vines.len >= (seed ? seed.potency * collapse_limit : 250) && !reached_collapse_size)
+	if(length(vines) >= (seed ? seed.potency * collapse_limit : 250) && !reached_collapse_size)
 		reached_collapse_size = 1
-	if(vines.len >= (seed ? seed.potency * slowdown_limit : 30) && !reached_slowdown_size )
+	if(length(vines) >= (seed ? seed.potency * slowdown_limit : 30) && !reached_slowdown_size )
 		reached_slowdown_size = 1
 
 	var/length = 0
@@ -340,7 +335,7 @@
 	else
 		length = 1
 
-	length = min(30, max(length, vines.len/5))
+	length = min(30, max(length, length(vines)/5))
 
 	// Update as many pieces of vine as we're allowed to.
 	// Append updated vines to the end of the growth queue.

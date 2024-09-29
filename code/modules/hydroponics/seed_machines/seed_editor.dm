@@ -17,11 +17,11 @@
 
 	data["disk"] = loaded_disk
 
-	if(loaded_disk && loaded_disk.genes.len)
+	if(loaded_disk && length(loaded_disk.genes))
 		data["sourceName"] = loaded_disk.genesource
 
 		for(var/datum/plantgene/P in loaded_disk.genes)
-			locus.Add("[gene_tag_masks[P.genetype]]")
+			locus.Add("[GLOB.gene_tag_masks[P.genetype]]")
 
 		data["locus"] = locus
 	else
@@ -56,7 +56,7 @@
 			if(!loaded_disk || !seed)
 				return
 
-			if(!isnull(seed_types[seed.seed.name]))
+			if(!isnull(GLOB.seed_types[seed.seed.name]))
 				seed.seed = seed.seed.diverge(1)
 				seed.seed_type = seed.seed.name
 				seed.update_seed()

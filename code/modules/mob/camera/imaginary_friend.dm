@@ -19,7 +19,7 @@
 	var/hidden = FALSE
 	var/mob/living/owner
 
-	var/datum/action/innate/imaginary_join/join
+	var/datum/action/innate/imaginary_orbit/orbit
 	var/datum/action/innate/imaginary_hide/hide
 
 	var/list/outfit_choices = list(/datum/equipment_preset/uscm_ship/sea)
@@ -29,7 +29,7 @@
 /mob/camera/imaginary_friend/Login()
 	. = ..()
 	setup_friend()
-	show()
+	update_image()
 
 /mob/camera/imaginary_friend/Logout()
 	. = ..()
@@ -47,8 +47,8 @@
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	join = new
-	join.give_to(src)
+	orbit = new
+	orbit.give_to(src)
 	hide = new
 	hide.give_to(src)
 
@@ -81,7 +81,7 @@
 	return out_icon
 
 /// makes the friend update their icon and appear to themselves and, if not hidden, the owner
-/mob/camera/imaginary_friend/proc/show()
+/mob/camera/imaginary_friend/proc/update_image()
 	if(!client)
 		return
 
@@ -99,7 +99,6 @@
 		owner.client.images |= current_image
 
 	client.images |= current_image
-
 
 /mob/camera/imaginary_friend/Destroy()
 	if(owner)
@@ -141,7 +140,7 @@
 		return
 	name = client.prefs.real_name
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
-	show()
+	update_image()
 
 /mob/camera/imaginary_friend/verb/toggle_hud()
 	set category = "Imaginary Friend"
@@ -151,27 +150,27 @@
 	var/datum/mob_hud/hud
 	switch(hud_choice)
 		if("Medical HUD")
-			hud = huds[MOB_HUD_MEDICAL_OBSERVER]
+			hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			hud = huds[MOB_HUD_SECURITY_ADVANCED]
+			hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			hud = huds[MOB_HUD_FACTION_OBSERVER]
+			hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			hud = huds[MOB_HUD_XENO_STATUS]
+			hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			hud = huds[MOB_HUD_FACTION_UPP]
+			hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			hud = huds[MOB_HUD_FACTION_WY]
+			hud = GLOB.huds[MOB_HUD_FACTION_WY]
 		if("Faction TWE HUD")
-			hud = huds[MOB_HUD_FACTION_TWE]
+			hud = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
-			hud = huds[MOB_HUD_FACTION_CLF]
+			hud = GLOB.huds[MOB_HUD_FACTION_CLF]
 
 	if(hud_choice in current_huds)
-		hud.remove_hud_from(src)
+		hud.remove_hud_from(src, src)
 		current_huds -= hud_choice
 	else
-		hud.add_hud_to(src)
+		hud.add_hud_to(src, src)
 		current_huds += hud_choice
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)
@@ -236,16 +235,27 @@
 /mob/camera/imaginary_friend/forceMove(atom/destination)
 	dir = get_dir(get_turf(src), destination)
 	loc = destination
-	show()
+	update_image()
+	orbiting?.end_orbit(src)
+
+/mob/camera/imaginary_friend/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	// pixel_y = -2
+	animate(src, pixel_y = 0, time = 10, loop = -1)
 
 /// returns the friend to the owner
 /mob/camera/imaginary_friend/proc/recall()
 	if(QDELETED(owner))
 		deactivate()
 		return FALSE
-	if(loc == owner)
+	if(orbit_target == owner)
+		orbiting?.end_orbit(src)
 		return FALSE
-	forceMove(owner)
+	if(!hidden)
+		hide.action_activate()
+	dir = SOUTH
+	update_image()
+	orbit(owner)
 
 /// logs the imaginary friend's removal, ghosts them and cleans up the friend
 /mob/camera/imaginary_friend/proc/deactivate()
@@ -261,32 +271,39 @@
 	icon = friend_image
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/mob/ghost = ..()
-	if(ghost.mind)
+	if(ghost?.mind)
 		ghost.mind.original = aghosted_original_mob
 	return ghost
 
-/datum/action/innate/imaginary_join
-	name = "Join"
+/datum/action/innate/imaginary_orbit
+	name = "Orbit"
 	action_icon_state = "joinmob"
 
-/datum/action/innate/imaginary_join/action_activate()
+/datum/action/innate/imaginary_orbit/action_activate()
+	. = ..()
 	var/mob/camera/imaginary_friend/friend = owner
 	friend.recall()
+
 /datum/action/innate/imaginary_hide
 	name = "Hide"
 	action_icon_state = "hidemob"
 
 /datum/action/innate/imaginary_hide/action_activate()
+	. = ..()
 	var/mob/camera/imaginary_friend/friend = owner
 	if(friend.hidden)
 		friend.hidden = FALSE
-		friend.show()
+		friend.update_image()
 		name = "Hide"
 		action_icon_state = "hidemob"
 		update_button_icon()
 	else
 		friend.hidden = TRUE
-		friend.show()
+		friend.update_image()
 		name = "Show"
 		action_icon_state = "unhidemob"
 		update_button_icon()
+
+/datum/action/innate/imaginary_hide/update_button_icon()
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

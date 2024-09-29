@@ -192,21 +192,53 @@
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
-//MAUSER MERC PISTOL //Inspired by the Makarov.
+//Type 31 pistol. //A makarov
 
-/obj/item/ammo_magazine/pistol/c99
-	name = "\improper PK-9 magazine (.380)"
+/obj/item/ammo_magazine/pistol/np92
+	name = "\improper NP92 magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol
-	caliber = ".380"
+	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9"
-	max_rounds = 8
-	gun_type = /obj/item/weapon/gun/pistol/c99
+	icon_state = "np92mag"
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/pistol/np92
 
-/obj/item/ammo_magazine/pistol/c99/tranq
-	name = "\improper PK-9 tranquilizer magazine (.380)"
+/obj/item/ammo_magazine/pistol/np92/suppressed
+	name = "\improper NPZ92 magazine (9x18mm Makarov)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9x18mm Makarov"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "npz92mag"
+	max_rounds = 12
+
+/obj/item/ammo_magazine/pistol/np92/tranq
+	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol/tranq
-	icon_state = "pk-9_tranq"
+	caliber = "9x18mm Makarov"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "npz92tranqmag"
+	max_rounds = 12
+
+//-------------------------------------------------------
+//Type 73 pistol. //A TT
+
+/obj/item/ammo_magazine/pistol/t73
+	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = "7.62x25mm Tokarev"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "ttmag"
+	max_rounds = 9
+	gun_type = /obj/item/weapon/gun/pistol/t73
+
+/obj/item/ammo_magazine/pistol/t73_impact
+	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	caliber = "7.62x25mm Tokarev"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "ttmag_impact"
+	max_rounds = 9
+	gun_type = /obj/item/weapon/gun/pistol/t73/leader
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
@@ -316,7 +348,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper CZ-81 20-round magazine (.32ACP)"
 	desc = "A .32ACP caliber magazine for the CZ-81."
 	caliber = ".32ACP"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20

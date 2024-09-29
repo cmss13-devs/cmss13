@@ -7,8 +7,8 @@
 	ambience_exterior = AMBIENCE_NV
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = TROPICAL_TEMP
-	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_COLONY
 
 //shuttle stuff
@@ -17,7 +17,6 @@
 	name = "New Varadero - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -26,7 +25,6 @@
 	name = "New Varadero - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -35,7 +33,6 @@
 /area/varadero/exterior
 	name = "New Varadero - Exterior"
 	ceiling = CEILING_NONE
-	lighting_use_dynamic = TRUE
 	ambience_exterior = AMBIENCE_NV
 	//soundscape_playlist
 
@@ -88,6 +85,7 @@
 	requires_power = FALSE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
 	name = "New Varadero - Palm Airfield"
@@ -102,12 +100,14 @@
 	icon_state = "lz1"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz2_near
 	name = "New Varadero - Palm Airfield"
 	icon_state = "lz2"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 
 /area/varadero/exterior/pontoon_beach
 	name = "New Varadero - Rockabilly Beach"
@@ -115,11 +115,13 @@
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
+/area/varadero/exterior/pontoon_beach/lz
+	is_landing_zone = TRUE
+
 /area/varadero/exterior/eastbeach
 	name = "New Varadero - East Beach"
 	is_resin_allowed = FALSE
 	icon_state = "varadero1"
-	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/varadero/exterior/monsoon
@@ -130,7 +132,6 @@
 /area/varadero/exterior/pool
 	name = "New Varadero - Interior Pool"
 	icon_state = "varadero1"
-	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/varadero/exterior/eastocean
@@ -163,6 +164,7 @@
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	is_landing_zone = TRUE
 
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
@@ -292,8 +294,6 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	luminosity = 0
-	lighting_use_dynamic = 1
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
 
@@ -311,8 +311,7 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	luminosity = 0
-	lighting_use_dynamic = 1
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 
 /area/varadero/interior_protected/caves/central

@@ -96,6 +96,7 @@
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
+	demolition_mod = 0.1
 	w_class = SIZE_TINY
 	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
@@ -195,16 +196,100 @@
  */
 
 /obj/item/tool/surgery/bonegel
-	name = "bone gel"
+	name = "bottle of bone gel"
+	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
+	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
-	force = 0
-	throwforce = 1
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
+	///base icon state for update_icon() to reference, fixes bonegel/empty
+	var/base_icon_state = "bone-gel"
+	///percent of gel remaining in container
+	var/remaining_gel = 100
+	///If gel is used when doing bone surgery
+	var/unlimited_gel = FALSE
+	///Time it takes per 10% of gel refilled
+	var/time_per_refill = 1 SECONDS
+	///if the bone gel is actively being refilled
+	var/refilling = FALSE
+
+	///How much bone gel is needed to fix a fracture
+	var/fracture_fix_cost = 5
+	///How much bone gel is needed to mend bones
+	var/mend_bones_fix_cost = 5
+
+/obj/item/tool/surgery/bonegel/update_icon()
+	. = ..()
+	if(remaining_gel >= 100)
+		icon_state = base_icon_state
+		return
+	if(remaining_gel > 50)
+		icon_state = "[base_icon_state]_75"
+		return
+	if(remaining_gel > 25)
+		icon_state = "[base_icon_state]_50"
+		return
+	if(remaining_gel > 0)
+		icon_state = "[base_icon_state]_25"
+		return
+	icon_state = "[base_icon_state]_0"
+
+/obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
+	. = ..()
+	if(unlimited_gel) //Only show how much gel is left if it actually uses bone gel
+		return
+	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] is remaining."
+	. += "[src] can be refilled from a osteomimetic lattice fabricator."
+
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
+		return
+	. += SPAN_NOTICE("You would need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
+	. += SPAN_NOTICE("You would need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
+
+/obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
+	if(unlimited_gel)
+		to_chat(user, SPAN_NOTICE("[refilling_obj] refuses to fill [src]."))
+		return
+	if(remaining_gel >= 100)
+		to_chat(user, SPAN_NOTICE("[src] cannot be filled with any more bone gel."))
+		return
+
+	if(refilling)
+		to_chat(user, SPAN_NOTICE("You are already refilling [src] from [refilling_obj]."))
+		return
+	refilling = TRUE
+
+	while(remaining_gel < 100)
+		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, refilling_obj))
+			break
+		remaining_gel = clamp(remaining_gel + 10, 0, 100)
+		update_icon()
+		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
+
+	refilling = FALSE
+	playsound(refilling_obj, "sound/machines/ping.ogg", 10)
+	to_chat(user, SPAN_NOTICE("You remove [src] from [refilling_obj]."))
+
+/obj/item/tool/surgery/bonegel/proc/use_gel(gel_cost)
+	if(unlimited_gel)
+		return TRUE
+
+	if(remaining_gel < gel_cost)
+		return FALSE
+	remaining_gel -= gel_cost
+	update_icon()
+	return TRUE
+
+/obj/item/tool/surgery/bonegel/empty
+	remaining_gel = 0
+	icon_state = "bone-gel_0"
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
+	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
+	base_icon_state = "predator_bone-gel"
 	icon_state = "predator_bone-gel"
+	unlimited_gel = TRUE
 
 /*
  * Fix-o-Vein
@@ -235,7 +320,7 @@
 /obj/item/tool/surgery/surgical_line
 	name = "\proper surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
-	icon_state = "line"
+	icon_state = "line_brute"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -253,10 +338,7 @@
 	name = "Synth-Graft"
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
-	/// Placeholder.
-	icon_state = "line"
-	/// Placeholder, to distinguish from surgical line.
-	color = "yellow"
+	icon_state = "line_burn"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -450,8 +532,8 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move")
 					return
 				to_chat(usr, "You've cut through the outer layers of Chitin")
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
 				active = 0
 		if(1)
@@ -460,7 +542,7 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
 				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
-				new /obj/item/XenoBio/Blood(T.loc)//This will be a sample of blood eventually
+				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
@@ -470,7 +552,7 @@ t. optimisticdude
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
 				to_chat(usr, "You've cut out some Biomass...")
-				new /obj/item/XenoBio/Resin(T.loc)//This will be an organ eventually, based on the caste.
+				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
@@ -480,6 +562,6 @@ t. optimisticdude
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0
-				new /obj/item/XenoBio/Resin(T.loc)
+				new /obj/item/oldresearch/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)
 				qdel(T)

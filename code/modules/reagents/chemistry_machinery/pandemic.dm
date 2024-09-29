@@ -59,10 +59,10 @@
 			if(B)
 				var/datum/disease/D = null
 				if(!vaccine_type)
-					D = archive_diseases[path]
+					D = GLOB.archive_diseases[path]
 					vaccine_type = path
 				else
-					if(vaccine_type in diseases)
+					if(vaccine_type in GLOB.diseases)
 						D = new vaccine_type(0, null)
 
 				if(D)
@@ -75,7 +75,7 @@
 							Blood = L
 							break
 					var/list/res = Blood.data_properties["resistances"]
-					spawn(res.len*200)
+					spawn(length(res)*200)
 						wait = null
 		else
 			temphtml = "The replicator is not ready yet."
@@ -87,14 +87,13 @@
 			if(!(virus_type in discovered_diseases))
 				return
 			var/obj/item/reagent_container/glass/bottle/B = new/obj/item/reagent_container/glass/bottle(src.loc)
-			B.icon_state = "bottle3"
 			var/datum/disease/D = null
 			if(!virus_type)
-				var/datum/disease/advance/A = archive_diseases[href_list["create_virus_culture"]]
+				var/datum/disease/advance/A = GLOB.archive_diseases[href_list["create_virus_culture"]]
 				if(A)
 					D = new A.type(0, A)
 			else
-				if(virus_type in diseases) // Make sure this is a disease
+				if(virus_type in GLOB.diseases) // Make sure this is a disease
 					D = new virus_type(0, null)
 			var/list/data = list("viruses"=list(D))
 			var/name = strip_html(input(user,"Name:","Name the culture",D.name))
@@ -129,10 +128,10 @@
 		if(user.stat || user.is_mob_restrained()) return
 		if(!in_range(src, user)) return
 		var/id = href_list["name_disease"]
-		if(archive_diseases[id])
-			var/datum/disease/advance/A = archive_diseases[id]
+		if(GLOB.archive_diseases[id])
+			var/datum/disease/advance/A = GLOB.archive_diseases[id]
 			A.AssignName(new_name)
-			for(var/datum/disease/advance/AD in active_diseases)
+			for(var/datum/disease/advance/AD in SSdisease.all_diseases)
 				AD.Refresh()
 		updateUsrDialog()
 
@@ -161,7 +160,7 @@
 			if(B)
 				Blood = B
 				break
-		if(!beaker.reagents.total_volume||!beaker.reagents.reagent_list.len)
+		if(!beaker.reagents.total_volume||!length(beaker.reagents.reagent_list))
 			dat += "The beaker is empty<BR>"
 		else if(!Blood)
 			dat += "No blood sample found in beaker"
@@ -173,7 +172,7 @@
 
 			if(Blood.data_properties["viruses"])
 				var/list/vir = Blood.data_properties["viruses"]
-				if(vir.len)
+				if(length(vir))
 					for(var/datum/disease/D in Blood.data_properties["viruses"])
 						if(!D.hidden[PANDEMIC])
 
@@ -184,7 +183,7 @@
 							if(istype(D, /datum/disease/advance))
 
 								var/datum/disease/advance/A = D
-								D = archive_diseases[A.GetDiseaseID()]
+								D = GLOB.archive_diseases[A.GetDiseaseID()]
 								disease_creation = A.GetDiseaseID()
 								if(D.name == "Unknown")
 									dat += "<b><a href='?src=\ref[src];name_disease=[A.GetDiseaseID()]'>Name Disease</a></b><BR>"
@@ -210,13 +209,13 @@
 			dat += "<BR><b>Contains antibodies to:</b> "
 			if(Blood.data_properties["resistances"])
 				var/list/res = Blood.data_properties["resistances"]
-				if(res.len)
+				if(length(res))
 					dat += "<ul>"
 					for(var/type in Blood.data_properties["resistances"])
 						var/disease_name = "Unknown"
 
 						if(!ispath(type))
-							var/datum/disease/advance/A = archive_diseases[type]
+							var/datum/disease/advance/A = GLOB.archive_diseases[type]
 							if(A)
 								disease_name = A.name
 						else
@@ -231,7 +230,7 @@
 					dat += "nothing<BR>"
 			else
 				dat += "nothing<BR>"
-		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && beaker.reagents.reagent_list.len) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
+		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && length(beaker.reagents.reagent_list)) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
 		dat += "<A href='?src=\ref[user];mach_close=pandemic'>Close</A>"
 
 	show_browser(user, "<TITLE>[name]</TITLE><BR>[dat]", name, "pandemic")

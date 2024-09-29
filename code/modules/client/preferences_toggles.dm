@@ -15,7 +15,7 @@
 	if(!admin_holder) return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -24,6 +24,22 @@
 	prefs.toggles_chat ^= CHAT_PRAYER
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
+
+/client/verb/toggle_observer_announcement_sounds()
+	set name = "Hear/Silence Ghost Announcements"
+	set category = "Preferences.Sound"
+	set desc = "Toggle hearing a notification of announcements while being an observer."
+	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
+	prefs.save_preferences()
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
+
+/client/verb/toggle_fax_machine_sounds()
+	set name = "Hear/Silence Ghost Fax Machines"
+	set category = "Preferences.Sound"
+	set desc = "Toggle hearing a notification of faxes while being an observer."
+	prefs.toggles_sound ^= SOUND_FAX_MACHINE
+	prefs.save_preferences()
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
 
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"
@@ -48,25 +64,10 @@
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
 /client/verb/togglemidis()
-	set name = "Silence Current Midi"
+	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
-	set desc = "Toggles hearing sounds uploaded by admins"
-	// prefs.toggles_sound ^= SOUND_MIDI // Toggle on/off
-	// prefs.save_preferences() // We won't save the change - it'll be a temporary switch instead of permanent, but they can still make it permanent in character setup.
-	if(prefs.toggles_sound & SOUND_MIDI) // Not using && midi_playing here - since we can't tell how long an admin midi is, the user should always be able to turn it off at any time.
-		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
-		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
-		break_sound.priority = 250
-		src << break_sound //breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
-		if(src.mob.client.midi_silenced) return
-		if(midi_playing)
-			total_silenced++
-			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
-			src.mob.client.midi_silenced = 1
-			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
-				src.mob.client.midi_silenced = 0
-	else
-		to_chat(src, SPAN_BOLDNOTICE("You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you."))
+	set desc = "Stops the current admin sound. You can also use the STOP icon in the player above tgchat."
+	tgui_panel?.stop_music()
 
 /client/verb/togglechat()
 	set name = "Toggle Abovehead Chat"
@@ -225,7 +226,7 @@
 
 	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
 	prefs.save_preferences()
-	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+	update_fullscreen()
 
 /client/verb/toggle_ambient_occlusion()
 	set name = "Toggle Ambient Occlusion"
@@ -271,9 +272,9 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
@@ -282,6 +283,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 	)
 
 	var/dat = ""
@@ -320,6 +323,12 @@
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
 	prefs.save_preferences()
 
+
+/client/proc/toggle_ammo_display_type()
+	prefs.toggle_prefs ^= TOGGLE_AMMO_DISPLAY_TYPE
+	to_chat(usr, SPAN_NOTICE("Guns in semi-automatic mode will now display the ammo on every [SPAN_BOLD(prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "fifth bullet and when the mag has less than 15 rounds left" : "single bullet")]"))
+	prefs.save_preferences()
+
 /client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
@@ -348,14 +357,6 @@
 		to_chat(src, SPAN_BOLDNOTICE("Your messages will no longer be automatically punctuated if they are not punctuated already."))
 	prefs.save_preferences()
 
-/client/proc/toggle_middle_mouse_click() // Toggle whether abilities should use middle or shift clicking
-	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
-	if (prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
-	else
-		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
-	prefs.save_preferences()
-
 /client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
 	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
 	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
@@ -372,12 +373,21 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
 	prefs.save_preferences()
 
-/client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
-	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
-	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+///Toggle whether dual-wielding fires both guns at once or swaps between them.
+/client/proc/toggle_dualwield()
+	if(prefs.dual_wield_pref < DUAL_WIELD_NONE)
+		prefs.dual_wield_pref++
 	else
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		prefs.dual_wield_pref = DUAL_WIELD_FIRE
+
+	switch(prefs.dual_wield_pref)
+		if(DUAL_WIELD_FIRE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		if(DUAL_WIELD_SWAP)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+		if(DUAL_WIELD_NONE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
+
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
@@ -449,6 +459,7 @@
 	else
 		CRASH("receive_random_tip() failed: null message")
 
+/// Toggle in character preferences and toggle preferences to configure what kind of blur overlay is used in game; Either blurry, impaired, or legacy.
 /client/proc/set_eye_blur_type()
 	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
 	if(result == "Blurry")
@@ -460,6 +471,28 @@
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of flash overlay is used in game; Either white or black.
+/client/proc/set_flash_type()
+	var/result = tgui_alert(src, "What type of flash overlay do you want?", "What type of flash overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be white."))
+	else if(result == "Dark")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of crit overlay is used in game; Either white or grey.
+/client/proc/set_crit_type()
+	var/result = tgui_alert(src, "What type of crit overlay do you want?", "What type of crit overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be white."))
+	else if(result == "Dark")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
 	prefs.save_preferences()
 
 /client/verb/toggle_tgui_say()
@@ -553,7 +586,7 @@
 	set category = "Preferences"
 	set desc = "Shows ghost-related preferences."
 
-	add_verb(src, ghost_prefs_verbs)
+	add_verb(src, GLOB.ghost_prefs_verbs)
 	remove_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/hide_ghost_preferences() // Hides ghost-related preferences.
@@ -561,7 +594,7 @@
 	set category = "Preferences"
 	set desc = "Hides ghost-related preferences."
 
-	remove_verb(src, ghost_prefs_verbs)
+	remove_verb(src, GLOB.ghost_prefs_verbs)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/toggle_ghost_hivemind()
@@ -608,6 +641,14 @@
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 	prefs.save_preferences()
 
+/client/proc/toggle_ghost_spyradio()
+	set name = "Toggle GhostSpyRadio"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle between hearing listening devices or not."
+	prefs.toggles_chat ^= CHAT_LISTENINGBUG
+	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	prefs.save_preferences()
+
 /client/proc/toggle_ghost_hud()
 	set name = "Toggle Ghost HUDs"
 	set category = "Preferences.Ghost"
@@ -623,31 +664,31 @@
 
 	if(!isobserver(usr))
 		return
-	var/mob/dead/observer/O = usr
+	var/mob/dead/observer/observer_user = usr
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			H = huds[MOB_HUD_FACTION_UPP]
+			H = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			H = huds[MOB_HUD_FACTION_WY]
+			H = GLOB.huds[MOB_HUD_FACTION_WY]
 		if("Faction TWE HUD")
-			H = huds[MOB_HUD_FACTION_TWE]
+			H = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
-			H = huds[MOB_HUD_FACTION_CLF]
+			H = GLOB.huds[MOB_HUD_FACTION_CLF]
 
-	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-	if(O.HUD_toggled[hud_choice])
-		H.add_hud_to(O)
+	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
+	if(observer_user.HUD_toggled[hud_choice])
+		H.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(O)
+		H.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"
@@ -691,7 +732,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set name = "Show Combat Chat Prefs"
 	set desc = "Shows additional chat preferences for combat and ghost messages."
 
-	add_verb(src, combat_chat_prefs_verbs)
+	add_verb(src, GLOB.combat_chat_prefs_verbs)
 	remove_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/hide_combat_chat_preferences() // Hides additional chat logs preferences.
@@ -699,7 +740,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set name = "Hide Combat Chat Prefs"
 	set desc = "Hides additional chat preferences for combat and ghost messages."
 
-	remove_verb(src, combat_chat_prefs_verbs)
+	remove_verb(src, GLOB.combat_chat_prefs_verbs)
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/toggle_chat_shooting()
@@ -750,22 +791,23 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"]."))
 	prefs.save_preferences()
 
-var/list/combat_chat_prefs_verbs = list(
+GLOBAL_LIST_INIT(combat_chat_prefs_verbs, list(
 	/client/proc/toggle_chat_shooting,
 	/client/proc/toggle_chat_xeno_attack,
 	/client/proc/toggle_chat_xeno_armor,
 	/client/proc/toggle_chat_someone_hit,
 	/client/proc/toggle_chat_you_hit,
 	/client/proc/toggle_chat_you_pain,
-	/client/proc/hide_combat_chat_preferences)
+	/client/proc/hide_combat_chat_preferences))
 
-var/list/ghost_prefs_verbs = list(
+GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_ears,
 	/client/proc/toggle_ghost_sight,
 	/client/proc/toggle_ghost_radio,
+	/client/proc/toggle_ghost_spyradio,
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,
 	/client/proc/toggle_ghost_health_scan,
 	/client/proc/pick_ghost_orbit,
-	/client/proc/hide_ghost_preferences)
+	/client/proc/hide_ghost_preferences))

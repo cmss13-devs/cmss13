@@ -1,144 +1,219 @@
 /obj/structure/machinery/fuelcell_recycler
-	name = "fuel cell recycler"
+	name = "\improper fuel cell recycler"
 	desc = "A large machine with whirring fans and two cylindrical holes in the top. Used to regenerate fuel cells."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "recycler"
-	anchored = TRUE
-	density = TRUE
-	idle_power_usage = 5
 	active_power_usage = 15000
-	bound_height = 32
-	bound_width = 32
-	var/obj/item/fuelCell/cell_left = null
-	var/obj/item/fuelCell/cell_right = null
 	unslashable = TRUE
 	unacidable = TRUE
+	indestructible = TRUE
 
-/obj/structure/machinery/fuelcell_recycler/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/fuelCell))
-		if(!cell_left)
-			if(user.drop_inv_item_to_loc(I, src))
-				cell_left = I
-				start_processing()
-		else if(!cell_right)
-			if(user.drop_inv_item_to_loc(I, src))
-				cell_right = I
-				start_processing()
+	///How much to recharge the cells per process
+	var/recharge_amount = 5
+	///A fuel cell in the recycler
+	var/obj/item/fuel_cell/cell_left
+	///A fuel cell in the recycler
+	var/obj/item/fuel_cell/cell_right
+
+/obj/structure/machinery/fuelcell_recycler/Destroy()
+	. = ..()
+	QDEL_NULL(cell_left)
+	QDEL_NULL(cell_right)
+
+/obj/structure/machinery/fuelcell_recycler/ex_act(severity)
+	if(indestructible)
+		return
+	. = ..()
+
+/obj/structure/machinery/fuelcell_recycler/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("It is [machine_processing ? "online" : "offline"].")
+	if(!ishuman(user))
+		return
+
+	if(cell_left)
+		. += SPAN_INFO("The left cell is at [cell_left.get_fuel_percent()]%.")
+	if(cell_right)
+		. += SPAN_INFO("The right cell is at [cell_right.get_fuel_percent()]%.")
+
+/obj/structure/machinery/fuelcell_recycler/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/fuel_cell))
+		to_chat(user, SPAN_NOTICE("[src] rejects [attacking_item]. It can only regenerate fuel cells."))
+		return
+	var/obj/item/fuel_cell/cell = attacking_item
+
+	if(cell_left && cell_right)
+		to_chat(user, SPAN_NOTICE("[src] cannot regenerate any more fuel cells. Remove [cell_left] or [cell_right] first."))
+		return
+
+	if(cell.get_fuel_percent() == 100)
+		to_chat(user, SPAN_NOTICE("[cell] is already full and does not need to be regenerated."))
+		return
+
+	if(!user.drop_inv_item_to_loc(cell, src))
+		to_chat(user, SPAN_WARNING("You fail to insert [cell] into [src]."))
+		return
+
+	add_fingerprint(user)
+	var/inserted_to_left = TRUE
+	if(!cell_left)
+		cell_left = cell
+	else if(!cell_right)
+		inserted_to_left = FALSE
+		cell_right = cell
+
+	to_chat(user, SPAN_NOTICE("You insert [cell] into the [inserted_to_left ? "left" : "right"] fuel cell receptacle."))
+	update_icon()
+	if(!machine_processing)
+		visible_message(SPAN_NOTICE("[src] starts whirring as it turns on."))
+		update_use_power(USE_POWER_ACTIVE)
+		start_processing()
+
+/obj/structure/machinery/fuelcell_recycler/attack_hand(mob/user)
+	if(!cell_left && !cell_right)
+		to_chat(user, SPAN_NOTICE("[src] is empty."))
+		return
+
+	add_fingerprint(user)
+	cell_left?.update_icon()
+	cell_right?.update_icon()
+
+	if(cell_left && cell_right)
+		if(cell_left.get_fuel_percent() >= cell_right.get_fuel_percent())
+			user.put_in_hands(cell_left)
+			cell_left = null
 		else
-			to_chat(user, SPAN_NOTICE("The recycler is full!"))
-			return
+			user.put_in_hands(cell_right)
+			cell_right = null
 		update_icon()
-	else
-		to_chat(user, SPAN_NOTICE("You can't see how you'd use [I] with [src]..."))
 		return
 
-/obj/structure/machinery/fuelcell_recycler/attack_hand(mob/M)
-	if(cell_left == null && cell_right == null)
-		to_chat(M, SPAN_NOTICE("The recycler is empty."))
-		return
-
-	add_fingerprint(M)
-
-	if(cell_right == null)
-		cell_left.update_icon()
-		M.put_in_hands(cell_left)
+	if(cell_left)
+		user.put_in_hands(cell_left)
 		cell_left = null
 		update_icon()
-	else if(cell_left == null)
-		cell_right.update_icon()
-		M.put_in_hands(cell_right)
+		return
+
+	if(cell_right)
+		user.put_in_hands(cell_right)
 		cell_right = null
 		update_icon()
-	else
-		if(cell_left.get_fuel_percent() > cell_right.get_fuel_percent())
-			cell_left.update_icon()
-			M.put_in_hands(cell_left)
-			cell_left = null
-			update_icon()
-		else
-			cell_right.update_icon()
-			M.put_in_hands(cell_right)
-			cell_right = null
-			update_icon()
 
 /obj/structure/machinery/fuelcell_recycler/process()
 	if(inoperable())
-		update_use_power(USE_POWER_NONE)
-		update_icon()
+		turn_off()
 		return
-	if(!cell_left && !cell_right)
-		update_use_power(USE_POWER_IDLE)
-		update_icon()
-		stop_processing()
-		return
-	else
-		var/active = FALSE
-		if(cell_left != null)
-			if(!cell_left.is_regenerated())
-				active = TRUE
-				cell_left.give(active_power_usage*(CELLRATE * 0.1))
-		if(cell_right != null)
-			if(!cell_right.is_regenerated())
-				active = TRUE
-				cell_right.give(active_power_usage*(CELLRATE * 0.1))
-		if(active)
-			update_use_power(USE_POWER_ACTIVE)
-		else
-			update_use_power(USE_POWER_IDLE)
-			stop_processing()
 
-		update_icon()
+	if(!cell_left && !cell_right)
+		balloon_alert_to_viewers("no cells detected.")
+		turn_off()
+		return
+
+	if((!cell_right && cell_left?.is_regenerated()) || (!cell_left && cell_right?.is_regenerated()) || (cell_left?.is_regenerated() && cell_right?.is_regenerated()))
+		balloon_alert_to_viewers("all cells charged.")
+		turn_off()
+		return
+
+	if(cell_left && !cell_left.is_regenerated())
+		recharge_cell(cell_left)
+
+	if(cell_right && !cell_right.is_regenerated())
+		recharge_cell(cell_right)
+
+	update_icon()
 
 /obj/structure/machinery/fuelcell_recycler/power_change()
 	..()
 	update_icon()
 
 /obj/structure/machinery/fuelcell_recycler/update_icon()
-	src.overlays.Cut()
+	overlays.Cut()
+
+	if(cell_left)
+		overlays += "overlay_left_cell"
+	if(cell_right)
+		overlays += "overlay_right_cell"
 
 	if(inoperable())
-		icon_state = "recycler0"
-		if(cell_left != null)
-			src.overlays += "recycler-left-cell"
-		if(cell_right != null)
-			src.overlays += "recycler-right-cell"
-		return
-	else
 		icon_state = "recycler"
-
-	var/overlay_builder = "recycler-"
-	if(cell_left == null && cell_right == null)
 		return
-	if(cell_right == null)
+
+	if(cell_left)
 		if(cell_left.is_regenerated())
-			overlay_builder += "left-charged"
+			overlays += "overlay_left_charged"
 		else
-			overlay_builder += "left-charging"
+			overlays += "overlay_left_charging"
 
-		src.overlays += overlay_builder
-		src.overlays += "recycler-left-cell"
-		return
-	else if(cell_left == null)
+	if(cell_right)
 		if(cell_right.is_regenerated())
-			overlay_builder += "right-charged"
+			overlays += "overlay_right_charged"
 		else
-			overlay_builder += "right-charging"
+			overlays += "overlay_right_charging"
 
-		src.overlays += overlay_builder
-		src.overlays += "recycler-right-cell"
+	if(!machine_processing)
+		icon_state = "recycler"
 		return
-	else // both left and right cells are there
-		if(cell_left.is_regenerated())
-			overlay_builder += "left-charged"
-		else
-			overlay_builder += "left-charging"
+	icon_state = "recycler_on"
 
-		if(cell_right.is_regenerated())
-			overlay_builder += "-right-charged"
-		else
-			overlay_builder += "-right-charging"
+/obj/structure/machinery/fuelcell_recycler/proc/turn_off()
+	visible_message(SPAN_NOTICE("[src] stops whirring as it turns off."))
+	stop_processing()
+	update_icon()
+	update_use_power(USE_POWER_NONE)
 
-		src.overlays += overlay_builder
-		src.overlays += "recycler-left-cell"
-		src.overlays += "recycler-right-cell"
-		return
+/obj/structure/machinery/fuelcell_recycler/proc/recharge_cell(obj/item/fuel_cell/cell)
+	cell.modify_fuel(recharge_amount)
+	if(!cell.new_cell)
+		cell.new_cell = TRUE
+
+/obj/structure/machinery/fuelcell_recycler/full/Initialize(mapload, ...)
+	. = ..()
+	cell_left = new(src)
+	cell_right = new(src)
+	update_icon()
+
+//reactor full cells
+/obj/item/fuel_cell
+	name = "\improper WL-6 universal fuel cell"
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "cell-full"
+	desc = "A rechargeable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
+	///How much fuel is in the reactor
+	var/fuel_amount = 100
+	///Max amount that the cell can hold
+	var/max_fuel_amount = 100
+	///If the fuel cell has been used since last recharge
+	var/new_cell = TRUE
+
+/obj/item/fuel_cell/update_icon()
+	switch(get_fuel_percent())
+		if(-INFINITY to 0)
+			icon_state = "cell-empty"
+		if(0 to 25)
+			icon_state = "cell-low"
+		if(25 to 75)
+			icon_state = "cell-medium"
+		if(75 to 99)
+			icon_state = "cell-high"
+		if(100 to INFINITY)
+			icon_state = "cell-full"
+
+/obj/item/fuel_cell/get_examine_text(mob/user)
+	.  = ..()
+	if(ishuman(user))
+		. += "The fuel indicator reads: [get_fuel_percent()]%"
+
+///Percentage of fuel left in the cell
+/obj/item/fuel_cell/proc/get_fuel_percent()
+	return floor(100 * fuel_amount/max_fuel_amount)
+
+///Whether the fuel cell is full
+/obj/item/fuel_cell/proc/is_regenerated()
+	return (fuel_amount == max_fuel_amount)
+
+/// increase or decrease fuel, making sure it cannot go above the max
+/obj/item/fuel_cell/proc/modify_fuel(amount)
+	fuel_amount = clamp(fuel_amount + amount, 0, max_fuel_amount)
+
+/obj/item/fuel_cell/used
+	new_cell = FALSE

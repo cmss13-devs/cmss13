@@ -39,7 +39,6 @@
 		if(nest)
 			new_human.buckled = nest
 			new_human.setDir(nest.dir)
-			new_human.update_canmove()
 			nest.buckled_mob = new_human
 			nest.afterbuckle(new_human)
 	new_human.spawned_corpse = TRUE
@@ -49,76 +48,12 @@
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	add_random_survivor_equipment(new_human)
-	add_survivor_weapon_civilian(new_human)
 	add_survivor_weapon_pistol(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/realpirate
-	name = "Corpse - Pirate"
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_ILLEGAL_PIRATE,
-	)
-
-/datum/equipment_preset/corpse/realpirate/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(new_human), WEAR_HEAD)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/corpse/realpirate/ranged
-	name = "Corpse - Pirate Gunner"
-
-/datum/equipment_preset/corpse/realpirate/ranged/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/pirate(new_human), WEAR_HEAD)
-	. = ..()
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/corpse/russian
-	name = "Corpse - Russian"
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-	)
-
-/datum/equipment_preset/corpse/russian
-
-/datum/equipment_preset/corpse/russian/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
-	if(prob(25))
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bearpelt(new_human), WEAR_HEAD)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(new_human), WEAR_HEAD)
 
 //*****************************************************************************************************/
 // Civilians
@@ -128,15 +63,11 @@
 	assignment = "Prisoner"
 
 /datum/equipment_preset/corpse/prisoner/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
@@ -147,132 +78,82 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/doctor
 	name = "Corpse - Doctor"
-	assignment = "Medical Doctor"
+	assignment = "Doctor"
+	idtype = /obj/item/card/id/silver/clearance_badge
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/doctor/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_JACKET)
 	add_random_survivor_medical_gear(new_human)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/engineer
 	name = "Corpse - Engineer"
-	assignment = "Station Engineer"
+	assignment = "Engineer"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/engineer/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
-
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/corpse/clown
-	name = "Corpse - Clown"
-	assignment = "Clown"
-	uses_special_name = TRUE
-
-/datum/equipment_preset/corpse/clown/New()
-	. = ..()
-	//As a joke, clown has all access so they can clown everywhere...
-	access = get_all_main_access()
-
-/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
-	. = ..() //To load gender, randomise appearance, etc.
-	new_human.change_real_name(new_human, pick(clown_names)) //Picking a proper clown name!
-
-/datum/equipment_preset/corpse/clown/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/toy/bikehorn(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(new_human), WEAR_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/scientist
 	name = "Corpse - Scientist"
 	assignment = "Scientist"
+	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	xenovictim = TRUE
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/virologist(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/green(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/chem(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/green(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -283,34 +164,32 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/miner/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/industrial(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security
 	name = "Corpse - Security"
-	assignment = "Deputy"
+	assignment = "Security Officer"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
@@ -321,12 +200,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
-
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/security/marshal
-	name = "Corpse - Colonial Marshal"
-	assignment = "Colonial Marshal"
+/datum/equipment_preset/corpse/security/cmb
+	name = "Corpse - Colonial Marshal Deputy"
+	rank = JOB_CMB
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/deputy
 	xenovictim = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -338,14 +218,10 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/security/marshal/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+/datum/equipment_preset/corpse/security/cmb/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(new_human), WEAR_WAIST)
@@ -355,19 +231,21 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-
 	. = ..()
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/security/liaison
+/datum/equipment_preset/corpse/liaison
 	name = "Corpse - Corporate Liaison"
-	assignment = "Corporate Liaison"
+	assignment = JOB_EXECUTIVE
+	rank = JOB_EXECUTIVE
+	faction_group = FACTION_LIST_WY
+	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	xenovictim = TRUE
-	paygrade = "WYC2"
 	access = list(
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_EXEC,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -377,29 +255,36 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/security/liaison/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+/datum/equipment_preset/corpse/liaison/load_gear(mob/living/carbon/human/new_human)
+	var/random = rand(1,4)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
 	add_random_cl_survivor_loot(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+
+	switch(random)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+
 	. = ..()
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/corpse/prison_security
+/datum/equipment_preset/corpse/prison_guard
 	name = "Corpse - Prison Guard"
 	assignment = "Prison Guard"
 	access = list(
@@ -412,14 +297,12 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/new_human)
-
+/datum/equipment_preset/corpse/prison_guard/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
@@ -428,11 +311,21 @@
 //*****************************************************************************************************/
 								/////////////////Officers//////////////////////
 
-/datum/equipment_preset/corpse/bridgeofficer
-	name = "Corpse - Staff Officer"
-	idtype = /obj/item/card/id/general
-	assignment = "Staff Officer"
+/datum/equipment_preset/corpse/manager
+	name = "Corpse - Colony Division Manager"
+	assignment = "Colonial Division Manager"
+	rank = JOB_DIVISION_MANAGER
+	faction_group = FACTION_LIST_WY
+	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_FLIGHT,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_EXEC,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -442,23 +335,25 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/bridgeofficer/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_officer(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+/datum/equipment_preset/corpse/manager/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/corpse/bridgeofficer/johnson
-	name = "Corpse - Mr. Johnson Telovin"
-	idtype = /obj/item/card/id/general
-	assignment = "Bridge Officer"
-	uses_special_name = TRUE
-	paygrade = "WYC2"
+
+/datum/equipment_preset/corpse/administrator
+	name = "Corpse - Colony Administrator"
+	assignment = "Colonial Administrator"
+	rank = JOB_DIRECTOR
+	faction_group = FACTION_LIST_WY
+	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -467,51 +362,39 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_FLIGHT,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_EXEC,
+		ACCESS_WY_PMC,
+		ACCESS_WY_PMC_TL,
+		ACCESS_WY_ARMORY,
+		ACCESS_WY_SECRETS,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_SENIOR_LEAD,
 	)
 
-/datum/equipment_preset/corpse/bridgeofficer/johnson/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/waiter(new_human), WEAR_BODY)
-	. = ..()
-
-/datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.change_real_name(new_human, "Johnson Telovin")
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/corpse/commander
-	name = "Corpse - Commanding Officer"
-	idtype = /obj/item/card/id/general
-	assignment = "Commanding Officer"
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-	)
-
-/datum/equipment_preset/corpse/commander/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_commander(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+/datum/equipment_preset/corpse/administrator/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/cohiba(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/centhat(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/executive(new_human), WEAR_R_STORE)
 	add_random_cl_survivor_loot(new_human)
+
+/datum/equipment_preset/corpse/administrator/burst
+	name = "Corpse - Burst Colony Administrator"
+	xenovictim = TRUE
 
 //*****************************************************************************************************/
 
@@ -527,61 +410,43 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_GENERAL,
 	)
 
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/white_service(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
+//*****************************************************************************************************/
 
-/////Actually specific colonists
+//Colonists
 
 /datum/equipment_preset/corpse/colonist
 	name = "Corpse - Colonist"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/colonist/burst
 	name = "Corpse - Burst Colonist"
 	xenovictim = TRUE
 
+//*****************************************************************************************************/
+
 /datum/equipment_preset/corpse/colonist/random
 	name = "Corpse - Colonist Random"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/new_human)
 	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
@@ -592,14 +457,10 @@
 	name = "Corpse - Burst Colonist Random"
 	xenovictim = TRUE
 
+//*****************************************************************************************************/
+
 /datum/equipment_preset/corpse/colonist/kutjevo
 	name = "Corpse - Colonist Kutjevo"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/new_human)
 
@@ -609,18 +470,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/colonist/kutjevo/burst
 	name = "Corpse - Burst Colonist Kutjevo"
 	xenovictim = TRUE
 
-//UA riot control dudes
+//*****************************************************************************************************/
+
+//UA Riot Control Officer
+
 /datum/equipment_preset/corpse/ua_riot
 	name = "Corpse - UA Officer"
 	assignment = "United Americas Riot Officer"
 	idtype = /obj/item/card/id/silver
-	xenovictim = FALSE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -629,30 +492,27 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
 	)
 
 /datum/equipment_preset/corpse/ua_riot/load_gear(mob/living/carbon/human/new_human)
 	var/random = rand(1,5)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/classic_baton(new_human), WEAR_WAIST)
 
 	switch(random)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/security, WEAR_EYES)
-		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big(new_human), WEAR_EYES)
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
 		if(4)
@@ -665,68 +525,66 @@
 	name = "Corpse - Burst UA Officer"
 	xenovictim = TRUE
 
-//Colonial Supervisor Corpse
+//*****************************************************************************************************/
+
+//Colonial Supervisor
+
+/datum/equipment_preset/corpse/wy
+	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
-	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WYC7"
 	assignment = "Colony Supervisor"
-	role_comm_title = "Supervisor"
+	flags = EQUIPMENT_PRESET_EXTRA
+	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_EXEC,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_MEDICAL,
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY,
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	add_random_cl_survivor_loot(new_human)
-
 
 /datum/equipment_preset/corpse/wy/manager/burst
 	name = "Corpse - Burst Corporate Supervisor"
 	xenovictim = TRUE
 
+//*****************************************************************************************************/
+
 //Faction Specific Corpses
+
+//CLF
 
 /datum/equipment_preset/corpse/clf
 	name = "Corpse - Colonial Liberation Front Soldier"
-	assignment = "Colonial Liberation Front Soldier"
-	idtype = /obj/item/card/id/silver
-	xenovictim = FALSE
+	assignment = JOB_CLF
+	idtype = /obj/item/card/id/data
+	rank = JOB_CLF
 	faction = FACTION_CLF
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/clf/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/clf/load_gear(mob/living/carbon/human/new_human)
 
@@ -751,38 +609,31 @@
 	name = "Corpse - Burst Colonial Liberation Front Soldier"
 	xenovictim = TRUE
 
-// UPP
+//*****************************************************************************************************/
+
+//UPP
+
 /datum/equipment_preset/corpse/upp
 	name = "Corpse - Union of Progressive Peoples Soldier"
-	assignment = "Union of Progressive Peoples Soldier"
-	idtype = /obj/item/card/id/silver
-	xenovictim = FALSE
+	assignment = JOB_UPP
+	idtype = /obj/item/card/id/dogtag
+	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
+	rank = JOB_UPP
 	faction = FACTION_UPP
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/upp/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/upp/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP, WEAR_HEAD)
-	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
 	add_random_survivor_equipment(new_human)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -792,7 +643,9 @@
 	name = "Corpse - Burst Union of Progressive Peoples Soldier"
 	xenovictim = TRUE
 
-// PMC
+//*****************************************************************************************************/
+
+//PMC
 
 /datum/equipment_preset/corpse/pmc
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
@@ -801,15 +654,20 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC_STANDARD
-	paygrade = "PMC-OP"
+	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
-	skills = /datum/skills/civilian/survivor/pmc
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_PMC,
 	)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/new_human)
@@ -831,42 +689,49 @@
 	name = "Corpse - Burst Weyland-Yutani PMC (Standard)"
 	xenovictim = TRUE
 
+//*****************************************************************************************************/
+
+//Goon
+
 /datum/equipment_preset/corpse/pmc/goon
 	name = "Corpse - Weyland-Yutani Corporate (Goon)"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = "WEY-GOON"
-	skills = /datum/skills/MP
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+//*****************************************************************************************************/
+
+//Lead Goon
 
 /datum/equipment_preset/corpse/pmc/goon/lead
 	name = "Corpse - Weyland-Yutani Corporate Security Lead (Goon Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = "WEY-GOON-L"
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/lead, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
@@ -874,30 +739,29 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-// Freelancer
+/datum/equipment_preset/corpse/pmc/goon/lead/burst
+	name = "Corpse - Burst Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	xenovictim = TRUE
+
+//*****************************************************************************************************/
+
+//Freelancer
 
 /datum/equipment_preset/corpse/freelancer
-	name = "Corpse - Freelancer Mercenary"
-	assignment = "Freelancer Mercenary"
-	idtype = /obj/item/card/id/silver
-	xenovictim = FALSE
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+	name = "Corpse - Freelancer"
+	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
+	rank = FACTION_FREELANCER
+	idtype = /obj/item/card/id/data
+	faction = FACTION_FREELANCER
+
+/datum/equipment_preset/corpse/freelancer/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/freelancer/load_gear(mob/living/carbon/human/new_human)
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
@@ -908,19 +772,17 @@
 	spawn_merc_helmet(new_human)
 
 /datum/equipment_preset/corpse/freelancer/burst
-	name = "Corpse - Burst Freelancer Mercenary"
+	name = "Corpse - Burst Freelancer"
 	xenovictim = TRUE
 
-// Fun Faction Corpse
+//*****************************************************************************************************/
 
-// Dutch Dozen
+//Fun Faction Corpses
 
-/datum/equipment_preset/corpse/dutchrifle
-	name = "Corpse - Dutch Dozen Rifleman"
-	assignment = "Dutch Dozen Rifleman"
-	idtype = /obj/item/card/id/silver
-	faction = FACTION_DUTCH
-	xenovictim = FALSE
+//Pirates
+
+/datum/equipment_preset/corpse/realpirate
+	name = "Corpse - Pirate"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -929,9 +791,75 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_ILLEGAL_PIRATE,
 	)
+
+/datum/equipment_preset/corpse/realpirate/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(new_human), WEAR_HEAD)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/corpse/realpirate/ranged
+	name = "Corpse - Pirate Gunner"
+
+/datum/equipment_preset/corpse/realpirate/ranged/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/pirate(new_human), WEAR_HEAD)
+	. = ..()
+
+//*****************************************************************************************************/
+
+//Russian(?)
+
+/datum/equipment_preset/corpse/russian
+	name = "Corpse - Russian"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+
+/datum/equipment_preset/corpse/russian
+
+/datum/equipment_preset/corpse/russian/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	if(prob(25))
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bearpelt(new_human), WEAR_HEAD)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(new_human), WEAR_HEAD)
+
+//*****************************************************************************************************/
+
+//Dutch Dozen
+
+/datum/equipment_preset/corpse/dutchrifle
+	name = "Corpse - Dutch Dozen Rifleman"
+	assignment = "Dutch Dozen Rifleman"
+	idtype = /obj/item/card/id/silver
+	faction = FACTION_DUTCH
+	xenovictim = FALSE
+
+/datum/equipment_preset/corpse/dutchrifle/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/corpse/dutchrifle/load_gear(mob/living/carbon/human/new_human)
 
@@ -940,7 +868,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
@@ -951,7 +879,9 @@
 	name = "Corpse - Burst Dutch Dozen Rifleman"
 	xenovictim = TRUE
 
-// Pizza Planet
+//*****************************************************************************************************/
+
+//Pizza Planet
 
 /datum/equipment_preset/corpse/pizza
 	name = "Corpse - Pizza Deliverer"
@@ -959,25 +889,15 @@
 	idtype = /obj/item/card/id/silver
 	faction = FACTION_PIZZA
 	xenovictim = FALSE
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
-	)
+
+/datum/equipment_preset/corpse/pizza/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/corpse/pizza/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pizza, WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-	else
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
@@ -997,7 +917,9 @@
 	name = "Corpse - Burst Pizza Deliverer"
 	xenovictim = TRUE
 
-// Gladiator
+//*****************************************************************************************************/
+
+//Gladiator
 
 /datum/equipment_preset/corpse/gladiator
 	name = "Corpse - Gladiator"
@@ -1014,7 +936,6 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
 	)
 
 /datum/equipment_preset/corpse/gladiator/load_gear(mob/living/carbon/human/new_human)
@@ -1027,7 +948,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(new_human)
 	lantern.name = "Beacon of Holy Light"
@@ -1036,6 +957,7 @@
 	name = "Corpse - Burst Gladiator"
 	xenovictim = TRUE
 
+//*****************************************************************************************************/
 
 //FORECON
 
@@ -1043,10 +965,10 @@
 	name = "Corpse - USCM Reconnaissance Spotter"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
-	paygrade = "ME5"
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,

@@ -75,56 +75,56 @@
 		if(my_chemid) //Do we want a specific chem?
 			chem_id = my_chemid
 		else if(class) //do we want a specific class?
-			chem_id = pick(chemical_gen_classes_list["C[class]"])
+			chem_id = pick(GLOB.chemical_gen_classes_list["C[class]"])
 		else
 			var/roll = rand(0,100)
 			switch(tier)
 				if(0)
-					chem_id = pick(chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
+					chem_id = pick(GLOB.chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
 					if(roll<=35)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=65)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=85)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(2)
 					if(roll<=30)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=55)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=70)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(3)
 					if(roll<=10)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=30)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=50)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=70)
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C5"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						if (prob(50))
-							chem_id = pick(chemical_gen_classes_list["C5"])
+							chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 						else
-							chem_id = pick(chemical_gen_classes_list["C4"])
+							chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 					else if(roll<=15)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=40)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=65)
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 
 					else
-						chem_id = pick(chemical_gen_classes_list["C5"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 
 		//if we are already using this reagent, try again
 		if(required_reagents && required_reagents.Find(chem_id))
@@ -169,7 +169,7 @@
 	while(!gen_name)
 		gen_name = addtext(pick(prefix),pick(wordroot),pick(suffix))
 		//Make sure this name is not already used
-		for(var/datum/reagent/R in chemical_reagents_list)
+		for(var/datum/reagent/R in GLOB.chemical_reagents_list)
 			if(R.name == gen_name)//if we are already using this name, try again
 				gen_name = ""
 	//set name
@@ -249,65 +249,65 @@
 	var/property
 	var/roll = rand(1,100)
 	if(make_rare)
-		property = pick(chemical_properties_list["rare"])
+		property = pick(GLOB.chemical_properties_list["rare"])
 	//Pick the property by value and roll
 	else if(value_offset > 0) //Balance the value of our chemical
-		property = pick(chemical_properties_list["positive"])
+		property = pick(GLOB.chemical_properties_list["positive"])
 	else if(value_offset < 0)
 		if(roll <= gen_tier*10)
-			property = pick(chemical_properties_list["negative"])
+			property = pick(GLOB.chemical_properties_list["negative"])
 		else
-			property = pick(chemical_properties_list["neutral"])
+			property = pick(GLOB.chemical_properties_list["neutral"])
 	else
 		switch(gen_tier)
 			if(1)
 				if(roll<=20)
-					property = pick(chemical_properties_list["negative"])
+					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=50)
-					property = pick(chemical_properties_list["neutral"])
+					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
-					property = pick(chemical_properties_list["positive"])
+					property = pick(GLOB.chemical_properties_list["positive"])
 			if(2)
 				if(roll<=25)
-					property = pick(chemical_properties_list["negative"])
+					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=45)
-					property = pick(chemical_properties_list["neutral"])
+					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
-					property = pick(chemical_properties_list["positive"])
+					property = pick(GLOB.chemical_properties_list["positive"])
 			if(3)
 				if(roll<=15)
-					property = pick(chemical_properties_list["negative"])
+					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=40)
-					property = pick(chemical_properties_list["neutral"])
+					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
-					property = pick(chemical_properties_list["positive"])
+					property = pick(GLOB.chemical_properties_list["positive"])
 			else
 				if(roll<=15)
-					property = pick(chemical_properties_list["negative"])
+					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=40)
-					property = pick(chemical_properties_list["neutral"])
+					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
-					property = pick(chemical_properties_list["positive"])
+					property = pick(GLOB.chemical_properties_list["positive"])
 
 	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
 		var/property_checks = 0
 		while(!check_generated_properties(property) && property_checks < 4)
 			property_checks++
-			if(LAZYISIN(chemical_properties_list["negative"], property))
-				property = pick(chemical_properties_list["negative"])
-			else if(LAZYISIN(chemical_properties_list["neutral"], property))
-				property = pick(chemical_properties_list["neutral"])
+			if(LAZYISIN(GLOB.chemical_properties_list["negative"], property))
+				property = pick(GLOB.chemical_properties_list["negative"])
+			else if(LAZYISIN(GLOB.chemical_properties_list["neutral"], property))
+				property = pick(GLOB.chemical_properties_list["neutral"])
 			else
-				property = pick(chemical_properties_list["positive"])
+				property = pick(GLOB.chemical_properties_list["positive"])
 
-	var/datum/chem_property/P = chemical_properties_list[property]
+	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
 
 	//Calculate what our chemical value is with our level
 	var/new_value
 	if(isNegativeProperty(P))
 		new_value = -1 * level
 	else if(isNeutralProperty(P))
-		new_value = round(-1 * level / 2)
+		new_value = floor(-1 * level / 2)
 	else
 		new_value = level
 
@@ -319,30 +319,6 @@
 //*****************************************************************************************************/
 
 /datum/reagent/proc/insert_property(property, level)
-	//The list below defines what properties should override each other.
-	var/list/conflicting_properties = list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
-											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
-											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_PAINING = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
-											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC, PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC, PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
-											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC, PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
-											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
-											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC, PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE, PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
-											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
-											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
-											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
-											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC)
-	//The list below defines which properties should be combined into a combo property
-	var/list/combining_properties = list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
-											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
-											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
-											PROPERTY_HYPERTHROTTLING = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
-											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
-											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
-											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
-											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING))
 	var/datum/chem_property/match
 	var/datum/chem_property/initial_property
 	for(var/datum/chem_property/P in properties)
@@ -350,8 +326,8 @@
 			match = P
 		else
 			//Handle properties that combine
-			for(var/C in combining_properties)
-				var/list/combo = combining_properties[C]
+			for(var/C in GLOB.combining_properties)
+				var/list/combo = GLOB.combining_properties[C]
 				if(!combo.Find(property) || !combo.Find(P.name))
 					continue
 				var/pieces = 0
@@ -369,11 +345,11 @@
 								LAZYREMOVE(properties, R)
 					break
 			//Handle properties that conflict
-			for(var/C in conflicting_properties)
-				if(property == C && P.name == conflicting_properties[C])
+			for(var/C in GLOB.conflicting_properties)
+				if(property == C && P.name == GLOB.conflicting_properties[C])
 					match = P
 					break
-				else if (property == conflicting_properties[C] && C == P.name)
+				else if (property == GLOB.conflicting_properties[C] && C == P.name)
 					match = P
 					break
 		if(match)
@@ -389,7 +365,7 @@
 				return FALSE
 			break
 	//Insert the property
-	var/datum/chem_property/P = chemical_properties_list[property]
+	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
 	P = new P.type()
 	P.level = level
 	P.holder = src
@@ -397,7 +373,7 @@
 
 	//Special case: If it's a catalyst property, add it nonetheless.
 	if(initial_property && initial_property != property)
-		P = chemical_properties_list[initial_property]
+		P = GLOB.chemical_properties_list[initial_property]
 		if(P.category & PROPERTY_TYPE_CATALYST)
 			P = new P.type()
 			P.level = level
@@ -425,22 +401,22 @@
 	C.gen_tier = gen_tier
 	if(!C.generate_recipe(complexity))
 		return //Generating a recipe failed, so return null
-	chemical_reactions_list[C.id] = C
+	GLOB.chemical_reactions_list[C.id] = C
 	C.add_to_filtered_list()
 	return C
 
 //Returns false if a property has been generated in a previous reagent and all properties of that category haven't been generated yet.
 /datum/reagent/proc/check_generated_properties(datum/chem_property/P)
-	if(LAZYISIN(chemical_properties_list["positive"], P))
-		if(LAZYISIN(GLOB.generated_properties["positive"], P) && LAZYLEN(GLOB.generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
+	if(LAZYISIN(GLOB.chemical_properties_list["positive"], P))
+		if(LAZYISIN(GLOB.generated_properties["positive"], P) && LAZYLEN(GLOB.generated_properties["positive"]) < LAZYLEN(GLOB.chemical_properties_list["positive"]))
 			return FALSE
 		GLOB.generated_properties["positive"] += P
-	else if(LAZYISIN(chemical_properties_list["negative"], P))
-		if(LAZYISIN(GLOB.generated_properties["negative"], P) && LAZYLEN(GLOB.generated_properties["negative"]) < LAZYLEN(chemical_properties_list["negative"]))
+	else if(LAZYISIN(GLOB.chemical_properties_list["negative"], P))
+		if(LAZYISIN(GLOB.generated_properties["negative"], P) && LAZYLEN(GLOB.generated_properties["negative"]) < LAZYLEN(GLOB.chemical_properties_list["negative"]))
 			return FALSE
 		GLOB.generated_properties["negative"] += P
-	else if(LAZYISIN(chemical_properties_list["neutral"], P))
-		if(LAZYISIN(GLOB.generated_properties["neutral"], P) && LAZYLEN(GLOB.generated_properties["neutral"]) < LAZYLEN(chemical_properties_list["neutral"]))
+	else if(LAZYISIN(GLOB.chemical_properties_list["neutral"], P))
+		if(LAZYISIN(GLOB.generated_properties["neutral"], P) && LAZYLEN(GLOB.generated_properties["neutral"]) < LAZYLEN(GLOB.chemical_properties_list["neutral"]))
 			return FALSE
 		GLOB.generated_properties["neutral"] += P
 	return TRUE

@@ -78,6 +78,7 @@
 	data["laws"] += list(create_law_data("Major Laws", SSlaw_init.major_law))
 	data["laws"] += list(create_law_data("Capital Laws", SSlaw_init.capital_law))
 	data["laws"] += list(create_law_data("Optional Laws", SSlaw_init.optional_law))
+	data["laws"] += list(create_law_data("Precautionary Laws", SSlaw_init.precautionary_law))
 
 	return data
 

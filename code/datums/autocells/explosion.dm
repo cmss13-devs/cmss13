@@ -23,7 +23,7 @@
 
 	That's it. There are some special rules, though, namely:
 
-		* If the explosion occured in a wall, the wave is strengthened
+		* If the explosion occurred in a wall, the wave is strengthened
 		with power *= reflection_multiplier and reflected back in the
 		direction it came from
 
@@ -109,7 +109,7 @@
 		survivor.power += dying.power
 
 	// Two waves travling towards each other weakens the explosion
-	if(survivor.direction == reverse_dir[dying.direction])
+	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
 
 	return is_stronger
@@ -120,11 +120,11 @@
 
 	// If the cell is the epicenter, propagate in all directions
 	if(isnull(direction))
-		return alldirs
+		return GLOB.alldirs
 
-	var/dir = reflected ? reverse_dir[direction] : direction
+	var/dir = reflected ? GLOB.reverse_dir[direction] : direction
 
-	if(dir in cardinal)
+	if(dir in GLOB.cardinals)
 		propagation_dirs += list(dir, turn(dir, 45), turn(dir, -45))
 	else
 		propagation_dirs += dir
@@ -180,7 +180,7 @@
 	for(var/dir in to_spread)
 		// Diagonals are longer, that should be reflected in the power falloff
 		var/dir_falloff = 1
-		if(dir in diagonals)
+		if(dir in GLOB.diagonals)
 			dir_falloff = 1.414
 
 		if(isnull(direction))
@@ -210,7 +210,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && (dir in diagonals))
+			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1
 
 			setup_new_cell(E)
@@ -264,7 +264,9 @@ as having entered the turf.
 
 	falloff = max(falloff, power/100)
 
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
+	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
+	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape],[causing_obj ? " from [causing_obj]" : ""][causing_mob ? " by [key_name(causing_mob)]" : ""] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 
@@ -282,6 +284,9 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
+	if(power >= 150) //shockwave for anything over 150 power
+		new /obj/effect/shockwave(epicenter, power/60)
+
 	E.power = power
 	E.power_falloff = falloff
 	E.falloff_shape = falloff_shape
@@ -290,8 +295,7 @@ as having entered the turf.
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+		new /obj/shrapnel_effect(epicenter)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

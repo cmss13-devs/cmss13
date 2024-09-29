@@ -7,6 +7,9 @@
 		to_chat(src, "Guests may not use OOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -15,10 +18,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!ooc_allowed) //Send to LOOC instead
+		if(!GLOB.ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return
-		if(!dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
+		if(!GLOB.dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -42,7 +45,8 @@
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		display_colour = CONFIG_GET(string/ooc_color_other)
+		if(admin_holder.rights & R_MENTOR)
+			display_colour = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
 			display_colour = CONFIG_GET(string/ooc_color_debug)
 		if(admin_holder.rights & R_MOD)
@@ -57,24 +61,38 @@
 		display_colour = CONFIG_GET(string/ooc_color_default)
 
 	msg = process_chat_markup(msg, list("*"))
-
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			if(prefs.unlock_content)
-				if(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC)
-					var/byond = icon('icons/effects/effects.dmi', "byondlogo")
-					display_name = "[icon2html(byond, GLOB.clients)][display_name]"
-			if(CONFIG_GET(flag/ooc_country_flags))
-				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
-					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
-			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."
 	set category = "OOC.OOC"
 	GLOB.ooc_color_override = newColor
 
+///Used by OOC chat to generate icons for player prefix. Intended to make it easy to see at a glance if someone is staff, WL Council or Mentor.
+/client/proc/handle_ooc_prefix()
+	var/prefix = ""
+	if(prefs.unlock_content && (prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC))
+		var/byond = icon('icons/effects/effects.dmi', "byondlogo")
+		prefix += "[icon2html(byond, GLOB.clients)]"
+	if(CONFIG_GET(flag/ooc_country_flags) && (prefs.toggle_prefs & TOGGLE_OOC_FLAG))
+		prefix += "[country2chaticon(src.country, GLOB.clients)]"
+	if(donator)
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+	if(isCouncil(src))
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
+	if(admin_holder)
+		var/list/rank_icons = icon_states('icons/ooc.dmi')
+		var/rankname = admin_holder.rank
+		if(rankname in rank_icons)
+			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+	if(prefix)
+		prefix = "[prefix] "
+	return prefix
 
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
@@ -86,6 +104,9 @@
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -94,10 +115,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!looc_allowed)
+		if(!GLOB.looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
-		if(!dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
+		if(!GLOB.dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -136,7 +157,7 @@
 		if(C.prefs.toggles_chat & CHAT_LOOC)
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
-	if(mob.looc_overhead || ooc_allowed)
+	if(mob.looc_overhead || GLOB.ooc_allowed)
 		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
 		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
 
@@ -203,7 +224,7 @@
 	if(!desired_width)
 		// Calculate desired pixel width using window size and aspect ratio
 		var/height = text2num(map_size[2])
-		desired_width = round(height * aspect_ratio)
+		desired_width = floor(height * aspect_ratio)
 
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])

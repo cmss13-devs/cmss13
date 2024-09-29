@@ -59,7 +59,7 @@
 
 /obj/structure/machinery/chem_dispenser/process()
 	if(!chem_storage)
-		chem_storage = chemical_data.connect_chem_storage(network)
+		chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Initialize()
 	. = ..()
@@ -68,7 +68,7 @@
 
 /obj/structure/machinery/chem_dispenser/Destroy()
 	if(!chem_storage)
-		chem_storage = chemical_data.disconnect_chem_storage(network)
+		chem_storage = GLOB.chemical_data.disconnect_chem_storage(network)
 	return ..()
 
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
@@ -134,13 +134,13 @@
 /obj/structure/machinery/chem_dispenser/ui_data(mob/user)
 	. = list()
 	.["amount"] = amount
-	.["energy"] = round(chem_storage.energy)
-	.["maxEnergy"] = round(chem_storage.max_energy)
+	.["energy"] = floor(chem_storage.energy)
+	.["maxEnergy"] = floor(chem_storage.max_energy)
 	.["isBeakerLoaded"] = beaker ? 1 : 0
 
 	var/list/beakerContents = list()
 	var/beakerCurrentVolume = 0
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/current_reagent in beaker.reagents.reagent_list)
 			beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
 			beakerCurrentVolume += current_reagent.volume
@@ -155,7 +155,7 @@
 
 	var/list/chemicals = list()
 	for(var/re in dispensable_reagents)
-		var/datum/reagent/temp = chemical_reagents_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/chemname = temp.name
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
@@ -201,9 +201,6 @@
 			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
-	if(isrobot(user))
-		return
-
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
@@ -235,6 +232,7 @@
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
 		if(!wrenchable)
 			to_chat(user, "[src] cannot be unwrenched.")
+			return
 
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return

@@ -128,6 +128,7 @@
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -146,7 +147,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
@@ -165,13 +166,13 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
@@ -189,14 +190,14 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
@@ -213,7 +214,7 @@
 	..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 15
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
 
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
@@ -233,7 +234,7 @@
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
@@ -248,14 +249,16 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = 1
-	var/charged
+	var/on = TRUE
+	var/charged = FALSE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
+	///The mob the chain is linked to
+	var/mob/living/linked_to
 
 /obj/item/weapon/yautja/combistick/Destroy()
 	cleanup_chain()
@@ -273,11 +276,13 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	if(on)
-		setup_chain(user)
 	return TRUE
 
 /obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/combistick)
+	add_verb(user, /mob/living/carbon/human/proc/call_combi)
+	linked_to = user
+
 	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
@@ -293,6 +298,10 @@
 /// Clean up the chain, deleting/nulling/unregistering as needed
 /obj/item/weapon/yautja/combistick/proc/cleanup_chain()
 	SIGNAL_HANDLER
+	if(linked_to)
+		remove_action(linked_to, /datum/action/predator_action/bracer/combistick)
+		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
+
 	if(!QDELETED(chain))
 		QDEL_NULL(chain)
 
@@ -337,11 +346,12 @@
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/use_unique_action()
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
+	set src = usr.contents
+
 	unique_action(usr)
 
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)
@@ -428,7 +438,7 @@
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -465,7 +475,7 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -476,7 +486,7 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
@@ -574,7 +584,6 @@
 					SPAN_DANGER("<B>[victim] is missing \his head. Pelts like this just aren't the same... You peel the skin around the stump loose with your [tool.name].</B>"))
 			else
 				victim.apply_damage(10, BRUTE, v_head, sharp = TRUE)
-				v_head.disfigured = TRUE
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
 					user.visible_message(SPAN_DANGER("<B>[user] makes some rough cuts on [victim]'s head and face with \a [tool].</B>"),
@@ -749,7 +758,7 @@
 	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
 
@@ -759,7 +768,7 @@
 		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -874,7 +883,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) spikes++
 	return TRUE
@@ -884,6 +893,8 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null
 	works_in_recharger = FALSE
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
@@ -898,7 +909,6 @@
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = null // TO DO, add a decent one.
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
@@ -928,7 +938,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*2)
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -954,14 +964,17 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
+	if(charge_time < 7)
+		to_chat(user, SPAN_WARNING("The rifle does not have enough power remaining!"))
+		return
 
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
 	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-	charge_time -= 10
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	charge_time -= 7
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.set_light(1)
 	in_chamber = projectile
 	return in_chamber
 
@@ -972,13 +985,15 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time += 7
 	return TRUE
 
 #define FIRE_MODE_STANDARD "Standard"
 #define FIRE_MODE_INCENDIARY "Incendiary"
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
@@ -989,7 +1004,8 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_MEDIUM
 	/// Max amount of shots
 	var/charge_time = 40
@@ -1057,8 +1073,8 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
 	if(charge_time < 1)
 		return
-	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.set_light(1)
 	in_chamber = projectile
 	charge_time -= shot_cost
 	return in_chamber
@@ -1070,7 +1086,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		charge_time += shot_cost
@@ -1114,11 +1130,12 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
@@ -1164,15 +1181,15 @@
 			switch(strength)
 				if("low power stun bolts")
 					strength = "high power stun bolts"
-					charge_cost = 100
-					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
+					charge_cost = 50
+					set_fire_delay(FIRE_DELAY_TIER_1)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
 				if("high power stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 300
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 200
+					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
@@ -1187,8 +1204,8 @@
 			switch(strength)
 				if("plasma bolts")
 					strength = "plasma spheres"
-					charge_cost = 1200
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 1000
+					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
@@ -1233,6 +1250,13 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
@@ -1259,7 +1283,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
 		source.charge += charge_cost

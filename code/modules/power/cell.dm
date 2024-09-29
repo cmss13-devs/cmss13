@@ -63,20 +63,20 @@
 /obj/item/cell/get_examine_text(mob/user)
 	. = ..()
 	if(maxcharge <= 2500)
-		. += SPAN_NOTICE("The manufacturer's label states this cell has a power rating of <b>[maxcharge]</b>, and that you should not swallow it.\nThe charge meter reads <b>[round(src.percent() )]%</b>.")
+		. += SPAN_NOTICE("The manufacturer's label states this cell has a power rating of <b>[maxcharge]</b>, and that you should not swallow it.\nThe charge meter reads <b>[floor(src.percent() )]%</b>.")
 	else
-		. += SPAN_NOTICE("This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of <b>[maxcharge]</b>!\nThe charge meter reads <b>[round(src.percent() )]%</b>.")
+		. += SPAN_NOTICE("This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of <b>[maxcharge]</b>!\nThe charge meter reads <b>[floor(src.percent() )]%</b>.")
 	if(crit_fail)
 		. += SPAN_DANGER("This power cell seems to be faulty.")
 
 
 /obj/item/cell/emp_act(severity)
+	. = ..()
 	charge -= 1000 / severity
 	if (charge < 0)
 		charge = 0
 	if(reliability != 100 && prob(50/severity))
 		reliability -= 10 / severity
-	..()
 
 /obj/item/cell/ex_act(severity)
 

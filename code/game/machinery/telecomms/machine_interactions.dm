@@ -22,7 +22,7 @@
 		attack_hand(user)
 
 	else
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return 0
 
@@ -69,7 +69,7 @@
 					to_chat(user, "You finish prying out the components.")
 
 					// Drop all the component stuff
-					if(contents.len > 0)
+					if(length(contents) > 0)
 						for(var/obj/x in src)
 							x.forceMove(user.loc)
 					else
@@ -102,8 +102,8 @@
 /obj/structure/machinery/telecomms/attack_hand(mob/user as mob)
 
 	// You need a multitool to use this, or be silicon
-	if(!ishighersilicon(user))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!isSilicon(user))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
@@ -125,10 +125,10 @@
 		else
 			dat += "<br>Identification String: <a href='?src=\ref[src];input=id'>NULL</a>"
 		dat += "<br>Network: <a href='?src=\ref[src];input=network'>[network]</a>"
-		dat += "<br>Prefabrication: [autolinkers.len ? "TRUE" : "FALSE"]"
+		dat += "<br>Prefabrication: [length(autolinkers) ? "TRUE" : "FALSE"]"
 		if(hide) dat += "<br>Shadow Link: ACTIVE</a>"
 
-		//Show additional options for certain machines.
+		//Show additional options for certain GLOB.machines.
 		dat += Options_Menu()
 
 		dat += "<br>Linked Network Entities: <ol>"
@@ -160,7 +160,7 @@
 	dat += "</font>"
 	temp = ""
 	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
-	onclose(user, "dormitory")
+	onclose(user, "tcommachine")
 
 
 // Off-Site Relays
@@ -177,30 +177,12 @@
 	if(src.listening_level == TELECOMM_GROUND_Z) // equals the station
 		src.listening_level = position.z
 		return 1
-	else if(is_admin_level(position.z))
+	else if(should_block_game_interaction(position))
 		src.listening_level = TELECOMM_GROUND_Z
 		return 1
 	return 0
 
-// Returns a multitool from a user depending on their mobtype.
-
-/obj/structure/machinery/telecomms/proc/get_multitool(mob/user as mob)
-
-	var/obj/item/device/multitool/P = null
-	// Let's double check
-	var/obj/item/held_item = user.get_active_hand()
-	if(!ishighersilicon(user) && held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-		P = user.get_active_hand()
-	else if(isAI(user))
-		var/mob/living/silicon/ai/U = user
-		P = U.aiMulti
-	else if(isborg(user) && in_range(user, src))
-		var/obj/item/borg_held_item = user.get_active_hand()
-		if(held_item && HAS_TRAIT(borg_held_item, TRAIT_TOOL_MULTITOOL))
-			P = user.get_active_hand()
-	return P
-
-// Additional Options for certain machines. Use this when you want to add an option to a specific machine.
+// Additional Options for certain GLOB.machines. Use this when you want to add an option to a specific machine.
 // Example of how to use below.
 
 /obj/structure/machinery/telecomms/proc/Options_Menu()
@@ -229,7 +211,7 @@
 
 /obj/structure/machinery/telecomms/relay/Options_Menu()
 	var/dat = ""
-	if(is_admin_level(z))
+	if(should_block_game_interaction(src))
 		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == TELECOMM_GROUND_Z ? "TRUE" : "FALSE"]</a>"
 	dat += "<br>Broadcasting: <A href='?src=\ref[src];broadcast=1'>[broadcasting ? "YES" : "NO"]</a>"
 	dat += "<br>Receiving: <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"
@@ -279,7 +261,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!ishighersilicon(usr))
+	if(!isSilicon(usr))
 		var/obj/item/held_item = usr.get_held_item()
 		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			return

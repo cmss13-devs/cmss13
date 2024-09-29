@@ -121,12 +121,12 @@
 
 	switch(.["class"])
 		if(VV_TEXT)
-			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE)
+			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE, trim = FALSE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
 		if(VV_MESSAGE)
-			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE)
+			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE, trim = FALSE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -390,7 +390,7 @@
 	var/list/matches = new
 	var/end_len = -1
 	var/list/endcheck = splittext(filter, "!")
-	if(endcheck.len > 1)
+	if(length(endcheck) > 1)
 		filter = endcheck[1]
 		end_len = length_char(filter)
 

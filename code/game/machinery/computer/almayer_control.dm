@@ -11,11 +11,11 @@
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
 	/// requesting evac
-	COOLDOWN_DECLARE(cooldown_destruct) 
+	COOLDOWN_DECLARE(cooldown_destruct)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
-	COOLDOWN_DECLARE(cooldown_message) 
+	COOLDOWN_DECLARE(cooldown_message)
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
@@ -72,7 +72,7 @@
 	var/list/data = list()
 	var/list/messages = list()
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 
 	data["time_request"] = cooldown_request
 	data["time_destruct"] = cooldown_destruct
@@ -81,11 +81,11 @@
 
 	data["worldtime"] = world.time
 
-	data["evac_status"] = EvacuationAuthority.evac_status
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		data["evac_eta"] = EvacuationAuthority.get_status_panel_eta()
+	data["evac_status"] = SShijack.evac_status
+	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
+		data["evac_eta"] = SShijack.get_evac_eta()
 
-	if(!messagetitle.len)
+	if(!length(messagetitle))
 		data["messages"] = null
 	else
 		for(var/i in 1 to length(messagetitle))
@@ -108,51 +108,60 @@
 	. = ..()
 	if(.)
 		return
-
+	var/mob/user = ui.user
 	switch(action)
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(user, src)
 			. = TRUE
 
 		// evac stuff start \\
 
 		if("evacuation_start")
-			if(security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
-				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+			if(SShijack.evac_admin_denied)
+				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
-				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+			if(!SShijack.initiate_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
-			log_game("[key_name(usr)] has called for an emergency evacuation.")
-			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			log_game("[key_name(user)] has called for an emergency evacuation.")
+			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
 			. = TRUE
 
 		if("evacuation_cancel")
-			if(!EvacuationAuthority.cancel_evacuation())
-				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+			var/mob/living/carbon/human/human_user = user
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
 
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/almayer_control, cancel_evac)), 4 SECONDS)
+			if(!SShijack.cancel_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+				return FALSE
 
-			log_game("[key_name(usr)] has canceled the emergency evacuation.")
-			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
+			log_game("[key_name(user)] has canceled the emergency evacuation.")
+			message_admins("[key_name_admin(user)] has canceled the emergency evacuation.")
+			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 			. = TRUE
 
 		// evac stuff end \\
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
-			switch(security_level)
+			switch(GLOB.security_level)
 				if(SEC_LEVEL_GREEN)
 					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
 				if(SEC_LEVEL_BLUE)
@@ -160,78 +169,86 @@
 				if(SEC_LEVEL_DELTA)
 					return
 
-			var/level_selected = tgui_input_list(usr, "What alert would you like to set it as?", "Alert Level", alert_list)
+			var/level_selected = tgui_input_list(user, "What alert would you like to set it as?", "Alert Level", alert_list)
 			if(!level_selected)
 				return
 
-			set_security_level(seclevel2num(level_selected))
-			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Security Level Update", "[usr] has changed the security level to [get_security_level()].")
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
+			log_game("[key_name(user)] has changed the security level to [get_security_level()].")
+			message_admins("[key_name_admin(user)] has changed the security level to [get_security_level()].")
+			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
 			. = TRUE
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(usr, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
 				return FALSE
-			var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-			if(!input || !(usr in view(1,src)) || !COOLDOWN_FINISHED(src, cooldown_central))
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
-			high_command_announce(input, usr)
-			to_chat(usr, SPAN_NOTICE("Message transmitted."))
-			log_announcement("[key_name(usr)] has made an USCM announcement: [input]")
+			high_command_announce(input, user)
+			to_chat(user, SPAN_NOTICE("Message transmitted."))
+			log_announcement("[key_name(user)] has made an USCM announcement: [input]")
 			COOLDOWN_START(src, cooldown_central, COOLDOWN_COMM_CENTRAL)
 			. = TRUE
 
 		if("ship_announce")
-			if(!COOLDOWN_FINISHED(src, cooldown_message))
-				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
+			var/mob/living/carbon/human/human_user = user
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(usr in view(1,src)))
+
+			if(!COOLDOWN_FINISHED(src, cooldown_message))
+				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
+				return FALSE
+			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
-			if(ishuman(usr))
-				var/mob/living/carbon/human/human_user = usr
-				var/obj/item/card/id/id = human_user.wear_id
-				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
-					signed = "[paygrade] [id.registered_name]"
+			var/paygrade = get_paygrades(idcard.paygrade, FALSE, human_user.gender)
+			signed = "[paygrade] [idcard.registered_name]"
 
 			COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-			message_admins("[key_name(usr)] has made a shipwide annoucement.")
-			log_announcement("[key_name(usr)] has announced the following to the ship: [input]")
+			message_admins("[key_name(user)] has made a shipwide annoucement.")
+			log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 			. = TRUE
 
 		if("distress")
 			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+				to_chat(user, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 				return FALSE
 
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
 			if(SSticker.mode.force_end_at == 0)
-				to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
+				to_chat(user, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 				return FALSE
 
 			if(!COOLDOWN_FINISHED(src, cooldown_request))
-				to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
+				to_chat(user, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE
 
-			if(security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 				return FALSE
 
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			SSticker.mode.request_ert(user)
+			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
 			. = TRUE
@@ -240,29 +257,29 @@
 
 		if("destroy")
 			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("The self-destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+				to_chat(user, SPAN_WARNING("The self-destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 				return FALSE
 
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
 			if(SSticker.mode.force_end_at == 0)
-				to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
+				to_chat(user, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 				return FALSE
 
 			if(!COOLDOWN_FINISHED(src, cooldown_destruct))
-				to_chat(usr, SPAN_WARNING("A self-destruct request has already been sent to high command. Please wait."))
+				to_chat(user, SPAN_WARNING("A self-destruct request has already been sent to high command. Please wait."))
 				return FALSE
 
 			if(get_security_level() == "delta")
-				to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
+				to_chat(user, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 				return FALSE
 
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
+			message_admins("[key_name(user)] has requested Self-Destruct! [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[user]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+			to_chat(user, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, cooldown_destruct, COOLDOWN_COMM_DESTRUCT)
 			. = TRUE
 
@@ -280,10 +297,3 @@
 // end tgui interact \\
 
 // end tgui \\
-
-/obj/structure/machinery/computer/almayer_control/proc/cancel_evac()
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-		//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-		if(!EvacuationAuthority.cancel_self_destruct(1))
-			//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.

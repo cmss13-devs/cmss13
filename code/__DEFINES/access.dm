@@ -43,6 +43,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 #define ACCESS_MARINE_SYNTH 36
 #define ACCESS_MARINE_ASO 37
+#define ACCESS_MARINE_CHAPLAIN 38
 
 // AI Core Accesses
 /// Used in temporary passes
@@ -52,7 +53,9 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 /// Used to access Maintenance Protocols on ARES Interface.
 #define ACCESS_ARES_DEBUG 92
 
-//Surface access levels
+//=================================================
+
+//Civilian access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
 #define ACCESS_CIVILIAN_LOGISTICS 101
 #define ACCESS_CIVILIAN_ENGINEERING 102
@@ -60,23 +63,140 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_CIVILIAN_BRIG 104
 #define ACCESS_CIVILIAN_MEDBAY 105
 #define ACCESS_CIVILIAN_COMMAND 106
+#define ACCESS_PRESS 110
 
-//Special access levels. Should be alright to modify these.
-#define ACCESS_WY_PMC_GREEN 180
-#define ACCESS_WY_PMC_ORANGE 181
-#define ACCESS_WY_PMC_RED 182
-#define ACCESS_WY_PMC_BLACK 183
-#define ACCESS_WY_PMC_WHITE 184
-#define ACCESS_WY_CORPORATE 200
-#define ACCESS_ILLEGAL_PIRATE 201
-#define ACCESS_WY_CORPORATE_DS 202
-#define ACCESS_PRESS 203
+///The generic "I'm a bad guy" access
+#define ACCESS_ILLEGAL_PIRATE 120
+
+//=================================================
+
+//Weyland Yutani access levels (200-229)
+///Found on just about all corporate ID cards
+#define ACCESS_WY_GENERAL 200
+///WY employee override for most colonial areas
+#define ACCESS_WY_COLONIAL 201
+#define ACCESS_WY_MEDICAL 202
+#define ACCESS_WY_SECURITY 203
+#define ACCESS_WY_ENGINEERING 204
+#define ACCESS_WY_FLIGHT 205
+#define ACCESS_WY_RESEARCH 206
+///WY access given to field executives, like a marine liaison.
+#define ACCESS_WY_EXEC 207
+
+#define ACCESS_WY_PMC 210
+#define ACCESS_WY_PMC_TL 211
+#define ACCESS_WY_ARMORY 212
+///Secret research or other projects with highly restricted access
+#define ACCESS_WY_SECRETS 213
+#define ACCESS_WY_DATABASE 214
+#define ACCESS_WY_LEADERSHIP 215
+///Senior leadership, the highest ranks
+#define ACCESS_WY_SENIOR_LEAD 216
+
+//=================================================
+
+//Union of Progressive Peoples access levels (230-259)
+///Found on just about all Union ID cards
+#define ACCESS_UPP_GENERAL 230
+#define ACCESS_UPP_MEDICAL 231
+#define ACCESS_UPP_ENGINEERING 232
+#define ACCESS_UPP_SECURITY 233
+#define ACCESS_UPP_ARMORY 234
+#define ACCESS_UPP_FLIGHT 235
+#define ACCESS_UPP_RESEARCH 236
+
+#define ACCESS_UPP_COMMANDO 239
+#define ACCESS_UPP_LEADERSHIP 240
+///Senior leadership, the highest ranks
+#define ACCESS_UPP_SENIOR_LEAD 241
+
+//=================================================
+
+//Colonial Liberation Front access levels (260-289)
+///Found on just about all CLF ID cards
+#define ACCESS_CLF_GENERAL 260
+#define ACCESS_CLF_MEDICAL 261
+#define ACCESS_CLF_ENGINEERING 262
+#define ACCESS_CLF_SECURITY 263
+#define ACCESS_CLF_ARMORY 264
+#define ACCESS_CLF_FLIGHT 265
+
+#define ACCESS_CLF_LEADERSHIP 270
+///Senior leadership, the highest ranks
+#define ACCESS_CLF_SENIOR_LEAD 271
+
+//=================================================
+
+//Three World Empire access levels (290-319)
+///Found on just about all Imperial ID cards
+#define ACCESS_TWE_GENERAL 290
+#define ACCESS_TWE_MEDICAL 291
+#define ACCESS_TWE_ENGINEERING 292
+#define ACCESS_TWE_SECURITY 293
+#define ACCESS_TWE_ARMORY 294
+#define ACCESS_TWE_FLIGHT 295
+#define ACCESS_TWE_RESEARCH 296
+
+#define ACCESS_TWE_COMMANDO 299
+#define ACCESS_TWE_LEADERSHIP 300
+///Senior leadership, the highest ranks
+#define ACCESS_TWE_SENIOR_LEAD 301
+
 //=================================================
 
 // Yautja Access Levels
 /// Requires a visible ID chip to open
-#define ACCESS_YAUTJA_SECURE 250
+#define ACCESS_YAUTJA_SECURE 390
 /// Elders+ only
-#define ACCESS_YAUTJA_ELDER 251
+#define ACCESS_YAUTJA_ELDER 391
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 252
+#define ACCESS_YAUTJA_ANCIENT 392
+
+/// Anything in a tutorial sequence that shouldn't be accessed
+#define ACCESS_TUTORIAL_LOCKED 998
+///Temporary, just so I can flag places I need to change
+#define ACCESS_COME_BACK_TO_ME 999
+
+
+//Big lists of access codes, so I can get rid of the half a million different "get_bla_bla_bla_access" procs.
+//See /proc/get_access(access_list = ACCESS_LIST_GLOBAL)
+///Well... everything (non Yautja).
+#define ACCESS_LIST_GLOBAL "EVERYTHING"
+
+///Most of the USCM Access Levels used on the USS Almayer, excluding highly restricted ones.
+#define ACCESS_LIST_MARINE_MAIN "Almayer (Main)"
+///All USCM Access levels used on the USS Almayer
+#define ACCESS_LIST_MARINE_ALL "Almayer (ALL)"
+///Used by the Wey-Yu - USCM Liaison
+#define ACCESS_LIST_MARINE_LIAISON "Wey-Yu (Liaison)"
+
+///The accesses granted to emergency responders.
+#define ACCESS_LIST_EMERGENCY_RESPONSE "Almayer (ERT)"
+///Access used by United Americas responders.
+#define ACCESS_LIST_UA "United Americas"
+
+///Generic/basic access to Wey-Yu stuff
+#define ACCESS_LIST_WY_BASE "Wey-Yu (Basic)"
+///Wey-Yu Corp Security access.
+#define ACCESS_LIST_WY_GOON "Wey-Yu (Goons)"
+///Wey-Yu PMCs access.
+#define ACCESS_LIST_WY_PMC "Wey-Yu (PMC)"
+///Access levels for WY senior leadership
+#define ACCESS_LIST_WY_SENIOR "Wey-Yu (Senior Lead)"
+///All access levels associated with Weyland Yutani
+#define ACCESS_LIST_WY_ALL "Wey-Yu (ALL)"
+
+///All the access levels in the civillian category, excluding Press.
+#define ACCESS_LIST_COLONIAL_ALL "Colonial (ALL)"
+///Used by the Wey-Yu - Civil Authority Liaison
+#define ACCESS_LIST_CIVIL_LIAISON "Colonial (Liaison)"
+///The access used by delivery ERT (Pizza/Souto)
+#define ACCESS_LIST_DELIVERY "Delivery"
+
+///All access levels associated with UPP
+#define ACCESS_LIST_UPP_ALL "UPP (ALL)"
+
+///Generic/basic access to CLF stuff
+#define ACCESS_LIST_CLF_BASE "CLF (Basic)"
+///All access levels associated with CLF
+#define ACCESS_LIST_CLF_ALL "CLF (ALL)"

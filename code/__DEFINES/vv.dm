@@ -134,3 +134,6 @@
 #define VV_HK_TOGGLEPOWER "togglepower"
 
 #define VV_HK_ADD_ITEMS_TO_VENDOR "add_items_to_vendor"
+
+// /obj/structure/pipes/vents
+#define VV_HK_GAS "release_gas"

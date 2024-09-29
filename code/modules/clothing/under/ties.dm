@@ -79,6 +79,22 @@
 	name = "red tie"
 	icon_state = "redtie"
 
+/obj/item/clothing/accessory/green
+	name = "green tie"
+	icon_state = "greentie"
+
+/obj/item/clothing/accessory/black
+	name = "black tie"
+	icon_state = "blacktie"
+
+/obj/item/clothing/accessory/gold
+	name = "gold tie"
+	icon_state = "goldtie"
+
+/obj/item/clothing/accessory/purple
+	name = "purple tie"
+	icon_state = "purpletie"
+
 /obj/item/clothing/accessory/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
@@ -86,42 +102,60 @@
 
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	desc = "An outdated, but still useful, medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
-/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
-	if(ishuman(M) && isliving(user))
+/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/being, mob/living/user)
+	if(ishuman(being) && isliving(user))
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
-				var/their = "their"
-				switch(M.gender)
-					if(MALE) their = "his"
-					if(FEMALE) their = "her"
-
-				var/sound = "pulse"
-				var/sound_strength
-
-				if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
-					sound_strength = "cannot hear"
-					sound = "anything"
+				var/sound = null
+				if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
+					sound = "can't hear anything at all, they must have kicked the bucket"
 				else
-					sound_strength = "hear a weak"
 					switch(body_part)
 						if("chest")
-							if(M.oxyloss < 50)
-								sound_strength = "hear a healthy"
-							sound = "pulse and respiration"
+							if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) // only medical personnel can take advantage of it
+								if(!ishuman(being))
+									return // not a human; only humans have the variable internal_organs_by_name // "cast" it a human type since we confirmed it is one
+								if(isnull(being.internal_organs_by_name))
+									return // they have no organs somehow
+								var/datum/internal_organ/heart/heart = being.internal_organs_by_name["heart"]
+								if(heart)
+									switch(heart.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											sound = "hear <font color='yellow'>small murmurs with each heart beat</font>, it is possible that [being.p_their()] heart is <font color='yellow'>subtly damaged</font>"
+										if(ORGAN_BRUISED)
+											sound = "hear <font color='orange'>deviant heart beating patterns</font>, result of probable <font color='orange'>heart damage</font>"
+										if(ORGAN_BROKEN)
+											sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [being.p_their()] heart is certainly <font color='red'>failing</font>"
+										else
+											sound = "hear <font color='green'>normal heart beating patterns</font>, [being.p_their()] heart is surely <font color='green'>healthy</font>"
+								var/datum/internal_organ/lungs/lungs = being.internal_organs_by_name["lungs"]
+								if(lungs)
+									if(sound)
+										sound += ". You also "
+									switch(lungs.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											sound += "hear <font color='yellow'>some crackles when [being.p_they()] breath</font>, [being.p_they()] is possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
+										if(ORGAN_BRUISED)
+											sound += "hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
+										if(ORGAN_BROKEN)
+											sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
+										else
+											sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+								else
+									sound = "can't hear. Really, anything at all, how weird"
+							else
+								sound = "hear a lot of sounds... it's quite hard to distinguish, really"
 						if("eyes","mouth")
-							sound_strength = "cannot hear"
-							sound = "anything"
+							sound = "can't hear anything. Maybe that isn't the smartest idea"
 						else
-							sound_strength = "hear a weak"
-
-				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
+							sound = "hear a sound here and there, but none of them give you any good information"
+				user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
 				return
-	return ..(M,user)
-
+	return ..(being,user)
 
 //Medals
 /obj/item/clothing/accessory/medal
@@ -138,18 +172,18 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
+		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, slot)
 	SIGNAL_HANDLER
-	if(user.real_name != recipient_name)
+	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
 		C.remove_accessory(user, src)
 		user.drop_held_item(src)
 
 /obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	if(.)
-		UnregisterSignal(C, COMSIG_ITEM_PICKUP)
+		UnregisterSignal(C, COMSIG_ITEM_EQUIPPED)
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!(istype(H) && istype(user)))
@@ -342,6 +376,11 @@
 	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and green."
 	icon_state = "medgreen"
 
+/obj/item/clothing/accessory/armband/nurse
+	name = "nurse armband"
+	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
+	icon_state = "nurse"
+
 //patches
 /obj/item/clothing/accessory/patch
 	name = "USCM patch"
@@ -354,15 +393,43 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+/obj/item/clothing/accessory/patch/devils
+	name = "USCM Solar Devils patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
+	icon_state = "solardevilspatch"
+
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
 	icon_state = "forecon_patch"
 
+/obj/item/clothing/accessory/patch/royal_marines
+	name = "TWE Royal Marines Commando patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the royal marines commando."
+	icon_state = "commandopatch"
+
 /obj/item/clothing/accessory/patch/upp
+	name = "UPP patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
+	icon_state = "upppatch"
+
+/obj/item/clothing/accessory/patch/upp/airborne
 	name = "UPP Airborne Reconnaissance patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 173rd Airborne Reconnaissance Platoon."
-	icon_state = "upppatch"
+	icon_state = "vdvpatch"
+
+/obj/item/clothing/accessory/patch/upp/naval
+	name = "UPP Naval Infantry patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the UPP Naval Infantry."
+	icon_state = "navalpatch"
+
+//misc
+
+/obj/item/clothing/accessory/dogtags
+	name = "Attachable Dogtags"
+	desc = "A robust pair of dogtags to be worn around the neck of the United States Colonial Marines, however due to a combination of budget reallocation, Marines losing their dogtags, and multiple incidents of marines swallowing their tags, they now attach to the uniform or armor."
+	icon_state = "dogtag"
+	slot = ACCESSORY_SLOT_MEDAL
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -372,9 +439,26 @@
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
+	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
+
+/obj/item/clothing/accessory/poncho/green
+	icon_state = "poncho"
+
+/obj/item/clothing/accessory/poncho/brown
+	icon_state = "d_poncho"
+
+/obj/item/clothing/accessory/poncho/black
+	icon_state = "u_poncho"
+
+/obj/item/clothing/accessory/poncho/blue
+	icon_state = "c_poncho"
+
+/obj/item/clothing/accessory/poncho/purple
+	icon_state = "s_poncho"
+
 
 //Ties that can store stuff
 
@@ -419,8 +503,8 @@
 	return hold.attackby(W, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
+	. = ..()
 	hold.emp_act(severity)
-	..()
 
 /obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
 	hold.hear_talk(M, msg)
@@ -518,13 +602,48 @@
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
-/obj/item/clothing/accessory/storage/black_vest/tool_webbing
-	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/clothing/accessory/storage/tool_webbing
+	name = "Tool Webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
+	hold = /obj/item/storage/internal/accessory/tool_webbing
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/clothing/accessory/storage/tool_webbing/small
+	name = "Small Tool Webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
+/obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
+	can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/wirecutters,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/multitool,
+		/obj/item/tool/shovel/etool,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+	)
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
+/obj/item/storage/internal/accessory/tool_webbing/small
+	storage_slots = 6
+
+/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
+/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+
+/obj/item/clothing/accessory/storage/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
@@ -591,6 +710,49 @@
 	icon_state = "vest_blue"
 
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue
+	name = "blue surgical drop pouch"
+	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green
+	name = "green surgical drop pouch"
+	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_green"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/upp
+	hold = /obj/item/storage/internal/accessory/surg_vest/drop_green/upp
+
+/obj/item/storage/internal/accessory/surg_vest/drop_green/upp/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/cautery(src)
+	new /obj/item/tool/surgery/circular_saw(src)
+	new /obj/item/tool/surgery/surgicaldrill(src)
+	new /obj/item/tool/surgery/scalpel/pict_system(src)
+	new /obj/item/tool/surgery/bonesetter(src)
+	new /obj/item/tool/surgery/FixOVein(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black
+	name = "black surgical drop pouch"
+	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_black"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
 /obj/item/clothing/accessory/storage/knifeharness
@@ -666,17 +828,17 @@
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
-
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 6 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	max_storage_space = 8 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 4 small items, or 8 tiny items
 	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
+		/obj/item/storage/toolkit,
 		)
-	storage_flags = NONE //no verb, no quick draw, no tile gathering
+	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"
@@ -723,7 +885,7 @@
 
 	..()
 
-/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
 		if(isgun(W))
 			if(current_gun)

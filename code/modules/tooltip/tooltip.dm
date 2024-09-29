@@ -98,10 +98,12 @@ Notes:
 	last_target = null
 
 /datum/tooltip/proc/do_hide()
-	winshow(owner, control, FALSE)
+	if(owner)
+		winshow(owner, control, FALSE)
 
 /datum/tooltip/Destroy(force, ...)
 	last_target = null
+	owner = null
 	return ..()
 
 //Open a tooltip for user, at a location based on params

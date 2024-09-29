@@ -145,7 +145,7 @@
 	name = "laser"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_ICON
-	luminosity = 2
+	light_range = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
 	effect_duration = 600
@@ -156,14 +156,13 @@
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.coord = null
 		source_binoc = null
-	SetLuminosity(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target
 	name = "laser"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_ICON
-	luminosity = 2
+	light_range = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target2"
 	effect_duration = 600
@@ -177,17 +176,17 @@
 	user = _user
 	if(squad_name)
 		name = "[squad_name] laser"
-	if(user && user.faction && cas_groups[user.faction])
+	if(user && user.faction && GLOB.cas_groups[user.faction])
 		signal = new(src)
 		signal.name = name
 		signal.target_id = tracking_id
 		signal.linked_cam = new(loc, name)
-		cas_groups[user.faction].add_signal(signal)
+		GLOB.cas_groups[user.faction].add_signal(signal)
 
 
 /obj/effect/overlay/temp/laser_target/Destroy()
 	if(signal)
-		cas_groups[user.faction].remove_signal(signal)
+		GLOB.cas_groups[user.faction].remove_signal(signal)
 		if(signal.linked_cam)
 			qdel(signal.linked_cam)
 			signal.linked_cam = null
@@ -198,7 +197,6 @@
 		source_binoc.laser = null
 		source_binoc = null
 
-	SetLuminosity(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target/ex_act(severity) //immune to explosions
@@ -214,24 +212,21 @@
 /obj/effect/overlay/temp/blinking_laser
 	name = "blinking laser"
 	anchored = TRUE
-	luminosity = 2
+	light_range = 2
 	effect_duration = 10
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
-
-/obj/effect/overlay/temp/blinking_laser/Destroy()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "empdisable"
 	name = "emp sparks"
 	effect_duration = 10
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/overlay/temp/emp_sparks/New(loc)
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinals))
 	..()
 
 /obj/effect/overlay/temp/emp_pulse
@@ -240,8 +235,12 @@
 	icon_state = "emppulse"
 	effect_duration = 20
 
-
-
+/obj/effect/overlay/temp/elec_arc
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "electricity"
+	name = "electric arc"
+	effect_duration = 3 SECONDS
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 //gib animation
 

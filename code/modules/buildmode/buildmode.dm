@@ -31,13 +31,13 @@
 	holder.player_details.post_login_callbacks += li_cb
 	holder.show_popup_menus = FALSE
 	create_buttons()
-	holder.screen += buttons
+	holder.add_to_screen(buttons)
 	holder.click_intercept = src
 	mode.enter_mode(src)
 
 /datum/buildmode/proc/quit()
 	mode.exit_mode(src)
-	holder.screen -= buttons
+	holder.remove_from_screen(buttons)
 	holder.click_intercept = null
 	holder.show_popup_menus = TRUE
 	qdel(src)
@@ -53,7 +53,7 @@
 
 /datum/buildmode/proc/post_login()
 	// since these will get wiped upon login
-	holder?.screen += buttons
+	holder?.add_to_screen(buttons)
 	// re-open the according switch mode
 	switch(switch_state)
 		if(BM_SWITCHSTATE_MODE)
@@ -80,7 +80,7 @@
 	var/pos_idx = 0
 	for(var/thing in elements)
 		var/x = pos_idx % switch_width
-		var/y = FLOOR(pos_idx / switch_width, 1)
+		var/y = floor(pos_idx / switch_width)
 		var/atom/movable/screen/buildmode/B = new buttontype(src, thing)
 		// extra .5 for a nice offset look
 		B.screen_loc = "NORTH-[(1 + 0.5 + y*1.5)],WEST+[0.5 + x*1.5]"
@@ -103,11 +103,11 @@
 
 /datum/buildmode/proc/open_modeswitch()
 	switch_state = BM_SWITCHSTATE_MODE
-	holder.screen += modeswitch_buttons
+	holder.add_to_screen(modeswitch_buttons)
 
 /datum/buildmode/proc/close_modeswitch()
 	switch_state = BM_SWITCHSTATE_NONE
-	holder.screen -= modeswitch_buttons
+	holder.remove_from_screen(modeswitch_buttons)
 
 /datum/buildmode/proc/toggle_dirswitch()
 	if(switch_state == BM_SWITCHSTATE_DIR)
@@ -118,11 +118,11 @@
 
 /datum/buildmode/proc/open_dirswitch()
 	switch_state = BM_SWITCHSTATE_DIR
-	holder.screen += dirswitch_buttons
+	holder.add_to_screen(dirswitch_buttons)
 
 /datum/buildmode/proc/close_dirswitch()
 	switch_state = BM_SWITCHSTATE_NONE
-	holder.screen -= dirswitch_buttons
+	holder.remove_from_screen(dirswitch_buttons)
 
 /datum/buildmode/proc/change_mode(newmode)
 	mode.exit_mode(src)

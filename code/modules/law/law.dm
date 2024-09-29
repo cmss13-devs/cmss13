@@ -13,13 +13,14 @@
 	var/special_punishment = "" //This is for special punishments
 
 //These are bitflags to indicate the type of crime it is.
-#define OPTIONAL_CRIME 1
-#define MINOR_CRIME 2
-#define MAJOR_CRIME 4
-#define CAPITAL_CRIME 8
+#define OPTIONAL_CRIME (1<<0)
+#define MINOR_CRIME (1<<1)
+#define MAJOR_CRIME (1<<2)
+#define CAPITAL_CRIME (1<<3)
+#define PRECAUTIONARY_CHARGE (1<<4)
 
 //These are bitflags for special punishments
-#define PERMABRIG 1
-#define DOUBLE_TIME 2
-#define SAME_AS_ACCUSED 4
-#define DEMOTION 8
+#define PERMABRIG (1<<0)
+#define DOUBLE_TIME (1<<1)
+#define SAME_AS_ACCUSED (1<<2)
+#define DEMOTION (1<<3)

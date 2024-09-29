@@ -35,7 +35,7 @@
 	flashes_stored++
 	if(flashes_stored <= max_flashes_stored)
 		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping"), 3)
-	flashes_stored = min(max_flashes_stored, round(flashes_stored)) //sanity
+	flashes_stored = min(max_flashes_stored, floor(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
 	if(!ishuman(user))
@@ -94,24 +94,14 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.apply_effect(10, WEAKEN)
+				M.KnockDown(10)
+				M.Stun(10)
 
 		else if(isSilicon(M))
 			M.apply_effect(rand(5,10), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE
-
-		if(isrobot(user))
-			spawn(0)
-				var/atom/movable/overlay/animation = new(user.loc)
-				animation.layer = user.layer + 1
-				animation.icon_state = "blank"
-				animation.icon = 'icons/mob/mob.dmi'
-				animation.master = user
-				flick("blspell", animation)
-				sleep(5)
-				qdel(animation)
 
 		if(!flashfail)
 			if(!isSilicon(M))
@@ -155,6 +145,7 @@
 		do_flash(user = user, aoe = TRUE)
 
 /obj/item/device/flash/emp_act(severity)
+	. = ..()
 	if(broken) return
 	switch(flashes_stored)
 		if(0 to 5)
@@ -168,7 +159,6 @@
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
 					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
-	..()
 
 /obj/item/device/flash/synthetic
 	name = "synthetic flash"

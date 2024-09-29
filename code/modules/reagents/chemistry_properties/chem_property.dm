@@ -12,6 +12,8 @@
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	/// Should reagent with this property explode/start fire when mixed more than overdose threshold at once?
 	var/volatile = FALSE
+	/// a cost penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
+	var/cost_penalty = TRUE
 
 /datum/chem_property/Destroy()
 	holder = null

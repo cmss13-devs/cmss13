@@ -5,9 +5,9 @@
 /proc/RandomAAlarmWires()
 	//to make this not randomize the wires, just set index to 1 and increment it in the flag for loop (after doing everything else).
 	var/list/AAlarmwires = list(0, 0, 0, 0, 0)
-	AAlarmIndexToFlag = list(0, 0, 0, 0, 0)
-	AAlarmIndexToWireColor = list(0, 0, 0, 0, 0)
-	AAlarmWireColorToIndex = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmIndexToFlag = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmIndexToWireColor = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmWireColorToIndex = list(0, 0, 0, 0, 0)
 	var/flagIndex = 1
 	for (var/flag=1, flag<32, flag+=flag)
 		var/valid = 0
@@ -16,9 +16,9 @@
 			if (AAlarmwires[colorIndex]==0)
 				valid = 1
 				AAlarmwires[colorIndex] = flag
-				AAlarmIndexToFlag[flagIndex] = flag
-				AAlarmIndexToWireColor[flagIndex] = colorIndex
-				AAlarmWireColorToIndex[colorIndex] = flagIndex
+				GLOB.AAlarmIndexToFlag[flagIndex] = flag
+				GLOB.AAlarmIndexToWireColor[flagIndex] = colorIndex
+				GLOB.AAlarmWireColorToIndex[colorIndex] = flagIndex
 		flagIndex+=1
 	return AAlarmwires
 
@@ -136,8 +136,6 @@
 
 /obj/structure/machinery/alarm/proc/first_run()
 	alarm_area = get_area(src)
-	if (alarm_area.master)
-		alarm_area = alarm_area.master
 	area_uid = alarm_area.uid
 	if (name == "alarm")
 		name = "[alarm_area.name] Air Alarm"
@@ -203,11 +201,10 @@
 /obj/structure/machinery/alarm/proc/elect_master()
 	if(!alarm_area)
 		return 0
-	for (var/area/A in alarm_area.related)
-		for (var/obj/structure/machinery/alarm/AA in A)
-			if (!(AA.inoperable()))
-				alarm_area.master_air_alarm = AA
-				return 1
+	for (var/obj/structure/machinery/alarm/AA in alarm_area)
+		if (!(AA.inoperable()))
+			alarm_area.master_air_alarm = AA
+			return 1
 	return 0
 
 /obj/structure/machinery/alarm/proc/get_danger_level(current_value, list/danger_levels)
@@ -267,10 +264,10 @@
 /obj/structure/machinery/alarm/proc/register_env_machine(m_id, device_type)
 	var/new_name
 	if (device_type=="AVP")
-		new_name = "[alarm_area.name] Vent Pump #[alarm_area.air_vent_names.len+1]"
+		new_name = "[alarm_area.name] Vent Pump #[length(alarm_area.air_vent_names)+1]"
 		alarm_area.air_vent_names[m_id] = new_name
 	else if (device_type=="AScr")
-		new_name = "[alarm_area.name] Air Scrubber #[alarm_area.air_scrub_names.len+1]"
+		new_name = "[alarm_area.name] Air Scrubber #[length(alarm_area.air_scrub_names)+1]"
 		alarm_area.air_scrub_names[m_id] = new_name
 	else
 		return
@@ -314,9 +311,8 @@
 /obj/structure/machinery/alarm/proc/apply_mode()
 	//propagate mode to other air alarms in the area
 	//TODO: make it so that players can choose between applying the new mode to the room they are in (related area) vs the entire alarm area
-	for (var/area/RA in alarm_area.related)
-		for (var/obj/structure/machinery/alarm/AA in RA)
-			AA.mode = mode
+	for (var/obj/structure/machinery/alarm/AA in alarm_area)
+		AA.mode = mode
 
 	switch(mode)
 		if(AALARM_MODE_SCRUBBING)
@@ -383,24 +379,24 @@
 //HACKING//
 ///////////
 /obj/structure/machinery/alarm/proc/isWireColorCut(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
 	return ((AAlarmwires & wireFlag) == 0)
 
 /obj/structure/machinery/alarm/proc/isWireCut(wireIndex)
-	var/wireFlag = AAlarmIndexToFlag[wireIndex]
+	var/wireFlag = GLOB.AAlarmIndexToFlag[wireIndex]
 	return ((AAlarmwires & wireFlag) == 0)
 
 /obj/structure/machinery/alarm/proc/allWiresCut()
 	var/i = 1
 	while(i<=5)
-		if(AAlarmwires & AAlarmIndexToFlag[i])
+		if(AAlarmwires & GLOB.AAlarmIndexToFlag[i])
 			return 0
 		i++
 	return 1
 
 /obj/structure/machinery/alarm/proc/cut(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
-	var/wireIndex = AAlarmWireColorToIndex[wireColor]
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor]
 	AAlarmwires &= ~wireFlag
 	switch(wireIndex)
 		if(AALARM_WIRE_IDSCAN)
@@ -431,12 +427,10 @@
 	return
 
 /obj/structure/machinery/alarm/proc/mend(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
-	var/wireIndex = AAlarmWireColorToIndex[wireColor] //not used in this function
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor] //not used in this function
 	AAlarmwires |= wireFlag
 	switch(wireIndex)
-		if(AALARM_WIRE_IDSCAN)
-
 		if(AALARM_WIRE_POWER)
 			shorted = 0
 			shock(usr, 50)
@@ -451,7 +445,7 @@
 
 /obj/structure/machinery/alarm/proc/pulse(wireColor)
 	//var/wireFlag = AAlarmWireColorToFlag[wireColor] //not used in this function
-	var/wireIndex = AAlarmWireColorToIndex[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(AALARM_WIRE_IDSCAN) //unlocks for 30 seconds, if you have a better way to hack I'm all ears
 			locked = 0
@@ -533,7 +527,7 @@
 			"Black" = 5,
 		)
 		for(var/wiredesc in wirecolors)
-			var/is_uncut = AAlarmwires & AAlarmWireColorToFlag[wirecolors[wiredesc]]
+			var/is_uncut = AAlarmwires & GLOB.AAlarmWireColorToFlag[wirecolors[wiredesc]]
 			t1 += "[wiredesc] wire: "
 			if(!is_uncut)
 				t1 += "<a href='?src=\ref[src];AAlarmwires=[wirecolors[wiredesc]]'>Mend</a>"
@@ -578,14 +572,14 @@
 	var/pressure_dangerlevel = get_danger_level(environment_pressure, current_settings)
 
 	current_settings = TLV["temperature"]
-	var/enviroment_temperature = location.return_temperature()
-	var/temperature_dangerlevel = get_danger_level(enviroment_temperature, current_settings)
+	var/environment_temperature = location.return_temperature()
+	var/temperature_dangerlevel = get_danger_level(environment_temperature, current_settings)
 
 	output += {"
 Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kPa<br>
 "}
 
-	output += "Temperature: <span class='dl[temperature_dangerlevel]'>[enviroment_temperature]</span>K ([round(enviroment_temperature - T0C, 0.1)]C)<br>"
+	output += "Temperature: <span class='dl[temperature_dangerlevel]'>[environment_temperature]</span>K ([round(environment_temperature - T0C, 0.1)]C)<br>"
 
 	//'Local Status' should report the LOCAL status, damnit.
 	output += "Local Status: "
@@ -654,7 +648,7 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 		if (AALARM_SCREEN_VENT)
 			var/sensor_data = ""
-			if(alarm_area.air_vent_names.len)
+			if(length(alarm_area.air_vent_names))
 				for(var/id_tag in alarm_area.air_vent_names)
 					var/long_name = alarm_area.air_vent_names[id_tag]
 					var/list/data = alarm_area.air_vent_info[id_tag]
@@ -696,7 +690,7 @@ siphoning
 			output = {"<a href='?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br>[sensor_data]"}
 		if (AALARM_SCREEN_SCRUB)
 			var/sensor_data = ""
-			if(alarm_area.air_scrub_names.len)
+			if(length(alarm_area.air_scrub_names))
 				for(var/id_tag in alarm_area.air_scrub_names)
 					var/long_name = alarm_area.air_scrub_names[id_tag]
 					var/list/data = alarm_area.air_scrub_info[id_tag]
@@ -741,7 +735,7 @@ Nitrous Oxide
 				AALARM_MODE_FILL = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
 				AALARM_MODE_OFF  = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
 			)
-			for (var/m=1,m<=modes.len,m++)
+			for (var/m=1,m<=length(modes),m++)
 				if (mode==m)
 					output += "<li><A href='?src=\ref[src];mode=[m]'><b>[modes[m]]</b></A> (selected)</li>"
 				else

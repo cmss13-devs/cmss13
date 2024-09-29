@@ -16,6 +16,9 @@ Remember: something that is self-evident to you might not be to others. Explain 
 
 # Testing Photographs and Procedure
 <!-- Include any screenshots/videos/debugging steps of the modified code functioning successfully, ideally including edge cases. -->
+
+<!-- !! If you are modifying sprites, you **must** include one or more in-game screenshots or videos of the new sprites. !! -->
+
 <details>
 <summary>Screenshots & Videos</summary>
 

@@ -5,12 +5,12 @@
 	set waitfor = FALSE
 
 	. = ..()
-	if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR))
+	if(GLOB.RoleAuthority && check_whitelist_status(WHITELIST_PREDATOR))
 		clan_info = GET_CLAN_PLAYER(player.id)
 		clan_info.sync()
 
-		if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER)
-			clan_info.clan_rank = clan_ranks_ordered[CLAN_RANK_ADMIN]
+		if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+			clan_info.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
 			clan_info.permissions |= CLAN_PERMISSION_ALL
 		else
 			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
@@ -145,7 +145,7 @@
 			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)
 		)
 
-	var/list/clan_members[CPV.len]
+	var/list/clan_members[length(CPV)]
 
 	var/index = 1
 	for(var/datum/view_record/clan_playerbase_view/CP in CPV)
@@ -157,7 +157,7 @@
 		var/list/player = list(
 			player_id = CP.player_id,
 			name = CP.ckey,
-			rank = clan_ranks[CP.clan_rank], // rank_to_give not used here, because we need to get their visual rank, not their position
+			rank = GLOB.clan_ranks[CP.clan_rank], // rank_to_give not used here, because we need to get their visual rank, not their position
 			rank_pos = rank_to_give,
 			honor = (CP.honor? CP.honor : 0)
 		)
@@ -166,7 +166,7 @@
 
 	data["clan_keys"] = clan_members
 
-	var/datum/nanoui/ui = nanomanager.try_update_ui(mob, mob, "clan_status_ui", null, data)
+	var/datum/nanoui/ui = SSnano.nanomanager.try_update_ui(mob, mob, "clan_status_ui", null, data)
 	if(!ui)
 		ui = new(mob, mob, "clan_status_ui", "clan_menu.tmpl", "Clan Menu", 550, 500)
 		ui.set_initial_data(data)
@@ -234,7 +234,7 @@
 					return
 
 
-				log_and_message_admins("[key_name_admin(src)] has set the name of [target_clan.name] to [input].")
+				message_admins("[key_name_admin(src)] has set the name of [target_clan.name] to [input].")
 				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [input]."))
 				target_clan.name = trim(input)
 
@@ -247,7 +247,7 @@
 				if(!input || input == target_clan.description)
 					return
 
-				log_and_message_admins("[key_name_admin(src)] has set the description of [target_clan.name].")
+				message_admins("[key_name_admin(src)] has set the description of [target_clan.name].")
 				to_chat(src, SPAN_NOTICE("Set the description of [target_clan.name]."))
 				target_clan.description = trim(input)
 
@@ -261,7 +261,7 @@
 					return
 
 				target_clan.color = color
-				log_and_message_admins("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
+				message_admins("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
 				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [color]."))
 			if(CLAN_ACTION_CLAN_SETHONOR)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
@@ -272,7 +272,7 @@
 				if((!input && input != 0) || input == target_clan.honor)
 					return
 
-				log_and_message_admins("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
+				message_admins("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
 				to_chat(src, SPAN_NOTICE("Set the honor of [target_clan.name] from [target_clan.honor] to [input]."))
 				target_clan.honor = input
 
@@ -286,7 +286,7 @@
 					to_chat(src, "You have decided not to delete [target_clan.name].")
 					return
 
-				log_and_message_admins("[key_name_admin(src)] has deleted the clan [target_clan.name].")
+				message_admins("[key_name_admin(src)] has deleted the clan [target_clan.name].")
 				to_chat(src, SPAN_NOTICE("You have deleted [target_clan.name]."))
 				var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
 
@@ -295,8 +295,8 @@
 					pl.sync()
 
 					pl.clan_id = null
-					pl.permissions = clan_ranks[CLAN_RANK_UNBLOODED].permissions
-					pl.clan_rank = clan_ranks_ordered[CLAN_RANK_UNBLOODED]
+					pl.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
+					pl.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
 
 					pl.save()
 
@@ -339,7 +339,7 @@
 					return
 
 				var/target_clan = target.clan_id
-				log_and_message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
+				message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
 				to_chat(src, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
 
 				target.delete()
@@ -361,7 +361,7 @@
 				for(var/datum/view_record/clan_view/CV in CPV)
 					clans += list("[CV.name]" = CV.clan_id)
 
-				if(is_clan_manager && clans.len >= 1)
+				if(is_clan_manager && length(clans) >= 1)
 					if(target.permissions & CLAN_PERMISSION_ADMIN_ANCIENT)
 						clans += list("Remove from Ancient")
 					else
@@ -377,35 +377,35 @@
 
 				if(input == "Remove from clan" && target.clan_id)
 					target.clan_id = null
-					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))
-					log_and_message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
+					message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
-					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
-					target.permissions = clan_ranks[CLAN_RANK_YOUNG].permissions
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
+					target.permissions = GLOB.clan_ranks[CLAN_RANK_YOUNG].permissions
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
-					log_and_message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
+					message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
-					target.clan_rank = clan_ranks_ordered[CLAN_RANK_ADMIN]
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
 					target.permissions = CLAN_PERMISSION_ADMIN_ANCIENT
 					to_chat(src, SPAN_NOTICE("Made [player_name] an ancient."))
-					log_and_message_admins("[key_name_admin(src)] has made [player_name] an ancient.")
+					message_admins("[key_name_admin(src)] has made [player_name] an ancient.")
 				else
 					to_chat(src, SPAN_NOTICE("Moved [player_name] to [input]."))
-					log_and_message_admins("[key_name_admin(src)] has moved [player_name] to clan [input].")
+					message_admins("[key_name_admin(src)] has moved [player_name] to clan [input].")
 
 					target.clan_id = clans[input]
 
 					if(!(target.permissions & CLAN_PERMISSION_ADMIN_ANCIENT))
-						target.permissions = clan_ranks[CLAN_RANK_BLOODED].permissions
-						target.clan_rank = clan_ranks_ordered[CLAN_RANK_BLOODED]
+						target.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
+						target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
 
 			if(CLAN_ACTION_PLAYER_MODIFYRANK)
 				if(!target.clan_id)
 					to_chat(src, SPAN_WARNING("This player doesn't belong to a clan!"))
 					return
 
-				var/list/datum/yautja_rank/ranks = clan_ranks.Copy()
+				var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
 				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
 				var/datum/yautja_rank/chosen_rank
@@ -430,8 +430,8 @@
 					chosen_rank = ranks[input]
 
 					if(chosen_rank.limit_type)
-						var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target.clan_id), DB_COMP("rank", DB_EQUALS, clan_ranks_ordered[input])))
-						var/players_in_rank = CPV.len
+						var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
+						var/players_in_rank = length(CPV)
 
 						switch(chosen_rank.limit_type)
 							if(CLAN_LIMIT_NUMBER)
@@ -440,7 +440,7 @@
 									return
 							if(CLAN_LIMIT_SIZE)
 								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
-								var/available_slots = Ceiling(clan_players.len / chosen_rank.limit)
+								var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)
 									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
@@ -453,9 +453,9 @@
 				if(!has_clan_permission(chosen_rank.permission_required)) // Double check
 					return
 
-				target.clan_rank = clan_ranks_ordered[chosen_rank.name]
+				target.clan_rank = GLOB.clan_ranks_ordered[chosen_rank.name]
 				target.permissions = chosen_rank.permissions
-				log_and_message_admins("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
+				message_admins("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
 				to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]"))
 
 		target.save()

@@ -1,5 +1,6 @@
 #define HIJACK_EXPLOSION_COUNT 5
-#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
+#define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
+#define LZ_HAZARD_START (3 MINUTES)
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -16,12 +17,13 @@
 	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
+	var/list/lz_smoke = list()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
 /* Pre-pre-startup */
-/datum/game_mode/colonialmarines/can_start()
+/datum/game_mode/colonialmarines/can_start(bypass_checks = FALSE)
 	initialize_special_clamps()
 	return TRUE
 
@@ -29,7 +31,7 @@
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
 /datum/game_mode/colonialmarines/get_roles_list()
-	return ROLES_DISTRESS_SIGNAL
+	return GLOB.ROLES_DISTRESS_SIGNAL
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
@@ -87,7 +89,7 @@
 			new type_to_spawn(T)
 
 	//desert river test
-	if(!round_toxic_river.len)
+	if(!length(round_toxic_river))
 		round_toxic_river = null //No tiles?
 	else
 		round_time_river = rand(-100,100)
@@ -98,7 +100,7 @@
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
-	while(GLOB.xeno_tunnels.len && i++ < 3)
+	while(length(GLOB.xeno_tunnels) && i++ < 3)
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
 		T = new(t)
 		T.id = "hole[i]"
@@ -120,13 +122,126 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
 
 	return ..()
+
+/datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	. = ..()
+	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case
+
+	// Assumption: Shuttle origin is its center
+	// Assumption: dwidth is atleast 2 and dheight is atleast 4 otherwise there will be overlap
+	var/list/options = list()
+	var/list/structures_to_break = list(/obj/structure/barricade, /obj/structure/surface/table, /obj/structure/bed)
+	var/bottom = marine_dropship.y - marine_dropship.dheight - 2
+	var/top = marine_dropship.y + marine_dropship.dheight + 2
+	var/left = marine_dropship.x - marine_dropship.dwidth - 2
+	var/right = marine_dropship.x + marine_dropship.dwidth + 2
+	var/z = marine_dropship.z
+
+	// Bottom left
+	options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Bottom right
+	options.Cut()
+	options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Top left
+	options.Cut()
+	options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+	// Top right
+	options.Cut()
+	options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+	options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	spawn_lz_sentry(pick(options), structures_to_break)
+
+///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
+/datum/game_mode/colonialmarines/proc/get_valid_sentry_turfs(left, bottom, z, width, height, list/structures_to_ignore)
+	var/valid_turfs = list()
+	for(var/turf/turf as anything in block(left, bottom, z, left+width-1, bottom+height-1))
+		if(turf.density)
+			continue
+		var/structure_blocking = FALSE
+		for(var/obj/structure/existing_structure in turf)
+			if(!existing_structure.density)
+				continue
+			if(!is_type_in_list(existing_structure, structures_to_ignore))
+				structure_blocking = TRUE
+				break
+		if(structure_blocking)
+			continue
+		valid_turfs += turf
+	return valid_turfs
+
+///Spawns a droppod with a temporary defense sentry at the given turf
+/datum/game_mode/colonialmarines/proc/spawn_lz_sentry(turf/target, list/structures_to_break)
+	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
+	droppod.special_structures_to_damage = structures_to_break
+	droppod.special_structure_damage = 500
+	droppod.drop_time = 0
+	droppod.launch(target)
+
+///Creates an OB warning at each LZ to warn of the miasma and then spawns the miasma
+/datum/game_mode/colonialmarines/proc/start_lz_hazards()
+	if(SSobjectives.first_drop_complete)
+		return // Just for sanity
+	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)
+
+///Creates an OB warning at each LZ to warn of the incoming miasma
+/datum/game_mode/colonialmarines/proc/warn_lz_hazard(lz)
+	if(!lz)
+		return
+	var/turf/target = get_turf(lz)
+	if(!target)
+		return
+	var/obj/structure/ob_ammo/warhead/explosive/warhead = new
+	warhead.name = "\improper CN20-X miasma warhead"
+	warhead.clear_power = 0
+	warhead.clear_falloff = 400
+	warhead.standard_power = 0
+	warhead.standard_falloff = 30
+	warhead.clear_delay = 3
+	warhead.double_explosion_delay = 6
+	warhead.warhead_impact(target) // This is a blocking call
+	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
+
+///Spawns miasma smoke in landing zones
+/datum/game_mode/colonialmarines/proc/spawn_lz_hazards()
+	var/datum/cause_data/new_cause_data = create_cause_data("CN20-X miasma")
+	for(var/area/area in GLOB.all_areas)
+		if(!area.is_landing_zone)
+			continue
+		if(!is_ground_level(area.z))
+			continue
+		for(var/turf/turf in area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
+			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
+
+///Clears miasma smoke in landing zones
+/datum/game_mode/colonialmarines/proc/clear_lz_hazards()
+	for(var/obj/effect/particle_effect/smoke/miasma/smoke as anything in lz_smoke)
+		smoke.time_to_live = rand(1, 5)
+	lz_smoke.Cut()
 
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
-	if(!players_preassigned)
+	if(!GLOB.players_preassigned)
 		return
 
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -134,7 +249,7 @@
 	if(!length(monkey_types))
 		return
 
-	var/amount_to_spawn = round(players_preassigned * MONKEYS_TO_TOTAL_RATIO)
+	var/amount_to_spawn = floor(GLOB.players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
@@ -167,7 +282,7 @@
 		check_ground_humans()
 
 	if(next_research_allocation < world.time)
-		chemical_data.update_credits(chemical_data.research_allocation_amount)
+		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
@@ -205,7 +320,7 @@
 							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
 						addtimer(CALLBACK(src, PROC_REF(open_podlocks), "map_lockdown"), 300)
 
-			if(round_should_check_for_win)
+			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
 
@@ -265,7 +380,7 @@
 			continue
 
 	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE, announce_dispatch_message = FALSE)
+		SSticker.mode.get_specific_call(/datum/emergency_call/forsaken_xenos, TRUE, FALSE) // "Xenomorphs Groundside (Forsaken)"
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
@@ -289,6 +404,7 @@
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	add_current_round_status_to_end_results("First Drop")
+	clear_lz_hazards()
 
 ///////////////////////////
 //Checks to see who won///
@@ -297,29 +413,25 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		round_finished = MODE_GENERIC_DRAW_NUKE //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
-		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
-		if(!num_humans && num_xenos) //No humans remain alive.
-			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
-		else if(num_humans && !num_xenos)
-			if(SSticker.mode && SSticker.mode.is_in_endgame)
-				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
-			else
-				SSticker.roundend_check_paused = TRUE
-				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
-				ares_conclude()
-				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
-		else if(!num_humans && !num_xenos)
-			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
+
+	if(!num_humans && num_xenos) //No humans remain alive.
+		round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+	else if(num_humans && !num_xenos)
+		if(SSticker.mode && SSticker.mode.is_in_endgame)
+			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
+		else
+			SSticker.roundend_check_paused = TRUE
+			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			ares_conclude()
+			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
+	else if(!num_humans && !num_xenos)
+		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
 /datum/game_mode/colonialmarines/check_queen_status(hivenumber)
 	set waitfor = 0
@@ -333,10 +445,13 @@
 		var/datum/hive_status/HS
 		for(var/HN in GLOB.hive_datum)
 			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !is_admin_level(HS.living_xeno_queen.loc.z))
+			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
-		round_finished = MODE_INFESTATION_M_MINOR
+		if(length(HS.totalXenos) <= 3)
+			round_finished = MODE_INFESTATION_M_MAJOR
+		else
+			round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//
@@ -357,53 +472,59 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
-				round_statistics.current_map.total_xeno_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
-				round_statistics.current_map.total_marine_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					log_game("3rd party victory: Weyland-Yutani")
+					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					log_game("3rd party victory: Union of Progressive Peoples")
+					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					log_game("3rd party victory: Colonial Liberation Front")
+					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_draws++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.round_result = round_finished
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.round_result = round_finished
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 	calculate_end_statistics()
 	show_end_statistics(end_icon)
@@ -444,11 +565,11 @@
 	)
 
 	//organize our jobs in a readable and standard way
-	for(var/job in ROLES_MARINES)
+	for(var/job in GLOB.ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_USCM - ROLES_MARINES)
+	for(var/job in GLOB.ROLES_USCM - GLOB.ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
-	for(var/job in ROLES_SPECIAL)
+	for(var/job in GLOB.ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0
 
 	var/list/counted_xenos = list()
@@ -467,7 +588,7 @@
 		if(player_client.mob && player_client.mob.stat != DEAD)
 			if(ishuman(player_client.mob))
 				if(player_client.mob.faction == FACTION_MARINE)
-					if(player_client.mob.job in (ROLES_MARINES))
+					if(player_client.mob.job in (GLOB.ROLES_MARINES))
 						counted_humans["Squad Marines"][player_client.mob.job]++
 					else
 						counted_humans["Auxiliary Marines"][player_client.mob.job]++
@@ -520,7 +641,7 @@
 			total_marines += squad_marines_job_report[job_type]
 			total_squad_marines += squad_marines_job_report[job_type]
 			incrementer++
-			if(incrementer < squad_marines_job_report.len)
+			if(incrementer < length(squad_marines_job_report))
 				squad_marine_job_text += ", "
 
 		var/auxiliary_marine_job_text = ""
@@ -530,7 +651,7 @@
 			auxiliary_marine_job_text += "[job_type]: [auxiliary_marines_job_report[job_type]]"
 			total_marines += auxiliary_marines_job_report[job_type]
 			incrementer++
-			if(incrementer < auxiliary_marines_job_report.len)
+			if(incrementer < length(auxiliary_marines_job_report))
 				auxiliary_marine_job_text += ", "
 
 		var/total_non_standard = 0
@@ -541,7 +662,7 @@
 			non_standard_job_text += "[job_type]: [non_standard_job_report[job_type]]"
 			total_non_standard += non_standard_job_report[job_type]
 			incrementer++
-			if(incrementer < non_standard_job_report.len)
+			if(incrementer < length(non_standard_job_report))
 				non_standard_job_text += ", "
 
 		var/list/hive_xeno_numbers = list()
@@ -555,7 +676,7 @@
 				hive_caste_text += "[hive_caste]: [per_hive_status[hive_caste]]"
 				hive_amount += per_hive_status[hive_caste]
 				incrementer++
-				if(incrementer < per_hive_status.len)
+				if(incrementer < length(per_hive_status))
 					hive_caste_text += ", "
 			if(hive_amount)
 				hive_xeno_numbers[hive] = hive_amount

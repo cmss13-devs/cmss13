@@ -80,11 +80,11 @@
 		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
 		return
 
-	var/obj/item/card/id/ID = user.wear_id
-	if(!istype(ID)) //not wearing an ID
+	var/obj/item/card/id/ID = user.get_idcard()
+	if(!ID) //not wearing an ID
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
-	if(ID.registered_ref != WEAKREF(user))
+	if(!ID.check_biometrics(user))
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
 
@@ -95,7 +95,7 @@
 	user.rank_fallback = "ass"
 	user.hud_set_squad()
 
-	var/obj/item/card/id/ID = user.wear_id
+	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
@@ -186,3 +186,38 @@
 	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 
+
+/obj/item/pamphlet/trait
+	bypass_pamphlet_limit = TRUE
+	/// What trait to give the user
+	var/trait_to_give
+
+/obj/item/pamphlet/trait/can_use(mob/living/carbon/human/user)
+	if(!istype(user))
+		return FALSE
+
+	if(HAS_TRAIT(user, trait_to_give))
+		to_chat(user, SPAN_WARNING("You know this already!"))
+		return FALSE
+
+	if(!(user.job in JOB_SQUAD_ROLES_LIST))
+		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		return FALSE
+
+	if(user.has_used_pamphlet && !bypass_pamphlet_limit)
+		to_chat(user, SPAN_WARNING("You've already used a pamphlet!"))
+		return FALSE
+
+	return TRUE
+
+/obj/item/pamphlet/trait/on_use(mob/living/carbon/human/user)
+	to_chat(user, SPAN_NOTICE(flavour_text))
+	ADD_TRAIT(user, trait_to_give, "pamphlet")
+	if(!bypass_pamphlet_limit)
+		user.has_used_pamphlet = TRUE
+
+/obj/item/pamphlet/trait/vulture
+	name = "\improper M707 instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge of how to shoot big guns and spot for them."
+	icon_state = "pamphlet_vulture"
+	trait_to_give = TRAIT_VULTURE_USER

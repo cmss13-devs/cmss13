@@ -54,6 +54,8 @@
 #define SHOCK 8
 #define SAFE 16
 
+#define CLOSED 2
+
 //metal, glass, rod stacks
 #define MAX_STACK_AMOUNT_METAL 50
 #define MAX_STACK_AMOUNT_GLASS 50
@@ -77,14 +79,15 @@
 #define GETPULSE_HAND 0 //less accurate (hand)
 #define GETPULSE_TOOL 1 //more accurate (med scanner, sleeper, etc)
 
-var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.
+GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.)
 	"thunder",
 	"ERT",
 	"NUKE",
 	CAMERA_NET_LADDER,
 	CAMERA_NET_COLONY,
 	CAMERA_NET_OVERWATCH,
-	)
+	CAMERA_NET_ARES,
+	))
 
 #define STASIS_IN_BAG 1
 #define STASIS_IN_CRYO_CELL 2
@@ -153,7 +156,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define RESULT_REQUIRES_SNOW (1<<0)
 
 
+/// Reaction type from touching it
 #define TOUCH 1
+/// Reaction type from eating it
 #define INGEST 2
 
 /// Marks an object as organic. Used for alien structures and any other organic material
@@ -168,3 +173,13 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 // For reinforced table status
 #define RTABLE_WEAKENED 1
 #define RTABLE_NORMAL 2
+
+//Lights define
+#define CHECKS_PASSED 1
+#define STILL_ON_COOLDOWN 2
+#define NO_LIGHT_STATE_CHANGE 3
+
+//tool capabilities or something i don't know
+#define REMOVE_CROWBAR  (1<<0)
+#define BREAK_CROWBAR   (1<<1)
+#define REMOVE_SCREWDRIVER (1<<2)

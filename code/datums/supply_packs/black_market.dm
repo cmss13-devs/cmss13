@@ -16,7 +16,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-/datum/supply_packs/contraband//base
+/datum/supply_packs/contraband //base
 	name = "contraband crate"
 	contains = null
 	containertype = null
@@ -25,6 +25,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	contraband = TRUE
 	cost = 0
 	dollar_cost = 50
+	crate_heat = 5
 
 /obj/structure/largecrate/black_market
 	/// Wipes points from objects inside to avoid infinite farming.
@@ -68,11 +69,13 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	contains = list(/obj/item/device/black_market_scanner)
 	containername = "trash cart"
 	dollar_cost = 5
+	crate_heat = 0
 	containertype = /obj/structure/closet/crate/trashcart
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
 	dollar_cost = 70
+	crate_heat = 10
 	containertype = /obj/structure/largecrate/black_market/confiscated_equipment
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
@@ -98,7 +101,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
-			new /obj/item/clothing/shoes/marine/upp(src)
+			new /obj/item/clothing/shoes/marine/upp/knife(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //freelancer
@@ -115,6 +118,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	name = "seized foreign weaponry crate"
 	contains = list()
 	dollar_cost = 45
+	crate_heat = 15
 	containertype = /obj/structure/largecrate/black_market/confiscated_weaponry
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/Initialize()
@@ -123,71 +127,42 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	switch(rand(1,6))
+	switch(rand(1, 5))
 		if(1) //pmc
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
-			else
-				new /obj/item/weapon/gun/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/weapon/gun/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
 		if(2) //pizza
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(3) //clf
-			switch(rand(1, 3))
+			switch(rand(1, 2))
 				if(1)
-					new /obj/item/weapon/twohanded/lungemine/damaged(src)
-				if(2)
 					new /obj/item/weapon/gun/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi/extended(src)
 					new /obj/item/ammo_magazine/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi(src)
-				if(3)
+				if(2)
 					new /obj/item/weapon/gun/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 		if(4) //upp
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71/ap(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-			else
-				new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
+			new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
 		if(5) //freelancer
-			if(prob(80))
-				new /obj/item/weapon/gun/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(6) //VAIPO
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/m41aMK1/tactical(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+			new /obj/item/weapon/gun/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+
 
 /* Misc. Individual Guns */
 
@@ -333,15 +308,15 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/ppsh
-	name = "PPSh-17b submachinegun crate (x5 magazines included)"
+/datum/supply_packs/contraband/seized/pps43
+	name = "Type-19 submachinegun crate (x5 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh/extended,
-		/obj/item/ammo_magazine/smg/ppsh/extended,
-		/obj/item/ammo_magazine/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh,
+		/obj/item/weapon/gun/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43/extended,
+		/obj/item/ammo_magazine/smg/pps43/extended,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
 	)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
@@ -374,18 +349,18 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/c99
-	name = "Korovin PK-9 pistol crate (x6 magazines included)"
+/datum/supply_packs/contraband/seized/t73
+	name = "Type 73 pistol crate (x6 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
+		/obj/item/weapon/gun/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
 	)
-	dollar_cost = 5
+	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42
@@ -414,16 +389,17 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/pistol/holdout,
 	)
 	dollar_cost = 5
+	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/skorpion
-	name = "CZ-81 machine pistol (x4 magazines included)"
+/datum/supply_packs/contraband/seized/bizon
+	name = "Type 64 Submachinegun (x4 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/weapon/gun/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
 	)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
@@ -444,7 +420,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
-	name = "S&W revolver (x6 magazines included)"
+	name = "Smith and Wesson revolver (x6 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/revolver/small,
 		/obj/item/ammo_magazine/revolver/small,
@@ -457,10 +433,10 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/nagant
-	name = "N-Y 7.62mm revolver (x6 magazines included)"
+/datum/supply_packs/contraband/seized/upprevolver
+	name = "ZHNK-72 revolver (x6 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/revolver/nagant,
+		/obj/item/weapon/gun/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
@@ -468,7 +444,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 	)
-	dollar_cost = 10
+	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/r4t
@@ -528,6 +504,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono,
 	)
 	dollar_cost = 35
+	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_medicine
@@ -542,6 +519,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/pill_bottle/paracetamol,
 	)
 	dollar_cost = 25
+	crate_heat = 3
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_cuisine
@@ -555,10 +533,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/egg/random,
 		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
 		/obj/item/reagent_container/food/snacks/xemeatpie,
-		/obj/item/reagent_container/food/snacks/monkeycube,
-		/obj/item/reagent_container/food/snacks/monkeycube/farwacube,
-		/obj/item/reagent_container/food/snacks/monkeycube/stokcube,
-		/obj/item/reagent_container/food/snacks/monkeycube/yirencube,
 		/obj/item/reagent_container/food/snacks/upp,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas2,
@@ -583,6 +557,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/condiment/hotsauce/franks/macho,
 	)
 	dollar_cost = 15
+	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 
@@ -599,6 +574,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/fancy/cigar/tarbacktube,
 	)
 	dollar_cost = 45
+	crate_heat = -5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_miscellaneous
@@ -609,7 +585,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/box/packet/hefa/toy,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/farwadoll,
+		/obj/item/toy/plush/farwa,
 		/obj/item/toy/waterflower,
 		/obj/item/toy/spinningtoy,
 		/obj/item/storage/box/snappops,
@@ -623,7 +599,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
-		/obj/item/weapon/banhammer,
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/fireripley,
 		/obj/item/toy/prize/deathripley,
@@ -640,6 +615,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/pamphlet/language/spanish,
 	)
 	dollar_cost = 30
+	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market
 
 
@@ -660,25 +636,27 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "surplus USCM poncho crate (x2)"
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market/poncho
+	crate_heat = -2
 
 /obj/structure/largecrate/black_market/poncho/Initialize()
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not successfully delivered because: 'No items of that type found in storage.'"
 	nope.color = "green"
 	nope.update_icon()
 
 /datum/supply_packs/contraband/surplus/uscm_heap
 	name = "surplus high-explosive armor-piercing M41A magazine crate (x3)"
 	dollar_cost = 40
+	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market/uscm_heap
 
 /obj/structure/largecrate/black_market/uscm_heap/Initialize()
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not succesfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
+	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not successfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -710,12 +688,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
-	containertype = /obj/structure/largecrate/black_market
-
-/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
-	name = "surplus magazine box (Ext M4RA x 12)"
-	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
-	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
 /* - Misc. USCM weaponry - */
@@ -750,6 +722,143 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 	containertype = /obj/structure/largecrate/black_market
 
+/* --- AMMO --- */
+
+/datum/supply_packs/contraband/ammo
+	group = "Contraband Ammo"
+
+/datum/supply_packs/contraband/ammo/r4t
+	name = "45-70 bullet box crate (x300 rounds)"
+	dollar_cost = 135
+	contains = list(/obj/item/ammo_box/magazine/lever_action)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/r4t/training
+	name = "45-70 bullet box crate (x300 training rounds)"
+	dollar_cost = 35
+	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m16
+	name = "Magazine box (M16, 12x regular mags)"
+	dollar_cost = 100
+	contains = list(/obj/item/ammo_box/magazine/M16)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ar10
+	name = "Magazine box (AR10, 12x regular mags)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/ar10)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle
+	name = "Magazine box (Desert Eagle, 16x regular mags)"
+	dollar_cost = 180
+	contains = list(/obj/item/ammo_box/magazine/deagle)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle/hiap
+	name = "Magazine box (Desert Eagle, 16x HIAP mags)"
+	dollar_cost = 260
+	contains = list(/obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/type73
+	name = "Magazine box (Type 73, 16x regular mags)"
+	dollar_cost = 60
+	contains = list(/obj/item/ammo_box/magazine/type73)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/nsg
+	name = "Magazine box (NSG-23, 16x regular mags)"
+	dollar_cost = 140
+	contains = list(/obj/item/ammo_box/magazine/nsg23)
+	containertype = /obj/structure/largecrate/black_market
+/datum/supply_packs/contraband/ammo/mar30
+	name = "Magazines box (MAR30, 10x regular mags)"
+	dollar_cost = 60
+	contains = list(/obj/item/ammo_box/magazine/mar30)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/fp9000
+	name = "Magazines box (FN FP9000, 10x mags)"
+	dollar_cost = 35
+	contains = list(/obj/item/ammo_box/magazine/fp9000)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mp27
+	name = "Magazines box (MP-27, 12x mags)"
+	dollar_cost = 45
+	contains = list(/obj/item/ammo_box/magazine/mp27)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uzi
+	name = "Magazines box (UZI, 12x mags)"
+	dollar_cost = 25
+	contains = list(/obj/item/ammo_box/magazine/uzi)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mac15
+	name = "Magazines box (MAC-15, 12x mags)"
+	dollar_cost = 15
+	contains = list(/obj/item/ammo_box/magazine/mac15)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/pps43
+	name = "Magazines box (Type-19, 10x regular mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/type19)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/b92fs
+	name = "Magazines box (Beretta 92FS, 16x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/b92fs)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/kt42
+	name = "Magazines box (KT-42, 16x mags)"
+	dollar_cost = 45
+	contains = list(/obj/item/ammo_box/magazine/kt42)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/bizon
+	name = "Magazines box (Type 64, 10x mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/type64)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m1911
+	name = "Magazines box (M1911, 16x mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/m1911)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mk45
+	name = "Magazines box (MK-45 Automagnum, 16x mags)"
+	dollar_cost = 80
+	contains = list(/obj/item/ammo_box/magazine/mk45)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/cmb
+	name = "Speed loaders box (CMB Spearhead, 16x HP loaders)"
+	dollar_cost = 70
+	contains = list(/obj/item/ammo_box/magazine/spearhead)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/smw
+	name = "Speed loaders box (Smith and Wesson revolver, 12x loaders)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/snw)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/zhnk
+	name = "Speed loaders box (ZHNK-72, 12x loaders)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/zhnk)
+	containertype = /obj/structure/largecrate/black_market
+
+
 /* --- DEEP STORAGE --- */
 
 /*
@@ -762,14 +871,13 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage
 	group = "Deep Storage"
-
-
-// Helmet Garb
+	crate_heat = -5
 
 /datum/supply_packs/contraband/deep_storage/spacejam
 	name = "Tickets to Space Jam"
 	contains = list(/obj/item/prop/helmetgarb/spacejam_tickets)
 	dollar_cost = 5
+	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/broken_nvgs
@@ -778,8 +886,8 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/xm42b_pipe
-	name = "10x99mm XM42B casing"
+/datum/supply_packs/contraband/deep_storage/xm43e1_pipe
+	name = "10x99mm XM43E1 casing"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
@@ -924,6 +1032,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "Frozen Lime"
 	contains = list(/obj/item/reagent_container/food/snacks/grown/lime)
 	dollar_cost = 5
+	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uno_reverse_random
@@ -962,18 +1071,21 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "D18 Holdout Pistol"
 	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
+	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
 	name = "M4A3 Custom Pistol"
 	contains = list(/obj/item/weapon/gun/pistol/m4a3/custom)
 	dollar_cost = 35
+	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m44_c
 	name = "M44 Custom Revolver"
 	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
+	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 
 /* --- MISCELLANEOUS --- */
@@ -990,6 +1102,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /datum/supply_packs/contraband/miscellaneous/secured_wildlife
 	name = "secured wildlife container"
 	dollar_cost = 45
+	crate_heat = 7
 	containertype = /obj/structure/largecrate/black_market/secured_wildlife
 
 /obj/structure/largecrate/black_market/secured_wildlife
@@ -1008,6 +1121,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /datum/supply_packs/contraband/miscellaneous/potted_plant
 	name = "potted plant crate"
 	dollar_cost = 50
+	crate_heat = -10
 	contains = list(/obj/structure/flora/pottedplant/random/unanchored)
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1020,6 +1134,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /datum/supply_packs/contraband/miscellaneous/clf_supplies
 	name = "unmarked CLF supply crate"
 	dollar_cost = 40
+	crate_heat = 25
 	contains = list()
 	containertype = /obj/structure/largecrate/black_market/clf_supplies
 
@@ -1068,11 +1183,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				new picked_type(loc)
 			loot_message = SPAN_NOTICE("It's some strange elite gear...?")
 		if(11 to 15)
-			//Skorpion
-			new /obj/item/weapon/gun/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
+			//Type 64
+			new /obj/item/weapon/gun/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
 			// Somehow they found a Webley.
 			new /obj/item/weapon/gun/revolver/m44/custom/webley(loc)
 			new /obj/item/ammo_magazine/revolver/webley(loc)
@@ -1080,18 +1195,18 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/revolver/webley(loc)
 			loot_message = SPAN_NOTICE("It's some CLF pistol armaments!")
 		if(16 to 20)
-			// PPSH
-			new /obj/item/weapon/gun/smg/ppsh/with_drum_mag(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
+			// Type 19
+			new /obj/item/weapon/gun/smg/pps43/extended_mag(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
 			// MAC-15
 			new /obj/item/weapon/gun/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
-		if(21 to 25)
+		if(21 to 29)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
@@ -1099,13 +1214,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
-		if(26 to 30)
-		// Damaged lunge mines, don't let the marines near these. Not even *close* to effective against even a runner.
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			loot_message = SPAN_NOTICE("It's a bunch of lunge mines..?")
-		if(31 to 35)
+		if(30 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")
 			var/list/nades_to_pick = list(

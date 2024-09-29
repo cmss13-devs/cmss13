@@ -12,8 +12,6 @@
 	damage = 0
 	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
 
-	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
-
 	opacity = TRUE
 	density = TRUE
 
@@ -24,19 +22,27 @@
 		/obj/structure/girder,
 		/obj/structure/machinery/door,
 		/obj/structure/machinery/cm_vending/sorted/attachments/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 	)
 
+	/// The type of wall decoration we use, to avoid the wall changing icon all the time
+	var/decoration_type
+
+/turf/closed/wall/almayer/Initialize(mapload, ...)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
+	return ..()
+
 /turf/closed/wall/almayer/update_icon()
-	..()
-	if(special_icon)
-		return
+	if(decoration_type == null)
+		return ..()
 	if(neighbors_list in list(EAST|WEST))
-		var/r1 = rand(0,10) //Make a random chance for this to happen
-		var/r2 = rand(0,3) // Which wall if we do choose it
-		if(r1 >= 9)
-			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
+		special_icon = TRUE
+		icon_state = "almayer_deco_wall[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)
@@ -50,6 +56,24 @@
 	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
+
+/// Acts like /turf/closed/wall/almayer/outer until post-hijack where it reverts to /turf/closed/wall/almayer/reinforced.
+/turf/closed/wall/almayer/reinforced/temphull
+	name = "heavy reinforced hull"
+	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It would take a great impact to weaken this wall."
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "temphull"
+	hull = TRUE
+
+/turf/closed/wall/almayer/reinforced/temphull/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(de_hull))
+
+/turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
+	SIGNAL_HANDLER
+	hull = FALSE
+	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
@@ -125,7 +149,7 @@
 	operating = TRUE
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
-	SetOpacity(0)
+	set_opacity(0)
 	density = FALSE
 	operating = FALSE
 	change_weeds()
@@ -136,7 +160,7 @@
 	operating = TRUE
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
-	SetOpacity(1)
+	set_opacity(1)
 	density = TRUE
 	operating = FALSE
 
@@ -187,7 +211,39 @@
 	icon_state = "containment_window"
 	opacity = FALSE
 
+//AI Core
 
+/turf/closed/wall/almayer/aicore
+	walltype = WALL_AICORE
+	icon = 'icons/turf/walls/almayer_aicore.dmi'
+	icon_state = "aiwall"
+
+/turf/closed/wall/almayer/aicore/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/aicore/hull
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
+
+/turf/closed/wall/almayer/aicore/white
+	walltype = WALL_AICORE
+	icon = 'icons/turf/walls/almayer_aicore_white.dmi'
+	icon_state = "aiwall"
+
+/turf/closed/wall/almayer/aicore/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/aicore/white/hull
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
 
 
 //Sulaco walls.
@@ -199,14 +255,12 @@
 	hull = 0 //Can't be deconstructed
 
 	damage_cap = HEALTH_WALL
-	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
 	walltype = WALL_SULACO //Changes all the sprites and icons.
 
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
-	max_temperature = 50000 // Nearly impossible to melt
 	walltype = WALL_SULACO
 
 
@@ -214,7 +268,6 @@
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
-	max_temperature = 50000 // Nearly impossible to melt
 	walltype = WALL_SULACO
 
 
@@ -239,31 +292,35 @@
 	icon_state = "fakewindows"
 	opacity = FALSE
 
+INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
+
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
-	icon = 'icons/lobby/title.dmi'
-	icon_state = ""
-// icon_state = "title_holiday"
+	icon = 'icons/lobby/title_loading.dmi'
+	icon_state = "title"
 	layer = FLY_LAYER
-	special_icon = 1
+	special_icon = TRUE
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
-	displayed_lobby_art = art_id
-	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
+	GLOB.displayed_lobby_art = art_id
+	var/turf/closed/wall/indestructible/splashscreen/lobby_art = locate("LOBBYART")
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	SS.icon_state = lobby_arts[displayed_lobby_art]
-	SS.desc = "Artwork by [lobby_authors[displayed_lobby_art]]"
-	for(var/client/C in GLOB.clients)
-		if(displayed_lobby_art != -1)
-			var/author = lobby_authors[displayed_lobby_art]
+	lobby_art.icon = 'icons/lobby/title.dmi'
+	lobby_art.icon_state = lobby_arts[GLOB.displayed_lobby_art]
+	lobby_art.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
+	lobby_art.pixel_x = -288
+	lobby_art.pixel_y = -288
+	for(var/client/player in GLOB.clients)
+		if(GLOB.displayed_lobby_art != -1)
+			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
-				to_chat_forced(C, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
+				to_chat_forced(player, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
@@ -522,7 +579,6 @@
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
@@ -537,7 +593,6 @@
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost/reinforced/hull
 	hull = 1
@@ -558,7 +613,6 @@
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
 	name = "heavy reinforced colony wall"
@@ -591,7 +645,6 @@
 	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
@@ -625,7 +678,6 @@
 	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"
@@ -702,7 +754,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
-	flags_turf = TURF_ORGANIC
+	turf_flags = TURF_ORGANIC
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
@@ -748,6 +800,14 @@
 	damage_cap = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
+
+/turf/closed/wall/resin/tutorial
+	name = "tutorial resin wall"
+	desc = "Weird slime solidified into a wall. Remarkably resilient."
+	hivenumber = XENO_HIVE_TUTORIAL
+
+/turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
+	return
 
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
@@ -812,7 +872,7 @@
 				var/datum/movable_wall_group/MWG = new()
 				MWG.add_structure(current)
 
-			for(var/dir in cardinal)
+			for(var/dir in GLOB.cardinals)
 				connected = locate() in get_step(current, dir)
 				if(connected in current_walls)
 					if(connected.group == src)
@@ -947,7 +1007,7 @@
 /obj/structure/alien/movable_wall/proc/update_connections(propagate = FALSE)
 	var/list/wall_dirs = list()
 
-	for(var/dir in alldirs)
+	for(var/dir in GLOB.alldirs)
 		var/obj/structure/alien/movable_wall/MW = locate() in get_step(src, dir)
 		if(!(MW in group.walls))
 			continue
@@ -978,7 +1038,7 @@
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
@@ -986,22 +1046,22 @@
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
 
-/obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
-/obj/structure/alien/movable_wall/bullet_act(obj/item/projectile/P)
+/obj/structure/alien/movable_wall/bullet_act(obj/projectile/P)
 	. = ..()
 	take_damage(P.damage)
 
 /obj/structure/alien/movable_wall/proc/recalculate_structure()
 	var/list/found_structures = list()
 	var/current_walls = 0
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinals)
 		var/turf/T = get_step(src, i)
 		var/obj/structure/alien/movable_wall/MW = locate() in T
 		if(!MW)
@@ -1058,7 +1118,7 @@
 			return COMPONENT_TURF_ALLOW_MOVEMENT
 
 /obj/structure/alien/movable_wall/Move(NewLoc, direct)
-	if(!(direct in cardinal))
+	if(!(direct in GLOB.cardinals))
 		return
 	group.try_move_in_direction(direct)
 
@@ -1108,9 +1168,13 @@
 	var/explosive_multiplier = 0.3
 	var/reflection_multiplier = 0.5
 
-/turf/closed/wall/resin/reflective/bullet_act(obj/item/projectile/P)
+/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/P)
 	if(src in P.permutated)
 		return
+
+	//Ineffective if someone is sitting on the wall
+	if(locate(/mob) in contents)
+		return ..()
 
 	if(!prob(chance_to_reflect))
 		if(P.ammo.damage_type == BRUTE)
@@ -1120,7 +1184,7 @@
 		// Bullet gets absorbed if it has IFF or can't be reflected.
 		return
 
-	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
+	var/obj/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
 	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
@@ -1136,7 +1200,7 @@
 
 	return TRUE
 
-/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, turf/T)
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/projectile/P, turf/T)
 	SIGNAL_HANDLER
 	if(T == src)
 		return COMPONENT_BULLET_PASS_THROUGH
@@ -1187,10 +1251,10 @@
 
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
-	SPAN_XENONOTICE("You claw \the [src]."))
+	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
-		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
+		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
@@ -1218,7 +1282,7 @@
 
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
@@ -1228,7 +1292,7 @@
 	. = ..()
 	if(.)
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 			if(!istype(T)) continue
 			for(var/obj/structure/mineral_door/resin/R in T)

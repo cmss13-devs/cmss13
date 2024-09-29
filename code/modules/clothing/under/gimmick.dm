@@ -11,6 +11,10 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	displays_id = 0
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 //JASON
 /obj/item/clothing/under/gimmick/jason
 	name = "dirty work attire"

@@ -141,7 +141,7 @@ to destroy them and players will be able to make replacements.
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		machine_dir = turn(machine_dir, 90)
 		init_dirs = machine_dir
-		user.visible_message(SPAN_NOTICE("\The [user] adjusts the jumper on the [src]'s port configuration pins."), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))
+		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s port configuration pins."), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))
 	return
 
 /obj/item/circuitboard/machine/unary_atmos/get_examine_text(mob/user)
@@ -300,5 +300,3 @@ to destroy them and players will be able to make replacements.
 	// Board itself is high tech. Coils have to be ordered from cargo or salvaged from existing SMESs.
 	frame_desc = "Requires 1 superconducting magnetic coil and 30 wires."
 	req_components = list(/obj/item/stock_parts/smes_coil = 1, /obj/item/stack/cable_coil = 30)
-
-

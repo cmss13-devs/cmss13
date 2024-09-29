@@ -47,7 +47,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/belt/gun/m4a3,
@@ -81,7 +81,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -215,7 +215,7 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 	allowed = list(
-		/obj/item/weapon/claymore/mercsword,
+		/obj/item/weapon/sword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
@@ -250,7 +250,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 1
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -335,10 +335,10 @@
 		add_fingerprint(user)
 
 /obj/item/clothing/suit/armor/reactive/emp_act(severity)
+	. = ..()
 	active = 0
 	src.icon_state = "reactiveoff"
 	src.item_state = "reactiveoff"
-	..()
 
 
 
@@ -355,7 +355,7 @@
 	item_state = "centcom"
 	w_class = SIZE_LARGE//bulky item
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
+	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank/emergency_oxygen)
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -423,7 +423,7 @@
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > SIZE_MEDIUM)
-			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
+			to_chat(usr, SPAN_DANGER("This gun won't fit in the belt!"))
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()

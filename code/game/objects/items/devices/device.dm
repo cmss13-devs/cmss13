@@ -5,9 +5,9 @@
 	icon = 'icons/obj/items/devices.dmi'
 	var/serial_number
 
-/obj/item/device/Initialize()
+/obj/item/device/Initialize(mapload, ...)
 	. = ..()
-	serial_number = "[rand(0,9)][pick(alphabet_uppercase)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][pick(alphabet_uppercase)]"
+	serial_number = "[rand(0,9)][pick(GLOB.alphabet_uppercase)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][pick(GLOB.alphabet_uppercase)]"
 
 /obj/item/device/get_examine_text(mob/user)
 	. = ..()

@@ -8,7 +8,6 @@
 	icon_state = "fiorina"
 	can_build_special = TRUE //T-Comms structure
 	temperature = T20C
-	lighting_use_dynamic = 1
 	ceiling = CEILING_GLASS
 	minimap_color = MINIMAP_AREA_COLONY
 
@@ -71,14 +70,13 @@
 	name = "Fiorina - LZ"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"
@@ -185,6 +183,7 @@
 
 /area/fiorina/station/telecomm/lz1_tram
 	name = "Fiorina - LZ1 Aux Port Communications Relay"
+	is_landing_zone = TRUE
 
 /area/fiorina/station/telecomm/lz1_engineering
 	name = "Fiorina - Engineering Primary Communications Relay"

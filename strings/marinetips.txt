@@ -53,35 +53,55 @@ A misloaded OB can deviate severely from the intended target area - ensure you l
 The XO and CO are trained in Power Loader use and engineering, and can load the OB.
 You can change what your SL tracker beacon is tracking by right clicking on your headset and clicking "Switch Tracker Target".
 Boilers emit light - not every glow from around the corner is friendly!
+The amount of items in Requisitions and Squad Preparations depend on how many players readied up at the start of the round.
 You can carry a variety of items inside your helmet - from gauze and cigarettes to flares and screwdrivers.
 CIC staff can track every USCM-aligned person via the suit sensors console and overwatch console - useful for finding escaped prisoners or dead marines.
 When the M7 RPG is fired, it creates a substantial shockwave behind it that can stun and harm marines standing too close. Watch your backblast!
 Remember that you need to put a defibrillator's paddles away in order to store it.
-W-Y PMCs do not have marine IFF. Don't fire Smartguns through them!
-To talk on multiple radio channels at once, put a COMMA [,] before your message and add up to four prefixes. E.g, ,abcd talks on all squad channels at once.
+W-Y PMCs do not have marine IFF. Don't fire Smartguns at them!
+To talk on multiple radio channels at once, put a COMMA [,] before your message and add up to four prefixes. E.g, ,abcd talks on the main four squad channels at once.
 Put .w or :w before your message to whisper. Another way to whisper is to use the verb "whisper" in the IC tab or command bar.
 For Vehicle Crewmen : it is often safer to repair the parts of your APC or tank inside the vehicle than outside it.
 It is almost always faster to do surgery manually than in the autodoc.
 To check your skills, go to the IC tab and click "view skills".
+Minirockets pack the most punch per cost as far as CAS weaponry is concerned.
 The U7 underbarrel shotgun can instantly break down both resin doors and mechanical airlocks, and it's not bad at breaking walls down either.
 You can find breaching charges in Requisitions or the Squad Engineer vendor. They function like C4, but can be deployed and explode much quicker, and release powerful shrapnel on the opposite side. They require minor engineering knowledge, which can be obtained from pamphlets.
 Armor piercing ammunition does less damage to unarmored targets.
+Requisitions may not grant you service if you are a 'pajamarine' : a marine in cryosleep attire. Be sure to dress up!
 You can insert empty pill bottles into ChemMasters before creating pills to have them automatically inserted.
 Nurses can practice a full range of surgeries on Professor DUMMY. Ask the gods to give you one if you see (or are) a nurse practicing.
 Drinks from the hot drinks machine warm you up.
 Be careful! Barricades block grenades, and indeed all thrown items, from the front if they're barbed up.
+CAS Fire Missions doubles the accuracy of fired weapons, which can be substantial.
 Painkillers do not stack. Only the strongest has any effect.
-Intel Officers can be put in a squad by going to CIC and requesting it.
+Don't underestimate the mortar: with ammo and proper communication it can hit surprisingly hard.
+You can shoot through tents, but they won't protect you much in return.
+Reqs doesn't have an infinite budget.
+Good Reqs can land supplies anywhere outside - given coords - and sometimes in a minimal amount of time.
+A ‘point blank’ or ‘PB’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect.
+Intel Officers can be put in a different squad by going to CIC and requesting it.
 Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
 If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
 You can check the landing zone as a marine in the status panel.
-Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those cannot be fixed.
+The Colonial Marshals may come to crack down on too heavy of a Black Market usage.
+A night vision HUD optic can be recharged by removing it with a screwdriver, then placing it into a recharger.
 You can put a pistol belt on your suit slot. (Just grab a rifle instead.)
 Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
-Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best-case scenario.
+Armor consistently protects you from damage to your chest, arms, and legs, but does not protect hands and feet. Take the wiki damage values as a best-case scenario.
 You can click on your Security Access Tuner (multitool) in your hand to locate the area's APC if there is one.
+Need help learning the game and these tips aren't enough? Use MentorHelp or try to get ahold of your ship's Senior Enlisted Advisor.
 Clicking on your sprite with help intent will let you check your body, seeing where your fractures and other wounds are.
 Armor has insulative properties - taking it off will help you cool off and take less damage faster if you've been set on fire.
 Both foldable cades & plasteel cades if loosened and folded down can be transported in crates! In this way, you can use the crate as a portable breach-repair kit, or dragged (or carried via Power Loader) to an unsecure area for quick defensive set up.
 The fuel tank pouch doesn't just carry fuel for an incinerator- they can also carry full-size extinguishers. Toolbelts & tool pouches also may hold miniature extinguishers.
 The M2C heavy machine gunner belt rig can also carry C4, breaching charges, and most tools.
+You can always multitask as Medic, such as by using pills or healing kits at the same time as defibrillator.
+The nuclear ordnance requires BOTH communication towers to be actively held to decrypt the nuclear codes.
+ARES will periodically report the amount of available tech points on Command Channel.
+The quick wield keys generally prioritize wieldable gear going from left to right on your inventory bar.
+Orbital Bombardment warheads respect roofing and hive core protection. They won't hit inside of protected areas.
+The Queen can unbolt and break dropship doors by prying them open, even if they are unlocked. Pilots, Dropship Crew Chiefs, Engineers and Synths can repair these doors with a multitool.
+If you jump out of a dropship with a parachute on (when there is no paradrop system active), you will land at a random location on the map.
+If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
+When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.

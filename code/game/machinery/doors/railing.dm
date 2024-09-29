@@ -22,7 +22,7 @@
 	if(density)//Allows preset-open to work
 		layer = closed_layer
 
-	SetOpacity(initial(opacity))
+	set_opacity(initial(opacity))
 
 /obj/structure/machinery/door/poddoor/railing/update_icon()
 	if(density)

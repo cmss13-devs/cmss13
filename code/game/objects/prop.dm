@@ -2,6 +2,29 @@
 	name = "prop"
 	desc = "Some kind of prop."
 
+/// A prop that acts as a replacement for another item, mimicking their looks.
+/// Mainly used in Reqs Tutorial to provide the full item selections without side effects.
+/obj/item/prop/replacer
+	/// The type that this object is taking the place of
+	var/original_type
+
+/obj/item/prop/replacer/Initialize(mapload, obj/original_type)
+	if(!original_type)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
+	src.original_type = original_type
+	var/obj/created_type = new original_type // Instancing this for the sake of assigning its appearance to the prop and nothing else
+	name = initial(original_type.name)
+	icon = initial(original_type.icon)
+	icon_state = initial(original_type.icon_state)
+	desc = initial(original_type.desc)
+	if(ispath(original_type, /obj/item))
+		var/obj/item/item_type = original_type
+		item_state = initial(item_type.item_state)
+
+	appearance = created_type.appearance
+	qdel(created_type)
+
 /obj/item/prop/laz_top
 	name = "lazertop"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
@@ -10,6 +33,66 @@
 	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
 	w_class = SIZE_SMALL
 	garbage = TRUE
+
+/obj/item/prop/geiger_counter
+	name = "geiger counter"
+	desc = "A geiger counter measures the radiation it receives. This type automatically records and transfers any information it reads, provided it has a battery, with no user input required beyond being enabled."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "geiger"
+	item_state = ""
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_WAIST
+	///Whether the geiger counter is on or off
+	var/toggled_on = FALSE
+	///Iconstate of geiger counter when on
+	var/enabled_state = "geiger_on"
+	///Iconstate of geiger counter when off
+	var/disabled_state = "geiger"
+	///New battery it will spawn with
+	var/starting_battery = /obj/item/cell/crap
+	///Battery inside geiger counter
+	var/obj/item/cell/battery //It doesn't drain the battery, but it has a battery for emergency use
+
+/obj/item/prop/geiger_counter/Initialize(mapload, ...)
+	. = ..()
+	if(!starting_battery)
+		return
+	battery = new starting_battery(src)
+
+/obj/item/prop/geiger_counter/Destroy()
+	. = ..()
+	if(battery)
+		qdel(battery)
+
+/obj/item/prop/geiger_counter/attack_self(mob/user)
+	. = ..()
+	toggled_on = !toggled_on
+	if(!battery)
+		to_chat(user, SPAN_NOTICE("[src] is missing a battery."))
+		return
+	to_chat(user, SPAN_NOTICE("You [toggled_on ? "enable" : "disable"] [src]."))
+	update_icon()
+
+/obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && !HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		return
+
+	if(!battery)
+		to_chat(user, SPAN_NOTICE("There is no battery for you to remove."))
+		return
+	to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
+	user.put_in_hands(battery)
+	battery = null
+	update_icon()
+
+/obj/item/prop/geiger_counter/update_icon()
+	. = ..()
+
+	if(battery && toggled_on)
+		icon_state = enabled_state
+		return
+	icon_state = disabled_state
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
@@ -28,6 +111,11 @@
 	name = "USCM historical table flag"
 	icon_state = "uscmflag2"
 	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
+
+/obj/item/prop/tableflag/upp
+	name = "UPP table flag"
+	icon_state = "uppflag"
+	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
@@ -80,6 +168,18 @@
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
 	icon = 'icons/obj/items/items.dmi'
+
+/obj/item/prop/gripper
+	name = "magnetic gripper"
+	desc = "A simple grasping tool for synthetic assets."
+	icon_state = "gripper"
+	icon = 'icons/obj/items/devices.dmi'
+
+/obj/item/prop/matter_decompiler
+	name = "matter decompiler"
+	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
+	icon_state = "decompiler"
+	icon = 'icons/obj/items/devices.dmi'
 
 /// Xeno-specific props
 

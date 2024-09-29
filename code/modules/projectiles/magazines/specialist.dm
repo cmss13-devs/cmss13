@@ -27,14 +27,14 @@
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
-//M42B Magazine
+//XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
-	name = "\improper XM42B marksman magazine (10x99mm)"
-	desc = "A magazine of caseless 10x99mm anti-materiel rounds."
+	name = "\improper XM43E1 marksman magazine (10x99mm)"
+	desc = "A magazine of caseless 10x99mm anti-materiel rounds, capable of penetrating through most infantry-level materiel. Depending on what you hit, it might even have enough energy to wound anything behind the target."
 	max_rounds = 8
 	caliber = "10x99mm"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
-	gun_type = /obj/item/weapon/gun/rifle/sniper/XM42B
+	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
 
 //M42C magazine
 
@@ -48,16 +48,16 @@
 	max_rounds = 6
 
 
-//SVD //Based on the actual Dragunov designated marksman rifle.
+//Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD designated marksman rifle."
+	name = "\improper Type-88 Magazine (7.62x54mmR)"
+	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/crude
-	max_rounds = 10
+	icon_state = "type88mag"
+	default_ammo = /datum/ammo/bullet/sniper/upp
+	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
 //M4RA magazines
@@ -107,6 +107,12 @@
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 
+/obj/item/ammo_magazine/smartgun/holo_targetting
+	name = "holotargetting smartgun drum"
+	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
+	icon_state = "m56_drum"
+	default_ammo = /datum/ammo/bullet/smartgun/holo_target
+	gun_type = /obj/item/weapon/gun/smartgun/rmc
 //-------------------------------------------------------
 //Flare gun. Close enough?
 /obj/item/ammo_magazine/internal/flare
@@ -248,12 +254,18 @@
 			user.put_in_hands(fuel)
 			fuel = null
 		update_icon()
-		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		return
 	. = ..()
 
+/obj/item/ammo_magazine/rocket/custom/get_examine_text(mob/user)
+	. = ..()
+	if(fuel)
+		. += SPAN_NOTICE("Contains fuel.")
+	if(warhead)
+		. += SPAN_NOTICE("Contains a warhead.")
+
 /obj/item/ammo_magazine/rocket/custom/attackby(obj/item/W as obj, mob/user as mob)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(current_rounds <= 0)
@@ -278,7 +290,6 @@
 			W.forceMove(src)
 			fuel = W
 			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-			desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/rocket) && !locked)
 		if(warhead)
@@ -292,7 +303,6 @@
 		W.forceMove(src)
 		warhead = W
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	update_icon()
 
@@ -331,3 +341,47 @@
 	default_ammo = /datum/ammo/rocket/ap/anti_tank
 	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
 	reload_delay = 100
+
+
+//-------------------------------------------------------
+//UPP Rockets
+
+/obj/item/ammo_magazine/rocket/upp
+	name = "\improper HJRA-12 High-Explosive Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
+	caliber = "88mm"
+	icon_state = "hjra_explosive"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/update_icon()
+	if(current_rounds <= 0)
+		qdel(src)
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/ammo_magazine/rocket/upp/at
+	name = "\improper HJRA-12 Anti-Tank Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles."
+	caliber = "88mm"
+	icon_state = "hjra_tank"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/incen
+	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket, using an experimental chemical designated R-189 by the UPP, it is designed to melt through fortified positions and bunkers but is most commonly used in an anti-personnal role due to over-issuing and the tempatures after use in its intended role leaving the tempature of the air incompatible with human life."
+	caliber = "88mm"
+	icon_state = "hjra_incen"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/wp/upp
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85

@@ -20,6 +20,7 @@
 	var/expand = 1
 	animate_movement = 0
 	var/metal = FOAM_NOT_METAL
+	var/time_to_solidify = 4 SECONDS
 
 
 /obj/effect/particle_effect/foam/Initialize(mapload, ismetal=0)
@@ -28,7 +29,7 @@
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 25, 1, 5)
 	addtimer(CALLBACK(src, PROC_REF(foam_react)), 3 + metal*3)
-	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 40)
+	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), time_to_solidify)
 
 /obj/effect/particle_effect/foam/proc/foam_react()
 	process()
@@ -60,7 +61,7 @@
 		return
 
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 
 
 		var/turf/T = get_step(src,direction)
@@ -156,7 +157,7 @@
 // dense and opaque, but easy to break
 
 #define FOAMED_METAL_FIRE_ACT_DMG 50
-#define FOAMED_METAL_XENO_SLASH 0.8
+#define FOAMED_METAL_XENO_SLASH 1.75
 #define FOAMED_METAL_ITEM_MELEE 2
 #define FOAMED_METAL_BULLET_DMG 2
 #define FOAMED_METAL_EXPLOSION_DMG 1
@@ -173,7 +174,7 @@
 
 /obj/structure/foamed_metal/iron
 	icon_state = "ironfoam"
-	health = 85
+	health = 70
 	name = "foamed iron"
 	desc = "A slightly stronger lightweight foamed iron wall."
 
@@ -188,7 +189,7 @@
 /obj/structure/foamed_metal/ex_act(severity)
 	take_damage(severity * FOAMED_METAL_EXPLOSION_DMG)
 
-/obj/structure/foamed_metal/bullet_act(obj/item/projectile/P)
+/obj/structure/foamed_metal/bullet_act(obj/projectile/P)
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return
 
@@ -211,7 +212,7 @@
 	return FALSE
 
 /obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
-	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus)
+	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)

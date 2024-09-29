@@ -5,7 +5,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	desc = "It seems to be a visual projection of someone" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "hologram"
-	canmove = TRUE
 	blinded = FALSE
 
 	invisibility = INVISIBILITY_OBSERVER
@@ -15,6 +14,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/action_icon_state = "hologram_exit"
 
 	var/mob/linked_mob
+	var/initial_leave_button = /datum/action/leave_hologram
 	var/datum/action/leave_hologram/leave_button
 	///If can be detected on motion detectors.
 	var/motion_sensed = FALSE
@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	name = "[initial(name)] ([M.name])"
 
-	leave_button = new(null, action_icon_state)
+	leave_button = new initial_leave_button(null, action_icon_state)
 	leave_button.linked_hologram = src
 	leave_button.give_to(M)
 
@@ -102,6 +102,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/mob/hologram/linked_hologram
 
 /datum/action/leave_hologram/action_activate()
+	. = ..()
 	qdel(src)
 
 /datum/action/leave_hologram/Destroy()

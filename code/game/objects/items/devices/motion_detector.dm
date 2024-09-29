@@ -33,9 +33,9 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = FACTION_MARINE
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle)
 	var/scanning = FALSE // controls if MD is in process of scan
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/rectangle/square/range_bounds
 	var/long_range_locked = FALSE //only long-range MD
 	var/ping_overlay
 
@@ -48,7 +48,7 @@
 
 /obj/item/device/motiondetector/Initialize()
 	. = ..()
-	range_bounds = new //Just creating a rectangle datum
+	range_bounds = new //Just creating a square datum
 	update_icon()
 
 /obj/item/device/motiondetector/Destroy()
@@ -191,6 +191,14 @@
 	if(ishuman(A.loc))
 		return A.loc
 
+/obj/item/device/motiondetector/xm4
+
+///Forces the blue blip to appear around the detected mob
+/obj/item/device/motiondetector/xm4/get_user()
+	var/atom/holder = loc
+	if(ishuman(holder.loc))
+		return holder.loc
+
 /obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 
@@ -207,12 +215,7 @@
 	if(!istype(cur_turf))
 		return
 
-	if(!range_bounds)
-		range_bounds = new/datum/shape/rectangle
-	range_bounds.center_x = cur_turf.x
-	range_bounds.center_y = cur_turf.y
-	range_bounds.width = detector_range * 2
-	range_bounds.height = detector_range * 2
+	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
@@ -220,7 +223,6 @@
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(isrobot(M)) continue
 		if(M.get_target_lock(iff_signal))
 			continue
 
@@ -262,10 +264,10 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = round(user.client.pixel_x/32)
-			else view_x_offset = Ceiling(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = round(user.client.pixel_y/32)
-			else view_y_offset = Ceiling(user.client.pixel_y/32)
+			if(user.client.pixel_x >= 0) view_x_offset = floor(user.client.pixel_x/32)
+			else view_x_offset = ceil(user.client.pixel_x/32)
+			if(user.client.pixel_y >= 0) view_y_offset = floor(user.client.pixel_y/32)
+			else view_y_offset = ceil(user.client.pixel_y/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0
@@ -280,13 +282,13 @@
 			DB.icon_state = "[blip_icon]_blip"
 			DB.setDir(initial(DB.dir))
 
-		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
-		user.client.screen += DB
+		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
+		user.client.add_to_screen(DB)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
-		user.client.screen -= DB
+		user.client.remove_from_screen(DB)
 
 /obj/item/device/motiondetector/m717
 	name = "M717 pocket motion detector"

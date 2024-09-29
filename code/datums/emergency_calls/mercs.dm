@@ -11,11 +11,11 @@
 /datum/emergency_call/mercs/New()
 	. = ..()
 	hostility = pick(75;FALSE,25;TRUE)
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
-		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Warlord says. Ensure your survival at all costs."
 	else
-		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/friendly //if admins want to specifically call in friendly ones
 	name = "Friendly Freelancers (Squad)"
@@ -25,8 +25,8 @@
 /datum/emergency_call/mercs/friendly/New()
 	. = ..()
 	hostility = FALSE
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/hostile //ditto
 	name = "Hostile Freelancers (Squad)"
@@ -36,8 +36,8 @@
 /datum/emergency_call/mercs/hostile/New()
 	. = ..()
 	hostility = TRUE
-	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Warlord says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
@@ -96,7 +96,7 @@
 /datum/emergency_call/heavy_mercs/New()
 	. = ..()
 	hostility = pick(75;FALSE,25;TRUE)
-	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
 		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 	else
@@ -108,7 +108,7 @@
 /datum/emergency_call/heavy_mercs/hostile/New()
 	. = ..()
 	hostility = TRUE
-	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/friendly
@@ -117,7 +117,7 @@
 /datum/emergency_call/heavy_mercs/friendly/New()
 	. = ..()
 	hostility = FALSE
-	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)

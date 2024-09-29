@@ -1,0 +1,22 @@
+## Settings controlling the relay ping browser accessed via PingIndicator in TGChat
+## Pings are performed by timing how long it takes to download favicon.ico from the PingURL
+
+## Connection Relays: Name must match both ping and connect pairs
+## CONNECTION_RELAY_PING Name|PingURL
+## CONNECTION_RELAY_CON Name|ConnectURL
+CONNECTION_RELAY_PING Direct|play.cm-ss13.com:8998
+CONNECTION_RELAY_CON Direct|play.cm-ss13.com:1400
+CONNECTION_RELAY_PING United Kingdom, London|uk.cm-ss13.com:8998
+CONNECTION_RELAY_CON United Kingdom, London|uk.cm-ss13.com:1400
+CONNECTION_RELAY_PING France, Gravelines|eu-w.cm-ss13.com:8998
+CONNECTION_RELAY_CON France, Gravelines|eu-w.cm-ss13.com:1400
+CONNECTION_RELAY_PING Poland, Warsaw|eu-e.cm-ss13.com:8998
+CONNECTION_RELAY_CON Poland, Warsaw|eu-e.cm-ss13.com:1400
+CONNECTION_RELAY_PING Oregon, Hillsboro|us-w.cm-ss13.com:8998
+CONNECTION_RELAY_CON Oregon, Hillsboro|us-w.cm-ss13.com:1400
+CONNECTION_RELAY_PING Virginia, Vint Hill|us-e.cm-ss13.com:8998
+CONNECTION_RELAY_CON Virginia, Vint Hill|us-e.cm-ss13.com:1400
+CONNECTION_RELAY_PING Singapore|asia-se.cm-ss13.com:8998
+CONNECTION_RELAY_CON Singapore|asia-se.cm-ss13.com:1400
+CONNECTION_RELAY_PING Australia, Sydney|aus.cm-ss13.com:8998
+CONNECTION_RELAY_CON Australia, Sydney|aus.cm-ss13.com:1400

@@ -56,22 +56,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-/obj/structure/machinery/power/apc/weak
-	cell_type = /obj/item/cell
-
-/obj/structure/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
-
-/obj/structure/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
-
-/obj/structure/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
-
 /obj/structure/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/structures/machinery/power.dmi'
+	icon = 'icons/obj/structures/machinery/apc.dmi'
 	icon_state = "apc_mapicon"
 	anchored = TRUE
 	use_power = USE_POWER_NONE
@@ -98,7 +86,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/locked = 1
 	var/coverlocked = 1
 	var/aidisabled = 0
-	var/tdir = null
 	var/obj/structure/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
@@ -131,24 +118,36 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/printout = FALSE
 	power_machine = TRUE
+	light_range = 1
+	light_power = 0.5
 
 	appearance_flags = TILE_BOUND
 
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
-	//Offset 24 pixels in direction of dir
+	//Offset apc depending on the dir
 	//This allows the APC to be embedded in a wall, yet still inside an area
 
 	if(building)
 		setDir(ndir)
 
-	set_pixel_location()
+	switch(dir)
+		if(NORTH)
+			pixel_y = 32
+		if(SOUTH)
+			pixel_y = -26
+		if(EAST)
+			pixel_x = 30
+			pixel_y = 6
+		if(WEST)
+			pixel_x = -30
+			pixel_y = 6
 
 	if(building == 0)
 		init()
 	else
-		area = loc.loc:master
+		area = get_area(src)
 		opened = APC_COVER_OPEN
 		operating = 0
 		name = "\improper [area.name] APC"
@@ -160,13 +159,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	if(!start_charge && is_ground_level(z) && prob(10))
 		set_broken()
-
-/obj/structure/machinery/power/apc/set_pixel_location()
-	tdir = dir //To fix Vars bug
-	setDir(SOUTH)
-
-	pixel_x = (tdir & 3) ? 0 : (tdir == 4 ? 24 : -24)
-	pixel_y = (tdir & 3) ? (tdir == 1 ? 24 : -24) : 0
 
 /obj/structure/machinery/power/apc/Destroy()
 	if(terminal)
@@ -190,8 +182,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			ui.open()
 
 /obj/structure/machinery/power/apc/ui_status(mob/user)
-	if(!opened && can_use(user, 1))
-		. = UI_INTERACTIVE
+	. = ..()
+	if(opened || !can_use(user, TRUE))
+		return UI_DISABLED
 
 /obj/structure/machinery/power/apc/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
@@ -210,6 +203,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		"chargingStatus" = charging,
 		"totalLoad" = display_power(lastused_total),
 		"coverLocked" = coverlocked,
+		"siliconUser" = FALSE,
 
 		"powerChannels" = list(
 			list(
@@ -342,7 +336,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
 	terminal = new/obj/structure/machinery/power/terminal(src.loc)
-	terminal.setDir(tdir)
+	terminal.setDir(dir)
 	terminal.master = src
 
 /obj/structure/machinery/power/apc/proc/init()
@@ -371,7 +365,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	. = list(desc)
 
 	if(stat & BROKEN)
-		. += SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it.")
+		. += SPAN_INFO("It appears to be completely broken. Bash it open with any tool.")
 		return
 	if(opened)
 		if(has_electronics && terminal)
@@ -434,6 +428,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
+	
+	set_light(0)
 
 	if(update & 1) //Updating the icon state
 		if(update_state & UPSTATE_ALLGOOD)
@@ -455,22 +451,42 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			icon_state = "apcewires"
 
 	if(!(update_state & UPSTATE_ALLGOOD))
-		if(overlays.len)
+		if(length(overlays))
 			overlays = 0
 			return
 
 	if(update & 2)
 
-		if(overlays.len)
+		if(length(overlays))
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
-			overlays += status_overlays_lock[locked + 1]
-			overlays += status_overlays_charging[charging + 1]
+			var/image/_lock = status_overlays_lock[locked + 1]
+			var/image/_charging = status_overlays_charging[charging + 1]
+			var/image/_equipment = status_overlays_equipment[equipment + 1]
+			var/image/_lighting = status_overlays_lighting[lighting + 1]
+			var/image/_environ = status_overlays_environ[environ + 1]
+
+			overlays += emissive_appearance(_lock.icon, _lock.icon_state)
+			overlays += mutable_appearance(_lock.icon, _lock.icon_state)
+			overlays += emissive_appearance(_charging.icon, _charging.icon_state)
+			overlays += mutable_appearance(_charging.icon, _charging.icon_state)
 			if(operating)
-				overlays += status_overlays_equipment[equipment + 1]
-				overlays += status_overlays_lighting[lighting + 1]
-				overlays += status_overlays_environ[environ + 1]
+				overlays += emissive_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += mutable_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += emissive_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
+				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
+			
+			switch(charging)
+				if(APC_NOT_CHARGING)
+					set_light_color(LIGHT_COLOR_RED)
+				if(APC_CHARGING)
+					set_light_color(LIGHT_COLOR_BLUE)
+				if(APC_FULLY_CHARGED)
+					set_light_color(LIGHT_COLOR_GREEN)
+			set_light(initial(light_range))
 
 /obj/structure/machinery/power/apc/proc/check_updates()
 
@@ -557,7 +573,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
 			if(user.action_busy) return
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
 			if(terminal)
@@ -589,7 +605,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			opened = APC_COVER_OPEN
 			update_icon()
 	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea how to fit [W] into [src]."))
 			return
 		if(cell)
@@ -607,7 +623,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //Haxing
 		if(opened)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("\The [src]'s wiring confuses you."))
 				return
 			if(cell)
@@ -641,7 +657,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe \the [W] on [src]."))
 			return
 		if(opened)
@@ -659,7 +675,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
 		if(loc:intact_tile)
@@ -686,7 +702,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				make_terminal()
 				terminal.connect_to_network()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(loc:intact_tile)
@@ -710,7 +726,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			qdel(terminal)
 			terminal = null
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts inserting the power control board into [src]."),
@@ -722,7 +738,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(W)
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
@@ -731,7 +747,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -748,7 +764,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			deconstruct()
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(has_electronics)
@@ -906,7 +922,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	if(usr == user && opened && (!isRemoteControlling(user)))
 		if(cell)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to remove the power cell from [src]."))
 				return
 			user.put_in_hands(cell)
@@ -1000,7 +1016,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
-/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
+/obj/structure/machinery/power/apc/proc/can_use(mob/living/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)
 		return TRUE
 
@@ -1011,12 +1027,12 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		return 0
 	if(!(ishuman(user) || isRemoteControlling(user)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
-		nanomanager.close_user_uis(user, src)
+		SSnano.nanomanager.close_user_uis(user, src)
 		return 0
 	if(user.is_mob_restrained())
 		to_chat(user, SPAN_WARNING("You must have free hands to use [src]."))
 		return 0
-	if(user.lying)
+	if(user.body_position == LYING_DOWN)
 		to_chat(user, SPAN_WARNING("You can't reach [src]!"))
 		return 0
 	autoflag = 5
@@ -1024,11 +1040,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(aidisabled)
 			if(!loud)
 				to_chat(user, SPAN_WARNING("[src] has AI control disabled!"))
-				nanomanager.close_user_uis(user, src)
+				SSnano.nanomanager.close_user_uis(user, src)
 			return 0
 	else
 		if((!in_range(src, user) || !istype(src.loc, /turf)))
-			nanomanager.close_user_uis(user, src)
+			SSnano.nanomanager.close_user_uis(user, src)
 			return 0
 
 	var/mob/living/carbon/human/H = user
@@ -1041,7 +1057,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		else if(prob(H.getBrainLoss()))
 			to_chat(user, SPAN_WARNING("You momentarily forget how to use [src]."))
 			return 0
-		if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(H, SPAN_WARNING("You don't know how to use \the [src]'s interface."))
 			return
 	return 1
@@ -1266,6 +1282,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 //Damage and destruction acts
 /obj/structure/machinery/power/apc/emp_act(severity)
+	. = ..()
 	if(cell)
 		cell.emp_act(severity)
 	lighting = 0
@@ -1274,7 +1291,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	spawn(1 MINUTES)
 		equipment = 3
 		environ = 3
-	..()
 
 /obj/structure/machinery/power/apc/ex_act(severity)
 	switch(severity)
@@ -1314,11 +1330,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(cell && cell.charge >= 20)
 		cell.use(20)
 		spawn(0)
-			for(var/area/A in area.related)
-				for(var/obj/structure/machinery/light/L in A)
-					L.on = 1
-					L.broken()
-					sleep(1)
+			for(var/obj/structure/machinery/light/L in area)
+				L.on = 1
+				L.broken()
+				sleep(1)
 
 /obj/structure/machinery/power/apc/Destroy()
 	area.power_light = 0
@@ -1359,16 +1374,129 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc
-	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 
 //------Almayer APCs ------//
 
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
+/obj/structure/machinery/power/apc/almayer/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/almayer/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/west
+	pixel_x = -30
+	dir = 8
+
 /obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
+
+/obj/structure/machinery/power/apc/almayer/hardened/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/hardened/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/almayer/hardened/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/hardened/west
+	pixel_x = -30
+	dir = 8
+
+//------ Directional APCs ------//
+
+/obj/structure/machinery/power/apc/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/no_power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/no_power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/no_power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/no_power/west
+	pixel_x = -30
+	dir = 8
+
+// Powered APCs with directions
+/obj/structure/machinery/power/apc/power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/power/west
+	pixel_x = -30
+	dir = 8
+
+// Upgraded APC's with directions
+/obj/structure/machinery/power/apc/upgraded/power
+	desc = "A control terminal for the area electrical systems. This one is upgraded with better power cell to sustain higher power usage."
+	cell_type = /obj/item/cell/high
+
+
+/obj/structure/machinery/power/apc/upgraded/power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/power/west
+	pixel_x = -30
+	dir = 8
+
+// apc that start at zero charge.
+
+/obj/structure/machinery/power/apc/upgraded/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/upgraded/no_power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/no_power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/no_power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/no_power/west
+	pixel_x = -30
+	dir = 8
 
 #undef APC_UPDATE_ICON_COOLDOWN

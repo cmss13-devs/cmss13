@@ -16,14 +16,13 @@
 	update_display()
 
 /obj/structure/machinery/scoreboard/proc/update_display()
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 
-	var/score_state = "s[( round(scoreleft/10) > scoreleft/10 ? round(scoreleft/10)-1 : round(scoreleft/10) )]a"
+	var/score_state = "s[( floor(scoreleft/10) > scoreleft/10 ? floor(scoreleft/10)-1 : floor(scoreleft/10) )]a"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 	score_state = "s[scoreleft%10]b"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
-	score_state = "s[( round(scoreright/10) > scoreright/10 ? round(scoreright/10)-1 : round(scoreright/10) )]c"
+	score_state = "s[( floor(scoreright/10) > scoreright/10 ? floor(scoreright/10)-1 : floor(scoreright/10) )]c"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 	score_state = "s[scoreright%10]d"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
@@ -68,7 +67,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/scoreboard/X in machines)
+	for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 		if(X.id == id)
 			X.reset_scores()
 

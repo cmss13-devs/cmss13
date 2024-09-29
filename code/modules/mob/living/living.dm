@@ -16,6 +16,7 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
+	register_init_signals()
 	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()
@@ -23,6 +24,7 @@
 
 /mob/living/Destroy()
 	GLOB.living_mob_list -= src
+	cleanup_status_effects()
 	pipes_shown = null
 
 	. = ..()
@@ -32,11 +34,17 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
+	status_effects = null
 
-//This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
-//affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(pressure)
-	return
+/// Clear all running status effects assuming deletion
+/mob/living/proc/cleanup_status_effects()
+	PROTECTED_PROC(TRUE)
+	if(length(status_effects))
+		for(var/datum/status_effect/S as anything in status_effects)
+			if(S?.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S?.be_replaced()
 
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)
@@ -58,7 +66,7 @@
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
-		var/divided_damage = (burn_amount)/(H.limbs.len)
+		var/divided_damage = (burn_amount)/(length(H.limbs))
 		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting) continue
@@ -66,9 +74,6 @@
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
-
-	else if(isAI(src))
-		return 0
 
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
@@ -95,43 +100,26 @@
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(obj/item/storage/Storage = null)
-	var/list/L = list()
+/mob/living/get_contents(obj/passed_object, recursion = 0)
+	var/list/total_contents = list()
 
-	if(Storage) //If it called itself
-		L += Storage.return_inv()
+	if(passed_object)
+		if(recursion > 8)
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
+			return total_contents
 
-		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		// L += get_contents(S)
+		total_contents += passed_object.contents
 
-		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
+		for(var/obj/checked_object in total_contents)
+			total_contents += get_contents(checked_object, recursion + 1)
 
-		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+		return total_contents
 
-	else
+	total_contents += contents
+	for(var/obj/checked_object in total_contents)
+		total_contents += get_contents(checked_object, recursion + 1)
 
-		L += src.contents
-		for(var/obj/item/storage/S in src.contents) //Check for storage items
-			L += get_contents(S)
-
-		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(isstorage(G.gift))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(isstorage(D.wrapped)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
+	return total_contents
 
 /mob/living/proc/check_contents_for(A)
 	var/list/L = src.get_contents()
@@ -167,6 +155,8 @@
 	return
 
 /mob/living/Move(NewLoc, direct)
+	if(lying_angle != 0)
+		lying_angle_on_movement(direct)
 	if (buckled && buckled.loc != NewLoc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(NewLoc, direct)
@@ -234,19 +224,34 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	if(pulledby.grab_level)
-		if(prob(50))
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
-			pulledby.stop_pulling()
-			return 1
-		if(moving_resist && client) //we resisted by trying to move
-			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
-			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
-	else
-		pulledby.stop_pulling()
-		return 1
+	// vars for checks of strengh
+	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
+	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
+	if(!pulledby.grab_level && (!pulledby_is_strong || src_is_strong)) // if passive grab, check if puller is stronger than src, and if not, break free
+		pulledby.stop_pulling()
+		return TRUE
+
+	// Chance for person to break free of grip, defaults to 50.
+	var/chance = 50
+	if(src_is_strong && !isxeno(pulledby)) // no extra chance to resist warrior grabs
+		chance += 30 // you are strong, you can overpower them easier
+	if(pulledby_is_strong)
+		chance -= 30 // stronger grip
+	// above code means that if you are super strong, 80% chance to resist, otherwise, 20 percent. if both are super strong, standard 50.
+
+	if(prob(chance))
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), max_distance = 5)
+		pulledby.stop_pulling()
+		return TRUE
+	if(moving_resist && client) //we resisted by trying to move
+		visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), max_distance = 5)
+		// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
+		if(pulledby_is_strong && !src_is_strong)
+			client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay
+		else
+			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 
 /mob/living/movement_delay()
 	. = ..()
@@ -408,7 +413,10 @@
 /mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	if(!istype(LM) || !LM.target || !src || buckled)
+	if(!istype(LM) || !LM.target || !src)
+		return
+	if(buckled)
+		LM.invoke_end_throw_callbacks(src)
 		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
@@ -452,16 +460,19 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, flash_timer = 40)
-	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
-		overlay_fullscreen("flash", type)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, flash_timer = 40, type = /atom/movable/screen/fullscreen/flash, dark_type = /atom/movable/screen/fullscreen/flash/dark)
+	if(bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
+		if(client?.prefs?.flash_overlay_pref == FLASH_OVERLAY_DARK)
+			overlay_fullscreen("flash", dark_type)
+		else
+			overlay_fullscreen("flash", type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return TRUE
 
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()
-	src.clone.hud_list = new /list(src.hud_list.len)
+	src.clone.hud_list = new /list(length(src.hud_list))
 	for(var/h in src.hud_possible) //Clone HUD
 		src.clone.hud_list[h] = new /image("loc" = src.clone, "icon" = src.hud_list[h].icon)
 
@@ -470,13 +481,216 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+// Note that this might CLASH with handle_regular_status_updates until it is ELIMINATED
+// and everything is switched from updates to signaling - due to not accounting for all cases.
+// If this proc causes issues you can probably disable it until then.
+/mob/living/carbon/update_stat()
+	if(stat != DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD)
+			death()
+			return
+		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+			set_stat(UNCONSCIOUS)
+		else
+			set_stat(CONSCIOUS)
+
 /mob/living/set_stat(new_stat)
 	. = ..()
 	if(isnull(.))
 		return
-	switch(.)
+
+	switch(.) //Previous stat.
+		if(CONSCIOUS)
+			if(stat >= UNCONSCIOUS)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+			add_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
+		if(UNCONSCIOUS)
+			if(stat >= UNCONSCIOUS)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
-	switch(stat)
+//			remove_from_dead_mob_list()
+//			add_to_alive_mob_list()
+
+	switch(stat) //Current stat.
+		if(CONSCIOUS)
+			if(. >= UNCONSCIOUS)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
+			remove_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED, /*TRAIT_CRITICAL_CONDITION*/), STAT_TRAIT)
+		if(UNCONSCIOUS)
+			if(. >= UNCONSCIOUS)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
+//			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
+//			remove_from_alive_mob_list()
+//			add_to_dead_mob_list()
+	update_layer() // Force update layers so that lying down works as intended upon death. This is redundant otherwise. Replace this by trait signals
+
+/**
+ * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
+ *
+ * In BYOND-angles 0 is NORTH, 90 is EAST, 180 is SOUTH and 270 is WEST.
+ * This usually means that 0 is standing up, 90 and 270 are horizontal positions to right and left respectively, and 180 is upside-down.
+ * Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
+ * The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.
+ */
+/mob/living/proc/set_lying_angle(new_lying, on_movement = FALSE)
+	if(new_lying == lying_angle)
+		return
+	. = lying_angle
+	lying_angle = new_lying
+	if(lying_angle != lying_prev)
+		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
+		lying_prev = lying_angle
+
+///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
+/mob/living/proc/lying_angle_on_movement(direct)
+	if(direct & EAST)
+		set_lying_angle(90, on_movement = TRUE)
+	else if(direct & WEST)
+		set_lying_angle(270, on_movement = TRUE)
+
+///Reports the event of the change in value of the buckled variable.
+/mob/living/proc/set_buckled(new_buckled)
+	if(new_buckled == buckled)
+		return
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
+	. = buckled
+	buckled = new_buckled
+	if(buckled)
+//		if(!HAS_TRAIT(buckled, TRAIT_NO_IMMOBILIZE))
+//			ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
+		ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
+		switch(buckled.buckle_lying)
+			if(NO_BUCKLE_LYING) // The buckle doesn't force a lying angle.
+				REMOVE_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+			if(0) // Forcing to a standing position.
+				REMOVE_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+				set_body_position(STANDING_UP)
+				set_lying_angle(0)
+			else // Forcing to a lying position.
+				ADD_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)
+				set_body_position(LYING_DOWN)
+				set_lying_angle(buckled.buckle_lying)
+	else
+		remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_FLOORED), BUCKLED_TRAIT)
+		if(.) // We unbuckled from something.
+			//var/atom/movable/old_buckled = .
+			var/obj/old_buckled = . // /tg/ code has buckling defined on /atom/movable - consider refactoring this sometime
+			if(old_buckled.buckle_lying == 0 && (resting || HAS_TRAIT(src, TRAIT_FLOORED))) // The buckle forced us to stay up (like a chair)
+				set_lying_down() // We want to rest or are otherwise floored, so let's drop on the ground.
+
+/mob/living/proc/get_up(instant = FALSE) // arg ignored
+//	set waitfor = FALSE
+//	if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+//		return
+	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
+		return
+	set_body_position(STANDING_UP)
+	set_lying_angle(0)
+
+/// Change the [body_position] to [LYING_DOWN] and update associated behavior.
+/mob/living/proc/set_lying_down(new_lying_angle)
+	set_body_position(LYING_DOWN)
+
+/// Proc to append behavior related to lying down.
+/mob/living/proc/on_lying_down(new_lying_angle)
+//	if(layer == initial(layer)) //to avoid things like hiding larvas.
+//		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
+	add_traits(list(/*TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED,*/ TRAIT_UNDENSE), LYING_DOWN_TRAIT)
+	if(HAS_TRAIT(src, TRAIT_FLOORED) && !(dir & (NORTH|SOUTH)))
+		setDir(pick(NORTH, SOUTH)) // We are and look helpless.
+//	if(rotate_on_lying)
+//		body_position_pixel_y_offset = PIXEL_Y_OFFSET_LYING
+
+	// CM legacy canmove procs, replace this with signal procs probably
+	drop_l_hand()
+	drop_r_hand()
+	add_temp_pass_flags(PASS_MOB_THRU)
+	update_layer()
+
+/// Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually
+/mob/living/proc/update_layer()
+	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
+	if(pulledby && pulledby.grab_level == GRAB_CARRY)
+		layer = ABOVE_MOB_LAYER
+	else if (body_position == LYING_DOWN && stat == DEAD)
+		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
+		layer = LYING_LIVING_MOB_LAYER
+
+/// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
+/mob/living/proc/on_fall()
+	return
+
+/// Changes the value of the [living/body_position] variable. Call this before set_lying_angle()
+/mob/living/proc/set_body_position(new_value)
+	if(body_position == new_value)
+		return
+	if((new_value == LYING_DOWN) && !(mobility_flags & MOBILITY_LIEDOWN))
+		return
+	. = body_position
+	body_position = new_value
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
+	if(new_value == LYING_DOWN) // From standing to lying down.
+		on_lying_down()
+	else // From lying down to standing up.
+		on_standing_up()
+
+/// Proc to append behavior related to lying down.
+/mob/living/proc/on_standing_up()
+	//if(layer == LYING_MOB_LAYER)
+	//	layer = initial(layer)
+	remove_traits(list(/*TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED,*/ TRAIT_UNDENSE), LYING_DOWN_TRAIT)
+	// Make sure it doesn't go out of the southern bounds of the tile when standing.
+	//body_position_pixel_y_offset = get_pixel_y_offset_standing(current_size)
+	// CM stuff below
+	remove_temp_pass_flags(PASS_MOB_THRU)
+	if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
+		layer = initial(layer)
+
+
+/// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
+/mob/living/proc/update_density()
+	if(HAS_TRAIT(src, TRAIT_UNDENSE))
+		set_density(FALSE)
+	else
+		set_density(TRUE)
+
+/// Proc to append behavior to the condition of being floored. Called when the condition starts.
+/mob/living/proc/on_floored_start()
+	if(body_position == STANDING_UP) //force them on the ground
+		set_body_position(LYING_DOWN)
+		set_lying_angle(pick(90, 270), on_movement = TRUE)
+//		on_fall()
+
+
+/// Proc to append behavior to the condition of being floored. Called when the condition ends.
+/mob/living/proc/on_floored_end()
+	if(!resting)
+		get_up()
+
+
+/mob/living/update_transform(instant_update = FALSE)
+	var/visual_angle = lying_angle
+	if(!rotate_on_lying)
+		return
+	var/matrix/base = matrix()
+	if(pulledby && pulledby.grab_level >= GRAB_CARRY)
+		visual_angle = 90 // CM code - for fireman carry
+	if(instant_update)
+		apply_transform(base.Turn(visual_angle))
+	else
+		apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
+
+
+// legacy procs
+/mob/living/put_in_l_hand(obj/item/W)
+	if(body_position == LYING_DOWN)
+		return
+	return ..()
+/mob/living/put_in_r_hand(obj/item/W)
+	if(body_position == LYING_DOWN)
+		return
+	return ..()

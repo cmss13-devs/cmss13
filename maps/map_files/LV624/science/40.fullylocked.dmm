@@ -25,9 +25,7 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "ae" = (
 /turf/open/gm/dirt,
@@ -50,22 +48,14 @@
 /area/lv624/lazarus/research)
 "aj" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "ak" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "al" = (
 /obj/structure/xenoautopsy/tank/alien,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
@@ -83,41 +73,26 @@
 /area/lv624/lazarus/research)
 "ap" = (
 /obj/structure/xenoautopsy/tank/hugger,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aq" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "ar" = (
 /obj/structure/machinery/chem_master,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "as" = (
 /obj/structure/machinery/optable,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "at" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "au" = (
 /turf/closed/wall,
@@ -126,26 +101,17 @@
 /obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/item/paper/research_notes,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aw" = (
 /obj/structure/machinery/smartfridge/chemistry,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "ax" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "ay" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "az" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
@@ -153,9 +119,7 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aA" = (
 /obj/structure/machinery/door_control{
@@ -163,37 +127,27 @@
 	name = "Science Wing Lockdown";
 	pixel_x = 25
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aB" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aC" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aD" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aF" = (
 /obj/structure/surface/table,
@@ -202,20 +156,14 @@
 	},
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aG" = (
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/clothing/glasses/regular,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aI" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
@@ -224,24 +172,15 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aJ" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aK" = (
 /obj/structure/machinery/chem_dispenser,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aL" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
@@ -249,18 +188,13 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aM" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aO" = (
 /obj/structure/machinery/shower{
@@ -269,19 +203,14 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aP" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/xenoautopsy/jar_shelf,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aQ" = (
 /obj/structure/machinery/light{
@@ -295,9 +224,7 @@
 	},
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aR" = (
 /obj/structure/sink{
@@ -305,35 +232,20 @@
 	icon_state = "sink";
 	pixel_x = 11
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aS" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Research APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aT" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aU" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
@@ -346,72 +258,48 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aV" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "bb" = (
 /obj/item/clothing/glasses/regular,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "bm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bn" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/tech/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bq" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bx" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bz" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
 /obj/structure/sign/safety/biohazard,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bE" = (
 /turf/open/gm/grass/grass1,
@@ -419,84 +307,54 @@
 "bF" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
-"gu" = (
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = -25;
-	pixel_y = 5
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/research)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "oe" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research Dome"
+	phone_id = "Research Dome";
+	pixel_y = 24
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "qs" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "wY" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "DC" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"Fm" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Jv" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "Kl" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "Mu" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Tz" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 
 (1,1,1) = {"
@@ -603,14 +461,14 @@ ab
 "}
 (7,1,1) = {"
 ac
-bn
+Tz
 aq
 ay
 ay
 au
 aQ
 Kl
-gu
+ak
 au
 bp
 ay
@@ -676,7 +534,7 @@ Mu
 ay
 aJ
 ab
-ay
+Fm
 ak
 ay
 ab
@@ -715,7 +573,7 @@ bb
 ay
 ab
 bn
-bn
+Tz
 aj
 ac
 bE

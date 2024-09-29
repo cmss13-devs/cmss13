@@ -116,14 +116,15 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define BODYPARTS_LAYER 42
+#define DAMAGE_LAYER 41
+
+#define UNDERWEAR_LAYER 40
+#define UNDERSHIRT_LAYER 39
+#define MUTANTRACE_LAYER 38
 
 /// For use by Hunter Flay
-#define FLAY_LAYER 38
-
-#define DAMAGE_LAYER 37
+#define FLAY_LAYER 37
 #define UNIFORM_LAYER 36
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
@@ -176,16 +177,17 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 41
+#define TOTAL_LAYERS 42
 //////////////////////////////////
 
 //Synthetic Defines
 #define SYNTH_COLONY "Third Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_TWO "First Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_ONE "Second Generation Colonial Synthetic"
+#define SYNTH_COLONY_GEN_TWO "Second Generation Colonial Synthetic"
+#define SYNTH_COLONY_GEN_ONE "First Generation Colonial Synthetic"
 #define SYNTH_COMBAT "Combat Synthetic"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
+#define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_GEN_ONE "First Generation Synthetic"
 #define SYNTH_GEN_TWO "Second Generation Synthetic"
 #define SYNTH_GEN_THREE "Third Generation Synthetic"

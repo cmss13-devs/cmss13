@@ -13,10 +13,10 @@
 		var/tmp_icon_state = overlay_state? overlay_state : icon_state
 		if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
 			inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
-		else if("[tmp_icon_state]_tie" in icon_states(default_onmob_icons[WEAR_ACCESSORY]))
-			inv_overlay = image(icon = default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
+		else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
+			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
 		else
-			inv_overlay = image(icon = default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
+			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
 	inv_overlay.color = color
 	return inv_overlay
 
@@ -50,7 +50,7 @@
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/accessory))
 
-		if(!valid_accessory_slots || !valid_accessory_slots.len)
+		if(!LAZYLEN(valid_accessory_slots))
 			to_chat(usr, SPAN_WARNING("You cannot attach accessories of any kind to \the [src]."))
 			return
 
@@ -118,37 +118,55 @@
 
 	A.on_removed(user, src)
 	LAZYREMOVE(accessories, A)
+
+	var/any_removable = FALSE
+	for(var/obj/item/clothing/accessory/accessory in accessories)
+		if(accessory.removable)
+			any_removable = TRUE
+			break
+	if(!any_removable)
+		verbs -= /obj/item/clothing/proc/removetie_verb
+
 	update_clothing_icon()
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!isliving(usr))
+
+	remove_accessory(usr, pick_accessory_to_remove(usr, usr))
+
+/obj/item/clothing/proc/pick_accessory_to_remove(mob/user, mob/targetmob)
+	if(!isliving(user))
 		return
-	if(usr.stat)
+	if(user.stat)
 		return
 	if(!LAZYLEN(accessories))
 		return
-	var/obj/item/clothing/accessory/A
+	var/obj/item/clothing/accessory/accessory
 	var/list/removables = list()
+	var/list/choice_to_accessory = list()
 	for(var/obj/item/clothing/accessory/ass in accessories)
-		if(ass.removable)
-			removables |= ass
-	if(LAZYLEN(accessories) > 1)
-		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		if(!ass.removable)
+			continue
+		var/capitalized_name = capitalize_first_letters(ass.name)
+		removables[capitalized_name] = image(icon = ass.icon, icon_state = ass.icon_state)
+		choice_to_accessory[capitalized_name] = ass
+
+	if(LAZYLEN(removables) > 1)
+		var/use_radials = user.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/choice = use_radials ? show_radial_menu(user, targetmob, removables, require_near = FALSE) : tgui_input_list(user, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		accessory = choice_to_accessory[choice]
 	else
-		A = LAZYACCESS(accessories, 1)
-	if(!usr.Adjacent(src))
-		to_chat(usr, SPAN_WARNING("You're too far away!"))
+		accessory = choice_to_accessory[removables[1]]
+	if(!user.Adjacent(src))
+		to_chat(user, SPAN_WARNING("You're too far away!"))
 		return
-	src.remove_accessory(usr,A)
-	removables -= A
-	if(!removables.len)
-		verbs -= /obj/item/clothing/proc/removetie_verb
+
+	return accessory
 
 /obj/item/clothing/emp_act(severity)
+	. = ..()
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.emp_act(severity)
-	..()

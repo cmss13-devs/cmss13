@@ -31,7 +31,7 @@
 	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
-		if(contents.len > 1) //not counting the morgue tray
+		if(length(contents) > 1) //not counting the morgue tray
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
@@ -113,13 +113,12 @@
 	else
 		. = ..()
 
-/obj/structure/morgue/relaymove(mob/user)
+/obj/structure/morgue/relaymove(mob/living/user)
 	if(user.is_mob_incapacitated())
 		return
 	if(exit_stun)
-		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
-		user.update_canmove() //Force the delay to go in action immediately
-		if(!user.lying)
+		user.apply_effect(exit_stun, STUN)
+		if(user.mobility_flags & MOBILITY_MOVE)
 			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
 			SPAN_WARNING("You get out of [src] and get your bearings!"))
 		toggle_morgue(user)
@@ -218,7 +217,7 @@
 	if(cremating)
 		return
 
-	if(contents.len <= 1) //1 because the tray is inside.
+	if(length(contents) <= 1) //1 because the tray is inside.
 		visible_message(SPAN_DANGER("You hear a hollow crackle."))
 	else
 		visible_message(SPAN_DANGER("You hear a roar as the crematorium activates."))

@@ -87,8 +87,8 @@
 /obj/item/spacecash/bundle/attack_self(mob/user)
 	..()
 	var/oldloc = loc
-	var/amount = tgui_input_number(user, "How many dollars do you want to take? (0 to [src.worth])", "Take Money", 20, src.worth, 0)
-	amount = round(Clamp(amount, 0, src.worth))
+	var/amount = tgui_input_number(user, "How many dollars do you want to take? (0 to [src.worth])", "Take Money", 0, src.worth, 0)
+	amount = floor(clamp(amount, 0, src.worth))
 	if(amount == 0)
 		return
 	if(QDELETED(src) || loc != oldloc)

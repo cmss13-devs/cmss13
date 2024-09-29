@@ -1,5 +1,5 @@
 /obj/item/storage/box/packet
-	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "hedp_packet"
 	w_class = SIZE_MEDIUM//fits into bags
 	storage_slots = 3
@@ -25,19 +25,20 @@
 	for(var/i in 1 to storage_slots)
 		new content_type(src)
 
-var/list/grenade_packets = list(
+GLOBAL_LIST_INIT(grenade_packets, list(
 	/obj/item/storage/box/packet/high_explosive,
 	/obj/item/storage/box/packet/baton_slug,
 	/obj/item/storage/box/packet/flare,
 	/obj/item/storage/box/packet/hornet,
 	/obj/item/storage/box/packet/incendiary,
 	/obj/item/storage/box/packet/smoke,
+	/obj/item/storage/box/packet/foam,
 	/obj/item/storage/box/packet/phosphorus,
 	/obj/item/storage/box/packet/phosphorus/upp,
 	/obj/item/storage/box/packet/m15,
 	/obj/item/storage/box/packet/airburst_he,
 	/obj/item/storage/box/packet/airburst_incen
-	)
+	))
 
 /obj/item/storage/box/packet/high_explosive
 	name = "\improper HEDP grenade packet"
@@ -76,10 +77,16 @@ var/list/grenade_packets = list(
 	content_type = /obj/item/explosive/grenade/smokebomb
 
 /obj/item/storage/box/packet/phosphorus
-	name = "\improper HPDP grenade packet"
-	desc = "It contains three HPDP white phosphorus grenades."
-	icon_state = "hpdp_packet"
+	name = "\improper WPDP grenade packet"
+	desc = "It contains three WPDP white phosphorus grenades."
+	icon_state = "wpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
+
+/obj/item/storage/box/packet/phosphorus/strong
+	name = "\improper CCDP grenade packet"
+	desc = "It contains three CCDP chemical compound grenades."
+	icon_state = "ccdp_packet"
+	content_type = /obj/item/explosive/grenade/phosphorus
 
 /obj/item/storage/box/packet/phosphorus/upp
 	name = "\improper Type 8 WP grenade packet"
@@ -97,6 +104,12 @@ var/list/grenade_packets = list(
 	desc = "These little packets of joy were distributed in the 100th (Season 2) Issue of the Boots! magazine as commemorative rewards for subscribers. Nobody knows how anyone, at any point, never asked 'wait, is this a terrible idea?' during the process."
 	content_type = /obj/item/explosive/grenade/high_explosive/frag/toy
 
+/obj/item/storage/box/packet/foam
+	name = "\improper MFHS foam grenade packet"
+	desc = "It contains three MFHS metal-foam grenades."
+	icon_state = "mfhs_packet"
+	content_type = /obj/item/explosive/grenade/metal_foam
+
 /obj/item/storage/box/packet/m15
 	name = "\improper M15 fragmentation grenade packet"
 	desc = "It contains three M15 fragmentation grenades. Handle with care."
@@ -108,6 +121,12 @@ var/list/grenade_packets = list(
 	desc = "It contains three M15 rubber pellet grenades, for riot control or combat exercises."
 	icon_state = "general_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
+
+/obj/item/storage/box/packet/sebb
+	name = "\improper G2 Electroshock grenade packet"
+	desc = "It contains three G2 Electroshock grenades. Handle with care."
+	icon_state = "sebb_packet"
+	content_type = /obj/item/explosive/grenade/sebb
 
 /obj/item/storage/box/packet/airburst_he
 	name = "\improper M74 airburst grenade packet"
@@ -126,3 +145,15 @@ var/list/grenade_packets = list(
 	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
 	icon_state = "agms_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb/airburst
+
+/obj/item/storage/box/packet/rmc/he
+	name = "\improper R2175/A HEDP grenade packet"
+	desc = "It contains three R2175/A HEDP grenades. Handle with care."
+	icon_state = "hedp_packet"
+	content_type = /obj/item/explosive/grenade/high_explosive/rmc
+
+/obj/item/storage/box/packet/rmc/incin
+	name = "\improper R2175/B HIDP grenade packet"
+	desc = "It contains three R2175/B HIDP grenades. Handle with care."
+	icon_state = "hidp_packet"
+	content_type = /obj/item/explosive/grenade/incendiary/rmc

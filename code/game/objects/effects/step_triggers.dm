@@ -50,7 +50,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			M.canmove = 0
+			ADD_TRAIT(M, TRAIT_IMMOBILIZED, STEP_TRIGGER_TRAIT)
 
 	affecting.Add(AM)
 	while(AM && !stopthrow)
@@ -87,7 +87,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			M.canmove = 1
+			REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, STEP_TRIGGER_TRAIT)
 
 /* Stops things thrown by a thrower, doesn't do anything */
 

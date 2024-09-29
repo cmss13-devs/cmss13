@@ -3,17 +3,17 @@
 //*******************************************************
 
 
-/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = round_statistics, update_data = FALSE)
+/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = GLOB.round_statistics, update_data = FALSE)
 	if(update_data)
-		update_panel_data(round_statistics)
+		update_panel_data(GLOB.round_statistics)
 	ui_interact(user)
 
-/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui = null, force_open = 1)
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui, force_open = 1)
 	data["menu"] = menu
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
 		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 450, 700, null, -1)
@@ -31,7 +31,7 @@
 	if(href_list["dataMenu"])
 		dataMenu = href_list["dataMenu"]
 
-	nanomanager.update_uis(src)
+	SSnano.nanomanager.update_uis(src)
 
 /datum/entity/player_entity/proc/check_eye()
 	return
@@ -68,7 +68,7 @@
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = GLOB.round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)
@@ -463,7 +463,7 @@
 		total_deaths_list += list(list("name" = S.name, "value" = S.value))
 
 	for(var/datum/entity/statistic/death/S in death_stats_list)
-		if(new_death_stats_list.len >= STATISTICS_DEATH_LIST_LEN)
+		if(length(new_death_stats_list) >= STATISTICS_DEATH_LIST_LEN)
 			break
 		var/list/damage_list = list()
 		if(S.total_brute)
@@ -496,7 +496,7 @@
 			"y" = S.y,
 			"z" = S.z
 		))
-		if(new_death_stats_list.len < STATISTICS_DEATH_LIST_LEN)
+		if(length(new_death_stats_list) < STATISTICS_DEATH_LIST_LEN)
 			new_death_stats_list += death
 
 	for(var/iteration in weapon_stats_list)

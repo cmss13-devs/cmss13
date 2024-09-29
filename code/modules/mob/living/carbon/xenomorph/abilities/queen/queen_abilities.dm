@@ -1,8 +1,3 @@
-/datum/action/xeno_action/onclick/deevolve
-	name = "De-Evolve a Xenomorph (500)"
-	action_icon_state = "xeno_deevolve"
-	plasma_cost = 500
-
 /datum/action/xeno_action/onclick/remove_eggsac
 	name = "Remove Eggsac"
 	action_icon_state = "grow_ovipositor"
@@ -43,25 +38,12 @@
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
-	var/turf_build_cooldown = 7 SECONDS
+	var/turf_build_cooldown = 10 SECONDS
 
-/datum/action/xeno_action/onclick/give_evo_points
-	name = "Trade Larva for Evolution Points (100)"
-	action_icon_state = "queen_give_evo_points"
-	plasma_cost = 100
-	xeno_cooldown = 60 SECONDS
-	var/evo_points_per_larva = 250
-	var/required_larva = 3
-
-/datum/action/xeno_action/onclick/banish
-	name = "Banish a Xenomorph (500)"
-	action_icon_state = "xeno_banish"
-	plasma_cost = 500
-
-/datum/action/xeno_action/onclick/readmit
-	name = "Readmit a Xenomorph (100)"
+/datum/action/xeno_action/onclick/manage_hive
+	name = "Manage The Hive"
 	action_icon_state = "xeno_readmit"
-	plasma_cost = 100
+	plasma_cost = 0
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen
 	name = "Projected Resin (100)"
@@ -79,6 +61,10 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
+
+// queenos don't need weeds under them to build on ovi
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()
+	return TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
 	var/boost_duration = 30 MINUTES

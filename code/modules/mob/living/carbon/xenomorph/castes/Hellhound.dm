@@ -30,6 +30,8 @@
 	minimap_icon = "hellhound"
 
 /mob/living/carbon/xenomorph/hellhound
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
 	desc = "A disgusting beast from hell, it has four menacing spikes growing from its head."
@@ -64,10 +66,13 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = HELLHOUND_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
 	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")
+	weed_food_states_flipped = list("Hellhound_1","Hellhound_2","Hellhound_3")
 
 /mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)
@@ -133,6 +138,6 @@
 /datum/behavior_delegate/hellhound_base/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
+	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
 	if(hide)
 		hide.post_attack()

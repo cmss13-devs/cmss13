@@ -25,21 +25,21 @@
 
 //Some simple descriptors for breaches. Global because lazy, TODO: work out a better way to do this.
 
-var/global/list/breach_brute_descriptors = list(
+GLOBAL_LIST_INIT(breach_brute_descriptors, list(
 	"tiny puncture",
 	"ragged tear",
 	"large split",
 	"huge tear",
 	"gaping wound"
-	)
+	))
 
-var/global/list/breach_burn_descriptors = list(
+GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	"small burn",
 	"melted patch",
 	"sizable burn",
 	"large scorched area",
 	"huge scorched area"
-	)
+	))
 
 /datum/breach/proc/update_descriptor()
 
@@ -47,14 +47,14 @@ var/global/list/breach_burn_descriptors = list(
 	class = max(1,min(class,5))
 	//Apply the correct descriptor.
 	if(damtype == BURN)
-		descriptor = breach_burn_descriptors[class]
+		descriptor = GLOB.breach_burn_descriptors[class]
 	else if(damtype == BRUTE)
-		descriptor = breach_brute_descriptors[class]
+		descriptor = GLOB.breach_brute_descriptors[class]
 
 //Repair a certain amount of brute or burn damage to the suit.
 /obj/item/clothing/suit/space/proc/repair_breaches(damtype, amount, mob/user)
 
-	if(!can_breach || !breaches || !breaches.len || !damage)
+	if(!can_breach || !LAZYLEN(breaches) || !damage)
 		to_chat(user, "There are no breaches to repair on \the [src].")
 		return
 
@@ -64,7 +64,7 @@ var/global/list/breach_burn_descriptors = list(
 		if(B.damtype == damtype)
 			valid_breaches += B
 
-	if(!valid_breaches.len)
+	if(!length(valid_breaches))
 		to_chat(user, "There are no breaches to repair on \the [src].")
 		return
 
@@ -145,7 +145,7 @@ var/global/list/breach_burn_descriptors = list(
 	brute_damage = 0
 	burn_damage = 0
 
-	if(!can_breach || !breaches || !breaches.len)
+	if(!can_breach || !LAZYLEN(breaches))
 		name = base_name
 		return 0
 
@@ -220,6 +220,6 @@ var/global/list/breach_burn_descriptors = list(
 
 /obj/item/clothing/suit/space/get_examine_text(mob/user)
 	. = ..()
-	if(can_breach && breaches && breaches.len)
+	if(can_breach && LAZYLEN(breaches))
 		for(var/datum/breach/B in breaches)
 			. += SPAN_DANGER("It has \a [B.descriptor].")

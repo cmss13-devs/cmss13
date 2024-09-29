@@ -44,6 +44,9 @@ SUBSYSTEM_DEF(statpanels)
 		var/client/target = currentrun[length(currentrun)]
 		currentrun.len--
 
+		if(!target)
+			continue
+
 		if(!target.stat_panel.is_ready())
 			continue
 
@@ -105,7 +108,7 @@ SUBSYSTEM_DEF(statpanels)
 
 	target.stat_panel.send_message("update_stat", list(
 		"global_data" = global_data,
-		//"ping_str" = "Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)",
+		//"ping_str" = "Ping: [floor(target.lastping, 1)]ms (Average: [floor(target.avgping, 1)]ms)",
 		"other_str" = target.mob?.get_status_tab_items(),
 	))
 
@@ -194,7 +197,7 @@ SUBSYSTEM_DEF(statpanels)
 /datum/controller/subsystem/statpanels/proc/generate_mc_data()
 	mc_data = list(
 		list("CPU:", world.cpu),
-		list("Instances:", "[num2text(world.contents.len, 10)]"),
+		list("Instances:", "[num2text(length(world.contents), 10)]"),
 		list("World Time:", "[world.time]"),
 		list("Globals:", GLOB.stat_entry(), "\ref[GLOB]"),
 		list("[config]:", config.stat_entry(), "\ref[config]"),
@@ -209,17 +212,23 @@ SUBSYSTEM_DEF(statpanels)
 
 /// Sets the current tab to the SDQL tab
 /datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	if(!target)
+		return
+
 	var/list/sdql2_initial = list()
-	//sdql2_initial[length(sdql2_initial)++] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+	sdql2_initial[++sdql2_initial.len] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
 	var/list/sdql2_querydata = list()
-	//for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
-		//sdql2_querydata = query.generate_stat()
+	for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
+		sdql2_querydata += query.generate_stat()
 
 	sdql2_initial += sdql2_querydata
 	target.stat_panel.send_message("update_sdql2", sdql2_initial)
 
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
+	if(!target)
+		return FALSE
+
 	if(!target.stat_panel.is_ready())
 		return FALSE
 
@@ -313,14 +322,39 @@ SUBSYSTEM_DEF(statpanels)
 	for(index in 1 to length(to_make))
 		var/atom/thing = to_make[index]
 
+		// var/start_time = REALTIMEOFDAY
 		var/generated_string
-		/* We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
-		if(ismob(thing) || length(thing.overlays) > 2)
-			generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		// We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
+		//if(ismob(thing) || length(thing.overlays) > 2)
+			//generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		if(ishuman(thing))
+			var/mob/living/carbon/human/human_thing = thing
+			var/icon
+
+			// Ensure they have their armor since its going to be the majority of their appearance
+			var/list/armor = list()
+			var/obj/item/uniform = human_thing.get_item_by_slot(WEAR_BODY)
+			if(uniform)
+				armor += new uniform.type
+			var/obj/item/hat = human_thing.get_item_by_slot(WEAR_HEAD)
+			if(hat)
+				armor += new hat.type
+			var/obj/item/suit = human_thing.get_item_by_slot(WEAR_JACKET)
+			if(suit)
+				armor += new suit.type
+			var/obj/item/gloves = human_thing.get_item_by_slot(WEAR_HANDS)
+			if(gloves)
+				armor += new gloves.type
+			var/obj/item/shoes = human_thing.get_item_by_slot(WEAR_FEET)
+			if(shoes)
+				armor += new shoes.type
+
+			// If we don't succeed making a flat human icon below, allowing the human to pass into icon2html will throw a bad icon operation because of a workaround in icon2html for humans...
+			icon = get_flat_human_copy_icon(human_thing, showDirs = list(SOUTH), outfit_override = armor)
+			generated_string = icon2html(icon, parent, sourceonly=TRUE)
+			// log_debug("object_window_info called on ref=[REF(thing)], instance=[thing], type=[thing.type], finished in [(REALTIMEOFDAY-start_time) / 10]s")
 		else
 			generated_string = icon2html(thing, parent, sourceonly=TRUE)
-		*/
-		generated_string = icon2html(thing, parent, sourceonly=TRUE)
 
 		newly_seen[thing] = generated_string
 		if(TICK_CHECK)
@@ -383,8 +417,10 @@ SUBSYSTEM_DEF(statpanels)
 	set name = "Open Statbrowser Options"
 	set hidden = TRUE
 
+	if (!current_fontsize)
+		current_fontsize = 12
 
-	var/datum/statbrowser_options/SM = statbrowser_options
-	if(!SM)
-		SM = statbrowser_options = new(src, current_fontsize)
-	SM.tgui_interact()
+	var/datum/statbrowser_options/options_panel = statbrowser_options
+	if(!options_panel)
+		options_panel = statbrowser_options = new(src, current_fontsize)
+	options_panel.tgui_interact()

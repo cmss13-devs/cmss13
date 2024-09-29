@@ -3,24 +3,18 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "c" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "d" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "q" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "t" = (
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "O" = (
 /turf/closed/wall/shiva/prefabricated/pink,
@@ -36,9 +30,7 @@
 /area/shiva/exterior/cp_lz2)
 "U" = (
 /obj/structure/largecrate/random/secure,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"

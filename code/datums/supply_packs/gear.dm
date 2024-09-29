@@ -64,14 +64,31 @@
 	containername = "fulton recovery device crate"
 	group = "Gear"
 
-/datum/supply_packs/nvg
-	name = "M2 Night Vision Goggles Crate (x3)"
+/datum/supply_packs/parachute
+	name = "parachute crate (x20)"
 	contains = list(
-		/obj/item/prop/helmetgarb/helmet_nvg,
-		/obj/item/prop/helmetgarb/helmet_nvg,
-		/obj/item/prop/helmetgarb/helmet_nvg,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
+		/obj/item/parachute,
 	)
-	cost = 60
+	cost = 40
 	containertype = /obj/structure/closet/crate/supply
-	containername = "M2 Night Vission Goggles Crate"
+	containername = "parachute crate"
 	group = "Gear"

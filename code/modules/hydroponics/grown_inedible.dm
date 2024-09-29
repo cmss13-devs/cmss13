@@ -15,7 +15,7 @@
 
 	// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
-		var/datum/seed/S = seed_types[plantname]
+		var/datum/seed/S = GLOB.seed_types[plantname]
 		if(!S || !S.chems)
 			return
 
@@ -24,8 +24,8 @@
 		for(var/rid in S.chems)
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
-			if(reagent_data.len > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
+			if(length(reagent_data) > 1 && potency > 0)
+				rtotal += floor(potency/reagent_data[2])
 			reagents.add_reagent(rid,max(1,rtotal))
 
 /obj/item/grown/log

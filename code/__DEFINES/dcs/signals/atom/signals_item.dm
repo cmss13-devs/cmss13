@@ -29,6 +29,11 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+///from /obj/item/device/camera/broadcasting
+#define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
+#define COMSIG_BROADCAST_HEAR_TALK "broadcast_hear_talk"
+#define COMSIG_BROADCAST_SEE_EMOTE "broadcast_see_emote"
+
 /// from /obj/item/proc/mob_can_equip
 #define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
 ///Return this in response if you don't want items equipped
@@ -54,3 +59,29 @@
 #define COMSIG_GUN_AUTOFIREDELAY_MODIFIED "gun_autofiredelay_modified"
 #define COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED "gun_burst_shots_to_fire_modified"
 #define COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED "gun_burst_shot_delay_modified"
+
+#define COMSIG_GUN_VULTURE_FIRED_ONEHAND "gun_vulture_fired_onehand"
+#define COMSIG_VULTURE_SCOPE_MOVED "vulture_scope_moved"
+#define COMSIG_VULTURE_SCOPE_SCOPED "vulture_scope_scoped"
+#define COMSIG_VULTURE_SCOPE_UNSCOPED "vulture_scope_unscoped"
+
+/// from /obj/item/weapon/gun/proc/recalculate_attachment_bonuses() : ()
+#define COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES "gun_recalculate_attachment_bonuses"
+
+/// from  /obj/item/weapon/gun/proc/load_into_chamber() : ()
+#define COMSIG_GUN_INTERRUPT_FIRE "gun_interrupt_fire"
+
+//from /datum/authority/branch/role/proc/equip_role()
+#define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
+
+#define COMSIG_CAMERA_MAPNAME_ASSIGNED "camera_manager_mapname_assigned"
+#define COMSIG_CAMERA_REGISTER_UI "camera_manager_register_ui"
+#define COMSIG_CAMERA_UNREGISTER_UI "camera_manager_unregister_ui"
+#define COMSIG_CAMERA_SET_NVG "camera_manager_set_nvg"
+#define COMSIG_CAMERA_CLEAR_NVG "camera_manager_clear_nvg"
+#define COMSIG_CAMERA_SET_TARGET "camera_manager_set_target"
+#define COMSIG_CAMERA_SET_AREA "camera_manager_set_area"
+#define COMSIG_CAMERA_CLEAR "camera_manager_clear_target"
+#define COMSIG_CAMERA_REFRESH "camera_manager_refresh"
+
+#define COMSIG_PRED_BRACER_DECLOAKED "pred_bracer_decloaked"

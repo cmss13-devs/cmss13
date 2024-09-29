@@ -18,10 +18,6 @@
 
 //---------------------GENERAL PROCS
 
-/obj/item/ammo_box/Destroy()
-	SetLuminosity(0)
-	. = ..()
-
 /obj/item/ammo_box/attack_self(mob/living/user)
 	..()
 	if(burning)
@@ -45,14 +41,14 @@
 
 /obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
 	user.drop_held_item()
-	
+
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)
 		return
 	burning = TRUE
 
-	SetLuminosity(3)
+	set_light(3)
 	apply_fire_overlay()
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
 
@@ -82,13 +78,15 @@
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
 	var/overlay_content = "_reg"
-	var/magazine_type = /obj/item/ammo_magazine/rifle
+	var/obj/item/ammo_magazine/magazine_type = /obj/item/ammo_magazine/rifle
 	var/num_of_magazines = 10
 	var/handfuls = FALSE
 	var/icon_state_deployed = null
 	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
 	can_explode = TRUE
 	limit_per_tile = 2
+	ground_offset_x = 5
+	ground_offset_y = 5
 
 /obj/item/ammo_box/magazine/empty
 	empty = TRUE
@@ -106,8 +104,6 @@
 		while(i < num_of_magazines)
 			contents += new magazine_type(src)
 			i++
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	update_icon()
 
 /obj/item/ammo_box/magazine/update_icon()
@@ -130,10 +126,10 @@
 	if(src.loc != user) //feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
-		if(contents.len < (num_of_magazines/3))
+		if(length(contents) < (num_of_magazines/3))
 			. += SPAN_INFO("It feels almost empty.")
 			return
-		if(contents.len < ((num_of_magazines*2)/3))
+		if(length(contents) < ((num_of_magazines*2)/3))
 			. += SPAN_INFO("It feels about half full.")
 			return
 		. += SPAN_INFO("It feels almost full.")
@@ -210,11 +206,11 @@
 	if(handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
-			severity = round(AM.current_rounds / 40)
+			severity = floor(AM.current_rounds / 40)
 	else
 		for(var/obj/item/ammo_magazine/AM in contents)
 			severity += AM.current_rounds
-		severity = round(severity / 150)
+		severity = floor(severity / 150)
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)
@@ -239,11 +235,11 @@
 
 	if(host_box)
 		host_box.apply_fire_overlay(will_explode)
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING(shown_message))
 	else
 		apply_fire_overlay(will_explode)
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING(shown_message))
 
 /obj/item/ammo_box/magazine/apply_fire_overlay(will_explode = FALSE)
@@ -405,7 +401,7 @@
 	return
 
 /obj/item/ammo_box/rounds/get_severity()
-	return round(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
+	return floor(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
 
 /obj/item/ammo_box/rounds/process_burning(datum/cause_data/flame_cause_data)
 	if(can_explode)
@@ -424,7 +420,7 @@
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 
 	apply_fire_overlay(will_explode)
-	SetLuminosity(3)
+	set_light(3)
 
 /obj/item/ammo_box/rounds/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting

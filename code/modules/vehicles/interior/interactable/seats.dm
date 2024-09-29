@@ -40,10 +40,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -108,7 +108,7 @@
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
 
-	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)
 
@@ -174,10 +174,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -252,10 +252,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -376,28 +376,17 @@
 			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
 			if(buckled_mob)
 				if(VS.buckled_mob)
-					buckled_mob.density = TRUE
-					VS.buckled_mob.density = TRUE
+					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 				else
-					buckled_mob.density = FALSE
+					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			else
 				if(VS.buckled_mob)
-					VS.buckled_mob.density = FALSE
-				M.density = TRUE
+					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			break
 
 	handle_rotation()
-
-/obj/structure/bed/chair/vehicle/unbuckle()
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.buckled = null
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
-
-		var/M = buckled_mob
-		buckled_mob = null
-
-		afterbuckle(M)
 
 //attack handling
 

@@ -90,11 +90,123 @@
 /turf/open/floor/plating/make_plating()
 	return
 
+/turf/open/floor/plating/burnt_platingdmg3
+	burnt = TRUE
+	icon_state = "platingdmg3"
+
+/turf/open/floor/plating/burnt_platingdmg3/west
+	dir = WEST
+
+/turf/open/floor/plating/asteroidwarning
+	icon_state = "asteroidwarning"
+
+/turf/open/floor/plating/asteroidwarning/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/plating/warnplate
+	icon_state = "warnplate"
+
+/turf/open/floor/plating/warnplate/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/plating/asteroidfloor
+	icon_state = "asteroidfloor"
+
+/turf/open/floor/plating/asteroidfloor/north
+	dir = NORTH
+
+/turf/open/floor/plating/asteroidwarning/north
+	dir = NORTH
+
+/turf/open/floor/plating/warnplate/north
+	dir = NORTH
+
+/turf/open/floor/plating/warnplatecorner
+	icon_state = "warnplatecorner"
+
+/turf/open/floor/plating/warnplatecorner/north
+	dir = NORTH
+
+/turf/open/floor/plating/asteroidwarning/east
+	dir = EAST
+
+/turf/open/floor/plating/warnplate/east
+	dir = EAST
+
+/turf/open/floor/plating/asteroidwarning/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/plating/warnplate/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/plating/asteroidwarning/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/plating/warnplate/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/plating/asteroidwarning/west
+	dir = WEST
+
+/turf/open/floor/plating/platingdmg2
+	icon_state = "platingdmg2"
+
+/turf/open/floor/plating/platingdmg2/west
+	dir = WEST
+
+/turf/open/floor/plating/platingdmg3
+	icon_state = "platingdmg3"
+
+/turf/open/floor/plating/platingdmg3/west
+	dir = WEST
+
+/turf/open/floor/plating/warnplate/west
+	dir = WEST
+
+/turf/open/floor/plating/asteroidwarning/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/plating/warnplate/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/plating/panelscorched
+	icon_state = "panelscorched"
+
+/turf/open/floor/plating/platebot
+	icon_state = "platebot"
+
+/turf/open/floor/plating/platebotc
+	icon_state = "platebotc"
+
+/turf/open/floor/plating/platingdmg1
+	icon_state = "platingdmg1"
+
+/turf/open/floor/plating/wood
+	icon_state = "wood"
+
+/turf/open/floor/plating/wood_broken2
+	icon_state = "wood-broken2"
+
+/turf/open/floor/plating/wood_broken3
+	icon_state = "wood-broken3"
+
+/turf/open/floor/plating/wood_broken4
+	icon_state = "wood-broken4"
+
+/turf/open/floor/plating/wood_broken5
+	icon_state = "wood-broken5"
+
+/turf/open/floor/plating/wood_broken6
+	icon_state = "wood-broken6"
+
 /turf/open/floor/plating/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
 /turf/open/floor/plating/almayer
 	icon = 'icons/turf/almayer.dmi'
+
+/turf/open/floor/plating/almayer/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/plating/airless
 	icon_state = "plating"
@@ -111,6 +223,33 @@
 /turf/open/floor/plating/icefloor/Initialize(mapload, ...)
 	. = ..()
 	name = "plating"
+
+/turf/open/floor/plating/icefloor/warnplate
+	icon_state = "warnplate"
+
+/turf/open/floor/plating/icefloor/warnplate/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/plating/icefloor/warnplate/north
+	dir = NORTH
+
+/turf/open/floor/plating/icefloor/warnplate/east
+	dir = EAST
+
+/turf/open/floor/plating/icefloor/warnplate/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/plating/icefloor/warnplate/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/plating/icefloor/warnplate/west
+	dir = WEST
+
+/turf/open/floor/plating/icefloor/warnplate/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/plating/icefloor/asteroidplating
+	icon_state = "asteroidplating"
 
 /// Visually like plating+catwalks but without overlaying or interactions - mainly for Reqs Elevator
 /turf/open/floor/plating/bare_catwalk
@@ -180,7 +319,22 @@
 /turf/open/floor/plating/plating_catwalk/shiva
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
+/turf/open/floor/plating/plating_catwalk/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_plating_catwalk"
 
+/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+
+/turf/open/floor/plating/plating_catwalk/aicore/white
+	icon_state = "w_ai_plating_catwalk"
+
+/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
@@ -203,20 +357,414 @@
 	icon_state = "default"
 	plating_type = /turf/open/floor/plating/almayer
 
-//Cargo elevator
+/turf/open/floor/almayer/pod_landing_floor
+	desc = "There's a hatch above it, presumably to allow pods to drop in."
+	icon_state = "test_floor4"
+	name = "pod landing floor"
+
+/turf/open/floor/almayer/blue
+	icon_state = "blue"
+
+/turf/open/floor/almayer/blue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/cargo
+	icon_state = "cargo"
+
+/turf/open/floor/almayer/cargo/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/emerald
+	icon_state = "emerald"
+
+/turf/open/floor/almayer/emerald/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/green
+	icon_state = "green"
+
+/turf/open/floor/almayer/green/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/orange
+	icon_state = "orange"
+
+/turf/open/floor/almayer/orange/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/red
+	icon_state = "red"
+
+/turf/open/floor/almayer/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/silver
+	icon_state = "silver"
+
+/turf/open/floor/almayer/silver/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/sterile_green_side
+	icon_state = "sterile_green_side"
+
+/turf/open/floor/almayer/sterile_green_side/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/blue/north
+	dir = NORTH
+
+/turf/open/floor/almayer/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/almayer/bluecorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/cargo_arrow
+	icon_state = "cargo_arrow"
+
+/turf/open/floor/almayer/cargo_arrow/north
+	dir = NORTH
+
+/turf/open/floor/almayer/emerald/north
+	dir = NORTH
+
+/turf/open/floor/almayer/emeraldcorner
+	icon_state = "emeraldcorner"
+
+/turf/open/floor/almayer/emeraldcorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/green/north
+	dir = NORTH
+
+/turf/open/floor/almayer/greencorner
+	icon_state = "greencorner"
+
+/turf/open/floor/almayer/greencorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/orange/north
+	dir = NORTH
+
+/turf/open/floor/almayer/orangecorner
+	icon_state = "orangecorner"
+
+/turf/open/floor/almayer/orangecorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/plating_striped
+	icon_state = "plating_striped"
+
+/turf/open/floor/almayer/plating_striped/north
+	dir = NORTH
+
+/turf/open/floor/almayer/red/north
+	dir = NORTH
+
+/turf/open/floor/almayer/redcorner
+	icon_state = "redcorner"
+
+/turf/open/floor/almayer/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/silver/north
+	dir = NORTH
+
+/turf/open/floor/almayer/silvercorner
+	icon_state = "silvercorner"
+
+/turf/open/floor/almayer/silvercorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/sterile_green_corner
+	icon_state = "sterile_green_corner"
+
+/turf/open/floor/almayer/sterile_green_corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/sterile_green_side/north
+	dir = NORTH
+
+/turf/open/floor/almayer/w_y0
+	icon_state = "w-y0"
+
+/turf/open/floor/almayer/w_y0/north
+	dir = NORTH
+
+/turf/open/floor/almayer/w_y1
+	icon_state = "w-y1"
+
+/turf/open/floor/almayer/w_y1/north
+	dir = NORTH
+
+/turf/open/floor/almayer/w_y2
+	icon_state = "w-y2"
+
+/turf/open/floor/almayer/w_y2/north
+	dir = NORTH
+
+/turf/open/floor/almayer/green/south
+	dir = SOUTH
+
+/turf/open/floor/almayer/blue/east
+	dir = EAST
+
+/turf/open/floor/almayer/bluecorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/cargo_arrow/east
+	dir = EAST
+
+/turf/open/floor/almayer/emerald/east
+	dir = EAST
+
+/turf/open/floor/almayer/emeraldcorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/green/east
+	dir = EAST
+
+/turf/open/floor/almayer/greencorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/orange/east
+	dir = EAST
+
+/turf/open/floor/almayer/orangecorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/plating_striped/east
+	dir = EAST
+
+/turf/open/floor/almayer/red/east
+	dir = EAST
+
+/turf/open/floor/almayer/redcorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/silver/east
+	dir = EAST
+
+/turf/open/floor/almayer/silvercorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/sterile_green_corner/east
+	dir = EAST
+
+/turf/open/floor/almayer/sterile_green_side/east
+	dir = EAST
+
+/turf/open/floor/almayer/blue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/emerald/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/green/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/orange/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/plating
+	icon_state = "plating"
+
+/turf/open/floor/almayer/plating/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/silver/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/sterile_green_side/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/blue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/emerald/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/green/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/orange/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/silver/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/sterile_green_side/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/blue/west
+	dir = WEST
+
+/turf/open/floor/almayer/bluecorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/cargo_arrow/west
+	dir = WEST
+
+/turf/open/floor/almayer/emerald/west
+	dir = WEST
+
+/turf/open/floor/almayer/emeraldcorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/green/west
+	dir = WEST
+
+/turf/open/floor/almayer/greencorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/orange/west
+	dir = WEST
+
+/turf/open/floor/almayer/orangecorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/plating_striped/west
+	dir = WEST
+
+/turf/open/floor/almayer/red/west
+	dir = WEST
+
+/turf/open/floor/almayer/redcorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/silver/west
+	dir = WEST
+
+/turf/open/floor/almayer/silvercorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/sterile_green_corner/west
+	dir = WEST
+
+/turf/open/floor/almayer/sterile_green_side/west
+	dir = WEST
+
+/turf/open/floor/almayer/blue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/emerald/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/orange/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/silver/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/sterile_green_side/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/ai_floors
+	icon_state = "ai_floors"
+
+/turf/open/floor/almayer/bluefull
+	icon_state = "bluefull"
+
+/turf/open/floor/almayer/dark_sterile
+	icon_state = "dark_sterile"
+
+/turf/open/floor/almayer/emeraldfull
+	icon_state = "emeraldfull"
+
+/turf/open/floor/almayer/floor
+	icon_state = "floor"
+
+/turf/open/floor/almayer/greenfull
+	icon_state = "greenfull"
+
+/turf/open/floor/almayer/mono
+	icon_state = "mono"
+
+/turf/open/floor/almayer/orangefull
+	icon_state = "orangefull"
+
+/turf/open/floor/almayer/plate
+	icon_state = "plate"
+
+/turf/open/floor/almayer/redfull
+	icon_state = "redfull"
+
+/turf/open/floor/almayer/silverfull
+	icon_state = "silverfull"
+
+/turf/open/floor/almayer/sterile
+	icon_state = "sterile"
+
+/turf/open/floor/almayer/sterile_green
+	icon_state = "sterile_green"
+
+/turf/open/floor/almayer/tcomms
+	icon_state = "tcomms"
+
+/turf/open/floor/almayer/test_floor4
+	icon_state = "test_floor4"
+
+/turf/open/floor/almayer/test_floor5
+	icon_state = "test_floor5"
+
+/// Admin level thunderdome floor. Doesn't get damaged by explosions and such for pristine testing
+/turf/open/floor/tdome
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating"
+	plating_type = /turf/open/floor/tdome
+	hull_floor = TRUE
+
+/turf/open/floor/tdome/w_y0
+	icon_state = "w-y0"
+
+/turf/open/floor/tdome/w_y0/north
+	dir = NORTH
+
+/turf/open/floor/tdome/w_y1
+	icon_state = "w-y1"
+
+/turf/open/floor/tdome/w_y1/north
+	dir = NORTH
+
+/turf/open/floor/tdome/w_y2
+	icon_state = "w-y2"
+
+/turf/open/floor/tdome/w_y2/north
+	dir = NORTH
+
+/turf/open/floor/tdome/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/tdome/bluefull
+	icon_state = "bluefull"
+
+/turf/open/floor/tdome/redfull
+	icon_state = "redfull"
+
+/turf/open/floor/tdome/tcomms
+	icon_state = "tcomms"
+
+/turf/open/floor/tdome/test_floor4
+	icon_state = "test_floor4"
+
+/// Base type of the requisitions and vehicle bay elevator pits.
 /turf/open/floor/almayer/empty
-	name = "empty space"
-	desc = "There seems to be an awful lot of machinery down below"
+	name = "\proper empty space"
+	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-
-/turf/open/floor/almayer/empty/Initialize(mapload, ...)
-	. = ..()
-	GLOB.asrs_empty_space_tiles_list += src
-
-/turf/open/floor/almayer/empty/Destroy(force) // may as well
-	. = ..()
-	GLOB.asrs_empty_space_tiles_list -= src
 
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
@@ -232,8 +780,13 @@
 
 /turf/open/floor/almayer/empty/Entered(atom/movable/AM)
 	..()
-	if(!isobserver(AM))
+	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
 		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
+
+/// Returns a list of turfs to be used as a destination for anyone unfortunate enough to fall into the pit.
+/turf/open/floor/almayer/empty/proc/get_depths_turfs()
+	// Empty proc to be overridden.
+	return
 
 /turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
@@ -242,17 +795,15 @@
 			qdel(AM)
 			return
 		var/mob/living/carbon/human/thrown_human = AM
-		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
+		for(var/atom/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
-		if(!area_shuttle)
-			return
-		var/list/turflist = list()
-		for(var/turf/turf in area_shuttle)
-			turflist |= turf
+		var/list/depths_turfs = get_depths_turfs()
+		if(!length(depths_turfs))
+			// If this ever happens, something went wrong.
+			CRASH("get_depths_turfs() didn't return anything!")
 
-		thrown_human.forceMove(pick(turflist))
+		thrown_human.forceMove(pick(depths_turfs))
 
 		var/timer = 0.5 SECONDS
 		for(var/index in 1 to 10)
@@ -261,8 +812,33 @@
 		return
 
 	else
-		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
+		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid-flight
 			qdel(C)
+
+/// Requisitions pit.
+/turf/open/floor/almayer/empty/requisitions
+
+/turf/open/floor/almayer/empty/requisitions/Initialize(mapload, ...)
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list += src
+
+/turf/open/floor/almayer/empty/requisitions/Destroy(force)
+	GLOB.asrs_empty_space_tiles_list -= src
+	return ..()
+
+/turf/open/floor/almayer/empty/requisitions/get_depths_turfs()
+	var/area/elevator_area = GLOB.supply_controller.shuttle?.get_location_area()
+
+	var/turf_list = list()
+	for(var/turf/turf in elevator_area)
+		turf_list |= turf
+	return turf_list
+
+/// Vehicle bay pit.
+/turf/open/floor/almayer/empty/vehicle_bay
+
+/turf/open/floor/almayer/empty/vehicle_bay/get_depths_turfs()
+	return SSshuttle.vehicle_elevator.return_turfs()
 
 //Others
 /turf/open/floor/almayer/uscm
@@ -272,9 +848,112 @@
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
+/turf/open/floor/almayer/uscm/directional/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/uscm/directional/north
+	dir = NORTH
+
+/turf/open/floor/almayer/uscm/directional/east
+	dir = EAST
+
+/turf/open/floor/almayer/uscm/directional/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/uscm/directional/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/uscm/directional/logo_c
+	icon_state = "logo_c"
+
+/turf/open/floor/almayer/uscm/directional/logo_c/west
+	dir = WEST
+
+/turf/open/floor/almayer/uscm/directional/west
+	dir = WEST
+
+/turf/open/floor/almayer/uscm/directional/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE
 	hull_floor = TRUE
+
+/turf/open/floor/almayer/no_build/ai_floors
+	icon_state = "ai_floors"
+
+/turf/open/floor/almayer/no_build/plating
+	icon_state = "plating"
+
+/turf/open/floor/almayer/no_build/plate
+	icon_state = "plate"
+
+/turf/open/floor/almayer/no_build/test_floor4
+	icon_state = "test_floor4"
+
+/turf/open/floor/almayer/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_floor1"
+
+/turf/open/floor/almayer/aicore/glowing
+	icon_state = "ai_floor2"
+	light_color = "#d69c46"
+	light_range = 3
+
+/turf/open/floor/almayer/aicore/glowing/Initialize(mapload, ...)
+	. = ..()
+	set_light_on(TRUE)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LOCKDOWN, PROC_REF(start_emergency_light_on))
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LIFT, PROC_REF(start_emergency_light_off))
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_on()
+	set_light(l_color = "#c70f0f")
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_off()
+	set_light(l_color = "#d69c46")
+
+/turf/open/floor/almayer/aicore/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
+
+/turf/open/floor/almayer/aicore/no_build/ai_arrow
+	icon_state = "ai_arrow"
+
+/turf/open/floor/almayer/aicore/no_build/ai_arrow/east
+	dir = EAST
+
+/turf/open/floor/almayer/aicore/no_build/ai_silver
+	icon_state = "ai_silver"
+
+/turf/open/floor/almayer/aicore/no_build/ai_silver/east
+	dir = EAST
+
+/turf/open/floor/almayer/aicore/no_build/ai_arrow/west
+	dir = WEST
+
+/turf/open/floor/almayer/aicore/no_build/ai_silver/west
+	dir = WEST
+
+/turf/open/floor/almayer/aicore/no_build/ai_cargo
+	icon_state = "ai_cargo"
+
+/turf/open/floor/almayer/aicore/no_build/ai_floor2
+	icon_state = "ai_floor2"
+
+/turf/open/floor/almayer/aicore/no_build/ai_plates
+	icon_state = "ai_plates"
+
+/turf/open/floor/almayer/aicore/glowing/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
+
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range
+	icon_state = "ai_floor3"
+	light_range = 4
+
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3
+	icon_state = "ai_floor3"
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance
@@ -307,7 +986,26 @@
 /turf/open/floor/almayer/research/containment/corner_var2
 	icon_state = "containment_corner_variant_2"
 
+/turf/open/floor/almayer/research/containment/corner_var1/east
+	dir = EAST
 
+/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2
+	icon_state = "containment_corner_variant_2"
+
+/turf/open/floor/almayer/research/containment/corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/corner/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/entrance/west
+	dir = WEST
+
+/turf/open/floor/almayer/research/containment/floor2/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/floor2/west
+	dir = WEST
 
 
 
@@ -320,7 +1018,29 @@
 	name = "hull"
 	hull_floor = TRUE
 
+/turf/open/floor/almayer_hull/outerhull_dir
+	icon_state = "outerhull_dir"
 
+/turf/open/floor/almayer_hull/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer_hull/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer_hull/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer_hull/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/outerhull_dir/northwest
+	dir = NORTHWEST
 
 
 
@@ -341,14 +1061,34 @@
 	. = ..()
 	name = "floor"
 
+/turf/open/floor/airless/asteroidfloor
+	icon_state = "asteroidfloor"
+
+/turf/open/floor/airless/asteroidfloor/northeast
+	dir = NORTHEAST
+
 /turf/open/floor/icefloor
 	icon_state = "floor"
 	name = "ice colony floor"
 	plating_type = /turf/open/floor/plating/icefloor
 
-/turf/open/floor/icefloor/Initialize(mapload, ...)
-	. = ..()
-	name = "floor"
+/turf/open/floor/icefloor/shuttle_floor6
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "floor6"
+
+/turf/open/floor/icefloor/shuttle_floor7
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "floor7"
+
+/turf/open/floor/icefloor/shuttle_vfloor
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "vfloor"
+
+/turf/open/floor/icefloor/ramptop
+	icon_state = "ramptop"
+
+/turf/open/floor/icefloor/rockvault
+	icon_state = "rockvault"
 
 /turf/open/floor/wood
 	name = "wooden floor"
@@ -363,6 +1103,27 @@
 	name = "fake wooden floor"
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high-pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
 	tile_type = /obj/item/stack/tile/wood/fake
+
+/turf/open/floor/wood/wood_broken
+	icon_state = "wood-broken"
+
+/turf/open/floor/wood/wood_broken2
+	icon_state = "wood-broken2"
+
+/turf/open/floor/wood/wood_broken3
+	icon_state = "wood-broken3"
+
+/turf/open/floor/wood/wood_broken4
+	icon_state = "wood-broken4"
+
+/turf/open/floor/wood/wood_broken5
+	icon_state = "wood-broken5"
+
+/turf/open/floor/wood/wood_broken6
+	icon_state = "wood-broken6"
+
+/turf/open/floor/wood/wood_broken7
+	icon_state = "wood-broken7"
 
 /turf/open/floor/vault
 	icon_state = "rockvault"
@@ -380,6 +1141,9 @@
 	breakable_tile = FALSE
 	burnable_tile = FALSE
 	baseturfs = /turf/open/floor
+
+/turf/open/floor/engine/simulator_center
+	color = "#AAAAAA"
 
 /turf/open/floor/engine/make_plating()
 	return
@@ -433,6 +1197,18 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "bcircuit"
 
+/turf/open/floor/bluegrid/bcircuitoff
+	icon_state = "bcircuitoff"
+
+/turf/open/floor/bluegrid/damaged3
+	icon_state = "damaged3"
+
+/turf/open/floor/bluegrid/damaged4
+	icon_state = "damaged4"
+
+/turf/open/floor/bluegrid/damaged5
+	icon_state = "damaged5"
+
 /turf/open/floor/greengrid
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "gcircuit"
@@ -452,7 +1228,7 @@
 
 /turf/open/floor/grass/LateInitialize()
 	. = ..()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src,direction),/turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
@@ -471,6 +1247,7 @@
 
 /turf/open/floor/carpet
 	name = "carpet"
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft."
 	icon_state = "carpet"
 	tile_type = /obj/item/stack/tile/carpet
 	tool_flags = REMOVE_SCREWDRIVER
@@ -497,7 +1274,7 @@
 	if(!broken && !burnt)
 		if(icon_state != "carpetsymbol")
 			var/connectdir = 0
-			for(var/direction in cardinal)
+			for(var/direction in GLOB.cardinals)
 				if(istype(get_step(src, direction), /turf/open/floor))
 					var/turf/open/floor/FF = get_step(src, direction)
 					if(FF.is_carpet_floor())
@@ -538,14 +1315,53 @@
 			icon_state = "carpet[connectdir]-[diagonalconnect]"
 
 /turf/open/floor/carpet/make_plating()
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() // So siding get updated properly
 	return ..()
 
+/turf/open/floor/carpet/bcarpet01
+	icon_state = "bcarpet01"
+
+/turf/open/floor/carpet/bcarpet02
+	icon_state = "bcarpet02"
+
+/turf/open/floor/carpet/bcarpet03
+	icon_state = "bcarpet03"
+
+/turf/open/floor/carpet/bcarpet07
+	icon_state = "bcarpet07"
+
+/turf/open/floor/carpet/bcarpet08
+	icon_state = "bcarpet08"
+
+/turf/open/floor/carpet/bcarpet09
+	icon_state = "bcarpet09"
+
 /turf/open/floor/carpet/edge
 	icon_state = "carpetside"
+
+/turf/open/floor/carpet/edge/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/carpet/edge/north
+	dir = NORTH
+
+/turf/open/floor/carpet/edge/east
+	dir = EAST
+
+/turf/open/floor/carpet/edge/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/carpet/edge/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/carpet/edge/west
+	dir = WEST
+
+/turf/open/floor/carpet/edge/northwest
+	dir = NORTHWEST
 
 // Start Prison tiles
 
@@ -561,6 +1377,711 @@
 	icon = 'icons/turf/floors/carpet_manual.dmi'//I dunno man, CM-ified carpet sprites are placed manually and I can't be bothered to write a new system for 'em.
 	icon_state = "single"
 
+/turf/open/floor/prison/chapel_carpet/doubleside
+	icon_state = "doubleside"
+
+/turf/open/floor/prison/chapel_carpet/doubleside/north
+	dir = NORTH
+
+/turf/open/floor/prison/blue
+	icon_state = "blue"
+
+/turf/open/floor/prison/blue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/bright_clean
+	icon_state = "bright_clean"
+
+/turf/open/floor/prison/bright_clean/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/bright_clean2
+	icon_state = "bright_clean2"
+
+/turf/open/floor/prison/bright_clean2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/bright_clean_marked
+	icon_state = "bright_clean_marked"
+
+/turf/open/floor/prison/bright_clean_marked/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/damaged1
+	icon_state = "damaged1"
+
+/turf/open/floor/prison/damaged1/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/damaged2
+	icon_state = "damaged2"
+
+/turf/open/floor/prison/damaged2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkbrown2
+	icon_state = "darkbrown2"
+
+/turf/open/floor/prison/darkbrown2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkbrown3
+	icon_state = "darkbrown3"
+
+/turf/open/floor/prison/darkbrown3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkbrowncorners2
+	icon_state = "darkbrowncorners2"
+
+/turf/open/floor/prison/darkbrowncorners2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkpurple2
+	icon_state = "darkpurple2"
+
+/turf/open/floor/prison/darkpurple2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkred2
+	icon_state = "darkred2"
+
+/turf/open/floor/prison/darkred2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkredcorners2
+	icon_state = "darkredcorners2"
+
+/turf/open/floor/prison/darkredcorners2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkredfull2
+	icon_state = "darkredfull2"
+
+/turf/open/floor/prison/darkredfull2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkyellow2
+	icon_state = "darkyellow2"
+
+/turf/open/floor/prison/darkyellow2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkyellowcorners2
+	icon_state = "darkyellowcorners2"
+
+/turf/open/floor/prison/darkyellowcorners2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/floor_marked
+	icon_state = "floor_marked"
+
+/turf/open/floor/prison/floor_marked/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/floor_plate
+	icon_state = "floor_plate"
+
+/turf/open/floor/prison/floor_plate/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/green
+	icon_state = "green"
+
+/turf/open/floor/prison/green/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/greenblue
+	icon_state = "greenblue"
+
+/turf/open/floor/prison/greenblue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/kitchen
+	icon_state = "kitchen"
+
+/turf/open/floor/prison/kitchen/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/red
+	icon_state = "red"
+
+/turf/open/floor/prison/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/sterile_white
+	icon_state = "sterile_white"
+
+/turf/open/floor/prison/sterile_white/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/prison/whitegreen/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitegreenfull
+	icon_state = "whitegreenfull"
+
+/turf/open/floor/prison/whitegreenfull/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitepurple
+	icon_state = "whitepurple"
+
+/turf/open/floor/prison/whitepurple/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitered
+	icon_state = "whitered"
+
+/turf/open/floor/prison/whitered/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/yellow
+	icon_state = "yellow"
+
+/turf/open/floor/prison/yellow/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/yellowfull
+	icon_state = "yellowfull"
+
+/turf/open/floor/prison/yellowfull/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/blue/north
+	dir = NORTH
+
+/turf/open/floor/prison/blue_plate
+	icon_state = "blue_plate"
+
+/turf/open/floor/prison/blue_plate/north
+	dir = NORTH
+
+/turf/open/floor/prison/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/prison/bluecorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/cell_stripe
+	icon_state = "cell_stripe"
+
+/turf/open/floor/prison/cell_stripe/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkbrown2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkbrown3/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkbrowncorners2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkbrowncorners3
+	icon_state = "darkbrowncorners3"
+
+/turf/open/floor/prison/darkbrowncorners3/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkpurple2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkpurplecorners2
+	icon_state = "darkpurplecorners2"
+
+/turf/open/floor/prison/darkpurplecorners2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkred2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkredcorners2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkyellow2/north
+	dir = NORTH
+
+/turf/open/floor/prison/darkyellowcorners2/north
+	dir = NORTH
+
+/turf/open/floor/prison/green/north
+	dir = NORTH
+
+/turf/open/floor/prison/greenblue/north
+	dir = NORTH
+
+/turf/open/floor/prison/greenbluecorner
+	icon_state = "greenbluecorner"
+
+/turf/open/floor/prison/greenbluecorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/greencorner
+	icon_state = "greencorner"
+
+/turf/open/floor/prison/greencorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/rampbottom
+	icon_state = "rampbottom"
+
+/turf/open/floor/prison/rampbottom/north
+	dir = NORTH
+
+/turf/open/floor/prison/red/north
+	dir = NORTH
+
+/turf/open/floor/prison/redcorner
+	icon_state = "redcorner"
+
+/turf/open/floor/prison/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitegreen/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitegreencorner
+	icon_state = "whitegreencorner"
+
+/turf/open/floor/prison/whitegreencorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitepurple/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitepurplecorner
+	icon_state = "whitepurplecorner"
+
+/turf/open/floor/prison/whitepurplecorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitered/north
+	dir = NORTH
+
+/turf/open/floor/prison/yellow/north
+	dir = NORTH
+
+/turf/open/floor/prison/yellowcorner
+	icon_state = "yellowcorner"
+
+/turf/open/floor/prison/yellowcorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/sterile_white/south
+	dir = SOUTH
+
+/turf/open/floor/prison/blue/east
+	dir = EAST
+
+/turf/open/floor/prison/blue_plate/east
+	dir = EAST
+
+/turf/open/floor/prison/bluecorner/east
+	dir = EAST
+
+/turf/open/floor/prison/cell_stripe/east
+	dir = EAST
+
+/turf/open/floor/prison/darkbrown2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkbrown3/east
+	dir = EAST
+
+/turf/open/floor/prison/darkbrowncorners2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkbrowncorners3/east
+	dir = EAST
+
+/turf/open/floor/prison/darkpurple2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkpurplecorners2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkred2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkredcorners2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkyellow2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkyellowcorners2/east
+	dir = EAST
+
+/turf/open/floor/prison/darkyellowfull2
+	icon_state = "darkyellowfull2"
+
+/turf/open/floor/prison/darkyellowfull2/east
+	dir = EAST
+
+/turf/open/floor/prison/green/east
+	dir = EAST
+
+/turf/open/floor/prison/greenblue/east
+	dir = EAST
+
+/turf/open/floor/prison/greenbluecorner/east
+	dir = EAST
+
+/turf/open/floor/prison/greencorner/east
+	dir = EAST
+
+/turf/open/floor/prison/greenfull
+	icon_state = "greenfull"
+
+/turf/open/floor/prison/greenfull/east
+	dir = EAST
+
+/turf/open/floor/prison/rampbottom/east
+	dir = EAST
+
+/turf/open/floor/prison/red/east
+	dir = EAST
+
+/turf/open/floor/prison/redcorner/east
+	dir = EAST
+
+/turf/open/floor/prison/whitegreen/east
+	dir = EAST
+
+/turf/open/floor/prison/whitegreencorner/east
+	dir = EAST
+
+/turf/open/floor/prison/whitepurple/east
+	dir = EAST
+
+/turf/open/floor/prison/whitepurplecorner/east
+	dir = EAST
+
+/turf/open/floor/prison/whitered/east
+	dir = EAST
+
+/turf/open/floor/prison/whiteredcorner
+	icon_state = "whiteredcorner"
+
+/turf/open/floor/prison/whiteredcorner/east
+	dir = EAST
+
+/turf/open/floor/prison/yellow/east
+	dir = EAST
+
+/turf/open/floor/prison/yellowcorner/east
+	dir = EAST
+
+/turf/open/floor/prison/blue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/darkbrown2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/darkpurple2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/darkred2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/darkyellow2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/green/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/greenblue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/whitegreen/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/whitepurple/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/whitered/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/yellow/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/blue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/darkbrown2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/darkpurple2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/darkred2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/darkyellow2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/green/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/greenblue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/whitegreen/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/whitepurple/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/whitered/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/yellow/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/blue/west
+	dir = WEST
+
+/turf/open/floor/prison/blue_plate/west
+	dir = WEST
+
+/turf/open/floor/prison/bluecorner/west
+	dir = WEST
+
+/turf/open/floor/prison/bluefull
+	icon_state = "bluefull"
+
+/turf/open/floor/prison/bluefull/west
+	dir = WEST
+
+/turf/open/floor/prison/cell_stripe/west
+	dir = WEST
+
+/turf/open/floor/prison/darkbrown2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkbrown3/west
+	dir = WEST
+
+/turf/open/floor/prison/darkbrowncorners2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkbrowncorners3/west
+	dir = WEST
+
+/turf/open/floor/prison/darkpurple2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkpurplecorners2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkred2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkredcorners2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkyellow2/west
+	dir = WEST
+
+/turf/open/floor/prison/darkyellowcorners2/west
+	dir = WEST
+
+/turf/open/floor/prison/floor_marked/west
+	dir = WEST
+
+/turf/open/floor/prison/green/west
+	dir = WEST
+
+/turf/open/floor/prison/greenblue/west
+	dir = WEST
+
+/turf/open/floor/prison/greenbluecorner/west
+	dir = WEST
+
+/turf/open/floor/prison/greencorner/west
+	dir = WEST
+
+/turf/open/floor/prison/rampbottom/west
+	dir = WEST
+
+/turf/open/floor/prison/red/west
+	dir = WEST
+
+/turf/open/floor/prison/redcorner/west
+	dir = WEST
+
+/turf/open/floor/prison/sterile_white/west
+	dir = WEST
+
+/turf/open/floor/prison/whitegreen/west
+	dir = WEST
+
+/turf/open/floor/prison/whitegreencorner/west
+	dir = WEST
+
+/turf/open/floor/prison/whitepurple/west
+	dir = WEST
+
+/turf/open/floor/prison/whitepurplecorner/west
+	dir = WEST
+
+/turf/open/floor/prison/whitered/west
+	dir = WEST
+
+/turf/open/floor/prison/whiteredcorner/west
+	dir = WEST
+
+/turf/open/floor/prison/yellow/west
+	dir = WEST
+
+/turf/open/floor/prison/yellowcorner/west
+	dir = WEST
+
+/turf/open/floor/prison/west
+	dir = WEST
+
+/turf/open/floor/prison/blue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkbrown2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkbrown3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkpurple2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkpurplefull2
+	icon_state = "darkpurplefull2"
+
+/turf/open/floor/prison/darkpurplefull2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkred2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/darkyellow2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/greenblue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/greenfull/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/whitegreen/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/whitepurple/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/whitered/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/yellow/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/damaged3
+	icon_state = "damaged3"
+
+/turf/open/floor/prison/darkbrownfull2
+	icon_state = "darkbrownfull2"
+
+/turf/open/floor/prison/floorscorched1
+	icon_state = "floorscorched1"
+
+/turf/open/floor/prison/floorscorched2
+	icon_state = "floorscorched2"
+
+/turf/open/floor/prison/greenblue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/greenblue/north
+	dir = NORTH
+
+/turf/open/floor/prison/greenblue/east
+	dir = EAST
+
+/turf/open/floor/prison/greenblue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/greenblue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/greenblue/west
+	dir = WEST
+
+/turf/open/floor/prison/greenblue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/greenbluecorner/east
+	dir = EAST
+
+/turf/open/floor/prison/panelscorched
+	icon_state = "panelscorched"
+
+/turf/open/floor/prison/platingdmg1
+	icon_state = "platingdmg1"
+
+/turf/open/floor/prison/platingdmg2
+	icon_state = "platingdmg2"
+
+/turf/open/floor/prison/platingdmg3
+	icon_state = "platingdmg3"
+
+/turf/open/floor/prison/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/red/north
+	dir = NORTH
+
+/turf/open/floor/prison/red/east
+	dir = EAST
+
+/turf/open/floor/prison/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/red/west
+	dir = WEST
+
+/turf/open/floor/prison/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/prison/redcorner/east
+	dir = EAST
+
+/turf/open/floor/prison/redfull
+	icon_state = "redfull"
+
+/turf/open/floor/prison/whitepurplefull
+	icon_state = "whitepurplefull"
+
 // Mechbay
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
@@ -573,6 +2094,8 @@
 	ChangeTurf(/turf/open/floor/plating)
 	broken = TRUE
 
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights
+	name = "shuttle landing lights"
 
 /turf/open/floor/interior
 	icon = 'icons/turf/floors/interior.dmi'
@@ -605,3 +2128,1446 @@
 /turf/open/floor/corsat
 	icon = 'icons/turf/floors/corsat.dmi'
 	icon_state = "plating"
+
+/turf/open/floor/corsat/blue
+	icon_state = "blue"
+
+/turf/open/floor/corsat/blue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/bluegrey
+	icon_state = "bluegrey"
+
+/turf/open/floor/corsat/bluegrey/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/brown
+	icon_state = "brown"
+
+/turf/open/floor/corsat/brown/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/corsat_teleporter_static
+	icon_state = "corsat_teleporter_static"
+
+/turf/open/floor/corsat/corsat_teleporter_static/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/darkgreen
+	icon_state = "darkgreen"
+
+/turf/open/floor/corsat/darkgreen/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/green
+	icon_state = "green"
+
+/turf/open/floor/corsat/green/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/greenwhite
+	icon_state = "greenwhite"
+
+/turf/open/floor/corsat/greenwhite/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/purple
+	icon_state = "purple"
+
+/turf/open/floor/corsat/purple/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/purplewhite
+	icon_state = "purplewhite"
+
+/turf/open/floor/corsat/purplewhite/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/red
+	icon_state = "red"
+
+/turf/open/floor/corsat/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/tcomms
+	icon_state = "tcomms"
+
+/turf/open/floor/corsat/tcomms/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/white
+	icon_state = "white"
+
+/turf/open/floor/corsat/white/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/whitebluefull
+	icon_state = "whitebluefull"
+
+/turf/open/floor/corsat/whitebluefull/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/whitetan
+	icon_state = "whitetan"
+
+/turf/open/floor/corsat/whitetan/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/yellow
+	icon_state = "yellow"
+
+/turf/open/floor/corsat/yellow/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/blue/north
+	dir = NORTH
+
+/turf/open/floor/corsat/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/corsat/bluecorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/bluegrey/north
+	dir = NORTH
+
+/turf/open/floor/corsat/bluegreycorner
+	icon_state = "bluegreycorner"
+
+/turf/open/floor/corsat/bluegreycorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/brown/north
+	dir = NORTH
+
+/turf/open/floor/corsat/browncorner
+	icon_state = "browncorner"
+
+/turf/open/floor/corsat/browncorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/darkgreen/north
+	dir = NORTH
+
+/turf/open/floor/corsat/darkgreencorner
+	icon_state = "darkgreencorner"
+
+/turf/open/floor/corsat/darkgreencorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/green/north
+	dir = NORTH
+
+/turf/open/floor/corsat/greencorner
+	icon_state = "greencorner"
+
+/turf/open/floor/corsat/greencorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/greenwhite/north
+	dir = NORTH
+
+/turf/open/floor/corsat/greenwhitecorner
+	icon_state = "greenwhitecorner"
+
+/turf/open/floor/corsat/greenwhitecorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/purple/north
+	dir = NORTH
+
+/turf/open/floor/corsat/purplecorner
+	icon_state = "purplecorner"
+
+/turf/open/floor/corsat/purplecorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/purplewhite/north
+	dir = NORTH
+
+/turf/open/floor/corsat/purplewhitecorner
+	icon_state = "purplewhitecorner"
+
+/turf/open/floor/corsat/purplewhitecorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/red/north
+	dir = NORTH
+
+/turf/open/floor/corsat/redcorner
+	icon_state = "redcorner"
+
+/turf/open/floor/corsat/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/squareswood
+	icon_state = "squareswood"
+
+/turf/open/floor/corsat/squareswood/north
+	dir = NORTH
+
+/turf/open/floor/corsat/tan
+	icon_state = "tan"
+
+/turf/open/floor/corsat/tan/north
+	dir = NORTH
+
+/turf/open/floor/corsat/white/north
+	dir = NORTH
+
+/turf/open/floor/corsat/whitecorner
+	icon_state = "whitecorner"
+
+/turf/open/floor/corsat/whitecorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/whitetan/north
+	dir = NORTH
+
+/turf/open/floor/corsat/whitetancorner
+	icon_state = "whitetancorner"
+
+/turf/open/floor/corsat/whitetancorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/yellow/north
+	dir = NORTH
+
+/turf/open/floor/corsat/yellowcorner
+	icon_state = "yellowcorner"
+
+/turf/open/floor/corsat/yellowcorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/blue/east
+	dir = EAST
+
+/turf/open/floor/corsat/bluecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/bluegrey/east
+	dir = EAST
+
+/turf/open/floor/corsat/bluegreycorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/brown/east
+	dir = EAST
+
+/turf/open/floor/corsat/browncorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/darkgreen/east
+	dir = EAST
+
+/turf/open/floor/corsat/darkgreencorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/green/east
+	dir = EAST
+
+/turf/open/floor/corsat/greencorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/greenwhite/east
+	dir = EAST
+
+/turf/open/floor/corsat/greenwhitecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/purple/east
+	dir = EAST
+
+/turf/open/floor/corsat/purplecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/purplewhite/east
+	dir = EAST
+
+/turf/open/floor/corsat/purplewhitecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/red/east
+	dir = EAST
+
+/turf/open/floor/corsat/redcorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/white/east
+	dir = EAST
+
+/turf/open/floor/corsat/whitecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/whitetan/east
+	dir = EAST
+
+/turf/open/floor/corsat/whitetancorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/yellow/east
+	dir = EAST
+
+/turf/open/floor/corsat/yellowcorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/blue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/bluegrey/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/brown/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/darkgreen/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/green/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/greenwhite/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/purple/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/purplewhite/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/white/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/whitetan/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/yellow/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/blue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/bluegrey/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/brown/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/darkgreen/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/green/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/greenwhite/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/purple/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/purplewhite/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/white/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/whitetan/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/yellow/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/blue/west
+	dir = WEST
+
+/turf/open/floor/corsat/bluecorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/bluegrey/west
+	dir = WEST
+
+/turf/open/floor/corsat/bluegreycorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/brown/west
+	dir = WEST
+
+/turf/open/floor/corsat/browncorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/darkgreen/west
+	dir = WEST
+
+/turf/open/floor/corsat/darkgreencorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/green/west
+	dir = WEST
+
+/turf/open/floor/corsat/greencorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/greenwhite/west
+	dir = WEST
+
+/turf/open/floor/corsat/greenwhitecorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/purple/west
+	dir = WEST
+
+/turf/open/floor/corsat/purplecorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/purplewhite/west
+	dir = WEST
+
+/turf/open/floor/corsat/purplewhitecorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/red/west
+	dir = WEST
+
+/turf/open/floor/corsat/redcorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/white/west
+	dir = WEST
+
+/turf/open/floor/corsat/whitecorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/whitetan/west
+	dir = WEST
+
+/turf/open/floor/corsat/whitetancorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/yellow/west
+	dir = WEST
+
+/turf/open/floor/corsat/yellowcorner/west
+	dir = WEST
+
+/turf/open/floor/corsat/blue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/bluegrey/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/brown/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/darkgreen/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/greenwhite/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/purple/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/purplewhite/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/white/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/whitetan/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/yellow/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/arrow_east
+	icon_state = "arrow_east"
+
+/turf/open/floor/corsat/arrow_north
+	icon_state = "arrow_north"
+
+/turf/open/floor/corsat/arrow_south
+	icon_state = "arrow_south"
+
+/turf/open/floor/corsat/arrow_west
+	icon_state = "arrow_west"
+
+/turf/open/floor/corsat/cargo
+	icon_state = "cargo"
+
+/turf/open/floor/corsat/damaged1
+	icon_state = "damaged1"
+
+/turf/open/floor/corsat/gamma
+	icon_state = "gamma"
+
+/turf/open/floor/corsat/lightplate
+	icon_state = "lightplate"
+
+/turf/open/floor/corsat/marked
+	icon_state = "marked"
+
+/turf/open/floor/corsat/officesquares
+	icon_state = "officesquares"
+
+/turf/open/floor/corsat/omega
+	icon_state = "omega"
+
+/turf/open/floor/corsat/plate
+	icon_state = "plate"
+
+/turf/open/floor/corsat/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/corsat/red/north
+	dir = NORTH
+
+/turf/open/floor/corsat/red/east
+	dir = EAST
+
+/turf/open/floor/corsat/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/red/west
+	dir = WEST
+
+/turf/open/floor/corsat/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/corsat/redcorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/retrosquares
+	icon_state = "retrosquares"
+
+/turf/open/floor/corsat/retrosquareslight
+	icon_state = "retrosquareslight"
+
+/turf/open/floor/corsat/sigma
+	icon_state = "sigma"
+
+/turf/open/floor/corsat/spiralplate
+	icon_state = "spiralplate"
+
+/turf/open/floor/corsat/spiralwoodalt
+	icon_state = "spiralwoodalt"
+
+/turf/open/floor/corsat/squares
+	icon_state = "squares"
+
+/turf/open/floor/corsat/sterileplate
+	icon_state = "sterileplate"
+
+/turf/open/floor/corsat/theta
+	icon_state = "theta"
+
+/turf/open/floor/corsat/yellow/north
+	dir = NORTH
+
+/turf/open/floor/corsat/yellow/east
+	dir = EAST
+
+/turf/open/floor/corsat/yellowcorner/east
+	dir = EAST
+
+/turf/open/floor/grey_dark2
+	color = "#525151"
+	icon_state = "dark2"
+
+/turf/open/floor/solarpanel
+	desc = "A sophisticated device that captures and converts light from the system's star into energy for the station."
+	icon_state = "solarpanel"
+	name = "solarpanel"
+
+/turf/open/floor/asteroidwarning
+	icon_state = "asteroidwarning"
+
+/turf/open/floor/asteroidwarning/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkblue2
+	icon_state = "darkblue2"
+
+/turf/open/floor/darkblue2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkbrown2
+	icon_state = "darkbrown2"
+
+/turf/open/floor/darkbrown2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkgreen2
+	icon_state = "darkgreen2"
+
+/turf/open/floor/darkgreen2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkpurple2
+	icon_state = "darkpurple2"
+
+/turf/open/floor/darkpurple2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkred2
+	icon_state = "darkred2"
+
+/turf/open/floor/darkred2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/darkyellow2
+	icon_state = "darkyellow2"
+
+/turf/open/floor/darkyellow2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/podhatch
+	icon_state = "podhatch"
+
+/turf/open/floor/podhatch/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/purple
+	icon_state = "purple"
+
+/turf/open/floor/purple/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/red
+	icon_state = "red"
+
+/turf/open/floor/red/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/warning
+	icon_state = "warning"
+
+/turf/open/floor/warning/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/warnwhite
+	icon_state = "warnwhite"
+
+/turf/open/floor/warnwhite/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/whiteblue
+	icon_state = "whiteblue"
+
+/turf/open/floor/whiteblue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/whitegreen/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/whitepurple
+	icon_state = "whitepurple"
+
+/turf/open/floor/whitepurple/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/whitered
+	icon_state = "whitered"
+
+/turf/open/floor/whitered/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/whiteyellow
+	icon_state = "whiteyellow"
+
+/turf/open/floor/whiteyellow/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/asteroidfloor
+	icon_state = "asteroidfloor"
+
+/turf/open/floor/asteroidfloor/north
+	dir = NORTH
+
+/turf/open/floor/asteroidwarning/north
+	dir = NORTH
+
+/turf/open/floor/bot
+	icon_state = "bot"
+
+/turf/open/floor/bot/north
+	dir = NORTH
+
+/turf/open/floor/chapel
+	icon_state = "chapel"
+
+/turf/open/floor/chapel/north
+	dir = NORTH
+
+/turf/open/floor/darkblue2/north
+	dir = NORTH
+
+/turf/open/floor/darkbrown2/north
+	dir = NORTH
+
+/turf/open/floor/darkbrowncorners2
+	icon_state = "darkbrowncorners2"
+
+/turf/open/floor/darkbrowncorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkgreen2/north
+	dir = NORTH
+
+/turf/open/floor/darkgreencorners2
+	icon_state = "darkgreencorners2"
+
+/turf/open/floor/darkgreencorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkpurple2/north
+	dir = NORTH
+
+/turf/open/floor/darkpurplecorners2
+	icon_state = "darkpurplecorners2"
+
+/turf/open/floor/darkpurplecorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkred2/north
+	dir = NORTH
+
+/turf/open/floor/darkredcorners2
+	icon_state = "darkredcorners2"
+
+/turf/open/floor/darkredcorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkyellow2/north
+	dir = NORTH
+
+/turf/open/floor/darkyellowcorners2
+	icon_state = "darkyellowcorners2"
+
+/turf/open/floor/darkyellowcorners2/north
+	dir = NORTH
+
+/turf/open/floor/elevatorshaft
+	icon_state = "elevatorshaft"
+
+/turf/open/floor/elevatorshaft/north
+	dir = NORTH
+
+/turf/open/floor/green
+	icon_state = "green"
+
+/turf/open/floor/green/north
+	dir = NORTH
+
+/turf/open/floor/loadingarea
+	icon_state = "loadingarea"
+
+/turf/open/floor/loadingarea/north
+	dir = NORTH
+
+/turf/open/floor/podhatch/north
+	dir = NORTH
+
+/turf/open/floor/podhatchfloor
+	icon_state = "podhatchfloor"
+
+/turf/open/floor/podhatchfloor/north
+	dir = NORTH
+
+/turf/open/floor/purple/north
+	dir = NORTH
+
+/turf/open/floor/rampbottom
+	icon_state = "rampbottom"
+
+/turf/open/floor/rampbottom/north
+	dir = NORTH
+
+/turf/open/floor/red/north
+	dir = NORTH
+
+/turf/open/floor/redcorner
+	icon_state = "redcorner"
+
+/turf/open/floor/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/vault2
+	icon_state = "vault"
+
+/turf/open/floor/vault2/north
+	dir = NORTH
+
+/turf/open/floor/warning/north
+	dir = NORTH
+
+/turf/open/floor/warningcorner
+	icon_state = "warningcorner"
+
+/turf/open/floor/warningcorner/north
+	dir = NORTH
+
+/turf/open/floor/warnwhite/north
+	dir = NORTH
+
+/turf/open/floor/whiteblue/north
+	dir = NORTH
+
+/turf/open/floor/whitebluecorner
+	icon_state = "whitebluecorner"
+
+/turf/open/floor/whitebluecorner/north
+	dir = NORTH
+
+/turf/open/floor/whitegreen/north
+	dir = NORTH
+
+/turf/open/floor/whitegreencorner
+	icon_state = "whitegreencorner"
+
+/turf/open/floor/whitegreencorner/north
+	dir = NORTH
+
+/turf/open/floor/whitepurple/north
+	dir = NORTH
+
+/turf/open/floor/whitepurplecorner
+	icon_state = "whitepurplecorner"
+
+/turf/open/floor/whitepurplecorner/north
+	dir = NORTH
+
+/turf/open/floor/whitered/north
+	dir = NORTH
+
+/turf/open/floor/whiteredcorner
+	icon_state = "whiteredcorner"
+
+/turf/open/floor/whiteredcorner/north
+	dir = NORTH
+
+/turf/open/floor/whiteyellow/north
+	dir = NORTH
+
+/turf/open/floor/whiteyellowcorner
+	icon_state = "whiteyellowcorner"
+
+/turf/open/floor/whiteyellowcorner/north
+	dir = NORTH
+
+/turf/open/floor/asteroidwarning/east
+	dir = EAST
+
+/turf/open/floor/chapel/east
+	dir = EAST
+
+/turf/open/floor/darkblue2/east
+	dir = EAST
+
+/turf/open/floor/darkbrown2/east
+	dir = EAST
+
+/turf/open/floor/darkbrowncorners2/east
+	dir = EAST
+
+/turf/open/floor/darkgreen2/east
+	dir = EAST
+
+/turf/open/floor/darkgreencorners2/east
+	dir = EAST
+
+/turf/open/floor/darkpurple2/east
+	dir = EAST
+
+/turf/open/floor/darkpurplecorners2/east
+	dir = EAST
+
+/turf/open/floor/darkred2/east
+	dir = EAST
+
+/turf/open/floor/darkredcorners2/east
+	dir = EAST
+
+/turf/open/floor/darkyellow2/east
+	dir = EAST
+
+/turf/open/floor/darkyellowcorners2/east
+	dir = EAST
+
+/turf/open/floor/loadingarea/east
+	dir = EAST
+
+/turf/open/floor/purple/east
+	dir = EAST
+
+/turf/open/floor/red/east
+	dir = EAST
+
+/turf/open/floor/redcorner/east
+	dir = EAST
+
+/turf/open/floor/warning/east
+	dir = EAST
+
+/turf/open/floor/warningcorner/east
+	dir = EAST
+
+/turf/open/floor/warnwhite/east
+	dir = EAST
+
+/turf/open/floor/whiteblue/east
+	dir = EAST
+
+/turf/open/floor/whitebluecorner/east
+	dir = EAST
+
+/turf/open/floor/whitegreen/east
+	dir = EAST
+
+/turf/open/floor/whitegreencorner/east
+	dir = EAST
+
+/turf/open/floor/whitepurple/east
+	dir = EAST
+
+/turf/open/floor/whitepurplecorner/east
+	dir = EAST
+
+/turf/open/floor/whitered/east
+	dir = EAST
+
+/turf/open/floor/whiteredcorner/east
+	dir = EAST
+
+/turf/open/floor/whiteyellow/east
+	dir = EAST
+
+/turf/open/floor/whiteyellowcorner/east
+	dir = EAST
+
+/turf/open/floor/whiteyellowfull
+	icon_state = "whiteyellowfull"
+
+/turf/open/floor/whiteyellowfull/east
+	dir = EAST
+
+/turf/open/floor/asteroidwarning/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/chapel/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkblue2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkbrown2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkgreen2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkpurple2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkred2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/darkyellow2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/podhatch/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/purple/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/red/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/vault2/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/warning/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/warnwhite/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whiteblue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitebluefull
+	icon_state = "whitebluefull"
+
+/turf/open/floor/whitebluefull/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitegreen/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitegreen_v
+	icon_state = "whitegreen_v"
+
+/turf/open/floor/whitegreen_v/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitegreenfull
+	icon_state = "whitegreenfull"
+
+/turf/open/floor/whitegreenfull/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitepurple/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whitered/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/whiteyellow/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/asteroidwarning/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkblue2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkbrown2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkgreen2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkpurple2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkred2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/darkyellow2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/podhatch/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/purple/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/red/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/warning/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/warnwhite/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/whiteblue/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/whitegreen/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/whitepurple/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/whitered/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/whiteyellow/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/asteroidwarning/west
+	dir = WEST
+
+/turf/open/floor/barber
+	icon_state = "barber"
+
+/turf/open/floor/barber/west
+	dir = WEST
+
+/turf/open/floor/carpet10_8
+	icon_state = "carpet10-8"
+
+/turf/open/floor/carpet10_8/west
+	dir = WEST
+
+/turf/open/floor/carpet11_12
+	icon_state = "carpet11-12"
+
+/turf/open/floor/carpet11_12/west
+	dir = WEST
+
+/turf/open/floor/carpet13_5
+	icon_state = "carpet13-5"
+
+/turf/open/floor/carpet13_5/west
+	dir = WEST
+
+/turf/open/floor/carpet14_10
+	icon_state = "carpet14-10"
+
+/turf/open/floor/carpet14_10/west
+	dir = WEST
+
+/turf/open/floor/carpet15_15
+	icon_state = "carpet15-15"
+
+/turf/open/floor/carpet15_15/west
+	dir = WEST
+
+/turf/open/floor/carpet5_1
+	icon_state = "carpet5-1"
+
+/turf/open/floor/carpet5_1/west
+	dir = WEST
+
+/turf/open/floor/carpet6_2
+	icon_state = "carpet6-2"
+
+/turf/open/floor/carpet6_2/west
+	dir = WEST
+
+/turf/open/floor/carpet7_3
+	icon_state = "carpet7-3"
+
+/turf/open/floor/carpet7_3/west
+	dir = WEST
+
+/turf/open/floor/carpet9_4
+	icon_state = "carpet9-4"
+
+/turf/open/floor/carpet9_4/west
+	dir = WEST
+
+/turf/open/floor/chapel/west
+	dir = WEST
+
+/turf/open/floor/damaged2
+	icon_state = "damaged2"
+
+/turf/open/floor/damaged2/west
+	dir = WEST
+
+/turf/open/floor/damaged3
+	icon_state = "damaged3"
+
+/turf/open/floor/damaged3/west
+	dir = WEST
+
+/turf/open/floor/damaged4
+	icon_state = "damaged4"
+
+/turf/open/floor/damaged4/west
+	dir = WEST
+
+/turf/open/floor/damaged5
+	icon_state = "damaged5"
+
+/turf/open/floor/damaged5/west
+	dir = WEST
+
+/turf/open/floor/darkblue2/west
+	dir = WEST
+
+/turf/open/floor/darkbrown2/west
+	dir = WEST
+
+/turf/open/floor/darkbrowncorners2/west
+	dir = WEST
+
+/turf/open/floor/darkgreen2/west
+	dir = WEST
+
+/turf/open/floor/darkgreencorners2/west
+	dir = WEST
+
+/turf/open/floor/darkpurple2/west
+	dir = WEST
+
+/turf/open/floor/darkpurplecorners2/west
+	dir = WEST
+
+/turf/open/floor/darkred2/west
+	dir = WEST
+
+/turf/open/floor/darkredcorners2/west
+	dir = WEST
+
+/turf/open/floor/darkyellow2/west
+	dir = WEST
+
+/turf/open/floor/darkyellowcorners2/west
+	dir = WEST
+
+/turf/open/floor/loadingarea/west
+	dir = WEST
+
+/turf/open/floor/purple/west
+	dir = WEST
+
+/turf/open/floor/purplecorner
+	icon_state = "purplecorner"
+
+/turf/open/floor/purplecorner/west
+	dir = WEST
+
+/turf/open/floor/red/west
+	dir = WEST
+
+/turf/open/floor/redcorner/west
+	dir = WEST
+
+/turf/open/floor/vault2/west
+	dir = WEST
+
+/turf/open/floor/warning/west
+	dir = WEST
+
+/turf/open/floor/warningcorner/west
+	dir = WEST
+
+/turf/open/floor/warnwhite/west
+	dir = WEST
+
+/turf/open/floor/whiteblue/west
+	dir = WEST
+
+/turf/open/floor/whitebluecorner/west
+	dir = WEST
+
+/turf/open/floor/whitegreen/west
+	dir = WEST
+
+/turf/open/floor/whitegreencorner/west
+	dir = WEST
+
+/turf/open/floor/whitepurple/west
+	dir = WEST
+
+/turf/open/floor/whitepurplecorner/west
+	dir = WEST
+
+/turf/open/floor/whitered/west
+	dir = WEST
+
+/turf/open/floor/whiteredcorner/west
+	dir = WEST
+
+/turf/open/floor/whiteyellow/west
+	dir = WEST
+
+/turf/open/floor/whiteyellowcorner/west
+	dir = WEST
+
+/turf/open/floor/asteroidwarning/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/brown
+	icon_state = "brown"
+
+/turf/open/floor/brown/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkblue2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkbrown2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkgreen2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkpurple2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkred2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/darkyellow2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/podhatch/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/purple/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/red/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/redfull
+	icon_state = "redfull"
+
+/turf/open/floor/redfull/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/warning/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/warnwhite/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whiteblue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whitegreen/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whitegreen_v/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whitepurple/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whitered/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/whiteyellow/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/asteroid
+	icon_state = "asteroid"
+
+/turf/open/floor/asteroidfloor/north
+	dir = NORTH
+
+/turf/open/floor/asteroidplating
+	icon_state = "asteroidplating"
+
+/turf/open/floor/asteroidwarning/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/asteroidwarning/north
+	dir = NORTH
+
+/turf/open/floor/asteroidwarning/east
+	dir = EAST
+
+/turf/open/floor/asteroidwarning/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/asteroidwarning/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/asteroidwarning/west
+	dir = WEST
+
+/turf/open/floor/asteroidwarning/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/bar
+	icon_state = "bar"
+
+/turf/open/floor/bcircuit
+	icon_state = "bcircuit"
+
+/turf/open/floor/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/blueyellowfull
+	icon_state = "blueyellowfull"
+
+/turf/open/floor/cafeteria
+	icon_state = "cafeteria"
+
+/turf/open/floor/cmo
+	icon_state = "cmo"
+
+/turf/open/floor/cult
+	icon_state = "cult"
+
+/turf/open/floor/dark
+	icon_state = "dark"
+
+/turf/open/floor/dark2
+	icon_state = "dark2"
+
+/turf/open/floor/darkbluecorners2
+	icon_state = "darkbluecorners2"
+
+/turf/open/floor/darkish
+	icon_state = "darkish"
+
+/turf/open/floor/delivery
+	icon_state = "delivery"
+
+/turf/open/floor/floor4
+	icon_state = "floor4"
+
+/turf/open/floor/floorscorched1
+	icon_state = "floorscorched1"
+
+/turf/open/floor/floorscorched2
+	icon_state = "floorscorched2"
+
+/turf/open/floor/freezerfloor
+	icon_state = "freezerfloor"
+
+/turf/open/floor/grimy
+	icon_state = "grimy"
+
+/turf/open/floor/hydrofloor
+	icon_state = "hydrofloor"
+
+/turf/open/floor/neutral
+	icon_state = "neutral"
+
+/turf/open/floor/panelscorched
+	icon_state = "panelscorched"
+
+/turf/open/floor/platebot
+	icon_state = "platebot"
+
+/turf/open/floor/platingdmg1
+	icon_state = "platingdmg1"
+
+/turf/open/floor/platingdmg3
+	icon_state = "platingdmg3"
+
+/turf/open/floor/redyellowfull
+	icon_state = "redyellowfull"
+
+/turf/open/floor/wall_thermite
+	icon_state = "wall_thermite"
+
+/turf/open/floor/warnwhite/north
+	dir = NORTH
+
+/turf/open/floor/white
+	icon_state = "white"
+
+/turf/open/floor/whitepurplefull
+	icon_state = "whitepurplefull"
+
+/turf/open/floor/whiteredfull
+	icon_state = "whiteredfull"
+
+/turf/open/floor/wood
+	icon_state = "wood"
+
+/turf/open/floor/yellowfull
+	icon_state = "yellowfull"

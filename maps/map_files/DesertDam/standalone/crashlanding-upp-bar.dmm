@@ -29,16 +29,11 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aO" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "aT" = (
 /turf/closed/shuttle/ert{
@@ -51,9 +46,7 @@
 /obj/item/reagent_container/food/drinks/flask/canteen{
 	desc = "You take a sip from your trusty UPP canteen..."
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "be" = (
 /obj/structure/closet/secure_closet/bar,
@@ -67,9 +60,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bu" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "bz" = (
 /obj/structure/bed/roller,
@@ -79,9 +70,7 @@
 	dir = 5
 	},
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/desert_dam/building/bar/bar)
 "bC" = (
 /obj/structure/barricade/sandbags/wired{
@@ -91,10 +80,7 @@
 /area/desert_dam/building/bar/backroom)
 "bI" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt{
-	dir = 5;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bJ" = (
 /obj/structure/disposalpipe/segment{
@@ -133,9 +119,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "cu" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "cH" = (
 /obj/item/stack/sheet/metal,
@@ -156,20 +140,14 @@
 	network = null;
 	pixel_y = 21
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "cR" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "cZ" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement2"
-	},
+/turf/open/asphalt/cement/cement2,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "da" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
@@ -185,15 +163,11 @@
 /area/desert_dam/building/bar/bar)
 "du" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/backroom)
 "dJ" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
+/turf/open/asphalt/cement/cement14,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "dQ" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -202,18 +176,14 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "dR" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "dX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/rounds/type71{
 	bullet_amount = 129
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "ee" = (
 /obj/effect/decal/warning_stripes{
@@ -222,10 +192,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "eh" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar_restroom)
 "ej" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
@@ -281,20 +248,18 @@
 	},
 /obj/item/paper/bigred/upp{
 	pixel_y = 4;
-	pixel_x = 3
+	pixel_x = 3;
+	icon_state = "paper_words";
+	item_state = "paper_words"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "fk" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "fy" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
@@ -314,9 +279,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "fM" = (
 /obj/item/stack/rods,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "fN" = (
 /obj/structure/disposalpipe/segment,
@@ -326,9 +289,7 @@
 "fP" = (
 /obj/structure/bed/bedroll,
 /obj/item/bedsheet/brown,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "fR" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -337,18 +298,14 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ga" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /obj/item/prop/colony/used_flare,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gm" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -361,9 +318,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gM" = (
 /obj/item/trash/candy,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gN" = (
 /obj/item/ammo_casing/bullet,
@@ -376,16 +331,11 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gR" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "hc" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
-/turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "hd" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
@@ -429,9 +379,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/survivor_spawner/upp_medic,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "hH" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -446,9 +394,7 @@
 /obj/item/ammo_box/rounds/type71/heap/empty{
 	bullet_amount = 0
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "hO" = (
 /obj/effect/decal/warning_stripes{
@@ -463,16 +409,11 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "hY" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "if" = (
 /obj/effect/decal/cleanable/dirt,
@@ -490,9 +431,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "is" = (
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iy" = (
 /turf/closed/wall/wood,
@@ -507,10 +446,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iL" = (
 /obj/structure/prop/dam/boulder/boulder1,
-/turf/open/desert/dirt{
-	dir = 1;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iV" = (
 /obj/effect/landmark/crap_item,
@@ -531,9 +467,7 @@
 "jj" = (
 /obj/item/trash/cheesie,
 /obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "jm" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -544,9 +478,7 @@
 	dir = 5;
 	pixel_y = 8
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jp" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -575,10 +507,7 @@
 /area/desert_dam/building/bar/bar)
 "jw" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt{
-	dir = 6;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jy" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -591,26 +520,20 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jI" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jJ" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kf" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kh" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -621,33 +544,24 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ki" = (
 /obj/item/stack/sandbags,
-/turf/open/desert/dirt{
-	dir = 10;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kk" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kp" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/almayer/flight_recorder/colony,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "kB" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached14"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kD" = (
 /turf/open/desert/dirt,
@@ -663,9 +577,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/backroom)
 "ln" = (
 /turf/open/desert/rock,
@@ -675,37 +587,25 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "lT" = (
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mb" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "md" = (
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mf" = (
-/turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mq" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -718,10 +618,7 @@
 	dir = 4
 	},
 /obj/item/prop/colony/used_flare,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/backroom)
 "mF" = (
 /obj/structure/disposalpipe/segment,
@@ -745,9 +642,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mV" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/building/bar/bar_restroom)
 "nk" = (
 /turf/closed/shuttle/ert{
@@ -759,9 +654,7 @@
 "np" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /obj/item/ammo_casing/bullet,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "nt" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -774,9 +667,7 @@
 "ny" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/almayer/comp_closed,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "nz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -788,17 +679,13 @@
 /area/desert_dam/building/bar/bar)
 "nB" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "nC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "nD" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
@@ -814,9 +701,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "oc" = (
 /obj/structure/surface/table/reinforced,
@@ -829,15 +714,11 @@
 /area/desert_dam/building/bar/bar)
 "oo" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "oy" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached16"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "oD" = (
 /obj/structure/machinery/vending/snack,
@@ -848,9 +729,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "oK" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -859,24 +738,18 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached16"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "oN" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/ammo_casing/bullet,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "pk" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "pq" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -886,10 +759,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "pu" = (
 /obj/structure/machinery/light/double,
-/turf/open/desert/dirt{
-	dir = 5;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "px" = (
 /obj/structure/barricade/sandbags/wired{
@@ -903,24 +773,17 @@
 	dir = 2;
 	name = "\improper Fulcrum Airlock"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "pM" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/item/storage/belt/medical/lifesaver/upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -943,31 +806,21 @@
 	pixel_x = 5;
 	pixel_y = 15
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qe" = (
 /obj/structure/prop/dam/boulder/boulder3,
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qu" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /obj/item/prop/colony/used_flare,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qx" = (
-/turf/open/desert/dirt{
-	dir = 4;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qS" = (
 /turf/open/floor/interior/wood/alt,
@@ -989,31 +842,23 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rm" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "rR" = (
 /obj/structure/prop/dam/boulder/boulder1,
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rX" = (
 /obj/item/prop/colony/folded_bedroll,
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "se" = (
 /obj/item/trash/semki,
-/turf/open/shuttle/dropship,
+/turf/open/shuttle/dropship/can_surgery,
 /area/desert_dam/building/bar/bar)
 "sn" = (
 /obj/structure/barricade/sandbags/wired{
@@ -1025,15 +870,11 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
+/turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "sp" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "su" = (
 /obj/structure/surface/table/reinforced,
@@ -1046,25 +887,19 @@
 "sv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/shovel,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "sE" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/desert_dam/building/bar/bar)
 "sH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "sI" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
@@ -1080,21 +915,15 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tl" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tu" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/desert_dam/building/bar/bar)
 "tA" = (
 /obj/item/tool/wrench,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "tE" = (
 /obj/structure/flora/grass/desert/heavygrass_3,
@@ -1105,9 +934,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tK" = (
 /obj/structure/bed/bedroll,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tM" = (
 /turf/closed/shuttle/ert{
@@ -1149,21 +976,14 @@
 	pixel_y = 7;
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "uF" = (
-/turf/open/desert/dirt{
-	dir = 4;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "uZ" = (
 /obj/item/roller,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "vk" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
@@ -1178,18 +998,12 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "vn" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vq" = (
 /obj/structure/sink,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vy" = (
 /obj/item/prop/colony/used_flare,
@@ -1210,16 +1024,11 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wj" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "wm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1230,9 +1039,7 @@
 /area/desert_dam/building/bar/bar)
 "wp" = (
 /obj/structure/flora/grass/desert/heavygrass_10,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wq" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
@@ -1257,9 +1064,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wy" = (
 /obj/item/trash/candy,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar_restroom)
 "wE" = (
 /obj/structure/girder,
@@ -1271,14 +1076,10 @@
 	},
 /obj/structure/bed/bedroll,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wJ" = (
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wO" = (
 /obj/structure/barricade/sandbags/wired{
@@ -1299,9 +1100,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S-corner"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "xg" = (
 /obj/structure/prop/dam/boulder/boulder1,
@@ -1312,9 +1111,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xm" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -1352,16 +1149,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xG" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "xN" = (
 /turf/closed/shuttle/ert{
@@ -1372,10 +1162,7 @@
 /area/desert_dam/building/bar/bar)
 "xP" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xT" = (
 /turf/template_noop,
@@ -1395,9 +1182,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "yf" = (
 /obj/effect/decal/warning_stripes{
@@ -1408,25 +1193,18 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "yk" = (
 /obj/structure/prop/dam/large_boulder/boulder2,
-/turf/open/desert/dirt{
-	dir = 6;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ym" = (
 /obj/item/stack/sandbags/large_stack,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "yo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "ys" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -1452,7 +1230,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship,
+/turf/open/shuttle/dropship/can_surgery,
 /area/desert_dam/building/bar/bar)
 "yG" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1467,9 +1245,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "zl" = (
 /obj/structure/disposalpipe/segment{
@@ -1485,10 +1261,7 @@
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "zC" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -1504,21 +1277,13 @@
 "zD" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "zM" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "zO" = (
-/turf/open/desert/dirt{
-	dir = 10;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "zS" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
@@ -1536,18 +1301,13 @@
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ae" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Ah" = (
 /obj/structure/barricade/wooden{
@@ -1577,10 +1337,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
-/turf/open/desert/dirt{
-	dir = 6;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "AT" = (
 /turf/closed/shuttle/ert{
@@ -1596,16 +1353,12 @@
 /obj/structure/machinery/light/double{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/desert_dam/building/bar/bar)
 "Bu" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Bx" = (
 /obj/structure/surface/table/almayer,
@@ -1624,9 +1377,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "BB" = (
 /turf/closed/shuttle/ert{
@@ -1643,17 +1394,12 @@
 /obj/item/reagent_container/food/drinks/flask/canteen{
 	desc = "You take a sip from your trusty UPP canteen..."
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "BM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "BP" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1674,10 +1420,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/backroom)
 "Cc" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1689,16 +1432,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ce" = (
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ch" = (
-/turf/open/desert/dirt{
-	dir = 6;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Cm" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -1714,18 +1451,14 @@
 /area/desert_dam/building/bar/bar)
 "Cn" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Cx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "CA" = (
 /turf/closed/shuttle/ert{
@@ -1742,9 +1475,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "CH" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar_restroom)
 "CI" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1754,9 +1485,7 @@
 	pixel_y = 13
 	},
 /obj/item/clothing/mask/cigarette/cigar,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "CL" = (
 /turf/closed/shuttle/ert{
@@ -1769,9 +1498,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Db" = (
 /obj/structure/girder,
@@ -1785,9 +1512,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Di" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Dn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1798,9 +1523,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "Dt" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar_restroom)
 "Du" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1812,9 +1535,7 @@
 "DB" = (
 /obj/structure/bed/bedroll,
 /obj/item/trash/cheesie,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/desert_dam/building/bar/bar)
 "DD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1825,10 +1546,7 @@
 /area/desert_dam/building/bar/bar)
 "DE" = (
 /obj/structure/machinery/light,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "DO" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -1837,9 +1555,7 @@
 "DR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "DZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1860,10 +1576,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Eg" = (
-/turf/open/desert/dirt{
-	dir = 5;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ek" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1876,33 +1589,24 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached19"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Er" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "Ev" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Ex" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/desert/dirt{
-	dir = 5;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "EH" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "EO" = (
 /turf/closed/shuttle/ert{
@@ -1927,15 +1631,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Fh" = (
 /obj/item/storage/belt/utility,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Fl" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -1959,10 +1659,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/desert/dirt{
-	dir = 4;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "FF" = (
 /obj/structure/disposalpipe/segment,
@@ -1972,9 +1669,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "FI" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached15"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Gc" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1984,9 +1679,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Gd" = (
 /obj/effect/decal/warning_stripes{
@@ -2002,28 +1695,21 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "GP" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "GY" = (
 /obj/item/trash/used_stasis_bag,
 /obj/effect/landmark/survivor_spawner/squad_leader,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "GZ" = (
 /obj/item/stack/barbed_wire/small_stack,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Hb" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -2033,10 +1719,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Hl" = (
-/turf/open/desert/dirt{
-	dir = 1;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Hq" = (
 /obj/structure/barricade/sandbags/wired{
@@ -2049,9 +1732,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "HH" = (
 /obj/effect/decal/warning_stripes{
@@ -2078,9 +1759,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Iu" = (
 /turf/open/desert/dirt,
@@ -2096,15 +1775,11 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "IU" = (
 /obj/item/tool/shovel,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "IW" = (
 /turf/closed/shuttle/ert{
@@ -2114,28 +1789,19 @@
 	},
 /area/desert_dam/building/bar/bar)
 "Jc" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "Jd" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ji" = (
 /obj/item/trash/candy,
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "Jk" = (
-/turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Js" = (
 /obj/structure/disposalpipe/segment{
@@ -2146,9 +1812,7 @@
 /area/desert_dam/building/bar/bar)
 "Jt" = (
 /obj/item/trash/cheesie,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Jx" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -2198,15 +1862,12 @@
 	dir = 8
 	},
 /obj/item/stack/sandbags,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached13"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Lo" = (
-/obj/effect/landmark/survivor_spawner/upp_medic,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Lu" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2217,9 +1878,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Lw" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "LB" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -2232,50 +1891,31 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LC" = (
 /obj/item/prop/colony/usedbandage,
-/turf/open/desert/dirt{
-	dir = 10;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "LD" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "LF" = (
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/backroom)
 "LM" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached16"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ms" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Mw" = (
 /obj/structure/machinery/blackbox_recorder,
@@ -2288,19 +1928,22 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "MW" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"Ne" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/desert_dam/building/bar/bar)
 "Nh" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
 /obj/effect/decal/sand_overlay/sand1{
@@ -2309,17 +1952,13 @@
 /obj/item/ammo_box/rounds/type71/heap/empty{
 	bullet_amount = 0
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Nj" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "No" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -2327,10 +1966,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Nu" = (
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/desert/dirt{
-	dir = 1;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "NH" = (
 /obj/structure/machinery/light/double{
@@ -2338,9 +1974,7 @@
 	pixel_y = -5
 	},
 /obj/effect/landmark/survivor_spawner/upp_sapper,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "NK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2380,15 +2014,11 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached1"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ow" = (
 /obj/structure/prop/dam/boulder/boulder2,
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OD" = (
 /turf/open/asphalt,
@@ -2401,18 +2031,14 @@
 	dir = 1;
 	pixel_y = -10
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached19"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "OO" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OS" = (
 /obj/structure/barricade/sandbags/wired,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OU" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2435,10 +2061,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "Pw" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "PH" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -2454,23 +2077,17 @@
 	pixel_x = 1;
 	pixel_y = 35
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "PR" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "PS" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "PX" = (
 /obj/structure/flora/grass/desert/heavygrass_5,
@@ -2478,9 +2095,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "PY" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -2489,18 +2104,14 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/obj/item/toy/plush/farwa,
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Qc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/desert_dam/building/bar/bar_restroom)
 "Qk" = (
 /obj/item/ammo_magazine/rifle/type71/heap{
@@ -2522,17 +2133,13 @@
 	density = 0;
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "QI" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "QK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2560,16 +2167,22 @@
 /obj/item/ammo_box/rounds/type71/heap/empty{
 	bullet_amount = 0
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/desert_dam/building/bar/bar)
 "Rl" = (
 /obj/structure/closet/crate/supply,
 /obj/item/ammo_box/magazine/misc/flares,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_box/magazine/misc/flares,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Ro" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
@@ -2578,25 +2191,19 @@
 "Rs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "RU" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached9"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "RW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S-corner"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Sb" = (
 /obj/effect/decal/warning_stripes{
@@ -2607,19 +2214,13 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Sh" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "Sl" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "So" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2645,9 +2246,7 @@
 /area/desert_dam/building/bar/backroom)
 "SG" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "SL" = (
 /obj/item/ammo_magazine/rifle/type71/heap{
@@ -2663,10 +2262,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "SY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2678,9 +2274,7 @@
 /area/desert_dam/building/bar/bar)
 "Ta" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Tc" = (
 /obj/structure/bed/chair/wood/normal{
@@ -2699,26 +2293,20 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "Tl" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached12"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "TH" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/crap_item,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "TO" = (
 /obj/structure/pipes/vents/pump{
@@ -2728,15 +2316,10 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "TR" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "Ug" = (
 /obj/item/ammo_casing/bullet,
@@ -2744,10 +2327,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ui" = (
 /obj/structure/prop/dam/boulder/boulder2,
-/turf/open/desert/dirt{
-	dir = 8;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ul" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2765,14 +2345,10 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Uq" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "UB" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "UK" = (
 /obj/item/ammo_box/rounds/type71/heap/empty{
@@ -2791,9 +2367,7 @@
 	pixel_y = 13
 	},
 /obj/item/clothing/head/helmet/marine/veteran/UPP,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "UQ" = (
 /obj/structure/surface/table/reinforced,
@@ -2802,9 +2376,7 @@
 	pixel_y = 32
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Vc" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -2829,34 +2401,24 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Vt" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner/upp_specialist,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "VA" = (
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "VG" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "VI" = (
 /turf/open/floor/plating,
@@ -2967,9 +2529,7 @@
 	desc = "You take a sip from your trusty UPP canteen...";
 	pixel_y = 4
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Xh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2980,15 +2540,11 @@
 	dir = 6
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Xv" = (
 /obj/structure/prop/dam/boulder/boulder3,
-/turf/open/mars{
-	icon_state = "mars_dirt_5"
-	},
+/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Xw" = (
 /turf/open/floor/interior/wood,
@@ -3021,33 +2577,22 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "XZ" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/desert/dirt{
-	dir = 5;
-	icon_state = "desert_transition_edge1"
-	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Yf" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "Yn" = (
-/turf/open/desert/dirt{
-	dir = 1;
-	icon_state = "desert_transition_corner1"
-	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Yq" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet6-2"
-	},
+/turf/open/floor/carpet6_2/west,
 /area/desert_dam/building/bar/bar)
 "YA" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "YE" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -3090,16 +2635,8 @@
 	},
 /area/desert_dam/building/bar/bar)
 "YZ" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar_restroom)
-"Zn" = (
-/obj/effect/landmark/survivor_spawner/upp_sapper,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
-/area/desert_dam/building/bar/bar)
 "ZA" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -3107,9 +2644,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached4"
-	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ZB" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -3527,14 +3062,14 @@ hm
 CA
 DB
 NH
-Zn
+Cn
 Cn
 tu
 IF
 IF
 IF
 sE
-RW
+Ne
 GZ
 OS
 sv

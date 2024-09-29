@@ -72,7 +72,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
 
 /obj/structure/flora/proc/spread_fire()
-	for(var/D in cardinal) //Spread fire
+	SIGNAL_HANDLER
+	for(var/D in GLOB.cardinals) //Spread fire
 		var/turf/T = get_step(src.loc, D)
 		if(T)
 			for(var/obj/structure/flora/F in T)
@@ -82,6 +83,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 					new /obj/flamer_fire(T, create_cause_data("wildfire"))
 
 /obj/structure/flora/proc/burn_up()
+	SIGNAL_HANDLER
 	new /obj/effect/decal/cleanable/dirt(loc)
 	if(center)
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
@@ -91,7 +93,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
-/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
 	return FALSE
 
@@ -603,11 +605,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "alienplant1"
-	luminosity = 2
-
-/obj/structure/flora/jungle/alienplant1/Destroy()
-	SetLuminosity(0)
-	return ..()
+	light_range = 2
 
 /obj/structure/flora/jungle/planttop1
 	name = "strange tree"
@@ -633,15 +631,15 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"
-	icon_tag = "light_1"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_2
 	icon_state = "light_2"
-	icon_tag = "light_2"
+	icon_tag = "light"
 
 /obj/structure/flora/jungle/vines/light_3
 	icon_state = "light_3"
-	icon_tag = "light_3"
+	icon_tag = "light"
 
 //heavy hide you
 /obj/structure/flora/jungle/vines/heavy
@@ -721,13 +719,13 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)
-		if(istype(I,/obj/item/weapon/claymore/mercsword))
+		if(istype(I,/obj/item/weapon/sword))
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it
 			to_chat(user, SPAN_DANGER("You flail away at the undergrowth, but it's too thick here."))
 		else
-			user.visible_message(SPAN_DANGER("[user] flails away at the  [src] with [I]."),SPAN_DANGER("You flail away at the [src] with [I]."))
+			user.visible_message(SPAN_DANGER("[user] flails away at [src] with [I]."), SPAN_DANGER("You flail away at [src] with [I]."))
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
@@ -760,4 +758,3 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Looks like some of that fruit might be edible."
 	icon_tag = "plant"
 	variations  = 7
-

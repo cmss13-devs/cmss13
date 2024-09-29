@@ -2,7 +2,7 @@
 
 /datum/equipment_preset/dutch
 	name = JOB_DUTCH_RIFLEMAN
-	paygrade = "DTC"
+	paygrades = list(PAY_SHORT_DTC = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_RIFLEMAN
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_DUTCH
@@ -19,10 +19,10 @@
 	human.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names)]"
 		new_human.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_female_dutch)] [pick(GLOB.last_names)]"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(25,35)
@@ -47,7 +47,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/dutch(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_ACCESSORY)
@@ -83,7 +83,7 @@
 
 /datum/equipment_preset/dutch/minigun
 	name = JOB_DUTCH_MINIGUNNER
-	paygrade = "DTCMG"
+	paygrades = list(PAY_SHORT_DTCMG = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_MINIGUNNER
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -116,7 +116,7 @@
 
 /datum/equipment_preset/dutch/flamer
 	name = JOB_DUTCH_FLAMETHROWER
-	paygrade = "DTCF"
+	paygrades = list(PAY_SHORT_DTCF = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_FLAMETHROWER
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -150,7 +150,7 @@
 
 /datum/equipment_preset/dutch/medic
 	name = JOB_DUTCH_MEDIC
-	paygrade = "DTCM"
+	paygrades = list(PAY_SHORT_DTCM = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_MEDIC
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -193,7 +193,7 @@
 
 /datum/equipment_preset/dutch/arnie
 	name = "Dutch's Dozen - Arnold"
-	paygrade = "ARN"
+	paygrades = list(PAY_SHORT_DTCA = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_ARNOLD
 	flags = EQUIPMENT_PRESET_EXTRA
 

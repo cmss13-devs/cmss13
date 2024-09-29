@@ -12,13 +12,13 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-	action_start_message = "You become one with the resin. You feel the urge to run!"
-	action_end_message = "You feel less in tune with the resin."
+	action_start_message = "We become one with the resin. We feel the urge to run!"
+	action_end_message = "We feel less in tune with the resin."
 	plasma_use_per_tick = 30
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
 	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
+	if(xeno && !xeno.is_mob_incapacitated() && xeno.body_position == STANDING_UP && !xeno.buckled) // do we rly need standing up?
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_speed/give_to(mob/living/living_mob)

@@ -2,7 +2,7 @@
 	name = "engineering upgrade kit"
 	desc = "A kit used to upgrade the defenses of an engineer's sentry. Back in 1980 when the machines tried to break free, it was a single android who laid them low. Now their technology is used widely on the rim."
 
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "upgradekit"
 
 /obj/item/engi_upgrade_kit/Initialize(mapload, ...)
@@ -35,7 +35,7 @@
 		return
 
 	if((user.get_active_hand()) != src)
-		to_chat(user, SPAN_WARNING("You must be holding the [src] to upgrade \the [D]!"))
+		to_chat(user, SPAN_WARNING("You must be holding [src] to upgrade [D]!"))
 		return
 
 	var/type_to_change_to = D.upgrade_string_to_type(chosen_upgrade)

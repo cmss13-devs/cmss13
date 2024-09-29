@@ -21,7 +21,7 @@
 		var/char = copytext(hex, i, i + 1)
 		switch(char)
 			if("0")
-				//Apparently, switch works with empty statements, yay! If that doesn't work, blame me, though. -- Urist
+				pass()
 			if("9", "8", "7", "6", "5", "4", "3", "2", "1")
 				num += text2num(char) * 16 ** power
 			if("a", "A")
@@ -60,7 +60,7 @@
 	var/power = null
 	power = i - 1
 	while(power >= 0)
-		var/val = round(num / 16 ** power)
+		var/val = floor(num / 16 ** power)
 		num -= val * 16 ** power
 		switch(val)
 			if(9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
@@ -77,7 +77,6 @@
 				hex += "E"
 			if(15.0)
 				hex += "F"
-			else
 		power--
 	while(length(hex) < placeholder)
 		hex = text("0[]", hex)
@@ -165,8 +164,6 @@
 			return 6
 		if("SOUTHWEST")
 			return 10
-		else
-	return
 
 //Converts an angle (degrees) into an ss13 direction
 /proc/angle2dir(degree)

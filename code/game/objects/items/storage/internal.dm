@@ -25,10 +25,10 @@
 //Items that use internal storage have the option of calling this to emulate default storage MouseDrop behaviour.
 //Returns 1 if the master item's parent's MouseDrop() should be called, 0 otherwise. It's strange, but no other way of
 //Doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_mousedrop(mob/user as mob, obj/over_object as obj)
+/obj/item/storage/internal/proc/handle_mousedrop(mob/living/carbon/human/user, obj/over_object as obj)
 	if(ishuman(user))
 
-		if(user.lying) //Can't use your inventory when lying
+		if(user.body_position == LYING_DOWN) //Can't use your inventory when lying //what about stuns? don't argue
 			return
 
 		if(QDELETED(master_object))
@@ -61,10 +61,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_r_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 				if("l_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
@@ -73,10 +76,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_l_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 			master_item.add_fingerprint(user)
 			return FALSE
 	return FALSE
@@ -84,8 +90,8 @@
 //Items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob, mods)
-	if(user.lying)
+/obj/item/storage/internal/proc/handle_attack_hand(mob/living/user as mob, mods)
+	if(user.body_position == LYING_DOWN) // what about stuns? huh?
 		return FALSE
 
 	if(ishuman(user))
@@ -173,7 +179,7 @@
 	var/list/garb_items
 	var/slots_reserved_for_garb
 
-/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return

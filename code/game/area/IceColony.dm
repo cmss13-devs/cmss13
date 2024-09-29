@@ -28,7 +28,6 @@
 	icon_state = "cliff_blocked"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = 1
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
@@ -65,6 +64,7 @@
 	name = "\improper Emergency Landing Pad"
 	icon_state = "landing_pad"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 
 //Everything around the physical landing pad
@@ -79,6 +79,7 @@
 	name = "\improper Aerodrome Container Yard"
 	icon_state = "container_yard"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 //
 // Valleys

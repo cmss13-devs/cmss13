@@ -3,7 +3,7 @@
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(obj/item/W)
-	if(!is_admin_level(W.z))
+	if(!should_block_game_interaction(W))
 		GLOB.loose_yautja_gear |= W
 
 /proc/remove_from_missing_pred_gear(obj/item/W)
@@ -61,41 +61,39 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
-	if(elder_restricted)
-		switch(armor_number)
-			if(1341)
-				name = "\improper 'Armor of the Dragon'"
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
-			if(7128)
-				name = "\improper 'Armor of the Swamp Horror'"
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
-			if(9867)
-				name = "\improper 'Armor of the Enforcer'"
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
-			if(4879)
-				name = "\improper 'Armor of the Ambivalent Collector'"
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
-			else
-				name = "clan elder's armor"
-				icon_state = "halfarmor_elder"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder")
-	else
-		if(armor_number > 7)
-			armor_number = 1
-		if(armor_number) //Don't change full armor number
-			icon_state = "halfarmor[armor_number]_[armor_material]"
-			LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
-
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
+
+	if(legacy != "None")
+		switch(legacy)
+			if("dragon")
+				icon_state = "halfarmor_elder_tr"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
+				return
+			if("swamp")
+				icon_state = "halfarmor_elder_joshuu"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
+				return
+			if("enforcer")
+				icon_state = "halfarmor_elder_feweh"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
+				return
+			if("collector")
+				icon_state = "halfarmor_elder_n"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
+				return
+
+	if(armor_number > 7)
+		armor_number = 1
+	if(armor_number) //Don't change full armor number
+		icon_state = "halfarmor[armor_number]_[armor_material]"
+		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
+
+
 
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
@@ -125,7 +123,7 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	slowdown = 1
+	slowdown = 0.75
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
@@ -219,7 +217,7 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-	items_allowed = list(
+	allowed_items_typecache = list(
 		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 	)
@@ -261,10 +259,9 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/shoes/yautja/hunter/knife/New()
-	..()
-	stored_item = new /obj/item/weapon/yautja/knife(src)
-	update_icon()
+/obj/item/clothing/shoes/yautja/hunter/knife
+	spawn_item_type = /obj/item/weapon/yautja/knife
+
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
@@ -280,12 +277,11 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -298,7 +294,7 @@
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -396,7 +392,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
-	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -432,10 +428,12 @@
 
 	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Display fancy animation for you and the person you might be pulling (Legacy)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		var/mob/living/M = user.pulling
 		if(istype(M)) // Pulled person
+			SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 
@@ -694,6 +692,8 @@
 	var/datum/effects/tethering/tether_effect
 	var/tether_range = 5
 	var/mob/trapped_mob
+	var/duration = 30 SECONDS
+	var/disarm_timer
 	layer = LOWER_ITEM_LAYER
 	flags_item = ITEM_PREDATOR
 
@@ -762,11 +762,12 @@
 	if(ishuman(C))
 		C.emote("pain")
 	if(isxeno(C))
-		var/mob/living/carbon/xenomorph/X = C
+		var/mob/living/carbon/xenomorph/xeno = C
 		C.emote("needhelp")
-		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
-		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
+		xeno.AddComponent(/datum/component/status_effect/interference, 100) // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
+		RegisterSignal(xeno, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
+	disarm_timer = addtimer(CALLBACK(src, PROC_REF(disarm)), duration, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
@@ -800,6 +801,8 @@
 
 /obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
+	if(disarm_timer)
+		deltimer(disarm_timer)
 	armed = FALSE
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"
@@ -917,6 +920,7 @@
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."
 	icon_state = "medicomp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
 	w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_DEFAULT
@@ -945,7 +949,7 @@
 	new /obj/item/tool/surgery/healing_gel/(src)
 
 /obj/item/storage/medicomp/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "medicomp_open"
 	else
 		icon_state = "medicomp"

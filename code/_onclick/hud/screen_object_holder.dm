@@ -24,14 +24,14 @@
 	ASSERT(istype(screen_object))
 
 	screen_objects += screen_object
-	client?.screen += screen_object
+	client?.add_to_screen(screen_object)
 
 /// Gives the screen object to the client, but does not qdel it when it's cleared
 /datum/screen_object_holder/proc/give_protected_screen_object(atom/screen_object)
 	ASSERT(istype(screen_object))
 
 	protected_screen_objects += screen_object
-	client?.screen += screen_object
+	client?.add_to_screen(screen_object)
 
 /datum/screen_object_holder/proc/remove_screen_object(atom/screen_object)
 	ASSERT(istype(screen_object))
@@ -39,11 +39,11 @@
 
 	screen_objects -= screen_object
 	protected_screen_objects -= screen_object
-	client?.screen -= screen_object
+	client?.remove_from_screen(screen_object)
 
 /datum/screen_object_holder/proc/clear()
-	client?.screen -= screen_objects
-	client?.screen -= protected_screen_objects
+	client?.remove_from_screen(screen_objects)
+	client?.remove_from_screen(protected_screen_objects)
 
 	QDEL_LIST(screen_objects)
 	protected_screen_objects.Cut()

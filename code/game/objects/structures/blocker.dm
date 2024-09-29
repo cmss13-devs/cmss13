@@ -25,7 +25,10 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot go this way."))
+	var/msg = desc
+	if(!msg)
+		msg = "You cannot go this way."
+	to_chat(AM, SPAN_WARNING(msg))
 
 /obj/structure/blocker/invisible_wall/New()
 	..()
@@ -34,10 +37,6 @@
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
-
-/obj/structure/blocker/invisible_wall/water/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot wade out any further."))
-
 
 /obj/structure/blocker/fog
 	name = "dense fog"
@@ -78,7 +77,7 @@
 	var/list/types = list()
 	var/visible = FALSE
 
-/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/projectile/P)
 	if(!is_whitelist)
 		return FALSE
 	. = ..()
@@ -106,11 +105,33 @@
 /obj/structure/blocker/forcefield/vehicles
 	types = list(/obj/vehicle/)
 
+
+/obj/structure/blocker/forcefield/vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
+
 /obj/structure/blocker/forcefield/multitile_vehicles
 	types = list(/obj/vehicle/multitile/)
+
+
+/obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
 
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)
 	icon_state = "purple_line"
 
 	visible = TRUE
+
+/obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
+	return TRUE
+
+// for fuel pump since it's a large sprite.
+/obj/structure/blocker/fuelpump
+	name = "\improper Fuel Pump"
+	desc = "It is a machine that pumps fuel around the ship."
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

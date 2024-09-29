@@ -74,7 +74,14 @@ Additional game mode variables.
 	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
+	var/latejoin_larva_drop_early = LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	/// Amount of latejoin_tally already awarded as larvas
+	var/latejoin_larva_used = 0
+	/// Multiplier to the amount of marine gear, current value as calculated with modifiers
+	var/gear_scale = 1
+	/// Multiplier to the amount of marine gear, maximum reached value for
+	var/gear_scale_max = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -100,7 +107,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_USCM
+	return GLOB.ROLES_USCM
 
 //===================================================\\
 
@@ -109,16 +116,16 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
-	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/sq in RoleAuthority.squads)
+	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
+	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
+	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
+	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
-	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+	for(var/i in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
 		if(J.scaled)
 			J.set_spawn_positions(marine_starting_num)
 
@@ -149,7 +156,7 @@ Additional game mode variables.
 		else
 			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
 
-		if(RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
+		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
 			if(!player.client.prefs)
 				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
 
@@ -169,43 +176,46 @@ Additional game mode variables.
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
-#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+/datum/game_mode/proc/calculate_pred_max()
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
 
-/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
-
+/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
-		return
+	if(!pred_job)
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
 
-	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
-		return
+	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		return FALSE
 
 	if(!(flags_round_type & MODE_PREDATOR))
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
-		return
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
+		return FALSE
 
 	if(pred_candidate.ckey in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
-		return
+		return FALSE
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
-		return
-	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
-		var/pred_max = calculate_pred_max
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_job.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(pred_job.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
+		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
-			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
-			return
+			if(show_warning)
+				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+			return FALSE
 
-	return 1
-
-#undef calculate_pred_max
+	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
@@ -234,13 +244,13 @@ Additional game mode variables.
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
 	if(!J)
 		qdel(new_predator)
 		return
 
-	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	return new_predator
 
@@ -253,10 +263,10 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), force_xenos = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
+	if(length(possible_xenomorphs) < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
@@ -303,14 +313,14 @@ Additional game mode variables.
 
 			xenomorphs[hive] += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
-			remaining_slots = round((xeno_starting_num - i))
+			remaining_slots = floor((xeno_starting_num - i))
 			break
 
 		current_index++
 
 
 	if(remaining_slots)
-		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
+		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
 		for(var/hivenumb in hives)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
 			hive.stored_larva = larva_per_hive
@@ -319,11 +329,11 @@ Additional game mode variables.
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives))
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives) && !bypass_checks)
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
-	return 1
+	return TRUE
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
@@ -344,7 +354,7 @@ Additional game mode variables.
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)
-		if(is_admin_level(cur_xeno.z) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		if(should_block_game_interaction(cur_xeno) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 			continue //xenos on admin z level don't count
 		if(!istype(cur_xeno))
 			continue
@@ -359,44 +369,69 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
-			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "any buried larva"
-				LAZYADD(available_xenos["any buried larva"], hive)
-			else
-				var/larva_option = "buried larva ([hive])"
-				available_xenos += larva_option
-				available_xenos[larva_option] = list(hive)
+		if(hive.hardcore)
+			continue
+		if(!hive.stored_larva)
+			continue
+		// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
+		// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+		if(hive.hive_location && GLOB.xeno_queue_candidate_count > 0)
+			continue
+		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
+			continue
 
-	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+			available_xenos |= "any buried larva"
+			LAZYADD(available_xenos["any buried larva"], hive)
+		else
+			var/larva_option = "buried larva ([hive])"
+			available_xenos += larva_option
+			available_xenos[larva_option] = list(hive)
+
+	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
+		if(!xeno_candidate.client?.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
+				You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in \
+				Preferences -> Toggle SpecialRole Candidacy."))
 			return FALSE
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
 
-		// Give the player a cached message of their queue status if they are an observer
+		if(!isobserver(xeno_candidate))
+			return FALSE
 		var/mob/dead/observer/candidate_observer = xeno_candidate
-		if(istype(candidate_observer))
-			if(candidate_observer.larva_queue_cached_message)
-				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
-				return FALSE
 
-			// No cache, lets check now then
-			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
-			if(candidate_observer.larva_queue_cached_message)
-				var/datum/hive_status/cur_hive
-				for(var/hive_num in GLOB.hive_datum)
-					cur_hive = GLOB.hive_datum[hive_num]
-					for(var/mob_name in cur_hive.banished_ckeys)
-						if(cur_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-							candidate_observer.larva_queue_cached_message += "\n" + SPAN_WARNING("NOTE: You are banished from the [cur_hive] and you may not rejoin unless the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from.")
-							break
-				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
-				return FALSE
+		// If an observing mod wants to join as a xeno, disable their larva protection so that they can enter the queue.
+		if(check_client_rights(candidate_observer.client, R_MOD, FALSE))
+			candidate_observer.admin_larva_protection = FALSE
 
-			// We aren't in queue yet, lets teach them about the queue then
-			candidate_observer.larva_queue_cached_message = SPAN_XENONOTICE("You are currently awaiting assignment in the larva queue. The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome.")
-			to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
+		// Give the player a cached message of their queue status if they are an observer
+		if(candidate_observer.larva_queue_cached_message)
+			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
+			return FALSE
+
+		// No cache, lets check now then
+		message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
+
+		// If we aren't in the queue yet, let's teach them about the queue
+		if(!candidate_observer.larva_queue_cached_message)
+			candidate_observer.larva_queue_cached_message = "You are currently awaiting assignment in the larva queue. \
+				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+				you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
+				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
+				Note: Playing as a facehugger or in the thunderdome will not alter your time of death. \
+				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
+			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
+			return FALSE
+
+		var/datum/hive_status/cur_hive
+		for(var/hive_num in GLOB.hive_datum)
+			cur_hive = GLOB.hive_datum[hive_num]
+			for(var/mob_name in cur_hive.banished_ckeys)
+				if(cur_hive.banished_ckeys[mob_name] == candidate_observer.ckey)
+					candidate_observer.larva_queue_cached_message += "\nNOTE: You are banished from the [cur_hive] and you may not rejoin unless \
+						the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from."
+					break
+		to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -419,7 +454,7 @@ Additional game mode variables.
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
-						return
+						return FALSE
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
@@ -439,11 +474,12 @@ Additional game mode variables.
 			return FALSE
 		new_xeno = userInput
 
-		if(!xeno_candidate)
-			return FALSE
-
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
+			return FALSE
+
+		if(new_xeno.health <= 0)
+			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
 			return FALSE
 
 		if(!xeno_bypass_timer)
@@ -471,14 +507,14 @@ Additional game mode variables.
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/noob = xeno_candidate
+			noob.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
-				return
+				return FALSE
 		if(transfer_xeno(xeno_candidate, new_xeno))
-			return 1
+			return TRUE
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
@@ -488,16 +524,16 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(length(hive.totalXenos) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
 
-	if(active_hives.len <= 0)
+	if(length(active_hives) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
-	if(active_hives.len > 1)
+	if(length(active_hives) > 1)
 		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
@@ -522,7 +558,7 @@ Additional game mode variables.
 				var/descriptive_name = "[morpher.name] in [area_name]"
 				available_facehugger_sources[descriptive_name] = morpher
 
-	if(available_facehugger_sources.len <= 0)
+	if(length(available_facehugger_sources) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try again later!"))
 		return FALSE
 
@@ -554,54 +590,80 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(length(hive.totalXenos) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
 
-	if(active_hives.len <= 0)
+	if(length(active_hives) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
-	if(active_hives.len > 1)
+	if(length(active_hives) > 1)
 		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
-			return
+			return FALSE
 		hive = GLOB.hive_datum[active_hives[hive_picked]]
 	else
 		hive = GLOB.hive_datum[last_active_hive]
 
-	if(!hive.hive_location)
-		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
-		return
-
 	for(var/mob_name in hive.banished_ckeys)
 		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
-			return
+			return FALSE
 
-	hive.hive_location.spawn_lesser_drone(xeno_candidate)
+	var/list/selection_list = list()
+	var/list/selection_list_structure = list()
+
+	if(hive.hive_location?.lesser_drone_spawns >= 1)
+		selection_list += "hive core"
+		selection_list_structure += hive.hive_location
+
+	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
+		if(cycled_pylon.lesser_drone_spawns >= 1)
+			var/pylon_number = 1
+			var/pylon_name = "[cycled_pylon.name] at [get_area(cycled_pylon)]"
+			//For renaming the pylon if we have duplicates
+			var/pylon_selection_name = pylon_name
+			while(pylon_selection_name in selection_list)
+				pylon_selection_name = "[pylon_name] ([pylon_number])"
+				pylon_number ++
+			selection_list += pylon_selection_name
+			selection_list_structure += cycled_pylon
+
+	if(!length(selection_list))
+		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have enough power for a lesser drone at any hive core or pylon!"))
+		return FALSE
+
+	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
+	if(!prompt)
+		return FALSE
+
+	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
+
+	selected_structure.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE
 
 /datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
+
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))
 		xeno_candidate_mind = xeno_candidate
 	else if(ismob(xeno_candidate))
-		var/mob/M = xeno_candidate
-		if(M.mind)
-			xeno_candidate_mind = M.mind
+		var/mob/xeno_candidate_mob = xeno_candidate
+		if(xeno_candidate_mob.mind)
+			xeno_candidate_mind = xeno_candidate_mob.mind
 		else
-			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
+			xeno_candidate_mind = new /datum/mind(xeno_candidate_mob.key, xeno_candidate_mob.ckey)
 			xeno_candidate_mind.active = TRUE
 			xeno_candidate_mind.current = new_xeno
 	else if(isclient(xeno_candidate))
-		var/client/C = xeno_candidate
-		xeno_candidate_mind = new /datum/mind(C.key, C.ckey)
+		var/client/xeno_candidate_client = xeno_candidate
+		xeno_candidate_mind = new /datum/mind(xeno_candidate_client.key, xeno_candidate_client.ckey)
 		xeno_candidate_mind.active = TRUE
 		xeno_candidate_mind.current = new_xeno
 	else
@@ -618,7 +680,7 @@ Additional game mode variables.
 	// Let the round recorder know that the key has changed
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
-		new_xeno.client.change_view(world_view_size)
+		new_xeno.client.change_view(GLOB.world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord
@@ -629,9 +691,9 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
-
+	var/datum/mind/ghost_mind = player.mind
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -652,6 +714,9 @@ Additional game mode variables.
 		spawn_list_map[spawn_name] = T
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	if(hive.living_xeno_queen)
+		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
 		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
@@ -691,8 +756,6 @@ Additional game mode variables.
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
-	// Xeno ressource collection
-	//new_queen.crystal_stored = XENO_STARTING_CRYSTAL
 	new_queen.update_icons()
 
 //===================================================\\
@@ -763,7 +826,7 @@ Additional game mode variables.
 	H.name = H.get_visible_name()
 
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
-		if(spawner.intro_text && spawner.intro_text.len)
+		if(LAZYLEN(spawner.intro_text))
 			spawn(4)
 				for(var/line in spawner.intro_text)
 					to_chat(H, line)
@@ -830,7 +893,7 @@ Additional game mode variables.
 	var/story //The actual story they will get to read.
 	var/random_name
 	var/datum/mind/survivor
-	while(current_survivors.len)
+	while(length(current_survivors))
 		survivor = pick(current_survivors)
 		if(!istype(survivor))
 			current_survivors -= survivor
@@ -842,8 +905,8 @@ Additional game mode variables.
 			current_survivors -= survivor
 			continue
 
-		if(current_survivors.len > 1) //If we have another survivor to pick from.
-			if(survivor_multi_story.len) //Unlikely.
+		if(length(current_survivors) > 1) //If we have another survivor to pick from.
+			if(length(survivor_multi_story)) //Unlikely.
 				var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
 				current_survivors -= another_survivor
 				if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
@@ -858,7 +921,7 @@ Additional game mode variables.
 					to_chat(another_survivor.current, temp_story)
 					another_survivor.memory += temp_story
 		else
-			if(survivor_story.len) //Shouldn't happen, but technically possible.
+			if(length(survivor_story)) //Shouldn't happen, but technically possible.
 				story = pick(survivor_story)
 				survivor_story -= story
 				spawn(6)
@@ -877,23 +940,49 @@ Additional game mode variables.
 
 //We do NOT want to initilialize the gear before everyone is properly spawned in
 /datum/game_mode/proc/initialize_post_marine_gear_list()
-	var/scale = get_scaling_value()
+	init_gear_scale()
 
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list_and_boxes(scale)
+		CVS.populate_product_list_and_boxes(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	supply_controller.points = round(supply_controller.points * scale)
+	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 
-/datum/game_mode/proc/get_scaling_value()
+///Returns a multiplier to the amount of gear that is to be distributed roundstart, stored in [/datum/game_mode/var/gear_scale]
+/datum/game_mode/proc/init_gear_scale()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
-	//This might count players who ready up but get kicked back to the lobby
-	var/marine_pop_size = length(GLOB.alive_human_list)
+	var/marine_pop_size = 0
+	var/uscm_personnel_count = 0
+	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
+		if(human.faction == FACTION_MARINE)
+			uscm_personnel_count++
+			var/datum/job/job = GET_MAPPED_ROLE(human.job)
+			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
-	return max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
+	gear_scale_max = gear_scale
+	log_debug("SUPPLY: Game start detected [marine_pop_size] weighted marines (out of [uscm_personnel_count]/[length(GLOB.alive_human_list)] USCM humans), resulting in gear_scale = [gear_scale]")
+	return gear_scale
+
+///Updates the [/datum/game_mode/var/gear_scale] multiplier based on joining and cryoing marines
+/datum/game_mode/proc/update_gear_scale(delta)
+	// Magic inverse function that guarantees marines still get good supplies for latejoins within first ~30 minutes but stalls starting 2 hours or so
+	gear_scale += delta * (0.25 + 0.75 / (1 + ROUND_TIME / 20000)) / MARINE_GEAR_SCALING_NORMAL
+	var/gear_delta = gear_scale - gear_scale_max
+	if(gear_delta > 0)
+		gear_scale_max = gear_scale
+		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
+			vendor.update_dynamic_stock(gear_scale_max)
+		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
+
+/// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
+/datum/game_mode/proc/latejoin_update(role, delta = 1)
+	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
+	latejoin_tally += weight * delta
+	update_gear_scale(weight * delta)
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
@@ -927,32 +1016,36 @@ Additional game mode variables.
 	if(!joe_candidate.client)
 		return
 
-	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!joe_job)
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
+	if(!joe_job.check_whitelist_status(joe_candidate))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if(joe_candidate.ckey in joes)
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
-		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
+		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
+		return FALSE
+
+	var/deathtime = world.time - joe_candidate.timeofdeath
+	if((deathtime < JOE_JOIN_DEAD_TIME && (joe_candidate.ckey in joes)) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> before rejoining as a Working Joe!"))
+		return FALSE
 
 	// council doesn't count towards this conditional.
-	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+	if(joe_job.get_whitelist_status(joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
-		if(joe_job.current_positions >= joe_max)
+		if((joe_job.current_positions >= joe_max) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
-	if(!enter_allowed)
+	if(!GLOB.enter_allowed && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
 		return
@@ -969,17 +1062,17 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_joe")
 		return
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_WORKING_JOE]))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
-	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!joe_job)
 		qdel(new_joe)
 		return
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
-	RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	GLOB.data_core.manifest_inject(new_joe)
 	SSticker.minds += new_joe.mind
 	return new_joe

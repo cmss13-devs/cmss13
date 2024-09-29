@@ -113,7 +113,7 @@
 		w_class = SIZE_MEDIUM
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		to_chat(user, SPAN_NOTICE("The [src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 		force = initial(force)
 		edge = 0
 		sharp = 0
@@ -139,7 +139,7 @@
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
 	item_state = "rods"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK
 	w_class = SIZE_MEDIUM
@@ -167,7 +167,7 @@
 	update_icon(user)
 
 
-/obj/item/weapon/katana/sharp
+/obj/item/weapon/sword/katana/sharp
 	name = "absurdly sharp katana"
 	desc = "<p>That's it. I'm sick of all this \"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
 <p>I should know what I'm talking about. I myself commissioned a genuine katana in Japan for 2,400,000 Yen (that's about $20,000) and have been practicing with it for almost 2 years now. I can even cut slabs of solid steel with my katana.</p>\
@@ -175,7 +175,7 @@
 <p>Katanas are thrice as sharp as European swords and thrice as hard for that matter too. Anything a longsword can cut through, a katana can cut through better. I'm pretty sure a katana could easily bisect a knight wearing full plate with a simple vertical slash.</p>\
 <p>Ever wonder why medieval Europe never bothered conquering Japan? That's right, they were too scared to fight the disciplined Samurai and their katanas of destruction. Even in World War II, American soldiers targeted the men with the katanas first because their killing power was feared and respected.</p>"
 	icon_state = "katana"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 4444
 	throwforce = MELEE_FORCE_VERY_STRONG
 	sharp = IS_SHARP_ITEM_BIG
@@ -190,7 +190,7 @@
 
 	attack_verb = list("sliced", "diced", "cut")
 
-/obj/item/weapon/katana/sharp/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/sword/katana/sharp/attack(mob/living/M, mob/living/user)
 
 	if(flags_item & NOBLUDGEON)
 		return
@@ -219,11 +219,11 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
+		power = floor(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense
-	if( ( istype(M.get_active_hand(), /obj/item/weapon/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/katana) ) && M != user )
+	if( ( istype(M.get_active_hand(), /obj/item/weapon/sword/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/sword/katana) ) && M != user )
 
 		if(prob(50))
 			user.visible_message(SPAN_DANGER("[M] and [user] cross blades!"))
@@ -248,7 +248,7 @@
 			showname = "."
 
 		var/used_verb = "attacked"
-		if(attack_verb && attack_verb.len)
+		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
 		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),\
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
@@ -260,7 +260,7 @@
 		M.apply_effect(kill_delay/15, STUN)
 
 
-	for (var/mob/O in hearers(world_view_size, M))
+	for (var/mob/O in hearers(GLOB.world_view_size, M))
 		O << sound('sound/effects/Heart Beat.ogg', repeat = 1, wait = 0, volume = 100, channel = 2) //play on same channel as ambience
 		spawn(kill_delay)
 			O << sound(, , , , channel = 2) //cut sound

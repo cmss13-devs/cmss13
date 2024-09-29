@@ -96,8 +96,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	set category = "Debug.Controllers"
 	set name = "Debug Role Authority"
 
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		to_chat(usr, "RoleAuthority not found!")
 		return
-	debug_variables(RoleAuthority)
+	debug_variables(GLOB.RoleAuthority)
 	message_admins("Admin [key_name_admin(usr)] is debugging the Role Authority.")

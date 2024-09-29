@@ -26,12 +26,14 @@
 #define RADIO_CHANNEL_HEADSET "headset"
 #define RADIO_CHANNEL_ENGI "Engi"
 #define RADIO_CHANNEL_HIGHCOM "HighCom"
+#define RADIO_CHANNEL_PROVOST "Provost"
 #define RADIO_CHANNEL_INTERCOM "intercom"
 #define RADIO_CHANNEL_INTEL "Intel"
 #define RADIO_CHANNEL_JTAC "JTAC"
 #define RADIO_CHANNEL_MEDSCI "MedSci"
 #define RADIO_CHANNEL_MP "MP"
 #define RADIO_CHANNEL_NORMANDY "Normandy"
+#define RADIO_CHANNEL_SAIPAN "Saipan"
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SENTRY "Sentry Network"
 #define RADIO_CHANNEL_SPECIAL "special"
@@ -60,9 +62,15 @@
 #define RADIO_CHANNEL_PMC_CCT "PMC CCT"
 #define RADIO_CHANNEL_WY_WO "SpecOps"
 
+//Listening Devices
+#define RADIO_CHANNEL_BUG_A "Listening Device A"
+#define RADIO_CHANNEL_BUG_B "Listening Device B"
+
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
 #define RADIO_CHANNEL_CMB "CMB"
+#define RADIO_CHANNEL_ROYAL_MARINE "Royal Marine"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
+

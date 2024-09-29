@@ -12,22 +12,28 @@
 
 
 /mob/living/carbon/human/click(atom/A, list/mods)
-	if(mods["shift"] && !mods["middle"])
-		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			selected_ability.use_ability(A)
-			return TRUE
+	var/use_ability = FALSE
+	switch(get_ability_mouse_key())
+		if(XENO_ABILITY_CLICK_SHIFT)
+			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
+				use_ability = TRUE
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			if(mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])
+				use_ability = TRUE
+		if(XENO_ABILITY_CLICK_RIGHT)
+			if(mods[RIGHT_CLICK])
+				use_ability = TRUE
 
-	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return TRUE
+	if(selected_ability && use_ability)
+		selected_ability.use_ability(A)
+		return TRUE
 
 	if(interactee)
 		var/result = interactee.handle_click(src, A, mods)
 		if(result != HANDLE_CLICK_PASS_THRU)
 			return result
 
-	if (mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
+	if (mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK] && ishuman(A) && get_dist(src, A) <= 1)
 		var/mob/living/carbon/human/H = A
 		H.receive_from(src)
 		return TRUE
@@ -38,7 +44,7 @@
 	if (A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
-	if (last_chew + 75 > world.time)
+	if (last_chew + 1 > world.time)
 		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
 		return
 
@@ -64,7 +70,7 @@
 
 /mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
-	if(lying) //No attacks while laying down
+	if(body_position == LYING_DOWN) //No attacks while laying down
 		return 0
 
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
@@ -88,7 +94,7 @@
 /atom/proc/attack_hand(mob/user)
 	return
 
-/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
+/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)
 	if(user != src)
 		return . = ..()
 
@@ -99,7 +105,7 @@
 			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
 				var/mob/living/carbon/carbon_user = user
 				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
-					user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+					carbon_user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
 					return
@@ -152,7 +158,5 @@
 
 	target.Move(user.loc, get_dir(target.loc, user.loc))
 	target.update_transform(TRUE)
-
-	target.update_canmove()
 
 

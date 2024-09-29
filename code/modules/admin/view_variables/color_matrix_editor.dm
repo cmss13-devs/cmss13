@@ -19,7 +19,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 
 /atom/movable/screen/color_matrix_proxy_view/Destroy()
 	for (var/plane_master in plane_masters)
-		client?.screen -= plane_master
+		client?.remove_from_screen(plane_master)
 		qdel(plane_master)
 
 	client?.clear_map(assigned_map)
@@ -40,7 +40,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/plane_master = new plane_master_type()
 		plane_master.screen_loc = "[assigned_map]:CENTER"
-		client?.screen |= plane_master
+		client?.add_to_screen(plane_master)
 
 		plane_masters += plane_master
 
@@ -69,6 +69,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		proxy_view.appearance = image('icons/misc/colortest.dmi', "colors")
 
 	proxy_view.color = current_color
+	proxy_view.appearance_flags |= TILE_BOUND
 	proxy_view.register_to_client(owner)
 
 /datum/color_matrix_editor/Destroy(force, ...)

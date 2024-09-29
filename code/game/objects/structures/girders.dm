@@ -110,6 +110,10 @@
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
+		for(var/obj/object in loc)
+			if(object.density)
+				to_chat(user, SPAN_WARNING("[object] is blocking you from welding [src] together!"))
+				return
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
@@ -173,6 +177,14 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				var/turf/open/floor = loc
+				if(!floor.allow_construction)
+					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					return
+				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
+				if(tunnel)
+					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
+					return
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -316,7 +328,7 @@
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(obj/item/projectile/P)
+/obj/structure/girder/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage girders.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return FALSE
@@ -324,9 +336,8 @@
 	if(P.ammo.damage_type == BURN)
 		dmg = P.damage
 	else
-		dmg = round(P.damage * 0.5)
+		dmg = floor(P.damage * 0.5)
 	if(dmg)
-		health -= dmg
 		take_damage(dmg)
 		bullet_ping(P)
 	if(health <= 0)
@@ -334,7 +345,9 @@
 	return TRUE
 
 /obj/structure/girder/proc/take_damage(damage)
-	health = max(health - damage, 0)
+	health -= damage
+	if(health <= -100)
+		qdel(src)
 	if(health <= 0)
 		update_state()
 
@@ -348,10 +361,11 @@
 	update_state()
 
 /obj/structure/girder/proc/update_state()
-	if (health <= 0)
+	if(health <= 0 && density)
 		icon_state = "[icon_state]_damaged"
 		density = FALSE
-	else
+
+	else if(health > 0 && !density)
 		var/underscore_position =  findtext(icon_state,"_")
 		var/new_state = copytext(icon_state, 1, underscore_position)
 		icon_state = new_state

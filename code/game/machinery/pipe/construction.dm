@@ -296,7 +296,7 @@ Buildable meters
 /obj/item/pipe/Move()
 	. = ..()
 	if ((pipe_type in list (PIPE_SIMPLE_BENT, PIPE_SUPPLY_BENT, PIPE_SCRUBBERS_BENT, PIPE_HE_BENT, PIPE_INSULATED_BENT)) \
-		&& (src.dir in cardinal))
+		&& (src.dir in GLOB.cardinals))
 		setDir(src.dir|turn(src.dir, 90))
 	else if (pipe_type in list (PIPE_SIMPLE_STRAIGHT, PIPE_SUPPLY_STRAIGHT, PIPE_SCRUBBERS_STRAIGHT, PIPE_UNIVERSAL, PIPE_HE_STRAIGHT, PIPE_INSULATED_STRAIGHT, PIPE_MVALVE))
 		if(dir==2)
@@ -620,8 +620,8 @@ Buildable meters
 
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message( \
-		"[user] fastens the [src].", \
-		SPAN_NOTICE("You have fastened the [src]."), \
+		"[user] fastens [src].", \
+		SPAN_NOTICE("You have fastened [src]."), \
 		"You hear ratchet.")
 	qdel(src) // remove the pipe item
 

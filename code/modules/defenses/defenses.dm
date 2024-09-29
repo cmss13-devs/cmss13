@@ -81,7 +81,7 @@
 	if(ishuman(user))
 		message += SPAN_INFO("A multitool can be used to disassemble it.")
 		message += "\n"
-		message += SPAN_INFO("The turret is currently [locked? "locked" : "unlocked"] to non-engineers.")
+		message += SPAN_INFO("It is currently [locked? "locked" : "unlocked"] to non-engineers.")
 		message += "\n"
 		message += SPAN_INFO("It has [SPAN_HELPFUL("[health]/[health_max]")] health.")
 	message += "\n"
@@ -97,11 +97,13 @@
 	if(!(placed||static))
 		return FALSE
 
+	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = TRUE
 	power_on_action()
 	update_icon()
 
 /obj/structure/machinery/defenses/proc/power_off()
+	msg_admin_niche("[key_name(usr)] turned off [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
@@ -113,6 +115,7 @@
  * @param selection: configuration value for category.
  */
 /obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
+	msg_admin_niche("[key_name(user)] changed the [category] of [src] at [get_location_in_text(src)] to [selection] [ADMIN_JMP(loc)]")
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
@@ -124,7 +127,6 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 
@@ -134,25 +136,29 @@
  */
 /obj/structure/machinery/defenses/proc/handle_iff(selection)
 	switch(selection)
-		if(FACTION_USCM)
+		if(FACTION_MARINE)
 			faction_group = FACTION_LIST_MARINE
-		if(FACTION_WEYLAND)
-			faction_group = FACTION_LIST_MARINE_WY
-		if(FACTION_HUMAN)
+		if(SENTRY_FACTION_HUMAN)
 			faction_group = FACTION_LIST_HUMANOID
-		if(FACTION_COLONY)
+		if(SENTRY_FACTION_COLONY)
 			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+		if(SENTRY_FACTION_WEYLAND)
+			faction_group = FACTION_LIST_MARINE_WY
+		if(FACTION_WY)
+			faction_group = FACTION_LIST_WY
+		if(FACTION_UPP)
+			faction_group = FACTION_LIST_UPP
 
 
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
 		machine_processing = TRUE
-		fast_machines += src
+	START_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/stop_processing()
 	if(machine_processing)
 		machine_processing = FALSE
-		fast_machines -= src
+	STOP_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/proc/earn_kill()
 	kills++
@@ -179,7 +185,7 @@
 				additional_shock++
 			if(prob(50))
 				var/mob/living/carbon/human/H = user
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 					if(turned_on)
 						additional_shock++
 					H.electrocute_act(40, src, additional_shock)//god damn Hans...
@@ -198,7 +204,7 @@
 			to_chat(user, SPAN_WARNING("You've hacked \the [src], it's now ours!"))
 			return
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 		// if the sentry can have key interacted with
@@ -362,11 +368,11 @@
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins switching the [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching the [src] [turned_on? "off" : "on"]."))
+		user.visible_message(SPAN_NOTICE("[user] begins switching [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching [src] [turned_on? "off" : "on"]."))
 		if(!(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src)))
 			return
 
@@ -374,7 +380,7 @@
 		if(!can_be_near_defense)
 			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
-					to_chat(user, SPAN_WARNING("This is too close to a [def]!"))
+					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return
 
 		power_on()
@@ -408,9 +414,9 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = FALSE
+		set_density(FALSE)
 	else
-		density = initial(density)
+		set_density(initial(density))
 
 	update_icon()
 
@@ -431,6 +437,7 @@
 		turned_on = FALSE
 
 /obj/structure/machinery/defenses/emp_act(severity)
+	. = ..()
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
@@ -448,14 +455,14 @@
 		return
 	update_health(severity)
 
-/obj/structure/machinery/defenses/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/defenses/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
+	visible_message(SPAN_WARNING("[src] is hit by [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
-		update_health(round(P.damage/3))
+		update_health(floor(P.damage/3))
 	else
-		update_health(round(P.damage/10))
+		update_health(floor(P.damage/10))
 	return TRUE
 // DAMAGE HANDLING OVER
 
@@ -483,7 +490,7 @@
 		return
 	if(!friendly_faction(usr.faction))
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))
 		return
 

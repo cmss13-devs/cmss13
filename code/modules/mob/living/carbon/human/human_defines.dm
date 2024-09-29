@@ -1,4 +1,7 @@
 /mob/living/carbon/human
+	light_system = MOVABLE_LIGHT
+	rotate_on_lying = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -23,8 +26,9 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Buffness
 
 	//Skin color
 	var/r_skin = 0
@@ -57,14 +61,12 @@
 	var/obj/item/head = null
 	var/obj/item/wear_l_ear = null
 	var/obj/item/wear_r_ear = null
-	var/obj/item/card/id/wear_id = null
+	var/obj/item/wear_id = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
 	var/voice
-
-	var/speech_problem_flag = FALSE
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
@@ -136,7 +138,7 @@
 	var/last_chew = 0
 
 	//taken from human.dm
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD)
+	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD)
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
@@ -161,6 +163,15 @@
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
 
+	/// associated list of body part zone -> currently active limb key
+	var/list/icon_render_keys = list()
+
+	/// static associated list of limb key -> image to avoid unnecessary overlay generation
+	var/static/list/icon_render_image_cache = list()
+
+	/// Stored image references associated with focus-fire.
+	var/image/focused_fire_marker
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)
@@ -169,8 +180,8 @@
 
 	var/total_marine_playtime = 0
 
-	for(var/job in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[job]
+	for(var/job in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[job]
 		if(istype(J, /datum/job/antag))
 			continue
 

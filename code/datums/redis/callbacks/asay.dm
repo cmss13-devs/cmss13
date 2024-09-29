@@ -10,7 +10,7 @@
 	var/msg = SPAN_MOD("<span class='prefix'>[data["rank"]]:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")
 
 	for(var/client/client in GLOB.admins)
-		if(!(R_MOD|R_ADMIN & client.admin_holder.rights))
+		if(!(R_ADMIN & client.admin_holder.rights) && !(R_MOD & client.admin_holder.rights))
 			continue
 
 		to_chat(client, msg)

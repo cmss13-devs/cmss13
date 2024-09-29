@@ -90,9 +90,11 @@
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
 /obj/effect/landmark/nightmare/Destroy()
-	if(insert_tag && autoremove \
-	   && GLOB.nightmare_landmarks[insert_tag] == get_turf(src))
-		GLOB.nightmare_landmarks.Remove(insert_tag)
+	if(insert_tag)
+		var/turf/turf = get_turf(src)
+		if(autoremove && GLOB.nightmare_landmarks[insert_tag] == turf)
+			GLOB.nightmare_landmarks.Remove(insert_tag)
+		GLOB.nightmare_landmark_tags_removed += insert_tag
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress
@@ -118,6 +120,15 @@
 /obj/effect/landmark/monkey_spawn/Destroy()
 	GLOB.monkey_spawns -= src
 	return ..()
+
+/obj/effect/landmark/lizard_spawn
+	name = "lizard spawn"
+	icon_state = "lizard_spawn"
+
+/obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(66))
+		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"
@@ -402,6 +413,39 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+
+/obj/effect/landmark/late_join/cmo
+	name = "Chief Medical Officer late join"
+	job = JOB_CMO
+
+/obj/effect/landmark/late_join/researcher
+	name = "Researcher late join"
+	job = JOB_RESEARCHER
+
+/obj/effect/landmark/late_join/doctor
+	name = "Doctor late join"
+	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/nurse
+	name = "Nurse late join"
+	job = JOB_NURSE
+
+/obj/effect/landmark/late_join/intel
+	name = "Intelligence Officer late join"
+	job = JOB_INTEL
+
+/obj/effect/landmark/late_join/police
+	name = "Military Police late join"
+	job = JOB_POLICE
+
+/obj/effect/landmark/late_join/warden
+	name = "Military Warden late join"
+	job = JOB_WARDEN
+
+/obj/effect/landmark/late_join/chief_police
+	name = "Chief Military Police late join"
+	job = JOB_CHIEF_POLICE
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
@@ -508,3 +552,7 @@
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_top_right
 	name = "unit test zone top right"
+
+/// Marks the bottom left of the tutorial zone.
+/obj/effect/landmark/tutorial_bottom_left
+	name = "tutorial bottom left"

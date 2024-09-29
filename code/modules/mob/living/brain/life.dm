@@ -18,7 +18,6 @@
 
 	//Status updates, death etc.
 	handle_regular_status_updates()
-	update_canmove()
 
 	if(client)
 		handle_regular_hud_updates()
@@ -183,17 +182,3 @@
 				reset_view(null)
 
 	return 1
-
-
-/*/mob/living/brain/emp_act(severity)
-	if(!(container && istype(container, /obj/item/device/mmi)))
-		return
-	else
-		switch(severity)
-			if(1)
-				emp_damage += rand(20,30)
-			if(2)
-				emp_damage += rand(10,20)
-			if(3)
-				emp_damage += rand(0,10)
-	..()*/

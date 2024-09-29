@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 	var/mob/living/carbon/human/leader
 	var/mob/living/carbon/human/dead_leader
-	var/job_cannot_be_overriden = list(
+	var/job_cannot_be_overridden = list(
 		JOB_XO,
 		JOB_CO
 	)
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 /datum/techtree/marine/proc/handle_death(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
-	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.check_tod()))
+	if((H.job in job_cannot_be_overridden) && (!dead_leader || !dead_leader.check_tod()))
 		RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_dead_leader))
 		RegisterSignal(H, COMSIG_HUMAN_REVIVED, PROC_REF(readd_leader))
 		dead_leader = H
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This computer has no power!"))
 		return FALSE
-	if(!intel_system)
+	if(!GLOB.intel_system)
 		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
 		return FALSE
 	if(user.action_busy)
@@ -174,4 +174,4 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 		return //No need to announce tier updates for tier 1
 	var/name = "ALMAYER DEFCON LEVEL INCREASED"
 	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [tier.tier].\n\nLEVEL [tier.tier] assets have been authorised to handle the situation."
-	marine_announcement(input, name, 'sound/AI/commandreport.ogg')
+	marine_announcement(input, name, 'sound/AI/commandreport.ogg', logging = ARES_LOG_NONE)

@@ -23,13 +23,12 @@
 			list("FOOD AND BEVERAGE", -1, null, null),
 			list("MRE", 25, /obj/item/storage/box/MRE, VENDOR_ITEM_REGULAR),
 			list("Water Bottle", 25, /obj/item/reagent_container/food/drinks/cans/waterbottle, VENDOR_ITEM_REGULAR),
-			list("Aspen Beer", 10, /obj/item/storage/beer_pack, VENDOR_ITEM_REGULAR),//NOTE TO SELF, LOCK THIS ALCOHOL BEHIND SHIP ESCAPE
-			list("Wey-Yu Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, VENDOR_ITEM_REGULAR),
 
 			list("UTILITY", -1, null, null),
 			list("M94 Marking Flare Pack", 5, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 			list("M5 Bayonet", 8, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 			list("Handheld Radio", 5, /obj/item/device/radio, VENDOR_ITEM_REGULAR),
+			list("deck of UNO cards", 5, /obj/item/toy/deck/uno, VENDOR_ITEM_REGULAR),
 
 			list("CLOTHING", -1, null, null),
 			list("Gas Mask", 15, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),

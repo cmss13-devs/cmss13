@@ -30,13 +30,19 @@
 /atom/movable/screen/inventory
 	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
+/atom/movable/screen/inventory/Initialize(mapload, ...)
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
 
 /atom/movable/screen/close
 	name = "close"
-	icon_state = "x"
+	icon_state = "close"
 
 
 /atom/movable/screen/close/clicked(mob/user)
+	if(isobserver(user))
+		return TRUE
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/master_storage = master
@@ -53,8 +59,10 @@
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 
-/atom/movable/screen/action_button/clicked(mob/user)
+/atom/movable/screen/action_button/clicked(mob/user, list/mods)
 	if(!user || !source_action)
+		return TRUE
+	if(source_action.owner != user)
 		return TRUE
 
 	if(source_action.can_use_action())
@@ -67,7 +75,7 @@
 	return ..()
 
 /atom/movable/screen/action_button/proc/get_button_screen_loc(button_number)
-	var/row = round((button_number-1)/13) //13 is max amount of buttons per row
+	var/row = floor((button_number-1)/13) //13 is max amount of buttons per row
 	var/col = ((button_number - 1)%(13)) + 1
 	var/coord_col = "+[col-1]"
 	var/coord_col_offset = 4+2*col
@@ -91,7 +99,7 @@
 	icon_state = "hide"
 	var/hidden = 0
 
-/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, mods)
+/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
 	if(hidden)
@@ -101,7 +109,7 @@
 		name = "Hide Buttons"
 		icon_state = "hide"
 	user.update_action_buttons()
-	return 1
+	return TRUE
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -111,7 +119,7 @@
 	layer = HUD_LAYER
 
 /atom/movable/screen/storage/proc/update_fullness(obj/item/storage/master_storage)
-	if(!master_storage.contents.len)
+	if(!length(master_storage.contents))
 		color = null
 	else
 		var/total_w = 0
@@ -121,9 +129,9 @@
 		//Calculate fullness for etiher max storage, or for storage slots if the container has them
 		var/fullness = 0
 		if (master_storage.storage_slots == null)
-			fullness = round(10*total_w/master_storage.max_storage_space)
+			fullness = floor(10*total_w/master_storage.max_storage_space)
 		else
-			fullness = round(10*master_storage.contents.len/master_storage.storage_slots)
+			fullness = floor(10*length(master_storage.contents)/master_storage.storage_slots)
 		switch(fullness)
 			if(10)
 				color = "#ff0000"
@@ -140,11 +148,10 @@
 /atom/movable/screen/zone_sel/update_icon(mob/living/user)
 	overlays.Cut()
 	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
-	user.zone_selected = selecting
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
-		return 1
+		return TRUE
 
 	var/icon_x = text2num(mods["icon-x"])
 	var/icon_y = text2num(mods["icon-y"])
@@ -202,92 +209,57 @@
 							selecting = "eyes"
 
 	if(old_selecting != selecting)
+		user.zone_selected = selecting
 		update_icon(user)
 	return 1
 
-/atom/movable/screen/zone_sel/robot
-	icon = 'icons/mob/hud/screen1_robot.dmi'
+/atom/movable/screen/gun
+	/// The proc/verb which should be called on the gun.
+	var/gun_proc_ref
 
-/atom/movable/screen/clicked(mob/user)
-	if(!user) return 1
+/atom/movable/screen/gun/clicked(mob/user, list/mods)
+	. = ..()
+	if(.)
+		return
+	// If the user has a gun in their active hand, call `gun_proc_ref` on it.
+	var/obj/item/weapon/gun/held_item = user.get_held_item()
+	if(istype(held_item))
+		INVOKE_ASYNC(held_item, gun_proc_ref)
 
-	switch(name)
-		if("equip")
-			if(ishuman(user))
-				var/mob/living/carbon/human/human = user
-				human.quick_equip()
-			return 1
+/atom/movable/screen/gun/attachment
+	name = "Activate weapon attachment"
+	icon_state = "gun_attach"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_attachment_verb)
 
-		if("Reset Machine")
-			user.unset_interaction()
-			return 1
+/atom/movable/screen/gun/rail_light
+	name = "Toggle rail flashlight"
+	icon_state = "gun_raillight"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_rail_attachment_verb)
 
-		if("module")
-			if(isSilicon(user))
-				if(user:module)
-					return 1
-				user:pick_module()
-			return 1
+/atom/movable/screen/gun/eject_magazine
+	name = "Eject magazine"
+	icon_state = "gun_loaded"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
 
-		if("radio")
-			if(isSilicon(user))
-				user:radio_menu()
-			return 1
-		if("panel")
-			if(isSilicon(user))
-				user:installed_modules()
-			return 1
+/atom/movable/screen/gun/toggle_firemode
+	name = "Toggle firemode"
+	icon_state = "gun_burst"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_toggle_burst)
 
-		if("store")
-			if(isSilicon(user))
-				user:uneq_active()
-			return 1
+/atom/movable/screen/gun/unique_action
+	name = "Use unique action"
+	icon_state = "gun_unique"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_unique_action)
 
-		if("module1")
-			if(isrobot(user))
-				user:toggle_module(1)
-			return 1
 
-		if("module2")
-			if(isrobot(user))
-				user:toggle_module(2)
-			return 1
+/atom/movable/screen/clicked(mob/user, list/mods)
+	if(!user)
+		return TRUE
 
-		if("module3")
-			if(isrobot(user))
-				user:toggle_module(3)
-			return 1
+	if(isobserver(user))
+		return TRUE
 
-		if("Activate weapon attachment")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.activate_attachment_verb()
-			return 1
-
-		if("Toggle Rail Flashlight")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.activate_rail_attachment_verb()
-			return 1
-
-		if("Eject magazine")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.empty_mag()
-			return 1
-
-		if("Toggle burst fire")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.use_toggle_burst()
-			return 1
-
-		if("Use unique action")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.use_unique_action()
-			return 1
-	return 0
+	return FALSE
 
 
 /atom/movable/screen/inventory/clicked(mob/user)
@@ -318,6 +290,22 @@
 				user.update_inv_r_hand(0)
 				return 1
 	return 0
+
+/atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
+	SIGNAL_HANDLER
+
+	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
+		return
+
+	if(!isstorage(dropping.loc))
+		return
+
+	if(!user.mob.Adjacent(dropping))
+		return
+
+	var/obj/item/storage/store = dropping.loc
+	store.remove_from_storage(dropping, get_turf(user.mob))
+	user.mob.put_in_active_hand(dropping)
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
@@ -497,19 +485,19 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("You psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods["alt"] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.hive.mark_ui.update_all_data()
 	user.hive.mark_ui.open_mark_menu(user)
@@ -518,48 +506,57 @@
 	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	var/list/track_state = list(TRACKER_QUEEN, 0)
+	/// A weak reference to the atom currently being tracked.
+	/// (Note: This is null for `TRACKER_QUEEN` and `TRACKER_HIVE`, as those are accessed through the user's hive datum.)
+	var/datum/weakref/tracking_ref = null
+	/// The 'category' of the atom currently being tracked. (Defaults to `TRACKER_QUEEN`)
+	var/tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
-			options["Queen"] = list(TRACKER_QUEEN, 0)
+			// Don't need weakrefs to this or the hive core, since there's only one possible target.
+			options["Queen"] = list(null, TRACKER_QUEEN)
 
 		if(user.hive.hive_location)
-			options["Hive Core"] = list(TRACKER_HIVE, 0)
+			options["Hive Core"] = list(null, TRACKER_HIVE)
 
-		var/xeno_leader_index = 1
-		for(var/xeno in user.hive.xeno_leader_list)
-			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
-			if(xeno_lead)
-				options["Xeno Leader [xeno_lead]"] = list(TRACKER_LEADER, xeno_leader_index)
-			xeno_leader_index++
+		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
+			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
 
-		var/tunnel_index = 1
-		for(var/obj/structure/tunnel/tracked_tunnel in user.hive.tunnels)
-			options["Tunnel [tracked_tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
-			tunnel_index++
+		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
+		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
 
-		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
+		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)
-			track_state = options[selected]
+			var/selected_data = options[selected]
+			tracking_ref = WEAKREF(selected_data[1]) // Weakref to the tracked atom (or null)
+			tracker_type = selected_data[2] // Tracker category
 		return
+
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
+		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
+
+// Reset to the defaults
+/atom/movable/screen/queen_locator/proc/reset_tracking()
+	icon_state = "trackoff"
+	tracking_ref = null
+	tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
@@ -589,6 +586,19 @@
 			vision_define = XENO_VISION_LEVEL_NO_NVG
 	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
 
+/atom/movable/screen/equip
+	name = "equip"
+	icon_state = "act_equip"
+	layer = ABOVE_HUD_LAYER
+	plane = ABOVE_HUD_PLANE
+
+/atom/movable/screen/equip/clicked(mob/user)
+	. = ..()
+	if(. || !ishuman(user))
+		return TRUE
+	var/mob/living/carbon/human/human_user = user
+	human_user.quick_equip()
+
 /atom/movable/screen/bodytemp
 	name = "body temperature"
 	icon_state = "temp0"
@@ -608,10 +618,10 @@
 	if(user && user.hud_used)
 		if(user.hud_used.inventory_shown)
 			user.hud_used.inventory_shown = 0
-			user.client.screen -= user.hud_used.toggleable_inventory
+			user.client.remove_from_screen(user.hud_used.toggleable_inventory)
 		else
 			user.hud_used.inventory_shown = 1
-			user.client.screen += user.hud_used.toggleable_inventory
+			user.client.add_to_screen(user.hud_used.toggleable_inventory)
 
 		user.hud_used.hidden_inventory_update()
 	return 1
@@ -639,3 +649,7 @@
 /atom/movable/screen/rotate/alt
 	dir = WEST
 	rotate_amount = -90
+
+/atom/movable/screen/vulture_scope // The part of the vulture's scope that drifts over time
+	icon_state = "vulture_unsteady"
+	screen_loc = "CENTER,CENTER"

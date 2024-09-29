@@ -8,8 +8,7 @@
 /datum/cas_iff_group/proc/remove_signal(datum/cas_signal/signal)
 	cas_signals -= signal
 
-var/global/datum/cas_iff_group/uscm_cas_group = new /datum/cas_iff_group()
+GLOBAL_DATUM_INIT(uscm_cas_group, /datum/cas_iff_group, new())
+GLOBAL_DATUM_INIT(upp_cas_group, /datum/cas_iff_group, new())
 
-var/global/datum/cas_iff_group/upp_cas_group = new /datum/cas_iff_group()
-
-var/global/list/datum/cas_iff_group/cas_groups = list(FACTION_MARINE = uscm_cas_group, FACTION_UPP = upp_cas_group, FACTION_NEUTRAL = uscm_cas_group)
+GLOBAL_LIST_INIT_TYPED(cas_groups, /datum/cas_iff_group, list(FACTION_MARINE = GLOB.uscm_cas_group, FACTION_UPP = GLOB.upp_cas_group, FACTION_NEUTRAL = GLOB.uscm_cas_group))

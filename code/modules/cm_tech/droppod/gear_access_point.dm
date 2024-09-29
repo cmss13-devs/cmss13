@@ -17,7 +17,7 @@
 /obj/structure/techpod_vendor/attack_hand(mob/user)
 	var/area/a = get_area(src)
 	//no idea why it was made just a structure, so this is gonna be here for now
-	if(!a.master || a.master.requires_power && !a.master.unlimited_power && !a.master.power_equip)
+	if(!a || a.requires_power && !a.unlimited_power && !a.power_equip)
 		return
 
 	if(!ishuman(user) || !get_access_permission(user))
@@ -43,9 +43,9 @@
 		return
 
 /obj/structure/techpod_vendor/proc/get_access_permission(mob/living/carbon/human/user)
-	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions
 		return TRUE
-	else if(SSticker.mode == "Distress Signal" || master_mode == "Distress Signal")
+	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(access_settings_override) //everyone allowed to grab stuff
 			return TRUE
 		else if(user.get_target_lock(faction_requirement)) //only it's faction group allowed

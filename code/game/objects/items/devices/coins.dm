@@ -11,11 +11,8 @@
 	black_market_value = 10
 	var/string_attached
 	var/sides = 2
-
-/obj/item/coin/Initialize()
-	. = ..()
-	pixel_x = rand(0,16)-8
-	pixel_y = rand(0,8)-8
+	ground_offset_x = 8
+	ground_offset_y = 4
 
 /obj/item/coin/gold
 	name = "gold coin"
@@ -28,6 +25,11 @@
 	desc = "A coin of the purest silver."
 	icon_state = "coin_silver"
 	black_market_value = 25
+
+//CO coin
+/obj/item/coin/silver/falcon
+	name = "falling falcons challenge coin"
+	desc = "A small coin, bearing the falling falcons insignia."
 
 /obj/item/coin/copper
 	name = "copper coin"
@@ -64,12 +66,6 @@
 	desc = "A coin made of shiny platinum. It is quite valuable."
 	icon_state = "coin_platinum"
 	black_market_value = 35
-
-/obj/item/coin/marine/synth
-	name = "synthetic experimental tool redemption token"
-	desc = "Insert this into a synthetic experimental tools vendor in order to access a variety of experimental support tools."
-	icon_state = "coin_synth"
-	black_market_value = 0
 
 /obj/item/coin/chitin
 	name = "chitin coin"
@@ -119,3 +115,33 @@
 		comment = "heads"
 	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "), \
 						SPAN_NOTICE("You throw \the [src]. It lands on [comment]! "))
+
+
+/obj/item/coin/marine
+	name = "marine equipment token"
+	desc = "I wonder what it does?"
+	icon_state = "coin_copper"
+	black_market_value = 0
+	/// What is the token for?
+	var/token_type = VEND_TOKEN_VOID
+
+/obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
+	return
+
+/obj/item/coin/marine/engineer
+	name = "marine engineer support token"
+	desc = "Insert this into an engineer vendor in order to access a support weapon."
+	icon_state = "coin_gold"
+	token_type = VEND_TOKEN_ENGINEER
+
+/obj/item/coin/marine/specialist
+	name = "marine specialist weapon token"
+	desc = "Insert this into a USCM equipment vendor in order to access a single highly dangerous weapon."
+	icon_state = "coin_diamond"
+	token_type = VEND_TOKEN_SPEC
+
+/obj/item/coin/marine/synth
+	name = "synthetic experimental tool redemption token"
+	desc = "Insert this into a synthetic experimental tools vendor in order to access a variety of experimental support tools."
+	icon_state = "coin_synth"
+	token_type = VEND_TOKEN_SYNTH

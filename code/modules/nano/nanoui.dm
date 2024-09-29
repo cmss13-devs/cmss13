@@ -57,8 +57,8 @@ nanoui is used to open and update nano browser uis
 	// the current status/visibility of the ui
 	var/status = STATUS_INTERACTIVE
 
-	// Only allow users with a certain user.stat to get updates. Defaults to 0 (concious)
-	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconcious or alive, 2 = dead concious or alive
+	// Only allow users with a certain user.stat to get updates. Defaults to 0 (conscious)
+	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconscious or alive, 2 = dead conscious or alive
 
 /**
 * Create a new nanoui instance.
@@ -105,7 +105,7 @@ nanoui is used to open and update nano browser uis
  */
 /datum/nanoui/Destroy()
 	if(user)
-		nanomanager.ui_closed(src)
+		SSnano.nanomanager.ui_closed(src)
 		close_browser(user, "[window_id]")
 		user = null
 
@@ -166,8 +166,8 @@ nanoui is used to open and update nano browser uis
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (allowed_user_stat == -1 || user == src_object)
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
-	else if (isrobot(user))
-		if (src_object in view(7, user)) // robots can see and interact with things they can see within 7 tiles
+	else if (isSilicon(user))
+		if (src_object in dview(7, user)) // robots can see and interact with things they can see within 7 tiles
 			set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 		else
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
@@ -177,9 +177,13 @@ nanoui is used to open and update nano browser uis
 			close()
 			return
 
+		var/mob/living/living_user
+		if(isliving(user))
+			living_user = user
+
 		if ((allowed_user_stat > -1) && (user.stat > allowed_user_stat))
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
-		else if (user.is_mob_restrained() || user.lying)
+		else if (user.is_mob_restrained() || (living_user && living_user.body_position == LYING_DOWN))
 			set_status(STATUS_UPDATE, push_update) // update only (orange visibility)
 		else if (!(src_object in view(4, user))) // If the src object is not in visable, set status to 0
 			set_status(STATUS_DISABLED, push_update) // interactive (green visibility)
@@ -382,7 +386,7 @@ nanoui is used to open and update nano browser uis
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
-	if (templates.len > 0)
+	if (length(templates) > 0)
 		template_data_json = strip_improper(json_encode(templates))
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
@@ -440,7 +444,7 @@ nanoui is used to open and update nano browser uis
 		winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 		on_close_winset()
 		//onclose(user, window_id)
-		nanomanager.ui_opened(src)
+		SSnano.nanomanager.ui_opened(src)
 
 /**
 * Close this UI
@@ -449,7 +453,7 @@ nanoui is used to open and update nano browser uis
 */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	nanomanager.ui_closed(src)
+	SSnano.nanomanager.ui_closed(src)
 	close_browser(user, "[window_id]")
 
 	qdel(src)
@@ -516,7 +520,7 @@ nanoui is used to open and update nano browser uis
 		map_update = 1
 
 	if ((src_object && src_object.Topic(href, href_list)) || map_update)
-		nanomanager.update_uis(src_object) // update all UIs attached to src_object
+		SSnano.nanomanager.update_uis(src_object) // update all UIs attached to src_object
 
 /**
 * Process this UI, updating the entire UI or just the status (aka visibility)

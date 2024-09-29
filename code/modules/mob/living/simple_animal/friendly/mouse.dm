@@ -22,7 +22,7 @@
 	density = FALSE
 	var/body_color //brown, gray and white, leave blank for random
 	layer = ABOVE_LYING_MOB_LAYER
-	min_oxy = 16 //Require atleast 16kPA oxygen
+	min_oxy = 16 //Require at least 16kPA oxygen
 	minbodytemp = 223 //Below -50 Degrees Celcius
 	maxbodytemp = 323 //Above 50 Degrees Celcius
 	universal_speak = 0
@@ -32,8 +32,9 @@
 /mob/living/simple_animal/mouse/Life(delta_time)
 	..()
 	if(!stat && prob(speak_chance))
-		for(var/mob/M in view())
+		FOR_DVIEW(var/mob/M, world.view, src, HIDE_INVISIBLE_OBSERVER)
 			M << 'sound/effects/mousesqueek.ogg'
+		FOR_DVIEW_END
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		set_stat(UNCONSCIOUS)
@@ -46,7 +47,6 @@
 			set_stat(CONSCIOUS)
 			icon_state = "mouse_[body_color]"
 			wander = 1
-			canmove = 1
 		else if(prob(5))
 			INVOKE_ASYNC(src, PROC_REF(emote), "snuffles")
 
@@ -78,6 +78,7 @@
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = ABOVE_LYING_MOB_LAYER
+	set_body_position(LYING_DOWN)
 	if(client)
 		client.time_died_as_mouse = world.time
 

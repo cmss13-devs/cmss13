@@ -4,13 +4,25 @@
 	var/list/soundscape_playlist = list() //Updated on changing areas
 	var/ambience = null //The file currently being played as ambience
 	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-	var/list/echo
-/datum/soundOutput/New(client/C)
-	if(!C)
+
+	/// Currently applied environmental reverb.
+	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE
+
+/datum/soundOutput/New(client/client)
+	if(!client)
 		qdel(src)
 		return
-	owner = C
-	. = ..()
+	owner = client
+	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
+	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
+	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_logged_in))
+	return ..()
+
+/datum/soundOutput/Destroy()
+	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
+	UnregisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN)
+	owner = null
+	return ..()
 
 /datum/soundOutput/proc/process_sound(datum/sound_template/T)
 	var/sound/S = sound(T.file, T.wait, T.repeat)
@@ -22,7 +34,6 @@
 	S.frequency = T.frequency
 	S.falloff = T.falloff
 	S.status = T.status
-	S.echo = T.echo
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
@@ -38,17 +49,17 @@
 			S.x = T.x - owner_turf.x
 			S.y = 0
 			S.z = T.y - owner_turf.y
-			var/area/A = owner_turf.loc
-			S.environment = A.sound_environment
 		S.y += T.y_s_offset
 		S.x += T.x_s_offset
+		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
+	for(var/pos = 1 to length(T.echo))
+		if(!T.echo[pos])
+			continue
+		S.echo[pos] = T.echo[pos]
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
-	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE)
-		S.environment = owner.mob.sound_environment_override
-
-	sound_to(owner,S)
+	sound_to(owner, S)
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM
@@ -84,7 +95,6 @@
 	S.status = status_flags
 
 	if(target_area)
-		S.environment = target_area.sound_environment
 		var/muffle
 		if(target_area.ceiling_muffle)
 			switch(target_area.ceiling)
@@ -104,7 +114,7 @@
 /datum/soundOutput/proc/update_soundscape()
 	scape_cooldown--
 	if(scape_cooldown <= 0)
-		if(soundscape_playlist.len)
+		if(length(soundscape_playlist))
 			var/sound/S = sound()
 			S.file = pick(soundscape_playlist)
 			S.volume = 100 * owner.volume_preferences[VOLUME_AMB]
@@ -127,6 +137,51 @@
 	else
 		S.status = SOUND_UPDATE
 		sound_to(owner, S)
+
+/// Pulls mob's area's sound_environment and applies if necessary and not overridden.
+/datum/soundOutput/proc/update_area_environment()
+	var/area/owner_area = get_area(owner.mob)
+	var/new_environment = owner_area.sound_environment
+
+	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE) //override in effect, can't apply
+		return
+
+	set_owner_environment(new_environment)
+
+/// Pulls mob's sound_environment_override and applies if necessary.
+/datum/soundOutput/proc/update_mob_environment_override()
+	var/new_environment_override = owner.mob.sound_environment_override
+
+	if(new_environment_override == SOUND_ENVIRONMENT_NONE) //revert to area environment
+		update_area_environment()
+		return
+
+	set_owner_environment(new_environment_override)
+
+/// Pushes new_environment to owner and updates owner_environment var.
+/datum/soundOutput/proc/set_owner_environment(new_environment = SOUND_ENVIRONMENT_NONE)
+	if(new_environment ~= src.owner_environment) //no need to change
+		return
+
+	var/sound/sound = sound()
+	sound.environment = new_environment
+	sound_to(owner, sound)
+
+	src.owner_environment = new_environment
+
+/datum/soundOutput/proc/on_mob_moved(datum/source, atom/oldloc, direction, Forced)
+	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
+	update_area_environment()
+
+/datum/soundOutput/proc/on_mob_logout(datum/source)
+	SIGNAL_HANDLER //COMSIG_MOB_LOGOUT
+	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
+
+/datum/soundOutput/proc/on_client_mob_logged_in(datum/source, mob/new_mob)
+	SIGNAL_HANDLER //COMSIG_CLIENT_MOB_LOGGED_IN
+	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
+	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
+	update_mob_environment_override()
 
 /client/proc/adjust_volume_prefs(volume_key, prompt = "", channel_update = 0)
 	volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
@@ -151,11 +206,6 @@
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_AMB, "Set the volume for ambience and soundscapes", 0)
 	soundOutput.update_ambience(null, null, TRUE)
-
-/client/verb/adjust_volume_admin_music()
-	set name = "Adjust Volume Admin MIDIs"
-	set category = "Preferences.Sound"
-	adjust_volume_prefs(VOLUME_ADM, "Set the volume for admin MIDIs", SOUND_CHANNEL_ADMIN_MIDI)
 
 /client/verb/adjust_volume_lobby_music()
 	set name = "Adjust Volume LobbyMusic"

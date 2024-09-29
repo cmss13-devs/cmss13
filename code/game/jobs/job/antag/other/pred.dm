@@ -22,7 +22,7 @@
 	)
 
 /datum/job/antag/predator/set_spawn_positions(count)
-	spawn_positions = max((round(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
+	spawn_positions = max((floor(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
 	total_positions = spawn_positions
 
 /datum/job/antag/predator/spawn_and_equip(mob/new_player/player)
@@ -31,17 +31,13 @@
 
 	SSticker.mode.attempt_to_join_as_predator(player)
 
-/datum/job/antag/predator/get_whitelist_status(list/roles_whitelist, client/player) // Might be a problem waiting here, but we've got no choice
-	. = ..()
-	if(!.)
-		return
-
+/datum/job/antag/predator/get_whitelist_status(client/player) // Might be a problem waiting here, but we've got no choice
 	if(!player.clan_info)
 		return CLAN_RANK_BLOODED
 
 	player.clan_info.sync() // pause here might be problematic, we'll see. If DB dies, then we're fucked
 
-	var/rank = clan_ranks[player.clan_info.clan_rank]
+	var/rank = GLOB.clan_ranks[player.clan_info.clan_rank]
 
 	if(!rank)
 		return CLAN_RANK_BLOODED
@@ -49,10 +45,7 @@
 	if(!("[JOB_PREDATOR][rank]" in gear_preset_whitelist))
 		return CLAN_RANK_BLOODED
 
-	if(\
-		(roles_whitelist[player.ckey] & (WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY)) &&\
-		get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL\
-	)
+	if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY) && get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL)
 		return CLAN_RANK_BLOODED
 
 	return rank

@@ -6,11 +6,11 @@ SUBSYSTEM_DEF(projectiles)
 	priority = SS_PRIORITY_PROJECTILES
 
 	/// List of projectiles handled by the subsystem
-	VAR_PRIVATE/list/obj/item/projectile/projectiles
+	VAR_PRIVATE/list/obj/projectile/projectiles
 	/// List of projectiles on hold due to sleeping
-	VAR_PRIVATE/list/obj/item/projectile/sleepers
+	VAR_PRIVATE/list/obj/projectile/sleepers
 	/// List of projectiles handled this controller firing
-	VAR_PRIVATE/list/obj/item/projectile/flying
+	VAR_PRIVATE/list/obj/projectile/flying
 
 	/*
 	 * Scheduling notes:
@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(projectiles)
 	 */
 
 /datum/controller/subsystem/projectiles/stat_entry(msg)
-	msg = " | #Proj: [projectiles.len]"
+	msg = " | #Proj: [length(projectiles)]"
 	return ..()
 
 /datum/controller/subsystem/projectiles/Initialize(start_timeofday)
@@ -41,15 +41,15 @@ SUBSYSTEM_DEF(projectiles)
 	if(!resumed)
 		flying = projectiles.Copy()
 		flying -= sleepers
-	while(flying.len)
-		var/obj/item/projectile/projectile = flying[flying.len]
+	while(length(flying))
+		var/obj/projectile/projectile = flying[length(flying)]
 		flying.len--
 		var/delta_time = wait * world.tick_lag * (1 SECONDS)
 		handle_projectile_flight(projectile, delta_time)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/projectiles/proc/handle_projectile_flight(obj/item/projectile/projectile, delta_time)
+/datum/controller/subsystem/projectiles/proc/handle_projectile_flight(obj/projectile/projectile, delta_time)
 	PRIVATE_PROC(TRUE)
 	set waitfor = FALSE
 	// We're in double-check land here because there ARE rulebreakers.
@@ -66,15 +66,15 @@ SUBSYSTEM_DEF(projectiles)
 		stop_projectile(projectile) // Ideally this was already done thru process()
 		qdel(projectile)
 
-/datum/controller/subsystem/projectiles/proc/process_wrapper(obj/item/projectile/projectile, delta_time)
+/datum/controller/subsystem/projectiles/proc/process_wrapper(obj/projectile/projectile, delta_time)
 	// set waitfor=TRUE
 	. = PROC_RETURN_SLEEP
 	. = projectile.process(delta_time)
 	sleepers -= projectile // Recover from sleep
 
-/datum/controller/subsystem/projectiles/proc/queue_projectile(obj/item/projectile/projectile)
+/datum/controller/subsystem/projectiles/proc/queue_projectile(obj/projectile/projectile)
 	projectiles |= projectile
-/datum/controller/subsystem/projectiles/proc/stop_projectile(obj/item/projectile/projectile)
+/datum/controller/subsystem/projectiles/proc/stop_projectile(obj/projectile/projectile)
 	projectiles -= projectile
 	flying -= projectile // avoids problems with deleted projs
 	projectile.speed = 0

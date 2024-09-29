@@ -30,6 +30,7 @@
 	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/laser_cam/Initialize(mapload, laser_name)
 	. = ..()
@@ -37,8 +38,6 @@
 		var/area/A = get_area(src)
 		c_tag = "[laser_name] ([A.name])"
 
-/obj/structure/machinery/camera/laser_cam/emp_act(severity)
-	return //immune to EMPs, just in case
 
 /obj/structure/machinery/camera/laser_cam/ex_act()
 	return
@@ -71,21 +70,7 @@
 // AUTONAME
 
 /obj/structure/machinery/camera/autoname
-	var/number = 0 //camera number in area
-
-//This camera type automatically sets it's name to whatever the area that it's in is called.
-/obj/structure/machinery/camera/autoname/Initialize(mapload, ...)
-	. = ..()
-	number = 1
-	var/area/A = get_area(src)
-	if(A)
-		for(var/obj/structure/machinery/camera/autoname/C in machines)
-			if(C == src) continue
-			var/area/CA = get_area(C)
-			if(CA.type == A.type)
-				if(C.number)
-					number = max(number, C.number+1)
-		c_tag = "[A.name] #[number]"
+	autoname = TRUE
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
 /obj/structure/machinery/camera/autoname/almayer/dropship_one
@@ -93,6 +78,9 @@
 
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
+
+/obj/structure/machinery/camera/autoname/almayer/dropship_three
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_RESEARCH)
 
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
@@ -112,7 +100,11 @@
 
 /obj/structure/machinery/camera/autoname/almayer/containment/ares
 	name = "ares core camera"
-	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_ARES)
+	network = list(CAMERA_NET_ARES)
+
+/obj/structure/machinery/camera/autoname/almayer/brig
+	name = "brig camera"
+	network = list(CAMERA_NET_BRIG)
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
@@ -125,9 +117,7 @@
 	invisibility = 101 //fuck you init()
 
 	colony_camera_mapload = FALSE
-
-/obj/structure/machinery/camera/autoname/lz_camera/emp_act(severity)
-	return //immune to EMPs, just in case
+	emp_proof = TRUE
 
 /obj/structure/machinery/camera/autoname/lz_camera/ex_act()
 	return
@@ -137,7 +127,7 @@
 
 /obj/structure/machinery/camera/proc/isEmpProof()
 	var/O = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
-	return O
+	return O || emp_proof
 
 /obj/structure/machinery/camera/proc/isXRay()
 	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades

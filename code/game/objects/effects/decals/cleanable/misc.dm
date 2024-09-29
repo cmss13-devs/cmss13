@@ -35,12 +35,8 @@
 	name = "glowing goo"
 	acid_damage = 1
 	icon_state = "greenglow"
-	luminosity = 1
-
-/obj/effect/decal/cleanable/dirt/greenglow/Destroy()
-	SetLuminosity(0)
-	return ..()
-
+	light_range = 1
+	light_color = COLOR_LIGHT_GREEN
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -58,7 +54,8 @@
 	density = FALSE
 	anchored = TRUE
 	layer = TURF_LAYER
-	luminosity = 1
+	light_range = 1
+	light_color = COLOR_LIGHT_GREEN
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
@@ -67,10 +64,6 @@
 		return INITIALIZE_HINT_QDEL
 	. = ..()
 	QDEL_IN(WEAKREF(src), 2 MINUTES)
-
-/obj/effect/decal/cleanable/greenglow/Destroy()
-	SetLuminosity(0)
-	return ..()
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"
@@ -106,7 +99,7 @@
 	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
 	garbage = FALSE
 /obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
-	alpha += round(webscale * 120)
+	alpha += floor(webscale * 120)
 	var/angle = dir2angle(targetdir)
 	var/matrix/TM = new
 	TM *= webscale
@@ -169,7 +162,7 @@
 /obj/effect/decal/cleanable/blackgoo/Crossed(mob/living/carbon/human/H)
 	if(!istype(H)) return
 	if(H.species.name == "Human")
-		if(!H.shoes || prob(25))
+		if(!H.shoes && prob(50))
 			H.contract_disease(new /datum/disease/black_goo)
 
 

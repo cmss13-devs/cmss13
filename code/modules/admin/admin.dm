@@ -24,7 +24,7 @@
 
 /proc/msg_admin_niche(msg) //Toggleable Niche Messages
 	log_admin(msg)
-	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
+	msg = SPAN_NICHE("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
@@ -67,7 +67,7 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || !infos.len) return 0
+	if(!LAZYLEN(infos)) return 0
 	else return 1
 
 /datum/admins/proc/player_notes_all(key as text)
@@ -95,15 +95,11 @@
 				color = "#AA0055"
 			else if(N.note_category == NOTE_MERIT)
 				color = "#9e3dff"
-			else if(N.note_category == NOTE_COMMANDER)
+			else if(N.note_category == NOTE_WHITELIST)
 				color = "#324da5"
-			else if(N.note_category == NOTE_SYNTHETIC)
-				color = "#39e7a4"
-			else if(N.note_category == NOTE_YAUTJA)
-				color = "#114e11"
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
-		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
+		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"
@@ -121,10 +117,10 @@
 	var/t //text to show in the window
 	var/u //unban button href arg
 	var/dat = "<table>"
-	for(r in jobban_keylist)
-		L = jobban_keylist[r]
+	for(r in GLOB.jobban_keylist)
+		L = GLOB.jobban_keylist[r]
 		for(c in L)
-			i = jobban_keylist[r][c] //These are already strings, as you're iterating through them. Anyway, establish jobban.
+			i = GLOB.jobban_keylist[r][c] //These are already strings, as you're iterating through them. Anyway, establish jobban.
 			t = "[c] - [r] ## [i]"
 			u = "[c] - [r]"
 			dat += "<tr><td>[t] (<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>unban</A>)</td></tr>"
@@ -138,8 +134,6 @@
 	var/dat = {"
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
 		"}
-	if(master_mode == "secret")
-		dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
@@ -147,7 +141,7 @@
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
-		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Inmediately Send Tip</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
@@ -185,11 +179,11 @@
 		if(findtext("[path]", object))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)
@@ -261,7 +255,7 @@
 		if("Remove")
 			if(!GLOB.trait_name_map)
 				GLOB.trait_name_map = generate_trait_name_map()
-			for(var/trait in D.status_traits)
+			for(var/trait in D._status_traits)
 				var/name = GLOB.trait_name_map[trait] || trait
 				available_traits[name] = trait
 
@@ -282,7 +276,7 @@
 				if("All")
 					source = null
 				if("Specific")
-					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D.status_traits[chosen_trait])
+					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D._status_traits[chosen_trait])
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)

@@ -58,16 +58,23 @@
 		if(longest_tier < tier_length)
 			longest_tier = tier_length
 
-	// Clear out the area
-	for(var/t in block(locate(1, 1, zlevel.z_value), locate(longest_tier * 2 + 1, length(all_techs) * 3 + 1, zlevel.z_value)))
-		var/turf/pos = t
-		for(var/A in pos)
+	// Clear out and create the area
+	// (The `+ 2` on both of these is 1 for a buffer tile, and 1 for the outer `/turf/closed/void`.)
+	var/area_max_x = longest_tier * 2 + 2
+	var/area_max_y = length(all_techs) * 3 + 2
+	for(var/turf/pos as anything in block(1, 1, zlevel.z_value, area_max_x, area_max_y, zlevel.z_value))
+		for(var/A as anything in pos)
 			qdel(A)
 
-		pos.ChangeTurf(/turf/open/blank)
-		pos.color = "#000000"
+		if(pos.x == area_max_x || pos.y == area_max_y)
+			// The turfs around the edge are closed.
+			pos.ChangeTurf(/turf/closed/void)
+		else
+			pos.ChangeTurf(/turf/open/blank)
+			pos.color = "#000000"
+		new /area/techtree(pos)
 
-
+	// Create the tech nodes
 	var/y_offset = 1
 	for(var/tier in all_techs)
 		var/tier_length = length(all_techs[tier])
@@ -75,7 +82,7 @@
 		var/x_offset = (longest_tier - tier_length) + 1
 
 		var/datum/tier/T = tree_tiers[tier]
-		for(var/turf/pos in block(locate(x_offset, y_offset, zlevel.z_value), locate(x_offset + tier_length*2, y_offset + 2, zlevel.z_value)))
+		for(var/turf/pos as anything in block(x_offset, y_offset, zlevel.z_value, x_offset + tier_length*2, y_offset + 2, zlevel.z_value))
 			pos.ChangeTurf(/turf/open/blank)
 			pos.color = "#000000"
 			LAZYADD(T.tier_turfs, pos)
@@ -87,7 +94,7 @@
 
 		y_offset += 3
 
-	entrance = locate(Ceiling((longest_tier*2 + 1)*0.5), 2, zlevel.z_value)
+	entrance = locate(ceil((longest_tier*2 + 1)*0.5), 2, zlevel.z_value)
 
 /datum/techtree/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -158,7 +165,12 @@
 
 	if(SEND_SIGNAL(M, COMSIG_MOB_ENTER_TREE, src, force) & COMPONENT_CANCEL_TREE_ENTRY) return
 
-	new/mob/hologram/techtree(entrance, M)
+	var/tech_hologram = new/mob/hologram/techtree(entrance, M)
+
+	M.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	M.sync_lighting_plane_alpha()
+
+	M.RegisterSignal(tech_hologram, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_lighting_alpha))
 
 	return TRUE
 
@@ -168,6 +180,7 @@
 
 /// `tech`: a typepath to a tech
 /datum/techtree/proc/get_node(tech)
+	RETURN_TYPE(/datum/tech)
 	return techs_by_type[tech]
 
 /datum/techtree/proc/on_node_gained(obj/structure/resource_node/RN)

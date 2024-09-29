@@ -1,7 +1,7 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
 /// A list of fultons currently airborne.
-var/global/list/deployed_fultons = list()
+GLOBAL_LIST_EMPTY(deployed_fultons)
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
@@ -36,7 +36,7 @@ var/global/list/deployed_fultons = list()
 		attached_atom = null
 	if(original_location)
 		original_location = null
-	deployed_fultons -= src
+	GLOB.deployed_fultons -= src
 	. = ..()
 
 /obj/item/stack/fulton/update_icon()
@@ -90,7 +90,7 @@ var/global/list/deployed_fultons = list()
 			var/mob/living/carbon/human/H = target_atom
 			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
+			else if((H.stat != DEAD || H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
@@ -140,10 +140,12 @@ var/global/list/deployed_fultons = list()
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
-	reservation = SSmapping.RequestBlockReservation(3, 3, turf_type_override = /turf/open/space)
-	var/middle_x = reservation.bottom_left_coords[1] + FLOOR((reservation.top_right_coords[1] - reservation.bottom_left_coords[1]) / 2, 1)
-	var/middle_y = reservation.bottom_left_coords[2] + FLOOR((reservation.top_right_coords[2] - reservation.bottom_left_coords[2]) / 2, 1)
-	var/turf/space_tile = locate(middle_x, middle_y, reservation.bottom_left_coords[3])
+	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
+	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
+	var/turf/top_right_turf = reservation.top_right_turfs[1]
+	var/middle_x = bottom_left_turf.x + floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return
@@ -154,7 +156,7 @@ var/global/list/deployed_fultons = list()
 	attached_atom.forceMove(space_tile)
 
 	forceMove(attached_atom)
-	deployed_fultons += src
+	GLOB.deployed_fultons += src
 	attached_atom.overlays -= I
 
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
@@ -169,11 +171,11 @@ var/global/list/deployed_fultons = list()
 	attached_atom.anchored = FALSE
 	playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
-	if(intel_system)
+	if(GLOB.intel_system)
 		if (!LAZYISIN(GLOB.failed_fultons, attached_atom))
 			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
 			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
-			intel_system.store_single_objective(objective)
+			GLOB.intel_system.store_single_objective(objective)
 
 	qdel(reservation)
 	qdel(src)

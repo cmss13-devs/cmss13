@@ -351,8 +351,7 @@
 "iW" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -859,8 +858,7 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "ui" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)

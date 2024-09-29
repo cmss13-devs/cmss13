@@ -131,7 +131,7 @@
 
 /area/adminlevel/ert_station/anchorpoint_station
 	name = "Anchorpoint"
-	icon_state = "blue"
+	icon_state = "white"
 
 /area/adminlevel/ert_station/freelancer_station
 	name = "Freelancer Station"

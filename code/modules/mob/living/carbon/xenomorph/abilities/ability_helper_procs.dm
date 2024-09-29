@@ -212,8 +212,7 @@
 	is_zoomed = 0
 	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
-		if(!action.ignore_check_state)
-			action.on_zoom_out()
+		action.on_zoom_out()
 		return
 
 /mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/turf, spray_type = /obj/effect/xenomorph/spray, range = 3)

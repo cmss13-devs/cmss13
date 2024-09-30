@@ -15,6 +15,8 @@
 		else
 			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
 
+		clan_info.player_name = prefs.predator_name
+
 		clan_info.save()
 
 /client/proc/usr_create_new_clan()

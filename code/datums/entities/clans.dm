@@ -5,6 +5,7 @@
 	var/clan_id
 
 	var/honor
+	var/player_name
 
 /datum/entity/clan
 	var/name
@@ -40,6 +41,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"permissions" = DB_FIELDTYPE_BIGINT,
 		"clan_id" = DB_FIELDTYPE_BIGINT,
 		"honor" = DB_FIELDTYPE_BIGINT,
+		"player_name" = DB_FIELDTYPE_STRING_MEDIUM
 	)
 	key_field = "player_id"
 
@@ -76,6 +78,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	var/permissions
 	var/clan_name
 	var/honor
+	var/player_name
 
 /datum/entity_view_meta/clan_players_view
 	root_record_type = /datum/entity/clan_player
@@ -88,7 +91,8 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"honor",
 		"clan_player_id" = "id",
 		"clan_name" = "clan.name",
-		"ckey" = "player.ckey"
+		"ckey" = "player.ckey",
+		"player_name",
 	)
 	order_by = list("clan_rank" = DB_ORDER_BY_DESC)
 

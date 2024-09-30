@@ -122,7 +122,7 @@ CIVILIAN
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 	)
 
-/datum/skills/civilian/survivor/pmc/SL
+/datum/skills/civilian/survivor/pmc/lead
 	name = "Survivor PMC Team Leader"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,

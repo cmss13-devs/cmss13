@@ -29,7 +29,7 @@ const ViewClans = (props) => {
 
   return (
     <Section>
-      <Tabs fluid textAlign="center">
+      <Tabs textAlign="center" variant="scrollable" scrollButtons="auto">
         {clans.map((category, i) => (
           <Tabs.Tab
             key={i}

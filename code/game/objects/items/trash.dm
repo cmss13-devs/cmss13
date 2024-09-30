@@ -126,7 +126,7 @@
 /obj/item/trash/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
-	icon = 'icons/obj/items/clothing/masks.dmi'
+	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	icon_state = "cigbutt"
 	w_class = SIZE_TINY
 	throwforce = 1

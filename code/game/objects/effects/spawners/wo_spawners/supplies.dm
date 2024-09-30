@@ -107,10 +107,10 @@
 
 /obj/effect/landmark/wo_supplies/storage
 	icon_state = null
+	icon = 'icons/obj/items/clothing/accessory/webbings.dmi'
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/storage/webbing
-	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "webbing"
 	stuff = list(/obj/item/clothing/accessory/storage/webbing)
 
@@ -195,7 +195,7 @@
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/USCM.dmi'
 	icon_state = "powerpack"
 	stuff = list(/obj/item/smartgun_battery)
 

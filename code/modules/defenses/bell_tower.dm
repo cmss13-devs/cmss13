@@ -223,7 +223,7 @@
 
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/USCM.dmi'
 	icon_state = "bell_backpack"
 	max_storage_space = 10
 	worn_accessible = TRUE

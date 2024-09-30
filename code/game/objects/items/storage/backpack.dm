@@ -5,7 +5,7 @@
 /obj/item/storage/backpack
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
 	icon_state = "backpack"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK //ERROOOOO
@@ -863,7 +863,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "Toggle Cloak"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/items/clothing/backpacks.dmi', button, "scout_cloak")
+	var/image/IMG = image('icons/obj/items/clothing/backpack/backpacks_by_faction/USCM.dmi', button, "scout_cloak")
 	button.overlays += IMG
 
 /datum/action/item_action/specialist/toggle_cloak/can_use_action()

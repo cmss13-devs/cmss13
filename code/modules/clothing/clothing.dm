@@ -232,7 +232,7 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/items/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"

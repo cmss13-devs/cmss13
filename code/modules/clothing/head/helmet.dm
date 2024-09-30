@@ -287,7 +287,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine
 	name = "\improper M10 pattern marine helmet"
 	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "helmet"
 	item_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -300,7 +300,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	health = 5
 	force = 15
-	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
+	throwforce = 15
 	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
 	var/obj/structure/machinery/camera/camera
 	var/helmet_overlays[]
@@ -561,7 +561,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
 	if(flags_marine_helmet & HELMET_DAMAGE_OVERLAY && !(flags_marine_helmet & HELMET_IS_DAMAGED))
-		helmet_overlays["damage"] = image('icons/obj/items/clothing/cm_hats.dmi',icon_state = "hugger_damage")
+		// helmet_overlays["damage"] = image('icons/obj/items/clothing/cm_hats.dmi', icon_state = "hugger_damage")
 		flags_marine_helmet |= HELMET_IS_DAMAGED
 		update_icon()
 		desc += "\n<b>This helmet seems to be scratched up and damaged, particularly around the face area...</b>"
@@ -1111,10 +1111,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/uppcap
 	name = "\improper UL2 UPP cap"
 	desc = "UPP headgear issued to soldiers when they're not expected to face combat, and may be requested by officers and above."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	icon_state = "upp_cap"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
 	)
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
@@ -1192,7 +1192,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/specrag
 	name = "weapons specialist head-rag"
 	desc = "A hat worn by heavy-weapons operators to block sweat."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "spec"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1204,9 +1204,23 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
+
+/obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+
 
 /obj/item/clothing/head/helmet/specrag/New()
 	select_gamemode_skin(type)
@@ -1215,7 +1229,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/skullcap
 	name = "skullcap"
 	desc = "Good for keeping sweat out of your eyes"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "skullcap"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -1227,9 +1241,27 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
+
+/obj/item/clothing/head/helmet/skullcap/New()
+	select_gamemode_skin(type)
+	..()
+
+/obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+
 
 /obj/item/clothing/head/helmet/skullcap/jungle
 	name = "\improper M8 marksman cowl"

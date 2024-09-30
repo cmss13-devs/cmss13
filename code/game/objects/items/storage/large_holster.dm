@@ -203,7 +203,7 @@
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
 	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	icon_state = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
 	var/obj/item/ammo_magazine/flamer_tank/large/fuel
@@ -223,7 +223,23 @@
 	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
 	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
 	active_fuel = fuel
-	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
+	flamer_overlay = overlay_image('icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi', "+m240t")
+
+/obj/item/storage/large_holster/fuelpack/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/snow.dmi'
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
 	QDEL_NULL(active_fuel)

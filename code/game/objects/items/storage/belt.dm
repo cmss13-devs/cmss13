@@ -2,6 +2,7 @@
 	name = "belt"
 	desc = "Can hold various things."
 	icon_state = "utilitybelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
@@ -989,6 +990,26 @@
 		/obj/item/ammo_magazine/pistol,
 	)
 
+/obj/item/storage/belt/gun/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/storage/belt/gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state
 	//Saving current inhands, since we'll be switching item_state around for belt onmobs.
@@ -1046,15 +1067,15 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 7, TRUE)
-		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
+		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
 		if(gun_has_gamemode_skin)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
-					gun_underlay = image(icon, "s_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
 				if("desert")
-					gun_underlay = image(icon, "d_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "d_" + current_gun.base_gun_icon)
 				if("classic")
-					gun_underlay = image(icon, "c_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color

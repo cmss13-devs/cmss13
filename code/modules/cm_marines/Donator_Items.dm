@@ -11,7 +11,7 @@
 	icon_state = null
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/donator.dmi'
 	icon_override = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS

@@ -4,6 +4,7 @@
 	gender = PLURAL
 	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
 	icon_state = "ranks_enlisted"
+	icon = 'icons/obj/items/clothing/accessory/ranks.dmi'
 	var/rank = "Private"
 	var/rank_short = PAY_SHORT_ME1
 	slot = ACCESSORY_SLOT_RANK

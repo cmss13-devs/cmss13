@@ -1,7 +1,7 @@
 #define HAT_GARB_RELAY_ICON_STATE "icon_state"
 /obj/item/clothing/head
 	name = "head"
-	icon = 'icons/obj/items/clothing/hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	flags_armor_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
@@ -19,7 +19,6 @@
 /obj/item/clothing/head/cmbandana
 	name = "bandana"
 	desc = "Typically worn by heavy-weapon operators, mercenaries and scouts, the bandana serves as a lightweight and comfortable hat. Comes in two stylish colors."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "band"
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
@@ -37,10 +36,10 @@
 /obj/item/clothing/head/beanie
 	name = "beanie"
 	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though it is not uncommon to see combat personnel who no longer care about self-preservation wearing one of these as well. Popular due to being comfortable and snug."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	icon_state = "beanie_cargo"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
 
 /obj/item/clothing/head/beanie/green
@@ -55,7 +54,7 @@
 /obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	icon_state = "beret"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
@@ -64,6 +63,22 @@
 /obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/beret/cm)
+
+/obj/item/clothing/head/beret/cm/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
@@ -153,6 +168,22 @@
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/headband)
 
+/obj/item/clothing/head/headband/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 
@@ -216,7 +247,7 @@
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
-	icon = 'icons/obj/items/clothing/hats.dmi'
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	icon_state = "headband_rambo"
 	item_icons = list(
 		WEAR_HEAD = 'icons/obj/items/clothing/halloween_clothes.dmi'
@@ -226,16 +257,15 @@
 	name = "\improper USCM headset"
 	desc = "A headset typically found in use by radio-operators and officers. This one appears to be malfunctioning."
 	icon_state = "headset"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
 /obj/item/clothing/head/cmcap
 	name = "patrol cap"
 	desc = "A casual cap issued as part of the non-combat uniform. While it only protects from the sun, it's much more comfortable than a helmet."
 	icon_state = "cap"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	var/helmet_overlays[]
 	var/flipped_cap = FALSE
 	var/list/flipping_message = list(
@@ -302,6 +332,22 @@
 	pockets.bypass_w_limit = allowed_hat_items
 	pockets.max_storage_space = storage_max_storage_space
 
+/obj/item/clothing/head/cmcap/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
 		..(user)
@@ -334,12 +380,12 @@
 		return return_image
 
 	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
-		for(var/obj/garb_object in pockets.contents)
+		for(var/obj/item/garb_object in pockets.contents)
 			if(garb_object.type in allowed_hat_items)
 				var/garb_state = allowed_hat_items[garb_object.type]
 				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
 					garb_state = "hat_[garb_object.icon_state]"
-				var/image/garb_image = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
+				var/image/garb_image = overlay_image(garb_object.garb_icon, "[garb_state]", color, RESET_COLOR)
 				return_image.overlays += garb_image
 
 	return return_image
@@ -419,7 +465,6 @@
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
 	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
 
@@ -434,10 +479,10 @@
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
 	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	icon_state = "cmohat"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
 //============================//BERETS\\=================================\\
@@ -452,7 +497,7 @@
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
@@ -501,12 +546,24 @@
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine commanding officer beret"
 	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
-	)
 	black_market_value = 30
+
+/obj/item/clothing/head/beret/marine/commander/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
@@ -531,29 +588,21 @@
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	icon_state = "marine_formal"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
 /obj/item/clothing/head/marine/peaked/service
 	name = "marine service peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "marine_service"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 
 /obj/item/clothing/head/marine/peaked/captain
 	name = "marine commanding officer peaked cap"
 	desc = "A peaked cap with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
@@ -584,7 +633,7 @@
 /obj/item/clothing/head/beret/marine/ro
 	name = "\improper USCM quartermaster beret"
 	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	icon_state = "ro_beret"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
@@ -646,9 +695,9 @@
 /obj/item/clothing/head/ivanberet
 	name = "\improper Black Beret"
 	desc = "Worn by officers of special units."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
 	)
 	icon_state = "ivan_beret"
 	item_state = "ivan_beret"
@@ -670,9 +719,9 @@
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
 	)
 	icon_state = "cmbcap"
 	flags_armor_protection = BODY_FLAG_HEAD
@@ -690,9 +739,9 @@
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
 	desc = "A sturdy freelancer's cap. More protective than it seems."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
 	)
 	icon_state = "freelancer_cap"
 	siemens_coefficient = 2
@@ -717,9 +766,9 @@
 /obj/item/clothing/head/militia
 	name = "\improper armored militia cowl"
 	desc = "A large hood in service with some militias, meant for obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
 	)
 	icon_state = "rebel_hood"
 	siemens_coefficient = 2
@@ -765,29 +814,40 @@
 	name = "durag"
 	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon_state = "durag"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_inv_hide = HIDETOPHAIR
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 
-/obj/item/clothing/head/durag/black
-	icon_state = "duragblack"
-	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_SNOW_TYPE
+/obj/item/clothing/head/durag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/durag/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/durag)
 
+/obj/item/clothing/head/durag/black
+	icon_state = "duragblack"
+	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
 	desc = "A formal hat worn by drill sergeants. Police that moustache."
 	icon_state = "drillhat"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
 #undef HAT_GARB_RELAY_ICON_STATE
@@ -812,10 +872,10 @@
 /obj/item/clothing/head/owlf_hood
 	name = "\improper OWLF thermal hood"
 	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	icon_state = "owlf_hood"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
 	)
 	item_state = "owlf_hood"
 
@@ -827,9 +887,9 @@
 	desc = "A standard military beanie."
 	icon_state = "rmc_beanie"
 	item_state = "rmc_beanie"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'
 	)
 
 /obj/item/clothing/head/beanie/royal_marine/turban
@@ -843,7 +903,7 @@
 	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'

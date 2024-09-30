@@ -131,3 +131,20 @@
 	base_icon_state = "ballisticshield"
 	passive_block = 60
 	readied_block = 90
+
+/obj/item/weapon/shield/riot/protector //UPP syn
+	name = "Type 2 Protector shield"
+	desc = "A special-issue ballistic shield manufactured in the Union of Progressive Peoples, developed from lessons learnt after the Sol Campaign. This was prepared for heavy point units, protecting multiple users behind the lead individual's tall shield, and able to be staked down to provide fire - this unit is missing its ground stakes. It is not recommended for extensive usage unless a Synthetic is present due to the immense weight, though it can be folded down for easier storage."
+	icon_state = "protectorshield"
+	item_state = "protectorshield"
+	base_icon_state = "protectorshield"
+	flags_equip_slot = SLOT_BACK
+	force = 30
+	passive_block = 70
+	readied_block = 95
+	readied_slowdown = SLOWDOWN_ARMOR_LOWHEAVY // very slow
+	throwforce = 10
+	throw_speed = SPEED_VERY_SLOW
+	throw_range = 2
+	w_class = SIZE_LARGE
+	matter = list("glass" = 2000, "metal" = 8000)

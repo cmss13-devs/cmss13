@@ -17,6 +17,27 @@
 	new /obj/item/reagent_container/pill/happy( src )
 	new /obj/item/reagent_container/pill/happy( src )
 
+/obj/item/storage/pill_bottle/frenzy
+	name = "Frenzy"
+	gender = PLURAL
+	desc = "A highly illegal concotion of drugs, infamously utilized by CLF fighters to improve performance and steel their nerves before combat. Extremely volatile side effects. The subject of many CMB sting operations, a minimum charge for possession of Frenzy carries at least 10 years in UA federal prison."
+	skilllock = SKILL_MEDICAL_TRAINED
+
+/obj/item/storage/pill_bottle/frenzy/Initialize()
+	. = ..()
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+	new /obj/item/reagent_container/pill/frenzy( src )
+
 /obj/item/storage/pill_bottle/zombie_powder
 	name = "suspicious pill bottle"
 	icon_state = "pill_canister10"

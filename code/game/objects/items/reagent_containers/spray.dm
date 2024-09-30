@@ -237,3 +237,15 @@
 /obj/item/reagent_container/spray/hydro/Initialize()
 	. = ..()
 	reagents.add_reagent("ammonia", src.volume)
+
+// CLF spray
+/obj/item/reagent_container/spray/clf
+	name = "CLF spray"
+	desc = "An everyday space cleaner container filled with a volatile substance by a nefarious ideological organization. Extremely illegal, probably. Don't get any on yourself."
+	icon_state = "cleaner"
+	volume = 100
+
+
+/obj/item/reagent_container/spray/clf/Initialize()
+	. = ..()
+	reagents.add_reagent("chlorine trifluoride", 100)

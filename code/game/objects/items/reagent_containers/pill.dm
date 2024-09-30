@@ -223,6 +223,11 @@
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
 
+/obj/item/reagent_container/pill/frenzy
+	pill_desc = "A combination of Jungle Devil, Blu-Blu, Tungalou and a mix of pain-numbing opioids. CLF Fighters use this before conducting fights or raids, otherwise known as a 'Nerve-Number', a play on beta-blockers. Any one of the drugs used in this concoction would land you a cold jailcell in Sol, but just being associated with Frenzy in the Outer Veil places you under #1 surveillance by the CMB."
+	pill_initial_reagents = list("space_drugs" = 8, "paroxetine" = 8, "lipozine" = 1, "oxycodone" = 10, "inaprovaline" = 10, "catecholamineplasma" = 8)
+	pill_icon_class = "drug"
+
 /obj/item/reagent_container/pill/zombie_powder
 	desc = "A strange pill that smells like death itself."
 	pill_desc = "A strange pill that smells like death itself."

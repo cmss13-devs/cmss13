@@ -442,8 +442,11 @@
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
+	if(is_dead())
+		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+		return
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
-		if(xeno.hivenumber == hivenumber && hive.living_xeno_queen)
+		if(xeno.hivenumber == hivenumber)
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 

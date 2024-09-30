@@ -83,7 +83,7 @@
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/civilian/survivor/pmc/SL
+	skills = /datum/skills/civilian/survivor/pmc/lead
 
 /datum/equipment_preset/survivor/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader, WEAR_BODY)

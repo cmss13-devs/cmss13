@@ -4,18 +4,15 @@
 	var/user_rights = 0
 	var/global_data = list()
 
-/proc/init_global_clan_data()
-	var/datum/yautja_panel/panel = new
-	panel.first_populate_global_clan_data()
-	return panel
+GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE))
 
-GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, init_global_clan_data())
-
-/datum/yautja_panel/New(client/origin_client)
+/datum/yautja_panel/New(client/origin_client, init_global = FALSE)
 	. = ..()
 	if(origin_client)
 		linked_client = origin_client
 		user_rights = linked_client.clan_info.permissions
+	if(init_global)
+		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 SECONDS)
 
 /client
 	var/datum/yautja_panel/yautja_panel
@@ -75,10 +72,6 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, init_global_clan_data()
 			current_menu = "view_clans"
 	return TRUE
 
-/datum/yautja_panel/proc/first_populate_global_clan_data()
-	log_debug("Yautja Clan Global Data will be begin populating in 30 seconds.")
-	addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 SECONDS)
-
 /datum/yautja_panel/proc/populate_global_clan_data(start_timer = FALSE)
 	log_debug("Populating Yautja Clan Global Data.")
 	global_data = populate_clan_data()
@@ -118,7 +111,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, init_global_clan_data()
 		var/yautja = list()
 		yautja["ckey"] = CP.ckey
 		yautja["player_label"] = CP.ckey
-		yautja["name"] = CP.player_name
+		yautja["name"] = (CP.player_name? CP.player_name : "No Data")
 		yautja["player_id"] = CP.player_id
 		yautja["rank"] = GLOB.clan_ranks[CP.clan_rank]
 		yautja["honor_amount"] = (CP.honor? CP.honor : 0)

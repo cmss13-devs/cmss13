@@ -2,7 +2,7 @@
 	var/client/linked_client
 	var/current_menu = "view_clans"
 	var/user_rights = 0
-	var/global_data = list()
+	var/list/global_data
 
 GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE))
 
@@ -22,6 +22,10 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	set category = "OOC.Records"
 
 	if(!check_whitelist_status(WHITELIST_PREDATOR))
+		return FALSE
+
+	if(!GLOB.yautja_clan_data.global_data)
+		to_chat(usr, SPAN_WARNING("Clan Data has not populated yet, please wait for up to 30 seconds."))
 		return FALSE
 
 	if(yautja_panel)

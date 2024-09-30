@@ -739,7 +739,7 @@
 			txt += "[MAIN_SHIP_NAME] intelligence Relay</H2></center>"
 			txt += "Progress report<BR>\n\n"
 			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[1]], Recent discovery made us believe the one of the missing pieces has [isNeutralProperty(hint[3]) ? "neutral" : "negative"] effects.<BR>\n"
-			txt += "This will be the last transmission before the scheduled communications blackout, Testing is succesfull so far.<BR>\n"
+			txt += "This will be the last transmission before the scheduled communications blackout, Testing is successful so far.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("ciph_hint_complete") //todo, rewrite this, same for ^^^
 			icon_state = "paper_wy_words"

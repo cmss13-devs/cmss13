@@ -57,6 +57,17 @@
 
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
+/datum/language/scandinavian
+	name = LANGUAGE_SCANDINAVIAN
+	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
+	speech_verb = "blubbers"
+	ask_verb = "queries"
+	exclaim_verb = "yelps"
+	color = "blue"
+	key = "0"
+
+	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ingen", "genet", "purke", "er", "nei", "hjort", "tysk", "de", "kjaere", "en", "stein", "ingen", "ja", "ull", "silke", "pa", "hun", "kj", "erg", "bare", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fire", "dag", "god", "jul", "ild", "fem", "jeg", "deg")
+
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."

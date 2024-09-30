@@ -73,3 +73,11 @@ AddTimelock(/datum/job/fax_responder/cmb, list(
 	JOB_POLICE_ROLES = 75 HOURS,
 	JOB_COMMAND_ROLES = 25 HOURS,
 ))
+
+/datum/job/fax_responder/press
+	title = JOB_FAX_RESPONDER_PRESS
+	gear_preset = /datum/equipment_preset/fax_responder/press
+
+AddTimelock(/datum/job/fax_responder/press, list(
+	JOB_CIVIL_ROLES = 25 HOURS,
+))

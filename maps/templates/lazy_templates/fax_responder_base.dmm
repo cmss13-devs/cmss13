@@ -150,6 +150,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/fax_response_station)
+"qw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/press/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "rV" = (
 /obj/effect/landmark/late_join/responder/uscm/provost,
 /turf/open/floor/wood/ship,
@@ -260,17 +267,6 @@
 	hull = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
-"wK" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony,
-/obj/structure/machinery/door/poddoor/almayer{
-	unacidable = 1;
-	use_power = 0;
-	needs_power = 0;
-	dir = 4;
-	id = "Faxes"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/fax_response_station)
 "xb" = (
 /obj/effect/landmark/late_join/responder/wey_yu,
 /turf/open/floor/wood/ship,
@@ -339,6 +335,10 @@
 	name = "yellow stamp";
 	pixel_y = -8
 	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Bz" = (
+/obj/effect/landmark/late_join/responder/press,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "BC" = (
@@ -574,6 +574,47 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/upp/highcom{
 	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Wv" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary{
+	pixel_x = -6;
+	pixel_y = 6;
+	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
+	phone_id = "Free Press Relay";
+	phone_category = "Comms Relay";
+	networks_receive = list("Fax Responders")
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"XW" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	name = "USCM monitoring computer"
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2046,7 +2087,7 @@ xX
 xX
 xX
 xX
-wK
+vc
 xX
 xX
 xX
@@ -2086,21 +2127,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
-nB
-OA
-wv
-fr
 xX
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+pu
+xX
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy
@@ -2133,21 +2174,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
-EI
-gu
-gu
-gu
 xX
-Yy
-Yy
-Yy
-Yy
-Yy
+nB
+OA
+wv
+fr
+xX
+vc
+xX
+YR
+OA
+Bz
+fr
+xX
+xX
 Yy
 Yy
 Yy
@@ -2180,21 +2221,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
-gu
+xX
+EI
 gu
 gu
 gu
 xX
-Yy
-Yy
-Yy
-Yy
-Yy
+vc
+xX
+Ba
+gu
+gu
+gu
+xX
+xX
 Yy
 Yy
 Yy
@@ -2227,21 +2268,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
-ny
-ST
+xX
 gu
-Nb
+gu
+gu
+gu
+pH
+vc
+pH
+gu
+gu
+gu
+gu
 xX
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
 Yy
 Yy
 Yy
@@ -2274,21 +2315,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
-wx
-kT
-Bp
-sx
 xX
-Yy
-Yy
-Yy
-Yy
-Yy
+ny
+ST
+gu
+Nb
+xX
+vc
+xX
+qw
+ST
+gu
+Wv
+xX
+xX
 Yy
 Yy
 Yy
@@ -2321,21 +2362,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
 xX
 xX
+wx
+kT
+Bp
+sx
+xX
+vc
+xX
+XW
+kT
+Bp
+sx
 xX
 xX
-xX
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
 Yy
 Yy
 Yy
@@ -2368,21 +2409,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+vc
+xX
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy
@@ -2415,21 +2456,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy

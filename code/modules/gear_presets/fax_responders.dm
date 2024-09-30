@@ -162,3 +162,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/fax_responder/press
+	name = "Fax Responder - CMB"
+	assignment = JOB_FAX_RESPONDER_PRESS
+	rank = JOB_FAX_RESPONDER_PRESS
+	headset_type = /obj/item/device/radio/headset/almayer/reporter
+	idtype = /obj/item/card/id/silver/cl
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/fax_responder/press/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)

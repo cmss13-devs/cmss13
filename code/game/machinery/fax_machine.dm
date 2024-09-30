@@ -25,7 +25,8 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 #define FAX_NET_UPP_HC "UPP High Command Quantum Relay"
 #define FAX_NET_CLF "Peridia Encrypted Network"
 #define FAX_NET_CLF_HC "Peridia Quantum Relay"
-#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC)
+#define FAX_NET_PRESS_HC "Free Press Quantum Relay"
+#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC, FAX_NET_PRESS_HC)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -103,6 +104,8 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 			id_tag_prefix = "PRD"//PeRiDia
 		if(FAX_NET_CLF_HC)
 			id_tag_final = FAX_NET_CLF_HC
+		if(FAX_NET_PRESS_HC)
+			id_tag_final = FAX_NET_PRESS_HC
 
 	if(!id_tag_final)
 		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
@@ -408,7 +411,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
-	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list)
+	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name)
 
 	GLOB.fax_contents += faxcontents
 
@@ -504,7 +507,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 			// give the sprite some time to flick
 			spawn(30)
 				var/obj/item/paper/P = new(target.loc,faxcontents.photo_list)
-				P.name = "faxed message"
+				if(!faxcontents.paper_name)
+					P.name = "faxed message"
+				else
+					P.name = "faxed message ([faxcontents.paper_name])"
 				P.info = "[faxcontents.data]"
 				P.update_icon()
 				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
@@ -530,6 +536,11 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 					if(FAX_NET_CLF_HC)
 						stampoverlay.icon_state = "paper_stamp-clf"
 						encrypted = TRUE
+					if(FAX_NET_PRESS_HC)
+						stampoverlay.icon_state = "paper_stamp-rd"
+						encrypted = TRUE
+					else
+						stampoverlay.icon_state = "paper_stamp-fax"
 
 
 				if(encrypted)
@@ -624,6 +635,11 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	network = FAX_NET_TWE_HC
 	target_department = "TWE Local Operations"
 
+/obj/structure/machinery/faxmachine/press/highcom
+	department = DEPARTMENT_PRESS
+	network = FAX_NET_PRESS_HC
+	target_department = "General Public"
+
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack
 	name = "\improper Portable Press Fax Machine"
@@ -705,8 +721,11 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 /datum/fax
 	var/data
 	var/list/photo_list
+	var/paper_name
 
-/datum/fax/New(data, photo_list)
+/datum/fax/New(new_data, new_photo_list, new_name)
 	. = ..()
-	src.data = data
-	src.photo_list = photo_list
+	data = new_data
+	photo_list = new_photo_list
+	if(new_name != "paper")
+		paper_name = new_name

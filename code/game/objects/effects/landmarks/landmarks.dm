@@ -493,6 +493,10 @@
 	name = "CMB Fax Responder late join"
 	job = JOB_FAX_RESPONDER_CMB
 
+/obj/effect/landmark/late_join/responder/press
+	name = "Press Fax Responder late join"
+	job = JOB_FAX_RESPONDER_PRESS
+
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms
 	name = "static comms"

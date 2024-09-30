@@ -43112,6 +43112,11 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_two)
+"hWq" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "hWz" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
@@ -44396,7 +44401,7 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_central_north)
 "ltY" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/interior/caves/temple)
 "lwh" = (
@@ -44721,7 +44726,6 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/metal/almayer,
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_central_north)
@@ -45114,6 +45118,11 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_east)
+"nge" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "ngk" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/bright_clean2,
@@ -47479,7 +47488,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sXT" = (
-/obj/structure/platform/metal/almayer/east,
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform/metal/almayer/east,
 /turf/open/gm/river/desert/shallow_corner,
@@ -48670,6 +48678,11 @@
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"vOd" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "vOv" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -49233,9 +49246,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "xdI" = (
+/obj/structure/platform/metal/almayer,
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "xdV" = (
@@ -103520,7 +103533,7 @@ aBE
 aAv
 rbK
 xel
-rbK
+vOd
 qJU
 ooQ
 aCk
@@ -103986,9 +103999,9 @@ qjg
 azB
 aBE
 aAv
-rbK
+nge
 mfh
-rbK
+hWq
 qJU
 aBE
 qjg

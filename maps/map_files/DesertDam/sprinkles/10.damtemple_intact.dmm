@@ -277,10 +277,18 @@
 /obj/item/storage/large_holster/katana,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"uF" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "uK" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"uM" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "uO" = (
@@ -299,6 +307,10 @@
 	},
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"vU" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/interior/caves/temple)
 "vY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -600,6 +612,10 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"XB" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "XQ" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/tool/kitchen/tray{
@@ -738,7 +754,7 @@ wi
 wi
 wi
 wi
-tn
+vU
 MH
 "}
 (6,1,1) = {"
@@ -938,7 +954,7 @@ mB
 mB
 FE
 JM
-FE
+uM
 mB
 mB
 MH
@@ -988,9 +1004,9 @@ mB
 MH
 mB
 mB
-FE
+XB
 QT
-FE
+uF
 mB
 mB
 Eh

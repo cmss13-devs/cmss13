@@ -41,7 +41,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"permissions" = DB_FIELDTYPE_BIGINT,
 		"clan_id" = DB_FIELDTYPE_BIGINT,
 		"honor" = DB_FIELDTYPE_BIGINT,
-		"player_name" = DB_FIELDTYPE_STRING_MEDIUM
+		"player_name" = DB_FIELDTYPE_STRING_MEDIUM,
 	)
 	key_field = "player_id"
 

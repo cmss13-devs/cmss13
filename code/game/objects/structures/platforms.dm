@@ -456,7 +456,7 @@
 
 /obj/structure/platform_decoration/stone/runed_sandstone
 	name = "sandstone temple platform corner"
-	icon_state = "sandstone_deco"
+	icon_state = "stone_deco"
 	color = "#b29082"
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north

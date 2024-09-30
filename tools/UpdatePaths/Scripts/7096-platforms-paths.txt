@@ -121,9 +121,9 @@
 /obj/structure/platform_decoration/mineral/sandstone{dir=8} : /obj/structure/platform_decoration/stone/sandstone/west{@OLD;dir=@SKIP}
 /obj/structure/platform_decoration/mineral/sandstone : /obj/structure/platform_decoration/stone/sandstone{@OLD;dir=@SKIP}
 
-/obj/structure/platform_decoration/mineral/sandstone/rune{dir=1} : /obj/structure/platform_decoration/stone/runed_sandstone/north{@OLD;dir=@SKIP}
-/obj/structure/platform_decoration/mineral/sandstone/rune{dir=4} : /obj/structure/platform_decoration/stone/runed_sandstone/east{@OLD;dir=@SKIP}
-/obj/structure/platform_decoration/mineral/sandstone/rune{dir=8} : /obj/structure/platform_decoration/stone/runed_sandstone/west{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=1} : /obj/structure/platform_decoration/stone/runed_sandstone/north{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=4} : /obj/structure/platform_decoration/stone/runed_sandstone/east{@OLD;dir=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=8} : /obj/structure/platform_decoration/stone/runed_sandstone/west{@OLD;dir=@SKIP}
 /obj/structure/platform_decoration/mineral/sandstone/runed : /obj/structure/platform_decoration/stone/runed_sandstone{@OLD;dir=@SKIP}
 
 

@@ -305,7 +305,7 @@
 		if(mode == MODE_ADD && reference?.completed)
 			var/total_target_value
 			for(var/datum/chem_property/reference_property in reference.data.properties)
-				property_costs[reference_property.name] = max(min(reference_property.level - 1, PROPERTY_COST_MAX), 1)
+				property_costs[reference_property.name] = clamp(reference_property.value + reference_property.level - 1, 1, PROPERTY_COST_MAX)
 				if(length(target.data.properties) > 5)
 					property_costs[reference_property.name] += PROPERTY_MULTIPLIER_ADD_BULK
 			for(var/datum/chem_property/target_property in target.data.properties)

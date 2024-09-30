@@ -64,7 +64,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	var/fax_cooldown = 300
 	COOLDOWN_DECLARE(send_cooldown)
 
+	/// Unique identifier for the fax machine.
 	var/machine_id_tag
+	/// Whether or not the ID tag can be changed by proc.
+	var/fixed_id_tag = FALSE
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
@@ -72,7 +75,9 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	update_departments()
 	generate_id_tag()
 
-/obj/structure/machinery/faxmachine/proc/generate_id_tag()
+/obj/structure/machinery/faxmachine/proc/generate_id_tag(force = FALSE)
+	if(fixed_id_tag && !force)
+		return FALSE
 	if(machine_id_tag)
 		GLOB.all_faxcodes -= machine_id_tag
 
@@ -121,6 +126,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/Destroy()
 	GLOB.all_faxmachines -= src
+	GLOB.all_faxcodes -= machine_id_tag
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -648,6 +654,14 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
+	var/obj/item/device/fax_backpack/faxbag
+
+/obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)
+	. = ..()
+	if(portable_id_tag)
+		machine_id_tag = portable_id_tag
+		fixed_id_tag = TRUE
+		GLOB.all_faxcodes += machine_id_tag
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack
@@ -659,6 +673,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_OVERRIDE_NORTHFACE
+	var/machine_id_tag
 
 /obj/item/device/fax_backpack/attack_self(mob/user) //activate item version fax inhand to deploy
 	if(!ishuman(user))
@@ -692,10 +707,12 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
 	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You deploy [src]."))
-		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf)
+		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf, machine_id_tag)
+		deployedfax.faxbag = src
 		transfer_label_component(deployedfax)
 		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
-		qdel(src)
+		user.drop_held_item(src)
+		forceMove(deployedfax)
 		return
 	return ..()
 
@@ -711,9 +728,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 		if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You pick up [src]."))
-			var/obj/item/device/fax_backpack/faxbag = new(loc)
 			transfer_label_component(faxbag)
 			user.put_in_hands(faxbag)
+			if(faxbag.machine_id_tag != machine_id_tag)
+				faxbag.machine_id_tag = machine_id_tag
 			qdel(src)
 			return
 		return ..()

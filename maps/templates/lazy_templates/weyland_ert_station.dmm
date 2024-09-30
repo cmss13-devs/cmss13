@@ -729,7 +729,7 @@
 /turf/open/floor/corsat/green/northeast,
 /area/adminlevel/ert_station/weyland_station)
 "lT" = (
-/obj/structure/machinery/cryopod/right{
+/obj/structure/machinery/cryopod/no_store/right{
 	layer = 3.1;
 	pixel_y = 13
 	},
@@ -1344,7 +1344,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/adminlevel/ert_station/weyland_station)
 "vX" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
 "wa" = (
@@ -2730,7 +2730,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
 "SO" = (
-/obj/structure/machinery/cryopod/right{
+/obj/structure/machinery/cryopod/no_store/right{
 	pixel_y = 6
 	},
 /turf/open/floor/corsat/cargo,

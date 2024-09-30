@@ -177,10 +177,13 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 	var/no_store_pod = FALSE
 
+/obj/structure/machinery/cryopod/right
+	dir = WEST
+
 /obj/structure/machinery/cryopod/no_store
 	no_store_pod = TRUE
 
-/obj/structure/machinery/cryopod/right
+/obj/structure/machinery/cryopod/no_store/right
 	dir = WEST
 
 /obj/structure/machinery/cryopod/Initialize()

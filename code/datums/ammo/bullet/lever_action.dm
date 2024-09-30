@@ -12,6 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
+	effective_range_max = 7
 	handful_state = "lever_action_bullet"
 
 //unused and not working. need to refactor MD code. Unobtainable.

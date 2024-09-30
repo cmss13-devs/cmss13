@@ -92,7 +92,7 @@
 
 	data["label"] = clan_name
 	data["desc"] = clan_desc
-	data["color"] = formatting_clan?.color
+	data["color"] = (formatting_clan?.color? formatting_clan.color : "#ffffff")
 	data["honor"] = (formatting_clan?.honor? formatting_clan.honor : 0)
 	data["members"] = members_list
 	if(clan_to_format)

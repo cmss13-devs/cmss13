@@ -63,10 +63,10 @@
 	speech_verb = "blubbers"
 	ask_verb = "queries"
 	exclaim_verb = "yelps"
-	color = "blue"
+	color = "scandinavian"
 	key = "0"
 
-	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ingen", "genet", "purke", "er", "nei", "hjort", "tysk", "de", "kjaere", "en", "stein", "ingen", "ja", "ull", "silke", "pa", "hun", "kj", "erg", "bare", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fire", "dag", "god", "jul", "ild", "fem", "jeg", "deg")
+	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
 
 /datum/language/spanish
 	name = LANGUAGE_SPANISH

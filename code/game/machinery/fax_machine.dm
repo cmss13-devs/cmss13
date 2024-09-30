@@ -547,10 +547,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 					if(!P.stamped)
 						P.stamped = new
 					P.stamped += /obj/item/tool/stamp
-					P.overlays += stampoverlay
 					P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
 				else
 					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
+				P.overlays += stampoverlay
 				playsound(target.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)
 

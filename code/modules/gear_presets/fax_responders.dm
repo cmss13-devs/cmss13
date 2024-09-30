@@ -166,7 +166,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/press
-	name = "Fax Responder - CMB"
+	name = "Fax Responder - Press"
 	assignment = JOB_FAX_RESPONDER_PRESS
 	rank = JOB_FAX_RESPONDER_PRESS
 	headset_type = /obj/item/device/radio/headset/almayer/reporter

@@ -6,6 +6,7 @@
 /datum/yautja_panel/New(client/origin_client)
 	. = ..()
 	linked_client = origin_client
+	user_rights = linked_client.clan_info.permissions
 
 /client
 	var/datum/yautja_panel/yautja_panel

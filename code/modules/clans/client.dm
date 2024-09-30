@@ -335,9 +335,14 @@
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 					return
 
-				var/input = input(src, "Are you sure you want to purge this person? Type '[player_name]' to purge", "Confirm Purge") as text|null
+				var/typeout = player_name
+				if(!typeout)
+					typeout = "null"
 
-				if(!input || input != player_name)
+				var/input = input(src, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge") as text|null
+
+
+				if(!input || input != typeout)
 					return
 
 				var/target_clan = target.clan_id

@@ -2,11 +2,20 @@
 	var/client/linked_client
 	var/current_menu = "view_clans"
 	var/user_rights = 0
+	var/global_data = list()
+
+/proc/init_global_clan_data()
+	var/datum/yautja_panel/panel = new
+	panel.first_populate_global_clan_data()
+	return panel
+
+GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, init_global_clan_data())
 
 /datum/yautja_panel/New(client/origin_client)
 	. = ..()
-	linked_client = origin_client
-	user_rights = linked_client.clan_info.permissions
+	if(origin_client)
+		linked_client = origin_client
+		user_rights = linked_client.clan_info.permissions
 
 /client
 	var/datum/yautja_panel/yautja_panel
@@ -48,6 +57,37 @@
 	return data
 
 /datum/yautja_panel/ui_static_data()
+	return GLOB.yautja_clan_data.global_data
+
+/datum/yautja_panel/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch (action)
+		if ("set_menu")
+			current_menu = params["new_menu"]
+
+		if ("main_menu")
+			current_menu = "main"
+
+		if ("view_clans")
+			current_menu = "view_clans"
+	return TRUE
+
+/datum/yautja_panel/proc/first_populate_global_clan_data()
+	log_debug("Yautja Clan Global Data will be begin populating in 30 seconds.")
+	addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 SECONDS)
+
+/datum/yautja_panel/proc/populate_global_clan_data(start_timer = FALSE)
+	log_debug("Populating Yautja Clan Global Data.")
+	global_data = populate_clan_data()
+	log_debug("Yautja Clan Global Data has been populated.")
+	if(start_timer)
+		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 MINUTES)
+		log_debug("Yautja Clan Global Data will repopulate in 30 minutes.")
+
+/datum/yautja_panel/proc/populate_clan_data()
 	var/list/data = list()
 	data["clans"] = list()
 
@@ -100,19 +140,3 @@
 		data["clan_id"] = clan_to_format
 
 	return data
-
-/datum/yautja_panel/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-
-	switch (action)
-		if ("set_menu")
-			current_menu = params["new_menu"]
-
-		if ("main_menu")
-			current_menu = "main"
-
-		if ("view_clans")
-			current_menu = "view_clans"
-	return TRUE

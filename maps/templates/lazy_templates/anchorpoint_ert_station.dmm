@@ -17,10 +17,15 @@
 	pixel_x = -25;
 	pixel_y = -5
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ap" = (
 /obj/effect/decal/cleanable/generic,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/item/trash/barcardine,
 /turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "aN" = (
@@ -33,8 +38,27 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
+"bl" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "bn" = (
 /turf/open/floor/strata/white_cyan4/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -50,6 +74,25 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "bE" = (
 /obj/effect/decal/medical_decals{
@@ -69,6 +112,17 @@
 	name = "Surgery Cleaner"
 	},
 /turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/anchorpoint_station)
+"bN" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ct" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "cB" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
@@ -92,13 +146,31 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"cK" = (
+/obj/structure/sign/safety/north{
+	pixel_x = 32;
+	pixel_y = 7
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "cW" = (
 /obj/structure/platform{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"cY" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/shuttle/elevator,
 /area/adminlevel/ert_station/anchorpoint_station)
 "dq" = (
 /obj/effect/decal/warning_stripes{
@@ -126,6 +198,7 @@
 /obj/item/weapon/shield/riot,
 /obj/item/weapon/shield/riot,
 /obj/item/weapon/shield/riot,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "dV" = (
@@ -135,8 +208,32 @@
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
+"ej" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "el" = (
 /turf/closed/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"eq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "et" = (
 /obj/structure/barricade/handrail/type_b,
@@ -159,6 +256,13 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
+"eP" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/meatsteak{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
 "fc" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/largecrate/random/barrel/true_random,
@@ -174,7 +278,27 @@
 	id = "RMC_brig_1";
 	name = "shutters"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"fs" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ft" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/anchorpoint_station)
+"fY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "gf" = (
 /obj/structure/barricade/handrail/type_b{
@@ -220,6 +344,9 @@
 	id = "RMC_Pub_brig";
 	name = "shutters"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "gE" = (
@@ -232,6 +359,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/bluefull,
 /area/adminlevel/ert_station/anchorpoint_station)
+"gS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
 "gX" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/plating,
@@ -239,6 +370,12 @@
 "hc" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/strata/white_cyan1,
+/area/adminlevel/ert_station/anchorpoint_station)
+"he" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "hh" = (
 /obj/structure/prop/dam/crane,
@@ -262,6 +399,13 @@
 	},
 /turf/open/shuttle/elevator/grating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"hQ" = (
+/obj/structure/sign/safety/biohazard{
+	pixel_x = 25;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/floor3,
+/area/adminlevel/ert_station/anchorpoint_station)
 "ig" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/floor,
@@ -276,6 +420,12 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "in" = (
 /turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"iq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "iu" = (
 /turf/open/floor/almayer/plating,
@@ -301,6 +451,12 @@
 "iL" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/space)
+"iN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
 "iO" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -319,6 +475,16 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/cmb,
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"jh" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Anchorpoint Medical Triage Echo-09"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "jx" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -340,12 +506,18 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
-"jQ" = (
-/obj/structure/sign/safety/nonpress_0g{
-	pixel_x = 34;
-	pixel_y = -18
+"ka" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
-/turf/open/floor/almayer/plating_striped/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "kf" = (
 /obj/structure/blocker/invisible_wall,
@@ -354,16 +526,61 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
+"kk" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kt" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "kv" = (
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/ert_station/anchorpoint_station)
+"kw" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/buritto{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kF" = (
+/obj/structure/sign/safety/north{
+	pixel_x = -17;
+	pixel_y = -8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "kM" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/reagent_dispensers/beerkeg{
+	density = 0
+	},
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"kV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "lc" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"lA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "lB" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -427,17 +644,16 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"mQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
 "mU" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/anchorpoint_station)
-"nc" = (
-/obj/structure/largecrate/supply,
-/obj/structure/sign/safety/nonpress_0g{
-	pixel_x = 34;
-	pixel_y = -18
-	},
-/turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "nf" = (
 /obj/structure/machinery/iv_drip,
@@ -493,6 +709,9 @@
 	id = "RMC_brig_2";
 	name = "shutters"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "nQ" = (
@@ -505,6 +724,13 @@
 "od" = (
 /turf/open/floor/almayer/blue/northwest,
 /area/adminlevel/ert_station/anchorpoint_station)
+"oe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
 "oj" = (
 /turf/closed/shuttle/elevator{
 	dir = 8
@@ -513,9 +739,23 @@
 "os" = (
 /turf/open/floor/almayer/green/east,
 /area/adminlevel/ert_station/anchorpoint_station)
+"oy" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "oK" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/strata/white_cyan1,
+/area/adminlevel/ert_station/anchorpoint_station)
+"oT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "oV" = (
 /obj/structure/foamed_metal,
@@ -546,6 +786,27 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"ph" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"pm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
 "pz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -564,6 +825,12 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"pG" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
 "pH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -573,6 +840,15 @@
 /area/space)
 "pT" = (
 /turf/open/floor/almayer/greencorner,
+/area/adminlevel/ert_station/anchorpoint_station)
+"pV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/wy_mre,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"qc" = (
+/obj/item/ore/osmium,
+/turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "qk" = (
 /obj/structure/surface/table/almayer,
@@ -612,6 +888,10 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"qD" = (
+/obj/item/ore/coal,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
 "qH" = (
 /obj/structure/prop/invuln{
 	desc = "big pile energy.";
@@ -629,6 +909,7 @@
 	req_access = null;
 	name = "\improper Delta-04 Breakroom"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "qM" = (
@@ -657,6 +938,9 @@
 "re" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 32
+	},
 /turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "rh" = (
@@ -666,9 +950,24 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
+"rj" = (
+/obj/item/stack/catwalk,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "rp" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
+"rr" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles,
+/area/adminlevel/ert_station/anchorpoint_station)
+"rw" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "rG" = (
 /turf/open/floor/almayer/greencorner/west,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -678,12 +977,22 @@
 /obj/item/device/defibrillator/upgraded,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/anchorpoint_station)
+"rI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
 "rK" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
 	pixel_y = 7
 	},
 /turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"rY" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/shuttle/elevator/grating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "rZ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -716,10 +1025,44 @@
 "sj" = (
 /turf/open/space/basic,
 /area/space)
+"sm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "sq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ss" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"sv" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+	dir = 2;
+	name = "\improper Anchorpoint Security Station Delta-04"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "sK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -738,6 +1081,11 @@
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access,
 /turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
+"ta" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "tf" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/dirt,
@@ -749,13 +1097,33 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "tr" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "tz" = (
 /turf/open/floor/strata/white_cyan3/west,
 /area/adminlevel/ert_station/anchorpoint_station)
+"tO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"tQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
 "tV" = (
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"uh" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ui" = (
@@ -763,6 +1131,14 @@
 	icon_state = "W"
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"uo" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/item/trash/wy_chips_pepper,
+/turf/open/floor/strata/red4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "up" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -789,12 +1165,15 @@
 /turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
 "vM" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/sign/safety/north{
 	pixel_x = 32;
 	pixel_y = 7
 	},
-/turf/open/floor/plating,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "vT" = (
 /obj/structure/machinery/photocopier,
@@ -803,7 +1182,15 @@
 "vV" = (
 /turf/closed/wall/almayer,
 /area/adminlevel/ert_station/anchorpoint_station)
+"vX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
 "wd" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
 /turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "wf" = (
@@ -813,12 +1200,34 @@
 	},
 /turf/open/floor/strata/red4,
 /area/adminlevel/ert_station/anchorpoint_station)
+"wE" = (
+/obj/structure/sign/safety/north{
+	pixel_x = 32;
+	pixel_y = 7
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
 "wG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wJ" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wK" = (
+/obj/item/frame/table,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"wM" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/anchorpoint_station)
 "wP" = (
 /turf/closed/shuttle/elevator{
@@ -828,20 +1237,68 @@
 "wX" = (
 /turf/open/floor/almayer/greencorner/east,
 /area/adminlevel/ert_station/anchorpoint_station)
+"xd" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/surface/rack,
+/obj/item/tool/weldingtool/largetank,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "xh" = (
 /turf/closed/wall/almayer/outer,
 /area/adminlevel/ert_station/anchorpoint_station)
 "xl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 6;
+	pixel_y = 13
+	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "xq" = (
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
+"xy" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"xN" = (
+/obj/item/powerloader_clamp,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "xX" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"xZ" = (
+/obj/structure/bed/sofa/south/grey,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/obj/structure/machinery/door_control{
+	id = "hanger1door";
+	pixel_x = 27
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yd" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer,
 /area/adminlevel/ert_station/anchorpoint_station)
 "yp" = (
 /turf/open/floor/almayer/red/southwest,
@@ -849,6 +1306,29 @@
 "yH" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/obj/structure/machinery/door_control{
+	id = "hanger2door";
+	pixel_x = -25
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"yK" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "yM" = (
 /turf/open/floor/almayer/test_floor4,
@@ -869,6 +1349,9 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "za" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer/red/southwest,
 /area/adminlevel/ert_station/anchorpoint_station)
 "zb" = (
@@ -888,6 +1371,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
+"zU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/plate,
+/obj/item/trash/USCMtray{
+	pixel_y = 10;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"zX" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "zZ" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plating_striped/west,
@@ -895,6 +1398,22 @@
 "Ac" = (
 /obj/structure/barricade/handrail/type_b,
 /turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ae" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ak" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -919,6 +1438,14 @@
 "Aw" = (
 /turf/open/floor/almayer/greencorner/north,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Ax" = (
+/obj/structure/platform,
+/obj/item/toy/plush/therapy/blue{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "AD" = (
 /turf/closed/shuttle/elevator/gears,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -931,6 +1458,13 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "AL" = (
 /obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"AM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Bi" = (
@@ -981,6 +1515,10 @@
 "CL" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/anchorpoint_station)
+"CQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
 "CW" = (
 /obj/structure/lattice,
 /obj/structure/platform_decoration/kutjevo,
@@ -999,7 +1537,12 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Di" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/green3/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Dj" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Dl" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -1020,6 +1563,26 @@
 "DL" = (
 /turf/open/floor/almayer_hull,
 /area/space)
+"DN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "DO" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32;
@@ -1046,12 +1609,50 @@
 	},
 /turf/open/floor/strata/white_cyan2,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Ew" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "ED" = (
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/anchorpoint_station)
+"EJ" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Fa" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Fb" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Fy" = (
 /obj/structure/bed/alien,
 /obj/item/bedsheet/brown,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/anchorpoint_station)
 "FA" = (
@@ -1062,6 +1663,12 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"FF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
 "FN" = (
 /turf/open/floor/almayer/plating_striped,
@@ -1103,6 +1710,17 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Gw" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/obj/item/pizzabox/meat{
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
 "GC" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -1121,6 +1739,11 @@
 /obj/item/clothing/suit/straight_jacket,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"GY" = (
+/obj/structure/platform,
+/obj/item/tool/wet_sign,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Hd" = (
 /turf/open/floor/almayer/cargo_arrow,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -1130,6 +1753,7 @@
 	req_access = null;
 	name = "\improper Delta-04 Cryogenics"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Hi" = (
@@ -1139,6 +1763,18 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Hj" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/chest/b{
+	pixel_y = 7
+	},
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Hq" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ht" = (
 /obj/effect/decal/warning_stripes{
@@ -1156,10 +1792,28 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"HY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Id" = (
 /obj/structure/machinery/sleep_console,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/white_cyan1,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ih" = (
+/obj/structure/prop/cash_register/broken,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Iv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Iy" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1200,6 +1854,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Jk" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Jp" = (
 /obj/structure/lattice,
 /obj/structure/platform/kutjevo/smooth{
@@ -1209,14 +1870,11 @@
 /area/space)
 "JB" = (
 /obj/structure/platform_decoration,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/adminlevel/ert_station/anchorpoint_station)
-"JG" = (
-/obj/structure/sign/safety/nonpress_0g{
-	pixel_x = -20;
-	pixel_y = -18
+/obj/item/trash/hotdog{
+	pixel_x = 4;
+	pixel_y = -4
 	},
-/turf/open/floor/almayer/plating_striped/west,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "JJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1239,6 +1897,9 @@
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_y = 11
+	},
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_x = 32
 	},
 /turf/open/floor/strata/floor3,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -1272,10 +1933,15 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/effect/decal/cleanable/generic,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
 /turf/open/floor/strata/green4,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Kw" = (
 /obj/structure/largecrate/random/case/double,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "KA" = (
@@ -1288,10 +1954,23 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/strata/white_cyan1,
 /area/adminlevel/ert_station/anchorpoint_station)
+"KV" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
 "KW" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/bible,
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"KY" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Li" = (
 /turf/open/floor/strata/white_cyan4/east,
@@ -1305,7 +1984,20 @@
 /turf/open/floor/almayer/greencorner,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Lu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/anchorpoint_station)
+"LA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"LC" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/anchorpoint_station)
 "LM" = (
 /obj/structure/platform_decoration{
@@ -1319,6 +2011,12 @@
 	name = "\improper Hanger Delta-019"
 	},
 /turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Mh" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/green/east,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Mn" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -1365,6 +2063,17 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Nw" = (
 /turf/open/floor/strata/white_cyan3/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Nz" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/item/trash/popcorn,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
+"NH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "NU" = (
 /obj/structure/surface/table/almayer,
@@ -1427,12 +2136,42 @@
 /obj/structure/machinery/cm_vending/gear/antag,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"OW" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Pi" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/trash/cigbutt{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Pj" = (
 /turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Po" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ps" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Py" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "PD" = (
 /turf/closed/shuttle/elevator{
@@ -1461,14 +2200,49 @@
 "Qi" = (
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Qr" = (
+/obj/item/ore/iron,
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Qy" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
 "QA" = (
 /turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station/anchorpoint_station)
 "QJ" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/sign/safety/north{
 	pixel_x = -17;
 	pixel_y = -8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"QN" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ra" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Rg" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack{
+	pixel_x = -2
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -1482,10 +2256,12 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Rl" = (
 /obj/structure/largecrate/random/barrel/red,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ro" = (
@@ -1493,6 +2269,10 @@
 /area/adminlevel/ert_station/anchorpoint_station)
 "Rr" = (
 /turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Ru" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/shuttle/elevator,
 /area/adminlevel/ert_station/anchorpoint_station)
 "RB" = (
 /obj/structure/surface/table/almayer,
@@ -1516,15 +2296,35 @@
 /obj/structure/barricade/handrail/type_b{
 	dir = 8
 	},
+/obj/item/trash/crushed_cup{
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"RT" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Sc" = (
+/obj/item/key/cargo_train,
+/turf/open/shuttle/elevator,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Sf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/almayer/red/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Sk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/anchorpoint_station)
+"Sx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/green/west,
 /area/adminlevel/ert_station/anchorpoint_station)
 "SC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1586,17 +2386,28 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Tt" = (
+/obj/structure/machinery/vending/snack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Tw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/portadialysis,
 /obj/item/tool/portadialysis,
+/obj/item/storage/box/bodybags,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/anchorpoint_station)
 "TC" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/ert_station/anchorpoint_station)
+"TJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
 "Ub" = (
 /obj/structure/machinery/portable_atmospherics/canister,
@@ -1611,6 +2422,12 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/anchorpoint_station)
+"Uf" = (
+/obj/vehicle/powerloader/jd{
+	dir = 8
+	},
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Uk" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft";
@@ -1619,10 +2436,18 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
+"UZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/bluefull,
+/area/adminlevel/ert_station/anchorpoint_station)
 "Vi" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32;
 	pixel_x = 7
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
 	},
 /turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/anchorpoint_station)
@@ -1650,13 +2475,45 @@
 /obj/structure/sign/safety/ammunition{
 	pixel_y = 30
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VF" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VH" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "VN" = (
 /obj/structure/barricade/handrail/type_b{
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VO" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VT" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/anchorpoint_station)
+"VU" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/almayer/bluefull,
 /area/adminlevel/ert_station/anchorpoint_station)
 "VV" = (
 /turf/open/floor/plating,
@@ -1691,6 +2548,10 @@
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/space/basic,
 /area/space)
+"WS" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/anchorpoint_station)
 "WW" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	name = "\improper Hanger Delta-019"
@@ -1710,6 +2571,12 @@
 "Xy" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/red/northeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "XA" = (
@@ -1739,6 +2606,14 @@
 	pixel_x = 18
 	},
 /turf/open/floor/strata/white_cyan2,
+/area/adminlevel/ert_station/anchorpoint_station)
+"YE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/catwalk,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "YM" = (
 /obj/structure/bed/roller,
@@ -1801,6 +2676,7 @@
 	id = "RMC_Pub_brig";
 	pixel_x = -29
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ZJ" = (
@@ -1808,6 +2684,13 @@
 	name = "\improper Hanger Delta-020"
 	},
 /turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/anchorpoint_station)
+"ZQ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/anchorpoint_station)
 "ZT" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -1981,8 +2864,8 @@ gL
 gL
 AL
 Xy
-Pj
-Pj
+Iv
+Pi
 Sf
 AL
 Lu
@@ -2027,21 +2910,21 @@ sj
 xh
 Wy
 gL
-gL
-gL
-gP
+tQ
+gS
+UZ
 He
-gL
-gL
-gL
-gL
-gL
-gL
+gS
+gS
+VU
+gS
+gS
+gS
 qJ
-gL
-gP
-gL
-gL
+gS
+UZ
+gS
+iN
 vV
 AL
 AL
@@ -2090,13 +2973,13 @@ sj
 xh
 Wy
 vg
-Ps
+oe
 vg
 vg
 vh
 xq
 Ps
-xq
+he
 xq
 xq
 xq
@@ -2104,16 +2987,16 @@ vh
 MA
 xq
 xq
-xq
-xq
-ED
-ED
+ss
+vX
+xy
+xy
 ZG
-ED
-ED
-ED
+xy
+pG
+Po
 ao
-ED
+rI
 xh
 Cu
 Cu
@@ -2153,13 +3036,13 @@ sj
 xh
 bp
 ED
-XE
+ka
 ED
 FR
 xh
 ny
 qM
-qM
+Sx
 qM
 iC
 PQ
@@ -2173,7 +3056,7 @@ iu
 iu
 iu
 iu
-iu
+bm
 sK
 iu
 Bo
@@ -2216,13 +3099,13 @@ xh
 xh
 Ke
 ED
-XE
+ka
 ED
 Ke
 xh
 Lp
 os
-os
+Mh
 wX
 pT
 os
@@ -2230,13 +3113,13 @@ xh
 aO
 XA
 QA
-XK
-iu
+ft
+fs
 dU
 NZ
 iu
 iu
-iu
+bm
 iu
 iu
 Bo
@@ -2260,15 +3143,15 @@ lc
 lc
 BE
 iW
-mv
-lc
-lc
-lc
-lc
-lc
-lc
-lc
-BE
+ph
+kF
+OW
+OW
+QN
+OW
+kF
+QN
+sm
 iW
 mv
 lc
@@ -2279,13 +3162,13 @@ xh
 xh
 xh
 CH
-xq
+oT
 CH
 xh
 xh
 ST
 xl
-Zu
+Gw
 KA
 ST
 kM
@@ -2299,7 +3182,7 @@ SP
 GT
 mH
 mH
-mH
+lA
 mH
 mH
 Bo
@@ -2347,7 +3230,7 @@ ED
 rK
 xh
 ST
-kM
+eP
 eL
 KA
 ST
@@ -2362,7 +3245,7 @@ iu
 FN
 gL
 gL
-gP
+mQ
 gL
 gL
 xh
@@ -2410,11 +3293,11 @@ ED
 ED
 xh
 ST
-Zu
+zU
 KW
 tf
 ST
-kM
+pV
 xh
 SI
 Ri
@@ -2425,7 +3308,7 @@ iu
 FN
 gL
 od
-Ct
+NH
 Ct
 Ct
 Ct
@@ -2488,7 +3371,7 @@ nx
 xh
 gL
 lS
-Dy
+yd
 Dy
 Dy
 Dy
@@ -2551,7 +3434,7 @@ xh
 xh
 xh
 yM
-jy
+sv
 vh
 yM
 jy
@@ -2611,16 +3494,16 @@ oV
 oV
 oV
 oV
-oV
+xh
 xh
 Vy
+bo
+FF
 Cu
-mn
-Cu
-Cu
+tV
 Ac
 qp
-Cu
+uh
 wd
 AL
 sj
@@ -2674,24 +3557,24 @@ oV
 oV
 oV
 oV
-oV
 xh
-Cu
-Cu
-mn
+bN
+wG
+ID
+fY
 JB
 iu
 Ac
 qp
-ID
+oy
 DO
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -2741,22 +3624,22 @@ xh
 xh
 Tt
 Cu
-Cu
+LA
 sQ
 VN
 Ac
 cW
-MX
+iq
 dV
 WW
 FN
 Oz
 Oz
 Gm
-JG
+Oz
 Oz
 up
-Oz
+qc
 xX
 ra
 Zo
@@ -2802,9 +3685,9 @@ el
 el
 el
 Tb
-Tt
+wM
 Cu
-tV
+ct
 sQ
 VN
 Ac
@@ -2816,7 +3699,7 @@ FN
 iu
 hh
 tl
-iu
+xN
 iu
 iu
 gX
@@ -2865,21 +3748,21 @@ iI
 in
 iI
 wP
-Tt
+LC
 Cu
-tV
+ct
 sQ
 VN
 Ac
 cW
-MX
+iq
 dV
 Mg
 FN
 mH
 mH
 Hv
-nc
+Hv
 Hv
 Hv
 mH
@@ -2890,15 +3773,15 @@ jJ
 Ue
 qz
 IC
-mm
-lc
-lc
-lc
-lc
-lc
-lc
-lc
-qz
+yb
+cK
+VH
+kt
+VH
+VH
+cK
+VH
+DN
 IC
 mm
 lc
@@ -2930,20 +3813,20 @@ in
 zb
 Hd
 Cu
-Cu
+LA
 sQ
 VN
 Ac
 qp
-Cu
+LA
 wf
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -2993,12 +3876,12 @@ in
 in
 Hd
 Cu
-Cu
+LA
 sQ
 VN
 Ac
 qp
-Cu
+LA
 RN
 AL
 DL
@@ -3012,19 +3895,19 @@ sj
 Al
 DL
 xh
-lc
-lc
+KV
+xd
 BE
 iW
-mv
+ph
 QJ
-lc
-lc
-lc
-lc
+OW
+KY
+OW
+OW
 QJ
-lc
-BE
+OW
+sm
 iW
 OI
 Iy
@@ -3056,12 +3939,12 @@ in
 in
 Hd
 Cu
-tV
+ct
 sQ
 VN
 Ac
 qp
-Cu
+EJ
 Rl
 AL
 DL
@@ -3076,7 +3959,7 @@ Al
 DL
 xh
 lc
-Gb
+rr
 BD
 BD
 BD
@@ -3119,12 +4002,12 @@ in
 in
 Hd
 Cu
-Cu
+LA
 sQ
 VN
 Ac
 qp
-Cu
+LA
 Kw
 AL
 DL
@@ -3180,22 +4063,22 @@ iI
 in
 iI
 oj
-Tt
-Cu
-Cu
+HY
+kw
+LA
 sQ
 FA
 et
 qp
-Cu
+LA
 Vi
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -3243,21 +4126,21 @@ Ta
 Ta
 Ta
 sO
-Tt
+WS
 MX
-MX
+iq
 pc
 sb
 sb
 eM
-MX
+iq
 dV
 ZJ
 FN
 Oz
 Oz
 Oz
-JG
+Oz
 Oz
 Oz
 Oz
@@ -3300,20 +4183,20 @@ oV
 oV
 oV
 oV
-oV
-oV
-oV
-oV
-oV
-Aq
-Tt
+xh
+xh
+xh
+xh
+xh
+xh
+xZ
 MX
-MX
-MX
-Sk
-dV
-MX
-tr
+Fa
+CQ
+tO
+kV
+CQ
+pm
 Sk
 ZJ
 FN
@@ -3369,21 +4252,21 @@ el
 el
 el
 Tb
-Tt
+Nz
 MX
-MX
+iq
 GC
 mh
-mh
+bl
 LM
-MX
+iq
 dV
 ZJ
 FN
 mH
 mH
 mH
-jQ
+mH
 mH
 mH
 mH
@@ -3428,26 +4311,26 @@ oV
 oV
 xh
 AD
-iI
+Ru
 in
-iI
+wJ
 wP
-Tt
+HY
 Cu
-Cu
+LA
 sQ
 gf
 RP
 qp
-Cu
+LA
 Kj
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -3491,18 +4374,18 @@ oV
 oV
 xh
 AD
-in
+Hj
 in
 in
 hP
 Bi
 tV
-Cu
+LA
 sQ
 VN
 Ac
 qp
-Cu
+LA
 gE
 AL
 DL
@@ -3555,17 +4438,17 @@ oV
 xh
 go
 in
-iI
+VF
 in
 in
 Bi
 Cu
-Cu
-sQ
+LA
+Ax
 VN
 Ac
 qp
-Cu
+EJ
 Di
 AL
 DL
@@ -3579,7 +4462,7 @@ sj
 Al
 DL
 xh
-lc
+Rg
 Gb
 ui
 ui
@@ -3618,17 +4501,17 @@ oV
 xh
 wP
 in
-iI
+cY
 in
 in
 Bi
 Cu
-Cu
+LA
 sQ
 VN
 Ac
 qp
-Cu
+LA
 lG
 AL
 DL
@@ -3642,19 +4525,19 @@ sj
 Al
 DL
 xh
-lc
-lc
+ta
+ej
 qz
 IC
-Ti
+Ew
 vM
-lc
-lc
-lc
-lc
-vM
-lc
-qz
+kt
+kt
+VH
+kt
+cK
+yK
+bA
 IC
 Ou
 fc
@@ -3680,26 +4563,26 @@ oV
 oV
 xh
 AD
-in
-in
+rY
+Qr
 in
 in
 Bi
 Cu
-tV
+ct
 Gl
 VN
 Ac
 qp
-tV
+ct
 DO
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -3743,25 +4626,25 @@ oV
 oV
 xh
 AD
-iI
+Uf
 in
-iI
+Sc
 oj
-Tt
+VO
 Xa
-tV
+ct
 Gl
 VN
 Ac
 qp
-tV
+ct
 dV
 kf
 FN
 Oz
 cB
 bt
-JG
+Oz
 Qd
 zZ
 YN
@@ -3770,17 +4653,17 @@ Dt
 qH
 jJ
 Ak
-BE
+yJ
 iW
-pd
-lc
-lc
-lc
-lc
-lc
-lc
-lc
-BE
+ph
+kF
+QN
+OW
+OW
+OW
+kF
+QN
+sm
 iW
 pd
 lc
@@ -3810,14 +4693,14 @@ Ta
 Ta
 Ta
 sO
-Tt
+rj
 ZX
-Cu
-sQ
+LA
+GY
 VN
 Ac
 qp
-Cu
+LA
 dV
 kf
 FN
@@ -3828,7 +4711,7 @@ iu
 iu
 ni
 Ub
-iu
+wK
 Dt
 Zo
 jJ
@@ -3873,21 +4756,21 @@ xh
 xh
 xh
 xh
-Tt
+Ih
 Zs
-Cu
+AM
 sQ
 VN
 Ac
 qp
-Cu
+LA
 dV
 kf
 FN
 mH
-mH
+qD
 TC
-jQ
+mH
 mH
 mH
 mH
@@ -3934,24 +4817,24 @@ oV
 oV
 oV
 oV
-oV
 xh
-Cu
-tV
+RT
+wG
+YE
 ap
 Rj
 iu
 Ac
 qp
-Cu
-wf
+LA
+uo
 xh
 xh
 AL
 AL
 AL
-xh
-xh
+AL
+AL
 AL
 AL
 AL
@@ -3997,16 +4880,16 @@ oV
 oV
 oV
 oV
-oV
+xh
 xh
 cF
-Uk
+zX
 ZF
 Uk
 Uk
 Wo
 qp
-Cu
+bo
 wd
 AL
 sj
@@ -4063,7 +4946,7 @@ xh
 xh
 xh
 yM
-gi
+jh
 vh
 yM
 gi
@@ -4123,16 +5006,16 @@ mn
 mn
 mn
 mn
-lc
-lc
-lc
-lc
+Jk
+VT
+TJ
+Fb
 lc
 lc
 lc
 xh
 Cu
-Cu
+ZQ
 xh
 nv
 WK
@@ -4185,8 +5068,8 @@ ih
 IH
 IH
 qt
-CL
-lc
+Dj
+Hq
 CL
 IX
 tz
@@ -4194,7 +5077,7 @@ tz
 tz
 Li
 xh
-Cu
+kk
 tV
 xh
 nv
@@ -4243,13 +5126,13 @@ oV
 oV
 oV
 xh
-mn
+hQ
 ae
 Do
 KJ
 AG
 CL
-lc
+Py
 dA
 eI
 vB
@@ -4258,7 +5141,7 @@ vB
 mO
 xh
 Cu
-Cu
+Qy
 xh
 nv
 iO
@@ -4312,7 +5195,7 @@ SF
 nf
 AG
 ZT
-lc
+Py
 Gj
 eI
 YM
@@ -4375,7 +5258,7 @@ Ef
 Ef
 Qf
 rH
-lc
+Py
 GN
 eI
 mG
@@ -4402,15 +5285,15 @@ lc
 lc
 qz
 IC
-Ti
-lc
-lc
-lc
-lc
-lc
-lc
-lc
-qz
+Ae
+wE
+Ra
+Ra
+Ra
+Ra
+wE
+Ra
+eq
 IC
 Ti
 lc
@@ -4438,7 +5321,7 @@ Yc
 Yc
 cD
 bG
-lc
+Py
 pz
 eI
 mG
@@ -4495,13 +5378,13 @@ oV
 oV
 oV
 xh
-mn
+hQ
 ae
 KJ
 Do
 AG
 Tw
-lc
+Py
 pz
 eI
 hc
@@ -4564,7 +5447,7 @@ nf
 SF
 AG
 CL
-lc
+Py
 CL
 eI
 Nu
@@ -4626,8 +5509,8 @@ RC
 Ni
 Ni
 bE
-CL
-lc
+Dj
+Fb
 CL
 Ro
 Nw
@@ -4691,7 +5574,7 @@ re
 sV
 Jb
 lc
-lc
+rw
 lc
 lc
 lc

@@ -50,6 +50,7 @@
 	var/list/data = list()
 	data["clans"] = list()
 
+	data["clans"] += list(populate_clan("Clanless", null))
 	var/list/datum/view_record/clan_view/clan_list = DB_VIEW(/datum/view_record/clan_view/)
 	for(var/datum/view_record/clan_view/viewed_clan in clan_list)
 		data["clans"] += list(populate_clan("[viewed_clan.name]", viewed_clan.clan_id))
@@ -72,22 +73,20 @@
 
 	var/list/members_list = list()
 	for(var/datum/view_record/clan_playerbase_view/CP in clan_view)
-		var/rank_to_give = CP.clan_rank
-		if(CP.permissions & CLAN_PERMISSION_ADMIN_MANAGER)
-			rank_to_give = 999
 
 		var/yautja = list()
 		yautja["ckey"] = CP.ckey
-		yautja["label"] = CP.ckey
+		yautja["player_label"] = CP.ckey
 		yautja["name"] = CP.player_name
 		yautja["player_id"] = CP.player_id
 		yautja["rank"] = GLOB.clan_ranks[CP.clan_rank]
 		yautja["honor_amount"] = (CP.honor? CP.honor : 0)
-		yautja["rank_pos"] = rank_to_give
 
 		var/datum/entity/player/player = get_player_from_key(CP.ckey)
-		if(player.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
-			yautja["label"] = "[CP.ckey] (COUNCILLOR)"
+		if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+			yautja["player_label"] = "[CP.ckey] (SENATOR)"
+		else if(player.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+			yautja["player_label"] = "[CP.ckey] (COUNCILLOR)"
 
 		members_list += list(yautja)
 

@@ -48,7 +48,7 @@ const ViewClans = (props) => {
         </Box>
       </Section>
       {clans[selectedClan].members.map((yautja, i) => (
-        <Section key={i} title={yautja.label}>
+        <Section key={i} title={yautja.player_label}>
           <LabeledList>
             <LabeledList.Item label="Name">{yautja.name}</LabeledList.Item>
             <LabeledList.Item label="Rank">{yautja.rank}</LabeledList.Item>
@@ -57,13 +57,13 @@ const ViewClans = (props) => {
               {yautja.honor_amount}
             </LabeledList.Item>
           </LabeledList>
-          <Button bold mt="1rem" width="23vw">
+          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
             Change Clan
           </Button>
-          <Button bold mt="1rem" width="23vw">
+          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
             Change Rank
           </Button>
-          <Button bold mt="1rem" width="23vw">
+          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
             Assign Ancillary
           </Button>
           <Button bold mt="1rem" width="23vw" disabled={1 || 2}>

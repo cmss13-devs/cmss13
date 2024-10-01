@@ -226,7 +226,7 @@
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/officer/boiler
 	name = "marine operations uniform"
@@ -723,8 +723,9 @@
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"
 	desc = "An ill-fitting, slightly stained uniform for a pizza delivery pilot. Smells of cheese."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
 	icon_state = "redshirt2"
-	item_state = "r_suit"
 	worn_state = "redshirt2"
 	has_sensor = UNIFORM_NO_SENSORS
 
@@ -832,6 +833,8 @@
 
 /obj/item/clothing/under/tshirt
 	name = "T-shirt parent object"
+	icon = 'icons/obj/items/clothing/uniforms/workwear.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi'
 	has_sensor = UNIFORM_NO_SENSORS
 
 /obj/item/clothing/under/tshirt/w_br
@@ -864,6 +867,8 @@
 /obj/item/clothing/under/CM_uniform
 	name = "\improper Colonial Marshal uniform"
 	desc = "A pair of off-white slacks and a blue button-down shirt with a dark brown tie; the standard uniform of the Colonial Marshals."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi'
 	icon_state = "marshal"
 	worn_state = "marshal"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -879,6 +884,8 @@
 /obj/item/clothing/under/liaison_suit
 	name = "liaison's tan suit"
 	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	icon_state = "liaison_regular"
 	worn_state = "liaison_regular"
 

@@ -134,7 +134,7 @@
 
 /obj/item/weapon/shield/riot/protector //UPP syn
 	name = "Type 2 Protector shield"
-	desc = "A special-issue ballistic shield manufactured in the Union of Progressive Peoples, developed from lessons learnt after the Sol Campaign. This was prepared for heavy point units, protecting multiple users behind the lead individual's tall shield, and able to be staked down to provide fire - this unit is missing its ground stakes. It is not recommended for extensive usage unless a Synthetic is present due to the immense weight, though it can be folded down for easier storage."
+	desc = "A modern ballistic shield manufactured by the Union of Progressive Peoples, developed in response to lessons learnt from the Sol Campaign. This immensely-heavy equipment is only designed for use by Synthetics and specially-trained heavy infantry units, but greatly improves their ability to take point by serving as mobile cover that can also be staked down to form a firing position. It is particularly effective in close-quarters environments such as space stations and vessels, where high-powered ammunition is less common. This one is missing its ground stakes, and can only serve as an oversized ballistic shield."
 	icon_state = "protectorshield"
 	item_state = "protectorshield"
 	base_icon_state = "protectorshield"

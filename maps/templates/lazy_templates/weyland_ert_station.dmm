@@ -221,6 +221,10 @@
 "dT" = (
 /turf/closed/wall/almayer/research/containment/wall/corner,
 /area/adminlevel/ert_station/weyland_station)
+"dU" = (
+/obj/structure/bed/chair,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/weyland_station)
 "ee" = (
 /obj/structure/bed/roller,
 /turf/open/floor/corsat/darkgreen,
@@ -4077,7 +4081,7 @@ oM
 Gz
 NC
 in
-bk
+dU
 Oi
 zS
 Im
@@ -4119,7 +4123,7 @@ fX
 MQ
 De
 RQ
-bk
+dU
 rO
 ED
 zC
@@ -4327,7 +4331,7 @@ WU
 Hh
 oM
 ka
-Dr
+bk
 YC
 Dr
 Xt

@@ -9,7 +9,7 @@
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
-	var/inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
+	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
 	var/list/accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
@@ -108,6 +108,12 @@
 	name = "stethoscope"
 	desc = "An outdated, but still useful, medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+	)
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/being, mob/living/user)
 	if(ishuman(being) && isliving(user))
@@ -167,7 +173,7 @@
 	desc = "A medal."
 	icon_state = "bronze"
 	icon = 'icons/obj/items/clothing/accessory/medals.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/medals.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi'
@@ -354,7 +360,7 @@
 	desc = "A fancy red armband!"
 	icon_state = "red"
 	icon = 'icons/obj/items/clothing/accessory/armbands.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/armbands.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
@@ -403,7 +409,6 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	icon = 'icons/obj/items/clothing/accessory/patches.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi'
@@ -452,7 +457,7 @@
 	desc = "A robust pair of dogtags to be worn around the neck of the United States Colonial Marines, however due to a combination of budget reallocation, Marines losing their dogtags, and multiple incidents of marines swallowing their tags, they now attach to the uniform or armor."
 	icon_state = "dogtag"
 	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
@@ -464,7 +469,7 @@
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
 	icon_state = "poncho"
 	icon = 'icons/obj/items/clothing/accessory/ponchos.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ponchos.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi'
@@ -475,7 +480,7 @@
 	. = ..()
 	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
 	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
-	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[icon_state]")
 	update_icon()
 
 /obj/item/clothing/accessory/poncho/green
@@ -504,7 +509,7 @@
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
 	icon = 'icons/obj/items/clothing/accessory/webbings.dmi'
-	inv_overlay_icon = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/webbings.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi'
@@ -964,7 +969,6 @@
 	name = "shoulder holster"
 	desc = "A handgun holster. Made of expensive leather."
 	icon_state = "holster"
-	item_state = "holster_low"
 
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized
@@ -977,6 +981,12 @@
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
 	icon_state = "holobadge"
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 

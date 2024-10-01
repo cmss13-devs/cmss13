@@ -989,10 +989,12 @@
 	name = "How did you get this?"
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
 	icon_state = "l_arm"

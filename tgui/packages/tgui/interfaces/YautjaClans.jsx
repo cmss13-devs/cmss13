@@ -53,9 +53,6 @@ const ViewClans = (props) => {
             <LabeledList.Item label="Name">{yautja.name}</LabeledList.Item>
             <LabeledList.Item label="Rank">{yautja.rank}</LabeledList.Item>
             <LabeledList.Item label="Ancillary">None</LabeledList.Item>
-            <LabeledList.Item label="Honor">
-              {yautja.honor_amount}
-            </LabeledList.Item>
           </LabeledList>
           <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
             Change Clan

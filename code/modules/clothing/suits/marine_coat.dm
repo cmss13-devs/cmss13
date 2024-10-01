@@ -293,12 +293,13 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/blues
 	name = "marine enlisted dress blues jacket"
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. You're wearing history, Marine. Don't let your ancestors down."
-	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
 	has_buttons = FALSE
-	item_state_slots = null
-	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco
 	name = "marine NCO dress blues jacket"

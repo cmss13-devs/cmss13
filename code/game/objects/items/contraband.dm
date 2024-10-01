@@ -20,11 +20,12 @@
 /obj/item/storage/pill_bottle/frenzy
 	name = "Frenzy"
 	gender = PLURAL
-	desc = "A highly illegal concotion of drugs, infamously utilized by CLF fighters to improve performance and steel their nerves before combat. Extremely volatile side effects. The subject of many CMB sting operations, a minimum charge for possession of Frenzy carries at least 10 years in UA federal prison."
+	desc = "A highly illegal concoction of drugs, infamously utilized by CLF fighters to improve performance and steel their nerves before combat. Extremely volatile side effects. The subject of many CMB sting operations in the Outer Rim, the minimum charge for possession of Frenzy carries at least 10 years in the UA prison system. The relevant laws are exceptionally broad and are often used to criminalize local chemical operations in the colonies, as it can claimed to apply so long as any of the compounds listed as part of Frenzy are present."
 	skilllock = SKILL_MEDICAL_TRAINED
 
 /obj/item/storage/pill_bottle/frenzy/Initialize()
 	. = ..()
+	new /obj/item/reagent_container/pill/frenzy( src )
 	new /obj/item/reagent_container/pill/frenzy( src )
 	new /obj/item/reagent_container/pill/frenzy( src )
 	new /obj/item/reagent_container/pill/frenzy( src )

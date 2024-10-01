@@ -196,6 +196,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/classic_baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/smokebomb, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)

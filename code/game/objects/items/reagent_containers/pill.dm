@@ -224,7 +224,7 @@
 	pill_icon_class = "drug"
 
 /obj/item/reagent_container/pill/frenzy
-	pill_desc = "A combination of Jungle Devil, Blu-Blu, Tungalou and a mix of pain-numbing opioids. CLF Fighters use this before conducting fights or raids, otherwise known as a 'Nerve-Number', a play on beta-blockers. Any one of the drugs used in this concoction would land you a cold jailcell in Sol, but just being associated with Frenzy in the Outer Veil places you under #1 surveillance by the CMB."
+	pill_desc = "A combination of Jungle Devil, Blu-Blue, Tunalou, and a slew of powerful opoids that numbs almost all pain while providing an intense 'high', known as the 'Nerve-Number'. CLF fighters often use this before dangerous raids or as a last-ditch effort due to its incredible effectiveness at keeping a person fighting in the moment, despite its unpredictable side effects and severe aftermath. Illegal possession of any one of the drugs used in this concoction would land you in a cold jailcell back in Sol, and even in the Outer Veil, just being associated with the presence of Frenzy will certainly get you onto CMB watchlists"
 	pill_initial_reagents = list("space_drugs" = 6, "paroxetine" = 6, "arithrazine" = 1, "lexorin" = 1, "psilocybin" = 1, "methylphenidate" = 1, "lipozine" = 1, "oxycodone" = 10, "inaprovaline" = 10, "catecholamineplasma" = 8)
 	pill_icon_class = "drug"
 

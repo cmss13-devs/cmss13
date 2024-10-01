@@ -1,0 +1,10 @@
+2024-10-01:
+  Killfish:
+  - balance: Tail stab now dazes based off xeno size; Small ones don't daze, Normal
+      ones daze for 1 second, and Large ones daze for 3 seconds
+  - spellcheck: Because of Defender's club tail, Tail Stab's base messages no longer
+      specifically refer to stabbing things or the xeno having a razor sharp tail
+  - rscadd: Tail stab's range is now a modifiable variable (default range is still
+      2)
+  Nihisohel:
+  - rscadd: Expands the Squad Leader headset tracking list

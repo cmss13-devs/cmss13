@@ -136,7 +136,10 @@
 		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
 		animate_ventcrawl()
 		user.remove_specific_pipe_image(src)
-		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))
+		var/exit_time = 20 //So that exiting through a destroyed pipe segment takes longer than a proper vent
+		if(!istype(src, /obj/structure/pipes/vents))
+			exit_time += 10
+		if(!do_after(user, exit_time, INTERRUPT_NO_NEEDHAND))
 			animate_ventcrawl_reset()
 			return
 

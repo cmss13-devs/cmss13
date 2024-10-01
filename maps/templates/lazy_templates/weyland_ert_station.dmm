@@ -1161,7 +1161,7 @@
 	name = "Aft Medbay Shutters";
 	pixel_x = 7;
 	pixel_y = 12;
-	req_access_txt = "1"
+	req_access_txt = "200"
 	},
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/weyland_station)
@@ -1581,7 +1581,9 @@
 /obj/structure/machinery/crema_switch{
 	pixel_x = 25;
 	pixel_y = 25;
-	id = "WY Cremate"
+	id = "WY Cremate";
+	req_access = null;
+	req_access_txt = "200"
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/box/bodybags,
@@ -2037,7 +2039,10 @@
 	dir = 1;
 	id = "Containment Cell WY";
 	locked = 1;
-	name = "\improper Containment Cell"
+	name = "\improper Containment Cell";
+	req_access = null;
+	req_one_access = null;
+	req_access_txt = "200"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/white/open{
 	id = "WY Bio"

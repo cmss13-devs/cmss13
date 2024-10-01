@@ -7,6 +7,15 @@
 	plasma internally. Bear that in mind. -4khan
 */
 
+/mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
+
 /datum/action/xeno_action/onclick/plant_weeds
 	name = "Plant Weeds (75)"
 	ability_name = "Plant Weeds"
@@ -476,6 +485,7 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 

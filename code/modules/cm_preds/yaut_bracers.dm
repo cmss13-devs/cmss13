@@ -32,7 +32,7 @@
 	var/charge = 1500
 	var/charge_max = 1500
 	/// The amount charged per process
-	var/charge_rate = 30
+	var/charge_rate = 60
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
 	var/cloak_timer = 0

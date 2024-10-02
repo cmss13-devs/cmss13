@@ -121,7 +121,7 @@
 				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
-				attemptObserve()
+				attempt_observe()
 				return TRUE
 
 		if("late_join")
@@ -157,7 +157,7 @@
 							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
 								client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
 								to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
-							attemptObserve()
+							attempt_observe()
 					else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 						SSticker.mode.transfer_xeno(src, new_xeno)
 						close_spawn_windows()
@@ -211,7 +211,7 @@
 	var/datum/tutorial_menu/menu = new(src)
 	menu.ui_interact(src)
 
-/mob/new_player/proc/attemptObserve()
+/mob/new_player/proc/attempt_observe()
 	if(src != usr)
 		return
 	if(!client)

@@ -165,6 +165,7 @@
 
 /datum/equipment_preset/synth/survivor/pmc/load_skills(mob/living/carbon/human/new_human)
 	new_human.set_skills(/datum/skills/synthetic)
+	new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)

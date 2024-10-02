@@ -117,40 +117,7 @@
 				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
-				if(!client)
-					return TRUE
-				if(!client.prefs?.preview_dummy)
-					client.prefs.update_preview_icon()
-				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
-				observer.set_lighting_alpha_from_pref(client)
-				spawning = TRUE
-				observer.started_as_observer = TRUE
-
-				close_spawn_windows()
-
-				var/obj/effect/landmark/observer_start/O = SAFEPICK(GLOB.observer_starts)
-				if(istype(O))
-					to_chat(src, SPAN_NOTICE("Now teleporting."))
-					observer.forceMove(O.loc)
-				else
-					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
-				observer.icon = 'icons/mob/humans/species/r_human.dmi'
-				observer.icon_state = "anglo_example"
-				observer.alpha = 127
-
-				if(client.prefs.be_random_name)
-					client.prefs.real_name = random_name(client.prefs.gender)
-				observer.real_name = client.prefs.real_name
-				observer.name = observer.real_name
-
-				mind.transfer_to(observer, TRUE)
-
-				if(observer.client)
-					observer.client.change_view(GLOB.world_view_size)
-
-				observer.set_huds_from_prefs()
-
-				qdel(src)
+				attemptObserve()
 				return TRUE
 
 		if("late_join")
@@ -229,6 +196,48 @@
 
 	var/datum/tutorial_menu/menu = new(src)
 	menu.ui_interact(src)
+
+/mob/new_player/proc/attemptObserve()
+	if(src != usr)
+		return
+	if(!client)
+		return
+	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
+		to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+		return
+
+	if(!client.prefs?.preview_dummy)
+		client.prefs.update_preview_icon()
+	var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
+	observer.set_lighting_alpha_from_pref(client)
+	spawning = TRUE
+	observer.started_as_observer = TRUE
+
+	close_spawn_windows()
+
+	var/obj/effect/landmark/observer_start/O = SAFEPICK(GLOB.observer_starts)
+	if(istype(O))
+		to_chat(src, SPAN_NOTICE("Now teleporting."))
+		observer.forceMove(O.loc)
+	else
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
+	observer.icon = 'icons/mob/humans/species/r_human.dmi'
+	observer.icon_state = "anglo_example"
+	observer.alpha = 127
+
+	if(client.prefs.be_random_name)
+		client.prefs.real_name = random_name(client.prefs.gender)
+	observer.real_name = client.prefs.real_name
+	observer.name = observer.real_name
+
+	mind.transfer_to(observer, TRUE)
+
+	if(observer.client)
+		observer.client.change_view(GLOB.world_view_size)
+
+	observer.set_huds_from_prefs()
+
+	qdel(src)
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]

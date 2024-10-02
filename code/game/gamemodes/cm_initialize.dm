@@ -414,8 +414,8 @@ Additional game mode variables.
 					The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
 					you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
 					Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-					Note: Playing as a facehugger or in the thunderdome will not alter your time of death. \
-					This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
+					Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
+					This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
 			to_chat(candidate_new_player, SPAN_XENONOTICE(candidate_new_player.larva_queue_cached_message))
 			return FALSE
 
@@ -449,8 +449,8 @@ Additional game mode variables.
 				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
 				you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
 				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-				Note: Playing as a facehugger or in the thunderdome will not alter your time of death. \
-				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
+				Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
+				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
 			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
 			return FALSE
 

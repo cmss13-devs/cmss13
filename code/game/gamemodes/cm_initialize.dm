@@ -434,11 +434,18 @@ Additional game mode variables.
 			return FALSE
 
 		// No cache, lets check now then
-		message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
+		var/list/valid_candidates = get_alien_candidates()
+		message_alien_candidates(valid_candidates, dequeued = 0, cache_only = TRUE)
 
 		// If we aren't in the queue yet, let's teach them about the queue
 		if(!candidate_observer.larva_queue_cached_message)
-			candidate_observer.larva_queue_cached_message = "You are currently ineligible to be a larva but have a position in queue. \
+			var/candidate_time = candidate_observer.client.player_details.larva_queue_time
+			var/position = 1
+			for(var/mob/dead/observer/current in valid_candidates)
+				if(current.client.player_details.larva_queue_time >= candidate_time)
+					break
+				position++
+			candidate_observer.larva_queue_cached_message = "You are currently ineligible to be a larva but would be [position]\th in queue. \
 				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
 				you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
 				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \

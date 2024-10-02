@@ -4,7 +4,8 @@
 /datum/equipment_preset/survivor/pmc
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	assignment = "Weyland-Yutani PMC"
+	assignment = JOB_PMC_STANDARD
+	rank = JOB_PMC_STANDARD
 	faction = FACTION_PMC
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
@@ -45,7 +46,9 @@
 /datum/equipment_preset/survivor/pmc/medic
 	name = "Survivor - PMC Medic"
 	assignment = JOB_PMC_MEDIC
+	rank = JOB_PMC_MEDIC
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CM"
 	skills = /datum/skills/civilian/survivor/pmc/medic
 
 /datum/equipment_preset/survivor/pmc/medic/load_gear(mob/living/carbon/human/new_human)
@@ -57,6 +60,7 @@
 	else
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/medic/hvh, WEAR_L_EAR)
 
 	..()
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
@@ -64,7 +68,9 @@
 /datum/equipment_preset/survivor/pmc/engineer
 	name = "Survivor - PMC Engineer"
 	assignment = JOB_PMC_ENGINEER
+	rank = JOB_PMC_ENGINEER
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "TEC"
 	skills = /datum/skills/civilian/survivor/pmc/engineer
 
 /datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -72,6 +78,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/cct/hvh, WEAR_L_EAR)
 
 	..()
 
@@ -83,6 +90,7 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
+	rank = JOB_EXECUTIVE_SUPERVISOR
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction = FACTION_WY
@@ -182,7 +190,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor, WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun/compact, WEAR_J_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_L_STORE)

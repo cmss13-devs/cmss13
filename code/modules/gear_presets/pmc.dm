@@ -332,6 +332,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CM"
 	skills = /datum/skills/pmc/medic
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 

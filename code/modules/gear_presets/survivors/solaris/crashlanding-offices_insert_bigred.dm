@@ -5,8 +5,8 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC"
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction = FACTION_PMC
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
@@ -85,6 +85,7 @@
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
+	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -127,8 +128,8 @@
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/pmc
 	name = "Survivor - Synthetic - PMC Support Synth"
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction = FACTION_PMC
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

@@ -144,13 +144,18 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 	)
+	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)
+
+/datum/equipment_preset/synth/survivor/pmc/load_skills(mob/living/carbon/human/new_human)
+	new_human.set_skills(/datum/skills/synthetic)
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
@@ -160,11 +165,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)

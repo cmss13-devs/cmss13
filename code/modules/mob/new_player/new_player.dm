@@ -120,7 +120,7 @@
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
 				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
-			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
+			if(tgui_alert(src, "Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
 				attempt_observe()
 				return TRUE
 
@@ -145,13 +145,13 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
+			if(tgui_alert(src, "Are you sure you want to attempt joining as a xenomorph?", "Confirmation", list("Yes", "No")) == "Yes")
 				if(!client)
 					return TRUE
 				if(SSticker.mode.check_xeno_late_join(src))
 					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 					if(!new_xeno)
-						if(alert(src,"Do you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
+						if(tgui_alert(src, "Do you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
 							if(!client)
 								return TRUE
 							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
@@ -167,7 +167,7 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(alert(src,"Are you sure you want to attempt joining as a predator?","Confirmation","Yes","No") == "Yes" )
+			if(tgui_alert(src, "Are you sure you want to attempt joining as a predator?", "Confirmation", list("Yes", "No")) == "Yes")
 				if(SSticker.mode.check_predator_late_join(src,0))
 					close_spawn_windows()
 					SSticker.mode.attempt_to_join_as_predator(src)
@@ -264,7 +264,7 @@
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, 1))
-		to_chat(src, alert("[rank] is not available. Please try another."))
+		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
 	spawning = TRUE

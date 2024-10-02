@@ -21,11 +21,11 @@
 			to_chat(xeno, SPAN_WARNING("Not enough plasma!"))
 			return
 		to_chat(xeno, SPAN_NOTICE("We become one with the resin. We feel the urge to run!"))
-		button.icon_state = "template_active"
+		button.icon_state = "xeno_template_active"
 		action_active = TRUE
 	else
 		to_chat(xeno, SPAN_WARNING("We feel less in tune with the resin."))
-		button.icon_state = "template"
+		button.icon_state = "xeno_template"
 		action_active = FALSE
 		return
 

@@ -85,7 +85,7 @@
 		. = ..()
 		if(.)
 			activated_once = TRUE
-			button.icon_state = "template_active"
+			button.icon_state = "xeno_template_active"
 			addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 	else
 		damage_nearby_targets()
@@ -107,7 +107,7 @@
 		return
 
 	activated_once = FALSE
-	button.icon_state = X.selected_ability == src ? "template_on" : "template"
+	button.icon_state = X.selected_ability == src ? "xeno_template_on" : "xeno_template"
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
@@ -600,7 +600,7 @@
 		return
 
 	behavior.dodge_activated = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "xeno_template_active"
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	xeno.speed_modifier -= speed_buff_amount
 	xeno.add_temp_pass_flags(PASS_MOB_THRU)
@@ -623,7 +623,7 @@
 
 	if (behavior.dodge_activated)
 		behavior.dodge_activated = FALSE
-		button.icon_state = "template"
+		button.icon_state = "xeno_template"
 		xeno.speed_modifier += speed_buff_amount
 		xeno.remove_temp_pass_flags(PASS_MOB_THRU)
 		xeno.recalculate_speed()

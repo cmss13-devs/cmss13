@@ -89,7 +89,7 @@
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		if (ability)
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "xeno_template"
 
 	return original_damage
 

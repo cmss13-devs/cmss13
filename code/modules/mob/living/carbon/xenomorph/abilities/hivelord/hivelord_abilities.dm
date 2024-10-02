@@ -30,5 +30,5 @@
 		return
 
 	if(hivelord_delegate.resin_walker == TRUE)
-		button.icon_state = "template_active"
+		button.icon_state = "xeno_template_active"
 		action_active = TRUE

@@ -15,7 +15,7 @@
 
 		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
 		activated_once = TRUE
-		button.icon_state = "template_active"
+		button.icon_state = "xeno_template_active"
 		get_inital_shield()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
@@ -28,7 +28,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
-	button.icon_state = "template"
+	button.icon_state = "xeno_template"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
 	xeno.create_empower()
 
@@ -450,7 +450,7 @@
 
 	xeno.create_shield(shield_duration)
 	shield_active = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "xeno_template_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
@@ -472,7 +472,7 @@
 		return
 
 	shield_active = FALSE
-	button.icon_state = "template"
+	button.icon_state = "xeno_template"
 
 	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
 		if (shield.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)

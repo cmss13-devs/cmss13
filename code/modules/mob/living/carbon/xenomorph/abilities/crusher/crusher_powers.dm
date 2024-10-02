@@ -200,7 +200,7 @@
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("We hunker down and bolster our defenses!"))
-	button.icon_state = "template_active"
+	button.icon_state = "xeno_template_active"
 
 	xeno.create_crusher_shield()
 
@@ -240,7 +240,7 @@
 		found.on_removal()
 		qdel(found)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
-		button.icon_state = "template"
+		button.icon_state = "xeno_template"
 
 	xeno.overlay_shields()
 
@@ -259,7 +259,7 @@
 		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, PROC_REF(handle_river))
 		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, PROC_REF(handle_collision))
 		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, PROC_REF(start_charging))
-		button.icon_state = "template_active"
+		button.icon_state = "xeno_template_active"
 	else
 		stop_momentum()
 		UnregisterSignal(Xeno, list(
@@ -272,7 +272,7 @@
 			COMSIG_XENO_STOP_MOMENTUM,
 			COMSIG_XENO_START_CHARGING,
 		))
-		button.icon_state = "template"
+		button.icon_state = "xeno_template"
 	return ..()
 
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)

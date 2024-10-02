@@ -234,6 +234,7 @@
  * Arguments:
  * * hive - The hive we're filling a slot for to check if the player is banished
  * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ * * abomination - Whether the potential larva is for an abomination
  */
 /proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE, abomination = FALSE)
 	var/list/candidates = list()

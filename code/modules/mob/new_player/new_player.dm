@@ -154,7 +154,6 @@
 				return TRUE
 
 		if("late_join")
-
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
@@ -202,7 +201,6 @@
 			ViewHiveLeaders()
 
 		if("SelectedJob")
-
 			if(!GLOB.enter_allowed)
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return

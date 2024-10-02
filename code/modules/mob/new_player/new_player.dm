@@ -2,6 +2,10 @@
 /mob/new_player
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
+	///The last message for this player with their larva queue information
+	var/larva_queue_cached_message
+	///The time when the larva_queue_cached_message should be considered stale
+	var/larva_queue_message_stale_time
 
 	invisibility = 101
 
@@ -142,9 +146,19 @@
 				return
 
 			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
+				if(!client)
+					return TRUE
 				if(SSticker.mode.check_xeno_late_join(src))
-					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, 0)
-					if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
+					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
+					if(!new_xeno)
+						if(alert(src,"Do you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
+							if(!client)
+								return TRUE
+							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+								client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
+								to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
+							attemptObserve()
+					else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 						SSticker.mode.transfer_xeno(src, new_xeno)
 						close_spawn_windows()
 

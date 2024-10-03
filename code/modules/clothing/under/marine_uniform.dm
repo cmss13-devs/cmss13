@@ -553,7 +553,6 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_UPP
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
@@ -744,7 +743,6 @@
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_COLONIST
 
 /obj/item/clothing/under/colonist/workwear
 	name = "grey workwear"
@@ -789,7 +787,6 @@
 	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi'
 	icon_state = "clf_uniform"
 	worn_state = "clf_uniform"
-	sensor_faction = FACTION_CLF
 
 /obj/item/clothing/under/colonist/ua_civvies
 	name = "\improper UA gray utility uniform"
@@ -799,7 +796,6 @@
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_davisone
 	name = "\improper UA brown utility uniform"
@@ -809,7 +805,6 @@
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/white_service
 	name = "white service uniform"
@@ -819,7 +814,6 @@
 	icon_state = "CO_service"
 	worn_state = "CO_service"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_joliet_shopsteward
 	name = "steward utilities"
@@ -829,7 +823,6 @@
 	icon_state = "wy_joliet_shopsteward"
 	worn_state = "wy_joliet_shopsteward"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt
 	name = "T-shirt parent object"
@@ -844,7 +837,6 @@
 	worn_state = "tshirt_w_br"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
@@ -853,7 +845,6 @@
 	worn_state = "tshirt_gray_blu"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt/r_bla
 	name = "red T-shirt and black pants"
@@ -862,7 +853,6 @@
 	worn_state = "tshirt_r_bla"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/CM_uniform
 	name = "\improper Colonial Marshal uniform"

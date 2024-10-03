@@ -18315,13 +18315,10 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
 "dEX" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/bombclosetsecurity,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "dFk" = (
@@ -23597,6 +23594,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/warden,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "fSl" = (
@@ -53061,6 +53059,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "sbZ" = (
@@ -57390,6 +57389,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "tQL" = (
@@ -63259,6 +63259,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "wei" = (

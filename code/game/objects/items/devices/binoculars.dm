@@ -408,18 +408,16 @@
 		return
 	var/mob/living/carbon/human/human = owner
 	if(human.selected_ability == src)
-		to_chat(human, "You will no longer use [name] with \
-			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(human, "You will no longer use [name] with [human.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		human.selected_ability = null
+		human.set_selected_ability(null)
 	else
-		to_chat(human, "You will now use [name] with \
-			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(human, "You will now use [name] with [human.get_ability_mouse_name()].")
 		if(human.selected_ability)
 			human.selected_ability.button.icon_state = "template"
-			human.selected_ability = null
+			human.set_selected_ability(null)
 		button.icon_state = "template_on"
-		human.selected_ability = src
+		human.set_selected_ability(src)
 
 /datum/action/item_action/specialist/spotter_target/can_use_action()
 	var/mob/living/carbon/human/human = owner

@@ -159,15 +159,15 @@
 
 #define FIELD_INT(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_INT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_INT(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_INT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -175,15 +175,15 @@
 
 #define FIELD_BIGINT(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_BIGINT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_BIGINT(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_BIGINT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -191,15 +191,15 @@
 
 #define FIELD_CHAR(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_CHAR; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_CHAR(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_CHAR; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -207,15 +207,15 @@
 
 #define FIELD_STRING_SMALL(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_SMALL; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_STRING_SMALL(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_SMALL; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -223,15 +223,15 @@
 
 #define FIELD_STRING_MEDIUM(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_MEDIUM; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_STRING_MEDIUM(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_MEDIUM; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -239,15 +239,15 @@
 
 #define FIELD_STRING_LARGE(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_LARGE; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_STRING_LARGE(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_LARGE; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -255,15 +255,15 @@
 
 #define FIELD_STRING_MAX(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_MAX; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_STRING_MAX(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_STRING_MAX; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -271,15 +271,15 @@
 
 #define FIELD_DATE(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_DATE; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_DATE(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_DATE; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -287,15 +287,15 @@
 
 #define FIELD_TEXT(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_TEXT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_TEXT(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_TEXT; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -303,15 +303,15 @@
 
 #define FIELD_BLOB(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_BLOB; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_BLOB(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_BLOB; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
@@ -319,19 +319,22 @@
 
 #define FIELD_DECIMAL(entity_name, field) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_DECIMAL; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
 #define FIELD_DEFAULT_VALUE_DECIMAL(entity_name, field, default) \
 /datum/db_field/##entity_name/##field{ name = #field; field_type = DB_FIELDTYPE_DECIMAL; parent_entity_type = /datum/entity/##entity_name; }; \
-/datum/db_field/##entity_name/##field/New() { . = ..(); value = default; } \
-/datum/entity/##entity_name/var/datum/db_field/##entity_name/##field/##field; \
+/datum/entity/##entity_name/var/##field; \
+/datum/entity/##entity_name/New() { . = ..(); field = default; } \
 /datum/entity_meta/##entity_name/setup_field_typepaths() { \
 	..(); \
 	LAZYSET(field_typepaths, #field, /datum/db_field/##entity_name/##field); \
 }
+
+/// Define key field for a given entity. Assigns the key_field to the corresponding db_field type path
+#define KEY_FIELD(entity_name, key_field_name) /datum/entity_meta/##entity_name/key_field = /datum/db_field/##entity_name/##field
 
 /// Defines an entity link where `child_entity` refers to `parent_entity` through its column `foreign_key`.
 /// `foreign_key` should NOT be a string but instead the actual foreign key field type.

@@ -5,9 +5,18 @@ SUBSYSTEM_DEF(sound)
 	priority = SS_PRIORITY_SOUND
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
-	var/list/template_queue = list() // Full Template Queue
-	var/list/run_queue = list() // Queue subset being processed during this tick
-	var/list/run_hearers = null // Hearers for currently being processed template
+	/// Assoc list of the full template queue and their list of hearers, in the form of: template = hearers
+	var/list/template_queue = list()
+	/// Assoc list of templates being processed during this tick and their list of hearers, in the form of: template = hearers
+	var/list/run_queue = list()
+	/// Hearers for current template being processed
+	var/list/run_hearers = null
+	/// Assoc list of tracked channels currently playing and their template, in the form of: "[channel]" = template
+	var/list/channel_templates = list()
+	/// List of clients who have moved and need all their sounds updated.
+	var/list/hearer_updates = list()
+	/// List of templates whose source has moved and need to update their hearers.
+	var/list/source_updates = list()
 
 /datum/controller/subsystem/sound/fire(resumed = FALSE)
 	if(!resumed) // Controller first firing for this tick
@@ -18,7 +27,8 @@ SUBSYSTEM_DEF(sound)
 	for(var/datum/sound_template/run_template in run_queue)
 		if(!run_hearers) // Initialize for handling next template
 			run_hearers = run_queue[run_template] // get initial hearers
-			run_template.end_time = REALTIMEOFDAY + GLOB.sound_lengths["[run_template.file]"] SECONDS
+			channel_templates["[run_template.channel]"] = run_template
+			run_template.hearers = run_hearers.Copy()
 			if(MC_TICK_CHECK)
 				return
 
@@ -29,11 +39,24 @@ SUBSYSTEM_DEF(sound)
 			if(MC_TICK_CHECK)
 				return
 
+		run_template.on_playing()
+
 		run_queue.Remove(run_template) // Everyone that had to get this sound got it. Bye, template
 		run_hearers = null // Reset so we know next one is new
 
-	for(var/client/client as anything in GLOB.clients)
+	var/list/updated_clients = list()
+
+	for(var/client/client as anything in hearer_updates)
 		client.soundOutput.update_tracked_channels()
+		updated_clients += client
+		hearer_updates -= client
+		if(MC_TICK_CHECK)
+			return
+
+	for(var/datum/sound_template/template as anything in source_updates)
+		for(var/client/client as anything in (template.hearers - updated_clients))
+			client.soundOutput.process_template(template, update = TRUE)
+		source_updates -= template
 		if(MC_TICK_CHECK)
 			return
 

@@ -40,16 +40,16 @@
 	var/volume_cat = VOLUME_SFX
 	/// For spatial sounds, maximum range the sound is played. Defaults to volume * 0.25.
 	var/range = 0
-	/// Real-world time when the sound is expected to end. Set when processed by SSsound. In decisecionds, provided by REALTIMEOFDAY.
-	var/end_time
 	/// Additional control flags for use by SSsound and soundOutput.
 	var/sound_flags = NONE
+	/// List of all hearers of this template, for use by SSsound.
+	var/list/hearers
+	/// Indicates that deletion timer and movement signal are set up. Set TRUE when sound has been sent to all hearers.
+	var/playing = FALSE
 
-/datum/sound_template/New(file)
-	. = ..()
-
-	if(istype(file, /datum/sound_template))
-		var/datum/sound_template/source_template = file
+/datum/sound_template/New(soundin)
+	if(istype(soundin, /datum/sound_template))
+		var/datum/sound_template/source_template = soundin
 		src.file = source_template.file
 		src.repeat = source_template.repeat
 		src.wait = source_template.wait
@@ -65,13 +65,13 @@
 		src.falloff = source_template.falloff
 		src.echo = source_template.echo.Copy()
 
-		src.source = source_template.source
+		set_source(source_template.source)
 		src.volume_cat = source_template.volume_cat
 		src.range = source_template.range
-		src.end_time = source_template.end_time
 		src.sound_flags = source_template.sound_flags
-	else if(istype(file, /sound))
-		var/sound/source_sound = file
+		src.hearers = source_template.hearers.Copy()
+	else if(istype(soundin, /sound))
+		var/sound/source_sound = soundin
 		src.file = source_sound.file
 		src.repeat = source_sound.repeat
 		src.wait = source_sound.wait
@@ -91,11 +91,52 @@
 		else
 			src.echo = source_sound.echo
 	else
-		src.file = get_sfx(file)
+		src.file = get_sfx(soundin)
+
+	return ..()
 
 /datum/sound_template/Destroy()
 	source = null
+
+	SSsound.channel_templates -= "[channel]"
+	SSsound.source_updates -= src
+
+	for(var/client/client in hearers)
+		client.soundOutput.channel_templates -= "[channel]"
+	hearers = null
+
 	return ..()
+
+/datum/sound_template/proc/set_source(atom/new_source)
+	if(source)
+		UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+
+	source = new_source
+
+	if(!source)
+		return
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_source_qdel))
+
+/datum/sound_template/proc/on_playing()
+	if(playing)
+		return
+	playing = TRUE
+
+	QDEL_IN_CLIENT_TIME(src, GLOB.sound_lengths["[file]"] SECONDS)
+
+	if(!((sound_flags & SOUND_TEMPLATE_SPATIAL) && (sound_flags & SOUND_TEMPLATE_TRACKED)))
+		return
+	if(!ismovable(source))
+		return
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, PROC_REF(on_source_moved))
+
+/datum/sound_template/proc/on_source_qdel(/* datum/source, forced */)
+	SIGNAL_HANDLER //COMSIG_PARENT_QDELETING
+	set_source(get_turf(src.source))
+
+/datum/sound_template/proc/on_source_moved(/* datum/source, atom/oldloc, direction, Forced */)
+	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
+	SSsound.source_updates |= src
 
 /**
  * Creates a sound datum based on the template.
@@ -179,7 +220,7 @@
 				continue
 			template.echo[pos] = echo[pos]
 
-	template.source = source
+	template.set_source(source)
 	template.volume_cat = vol_cat
 	template.range = sound_range || vol * 0.25
 	if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
@@ -195,6 +236,9 @@
 		return FALSE
 
 	var/datum/sound_template/template = new(soundin)
+	if(!isfile(template.file))
+		error("[source] is trying to play a spatial sound but provided no sound: [soundin]")
+		return FALSE
 
 	template.channel = channel || get_free_channel()
 	template.volume = vol
@@ -517,7 +561,7 @@
 	for(var/i in 1 to amount)
 		var/datum/sound_template/template = new("male_warcry") // warcry has variable length, lots of variations
 		template.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour
-		template.source = source_turf
+		template.set_source(source_turf)
 		template.range = range
 		template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED
 		SSsound.queue(template)

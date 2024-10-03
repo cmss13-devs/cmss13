@@ -51,9 +51,6 @@
 		sound_to(owner, sound)
 		return
 
-	if(QDELETED(template.source))
-		return
-
 	var/turf/owner_turf = get_turf(owner.mob)
 	var/turf/source_turf = get_turf(template.source)
 	//soundsys only traverses one "step", so will never send from one interior to another
@@ -78,9 +75,6 @@
 /datum/soundOutput/proc/update_tracked_channels()
 	for(var/channel as anything in channel_templates)
 		var/datum/sound_template/template = channel_templates[channel]
-		if(REALTIMEOFDAY >= template.end_time)
-			channel_templates -= channel
-			continue
 		if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL))
 			continue
 		if(template.source == owner.mob)
@@ -198,6 +192,7 @@
 /datum/soundOutput/proc/on_mob_moved(datum/source, atom/oldloc, direction, Forced)
 	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
 	update_area_environment()
+	SSsound.hearer_updates |= owner
 
 /datum/soundOutput/proc/on_mob_logout(datum/source)
 	SIGNAL_HANDLER //COMSIG_MOB_LOGOUT

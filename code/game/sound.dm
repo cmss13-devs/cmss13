@@ -182,7 +182,8 @@
 	template.source = source
 	template.volume_cat = vol_cat
 	template.range = sound_range || vol * 0.25
-	template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED //TODO: limit to sounds that need it
+	if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
+		template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED //TODO: limit to sounds that need it
 
 	SSsound.queue(template)
 	return template.channel

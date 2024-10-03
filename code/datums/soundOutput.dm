@@ -41,9 +41,8 @@
 	if(template.sound_flags & SOUND_TEMPLATE_CAN_DEAFEN && src.status_flags & EAR_DEAF_MUTE)
 		sound.status |= SOUND_MUTE
 
-		if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
-			tracked_channels["[sound.channel]"] = template
 	if(template.sound_flags & SOUND_TEMPLATE_TRACKED && !update)
+		tracked_channels["[sound.channel]"] = template
 
 	if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL)) //non-spatial
 		sound.x = template.x

@@ -205,6 +205,9 @@
 		return FALSE
 
 	var/datum/sound_template/template = new(soundin)
+	if(!isfile(template.file))
+		error("[source] is trying to play a spatial sound but provided no sound: [soundin]")
+		return FALSE
 
 	template.channel = channel || get_free_channel()
 	template.volume = vol
@@ -236,9 +239,6 @@
 		return FALSE
 
 	var/datum/sound_template/template = new(soundin)
-	if(!isfile(template.file))
-		error("[source] is trying to play a spatial sound but provided no sound: [soundin]")
-		return FALSE
 
 	template.channel = channel || get_free_channel()
 	template.volume = vol

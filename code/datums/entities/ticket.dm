@@ -1,28 +1,14 @@
-/datum/entity/ticket
-	var/ticket
-	var/action
-	var/message
-	var/recipient
-	var/sender
-	var/round_id
-	var/time
-	var/urgent
+DEFINE_ENTITY(ticket, "ticket")
+FIELD_BIGINT(ticket, ticket)
+FIELD_STRING_LARGE(ticket, action)
+FIELD_STRING_MAX(ticket, message)
+FIELD_STRING_MAX(ticket, recipient)
+FIELD_STRING_MAX(ticket, sender)
+FIELD_BIGINT(ticket, round_id)
+FIELD_DATE(ticket, time)
+FIELD_INT(ticket, urgent)
 
 BSQL_PROTECT_DATUM(/datum/entity/ticket)
-
-/datum/entity_meta/ticket
-	entity_type = /datum/entity/ticket
-	table_name = "ticket"
-	field_typepaths = list(
-		"ticket"=DB_FIELDTYPE_BIGINT,
-		"action"=DB_FIELDTYPE_STRING_LARGE,
-		"message"=DB_FIELDTYPE_STRING_MAX,
-		"recipient"=DB_FIELDTYPE_STRING_MAX,
-		"sender"=DB_FIELDTYPE_STRING_MAX,
-		"round_id"=DB_FIELDTYPE_BIGINT,
-		"time"=DB_FIELDTYPE_DATE,
-		"urgent"=DB_FIELDTYPE_INT,
-	)
 
 /proc/log_ahelp(ticket, action, message, recipient, sender, urgent = FALSE)
 	var/datum/entity/ticket/ticket_ent = DB_ENTITY(/datum/entity/ticket)

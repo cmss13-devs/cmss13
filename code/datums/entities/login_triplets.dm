@@ -1,25 +1,11 @@
-/datum/entity/login_triplet
-	var/ckey
-	var/ip1
-	var/ip2
-	var/ip3
-	var/ip4
-
-	var/last_known_cid
-	var/login_date
-
-/datum/entity_meta/login_triplet
-	entity_type = /datum/entity/login_triplet
-	table_name = "login_triplets"
-	field_typepaths = list(
-		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
-		"ip1" = DB_FIELDTYPE_INT,
-		"ip2" = DB_FIELDTYPE_INT,
-		"ip3" = DB_FIELDTYPE_INT,
-		"ip4" = DB_FIELDTYPE_INT,
-		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
-		"login_date" = DB_FIELDTYPE_DATE,
-	)
+DEFINE_ENTITY(login_triplet, "login_triplets")
+FIELD_STRING_MEDIUM(login_triplet, ckey)
+FIELD_INT(login_triplet, ip1)
+FIELD_INT(login_triplet, ip2)
+FIELD_INT(login_triplet, ip3)
+FIELD_INT(login_triplet, ip4)
+FIELD_STRING_SMALL(login_triplet, last_known_cid)
+FIELD_DATE(login_triplet, login_date)
 
 /datum/view_record/login_triplet
 	var/ckey

@@ -1,9 +1,2 @@
-/datum/entity/mc_round
-	var/map_name
-
-/datum/entity_meta/mc_round
-	entity_type = /datum/entity/mc_round
-	table_name = "mc_round"
-	field_typepaths = list(
-		"map_name"=DB_FIELDTYPE_STRING_LARGE,
-	)
+DEFINE_ENTITY(mc_round, "mc_round")
+FIELD_STRING_LARGE(mc_round, map_name)

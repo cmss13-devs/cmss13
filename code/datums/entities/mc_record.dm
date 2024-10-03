@@ -1,15 +1,5 @@
-/datum/entity/mc_record
-	var/round_time
-	var/round_id
-	var/controller_id
-	var/time_taken
-
-/datum/entity_meta/mc_record
-	entity_type = /datum/entity/mc_record
-	table_name = "mc_record"
-	field_typepaths = list(
-		"round_time"=DB_FIELDTYPE_BIGINT,
-		"round_id"=DB_FIELDTYPE_BIGINT,
-		"controller_id"=DB_FIELDTYPE_BIGINT,
-		"time_taken"=DB_FIELDTYPE_INT,
-	)
+DEFINE_ENTITY(mc_record, "mc_record")
+FIELD_BIGINT(mc_record, round_time)
+FIELD_BIGINT(mc_record, round_id)
+FIELD_BIGINT(mc_record, controller_id)
+FIELD_INT(mc_record, time_taken)

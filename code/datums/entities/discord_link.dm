@@ -22,5 +22,3 @@ KEY_FIELD(discord_link, discord_id)
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/discord_link
 	child_foreign_key = "player_id"
-
-

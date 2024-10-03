@@ -1,19 +1,7 @@
-/datum/entity/mc_timing_info
-	var/round_id
-	var/round_time
-	var/client_count
-	var/human_count
-	var/xeno_count
-	var/total_time_taken
-
-/datum/entity_meta/mc_timing_info
-	entity_type = /datum/entity/mc_timing_info
-	table_name = "mc_timing_info"
-	field_typepaths = list(
-		"round_id"=DB_FIELDTYPE_BIGINT,
-		"round_time"=DB_FIELDTYPE_INT,
-		"client_count"=DB_FIELDTYPE_INT,
-		"human_count"=DB_FIELDTYPE_INT,
-		"xeno_count"=DB_FIELDTYPE_INT,
-		"total_time_taken"=DB_FIELDTYPE_BIGINT,
-	)
+DEFINE_ENTITY(mc_timing_info, "mc_timing_info")
+FIELD_BIGINT(mc_timing_info, round_id)
+FIELD_INT(mc_timing_info, round_time)
+FIELD_INT(mc_timing_info, client_count)
+FIELD_INT(mc_timing_info, human_count)
+FIELD_INT(mc_timing_info, xeno_count)
+FIELD_BIGINT(mc_timing_info, total_time_taken)

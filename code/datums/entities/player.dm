@@ -1,39 +1,6 @@
 #define MINUTES_STAMP ((world.realtime / 10) / 60)
 
-/datum/entity/player
-	var/ckey
-	var/last_known_ip
-	var/last_known_cid
-
-	var/whitelist_status
-	var/whitelist_flags
-
-	var/discord_link_id
-
-	var/last_login
-
-	var/is_permabanned = FALSE
-	var/permaban_reason
-	var/permaban_date
-	var/permaban_admin_id
-
-	var/is_time_banned = FALSE
-	var/time_ban_reason
-	var/time_ban_admin_id
-	var/time_ban_expiration
-	var/time_ban_date
-
-	var/migrated_notes = FALSE
-	var/migrated_bans = FALSE
-	var/migrated_jobbans = FALSE
-
-	var/stickyban_whitelisted = FALSE
-
-	var/byond_account_age
-	var/first_join_date
-
-
-// UNTRACKED FIELDS
+DEFINE_ENTITY(player, "players")
 	var/name // Used for NanoUI statistics menu
 
 	var/warning_count = 0
@@ -44,6 +11,7 @@
 	var/migrating_notes = FALSE
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
+	var/whitelist_flags
 
 	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
@@ -54,36 +22,30 @@
 	var/list/datum/entity/player_stat/stats
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
+FIELD_STRING_MEDIUM(player, ckey)
+FIELD_STRING_SMALL(player, last_known_ip)
+FIELD_STRING_SMALL(player, last_known_cid)
+FIELD_STRING_LARGE(player, last_login)
+FIELD_DEFAULT_VALUE_INT(player, is_permabanned, FALSE)
+FIELD_STRING_MAX(player, permaban_reason)
+FIELD_STRING_LARGE(player, permaban_date)
+FIELD_STRING_MAX(player, whitelist_status)
+FIELD_BIGINT(player, discord_link_id)
+FIELD_BIGINT(player, permaban_admin_id)
+FIELD_DEFAULT_VALUE_INT(player, is_time_banned, FALSE)
+FIELD_STRING_MAX(player, time_ban_reason)
+FIELD_BIGINT(player, time_ban_expiration)
+FIELD_BIGINT(player, time_ban_admin_id)
+FIELD_STRING_LARGE(player, time_ban_date)
+FIELD_DEFAULT_VALUE_INT(player, migrated_notes, FALSE)
+FIELD_DEFAULT_VALUE_INT(player, migrated_bans, FALSE)
+FIELD_DEFAULT_VALUE_INT(player, migrated_jobbans, FALSE)
+FIELD_DEFAULT_VALUE_INT(player, stickyban_whitelisted, FALSE)
+FIELD_STRING_MEDIUM(player, byond_account_age)
+FIELD_STRING_MEDIUM(player, first_join_date)
+KEY_FIELD(player, ckey)
 
 BSQL_PROTECT_DATUM(/datum/entity/player)
-
-/datum/entity_meta/player
-	entity_type = /datum/entity/player
-	table_name = "players"
-	key_field = "ckey"
-	field_typepaths = list(
-		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
-		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
-		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
-		"last_login" = DB_FIELDTYPE_STRING_LARGE,
-		"is_permabanned" = DB_FIELDTYPE_INT,
-		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
-		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
-		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
-		"discord_link_id" = DB_FIELDTYPE_BIGINT,
-		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
-		"is_time_banned" = DB_FIELDTYPE_INT,
-		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
-		"time_ban_expiration" = DB_FIELDTYPE_BIGINT,
-		"time_ban_admin_id" = DB_FIELDTYPE_BIGINT,
-		"time_ban_date" = DB_FIELDTYPE_STRING_LARGE,
-		"migrated_notes" = DB_FIELDTYPE_INT,
-		"migrated_bans" = DB_FIELDTYPE_INT,
-		"migrated_jobbans" = DB_FIELDTYPE_INT,
-		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
-		"byond_account_age" = DB_FIELDTYPE_STRING_MEDIUM,
-		"first_join_date" = DB_FIELDTYPE_STRING_MEDIUM,
-	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
 // is_ban DOES NOT MEAN THAT NOTE IS _THE_ BAN, IT MEANS THAT NOTE WAS CREATED FOR A BAN

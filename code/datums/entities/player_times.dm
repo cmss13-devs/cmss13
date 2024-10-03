@@ -1,25 +1,12 @@
-/datum/entity/player_time
-	var/player_id
-	var/role_id
-	var/total_minutes
-
+DEFINE_ENTITY(player_time, "player_playtime")
 	// Untracked vars
 	var/bgcolor = "#4a4a4a"
 	var/textcolor = "#ffffff"
+FIELD_BIGINT(player_time, player_id)
+FIELD_STRING_LARGE(player_time, role_id)
+FIELD_DEFAULT_VALUE_INT(player_time, total_minutes, 0)
 
 BSQL_PROTECT_DATUM(/datum/entity/player_time)
-
-/datum/entity_meta/player_time
-	entity_type = /datum/entity/player_time
-	table_name = "player_playtime"
-	field_typepaths = list(
-		"player_id" = DB_FIELDTYPE_BIGINT,
-		"role_id" = DB_FIELDTYPE_STRING_LARGE,
-		"total_minutes" = DB_FIELDTYPE_BIGINT,
-	)
-
-/datum/entity_meta/player_time/on_insert(datum/entity/player_time/player)
-	player.total_minutes = 0
 
 /datum/entity_link/player_to_time
 	parent_entity = /datum/entity/player

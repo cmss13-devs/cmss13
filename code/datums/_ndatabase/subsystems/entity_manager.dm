@@ -100,7 +100,6 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		if(entity_meta.key_field)
 			adapter.sync_index("keyfield_index_[entity_meta.key_field::name]", entity_meta.table_name, list(entity_meta.key_field::name), TRUE, TRUE)
 
-
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = tables_unsorted.Copy()

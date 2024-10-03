@@ -1,15 +1,7 @@
-/datum/entity/map_vote
-	var/map_name
-	var/total_votes
+DEFINE_ENTITY(map_vote, "map_vote")
+FIELD_STRING_LARGE(map_vote, map_name)
+FIELD_BIGINT(map_vote, total_votes)
 
-
-/datum/entity_meta/map_vote
-	entity_type = /datum/entity/map_vote
-	table_name = "map_vote"
-	field_typepaths = list(
-		"map_name"=DB_FIELDTYPE_STRING_LARGE,
-		"total_votes"=DB_FIELDTYPE_BIGINT,
-	)
-
+// TODO: have this handled automatically by virtue of type (deserialization)
 /datum/entity_meta/map_vote/on_read(datum/entity/map_vote/vote)
 	vote.total_votes = text2num("[vote.total_votes]")

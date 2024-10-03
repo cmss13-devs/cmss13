@@ -78,7 +78,12 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+/*
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
+*/
+//RUCM START
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE, xeno)
+//RUCM END
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()

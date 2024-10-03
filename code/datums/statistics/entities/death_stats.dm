@@ -114,6 +114,10 @@
 	if(cause_mob)
 		cause_mob.life_kills_total += life_value
 
+//RUCM START
+		SEND_SIGNAL(cause_mob, COMSIG_MOB_KILL_TOTAL_INCREASED, src, cause_data)
+//RUCM END
+
 	if(getBruteLoss())
 		new_death.total_brute = floor(getBruteLoss())
 	if(getFireLoss())

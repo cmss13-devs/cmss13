@@ -106,6 +106,38 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 /datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
+
+//RUCM START
+	switch(round_finished)
+		if(MODE_INFESTATION_X_MAJOR)
+			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1] / 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2] * 2) // 3, 5
+			else
+				SSbattlepass.give_sides_points(3, 5)
+
+		if(MODE_INFESTATION_M_MAJOR)
+			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2] * 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1] / 2) // 5, 3
+			else
+				SSbattlepass.give_sides_points(5, 3)
+		if(MODE_INFESTATION_X_MINOR)
+			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2]) // 3, 4
+			else
+				SSbattlepass.give_sides_points(3, 4)
+		if(MODE_INFESTATION_M_MINOR)
+			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1]) // 4, 3
+			else
+				SSbattlepass.give_sides_points(4, 3)
+
+		if(MODE_INFESTATION_DRAW_DEATH)
+			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1]) // 3, 3
+			else
+				SSbattlepass.give_sides_points(3, 3)
+//RUCM END
+
 	sleep(2 SECONDS)
 	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
 	to_world(SPAN_ROLE_HEADER("FUN FACTS"))

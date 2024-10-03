@@ -370,6 +370,12 @@
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
+	//RUCM START
+	skin_icon_holder = new(null, src)
+	skin_icon_holder.icon = icon_skin
+	vis_contents += skin_icon_holder
+	//RUCM END
+
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
@@ -726,6 +732,12 @@
 	if(backpack_icon_holder)
 		vis_contents -= backpack_icon_holder
 		QDEL_NULL(backpack_icon_holder)
+
+	//RUCM START
+	if(skin_icon_holder)
+		vis_contents -= skin_icon_holder
+		QDEL_NULL(skin_icon_holder)
+	//RUCM END
 
 	QDEL_NULL(iff_tag)
 

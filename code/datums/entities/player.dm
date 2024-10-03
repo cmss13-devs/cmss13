@@ -453,6 +453,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
+//RUCM START
+	else
+		DB_FILTER(/datum/entity/discord_link, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_discord_link)))
+//RUCM END
 
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")
@@ -462,6 +466,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
 //RUCM START
+	player_shop = DB_EKEY(/datum/entity/player_shop, id)
+	player_shop.save()
+	player_shop.sync()
+	load_battlepass()
 	load_donator_info()
 //RUCM END
 

@@ -44,7 +44,9 @@
 	output +="<br><b>[xeno_text]</b>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=tutorial'>Tutorial</A></p>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
-
+//RUCM START
+	output += "<p><a href='byond://?src=\ref[src];lobby_choice=battlepass'>Battlepass</A></p>"
+//RUCM END
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
 
 	if(round_start)
@@ -213,6 +215,18 @@
 		if("tutorial")
 			tutorial_menu()
 
+//RUCM START
+		if("battlepass")
+			if(!client.player_data?.battlepass)
+				return
+
+			if(!GLOB.current_battlepass)
+				to_chat(src, SPAN_WARNING("Please wait for battlepasses to initialize first."))
+				return
+
+			client.player_data.battlepass.tgui_interact(src)
+//RUCM END
+
 		else
 			new_player_panel()
 
@@ -294,6 +308,10 @@
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
+//RUCM START
+	if(character.client?.player_data?.battlepass)
+		SSbattlepass.marine_battlepass_earners |= character.client.player_data.battlepass
+//RUCM END
 	qdel(src)
 
 

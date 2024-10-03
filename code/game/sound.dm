@@ -3,7 +3,7 @@
 
 /// Similar to a sound datum, carries info to the sound subsysem and soundOutput.
 /datum/sound_template
-	//copied sound datum vars; environment, echo, pan, params, priority deliberately omitted
+	//copied sound datum vars; environment, pan, params, priority deliberately omitted
 	/// This is the file that will be played when the sound is sent to a player.
 	var/file
 	/// Set to 1 to repeat the sound indefinitely once it begins playing, 2 to repeat it forwards and backwards.

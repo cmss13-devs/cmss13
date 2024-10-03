@@ -76,8 +76,7 @@
 	sound_to(owner, sound)
 
 /datum/soundOutput/proc/update_tracked_channels()
-	for(var/i in length(channel_templates) to 1 step -1)
-		var/channel = channel_templates[i]
+	for(var/channel as anything in channel_templates)
 		var/datum/sound_template/template = channel_templates[channel]
 		if(REALTIMEOFDAY >= template.end_time)
 			channel_templates -= channel

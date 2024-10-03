@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(sound)
 		while(length(run_hearers)) // Output sound to hearers
 			var/client/hearer = run_hearers[length(run_hearers)]
 			run_hearers.len--
-			hearer?.soundOutput.process_sound(run_template)
+			hearer?.soundOutput.process_template(run_template)
 			if(MC_TICK_CHECK)
 				return
 

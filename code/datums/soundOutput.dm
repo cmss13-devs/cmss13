@@ -7,8 +7,8 @@
 
 	/// Currently applied environmental reverb.
 	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE
-	/// Assoc list of important channels and their assigned template, in the form of: "[channel]" = template
-	var/list/tracked_channels = list()
+	/// Assoc list of tracked channels currently playing on the client and their assigned template, in the form of: "[channel]" = template
+	var/list/channel_templates = list()
 
 /datum/soundOutput/New(client/client)
 	if(!client)
@@ -33,7 +33,7 @@
  * * template - the sound_template
  * * update - if truthy updates the existing sound on the template's channel, otherwise overwrites it
  */
-/datum/soundOutput/proc/process_sound(datum/sound_template/template, update = FALSE)
+/datum/soundOutput/proc/process_template(datum/sound_template/template, update = FALSE)
 	var/sound/sound = template.get_sound(update)
 
 	sound.volume *= owner.volume_preferences[template.volume_cat]
@@ -42,7 +42,7 @@
 		sound.status |= SOUND_MUTE
 
 	if(template.sound_flags & SOUND_TEMPLATE_TRACKED && !update)
-		tracked_channels["[sound.channel]"] = template
+		channel_templates["[sound.channel]"] = template
 
 	if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL)) //non-spatial
 		sound.x = template.x
@@ -76,17 +76,17 @@
 	sound_to(owner, sound)
 
 /datum/soundOutput/proc/update_tracked_channels()
-	for(var/i in length(tracked_channels) to 1 step -1)
-		var/channel = tracked_channels[i]
-		var/datum/sound_template/template = tracked_channels[channel]
+	for(var/i in length(channel_templates) to 1 step -1)
+		var/channel = channel_templates[i]
+		var/datum/sound_template/template = channel_templates[channel]
 		if(REALTIMEOFDAY >= template.end_time)
-			tracked_channels -= channel
+			channel_templates -= channel
 			continue
 		if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL))
 			continue
 		if(template.source == owner.mob)
 			continue
-		process_sound(template, update = TRUE)
+		process_template(template, update = TRUE)
 
 /datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
 	var/status_flags = SOUND_STREAM

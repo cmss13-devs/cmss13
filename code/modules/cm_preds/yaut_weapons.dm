@@ -473,12 +473,11 @@
 	..()
 
 /obj/item/weapon/yautja/combistick/alt
-	name = "hunting hatchet"
-	desc = "A swift weapon designed to inflict pain upon the hunter's prey. A chain is attached to the hilt."
+	name = "ballast axe"
+	desc = "A swift weapon designed to gouge and gore the hunter's prey. A chain is attached to the hilt, allowing for a quick retrieval."
 	icon_state = "tomahawk"
-	item_state = "tomahawk"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_equip_slot = SLOT_SUIT_STORE
+	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	w_class = SIZE_LARGE
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.

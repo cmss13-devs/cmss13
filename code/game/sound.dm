@@ -126,7 +126,7 @@
 		sound.offset = src.offset
 		sound.pitch = src.pitch
 		//sound.environment = src.environment
-		if(CHECK_BITFIELD(sound_flags, SOUND_ENVIRONMENTAL))
+		if(sound_flags & SOUND_TEMPLATE_ENVIRONMENTAL)
 			sound.echo[ECHO_ROOM] = 0
 			sound.echo[ECHO_ROOMHF] = 0
 	//environment commented out as currently nonexistent on templates
@@ -182,7 +182,7 @@
 	template.source = source
 	template.volume_cat = vol_cat
 	template.range = sound_range || vol * 0.25
-	ENABLE_BITFIELD(template.sound_flags, SOUND_SPATIAL|SOUND_ENVIRONMENTAL|SOUND_CAN_DEAFEN|SOUND_TRACKED) //TODO: limit to sounds that need it
+	template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED //TODO: limit to sounds that need it
 
 	SSsound.queue(template)
 	return template.channel
@@ -518,7 +518,7 @@
 		template.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour
 		template.source = source_turf
 		template.range = range
-		ENABLE_BITFIELD(template.sound_flags, SOUND_SPATIAL|SOUND_ENVIRONMENTAL|SOUND_CAN_DEAFEN|SOUND_TRACKED)
+		template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED
 		SSsound.queue(template)
 
 /client/proc/sound_debug_query()

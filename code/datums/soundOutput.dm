@@ -38,14 +38,14 @@
 
 	sound.volume *= owner.volume_preferences[template.volume_cat]
 
-	if(CHECK_BITFIELD(template.sound_flags, SOUND_CAN_DEAFEN) && CHECK_BITFIELD(src.status_flags, EAR_DEAF_MUTE))
-		ENABLE_BITFIELD(sound.status, SOUND_MUTE)
+	if(template.sound_flags & SOUND_TEMPLATE_CAN_DEAFEN && src.status_flags & EAR_DEAF_MUTE)
+		sound.status |= SOUND_MUTE
 
-	if(CHECK_BITFIELD(template.sound_flags, SOUND_TRACKED) && !update)
 		if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
 			tracked_channels["[sound.channel]"] = template
+	if(template.sound_flags & SOUND_TEMPLATE_TRACKED && !update)
 
-	if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL)) //non-spatial
+	if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL)) //non-spatial
 		sound.x = template.x
 		sound.y = template.y
 		sound.z = template.z
@@ -83,7 +83,7 @@
 		if(REALTIMEOFDAY >= template.end_time)
 			tracked_channels -= channel
 			continue
-		if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL))
+		if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL))
 			continue
 		if(template.source == owner.mob)
 			continue

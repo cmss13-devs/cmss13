@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(sound)
 /datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, list/hearers)
 	LAZYINITLIST(hearers)
 
-	if(!CHECK_BITFIELD(template.sound_flags, SOUND_SPATIAL))
+	if(!(template.sound_flags & SOUND_TEMPLATE_SPATIAL))
 		template_queue[template] = hearers
 		return
 

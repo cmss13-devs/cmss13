@@ -84,14 +84,15 @@
 
 #define SOUND_ECHO_REVERB_OFF list(null, null, -10000, -10000, null, null, null, null, null, null, null, null, null, null, null, null, null, null) //-10000 to Room & RoomHF makes enviromental reverb effectively inaudible, nulls are interpreted as default values
 
+//for /datum/sound_template.sound_flags
 /// Enviromental sounds are effected by environmental reverb
-#define SOUND_ENVIRONMENTAL (1<<4)
+#define SOUND_TEMPLATE_ENVIRONMENTAL (1<<4)
 /// Sound can be muted by mob deafness
-#define SOUND_CAN_DEAFEN (1<<5)
+#define SOUND_TEMPLATE_CAN_DEAFEN (1<<5)
 /// Spatial sounds set the sound position relative to the source
-#define SOUND_SPATIAL (1<<6)
+#define SOUND_TEMPLATE_SPATIAL (1<<6)
 /// Sound is tracked by soundOutput for updating position, volume, etc
-#define SOUND_TRACKED (1<<7)
+#define SOUND_TEMPLATE_TRACKED (1<<7)
 
 #define AMBIENCE_SHIP 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'

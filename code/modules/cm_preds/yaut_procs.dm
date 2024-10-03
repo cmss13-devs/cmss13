@@ -275,6 +275,10 @@
 		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
 		main_weapon = use_radials ? show_radial_menu(src, src, glaive_variants) : tgui_input_list(usr, "Which variant of the war glaive?:", "Melee Weapon", glaive_variants)
 
+	if(main_weapon == YAUTJA_GEAR_STICK)
+		var/list/stick_variants = list(YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_STICK_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "tomahawk")) //ADD SPRITE HERE
+		main_weapon = use_radials ? show_radial_menu(src, src, stick_variants) :tgui_input_list(usr, "Which variant of the combistick?:", "Melee Weapon", stick_variants)
+
 	if(!main_weapon)
 		return
 	for(var/i = 1 to total_secondaries)
@@ -310,7 +314,9 @@
 		if(YAUTJA_GEAR_SCYTHE_ALT)
 			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_STICK)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick/real(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_STICK_ALT)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_SCIMS)
 			if(bracers.wristblades_deployed)
 				bracers.wristblades_internal(usr, TRUE)

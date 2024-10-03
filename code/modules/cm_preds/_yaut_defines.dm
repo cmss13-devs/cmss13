@@ -15,6 +15,7 @@
 
 #define YAUTJA_GEAR_GLAIVE_ALT "The Imposing Glaive"
 #define YAUTJA_GEAR_SCYTHE_ALT "The Ripping War-Scythe"
+#define YAUTJA_GEAR_STICK_ALT "The Butchering Tomahawk"
 
 #define YAUTJA_THRALL_GEAR_MACHETE "The Swift Machete"
 #define YAUTJA_THRALL_GEAR_RAPIER "The Dancing Rapier"

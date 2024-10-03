@@ -164,7 +164,7 @@
 	bracers.wristblades()
 
 /datum/action/predator_action/bracer/combistick
-	name = "Yank Combi-stick"
+	name = "Yank Weapon"
 	action_icon_state = "combi"
 	listen_signal = COMSIG_KB_YAUTJA_CALL_COMBI
 	active = PREDATOR_ACTION_ON_CLICK

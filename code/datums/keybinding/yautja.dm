@@ -411,7 +411,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/human = user.mob
-	var/obj/item/weapon/yautja/combistick/held_item = human.get_held_item()
+	var/obj/item/weapon/yautja/combistick/real/held_item = human.get_held_item()
 	if(istype(held_item))
 		held_item.fold_combistick()
 	return TRUE

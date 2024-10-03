@@ -230,7 +230,7 @@
 	item_state = "scythe_double"
 
 //Combistick
-/obj/item/weapon/yautja/combistick
+/obj/item/weapon/yautja/combistick/real
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
@@ -249,12 +249,14 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = TRUE
-	var/charged = FALSE
-
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
+
+/obj/item/weapon/yautja/combistick
+	var/on = TRUE
+	var/charged = FALSE
+
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
 	///The mob the chain is linked to
@@ -271,7 +273,7 @@
 
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
 	if(!charged)
-		to_chat(user, SPAN_WARNING("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
+		to_chat(user, SPAN_WARNING("Your [src] refuses to leave your hand. You must charge it with blood from prey before throwing it."))
 		return FALSE
 	charged = FALSE
 	remove_filter("combistick_charge")
@@ -343,10 +345,10 @@
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
 
-/obj/item/weapon/yautja/combistick/IsShield()
+/obj/item/weapon/yautja/combistick/real/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/fold_combistick()
+/obj/item/weapon/yautja/combistick/real/verb/fold_combistick()
 	set category = "Weapons"
 	set name = "Collapse Combi-stick"
 	set desc = "Collapse or extend the combistick."
@@ -365,21 +367,21 @@
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
-/obj/item/weapon/yautja/combistick/wield(mob/user)
+/obj/item/weapon/yautja/combistick/real/wield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_wielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/unwield(mob/user)
+/obj/item/weapon/yautja/combistick/real/unwield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_unwielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/update_icon()
+/obj/item/weapon/yautja/combistick/real/update_icon()
 	if(flags_item & WIELDED)
 		item_state = "combistick_w"
 	else if(!on)
@@ -387,7 +389,7 @@
 	else
 		item_state = "combistick"
 
-/obj/item/weapon/yautja/combistick/unique_action(mob/living/user)
+/obj/item/weapon/yautja/combistick/real/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
 	if(!on)
@@ -447,7 +449,7 @@
 		return
 
 	if(!charged)
-		to_chat(user, SPAN_DANGER("Your combistick's reservoir fills up with your opponent's blood! You may now throw it!"))
+		to_chat(user, SPAN_DANGER("Your [src]'s reservoir fills up with your opponent's blood! You may now throw it!"))
 		charged = TRUE
 		var/color = target.get_blood_color()
 		var/alpha = 70
@@ -469,6 +471,26 @@
 				SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()
+
+/obj/item/weapon/yautja/combistick/alt
+	name = "hunting hatchet"
+	desc = "A swift weapon designed to inflict pain upon the hunter's prey. A chain is attached to the hilt."
+	icon_state = "tomahawk"
+	item_state = "tomahawk"
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_equip_slot = SLOT_SUIT_STORE
+	flags_item = ITEM_PREDATOR
+	w_class = SIZE_LARGE
+	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 4
+	unacidable = TRUE
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_6
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("slashed", "chopped", "diced")
 
 /obj/item/weapon/yautja/knife
 	name = "ceremonial dagger"

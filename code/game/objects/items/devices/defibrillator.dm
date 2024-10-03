@@ -1,3 +1,4 @@
+/* RUCM CHANGE
 /obj/item/device/defibrillator
 	name = "emergency defibrillator"
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
@@ -268,3 +269,4 @@
 	item_state = "defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99
+*/

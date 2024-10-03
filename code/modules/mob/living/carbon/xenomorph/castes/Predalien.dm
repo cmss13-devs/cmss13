@@ -91,6 +91,9 @@
 	if(!loc)
 		return FALSE
 
+	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(loc)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
+
 	to_chat(src, {"
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a yautja-alien hybrid!</span>

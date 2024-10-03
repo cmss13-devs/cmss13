@@ -98,7 +98,7 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 			for(var/datum/db/index/index in entity_meta.indexes)
 				adapter.sync_index(index.name, entity_meta.table_name, index.fields, index.hints & DB_INDEXHINT_UNIQUE, index.hints & DB_INDEXHINT_CLUSTER)
 		if(entity_meta.key_field)
-			adapter.sync_index("keyfield_index_[entity_meta.key_field]", entity_meta.table_name, list(entity_meta.key_field), TRUE, TRUE)
+			adapter.sync_index("keyfield_index_[entity_meta.key_field::name]", entity_meta.table_name, list(entity_meta.key_field::name), TRUE, TRUE)
 
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)

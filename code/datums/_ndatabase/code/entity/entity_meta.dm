@@ -25,7 +25,8 @@
 	var/list/datum/db_field/field_typepaths
 	/// Whether we are persisting the entity in the DB
 	var/active_entity = TRUE
-	var/key_field = null
+	/// Typepath to the db_field datum for access to compile-time metadata of the field
+	var/datum/db_field/key_field = null
 
 	// bitwise hint field
 	var/hints = 0
@@ -64,34 +65,34 @@
 	return
 
 // redefine this for faster operations
-/datum/entity_meta/proc/map(datum/entity/ET, list/values)
+/datum/entity_meta/proc/map(datum/entity/entity, list/values)
 	var/strid = "[values[DB_DEFAULT_ID_FIELD]]"
-	ET.id = strid
+	entity.id = strid
 	for(var/F in field_typepaths)
-		ET.vars[F] = values[F]
+		entity.vars[F] = values[F]
 
 // redefine this for faster operations
-/datum/entity_meta/proc/unmap(datum/entity/ET, include_id = TRUE)
+/datum/entity_meta/proc/unmap(datum/entity/entity, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values[DB_DEFAULT_ID_FIELD] = ET.id
+		values[DB_DEFAULT_ID_FIELD] = entity.id
 	for(var/F in field_typepaths)
-		values[F] = ET.vars[F]
+		values[F] = entity.vars[F]
 	return values
 
 /datum/entity_meta/proc/make_new(id = null, invalidate = TRUE)
 	var/strid = "[id]"
 	if(managed[strid])
 		return managed[strid]
-	var/datum/entity/ET = new entity_type()
-	ET.metadata = src
+	var/datum/entity/entity = new entity_type()
+	entity.metadata = src
 	if(id)
-		ET.id = text2num(id)
-		managed[strid] = ET
+		entity.id = text2num(id)
+		managed[strid] = entity
 		if(invalidate)
-			ET.invalidate()
+			entity.invalidate()
 
-	return ET
+	return entity
 
 /datum/entity_meta/proc/make_new_by_key(key_value)
 	if(!key_field)
@@ -101,26 +102,26 @@
 	var/strval = "[key_value]"
 	if(key_managed[strval])
 		return key_managed[strval]
-	var/datum/entity/ET = new entity_type()
-	ET.metadata = src
-	ET.vars[key_field] = key_value
-	key_managed[strval] = ET
-	return ET
+	var/datum/entity/entity = new entity_type()
+	entity.metadata = src
+	entity.vars[key_field::name] = key_value
+	key_managed[strval] = entity
+	return entity
 
-/datum/entity_meta/proc/on_read(datum/entity/ET)
+/datum/entity_meta/proc/on_read(datum/entity/entity)
 	return
 
-/datum/entity_meta/proc/on_update(datum/entity/ET)
+/datum/entity_meta/proc/on_update(datum/entity/entity)
 	return
 
-/datum/entity_meta/proc/on_insert(datum/entity/ET)
+/datum/entity_meta/proc/on_insert(datum/entity/entity)
 	return
 
-/datum/entity_meta/proc/on_action(datum/entity/ET)
+/datum/entity_meta/proc/on_action(datum/entity/entity)
 	return
 
-/datum/entity_meta/proc/on_delete(datum/entity/ET)
-	qdel(ET)
+/datum/entity_meta/proc/on_delete(datum/entity/entity)
+	qdel(entity)
 	return
 
 /datum/entity_meta/proc/filter_list(list/datum/entity/EL, datum/db/filter/F)

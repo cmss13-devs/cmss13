@@ -1,11 +1,3 @@
-/datum/entity/clan_player
-	var/player_id
-	var/clan_rank
-	var/permissions
-	var/clan_id
-
-	var/honor
-
 BSQL_PROTECT_DATUM(/datum/entity/clan_player)
 BSQL_PROTECT_DATUM(/datum/entity/clan)
 
@@ -15,25 +7,12 @@ FIELD_STRING_MAX(clan, description)
 FIELD_BIGINT(clan, honor)
 FIELD_DEFAULT_VALUE_STRING_SMALL(clan, color, "#FFFFFF")
 
-/datum/entity_meta/clan_player
-	entity_type = /datum/entity/clan_player
-	table_name = "clans_player"
-	field_typepaths = list(
-		"player_id" = DB_FIELDTYPE_BIGINT,
-		"clan_rank" = DB_FIELDTYPE_BIGINT,
-		"permissions" = DB_FIELDTYPE_BIGINT,
-		"clan_id" = DB_FIELDTYPE_BIGINT,
-		"honor" = DB_FIELDTYPE_BIGINT,
-	)
-	key_field = "player_id"
-
-/datum/entity_meta/clan_player/on_insert(datum/entity/clan_player/player)
-	player.honor = 0
-	player.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
-	player.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
-
-	player.save()
-
+DEFINE_ENTITY(clan_player, "clans_player")
+FIELD_BIGINT(clan_player, player_id)
+FIELD_DEFAULT_VALUE_BIGINT(clan_player, clan_rank, GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED])
+FIELD_DEFAULT_VALUE_BIGINT(clan_player, permissions, GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions)
+FIELD_BIGINT(clan_player, clan_id)
+FIELD_DEFAULT_VALUE_BIGINT(clan_player, honor, 0)
 
 /datum/entity_link/player_to_clan_player
 	parent_entity = /datum/entity/player

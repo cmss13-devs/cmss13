@@ -1,25 +1,9 @@
-/datum/entity/discord_identifier
-	var/identifier
-	var/playerid
-	var/realtime
-	var/used = FALSE
-
-/datum/entity/discord_identifier/New()
-	. = ..()
-
-	realtime = world.realtime
-
-/datum/entity_meta/discord_identifier
-	entity_type = /datum/entity/discord_identifier
-	table_name = "discord_identifiers"
-	key_field = "identifier"
-
-	field_typepaths = list(
-		"identifier" = DB_FIELDTYPE_STRING_LARGE,
-		"playerid" = DB_FIELDTYPE_BIGINT,
-		"realtime" = DB_FIELDTYPE_BIGINT,
-		"used" = DB_FIELDTYPE_INT,
-	)
+DEFINE_ENTITY(discord_identifier, "discord_identifiers")
+FIELD_STRING_LARGE(discord_identifier, identifier)
+FIELD_BIGINT(discord_identifier, playerid)
+FIELD_DEFAULT_VALUE_BIGINT(discord_identifier, realtime, world.realtime)
+FIELD_DEFAULT_VALUE_INT(discord_identifier, used, FALSE)
+KEY_FIELD(discord_identifier, identifier)
 
 /datum/view_record/discord_identifier
 	var/identifier

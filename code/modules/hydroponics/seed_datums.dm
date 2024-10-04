@@ -757,6 +757,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	mutants = list("deathberries")
 	packet_icon = "seed-poisonberry"
 	plant_icon = "poisonberry"
+	chems_special = list("thymol")
 	chems = list("fruit" = list(1), "toxin" = list(3,5))
 
 /datum/seed/berry/poison/death

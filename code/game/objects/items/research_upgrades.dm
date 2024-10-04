@@ -64,4 +64,4 @@
 
 /obj/item/research_upgrades/reroll
 	name = "Research Market (Reroll)"
-	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data immediatly reroll contracts."
+	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data and immediatly reroll contracts."

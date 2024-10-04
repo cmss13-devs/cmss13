@@ -625,7 +625,7 @@
 	name = "ADD"
 	desc = "Use the property in the reference chemical to add a property to the target chemical, with no downsides to the target chemical, however it damages the chemical structure of reference chemical, Making any other modification impossible."
 	mode_id = MODE_ADD
-	icon_type = "square-plus"
+	icon_type = "arrow-right"
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"

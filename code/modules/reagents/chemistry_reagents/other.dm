@@ -688,7 +688,7 @@
 /datum/reagent/viroxeno
 	name = "Xenogenetic Catalyst"
 	id = "xenogenic"
-	description = "A catalyst chemical that is extremely aggresive towards any organic substance before switly turning it into itself."
+	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
 	reagent_state = LIQUID
 	color = "#a244d8"
 	overdose = 10

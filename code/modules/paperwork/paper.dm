@@ -863,7 +863,7 @@
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else

@@ -7,6 +7,7 @@
 	var/max_clearance = 1 // max clearance level reached by research
 	var/main_terminal = FALSE
 	var/obj/structure/machinery/photocopier/photocopier
+	var/datum/reagent/last_picked_contract
 
 /obj/structure/machinery/computer/research/main_terminal
 	name = "research main terminal"
@@ -21,6 +22,7 @@
 /obj/structure/machinery/computer/research/Destroy()
 	QDEL_NULL(photocopier)
 	GLOB.chemical_data.research_computers -= src
+	last_picked_contract = null
 	. = ..()
 
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
@@ -216,4 +218,14 @@
 				new /obj/item/paper/research_notes(photocopier.loc, GLOB.chemical_reagents_list[new_id], "synthesis")
 				GLOB.chemical_data.picked_chem = TRUE
 				GLOB.chemical_data.next_reroll = world.time + RESEARCH_CONTRACT_PICKED
+				last_picked_contract = GLOB.chemical_reagents_list[new_id]
+		if("reprint_last_contract")
+			if(last_picked_contract)
+				new /obj/item/paper/research_notes(photocopier.loc, last_picked_contract, "synthesis")
+				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
+			else
+				playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
+				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
+
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

@@ -632,13 +632,21 @@ const ClearanceImproveButton = (props: {
   readonly setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
   readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const { setSelectedTab, setConfirm } = props;
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
   const isDisabled = data.rsc_credits < data.broker_cost;
   return (
     <>
+      <Button
+        onClick={() => {
+          act('reprint_last_contract');
+        }}
+        tooltip={'Reprint Last picked contract in the case you lost it.'}
+      >
+        Reprint Last Contract
+      </Button>
       {clearance_level < 5 && (
         <Button
           disabled={isDisabled}
@@ -673,7 +681,7 @@ const ClearanceImproveButton = (props: {
 };
 
 export const ResearchTerminal = () => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const [selectedTab, setSelectedTab] = useState(1);
   const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (

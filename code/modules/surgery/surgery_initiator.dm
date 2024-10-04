@@ -57,7 +57,6 @@
 			if(surgeryloop.requires_bodypart)
 				if(affecting.status & LIMB_DESTROYED)
 					continue
-
 			else
 				if(ishuman(target))//otherwise breaks when trying to op xeno
 					if(!(affecting.status & LIMB_DESTROYED) && ishuman(target))
@@ -71,6 +70,7 @@
 
 		else if(surgeryloop.requires_bodypart) //mob with no limb in surgery zone when we need a limb
 			continue
+
 		//Surgery-specific requirements.
 		if(!surgeryloop.can_start(user, target, affecting, tool))
 			continue

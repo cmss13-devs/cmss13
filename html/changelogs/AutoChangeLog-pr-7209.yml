@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Limits hunting traps duration to 30 seconds."

@@ -60,7 +60,7 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|DELONDROP|ITEM_PREDATOR
+	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
@@ -1150,7 +1150,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
-	item_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_item_state]_[caster_material]"
 	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()

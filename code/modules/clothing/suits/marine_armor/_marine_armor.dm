@@ -137,6 +137,7 @@
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
+	overlays -= armor_overlays["lamp"]
 	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)

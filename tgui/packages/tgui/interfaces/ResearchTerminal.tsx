@@ -514,6 +514,7 @@ const Contracts = () => {
                 {data.contract_chems[key].property_hint}
               </Flex.Item>
               <Button
+                my={1}
                 fluid
                 icon="print"
                 disabled={data.is_contract_picked}

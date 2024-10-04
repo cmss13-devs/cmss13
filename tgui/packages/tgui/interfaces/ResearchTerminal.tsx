@@ -659,23 +659,17 @@ const ClearanceImproveButton = (props: {
         </Button>
       )}
       {clearance_level === 5 && x_access === 0 && (
-        <Flex.Item>
-          <Button
-            disabled={data.rsc_credits < 5}
-            onClick={() => {
-              setSelectedTab(1);
-              setConfirm('request_clearance_x_access');
-            }}
-          >
-            Request X (5)
-          </Button>
-        </Flex.Item>
+        <Button
+          disabled={data.rsc_credits < 5}
+          onClick={() => {
+            setSelectedTab(1);
+            setConfirm('request_clearance_x_access');
+          }}
+        >
+          Request X (5)
+        </Button>
       )}
-      {x_access !== 0 && (
-        <Flex.Item>
-          <Button disabled>Maximum clearance reached</Button>
-        </Flex.Item>
-      )}
+      {x_access !== 0 && <Button disabled>Maximum clearance reached</Button>}
     </>
   );
 };

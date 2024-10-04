@@ -345,7 +345,7 @@
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)
 	if(mode == MODE_ADD)
-		return
+		return //add mode doesnt harm od level of target
 	if(new_od_level <= 5)
 		new_od_level = max(new_od_level - 1, 1)
 	else

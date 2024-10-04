@@ -100,8 +100,9 @@
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
 			if(P)
-				if(GLOB.chemical_data.clearance_level >= S.gen_tier)
+				if(!GLOB.chemical_data.ddi_discovered && GLOB.chemical_data.reached_x_access)
 					P.trigger()
+					GLOB.chemical_data.ddi_discovered = TRUE
 				else
 					return
 

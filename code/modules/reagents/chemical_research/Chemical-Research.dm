@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/reached_x_access = FALSE
 	var/picked_chem = FALSE
 	var/has_new_properties = FALSE
-	var/research_allocation_amount = 5
+	var/ddi_discovered = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
@@ -25,9 +25,6 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 /datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
-
-/datum/chemical_data/proc/update_income(change)
-	research_allocation_amount = max(0, research_allocation_amount + change)
 
 /datum/chemical_data/proc/save_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_documents["[document_type]"])

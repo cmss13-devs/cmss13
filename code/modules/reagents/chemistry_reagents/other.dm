@@ -693,7 +693,7 @@
 	color = "#a244d8"
 	overdose = 10
 	overdose_critical = 20
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 1)
 
 

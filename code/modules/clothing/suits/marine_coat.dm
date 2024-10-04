@@ -386,9 +386,9 @@
 	desc = "A casual brown vest."
 	icon_state = "vest_brown"
 	item_state = "vest_brown"
-	icon = 'icons/obj/items/clothing/suits/vests.dmi'
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
 	)
 	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE

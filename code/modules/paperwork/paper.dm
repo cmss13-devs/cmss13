@@ -677,7 +677,7 @@
 			C = new /datum/reagent/generated
 			C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 			C.generate_name()
-			C.chemclass = CHEM_CLASS_RARE
+			C.chemclass = CHEM_CLASS_ULTRA
 			C.gen_tier = rand(1, 2)
 			C.generate_stats()
 			GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list

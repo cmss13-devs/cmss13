@@ -222,9 +222,9 @@
 		if("reprint_last_contract")
 			if(last_picked_contract)
 				new /obj/item/paper/research_notes(photocopier.loc, last_picked_contract, "synthesis")
-				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
+				playsound(loc, 'sound/machines/twobeep.ogg', 5, 1)
 			else
-				playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
+				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
 				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
 

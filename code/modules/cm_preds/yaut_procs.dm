@@ -276,7 +276,7 @@
 		main_weapon = use_radials ? show_radial_menu(src, src, glaive_variants) : tgui_input_list(usr, "Which variant of the war glaive?:", "Melee Weapon", glaive_variants)
 
 	if(main_weapon == YAUTJA_GEAR_STICK)
-		var/list/stick_variants = list(YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_STICK_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "tomahawk")) //ADD SPRITE HERE
+		var/list/stick_variants = list(YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_STICK_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "war_axe")) //ADD SPRITE HERE
 		main_weapon = use_radials ? show_radial_menu(src, src, stick_variants) :tgui_input_list(usr, "Which variant of the combistick?:", "Melee Weapon", stick_variants)
 
 	if(!main_weapon)

@@ -473,9 +473,9 @@
 	..()
 
 /obj/item/weapon/yautja/combistick/alt
-	name = "ballast axe"
+	name = "war axe"
 	desc = "A swift weapon designed to gouge and gore the hunter's prey. A chain is attached to the hilt, allowing for a quick retrieval."
-	icon_state = "tomahawk"
+	icon_state = "war_axe"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR

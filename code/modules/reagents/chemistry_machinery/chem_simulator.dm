@@ -454,6 +454,11 @@
 				else
 					status_bar = "REFERENCE PROPERTY NOT SELECTED"
 					return FALSE
+				if(mode == MODE_ADD)
+					if(property_costs[reference_property.name] > GLOB.chemical_data.rsc_credits)
+						status_bar = "INSUFFICIENT FUNDS"
+						return FALSE
+
 	if(!target)
 		status_bar = "NO TARGET INSERTED"
 		return FALSE

@@ -1171,7 +1171,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
-	item_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_item_state]_[caster_material]"
 	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()

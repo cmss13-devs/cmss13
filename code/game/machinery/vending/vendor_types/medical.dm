@@ -268,6 +268,7 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
+	STOP_PROCESSING(SSslowobj, src)
 	QDEL_NULL(last_health_display)
 	. = ..()
 

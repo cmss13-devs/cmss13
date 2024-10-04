@@ -69,16 +69,29 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons = list(
+				WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			)
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons = list(
+				WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			)
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons = list(
+				WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			)
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons = list(
+				WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			)
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons = list(
+				WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
+			)
 
 /obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
@@ -858,10 +871,12 @@
 /obj/item/clothing/head/marine/dress_cover
 	name = "marine dress blues cover"
 	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. The polished logo sits proudly on the white cloth."
-	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	icon_state = "e_cap"
 	item_state = "e_cap"
-	contained_sprite = TRUE
 
 /obj/item/clothing/head/marine/dress_cover/officer
 	name = "marine dress blues officer cover"

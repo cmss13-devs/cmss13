@@ -149,6 +149,12 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 	anti_hug = 100
 
+/obj/item/clothing/suit/armor/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
 /obj/item/clothing/suit/armor/gimmick/robocop
 	name = "polished metal armor"
 	desc = "Clean and well maintained, unlike the ugly streets of Detroit. Constructed from titanium and laminated with kevlar."

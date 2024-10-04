@@ -154,16 +154,24 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+			)
 		if("classic")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+			)
 		if("desert")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+			)
 		if("snow")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+			)
 
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	if(!armor_variation)

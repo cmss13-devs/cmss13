@@ -9,7 +9,6 @@
 	icon_state = "marine_jumpsuit"
 	worn_state = "marine_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi'
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -25,6 +24,9 @@
 	///List of map variants that use sleeve rolling on something else, like snow uniforms rolling the collar, and therefore shouldn't hide patches etc when rolled.
 	var/list/map_variants_roll_accessories = list("s_")
 	layer = UPPER_ITEM_LAYER
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
+	)
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
@@ -193,8 +195,9 @@
 	name = "tactical pilot officer flightsuit"
 	desc = "A flightsuit worn by pilot officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."
 	icon_state = "pilot_flightsuit_alt"
-	item_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
@@ -204,6 +207,8 @@
 	desc = "A bodysuit worn by dropship crew chiefs of the USCM, and is meant for survival in inhospitable conditions. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "crewchief_flightsuit"
 	worn_state = "crewchief_flightsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
@@ -618,9 +623,14 @@
 	desc = "A set of loose-fitting fatigues, perfect for an informal mercenary. Smells like gunpowder, apple pie, and covered in grease and sake stains."
 	icon_state = "freelancer_uniform"
 	worn_state = "freelancer_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/freelancer, /obj/item/clothing/suit/storage/webbing, /obj/item/clothing/suit/storage/utility_vest)
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+	)
+
 
 //=========================//Dutch Dozen\\================================\\
 

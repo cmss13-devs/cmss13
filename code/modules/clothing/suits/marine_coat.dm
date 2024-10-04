@@ -53,19 +53,29 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
+			)
 		if("classic")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi',
+			)
 		if("desert")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi',
+			)
 		if("snow")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi',
+			)
 		if("urban")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
+			item_icons = list(
+				WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi',
+			)
 
 /obj/item/clothing/suit/storage/jacket/marine/proc/toggle()
 	set name = "Toggle Buttons"
@@ -123,6 +133,10 @@
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
 	has_buttons = TRUE
 	icon_state = "coat_mp"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "coat_mp"
 
@@ -131,6 +145,10 @@
 	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
 	has_buttons = TRUE
 	icon_state = "coat_warden"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "coat_warden"
 
@@ -139,6 +157,10 @@
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
 	has_buttons = TRUE
 	icon_state = "coat_cmp"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "coat_cmp"
 
@@ -148,12 +170,20 @@
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
 	icon_state = "jacket_tanker"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	initial_icon_state = "jacket_tanker"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess technician jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "chef_jacket"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -168,6 +198,10 @@
 	name = "marine formal service jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "coat_formal"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -269,6 +303,10 @@
 	name = "\improper Provost Jacket"
 	desc = "A crisp jacket with the Provost sigil."
 	icon_state = "provost_jacket"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
@@ -320,6 +358,10 @@
 	desc = "A jacket for the most fashionable war correspondents."
 	icon_state = "cc_brown"
 	item_state = "cc_brown"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
@@ -344,6 +386,10 @@
 	desc = "A casual brown vest."
 	icon_state = "vest_brown"
 	item_state = "vest_brown"
+	icon = 'icons/obj/items/clothing/suits/vests.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
@@ -366,6 +412,10 @@
 	desc = "A khaki suit jacket."
 	icon_state = "corporate_ivy"
 	item_state = "corporate_ivy"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
@@ -402,6 +452,10 @@
 	desc = "A khaki bomber jacket popular among stationeers and blue-collar workers everywhere."
 	icon_state = "jacket_khaki"
 	item_state = "jacket_khaki"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 

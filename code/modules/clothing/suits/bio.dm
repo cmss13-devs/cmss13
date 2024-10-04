@@ -28,6 +28,7 @@
 	desc = "A suit that protects against biological contamination."
 	icon_state = "bio"
 	item_state = "bio_suit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.2
@@ -43,12 +44,16 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	siemens_coefficient = 0.9
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 
 /obj/item/clothing/suit/storage/synthbio
 	name = "bio suit"
 	desc = "Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon_state = "bio"
 	item_state = "bio_suit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	allowed = list(
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -63,6 +68,9 @@
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/device/motiondetector,
+	)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
 	)
 
 //Standard biosuit, orange stripe

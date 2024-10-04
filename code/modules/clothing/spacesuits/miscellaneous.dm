@@ -37,6 +37,7 @@
 	desc = "A heavy, bulky civilian space suit, fitted with armored plates. Commonly seen in the hands of mercenaries, explorers, scavengers, and researchers."
 	item_state = "compression"
 	icon_state = "compression"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -45,6 +46,9 @@
 	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 
 /obj/item/clothing/head/helmet/space/compression/uscm
 	name = "\improper MK.50 compression helmet"

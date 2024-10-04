@@ -127,6 +127,7 @@
 #include "modules\cm_preds\yaut_actions.dm"
 #include "modules\gear_presets\usmc.dm"
 #include "modules\gear_presets\uscm_ship.dm"
+#include "modules\reagents\chemistry_reagents\medical.dm"
 #include "modules\mob\mod_defines.dm"
 #include "modules\mob\say.dm"
 #include "modules\mob\dead\observer\observer.dm"

@@ -272,9 +272,23 @@
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
+/*RUCM CHANGE
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
+*/
+//RUCM START
+		list("Ceramic Plate", 20, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A ceramic plate, REAL armor plate.")
+//RUCM END
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+
+//RUCM START
+		list("Research & Development", 0, null, null, null),
+		list("Research Grant (4 Credits)", 10, /obj/item/paper/research_notes/grant/high, "white", "Research Grant, Sponsorship sheet for USCM scientists"),
+		list("Research Note (1 Clearence)", 5, /obj/item/paper/research_notes/unique/tier_one, "white", "Research Note, Contain unfinished research of low-grade chemical reagent"),
+		list("Research Note (2 Clearence)", 10, /obj/item/paper/research_notes/unique/tier_two, "white", "Research Note, Contain unfinished research of medium-grade chemical reagent"),
+		list("Research Note (3 Clearence)", 15, /obj/item/paper/research_notes/unique/tier_three, "white", "Research Note, Contain unfinished research of high-grade chemical reagent"),
+		list("Research Note (4 Clearence)", 20, /obj/item/paper/research_notes/unique/tier_four, "white", "Research Note, Contain unfinished research of highest-grade chemical reagent"),
+//RUCM END
 
 		list("SMOKABLES", 0, null, null, null),
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),

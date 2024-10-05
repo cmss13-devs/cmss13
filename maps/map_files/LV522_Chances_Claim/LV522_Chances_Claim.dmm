@@ -18509,7 +18509,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/oob)
@@ -27017,7 +27017,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/lv522/oob)
@@ -46351,7 +46351,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "UD6 East";
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)

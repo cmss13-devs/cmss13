@@ -14430,7 +14430,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -24;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -17690,7 +17690,7 @@
 	name = "South Dock Door";
 	pixel_x = -32;
 	pixel_y = -18;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -20634,7 +20634,7 @@
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
 	pixel_x = 3;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -27618,7 +27618,7 @@
 /area/varadero/interior/maintenance/security)
 "vKv" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
@@ -28925,7 +28925,7 @@
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
 	pixel_x = 8;
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -30794,7 +30794,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "ygn" = (
 /obj/structure/catwalk{
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)

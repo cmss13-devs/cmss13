@@ -2738,7 +2738,7 @@
 "cbE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	explo_proof = TRUE
+	explo_proof = 1
 	},
 /obj/item/clothing/head/that{
 	anchored = 1;

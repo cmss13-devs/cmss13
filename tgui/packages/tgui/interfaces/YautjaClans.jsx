@@ -1,22 +1,12 @@
-import { useState } from 'react';
-
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Tabs } from '../components';
+import { Box, Button, Dropdown, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
-const PAGES = {
-  view_clans: () => ViewClans,
-};
-
 export const YautjaClans = (props) => {
-  const { data } = useBackend();
-  const { current_menu } = data;
-  const PageComponent = PAGES[current_menu]();
-
   return (
-    <Window theme="crtgreen" width={780} height={725}>
+    <Window theme="ntos_spooky" width={780} height={725}>
       <Window.Content scrollable>
-        <PageComponent />
+        <ViewClans />
       </Window.Content>
     </Window>
   );
@@ -24,48 +14,100 @@ export const YautjaClans = (props) => {
 
 const ViewClans = (props) => {
   const { data, act } = useBackend();
-  const { clans } = data;
-  const [selectedClan, setSelectedClan] = useState(0);
+  const {
+    clans,
+    clan_names,
+    current_clan_index,
+    user_is_clan_leader,
+    user_is_council,
+    user_is_superadmin,
+  } = data;
 
   return (
     <Section>
-      <Tabs textAlign="center" variant="scrollable" scrollButtons="auto">
-        {clans.map((category, i) => (
-          <Tabs.Tab
-            key={i}
-            selected={i === selectedClan}
-            onClick={() => setSelectedClan(i)}
-          >
-            {category.label}
-          </Tabs.Tab>
-        ))}
-      </Tabs>
-      <Section color={clans[selectedClan].color}>
-        <h1>{clans[selectedClan].label}</h1>
-        <h3>Total Honor: {clans[selectedClan].honor}</h3>
+      <Dropdown
+        width="100%"
+        menuWidth="200px"
+        selected={clans[current_clan_index].label}
+        options={clan_names}
+        onSelected={(value) => act('change_clan_list', { new_clan: value })}
+      />
+
+      <Section color={clans[current_clan_index].color}>
+        <h1>{clans[current_clan_index].label}</h1>
         <Box mb=".75rem" italic>
-          {clans[selectedClan].desc}
+          {clans[current_clan_index].desc}
         </Box>
       </Section>
-      {clans[selectedClan].members.map((yautja, i) => (
+      {clans[current_clan_index].members.map((yautja, i) => (
         <Section key={i} title={yautja.player_label}>
           <LabeledList>
             <LabeledList.Item label="Name">{yautja.name}</LabeledList.Item>
             <LabeledList.Item label="Rank">{yautja.rank}</LabeledList.Item>
             <LabeledList.Item label="Ancillary">None</LabeledList.Item>
           </LabeledList>
-          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
-            Change Clan
-          </Button>
-          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
+          <Button
+            bold
+            mt="1rem"
+            width="23vw"
+            disabled={!user_is_clan_leader}
+            onClick={() => act('change_rank')}
+          >
             Change Rank
           </Button>
-          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
+          <Button
+            bold
+            mt="1rem"
+            width="23vw"
+            disabled={!user_is_clan_leader}
+            onClick={() => act('assign_ancillary')}
+          >
             Assign Ancillary
           </Button>
-          <Button bold mt="1rem" width="23vw" disabled={1 || 2}>
-            Delete Player
-          </Button>
+          {!user_is_council && (
+            <>
+              <Button
+                bold
+                mt="1rem"
+                width="23vw"
+                disabled={!user_is_clan_leader}
+                onClick={() => act('kick_from_clan')}
+              >
+                Remove From Clan
+              </Button>
+              <Button
+                bold
+                mt="1rem"
+                width="23vw"
+                disabled={!user_is_clan_leader}
+                onClick={() => act('banish_from_clan')}
+              >
+                Banish
+              </Button>
+            </>
+          )}
+          {user_is_council && (
+            <Button
+              bold
+              mt="1rem"
+              width="23vw"
+              disabled={!user_is_council}
+              onClick={() => act('move_to_clan')}
+            >
+              Change Clan
+            </Button>
+          )}
+          {user_is_superadmin && (
+            <Button
+              bold
+              mt="1rem"
+              width="23vw"
+              disabled={!user_is_superadmin}
+              onClick={() => act('delete_player_data')}
+            >
+              Delete Player
+            </Button>
+          )}
         </Section>
       ))}
     </Section>

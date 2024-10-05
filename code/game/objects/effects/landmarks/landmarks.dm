@@ -121,6 +121,15 @@
 	GLOB.monkey_spawns -= src
 	return ..()
 
+/obj/effect/landmark/lizard_spawn
+	name = "lizard spawn"
+	icon_state = "lizard_spawn"
+
+/obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(66))
+		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"
 
@@ -421,6 +430,21 @@
 	name = "Nurse late join"
 	job = JOB_NURSE
 
+/obj/effect/landmark/late_join/intel
+	name = "Intelligence Officer late join"
+	job = JOB_INTEL
+
+/obj/effect/landmark/late_join/police
+	name = "Military Police late join"
+	job = JOB_POLICE
+
+/obj/effect/landmark/late_join/warden
+	name = "Military Warden late join"
+	job = JOB_WARDEN
+
+/obj/effect/landmark/late_join/chief_police
+	name = "Chief Military Police late join"
+	job = JOB_CHIEF_POLICE
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()

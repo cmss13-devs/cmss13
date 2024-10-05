@@ -93,6 +93,11 @@
 		for(var/turf/T in away_area)
 			elevator_animation.vis_contents += T
 
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = FALSE
+				vis_content.update_emissive_block()
+
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
@@ -131,6 +136,12 @@
 
 		moving_status = SHUTTLE_IDLE
 		stop_gears()
+
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = initial(vis_content.blocks_emissive)
+				vis_content.update_emissive_block()
+
 		elevator_animation.vis_contents.Cut()
 
 		if (!at_station()) //at centcom

@@ -220,7 +220,6 @@
 		return
 
 	if(predalien_smash.can_not_harm(affected_atom) || !ismob(affected_atom))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 

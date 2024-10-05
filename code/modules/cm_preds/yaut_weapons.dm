@@ -130,6 +130,16 @@
 	force = MELEE_FORCE_TIER_5
 	has_speed_bonus = FALSE
 
+/obj/item/weapon/wristblades/scimitar/alt
+	name = "wrist scimitar"
+	plural_name = "wrist scimitars"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "scim_alt"
+	item_state = "scim_alt"
+	attack_speed = 5
+	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
+
 /*#########################################
 ########### One Handed Weapons ############
 #########################################*/
@@ -893,6 +903,8 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null
 	works_in_recharger = FALSE
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
@@ -907,7 +919,6 @@
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = null // TO DO, add a decent one.
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
@@ -992,6 +1003,7 @@
 
 #define FIRE_MODE_STANDARD "Standard"
 #define FIRE_MODE_INCENDIARY "Incendiary"
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
@@ -1002,7 +1014,8 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_MEDIUM
 	/// Max amount of shots
 	var/charge_time = 40
@@ -1127,7 +1140,8 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
@@ -1135,7 +1149,7 @@
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 
@@ -1146,7 +1160,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
-	item_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_item_state]_[caster_material]"
 	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()

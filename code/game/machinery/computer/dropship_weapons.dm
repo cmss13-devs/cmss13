@@ -8,7 +8,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/cavebreaker = FALSE //ignore caves and other restrictions?
@@ -889,6 +889,12 @@
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
+
+/obj/structure/machinery/computer/dropship_weapons/dropship3
+	name = "\improper 'Saipan' weapons controls"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_SAIPAN
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()

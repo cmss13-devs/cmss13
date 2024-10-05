@@ -1,0 +1,5 @@
+author: "JustLat"
+delete-after: True
+changes:
+  - soundadd: "two new death noises, two new laughs, one new growl, and one loudroar for Yautja"
+  - qol: "tweaked Yautja death message to fit accordingly with new noises."

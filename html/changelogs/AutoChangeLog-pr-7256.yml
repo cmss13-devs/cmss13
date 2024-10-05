@@ -1,0 +1,6 @@
+author: "lokideslimee"
+delete-after: True
+changes:
+  - bugfix: "fixed some predship tiles which had lighting issues"
+  - code_imp: "redid the code for grey_multi_tiles"
+  - imageadd: "added sprites for grey_multi_tiles, based off multi_tiles"

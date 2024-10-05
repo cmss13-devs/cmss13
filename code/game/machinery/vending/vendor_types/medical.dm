@@ -195,7 +195,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/restock_cart/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	switch(severity)
@@ -268,6 +268,7 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
+	STOP_PROCESSING(SSslowobj, src)
 	QDEL_NULL(last_health_display)
 	. = ..()
 

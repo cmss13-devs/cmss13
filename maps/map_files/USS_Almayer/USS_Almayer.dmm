@@ -2461,10 +2461,10 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/machinery/door_control{
+	access_modified = 1;
 	id = "OTStore";
 	name = "Shutters";
 	pixel_y = -24;
-	access_modified = 1;
 	req_one_access_txt = "35"
 	},
 /obj/structure/surface/rack,
@@ -3293,12 +3293,12 @@
 /obj/structure/machinery/faxmachine/uscm/command,
 /obj/item/device/megaphone,
 /obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 8;
 	desc = "Used to access the various cameras in the security brig.";
+	dir = 8;
+	layer = 2.99;
 	name = "brig cameras console";
-	pixel_y = 12;
 	pixel_x = 17;
-	layer = 2.99
+	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -5615,7 +5615,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
@@ -5623,7 +5623,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Railings";
 	needs_power = 0;
 	pixel_x = 24;
@@ -12176,8 +12176,8 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bMg" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Synth Bay";
-	dir = 8
+	dir = 8;
+	vent_tag = "Synth Bay"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -16114,8 +16114,8 @@
 	desc = "A pneumatic delivery unit.";
 	icon_state = "delivery_engi";
 	name = "Returns";
-	pixel_y = 28;
-	pixel_x = 25
+	pixel_x = 25;
+	pixel_y = 28
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/aicore/no_build,
@@ -16407,54 +16407,10 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cOY" = (
-/obj/item/clothing/under/blackskirt{
-	desc = "A stylish skirt, in a business-black and red colour scheme.";
-	name = "liaison's skirt"
-	},
-/obj/item/clothing/under/suit_jacket/charcoal{
-	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
-	name = "liaison's black suit"
-	},
-/obj/item/clothing/under/suit_jacket/navy{
-	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
-	name = "liaison's navy suit"
-	},
-/obj/item/clothing/under/suit_jacket/trainee,
-/obj/item/clothing/under/liaison_suit/charcoal,
-/obj/item/clothing/under/liaison_suit/blazer,
-/obj/item/clothing/suit/storage/snow_suit/liaison,
-/obj/item/clothing/gloves/black,
-/obj/item/clothing/gloves/marine/dress,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/item/clothing/accessory/blue,
-/obj/item/clothing/accessory/red,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/item/clothing/accessory/black,
-/obj/item/clothing/accessory/green,
-/obj/item/clothing/accessory/gold,
-/obj/item/clothing/accessory/purple,
-/obj/item/clothing/under/liaison_suit/corporate_formal,
-/obj/item/clothing/under/liaison_suit/field,
-/obj/item/clothing/under/liaison_suit/ivy,
-/obj/item/clothing/under/liaison_suit/blue,
-/obj/item/clothing/under/liaison_suit/brown,
-/obj/item/clothing/under/liaison_suit/black,
-/obj/item/clothing/suit/storage/jacket/marine/vest,
-/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
-/obj/item/clothing/suit/storage/jacket/marine/bomber,
-/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
-/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
-/obj/item/clothing/suit/storage/jacket/marine/corporate,
-/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
-/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
-/obj/item/clothing/suit/storage/jacket/marine/corporate/formal,
-/obj/structure/closet/cabinet{
-	storage_capacity = 35
-	},
+/obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "cPg" = (
@@ -17730,8 +17686,8 @@
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
 	name = "ARES WorkingJoe Bay Shutters";
-	req_one_access_txt = "91;92";
-	pixel_x = 24
+	pixel_x = 24;
+	req_one_access_txt = "91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
@@ -18019,9 +17975,9 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
 	autoname = 0;
-	c_tag = "AI - Secondary Processors"
+	c_tag = "AI - Secondary Processors";
+	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
@@ -18359,13 +18315,10 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
 "dEX" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/bombclosetsecurity,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "dFk" = (
@@ -18592,7 +18545,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
@@ -19567,10 +19520,10 @@
 	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 4;
-	pixel_y = -8;
 	autoname = 0;
-	c_tag = "AI - Main Staircase"
+	c_tag = "AI - Main Staircase";
+	dir = 4;
+	pixel_y = -8
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
@@ -19832,8 +19785,8 @@
 	pixel_y = 10
 	},
 /obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 4;
 	desc = "Used to access the various cameras in the security brig.";
+	dir = 4;
 	name = "brig cameras console";
 	pixel_y = -11
 	},
@@ -20066,7 +20019,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/machinery/door_control{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.5;
 	name = "Shutters";
 	use_power = 0
@@ -20216,13 +20169,13 @@
 	desc = "A large handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well. This one is comically oversized. Made in Texas.";
 	icon_state = "multitool_big";
 	name = "\improper Oversized Security Access Tuner";
-	pixel_y = 11;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 11
 	},
 /obj/item/stack/sheet/cardboard/medium_stack{
-	pixel_y = -6;
+	layer = 3.01;
 	pixel_x = -7;
-	layer = 3.01
+	pixel_y = -6
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
@@ -20609,7 +20562,12 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/clipboard,
-/obj/item/tool/pen,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "eAI" = (
@@ -20903,9 +20861,9 @@
 "eGr" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
 	autoname = 0;
-	c_tag = "AI - Records"
+	c_tag = "AI - Records";
+	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -21261,12 +21219,12 @@
 /obj/structure/machinery/door_control{
 	id = "ARES StairsLock";
 	name = "ARES Exterior Lockdown";
+	pixel_x = 6;
 	pixel_y = -24;
-	req_one_access_txt = "91;92";
-	pixel_x = 6
+	req_one_access_txt = "91;92"
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -21342,10 +21300,10 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
-	pixel_y = 2;
 	autoname = 0;
-	c_tag = "AI - Reception Exterior"
+	c_tag = "AI - Reception Exterior";
+	dir = 8;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/hallways/upper/midship_hallway)
@@ -22220,8 +22178,8 @@
 /area/almayer/medical/containment/cell/cl)
 "flf" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Records";
-	dir = 1
+	dir = 1;
+	vent_tag = "Records"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -22237,9 +22195,9 @@
 /area/almayer/maint/upper/u_a_p)
 "flL" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
 	autoname = 0;
-	c_tag = "AI - SynthBay"
+	c_tag = "AI - SynthBay";
+	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -22950,10 +22908,10 @@
 /area/almayer/hallways/lower/repair_bay)
 "fCI" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
 	id = "ARES JoeCryo";
 	name = "\improper ARES Synth Bay Shutters";
-	plane = -7;
-	dir = 4
+	plane = -7
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -23587,9 +23545,9 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "fQD" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
 	autoname = 0;
-	c_tag = "AI - Core Chamber"
+	c_tag = "AI - Core Chamber";
+	dir = 8
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -23636,6 +23594,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/warden,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "fSl" = (
@@ -24559,7 +24518,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "gpW" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -25222,10 +25181,10 @@
 "gDh" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	access_modified = 1;
+	dir = 1;
 	name = "\improper Security Vault";
 	req_access = null;
-	req_one_access_txt = "91;92";
-	dir = 1
+	req_one_access_txt = "91;92"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
 	plane = -6
@@ -25696,7 +25655,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
@@ -29230,9 +29189,9 @@
 	plane = -7
 	},
 /obj/structure/disposalpipe/up/almayer{
+	dir = 2;
 	id = "ares_vault_in";
-	name = "aicore";
-	dir = 2
+	name = "aicore"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -30441,8 +30400,8 @@
 	},
 /obj/structure/machinery/computer/secure_data{
 	dir = 4;
-	pixel_y = 23;
-	layer = 2.99
+	layer = 2.99;
+	pixel_y = 23
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/processing)
@@ -31476,15 +31435,15 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
 	dir = 4;
-	pixel_y = 19;
-	layer = 2.99
+	layer = 2.99;
+	pixel_y = 19
 	},
 /obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 4;
 	desc = "Used to access the various cameras in the security brig.";
+	dir = 4;
+	layer = 2.99;
 	name = "brig cameras console";
-	pixel_y = 5;
-	layer = 2.99
+	pixel_y = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -31928,9 +31887,9 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend,
 /obj/item/desk_bell{
+	anchored = 1;
 	pixel_x = -6;
-	pixel_y = 10;
-	anchored = 1
+	pixel_y = 10
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
@@ -32961,6 +32920,12 @@
 	pixel_x = 5;
 	pixel_y = 10;
 	req_one_access_txt = "1;21"
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -4
+	},
+/obj/item/tool/pen{
+	pixel_y = -5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -37050,13 +37015,13 @@
 	pixel_y = 10
 	},
 /obj/item/stack/cable_coil{
-	pixel_y = 1;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 1
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
-	pixel_y = 2;
+	layer = 3.01;
 	pixel_x = -3;
-	layer = 3.01
+	pixel_y = 2
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
@@ -38735,9 +38700,9 @@
 	pixel_x = -32
 	},
 /obj/structure/machinery/light{
+	alpha = 0;
 	dir = 8;
-	pixel_x = -32;
-	alpha = 0
+	pixel_x = -32
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/computerlab)
@@ -38961,6 +38926,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "mrM" = (
+/obj/structure/closet/secure_closet/quartermaster_uscm,
 /turf/open/floor/almayer/green,
 /area/almayer/squads/req)
 "msg" = (
@@ -39336,8 +39302,8 @@
 "mAe" = (
 /obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown{
-	plane = -6;
-	dir = 4
+	dir = 4;
+	plane = -6
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -39466,10 +39432,10 @@
 "mCx" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	access_modified = 1;
+	dir = 1;
 	name = "\improper AI Reception";
 	req_access = null;
-	req_one_access_txt = "91;92";
-	dir = 1
+	req_one_access_txt = "91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -39569,7 +39535,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
@@ -40028,6 +39994,7 @@
 /area/almayer/squads/req)
 "mMP" = (
 /obj/effect/landmark/start/intel,
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "mMV" = (
@@ -40363,10 +40330,10 @@
 	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
-	pixel_y = 2;
+	autoname = 0;
 	c_tag = "AI - Main Corridor";
-	autoname = 0
+	dir = 8;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -40668,8 +40635,8 @@
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
 	name = "ARES WorkingJoe Bay Shutters";
-	req_one_access_txt = "91;92";
-	pixel_x = -24
+	pixel_x = -24;
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -41667,8 +41634,12 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 34
+/obj/structure/sign/ROcreed{
+	pixel_y = 30
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = -11;
+	pixel_x = 7
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
@@ -42029,8 +42000,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	pixel_y = -12;
-	name = "Remote dropship navigation computer"
+	name = "Remote dropship navigation computer";
+	pixel_y = -12
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/offices/flight)
@@ -43098,10 +43069,10 @@
 /area/almayer/hallways/upper/midship_hallway)
 "nZm" = (
 /obj/structure/machinery/door_control{
+	access_modified = 1;
 	id = "OTStore";
 	name = "Shutters";
 	pixel_y = 24;
-	access_modified = 1;
 	req_one_access_txt = "35"
 	},
 /obj/effect/decal/warning_stripes{
@@ -43404,13 +43375,13 @@
 /area/almayer/hallways/upper/port)
 "ofY" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
 /obj/structure/machinery/computer/working_joe{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -44367,6 +44338,7 @@
 	pixel_y = 29;
 	serial_number = 12
 	},
+/obj/effect/landmark/late_join/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/port_atmos)
 "oyO" = (
@@ -44489,8 +44461,8 @@
 /area/almayer/command/cichallway)
 "oBD" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Access Hall";
-	dir = 8
+	dir = 8;
+	vent_tag = "Access Hall"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -44689,8 +44661,8 @@
 "oEA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/shotgun/pump{
-	starting_attachment_types = list(/obj/item/attachable/stock/shotgun);
-	pixel_y = 9
+	pixel_y = 9;
+	starting_attachment_types = list(/obj/item/attachable/stock/shotgun)
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
 	layer = 3.01
@@ -45799,8 +45771,8 @@
 "pax" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Reception";
-	dir = 8
+	dir = 8;
+	vent_tag = "Reception"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -46284,8 +46256,8 @@
 "pmV" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/machinery/computer/tech_control{
-	pixel_y = 16;
-	density = 0
+	density = 0;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/ai_floors,
 /area/almayer/command/airoom)
@@ -46943,7 +46915,9 @@
 /area/almayer/engineering/lower)
 "pCr" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/blend,
-/turf/open/floor/almayer/plate,
+/turf/closed/wall/almayer{
+	opacity = 0
+	},
 /area/almayer/squads/req)
 "pDh" = (
 /obj/structure/machinery/power/monitor{
@@ -48477,9 +48451,9 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend/north,
 /obj/item/desk_bell{
+	anchored = 1;
 	pixel_x = -6;
-	pixel_y = -8;
-	anchored = 1
+	pixel_y = -8
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
@@ -48824,9 +48798,9 @@
 /area/almayer/maint/hull/lower/l_f_p)
 "qpY" = (
 /obj/structure/machinery/cryopod/right{
+	dir = 4;
 	layer = 3.1;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
@@ -49418,7 +49392,7 @@
 "qCH" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -51696,8 +51670,8 @@
 	desc = "A pneumatic delivery unit.";
 	icon_state = "delivery_engi";
 	name = "Security Vault";
-	pixel_y = 28;
-	pixel_x = -24
+	pixel_x = -24;
+	pixel_y = 28
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -52205,6 +52179,9 @@
 /area/almayer/maint/hull/upper/p_stern)
 "rHN" = (
 /obj/structure/pipes/vents/pump/on,
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "rIj" = (
@@ -52333,7 +52310,7 @@
 "rKn" = (
 /obj/structure/machinery/door_control{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Shutters";
 	pixel_y = 25;
 	req_one_access_txt = "201";
@@ -53082,6 +53059,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "sbZ" = (
@@ -56014,9 +55992,9 @@
 /area/almayer/maint/hull/lower/stern)
 "tmV" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
 	autoname = 0;
-	c_tag = "AI - SecVault"
+	c_tag = "AI - SecVault";
+	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -56131,9 +56109,9 @@
 	req_access_txt = "8"
 	},
 /obj/item/desk_bell{
+	anchored = 1;
 	pixel_x = -6;
-	pixel_y = 10;
-	anchored = 1
+	pixel_y = 10
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
@@ -56771,9 +56749,9 @@
 	desc = "An outlet for the pneumatic delivery system.";
 	icon_state = "delivery_outlet";
 	name = "returns outlet";
+	pixel_x = -7;
 	pixel_y = 28;
-	range = 0;
-	pixel_x = -7
+	range = 0
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -56871,9 +56849,9 @@
 /area/almayer/hallways/upper/port)
 "tCC" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 1;
+	autoname = 0;
 	c_tag = "AI - Reception Interior";
-	autoname = 0
+	dir = 1
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -57411,6 +57389,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "tQL" = (
@@ -57687,6 +57666,11 @@
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
+/obj/item/frame/rack,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "tXn" = (
@@ -59565,7 +59549,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "uPI" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -59882,20 +59866,20 @@
 /area/almayer/engineering/upper_engineering/port)
 "uUB" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
 /obj/item/paper_bin/uscm{
-	pixel_y = 6;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = 6
 	},
 /obj/item/tool/pen{
 	pixel_x = -14
 	},
 /obj/structure/machinery/aicore_lockdown{
-	pixel_y = 4;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -60983,18 +60967,18 @@
 /area/almayer/engineering/upper_engineering/port)
 "vpH" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
 /obj/structure/machinery/computer/working_joe{
-	layer = 3.3;
-	dir = 8
+	dir = 8;
+	layer = 3.3
 	},
 /obj/item/desk_bell/ares{
-	pixel_y = 14;
+	anchored = 1;
 	pixel_x = -5;
-	anchored = 1
+	pixel_y = 14
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -61054,14 +61038,14 @@
 "vqI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/camera_film{
+	layer = 3.03;
 	pixel_x = 4;
-	pixel_y = 1;
-	layer = 3.03
+	pixel_y = 1
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
+	layer = 3.02;
 	pixel_x = -5;
-	pixel_y = 3;
-	layer = 3.02
+	pixel_y = 3
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -61743,9 +61727,9 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 4;
+	autoname = 0;
 	c_tag = "AI - Primary Processors";
-	autoname = 0
+	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
@@ -63275,6 +63259,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/landmark/late_join/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "wei" = (
@@ -64504,7 +64489,7 @@
 "wEg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -64516,6 +64501,12 @@
 /obj/effect/landmark/start/pilot/dropship_pilot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
+"wEF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/req)
 "wEI" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/tool/pen,
@@ -65788,8 +65779,8 @@
 "xeU" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Laundry Room";
-	req_one_access = list(19,7);
-	req_access = list()
+	req_access = list();
+	req_one_access = list(19,7)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/laundry)
@@ -66027,8 +66018,8 @@
 	pixel_y = 27
 	},
 /obj/structure/machinery/computer/cameras/almayer_brig{
-	dir = 4;
 	desc = "Used to access the various cameras in the security brig.";
+	dir = 4;
 	name = "brig cameras console"
 	},
 /turf/open/floor/almayer/red/west,
@@ -66178,9 +66169,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
+	name = "Remote dropship navigation computer";
 	pixel_y = 12;
-	shuttleId = "dropship_alamo";
-	name = "Remote dropship navigation computer"
+	shuttleId = "dropship_alamo"
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/offices/flight)
@@ -66597,8 +66588,8 @@
 /area/almayer/living/briefing)
 "xwU" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Comms";
-	dir = 1
+	dir = 1;
+	vent_tag = "Comms"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_plates,
 /area/almayer/command/airoom)
@@ -112379,7 +112370,7 @@ mww
 sZe
 bdl
 fgm
-bdj
+wEF
 rHN
 kuu
 mDj
@@ -113814,7 +113805,7 @@ vub
 bPL
 bCM
 xSM
-tez
+cgE
 gsm
 bCM
 bbr
@@ -114017,7 +114008,7 @@ qlz
 tez
 bCN
 ccQ
-tez
+cgE
 ccQ
 bCN
 bbr
@@ -114220,7 +114211,7 @@ qlz
 tez
 bpV
 ccQ
-tez
+cgE
 ccQ
 cdn
 bbr
@@ -114423,7 +114414,7 @@ qlz
 tez
 bCM
 ccQ
-tez
+cgE
 ccQ
 bCM
 bbr
@@ -114626,7 +114617,7 @@ vub
 tez
 bCN
 ccQ
-tez
+cgE
 ccQ
 bCN
 jhb

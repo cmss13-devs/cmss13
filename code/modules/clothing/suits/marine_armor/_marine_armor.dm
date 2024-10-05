@@ -137,6 +137,7 @@
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
+	overlays -= armor_overlays["lamp"]
 	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
@@ -664,15 +665,6 @@
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
-
-/obj/item/clothing/suit/storage/RO
-	name = "quartermaster jacket"
-	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
-	icon_state = "RO_jacket"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 //==================Combat Correspondent==================\\
 

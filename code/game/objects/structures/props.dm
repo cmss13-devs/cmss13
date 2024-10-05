@@ -284,7 +284,7 @@
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
 	density = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/on = FALSE
@@ -321,7 +321,7 @@
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
 	density = FALSE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -392,7 +392,7 @@
 	desc = "this needs to be defined by a coder"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 

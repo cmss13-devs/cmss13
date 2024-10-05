@@ -497,7 +497,7 @@
 			continue
 		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		var/area/location = get_area(tracked_item)
+		var/area/location = get_area(loc)
 		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(loc.z))

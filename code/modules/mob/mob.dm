@@ -104,6 +104,8 @@
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
 				I = image('icons/mob/hud/marine_hud.dmi', src, "")
+		if(hud in /datum/mob_hud/xeno::hud_icons)
+			I.appearance_flags |= RESET_ALPHA
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 

@@ -111,6 +111,8 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/green(new_human), WEAR_R_STORE)
 
+	..()
+
 
 //*****************************************************************************************************/
 
@@ -130,6 +132,8 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 
+	..()
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/clf
@@ -143,6 +147,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+
+	..()
 
 //*****************************************************************************************************/
 
@@ -163,6 +169,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 
+	..()
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/press
@@ -178,3 +186,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+
+	..()

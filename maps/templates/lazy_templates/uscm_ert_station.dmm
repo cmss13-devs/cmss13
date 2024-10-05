@@ -4150,7 +4150,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "Yb" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /obj/structure/sign/safety/cryo{
 	pixel_y = 30
 	},

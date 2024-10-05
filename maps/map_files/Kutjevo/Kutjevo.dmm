@@ -2091,7 +2091,7 @@
 	health = null;
 	id = "kutjevo_medlock_east";
 	idle_power_usage = 0;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Medical East Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -7161,7 +7161,7 @@
 	health = null;
 	id = "kutjevo_medlock_west";
 	idle_power_usage = 0;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Medical West Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -11651,7 +11651,7 @@
 	health = null;
 	id = "kutjevo_hydlock_east";
 	idle_power_usage = 0;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Hydroponics East Lock Override";
 	pixel_x = -8;
 	pixel_y = 4
@@ -11660,7 +11660,7 @@
 	health = null;
 	id = "kutjevo_hydlock_west";
 	idle_power_usage = 0;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Hydroponics West Lock Override";
 	pixel_x = 8;
 	pixel_y = 4
@@ -12717,7 +12717,7 @@
 	explo_proof = TRUE
 	},
 /obj/structure/machinery/computer/cameras/wooden_tv{
-	explo_proof = TRUE;
+	explo_proof = 1;
 	pixel_y = 7
 	},
 /turf/open/floor/kutjevo/colors/red,

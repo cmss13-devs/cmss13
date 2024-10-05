@@ -653,7 +653,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "hN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	explo_proof = TRUE;
+	explo_proof = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer/no_build,
@@ -1294,7 +1294,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
 	req_one_access = null;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	locked = 1;
 	opacity = 1
 	},
@@ -2794,7 +2794,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
 	req_one_access = null;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	locked = 1;
 	opacity = 1
 	},
@@ -3449,7 +3449,7 @@
 "OZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	dir = 2;
-	explo_proof = TRUE;
+	explo_proof = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer/no_build,

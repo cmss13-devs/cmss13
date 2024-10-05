@@ -2361,7 +2361,7 @@
 /area/yautja)
 "Dr" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
-	explo_proof = TRUE;
+	explo_proof = 1;
 	locked = 1;
 	name = "\improper External Airlock"
 	},

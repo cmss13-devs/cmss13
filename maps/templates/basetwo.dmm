@@ -840,7 +840,7 @@
 	density = 1;
 	icon_state = "shutter1";
 	id = "second_base";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Second Base";
 	opacity = 1
 	},

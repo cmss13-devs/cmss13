@@ -11859,7 +11859,7 @@
 	dir = 4;
 	icon = 'icons/obj/vehicles/apc.dmi';
 	icon_state = "apc_base_com";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21;
 	unacidable = 1;
@@ -39780,35 +39780,35 @@
 "uGj" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_1";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_2";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_3";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_6";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_7";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
@@ -46060,7 +46060,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	id = "map_corpo";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0
@@ -46068,7 +46068,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	id = "map_corpo2";
-	explo_proof = TRUE;
+	explo_proof = 1;
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0

@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "Fixes being unable to stomp xenos as Queen"

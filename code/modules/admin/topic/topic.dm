@@ -858,6 +858,24 @@
 
 		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
 
+	else if(href_list["makeloyalist"])
+		if(!check_rights(R_DEBUG|R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["makeloyalist"])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(H.faction != FACTION_MARINE)
+			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a loyalist.")
+			return
+
+		var/datum/equipment_preset/other/loyalist/leader/leader_preset = new()
+		leader_preset.load_status(H)
+
+		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a loyalist leader.")
+
 	else if(href_list["makecultist"] || href_list["makecultistleader"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
 			return

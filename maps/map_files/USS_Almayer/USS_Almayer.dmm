@@ -5615,7 +5615,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
@@ -5623,7 +5623,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Railings";
 	needs_power = 0;
 	pixel_x = 24;
@@ -18545,7 +18545,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
@@ -20019,7 +20019,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/machinery/door_control{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.5;
 	name = "Shutters";
 	use_power = 0
@@ -21224,7 +21224,7 @@
 	req_one_access_txt = "91;92"
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -24518,7 +24518,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "gpW" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -25655,7 +25655,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
@@ -39535,7 +39535,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
@@ -43375,7 +43375,7 @@
 /area/almayer/hallways/upper/port)
 "ofY" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -49392,7 +49392,7 @@
 "qCH" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -52310,7 +52310,7 @@
 "rKn" = (
 /obj/structure/machinery/door_control{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Shutters";
 	pixel_y = 25;
 	req_one_access_txt = "201";
@@ -59549,7 +59549,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "uPI" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -59866,7 +59866,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "uUB" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -60967,7 +60967,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "vpH" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -64489,7 +64489,7 @@
 "wEg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{

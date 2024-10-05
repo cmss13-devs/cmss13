@@ -249,7 +249,7 @@
 	generate_points = FALSE
 
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
 	return GLOB.supply_controller.tank_points

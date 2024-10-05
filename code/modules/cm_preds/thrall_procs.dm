@@ -18,7 +18,8 @@
 		to_chat(wearer, SPAN_WARNING("You're not able to do that right now."))
 		return
 
-	if(!istype(get_area(wearer), /area/yautja))
+	var/area/location = get_area(wearer)
+	if(!(location.flags_area & AREA_YAUTJA_GROUNDS))
 		to_chat(wearer, SPAN_WARNING("Not here. Only on the ship."))
 		return
 

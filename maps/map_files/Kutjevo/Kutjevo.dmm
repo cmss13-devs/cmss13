@@ -2091,7 +2091,7 @@
 	health = null;
 	id = "kutjevo_medlock_east";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = TRUE;
 	name = "Medical East Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -2591,7 +2591,7 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/colors/red,
@@ -2819,7 +2819,7 @@
 /area/kutjevo/interior/power)
 "dXE" = (
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;
@@ -3177,7 +3177,7 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)
@@ -7161,7 +7161,7 @@
 	health = null;
 	id = "kutjevo_medlock_west";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = TRUE;
 	name = "Medical West Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -7920,7 +7920,7 @@
 /obj/structure/monorail,
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
@@ -8063,7 +8063,7 @@
 /obj/structure/monorail,
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
@@ -10173,7 +10173,7 @@
 /area/kutjevo/interior/construction)
 "oSP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/exterior/Northwest_Colony)
@@ -11058,7 +11058,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "qhV" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
@@ -11131,7 +11131,7 @@
 /area/kutjevo/interior/complex/med/locks)
 "qpW" = (
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;
@@ -11651,7 +11651,7 @@
 	health = null;
 	id = "kutjevo_hydlock_east";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = TRUE;
 	name = "Hydroponics East Lock Override";
 	pixel_x = -8;
 	pixel_y = 4
@@ -11660,7 +11660,7 @@
 	health = null;
 	id = "kutjevo_hydlock_west";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = TRUE;
 	name = "Hydroponics West Lock Override";
 	pixel_x = 8;
 	pixel_y = 4
@@ -12714,10 +12714,10 @@
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "sLG" = (
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/machinery/computer/cameras/wooden_tv{
-	indestructible = 1;
+	explo_proof = TRUE;
 	pixel_y = 7
 	},
 /turf/open/floor/kutjevo/colors/red,
@@ -14153,7 +14153,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "uOe" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/exterior/Northwest_Colony)
@@ -14853,7 +14853,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "vKY" = (
 /obj/structure/surface/table/reinforced/prison{
-	indestructible = 1
+	explo_proof = TRUE
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;

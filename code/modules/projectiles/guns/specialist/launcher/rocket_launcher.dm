@@ -9,7 +9,7 @@
 	icon_state = "m5"
 	item_state = "m5"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/rocket
@@ -236,7 +236,7 @@
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE
-	indestructible = FALSE
+	explo_proof = FALSE
 	skill_locked = FALSE
 
 	current_mag = /obj/item/ammo_magazine/rocket/anti_tank

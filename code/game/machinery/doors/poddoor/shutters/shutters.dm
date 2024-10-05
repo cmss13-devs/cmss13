@@ -92,7 +92,7 @@
 	id = "Yautja Armory"
 	needs_power = FALSE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
 	. = ..()
@@ -152,6 +152,7 @@
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/emp_act(severity)
+	. = ..()
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)

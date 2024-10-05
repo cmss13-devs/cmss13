@@ -39,7 +39,7 @@
 	name = "Meat Protein"
 	id = "meatprotein"
 	description = "Proteins found in various types of meat."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat/fish
 	name = "Fish Meat"
@@ -51,7 +51,7 @@
 	name = "Plant Matter"
 	id = "plantmatter"
 	description = "Some sort of plant."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/grown/vegetable
 	name = "Vegetable"

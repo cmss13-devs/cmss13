@@ -88,7 +88,7 @@
 	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 
 /mob/living/carbon/xenomorph/predalien/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
-	death(cause, 1)
+	death(cause, gibbed = TRUE)
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)

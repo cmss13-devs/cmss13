@@ -73,11 +73,6 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	data["current_clan_index"] = current_clan_index
 	data["user_is_clan_leader"] = verify_clan_leader(current_clan_id)
 
-	return data
-
-/datum/yautja_panel/ui_static_data()
-	var/list/data = list()
-
 	data["user_is_council"] = verify_council()
 	data["user_is_superadmin"] = verify_superadmin()
 
@@ -151,6 +146,9 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			to_chat(user, SPAN_NOTICE("Set the color of [target_clan.name] to [color]."))
 
 		if("change_rank")
+			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+				to_chat(user, SPAN_WARNING("You cannot change this player, they are not in your clan!"))
+				return
 			if((target_yautja.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || linked_client.clan_info.clan_rank <= target_yautja.clan_rank)
 				to_chat(user, SPAN_WARNING("You can't target this person!"))
 				return
@@ -207,14 +205,14 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			to_chat(user, SPAN_NOTICE("Set [target_ckey]'s rank to [chosen_rank.name]"))
 
 		if("assign_ancillary")
-			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot change this player, they are not in your clan!"))
 				return
 			data_reloader = FALSE
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
 
 		if("kick_from_clan")
-			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot kick this player, they are not in your clan!"))
 				return
 			target_yautja.clan_id = null
@@ -224,7 +222,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			message_admins("Yautja Clans: [key_name_admin(user)] has kicked [target_ckey] from their clan.")
 
 		if("banish_from_clan")
-			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot banish this player, they are not in your clan!"))
 				return
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
@@ -324,6 +322,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	if(start_timer)
 		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE, "regular"), 30 MINUTES)
 		message_admins("Yautja Clans: Clan Global Data will repopulate in 30 minutes.")
+	return "Populated"
 
 /datum/yautja_panel/proc/populate_clan_data()
 	clan_name_to_index = list("Clanless" = 0)

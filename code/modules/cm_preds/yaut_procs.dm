@@ -275,6 +275,11 @@
 		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
 		main_weapon = use_radials ? show_radial_menu(src, src, glaive_variants) : tgui_input_list(usr, "Which variant of the war glaive?:", "Melee Weapon", glaive_variants)
 
+	if(main_weapon == YAUTJA_GEAR_SCIMS)
+		var/list/scim_variants = list(YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"), YAUTJA_GEAR_SCIMS_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim_alt"))
+		main_weapon = use_radials ? show_radial_menu(src, src, scim_variants) : tgui_input_list(usr, "Which variant of the scimitars?:", "Melee Weapon", scim_variants)
+
+
 	if(!main_weapon)
 		return
 	for(var/i = 1 to total_secondaries)
@@ -318,6 +323,13 @@
 			qdel(bracers.right_wristblades)
 			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
 			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
+		if(YAUTJA_GEAR_SCIMS_ALT)
+			if(bracers.wristblades_deployed)
+				bracers.wristblades_internal(usr, TRUE)
+			qdel(bracers.left_wristblades)
+			qdel(bracers.right_wristblades)
+			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar/alt(bracers)
+			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar/alt(bracers)
 
 	for(var/choice in secondaries)
 		switch(choice)

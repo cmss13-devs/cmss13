@@ -130,6 +130,16 @@
 	force = MELEE_FORCE_TIER_5
 	has_speed_bonus = FALSE
 
+/obj/item/weapon/wristblades/scimitar/alt
+	name = "wrist scimitar"
+	plural_name = "wrist scimitars"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "scim_alt"
+	item_state = "scim_alt"
+	attack_speed = 5
+	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
+
 /*#########################################
 ########### One Handed Weapons ############
 #########################################*/

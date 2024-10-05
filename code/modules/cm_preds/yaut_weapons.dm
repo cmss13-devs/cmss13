@@ -230,7 +230,7 @@
 	item_state = "scythe_double"
 
 //Combistick
-/obj/item/weapon/yautja/combistick/real
+/obj/item/weapon/yautja/chained/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
@@ -253,7 +253,7 @@
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
 
-/obj/item/weapon/yautja/combistick
+/obj/item/weapon/yautja/chained
 	var/on = TRUE
 	var/charged = FALSE
 
@@ -262,16 +262,16 @@
 	///The mob the chain is linked to
 	var/mob/living/linked_to
 
-/obj/item/weapon/yautja/combistick/Destroy()
+/obj/item/weapon/yautja/chained/Destroy()
 	cleanup_chain()
 	return ..()
 
-/obj/item/weapon/yautja/combistick/dropped(mob/user)
+/obj/item/weapon/yautja/chained/dropped(mob/user)
 	. = ..()
 	if(on && isturf(loc))
 		setup_chain(user)
 
-/obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
+/obj/item/weapon/yautja/chained/try_to_throw(mob/living/user)
 	if(!charged)
 		to_chat(user, SPAN_WARNING("Your [src] refuses to leave your hand. You must charge it with blood from prey before throwing it."))
 		return FALSE
@@ -280,8 +280,8 @@
 	unwield(user) //Otherwise stays wielded even when thrown
 	return TRUE
 
-/obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
-	give_action(user, /datum/action/predator_action/bracer/combistick)
+/obj/item/weapon/yautja/chained/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/chained)
 	add_verb(user, /mob/living/carbon/human/proc/call_combi)
 	linked_to = user
 
@@ -292,16 +292,16 @@
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 
 /// The chain normally breaks if it's put into a container, so let's yank it back if that's the case
-/obj/item/weapon/yautja/combistick/proc/on_move(datum/source, atom/moved, dir, forced)
+/obj/item/weapon/yautja/chained/proc/on_move(datum/source, atom/moved, dir, forced)
 	SIGNAL_HANDLER
 	if(!z && !is_type_in_list(loc, list(/obj/structure/surface, /mob))) // I rue for the day I can remove the surface snowflake check
 		recall()
 
 /// Clean up the chain, deleting/nulling/unregistering as needed
-/obj/item/weapon/yautja/combistick/proc/cleanup_chain()
+/obj/item/weapon/yautja/chained/proc/cleanup_chain()
 	SIGNAL_HANDLER
 	if(linked_to)
-		remove_action(linked_to, /datum/action/predator_action/bracer/combistick)
+		remove_action(linked_to, /datum/action/predator_action/bracer/chained)
 		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
 
 	if(!QDELETED(chain))
@@ -313,15 +313,15 @@
 	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
-/obj/item/weapon/yautja/combistick/proc/on_pickup(datum/source, mob/user)
+/obj/item/weapon/yautja/chained/proc/on_pickup(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(user != chain.affected_atom)
 		to_chat(chain.affected_atom, SPAN_WARNING("You feel the chain of [src] be torn from your grasp!")) // Recall the fuckin combi my man
 
 	cleanup_chain()
 
-/// recall the combistick to the pred's hands or to be at their feet
-/obj/item/weapon/yautja/combistick/proc/recall()
+/// recall the combistick or war axe to the pred's hands or to be at their feet
+/obj/item/weapon/yautja/chained/proc/recall()
 	SIGNAL_HANDLER
 	if(!chain)
 		return
@@ -345,10 +345,10 @@
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
 
-/obj/item/weapon/yautja/combistick/real/IsShield()
+/obj/item/weapon/yautja/chained/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/real/verb/fold_combistick()
+/obj/item/weapon/yautja/chained/combistick/verb/fold_combistick()
 	set category = "Weapons"
 	set name = "Collapse Combi-stick"
 	set desc = "Collapse or extend the combistick."
@@ -356,7 +356,7 @@
 
 	unique_action(usr)
 
-/obj/item/weapon/yautja/combistick/attack_self(mob/user)
+/obj/item/weapon/yautja/chained/attack_self(mob/user)
 	..()
 	if(on)
 		if(flags_item & WIELDED)
@@ -367,21 +367,21 @@
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
-/obj/item/weapon/yautja/combistick/real/wield(mob/user)
+/obj/item/weapon/yautja/chained/combistick/wield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_wielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/real/unwield(mob/user)
+/obj/item/weapon/yautja/chained/combistick/unwield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_unwielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/real/update_icon()
+/obj/item/weapon/yautja/chained/combistick/update_icon()
 	if(flags_item & WIELDED)
 		item_state = "combistick_w"
 	else if(!on)
@@ -389,7 +389,7 @@
 	else
 		item_state = "combistick"
 
-/obj/item/weapon/yautja/combistick/real/unique_action(mob/living/user)
+/obj/item/weapon/yautja/chained/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
 	if(!on)
@@ -434,7 +434,7 @@
 
 	return
 
-/obj/item/weapon/yautja/combistick/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/yautja/chained/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
@@ -456,14 +456,14 @@
 		color += num2text(alpha, 2, 16)
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
-/obj/item/weapon/yautja/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
+/obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 
-/obj/item/weapon/yautja/combistick/launch_impact(atom/hit_atom)
+/obj/item/weapon/yautja/chained/launch_impact(atom/hit_atom)
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
@@ -472,7 +472,7 @@
 			return
 	..()
 
-/obj/item/weapon/yautja/combistick/alt
+/obj/item/weapon/yautja/chained/war_axe
 	name = "war axe"
 	desc = "A swift weapon designed to gouge and gore the hunter's prey. A chain is attached to the hilt, allowing for a quick retrieval."
 	icon_state = "war_axe"

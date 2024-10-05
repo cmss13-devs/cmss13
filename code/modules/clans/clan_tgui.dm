@@ -68,25 +68,27 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	return FALSE
 
 /datum/yautja_panel/ui_data(mob/user)
-	var/list/data = list()
+	var/list/data = GLOB.yautja_clan_data.global_data
 
 	data["current_clan_index"] = current_clan_index
-
 	data["user_is_clan_leader"] = verify_clan_leader(current_clan_id)
-	data["user_is_council"] = verify_council()
-	data["user_is_superadmin"] = verify_superadmin()
 
 	return data
 
 /datum/yautja_panel/ui_static_data()
-	return GLOB.yautja_clan_data.global_data
+	var/list/data = list()
+
+	data["user_is_council"] = verify_council()
+	data["user_is_superadmin"] = verify_superadmin()
+
+	return data
 
 /datum/yautja_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 	var/mob/user = ui.user
-	var/data_reloader = FALSE
+	var/data_reloader = TRUE
 
 	if(action == "change_clan_list")
 		var/selected_clan = params["selected_clan"]
@@ -94,12 +96,13 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		current_clan_id = index_to_id(current_clan_index)
 		return TRUE
 
-	if(!verify_clan_leader(index_to_id(current_clan_index)))
+	if(!verify_clan_leader(current_clan_id))
 		to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 		return FALSE
 
 	var/datum/entity/clan_player/target_yautja
 	var/datum/entity/player/target_player
+	var/datum/entity/clan/target_clan
 	var/target_ckey
 	if(params["target_player"])
 		target_yautja = GET_CLAN_PLAYER(params["target_player"])
@@ -109,47 +112,148 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		target_player.sync()
 		target_ckey = target_player.ckey
 
-	switch (action)
 
+	if(params["target_clan"])
+		target_clan = GET_CLAN(params["target_clan"])
+		target_clan.sync()
+
+	switch(action)
 		if("clan_name")
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			var/input = input(user, "Input the new name", "Set Name", target_clan.name) as text|null
+
+			if(!input || input == target_clan.name)
+				return
+
+			message_admins("[key_name_admin(user)] has set the name of [target_clan.name] to [input].")
+			to_chat(user, SPAN_NOTICE("Set the name of [target_clan.name] to [input]."))
+			target_clan.name = trim(input)
 
 		if("clan_desc")
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			var/input = input(user, "Input a new description", "Set Description", target_clan.description) as message|null
+
+			if(!input || input == target_clan.description)
+				return
+
+			message_admins("[key_name_admin(user)] has set the description of [target_clan.name].")
+			to_chat(user, SPAN_NOTICE("Set the description of [target_clan.name]."))
+			target_clan.description = trim(input)
+
 
 		if("clan_color")
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			data_reloader = FALSE
+			var/color = input(user, "Input a new color", "Set Color", target_clan.color) as color|null
+
+			if(!color)
+				return
+
+			target_clan.color = color
+			message_admins("[key_name_admin(user)] has set the color of [target_clan.name] to [color].")
+			to_chat(user, SPAN_NOTICE("Set the color of [target_clan.name] to [color]."))
 
 		if("change_rank")
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			if((target_yautja.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || linked_client.clan_info.clan_rank <= target_yautja.clan_rank)
+				to_chat(user, SPAN_WARNING("You can't target this person!"))
+				return
+
+			var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
+			ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
+
+			var/datum/yautja_rank/chosen_rank
+			if(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
+				var/input = tgui_input_list(user, "Select the rank to change this user to.", "Select Rank", ranks)
+
+				if(!input)
+					return
+
+				chosen_rank = ranks[input]
+
+			else if(linked_client.has_clan_permission(CLAN_PERMISSION_USER_MODIFY, target_yautja.clan_id))
+				for(var/rank in ranks)
+					if(!linked_client.has_clan_permission(ranks[rank].permission_required, warn = FALSE))
+						ranks -= rank
+
+				var/input = tgui_input_list(user, "Select the rank to change this user to.", "Select Rank", ranks)
+
+				if(!input)
+					return
+
+				chosen_rank = ranks[input]
+
+				if(chosen_rank.limit_type)
+					var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target_yautja.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
+					var/players_in_rank = length(CPV)
+
+					switch(chosen_rank.limit_type)
+						if(CLAN_LIMIT_NUMBER)
+							if(players_in_rank >= chosen_rank.limit)
+								to_chat(user, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] slots)"))
+								return
+						if(CLAN_LIMIT_SIZE)
+							var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target_yautja.clan_id))
+							var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
+
+							if(players_in_rank >= available_slots)
+								to_chat(user, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
+								return
+			else
+				return // Doesn't have permission to do this
+
+			if(!linked_client.has_clan_permission(chosen_rank.permission_required)) // Double check
+				return
+
+			target_yautja.clan_rank = GLOB.clan_ranks_ordered[chosen_rank.name]
+			target_yautja.permissions = chosen_rank.permissions
+			message_admins("[key_name_admin(user)] has set the rank of [target_ckey] to [chosen_rank.name] for their clan.")
+			to_chat(user, SPAN_NOTICE("Set [target_ckey]'s rank to [chosen_rank.name]"))
 
 		if("assign_ancillary")
+			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+				to_chat(user, SPAN_WARNING("You cannot change this player, they are not in your clan!"))
+				return
+			data_reloader = FALSE
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
 
 		if("kick_from_clan")
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+				to_chat(user, SPAN_WARNING("You cannot kick this player, they are not in your clan!"))
+				return
+			target_yautja.clan_id = null
+			target_yautja.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
+
+			to_chat(user, SPAN_NOTICE("Kicked [target_ckey] from your clan."))
+			message_admins("Yautja Clans: [key_name_admin(user)] has kicked [target_ckey] from their clan.")
 
 		if("banish_from_clan")
+			if((linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
+				to_chat(user, SPAN_WARNING("You cannot banish this player, they are not in your clan!"))
+				return
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+			return
+		/*
+			target_yautja.clan_id = get_clan_id("The Banished")
+			target_yautja.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
+
+			to_chat(user, SPAN_NOTICE("Banished [target_ckey] from your clan."))
+			message_admins("Yautja Clans: [key_name_admin(user)] has banished [target_ckey] from their clan.")
+		*/
 
 		if("move_to_clan")
 			if(!verify_council())
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 
-			var/new_clan = tgui_input_list(src, "Choose the clan to put them in", "Change player's clan", GLOB.yautja_clan_data.clan_name_to_index)
+			var/new_clan = tgui_input_list(user, "Choose the clan to put them in", "Change player's clan", GLOB.yautja_clan_data.clan_name_to_index)
 			if(!new_clan)
 				return FALSE
 
 			target_yautja.clan_id = get_clan_id(new_clan)
 
-			to_chat(src, SPAN_NOTICE("Moved [target_ckey] to [new_clan]."))
-			message_admins("Yautja Clans: [key_name_admin(src)] has moved [target_ckey] to clan [new_clan] ([target_yautja.clan_id]).")
+			to_chat(user, SPAN_NOTICE("Moved [target_ckey] to [new_clan]."))
+			message_admins("Yautja Clans: [key_name_admin(user)] has moved [target_ckey] to clan [new_clan] ([target_yautja.clan_id]).")
 
 			if(!(target_yautja.permissions & CLAN_PERMISSION_ADMIN_ANCIENT))
 				target_yautja.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
 				target_yautja.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
-			data_reloader = TRUE
 
 		if("delete_player_data")
 			if(!verify_superadmin())
@@ -164,7 +268,15 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
 
 	if(data_reloader)
-		GLOB.yautja_clan_data.populate_global_clan_data(FALSE)
+		GLOB.yautja_clan_data.queue_early_repopulate()
+
+
+	if(target_clan)
+		target_clan.save()
+		target_clan.sync()
+	if(target_yautja)
+		target_yautja.save()
+		target_yautja.sync()
 
 	return TRUE
 
@@ -199,19 +311,19 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 	early_queued = TRUE
 	addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), FALSE, "early"), 5 MINUTES)
-	log_debug("Yautja Clan Global Data will early repopulate in 5 minutes.")
+	message_admins("Yautja Clans: Global Data will early repopulate in 5 minutes.")
 	return TRUE
 
 /datum/yautja_panel/proc/populate_global_clan_data(start_timer = FALSE, type = "override")
 	if(type == "early")
 		early_queued = FALSE
 
-	log_debug("Populating Yautja Clan Global Data.")
+	message_admins("Yautja Clans: Populating Global Data.")
 	global_data = populate_clan_data()
-	log_debug("Yautja Clan Global Data has been populated.")
+	message_admins("Yautja Clans: Global Data has been populated.")
 	if(start_timer)
 		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE, "regular"), 30 MINUTES)
-		log_debug("Yautja Clan Global Data will repopulate in 30 minutes.")
+		message_admins("Yautja Clans: Clan Global Data will repopulate in 30 minutes.")
 
 /datum/yautja_panel/proc/populate_clan_data()
 	clan_name_to_index = list("Clanless" = 0)

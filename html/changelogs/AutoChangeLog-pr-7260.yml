@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "facehugger limit is visible when examining eggs/morpher as xeno, akin to lesser drone limit when examining hive core"

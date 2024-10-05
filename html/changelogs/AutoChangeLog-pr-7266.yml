@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Abominations (predaliens) now alert preds when they EVO, instead of when they are created."

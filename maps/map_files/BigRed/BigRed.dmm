@@ -38778,10 +38778,6 @@
 	pixel_x = 7
 	},
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/double/sawn{
-	pixel_x = 1;
-	pixel_y = 10
-	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "xJX" = (

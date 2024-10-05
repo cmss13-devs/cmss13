@@ -1,0 +1,4 @@
+author: "JustLat"
+delete-after: True
+changes:
+  - rscadd: "adds alt sprite style for scimitars, similar to war glaive and scythe"

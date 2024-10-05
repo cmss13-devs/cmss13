@@ -12,8 +12,10 @@
 		if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 			clan_info.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
 			clan_info.permissions |= CLAN_PERMISSION_ALL
+		else if(check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+			clan_info.permissions |= CLAN_PERMISSION_ADMIN_ANCIENT
 		else
-			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
+			clan_info.permissions = GLOB.clan_ranks[clan_info.clan_rank].permissions
 
 		clan_info.player_name = prefs.predator_name
 

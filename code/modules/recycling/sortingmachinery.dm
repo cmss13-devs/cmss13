@@ -13,6 +13,10 @@
 	var/tag_x
 	anchored = FALSE
 
+/obj/structure/bigDelivery/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
 /obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
 		wrapped.forceMove(get_turf(src.loc))
@@ -21,52 +25,62 @@
 			O.welded = 0
 	qdel(src)
 
-/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/device/destTagger))
-		var/obj/item/device/destTagger/O = W
-		if(O.currTag)
-			if(src.sortTag != O.currTag)
-				to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
-				if(!src.sortTag)
-					src.sortTag = O.currTag
-					update_icon()
-				else
-					src.sortTag = O.currTag
-				playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
-			else
-				to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
-		else
-			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
+/obj/structure/bigDelivery/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), writer, user)
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
-			if("Title")
-				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
-					return
-				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
-				"You hear someone scribbling a note.")
-				name = "[name] ([str])"
-				if(!examtext && !nameset)
-					nameset = 1
-					update_icon()
-				else
-					nameset = 1
-			if("Description")
-				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-				if(!str || !length(str))
-					to_chat(usr, SPAN_DANGER("Invalid text."))
-					return
-				if(!examtext && !nameset)
-					examtext = str
-					update_icon()
-				else
-					examtext = str
-				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
-				"You hear someone scribbling a note.")
+/obj/structure/bigDelivery/proc/write_async(obj/item/writer, mob/user)
+	switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+		if("Title")
+			var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+			if(!str || !length(str))
+				to_chat(usr, SPAN_WARNING(" Invalid text."))
+				return
+			user.visible_message("\The [user] titles \the [src] with \a [writer], marking down: \"[str]\"",\
+			SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+			"You hear someone scribbling a note.")
+			name = "[name] ([str])"
+			if(!examtext && !nameset)
+				nameset = 1
+				update_icon()
+			else
+				nameset = 1
+		if("Description")
+			var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+			if(!str || !length(str))
+				to_chat(usr, SPAN_DANGER("Invalid text."))
+				return
+			if(!examtext && !nameset)
+				examtext = str
+				update_icon()
+			else
+				examtext = str
+			user.visible_message("\The [user] labels \the [src] with \a [writer], scribbling down: \"[examtext]\"",\
+			SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+			"You hear someone scribbling a note.")
+
+/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(W, /obj/item/device/destTagger))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/device/destTagger/O = W
+	if(O.currTag)
+		if(src.sortTag != O.currTag)
+			to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
+			if(!src.sortTag)
+				src.sortTag = O.currTag
+				update_icon()
+			else
+				src.sortTag = O.currTag
+			playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
+		else
+			to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+	else
+		to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
 /obj/structure/bigDelivery/update_icon()
 	overlays = new()
@@ -116,6 +130,43 @@
 	var/nameset = 0
 	var/tag_x
 
+/obj/item/smallDelivery/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/smallDelivery/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), writer, user)
+
+/obj/item/smallDelivery/proc/write_async(obj/item/writer, mob/user)
+	switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+		if ("Title")
+			var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+			if (!str || !length(str))
+				to_chat(usr, SPAN_WARNING(" Invalid text."))
+				return
+			user.visible_message("\The [user] titles \the [src] with \a [writer], marking down: \"[str]\"",\
+			SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+			"You hear someone scribbling a note.")
+			name = "[name] ([str])"
+			if (!examtext && !nameset)
+				nameset = 1
+				update_icon()
+			else
+				nameset = 1
+		if ("Description")
+			var/str = trim(strip_html(input(user,"Label text?","Set label","")))
+			if (!str || !length(str))
+				to_chat(user, SPAN_DANGER("Invalid text."))
+				return
+			if (!examtext && !nameset)
+				examtext = str
+				update_icon()
+			else
+				examtext = str
+			user.visible_message("\The [user] labels \the [src] with \a [writer], scribbling down: \"[examtext]\"",\
+			SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+			"You hear someone scribbling a note.")
+
 /obj/item/smallDelivery/attack_self(mob/user)
 	..()
 
@@ -129,53 +180,28 @@
 	qdel(src)
 
 /obj/item/smallDelivery/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/device/destTagger))
-		var/obj/item/device/destTagger/O = W
-		if(O.currTag)
-			if(src.sortTag != O.currTag)
-				to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
-				if(!src.sortTag)
-					src.sortTag = O.currTag
-					update_icon()
-				else
-					src.sortTag = O.currTag
-				playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(W, /obj/item/device/destTagger))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/device/destTagger/O = W
+	if(O.currTag)
+		if(src.sortTag != O.currTag)
+			to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
+			if(!src.sortTag)
+				src.sortTag = O.currTag
+				update_icon()
 			else
-				to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+				src.sortTag = O.currTag
+			playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
-
-	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
-			if("Title")
-				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
-					return
-				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
-				"You hear someone scribbling a note.")
-				name = "[name] ([str])"
-				if(!examtext && !nameset)
-					nameset = 1
-					update_icon()
-				else
-					nameset = 1
-
-			if("Description")
-				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-				if(!str || !length(str))
-					to_chat(usr, SPAN_DANGER("Invalid text."))
-					return
-				if(!examtext && !nameset)
-					examtext = str
-					update_icon()
-				else
-					examtext = str
-				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
-				"You hear someone scribbling a note.")
-	return
+			to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+	else
+		to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
 /obj/item/smallDelivery/update_icon()
 	overlays = new()
@@ -421,10 +447,15 @@
 	return
 
 /obj/structure/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!I || !user)
 		return
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(c_mode==0)
 			c_mode=1
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -435,24 +466,27 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, "You attach the screws around the power connection.")
 			return
-	else if(iswelder(I) && c_mode==1)
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		var/obj/item/tool/weldingtool/W = I
-		if(W.remove_fuel(0,user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			to_chat(user, "You start slicing the floorweld off the delivery chute.")
-			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !W.isOn()) return
-				to_chat(user, "You sliced the floorweld off the delivery chute.")
-				var/obj/structure/disposalconstruct/C = new (src.loc)
-				C.ptype = 8 // 8 =  Delivery chute
-				C.update()
-				C.anchored = TRUE
-				C.density = TRUE
-				qdel(src)
-			return
-		else
-			to_chat(user, "You need more welding fuel to complete this task.")
-			return
+		return
+	if(!iswelder(I) || c_mode != 1)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+	var/obj/item/tool/weldingtool/W = I
+	if(W.remove_fuel(0,user))
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		to_chat(user, "You start slicing the floorweld off the delivery chute.")
+		if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!src || !W.isOn()) return
+			to_chat(user, "You sliced the floorweld off the delivery chute.")
+			var/obj/structure/disposalconstruct/C = new (src.loc)
+			C.ptype = 8 // 8 =  Delivery chute
+			C.update()
+			C.anchored = TRUE
+			C.density = TRUE
+			qdel(src)
+		return
+	else
+		to_chat(user, "You need more welding fuel to complete this task.")

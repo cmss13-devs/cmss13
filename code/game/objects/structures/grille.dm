@@ -117,18 +117,24 @@
 	return 1
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(!shock(user, 100))
-			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			handle_debris()
-			qdel(src)
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && istype(loc, /turf/open))
-		if(!shock(user, 90))
-			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			anchored = !anchored
-			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."), \
-								SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
-			return
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && !shock(user, 100))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		handle_debris()
+		qdel(src)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && istype(loc, /turf/open) && !shock(user, 90))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		anchored = !anchored
+		user.visible_message(
+			SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."),
+			SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."),
+		)
+		return
 
 //window placing begin
 	else if(istype(W,/obj/item/stack/sheet/glass))

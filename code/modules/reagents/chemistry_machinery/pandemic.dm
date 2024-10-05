@@ -238,7 +238,12 @@
 
 
 /obj/structure/machinery/computer/pandemic/attackby(obj/item/I, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/reagent_container/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(inoperable())
 			return
 		if(beaker)
@@ -250,7 +255,3 @@
 		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
 		update_icon()
-
-	else
-		..()
-	return

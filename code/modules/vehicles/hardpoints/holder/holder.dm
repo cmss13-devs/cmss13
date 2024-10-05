@@ -99,7 +99,12 @@
 	update_icon()
 
 /obj/item/hardpoint/holder/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
@@ -112,20 +117,20 @@
 		uninstall(old, user)
 		return
 
-	if(istype(O, /obj/item/hardpoint))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
-			return
-
-		var/obj/item/hardpoint/H = O
-		if(!(H.type in accepted_hardpoints))
-			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
-			return
-
-		install(H, user)
+	if(!istype(O, /obj/item/hardpoint))
 		return
 
-	..()
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+		return
+
+	var/obj/item/hardpoint/H = O
+	if(!(H.type in accepted_hardpoints))
+		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+		return
+
+	install(H, user)
 
 /obj/item/hardpoint/holder/proc/add_hardpoint(obj/item/hardpoint/H)
 	H.owner = owner

@@ -78,7 +78,12 @@
 		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if( HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && src.amount > 1)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		src.amount--
 		new/obj/item/stack/cable_coil(user.loc, 1,color)
 		to_chat(user, SPAN_NOTICE("You cut a piece off the cable coil."))
@@ -87,6 +92,7 @@
 		return
 
 	else if( istype(W, /obj/item/stack/cable_coil) )
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/cable_coil/C = W
 		if(C.amount >= MAXCOIL)
 			to_chat(user, "The coil is too long, you cannot add any more cable to it.")
@@ -103,7 +109,6 @@
 			C.add(amt)
 			src.use(amt)
 		return
-	..()
 
 /obj/item/stack/cable_coil/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)

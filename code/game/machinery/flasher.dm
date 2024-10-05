@@ -33,6 +33,11 @@
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		add_fingerprint(user)
 		src.disable = !src.disable
@@ -101,6 +106,11 @@
 			src.flash()
 
 /obj/structure/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		add_fingerprint(user)
 		src.anchored = !src.anchored
@@ -117,7 +127,11 @@
 	return src.attack_hand(user)
 
 /obj/structure/machinery/flasher_button/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= src.attack_hand(user)
 
 /obj/structure/machinery/flasher_button/attack_hand(mob/user as mob)
 

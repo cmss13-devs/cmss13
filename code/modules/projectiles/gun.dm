@@ -282,6 +282,7 @@
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -1238,12 +1239,14 @@ and you're good to go.
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
-		return FALSE
+		return
 
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE))
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(target, src, user)
-		return TRUE
+		return
+
+	..()
 
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
@@ -1977,3 +1980,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// Getter for gun_user
 /obj/item/weapon/gun/proc/get_gun_user()
 	return gun_user
+
+/obj/item/weapon/gun/check_can_ignite()
+	for (var/slot in attachments)
+		if (istype(attachments[slot], /obj/item/attachable/attached_gun/flamer))
+			return TRUE

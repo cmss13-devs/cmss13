@@ -14,7 +14,11 @@
 	return FALSE
 
 /obj/structure/machinery/aicore_lockdown/attackby(obj/item/attacking_item, mob/user)
-	return attack_hand(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= attack_hand(user)
 
 /obj/structure/machinery/aicore_lockdown/attack_hand(mob/living/user)
 	if(isxeno(user))

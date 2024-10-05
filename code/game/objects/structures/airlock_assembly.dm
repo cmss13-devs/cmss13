@@ -28,6 +28,14 @@
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/structure/airlock_assembly/write(obj/item/writer, mob/user, mods, color, crayon)
+	var/input_text = copytext(stripped_input(user, "Enter the name for the airlock.", name, created_name), 1, MAX_NAME_LEN)
+	if(!input_text || !in_range(src, usr) && loc != usr)
+		return
+	created_name = input_text
+	playsound(src, "paper_writing", 15, TRUE)
 
 /obj/structure/airlock_assembly/get_examine_text(mob/user)
 	. = ..()
@@ -56,23 +64,22 @@
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
-/obj/structure/airlock_assembly/attackby(obj/item/attacking_item as obj, mob/user as mob)
+/obj/structure/airlock_assembly/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(user.action_busy)
-		return TRUE //no afterattack
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You are not trained to configure \the [src]..."))
 		return
 
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN))
-		var/input_text = copytext(stripped_input(user, "Enter the name for the airlock.", name, created_name), 1, MAX_NAME_LEN)
-		if(!input_text || !in_range(src, usr) && loc != usr)
-			return
-		created_name = input_text
-		playsound(src, "paper_writing", 15, TRUE)
-		return
-
 	if(istype(attacking_item, /obj/item/stack/sheet/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/glass/glass_sheet = attacking_item
 		if(!anchored)
 			to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
@@ -99,6 +106,7 @@
 			return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You start pulling \the [src] apart."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -113,12 +121,14 @@
 
 	for(var/obj/object in loc)
 		if(object.density && object != src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_WARNING("[object] is blocking you from interacting with [src]!"))
 			return
 
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				//Moving wide doors is wonky and doesn't work properly, if it's fixed we could make it unwrenchable again
 				if(width > 1 && anchored)
 					to_chat(user, SPAN_WARNING("[src] cannot be unwrenched."))
@@ -138,10 +148,12 @@
 				return
 
 			if(!anchored)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
-				return ..()
+				return
 
 			if(istype(attacking_item, /obj/item/circuitboard/airlock))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				var/obj/item/circuitboard/airlock/airlock_circuit = attacking_item
 				if(airlock_circuit.fried) // guess what this used to check? ICON STATE!!
 					to_chat(user, SPAN_WARNING("\The [airlock_circuit] are totally broken!"))
@@ -160,6 +172,7 @@
 				return
 
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!anchored)
 					to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
 					return
@@ -178,6 +191,7 @@
 
 		if(STATE_CIRCUIT)
 			if(istype(attacking_item, /obj/item/stack/cable_coil))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				var/obj/item/stack/cable_coil/airlock_circuit = attacking_item
 				if (airlock_circuit.get_amount() < 1)
 					to_chat(user, SPAN_WARNING("You need one length of coil to wire the airlock assembly."))
@@ -193,6 +207,7 @@
 
 		if(STATE_WIRES)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start securing the circuit"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -205,6 +220,7 @@
 
 		if(STATE_SCREWDRIVER)
 			if(iswelder(attacking_item))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
@@ -239,7 +255,6 @@
 				electronics.forceMove(door)
 				qdel(src)
 				return
-	..()
 
 /obj/structure/airlock_assembly/update_icon()
 	icon_state = "door_as_[state]"

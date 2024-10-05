@@ -9,8 +9,13 @@
 	var/obj/item/configuration
 
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(inoperable())
 		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to configure [src]."))
 		return

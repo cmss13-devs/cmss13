@@ -405,14 +405,17 @@
 	)
 
 /obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/shotgun/M = W
 		if(istype(src, /obj/item/storage/pouch/magazine/pistol))
-			return..()
+			return
 		else
 			dump_ammo_to(M,user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
@@ -544,11 +547,14 @@
 	flap = FALSE
 
 /obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/shotgun/M = W
 		dump_ammo_to(M, user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/pouch/shotgun/heavybuck/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -597,11 +603,14 @@
 	)
 
 /obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/box/nade_box))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/box/nade_box/M = W
 		dump_into(M,user)
-	else
-		return ..()
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -751,11 +760,14 @@
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 
 /obj/item/storage/pouch/vials/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/fancy/vials))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/fancy/vials/M = W
 		dump_into(M,user)
-	else
-		return ..()
 
 /obj/item/storage/pouch/vials/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -954,7 +966,12 @@
 	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(inner)
 			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
 		else
@@ -966,12 +983,13 @@
 		return
 
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		fill_autoinjector(A)
-		return ..()
+		return
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
-	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
 	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
@@ -1152,11 +1170,14 @@
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/box/m94))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/box/m94/M = W
 		dump_into(M,user)
-	else
-		return ..()
 
 /obj/item/storage/pouch/flare/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

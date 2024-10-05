@@ -157,16 +157,21 @@
 	color = "#FFFFFF"
 
 /obj/item/restraint/adjustable/cable/attackby(obj/item/I, mob/user as mob)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
 		if (R.use(1))
-			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
+			return
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
 
-			user.put_in_hands(W)
-			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
-			qdel(src)
-			update_icon(user)
+		user.put_in_hands(W)
+		to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
+		qdel(src)
+		update_icon(user)
 
 /obj/item/restraint/handcuffs/cyborg/attack(mob/living/carbon/carbon_mob as mob, mob/user as mob)
 	if(!carbon_mob.handcuffed)

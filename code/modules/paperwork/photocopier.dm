@@ -119,7 +119,12 @@
 			updateUsrDialog()
 
 /obj/structure/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/paper))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				copy = O
@@ -129,6 +134,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
 	else if(istype(O, /obj/item/photo))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				photocopy = O
@@ -138,6 +144,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
 	else if(istype(O, /obj/item/paper_bundle))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				bundle = O
@@ -145,6 +152,7 @@
 				flick(animate_state, src)
 				updateUsrDialog()
 	else if(istype(O, /obj/item/device/toner))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(toner == 0)
 			if(user.temp_drop_inv_item(O))
 				qdel(O)
@@ -154,10 +162,10 @@
 		else
 			to_chat(user, SPAN_NOTICE("This cartridge is not yet ready for replacement! Use up the rest of the toner."))
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
-	return
 
 /obj/structure/machinery/photocopier/ex_act(severity)
 	switch(severity)

@@ -50,30 +50,33 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
 			qdel(PC)
-			return FALSE
+			return
 		if(PC.loaded)
 			if(istype(PC.loaded, /obj/structure/ship_ammo))
 				var/obj/structure/ship_ammo/SA = PC.loaded
 				SA.transfer_ammo(src, user)
-				return FALSE
+				return
 		else
 			if(ammo_count < 1)
 				to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
 				qdel(src)
-				return FALSE
+				return
 
 			if(ammo_name == "rocket")
 				PC.grab_object(user, src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
 			else
 				PC.grab_object(user, src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
 			update_icon()
-			return FALSE
-	else
-		. = ..()
+			return
 
 
 /obj/structure/ship_ammo/get_examine_text(mob/user)

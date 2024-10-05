@@ -61,7 +61,12 @@
 		reservoir.afterattack(W, user, TRUE)
 
 /obj/item/hoverpack/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/input = tgui_input_list(user, "Change the air canister's pressure?", "Select an intensity level", list("Strong (Dash)", "Normal (Jump)", "Weak (Leap)"))
 		if(!input)
 			return
@@ -84,12 +89,10 @@
 				hover_cooldown = 10 SECONDS
 
 		to_chat(user, SPAN_NOTICE("You set the hoverpack's pressure output to [input]."))
-
+	// TODO: convert this to signals
 	else if(W.is_open_container())
+		. |= ATTACK_HINT_NO_AFTERATTACK
 		W.afterattack(reservoir, user, TRUE)
-
-	else
-		..()
 
 /obj/item/hoverpack/get_examine_text(mob/user)
 	. = ..()

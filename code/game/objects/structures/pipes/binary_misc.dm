@@ -83,7 +83,12 @@
 		icon_state = "circ-run"
 
 /obj/structure/pipes/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE(" You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
 
@@ -92,8 +97,6 @@
 				valid_directions = list(NORTH, SOUTH)
 			else if(dir & (EAST|WEST))
 				valid_directions = list(EAST, WEST)
-	else
-		..()
 
 /obj/structure/pipes/binary/circulator/verb/rotate_clockwise()
 	set category = "Object"

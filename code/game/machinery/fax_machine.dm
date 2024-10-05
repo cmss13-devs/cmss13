@@ -67,32 +67,19 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/structure/machinery/faxmachine/attack_hand(mob/user)
 	tgui_interact(user)
 
-/obj/structure/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/faxmachine/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-	if(istype(O, /obj/item/paper) || istype(O, /obj/item/paper_bundle) || istype(O, /obj/item/photo))
-		if(original_fax)
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
-			return
-
-		var/jammed = FALSE
-		if(istype(O, /obj/item/paper_bundle))
-			var/obj/item/paper_bundle/bundle = O
-			if(bundle.amount > 5)
-				jammed = TRUE
-
-		user.drop_inv_item_to_loc(O, src)
-		original_fax = O
-		if(!jammed)
-			to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
-		else
-			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
-			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-		flick("[initial(icon_state)]send", src)
-		updateUsrDialog()
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+		anchored = !anchored
+		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 		return
 
 	if(istype(O, /obj/item/card/id))
-
 		var/obj/item/card/id/idcard = O
 		if(scan)
 			to_chat(user, SPAN_NOTICE("There is already an id in \the [src]."))
@@ -104,10 +91,27 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
 		return
 
-	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+	if(!istype(O, /obj/item/paper) && !istype(O, /obj/item/paper_bundle) && !istype(O, /obj/item/photo))
+		return
+	if(original_fax)
+		to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+		return
+
+	var/jammed = FALSE
+	if(istype(O, /obj/item/paper_bundle))
+		var/obj/item/paper_bundle/bundle = O
+		if(bundle.amount > 5)
+			jammed = TRUE
+
+	user.drop_inv_item_to_loc(O, src)
+	original_fax = O
+	if(!jammed)
+		to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
+	else
+		to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
+		playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
+	flick("[initial(icon_state)]send", src)
+	updateUsrDialog()
 
 /obj/structure/machinery/faxmachine/verb/eject_id()
 	set category = "Object"

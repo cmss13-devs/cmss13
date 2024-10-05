@@ -45,10 +45,15 @@
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
 /obj/structure/windoor_assembly/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//I really should have spread this out across more states but thin little windoors are hard to sprite.
 	switch(state)
 		if("01")
 			if(iswelder(W) && !anchored )
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
@@ -67,6 +72,7 @@
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !anchored)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				var/turf/open/T = loc
 				if(!(istype(T) && T.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
@@ -85,6 +91,7 @@
 
 			//Unwrenching an unsecure assembly un-anchors it. Step 4 undone
 			else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && anchored)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
@@ -99,6 +106,7 @@
 
 			//Adding plasteel makes the assembly a secure windoor assembly. Step 2 (optional) complete.
 			else if(istype(W, /obj/item/stack/rods) && !secure)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				var/obj/item/stack/rods/R = W
 				if(R.get_amount() < 4)
 					to_chat(user, SPAN_WARNING("You need more rods to do this."))
@@ -116,6 +124,7 @@
 
 			//Adding cable to the assembly. Step 5 complete.
 			else if(istype(W, /obj/item/stack/cable_coil) && anchored)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				user.visible_message("[user] wires the windoor assembly.", "You start to wire the windoor assembly.")
 
 				var/obj/item/stack/cable_coil/CC = W
@@ -127,13 +136,12 @@
 							src.name = "Secure Wired Windoor Assembly"
 						else
 							src.name = "Wired Windoor Assembly"
-			else
-				..()
 
 		if("02")
 
 			//Removing wire from the assembly. Step 5 undone.
 			if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && !src.electronics)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
@@ -150,6 +158,7 @@
 
 			//Adding airlock electronics for access. Step 6 complete.
 			else if(istype(W, /obj/item/circuitboard/airlock))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				var/obj/item/circuitboard/airlock/board = W
 				if(board.fried)
 					return
@@ -169,6 +178,7 @@
 
 			//Screwdriver to remove airlock electronics. Step 6 undone.
 			else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && src.electronics)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
@@ -185,6 +195,7 @@
 
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!src.electronics)
 					to_chat(usr, SPAN_DANGER("The assembly is missing electronics."))
 					return
@@ -238,10 +249,6 @@
 
 
 					qdel(src)
-
-
-			else
-				..()
 
 	//Update to reflect changes(if applicable)
 	update_icon()

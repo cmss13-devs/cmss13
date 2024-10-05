@@ -68,14 +68,20 @@
 	update_icon()
 
 /obj/structure/barricade/handrail/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Non-reinforced. Wrench to unsecure. Screwdriver to disassemble into metal. 1 metal to reinforce.
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH)) // Make unsecure
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -90,6 +96,7 @@
 				update_icon()
 				return
 			if(istype(item, /obj/item/stack/sheet/metal)) // Start reinforcing
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!can_be_reinforced)
 					return
 				if(user.action_busy)
@@ -110,6 +117,7 @@
 
 		if(BARRICADE_BSTATE_UNSECURED)
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH)) // Secure again
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -124,6 +132,7 @@
 				update_icon()
 				return
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER)) // Disassemble into metal
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -142,6 +151,7 @@
 		if(BARRICADE_BSTATE_FORTIFIED)
 			if(reinforced)
 				if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR)) // Un-reinforce
+					. |= ATTACK_HINT_NO_TELEGRAPH
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -156,6 +166,7 @@
 					return
 			else
 				if(iswelder(item)) // Finish reinforcing
+					. |= ATTACK_HINT_NO_TELEGRAPH
 					if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 						to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 						return

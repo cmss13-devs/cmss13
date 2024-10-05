@@ -54,25 +54,31 @@
 	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
-	if(istype(attacking_item, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
-		if(attacking_flare.on)
-			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
-			return
-		if(!attacking_flare.fuel)
-			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
-			return
-		if(current_mag && current_mag.current_rounds == 0)
-			ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
-			playsound(user, reload_sound, 25, 1)
-			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
-			current_mag.current_rounds++
-			qdel(attacking_flare)
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("[src] is already loaded!"))
-	else
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(attacking_item, /obj/item/device/flashlight/flare))
 		to_chat(user, SPAN_WARNING("That's not a flare!"))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
+	if(attacking_flare.on)
+		to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
+		return
+	if(!attacking_flare.fuel)
+		to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
+		return
+	if(current_mag && current_mag.current_rounds == 0)
+		ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
+		playsound(user, reload_sound, 25, 1)
+		to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
+		current_mag.current_rounds++
+		qdel(attacking_flare)
+		update_icon()
+	else
+		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
 
 /obj/item/weapon/gun/flare/unload(mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)

@@ -47,6 +47,11 @@
 	return
 
 /obj/item/reagent_container/food/snacks/fishable/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(gutted)
 		to_chat(user, SPAN_WARNING("[src] has already been gutted!"))
 		return

@@ -16,7 +16,12 @@
 	stack_id = "empty sandbags"
 
 /obj/item/stack/sandbags_empty/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/tool/shovel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
 			ET.dirt_amt--
@@ -32,13 +37,12 @@
 				user.put_in_hands(new_bags)
 
 	else if (istype(W, /obj/item/stack/snow))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/S = W
 		var/obj/item/stack/sandbags/new_bags = new(user.loc)
 		new_bags.add_to_stacks(user)
 		S.use(1)
 		use(1)
-	else
-		return ..()
 
 
 //half a max stack

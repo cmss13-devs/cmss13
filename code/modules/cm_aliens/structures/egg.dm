@@ -189,16 +189,22 @@
 		QDEL_IN(src, rand(125, 200))
 
 /obj/effect/alien/egg/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(health <= 0)
 		return
 
 	if(istype(W,/obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/F = W
 		if(F.stat == DEAD)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_XENOWARNING("This child is dead."))
 			return
 		switch(status)
 			if(EGG_BURST)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user)
 					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
 						SPAN_XENONOTICE("We place the child back in to [src]."))
@@ -214,14 +220,17 @@
 
 				addtimer(CALLBACK(src, PROC_REF(deploy_egg_triggers)), 30 SECONDS)
 			if(EGG_DESTROYED)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				to_chat(user, SPAN_XENOWARNING("This one is occupied with a child."))
 		return
 
 	if(W.flags_item & NOBLUDGEON)
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	user.animation_attack_on(src)
 	if(length(W.attack_verb))
 		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))

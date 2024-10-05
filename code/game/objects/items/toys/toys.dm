@@ -48,7 +48,12 @@
 	return
 
 /obj/item/toy/balloon/attackby(obj/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/reagent_container/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
 				to_chat(user, SPAN_WARNING("[O] is empty."))
@@ -62,7 +67,6 @@
 					to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [O]."))
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
-	return
 
 /obj/item/toy/balloon/launch_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
@@ -134,6 +138,10 @@
 	var/uses = 30
 	var/instant = 0
 	var/colorName = "red" //for updateIcon purposes
+
+/obj/item/toy/crayon/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/writer, colorName)
 
 /*
  * Snap pops

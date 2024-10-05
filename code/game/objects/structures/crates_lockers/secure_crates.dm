@@ -70,16 +70,21 @@
 		src.toggle(user)
 
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(isxeno(user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/mob/living/carbon/xenomorph/opener = user
 		src.attack_alien(opener)
 		return
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/tool/wirecutters, /obj/item/tool/weldingtool)))
-		return ..()
+		return
 	if(!opened)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		src.togglelock(user)
 		return
-	return ..()
 
 /obj/structure/closet/crate/secure/break_open()
 	broken = TRUE

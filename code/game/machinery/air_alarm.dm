@@ -948,6 +948,10 @@ table tr:first-child th:first-child { border: none;}
 
 
 /obj/structure/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.add_fingerprint(user)
 
 	switch(buildstage)
@@ -960,7 +964,8 @@ table tr:first-child th:first-child { border: none;}
 				return
 
 			if(wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
-				return attack_hand(user)
+				. |= attack_hand(user)
+				return
 
 			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
 				if(inoperable())
@@ -1014,8 +1019,6 @@ table tr:first-child th:first-child { border: none;}
 				frame.forceMove(user.loc)
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				qdel(src)
-
-	return ..()
 
 /obj/structure/machinery/alarm/power_change()
 	..()

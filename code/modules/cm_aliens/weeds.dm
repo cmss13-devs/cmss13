@@ -366,13 +366,25 @@
 		return XENO_ATTACK_ACTION
 
 /obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(indestructible)
-		return FALSE
+		return
 
 	if(QDELETED(attacking_item) || QDELETED(user) || (attacking_item.flags_item & NOBLUDGEON))
-		return 0
+		return
 
-	if(istype(src, /obj/effect/alien/weeds/node)) //The pain is real
+	if (receive_damage_from(attacking_item, user))
+		. |= ATTACK_HINT_NO_AFTERATTACK
+
+/obj/effect/alien/weeds/proc/receive_damage_from(obj/item/attacking_item, mob/living/user)
+	if (indestructible)
+		return FALSE
+
+	// TODO: move this to a call based on type
+	if (istype(src, /obj/effect/alien/weeds/node))
 		to_chat(user, SPAN_WARNING("You hit \the [src] with \the [attacking_item]."))
 	else
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
@@ -380,7 +392,7 @@
 	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
 	playsound(loc, "alien_resin_break", 25)
 
-	if(iswelder(attacking_item))
+	if (iswelder(attacking_item))
 		var/obj/item/tool/weldingtool/WT = attacking_item
 		if(WT.remove_fuel(2))
 			damage = WEED_HEALTH_STANDARD
@@ -388,11 +400,10 @@
 	else
 		playsound(loc, "alien_resin_break", 25)
 
-
 	user.animation_attack_on(src)
 
 	take_damage(damage)
-	return TRUE //don't call afterattack
+	return TRUE
 
 /obj/effect/alien/weeds/proc/take_damage(damage)
 	if(indestructible)
@@ -609,9 +620,6 @@
 	return ..()
 
 /obj/effect/alien/weeds/node/pylon/ex_act(severity)
-	return
-
-/obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
 	return
 
 /obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/xenomorph/X)

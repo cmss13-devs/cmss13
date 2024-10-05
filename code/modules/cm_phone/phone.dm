@@ -369,12 +369,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	playsound(P, "talk_phone", 5)
 	log_say("TELEPHONE: [key_name(speaking)] on Phone '[phone_id]' to '[T.phone_id]' said '[message]'")
 
-/obj/structure/transmitter/attackby(obj/item/W, mob/user)
-	if(W == attached_to)
-		recall_phone()
-	else
-		. = ..()
-
 /obj/structure/transmitter/Destroy()
 	if(attached_to)
 		if(attached_to.loc == src)

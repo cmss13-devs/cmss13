@@ -81,15 +81,21 @@
 		stack_collapse()
 
 /obj/structure/bed/chair/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
-		return FALSE
+		return
 	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && picked_up_item)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(I.flags_item & WIELDED)
-			return ..()
+			return
 		if(locate(/mob/living) in loc)
 			to_chat(user, SPAN_NOTICE("There's someone in the way!"))
-			return FALSE
+			return
 		user.drop_inv_item_to_loc(I, src)
 		stacked_size++
 		update_overlays()
@@ -101,33 +107,32 @@
 			density = TRUE
 			flags_can_pass_all_temp -= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_HIGH
-			return FALSE
+			return
 
 		if(stacked_size > 8)
 			to_chat(user, SPAN_WARNING("The stack of chairs looks unstable!"))
 			if(prob(sqrt(50 * stacked_size)))
 				stack_collapse()
-				return FALSE
-		return FALSE
+				return
+		return
 
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
 			qdel(PC)
-			return TRUE
+			return
 		if(!stacked_size)
 			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
-			return TRUE
+			return
 		//skill reduces the chance of collapse
 		if(stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
 			stack_collapse()
-			return TRUE
+			return
 
 		PC.grab_object(user, src, "chairs", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
-		return TRUE
-
-	return ..()
+		return
 
 /obj/structure/bed/chair/hitby(atom/movable/AM)
 	. = ..()
@@ -456,10 +461,16 @@
 		return XENO_ATTACK_ACTION
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && chair_state == DROPSHIP_CHAIR_BROKEN)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 		return
 	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -473,11 +484,14 @@
 				SPAN_WARNING("You repair \the [src]."))
 				unfold_up()
 				return
-	else
-		return
 
 /obj/structure/bed/chair/dropship/passenger/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		switch(chair_state)
 			if(DROPSHIP_CHAIR_UNFOLDED)
 				user.visible_message(SPAN_WARNING("[user] begins loosening the bolts on \the [src]."),
@@ -501,6 +515,7 @@
 				to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 				return
 	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -514,8 +529,6 @@
 				SPAN_WARNING("You repair \the [src]."))
 				chair_state = DROPSHIP_CHAIR_FOLDED
 				return
-	else
-		..()
 
 
 

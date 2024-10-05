@@ -116,6 +116,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE
+	deconstructible = FALSE
 
 	var/datum/techtree/marine/attached_tree
 
@@ -129,10 +130,6 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	GLOB.tech_controls_marine -= src
 	attached_tree = null
 	return ..()
-
-// Disallow deconstructing
-/obj/structure/machinery/computer/tech_control/attackby(obj/item/I, mob/user)
-	return
 
 /obj/structure/machinery/computer/tech_control/attack_hand(mob/M)
 	. = ..()

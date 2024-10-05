@@ -315,12 +315,18 @@
 		tripwires += new_tripwire
 
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
-		return ..()
+		return
 	if(trap_type != RESIN_TRAP_EMPTY)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this trap!"))
 		return
 	var/obj/item/clothing/mask/facehugger/FH = W
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(FH.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else

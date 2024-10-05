@@ -29,6 +29,10 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (istype(W, /obj/item/card/id/))
 		if (src.allowed(user))
 			src.locked = !src.locked
@@ -41,22 +45,22 @@
 				to_chat(user, "Barrier lock toggled off.")
 				return
 		return
-	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+
+	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.health < src.maxhealth)
 			src.health = src.maxhealth
 			src.req_access = list(ACCESS_MARINE_PREP)
 			visible_message(SPAN_DANGER("[user] repairs \the [src]!"))
 			return
 		return
-	else
-		switch(W.damtype)
-			if("fire")
-				health -= W.force * W.demolition_mod * 0.75
-			if("brute")
-				health -= W.force * W.demolition_mod * 0.5
-		if (health <= 0)
-			explode()
-		..()
+
+	switch(W.damtype)
+		if("fire")
+			health -= W.force * W.demolition_mod * 0.75
+		if("brute")
+			health -= W.force * W.demolition_mod * 0.5
+	if (health <= 0)
+		explode()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
 	src.health -= severity/2

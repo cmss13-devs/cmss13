@@ -97,21 +97,28 @@
 	return
 
 /obj/item/hardpoint/holder/tank_turret/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
 			qdel(PC)
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 		if(health < 1)
 			visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered!"))
 			qdel(src)
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 		PC.grab_object(user, src, "vehicle_module", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
-		return TRUE
-	..()
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 
 /obj/item/hardpoint/holder/tank_turret/get_tgui_info()

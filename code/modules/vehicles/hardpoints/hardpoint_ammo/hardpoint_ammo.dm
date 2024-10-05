@@ -3,6 +3,11 @@
 	flags_magazine = 0 //No refilling
 
 /obj/item/ammo_magazine/hardpoint/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(O.type != type)
 		to_chat(user, SPAN_WARNING("You need another [initial(name)] to be able to transfer ammo."))
 		return

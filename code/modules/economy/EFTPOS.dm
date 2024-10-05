@@ -110,6 +110,10 @@
 		close_browser(user,"eftpos")
 
 /obj/item/device/eftpos/attackby(O as obj, user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card))
 		if(linked_account)
 			var/obj/item/card/I = O
@@ -145,9 +149,6 @@
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
 		else
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("EFTPOS is not connected to an account.")]")
-
-	else
-		..()
 
 /obj/item/device/eftpos/Topic(href, href_list)
 	. = ..()

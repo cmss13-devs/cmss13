@@ -108,7 +108,14 @@
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.flags_item & ITEM_ABSTRACT) return
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(W.flags_item & ITEM_ABSTRACT)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(opened)
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton))
@@ -134,7 +141,8 @@
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			rigged = 0
 			return
-	else return attack_hand(user)
+	else
+		. |= attack_hand(user)
 
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)

@@ -65,10 +65,15 @@
 
 
 /obj/item/paper_bin/attackby(obj/item/paper/i as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(i))
 		return
 
 	if(user.drop_inv_item_to_loc(i, src))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You put [i] in [src]."))
 		papers.Add(i)
 		amount++

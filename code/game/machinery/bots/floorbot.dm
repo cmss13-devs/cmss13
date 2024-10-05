@@ -74,8 +74,13 @@
 	return
 
 
-/obj/structure/machinery/bot/floorbot/attackby(obj/item/W , mob/user as mob)
+/obj/structure/machinery/bot/floorbot/attackby(obj/item/W , mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/stack/tile/plasteel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/tile/plasteel/T = W
 		if(src.amount >= 50)
 			return
@@ -85,6 +90,7 @@
 		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
 		src.updateicon()
 	else if(istype(W, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
@@ -94,8 +100,6 @@
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
 		src.updateUsrDialog()
-	else
-		..()
 
 /obj/structure/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())
@@ -339,8 +343,11 @@
 
 
 /obj/item/storage/toolbox/mechanical/attackby(obj/item/stack/tile/plasteel/T, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(T, /obj/item/stack/tile/plasteel))
-		..()
 		return
 	if(length(src.contents) >= 1)
 		to_chat(user, SPAN_NOTICE("That won't fit, there's already stuff inside."))
@@ -355,4 +362,3 @@
 		qdel(src)
 	else
 		to_chat(user, SPAN_WARNING("You need 10 floortiles for a floorbot."))
-	return

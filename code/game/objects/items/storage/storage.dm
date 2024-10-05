@@ -557,8 +557,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	return attempt_item_insertion(W, FALSE, user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (attempt_item_insertion(W, FALSE, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 
 /obj/item/storage/equipped(mob/user, slot, silent)
 	if ((storage_flags & STORAGE_ALLOW_EMPTY))

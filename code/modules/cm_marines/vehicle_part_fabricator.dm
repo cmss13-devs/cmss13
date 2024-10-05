@@ -188,11 +188,15 @@
 	return static_data
 
 /obj/structure/machinery/part_fabricator/dropship/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/powerloader_clamp_used = I
 		recycle_equipment(powerloader_clamp_used, user)
 		return
-	return ..()
 
 /obj/structure/machinery/part_fabricator/dropship/proc/recycle_equipment(obj/item/powerloader_clamp/powerloader_clamp_used, mob/living/user)
 	if(!powerloader_clamp_used.loaded)

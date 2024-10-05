@@ -28,6 +28,10 @@
 	/// What's in the book?
 	var/obj/item/store
 
+/obj/item/book/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
 /obj/item/book/attack_self(mob/user as mob)
 	..()
 	if(carved)
@@ -46,8 +50,48 @@
 	else
 		to_chat(user, "This book is completely blank!")
 
+/obj/item/book/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), user)
+
+/obj/item/book/proc/write_async(mob/user)
+	if(unique)
+		to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
+		return
+	var/choice = tgui_input_list(user, "What would you like to change?", "Change Book", list("Title", "Contents", "Author", "Cancel"))
+	switch(choice)
+		if("Title")
+			var/newtitle = reject_bad_text(stripped_input(user, "Write a new title:"))
+			if(!newtitle)
+				to_chat(user, "The title is invalid.")
+				return
+			else
+				name = newtitle
+				title = newtitle
+				playsound(src, "paper_writing", 15, TRUE)
+		if("Contents")
+			var/content = strip_html(stripped_input(user, "Write your book's contents (HTML NOT allowed):"),8192)
+			if(!content)
+				to_chat(user, "The content is invalid.")
+				return
+			else
+				dat += content
+				playsound(src, "paper_writing", 15, TRUE)
+		if("Author")
+			var/newauthor = stripped_input(user, "Write the author's name:")
+			if(!newauthor)
+				to_chat(user, "The name is invalid.")
+				return
+			else
+				author = newauthor
+				playsound(src, "paper_writing", 15, TRUE)
+
 /obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(carved)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!store)
 			if(W.w_class < SIZE_MEDIUM)
 				user.drop_held_item()
@@ -61,54 +105,17 @@
 		else
 			to_chat(user, SPAN_NOTICE("There's already something in [title]!"))
 			return
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		if(unique)
-			to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
-			return
-		var/choice = tgui_input_list(usr, "What would you like to change?", "Change Book", list("Title", "Contents", "Author", "Cancel"))
-		switch(choice)
-			if("Title")
-				var/newtitle = reject_bad_text(stripped_input(usr, "Write a new title:"))
-				if(!newtitle)
-					to_chat(usr, "The title is invalid.")
-					return
-				else
-					src.name = newtitle
-					src.title = newtitle
-					playsound(src, "paper_writing", 15, TRUE)
-			if("Contents")
-				var/content = strip_html(input(usr, "Write your book's contents (HTML NOT allowed):"),8192)
-				if(!content)
-					to_chat(usr, "The content is invalid.")
-					return
-				else
-					src.dat += content
-					playsound(src, "paper_writing", 15, TRUE)
-			if("Author")
-				var/newauthor = stripped_input(usr, "Write the author's name:")
-				if(!newauthor)
-					to_chat(usr, "The name is invalid.")
-					return
-				else
-					src.author = newauthor
-					playsound(src, "paper_writing", 15, TRUE)
-			else
-				return
-
 	else if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(carved) return
 		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE("You carve out the pages from [title]! You didn't want to read it anyway."))
 			carved = 1
 			return
-	else
-		..()
 
 /obj/item/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.zone_selected == "eyes")
 		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]. "), \
 			SPAN_NOTICE(" [user] opens up a book and shows it to [M]. "))
 		show_browser(M, "<body class='paper'><TT><I>Penned by [author].</I></TT> <BR>[dat]</body>", "window=book")
-
-

@@ -38,12 +38,18 @@
 			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.action_busy)
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 		toggle_anchored(W, user)
-		return TRUE
-	..()
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 /obj/structure/ex_act(severity, direction)
 	if(indestructible)
@@ -209,23 +215,21 @@
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("[src] cannot be [anchored ? "un" : ""]anchored."))
 		return FALSE
-	else
-		// Wrenching is faster if we are better at engineering
-		var/timer = max(10, 40 - user.skills.get_skill_level(SKILL_ENGINEER) * 10)
-		if(do_after(usr, timer, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			anchored = !anchored
-			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(anchored)
-				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
-				for(var/obj/medlink in loc)
-					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
-			else
-				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
-				for(var/obj/medlink in loc)
-					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
-			return TRUE
+	// Wrenching is faster if we are better at engineering
+	var/timer = max(10, 40 - user.skills.get_skill_level(SKILL_ENGINEER) * 10)
+	if(do_after(usr, timer, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		anchored = !anchored
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+		if(anchored)
+			user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+			for(var/obj/medlink in loc)
+				SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
+		else
+			user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+			for(var/obj/medlink in loc)
+				SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
+		return TRUE
 
 /obj/structure/get_applying_acid_time()
 	if(unacidable)

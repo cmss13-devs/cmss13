@@ -173,11 +173,17 @@
 		SC.lock_black_market(black_market_lock)
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens. Maybe you need something more specialized?"))
 		return
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -193,6 +199,7 @@
 					contraband_enabled = FALSE
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
 			return
@@ -218,8 +225,6 @@
 		black_market_lock = TRUE
 		contraband_enabled = FALSE
 		tool.icon_state = initial(tool.icon_state)
-
-	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
@@ -268,13 +273,19 @@
 
 
 /obj/item/circuitboard/computer/cameras/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I,/obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(check_access(I))
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))
 		else
 			to_chat(user, SPAN_DANGER("Access denied."))
 	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(locked)
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))
 			return
@@ -289,10 +300,14 @@
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return
 		network = tempnetwork
-	return
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/structure/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"

@@ -483,7 +483,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/M = attacking_item
 		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
@@ -500,6 +505,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/device/helmet_visor))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(length(inserted_visors) >= max_inserted_visors)
 			to_chat(user, SPAN_NOTICE("[src] has used all of its visor attachment sockets."))
 			return
@@ -521,6 +527,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		// If there isn't anything to remove, return.
 		if(!length(inserted_visors))
 			// If the user is trying to remove a built-in visor, give them a more helpful failure message.
@@ -549,8 +556,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 		return
 
-	..()
-	return pockets.attackby(attacking_item, user)
+	// TODO: replace this with storage component
+	. |= pockets.attackby(attacking_item, user)
 
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()

@@ -311,10 +311,16 @@
 	return bullet_amount
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(burning)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 	if(istype(I, /obj/item/ammo_magazine))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/AM = I
 		if(!isturf(loc))
 			to_chat(user, SPAN_WARNING("\The [src] must be on the ground to be used."))

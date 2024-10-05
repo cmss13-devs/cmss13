@@ -73,15 +73,22 @@
 		icon_state = "girder"
 
 /obj/structure/girder/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	if(user.action_busy)
-		return TRUE //no afterattack
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
@@ -100,13 +107,15 @@
 		return
 
 	if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
-		return TRUE
+		return
 
-	if(health > 0)
-		if(change_state(W, user))
-			return
+	if(health > 0 && change_state(W, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		return
 	else if(iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -119,8 +128,7 @@
 				return
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
 			repair()
-			return
-	..()
+		return
 
 /obj/structure/girder/proc/change_state(obj/item/W, mob/user)
 	switch(state)

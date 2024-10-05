@@ -380,8 +380,10 @@
 					if(clothes.can_attach_accessory(accessory))
 						clothes.attach_accessory(src, accessory)
 						break
-			else
-				w_uniform.attackby(equipping_item,src)
+			else if(LAZYLEN(w_uniform.accessories))
+				for(var/obj/item/clothing/accessory/A in w_uniform.accessories)
+					// TODO: switch to signals
+					A.interact_with_item(equipping_item, src)
 			update_inv_w_uniform()
 
 		if(WEAR_IN_BELT)

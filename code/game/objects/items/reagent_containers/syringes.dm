@@ -56,9 +56,6 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_container/syringe/attackby(obj/item/I, mob/user)
-	return
-
 /obj/item/reagent_container/syringe/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) return
 	if(!target.reagents) return
@@ -315,9 +312,6 @@
 /obj/item/reagent_container/ld50_syringe/attack_hand()
 	..()
 	update_icon()
-
-/obj/item/reagent_container/ld50_syringe/attackby(obj/item/I, mob/user)
-	return
 
 /obj/item/reagent_container/ld50_syringe/afterattack(obj/target, mob/user , flag)
 	if(!target.reagents) return

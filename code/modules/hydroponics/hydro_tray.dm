@@ -498,10 +498,15 @@
 
 	return
 
+// TODO: Refactor this if statement hell
 /obj/structure/machinery/portable_atmospherics/hydroponics/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 
 	if (O.is_open_container())
-		return 0
+		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/attachable/bayonet))
 
@@ -526,8 +531,6 @@
 
 		// Bookkeeping.
 		check_level_sanity()
-
-
 		return
 
 	else if(istype(O, /obj/item/reagent_container/syringe))
@@ -536,17 +539,19 @@
 
 		if (S.mode == 1)
 			if(seed)
-				return ..()
+				return
 			else
 				to_chat(user, "There's no plant to inject.")
-				return 1
+				. |= ATTACK_HINT_NO_AFTERATTACK
+				return
 		else
 			if(seed)
 				//Leaving this in in case we want to extract from plants later.
 				to_chat(user, "You can't get any extract out of this plant.")
 			else
 				to_chat(user, "There's nothing to draw something from.")
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 	else if (istype(O, /obj/item/seeds))
 
@@ -645,7 +650,7 @@
 
 		//If there's a connector here, the portable_atmospherics setup can handle it.
 		if(locate(/obj/structure/pipes/portables_connector) in loc)
-			return ..()
+			return
 
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
@@ -723,13 +728,15 @@
 	draw_warnings = 0
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(obj/item/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/tool/shovel))
-		to_chat(user, "You clear up [src]!")
-		qdel(src)
-	else if(istype(O,/obj/item/tool/shovel) || istype(O,/obj/item/tank))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	else
-		..()
+
+	if(istype(O,/obj/item/tool/shovel))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	to_chat(user, "You clear up [src]!")
+	qdel(src)
 
 #undef HYDRO_SPEED_MULTIPLIER
 #undef HYDRO_WATER_CONSUMPTION_MULTIPLIER

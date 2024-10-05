@@ -10,10 +10,6 @@
 	var/last_change = 0
 
 // Holographic Items!
-
-/turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
-	return
-
 /turf/open/floor/holofloor/cult
 	icon_state = "cult"
 
@@ -67,7 +63,12 @@
 
 
 /obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
@@ -78,12 +79,6 @@
 			M.apply_effect(5, WEAKEN)
 			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
-
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		to_chat(user, "It's a holotable!  There are no bolts!")
-		return
-
-	..()
 
 /obj/structure/surface/table/holotable/wood
 	name = "table"
@@ -142,7 +137,12 @@
 	var/id = ""
 
 /obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
@@ -158,6 +158,7 @@
 			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_inv_item_to_loc(W, loc)
 		for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 			if(X.id == id)
@@ -205,6 +206,10 @@
 	return
 
 /obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/structure/machinery/readybutton/attack_hand(mob/user as mob)
@@ -263,6 +268,11 @@
 	return
 
 /obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

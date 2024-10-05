@@ -84,31 +84,35 @@
 			start_processing()
 
 /obj/structure/machinery/iv_drip/attackby(obj/item/container, mob/living/user)
-	if (istype(container, /obj/item/reagent_container))
-		if(beaker)
-			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
-			return
-
-		if((!istype(container, /obj/item/reagent_container/blood) && !istype(container, /obj/item/reagent_container/glass)) || istype(container, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, SPAN_WARNING("That won't fit!"))
-			return
-
-		if(user.drop_inv_item_to_loc(container, src))
-			beaker = container
-
-			var/reagentnames = ""
-
-			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
-				reagentnames += ";[chem.name]"
-
-			log_admin("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
-
-			to_chat(user, "You attach \the [container] to \the [src].")
-			update_beam()
-			update_icon()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	else
-		return ..()
+
+	if (!istype(container, /obj/item/reagent_container))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(beaker)
+		to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
+		return
+
+	if((!istype(container, /obj/item/reagent_container/blood) && !istype(container, /obj/item/reagent_container/glass)) || istype(container, /obj/item/reagent_container/glass/bucket))
+		to_chat(user, SPAN_WARNING("That won't fit!"))
+		return
+
+	if(user.drop_inv_item_to_loc(container, src))
+		beaker = container
+
+		var/reagentnames = ""
+
+		for(var/datum/reagent/chem in beaker.reagents.reagent_list)
+			reagentnames += ";[chem.name]"
+
+		log_admin("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
+
+		to_chat(user, "You attach \the [container] to \the [src].")
+		update_beam()
+		update_icon()
 
 
 /obj/structure/machinery/iv_drip/process()

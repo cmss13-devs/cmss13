@@ -151,11 +151,14 @@
 	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/storage))
-		..() // -> item/attackby()
-	if(istype(W,/obj/item/storage))
-		..() // -> item/attackby()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(istype(W,/obj/item/storage) || istype(W,/obj/item/storage))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W,/obj/item/tool/kitchen/utensil))
 
 		var/obj/item/tool/kitchen/utensil/U = W
@@ -186,13 +189,14 @@
 		return
 
 	if((slices_num <= 0 || !slices_num) || !slice_path)
-		return 0
+		return
 
 	var/inaccurate = 0
 	if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
 	else if(W.sharp != IS_SHARP_ITEM_ACCURATE)
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	if ( !istype(loc, /obj/structure/surface/table) && \
 			(!isturf(src.loc) || \
 			!(locate(/obj/structure/surface/table) in src.loc) && \
@@ -200,7 +204,8 @@
 			!(locate(/obj/item/tool/kitchen/tray) in src.loc)) \
 		)
 		to_chat(user, SPAN_DANGER("You cannot slice [src] here! You need a table or at least a tray to do it."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	var/slices_lost = 0
 	if (!inaccurate)
 		user.visible_message( \
@@ -507,7 +512,12 @@
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype( W, /obj/item/toy/crayon ))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/toy/crayon/C = W
 		var/clr = C.colorName
 
@@ -518,8 +528,6 @@
 		to_chat(usr, SPAN_NOTICE(" You color \the [src] [clr]"))
 		icon_state = "egg-[clr]"
 		egg_color = clr
-	else
-		..()
 
 /obj/item/reagent_container/food/snacks/egg/blue
 	icon_state = "egg-blue"
@@ -2837,7 +2845,12 @@
 	update_icon()
 
 /obj/item/pizzabox/attackby( obj/item/I as obj, mob/user as mob )
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if( istype(I, /obj/item/pizzabox/) )
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/pizzabox/box = I
 
 		if( !box.open && !src.open )
@@ -2864,6 +2877,7 @@
 		return
 
 	if( istype(I, /obj/item/reagent_container/food/snacks/sliceable/pizza/) ) // Long ass fucking object name
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		if(open)
 			user.drop_inv_item_to_loc(I, src)
@@ -2877,6 +2891,7 @@
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 		if( src.open )
 			return
@@ -2891,7 +2906,6 @@
 		playsound(src, "paper_writing", 15, TRUE)
 		update_icon()
 		return
-	..()
 
 /obj/item/pizzabox/margherita/Initialize()
 	. = ..()
@@ -2933,7 +2947,12 @@
 
 // Flour + egg = dough
 /obj/item/reagent_container/food/snacks/flour/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/reagent_container/food/snacks/egg))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
@@ -2941,6 +2960,10 @@
 
 // Egg + flour = dough
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/reagent_container/food/snacks/flour))
 		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
@@ -2960,7 +2983,12 @@
 
 // Dough + rolling pin = flat dough
 /obj/item/reagent_container/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/tool/kitchen/rollingpin))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(get_turf(src))
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
@@ -3000,8 +3028,13 @@
 	reagents.add_reagent("bread", 4)
 
 /obj/item/reagent_container/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_container/food/snacks/meatball))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
@@ -3009,6 +3042,7 @@
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_container/food/snacks/cutlet))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
@@ -3016,6 +3050,7 @@
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_container/food/snacks/sausage))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/hotdog(get_turf(src))
 		to_chat(user, "You make a hotdog.")
 		qdel(W)
@@ -3023,25 +3058,31 @@
 
 // Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/monkeyburger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W))// && !istype(src,/obj/item/reagent_container/food/snacks/cheesewedge))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
 		return
-	else
-		..()
 
 // Human Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/human/burger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
 		return
-	else
-		..()
 
 /obj/item/reagent_container/food/snacks/taco
 	name = "taco"
@@ -3109,12 +3150,15 @@
 
 // potato + knife = raw sticks
 /obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/tool/kitchen/utensil/knife))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/reagent_container/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
 		qdel(src)
-	else
-		..()
 
 /obj/item/reagent_container/food/snacks/rawsticks
 	name = "raw potato sticks"

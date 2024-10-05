@@ -80,7 +80,12 @@
 	return 0
 
 /obj/item/device/flashlight/attackby(obj/item/item as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!raillight_compatible) //No fancy messages, just no
 			return
 		if(on)
@@ -96,14 +101,10 @@
 		to_chat(user, SPAN_NOTICE("You modify [src]. It can now be mounted on a weapon."))
 		to_chat(user, SPAN_NOTICE("Use a screwdriver on [flash] to change it back."))
 		qdel(src) //Delete da old flashlight
-		return
-	else
-		..()
 
 /obj/item/device/flashlight/attack(mob/living/carbon/human/being as mob, mob/living/user as mob)
 	add_fingerprint(user)
 	if(on && user.zone_selected == "eyes")
-
 		if((user.getBrainLoss() >= 60) && prob(50)) //too dumb to use flashlight properly
 			return ..() //just hit them in the head
 
@@ -134,8 +135,6 @@
 				being.flash_eyes()
 				to_chat(user, SPAN_NOTICE("[being]'s pupils narrow."))
 				return
-	else
-		return ..()
 
 /obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/being)
 	. = ..()
@@ -329,6 +328,10 @@
 	. = ..()
 	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 	set_light_color(flame_tint)
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/device/flashlight/flare/proc/check_ignite()
+	return heat_source
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()

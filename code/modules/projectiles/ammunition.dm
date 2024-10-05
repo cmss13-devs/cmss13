@@ -115,19 +115,26 @@ They're all essentially identical when it comes to getting the job done.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
-	if(istype(I, /obj/item/ammo_magazine))
-		var/obj/item/ammo_magazine/MG = I
-		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
-			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
-				var/obj/item/ammo_magazine/handful/transfer_from = I
-				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
-					if(default_ammo == transfer_from.default_ammo)
-						if(transfer_ammo(transfer_from,user,transfer_from.current_rounds)) // This takes care of the rest.
-							to_chat(user, SPAN_NOTICE("You transfer rounds to [src] from [transfer_from]."))
-					else
-						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(I, /obj/item/ammo_magazine))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/ammo_magazine/MG = I
+	if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
+		if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
+			var/obj/item/ammo_magazine/handful/transfer_from = I
+			if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
+				if(default_ammo == transfer_from.default_ammo)
+					if(transfer_ammo(transfer_from,user,transfer_from.current_rounds)) // This takes care of the rest.
+						to_chat(user, SPAN_NOTICE("You transfer rounds to [src] from [transfer_from]."))
 				else
-					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
+					to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
+			else
+				to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
@@ -274,7 +281,12 @@ If the default ammo isn't the same, then you can't do much with it.
 If it is the same and the other stack isn't full, transfer an amount (default 1) to the other stack.
 */
 /obj/item/ammo_magazine/handful/attackby(obj/item/ammo_magazine/handful/transfer_from, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(transfer_from)) // We have a handful. They don't need to hold it.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(default_ammo == transfer_from.default_ammo) //Has to match.
 			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
 		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")

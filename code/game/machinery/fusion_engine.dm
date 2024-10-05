@@ -268,6 +268,9 @@
 		looping = TRUE
 
 /obj/structure/machinery/power/reactor/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 	//Fuel Cells
 	if(user.action_busy)
 		return
@@ -359,8 +362,6 @@
 		to_chat(user, SPAN_WARNING("You finish [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
 		log_game("[key_name(user)] has [overloaded ? "overloaded" : "restored the safeties of"] a generator.")
 		return
-
-	. = ..()
 
 /obj/structure/machinery/power/reactor/update_icon()
 	switch(buildstate)

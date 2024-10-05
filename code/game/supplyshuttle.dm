@@ -118,6 +118,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	LAZYREMOVE(GLOB.supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+
 	if(istype(hit_item, /obj/item/spacecash))
 		if(can_order_contraband)
 			var/obj/item/spacecash/slotted_cash = hit_item
@@ -130,7 +136,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		else
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
 			return
-	..()
 
 /obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled

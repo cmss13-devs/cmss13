@@ -111,7 +111,12 @@
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(active)
 			if(user.action_busy)
 				return
@@ -138,9 +143,6 @@
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
-
-	else
-		return ..()
 
 /obj/item/explosive/mine/proc/disarm()
 	if(customizable)

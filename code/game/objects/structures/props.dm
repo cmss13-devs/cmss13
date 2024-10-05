@@ -105,8 +105,14 @@
 	layer = MOB_LAYER+0.5
 	var/lit = 0
 
-/obj/structure/prop/dam/torii/New()
-	..()
+/obj/structure/prop/dam/torii/Initialize(mapload, ...)
+	. = ..()
+	Update()
+	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/structure/prop/dam/torii/ignite(obj/item/igniter, mob/user, flavor_text)
+	visible_message("[user] quietly goes from lantern to lantern on the torii, lighting the wicks in each one.")
+	lit = TRUE
 	Update()
 
 /obj/structure/prop/dam/torii/proc/Update()
@@ -127,65 +133,6 @@
 			"You extinguish the fires on [src].")
 		Update()
 	return
-
-/obj/structure/prop/dam/torii/attackby(obj/item/W, mob/user)
-	var/L
-	if(lit)
-		return
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.isOn())
-			L = 1
-	else if(istype(W, /obj/item/tool/lighter/zippo))
-		var/obj/item/tool/lighter/zippo/Z = W
-		if(Z.heat_source)
-			L = 1
-	else if(istype(W, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/FL = W
-		if(FL.heat_source)
-			L = 1
-	else if(istype(W, /obj/item/tool/lighter))
-		var/obj/item/tool/lighter/G = W
-		if(G.heat_source)
-			L = 1
-	else if(istype(W, /obj/item/tool/match))
-		var/obj/item/tool/match/M = W
-		if(M.heat_source)
-			L = 1
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
-		if(S.active)
-			L = 1
-	else if(istype(W, /obj/item/device/assembly/igniter))
-		L = 1
-	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		L = 1
-	else if(istype(W, /obj/item/weapon/gun/flamer))
-		var/obj/item/weapon/gun/flamer/F = W
-		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			L = 1
-		else
-			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
-
-	else if(isgun(W))
-		var/obj/item/weapon/gun/G = W
-		for(var/slot in G.attachments)
-			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
-				L = 1
-				break
-	else if(istype(W, /obj/item/tool/surgery/cautery))
-		L = 1
-	else if(istype(W, /obj/item/clothing/mask/cigarette))
-		var/obj/item/clothing/mask/cigarette/C = W
-		if(C.item_state == C.icon_on)
-			L = 1
-	else if(istype(W, /obj/item/tool/candle))
-		if(W.heat_source > 200)
-			L = 1
-	if(L)
-		visible_message("[user] quietly goes from lantern to lantern on the torii, lighting the wicks in each one.")
-		lit = TRUE
-		Update()
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
@@ -466,12 +413,17 @@
 			. += "[src] needs to be lit."
 
 /obj/structure/prop/brazier/attackby(obj/item/hit_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	switch(state)
 		if(STATE_COMPLETE)
-			return ..()
+			return
 		if(STATE_FUEL)
 			if(!istype(hit_item, /obj/item/stack/sheet/wood))
-				return ..()
+				return
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/stack/sheet/wood/wooden_boards = hit_item
 			if(!wooden_boards.use(5))
 				to_chat(user, SPAN_WARNING("Not enough wood!"))
@@ -479,7 +431,8 @@
 			user.visible_message(SPAN_NOTICE("[user] fills [src] with [hit_item]."))
 		if(STATE_IGNITE)
 			if(!hit_item.heat_source)
-				return ..()
+				return
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
 				return
 			user.visible_message(SPAN_NOTICE("[user] ignites [src] with [hit_item]."))
@@ -598,6 +551,11 @@
 	visible_message(SPAN_NOTICE("[user] extinguishes [src]."))
 
 /obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
 		return
@@ -968,7 +926,6 @@
 	icon_state = "cross1"
 	density = FALSE
 	health = 30
-	var/inscription
 	var/obj/item/helmet
 	///This is for cross dogtags.
 	var/tagged = FALSE
@@ -977,6 +934,41 @@
 	var/dogtag_name
 	var/dogtag_blood
 	var/dogtag_assign
+	var/list/inscriptions
+
+/obj/structure/prop/wooden_cross/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/structure/prop/wooden_cross/write(obj/item/writer, mob/user, mods, color, crayon)
+	mark_self(writer, user)
+
+/obj/structure/prop/wooden_cross/proc/mark_self(obj/item/writer, mob/user)
+	var/action_msg
+	var/time_multiplier
+	if(writer.sharp || writer.edge)
+		action_msg = "carve something into"
+		time_multiplier = 3
+	else
+		action_msg = "write something on"
+		time_multiplier = 2
+
+	var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
+	if(!message)
+		return
+	user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
+		SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
+
+	if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+	user.visible_message(SPAN_NOTICE("[user] uses \his [writer.name] to [action_msg] [src]."),\
+		SPAN_NOTICE("You [action_msg] [src] with your [writer.name]."), null, 4)
+	if(inscriptions)
+		inscriptions += message
+	else
+		inscriptions = list(message)
+		engraved = TRUE
 
 /obj/structure/prop/wooden_cross/Destroy()
 	if(helmet)
@@ -991,7 +983,12 @@
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/dogtag))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
@@ -1010,6 +1007,7 @@
 			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(helmet)
 			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
 			return
@@ -1024,43 +1022,24 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)
 		return
 
-	if(W.sharp || W.edge || HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/tool/hand_labeler))
-		var/action_msg
-		var/time_multiplier
-		if(W.sharp || W.edge)
-			action_msg = "carve something into"
-			time_multiplier = 3
-		else
-			action_msg = "write something on"
-			time_multiplier = 2
-
-		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
-		if(!message)
-			return
-		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
-			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
-
-		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interrupted!"))
-		else
-			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),\
-				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
-			if(inscription)
-				inscription += "\n[message]"
-			else
-				inscription = message
-				engraved = TRUE
+	if(W.sharp || W.edge || istype(W, /obj/item/tool/hand_labeler))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		mark_self(W, user)
 
 /obj/structure/prop/wooden_cross/get_examine_text(mob/user)
 	. = ..()
+	var/list/inscriptions = src.inscriptions
+	if (length(inscriptions))
+		for (var/i in 1 to length(inscriptions))
+			inscriptions[1] = "\t[inscriptions[i]]"
 	. += (tagged ? "There's a dog tag draped around the cross. The dog tag reads, \"[dogtag_name] - [dogtag_assign] - [dogtag_blood]\"." : "There's no dog tag draped around the cross.")
-	. += (engraved ? "There's something carved into it. It reads: \"[inscription]\"" : "There's nothing carved into it.")
+	. += (engraved ? "There's something carved into it. It reads:\n[inscriptions.Join("\n")]" : "There's nothing carved into it.")
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)
@@ -1150,8 +1129,11 @@
 
 // Advert your eyes.
 /obj/structure/prop/invuln/joey/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	attacked()
-	return ..()
 
 /obj/structure/prop/invuln/joey/bullet_act(obj/projectile/P)
 	attacked()

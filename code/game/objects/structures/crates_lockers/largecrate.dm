@@ -17,6 +17,21 @@
 	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))
 	return
 
+/// Check if the crate can be unpacked by a mob with an item
+/obj/structure/largecrate/proc/try_unpack(obj/item/unpack_with, mob/user, force)
+	if (!force && !can_unpack(unpack_with, user))
+		on_unpack_failure(unpack_with, user)
+		return FALSE
+
+	pre_unpack()
+	unpack()
+	user.visible_message(
+		SPAN_NOTICE("[user] pries \the [src] open."),
+		SPAN_NOTICE("You pry open \the [src]."),
+	)
+
+	return TRUE
+
 /obj/structure/largecrate/proc/unpack()
 	var/turf/current_turf = get_turf(src) // Get the turf the crate is on
 
@@ -31,25 +46,45 @@
 
 	deconstruct(TRUE)
 
+/obj/structure/largecrate/proc/on_unpack_failure(obj/item/unpack_with, mob/user)
+	return
+
+/// Proc to check whether the crate can be unpacked, by default the crate can be unpacked
+/obj/structure/largecrate/proc/can_unpack(obj/item/unpack_with, mob/user, force)
+	return TRUE
+
+/// Proc to handle any processing of contents or other events prior to actually moving contents to the floor
+/// and deconstructing the crate
+/obj/structure/largecrate/proc/pre_unpack()
+	return
+
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)
 		new parts_type(loc)
 	return ..()
 
 
-/obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		unpack()
-		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
-							SPAN_NOTICE("You pry open \the [src]."))
-	else
-		return attack_hand(user)
+/obj/structure/largecrate/attackby(obj/item/attacked_with, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!HAS_TRAIT(attacked_with, TRAIT_TOOL_CROWBAR))
+		. |= attack_hand(user)
+		return
+
+	if (!try_unpack(attacked_with, user))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 
 /obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
-	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(
+		SPAN_DANGER("[M] smashes [src] apart!"),
+		SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT
+	)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/largecrate/ex_act(power)
@@ -71,34 +106,35 @@
 /obj/structure/largecrate/lisa
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/corgi/Lisa(loc)
+/obj/structure/largecrate/lisa/unpack()
 	..()
+	new /mob/living/simple_animal/corgi/Lisa(loc)
 
 /obj/structure/largecrate/cow
 	name = "cow crate"
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/cow(loc)
+/obj/structure/largecrate/cow/unpack()
 	..()
+	new /mob/living/simple_animal/cow(loc)
 
 /obj/structure/largecrate/goat
 	name = "goat crate"
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
+/obj/structure/largecrate/goat/unpack()
 	..()
+	new /mob/living/simple_animal/hostile/retaliate/goat(loc)
 
 /obj/structure/largecrate/chick
 	name = "chicken crate"
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/chick/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
@@ -308,9 +344,8 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 		overlays += image(icon,icon_state = "+straps")
 
 /obj/structure/largecrate/random/barrel/unpack()
-	if(overlays)
+	if (overlays)
 		overlays.Cut()
-	. = ..()
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
@@ -344,11 +379,17 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	icon_state = "secure_crate_strapped"
 	var/strapped = 1
 
-/obj/structure/largecrate/random/secure/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/random/secure/can_unpack()
 	if (!strapped)
-		..()
+		return FALSE
+	return ..()
+
+/obj/structure/largecrate/random/secure/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (!W.sharp)
 		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
 		return
@@ -360,7 +401,6 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 		to_chat(user, SPAN_NOTICE("You cut the straps away."))
 		icon_state = "secure_crate"
 		strapped = 0
-
 
 /obj/structure/largecrate/guns
 	name = "\improper USCM firearms crate (x3)"

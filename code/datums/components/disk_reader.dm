@@ -35,14 +35,14 @@
 
 	if(disk)
 		to_chat(inserter, SPAN_WARNING("There's already a disk inside [parent], wait for it to finish first!"))
-		return COMPONENT_NO_AFTERATTACK
+		return ATTACK_HINT_NO_AFTERATTACK
 
 	if(potential_disk.objective.state == OBJECTIVE_COMPLETE)
 		to_chat(inserter, SPAN_WARNING("The reader displays a message stating this disk has already been read and refuses to accept it."))
-		return COMPONENT_NO_AFTERATTACK
+		return ATTACK_HINT_NO_AFTERATTACK
 
 	INVOKE_ASYNC(src, PROC_REF(handle_disk_insert), potential_disk, inserter)
-	return COMPONENT_NO_AFTERATTACK
+	return ATTACK_HINT_NO_AFTERATTACK
 
 /datum/component/disk_reader/proc/handle_disk_insert(obj/item/disk/objective/potential_disk, mob/living/inserter)
 	if(tgui_input_text(inserter, "Enter the encryption key", "Decrypting [potential_disk]", "") != potential_disk.objective.decryption_password)

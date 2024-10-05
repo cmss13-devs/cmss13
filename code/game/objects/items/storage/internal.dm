@@ -124,8 +124,12 @@
 	return TRUE
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(master_object.on_pocket_attackby(W,user))
-		. = ..()
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
 /obj/item/storage/internal/Adjacent(atom/neighbor)
 	return master_object.Adjacent(neighbor)

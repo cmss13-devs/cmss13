@@ -126,35 +126,41 @@
 	..()
 
 /mob/living/carbon/human/attackby(obj/item/W, mob/living/user)
-	if(user.mob_flags & SURGERY_MODE_ON)
-		switch(user.a_intent)
-			if(INTENT_HELP)
-				//Attempt to dig shrapnel first, if any. dig_out_shrapnel_check() will fail if user is not human, which may be possible in future.
-				if(W.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
-					return TRUE
-				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
-				if(current_surgery)
-					if(current_surgery.attempt_next_step(user, W))
-						return TRUE //Cancel attack.
-				else
-					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
-					if(initiate_surgery_moment(W, src, affecting, user))
-						return TRUE
-
-			if(INTENT_DISARM) //Same as help but without the shrapnel dig attempt.
-				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
-				if(current_surgery)
-					if(current_surgery.attempt_next_step(user, W))
-						return TRUE
-				else
-					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
-					if(initiate_surgery_moment(W, src, affecting, user))
-						return TRUE
-
-	else if(W.flags_item & CAN_DIG_SHRAPNEL && W.dig_out_shrapnel_check(src, user))
-		return TRUE
-
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(W.flags_item & CAN_DIG_SHRAPNEL && W.dig_out_shrapnel_check(src, user))
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
+
+	if(!(user.mob_flags & SURGERY_MODE_ON))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	switch(user.a_intent)
+		if(INTENT_HELP)
+			//Attempt to dig shrapnel first, if any. dig_out_shrapnel_check() will fail if user is not human, which may be possible in future.
+			if(W.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
+				. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_BREAK_ATTACK
+				return
+			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+			if(current_surgery && current_surgery.attempt_next_step(user, W))
+				. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_BREAK_ATTACK
+			else
+				var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
+				if(initiate_surgery_moment(W, src, affecting, user))
+					. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_BREAK_ATTACK
+			return
+
+		if(INTENT_DISARM) //Same as help but without the shrapnel dig attempt.
+			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+			if(current_surgery && current_surgery.attempt_next_step(user, W))
+				. |= ATTACK_HINT_NO_AFTERATTACK
+			else
+				var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
+				if(initiate_surgery_moment(W, src, affecting, user))
+					. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 /mob/living/carbon/attack_hand(mob/M as mob)
 	if(!istype(M, /mob/living/carbon)) return

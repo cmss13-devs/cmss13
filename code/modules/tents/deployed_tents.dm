@@ -99,9 +99,14 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/tent/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	var/obj/item/tool/shovel/shovel = item
 	if(!istype(shovel) || shovel.folded || user.action_busy)
 		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 

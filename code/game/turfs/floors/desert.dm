@@ -13,9 +13,6 @@
 /turf/open/desert/fire_act(exposed_temperature, exposed_volume)
 	return
 
-/turf/open/desert/attackby() //This should fix everything else. No cables, etc
-	return
-
 //turf/open/desert/desert
 // name = "desert"
 // icon_state = "desert1"

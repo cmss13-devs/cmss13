@@ -189,7 +189,12 @@
 		playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/attackby(obj/item/object, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(object, /obj/item/cell))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/cell/new_cell = object
 		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.charge] power."))
 		cell.forceMove(get_turf(user))
@@ -197,6 +202,7 @@
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src,'sound/machines/click.ogg', 25, 1)
 	else if(istype(object, /obj/item/device/multitool))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/multitool/tool = object
 		var/id = tool.serial_number
 		playsound(src, 'sound/machines/keyboard2.ogg', 25, FALSE)
@@ -221,8 +227,6 @@
 				to_chat(user, SPAN_NOTICE("You load an encryption key to \the [tool]."))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)
-	else
-		..()
 
 /**
  * Run checks and register a sentry gun to this sentry computer.

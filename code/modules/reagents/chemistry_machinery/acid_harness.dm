@@ -64,10 +64,14 @@
 		acid_core.user = loc.loc
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		tgui_interact(user)
 		return
-	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/Destroy()
 	QDEL_NULL(vial)

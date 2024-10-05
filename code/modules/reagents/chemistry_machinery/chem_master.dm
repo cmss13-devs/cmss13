@@ -67,7 +67,12 @@
 
 
 /obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(B, /obj/item/reagent_container/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/old_beaker = beaker
 		beaker = B
 		user.drop_inv_item_to_loc(B, src)
@@ -80,6 +85,7 @@
 		update_icon()
 
 	else if(istype(B, /obj/item/storage/pill_bottle) && pill_maker)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(loaded_pill_bottle)
 			to_chat(user, SPAN_WARNING("A pill bottle is already loaded into the machine."))
 			return
@@ -88,7 +94,6 @@
 		user.drop_inv_item_to_loc(B, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		updateUsrDialog()
-	return
 
 /obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))

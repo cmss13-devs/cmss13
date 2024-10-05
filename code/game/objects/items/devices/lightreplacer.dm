@@ -66,7 +66,12 @@
 	. += "It has [uses] lights remaining."
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/stack/sheet/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sheet/glass/G = W
 		if(uses >= max_uses)
 			to_chat(user, SPAN_WARNING("[src.name] is full."))
@@ -79,6 +84,7 @@
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
 
 	if(istype(W, /obj/item/light_bulb))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/light_bulb/L = W
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)

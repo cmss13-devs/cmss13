@@ -1,13 +1,19 @@
 
 // Special cases abound, handled below or in subclasses
 /obj/vehicle/multitile/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	// Are we trying to install stuff?
 	if(istype(O, /obj/item/hardpoint))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/hardpoint/HP = O
 		install_hardpoint(HP, user)
 		return
 
 	if(ispowerclamp(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = O
 		if(PC.linked_powerloader && PC.loaded && istype(PC.loaded, /obj/item/hardpoint))
 			install_hardpoint(PC, user)
@@ -15,16 +21,19 @@
 
 	// Are we trying to remove stuff?
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		uninstall_hardpoint(O, user)
 		return
 
 	// Are we trying to repair the frame?
 	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		handle_repairs(O, user)
 		return
 
 	// Are we trying to immobilize the vehicle?
 	if(istype(O, /obj/item/vehicle_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(clamped)
 			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
 			return
@@ -48,6 +57,7 @@
 
 	// Are we trying to remove a vehicle clamp?
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!clamped)
 			return
 
@@ -67,6 +77,7 @@
 
 	//try to fit something in vehicle without getting in ourselves
 	if(istype(O, /obj/item/grab) && ishuman(user)) //only humans are allowed to fit dragged stuff inside
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.a_intent == INTENT_HELP)
 			var/mob_x = user.x - src.x
 			var/mob_y = user.y - src.y
@@ -88,6 +99,7 @@
 			return
 
 	if(istype(O, /obj/item/device/motiondetector))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!interior)
 			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
 			return
@@ -128,6 +140,7 @@
 		return
 
 	if(user.a_intent != INTENT_HARM)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		handle_player_entrance(user)
 		return
 

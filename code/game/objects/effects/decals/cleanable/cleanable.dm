@@ -50,11 +50,14 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	return ..()
 
 /obj/effect/decal/cleanable/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	var/obj/effect/alien/weeds/A = locate() in loc
 	if(A)
-		return A.attackby(W,user)
-	else
-		return ..()
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= A.attackby(W,user)
 
 /obj/effect/decal/cleanable/proc/can_place_cleanable(obj/effect/decal/cleanable/old_cleanable)
 	return TRUE

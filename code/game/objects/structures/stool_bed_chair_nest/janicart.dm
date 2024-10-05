@@ -30,7 +30,12 @@
 
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/tool/mop))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume > 1)
 			reagents.trans_to(mop, mop.max_reagent_volume)
@@ -40,14 +45,14 @@
 		else
 			to_chat(user, SPAN_NOTICE("This [callme] is out of water!"))
 	else if(istype(I, /obj/item/key))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
 	else if(istype(I, /obj/item/storage/bag/trash))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
 		user.drop_held_item()
 		I.forceMove(src)
 		mybag = I
-	else
-		. = ..()
 
 
 /obj/structure/bed/chair/janicart/attack_hand(mob/user)

@@ -55,3 +55,6 @@
 
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+
+/// Called when an ignitable atom is ignited
+#define COMSIG_ATOM_IGNITE "atom_ignite"

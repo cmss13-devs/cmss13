@@ -14,9 +14,6 @@
 	center_of_mass = "x=16;y=6"
 	volume = 50
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
-	return
-
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
@@ -51,9 +48,6 @@
 		reagents.trans_to_ingest(M, 10)
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
-
-/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
-	return
 
 /obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.

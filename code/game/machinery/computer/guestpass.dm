@@ -55,7 +55,12 @@
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
 /obj/structure/machinery/computer/guestpass/attackby(obj/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!giver)
 			if(user.drop_held_item())
 				O.forceMove(src)

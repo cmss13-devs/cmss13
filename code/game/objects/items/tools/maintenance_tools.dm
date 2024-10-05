@@ -198,12 +198,15 @@
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
 	base_icon_state = initial(icon_state)
-	return
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
+
+/obj/item/tool/weldingtool/check_can_ignite()
+	return isOn()
 
 /obj/item/tool/weldingtool/get_examine_text(mob/user)
 	. = ..()
@@ -656,7 +659,7 @@
 			if(flooring.hull_floor) //no interaction for hulls
 				return
 			if(flooring.weeds)
-				return attackby(src, user)
+				return flooring.weeds.receive_damage_from(src, user)
 
 			to_chat(user, SPAN_WARNING("You forcefully pry off [flooring], destroying it in the process."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
@@ -688,6 +691,11 @@ Welding backpack
 	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/T = W
 		if(T.welding & prob(50))
@@ -711,7 +719,6 @@ Welding backpack
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
 		return
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
-	return
 
 /obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously

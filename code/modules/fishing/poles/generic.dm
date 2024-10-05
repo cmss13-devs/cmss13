@@ -49,15 +49,20 @@
 		transfer_to_pole(deployed_pole, user)
 
 /obj/item/fishing_pole/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/fish_bait))
-		if(loaded_bait)
-			to_chat(user, SPAN_WARNING("\The [src] already has bait loaded onto the hook!"))
-			return
-		if(user.drop_inv_item_to_loc(I, src))
-			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
-			return
-	return ..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(I, /obj/item/fish_bait))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(loaded_bait)
+		to_chat(user, SPAN_WARNING("\The [src] already has bait loaded onto the hook!"))
+		return
+	if(user.drop_inv_item_to_loc(I, src))
+		loaded_bait = I
+		user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+		return
 
 /obj/item/fishing_pole/proc/transfer_to_pole(obj/structure/prop/fishing/pole_interactive/pole, mob/user)
 	pole.dir = user.dir

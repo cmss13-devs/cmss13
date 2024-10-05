@@ -27,7 +27,11 @@
 		qdel(src)
 
 /obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
-	for(var/mob/M in src.contents)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	for (var/mob/M in src.contents)
 		M.attackby(W,user)
 
 /obj/item/holder/proc/show_message(message, m_type)

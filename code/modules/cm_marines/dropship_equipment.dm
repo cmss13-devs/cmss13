@@ -48,12 +48,18 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)
 			if(ammo_equipped)
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
-				return TRUE
+				. |= COMSIG_PARENT_AFTERATTACK
+				return
 			if(uses_ammo)
 				load_ammo(PC, user) //it handles on it's own whether the ammo fits
 				return
@@ -63,7 +69,8 @@
 				unload_ammo(PC, user)
 			else
 				grab_equipment(PC, user)
-		return TRUE
+		. |= COMSIG_PARENT_AFTERATTACK
+		return
 
 /obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))

@@ -125,6 +125,10 @@
 
 
 /obj/structure/resource_node/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user))
 		return
 
@@ -133,6 +137,7 @@
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!active)
 		to_chat(H, SPAN_WARNING("[src] isn't active right now!"))
 		return

@@ -72,41 +72,6 @@
 	if(droppod_flags & DROPPOD_STRIPPED)
 		icon_state = "[icon_state]_stripped"
 
-/obj/structure/droppod/attackby(obj/item/W, mob/user)
-	if(!ishuman(user))
-		return . = ..()
-
-	var/mob/living/carbon/human/H = user
-
-	if(H.action_busy)
-		return . = ..()
-
-	/*
-	if(droppod_flags & DROPPOD_STRIPPED)
-		return . = ..()
-
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		visible_message(SPAN_NOTICE("[H] begins to pry off the external plating on [src]."))
-		playsound(loc, 'sound/items/Crowbar.ogg', 75)
-
-		if(!do_after(H, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src, INTERRUPT_ALL))
-			return
-
-		if(droppod_flags & DROPPOD_STRIPPED)
-			return
-
-		visible_message(SPAN_NOTICE("[H] pries off the external plating on [src]."))
-		droppod_flags |= DROPPOD_STRIPPED
-
-		new/obj/item/stack/sheet/metal/small_stack(loc)
-		new/obj/item/stack/sheet/plasteel(loc, 5)
-
-		update_icon()
-	else
-		. = ..()
-	*/
-	. = ..()
-
 /obj/structure/droppod/proc/open(mob/user)
 	playsound(loc, open_sound, sound_range = 8)
 

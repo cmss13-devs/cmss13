@@ -45,12 +45,15 @@
 	to_chat(user, SPAN_NOTICE(" You can't move."))
 
 /obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE(" I need wirecutters for that."))
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	to_chat(user, SPAN_NOTICE(" You cut open the present."))
 
 	for(var/mob/M in src) //Should only be one but whatever.
@@ -123,8 +126,12 @@
 	var/amount = 20
 
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if (!( locate(/obj/structure/surface/table, src.loc) ))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (!(locate(/obj/structure/surface/table, src.loc)))
 		to_chat(user, SPAN_NOTICE(" You MUST put the paper on a table!"))
 	if (W.w_class < 4)
 		var/obj/item/left_item = user.l_hand
@@ -156,7 +163,6 @@
 			to_chat(user, SPAN_NOTICE(" You need scissors!"))
 	else
 		to_chat(user, SPAN_NOTICE(" The object is FAR too large!"))
-	return
 
 /obj/item/wrapping_paper/deconstruct(disassembled = TRUE)
 	if(disassembled)

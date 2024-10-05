@@ -254,10 +254,16 @@ DEFINES in setup.dm, referenced here.
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(flags_gun_features & GUN_BURST_FIRING)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
@@ -265,12 +271,13 @@ DEFINES in setup.dm, referenced here.
 		else
 			return
 
-
 	if(istype(attack_item,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,attack_item)
-
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if (check_inactive_hand(user))
+			attach_to_gun(user,attack_item)
 	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(check_inactive_hand(user))
 			if(istype(attack_item,/obj/item/ammo_magazine))
 				var/obj/item/ammo_magazine/attachment_magazine = attack_item
@@ -281,8 +288,8 @@ DEFINES in setup.dm, referenced here.
 					reload(user,attachment_magazine)
 					return
 			active_attachable.reload_attachment(attack_item, user)
-
 	else if(istype(attack_item,/obj/item/ammo_magazine))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(check_inactive_hand(user)) reload(user,attack_item)
 
 
@@ -543,7 +550,7 @@ DEFINES in setup.dm, referenced here.
 					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
 				else
 					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
-				
+
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
@@ -560,7 +567,7 @@ DEFINES in setup.dm, referenced here.
 								slot = WEAR_IN_HELMET
 							if(WEAR_FEET)
 								slot = WEAR_IN_SHOES
-						
+
 						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 							return TRUE
 		if(w_uniform)

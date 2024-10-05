@@ -361,8 +361,12 @@
 	return ..()
 
 /mob/living/simple_animal/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
-	if(istype(O, /obj/item/stack/medical))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	if(istype(O, /obj/item/stack/medical))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(stat != DEAD)
 			var/obj/item/stack/medical/MED = O
 			if(health < maxHealth)
@@ -378,13 +382,13 @@
 			return
 	if(meat_type && (stat == DEAD)) //if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			new meat_type (get_turf(src))
 			if(prob(95))
 				qdel(src)
 			else
 				gib()
 			return
-	..()
 
 
 /mob/living/simple_animal/movement_delay()

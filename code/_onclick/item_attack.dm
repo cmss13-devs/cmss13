@@ -1,29 +1,56 @@
+/// When defining this proc, should call parent LAST, since the default is to allow the
+/// attack. Any overrides should only be checking whether attack is valid
+/atom/proc/can_be_attacked_by()
+	return TRUE
 
-// Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+/atom
+	/// Should only be set through the `DEFINE_ATTACK_CONDITIONS_FOR(...)` define
+	VAR_PROTECTED/can_be_attacked_by_proc_ref
+
+
+/atom/proc/on_attacked_by(obj/item/attacked_by, mob/living/user, attack_hints)
+	SHOULD_CALL_PARENT(TRUE)
+	// TODO: SHOULD_NOT_SLEEP(TRUE)
+	SEND_SIGNAL(src, COMSIG_PARENT_ON_ATTACKED_BY, attacked_by, user, attack_hints)
+
+/**
+ * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+ *
+ * Proc should always start by getting attack hints from parent call `. = ..()` and evaluating if attack fails
+ */
 /obj/item/proc/attack_self(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
+	// TODO: SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src)
 
 	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
 		dig_out_shrapnel(user)
 
-// No comment
-/atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
-	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
-		return TRUE
-	SEND_SIGNAL(user, COMSIG_MOB_PARENT_ATTACKBY, src, W)
-	return FALSE
+/// Called when atom `src` is attacked by `user` with `attacked_by`
+/atom/proc/attackby(obj/item/attacked_by, mob/living/user, list/mods)
+	SHOULD_CALL_PARENT(TRUE)
+	// TODO: SHOULD_NOT_SLEEP(TRUE)
+	. |= SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, attacked_by, user, mods)
 
-/atom/movable/attackby(obj/item/W, mob/living/user)
+/atom/movable/attackby(obj/item/attacked_by, mob/living/user)
 	. = ..()
-	if(W && !.)
-		if(!(W.flags_item & NOBLUDGEON))
-			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
-			user.animation_attack_on(src)
-			user.flick_attack_overlay(src, "punch")
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if(!attacked_by)
+		return
+	if(attacked_by.flags_item & NOBLUDGEON)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 
-/mob/living/attackby(obj/item/I, mob/user)
+/atom/movable/on_attacked_by(obj/item/attacked_by, mob/living/user, attack_hints)
+	..()
+	if(!(attack_hints & ATTACK_HINT_NO_TELEGRAPH))
+		visible_message(SPAN_DANGER("[src] has been hit by [user] with [attacked_by]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
+		user.animation_attack_on(src)
+		user.flick_attack_overlay(src, "punch")
+
+// TODO: Replace attack with attackby
+/mob/living/attackby(obj/item/attacked_by, mob/user)
 	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
 	if((user.mob_flags & SURGERY_MODE_ON) && user.a_intent & (INTENT_HELP|INTENT_DISARM))
 		safety = TRUE
@@ -34,13 +61,16 @@
 		else if(initiate_surgery_moment(I, src, null, user))
 			return TRUE
 	*/
-	if(istype(I) && ismob(user))
-		return I.attack(src, user)
-
+	if(istype(attacked_by) && ismob(user))
+		attacked_by.attack(src, user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		return
+	. = ..()
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	SEND_SIGNAL(src, COMSIG_PARENT_AFTERATTACK, target, user, click_parameters)
 	return FALSE
 
 

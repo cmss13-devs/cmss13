@@ -208,15 +208,18 @@
 
 
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/dogtag))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
 			GLOB.fallen_list += D.fallen_names
 			qdel(D)
-		return TRUE
-	else
-		. = ..()
+		return
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
@@ -324,7 +327,8 @@
 			user.temp_drop_inv_item(W)
 			qdel(W)
 			user.put_in_hands(R)
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 	..()
 
 /obj/structure/closet/basketball

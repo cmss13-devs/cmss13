@@ -79,6 +79,11 @@
 
 
 /obj/structure/machinery/reagentgrinder/attackby(obj/item/O, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks/drinkingglass) || istype(O,/obj/item/reagent_container/food/drinks/shaker))
 		var/obj/item/old_beaker = beaker
 		beaker = O
@@ -88,11 +93,12 @@
 			user.put_in_hands(old_beaker)
 		update_icon()
 		updateUsrDialog()
-		return 0
+		return
 
 	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
@@ -111,20 +117,22 @@
 						user.drop_inv_item_to_loc(I, src)
 						holdingitems += I
 			playsound(user.loc, "rustle", 15, 1, 6)
-			return 0
+			return
 
 		else
 			to_chat(user, SPAN_WARNING("[B] is empty."))
-			return 1
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 	else if(!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
 		to_chat(user, SPAN_WARNING("Cannot refine into a reagent."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	user.drop_inv_item_to_loc(O, src)
 	holdingitems += O
 	updateUsrDialog()
-	return 0
+	return
 
 /obj/structure/machinery/reagentgrinder/attack_hand(mob/living/user)
 	user.set_interaction(src)

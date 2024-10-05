@@ -209,15 +209,20 @@
 		qdel(src)
 
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
-	if(src.opened)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if(opened)
 		if(istype(W, /obj/item/grab))
 			if(isxeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
-			return 0
+			return
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(material == MATERIAL_METAL)
 			if(iswelder(W))
 				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
@@ -248,26 +253,28 @@
 				qdel(src)
 				return
 		user.drop_inv_item_to_loc(W,loc)
+		return
 
-	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
 	else if(iswelder(W))
 		if(material != MATERIAL_METAL && material != MATERIAL_PLASTEEL)
 			to_chat(user, SPAN_WARNING("You cannot weld [material]!"))
-			return FALSE//Can't weld wood/plastic.
+			return //Can't weld wood/plastic.
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return FALSE
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
-			return FALSE
+			return
 		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-			return FALSE
+			return
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			return FALSE
+			return
 		welded = !welded
 		update_icon()
 		for(var/mob/M as anything in viewers(src))
@@ -276,9 +283,9 @@
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
-			return FALSE
+			return
 		src.attack_hand(user)
-	return TRUE
+	. |= ATTACK_HINT_NO_AFTERATTACK
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O, mob/user)
 	if(!opened)

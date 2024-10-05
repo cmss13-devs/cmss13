@@ -84,11 +84,14 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/portable_vendor/antag/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/points))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if (istype(W, /obj/item/stack/points))
 		var/obj/item/stack/points/P = W
 
 		if(points >= max_points)
-			return . = ..()
+			return
 
 		var/amount_to_add = min(P.amount, max_points - points)
 
@@ -96,8 +99,6 @@
 
 		if(P.use(amount_to_add))
 			points += amount_to_add
-	else
-		. = ..()
 
 /obj/item/stack/points
 	name = "credits"

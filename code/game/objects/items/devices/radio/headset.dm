@@ -141,11 +141,15 @@
 	add_fingerprint(usr)
 
 /obj/item/device/radio/headset/attackby(obj/item/W as obj, mob/user as mob)
-// ..()
-	user.set_interaction(src)
-	if ( !(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey)) ))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
+	user.set_interaction(src)
+	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		var/turf/T = get_turf(user)
 		if(!T)
@@ -163,23 +167,20 @@
 			to_chat(user, SPAN_NOTICE("You pop out the encryption keys in \the [src]!"))
 		else
 			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
+		return
 
-	if(istype(W, /obj/item/device/encryptionkey/))
-		var/keycount = 0
-		for (var/obj/item/device/encryptionkey/key in keys)
-			if(!key.abstract)
-				keycount++
-		if(keycount >= maximum_keys)
-			to_chat(user, SPAN_WARNING("\The [src] can't hold another key!"))
-			return
-		if(user.drop_held_item())
-			W.forceMove(src)
-			keys += W
-			to_chat(user, SPAN_NOTICE("You slot \the [W] into \the [src]!"))
-			recalculateChannels()
-
-	return
-
+	var/keycount = 0
+	for (var/obj/item/device/encryptionkey/key in keys)
+		if(!key.abstract)
+			keycount++
+	if(keycount >= maximum_keys)
+		to_chat(user, SPAN_WARNING("\The [src] can't hold another key!"))
+		return
+	if(user.drop_held_item())
+		W.forceMove(src)
+		keys += W
+		to_chat(user, SPAN_NOTICE("You slot \the [W] into \the [src]!"))
+		recalculateChannels()
 
 /obj/item/device/radio/headset/proc/recalculateChannels()
 	for(var/ch_name in channels)

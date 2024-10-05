@@ -569,7 +569,12 @@
 	var/can_change_barrel = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(attachments["special"])
 			var/obj/item/attachable/R = attachments["special"]
 			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
@@ -590,12 +595,11 @@
 			playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 			update_icon()
 	else if(istype(I, /obj/item/attachable))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/attachable/A = I
 		if(A.slot == "muzzle" && !attachments["special"] && can_change_barrel)
 			to_chat(user, SPAN_WARNING("You need to attach a barrel first!"))
 			return
-	. = ..()
-
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)

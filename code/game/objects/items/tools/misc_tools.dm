@@ -58,10 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
-	if(istype(A, /obj/item/storage/pill_bottle))		
+	if(istype(A, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/target_pill_bottle = A
 		target_pill_bottle.choose_color(user)
-	
+
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
@@ -130,6 +130,9 @@
 
 /obj/item/tool/hand_labeler/attackby(obj/item/I, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/paper))
 		if(labels_left != initial(labels_left))
 			to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
@@ -180,6 +183,12 @@
 /obj/item/tool/pen/Initialize(mapload, ...)
 	. = ..()
 	update_pen_state()
+	AddElement(/datum/element/writer, pen_color)
+
+/obj/item/tool/pen/can_write(datum/write_check_metadata/metadata)
+	. = on
+	if (!.)
+		metadata?.failure_reason = "is not on"
 
 /obj/item/tool/pen/proc/update_pen_state()
 	overlays.Cut()

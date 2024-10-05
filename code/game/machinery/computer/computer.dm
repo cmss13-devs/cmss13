@@ -95,7 +95,12 @@
 
 
 /obj/structure/machinery/computer/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!deconstructible)
 			to_chat(user, SPAN_WARNING("You can't figure out how to deconstruct [src]..."))
 			return
@@ -123,10 +128,9 @@
 			deconstruct()
 	else
 		if(isxeno(user))
-			src.attack_alien(user)
+			. |= src.attack_alien(user)
 			return
-		src.attack_hand(user)
-	return ..()
+		. |= src.attack_hand(user)
 
 /obj/structure/machinery/computer/attack_hand()
 	. = ..()

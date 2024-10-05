@@ -187,7 +187,12 @@ FLOOR SAFES
 
 
 /obj/structure/safe/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(I.w_class + space <= maxspace)
 			space += I.w_class
 			if(user.drop_inv_item_to_loc(I, src))
@@ -197,10 +202,10 @@ FLOOR SAFES
 		else
 			to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
 			return
-	else
-		if(istype(I, /obj/item/clothing/accessory/stethoscope))
-			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
-			return
+	else if(istype(I, /obj/item/clothing/accessory/stethoscope))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
+		return
 
 /obj/structure/safe/ex_act(severity)
 	return

@@ -253,11 +253,15 @@
 		icon_state = "access_button_off"
 
 /obj/structure/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Swiping ID on the access button
 	if (istype(I, /obj/item/card/id))
-		attack_hand(user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		. |= attack_hand(user)
 		return
-	..()
 
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)

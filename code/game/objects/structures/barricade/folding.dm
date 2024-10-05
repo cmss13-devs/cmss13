@@ -77,21 +77,29 @@
 	return TRUE
 
 /obj/structure/barricade/plasteel/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(iswelder(item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		try_weld_cade(item, user)
 		return
 
 	if(try_nailgun_usage(item, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -112,6 +120,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
 					return
@@ -133,6 +142,7 @@
 
 		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -148,6 +158,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -166,6 +177,7 @@
 
 		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -187,6 +199,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -204,8 +217,6 @@
 					deconstruct(TRUE) //Note : Handles deconstruction too !
 				busy = FALSE
 				return
-
-	return ..()
 
 /obj/structure/barricade/plasteel/attack_hand(mob/user as mob)
 	if(isxeno(user))

@@ -48,15 +48,19 @@
 	return ..()
 
 /obj/structure/pumpkin_patch/attackby(obj/item/tool, mob/user)
-	if(has_vines && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
-		to_chat(user, SPAN_NOTICE("You cut down the vines."))
-		playsound(loc, "alien_resin_break", 25)
-		has_vines = FALSE
-		update_icon()
-		if(pumpkin_count < 1 && !has_vines)
-			qdel(src)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	return ..()
+
+	if(!has_vines || (tool.sharp != IS_SHARP_ITEM_ACCURATE && tool.sharp != IS_SHARP_ITEM_BIG))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	to_chat(user, SPAN_NOTICE("You cut down the vines."))
+	playsound(loc, "alien_resin_break", 25)
+	has_vines = FALSE
+	update_icon()
+	if(pumpkin_count < 1 && !has_vines)
+		qdel(src)
 
 /obj/structure/pumpkin_patch/corrupted
 	icon_prefix = "cor_"

@@ -75,18 +75,23 @@
 	return 1
 
 /obj/item/device/assembly/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(isassembly(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/assembly/A = W
 		if((!A.secured) && (!secured))
 			attach_assembly(A,user)
 			return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(toggle_secure())
 			to_chat(user, SPAN_NOTICE("\The [src] is ready!"))
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] can now be attached!"))
 		return
-	..()
 
 /obj/item/device/assembly/process()
 	STOP_PROCESSING(SSobj, src)

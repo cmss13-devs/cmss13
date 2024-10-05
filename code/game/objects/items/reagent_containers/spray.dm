@@ -29,7 +29,7 @@
 	var/use_delay = 0.5 SECONDS
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
-	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
+	// TODO: Make this use traits or signals
 	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
 	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /atom/movable/screen))
 		return

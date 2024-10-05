@@ -97,13 +97,19 @@
 	return
 
 /obj/structure/machinery/pipedispenser/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(usr, SPAN_NOTICE(" You put [W] back to [src]."))
 		user.drop_held_item()
 		qdel(W)
 		return
 	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (unwrenched==0)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to unfasten \the [src] from the floor..."))
@@ -129,8 +135,6 @@
 				src.stat &= ~MAINT
 				src.unwrenched = 0
 				power_change()
-	else
-		return ..()
 
 /obj/structure/machinery/pipedispenser/disposal
 	name = "Disposal Pipe Dispenser"

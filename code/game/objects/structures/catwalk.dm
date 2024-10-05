@@ -17,22 +17,20 @@
 	..()
 	icon_state = base_state
 
-/obj/structure/catwalk/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		if(covered)
-			var/obj/item/stack/catwalk/R = new(usr.loc)
-			R.add_to_stacks(usr)
-			covered = 0
-			return
-	if(istype(W, /obj/item/stack/catwalk))
-		if(!covered)
-			var/obj/item/stack/catwalk/E = W
-			E.use(1)
-			covered = 1
-			return
-	var/turf/T = get_turf(src)
-	T.attackby(W, user)
-	..()
+/obj/structure/catwalk/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	if (HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) && covered)
+		var/obj/item/stack/catwalk/catwalk_stack = new(usr.loc)
+		catwalk_stack.add_to_stacks(usr)
+		covered = FALSE
+		return
+	if(istype(attacking_item, /obj/item/stack/catwalk) && !covered)
+		var/obj/item/stack/catwalk/to_use = attacking_item
+		to_use.use(1)
+		covered = TRUE
+		return
 
 /obj/structure/catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'

@@ -51,9 +51,13 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
-	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	..()
+
+	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		return
 
 /obj/structure/machinery/door/poddoor/almayer/closed
 	density = TRUE

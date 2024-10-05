@@ -70,6 +70,10 @@
 	return
 
 /obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user) || !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
@@ -77,6 +81,7 @@
 		return
 
 	if(istype(O,/obj/item/ammo_magazine/m56d)) //lets equip it with ammo
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!rounds)
 			rounds = 700
 			qdel(O)
@@ -162,7 +167,12 @@
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -173,7 +183,6 @@
 			to_chat(user, SPAN_NOTICE("You shape [src] into \a [P]."))
 			qdel(src)
 		return
-	return ..()
 
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
@@ -313,16 +322,22 @@
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) //first make sure theres no funkiness
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),SPAN_NOTICE("You rotate [src]."))
 		setDir(turn(dir, -90))
 		return
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/m56d_gun/MG = O
 		for(var/obj/structure/machinery/machine in urange(MG.defense_check_range, loc, TRUE))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
@@ -345,6 +360,7 @@
 		return
 
 	if(istype(O,/obj/item/tool/crowbar))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!gun_mounted)
 			to_chat(user, SPAN_WARNING("There is no gun mounted."))
 			return
@@ -368,6 +384,7 @@
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/turf/T = get_turf(src)
 		var/fail = FALSE
 		if(T.density)
@@ -390,15 +407,18 @@
 					fail = TRUE
 					break
 		if(fail)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 			return
 		if(istype(T, /turf/open))
 			var/turf/open/floor = T
 			if(!floor.allow_construction)
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
-				return FALSE
+				return
 
 		if(gun_mounted)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You're securing the M56D into place...")
 
 			var/disassemble_time = 30
@@ -416,6 +436,7 @@
 				HMG.update_icon()
 				qdel(src)
 		else
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(anchored)
 				to_chat(user, "You begin unscrewing [src] from the ground...")
 			else
@@ -430,10 +451,6 @@
 				else
 					user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
 		return
-
-	return ..()
-
-
 
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/structure/machinery/m56d_hmg
@@ -568,13 +585,18 @@
 	return
 
 /obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		return ..()
+		return
 
 	if(QDELETED(O))
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // Let us rotate this stuff.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(locked)
 			to_chat(user, "This one is anchored in place and cannot be rotated.")
 			return
@@ -587,6 +609,7 @@
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // Lets take it apart.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(locked)
 			to_chat(user, "This one cannot be disassembled.")
 		else
@@ -606,6 +629,7 @@
 				return
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/m56d/M = O
 		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 			if(rounds)
@@ -626,6 +650,7 @@
 		return
 
 	if(iswelder(O))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -650,7 +675,6 @@
 		else
 			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
 		return
-	return ..()
 
 /obj/structure/machinery/m56d_hmg/update_health(amount) //Negative values restores health.
 	health -= amount

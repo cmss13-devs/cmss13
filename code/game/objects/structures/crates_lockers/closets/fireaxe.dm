@@ -15,7 +15,9 @@
 	var/smashed = 0
 
 /obj/structure/closet/fireaxecabinet/attackby(obj/item/O, mob/user)  //Marker -Agouri
-	//..() //That's very useful, Erro
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	var/hasaxe = 0       //gonna come in handy later~
 	if(fireaxe)
@@ -23,6 +25,7 @@
 
 	if (src.locked)
 		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, SPAN_DANGER("Resetting circuitry..."))
 			playsound(user, 'sound/machines/lockreset.ogg', 25, 1)
 			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -31,6 +34,7 @@
 				update_icon()
 			return
 		else if(!(O.flags_item & NOBLUDGEON) && O.force)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			var/obj/item/W = O
 			if(src.smashed || src.localopened)
 				if(localopened)
@@ -52,6 +56,7 @@
 			update_icon()
 		return
 	if (istype(O, /obj/item/weapon/twohanded/fireaxe) && src.localopened)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!fireaxe)
 			if(O.flags_item & WIELDED)
 				to_chat(user, SPAN_DANGER("Unwield the axe first."))
@@ -73,6 +78,7 @@
 					icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
 					spawn(10) update_icon()
 	else
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(src.smashed)
 			return
 		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))

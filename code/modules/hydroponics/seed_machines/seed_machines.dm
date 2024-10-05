@@ -44,7 +44,12 @@
 	playsound(src, 'sound/machines/buzz-two.ogg', 25, TRUE)
 
 /obj/structure/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W,/obj/item/seeds))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(seed)
 			to_chat(user, SPAN_WARNING("There is already a seed loaded."))
 			return
@@ -59,35 +64,35 @@
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		open = !open
 		to_chat(user, SPAN_NOTICE("You [open ? "open" : "close"] the maintenance panel."))
 		return
 
-	if(open)
-		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-			dismantle()
-			return
-
-	if(istype(W,/obj/item/disk/botany))
-		if(loaded_disk)
-			to_chat(user, SPAN_WARNING("There is already a data disk loaded."))
-			return
-		else
-			var/obj/item/disk/botany/B = W
-
-			if(LAZYLEN(B.genes))
-				if(!disk_needs_genes)
-					to_chat(user, SPAN_WARNING("That disk already has gene data loaded."))
-					return
-			else
-				if(disk_needs_genes)
-					to_chat(user, SPAN_WARNING("That disk does not have any gene data loaded."))
-					return
-
-			user.drop_held_item()
-			W.forceMove(src)
-			loaded_disk = W
-			to_chat(user, SPAN_NOTICE("You load \the [W] into [src]."))
-
+	if(open && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		dismantle()
 		return
-	..()
+
+	if(!istype(W,/obj/item/disk/botany))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(loaded_disk)
+		to_chat(user, SPAN_WARNING("There is already a data disk loaded."))
+		return
+	var/obj/item/disk/botany/B = W
+
+	if(LAZYLEN(B.genes))
+		if(!disk_needs_genes)
+			to_chat(user, SPAN_WARNING("That disk already has gene data loaded."))
+			return
+	else
+		if(disk_needs_genes)
+			to_chat(user, SPAN_WARNING("That disk does not have any gene data loaded."))
+			return
+
+	user.drop_held_item()
+	W.forceMove(src)
+	loaded_disk = W
+	to_chat(user, SPAN_NOTICE("You load \the [W] into [src]."))

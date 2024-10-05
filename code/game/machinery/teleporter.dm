@@ -37,51 +37,55 @@
 
 
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
-	if(istype(I, /obj/item/card/data/))
-		var/obj/item/card/data/C = I
-		if(inoperable() & (C.function != "teleporter"))
-			src.attack_hand()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-		var/obj/L = null
+	if (!istype(I, /obj/item/card/data/))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	var/obj/item/card/data/C = I
+	if(inoperable() & (C.function != "teleporter"))
+		src.attack_hand()
 
-		for(var/i in GLOB.teleporter_landmarks)
-			var/obj/effect/landmark/sloc = i
-			if(sloc.name != C.data) continue
-			if(locate(/mob/living) in sloc.loc) continue
-			L = sloc
-			break
+	var/obj/L = null
 
-		if(!L)
-			L = locate("landmark*[C.data]") // use old stype
+	for(var/i in GLOB.teleporter_landmarks)
+		var/obj/effect/landmark/sloc = i
+		if(sloc.name != C.data) continue
+		if(locate(/mob/living) in sloc.loc) continue
+		L = sloc
+		break
+
+	if(!L)
+		L = locate("landmark*[C.data]") // use old stype
 
 
-		if(istype(L, /obj/effect/landmark/) && istype(L.loc, /turf))
-			to_chat(usr, "You insert the coordinates into the machine.")
-			to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the station at all times.")
-			user.drop_held_item()
-			qdel(I)
+	if(!istype(L, /obj/effect/landmark/) || !istype(L.loc, /turf))
+		return
 
-			if(C.data == "Clown Land")
-				//whoops
-				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), SHOW_MESSAGE_AUDIBLE)
+	to_chat(usr, "You insert the coordinates into the machine.")
+	to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the station at all times.")
+	user.drop_held_item()
+	qdel(I)
 
-				for(var/obj/structure/machinery/teleport/hub/H in range(1))
-					var/amount = rand(2,5)
-					for(var/i=0;i<amount;i++)
-						new /mob/living/simple_animal/hostile/carp(get_turf(H))
-				//
-			else
-				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
-				src.locked = L
-				one_time_use = 1
+	if(C.data == "Clown Land")
+		//whoops
+		for(var/mob/O in hearers(src, null))
+			O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), SHOW_MESSAGE_AUDIBLE)
 
-			src.add_fingerprint(usr)
+		for(var/obj/structure/machinery/teleport/hub/H in range(1))
+			var/amount = rand(2,5)
+			for(var/i=0;i<amount;i++)
+				new /mob/living/simple_animal/hostile/carp(get_turf(H))
+		//
 	else
-		..()
+		for(var/mob/O in hearers(src, null))
+			O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
+		src.locked = L
+		one_time_use = 1
 
-	return
+	src.add_fingerprint(usr)
 
 /obj/structure/machinery/teleport/station/attack_remote()
 	src.attack_hand()
@@ -328,7 +332,10 @@
 	. = ..()
 
 /obj/structure/machinery/teleport/station/attackby(obj/item/W)
-	src.attack_hand()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()
 	src.attack_hand()

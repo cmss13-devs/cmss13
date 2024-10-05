@@ -23,8 +23,12 @@
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
 /obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/clue_scanner/S = O
 		if(!S.print_list)
 			to_chat(user, SPAN_WARNING("There are no prints stored in \the [S]!"))
@@ -35,7 +39,6 @@
 			scanner = O
 			to_chat(user, "You insert [O].")
 
-	..()
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)

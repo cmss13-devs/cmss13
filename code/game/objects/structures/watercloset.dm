@@ -122,7 +122,12 @@
 
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -132,6 +137,7 @@
 			return
 
 	if(istype(I, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(isxeno(user)) return
 		var/obj/item/grab/G = I
 
@@ -157,6 +163,7 @@
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
 
 	if(cistern && !istype(user,/mob/living/silicon/robot)) //STOP PUTTING YOUR MODULES IN THE TOILET.
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(I.w_class > SIZE_MEDIUM)
 			to_chat(user, SPAN_NOTICE("\The [I] does not fit."))
 			return

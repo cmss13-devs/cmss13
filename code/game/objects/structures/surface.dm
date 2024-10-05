@@ -2,13 +2,24 @@
 /obj/structure/surface
 	health = 100
 
+/// Whether the item can be put on the surface
+/obj/structure/surface/proc/can_put_on_surface(obj/item/putting_on_surface, mob/user)
+	return TRUE
+
 /obj/structure/surface/attackby(obj/item/attacking_item, mob/user, click_data)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if (!can_put_on_surface(attacking_item, user))
+		return
+
 	if(!user.drop_inv_item_to_loc(attacking_item, loc))
 		return
 
 	auto_align(attacking_item, click_data)
 	user.next_move = world.time + 2
-	return TRUE
+	. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_BREAK_ATTACK
 
 /obj/structure/surface/proc/auto_align(obj/item/new_item, click_data)
 	if(!new_item.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.

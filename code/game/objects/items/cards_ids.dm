@@ -389,7 +389,12 @@
 	fallen_assgns = list()
 
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/dogtag))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/dogtag/D = I
 		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
@@ -398,9 +403,6 @@
 			fallen_blood_types += D.fallen_blood_types
 			fallen_assgns += D.fallen_assgns
 		qdel(D)
-		return TRUE
-	else
-		. = ..()
 
 /obj/item/dogtag/get_examine_text(mob/user)
 	. = ..()

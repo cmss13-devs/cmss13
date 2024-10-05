@@ -13,10 +13,6 @@
 /// From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/xenomorph/X)
 #define COMSIG_WALL_RESIN_XENO_ATTACK "wall_resin_attack_alien"
 
-/// From /turf/closed/wall/resin/attackby(): (obj/item/I, mob/M)
-#define COMSIG_WALL_RESIN_ATTACKBY "wall_resin_attackby"
-	#define COMPONENT_CANCEL_ATTACKBY (1<<0)
-
 ///from /turf/closed/wall/proc/place_poster
 #define COMSIG_POSTER_PLACED "poster_placed"
 

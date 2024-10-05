@@ -63,12 +63,18 @@
 		maxhealth += 50
 
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \
@@ -77,9 +83,11 @@
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 				SPAN_NOTICE("You disassemble [src]."))
 				deconstruct(TRUE)
-		return TRUE
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	if(istype(W, stack_type))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/sandbags/SB = W
 		if(user.action_busy)
 			return
@@ -98,8 +106,6 @@
 		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."), \
 			SPAN_NOTICE("You stack [SB] onto [src]."))
 		return
-	else
-		. = ..()
 
 /obj/structure/barricade/sandbags/deconstruct(disassembled = TRUE)
 	if(disassembled)

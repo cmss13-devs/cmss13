@@ -100,7 +100,12 @@
 
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.grab_level < GRAB_AGGRESSIVE)
 			to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 			return
@@ -121,13 +126,16 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(shattered)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
 		return
 	if(prob(I.force * I.demolition_mod * 2))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_WARNING("[user] smashes [src] with [I]!"), SPAN_WARNING("You smash [src] with [I]!"))
 		shatter()
 	else
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_WARNING("[user] hits [src] with [I]!"), SPAN_WARNING("You hit [src] with [I]!"))
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 

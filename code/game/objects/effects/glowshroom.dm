@@ -76,8 +76,11 @@
 	return 1
 
 /obj/effect/glowshroom/attackby(obj/item/W as obj, mob/user as mob)
-	..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	endurance -= W.force
 
 	CheckEndurance()

@@ -194,7 +194,8 @@
 	unset_range()
 
 /obj/structure/machinery/defenses/sentry/attackby(obj/item/O, mob/user)
-	if(QDELETED(O) || QDELETED(user))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
 	//Securing/Unsecuring
@@ -202,9 +203,6 @@
 		if(immobile)
 			to_chat(user, SPAN_WARNING("[src] is completely welded in place. You can't move it without damaging it."))
 			return
-
-	if(!..())
-		return
 
 	// Rotation
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
@@ -248,7 +246,6 @@
 
 	if(O.force)
 		update_health(O.force/2)
-	return ..()
 
 /obj/structure/machinery/defenses/sentry/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
@@ -483,9 +480,6 @@
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
-
-/obj/structure/machinery/defenses/sentry/premade/attackby(obj/item/O, mob/user)
-	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
 	return
@@ -762,11 +756,14 @@
 
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return
 
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(upgraded)
 		to_chat(user, SPAN_WARNING("\The [src] has already been upgraded."))
 		return

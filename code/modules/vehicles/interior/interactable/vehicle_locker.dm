@@ -105,16 +105,21 @@
 		..(over_object)
 
 /obj/structure/vehicle_locker/attackby(obj/item/W, mob/living/carbon/human/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
 		return
 	if(!istype(user))
 		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
-	return container.attackby(W, user)
+	. |= container.attackby(W, user)
 
 /obj/structure/vehicle_locker/emp_act(severity)
 	. = ..()
@@ -191,6 +196,10 @@
 	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")
 
 /obj/structure/vehicle_locker/med/attackby(obj/item/W, mob/living/carbon/human/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -206,7 +215,8 @@
 	if(!has_tray)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't have a surgical tray installed!"))
 		return
-	return container.attackby(W, user)
+	// TODO: Turn this into signals
+	. |= container.attackby(W, user)
 
 /obj/structure/vehicle_locker/med/clicked(mob/living/carbon/human/user, list/mods)
 	if(!CAN_PICKUP(user, src))

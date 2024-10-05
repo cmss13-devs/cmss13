@@ -70,8 +70,13 @@
 
 
 /obj/structure/droppod/container/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(droppod_flags & DROPPOD_OPEN)
 		if(istype(W, /obj/item/grab))
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(isxeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
@@ -81,9 +86,8 @@
 		if(W.flags_item & ITEM_ABSTRACT)
 			return
 
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_inv_item_to_loc(W, loc)
-	else
-		return ..()
 
 /obj/structure/droppod/container/post_recall()
 	if(!dropoff_point)

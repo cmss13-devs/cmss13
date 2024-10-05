@@ -99,10 +99,14 @@
 				return 1
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves.")) //Nope
 		return
-	..()
 
 /obj/item/clothing/gloves/boxing/green
 	icon_state = "boxinggreen"

@@ -20,6 +20,7 @@
 	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
+	var/can_be_disassembled = TRUE
 	var/parts = /obj/item/frame/table
 	debris = list(/obj/item/frame/table)
 
@@ -258,16 +259,34 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-/obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
-	if(!W) return
+/obj/structure/surface/table/can_put_on_surface(obj/item/putting_on_surface, mob/user)
+	if (putting_on_surface.has_special_table_placement)
+		return FALSE
+	if (HAS_TRAIT(putting_on_surface, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
+		return FALSE
+	if (flipped)
+		return FALSE
+	if (istype(putting_on_surface, /obj/item/weapon/wristblades))
+		return FALSE
+	return ..()
 
-	if (W.has_special_table_placement)
-		W.set_to_table(src)
+/obj/structure/surface/table/attackby(obj/item/attacked_by, mob/user, click_data)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
-	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
+	if(!attacked_by)
+		return
+
+	if (attacked_by.has_special_table_placement)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		attacked_by.set_to_table(src)
+		return
+
+	if(istype(attacked_by, /obj/item/grab) && get_dist(src, user) <= 1)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(isxeno(user)) return
-		var/obj/item/grab/G = W
+		var/obj/item/grab/G = attacked_by
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
@@ -291,7 +310,8 @@
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
+	if(HAS_TRAIT(attacked_by, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && can_be_disassembled)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -301,10 +321,11 @@
 			deconstruct(TRUE)
 		return
 
-	if(W.flags_item & ITEM_ABSTRACT)
+	if(attacked_by.flags_item & ITEM_ABSTRACT)
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(attacked_by, /obj/item/weapon/wristblades))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
@@ -314,16 +335,17 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
-	if(istype(W, /obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/detonating_grenade = W
+	if(istype(attacked_by, /obj/item/explosive/grenade))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/explosive/grenade/detonating_grenade = attacked_by
 		if(detonating_grenade.active)
 			to_chat(user, SPAN_WARNING("It's too late for that!"))
 			return
 
 	//clicking the table
 	if(flipped)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
-	..()
 
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
@@ -547,8 +569,18 @@
 /obj/structure/surface/table/reinforced/flip(direction)
 	return 0 //No, just no. It's a full desk, you can't flip that
 
+/obj/structure/surface/table/reinforced/can_put_on_surface(obj/item/putting_on_surface, mob/user)
+	if (iswelder(putting_on_surface))
+		return FALSE
+	return ..()
+
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (iswelder(W))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -563,6 +595,7 @@
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
+					can_be_disassembled = TRUE
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),
 				SPAN_NOTICE("You start welding [src] back together."))
@@ -572,13 +605,9 @@
 					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
+					can_be_disassembled = TRUE
 			return
 		return
-
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
-		return
-
-	..()
 
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
@@ -667,14 +696,21 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-/obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
+/obj/structure/surface/rack/can_put_on_surface(obj/item/putting_on_surface, mob/user)
+	if (HAS_TRAIT(putting_on_surface, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
+		return FALSE
+	return ..()
+
+/obj/structure/surface/rack/attackby(obj/item/attacked_by, mob/user, click_data)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(HAS_TRAIT(attacked_by, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
-	if(W.flags_item & ITEM_ABSTRACT)
-		return
-	..()
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()

@@ -13,11 +13,15 @@ Code shamelessly copied from apc_frame
 	flags_atom = FPRINT|CONDUCT
 
 /obj/item/frame/air_alarm/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), 2 )
 		qdel(src)
 		return
-	..()
 
 /obj/item/frame/air_alarm/proc/try_build(turf/on_wall)
 	if (get_dist(on_wall,usr)>1)
@@ -56,11 +60,15 @@ Code shamelessly copied from apc_frame
 	flags_atom = FPRINT|CONDUCT
 
 /obj/item/frame/fire_alarm/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), 2 )
 		qdel(src)
 		return
-	..()
 
 /obj/item/frame/fire_alarm/proc/try_build(turf/on_wall)
 	if (get_dist(on_wall,usr)>1)

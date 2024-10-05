@@ -201,15 +201,18 @@
 	take_damage(FOAMED_METAL_FIRE_ACT_DMG)
 
 /obj/structure/foamed_metal/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(I.force)
 		to_chat(user, SPAN_NOTICE("You [I.sharp ? "hack" : "smash" ] off a chunk of the foamed metal with \the [I]."))
 		if(I.sharp)
 			take_damage(I.force * I.sharp * FOAMED_METAL_ITEM_MELEE) //human advantage, sharper items do more damage
 		else
 			take_damage(I.force * FOAMED_METAL_ITEM_MELEE) //blunt items can damage it still
-		return TRUE
-
-	return FALSE
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
+		return
 
 /obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 	var/damage = ((floor((X.melee_damage_lower+X.melee_damage_upper)/2)) + dam_bonus)

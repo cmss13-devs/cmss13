@@ -297,32 +297,43 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		overlays += image("cannon_tray_[fuel_amt]")
 
 /obj/structure/orbital_tray/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
 			qdel(PC)
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
+			return
 
 		if(PC.loaded)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			if(!istype(PC.loaded, /obj/structure/ob_ammo))
 				to_chat(user, SPAN_WARNING("There is no way you can put \the [PC.loaded] into \the [src]!"))
-				return TRUE
+				. |= ATTACK_HINT_NO_AFTERATTACK
+				return
 
 			var/obj/structure/ob_ammo/OA = PC.loaded
 			if(OA.is_solid_fuel)
 				if(fuel_amt >= 6)
 					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
-					return TRUE
+					. |= ATTACK_HINT_NO_AFTERATTACK
+					return
 				if(!warhead)
 					to_chat(user, SPAN_WARNING("A warhead must be placed in \the [src] first."))
-					return TRUE
+					. |= ATTACK_HINT_NO_AFTERATTACK
+					return
 				to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
 				fuel_amt++
 				qdel(OA)
 			else
 				if(warhead)
 					to_chat(user, SPAN_WARNING("\The [src] already has \the [warhead] loaded."))
-					return TRUE
+					. |= ATTACK_HINT_NO_AFTERATTACK
+					return
 				else
 					to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
 					warhead = OA
@@ -334,6 +345,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			PC.update_icon()
 
 		else
+			. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 			if(fuel_amt)
 				var/obj/structure/ob_ammo/ob_fuel/OF = new (src)
 				fuel_amt--
@@ -342,9 +354,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 				PC.grab_object(user, warhead, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
 				warhead = null
 			update_icon()
-			return TRUE
-	else
-		. = ..()
+			return
 
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
@@ -358,19 +368,22 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/source_mob
 
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_NO_AFTERATTACK
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
 			qdel(PC)
-			return TRUE
+			return
 		if(is_solid_fuel)
 			PC.grab_object(user, src, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
 		else
 			PC.grab_object(user, src, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
-		return TRUE
-	else
-		. = ..()
+		return
 
 /obj/structure/ob_ammo/get_examine_text(mob/user)
 	. = ..()

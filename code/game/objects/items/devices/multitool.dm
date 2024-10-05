@@ -38,12 +38,6 @@
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 
-/obj/item/device/multitool/afterattack(atom/target, mob/user, flag)
-	for(var/obj/item/explosive/plastic/E in target.contents)
-		E.attackby(src, user)
-		return
-	. = ..()
-
 /obj/item/device/multitool/attack_self(mob/user)
 	..()
 

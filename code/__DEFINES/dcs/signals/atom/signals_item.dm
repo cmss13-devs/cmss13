@@ -85,3 +85,16 @@
 #define COMSIG_CAMERA_REFRESH "camera_manager_refresh"
 
 #define COMSIG_PRED_BRACER_DECLOAKED "pred_bracer_decloaked"
+
+// Attachables
+/// When attachables is removed from gun
+#define COMSIG_ATTACHABLE_DETACH "attachable_detach"
+
+/// When igniting an object, igniter can be overridden (e.g. by underbarrel flamer attachment)
+#define COMSIG_IGNITER_OVERRIDE "igniter_override"
+
+#define COMSIG_ITEM_WRITE "item_write"
+/// When a writable is hit by an item, checks if that item can write
+#define COMSIG_ITEM_CAN_WRITE_CHECK "item_can_write_check"
+	#define COMPONENT_CAN_WRITE (1<<0)
+	#define COMPONENT_IS_WRITER (1<<1)

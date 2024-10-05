@@ -70,7 +70,12 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/fortunecookie/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/paper))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(cookie_broken)
 			to_chat(user,SPAN_WARNING("[src] is cracked open! How are you gonna slip something in that?"))
 		else

@@ -321,6 +321,10 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
@@ -346,8 +350,6 @@ cases. Override_icon_state should be a list.*/
 
 			else if(S.can_be_inserted(src, user))
 				S.handle_item_insertion(src, FALSE, user)
-
-	return
 
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return

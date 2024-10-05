@@ -34,6 +34,10 @@
 		. += "Current charge: [charging.charge] ([charging.percent()]%)"
 
 /obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(stat & BROKEN)
 		return
 

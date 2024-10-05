@@ -142,7 +142,12 @@
 		return ..()
 
 /obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(attacking_object, /obj/item/smartgun_battery))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/smartgun_battery/new_cell = attacking_object
 		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
 			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
@@ -153,8 +158,6 @@
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src, 'sound/machines/click.ogg', 25, 1)
 		return
-
-	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)

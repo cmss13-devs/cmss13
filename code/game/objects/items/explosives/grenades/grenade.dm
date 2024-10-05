@@ -129,7 +129,12 @@
 
 
 /obj/item/explosive/grenade/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		switch(det_time)
 			if ("1")
 				det_time = 10
@@ -144,8 +149,6 @@
 				det_time = 1
 				to_chat(user, SPAN_NOTICE("You set the [name] for instant detonation."))
 		add_fingerprint(user)
-	..()
-	return
 
 /obj/item/explosive/grenade/attack_hand()
 	walk(src, null, null)

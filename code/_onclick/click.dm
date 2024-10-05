@@ -145,21 +145,29 @@
 	return
 
 /mob/proc/click_adjacent(atom/A, obj/item/W, mods)
-	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
-			next_move += W.attack_speed
-
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
-			// in case the attackby slept
-			if(!W)
-				UnarmedAttack(A, 1, mods)
-				return
-
-			W.afterattack(A, src, 1, mods)
-	else
+	if(!W)
 		if(!isitem(A) && !issurface(A))
 			next_move += 4
 		UnarmedAttack(A, 1, mods)
+		return
+	if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
+		next_move += W.attack_speed
+
+	if (QDELETED(A))
+		return
+
+	if (A.can_be_attacked_by_proc_ref && !(call(A, A.can_be_attacked_by_proc_ref)()))
+		return
+	if (SEND_SIGNAL(A, COMSIG_PARENT_CAN_BE_ATTACKED_BY, W, src) & COMPONENT_BLOCK_ATTACKBY)
+		return
+
+	var/attack_hints = A.attackby(W, src, mods)
+	A.on_attacked_by(W, src, attack_hints)
+
+	if (attack_hints & ATTACK_HINT_NO_AFTERATTACK)
+		return
+
+	W.afterattack(A, src, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept

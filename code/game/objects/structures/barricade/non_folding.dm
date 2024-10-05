@@ -56,21 +56,29 @@
 	return TRUE
 
 /obj/structure/barricade/metal/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(iswelder(item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		try_weld_cade(item, user)
 		return
 
 	if(try_nailgun_usage(item, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
@@ -85,6 +93,7 @@
 				return
 
 			if(istype(item, /obj/item/stack/sheet/metal))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
@@ -173,6 +182,7 @@
 					return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
@@ -194,6 +204,7 @@
 
 		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -208,6 +219,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -225,6 +237,7 @@
 
 		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -249,6 +262,7 @@
 				return
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -263,8 +277,6 @@
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE) //Note : Handles deconstruction too !
 				return
-
-	return ..()
 
 /obj/structure/barricade/metal/wired/New()
 	maxhealth += 50

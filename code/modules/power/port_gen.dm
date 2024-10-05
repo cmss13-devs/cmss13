@@ -1,45 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-
-/* new portable generator - work in progress
-
-/obj/structure/machinery/power/port_gen
-	name = "portable generator"
-	desc = "A portable generator used for emergency backup power."
-	icon = 'generator.dmi'
-	icon_state = "off"
-	density = TRUE
-	anchored = FALSE
-	directwired = 0
-	var/t_status = 0
-	var/t_per = 5000
-	var/filter = 1
-	var/tank = null
-	var/turf/inturf
-	var/starter = 0
-	var/rpm = 0
-	var/rpmtarget = 0
-	var/capacity = 1e6
-	var/turf/outturf
-	var/lastgen
-
-
-/obj/structure/machinery/power/port_gen/process()
-ideally we're looking to generate 5000
-
-/obj/structure/machinery/power/port_gen/attackby(obj/item/W, mob/user)
-tank [un]loading stuff
-
-/obj/structure/machinery/power/port_gen/attack_hand(mob/user)
-turn on/off
-
-/obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-display floor(lastgen) and phorontank amount
-
-*/
-
-//Previous code been here forever, adding new framework for portable generators
-
-
 //Baseline portable generator. Has all the default handling. Not intended to be used on it's own (since it generates unlimited power).
 /obj/structure/machinery/power/port_gen
 	name = "Placeholder Generator" //seriously, don't use this. It can't be anchored without VV magic.
@@ -232,7 +190,12 @@ display floor(lastgen) and phorontank amount
 	explosion(src.loc, 2, 5, 2, -1)
 
 /obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, sheet_path))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
@@ -243,46 +206,50 @@ display floor(lastgen) and phorontank amount
 		addstack.use(amount)
 		updateUsrDialog()
 		return
-	else if(!active)
 
-		if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+	if(active)
+		return
 
-			if(!anchored)
-				connect_to_network()
-				to_chat(user, SPAN_NOTICE(" You secure the generator to the floor."))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if(!anchored)
+			connect_to_network()
+			to_chat(user, SPAN_NOTICE(" You secure the generator to the floor."))
+		else
+			disconnect_from_network()
+			to_chat(user, SPAN_NOTICE(" You unsecure the generator from the floor."))
+
+		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+		anchored = !anchored
+
+	else if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		open = !open
+		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		if(open)
+			to_chat(user, SPAN_NOTICE(" You open the access panel."))
+		else
+			to_chat(user, SPAN_NOTICE(" You close the access panel."))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
+		for(var/obj/item/I in component_parts)
+			if(I.reliability < 100)
+				I.crit_fail = 1
+			I.forceMove(src.loc)
+		while ( sheets > 0 )
+			var/obj/item/stack/sheet/G = new sheet_path(src.loc)
+
+			if ( sheets > 50 )
+				G.amount = 50
 			else
-				disconnect_from_network()
-				to_chat(user, SPAN_NOTICE(" You unsecure the generator from the floor."))
+				G.amount = sheets
 
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			anchored = !anchored
+			sheets -= G.amount
 
-		else if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
-			open = !open
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			if(open)
-				to_chat(user, SPAN_NOTICE(" You open the access panel."))
-			else
-				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
-			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
-			for(var/obj/item/I in component_parts)
-				if(I.reliability < 100)
-					I.crit_fail = 1
-				I.forceMove(src.loc)
-			while ( sheets > 0 )
-				var/obj/item/stack/sheet/G = new sheet_path(src.loc)
-
-				if ( sheets > 50 )
-					G.amount = 50
-				else
-					G.amount = sheets
-
-				sheets -= G.amount
-
-			new_frame.state = CONSTRUCTION_STATE_PROGRESS
-			new_frame.update_icon()
-			qdel(src)
+		new_frame.state = CONSTRUCTION_STATE_PROGRESS
+		new_frame.update_icon()
+		qdel(src)
 
 /obj/structure/machinery/power/port_gen/pacman/attack_hand(mob/user as mob)
 	..()

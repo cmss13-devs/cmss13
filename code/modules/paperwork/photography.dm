@@ -36,18 +36,23 @@
 	var/icon/tiny
 	var/photo_size = 3
 
+/obj/item/photo/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/photo/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), user)
+
+/obj/item/photo/proc/write_async(mob/user)
+	var/txt = strip_html(input(user, "What would you like to write on the back?", "Photo Writing", null))
+	txt = copytext(txt, 1, 128)
+	if(loc == user && user.stat == 0)
+		scribble = txt
+		playsound(src, "paper_writing", 15, TRUE)
+
 /obj/item/photo/attack_self(mob/user)
 	..()
 	examine(user)
-
-/obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
-	if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
-		var/txt = strip_html(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text)
-		txt = copytext(txt, 1, 128)
-		if(loc == user && user.stat == 0)
-			scribble = txt
-			playsound(src, "paper_writing", 15, TRUE)
-	..()
 
 /obj/item/photo/get_examine_text(mob/user)
 	if(in_range(user, src) || isobserver(user))
@@ -167,7 +172,12 @@
 	return
 
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/device/camera_film))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(pictures_left > (pictures_max - 10))
 			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
 			return
@@ -176,7 +186,6 @@
 			qdel(I)
 			pictures_left += 10
 		return
-	..()
 
 
 /obj/item/device/camera/proc/get_icon(list/turfs, turf/center)

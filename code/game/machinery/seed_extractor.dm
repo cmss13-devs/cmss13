@@ -7,8 +7,12 @@
 	anchored = TRUE
 
 /obj/structure/machinery/seed_extractor/attackby(obj/item/object as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-		// Plant bag and other storage containers.
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	// Plant bag and other storage containers.
 	if(istype(object,/obj/item/storage))
 		var/obj/item/storage/container = object
 		if(length(container.contents) == 0)

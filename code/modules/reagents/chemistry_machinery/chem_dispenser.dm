@@ -201,7 +201,12 @@
 			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 		if(user.drop_inv_item_to_loc(attacking_object, src))
@@ -214,9 +219,9 @@
 				to_chat(user, SPAN_NOTICE("You set [attacking_object] on the machine."))
 			SStgui.update_uis(src)
 		update_icon()
-		return
 
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_MULTITOOL))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		switch(hacked_check)
 			if(DISPENSER_UNHACKABLE)
 				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
@@ -230,6 +235,7 @@
 				hacked_check = DISPENSER_NOT_HACKED
 
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!wrenchable)
 			to_chat(user, "[src] cannot be unwrenched.")
 			return

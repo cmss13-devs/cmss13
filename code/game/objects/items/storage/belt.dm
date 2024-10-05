@@ -58,12 +58,15 @@
 		overlays += "+[icon_state]_full"
 
 /obj/item/storage/belt/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		if(/obj/item/ammo_magazine/handful in src.can_hold)
-			var/obj/item/ammo_magazine/shotgun/M = W
-			dump_ammo_to(M,user, M.transfer_handful_amount)
-			return
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(istype(W, /obj/item/ammo_magazine/shotgun) && (/obj/item/ammo_magazine/handful in src.can_hold))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+		return
 
 
 /obj/item/storage/belt/champion
@@ -560,11 +563,14 @@
 		new /obj/item/ammo_magazine/smg/m39 (src)
 
 /obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/shotgun/M = W
 		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/marine/dutch
 	name = "ammo load rig"
@@ -748,11 +754,14 @@
 		new random_shell_type(src)
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/shotgun/M = W
 		dump_ammo_to(M, user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
@@ -817,11 +826,18 @@
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
 /obj/item/storage/belt/shotgun/lever_action/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/lever_action/M = W
 		dump_ammo_to(M, user, M.transfer_handful_amount)
+		return
 
 	if(istype(W, /obj/item/storage/belt/gun/m44/lever_action/attach_holster))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(length(contents) || length(W.contents))
 			to_chat(user, SPAN_WARNING("Both holster and belt need to be empty to attach the holster!"))
 			return
@@ -831,8 +847,7 @@
 		qdel(src)
 		user.put_in_hands(new_belt)
 		update_icon(user)
-	else
-		return ..()
+		return
 
 /obj/item/storage/belt/shotgun/xm88
 	name = "\improper M300 pattern .458 SOCOM loading rig"
@@ -846,11 +861,14 @@
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
 /obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/lever_action/xm88))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/lever_action/xm88/B = W
 		dump_ammo_to(B, user, B.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -928,10 +946,13 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		dump_into(W,user)
-	else
-		return ..()
 
 /obj/item/storage/belt/grenade/large
 	name="\improper M276 pattern M40 Grenade rig Mk. II"
@@ -1331,11 +1352,14 @@
 	var/magazines = 0
 
 /obj/item/storage/belt/gun/xm51/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(item, /obj/item/ammo_magazine/shotgun/light/breaching))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/shotgun/light/breaching/ammo_box = item
 		dump_ammo_to(ammo_box, user, ammo_box.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/gun/xm51/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE)
 	. = ..()
@@ -1437,11 +1461,14 @@
 			"icon_y" = 3))
 
 /obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/ammo_magazine/lever_action/M = W
 		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else
-		return ..()
 
 
 /obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
@@ -1725,11 +1752,14 @@
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/storage/box/m94))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/storage/box/m94/M = W
 		dump_into(M,user)
-	else
-		return ..()
 
 /obj/item/storage/belt/gun/webley
 	name = "\improper Webley Mk VI gunbelt"

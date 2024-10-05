@@ -333,17 +333,24 @@
 
 
 /turf/closed/wall/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(isxeno(user) && istype(attacking_item, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/attacker_grab = attacking_item
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(attacker_grab.grabbed_thing, src)
 
 	if(!ishuman(user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(attacking_item.heat_source >= 1000)
 			if(hull)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
@@ -355,6 +362,7 @@
 			return
 
 	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
 		if(user.action_busy)
 			return
@@ -378,45 +386,54 @@
 		return
 
 	if(istype(attacking_item,/obj/item/frame/apc))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/apc/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	if(istype(attacking_item,/obj/item/frame/air_alarm))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/air_alarm/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	if(istype(attacking_item,/obj/item/frame/fire_alarm))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/fire_alarm/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	if(istype(attacking_item,/obj/item/frame/light_fixture))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/light_fixture/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	if(istype(attacking_item,/obj/item/frame/light_fixture/small))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/light_fixture/small/AH = attacking_item
 		AH.try_build(src)
 		return
 
 	//Poster stuff
 	if(istype(attacking_item,/obj/item/poster))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		place_poster(attacking_item, user)
 		return
 
 	if(istype(attacking_item, /obj/item/prop/torch_frame))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
 		new /obj/structure/prop/brazier/frame/full/torch(src)
 		qdel(attacking_item)
 
 	if(hull)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 		return
 
 	if(try_weldingtool_usage(attacking_item, user) || try_nailgun_usage(attacking_item, user))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		return
 
 	if(!istype(src, /turf/closed/wall))
@@ -426,6 +443,7 @@
 	switch(d_state)
 		if(WALL_STATE_WELD)
 			if(iswelder(attacking_item))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
@@ -434,6 +452,7 @@
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -445,6 +464,7 @@
 
 		if(WALL_STATE_WIRECUTTER)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -456,6 +476,7 @@
 
 		if(WALL_STATE_WRENCH)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
@@ -467,6 +488,7 @@
 
 		if(WALL_STATE_CROWBAR)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+				. |= ATTACK_HINT_NO_TELEGRAPH
 				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
@@ -477,7 +499,7 @@
 				dismantle_wall()
 				return
 
-	return attack_hand(user)
+	. |= attack_hand(user)
 
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
 	if(!damage || !iswelder(W))

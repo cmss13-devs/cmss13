@@ -215,7 +215,12 @@
 	return TRUE
 
 /obj/structure/machinery/computer/sentencing/attackby(obj/item/O, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(O, /obj/item/paper/incident))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (current_menu == "main")
 			var/obj/item/paper/incident/paper = O
 			user.temp_drop_inv_item(paper)
@@ -229,9 +234,11 @@
 			to_chat(user, SPAN_ALERT("A report is already in progress."))
 
 	else if (istype(O, /obj/item/paper/) && current_menu == "main")
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_ALERT("This console only accepts authentic incident reports. Copies are invalid."))
 
 	else if (istype(O, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/grab = O
 		if (ishuman(grab.grabbed_thing))
 			var/mob/living/carbon/human/human = grab.grabbed_thing
@@ -241,5 +248,3 @@
 					incident.criminal_name = id.registered_name
 					incident.criminal_gid = add_zero(num2hex(id.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [id.registered_name] verified.\"")
-
-	..()

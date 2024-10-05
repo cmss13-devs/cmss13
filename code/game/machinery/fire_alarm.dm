@@ -68,6 +68,10 @@ FIRE ALARM
 		alarm()
 
 /obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	src.add_fingerprint(user)
 
 	if (HAS_TRAIT(held_object, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
@@ -75,56 +79,54 @@ FIRE ALARM
 		update_icon()
 		return
 
-	if(wiresexposed)
-		switch(buildstage)
-			if(2)
-				if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
-					src.detecting = !( src.detecting )
-					if (src.detecting)
-						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
-					else
-						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
-				else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
-					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
-					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-					buildstage = 1
-					update_icon()
-			if(1)
-				if(istype(held_object, /obj/item/stack/cable_coil))
-					var/obj/item/stack/cable_coil/cable = held_object
-					if (cable.use(5))
-						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
-						buildstage = 2
-						update_icon()
-						return
-					else
-						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
-						return
-				else if(HAS_TRAIT(held_object, TRAIT_TOOL_CROWBAR))
-					to_chat(user, "You pry out the circuit!")
-					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-					spawn(20)
-						var/obj/item/circuitboard/firealarm/circuit = new()
-						circuit.forceMove(user.loc)
-						buildstage = 0
-						update_icon()
-			if(0)
-				if(istype(held_object, /obj/item/circuitboard/firealarm))
-					to_chat(user, "You insert the circuit!")
-					qdel(held_object)
-					buildstage = 1
-					update_icon()
-
-				else if(HAS_TRAIT(held_object, TRAIT_TOOL_WRENCH))
-					to_chat(user, "You remove the fire alarm assembly from the wall!")
-					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
-					frame.forceMove(user.loc)
-					playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-					qdel(src)
+	if(!wiresexposed)
 		return
 
-	..()
-	return
+	switch(buildstage)
+		if(2)
+			if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
+				src.detecting = !( src.detecting )
+				if (src.detecting)
+					user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
+				else
+					user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
+			else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
+				user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
+				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+				buildstage = 1
+				update_icon()
+		if(1)
+			if(istype(held_object, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/cable = held_object
+				if (cable.use(5))
+					to_chat(user, SPAN_NOTICE("You wire \the [src]."))
+					buildstage = 2
+					update_icon()
+					return
+				else
+					to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
+					return
+			else if(HAS_TRAIT(held_object, TRAIT_TOOL_CROWBAR))
+				to_chat(user, "You pry out the circuit!")
+				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+				spawn(20)
+					var/obj/item/circuitboard/firealarm/circuit = new()
+					circuit.forceMove(user.loc)
+					buildstage = 0
+					update_icon()
+		if(0)
+			if(istype(held_object, /obj/item/circuitboard/firealarm))
+				to_chat(user, "You insert the circuit!")
+				qdel(held_object)
+				buildstage = 1
+				update_icon()
+
+			else if(HAS_TRAIT(held_object, TRAIT_TOOL_WRENCH))
+				to_chat(user, "You remove the fire alarm assembly from the wall!")
+				var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
+				frame.forceMove(user.loc)
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				qdel(src)
 
 /obj/structure/machinery/firealarm/power_change()
 	..()

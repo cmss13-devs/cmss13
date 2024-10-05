@@ -259,6 +259,11 @@
 	return
 
 /obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(W, /obj/item/grab))
 		if(isxeno(user)) return
 		var/obj/item/grab/G = W

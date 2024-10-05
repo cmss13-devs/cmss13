@@ -31,7 +31,12 @@
 
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		mybag = I
 		I.forceMove(src)
@@ -40,6 +45,7 @@
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
 
 	else if(istype(I, /obj/item/tool/mop))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(I.reagents.total_volume < I.reagents.maximum_volume && mybucket) //if it's not completely soaked we assume they want to wet it, otherwise store it
 			if(mybucket.reagents.total_volume < 1)
 				to_chat(user, "[mybucket] is out of water!")
@@ -57,6 +63,7 @@
 			to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
 
 	else if(istype(I, /obj/item/reagent_container/spray) && !myspray)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		myspray = I
 		I.forceMove(src)
@@ -65,6 +72,7 @@
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
 
 	else if(istype(I, /obj/item/device/lightreplacer) && !myreplacer)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		myreplacer = I
 		I.forceMove(src)
@@ -73,6 +81,7 @@
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
 
 	else if(istype(I, /obj/item/tool/wet_sign))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(signs < 4)
 			user.drop_held_item()
 			I.forceMove(src)
@@ -84,16 +93,19 @@
 			to_chat(user, SPAN_NOTICE("[src] can't hold any more signs."))
 
 	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket) && !mybucket)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.drop_held_item()
 		mybucket = I
 		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
-		return TRUE //no afterattack
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	else if(mybag)
-		mybag.attackby(I, user)
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		mybag.attempt_item_insertion(I, FALSE, user)
 
 
 

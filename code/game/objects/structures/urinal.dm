@@ -7,8 +7,13 @@
 	anchored = TRUE
 
 /obj/structure/urinal/attackby(obj/item/I, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/grab))
 		if(isxeno(user)) return
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/grab/G = I
 		if(isliving(G.grabbed_thing))
 			var/mob/living/GM = G.grabbed_thing

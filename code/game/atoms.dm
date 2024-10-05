@@ -250,7 +250,7 @@ directive is properly returned.
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
 	to_chat(user, examine_block(examine_strings.Join("\n")))
 
-/atom/proc/get_examine_text(mob/user)
+/atom/proc/get_examine_text(mob/user) as /list
 	. = list()
 	. += "[icon2html(src, user)] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
@@ -394,9 +394,13 @@ Parameters are passed from New.
 		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
+	register_init_signals()
 	Decorate(mapload)
 
 	return INITIALIZE_HINT_NORMAL
+
+/atom/proc/register_init_signals()
+	SHOULD_CALL_PARENT(TRUE)
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()

@@ -1382,7 +1382,12 @@
 
 //GHOST CIGAR CODE
 /obj/item/clothing/mask/cigarette/cigar/fluff/ghostdex/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/tool/lighter/zippo/fluff/ghostdex))
-		..()
+		return
 	else
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("\The [src] straight out REFUSES to be lit by anything other than a purple zippo."))

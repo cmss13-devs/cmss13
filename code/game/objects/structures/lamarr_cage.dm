@@ -53,10 +53,12 @@
 
 
 /obj/structure/lamarr/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	health -= W.force * W.demolition_mod
 	healthcheck()
-	..()
-	return
 
 /obj/structure/lamarr/attack_hand(mob/user as mob)
 	if (src.destroyed)

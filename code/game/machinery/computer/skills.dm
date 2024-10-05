@@ -23,12 +23,16 @@
 
 
 /obj/structure/machinery/computer/skills/attackby(obj/item/O as obj, user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
+			. |= ATTACK_HINT_NO_TELEGRAPH
 			O.forceMove(src)
 			scan = O
 			to_chat(user, "You insert [O].")
-	..()
 
 /obj/structure/machinery/computer/skills/attack_remote(mob/user as mob)
 	return attack_hand(user)

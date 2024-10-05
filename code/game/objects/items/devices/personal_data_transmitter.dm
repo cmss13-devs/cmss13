@@ -56,7 +56,12 @@
 			overlays += image('icons/obj/items/devices.dmi', "+pdt_locator_tube_overlay_bracelet_unlinked")
 
 /obj/item/device/pdt_locator_tube/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/cell/crap))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(battery)
 			to_chat(user, SPAN_WARNING("\The [src] already has a battery installed."))
 			return
@@ -66,8 +71,8 @@
 		playsound(src, 'sound/machines/pda_button2.ogg', 15, TRUE)
 		update_icon()
 	else if(istype(W, /obj/item/cell))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_NOTICE("That industrial-sized battery is WAY too big for the tiny battery slot."))
-	return ..()
 
 /obj/item/device/pdt_locator_tube/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src)

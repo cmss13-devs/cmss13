@@ -38,25 +38,30 @@
 	tgui_interact(user)
 
 /obj/structure/machinery/bioprinter/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/sheet/metal))
-		if(stored_metal == max_metal)
-			to_chat(user, SPAN_WARNING("\The [src] is full!"))
-			return
-		var/obj/item/stack/sheet/metal/M = W
-		var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
-		if(!sheets_to_eat)
-			sheets_to_eat = 1
-		if(M.amount >= sheets_to_eat)
-			stored_metal += sheets_to_eat * 100
-			M.use(sheets_to_eat)
-		else
-			stored_metal += M.amount * 100
-			M.use(M.amount)
-		if(stored_metal > max_metal)
-			stored_metal = max_metal
-		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(!istype(W, /obj/item/stack/sheet/metal))
+		return
+
+	if(stored_metal == max_metal)
+		to_chat(user, SPAN_WARNING("\The [src] is full!"))
+		return
+
+	var/obj/item/stack/sheet/metal/M = W
+	var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
+	if(!sheets_to_eat)
+		sheets_to_eat = 1
+	if(M.amount >= sheets_to_eat)
+		stored_metal += sheets_to_eat * 100
+		M.use(sheets_to_eat)
 	else
-		return..()
+		stored_metal += M.amount * 100
+		M.use(M.amount)
+	if(stored_metal > max_metal)
+		stored_metal = max_metal
+	to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
 
 /obj/structure/machinery/bioprinter/get_examine_text(mob/user)
 	. = ..()

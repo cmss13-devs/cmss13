@@ -180,74 +180,77 @@
 		..()
 
 /obj/structure/machinery/power/smes/buildable/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, SPAN_WARNING("[src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
 		return
+	// TODO: Identify if this works any more LOL
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
-	// - No action was taken in parent function (terminal de/construction atm).
-	if (..())
+	// - No action was taken in parent function (terminal de/construction atm).c
+	// Charged above 1% and safeties are enabled.
+	if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
+		return
 
-		// Charged above 1% and safeties are enabled.
-		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-			to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
+	if (outputting || input_attempt)
+		to_chat(user, SPAN_WARNING("Turn off [src] first!"))
+		return
+
+	// Probability of failure if safety circuit is disabled (in %)
+	var/failure_probability = floor((charge / capacity) * 100)
+
+	// If failure probability is below 5% it's usually safe to do modifications
+	if (failure_probability < 5)
+		failure_probability = 0
+
+	// Crowbar - Disassemble the SMES.
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		if (terminal)
+			to_chat(user, SPAN_WARNING("You have to disassemble the terminal first!"))
 			return
 
-		if (outputting || input_attempt)
-			to_chat(user, SPAN_WARNING("Turn off [src] first!"))
+		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
+		to_chat(user, SPAN_WARNING("You begin to disassemble [src]!"))
+		if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
+
+			if (failure_probability && prob(failure_probability))
+				total_system_failure(failure_probability, user)
+				return
+
+			to_chat(usr, SPAN_DANGER("You have disassembled the SMES cell!"))
+			var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
+			M.state = CONSTRUCTION_STATE_PROGRESS
+			M.update_icon()
+			for(var/obj/I in component_parts)
+				if(I.reliability != 100 && crit_fail)
+					I.crit_fail = 1
+				I.forceMove(src.loc)
+			qdel(src)
 			return
 
-		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = floor((charge / capacity) * 100)
+	// Superconducting Magnetic Coil - Upgrade the SMES
+	else if(istype(W, /obj/item/stock_parts/smes_coil))
+		if (cur_coils < max_coils)
 
-		// If failure probability is below 5% it's usually safe to do modifications
-		if (failure_probability < 5)
-			failure_probability = 0
-
-		// Crowbar - Disassemble the SMES.
-		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-			if (terminal)
-				to_chat(user, SPAN_WARNING("You have to disassemble the terminal first!"))
+			if (failure_probability && prob(failure_probability))
+				total_system_failure(failure_probability, user)
 				return
 
-			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-			to_chat(user, SPAN_WARNING("You begin to disassemble [src]!"))
-			if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
+			to_chat(usr, "You install the coil into the SMES unit!")
+			if(user.drop_inv_item_to_loc(W, src))
+				cur_coils ++
+				LAZYADD(component_parts, W)
+				recalc_coils()
+		else
+			to_chat(usr, SPAN_DANGER("You can't insert more coils to this SMES unit!"))
 
-				if (failure_probability && prob(failure_probability))
-					total_system_failure(failure_probability, user)
-					return
-
-				to_chat(usr, SPAN_DANGER("You have disassembled the SMES cell!"))
-				var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
-				M.state = CONSTRUCTION_STATE_PROGRESS
-				M.update_icon()
-				for(var/obj/I in component_parts)
-					if(I.reliability != 100 && crit_fail)
-						I.crit_fail = 1
-					I.forceMove(src.loc)
-				qdel(src)
-				return
-
-		// Superconducting Magnetic Coil - Upgrade the SMES
-		else if(istype(W, /obj/item/stock_parts/smes_coil))
-			if (cur_coils < max_coils)
-
-				if (failure_probability && prob(failure_probability))
-					total_system_failure(failure_probability, user)
-					return
-
-				to_chat(usr, "You install the coil into the SMES unit!")
-				if(user.drop_inv_item_to_loc(W, src))
-					cur_coils ++
-					LAZYADD(component_parts, W)
-					recalc_coils()
-			else
-				to_chat(usr, SPAN_DANGER("You can't insert more coils to this SMES unit!"))
-
-		// Multitool - Toggle the safeties.
-		else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-			safeties_enabled = !safeties_enabled
-			to_chat(user, SPAN_WARNING("You [safeties_enabled ? "connected" : "disconnected"] the safety circuit."))
-			src.visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")
+	// Multitool - Toggle the safeties.
+	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		safeties_enabled = !safeties_enabled
+		to_chat(user, SPAN_WARNING("You [safeties_enabled ? "connected" : "disconnected"] the safety circuit."))
+		src.visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")

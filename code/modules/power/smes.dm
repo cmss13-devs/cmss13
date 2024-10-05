@@ -219,30 +219,36 @@
 
 
 /obj/structure/machinery/power/smes/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_BREAK_ATTACK
 		if(!open_hatch)
 			open_hatch = 1
 			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
-			return 0
+			return
 		else
 			open_hatch = 0
 			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
-			return 0
+			return
 
 	if (!open_hatch)
 		to_chat(user, SPAN_WARNING("You need to open access hatch on [src] first!"))
-		return 0
+		return
 
 	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_BREAK_ATTACK
 		building_terminal = 1
 		var/obj/item/stack/cable_coil/CC = W
 		if (CC.get_amount() < 10)
 			to_chat(user, SPAN_WARNING("You need more cables."))
 			building_terminal = 0
-			return 0
+			return
 		if (make_terminal(user))
 			building_terminal = 0
-			return 0
+			return
 		building_terminal = 0
 		CC.use(10)
 		user.visible_message(\
@@ -250,9 +256,10 @@
 				SPAN_NOTICE("You added cables to \the [src]."))
 		terminal.connect_to_network()
 		stat = 0
-		return 0
+		return
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && !building_terminal)
+		. |= ATTACK_HINT_NO_TELEGRAPH|ATTACK_HINT_BREAK_ATTACK
 		building_terminal = 1
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))
@@ -267,7 +274,7 @@
 						s.set_up(5, 1, src)
 						s.start()
 						building_terminal = 0
-						return 0
+						return
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\
 						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),\
@@ -275,8 +282,8 @@
 					qdel(terminal)
 					terminal = null
 		building_terminal = 0
-		return 0
-	return 1
+		return
+	. |= COMSIG_PARENT_AFTERATTACK
 
 // TGUI STUFF \\
 

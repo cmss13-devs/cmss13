@@ -340,6 +340,10 @@
 	update_icon()
 
 /obj/structure/machinery/brig_cell/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(W, /obj/item/paper/incident))
 		return
 

@@ -220,7 +220,12 @@
 	attack_generic(M, M.melee_damage_upper)
 
 /obj/structure/window/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
@@ -257,6 +262,7 @@
 	if(W.flags_item & NOBLUDGEON) return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!anchored)
 			var/turf/open/T = loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
@@ -285,6 +291,7 @@
 			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
 			deconstruct(TRUE)
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && reinf && state <= 1 && !not_deconstructable)
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
@@ -296,8 +303,6 @@
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)
-		..()
-	return
 
 /obj/structure/window/proc/is_full_window()
 	return !(flags_atom & ON_BORDER)

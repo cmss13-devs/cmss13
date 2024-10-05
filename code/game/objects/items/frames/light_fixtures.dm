@@ -11,11 +11,15 @@
 	var/sheets_refunded = 2
 
 /obj/item/frame/light_fixture/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 		qdel(src)
 		return
-	..()
 
 /obj/item/frame/light_fixture/proc/try_build(turf/on_wall)
 	if (get_dist(on_wall,usr)>1)

@@ -65,7 +65,12 @@
 		icon_state = "[base_state]-p"
 // src.sd_set_light(0)
 
-/obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/sparker/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		add_fingerprint(user)
 		src.disable = !src.disable
@@ -81,11 +86,11 @@
 
 /obj/structure/machinery/sparker/attack_remote()
 	if (src.anchored)
-		return src.ignite()
+		return src.turn_on()
 	else
 		return
 
-/obj/structure/machinery/sparker/proc/ignite()
+/obj/structure/machinery/sparker/proc/turn_on()
 	if (!(powered()))
 		return
 
@@ -108,7 +113,7 @@
 	. = ..()
 	if(inoperable())
 		return
-	ignite()
+	turn_on()
 
 /obj/structure/machinery/ignition_switch/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -126,7 +131,7 @@
 
 	for(var/obj/structure/machinery/sparker/M in GLOB.machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, turn_on))
 
 	for(var/obj/structure/machinery/igniter/M in GLOB.machines)
 		if(M.id == src.id)

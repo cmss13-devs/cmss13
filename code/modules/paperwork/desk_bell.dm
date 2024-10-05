@@ -41,17 +41,23 @@
 		mob.put_in_hands(src)
 
 /obj/item/desk_bell/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
-		if(broken_ringer)
-			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
-			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
-				playsound(src, 'sound/items/Screwdriver.ogg', 50)
-				broken_ringer = FALSE
-				times_rang = 0
-				return TRUE
-			return FALSE
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		if(!broken_ringer)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
+			playsound(src, 'sound/items/Screwdriver.ogg', 50)
+			broken_ringer = FALSE
+			times_rang = 0
+			. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 
 	//Return at this point if we're not on a turf so we don't anchor or unanchor inside our bag/hands or inventory.
 	if(!isturf(loc))
@@ -59,6 +65,7 @@
 
 	//Wrenching down and unwrenching.
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(user.a_intent == INTENT_HARM)
 			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
 			playsound(src, 'sound/items/deconstruct.ogg', 35)
@@ -66,15 +73,15 @@
 				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)
-				return TRUE
+				. |= ATTACK_HINT_NO_AFTERATTACK
 		else
 			user.visible_message(SPAN_NOTICE("[user] begins [anchored ? "un" : ""]securing [src]..."), SPAN_NOTICE("You begin [anchored ? "un" : ""]securing [src]..."))
 			playsound(src, 'sound/items/Ratchet.ogg', 35, TRUE)
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				return FALSE
+				return
 			user.visible_message(SPAN_NOTICE("[user] [anchored ? "un" : ""]secures [src]."), SPAN_NOTICE("You [anchored ? "un" : ""]secure [src]."))
 			anchored = !anchored
-			return TRUE
+			. |= ATTACK_HINT_NO_AFTERATTACK
 
 
 /// Check if the clapper breaks, and if it does, break it. Chance to break is 1% for every 100 rings of the bell.

@@ -165,8 +165,13 @@
 		. += SPAN_DANGER("It looks like the proboscis has been removed.")
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(W.flags_item & NOBLUDGEON)
 		return
+
 	die()
 
 /obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/P)

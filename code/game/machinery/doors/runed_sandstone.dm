@@ -22,12 +22,16 @@
 		return FALSE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
-// ..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	user.set_interaction(src)
 	if (!istype(W, /obj/item/weapon/wristblades || !isyautja(user)))
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		playsound(user.loc, 'sound/effects/bladeinsert.ogg', 25, 0)
 
 		var/list/options = list()
@@ -58,7 +62,6 @@
 		src.add_fingerprint(usr)
 		src.updateUsrDialog()
 		src.update_icon()
-	return
 
 //ASYNC procs (Probably ok to get rid of)
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/open_door()

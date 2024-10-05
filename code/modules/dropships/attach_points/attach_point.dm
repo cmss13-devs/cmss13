@@ -26,11 +26,14 @@
 	return ..()
 
 /obj/effect/attach_point/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/clamp = I
 		install_equipment(clamp, user)
-		return TRUE
-	return ..()
+		. |= ATTACK_HINT_NO_AFTERATTACK|ATTACK_HINT_NO_TELEGRAPH
 
 /// Called when a real user with a powerloader attempts to install an equipment on the attach point
 /obj/effect/attach_point/proc/install_equipment(obj/item/powerloader_clamp/clamp, mob/living/user)

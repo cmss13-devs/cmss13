@@ -16,6 +16,11 @@
 	var/charge_amount = 1000
 
 /obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(istype(user,/mob/living/silicon))
 		return
 

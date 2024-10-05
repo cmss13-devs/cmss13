@@ -98,42 +98,47 @@
 
 
 /obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
-	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
-	if(open_hatch)
-		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-			if (charge < (capacity / 100))
-				if (!outputting && !input_attempt)
-					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-					var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
-					M.state = CONSTRUCTION_STATE_PROGRESS
-					M.update_icon()
-					for(var/obj/I in component_parts)
-						if(I.reliability != 100 && crit_fail)
-							I.crit_fail = 1
-						I.forceMove(src.loc)
-					qdel(src)
-					return 1
-				else
-					to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
-			else
-				to_chat(user, SPAN_WARNING("Better let [src] discharge before dismantling it."))
-		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
-			if (charge < (capacity / 100))
-				if (!outputting && !input_attempt)
-					if(user.drop_inv_item_to_loc(W, src))
-						LAZYADD(component_parts, W)
-						RefreshParts()
-						to_chat(user, SPAN_NOTICE("You upgrade the [src] with [W.name]."))
-				else
-					to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
-			else
-				to_chat(user, SPAN_WARNING("Better let [src] discharge before putting your hand inside it."))
-		else
-			user.set_interaction(src)
-			interact(user)
-			return 1
-	return
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
+	//SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
+	if(!open_hatch)
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		if (charge < (capacity / 100))
+			if (!outputting && !input_attempt)
+				playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
+				var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
+				M.state = CONSTRUCTION_STATE_PROGRESS
+				M.update_icon()
+				for(var/obj/I in component_parts)
+					if(I.reliability != 100 && crit_fail)
+						I.crit_fail = 1
+					I.forceMove(src.loc)
+				qdel(src)
+				return
+			else
+				to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
+		else
+			to_chat(user, SPAN_WARNING("Better let [src] discharge before dismantling it."))
+	else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
+		if (charge < (capacity / 100))
+			if (!outputting && !input_attempt)
+				if(user.drop_inv_item_to_loc(W, src))
+					LAZYADD(component_parts, W)
+					RefreshParts()
+					to_chat(user, SPAN_NOTICE("You upgrade the [src] with [W.name]."))
+			else
+				to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
+		else
+			to_chat(user, SPAN_WARNING("Better let [src] discharge before putting your hand inside it."))
+	else
+		user.set_interaction(src)
+		interact(user)
+		. |= ATTACK_HINT_NO_AFTERATTACK
 
 //The shitty one that will blow up.
 /obj/structure/machinery/power/smes/batteryrack/makeshift

@@ -37,10 +37,14 @@
 	SSclues.prints_list += src
 
 /obj/effect/decal/prints/attackby(obj/item/W, mob/living/user)
-	if(!istype(W, /obj/item/device/clue_scanner))
-		..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
+	if(!istype(W, /obj/item/device/clue_scanner))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/device/clue_scanner/S = W
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))

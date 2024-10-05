@@ -49,7 +49,12 @@
 		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers at present."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/grab))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!isxeno(user)) return
 		var/obj/item/grab/G = I
 		if(iscarbon(G.grabbed_thing))
@@ -90,6 +95,7 @@
 			update_icon()
 		return
 	if(istype(I, /obj/item/clothing/mask/facehugger))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/clothing/mask/facehugger/F = I
 		if(F.stat != DEAD)
 			if(stored_huggers >= huggers_to_grow_max)
@@ -103,10 +109,12 @@
 				visible_message(SPAN_XENOWARNING("[F] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 			qdel(F)
-		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
+		else
+			to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
 	//refill egg morpher from an egg
 	if(istype(I, /obj/item/xeno_egg))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/xeno_egg/egg = I
 		if(stored_huggers >= huggers_to_grow_max)
 			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
@@ -118,8 +126,6 @@
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		qdel(egg)
-		return
-	return ..(I, user)
 
 /obj/effect/alien/resin/special/eggmorph/update_icon()
 	..()

@@ -11,6 +11,21 @@
 	w_class = SIZE_TINY
 	var/obj/item/implant/imp = null
 
+/obj/item/implantcase/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/implantcase/write(obj/item/writer, mob/user, mods, color, crayon)
+	var/t = stripped_input(user, "What would you like the label to be?", "[name]", null)
+	if (user.get_active_hand() != writer)
+		return
+	if((!in_range(src, user) && loc != user))
+		return
+	if(t)
+		name = text("Glass Case - '[t]'")
+	else
+		name = "Glass Case"
+
 /obj/item/implantcase/proc/update()
 	if (imp)
 		icon_state = "implantcase-[imp.implant_color]"
@@ -20,17 +35,7 @@
 
 /obj/item/implantcase/attackby(obj/item/I as obj, mob/user as mob)
 	..()
-	if (HAS_TRAIT(I, TRAIT_TOOL_PEN))
-		var/t = stripped_input(user, "What would you like the label to be?", text("[]", src.name), null)
-		if (user.get_active_hand() != I)
-			return
-		if((!in_range(src, usr) && src.loc != user))
-			return
-		if(t)
-			src.name = text("Glass Case - '[]'", t)
-		else
-			src.name = "Glass Case"
-	else if(istype(I, /obj/item/reagent_container/syringe))
+	if(istype(I, /obj/item/reagent_container/syringe))
 		if(!src.imp) return
 		if(!src.imp.allow_reagents) return
 		if(src.imp.reagents.total_volume >= src.imp.reagents.maximum_volume)

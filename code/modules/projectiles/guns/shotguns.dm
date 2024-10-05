@@ -702,7 +702,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/cane/Initialize(mapload, spawn_empty)
 	. = ..()
-	AddElement(/datum/element/traitbound/gun_silenced)
+	AddElement(/datum/element/traitbound/gun/silenced)
 
 /obj/item/weapon/gun/shotgun/double/cane/set_gun_config_values()
 	..()

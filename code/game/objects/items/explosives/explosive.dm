@@ -61,9 +61,16 @@
 	return ..()
 
 /obj/item/explosive/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(proximity_flag && (istype(target, /obj/item/device/assembly_holder) || is_type_in_list(target, allowed_sensors) || is_type_in_list(target, allowed_containers)))
-		return attackby(target, user)
-	return ..()
+	if (!proximity_flag)
+		..()
+		return
+	if (istype(target, /obj/item/device/assembly_holder))
+		attach_assembly_holder(target, user)
+		return
+	if (is_type_in_list(target, allowed_containers))
+		attach_container(target, user)
+		return
+	..()
 
 /obj/item/explosive/attack_self(mob/user)
 	..()
@@ -102,35 +109,67 @@
 		else
 			icon_state = base_icon_state
 
-/obj/item/explosive/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/explosive/proc/attach_assembly_holder(obj/item/device/assembly_holder/new_detonator, mob/user)
+	if (assembly_stage && assembly_stage != ASSEMBLY_UNLOCKED)
+		return
+	if (detonator)
+		to_chat(user, SPAN_DANGER("This casing already has a detonator."))
+		return
+	if (!isigniter(new_detonator.a_left) && !isigniter(new_detonator.a_right))
+		to_chat(user, SPAN_DANGER("Assembly must contain one igniter."))
+		return
+	if ((!(new_detonator.a_left.type in allowed_sensors) && !isigniter(new_detonator.a_left)) || (!(new_detonator.a_right.type in allowed_sensors) && !isigniter(new_detonator.a_right)))
+		to_chat(user, SPAN_DANGER("Assembly contains a sensor that is incompatible with this type of casing."))
+		return
+	if (!new_detonator.secured)
+		to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
+		return
+	to_chat(user, SPAN_NOTICE("You add [new_detonator] to the [name]."))
+	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+	user.temp_drop_inv_item(new_detonator)
+	new_detonator.forceMove(src)
+	detonator = new_detonator
+	assembly_stage = ASSEMBLY_UNLOCKED
+	desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
+	update_icon()
+
+/obj/item/explosive/proc/attach_container(obj/item/reagent_container/glass/container, mob/user)
+	if (assembly_stage && assembly_stage != ASSEMBLY_UNLOCKED)
+		return
+	if (current_container_volume >= max_container_volume)
+		to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+		return
+	if (!container.reagents.total_volume)
+		to_chat(user, SPAN_DANGER("\the [container] is empty."))
+		return
+	if (container.reagents.maximum_volume + current_container_volume > max_container_volume)
+		to_chat(user, SPAN_DANGER("\the [container] is too large for [name]."))
+		return
+	if (!user.temp_drop_inv_item(container))
+		return
+	to_chat(user, SPAN_NOTICE("You add \the [container] to the assembly."))
+	container.forceMove(src)
+	containers += container
+	current_container_volume += container.reagents.maximum_volume
+	assembly_stage = ASSEMBLY_UNLOCKED
+	desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
+
+/obj/item/explosive/attackby(obj/item/attacked_by, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!customizable || active)
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
-	if(istype(W,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
-		var/obj/item/device/assembly_holder/det = W
-		if(detonator)
-			to_chat(user, SPAN_DANGER("This casing already has a detonator."))
-			return
-		if((!isigniter(det.a_left) && !isigniter(det.a_right)))
-			to_chat(user, SPAN_DANGER("Assembly must contain one igniter."))
-			return
-		if((!(det.a_left.type in allowed_sensors) && !isigniter(det.a_left)) || (!(det.a_right.type in allowed_sensors) && !isigniter(det.a_right)))
-			to_chat(user, SPAN_DANGER("Assembly contains a sensor that is incompatible with this type of casing."))
-			return
-		if(!det.secured)
-			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
-			return
-		to_chat(user, SPAN_NOTICE("You add [W] to the [name]."))
-		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
-		user.temp_drop_inv_item(det)
-		det.forceMove(src)
-		detonator = det
-		assembly_stage = ASSEMBLY_UNLOCKED
-		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
-		update_icon()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(istype(attacked_by,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		attach_assembly_holder(attacked_by, user)
+	else if(HAS_TRAIT(attacked_by, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
 			if(length(containers))
 				to_chat(user, SPAN_NOTICE("You lock the assembly."))
@@ -146,24 +185,9 @@
 			desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			assembly_stage = ASSEMBLY_UNLOCKED
 		update_icon()
-	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
-		if(current_container_volume >= max_container_volume)
-			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
-			return
-		else
-			if(W.reagents.total_volume)
-				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
-					return
-				if(user.temp_drop_inv_item(W))
-					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
-					W.forceMove(src)
-					containers += W
-					current_container_volume += W.reagents.maximum_volume
-					assembly_stage = ASSEMBLY_UNLOCKED
-					desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
-			else
-				to_chat(user, SPAN_DANGER("\the [W] is empty."))
+	else if(is_type_in_list(attacked_by, allowed_containers))
+		. |= ATTACK_HINT_NO_TELEGRAPH
+		attach_container(attacked_by, user)
 
 /obj/item/explosive/proc/activate_sensors()
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)

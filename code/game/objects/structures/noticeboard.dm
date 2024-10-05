@@ -24,23 +24,30 @@
 
 //attaching papers!!
 /obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
-		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("You are not authorized to add notices!"))
-			return
-		if(notices < MAX_NOTICES)
-			if(!user.drop_inv_item_to_loc(O, src))
-				return
-			notices++
-			update_overlays()
-			to_chat(user, SPAN_NOTICE("You pin the [O] to the noticeboard."))
-		else
-			to_chat(user, SPAN_WARNING("The notice board is full!"))
-	else if(istype(O, /obj/item/tool/pen))
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(istype(O, /obj/item/tool/pen))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		user.set_interaction(src)
 		tgui_interact(user)
+		return
+
+	if(!istype(O, /obj/item/paper) && !istype(O, /obj/item/photo))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("You are not authorized to add notices!"))
+	else if(notices < MAX_NOTICES)
+		if(!user.drop_inv_item_to_loc(O, src))
+			return
+		notices++
+		update_overlays()
+		to_chat(user, SPAN_NOTICE("You pin the [O] to the noticeboard."))
 	else
-		return ..()
+		to_chat(user, SPAN_WARNING("The notice board is full!"))
 
 /obj/structure/noticeboard/attack_hand(mob/user)
 	. = ..()

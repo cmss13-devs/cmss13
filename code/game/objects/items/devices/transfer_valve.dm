@@ -18,7 +18,12 @@
 	to_chat(user, SPAN_NOTICE("You look at \the [src] cluelessly."))
 
 /obj/item/device/transfer_valve/attackby(obj/item/item, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(item, /obj/item/tank))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(tank_one && tank_two)
 			to_chat(user, SPAN_WARNING("There are already two tanks attached, remove one first."))
 			return
@@ -37,6 +42,7 @@
 		update_icon()
 
 	else if(isassembly(item))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/device/assembly/A = item
 		if(A.secured)
 			to_chat(user, SPAN_NOTICE("The device is secured."))

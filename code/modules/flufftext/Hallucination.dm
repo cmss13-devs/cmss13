@@ -248,15 +248,16 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	health = 100
 
 /obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(GLOB.world_view_size,my_target))
 		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
 	my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
 
 	src.health -= P.force
-
-
-	return
 
 /obj/effect/fake_attacker/Crossed(mob/M, somenumber)
 	if(M == my_target)

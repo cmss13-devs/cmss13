@@ -168,9 +168,14 @@
 				close()
 
 /obj/structure/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	add_fingerprint(user)
+	//Already doing something.
 	if(operating)
-		return//Already doing something.
+		return
 	if(iswelder(C))
 		var/obj/item/tool/weldingtool/W = C
 		if(W.remove_fuel(0, user))
@@ -205,7 +210,8 @@
 					open(TRUE)
 				else
 					close()
-		return TRUE //no afterattack call
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	else
 		if(blocked)
 			to_chat(user, SPAN_DANGER("\The [src] is welded solid!"))

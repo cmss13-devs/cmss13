@@ -15,7 +15,12 @@
 	return
 
 /obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(I, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/card/id/card = I
 		if(ACCESS_CIVILIAN_PUBLIC in card.GetAccess())
 			var/sign_type = tgui_input_list(user, "What would you like to change the barsign to?", "Bar Sign", list("Off", "Pink Flamingo", "Magma Sea", "Limbo", "Rusty Axe", "Armok Bar", "Broken Drum", "Mead Bay", "The Damn Wall", "The Cavern", "Cindi Kate", "The Orchard", "The Saucy Clown", "The Clowns Head", "Whiskey Implant", "Carpe Carp", "Robust Roadhouse", "Greytide", "The Redshirt"))

@@ -81,6 +81,7 @@
 /obj/structure/closet/bodybag/Initialize()
 	. = ..()
 	storage_capacity = (mob_size * 2) - 1
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
 
 /obj/structure/closet/bodybag/proc/update_name()
 	if(opened)
@@ -92,33 +93,45 @@
 		else
 			name = "[bag_name] (empty)"
 
+/obj/structure/closet/bodybag/write(obj/item/writer, mob/user, mods, color, crayon)
+	INVOKE_ASYNC(src, PROC_REF(write_async), user)
+
+/obj/structure/closet/bodybag/proc/write_async(mob/user)
+	var/prior_label_text
+	var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+	if(labelcomponent)
+		prior_label_text = labelcomponent.label_name
+	var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+	if(tmp_label == "" || !tmp_label)
+		to_chat(user, SPAN_NOTICE("You're going to need to use wirecutters to remove the label."))
+		return
+	if(length(tmp_label) > MAX_NAME_LEN)
+		to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+	SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+	AddComponent(/datum/component/label, tmp_label)
+	playsound(src, "paper_writing", 15, TRUE)
+
 /obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
-			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			to_chat(user, SPAN_NOTICE("You're going to need to use wirecutters to remove the label."))
-			return
-		if(length(tmp_label) > MAX_NAME_LEN)
-			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
-		src.overlays.Cut()
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
-			labelcomponent.remove_label()
+
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		return
-	else if(istype(W, /obj/item/weapon/zombie_claws))
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if (istype(W, /obj/item/weapon/zombie_claws))
 		open()
+		return
+
+	to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
+	src.overlays.Cut()
+	// TODO: convert this to signals
+	var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+	if(labelcomponent)
+		labelcomponent.remove_label()
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
@@ -226,14 +239,19 @@
 		used = CB.used
 
 /obj/structure/closet/bodybag/cryobag/attackby(obj/item/I, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!istype(I, /obj/item/device/healthanalyzer))
 		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(!stasis_mob)
 		to_chat(user, SPAN_WARNING("The stasis bag is empty!"))
 		return
 	var/obj/item/device/healthanalyzer/J = I
 	J.attack(stasis_mob, user) // yes this is awful -spookydonut
-	return
 
 /obj/structure/closet/bodybag/cryobag/Destroy()
 	var/mob/living/L = locate() in contents

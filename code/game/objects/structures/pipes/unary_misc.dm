@@ -18,12 +18,15 @@
 		icon_state = "freezer_0"
 
 /obj/structure/pipes/unary/freezer/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
 		return
-
-	..()
 
 /obj/structure/pipes/unary/freezer/get_examine_text(mob/user)
 	. = ..()
@@ -66,12 +69,15 @@
 
 //dismantling code. copied from autolathe
 /obj/structure/pipes/unary/heater/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
 		return
-
-	..()
 
 /obj/structure/pipes/unary/heater/get_examine_text(mob/user)
 	. = ..()

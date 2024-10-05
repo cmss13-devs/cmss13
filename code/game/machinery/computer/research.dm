@@ -22,8 +22,13 @@
 	. = ..()
 
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	//Collecting grants
 	if(istype(B, /obj/item/paper/research_notes))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/paper/research_notes/N = B
 		if(N.note_type == "grant")
 			if(!N.grant)
@@ -35,6 +40,7 @@
 			return
 	//Saving to database
 	if(istype(B, /obj/item/paper))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/paper/P = B
 		var/response = alert(usr,"Do you want to save [P.name] to the research database?","[src]","Yes","No")
 		if(response != "Yes")
@@ -55,6 +61,7 @@
 		return
 	//biomass credits rewards
 	if(istype(B, /obj/item/research_upgrades/credits))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/research_upgrades/credits/cred = B
 		GLOB.chemical_data.update_credits(cred.credit_value)
 		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting [cred.credit_value] points from sales."))
@@ -62,6 +69,7 @@
 	//Clearance Card Updating
 	if(!istype(B, /obj/item/card/id))
 		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	var/obj/item/card/id/silver/clearance_badge/card = B
 	if(!istype(card))
 		visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], but it is refused."))

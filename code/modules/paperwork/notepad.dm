@@ -19,24 +19,28 @@
 
 /obj/item/notepad/Initialize(mapload, ...)
 	. = ..()
-	if(!cover_color)
+	if (!cover_color)
 		cover_color = pick(cover_colors)
 	icon_state = initial(icon_state) + "_[cover_color]"
 
-	for(var/i = 1 to paper_left)
+	for (var/i = 1 to paper_left)
 		new /obj/item/paper(src)
+	ADD_TRAIT(src, TRAIT_WRITABLE, TRAIT_SOURCE_INHERENT)
+
+/obj/item/notepad/write(obj/item/writer, mob/user, mods, color, crayon)
+	close_browser(usr, name) //Closes the dialog
+	if (page < length(contents))
+		page = 1
+	var/obj/item/paper/paper = contents[page]
+	paper.attackby(writer, user)
+	attack_self(user) //Update the browsed page.
+	add_fingerprint(user)
 
 /obj/item/notepad/attackby(obj/item/attack_item, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-	if(HAS_TRAIT(attack_item, TRAIT_TOOL_PEN) || istype(attack_item, /obj/item/toy/crayon))
-		close_browser(usr, name) //Closes the dialog
-		if(page < length(contents))
-			page = 1
-		var/obj/item/paper/paper = contents[page]
-		paper.attackby(attack_item, user)
-
-	attack_self(user) //Update the browsed page.
 	add_fingerprint(user)
 
 /obj/item/notepad/attack_self(mob/user)

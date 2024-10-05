@@ -61,8 +61,7 @@
 	return 1
 
 /obj/item/device/assembly_holder/attach_special(obj/O, mob/user)
-	if(!O) return
-	if(!O.IsSpecialAssembly()) return 0
+	return
 
 /obj/item/device/assembly_holder/update_icon()
 	overlays.Cut()
@@ -124,7 +123,12 @@
 	..()
 
 /obj/item/device/assembly_holder/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!a_left || !a_right)
 			to_chat(user, SPAN_DANGER("BUG:Assembly part missing, please report this!"))
 			return
@@ -137,11 +141,6 @@
 			to_chat(user, SPAN_NOTICE("\The [src] can now be taken apart!"))
 		update_icon()
 		return
-	else if(W.IsSpecialAssembly())
-		attach_special(W, user)
-	else
-		..()
-	return
 
 /obj/item/device/assembly_holder/attack_self(mob/user)
 	..()

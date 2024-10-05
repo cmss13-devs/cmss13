@@ -47,7 +47,11 @@
 	return src.attack_hand(user)
 
 /obj/structure/machinery/holosign_switch/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	. |= src.attack_hand(user)
 
 /obj/structure/machinery/holosign_switch/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)

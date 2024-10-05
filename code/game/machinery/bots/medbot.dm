@@ -185,7 +185,12 @@
 	return
 
 /obj/structure/machinery/bot/medbot/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if (istype(W, /obj/item/card/id))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if (src.allowed(user) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked." : "unlocked."]"))
@@ -197,6 +202,7 @@
 				to_chat(user, SPAN_WARNING("Access denied."))
 
 	else if (istype(W, /obj/item/reagent_container/glass))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(src.locked)
 			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))
 			return
@@ -210,10 +216,8 @@
 			src.updateUsrDialog()
 		return
 
-	else
-		..()
-		if (health < maxhealth && !HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && W.force)
-			step_to(src, (get_step_away(src,user)))
+	else if (health < maxhealth && !HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && W.force)
+		step_to(src, (get_step_away(src,user)))
 
 /obj/structure/machinery/bot/medbot/process()
 	set background = 1
@@ -481,11 +485,14 @@
  */
 
 /obj/item/storage/firstaid/attackby(obj/item/robot_parts/S, mob/user as mob)
-
-	if ((!istype(S, /obj/item/robot_parts/arm/l_arm)) && (!istype(S, /obj/item/robot_parts/arm/r_arm)))
-		..()
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
 		return
 
+	if ((!istype(S, /obj/item/robot_parts/arm/l_arm)) && (!istype(S, /obj/item/robot_parts/arm/r_arm)))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	//Making a medibot!
 	if(length(src.contents) >= 1)
 		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))

@@ -110,36 +110,41 @@
 	return FALSE
 
 /obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/the_grab, mob/user)
-	if(istype(the_grab))
-		if(user.is_mob_incapacitated() || !(ishuman(user)))
-			return FALSE
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
-		if(being_forced)
-			to_chat(user, SPAN_WARNING("There's something forcing it open!"))
-			return FALSE
+	if(!istype(the_grab))
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+	if(user.is_mob_incapacitated() || !(ishuman(user)))
+		return
 
-		if(occupant)
-			to_chat(user, SPAN_WARNING("There is someone in there already!"))
-			return FALSE
+	if(being_forced)
+		to_chat(user, SPAN_WARNING("There's something forcing it open!"))
+		return
 
-		if(dock_state < STATE_READY)
-			to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
-			return FALSE
+	if(occupant)
+		to_chat(user, SPAN_WARNING("There is someone in there already!"))
+		return
 
-		var/mob/living/carbon/human/grabbed_mob = the_grab.grabbed_thing
-		if(!istype(grabbed_mob))
-			return FALSE
-		if(grabbed_mob.stat == DEAD) //This mob is dead
-			to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
-			return FALSE
+	if(dock_state < STATE_READY)
+		to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
+		return
 
-		visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
+	var/mob/living/carbon/human/grabbed_mob = the_grab.grabbed_thing
+	if(!istype(grabbed_mob))
+		return
+	if(grabbed_mob.stat == DEAD) //This mob is dead
+		to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
+		return
+	visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
 
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(!grabbed_mob || !the_grab || !the_grab.grabbed_thing || !the_grab.grabbed_thing.loc || the_grab.grabbed_thing != grabbed_mob)
-				return FALSE
-			move_mob_inside(grabbed_mob)
-			injector_name = user.real_name
+	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(!grabbed_mob || !the_grab || !the_grab.grabbed_thing || !the_grab.grabbed_thing.loc || the_grab.grabbed_thing != grabbed_mob)
+			return
+		move_mob_inside(grabbed_mob)
+		injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/eject()
 	set name = "Eject Pod"
@@ -248,9 +253,6 @@
 
 	//Can't interact with them, mostly to prevent grief and meta.
 /obj/structure/machinery/door/airlock/evacuation/Collided()
-	return FALSE
-
-/obj/structure/machinery/door/airlock/evacuation/attackby()
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/attack_hand()

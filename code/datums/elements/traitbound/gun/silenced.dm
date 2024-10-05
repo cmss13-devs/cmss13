@@ -1,8 +1,7 @@
-/datum/element/traitbound/gun_silenced
+/datum/element/traitbound/gun/silenced
 	associated_trait = TRAIT_GUN_SILENCED
-	compatible_types = list(/obj/item/weapon/gun)
 
-/datum/element/traitbound/gun_silenced/Attach(datum/target)
+/datum/element/traitbound/gun/silenced/Attach(datum/target)
 	. = ..()
 	if(. & ELEMENT_INCOMPATIBLE)
 		return
@@ -12,7 +11,7 @@
 	if(!HAS_TRAIT_FROM(G, TRAIT_GUN_SILENCED, TRAIT_SOURCE_INHERENT))
 		G.fire_sound = "gun_silenced"
 
-/datum/element/traitbound/gun_silenced/Detach(datum/target)
+/datum/element/traitbound/gun/silenced/Detach(datum/target)
 	var/obj/item/weapon/gun/G = target
 	G.flags_gun_features &= ~GUN_SILENCED
 	G.muzzle_flash = initial(G.muzzle_flash)

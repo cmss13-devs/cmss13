@@ -99,14 +99,21 @@
 	return 0
 
 /obj/structure/machinery/processor/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		return
+
+	. |= ATTACK_HINT_NO_TELEGRAPH
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	if(length(contents) > 0) //TODO: several items at once? several different items?
 		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
-		return 1
-	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		. = ..()
+		. |= ATTACK_HINT_NO_AFTERATTACK
 		return
 	var/obj/what = O
 	if (istype(O, /obj/item/grab))
@@ -116,9 +123,11 @@
 	var/datum/food_processor_process/P = select_recipe(what)
 	if (!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	if(!P.can_use(user))
-		return 1
+		. |= ATTACK_HINT_NO_AFTERATTACK
+		return
 	user.visible_message("[user] put [what] into [src].", \
 		"You put [what] into [src].")
 	user.drop_held_item()

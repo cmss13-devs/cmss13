@@ -45,8 +45,12 @@
 	return
 
 /turf/open/space/attackby(obj/item/C, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
 
 	if (istype(C, /obj/item/stack/rods))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			return
@@ -58,6 +62,7 @@
 		return
 
 	if (istype(C, /obj/item/stack/tile/plasteel))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			var/obj/item/stack/tile/plasteel/S = C
@@ -70,7 +75,6 @@
 			return
 		else
 			to_chat(user, SPAN_DANGER("The plating is going to need some support."))
-	return
 
 
 // Ported from unstable r355

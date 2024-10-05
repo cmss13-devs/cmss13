@@ -83,7 +83,12 @@
 	ui_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(istype(W, /obj/item/frame/matrix_frame))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		var/obj/item/frame/matrix_frame/matrix = W
 		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)

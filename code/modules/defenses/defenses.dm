@@ -174,6 +174,10 @@
 	return FALSE
 
 /obj/structure/machinery/defenses/attackby(obj/item/O as obj, mob/user as mob)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(QDELETED(O))
 		return
 
@@ -312,7 +316,7 @@
 			var/turf/open/floor = get_turf(src)
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
-				return FALSE
+				return
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 
@@ -349,7 +353,8 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	return TRUE
+	. |= ATTACK_HINT_NO_AFTERATTACK
+	return
 
 /obj/structure/machinery/defenses/attack_hand(mob/user)
 	if(!attack_hand_checks(user))

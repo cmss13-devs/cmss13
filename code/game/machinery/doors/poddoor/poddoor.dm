@@ -33,6 +33,11 @@
 		return 0
 
 /obj/structure/machinery/door/poddoor/attackby(obj/item/W, mob/user)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+	. |= ATTACK_HINT_NO_TELEGRAPH
+
 	add_fingerprint(user)
 	if(!W.pry_capable)
 		return

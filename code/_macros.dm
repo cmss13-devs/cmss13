@@ -45,8 +45,8 @@
 #define LAZYINSERT(L, I, X) if(!L) { L = list(); } L.Insert(X, I);
 // Adds I to L, initializing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
-// Sets L[A] to I, initializing L if necessary
-#define LAZYSET(L, A, I) if(!L) { L = list(); } L[A] = I;
+/// Sets L[A] to I, initializing L if necessary and allocating any necessary space for L if A is a number
+#define LAZYSET(L, A, I) if(!L) { L = list(); } if (isnum(A) && length(L) < A) { L.len = A; } L[A] = I;
 // Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
 // Reads the length of L, returning 0 if null

@@ -85,7 +85,12 @@
 
 
 /obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(!mytape && istype(I, /obj/item/tape))
+		. |= ATTACK_HINT_NO_TELEGRAPH
 		if(!user.drop_inv_item_to_loc(I, src))
 			return
 		mytape = I
@@ -452,9 +457,12 @@
 
 /obj/item/tape/attackby(obj/item/W, mob/user)
 	. = ..()
+	if (. & ATTACK_HINT_BREAK_ATTACK)
+		return
+
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!unspooled)
-			return FALSE
+			return
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You start winding the tape back in..."))
 		if(!(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)))

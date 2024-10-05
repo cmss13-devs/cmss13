@@ -226,6 +226,7 @@
 	ceiling = CEILING_METAL
 	requires_power = FALSE
 	base_lighting_alpha = 255
+	flags_area = AREA_YAUTJA_GROUNDS
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja.Misc"
@@ -243,8 +244,8 @@
 	if(!isyautja(src))
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
-
-	if(!istype(get_area(src), /area/yautja))
+	var/area/location = get_area(src)
+	if(!(location.flags_area & AREA_YAUTJA_GROUNDS))
 		to_chat(src, SPAN_WARNING("Not here. Only on the ship."))
 		return
 

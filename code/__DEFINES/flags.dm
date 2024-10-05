@@ -33,6 +33,8 @@
 #define EMOTE_IMPORTANT (1<<2)
 /// Does the emote not have a message?
 #define EMOTE_NO_MESSAGE (1<<3)
+///	Can only code call this event instead of the player.
+#define EMOTE_FORCED_AUDIO (1<<4)
 
 // Bitflags for Working Joe emotes
 /// Working Joe emote

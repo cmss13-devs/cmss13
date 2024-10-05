@@ -8,7 +8,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/cavebreaker = FALSE //ignore caves and other restrictions?

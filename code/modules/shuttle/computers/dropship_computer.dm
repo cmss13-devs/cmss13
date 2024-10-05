@@ -5,7 +5,7 @@
 	icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	needs_power = FALSE
 	var/override_being_removed = FALSE
 

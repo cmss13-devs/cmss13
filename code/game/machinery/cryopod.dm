@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/computer/cryopodcontrol
-	exproof = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/cryotype = "REQ"

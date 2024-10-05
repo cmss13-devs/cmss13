@@ -1149,7 +1149,7 @@
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 

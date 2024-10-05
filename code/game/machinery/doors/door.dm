@@ -160,7 +160,7 @@
 				secondsElectrified = 0
 
 /obj/structure/machinery/door/ex_act(severity)
-	if(unacidable)
+	if(explo_proof)
 		return
 
 	if(density)

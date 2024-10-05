@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Yautja gear claim and tracking now checks for an area flag instead of area typechecking."

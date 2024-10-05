@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added psychic radiance for humans."
+  - bugfix: "Humans cannot psychic speak while dead."
+  - rscadd: "Psychic whisper and radiance now only shows to ghosts who are in the target radii."

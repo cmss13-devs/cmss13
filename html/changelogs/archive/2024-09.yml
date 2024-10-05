@@ -59,3 +59,84 @@
   rythenx:
   - bugfix: drop pouch's switch storage drawing method now works correctly instead
       of doing nothing
+2024-09-13:
+  Git-Nivrak:
+  - balance: Removed far-sight from SG sights
+  - balance: Increased smartgun bullet falloff to 4 from 1
+  - balance: Increased smartgun bullet effective range to 7 from 0
+2024-09-14:
+  MistChristmas:
+  - balance: Buffs MW Fireman skill in line with the rest of MPs
+2024-09-15:
+  realforest2001:
+  - bugfix: Scientists and Doctors from the Shiva panic room nightmare insert now
+      spawn with snow gear as intended.
+  - bugfix: Fixes uniform vendor shutters being openable without access.
+  tallfission:
+  - rscadd: FTL vendors get signal flare packs for 5 points.
+2024-09-17:
+  deathrobotpunch:
+  - bugfix: Pred wristblades now del on drop
+  - bugfix: fixes UPP ammo storage boxes
+2024-09-18:
+  TheManWithNoHands:
+  - qol: added Grenade satchel in Comtec and req vendor, making it more accesible
+  - balance: Added Fix-o-vein in HM squad vendor. Allows surgicalline, synth grath,
+      fix-o-vein, cautery to be stored in Hm surgical case.
+  efzapa:
+  - rscadd: All ColMarTech Food Vendors now have 15 MREs
+  realforest2001:
+  - bugfix: Fixes the duration of the AI Core nerve gas, will no longer last a full
+      minute.
+2024-09-20:
+  iloveloopers:
+  - balance: Ravager scissor cut will now destroy fences.
+  realforest2001:
+  - rscadd: Xenos with USCM IFF tags no longer trigger code red when on dropships.
+  tallfission:
+  - qol: Decreased dropship equipment printing time to 3 seconds from 10 seconds.
+2024-09-24:
+  Mister-moon1:
+  - bugfix: fixes what bracer power should be
+  - code_imp: 'reverts #7159'
+  Private-Tristan, KiVts:
+  - bugfix: Injector and Coagulator plates are now functional.
+  efzapa:
+  - qol: MPs now latejoin in the Brig
+  nauticall:
+  - rscadd: Added more fortunes for fortune cookies.
+  stalkerino:
+  - balance: ' increased recharge for pred bracer'
+2024-09-25:
+  Git-Nivrak:
+  - qol: Added a preference to show your tag as Queen, turned off by default.
+  stalkerino:
+  - balance: Buffed predator armor, thrall armor,  bullet resistance has been raised.
+      Heavy clan armor has slightly less slowdown (by 1 tier)
+2024-09-27:
+  Git-Nivrak:
+  - balance: Pred round chance now increases by 20% whenever it isn't a pred round
+      and resets back to 20% when it is a pred round
+  - balance: Limits hunting traps duration to 30 seconds.
+  GoldenDarkness55:
+  - bugfix: Steelcrest soak now uses primary ability 3 hotkey instead of ability 5.
+  Ivniinvi:
+  - spellcheck: Fixed BLU-200 description
+2024-09-28:
+  QuickLode:
+  - rscadd: Adds USCM & Falling Falcons patches to Commanding Officer's vendor.
+2024-09-30:
+  Venuska1117:
+  - maptweak: Sorokyne Strata - made most indestructable walls destructable.
+  - maptweak: Sorokyne Strata - changed rooms/hallways with have 1x1 hallways to be
+      wider.
+  - maptweak: Sorokyne Strata - replaced some small light fixtures with normal light
+      fixtures.
+  - maptweak: Sorokyne Strata - reduced 2 tiles or more thick walls to 1 tile thick
+      walls.
+  - balance: Made most areas weedable, except LZ's zones and surrounding LZ's sub-variants.
+  - balance: Allow LAZ inside Outposts (mining and normal ones) as long as they aim
+      at light blue areas (glass ceiling hallways).
+  - code_imp: Changed pixel offset for "tube" lights to be closer to "floor".
+  efzapa:
+  - rscadd: Added an EOD Locker in the MP Armory.

@@ -4,7 +4,7 @@
 	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
 
 	/// The ID used to link all devices.

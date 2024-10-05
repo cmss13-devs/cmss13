@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Uniform vendor shutters are now correctly EMP proof."
+  - code_imp: "Renamed the indestructible var to explo_proof, as protecting from explosions was the purpose of that var."
+  - code_imp: "Added emp_proof to protect from EMPs, as EMP requires parental calls."

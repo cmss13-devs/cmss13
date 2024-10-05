@@ -245,7 +245,7 @@
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 	var/area/location = get_area(src)
-	if(!(location.flags_area & AREA_YAUTJA_GROUNDS))
+	if(!(location?.flags_area & AREA_YAUTJA_GROUNDS))
 		to_chat(src, SPAN_WARNING("Not here. Only on the ship."))
 		return
 

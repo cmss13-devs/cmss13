@@ -13,7 +13,10 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_2
 
-	available_strains = list(/datum/xeno_strain/resin_whisperer)
+	available_strains = list(
+	/datum/xeno_strain/resin_whisperer,
+	/datum/xeno_strain/designer,
+	)
 
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."

@@ -97,6 +97,11 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
 	/datum/resin_construction/resin_obj/resin_node
 ))
 
+GLOBAL_LIST_INIT(resin_build_order_hivelord_designer, list(
+	/datum/resin_construction/resin_obj/design_wall,
+	/datum/resin_construction/resin_obj/design_door,
+))
+
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_turf/wall/queen,
 	/datum/resin_construction/resin_turf/wall/reflective,

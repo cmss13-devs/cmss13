@@ -266,7 +266,6 @@
 	generate_points = FALSE
 
 	unacidable = TRUE
-	indestructible = TRUE
 	explo_proof = TRUE
 	faction = FACTION_MARINE
 

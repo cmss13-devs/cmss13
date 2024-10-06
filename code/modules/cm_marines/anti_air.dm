@@ -8,9 +8,6 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	density = TRUE
 	anchored = TRUE
 	layer = LADDER_LAYER
-	bound_width = 128
-	bound_height = 64
-	bound_y = 64
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -18,10 +15,11 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	var/protecting_section = ""
 	var/is_disabled = FALSE
 
-/obj/structure/anti_air_cannon/New()
+/obj/structure/anti_air_cannon/Initialize(mapload, ...)
 	. = ..()
 	if(!GLOB.almayer_aa_cannon)
 		GLOB.almayer_aa_cannon = src
+	AddElement(/datum/element/multitile, 4, 2, can_block_movement, y_offset = 2)
 
 /obj/structure/anti_air_cannon/Destroy()
 	. = ..()

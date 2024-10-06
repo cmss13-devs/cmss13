@@ -22,7 +22,7 @@
 	// The cached datum for the permanent pass flags for any given atom
 	var/datum/pass_flags_container/pass_flags
 
-	// Temporary lags for what an atom can pass through
+	// Temporary flags for what an atom can pass through
 	var/list/flags_pass_temp
 	var/list/temp_flag_counter
 
@@ -51,12 +51,12 @@
 	//Z-Level Transitions
 	var/atom/movable/clone/clone = null
 
-	// Bitflag of which test cases this atom is exempt from
-	// See #define/tests.dm
+	/**
+	 * Bitflag of which test cases this atom is exempt from
+	 *
+	 * See #define/tests.dm
+	 */
 	var/test_exemptions = 0
-
-	// Whether the atom is an obstacle that should be considered for passing
-	var/can_block_movement = FALSE
 
 	var/datum/component/orbiter/orbiters
 
@@ -399,13 +399,8 @@ Parameters are passed from New.
 		var/turf/opaque_turf = loc
 		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
-	pass_flags = GLOB.pass_flags_cache[type]
-	if (isnull(pass_flags))
-		pass_flags = new()
-		initialize_pass_flags(pass_flags)
-		GLOB.pass_flags_cache[type] = pass_flags
-	else
-		initialize_pass_flags()
+	pass_flags = new()
+	initialize_pass_flags(pass_flags)
 	Decorate(mapload)
 
 	return INITIALIZE_HINT_NORMAL
@@ -471,7 +466,7 @@ Parameters are passed from New.
 				flags_pass_temp &= ~flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
-/atom/proc/initialize_pass_flags(datum/pass_flags_container/PF)
+/atom/proc/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	return
 
 /atom/proc/enable_pixel_scaling()

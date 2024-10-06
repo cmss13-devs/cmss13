@@ -120,10 +120,7 @@
 				CRASH("Unknown door command [action]")
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	var/list/door_turfs = list(get_turf(air))
-	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
-		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
-		door_turfs = multi_door.locate_filler_turfs()
+	var/list/door_turfs = list(get_turf(air)) | air.locs
 	for(var/turf/door_turf in door_turfs)
 		bump_at_turf(door_turf)
 

@@ -75,6 +75,14 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // Unit tests
+#include "movement\collisions_can_pass_flags.dm"
+#include "movement\collisions_cardinal.dm"
+#include "movement\collisions_collision_pass_through.dm"
+#include "movement\collisions_diagonal.dm"
+#include "movement\link_blocked_can_pass_flags.dm"
+#include "movement\link_blocked_cardinal.dm"
+#include "movement\link_blocked_diagonal.dm"
+#include "movement\movement_helpers.dm"
 #include "autowiki.dm"
 #include "check_runtimes.dm"
 #include "create_and_destroy.dm"

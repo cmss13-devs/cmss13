@@ -263,11 +263,13 @@
 	max_ammo_count = 1
 	ammo_name = "rocket"
 	ammo_id = ""
-	bound_width = 64
-	bound_height = 32
 	travelling_time = 60 //faster than 30mm rounds
 	max_inaccuracy = 5
 	point_cost = 0
+
+/obj/structure/ship_ammo/rocket/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 1, can_block_movement)
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)

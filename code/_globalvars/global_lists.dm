@@ -253,9 +253,6 @@ GLOBAL_VAR_INIT(round_should_check_for_win, TRUE)
 
 GLOBAL_LIST_INIT(key_mods, list("CTRL", "ALT", "SHIFT"))
 
-// A list storing the pass flags for specific types of atoms
-GLOBAL_LIST_EMPTY(pass_flags_cache)
-
 //Parameterss cache
 GLOBAL_LIST_EMPTY(paramslist_cache)
 

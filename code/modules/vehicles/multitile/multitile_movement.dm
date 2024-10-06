@@ -24,7 +24,6 @@
 
 		Any questions? Ask Atebite
 */
-
 // Called when someone tries to move the vehicle
 /obj/vehicle/multitile/relaymove(mob/user, direction)
 	if(user != seats[VEHICLE_DRIVER])
@@ -44,10 +43,7 @@
 	var/success = FALSE
 
 	if(dir == turn(direction, 180) || dir == direction)
-		var/old_dir = dir
 		success = try_move(direction)
-		// Keep dir when driving backwards
-		setDir(old_dir)
 	// Rotation/turning
 	else
 		success = try_rotate(turning_angle(dir, direction))
@@ -58,7 +54,13 @@
 
 // Attempts to execute the given movement input
 /obj/vehicle/multitile/proc/try_move(direction, force=FALSE)
-	if(!can_move(direction))
+	var/turf/target = get_step(src, direction)
+	var/turf/old_turf = get_turf(src)
+	if(!Move(target))
+		// Crashed with something that stopped us
+		move_momentum = floor(move_momentum/2)
+		update_next_move()
+		interior_crash_effect()
 		return FALSE
 
 	if(!force)
@@ -68,17 +70,12 @@
 		if(!should_move)
 			return FALSE
 
-	var/turf/old_turf = get_turf(src)
-	forceMove(get_step(src, direction))
-
 	for(var/obj/item/hardpoint/H in hardpoints)
 		H.on_move(old_turf, get_turf(src), direction)
 
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
 		move_next_sound_play = world.time + 10
-
-	last_move_dir = direction
 
 	return TRUE
 
@@ -97,7 +94,6 @@
 
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
-	rotate_bounds(deg)
 	setDir(turn(dir, deg))
 
 	last_move_dir = dir
@@ -134,42 +130,36 @@
 	var/anti_build_factor = 1/((max(abs(move_momentum), 1)/move_max_momentum) * move_momentum_build_factor)
 
 	next_move = world.time + move_delay * move_momentum_build_factor * anti_build_factor * misc_multipliers["move"]
-	l_move_time = world.time
-
 
 // This just checks if the vehicle can physically move in the given direction
 /obj/vehicle/multitile/proc/can_move(direction)
-	var/can_move = TRUE
+	var/turf/min_turf = locate(x + x_offset, y + y_offset, z)
 
-	var/bound_x_tiles = bound_x / world.icon_size
-	var/bound_y_tiles = bound_y / world.icon_size
-	var/turf/min_turf = locate(x + bound_x_tiles, y + bound_y_tiles, z)
-
-	var/bound_width_tiles = bound_width / world.icon_size
-	var/bound_height_tiles = bound_height / world.icon_size
-	var/list/old_turfs = CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles)
+	var/list/old_turfs = CORNER_BLOCK(min_turf, width, height)
 
 	var/turf/new_loc = get_step(src, direction)
-	min_turf = locate(new_loc.x + bound_x_tiles, new_loc.y + bound_y_tiles, z)
+	min_turf = locate(new_loc.x + x_offset, new_loc.y + y_offset, z)
 
-	for(var/turf/T as anything in CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles))
-		// only check the turfs we're moving to
-		if(T in old_turfs)
+	var/movement_blocked = FALSE
+	// Iterate through all blocks in the new location for tank
+	for(var/turf/to_enter as anything in CORNER_BLOCK(min_turf, width, height))
+		if(to_enter in old_turfs)
+			// Handling for barricades and other structures that we did not collide with originally
+			// since they were facing the same direction as the movement
+			for (var/atom/movable/obstacle as anything in to_enter.movement_blockers)
+				if (obstacle == src)
+					continue
+				if (obstacle.BlockedExitDirs(src, direction))
+					movement_blocked ||= !Collide(obstacle)
 			continue
 
-		if(!T.Enter(src))
-			can_move = FALSE
+		if(!to_enter.Enter(src))
+			movement_blocked = TRUE
 
-	// Crashed with something that stopped us
-	if(!can_move)
-		move_momentum = floor(move_momentum/2)
-		update_next_move()
-		interior_crash_effect()
-
-	return can_move
+	return movement_blocked
 
 /obj/vehicle/multitile/proc/can_rotate(deg)
-	if(bound_width == bound_height)
+	if(width == height)
 		return TRUE
 	//VHCLTODO: Add non-square checks here
 	return FALSE
@@ -205,22 +195,22 @@
 
 		var/origin_coord = origins[origin]
 		/*
-		   The root of the vehicle isn't always in the true center of the vehicle,
-		   so simply rotating around the root doesn't work.
-		   Instead, we do a bit of a detour that ultimately makes our life much simpler.
+			The root of the vehicle isn't always in the true center of the vehicle,
+			so simply rotating around the root doesn't work.
+			Instead, we do a bit of a detour that ultimately makes our life much simpler.
 
-		   The idea is to find the true center of the vehicle, given in coordinates with the lower left
-		   corner of the vehicle as the origin. Then we find the coordinates of the origin in the same
-		   coordinate system and rotate the origin around the true center.
+			The idea is to find the true center of the vehicle, given in coordinates with the lower left
+			corner of the vehicle as the origin. Then we find the coordinates of the origin in the same
+			coordinate system and rotate the origin around the true center.
 		*/
 
 		// Note that these coordinates aren't world coordinates.
 		// They're coordinates in the coordinate system with the minimum (lower left) corner of the vehicle as its origin
 
 		// Find the root of the vehicle relative to the lower left corner of the vehicle
-		var/list/root_coords = list(-bound_x / world.icon_size, -bound_y / world.icon_size)
+		var/list/root_coords = list(-x_offset, -y_offset)
 		// Find the true center of the vehicle relative to the lower left corner of the vehicle
-		var/list/center_coords = list(bound_width / (2*world.icon_size), bound_height / (2*world.icon_size))
+		var/list/center_coords = list(width / 2, height / 2)
 		// Find the coordinates of the origin relative to the lower left corner of the vehicle
 		var/list/origin_coords_abs = list(origin_coord[1] + root_coords[1], origin_coord[2] + root_coords[2])
 
@@ -238,16 +228,6 @@
 
 		origins[origin] = new_origin
 	return origins
-
-/obj/vehicle/multitile/proc/rotate_bounds(deg)
-	//If the vehicle isn't a perfect square, rotate the bounds around
-	if(bound_width != bound_height && (dir != turn(dir, (deg + 180)) && dir != turn(dir, deg)))
-		var/bound_swapped = bound_width
-		var/pixel_swapped = bound_x
-		bound_width = bound_height
-		bound_height = bound_swapped
-		bound_x = bound_y
-		bound_y = pixel_swapped
 
 /obj/vehicle/multitile/proc/interior_crash_effect()
 	if(!interior)

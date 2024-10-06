@@ -616,8 +616,8 @@
 	name = "abstract weapon"
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
-	bound_width = 32
-	bound_height = 64
+	var/width = 1
+	var/height = 2
 	uses_ammo = TRUE
 	is_weapon = TRUE
 	screen_mode = 1
@@ -631,15 +631,17 @@
 	/// True if this weapon can only be fired in Fire Missions (not Direct)
 	var/fire_mission_only = TRUE
 
+/obj/structure/dropship_equipment/weapon/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, width, height, can_block_movement)
+
 /obj/structure/dropship_equipment/weapon/update_equipment()
 	if(ship_base)
 		setDir(ship_base.dir)
-		bound_width = 32
-		bound_height = 32
+		RemoveElement(/datum/element/multitile, width, height, can_block_movement)
 	else
 		setDir(initial(dir))
-		bound_width = initial(bound_width)
-		bound_height = initial(bound_height)
+		AddElement(/datum/element/multitile, width, height, can_block_movement)
 	update_icon()
 
 /obj/structure/dropship_equipment/weapon/equipment_interact(mob/user)

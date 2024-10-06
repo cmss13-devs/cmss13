@@ -56,15 +56,15 @@
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in main_doors)
 		for(var/obj/vehicle/multitile/M in D.loc)
-			if(M) return 0
+			return FALSE
 
-		for(var/turf/T in D.locate_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
-				if(M) return 0
+				return FALSE
 
 		//No return 1 here in case future elevators have multiple multi_tile doors
 
-	return 1
+	return TRUE
 
 
 /datum/shuttle/ferry/marine/announce_preflight_failure()

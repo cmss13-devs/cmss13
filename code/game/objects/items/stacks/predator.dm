@@ -108,5 +108,5 @@
 	apply_transform(A)
 	pixel_x = 0
 	pixel_y = 0
-	Moved(loc, NONE, TRUE) // Trigger any movement signals
+	Moved(loc, locs, NONE, TRUE) // Trigger any movement signals
 	return COMPONENT_CANCEL_ATTACK

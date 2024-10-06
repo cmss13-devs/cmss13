@@ -210,7 +210,6 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 					if(!iselevator)
 						if(!M.buckled)
 							knocked_down_mobs += M
-				landing_area.Entered(A)
 
 		if(turftoleave && ispath(turftoleave))
 			T.ChangeTurf(turftoleave)

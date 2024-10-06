@@ -11,10 +11,14 @@
 	var/mob/pulledby = null
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
+	/// Whether the atom is an obstacle that should be considered for passing
+	var/can_block_movement = FALSE
 
-	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
+	/// Counter for stomach acid damage. At ~60 ticks, dissolved
+	var/acid_damage = 0
 
-	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+	// this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+	var/move_intentionally = FALSE
 
 	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
 	var/black_market_value = 0
@@ -54,7 +58,8 @@
 	if(length(vis_contents))
 		vis_contents.Cut()
 	. = ..()
-	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	//so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	moveToNullspace()
 
 	QDEL_NULL(light)
 	QDEL_NULL(static_light)
@@ -92,6 +97,8 @@
 		AddComponent(/datum/component/overlay_lighting)
 	if(light_system == DIRECTIONAL_LIGHT)
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
+	if (loc)
+		loc.Entered(src)
 
 /atom/movable/proc/update_emissive_block()
 	if(emissive_overlay)
@@ -230,8 +237,9 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
+	var/list/atom/old_locs = locs
 	loc = new_loc
-	Moved(old_loc)
+	Moved(old_loc, old_locs)
 
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)

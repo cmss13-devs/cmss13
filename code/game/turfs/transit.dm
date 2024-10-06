@@ -56,7 +56,7 @@
 			if(turf.density)
 				continue
 			var/found_dense = FALSE
-			for(var/atom/turf_atom in turf)
+			for(var/atom/movable/turf_atom in turf)
 				if(turf_atom.density && turf_atom.can_block_movement)
 					found_dense = TRUE
 					break

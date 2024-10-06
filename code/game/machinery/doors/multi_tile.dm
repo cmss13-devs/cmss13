@@ -1,20 +1,14 @@
 //Terribly sorry for the code doubling, but things go derpy otherwise.
 /obj/structure/machinery/door/airlock/multi_tile
-	width = 2
+	height = 2
 	damage_cap = 650 // Bigger = more endurable
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
-
-/obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
-	for(var/turf/turf_tile in locs)
-		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile) return 0
-
-	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
 	update_icon()
 
+// TODO: properly subtype these doors instead of having them branch off in a multitile subtype
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
@@ -235,7 +229,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
 	opacity = TRUE
-	width = 3
+	height = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	no_panel = 1
@@ -243,6 +237,9 @@
 	var/queen_pryable = TRUE
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/Initialize()
+	pass()
+	. = ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
@@ -334,7 +331,7 @@
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
-	width = 2
+	height = 2
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1
 	name = "\improper Alamo crew hatch"
@@ -449,7 +446,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator
 	icon = 'icons/obj/structures/doors/4x1_elevator.dmi'
 	icon_state = "door_closed"
-	width = 4
+	height = 4
 	openspeed = 22
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/research

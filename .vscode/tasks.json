@@ -102,6 +102,15 @@
             ],
             "group": "build",
             "label": "tgui: rebuild tgfont"
+        },
+        {
+            "type": "shell",
+            "command": "bin/server",
+            "windows": {
+                "command": ".\\bin\\server.cmd"
+            },
+            "group": "build",
+            "label": "run local server"
         }
     ]
 }

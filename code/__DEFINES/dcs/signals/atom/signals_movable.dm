@@ -4,11 +4,16 @@
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)
-///from base of atom/movable/Moved(): (/atom, dir, forced)
+/// From /atom/movable/proc/Moved(): (/atom, /list/atom, dir, forced)
 #define COMSIG_MOVABLE_MOVED "movable_moved"
+/// From /atom/movable/proc/moved_to_nullspace(): (/atom, /list/atom, dir, forced)
+#define COMSIG_MOVABLE_MOVED_TO_NULLSPACE "movable_moved_to_nullspace"
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
+	#define COMPONENT_MOVE_OVERRIDE_SUCCESSFUL (1<<1)
+	#define COMPONENT_MOVE_OVERRIDE_FAILURE (1<<2)
+	#define COMPONENT_SKIP_MOVED (1<<3)
 /// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
 #define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
 /// From /atom/movable/proc/doMove: I think it only works with forceMove so watch out
@@ -32,3 +37,8 @@
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
+
+/// Checking for any flags to modify behavior of doMove()
+#define COMSIG_MOVABLE_DO_MOVE "movable_do_move"
+	#define COMPONENT_SKIP_OLD_LOC_PROCESSING (1<<0)
+	#define COMPONENT_SKIP_NEW_LOC_PROCESSING (1<<1)

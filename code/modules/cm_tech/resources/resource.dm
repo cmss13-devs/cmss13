@@ -39,8 +39,7 @@
 
 /obj/structure/resource_node/Initialize(mapload, play_ambient_noise = TRUE)
 	. = ..()
-	bound_width = width * world.icon_size
-	bound_height = height * world.icon_size
+	AddElement(/datum/element/multitile, width, height, can_block_movement)
 
 	src.play_ambient_noise = play_ambient_noise
 

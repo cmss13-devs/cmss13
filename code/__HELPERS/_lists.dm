@@ -183,3 +183,17 @@
 	for(var/i in 1 to length(inserted_list) - 1)
 		inserted_list.Swap(i, rand(i, length(inserted_list)))
 
+/proc/filter_list(list/to_filter, datum/callback/filter_callback)
+	ASSERT(islist(to_filter), "Can only pass a list to filter")
+	var/list/filtered = list()
+	for (var/element in to_filter)
+		if (filter_callback.Invoke(element))
+			filtered += element
+	return filtered
+
+/proc/list_all(list/to_check, datum/callback/element_check_callback)
+	ASSERT(islist(to_check), "Can only pass a list to check all elements")
+	for (var/element in to_check)
+		if (!element_check_callback.Invoke(element))
+			return FALSE
+	return TRUE

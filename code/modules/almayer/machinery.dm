@@ -183,20 +183,24 @@
 	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
 	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "missiletubenorth"
-	bound_width = 32
-	bound_height = 96
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/almayer/missile_tube/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 1, 3, can_block_movement)
 
 /obj/structure/prop/almayer/ship_memorial
 	name = "slab of victory"
 	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "ship_memorial"
-	bound_width = 64
-	bound_height = 32
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/almayer/ship_memorial/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 1, can_block_movement)
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"

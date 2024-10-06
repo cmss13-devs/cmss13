@@ -16,7 +16,7 @@
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
 
-/area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
+/area/shuttle/drop1/Enter(atom/movable/O, atom/forget)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE
@@ -61,7 +61,7 @@
 	icon_state = "away1"
 
 
-/area/shuttle/drop2/Enter(atom/movable/O, atom/oldloc)
+/area/shuttle/drop2/Enter(atom/movable/O, atom/forget)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE
@@ -115,7 +115,7 @@
 	icon_state = "away2"
 
 
-/area/shuttle/drop2/Enter(atom/movable/O, atom/oldloc)
+/area/shuttle/drop2/Enter(atom/movable/O, atom/forget)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE

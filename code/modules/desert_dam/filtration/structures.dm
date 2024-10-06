@@ -138,16 +138,21 @@
 */
 /obj/structure/filtration
 	name = "filtration machine"
+	var/width = 1
+	var/height = 1
+
+/obj/structure/filtration/Initialize(mapload, ...)
+	. = ..()
+	if (width > 1 || height > 1)
+		AddElement(/datum/element/multitile, width, height, can_block_movement)
 
 /obj/structure/filtration/machine_32x32
 	icon = 'icons/turf/floors/32x32.dmi'
 	name = "filtration catwalks"
-	//bound_x = 96
-	//bound_y = 96
+	width = 1
+	height = 1
 	density = FALSE
 	anchored = TRUE
-	bound_width = 32
-	bound_height = 32
 
 /obj/structure/filtration/machine_32x32/indestructible
 	unacidable = TRUE
@@ -161,8 +166,8 @@
 	icon = 'icons/obj/structures/props/32x64.dmi'
 	density = TRUE
 	anchored = TRUE
-	bound_width = 32
-	bound_height = 64
+	width = 1
+	height = 2
 
 /obj/structure/filtration/machine_32x64/indestructible
 	unacidable = TRUE
@@ -178,8 +183,8 @@
 	//bound_y = 96
 	density = TRUE
 	anchored = TRUE
-	bound_width = 96
-	bound_height = 96
+	width = 3
+	height = 3
 
 /obj/structure/filtration/machine_96x96/indestructible
 	unacidable = TRUE
@@ -195,8 +200,8 @@
 	//bound_y = 96
 	density = TRUE
 	anchored = TRUE
-	bound_width = 64
-	bound_height = 96
+	width = 2
+	height = 3
 
 /obj/structure/filtration/machine_64x96/indestructible
 	unacidable = TRUE
@@ -212,8 +217,8 @@
 	//bound_y = 96
 	density = TRUE
 	anchored = TRUE
-	bound_width = 64
-	bound_height = 128
+	width = 2
+	height = 4
 
 /obj/structure/filtration/machine_64x128/indestructible
 	unacidable = TRUE
@@ -230,8 +235,8 @@
 	icon = 'icons/obj/structures/props/coagulation_arm.dmi'
 	icon_state = "arm"
 	layer = ABOVE_MOB_LAYER + 0.1
-	bound_width = 96
-	bound_height = 96
+	width = 3
+	height = 3
 
 /obj/structure/filtration/flacculation_arm
 	name = "flocculation arm"
@@ -239,8 +244,8 @@
 	density = TRUE
 	icon = 'icons/obj/structures/props/flacculation_arm.dmi'
 	icon_state = "flacculation_arm"
-	bound_height = 32
-	bound_width = 128
+	width = 4
+	height = 1
 	layer = ABOVE_MOB_LAYER + 0.1
 
 /obj/structure/filtration/collector_pipes
@@ -248,8 +253,10 @@
 	desc = "A series of pipes collecting water from the river to take it to the plant for filtration."
 	icon = 'icons/obj/structures/props/pipes.dmi'
 	icon_state = "upper_1" //use instances to set the types.
-	bound_height = 32
-	bound_width = 64
+
+/obj/structure/filtration/collector_pipes/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/multitile, 2, 1, can_block_movement)
 
 /obj/structure/filtration/machine_96x96
 	icon = 'icons/obj/structures/props/96x96.dmi'

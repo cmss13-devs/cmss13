@@ -12,11 +12,11 @@
 	pixel_x = -16
 	pixel_y = -16
 
-	bound_width = 64
-	bound_height = 64
+	width = 2
+	height = 2
 
-	bound_x = 0
-	bound_y = 0
+	x_offset = 0
+	y_offset = 0
 
 	interior_map = /datum/map_template/interior/van
 
@@ -224,12 +224,12 @@
 	if(src == P.original) //clicking on the van itself will hit it.
 		var/hitchance = P.get_effective_accuracy()
 		if(prob(hitchance))
-			return TRUE
-	return FALSE
+			return MOVABLE_COLLIDE_NOT_BLOCKED
+	return
 
 /obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
-		return FALSE
+		return
 
 	if(istype(A, /obj/structure/barricade/plasteel))
 		return ..()
@@ -240,7 +240,7 @@
 	   istype(A, /obj/structure/barricade/deployable) || \
 	   istype(A, /obj/structure/machinery/cryopod)) //Can no longer runover cryopods
 
-		return FALSE
+		return
 
 	return ..()
 

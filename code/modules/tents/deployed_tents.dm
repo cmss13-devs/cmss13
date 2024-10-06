@@ -24,8 +24,7 @@
 
 /obj/structure/tent/Initialize(mapload, ...)
 	. = ..()
-	bound_width = x_dim * world.icon_size
-	bound_height = y_dim * world.icon_size
+	AddElement(/datum/element/multitile, x_dim, y_dim, can_block_movement)
 	register_turf_signals()
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_turf_signals))
 
@@ -68,7 +67,8 @@
 
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
-	if(!(target_turf in locs)) // Exited the tent
+	// Exited the tent
+	if(!(target_turf in locs))
 		mob_exited_tent(subject)
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)

@@ -19,16 +19,21 @@
 
 	var/last_bumped = 0
 
-	// The cached datum for the permanent pass flags for any given atom
+	/// The cached datum for the permanent pass flags for any given atom
 	var/datum/pass_flags_container/pass_flags
 
-	// Temporary lags for what an atom can pass through
-	var/list/flags_pass_temp
+	/// Flags for what an atom can pass through that are not innate to the atom
+	var/flags_pass_temp_to_add
+	/// Flags for what an atom cannot pass through that are not innate to the atom
+	var/flags_pass_temp_to_remove
+	/// Counter for pass flags used to calculate `flags_pass_temp_to_add` and `flags_pass_temp_to_remove`
 	var/list/temp_flag_counter
 
-	// Temporary flags for what can pass through an atom
+	/// Temporary flags for what can pass through an atom from any direction
 	var/list/flags_can_pass_all_temp
+	/// Temporary flags for what can pass through an atom from the atom's direction
 	var/list/flags_can_pass_front_temp
+	/// Temporary flags for what can pass through an atom from the direction opposite to the atom's direction
 	var/list/flags_can_pass_behind_temp
 
 	var/flags_barrier = NO_FLAGS
@@ -453,9 +458,12 @@ Parameters are passed from New.
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str]++
+			if (temp_flag_counter[flag_str] == 0)
+				temp_flag_counter -= flag_str
+				flags_pass_temp_to_remove &= ~flag
 		else
 			temp_flag_counter[flag_str] = 1
-			flags_pass_temp |= flag
+			flags_pass_temp_to_add |= flag
 
 /atom/proc/remove_temp_pass_flags(flags_to_remove)
 	if (isnull(temp_flag_counter))
@@ -469,7 +477,10 @@ Parameters are passed from New.
 			temp_flag_counter[flag_str]--
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
-				flags_pass_temp &= ~flag
+				flags_pass_temp_to_add &= ~flag
+		else
+			temp_flag_counter[flag_str] = -1
+			flags_pass_temp_to_remove |= flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
 /atom/proc/initialize_pass_flags(datum/pass_flags_container/PF)

@@ -23,7 +23,7 @@
 			doors += list(air)
 			external_doors += list(air)
 			air.breakable = FALSE
-			air.indestructible = TRUE
+			air.explo_proof = TRUE
 			air.unacidable = TRUE
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
@@ -148,13 +148,13 @@
 				starboard_door = air
 				external_doors += list(air)
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 			else if(air.id == "port_door")
 				port_door = air
 				external_doors += list(air)
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 	if(!port_door)
 		WARNING("No port door found for [src]")
@@ -180,13 +180,13 @@
 		for(var/obj/structure/machinery/door/air in place)
 			if(air.id == "starboard_door")
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 				external_doors += list(air)
 				starboard_door = air
 			else if(air.id == "port_door")
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 				external_doors += list(air)
 				port_door = air

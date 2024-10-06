@@ -295,11 +295,17 @@
 		capture_target(user, target)
 
 /obj/item/weapon/yautja/chain/proc/capture_target(mob/living/user, mob/living/target)
-	var/list/tether_effects = apply_tether(user, target, range = chain_range, resistable = TRUE)
+	var/real_chain_duration = chain_duration
+	var/real_chain_range = chain_range
+	if(target.mob_size >= MOB_SIZE_BIG)
+		real_chain_duration = (chain_duration / 2)
+		real_chain_range = (chain_range / 2)
+
+	var/list/tether_effects = apply_tether(user, target, range = real_chain_range, resistable = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(reset_tether))
 	RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(reset_tether))
-	addtimer(CALLBACK(src, PROC_REF(reset_tether), user), chain_duration)
+	addtimer(CALLBACK(src, PROC_REF(reset_tether), user), real_chain_duration)
 	trapped_mob = target
 	ability_primed = FALSE
 	ability_charge = max(ability_charge - ability_cost, 0)

@@ -276,7 +276,7 @@
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 */
 //RUCM START
-		list("Ceramic Plate", 20, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A ceramic plate, REAL armor plate.")
+		list("Ceramic Plate", 20, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A ceramic plate, REAL armor plate."),
 //RUCM END
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),

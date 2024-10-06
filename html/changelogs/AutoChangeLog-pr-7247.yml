@@ -1,6 +1,0 @@
-author: "lokideslimee"
-delete-after: True
-changes:
-  - rscadd: "Added Scandinavian as a language"
-  - code_imp: "Coded in the Scandinavian"
-  - code_imp: "Added Scandinavian as a language for mobs that should know the language"

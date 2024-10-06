@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed neuraline being a potential part of a chem recipe"

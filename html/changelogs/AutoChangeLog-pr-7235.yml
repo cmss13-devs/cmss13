@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - admin: "Staff can now toggle their AFK protections on and off."
-  - code_imp: "Default chat settings now include FF Attack logs for staff."

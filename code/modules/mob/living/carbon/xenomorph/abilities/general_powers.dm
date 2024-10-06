@@ -435,13 +435,15 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callback = CALLBACK(src, PROC_REF(handle_collision)))
-	X.update_icons()
-
-	additional_effects_always()
+	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callback = CALLBACK(src, PROC_REF(handle_collision)), end_throw_callback = CALLBACK(src, PROC_REF(on_pounce_end)))
 	..()
 
 	return TRUE
+
+/datum/action/xeno_action/activable/pounce/proc/on_pounce_end()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.update_icons()
+	additional_effects_always()
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)

@@ -20,7 +20,7 @@
 	if(!mover || !mover.pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
-	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
+	var/mover_flags_pass = (mover.pass_flags.flags_pass|mover.flags_pass_temp_to_add) & ~mover.flags_pass_temp_to_remove
 
 	if (!density || (flags_can_pass & mover_flags_pass))
 		return NO_BLOCKED_MOVEMENT
@@ -48,7 +48,7 @@
 	if(!mover || !mover.pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
-	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
+	var/mover_flags_pass = (mover.pass_flags.flags_pass|mover.flags_pass_temp_to_add) & ~mover.flags_pass_temp_to_remove
 
 	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))
 		return target_dir & dir

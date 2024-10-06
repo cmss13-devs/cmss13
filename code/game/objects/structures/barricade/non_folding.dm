@@ -21,6 +21,9 @@
 
 	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
+/obj/structure/barricade/metal/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/barricade/metal/update_icon()
 	. = ..()
 	if(dir > 2)

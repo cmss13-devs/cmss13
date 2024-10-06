@@ -526,8 +526,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(Adjacent(pullify))
 		start_pulling(pullify)
 
-/mob/proc/handle_blood_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+/mob/proc/handle_blood_splatter(angle)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, angle)
 
 /proc/get_mobs_in_z_level_range(turf/starting_turf, range)
 	var/list/mobs_in_range = list()

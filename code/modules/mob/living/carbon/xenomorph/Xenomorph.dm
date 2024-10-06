@@ -1056,13 +1056,13 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
+/mob/living/carbon/xenomorph/handle_blood_splatter(angle, duration)
 	var/color_override
 	if(special_blood)
 		var/datum/reagent/D = GLOB.chemical_reagents_list[special_blood]
 		if(D)
 			color_override = D.color
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, angle, duration, color_override)
 
 /mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)
 	. = ..()

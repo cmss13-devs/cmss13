@@ -288,7 +288,7 @@
 				victim.apply_armoured_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
-				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
+				handle_blood_splatter(Get_Angle(src, victim), 1 SECONDS)
 				playsound(victim, "acid_sizzle", 25, TRUE)
 				animation_flash_color(victim, "#FF0000") //pain hit flicker
 

@@ -226,27 +226,27 @@
 	//shockwaves are iterated, counting down once per shriekwave, with the total amount being determined on the respective xeno ability tile
 	if(shriekwaves_left > 12)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, stage1_radius, 0.5, easing, offset_y)
+		new /obj/effect/temp_visual/shockwave(epicenter, stage1_radius, 0.5, easing, offset_y)
 		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 2)
 		return
 	if(shriekwaves_left > 8)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, stage2_radius, 0.5, easing, offset_y)
+		new /obj/effect/temp_visual/shockwave(epicenter, stage2_radius, 0.5, easing, offset_y)
 		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
 		return
 	if(shriekwaves_left > 4)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, stage3_radius, 0.5, easing, offset_y)
+		new /obj/effect/temp_visual/shockwave(epicenter, stage3_radius, 0.5, easing, offset_y)
 		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
 		return
 	if(shriekwaves_left > 1)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, stage4_radius, 0.5, easing, offset_y)
+		new /obj/effect/temp_visual/shockwave(epicenter, stage4_radius, 0.5, easing, offset_y)
 		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), shriekwaves_left), 3)
 		return
 	if(shriekwaves_left == 1)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, 10.5, 0.6, easing, offset_y)
+		new /obj/effect/temp_visual/shockwave(epicenter, 10.5, 0.6, easing, offset_y)
 
 /mob/living/carbon/xenomorph/proc/create_stomp()
 	remove_suit_layer()

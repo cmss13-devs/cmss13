@@ -105,7 +105,7 @@
 /obj/effect/particle_effect/explosion
 	name = "explosive particles"
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "explosion"
+	icon_state = "explosion_old"
 	opacity = TRUE
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

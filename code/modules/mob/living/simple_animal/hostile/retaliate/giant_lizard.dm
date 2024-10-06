@@ -233,7 +233,7 @@
 //apply blood splatter when attacked by a sufficently damaging sharp weapon
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)
 	if(weapon.force > 10 && weapon.sharp && attacker.a_intent != INTENT_HELP)
-		handle_blood_splatter(get_dir(attacker.loc, loc))
+		handle_blood_splatter(Get_Angle(attacker.loc, loc))
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
@@ -389,11 +389,11 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bullet_act(obj/projectile/projectile)
 	. = ..()
 	if(projectile.damage)
-		handle_blood_splatter(get_dir(projectile.starting, src))
+		handle_blood_splatter(Get_Angle(projectile.starting, src))
 		add_splatter_floor(loc, FALSE)
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/handle_blood_splatter(splatter_dir)
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/human/bloodsplatter = new(loc, splatter_dir)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/handle_blood_splatter(angle)
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/human/bloodsplatter = new(loc, angle)
 	bloodsplatter.pixel_y = -2
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackingTarget(inherited_target = target_mob)
@@ -617,7 +617,7 @@
 			attacktext = attack_type ? "claws" : "bites"
 			flick_attack_overlay(target, attack_type ? "slash" : "animalbite")
 			playsound(loc, attack_type ? "alien_claw_flesh" : "alien_bite", 25, 1)
-			target.handle_blood_splatter(get_dir(src.loc, target.loc))
+			target.handle_blood_splatter(Get_Angle(src.loc, target.loc))
 
 			if(target.body_position == LYING_DOWN)
 				target.apply_damage(damage, BRUTE)

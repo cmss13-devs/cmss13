@@ -1023,8 +1023,7 @@
 	P.play_hit_effect(src)
 	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
-		var/splatter_dir = get_dir(P.starting, loc)
-		handle_blood_splatter(splatter_dir)
+		handle_blood_splatter(Get_Angle(P.starting, loc))
 
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
@@ -1121,7 +1120,7 @@
 
 	if(damage)
 		//only apply the blood splatter if we do damage
-		handle_blood_splatter(get_dir(P.starting, loc))
+		handle_blood_splatter(Get_Angle(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
 		if(length(xeno_shields))
@@ -1224,6 +1223,8 @@
 /atom/proc/bullet_ping(obj/projectile/P, pixel_x_offset = 0, pixel_y_offset = 0)
 	if(!P || !P.ammo.ping)
 		return
+
+	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P)
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)

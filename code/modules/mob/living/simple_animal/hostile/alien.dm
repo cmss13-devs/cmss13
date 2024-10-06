@@ -126,7 +126,7 @@
 	. = ..()
 	if(P.damage)
 		var/splatter_angle = Get_Angle(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_angle)
+		new /obj/effect/bloodsplatter/xenosplatter(loc, splatter_angle)
 		if(prob(15))
 			roar_emote()
 

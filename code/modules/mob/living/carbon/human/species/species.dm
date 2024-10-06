@@ -41,7 +41,7 @@
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/remains_type = /obj/effect/decal/remains/xeno
-	var/bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+	var/bloodsplatter_type = /obj/effect/bloodsplatter/human
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 
@@ -483,7 +483,7 @@
 		if(D)
 			color_override = D.color
 
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, angle, 5, color_override)
+	var/obj/effect/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, angle, 5, color_override)
 	return bloodsplatter
 
 /datum/species/proc/get_status_tab_items()

@@ -1,4 +1,7 @@
-//unsorted miscellaneous temporary visuals
+//------------------------------------------
+//BLOOD HITS
+//------------------------------------------
+
 GLOBAL_LIST_EMPTY(blood_particles)
 /particles/splatter
 	icon = 'icons/effects/effects.dmi'
@@ -21,14 +24,14 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	if(set_color != "red") // we're already red colored by default
 		color = set_color
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter
+/obj/effect/bloodsplatter
 	icon = 'icons/effects/blood.dmi'
-	duration = 5
-	randomdir = FALSE
+	var/duration = 5
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, angle, fx_duration, color_override)
+/obj/effect/bloodsplatter/Initialize(mapload, angle, fx_duration, color_override)
+	. = ..()
 	if(color_override)
 		color = color_override
 	var/x_component = sin(angle) * -15
@@ -38,9 +41,9 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	particles = GLOB.blood_particles[color]
 	particles.velocity = list(x_component, y_component)
 	icon_state = "[splatter_type][pick(1, 2, 3, 4, 5, 6)]"
-	. = ..()
 	if(fx_duration)
 		duration = fx_duration
+	AddElement(/datum/element/temporary, duration)
 	var/target_pixel_x = 0
 	var/target_pixel_y = 0
 	switch(round(angle))
@@ -94,42 +97,23 @@ GLOBAL_LIST_EMPTY(blood_particles)
 			target_pixel_y = 8
 	animate(src, pixel_x = target_pixel_x, pixel_y = target_pixel_y, alpha = 0, time = duration)
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
-	splatter_type = "xsplatter"
+
+/obj/effect/bloodsplatter/xenosplatter
+	splatter_type = "csplatter"
 	color = BLOOD_COLOR_XENO
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/human
+/obj/effect/bloodsplatter/human
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_HUMAN
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound
+/obj/effect/bloodsplatter/hellhound
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_YAUTJA
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+/obj/effect/bloodsplatter/yautjasplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_YAUTJA_DARK
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
+/obj/effect/bloodsplatter/synthsplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_SYNTHETIC
-
-/obj/effect/temp_visual/shockwave
-	icon = 'icons/effects/light_overlays/shockwave.dmi'
-	icon_state = "shockwave"
-	plane = DISPLACEMENT_PLATE_RENDER_LAYER
-	pixel_x = -496
-	pixel_y = -496
-
-/obj/effect/temp_visual/shockwave/Initialize(mapload, radius, speed, easing_type = LINEAR_EASING, y_offset, x_offset)
-	. = ..()
-	if(!speed)
-		speed = 1
-	if(y_offset)
-		pixel_y += y_offset
-	if(x_offset)
-		pixel_x += x_offset
-	deltimer(timerid)
-	timerid = QDEL_IN(src, 0.5 * radius * speed)
-	transform = matrix().Scale(32 / 1024, 32 / 1024)
-	animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5), easing = easing_type)

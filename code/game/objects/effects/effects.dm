@@ -5,6 +5,8 @@
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	unacidable = TRUE
 
+	var/as_image = FALSE
+
 /obj/effect/ex_act(severity)
 	return
 

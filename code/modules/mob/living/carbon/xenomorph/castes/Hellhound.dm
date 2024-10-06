@@ -130,7 +130,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(angle)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, angle)
+	new /obj/effect/bloodsplatter/hellhound(loc, angle)
 
 /datum/behavior_delegate/hellhound_base
 	name = "Base Hellhound Behavior Delegate"

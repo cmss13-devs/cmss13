@@ -2,19 +2,19 @@
 
 //Illicit drugs~
 /obj/item/storage/pill_bottle/happy
-	max_storage_space = 7
 	name = "happy pills"
 	gender = PLURAL
 	desc = "Highly illegal drug. When you want to see the rainbow."
 	skilllock = SKILL_MEDICAL_DEFAULT
+	max_storage_space = 7
 	pill_type_to_fill = /obj/item/reagent_container/pill/happy
 
 /obj/item/storage/pill_bottle/frenzy
-	max_storage_space = 13
 	name = "Frenzy"
 	gender = PLURAL
 	desc = "A highly illegal concoction of drugs, infamously utilized by CLF fighters to improve performance and steel their nerves before combat. Extremely volatile side effects. The subject of many CMB sting operations in the Outer Rim, the minimum charge for possession of Frenzy carries at least 10 years in the UA prison system. The relevant laws are exceptionally broad and are often used to criminalize local chemical operations in the colonies, as it can claimed to apply so long as any of the compounds listed as part of Frenzy are present."
 	skilllock = SKILL_MEDICAL_TRAINED
+	max_storage_space = 13
 	pill_type_to_fill = /obj/item/reagent_container/pill/frenzy
 
 /obj/item/storage/pill_bottle/zombie_powder

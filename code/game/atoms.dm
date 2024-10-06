@@ -10,7 +10,13 @@
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
 
+	/// determines whether or not the object can be destroyed by xeno acid
 	var/unacidable = FALSE
+	/// determines whether or not the object can be destroyed by an explosion
+	var/explo_proof = FALSE
+	/// determines whether or not the object can be affected by EMPs
+	var/emp_proof = FALSE
+
 	var/last_bumped = 0
 
 	// The cached datum for the permanent pass flags for any given atom
@@ -207,6 +213,9 @@ directive is properly returned.
 /atom/proc/emp_act(severity)
 	SHOULD_CALL_PARENT(TRUE)
 
+	if(emp_proof)
+		return FALSE
+
 	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
@@ -268,6 +277,9 @@ directive is properly returned.
 		A.ex_act(severity)
 
 /atom/proc/ex_act(severity)
+	if(explo_proof)
+		return
+
 	contents_explosion(severity)
 
 /atom/proc/fire_act()

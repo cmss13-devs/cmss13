@@ -13,7 +13,7 @@
 	anchored = TRUE // can't pick it up
 	density = FALSE // can walk through it.
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	/// id of door it controls.
 	var/id = null

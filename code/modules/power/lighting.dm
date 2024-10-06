@@ -252,17 +252,15 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 23
+					pixel_y = 6
 				if(EAST)
-					pixel_x = 10
+					pixel_x = 6
 				if(WEST)
-					pixel_x = -10
+					pixel_x = -4
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 10
-				if(SOUTH)
-					pixel_y = -10
+					pixel_y = 23
 				if(EAST)
 					pixel_x = 10
 				if(WEST)

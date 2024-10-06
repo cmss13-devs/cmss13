@@ -41,11 +41,10 @@
 	. = ..()
 	if(isxeno(user) || isobserver(user))
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow_max - stored_huggers] more to grow (reserved: [huggers_reserved])."
-		if(stored_huggers < huggers_to_grow_max)
-			. += "It'll grow another facehugger in [COOLDOWN_SECONDSLEFT(src, spawn_cooldown)] seconds."
-	if(isobserver(user))
 		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
 		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers at present."
+		if(stored_huggers < huggers_to_grow_max)
+			. += "It'll grow another facehugger in [COOLDOWN_SECONDSLEFT(src, spawn_cooldown)] seconds."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/item, mob/user)
 	if(!isxeno(user))

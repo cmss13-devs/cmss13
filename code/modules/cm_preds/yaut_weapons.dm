@@ -130,6 +130,16 @@
 	force = MELEE_FORCE_TIER_5
 	has_speed_bonus = FALSE
 
+/obj/item/weapon/wristblades/scimitar/alt
+	name = "wrist scimitar"
+	plural_name = "wrist scimitars"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "scim_alt"
+	item_state = "scim_alt"
+	attack_speed = 5
+	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
+
 /*#########################################
 ########### One Handed Weapons ############
 #########################################*/
@@ -1139,7 +1149,7 @@
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 
@@ -1150,7 +1160,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
-	item_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_item_state]_[caster_material]"
 	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()

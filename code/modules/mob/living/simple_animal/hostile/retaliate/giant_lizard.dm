@@ -393,7 +393,7 @@
 		add_splatter_floor(loc, FALSE)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/handle_blood_splatter(splatter_dir)
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/human/bloodsplatter = new(loc, splatter_dir)
+	var/obj/effect/bloodsplatter/human/bloodsplatter = new(loc, splatter_dir)
 	bloodsplatter.pixel_y = -2
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackingTarget(inherited_target = target_mob)

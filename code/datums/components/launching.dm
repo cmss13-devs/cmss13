@@ -219,7 +219,7 @@ UnregisterSignal(parent, COMSIG_MOVABLE_COLLIDE); var/target = target_ref?.resol
 			return LAUNCH_RESULT_DELETED
 		if (IN_SAME_TURF(launched, target))
 			. = LAUNCH_RESULT_STOPPED
-			return
+			break
 		last_turf = launched.loc
 		launch_result.dist++
 		if (launch_result.dist >= range)

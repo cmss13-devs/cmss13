@@ -2,11 +2,12 @@
 #define FLAY_STAGE_STRIP 2
 #define FLAY_STAGE_SKIN 3
 
-#define ABILITY_COST_DEFAULT 1
+#define ABILITY_COST_COMBI 1
 #define ABILITY_COST_CHAIN 3
 #define ABILITY_COST_SCYTHE 5
 #define ABILITY_COST_SWORD 0
 #define ABILITY_COST_GLAIVE 0
+#define ABILITY_COST_NO_ABILITY 0
 
 #define ABILITY_CHARGE_SMALL 0.5
 #define ABILITY_CHARGE_NORMAL 1
@@ -167,7 +168,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	edge = TRUE
@@ -182,7 +183,7 @@
 	var/ability_charge = 0
 	var/ability_charge_max = ABILITY_MAX_DEFAULT
 	var/ability_charge_rate = ABILITY_CHARGE_NORMAL
-	var/ability_cost = ABILITY_COST_DEFAULT
+	var/ability_cost = ABILITY_COST_NO_ABILITY
 	///Whether the ability is ready to trigger
 	var/ability_primed = FALSE
 
@@ -245,7 +246,6 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
@@ -433,7 +433,7 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
-	ability_cost = ABILITY_COST_DEFAULT
+	ability_cost = ABILITY_COST_COMBI
 	ability_charge_max = ABILITY_MAX_DEFAULT
 	ability_charge_rate = ABILITY_CHARGE_SMALL
 
@@ -848,6 +848,7 @@
 	)
 
 	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
@@ -862,7 +863,7 @@
 	var/ability_charge = 0
 	var/ability_charge_max = ABILITY_MAX_DEFAULT
 	var/ability_charge_rate = ABILITY_CHARGE_NORMAL
-	var/ability_cost = ABILITY_COST_DEFAULT
+	var/ability_cost = ABILITY_COST_NO_ABILITY
 	///Whether the ability is ready to trigger
 	var/ability_primed = FALSE
 
@@ -979,9 +980,9 @@
 	force_wielded = MELEE_FORCE_TIER_10
 	throwforce = MELEE_FORCE_TIER_3
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	ability_cost = ABILITY_COST_GLAIVE
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -1029,6 +1030,7 @@
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	has_unique_action = FALSE
 
 /obj/item/weapon/gun/launcher/spike/process()
@@ -1113,6 +1115,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
@@ -1346,7 +1349,6 @@
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE

@@ -92,6 +92,7 @@
 		if(get_point_store() < entry.cost)
 			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
 				balloon_alert_to_viewers("out of points - printing paused!")
+				visible_message(SPAN_WARNING("[src] flashes a warning light."))
 				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
 			busy = FALSE
 			return

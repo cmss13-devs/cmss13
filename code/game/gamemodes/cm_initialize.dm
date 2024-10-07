@@ -410,7 +410,7 @@ Additional game mode variables.
 						break
 					position++
 				candidate_new_player.larva_queue_message_stale_time = world.time + 3 MINUTES // spam prevention
-				candidate_new_player.larva_queue_cached_message = "Your position would be [position]\th in the larva queue if you observed and were elgible to be a xeno. \
+				candidate_new_player.larva_queue_cached_message = "Your position would be [position]\th in the larva queue if you observed and were eligible to be a xeno. \
 					The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
 					you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
 					Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \

@@ -68,10 +68,10 @@
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
-	process_build_queue()
-
 	if(generate_points)
 		add_to_point_store()
+
+	process_build_queue()
 
 	update_icon()
 
@@ -88,6 +88,13 @@
 
 		if(ispath(entry.item, /obj/structure/ship_ammo/sentry))
 			omnisentry_price += omnisentry_price_scale
+
+		if(get_point_store() < entry.cost)
+			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
+				balloon_alert_to_viewers("out of points - printing paused!")
+				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
+			busy = FALSE
+			return
 
 		visible_message(SPAN_NOTICE("[src] starts printing something."))
 		spend_point_store(entry.cost)

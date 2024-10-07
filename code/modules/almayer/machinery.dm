@@ -133,9 +133,8 @@
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
 	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_ammo.dmi'
 	icon_state = "30mm_crate"
-
 
 /obj/structure/prop/almayer/computers
 	var/hacked = FALSE

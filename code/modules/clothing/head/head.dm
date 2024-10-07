@@ -170,11 +170,7 @@
 /obj/item/clothing/head/headband
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "headband"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
@@ -186,16 +182,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
@@ -327,9 +323,6 @@
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY
 	var/storage_max_storage_space = 4
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
@@ -350,16 +343,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
@@ -567,16 +560,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
@@ -834,16 +827,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD]= 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 /obj/item/clothing/head/durag/Initialize(mapload, ...)
 	. = ..()

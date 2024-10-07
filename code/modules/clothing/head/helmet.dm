@@ -1212,16 +1212,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 
 /obj/item/clothing/head/helmet/specrag/New()
@@ -1253,16 +1253,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 
 /obj/item/clothing/head/helmet/skullcap/jungle

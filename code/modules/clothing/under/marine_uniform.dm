@@ -46,16 +46,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi'
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -88,8 +88,12 @@
 
 /obj/item/clothing/under/marine/engineer/darker
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi'
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/rto
 	name = "\improper USCM radio telephone operator uniform"
@@ -117,10 +121,12 @@
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi'
 	flags_jumpsuit = FALSE
 	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
+	)
 
 /obj/item/clothing/under/marine/mp
 	name = "military police jumpsuit"
@@ -136,19 +142,21 @@
 
 /obj/item/clothing/under/marine/mp/darker
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi'
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
 	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi'
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -187,7 +195,6 @@
 	item_state = "pilot_flightsuit"
 	worn_state = "pilot_flightsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 
@@ -197,10 +204,12 @@
 	icon_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 
 /obj/item/clothing/under/marine/officer/pilot/dcc
 	name = "dropship crew chief bodysuit"
@@ -208,9 +217,11 @@
 	icon_state = "crewchief_flightsuit"
 	worn_state = "crewchief_flightsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 
 /obj/item/clothing/under/marine/officer/tanker
 	name = "vehicle crewman uniform"
@@ -226,7 +237,9 @@
 	name = "marine service uniform"
 	desc = "A service uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
@@ -254,7 +267,9 @@
 	icon_state = "general_jumpsuit"
 	worn_state = "general_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	specialty = "general"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
@@ -266,7 +281,9 @@
 	icon_state = "EC_jumpsuit"
 	worn_state = "EC_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+	)
 	specialty = "chief engineer"
 	flags_atom = NO_SNOW_TYPE
 	item_state_slots = list(WEAR_BODY = "EC_jumpsuit")
@@ -279,7 +296,9 @@
 	icon_state = "mt_jumpsuit"
 	worn_state = "mt_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+	)
 	specialty = "engineer"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE
@@ -292,7 +311,9 @@
 	icon_state = "ot_jumpsuit"
 	worn_state = "ot_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+	)
 	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
@@ -303,13 +324,17 @@
 	icon_state = "research_jumpsuit"
 	worn_state = "research_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
+	)
 	specialty = "researcher"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/servicedress
@@ -339,7 +364,9 @@
 	icon_state = "formal_jumpsuit"
 	worn_state = "formal_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	specialty = "marine formal"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
@@ -360,7 +387,9 @@
 	name = "marine enlisted dress blues uniform"
 	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This unadorned variant is for enlisted personnel, E-1 thru E-3."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "enlisted"
 	worn_state = "enlisted"
 
@@ -386,7 +415,9 @@
 	name = "\improper Provost Uniform"
 	desc = "The crisp uniform of a Provost Officer."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "provost"
 	worn_state = "provost"
 
@@ -428,7 +459,9 @@
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	siemens_coefficient = 0.9
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "tis"
 	worn_state = "tis"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -453,7 +486,9 @@
 	name = "\improper USCM uniform"
 	desc = "Torn, Burned and blood stained. This uniform has seen much more than you could possibly imagine."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "recon_marine"
 	worn_state = "recon_marine"
 	flags_atom = NO_SNOW_TYPE
@@ -484,7 +519,9 @@
 	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark enviorments."
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "marsoc"
 	worn_state = "marsoc"
 	specialty = "sof uniform"
@@ -496,7 +533,9 @@
 	name = "\improper PMC fatigues"
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 	icon_state = "pmc_jumpsuit"
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -689,7 +728,9 @@
 	name = "\improper Mercenary fatigues"
 	desc = "A thick, beige suit with a red armband. There is an unknown symbol is emblazed on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CLF.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi',
+	)
 	icon_state = "mercenary_heavy_uniform"
 	worn_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -714,7 +755,9 @@
 	name = "\improper United American security uniform"
 	desc = "Overalls made of kevlon cover a snazzy blue dress shirt. UA branded security uniforms are notorious for their association with anti-union riot control teams."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "ua_riot"
 	worn_state = "ua_riot"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
@@ -733,7 +776,9 @@
 	name = "pizza delivery uniform"
 	desc = "An ill-fitting, slightly stained uniform for a pizza delivery pilot. Smells of cheese."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	icon_state = "redshirt2"
 	worn_state = "redshirt2"
 	has_sensor = UNIFORM_NO_SENSORS
@@ -749,7 +794,9 @@
 	name = "colonist uniform"
 	desc = "A stylish gray-green jumpsuit - standard issue for colonists."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -758,7 +805,9 @@
 	name = "grey workwear"
 	desc = "A pair of black slacks and a short-sleeve grey workshirt. Standard uniform for Weyland Yutani employees working in colony operations and administration."
 	icon = 'icons/obj/items/clothing/uniforms/workwear.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi',
+	)
 	icon_state = "workwear_grey"
 	worn_state = "workwear_grey"
 
@@ -794,7 +843,9 @@
 	name = "\improper Colonial Liberation Front uniform"
 	desc = "A stylish grey-green jumpsuit - standard issue for colonists. This version appears to have the symbol of the Colonial Liberation Front emblazoned in select areas."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CLF.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi',
+	)
 	icon_state = "clf_uniform"
 	worn_state = "clf_uniform"
 
@@ -802,7 +853,9 @@
 	name = "\improper UA gray utility uniform"
 	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -811,7 +864,9 @@
 	name = "\improper UA brown utility uniform"
 	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -820,7 +875,9 @@
 	name = "white service uniform"
 	desc = "A white dress shirt and tie with sleek pants. Standard clothing for anyone on professional business."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "CO_service"
 	worn_state = "CO_service"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -829,7 +886,9 @@
 	name = "steward utilities"
 	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewards."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "wy_joliet_shopsteward"
 	worn_state = "wy_joliet_shopsteward"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -837,7 +896,9 @@
 /obj/item/clothing/under/tshirt
 	name = "T-shirt parent object"
 	icon = 'icons/obj/items/clothing/uniforms/workwear.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi',
+	)
 	has_sensor = UNIFORM_NO_SENSORS
 
 /obj/item/clothing/under/tshirt/w_br
@@ -868,7 +929,9 @@
 	name = "\improper Colonial Marshal uniform"
 	desc = "A pair of off-white slacks and a blue button-down shirt with a dark brown tie; the standard uniform of the Colonial Marshals."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
 	icon_state = "marshal"
 	worn_state = "marshal"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -885,7 +948,9 @@
 	name = "liaison's tan suit"
 	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 	icon_state = "liaison_regular"
 	worn_state = "liaison_regular"
 
@@ -970,6 +1035,7 @@
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."
 	icon_state = "cc_white"
 	worn_state = "cc_white"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
@@ -993,7 +1059,9 @@
 	icon_state = "twe_suit"
 	worn_state = "twe_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
 
 /obj/item/clothing/under/stowaway
 	name = "dirty suit"
@@ -1012,7 +1080,9 @@
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi',
+	)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/rank/synthetic
@@ -1021,7 +1091,9 @@
 	icon_state = "rdalt"
 	worn_state = "rdalt"
 	icon = 'icons/obj/items/clothing/uniforms/synthetic_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/synthetic_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/synthetic_uniforms.dmi',
+	)
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic/frontier
@@ -1070,7 +1142,9 @@
 	item_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
@@ -1079,7 +1153,9 @@
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
+	)
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
@@ -1087,7 +1163,9 @@
 	icon_state = "working_joe"
 	worn_state = "working_joe"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi',
+	)
 	flags_item = NO_CRYO_STORE
 	var/obj/structure/machinery/camera/camera
 
@@ -1142,7 +1220,9 @@
 	name = "royal marines commando uniform"
 	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
 	icon_state = "rmc_uniform"
 	worn_state = "rmc_uniform"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
@@ -1164,6 +1244,7 @@
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	icon_state = "cbrn"
 	worn_state = "cbrn"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_jumpsuit = NO_FLAGS
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW

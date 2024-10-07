@@ -15,14 +15,18 @@
 	name = "Amish suit"
 	icon_state = "sl_suit"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/waiter
 	name = "waiter's outfit"
 	desc = "It's a very smart uniform with a special pocket for tip."
 	icon_state = "waiter"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/rank/centcom_officer
 	desc = "It's a jumpsuit worn by CentCom Officers."
@@ -37,7 +41,9 @@
 	icon_state = "black_suit"
 	item_state = "bl_suit"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/suit_jacket/really_black
 	name = "executive suit"
@@ -61,7 +67,9 @@
 	desc = "A black cardigan with a red skirt, quite fancy!"
 	icon_state = "blackskirt"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/schoolgirl
@@ -76,7 +84,9 @@
 	icon_state = "overalls"
 	item_state = "lb_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+	)
 
 /obj/item/clothing/under/pirate
 	name = "pirate outfit"
@@ -108,7 +118,9 @@
 	name = "shaft miner's jumpsuit"
 	icon_state = "miner"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi',
+	)
 
 /obj/item/clothing/under/redcoat
 	name = "redcoat uniform"
@@ -128,7 +140,9 @@
 	icon_state = "assistant_formal"
 	item_state = "gy_suit"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/suit_jacket/charcoal
 	name = "charcoal suit"

@@ -230,16 +230,16 @@
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/classic.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/desert.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/desert.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/snow.dmi'
-			icon_override = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/snow.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/snow.dmi'
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
 	QDEL_NULL(active_fuel)

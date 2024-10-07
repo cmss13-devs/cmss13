@@ -2,7 +2,9 @@
 /obj/item/clothing/under/color
 	flags_jumpsuit = FALSE
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+	)
 
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"

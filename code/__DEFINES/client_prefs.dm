@@ -53,3 +53,6 @@
 #define DUAL_WIELD_SWAP 1
 ///Do nothing when dual wielding
 #define DUAL_WIELD_NONE 2
+
+#define RELAY_UNSELECTED "unselected"
+#define RELAY_SELECTED_NONE "none selected"

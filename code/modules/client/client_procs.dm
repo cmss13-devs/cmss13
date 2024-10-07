@@ -321,6 +321,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
 
+	check_connection_url()
+
 	notify_login()
 
 	load_xeno_name()
@@ -921,3 +923,37 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+/client/proc/check_connection_url()
+	set waitfor = FALSE
+
+	if(prefs.selected_relay == RELAY_SELECTED_NONE)
+		return
+
+	var/relay_con_conf = CONFIG_GET(keyed_list/connection_relay_con)
+
+	if(!length(relay_con_conf))
+		return
+
+	var/url = winget(src, null, "url")
+
+	var/connected_relay
+
+	for(var/key in relay_con_conf)
+		var/value = relay_con_conf[key]
+
+		if(value == url)
+			connected_relay = value
+			break
+
+	if(connected_relay == prefs.selected_relay)
+		to_chat(src, SPAN_INFO("You are currently connected to the [connected_relay] relay!"))
+		return
+
+	if(!connected_relay)
+		if(prefs.selected_relay == RELAY_UNSELECTED)
+			to_chat(src, SPAN_LARGE(SPAN_WARNING("You are not connected via a relay, and you have not selected one in Character Setup. Disable this message in Character Setup, or pick a relay close to your location via the Ping button.")))
+			return
+
+		to_chat_immediate(src, SPAN_NOTICE("Redirecting your connection via your selected relay, please wait to reconnect..."))
+		src << link(relay_con_conf[prefs.selected_relay])

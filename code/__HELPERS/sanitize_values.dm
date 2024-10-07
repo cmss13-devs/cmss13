@@ -77,3 +77,13 @@
 			if(65 to 70) . += ascii2text(ascii+32) //letters A to F - translates to lowercase
 			else return default
 	return .
+
+/proc/sanitize_relay(selected_relay)
+	if(selected_relay == RELAY_SELECTED_NONE || selected_relay == RELAY_UNSELECTED)
+		return selected_relay
+
+	for(var/key in CONFIG_GET(keyed_list/connection_relay_con))
+		if(selected_relay == key)
+			return selected_relay
+
+	return RELAY_UNSELECTED

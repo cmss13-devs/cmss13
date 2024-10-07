@@ -250,6 +250,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	/// If this client has auto observe enabled, used by /datum/orbit_menu
 	var/auto_observe = TRUE
 
+	var/selected_relay = RELAY_UNSELECTED
+
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -591,6 +593,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			if(length(CONFIG_GET(keyed_list/connection_relay_con)))
+				dat += "<b>Connection Relay:</b> <a href='?_src_=prefs;preference=connectionrelay'><b>[uppertext(selected_relay)]</b></a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"
@@ -1937,6 +1941,32 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
+
+				if("connectionrelay")
+					var/relay_connections = CONFIG_GET(keyed_list/connection_relay_con)
+					if(!length(relay_connections))
+						return
+
+					var/options = list("Direct Connect")
+					options += relay_connections
+
+					var/selected = tgui_input_list(owner, "Which relay would you like to use?", "Select a Relay", options)
+					if(!selected)
+						return
+
+					if(selected == "Direct Connect")
+						selected_relay = RELAY_SELECTED_NONE
+
+					selected_relay = selected
+
+					var/current_url = winget(owner, null, "url")
+					if(current_url == relay_connections[selected_relay])
+						return
+
+					save_preferences()
+
+					to_chat_immediate(owner, SPAN_NOTICE("Redirecting your connection via your selected relay, please wait to reconnect..."))
+					owner << link(relay_connections[selected_relay])
 
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION

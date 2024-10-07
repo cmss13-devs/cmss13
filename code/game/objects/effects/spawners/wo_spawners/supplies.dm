@@ -195,7 +195,7 @@
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/USCM.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "powerpack"
 	stuff = list(/obj/item/smartgun_battery)
 

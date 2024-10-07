@@ -128,6 +128,10 @@
 
 /obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
 	name = "ITEM NAME"
@@ -959,6 +963,7 @@
 	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	icon_state = null
 	item_state = null
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	item_icons = list(
@@ -1323,12 +1328,22 @@
 	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "tactical radiopack"
@@ -1340,9 +1355,28 @@
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
 	desc = "Plenty of pouches and pockets. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "skinnerrangerpack"
 	item_state = "skinnerrangerpack"
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"

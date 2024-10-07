@@ -122,7 +122,6 @@
 	worn_state = "chef_uniform"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	flags_jumpsuit = FALSE
-	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
@@ -242,7 +241,6 @@
 	)
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
-	specialty = "marine service"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
@@ -270,7 +268,6 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
-	specialty = "general"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/ce
@@ -284,8 +281,7 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
 	)
-	specialty = "chief engineer"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	item_state_slots = list(WEAR_BODY = "EC_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/engi
@@ -367,7 +363,6 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
-	specialty = "marine formal"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
 	black_market_value = 15
@@ -1068,6 +1063,10 @@
 	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "stowaway_uniform"
 	worn_state = "stowaway_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/rank/chef/exec
 	name = "\improper Weyland-Yutani suit"

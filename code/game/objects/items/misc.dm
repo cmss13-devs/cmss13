@@ -282,9 +282,9 @@
 /obj/item/parachute
 	name = "parachute"
 	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/USCM.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/USCM.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	icon_state = "parachute_pack"
 	item_state = "parachute_pack"

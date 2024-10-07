@@ -326,8 +326,6 @@
 	if(missing_reagents <= 0)
 		return TRUE
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
-		if(container.reagents.total_volume == initial(container.reagents.total_volume))
-			return TRUE
 		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 		return FALSE
 	if(chem_refill_volume < missing_reagents)

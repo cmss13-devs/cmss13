@@ -15,7 +15,7 @@
 
 	var/faction = FACTION_MARINE
 	var/datum/controller/supply/linked_supply_controller
-  var/list/datum/build_queue_entry/build_queue = list()
+	var/list/datum/build_queue_entry/build_queue = list()
 
 /obj/structure/machinery/part_fabricator/upp
 	name = "UPP part fabricator"

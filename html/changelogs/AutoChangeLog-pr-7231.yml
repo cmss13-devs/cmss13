@@ -1,0 +1,4 @@
+author: "nivrak"
+delete-after: True
+changes:
+  - bugfix: "fixes pred round chance being borked"

@@ -1,0 +1,85 @@
+2024-10-01:
+  Killfish:
+  - balance: Tail stab now dazes based off xeno size; Small ones don't daze, Normal
+      ones daze for 1 second, and Large ones daze for 3 seconds
+  - spellcheck: Because of Defender's club tail, Tail Stab's base messages no longer
+      specifically refer to stabbing things or the xeno having a razor sharp tail
+  - rscadd: Tail stab's range is now a modifiable variable (default range is still
+      2)
+  Nihisohel:
+  - rscadd: Expands the Squad Leader headset tracking list
+2024-10-02:
+  Mister-moon1:
+  - bugfix: plasma caster onmob fixed
+  - code_imp: layering changed a bit
+2024-10-06:
+  Blundir:
+  - bugfix: fixed neuraline being a potential part of a chem recipe
+  GrrrKitten:
+  - qol: Stops Queen from stomping on xenos with relevant pass flags (Larva, Hugger,
+      Lesser)
+  JustLat:
+  - soundadd: two new death noises, two new laughs, one new growl, and one loudroar
+      for Yautja
+  - qol: tweaked Yautja death message to fit accordingly with new noises.
+  - rscadd: adds alt sprite style for scimitars, similar to war glaive and scythe
+  Lukas292001:
+  - spellcheck: Changes doctor and researcher join description, from saying they are
+      not in the chain of command to saying they are.
+  TheGamerdk:
+  - bugfix: Fixes being unable to stomp xenos as Queen
+  Tyranicranger4:
+  - bugfix: Fixed exiting ventcrawling through a covered pipe segment not triggering
+      a warning notification for nearby mobs
+  detectivegoogle:
+  - maptweak: added a containment cell to the Wey-Yu ERT station
+  efzapa:
+  - balance: CBRN Bio and Radiation Armor Values have been buffed to more accurately
+      portray their role.
+  iloveloopers:
+  - rscadd: Added more xenos to the OT demolitions simulator
+  lokideslimee:
+  - bugfix: fixed some predship tiles which had lighting issues
+  - code_imp: redid the code for grey_multi_tiles
+  - imageadd: added sprites for grey_multi_tiles, based off multi_tiles
+  - rscadd: Added Scandinavian as a language
+  - code_imp: Coded in the Scandinavian
+  - code_imp: Added Scandinavian as a language for mobs that should know the language
+  private-tristan:
+  - balance: Prep Weapon Vendors now scale with number of marines.
+  - balance: Prep Weapon Vendor "base" stock is lowered to compensate.
+  - qol: Abominations (Predaliens) are now gib immune
+  - qol: Intelligence Officers (IOs) now have comtech level access, and thus can unlock
+      APCs and use engi vendors as if they were a comtech.
+  - balance: Abominations (predaliens) now alert preds when they EVO, instead of when
+      they are created.
+  realforest2001:
+  - rscadd: Added psychic radiance for humans.
+  - bugfix: Humans cannot psychic speak while dead.
+  - rscadd: Psychic whisper and radiance now only shows to ghosts who are in the target
+      radii.
+  - code_imp: Yautja gear claim and tracking now checks for an area flag instead of
+      area typechecking.
+  - bugfix: Uniform vendor shutters are now correctly EMP proof.
+  - code_imp: Renamed the indestructible var to explo_proof, as protecting from explosions
+      was the purpose of that var.
+  - code_imp: Added emp_proof to protect from EMPs, as EMP requires parental calls.
+  - admin: Staff can now toggle their AFK protections on and off.
+  - code_imp: Default chat settings now include FF Attack logs for staff.
+  - bugfix: ERT station cryo pods no longer send gear to the Almayer.
+  rythenx:
+  - qol: boxes can be emptied using empty verb
+  thevandie:
+  - rscadd: added 4 wind breakers to the Liaison's wardrobe
+  - rscadd: added the blue workwear to the Liaison's wardrobe
+  zzzmike:
+  - qol: facehugger limit is visible when examining eggs/morpher as xeno, akin to
+      lesser drone limit when examining hive core
+2024-10-07:
+  TheDonkified:
+  - rscadd: Afterimage effect to be used by others. Currently not in use by anything.
+  VileBeggar:
+  - qol: Resin Whisperers can now toggle their long-sight on and off.
+  - rscadd: Marines can now (pathetically attempt to) shove xenos.
+  nivrak:
+  - bugfix: fixes pred round chance being borked

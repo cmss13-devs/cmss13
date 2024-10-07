@@ -4,7 +4,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/shuttle/part/dropship1
 	name = "\improper Alamo"

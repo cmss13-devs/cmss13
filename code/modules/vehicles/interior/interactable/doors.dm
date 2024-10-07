@@ -7,7 +7,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	// The interior interior this exit is tied to
 	var/datum/interior/interior = null

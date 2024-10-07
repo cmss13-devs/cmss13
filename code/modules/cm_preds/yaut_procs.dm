@@ -226,3 +226,4 @@
 	ceiling = CEILING_METAL
 	requires_power = FALSE
 	base_lighting_alpha = 255
+	flags_area = AREA_YAUTJA_GROUNDS

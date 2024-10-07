@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - balance: "Prep Weapon Vendors now scale with number of marines."
-  - balance: "Prep Weapon Vendor \"base\" stock is lowered to compensate."

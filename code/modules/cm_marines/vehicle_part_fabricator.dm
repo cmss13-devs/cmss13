@@ -157,7 +157,7 @@
 		var/index = params["index"]
 
 		if(length(build_queue))
-			if(index == 1)
+			if(busy && index == 1)
 				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
 				return
 

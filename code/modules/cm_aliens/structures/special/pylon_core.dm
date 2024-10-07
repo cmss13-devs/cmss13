@@ -39,7 +39,7 @@
 	. = ..()
 
 	node = place_node()
-	for(var/turf/A in range(floor(cover_range*PYLON_COVERAGE_MULT), loc))
+	for(var/turf/A as anything in RANGE_TURFS(floor(cover_range*PYLON_COVERAGE_MULT), loc))
 		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
 

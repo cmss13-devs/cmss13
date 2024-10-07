@@ -11,7 +11,7 @@
 	..()
 
 	// replace this by signals or trait signals
-	if(is_zoomed && (stat || body_position == LYING_DOWN))
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && is_zoomed && (stat || body_position == LYING_DOWN))
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost

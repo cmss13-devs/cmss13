@@ -1,5 +1,5 @@
 /obj/item/storage/box/packet
-	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "hedp_packet"
 	w_class = SIZE_MEDIUM//fits into bags
 	storage_slots = 3
@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	/obj/item/storage/box/packet/hornet,
 	/obj/item/storage/box/packet/incendiary,
 	/obj/item/storage/box/packet/smoke,
+	/obj/item/storage/box/packet/foam,
 	/obj/item/storage/box/packet/phosphorus,
 	/obj/item/storage/box/packet/phosphorus/upp,
 	/obj/item/storage/box/packet/m15,
@@ -76,10 +77,16 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	content_type = /obj/item/explosive/grenade/smokebomb
 
 /obj/item/storage/box/packet/phosphorus
-	name = "\improper HPDP grenade packet"
-	desc = "It contains three HPDP white phosphorus grenades."
-	icon_state = "hpdp_packet"
+	name = "\improper WPDP grenade packet"
+	desc = "It contains three WPDP white phosphorus grenades."
+	icon_state = "wpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
+
+/obj/item/storage/box/packet/phosphorus/strong
+	name = "\improper CCDP grenade packet"
+	desc = "It contains three CCDP chemical compound grenades."
+	icon_state = "ccdp_packet"
+	content_type = /obj/item/explosive/grenade/phosphorus
 
 /obj/item/storage/box/packet/phosphorus/upp
 	name = "\improper Type 8 WP grenade packet"
@@ -96,6 +103,12 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	name = "toy HEFA grenade packet"
 	desc = "These little packets of joy were distributed in the 100th (Season 2) Issue of the Boots! magazine as commemorative rewards for subscribers. Nobody knows how anyone, at any point, never asked 'wait, is this a terrible idea?' during the process."
 	content_type = /obj/item/explosive/grenade/high_explosive/frag/toy
+
+/obj/item/storage/box/packet/foam
+	name = "\improper MFHS foam grenade packet"
+	desc = "It contains three MFHS metal-foam grenades."
+	icon_state = "mfhs_packet"
+	content_type = /obj/item/explosive/grenade/metal_foam
 
 /obj/item/storage/box/packet/m15
 	name = "\improper M15 fragmentation grenade packet"

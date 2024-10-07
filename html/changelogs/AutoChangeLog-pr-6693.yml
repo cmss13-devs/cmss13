@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - refactor: "Made XM88 box code more uniform with other handful boxes."

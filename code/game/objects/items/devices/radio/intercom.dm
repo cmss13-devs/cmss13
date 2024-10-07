@@ -81,3 +81,7 @@
 /obj/item/device/radio/intercom/normandy
 	name = "dropship normandy intercom"
 	frequency = DS2_FREQ
+
+/obj/item/device/radio/intercom/saipan
+	name = "dropship saipan intercom"
+	frequency = DS3_FREQ

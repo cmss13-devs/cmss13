@@ -291,7 +291,7 @@
 	)
 	name = "M41AE2 HPR Magazines crate (HPR ammo box x2)"
 	cost = 20
-	containertype = /obj/structure/closet/crate
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41AE2 HPR magazines crate"
 	group = "Ammo"
 
@@ -301,8 +301,8 @@
 		/obj/item/ammo_magazine/rifle/lmg/holo_target,
 	)
 	name = "M41AE2 HPR Holo-Target Magazines crate (HPR HT ammo box x2)"
-	cost = 30
-	containertype = /obj/structure/closet/crate
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
 	group = "Ammo"
 

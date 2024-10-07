@@ -24,7 +24,7 @@
 	breakable = 0;
 	throwpass = 0;
 	climbable = 0;
-	indestructible = 1;
+	explo_proof = 1;
 	density = 0
 	},
 /obj/structure/blocker/forcefield/human/bulletproof{

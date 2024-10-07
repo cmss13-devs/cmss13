@@ -129,7 +129,7 @@
 /obj/effect/build_blocker
 	health = 500000
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
 	/// The atom we are blocking for

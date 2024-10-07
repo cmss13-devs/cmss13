@@ -45,7 +45,7 @@
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/turf/T in range(radius, centerturf))
+	for(var/turf/T as anything in RANGE_TURFS(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -234,6 +234,7 @@
  * Arguments:
  * * hive - The hive we're filling a slot for to check if the player is banished
  * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ * * abomination - Whether the potential larva is for an abomination
  */
 /proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE, abomination = FALSE)
 	var/list/candidates = list()

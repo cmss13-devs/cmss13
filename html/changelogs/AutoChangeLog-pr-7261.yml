@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added xeno queue information when attempting a xeno late join while inelgible (from the lobby and first time after death)"
+  - qol: "Streamlined the xeno late join process from lobby (offers observation and sets xeno preference)"
+  - ui: "Changed some alerts on main menu to tgui_alert"

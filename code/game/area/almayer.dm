@@ -36,7 +36,7 @@
 	icon_state = "supply"
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = TRUE
 	req_access = null
 	shuttle_tag = "Hangar"
@@ -47,7 +47,7 @@
 	icon_state = "shuttle"
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = TRUE
 	req_access = null
 	shuttle_tag = "Maintenance"
@@ -132,7 +132,7 @@
 	icon_state = "workshop"
 
 /area/almayer/engineering/lower/workshop/hangar
-	name = "\improper Ordnance workshop"
+	name = "\improper Ordnance Workshop"
 
 /area/almayer/engineering/lower/engine_core
 	name = "\improper Engine Reactor Core Room"

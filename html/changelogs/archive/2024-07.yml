@@ -210,3 +210,95 @@
   cuberound:
   - rscdel: removes trade destinations (they were never used)
   - balance: m56 cupola uses m56d ammo rather then standard sg ammo
+2024-07-22:
+  BlackCrystalic:
+  - bugfix: Queen maturity timer
+  Blackcrystalic:
+  - qol: port who/staffwho to TGUI
+  ThePiachu:
+  - refactor: Made XM88 box code more uniform with other handful boxes.
+  zzzmike:
+  - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code
+2024-07-24:
+  Doubleumc:
+  - bugfix: sounds & motion detectors should be more reliable
+2024-07-25:
+  cuberound:
+  - rscdel: removes /obj/item/device/suit_cooling_unit and get_pressure_weakness()
+2024-07-26:
+  BlackCrystalic:
+  - qol: if server take too long to pre init all before lobby art, players will see
+      lobbyart "loading"
+  Blundir:
+  - bugfix: fixed runner having no gib animation
+  - bugfix: fixed gib remains being invisible
+  - imageadd: boiler gib animation
+  - imageadd: larva gib remains
+  - imageadd: shoes icons resprite
+  Steelpoint:
+  - imageadd: The Sniper and Anti-Material Rifle Specialists will now use an urban
+      camouflage sprite for their ghillie suit instead of a green camouflage.
+  realforest2001:
+  - rscadd: Synthetics and Yautja now spawn with the Iron Teeth trait, not dropping
+      items held in their mouth.
+  rythenx:
+  - rscadd: more options for hats to ASO vendor to bring it in line with what SO has
+      available
+2024-07-29:
+  TheManWithNoHands:
+  - code_imp: adds flags to cone, allowing it to be worn on head
+  - imageadd: added on mob sprites for cone
+2024-07-30:
+  Blundir:
+  - balance: revolver belt and sg holster belt can fit any revolver
+  - balance: increased mateba belt storage size from 6 to 7
+  - rscadd: grabbing something has a small mob animation now, grabbing items have
+      visual effect, animation and sound
+  - rscadd: throwing has small animation and sound
+  Cuberound, Venuska1117:
+  - qol: You can build Special Structures nearby nested people.
+  Steelpoint:
+  - rscadd: Marine Special Forces, Forecon, Echo Squad and CBRN will now appear in
+      their own sub-menu for observers.
+  - ui: Foxtrot's colour in the observe menu now reflects the squads true colour scheme.
+  TheManWithNoHands:
+  - balance: increases XO police skill by 1
+  Venuska1117:
+  - balance: Enabled clusters to spread on semi-weedable surfaces.
+  cuberound:
+  - rscdel: removes air senzors
+  - rscdel: Removes autogibber and related objects
+  - rscdel: removes UNUSED hydro lights that were replaced by colony lights long ago
+  - rscdel: Removes mass driver
+  - rscdel: holopad removal
+  efzapa:
+  - rscadd: All Brig Detainment Cameras are now linked to a new Brig Camera Console
+      Computer, available in the Brig Lobby, Warden's Office, CIC, and CMP Office.
+  - maptweak: Removed one of the Security Records Consoles in the Brig Lobby in place
+      for a Brig Camera Console.
+  - mapadd: Both Brig Perma Cells now have brig cameras in them.
+  ihatethisengine2:
+  - balance: Smartgunners can wear folding barricades on their backs.
+  zzzmike:
+  - bugfix: stops attempted stripping when stunned etc.
+  - rscadd: pilots can unhack lifeboats, similar to dropship unhacking
+2024-07-31:
+  coldironwarrior:
+  - spellcheck: Fixed spelling of auxiliary in the circuit board vendor
+  - spellcheck: Fixed capitalization of ordnance workshop area
+  realforest2001:
+  - code_imp: Changed back-end for working out equipment preset paygrades so as to
+      remove the manual overrides on several roles based on playtime perks.
+  - rscadd: Added lower ranks for all enlisted and some officer roles subject to having
+      played for less than ten hours. This rank cannot be used after playing more
+      than ten hours, and ignores preferences for playtime perks.
+  - rscadd: Added a higher rank achievable to most enlisted and some officers, requiring
+      175+ hours.
+  - rscadd: Changed base rank for SL, SG, Spec and FTL by one grade up.
+  - rscadd: Changed low playtime rank for MP and Nurse from Lance Corporal to Corporal.
+  zzzmike:
+  - rscdel: Disablers can't execute people anymore
+  - bugfix: stops people from buckling others when they are knocked out etc.

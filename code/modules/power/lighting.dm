@@ -218,6 +218,32 @@
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
 
+// Dropship lights that use no power
+/obj/structure/machinery/light/dropship
+	use_power = USE_POWER_IDLE
+	active_power_usage = 0
+	brightness = 8
+
+/obj/structure/machinery/light/dropship/has_power()
+	return TRUE
+
+/obj/structure/machinery/light/dropship/set_pixel_location()
+	pixel_x = pixel_y = 0
+
+/obj/structure/machinery/light/dropship/green
+	icon_state = "gtube1"
+	base_state = "gtube"
+	desc = "A lighting fixture that is fitted with a bright green fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
+
+/obj/structure/machinery/light/dropship/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright red fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
+
+/obj/structure/machinery/light/dropship/blue
+	icon_state = "btube1"
+	base_state = "btube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
 
 /obj/structure/machinery/light/built/Initialize()
 	. = ..()

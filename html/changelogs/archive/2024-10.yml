@@ -75,3 +75,11 @@
   zzzmike:
   - qol: facehugger limit is visible when examining eggs/morpher as xeno, akin to
       lesser drone limit when examining hive core
+2024-10-07:
+  TheDonkified:
+  - rscadd: Afterimage effect to be used by others. Currently not in use by anything.
+  VileBeggar:
+  - qol: Resin Whisperers can now toggle their long-sight on and off.
+  - rscadd: Marines can now (pathetically attempt to) shove xenos.
+  nivrak:
+  - bugfix: fixes pred round chance being borked

@@ -25,6 +25,7 @@ export type OrbitData = {
   npcs: Observable[];
   vehicles: Observable[];
   escaped: Observable[];
+  in_thunderdome: Observable[];
   icons?: string[];
 };
 

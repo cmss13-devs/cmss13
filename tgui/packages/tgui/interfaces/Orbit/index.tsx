@@ -305,6 +305,7 @@ const ObservableContent = () => {
     npcs = [],
     vehicles = [],
     escaped = [],
+    in_thunderdome = [],
   } = data;
 
   return (
@@ -373,6 +374,11 @@ const ObservableContent = () => {
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
+      <ObservableSection
+        color="orange"
+        section={in_thunderdome}
+        title="Thunderdome"
+      />
       <ObservableSection section={vehicles} title="Vehicles" />
       <ObservableSection section={animals} title="Animals" />
       <ObservableSection section={dead} title="Dead" />

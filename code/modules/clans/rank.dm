@@ -82,3 +82,8 @@
 
 /datum/yautja_ancillary/task_master
 	name = CLAN_ANCILLARY_TASK_MASTER
+
+/datum/yautja_ancillary/clear
+	name = CLAN_ANCILLARY_NONE
+	limit = null
+	limit_type = null

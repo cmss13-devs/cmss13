@@ -25,5 +25,6 @@ GLOBAL_LIST_INIT_TYPED(clan_ancillaries, /datum/yautja_ancillary, list(
 	CLAN_ANCILLARY_TASK_MASTER = new /datum/yautja_ancillary/task_master(),
 	CLAN_ANCILLARY_SHAMAN = new /datum/yautja_ancillary/shaman(),
 	CLAN_ANCILLARY_HIGH_ENFORCER = new /datum/yautja_ancillary/high_enforcer(),
-	CLAN_ANCILLARY_HIGH_SHAMAN = new /datum/yautja_ancillary/high_shaman()
+	CLAN_ANCILLARY_HIGH_SHAMAN = new /datum/yautja_ancillary/high_shaman(),
+	CLAN_ANCILLARY_NONE = new /datum/yautja_ancillary/clear()
 ))

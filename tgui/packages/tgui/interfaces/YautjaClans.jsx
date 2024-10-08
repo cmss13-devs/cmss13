@@ -88,7 +88,7 @@ const ViewClans = (props) => {
             >
               Change Clan Color
             </Button.Confirm>
-            {user_is_superadmin && (
+            {!!user_is_superadmin && (
               <Button.Confirm
                 bold
                 mt="1rem"

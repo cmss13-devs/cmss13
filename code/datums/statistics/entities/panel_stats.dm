@@ -78,7 +78,6 @@
 			var/list/statistic_info = list()
 			var/datum/player_statistic/player_statistic = group.statistic_info[group_subtype]
 			if(player_statistic.statistic_name == STATISTIC_TYPE_CASTE || player_statistic.statistic_name == STATISTIC_TYPE_JOB)
-				total_statistics += list(list("name" = player_statistic.statistic_name, "value" = "TOTAL"))
 				for(var/subtype in player_statistic.total)
 					total_statistics += list(list("name" = subtype, "value" = player_statistic.total[subtype]))
 

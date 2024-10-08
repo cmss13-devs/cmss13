@@ -127,13 +127,16 @@ const ObservableSearch = () => {
 };
 
 const xenoSplitter = (members: Array<Observable>) => {
+  const tdomeHive: Array<Observable> = [];
   const primeHive: Array<Observable> = [];
   const corruptedHive: Array<Observable> = [];
   const forsakenHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.hivenumber?.includes('normal')) {
+    if (x.area_name?.includes('Thunderdome')) {
+      tdomeHive.push(x);
+    } else if (x.hivenumber?.includes('normal')) {
       primeHive.push(x);
     } else if (x.hivenumber?.includes('corrupted')) {
       corruptedHive.push(x);
@@ -144,6 +147,7 @@ const xenoSplitter = (members: Array<Observable>) => {
     }
   });
   const squads = [
+    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
     buildSquadObservable('Prime', 'xeno', primeHive),
     buildSquadObservable('Corrupted', 'green', corruptedHive),
     buildSquadObservable('Forsaken', 'grey', forsakenHive),

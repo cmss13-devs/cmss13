@@ -168,21 +168,19 @@
 			return // We clicked the same ability in a very short time
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
-		to_chat(xeno, "You will no longer use [ability_name] with \
-			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(xeno, "You will no longer use [ability_name] with [xeno.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		xeno.selected_ability = null
+		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
 	else
-		to_chat(xeno, "You will now use [ability_name] with \
-			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(xeno, "You will now use [ability_name] with [xeno.get_ability_mouse_name()].")
 		if(xeno.selected_ability)
 			xeno.selected_ability.action_deselect()
 			if(xeno.selected_ability.charge_time)
 				xeno.selected_ability.stop_charging_ability()
 		button.icon_state = "template_on"
-		xeno.selected_ability = src
+		xeno.set_selected_ability(src)
 		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
@@ -197,7 +195,7 @@
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
 	if(xeno.selected_ability == src)
-		xeno.selected_ability = null
+		xeno.set_selected_ability(null)
 	if(macro_path)
 		remove_verb(xeno, macro_path)
 

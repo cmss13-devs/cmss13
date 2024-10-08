@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
+	/client/proc/toggle_admin_afk_safety,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -93,8 +94,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
-	/client/proc/matrix_editor,
-	/datum/admins/proc/open_shuttlepanel
+	/client/proc/matrix_editor
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
@@ -143,6 +143,8 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,
+	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/get_whitelisted_clients,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -220,6 +222,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
+	/datum/admins/proc/open_shuttlepanel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
@@ -602,12 +605,21 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 
 /client/proc/toggle_admin_stealth()
 	set name = "Toggle Admin Stealth"
-	set category = "Preferences"
+	set category = "Preferences.Admin"
 	prefs.toggles_admin ^= ADMIN_STEALTHMODE
 	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
+
+/client/proc/toggle_admin_afk_safety()
+	set name = "Toggle AFK Safety"
+	set category = "Preferences.Admin"
+	prefs.toggles_admin ^= ADMIN_AFK_SAFE
+	if(prefs.toggles_admin & ADMIN_AFK_SAFE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

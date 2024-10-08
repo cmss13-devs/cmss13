@@ -1,6 +1,7 @@
 /obj/item/storage/box/implant
 	name = "implant box"
 	desc = "A sterile metal lockbox housing hypodermic implant injectors."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "implantbox"
 	use_sound = "toolbox"
 	storage_slots = 5

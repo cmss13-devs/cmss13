@@ -523,6 +523,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/regular_adminhelp_webhook_url
 
+/datum/config_entry/string/profiler_webhook_url
+
 /datum/config_entry/string/adminhelp_webhook_pfp
 
 /datum/config_entry/string/adminhelp_webhook_name

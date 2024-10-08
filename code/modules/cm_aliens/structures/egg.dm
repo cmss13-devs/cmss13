@@ -55,7 +55,7 @@
 	. = ..()
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
-	if(isobserver(user) && status == EGG_GROWN)
+	if(isobserver(user) || isxeno(user) && status == EGG_GROWN)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/current_hugger_count = hive.get_current_playable_facehugger_count();
 		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[hive.playable_hugger_limit]")] facehuggers at present."

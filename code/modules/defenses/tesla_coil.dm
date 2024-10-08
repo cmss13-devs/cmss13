@@ -11,6 +11,7 @@
 	var/last_fired = 0
 	var/tesla_range = TESLA_COIL_RANGE
 	var/fire_delay = TESLA_COIL_FIREDELAY
+	var/attack_defenses = TRUE
 	handheld_type = /obj/item/defenses/handheld/tesla_coil
 	disassemble_time = 10
 	health = 150
@@ -82,6 +83,9 @@
 
 		targets += M
 	FOR_DOVIEW_END
+
+	if(!attack_defenses)
+		return
 
 	FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(D.turned_on)
@@ -158,6 +162,17 @@
 		targets = null
 
 	. = ..()
+
+// For mapping
+/obj/structure/machinery/defenses/tesla_coil/premade
+	turned_on = TRUE
+	static = TRUE
+
+/obj/structure/machinery/defenses/tesla_coil/premade/attackby(obj/item/O, mob/user)
+	return
+
+/obj/structure/machinery/defenses/tesla_coil/premade/smart
+	attack_defenses = FALSE
 
 #define TESLA_COIL_STUN_FIRE_DELAY 3 SECONDS
 #define TESLA_COIL_STUN_EFFECT 1

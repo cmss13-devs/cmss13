@@ -304,7 +304,6 @@
 
 	if(M.mind)
 		M.track_death_calculations()
-		M.client.player_data.setup_statistics()
 		M.statistic_tracked = FALSE
 
 	usr.mind.transfer_to(M, TRUE)

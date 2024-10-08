@@ -85,7 +85,9 @@
 		/obj/item/device/radio,
 		/obj/structure/machinery/camera,
 		/obj/limb,
-		/obj/item/alien_embryo
+		/obj/item/alien_embryo,
+		/mob/living/carbon/cortical_borer,
+		/mob/living/captive_brain
 	)
 	//blood.dm
 	///How much blood the mob has
@@ -140,3 +142,6 @@
 	/// flipped icon_states for weed_food (needs to be the same length as weed_food_states)
 	var/list/weed_food_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
 
+
+	/// Used to highlight on follow menu.
+	var/special_mob = FALSE

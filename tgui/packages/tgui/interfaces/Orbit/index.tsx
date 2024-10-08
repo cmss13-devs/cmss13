@@ -282,6 +282,7 @@ const GroupedObservable = (props: {
 const ObservableContent = () => {
   const { data } = useBackend<OrbitData>();
   const {
+    special_mobs = [],
     humans = [],
     marines = [],
     survivors = [],
@@ -309,6 +310,11 @@ const ObservableContent = () => {
 
   return (
     <Stack vertical>
+      <ObservableSection
+        color="xeno"
+        section={special_mobs}
+        title="Special Mobs"
+      />
       <GroupedObservable
         color="blue"
         section={marines}

@@ -145,6 +145,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_joe_respawns,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/get_whitelisted_clients,
+	/client/proc/borer_broadcast,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(

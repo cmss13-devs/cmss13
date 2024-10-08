@@ -51,12 +51,14 @@
 	var/limit_type = CLAN_LIMIT_SIZE
 	var/limit = 5
 
-	var/granter_title_required = CLAN_RANK_LEADER
-	var/target_rank_required = CLAN_RANK_ELITE
+	/// The rank INTEGER or Ancillary TEXT needed to grant.
+	var/granter_title_required = CLAN_RANK_LEADER_INT
+	/// The target rank INTEGER needed for the ancillary.
+	var/target_rank_required = CLAN_RANK_ELITE_INT
 
 /datum/yautja_ancillary/high_enforcer
 	name = CLAN_ANCILLARY_HIGH_ENFORCER
-	target_rank_required = CLAN_RANK_ELDER
+	target_rank_required = CLAN_RANK_ELDER_INT
 	limit_type = CLAN_LIMIT_NUMBER
 	limit = 1
 
@@ -66,7 +68,7 @@
 
 /datum/yautja_ancillary/high_shaman
 	name = CLAN_ANCILLARY_HIGH_SHAMAN
-	target_rank_required = CLAN_RANK_ELDER
+	target_rank_required = CLAN_RANK_ELDER_INT
 	limit_type = CLAN_LIMIT_NUMBER
 	limit = 1
 

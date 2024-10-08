@@ -195,7 +195,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/restock_cart/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	switch(severity)

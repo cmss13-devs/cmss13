@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/computer/cryopodcontrol
-	exproof = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/cryotype = "REQ"
@@ -175,8 +175,15 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/time_entered = 0 //Used to keep track of the safe period.
 	var/silent_exit = FALSE
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
+	var/no_store_pod = FALSE
 
 /obj/structure/machinery/cryopod/right
+	dir = WEST
+
+/obj/structure/machinery/cryopod/no_store
+	no_store_pod = TRUE
+
+/obj/structure/machinery/cryopod/no_store/right
 	dir = WEST
 
 /obj/structure/machinery/cryopod/Initialize()
@@ -232,8 +239,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				dept_console = GLOB.frozen_items["Eng"]
 			if(JOB_PREDATOR)
 				dept_console = GLOB.frozen_items["Yautja"]
-			if(JOB_FAX_RESPONDER_USCM_HC, JOB_FAX_RESPONDER_USCM_PVST, JOB_FAX_RESPONDER_WY, JOB_FAX_RESPONDER_TWE, JOB_FAX_RESPONDER_UPP, JOB_FAX_RESPONDER_CLF, JOB_FAX_RESPONDER_CMB, JOB_FAX_RESPONDER_PRESS)
-				dept_console = GLOB.frozen_items["Responders"]
 
 		H.species.handle_cryo(H)
 
@@ -545,7 +550,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/proc/gearless_role(mob/occupant)
 	if(isyautja(occupant))
 		return TRUE
-	if(occupant.job in FAX_RESPONDER_JOB_LIST)
+	if(no_store_pod)
 		return TRUE
 	return FALSE
 

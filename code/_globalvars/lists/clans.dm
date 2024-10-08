@@ -17,3 +17,13 @@ GLOBAL_LIST_INIT(clan_ranks_ordered, list(
 	CLAN_RANK_LEADER = CLAN_RANK_LEADER_INT,
 	CLAN_RANK_ADMIN = CLAN_RANK_ADMIN_INT
 ))
+
+GLOBAL_LIST_INIT_TYPED(clan_ancillaries, /datum/yautja_ancillary, list(
+	CLAN_ANCILLARY_ENFORCER = new /datum/yautja_ancillary/enforcer(),
+	CLAN_ANCILLARY_ADJUTANT = new /datum/yautja_ancillary/adjutant(),
+	CLAN_ANCILLARY_HOUND_MASTER = new /datum/yautja_ancillary/hound_master(),
+	CLAN_ANCILLARY_TASK_MASTER = new /datum/yautja_ancillary/task_master(),
+	CLAN_ANCILLARY_SHAMAN = new /datum/yautja_ancillary/shaman(),
+	CLAN_ANCILLARY_HIGH_ENFORCER = new /datum/yautja_ancillary/high_enforcer(),
+	CLAN_ANCILLARY_HIGH_SHAMAN = new /datum/yautja_ancillary/high_shaman()
+))

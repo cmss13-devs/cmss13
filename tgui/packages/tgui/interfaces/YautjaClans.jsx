@@ -19,6 +19,7 @@ const ViewClans = (props) => {
     clan_names,
     current_clan_index,
     user_is_clan_leader,
+    user_is_clan_elder,
     user_is_council,
     user_is_superadmin,
   } = data;
@@ -112,8 +113,21 @@ const ViewClans = (props) => {
           <LabeledList>
             <LabeledList.Item label="Name">{yautja.name}</LabeledList.Item>
             <LabeledList.Item label="Rank">{yautja.rank}</LabeledList.Item>
-            <LabeledList.Item label="Ancillary">None</LabeledList.Item>
+            <LabeledList.Item label="Ancillary">
+              {yautja.ancillary}
+            </LabeledList.Item>
           </LabeledList>
+          <Button.Confirm
+            bold
+            mt="1rem"
+            width="23vw"
+            disabled={!user_is_clan_elder}
+            onClick={() =>
+              act('assign_ancillary', { target_player: yautja.player_id })
+            }
+          >
+            Assign Ancillary
+          </Button.Confirm>
           <Button.Confirm
             bold
             mt="1rem"
@@ -124,17 +138,6 @@ const ViewClans = (props) => {
             }
           >
             Change Rank
-          </Button.Confirm>
-          <Button.Confirm
-            bold
-            mt="1rem"
-            width="23vw"
-            disabled={!user_is_clan_leader}
-            onClick={() =>
-              act('assign_ancillary', { target_player: yautja.player_id })
-            }
-          >
-            Assign Ancillary
           </Button.Confirm>
           {!user_is_council && (
             <>
@@ -162,7 +165,7 @@ const ViewClans = (props) => {
               </Button.Confirm>
             </>
           )}
-          {user_is_council && (
+          {!!user_is_council && (
             <Button.Confirm
               bold
               mt="1rem"
@@ -175,7 +178,7 @@ const ViewClans = (props) => {
               Change Clan
             </Button.Confirm>
           )}
-          {user_is_superadmin && (
+          {!!user_is_superadmin && (
             <Button.Confirm
               bold
               mt="1rem"

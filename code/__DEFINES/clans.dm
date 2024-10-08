@@ -92,3 +92,12 @@
 		)
 
 #define CLAN_SHIP_PUBLIC -1
+
+#define CLAN_ANCILLARY_NONE "None"
+#define CLAN_ANCILLARY_ENFORCER "Enforcer"
+#define CLAN_ANCILLARY_HOUND_MASTER "Hound Master"
+#define CLAN_ANCILLARY_TASK_MASTER "Task Master"
+#define CLAN_ANCILLARY_ADJUTANT "Adjutant"
+#define CLAN_ANCILLARY_SHAMAN "Shaman"
+#define CLAN_ANCILLARY_HIGH_ENFORCER "High Enforcer"
+#define CLAN_ANCILLARY_HIGH_SHAMAN "High Shaman"

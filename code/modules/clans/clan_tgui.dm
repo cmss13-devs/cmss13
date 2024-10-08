@@ -11,6 +11,8 @@
 	var/user_rights = 0
 	/// The ID of the user's clan.
 	var/user_clan_id
+	/// The rank held within the user's clan.
+	var/user_clan_rank
 
 	/// The currently selected clan's OD
 	var/current_clan_id
@@ -28,6 +30,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		linked_client = origin_client
 		user_rights = linked_client.clan_info.permissions
 		user_clan_id = linked_client.clan_info.clan_id
+		user_clan_rank = linked_client.clan_info.clan_rank
 	if(init_global)
 		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 SECONDS)
 
@@ -72,6 +75,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 	data["current_clan_index"] = current_clan_index
 	data["user_is_clan_leader"] = verify_clan_leader(current_clan_id)
+	data["user_is_clan_elder"] = verify_clan_elder(current_clan_id)
 
 	data["user_is_council"] = verify_council()
 	data["user_is_superadmin"] = verify_superadmin()
@@ -132,6 +136,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			message_admins("[key_name_admin(user)] has set the description of [target_clan.name].")
 			to_chat(user, SPAN_NOTICE("Set the description of [target_clan.name]."))
 			target_clan.description = trim(input)
+			data_reloader = FALSE
 
 
 		if("clan_color")
@@ -208,8 +213,60 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot change this player, they are not in your clan!"))
 				return
-			data_reloader = FALSE
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+
+			var/list/datum/yautja_ancillary/ancillaries = GLOB.clan_ancillaries.Copy()
+			var/datum/yautja_ancillary/chosen_ancillary
+			if(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
+				var/input = tgui_input_list(user, "Select the ancillary to change this user to.", "Select Ancillary", ancillaries)
+
+				if(!input)
+					return
+
+				chosen_ancillary = ancillaries[input]
+
+			else if(linked_client.has_clan_position(CLAN_RANK_ELDER, target_yautja.clan_id))
+				for(var/ancillary in ancillaries)
+					if(!linked_client.has_clan_position(ancillaries[ancillary].granter_title_required, warn = FALSE))
+						ancillaries -= ancillary
+					if(!target_yautja.can_be_ancillary(ancillaries[ancillary].target_rank_required, current_clan_id))
+						ancillaries -= ancillary
+
+				if(!ancillaries.len)
+					to_chat(user, SPAN_WARNING("No possible ancillaries to grant!"))
+					return
+
+				var/input = tgui_input_list(user, "Select the ancillary to change this user to.", "Select Ancillary", ancillaries)
+
+				if(!input)
+					return
+
+				chosen_ancillary = ancillaries[input]
+
+				if(chosen_ancillary.limit_type)
+					var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target_yautja.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
+					var/players_in_rank = length(CPV)
+
+					switch(chosen_ancillary.limit_type)
+						if(CLAN_LIMIT_NUMBER)
+							if(players_in_rank >= chosen_ancillary.limit)
+								to_chat(user, SPAN_DANGER("This slot is full! (Maximum of [chosen_ancillary.limit] slots)"))
+								return
+						if(CLAN_LIMIT_SIZE)
+							var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target_yautja.clan_id))
+							var/available_slots = ceil(length(clan_players) / chosen_ancillary.limit)
+
+							if(players_in_rank >= available_slots)
+								to_chat(user, SPAN_DANGER("This slot is full! (Maximum of [chosen_ancillary.limit] per player in the clan, currently [available_slots])"))
+								return
+			else
+				return // Doesn't have permission to do this
+
+			if(!linked_client.has_clan_position(chosen_ancillary.granter_title_required, target_yautja.clan_id)) // Double check
+				return
+
+			target_yautja.clan_ancillary = chosen_ancillary.name
+			message_admins("[key_name_admin(user)] has set the ancillary title of [target_ckey] to [chosen_ancillary.name] for their clan.")
+			to_chat(user, SPAN_NOTICE("Set [target_ckey]'s ancillary title to [chosen_ancillary.name]"))
 
 		if("kick_from_clan")
 			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
@@ -225,15 +282,15 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)) && !(target_yautja.clan_id == user_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot banish this player, they are not in your clan!"))
 				return
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
-			return
-		/*
+			var/reason = tgui_input_text(user, "Why do you wish to Banish this Yautja?", "Reason")
+			if(!reason)
+				return
+
 			target_yautja.clan_id = get_clan_id("The Banished")
 			target_yautja.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
 
-			to_chat(user, SPAN_NOTICE("Banished [target_ckey] from your clan."))
-			message_admins("Yautja Clans: [key_name_admin(user)] has banished [target_ckey] from their clan.")
-		*/
+			to_chat(user, SPAN_NOTICE("You have banished [target_ckey] from your clan."))
+			message_admins("Yautja Clans: [key_name_admin(user)] has banished [target_ckey] from their clan for '[reason]'.")
 
 		if("move_to_clan")
 			if(!verify_council())
@@ -267,7 +324,8 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 	if(data_reloader)
 		GLOB.yautja_clan_data.queue_early_repopulate()
-
+	else
+		to_chat(user, SPAN_WARNING("The UI data will not be reloaded for this change, updates happen automatically every 30 minutes."))
 
 	if(target_clan)
 		target_clan.save()
@@ -290,6 +348,13 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	if(user_rights & CLAN_PERMISSION_ADMIN_ANCIENT)
 		return TRUE
 	if((user_rights & CLAN_PERMISSION_USER_MODIFY) && (user_clan_id == clan_id))
+		return TRUE
+	return FALSE
+
+/datum/yautja_panel/proc/verify_clan_elder(clan_id)
+	if(verify_clan_leader(clan_id))
+		return TRUE
+	if(user_clan_rank >= CLAN_RANK_ELDER_INT)
 		return TRUE
 	return FALSE
 
@@ -367,6 +432,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		yautja["name"] = (CP.player_name? CP.player_name : "No Data")
 		yautja["player_id"] = CP.player_id
 		yautja["rank"] = GLOB.clan_ranks[CP.clan_rank]
+		yautja["ancillary"] = (CP.clan_ancillary? CP.clan_ancillary : "None")
 
 		var/datum/entity/player/player = get_player_from_key(CP.ckey)
 		if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER))

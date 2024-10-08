@@ -318,6 +318,13 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	/client/proc/toggle_ob_spawn
 ))
 
+GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/cmd_mentor_say,
+	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_newplayer_ghost_hud,
+	/client/proc/toggle_newplayer_ic_hud
+))
+
 /client/proc/add_admin_verbs()
 	if(!admin_holder)
 		return
@@ -332,8 +339,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_admin)
 		add_verb(src, GLOB.admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
-		add_verb(src, /client/proc/cmd_mentor_say)
-		add_verb(src, /datum/admins/proc/imaginary_friend)
+		add_verb(src, GLOB.mentor_verbs)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))

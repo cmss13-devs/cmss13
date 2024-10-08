@@ -12,7 +12,7 @@
 	containername = "Old supplies crate (Weapon)"
 	group = "UPP Additional supplies"
 
-/datum/supply_packs/upp/random_weapon/Get_contains()
+/datum/supply_packs/upp/random_weapon/get_contains()
 	var/list/contains_to_return = list()
 	switch(rand(1,4))
 		if(1) // Mar 40 crate

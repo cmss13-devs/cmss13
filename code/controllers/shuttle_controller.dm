@@ -2,16 +2,21 @@
 	var/list/shuttles //maps shuttle tags to shuttle datums, so that they can be looked up.
 	var/list/process_shuttles //simple list of shuttles, for processing
 	var/list/locs_crash
+
 /datum/controller/shuttle_controller/process()
+
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
+
 		// Hacky bullshit that should only apply for shuttle/marine's for now.
 		if (shuttle.move_scheduled && shuttle.already_moving == 0)
 			shuttle.already_moving = 1
 			spawn(-1)
 				move_shuttle_to(shuttle.target_turf, 0, shuttle.shuttle_turfs, 0, shuttle.target_rotation, shuttle)
+
 		if (shuttle.process_state)
 			shuttle.process()
+
 /datum/controller/shuttle_controller/New()
 	shuttles = list()
 	process_shuttles = list()

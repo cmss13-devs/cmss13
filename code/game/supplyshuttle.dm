@@ -674,11 +674,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		// Contents generation
 		var/list/content_names = list()
-		var/list/content_types = package.Get_contains()
+		var/list/content_types = package.get_contains()
 		if(package.randomised_num_contained)
 			content_types = list()
 			for(var/i in 1 to package.randomised_num_contained)
-				content_types += pick(package.Get_contains())
+				content_types += pick(package.get_contains())
 		for(var/typepath in content_types)
 			var/atom/item = new typepath(container)
 			content_names += item.name
@@ -1328,7 +1328,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(supply_pack.contraband && !can_order_contraband || supply_pack.contraband && black_market_lockout)
 		return
 
-	if(isnull(supply_pack.Get_contains()) && isnull(supply_pack.containertype))
+	if(isnull(supply_pack.get_contains()) && isnull(supply_pack.containertype))
 		return
 
 	return TRUE

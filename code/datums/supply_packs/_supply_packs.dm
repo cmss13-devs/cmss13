@@ -25,14 +25,14 @@
 	/// How much "heat" this crate adds, too much heat will send an investigation. Only use for contraband.
 	var/crate_heat = 0
 
-/datum/supply_packs/proc/Get_contains()
+/datum/supply_packs/proc/get_contains()
 	return contains
 
 /datum/supply_packs/New()
 	if(randomised_num_contained)
 		manifest += "Contains any [randomised_num_contained] of:"
 	manifest += "<ul>"
-	for(var/atom/movable/path in Get_contains())
+	for(var/atom/movable/path in get_contains())
 		if(!path) continue
 		manifest += "<li>[initial(path.name)]</li>"
 	manifest += "</ul>"

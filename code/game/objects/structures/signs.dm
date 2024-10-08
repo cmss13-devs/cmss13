@@ -111,6 +111,10 @@
 	name = "\improper United Americas flag"
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uaflag"
+/obj/structure/sign/banners/united_americas_flag_worn
+	name = "\improper Worn United Americas flag"
+	desc = "A very worn flag of United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uaflag_worn"
 /obj/structure/sign/banners/colonial_marines_flag
 	name = "\improper United States Colonial Marine Corps flag"
 	desc = "A flag of the United States Colonial Marine Corps. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
@@ -135,7 +139,14 @@
 	name = "\improper Worn Union of Progressive Peoples flag"
 	desc = "A very worn flag of the Union of Progressive Peoples. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uppflag_worn"
-
+/obj/structure/sign/banners/clf_flag
+	name = "\improper Colonial Liberation Front flag"
+	desc = "A flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "clfflag"
+/obj/structure/sign/banners/clf_worn
+	name = "\improper Worn Colonial Liberation Front flag"
+	desc = "A very worn flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "clfflag_worn"
 //============//
 //  Flags    //
 //==========//

@@ -1278,46 +1278,37 @@
 	assignment = "Civilian - Pizza Galaxy Delivery Driver"
 	xenovictim = TRUE
 
-// Colonial Marshals
+// NSPA - Constables
 
-/datum/equipment_preset/corpse/hybrisa/cmb_officer
+/datum/equipment_preset/corpse/hybrisa/nspa_constable
 
-	name = "Corpse - CMB Police Officer"
-	assignment = "CMB Affiliated Officer"
-	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
+	name = "Corpse - NSPA Constable"
+	assignment = "NSPA Constable"
+	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_CST = JOB_PLAYTIME_TIER_1, PAY_SHORT_CST = JOB_PLAYTIME_TIER_2, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/deputy
+	idtype = /obj/item/card/id/nspa_silver
 
-/datum/equipment_preset/corpse/hybrisa/cmb_officer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/load_gear(mob/living/carbon/human/new_human)
 
-	var/choice = rand(1,10)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/cmb_officer, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
+	var/choice = rand(1,16)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/blue, WEAR_EYES)
 
 	switch(choice)
 		if(1 to 5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 		if(6 to 7)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_cap_new, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+		if(8 to 10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
@@ -1325,25 +1316,24 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
-		if(8 to 10)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest, WEAR_JACKET)
+		if(10 to 12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower/black, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+		if(12 to 14)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/nspa_hazard, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+		if(14 to 16)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	..()
 
-/datum/equipment_preset/corpse/hybrisa/cmb_officer/burst
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
 
-	name = "Corpse - Burst - CMB Police Officer"
-	assignment = "CMB Affiliated Officer"
+	name = "Corpse - Burst - NSPA Constable"
+	assignment = "NSPA Constable"
 	xenovictim = TRUE
 
 // KMCC Mining

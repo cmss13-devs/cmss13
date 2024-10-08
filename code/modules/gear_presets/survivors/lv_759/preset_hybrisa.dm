@@ -321,50 +321,51 @@
 //////////////// COLONIAL MARSHALLS /////////////////
 ////////////////////////////////////////////////////
 
-// Colonial Marshals
+// NSPA - (Neroid Sector Policing Authority) - TWE style Police, like the CMB but for heavy TWE focused colonies.
 
-/datum/equipment_preset/survivor/hybrisa/cmb_officer
+/datum/equipment_preset/survivor/hybrisa/nspa_constable
 
-	name = "Survivor - Hybrisa - CMB Police Officer"
-	assignment = "CMB Affiliated Officer"
-	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
+	name = "Survivor - Hybrisa - NSPA Constable"
+	assignment = "NSPA Constable"
+	faction_group = FACTION_LIST_NSPA
+	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_CST = JOB_PLAYTIME_TIER_1, PAY_SHORT_CST = JOB_PLAYTIME_TIER_2, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/deputy
+	idtype = /obj/item/card/id/nspa_silver
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/survivor/hybrisa/cmb_officer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/hybrisa/nspa_constable/load_gear(mob/living/carbon/human/new_human)
 
-	var/choice = rand(1,10)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/cmb_officer, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
+	var/choice = rand(1,100)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/blue, WEAR_EYES)
 
 	switch(choice)
-		if(1 to 5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
+		if(1 to 25)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
-		if(6 to 7)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_cap_new, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
+		if(25 to 50)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+		if(50 to 75)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
@@ -372,14 +373,28 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
-		if(8 to 10)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest, WEAR_JACKET)
+		if(75 to 80)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower/black, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+		if(80 to 95)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/nspa_hazard, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
+		if(95 to 100)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_R_STORE)
@@ -757,7 +772,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_5, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_6, PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_7, PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_8)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)
@@ -765,20 +780,6 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	survivor_variant = CORPORATE_SURVIVOR
-
-/datum/equipment_preset/survivor/hybrisa/wy_exec/load_rank(mob/living/carbon/human/new_human) // Higher teir by default on Hybrisa //
-	if(new_human.client)
-		var/playtime = get_job_playtime(new_human.client, JOB_CORPORATE_LIAISON)
-		if(new_human.client.prefs.playtime_perks)
-			if(playtime > JOB_PLAYTIME_TIER_4)
-				return PAY_SHORT_WYC6
-			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return PAY_SHORT_WYC5
-			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return PAY_SHORT_WYC4
-			else
-				return paygrades[1]
-	return paygrades[1]
 
 /datum/equipment_preset/survivor/hybrisa/wy_exec/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,45)
@@ -848,7 +849,7 @@
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_LIST_SURVIVOR_WY
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CPO= JOB_PLAYTIME_TIER_0, PAY_SHORT_CPO= JOB_PLAYTIME_TIER_1, PAY_SHORT_CPO= JOB_PLAYTIME_TIER_2, PAY_SHORT_CPO= JOB_PLAYTIME_TIER_3, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)

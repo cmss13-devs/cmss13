@@ -514,6 +514,19 @@
 	name = "Botany - Main Room"
 	icon_state = "botany"
 
+// Hotel
+
+/area/lv759/indoors/hotel
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+
+/area/lv759/indoors/hotel/hotel_hallway
+	name = "Prospera Grand Hotel - Hallway"
+	icon_state = "apartments"
+
+/area/lv759/indoors/hotel/hotel_rooms
+	name = "Prospera Grand Hotel - Room"
+	icon_state = "apartments"
+
 // Hosptial
 /area/lv759/indoors/hospital
 	icon_state = "medical"
@@ -558,11 +571,11 @@
 /area/lv759/indoors/hospital/icu
 	name = "Nova Medica Hospital Complex - Intensive Care Ward"
 /area/lv759/indoors/hospital/storage
-	name = "Nova Medica Hospital Complex - Storage Room"
+	name = "Nova Medica Hospital Complex - Office"
 /area/lv759/indoors/hospital/maintenance_north
 	name = "Nova Medica Hospital Complex - Maintenance North"
 /area/lv759/indoors/hospital/maintenance_south
-	name = "Nova Medica Hospital Complex - Maintenance South"
+	name = "Nova Medica Hospital Complex - Unisex-Restroom"
 /area/lv759/indoors/hospital/janitor
 	name = "Nova Medica Hospital Complex - Janitors Closet"
 
@@ -669,61 +682,61 @@
 
 // Marshalls
 /area/lv759/indoors/colonial_marshals
-	name = "CMB - Sentinel Outpost"
+	name = "NSPA - Ironbridge Precinct"
 	icon_state = "security_hub"
 	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 /area/lv759/indoors/colonial_marshals/prisoners_cells
-	name = "CMB - Sentinel Outpost - Maximum Security Ward - Cells"
+	name = "NSPA - Ironbridge Precinct - Maximum Security Ward - Cells"
 /area/lv759/indoors/colonial_marshals/prisoners_foyer
-	name = "CMB - Sentinel Outpost - Maximum Security Ward - Foyer"
+	name = "NSPA - Ironbridge Precinct - Maximum Security Ward - Foyer"
 /area/lv759/indoors/colonial_marshals/prisoners_recreation_area
-	name = "CMB - Sentinel Outpost - Maximum Security Ward - Recreation Area & Shower Room"
+	name = "NSPA - Ironbridge Precinct - Maximum Security Ward - Recreation Area & Shower Room"
 /area/lv759/indoors/colonial_marshals/garage
-	name = "CMB - Sentinel Outpost - Vehicle Deployment & Maintenace"
+	name = "NSPA - Ironbridge Precinct - Vehicle Deployment & Maintenace"
 /area/lv759/indoors/colonial_marshals/armory_foyer
-	name = "CMB - Sentinel Outpost - Armory Foyer"
+	name = "NSPA - Ironbridge Precinct - Armory Foyer"
 /area/lv759/indoors/colonial_marshals/armory
-	name = "CMB - Sentinel Outpost - Armory"
+	name = "NSPA - Ironbridge Precinct - Armory"
 /area/lv759/indoors/colonial_marshals/armory_firingrange
-	name = "CMB - Sentinel Outpost - Firing Range"
+	name = "NSPA - Ironbridge Precinct - Firing Range"
 /area/lv759/indoors/colonial_marshals/armory_evidenceroom
-	name = "CMB - Sentinel Outpost - Evidence Room"
+	name = "NSPA - Ironbridge Precinct - Evidence Room"
 /area/lv759/indoors/colonial_marshals/office
-	name = "CMB - Sentinel Outpost - Office"
+	name = "NSPA - Ironbridge Precinct - Office"
 /area/lv759/indoors/colonial_marshals/reception
-	name = "CMB - Sentinel Outpost - Reception Office"
+	name = "NSPA - Ironbridge Precinct - Reception Office"
 /area/lv759/indoors/colonial_marshals/hallway_central
-	name = "CMB - Sentinel Outpost - Central Hallway"
+	name = "NSPA - Ironbridge Precinct - Central Hallway"
 /area/lv759/indoors/colonial_marshals/hallway_south
-	name = "CMB - Sentinel Outpost - South Hallway"
+	name = "NSPA - Ironbridge Precinct - South Hallway"
 /area/lv759/indoors/colonial_marshals/hallway_reception
-	name = "CMB - Sentinel Outpost - Reception Hallway"
+	name = "NSPA - Ironbridge Precinct - Reception Hallway"
 /area/lv759/indoors/colonial_marshals/hallway_north
-	name = "CMB - Sentinel Outpost - North Hallway"
+	name = "NSPA - Ironbridge Precinct - North Hallway"
 /area/lv759/indoors/colonial_marshals/hallway_north_locker
-	name = "CMB - Sentinel Outpost - North Hallway - Locker Room"
+	name = "NSPA - Ironbridge Precinct - North Hallway - Locker Room"
 /area/lv759/indoors/colonial_marshals/holding_cells
-	name = "CMB - Sentinel Outpost - Holding Cells"
+	name = "NSPA - Ironbridge Precinct - Holding Cells"
 /area/lv759/indoors/colonial_marshals/head_office
-	name = "CMB - Sentinel Outpost - Forensics Office"
+	name = "NSPA - Ironbridge Precinct - Forensics Office"
 /area/lv759/indoors/colonial_marshals/north_office
-	name = "CMB - Sentinel Outpost - North Office"
+	name = "NSPA - Ironbridge Precinct - North Office"
 /area/lv759/indoors/colonial_marshals/wardens_office
-	name = "CMB - Sentinel Outpost - Wardens Office"
+	name = "NSPA - Ironbridge Precinct - Wardens Office"
 /area/lv759/indoors/colonial_marshals/interrogation
-	name = "CMB - Sentinel Outpost - Interrogation"
+	name = "NSPA - Ironbridge Precinct - Interrogation"
 /area/lv759/indoors/colonial_marshals/press_room
-	name = "CMB - Sentinel Outpost - Court Room"
+	name = "NSPA - Ironbridge Precinct - Court Room"
 /area/lv759/indoors/colonial_marshals/changing_room
-	name = "CMB - Sentinel Outpost - Changing Room"
+	name = "NSPA - Ironbridge Precinct - Changing Room"
 /area/lv759/indoors/colonial_marshals/restroom
-	name = "CMB - Sentinel Outpost - Restroom & Showers"
+	name = "NSPA - Ironbridge Precinct - Restroom & Showers"
 /area/lv759/indoors/colonial_marshals/south_maintenance
-	name = "CMB - Sentinel Outpost - Maintenance - South"
+	name = "NSPA - Ironbridge Precinct - Maintenance - South"
 /area/lv759/indoors/colonial_marshals/north_maintenance
-	name = "CMB - Sentinel Outpost - Maintenance - North"
+	name = "NSPA - Ironbridge Precinct - Maintenance - North"
 /area/lv759/indoors/colonial_marshals/southwest_maintenance
-	name = "CMB - Sentinel Outpost - Maintenance - Southwest"
+	name = "NSPA - Ironbridge Precinct - Maintenance - Southwest"
 
 
 // Jack's Surplus

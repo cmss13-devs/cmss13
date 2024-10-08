@@ -431,3 +431,18 @@ Template
 	icon_state="poster84"
 	name = "Safety poster"
 	desc = "GERMS HATE SOAP - DON'T forget to wash your hands."
+
+/datum/poster/poster_85
+	icon_state="poster85"
+	name = "NSPA poster"
+	desc = "A recruitment poster for the NSPA. Integrity, Justice, Unity—Together, We Keep the Peace."
+
+/datum/poster/poster_86
+	icon_state="poster86"
+	name = "NSPA poster"
+	desc = "A recruitment poster for the NSPA. Serve with Honor, Protect with Strength."
+
+/datum/poster/poster_87
+	icon_state="poster87"
+	name = "NSPA poster"
+	desc = "A recruitment poster for the NSPA. One Law, One Duty, One Force—Join the NSPA."

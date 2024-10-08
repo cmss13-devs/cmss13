@@ -748,6 +748,12 @@
 
 // Beds
 
+/obj/structure/bed/hybrisa/dingy
+	name = "dingy bed"
+	desc = "An old mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
+	icon_state = "bed_dingy"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+
 /obj/structure/bed/hybrisa
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "hybrisa"
@@ -777,6 +783,23 @@
 	name = "bunk bed"
 	desc = "A comfy looking bunk-bed."
 	icon_state = "zbunkbed4"
+
+// Cabinet
+
+/obj/structure/closet/cabinet/hybrisa/metal
+	name = "metal cabinet"
+	desc = "A large metal cabinet, looks sturdy."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "cabinet_metal_closed"
+	icon_closed = "cabinet_metal_closed"
+	icon_opened = "cabinet_metal_open"
+
+/obj/structure/closet/cabinet/hybrisa/metal/alt
+	name = "metal cabinet"
+	desc = "A large metal cabinet, looks sturdy."
+	icon_state = "cabinet_metal_alt_closed"
+	icon_closed = "cabinet_metal_alt_closed"
+	icon_opened = "cabinet_metal_alt_open"
 
 // Xenobiology
 
@@ -1653,6 +1676,14 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark
 	icon_state = "telescreenbspark"
 
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock
+	name = "clock"
+	icon_state = "wood_clock"
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/gold_clock
+	name = "clock"
+	icon_state = "gold_clock"
+
 // Multi-Monitor
 
 //Green
@@ -2382,6 +2413,58 @@
 /obj/structure/prop/hybrisa/signs/barsign
 	name = "bar sign"
 	icon_state = "barsign_on"
+
+/obj/structure/prop/hybrisa/signs/miscsign
+	name = "neon sign"
+	icon_state = "misc_on"
+
+/obj/structure/prop/hybrisa/signs/miscvertsign
+	name = "neon sign"
+	icon_state = "miscvert_on"
+
+/obj/structure/prop/hybrisa/signs/miscvert2sign
+	name = "neon sign"
+	icon_state = "miscvert2_on"
+
+/obj/structure/prop/hybrisa/signs/miscvert3sign
+	name = "neon sign"
+	icon_state = "miscvert3_on"
+
+/obj/structure/prop/hybrisa/signs/miscvert4sign
+	name = "neon sign"
+	icon_state = "miscvert4_on"
+
+/obj/structure/prop/hybrisa/signs/miscvert5sign
+	name = "neon sign"
+	icon_state = "miscvert5_on"
+
+/obj/structure/prop/hybrisa/signs/miscvert6sign
+	name = "neon sign"
+	icon_state = "miscvert6_on"
+
+/obj/structure/prop/hybrisa/signs/cafesign
+	name = "cafe sign"
+	icon_state = "cafe_on"
+
+/obj/structure/prop/hybrisa/signs/cafealtsign
+	name = "cafe sign"
+	icon_state = "cafealt_on"
+
+/obj/structure/prop/hybrisa/signs/coffeesign
+	name = "cafe sign"
+	icon_state = "coffee_on"
+
+/obj/structure/prop/hybrisa/signs/arcadesign
+	name = "cafe sign"
+	icon_state = "arcade_on"
+
+/obj/structure/prop/hybrisa/signs/hotelsign
+	name = "hotel sign"
+	icon_state = "hotel_on"
+
+/obj/structure/prop/hybrisa/signs/casinolights
+	name = "neon sign"
+	icon_state = "casinolights_on"
 
 // Small Sign
 

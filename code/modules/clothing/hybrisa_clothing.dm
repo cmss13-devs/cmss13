@@ -169,7 +169,7 @@
 //  Kelland Mining
 
 /obj/item/clothing/under/hybrisa/kelland_mining
-	name = "\improper Kelland-Mining uniform"
+	name = "\improper kelland-mining uniform"
 	desc = "A set of Kelland-Mining fatigues, a yellow pair of utility work slacks and a light-grey polo-shirt with red reflecting stripes."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "kellandmining_uniform"
@@ -1023,8 +1023,8 @@
 	new /obj/item/clothing/suit/bio_suit/wy_bio( src )
 	new /obj/item/clothing/head/bio_hood/wy_bio/alt( src )
 
-/obj/structure/closet/secure_closet/hybrisa/marshal
-	name = "Sentinel-Outpost Equipment Locker"
+/obj/structure/closet/secure_closet/hybrisa/nspa
+	name = "NSPA Equipment Locker"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
@@ -1034,10 +1034,10 @@
 	icon_off = "secure_closed_warrant"
 
 
-/obj/structure/closet/secure_closet/hybrisa/marshal/Initialize()
+/obj/structure/closet/secure_closet/hybrisa/nspa/Initialize()
 	. = ..()
-	new /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest(src)
-	new /obj/item/clothing/under/hybrisa/cmb_officer(src)
+	new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest(src)
+	new /obj/item/clothing/under/hybrisa/nspa_officer(src)
 	new /obj/item/storage/backpack/security(src)
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
@@ -1070,3 +1070,137 @@
 	new /obj/item/tool/shovel(src)
 	new /obj/item/tool/pickaxe(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
+
+// NSPA Clothing
+
+// Uniform
+
+/obj/item/clothing/under/hybrisa/nspa_officer
+	name = "\improper NSPA - police uniform"
+	desc = "A pair of black slacks and a white button-down shirt with a black tie; a standard uniform for the NSPA forces, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_uniform"
+	worn_state = "nspa_police_uniform"
+	contained_sprite = TRUE
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+// Suits & Armor
+
+/obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest
+	name = "NSPA armored vest"
+	desc = "An NSPA armored vest that protects against some damage."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_ballistic_armor"
+	item_state = "nspa_police_ballistic_armor"
+	contained_sprite = TRUE
+	uniform_restricted = null
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+
+/obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket
+	name = "\improper NSPA police jacket"
+	desc = "A black polyester jacket with a silver Sakura emblem of the NSPA pinned to it. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_jacket"
+	item_state = "nspa_police_jacket"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket
+	name = "\improper NSPA police formal jacket"
+	desc = "A heavy woolen formal coat commonly used by NSPA Constables. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_formal_jacket"
+	item_state = "nspa_police_formal_jacket"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket
+	name = "\improper NSPA high-vis jacket"
+	desc = "A green and white striped (high-visibility) polyester jacket commonly used by NSPA personnel."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_hazard_jacket"
+	item_state = "nspa_hazard_jacket"
+	contained_sprite = TRUE
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/hazardvest/nspa_hazard
+	name = "NSPA hazard vest"
+	desc = "A green and white high-visibility vest commonly used by NSPA personnel."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_hazard_vest"
+	item_state = "nspa_hazard_vest"
+	contained_sprite = TRUE
+
+// NSPA - Hats
+
+/obj/item/clothing/head/hybrisa/nspa_peaked_cap
+	name = "\improper NSPA peaked cap"
+	desc = "A dark peaked cap enscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_cap_rank1"
+	item_state = "nspa_police_cap_rank1"
+	contained_sprite = TRUE
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
+/obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver
+	name = "\improper NSPA peaked cap"
+	desc = "A dark peaked cap enscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_cap_rank2"
+	item_state = "nspa_police_cap_rank2"
+	contained_sprite = TRUE
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
+/obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold
+	name = "\improper NSPA peaked cap"
+	desc = "A dark peaked cap enscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
+	icon_state = "nspa_police_cap_rank3"
+	item_state = "nspa_police_cap_rank3"
+	contained_sprite = TRUE
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS

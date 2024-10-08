@@ -289,13 +289,13 @@
 
 // Colonial Marshals
 
-/obj/effect/landmark/corpsespawner/hybrisa/cmb_officer
-	name = "Corpse - CMB Police Officer"
-	equip_path = /datum/equipment_preset/corpse/hybrisa/cmb_officer
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable
+	name = "Corpse - NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable
 
-/obj/effect/landmark/corpsespawner/hybrisa/cmb_officer/burst
-	name = "Corpse - Burst - CMB Police Officer"
-	equip_path = /datum/equipment_preset/corpse/hybrisa/cmb_officer/burst
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable/burst
+	name = "Corpse - Burst - NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
 
 //*****************************************************************************************************/
 

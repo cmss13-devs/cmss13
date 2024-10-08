@@ -566,9 +566,49 @@
 /obj/structure/machinery/door/airlock/almayer/generic/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/generic/rusted
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/white_rusted_solid.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/white_rusted_solid.dmi'
+
 /obj/structure/machinery/door/airlock/almayer/generic/glass
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass/rusted_window
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_window.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass/rusted_window_small
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_windowsmall.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/glass/rusted_window
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_window.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/glass/rusted_window_small
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_windowsmall.dmi'
 	opacity = FALSE
 	glass = TRUE
 

@@ -236,3 +236,10 @@
 /obj/structure/sign/poster/pimp/Initialize()
 	serial_number = 54
 	.=..()
+
+/obj/structure/sign/poster/nspa
+	icon_state = "poster87"
+
+/obj/structure/sign/poster/nspa/Initialize()
+	serial_number = pick(85,86,87)
+	.=..()

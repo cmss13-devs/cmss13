@@ -139,6 +139,23 @@
 /turf/open/hybrisa/street/CMB_4x4_emblem/west
 	dir = WEST
 
+// NSPA Emblem
+
+/turf/open/hybrisa/street/NSPA_2x2_emblem
+	icon_state = "NSPA_emblem_concrete_2x2"
+	name = "NSPA - Concrete Sakrua Emblem"
+	desc = "A concrete emblem resembling a (Sakura Flower), the symbol of the NSPA, below is is an inscription reading - (Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds)."
+
+/turf/open/hybrisa/street/NSPA_2x2_emblem/north
+	dir = NORTH
+
+/turf/open/hybrisa/street/NSPA_2x2_emblem/east
+	dir = EAST
+
+/turf/open/hybrisa/street/NSPA_2x2_emblem/west
+	dir = WEST
+
+
 // Unweedable
 
 /turf/open/hybrisa/street/underground_unweedable
@@ -199,6 +216,38 @@
 	name = "floor"
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
 	icon_state = "carpetred"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable
+	icon_state = "carpet_colorable"
+/turf/open/floor/hybrisa/carpet/carpet_deco_colorable
+	icon_state = "carpet_deco_colorable"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable
+	icon_state = "rug_colorable"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/hybrisa/carpet/carpetfadedred
 	icon_state = "carpetfadedred"
@@ -610,6 +659,11 @@
 	icon_state = "marshallsemblem"
 	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
 	name = "Office of the Colonial Marshals Emblem"
+
+/turf/open/floor/hybrisa/misc/NSPA_emblem
+	icon_state = "NSPAemblem"
+	desc = "A golden emblem resembling a (Sakura Flower), the symbol of the NSPA."
+	name = "NSPA - Golden Sakura Emblem"
 
 /turf/open/floor/hybrisa/misc/wybiglogo
 	name = "Weyland-Yutani corp. - bulding better worlds."

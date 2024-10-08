@@ -157,7 +157,7 @@
 		var/index = params["index"]
 
 		if(length(build_queue))
-			if(index > length(build_queue))
+			if(index == null || index > length(build_queue))
 				return
 
 			if(busy && index == 1)

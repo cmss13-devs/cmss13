@@ -119,43 +119,39 @@
 			data["factions"][group.group_name] = list(
 				"name" = group.group_name,
 				"nemesis" = nemesis,
+				"total_deaths" = length(group.statistic_deaths),
 				"death_list" = death_list,
-				"statistics" = total_statistics,
+				"total_statistics" = total_statistics,
 				"top_statistics" = top_statistics,
+				"statistics_list_tabs" = statistics_list_tabs,
 				"statistics_list" = statistics_list,
 			)
 	return data
 
 /datum/entity/statistic_round/process()
-	var/map_name
-	if(current_map)
-		map_name = current_map.map_name
-
-	var/list/participants_list = null
-	var/list/hijack_participants_list = null
-	var/list/final_participants_list = null
-	var/list/total_deaths_list = list()
-	var/list/new_death_stats_list = list()
+	var/list/all_participants_list = list()
+	var/list/last_deaths_list = list()
 
 	if(length(participants))
-		participants_list = list()
+		var/list/participants_list = list()
+		all_participants_list += list(list("name" = "Participants", "value" = participants_list))
 		for(var/stat_name in participants)
 			participants_list += list(list("name" = stat_name, "value" = participants[stat_name]))
 
 	if(length(hijack_participants))
-		hijack_participants_list = list()
+		var/list/hijack_participants_list = list()
+		all_participants_list += list(list("name" = "Hijack Participants", "value" = hijack_participants_list))
 		for(var/stat_name in hijack_participants)
 			hijack_participants_list += list(list("name" = stat_name, "value" = hijack_participants[stat_name]))
 
 	if(length(final_participants))
-		final_participants_list = list()
+		var/list/final_participants_list = list()
+		all_participants_list += list(list("name" = "Final Participants", "value" = final_participants_list))
 		for(var/stat_name in final_participants)
 			final_participants_list += list(list("name" = stat_name, "value" = final_participants[stat_name]))
 
-	total_deaths_list = length(total_deaths)
-
 	for(var/datum/entity/statistic_death/statistic_death as anything in death_stats_list)
-		if(new_death_stats_list.len >= STATISTICS_DEATH_LIST_LEN)
+		if(length(last_deaths_list) >= STATISTICS_DEATH_LIST_LEN)
 			break
 		var/list/damage_list = list()
 		if(statistic_death.total_brute)
@@ -167,7 +163,7 @@
 		if(statistic_death.total_tox)
 			damage_list += list(list("name" = "tox", "value" = statistic_death.total_tox))
 
-		new_death_stats_list += list(list(
+		last_deaths_list += list(list(
 			"mob_name" = sanitize(statistic_death.mob_name),
 			"job_name" = statistic_death.role_name,
 			"area_name" = sanitize_area(statistic_death.area_name),
@@ -185,11 +181,11 @@
 	cached_tgui_data = list(
 		"name" = round_name,
 		"game_mode" = game_mode,
-		"map_name" = map_name,
+		"map_name" = current_map?.map_name,
 		"round_result" = round_result,
-		"real_time_start" = real_time_start ? duration2text(real_time_start) : 0,
-		"real_time_end" = real_time_end ? duration2text(real_time_end) : 0,
-		"round_length" = round_length ? duration2text(round_length) : 0,
+		"real_time_start" = real_time_start ? time2text(real_time_start, "YYYY-MM-DD hh:mm:ss") : 0,
+		"real_time_end" = real_time_end ? time2text(real_time_end, "YYYY-MM-DD hh:mm:ss") : 0,
+		"round_length" = round_length ? time2text(round_length, "YYYY-MM-DD hh:mm:ss") : 0,
 		"round_hijack_time" = round_hijack_time ? duration2text(round_hijack_time) : 0,
 		"end_round_player_population" = end_round_player_population,
 		"total_projectiles_fired" = total_projectiles_fired,
@@ -201,9 +197,7 @@
 		"total_friendly_kills" = total_friendly_kills,
 		"total_huggers_applied" = total_huggers_applied,
 		"total_larva_burst" = total_larva_burst,
-		"participants" = participants_list,
-		"hijack_participants" = hijack_participants_list,
-		"final_participants" = final_participants_list,
-		"total_deaths" = total_deaths_list,
-		"death_list" = new_death_stats_list,
+		"participants_list" = all_participants_list,
+		"total_deaths" = length(death_stats_list),
+		"death_list" = last_deaths_list,
 	)

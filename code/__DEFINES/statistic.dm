@@ -1,11 +1,9 @@
-#define get_client_stat(client, stat) (client.player_data ? LAZYACCESS(client.player_data.stats, stat) ? client.player_data.stats[stat].stat_number : 0 : 0)
-
 #define FACEHUG_TIER_1 5
 #define FACEHUG_TIER_2 25
 #define FACEHUG_TIER_3 100
 #define FACEHUG_TIER_4 1000
 
-// OOD mean Out Of Date (not used, please keep this list up to date, and remember sync in db changes)
+// OOD mean Out Of Date (not used, please keep this list up to date, and remember sync in db changes, I'm hard against db wipe after every big change)
 
 // Statistics defines
 #define STATISTIC_TYPE_MISC				"Misc"
@@ -15,7 +13,7 @@
 #define STATISTIC_TYPE_WEAPON			"Weapon"
 
 // Used to replace faction name
-#define STATISTIC_TYPE_GLOBAL			"Global Statistic" // Don't have link to a faction
+#define STATISTIC_TYPE_GLOBAL			"Global Statistic"// Don't have link to a faction
 
 #define STATISTICS_DEATH_LIST_LEN		20
 
@@ -28,7 +26,7 @@
 #define STATISTICS_SCREAM				"Scream"
 #define STATISTICS_HIT					"Hit"
 #define STATISTICS_FF_HIT				"FF Hit"
-#define STATISTICS_EXPLODED_MOBS		"Blowjobs Done" // :clueless_face:
+#define STATISTICS_EXPLODED_MOBS		"Blowjobs Done"// :clueless_face:
 #define STATISTICS_SLASH				"Slash"
 #define STATISTICS_REVIVE				"Revive"
 #define STATISTICS_REVIVED				"Revived"
@@ -61,8 +59,8 @@
 #define STATISTICS_AMMO_CONVERTED		"Ammo Converted"
 #define STATISTICS_IMPLANTS_IMPLANTED	"Implants Implanted"
 #define STATISTICS_REVIVED_BY_IMPLANT	"Revive Implant Saved Lifes"
-#define STATISTICS_SD_ACTIVATION		"SD Activated" // OOD
-#define STATISTICS_SACRIFICE			"Sacrificed" // OOD
+#define STATISTICS_SD_ACTIVATION		"SD Activated"// OOD
+#define STATISTICS_SACRIFICE			"Sacrificed"// OOD
 #define STATISTICS_ESCAPE				"Escaped"
 
 #define STATISTICS_CADES				"Barricades Built"
@@ -72,7 +70,7 @@
 #define STATISTICS_REPAIR_SENSORTOWER	"Sensor Towers Repaired"
 #define STATISTICS_REPAIR_APC			"APCs Repaired"
 #define STATISTICS_UPGRADE_TURRETS		"Defenses Upgraded"
-#define STATISTICS_DEFENSES_BUILT		"Defenses Built" // OOD
+#define STATISTICS_DEFENSES_BUILT		"Defenses Built"// OOD
 
 #define STATISTICS_CORGI				"Corgis Murdered"
 #define STATISTICS_CAT					"Cats Murdered"
@@ -84,12 +82,12 @@
 #define STATISTICS_SURGERY_BRAIN		"Brains Mended"
 #define STATISTICS_SURGERY_EYE			"Eyes Mended"
 #define STATISTICS_SURGERY_LARVA		"Larvae Removed"
-#define STATISTICS_SURGERY_NECRO		"Necro Limbs Fixed" // OOD
+#define STATISTICS_SURGERY_NECRO		"Necro Limbs Fixed"// OOD
 #define STATISTICS_SURGERY_SHRAPNEL		"Shrapnel Removed"
 #define STATISTICS_SURGERY_AMPUTATE		"Limbs Amputated"
 #define STATISTICS_SURGERY_ORGAN_REPAIR	"Organs Repaired"
-#define STATISTICS_SURGERY_ORGAN_ATTACH	"Organs Implanted" // OOD
-#define STATISTICS_SURGERY_ORGAN_REMOVE	"Organs Harvested" // OOD
+#define STATISTICS_SURGERY_ORGAN_ATTACH	"Organs Implanted"// OOD
+#define STATISTICS_SURGERY_ORGAN_REMOVE	"Organs Harvested"// OOD
 
 #define STATISTICS_DESTRUCTION_WALLS	"Walls Destroyed"
 #define STATISTICS_DESTRUCTION_DOORS	"Doors Destroyed"

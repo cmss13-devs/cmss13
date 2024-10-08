@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - maptweak: "replaces hangar banshee with launchbay and omnisentry"

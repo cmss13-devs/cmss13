@@ -1,8 +1,11 @@
 // Hybrisa props
 
+
+
 /obj/structure/prop/hybrisa
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/small_truck_red.dmi'
 	icon_state = "pimp"
+	var/indestructable = FALSE
 
 // Vehicles
 

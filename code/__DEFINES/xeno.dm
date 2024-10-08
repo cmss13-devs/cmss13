@@ -378,6 +378,10 @@
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 
+// Burrower strain flags
+
+#define BURROWER_RESIN_SHARK "Resin Shark"
+
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 

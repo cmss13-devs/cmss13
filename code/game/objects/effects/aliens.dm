@@ -514,6 +514,9 @@
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOR_LIGHT_GREEN
 
+/obj/effect/xenomorph/xeno_telegraph/white
+	color = COLOR_WHITE
+
 /// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"

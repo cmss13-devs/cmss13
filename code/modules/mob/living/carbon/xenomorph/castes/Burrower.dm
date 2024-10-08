@@ -14,6 +14,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
+	available_strains = list(/datum/xeno_strain/resin_shark)
+
 	deevolves_to = list(XENO_CASTE_DRONE)
 	caste_desc = "A digger and trapper."
 	acid_level = 2
@@ -105,3 +107,13 @@
 
 /datum/behavior_delegate/burrower_base
 	name = "Base Burrower Behavior Delegate"
+
+
+/datum/behavior_delegate/burrower_base/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	if(bound_xeno.submerge && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Burrower Burrowed"
+		return TRUE
+

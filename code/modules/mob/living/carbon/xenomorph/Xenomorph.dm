@@ -273,6 +273,7 @@
 	/// for check on lurker invisibility
 	var/stealth = FALSE
 	var/fortify = FALSE
+	var/submerge = FALSE
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE

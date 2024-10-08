@@ -53,7 +53,7 @@
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door_control/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return FALSE
 	..()
 

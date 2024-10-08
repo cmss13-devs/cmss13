@@ -355,7 +355,7 @@
 	name = "scout laser designator"
 	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
@@ -363,7 +363,7 @@
 	name = "spotter's laser designator"
 	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
@@ -408,18 +408,16 @@
 		return
 	var/mob/living/carbon/human/human = owner
 	if(human.selected_ability == src)
-		to_chat(human, "You will no longer use [name] with \
-			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(human, "You will no longer use [name] with [human.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		human.selected_ability = null
+		human.set_selected_ability(null)
 	else
-		to_chat(human, "You will now use [name] with \
-			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(human, "You will now use [name] with [human.get_ability_mouse_name()].")
 		if(human.selected_ability)
 			human.selected_ability.button.icon_state = "template"
-			human.selected_ability = null
+			human.set_selected_ability(null)
 		button.icon_state = "template_on"
-		human.selected_ability = src
+		human.set_selected_ability(src)
 
 /datum/action/item_action/specialist/spotter_target/can_use_action()
 	var/mob/living/carbon/human/human = owner

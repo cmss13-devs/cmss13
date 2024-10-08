@@ -2116,7 +2116,7 @@
 "jg" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile{
 	breakable = 0;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/very_far)

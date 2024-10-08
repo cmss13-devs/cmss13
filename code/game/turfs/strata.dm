@@ -30,8 +30,7 @@
 	icon_state = "floor"
 
 /turf/open/floor/strata/grey_multi_tiles
-	color = "#5e5d5d"
-	icon_state = "multi_tiles"
+	icon_state = "grey_multi_tiles"
 
 /turf/open/floor/strata/grey_multi_tiles/southwest
 	dir = SOUTHWEST

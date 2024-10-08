@@ -188,6 +188,9 @@ Class Procs:
 
 
 /obj/structure/machinery/ex_act(severity)
+	if(explo_proof)
+		return
+
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -377,7 +380,7 @@ Class Procs:
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	health = null
-	indestructible = TRUE
+	explo_proof = TRUE
 	density = TRUE
 	anchored = TRUE
 	unslashable = TRUE

@@ -292,7 +292,7 @@
 	reload_sound = 'sound/weapons/handling/m40sd_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m40sd_unload.ogg'
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -488,7 +488,7 @@
 		/obj/item/attachable/extended_barrel,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	indestructible = TRUE
+	explo_proof = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
 

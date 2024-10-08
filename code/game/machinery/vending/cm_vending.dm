@@ -97,8 +97,9 @@ IN_USE used for vending/denying
 		apply_transform(A)
 
 /obj/structure/machinery/cm_vending/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
+
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -378,7 +379,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/user)
-	if(stat & TIPPED_OVER || indestructible)
+	if(stat & TIPPED_OVER || unslashable)
 		to_chat(user, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
 

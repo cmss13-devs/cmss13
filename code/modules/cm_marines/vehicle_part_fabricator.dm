@@ -142,7 +142,7 @@
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 		else
 			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
@@ -151,12 +151,15 @@
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 	if(action == "cancel")
 		var/index = params["index"]
 
 		if(length(build_queue))
+			if(index > length(build_queue))
+				return
+
 			if(busy && index == 1)
 				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
 				return
@@ -165,7 +168,7 @@
 
 			build_queue.Remove(entry)
 			add_to_point_store(entry.cost)
-			return
+			return TRUE
 
 	else
 		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")

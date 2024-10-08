@@ -309,12 +309,7 @@ const KillView = (props) => {
   const { death_log_data, total_deaths } = props;
   return (
     <Section>
-      <Collapsible
-        title={`Total Deaths: ${total_deaths}`}
-        style={{
-          padding: '0px 6px',
-        }}
-      >
+      <Collapsible title={`Total Deaths: ${total_deaths}`}>
         {death_log_data.map((entry, index) => (
           <Box
             key={index}

@@ -435,8 +435,12 @@ Works together with spawning an observer, noted above.
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
+
 	if(aghosted)
 		src.aghosted = TRUE
+
+	if(client && client.player_data)
+		client.player_data.setup_statistics()
 
 	SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE)
 
@@ -513,8 +517,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/living/proc/do_ghost()
 	if(stat == DEAD)
-		if(client && client.player_data)
-			client.player_data.setup_statistics()
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")

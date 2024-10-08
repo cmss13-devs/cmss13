@@ -7,7 +7,6 @@
 /mob/proc/track_death_calculations()
 	if(statistic_exempt || statistic_tracked || !client || !client.player_data || !faction)
 		return FALSE
-	client.player_data.setup_statistics()
 	statistic_tracked = TRUE
 	return TRUE
 

@@ -5,7 +5,6 @@
 /obj/structure/prop/hybrisa
 	icon = 'icons/obj/structures/props/hybrisa_vehicles/small_truck_red.dmi'
 	icon_state = "pimp"
-	var/indestructable = FALSE
 
 // Vehicles
 
@@ -868,7 +867,7 @@
 	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	density = FALSE
 	layer = ABOVE_XENO_LAYER
 
@@ -878,7 +877,7 @@
 	desc = "A strange ancient looking egg, it seems to be inert."
 	icon_state = "inertegg"
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = TURF_LAYER
 
 // Engineer
@@ -894,7 +893,7 @@
 	icon_state = "spacejockey"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/giantpod/broken
@@ -962,7 +961,7 @@
 	bound_width = 32
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar
@@ -972,7 +971,7 @@
 	bound_width = 128
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwesttop
@@ -1072,44 +1071,44 @@
 /obj/structure/prop/hybrisa/airport/dropshipnosecone
 	name = "nose cone"
 	icon_state = "dropshipfrontwhite1"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 
 /obj/structure/prop/hybrisa/airport/dropshipwingleft
 	name = "wing"
 	icon_state = "dropshipwingtop1"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipwingright
 	name = "wing"
 	icon_state = "dropshipwingtop2"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipvent1left
 	name = "vent"
 	icon_state = "dropshipvent1"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipvent2right
 	name = "vent"
 	icon_state = "dropshipvent2"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipventleft
 	name = "vent"
 	icon_state = "dropshipvent3"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/airport/dropshipventright
 	name = "vent"
 	icon_state = "dropshipvent4"
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 // Dropship damage
@@ -1123,7 +1122,7 @@
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
@@ -1135,7 +1134,7 @@
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/refuelinghose
@@ -1213,7 +1212,7 @@
 	icon_state = "solidgrate2"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass2
 	name = "reinforced glass floor"
@@ -1221,7 +1220,7 @@
 	icon_state = "solidgrate3"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_TURF_LAYER
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass3
@@ -1230,7 +1229,7 @@
 	icon_state = "solidgrate4"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 // Graffiti
 
@@ -1933,7 +1932,7 @@
 	icon_state = "platform"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform1
 	icon_state = "engineer_platform"
@@ -2138,7 +2137,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/misc/detonator
@@ -2149,7 +2148,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	projectile_coverage = 20
 	throwpass = TRUE
 	var/id = 1
@@ -2238,7 +2237,7 @@
 	icon_state = "pole"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	density = TRUE
 	anchored = TRUE
 	projectile_coverage = 20

@@ -219,8 +219,40 @@
 
 /turf/open/floor/hybrisa/carpet/carpet_colorable
 	icon_state = "carpet_colorable"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue
+	icon_state = "carpet_colorable"
+	color = "#697ead"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable/twe_red
+	icon_state = "carpet_colorable"
+	color = "#ca6664"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey
+	icon_state = "carpet_colorable"
+	color = "#718184"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue
+	icon_state = "carpet_colorable"
+	color = "#6e7f8b"
+
+/turf/open/floor/hybrisa/carpet/carpet_colorable/pink
+	icon_state = "carpet_colorable"
+	color = "#9f8184"
+
+
 /turf/open/floor/hybrisa/carpet/carpet_deco_colorable
 	icon_state = "carpet_deco_colorable"
+
+/turf/open/floor/hybrisa/carpet/blue_grey
+	icon_state = "carpet_deco_colorable"
+	color = "#718184"
+
+/turf/open/floor/hybrisa/carpet/pink
+	icon_state = "carpet_deco_colorable"
+	color = "#9f8184"
+
+// Rug Colorable
 
 /turf/open/floor/hybrisa/carpet/rug_colorable
 	icon_state = "rug_colorable"
@@ -247,6 +279,158 @@
 	dir = NORTHWEST
 
 /turf/open/floor/hybrisa/carpet/rug_colorable/southeast
+	dir = SOUTHEAST
+
+// Rug Pink
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink
+	icon_state = "rug_colorable"
+	color = "#9f8184"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink/southeast
+	dir = SOUTHEAST
+
+// Rug Grey Blue
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue
+	icon_state = "rug_colorable"
+	color = "#718184"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast
+	dir = SOUTHEAST
+
+// Rug Black
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black
+	icon_state = "rug_colorable"
+	color = "#5d5d5d"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southeast
+	dir = SOUTHEAST
+
+// Rug Blue
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue
+	icon_state = "rug_colorable"
+
+	color = "#61727e"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast
+	dir = SOUTHEAST
+
+// Rug Biege
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege
+	icon_state = "rug_colorable"
+
+	color = "#84776b"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/southeast
 	dir = SOUTHEAST
 
 /turf/open/floor/hybrisa/carpet/carpetfadedred
@@ -303,6 +487,12 @@
 	icon_state = "tileblack"
 /turf/open/floor/hybrisa/tile/tilewhitecheckered
 	icon_state = "tilewhitecheck"
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege
+	icon_state = "tilewhitecheck"
+	color = "#f7e8db"
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue
+	icon_state = "tilewhitecheck"
+	color = "#c8d9dc"
 /turf/open/floor/hybrisa/tile/tilelightbeige
 	icon_state = "tilelightbeige"
 /turf/open/floor/hybrisa/tile/tilebeigecheckered

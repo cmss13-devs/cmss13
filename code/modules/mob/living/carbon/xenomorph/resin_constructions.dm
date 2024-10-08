@@ -353,22 +353,22 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 // Designer Strain "design" structures
 
-/datum/resin_construction/resin_obj/design_wall
-	name = "Wall Design - Node"
+/datum/resin_construction/resin_obj/design_speed
+	name = "Optimized Design Node"
 	desc = "Allow other xenos to build faster and reduce creation costs."
 	construction_name = "gardener_resin_surge"
 	cost = XENO_RESIN_BASE_COST
 	build_time = 1 SECONDS
 	max_per_xeno = 10
 
-	build_path = /turf/closed/wall/resin/design/wall
+	build_path = /obj/effect/alien/weeds/node/designer/speed
 
-/datum/resin_construction/resin_obj/design_door
-	name = "Door Design - Node"
+/datum/resin_construction/resin_obj/design_cost
+	name = "Flexible Design Node"
 	desc = "Allow other xenos to build faster and reduce creation costs."
 	construction_name = "gardener_resin_surge"
 	cost = XENO_RESIN_BASE_COST
 	build_time = 1 SECONDS
 	max_per_xeno = 10
 
-	build_path = /turf/closed/wall/resin/design/door
+	build_path = /obj/effect/alien/weeds/node/designer/cost

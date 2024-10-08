@@ -94,6 +94,15 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
+	var/build_speed = ((RC.build_time * caste.build_time_mult) / 2)
+	if(istype(A, /obj/effect/alien/weeds/node/designer/speed))
+		if(!thick)
+			wait_time -= build_speed
+
+	var/build_cost = (total_resin_cost / 2)
+	if(istype(A, /obj/effect/alien/weeds/node/designer/cost))
+		total_resin_cost -= build_cost
+
 	var/obj/warning
 	var/succeeded = TRUE
 	if(RC.build_overlay_icon)

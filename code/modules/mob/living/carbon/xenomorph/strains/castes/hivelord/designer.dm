@@ -96,16 +96,25 @@
 	playsound(target_turf, "alien_resin_build", 25)
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/build_resin()
-	.=..
-
-
 /datum/action/xeno_action/verb/verb_design_resin()
 	set category = "Alien"
 	set name = "Design Resin"
 	set hidden = TRUE
 	var/action_name = "Design Resin (50)"
 	handle_xeno_macro(src, action_name)
+
+/obj/effect/alien/weeds/node/designer
+	desc = "A wierd node, it look mutated."
+	weed_strength = WEED_LEVEL_CONSTRUCT
+	hibernate = TRUE
+
+/obj/effect/alien/weeds/node/designer/speed
+	name = "Flexible Design Node"
+	icon_state = "weednode"
+
+/obj/effect/alien/weeds/node/designer/cost
+	name = "Optimized Design Node"
+	icon_state = "weednode"
 
 // farsight
 /datum/action/xeno_action/onclick/toggle_long_range/designer

@@ -785,14 +785,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
 
-/turf/closed/wall/resin/design/wall
-	name = "wall design (node)"
-	icon_state = "resin_spike"
-
-/turf/closed/wall/resin/design/door
-	name = "door design (node)"
-	icon_state = "resin_spike"
-
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE

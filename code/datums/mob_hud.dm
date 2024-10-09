@@ -21,6 +21,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
+	MOB_HUD_FACTION_FAX = new /datum/mob_hud/faction/fax(),
 	))
 
 /datum/mob_hud
@@ -218,6 +219,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
+
+/datum/mob_hud/faction/fax
+	faction_to_check = FACTION_FAX
 
 ///////// MOB PROCS //////////////////////////////:
 

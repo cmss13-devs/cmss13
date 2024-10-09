@@ -411,6 +411,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	///Designates a visor type that should start down when initialized
 	var/start_down_visor_type
 
+	///Faction owners of the inbuilt camera
+	var/list/camera_factions = FACTION_LIST_MARINE_WY
+
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
@@ -432,8 +435,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	pockets.bypass_w_limit = GLOB.allowed_helmet_items
 	pockets.max_storage_space = storage_max_storage_space
 
-	camera = new /obj/structure/machinery/camera(src)
-	camera.network = list(CAMERA_NET_OVERWATCH)
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	camera.owner_factions = camera_factions
 
 	for(var/obj/visor as anything in built_in_visors)
 		visor.forceMove(src)

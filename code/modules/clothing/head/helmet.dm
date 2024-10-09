@@ -1026,6 +1026,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
+	camera_factions = FACTION_LIST_WY
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/leader
 	name = "\improper PMC beret"
@@ -1105,6 +1106,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "Standard issued helmet for the workers of Kutjevo. Contains a small webbing to hold small items like pens, oil or even a photo of a loved one."
 	icon_state = "kutjevo_helmet"
 	item_state = "kutjevo_helmet"
+	camera_factions = FACTION_LIST_COLONY
 
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\
@@ -1119,6 +1121,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	camera_factions = list(FACTION_DUTCH)
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"
@@ -1149,6 +1152,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	camera_factions = FACTION_LIST_UPP
 
 // UPP Are very powerful against bullets (marines) but middling against melee (xenos)
 /obj/item/clothing/head/helmet/marine/veteran/UPP
@@ -1163,6 +1167,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	clothing_traits = list(TRAIT_EAR_PROTECTION) //the sprites clearly fully cover the ears and most of the head
+	camera_factions = FACTION_LIST_UPP
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
@@ -1208,7 +1213,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/uppcap/civi
-	name = "\improper UL2 UPP cap"
+	name = "\improper UL2C UPP cap"
 	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
 	icon_state = "upp_cap_civi"
 
@@ -1250,7 +1255,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 
 /obj/item/clothing/head/uppcap/ushanka/civi
-	name = "\improper UL8c UPP ushanka"
+	name = "\improper UL8C UPP ushanka"
 	icon_state = "upp_ushanka_civi"
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
@@ -1261,6 +1266,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "van_bandolier"
 	item_state = "s_helmet"
 	flags_marine_helmet = NO_FLAGS
+	camera_factions = FACTION_LIST_COLONY
 
 
 //head rag
@@ -1339,8 +1345,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
+	camera_factions = FACTION_LIST_MERCENARY
 
-/obj/item/clothing/head/helmet/marine/veteran/mercenary
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/heavy
 	name = "\improper Modified K12 ceramic helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group. Reinforced with extra plating."
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
@@ -1361,6 +1368,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/clf
+	camera_factions = FACTION_LIST_CLF
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support
 	name = "\improper Z7 helmet"
@@ -1398,6 +1407,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/mob/activator = null
 	var/active = FALSE
 	var/det_time = 40
+	camera_factions = list(FACTION_HEFA)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/Initialize(mapload, list/new_protection)
 	. = ..()
@@ -1496,6 +1506,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	camera_factions = FACTION_LIST_TWE
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"

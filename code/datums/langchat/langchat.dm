@@ -113,10 +113,6 @@
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(ishologram(M))
-			var/mob/hologram/holo = M
-			if(holo.linked_mob)
-				langchat_listeners += holo.linked_mob
 		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
 			M.client.images += langchat_image
 
@@ -164,10 +160,6 @@
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(ishologram(M))
-			var/mob/hologram/holo = M
-			if(holo.linked_mob)
-				langchat_listeners += holo.linked_mob
 		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
 

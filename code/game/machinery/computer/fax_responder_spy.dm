@@ -9,15 +9,9 @@
 
 	var/turf/last_location
 	var/turf/start_location
-	var/target_z
 
 	/// Computer and Spycam can only be used if this variable is cleared
 	var/locked = FALSE
-
-/obj/structure/machinery/computer/spy_camera/Initialize()
-	. = ..()
-
-	target_z = z
 
 /obj/structure/machinery/computer/spy_camera/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
@@ -37,24 +31,13 @@
 	RegisterSignal(operator, COMSIG_MOVABLE_MOVED, PROC_REF(remove_current_operator))
 
 	if(!last_location)
-		last_location = locate(1, 1, target_z)
+		last_location = loc
 
 		start_location = last_location
 
 	spy_eye = new(last_location, new_operator, src)
 	//RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_and_set_zlevel))
 	RegisterSignal(spy_eye, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
-
-/*
-/obj/structure/machinery/computer/spy_camera/proc/check_and_set_zlevel(/mob/hologram/spy_camera/hologram, turf/NewLoc, direction)
-	SIGNAL_HANDLER
-	if(!start_location)
-		start_location = loc
-
-	if(!NewLoc || (NewLoc.z != target_z && hologram.z != target_z))
-		hologram.forceMove(start_location)
-		return COMPONENT_OVERRIDE_MOVE
-*/
 
 /obj/structure/machinery/computer/spy_camera/proc/remove_current_operator()
 	SIGNAL_HANDLER
@@ -128,6 +111,9 @@
 
 	var/spy_range = 5
 	var/spy_faction = FACTION_NEUTRAL
+
+	var/list/temporary_list = list()
+	var/list/temporary_list_2 = list()
 
 
 /mob/hologram/spy_camera/Initialize(mapload, mob/living/carbon/spy_operator, obj/structure/machinery/computer/spy_camera/console)
@@ -221,18 +207,26 @@
 		if(crossing_wall.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	if((spy_faction in FACTION_LIST_MARINE_FAXES) && is_mainship_level(z))
-		return COMPONENT_TURF_ALLOW_MOVEMENT
+	if(is_mainship_level(z))
+		if(spy_faction in FACTION_LIST_MARINE_FAXES)
+			return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	var/list/turf_area = range(spy_range, crossing_turf)
+	temporary_list = turf_area
 
-	//for(/obj/structure/machinery/camera/nearby_camera in turf_area)
-	//	if(spy_faction in nearby_camera.owner_factions)
-	//		return COMPONENT_TURF_ALLOW_MOVEMENT
+	var/list/obj/structure/machinery/camera/camera_list = list()
+	temporary_list_2 = camera_list
 
-	var/obj/structure/machinery/camera/nearby_camera = locate() in turf_area
-	if(spy_faction in nearby_camera.owner_factions)
-		return COMPONENT_TURF_ALLOW_MOVEMENT
+	for(var/obj/structure/machinery/camera/nearby_camera in turf_area)
+		camera_list += nearby_camera
+	for(var/mob/living/carbon/human/local_mob in turf_area)
+		if(istype(local_mob.head, /obj/item/clothing/head/helmet/marine))
+			var/obj/item/clothing/head/helmet/marine/helm = local_mob.head
+			camera_list += helm.camera
+
+	for(var/obj/structure/machinery/camera/possible_camera in camera_list)
+		if(spy_faction in possible_camera.owner_factions)
+			return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
 
@@ -247,23 +241,23 @@
 /mob/hologram/spy_camera/proc/handle_overwatch(mob/living/carbon/human/spy_operator, atom/target_atom, mods)
 	SIGNAL_HANDLER
 
-	var/turf/T = get_turf(target_atom)
-	if(!istype(T))
+	var/turf/target_turf = get_turf(target_atom)
+	if(!istype(target_turf))
 		return
 
 	if(!mods["ctrl"])
 		return
 
-	/*
-	if(is_spy_faction(target_atom))
-		var/mob/living/carbon/target_mob = target_atom
-		return COMPONENT_INTERRUPT_CLICK
-	*/
-	
-	if(!(can_spy_turf(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
+	// I want to make this mimic observer follow.
+	//if(is_spy_faction(target_atom))
+	//	var/mob/living/carbon/target_mob = target_atom
+	//	return COMPONENT_INTERRUPT_CLICK
+
+
+	if(!(can_spy_turf(src, target_turf) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
-	forceMove(T)
+	forceMove(target_turf)
 
 	return COMPONENT_INTERRUPT_CLICK
 

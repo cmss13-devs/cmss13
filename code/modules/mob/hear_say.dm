@@ -8,6 +8,10 @@
 	if(speaker == linked_mob)
 		return
 	linked_mob.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
+	/// I had to bastardise this because it was duplicating messages for some reason.
+	if(speaker && linked_mob.client && !linked_mob.ear_deaf)
+		if(!linked_mob.client?.prefs.lang_chat_disabled && linked_mob.say_understands(speaker, language))
+			speaker.langchat_display_image(linked_mob)
 	return
 
 

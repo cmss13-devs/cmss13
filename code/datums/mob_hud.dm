@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
-	MOB_HUD_FACTION_FAX = new /datum/mob_hud/faction/fax(),
+	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
 	))
 
 /datum/mob_hud
@@ -220,8 +220,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
 
-/datum/mob_hud/faction/fax
-	faction_to_check = FACTION_FAX
+/datum/mob_hud/spy_cams
+	hud_icons = list(SPYCAM_HUD)
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -586,7 +586,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
-		if (Q && Q.observed_xeno == src)
+		if (Q && Q.observed_mob == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 

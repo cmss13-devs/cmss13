@@ -406,9 +406,6 @@
 				if("Faction CLF HUD")
 					the_hud = GLOB.huds[MOB_HUD_FACTION_CLF]
 					the_hud.add_hud_to(src, src)
-				if("Fax Responder HUD")
-					the_hud = GLOB.huds[MOB_HUD_FACTION_FAX]
-					the_hud.add_hud_to(src, src)
 				if(HUD_MENTOR_SIGHT)
 					the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
 					the_hud.add_hud_to(src, src)

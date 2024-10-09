@@ -8837,6 +8837,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
@@ -37420,6 +37421,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
+"lGK" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
 "lHk" = (
 /obj/structure/closet/firecloset,
 /obj/effect/decal/warning_stripes{
@@ -52359,6 +52364,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
+"rLt" = (
+/obj/structure/machinery/computer/spy_camera{
+	spy_faction = "USCM"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
 "rLv" = (
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4;
@@ -60683,6 +60694,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
+"vkh" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "vkp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -61017,6 +61032,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/processing)
+"vqy" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "vqz" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -84975,7 +84994,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+vkh
 xyw
 xyw
 xyw
@@ -88120,7 +88139,7 @@ alX
 aqN
 avY
 alX
-alX
+rLt
 paL
 euV
 mJu
@@ -118267,7 +118286,7 @@ uZF
 xoj
 xoj
 osI
-qXk
+lGK
 fie
 pUj
 xoj
@@ -119384,7 +119403,7 @@ eky
 aDQ
 pyy
 eky
-eky
+vqy
 eky
 dLc
 aDQ

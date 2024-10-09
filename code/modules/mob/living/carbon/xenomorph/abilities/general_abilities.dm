@@ -308,7 +308,7 @@
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_SIGHT_IGNORE_REST) && !xeno.check_state())
 		return
 
-	if(xeno.observed_xeno)
+	if(xeno.observed_mob)
 		return
 
 	if(xeno.is_zoomed)

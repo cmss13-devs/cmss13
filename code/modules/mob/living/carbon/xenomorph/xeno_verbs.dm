@@ -135,8 +135,8 @@
 /mob/living/carbon/xenomorph/cancel_camera()
 	. = ..()
 
-	if(observed_xeno)
-		overwatch(observed_xeno, TRUE)
+	if(observed_mob)
+		overwatch(observed_mob, TRUE)
 
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"

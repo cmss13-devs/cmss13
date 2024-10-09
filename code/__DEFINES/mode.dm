@@ -300,6 +300,9 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_LIST_COLONY list(FACTION_SURVIVOR, FACTION_COLONIST)
 #define FACTION_LIST_NEUTRAL list(FACTION_NEUTRAL)
 
+/// The list of factions loosely allied with the USCM
+#define FACTION_LIST_MARINE_FAXES list(FACTION_MARINE, FACTION_WY, FACTION_MARSHAL, FACTION_TWE)
+
 // Xenomorphs
 #define FACTION_PREDALIEN "Predalien"
 

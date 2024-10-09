@@ -2,6 +2,15 @@
 /mob/proc/hear_apollo()
 	return FALSE
 
+/mob/hologram/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
+	if(!hears_speech || !linked_mob)
+		return
+	if(speaker == linked_mob)
+		return
+	linked_mob.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
+	return
+
+
 /mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 
 	if(!client && !(mind && mind.current != src))

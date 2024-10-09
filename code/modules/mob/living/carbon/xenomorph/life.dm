@@ -23,7 +23,7 @@
 		handle_pheromones()
 		handle_regular_status_updates()
 		handle_stomach_contents()
-		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
+		//handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_icons()
 		handle_luminosity()
 		handle_blood()
@@ -106,8 +106,8 @@
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
 					var/mob/living/carbon/xenomorph/queen/Q = src
 					var/atom/phero_center = Q
-					if(Q.observed_xeno)
-						phero_center = Q.observed_xeno
+					if(Q.observed_mob)
+						phero_center = Q.observed_mob
 					if(!phero_center || !phero_center.loc)
 						return
 					if(phero_center.loc.z == Q.loc.z)//Only same Z-level

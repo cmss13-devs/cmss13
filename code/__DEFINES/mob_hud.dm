@@ -27,6 +27,7 @@
 #define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
 #define XENO_EXECUTE "28" // Execute thershold, vampire
 #define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
+#define SPYCAM_HUD "30" //Remote control spy cameras.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -48,7 +49,7 @@
 #define MOB_HUD_HUNTER_CLAN 17
 #define MOB_HUD_EXECUTE 18
 #define MOB_HUD_NEW_PLAYER 19
-#define MOB_HUD_FACTION_FAX 20
+#define MOB_HUD_SPYCAMS 20
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

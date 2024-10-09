@@ -32,14 +32,14 @@
 		return
 
 	// We are already overwatching something
-	if (X.observed_xeno)
+	if (X.observed_mob)
 		if (isQueen)
-			var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
-			X.overwatch(X.observed_xeno, TRUE)
+			var/mob/living/carbon/xenomorph/oldXeno = X.observed_mob
+			X.overwatch(X.observed_mob, TRUE)
 			if (oldXeno)
 				oldXeno.hud_set_queen_overwatch()
 		else
-			X.overwatch(X.observed_xeno, TRUE)
+			X.overwatch(X.observed_mob, TRUE)
 		return
 
 	var/list/possible_xenos = list()
@@ -49,12 +49,12 @@
 
 	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
-	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(TRUE))
-		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
+	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_mob || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(TRUE))
+		X.overwatch(X.observed_mob, TRUE) // Cancel OW
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
 	else // We are a queen
-		var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
+		var/mob/living/carbon/xenomorph/oldXeno = X.observed_mob
 		X.overwatch(selected_xeno, FALSE)
 		if (oldXeno)
 			oldXeno.hud_set_queen_overwatch()
@@ -65,10 +65,10 @@
 // Generic Xeno overwatch proc, very simple for now. If you want it to cancel the overwatch, hand in TRUE in the second var.
 // Third var is only for custom event handlers for OW hud indicators, currently only used for the Queen icon
 // If you use it, be sure to manually specify the second var, even if its the default value.
-/mob/living/carbon/xenomorph/proc/overwatch(mob/living/carbon/xenomorph/targetXeno, stop_overwatch = FALSE)
+/mob/living/carbon/xenomorph/overwatch(mob/living/carbon/xenomorph/target_mob, stop_overwatch = FALSE)
 	if(stop_overwatch)
-		var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
-		observed_xeno = null
+		var/mob/living/carbon/xenomorph/oldXeno = observed_mob
+		observed_mob = null
 
 		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, oldXeno)
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
@@ -86,7 +86,12 @@
 			to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 			return
 
-		if(targetXeno == src)
+		if(!isxeno(target_mob))
+			to_chat(src, SPAN_WARNING("We cannot watch a host!"))
+			return
+		var/mob/living/carbon/xenomorph/target_xeno
+
+		if(target_xeno == src)
 			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
@@ -94,7 +99,7 @@
 			to_chat(src, SPAN_XENOWARNING("Our psychic connection is cut off!"))
 			return
 
-		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
+		if(HAS_TRAIT(target_xeno, TRAIT_HIVEMIND_INTERFERENCE))
 			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			return
 
@@ -102,8 +107,8 @@
 			to_chat(src, SPAN_XENOWARNING("We cannot do this in our current state!"))
 			return
 
-		if(observed_xeno && targetXeno && observed_xeno == targetXeno)
-			if(istype(targetXeno, /obj/effect/alien/resin/marker))
+		if(observed_mob && target_xeno && observed_mob == target_xeno)
+			if(istype(target_xeno, /obj/effect/alien/resin/marker))
 				to_chat(src, SPAN_XENOWARNING("We are already watching that mark!"))
 				return
 			to_chat(src, SPAN_XENOWARNING("We are already watching that sister!"))
@@ -112,37 +117,33 @@
 		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
 			zoom_out()
 
-		if(observed_xeno)
-			var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
-			observed_xeno = null
+		if(observed_mob)
+			var/mob/living/carbon/xenomorph/oldXeno = observed_mob
+			observed_mob = null
 
 			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
 			oldXeno.hud_set_queen_overwatch()
 			UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 
-		observed_xeno = targetXeno
+		observed_mob = target_xeno
+		target_xeno.hud_set_queen_overwatch()
 
-		observed_xeno.hud_set_queen_overwatch()
-		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
+		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, target_xeno)
 		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(overwatch_handle_mob_move_or_look))
-		RegisterSignal(observed_xeno, COMSIG_PARENT_QDELETING, PROC_REF(overwatch_handle_deletion))
+		RegisterSignal(target_xeno, COMSIG_PARENT_QDELETING, PROC_REF(overwatch_handle_deletion))
 
 	src.reset_view()
 
-/mob/living/carbon/xenomorph/proc/overwatch_handle_deletion(mob/living/carbon/xenomorph/deleted, forced)
-	SIGNAL_HANDLER
-	overwatch(deleted, TRUE)
-
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
-/mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if(observed_xeno)
-		if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
+/mob/living/carbon/xenomorph/handle_overwatch()
+	if(observed_mob)
+		if(observed_mob.stat == DEAD || QDELETED(observed_mob))
 			overwatch(null, TRUE)
 			return
 
-		if(HAS_TRAIT(observed_xeno, TRAIT_HIVEMIND_INTERFERENCE))
+		if(HAS_TRAIT(observed_mob, TRAIT_HIVEMIND_INTERFERENCE))
 			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			overwatch(null, TRUE)
 			return
@@ -151,13 +152,11 @@
 		overwatch(null, TRUE)
 		return
 
-/mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
-	SIGNAL_HANDLER
-
+/mob/living/carbon/xenomorph/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	if(!actually_moving)
 		return
 
-	mover.overwatch(mover.observed_xeno, TRUE) // Goodbye overwatch
+	mover.overwatch(mover.observed_mob, TRUE) // Goodbye overwatch
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
 
@@ -165,10 +164,10 @@
 	if(!actually_moving)
 		return
 
-	var/mob/living/carbon/xenomorph/observed_xeno = mover.observed_xeno
-	mover.overwatch(observed_xeno, TRUE)
-	if(observed_xeno)
-		observed_xeno.hud_set_queen_overwatch()
+	var/mob/living/carbon/xenomorph/observed_mob = mover.observed_mob
+	mover.overwatch(observed_mob, TRUE)
+	if(observed_mob)
+		observed_mob.hud_set_queen_overwatch()
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
 
@@ -182,9 +181,9 @@
 	if (client)
 
 		// Is our observed xeno configured and are we alive?
-		if(observed_xeno && !stat)
+		if(observed_mob && !stat)
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = observed_xeno
+			client.eye = observed_mob
 
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/xenomorph/Topic(href, href_list)
@@ -206,7 +205,7 @@
 		if (!isQueen)
 			xenoSrc.overwatch(xenoTarget)
 		else
-			var/mob/living/carbon/xenomorph/oldXeno = xenoSrc.observed_xeno
+			var/mob/living/carbon/xenomorph/oldXeno = xenoSrc.observed_mob
 			xenoSrc.overwatch(xenoTarget, FALSE)
 			if (oldXeno)
 				oldXeno.hud_set_queen_overwatch()

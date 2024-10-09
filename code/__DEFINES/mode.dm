@@ -39,8 +39,8 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-#define MODE_HAS_FLAG(flag) (SSticker.mode?.flags_round_type & flag)
-#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode?.toggleable_flags & flag)
+#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
+#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
 
 // Gamemode Flags
 #define MODE_INFESTATION (1<<0)
@@ -296,6 +296,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_LIST_MARINE_WY list(FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_UPP list(FACTION_MARINE, FACTION_UPP)
 #define FACTION_LIST_MARINE_TWE list(FACTION_MARINE, FACTION_TWE)
+#define FACTION_LIST_YAUTJA list(FACTION_YAUTJA)
 #define FACTION_LIST_NSPA list(FACTION_NSPA, FACTION_TWE)
 
 // Xenomorphs

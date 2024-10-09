@@ -1,4 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - bugfix: "The price for the type 73 and np92 magazine in UPP vendors are fixed."

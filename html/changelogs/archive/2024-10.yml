@@ -108,3 +108,10 @@
       tail to illuminate the unloading area
   - code_imp: Misc code cleanup in dropship equipment and ammo code
   - refactor: Moved dropship equipment and ammo into their own sprite files
+2024-10-09:
+  CapCamIII:
+  - bugfix: The price for the type 73 and np92 magazine in UPP vendors are fixed.
+  cuberound:
+  - maptweak: replaces hangar banshee with launchbay and omnisentry
+  realforest2001:
+  - rscadd: Added new player markers for SEAs/Mentors

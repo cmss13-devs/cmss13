@@ -18,11 +18,11 @@ export const Statistic = () => {
   const { data_tabs, round, medals } = data;
 
   return (
-    <Window title="Statistic" width={800} height={1600} resizable>
-      <Window.Content scrollable>
+    <Window title="Statistic" width={1200} height={800} resizable>
+      <Window.Content scrollable className="Statistic">
         <Flex direction="column" height="100%">
           <Flex.Item>
-            <Tabs fluid textAlign="center">
+            <Tabs fluid textAlign="center" className="tabs-horizontal">
               {data_tabs.map((tab) => (
                 <Tabs.Tab
                   key={tab}
@@ -35,15 +35,9 @@ export const Statistic = () => {
             </Tabs>
           </Flex.Item>
           <Flex.Item grow={1}>
-            <Flex direction="column" height="100%">
-              <Flex.Item>
-                <GetTab
-                  selectedTab={selectedTab}
-                  round={round}
-                  medals={medals}
-                />
-              </Flex.Item>
-            </Flex>
+            <div className="tiles-container">
+              <GetTab selectedTab={selectedTab} round={round} medals={medals} />
+            </div>
           </Flex.Item>
         </Flex>
       </Window.Content>
@@ -51,124 +45,139 @@ export const Statistic = () => {
   );
 };
 
-const GetTab = (props) => {
+const GetTab = ({ selectedTab, round, medals }) => {
   const { data } = useBackend();
   const { factions } = data;
-  const { selectedTab, round, medals } = props;
 
   switch (selectedTab) {
     case 'Round':
-      return <RoundTab round={round} />;
+      return round ? (
+        <RoundTab round={round} />
+      ) : (
+        <NoticeBox danger>Round statistic preparing!</NoticeBox>
+      );
     case 'Medals':
       return <MedalTab medals={medals} />;
     default:
-      if (!factions[selectedTab]) return;
-      return <StatTab faction={factions[selectedTab]} />;
+      return factions[selectedTab] ? (
+        <StatTab faction={factions[selectedTab]} />
+      ) : null;
   }
 };
 
-const RoundTab = (props) => {
-  const { round } = props;
-  if (!round) return <NoticeBox danger>Round statistic prepairing!</NoticeBox>;
-  return (
-    <>
-      <Section title="Round Statistic">
-        <Box
-          direction="column"
-          style={{
-            padding: '12px 10px',
-            border: '0.5px solid #4a4a4a',
-          }}
-        >
-          <Box>Name: {round.name}</Box>
-          <Box>Gamemode: {round.game_mode}</Box>
-          <Box>Map: {round.map_name}</Box>
-          {round.round_result ? <Box>Result: {round.round_result}</Box> : null}
-          {round.real_time_start ? (
-            <Box>Round Start: {round.real_time_start}</Box>
-          ) : null}
-          {round.real_time_end ? (
-            <Box>Round Time End: {round.real_time_end}</Box>
-          ) : null}
-          {round.round_length ? (
-            <Box>Round Length: {round.round_length}</Box>
-          ) : null}
-          {round.round_hijack_time ? (
-            <Box>Hijack Time: {round.round_hijack_time}</Box>
-          ) : null}
-          <Box>Total Shots Fired: {round.total_projectiles_fired}</Box>
-          <Box>Total Shots Hit: {round.total_projectiles_hit}</Box>
-          <Box>
-            Total Shots Hit (Human): {round.total_projectiles_hit_human}
-          </Box>
-          <Box>Total Shots Hit (Xeno): {round.total_projectiles_hit_xeno}</Box>
-          <Box>Total Slashes: {round.total_slashes}</Box>
-          <Box>Total Shots Hit (FF): {round.total_friendly_fire_instances}</Box>
-          <Box>Total FF Kills: {round.total_friendly_kills}</Box>
-          <Box>Total Huggers Applied: {round.total_huggers_applied}</Box>
-          <Box>Total Larva Burst: {round.total_larva_burst}</Box>
-          {round.end_round_player_population ? (
-            <Box>Final Population: {round.end_round_player_population}</Box>
-          ) : null}
+const RoundTab = ({ round }) => (
+  <>
+    <SectionContainer title="Round Statistic">
+      <div className="tiles-container">
+        <Box className="tile">
+          <div className="inner-statistics">
+            <StatItem label="Name" value={round.name} />
+            <StatItem label="Gamemode" value={round.game_mode} />
+            <StatItem label="Map" value={round.map_name} />
+            {round.round_result ? (
+              <StatItem label="Result" value={round.round_result} />
+            ) : null}
+            {round.real_time_start ? (
+              <StatItem label="Round Start" value={round.real_time_start} />
+            ) : null}
+            {round.real_time_end ? (
+              <StatItem label="Round End" value={round.real_time_end} />
+            ) : null}
+            {round.round_length ? (
+              <StatItem label="Round Length" value={round.round_length} />
+            ) : null}
+            {round.round_hijack_time ? (
+              <StatItem label="Hijack Time" value={round.round_hijack_time} />
+            ) : null}
+            <StatItem
+              label="Total Shots Fired"
+              value={round.total_projectiles_fired}
+            />
+            <StatItem
+              label="Total Shots Hit"
+              value={round.total_projectiles_hit}
+            />
+            <StatItem
+              label="Total Shots Hit (Human)"
+              value={round.total_projectiles_hit_human}
+            />
+            <StatItem
+              label="Total Shots Hit (Xeno)"
+              value={round.total_projectiles_hit_xeno}
+            />
+            <StatItem label="Total Slashes" value={round.total_slashes} />
+            <StatItem
+              label="Total Shots Hit (FF)"
+              value={round.total_friendly_fire_instances}
+            />
+            <StatItem
+              label="Total FF Kills"
+              value={round.total_friendly_kills}
+            />
+            <StatItem
+              label="Total Huggers Applied"
+              value={round.total_huggers_applied}
+            />
+            <StatItem
+              label="Total Larva Burst"
+              value={round.total_larva_burst}
+            />
+            {round.end_round_player_population ? (
+              <StatItem
+                label="Final Population"
+                value={round.end_round_player_population}
+              />
+            ) : null}
+          </div>
           {round.participants_list.map((entry, index) => (
-            <Box
-              key={index}
-              style={{
-                padding: '12px 10px',
-                border: '0.5px solid #4a4a4a',
-              }}
-            >
-              <Box>{entry.name}:</Box>
-              {entry.value.map((entry, index) => (
-                <Box key={index}>
-                  {entry.name}: {entry.value}
-                </Box>
-              ))}
-            </Box>
+            <Collapsible key={index} title={entry.name}>
+              <div className="tiles-container">
+                <div className="inner-statistics">
+                  {entry.value.map((sub_entry, sub_index) => (
+                    <StatItem
+                      key={sub_index}
+                      label={sub_entry.name}
+                      value={sub_entry.value}
+                    />
+                  ))}
+                </div>
+              </div>
+            </Collapsible>
           ))}
         </Box>
-      </Section>
-      {round.death_list.length ? (
-        <KillView
-          death_log_data={round.death_list}
-          total_deaths={round.total_deaths}
-        />
-      ) : (
-        <NoticeBox danger>No recorded kills!</NoticeBox>
-      )}
-    </>
-  );
-};
+      </div>
+    </SectionContainer>
+    {round.death_list.length ? (
+      <DeathsView
+        death_log_data={round.death_list}
+        total_deaths={round.total_deaths}
+      />
+    ) : (
+      <NoticeBox danger>No recorded kills!</NoticeBox>
+    )}
+  </>
+);
 
-const MedalTab = (props) => {
-  const { medals } = props;
-
-  return (
-    <Section title="Medals">
-      {medals.map((entry, index) => (
-        <Fragment key={index}>
-          <Box
-            style={{
-              padding: '12px 10px',
-              border: '0.5px solid #4a4a4a',
-            }}
-          >
-            <Box>Round ID: {entry.round_id}</Box>
-            <Box>Medal Type: {entry.medal_type}</Box>
-            <Box>Recipient: {entry.recipient}</Box>
-            <Box>Recipient Job: {entry.recipient_job}</Box>
-            <Box>Citation: {entry.citation}</Box>
-            <Box>Giver: {entry.giver}</Box>
+const MedalTab = ({ medals }) => (
+  <SectionContainer title="Medals">
+    <div className="tiles-container">
+      <Box className="tile">
+        {medals.map((entry, index) => (
+          <Box className="inner-statistics" key={index}>
+            <StatItem label="Round ID" value={entry.round_id} />
+            <StatItem label="Medal Type" value={entry.medal_type} />
+            <StatItem label="Recipient" value={entry.recipient} />
+            <StatItem label="Recipient Job" value={entry.recipient_job} />
+            <StatItem label="Citation" value={entry.citation} />
+            <StatItem label="Giver" value={entry.giver} />
           </Box>
-          <Box height="10px" />
-        </Fragment>
-      ))}
-    </Section>
-  );
-};
+        ))}
+      </Box>
+    </div>
+  </SectionContainer>
+);
 
-const StatTab = (props) => {
-  const { faction } = props;
+const StatTab = ({ faction }) => {
   const {
     total_statistics,
     top_statistics,
@@ -180,176 +189,161 @@ const StatTab = (props) => {
   } = faction;
 
   return (
-    <Box>
+    <>
       {total_statistics.length ? (
-        <Section title="Statistics">
-          <Box
-            style={{
-              padding: '12px 10px',
-              border: '0.5px solid #4a4a4a',
-            }}
-          >
-            {total_statistics.map((entry, index) => (
-              <Box key={index}>
-                {entry.name}: {entry.value}
-              </Box>
-            ))}
-          </Box>
-        </Section>
+        <SectionContainer title="Statistics">
+          <div className="tiles-container">
+            <Box className="tile">
+              <div className="inner-statistics">
+                {total_statistics.map((entry, stat_idx) => (
+                  <StatItem
+                    key={stat_idx}
+                    label={entry.name}
+                    value={entry.value}
+                  />
+                ))}
+              </div>
+            </Box>
+          </div>
+        </SectionContainer>
       ) : (
         <NoticeBox danger>No recorded statistic!</NoticeBox>
       )}
-      <Box height="12px" />
       {top_statistics.length ? (
-        <>
-          <Section title="Top Statistics">
+        <SectionContainer title="Top Statistics">
+          <div className="tiles-container">
             {top_statistics.map((entry, index) => (
-              <Fragment key={index}>
-                <Box
-                  style={{
-                    padding: '12px 10px',
-                    border: '0.5px solid #4a4a4a',
-                  }}
-                >
-                  <span className="reallybig">{entry.name}</span>
+              <Box className="tile" key={index}>
+                <div className="inner-statistics">
+                  <span className="tile-title">{entry.name}</span>
                   {entry.statistics.length
-                    ? entry.statistics.map((entry, index) => (
-                        <Box key={index}>
-                          {entry.name}: {entry.value}
-                        </Box>
+                    ? entry.statistics.map((stat, statIndex) => (
+                        <StatItem
+                          key={statIndex}
+                          label={stat.name}
+                          value={stat.value}
+                        />
                       ))
                     : null}
-                </Box>
-                <Box height="12px" />
-              </Fragment>
+                </div>
+              </Box>
             ))}
-          </Section>
-          <Box height="12px" />
-        </>
+          </div>
+        </SectionContainer>
       ) : null}
       {nemesis.name ? (
-        <Section title="Nemesis">
-          <Box>
-            <span className="reallybig">
-              {nemesis.name}: {nemesis.value}
-            </span>
-          </Box>
-        </Section>
+        <SectionContainer title="Nemesis">
+          <div className="tiles-container">
+            <Box className="tile">
+              <div className="inner-statistics">
+                <StatItem label={nemesis.name} value={nemesis.value} />
+              </div>
+            </Box>
+          </div>
+        </SectionContainer>
       ) : (
         <NoticeBox danger>No recorded nemesis!</NoticeBox>
       )}
-      <Box height="12px" />
       {death_list.length ? (
-        <KillView death_log_data={death_list} total_deaths={total_deaths} />
+        <DeathsView death_log_data={death_list} total_deaths={total_deaths} />
       ) : (
         <NoticeBox danger>No recorded deaths!</NoticeBox>
       )}
-      <Box height="12px" />
       {statistics_list.length ? (
-        <Section title="Additional Statistics">
-          {statistics_list.map((entry, index) => (
-            <Collapsible key={index} title={entry.name}>
-              {entry.value.length ? (
-                <>
-                  {entry.value.map((entry, index) => (
-                    <Fragment key={index}>
-                      <Box
-                        direction="column"
-                        style={{
-                          padding: '12px 10px',
-                          border: '0.5px solid #4a4a4a',
-                        }}
-                      >
-                        <span className="reallybig">{entry.name}</span>
-                        {entry.statistics.length ? (
-                          <Box>
-                            <Box height="8px" />
-                            <span className="big">Statistics</span>
-                            <Box height="4px" />
-                            {entry.statistics.map((entry, index) => (
-                              <Fragment key={index}>
-                                <Box>
-                                  {entry.name}: {entry.value}
-                                </Box>
-                              </Fragment>
+        <SectionContainer title="Additional Statistics">
+          <div className="tiles-container">
+            {statistics_list.map((entry, index) => (
+              <Collapsible key={index} title={entry.name}>
+                {entry.value.length ? (
+                  <div className="tiles-container">
+                    {entry.value.map((sub_entry, sub_index) => (
+                      <Box className="tile" key={sub_index}>
+                        <span className="tile-title">{sub_entry.name}</span>
+                        {sub_entry.statistics.length ? (
+                          <div className="inner-statistics">
+                            <span className="inner-title">Statistics</span>
+                            {sub_entry.statistics.map((stat, stat_idx) => (
+                              <StatItem
+                                key={stat_idx}
+                                label={stat.name}
+                                value={stat.value}
+                              />
                             ))}
-                          </Box>
+                          </div>
                         ) : null}
-                        <Box height="8px" />
-                        {entry.top_statistics.length ? (
-                          <Box>
-                            <Box height="8px" />
-                            <span className="big">Top Statistics</span>
-                            <Box height="4px" />
-                            {entry.top_statistics.map((entry, index) => (
-                              <Fragment key={index}>
-                                <Box>
-                                  {entry.name}: {entry.value}
-                                </Box>
-                              </Fragment>
+                        {sub_entry.top_statistics.length ? (
+                          <div className="inner-statistics">
+                            <span className="inner-title">Top Statistics</span>
+                            {sub_entry.top_statistics.map((stat, stat_idx) => (
+                              <StatItem
+                                key={stat_idx}
+                                label={stat.name}
+                                value={stat.value}
+                              />
                             ))}
-                          </Box>
+                          </div>
                         ) : null}
                       </Box>
-                      <Box height="8px" />
-                    </Fragment>
-                  ))}
-                  <Box height="8px" />
-                </>
-              ) : null}
-            </Collapsible>
-          ))}
-        </Section>
+                    ))}
+                  </div>
+                ) : null}
+              </Collapsible>
+            ))}
+          </div>
+        </SectionContainer>
       ) : null}
-    </Box>
+    </>
   );
 };
 
-const KillView = (props) => {
-  const { death_log_data, total_deaths } = props;
-  return (
-    <Section>
+const DeathsView = ({ death_log_data, total_deaths }) => (
+  <SectionContainer title={`Total Deaths: ${total_deaths}`}>
+    <div className="tiles-container">
       <Collapsible title={`Total Deaths: ${total_deaths}`}>
-        {death_log_data.map((entry, index) => (
-          <Box
-            key={index}
-            style={{
-              padding: '12px 10px',
-            }}
-          >
-            <Collapsible title={`${entry.mob_name}  (${entry.time_of_death})`}>
-              <Box
-                style={{
-                  padding: '12px 10px',
-                  border: '0.5px solid #4a4a4a',
-                }}
-              >
-                <Box>Mob: {entry.mob_name}</Box>
-                {entry.job_name ? (
-                  <>
-                    <Box height="4px" />
-                    <Box>Job: {entry.job_name}</Box>
-                  </>
-                ) : null}
-                <Box height="4px" />
-                <Box>Area: {entry.area_name}</Box>
-                <Box height="4px" />
-                <Box>Cause: {entry.cause_name}</Box>
-                <Box height="4px" />
-                <Box>Time: {entry.time_of_death}</Box>
-                <Box height="4px" />
-                <Box>Lifespan: {entry.total_time_alive}</Box>
-                <Box height="4px" />
-                <Box>Damage taken: {entry.total_damage_taken}</Box>
-                <Box height="4px" />
-                <Box>
-                  Coords: {entry.x}, {entry.y}, {entry.z}
-                </Box>
+        <div className="tiles-container">
+          {death_log_data.map((entry, index) => (
+            <Collapsible
+              key={index}
+              title={`${entry.mob_name}  (${entry.time_of_death})`}
+            >
+              <Box className="tile">
+                <div className="tiles-container">
+                  <div className="inner-statistics">
+                    <StatItem label="Mob" value={entry.mob_name} />
+                    {entry.job_name ? (
+                      <StatItem label="Job" value={entry.job_name} />
+                    ) : null}
+                    <StatItem label="Area" value={entry.area_name} />
+                    <StatItem label="Cause" value={entry.cause_name} />
+                    <StatItem label="Time" value={entry.time_of_death} />
+                    <StatItem label="Lifespan" value={entry.total_time_alive} />
+                    <StatItem
+                      label="Damage taken"
+                      value={entry.total_damage_taken}
+                    />
+                    <StatItem
+                      label="Coords"
+                      value={`${entry.x}, ${entry.y}, ${entry.z}`}
+                    />
+                  </div>
+                </div>
               </Box>
             </Collapsible>
-          </Box>
-        ))}
+          ))}
+        </div>
       </Collapsible>
-    </Section>
-  );
-};
+    </div>
+  </SectionContainer>
+);
+
+const StatItem = ({ label, value }) => (
+  <Box className="stat-item">
+    <span className="stat-label">{label}:</span> {value}
+  </Box>
+);
+
+const SectionContainer = ({ title, children }) => (
+  <Section title={title}>
+    <div className="section-content">{children}</div>
+  </Section>
+);

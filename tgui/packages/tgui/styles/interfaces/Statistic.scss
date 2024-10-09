@@ -1,0 +1,113 @@
+@use '../colors.scss';
+$separator-color: colors.$primary !default;
+
+.Statistic {
+  padding: 20px;
+  background-color: #1a1a1a;
+  height: 100%;
+
+  .tabs-horizontal {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+    .tab {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.selected {
+        background-color: #555;
+      }
+
+      &:hover {
+        background-color: #444;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .tiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .tile {
+    background-color: #2a2a2a;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    color: #ccc;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .tile-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+      display: block;
+    }
+
+    .inner-title {
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #ddd;
+      display: block;
+    }
+
+    .inner-statistics {
+      margin-top: 5px;
+      padding-left: 10px;
+      border-left: 2px solid #555;
+    }
+  }
+
+  .statistic-styled-padding {
+    padding: 12px 10px;
+    border: 0.5px solid #4a4a4a;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .collapsible-box {
+    padding: 12px 10px;
+    box-sizing: border-box;
+  }
+
+  .section-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .stat-item {
+    margin-bottom: 6px;
+    color: #ccc;
+
+    .stat-label {
+      color: $separator-color;
+      font-weight: bold;
+    }
+  }
+}

@@ -2638,6 +2638,10 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"bUW" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
 "bVE" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor/prison,
@@ -30575,6 +30579,10 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison/whitegreencorner/north,
 /area/fiorina/tumor/ice_lab)
+"xBa" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzI)
 "xBc" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/whitepurple,
@@ -67290,7 +67298,7 @@ fAf
 nZB
 nZB
 nZB
-fAf
+bUW
 nZB
 nZB
 nZB
@@ -83327,7 +83335,7 @@ nGZ
 nGZ
 qaL
 fDJ
-fDJ
+xBa
 uYi
 cUd
 cUd

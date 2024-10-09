@@ -19657,6 +19657,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"uxc" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "uxh" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
@@ -20088,6 +20092,10 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"voU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
 "vpu" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -31469,7 +31477,7 @@ aDv
 aDv
 aDv
 aDv
-aDv
+uxc
 aDv
 aDv
 aOB
@@ -54503,7 +54511,7 @@ aGz
 aHM
 aGz
 eaJ
-aGz
+voU
 aHM
 aMq
 eaJ

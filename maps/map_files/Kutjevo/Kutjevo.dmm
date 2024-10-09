@@ -1433,6 +1433,10 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"cjx" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
 "cjC" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -14613,6 +14617,10 @@
 "vxe" = (
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/colony_South)
+"vxJ" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
 "vxM" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -20730,7 +20738,7 @@ gAM
 gAM
 gAM
 wGH
-wGH
+cjx
 wGH
 wGH
 wGH
@@ -21795,7 +21803,7 @@ lKk
 lKk
 lKk
 lKk
-lKk
+vxJ
 lKk
 lKk
 lKk

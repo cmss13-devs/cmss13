@@ -45658,6 +45658,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_west_street)
+"xAY" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "xAZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -47159,6 +47163,10 @@
 "ykL" = (
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
+"ykP" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
 "ykR" = (
 /obj/structure/bed/chair/comfy,
 /obj/item/stack/sheet/wood,
@@ -53177,7 +53185,7 @@ pxb
 pxb
 pxb
 pxb
-pxb
+xAY
 pwa
 xqp
 pwa
@@ -77501,7 +77509,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+ykP
 eXG
 eXG
 wPN

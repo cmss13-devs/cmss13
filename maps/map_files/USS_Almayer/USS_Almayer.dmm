@@ -52364,12 +52364,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
-"rLt" = (
-/obj/structure/machinery/computer/spy_camera{
-	spy_faction = "USCM"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "rLv" = (
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4;
@@ -88139,7 +88133,7 @@ alX
 aqN
 avY
 alX
-rLt
+alX
 paL
 euV
 mJu

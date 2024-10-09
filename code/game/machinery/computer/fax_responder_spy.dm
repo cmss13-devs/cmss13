@@ -1,5 +1,5 @@
 /obj/structure/machinery/computer/spy_camera
-	name = "monitoring computer"
+	name = "remote monitoring computer"
 
 	icon_state = "terminal"
 
@@ -116,8 +116,8 @@
 
 /mob/hologram/spy_camera
 	name = "Spy Camera"
-	action_icon_state = "queen_exit"
 	motion_sensed = FALSE
+	icon_state = "spycam"
 
 	color = "#10948d"
 
@@ -140,8 +140,19 @@
 
 	spy_range = console.spy_range
 	spy_faction = console.spy_faction
-	faction = console.spy_faction
-	name = "Spy Camera ([spy_faction])"
+	faction = spy_faction
+
+	switch(spy_faction)
+		if(FACTION_MARINE, FACTION_MARSHAL)
+			color = "#0947bb"
+		if(FACTION_CLF)
+			color = "#717fbd"
+		if(FACTION_UPP)
+			color = "#0f3d11"
+		if(FACTION_TWE)
+			color = "#b350c0"
+		if(FACTION_WY)
+			color = "#b6b6b6"
 
 	// Make sure to turn off any previous overwatches
 	spy_operator.overwatch(stop_overwatch = TRUE)
@@ -286,11 +297,31 @@
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_SPYCAMS]
 	hud.add_to_hud(src)
 
-/mob/hologram/spy_camera/add_to_all_mob_huds()
+/mob/hologram/spy_camera/remove_from_all_mob_huds()
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_SPYCAMS]
 	hud.remove_from_hud(src)
 
 /mob/hologram/spy_camera/med_hud_set_status()
 	var/image/holder = hud_list[SPYCAM_HUD]
-	holder.icon_state = "spycam"
+	holder.icon_state = "hudeye"
 	holder.color = color
+
+
+
+/obj/structure/machinery/computer/spy_camera/uscm
+	spy_faction = FACTION_MARINE
+
+/obj/structure/machinery/computer/spy_camera/wy
+	spy_faction = FACTION_WY
+
+/obj/structure/machinery/computer/spy_camera/twe
+	spy_faction = FACTION_TWE
+
+/obj/structure/machinery/computer/spy_camera/clf
+	spy_faction = FACTION_CLF
+
+/obj/structure/machinery/computer/spy_camera/upp
+	spy_faction = FACTION_UPP
+
+/obj/structure/machinery/computer/spy_camera/cmb
+	spy_faction = FACTION_MARSHAL

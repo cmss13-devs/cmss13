@@ -305,6 +305,7 @@
 	if(job_list)
 		for(var/job_from_list in job_list)
 			if(squad)
+				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
 				LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
 				LAZYREMOVE(GLOB.latejoin_by_squad[squad][job_from_list], src)
 			else

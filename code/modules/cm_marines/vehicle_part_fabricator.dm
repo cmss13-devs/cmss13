@@ -86,10 +86,9 @@
 		busy = TRUE
 		var/datum/build_queue_entry/entry = build_queue[1]
 
-		if(ispath(entry.item, /obj/structure/ship_ammo/sentry))
-			omnisentry_price += omnisentry_price_scale
+		var/is_omnisentry = ispath(entry.item, /obj/structure/ship_ammo/sentry)
 
-		if(get_point_store() < entry.cost)
+		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
 			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
 				balloon_alert_to_viewers("out of points - printing paused!")
 				visible_message(SPAN_WARNING("[src] flashes a warning light."))
@@ -97,8 +96,13 @@
 			busy = FALSE
 			return
 
+		if(is_omnisentry)
+			spend_point_store(omnisentry_price)
+			omnisentry_price += omnisentry_price_scale
+		else
+			spend_point_store(entry.cost)
+
 		visible_message(SPAN_NOTICE("[src] starts printing something."))
-		spend_point_store(entry.cost)
 		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)

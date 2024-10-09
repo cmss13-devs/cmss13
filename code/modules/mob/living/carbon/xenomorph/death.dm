@@ -30,8 +30,8 @@
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
-			if(XQ.observed_mob)
-				XQ.overwatch(XQ.observed_mob, TRUE)
+			if(XQ.observed_xeno)
+				XQ.overwatch(XQ.observed_xeno, TRUE)
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 

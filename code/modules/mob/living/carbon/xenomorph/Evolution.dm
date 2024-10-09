@@ -181,7 +181,7 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
-	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_mob == src)
+	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
 
 	src.transfer_observers_to(new_xeno)

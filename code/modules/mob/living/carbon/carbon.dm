@@ -14,9 +14,6 @@
 	if(stat != CONSCIOUS)
 		remove_all_indicators()
 
-	if(stat != DEAD)
-		handle_overwatch()
-
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
 	view_change_sources = null

@@ -223,6 +223,7 @@
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
+	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
@@ -698,7 +699,7 @@
 	hive?.remove_xeno(src)
 	remove_from_all_mob_huds()
 
-	observed_mob = null
+	observed_xeno = null
 	wear_suit = null
 	head = null
 	r_store = null

@@ -807,7 +807,7 @@
 
 		var/total_shield_amount = shield_amount + bonus_shield
 
-		if (X.observed_mob != null)
+		if (X.observed_xeno != null)
 			to_chat(X, SPAN_XENOHIGHDANGER("We cannot shield [targetXeno] as effectively over distance!"))
 			total_shield_amount = total_shield_amount/4
 			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
@@ -863,7 +863,7 @@
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
-		if (X.observed_mob != null)
+		if (X.observed_xeno != null)
 			to_chat(X, SPAN_XENOHIGHDANGER("We cannot rejuvenate targets through overwatch!"))
 			return
 
@@ -896,7 +896,7 @@
 	if(!istype(behavior))
 		return
 
-	if(X.observed_mob != null)
+	if(X.observed_xeno != null)
 		to_chat(X, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
 		return
 

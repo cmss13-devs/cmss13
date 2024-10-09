@@ -336,15 +336,15 @@
 	var/mob/living/carbon/xenomorph/queen/X = owner
 	if(!X.check_state())
 		return
-	if(X.observed_mob)
-		var/mob/living/carbon/xenomorph/target = X.observed_mob
+	if(X.observed_xeno)
+		var/mob/living/carbon/xenomorph/target = X.observed_xeno
 		if(target.stat != DEAD && target.client)
 			if(X.check_plasma(plasma_cost))
 				var/input = stripped_input(X, "This message will be sent to the overwatched xeno.", "Queen Order", "")
 				if(!input)
 					return
 				var/queen_order = SPAN_XENOANNOUNCE("<b>[X]</b> reaches you:\"[input]\"")
-				if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_mob != target || target.stat == DEAD)
+				if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != target || target.stat == DEAD)
 					return
 				if(target.client)
 					X.use_plasma(plasma_cost)

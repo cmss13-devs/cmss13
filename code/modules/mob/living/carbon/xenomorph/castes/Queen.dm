@@ -536,8 +536,8 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/queen/Destroy()
-	if(observed_mob)
-		overwatch(observed_mob, TRUE)
+	if(observed_xeno)
+		overwatch(observed_xeno, TRUE)
 
 	if(hive && hive.living_xeno_queen == src)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
@@ -557,9 +557,9 @@
 			playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
 			breathing_counter = 0 //Reset the counter
 
-		if(observed_mob)
-			if(observed_mob.stat == DEAD || QDELETED(observed_mob))
-				overwatch(observed_mob, TRUE)
+		if(observed_xeno)
+			if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
+				overwatch(observed_xeno, TRUE)
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
 			egg_amount += 0.07 //one egg approximately every 30 seconds
@@ -906,8 +906,8 @@
 /mob/living/carbon/xenomorph/queen/proc/dismount_ovipositor(instant_dismount)
 	set waitfor = 0
 	if(!instant_dismount)
-		if(observed_mob)
-			overwatch(observed_mob, TRUE)
+		if(observed_xeno)
+			overwatch(observed_xeno, TRUE)
 		flick("ovipositor_dismount", src)
 		sleep(5)
 	else
@@ -923,8 +923,8 @@
 	bubble_icon_y_offset = initial(bubble_icon_y_offset)
 	new /obj/ovipositor(loc)
 
-	if(observed_mob)
-		overwatch(observed_mob, TRUE)
+	if(observed_xeno)
+		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon

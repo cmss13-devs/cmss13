@@ -482,7 +482,7 @@
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"] && user.tracked_marker)
-		if(user.observed_mob == user.tracked_marker)
+		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
 			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))

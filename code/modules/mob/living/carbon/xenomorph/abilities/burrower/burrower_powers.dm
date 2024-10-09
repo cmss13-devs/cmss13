@@ -56,8 +56,8 @@
 		return
 	if(world.time > burrow_timer && !tunnel)
 		burrow_off()
-	if(observed_mob)
-		overwatch(observed_mob, TRUE)
+	if(observed_xeno)
+		overwatch(observed_xeno, TRUE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 

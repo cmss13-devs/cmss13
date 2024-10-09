@@ -154,9 +154,6 @@
 		if(FACTION_WY)
 			color = "#b6b6b6"
 
-	// Make sure to turn off any previous overwatches
-	spy_operator.overwatch(stop_overwatch = TRUE)
-
 	. = ..()
 
 	name = "Spy Camera ([spy_faction])"
@@ -180,8 +177,6 @@
 /mob/hologram/spy_camera/handle_move(mob/living/carbon/human/spy_operator, NewLoc, direct)
 	if(is_watching && (can_spy_turf(src, is_watching.loc) & COMPONENT_TURF_DENY_MOVEMENT))
 		return COMPONENT_OVERRIDE_MOVE
-
-	spy_operator.overwatch(stop_overwatch = TRUE)
 
 	return ..()
 
@@ -259,17 +254,16 @@
 	if(!mods["ctrl"])
 		return
 
+	/*
 	if(is_spy_faction(target_atom))
 		var/mob/living/carbon/target_mob = target_atom
-		spy_operator.overwatch(target_mob)
 		return COMPONENT_INTERRUPT_CLICK
-
+	*/
+	
 	if(!(can_spy_turf(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
 	forceMove(T)
-	if(is_watching)
-		spy_operator.overwatch(stop_overwatch = TRUE)
 
 	return COMPONENT_INTERRUPT_CLICK
 

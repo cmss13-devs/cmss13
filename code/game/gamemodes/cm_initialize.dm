@@ -165,6 +165,7 @@ Additional game mode variables.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
 				player.mind.setup_human_stats()
 				player.faction = FACTION_YAUTJA
+				player.faction_group = FACTION_LIST_YAUTJA
 				players += player.mind
 	return players
 

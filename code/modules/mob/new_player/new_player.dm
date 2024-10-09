@@ -151,7 +151,7 @@
 				if(SSticker.mode.check_xeno_late_join(src))
 					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 					if(!new_xeno)
-						if(tgui_alert(src, "Do you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
+						if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
 							if(!client)
 								return TRUE
 							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))

@@ -83,3 +83,35 @@
   - rscadd: Marines can now (pathetically attempt to) shove xenos.
   nivrak:
   - bugfix: fixes pred round chance being borked
+2024-10-08:
+  Drathek:
+  - rscadd: Added xeno queue information when attempting a xeno late join while inelgible
+      (from the lobby and first time after death)
+  - qol: Streamlined the xeno late join process from lobby (offers observation and
+      sets xeno preference)
+  - ui: Changed some alerts on main menu to tgui_alert
+  PoZe:
+  - rscadd: ' Added ability to set Dropship Sentries and MG modules on dropship to
+      auto deploy after each landing. Default set to off, can be enabled/disable in
+      the equipment menu of the sentry via dropship equipment computer.'
+  - rscadd: Added visual display in Gunship ammo for all ammo types so that you can
+      tell how much is left by looking at it on the ground.
+  - qol: Added ability to queue up items to be fabricated in dropship fabricator as
+      well as ability to remove items from the queue too. Crew will no longer need
+      to babysit the fabricator to produce multiple things as soon as possible.
+  - qol: Made Sentry and MG dropship equipment UI a bit more consistent
+  - rscadd: Added visual display of how many mini rockets loaded into mini rocket
+      launcher when attached to the wing.
+  - balance: Increased dropship spotlight module brightness from 11 tiles to 14 tiles.
+  - rscadd: Added external lights to all dropships. The red and green wing lights
+      that all aircraft usually have and two blue lights on the inner part of the
+      tail to illuminate the unloading area
+  - code_imp: Misc code cleanup in dropship equipment and ammo code
+  - refactor: Moved dropship equipment and ammo into their own sprite files
+2024-10-09:
+  CapCamIII:
+  - bugfix: The price for the type 73 and np92 magazine in UPP vendors are fixed.
+  cuberound:
+  - maptweak: replaces hangar banshee with launchbay and omnisentry
+  realforest2001:
+  - rscadd: Added new player markers for SEAs/Mentors

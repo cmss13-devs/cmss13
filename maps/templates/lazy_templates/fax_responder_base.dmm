@@ -7,13 +7,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
 	phone_id = "UPP Communications Officer";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "green"
 	},
 /turf/open/floor/wood/ship,
@@ -66,13 +62,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
 	phone_id = "TWE Communications Officer";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "yellow"
 	},
 /turf/open/floor/wood/ship,
@@ -203,13 +195,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
 	phone_id = "USCM-HC Communications Officer";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "blue"
 	},
 /turf/open/floor/wood/ship,
@@ -424,13 +412,10 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
 	phone_id = "WY Communications Executive";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders")
+	
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -488,13 +473,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Colonial Marshal","Fax Responders");
 	phone_id = "CMB Deputy Operations Officer";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "green"
 	},
 /turf/open/floor/wood/ship,
@@ -508,13 +489,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
 	phone_id = "Provost Communications Officer";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "red"
 	},
 /turf/open/floor/wood/ship,
@@ -591,13 +568,10 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
 	phone_id = "Free Press Relay";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders")
+	
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -636,13 +610,9 @@
 /obj/item/folder/black{
 	pixel_x = 12
 	},
-/obj/structure/transmitter/rotary{
-	pixel_x = -6;
-	pixel_y = 6;
+/obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
 	phone_id = "CLF Information Correspondant";
-	phone_category = "Comms Relay";
-	networks_receive = list("Fax Responders");
 	phone_color = "orange"
 	},
 /turf/open/floor/wood/ship,

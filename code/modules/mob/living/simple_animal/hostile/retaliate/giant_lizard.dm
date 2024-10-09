@@ -490,11 +490,7 @@
 	//if we're hungry and we don't have already have our eyes on a snack, try eating food if possible
 	if(tameable && !food_target && COOLDOWN_FINISHED(src, food_cooldown))
 		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
-			var/is_meat = FALSE
-			for(var/datum/reagent/nutriment/meat/meat in food.reagents.reagent_list)
-				if(istype(meat))
-					is_meat = TRUE
-					break
+			var/is_meat = locate(/datum/reagent/nutriment/meat) in food.reagents.reagent_list
 
 			if(is_type_in_list(food, acceptable_foods) || is_meat)
 				food_target = food
@@ -628,11 +624,13 @@
 	next_move = isturf(target) ? world.time + 4 : world.time + 8
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/DestroySurroundings()
-	if(prob(break_stuff_probability))
-		for(var/obj/structure/obstacle in view(1, src))
-			if(is_type_in_list(obstacle, destruction_targets))
-				AttackingTarget(obstacle)
-				return
+	if(!prob(break_stuff_probability))
+		return
+
+	for(var/obj/structure/obstacle in view(1, src))
+		if(is_type_in_list(obstacle, destruction_targets))
+			AttackingTarget(obstacle)
+			return
 
 //no longer checks for distance with ListTargets(). thershold for losing targets is increased, due to needing range for skirmishing
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackTarget()

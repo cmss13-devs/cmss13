@@ -271,8 +271,10 @@
 			if(squad)
 				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
 				LAZYADD(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+				LAZYADD(GLOB.latejoin_by_squad[squad][job_from_list], src)
 			else
 				LAZYADD(GLOB.spawns_by_job[job_from_list], src)
+				LAZYADD(GLOB.latejoin_by_job[job_from_list], src)
 	else
 		return
 

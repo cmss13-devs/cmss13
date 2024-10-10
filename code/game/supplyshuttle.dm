@@ -23,10 +23,16 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 
+/area/supply/station/upp
+	name = "Supply Shuttle UPP"
+
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
+
+/area/supply/dock/upp
+	name = "Supply Shuttle UPP"
 
 /area/supply/station_vehicle
 	name = "Vehicle ASRS"
@@ -392,7 +398,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/approvedby = null
 
 /datum/controller/supply
-	var/supply_elevator
+	var/turf/supply_elevator
 	var/processing = 1
 	var/processing_interval = 30 SECONDS
 	var/iteration = 0
@@ -465,7 +471,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Deep Storage",
 		"Miscellaneous"
 		)
-
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0

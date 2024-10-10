@@ -137,7 +137,7 @@
 /area/centcom/living)
 "dw" = (
 /turf/open/floor/almayer/test_floor5,
-/area/supply/dock/upp)
+/area/supply/dock/uscm)
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
@@ -159,7 +159,7 @@
 /area/space)
 "ej" = (
 /turf/open/floor/plating/bare_catwalk,
-/area/supply/dock/upp)
+/area/supply/dock/uscm)
 "ev" = (
 /turf/open/floor/carpet/edge/northwest,
 /area/centcom/living)

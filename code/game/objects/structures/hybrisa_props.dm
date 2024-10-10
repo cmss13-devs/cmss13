@@ -2444,6 +2444,10 @@
 	name = "neon sign"
 	icon_state = "miscvert6_on"
 
+/obj/structure/prop/hybrisa/signs/miscvert7sign
+	name = "neon sign"
+	icon_state = "miscvert7_on"
+
 /obj/structure/prop/hybrisa/signs/cafesign
 	name = "cafe sign"
 	icon_state = "cafe_on"

@@ -86,7 +86,7 @@
 /obj/item/weapon/shield/montage
 	name = "N30 montage shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
-	icon = 'core_ru/icons/mob/humans/st_equip.dmi'
+	icon = 'core_ru/icons/obj/items/st_spec.dmi'
 	icon_state = "metal_st"
 	item_icons = list(
 		WEAR_L_HAND = 'core_ru/icons/mob/humans/onmob/items_lefthand_1.dmi',

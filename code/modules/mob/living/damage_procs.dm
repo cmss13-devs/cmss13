@@ -42,6 +42,9 @@
 	pain?.apply_pain(damage, damagetype)
 	if(damagetype != HALLOSS && damage > 0)
 		life_damage_taken_total += damage
+		//RUCM START
+		SEND_SIGNAL(src, COMSIG_DAMAGE_TAKEN, damage)
+		//RUCM END
 	updatehealth()
 	return 1
 

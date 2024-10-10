@@ -794,6 +794,10 @@
 	if(new_xeno.client)
 		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 			window_flash(new_xeno.client)
+//RUCM START
+		if(new_xeno.client?.player_data?.battlepass)
+			SSbattlepass.xeno_battlepass_earners |= new_xeno.client.player_data.battlepass
+//RUCM END
 
 	stored_larva--
 	hive_ui.update_burrowed_larva()

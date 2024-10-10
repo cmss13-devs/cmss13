@@ -60,7 +60,7 @@ BSQL_PROTECT_DATUM(/datum/entity/discord_rank)
 	var/player_id
 	var/skin_name
 	var/skins_db
-	var/list/skin = list()
+	var/list/mapped_skins = list()
 
 BSQL_PROTECT_DATUM(/datum/entity/skin)
 
@@ -76,12 +76,12 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 /datum/entity_meta/skin/map(datum/entity/skin/skin, list/values)
 	..()
 	if(values["skins_db"])
-		skin.skin = json_decode(values["skins_db"])
+		skin.mapped_skins = json_decode(values["skins_db"])
 
 /datum/entity_meta/skin/unmap(datum/entity/skin/skin)
 	. = ..()
-	if(length(skin.skin))
-		.["skins_db"] = json_encode(skin.skin)
+	if(length(skin.mapped_skins))
+		.["skins_db"] = json_encode(skin.mapped_skins)
 
 /datum/donator_info
 	var/datum/entity/player/player_datum
@@ -123,18 +123,15 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 /obj/structure/painting_table/attackby(obj/item/item as obj, mob/user as mob)
 	if(user?.client?.player_data?.donator_info)
 		if(user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
-			handle_skinning(item, user)
+			handle_skinning_item(item, user)
 			return
 	. = ..()
 
-/proc/handle_skinning(obj/item, mob/user)
+/proc/handle_skinning_item(obj/item, mob/user)
 	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[item.type]"]
 	if(!skin_selection)
 		return
-	var/list/skins_choice = list()
-	for(var/i in skin_selection.skin)
-		skins_choice += skin_selection.skin[i]
-	var/skin = tgui_input_list(usr, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skins_choice)
+	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
 	if(!skin)
 		to_chat(user, SPAN_WARNING("Vending base skin."))
 		return
@@ -142,7 +139,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	item.skin(skin)
 
 //COMPACT VERSION << ALL IN ONE >>
-/obj/proc/skin(S)
+/obj/proc/skin(skin)
 	return
 
 //HELMET
@@ -195,3 +192,128 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 //	attachment_recoloring.alpha = 180
 //	attachment_recoloring.blend_mode = BLEND_ADD|BLEND_INSET_OVERLAY|BLEND_SUBTRACT
 	update_icon()
+
+/mob/living/carbon/xenomorph
+	var/selected_skin
+	var/icon_skin
+	var/atom/movable/vis_obj/xeno_skin/skin_icon_holder
+
+/proc/handle_skinning_xeno(mob/living/carbon/xenomorph/xeno, mob/user)
+	if(user?.client?.player_data?.donator_info)
+		if(user.client.player_data.donator_info.skins["[xeno.type]"] && !user.client.player_data.donator_info.skins_used["[xeno.type]"])
+			if(xeno.selected_skin)
+				return
+		else
+			xeno.selected_skin = null
+			return
+	else
+		xeno.selected_skin = null
+		return
+
+	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[xeno.type]"]
+	if(!skin_selection)
+		return
+	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
+	if(!skin)
+		return
+//	user.client.player_data.donator_info.skins_used["[xeno.type]"] = skin_selection // xeno skins for now reusable
+	xeno.skin(skin)
+
+/atom/movable/vis_obj/xeno_skin
+
+/mob/living/carbon/xenomorph/proc/handle_special_skin_states()
+	return FALSE
+
+/mob/living/carbon/xenomorph/defender/handle_special_skin_states()
+	. = ..()
+	if(fortify)
+		return "fortify_[selected_skin]"
+	if(crest_defense)
+		return "crest_[selected_skin]"
+
+/mob/living/carbon/xenomorph/queen/handle_special_skin_states()
+	. = ..()
+	if(ovipositor)
+		return "ovipositor_[selected_skin]"
+
+/mob/living/carbon/xenomorph/proc/update_skin()
+	if(!skin_icon_holder)
+		return
+
+	if(selected_skin)
+		if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				skin_icon_holder.icon_state = "[lowertext(caste.caste_type)]_[selected_skin]_rest"
+			else
+				skin_icon_holder.icon_state = "[lowertext(caste.caste_type)]_[selected_skin]_downed"
+		else if(!handle_special_state())
+			skin_icon_holder.icon_state = "[lowertext(caste.caste_type)]_[selected_skin]"
+		else
+			skin_icon_holder.icon_state = handle_special_skin_states()
+	else
+		skin_icon_holder.icon_state = "none"
+
+/mob/living/carbon/xenomorph/proc/skin(skin)
+	selected_skin = skin
+	update_skin()
+	return
+
+/mob/living/carbon/xenomorph/queen
+	icon_skin = 'core_ru/icons/custom/mob/xenos/queen.dmi'
+
+/mob/living/carbon/xenomorph/predalien
+	icon_skin = 'core_ru/icons/custom/mob/xenos/predalien.dmi'
+
+/mob/living/carbon/xenomorph/boiler
+	icon_skin = 'core_ru/icons/custom/mob/xenos/boiler.dmi'
+
+/mob/living/carbon/xenomorph/praetorian
+	icon_skin = 'core_ru/icons/custom/mob/xenos/praetorian.dmi'
+
+/mob/living/carbon/xenomorph/ravager
+	icon_skin = 'core_ru/icons/custom/mob/xenos/ravager.dmi'
+
+/mob/living/carbon/xenomorph/crusher
+	icon_skin = 'core_ru/icons/custom/mob/xenos/crusher.dmi'
+
+/mob/living/carbon/xenomorph/hivelord
+	icon_skin = 'core_ru/icons/custom/mob/xenos/hivelord.dmi'
+
+/mob/living/carbon/xenomorph/warrior
+	icon_skin = 'core_ru/icons/custom/mob/xenos/warrior.dmi'
+
+/mob/living/carbon/xenomorph/carrier
+	icon_skin = 'core_ru/icons/custom/mob/xenos/carrier.dmi'
+
+/mob/living/carbon/xenomorph/burrower
+	icon_skin = 'core_ru/icons/custom/mob/xenos/burrower.dmi'
+
+/mob/living/carbon/xenomorph/spitter
+	icon_skin = 'core_ru/icons/custom/mob/xenos/spitter.dmi'
+
+/mob/living/carbon/xenomorph/lurker
+	icon_skin = 'core_ru/icons/custom/mob/xenos/lurker.dmi'
+
+/mob/living/carbon/xenomorph/drone
+	icon_skin = 'core_ru/icons/custom/mob/xenos/drone.dmi'
+
+/mob/living/carbon/xenomorph/defender
+	icon_skin = 'core_ru/icons/custom/mob/xenos/defender.dmi'
+
+/mob/living/carbon/xenomorph/sentinel
+	icon_skin = 'core_ru/icons/custom/mob/xenos/sentinel.dmi'
+
+/mob/living/carbon/xenomorph/runner
+	icon_skin = 'core_ru/icons/custom/mob/xenos/runner.dmi'
+
+/mob/living/carbon/xenomorph/larva/predalien
+	icon_skin = 'core_ru/icons/custom/mob/xenos/predalien_larva.dmi'
+
+/mob/living/carbon/xenomorph/larva
+	icon_skin = 'core_ru/icons/custom/mob/xenos/larva.dmi'
+
+/mob/living/carbon/xenomorph/lesser_drone
+	icon_skin = 'core_ru/icons/custom/mob/xenos/lesser_drone.dmi'
+
+/mob/living/carbon/xenomorph/facehugger
+	icon_skin = 'core_ru/icons/custom/mob/xenos/facehugger.dmi'

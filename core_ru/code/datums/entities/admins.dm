@@ -285,6 +285,7 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_holder)
 		admin = admins[length(admins)]
 
 	if(!admin_client.admin_holder)
+		sleep(5 SECONDS)// If you do it too fast, you will fuck yourself, or gain aorta rupture
 		GLOB.admin_ranks = load_ranks()
 		GLOB.db_admin_datums = load_admins()
 

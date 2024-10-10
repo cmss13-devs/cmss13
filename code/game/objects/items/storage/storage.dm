@@ -885,10 +885,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(isturf(target) && get_dist(src, target) <= 1 && storage_flags & STORAGE_CLICK_EMPTY)
 		empty(user, target)
 
-/obj/item/storage/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics)
+/obj/item/storage/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics, tts_heard_list)
 	// Whatever is stored in /storage/ substypes should ALWAYS be an item
 	for (var/obj/item/I as anything in hearing_items)
-		I.hear_talk(M, msg, verb, speaking, italics)
+		I.hear_talk(M, msg, verb, speaking, italics, tts_heard_list = tts_heard_list)
 
 /obj/item/proc/get_storage_cost() //framework for adjusting storage costs
 	if (storage_cost)

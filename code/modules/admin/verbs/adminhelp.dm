@@ -249,6 +249,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		send_message_to_external(msg, urgent)
 	GLOB.ahelp_tickets.active_tickets += src
 
+/*
 /datum/admin_help/proc/format_embed_discord(message)
 	var/datum/discord_embed/embed = new()
 	embed.title = "Ticket #[id]"
@@ -289,7 +290,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		embed.url = ahelp_link
 	return embed
 
-/*
 /datum/admin_help/proc/send_message_to_external(message, urgent = FALSE)
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
@@ -316,6 +316,46 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			send2adminchat_webhook(embed, urgent = FALSE)
 			webhook_sent = WEBHOOK_NON_URGENT
 */
+//RUCM START
+/datum/admin_help/proc/format_embed_discord(message)
+	. = list()
+	.["title"] = "Ticket #[id]"
+	.["description"] = "<byond://[world.internet_address]:[world.port]>"
+	.["author"] = key_name(initiator_ckey)
+	var/round_state
+	switch(SSticker.current_state)
+		if(GAME_STATE_STARTUP, GAME_STATE_PREGAME, GAME_STATE_SETTING_UP)
+			round_state = "Round has not started"
+		if(GAME_STATE_PLAYING)
+			round_state = "Round is ongoing."
+		if(GAME_STATE_FINISHED)
+			round_state = "Round has ended"
+	var/list/admin_counts = get_admin_counts(R_BAN)
+	var/stealth_admins = jointext(admin_counts["stealth"], ", ")
+	var/afk_admins = jointext(admin_counts["afk"], ", ")
+	var/other_admins = jointext(admin_counts["noflags"], ", ")
+	var/admin_text = ""
+	var/player_count = "**Total**: [length(GLOB.clients)]"
+	if(stealth_admins)
+		admin_text += "**Stealthed**: [stealth_admins]\n"
+	if(afk_admins)
+		admin_text += "**AFK**: [afk_admins]\n"
+	if(other_admins)
+		admin_text += "**Lacks +BAN**: [other_admins]\n"
+	.["fields"] = list(
+		"CKEY" = initiator_ckey,
+		"PLAYERS" = player_count,
+		"ROUND STATE" = round_state,
+		"ROUND ID" = GLOB.round_id,
+		"ROUND TIME" = duration2text(),
+		"MESSAGE" = message,
+		"ADMINS" = admin_text,
+	)
+	if(CONFIG_GET(string/adminhelp_ahelp_link))
+		var/ahelp_link = replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", SSperf_logging.round?.id)
+		ahelp_link = replacetext(ahelp_link, "$TID", id)
+		.["url"] = ahelp_link
+
 /datum/admin_help/proc/send_message_to_external(message)
 	var/list/adm = get_admin_counts(R_BAN)
 	var/list/activemins = adm["present"]
@@ -323,13 +363,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	heard_by_no_admins = TRUE
-	var/extra_message = CONFIG_GET(string/ahelp_message)
-	var/list/actions = format_embed_discord(message)
-	actions["content"] = extra_message
+	var/list/embed = format_embed_discord(message)
+	embed["content"] = CONFIG_GET(string/ahelp_message)
 	if(admin_number_present <= 0)
 		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
-		actions["footer"] = "This player sent an ahelp when no admins are available and also requested an admin"
-	REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "ahelp", "embed" = actions)
+		embed["footer"] = "This player sent an ahelp when no admins are available and also requested an admin"
+	REDIS_PUBLISH("byond.admin", "type" = "admin", "state" = "ahelp", "embed" = embed)
+//RUCM END
 
 /proc/send2adminchat_webhook(message_or_embed, urgent)
 	var/webhook = CONFIG_GET(string/urgent_adminhelp_webhook_url)

@@ -104,6 +104,9 @@
 		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
+//RUCM START
+		SEND_SIGNAL(xeno, COMSIG_XENO_PLANTED_FRUIT, xeno)
+//RUCM END
 		if(!fruit)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
 			return

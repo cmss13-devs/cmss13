@@ -1107,6 +1107,10 @@
 	if (!istype(species))
 		species = GLOB.all_species["Human"]
 
+	//RUCM START
+	has_tts_voice = species.has_tts_voice
+	//RUCM END
+
 	if(oldspecies)
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)

@@ -162,6 +162,11 @@
 /proc/announcement_helper(message, title, list/targets, sound_to_play)
 	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
 		return
+
+	//RUCM START
+	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), usr, html_decode(message), "jaina", null, list(targets, list(), list(), list()), FALSE, 50)
+	//RUCM END
+
 	for(var/mob/T in targets)
 		if(istype(T, /mob/new_player))
 			continue

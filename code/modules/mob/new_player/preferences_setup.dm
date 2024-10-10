@@ -6,6 +6,11 @@
 		else
 			gender = FEMALE
 
+	//RUCM START
+	if(SStts.tts_enabled && H.has_tts_voice)
+		H.tts_voice = SAFEPICK(SStts.available_speakers & (H.gender == MALE ? GLOB.tts_voices_men_whitelists : GLOB.tts_voices_woman_whitelists))
+	//RUCM END
+
 	skin_color = random_skin_color()
 	body_type = random_body_type()
 	body_size = random_body_size()
@@ -188,10 +193,10 @@
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
-	
+
 	preview_dummy.blocks_emissive = FALSE
 	preview_dummy.update_emissive_block()
-	
+
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)

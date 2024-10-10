@@ -21,7 +21,7 @@
 	. = ..()
 	flags_atom |= USES_HEARING
 
-/obj/item/implant/neurostim/hear_talk(mob/M as mob, msg)
+/obj/item/implant/neurostim/hear_talk(mob/M as mob, msg, tts_heard_list)
 	hear(msg)
 	return
 

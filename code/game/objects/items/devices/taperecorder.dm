@@ -162,7 +162,7 @@
 	return
 
 
-/obj/item/device/taperecorder/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics)
+/obj/item/device/taperecorder/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics, tts_heard_list)
 	. = ..()
 	if(mytape && recording)
 		mytape.timestamp += mytape.used_capacity

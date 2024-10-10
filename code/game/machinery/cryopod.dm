@@ -523,11 +523,11 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
-/obj/structure/machinery/cryopod/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+/obj/structure/machinery/cryopod/hear_talk(mob/living/sourcemob, message, verb, language, italics, tts_heard_list)
 	if(!QDELETED(occupant) && istype(occupant))
-		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics, tts_heard_list = tts_heard_list)
 	else
-		..(sourcemob, message, verb, language, italics)
+		..(sourcemob, message, verb, language, italics, tts_heard_list = tts_heard_list)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 //clickdrag code - "resist to get out" code is in living_verbs.dm

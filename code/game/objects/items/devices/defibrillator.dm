@@ -1,3 +1,4 @@
+/* RUCM CHANGE
 /obj/item/device/defibrillator
 	name = "emergency defibrillator"
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
@@ -234,6 +235,9 @@
 		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
 		user.life_revives_total++
+//RUCM START
+		SEND_SIGNAL(user, COMSIG_HUMAN_USED_DEFIB, H)
+//RUCM END
 		H.handle_revive()
 		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
@@ -269,3 +273,4 @@
 	item_state = "defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99
+*/

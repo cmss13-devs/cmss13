@@ -1506,10 +1506,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 // Disable by commenting/undefining the line below!
 #define OBJECTS_PROXY_SPEECH
 #ifdef OBJECTS_PROXY_SPEECH
-/proc/proxy_object_heard(obj/object, mob/living/sourcemob, mob/living/targetmob, message, verb, language, italics)
+/proc/proxy_object_heard(obj/object, mob/living/sourcemob, mob/living/targetmob, message, verb, language, italics, tts_heard_list)
 	if(QDELETED(sourcemob) || !istype(sourcemob) || QDELETED(targetmob) || !istype(targetmob) || (targetmob.stat == DEAD))
 		return
-	targetmob.hear_say(message, verb, language, "", italics, sourcemob) // proxies speech itself to the mob
+	targetmob.hear_say(message, verb, language, "", italics, sourcemob, tts_heard_list = tts_heard_list) // proxies speech itself to the mob
 	if(targetmob && targetmob.client && targetmob.client.prefs && !targetmob.client.prefs.lang_chat_disabled \
 	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
 		sourcemob.langchat_display_image(targetmob) // strap langchat display on

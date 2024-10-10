@@ -139,7 +139,7 @@
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, langchat_drop_image), language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/atom/proc/langchat_long_speech(message, list/listeners, language)
+/atom/proc/langchat_long_speech(message, list/listeners, language, tts_heard_list)
 	langchat_drop_image()
 	langchat_make_image()
 
@@ -162,6 +162,9 @@
 	for(var/mob/M in langchat_listeners)
 		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
+			//RUCM START
+			tts_heard_list[1] += M
+			//RUCM END
 
 	if(isturf(loc))
 		langchat_image.loc = src

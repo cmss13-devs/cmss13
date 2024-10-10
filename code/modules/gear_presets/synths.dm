@@ -21,6 +21,11 @@
 	var/final_name = "David"
 	if(new_human.client && new_human.client.prefs)
 		final_name = new_human.client.prefs.synthetic_name
+		//RUCM START
+		if(SStts.tts_enabled)
+			new_human.tts_voice = new_human.client.prefs.synth_voice
+			new_human.tts_voice_pitch = new_human.client.prefs.synth_pitch
+		//RUCM END
 		if(!final_name || final_name == "Undefined")
 			final_name = "David"
 	new_human.change_real_name(new_human, final_name)

@@ -527,7 +527,12 @@
 		else
 			direct_hit = TRUE
 			if(firer)
+/*
 				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, L)
+*/
+//RUCM START
+				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, L, src)
+//RUCM END
 
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
@@ -1061,6 +1066,9 @@
 			shoot_mob.track_damage(P.weapon_cause_data.cause_name, src, damage)
 
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
+//RUCM START
+	SEND_SIGNAL(P.firer, COMSIG_FIRER_PROJECTILE_DIRECT_HIT, P)
+//RUCM END
 
 //Deal with xeno bullets.
 /mob/living/carbon/xenomorph/bullet_act(obj/projectile/P)

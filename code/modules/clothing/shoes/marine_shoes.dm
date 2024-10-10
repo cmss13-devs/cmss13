@@ -30,10 +30,18 @@
 	drop_sound = "armorequip"
 
 /obj/item/clothing/shoes/marine/update_icon()
+/*
 	if(stored_item)
 		icon_state = "[initial(icon_state)]-1"
 	else
 		icon_state = initial(icon_state)
+*/
+//RUCM START
+	if(stored_item)
+		icon_state = "[base_icon_state]-1"
+	else
+		icon_state = base_icon_state
+//RUCM END
 
 /obj/item/clothing/shoes/marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet

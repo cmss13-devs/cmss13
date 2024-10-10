@@ -1714,31 +1714,34 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
-		//Rail,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/mini/hunting,
 		//Under,
 		/obj/item/attachable/flashlight/grip,
 		//Stock,
-		/obj/item/attachable/stock/carbine,
 		/obj/item/attachable/stock/carbine/wood,
 		/obj/item/attachable/stock/carbine/wood/tactical,
 	)
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/tactical, /obj/item/attachable/suppressor)
-	random_spawn_chance = 100
-	random_spawn_rail = list(
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/mini/hunting,
-	)
-	random_under_chance = 50
+	random_under_chance = 100
 	random_spawn_under = list(/obj/item/attachable/flashlight/grip)
+
+/obj/item/weapon/gun/rifle/l42a/abr40/tactical/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.hidden = TRUE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
+
+/obj/item/weapon/gun/rifle/l42a/abr40/tactical/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_burst_amount(0)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
 
 //=ROYAL MARINES=\\
 

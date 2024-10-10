@@ -9897,7 +9897,7 @@
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/req)
 "bsK" = (
-/obj/effect/landmark/supply_elevator/upp,
+/obj/effect/landmark/supply_elevator,
 /turf/open/floor/almayer/empty/requisitions,
 /area/supply/station/uscm)
 "bsL" = (

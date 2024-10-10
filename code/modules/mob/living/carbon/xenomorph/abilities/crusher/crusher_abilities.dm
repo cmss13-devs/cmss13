@@ -210,40 +210,40 @@
 	if(!covered)
 		stop_momentum()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/xenomorph/Xeno)
+/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
-	Xeno.speed += momentum * speed_per_momentum
+	xeno.speed += momentum * speed_per_momentum
 
 /datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum(datum/source)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(momentum == max_momentum)
-		Xeno.visible_message(SPAN_DANGER("[Xeno] skids to a halt!"))
+		xeno.visible_message(SPAN_DANGER("[xeno] skids to a halt!"))
 
-	REMOVE_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
+	REMOVE_TRAIT(xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
 	steps_taken = 0
 	momentum = 0
-	Xeno.recalculate_speed()
-	Xeno.update_icons()
+	xeno.recalculate_speed()
+	xeno.update_icons()
 
 /datum/action/xeno_action/onclick/charger_charge/proc/lose_momentum(amount)
 	if(amount >= momentum)
 		stop_momentum()
 	else
 		momentum -= amount
-		var/mob/living/carbon/xenomorph/Xeno = owner
-		Xeno.recalculate_speed()
+		var/mob/living/carbon/xenomorph/xeno = owner
+		xeno.recalculate_speed()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/xenomorph/Xeno, atom/tar)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/xenomorph/xeno, atom/tar)
 	SIGNAL_HANDLER
 	if(!momentum)
 		stop_momentum()
 		return
 
-	var/result = tar.handle_charge_collision(Xeno, src)
+	var/result = tar.handle_charge_collision(xeno, src)
 	switch(result)
 		if(XENO_CHARGE_TRY_MOVE)
-			if(step(Xeno, charge_dir))
+			if(step(xeno, charge_dir))
 				return COMPONENT_LIVING_COLLIDE_HANDLED
 
 /datum/action/xeno_action/onclick/charger_charge/proc/start_charging(datum/source)
@@ -263,28 +263,24 @@
 	xeno_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
-	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.flags_atom &= ~DIRLOCK
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.flags_atom &= ~DIRLOCK
 	if(start_charging)
-		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
+		SEND_SIGNAL(xeno, COMSIG_XENO_START_CHARGING)
 
 
-/datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(atom/_collided_with)
+/datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/xenomorph/owner, atom/_collided_with)
 	if (!ishuman(_collided_with))
 		return
 
 	var/mob/living/carbon/human/collided_with = _collided_with
-	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [collided_with]!"), SPAN_XENODANGER("We knock over [collided_with] as we sweep to the side!"))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.visible_message(SPAN_XENODANGER("[xeno] Sweeps to the side, knocking down [collided_with]!"), SPAN_XENODANGER("We knock over [collided_with] as we sweep to the side!"))
 	var/turf/target_turf = get_turf(collided_with)
 	playsound(collided_with,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	collided_with.apply_damage(15,BRUTE)
-	if(ishuman(collided_with))
-		var/mob/living/carbon/human/Human = collided_with
-		Xeno.throw_carbon(Human, distance = 1)
-		Human.apply_effect(1, WEAKEN)
-	else
-		collided_with.apply_effect(1, WEAKEN)
-	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
-		Xeno.forceMove(target_turf)
+	xeno.throw_carbon(collided_with, distance = 1)
+	collided_with.apply_effect(1, WEAKEN)
+	if(!LinkBlocked(xeno, get_turf(xeno), target_turf))
+		xeno.forceMove(target_turf)
 

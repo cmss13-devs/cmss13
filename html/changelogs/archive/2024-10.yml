@@ -115,3 +115,16 @@
   - maptweak: replaces hangar banshee with launchbay and omnisentry
   realforest2001:
   - rscadd: Added new player markers for SEAs/Mentors
+2024-10-10:
+  VileBeggar, SubjectD9341:
+  - rscadd: Giant lizards are now capable of breaking structures and their combat
+      capabilities are slightly enhanced. Several other tweaks and minor additions
+      have been made, such as wound overlays and tongue flickering.
+  - rscadd: After a random amount of time, a 2nd wave of lizards might pop up in the
+      jungles if their numbers are too low.
+  - bugfix: Giant lizards no longer become paralyzed after getting disarmed, nor will
+      they randomly become paralyzed due to weird combat logic.
+  deathrobotpunch:
+  - bugfix: fusion reactor overload messages now show correctly
+  realforest2001:
+  - bugfix: Fixes runtime from null areas.

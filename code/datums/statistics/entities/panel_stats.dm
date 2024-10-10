@@ -108,7 +108,6 @@
 					"top_statistics" = subtype_top_statistics,
 				))
 
-			statistics_list_tabs += player_statistic.statistic_name
 			statistics_list += list(list(
 				"name" = player_statistic.statistic_name,
 				"value" = statistic_info,
@@ -123,7 +122,6 @@
 				"death_list" = death_list,
 				"total_statistics" = total_statistics,
 				"top_statistics" = top_statistics,
-				"statistics_list_tabs" = statistics_list_tabs,
 				"statistics_list" = statistics_list,
 			)
 	return data

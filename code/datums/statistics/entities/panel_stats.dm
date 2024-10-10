@@ -37,7 +37,6 @@
 		var/list/death_list = list()
 		var/list/top_statistics = list()
 		var/list/total_statistics = list()
-		var/list/statistics_list_tabs = list()
 		var/list/statistics_list = list()
 		if(group.nemesis)
 			nemesis = list("name" = group.nemesis.nemesis_name, "value" = group.nemesis.value)

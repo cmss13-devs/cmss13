@@ -17,11 +17,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station
+/area/supply/station //only to be common ancestor use faction areas
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
+/area/supply/station/uscm
+	name = "Supply Shuttle USCM"
 
 /area/supply/station/upp
 	name = "Supply Shuttle UPP"
@@ -30,6 +32,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
+/area/supply/dock/uscm
+	name = "USCM Supply Shuttle"
 
 /area/supply/dock/upp
 	name = "Supply Shuttle UPP"

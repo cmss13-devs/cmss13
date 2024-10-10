@@ -58,6 +58,7 @@
 			linked_supply_controller = GLOB.supply_controller_upp
 		else
 			linked_supply_controller = GLOB.supply_controller
+	linked_supply_controller.shuttle = src
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80

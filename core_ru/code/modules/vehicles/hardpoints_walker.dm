@@ -90,13 +90,11 @@
 		return
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[LEFT_CLICK] && modifiers[MIDDLE_CLICK])
+	if(!modifiers[LEFT_CLICK] && !modifiers[MIDDLE_CLICK])
 		return
 
-	if(owner.module_map[WALKER_HARDPOIN_LEFT] == src ? modifiers[LEFT_CLICK] : modifiers[MIDDLE_CLICK])
-		return
-
-	reset_fire()
+	if(owner.module_map[WALKER_HARDPOIN_LEFT] == src ? modifiers[BUTTON] == LEFT_CLICK : modifiers[BUTTON] == MIDDLE_CLICK)
+		reset_fire()
 
 /obj/item/walker_gun/proc/get_icon_image(hardpoint)
 	if(!owner)

@@ -1520,6 +1520,7 @@
 #include "code\modules\autowiki\pages\_page.dm"
 #include "code\modules\autowiki\pages\guns.dm"
 #include "code\modules\autowiki\pages\xeno_stats.dm"
+#include "code\modules\autowiki\pages\supply_packs.dm"
 #include "code\modules\buildmode\bm-mode.dm"
 #include "code\modules\buildmode\buildmode.dm"
 #include "code\modules\buildmode\buttons.dm"

@@ -1,3 +1,10 @@
+#define WALKER_HARDPOIN_LEFT "Left"
+#define WALKER_HARDPOIN_RIGHT "Right"
+#define WALKER_HARDPOIN_ARMOR "Armor"
+#define WALKER_HARDPOIN_BACK "Back"
+
+// Этого человека снизу надо найти и посадить в подвал перекодивать фичу
+
 ////////////////
 // MEGALODON HARDPOINTS // START
 ////////////////
@@ -29,21 +36,25 @@
 
 	var/autofire_slow_mult = 1
 
-/obj/item/walker_gun/Initialize()
+/obj/item/walker_gun/Initialize(reference)
 	. = ..()
 
-	ammo = new magazine_type()
+	if(istype(reference, /obj/vehicle/walker))
+		owner = reference
+	ammo = new magazine_type
 
-	if (automatic)
-		AddComponent(/datum/component/automatedfire/autofire, fire_delay, fire_delay, burst, GUN_FIREMODE_AUTOMATIC, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	if(automatic)
+		AddComponent(/datum/component/automatedfire/autofire, fire_delay, fire_delay, burst, GUN_FIREMODE_AUTOMATIC, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/walker_gun/proc/register_signals(mob/user)
-	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
-	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
-	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
+	if(automatic)
+		RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
+		RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+		RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
 /obj/item/walker_gun/proc/unregister_signals(mob/user)
-	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+	if(automatic)
+		UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
 /obj/item/walker_gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
@@ -52,26 +63,38 @@
 /obj/item/walker_gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
-	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(!owner)
 		return
 
-	// Don't allow doing anything else if inside a container of some sort, like a locker.
-	if(!isturf(owner.loc))
+	var/list/modifiers = params2list(params)
+	if(!modifiers[LEFT_CLICK] && !modifiers[MIDDLE_CLICK])
+		return
+
+	if(owner.module_map[WALKER_HARDPOIN_LEFT] == src ? !modifiers[LEFT_CLICK] : !modifiers[MIDDLE_CLICK])
 		return
 
 	if(istype(object, /atom/movable/screen))
 		return
 
-	if (!owner.firing_arc(object))
+	if(!owner.firing_arc(object))
 		return
 
 	set_target(get_turf_on_clickcatcher(object, owner.seats[VEHICLE_DRIVER], params))
 
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
-/obj/item/walker_gun/proc/stop_fire()
+/obj/item/walker_gun/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
+
+	if(!owner)
+		return
+
+	var/list/modifiers = params2list(params)
+	if(modifiers[LEFT_CLICK] && modifiers[MIDDLE_CLICK])
+		return
+
+	if(owner.module_map[WALKER_HARDPOIN_LEFT] == src ? modifiers[LEFT_CLICK] : modifiers[MIDDLE_CLICK])
+		return
 
 	reset_fire()
 
@@ -141,7 +164,7 @@
 		to_chat(user, "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return FALSE
 	last_fire = world.time
-	var/obj/projectile/P
+/* всего хорошего всем тем кто трогал это, я больше меха трогать не буду, никогда не смотрел этот файл, и не стоило, пытался понять почему автофаеру так плохл... и добавить на RMB со вторички
 	for(var/i = 1 to burst)
 		if(!owner.firing_arc(target))
 			if(i == 1)
@@ -163,6 +186,18 @@
 			visible_message("[owner.name]'s systems deployed used magazine.","")
 			break
 		sleep(3)
+*/
+	if(!owner.firing_arc(target))
+		return FALSE
+	var/obj/projectile/P = new
+	P.generate_bullet(new ammo.default_ammo)
+	for (var/trait in projectile_traits)
+		GIVE_BULLET_TRAIT(P, trait, FACTION_MARINE)
+	playsound(get_turf(owner), pick(fire_sound), 60)
+	target = simulate_scatter(target, P)
+	P.fire_at(target, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	ammo.current_rounds--
+
 	display_ammo(user)
 	visible_message("<span class='danger'>[owner.name] fires from [name]!</span>", "<span class='warning'>You hear [istype(P.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!</span>")
 

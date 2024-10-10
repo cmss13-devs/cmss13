@@ -1,6 +1,3 @@
-#define GUN_RIGHT 0
-#define GUN_LEFT 1
-
 /////////////////
 // Walker
 /////////////////
@@ -41,18 +38,19 @@
 	) //abstract for when you just want to hurt it
 
 	var/max_angle = 45
-	var/obj/item/walker_gun/left = null
-	var/obj/item/walker_gun/right = null
-	var/obj/item/walker_armor/armor_module = null
-	var/selected = GUN_LEFT
+	var/list/obj/item/walker_gun/module_map = list(
+		WALKER_HARDPOIN_LEFT = null,
+		WALKER_HARDPOIN_RIGHT = null,
+		WALKER_HARDPOIN_BACK = null,
+		WALKER_HARDPOIN_ARMOR = null
+	)
 
 	var/list/verb_list = list(
-		/obj/vehicle/walker/verb/get_out,
-		/obj/vehicle/walker/verb/toggle_lights,
-		/obj/vehicle/walker/verb/toggle_zoom,
-		/obj/vehicle/walker/verb/eject_magazines,
-		/obj/vehicle/walker/verb/select_weapon
-//				/obj/vehicle/walker/verb/get_stats
+		/obj/vehicle/walker/proc/exit_walker,
+		/obj/vehicle/walker/proc/toggle_lights,
+		/obj/vehicle/walker/proc/toggle_zoom,
+		/obj/vehicle/walker/proc/eject_magazine,
+		/obj/vehicle/walker/proc/get_stats
 	)
 
 	var/list/step_sounds = list(
@@ -79,12 +77,8 @@
 /obj/vehicle/walker/prebuilt/Initialize()
 	. = ..()
 
-	left = new /obj/item/walker_gun/smartgun()
-	right = new /obj/item/walker_gun/flamer()
-	left.ammo = new left.magazine_type()
-	right.ammo = new right.magazine_type()
-	left.owner = src
-	right.owner = src
+	module_map[WALKER_HARDPOIN_LEFT] = new /obj/item/walker_gun/smartgun(src)
+	module_map[WALKER_HARDPOIN_RIGHT] = new /obj/item/walker_gun/flamer(src)
 
 	update_icon()
 
@@ -96,41 +90,30 @@
 	else
 		icon_state = "mech_open"
 
-	if(left)
-		var/image/left_gun = left.get_icon_image("_l_hand")
+	if(module_map[WALKER_HARDPOIN_LEFT])
+		var/image/left_gun = module_map[WALKER_HARDPOIN_LEFT].get_icon_image("_l_hand")
 		overlays += left_gun
-	if(right)
-		var/image/right_gun = right.get_icon_image("_r_hand")
+	if(module_map[WALKER_HARDPOIN_RIGHT])
+		var/image/right_gun = module_map[WALKER_HARDPOIN_RIGHT].get_icon_image("_r_hand")
 		overlays += right_gun
+
+/* In future
+	if(health <= max_health)
+		var/image/damage_overlay = image(icon, icon_state = "damaged_frame", layer = layer+0.1)
+		damage_overlay.alpha = 255 * (1 - (health / max_health))
+		overlays += damage_overlay
+*/
 
 /obj/vehicle/walker/get_examine_text(mob/user)
 	. = ..()
-	if(isxeno(user))
-		switch(round(100 * health / max_health))
-			if(85 to 100)
-				. += SPAN_BLUE("It's fully intact.")
-			if(65 to 85)
-				. += SPAN_GREEN("It's slightly damaged.")
-			if(45 to 65)
-				. += SPAN_ORANGE("It's badly damaged.")
-			if(25 to 45)
-				. += SPAN_RED("It's heavily damaged.")
-			else
-				. += SPAN_ALERT("It's falling apart.")
-		return
-	switch(round(100 * health / max_health))
-		if(85 to 100)
-			. += SPAN_BLUE("It's have [round(health / 10)] % integrity.")
-		if(65 to 85)
-			. += SPAN_GREEN("It's have [round(health / 10)] % integrity.")
-		if(45 to 65)
-			. += SPAN_ORANGE("It's have [round(health / 10)] % integrity.")
-		if(25 to 45)
-			. += SPAN_RED("It's have [round(health / 10)] % integrity.")
-		else
-			. += SPAN_ALERT("It's falling apart.")
-	. += "[left ? left.name : "Nothing"] is placed on its left hardpoint."
-	. += "[right ? right.name : "Nothing"] is placed on its right hardpoint."
+
+	if(health <= 0)
+		. += "It's busted!"
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+		. += "It's at [round(100 * health / max_health)]% integrity!"
+
+	. += "[module_map[WALKER_HARDPOIN_LEFT] ? module_map[WALKER_HARDPOIN_LEFT].name : "Nothing"] is placed on its left hardpoint."
+	. += "[module_map[WALKER_HARDPOIN_RIGHT] ? module_map[WALKER_HARDPOIN_RIGHT].name : "Nothing"] is placed on its right hardpoint."
 
 /obj/vehicle/walker/ex_act(severity)
 	take_damage_type(severity * 0.5, "explosive")
@@ -143,7 +126,7 @@
 	if(!istype(user) || target != user) //No making other people climb into walker.
 		return
 
-	if(user.skills.get_skill_level(SKILL_POWERLOADER))
+	if(user.skills.get_skill_level(SKILL_POWERLOADER) >= SKILL_POWERLOADER_TRAINED)
 		move_in(user)
 	else
 		to_chat(user, "How to operate it?")
@@ -262,26 +245,25 @@
 		return
 	var/mob/living/carbon/human/H = user
 
-	if (!do_after(H, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED))
+	if(!do_after(H, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED))
 		return
+
 	for(var/ID in list(H.wear_id, H.belt))
 		if(operation_allowed(ID))
 			seats[VEHICLE_DRIVER] = H
-			add_verb(H, verb_list)
+			add_verb(H.client, verb_list)
 			user.loc = src
 			vehicle_faction = user.faction
 			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 			seats[VEHICLE_DRIVER].set_interaction(src)
-			RegisterSignal(H, COMSIG_MOB_RESISTED, PROC_REF(move_out))
-			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press MMB to change your active weapon."))
-			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press Shift+MMB for drop ammunition from active weapon."))
+			RegisterSignal(H, COMSIG_MOB_RESISTED, PROC_REF(exit_walker))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press LMB for use left weapon."))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Press MMB for use right weapon."))
 
-			if(selected)
-				if(left && left.automatic)
-					left.register_signals(user)
-			else
-				if (right && right.automatic)
-					right.register_signals(user)
+			if(module_map[WALKER_HARDPOIN_LEFT])
+				module_map[WALKER_HARDPOIN_LEFT].register_signals(user)
+			if(module_map[WALKER_HARDPOIN_RIGHT])
+				module_map[WALKER_HARDPOIN_RIGHT].register_signals(user)
 
 			playsound_client(seats[VEHICLE_DRIVER].client, 'core_ru/sound/vehicle/walker/mecha_start.ogg', null, 40)
 			update_icon()
@@ -294,75 +276,6 @@
 	if(check_access(I))
 		return TRUE
 	return FALSE
-
-// /obj/vehicle/walker/proc/eject()
-// 	set name = "Eject"
-// 	set category = "Vehicle"
-// 	var/mob/M = usr
-
-// 	if(!M || !istype(M))
-// 		return
-
-// 	var/obj/vehicle/walker/W = M.interactee
-
-// 	if(!W || !istype(W))
-// 		return
-// 	W.move_out()
-
-/obj/vehicle/walker/proc/move_out()
-	var/mob/living/driver = seats[VEHICLE_DRIVER]
-	if(!driver)
-		return FALSE
-	if(health <= 0)
-		to_chat(driver, "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
-	if(zoom)
-		unzoom()
-	if(driver.client)
-		driver.client.mouse_pointer_icon = initial(driver.client.mouse_pointer_icon)
-
-	driver.unset_interaction()
-	driver.loc = src.loc
-	driver.reset_view(null)
-	remove_verb(driver, verb_list)
-	UnregisterSignal(driver, COMSIG_MOB_RESISTED)
-
-	if(selected && left && left.automatic)
-		left.unregister_signals(driver)
-	else if(right && right.automatic)
-		right.unregister_signals(driver)
-
-	seats[VEHICLE_DRIVER] = null
-	update_icon()
-	return TRUE
-
-/obj/vehicle/walker/proc/lights()
-	var/mob/living/driver = seats[VEHICLE_DRIVER]
-
-	if(!driver || !istype(driver))
-		return
-
-	if(!lights)
-		lights = TRUE
-		set_light(lights_power)
-	else
-		lights = FALSE
-		set_light(-lights_power)
-
-	playsound_client(driver, 'sound/machines/click.ogg', 50)
-
-/obj/vehicle/walker/proc/deploy_magazine()
-	var/mob/living/driver = seats[VEHICLE_DRIVER]
-	var/obj/item/walker_gun/selected_gun
-	if(selected)
-		selected_gun = left
-	else
-		selected_gun = right
-
-	if(selected_gun && selected_gun.ammo)
-		selected_gun.ammo.forceMove(get_turf(src))
-		selected_gun.ammo = null
-		to_chat(driver, "<span class='warning'>WARNING! [selected_gun.name] ammo magazine deployed.</span>")
-		visible_message("[name]'s systems deployed used magazine.","")
 
 /obj/vehicle/walker/ui_status(mob/user)
 	. = ..()
@@ -379,99 +292,61 @@
 /obj/vehicle/walker/ui_data(mob/user)
 	. = list()
 
-	//simply solution
-	.["text"] = "<h2>[name] Interface</h2>"
-	.["text"] += "<span class='notice'>Vehicle Status:</span><br>"
-	var/danger = "'notice'"
-	var/curr_health = round(health/max_health*100)
-	danger = "'notice'"
-	if(curr_health <= 50)
-		danger = "'warning'"
-	if(curr_health <= 25)
-		danger = "'danger'"
-	.["text"] += "<span class='notice'>Overall vehicle integrity: </span><span class=[danger]> [curr_health] percent. [danger == "'danger'" ? "LEVEL CRITICAL!" : ""]</span>"
-	.["text"] += "<span class='notice'>=========</span>"
-	if(left)
-		var/munition = left.ammo ? "[left.ammo.current_rounds]/[left.ammo.max_rounds]" : "<span class='warning'>DEPLETED</span>"
-		.["text"] += "<span class='notice'>Left hardpoint: [left.name].\n Current ammo level: [munition]</span>"
-	else
-		.["text"] += "<span class='warning'>LEFT HARDPOINT IS EMPTY!</span>"
+	var/list/resist_name = list("Bio" = "acid", "Slash" = "slash", "Bullet" = "bullet", "Expl" = "explosive", "Blunt" = "blunt")
+	var/list/resist_data_list = list()
 
-	if(right)
-		var/munition = right.ammo ? "[right.ammo.current_rounds]/[right.ammo.max_rounds]" : "<span class='warning'>DEPLETED</span>"
-		.["text"] += "<span class='notice'>Right hardpoint: [right.name].\n Current ammo level: [munition]</span>"
-	else
-		.["text"] += "<span class='warning'>RIGHT HARDPOINT IS EMPTY!</span>"
+	for(var/i in resist_name)
+		var/resist = 1 - LAZYACCESS(dmg_multipliers, LAZYACCESS(resist_name, i))
+		resist_data_list += list(list(
+			"name" = i,
+			"pct" = resist
+		))
 
-/obj/vehicle/walker/proc/cycle_weapons(mob/M)
-	if(!M)
-		M = seats[VEHICLE_DRIVER]
+	.["resistance_data"] = resist_data_list
+	.["integrity"] = floor(100 * health / max_health)
+	.["hardpoint_data"] = list()
 
-		if(!M)
-			return
+	for(var/position in module_map)
+		var/obj/item/hardpoint/hardpoint = module_map[position]
+		if(!hardpoint)
+			continue
+		var/list/hardpoint_info = list()
+		.["hardpoint_data"] += list(hardpoint_info)
 
-	var/obj/vehicle/walker/W = src
+		hardpoint_info["name"] = hardpoint.name
+		hardpoint_info["postion"] = position
+		hardpoint_info["current_rounds"] = hardpoint.ammo.current_rounds
+		hardpoint_info["max_rounds"] = hardpoint.ammo.max_rounds
 
-	if(!W || !istype(W))
+/obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/params)
+	if(istype(A, /atom/movable/screen) || A.z != z)
 		return
 
-	if(W.selected)
-		if(!W.right)
-			return
-		W.selected = !W.selected
-		W.right.register_signals(M)
-		W.left.unregister_signals(M)
-	else
-		if(!W.left)
-			return
-		W.selected = !W.selected
-		W.left.register_signals(M)
-		W.right.unregister_signals(M)
-	to_chat(M, "Selected [W.selected ? "[W.left]" : "[W.right]"]")
-
-/obj/vehicle/walker/proc/handle_click_mods(list/mods)
-	if (mods["middle"] && mods["shift"])
-		deploy_magazine()
-		return TRUE
-	if (mods["middle"])
-		cycle_weapons()
-		return TRUE
-
-	return !mods["left"]
-
-/obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/mods)
-	var/special_click = handle_click_mods(mods)
-
-	if (special_click)
-		return
-
-	if(istype(A, /atom/movable/screen) || A.z != src.z)
-		return
 	if(!firing_arc(A))
-		if (left)
-			SEND_SIGNAL(left, COMSIG_GUN_STOP_FIRE)
-		if (right)
-			SEND_SIGNAL(right, COMSIG_GUN_STOP_FIRE)
-		var/newDir = get_cardinal_dir(src, A)
-		l_move_time = world.time
-		if(dir != newDir)
-			playsound(src.loc, pick(turn_sounds), 70, 1)
-		dir = newDir
+		if(module_map[WALKER_HARDPOIN_LEFT])
+			SEND_SIGNAL(module_map[WALKER_HARDPOIN_LEFT], COMSIG_GUN_STOP_FIRE)
+		if(module_map[WALKER_HARDPOIN_RIGHT])
+			SEND_SIGNAL(module_map[WALKER_HARDPOIN_RIGHT], COMSIG_GUN_STOP_FIRE)
+
+		var/new_dir = get_cardinal_dir(src, A)
+		if(dir != new_dir && world.time > l_move_time + move_delay)
+			l_move_time = world.time
+			playsound(get_turf(src), pick(turn_sounds), 70, 1)
+			dir = new_dir
+
+	// Make sure only LMB and RMB
+	if(!params[LEFT_CLICK] && !params[MIDDLE_CLICK])
 		return
-	if(selected)
-		if(!left)
-			to_chat(usr, "<span class='warning'>WARNING! Hardpoint is empty.</span>")
-			return
-		if (left.automatic)
-			return
-		left.active_effect(A, user)
-	else
-		if(!right)
-			to_chat(usr, "<span class='warning'>WARNING! Hardpoint is empty.</span>")
-			return
-		if (right.automatic)
-			return
-		right.active_effect(A, user)
+
+	var/picked_module = params[LEFT_CLICK] ? WALKER_HARDPOIN_LEFT : WALKER_HARDPOIN_RIGHT
+	if(!module_map[picked_module])
+		to_chat(usr, "<span class='warning'>WARNING! Hardpoint is empty.</span>")
+		return
+
+	if(module_map[picked_module].automatic)
+		return
+
+	module_map[picked_module].active_effect(A, user)
 
 /obj/vehicle/walker/proc/firing_arc(atom/A)
 	if (!A)
@@ -499,12 +374,6 @@
 	if(nx < 0)
 		angle += 180
 	return abs(angle) <= max_angle
-
-/obj/vehicle/walker/proc/zoom_activate()
-	if (zoom)
-		unzoom()
-	else
-		do_zoom()
 
 /obj/vehicle/walker/proc/do_zoom(viewsize = 12)
 	var/mob/living/carbon/user = seats[VEHICLE_DRIVER]
@@ -550,21 +419,35 @@
 
 /obj/vehicle/walker/attackby(obj/item/held_item, mob/user as mob)
 	if(istype(held_item, /obj/item/ammo_magazine/walker))
-		if(left && !left.ammo && istype(held_item, left.magazine_type))
-			rearm(held_item, user, left)
-		else if(right && !right.ammo && istype(held_item, right.magazine_type))
-			rearm(held_item, user, right)
-		else
+		var/rearmed = FALSE
+		for(var/hardpoint_slot in list(WALKER_HARDPOIN_LEFT, WALKER_HARDPOIN_RIGHT))
+			if(!module_map[hardpoint_slot] || module_map[hardpoint_slot].ammo || !istype(held_item, module_map[hardpoint_slot].magazine_type))
+				continue
+			rearm(held_item, user, module_map[hardpoint_slot])
+			rearmed = TRUE
+			break
+
+		if(!rearmed)
 			to_chat(user, "You cannot fit that magazine in any weapon.")
 			return
 
 	else if(istype(held_item, /obj/item/walker_gun))
-		var/slot = tgui_alert(user, "On which hardpoint install gun.", "Hardpoint", list("Left", "Right", "Cancel"))
+		var/remaining_slots = list()
+		for(var/hardpoint_slot in list(WALKER_HARDPOIN_LEFT, WALKER_HARDPOIN_RIGHT))
+			if(module_map[hardpoint_slot])
+				continue
+			remaining_slots += hardpoint_slot
+		var/slot = tgui_alert(user, "On which hardpoint install gun.", "Hardpoint", remaining_slots + "Cancel")
 		if(slot && slot != "Cancel")
 			install_gun(held_item, user, slot)
 
 	else if(HAS_TRAIT(held_item, TRAIT_TOOL_WRENCH))
-		var/slot = tgui_alert(user, "Which hardpoint should be dismounted.", "Hardpoint", list("Left", "Right", "Cancel"))
+		var/taken_slots = list()
+		for(var/hardpoint_slot in list(WALKER_HARDPOIN_LEFT, WALKER_HARDPOIN_RIGHT))
+			if(!module_map[hardpoint_slot])
+				continue
+			taken_slots += hardpoint_slot
+		var/slot = tgui_alert(user, "Which hardpoint should be dismounted.", "Hardpoint", taken_slots + "Cancel")
 		if(slot && slot != "Cancel")
 			dismount(held_item, user, slot)
 
@@ -588,7 +471,7 @@
 		to_chat(user, "You don't know how to mount weapon.")
 		return
 
-	if((slot == "Left" && left) || (slot == "Right" && right))
+	if(module_map[slot])
 		to_chat(user, "This [lowertext(slot)] hardpoint is full")
 		return
 
@@ -596,10 +479,7 @@
 	if(do_after(user, 100, TRUE, 5, BUSY_ICON_BUILD))
 		user.drop_inv_item_to_loc(gun, src)
 		gun.owner = src
-		if(slot == "Left")
-			left = gun
-		else
-			right = gun
+		module_map[slot] = gun
 
 		to_chat(user, "You mount [gun.name] on [lowertext(slot)] hardpoint.")
 		update_icon()
@@ -611,20 +491,15 @@
 		to_chat(user, "You don't know how to mount weapon.")
 		return
 
-	if((slot == "Left" && !left) || (slot == "Right" && !right))
+	if(!module_map[slot])
 		to_chat(user, "This [lowertext(slot)] hardpoint is empty")
 		return
 
 	to_chat(user, "You start dismounting [lowertext(slot)] hardpoint.")
 	if(do_after(user, 100, TRUE, 5, BUSY_ICON_BUILD))
-		if(slot == "Left")
-			left.forceMove(get_turf(src))
-			left.owner = null
-			left = null
-		else
-			right.forceMove(get_turf(src))
-			right.owner = null
-			right = null
+		module_map[slot].forceMove(get_turf(src))
+		module_map[slot].owner = null
+		module_map[slot] = null
 
 		to_chat(user, "You dismount [lowertext(slot)] hardpoint.")
 		update_icon()
@@ -718,7 +593,9 @@
 	if(health > max_health)
 		health = max_health
 	else if(!health)
-		move_out()
+		if(seats[VEHICLE_DRIVER])
+			to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>PRIORITY ALERT! Chassis integrity failing. Systems shutting down.</span>")
+			exit_walker(seats[VEHICLE_DRIVER])
 		new /obj/structure/walker_wreckage(src.loc)
 		playsound(loc, 'core_ru/sound/vehicle/walker/mecha_dead.ogg', 75)
 		qdel(src)

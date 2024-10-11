@@ -36,6 +36,9 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/uniform_monkey_0.dmi')
 	equip_sounds = list('sound/handling/clothing_on.ogg')
 	unequip_sounds = list('sound/handling/clothing_off.ogg')
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi'
+	)
 
 /obj/item/clothing/under/Initialize()
 	. = ..()
@@ -44,7 +47,7 @@
 	else
 		worn_state = icon_state
 
-	var/check_icon = contained_sprite ? icon : GLOB.default_onmob_icons[WEAR_BODY]
+	var/check_icon = contained_sprite ? icon : item_icons[WEAR_BODY]
 
 	//autodetect rollability, cuttability, and removability.
 	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))

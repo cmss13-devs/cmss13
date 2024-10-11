@@ -196,6 +196,8 @@
 	bound_height = 32
 	unslashable = TRUE
 	unacidable = TRUE
+	var/list/fallen_personnel = list()
+	COOLDOWN_DECLARE(remember_cooldown)
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
@@ -212,6 +214,7 @@
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
 			GLOB.fallen_list += D.fallen_names
+			fallen_personnel += D.fallen_references
 			qdel(D)
 		return TRUE
 	else
@@ -219,7 +222,7 @@
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
-	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
+	if((isobserver(user) || ishuman(user)) && length(GLOB.fallen_list))
 		var/faltext = ""
 		for(var/i = 1 to length(GLOB.fallen_list))
 			if(i != length(GLOB.fallen_list))
@@ -227,6 +230,98 @@
 			else
 				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
+
+/obj/structure/prop/almayer/ship_memorial/attack_hand(mob/user)
+	. = ..()
+	if(!length(fallen_personnel) || user.faction != FACTION_MARINE)
+		to_chat(user, SPAN_NOTICE("You start looking through the names on the slab but nothing catches your attention."))
+		return ..()
+
+	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
+	var/list/people_to_remember = list()
+	for(var/amount_to_remember = 5, amount_to_remember > 0, amount_to_remember--)
+		var/person_to_remember = pick(fallen_personnel)
+		if(person_to_remember in people_to_remember)
+			continue
+
+		people_to_remember += person_to_remember
+
+	var/list/inspection_text = list("A name catches your eyes,",
+		"You know this person,",
+		"This one...",
+		"You recognize this name,",
+		"You take a deep breath and see",
+		"Guilt hits you.",
+		"You remember.",
+		"It's them.")
+
+	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
+		'sound/hallucinations/ghost_whisper_02.ogg',
+		'sound/hallucinations/ghost_whisper_03.ogg',
+		'sound/hallucinations/ghost_whisper_04.ogg',
+		'sound/hallucinations/ghost_whisper_05.ogg',
+		'sound/hallucinations/ghost_whisper_06.ogg',
+		'sound/hallucinations/ghost_whisper_07.ogg',
+		'sound/hallucinations/ghost_whisper_08.ogg',
+		'sound/hallucinations/ghost_whisper_09.ogg',
+		'sound/hallucinations/ghost_whisper_10.ogg',
+		'sound/hallucinations/ghost_whisper_11.ogg',
+		'sound/hallucinations/ghost_whisper_12.ogg',
+		'sound/hallucinations/ghost_whisper_13.ogg'
+		)
+
+	fallen_personnel = shuffle(fallen_personnel)
+
+	var/time_to_remember = 4 SECONDS
+	for(var/i = length(fallen_personnel), i > 0, i--)
+		if(!do_after(user, time_to_remember, INTERRUPT_ALL))
+			to_chat(user, SPAN_NOTICE("...but maybe it's better to forget."))
+			return ..()
+
+		var/person = fallen_personnel[i]
+
+		to_chat(user, SPAN_NOTICE("[pick_n_take(inspection_text)] <b>[person]</b>..."))
+
+		var/interrupted_by_mob = FALSE
+		for(var/mob/living/mob in range(src, 7))
+			if(mob != user && mob.stat == CONSCIOUS)
+				interrupted_by_mob = TRUE
+
+		if(interrupted_by_mob || !COOLDOWN_FINISHED(src, remember_cooldown))
+			continue
+
+		var/list/ghost_turf = list()
+		for(var/turf/turf in range(src, 3))
+			if(turf.density)
+				continue
+			for(var/obj/object in turf)
+				if(object.density)
+					continue
+			for(var/mob/mob in turf)
+				continue
+			ghost_turf += turf
+
+		var/mutable_appearance/ghost_effect = new()
+		ghost_effect.icon = getFlatIcon(person)
+		ghost_effect.alpha = rand(150, 180)
+		var/image/final_ghost = image(ghost_effect)
+		final_ghost.loc = pick(ghost_turf)
+		user.client.images += final_ghost
+
+		playsound_client(user.client, pick_n_take(hallucination_sounds), final_ghost.loc, 70)
+		sleep(rand(0.8 SECONDS, 1.2 SECONDS))
+		user.client.images -= final_ghost
+		time_to_remember -= rand(0.4 SECONDS, 0.6 SECONDS)
+
+	var/list/realization_text = list("These people were your family.",
+		"It hurts to remember.",
+		"They're gone. And you'll never see them again.",
+		"You can't help but think about home.",
+		"You say your goodbyes silently.",
+		"You felt almost invincible with them.")
+
+	COOLDOWN_START(src, remember_cooldown, 2 SECONDS)
+	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

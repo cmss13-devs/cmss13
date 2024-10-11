@@ -156,7 +156,7 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
 
-/datum/ammo/bullet/smg/p90/p90_twe_ap
+/datum/ammo/bullet/smg/p90/twe_ap
 	name = "armor-piercing submachinegun bullet"
 
 	damage = 26

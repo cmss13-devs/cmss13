@@ -238,23 +238,17 @@
 		return ..()
 
 	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
-	var/list/people_to_remember = list()
-	for(var/amount_to_remember = 5, amount_to_remember > 0, amount_to_remember--)
-		var/person_to_remember = pick(fallen_personnel)
-		if(person_to_remember in people_to_remember)
-			continue
-
-		people_to_remember += person_to_remember
-
+	///Text that's shown everytime a name is listed.
 	var/list/inspection_text = list("A name catches your eyes,",
-		"You know this person,",
+		"You know this name,",
 		"This one...",
 		"You recognize this name,",
 		"You take a deep breath and see",
-		"Guilt hits you.",
-		"You remember.",
-		"It's them.")
+		"You remember them.",
+		"A name catches your attention,",
+		"It's them...")
 
+	///Sound files that play when a hallucination pops up.
 	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
 		'sound/hallucinations/ghost_whisper_02.ogg',
 		'sound/hallucinations/ghost_whisper_03.ogg',
@@ -272,9 +266,11 @@
 
 	fallen_personnel = shuffle(fallen_personnel)
 
+	///How much time it takes for a name to get read.
 	var/time_to_remember = 4 SECONDS
-	for(var/i = length(fallen_personnel), i > 0, i--)
-		if(!do_after(user, time_to_remember, INTERRUPT_ALL))
+	var/had_flashback = FALSE
+	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
+		if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
 			to_chat(user, SPAN_NOTICE("...but maybe it's better to forget."))
 			return ..()
 
@@ -287,41 +283,81 @@
 			if(mob != user && mob.stat == CONSCIOUS)
 				interrupted_by_mob = TRUE
 
-		if(interrupted_by_mob || !COOLDOWN_FINISHED(src, remember_cooldown))
+		if(interrupted_by_mob || !COOLDOWN_FINISHED(src, remember_cooldown) || !user.client)
 			continue
 
-		var/list/ghost_turf = list()
-		for(var/turf/turf in range(src, 3))
-			if(turf.density)
-				continue
-			for(var/obj/object in turf)
-				if(object.density)
-					continue
-			for(var/mob/mob in turf)
-				continue
-			ghost_turf += turf
+		//If there are enough dead guys being listed, have a chance for a proper traumatic flashback.
+		if(i >= 4 && !had_flashback)
+			playsound_client(user.client, 'sound/hallucinations/ears_ringing.ogg', user.loc, 40)
+			to_chat(user, SPAN_DANGER("<b>It's like time has stopped. All you can focus on are the names on that list.</b>"))
+			user.apply_effect(6, ROOT)
+			user.apply_effect(6, STUTTER)
+			INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user)
+			time_to_remember = time_to_remember * 0.75
+			had_flashback = TRUE
 
-		var/mutable_appearance/ghost_effect = new()
-		ghost_effect.icon = getFlatIcon(person)
-		ghost_effect.alpha = rand(150, 180)
-		var/image/final_ghost = image(ghost_effect)
-		final_ghost.loc = pick(ghost_turf)
+		var/image/final_ghost = generate_ghost(person)
 		user.client.images += final_ghost
 
 		playsound_client(user.client, pick_n_take(hallucination_sounds), final_ghost.loc, 70)
 		sleep(rand(0.8 SECONDS, 1.2 SECONDS))
 		user.client.images -= final_ghost
-		time_to_remember -= rand(0.4 SECONDS, 0.6 SECONDS)
-
-	var/list/realization_text = list("These people were your family.",
-		"It hurts to remember.",
-		"They're gone. And you'll never see them again.",
-		"You can't help but think about home.",
-		"You say your goodbyes silently.",
-		"You felt almost invincible with them.")
+		time_to_remember -= 0.3 SECONDS
 
 	COOLDOWN_START(src, remember_cooldown, 2 SECONDS)
+	sleep(1 SECONDS)
+	var/list/realization_text = list("Those people were your family.",
+		"You'll never forget. Even if it hurts to remember.",
+		"They're gone. And you'll never see them again.",
+		"You say your goodbyes silently.",
+		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
+
+/obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person)
+	if(!person)
+		return
+
+	var/mutable_appearance/ghost_effect = new()
+	ghost_effect.icon = getFlatIcon(person)
+	ghost_effect.layer = MOB_LAYER
+	ghost_effect.alpha = rand(150, 180)
+	var/image/final_ghost = image(ghost_effect)
+
+	var/list/ghost_turf = list()
+	for(var/turf/turf in range(src, 3))
+		var/bad_turf = FALSE
+		if(turf.density || istype(turf, /turf/open/space))
+			continue
+		if(!user in view(3, src))
+			continue
+
+		for(var/obj/object in turf)
+			if(object.density)
+				bad_turf = TRUE
+				break
+
+		for(var/mob/mob in turf)
+			bad_turf = TRUE
+			break
+
+		if(bad_turf)
+			continue
+
+		ghost_turf += turf
+
+	final_ghost.loc = pick(ghost_turf)
+
+	return final_ghost
+
+/obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/user)
+	sleep(1 SECONDS)
+	var/list/image/ghosts = list()
+	for(var/i = rand(6, 11), i > 0, i--)
+		for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
+			ghosts += generate_ghost(pick(fallen_personnel))
+			user.client.images += ghosts
+		sleep(rand(0.5 SECONDS, 0.7 SECONDS))
+		user.client.images -= ghosts
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

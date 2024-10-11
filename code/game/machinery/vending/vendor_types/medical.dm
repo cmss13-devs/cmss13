@@ -257,6 +257,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 
+		/obj/item/reagent_container/hypospray/tricordrazine,
+
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
 		/obj/item/reagent_container/glass/bottle/dexalin,

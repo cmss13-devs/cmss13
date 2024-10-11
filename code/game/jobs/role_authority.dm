@@ -523,9 +523,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/turf/join_turf
 		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type])
 			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type]))
-		else if(GLOB.spawns_by_job[new_job.type])// TODO rewrite all early spawners to use title not type
+		else if(GLOB.spawns_by_job[new_job.type])
 			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.type]))
-		else if(GLOB.spawns_by_job[new_job.title]) // fuck it I am not rewriting 50 spawners to use title not the bloody path
+		else if(GLOB.spawns_by_job[new_job.title])
 			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.title]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))

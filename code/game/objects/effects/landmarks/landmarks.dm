@@ -289,10 +289,8 @@
 			if(squad)
 				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
 				LAZYADD(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
-				LAZYADD(GLOB.latejoin_by_squad[squad][job_from_list], src)
 			else
 				LAZYADD(GLOB.spawns_by_job[job_from_list], src)
-				LAZYADD(GLOB.latejoin_by_job[job_from_list], src)
 	else
 		return
 
@@ -473,10 +471,6 @@
 	name = "Intelligence Officer late join"
 	job = JOB_INTEL
 
-/obj/effect/landmark/late_join/upp
-	name = "UPP late join"
-	job_list = UPP_JOB_LIST
-
 /obj/effect/landmark/late_join/police
 	name = "Military Police late join"
 	job = JOB_POLICE
@@ -499,6 +493,7 @@
 	else if(job_list)
 		for(var/job_to_add in job_list)
 			LAZYADD(GLOB.latejoin_by_job[job_to_add], src)
+
 	else
 		GLOB.latejoin += src
 

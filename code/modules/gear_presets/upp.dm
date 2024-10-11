@@ -1,5 +1,9 @@
 /obj/effect/landmark/start/upp
-	name = JOB_UPP
+	name = "UPP start join"
+	job_list = UPP_JOB_LIST
+
+/obj/effect/landmark/late_join/upp
+	name = "UPP late join"
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp

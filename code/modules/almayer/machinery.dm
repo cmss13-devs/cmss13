@@ -196,6 +196,22 @@
 	bound_height = 32
 	unslashable = TRUE
 	unacidable = TRUE
+	///Sound files that play when a hallucination pops up.
+	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
+		'sound/hallucinations/ghost_whisper_02.ogg',
+		'sound/hallucinations/ghost_whisper_03.ogg',
+		'sound/hallucinations/ghost_whisper_04.ogg',
+		'sound/hallucinations/ghost_whisper_05.ogg',
+		'sound/hallucinations/ghost_whisper_06.ogg',
+		'sound/hallucinations/ghost_whisper_07.ogg',
+		'sound/hallucinations/ghost_whisper_08.ogg',
+		'sound/hallucinations/ghost_whisper_09.ogg',
+		'sound/hallucinations/ghost_whisper_10.ogg',
+		'sound/hallucinations/ghost_whisper_11.ogg',
+		'sound/hallucinations/ghost_whisper_12.ogg',
+		'sound/hallucinations/ghost_whisper_13.ogg'
+		)
+
 	var/list/fallen_personnel = list()
 	COOLDOWN_DECLARE(remember_cooldown)
 
@@ -231,11 +247,16 @@
 				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
-/obj/structure/prop/almayer/ship_memorial/attack_hand(mob/user)
+#define FLASHBACK_DEFAULT 1
+#define FLASHBACK_SQUAD 2
+
+/obj/structure/prop/almayer/ship_memorial/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 	if(!length(fallen_personnel) || user.faction != FACTION_MARINE)
 		to_chat(user, SPAN_NOTICE("You start looking through the names on the slab but nothing catches your attention."))
 		return ..()
+
+	hallucination_sounds = initial(hallucination_sounds)
 
 	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
 	///Text that's shown everytime a name is listed.
@@ -245,24 +266,9 @@
 		"You recognize this name,",
 		"You take a deep breath and see",
 		"You remember them.",
-		"A name catches your attention,",
-		"It's them...")
+		"Your attention is drawn to this name,",
+		"You read the name on the slab,")
 
-	///Sound files that play when a hallucination pops up.
-	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
-		'sound/hallucinations/ghost_whisper_02.ogg',
-		'sound/hallucinations/ghost_whisper_03.ogg',
-		'sound/hallucinations/ghost_whisper_04.ogg',
-		'sound/hallucinations/ghost_whisper_05.ogg',
-		'sound/hallucinations/ghost_whisper_06.ogg',
-		'sound/hallucinations/ghost_whisper_07.ogg',
-		'sound/hallucinations/ghost_whisper_08.ogg',
-		'sound/hallucinations/ghost_whisper_09.ogg',
-		'sound/hallucinations/ghost_whisper_10.ogg',
-		'sound/hallucinations/ghost_whisper_11.ogg',
-		'sound/hallucinations/ghost_whisper_12.ogg',
-		'sound/hallucinations/ghost_whisper_13.ogg'
-		)
 
 	fallen_personnel = shuffle(fallen_personnel)
 
@@ -287,22 +293,33 @@
 			continue
 
 		//If there are enough dead guys being listed, have a chance for a proper traumatic flashback.
-		if(i >= 4 && !had_flashback)
+		if(!had_flashback && prob(100))
 			playsound_client(user.client, 'sound/hallucinations/ears_ringing.ogg', user.loc, 40)
 			to_chat(user, SPAN_DANGER("<b>It's like time has stopped. All you can focus on are the names on that list.</b>"))
 			user.apply_effect(6, ROOT)
 			user.apply_effect(6, STUTTER)
-			INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user)
-			time_to_remember = time_to_remember * 0.75
+
 			had_flashback = TRUE
+			var/flashback_type = TRUE
 
-		var/image/final_ghost = generate_ghost(person)
-		user.client.images += final_ghost
+			if(user.assigned_squad)
+				var/list/squad_members = list()
+				for(var/mob/living/carbon/human/squad_member in fallen_personnel)
+					if(squad_member.assigned_squad == user.assigned_squad)
+						squad_members += squad_member
 
-		playsound_client(user.client, pick_n_take(hallucination_sounds), final_ghost.loc, 70)
-		sleep(rand(0.8 SECONDS, 1.2 SECONDS))
-		user.client.images -= final_ghost
-		time_to_remember -= 0.3 SECONDS
+				if(length(squad_members) >= 2)
+					flashback_type = FLASHBACK_SQUAD
+					INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, squad_members)
+					return
+
+			INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
+
+		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
+
+		playsound_client(user.client, pick_n_take(hallucination_sounds), ghost.loc, 70)
+		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.2 SECONDS, 1.5 SECONDS))
+		time_to_remember -= 0.2 SECONDS
 
 	COOLDOWN_START(src, remember_cooldown, 2 SECONDS)
 	sleep(1 SECONDS)
@@ -313,26 +330,23 @@
 		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
 
-/obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person)
+/obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person, mob/living/user, range = 3)
 	if(!person)
 		return
 
-	var/mutable_appearance/ghost_effect = new()
-	ghost_effect.icon = getFlatIcon(person)
-	ghost_effect.layer = MOB_LAYER
-	ghost_effect.alpha = rand(150, 180)
-	var/image/final_ghost = image(ghost_effect)
+	var/obj/effect/memorial_ghost/ghost = new(src, person)
 
 	var/list/ghost_turf = list()
-	for(var/turf/turf in range(src, 3))
+	for(var/turf/turf in range(user.loc, range))
 		var/bad_turf = FALSE
 		if(turf.density || istype(turf, /turf/open/space))
 			continue
-		if(!user in view(3, src))
+
+		if(!(user in view(3, turf)))
 			continue
 
 		for(var/obj/object in turf)
-			if(object.density)
+			if(object.density || (object != ghost && istype(object, /obj/effect/memorial_ghost)))
 				bad_turf = TRUE
 				break
 
@@ -345,19 +359,77 @@
 
 		ghost_turf += turf
 
-	final_ghost.loc = pick(ghost_turf)
+	ghost.loc = pick(ghost_turf)
+	ghost.dir = pick(GLOB.cardinals)
 
-	return final_ghost
+	return ghost
 
-/obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/user)
+/obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/carbon/human/user, flashback_type = FLASHBACK_DEFAULT, list/squad_members)
 	sleep(1 SECONDS)
+
 	var/list/image/ghosts = list()
-	for(var/i = rand(6, 11), i > 0, i--)
-		for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
-			ghosts += generate_ghost(pick(fallen_personnel))
-			user.client.images += ghosts
-		sleep(rand(0.5 SECONDS, 0.7 SECONDS))
-		user.client.images -= ghosts
+
+	switch(flashback_type)
+		if(FLASHBACK_DEFAULT)
+			for(var/i = rand(3, 5), i > 0, i--)
+				for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
+					ghosts += generate_ghost(pick(fallen_personnel), user)
+				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
+				for(var/obj/effect/memorial_ghost/ghost in ghosts)
+					ghost.disappear()
+
+		if(FLASHBACK_SQUAD)
+			var/list/inspection_text = list("Could you have saved them? You sigh and continue reading.",
+			"Thinking someone is behind you, you turn around. Nothing. You look back at the names.",
+			"You're not alone. You're sure of it. The next name reads",
+			"Deep down, you knew it would come to this. You set your eyes back on the slab.",
+			"You wish you could have taken their place. You keep reading.",
+			"It goes dark for a moment. Then you see")
+
+			var/time_to_remember = 4 SECONDS
+			for(var/i = clamp(length(squad_members), 1, 5), i > 0, i--)
+				if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
+					to_chat(user, SPAN_NOTICE("...but maybe it's better to forget."))
+					return
+
+				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
+				ghosts += generate_ghost(picked_member, user, 2)
+				playsound_client(user.client, pick_n_take(hallucination_sounds), picked_member.loc, 70)
+				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
+				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
+
+			sleep(5 SECONDS)
+
+			for(var/obj/effect/memorial_ghost/ghost in ghosts)
+				ghost.disappear()
+
+			var/list/split_name = splittext(user.name, " ")
+			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
+
+#undef FLASHBACK_DEFAULT
+#undef FLASHBACK_SQUAD
+
+/obj/effect/memorial_ghost
+	desc = "May we never forget freedom isn't free."
+
+/obj/effect/memorial_ghost/proc/disappear()
+	var/time_to_disappear = rand(0.4 SECONDS, 0.8 SECONDS)
+	animate(src, alpha = 0, QUAD_EASING, time = time_to_disappear)
+	sleep(time_to_disappear)
+	qdel(src)
+
+/obj/effect/memorial_ghost/Initialize(mapload, mob/living/mob_reference = null)
+	. = ..()
+	if(!mob_reference)
+		qdel()
+		return ..()
+
+	name = mob_reference.name
+	appearance = mob_reference.appearance
+	base_transform = matrix(mob_reference.base_transform)
+	apply_transform(matrix())
+	alpha = 0
+	animate(src, alpha = 120, QUAD_EASING, time = rand(0.3 SECONDS, 0.5 SECONDS))
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

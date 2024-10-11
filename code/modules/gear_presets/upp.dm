@@ -7,12 +7,15 @@
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp
+	allow_additional = TRUE
 	title = FACTION_UPP
-	selection_class = "job_synth"
-	total_positions = 1
-	spawn_positions = 1
+	selection_class = "job_synth" //setup colour
+	total_positions = 5
+	spawn_positions = 5
 	allow_additional = TRUE
 	late_joinable = TRUE
+	scaled = FALSE
+	minimum_playtime_as_job = 0
 	gear_preset = /datum/equipment_preset/upp/soldier
 
 /datum/equipment_preset/upp

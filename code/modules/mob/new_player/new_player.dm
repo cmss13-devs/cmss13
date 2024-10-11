@@ -204,7 +204,7 @@
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
-			AttemptLateSpawn(href_list["job_selected"], antag = text2num( href_list["antag"]))
+			AttemptLateSpawn(href_list["job_selected"])
 			return
 
 		if("tutorial")
@@ -271,7 +271,7 @@
 
 	qdel(src)
 
-/mob/new_player/proc/AttemptLateSpawn(rank , antag = FALSE)
+/mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
 		return
@@ -281,7 +281,7 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE, antag = antag))
+	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
@@ -356,7 +356,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, antag = FALSE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -419,7 +419,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, antag = TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active

@@ -10,8 +10,8 @@
 	allow_additional = TRUE
 	title = FACTION_UPP
 	selection_class = "job_synth" //setup colour
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 1
+	spawn_positions = 1
 	allow_additional = TRUE
 	late_joinable = TRUE
 	scaled = FALSE

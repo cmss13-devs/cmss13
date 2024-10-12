@@ -1,6 +1,13 @@
 GLOBAL_LIST_EMPTY(discord_ranks)
 GLOBAL_LIST_EMPTY_TYPED(donators_info, /datum/donator_info)
 
+GLOBAL_LIST_INIT_TYPED(all_gun_decorators, /datum/decorator/weapon_map_decorator, create_decorators())
+
+/proc/create_decorators()
+	. = list()
+	for(var/decorator_type in subtypesof(/datum/decorator/weapon_map_decorator))
+		. += new decorator_type
+
 /datum/entity/player
 	var/datum/donator_info/donator_info
 
@@ -130,14 +137,14 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 
 	. = ..()
 
-/obj/structure/painting_table/proc/handle_decorator_override(obj/item/decoratable, mob/user)
+/obj/structure/painting_table/proc/handle_decorator_override(obj/item/decoratable, mob/user, selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = ""))
 	if(isgun(decoratable))
 		var/obj/item/weapon/gun/decorating = decoratable
 		if(!decorating.map_specific_decoration || !SSdecorator.decoratable || !SSdecorator.registered_decorators[decorating.type])
 			return
 
 		var/list/active_decorators = list()
-		for(var/datum/decorator/weapon_map_decorator/map_decorator in SSdecorator.registered_decorators[decorating.type])
+		for(var/datum/decorator/weapon_map_decorator/map_decorator in GLOB.all_gun_decorators)
 			if(map_decorator.camouflage_type == "urban")
 				continue
 			active_decorators[map_decorator.camouflage_type] = map_decorator
@@ -145,18 +152,31 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		if(!length(active_decorators))
 			return
 
-		var/selected = tgui_input_list(user, "Select skin for your gun", "Skin Selector", active_decorators)
+		var/selected = tgui_input_list(user, "Select skin for your gun, don't select anything to set normal", "Skin Selector", active_decorators)
 		if(!selected)
+			decorating.icon = initial(decorating.icon)
+			decorating.icon_state = initial(decorating.icon_state)
+			decorating.item_state = initial(decorating.item_state)
+			decorating.item_icons = initial(decorating.item_icons)
+			for(var/slot in decorating.attachments)
+				var/obj/item/attachable/attachment = decorating.attachments[slot]
+				attachment.attach_icon = initial(attachment.attach_icon)
+			attachment.update_icon()
 			return
 
 		var/datum/decorator/weapon_map_decorator/selected_map_decorator = active_decorators[selected]
 		selected_map_decorator.decorate(decorating)
+		for(var/slot in decorating.attachments)
+			var/obj/item/attachable/attachment = decorating.attachments[slot]
+			if(!attachment.select_gamemode_skin(attachment.type))
+				continue
+			attachment.attach_icon = selectable_types[selected] + initial(attachment.attach_icon)
+		attachment.update_icon()
 
 	else if(istype(decoratable, /obj/item/clothing/suit/storage/marine))
 		if(decoratable.flags_atom & NO_SNOW_TYPE)
 			return
 
-		var/list/selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = "")
 		var/selected = tgui_input_list(user, "Select skin for your armor", "Skin Selector", selectable_types)
 		if(!selected)
 			return
@@ -168,7 +188,6 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		if(decoratable.flags_atom & NO_SNOW_TYPE)
 			return
 
-		var/list/selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = "")
 		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)
 		if(!selected)
 			return

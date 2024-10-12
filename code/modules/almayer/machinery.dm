@@ -225,8 +225,7 @@
 		'sound/hallucinations/ghost_whisper_female_12.ogg',
 		'sound/hallucinations/ghost_whisper_female_13.ogg',
 		'sound/hallucinations/ghost_whisper_female_14.ogg',
-		'sound/hallucinations/ghost_whisper_female_15.ogg',
-		'sound/hallucinations/ghost_whisper_female_16.ogg'
+		'sound/hallucinations/ghost_whisper_female_15.ogg'
 		)
 	var/list/went_through_flashback = list()
 	var/list/users_on_cooldown = list()
@@ -300,7 +299,7 @@
 	var/had_flashback = FALSE
 	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
 		if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
-			to_chat(user, SPAN_NOTICE("...but maybe it's better to forget."))
+			cancel_flashback(user)
 			return ..()
 
 		var/interrupted_by_mob = FALSE
@@ -319,7 +318,7 @@
 					if(squad_member.assigned_squad == user.assigned_squad)
 						squad_members += squad_member
 
-				if(length(squad_members) >= 2)
+				if(length(squad_members) >= 4)
 					flashback_type = FLASHBACK_SQUAD
 					INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, squad_members)
 					return
@@ -340,17 +339,15 @@
 		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
 		var/ghost_gender = person.get_gender()
 		if(ghost_gender == FEMALE)
-			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 70)
+			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 55)
 		else
 			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 70)
 
-		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.2 SECONDS, 1.5 SECONDS))
+		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.5 SECONDS, 1.9 SECONDS))
 		time_to_remember -= 0.2 SECONDS
 
-
 	if(had_flashback)
-		users_on_cooldown += user
-		addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown), user), 60 SECONDS)
+		add_to_cooldown(user, 60 SECONDS)
 
 	sleep(1 SECONDS)
 	var/list/realization_text = list("Those people were your family.",
@@ -360,8 +357,27 @@
 		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
 
+/obj/structure/prop/almayer/ship_memorial/proc/add_to_cooldown(mob/user, length)
+	users_on_cooldown.Add(user)
+	addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown), user), length)
+
 /obj/structure/prop/almayer/ship_memorial/proc/remove_from_cooldown(mob/user)
 	users_on_cooldown.Remove(user)
+
+/obj/structure/prop/almayer/ship_memorial/proc/cancel_flashback(mob/user, list/ghosts, flashback_type)
+	switch(flashback_type)
+		if(FLASHBACK_DEFAULT)
+			to_chat(user, SPAN_DANGER("<b>You turn away from the slab. You turn away from them all.</b>"))
+			add_to_cooldown(user, 60 SECONDS)
+		if(FLASHBACK_SQUAD)
+			to_chat(user, SPAN_DANGER("<b>You turn your back on your squad. You just can't. Not now.</b>"))
+			add_to_cooldown(user, 10 SECONDS)
+		else
+			to_chat(user, SPAN_NOTICE("...maybe it's better to forget."))
+
+	if(length(ghosts))
+		for(var/obj/effect/memorial_ghost/ghost in ghosts)
+			ghost.disappear()
 
 /obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person, mob/living/user, range = 3)
 	if(!person)
@@ -405,16 +421,22 @@
 
 	sleep(1 SECONDS)
 
-	var/list/image/ghosts = list()
+	var/list/image/all_ghosts = list()
 
 	switch(flashback_type)
 		if(FLASHBACK_DEFAULT)
-			for(var/i = rand(3, 5), i > 0, i--)
+			var/list/personnel_copy = fallen_personnel.Copy()
+			for(var/i = clamp(length(fallen_personnel), 1, 16), i > 0, i--)
+				if(!do_after(user, 0.1 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
+					cancel_flashback(user, all_ghosts, FLASHBACK_DEFAULT)
+					return
+
 				for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
-					ghosts += generate_ghost(pick(fallen_personnel), user)
-				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
-				for(var/obj/effect/memorial_ghost/ghost in ghosts)
-					ghost.disappear()
+					all_ghosts += generate_ghost(pick_n_take(personnel_copy), user)
+
+			for(var/obj/effect/memorial_ghost/ghost in all_ghosts)
+				ghost.disappear()
+
 
 		if(FLASHBACK_SQUAD)
 			var/list/inspection_text = list("Could you have saved them? You sigh and continue reading.",
@@ -438,11 +460,7 @@
 			var/time_to_remember = 4 SECONDS
 			for(var/i = clamp(length(squad_members), 1, 12), i > 0, i--)
 				if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
-					to_chat(user, SPAN_NOTICE("...but maybe it's better to forget."))
-
-					for(var/obj/effect/memorial_ghost/ghost in ghosts)
-						ghost.disappear()
-
+					cancel_flashback(user, all_ghosts, FLASHBACK_SQUAD)
 					return
 
 				for(var/mob/living/mob in view(src, 6))
@@ -451,11 +469,11 @@
 
 				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
 				var/obj/effect/memorial_ghost/generated_ghost = generate_ghost(picked_member, user, 2)
-				ghosts += generated_ghost
+				all_ghosts += generated_ghost
 
 				var/ghost_gender = picked_member.get_gender()
 				if(ghost_gender == FEMALE)
-					playsound_client(user.client, pick_n_take(voicelines_female), generated_ghost.loc, 70)
+					playsound_client(user.client, pick_n_take(voicelines_female), generated_ghost.loc, 55)
 				else
 					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 70)
 
@@ -465,7 +483,7 @@
 			went_through_flashback += user
 			sleep(5 SECONDS)
 
-			for(var/obj/effect/memorial_ghost/ghost in ghosts)
+			for(var/obj/effect/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()
 
 			var/list/split_name = splittext(user.name, " ")

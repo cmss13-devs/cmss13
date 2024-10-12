@@ -679,7 +679,7 @@
 				continue
 			listener.show_message("<B>[src]</B> broadcasts, [FONT_SIZE_LARGE("\"[msg]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
-		langchat_long_speech(msg, langchat_long_listeners, driver.get_default_language())
+		langchat_long_speech(msg, langchat_long_listeners, driver.get_default_language(), tts_heard_list)
 
 //to handle IFF bullets
 /obj/vehicle/walker/proc/get_target_lock(access_to_check)

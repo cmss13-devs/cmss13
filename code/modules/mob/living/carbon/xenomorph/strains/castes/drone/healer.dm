@@ -61,11 +61,11 @@
 	xeno_cooldown = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
+	no_cooldown_msg = TRUE
 	if(!action_cooldown_check())
 		return
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
-	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/verb/verb_apply_salve()
@@ -124,6 +124,8 @@
 	if(target_is_healer)
 		damage_taken_mod = 1
 
+	for(var/datum/action/xeno_action/activable/apply_salve/source_action in usr.actions)
+		source_action.apply_cooldown()
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)

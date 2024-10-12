@@ -27,8 +27,8 @@
 		list("Box of Buckshot Shells (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box of Shotgun Slugs (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
 		list("M4RA Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M39 HV Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M41A Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M39 HV Magazine (10x20mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", floor(scale * 10), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),

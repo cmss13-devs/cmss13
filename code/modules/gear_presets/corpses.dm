@@ -1284,9 +1284,12 @@
 
 	name = "Corpse - NSPA Constable"
 	assignment = "NSPA Constable"
+	faction_group = FACTION_LIST_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_CST = JOB_PLAYTIME_TIER_1, PAY_SHORT_CST = JOB_PLAYTIME_TIER_2, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/nspa_silver
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/load_gear(mob/living/carbon/human/new_human)
 

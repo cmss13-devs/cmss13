@@ -121,22 +121,77 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	bound_height = 32
 
 /obj/structure/painting_table/attackby(obj/item/item as obj, mob/user as mob)
-	if(user?.client?.player_data?.donator_info)
-		if(user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
-			handle_skinning_item(item, user)
+	if(user?.client?.player_data?.donator_info && user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
+		if(handle_skinning_item(item, user))
 			return
+
+	if(handle_decorator_override(item, user))
+		return
+
 	. = ..()
+
+/obj/structure/painting_table/proc/handle_decorator_override(obj/item/decoratable, mob/user)
+	if(isgun(decoratable))
+		var/obj/item/weapon/gun/decorating = decoratable
+		if(!decorating.map_specific_decoration || !SSdecorator.decoratable || !SSdecorator.registered_decorators[decorating.type])
+			return
+
+		var/list/active_decorators = list()
+		for(var/datum/decorator/weapon_map_decorator/map_decorator in SSdecorator.registered_decorators[decorating.type])
+			if(map_decorator.camouflage_type == "urban")
+				continue
+			active_decorators[map_decorator.camouflage_type] = map_decorator
+
+		if(!length(active_decorators))
+			return
+
+		var/selected = tgui_input_list(user, "Select skin for your gun", "Skin Selector", active_decorators)
+		if(!selected)
+			return
+
+		var/datum/decorator/weapon_map_decorator/selected_map_decorator = active_decorators[selected]
+		selected_map_decorator.decorate(decorating)
+
+	else if(istype(decoratable, /obj/item/clothing/suit/storage/marine))
+		if(decoratable.flags_atom & NO_SNOW_TYPE)
+			return
+
+		var/list/selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = "")
+		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)
+		if(!selected)
+			return
+
+		decoratable.icon_state = selectable_types[selected] + initial(decoratable.icon_state)
+		decoratable.item_state = selectable_types[selected] + initial(decoratable.item_state)
+
+	else if(istype(decoratable, /obj/item/clothing/head/helmet/marine))
+		if(decoratable.flags_atom & NO_SNOW_TYPE)
+			return
+
+		var/list/selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = "")
+		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)
+		if(!selected)
+			return
+
+		decoratable.icon_state = selectable_types[selected] + initial(decoratable.icon_state)
+		decoratable.item_state = selectable_types[selected] + initial(decoratable.item_state)
+
+	return TRUE
 
 /proc/handle_skinning_item(obj/item, mob/user)
 	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[item.type]"]
 	if(!skin_selection)
 		return
+
 	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
 	if(!skin)
 		to_chat(user, SPAN_WARNING("Vending base skin."))
 		return
+
 	user.client.player_data.donator_info.skins_used["[item.type]"] = skin_selection
+	item.flags_atom |= ATOM_DECORATED
 	item.skin(skin)
+	return TRUE
 
 //COMPACT VERSION << ALL IN ONE >>
 /obj/proc/skin(skin)

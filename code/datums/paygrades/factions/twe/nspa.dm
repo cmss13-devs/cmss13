@@ -4,7 +4,7 @@
 /datum/paygrade/nspa
 	name = "NSPA Paygrade"
 	pay_multiplier = 1.4 // Government work. Nice benefits.
-	default_faction = FACTION_TWE
+	default_faction = FACTION_NSPA
 
 /datum/paygrade/nspa/constable
 	paygrade = PAY_SHORT_CST

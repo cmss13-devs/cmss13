@@ -228,9 +228,9 @@
 		'sound/hallucinations/ghost_whisper_female_15.ogg',
 		'sound/hallucinations/ghost_whisper_female_16.ogg'
 		)
-
+	var/list/went_through_flashback = list()
+	var/list/users_on_cooldown = list()
 	var/list/fallen_personnel = list()
-	COOLDOWN_DECLARE(remember_cooldown)
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
@@ -239,7 +239,6 @@
 
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin
 	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
-
 
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
@@ -269,6 +268,14 @@
 
 /obj/structure/prop/almayer/ship_memorial/attack_hand(mob/living/carbon/human/user)
 	. = ..()
+	if(user in went_through_flashback)
+		to_chat(user, SPAN_NOTICE("It's all in the past now. You need to keep looking forward. It's what they would have wanted."))
+		return ..()
+
+	if(user in users_on_cooldown)
+		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this anymore."))
+		return ..()
+
 	if(!length(fallen_personnel) || user.faction != FACTION_MARINE)
 		to_chat(user, SPAN_NOTICE("You start looking through the names on the slab but nothing catches your attention."))
 		return ..()
@@ -340,7 +347,11 @@
 		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.2 SECONDS, 1.5 SECONDS))
 		time_to_remember -= 0.2 SECONDS
 
-	COOLDOWN_START(src, remember_cooldown, 2 SECONDS)
+
+	if(had_flashback)
+		users_on_cooldown += user
+		addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown)), 60 SECONDS)
+
 	sleep(1 SECONDS)
 	var/list/realization_text = list("Those people were your family.",
 		"You'll never forget. Even if it hurts to remember.",
@@ -407,13 +418,14 @@
 			"Thinking someone is behind you, you turn around. Nothing. You look back at the names.",
 			"You're not alone. You're sure of it. The next name reads",
 			"Deep down, you knew it would come to this. You set your eyes back on the slab.",
+			"You always thought it'd be you on that slab. Guess not.",
 			"You wish you could have taken their place. You keep reading.",
 			"It goes dark for a moment. Then you see",
-			"You guess this is what their life is worth. A name on a plaque. The following name reads",
-			"You chuckle to yourself. You had fond memories with these people.",
+			"This is what duty gets you. A name on a plaque. The following name reads",
+			"You had fond memories with these people.",
 			"It's a lot to take in. They're gone, and you'll never see them again.",
 			"Every name you read feels like a dead family member to remember.",
-			"Your mind wanders. It's almost as if they were still here. Alive. You keep reading,"
+			"It's almost as if they were still here. Alive. You keep reading,"
 			)
 
 			inspection_text = shuffle(inspection_text)
@@ -430,6 +442,10 @@
 
 					return
 
+				for(var/mob/living/mob in view(src, 6))
+					if(mob != user && mob.stat == CONSCIOUS)
+						return
+
 				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
 				var/obj/effect/memorial_ghost/generated_ghost = generate_ghost(picked_member, user, 2)
 				ghosts += generated_ghost
@@ -443,6 +459,7 @@
 				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
 
+			went_through_flashback += user
 			sleep(5 SECONDS)
 
 			for(var/obj/effect/memorial_ghost/ghost in ghosts)
@@ -450,6 +467,8 @@
 
 			var/list/split_name = splittext(user.name, " ")
 			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
+			sleep(2.5 SECONDS)
+			to_chat(user, SPAN_NOTICE("<b>It feels final. Maybe it's time to look forward now.</b>"))
 
 #undef FLASHBACK_DEFAULT
 #undef FLASHBACK_SQUAD

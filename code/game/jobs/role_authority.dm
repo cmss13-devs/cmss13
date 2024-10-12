@@ -209,27 +209,24 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	var/chance
-	var/pred_round = FALSE
-	var/datum/view_record/predround_chance/meta = locate() in DB_VIEW(/datum/view_record/predround_chance, DB_COMP("id", DB_EQUALS, 1))
-	if(!meta)
-		var/datum/entity/predround_chance/entity = DB_ENTITY(/datum/entity/predround_chance, 1)
-		entity.chance = 0 // This is 0 instead of 20 because it is going to get increased in modify_pred_round_chance
-		chance = 20
-		entity.save()
+	var/chance = trim(file2text("data/predchance.txt"))
+	if(chance)
+		chance = text2num(chance)
 	else
-		chance = meta.chance
+		chance = 20
 
 	if(prob(chance) && !Check_WO())
-		pred_round = TRUE
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
-		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)		
+		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
+		chance = 0
 
-	DB_FILTER(/datum/entity/predround_chance, DB_COMP("id", DB_EQUALS, 1), CALLBACK(src, PROC_REF(modify_pred_round_chance), pred_round))
+	chance += 20
+	fdel("data/predchance.txt")
+	WRITE_FILE(file("data/predchance.txt"), chance)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -837,8 +834,3 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(new_squad.num_tl >= new_squad.max_tl)
 				return TRUE
 	return FALSE
-
-/datum/authority/branch/role/proc/modify_pred_round_chance(pred_round, list/datum/entity/predround_chance/entities)
-	var/datum/entity/predround_chance/entity = locate() in entities
-	entity.chance = pred_round ? 20 : entity.chance + 20
-	entity.save()

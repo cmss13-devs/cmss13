@@ -56,7 +56,7 @@
 	density = FALSE
 	deconstructible = FALSE
 	needs_power = FALSE
-	indestructible = TRUE // Goes with the tent instead
+	explo_proof = TRUE // Goes with the tent instead
 	layer = INTERIOR_WALLMOUNT_LAYER
 /obj/structure/machinery/computer/ordercomp/tent/Initialize()
 	AddComponent(/datum/component/tent_supported_object)

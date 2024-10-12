@@ -15,7 +15,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	w_class = SIZE_MEDIUM
 	blood_overlay_type = "uniform"
-	var/sensor_faction = FACTION_MARINE
 	var/has_sensor = UNIFORM_HAS_SENSORS // For the crew computer
 	var/sensor_mode = SENSOR_MODE_LOCATION
 		/*

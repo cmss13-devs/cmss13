@@ -211,6 +211,23 @@
 		'sound/hallucinations/ghost_whisper_12.ogg',
 		'sound/hallucinations/ghost_whisper_13.ogg'
 		)
+	var/list/hallucination_sounds_female = list('sound/hallucinations/ghost_whisper_female_01.ogg',
+		'sound/hallucinations/ghost_whisper_female_02.ogg',
+		'sound/hallucinations/ghost_whisper_female_03.ogg',
+		'sound/hallucinations/ghost_whisper_female_04.ogg',
+		'sound/hallucinations/ghost_whisper_female_05.ogg',
+		'sound/hallucinations/ghost_whisper_female_06.ogg',
+		'sound/hallucinations/ghost_whisper_female_07.ogg',
+		'sound/hallucinations/ghost_whisper_female_08.ogg',
+		'sound/hallucinations/ghost_whisper_female_09.ogg',
+		'sound/hallucinations/ghost_whisper_female_10.ogg',
+		'sound/hallucinations/ghost_whisper_female_11.ogg',
+		'sound/hallucinations/ghost_whisper_female_12.ogg',
+		'sound/hallucinations/ghost_whisper_female_13.ogg',
+		'sound/hallucinations/ghost_whisper_female_14.ogg',
+		'sound/hallucinations/ghost_whisper_female_15.ogg',
+		'sound/hallucinations/ghost_whisper_female_16.ogg'
+		)
 
 	var/list/fallen_personnel = list()
 	COOLDOWN_DECLARE(remember_cooldown)
@@ -271,6 +288,7 @@
 
 	///How much time it takes for a name to get read.
 	var/list/voicelines = hallucination_sounds.Copy()
+	var/list/voicelines_female = hallucination_sounds_female.Copy()
 	var/time_to_remember = 4 SECONDS
 	var/had_flashback = FALSE
 	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
@@ -279,7 +297,7 @@
 			return ..()
 
 		var/interrupted_by_mob = FALSE
-		for(var/mob/living/mob in range(src, 7))
+		for(var/mob/living/mob in view(src, 6))
 			if(mob != user && mob.stat == CONSCIOUS)
 				interrupted_by_mob = TRUE
 
@@ -313,8 +331,12 @@
 			continue
 
 		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
+		var/ghost_gender = person.get_gender()
+		if(ghost_gender == FEMALE)
+			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 70)
+		else
+			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 70)
 
-		playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 70)
 		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.2 SECONDS, 1.5 SECONDS))
 		time_to_remember -= 0.2 SECONDS
 
@@ -397,6 +419,7 @@
 			inspection_text = shuffle(inspection_text)
 
 			var/list/voicelines = hallucination_sounds.Copy()
+			var/list/voicelines_female = hallucination_sounds_female.Copy()
 			var/time_to_remember = 4 SECONDS
 			for(var/i = clamp(length(squad_members), 1, 12), i > 0, i--)
 				if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
@@ -410,7 +433,13 @@
 				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
 				var/obj/effect/memorial_ghost/generated_ghost = generate_ghost(picked_member, user, 2)
 				ghosts += generated_ghost
-				playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 70)
+
+				var/ghost_gender = picked_member.get_gender()
+				if(ghost_gender == FEMALE)
+					playsound_client(user.client, pick_n_take(voicelines_female), generated_ghost.loc, 70)
+				else
+					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 70)
+
 				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
 
@@ -445,7 +474,7 @@
 	apply_transform(matrix())
 	alpha = 0
 	desc = "May we never forget freedom isn't free."
-	lyer = MOB_LAYER
+	layer = MOB_LAYER
 	animate(src, alpha = 120, QUAD_EASING, time = rand(0.3 SECONDS, 0.5 SECONDS))
 
 

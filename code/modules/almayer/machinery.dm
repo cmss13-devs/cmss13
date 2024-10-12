@@ -334,7 +334,7 @@
 
 		to_chat(user, SPAN_NOTICE("[pick_n_take(inspection_text)] <b>[person]</b>, [GET_DEFAULT_ROLE(person.job)]."))
 
-		if(interrupted_by_mob || !COOLDOWN_FINISHED(src, remember_cooldown) || !user.client)
+		if(interrupted_by_mob || !user.client)
 			continue
 
 		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
@@ -350,7 +350,7 @@
 
 	if(had_flashback)
 		users_on_cooldown += user
-		addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown)), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown), user), 60 SECONDS)
 
 	sleep(1 SECONDS)
 	var/list/realization_text = list("Those people were your family.",
@@ -359,6 +359,9 @@
 		"You say your goodbyes silently.",
 		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
+
+/obj/structure/prop/almayer/ship_memorial/proc/remove_from_cooldown(mob/user)
+	users_on_cooldown.Remove(user)
 
 /obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person, mob/living/user, range = 3)
 	if(!person)

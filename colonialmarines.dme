@@ -1461,6 +1461,7 @@
 #include "code\modules\admin\verbs\getlogs.dm"
 #include "code\modules\admin\verbs\load_event_level.dm"
 #include "code\modules\admin\verbs\map_template_loadverb.dm"
+#include "code\modules\admin\verbs\mentorhud.dm"
 #include "code\modules\admin\verbs\mob_verbs.dm"
 #include "code\modules\admin\verbs\mooc.dm"
 #include "code\modules\admin\verbs\noclip.dm"

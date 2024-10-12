@@ -164,6 +164,7 @@ Additional game mode variables.
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
 				player.faction = FACTION_YAUTJA
+				player.faction_group = FACTION_LIST_YAUTJA
 				players += player.mind
 	return players
 

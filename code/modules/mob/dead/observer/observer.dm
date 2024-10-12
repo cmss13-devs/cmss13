@@ -377,35 +377,38 @@
 	if(!client || !client.prefs)
 		return
 
-	var/datum/mob_hud/H
+	var/datum/mob_hud/the_hud
 	HUD_toggled = client.prefs.observer_huds
 	for(var/i in HUD_toggled)
 		if(HUD_toggled[i])
 			switch(i)
 				if("Medical HUD")
-					H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-					H.add_hud_to(src, src)
+					the_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+					the_hud.add_hud_to(src, src)
 				if("Security HUD")
-					H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					the_hud.add_hud_to(src, src)
 				if("Squad HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_OBSERVER]
+					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
-					H = GLOB.huds[MOB_HUD_XENO_STATUS]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_UPP]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_UPP]
+					the_hud.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_WY]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_WY]
+					the_hud.add_hud_to(src, src)
 				if("Faction TWE HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_TWE]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_TWE]
+					the_hud.add_hud_to(src, src)
 				if("Faction CLF HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_CLF]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_CLF]
+					the_hud.add_hud_to(src, src)
+				if(HUD_MENTOR_SIGHT)
+					the_hud= GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
 

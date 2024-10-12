@@ -312,7 +312,6 @@
 
 		//If there are enough dead guys being listed, have a chance for a proper traumatic flashback.
 		if(!interrupted_by_mob && !had_flashback)
-			had_flashback = TRUE
 			var/flashback_type = TRUE
 			if(user.assigned_squad)
 				var/list/squad_members = list()
@@ -326,6 +325,7 @@
 					return
 
 			if(prob(i*4))
+				had_flashback = TRUE
 				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
 
 		if(!person)

@@ -161,7 +161,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 			for(var/slot in decorating.attachments)
 				var/obj/item/attachable/attachment = decorating.attachments[slot]
 				attachment.attach_icon = initial(attachment.attach_icon)
-			attachment.update_icon()
+			decorating.update_icon()
 			return
 
 		var/datum/decorator/weapon_map_decorator/selected_map_decorator = active_decorators[selected]
@@ -171,7 +171,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 			if(!attachment.select_gamemode_skin(attachment.type))
 				continue
 			attachment.attach_icon = selectable_types[selected] + initial(attachment.attach_icon)
-		attachment.update_icon()
+		decorating.update_icon()
 
 	else if(istype(decoratable, /obj/item/clothing/suit/storage/marine))
 		if(decoratable.flags_atom & NO_SNOW_TYPE)

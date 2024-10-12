@@ -157,7 +157,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 			return
 
 		var/list/selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = "")
-		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)
+		var/selected = tgui_input_list(user, "Select skin for your armor", "Skin Selector", selectable_types)
 		if(!selected)
 			return
 

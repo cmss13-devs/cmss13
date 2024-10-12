@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Changes a one letter var in follow menu code."
+  - rscadd: "Mobs in Thunder Dome now populate their own category, instead of being confused with live-round mobs."
+  - bugfix: "Yautja no longer appear in the Escaped category of follow menu after round end."

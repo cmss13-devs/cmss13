@@ -122,4 +122,3 @@
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
-

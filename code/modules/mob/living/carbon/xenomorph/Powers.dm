@@ -95,11 +95,13 @@
 		return SECRETE_RESIN_FAIL
 
 	var/build_speed = ((RC.build_time * caste.build_time_mult) / 2)
+	var/build_cost = (total_resin_cost / 2)
+	var/list/blacklist_caste = list(XENO_CASTE_HIVELORD)
+
 	if(istype(A, /obj/effect/alien/weeds/node/designer/speed))
-		if(!thick)
+		if(!(caste_type in blacklist_caste))
 			wait_time -= build_speed
 
-	var/build_cost = (total_resin_cost / 2)
 	if(istype(A, /obj/effect/alien/weeds/node/designer/cost))
 		total_resin_cost -= build_cost
 

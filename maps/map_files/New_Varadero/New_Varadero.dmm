@@ -13181,10 +13181,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
-"kAL" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/west_research)
 "kAN" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -15659,6 +15655,10 @@
 	},
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
+"mta" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "mtp" = (
 /obj/structure/machinery/floodlight{
 	name = "Floodlight"
@@ -19821,7 +19821,7 @@
 	pixel_y = 5
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves)
+/area/varadero/interior_protected/caves/swcaves)
 "pLp" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/machinery/light/small{
@@ -24093,6 +24093,13 @@
 "sRs" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
+"sRJ" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves/swcaves)
 "sRM" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -32027,9 +32034,9 @@ let
 uZV
 let
 cBI
-let
-let
-gFw
+jQa
+jQa
+sRJ
 pGs
 pGs
 pGs
@@ -32209,10 +32216,10 @@ let
 uZV
 let
 cBI
-let
-uZV
-uZV
-let
+jQa
+rgz
+rgz
+jQa
 pGs
 pGs
 pGs
@@ -32391,12 +32398,12 @@ let
 mIE
 let
 cBI
-let
-let
-uZV
-kAL
-let
-hRD
+jQa
+jQa
+rgz
+qwE
+jQa
+abL
 jQa
 jQa
 jQa
@@ -32573,12 +32580,12 @@ mIE
 mIE
 let
 fzc
-let
-jAF
-let
-let
-kAL
-let
+jQa
+mta
+jQa
+jQa
+qwE
+jQa
 gxQ
 jQa
 jQa
@@ -32755,12 +32762,12 @@ tqh
 tqh
 tqh
 uJT
-mIE
-let
-let
-let
-let
-let
+geo
+jQa
+jQa
+jQa
+jQa
+jQa
 jQa
 jQa
 jQa
@@ -32937,12 +32944,12 @@ mEA
 sBk
 ksn
 pGc
-mIE
-let
-let
-let
-let
-let
+geo
+jQa
+jQa
+jQa
+jQa
+jQa
 jQa
 jQa
 jQa
@@ -33119,12 +33126,12 @@ aJc
 hDA
 xrA
 pGc
-mIE
-let
-let
-let
-let
-let
+geo
+jQa
+jQa
+jQa
+jQa
+jQa
 jQa
 jQa
 jQa
@@ -33301,13 +33308,13 @@ gwC
 hDA
 tMx
 tqh
-dxK
-let
-let
-let
-let
-let
-vYW
+xZa
+jQa
+jQa
+jQa
+jQa
+jQa
+jQa
 vYW
 vYW
 vYW
@@ -33485,10 +33492,10 @@ rjE
 fay
 pGs
 pGs
-wxt
-let
-let
-mIE
+gxQ
+jQa
+jQa
+neq
 vYW
 vYW
 vYW

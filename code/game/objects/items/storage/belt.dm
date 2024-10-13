@@ -2083,7 +2083,13 @@
 	name = "\improper L70 pattern ammo load rig"
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
 	icon_state = "rmc_ammo"
-	item_state = "rmc_ammo"
+	item_state = "upp_belt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	has_gamemode_skin = FALSE
 
@@ -2099,7 +2105,14 @@
 	name = "\improper L75 pattern medical storage rig"
 	desc = "The L75 is the standard load-bearing equipment of the RMC. It consists of a modular belt with various clips. This version is designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "rmc_medical"
-	item_state = "rmc_medical"
+	item_state = "upp_belt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	has_gamemode_skin = FALSE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 /obj/item/storage/belt/gun/l905

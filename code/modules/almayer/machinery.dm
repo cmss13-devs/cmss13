@@ -356,7 +356,7 @@
 		if(ghost_gender == FEMALE)
 			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 55)
 		else
-			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 70)
+			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 85)
 
 		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.5 SECONDS, 1.9 SECONDS))
 		time_to_remember -= 0.2 SECONDS
@@ -505,7 +505,7 @@
 				if(ghost_gender == FEMALE)
 					playsound_client(user.client, pick_n_take(voicelines_female), generated_ghost.loc, 55)
 				else
-					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 70)
+					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 85)
 
 				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))

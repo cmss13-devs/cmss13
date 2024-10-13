@@ -306,6 +306,10 @@
 	var/had_flashback = FALSE
 	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
 		if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
+			if(had_flashback)
+				cancel_flashback(user, null, FLASHBACK_DEFAULT)
+				return ..()
+
 			cancel_flashback(user)
 			return ..()
 
@@ -335,7 +339,7 @@
 					INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, squad_members)
 					return
 
-			if(prob(i*4))
+			if(prob(i*2))
 				had_flashback = TRUE
 				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
 

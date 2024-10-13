@@ -128,8 +128,12 @@
 
 
 
-/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left{@OLD;icon_state=@SKIP}
+/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair_alt"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right{@OLD;icon_state=@SKIP}
 /obj/structure/platform/stair_cut/alt{icon_state="kutjevo_platform_sm_stair_alt"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right{@OLD;icon_state=@SKIP}
+/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left{@OLD;icon_state=@SKIP}
 
+/obj/structure/platform/stair_cut{icon_state="platform_stair_alt"} : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;icon_state=@SKIP}
+/obj/structure/platform/stair_cut/alt{icon_state="platform_stair_alt"} : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;icon_state=@SKIP}
+/obj/structure/platform/stair_cut{icon_state="platform_stair"} : /obj/structure/platform/metal/stair_cut/platform_left{@OLD;icon_state=@SKIP}
 /obj/structure/platform/stair_cut : /obj/structure/platform/metal/stair_cut/platform_left{@OLD;icon_state=@SKIP}
 /obj/structure/platform/stair_cut/alt : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;icon_state=@SKIP}

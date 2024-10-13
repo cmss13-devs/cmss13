@@ -644,7 +644,7 @@
 /area/adminlevel/ert_station/uscm_station)
 "hN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	indestructible = 1;
+	explo_proof = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer/no_build,
@@ -1273,7 +1273,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
 	req_one_access = null;
-	indestructible = 1;
+	explo_proof = 1;
 	locked = 1;
 	opacity = 1
 	},
@@ -2753,7 +2753,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
 	req_one_access = null;
-	indestructible = 1;
+	explo_proof = 1;
 	locked = 1;
 	opacity = 1
 	},
@@ -3406,7 +3406,7 @@
 "OZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	dir = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer/no_build,
@@ -4091,7 +4091,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/uscm_station)
 "Yb" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /obj/structure/sign/safety/cryo{
 	pixel_y = 30
 	},

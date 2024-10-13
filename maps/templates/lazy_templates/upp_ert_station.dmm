@@ -875,7 +875,7 @@
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "rk" = (
-/obj/structure/machinery/cryopod/right{
+/obj/structure/machinery/cryopod/no_store/right{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor_marked/west,
@@ -2207,7 +2207,7 @@
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
 "Sx" = (
-/obj/structure/machinery/cryopod/right{
+/obj/structure/machinery/cryopod/no_store/right{
 	layer = 3.1;
 	pixel_y = 13
 	},
@@ -2326,7 +2326,7 @@
 /turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/upp_station)
 "TE" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},

@@ -4869,7 +4869,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "dbQ" = (
@@ -11727,7 +11727,7 @@
 	dir = 4;
 	icon = 'icons/obj/vehicles/apc.dmi';
 	icon_state = "apc_base_com";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21;
 	unacidable = 1;
@@ -12960,7 +12960,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/nw_rockies)
 "hwa" = (
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_full"
@@ -16965,7 +16965,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "jDA" = (
@@ -18269,7 +18269,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/oob)
@@ -19344,7 +19344,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "kMr" = (
@@ -26651,7 +26651,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/lv522/oob)
@@ -31017,7 +31017,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
 	pixel_x = -6;
@@ -38471,7 +38471,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "uqx" = (
@@ -38952,7 +38952,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
 	pixel_x = -6;
@@ -39134,35 +39134,35 @@
 "uGj" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_1";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_2";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_3";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_6";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "Marked_7";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
@@ -45316,7 +45316,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	id = "map_corpo";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0
@@ -45324,7 +45324,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	id = "map_corpo2";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0
@@ -45605,7 +45605,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "UD6 East";
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)

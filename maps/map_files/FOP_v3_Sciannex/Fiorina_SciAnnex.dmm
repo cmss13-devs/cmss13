@@ -2514,7 +2514,7 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
 	health = null;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/floor/greengrid,
@@ -2553,7 +2553,7 @@
 /area/fiorina/station/power_ring)
 "bTI" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/plating/prison,
@@ -2674,11 +2674,11 @@
 "cbE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	indestructible = 1
+	explo_proof = 1
 	},
 /obj/item/clothing/head/that{
 	anchored = 1;
-	indestructible = 1;
+	explo_proof = 1;
 	pixel_y = 7
 	},
 /turf/open/floor/plating/prison,
@@ -13159,7 +13159,7 @@
 /area/fiorina/tumor/ice_lab)
 "knY" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/prison/cell_stripe/east,
@@ -15914,7 +15914,7 @@
 	name = "launch track"
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/plating/prison,
@@ -24787,7 +24787,7 @@
 /area/fiorina/station/chapel)
 "tsc" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /obj/structure/monorail{
@@ -27381,7 +27381,7 @@
 /area/fiorina/station/park)
 "vxz" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/prison/cell_stripe/west,
@@ -27434,7 +27434,7 @@
 /area/fiorina/lz/near_lzI)
 "vzB" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	indestructible = 1;
+	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/plating/prison,

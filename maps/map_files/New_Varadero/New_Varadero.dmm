@@ -276,7 +276,7 @@
 /area/varadero/interior/bunks)
 "alD" = (
 /obj/structure/filtration/coagulation_arm{
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.1;
 	density = 0
 	},
@@ -629,7 +629,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/east{
@@ -1076,7 +1076,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -2066,7 +2066,7 @@
 	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -3633,7 +3633,7 @@
 /area/varadero/interior/oob)
 "cUN" = (
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -4410,7 +4410,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -5490,7 +5490,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -5598,7 +5598,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 3;
 	pixel_y = 15;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -6662,7 +6662,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -7101,7 +7101,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
@@ -7510,7 +7510,7 @@
 	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -7518,7 +7518,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -15;
 	pixel_y = 16;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/coast/beachcorner/south_west,
@@ -8225,7 +8225,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -8824,7 +8824,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -10681,7 +10681,7 @@
 /obj/item/device/flashlight/slime{
 	mouse_opacity = 0;
 	invisibility = 1;
-	indestructible = 1;
+	explo_proof = 1;
 	alpha = 0
 	},
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -11338,7 +11338,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/river/ocean/deep_ocean,
@@ -13434,7 +13434,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 2;
 	pixel_y = 15;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	layer = 4.1
 	},
@@ -14255,7 +14255,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -24;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -14403,7 +14403,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 22;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	layer = 4.1
 	},
@@ -15020,7 +15020,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -16137,7 +16137,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -16464,7 +16464,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -17325,7 +17325,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 22;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	layer = 4.1
 	},
@@ -17467,7 +17467,7 @@
 	name = "South Dock Door";
 	pixel_x = -32;
 	pixel_y = -18;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -18054,7 +18054,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
@@ -18164,7 +18164,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -20381,7 +20381,7 @@
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
 	pixel_x = 3;
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -20391,7 +20391,7 @@
 /area/varadero/interior/maintenance/north)
 "qqR" = (
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -20404,7 +20404,7 @@
 	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -21190,7 +21190,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt/desert1,
@@ -21592,7 +21592,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -22239,7 +22239,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -22621,7 +22621,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 22;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	layer = 4.1
 	},
@@ -23672,7 +23672,7 @@
 /obj/item/device/flashlight/slime{
 	mouse_opacity = 0;
 	invisibility = 1;
-	indestructible = 1;
+	explo_proof = 1;
 	alpha = 0
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -24290,7 +24290,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -25504,7 +25504,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -26970,7 +26970,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -27174,7 +27174,7 @@
 	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -27182,7 +27182,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -15;
 	pixel_y = 5;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/coast/south,
@@ -27291,7 +27291,7 @@
 /area/varadero/interior/maintenance/security)
 "vKv" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
@@ -27789,7 +27789,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 10;
 	pixel_y = 2;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -27835,7 +27835,7 @@
 "wcb" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -27949,7 +27949,7 @@
 	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -27973,7 +27973,7 @@
 "wfR" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/rock/brown{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	name = "sturdy rock(s)";
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
@@ -28584,7 +28584,7 @@
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
 	pixel_x = 8;
-	indestructible = 1
+	explo_proof = 1
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -30061,7 +30061,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -30427,7 +30427,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "ygn" = (
 /obj/structure/catwalk{
-	indestructible = 1
+	explo_proof = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)

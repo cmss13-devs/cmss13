@@ -5529,7 +5529,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
@@ -5537,7 +5537,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Railings";
 	needs_power = 0;
 	pixel_x = 24;
@@ -11436,7 +11436,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bHD" = (
-/obj/structure/ship_ammo/rocket/banshee,
+/obj/structure/dropship_equipment/weapon/launch_bay,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
 "bHG" = (
@@ -18390,7 +18390,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
@@ -19881,7 +19881,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/machinery/door_control{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.5;
 	name = "Shutters";
 	use_power = 0
@@ -21080,7 +21080,7 @@
 	req_one_access_txt = "91;92"
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -24342,7 +24342,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "gpW" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -25431,7 +25431,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
@@ -34186,8 +34186,7 @@
 "kvL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/warden_office)
@@ -34471,6 +34470,10 @@
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/brig/processing)
+"kAU" = (
+/obj/structure/ship_ammo/sentry,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "kBo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -39227,7 +39230,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
@@ -43107,7 +43110,7 @@
 /area/almayer/hallways/upper/port)
 "ofY" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -49085,7 +49088,7 @@
 "qCH" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Secretroom";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -52047,7 +52050,7 @@
 "rKn" = (
 /obj/structure/machinery/door_control{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Shutters";
 	pixel_y = 25;
 	req_one_access_txt = "201";
@@ -59198,7 +59201,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "uPI" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -59504,7 +59507,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "uUB" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -60634,7 +60637,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "vpH" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -64175,7 +64178,7 @@
 "wEg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "agentshuttle";
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -88300,7 +88303,7 @@ pcl
 bpj
 pcl
 gHZ
-pcl
+kAU
 fgE
 btO
 btO

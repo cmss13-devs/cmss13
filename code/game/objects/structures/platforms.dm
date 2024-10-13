@@ -10,7 +10,7 @@
 	anchored = TRUE
 	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_TABLE_LAYER
 	breakable = TRUE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
@@ -42,7 +42,7 @@
 	return ..()
 
 /obj/structure/platform/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_VLOW to EXPLOSION_THRESHOLD_LOW)
@@ -98,7 +98,7 @@
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(stat & indestructible)
+	if(stat & explo_proof)
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -144,7 +144,7 @@
 	anchored = TRUE
 	density = FALSE
 	throwpass = TRUE
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_TABLE_LAYER
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
@@ -195,6 +195,12 @@
 
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right
 	icon_state = "kutjevo_platform_sm_stair_alt"
+
+/obj/structure/platform/metal/stair_cut/strata_right
+	icon_state = "strata_metalplatform_stair"
+
+/obj/structure/platform/metal/stair_cut/strata_left
+	icon_state = "strata_metalplatform_stair_alt"
 
 //------------------------------------//
 //       Metal based Platforms        //

@@ -14718,10 +14718,6 @@
 /obj/structure/inflatable,
 /turf/open/floor/prison/whitepurple/northeast,
 /area/fiorina/station/research_cells)
-"lcJ" = (
-/obj/effect/landmark/queen_spawn,
-/turf/open/floor/prison/whitegreencorner/east,
-/area/fiorina/tumor/ice_lab)
 "ldd" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/stack/rods,
@@ -31014,14 +31010,6 @@
 /obj/item/device/reagent_scanner,
 /turf/open/organic/grass/astroturf,
 /area/fiorina/tumor/fiberbush)
-"xAY" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
-/obj/effect/landmark/ert_spawns/groundside_xeno,
-/turf/open/floor/prison/whitegreencorner/north,
-/area/fiorina/tumor/ice_lab)
 "xBc" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/whitepurple,
@@ -59972,7 +59960,7 @@ hae
 xZR
 hae
 hae
-lcJ
+iRI
 kpq
 mvp
 mvp
@@ -60184,7 +60172,7 @@ eqU
 xZR
 eqU
 eqU
-xAY
+uAg
 kpq
 mvp
 mvp

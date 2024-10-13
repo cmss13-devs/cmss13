@@ -132,6 +132,7 @@
 
 /area/fiorina/station/disco/east_disco
 	name = "Fiorina - East Disco Storage"
+	is_resin_allowed = FALSE
 
 /area/fiorina/station/flight_deck
 	name = "Fiorina - Flight Deck"

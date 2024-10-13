@@ -351,12 +351,15 @@
 
 		///The ghost that is generated this iteration.
 		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
+		if(!ghost)
+			continue
+
 		///Gender of the generated ghost.
 		var/ghost_gender = person.get_gender()
 		if(ghost_gender == FEMALE)
 			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 55)
 		else
-			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 85)
+			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 100)
 
 		addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/memorial_ghost, disappear)), rand(1.5 SECONDS, 1.9 SECONDS))
 		time_to_remember -= 0.2 SECONDS
@@ -429,6 +432,9 @@
 			continue
 
 		ghost_turf += turf
+
+	if(!length(ghost_turf))
+		return
 
 	ghost.loc = pick(ghost_turf)
 	ghost.dir = get_dir(ghost.loc, user.loc)
@@ -505,7 +511,7 @@
 				if(ghost_gender == FEMALE)
 					playsound_client(user.client, pick_n_take(voicelines_female), generated_ghost.loc, 55)
 				else
-					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 85)
+					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 100)
 
 				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
@@ -514,7 +520,7 @@
 			sleep(2 SECONDS)
 
 			//Special sound for those who really treasure their squad.
-			if(length(all_ghosts) >= 6)
+			if(length(all_ghosts) >= 8)
 				to_chat(user, SPAN_NOTICE("<b>There's a distinct sound in the air...<b>"))
 				playsound_client(user.client, 'sound/hallucinations/ghost_taps.ogg', user.loc, 70)
 

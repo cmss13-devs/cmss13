@@ -11996,6 +11996,9 @@
 "aVa" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
+/obj/item/storage/box/stompers{
+	pixel_y = 15
+	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aVb" = (

@@ -108,6 +108,14 @@
 	name = "Fiorina - Low Security Cells"
 	icon_state = "station1"
 
+/area/fiorina/station/lowsec/showers_laundry
+	name = "Fiorina - Low Security Showers & Laundry"
+	is_resin_allowed = FALSE
+
+/area/fiorina/station/lowsec/east
+	name = "Fiorina - Low Security Eastside"
+	is_resin_allowed = FALSE
+
 /area/fiorina/station/power_ring
 	name = "Fiorina - Engineering Ring"
 	icon_state = "power0"

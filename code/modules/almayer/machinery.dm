@@ -196,7 +196,8 @@
 	bound_height = 32
 	unslashable = TRUE
 	unacidable = TRUE
-	///Sound files that play when a hallucination pops up.
+	//Sound files that play when a hallucination pops up.
+	///Voicelines for male ghosts.
 	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
 		'sound/hallucinations/ghost_whisper_02.ogg',
 		'sound/hallucinations/ghost_whisper_03.ogg',
@@ -211,6 +212,7 @@
 		'sound/hallucinations/ghost_whisper_12.ogg',
 		'sound/hallucinations/ghost_whisper_13.ogg'
 		)
+	///Voicelines for female ghosts.
 	var/list/hallucination_sounds_female = list('sound/hallucinations/ghost_whisper_female_01.ogg',
 		'sound/hallucinations/ghost_whisper_female_02.ogg',
 		'sound/hallucinations/ghost_whisper_female_03.ogg',
@@ -227,8 +229,11 @@
 		'sound/hallucinations/ghost_whisper_female_14.ogg',
 		'sound/hallucinations/ghost_whisper_female_15.ogg'
 		)
+	///All mobs that went through a squad flashback.
 	var/list/went_through_flashback = list()
+	///All mobs that are on a temporary cooldown from using the slab again.
 	var/list/users_on_cooldown = list()
+	///Mob references to the owners of the dogtags that are placed on the slab.
 	var/list/fallen_personnel = list()
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
@@ -264,6 +269,7 @@
 
 #define FLASHBACK_DEFAULT 1
 #define FLASHBACK_SQUAD 2
+#define REQUIRED_DEAD_SQUADDIES 4
 
 /obj/structure/prop/almayer/ship_memorial/attack_hand(mob/living/carbon/human/user)
 	. = ..()
@@ -280,7 +286,7 @@
 		return ..()
 
 	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
-	///Text that's shown everytime a name is listed.
+	///Text that's prefixed everytime a name is listed.
 	var/list/inspection_text = list("A name catches your eyes,",
 		"You know this name,",
 		"This one...",
@@ -292,16 +298,18 @@
 
 	fallen_personnel = shuffle(fallen_personnel)
 
-	///How much time it takes for a name to get read.
 	var/list/voicelines = hallucination_sounds.Copy()
 	var/list/voicelines_female = hallucination_sounds_female.Copy()
+	///How much time it takes for a name to get read.
 	var/time_to_remember = 4 SECONDS
+	///Did a flashback event trigger?
 	var/had_flashback = FALSE
 	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
 		if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
 			cancel_flashback(user)
 			return ..()
 
+		///Is someone else within a set range of the mob interacting with the slab?
 		var/interrupted_by_mob = FALSE
 		for(var/mob/living/mob in view(src, 6))
 			if(mob != user && mob.stat == CONSCIOUS)
@@ -309,16 +317,20 @@
 
 		var/mob/living/carbon/human/person = fallen_personnel[i]
 
-		//If there are enough dead guys being listed, have a chance for a proper traumatic flashback.
+		//There is a chance for special flashback events to trigger, and a guaranteed one for squad marines
+		//if they recover enough dogtags from their squad.
 		if(!interrupted_by_mob && !had_flashback)
 			var/flashback_type = TRUE
+			//If the user is part of a squad, check the memorial for dogtags belonging to their squad.
+			//If there are enough (equal or greater than REQUIRED_DEAD_SQUADDIES), trigger a special flashback sequence.
 			if(user.assigned_squad)
+				///Every squad member of the user that is listed on the memorial.
 				var/list/squad_members = list()
 				for(var/mob/living/carbon/human/squad_member in fallen_personnel)
 					if(squad_member.assigned_squad == user.assigned_squad)
 						squad_members += squad_member
 
-				if(length(squad_members) >= 4)
+				if(length(squad_members) >= REQUIRED_DEAD_SQUADDIES)
 					flashback_type = FLASHBACK_SQUAD
 					INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, squad_members)
 					return
@@ -327,6 +339,7 @@
 				had_flashback = TRUE
 				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
 
+		//If we somehow lose a mob reference, we need to account for it.
 		if(!person)
 			to_chat(user, SPAN_NOTICE("You can't bring yourself to read this name... you press on."))
 			continue
@@ -336,7 +349,9 @@
 		if(interrupted_by_mob || !user.client)
 			continue
 
+		///The ghost that is generated this iteration.
 		var/obj/effect/memorial_ghost/ghost = generate_ghost(person, user)
+		///Gender of the generated ghost.
 		var/ghost_gender = person.get_gender()
 		if(ghost_gender == FEMALE)
 			playsound_client(user.client, pick_n_take(voicelines_female), ghost.loc, 55)
@@ -350,6 +365,8 @@
 		add_to_cooldown(user, 60 SECONDS)
 
 	sleep(1 SECONDS)
+
+	///A sentence that's displayed at the end of the slab interaction.
 	var/list/realization_text = list("Those people were your family.",
 		"You'll never forget. Even if it hurts to remember.",
 		"They're gone. And you'll never see them again.",
@@ -357,18 +374,21 @@
 		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
 
+///Proc for adding mobs to the users_on_cooldown list.
 /obj/structure/prop/almayer/ship_memorial/proc/add_to_cooldown(mob/user, length)
 	users_on_cooldown.Add(user)
 	addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown), user), length)
 
+///Proc for removing mobs from the users_on_cooldown list.
 /obj/structure/prop/almayer/ship_memorial/proc/remove_from_cooldown(mob/user)
 	users_on_cooldown.Remove(user)
 
+///Proc for canceling memorial interaction. Used when interrupted by a mob or when the do_after() is cancelled.
 /obj/structure/prop/almayer/ship_memorial/proc/cancel_flashback(mob/user, list/ghosts, flashback_type)
 	switch(flashback_type)
 		if(FLASHBACK_DEFAULT)
-			to_chat(user, SPAN_DANGER("<b>You turn away from the slab. You turn away from them all.</b>"))
-			add_to_cooldown(user, 60 SECONDS)
+			to_chat(user, SPAN_DANGER("<b>You turn away from the slab. You turn away from them all...</b>"))
+			add_to_cooldown(user, 25 SECONDS)
 		if(FLASHBACK_SQUAD)
 			to_chat(user, SPAN_DANGER("<b>You turn your back on your squad. You just can't. Not now.</b>"))
 			add_to_cooldown(user, 10 SECONDS)
@@ -379,12 +399,14 @@
 		for(var/obj/effect/memorial_ghost/ghost in ghosts)
 			ghost.disappear()
 
+///Proc for generating a ghost image of a mob.
 /obj/structure/prop/almayer/ship_memorial/proc/generate_ghost(person, mob/living/user, range = 3)
 	if(!person)
 		return
 
 	var/obj/effect/memorial_ghost/ghost = new(src, person)
 
+	///All acceptable turfs where the ghost could spawn.
 	var/list/ghost_turf = list()
 	for(var/turf/turf in range(user.loc, range))
 		var/bad_turf = FALSE
@@ -413,6 +435,7 @@
 
 	return ghost
 
+///Proc that handles special flashback events.
 /obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/carbon/human/user, flashback_type = FLASHBACK_DEFAULT, list/squad_members)
 	playsound_client(user.client, 'sound/hallucinations/ears_ringing.ogg', user.loc, 40)
 	to_chat(user, SPAN_DANGER("<b>It's like time has stopped. All you can focus on are the names on that list.</b>"))
@@ -421,9 +444,11 @@
 
 	sleep(1 SECONDS)
 
+	///Every ghost that was generated in the flashback event.
 	var/list/image/all_ghosts = list()
 
 	switch(flashback_type)
+		//Default flashback. Spawns ghost images of every (max 16) name listed on the memorial.
 		if(FLASHBACK_DEFAULT)
 			var/list/personnel_copy = fallen_personnel.Copy()
 			for(var/i = clamp(length(fallen_personnel), 1, 16), i > 0, i--)
@@ -432,12 +457,15 @@
 					return
 
 				for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
-					all_ghosts += generate_ghost(pick_n_take(personnel_copy), user)
+					all_ghosts += generate_ghost(pick_n_take(personnel_copy), user, 4)
 
 			for(var/obj/effect/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()
 
-
+		//Special flashback reserved for squad marines that is guaranteed to trigger if there are REQUIRED_DEAD_SQUADDIES amount
+		//of squad dogtags on the memorial. Only counts the squad members from which the user is a part of.
+		//Spawns ghost images of all (max 12) dead squad members listed on the memorial.
+		//On completion, the user can no longer interact with the slab. A final goodbye.
 		if(FLASHBACK_SQUAD)
 			var/list/inspection_text = list("Could you have saved them? You sigh and continue reading.",
 			"Thinking someone is behind you, you turn around. Nothing. You look back at the names.",
@@ -457,6 +485,7 @@
 
 			var/list/voicelines = hallucination_sounds.Copy()
 			var/list/voicelines_female = hallucination_sounds_female.Copy()
+			///How long it takes for a ghost to get generated.
 			var/time_to_remember = 4 SECONDS
 			for(var/i = clamp(length(squad_members), 1, 12), i > 0, i--)
 				if(!do_after(user, time_to_remember, INTERRUPT_ALL_OUT_OF_RANGE))
@@ -465,6 +494,7 @@
 
 				for(var/mob/living/mob in view(src, 6))
 					if(mob != user && mob.stat == CONSCIOUS)
+						cancel_flashback(user, all_ghosts, FLASHBACK_SQUAD)
 						return
 
 				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
@@ -486,6 +516,7 @@
 			for(var/obj/effect/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()
 
+			///Name of the user, split so we can retrieve their first name.
 			var/list/split_name = splittext(user.name, " ")
 			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
 			sleep(2.5 SECONDS)
@@ -493,6 +524,7 @@
 
 #undef FLASHBACK_DEFAULT
 #undef FLASHBACK_SQUAD
+#undef REQUIRED_DEAD_SQUADDIES
 
 /obj/effect/memorial_ghost
 
@@ -503,10 +535,10 @@
 	qdel(src)
 
 /obj/effect/memorial_ghost/Initialize(mapload, mob/living/mob_reference = null)
-	. = ..()
 	if(!mob_reference)
+		. = ..()
 		qdel()
-		return ..()
+		return
 
 	name = mob_reference.name
 	appearance = mob_reference.appearance
@@ -516,6 +548,7 @@
 	desc = "May we never forget freedom isn't free."
 	layer = MOB_LAYER
 	animate(src, alpha = 120, QUAD_EASING, time = rand(0.3 SECONDS, 0.5 SECONDS))
+	return ..()
 
 
 /obj/structure/prop/almayer/particle_cannon

@@ -177,10 +177,12 @@
 /area/lv624/ground/colony/north_tcomms_road
 	name = "\improper North T-Comms Road"
 	icon_state = "north"
+	is_resin_allowed = FALSE
 
 /area/lv624/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
+	is_resin_allowed = FALSE
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
@@ -295,6 +297,7 @@
 /area/lv624/lazarus/corporate_dome
 	name = "\improper Corporate Dome"
 	icon_state = "green"
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/yggdrasil
 	name = "\improper Yggdrasil Tree"
@@ -315,6 +318,7 @@
 	name = "\improper Security"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
@@ -325,6 +329,7 @@
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
 	minimap_color = MINIMAP_AREA_COMMAND
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
@@ -348,11 +353,13 @@
 /area/lv624/lazarus/chapel
 	name = "\improper Chapel"
 	icon_state = "chapel"
+	is_resin_allowed = FALSE
 	//ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg')
 
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/sleep_male
 	name = "\improper Male Dorm"

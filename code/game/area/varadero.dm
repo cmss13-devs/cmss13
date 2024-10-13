@@ -201,6 +201,7 @@
 	name = "New Varadero - Medical"
 	icon_state = "offices2"
 	minimap_color = MINIMAP_AREA_MEDBAY
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/maintenance
 	name = "New Varadero - Central Maintenance"
@@ -299,6 +300,11 @@
 
 /area/varadero/interior/caves/north_research
 	name = "New Varadero - North Research Caves"
+	icon_state = "tunnels4"
+	is_resin_allowed = FALSE
+
+/area/varadero/interior/caves/west_research
+	name = "New Varadero - West Research Caves"
 	icon_state = "tunnels4"
 
 /area/varadero/interior/caves/east

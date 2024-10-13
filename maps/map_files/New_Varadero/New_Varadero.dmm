@@ -1739,6 +1739,10 @@
 	},
 /turf/open/floor/shiva/snow_mat/west,
 /area/varadero/interior/maintenance)
+"boZ" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/west_research)
 "bpH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3223,7 +3227,7 @@
 "cBI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "cBW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/snow_mat/east,
@@ -3899,6 +3903,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"deN" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "deX" = (
 /obj/item/trash/boonie,
 /turf/open/floor/shiva/yellow/west,
@@ -4346,7 +4354,7 @@
 "dxK" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "dyl" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -6878,7 +6886,7 @@
 "fzc" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "fzx" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -8376,6 +8384,13 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/hall_SE)
+"gFw" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/west_research)
 "gFx" = (
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
@@ -9488,10 +9503,6 @@
 /obj/structure/window_frame/wood,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
-"hGl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
 "hGz" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/wredfull,
@@ -9789,6 +9800,10 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
+"hRD" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "hTd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -11912,6 +11927,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
+"jAF" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "jAI" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
@@ -13165,7 +13184,7 @@
 "kAL" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "kAN" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -13876,6 +13895,9 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/wood/wood_broken3,
 /area/varadero/interior/hall_SE)
+"let" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "leF" = (
 /obj/structure/machinery/optable{
 	desc = "This maybe could be used for advanced medical procedures.";
@@ -15919,7 +15941,7 @@
 	health = 300
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "mCY" = (
 /obj/structure/prop/structure_lattice{
 	density = 0;
@@ -16010,6 +16032,9 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
+"mIE" = (
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/west_research)
 "mIG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
@@ -16212,10 +16237,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
-"mQF" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/north_research)
 "mQG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -21418,7 +21439,7 @@
 "qRi" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "qRy" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2
@@ -23081,7 +23102,7 @@
 	pixel_x = 3
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "sfM" = (
 /obj/structure/barricade/handrail/wire,
 /obj/structure/machinery/light{
@@ -25307,7 +25328,7 @@
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "tSR" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -26487,6 +26508,13 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
+"uVv" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "uVy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/tool/crowbar/red,
@@ -26594,6 +26622,9 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"uZV" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/west_research)
 "uZY" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/glass{
 	req_access = null;
@@ -28340,6 +28371,9 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
+"wgS" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/west_research)
 "wgU" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -28798,6 +28832,10 @@
 /obj/structure/machinery/power/monitor,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"wxt" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/west_research)
 "wxu" = (
 /obj/structure/bed/chair,
 /turf/open/floor/white,
@@ -30554,7 +30592,7 @@
 "xYB" = (
 /obj/item/tool/pickaxe,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
+/area/varadero/interior/caves/west_research)
 "xYC" = (
 /obj/item/device/camera_film{
 	pixel_x = 4;
@@ -31606,18 +31644,18 @@ pGs
 pGs
 pGs
 pGs
-srg
-srg
-xCn
-xCn
+mIE
+mIE
+let
+let
 pGs
 pGs
 pGs
 pGs
-xCn
+let
 xYB
 dxK
-srg
+mIE
 pGs
 pGs
 pGs
@@ -31786,25 +31824,25 @@ pGs
 pGs
 pGs
 pGs
-srg
-xCn
-xCn
-xCn
-srg
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-srg
-ljt
+mIE
+let
+let
+let
+mIE
+let
+let
+let
+let
+let
+let
+let
+let
+let
+let
+let
+let
+mIE
+gFw
 dxK
 pGs
 pGs
@@ -31962,36 +32000,36 @@ pGs
 pGs
 pGs
 pGs
-uHY
-ljt
-xCn
-xCn
-xCn
-xCn
-xCn
+wxt
+gFw
+let
+let
+let
+let
+let
 mCX
-xCn
-xCn
-xCn
-xCn
+let
+let
+let
+let
 tSQ
-xCn
-xCn
-xCn
-xCn
-xCn
-srg
-srg
-xCn
-xCn
-xCn
-xCn
-oPQ
-xCn
+let
+let
+let
+let
+let
+mIE
+mIE
+let
+let
+let
+let
+uZV
+let
 cBI
-xCn
-xCn
-ljt
+let
+let
+gFw
 pGs
 pGs
 pGs
@@ -32138,43 +32176,43 @@ pGs
 pGs
 pGs
 pGs
-srg
-srg
-ljt
+mIE
+mIE
+gFw
 pGs
 pGs
-uHY
-xCn
-oPQ
-xCn
-xCn
-xCn
-xCn
-xCn
+wxt
+let
+uZV
+let
+let
+let
+let
+let
 qRi
-oPQ
-xCn
-xCn
-xCn
-xCn
-xCn
-oPQ
-xCn
-xCn
-srg
-fHk
-xCn
-xCn
-oVt
-xCn
-xCn
-oPQ
-xCn
+uZV
+let
+let
+let
+let
+let
+uZV
+let
+let
+mIE
+hRD
+let
+let
+jAF
+let
+let
+uZV
+let
 cBI
-xCn
-oPQ
-oPQ
-xCn
+let
+uZV
+uZV
+let
 pGs
 pGs
 pGs
@@ -32313,52 +32351,52 @@ pGs
 pGs
 pGs
 dxK
-uHY
-xCn
-xCn
-uHY
+wxt
+let
+let
+wxt
 pGs
-srg
-xCn
-xCn
-xCn
-oPQ
-uHY
-xCn
-qYg
-xCn
-oPQ
-srg
-xCn
-srg
-xCn
-oPQ
-oPQ
-oPQ
-xCn
-xCn
-srg
-srg
-xCn
-oPQ
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-srg
-xCn
+mIE
+let
+let
+let
+uZV
+wxt
+let
+uVv
+let
+uZV
+mIE
+let
+mIE
+let
+uZV
+uZV
+uZV
+let
+let
+mIE
+mIE
+let
+uZV
+let
+let
+let
+let
+let
+let
+let
+let
+let
+mIE
+let
 cBI
-xCn
-xCn
-oPQ
+let
+let
+uZV
 kAL
-xCn
-fHk
+let
+hRD
 jQa
 jQa
 jQa
@@ -32494,53 +32532,53 @@ pGs
 pGs
 pGs
 dxK
-srg
-xCn
-xCn
-xCn
-xCn
-uHY
-xCn
-xCn
-fHk
-xCn
-oPQ
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-xCn
-oPQ
-oPQ
-xCn
-xCn
-oVt
-xCn
+mIE
+let
+let
+let
+let
+wxt
+let
+let
+hRD
+let
+uZV
+let
+let
+let
+let
+let
+let
+let
+let
+let
+let
+uZV
+uZV
+let
+let
+jAF
+let
 sfF
-ljt
-uHY
-qul
-qul
-qul
-qul
-qul
-qul
-xCn
-srg
-srg
-xCn
+gFw
+wxt
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+let
+mIE
+mIE
+let
 fzc
-xCn
-oVt
-xCn
-xCn
+let
+jAF
+let
+let
 kAL
-xCn
+let
 gxQ
 jQa
 jQa
@@ -32675,23 +32713,23 @@ pGs
 pGs
 pGs
 pGs
-xCn
-xCn
-xCn
-xCn
-xCn
-oPQ
-oPQ
-oPQ
-xCn
-xCn
-oVt
-xCn
-xCn
-oPQ
-xCn
-xCn
-hGl
+let
+let
+let
+let
+let
+uZV
+uZV
+uZV
+let
+let
+jAF
+let
+let
+uZV
+let
+let
+ncL
 tMJ
 wpG
 vYp
@@ -32717,12 +32755,12 @@ tqh
 tqh
 tqh
 uJT
-srg
-xCn
-xCn
-xCn
-xCn
-xCn
+mIE
+let
+let
+let
+let
+let
 jQa
 jQa
 jQa
@@ -32857,23 +32895,23 @@ pGs
 pGs
 pGs
 pGs
-xCn
-xCn
-xCn
-xbc
-xCn
-oPQ
-oPQ
-oPQ
-xCn
-xCn
-xCn
-oPQ
-xCn
-xCn
-srg
-xCn
-hGl
+let
+let
+let
+boZ
+let
+uZV
+uZV
+uZV
+let
+let
+let
+uZV
+let
+let
+mIE
+let
+ncL
 efw
 kXQ
 efw
@@ -32899,12 +32937,12 @@ mEA
 sBk
 ksn
 pGc
-srg
-xCn
-xCn
-xCn
-xCn
-xCn
+mIE
+let
+let
+let
+let
+let
 jQa
 jQa
 jQa
@@ -33039,23 +33077,23 @@ pGs
 pGs
 pGs
 pGs
-xCn
-xCn
-oPQ
-xCn
-oPQ
-xCn
-xCn
-hRv
-xCn
-xCn
-xCn
-oPQ
-xCn
-uHY
-xCn
-xCn
-mQF
+let
+let
+uZV
+let
+uZV
+let
+let
+deN
+let
+let
+let
+uZV
+let
+wxt
+let
+let
+vYp
 efw
 kXQ
 efw
@@ -33081,12 +33119,12 @@ aJc
 hDA
 xrA
 pGc
-srg
-xCn
-xCn
-xCn
-xCn
-xCn
+mIE
+let
+let
+let
+let
+let
 jQa
 jQa
 jQa
@@ -33221,23 +33259,23 @@ pGs
 pGs
 pGs
 pGs
-uHY
-xCn
-xCn
-xCn
-srg
-xCn
-srg
-qul
-uHY
-srg
-srg
-ljt
-qul
-qul
-qul
-uHY
-hhM
+wxt
+let
+let
+let
+mIE
+let
+mIE
+wgS
+wxt
+mIE
+mIE
+gFw
+wgS
+wgS
+wgS
+wxt
+yks
 qDh
 qlj
 qlj
@@ -33264,11 +33302,11 @@ hDA
 tMx
 tqh
 dxK
-xCn
-xCn
-xCn
-xCn
-xCn
+let
+let
+let
+let
+let
 vYW
 vYW
 vYW
@@ -33403,23 +33441,23 @@ xTA
 pGs
 pGs
 pGs
-qul
-ljt
-oPQ
-oPQ
-oPQ
-ljt
-qul
-qul
-qul
-qul
-qul
-qul
-qul
-qul
-qul
-qul
-hhM
+wgS
+gFw
+uZV
+uZV
+uZV
+gFw
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+wgS
+yks
 efw
 efw
 kYN
@@ -33445,12 +33483,12 @@ gwC
 odD
 rjE
 fay
-qul
-qul
-uHY
-xCn
-xCn
-srg
+pGs
+pGs
+wxt
+let
+let
+mIE
 vYW
 vYW
 vYW
@@ -33628,8 +33666,8 @@ ftA
 fay
 fay
 fay
-ebr
-ebr
+pGs
+pGs
 pKK
 vYW
 loA
@@ -33810,8 +33848,8 @@ hBX
 eEY
 xhx
 fay
-ebr
-ebr
+pGs
+pGs
 vYW
 vYW
 hto
@@ -33992,9 +34030,9 @@ eWR
 oXi
 gEy
 fay
-ebr
-ebr
-ebr
+pGs
+pGs
+pGs
 vYW
 vYW
 vYW
@@ -34174,9 +34212,9 @@ izs
 oyi
 wvI
 fay
-ebr
-ebr
-ebr
+pGs
+pGs
+pGs
 vYW
 vYW
 uQa
@@ -34356,8 +34394,8 @@ ltW
 qQF
 okB
 fay
-ebr
-ebr
+pGs
+pGs
 vYW
 vYW
 uQa
@@ -34538,7 +34576,7 @@ ltW
 qQF
 eXr
 fay
-ebr
+pGs
 vYW
 neq
 vYW

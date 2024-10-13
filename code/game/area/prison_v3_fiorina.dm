@@ -112,19 +112,29 @@
 	name = "Fiorina - Engineering Ring"
 	icon_state = "power0"
 	minimap_color = MINIMAP_AREA_ENGI
+	is_resin_allowed = FALSE
+
+/area/fiorina/station/power_ring/reactor
+	name = "Fiorina - Engineering Reactor"
+	is_resin_allowed = TRUE
 
 /area/fiorina/station/disco
-	name = "Fiorina - Disco Storage"
+	name = "Fiorina - West Disco Storage"
 	icon_state = "disco"
+
+/area/fiorina/station/disco/east_disco
+	name = "Fiorina - East Disco Storage"
 
 /area/fiorina/station/flight_deck
 	name = "Fiorina - Flight Deck"
 	icon_state = "police_line"
+	is_resin_allowed = FALSE
 
 /area/fiorina/station/security
 	name = "Fiorina - Security Hub"
 	icon_state = "security_hub"
 	minimap_color = MINIMAP_AREA_SEC
+	is_resin_allowed = FALSE
 
 /area/fiorina/station/security/wardens
 	name = "Fiorina - Warden's Office"
@@ -165,7 +175,11 @@
 	name = "Fiorina - Research Cellblock"
 	icon_state = "station0"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	is_resin_allowed = FALSE
 
+/area/fiorina/station/research_cells/basketball
+	name = "Fiorina - Basketball Court"
+	is_resin_allowed = TRUE
 
 //telecomms areas
 /area/fiorina/station/telecomm

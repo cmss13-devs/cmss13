@@ -20,6 +20,7 @@
 	name = "\improper Garage Workshop"
 	icon_state = "green"
 	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
 
 /area/bigred/ground/ship
 	name = "\improper Crashed Vessel"
@@ -428,19 +429,21 @@
 	name = "\improper General Store"
 	icon_state = "blueold"
 	ceiling = CEILING_METAL
-
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/marshal_office
 	name = "\improper Marshal Offices"
 	icon_state = "brig"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_SEC
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/medical
 	name = "\improper Hospital"
 	icon_state = "CMO"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_MEDBAY
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/admin_building
 	name = "\improper Administration"
@@ -545,11 +548,15 @@
 	name = "\improper Engineering Communications Relay"
 	is_landing_zone = FALSE
 
-
 /area/bigredv2/outside/engineering
 	name = "\improper Engineering Complex"
 	icon_state = "engine"
 	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
+
+/area/bigredv2/outside/engineering/reactor
+	name = "\improper Main Reactor"
+	is_resin_allowed = TRUE
 
 /area/bigredv2/outside/storage
 	name = "\improper Storage"
@@ -650,21 +657,25 @@
 	name = "\improper Northern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/lz1_telecomm_cas
 	name = "\improper Virology Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/lz2_west_cas
 	name = "\improper Southwestern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/lz2_south_cas
 	name = "\improper ETA Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/filtration_cave_cas
 	name = "\improper Filtration Lockdown Caves Entrance"

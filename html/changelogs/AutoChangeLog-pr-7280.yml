@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed autoinjectors not reducing vendor reagents on refill if they were fully emptied."
+  - bugfix: "Fixed crystals (and any other reagent container not whitelisted) from being refilled in vendors"
+  - balance: "This means emergency injectors do not refill again."
+  - balance: "Added tricord hypospray chem refill support to Wey-Med Plus"

@@ -10,7 +10,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	hackable = FALSE
 
 	chem_refill = list(
@@ -27,7 +27,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -90,7 +90,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -109,7 +109,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -374,7 +374,7 @@
 	desc = "An automated restockable storage vendor for use in organizing FOB supplies."
 	req_access = list(ACCESS_MARINE_CARGO)
 	density = TRUE
-	indestructible = TRUE // Deleted with the tent instead
+	explo_proof = TRUE // Deleted with the tent instead
 	needs_power = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/Initialize()

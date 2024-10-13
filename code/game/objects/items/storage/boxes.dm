@@ -604,6 +604,7 @@
 /obj/item/storage/box/explosive/antitank_mine
 	name = "\improper M19 Antitank mine box"
 	desc = "A secure box holding three M19 anti-tank, pressure-fuse mines."
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "antitank_minebox"
 	w_class = SIZE_LARGE
 	max_storage_space = 14

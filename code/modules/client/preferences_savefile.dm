@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 26
+#define SAVEFILE_VERSION_MAX 27
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -160,6 +160,16 @@
 			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_MIDDLE
 		else
 			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
+
+	if(savefile_version < 27)
+		// Gives staff afk protection by default.
+		S["toggles_admin"] << TOGGLES_ADMIN_DEFAULT
+		// Updates default chat settings to enable FF logs for new staff.
+		var/chat_settings = 0
+		S["toggles_chat"] >> chat_settings
+		chat_settings &= ~CHAT_ATTACKLOGS
+		chat_settings |= CHAT_FFATTACKLOGS
+		S["toggles_chat"] << chat_settings
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -378,7 +388,7 @@
 		owner.typing_indicators = TRUE
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	return 1
 

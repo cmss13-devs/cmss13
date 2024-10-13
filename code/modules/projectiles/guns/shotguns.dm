@@ -858,7 +858,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "twobore"
 	item_state = "twobore"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	force = 20 //Big heavy elephant gun.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/twobore
 	gauge = "2 bore"

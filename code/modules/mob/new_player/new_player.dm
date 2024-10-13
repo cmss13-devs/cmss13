@@ -2,6 +2,10 @@
 /mob/new_player
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
+	///The last message for this player with their larva queue information
+	var/larva_queue_cached_message
+	///The time when the larva_queue_cached_message should be considered stale
+	var/larva_queue_message_stale_time
 
 	invisibility = 101
 
@@ -116,45 +120,11 @@
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
 				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
-			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
-				if(!client)
-					return TRUE
-				if(!client.prefs?.preview_dummy)
-					client.prefs.update_preview_icon()
-				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
-				observer.set_lighting_alpha_from_pref(client)
-				spawning = TRUE
-				observer.started_as_observer = TRUE
-
-				close_spawn_windows()
-
-				var/obj/effect/landmark/observer_start/O = SAFEPICK(GLOB.observer_starts)
-				if(istype(O))
-					to_chat(src, SPAN_NOTICE("Now teleporting."))
-					observer.forceMove(O.loc)
-				else
-					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
-				observer.icon = 'icons/mob/humans/species/r_human.dmi'
-				observer.icon_state = "anglo_example"
-				observer.alpha = 127
-
-				if(client.prefs.be_random_name)
-					client.prefs.real_name = random_name(client.prefs.gender)
-				observer.real_name = client.prefs.real_name
-				observer.name = observer.real_name
-
-				mind.transfer_to(observer, TRUE)
-
-				if(observer.client)
-					observer.client.change_view(GLOB.world_view_size)
-
-				observer.set_huds_from_prefs()
-
-				qdel(src)
+			if(tgui_alert(src, "Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
+				attempt_observe()
 				return TRUE
 
 		if("late_join")
-
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
@@ -175,10 +145,20 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
+			if(tgui_alert(src, "Are you sure you want to attempt joining as a xenomorph?", "Confirmation", list("Yes", "No")) == "Yes")
+				if(!client)
+					return TRUE
 				if(SSticker.mode.check_xeno_late_join(src))
-					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, 0)
-					if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
+					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
+					if(!new_xeno)
+						if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
+							if(!client)
+								return TRUE
+							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+								client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
+								to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
+							attempt_observe()
+					else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 						SSticker.mode.transfer_xeno(src, new_xeno)
 						close_spawn_windows()
 
@@ -187,7 +167,7 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(alert(src,"Are you sure you want to attempt joining as a predator?","Confirmation","Yes","No") == "Yes" )
+			if(tgui_alert(src, "Are you sure you want to attempt joining as a predator?", "Confirmation", list("Yes", "No")) == "Yes")
 				if(SSticker.mode.check_predator_late_join(src,0))
 					close_spawn_windows()
 					SSticker.mode.attempt_to_join_as_predator(src)
@@ -202,7 +182,6 @@
 			ViewHiveLeaders()
 
 		if("SelectedJob")
-
 			if(!GLOB.enter_allowed)
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
@@ -232,6 +211,48 @@
 	var/datum/tutorial_menu/menu = new(src)
 	menu.ui_interact(src)
 
+/mob/new_player/proc/attempt_observe()
+	if(src != usr)
+		return
+	if(!client)
+		return
+	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
+		to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+		return
+
+	if(!client.prefs?.preview_dummy)
+		client.prefs.update_preview_icon()
+	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
+	observer.set_lighting_alpha_from_pref(client)
+	spawning = TRUE
+	observer.started_as_observer = TRUE
+
+	close_spawn_windows()
+
+	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
+	if(istype(spawn_point))
+		to_chat(src, SPAN_NOTICE("Now teleporting."))
+		observer.forceMove(spawn_point.loc)
+	else
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
+	observer.icon = 'icons/mob/humans/species/r_human.dmi'
+	observer.icon_state = "anglo_example"
+	observer.alpha = 127
+
+	if(client.prefs.be_random_name)
+		client.prefs.real_name = random_name(client.prefs.gender)
+	observer.real_name = client.prefs.real_name
+	observer.name = observer.real_name
+
+	mind.transfer_to(observer, TRUE)
+
+	if(observer.client)
+		observer.client.change_view(GLOB.world_view_size)
+
+	observer.set_huds_from_prefs()
+
+	qdel(src)
+
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
@@ -243,7 +264,7 @@
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, 1))
-		to_chat(src, alert("[rank] is not available. Please try another."))
+		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
 	spawning = TRUE

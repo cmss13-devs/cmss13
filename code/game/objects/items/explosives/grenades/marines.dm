@@ -423,7 +423,7 @@
 /obj/item/explosive/grenade/phosphorus
 	name = "\improper M40 CCDP grenade"
 	desc = "The M40 CCDP is a small, but powerful chemical compound grenade, similar in effect to WPDP. Word on the block says that the CCDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
-	icon_state = "grenade_chem"
+	icon_state = "grenade_phos"
 	det_time = 20
 	item_state = "grenade_phos"
 	underslug_launchable = TRUE

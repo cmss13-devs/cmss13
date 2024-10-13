@@ -24,10 +24,6 @@
 	},
 /turf/open/floor/strata/green3/west,
 /area/adminlevel/ert_station/upp_station)
-"au" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space,
-/area/space)
 "ax" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack{
@@ -112,6 +108,17 @@
 "bd" = (
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
+"be" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space/basic,
+/area/space)
 "bh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -225,11 +232,6 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
-"di" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/space,
-/area/space)
 "dz" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -237,6 +239,16 @@
 "dB" = (
 /turf/open/floor/strata/green4,
 /area/adminlevel/ert_station/upp_station)
+"dC" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/space)
 "dH" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/machinery/light/double/blue,
@@ -297,11 +309,6 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/adminlevel/ert_station/upp_station)
-"eV" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "eX" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -315,20 +322,6 @@
 	},
 /turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/upp_station)
-"eY" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/space,
-/area/space)
-"fc" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/space/basic,
-/area/space)
 "fd" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -342,6 +335,11 @@
 	},
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
+"fg" = (
+/obj/structure/lattice,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/space/basic,
+/area/space)
 "fi" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "\improper Morgue"
@@ -358,6 +356,26 @@
 	},
 /turf/open/floor/strata/purp3/east,
 /area/adminlevel/ert_station/upp_station)
+"fm" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/strata/floor3/east,
+/area/adminlevel/ert_station/upp_station)
+"fn" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/space)
+"ft" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "fA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -407,13 +425,15 @@
 	},
 /turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/upp_station)
-"gx" = (
-/obj/structure/platform_decoration/metal/strata/north,
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
+"gO" = (
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 6
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison/floor_marked/west,
+/area/adminlevel/ert_station/upp_station)
+"hd" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "he" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -429,10 +449,20 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"hA" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+"ht" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space/basic,
+/turf/open/space,
+/area/space)
+"hC" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space,
 /area/space)
 "hF" = (
 /turf/open/floor/strata/green4/west,
@@ -488,6 +518,11 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"iN" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "iV" = (
 /turf/open/floor/strata/green3/northwest,
 /area/adminlevel/ert_station/upp_station)
@@ -506,11 +541,6 @@
 /obj/item/storage/box/bodybags,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/upp_station)
-"jt" = (
-/obj/structure/lattice,
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/space/basic,
-/area/space)
 "jH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -518,6 +548,10 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
+"jV" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/space/basic,
+/area/space)
 "kc" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/strata/multi_tiles/west,
@@ -562,6 +596,11 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"kZ" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space/basic,
+/area/space)
 "lb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -581,6 +620,16 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/adminlevel/ert_station/upp_station)
+"lg" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/space)
 "lm" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -672,17 +721,20 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/adminlevel/ert_station/upp_station)
-"mJ" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space/basic,
-/area/space)
 "mP" = (
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/floor3/east,
+/area/adminlevel/ert_station/upp_station)
+"nc" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "ne" = (
 /obj/structure/largecrate/random/case/double,
@@ -708,6 +760,10 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
+"nF" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/space/basic,
+/area/space)
 "nO" = (
 /obj/structure/bed/chair,
 /obj/structure/pipes/vents/pump{
@@ -762,20 +818,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"oP" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
-"oS" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/space/basic,
-/area/space)
 "pb" = (
 /turf/open/floor/strata/white_cyan3/south,
 /area/adminlevel/ert_station/upp_station)
@@ -811,11 +853,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/space)
-"pN" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "qd" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -828,20 +865,18 @@
 	},
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
-"qA" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform_decoration/metal/strata,
-/obj/structure/curtain/open/black,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/upp_station)
 "qF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
 	},
 /turf/open/floor/strata/white_cyan3/north,
+/area/adminlevel/ert_station/upp_station)
+"qG" = (
+/obj/structure/machinery/cryopod/no_store/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
 "qH" = (
 /turf/open/floor/strata/floorscorched2,
@@ -874,12 +909,6 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
-"rk" = (
-/obj/structure/machinery/cryopod/no_store/right{
-	pixel_y = 6
-	},
-/turf/open/floor/prison/floor_marked/west,
-/area/adminlevel/ert_station/upp_station)
 "rr" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -904,6 +933,10 @@
 /obj/structure/closet/crate/ammo,
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/upp_station)
+"rD" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/space)
 "rL" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8
@@ -948,11 +981,6 @@
 /obj/item/tool/pickaxe/diamonddrill,
 /turf/open/floor/plating/platebot,
 /area/adminlevel/ert_station/upp_station)
-"sr" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/space/basic,
-/area/space)
 "sy" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/damaged3,
@@ -1000,6 +1028,14 @@
 /obj/item/tank/anesthetic,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan2,
+/area/adminlevel/ert_station/upp_station)
+"sN" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/platform/metal/strata,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "sU" = (
 /obj/structure/window/framed/strata,
@@ -1054,26 +1090,12 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"ue" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/open/space/basic,
-/area/space)
 "uf" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/strata/green1,
 /area/adminlevel/ert_station/upp_station)
 "uj" = (
 /turf/open/floor/strata/white_cyan2,
-/area/adminlevel/ert_station/upp_station)
-"uE" = (
-/obj/structure/platform_decoration/metal/strata,
-/turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "uI" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1082,11 +1104,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"uL" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "uP" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -1112,6 +1129,16 @@
 "ve" = (
 /turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
+"vi" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/space)
 "vn" = (
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
@@ -1142,44 +1169,15 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"vS" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "vY" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"vZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/open/space/basic,
-/area/space)
 "we" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/adminlevel/ert_station/upp_station)
-"wr" = (
-/obj/structure/platform/metal/strata/east,
-/obj/effect/decal/strata_decals/catwalk/prison{
-	layer = 2.2
-	},
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap";
-	layer = 2.5
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "ws" = (
 /turf/open/floor/solarpanel,
@@ -1275,8 +1273,19 @@
 	},
 /turf/open/floor/strata/green4,
 /area/adminlevel/ert_station/upp_station)
-"yt" = (
+"yr" = (
+/obj/structure/lattice,
 /obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space/basic,
+/area/space)
+"yx" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/space)
 "yH" = (
@@ -1355,6 +1364,13 @@
 	},
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
+"AH" = (
+/obj/structure/machinery/cryopod/no_store/right,
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/adminlevel/ert_station/upp_station)
 "AI" = (
 /obj/structure/closet/crate,
 /turf/open/floor/strata/orange_edge/east,
@@ -1406,13 +1422,28 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"Bw" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/space/basic,
-/area/space)
 "BH" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/upp_station)
+"BR" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"BT" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.5
+	},
+/obj/effect/decal/strata_decals/catwalk/prison{
+	layer = 2.2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "BX" = (
@@ -1490,6 +1521,11 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/upp_station)
+"CN" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "CW" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
 	req_access = null
@@ -1503,6 +1539,10 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/strata/green4/east,
 /area/adminlevel/ert_station/upp_station)
+"Dj" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space/basic,
+/area/space)
 "Dv" = (
 /turf/closed/wall/strata_outpost,
 /area/adminlevel/ert_station/upp_station)
@@ -1520,6 +1560,11 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
+"DL" = (
+/obj/structure/lattice,
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/space/basic,
+/area/space)
 "Eg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -1552,15 +1597,14 @@
 /obj/item/tool/pen,
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
+"Fk" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/space/basic,
+/area/space)
 "FA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/strata/floor3/east,
-/area/adminlevel/ert_station/upp_station)
-"FF" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform/metal/strata,
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "FI" = (
 /obj/structure/bed/chair/comfy/black,
@@ -1572,6 +1616,11 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
+"FK" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "FL" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/megaphone,
@@ -1595,6 +1644,16 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
+"Gc" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/lattice,
+/turf/open/space,
+/area/space)
+"Gf" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space/basic,
+/area/space)
 "Gl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
@@ -1613,11 +1672,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"Gu" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space/basic,
-/area/space)
 "Gw" = (
 /turf/open/floor/strata/red3/south,
 /area/adminlevel/ert_station/upp_station)
@@ -1635,24 +1689,10 @@
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
-"GN" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform/metal/strata,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/upp_station)
 "Hb" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"Hc" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "Hl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
@@ -1672,25 +1712,10 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
-"HR" = (
-/obj/structure/platform/metal/strata,
-/turf/open/floor/strata/multi_tiles/west,
-/area/adminlevel/ert_station/upp_station)
 "Is" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
-"IC" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space,
-/area/space)
 "IK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1739,6 +1764,11 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"Ji" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/space,
+/area/space)
 "Jj" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/green3/west,
@@ -1793,16 +1823,6 @@
 	},
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
-"Kj" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull,
-/area/space)
 "Kn" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement,
@@ -1835,6 +1855,15 @@
 "KX" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/strata/floor3/east,
+/area/adminlevel/ert_station/upp_station)
+"KZ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/curtain/open/black,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "Lg" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1873,15 +1902,6 @@
 	},
 /turf/open/asphalt/cement/cement1/north,
 /area/adminlevel/ert_station/upp_station)
-"LG" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/space)
-"LI" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space/basic,
-/area/space)
 "LK" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
@@ -1924,10 +1944,6 @@
 /obj/item/storage/belt/medical/lifesaver/upp/full,
 /turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/upp_station)
-"Mt" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space/basic,
-/area/space)
 "MB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -1988,34 +2004,16 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/strata/red3/south,
 /area/adminlevel/ert_station/upp_station)
-"NQ" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/open/space/basic,
-/area/space)
 "NU" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/curtain/medical,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"OA" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap";
-	layer = 2.5
-	},
-/obj/effect/decal/strata_decals/catwalk/prison{
-	layer = 2.2
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
+"Oq" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/platform/metal/strata,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "OK" = (
@@ -2028,16 +2026,25 @@
 /obj/item/storage/large_holster/machete/full,
 /turf/open/floor/strata/white_cyan4/north,
 /area/adminlevel/ert_station/upp_station)
+"OU" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/strata_decals/catwalk/prison{
+	layer = 2.2
+	},
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.5
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/upp_station)
 "Ph" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
-"Pj" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull,
-/area/space)
 "PI" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -2068,6 +2075,10 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/white_cyan3,
 /area/adminlevel/ert_station/upp_station)
+"Qq" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space/basic,
+/area/space)
 "Qu" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -2133,6 +2144,12 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"RD" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/lattice,
+/turf/open/space,
+/area/space)
 "RK" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light/double/blue,
@@ -2156,6 +2173,16 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"RT" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "RU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2205,13 +2232,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/greengrid,
-/area/adminlevel/ert_station/upp_station)
-"Sx" = (
-/obj/structure/machinery/cryopod/no_store/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
 "Sy" = (
 /obj/structure/pipes/vents/pump{
@@ -2282,6 +2302,10 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"Ti" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/floor/strata/floor3/east,
+/area/adminlevel/ert_station/upp_station)
 "Tj" = (
 /turf/open/asphalt/cement/cement12,
 /area/adminlevel/ert_station/upp_station)
@@ -2291,6 +2315,11 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
+"Tq" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space/basic,
+/area/space)
 "Tr" = (
 /obj/effect/landmark/wo_supplies/storage/m56d,
 /obj/structure/machinery/light/double/blue{
@@ -2325,13 +2354,6 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/upp_station)
-"TE" = (
-/obj/structure/machinery/cryopod/no_store/right,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/turf/open/floor/prison/floor_marked/west,
-/area/adminlevel/ert_station/upp_station)
 "TG" = (
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
@@ -2347,21 +2369,6 @@
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
-"TI" = (
-/obj/structure/platform/metal/strata,
-/turf/open/floor/strata/floor3/east,
-/area/adminlevel/ert_station/upp_station)
-"TM" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space/basic,
-/area/space)
 "TQ" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/multi_tiles/west,
@@ -2377,6 +2384,10 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
+"TX" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space,
+/area/space)
 "Ug" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
@@ -2541,6 +2552,10 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
+"VH" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space/basic,
+/area/space)
 "VI" = (
 /turf/closed/wall/rock/brown,
 /area/space)
@@ -2562,11 +2577,6 @@
 /obj/structure/window/framed/strata/hull,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"Wi" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "Wj" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -2589,11 +2599,6 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/strata/orange_edge/east,
 /area/adminlevel/ert_station/upp_station)
-"WQ" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "WX" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -2643,6 +2648,10 @@
 	},
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
+"Yf" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/space/basic,
+/area/space)
 "Yy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -2660,10 +2669,6 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"YK" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/space)
 "YO" = (
 /obj/structure/machinery/gibber{
 	pixel_y = 10
@@ -2701,11 +2706,6 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
-"ZH" = (
-/obj/structure/lattice,
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/space/basic,
-/area/space)
 "ZM" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/double/blue{
@@ -2758,11 +2758,11 @@ Cp
 Cp
 GI
 GI
-eV
-YK
-YK
-YK
-oS
+CN
+VH
+VH
+VH
+nF
 AN
 AN
 AN
@@ -2781,13 +2781,13 @@ AN
 GI
 AN
 AN
-jt
-LG
-LG
-LG
-LG
-LG
-ZH
+DL
+yr
+yr
+yr
+yr
+yr
+fg
 GI
 GI
 GI
@@ -2800,11 +2800,11 @@ Cp
 Cp
 Cp
 VI
-uL
+BR
 ws
 ws
 ws
-oP
+RT
 GI
 GI
 GI
@@ -2823,13 +2823,13 @@ GI
 GI
 GI
 GI
-mJ
+kZ
 ws
 ws
 ws
 ws
 ws
-ue
+vi
 AN
 GI
 Cp
@@ -2842,11 +2842,11 @@ qU
 qU
 QG
 Cp
-Mt
+Dj
 ws
 IV
 ws
-NQ
+lg
 Cp
 Cp
 GI
@@ -2865,7 +2865,7 @@ We
 We
 El
 AN
-mJ
+kZ
 ws
 ws
 ws
@@ -2908,10 +2908,10 @@ YW
 El
 El
 El
-Gu
-Gu
-Gu
-Gu
+Tq
+Tq
+Tq
+Tq
 Cp
 Cp
 Cp
@@ -3726,7 +3726,7 @@ xy
 xy
 zs
 po
-qA
+KZ
 po
 po
 po
@@ -3768,7 +3768,7 @@ lb
 sA
 Gl
 po
-GN
+sN
 ME
 yH
 yH
@@ -3810,7 +3810,7 @@ RU
 RU
 po
 po
-GN
+sN
 bY
 dz
 tx
@@ -3852,7 +3852,7 @@ UE
 Bq
 bi
 UE
-FF
+Oq
 SI
 Zm
 uI
@@ -3894,8 +3894,8 @@ aP
 tv
 Zm
 vn
-gx
-OA
+nc
+BT
 cO
 rr
 Mi
@@ -3936,8 +3936,8 @@ MM
 tv
 Zm
 vn
-uE
-wr
+Ti
+OU
 Zm
 FA
 Sa
@@ -3978,14 +3978,14 @@ ZS
 Bt
 gf
 Wj
-TI
+fm
 IX
 Zm
 pv
 mq
 Cp
 Cp
-ZH
+fg
 GI
 AN
 "}
@@ -4020,14 +4020,14 @@ Jz
 Bp
 Tm
 yH
-HR
+hd
 YO
 kc
 yH
 Cp
 Cp
 PI
-sr
+Fk
 AN
 AN
 "}
@@ -4067,9 +4067,9 @@ Dv
 Cp
 Cp
 Cp
-Mt
+Dj
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4109,9 +4109,9 @@ Dv
 Cp
 Cp
 GI
-uL
+BR
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4151,9 +4151,9 @@ Dv
 Cp
 GI
 AN
-Mt
+Dj
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4185,17 +4185,17 @@ LB
 JX
 LN
 Dv
-TE
-Sx
-rk
+AH
+qG
+gO
 Cp
 Cp
 Cp
 GI
 AN
-Mt
+Dj
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4231,13 +4231,13 @@ Dv
 Cp
 Cp
 Cp
-di
-yt
-WQ
-yt
-hA
+Ji
+TX
+FK
+TX
+Gf
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4273,13 +4273,13 @@ Cp
 ws
 ws
 ws
-TM
+be
 ws
 ws
 ws
-IC
+ht
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4311,17 +4311,17 @@ Cp
 Cp
 Cp
 Cp
-uL
+BR
 ws
 IV
 ws
-Kj
+dC
 ws
 IV
 ws
-Pj
+rD
 PI
-Bw
+Yf
 AN
 AN
 "}
@@ -4353,17 +4353,17 @@ Cp
 Cp
 GI
 GI
-uL
+BR
 ws
 ws
 ws
-vZ
+fn
 ws
 ws
 ws
-eY
-LI
-fc
+yx
+Qq
+jV
 AN
 AN
 "}
@@ -4395,15 +4395,15 @@ GI
 GI
 GI
 AN
-pN
-vS
-Wi
-vS
-Hc
-vS
-Wi
-au
-fc
+iN
+Gc
+ft
+Gc
+RD
+Gc
+ft
+hC
+jV
 AN
 AN
 AN

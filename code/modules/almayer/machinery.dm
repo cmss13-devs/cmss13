@@ -278,7 +278,7 @@
 		return ..()
 
 	if(user in users_on_cooldown)
-		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this anymore."))
+		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this right now."))
 		return ..()
 
 	if(!length(fallen_personnel) || user.faction != FACTION_MARINE)
@@ -511,7 +511,14 @@
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
 
 			went_through_flashback += user
-			sleep(5 SECONDS)
+			sleep(2 SECONDS)
+
+			//Special sound for those who really treasure their squad.
+			if(length(all_ghosts) >= 6)
+				to_chat(user, SPAN_NOTICE("<b>There's a distinct sound in the air...<b>"))
+				playsound_client(user.client, 'sound/hallucinations/ghost_taps.ogg', user.loc, 70)
+
+			sleep(3 SECONDS)
 
 			for(var/obj/effect/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()
@@ -519,7 +526,7 @@
 			///Name of the user, split so we can retrieve their first name.
 			var/list/split_name = splittext(user.name, " ")
 			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
-			sleep(2.5 SECONDS)
+			sleep(4 SECONDS)
 			to_chat(user, SPAN_NOTICE("<b>It feels final. Maybe it's time to look forward now.</b>"))
 
 #undef FLASHBACK_DEFAULT
@@ -537,7 +544,7 @@
 /obj/effect/memorial_ghost/Initialize(mapload, mob/living/mob_reference = null)
 	if(!mob_reference)
 		. = ..()
-		qdel()
+		qdel(src)
 		return
 
 	name = mob_reference.name

@@ -216,6 +216,11 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 /obj/proc/skin(skin)
 	return
 
+/obj/CanProcCall(procname)
+	if(procname == "skin")
+		return FALSE
+	. = ..()
+
 //HELMET
 /obj/item/clothing/head/helmet/skin(skin)
 	icon = 'core_ru/icons/custom/items/clothings.dmi'
@@ -225,12 +230,24 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		WEAR_HEAD = 'core_ru/icons/custom/items/clothing_on_mob.dmi'
 	)
 
+/obj/item/clothing/head/helmet/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state), NAMEOF_STATIC(src, item_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 //STORAGE
 /obj/item/clothing/suit/storage/marine/skin(skin)
 	icon = 'core_ru/icons/custom/items/clothings.dmi'
 	icon_state = "[icon_state]_[skin]"
 	item_state = "[item_state]_[skin]"
 	item_state_slots[WEAR_BODY] = icon_state
+
+/obj/item/clothing/suit/storage/marine/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state), NAMEOF_STATIC(src, item_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
 
 //UNDER
 /obj/item/clothing/under/skin(skin)
@@ -244,6 +261,12 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 
 	item_state_slots[WEAR_BODY] = worn_state
 	update_rollsuit_status()
+
+/obj/item/clothing/under/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
 
 //GUNS
 /obj/item/weapon/gun/skin(skin)
@@ -267,33 +290,42 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 //	attachment_recoloring.blend_mode = BLEND_ADD|BLEND_INSET_OVERLAY|BLEND_SUBTRACT
 	update_icon()
 
+/obj/item/weapon/gun/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, item_icons))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 /mob/living/carbon/xenomorph
 	var/selected_skin
 	var/icon_skin
 	var/atom/movable/vis_obj/xeno_skin/skin_icon_holder
 
-/proc/handle_skinning_xeno(mob/living/carbon/xenomorph/xeno, mob/user)
+/mob/living/carbon/xenomorph/proc/handle_skinning_xeno(mob/user)
 	if(user?.client?.player_data?.donator_info)
-		if(user.client.player_data.donator_info.skins["[xeno.type]"] && !user.client.player_data.donator_info.skins_used["[xeno.type]"])
-			if(xeno.selected_skin)
+		if(user.client.player_data.donator_info.skins["[type]"] && !user.client.player_data.donator_info.skins_used["[type]"])
+			if(selected_skin)
 				return
 		else
-			xeno.selected_skin = null
+			selected_skin = null
 			return
 	else
-		xeno.selected_skin = null
+		selected_skin = null
 		return
 
-	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[xeno.type]"]
+	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[type]"]
 	if(!skin_selection)
 		return
 	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
 	if(!skin)
 		return
-//	user.client.player_data.donator_info.skins_used["[xeno.type]"] = skin_selection // xeno skins for now reusable
-	xeno.skin(skin)
+//	user.client.player_data.donator_info.skins_used["[type]"] = skin_selection // xeno skins for now reusable
+	skin(skin)
 
 /atom/movable/vis_obj/xeno_skin
+
+/atom/movable/vis_obj/xeno_skin/can_vv_modify()
+	return FALSE
 
 /mob/living/carbon/xenomorph/proc/handle_special_skin_states()
 	return FALSE
@@ -331,6 +363,17 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	selected_skin = skin
 	update_skin()
 	return
+
+/mob/living/carbon/xenomorph/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, selected_skin), NAMEOF_STATIC(src, icon_skin), NAMEOF_STATIC(src, skin_icon_holder))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/mob/living/carbon/xenomorph/CanProcCall(procname)
+	if(procname == "skin")
+		return FALSE
+	. = ..()
 
 /mob/living/carbon/xenomorph/queen
 	icon_skin = 'core_ru/icons/custom/mob/xenos/queen.dmi'

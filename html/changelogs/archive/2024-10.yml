@@ -137,3 +137,13 @@
       confused with live-round mobs.
   - bugfix: Yautja no longer appear in the Escaped category of follow menu after round
       end.
+2024-10-14:
+  Drathek:
+  - bugfix: Fixed autoinjectors not reducing vendor reagents on refill if they were
+      fully emptied.
+  - bugfix: Fixed crystals (and any other reagent container not whitelisted) from
+      being refilled in vendors
+  - balance: This means emergency injectors do not refill again.
+  - balance: Added tricord hypospray chem refill support to Wey-Med Plus
+  zzzmike:
+  - balance: hands-only CPR now possible

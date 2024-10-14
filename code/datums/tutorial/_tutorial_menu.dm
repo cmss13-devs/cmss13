@@ -27,7 +27,6 @@
 				"tutorials" = categories_2[category],
 			))
 
-
 /datum/tutorial_menu/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -50,10 +49,18 @@
 	var/list/data = list()
 
 	data["tutorial_categories"] = categories
+	data["completed_tutorials"] = list()
+	data["locked_tutorials"] = list()
+
 	if(user.client?.prefs)
 		data["completed_tutorials"] = user.client.prefs.completed_tutorials
-	else
-		data["completed_tutorials"] = list()
+
+		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial))
+			if(initial(tutorial.parent_path) == tutorial)
+				continue
+			if(initial(tutorial.required_tutorial))
+				if(!IS_TUTORIAL_COMPLETED(user, initial(tutorial.required_tutorial)))
+					data["locked_tutorials"] += initial(tutorial.tutorial_id)
 
 	return data
 

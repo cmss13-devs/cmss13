@@ -314,22 +314,22 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	var/datum/mob_hud/H
-	var/chosen_HUD = 1
+	var/datum/mob_hud/the_hud
+	var/chosen_HUD = INHERENT_HUD_MEDICAL
 	switch(hud_choice)
 		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
+			the_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-			chosen_HUD = 2
+			the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+			chosen_HUD = INHERENT_HUD_SECURITY
 		else
 			return
 
-	if(synthetic_HUD_toggled[chosen_HUD])
-		synthetic_HUD_toggled[chosen_HUD] = FALSE
-		H.remove_hud_from(src, src)
+	if(inherent_huds_toggled[chosen_HUD])
+		inherent_huds_toggled[chosen_HUD] = FALSE
+		the_hud.remove_hud_from(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
 	else
-		synthetic_HUD_toggled[chosen_HUD] = TRUE
-		H.add_hud_to(src, src)
+		inherent_huds_toggled[chosen_HUD] = TRUE
+		the_hud.add_hud_to(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))

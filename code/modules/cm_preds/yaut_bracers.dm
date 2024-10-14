@@ -549,8 +549,8 @@
 			continue
 		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		var/area/location = get_area(tracked_item)
-		if(location.flags_area & AREA_YAUTJA_GROUNDS)
+		var/area/location = get_area(loc)
+		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(loc.z))
 			gear_low_orbit++
@@ -569,7 +569,7 @@
 		if(dead_yautja.stat != DEAD)
 			continue
 		var/area/location = get_area(dead_yautja)
-		if(location.flags_area & AREA_YAUTJA_GROUNDS)
+		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(dead_yautja.z))
 			dead_low_orbit++

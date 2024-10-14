@@ -192,6 +192,11 @@
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
 
+/obj/item/clothing/yautja_cape/damaged
+	name = PRED_YAUTJA_DAMAGED_CAPE
+	icon_state = "damagedcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
+
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
 	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight."

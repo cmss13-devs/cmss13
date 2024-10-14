@@ -1206,6 +1206,21 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = secondary_tube
 	replace_tube(current_mag.current_rounds)
 
+/obj/item/weapon/gun/shotgun/pump/dual_tube/get_examine_text(mob/user)
+	. = ..()
+	var/has_chamber_swap = locate(/datum/action/item_action/dual_tube/toggle_chamber_swap) in actions
+	if(has_chamber_swap)
+		. += SPAN_NOTICE("Use <b>toggle firemode</b> to toggle chamber-swapping.</b>")
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
+	var/datum/action/item_action/dual_tube/toggle_chamber_swap/chamber_swap_ability = locate() in actions
+	if(chamber_swap_ability)
+		//do_toggle_firemode is a signal handler. needs async to stop sleep override warnings
+		INVOKE_ASYNC(chamber_swap_ability, TYPE_PROC_REF(/datum/action/item_action/dual_tube/toggle_chamber_swap, action_activate))
+		return
+
+	. = ..()
+
 /obj/item/weapon/gun/shotgun/pump/dual_tube/Destroy()
 	QDEL_NULL(primary_tube)
 	QDEL_NULL(secondary_tube)
@@ -1221,6 +1236,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag)
 		return
 
+	///The currently chambered shell in the gun before the tube gets swapped.
 	var/obj/item/ammo_magazine/chambered_shell
 	if(chamber_swap && in_chamber)
 		if(current_mag.current_rounds == current_mag.max_rounds)
@@ -1239,6 +1255,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	else
 		current_mag = primary_tube
 
+	//Chamber swaps require the gun to be pumped afterwards. We'll force the gun to be pumped as it would be pretty annoying otherwise.
 	if(!in_chamber && chamber_swap)
 		ready_shotgun_tube()
 		if(in_chamber)
@@ -1262,7 +1279,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /datum/action/item_action/dual_tube/toggle_chamber_swap/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Chamber Swap"
-	action_icon_state = "ammo_swap_normal"
+	action_icon_state = "chamber_swap"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -1275,7 +1292,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(holder_gun.chamber_swap)
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>This is only possible if both tubes are underloaded.</b>"))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
 		button.icon_state = "template_on"
 	else
 		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))

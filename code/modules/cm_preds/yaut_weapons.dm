@@ -44,10 +44,10 @@
 	force = MELEE_FORCE_TIER_2
 	throwforce = MELEE_FORCE_TIER_6
 
-/obj/item/weapon/wristblades
-	name = "wrist blades"
+/obj/item/weapon/bracer_attachment
+	name = "bracer attachment"
+	desc = "How did you get these?."
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -70,9 +70,9 @@
 
 	var/has_speed_bonus = TRUE
 
-/obj/item/weapon/wristblades/equipped(mob/user, slot)
+/obj/item/weapon/bracer_attachment/equipped(mob/user, slot)
 	. = ..()
-	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/wristblades))
+	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/bracer_attachment))
 		attack_speed = initial(attack_speed) - 2
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
@@ -113,13 +113,25 @@
 				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
 				door.Close()
 
-/obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
+/obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
 	..()
 	if(istype(user))
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
 		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
-/obj/item/weapon/wristblades/scimitar
+
+/obj/item/weapon/bracer_attachment/wristblades
+	name = "wrist blade"
+	plural_name = "wrist blades"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "wrist"
+	item_state = "wristblade"
+	attack_speed = 6
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	force = MELEE_FORCE_TIER_4
+	has_speed_bonus = TRUE
+
+/obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from metal gauntlets."
@@ -130,7 +142,7 @@
 	force = MELEE_FORCE_TIER_5
 	has_speed_bonus = FALSE
 
-/obj/item/weapon/wristblades/scimitar/alt
+/obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from metal gauntlets."

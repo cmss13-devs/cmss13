@@ -274,8 +274,8 @@
 
 	var/bracer_attachment_attached = FALSE
 	var/bracer_attachment_deployed = FALSE
-	var/obj/item/weapon/left_bracer_attachment
-	var/obj/item/weapon/right_bracer_attachment
+	var/obj/item/weapon/bracer_attachment/left_bracer_attachment
+	var/obj/item/weapon/bracer_attachment/right_bracer_attachment
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
@@ -387,6 +387,8 @@
 			. = call_disc_internal(caller, TRUE)
 		if(7)
 			. = translate_internal(caller, TRUE)
+		if(8)
+			. =	remove_attachment_internal(caller, TRUE)
 		else
 			. = delimb_user(caller)
 
@@ -409,21 +411,30 @@
 //bracer attachments
 /obj/item/bracer_attachments
 	name = "wristblade bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "Report this if you see this."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	var/attached_weapon_type
+	var/obj/item/attached_weapon_type
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
 	desc = "A pair of huge, serrated blades"
 	icon_state = "wrist"
 	item_state = "wristblade"
+	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
 
 /obj/item/bracer_attachments/scimitars
 	name = "scimitar bracer attachment"
 	desc = "A pair of huge, serrated blades"
 	icon_state = "scim"
 	item_state = "scim"
+	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
+
+/obj/item/bracer_attachments/scimitars_alt
+	name = "scimitar bracer attachment"
+	desc = "A pair of huge, serrated blades"
+	icon_state = "scim_alt"
+	item_state = "scim_alt"
+	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
@@ -433,8 +444,8 @@
 		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
 		return
 
-	if(left_bracer_attachment || right_bracer_attachment)
-		to_chat(user, SPAN_WARNING("The [src] already has bracer attachments!"))
+	if(bracer_attachment_attached)
+		to_chat(user, SPAN_WARNING("[src] already has bracer attachments!"))
 		return
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
@@ -445,9 +456,8 @@
 
 	left_bracer_attachment = new bracer_attachment.attached_weapon_type
 	right_bracer_attachment = new bracer_attachment.attached_weapon_type
-
 	bracer_attachment_attached = TRUE
-	bracer_attachment.forceMove(src)
+	forceMove(bracer_attachment)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
@@ -455,7 +465,29 @@
 	set desc = "Remove Bracer Attachment From Your Bracer."
 	set category = "Yautja.Weapons"
 	set src in usr
+	. = remove_attachment_internal(usr, TRUE)
 
+/obj/item/clothing/gloves/yautja/hunter/proc/remove_attachment_internal(mob/living/carbon/human/user, forced = FALSE)
+	if(!user.loc || user.is_mob_incapacitated() || !ishuman(user))
+		return
+
+	. = check_random_function(user, forced)
+	if(.)
+		return
+
+	if(!bracer_attachment_attached)
+		to_chat(user, SPAN_WARNING("[src] does not have anything attached!"))
+		return
+
+	if(bracer_attachment_deployed)
+		to_chat(user, SPAN_WARNING("Retract your attachments First!"))
+		return
+	to_chat(user, SPAN_NOTICE("You eject your bracer attachment from your bracer."))
+	user.put_in_active_hand.bracer_attachment
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+
+	bracer_attachment_attached = null
+	return FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracer_attachment()
 	set name = "Use Bracer Attachment"
@@ -478,7 +510,7 @@
 		if(right_bracer_attachment.loc == caller)
 			caller.drop_inv_item_to_loc(right_bracer_attachment, src, FALSE, TRUE)
 		bracer_attachment_deployed = FALSE
-		to_chat(caller, SPAN_NOTICE("You retract your [left_bracer_attachment.name]."))
+		to_chat(caller, SPAN_NOTICE("You retract your [left_bracer_attachment.plural_name]."))
 		playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
 	else
 		if(!drain_power(caller, 50))
@@ -507,7 +539,7 @@
 			if(!is_offhand_full)
 				caller.put_in_inactive_hand(left_bracer_attachment)
 		bracer_attachment_deployed = TRUE
-		to_chat(caller, SPAN_NOTICE("You activate your bracer attachment."))
+		to_chat(caller, SPAN_NOTICE("You activate your [left_bracer_attachment.plural_name]."))
 		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
 
 	var/datum/action/predator_action/bracer/wristblade/wb_action
@@ -549,8 +581,8 @@
 			continue
 		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		var/area/location = get_area(loc)
-		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
+		var/area/location = get_area(tracked_item)
+		if(location.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(loc.z))
 			gear_low_orbit++
@@ -569,7 +601,7 @@
 		if(dead_yautja.stat != DEAD)
 			continue
 		var/area/location = get_area(dead_yautja)
-		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
+		if(location.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(dead_yautja.z))
 			dead_low_orbit++

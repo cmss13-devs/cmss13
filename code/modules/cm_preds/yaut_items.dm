@@ -195,7 +195,6 @@
 /obj/item/clothing/yautja_cape/damaged
 	name = PRED_YAUTJA_DAMAGED_CAPE
 	icon_state = "damagedcape"
-	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"

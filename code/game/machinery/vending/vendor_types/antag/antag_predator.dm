@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("Hunting Equipment", 0, /obj/effect/essentials_set/yautja,	MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
         list("Armor", 0, null, null, null),
-        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, MARINE_CAN_BUY_COMBAT_ARMOR , VENDOR_ITEM_MANDATORY),
+        list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja/hunter, MARINE_CAN_BUY_COMBAT_ARMOR , VENDOR_ITEM_MANDATORY),
         list("Clan Mask", 0, /obj/item/clothing/mask/gas/yautja/hunter, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Greaves", 0, /obj/item/clothing/shoes/yautja/hunter/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
 
@@ -18,7 +18,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("The Fearsome Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("The Skewering Scimitars", 0, /obj/item/bracer_attachments/scimitars_alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
         list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
         list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -32,11 +33,12 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
         list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
         list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Damaged-Cape", 0, /obj/item/clothing/yautja_cape/damaged),
     ))
 
 GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
         list("Essential Hunting Supplies", 0, null, null, null),
-        list("Hunting Equipment", 0, /obj/effect/essentials_set/yautja,	MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+        list("Hunting Equipment", 0, /obj/effect/essentials_set/yautja_elder,	MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
         list("Armor", 0, null, null, null),
         list("Clan Armor", 0, /obj/item/clothing/suit/armor/yautja, MARINE_CAN_BUY_COMBAT_ARMOR , VENDOR_ITEM_MANDATORY),
@@ -54,7 +56,8 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
         list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
         list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("The Fearsome Scimitars", 0, /obj/item/bracer_attachments/scimitars, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("The Skewering Scimitars", 0, /obj/item/bracer_attachments/scimitars_alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
         list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
         list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -80,6 +83,10 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
     vendor_role = list(JOB_PREDATOR)
     show_points = FALSE
 
+/obj/structure/machinery/cm_vending/clothing/yautja/Initialize()
+	. = ..()
+	vend_flags |= VEND_FACTION_THEMES
+
 /obj/structure/machinery/cm_vending/clothing/yautja/get_listed_products(mob/user)
     return GLOB.cm_vending_equipment_yautja
 
@@ -95,6 +102,15 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 	spawned_gear_list = list(
 		/obj/item/clothing/under/chainshirt/hunter,
 		/obj/item/device/radio/headset/yautja,
+		/obj/item/storage/backpack/yautja,
+		/obj/item/storage/medicomp/full,
+		/obj/item/device/yautja_teleporter,
+)
+
+/obj/effect/essentials_set/yautja_elder
+	spawned_gear_list = list(
+		/obj/item/clothing/under/chainshirt/hunter,
+		/obj/item/device/radio/headset/yautja/elder,
 		/obj/item/storage/backpack/yautja,
 		/obj/item/storage/medicomp/full,
 		/obj/item/device/yautja_teleporter,

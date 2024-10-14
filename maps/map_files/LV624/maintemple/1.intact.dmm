@@ -250,7 +250,6 @@
 	icon_state = "y-boots2";
 	name = "gilded clan greaves"
 	},
-/obj/item/weapon/yautja/chained/combistick,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (

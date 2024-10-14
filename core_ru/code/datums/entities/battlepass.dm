@@ -30,11 +30,14 @@ GLOBAL_LIST_INIT_TYPED(client_loaded_battlepasses, /datum/entity/battlepass_play
 	var/premium_rewards
 	var/premium = FALSE
 
+	// untracked data
 	var/tier
 	var/datum/entity/player/owner
 	var/list/datum/battlepass_challenge/mapped_daily_challenges = list()
 	var/list/mapped_rewards
 	var/list/mapped_premium_rewards
+
+	var/list/round_challenges = list()
 
 BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 
@@ -57,6 +60,7 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 	. = ..()
 	if(values["daily_challenges"])
 		INVOKE_ASYNC(src, PROC_REF(safe_load_challenges), battlepass, values["daily_challenges"])
+
 	if(values["rewards"])
 		battlepass.mapped_rewards = json_decode(values["rewards"])
 	if(!battlepass.mapped_rewards)
@@ -98,12 +102,37 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 	for(var/datum/battlepass_challenge/challenge as anything in mapped_daily_challenges)
 		challenge.on_client(owner.owning_client)
 
-	if(owner.donator_info?.patreon_function_available("battlepass_modificator"))
+	if(!premium && owner.donator_info?.patreon_function_available("battlepass_modificator"))
 		premium = TRUE
 
 	verify_rewards()
 	check_tier_up()
-	check_daily_challenge_reset()
+
+	// 86400 seconds is one day
+	if((daily_challenges_last_updated + 86400) <= rustg_unix_timestamp())
+		QDEL_LIST(mapped_daily_challenges)
+
+		var/list/available_modules = GLOB.challenge_modules_weighted.Copy()
+		for(var/i in 1 to 2)
+			var/datum/battlepass_challenge/new_challenge = SSbattlepass.create_challenge(available_modules, 0)
+			if(!new_challenge)
+				continue
+			RegisterSignal(new_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
+			mapped_daily_challenges += new_challenge
+
+		daily_challenges_last_updated = rustg_unix_timestamp()
+
+	save()
+
+	// Per round challenges
+	var/list/available_modules = GLOB.challenge_modules_weighted.Copy()
+	if(!length(round_challenges))
+		for(var/i in 1 to 1)
+			var/datum/battlepass_challenge/new_challenge = SSbattlepass.create_challenge(available_modules, 0)
+			if(!new_challenge)
+				continue
+			RegisterSignal(new_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
+			round_challenges += new_challenge
 
 /datum/entity/battlepass_player/proc/verify_rewards()
 	tier = (xp - xp % GLOB.current_battlepass.xp_per_tier_up) / GLOB.current_battlepass.xp_per_tier_up
@@ -143,6 +172,8 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 	xp += xp_amount
 	check_tier_up()
 
+	save()
+
 /datum/entity/battlepass_player/proc/check_tier_up()
 	if(xp - (tier * GLOB.current_battlepass.xp_per_tier_up) < GLOB.current_battlepass.xp_per_tier_up)
 		return
@@ -166,7 +197,6 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 			if(apply_reward(GLOB.battlepass_rewards[params["type"]]))
 				mapped_premium_rewards[list_key] = params["type"]
 
-	save()
 	log_game("[owner.owning_client.mob] ([owner.owning_client.key]) has increased to battlepass tier [tier]")
 
 /datum/entity/battlepass_player/proc/apply_reward(datum/view_record/battlepass_reward/reward)
@@ -191,29 +221,6 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 		else
 			return FALSE
 	return TRUE
-
-/// Check if it's been 24h since daily challenges were last assigned
-/datum/entity/battlepass_player/proc/check_daily_challenge_reset()
-	// 86400 seconds (24*60^2) is one day
-	if((daily_challenges_last_updated + (24 * 60 * 60)) <= rustg_unix_timestamp())
-		reset_daily_challenges()
-		return TRUE
-	return FALSE
-
-/// Give the battlepass a new set of daily challenges
-/datum/entity/battlepass_player/proc/reset_daily_challenges()
-	// We give the player 2 marine challenges and 2 xeno challenges
-	QDEL_LIST(mapped_daily_challenges)
-
-	var/list/available_modules = GLOB.challenge_modules_weighted.Copy()
-	for(var/i in 1 to 3)
-		var/datum/battlepass_challenge/new_challenge = SSbattlepass.create_challenge(available_modules, 0)
-		if(!new_challenge)
-			continue
-		RegisterSignal(new_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
-		mapped_daily_challenges += new_challenge
-
-	daily_challenges_last_updated = rustg_unix_timestamp()
 
 /// Called whenever a challenge is completed
 /datum/entity/battlepass_player/proc/on_challenge_complete(datum/battlepass_challenge/challenge)
@@ -267,8 +274,12 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 		var/list/params = GLOB.current_battlepass.mapped_premium_rewards[list_key]
 		.["premium_rewards"] += list(GLOB.battlepass_rewards[params["type"]].get_ui_data(params))
 
-	.["daily_challenges"] = list()
-	for(var/datum/battlepass_challenge/daily_challenge as anything in mapped_daily_challenges)
+	.["daily_challenges"] = challenges_to_ui(mapped_daily_challenges)
+	.["roundly_challenges"] = challenges_to_ui(round_challenges)
+
+/datum/entity/battlepass_player/proc/challenges_to_ui(list/challenges)
+	. = list()
+	for(var/datum/battlepass_challenge/daily_challenge as anything in challenges)
 		var/list/completion = list()
 		for(var/datum/battlepass_challenge_module/module as anything in daily_challenge.modules)
 			if(!length(module.req))
@@ -280,14 +291,13 @@ BSQL_PROTECT_DATUM(/datum/entity/battlepass_player)
 					"completion_denominator" = module.req[progress_name][2],
 				))
 
-		.["daily_challenges"] += list(list(
+		. += list(list(
 			"name" = daily_challenge.name,
 			"desc" = daily_challenge.desc,
 			"completed" = daily_challenge.completed,
 			"completion_xp" = daily_challenge.xp_completion,
 			"completion" = completion,
 		))
-
 
 
 //BATTLEPASS ENTITY VIEW META

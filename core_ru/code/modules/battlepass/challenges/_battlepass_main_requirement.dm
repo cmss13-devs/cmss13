@@ -119,7 +119,7 @@
 	mob_challenge_flags = BATTLEPASS_HUMAN_CHALLENGE|BATTLEPASS_XENO_CHALLENGE
 	challenge_flags = BATTLEPASS_CHALLENGE_WEAPON
 
-	module_exp = list(4, 8)
+	module_exp = list(1, 3)
 
 	req_gen = list("kills" = list(2, 6))
 
@@ -157,7 +157,7 @@
 	desc = "Kill ###human_kills### humans"
 	code_name = "kill_human"
 
-	module_exp = list(6, 10)
+	module_exp = list(1, 3)
 
 	req_gen = list("human_kills" = list(2, 6))
 
@@ -168,7 +168,7 @@
 	desc = "Kill ###xenomorph_kills### xenomorphs"
 	code_name = "kill_xenomorph"
 
-	module_exp = list(6, 10)
+	module_exp = list(2, 6)
 
 	req_gen = list("xenomorph_kills" = list(2, 6))
 
@@ -247,7 +247,7 @@
 	code_name = "defib"
 	mob_challenge_flags = BATTLEPASS_HUMAN_CHALLENGE
 
-	module_exp = list(6, 12)
+	module_exp = list(3, 6)
 
 	req_gen = list("defib" = list(10, 20))
 
@@ -276,7 +276,7 @@
 	desc = "Survive ###damage### damage"
 	code_name = "additional_survive_damage"
 
-	module_exp = list(4, 10)
+	module_exp = list(3, 6)
 
 	req_gen = list("damage" = list(1000, 6000))
 
@@ -303,7 +303,7 @@
 	code_name = "berserker_rage"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(4, 6)
+	module_exp = list(2, 4)
 
 	req_gen = list("rages" = list(2, 4))
 
@@ -331,7 +331,7 @@
 	code_name = "facehug"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(4, 6)
+	module_exp = list(3, 6)
 
 	req_gen = list("facehugs" = list(2, 4))
 
@@ -359,7 +359,7 @@
 	code_name = "for_the_hive"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(5, 7)
+	module_exp = list(4, 8)
 
 	req_gen = list("forhivesuicides" = list(2, 4))
 
@@ -387,7 +387,7 @@
 	code_name = "glob_hits"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(5, 7)
+	module_exp = list(2, 6)
 
 	req_gen = list("boilerhits" = list(6, 12))
 
@@ -417,7 +417,7 @@
 	code_name = "plant_fruits"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(4, 6)
+	module_exp = list(2, 4)
 
 	req_gen = list("plantedfruits" = list(20, 40))
 
@@ -445,7 +445,7 @@
 	code_name = "plant_resin_nodes"
 	mob_challenge_flags = BATTLEPASS_XENO_CHALLENGE
 
-	module_exp = list(4, 6)
+	module_exp = list(2, 4)
 
 	req_gen = list("node_requirement" = list(20, 40))
 	var/planted_nodes = 0

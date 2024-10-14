@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		admin_holder.associate(src)
 */
 //RUCM START
-		DB_FILTER(/datum/entity/admin_rank, DB_COMP("rank_name", DB_EQUALS, "!localhost!"), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_rank_check), src))
+		check_localhost_admin_datum()
 //RUCM END
 
 	add_pref_verbs()

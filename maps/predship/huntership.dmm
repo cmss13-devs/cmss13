@@ -2295,15 +2295,11 @@
 	color = "#6b675e";
 	name = "Secure Yautja crate"
 	},
-/obj/item/weapon/yautja/combistick,
-/obj/item/weapon/yautja/combistick{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
 /obj/item/weapon/yautja/chain,
 /obj/item/weapon/yautja/sword,
 /obj/item/weapon/yautja/scythe,
+/obj/item/weapon/yautja/chained/combistick,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Br" = (

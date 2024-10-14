@@ -28813,7 +28813,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "wyE" = (
-/obj/item/storage/belt/marine/quackers,
+/obj/item/storage/belt/quackers,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "wAx" = (

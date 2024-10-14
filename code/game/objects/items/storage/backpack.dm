@@ -756,7 +756,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	flags_equip_slot = SLOT_WAIST
-	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	icon_state = "g8pouch"
 	item_state = "g8pouch"
 	has_gamemode_skin = TRUE

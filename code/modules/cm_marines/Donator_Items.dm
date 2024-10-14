@@ -1395,6 +1395,11 @@
 	desc = "Belt worn by the dreaded Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "swordbelt_u"
 	item_state = "swordbelt_u"
+	icon = 'icons/obj/items/clothing/belts/donator.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/donator.dmi',
+	)
+	has_gamemode_skin = FALSE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex

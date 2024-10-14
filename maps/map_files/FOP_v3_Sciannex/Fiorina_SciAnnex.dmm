@@ -9007,7 +9007,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "gTc" = (
-/obj/item/storage/belt/shotgun/full/quackers,
+/obj/item/storage/belt/quackers,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/river/darkred_pool,
 /area/fiorina/station/park)
@@ -16392,7 +16392,7 @@
 /turf/open/floor/prison/blue_plate/east,
 /area/fiorina/station/botany)
 "mxs" = (
-/obj/item/storage/belt/marine/quackers,
+/obj/item/storage/belt/quackers,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/river/darkred_pool,
 /area/fiorina/station/park)

@@ -1,6 +1,6 @@
 /datum/autowiki/supply_packs
 	generate_multiple = TRUE
-	page = "Template:Autowiki/Content/supply_packs"
+	page = "Template:Autowiki/Content/SupplyPacks"
 
 
 /datum/autowiki/supply_packs/generate_multiple()
@@ -25,12 +25,14 @@
 			var/obj/structure/closet/crate/generating_crate = new my_pack.containertype
 			upload_icon(getFlatIcon(generating_crate, no_anim = TRUE), container_filename)
 
-		output += include_template("Autowiki/SupplyPack",list(
+		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(my_pack.name), " ", "_"))
+		var/to_add = list(title = "Template:Autowiki/Content/SupplyPack/[page_name]", text = include_template("Autowiki/SupplyPack",list(
 			"icon" = container_filename,
 			"name" = my_pack.name,
 			"cost" = my_pack.cost,
 			"contents" = contents.Join(", ")
 			)
-		)
+		))
+		output += list(to_add)
 
 	return output

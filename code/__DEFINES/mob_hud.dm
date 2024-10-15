@@ -49,6 +49,7 @@
 #define MOB_HUD_HUNTER_CLAN 17
 #define MOB_HUD_EXECUTE 18
 #define MOB_HUD_NEW_PLAYER 19
+#define MOB_HUD_NSPA 20
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

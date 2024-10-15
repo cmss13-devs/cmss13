@@ -413,8 +413,8 @@
 /area/lv759/indoors/meridian/meridian_restroom
 	name = "Meridian - Restroom"
 	icon_state = "meridian"
-/area/lv759/indoors/meridian/meridian_maintenance_south
-	name = "Meridian - Maintenance South"
+/area/lv759/indoors/meridian/meridian_maintenance
+	name = "Meridian - Maintenance"
 	icon_state = "meridian"
 /area/lv759/indoors/meridian/meridian_maintenance_east
 	name = "Meridian - Factory Floor - Maintenance"
@@ -431,7 +431,7 @@
 	name = "Westhaven Apartment Complex - West - Hallway"
 	icon_state = "apartments"
 /area/lv759/indoors/apartment/westbedrooms
-	name = "Westhaven Apartment Complex - West - Bedrooms"
+	name = "Westhaven Apartment Complex - West - Apartments"
 	icon_state = "apartments"
 /area/lv759/indoors/apartment/westshowers
 	name = "Westhaven Apartment Complex - West - Showers"
@@ -464,7 +464,7 @@
 	name = "Westhaven Apartment Complex - North - Hallway"
 	icon_state = "apartments"
 /area/lv759/indoors/apartment/northapartments
-	name = "Westhaven Apartment Complex - North - Luxury Apartments"
+	name = "Westhaven Apartment Complex - North - Apartments"
 	icon_state = "apartments"
 
 // Weyland-Yutani Offices

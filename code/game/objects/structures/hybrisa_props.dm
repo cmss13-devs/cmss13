@@ -627,6 +627,27 @@
 	desc = "A basket full of apples."
 	icon_state = "supermarketbasket5"
 
+/obj/structure/prop/hybrisa/supermart/souto_man_prop
+	name = "Souto Man mannequin"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	desc = "A mannequin of the famous 'Souto-Man', Party like it's 1999!"
+	icon_state = "souto_man_prop"
+	density = TRUE
+
+/obj/structure/prop/hybrisa/supermart/souto_rack
+	name = "Souto cans rack"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	desc = "A rack filled with Souto cans of various flavors."
+	icon_state = "souto_rack"
+	density = TRUE
+
+/obj/structure/prop/hybrisa/supermart/souto_can_stack
+	name = "stacked souto cans"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	desc = "A large stack of 'Souto-Classic' cans."
+	icon_state = "souto_can_stack"
+	density = TRUE
+
 // Furniture
 /obj/structure/prop/hybrisa/furniture
 	icon = 'icons/obj/structures/props/hybrisatables.dmi'
@@ -1337,7 +1358,26 @@
 	projectile_coverage = 20
 	throwpass = TRUE
 
+/obj/effect/decal/cleanable/colorable_rug
+	name = "rug"
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	desc = null
+	icon_state = "colorable_rug"
+	layer = TURF_LAYER
+	density = FALSE
 
+/obj/structure/prop/hybrisa/misc/elevator_door
+	name = "broken elevator door"
+	desc = "completely broken, the elevator is not going to work."
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "elevator_left"
+	opacity = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/hybrisa/misc/elevator_door/right
+	icon_state = "elevator_right"
 
 /obj/structure/prop/hybrisa/misc/trash
 	name = "trash bin"
@@ -2105,6 +2145,11 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "biggreenmeter1"
 
+/obj/structure/prop/hybrisa/misc/elevator_button
+	name = "broken elevator button"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "broken_elevator_button"
+
 // MISC
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
@@ -2471,6 +2516,10 @@
 /obj/structure/prop/hybrisa/signs/casinolights
 	name = "neon sign"
 	icon_state = "casinolights_on"
+
+/obj/structure/prop/hybrisa/signs/pharmacy_sign
+	name = "neon sign"
+	icon_state = "pharmacy_on"
 
 // Small Sign
 

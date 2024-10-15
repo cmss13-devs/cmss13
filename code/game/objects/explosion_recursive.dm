@@ -328,7 +328,7 @@ explosion resistance exactly as much as their health
 		direction = pick(GLOB.alldirs)
 	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
 	if(!direction)
-		range = round( range/2 ,1)
+		range = round(range/2 ,1)
 
 	if(range < 1)
 		return
@@ -344,7 +344,7 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	//time for the explosion to destroy windows, walls, etc which might be in the way
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, range, speed, null, TRUE)
+	INVOKE_NEXT_TICK(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, range, speed, null, TRUE)
 
 	return
 
@@ -368,7 +368,7 @@ explosion resistance exactly as much as their health
 	var/range = round( severity/weight * 0.02 ,1)
 	if(!direction)
 		range = round( 2*range/3 ,1)
-		direction = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
+		direction = pick(GLOB.alldirs)
 
 	if(range <= 0)
 		return

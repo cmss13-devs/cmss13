@@ -70,31 +70,40 @@
 
 	if(!fendy.crest_defense)
 		apply_cooldown()
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy)
-	if(!fendy.Adjacent(carbone))
+		fendy.throw_atom(
+			get_step_towards(carbone, fendy),
+			3,
+			SPEED_SLOW,
+			fendy,
+			end_throw_callback = CALLBACK(src, PROC_REF(check_target_hit), WEAKREF(carbone))
+		)
+	return ..()
+
+/datum/action/xeno_action/activable/headbutt/proc/check_target_hit(datum/weakref/target_ref, mob/living/carbon/xenomorph/owner)
+	var/mob/living/carbon/target = target_ref.resolve()
+	if(!target || !owner.Adjacent(target))
 		on_cooldown_end()
 		return
 
-	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
-	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"), \
-	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
+	target.last_damage_data = create_cause_data(owner.caste_type, owner)
+	owner.visible_message(SPAN_XENOWARNING("[owner] rams [target] with its armored crest!"), \
+	SPAN_XENOWARNING("We ram [target] with our armored crest!"))
 
-	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
+	if(target.stat != DEAD && (!(target.status_flags & XENO_HOST) || !HAS_TRAIT(target, TRAIT_NESTED)))
 		// -10 damage if their crest is down.
-		var/damage = base_damage - (fendy.crest_defense * 10)
-		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, "chest", 5)
+		var/damage = base_damage - (owner.crest_defense * 10)
+		target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
-	var/facing = get_dir(fendy, carbone)
-	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
+	var/facing = get_dir(owner, target)
+	var/headbutt_distance = 1 + (owner.crest_defense * 2) + (owner.fortify * 2)
 
 	// Hmm today I will kill a marine while looking away from them
-	fendy.face_atom(carbone)
-	fendy.animation_attack_on(carbone)
-	fendy.flick_attack_overlay(carbone, "punch")
-	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
-	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	owner.face_atom(target)
+	owner.animation_attack_on(target)
+	owner.flick_attack_overlay(target, "punch")
+	owner.throw_carbon(target, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
+	playsound(target,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
-	return ..()
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)

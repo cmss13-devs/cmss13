@@ -139,15 +139,6 @@
 	density = TRUE
 	anchored = TRUE
 
-/*
-//Allow you to push disposal pipes into it (for those with density 1)
-/obj/structure/machinery/pipedispenser/disposal/Crossed(obj/structure/disposalconstruct/pipe as obj)
-	if(istype(pipe) && !pipe.anchored)
-		qdel(pipe)
-
-Nah
-*/
-
 //Allow you to drag-drop disposal pipes into it
 /obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
 	if(usr.is_mob_incapacitated())

@@ -364,12 +364,10 @@
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
 
-	if(AM.throwing || !ishuman(AM))
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
-	var/mob/living/carbon/human/H = AM
-	if(H.bloody_footsteps)
-		SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
+	SEND_SIGNAL(AM, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
 /turf/open/beach/sand
@@ -679,7 +677,7 @@
 
 	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
 
-	if(!iscarbon(AM) || AM.throwing)
+	if(!iscarbon(AM) || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
 	if(!covered)
@@ -779,21 +777,14 @@
 			return
 		var/mob/unlucky_mob = AM
 		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
-		var/datum/launch_metadata/LM = new()
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
+		var/dist = get_dist(AM.loc, target_turf)
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
-		unlucky_mob.launch_towards(LM)
+		unlucky_mob.launch_towards(target_turf, dist, SPEED_FAST, unlucky_mob, TRUE)
 		return
 
-	if(world.time % 5)
-		if(ismob(AM))
-			var/mob/rivermob = AM
-			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+	if(world.time % 5 && ismob(AM))
+		var/mob/rivermob = AM
+		to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"

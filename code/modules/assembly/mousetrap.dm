@@ -103,10 +103,10 @@
 	return 0
 
 
-/obj/item/device/assembly/mousetrap/hitby(atom/movable/AM)
+/obj/item/device/assembly/mousetrap/hitby(atom/movable/launched, datum/launch_result/launch_result)
 	if(!armed)
 		return ..()
-	visible_message(SPAN_WARNING("[src] is triggered by [AM]."))
+	visible_message(SPAN_WARNING("[src] is triggered by [launched]."))
 	triggered(null)
 
 

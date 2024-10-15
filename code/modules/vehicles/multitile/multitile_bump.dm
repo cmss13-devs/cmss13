@@ -780,27 +780,3 @@
 
 	else
 		return . = ..()
-
-//CRUSHER CHARGE COLLISION
-//Crushers going top speed can charge into & move vehicles with broken/without locmotion module
-/obj/vehicle/multitile/Collided(atom/A)
-	. = ..()
-
-	if(iscrusher(A))
-		var/mob/living/carbon/xenomorph/crusher/C = A
-		if(!C.throwing)
-			return
-		var/do_move = TRUE
-		if(health > 0)
-			take_damage_type(100, "blunt", C)
-			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
-			for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-				if(Loco.health > 0)
-					do_move = FALSE
-					break
-		if(do_move)
-			try_move(C.dir, force=TRUE)
-			visible_message(SPAN_DANGER("The sheer force of the impact makes \the [src] slide back!"))
-		log_attack("\The [src] was rammed [do_move ? "and pushed " : " "]by [key_name(C)].")
-		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
-		interior_crash_effect()

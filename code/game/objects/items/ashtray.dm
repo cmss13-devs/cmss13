@@ -56,7 +56,7 @@
 	return
 
 /obj/item/ashtray/launch_impact(atom/hit_atom)
-	if (health > 0)
+	if (!isnull(hit_atom) && health > 0)
 		health = max(0,health - 3)
 		if (health < 1)
 			die()

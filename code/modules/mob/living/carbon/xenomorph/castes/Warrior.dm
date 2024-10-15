@@ -113,7 +113,7 @@
 /mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
-/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom)
+/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom, datum/launch_result/launch_result)
 	if(ishuman(movable_atom))
 		return
 	..()

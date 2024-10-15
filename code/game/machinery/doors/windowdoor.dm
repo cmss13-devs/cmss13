@@ -131,16 +131,16 @@
 	return 1
 
 //When an object is thrown at the window
-/obj/structure/machinery/door/window/hitby(atom/movable/AM)
+/obj/structure/machinery/door/window/hitby(atom/movable/launched, datum/launch_result/launch_result)
 
 	..()
-	visible_message(SPAN_DANGER("<B>The glass door was hit by [AM].</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("<B>The glass door was hit by [launched].</B>"), null, null, 1)
 	var/tforce = 0
-	if(ismob(AM))
+	if(ismob(launched))
 		tforce = 40
 	else
-		tforce = AM:throwforce
-	playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		tforce = launched:throwforce
+	playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	take_damage(tforce)
 	//..() //Does this really need to be here twice? The parent proc doesn't even do anything yet. - Nodrak
 	return

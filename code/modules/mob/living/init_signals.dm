@@ -20,6 +20,8 @@
 	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_gain))
 	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_DAZED), PROC_REF(on_dazed_trait_loss))
 
+	RegisterSignal(src, COMSIG_MOVABLE_LAUNCHING, PROC_REF(handle_launched))
+
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)
 	SIGNAL_HANDLER
@@ -106,3 +108,16 @@
 /mob/living/proc/undense_changed(datum/source)
 	SIGNAL_HANDLER
 	update_density()
+
+/// Called when the mob is launched
+/mob/living/proc/handle_launched(self, datum/launch_result/launch_result)
+	SIGNAL_HANDLER
+
+	// TODO: have this handled by a buckled element
+	if (buckled)
+		return COMPONENT_CANCEL_LAUNCH
+	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
+	if (pulling)
+		stop_pulling() //being thrown breaks pulls.
+	if (pulledby)
+		pulledby.stop_pulling()

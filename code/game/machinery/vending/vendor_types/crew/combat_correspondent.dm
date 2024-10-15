@@ -7,7 +7,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 
 		list("CIVILIAN EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Portable Press Fax Machine", 0, /obj/item/device/fax_backpack, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Press Broadcasting Camera", 0, /obj/item/device/camera/broadcasting, CIVILIAN_CAN_BUY_UTILITY, VENDOR_ITEM_RECOMMENDED),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Black Uniform", 0, /obj/item/clothing/under/marine/reporter/black, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -50,4 +49,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 		/obj/item/device/binoculars,
 		/obj/item/notepad,
 		/obj/item/device/taperecorder,
+		/obj/item/device/camera/broadcasting,
 	)

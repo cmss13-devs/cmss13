@@ -176,9 +176,9 @@
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
 
-//------------------------------------//
-//   Cut Platform for stairs sprite   //
-//------------------------------------//
+//------------------------------//
+//    Metal Stairs Platforms    //
+//------------------------------//
 
 /obj/structure/platform/metal/stair_cut
 	icon_state = "platform_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
@@ -196,11 +196,59 @@
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right
 	icon_state = "kutjevo_platform_sm_stair_alt"
 
-/obj/structure/platform/metal/stair_cut/strata_right
+/obj/structure/platform/metal/stair_cut/strata_left
 	icon_state = "strata_metalplatform_stair"
 
-/obj/structure/platform/metal/stair_cut/strata_left
+/obj/structure/platform/metal/stair_cut/strata_right
 	icon_state = "strata_metalplatform_stair_alt"
+
+/obj/structure/platform/metal/stair_cut/shiva_left
+	icon_state = "shiva_stair"
+
+/obj/structure/platform/metal/stair_cut/shiva_right
+	icon_state = "shiva_stair_alt"
+
+//------------------------------//
+//    Stone Stairs Platforms    //
+//------------------------------//
+
+/obj/structure/platform/stone/stair_cut
+	icon_state = "kutjevo_rock_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
+	dir = 1
+
+/obj/structure/platform/stone/stair_cut/shiva_left
+	icon_state = "strata_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/shiva_right
+	icon_state = "strata_platform_stair_alt"
+
+/obj/structure/platform/stone/stair_cut/kutjevo_left
+	icon_state = "kutjevo_rock_stair"
+
+/obj/structure/platform/stone/stair_cut/kutjevo_right
+	icon_state = "kutjevo_rock_stair_alt"
+
+/obj/structure/platform/stone/stair_cut/stone_left
+	icon_state = "stone_stair"
+
+/obj/structure/platform/stone/stair_cut/stone_right
+	icon_state = "stone_stair_alt"
+
+/obj/structure/platform/stone/stair_cut/sandstone_left
+	icon_state = "sandstone_stair"
+	color = "#c6a480"
+
+/obj/structure/platform/stone/stair_cut/sandstone_right
+	icon_state = "sandstone_stair_alt"
+	color = "#c6a480"
+
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left
+	icon_state = "stone_stair"
+	color = "#b29082"
+
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right
+	icon_state = "stone_stair_alt"
+	color = "#b29082"
 
 //------------------------------------//
 //       Metal based Platforms        //
@@ -312,7 +360,7 @@
 /obj/structure/platform/stone/sandstone
 	name = "sandstone platform"
 	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
-	icon_state = "stone"
+	icon_state = "sandstone"
 	color = "#c6a480"
 
 /obj/structure/platform/stone/sandstone/north

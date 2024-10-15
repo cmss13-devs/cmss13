@@ -20,17 +20,16 @@
 			contents += contents_type::name
 
 		var/obj/structure/closet/crate/container_typepath = my_pack.containertype
-		var/container_filename = SANITIZE_FILENAME(escape_value(format_text("[container_typepath::icon]-[container_typepath::icon_state]")))
-		if(!fexists("data/autowiki_files/[container_filename].png"))
+		var/container_filename = container_typepath ? SANITIZE_FILENAME(escape_value(format_text("[container_typepath::icon]-[container_typepath::icon_state]"))) : null
+		if(container_filename && !fexists("data/autowiki_files/[container_filename].png"))
 			var/obj/structure/closet/crate/generating_crate = new my_pack.containertype
 			upload_icon(getFlatIcon(generating_crate, no_anim = TRUE), container_filename)
 
-			output += include_template("Autowiki/SupplyPack",list(
-				"icon" = container_filename,
-				"name" = my_pack.name,
-				"cost" = my_pack.cost,
-				"contents" = contents.Join(", ")
-
+		output += include_template("Autowiki/SupplyPack",list(
+			"icon" = container_filename,
+			"name" = my_pack.name,
+			"cost" = my_pack.cost,
+			"contents" = contents.Join(", ")
 			)
 		)
 

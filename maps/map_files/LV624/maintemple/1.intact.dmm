@@ -250,6 +250,12 @@
 	icon_state = "y-boots2";
 	name = "gilded clan greaves"
 	},
+/obj/item/weapon/yautja/chained/combistick{
+	color = #FFE55C;
+	name = "strange spear";
+	anchored = 1;
+	desc = "This ancient and frayed gilded spear almost gleans with it's razor sharp edge."
+	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (

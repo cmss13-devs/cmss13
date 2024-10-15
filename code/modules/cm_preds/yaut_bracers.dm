@@ -272,13 +272,19 @@
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
 
-	var/bracer_attachment_attached = FALSE
 	var/bracer_attachment_deployed = FALSE
-	var/obj/item/weapon/bracer_attachment/left_bracer_attachment
-	var/obj/item/weapon/bracer_attachment/right_bracer_attachment
+	var/obj/item/bracer_attachments/left_bracer_attachment
+	var/obj/item/bracer_attachments/right_bracer_attachment
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
+
+/obj/item/clothing/gloves/yautja/hunter/get_examine_text(mob/user)
+	. = ..()
+	if(left_bracer_attachment)
+		. += SPAN_NOTICE("The left bracer attachment is [left_bracer_attachment.attached_weapon].")
+	if(right_bracer_attachment)
+		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
 
 /obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material, new_owner_rank)
 	. = ..()
@@ -413,7 +419,19 @@
 	name = "wristblade bracer attachment"
 	desc = "Report this if you see this."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	///Typepath of the weapon attached to the bracer
 	var/obj/item/attached_weapon_type
+	///Reference to the weapon attached to the bracer
+	var/obj/item/attached_weapon
+
+/obj/item/bracer_attachments/Initialize(mapload, ...)
+	. = ..()
+	if(attached_weapon_type)
+		attached_weapon = new attached_weapon_type(src)
+
+/obj/item/bracer_attachments/Destroy()
+	QDEL_NULL(attached_weapon)
+	. = ..()
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
@@ -444,20 +462,30 @@
 		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
 		return
 
-	if(bracer_attachment_attached)
-		to_chat(user, SPAN_WARNING("[src] already has bracer attachments!"))
-		return
-
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
 		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
 
-	to_chat(user, SPAN_NOTICE("You attach the [bracer_attachment] to the [src]."))
+	if(left_bracer_attachment && right_bracer_attachment)
+		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))
+		return
 
-	left_bracer_attachment = new bracer_attachment.attached_weapon_type
-	right_bracer_attachment = new bracer_attachment.attached_weapon_type
-	bracer_attachment_attached = TRUE
-	forceMove(bracer_attachment)
+	var/attach_to_left = TRUE
+	if(!left_bracer_attachment && !right_bracer_attachment)
+		if(tgui_alert(user, "Do you want to attach [bracer_attachment] to the left or right hand?", "[src]", list("Right", "Left",), 15 SECONDS) == "Right") //its right, left because in-game itll show up as left, right
+			attach_to_left = FALSE
+
+	var/bracer_attached = FALSE
+	if(attach_to_left && !left_bracer_attachment)
+		left_bracer_attachment = bracer_attachment
+		user.drop_inv_item_to_loc(bracer_attachment, src)
+		bracer_attached = TRUE
+	if(!bracer_attached && !right_bracer_attachment)
+		right_bracer_attachment = bracer_attachment
+		user.drop_inv_item_to_loc(bracer_attachment, src)
+
+	to_chat(user, SPAN_NOTICE("You attach [bracer_attachment] to [src]."))
+
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
@@ -475,18 +503,30 @@
 	if(.)
 		return
 
-	if(!bracer_attachment_attached)
-		to_chat(user, SPAN_WARNING("[src] does not have anything attached!"))
+	if(!left_bracer_attachment && !right_bracer_attachment)
+		to_chat(user, SPAN_WARNING("[src] has no attached bracers!"))
 		return
 
 	if(bracer_attachment_deployed)
 		to_chat(user, SPAN_WARNING("Retract your attachments First!"))
 		return
-	to_chat(user, SPAN_NOTICE("You eject your bracer attachment from your bracer."))
-	user.put_in_active_hand.bracer_attachment
+
+	if(left_bracer_attachment)
+		if(!user.put_in_any_hand_if_possible(left_bracer_attachment))
+			user.drop_inv_item_on_ground(left_bracer_attachment)
+		to_chat(user, SPAN_NOTICE("You remove [left_bracer_attachment] from [src]."))
+		playsound(src, 'sound/machines/click.ogg', 15, 1)
+		left_bracer_attachment = null
+
+	if(right_bracer_attachment)
+		if(!user.put_in_any_hand_if_possible(right_bracer_attachment))
+			user.drop_inv_item_on_ground(right_bracer_attachment)
+		to_chat(user, SPAN_NOTICE("You remove [right_bracer_attachment] from [src]."))
+		playsound(src, 'sound/machines/click.ogg', 15, 1)
+		right_bracer_attachment = null
+
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 
-	bracer_attachment_attached = null
 	return FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracer_attachment()
@@ -505,42 +545,9 @@
 		return
 
 	if(bracer_attachment_deployed)
-		if(left_bracer_attachment.loc == caller)
-			caller.drop_inv_item_to_loc(left_bracer_attachment, src, FALSE, TRUE)
-		if(right_bracer_attachment.loc == caller)
-			caller.drop_inv_item_to_loc(right_bracer_attachment, src, FALSE, TRUE)
-		bracer_attachment_deployed = FALSE
-		to_chat(caller, SPAN_NOTICE("You retract your [left_bracer_attachment.plural_name]."))
-		playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
+		retract_bracer_attachments(caller)
 	else
-		if(!drain_power(caller, 50))
-			return
-		var/deploying_into_left_hand = caller.hand ? TRUE : FALSE
-		if(!bracer_attachment_attached)
-			to_chat(caller, SPAN_WARNING("The bracer does not have anything attached!"))
-			return
-		if(caller.get_active_hand())
-			to_chat(caller, SPAN_WARNING("Your hand must be free to activate your wristblade!"))
-			return
-		var/obj/limb/hand = caller.get_limb(deploying_into_left_hand ? "l_hand" : "r_hand")
-		if(!istype(hand) || !hand.is_usable())
-			to_chat(caller, SPAN_WARNING("You can't hold that!"))
-			return
-		var/is_offhand_full = FALSE
-		var/obj/limb/off_hand = caller.get_limb(deploying_into_left_hand ? "r_hand" : "l_hand")
-		if(caller.get_inactive_hand() || (!istype(off_hand) || !off_hand.is_usable()))
-			is_offhand_full = TRUE
-		if(deploying_into_left_hand)
-			caller.put_in_active_hand(left_bracer_attachment)
-			if(!is_offhand_full)
-				caller.put_in_inactive_hand(right_bracer_attachment)
-		else
-			caller.put_in_active_hand(right_bracer_attachment)
-			if(!is_offhand_full)
-				caller.put_in_inactive_hand(left_bracer_attachment)
-		bracer_attachment_deployed = TRUE
-		to_chat(caller, SPAN_NOTICE("You activate your [left_bracer_attachment.plural_name]."))
-		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
+		deploy_bracer_attachments(caller)
 
 	var/datum/action/predator_action/bracer/wristblade/wb_action
 	for(wb_action as anything in caller.actions)
@@ -549,6 +556,43 @@
 			break
 
 	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/proc/deploy_bracer_attachments(mob/living/carbon/human/caller) //take the weapons from the attachments in the bracer, and puts them in the callers hand
+	if(!drain_power(caller, 50))
+		return
+	if(!left_bracer_attachment && !right_bracer_attachment)
+		to_chat(caller, SPAN_WARNING("[src] has no bracer attachments!"))
+		return
+
+	if(left_bracer_attachment)
+		var/obj/limb/left_hand = caller.get_limb("l_hand")
+		if(!caller.l_hand && left_hand.is_usable())
+			if(caller.put_in_l_hand(left_bracer_attachment.attached_weapon))
+				to_chat(caller, SPAN_NOTICE("You extend [left_bracer_attachment.attached_weapon]."))
+				bracer_attachment_deployed = TRUE
+
+	if(right_bracer_attachment)
+		var/obj/limb/right_hand = caller.get_limb("r_hand")
+		if(!caller.r_hand && right_hand.is_usable())
+			if(caller.put_in_r_hand(right_bracer_attachment.attached_weapon))
+				to_chat(caller, SPAN_NOTICE("You extend [right_bracer_attachment.attached_weapon]."))
+				bracer_attachment_deployed = TRUE
+
+	if(bracer_attachment_deployed)
+		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/caller) //if the attachments weapon is in the callers hands, retract them back into the attachments
+	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == caller)
+		caller.drop_inv_item_to_loc(left_bracer_attachment.attached_weapon, left_bracer_attachment, FALSE, TRUE)
+		to_chat(caller, SPAN_NOTICE("You retract [left_bracer_attachment.attached_weapon]."))
+
+	if(right_bracer_attachment && right_bracer_attachment.attached_weapon.loc == caller)
+		caller.drop_inv_item_to_loc(right_bracer_attachment.attached_weapon, right_bracer_attachment, FALSE, TRUE)
+		to_chat(caller, SPAN_NOTICE("You retract [right_bracer_attachment.attached_weapon]."))
+
+	bracer_attachment_deployed = FALSE
+	playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
+	return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"

@@ -153,13 +153,13 @@
 	. = ..()
 	bracers.bracer_attachment()
 
-/datum/action/predator_action/bracer/combistick
-	name = "Yank Combi-stick"
+/datum/action/predator_action/bracer/chained
+	name = "Yank Weapon"
 	action_icon_state = "combi"
 	listen_signal = COMSIG_KB_YAUTJA_CALL_COMBI
 	active = PREDATOR_ACTION_ON_CLICK
 
-/datum/action/predator_action/bracer/combistick/action_activate()
+/datum/action/predator_action/bracer/chained/action_activate()
 	. = ..()
 	yautja.call_combi_internal(yautja, forced = FALSE)
 

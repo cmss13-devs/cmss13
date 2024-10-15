@@ -2,6 +2,23 @@
 #define FLAY_STAGE_STRIP 2
 #define FLAY_STAGE_SKIN 3
 
+#define ABILITY_COST_COMBI 1
+#define ABILITY_COST_CHAIN 3
+#define ABILITY_COST_SCYTHE 5
+#define ABILITY_COST_SWORD 0
+#define ABILITY_COST_GLAIVE 0
+#define ABILITY_COST_NO_ABILITY 0
+
+#define ABILITY_CHARGE_SMALL 0.5
+#define ABILITY_CHARGE_NORMAL 1
+#define ABILITY_CHARGE_LARGE 2
+
+#define ABILITY_MAX_SMALL 1
+#define ABILITY_MAX_DEFAULT 2
+#define ABILITY_MAX_LARGE 5
+
+#define ABILITY_FILTER_NAME "ability_charge"
+
 /*#########################################
 ########### Weapon Reused Procs ###########
 #########################################*/
@@ -34,7 +51,7 @@
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	throw_range = 4
 	unacidable = TRUE
-	edge = 1
+	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = IS_SHARP_ITEM_BIG
 
@@ -127,7 +144,7 @@
 	item_state = "scim"
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_6
 	has_speed_bonus = FALSE
 
 /obj/item/weapon/wristblades/scimitar/alt
@@ -150,88 +167,254 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_item = ITEM_PREDATOR
+	unacidable = TRUE
+	edge = TRUE
+	w_class = SIZE_LARGE
+	embeddable = FALSE
+
 	var/human_adapted = FALSE
+	///The amount this weapon interrupts hivemind link on Xenomorphs.
+	var/xeno_interfere_amount = 30
+
+	///The amount of charges towards use of special abilities.
+	var/ability_charge = 0
+	var/ability_charge_max = ABILITY_MAX_DEFAULT
+	var/ability_charge_rate = ABILITY_CHARGE_NORMAL
+	var/ability_cost = ABILITY_COST_NO_ABILITY
+	///Whether the ability is ready to trigger
+	var/ability_primed = FALSE
+
+/obj/item/weapon/yautja/dropped()
+	if(ability_primed)
+		ability_primed = FALSE
+	..()
+
+/obj/item/weapon/yautja/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.AddComponent(/datum/component/status_effect/interference, xeno_interfere_amount, xeno_interfere_amount)
+
+	if(!ability_cost || !(HAS_TRAIT(user, TRAIT_YAUTJA_TECH)))
+		return
+
+	progress_ability(target, user)
+
+/obj/item/weapon/yautja/proc/progress_ability(mob/living/target, mob/living/carbon/human/user)
+	if(target == user || target.stat == DEAD || isanimal(target))
+		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
+		return FALSE
+
+	if(ability_charge < ability_charge_max)
+		ability_charge = min(ability_charge_max, ability_charge + ability_charge_rate)
+		to_chat(user, SPAN_DANGER("[src]'s reservoir fills up with your opponent's blood!"))
+
+	if(ability_charge >= ability_cost)
+		ready_ability(target, user)
+	return TRUE
+
+/obj/item/weapon/yautja/unique_action(mob/user)
+	if(user.get_active_hand() != src)
+		return FALSE
+	if(ability_charge < ability_cost)
+		to_chat(user, SPAN_WARNING("The blood reservoir is not full enough to do this!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/yautja/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user) && ability_cost)
+		. += SPAN_WARNING("It currently has <b>[ability_charge]/[ability_charge_max]</b> blood charge(s).")
+		. += SPAN_ORANGE("It requires <b>[ability_cost]</b> blood charge(s) to use its ability.")
+
+/obj/item/weapon/yautja/proc/ready_ability(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(ability_charge >= ability_cost)
+		var/color = target.get_blood_color()
+		var/alpha = 70
+		color += num2text(alpha, 2, 16)
+		add_filter(ABILITY_FILTER_NAME, 1, list("type" = "outline", "color" = color, "size" = 2))
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	embeddable = FALSE
 	w_class = SIZE_MEDIUM
-	unacidable = TRUE
-	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_4
 	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
+	ability_cost = ABILITY_COST_CHAIN
+	ability_charge_max = ABILITY_COST_CHAIN
 
-/obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
+	var/chain_range = 3
+	var/chain_duration = 30 SECONDS
+	var/mob/trapped_mob
+	var/datum/effects/tethering/tether_effect
+
+/obj/item/weapon/yautja/chain/progress_ability(mob/living/target, mob/living/carbon/human/user)
+	if(trapped_mob)
+		return FALSE//No recharging ability while a mob is already captured.
+	..()
+
+/obj/item/weapon/yautja/chain/attack_self(mob/user)
+	..()
+	if(trapped_mob)
+		var/choice = tgui_alert(user, "Do you wish to release your captive?", "Confirmation", list("Yes", "No"))
+		if(choice != "Yes")
+			return FALSE
+		release_capture(user)
+		reset_tether()
+		return TRUE
+	if(!(ability_charge >= ability_cost))
+		return FALSE
+	ability_primed = !ability_primed
+	var/message = "You tighten your grip on [src], preparing to whirl it around your target."
+	if(!ability_primed)
+		message = "You relax your grip on [src]."
+	to_chat(user, SPAN_WARNING(message))
+	return TRUE
+
+/obj/item/weapon/yautja/chain/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
+	if(!.)
+		return
+	if(ability_primed)
+		capture_target(user, target)
+
+/obj/item/weapon/yautja/chain/proc/capture_target(mob/living/user, mob/living/target)
+	var/real_chain_duration = chain_duration
+	var/real_chain_range = chain_range
+	if(target.mob_size >= MOB_SIZE_BIG)
+		real_chain_duration = (chain_duration / 2)
+		real_chain_range = (chain_range / 2)
+
+	var/list/tether_effects = apply_tether(user, target, range = real_chain_range, resistable = TRUE)
+	tether_effect = tether_effects["tetherer_tether"]
+	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(reset_tether))
+	RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(reset_tether))
+	addtimer(CALLBACK(src, PROC_REF(reset_tether), user), real_chain_duration)
+	trapped_mob = target
+	ability_primed = FALSE
+	ability_charge = max(ability_charge - ability_cost, 0)
+
+/obj/item/weapon/yautja/chain/dropped(mob/user)
+	if(trapped_mob || tether_effect)
+		release_capture(user)
+		reset_tether()
+	. = ..()
+
+/obj/item/weapon/yautja/chain/proc/release_capture(mob/user)
+	SIGNAL_HANDLER
+	if(user)
+		to_chat(user, SPAN_WARNING("[src] is no longer wrapped around [trapped_mob]!"))
+		//user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
+		//log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
+	if(trapped_mob)
+		//if(isxeno(trapped_mob))
+		//	var/mob/living/carbon/xenomorph/xeno = trapped_mob
+		//	UnregisterSignal(xeno, COMSIG_XENO_PRE_HEAL)
+		UnregisterSignal(trapped_mob, COMSIG_MOB_DEATH)
+	trapped_mob = null
+	remove_filter(ABILITY_FILTER_NAME)
+
+/obj/item/weapon/yautja/chain/Destroy()
+	release_capture()
+	reset_tether()
+	. = ..()
+
+/obj/item/weapon/yautja/chain/proc/reset_tether()
+	SIGNAL_HANDLER
+	if(trapped_mob)
+		release_capture()
+	if(tether_effect)
+		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
+		if(!QDESTROYING(tether_effect))
+			qdel(tether_effect)
+		tether_effect = null
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_ACCURATE
-	edge = TRUE
-	embeddable = FALSE
-	w_class = SIZE_LARGE
-	hitsound = "clan_sword_hit"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
-	unacidable = TRUE
-
-/obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
-	. = ..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
+	hitsound = "clan_sword_hit"
+	ability_cost = ABILITY_COST_SWORD
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	embeddable = FALSE
-	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	unacidable = TRUE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	has_unique_action = TRUE
 
-/obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	ability_cost = ABILITY_COST_SCYTHE
+	ability_charge_max = ABILITY_COST_SCYTHE
+	ability_charge_rate = ABILITY_CHARGE_NORMAL
+
+/obj/item/weapon/yautja/scythe/attack_self(mob/user)
 	..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
+	ability_primed = !ability_primed
+	var/message = "You tighten your grip on [src], preparing to whirl it in a spin."
+	if(!ability_primed)
+		message = "You relax your grip on [src]."
+	to_chat(user, SPAN_WARNING(message))
 
-	if(prob(15))
-		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-		user.spin(5, 1)
-		..() //Do it again! CRIT! This will be replaced by a bleed effect.
+/obj/item/weapon/yautja/scythe/unique_action(mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!ability_primed)
+		to_chat(user, SPAN_WARNING("You need a stronger grip for this!"))
+		return FALSE
+	user.spin_circle(2)
+	for(var/mob/living/carbon/target in orange(1, user))
+		if(!isxeno_human(target) || isyautja(target))
+			continue
 
-	return
+		if(target.stat == DEAD)
+			continue
+
+		if(!check_clear_path_to_target(user, target))
+			continue
+
+		user.visible_message(SPAN_HIGHDANGER("[user] slices open the guts of [target]!"), SPAN_HIGHDANGER("You slice open the guts of [target]!"))
+		target.spawn_gibs()
+		playsound(get_turf(target), 'sound/effects/gibbed.ogg', 30, 1)
+		target.Slow(get_xeno_stun_duration(target, 3))
+		target.apply_armoured_damage(get_xeno_damage_slash(target, (force * 1.25)), ARMOR_MELEE, BRUTE, "chest", 25)
+
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] sliced [key_name(target)] with their whirling scythe.</font>")
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(target)] was sliced by [key_name(user)] whirling their scythe.</font>")
+		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
+
+	ability_charge -= ability_cost
+	if(ability_charge < ability_cost)
+		remove_filter(ABILITY_FILTER_NAME)
+	return TRUE
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
@@ -244,23 +427,23 @@
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	has_unique_action = TRUE
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
-	w_class = SIZE_LARGE
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
-	unacidable = TRUE
 	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+
+	ability_cost = ABILITY_COST_COMBI
+	ability_charge_max = ABILITY_MAX_DEFAULT
+	ability_charge_rate = ABILITY_CHARGE_SMALL
 
 	var/on = TRUE
-	var/charged = FALSE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
@@ -280,11 +463,12 @@
 		setup_chain(user)
 
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
-	if(!charged)
+	if(ability_charge < ability_cost)
 		to_chat(user, SPAN_WARNING("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
 		return FALSE
-	charged = FALSE
-	remove_filter("combistick_charge")
+	ability_charge -= ability_cost
+	if(ability_charge < ability_cost)
+		remove_filter(ABILITY_FILTER_NAME)
 	unwield(user) //Otherwise stays wielded even when thrown
 	return TRUE
 
@@ -410,7 +594,6 @@
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
 		force = force_unwielded
-		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("speared", "stabbed", "impaled")
 
 		if(blood_overlay && blood_color)
@@ -427,7 +610,6 @@
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
 		force = force_storage
-		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
@@ -441,28 +623,6 @@
 	add_fingerprint(user)
 
 	return
-
-/obj/item/weapon/yautja/combistick/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
-
-	if(target == user || target.stat == DEAD)
-		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
-		return
-	if(isanimal(target))
-		return
-
-	if(!charged)
-		to_chat(user, SPAN_DANGER("Your combistick's reservoir fills up with your opponent's blood! You may now throw it!"))
-		charged = TRUE
-		var/color = target.get_blood_color()
-		var/alpha = 70
-		color += num2text(alpha, 2, 16)
-		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/yautja/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
@@ -485,7 +645,6 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -695,6 +854,7 @@
 	)
 
 	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
@@ -702,6 +862,65 @@
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/human_adapted = FALSE
+	///The amount this weapon interrupts hivemind link on Xenomorphs.
+	var/xeno_interfere_amount = 30
+
+	///The amount of charges towards use of special abilities.
+	var/ability_charge = 0
+	var/ability_charge_max = ABILITY_MAX_DEFAULT
+	var/ability_charge_rate = ABILITY_CHARGE_NORMAL
+	var/ability_cost = ABILITY_COST_NO_ABILITY
+	///Whether the ability is ready to trigger
+	var/ability_primed = FALSE
+
+/obj/item/weapon/twohanded/yautja/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.AddComponent(/datum/component/status_effect/interference, xeno_interfere_amount, xeno_interfere_amount)
+
+	if(!ability_cost || !(HAS_TRAIT(user, TRAIT_YAUTJA_TECH)))
+		return
+
+	progress_ability(target, user)
+
+/obj/item/weapon/twohanded/yautja/proc/progress_ability(mob/living/target, mob/living/carbon/human/user)
+	if(target == user || target.stat == DEAD || isanimal(target))
+		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
+		return FALSE
+
+	if(ability_charge < ability_charge_max)
+		ability_charge = min(ability_charge_max, ability_charge + ability_charge_rate)
+		to_chat(user, SPAN_DANGER("[src]'s reservoir fills up with your opponent's blood!"))
+
+	if(ability_charge >= ability_cost)
+		ready_ability(target, user)
+	return TRUE
+
+/obj/item/weapon/twohanded/yautja/unique_action(mob/user)
+	if(user.get_active_hand() != src)
+		return FALSE
+	if(ability_charge < ability_cost)
+		to_chat(user, SPAN_WARNING("The blood reservoir is not full enough to do this!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/twohanded/yautja/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user) && ability_cost)
+		. += SPAN_WARNING("It currently has <b>[ability_charge]/[ability_charge_max]</b> blood charge(s).")
+		. += SPAN_ORANGE("It requires <b>[ability_cost]</b> blood charge(s) to use its ability.")
+
+/obj/item/weapon/twohanded/yautja/proc/ready_ability(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(ability_charge >= ability_cost)
+		var/color = target.get_blood_color()
+		var/alpha = 70
+		color += num2text(alpha, 2, 16)
+		add_filter(ABILITY_FILTER_NAME, 1, list("type" = "outline", "color" = color, "size" = 2))
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
 	name = "hunter spear"
@@ -709,7 +928,7 @@
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
 	flags_item = NOSHIELD|TWOHANDED
-	force = MELEE_FORCE_TIER_3
+	force = MELEE_FORCE_TIER_4
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
@@ -764,21 +983,12 @@
 	icon_state = "glaive"
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
-	force_wielded = MELEE_FORCE_TIER_9
+	force_wielded = MELEE_FORCE_TIER_10
 	throwforce = MELEE_FORCE_TIER_3
-	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
-
-/obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
+	ability_cost = ABILITY_COST_GLAIVE
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -826,6 +1036,8 @@
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	has_unique_action = FALSE
 
 /obj/item/weapon/gun/launcher/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
@@ -841,7 +1053,6 @@
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
@@ -910,6 +1121,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
@@ -926,6 +1138,7 @@
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
+	has_unique_action = FALSE
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -936,7 +1149,6 @@
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/process()
 	if(charge_time < 100)
@@ -1036,7 +1248,6 @@
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
 
-
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
@@ -1047,7 +1258,6 @@
 		charge_time++
 		if(charge_time == 39)
 			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
-
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
@@ -1103,7 +1313,7 @@
 		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
+/obj/item/weapon/gun/energy/yautja/plasmapistol/unique_action()
 	switch(mode)
 		if(FIRE_MODE_STANDARD)
 			mode = FIRE_MODE_INCENDIARY
@@ -1145,7 +1355,6 @@
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
@@ -1227,7 +1436,7 @@
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
+/obj/item/weapon/gun/energy/yautja/plasma_caster/unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"

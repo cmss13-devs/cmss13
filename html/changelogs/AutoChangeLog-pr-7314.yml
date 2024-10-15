@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "Req line tutorial NPCs have a bigger list of items to ask for."

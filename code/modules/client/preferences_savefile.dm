@@ -177,6 +177,7 @@
 		tutorial_savestring_to_list(tutorial_string)
 		if("requisitions_line" in completed_tutorials)
 			completed_tutorials -= "requisitions_line"
+			completed_tutorials += "marine_req_1"
 		S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	savefile_version = SAVEFILE_VERSION_MAX

@@ -5144,7 +5144,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hanger/research)
 "arI" = (
@@ -10059,7 +10059,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/n)
 "aLq" = (
@@ -14837,7 +14837,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/canteen)
 "beg" = (
@@ -16392,7 +16392,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/storage/vip)
 "bka" = (
@@ -19565,7 +19565,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hallway/central/west)
 "bxG" = (
@@ -21979,7 +21979,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "bHx" = (

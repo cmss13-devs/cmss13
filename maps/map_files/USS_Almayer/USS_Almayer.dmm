@@ -8805,9 +8805,7 @@
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/cryo_cells)
 "bla" = (
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
@@ -15078,9 +15076,7 @@
 "cqN" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north2)
 "cqQ" = (
@@ -15208,9 +15204,7 @@
 "ctG" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/south1)
 "ctJ" = (
@@ -16006,9 +16000,7 @@
 "cMd" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
 "cMl" = (
@@ -16253,9 +16245,7 @@
 "cQT" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/northwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/lifeboat_pumps/south2)
 "cQW" = (
@@ -16965,9 +16955,7 @@
 "dfl" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/south2)
 "dfz" = (
@@ -17459,9 +17447,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_s)
 "drx" = (
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/uscm/directional/northwest,
 /area/almayer/living/briefing)
 "drT" = (
@@ -19175,9 +19161,7 @@
 "edA" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/northwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/lifeboat_pumps/north1)
 "edG" = (
@@ -19720,9 +19704,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "enV" = (
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/uscm/directional/southwest,
 /area/almayer/living/briefing)
 "enY" = (
@@ -23879,9 +23861,7 @@
 "ges" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north1)
 "geu" = (
@@ -24904,9 +24884,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "gBY" = (
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -28230,9 +28208,7 @@
 "hXo" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/northeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/north1)
 "hXD" = (
@@ -31746,9 +31722,7 @@
 "jvo" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/south1)
 "jvp" = (
@@ -34640,9 +34614,7 @@
 /turf/open/floor/almayer/green/southeast,
 /area/almayer/living/grunt_rnr)
 "kHl" = (
-/obj/structure/platform/metal/almayer{
-	layer = 3.1
-	},
+/obj/structure/platform/metal/almayer,
 /obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 5;
@@ -37070,9 +37042,7 @@
 "lGm" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/south2)
 "lHk" = (
@@ -39165,9 +39135,7 @@
 "mEe" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/northeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
 "mFc" = (
@@ -41453,9 +41421,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "nyz" = (
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/flasher{
 	id = "briefing_flash";
 	range = 12
@@ -42397,9 +42363,7 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "nTB" = (
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 10;
 	icon_state = "p_stair_full"
@@ -50896,9 +50860,7 @@
 /obj/structure/stairs{
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "rqv" = (
@@ -52076,9 +52038,7 @@
 "rNO" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/northeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/north2)
 "rOc" = (
@@ -60450,9 +60410,7 @@
 "vnr" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/northwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/lifeboat_pumps/north2)
 "vnD" = (
@@ -63855,9 +63813,7 @@
 "wwA" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/northwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/lifeboat_pumps/south1)
 "wwE" = (
@@ -64015,9 +63971,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_umbilical)
 "wBp" = (
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -64075,9 +64029,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/lower/engine_core)
 "wDg" = (
@@ -65742,9 +65694,7 @@
 "xkG" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north2)
 "xkN" = (
@@ -67439,9 +67389,7 @@
 /obj/structure/stairs{
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/almayer/east{
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "xUy" = (
@@ -67961,9 +67909,7 @@
 "yeC" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/northeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south2)
 "yeH" = (

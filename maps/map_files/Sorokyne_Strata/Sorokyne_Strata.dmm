@@ -8951,7 +8951,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "aLp" = (
@@ -11540,7 +11540,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "aWW" = (
@@ -12724,12 +12724,12 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "bcX" = (
-/obj/structure/platform/metal/strata/north,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/outpost_decks)
 "bda" = (
@@ -22550,7 +22550,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "dGv" = (
@@ -30702,7 +30702,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "rWk" = (

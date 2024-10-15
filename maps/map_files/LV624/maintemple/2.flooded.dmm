@@ -799,9 +799,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "zv" = (
-/obj/structure/platform/stone/runed_sandstone/west{
-	layer = 3.01
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "zA" = (

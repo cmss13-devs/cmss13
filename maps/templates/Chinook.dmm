@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/obj/structure/platform/metal/almayer/north,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "ac" = (
@@ -6874,12 +6874,6 @@
 "BK" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/adminlevel/chinook/engineering)
-"BL" = (
-/obj/structure/platform/metal/almayer/north{
-	layer = 2
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
 "BN" = (
 /obj/structure/machinery/body_scanconsole{
 	dir = 8
@@ -11649,12 +11643,12 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Wk" = (
-/obj/structure/platform/metal/almayer/north,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "Wl" = (
@@ -25533,7 +25527,7 @@ Zu
 al
 Qx
 TQ
-BL
+mS
 SL
 SL
 kA
@@ -25660,7 +25654,7 @@ Zu
 al
 Qx
 NU
-BL
+mS
 Ou
 AN
 AN
@@ -26676,7 +26670,7 @@ Zu
 al
 Qx
 NU
-BL
+mS
 yB
 SW
 SW
@@ -26803,7 +26797,7 @@ Zu
 al
 Qx
 TQ
-BL
+mS
 SL
 SL
 kI

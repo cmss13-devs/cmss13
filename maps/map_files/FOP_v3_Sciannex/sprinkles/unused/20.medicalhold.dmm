@@ -390,9 +390,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/template_noop)
 "IK" = (
-/obj/structure/platform/metal/almayer/north{
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/largecrate/random/barrel{
 	pixel_x = -8;
 	layer = 2.9
@@ -410,9 +408,7 @@
 /area/template_noop)
 "JJ" = (
 /obj/structure/platform_decoration/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/east{
-	layer = 2.8
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/whitegreen/north,
 /area/template_noop)
 "JL" = (

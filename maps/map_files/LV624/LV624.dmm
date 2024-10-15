@@ -9103,9 +9103,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/almayer{
-	layer = 3.1
-	},
+/obj/structure/platform/metal/almayer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -12190,7 +12188,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
 "fyA" = (
@@ -16275,7 +16273,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nWJ" = (
@@ -17703,7 +17701,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
 "qPY" = (
@@ -18539,7 +18537,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sCx" = (

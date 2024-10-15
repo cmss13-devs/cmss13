@@ -578,12 +578,10 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "aUq" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
 "aUF" = (

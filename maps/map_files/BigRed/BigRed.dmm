@@ -19620,7 +19620,6 @@
 /area/bigredv2/outside/space_port)
 "eeo" = (
 /obj/structure/platform/stone/kutjevo/west{
-	layer = 2.9;
 	pixel_x = -3
 	},
 /turf/closed/wall/solaris/rock,
@@ -19648,9 +19647,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/caves/eta/research)
 "efo" = (
-/obj/structure/platform_decoration/stone/kutjevo{
-	layer = 3.1
-	},
+/obj/structure/platform_decoration/stone/kutjevo,
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/nw)
@@ -22797,7 +22794,6 @@
 /area/bigred/ground/garage_workshop)
 "hCS" = (
 /obj/structure/platform/stone/kutjevo/west{
-	layer = 2.9;
 	pixel_x = -3
 	},
 /obj/structure/platform/stone/kutjevo,
@@ -34337,7 +34333,6 @@
 /area/bigredv2/caves/mining)
 "tso" = (
 /obj/structure/platform/stone/kutjevo/west{
-	layer = 2.9;
 	pixel_x = -3
 	},
 /obj/effect/decal/cleanable/blood/drip,
@@ -36108,7 +36103,6 @@
 /area/bigredv2/outside/library)
 "vgn" = (
 /obj/structure/platform/stone/kutjevo/east{
-	layer = 2.9;
 	pixel_x = 4
 	},
 /turf/closed/wall/solaris/rock,
@@ -36622,11 +36616,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
-"vEg" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering)
 "vEF" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/hardhat/orange{
@@ -54077,7 +54066,7 @@ tSl
 pFj
 haL
 kka
-vEg
+tSl
 pFj
 haL
 ayZ

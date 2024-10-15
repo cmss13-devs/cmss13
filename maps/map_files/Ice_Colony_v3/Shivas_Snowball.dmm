@@ -7625,9 +7625,8 @@
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "dTY" = (
-/obj/structure/platform/metal/shiva/north,
+/obj/structure/platform/metal/stair_cut/shiva_right,
 /obj/structure/stairs/perspective{
-	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -21731,8 +21730,9 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "vsM" = (
-/obj/structure/platform/metal/shiva/north,
+/obj/structure/platform/metal/stair_cut/shiva_left,
 /obj/structure/stairs/perspective{
+	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -32043,9 +32043,9 @@ fRg
 oYH
 uKZ
 vsM
-ail
-ail
-ail
+cex
+cex
+cex
 uKZ
 uji
 uji
@@ -32853,9 +32853,9 @@ fRg
 oYH
 uKZ
 dTY
-cex
-cex
-cex
+ail
+ail
+ail
 uKZ
 xHu
 pvv

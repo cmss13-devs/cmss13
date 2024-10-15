@@ -221,9 +221,7 @@
 	},
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "gg" = (
@@ -372,9 +370,7 @@
 "jP" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1
@@ -602,9 +598,7 @@
 	},
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "nT" = (
@@ -1840,9 +1834,7 @@
 "RQ" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1

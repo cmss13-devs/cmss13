@@ -8257,9 +8257,7 @@
 "eFe" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform_decoration/metal/almayer/southeast{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/asphalt/cement,
 /area/lv522/landing_zone_1)
 "eFK" = (
@@ -14852,9 +14850,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/metal/almayer/southwest{
-	layer = 3.51
-	},
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "iod" = (

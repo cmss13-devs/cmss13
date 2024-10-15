@@ -4614,9 +4614,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "dDa" = (
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.5
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
@@ -8145,9 +8143,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/transit_hub)
 "guR" = (
-/obj/structure/platform/metal/almayer/east{
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
@@ -14066,9 +14062,7 @@
 	icon_state = "Corner"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north{
-	layer = 2.1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "laz" = (
@@ -15705,7 +15699,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "moK" = (
@@ -17318,9 +17312,7 @@
 	icon_state = "Corner"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north{
-	layer = 2.1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "nCh" = (
@@ -23245,9 +23237,7 @@
 	icon_state = "Straight"
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north{
-	layer = 2.1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "skj" = (
@@ -24716,15 +24706,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
-"tpe" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/metal/almayer/north,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "tpf" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "2"
@@ -24898,15 +24879,6 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
-"tvn" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.5
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/telecomm/lz1_tram)
 "twb" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/maintenance)
@@ -29748,13 +29720,6 @@
 "xzN" = (
 /turf/open/floor/prison/blue/northwest,
 /area/fiorina/station/chapel)
-"xzO" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/metal/almayer/north,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/park)
 "xAl" = (
 /obj/structure/cargo_container/grant/right{
 	desc = "A huge industrial shipping container. You're not sure how it got here."
@@ -45881,7 +45846,7 @@ rBz
 wbI
 qUC
 oer
-xzO
+bGn
 sTm
 sTm
 sQM
@@ -79971,7 +79936,7 @@ bQM
 cAW
 bzO
 bzO
-tpe
+xne
 axx
 axx
 pgn
@@ -80182,7 +80147,7 @@ ogf
 ogf
 ogf
 heB
-tvn
+uEJ
 hoP
 aeo
 aeo

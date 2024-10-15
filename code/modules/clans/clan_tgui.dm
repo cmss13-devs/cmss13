@@ -125,9 +125,6 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		// ------------- CLAN ELDER+ ONLY ACTION ------------- \\
 
 	if(action == "assign_ancillary")
-		to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
-		return FALSE
-		/*
 		if(!(linked_client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY)))
 			if(!(target_yautja.clan_id == current_clan_id))
 				to_chat(user, SPAN_WARNING("You cannot assign an ancillary title to this player, they are not in your clan!"))
@@ -192,7 +189,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		target_yautja.clan_ancillary = chosen_ancillary.name
 		message_admins("[key_name_admin(user)] has set the ancillary title of [target_ckey] to [chosen_ancillary.name] for their clan.")
 		to_chat(user, SPAN_NOTICE("Set [target_ckey]'s ancillary title to [chosen_ancillary.name]"))
-		*/
+
 
 	// ------------- CLAN LEADER ONLY ACTIONS ------------- \\
 

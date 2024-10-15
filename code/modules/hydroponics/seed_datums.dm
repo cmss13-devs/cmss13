@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
 											) = list(1,rand(1,2)))
-				if(prob(20) && chems_special)
+				if(prob(30) && chems_special)
 					chem_to_add = list(pick(chems_special) = list(1,rand(1,2)))
 				chems += chem_to_add
 
@@ -1127,7 +1127,6 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	packet_icon = "seed-harebell"
 	plant_icon = "harebell"
 	chems = list("plantmatter" = list(1,20))
-	chems_special = list("digoxin")
 
 	lifespan = 100
 	maturation = 7
@@ -1252,6 +1251,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	products = list(/obj/item/stack/medical/advanced/ointment/predator)
 	plant_icon = "mtear"
 	chems = list("honey" = list(1,10), "kelotane" = list(3,5))
+	chems_special = list("digoxin")
 
 	lifespan = 50
 	maturation = 3

@@ -92,10 +92,8 @@
 				if(1)
 					if(roll<=60)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=35)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 				if(2)
 					if(roll<=60)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])

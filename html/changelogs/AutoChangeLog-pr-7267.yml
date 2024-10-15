@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - qol: "Intelligence Officers (IOs) now have comtech level access, and thus can unlock APCs and use engi vendors as if they were a comtech."

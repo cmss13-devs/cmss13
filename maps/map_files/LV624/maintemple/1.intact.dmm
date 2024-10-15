@@ -251,7 +251,7 @@
 	name = "gilded clan greaves"
 	},
 /obj/item/weapon/yautja/chained/combistick{
-	color = #FFE55C;
+	color = "#FFE55C";
 	name = "strange spear";
 	anchored = 1;
 	desc = "This ancient and frayed gilded spear almost gleans with it's razor sharp edge."

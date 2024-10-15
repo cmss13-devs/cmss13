@@ -1,0 +1,4 @@
+author: "JayTacos"
+delete-after: True
+changes:
+  - rscadd: "Added a varient of combistick that has no block chance."

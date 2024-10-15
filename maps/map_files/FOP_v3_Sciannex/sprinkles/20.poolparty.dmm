@@ -268,13 +268,6 @@
 "ni" = (
 /turf/closed/wall/prison,
 /area/template_noop)
-"nC" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/metal/almayer/north,
-/turf/open/floor/plating/prison,
-/area/template_noop)
 "nS" = (
 /obj/structure/prop/souto_land/pole,
 /turf/open/floor/wood,
@@ -1546,7 +1539,7 @@ rW
 nf
 rq
 Rs
-nC
+YP
 Rr
 Rr
 TS

@@ -127,6 +127,11 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 	)
 	order_by = list("round_id" = DB_ORDER_BY_DESC)
 
+/datum/entity_meta/statistic_death/Destroy()
+	. = ..()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.death_stats_list -= src
+
 /mob/proc/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
 	if(cause_data && !istype(cause_data))
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
@@ -216,11 +221,8 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 		else if(ishuman(src))
 			track_statistic_earned(new_death.faction_name, STATISTIC_TYPE_JOB, new_death.cause_name, ff_type ? STATISTICS_DEATH_FF : STATISTICS_DEATH, 1, player_entity)
 
-// On unit test something going horrybly wrong with testing humans for entire game, and this part exploding with errors
-#ifndef UNIT_TESTS
-	if(SSticker.mode && GLOB.round_statistics)
+	if(GLOB.round_statistics)
 		GLOB.round_statistics.death_stats_list += new_death
-#endif
 
 	new_death.save()
 	new_death.detach()

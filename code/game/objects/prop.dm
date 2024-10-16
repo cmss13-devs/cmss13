@@ -137,13 +137,7 @@
 	name = "dirty bandages"
 	desc = "Some used gauze."
 	icon_state = "bandages_prop"
-	icon = 'icons/monkey_icos.dmi'
-
-/obj/item/prop/colony/folded_bedroll
-	name = "folded bedroll"
-	desc = "a folded up bedroll"
-	icon_state = "bedroll"
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/props/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"

@@ -850,7 +850,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rX" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /obj/item/shard{
 	icon_state = "medium"
 	},

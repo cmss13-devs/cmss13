@@ -386,12 +386,12 @@
 
 /obj/structure/bed/chair/dropship/passenger/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 

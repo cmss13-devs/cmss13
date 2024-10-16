@@ -19345,7 +19345,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
 "dOl" = (
-/obj/item/prop/colony/folded_bedroll{
+/obj/item/roller/bedroll{
 	pixel_x = -5;
 	pixel_y = -4
 	},

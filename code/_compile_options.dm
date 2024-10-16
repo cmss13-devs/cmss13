@@ -15,6 +15,8 @@
 #define TESTING
 #endif
 
+#define TESTING
+
 #if defined(UNIT_TESTS)
 //Hard del testing defines
 #define REFERENCE_TRACKING

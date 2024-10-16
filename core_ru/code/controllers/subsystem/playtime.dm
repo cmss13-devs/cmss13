@@ -43,7 +43,6 @@
 	if(player_data)
 		player_data.glob_pt_visibility = !player_data.glob_pt_visibility
 		to_chat(src, SPAN_BOLDNOTICE("Now your ckey [player_data.glob_pt_visibility ? "showing" : "hidden"] in global playtimes (effect will be taken on next round)"))
-		player_data.save()
 
 /datum/entity/player/ui_data(mob/user)
 	if(!LAZYACCESS(playtime_data, "loaded"))

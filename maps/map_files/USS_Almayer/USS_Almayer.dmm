@@ -8004,8 +8004,9 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_two)
 "bcZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/squads/alpha)
 "bda" = (
@@ -8229,8 +8230,9 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_one)
 "bew" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "bez" = (
@@ -11966,8 +11968,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bKX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/emerald/north,
 /area/almayer/squads/charlie)
 "bLc" = (
@@ -13372,8 +13375,9 @@
 /turf/open/floor/almayer/bluecorner/east,
 /area/almayer/living/briefing)
 "bVy" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
 "bVE" = (
@@ -45284,12 +45288,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
 "oRy" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /obj/structure/sign/safety/autodoc{
 	pixel_x = 20;
 	pixel_y = -32
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
 "oRJ" = (
@@ -46285,7 +46288,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "pnC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/obj/structure/machinery/chem_dispenser/corpsman,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
 "pnL" = (
@@ -63983,6 +63986,10 @@
 "wsS" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"wti" = (
+/obj/structure/machinery/chem_dispenser/corpsman,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/lower_medical_medbay)
 "wtk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -97966,9 +97973,9 @@ bkE
 bQM
 rlZ
 izY
-rlZ
-rlZ
-rlZ
+xsw
+bZn
+kFv
 izY
 rlZ
 hZN
@@ -98169,9 +98176,9 @@ bkE
 bRP
 rlZ
 rlZ
-xsw
-bZn
-kFv
+kSC
+kan
+wti
 rlZ
 rlZ
 siW
@@ -98981,7 +98988,7 @@ vhX
 gDW
 rlZ
 rlZ
-wYr
+pnC
 dBH
 bky
 ryt
@@ -99184,7 +99191,7 @@ xMs
 cjW
 rlZ
 rlZ
-kSC
+wYr
 kan
 quv
 rZB
@@ -99387,9 +99394,9 @@ bgw
 eXb
 rlZ
 rlZ
-thP
-beW
-bgP
+kSC
+kan
+wti
 rlZ
 rlZ
 hAU
@@ -99590,9 +99597,9 @@ bgw
 fbw
 rlZ
 rlZ
-pqD
-pqD
-pqD
+thP
+beW
+bgP
 rlZ
 rlZ
 rFH
@@ -99793,9 +99800,9 @@ bgy
 fxZ
 rlZ
 aZK
-vYt
-fDj
-eBZ
+pqD
+pqD
+pqD
 hBc
 rlZ
 pKZ
@@ -99996,9 +100003,9 @@ bgw
 icw
 qni
 klH
-tgV
-tgV
-tgV
+vYt
+fDj
+eBZ
 klH
 qni
 uah
@@ -100199,9 +100206,9 @@ bgw
 jxi
 rlZ
 rlZ
-rlZ
-rlZ
-rlZ
+tgV
+tgV
+tgV
 rlZ
 rlZ
 nrN

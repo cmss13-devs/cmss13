@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - bugfix: "lifeboat launch console is no longer slashable / acidable"

@@ -47,12 +47,16 @@
 //rocket launchers
 
 /obj/item/ammo_magazine/rifle/grenadespawner
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper GRENADE SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
 	default_ammo = /datum/ammo/grenade_container/rifle
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/huggerspawner
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper HUGGER SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
 	default_ammo = /datum/ammo/hugger_container

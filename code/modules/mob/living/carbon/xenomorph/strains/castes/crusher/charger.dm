@@ -219,7 +219,7 @@
 		charger_ability.stop_momentum()
 		return
 
-	if(!indestructible && !unacidable)
+	if(!explo_proof && !unacidable)
 		qdel(src)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, TRUE)
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)

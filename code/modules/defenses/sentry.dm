@@ -223,7 +223,7 @@
 
 	if(istype(O, ammo))
 		var/obj/item/ammo_magazine/M = O
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) || user.action_busy)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || user.action_busy)
 			return
 
 		if(ammo.current_rounds)
@@ -899,6 +899,12 @@
 	sentry_range = 3
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
+
+/obj/structure/machinery/defenses/sentry/omni
+	name = "\improper UA 571-D omnidirectional sentry gun"
+	omni_directional = TRUE
+	damage_mult = 0.7
+	sentry_range = 4
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

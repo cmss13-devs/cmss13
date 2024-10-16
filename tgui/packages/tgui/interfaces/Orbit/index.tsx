@@ -127,13 +127,16 @@ const ObservableSearch = () => {
 };
 
 const xenoSplitter = (members: Array<Observable>) => {
+  const tdomeHive: Array<Observable> = [];
   const primeHive: Array<Observable> = [];
   const corruptedHive: Array<Observable> = [];
   const forsakenHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.hivenumber?.includes('normal')) {
+    if (x.area_name?.includes('Thunderdome')) {
+      tdomeHive.push(x);
+    } else if (x.hivenumber?.includes('normal')) {
       primeHive.push(x);
     } else if (x.hivenumber?.includes('corrupted')) {
       corruptedHive.push(x);
@@ -144,6 +147,7 @@ const xenoSplitter = (members: Array<Observable>) => {
     }
   });
   const squads = [
+    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
     buildSquadObservable('Prime', 'xeno', primeHive),
     buildSquadObservable('Corrupted', 'green', corruptedHive),
     buildSquadObservable('Forsaken', 'grey', forsakenHive),
@@ -158,6 +162,10 @@ const marineSplitter = (members: Array<Observable>) => {
   const charlieSquad: Array<Observable> = [];
   const deltaSquad: Array<Observable> = [];
   const foxtrotSquad: Array<Observable> = [];
+  const echoSquad: Array<Observable> = [];
+  const CBRNSquad: Array<Observable> = [];
+  const FORECONSquad: Array<Observable> = [];
+  const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
@@ -171,6 +179,14 @@ const marineSplitter = (members: Array<Observable>) => {
       deltaSquad.push(x);
     } else if (x.job?.includes('Foxtrot')) {
       foxtrotSquad.push(x);
+    } else if (x.job?.includes('Echo')) {
+      echoSquad.push(x);
+    } else if (x.job?.includes('CBRN')) {
+      CBRNSquad.push(x);
+    } else if (x.job?.includes('FORECON')) {
+      FORECONSquad.push(x);
+    } else if (x.job?.includes('SOF')) {
+      SOFSquad.push(x);
     } else {
       other.push(x);
     }
@@ -181,7 +197,11 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Bravo', 'yellow', bravoSquad),
     buildSquadObservable('Charlie', 'purple', charlieSquad),
     buildSquadObservable('Delta', 'blue', deltaSquad),
-    buildSquadObservable('Foxtrot', 'teal', foxtrotSquad),
+    buildSquadObservable('Foxtrot', 'brown', foxtrotSquad),
+    buildSquadObservable('Echo', 'teal', echoSquad),
+    buildSquadObservable('CBRN', 'dark-blue', CBRNSquad),
+    buildSquadObservable('FORECON', 'green', FORECONSquad),
+    buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
   ];
   return squads;
@@ -289,6 +309,7 @@ const ObservableContent = () => {
     npcs = [],
     vehicles = [],
     escaped = [],
+    in_thunderdome = [],
   } = data;
 
   return (
@@ -357,6 +378,11 @@ const ObservableContent = () => {
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
+      <ObservableSection
+        color="orange"
+        section={in_thunderdome}
+        title="Thunderdome"
+      />
       <ObservableSection section={vehicles} title="Vehicles" />
       <ObservableSection section={animals} title="Animals" />
       <ObservableSection section={dead} title="Dead" />

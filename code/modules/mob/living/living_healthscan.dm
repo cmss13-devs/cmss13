@@ -159,6 +159,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 		//snowflake :3
 		data["lung_ruptured"] = human_target_mob.is_lung_ruptured()
+		data["heart_broken"] = human_target_mob.is_heart_broken()
 
 		//shrapnel, limbs, limb damage, limb statflags, cyber limbs
 		var/core_fracture_detected = FALSE

@@ -1297,9 +1297,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Px" = (
 /obj/structure/machinery/autolathe,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "PA" = (

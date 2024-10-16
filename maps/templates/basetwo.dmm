@@ -840,7 +840,7 @@
 	density = 1;
 	icon_state = "shutter1";
 	id = "second_base";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Second Base";
 	opacity = 1
 	},
@@ -896,7 +896,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/bunker01/hydroponics)
 "df" = (
-/obj/structure/machinery/hydro_floodlight,
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/almayer/blue/northeast,
 /area/adminlevel/bunker01/hydroponics)
 "dg" = (

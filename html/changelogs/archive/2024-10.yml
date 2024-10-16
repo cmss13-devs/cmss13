@@ -151,3 +151,8 @@
   Mister-moon1:
   - imageadd: new yautja cape, the damaged cape available to elites +
   - bugfix: fixed spriting issues with ceremonial cape and armour 5
+2024-10-16:
+  JayTacos:
+  - rscadd: Added a varient of combistick that has no block chance.
+  private-tristan:
+  - rscadd: Req line tutorial NPCs have a bigger list of items to ask for.

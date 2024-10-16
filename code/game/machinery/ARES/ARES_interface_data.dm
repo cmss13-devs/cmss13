@@ -148,8 +148,6 @@
 
 	var/list/logged_maintenance = list()
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
-		if(!istype(maint_ticket))
-			continue
 		var/lock_status = TICKET_OPEN
 		switch(maint_ticket.ticket_status)
 			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)

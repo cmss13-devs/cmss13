@@ -5479,7 +5479,7 @@
 /turf/open/floor/almayer/silver,
 /area/adminlevel/chinook)
 "ve" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cryo)
 "vf" = (
@@ -6262,7 +6262,7 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/cargo)
 "yM" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -7192,7 +7192,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "CS" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "CT" = (
@@ -7467,7 +7467,7 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/offices)
 "DT" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -8769,7 +8769,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "JH" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
@@ -11164,7 +11164,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
 "TD" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -11884,7 +11884,7 @@
 /turf/open/floor/almayer/green/southeast,
 /area/adminlevel/chinook)
 "WB" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cryo)
 "WD" = (

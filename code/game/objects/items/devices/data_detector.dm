@@ -47,6 +47,7 @@
 
 				show_blip(loc, object)
 				detected_sound = TRUE
+				break
 
 	for(var/mob/creature as anything in GLOB.mob_list)
 		if(!creature)

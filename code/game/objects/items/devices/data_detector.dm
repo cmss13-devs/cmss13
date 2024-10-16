@@ -27,6 +27,7 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
+// In future if youre need opti, just make component or something like that for all atoms that need to be detected, and you know... it's better than running thru all contents, rather than thru list of link to what we need to detect in global list or something like that
 /obj/item/device/motiondetector/intel/scan()
 	// Remembering our loc == human, opti purposes, don't let it scan without user, just ignore proc
 	if(!istype(loc, /mob/living/carbon/human))

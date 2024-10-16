@@ -54,9 +54,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "eA" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "fl" = (
@@ -234,12 +232,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"re" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "rh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -277,9 +269,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "tn" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "tq" = (
@@ -287,10 +277,18 @@
 /obj/item/storage/large_holster/katana,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"uF" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "uK" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"uM" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "uO" = (
@@ -309,6 +307,10 @@
 	},
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"vU" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/interior/caves/temple)
 "vY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -324,9 +326,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "wi" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "yT" = (
@@ -339,10 +339,6 @@
 /area/desert_dam/interior/caves/temple)
 "zg" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
-/area/desert_dam/interior/caves/temple)
-"An" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "Ax" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -407,9 +403,7 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "FE" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "Gz" = (
@@ -484,9 +478,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "JM" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "JP" = (
@@ -494,7 +486,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "JU" = (
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "JZ" = (
@@ -585,9 +577,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "QT" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "RB" = (
@@ -596,19 +586,9 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
-"SD" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "TO" = (
 /obj/structure/xenoautopsy,
 /turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"TU" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "UB" = (
 /obj/structure/machinery/power/smes/magical{
@@ -631,6 +611,10 @@
 "WV" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"XB" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "XQ" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -765,12 +749,12 @@ MH
 mB
 mB
 MH
-An
-wi
-wi
-wi
-wi
 tn
+wi
+wi
+wi
+wi
+vU
 MH
 "}
 (6,1,1) = {"
@@ -968,9 +952,9 @@ MH
 MH
 mB
 mB
-SD
-JM
 FE
+JM
+uM
 mB
 mB
 MH
@@ -1020,9 +1004,9 @@ mB
 MH
 mB
 mB
-re
+XB
 QT
-TU
+uF
 mB
 mB
 Eh

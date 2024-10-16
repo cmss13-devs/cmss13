@@ -28,12 +28,8 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "dS" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "fd" = (
@@ -88,10 +84,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "kW" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "lz" = (
@@ -268,12 +262,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "Kx" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "MY" = (
@@ -341,10 +331,8 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "VT" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0;
 	pixel_x = -16;

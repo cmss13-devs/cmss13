@@ -41,6 +41,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"aJ" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "aN" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -66,6 +70,10 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple/powered)
+"bS" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "bZ" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -79,9 +87,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dA" = (
@@ -127,7 +133,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
@@ -149,9 +155,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "dQ" = (
@@ -341,16 +345,8 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
-"gZ" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -389,7 +385,7 @@
 /turf/open/gm/dirtgrassborder/desert2,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hL" = (
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 6;
@@ -415,17 +411,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"iw" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "iN" = (
 /obj/item/weapon/sword{
 	pixel_x = -6;
@@ -483,16 +468,8 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ma" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "mf" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "mr" = (
@@ -532,9 +509,11 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"mE" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mI" = (
@@ -583,7 +562,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
@@ -610,16 +589,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"nk" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"nL" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "nN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -631,10 +600,17 @@
 /obj/item/tool/surgery/scalpel/predatorscalpel,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
-"od" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
+"nV" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
 	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"od" = (
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "oi" = (
@@ -666,21 +642,8 @@
 	},
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
-"pX" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "qf" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "qz" = (
@@ -689,10 +652,12 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"qN" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "rA" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
@@ -749,10 +714,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"sM" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "sN" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "maintemple"
@@ -765,9 +726,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "ts" = (
@@ -776,9 +735,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "tE" = (
@@ -788,9 +745,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "un" = (
@@ -799,7 +754,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "uy" = (
@@ -830,9 +785,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "uO" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "uQ" = (
@@ -841,13 +794,11 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/mineral/sandstone/runed,
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "uT" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "vu" = (
@@ -856,15 +807,16 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"vK" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "vN" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "we" = (
@@ -880,9 +832,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wi" = (
@@ -903,7 +853,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wS" = (
@@ -920,10 +870,6 @@
 	color = "#20d450"
 	},
 /turf/open/gm/dirtgrassborder/desert0,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"xx" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xy" = (
 /obj/structure/stairs/perspective{
@@ -950,26 +896,29 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"yE" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "yT" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "zg" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 5;
@@ -987,13 +936,11 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "zO" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "zZ" = (
-/obj/structure/platform/mineral/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Ai" = (
@@ -1022,17 +969,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"AQ" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Ba" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -1095,6 +1031,24 @@
 	},
 /turf/open/gm/dirtgrassborder/desert3,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"CB" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/shuttle/red,
+/area/lv624/ground/caves/sand_temple)
+"CH" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "Dd" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
@@ -1143,9 +1097,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Eq" = (
@@ -1195,9 +1147,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Gt" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "GO" = (
@@ -1206,9 +1156,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "GT" = (
@@ -1262,12 +1210,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"Iv" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "Ix" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
@@ -1315,23 +1257,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Jw" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
-"JZ" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "KB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1363,9 +1288,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "LL" = (
@@ -1440,6 +1363,10 @@
 "MK" = (
 /turf/open/gm/dirtgrassborder/desert_dug,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"Nl" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "Nt" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1454,9 +1381,7 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Od" = (
@@ -1474,6 +1399,10 @@
 "OC" = (
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"OI" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "OJ" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
@@ -1486,12 +1415,8 @@
 /turf/open/gm/dirtgrassborder/weedable/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ps" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "PA" = (
@@ -1569,6 +1494,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"RC" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "RV" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -1583,9 +1512,7 @@
 /area/lv624/ground/caves/sand_temple)
 "RZ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Sm" = (
@@ -1606,9 +1533,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "SK" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "SO" = (
@@ -1657,11 +1582,8 @@
 /obj/item/tool/surgery/scalpel/predatorscalpel,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
-"Vm" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+"UZ" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
@@ -1704,9 +1626,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Xz" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
@@ -1740,16 +1660,12 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "YU" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Zt" = (
@@ -2026,7 +1942,7 @@ GT
 OC
 IR
 ND
-Jw
+CB
 pu
 gY
 th
@@ -2359,15 +2275,15 @@ GT
 GT
 GT
 OC
-gZ
+mE
 YT
-AQ
+nV
 SO
 SO
 SO
 yv
 dL
-rA
+OI
 OC
 qf
 Ai
@@ -2401,15 +2317,15 @@ GT
 GT
 GT
 OC
-sM
+rA
 od
-nL
+UZ
 mv
 mv
 mv
-sM
+rA
 od
-nL
+UZ
 OC
 qf
 Ai
@@ -2428,7 +2344,7 @@ ZX
 ZX
 ZX
 ZX
-nk
+uO
 uT
 YU
 ZX
@@ -2469,13 +2385,13 @@ ZX
 ZX
 ZX
 ts
-iw
+yE
 un
 Zt
 DX
 uQ
 wf
-uO
+bS
 "}
 (18,1,1) = {"
 SF
@@ -2485,13 +2401,13 @@ mv
 Dd
 IR
 mv
-gZ
+mE
 Gt
-rA
+OI
 mv
 mv
 mv
-gZ
+mE
 Gt
 RZ
 mO
@@ -2551,7 +2467,7 @@ uE
 uE
 uE
 uE
-SK
+qN
 Ws
 dF
 Cr
@@ -2635,7 +2551,7 @@ uE
 uE
 uE
 uE
-xx
+SK
 iW
 dF
 ZG
@@ -2653,15 +2569,15 @@ kb
 Dd
 IR
 mv
-sM
+rA
 od
-nL
+UZ
 mv
 mv
 mv
-sM
+rA
 od
-Vm
+vK
 mO
 Gt
 mv
@@ -2721,13 +2637,13 @@ ZX
 ZX
 ZX
 yT
-pX
+CH
 hL
 Zt
 zg
 dr
 vu
-JZ
+aJ
 "}
 (24,1,1) = {"
 mv
@@ -2737,15 +2653,15 @@ mv
 GT
 GT
 oi
-gZ
+mE
 Gt
-rA
+OI
 mv
 mv
 mv
-gZ
+mE
 Gt
-rA
+OI
 OC
 qf
 Ai
@@ -2764,9 +2680,9 @@ ZX
 ZX
 ZX
 ZX
-Iv
+RC
 Xz
-JZ
+aJ
 ZX
 ZX
 ZX
@@ -2864,16 +2780,16 @@ GT
 GT
 GT
 IR
-rA
+OI
 mv
 mv
 mv
 mv
 mv
-gZ
+mE
 IR
 GT
-ma
+Nl
 Ai
 Ai
 Ai
@@ -3244,9 +3160,9 @@ mv
 mv
 mv
 mv
-sM
+rA
 od
-nL
+UZ
 mv
 mv
 mv
@@ -3328,9 +3244,9 @@ mv
 mv
 mv
 mv
-gZ
+mE
 Gt
-rA
+OI
 mv
 mv
 mv

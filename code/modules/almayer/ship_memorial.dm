@@ -376,11 +376,14 @@
 	if(!mob_reference)
 		. = ..()
 		stack_trace("Memorial ghost initialized but no mob reference given.")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 
 	name = mob_reference.name
 	desc = "May we never forget freedom isn't free."
+	return ..()
+
+/obj/effect/client_image_holder/memorial_ghost/Destroy(force)
+	QDEL_NULL(mob_reference)
 	return ..()
 
 /obj/effect/client_image_holder/memorial_ghost/generate_image()

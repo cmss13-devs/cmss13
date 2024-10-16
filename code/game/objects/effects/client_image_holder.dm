@@ -51,7 +51,7 @@
 			remove_seer(seer)
 		shown_image = null
 
-	who_sees_us.Cut() // probably not needed but who knows
+	QDEL_NULL_LIST(who_sees_us)
 	return ..()
 
 /// Generates the image which we take on.

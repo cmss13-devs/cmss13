@@ -13,8 +13,9 @@
 	name = "Marine - Requistions Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
 	icon_state = "cargotech"
-	tutorial_id = "requisitions_line"
+	tutorial_id = "marine_req_1"
 	tutorial_template = /datum/map_template/tutorial/reqs_line
+	required_tutorial = "marine_basic_1"
 
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_REQS_LINE_STAGE_STARTING
@@ -54,50 +55,79 @@
 	 */
 	var/static/shopping_catalogue = list(
 		/* ATTACHIES */
-		/obj/item/attachable/extended_barrel = list("EB", "EB", "Extended", "Extended Barrel", "Extendo", "Ext Barrel"),
+		/obj/item/attachable/extended_barrel = list("EB", "EB", "Extended", "Extended Barrel", "Ext Barrel"),
+		/obj/item/attachable/bayonet = list("Bayo", "Bayonet"),
 		/obj/item/attachable/magnetic_harness = list("MH", "MH", "Magharn", "Mag Harn", "Mag Harness", "Harness", "Magnetic Harness"),
 		/obj/item/attachable/reddot = list("RDS", "Red Dot", "S5", "Red Dot Sight", "reddot"),
-		/obj/item/attachable/reflex = list("Reflex", "S6", "Reflex Sight", "S6"),
+		/obj/item/attachable/reflex = list("Reflex", "S6 sight", "Reflex Sight", "S6"),
 		/obj/item/attachable/scope = list("S8", "S8", "4x", "4x sight", "4x scope", "S8 scope"),
 		/obj/item/attachable/angledgrip = list("AG", "agrip", "Agrip", "Angled", "angled grip"),
 		/obj/item/attachable/gyro = list("Gyro"),
 		/obj/item/attachable/lasersight = list("Laser", "Laser sight", "LS"),
-		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun"),
+		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun", "UBS"),
 		/obj/item/attachable/verticalgrip = list("VG", "Vert Grip", "Vertical Grip"),
 		/obj/item/attachable/stock/rifle = list("Solid Stock", "M41 stock", "M41 Solid Stock"),
 		/obj/item/attachable/stock/shotgun = list("M37 Stock", "Wooden stock"),
 		/* GEAR */
-		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
 		/obj/item/weapon/gun/shotgun/pump = list("M37", "shotgun"),
+		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),
+		/obj/item/weapon/gun/rifle/m4ra = list("M4RA", "M4RA Battle Rifle"),
+		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
+		/obj/item/storage/box/guncase/vp78 = list("VP", "VP78"),
+		/obj/item/storage/box/guncase/smartpistol = list("S6 pistol", "SU-6", "Smartpistol"),
 		/obj/item/storage/box/guncase/mou53 = list("MOU", "MOU53", "MOU-53", "Mouse"),
+		/obj/item/storage/box/guncase/xm88 = list("Xm88", "XM88"),
 		/obj/item/storage/box/guncase/lmg = list("HPR", "HPR kit", "heavy pulse rifle"),
 		/obj/item/storage/box/guncase/m41aMK1 = list("MK1", "M41 Mk1", "MK1 Kit", "M41A MK1 Kit"),
 		/obj/item/storage/box/guncase/m56d = list("M56D", "HMG", "M56"),
 		/obj/item/storage/box/guncase/m2c = list("M2C"),
 		/obj/item/storage/box/guncase/flamer = list("Flamer", "Flamer kit", "Incinerator"),
 		/obj/item/storage/box/guncase/m79 = list("GL", "Grenade launcher", "M79", "M79 Grenade launcher"),
+		/obj/item/storage/box/guncase/xm51 = list("XM51", "Breaching Shotty", "Breaching Shotgun", "Breaching Scattergun"),
 		/obj/item/clothing/accessory/storage/black_vest = list("Black webbing", "Black webbing vest"),
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest = list("Brown webbing", "Brown webbing vest"),
-		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "normal webbing", "web"),
-		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("pyro pack", "pyro backpack", "g4-1 pack", "flamer backpack"),
-		/obj/item/storage/backpack/marine/satchel/rto = list("phone pack", "phone backpack", "radio pack"),
-		/obj/item/storage/backpack/general_belt = list("G8", "G8 belt"),
+		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "Normal webbing", "Web"),
+		/obj/item/clothing/accessory/storage/droppouch = list("Drop Pouch"),
+		/obj/item/clothing/suit/storage/webbing = list("External webbing"),
+		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("Pyro pack", "Pyro backpack", "G4-1 pack", "Flamer backpack"),
+		/obj/item/storage/backpack/marine/ammo_rack = list ("IMP Ammo Rack", "Ammo rack", "Ammo IMP Rack"),
+		/obj/item/storage/backpack/marine/satchel/rto = list("Phone pack", "Phone backpack", "Radio pack", "RTO backpack"),
+		/obj/item/parachute = list("Chute", "Parachute"),
+		/obj/item/storage/backpack/general_belt = list("G8", "G8 belt", "G8 Utility belt"),
+		/obj/item/storage/pouch/autoinjector = list("Autoinjector pouch", "Injector pouch"),
+		/obj/item/storage/pouch/tools/full = list("Tool pouch"),
+		/obj/item/storage/pouch/document/small = list("Document pouch", "Small document pouch"),
+		/obj/item/storage/pouch/machete/full = list("Machete pouch"),
+		/obj/item/storage/pouch/magazine/pistol/large = list("Large pistol pouch"),
+		/obj/item/storage/pouch/flamertank = list("Flamer tank pouch", "Flamer pouch", "Tank pouch", "Fuel tank strap"),
+		/obj/item/storage/pouch/general/large = list("Large general pouch"),
 		/obj/item/storage/pouch/magazine/large = list("Large mag pouch", "Large magazine pouch"),
 		/obj/item/storage/pouch/shotgun/large = list("Shotgun pouch", "Shotgun shells pouch", "Shells pouch", "Large shells pouch"),
 		/obj/item/storage/box/m94/signal = list("Signal flares", "box of signals", "CAS flares"),
 		/obj/item/device/motiondetector = list("MD", "Motion Detector"),
 		/obj/item/device/binoculars = list("Binos", "Binoculars"),
+		/obj/item/device/binoculars/range = list("Rangefinders"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
+		/obj/item/stack/fulton = list("Fultons", "Fulton pack"),
 		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
+		/obj/item/explosive/grenade/high_explosive/m15 = list("M15", "M15 nade", "M15 Grenade"),
+		/obj/item/explosive/mine = list("Claymore", "Mine", "M20 Claymore"),
 		/obj/item/explosive/grenade/high_explosive = list("M40 HEDP", "HEDP"),
 		/obj/item/explosive/grenade/incendiary = list("M40 HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),
-		/obj/item/explosive/plastic = list("C4", "C4", "plastic", "plastic explosives"),
+		/obj/item/explosive/grenade/phosphorus = list("M40 CCDP", "CCDP", "CCDP White Phosphorus"),
+		/obj/item/explosive/grenade/sebb = list("Sonic Electric Ballbreaker", "SEBB", "G2 Electroshock"),
+		/obj/item/explosive/plastic = list("C4", "C4", "plastic explosives"),
 		/obj/item/explosive/plastic/breaching_charge = list("Breaching", "breach charge", "breaching charge"),
 		/* AMMO */
-		/obj/item/ammo_magazine/rifle/extended = list("Extended", "MK2 Extended", "Extended MK2 Mags"),
+		/obj/item/ammo_magazine/rifle/m4ra/ap = list("AP M4RA", "AP M4RA mag", "M4RA AP"),
 		/obj/item/ammo_magazine/smg/m39/ap = list("M39 AP", "M39 AP", "SMG AP"),
+		/obj/item/ammo_magazine/rifle/ap = list("AP mk2", "MK2 Armor piercing", "Armor piercing MK2 mag"),
+		/obj/item/ammo_magazine/smg/m39/extended = list("Ext M39", "Extended M39", "Extended M39 mag"),
+		/obj/item/ammo_magazine/rifle/extended = list("Ext Mk2", "MK2 Extended", "Extended MK2 mag"),
 		/obj/item/ammo_magazine/smartgun = list("Smartgun drum", "SG drum"),
+		/obj/item/ammo_magazine/rifle/lmg = list("HPR mag", "Heavy pulse rifle mag", "M41AE2 box"),
+		/obj/item/ammo_magazine/rifle/xm51 = list("XM51 mag"),
 	)
 
 /datum/tutorial/marine/reqs_line/Destroy(force)

@@ -44,7 +44,7 @@
 	. = ..()
 	if(isxeno(user) || isobserver(user))
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
-	if(isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
 		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers at present."
 

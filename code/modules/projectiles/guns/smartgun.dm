@@ -52,7 +52,7 @@
 	var/cover_open = FALSE
 
 	unacidable = 1
-	indestructible = 1
+	explo_proof = TRUE
 
 	attachable_allowed = list(
 		/obj/item/attachable/smartbarrel,

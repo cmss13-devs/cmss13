@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Tutorials can be locked until a prerequisite tutorial is completed"
+  - code_imp: "Tutorials are saved in preferences instead of per character slot"

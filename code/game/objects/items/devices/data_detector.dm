@@ -50,7 +50,7 @@
 				detected_sound = TRUE
 				break
 
-	for(var/mob/creature as anything in GLOB.mob_list)
+	for(var/mob/creature as anything in GLOB.dead_mob_list)
 		if(!creature)
 			continue
 
@@ -58,9 +58,6 @@
 			continue
 
 		if(get_dist(loc, creature) > detector_range)
-			continue
-
-		if(creature.stat != DEAD)
 			continue
 
 		if(isxeno(creature) || isyautja(creature))

@@ -8744,11 +8744,6 @@
 /area/almayer/medical/chemistry)
 "biy" = (
 /obj/structure/pipes/unary/freezer,
-/obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/sign/safety/autodoc{
-	pixel_x = 20;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/cryo_tubes)
 "biA" = (
@@ -17766,6 +17761,10 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/port)
+"duO" = (
+/obj/structure/machinery/chem_dispenser/corpsman,
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/lower_medical_medbay)
 "duT" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -21379,6 +21378,14 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_aft_hallway)
+"eTB" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 20;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/lower_medical_medbay)
 "eTC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /obj/structure/medical_supply_link,
@@ -45288,12 +45295,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
 "oRy" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
-/obj/structure/sign/safety/autodoc{
-	pixel_x = 20;
-	pixel_y = -32
+/obj/structure/sign/safety/med_cryo{
+	pixel_x = -6;
+	pixel_y = 32
 	},
-/turf/open/floor/almayer/sterile_green_side,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_medbay)
 "oRJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -46115,6 +46121,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"phW" = (
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link/green,
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 20;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/lower_medical_medbay)
 "pij" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -46288,7 +46303,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "pnC" = (
-/obj/structure/machinery/chem_dispenser/corpsman,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
 "pnL" = (
@@ -48916,10 +48931,6 @@
 /area/almayer/living/briefing)
 "quv" = (
 /obj/structure/pipes/standard/tank/oxygen,
-/obj/structure/sign/safety/med_cryo{
-	pixel_x = -6;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/cryo_tubes)
 "quJ" = (
@@ -63986,10 +63997,6 @@
 "wsS" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"wti" = (
-/obj/structure/machinery/chem_dispenser/corpsman,
-/turf/open/floor/almayer/sterile_green_side/north,
-/area/almayer/medical/lower_medical_medbay)
 "wtk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -98176,9 +98183,9 @@ bkE
 bRP
 rlZ
 rlZ
-kSC
+phW
 kan
-wti
+eTB
 rlZ
 rlZ
 siW
@@ -98379,8 +98386,8 @@ bst
 cjW
 rlZ
 rlZ
-oRy
-kan
+pnC
+dBH
 biy
 boX
 rlZ
@@ -98582,7 +98589,7 @@ vhX
 akQ
 rlZ
 rlZ
-pnC
+duO
 dBH
 bky
 ryt
@@ -98988,7 +98995,7 @@ vhX
 gDW
 rlZ
 rlZ
-pnC
+duO
 dBH
 bky
 ryt
@@ -99192,7 +99199,7 @@ cjW
 rlZ
 rlZ
 wYr
-kan
+dBH
 quv
 rZB
 rlZ
@@ -99396,7 +99403,7 @@ rlZ
 rlZ
 kSC
 kan
-wti
+oRy
 rlZ
 rlZ
 hAU

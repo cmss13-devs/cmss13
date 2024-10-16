@@ -898,6 +898,7 @@
 #include "code\game\machinery\ARES\ARES_interface.dm"
 #include "code\game\machinery\ARES\ARES_interface_admin.dm"
 #include "code\game\machinery\ARES\ARES_interface_apollo.dm"
+#include "code\game\machinery\ARES\ARES_interface_data.dm"
 #include "code\game\machinery\ARES\ARES_procs.dm"
 #include "code\game\machinery\ARES\ARES_records.dm"
 #include "code\game\machinery\ARES\ARES_step_triggers.dm"

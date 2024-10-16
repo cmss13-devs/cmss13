@@ -62,13 +62,19 @@
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin
 	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
 
+/obj/structure/prop/almayer/ship_memorial/Destroy()
+	QDEL_NULL_LIST(went_through_flashback)
+	QDEL_NULL_LIST(users_on_cooldown)
+	QDEL_NULL_LIST(fallen_personnel)
+	return ..()
+
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
 			GLOB.fallen_list += D.fallen_names
-			fallen_personnel += D.fallen_references
+			fallen_personnel += D?.fallen_references
 			qdel(D)
 		return TRUE
 	else
@@ -185,7 +191,7 @@
 			playsound_client(user.client, pick_n_take(voicelines), ghost.loc, 100)
 
 		//Faulty generation can cause the ghost to get qdel'd before this proc runs.
-		if(ghost)
+		if(!QDELETED(ghost))
 			addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/client_image_holder/memorial_ghost, disappear)), rand(1.5 SECONDS, 1.9 SECONDS))
 
 	if(had_flashback)
@@ -374,13 +380,11 @@
 /obj/effect/client_image_holder/memorial_ghost/Initialize(mapload, list/mobs_which_see_us, mob/living/reference = null)
 	mob_reference = reference
 	if(!mob_reference)
-		. = ..()
-		stack_trace("Memorial ghost initialized but no mob reference given.")
 		return INITIALIZE_HINT_QDEL
 
+	. = ..()
 	name = mob_reference.name
 	desc = "May we never forget freedom isn't free."
-	return ..()
 
 /obj/effect/client_image_holder/memorial_ghost/Destroy(force)
 	QDEL_NULL(mob_reference)

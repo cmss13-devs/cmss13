@@ -30,11 +30,10 @@
 	var/image_plane = GAME_PLANE
 
 /obj/effect/client_image_holder/Initialize(mapload, list/mobs_which_see_us)
-	. = ..()
 	if(isnull(mobs_which_see_us))
-		stack_trace("Client image holder was created with no mobs to see it.")
 		return INITIALIZE_HINT_QDEL
 
+	. = ..()
 	shown_image = generate_image()
 
 	if(!islist(mobs_which_see_us))
@@ -48,7 +47,8 @@
 /obj/effect/client_image_holder/Destroy(force)
 	if(shown_image)
 		for(var/mob/seer as anything in who_sees_us)
-			remove_seer(seer)
+			hide_image_from(seer)
+			who_sees_us -= seer
 		shown_image = null
 
 	QDEL_NULL_LIST(who_sees_us)
@@ -62,15 +62,6 @@
 	if(image_color)
 		created.color = image_color
 	return created
-
-/// Proc to clean up references.
-/obj/effect/client_image_holder/proc/remove_seer(mob/source)
-	hide_image_from(source)
-	who_sees_us -= source
-
-	// No reason to exist, anymore
-	if(!QDELETED(src) && !length(who_sees_us))
-		qdel(src)
 
 /// Shows the image we generated to the passed mob
 /obj/effect/client_image_holder/proc/show_image_to(mob/show_to)

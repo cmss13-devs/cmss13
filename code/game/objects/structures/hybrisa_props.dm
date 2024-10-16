@@ -2375,7 +2375,7 @@
 
 // Signs
 
-/obj/structure/prop/hybrisa/signs
+/obj/structure/roof/hybrisa/signs
 	name = "neon sign"
 	icon = 'icons/obj/structures/props/hybrisa64x64_signs.dmi'
 	icon_state = "jacksopen_on"
@@ -2384,22 +2384,22 @@
 	layer = BILLBOARD_LAYER
 	health = 250
 
-/obj/structure/prop/hybrisa/signs/bullet_act(obj/projectile/P)
+/obj/structure/roof/hybrisa/signs/bullet_act(obj/projectile/P)
 	health -= P.damage
 	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
 	..()
 	healthcheck()
 	return TRUE
 
-/obj/structure/prop/hybrisa/signs/proc/explode()
+/obj/structure/roof/hybrisa/signs/proc/explode()
 	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
 	deconstruct(FALSE)
 
-/obj/structure/prop/hybrisa/signs/proc/healthcheck()
+/obj/structure/roof/hybrisa/signs/proc/healthcheck()
 	if(health <= 0)
 		explode()
 
-/obj/structure/prop/hybrisa/signs/ex_act(severity)
+/obj/structure/roof/hybrisa/signs/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
@@ -2407,7 +2407,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
-/obj/structure/prop/hybrisa/signs/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+/obj/structure/roof/hybrisa/signs/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
@@ -2417,100 +2417,100 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/signs/casniosign
+/obj/structure/roof/hybrisa/signs/casniosign
 	name = "casino sign"
 	icon_state = "nightgoldcasinoopen_on"
 
-/obj/structure/prop/hybrisa/signs/jackssign
+/obj/structure/roof/hybrisa/signs/jackssign
 	name = "jack's surplus sign"
 	icon_state = "jacksopen_on"
 
-/obj/structure/prop/hybrisa/signs/opensign
+/obj/structure/roof/hybrisa/signs/opensign
 	name = "open sign"
 	icon_state = "open_on"
 
-/obj/structure/prop/hybrisa/signs/opensign2
+/obj/structure/roof/hybrisa/signs/opensign2
 	name = "open sign"
 	icon_state = "open_on2"
 
-/obj/structure/prop/hybrisa/signs/pizzasign
+/obj/structure/roof/hybrisa/signs/pizzasign
 	name = "pizza sign"
 	icon_state = "pizzaneon_on"
 
-/obj/structure/prop/hybrisa/signs/weymartsign
+/obj/structure/roof/hybrisa/signs/weymartsign
 	name = "weymart sign"
 	icon_state = "weymartsign2"
 
-/obj/structure/prop/hybrisa/signs/mechanicsign
+/obj/structure/roof/hybrisa/signs/mechanicsign
 	name = "mechanic sign"
 	icon_state = "mechanicopen_on2"
 
-/obj/structure/prop/hybrisa/signs/cuppajoessign
+/obj/structure/roof/hybrisa/signs/cuppajoessign
 	name = "cuppa joe's sign"
 	icon_state = "cuppajoes"
 
-/obj/structure/prop/hybrisa/signs/barsign
+/obj/structure/roof/hybrisa/signs/barsign
 	name = "bar sign"
 	icon_state = "barsign_on"
 
-/obj/structure/prop/hybrisa/signs/miscsign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscsign
+	name = "sign"
 	icon_state = "misc_on"
 
-/obj/structure/prop/hybrisa/signs/miscvertsign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvertsign
+	name = "sign"
 	icon_state = "miscvert_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert2sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert2sign
+	name = "sign"
 	icon_state = "miscvert2_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert3sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert3sign
+	name = "sign"
 	icon_state = "miscvert3_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert4sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert4sign
+	name = "sign"
 	icon_state = "miscvert4_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert5sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert5sign
+	name = "sign"
 	icon_state = "miscvert5_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert6sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert6sign
+	name = "sign"
 	icon_state = "miscvert6_on"
 
-/obj/structure/prop/hybrisa/signs/miscvert7sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/miscvert7sign
+	name = "sign"
 	icon_state = "miscvert7_on"
 
-/obj/structure/prop/hybrisa/signs/cafesign
+/obj/structure/roof/hybrisa/signs/cafesign
 	name = "cafe sign"
 	icon_state = "cafe_on"
 
-/obj/structure/prop/hybrisa/signs/cafealtsign
+/obj/structure/roof/hybrisa/signs/cafealtsign
 	name = "cafe sign"
 	icon_state = "cafealt_on"
 
-/obj/structure/prop/hybrisa/signs/coffeesign
-	name = "cafe sign"
+/obj/structure/roof/hybrisa/signs/coffeesign
+	name = "coffee sign"
 	icon_state = "coffee_on"
 
-/obj/structure/prop/hybrisa/signs/arcadesign
-	name = "cafe sign"
+/obj/structure/roof/hybrisa/signs/arcadesign
+	name = "arcade sign"
 	icon_state = "arcade_on"
 
-/obj/structure/prop/hybrisa/signs/hotelsign
+/obj/structure/roof/hybrisa/signs/hotelsign
 	name = "hotel sign"
 	icon_state = "hotel_on"
 
-/obj/structure/prop/hybrisa/signs/casinolights
+/obj/structure/roof/hybrisa/signs/casinolights
 	name = "neon sign"
 	icon_state = "casinolights_on"
 
-/obj/structure/prop/hybrisa/signs/pharmacy_sign
-	name = "neon sign"
+/obj/structure/roof/hybrisa/signs/pharmacy_sign
+	name = "pharmacy sign"
 	icon_state = "pharmacy_on"
 
 // Small Sign

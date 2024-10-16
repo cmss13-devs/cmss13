@@ -30017,9 +30017,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"iBn" = (
-/turf/closed/wall/almayer/aicore/white/hull,
-/area/space)
 "iBu" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -124977,19 +124974,19 @@ lmz
 lmz
 lmz
 lmz
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
 bdH
 bdH
 bdH

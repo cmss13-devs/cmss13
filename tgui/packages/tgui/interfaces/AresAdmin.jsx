@@ -13,6 +13,7 @@ const PAGES = {
   delete_log: () => DeletionLogs,
   flight_log: () => FlightLogs,
   talking: () => ARESTalk,
+  talking_log: () => ActiveTalks,
   deleted_talks: () => DeletedTalks,
   read_deleted: () => ReadingTalks,
   security: () => Security,
@@ -1164,7 +1165,7 @@ const DeletedTalks = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Deletion Log</h1>
+        <h1 align="center">Deletion 1:1 Log</h1>
         {!!deleted_discussions.length && (
           <Flex
             className="candystripe"
@@ -1207,6 +1208,101 @@ const DeletedTalks = (props) => {
   );
 };
 
+const ActiveTalks = (props) => {
+  const { data, act } = useBackend();
+  const {
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    records_discussions,
+    local_admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={local_last_page === local_current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {ares_logged_in}, {ares_access_text}
+            <br />
+            Remote Admin: {local_admin_login}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Active 1:1 Records</h1>
+        {!!records_discussions.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem"
+          >
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Deletion Time
+            </Flex.Item>
+            <Flex.Item grow bold>
+              Title
+            </Flex.Item>
+            <Flex.Item width="30rem" textAlign="center">
+              Read Record
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_discussions.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item grow italic>
+                {record.title}
+              </Flex.Item>
+              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+                <Button
+                  icon="eye"
+                  tooltip="Read Conversation"
+                  onClick={() => act('read_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
 const ReadingTalks = (props) => {
   const { data, act } = useBackend();
   const {
@@ -1214,7 +1310,7 @@ const ReadingTalks = (props) => {
     ares_access_text,
     local_last_page,
     local_current_menu,
-    local_deleted_conversation,
+    local_spying_conversation,
     local_admin_login,
   } = data;
 
@@ -1260,7 +1356,7 @@ const ReadingTalks = (props) => {
 
       <Section>
         <h1 align="center">Deleted Conversation</h1>
-        {local_deleted_conversation.map((message, i) => {
+        {local_spying_conversation.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{message}</Flex.Item>

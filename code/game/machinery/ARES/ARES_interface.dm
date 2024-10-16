@@ -80,7 +80,7 @@
 	data["local_access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
 	data["local_access_level"] = authentication
 
-	data["local_deleted_conversation"] = deleted_1to1
+	data["local_spying_conversation"] = deleted_1to1
 	data["local_printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
 
 	var/list/active_convo = list()
@@ -208,6 +208,9 @@
 		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
+		if("page_records_1to1")
+			last_menu = current_menu
+			current_menu = "talking_log"
 		if("page_tech")
 			last_menu = current_menu
 			current_menu = "tech_log"

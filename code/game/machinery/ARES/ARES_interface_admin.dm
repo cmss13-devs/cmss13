@@ -61,7 +61,7 @@
 
 	data["ares_access_text"] = "[interface.sudo_holder ? "(SUDO)," : ""] access level [interface.authentication], [interface.ares_auth_to_text(interface.authentication)]."
 
-	data["local_deleted_conversation"] = admin_interface.deleted_1to1
+	data["local_spying_conversation"] = admin_interface.deleted_1to1
 
 	var/list/active_convo = list()
 	var/active_ref
@@ -158,6 +158,9 @@
 		if("page_deleted")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "delete_log"
+		if("page_records_1to1")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "talking_log"
 		if("page_deleted_1to1")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "deleted_talks"

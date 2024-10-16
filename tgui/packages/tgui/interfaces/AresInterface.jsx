@@ -24,6 +24,7 @@ const PAGES = {
   emergency: () => Emergency,
   tech_log: () => TechLogs,
   core_security: () => CoreSec,
+  talking_log: () => ActiveTalks,
 };
 
 export const AresInterface = (props) => {
@@ -331,6 +332,19 @@ const MainMenu = (props) => {
                 onClick={() => act('page_deleted')}
               >
                 View Deletion Log
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="View the active 1:1 conversations with ARES."
+                icon="sd-card"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_records_1to1')}
+              >
+                View Active 1:1&apos;s
               </Button>
             </Stack.Item>
             <Stack.Item>
@@ -1099,7 +1113,7 @@ const DeletedTalks = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Deletion Log</h1>
+        <h1 align="center">Deletion 1:1 Log</h1>
         {!!deleted_discussions.length && (
           <Flex
             className="candystripe"
@@ -1142,14 +1156,14 @@ const DeletedTalks = (props) => {
   );
 };
 
-const ReadingTalks = (props) => {
+const ActiveTalks = (props) => {
   const { data, act } = useBackend();
   const {
     local_logged_in,
     local_access_text,
     local_last_page,
     local_current_menu,
-    local_deleted_conversation,
+    records_discussions,
   } = data;
 
   return (
@@ -1191,8 +1205,100 @@ const ReadingTalks = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Deleted Conversation</h1>
-        {local_deleted_conversation.map((message, i) => {
+        <h1 align="center">Active 1:1 Records</h1>
+        {!!records_discussions.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem"
+          >
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Start Time
+            </Flex.Item>
+            <Flex.Item grow bold>
+              Title
+            </Flex.Item>
+            <Flex.Item width="30rem" textAlign="center">
+              Read Record
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_discussions.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item grow italic>
+                {record.title}
+              </Flex.Item>
+              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+                <Button
+                  icon="eye"
+                  tooltip="Read Conversation"
+                  onClick={() => act('read_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const ReadingTalks = (props) => {
+  const { data, act } = useBackend();
+  const {
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
+    local_spying_conversation,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={local_last_page === local_current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {local_logged_in}, {local_access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Accessed 1:1 Conversation</h1>
+        {local_spying_conversation.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{message}</Flex.Item>

@@ -130,7 +130,7 @@
 		current_convo["conversation"] = log.conversation
 		logged_convos += list(current_convo)
 
-	data["conversations"] = logged_convos
+	data["records_discussions"] = logged_convos
 
 	var/list/security_vents = list()
 	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)

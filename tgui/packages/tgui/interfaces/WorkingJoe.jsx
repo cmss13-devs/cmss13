@@ -78,8 +78,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_notify_sounds,
-    faction_options,
-    sentry_setting,
+    sentry_faction_options,
+    sentry_faction_setting,
   } = data;
   let can_request_access = 'Yes';
   if (local_access_level > 2) {
@@ -285,14 +285,14 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item ml="0" mr="0">
               <Dropdown
-                options={faction_options}
-                selected={sentry_setting}
+                options={sentry_faction_options}
+                selected={sentry_faction_setting}
                 color="red"
                 onSelected={(value) =>
                   act('update_sentries', { chosen_iff: value })
                 }
                 width="90px"
-                disabled={access_level < 6}
+                disabled={local_access_level < 6}
               />
             </Stack.Item>
           </Stack>

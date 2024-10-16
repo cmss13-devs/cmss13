@@ -146,6 +146,9 @@
 		security_vents += list(current_vent)
 	data["security_vents"] = security_vents
 
+	data["sentry_faction_setting"] = link.faction_label
+	data["sentry_faction_options"] = link.faction_options
+
 	var/list/logged_maintenance = list()
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
 		var/lock_status = TICKET_OPEN

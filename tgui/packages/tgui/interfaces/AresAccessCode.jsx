@@ -2,37 +2,16 @@ import { useBackend } from '../backend';
 import { Box, Button, Flex } from '../components';
 import { Window } from '../layouts';
 
-const PAGES = {
-  login: () => Login,
-  main: () => MainMenu,
-  announcements: () => AnnouncementLogs,
-  bioscans: () => BioscanLogs,
-  bombardments: () => BombardmentLogs,
-  apollo: () => ApolloLog,
-  access_log: () => AccessLogs,
-  delete_log: () => DeletionLogs,
-  flight_log: () => FlightLogs,
-  talking: () => ARESTalk,
-  deleted_talks: () => DeletedTalks,
-  read_deleted: () => ReadingTalks,
-  security: () => Security,
-  requisitions: () => Requisitions,
-  emergency: () => Emergency,
-  tech_log: () => TechLogs,
-  core_security: () => CoreSec,
-};
-
 export const AresAccessCode = (props) => {
   const { data } = useBackend();
   const { current_menu, sudo } = data;
-  const PageComponent = PAGES[current_menu]();
 
   let themecolor = 'crtyellow';
 
   return (
     <Window theme={themecolor} width={800} height={725}>
       <Window.Content scrollable>
-        <PageComponent />
+        <Login />
       </Window.Content>
     </Window>
   );

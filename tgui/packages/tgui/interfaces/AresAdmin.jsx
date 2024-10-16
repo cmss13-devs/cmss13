@@ -104,8 +104,8 @@ const MainMenu = (props) => {
     local_current_menu,
     ares_sudo,
     local_admin_login,
-    faction_options,
-    sentry_setting,
+    sentry_faction_options,
+    sentry_faction_setting,
   } = data;
 
   return (
@@ -439,8 +439,8 @@ const MainMenu = (props) => {
           </Stack.Item>
           <Stack.Item ml="0" mr="0">
             <Dropdown
-              options={faction_options}
-              selected={sentry_setting}
+              options={sentry_faction_options}
+              selected={sentry_faction_setting}
               color="red"
               onSelected={(value) =>
                 act('update_sentries', { chosen_iff: value })

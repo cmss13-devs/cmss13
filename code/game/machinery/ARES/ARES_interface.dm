@@ -94,10 +94,6 @@
 	data["local_active_convo"] = active_convo
 	data["local_active_ref"] = active_ref
 
-	data["sentry_setting"] = link.faction_label
-	data["sentry_setting"] = link.faction_label
-	data["faction_options"] = link.faction_options
-
 	return data
 
 /obj/structure/machinery/computer/ares_console/ui_status(mob/user, datum/ui_state/state)

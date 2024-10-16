@@ -95,8 +95,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_sudo,
-    faction_options,
-    sentry_setting,
+    sentry_faction_options,
+    sentry_faction_setting,
   } = data;
 
   return (
@@ -364,7 +364,23 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {local_access_level >= 11 && (
+      </Section>
+
+      {(local_access_level === 3 || local_access_level >= 6) && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Button
+            align="center"
+            tooltip="Release stored CN20-X nerve gas from security vents."
+            icon="wind"
+            color="red"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('page_core_gas')}
+          >
+            Nerve Gas Control
+          </Button>
           <Stack>
             <Stack.Item grow mr="0">
               <Button.Confirm
@@ -382,77 +398,15 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item ml="0" mr="0">
               <Dropdown
-                options={faction_options}
-                selected={sentry_setting}
+                options={sentry_faction_options}
+                selected={sentry_faction_setting}
                 color="red"
                 onSelected={(value) =>
                   act('update_sentries', { chosen_iff: value })
                 }
                 width="90px"
-                disabled={access_level < 9}
-                tooltip="Change core sentries IFF settings."
+                disabled={local_access_level < 6}
               />
-            </Stack.Item>
-          </Stack>
-        </Section>
-      )}
-      {access_level >= 11 && (
-        <Section>
-          <h1 align="center">Maintenance Protocols</h1>
-
-          <Stack>
-            <Stack.Item grow>
-              <h3>Maintenance Access</h3>
-            </Stack.Item>
-            {local_sudo === 0 && (
-              <Stack.Item>
-                <Button
-                  tooltip="Login as another user."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo')}
-                >
-                  Sudo Login
-                </Button>
-              </Stack.Item>
-            )}
-            {local_sudo >= 1 && (
-              <Stack.Item>
-                <Button
-                  tooltip="Logout of Sudo mode."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo_logout')}
-                >
-                  Sudo Logout
-                </Button>
-              </Stack.Item>
-            )}
-          </Stack>
-        )}
-      </Section>
-      {(local_access_level === 3 || local_access_level >= 6) && (
-        <Section>
-          <h1 align="center">Core Security Protocols</h1>
-          <Stack>
-            <Stack.Item grow>
-              <Button
-                icon="satellite"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('bioscan')}
-                tooltip="Trigger an immediate bioscan for diagnostics."
-              >
-                Bioscan
-              </Button>
             </Stack.Item>
           </Stack>
         </Section>

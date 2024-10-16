@@ -4,7 +4,7 @@
 	desc = "Artifical Intelligence Diagnostic Tablet model T411. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_ARES_DEBUG, ACCESS_MARINE_AI)
 
 	/// The ID used to link all devices.
@@ -298,6 +298,9 @@
 		if("page_maint_management")
 			last_menu = current_menu
 			current_menu = "maintenance_management"
+		if("page_records_1to1")
+			last_menu = current_menu
+			current_menu = "talking_log"
 
 		// -- 1:1 Conversation -- //
 		if("new_conversation")

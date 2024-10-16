@@ -34,9 +34,6 @@
 
 	var/colony_camera_mapload = TRUE
 
-	/// If this camera should have innate EMP-proofing
-	var/emp_proof = FALSE
-
 	///Autonaming
 	var/autoname = FALSE
 	var/autonumber = 0 //camera number in area

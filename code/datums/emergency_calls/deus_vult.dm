@@ -37,4 +37,7 @@
 		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 
+
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

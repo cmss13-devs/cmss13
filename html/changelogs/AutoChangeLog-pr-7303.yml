@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Increased the starting amount of mk2 and m39 mags in prep vendors"

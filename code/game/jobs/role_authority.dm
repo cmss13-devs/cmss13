@@ -366,7 +366,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
@@ -378,6 +378,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
 		return FALSE
 	if(latejoin && !J.late_joinable)
+		return FALSE
+	if(faction && faction != J.faction_menu)
 		return FALSE
 
 	return TRUE

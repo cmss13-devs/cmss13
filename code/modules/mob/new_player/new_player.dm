@@ -60,7 +60,7 @@
 		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
 		if(GLOB.master_mode == "Faction Clash UPP CM")
-			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_antag'>Join the UPP!</A></p>"
+			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_upp'>Join the UPP!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
 			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
@@ -140,9 +140,9 @@
 					tutorial_menu()
 					return
 
-			LateChoices()
+			late_choices()
 
-		if("late_join_antag")
+		if("late_join_upp")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
@@ -156,7 +156,7 @@
 					tutorial_menu()
 					return
 
-			LateChoicesAntag()
+			late_choices_upp()
 
 		if("late_join_xeno")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
@@ -337,7 +337,7 @@
 	qdel(src)
 
 
-/mob/new_player/proc/LateChoices()
+/mob/new_player/proc/late_choices()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
 	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
 	var/mins = (mills % 36000) / 600
@@ -356,7 +356,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_NEUTRAL))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -400,7 +400,7 @@
 	dat += "</center>"
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
-/mob/new_player/proc/LateChoicesAntag()
+/mob/new_player/proc/late_choices_upp()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
 	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
 	var/mins = (mills % 36000) / 600
@@ -419,7 +419,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_UPP))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active

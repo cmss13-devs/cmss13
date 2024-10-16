@@ -98,7 +98,7 @@
 	for(var/mob/living/potential_blocker in get_turf(target))
 		if(potential_blocker == user || potential_blocker == target)
 			continue
-		to_chat(user, SPAN_WARNING("You can't operate, when there's small amount of space! Remove everybody else."))
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
 		return FALSE
 
 	if(user == target)

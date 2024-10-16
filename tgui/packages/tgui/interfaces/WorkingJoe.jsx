@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -78,6 +78,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_notify_sounds,
+    faction_options,
+    sentry_setting,
   } = data;
   let can_request_access = 'Yes';
   if (local_access_level > 2) {
@@ -254,29 +256,25 @@ const MainMenu = (props) => {
       {local_access_level >= 5 && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
+          <Button
+            align="center"
+            tooltip="Release stored CN20-X nerve gas from security vents."
+            icon="wind"
+            color="red"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('page_core_gas')}
+          >
+            Nerve Gas Control
+          </Button>
           <Stack>
-            <Stack.Item grow>
-              <Button
-                align="center"
-                tooltip="Release stored CN20-X nerve gas from security vents."
-                icon="wind"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('page_core_gas')}
-              >
-                Nerve Gas Control
-              </Button>
-            </Stack.Item>
-            <Stack.Item grow>
+            <Stack.Item grow mr="0">
               <Button.Confirm
                 align="center"
                 tooltip="Activate/Deactivate the AI Core Lockdown."
                 icon="lock"
                 color="red"
-                ml="auto"
                 px="2rem"
                 width="100%"
                 bold
@@ -284,6 +282,18 @@ const MainMenu = (props) => {
               >
                 AI Core Lockdown
               </Button.Confirm>
+            </Stack.Item>
+            <Stack.Item ml="0" mr="0">
+              <Dropdown
+                options={faction_options}
+                selected={sentry_setting}
+                color="red"
+                onSelected={(value) =>
+                  act('update_sentries', { chosen_iff: value })
+                }
+                width="90px"
+                disabled={access_level < 6}
+              />
             </Stack.Item>
           </Stack>
         </Section>

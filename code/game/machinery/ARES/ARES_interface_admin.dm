@@ -50,6 +50,8 @@
 		return FALSE
 	var/list/data = datacore.get_interface_data()
 
+	data["is_pda"] = FALSE
+
 	data["local_admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
 	data["admin_access_log"] = admin_interface.access_list
 
@@ -358,3 +360,22 @@
 			log_ares_security("Nerve Gas Release", "Released Nerve Gas from Vent '[sec_vent.vent_tag]'.", MAIN_AI_SYSTEM)
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
+
+		if("security_lockdown")
+			if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
+				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
+				return FALSE
+			aicore_lockdown(user)
+			return TRUE
+
+		if("update_sentries")
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				return FALSE
+			if(new_iff == faction_label)
+				return FALSE
+			change_iff(new_iff)
+			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
+			return TRUE

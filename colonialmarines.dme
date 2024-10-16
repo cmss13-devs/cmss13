@@ -902,6 +902,8 @@
 #include "code\game\machinery\ARES\ARES_procs.dm"
 #include "code\game\machinery\ARES\ARES_records.dm"
 #include "code\game\machinery\ARES\ARES_step_triggers.dm"
+#include "code\game\machinery\ARES\debug_data.dm"
+#include "code\game\machinery\ARES\debug_pda.dm"
 #include "code\game\machinery\atmoalter\canister.dm"
 #include "code\game\machinery\atmoalter\meter.dm"
 #include "code\game\machinery\atmoalter\portable_atmospherics.dm"

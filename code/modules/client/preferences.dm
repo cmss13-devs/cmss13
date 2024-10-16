@@ -670,7 +670,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_AI_TECH, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -692,6 +692,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
+			continue
+		if(job.flags_startup_parameters & ROLE_HIDDEN)
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
@@ -788,7 +790,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_AI_TECH, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -810,6 +812,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
+			continue
+		if(job.flags_startup_parameters & ROLE_HIDDEN)
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))

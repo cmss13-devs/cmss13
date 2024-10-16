@@ -147,6 +147,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define MAX_FREE_FREQ 1599 // -------------------------------------------------
 
 GLOBAL_LIST_INIT(radiochannels, list(
+	RADIO_CHANNEL_AICORE = AI_FREQ,
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,

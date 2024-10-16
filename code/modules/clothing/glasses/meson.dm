@@ -7,9 +7,14 @@
 	icon_state = "meson"
 	item_state = "glasses"
 	deactive_state = "degoggles"
+	darkness_view = 0
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	vision_flags = SEE_TURFS
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	fullscreen_vision = /atom/movable/screen/fullscreen/meson
+	req_skill = SKILL_ENGINEER
+	req_skill_level = SKILL_ENGINEER_ENGI
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription optical meson scanner"

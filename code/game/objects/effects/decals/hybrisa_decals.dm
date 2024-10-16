@@ -202,3 +202,13 @@
 	desc = null
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "egg_base"
+
+// Colorable Rug
+
+/obj/effect/hybrisa/decal/colorable_rug
+	name = "rug"
+	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	desc = null
+	icon_state = "colorable_rug"
+	layer = TURF_LAYER
+	density = FALSE

@@ -1358,14 +1358,6 @@
 	projectile_coverage = 20
 	throwpass = TRUE
 
-/obj/effect/decal/cleanable/colorable_rug
-	name = "rug"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
-	desc = null
-	icon_state = "colorable_rug"
-	layer = TURF_LAYER
-	density = FALSE
-
 /obj/structure/prop/hybrisa/misc/elevator_door
 	name = "broken elevator door"
 	desc = "completely broken, the elevator is not going to work."

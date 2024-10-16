@@ -1280,6 +1280,9 @@
 
 // NSPA - Constables
 
+/datum/job/nspa_constable
+	title = "NSPA Constable"
+
 /datum/equipment_preset/corpse/hybrisa/nspa_constable
 
 	name = "Corpse - NSPA Constable"

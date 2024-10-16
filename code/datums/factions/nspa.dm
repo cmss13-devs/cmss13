@@ -11,8 +11,6 @@
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
-		if(JOB_SURVIVOR)
-			hud_icon_state = "con"
 		if(JOB_NSPA_CST)
 			hud_icon_state = "con"
 		if(JOB_NSPA_SC)

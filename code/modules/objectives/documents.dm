@@ -135,11 +135,9 @@
 	LAZYADD(objective.enables_objectives, retrieve_objective)
 
 /obj/item/document_objective/Destroy()
-	qdel(objective)
-	objective = null
-	qdel(retrieve_objective)
-	retrieve_objective = null
-	return ..()
+	QDEL_NULL(objective)
+	QDEL_NULL(retrieve_objective)
+	. = ..()
 
 /obj/item/document_objective/proc/display_read_message(mob/living/user)
 	if(user && user.mind)

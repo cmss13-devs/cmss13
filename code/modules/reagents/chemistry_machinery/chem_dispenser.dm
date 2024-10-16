@@ -290,7 +290,7 @@
 		"adrenaline",
 		"peridaxon",
 		"tramadol",
-		"tricordrazine"
+		"tricordrazine",
 	)
 
 /obj/structure/machinery/chem_dispenser/soda

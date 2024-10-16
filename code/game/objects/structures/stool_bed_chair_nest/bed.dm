@@ -454,8 +454,10 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/roller/hospital/Initialize(mapload, ...)
 	. = ..()
-	update_icon()
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(create_body))
+	if(SSticker.current_state >= GAME_STATE_PLAYING)
+		create_body()
+	else
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(create_body))
 
 /obj/structure/bed/roller/hospital/Destroy()
 	if(body)

@@ -519,7 +519,7 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
@@ -532,7 +532,7 @@
 	icon = 'icons/obj/structures/machinery/defenses/wy_static.dmi'
 	defense_type = "Static"
 	sentry_type = "wy_sentry"
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY, FACTION_NSPA)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy/Initialize()
 	. = ..()

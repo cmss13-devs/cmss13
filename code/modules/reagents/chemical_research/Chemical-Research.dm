@@ -134,6 +134,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 /datum/chemical_data/proc/complete_chemical(datum/reagent/chem)
 	chemical_identified_list[chem.id] = chem.objective_value
 	chemical_not_completed_objective_list -= chem.id
+	GLOB.chemical_data.chemical_identified_list[chem.id] = chem
 
 	SSobjectives.statistics["chemicals_completed"]++
 	SSobjectives.statistics["chemicals_total_points_earned"] += chem.objective_value

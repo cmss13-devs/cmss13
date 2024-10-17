@@ -33,6 +33,8 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
+	minimap_icon = "crusher"
+
 /mob/living/carbon/xenomorph/weaveguard
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVEGUARD

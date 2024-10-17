@@ -50,6 +50,8 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 
 	minimum_evolve_time = 0
 
+	minimap_icon = "carrier"
+
 /mob/living/carbon/xenomorph/prime_weaver
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_PRIME

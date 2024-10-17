@@ -30,6 +30,8 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
+	minimap_icon = "burrower"
+
 /mob/living/carbon/xenomorph/weaveling
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVELING

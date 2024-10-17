@@ -34,6 +34,8 @@
 
 	minimum_evolve_time = 0
 
+	minimap_icon = "warrior"
+
 /mob/living/carbon/xenomorph/weaver
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVER

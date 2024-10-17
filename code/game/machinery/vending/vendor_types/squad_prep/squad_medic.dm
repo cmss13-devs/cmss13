@@ -46,6 +46,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 3, /obj/item/storage/pouch/pressurized_reagent_canister, null, VENDOR_ITEM_REGULAR),
 		list("G8-A General Utility Pouch", 15, /obj/item/storage/backpack/general_belt, null, VENDOR_ITEM_REGULAR),
 		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
+		list("FixOVein", 7, /obj/item/tool/surgery/FixOVein, null, VENDOR_ITEM_REGULAR),
+
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 18, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),

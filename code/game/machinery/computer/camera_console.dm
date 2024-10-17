@@ -366,7 +366,7 @@
 	active_power_usage = 0
 	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
-	exproof = TRUE
+	explo_proof = TRUE
 	colony_camera_mapload = FALSE
 
 /obj/structure/machinery/computer/cameras/mortar/set_broken()
@@ -381,7 +381,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 
 
 /obj/structure/machinery/computer/cameras/dropship/one

@@ -263,7 +263,7 @@
 	icon_state = "m92"
 	item_state = "m92"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	matter = list("metal" = 6000)
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
 

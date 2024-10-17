@@ -76,7 +76,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 							"Medical HUD" = FALSE,
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE
+							"Xeno Status HUD" = FALSE,
+							HUD_MENTOR_SIGHT = FALSE
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
@@ -204,6 +205,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/xeno_name_ban = FALSE
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/playtime_perks = TRUE
+	var/show_queen_name = FALSE
 
 	var/stylesheet = "Modern"
 
@@ -448,6 +450,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
 
 			dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Show Queen Name:</b> <a href='?_src_=prefs;preference=show_queen_name'><b>[show_queen_name? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
 
 			var/tempnumber = rand(1, 999)
@@ -549,7 +552,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
 			if(owner.check_whitelist_status(WHITELIST_MENTOR))
-				dat += "<b>Nothing here. For now.</b>"
+				dat += "<b>New Player Ghost HUD:</b> <a href='?_src_=prefs;preference=newplayer_ghost_hud'><b>[observer_huds[HUD_MENTOR_SIGHT] ? "Enabled" : "Disabled"]</b></a><br>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SETTINGS)
@@ -1857,6 +1860,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("playtime_perks")
 					playtime_perks = !playtime_perks
 
+				if("show_queen_name")
+					show_queen_name = !show_queen_name
+
 				if("be_special")
 					var/num = text2num(href_list["num"])
 					be_special ^= (1<<num)
@@ -1939,6 +1945,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if (!plane_master)
 						return
 					plane_master.backdrop(user?.client.mob)
+
+				if("newplayer_ghost_hud")
+					observer_huds[HUD_MENTOR_SIGHT] = !observer_huds[HUD_MENTOR_SIGHT]
 
 				if("auto_fit_viewport")
 					auto_fit_viewport = !auto_fit_viewport

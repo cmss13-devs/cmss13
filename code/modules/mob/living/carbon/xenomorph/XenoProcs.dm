@@ -616,8 +616,10 @@
 			return "Moderate"
 		if(3 to 3.9)
 			return "Strong"
-		if(4 to INFINITY)
+		if(4 to 4.9)
 			return "Very Strong"
+		if(4.9 to INFINITY)
+			return "Overwhelming"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)

@@ -253,6 +253,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
     is_vialmaker,
     bottlesprite,
     internal_reagent_name,
+    buffer,
   } = data;
 
   const [numPills, setNumPills] = useSharedState('pillNum', 16);
@@ -266,6 +267,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
               <Stack>
                 <Button
                   lineHeight={'35px'}
+                  disabled={!buffer}
                   onClick={() => act('create_pill', { number: numPills })}
                 >
                   Create Pill{numPills > 1 ? 's' : ''}
@@ -295,6 +297,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
               <Stack>
                 <Stack vertical>
                   <Button.Input
+                    disabled={!buffer}
                     height={'100%'}
                     lineHeight={is_connected ? '' : '35px'}
                     currentValue={internal_reagent_name}
@@ -310,6 +313,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                   </Button.Input>
                   {!!is_connected && (
                     <Button.Input
+                      disabled={!buffer}
                       currentValue={internal_reagent_name}
                       onCommit={(_, value) =>
                         act('create_glass', {
@@ -340,6 +344,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                 <Stack>
                   <Stack vertical>
                     <Button.Input
+                      disabled={!buffer}
                       height={'100%'}
                       lineHeight={is_connected ? '' : '35px'}
                       currentValue={internal_reagent_name}
@@ -351,6 +356,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                     </Button.Input>
                     {!!is_connected && (
                       <Button.Input
+                        disabled={!buffer}
                         currentValue={internal_reagent_name}
                         onCommit={(_, value) =>
                           act('create_glass', { type: 'vial', label: value })
@@ -369,7 +375,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
         <Stack>
           <Stack.Item>
             <Stack>
-              <Button onClick={() => act('create_glass')}>
+              <Button onClick={() => act('create_glass')} disabled={!buffer}>
                 Create Bottle (50u)
               </Button>
             </Stack>

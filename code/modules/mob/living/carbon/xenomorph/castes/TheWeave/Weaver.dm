@@ -15,7 +15,7 @@
 	evolves_to = null
 	deevolves_to = list(WEAVE_CASTE_WEAVELING)
 	caste_desc = "Wielders of The Weave!"
-	acid_level = 2
+	acid_level = 3
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
 
@@ -51,7 +51,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/corrosive_acid/strong/weave,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,

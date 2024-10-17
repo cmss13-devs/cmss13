@@ -250,6 +250,9 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
+/obj/effect/xenomorph/spray/strong/weave
+	icon = 'icons/mob/xenonids/weave.dmi'
+	icon_state = "weave_acid_spray"
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -283,6 +286,10 @@
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 	else if (isxeno(M))
 		..(M)
+
+/obj/effect/xenomorph/spray/praetorian/weave
+	icon = 'icons/mob/xenonids/weave.dmi'
+	icon_state = "weave_acid_spray"
 
 //Medium-strength acid
 /obj/effect/xenomorph/acid
@@ -321,6 +328,10 @@
 	barricade_damage = 100
 	flare_damage = 1875
 	icon_state = "acid_strong"
+
+/obj/effect/xenomorph/acid/strong/weave
+	icon = 'icons/mob/xenonids/weave.dmi'
+	icon_state = "weave_acid"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
 	. = ..()

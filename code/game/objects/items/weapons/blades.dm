@@ -233,7 +233,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
 		)
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	unacidable = TRUE
 
 /obj/item/weapon/weaveblade/IsShield()

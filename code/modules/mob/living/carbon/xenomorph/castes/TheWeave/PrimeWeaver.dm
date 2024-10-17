@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
-	/datum/resin_construction/resin_obj/acid_pillar,
+	/datum/resin_construction/resin_obj/acid_pillar/weave,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike,
@@ -19,8 +19,8 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 
 	melee_damage_lower = XENO_DAMAGE_TIER_7
 	melee_damage_upper = XENO_DAMAGE_TIER_8
-	max_health = 1600
-	plasma_gain = 8
+	max_health = 1800
+	plasma_gain = 10
 	plasma_max = 1400
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_6
 	armor_deflection = XENO_ARMOR_TIER_4
@@ -34,18 +34,18 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 	weed_level = WEED_LEVEL_HIVE
 	evolution_allowed = FALSE
 
-	aura_strength = 7
+	aura_strength = 10
 
-	tackle_chance = 55
+	tackle_chance = 75
 	tackle_min = 2
 	tackle_max = 6
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 
-	burrow_cooldown = 20
-	tunnel_cooldown = 90
-	widen_cooldown = 70
-	tremor_cooldown = 450
+	burrow_cooldown = 10
+	tunnel_cooldown = 45
+	widen_cooldown = 30
+	tremor_cooldown = 250
 
 	minimum_evolve_time = 0
 
@@ -66,12 +66,14 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
+		/datum/action/xeno_action/activable/corrosive_acid/strong/weave,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/change_fruit/weave,
 		/datum/action/xeno_action/onclick/plant_resin_fruit/weave/pure, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/activable/spray_acid/weaveguard/prime,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/create_pool,
 		/datum/action/xeno_action/onclick/choose_resin,

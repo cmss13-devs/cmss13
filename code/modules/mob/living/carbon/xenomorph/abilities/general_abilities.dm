@@ -187,6 +187,13 @@
 	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
+/datum/action/xeno_action/activable/corrosive_acid/strong/weave
+	name = "Fey Acid (125)"
+	acid_type = /obj/effect/xenomorph/acid/strong/weave
+
+/datum/action/xeno_action/activable/corrosive_acid/strong/weave/update_level()
+	return
+
 /datum/action/xeno_action/onclick/emit_pheromones
 	name = "Emit Pheromones (30)"
 	action_icon_state = "emit_pheromones"

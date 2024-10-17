@@ -664,6 +664,11 @@
 
 	acid_type = /obj/effect/xenomorph/spray/strong
 
+/obj/effect/alien/resin/acid_pillar/strong/weave
+	name = "fey acid pillar"
+	desc = "A Weave pillar that is oozing with fey acid."
+	acid_type = /obj/effect/xenomorph/spray/strong/weave
+
 /obj/effect/alien/resin/shield_pillar
 	name = "shield pillar"
 	desc = "A resin pillar that is oozing with acid."

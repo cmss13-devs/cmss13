@@ -343,7 +343,7 @@
 			if("alien_talk")
 				sound = pick('sound/voice/alien_talk.ogg','sound/voice/alien_talk2.ogg','sound/voice/alien_talk3.ogg')
 			if("weave_talk")
-				S = pick('sound/voice/weave_talk1.ogg','sound/voice/weave_talk2.ogg','sound/voice/weave_talk3.ogg')
+				sound = pick('sound/voice/weave_talk1.ogg','sound/voice/weave_talk2.ogg','sound/voice/weave_talk3.ogg')
 			if("larva_talk")
 				sound = pick('sound/voice/larva_talk1.ogg','sound/voice/larva_talk2.ogg','sound/voice/larva_talk3.ogg','sound/voice/larva_talk4.ogg')
 			if("hiss_talk")

@@ -1,7 +1,7 @@
 /obj/item/weapon/banhammer
 	desc = "A banhammer"
 	name = "banhammer"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 0
@@ -37,7 +37,7 @@
 /obj/item/weapon/ice_axe
 	name = "ice axe"
 	desc = "For climbing, mostly. Makes for a good improvised weapon."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
 	icon_state = "ice_axe"
 	item_state = "ice_axe"
 	sharp = IS_SHARP_ITEM_ACCURATE

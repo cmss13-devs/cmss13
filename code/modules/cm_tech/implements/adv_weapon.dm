@@ -3,7 +3,7 @@
 	name = "advanced weapon kit"
 	desc = "It seems to be a kit to choose an advanced weapon"
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	var/gun_type = /obj/item/weapon/gun/shotgun/pump
@@ -26,7 +26,7 @@
 	name = "advanced weapon kit"
 	desc = "It seems to be a kit to choose an advanced weapon"
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	gun_type = /obj/item/weapon/gun/rifle/techweb_railgun

@@ -28,6 +28,10 @@
 	name = "\improper M4 pattern PMC armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind."
 	icon_state = "pmc_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -74,11 +78,8 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate
 	name = "\improper M1 pattern corporate security armor"
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This is commonly worn by low-level guards protecting Weyland-Yutani facilities."
-	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
 	icon_state = "armor"
 	item_state = "armor"
-	item_state_slots = null
-	contained_sprite = TRUE
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 	flags_armor_protection = BODY_FLAG_CHEST
@@ -417,10 +418,10 @@
 /obj/item/clothing/suit/storage/militia
 	name = "colonial militia hauberk"
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT

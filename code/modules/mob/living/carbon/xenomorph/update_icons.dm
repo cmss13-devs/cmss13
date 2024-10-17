@@ -33,13 +33,13 @@
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xenonid
-			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
+			Q.queen_ovipositor_icon = 'icons/mob/xenonids/castes/tier_4/ovipositor.dmi'
 	else
 		icon = icon_xeno
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xeno
-			Q.queen_ovipositor_icon = 'icons/mob/xenos/ovipositor.dmi'
+			Q.queen_ovipositor_icon = 'icons/mob/xenos/castes/tier_4/ovipositor.dmi'
 
 	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(!walking_state_cache[mutation_caste_state])

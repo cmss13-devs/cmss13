@@ -110,7 +110,7 @@
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
-	icon='icons/obj/items/weapons/weapons.dmi'
+	icon='icons/obj/items/weapons/melee/knives.dmi'
 	icon_state = "throwing_knife"
 	item_state = "combat_knife"
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
@@ -130,7 +130,7 @@
 /obj/item/weapon/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	icon_state = "unathiknife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
@@ -225,8 +225,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 		)
 
 /obj/item/weapon/straight_razor

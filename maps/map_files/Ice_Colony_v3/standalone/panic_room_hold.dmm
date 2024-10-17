@@ -56,7 +56,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "cL" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "cO" = (
@@ -1263,7 +1263,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "TG" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "TI" = (

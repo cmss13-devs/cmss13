@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(cached_icons)
 /obj/item/reagent_container/glass/paint
 	desc = "It's a paint bucket."
 	name = "paint bucket"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "paint_neutral"
 	item_state = "paintcan"
 	matter = list("metal" = 200)

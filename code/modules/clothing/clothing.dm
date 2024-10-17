@@ -146,8 +146,8 @@
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
-	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(
@@ -170,6 +170,10 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
+	)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -190,13 +194,6 @@
 			to_chat(H, SPAN_WARNING("[src] can't be worn with [U]."))
 			return 0
 	return 1
-
-/obj/item/clothing/suit/proc/get_collar()
-	var/icon/C = new('icons/mob/humans/onmob/collar.dmi')
-	if(icon_state in C.IconStates())
-		var/image/I = image(C, icon_state)
-		I.color = color
-		return I
 
 /////////////////////////////////////////////////////////
 //Gloves
@@ -240,7 +237,7 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/items/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"

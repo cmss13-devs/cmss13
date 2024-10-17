@@ -157,7 +157,7 @@
 		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
-		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
+		else if((caste_type != XENO_CASTE_QUEEN) && (caste_type != WEAVE_CASTE_PRIME) && observed_xeno)
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else

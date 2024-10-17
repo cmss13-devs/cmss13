@@ -386,28 +386,28 @@
 					the_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 					the_hud.add_hud_to(src, src)
 				if("Security HUD")
-					the_hud= GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 					the_hud.add_hud_to(src, src)
 				if("Squad HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_OBSERVER]
+					the_hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
-					the_hud= GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_UPP]
+					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 					the_hud.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_WY]
+					the_hud = GLOB.huds[MOB_HUD_FACTION_WY]
 					the_hud.add_hud_to(src, src)
 				if("Faction TWE HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_TWE]
+					the_hud = GLOB.huds[MOB_HUD_FACTION_TWE]
 					the_hud.add_hud_to(src, src)
 				if("Faction CLF HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_CLF]
+					the_hud = GLOB.huds[MOB_HUD_FACTION_CLF]
 					the_hud.add_hud_to(src, src)
 				if(HUD_MENTOR_SIGHT)
-					the_hud= GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
 					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
@@ -1133,6 +1133,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_responder()
+	set category = "Ghost.Join"
+	set name = "Join as a Fax Responder"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_fax_responder_late_join(src))
+		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

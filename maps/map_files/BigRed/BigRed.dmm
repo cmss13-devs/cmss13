@@ -24878,6 +24878,10 @@
 /obj/item/storage/firstaid/fire,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"jQl" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "jQS" = (
 /obj/structure/prop/almayer/cannon_cable_connector{
 	name = "\improper Cable connector"
@@ -35112,6 +35116,10 @@
 	},
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
+"tVA" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
 "tVE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -44794,7 +44802,7 @@ aah
 aah
 aah
 aek
-aaf
+jQl
 aaf
 aaf
 acJ
@@ -48146,7 +48154,7 @@ eWd
 eWd
 eWd
 eWd
-eWd
+tVA
 eWd
 eWd
 eWd

@@ -47435,6 +47435,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"loy" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "lrn" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "damtemple_intact"
@@ -48223,6 +48227,13 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"owr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "oyf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -54183,7 +54194,7 @@ lIt
 lIt
 lIt
 lIt
-lIt
+loy
 lIt
 lIt
 lIt
@@ -57041,7 +57052,7 @@ aQW
 aQW
 aQW
 aQW
-aQW
+owr
 aQW
 aQW
 aQW

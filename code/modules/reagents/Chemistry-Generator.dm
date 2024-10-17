@@ -182,7 +182,8 @@
 	//Properties
 	if(!no_properties)
 		var/gen_value
-		for(var/i in 1 to gen_tier+2)
+		var/properties_buff = rand(0, 4)
+		for(var/i in 1 to gen_tier+properties_buff)
 			if(i == 1) //The first property is random to offset the value balance
 				if(gen_tier > 2)
 					gen_value = add_property(null,null,0,TRUE) //Give rare property

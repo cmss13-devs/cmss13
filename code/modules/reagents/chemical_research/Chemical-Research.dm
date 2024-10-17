@@ -163,19 +163,19 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		var/roll = rand(1, 100)
 		switch(C.gen_tier) // pick a reagent hint.
 			if(1)
-				C.credit_reward = 3
+				C.credit_reward = 4
 				if(roll<=60)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
 				else
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 			if(2)
-				C.credit_reward = 5
+				C.credit_reward = 6
 				if(roll<=40)
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 				else
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
-				C.credit_reward = 7
+				C.credit_reward = 8
 				C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
 		C.property_hint = pick(C.properties)
 		contract_chems[C.id] = C

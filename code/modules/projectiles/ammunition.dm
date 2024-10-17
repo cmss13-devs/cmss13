@@ -32,6 +32,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
+	var/description_ammo = "rounds"
 
 	/// If this and ammo_band_icon aren't null, run update_ammo_band(). Is the color of the band, such as green on AP.
 	var/ammo_band_color
@@ -98,7 +99,7 @@ They're all essentially identical when it comes to getting the job done.
 		. += "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine."
 		log_debug("ERROR CODE R1: negative current_rounds on examine. User: <b>[usr]</b> Magazine: <b>[src]</b>")
 	else
-		. += "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>."
+		. += "[src] has <b>[current_rounds]</b> [description_ammo] out of <b>[max_rounds]</b>."
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.

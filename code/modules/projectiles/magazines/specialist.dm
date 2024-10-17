@@ -385,3 +385,4 @@
 	default_ammo = /datum/ammo/rocket/wp/upp
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85
+

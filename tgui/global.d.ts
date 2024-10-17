@@ -158,11 +158,6 @@ type ByondType = {
    * Loads a script into the document.
    */
   loadJs(url: string): void;
-
-  /**
-   * Maps icons to their ref
-   */
-  iconRefMap: Record<string, string>;
 };
 
 /**

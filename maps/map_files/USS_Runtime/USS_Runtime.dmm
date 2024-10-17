@@ -71,7 +71,6 @@
 /area/event)
 "C" = (
 /obj/effect/landmark/start/bridge,
-/obj/structure/machinery/chem_master/condimaster,
 /turf/open/floor/almayer/plating,
 /area/event)
 "D" = (
@@ -92,7 +91,6 @@
 /area/event)
 "J" = (
 /obj/effect/landmark/start/executive,
-/obj/structure/machinery/chem_master,
 /turf/open/floor/almayer/plating,
 /area/event)
 "L" = (

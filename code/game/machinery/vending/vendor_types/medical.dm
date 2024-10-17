@@ -719,7 +719,7 @@
 	wrenchable = TRUE
 	hackable = TRUE
 	healthscan = FALSE
-	allow_supply_link_restock = FALSE
+	allow_supply_link_restock = TRUE
 	chem_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted

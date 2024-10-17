@@ -12,6 +12,8 @@
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
+	name = "APOLLO relay key"
+	desc = "An encryption key allowing speech over the APOLLO Link. (Using :+)"
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 
@@ -45,11 +47,11 @@
 
 //MARINE ENCRYPTION KEYS
 
-/obj/item/device/encryptionkey/ai_integrated
-	name = "AI Integrated Encryption Key"
-	desc = "Integrated encryption key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+/obj/item/device/encryptionkey/aicore
+	name = "AI Core Encryption Key"
+	desc = "AI Core internal communication channel."
+	icon_state = "binary_key"
+	channels = list(RADIO_CHANNEL_AICORE = TRUE)
 
 /obj/item/device/encryptionkey/sentry_laptop
 	name = "Sentry Network Status Encryption Key"
@@ -171,7 +173,7 @@
 	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE)
 
 /obj/item/device/encryptionkey/mcom/ai //AI only.
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_AICORE = TRUE)
 
 // MARINE SQUADS
 

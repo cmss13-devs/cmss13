@@ -1,5 +1,3 @@
-
-
 //reagents explosion system
 
 /datum/effect_system/reagents_explosion
@@ -33,18 +31,13 @@
 				M.apply_effect(rand(1,5), WEAKEN)
 		return
 	else
-		var/light = -1
-		var/flash = -1
-
-		light = max(-1, amount/8)
-		if (flash && flashing_factor) flash = light + 1
+		var/explosion_power = 120
+		var/falloff = (explosion_power*8)/amount
 
 		for(var/mob/M as anything in viewers(8, location))
 			to_chat(M, SPAN_WARNING("The solution violently explodes."))
-
-		explosion(location, -1, -1, light, flash)
-		if(light > 0)
-			return TRUE
+		cell_explosion(location, explosion_power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+		return TRUE
 
 /datum/effect_system/reagents_explosion/proc/holder_damage(atom/holder)
 	if(holder)

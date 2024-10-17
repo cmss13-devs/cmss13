@@ -289,6 +289,7 @@
 		return
 	pressed = TRUE
 	flick("detonator_active", src)
+	playsound(src.loc, 'sound/handling/charge-detonator.ogg', 25, 1)
 	sleep(40)
 	pressed = FALSE
 	var/detonation_count = 0
@@ -347,7 +348,7 @@
 		to_chat(user, SPAN_NOTICE("This Charge is not linked to any detonator"))
 		return
 	icon_state = "satchel_primed"
-	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
+	playsound(src.loc, 'sound/handling/charge-primed.ogg', 25, 1)
 	var/mob/living/carbon/living_carbon = user
 	if(istype(living_carbon) && !living_carbon.throw_mode)
 		living_carbon.toggle_throw_mode(THROW_MODE_NORMAL)
@@ -358,7 +359,6 @@
 
 /obj/item/explosive/satchel_charge/attackby(obj/item/weapon_thing, mob/user)
 	. = ..()
-	beep(TRUE)
 	if(armed)
 		to_chat(user, SPAN_WARNING("This charge is armed, its linking cannot be altered unless disarmed."))
 		return
@@ -375,6 +375,7 @@
 		detonator.linked_charges |= src
 		linked_detonator = detonator
 		to_chat(user, SPAN_NOTICE("[detonator] indicates a new charge has been linked."))
+		playsound(src.loc, 'sound/handling/charge-connection.ogg', 25, 1)
 		icon_state = "satchel_linked"
 
 /obj/item/explosive/satchel_charge/proc/un_activate()

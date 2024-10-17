@@ -453,7 +453,7 @@
 		/obj/item/device/walkman,
 	)
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROT
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/militia/Initialize()

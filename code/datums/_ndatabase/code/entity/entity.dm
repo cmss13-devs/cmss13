@@ -23,6 +23,7 @@
 	var/id
 	var/status
 	var/datum/entity_meta/metadata
+	var/datum/db_field/field_base_type
 	var/__key_synced = FALSE
 
 /datum/entity/proc/save()
@@ -43,7 +44,7 @@
 	status = DB_ENTITY_STATE_DELETED
 	metadata.managed -= src.id
 	if(metadata.key_field)
-		metadata.key_managed -= "[vars[metadata.key_field]]"
+		metadata.key_managed -= "[vars[metadata.key_field::name]]"
 	metadata.to_delete |= src
 
 /datum/entity/proc/invalidate()
@@ -58,7 +59,7 @@
 	metadata.to_update -= src
 	metadata.managed -= src.id
 	if(metadata.key_field)
-		metadata.key_managed -= "[vars[metadata.key_field]]"
+		metadata.key_managed -= "[vars[metadata.key_field::name]]"
 	if(!id)
 		status = DB_ENTITY_STATE_ADD_DETACH
 
@@ -84,6 +85,6 @@
 		CB.Invoke(src)
 
 /datum/entity/proc/assign_values(list/values, list/ignore = list())
-	for(var/F in metadata.field_types)
+	for(var/F in metadata.field_typepaths)
 		if(!(ignore.Find(F)))
 			vars[F] = values[F]

@@ -486,7 +486,7 @@
 	desc = "A canister containing pressurized hydrogen. Can be used to refill storage tanks."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "canister_hydrogen"
-	item_state = "anesthetic"
+	item_state = "canister_hydrogen"
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(50,100,200,300,400)
 	volume = 400
@@ -506,24 +506,28 @@
 	name = "Ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
+	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
 	name = "Methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
+	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
 	name = "Polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
+	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
 	name = "Oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
+	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch

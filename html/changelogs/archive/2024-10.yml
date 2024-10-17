@@ -151,3 +151,23 @@
   Mister-moon1:
   - imageadd: new yautja cape, the damaged cape available to elites +
   - bugfix: fixed spriting issues with ceremonial cape and armour 5
+2024-10-16:
+  JayTacos:
+  - rscadd: Added a varient of combistick that has no block chance.
+  private-tristan:
+  - rscadd: Req line tutorial NPCs have a bigger list of items to ask for.
+2024-10-17:
+  BeagleGaming1:
+  - rscadd: Tutorials can be locked until a prerequisite tutorial is completed
+  - code_imp: Tutorials are saved in preferences instead of per character slot
+  BlackCrystalic:
+  - bugfix: Code writing of CMB New() proc and setting initial values
+  SpartanBobby:
+  - maptweak: Reshuffles tables in squad hypersleep bay adds some new decals
+  private-tristan:
+  - balance: Increased the starting amount of mk2 and m39 mags in prep vendors
+  realforest2001:
+  - rscadd: Added a giant message to end of ERT spawns so they know if they're hostile
+      or not.
+  - rscadd: CLF armor now protects from cold weather so hostile survivors are not
+      penalized.

@@ -5,6 +5,8 @@
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 #define COOLDOWN_LIGHT "cooldown_light"
 
+#define COOLDOWN_PRINTER_ERROR "cooldown_printer_error"
+
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
 

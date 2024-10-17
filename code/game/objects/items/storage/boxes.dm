@@ -603,7 +603,8 @@
 
 /obj/item/storage/box/explosive_mines/satchel_charges
 	name = "\improper M17 satchel charge box (x5)"
-	desc = "A secure box holding five M17 satchel charges."
+	desc = "A secure box holding five M17 satchel charges and a detonator, don't lose it!"
+	icon_state = "satchelbox"
 	max_storage_space = 16
 	can_hold = list(
 		/obj/item/explosive/satchel_charge,
@@ -617,6 +618,7 @@
 
 /obj/item/storage/box/explosive_mines/satchel_charges/req
 	name = "\improper M17 satchel charge box (x3)"
+	max_storage_space = 10
 	desc = "A secure box holding three M17 satchel charges."
 
 /obj/item/storage/box/explosive_mines/satchel_charges/req/fill_preset_inventory()

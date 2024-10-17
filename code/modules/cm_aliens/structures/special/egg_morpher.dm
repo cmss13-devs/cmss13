@@ -9,11 +9,17 @@
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
 
+	///How many huggers are stored in the egg morpher currently.
 	var/stored_huggers = 0
-	var/huggers_per_corpse = 6
-	var/huggers_to_grow_max = 12
+	///Max amount of huggers that can be stored in the egg morpoher.
+	var/huggers_max_amount = 12
+	///Max amount of huggers that can grow by itself.
+	var/huggers_to_grow_max = 6
+	///How many huggers are reserved from observers.
 	var/huggers_reserved = 0
+	///Datum used for mob detection.
 	var/datum/shape/range_bounds
+	///How long it takes to generate one facehugger.
 	var/spawn_cooldown_length = 120 SECONDS
 	COOLDOWN_DECLARE(spawn_cooldown)
 
@@ -40,11 +46,16 @@
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user) || isobserver(user))
-		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow_max - stored_huggers] more to grow (reserved: [huggers_reserved])."
+		. += SPAN_NOTICE("\nIt has <b>[stored_huggers] facehuggers within</b>, with [max(0, huggers_to_grow_max - stored_huggers)] more to grow and a total capacity of [huggers_max_amount] facehuggers (reserved: [huggers_reserved]).")
+
 		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
-		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.playable_hugger_limit]")] facehuggers at present."
+		. += SPAN_NOTICE("There are currently [current_hugger_count] facehuggers in the hive. The hive can support a total of [linked_hive.playable_hugger_limit] facehuggers at present.")
 		if(stored_huggers < huggers_to_grow_max)
-			. += "It'll grow another facehugger in [COOLDOWN_SECONDSLEFT(src, spawn_cooldown)] seconds."
+			. += SPAN_NOTICE("It'll grow another facehugger in <b>[COOLDOWN_SECONDSLEFT(src, spawn_cooldown)] seconds.</b>")
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		if(xeno.caste_type == XENO_CASTE_CARRIER)
+			. += SPAN_NOTICE("<b>Using our Retrieve Egg ability, we can easily transfer our eggs into [src].</b>")
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/item, mob/user)
 	if(!isxeno(user))
@@ -53,7 +64,7 @@
 	if(istype(item, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/hugger = item
 		if(hugger.stat != DEAD)
-			if(stored_huggers >= huggers_to_grow_max)
+			if(stored_huggers >= huggers_max_amount)
 				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 				return
 			if(user)
@@ -62,7 +73,7 @@
 				user.temp_drop_inv_item(hugger)
 			else
 				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
-			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
@@ -70,14 +81,14 @@
 	//refill egg morpher from an egg
 	if(istype(item, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/egg = item
-		if(stored_huggers >= huggers_to_grow_max)
+		if(stored_huggers >= huggers_max_amount)
 			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 			return
 		if(user)
 			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."), \
 				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
 			user.temp_drop_inv_item(egg)
-		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		qdel(egg)
 		return
@@ -176,7 +187,7 @@
 			to_chat(usr, SPAN_WARNING("This belongs to another Hive! Yuck!"))
 			return
 
-	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_to_grow_max, morpher.huggers_reserved)
+	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
 
 	to_chat(usr, SPAN_XENONOTICE("You reserved [morpher.huggers_reserved] facehuggers for your sisters."))
 

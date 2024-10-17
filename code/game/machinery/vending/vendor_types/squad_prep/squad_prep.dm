@@ -146,7 +146,6 @@
 		list("M276 Pattern M40 Grenade Rig", floor(scale * 10), /obj/item/storage/belt/grenade, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", floor(scale * 15), /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
-		list("M276 Pattern M39 Holster Rig", floor(scale * 15), /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig And Pouch", floor(scale * 10), /obj/item/storage/belt/gun/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Revolver Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M82F Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),

@@ -31,11 +31,13 @@
 	tremor_cooldown = 450
 
 	minimap_icon = "burrower"
+	evolution_threshold = 500
 
 /mob/living/carbon/xenomorph/weaveling
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVELING
 	name = WEAVE_CASTE_WEAVELING
+	langchat_color = "#4d97aa"
 	desc = "An infant, but not to be ignored."
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
@@ -94,6 +96,8 @@
 			icon_state = "Weaveling Knocked Down"
 	else if (HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		icon_state = "Weaveling Burrowed"
+	else if(m_intent == MOVE_INTENT_WALK)
+		icon_state = "Weaveling Walking"
 	else
 		icon_state = "Weaveling Running"
 

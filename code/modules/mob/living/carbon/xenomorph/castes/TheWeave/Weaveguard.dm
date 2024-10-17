@@ -39,6 +39,7 @@
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVEGUARD
 	name = WEAVE_CASTE_WEAVEGUARD
+	langchat_color = "#4d97aa"
 	desc = "A powerful protector of The Weave."
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
@@ -98,6 +99,8 @@
 			icon_state = "Weaveguard Sleeping"
 		else
 			icon_state = "Weaveguard Knocked Down"
+	else if(m_intent == MOVE_INTENT_WALK)
+		icon_state = "Weaveguard Walking"
 	else
 		icon_state = "Weaveguard Running"
 

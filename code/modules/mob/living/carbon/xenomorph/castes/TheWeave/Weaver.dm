@@ -40,6 +40,7 @@
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVER
 	name = WEAVE_CASTE_WEAVER
+	langchat_color = "#4d97aa"
 	desc = "The Weave is all. All is The Weave."
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
@@ -99,6 +100,8 @@
 			icon_state = "Weaver Knocked Down"
 	else if (HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		icon_state = "Weaver Burrowed"
+	else if(m_intent == MOVE_INTENT_WALK)
+		icon_state = "Weaver Walking"
 	else
 		icon_state = "Weaver Running"
 

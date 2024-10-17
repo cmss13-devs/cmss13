@@ -7,17 +7,20 @@
 	if (!self.check_state())
 		return FALSE
 
-	var/mob/living/carbon/human/human = target
-	if(!ishuman(human) || !human.allow_gun_usage)
+	if(!(ishuman(target) || isxeno(target)))
+		return FALSE
+
+	var/mob/living/carbon/human/target_mob = target
+	if(ishuman(target_mob) && !target_mob.allow_gun_usage)
 		to_chat(self, SPAN_XENOWARNING("You must target a non believer!"))
 		return FALSE
 
-	if (get_dist_sqrd(human, self) > 2)
-		to_chat(self, SPAN_XENOWARNING("[target] is too far away!"))
+	if (get_dist_sqrd(target_mob, self) > 2)
+		to_chat(self, SPAN_XENOWARNING("[target_mob] is too far away!"))
 		return FALSE
 
-	if (human.stat == DEAD)
-		to_chat(self, SPAN_XENOWARNING("[human] is dead, why would you want to touch them?"))
+	if (target_mob.stat == DEAD)
+		to_chat(self, SPAN_XENOWARNING("[target_mob] is dead, why would you want to touch them?"))
 		return FALSE
 
 	var/datum/hive_status/mutated/weave/nexus = self.hive
@@ -29,8 +32,9 @@
 		to_chat(self, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 		return FALSE
 
-	ADD_TRAIT(human, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
-	human.update_xeno_hostile_hud()
+	ADD_TRAIT(target_mob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
+	if(ishuman(target_mob))
+		target_mob.update_xeno_hostile_hud()
 
 	apply_cooldown()
 
@@ -41,22 +45,22 @@
 		REMOVE_TRAIT(self, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
 		self.anchored = FALSE
 
-		unroot_human(human, TRAIT_SOURCE_ABILITY("weave_blessing"))
+		unroot_human(target_mob, TRAIT_SOURCE_ABILITY("weave_blessing"))
 		return FALSE
 
 	if(nexus.use_energy(plasma_cost))
-		self.visible_message(SPAN_XENOHIGHDANGER("[self] floods [human]'s mind with The Weave!"), SPAN_XENOHIGHDANGER("You flood the mind of [human] with The Weave!"))
+		self.visible_message(SPAN_XENOHIGHDANGER("[self] floods [target_mob]'s mind with The Weave!"), SPAN_XENOHIGHDANGER("You flood the mind of [target_mob] with The Weave!"))
 
-		human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
+		target_mob.apply_effect(get_xeno_stun_duration(target_mob, 0.5), WEAKEN)
 
-		human.WeaveClaim(CAUSE_WEAVER)
+		target_mob.WeaveClaim(CAUSE_WEAVER)
 	else
 		to_chat(self, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
 
 	REMOVE_TRAIT(self, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("weave_blessing"))
 	self.anchored = FALSE
 
-	unroot_human(human, TRAIT_SOURCE_ABILITY("weave_blessing"))
+	unroot_human(target_mob, TRAIT_SOURCE_ABILITY("weave_blessing"))
 
 	. = ..()
 	self = null

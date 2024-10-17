@@ -56,6 +56,7 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_PRIME
 	name = WEAVE_CASTE_PRIME
+	langchat_color = "#4d97aa"
 	desc = "The Weave is all. And it's right here."
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
@@ -83,6 +84,7 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord/weave_macro,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
+		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/onclick/exude_energy,
 		/datum/action/xeno_action/activable/weave_bless,
 		/datum/action/xeno_action/onclick/weave_heal
@@ -121,6 +123,8 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 			icon_state = "Prime Weaver Knocked Down"
 	else if (HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		icon_state = "Prime Weaver Burrowed"
+	else if(m_intent == MOVE_INTENT_WALK)
+		icon_state = "Prime Weaver Walking"
 	else
 		icon_state = "Prime Weaver Running"
 

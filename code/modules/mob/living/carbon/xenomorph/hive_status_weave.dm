@@ -3,6 +3,7 @@
 	hivenumber = XENO_HIVE_WEAVE
 	prefix = "Weave "
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX, TRAIT_WEAVE_SENSITIVE)
 
@@ -10,6 +11,11 @@
 	var/weave_energy = 1000
 	var/weave_energy_max = 5000
 	var/granted_pool = FALSE
+
+	free_slots = list(
+		/datum/caste_datum/weaver = 5,
+		/datum/caste_datum/weaveguard = 3
+	)
 
 /datum/hive_status/mutated/weave/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
 	if(!C || C == hive_location)

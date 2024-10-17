@@ -84,19 +84,21 @@
 	if(!Q)
 		return INITIALIZE_HINT_QDEL
 
-	if(!istype(Q))
+	if(!istype(Q) && !istype(Q, /mob/living/carbon/xenomorph/prime_weaver))
 		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
 		return INITIALIZE_HINT_QDEL
 
-	if(!Q.ovipositor)
-		return INITIALIZE_HINT_QDEL
 
+
+	if(istype(Q))
+		if(!Q.ovipositor)
+			return INITIALIZE_HINT_QDEL
+		RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
 	// Make sure to turn off any previous overwatches
 	Q.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
 	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
 	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
 	RegisterSignal(Q, list(
 		COMSIG_XENO_STOP_OVERWATCH,
@@ -241,7 +243,7 @@
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
-		if(Q.ovipositor)
+		if(istype(Q, /mob/living/carbon/xenomorph/prime_weaver) || (istype(Q) && (Q.ovipositor)))
 			give_action(linked_mob, /datum/action/xeno_action/onclick/eye)
 
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)

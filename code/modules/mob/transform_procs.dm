@@ -198,9 +198,7 @@
 	return 0
 
 
-
-
-/mob/living/carbon/human/proc/WeaveClaim(cause = CAUSE_ADMIN)
+/mob/living/carbon/proc/WeaveClaim(cause = CAUSE_ADMIN)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
 	var/truecause = "Unknown Means"
@@ -217,7 +215,90 @@
 
 	if(!istype(hive))
 		message_admins("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
+		return FALSE
+
+	if(client)
+		playsound_client(client, 'sound/effects/xeno_newlarva.ogg', null, 25)
+	setBrainLoss(0)
+	KnockOut(5)
+	make_jittery(105)
+
+	to_chat(src, SPAN_XENODANGER("You have been enlightened by [truecause]!"))
+	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
+	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, traitsource)
+	return TRUE
+
+/mob/living/carbon/xenomorph/WeaveClaim(cause = CAUSE_ADMIN)
+	..()
+
+	var/mob/living/carbon/xenomorph/weaveling/new_xeno = new(get_turf(src), src)
+
+	// subtract the threshold, keep the stored amount
+	evolution_stored -= evolution_threshold
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
+	if(!istype(new_xeno))
+		//Something went horribly wrong!
+		to_chat(usr, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[WEAVE_CASTE_WEAVELING]\'")
+		if(new_xeno)
+			qdel(new_xeno)
 		return
+	var/area/xeno_area = get_area(new_xeno)
+	if(!should_block_game_interaction(new_xeno) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
+			if(2)
+				hive.tier_2_xenos |= new_xeno
+			if(3)
+				hive.tier_3_xenos |= new_xeno
+
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
+	if(mind)
+		mind.transfer_to(new_xeno)
+	else
+		new_xeno.key = src.key
+		if(new_xeno.client)
+			new_xeno.client.change_view(GLOB.world_view_size)
+	var/level_to_switch_to = get_vision_level()
+	//Regenerate the new mob's name now that our player is inside
+	new_xeno.generate_name()
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
+		new_xeno.fireloss = src.fireloss //Transfers the damage over.
+		new_xeno.updatehealth()
+
+	if(plasma_max == 0)
+		new_xeno.plasma_stored = new_xeno.plasma_max
+	else
+		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
+
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
+	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
+
+	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
+		hive.living_xeno_queen.overwatch(new_xeno)
+
+	src.transfer_observers_to(new_xeno)
+
+	qdel(src)
+	new_xeno.xeno_jitter(25)
+
+	if (new_xeno.client)
+		new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
+
+	if(new_xeno.mind && GLOB.round_statistics)
+		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+	SSround_recording.recorder.track_player(new_xeno)
+
+/mob/living/carbon/human/WeaveClaim(cause = CAUSE_ADMIN)
+	..()
 
 	var/datum/equipment_preset/other/weave_cultist/WC = new()
 	var/eyecolor = "#5adfe4"
@@ -225,20 +306,10 @@
 	g_eyes = hex2num(copytext(eyecolor, 4, 6))
 	b_eyes = hex2num(copytext(eyecolor, 6, 8))
 	update_body()
-	WC.load_race(src, hive.hivenumber)
+	WC.load_race(src, XENO_HIVE_WEAVE)
 	WC.load_status(src)
 
-	to_chat(src, SPAN_XENODANGER("You have been enlightened by [truecause]!"))
 	to_chat(src, SPAN_XENOHIGHDANGER("<hr>You are now a Weave Devotee!"))
 	to_chat(src, SPAN_XENODANGER("Worship The Weave and listen to the Prime Weaver for orders. You are bound to peace and fanatic neutrality, however, you may defend yourself and The Weave if there is no alternative.<hr>"))
 
-	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
-	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, traitsource)
-
 	allow_gun_usage = FALSE
-	setBrainLoss(0)
-	KnockOut(5)
-	make_jittery(105)
-
-	if(client)
-		playsound_client(client, 'sound/effects/xeno_newlarva.ogg', null, 25)

@@ -512,6 +512,9 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood
 
+/turf/closed/wall/wood/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /turf/closed/wall/wood/update_icon()
 	..()
 	if(special_icon)
@@ -531,6 +534,9 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	walltype = WALL_CAVE
 	hull = 1
 	color = "#535963"
+
+/turf/closed/wall/desertcavewall/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -764,6 +770,9 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/turf/closed/wall/resin/add_debris_element()
+	AddElement(/datum/element/debris, null, -15, 8, 0.7)
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER

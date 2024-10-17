@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
 	/datum/resin_construction/resin_obj/acid_pillar/weave,
+	/datum/resin_construction/resin_obj/shield_dispenser,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike,

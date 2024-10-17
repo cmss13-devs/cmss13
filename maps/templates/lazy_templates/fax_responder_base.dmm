@@ -21,6 +21,25 @@
 "gu" = (
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"hj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/obj/structure/machinery/computer/spy_camera/uscm{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "id" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
@@ -297,6 +316,25 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"zn" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/obj/structure/machinery/computer/spy_camera/twe{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "Ba" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -322,6 +360,10 @@
 /obj/item/tool/stamp/ce{
 	name = "yellow stamp";
 	pixel_y = -8
+	},
+/obj/structure/machinery/computer/spy_camera/upp{
+	dir = 8;
+	pixel_x = 16
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -414,8 +456,7 @@
 	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
-	phone_id = "WY Communications Executive";
-	
+	phone_id = "WY Communications Executive"
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -459,6 +500,25 @@
 	name = "USS Almayer Cameras";
 	pixel_y = -16;
 	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Ma" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/obj/structure/machinery/computer/spy_camera/clf{
+	dir = 8;
+	pixel_x = 16
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -570,8 +630,7 @@
 	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
-	phone_id = "Free Press Relay";
-	
+	phone_id = "Free Press Relay"
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -614,6 +673,26 @@
 	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
 	phone_id = "CLF Information Correspondant";
 	phone_color = "orange"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Yx" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/obj/structure/machinery/computer/spy_camera/wy{
+	dir = 8;
+	pixel_x = 16;
+	pixel_y = -4
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1121,12 +1200,12 @@ vc
 Ei
 Du
 sZ
-Bp
+hj
 sx
 Ei
 Du
 sZ
-Bp
+hj
 sx
 Ei
 vc
@@ -1543,7 +1622,7 @@ xX
 BC
 EK
 IO
-Bp
+Yx
 sx
 BC
 vc
@@ -1966,14 +2045,14 @@ xX
 jh
 Rh
 kT
-Bp
+Ma
 sx
 jh
 vc
 xc
 yv
 kT
-Bp
+zn
 sx
 xc
 xX
@@ -2342,14 +2421,14 @@ xX
 Dy
 wx
 kT
-Bp
+hj
 sx
 Dy
 vc
 Ml
 XW
 kT
-Bp
+hj
 sx
 Ml
 xX

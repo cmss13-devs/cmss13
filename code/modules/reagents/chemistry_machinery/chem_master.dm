@@ -14,6 +14,7 @@
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
+	var/is_packet = FALSE
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -86,7 +87,14 @@
 
 		loaded_pill_bottle = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
+		if(istype(B, /obj/item/storage/pill_bottle/packet))
+			is_packet = TRUE
+			pillamount = 4
+			to_chat(user, SPAN_NOTICE("You add the pill packet into the dispenser slot!"))
+
+		else
+			is_packet = FALSE
+			to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		updateUsrDialog()
 	return
 
@@ -124,6 +132,7 @@
 			loaded_pill_bottle.forceMove(loc)
 
 		loaded_pill_bottle = null
+		pillamount = 16
 
 	// Adding a name to the currently stored pill bottle
 	if(href_list["addlabelp"])
@@ -147,6 +156,11 @@
 			return
 
 		if(!Adjacent(usr))
+			return
+
+		if(is_packet)
+			to_chat(user, SPAN_WARNING("You cannot change the color of pill packets."))
+			updateUsrDialog()
 			return
 
 		loaded_pill_bottle.choose_color()

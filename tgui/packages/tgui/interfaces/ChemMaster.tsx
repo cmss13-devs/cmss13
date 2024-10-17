@@ -404,7 +404,15 @@ const Reagents = (props: {
               <ReagentButton amount={60} reagent={reagent} type={type} />
               <ReagentButton amount={'All'} reagent={reagent} type={type} />
               <Stack.Item>
-                <Input placeholder="Custom" />
+                <Input
+                  placeholder="Custom"
+                  onEnter={(_, value) => {
+                    act(type === 'beaker' ? 'add' : 'remove', {
+                      amount: parseInt(value, 10),
+                      id: reagent.id,
+                    });
+                  }}
+                />
               </Stack.Item>
             </Stack>
           </Stack>

@@ -69,7 +69,7 @@
 	name = PROPERTY_DNA_DISINTEGRATING
 	code = "DDI"
 	description = "Immediately disintegrates the DNA of all organic cells it comes into contact with. This property is highly valued by WY."
-	rarity = PROPERTY_LEGENDARY
+	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 
@@ -87,6 +87,21 @@
 	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
 
+/datum/chem_property/special/regulating
+	name = PROPERTY_REGULATING
+	code = "REG"
+	description = "The chemical regulates its own metabolization and can thus never cause overdosis."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+
+/datum/chem_property/special/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/special/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING
 	code = "CIP"
@@ -109,6 +124,13 @@
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = hivenumber
 		A.faction = hive.internal_faction
+
+/datum/chem_property/special/encrypted
+	name = PROPERTY_ENCRYPTED
+	code = "ENC"
+	description = "This extremely complex chemical structure contains a cipher that appears to be missing a few parts to complete the process"
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_ANOMALOUS
 
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR

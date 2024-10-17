@@ -264,7 +264,6 @@
 		/obj/item/reagent_container/glass/bottle/dexalin,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
 		/obj/item/reagent_container/glass/bottle/kelotane,
-		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
 	)
@@ -492,7 +491,6 @@
 		list("Bottle (Dexalin)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Bottle (Kelotane)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Bottle (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Bottle (Peridaxon)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Bottle (Tramadol)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
 
@@ -633,7 +631,6 @@
 		/obj/item/reagent_container/glass/bottle/dexalin,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
 		/obj/item/reagent_container/glass/bottle/kelotane,
-		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
 	)
@@ -646,7 +643,6 @@
 		list("Dexalin Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Inaprovaline Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Kelotane Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Oxycodone Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Peridaxon Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Tramadol Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
 

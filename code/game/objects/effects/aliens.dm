@@ -332,6 +332,7 @@
 /obj/effect/xenomorph/acid/strong/weave
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_state = "weave_acid"
+	name = "fey acid"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
 	. = ..()

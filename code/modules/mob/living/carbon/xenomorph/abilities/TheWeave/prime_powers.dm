@@ -59,6 +59,7 @@
 	unroot_human(human, TRAIT_SOURCE_ABILITY("weave_blessing"))
 
 	. = ..()
+	self = null
 	return TRUE
 
 

@@ -305,7 +305,6 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                       act('create_glass', {
                         type: 'glass',
                         label: value,
-                        store: true,
                       })
                     }
                   >

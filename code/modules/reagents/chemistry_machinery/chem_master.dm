@@ -320,7 +320,7 @@
 
 			new_container.update_icon()
 
-			if(params["store"])
+			if(params["store"] && connected)
 				connected.add_local_item(new_container)
 				return TRUE
 

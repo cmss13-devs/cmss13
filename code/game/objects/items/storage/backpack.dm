@@ -480,7 +480,7 @@
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/k9_synth/
-	icon = 'icons/obj/items/clothing/backpacks_by_faction/UA.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
 	uniform_restricted = list(/obj/item/clothing/under/rank/synthetic/synth_k9) //K9 Synth only
 	force_overlays_on = TRUE

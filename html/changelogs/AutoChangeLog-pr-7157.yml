@@ -1,4 +1,0 @@
-author: "deathrobotpunch"
-delete-after: True
-changes:
-  - bugfix: "fusion reactor overload messages now show correctly"

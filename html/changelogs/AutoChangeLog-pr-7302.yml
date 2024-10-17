@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added a giant message to end of ERT spawns so they know if they're hostile or not."
+  - rscadd: "CLF armor now protects from cold weather so hostile survivors are not penalized."

@@ -253,7 +253,8 @@
 			if(3)
 				hive.tier_3_xenos |= new_xeno
 
-	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
+	log_game("EVOLVE: [key_name(src)] was converted into [new_xeno].")
+	set_hive_and_update(XENO_HIVE_WEAVE)
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -280,7 +281,7 @@
 	built_structures = null
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
-	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
+	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For The Weave!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)

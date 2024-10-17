@@ -9263,6 +9263,10 @@
 "huF" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"huU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "hvh" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28000,6 +28004,10 @@
 	},
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach/lz)
+"vWx" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "vWG" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/storm_siren{
@@ -42291,7 +42299,7 @@ wMw
 wMw
 wMw
 wMw
-wMw
+huU
 xcE
 wMw
 wMw
@@ -55742,7 +55750,7 @@ lTg
 wlB
 wlB
 wlB
-wlB
+vWx
 wlB
 lTg
 wlB

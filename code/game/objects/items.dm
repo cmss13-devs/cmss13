@@ -163,6 +163,8 @@
 	var/ground_offset_x = 0
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
+	/// bypass any species specific OnMob overlay blockers
+	var/force_overlays_on = FALSE
 
 	/// Special storages this item prioritizes
 	var/list/preferred_storage

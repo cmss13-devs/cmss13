@@ -1,6 +1,7 @@
 /obj/effect/alien/resin/special/pylon/core/weave_pool
 	name = XENO_STRUCTURE_WEAVE_POOL
 	desc = "A pool of fey energies, who knows what lies within its depths."
+	icon = 'icons/mob/xenonids/structures64x64.dmi'
 	icon_state = "weave_pool"
 	health = 2000
 

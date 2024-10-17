@@ -122,6 +122,8 @@
 	black_market_value = 60
 	///value of the organ in the recycler, heavily varies from size and tier
 	var/research_value = 1 //depending on the size and tier
+	///value of the organ in chem credits when inserted into recycler, sligthly varies from size and tier
+	var/credit_value = 1
 	///the caste in a string, which is used in a xenoanalyzer
 	var/caste_origin // used for desc in xenoanalyzer
 

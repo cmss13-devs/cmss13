@@ -111,31 +111,31 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
 			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
-				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1] / 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2] * 2) // 3, 5
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1] / 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2] * 2)
 			else
-				SSbattlepass.give_sides_points(3, 5)
+				SSbattlepass.give_sides_points(0, 2)
 
 		if(MODE_INFESTATION_M_MAJOR)
 			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
-				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2] * 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1] / 2) // 5, 3
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2] * 2, GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1] / 2)
 			else
-				SSbattlepass.give_sides_points(5, 3)
+				SSbattlepass.give_sides_points(2, 0)
 		if(MODE_INFESTATION_X_MINOR)
 			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
-				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2]) // 3, 4
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][2])
 			else
-				SSbattlepass.give_sides_points(3, 4)
+				SSbattlepass.give_sides_points(0, 1)
 		if(MODE_INFESTATION_M_MINOR)
 			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
-				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1]) // 4, 3
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][2], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1])
 			else
-				SSbattlepass.give_sides_points(4, 3)
+				SSbattlepass.give_sides_points(1, 0)
 
 		if(MODE_INFESTATION_DRAW_DEATH)
 			if(GLOB.current_battlepass?.mapped_point_sources["end_round"])
-				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1]) // 3, 3
+				SSbattlepass.give_sides_points(GLOB.current_battlepass.mapped_point_sources["end_round"]["marine"][1], GLOB.current_battlepass.mapped_point_sources["end_round"]["xeno"][1])
 			else
-				SSbattlepass.give_sides_points(3, 3)
+				SSbattlepass.give_sides_points(0, 0)
 //RUCM END
 
 	sleep(2 SECONDS)

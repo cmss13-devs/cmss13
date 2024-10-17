@@ -1,4 +1,0 @@
-author: "BlackCrystalic"
-delete-after: True
-changes:
-  - bugfix: "Code writing of CMB New() proc and setting initial values"

@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(resin_build_order_primeweave, list(
 	available_fruits = list(/obj/effect/alien/resin/fruit/weave, /obj/effect/alien/resin/fruit/weave/exalted)
 	selected_fruit = /obj/effect/alien/resin/fruit/weave
 
-	extra_build_dist = 9
+	extra_build_dist = IGNORE_BUILD_DISTANCE
 	can_stack_builds = TRUE
 	mob_size = MOB_SIZE_BIG
 	universal_understand = TRUE

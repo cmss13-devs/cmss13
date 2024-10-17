@@ -30,6 +30,10 @@
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
 
+/datum/action/xeno_action/onclick/predalien_roar/weave
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	predalien_roar = list("sound/voice/xeno_praetorian_screech.ogg")
+
 /datum/action/xeno_action/activable/feral_smash
 	name = "Feral Smash"
 	ability_name = "Feral Smash"

@@ -149,6 +149,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	JOB_MEDIC_ROLES = 5 HOURS
 ))
 
+#define SUPPORT_VARIANT
+#define INDUSTRIAL_VARIANT
+
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
 	selection_class = "job_synth"
@@ -156,7 +159,8 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_whitelist = WHITELIST_SYNTHETIC
 	total_positions = 1
 	spawn_positions = 1
-	job_options = null
+	job_options = list(SUPPORT_VARIANT = "SUP", INDUSTRIAL VARIANT = "IND")
+	var/standard = TRUE
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return spawn_positions

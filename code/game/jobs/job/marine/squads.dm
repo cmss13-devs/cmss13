@@ -232,6 +232,17 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/solardevils
+	name = SQUAD_SOLAR
+	equipment_color = "#5a2c2c"
+	chat_color = "#5a2c2c"
+	radio_freq = SOF_FREQ
+	minimap_color = "#5a2c2c"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 
 //############################### UPP Squads
 /datum/squad/upp

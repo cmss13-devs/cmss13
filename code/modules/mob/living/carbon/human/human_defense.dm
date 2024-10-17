@@ -98,8 +98,8 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(istype(l_hand, /obj/item/weapon/weaveblade) && prob(75))
 			return TRUE
 
-		if(combistick && istype(l_hand,/obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = l_hand
+		if(combistick && istype(l_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
+			var/obj/item/weapon/yautja/chained/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
@@ -126,8 +126,8 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(istype(r_hand, /obj/item/weapon/weaveblade) && prob(75))
 			return TRUE
 
-		if(combistick && istype(r_hand,/obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = r_hand
+		if(combistick && istype(r_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
+			var/obj/item/weapon/yautja/chained/combistick/C = r_hand
 			if(C.on)
 				return TRUE
 

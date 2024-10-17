@@ -427,7 +427,7 @@
 /turf/open/floor/almayer/silver,
 /area/adminlevel/ert_station)
 "op" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /obj/structure/sign/safety/cryo{
 	pixel_x = 36
 	},
@@ -578,9 +578,6 @@
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
-"tx" = (
-/turf/open/floor/carpet,
-/area/centcom/living)
 "tP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -9715,7 +9712,7 @@ ds
 eE
 eY
 eY
-tx
+eY
 eY
 eY
 eY

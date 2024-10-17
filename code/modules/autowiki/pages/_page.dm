@@ -27,6 +27,7 @@
 /// something that looks like `{{ Autowiki_Circuit|name=Combiner|description=This combines }}`
 /// Lists, which must be array-like (no keys), will be turned into a flat list with their key and a number,
 /// such that list("food" = list("fruit", "candy")) -> food1=fruit|food2=candy
+/// Your page should respect AUTOWIKI_SKIP, and check for this using IS_AUTOWIKI_SKIP
 /datum/autowiki/proc/include_template(name, parameters)
 	var/template_text = "{{[name]"
 

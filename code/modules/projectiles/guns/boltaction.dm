@@ -34,7 +34,7 @@
 	wield_delay = WIELD_DELAY_NORMAL
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.
@@ -42,7 +42,7 @@
 	var/has_openbolt_icon = TRUE
 
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 18, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 20, "stock_y" = 9)
 
 /obj/item/weapon/gun/boltaction/Initialize(mapload, spawn_empty)
 	. = ..()

@@ -33,6 +33,8 @@
 	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
+	///Color of the muzzle flash light effect.
+	var/muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 
 	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 	/// If fire_sound is null, it will pick a sound from the list here instead.
@@ -1267,7 +1269,7 @@ and you're good to go.
 			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
 			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return TRUE
@@ -1418,7 +1420,7 @@ and you're good to go.
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/projectile(attacked_mob.loc, create_cause_data(initial(name), user))
+				BP = new /obj/projectile(null, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
@@ -1780,6 +1782,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!light_on && (light_range <= muzzle_flash_lum))
 		set_light_range(muzzle_flash_lum)
 		set_light_on(TRUE)
+		set_light_color(muzzle_flash_color)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)

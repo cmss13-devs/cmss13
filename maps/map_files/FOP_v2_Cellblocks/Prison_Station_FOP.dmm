@@ -789,10 +789,7 @@
 /turf/open/floor/prison/whitepurple,
 /area/prison/research/secret/testing)
 "acy" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/whitepurple,
 /area/prison/research/secret/testing)
 "acz" = (
@@ -1454,11 +1451,7 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/maxsec/panopticon)
 "aeB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
@@ -1841,10 +1834,7 @@
 /turf/open/floor/prison/whitepurple,
 /area/prison/research/secret/bioengineering)
 "afS" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/whitepurple,
 /area/prison/research/secret/bioengineering)
 "afT" = (
@@ -2174,11 +2164,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/prison/research/secret/containment)
 "ahd" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkpurple2/north,
 /area/prison/research/secret/containment)
 "ahe" = (
@@ -2234,11 +2220,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/prison/research/secret)
 "ahk" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/landmark/good_item,
 /turf/open/floor/prison/darkpurple2/north,
 /area/prison/research/secret)
@@ -2286,11 +2268,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/cellblock/maxsec/north)
 "ahv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/cellblock/maxsec/north)
 "ahw" = (
@@ -2625,11 +2603,7 @@
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
 "aiP" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
 "aiQ" = (
@@ -3144,11 +3118,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/research_medbay)
 "akC" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/research_medbay)
 "akD" = (
@@ -3512,10 +3482,7 @@
 /area/prison/research/secret/chemistry)
 "alT" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/darkpurplefull2/northwest,
 /area/prison/research/secret/chemistry)
 "alU" = (
@@ -3919,11 +3886,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/medbay/surgery)
 "ann" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/whitegreen/east,
 /area/prison/medbay/surgery)
 "ano" = (
@@ -4017,11 +3980,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/maxsec_highsec)
 "anE" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/maxsec_highsec)
 "anF" = (
@@ -5084,11 +5043,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/west,
 /area/prison/research/RD)
 "aro" = (
@@ -5244,11 +5199,7 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/prison/research)
 "arT" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/item/stack/rods,
 /turf/open/floor/prison/red/west,
 /area/prison/cellblock/highsec/north/north)
@@ -5567,10 +5518,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/medbay)
 "ate" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/platform,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hanger/research)
@@ -5721,11 +5669,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/cellblock/maxsec/south)
 "atI" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
 "atJ" = (
@@ -5960,10 +5904,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/cellblock/maxsec/south)
 "auH" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/cellblock/maxsec/south)
 "auI" = (
@@ -6296,11 +6237,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/chapel)
 "awc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/chapel)
 "awe" = (
@@ -6435,11 +6372,7 @@
 /area/prison/hanger/research)
 "awH" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/southwest,
 /area/prison/hangar_storage/research)
 "awI" = (
@@ -6567,11 +6500,7 @@
 /obj/item/roller{
 	icon_state = "down"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/whitegreen/east,
 /area/prison/medbay)
 "axk" = (
@@ -6759,11 +6688,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/security/checkpoint/maxsec)
 "axU" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/north)
 "axV" = (
@@ -7337,10 +7262,7 @@
 /turf/open/floor/prison/darkred2,
 /area/prison/security/checkpoint/maxsec)
 "aAq" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -7530,11 +7452,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/medbay/foyer)
 "aAY" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/whitepurple/southwest,
 /area/prison/research)
 "aAZ" = (
@@ -8053,11 +7971,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/medbay/foyer)
 "aDh" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/medbay/foyer)
 "aDi" = (
@@ -8441,10 +8355,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aEB" = (
@@ -8575,11 +8486,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/hangar_storage/main)
 "aFc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/prison/hangar_storage/main)
 "aFd" = (
@@ -8966,10 +8873,7 @@
 /turf/open/floor/prison/southwest,
 /area/prison/recreation/highsec/n)
 "aGC" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/southwest,
 /area/prison/recreation/highsec/n)
@@ -9352,10 +9256,7 @@
 /turf/open/floor/prison/whitepurple/southwest,
 /area/prison/quarters/research)
 "aIa" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/whitepurple,
 /area/prison/quarters/research)
 "aIb" = (
@@ -9419,11 +9320,7 @@
 /turf/open/floor/prison,
 /area/prison/storage/highsec/n)
 "aIp" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/prison/storage/highsec/n)
 "aIq" = (
@@ -9492,11 +9389,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "aIC" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "aID" = (
@@ -10387,11 +10280,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/cleaning)
 "aMm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/janitorialcart,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/cleaning)
@@ -10462,11 +10351,7 @@
 /turf/open/floor/prison/green/north,
 /area/prison/quarters/staff)
 "aMz" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -10974,11 +10859,7 @@
 /area/prison/command/secretary_office)
 "aOy" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/wood,
 /area/prison/command/office)
 "aOA" = (
@@ -11036,10 +10917,7 @@
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/north/south)
 "aOK" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/north/south)
 "aOL" = (
@@ -11517,11 +11395,7 @@
 /turf/closed/wall/prison,
 /area/prison/recreation/staff)
 "aQD" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/green/west,
 /area/prison/hallway/staff)
 "aQF" = (
@@ -11622,11 +11496,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "aQW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "aQZ" = (
@@ -11738,11 +11608,7 @@
 /turf/open/floor/prison/greenfull,
 /area/prison/cellblock/lowsec/nw)
 "aRv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/green/north,
 /area/prison/cellblock/lowsec/nw)
 "aRw" = (
@@ -12193,11 +12059,7 @@
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aTp" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/blue/west,
 /area/prison/command/secretary_office)
 "aTq" = (
@@ -12457,6 +12319,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec/n)
 "aUq" = (
@@ -12567,11 +12430,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/prison/toilet/staff)
 "aUJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/sterile_white,
 /area/prison/toilet/staff)
 "aUK" = (
@@ -12639,11 +12498,7 @@
 /turf/open/floor/plating,
 /area/prison/command/quarters)
 "aUW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
 "aUY" = (
@@ -12729,11 +12584,6 @@
 "aVq" = (
 /obj/structure/machinery/light/small{
 	dir = 8
-	},
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
 	},
 /obj/structure/filingcabinet,
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -12926,11 +12776,7 @@
 /turf/open/floor/carpet,
 /area/prison/command/quarters)
 "aWc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/carpet,
 /area/prison/command/quarters)
 "aWd" = (
@@ -13419,11 +13265,7 @@
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aXW" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
@@ -13941,11 +13783,7 @@
 /turf/open/floor/prison/green/west,
 /area/prison/cellblock/lowsec/ne)
 "aZY" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/green/east,
 /area/prison/cellblock/lowsec/ne)
 "aZZ" = (
@@ -14641,11 +14479,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/entrance)
 "bcB" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
@@ -14837,11 +14671,7 @@
 /turf/open/floor/asteroid,
 /area/prison/residential/central)
 "bdw" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/blue/west,
 /area/prison/security/checkpoint/vip)
 "bdx" = (
@@ -16569,11 +16399,7 @@
 /turf/open/floor/prison/blue/northeast,
 /area/prison/storage/vip)
 "bjY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/storage/vip)
 "bjZ" = (
@@ -17395,10 +17221,7 @@
 /turf/open/floor/prison/blue,
 /area/prison/cellblock/vip)
 "bnn" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/blue,
 /area/prison/cellblock/vip)
 "bno" = (
@@ -17508,11 +17331,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/canteen)
 "bnP" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
@@ -17535,11 +17354,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/canteen)
 "bnT" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/hallway/entrance)
 "bnU" = (
@@ -18425,11 +18240,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/visitation)
 "brB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/visitation)
 "brD" = (
@@ -18679,11 +18490,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/prison/cellblock/lowsec/se)
 "bsM" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/green/west,
 /area/prison/cellblock/lowsec/sw)
 "bsN" = (
@@ -19459,10 +19266,7 @@
 /turf/open/floor/prison/redfull,
 /area/prison/hallway/entrance)
 "bvS" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison,
 /area/prison/hanger/main)
 "bvT" = (
@@ -19520,11 +19324,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/lowsec/sw)
 "bwn" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bwo" = (
@@ -19562,11 +19362,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/holding/holding1)
 "bwv" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -19832,11 +19628,7 @@
 /turf/open/floor/prison/green/southeast,
 /area/prison/cellblock/lowsec/se)
 "bxR" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/east)
 "bxT" = (
@@ -19863,11 +19655,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding1)
 "bxX" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
@@ -20020,11 +19808,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/hangar)
 "byJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkred2/northeast,
 /area/prison/security/checkpoint/hangar)
 "byK" = (
@@ -20055,11 +19839,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/monorail/east)
 "byQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/greenfull/northwest,
 /area/prison/monorail/west)
 "byR" = (
@@ -20185,6 +19965,7 @@
 "bzw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/rampbottom/north,
 /area/prison/holding/holding1)
 "bzx" = (
@@ -20347,11 +20128,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/green/north,
 /area/prison/security/monitoring/lowsec/sw)
 "bAq" = (
@@ -20569,19 +20346,11 @@
 /turf/closed/wall/prison,
 /area/prison/security/monitoring/lowsec/sw)
 "bBk" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/monorail/east)
 "bBl" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
 "bBn" = (
@@ -21163,10 +20932,7 @@
 /turf/open/floor/prison/green,
 /area/prison/cellblock/lowsec/se)
 "bDA" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/green,
 /area/prison/cellblock/lowsec/se)
 "bDB" = (
@@ -21514,11 +21280,7 @@
 /turf/open/floor/prison,
 /area/prison/quarters/security)
 "bEF" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
 "bEG" = (
@@ -21645,11 +21407,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/south/north)
 "bFg" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/south/north)
@@ -22154,11 +21912,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/hallway/east)
 "bHa" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison,
 /area/prison/quarters/security)
 "bHb" = (
@@ -22204,11 +21958,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/south/north)
 "bHl" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison,
 /area/prison/maintenance/hangar_barracks)
 "bHn" = (
@@ -22324,11 +22074,7 @@
 /turf/closed/wall/prison,
 /area/prison/holding/holding2)
 "bHK" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -22506,11 +22252,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/telecomms)
 "bIz" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkbrown2/west,
 /area/prison/hallway/east)
 "bIB" = (
@@ -22724,11 +22466,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/storage/highsec/s)
 "bJv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/storage/highsec/s)
 "bJw" = (
@@ -23390,11 +23128,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bLZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/south)
 "bMa" = (
@@ -23503,11 +23237,7 @@
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "bMB" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "bMC" = (
@@ -24146,11 +23876,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/prison/storage/medsec)
 "bPD" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkyellow2/west,
 /area/prison/storage/medsec)
 "bPF" = (
@@ -24172,11 +23898,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bPJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -24311,11 +24033,7 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "bQn" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/security)
 "bQo" = (
@@ -24480,11 +24198,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/recreation/highsec/s)
 "bQR" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/laundry)
 "bQS" = (
@@ -25609,11 +25323,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bVd" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bVe" = (
@@ -25704,11 +25414,7 @@
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/medsec)
 "bVv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/yellowfull,
 /area/prison/security/checkpoint/medsec)
 "bVw" = (
@@ -25936,11 +25642,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/prison/hallway/east)
 "bWj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkred2/southwest,
 /area/prison/intake)
 "bWl" = (
@@ -26178,11 +25880,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bXh" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bXj" = (
@@ -26198,10 +25896,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/prison/engineering/atmos)
 "bXm" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bXn" = (
@@ -26681,11 +26376,7 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/prison/hallway/engineering)
 "bZl" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/hallway/engineering)
 "bZm" = (
@@ -27337,11 +27028,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/recreation/medsec)
 "cbU" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/prison/recreation/medsec)
 "cbV" = (
@@ -27585,11 +27272,7 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "ccP" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison,
 /area/prison/security/head)
 "ccS" = (
@@ -27616,11 +27299,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/north)
 "ccY" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/yellow/west,
 /area/prison/cellblock/mediumsec/north)
 "cde" = (
@@ -27818,10 +27497,7 @@
 /turf/open/floor/prison/darkred2/southeast,
 /area/prison/security)
 "cdY" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/darkred2/southwest,
 /area/prison/security)
 "cea" = (
@@ -28248,11 +27924,7 @@
 /turf/open/floor/prison,
 /area/prison/execution)
 "cfK" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/briefing)
 "cfM" = (
@@ -28425,11 +28097,7 @@
 /turf/open/floor/prison/bluefull,
 /area/prison/cellblock/protective)
 "cgw" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/blue/northwest,
 /area/prison/cellblock/protective)
 "cgx" = (
@@ -28484,11 +28152,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/disposal)
 "cgJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/wood,
 /area/prison/parole/protective_custody)
 "cgK" = (
@@ -28534,11 +28198,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/security/armory/riot)
 "cgU" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cgV" = (
@@ -28850,11 +28510,7 @@
 /turf/open/floor/prison,
 /area/prison/execution)
 "chY" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison,
 /area/prison/execution)
 "chZ" = (
@@ -28882,11 +28538,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/armory/lethal)
 "cig" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkred2/east,
 /area/prison/security/armory/riot)
@@ -28896,11 +28548,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security)
 "cii" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkred2/west,
 /area/prison/security/armory/lethal)
@@ -28985,11 +28633,7 @@
 /turf/open/floor/wood,
 /area/prison/security/head)
 "cix" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/red/west,
 /area/prison/cellblock/highsec/south/south)
 "ciz" = (
@@ -29514,11 +29158,7 @@
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec_medsec)
 "ckD" = (
@@ -29713,11 +29353,7 @@
 /turf/open/floor/prison/yellow/east,
 /area/prison/cellblock/mediumsec/north)
 "clr" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkred2/northwest,
 /area/prison/security/monitoring/protective)
 "cls" = (
@@ -30158,10 +29794,7 @@
 /turf/open/floor/prison/darkred2,
 /area/prison/security/checkpoint/highsec_medsec)
 "cnn" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/darkred2,
 /area/prison/security/checkpoint/highsec_medsec)
 "cnp" = (
@@ -31159,10 +30792,7 @@
 /turf/open/floor/prison/yellow,
 /area/prison/cellblock/mediumsec/west)
 "crv" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/prison/yellow,
 /area/prison/cellblock/mediumsec/west)
 "crw" = (
@@ -31942,11 +31572,7 @@
 /turf/open/floor/prison/darkred2/west,
 /area/prison/security/monitoring/medsec/central)
 "cuF" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/darkred2/east,
 /area/prison/security/monitoring/medsec/central)
 "cuI" = (
@@ -32729,11 +32355,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/south)
 "cyc" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/yellow/north,
 /area/prison/cellblock/mediumsec/south)
 "cyd" = (
@@ -33086,11 +32708,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkred2/southwest,
 /area/prison/security/monitoring/medsec/south)
 "czK" = (
@@ -33259,11 +32877,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research/RD)
 "cYR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/green/northeast,
 /area/prison/security/monitoring/lowsec/ne)
 "cZY" = (
@@ -34286,6 +33900,10 @@
 	},
 /turf/open/floor/prison/greenfull/northwest,
 /area/prison/monorail/west)
+"hmA" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/prison/cellblock/mediumsec/east)
 "hmQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
@@ -34312,11 +33930,7 @@
 /area/prison/quarters/research)
 "hoY" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
 "hpd" = (
@@ -35093,11 +34707,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/north)
 "kdm" = (
@@ -35334,11 +34944,7 @@
 /area/prison/quarters/research)
 "lfT" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/red/north,
 /area/prison/recreation/highsec/s)
 "liM" = (
@@ -35819,11 +35425,7 @@
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding2"
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "ndW" = (
@@ -35931,11 +35533,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "nIx" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/se)
 "nIV" = (
@@ -36961,11 +36559,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/south)
 "saD" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/delivery,
 /area/prison/telecomms)
 "sdq" = (
@@ -37411,13 +37005,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison/red/east,
 /area/prison/cellblock/highsec/north/north)
-"tXB" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
-/turf/open/floor/plating,
-/area/prison/cellblock/mediumsec/east)
 "uaB" = (
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -37573,11 +37160,7 @@
 /turf/open/floor/prison/green/west,
 /area/prison/monorail/west)
 "uKd" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/canteen)
 "uKU" = (
@@ -69649,8 +69232,8 @@ cpU
 coM
 cqd
 cpU
+hmA
 cpY
-tXB
 chi
 cip
 cju

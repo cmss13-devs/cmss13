@@ -1,7 +1,10 @@
+#define WAIT_SSPERFLOGGING_READY while(!SSperf_logging.round) {stoplag();}
+
 SUBSYSTEM_DEF(perf_logging)
 	name = "Perf Logging"
 	wait = 60 SECONDS
-	flags = SS_NO_INIT | SS_KEEP_TIMING
+	init_order = SS_INIT_PREF_LOGGING
+	flags = SS_KEEP_TIMING
 	priority = SS_PRIORITY_PERFLOGGING
 	var/datum/entity/mc_round/round
 	var/list/datum/entity/mc_controller/controller_assoc = list()
@@ -9,14 +12,11 @@ SUBSYSTEM_DEF(perf_logging)
 	var/ord = 0 // Amount of measurements
 	var/tcost = 0 // Total cost for current tick
 
+/datum/controller/subsystem/perf_logging/Initialize(timeofday)
+	start_logging()
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/perf_logging/fire(resumed = FALSE)
-	if(SSticker?.current_state < GAME_STATE_PLAYING)
-		return // Not started yet
-	if(!SSentity_manager?.ready)
-		return // DB not ready
-	if(!round) // Init
-		start_logging()
-		return
 	if(!resumed)
 		ord++
 		tcost = 0
@@ -26,8 +26,8 @@ SUBSYSTEM_DEF(perf_logging)
 			if(SS?.cost > 0.1)
 				currentrun += SS
 
-	while(length(currentrun))
-		var/datum/controller/subsystem/SS = currentrun[length(currentrun)]
+	while(currentrun.len)
+		var/datum/controller/subsystem/SS = currentrun[currentrun.len]
 		currentrun.len--
 		var/datum/entity/mc_controller/C = controller_assoc[SS.type]
 		new_record(SS, C)
@@ -39,15 +39,18 @@ SUBSYSTEM_DEF(perf_logging)
 /// Setup to begin performance logging when game starts
 /datum/controller/subsystem/perf_logging/proc/start_logging()
 	SHOULD_NOT_SLEEP(TRUE)
-	var/datum/map_config/ground = SSmapping.configs[GROUND_MAP]
-	if(!ground) return
+	var/datum/map_config/ground = SSmapping.configs?[GROUND_MAP]
+	if(!ground)
+		return
 	ord = 0
 	round = SSentity_manager.round
 	round.map_name = ground.map_name
+	round.save()
 	var/datum/entity/mc_controller/C
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
 		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
-		if(!C) continue
+		if(!C)
+			continue
 		C.wait_time = SS.wait
 		C.save()
 		controller_assoc[SS.type] = C

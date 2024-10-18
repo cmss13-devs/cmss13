@@ -147,7 +147,7 @@
 		for(var/stat_name in final_participants)
 			final_participants_list += list(list("name" = stat_name, "value" = final_participants[stat_name]))
 
-	for(var/datum/view_record/statistic_death/statistic_death as anything in death_stats_list)
+	for(var/datum/entity/statistic_death/statistic_death as anything in death_stats_list)
 		if(length(last_deaths_list) >= STATISTICS_DEATH_LIST_LEN)
 			break
 		var/list/damage_list = list()

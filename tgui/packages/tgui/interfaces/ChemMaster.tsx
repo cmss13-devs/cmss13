@@ -325,7 +325,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
       {!is_condiment ? (
         <Stack>
           <Stack.Item>
-            {is_pillmaker && (
+            {!!is_pillmaker && (
               <Stack>
                 <Button
                   lineHeight={'35px'}

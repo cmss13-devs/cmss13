@@ -10,9 +10,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	has_sensor = UNIFORM_NO_SENSORS
 	displays_id = 0
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
 	)
 
 //JASON
@@ -148,6 +149,12 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 	anti_hug = 100
 
+/obj/item/clothing/suit/armor/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
 /obj/item/clothing/suit/armor/gimmick/robocop
 	name = "polished metal armor"
 	desc = "Clean and well maintained, unlike the ugly streets of Detroit. Constructed from titanium and laminated with kevlar."
@@ -185,17 +192,3 @@
 	name = "black glove"
 	desc = "Something to cover up that artificial hand... Who says heroes can't be self-conscious?"
 	icon_state = "skywalker_gloves"
-
-
-
-/obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "captain's suit"
-	desc = "A green suit and yellow necktie. Exemplifies authority."
-	icon_state = "green_suit"
-	item_state = "dg_suit"
-
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
-	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
-	icon_state = "teal_suit"
-	item_state = "g_suit"

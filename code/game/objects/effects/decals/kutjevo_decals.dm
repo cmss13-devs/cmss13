@@ -1,5 +1,4 @@
 /obj/effect/decal/kutjevo_decals
-	icon = 'icons/effects/kutjevo_decals.dmi'
 	layer = TURF_LAYER
 
 /obj/effect/decal/kutjevo_decals/catwalk

@@ -212,7 +212,7 @@
 
 /obj/item/packageWrap
 	name = "package wrapper"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
 	var/amount = 50

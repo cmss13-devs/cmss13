@@ -17,7 +17,7 @@
 /obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 	pickup_sound = 'sound/handling/wrench_pickup.ogg'
 	drop_sound = 'sound/handling/wrench_drop.ogg'
@@ -38,7 +38,7 @@
 /obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "screwdriver"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
@@ -119,7 +119,7 @@
 	name = "wirecutters"
 	gender = PLURAL
 	desc = "This cuts wires."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
@@ -159,7 +159,7 @@
  */
 /obj/item/tool/weldingtool
 	name = "blowtorch"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
@@ -460,7 +460,7 @@
 /obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "Used to remove floors and to pry open doors."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "crowbar"
 	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
@@ -478,7 +478,7 @@
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
@@ -671,7 +671,7 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

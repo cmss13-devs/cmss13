@@ -33,11 +33,10 @@
 /obj/item/clothing/suit/storage/marine
 	name = "\improper M3 pattern marine armor"
 	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "1"
 	item_state = "marine_armor" //Make unique states for Officer & Intel armors.
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
 	)
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = BLOCKSHARPOBJ
@@ -102,7 +101,7 @@
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 	/// The dmi where the grayscale squad overlays are contained
-	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
+	var/squad_overlay_icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 
 	var/atom/movable/marine_light/light_holder
 
@@ -141,14 +140,32 @@
 	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-on")
 		else
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-off")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-off")
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null
 	if(user) user.update_inv_wear_suit()
 
+/obj/item/clothing/suit/storage/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
 
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	if(!armor_variation)

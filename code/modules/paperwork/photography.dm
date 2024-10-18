@@ -11,7 +11,7 @@
 *******/
 /obj/item/device/camera_film
 	name = "film cartridge"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A camera film cartridge. Insert it into a camera to reload it."
 	icon_state = "film"
 	item_state = "electropack"
@@ -27,8 +27,8 @@
 ********/
 /obj/item/photo
 	name = "photo"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	item_state = "paper"
 	w_class = SIZE_TINY
 	var/icon/img //Big photo image
@@ -86,7 +86,7 @@
 **************/
 /obj/item/storage/photo_album
 	name = "Photo album"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "album"
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo,)
@@ -121,13 +121,13 @@
 *********/
 /obj/item/device/camera
 	name = "camera"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "camera"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
 		)
 	flags_item = TWOHANDED
 	w_class = SIZE_SMALL
@@ -313,7 +313,7 @@
 
 	var/icon/small_img = icon(photoimage)
 	var/icon/tiny_img = icon(photoimage)
-	var/icon/item_icon = icon('icons/obj/items/items.dmi',"photo")
+	var/icon/item_icon = icon('icons/obj/items/paper.dmi',"photo_item")
 	var/icon/paper_icon = icon('icons/obj/items/paper.dmi', "photo")
 	small_img.Scale(8, 8)
 	tiny_img.Scale(4, 4)

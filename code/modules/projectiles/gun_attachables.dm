@@ -371,7 +371,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/co2_cartridge //where tf else am I gonna put this?
 	name = "\improper CO2 cartridge"
 	desc = "A cartridge of compressed CO2 for the M8 cartridge bayonet. Do not consume or puncture."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "co2_cartridge"
 	item_state = ""
 	w_class = SIZE_TINY

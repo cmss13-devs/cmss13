@@ -1,6 +1,5 @@
 /obj/item
 	name = "item"
-	icon = 'icons/obj/items/items.dmi'
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	layer = ITEM_LAYER
 	light_system = MOVABLE_LIGHT
@@ -169,6 +168,9 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
+	/// PLACEHOLDER
+	var/list/garb_icon
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -254,18 +256,40 @@ cases. Override_icon_state should be a list.*/
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-			item_state = new_item_state ? new_item_state : "s_" + item_state
-		if("desert")
-			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-			item_state = new_item_state ? new_item_state : "d_" + item_state
-		if("classic")
-			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-			item_state = new_item_state ? new_item_state : "c_" + item_state
 	if(new_protection)
 		min_cold_protection_temperature = new_protection
+
+	if(flags_atom & MAP_COLOR_INDEX)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("snow")
+				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+				item_state = new_item_state ? new_item_state : "s_" + item_state
+			if("desert")
+				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+				item_state = new_item_state ? new_item_state : "d_" + item_state
+			if("classic")
+				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+				item_state = new_item_state ? new_item_state : "c_" + item_state
+			if("urban")
+				icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+				item_state = new_item_state ? new_item_state : "u_" + item_state
+	else
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+			if("snow")
+				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+			if("desert")
+				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+			if("classic")
+				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+			if("urban")
+				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/get_examine_text(mob/user)
 	. = list()

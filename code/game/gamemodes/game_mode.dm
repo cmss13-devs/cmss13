@@ -162,16 +162,18 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/list/winners_info = get_winners_states()
 
 	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.round_result = round_finished
-		if(!length(GLOB.round_statistics.current_map.victories))
-			GLOB.round_statistics.current_map.victories = list()
-		GLOB.round_statistics.current_map.victories[round_finished]++
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+		var/datum/entity/statistic_round/round = GLOB.round_statistics
+		round.game_mode = name
+		round.round_length = world.time
+		round.round_result = round_finished
+		if(!length(round.current_map.victories))
+			round.current_map.victories = list()
+		round.current_map.victories[round_finished]++
+		round.current_map.save()
+		round.end_round_player_population = length(GLOB.clients)
 
-		GLOB.round_statistics.log_round_statistics()
-		GLOB.round_statistics.track_round_end()
+		round.log_round_statistics()
+		round.track_round_end()
 
 	calculate_end_statistics()
 	show_end_statistics(winners_info[1])

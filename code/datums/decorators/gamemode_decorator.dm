@@ -9,7 +9,7 @@
 #define ARMOR_EDIT(variable, value) VARIABLE_EDIT(/obj/item/clothing/suit/storage/marine, variable, value)
 #define GUN_EDIT(variable, value) VARIABLE_EDIT(/obj/item/weapon/gun, variable, value)
 #define AMMO_EDIT(variable, value) VARIABLE_EDIT(/obj/item/ammo_magazine, variable, value)
-
+#define BULLET_EDIT(variable, value) VARIABLE_EDIT(/datum/ammo, variable, value)
 /**
  * Gamemode decorators allow us to make changes to edits on specific gamemodes,
  * to assist in balancing varied gameplay in different modes
@@ -117,6 +117,14 @@ GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M35, /datum/game_mode/
 	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
 	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
 	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+GAMEMODE_DECORATOR(/datum/ammo, /datum/game_mode/extended/faction_clash, list(
+	BULLET_EDIT(max_range, 4)
+))
+
+GAMEMODE_DECORATOR(/datum/ammo/bullet/rifle, /datum/game_mode/extended/faction_clash, list(
+	BULLET_EDIT(max_range, 4)
 ))
 
 //*********************** ------------------ ***********************//

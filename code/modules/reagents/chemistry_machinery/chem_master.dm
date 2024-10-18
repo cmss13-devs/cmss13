@@ -209,6 +209,7 @@
 			var/picked_color = params["color"]
 			if(picked_color && (picked_color in loaded_pill_bottle.possible_colors))
 				loaded_pill_bottle.icon_state = loaded_pill_bottle.base_icon + loaded_pill_bottle.possible_colors[picked_color]
+				return
 
 			loaded_pill_bottle.choose_color(user)
 

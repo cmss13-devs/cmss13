@@ -266,14 +266,12 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
                 </Button.Input>
               </Stack.Item>
               <Stack.Item>
-                <Button onClick={() => setPicker(true)}>
+                <Button onClick={() => setPicker(true)} height="1.75rem">
                   <DmIcon
+                    mt={-1.5}
                     icon={color_pill.icon}
                     icon_state={pill_bottle.icon_state}
-                    height="32px"
-                    width="32px"
                   />
-                  Color
                 </Button>
               </Stack.Item>
             </Stack>

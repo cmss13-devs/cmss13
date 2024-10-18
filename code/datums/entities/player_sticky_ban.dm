@@ -198,7 +198,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"player_ckey" = DB_FIELDTYPE_STRING_LARGE,
-		"ckey" = DB_FIELDTYPE_STRING_LARGE
+		"ckey" = DB_FIELDTYPE_STRING_LARGE,
 	)
 
 /datum/view_record/known_alt

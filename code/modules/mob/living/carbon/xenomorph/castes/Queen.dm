@@ -442,6 +442,9 @@
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
+	if(is_dead())
+		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+		return
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
 			continue

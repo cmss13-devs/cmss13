@@ -175,7 +175,7 @@
 		PROPERTY_FOCUSING = 6,
 		PROPERTY_CURING = 4,
 	)
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"

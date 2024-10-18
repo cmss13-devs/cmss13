@@ -12,9 +12,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	var/round_status_flags
-
-	var/research_allocation_interval = 10 MINUTES
-	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
@@ -123,7 +120,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
-
+	GLOB.chemical_data.reroll_chemicals()
 	return ..()
 
 /datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
@@ -281,9 +278,8 @@
 		check_hijack_explosions()
 		check_ground_humans()
 
-	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+	if(GLOB.chemical_data.next_reroll < world.time)
+		GLOB.chemical_data.reroll_chemicals()
 
 	if(!round_finished)
 		var/datum/hive_status/hive

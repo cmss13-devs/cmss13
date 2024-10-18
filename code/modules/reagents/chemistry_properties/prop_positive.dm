@@ -74,7 +74,7 @@
 	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/repairing/process(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
@@ -514,7 +514,7 @@
 	code = "OGS"
 	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
 	rarity = PROPERTY_DISABLED
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -550,7 +550,7 @@
 	description = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 3
+	value = 2
 	cost_penalty = FALSE
 	COOLDOWN_DECLARE(ghost_notif)
 
@@ -640,7 +640,7 @@
 	description = "Protects the brain from neurological damage caused by toxins."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
-	value = 3
+	value = 2
 	max_level = 1
 
 /datum/chem_property/positive/neuroshielding/process(mob/living/M, potency = 1, delta_time)
@@ -1000,22 +1000,7 @@
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
-/datum/chem_property/positive/regulating
-	name = PROPERTY_REGULATING
-	code = "REG"
-	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
-	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
-	value = 1
 
-/datum/chem_property/positive/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
-/datum/chem_property/positive/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
 
 /datum/chem_property/positive/firepenetrating
 	name = PROPERTY_FIRE_PENETRATING
@@ -1023,7 +1008,7 @@
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 8
+	value = 6
 	max_level = 1
 
 /datum/chem_property/positive/firepenetrating/reset_reagent()

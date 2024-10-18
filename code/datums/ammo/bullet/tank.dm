@@ -91,6 +91,5 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 1
 
-/datum/ammo/bullet/tank/setup_hvh_values()
-	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		damage = 15
+/datum/ammo/bullet/tank/setup_faction_clash_values()
+	damage = 15

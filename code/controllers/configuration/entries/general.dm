@@ -674,3 +674,38 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/repo_name
 
 /datum/config_entry/string/org
+
+/datum/config_entry/string/ipintel_base
+	config_entry_value = "check.getipintel.net"
+
+/datum/config_entry/string/ipintel_email
+
+/datum/config_entry/string/ipintel_email/ValidateAndSet(str_val)
+	return str_val != "ch@nge.me" && (!length(str_val) || findtext(str_val, "@")) && ..()
+
+/datum/config_entry/number/ipintel_rating_bad
+	config_entry_value = 1
+	integer = FALSE
+	min_val = 0
+	max_val = 1
+
+/datum/config_entry/flag/ipintel_reject_rate_limited
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipintel_reject_bad
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipintel_reject_unknown
+	config_entry_value = FALSE
+
+/datum/config_entry/number/ipintel_rate_minute
+	config_entry_value = 15
+	min_val = 0
+
+/datum/config_entry/number/ipintel_cache_length
+	config_entry_value = 7
+	min_val = 0
+
+/datum/config_entry/number/ipintel_exempt_playtime_living
+	config_entry_value = 5
+	min_val = 0

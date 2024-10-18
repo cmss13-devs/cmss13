@@ -904,19 +904,22 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
-/datum/chem_property/positive/cardiostabilizing/on_delete(mob/living/M)
+/datum/chem_property/positive/cardiostabilizing/on_delete(mob/living/liverino)
 	..()
 
-	M.pain.reset_pain_reduction()
+	liverino.pain.reset_pain_reduction()
 
-/datum/chem_property/positive/cardiostabilizing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/positive/cardiostabilizing/process(mob/living/liverino, potency = 1, delta_time)
 	if(!..())
 		return
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	liverino.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 
-	if(M.losebreath >= 10)
-		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)
+	if(liverino.losebreath >= 10)
+		liverino.losebreath = max(10, liverino.losebreath - 2.5 * potency * delta_time)
+
+	if(liverino.stat == UNCONSCIOUS && liverino.health < 0)
+		liverino.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, potency * POTENCY_MULTIPLIER_LOW)
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm

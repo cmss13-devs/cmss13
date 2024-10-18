@@ -33,7 +33,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 
 /datum/entity/statistic_death/Destroy()
 	if(GLOB.round_statistics)
-		GLOB.round_statistics.death_stats_list -= new_death
+		GLOB.round_statistics.death_stats_list -= src
 
 	. = ..()
 

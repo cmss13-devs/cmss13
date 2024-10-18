@@ -23,12 +23,14 @@
 	name = "heavy revolver bullet"
 
 	damage = 35
+	accurate_range = 4
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
-	slowdown(entity, bullet)
-	pushback(entity, bullet, 4)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/projectile/p)
+	if(p.distance_travelled > accurate_range)
+		return
+	shake_camera(M, 8, 5)
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"

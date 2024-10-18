@@ -71,6 +71,9 @@
 
 	message = trim(strip_html(message))
 
+	if(!filter_message(src, message))
+		return
+
 	if(stat == DEAD)
 		return say_dead(message)
 
@@ -87,6 +90,10 @@
 		to_chat(src, SPAN_WARNING(fail_message))
 		return
 	message = parsed["message"]
+
+	if(!filter_message(src, message))
+		return
+
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()

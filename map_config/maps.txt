@@ -51,7 +51,6 @@ map sorokyne_strata
 endmap
 
 map lv522_chances_claim
-	minplayers 40
 endmap
 
 map new_varadero

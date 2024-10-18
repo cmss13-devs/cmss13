@@ -94,7 +94,7 @@
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	toggleable = TRUE
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
+	actions_types = list(/datum/action/item_action/toggle)
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
 	req_skill = SKILL_SPEC_WEAPONS
@@ -203,6 +203,7 @@
 	name = "\improper M56T head mounted sight"
 	desc = "A headset and goggles system for the M56T 'Terminator' Smartgun. Has a low-light vision processor as well as a system allowing detection of thermal signatures though solid surfaces."
 	vision_flags = SEE_TURFS|SEE_MOBS
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"

@@ -1269,7 +1269,7 @@ and you're good to go.
 			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
 			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return TRUE

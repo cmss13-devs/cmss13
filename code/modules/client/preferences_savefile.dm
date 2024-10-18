@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 25
+#define SAVEFILE_VERSION_MAX 28
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -152,6 +152,34 @@
 		S["nanotrasen_relation"] >> relation
 		S["weyland_yutani_relation"] << relation
 
+	if(savefile_version < 26)
+		// Removes TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) and replaces it with a new pref
+		var/toggle_prefs = 0
+		S["toggle_prefs"] >> toggle_prefs
+		if(toggle_prefs & (1<<2))
+			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_MIDDLE
+		else
+			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
+
+	if(savefile_version < 27)
+		// Gives staff afk protection by default.
+		S["toggles_admin"] << TOGGLES_ADMIN_DEFAULT
+		// Updates default chat settings to enable FF logs for new staff.
+		var/chat_settings = 0
+		S["toggles_chat"] >> chat_settings
+		chat_settings &= ~CHAT_ATTACKLOGS
+		chat_settings |= CHAT_FFATTACKLOGS
+		S["toggles_chat"] << chat_settings
+
+	if(savefile_version < 28)
+		var/tutorial_string = ""
+		S["completed_tutorials"] >> tutorial_string
+		tutorial_savestring_to_list(tutorial_string)
+		if("requisitions_line" in completed_tutorials)
+			completed_tutorials -= "requisitions_line"
+			completed_tutorials += "marine_req_1"
+		S["completed_tutorials"] << tutorial_list_to_savestring()
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -201,6 +229,7 @@
 	//RUCM END
 	S["toggles_sound"] >> toggles_sound
 	S["toggle_prefs"] >> toggle_prefs
+	S["xeno_ability_click_mode"] >> xeno_ability_click_mode
 	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
@@ -230,6 +259,7 @@
 	//RUCM END
 	S["xeno_name_ban"] >> xeno_name_ban
 	S["playtime_perks"] >> playtime_perks
+	S["show_queen_name"] >> show_queen_name
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
@@ -280,6 +310,10 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	var/tutorial_string = ""
+	S["completed_tutorials"] >> tutorial_string
+	tutorial_savestring_to_list(tutorial_string)
+
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
@@ -296,6 +330,7 @@
 	toggles_langchat = sanitize_integer(toggles_langchat, 0, SHORT_REAL_LIMIT, initial(toggles_langchat))
 	toggles_sound = sanitize_integer(toggles_sound, 0, SHORT_REAL_LIMIT, initial(toggles_sound))
 	toggle_prefs = sanitize_integer(toggle_prefs, 0, SHORT_REAL_LIMIT, initial(toggle_prefs))
+	xeno_ability_click_mode = sanitize_integer(xeno_ability_click_mode, 1, XENO_ABILITY_CLICK_MAX, initial(xeno_ability_click_mode))
 	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
@@ -311,6 +346,7 @@
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
+	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
@@ -388,7 +424,7 @@
 		owner.typing_indicators = TRUE
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	return 1
 
@@ -426,6 +462,7 @@
 	//RUCM END
 	S["toggles_sound"] << toggles_sound
 	S["toggle_prefs"] << toggle_prefs
+	S["xeno_ability_click_mode"] << xeno_ability_click_mode
 	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
@@ -447,6 +484,7 @@
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
 	S["playtime_perks"] << playtime_perks
+	S["show_queen_name"] << show_queen_name
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
@@ -497,6 +535,8 @@
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
+
+	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return TRUE
 
@@ -589,10 +629,6 @@
 
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"] >> exploit_record
-
-	var/tutorial_string = ""
-	S["completed_tutorials"] >> tutorial_string
-	tutorial_savestring_to_list(tutorial_string)
 
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
@@ -751,8 +787,6 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
-
-	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return 1
 

@@ -416,6 +416,7 @@
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
+	AUTOWIKI_SKIP(FALSE)
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/Initialize()
@@ -445,6 +446,8 @@
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
+			continue
 		if(xeno.hivenumber == hivenumber)
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
@@ -483,6 +486,10 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+		if(client?.prefs?.show_queen_name)
+			name += " (" + replacetext((name_client_prefix + name_client_postfix), "-","") + ")"
+
+
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = hive.color
 

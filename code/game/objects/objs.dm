@@ -1,8 +1,6 @@
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter
-	/// determines whether or not the object can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/health = null
 	/// Used by SOME devices to determine how reliable they are.
 	var/reliability = 100

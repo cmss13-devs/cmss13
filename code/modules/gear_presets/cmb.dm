@@ -51,7 +51,6 @@
 		var/obj/item/clothing/under/uniform = new_human.w_uniform
 		if(istype(uniform))
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
-			uniform.sensor_faction = FACTION_MARINE
 	return ..()
 
 //*****************************************************************************************************/
@@ -409,10 +408,6 @@
 	name = "USCM Anchorpoint Station Squad Marine"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/cmb/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_UA)
-
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
@@ -420,6 +415,10 @@
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+
+/datum/equipment_preset/uscm/cmb/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UA)
 
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/new_human)
 	. = ..()

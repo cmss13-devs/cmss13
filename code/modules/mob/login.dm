@@ -59,6 +59,7 @@
 			CB.Invoke()
 
 	client.init_verbs()
+	client.set_right_click_menu_mode(shift_only = FALSE)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)

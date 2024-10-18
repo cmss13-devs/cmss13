@@ -234,6 +234,7 @@
  * Arguments:
  * * hive - The hive we're filling a slot for to check if the player is banished
  * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ * * abomination - Whether the potential larva is for an abomination
  */
 /proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE, abomination = FALSE)
 	var/list/candidates = list()
@@ -282,7 +283,7 @@
 				continue
 
 		if(abomination)
-			if(!(/datum/tutorial/xenomorph/abomination::tutorial_id in cur_obs.client.prefs.completed_tutorials))
+			if(!IS_TUTORIAL_COMPLETED(cur_obs, "xeno_abom_1"))
 				to_chat(cur_obs, SPAN_BOLDNOTICE("You were passed over for playing as an Abomination because you have not completed its tutorial."))
 				continue
 

@@ -204,6 +204,7 @@
 /obj/item/reagent_container/food/snacks/mre_pack
 	name = "\improper generic MRE pack"
 	//trash = /obj/item/trash/USCMtray
+	icon = 'icons/obj/items/food/trays.dmi'
 	trash = null
 	w_class = SIZE_SMALL
 

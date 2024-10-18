@@ -3,6 +3,7 @@
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
 	icon_state = "defib"
 	item_state = "defib"
+	icon = 'icons/obj/items/experimental_tools.dmi'
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
@@ -23,6 +24,7 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
+	var/base_icon_state = "defib" //used for overlays of charge
 
 /mob/living/carbon/human/proc/check_tod()
 	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
@@ -52,15 +54,15 @@
 	if(dcell && dcell.charge)
 		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
-				overlays += "+full"
+				overlays += "+[base_icon_state]full"
 			if(34 to 66)
-				overlays += "+half"
+				overlays += "+[base_icon_state]half"
 			if(3 to 33)
-				overlays += "+low"
+				overlays += "+[base_icon_state]low"
 			if(0 to 3)
-				overlays += "+empty"
+				overlays += "+[base_icon_state]empty"
 	else
-		overlays += "+empty"
+		overlays += "+[base_icon_state]empty"
 
 /obj/item/device/defibrillator/get_examine_text(mob/user)
 	. = ..()
@@ -253,6 +255,7 @@
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_MEDIUM
 	blocked_by_suit = FALSE
 	min_heart_damage_dealt = 0
@@ -266,5 +269,6 @@
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99

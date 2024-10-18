@@ -276,7 +276,8 @@
 
 	if(user.action_busy)
 		return
-	if(GLOB.master_mode == "Faction Clash UPP CM")
+
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_INDESTRUCTIBLE_SPLINTS))
 		indestructible_splints = TRUE
 
 	if(ishuman(M))

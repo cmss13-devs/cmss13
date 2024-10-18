@@ -9,7 +9,7 @@
 	wield_delay = WIELD_DELAY_SLOW
 
 	var/has_aimed_shot = TRUE
-	var/aiming_time = 1.25 SECONDS
+	var/aiming_time = 1.5 SECONDS
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
@@ -29,7 +29,7 @@
 	. = ..()
 	if(!has_aimed_shot)
 		return
-	. += SPAN_NOTICE("This weapon has a special ability, Aimed Shot, allowing it to deal increased damage and inflict additional crippling effects after a windup, depending on the ammunition used.<br><b> Additionally, the aimed shot can be sped up with a spotter or by using the tracking laser, which is enabled by default but may be disabled.</b>")
+	. += SPAN_NOTICE("This weapon has a special ability, Aimed Shot, allowing it to deal increased damage and inflict additional crippling effects after a windup, depending on the ammunition used.<br><b> Additionally, the aimed shot can be sped up by using the tracking laser, which is enabled by default but may be disabled.</b>")
 
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
@@ -113,10 +113,6 @@
 		aim_multiplier = 0.6
 		aiming_buffs++
 
-	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
-		aim_multiplier = 0.5
-		aiming_buffs++
-
 	if(aiming_buffs > 1)
 		aim_multiplier = 0.35
 
@@ -126,11 +122,7 @@
 	var/lockon
 
 	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
-		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
-		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
-			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
-		else
-			sniper_rifle.enable_aimed_shot_icon_alt = FALSE
+		sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 
 	if(sniper_rifle.enable_aimed_shot_icon_alt)
 		beam = sniper_rifle.sniper_beam_icon_max
@@ -370,8 +362,6 @@
 	explo_proof = TRUE
 	aiming_time = 2 SECONDS
 	aimed_shot_cooldown_delay = 4.5 SECONDS
-	var/focused_fire_counter = 0
-	var/datum/weakref/focused_fire_target = null
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga

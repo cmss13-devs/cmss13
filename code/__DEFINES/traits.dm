@@ -213,8 +213,6 @@
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
 /// If the mob cannot eat/be fed
 #define TRAIT_CANNOT_EAT "t_cannot_eat"
-/// If the mob is being lazed by a sniper spotter
-#define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
 #define TRAIT_EAR_PROTECTION "t_ear_protection"
 /// If the mob is Santa. Enough said.
@@ -355,7 +353,6 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CHARGING" = TRAIT_CHARGING,
 		"TRAIT_LEADERSHIP" = TRAIT_LEADERSHIP,
 		"TRAIT_REAGENT_SCANNER" = TRAIT_REAGENT_SCANNER,
-		"TRAIT_SPOTTER_LAZED" = TRAIT_SPOTTER_LAZED,
 		"TRAIT_EAR_PROTECTION" = TRAIT_EAR_PROTECTION,
 		"TRAIT_SANTA" = TRAIT_SANTA,
 		"TRAIT_BIMEX" = TRAIT_BIMEX,

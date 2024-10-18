@@ -42,7 +42,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_forecon(new_human), WEAR_L_EAR)
-	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
 /datum/equipment_preset/survivor/forecon/add_survivor_weapon_security(mob/living/carbon/human/new_human)
 	return

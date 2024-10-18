@@ -129,6 +129,9 @@
 	healthcheck(user = Proj.firer)
 	return 1
 
+/obj/structure/window/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_GLASS, -10, 5)
+
 /obj/structure/window/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy
 		return

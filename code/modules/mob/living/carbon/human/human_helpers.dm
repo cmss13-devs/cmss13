@@ -454,8 +454,8 @@
 		hud_used.locate_leader.alpha = 0
 		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/mob/living/carbon/human/handle_blood_splatter(splatter_dir)
-	species.handle_blood_splatter(src, splatter_dir)
+/mob/living/carbon/human/handle_blood_splatter(angle)
+	species.handle_blood_splatter(src, angle)
 
 /mob/living/carbon/human/alter_ghost(mob/dead/observer/ghost)
 	ghost.vis_contents = vis_contents

@@ -62,6 +62,12 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 		completed = check_challenge_completed()
 		regenerate_desc()
 
+/datum/battlepass_challenge/Destroy()
+	QDEL_LIST(modules)
+	client_reference = null
+
+	. = ..()
+
 /datum/battlepass_challenge/proc/generate_challenge(list/available_modules)
 	var/challenge_type_flag = pick(BATTLEPASS_HUMAN_CHALLENGE, BATTLEPASS_XENO_CHALLENGE)
 
@@ -232,6 +238,11 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 	if(opt)
 		for(var/param in opt)
 			vars[param] = opt[param]
+
+/datum/battlepass_challenge_module/Destroy()
+	challenge_ref = null
+
+	. = ..()
 
 /datum/battlepass_challenge_module/proc/generate_module()
 	return TRUE

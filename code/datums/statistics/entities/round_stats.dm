@@ -78,18 +78,24 @@
 		operation_name += " [pick(GLOB.operation_prefixes)]"
 		operation_name += "-[pick(GLOB.operation_postfixes)]"
 		// Round stats
-		var/datum/entity/statistic_round/round_statistics = DB_ENTITY(/datum/entity/statistic_round)
-		round_statistics.round_name = operation_name
-		round_statistics.map_name = SSmapping.configs[GROUND_MAP].map_name
-		var/datum/entity/statistic_map/new_map = DB_EKEY(/datum/entity/statistic_map, round_statistics.map_name)
-		round_statistics.current_map = new_map
-		round_statistics.current_map.save()
-		round_statistics.round_id = SSperf_logging.round?.id
-		round_statistics.game_mode = name
-		round_statistics.real_time_start = world.realtime
-		round_statistics.save()
-		START_PROCESSING(SSobj, round_statistics)
-		GLOB.round_statistics = round_statistics
+		var/datum/entity/statistic_round/round = DB_ENTITY(/datum/entity/statistic_round)
+		round.round_name = operation_name
+		round.map_name = SSmapping.configs[GROUND_MAP].map_name
+		var/datum/entity/statistic_map/new_map = DB_EKEY(/datum/entity/statistic_map, round.map_name)
+		round.current_map = new_map
+		round.current_map.save()
+		round.round_id = SSperf_logging.round?.id
+		round.game_mode = name
+		round.real_time_start = world.realtime
+		round.save()
+		START_PROCESSING(SSobj, round)
+		GLOB.round_statistics = round
+
+/datum/entity/statistic_round/Destroy()
+	QDEL_NULL_LIST(death_stats_list)
+	QDEL_NULL(current_map)
+
+	. = ..()
 
 /datum/entity/statistic_round/proc/setup_faction(faction)
 	if(!faction)
@@ -169,6 +175,7 @@
 	total_deaths[faction]++
 
 /datum/entity/statistic_round/proc/log_round_statistics()
+	save()
 	if(!GLOB.round_stats)
 		return
 

@@ -31,6 +31,12 @@
 
 BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 
+/datum/entity/statistic_death/Destroy()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.death_stats_list -= new_death
+
+	. = ..()
+
 /datum/entity_meta/statistic_death
 	entity_type = /datum/entity/statistic_death
 	table_name = "player_statistic_death"
@@ -216,11 +222,8 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 		else if(ishuman(src))
 			track_statistic_earned(new_death.faction_name, STATISTIC_TYPE_JOB, new_death.cause_name, ff_type ? STATISTICS_DEATH_FF : STATISTICS_DEATH, 1, player_entity)
 
-// On unit test something going horrybly wrong with testing humans for entire game, and this part exploding with errors
-#ifndef UNIT_TESTS
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.death_stats_list += new_death
-#endif
 
 	new_death.save()
 	new_death.detach()

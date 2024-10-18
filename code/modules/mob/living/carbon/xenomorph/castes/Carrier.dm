@@ -59,6 +59,7 @@
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 	organ_value = 1000
+	organ_chem_value = 3
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

@@ -44,6 +44,7 @@
 /obj/item/research_upgrades/autodoc/Initialize(mapload, value)
 	. = ..()
 	src.value = value
+	name = "AutoDoc Upgrade ([get_upgrade_name()])."
 	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [get_upgrade_text()]. Insert it in an AutoDoc to use it."
 
 /obj/item/research_upgrades/autodoc/proc/get_upgrade_text()
@@ -56,6 +57,17 @@
 			return "for treating internal organ damage"
 		if(RESEARCH_UPGRADE_TIER_4)
 			return "for extracting unknown parasites"
+
+/obj/item/research_upgrades/autodoc/proc/get_upgrade_name()
+	switch(value)
+		if(RESEARCH_UPGRADE_TIER_1)
+			return "Internal Bleeding"
+		if(RESEARCH_UPGRADE_TIER_2)
+			return "Bone Fracture"
+		if(RESEARCH_UPGRADE_TIER_3)
+			return "Organ Repair"
+		if(RESEARCH_UPGRADE_TIER_4)
+			return "Embryo Removal"
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"

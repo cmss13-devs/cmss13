@@ -14079,6 +14079,13 @@
 /obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
+"ccS" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "cdf" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
@@ -23765,15 +23772,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_aft_hallway)
-"fRS" = (
-/obj/effect/landmark/start/warden,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/landmark/late_join/warden,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cryo)
 "fSl" = (
 /obj/structure/machinery/line_nexter{
 	id = "line2";
@@ -26858,6 +26856,15 @@
 	},
 /turf/open/floor/almayer/greencorner/east,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"hiY" = (
+/obj/effect/landmark/start/warrant,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/landmark/late_join/chief_police,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cryo)
 "hji" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -38226,6 +38233,15 @@
 	},
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/living/briefing)
+"lSr" = (
+/obj/effect/landmark/start/police,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/landmark/late_join/police,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cryo)
 "lSs" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -47358,6 +47374,15 @@
 	opacity = 0
 	},
 /area/almayer/squads/req)
+"pCT" = (
+/obj/effect/landmark/start/warden,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/landmark/late_join/warden,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cryo)
 "pDh" = (
 /obj/structure/machinery/power/monitor{
 	name = "Core Power Monitoring"
@@ -53544,15 +53569,6 @@
 "sbJ" = (
 /turf/closed/wall/almayer/aicore/hull,
 /area/almayer/powered/agent)
-"sbP" = (
-/obj/effect/landmark/start/police,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
-	},
-/obj/effect/landmark/late_join/police,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cryo)
 "sbZ" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
@@ -57967,15 +57983,6 @@
 	},
 /turf/open/floor/almayer/greencorner/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"tQi" = (
-/obj/effect/landmark/start/warrant,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/landmark/late_join/chief_police,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cryo)
 "tQL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light,
@@ -63898,15 +63905,6 @@
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
-"wee" = (
-/obj/effect/landmark/start/police,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/landmark/late_join/police,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cryo)
 "wei" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -64794,10 +64792,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
-"wvo" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "wvE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
@@ -66010,6 +66004,15 @@
 /obj/item/storage/fancy/candle_box,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
+"wUq" = (
+/obj/effect/landmark/start/police,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/landmark/late_join/police,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cryo)
 "wUJ" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
@@ -66447,6 +66450,10 @@
 /obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_s)
+"xeB" = (
+/obj/structure/filingcabinet/documentation/liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "xeU" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Laundry Room";
@@ -80671,7 +80678,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+ccS
 wSm
 kAL
 xkd
@@ -82887,10 +82894,10 @@ uDg
 kac
 xkc
 vxM
-tQi
-wee
-wee
-fRS
+hiY
+wUq
+wUq
+pCT
 wJh
 iFK
 ksm
@@ -83293,10 +83300,10 @@ uDg
 lDT
 xkc
 vxM
-sbP
-sbP
-sbP
-sbP
+lSr
+lSr
+lSr
+lSr
 wJh
 oWK
 jwr
@@ -103420,7 +103427,7 @@ xIj
 xIj
 bBH
 fKh
-wvo
+xeB
 nQA
 nQA
 vEG

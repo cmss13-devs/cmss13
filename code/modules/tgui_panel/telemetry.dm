@@ -65,16 +65,9 @@
 	if (!ckey)
 		return
 
-/*
-	var/list/all_known_alts = GLOB.known_alts.load_known_alts()
-	var/list/our_known_alts = list()
-
-	for (var/known_alt in all_known_alts)
-		if (known_alt[1] == ckey)
-			our_known_alts += known_alt[2]
-		else if (known_alt[2] == ckey)
-			our_known_alts += known_alt[1]
-*/
+	var/list/known_alts = list()
+	for(var/datum/view_record/known_alt/alts in DB_VIEW(/datum/view_record/known_alt, DB_COMP("player_ckey", DB_EQUALS, ckey)))
+		known_alts += alts.ckey
 
 	var/list/found
 
@@ -98,10 +91,11 @@
 				"address" = row["address"],
 				"computer_id" = row["computer_id"],
 			))
-
-		if (row["ckey"] in our_known_alts)
-			continue
 		*/
+
+		if (row["ckey"] in known_alts)
+			continue
+
 
 		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE, is_telemetry = TRUE))
 			found = row

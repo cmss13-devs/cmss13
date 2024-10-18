@@ -74,6 +74,8 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
 	/client/proc/toggle_admin_afk_safety,
+	/client/proc/add_known_alt,
+	/client/proc/remove_known_alt
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(

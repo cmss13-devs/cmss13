@@ -271,8 +271,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!GLOB.item_storage_box_cache[isb_index])
-			var/datum/item_storage_box/box = new()
+		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
+		if(QDELETED(ISB))
+			ISB = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
 			var/matrix/M_end = matrix()
@@ -280,13 +281,12 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
 			M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
 			M_end.Translate(endpoint-stored_cap_width,0)
-			box.start.apply_transform(M_start)
-			box.continued.apply_transform(M_continue)
-			box.end.apply_transform(M_end)
-			box.index = isb_index
-			GLOB.item_storage_box_cache[isb_index] = box
+			ISB.start.apply_transform(M_start)
+			ISB.continued.apply_transform(M_continue)
+			ISB.end.apply_transform(M_end)
+			ISB.index = isb_index
+			GLOB.item_storage_box_cache[isb_index] = ISB
 
-		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
 		stored_ISB = ISB
 
 		storage_start.overlays += ISB.start
@@ -841,8 +841,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	QDEL_NULL(storage_start)
 	QDEL_NULL(storage_continue)
 	QDEL_NULL(storage_end)
-	QDEL_NULL(stored_ISB)
 	QDEL_NULL(closer)
+	stored_ISB = null
 	return ..()
 
 /obj/item/storage/emp_act(severity)

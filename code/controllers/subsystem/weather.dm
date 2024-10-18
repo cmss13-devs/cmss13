@@ -202,3 +202,6 @@ SUBSYSTEM_DEF(weather)
 /obj/effect/weather_vfx_holder/rain
 	icon_state = "strata_storm"
 	alpha = 50
+/obj/effect/weather_vfx_holder/hybrisa_rain
+	icon_state = "hybrisa_rain"
+	alpha = 50

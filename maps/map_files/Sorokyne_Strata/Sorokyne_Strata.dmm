@@ -30563,6 +30563,10 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin2)
+"pOP" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "pOW" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -30633,6 +30637,10 @@
 	},
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
+"pVp" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "pVq" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -39038,7 +39046,7 @@ cqE
 cqE
 cqE
 cqE
-cqE
+pVp
 cqE
 cqE
 cqE
@@ -45058,7 +45066,7 @@ wSb
 wSb
 bvD
 bvD
-bvD
+pOP
 bvD
 bvD
 xTU

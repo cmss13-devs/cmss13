@@ -69,10 +69,12 @@
 /area/shiva/exterior/telecomm/lz2_southeast
 	name = "Shiva's Snowball - South-East LZ2 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = TRUE
 
 /area/shiva/exterior/telecomm/lz2_northeast
 	name = "Shiva's Snowball - North-East LZ2 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = TRUE
 
 
 //telecomms areas - interior
@@ -124,6 +126,11 @@
 	name = "Shiva's Snowball - Storage Bunker Valley"
 	icon_state = "junkyard1"
 
+/area/shiva/exterior/southwest_valley
+	name = "Shiva's Snowball - Southwest Valley"
+	icon_state = "sw"
+	is_resin_allowed = FALSE
+
 /area/shiva/exterior/cp_colony_grounds
 	name = "Shiva's Snowball - Colony Grounds"
 	icon_state = "junkyard2"
@@ -147,6 +154,7 @@
 /area/shiva/exterior/cp_lz2
 	name = "Shiva's Snowball - North Colony Grounds"
 	icon_state = "junkyard3"
+	is_resin_allowed = FALSE
 
 /area/shiva/exterior/research_alley
 	name = "Shiva's Snowball - South Research Alley"
@@ -174,10 +182,12 @@
 	name = "Shiva's Snowball - South LZ2 Caves"
 	icon_state = "caves3"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/shiva/interior/caves/cp_camp
 	name = "Shiva's Snowball - Cave Camp"
 	icon_state = "bar3"
+	is_resin_allowed = FALSE
 
 /area/shiva/interior/caves/research_caves
 	name = "Shiva's Snowball - South Research Hab Caves"
@@ -227,6 +237,7 @@
 /area/shiva/interior/aerodrome
 	name = "Shiva's Snowball - Aerodrome"
 	icon_state = "hangars0"
+	is_resin_allowed = FALSE
 
 /area/shiva/interior/bar
 	name = "Shiva's Snowball - Anti-Freeze Bar"
@@ -239,6 +250,7 @@
 /area/shiva/interior/warehouse
 	name = "Shiva's Snowball - Blue Warehouse"
 	icon_state = "hangars1"
+	is_resin_allowed = FALSE
 
 /area/shiva/interior/warehouse/caves
 	name = "Shiva's Snowball - Blue Warehouse Ice Cave"
@@ -264,6 +276,7 @@
 	name = "Shiva's Snowball - Argentinian Research Headquarters"
 	icon_state = "bar1"
 	is_landing_zone = TRUE
+	is_resin_allowed = FALSE
 
 /area/shiva/interior/aux_power
 	name = "Shiva's Snowball - Auxiliary Generator Station"

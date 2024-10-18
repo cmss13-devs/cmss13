@@ -12910,7 +12910,7 @@
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/colony/west_tcomms_road)
 "haN" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -12956,7 +12956,7 @@
 /obj/item/tool/weldingtool,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_central_jungle)
+/area/lv624/ground/colony/west_tcomms_road)
 "hez" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -16517,7 +16517,7 @@
 "ose" = (
 /obj/structure/girder/displaced,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_central_jungle)
+/area/lv624/ground/colony/west_tcomms_road)
 "osf" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -18634,7 +18634,7 @@
 /obj/item/clothing/head/welding,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/secure_storage)
 "sCJ" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/warning,
@@ -19889,7 +19889,7 @@
 "uXV" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_central_jungle)
+/area/lv624/ground/colony/west_tcomms_road)
 "uXW" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood/wood_broken,
@@ -31725,7 +31725,7 @@ qIO
 qIO
 qIO
 ose
-qtj
+qIO
 ksM
 rox
 wqz

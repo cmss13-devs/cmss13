@@ -201,6 +201,7 @@
 	name = "New Varadero - Medical"
 	icon_state = "offices2"
 	minimap_color = MINIMAP_AREA_MEDBAY
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/maintenance
 	name = "New Varadero - Central Maintenance"
@@ -215,6 +216,7 @@
 	name = "New Varadero - Research Maintenance"
 	icon_state = "tunnels1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/maintenance/security
 	name = "New Varadero - Security Maintenance"
@@ -230,6 +232,7 @@
 	name = "New Varadero - Electrical Annex"
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_ENGI
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/toilets
 	name = "New Varadero - Restrooms"
@@ -264,6 +267,7 @@
 	name = "New Varadero - Basketball Court"
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/mess
 	name = "New Varadero - Mess Hall"
@@ -300,6 +304,12 @@
 /area/varadero/interior/caves/north_research
 	name = "New Varadero - North Research Caves"
 	icon_state = "tunnels4"
+	is_resin_allowed = FALSE
+
+/area/varadero/interior/caves/west_research
+	name = "New Varadero - West Research Caves"
+	icon_state = "tunnels4"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/caves/east
 	name = "New Varadero - Beach Caves"

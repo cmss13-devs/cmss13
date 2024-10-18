@@ -131,3 +131,88 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"ip",
 		"linked_stickyban",
 	)
+
+/client/proc/add_known_alt()
+	set name = "Add Known Alt"
+	set category = "Admin.Alt"
+
+	var/player_ckey = ckey(tgui_input_text(src, "What is the player's primary Ckey?", "Player Ckey"))
+	if(!player_ckey)
+		return
+
+	var/datum/entity/player/player = get_player_from_key(player_ckey)
+	if(!istype(player))
+		return
+
+	var/whitelist_to_add = ckey(tgui_input_text(src, "What is the Ckey that should be added to known alts?", "Alt Ckey"))
+	if(!whitelist_to_add)
+		return
+
+	var/datum/entity/known_alt/alt = DB_ENTITY(/datum/entity/known_alt)
+	alt.player_id = player.id
+	alt.player_ckey = player.ckey
+	alt.ckey = whitelist_to_add
+
+	alt.save()
+
+	to_chat(src, SPAN_NOTICE("[alt.ckey] added to the known alts of [player.ckey]."))
+
+/client/proc/remove_known_alt()
+	set name = "Remove Known Alt"
+	set category = "Admin.Alt"
+
+	var/player_ckey = ckey(tgui_input_text(src, "What is the player's primary Ckey?", "Player Ckey"))
+	if(!player_ckey)
+		return
+
+	var/datum/entity/player/player = get_player_from_key(player_ckey)
+	if(!istype(player))
+		return
+
+	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("player_id", DB_EQUALS, player.id))
+	if(!length(alts))
+		to_chat(src, SPAN_WARNING("User has no alts on record."))
+
+	var/options = list()
+	for(var/datum/view_record/known_alt/alt in alts)
+		options[alt.ckey] = alt.id
+
+	var/picked = tgui_input_list(src, "Which known alt should be removed?", "Alt Removal", options)
+	if(!picked)
+		return
+
+	var/picked_id = options[picked]
+	var/datum/entity/known_alt/to_delete = DB_ENTITY(/datum/entity/known_alt, picked_id)
+	to_delete.delete()
+
+	to_chat(src, SPAN_NOTICE("[picked] removed from the known alts of [player.ckey]."))
+
+/datum/entity/known_alt
+	var/player_id
+	var/player_ckey
+	var/ckey
+
+/datum/entity_meta/known_alt
+	entity_type = /datum/entity/known_alt
+	table_name = "known_alts"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
+		"player_ckey" = DB_FIELDTYPE_STRING_LARGE,
+		"ckey" = DB_FIELDTYPE_STRING_LARGE
+	)
+
+/datum/view_record/known_alt
+	var/id
+	var/player_id
+	var/player_ckey
+	var/ckey
+
+/datum/entity_view_meta/known_alt
+	root_record_type = /datum/entity/known_alt
+	destination_entity = /datum/view_record/known_alt
+	fields = list(
+		"id",
+		"player_id",
+		"player_ckey",
+		"ckey"
+	)

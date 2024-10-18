@@ -214,5 +214,5 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"id",
 		"player_id",
 		"player_ckey",
-		"ckey"
+		"ckey",
 	)

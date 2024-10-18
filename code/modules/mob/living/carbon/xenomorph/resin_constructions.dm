@@ -275,6 +275,14 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	range_between_constructions = 5
 
+/datum/resin_construction/resin_obj/acid_pillar/weave
+	name = "Fey Acid Pillar"
+	desc = "A tall Weave pillar that is capable of firing at multiple targets at once. Fires fey acid."
+
+	build_overlay_icon = /obj/effect/warning/alien
+	build_path = /obj/effect/alien/resin/acid_pillar/strong/weave
+	max_per_xeno = 2
+
 /datum/resin_construction/resin_obj/shield_dispenser
 	name = "Shield Pillar"
 	desc = "A tall, strange pillar that gives shield to the interactor. Has a hefty cooldown."

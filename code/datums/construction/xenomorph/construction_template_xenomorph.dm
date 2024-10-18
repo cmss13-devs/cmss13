@@ -65,6 +65,13 @@
 	build_type = /obj/effect/alien/resin/special/recovery
 	build_icon_state = "recovery"
 
+/datum/construction_template/xenomorph/weave_pool
+	name = XENO_STRUCTURE_WEAVE_POOL
+	description = "A pool of fey energies. Who knows what it contains."
+	build_type = /obj/effect/alien/resin/special/pylon/core/weave_pool
+	build_icon = 'icons/mob/xenonids/structures64x64.dmi'
+	build_icon_state = "weave_pool_preview"
+
 /datum/construction_template/xenomorph/nest
 	name = XENO_STRUCTURE_NEST
 	description = "Strong enough to secure a headhunter for indeterminate durations."

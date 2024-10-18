@@ -211,7 +211,10 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 
 	if(hive)
 		name_prefix = hive.prefix
-		color = hive.color
+		if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+			name_prefix = ""
+		if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+			color = hive.color
 
 	if(evolution_stored >= evolution_threshold)
 		progress = "Mature "

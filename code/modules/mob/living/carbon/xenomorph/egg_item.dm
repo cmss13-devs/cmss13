@@ -92,7 +92,7 @@
 	if(!user.hive)
 		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
 	if(!user.check_plasma(30))
 		return

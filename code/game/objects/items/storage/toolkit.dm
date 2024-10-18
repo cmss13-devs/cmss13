@@ -48,8 +48,8 @@
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/cell/high(src)
-	new /obj/item/cell/high(src)
-	new /obj/item/clothing/glasses/welding(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
 
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()

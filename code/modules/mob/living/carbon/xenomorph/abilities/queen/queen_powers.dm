@@ -274,7 +274,7 @@
 		if(!X.can_not_harm(Xa))
 			continue
 
-		if(SEND_SIGNAL(Xa, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		if(SEND_SIGNAL(Xa, COMSIG_XENO_PRE_HEAL) & (COMPONENT_CANCEL_XENO_HEAL|COMPONENT_CANCEL_EXTERNAL_XENO_HEAL))
 			if(verbose)
 				to_chat(X, SPAN_XENOMINORWARNING("You cannot heal [Xa]!"))
 			continue

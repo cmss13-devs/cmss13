@@ -6,7 +6,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 1.5 SECONDS
+	xeno_cooldown = 2 SECONDS
 	plasma_cost = 20
 
 // Scatterspit
@@ -17,7 +17,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_scattered_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 8 SECONDS
+	xeno_cooldown = 6 SECONDS
 	plasma_cost = 30
 
 // Paralyzing slash
@@ -32,3 +32,19 @@
 	plasma_cost = 50
 
 	var/buff_duration = 50
+
+/datum/action/xeno_action/activable/hibernate
+	name = "hibernate"
+	action_icon_state = "warden_heal"
+	ability_name = "hibernate"
+	macro_path = /datum/action/xeno_action/verb/verb_hibernate
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 50 SECONDS
+	plasma_cost = 150
+
+	var/regeneration_amount_total = 500
+	var/regeneration_ticks = 10
+	var/plasma_amount = 400
+	var/plasma_time = 10
+	var/time_between_plasmas = 1

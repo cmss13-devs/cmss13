@@ -161,8 +161,6 @@
 
 	if((aimed_projectile.projectile_flags & PROJECTILE_BULLSEYE) && target_mob == aimed_projectile.original)
 
-		var/datum/weakref/old_target = null // This is used to let xenos know when they're no longer targeted.
-
 		var/size_damage_mod = 0.6 // 1.6x vs Non-Xenos (200)
 		var/size_current_health_damage = 0 // % Current Health calculation, only used for Xeno calculations at the moment.
 		var/slow_duration = stopping_power // Based on damage dealt.

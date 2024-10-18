@@ -448,7 +448,7 @@
 		shield.shrapnel_amount = shield_shrapnel_amount
 		xeno.overlay_shields()
 
-	xeno.create_shield(shield_duration)
+	xeno.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)

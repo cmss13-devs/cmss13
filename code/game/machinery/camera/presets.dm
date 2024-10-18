@@ -59,6 +59,7 @@
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
+	owner_factions = FACTION_LIST_HUMANOID
 
 /obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
@@ -85,6 +86,7 @@
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
 	network = list(CAMERA_NET_ALMAYER)
+	owner_factions = FACTION_LIST_MARINE_WY
 
 /obj/structure/machinery/camera/autoname/almayer/containment
 	name = "containment camera"
@@ -97,6 +99,7 @@
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden
 	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
+	owner_factions = FACTION_LIST_WY
 
 /obj/structure/machinery/camera/autoname/almayer/containment/ares
 	name = "ares core camera"
@@ -118,6 +121,7 @@
 
 	colony_camera_mapload = FALSE
 	emp_proof = TRUE
+	owner_factions = FACTION_LIST_HUMANOID
 
 /obj/structure/machinery/camera/autoname/lz_camera/ex_act()
 	return

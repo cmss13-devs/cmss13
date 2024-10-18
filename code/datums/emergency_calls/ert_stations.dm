@@ -18,3 +18,6 @@
 
 /datum/lazy_template/ert/uscm_station
 	map_name = "uscm_ert_station"
+
+/datum/lazy_template/fax_response_base
+	map_name = "fax_responder_base"

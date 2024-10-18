@@ -204,7 +204,7 @@
 		// Base 1.6x damage to non-xeno targets (200), 1.3x + 10% current against Runners (185), 1.3x + 10% current health against most non-Runner xenos, and 1.1x + 20% current health against Big xenos. -Kaga
 		// This applies after pen reductions. After hitting 1 other thing, it deals 80% damage, or 40% after hitting a dense wall or big xeno.
 
-		if(isxeno(target_mob)) && !(target_mob.is_dead()))
+		if(isxeno(target_mob) && !(target_mob.is_dead()))
 			to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()

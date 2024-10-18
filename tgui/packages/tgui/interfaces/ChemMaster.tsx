@@ -21,6 +21,12 @@ type ChemMasterData = {
     size: number;
     max_size: number;
     label?: string;
+    icon_state: string;
+  };
+  color_pill: {
+    icon: string;
+    colors: { [key: string]: string };
+    base: string;
   };
   beaker?: {
     reagents_volume: number;
@@ -28,7 +34,7 @@ type ChemMasterData = {
   };
   buffer?: Reagent[];
   mode: boolean;
-  pill_bottle_icon: string;
+  pill_or_bottle_icon: string;
   pill_icon_choices: number;
   bottle_icon_choices: number;
   bottlesprite: number;
@@ -55,10 +61,14 @@ export const ChemMaster = () => {
     mode,
     pill_icon_choices,
     bottle_icon_choices,
-    pill_bottle_icon,
+    pill_or_bottle_icon,
   } = data;
 
-  const [picker, setPicker] = useState<'pill' | 'bottle' | false>(false);
+  const [glasswarePicker, setGlasswarePicker] = useState<
+    'pill' | 'bottle' | false
+  >(false);
+
+  const [pillPicker, setPillPicker] = useState(false);
 
   return (
     <Window width={550} height={550}>
@@ -80,7 +90,7 @@ export const ChemMaster = () => {
               </Stack>
             </Stack.Item>
             <Stack.Item>
-              <PillBottle />
+              <PillBottle setPicker={setPillPicker} />
             </Stack.Item>
             <Stack.Item>
               {beaker && !is_connected && (
@@ -125,55 +135,103 @@ export const ChemMaster = () => {
           {!buffer && <NoticeBox info>Buffer is empty.</NoticeBox>}
           {buffer?.length && <Reagents reagents={buffer} type="buffer" />}
         </Section>
-        <Glassware setPicker={setPicker} />
-        {picker && (
-          <Modal m="1rem">
-            <Stack width="17rem" wrap>
-              {Array.from(
-                {
-                  length:
-                    picker === 'pill' ? pill_icon_choices : bottle_icon_choices,
-                },
-                (_, index) => (
-                  <Stack.Item key={index} mr={1} mb={1} className="picker">
-                    <Box
-                      className="icon"
-                      onClick={() => {
-                        act(
-                          picker === 'pill' ? 'change_pill' : 'change_bottle',
-                          {
-                            picked: index + 1,
-                          },
-                        );
-                        setPicker(false);
-                      }}
-                    >
-                      <DmIcon
-                        icon={pill_bottle_icon}
-                        icon_state={
-                          picker === 'pill'
-                            ? `pill${index + 1}`
-                            : `bottle-${index + 1}`
-                        }
-                        height="32px"
-                        width="32px"
-                      />
-                    </Box>
-                  </Stack.Item>
-                ),
-              )}
-            </Stack>
-          </Modal>
+        <Glassware setPicker={setGlasswarePicker} />
+        {glasswarePicker && (
+          <GlasswarePicker
+            setPicker={setGlasswarePicker}
+            type={glasswarePicker}
+          />
         )}
+        {pillPicker && <PillPicker setPicker={setPillPicker} />}
       </Window.Content>
     </Window>
   );
 };
 
-const PillBottle = () => {
+const PillPicker = (props: { readonly setPicker: (_) => void }) => {
+  const { setPicker } = props;
+
+  const { act, data } = useBackend<ChemMasterData>();
+
+  const { color_pill } = data;
+
+  return (
+    <Modal m="1 rem">
+      <Stack width="17rem" wrap>
+        {Object.keys(color_pill.colors).map((color) => (
+          <Stack.Item key={color} mr={1} mb={1} className="picker">
+            <Box
+              className="icon"
+              onClick={() => {
+                act('color_pill', { color: color });
+                setPicker(false);
+              }}
+            >
+              <DmIcon
+                icon={color_pill.icon}
+                icon_state={`${color_pill.base}${color_pill.colors[color]}`}
+                height="32px"
+                width="32px"
+              />
+            </Box>
+          </Stack.Item>
+        ))}
+      </Stack>
+    </Modal>
+  );
+};
+
+const GlasswarePicker = (props: {
+  readonly setPicker: (_) => void;
+  readonly type: 'pill' | 'bottle';
+}) => {
+  const { act, data } = useBackend<ChemMasterData>();
+
+  const { pill_icon_choices, bottle_icon_choices, pill_or_bottle_icon } = data;
+
+  const { setPicker, type } = props;
+
+  return (
+    <Modal m="1rem">
+      <Stack width="17rem" wrap>
+        {Array.from(
+          {
+            length: type === 'pill' ? pill_icon_choices : bottle_icon_choices,
+          },
+          (_, index) => (
+            <Stack.Item key={index} mr={1} mb={1} className="picker">
+              <Box
+                className="icon"
+                onClick={() => {
+                  act(type === 'pill' ? 'change_pill' : 'change_bottle', {
+                    picked: index + 1,
+                  });
+                  setPicker(false);
+                }}
+              >
+                <DmIcon
+                  icon={pill_or_bottle_icon}
+                  icon_state={
+                    type === 'pill' ? `pill${index + 1}` : `bottle-${index + 1}`
+                  }
+                  height="32px"
+                  width="32px"
+                />
+              </Box>
+            </Stack.Item>
+          ),
+        )}
+      </Stack>
+    </Modal>
+  );
+};
+
+const PillBottle = (props: { readonly setPicker: (_) => void }) => {
   const { data, act } = useBackend<ChemMasterData>();
 
-  const { pill_bottle, is_connected } = data;
+  const { setPicker } = props;
+
+  const { pill_bottle, is_connected, color_pill } = data;
 
   const [tag, setTag] = useState('');
 
@@ -208,7 +266,13 @@ const PillBottle = () => {
                 </Button.Input>
               </Stack.Item>
               <Stack.Item>
-                <Button icon={'palette'} onClick={() => act('color_pill')}>
+                <Button onClick={() => setPicker(true)}>
+                  <DmIcon
+                    icon={color_pill.icon}
+                    icon_state={pill_bottle.icon_state}
+                    height="32px"
+                    width="32px"
+                  />
                   Color
                 </Button>
               </Stack.Item>
@@ -245,7 +309,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
   const { setPicker } = props;
 
   const {
-    pill_bottle_icon,
+    pill_or_bottle_icon,
     pillsprite,
     is_pillmaker,
     is_condiment,
@@ -274,7 +338,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                 </Button>
                 <Box className="icon" onClick={() => setPicker('pill')}>
                   <DmIcon
-                    icon={pill_bottle_icon}
+                    icon={pill_or_bottle_icon}
                     icon_state={`pill${pillsprite}`}
                     height="32px"
                     width="32px"
@@ -328,7 +392,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                 </Stack>
                 <Box className="icon" onClick={() => setPicker('bottle')}>
                   <DmIcon
-                    icon={pill_bottle_icon}
+                    icon={pill_or_bottle_icon}
                     icon_state={`bottle-${bottlesprite}`}
                     height="32px"
                     width="32px"

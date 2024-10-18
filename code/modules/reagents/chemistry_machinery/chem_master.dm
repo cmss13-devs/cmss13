@@ -118,7 +118,8 @@
 		.["pill_bottle"] = list(
 			"size" = length(loaded_pill_bottle.contents),
 			"max_size" = loaded_pill_bottle.max_storage_space,
-			"label" = label ? label.label_name : null
+			"label" = label ? label.label_name : null,
+			"icon_state" = loaded_pill_bottle.icon_state
 		)
 
 	.["beaker"] = null
@@ -149,9 +150,15 @@
 /obj/structure/machinery/chem_master/ui_static_data(mob/user)
 	. = ..()
 
-	.["pill_bottle_icon"] = "['icons/obj/items/chemistry.dmi']"
+	.["pill_or_bottle_icon"] = "['icons/obj/items/chemistry.dmi']"
 	.["pill_icon_choices"] = PILL_ICON_CHOICES
 	.["bottle_icon_choices"] = BOTTLE_ICON_CHOICES
+
+	.["color_pill"] = list(
+		"icon" = "[/obj/item/storage/pill_bottle::icon]",
+		"colors" = /obj/item/storage/pill_bottle::possible_colors,
+		"base" = /obj/item/storage/pill_bottle::base_icon
+	)
 
 	.["is_pillmaker"] = pill_maker
 	.["is_condiment"] = condi
@@ -198,6 +205,10 @@
 		if("color_pill")
 			if(!loaded_pill_bottle)
 				return
+
+			var/picked_color = params["color"]
+			if(picked_color && (picked_color in loaded_pill_bottle.possible_colors))
+				loaded_pill_bottle.icon_state = loaded_pill_bottle.base_icon + loaded_pill_bottle.possible_colors[picked_color]
 
 			loaded_pill_bottle.choose_color(user)
 

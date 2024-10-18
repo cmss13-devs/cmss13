@@ -74,7 +74,7 @@
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 2
 		M.adjust_effect(slow_duration, SUPERSLOW)
-		L.apply_armoured_damage(damage*1.25, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armoured_damage(damage*1, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
 		burst(get_turf(M),P,damage_type, 2 , 2)

@@ -3,6 +3,7 @@
 /obj/item/storage/lockbox
 	name = "lockbox"
 	desc = "A locked box."
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "lockbox+l"
 	item_state = "syringe_kit"
 	w_class = SIZE_LARGE

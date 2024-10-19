@@ -164,7 +164,7 @@
 	desc = "A debug item for research."
 
 /obj/item/moneybag
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
 	force = 10
@@ -178,7 +178,7 @@
 /obj/item/evidencebag
 	name = "evidence bag"
 	desc = "An empty evidence bag."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "evidenceobj"
 	item_state = ""
 	w_class = SIZE_SMALL

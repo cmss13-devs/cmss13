@@ -40,6 +40,11 @@
 	applyable = TRUE
 	cost = 1
 
+/datum/character_trait/language/scandinavian
+	language_name = LANGUAGE_SCANDINAVIAN
+	applyable = TRUE
+	cost = 1
+
 /datum/character_trait/language/spanish
 	language_name = LANGUAGE_SPANISH
 	applyable = TRUE

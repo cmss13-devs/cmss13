@@ -393,6 +393,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+/obj/item/clothing/accessory/patch/devils
+	name = "USCM Solar Devils patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
+	icon_state = "solardevilspatch"
+
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
@@ -833,7 +838,7 @@
 		/obj/item/storage/bible,
 		/obj/item/storage/toolkit,
 		)
-	storage_flags = NONE //no verb, no quick draw, no tile gathering
+	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"

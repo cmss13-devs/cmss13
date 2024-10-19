@@ -281,3 +281,204 @@
   dongwaiver:
   - imageadd: new m44 revolver sprites
   - imagedel: old m44 revolver sprites
+2024-08-23:
+  Blundir:
+  - imageadd: adds lineart images for almost all guns that didn't have it
+  - code_imp: missing lineart error is now a lint
+  - rscadd: HPDP strong and weak are now CCDP and WPDP, CCDP now has unique packet
+      sprite and nade sprite (no balance changes)
+  - rscadd: added combat flashlight box and also combat flashlight unique sprite,
+      tweaked desc to better convey that
+  - rscadd: added frag mortar shells to req asrs store
+  - rscadd: added qm fluff/spare items locker with some niche things
+  - rscadd: xm88 ammo packets and ammo box to req ammo vendor
+  - rscadd: added external webbings to req equipment vendor
+  - rscadd: added quartermaster beret to qm vendor
+  - rscadd: package wrapper now has more crate skins
+  - rscadd: metal foal grenade packets
+  - rscadd: req vendors now play small animation and sound, also they have small vend
+      delay to fit animation framing
+  - rscadd: added flashlight box to req vendor
+  - rscadd: m4a3 hp ammo boxes to asrs pool
+  - rscadd: HIDP, AGM-I, AGM-F grenade boxes to req vendor and asrs store
+  - rscadd: 'req clothing vendor now has different: uniforms, boots, backpacks'
+  - rscadd: megaphone use sounds and inhands icons
+  - rscadd: Added flat icon support to spritesheets for boxes, ammo boxes, and reagent
+      containers so they display their overlays in vendors
+  - qol: remade list in req clothing vendor
+  - qol: lowered chance of ingridients crate to be sent by asrs
+  - qol: qm jacket is now identical in stats and capabilities to service jacket
+  - balance: changed XM88 packets capacity from 90 to 100 (is it needed for correct
+      ammo box calculations)
+  - balance: ASRS price of  HPR holo target ammo is now the same as the normal ammo
+  - bugfix: fixed HPDP packets not being vendable by req equipment vendor
+  - bugfix: fixed HPR ASRS ammo crate having incorrect sprite
+  - bugfix: breaching slugs packets can now be refilled into req vendor
+  - refactor: nade boxes icons refactor
+  - maptweak: added some chairs, qm locker, lamp to qm's office
+  - maptweak: added paper bins and some pens to main req area
+  - maptweak: added some rack kits to req storage
+  - maptweak: fixed incorrect wall smoothing near req vendor
+  - refactor: splits storage.dmi into multiple files, also moved some icons around
+      for organization
+  - rscadd: added amr ammo to WO req vendor and to WO ammo beacons
+  Drathek:
+  - code_imp: Added missing bitfields for flags_item to VV
+  Git-Nivrak:
+  - bugfix: Fixed the premade tesla coils on Fiorina
+  - rscadd: Added another revival mix pouch option which contains Peridaxon instead
+      of Tricordrazine.
+  - config: Added config options for filtering out certain words
+  Nomoresolvalou:
+  - qol: scientist survivors that get IFF will be able to view research objectives
+  Steelpoint:
+  - rscadd: A medium sized, wall mounted, UPP flag sprite has been added to the game,
+      for mappers to use.
+  - rscadd: The UPP Logistics Technician has been added as a event role for the UPP.
+      Their intention is to assist in operating any supply depots and logistics departments
+      under the control of the UPP, they also possess engineering and construction
+      skills allowing them to assist in fortification work as required.
+  - rscadd: The UPP Political Commissar has been added as a event role for the UPP.
+      They act to ensure the political ideology of the UPP is upheld within the unit
+      they are attached to. The goals and ranking of this job are left undefined to
+      add ambiguity as to their ability to influence the UPP command structure.
+  Willzadl:
+  - qol: Changed 'View objectives' verb to 'View intel objectives'.
+  Zonespace27:
+  - bugfix: '"Retrieve Fulton" objective should now show up properly.'
+  private-tristan:
+  - rscadd: 4 new tips related to paradropping!
+  realforest2001:
+  - rscadd: Added Dropship 3 Saipan template.
+  - rscadd: Re-ordered the SEA vendor contents slightly, and changed the combat gear
+      to use combat categories.
+  - rscadd: Added Marine Law charges to the JAS for unlawful use of a Listening Device.
+  - rscadd: Makes survivor doctors now use doctor title, and security survivors now
+      use Officer title.
+  zzzmike:
+  - qol: fingerprint scanner description is more newbie-friendly
+2024-08-24:
+  BeagleGaming1:
+  - rscdel: Removes APTFT verb from reagent containers
+  - code_imp: Updated reagent container switch transfer amount and examination code
+  Blundir:
+  - imageadd: unique non placeholder CO armor sprites
+  - bugfix: s&w revolver now has belt/pouch and inhand icons
+  - imageadd: resprite of mac15, m60, ppsh, s&w revolver, basira bolt action rifle
+  - rscadd: mortar camo variants
+  - rscadd: Stompers boots and box for them
+  - rscadd: new civillian survivor preset resembling Ripley
+  - maptweak: stomper boots box on New Varadero, Solaris Ridge, Kutjevo Refinery
+  CapCamIII:
+  - rscadd: Adds a tactical HPR to VAISO and VAIPO machinegunners
+  - rscadd: Adds an HPR AP mag available to the above
+  - balance: MAR50 has normal LMG level firerate now
+  - spellcheck: HPR HEAP mag now has correct name formatting
+  Doubleumc:
+  - rscdel: Removed fancy locker
+  Git-Nivrak:
+  - qol: APCs are now emissive
+  - code_imp: Added emissive blockers to a bunch of stuff
+  ItsVyzo:
+  - rscadd: Provost Chief Inspector
+  - rscadd: missing Provost Presets per ML Hierarchy
+  - imageadd: added PCI sprites
+  - imageadd: PCI and Dep. Marshal HUD icons
+  MistChristmas:
+  - spellcheck: places smartgun after DV9 to be DV9 smartgun battery
+  Mister-moon1:
+  - balance: increased feral smash stun to 3 seconds
+  - balance: removed the possibility of "missing" a feral smash attack
+  Noname995:
+  - bugfix: Varadero, Strata, Kutjevo, Shiva maps now don't have infinity energy
+  - rscadd: Added SMES on Shiva generators points
+  Steelpoint:
+  - rscadd: In observance of the merger of the PvP and PvE servers of CM-SS13. The
+      'Solar Devils', the USCM battalion that appear in the PvE server, have been
+      added as an admin only Emergency Response Team.
+  - rscadd: The Solar Devils are highly trained and well equipped by Marine standards,
+      they will also spawn as part of their own squad.
+  - imageadd: A 'Solar Devils' uniform patch accessory has been added.
+  TheManWithNoHands:
+  - balance: IFF, scatter based on minigun rev up, rev up time increase, firing delay
+      decrease
+  - code_imp: Places minigun aMmo in the Tank ammo File
+  - soundadd: adds a hit sound for 20mm flak
+  efzapa:
+  - qol: Changes the M44 heavy speed loader description to reflect it's actual use-case.
+  kiVts:
+  - code_imp: Research datum now supports more broad ideas in the future.
+  private-tristan:
+  - qol: IOs now late join into their officer bunks instead of the general wakeup
+      area
+  - qol: Late joiners will no longer wake up in thin air in the main cryo area.
+  zzzmike:
+  - soundadd: revive notification has new sound (rather than the ahelp sound)
+2024-08-25:
+  Doubleumc:
+  - bugfix: fixed ERT boarding shuttle able to spawn and dock
+  - rscadd: Added toggle fullscreen hotkey, default F11
+  - qol: fullscreening hides the menu bar
+  - bugfix: toggling fullscreen preserves your non-fullscreened window options
+  Git-Nivrak:
+  - bugfix: Fixes not being able to see the preview in the character selection screen
+  Kitsunemitsu:
+  - balance: CMO now has access of squad comms.
+  Mister-moon1:
+  - balance: Keycard swipers no longer require two unique keycards to function.
+  - bugfix: fixed the description text for the card swipe to reduce confusion
+  TheGamerdk:
+  - rscadd: APCs are now highlighted when found via a Multitool/Security Access Tuner.
+  Unknownity:
+  - code_imp: The renegade hive is now more visually distinct from the normal hive
+      to decrease the chance of marines accidentally attacking them.
+  VileBeggar, SubjectD9341:
+  - rscadd: LV-624 now contains giant lizards. You can feed them with specific food
+      items in order to make them non-hostile to your faction.
+  - code_imp: Simple mobs can now process fire, though the functionality is turned
+      off by default.
+  realforest2001:
+  - rscadd: Added visual flavour to use of psychic whisper or radiance. It now flickers
+      in the chat window like the Yautja Translator.
+  - rscadd: Added an ability button for the human version of psychic whisper, and
+      replaces the existing verb for it in the ESP chem property.
+  zzzmike:
+  - bugfix: bursting+facehugger stats disregard NPCs
+2024-08-26:
+  Zonespace27:
+  - bugfix: Specialists cryoing now refunds their sets correctly.
+  realforest2001:
+  - admin: All staff now have Admin Announcement and Toggle Remote Control verbs.
+  - admin: Moved shuttle manipulator to minor event perms rather than admin.
+  - code_imp: Changed rights check on Toggle Remote Control and Shuttle Manipulator
+      to check for mod/minor event perms respectively, or debug.
+2024-08-28:
+  MistChristmas:
+  - spellcheck: Req vendor descs remove RO. Fix Corpsman Typo
+2024-08-29:
+  SubjectD9341:
+  - rscadd: xenos don't kill crit allies by dragging/devouring anymore
+  TheGamerdk:
+  - rscadd: CIC groundside operations console now correctly sorts FTLs and SGs
+2024-08-30:
+  FOFFLES105:
+  - bugfix: fixed issue where nightmare inserts would not spawn
+  - bugfix: moved unused nightmare inserts to "unused" folder so that they don't cause
+      errors.
+  Willzadl:
+  - qol: changed reinforced treads item description
+  cuberound:
+  - bugfix: taking apart plasteel baricade gives back 8 not 4 plasteel
+  kiVts:
+  - bugfix: ERT no longer gets one extra free member in freed mobs if the beacon wasnt
+      completely taken
+  zzzmike:
+  - bugfix: CL intro text is more clear regarding legal orders
+2024-08-31:
+  Git-Nivrak:
+  - bugfix: Fixes crates showing up pitch black while the ASRS platform is moving
+  Steelpoint:
+  - balance: If the 'Faction Clash' human versus human game mode is enabled, all marine
+      armours will have their defensive values significantly buffed to make marine
+      armour far more valuable and effective in resisting permanent damage. The average
+      Marine should experience less fractures and other permanent wounds from gunfire.

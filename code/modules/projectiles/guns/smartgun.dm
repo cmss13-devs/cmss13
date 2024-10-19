@@ -52,7 +52,7 @@
 	var/cover_open = FALSE
 
 	unacidable = 1
-	indestructible = 1
+	explo_proof = TRUE
 
 	attachable_allowed = list(
 		/obj/item/attachable/smartbarrel,
@@ -717,7 +717,7 @@
 	requires_harness = FALSE
 
 /obj/item/smartgun_battery
-	name = "smartgun DV9 battery"
+	name = "\improper DV9 smartgun battery"
 	desc = "A standard-issue 9-volt lithium dry-cell battery, most commonly used within the USCMC to power smartguns. Per the manual, one battery is good for up to 50000 rounds and plugs directly into the smartgun's power receptacle, which is only compatible with this type of battery. Various auxiliary modes usually bring the round count far lower. While this cell is incompatible with most standard electrical system, it can be charged by common rechargers in a pinch. USCMC smartgunners often guard them jealously."
 
 	icon = 'icons/obj/structures/machinery/power.dmi'

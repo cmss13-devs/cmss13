@@ -113,8 +113,12 @@
 		aim_multiplier = 0.6
 		aiming_buffs++
 
+	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
+		aim_multiplier = 0.6
+		aiming_buffs++
+
 	if(aiming_buffs > 1)
-		aim_multiplier = 0.35
+		aim_multiplier = 0.5
 
 	f_aiming_time *= aim_multiplier
 

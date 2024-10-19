@@ -359,6 +359,150 @@
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
+/obj/item/device/binoculars/range/designator/spotter
+	name = "spotter's laser designator"
+	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
+	unacidable = TRUE
+	explo_proof = TRUE
+	var/is_spotting = FALSE
+	var/spotting_time = 10 SECONDS
+	var/spotting_cooldown_delay = 5 SECONDS
+	COOLDOWN_DECLARE(spotting_cooldown)
+
+	/// The off-white band that covers the binoculars.
+	var/spotter_band = "spotter_overlay"
+
+	/// The yellow dot overlay that shows up if the binoculars are spotting.
+	var/spot_laser_overlay = "laser_spotter"
+
+/obj/item/device/binoculars/range/designator/spotter/Initialize()
+	LAZYADD(actions_types, /datum/action/item_action/specialist/spotter_target)
+	return ..()
+
+/obj/item/device/binoculars/range/designator/spotter/update_icon()
+	overlays += spotter_band
+	if(is_spotting)
+		overlays += spot_laser_overlay
+	else if(range_mode)
+		overlays += range_laser_overlay
+	else
+		overlays += cas_laser_overlay
+
+/datum/action/item_action/specialist/spotter_target
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+	var/minimum_laze_distance = 2
+
+/datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Spot Target"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "spotter_target")
+	button.overlays += IMG
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+	COOLDOWN_START(designator, spotting_cooldown, 0)
+
+/datum/action/item_action/specialist/spotter_target/action_activate()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/human = owner
+	if(human.selected_ability == src)
+		to_chat(human, "You will no longer use [name] with [human.get_ability_mouse_name()].")
+		button.icon_state = "template"
+		human.set_selected_ability(null)
+	else
+		to_chat(human, "You will now use [name] with [human.get_ability_mouse_name()].")
+		if(human.selected_ability)
+			human.selected_ability.button.icon_state = "template"
+			human.set_selected_ability(null)
+		button.icon_state = "template_on"
+		human.set_selected_ability(src)
+
+/datum/action/item_action/specialist/spotter_target/can_use_action()
+	var/mob/living/carbon/human/human = owner
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in human.traits))
+		to_chat(human, SPAN_WARNING("You have no idea how to use this!"))
+		return FALSE
+	if(istype(human) && !human.is_mob_incapacitated() && (holder_item == human.r_hand || holder_item || human.l_hand))
+		return TRUE
+
+/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targeted_atom)
+	var/mob/living/carbon/human/human = owner
+	if(!istype(targeted_atom, /mob/living))
+		return
+
+	var/mob/living/target = targeted_atom
+
+	if(target.stat == DEAD || target == human)
+		return
+
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+	if(!COOLDOWN_FINISHED(designator, spotting_cooldown))
+		return
+
+	if(!check_can_use(target))
+		return
+
+	human.face_atom(target)
+
+	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
+	var/distance = floor(get_dist(target, human) * 0.5)
+	var/f_spotting_time = designator.spotting_time + distance
+
+	designator.is_spotting = TRUE
+	designator.update_icon()
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+	I.pixel_x = -target.pixel_x + target.base_pixel_x
+	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+	target.overlays += I
+	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+	if(human.client)
+		playsound_client(human.client, 'sound/effects/nightvision.ogg', human, 50)
+	playsound(target, 'sound/effects/nightvision.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	var/datum/beam/laser_beam
+	if(human.alpha == initial(human.alpha))
+		laser_beam = target.beam(human, "laser_beam_spotter", 'icons/effects/beam.dmi', f_spotting_time + 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
+		laser_beam.visuals.alpha = 0
+		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), 1 SECONDS, easing = SINE_EASING|EASE_OUT)
+
+	//timer is a magic number because the trait is added instantly, spotting time is different from aiming time, it just ends the spot
+
+	//timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out. blame sleeps or something
+
+	if(!do_after(human, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		target.overlays -= I
+		designator.is_spotting = FALSE
+		designator.update_icon()
+		qdel(laser_beam)
+		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+		return
+
+	target.overlays -= I
+	designator.is_spotting = FALSE
+	designator.update_icon()
+	qdel(laser_beam)
+	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+
+/datum/action/item_action/specialist/spotter_target/proc/check_can_use(mob/target, cover_lose_focus)
+	var/mob/living/carbon/human/human = owner
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+
+	if(!can_use_action())
+		return FALSE
+
+	if(designator != human.r_hand && designator != human.l_hand)
+		to_chat(human, SPAN_WARNING("How do you expect to do this without your laser designator?"))
+		return FALSE
+
+	if(get_dist(human, target) < minimum_laze_distance)
+		to_chat(human, SPAN_WARNING("\The [target] is too close to laze!"))
+		return FALSE
+
+	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
+	return TRUE
+
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.

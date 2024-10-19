@@ -383,7 +383,7 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 

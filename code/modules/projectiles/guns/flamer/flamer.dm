@@ -9,10 +9,6 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m240"
 	item_state = "m240"
-	item_icons = list(
-	WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-	WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
-	)
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15

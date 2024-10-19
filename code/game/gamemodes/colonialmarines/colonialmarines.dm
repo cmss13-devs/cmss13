@@ -243,11 +243,24 @@
 		smoke.time_to_live = rand(1, 5)
 	lz_smoke.Cut()
 
+/datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	clear_proximity_resin()
+
+	var/list/announcement_mobs = list()
+	for(var/area/area in marine_dropship.shuttle_areas)
+		for(var/mob/mob in area)
+			shake_camera(mob, steps = 3, strength = 1)
+			announcement_mobs += mob
+
+	announcement_helper("Dropship [marine_dropship.name] dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
+
 /**
  * Clears any built resin in the areas around the landing zone,
  * when the dropship first deploys.
  */
-/datum/game_mode/colonialmarines/proc/clear_proximity_weeds()
+/datum/game_mode/colonialmarines/proc/clear_proximity_resin()
+	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
+
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
 		if(!area_lz)
@@ -256,11 +269,24 @@
 		if(area_lz != active_lz.linked_lz)
 			continue
 
+		for(var/turf/turf in near_area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
+			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
+
 		near_area.purge_weeds()
 
-	addtimer(CALLBACK(src, PROC_REF(allow_proximity_weeds)), near_lz_protection_delay)
+	addtimer(CALLBACK(src, PROC_REF(allow_proximity_resin)), near_lz_protection_delay)
 
-/datum/game_mode/colonialmarines/proc/allow_proximity_weeds()
+/**
+ * If the area was previously weedable, and this was disabled by the
+ * LZ proximity, re-enable the weedability
+ */
+/datum/game_mode/colonialmarines/proc/allow_proximity_resin()
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
 		if(!area_lz)
@@ -440,6 +466,8 @@
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
+	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
 

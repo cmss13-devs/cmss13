@@ -19,6 +19,11 @@
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
 
+	/**
+	 * How long, after first drop, should the resin protection in proximity to the selected LZ last
+	 */
+	var/near_lz_protection_delay = 5 MINUTES
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -237,6 +242,38 @@
 	for(var/obj/effect/particle_effect/smoke/miasma/smoke as anything in lz_smoke)
 		smoke.time_to_live = rand(1, 5)
 	lz_smoke.Cut()
+
+/**
+ * Clears any built resin in the areas around the landing zone,
+ * when the dropship first deploys.
+ */
+/datum/game_mode/colonialmarines/proc/clear_proximity_weeds()
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(area_lz != active_lz.linked_lz)
+			continue
+
+		near_area.purge_weeds()
+
+	addtimer(CALLBACK(src, PROC_REF(allow_proximity_weeds)), near_lz_protection_delay)
+
+/datum/game_mode/colonialmarines/proc/allow_proximity_weeds()
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(area_lz != active_lz.linked_lz)
+			continue
+
+		if(initial(near_area.is_resin_allowed) == FALSE)
+			continue
+
+		near_area.is_resin_allowed = TRUE
+
 
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 

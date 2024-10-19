@@ -113,6 +113,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon(new_human), WEAR_L_EAR)
+	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
 /datum/equipment_preset/uscm/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -158,6 +159,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon(new_human), WEAR_L_EAR)
+	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
 	add_forecon_weapon(new_human)
 	spawn_random_tech_headgear(new_human)
@@ -201,6 +203,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/custom(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(new_human), WEAR_IN_BACK)
+	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 	..()
 	add_forecon_weapon_pistol(new_human)
 	spawn_random_headgear(new_human)
@@ -244,6 +247,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun(new_human), WEAR_IN_BELT)
+	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 	spawn_random_headgear(new_human)
 
 /datum/equipment_preset/uscm/forecon/squad_leader
@@ -287,6 +291,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon(new_human), WEAR_L_EAR)
+	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
 
 

@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
 
-/datum/game_mode/proc/adjust_ammo_values
+/datum/game_mode/proc/adjust_ammo_values()
 	for(var/ammo in GLOB.ammo_list)
 		GLOB.ammo_list[ammo].setup_hvh_values()
 

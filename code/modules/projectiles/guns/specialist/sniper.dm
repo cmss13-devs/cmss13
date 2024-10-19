@@ -125,7 +125,7 @@
 	var/beam
 	var/lockon
 
-	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
+	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1) || istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/M42A))
 		sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 
 	if(sniper_rifle.enable_aimed_shot_icon_alt)

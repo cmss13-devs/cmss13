@@ -101,10 +101,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
-
-	for(var/ammo in GLOB.ammo_list)
-		GLOB.ammo_list[ammo].setup_hvh_values()
-
+	adjust_ammo_values()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
@@ -114,6 +111,10 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		log_game("Game mode set to [SSticker.mode] on the [SSmapping.configs[GROUND_MAP].map_name] map")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
+
+/datum/game_mode/proc/adjust_ammo_values
+	for(var/ammo in GLOB.ammo_list)
+		GLOB.ammo_list[ammo].setup_hvh_values()
 
 /datum/game_mode/proc/get_affected_zlevels()
 	if(is_in_endgame)

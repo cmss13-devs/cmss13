@@ -664,7 +664,7 @@
 		else
 			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
 
-		var/mob/shoot_mob = cause_data.resolve_mob()
+		var/mob/shoot_mob = weapon_cause_data.cause_data.resolve_mob()
 		if(shoot_mob)
 			if(shoot_mob.faction == ignited_morb.faction)
 				shoot_mob.track_friendly_damage(weapon_cause_data.cause_name, ignited_morb, firedamage)

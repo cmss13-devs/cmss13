@@ -1143,7 +1143,7 @@
 		return
 
 	if(damage)
-		var/mob/shoot_mob = P.weapon_cause_data.resolve_mob()
+		var/mob/shoot_mob = P.weapon_cause_data?.resolve_mob()
 		//only apply the blood splatter if we do damage
 		if(shoot_mob)
 			if(shoot_mob.faction == faction)

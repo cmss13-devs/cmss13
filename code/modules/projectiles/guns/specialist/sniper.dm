@@ -110,11 +110,11 @@
 	var/aiming_buffs
 
 	if(sniper_rifle.enable_aimed_shot_laser)
-		aim_multiplier = 0.6
+		aim_multiplier = 0.7
 		aiming_buffs++
 
 	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
-		aim_multiplier = 0.6
+		aim_multiplier = 0.7
 		aiming_buffs++
 
 	if(aiming_buffs > 1)

@@ -5,7 +5,7 @@
 	desc = "A small bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle-1"
-	item_state = "atoxinbottle"
+	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
 	flags_atom = FPRINT|OPENCONTAINER

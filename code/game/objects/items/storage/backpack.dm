@@ -573,8 +573,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	if(internal_transmitter.caller)
 		icon_state = "[base_icon]_ring"
+		item_state = "rto_backpack_ring"
 	else
 		icon_state = base_icon
+		item_state = "rto_backpack"
 
 /obj/item/storage/backpack/marine/satchel/rto/forceMove(atom/dest)
 	. = ..()

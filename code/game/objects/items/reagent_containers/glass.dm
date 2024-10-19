@@ -319,6 +319,7 @@
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
 	icon_state = "beakerlarge"
+	item_state = "beakerlarge"
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
@@ -328,6 +329,7 @@
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"
+	item_state = "beakersilver"
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
@@ -347,6 +349,7 @@
 	name = "high-capacity beaker"
 	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
 	icon_state = "beakerbluespace"
+	item_state = "beakerbluespace"
 	matter = list("glass" = 10000)
 	volume = 300
 	amount_per_transfer_from_this = 10
@@ -357,6 +360,7 @@
 	name = "vial"
 	desc = "A small glass vial. Can hold up to 30 units."
 	icon_state = "vial"
+	item_state = "vial"
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
@@ -636,6 +640,7 @@
 	name = "mop bucket"
 	desc = "A larger bucket, typically used with a mop. Holds 240 units"
 	icon_state = "mopbucket"
+	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
@@ -647,6 +652,7 @@
 	name = "janitorial bucket"
 	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
 	icon_state = "janibucket"
+	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 500
 

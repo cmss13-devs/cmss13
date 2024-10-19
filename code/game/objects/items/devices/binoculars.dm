@@ -4,7 +4,7 @@
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
-	item_state = ""
+	item_state = "binoculars"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -16,7 +16,6 @@
 	/// If FALSE won't change icon_state to a camo marine bino.
 	var/uses_camo = TRUE
 	var/raised = FALSE
-	var/base_item_state = "binoculars"
 
 
 	//matter = list("metal" = 50,"glass" = 50)
@@ -40,19 +39,21 @@
 
 	zoom(user, 11, 12)
 
-/obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/H)
-	if(!istype(H))
+/obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/user)
+	if(!istype(user))
 		return
 
 	if(!to_raise)
 		raised = FALSE
-		item_state = "[base_item_state]"
+		item_state = icon_state
+	else if(!COOLDOWN_FINISHED(user, zoom_cooldown))
+		item_state = icon_state
 	else
 		raised = TRUE
-		item_state = "[base_item_state]_eyes"
+		item_state = item_state + "_eyes"
 
-	H.update_inv_r_hand()
-	H.update_inv_l_hand()
+	user.update_inv_r_hand()
+	user.update_inv_l_hand()
 
 /obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
 	. = ..()

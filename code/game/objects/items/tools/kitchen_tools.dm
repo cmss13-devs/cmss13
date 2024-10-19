@@ -69,22 +69,26 @@
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
+	item_state = "fork"
 
 /obj/item/tool/kitchen/utensil/pfork
 	name = "plastic fork"
 	desc = "Yay, no washing up to do."
 	icon_state = "pfork"
+	item_state = "pfork"
 
 /obj/item/tool/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
+	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
 /obj/item/tool/kitchen/utensil/pspoon
 	name = "plastic spoon"
 	desc = "It's a plastic spoon. How dull."
 	icon_state = "pspoon"
+	item_state = "pspoon"
 	attack_verb = list("attacked", "poked")
 
 /*

@@ -27,7 +27,6 @@
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trashbag0"
-	item_state = "trashbag"
 
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
@@ -39,19 +38,24 @@
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 	flags_equip_slot = NONE
 
-/obj/item/storage/bag/trash/update_icon()
+/obj/item/storage/bag/trash/update_icon(mob/living/carbon/human/user)
 	var/sum_storage_cost = 0
 	for(var/obj/item/item in contents)
 		sum_storage_cost += item.get_storage_cost()
 
 	if(!sum_storage_cost)
 		icon_state = "trashbag0"
+		item_state = "trashbag0"
 	else if(sum_storage_cost < floor(max_storage_space * 0.35))
 		icon_state = "trashbag1"
+		item_state = "trashbag1"
 	else if(sum_storage_cost < floor(max_storage_space * 0.7))
 		icon_state = "trashbag2"
+		item_state = "trashbag2"
 	else
 		icon_state = "trashbag3"
+		item_state = "trashbag3"
+
 
 // -----------------------------
 // Plastic Bag

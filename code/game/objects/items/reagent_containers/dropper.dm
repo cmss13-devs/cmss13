@@ -65,6 +65,7 @@
 					if (src.reagents.total_volume<=0)
 						filled = 0
 						icon_state = "dropper[filled]"
+						item_state = "dropper0"
 					return
 
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
@@ -86,6 +87,7 @@
 		if (src.reagents.total_volume<=0)
 			filled = 0
 			icon_state = "dropper[filled]"
+			item_state = "dropper0"
 
 	else
 
@@ -107,6 +109,7 @@
 
 		filled = 1
 		icon_state = "dropper[filled]"
+		item_state = "dropper1"
 
 	return
 

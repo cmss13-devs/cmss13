@@ -26,6 +26,7 @@
 
 /obj/item/storage/fancy/update_icon()
 	icon_state = "[icon_type]box[length(contents)]"
+	item_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -382,6 +383,7 @@
 /obj/item/storage/fancy/vials
 	icon = 'icons/obj/items/vialbox.dmi'
 	icon_state = "vialbox0"
+	item_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
 	desc = "A place to store your fragile vials when you are not using them."
@@ -428,7 +430,7 @@
 	desc = "A locked box for keeping things away from children."
 	icon = 'icons/obj/items/vialbox.dmi'
 	icon_state = "vialbox0"
-	item_state = "syringe_kit"
+	item_state = "vialbox0"
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.

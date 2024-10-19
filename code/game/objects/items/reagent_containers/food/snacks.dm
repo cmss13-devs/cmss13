@@ -357,6 +357,7 @@
 	name = "cookie"
 	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
+	item_state = "COOKIE!!!"
 	filling_color = "#DBC94F"
 
 /obj/item/reagent_container/food/snacks/cookie/Initialize()
@@ -3154,6 +3155,7 @@
 	name = "Packaged Cheeseburger"
 	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "burger"
+	item_state = "pburger"
 	bitesize = 3
 	package = 1
 

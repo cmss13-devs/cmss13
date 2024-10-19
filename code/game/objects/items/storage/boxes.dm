@@ -487,7 +487,6 @@
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "matchbox"
-	item_state = "zippo"
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
@@ -799,6 +798,7 @@
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
+	item_state = "mealpack"
 	icon = 'icons/obj/items/storage/mre.dmi'
 	w_class = SIZE_SMALL
 	can_hold = list()

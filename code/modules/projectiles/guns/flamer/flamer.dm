@@ -9,6 +9,10 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m240"
 	item_state = "m240"
+	item_icons = list(
+	WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+	WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
+	)
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
@@ -68,11 +72,12 @@
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state

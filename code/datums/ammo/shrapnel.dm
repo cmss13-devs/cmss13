@@ -39,7 +39,7 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 20
+	damage = 15
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5

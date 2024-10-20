@@ -1238,7 +1238,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	RegisterSignal(src, COMSIG_TURF_ENTER, PROC_REF(passage_check))
 
 /turf/closed/wall/resin/membrane/gelatin/proc/passage_check(turf/T, mob/living/carbon/mover)
-	var/target_dir = get_dir(mover, T)
 	if(istype(mover) && mover.ally_of_hivenumber(hivenumber))
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 	return COMPONENT_TURF_DENY_MOVEMENT

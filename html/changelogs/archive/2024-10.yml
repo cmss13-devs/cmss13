@@ -185,3 +185,9 @@
 2024-10-19:
   harryob:
   - bugfix: pilots can no longer take out enormous loans to buy their equipment
+2024-10-20:
+  Drathek:
+  - qol: Added examine text to vendors that are connected via medlink
+  - balance: Blood vendors restock blood bags when connected via medlink (requires
+      20 mins from round start)
+  - maptweak: Added more medlinks to the Almayer

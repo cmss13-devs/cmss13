@@ -5,7 +5,7 @@
 
 /datum/element/drop_retrieval/Attach(datum/target)
 	. = ..()
-	if (!is_type_in_list(target, compatible_types))
+	if(!is_type_in_list(target, compatible_types))
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_MOVABLE_PRE_THROW, PROC_REF(cancel_throw))
 	RegisterSignal(target, COMSIG_ITEM_DROPPED, PROC_REF(dropped))
@@ -40,7 +40,7 @@
 
 /datum/element/drop_retrieval/gun/Attach(datum/target, slot)
 	. = ..()
-	if (.)
+	if(.)
 		return
 	retrieval_slot = slot
 

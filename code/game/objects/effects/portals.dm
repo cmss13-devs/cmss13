@@ -11,18 +11,27 @@
 	anchored = TRUE
 
 /obj/effect/portal/Collided(atom/movable/AM)
-	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
+	spawn(0)
+		teleport(AM)
+		return
+	return
 
 /obj/effect/portal/Crossed(AM as mob|obj)
-	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
+	spawn(0)
+		src.teleport(AM)
+		return
+	return
 
 /obj/effect/portal/attack_hand(mob/user as mob)
-	INVOKE_ASYNC(src, PROC_REF(teleport), user)
+	spawn(0)
+		src.teleport(user)
+		return
+	return
 
 /obj/effect/portal/Initialize(mapload, ...)
 	. = ..()
 	GLOB.portal_list += src
-	AddElement(/datum/element/temporary, 30 SECONDS)
+	QDEL_IN(src, 30 SECONDS)
 
 /obj/effect/portal/Destroy()
 	GLOB.portal_list -= src

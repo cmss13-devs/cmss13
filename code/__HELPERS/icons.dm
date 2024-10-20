@@ -572,6 +572,7 @@ world
 				swapped = 1
 	return result
 
+
 /image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
 	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)

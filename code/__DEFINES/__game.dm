@@ -348,6 +348,7 @@
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
 #define WALL_BONE_RESIN "bone_resin"
+#define WALL_GELATIN "gelatin"
 #define WALL_CAVE "cavewall"
 #define WALL_WOOD "wood"
 #define WALL_GOLD "gold"

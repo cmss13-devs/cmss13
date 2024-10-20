@@ -2103,6 +2103,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\drone\healer.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\facehugger\watcher.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\hivelord\resin_whisperer.dm"
+#include "code\modules\mob\living\carbon\xenomorph\strains\castes\hivelord\sculptor.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\lurker\vampire.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\dancer.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\oppressor.dm"

@@ -655,4 +655,7 @@
 /obj/effect/resin_construct/transparent/weak
 	icon_state = "WeakTransparentConstruct"
 
+/obj/effect/resin_construct/gelatin
+	icon_state = "GelatinConstruct"
+
 #undef WEED_BASE_GROW_SPEED

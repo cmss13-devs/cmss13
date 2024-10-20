@@ -181,6 +181,15 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /turf/closed/wall/resin/membrane/thick
 	build_animation_effect = /obj/effect/resin_construct/transparent/thick
 
+/datum/resin_construction/resin_turf/gelatin
+	name = "Resin Gelatin"
+	desc = "Resin slime that can be seen through."
+	construction_name = "resin gelatin"
+	cost = XENO_RESIN_GELATIN_COST
+
+	build_path = /turf/closed/wall/resin/membrane/gelatin
+	build_animation_effect = /obj/effect/resin_construct/gelatin
+
 // Resin Doors
 /datum/resin_construction/resin_obj/door
 	name = "Resin Door"

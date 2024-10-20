@@ -753,6 +753,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
+	var/break_sound = "alien_resin_break"
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
@@ -1223,6 +1224,32 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	walltype = WALL_THICKMEMBRANE
 	alpha = 210
 
+/turf/closed/wall/resin/membrane/gelatin
+	name = "resin gelatin"
+	desc = "Weird thick slime just translucent enough to let light pass through."
+	damage_cap = HEALTH_WALL_XENO_GELATINE
+	icon_state = "gelatin"
+	walltype = WALL_GELATIN
+	break_sound = "alien_resin_move"
+	var/slow_amt = 6
+
+/turf/closed/wall/resin/membrane/gelatin/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_TURF_ENTER, PROC_REF(passage_check))
+
+/turf/closed/wall/resin/membrane/gelatin/proc/passage_check(turf/T, mob/living/carbon/mover)
+	var/target_dir = get_dir(mover, T)
+	if(istype(mover) && mover.ally_of_hivenumber(hivenumber))
+		return COMPONENT_TURF_ALLOW_MOVEMENT
+	return COMPONENT_TURF_DENY_MOVEMENT
+
+/turf/closed/wall/resin/membrane/gelatin/Crossed(atom/movable/AM)
+	. = ..()
+	var/mob/living/carbon/H = AM
+	if(istype(H))
+		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
+		playsound(src, "alien_resin_move", 15)
+		return .
 
 /turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()
@@ -1236,7 +1263,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	else if (isobj(AM))
 		var/obj/O = AM
 		tforce = O.throwforce
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, break_sound, 25)
 	take_damage(tforce)
 
 
@@ -1252,7 +1279,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("We claw \the [src]."))
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, break_sound, 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else

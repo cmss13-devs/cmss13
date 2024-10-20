@@ -113,6 +113,9 @@
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
+/datum/action/xeno_action/activable/secrete_resin/sculptor
+
+
 //resin marker
 /datum/action/xeno_action/activable/info_marker
 	name = "Mark Resin"

@@ -171,3 +171,23 @@
       or not.
   - rscadd: CLF armor now protects from cold weather so hostile survivors are not
       penalized.
+2024-10-18:
+  blackdragonTOW:
+  - rscadd: Added Synthetic K9 Rescue Teams
+  - bugfix: Monkeys no longer have access to marine emotes AND now have access to
+      their own emotes but were blocked from.
+  - code_imp: Added a NO_OVERLAYS flag for species should we ever want a species to
+      not use onmob overlays.
+  - refactor: Altered emote whitelisting and blacklisting so that species that were
+      blacklisted out of the basic emotes will able to be whitelisted for other emotes
+  - soundadd: added dog sounds for Synthetic K9 Rescue Teams
+  - imageadd: added icons for Synthetic K9 Rescue Teams
+2024-10-19:
+  harryob:
+  - bugfix: pilots can no longer take out enormous loans to buy their equipment
+2024-10-20:
+  Drathek:
+  - qol: Added examine text to vendors that are connected via medlink
+  - balance: Blood vendors restock blood bags when connected via medlink (requires
+      20 mins from round start)
+  - maptweak: Added more medlinks to the Almayer

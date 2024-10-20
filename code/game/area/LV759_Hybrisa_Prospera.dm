@@ -31,6 +31,34 @@
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_OOB
 
+/area/lv759/bunker
+	name = "Out Of Bounds"
+	icon_state = "oob"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+
+/area/lv759/bunker/gonzo
+	name = "Gonzo's hide-out"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+
+/area/lv759/bunker/checkpoint
+	name = "Checkpoint & Hidden Bunker - Entrance"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+
 // Landing Zone 1
 /area/lv759/outdoors/landing_zone_1
 	name = "Nova Medica Hospital Complex - Emergency Response - Landing Zone One"

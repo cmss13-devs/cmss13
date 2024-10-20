@@ -278,7 +278,7 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 6
+					pixel_y = 16
 				if(EAST)
 					pixel_x = 6
 				if(WEST)

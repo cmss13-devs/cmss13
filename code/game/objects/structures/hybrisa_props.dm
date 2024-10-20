@@ -1816,10 +1816,22 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy5
 	icon_state = "1-2-4-8"
 
+// Lattice & 'Effect' Lattice
+
 /obj/structure/prop/hybrisa/misc/fake/lattice
 	name = "structural lattice"
 	layer = TURF_LAYER
+
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
+	icon_state = "latticefull"
+
+/obj/effect/hybrisa/decal/hybrisa/lattice
+	name = "structural lattice"
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon_state = "latticefull"
+	layer = TURF_LAYER
+
+/obj/effect/hybrisa/decal/hybrisa/lattice/full
 	icon_state = "latticefull"
 
 // Cargo Containers extended

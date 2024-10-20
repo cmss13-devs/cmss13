@@ -149,10 +149,10 @@
 /datum/ammo/bullet/smg/p90
 	name = "submachinegun bullet"
 
-	damage = 20
+	damage = 22
 	accurate_range = 5
 	effective_range_max = 8
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
 
@@ -162,6 +162,6 @@
 	damage = 26
 	accurate_range = 5
 	effective_range_max = 8
-	penetration = ARMOR_PENETRATION_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6

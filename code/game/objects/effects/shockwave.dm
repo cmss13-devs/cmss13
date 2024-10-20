@@ -2,6 +2,8 @@
 //Shockwaves
 //------------------------------------------
 
+mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /obj/effect/shockwave
 	icon = 'icons/effects/light_overlays/shockwave.dmi'
 	icon_state = "shockwave"

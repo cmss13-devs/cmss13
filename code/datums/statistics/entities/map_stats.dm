@@ -12,7 +12,7 @@
 	entity_type = /datum/entity/statistic/map
 	table_name = "maps"
 	key_field = "map_name"
-	field_types = list(
+	field_typepaths = list(
 		"map_name" = DB_FIELDTYPE_STRING_LARGE,
 		"total_rounds" = DB_FIELDTYPE_BIGINT,
 

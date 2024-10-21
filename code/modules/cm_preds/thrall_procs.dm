@@ -18,7 +18,8 @@
 		to_chat(wearer, SPAN_WARNING("You're not able to do that right now."))
 		return
 
-	if(!istype(get_area(wearer), /area/yautja))
+	var/area/location = get_area(wearer)
+	if(!(location.flags_area & AREA_YAUTJA_GROUNDS))
 		to_chat(wearer, SPAN_WARNING("Not here. Only on the ship."))
 		return
 
@@ -58,7 +59,7 @@
 			if(YAUTJA_GEAR_SCYTHE)
 				spawned_weapon = new /obj/item/weapon/yautja/scythe(wearer.loc)
 			if(YAUTJA_GEAR_STICK)
-				spawned_weapon = new /obj/item/weapon/yautja/combistick(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/chained/combistick(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_MACHETE)
 				spawned_weapon = new /obj/item/weapon/sword/machete(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_RAPIER)

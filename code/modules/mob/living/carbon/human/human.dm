@@ -132,6 +132,10 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
+	if(HAS_TRAIT(src, TRAIT_WEAVE_SENSITIVE))
+		var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+		. += "Weave Energy: [hive.weave_energy]"
+
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER

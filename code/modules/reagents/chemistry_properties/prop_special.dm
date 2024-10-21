@@ -336,3 +336,17 @@
 	holder.durationfire += 1 * level
 	holder.durationmod += 0.1 * level
 	..()
+
+/datum/chem_property/special/weaving
+	name = PROPERTY_WEAVING
+	code = "WEV"
+	description = "The Weave calls..."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_ANOMALOUS
+	value = 666
+
+/datum/chem_property/special/weaving/process(mob/living/M, potency = 1, delta_time)
+	M.adjustBrainLoss(2 * potency * delta_time)
+	if(ishuman(M) && M.brainloss >= 25)
+		var/mob/living/carbon/human/H = M
+		H.contract_disease(new /datum/disease/weave_mind(0),1)

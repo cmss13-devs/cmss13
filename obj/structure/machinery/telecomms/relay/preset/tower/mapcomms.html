@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;machinery&#x2F;telecomms&#x2F;relay&#x2F;preset&#x2F;tower&#x2F;mapcomms - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#var">Var Details</a> - <a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#proc">Proc Details</a></header>
+<main>
+<h1>TC-3T static telecommunications tower <aside>/<a href="obj.html">obj</a>/<a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html">structure/machinery/telecomms/relay/preset/tower/mapcomms</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L199">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 199"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#var/corrupted">corrupted</a></th><td>Tower has been taken over by xenos, is not usable</td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#var/corruption_delay">corruption_delay</a></th><td>Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed</td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#var/corruption_image">corruption_image</a></th><td>Held image for the current overlay on the tower from xeno corruption</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#proc/handle_xeno_acquisition">handle_xeno_acquisition</a></th><td>Handles xenos corrupting the tower when weeds touch the turf it is located on</td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#proc/register_with_turf">register_with_turf</a></th><td>Handles re-registering signals on new turfs if changed</td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#proc/switch_to_idle_corruption">switch_to_idle_corruption</a></th><td>Handles moving the overlay from growing to idle</td></tr>
+            <tr><th><a href="obj/structure/machinery/telecomms/relay/preset/tower/mapcomms.html#proc/uncorrupt">uncorrupt</a></th><td>Handles removing corruption effects from the comms relay</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/corrupted"><aside class="declaration">var </aside>corrupted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L213">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 213"/></a></h3>
+        <p>Tower has been taken over by xenos, is not usable</p><h3 id="var/corruption_delay"><aside class="declaration">var </aside>corruption_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L219">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 219"/></a></h3>
+        <p>Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed</p><h3 id="var/corruption_image"><aside class="declaration">var </aside>corruption_image
+            <aside>&ndash; /<a href="image.html">image</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L216">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 216"/></a></h3>
+        <p>Held image for the current overlay on the tower from xeno corruption</p><h2 id="proc">Proc Details</h2><h3 id="proc/handle_xeno_acquisition"><aside class="declaration">proc </aside>handle_xeno_acquisition<aside>(/<a href="turf.html">turf</a>/weeded_turf) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L315">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 315"/></a></aside>
+        </h3>
+        <p>Handles xenos corrupting the tower when weeds touch the turf it is located on</p><h3 id="proc/register_with_turf"><aside class="declaration">proc </aside>register_with_turf<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L398">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 398"/></a></aside>
+        </h3>
+        <p>Handles re-registering signals on new turfs if changed</p><h3 id="proc/switch_to_idle_corruption"><aside class="declaration">proc </aside>switch_to_idle_corruption<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L389">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 389"/></a></aside>
+        </h3>
+        <p>Handles moving the overlay from growing to idle</p><h3 id="proc/uncorrupt"><aside class="declaration">proc </aside>uncorrupt<aside>(/<a href="datum.html">datum</a>/deleting_datum) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/14718da14c2c1b7146744a50bef5ddd483827e5a/code/game/machinery/telecomms/presets.dm#L379">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;presets.dm 379"/></a></aside>
+        </h3>
+        <p>Handles removing corruption effects from the comms relay</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/14718da14c2c1b7146744a50bef5ddd483827e5a">14718da</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

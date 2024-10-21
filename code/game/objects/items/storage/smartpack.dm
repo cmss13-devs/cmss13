@@ -293,6 +293,7 @@
 	playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 	battery_charge -= REPAIR_COST
 	H.heal_overall_damage(50, 50, TRUE)
+	user.track_heal_damage(initial(name), H, 100)
 	H.pain.recalculate_pain()
 	repair_form = FALSE
 	update_icon(user)

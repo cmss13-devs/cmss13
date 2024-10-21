@@ -41,6 +41,8 @@
 	uses--
 	playsound(get_turf(user), "sound/machines/fax.ogg", 5)
 
+	user.count_statistic_stat(STATISTICS_AMMO_CONVERTED)
+
 	if(uses <= 0)
 		user.drop_held_item(src)
 		qdel(src)

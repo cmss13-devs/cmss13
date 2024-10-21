@@ -3,8 +3,8 @@
 #define LZ_HAZARD_START (3 MINUTES)
 
 /datum/game_mode/colonialmarines
-	name = "Distress Signal"
-	config_tag = "Distress Signal"
+	name = MODE_NAME_DISTRESS_SIGNAL
+	config_tag = MODE_NAME_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
@@ -462,26 +462,10 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
-/datum/game_mode/colonialmarines/declare_completion()
-	announce_ending()
-	var/musical_track
-	var/end_icon = "draw"
-	switch(round_finished)
-		if(MODE_INFESTATION_X_MAJOR)
-			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
-			end_icon = "xeno_major"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_xeno_victories++
-				GLOB.round_statistics.current_map.total_xeno_majors++
-		if(MODE_INFESTATION_M_MAJOR)
-			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
-			end_icon = "marine_major"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_marine_victories++
-				GLOB.round_statistics.current_map.total_marine_majors++
-		if(MODE_INFESTATION_X_MINOR)
+/* TODO: PUT IT SOMEWHERE LATER (faction rework PR)
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
+if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
@@ -505,29 +489,10 @@
 			end_icon = "xeno_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
-		if(MODE_INFESTATION_M_MINOR)
-			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-			end_icon = "marine_minor"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_marine_victories++
-		if(MODE_INFESTATION_DRAW_DEATH)
-			end_icon = "draw"
-			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.round_result = round_finished
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+*/
 
-		GLOB.round_statistics.log_round_statistics()
-
-	calculate_end_statistics()
-	show_end_statistics(end_icon)
+/datum/game_mode/colonialmarines/declare_completion()
+	. = ..()
 
 	declare_completion_announce_fallen_soldiers()
 	declare_completion_announce_xenomorphs()
@@ -539,22 +504,49 @@
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
 
-	return 1
-
-// for the toolbox
-/datum/game_mode/colonialmarines/end_round_message()
+/datum/game_mode/colonialmarines/get_winners_states()
+	var/majority = 0.5
+	var/end_icon = "draw"
+	var/musical_track
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
-			return "Round has ended. Xeno Major Victory."
+			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
+			end_icon = "xeno_major"
 		if(MODE_INFESTATION_M_MAJOR)
-			return "Round has ended. Marine Major Victory."
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			end_icon = "marine_major"
 		if(MODE_INFESTATION_X_MINOR)
-			return "Round has ended. Xeno Minor Victory."
+			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					log_game("3rd party victory: Weyland-Yutani")
+					message_admins("3rd party victory: Weyland-Yutani")
+				else if ((headcount["UPP_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					log_game("3rd party victory: Union of Progressive Peoples")
+					message_admins("3rd party victory: Union of Progressive Peoples")
+				else if ((headcount["CLF_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					log_game("3rd party victory: Colonial Liberation Front")
+					message_admins("3rd party victory: Colonial Liberation Front")
+				else if ((headcount["marine_headcount"] / living) > majority)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
+			end_icon = "xeno_minor"
 		if(MODE_INFESTATION_M_MINOR)
-			return "Round has ended. Marine Minor Victory."
+			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
+			end_icon = "marine_minor"
 		if(MODE_INFESTATION_DRAW_DEATH)
-			return "Round has ended. Draw."
-	return "Round has ended in a strange way."
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+	return list(end_icon)
 
 /datum/game_mode/colonialmarines/proc/add_current_round_status_to_end_results(special_round_status as text)
 	var/players = GLOB.clients
@@ -609,7 +601,7 @@
 
 	var/datum/discord_embed/embed = new()
 	embed.title = "[SSperf_logging.round?.id]"
-	embed.description = "[round_stats.round_name]\n[round_stats.map_name]\n[end_round_message()]"
+	embed.description = "[GLOB.round_statistics.round_name]\n[GLOB.round_statistics.map_name]\n[end_round_message()]"
 
 	var/list/webhook_info = list()
 	webhook_info["embeds"] = list(embed.convert_to_list())
@@ -710,4 +702,3 @@
 
 #undef HIJACK_EXPLOSION_COUNT
 #undef MARINE_MAJOR_ROUND_END_DELAY
-#undef MAJORITY

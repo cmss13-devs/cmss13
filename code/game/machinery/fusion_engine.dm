@@ -334,6 +334,7 @@
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		buildstate = BUILDSTATE_FUNCTIONAL
+		user.count_statistic_stat(STATISTICS_REPAIR_GENERATOR)
 		update_icon()
 		return
 

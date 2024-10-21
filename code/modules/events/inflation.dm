@@ -6,7 +6,7 @@
 	min_players = 1
 	max_occurrences = 1 // we can increase the number once there's more random events around - 3 is a good number
 	alert_observers = FALSE
-	gamemode_blacklist = list(GAMEMODE_WHISKEY_OUTPOST, GAMEMODE_HIVE_WARS)
+	gamemode_blacklist = list(MODE_NAME_WISKEY_OUTPOST, MODE_NAME_HIVE_WARS)
 
 /datum/round_event/economy_inflation
 	announce_when = 1

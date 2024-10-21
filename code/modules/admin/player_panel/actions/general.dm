@@ -209,10 +209,10 @@
 	action_tag = "access_variables"
 	name = "Access Variables"
 
-
 /datum/player_action/access_variables/act(client/user, mob/target, list/params)
 	user.debug_variables(target)
 	return TRUE
+
 
 /datum/player_action/access_playtimes
 	action_tag = "access_playtimes"
@@ -220,6 +220,16 @@
 
 /datum/player_action/access_playtimes/act(client/user, mob/target, list/params)
 	target?.client?.player_data.tgui_interact(user.mob)
+
+	return TRUE
+
+
+/datum/player_action/access_statistics
+	action_tag = "access_statistics"
+	name = "Access Statistics"
+
+/datum/player_action/access_statistics/act(client/user, mob/target, list/params)
+	target?.client?.player_data?.player_entity.tgui_interact(user.mob)
 
 	return TRUE
 

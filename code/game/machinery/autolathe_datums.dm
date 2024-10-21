@@ -291,16 +291,6 @@
 	path = /obj/item/explosive/plastic/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
-/datum/autolathe/recipe/armylathe/rocket_tube
-	name = "88mm Rocket Tube"
-	path = /obj/item/ammo_magazine/rocket/custom
-	category = AUTOLATHE_CATEGORY_EXPLOSIVES
-
-/datum/autolathe/recipe/armylathe/rocket_warhead
-	name = "88mm Rocket Warhead"
-	path = /obj/item/explosive/warhead/rocket
-	category = AUTOLATHE_CATEGORY_EXPLOSIVES
-
 /datum/autolathe/recipe/armylathe/mortar_shell
 	name = "80mm Mortar Shell"
 	path = /obj/item/mortar_shell/custom

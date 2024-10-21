@@ -206,7 +206,7 @@
 	if(!xeno_player.check_state(TRUE))
 		return
 
-	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper] (AREA: [get_area_name(target_mob)])")
 		if(!istype(target_mob, /mob/living/carbon/xenomorph))
@@ -246,7 +246,7 @@
 	if(!xeno_player.check_state(TRUE))
 		return
 	var/list/target_list = list()
-	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Radiance")
 	if(!whisper || !xeno_player.check_state(TRUE))
 		return
 	FOR_DVIEW(var/mob/living/possible_target, 12, xeno_player, HIDE_INVISIBLE_OBSERVER)

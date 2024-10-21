@@ -430,7 +430,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "bc" = (
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	dir = 1
 	},
 /turf/open/floor/strata/grey_multi_tiles,
@@ -1473,7 +1473,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "fj" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/shuttle/predship,
 /area/yautja)
 "fo" = (
@@ -2286,7 +2286,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Be" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Bg" = (
@@ -2295,15 +2295,11 @@
 	color = "#6b675e";
 	name = "Secure Yautja crate"
 	},
-/obj/item/weapon/yautja/combistick,
-/obj/item/weapon/yautja/combistick{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
 /obj/item/weapon/yautja/chain,
 /obj/item/weapon/yautja/sword,
 /obj/item/weapon/yautja/scythe,
+/obj/item/weapon/yautja/chained/combistick,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Br" = (
@@ -2361,7 +2357,7 @@
 /area/yautja)
 "Dr" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
-	indestructible = 1;
+	explo_proof = 1;
 	locked = 1;
 	name = "\improper External Airlock"
 	},
@@ -3011,7 +3007,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
 "XP" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Ys" = (

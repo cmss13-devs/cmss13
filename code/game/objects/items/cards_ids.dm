@@ -377,6 +377,7 @@
 	icon_state = "dogtag_taken"
 	icon = 'icons/obj/items/card.dmi'
 	w_class = SIZE_TINY
+	var/list/fallen_references
 	var/list/fallen_names
 	var/list/fallen_blood_types
 	var/list/fallen_assgns
@@ -384,6 +385,7 @@
 /obj/item/dogtag/Initialize()
 	. = ..()
 
+	fallen_references = list()
 	fallen_names = list()
 	fallen_blood_types = list()
 	fallen_assgns = list()
@@ -394,6 +396,7 @@
 		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
+			fallen_references += D.fallen_references
 			fallen_names += D.fallen_names
 			fallen_blood_types += D.fallen_blood_types
 			fallen_assgns += D.fallen_assgns

@@ -464,6 +464,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
@@ -821,6 +822,10 @@
 /obj/item/frame/table/wood/fancy,
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
+"Tk" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_tech,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
 "TF" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -935,7 +940,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ZT" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 
@@ -1058,7 +1063,7 @@ Bh
 mw
 Bh
 Bh
-Bh
+Tk
 Bh
 Bh
 qH

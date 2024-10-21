@@ -459,3 +459,49 @@
 
 	qdel(src)
 	return TRUE
+
+// Empty
+
+/obj/structure/largecrate/empty/secure
+	name = "secure supply crate"
+	desc = "A secure crate."
+	icon_state = "secure_crate_strapped"
+	var/strapped = TRUE
+
+/obj/structure/largecrate/empty/secure/attackby(obj/item/W as obj, mob/user as mob)
+	if (!strapped)
+		..()
+		return
+
+	if (!W.sharp)
+		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You begin to cut the straps off [src]..."))
+
+	if (do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		to_chat(user, SPAN_NOTICE("You cut the straps away."))
+		icon_state = "secure_crate"
+		strapped = FALSE
+
+/obj/structure/largecrate/empty/case
+	name = "storage case"
+	desc = "A black storage case."
+	icon_state = "case"
+
+/obj/structure/largecrate/empty/case/double
+	name = "cases"
+	desc = "A stack of black storage cases."
+	icon_state = "case_double"
+
+/obj/structure/largecrate/empty/case/double/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/thing in contents)
+		thing.forceMove(loc)
+	new /obj/structure/largecrate/empty/case(loc)
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
+
+//----------------------------------------------------//

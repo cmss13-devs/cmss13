@@ -193,6 +193,7 @@
 	item_state = "eyepatch"
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -639,6 +640,7 @@
 	name = "prescription sunglasses"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "\improper BiMex personal shades"
@@ -648,7 +650,7 @@
 	eye_protection = EYE_PROTECTION_FLASH
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
@@ -656,6 +658,7 @@
 	icon_state = "aviator"
 	item_state = "aviator"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"
@@ -663,6 +666,7 @@
 	icon_state = "sunhud"
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"

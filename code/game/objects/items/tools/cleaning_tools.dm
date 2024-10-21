@@ -155,9 +155,11 @@
 /obj/item/tool/soap/weyland_yutani
 	desc = "A Weyland-Yutani brand bar of soap. Smells of phoron."
 	icon_state = "soapnt"
+	item_state = "soapnt"
 
 /obj/item/tool/soap/deluxe
 	icon_state = "soapdeluxe"
+	item_state = "soapdeluxe"
 
 /obj/item/tool/soap/deluxe/Initialize()
 	. = ..()
@@ -166,3 +168,4 @@
 /obj/item/tool/soap/syndie
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
+	item_state = "soapsyndie"

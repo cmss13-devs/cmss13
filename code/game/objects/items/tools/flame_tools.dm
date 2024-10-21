@@ -38,6 +38,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		i = 2
 	else i = 3
 	icon_state = "candle[i][heat_source ? "_lit" : ""]"
+	item_state = "candle[i][heat_source ? "_lit" : ""]"
 
 /obj/item/tool/candle/Destroy()
 	if(heat_source)

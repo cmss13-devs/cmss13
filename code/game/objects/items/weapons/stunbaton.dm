@@ -150,7 +150,9 @@
 	//stun effects
 
 	if(!isyautja(human_target) && !isxeno(human_target)) //Xenos and Predators are IMMUNE to all baton stuns.
+		ADD_TRAIT(human_target, TRAIT_EMOTE_CD_EXEMPT, "Batoned")
 		human_target.emote("pain")
+		REMOVE_TRAIT(human_target, TRAIT_EMOTE_CD_EXEMPT, "Batoned")
 		human_target.apply_stamina_damage(stunforce, target_zone, ARMOR_ENERGY)
 		human_target.sway_jitter(2,1)
 

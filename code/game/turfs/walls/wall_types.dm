@@ -1231,7 +1231,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "gelatin"
 	walltype = WALL_GELATIN
 	break_sound = "alien_resin_move"
-	var/slow_amt = 6
+	var/slow_amt = 1.2
 
 /turf/closed/wall/resin/membrane/gelatin/Initialize(mapload)
 	. = ..()
@@ -1239,16 +1239,9 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/resin/membrane/gelatin/proc/passage_check(turf/T, mob/living/carbon/mover)
 	if(istype(mover) && mover.ally_of_hivenumber(hivenumber))
+		mover.next_move_slowdown += slow_amt
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 	return COMPONENT_TURF_DENY_MOVEMENT
-
-/turf/closed/wall/resin/membrane/gelatin/Crossed(atom/movable/AM)
-	. = ..()
-	var/mob/living/carbon/H = AM
-	if(istype(H))
-		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
-		playsound(src, "alien_resin_move", 15)
-		return .
 
 /turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()
@@ -1289,7 +1282,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/resin/attack_animal(mob/living/M)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
 	SPAN_DANGER("You tear \the [name]."))
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, break_sound, 25)
 	M.animation_attack_on(src)
 	take_damage(80)
 
@@ -1309,7 +1302,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, break_sound, 25)
 	else
 		return attack_hand(user)
 

@@ -200,12 +200,12 @@
 				if our new Platoon Sergeant catches you trying to sell your stash of razors, you'll be in for a world of pain.
 				<br>
 				<br>
-				Way I heard it, he transferred in from dealing with one of those shitty penal units,
+				Way I heard it, he transferred in from dealing with the shittiest boot camp at Twentynine Palms,
 				so he's extra rough around the edges and might just cut you to ribbons with your own supply.
 				</html>
 				"}
 
-/datum/fluff_email/almayer/
+/datum/fluff_email/almayer/immunization
 	title = "RE: Immunizations & Training"
 	entry_text = {"<html>
 				One of the battalions just got mulched by a Beebop group and the AAR suggested that the men's training was neglected, it's one hell of a shit show over here.
@@ -220,3 +220,9 @@
 				This is your heads-up, don't make me get chewed out chief.
 				"}
 
+//Sticking this here because I'm too lazy to type it all out.
+/*
+/datum/fluff_email/almayer/
+	title =
+	entry_text =
+*/

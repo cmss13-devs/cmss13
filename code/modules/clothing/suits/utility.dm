@@ -16,7 +16,7 @@
 	item_state = "fire_suit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
+
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	allowed = list(
@@ -85,7 +85,7 @@
 	item_state = "bombsuit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
+
 	slowdown = 2
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -150,7 +150,7 @@
 	item_state = "rad_suit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
+
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 	allowed = list(
 		/obj/item/clothing/head/radiation,

@@ -81,7 +81,6 @@
 	s.start()
 
 	deconstruct(FALSE)
-	explosion(src.loc,-1,-1,0)
 
 /obj/structure/machinery/deployable/barrier/deconstruct(disassembled = TRUE)
 	if(!disassembled)

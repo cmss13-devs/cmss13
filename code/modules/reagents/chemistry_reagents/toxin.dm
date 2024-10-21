@@ -23,6 +23,7 @@
 	id = "pttoxin"
 	description = "A toxic chemical."
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
+	properties = list(PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"
@@ -185,7 +186,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 10)
+	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 5)
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate

@@ -46,7 +46,7 @@
 	name = "Toxin"
 	id = "pttoxin"
 	result = "pttoxin"
-	required_reagents = list("paracetamol" = 1, "tramadol" = 1)
+	required_reagents = list("oxycodone" = 1, "tramadol" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/mutagen
@@ -119,7 +119,7 @@
 	id = "sleen"
 	result = "sleen"
 	required_reagents = list("oxycodone" = 1, "souto_lime" = 1)
-	result_amount = 2
+	result_amount = 1
 
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"

@@ -219,6 +219,7 @@
 	prescription = TRUE
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "Prescription Glasses"
@@ -226,6 +227,7 @@
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/threedglasses
 	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
@@ -257,6 +259,7 @@
 	item_state = "mBCG"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
@@ -620,6 +623,7 @@
 	item_state = "sunglasses"
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold

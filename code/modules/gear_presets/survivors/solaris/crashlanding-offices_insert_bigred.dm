@@ -83,6 +83,7 @@
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "SL"
 	skills = /datum/skills/civilian/survivor/pmc/lead
 
 /datum/equipment_preset/survivor/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)

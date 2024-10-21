@@ -128,9 +128,7 @@
 /turf/open/floor/darkred2/east,
 /area/bigredv2/outside/admin_building)
 "eg" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
@@ -159,7 +157,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "he" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/flora/jungle/planttop1{
 	pixel_y = 10
 	},
@@ -198,9 +196,7 @@
 /turf/open/floor/darkredcorners2/west,
 /area/bigredv2/outside/admin_building)
 "jm" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "jq" = (
@@ -249,7 +245,7 @@
 /area/bigredv2/outside/admin_building)
 "mi" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "mr" = (
@@ -310,9 +306,7 @@
 /area/bigredv2/outside/admin_building)
 "tz" = (
 /obj/effect/landmark/survivor_spawner,
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "uH" = (
@@ -328,9 +322,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "xe" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "xQ" = (
@@ -356,9 +348,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "AF" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "Br" = (
@@ -394,9 +384,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "ER" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "Gc" = (

@@ -819,38 +819,46 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(grabber.a_intent == INTENT_GRAB)
 
 			//Synthpack recharge
-			if((grabber.species.flags & IS_SYNTHETIC) && istype(grabber.back, /obj/item/storage/backpack/marine/smartpack))
-				var/obj/item/storage/backpack/marine/smartpack/s_pack = grabber.back
-				if(grabber.action_busy)
+			if((grabber.species.flags & IS_SYNTHETIC))
+				if(istype(grabber.gloves, /obj/item/clothing/gloves/synth))
+					var/obj/item/clothing/gloves/synth/bracer = grabber.gloves
+					bracer.handle_apc_charge(grabber, src)
 					return
 
-				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					return
-
-				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-
-				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/spark = new()
-					spark.set_up(3, 1, src)
-					spark.start()
-					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-					grabber.apply_damage(10,0, BURN)
-				else if(cell && cell.charge > 0)
-					if(!istype(s_pack))
+				if(istype(grabber.back, /obj/item/storage/backpack/marine/smartpack))
+					var/obj/item/storage/backpack/marine/smartpack/s_pack = grabber.back
+					if(grabber.action_busy)
 						return
 
-					if(s_pack.battery_charge < SMARTPACK_MAX_POWER_STORED)
-						var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - s_pack.battery_charge)
-						if(!(cell.use(charge_to_use)))
+					if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+						return
+					if(!grabber.Adjacent(src) || (grabber.back != s_pack))
+						return
+
+					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+
+					if(stat & BROKEN)
+						var/datum/effect_system/spark_spread/spark = new()
+						spark.set_up(3, 1, src)
+						spark.start()
+						to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
+						grabber.apply_damage(10,0, BURN)
+					else if(cell && cell.charge > 0)
+						if(!istype(s_pack))
 							return
-						s_pack.battery_charge += charge_to_use
-						to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [s_pack.name] now has [s_pack.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-						charging = APC_CHARGING
+
+						if(s_pack.battery_charge < SMARTPACK_MAX_POWER_STORED)
+							var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - s_pack.battery_charge)
+							if(!(cell.use(charge_to_use)))
+								return
+							s_pack.battery_charge += charge_to_use
+							to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [s_pack.name] now has [s_pack.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
+							charging = APC_CHARGING
+						else
+							to_chat(user, SPAN_WARNING("[s_pack.name] is already fully charged."))
 					else
-						to_chat(user, SPAN_WARNING("[s_pack.name] is already fully charged."))
-				else
-					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
-				return
+						to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
+					return
 
 			// Yautja Bracer Recharge
 			var/obj/item/clothing/gloves/yautja/bracer = grabber.gloves

@@ -346,14 +346,7 @@
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
 
 			went_through_flashback += user
-			sleep(2 SECONDS)
-
-			//Special sound for those who really treasure their squad.
-			if(length(all_ghosts) >= 8)
-				to_chat(user, SPAN_NOTICE("<b>There's a distinct sound in the air...<b>"))
-				playsound_client(user.client, 'sound/hallucinations/ghost_taps.ogg', user.loc, 70)
-
-			sleep(3 SECONDS)
+			sleep(5 SECONDS)
 
 			for(var/obj/effect/client_image_holder/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()

@@ -2,7 +2,7 @@
 
 /obj/ovipositor
 	name = "Egg Sac"
-	icon = 'icons/mob/xenos/ovipositor.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/ovipositor.dmi'
 	icon_state = "ovipositor"
 	unacidable = TRUE
 	var/begin_decay_time = 0
@@ -40,7 +40,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image('icons/mob/xenos/ovipositor.dmi', "ovipositor_molted", ATMOS_DEVICE_LAYER) //ATMOS_DEVICE_LAYER so that the ovi is above weeds, blood, and resin weed nodes.
+		T.overlays += image('icons/mob/xenos/castes/tier_4/ovipositor.dmi', "ovipositor_molted", ATMOS_DEVICE_LAYER) //ATMOS_DEVICE_LAYER so that the ovi is above weeds, blood, and resin weed nodes.
 
 	qdel(src)
 
@@ -54,7 +54,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image('icons/mob/xenos/ovipositor.dmi', "ovipositor_gibbed", ATMOS_DEVICE_LAYER)
+		T.overlays += image('icons/mob/xenos/castes/tier_4/ovipositor.dmi', "ovipositor_gibbed", ATMOS_DEVICE_LAYER)
 
 	qdel(src)
 

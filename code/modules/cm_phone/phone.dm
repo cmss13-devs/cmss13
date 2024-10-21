@@ -392,7 +392,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone
 	name = "telephone"
-	icon = 'icons/obj/items/misc.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "rpb_phone"
 
 	w_class = SIZE_LARGE

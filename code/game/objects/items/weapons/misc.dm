@@ -60,7 +60,7 @@
 /obj/item/weapon/dart
 	name = "red throwing dart"
 	desc = "A dart. For throwing. This one's red."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "red_dart"
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK

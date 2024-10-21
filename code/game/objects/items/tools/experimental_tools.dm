@@ -42,6 +42,9 @@
 	var/pump_cost = 20
 	var/obj/item/cell/pdcell = null
 	movement_compensation = 0
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/objects.dmi',
+	)
 
 /obj/item/clothing/suit/auto_cpr/Initialize(mapload, ...)
 	. = ..()

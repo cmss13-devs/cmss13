@@ -54,8 +54,8 @@
 	var/state_override
 	var/is_bloody = TRUE //We're still "bloody"
 
-	icon_xeno = 'icons/mob/xenos/larva.dmi'
-	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
 	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...
@@ -102,7 +102,7 @@
 /mob/living/carbon/xenomorph/larva/predalien
 	AUTOWIKI_SKIP(TRUE)
 
-	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.

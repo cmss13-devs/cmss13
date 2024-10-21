@@ -65,7 +65,7 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -195,7 +195,7 @@
 	name = "xeno restraints"
 	desc = "Use this to hold xenomorphic creatures safely."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

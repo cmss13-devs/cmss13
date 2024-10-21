@@ -96,7 +96,7 @@
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/table_decorations.dmi'
 	icon_state = "uaflag"
 	force = 0.5
 	w_class = SIZE_SMALL
@@ -137,13 +137,7 @@
 	name = "dirty bandages"
 	desc = "Some used gauze."
 	icon_state = "bandages_prop"
-	icon = 'icons/monkey_icos.dmi'
-
-/obj/item/prop/colony/folded_bedroll
-	name = "folded bedroll"
-	desc = "a folded up bedroll"
-	icon_state = "bedroll"
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/props/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"
@@ -167,7 +161,7 @@
 	name = "portable game kit"
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 
 /obj/item/prop/gripper
 	name = "magnetic gripper"

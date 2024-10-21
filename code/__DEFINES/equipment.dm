@@ -48,6 +48,8 @@
 #define USES_SEEING (1<<19)
 // Can be quick drawn
 #define QUICK_DRAWABLE (1<<20)
+// If object should utilize icon state indexes for map colors (s_ d_ etc) in select_gamemode_skin
+#define MAP_COLOR_INDEX (1<<21)
 
 //==========================================================================================
 

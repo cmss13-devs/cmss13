@@ -256,7 +256,7 @@
 /obj/item/reagent_container/food/drinks/cup
 	name = "plastic cup"
 	desc = "A generic red cup. Beer pong, anyone?"
-	icon = 'icons/obj/items/cup.dmi'
+	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "solocup"
 	throwforce = 0
 	w_class = SIZE_TINY
@@ -278,7 +278,7 @@
 /obj/item/trash/crushed_cup
 	name = "crushed cup"
 	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
-	icon = 'icons/obj/items/cup.dmi'
+	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "crushed_solocup"
 	throwforce = 0
 	w_class = SIZE_TINY

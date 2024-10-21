@@ -252,8 +252,8 @@
 						rank = "SL"
 					else
 						rank = ""
-				if(H.rank_fallback)
-					rank = H.rank_fallback
+				if(H.rank_icon_state_override)
+					rank = H.rank_icon_state_override
 				mar[H.real_name] += list("rank" = rank)
 			else
 				mar[H.real_name] += list("paygrade" = "N/A")

@@ -287,6 +287,9 @@
 /obj/item/device/encryptionkey/upp/command
 	name = "\improper UPP Command Radio Encryption Key"
 	channels = list(RADIO_CHANNEL_UPP_CMD = TRUE, RADIO_CHANNEL_UPP_GEN = TRUE, RADIO_CHANNEL_UPP_ENGI = TRUE, RADIO_CHANNEL_UPP_MED = TRUE, RADIO_CHANNEL_UPP_CCT = TRUE)
+
+/obj/item/device/encryptionkey/upp/command/acting
+	abstract = TRUE
 //---------------------------------------------------
 //CLF Keys
 /obj/item/device/encryptionkey/clf

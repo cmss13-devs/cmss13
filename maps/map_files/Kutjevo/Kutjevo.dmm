@@ -554,9 +554,6 @@
 	},
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/construction)
-"aNn" = (
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/power/comms)
 "aOh" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -744,9 +741,6 @@
 "bff" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/power/comms)
-"bfg" = (
-/turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/power/comms)
 "bhg" = (
 /obj/structure/platform/kutjevo/rock{
@@ -1786,7 +1780,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors,
-/area/kutjevo/interior/power)
+/area/kutjevo/interior/power/comms)
 "cIZ" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -3550,7 +3544,7 @@
 	pixel_y = 10
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_river)
+/area/kutjevo/interior/power/comms)
 "eRN" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -5773,6 +5767,9 @@
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/interior/complex/botany)
+"iwq" = (
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/power/comms)
 "iwD" = (
 /obj/structure/platform/kutjevo{
 	dir = 4
@@ -8352,7 +8349,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/kutjevo/multi_tiles/north,
-/area/kutjevo/interior/power)
+/area/kutjevo/interior/power/comms)
 "msK" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
@@ -11263,7 +11260,7 @@
 "qAk" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
-/area/kutjevo/interior/power)
+/area/kutjevo/interior/power/comms)
 "qAP" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/red_pool,
@@ -15390,7 +15387,7 @@
 	pixel_y = 10
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/lz_river)
+/area/kutjevo/interior/power/comms)
 "wCe" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -21033,13 +21030,13 @@ mxB
 mxB
 tlN
 ozq
-xzY
-xzY
-xzY
-xzY
-xzY
+boR
+boR
+boR
+boR
+boR
 msF
-pyp
+tlN
 dxF
 dxF
 vei
@@ -21374,7 +21371,7 @@ tXm
 boR
 giM
 tlN
-dfa
+tlN
 eRE
 wGH
 prJ
@@ -22209,7 +22206,7 @@ tWM
 boR
 giM
 tlN
-dfa
+tlN
 eRE
 prJ
 prJ
@@ -23712,7 +23709,7 @@ adX
 tlN
 tlN
 tlN
-dfa
+tlN
 wBt
 ubV
 ubV
@@ -23860,9 +23857,9 @@ bXl
 bXl
 sYd
 kIn
-bfg
-bfg
-aNn
+bEp
+bEp
+kIn
 dSQ
 wWk
 mOe
@@ -24541,10 +24538,10 @@ pBi
 tlN
 vlt
 lsy
-kdY
-kdY
+iwq
+iwq
 cIE
-pBV
+ezX
 kMx
 nWo
 cBi
@@ -24713,7 +24710,7 @@ ezX
 tlN
 tlN
 tlN
-nrk
+tlN
 sYd
 bXl
 cTz

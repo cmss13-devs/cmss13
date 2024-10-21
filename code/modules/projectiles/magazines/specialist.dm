@@ -238,7 +238,7 @@
 	desc = "An 84mm custom rocket."
 	icon_state = "custom_rocket"
 	default_ammo = /datum/ammo/rocket/custom
-	matter = list("metal" = 7500) //2 sheets
+	matter = list("metal" = 3750) //1 sheet
 	var/obj/item/explosive/warhead/rocket/warhead
 	var/obj/item/reagent_container/glass/fuel
 	var/fuel_requirement = 60

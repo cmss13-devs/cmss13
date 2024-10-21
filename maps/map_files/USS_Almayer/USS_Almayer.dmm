@@ -5838,6 +5838,7 @@
 /obj/structure/closet/secure_closet/professor_dummy{
 	pixel_x = -32
 	},
+/obj/item/paper/research_notes/ciph_hint,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/upper_medical)
 "aMd" = (

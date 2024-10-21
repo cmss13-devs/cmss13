@@ -871,14 +871,14 @@
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
-		marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		var/datum/hive_status/hive
 		for(var/cur_hive_num in GLOB.hive_datum)
 			hive = GLOB.hive_datum[cur_hive_num]
 			if(!length(hive.totalXenos))
 				continue
 			if(cur_hive_num == hive_number)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGENCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
@@ -897,7 +897,7 @@
 	. = ..()
 	if(hivenumber)
 		hive_number = hivenumber
-	
+
 	var/datum/hive_status/hatchery_hive = GLOB.hive_datum[hive_number]
 	hatchery_hive.has_hatchery = TRUE
 	color = hatchery_hive.color
@@ -911,7 +911,7 @@
 	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
-	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -944,7 +944,7 @@
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
 			groundside_humans += 1
-			
+
 			if(groundside_humans > 12)
 				return
 
@@ -961,7 +961,7 @@
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
 	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -1000,7 +1000,7 @@
 
 /**
  * Returns TRUE if a valid candidate accepts a TGUI alert asking them to be King.
- * 
+ *
  * Arguments:
  * * hive: The hive_status to check banished ckeys against
  * * candidate: The mob that we want to ask
@@ -1009,14 +1009,14 @@
 /obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
 	if(!is_candidate_valid(hive, candidate, playtime_restricted))
 		return FALSE
-	
+
 	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
 
 #undef KING_PLAYTIME_HOURS
 
 /**
  * Tallies up votes by asking the passed candidate who they wish to vote for King.
- * 
+ *
  * Arguments:
  * * candidate: The mob that was want to ask
  * * voting_candidates: A list of xenomorph mobs that are candidates
@@ -1048,21 +1048,21 @@
 
 /**
  * Finalizes the vote for King opting to use a series of fallbacks in case a candidate declines.
- * 
+ *
  * First is a vote where the first and or second top picked is asked.
  * Then all other living xenos meeting the playtime requirement are asked.
  * Then all xeno observer candidates meeting the playtime requirement are asked.
  * Then all other living xenos not meeting the playtime requirement are asked.
  * Then all other xeno observer candidates not meeting the playtime requirement are asked.
  * Then finally if after all that, the search is given up and will ultimately result in a freed King mob.
- * 
+ *
  * Arguments:
  * * voting_candidates: A list of xenomorphs that are valid candidates to vote on.
  * * expedite: Whether hatching should begin in a minute or immediately after a candidate is found.
  */
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates, expedite = FALSE)
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-	
+
 	var/primary_votes = 0
 	var/mob/living/carbon/xenomorph/primary_candidate
 	var/secondary_votes = 0
@@ -1083,10 +1083,10 @@
 		rolling_candidates = FALSE
 		start_hatching(expedite)
 		return
-		
+
 	voting_candidates -= primary_candidate
 
-	
+
 	if(try_roll_candidate(hive, secondary_candidate, playtime_restricted = TRUE))
 		chosen_candidate = secondary_candidate.client
 		rolling_candidates = FALSE
@@ -1128,12 +1128,12 @@
 	start_hatching(expedite)
 
 /// Starts the hatching in one minute, otherwise immediately if expedited
-/obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)	
+/obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)
 	if(expedite)
 		animate_hatch_king()
 		return
-	
-	marine_announcement("ALERT.\n\nUNSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]

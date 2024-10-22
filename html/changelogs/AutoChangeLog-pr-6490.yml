@@ -1,9 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - rscadd: "Added Synthetic K9 Rescue Teams"
-  - bugfix: "Monkeys no longer have access to marine emotes AND now have access to their own emotes but were blocked from."
-  - code_imp: "Added a NO_OVERLAYS flag for species should we ever want a species to not use onmob overlays."
-  - refactor: "Altered emote whitelisting and blacklisting so that species that were blacklisted out of the basic emotes will able to be whitelisted for other emotes"
-  - soundadd: "added dog sounds for Synthetic K9 Rescue Teams"
-  - imageadd: "added icons for Synthetic K9 Rescue Teams"

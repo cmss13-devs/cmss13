@@ -81,7 +81,7 @@
 	name = "Concentrated Weave Essence"
 	id = "xenobloodweave"
 	color = "#5adfe4"
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_ADDICTIVE = 4, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_NEUROINHIBITING = 4, PROPERTY_TRANSFORMATIVE = 5)
 
 /datum/reagent/vaccine
@@ -1071,7 +1071,7 @@
 	color = "#5adfe4"
 	overdose = 13
 	overdose_critical = 15
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_ADDICTIVE = 2, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_NEUROINHIBITING = 2, PROPERTY_TRANSFORMATIVE = 2)
 
 /datum/reagent/plasma/weave/pure
@@ -1081,7 +1081,7 @@
 	color = "#135f72"
 	overdose = 3
 	overdose_critical = 3
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_WEAVING = 3, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_TRANSFORMATIVE = 4, PROPERTY_ANTIADDICTIVE = 6)
 
 /datum/reagent/fruit_resin

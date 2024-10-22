@@ -65,11 +65,6 @@
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin
 	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
 
-/obj/structure/prop/almayer/ship_memorial/Destroy()
-	QDEL_NULL_LIST(went_through_flashback)
-	QDEL_NULL_LIST(fallen_personnel)
-	return ..()
-
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/dogtag))
 		var/obj/item/dogtag/attacking_dogtag = attacking_item
@@ -365,10 +360,6 @@
 	. = ..()
 	name = mob_reference.name
 	desc = "May we never forget freedom isn't free."
-
-/obj/effect/client_image_holder/memorial_ghost/Destroy(force)
-	QDEL_NULL(mob_reference)
-	return ..()
 
 /obj/effect/client_image_holder/memorial_ghost/generate_image()
 	var/image/created = image(null, src, null, image_layer, dir = src.dir)

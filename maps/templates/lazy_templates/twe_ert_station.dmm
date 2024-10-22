@@ -521,7 +521,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
 "lX" = (
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	layer = 3.1;
 	pixel_y = 7
 	},
@@ -591,7 +591,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	layer = 3.1;
 	pixel_y = 7
 	},
@@ -662,7 +662,7 @@
 /turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/ert_station/royal_marines_station)
 "pk" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/royal_marines_station)
 "ps" = (
@@ -774,7 +774,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "rP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	dir = 1;
 	pixel_y = 7
 	},
@@ -846,7 +846,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	dir = 1;
 	pixel_y = 7
 	},
@@ -941,7 +941,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "wF" = (
-/obj/structure/machinery/cryopod/right{
+/obj/structure/machinery/cryopod/no_store/right{
 	layer = 3.1;
 	pixel_y = 13
 	},
@@ -1298,7 +1298,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Gd" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/royal_marines_station)
 "GM" = (
@@ -1692,14 +1692,14 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ok" = (
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	dir = 1;
 	pixel_y = 7
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/royal_marines_station)
 "Or" = (
-/obj/structure/machinery/cryopod{
+/obj/structure/machinery/cryopod/no_store{
 	layer = 3.1;
 	pixel_y = 13
 	},

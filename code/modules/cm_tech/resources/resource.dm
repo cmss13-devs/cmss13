@@ -25,7 +25,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	anchored = TRUE
 
 	density = TRUE

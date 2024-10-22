@@ -913,3 +913,15 @@
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
 	update_icon()
+
+/obj/item/paper/liaison_brief
+	name = "Liaison Colony Briefing"
+	desc = "A brief from the Company about the colony the ship is responding to."
+
+/obj/item/paper/liaison_brief/Initialize(mapload, ...)
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = "[SSmapping.configs[GROUND_MAP].liaison_briefing]"
+	else
+		info = "The Company does not have a briefing for this colony available at this time."
+	update_icon()

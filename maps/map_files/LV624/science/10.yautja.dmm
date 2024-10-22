@@ -46,12 +46,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
-"aj" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
-/obj/item/weapon/yautja/combistick,
-/turf/open/floor/whitepurple/northeast,
-/area/lv624/lazarus/research)
 "ak" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
@@ -340,6 +334,7 @@
 /obj/structure/surface/table,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
+/obj/item/weapon/yautja/chained/combistick,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "ec" = (
@@ -621,7 +616,7 @@ al
 ab
 bb
 bk
-aj
+LE
 ac
 bg
 "}

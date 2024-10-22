@@ -68,17 +68,17 @@
 	QDEL_NULL_LIST(fallen_personnel)
 	return ..()
 
-/obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
-		if(D.fallen_names)
-			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			GLOB.fallen_list += D.fallen_names
-			fallen_personnel += D?.fallen_references
-			qdel(D)
+/obj/structure/prop/almayer/ship_memorial/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/dogtag))
+		var/obj/item/dogtag/attacking_dogtag = attacking_item
+		if(attacking_dogtag.fallen_names)
+			to_chat(user, SPAN_NOTICE("You add [attacking_dogtag] to [src]."))
+			GLOB.fallen_list += attacking_dogtag.fallen_names
+			fallen_personnel += attacking_dogtag.fallen_references
+			qdel(attacking_dogtag)
 		return TRUE
-	else
-		. = ..()
+	
+	return ..()
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
@@ -129,7 +129,7 @@
 	var/list/voicelines_female = hallucination_sounds_female.Copy()
 	///Did a flashback event trigger?
 	var/had_flashback = FALSE
-	for(var/i = 1, i <= clamp(length(fallen_personnel), 1, 8), i++)
+	for(var/i = 1 in 1 to clamp(length(fallen_personnel), 1, 8))
 		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
 			if(had_flashback)
 				cancel_flashback(user, null, FLASHBACK_DEFAULT)
@@ -197,8 +197,6 @@
 	if(had_flashback)
 		add_to_cooldown(user, 60 SECONDS)
 
-	sleep(1 SECONDS)
-
 	///A sentence that's displayed at the end of the slab interaction.
 	var/list/realization_text = list("Those people were your family.",
 		"You'll never forget. Even if it hurts to remember.",
@@ -206,6 +204,7 @@
 		"You say your goodbyes silently.",
 		"Nothing good lasts forever.")
 	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
 
 ///Proc for adding mobs to the users_on_cooldown list.
 /obj/structure/prop/almayer/ship_memorial/proc/add_to_cooldown(mob/user, length)

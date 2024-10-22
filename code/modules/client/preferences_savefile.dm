@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 27
+#define SAVEFILE_VERSION_MAX 28
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -171,6 +171,15 @@
 		chat_settings |= CHAT_FFATTACKLOGS
 		S["toggles_chat"] << chat_settings
 
+	if(savefile_version < 28)
+		var/tutorial_string = ""
+		S["completed_tutorials"] >> tutorial_string
+		tutorial_savestring_to_list(tutorial_string)
+		if("requisitions_line" in completed_tutorials)
+			completed_tutorials -= "requisitions_line"
+			completed_tutorials += "marine_req_1"
+		S["completed_tutorials"] << tutorial_list_to_savestring()
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -287,6 +296,10 @@
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
+
+	var/tutorial_string = ""
+	S["completed_tutorials"] >> tutorial_string
+	tutorial_savestring_to_list(tutorial_string)
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
@@ -485,6 +498,8 @@
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
 
+	S["completed_tutorials"] << tutorial_list_to_savestring()
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -572,10 +587,6 @@
 
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"] >> exploit_record
-
-	var/tutorial_string = ""
-	S["completed_tutorials"] >> tutorial_string
-	tutorial_savestring_to_list(tutorial_string)
 
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
@@ -724,8 +735,6 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
-
-	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return 1
 

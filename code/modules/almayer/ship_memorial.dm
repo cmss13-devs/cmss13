@@ -6,6 +6,11 @@
  * Squad marines have the ability to have a final goodbye with their squad if enough dog tags were collected.
  */
 
+#define COOLDOWN_SLAB_CHECK "cooldown_slab_check"
+#define FLASHBACK_DEFAULT "flashback_default"
+#define FLASHBACK_SQUAD "flashback_squad"
+#define REQUIRED_DEAD_SQUADDIES 4
+
 /obj/structure/prop/almayer/ship_memorial
 	name = "slab of victory"
 	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
@@ -50,8 +55,6 @@
 		)
 	///All mobs that went through a squad flashback.
 	var/list/went_through_flashback = list()
-	///All mobs that are on a temporary cooldown from using the slab again.
-	var/list/users_on_cooldown = list()
 	///Mob references to the owners of the dogtags that are placed on the slab.
 	var/list/fallen_personnel = list()
 
@@ -64,7 +67,6 @@
 
 /obj/structure/prop/almayer/ship_memorial/Destroy()
 	QDEL_NULL_LIST(went_through_flashback)
-	QDEL_NULL_LIST(users_on_cooldown)
 	QDEL_NULL_LIST(fallen_personnel)
 	return ..()
 
@@ -77,7 +79,7 @@
 			fallen_personnel += attacking_dogtag.fallen_references
 			qdel(attacking_dogtag)
 		return TRUE
-	
+
 	return ..()
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
@@ -91,10 +93,6 @@
 				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
-#define FLASHBACK_DEFAULT 1
-#define FLASHBACK_SQUAD 2
-#define REQUIRED_DEAD_SQUADDIES 4
-
 /obj/structure/prop/almayer/ship_memorial/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 	if(user.action_busy)
@@ -104,7 +102,7 @@
 		to_chat(user, SPAN_NOTICE("It's all in the past now. You need to keep looking forward. It's what they would have wanted."))
 		return ..()
 
-	if(user in users_on_cooldown)
+	if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_SLAB_CHECK))
 		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this right now."))
 		return ..()
 
@@ -149,7 +147,7 @@
 		//There is a chance for special flashback events to trigger, and a guaranteed one for squad marines
 		//if they recover enough dogtags from their squad.
 		if(!interrupted_by_mob && !had_flashback)
-			var/flashback_type = TRUE
+			var/flashback_type
 			//If the user is part of a squad, check the memorial for dogtags belonging to their squad.
 			//If there are enough (equal or greater than REQUIRED_DEAD_SQUADDIES), trigger a special flashback sequence.
 			if(user.assigned_squad)
@@ -166,6 +164,7 @@
 
 			if(prob(i*2) && length(fallen_personnel) >= 5)
 				had_flashback = TRUE
+				flashback_type = FLASHBACK_DEFAULT
 				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
 
 		//If we somehow lose a mob reference, we need to account for it.
@@ -195,7 +194,7 @@
 			addtimer(CALLBACK(ghost, TYPE_PROC_REF(/obj/effect/client_image_holder/memorial_ghost, disappear)), rand(1.5 SECONDS, 1.9 SECONDS))
 
 	if(had_flashback)
-		add_to_cooldown(user, 60 SECONDS)
+		TIMER_COOLDOWN_START(user, COOLDOWN_SLAB_CHECK, 60 SECONDS)
 
 	///A sentence that's displayed at the end of the slab interaction.
 	var/list/realization_text = list("Those people were your family.",
@@ -203,27 +202,17 @@
 		"They're gone. And you'll never see them again.",
 		"You say your goodbyes silently.",
 		"Nothing good lasts forever.")
-	to_chat(user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>[pick(realization_text)]</b>"))
-
-///Proc for adding mobs to the users_on_cooldown list.
-/obj/structure/prop/almayer/ship_memorial/proc/add_to_cooldown(mob/user, length)
-	users_on_cooldown.Add(user)
-	addtimer(CALLBACK(src, PROC_REF(remove_from_cooldown), user), length)
-
-///Proc for removing mobs from the users_on_cooldown list.
-/obj/structure/prop/almayer/ship_memorial/proc/remove_from_cooldown(mob/user)
-	users_on_cooldown.Remove(user)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>[pick(realization_text)]</b>")), 1 SECONDS)
 
 ///Proc for canceling memorial interaction. Used when interrupted by a mob or when the do_after() is cancelled.
 /obj/structure/prop/almayer/ship_memorial/proc/cancel_flashback(mob/user, list/ghosts, flashback_type)
 	switch(flashback_type)
 		if(FLASHBACK_DEFAULT)
 			to_chat(user, SPAN_DANGER("<b>You turn away from the slab. You turn away from them all...</b>"))
-			add_to_cooldown(user, 25 SECONDS)
+			TIMER_COOLDOWN_START(user, COOLDOWN_SLAB_CHECK, 25 SECONDS)
 		if(FLASHBACK_SQUAD)
 			to_chat(user, SPAN_DANGER("<b>You turn your back on your squad. You just can't. Not now.</b>"))
-			add_to_cooldown(user, 10 SECONDS)
+			TIMER_COOLDOWN_START(user, COOLDOWN_SLAB_CHECK, 10 SECONDS)
 		else
 			to_chat(user, SPAN_NOTICE("...maybe it's better to forget."))
 
@@ -353,9 +342,9 @@
 			///Name of the user, split so we can retrieve their first name.
 			var/list/split_name = splittext(user.name, " ")
 			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
-			sleep(4 SECONDS)
-			to_chat(user, SPAN_NOTICE("<b>It feels final. Maybe it's time to look forward now.</b>"))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>It feels final. Maybe it's time to look forward now.</b>")), 3 SECONDS)
 
+#undef COOLDOWN_SLAB_CHECK
 #undef FLASHBACK_DEFAULT
 #undef FLASHBACK_SQUAD
 #undef REQUIRED_DEAD_SQUADDIES
@@ -366,8 +355,7 @@
 /obj/effect/client_image_holder/memorial_ghost/proc/disappear()
 	var/time_to_disappear = rand(0.4 SECONDS, 0.8 SECONDS)
 	animate(shown_image, alpha = 0, QUAD_EASING, time = time_to_disappear)
-	sleep(time_to_disappear)
-	qdel(src)
+	QDEL_IN(src, time_to_disappear)
 
 /obj/effect/client_image_holder/memorial_ghost/Initialize(mapload, list/mobs_which_see_us, mob/living/reference = null)
 	mob_reference = reference

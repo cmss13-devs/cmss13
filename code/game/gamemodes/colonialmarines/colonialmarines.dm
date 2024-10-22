@@ -266,7 +266,11 @@
 		if(!area_lz)
 			continue
 
-		if(area_lz != active_lz.linked_lz)
+		if(islist(area_lz))
+			if(!(active_lz.linked_lz in area_lz))
+				continue
+
+		else if(area_lz != active_lz.linked_lz)
 			continue
 
 		for(var/turf/turf in near_area)

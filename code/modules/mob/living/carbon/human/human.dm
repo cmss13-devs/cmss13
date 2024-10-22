@@ -1417,8 +1417,8 @@
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
 				for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) // make sure the splints still exist before removing
-					var/obj/limb/l = target.get_limb(bodypart)
-					if(l && (l.status & LIMB_SPLINTED))
+					var/obj/limb/target_limb = target.get_limb(bodypart)
+					if(target_limb && (target_limb.status & LIMB_SPLINTED))
 						if(user == target)
 							if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
 								same_arm_side = TRUE
@@ -1426,8 +1426,8 @@
 							if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
 								same_arm_side = TRUE
 								continue
-						to_splint.Add(l)
-				if(length(to_splint) == 0)
+						to_splint += target_limb
+				if(!length(to_splint))
 					if(same_arm_side)
 						to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
 					else

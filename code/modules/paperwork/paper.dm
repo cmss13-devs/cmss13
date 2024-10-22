@@ -923,5 +923,5 @@
 	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
 		info = "[SSmapping.configs[GROUND_MAP].liaison_briefing]"
 	else
-		info = "The Company does not have a briefing for this colony available at this time."
+		info = "<center><img src = wylogo.png><small><br><b>Weyland-Yutani Corporation</b><br>\"Building Better Worlds\"</center></small><br><u>Special Services Division</u><br>Liaison Colony Briefing<br><hr><br>The ship AI aboard your stationed ship has informed us that a distress signal has been picked up from a nearby colony, however at this time the records for the facility there are classified or unavailable. We apologize for the inconvenience."
 	update_icon()

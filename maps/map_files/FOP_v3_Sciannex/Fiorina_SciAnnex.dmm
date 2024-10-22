@@ -27157,6 +27157,10 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
+"urw" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells/east)
 "urJ" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/floor/almayer_hull,
@@ -72902,7 +72906,7 @@ cIa
 fna
 moQ
 cIa
-nVK
+urw
 jii
 vwX
 cIa

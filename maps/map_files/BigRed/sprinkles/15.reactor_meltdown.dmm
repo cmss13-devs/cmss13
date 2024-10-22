@@ -994,6 +994,10 @@
 	},
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/telecomm/engi)
+"wu" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "xl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkyellowcorners2/west,
@@ -1280,7 +1284,7 @@ aq
 cP
 cR
 dp
-cP
+wu
 df
 do
 dv

@@ -15173,6 +15173,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor,
 /area/bigredv2/outside/lz2_south_cas)
 "bvH" = (
@@ -27305,6 +27306,11 @@
 "mqh" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
+"mqu" = (
+/obj/item/tool/extinguisher,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering/reactor)
 "mqK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -53628,7 +53634,7 @@ kVT
 ayZ
 bsP
 ayZ
-ouh
+mqu
 eyR
 jXJ
 nxG

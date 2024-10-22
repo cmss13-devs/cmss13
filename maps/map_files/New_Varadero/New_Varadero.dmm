@@ -30415,6 +30415,10 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
+"xNc" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
 "xNw" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/carpet,
@@ -54666,7 +54670,7 @@ eyt
 eyt
 eyt
 wqb
-xJZ
+xNc
 viK
 xJZ
 xJZ

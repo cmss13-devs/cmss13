@@ -10536,6 +10536,10 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/shiva/bluefull/west,
 /area/shiva/interior/aerodrome)
+"hsU" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/shiva/exterior/southwest_valley)
 "hsZ" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
@@ -30561,7 +30565,7 @@ ibP
 dMo
 uji
 uji
-iDu
+hsU
 lNE
 coD
 sWW

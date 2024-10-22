@@ -969,6 +969,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
 				// 70-139: SQUADS (look below)
+				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
 				JOB_PASSENGER = 141,

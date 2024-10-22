@@ -13,8 +13,9 @@
 	name = "Marine - Requistions Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
 	icon_state = "cargotech"
-	tutorial_id = "requisitions_line"
+	tutorial_id = "marine_req_1"
 	tutorial_template = /datum/map_template/tutorial/reqs_line
+	required_tutorial = "marine_basic_1"
 
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_REQS_LINE_STAGE_STARTING

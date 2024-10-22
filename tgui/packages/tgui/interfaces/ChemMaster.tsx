@@ -54,15 +54,7 @@ type Reagent = {
 export const ChemMaster = () => {
   const { act, data } = useBackend<ChemMasterData>();
 
-  const {
-    is_connected,
-    beaker,
-    buffer,
-    mode,
-    pill_icon_choices,
-    bottle_icon_choices,
-    pill_or_bottle_icon,
-  } = data;
+  const { is_connected, beaker, buffer, mode } = data;
 
   const [glasswarePicker, setGlasswarePicker] = useState<
     'pill' | 'bottle' | false

@@ -133,6 +133,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/caves/lz_caves
 	name = "External Mining Aerodrome Caves"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/jungle/carplake_center
 	name = "Deep Jungle - Carp Lake Center Island"
@@ -147,34 +148,42 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/marsh/spring_marshes
 	name = "Cryo-Thermal Springs Marshes"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water_marshes
 	name = "Cryo-Thermal Water Marshes"
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/island_marshes
 	name = "Cryo-Thermal Island Marshes"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/relay_marshes
 	name = "Cryo-Thermal Relay Marshes"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/center
 	name = "Cryo-Thermal Springs"
 	icon_state = "marshcenter"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/river
 	name = "Cryo-Thermal River"
 	icon_state = "marshriver"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/marsh/crash
 	name = "Cryo-Thermal Crashed Lifeboat"
 	icon_state = "marshship"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water
 	name = "Cryo-Thermal Water"
 	icon_state = "marshwater"
 	temperature = TCMB //space cold
+	linked_lz = DROPSHIP_LZ2
 
 //-Outside "interiors"
 
@@ -204,9 +213,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/paths/flight_control_exterior
 	name = "Flight Control Exterior"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/mining_outpost_exterior
 	name = "Mining Outpost Exterior"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/north_outpost
 	name = "Outpost - North Access Channel"
@@ -219,6 +230,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //
@@ -304,6 +316,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/mining_outpost
 	name = "Do not use."
 	minimap_color = MINIMAP_AREA_MINING
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/mining_outpost/central
 	name = "Mining Outpost Central Hallway"
@@ -347,6 +360,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "offices"
 	minimap_color = MINIMAP_AREA_COMMAND
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/outside/wooden_hospital
 	name = "Wooden Hospital - Hospital Proper"
@@ -388,6 +402,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "outpost_engi_3"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/interior/outside/engineering/parts_storage
 	name = "Engineering Parts Storage"

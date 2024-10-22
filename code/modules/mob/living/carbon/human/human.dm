@@ -1489,6 +1489,8 @@
 /mob/living/carbon/human/synthetic/second/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_TWO)
 
+/mob/living/carbon/human/synthetic/synth_k9/Initialize(mapload)
+	. = ..(mapload, SYNTH_K9)
 
 /mob/living/carbon/human/resist_fire()
 	if(isyautja(src))

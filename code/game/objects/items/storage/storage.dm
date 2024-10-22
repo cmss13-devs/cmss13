@@ -855,6 +855,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/attack_self(mob/user)
 	..()
 
+	if(!istype(loc, /obj/item/storage/pill_bottle))
+		return FALSE
+
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(length(contents))
 		empty(user)

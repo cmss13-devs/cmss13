@@ -8,7 +8,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
         list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Butchering War Axe", 0, /obj/item/weapon/yautja/chained/war_axe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
@@ -42,7 +43,8 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
         list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+        list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Butchering War Axe", 0, /obj/item/weapon/yautja/chained/war_axe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
         list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
@@ -71,18 +73,45 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 /obj/structure/machinery/cm_vending/clothing/yautja
     name = "\improper Yautja Hunting Gear Rack"
     desc = "A gear rack for hunting, expose your bracers ID chip to access."
-    icon_state = "gear"
+    icon = 'icons/obj/items/hunter/pred_vendor.dmi'
+    icon_state = "pred_vendor_left"
     req_access = list(ACCESS_YAUTJA_SECURE)
     vendor_role = list(JOB_PREDATOR)
     show_points = FALSE
+
+/obj/structure/machinery/cm_vending/clothing/yautja/left_centre
+    name = "\improper Yautja Hunting Gear Rack"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_lcenter"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/centre
+    name = "\improper Yautja Hunting Gear Rack"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_centre"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/right_centre
+    name = "\improper Yautja Hunting Gear Rack"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_rcentre"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/right
+    name = "\improper Yautja Hunting Gear Rack"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/get_listed_products(mob/user)
     return GLOB.cm_vending_equipment_yautja
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder
     name = "\improper Yautja Elder Hunting Gear Rack"
-    icon_state = "gear"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_elder_left"
     req_access = list(ACCESS_YAUTJA_ELDER)
+
+/obj/structure/machinery/cm_vending/clothing/yautja/elder/right
+    name = "\improper Yautja Elder Hunting Gear Rack"
+    desc = "A gear rack for hunting, expose your bracers ID chip to access."
+    icon_state = "pred_vendor_elder_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/get_listed_products(mob/user)
     return GLOB.cm_vending_elder_yautja

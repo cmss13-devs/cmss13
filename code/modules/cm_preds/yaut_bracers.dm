@@ -423,6 +423,10 @@
 	var/obj/item/attached_weapon_type
 	///Reference to the weapon attached to the bracer
 	var/obj/item/attached_weapon
+	///Attachment deployment sound
+	var/deployment_sound
+	///Attachment rectraction sound
+	var/retract_sound
 
 /obj/item/bracer_attachments/Initialize(mapload, ...)
 	. = ..()
@@ -439,6 +443,8 @@
 	icon_state = "wrist"
 	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
+	deployment_sound = 'sound/weapons/wristblades_on.ogg'
+	retract_sound = 'sound/weapons/wristblades_off.ogg'
 
 /obj/item/bracer_attachments/scimitars
 	name = "scimitar bracer attachment"
@@ -446,6 +452,8 @@
 	icon_state = "scim"
 	item_state = "scim"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
+	deployment_sound = 'sound/weapons/scims_on.ogg'
+	retract_sound = 'sound/weapons/scims_off.ogg'
 
 /obj/item/bracer_attachments/scimitars_alt
 	name = "scimitar bracer attachment"
@@ -453,6 +461,8 @@
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
+	deployment_sound = 'sound/weapons/Scims_alt_on.ogg'
+	retract_sound = 'sound/weapons/Scims_alt_off.ogg'
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
@@ -485,7 +495,7 @@
 		user.drop_inv_item_to_loc(bracer_attachment, src)
 
 	to_chat(user, SPAN_NOTICE("You attach [bracer_attachment] to [src]."))
-
+	playsound(loc, 'sound/weapons/pred_attach.ogg')
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_attachment()
@@ -579,7 +589,7 @@
 				bracer_attachment_deployed = TRUE
 
 	if(bracer_attachment_deployed)
-		playsound(caller, 'sound/weapons/wristblades_on.ogg', 15, TRUE)
+		playsound(loc,right_bracer_attachment.deployment_sound, 30, TRUE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/caller) //if the attachments weapon is in the callers hands, retract them back into the attachments
 	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == caller)
@@ -591,7 +601,7 @@
 		to_chat(caller, SPAN_NOTICE("You retract [right_bracer_attachment.attached_weapon]."))
 
 	bracer_attachment_deployed = FALSE
-	playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
+	playsound(loc, right_bracer_attachment.retract_sound, 30, TRUE)
 	return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
@@ -851,7 +861,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
+	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)

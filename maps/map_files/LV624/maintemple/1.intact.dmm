@@ -232,12 +232,6 @@
 	icon_state = "Synthetic_Template";
 	name = "massive statue"
 	},
-/obj/item/weapon/yautja/combistick{
-	anchored = 1;
-	color = "#FFE55C";
-	desc = "This ancient and frayed gilded spear almost gleans with its razor-sharp edge.";
-	name = "strange spear"
-	},
 /obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1;
 	color = "#FFE55C";
@@ -255,6 +249,12 @@
 	color = "#FFE55C";
 	icon_state = "y-boots2";
 	name = "gilded clan greaves"
+	},
+/obj/item/weapon/yautja/chained/combistick{
+	color = "#FFE55C";
+	name = "strange spear";
+	anchored = 1;
+	desc = "This ancient and frayed gilded spear almost gleans with it's razor sharp edge."
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)

@@ -207,6 +207,8 @@
 	return "xenobloodweave"
 /mob/living/carbon/xenomorph/weaver/get_blood_id()
 	return "xenobloodweave"
+/mob/living/carbon/xenomorph/weaveguard/get_blood_id()
+	return "xenobloodweave"
 /mob/living/carbon/xenomorph/prime_weaver/get_blood_id()
 	return "xenobloodweave"
 /mob/living/carbon/human/get_blood_id()

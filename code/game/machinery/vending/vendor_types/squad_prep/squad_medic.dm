@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Pill Bottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
 		list("Pill Bottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pillbottle (ImiAlky)", 6, /obj/item/storage/pill_bottle/imialky, null, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", 0, null, null, null),
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),

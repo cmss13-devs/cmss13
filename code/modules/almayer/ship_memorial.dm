@@ -122,7 +122,7 @@
 	var/list/voicelines_female = hallucination_sounds_female.Copy()
 	///Did a flashback event trigger?
 	var/had_flashback = FALSE
-	for(var/i = 1 in 1 to clamp(length(fallen_personnel), 1, 8))
+	for(var/i in 1 to clamp(length(fallen_personnel), 1, 8))
 		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
 			if(had_flashback)
 				cancel_flashback(user, null, FLASHBACK_DEFAULT)

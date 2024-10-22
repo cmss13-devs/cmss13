@@ -54,10 +54,12 @@
 	name = "security beret"
 	desc = "A beret with the security insignia emblazoned on it. For officers that are more inclined towards style than safety."
 	icon_state = "beret_badge"
+
 /obj/item/clothing/head/beret/sec/alt
 	name = "officer beret"
 	desc = "A navy-blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "officerberet"
+
 /obj/item/clothing/head/beret/sec/hos
 	name = "officer beret"
 	desc = "A navy-blue beret with a captain's rank emblem. For officers that are more inclined towards style than safety."
@@ -66,10 +68,12 @@
 	name = "warden beret"
 	desc = "A navy-blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "wardenberet"
+
 /obj/item/clothing/head/beret/eng
 	name = "engineering beret"
 	desc = "A beret with the engineering insignia emblazoned on it. For engineers that are more inclined towards style than safety."
 	icon_state = "e_beret_badge"
+
 /obj/item/clothing/head/beret/jan
 	name = "purple beret"
 	desc = "A stylish, if purple, beret."

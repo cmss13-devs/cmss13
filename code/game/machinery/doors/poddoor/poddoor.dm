@@ -212,3 +212,4 @@
 	icon_state = "pdoor1"
 	base_icon_state = "pdoor"
 	unslashable = TRUE
+	emp_proof = TRUE

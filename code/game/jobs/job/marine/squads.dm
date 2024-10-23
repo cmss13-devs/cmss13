@@ -701,6 +701,12 @@
 				if(JOB_SQUAD_LEADER)
 					if(!leader_killed)
 						old_lead.comm_title = "Sgt"
+				if(JOB_MARINE_RAIDER)
+					old_lead.comm_title = "Op."
+				if(JOB_MARINE_RAIDER_SL)
+					old_lead.comm_title = "TL."
+				if(JOB_MARINE_RAIDER_CMD)
+					old_lead.comm_title = "CMD."
 				else
 					old_lead.comm_title = "RFN"
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)

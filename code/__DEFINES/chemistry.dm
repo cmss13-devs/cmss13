@@ -277,9 +277,9 @@
 /// Amount of contract chemicals that should be generated
 #define RESEARCH_CONTRACT_CHEM_AMOUNT 3
 ///reroll in X minutes if our contract is NOT picked
-#define RESEARCH_CONTRACT_NOT_PICKED 2 MINUTES
+#define RESEARCH_CONTRACT_NOT_PICKED 4 MINUTES
 ///reroll in X minutes if our contract IS picked
-#define RESEARCH_CONTRACT_PICKED 5 MINUTES
+#define RESEARCH_CONTRACT_PICKED 10 MINUTES
 /// Scales tech level to max amplification level
 #define TECHTREE_LEVEL_MULTIPLIER 2
 /// how many properties to combine into legendary

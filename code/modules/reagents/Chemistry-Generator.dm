@@ -189,7 +189,7 @@
 					gen_value = add_property(null,null,0,TRUE) //Give rare property
 				else
 					gen_value = add_property(null,null,0,FALSE,TRUE)
-			else if(gen_value == gen_tier * 2 - 1) //If we are balanced, don't add any more
+			else if(gen_value == gen_tier * 2 + 2) //If we are balanced, don't add any more
 				break
 			else if(gen_tier < 3)
 				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance

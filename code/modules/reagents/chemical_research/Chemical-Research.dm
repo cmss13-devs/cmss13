@@ -175,7 +175,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				else
 					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
-				C.credit_reward = 8
+				C.credit_reward = 9
 				C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
 		C.property_hint = pick(C.properties)
 		contract_chems[C.id] = C

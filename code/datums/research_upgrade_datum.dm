@@ -96,9 +96,9 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	item_reference = /obj/item/research_upgrades/reroll
-	change_purchase = 500
-	maximum_price = 3000
-	clearance_req = 5
+	change_purchase = 200
+	maximum_price = 2000
+	clearance_req = 3
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"

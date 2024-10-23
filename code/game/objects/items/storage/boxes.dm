@@ -652,6 +652,10 @@
 	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
 	has_gamemode_skin = TRUE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()

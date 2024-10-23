@@ -1,7 +1,7 @@
 /obj/item/tool/crew_monitor
 	name = "crew monitor"
 	desc = "A tool used to get coordinates to deployed personnel. It was invented after it was found out 3/4 command officers couldn't read numbers."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL

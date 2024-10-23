@@ -14,7 +14,10 @@
 	///Icon/item states change based on contents; this stores base icon state.
 	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
-
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 
 /obj/item/storage/large_holster/post_skin_selection()
 	base_icon = icon_state

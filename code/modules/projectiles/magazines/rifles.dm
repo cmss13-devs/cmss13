@@ -528,3 +528,35 @@
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 	transfer_handful_amount = 6
+//-------------------------------------------------------
+//P9 SHARP Rifle
+
+/obj/item/ammo_magazine/rifle/sharp
+	name = "sharp rifle magazine"
+	icon_state = "sharp_explosive_mag"
+	item_state = "sharprifle"
+	caliber = "Dart"
+	w_class = SIZE_MEDIUM
+	max_rounds = 10
+	default_ammo = /datum/ammo/rifle/sharp/explosive
+	gun_type = /obj/item/weapon/gun/rifle/sharp
+	transfer_handful_amount = 5
+
+
+	description_ammo = "darts"
+
+/obj/item/ammo_magazine/rifle/sharp/explosive
+	name = "\improper 9X-E sticky explosive dart magazine"
+	desc = "A specialized sticky explosive dart magazine."
+
+/obj/item/ammo_magazine/rifle/sharp/incendiary
+	name = "\improper 9X-T sticky incendiary dart magazine"
+	desc = "A specialized incendiary dart magazine."
+	icon_state = "sharp_incendiary_mag"
+	default_ammo = /datum/ammo/rifle/sharp/incendiary
+
+/obj/item/ammo_magazine/rifle/sharp/flechette
+	name = "\improper 9X-F flechette dart magazine"
+	desc = "A specialized flechette dart magazine."
+	icon_state = "sharp_flechette_mag"
+	default_ammo = /datum/ammo/rifle/sharp/flechette

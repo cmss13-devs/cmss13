@@ -6,7 +6,7 @@
 	icon_state = "binoculars"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	force = 5
 	w_class = SIZE_SMALL
 	throwforce = 5

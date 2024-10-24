@@ -29,34 +29,6 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 
-/obj/item/clothing/head/redcoat
-	name = "redcoat's hat"
-	icon_state = "redcoat"
-	desc = "<i>'I guess it's a redhead.'</i>"
-	flags_armor_protection = 0
-
-/obj/item/clothing/head/mailman
-	name = "station cap"
-	icon_state = "mailman"
-	desc = "<i>Choo-choo</i>!"
-	flags_armor_protection = 0
-
-/obj/item/clothing/head/plaguedoctorhat
-	name = "plague doctor's hat"
-	desc = "These were once used by Plague doctors. They're pretty much useless."
-	icon_state = "plaguedoctor"
-	permeability_coefficient = 0.01
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
-
-/obj/item/clothing/head/hasturhood
-	name = "hastur's hood"
-	desc = "It's unspeakably stylish"
-	icon_state = "hasturhood"
-	flags_inventory = COVEREYES
-	flags_inv_hide = HIDEEARS|HIDEALLHAIR
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-
 /obj/item/clothing/head/nursehat
 	name = "nurse's hat"
 	desc = "It allows quick identification of trained medical personnel."
@@ -74,16 +46,6 @@
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	anti_hug = 1
-
-/obj/item/clothing/head/cueball
-	name = "cueball helmet"
-	desc = "A large, featureless white orb mean to be worn on your head. How do you even see out of this thing?"
-	icon_state = "cueball"
-	flags_inventory = COVEREYES|COVERMOUTH
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
-	item_state="cueball"
-	flags_inventory = 0
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/greenbandana
 	name = "green bandana"
@@ -103,30 +65,6 @@
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
-/obj/item/clothing/head/justice
-	name = "justice hat"
-	desc = "fight for what's righteous!"
-	icon_state = "justicered"
-	item_state = "justicered"
-	flags_inventory = COVERMOUTH|COVEREYES
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
-
-/obj/item/clothing/head/justice/blue
-	icon_state = "justiceblue"
-	item_state = "justiceblue"
-
-/obj/item/clothing/head/justice/yellow
-	icon_state = "justiceyellow"
-	item_state = "justiceyellow"
-
-/obj/item/clothing/head/justice/green
-	icon_state = "justicegreen"
-	item_state = "justicegreen"
-
-/obj/item/clothing/head/justice/pink
-	icon_state = "justicepink"
-	item_state = "justicepink"
-
 /obj/item/clothing/head/flatcap
 	name = "flat cap"
 	desc = "A working man's cap."
@@ -140,21 +78,6 @@
 	icon_state = "pirate"
 	item_state = "pirate"
 	flags_armor_protection = 0
-
-/obj/item/clothing/head/hgpiratecap
-	name = "pirate hat"
-	desc = "Yarr."
-	icon_state = "hgpiratecap"
-	item_state = "hgpiratecap"
-	flags_armor_protection = 0
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/head/bandana
 	name = "pirate bandana"
@@ -241,15 +164,6 @@
 	desc = "You should wear a fez. Fezzes are cool."
 
 //end bs12 hats
-
-/obj/item/clothing/head/witchwig
-	name = "witch costume wig"
-	desc = "Eeeee~heheheheheheh!"
-	icon_state = "witch"
-	item_state = "witch"
-	flags_inventory = NO_FLAGS
-	flags_inv_hide = HIDEALLHAIR
-	siemens_coefficient = 2
 
 /obj/item/clothing/head/chicken
 	name = "chicken suit head"

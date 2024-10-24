@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
-	icon = 'icons/mob/xenos/boiler.dmi'
+	icon = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_size = 64
 	icon_state = "Boiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
@@ -55,8 +55,8 @@
 	tileoffset = 3
 	viewsize = 7
 
-	icon_xeno = 'icons/mob/xenos/boiler.dmi'
-	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")

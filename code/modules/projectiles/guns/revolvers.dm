@@ -532,7 +532,7 @@
 /obj/item/weapon/mateba_key
 	name = "mateba barrel key"
 	desc = "Used to swap the barrels of a mateba revolver."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "matebakey"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 5

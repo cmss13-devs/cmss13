@@ -17,7 +17,7 @@
  */
 
 /obj/item/storage/fancy
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
@@ -45,7 +45,7 @@
 // EGG BOX
 
 /obj/item/storage/fancy/egg_box
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/eggs.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg carton"
@@ -83,7 +83,7 @@
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
 	desc = "A box of every flavor of crayon."
-	icon = 'icons/obj/items/crayons.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonbox"
 	w_class = SIZE_SMALL
 	storage_slots = 6
@@ -101,9 +101,9 @@
 
 /obj/item/storage/fancy/crayons/update_icon()
 	overlays = list() //resets list
-	overlays += image('icons/obj/items/crayons.dmi',"crayonbox")
+	overlays += image('icons/obj/items/paint.dmi',"crayonbox")
 	for(var/obj/item/toy/crayon/crayon in contents)
-		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
+		overlays += image('icons/obj/items/paint.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/toy/crayon))
@@ -119,7 +119,7 @@
 // CIGARETTES BOX
 
 /obj/item/storage/fancy/cigarettes
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/packets/normal.dmi'
 	icon_state = "cigpacket"
 	name = "cigarette packet"
 	desc = "A packet of cigarettes with a built-in lighter compartment."
@@ -176,12 +176,14 @@
 	name = "\improper Weyland-Yutani Gold packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weyland-Yutani's entry into the market. Comes backed by a fierce legal team."
 	icon_state = "wypacket"
+	icon = 'icons/obj/items/smoking/packets/wy_gold.dmi'
 	item_state = "wypacket"
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes...as the leading cause of marine lung cancer."
 	icon_state = "lspacket"
+	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
 	item_state = "lspacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
@@ -189,6 +191,7 @@
 	name = "\improper Executive Select packet"
 	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory...and cigarette smoke."
 	icon_state = "blackpacket"
+	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
 
@@ -196,18 +199,21 @@
 	name = "\improper Koorlander Gold packet"
 	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
 	icon_state = "kpacket"
+	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
 	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
 	icon_state = "aapacket"
+	icon = 'icons/obj/items/smoking/packets/arcturian_ace.dmi'
 	item_state = "aapacket"
 
 /obj/item/storage/fancy/cigarettes/lady_finger
 	name = "\improper Lady Fingers packet"
 	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."
 	icon_state = "lfpacket"
+	icon = 'icons/obj/items/smoking/packets/lady_fingers.dmi'
 	item_state = "lfpacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
@@ -215,6 +221,7 @@
 	name = "\improper Lucky Strikes Mini Packet"
 	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
 	icon_state = "ls4packet"
+	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
 	item_state = "lspacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
@@ -223,6 +230,7 @@
 	name = "\improper WeyYu Gold Military Trading Card packet"
 	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
 	icon_state = "collectpacket"
+	icon = 'icons/obj/items/smoking/packets/trading_card.dmi'
 	item_state = "collectpacket"
 	storage_slots = 21
 	can_hold = list(
@@ -266,7 +274,7 @@
 	desc = "A case for holding your cigars when you are not smoking them."
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST

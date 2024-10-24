@@ -158,7 +158,7 @@
 			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
 			src_boiler.smoke.start()
 		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
-			icon_path = 'icons/mob/xenos/larva.dmi'
+			icon_path = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 
 	remains.icon_state = gib_state
 	remains.icon = icon_path
@@ -181,7 +181,7 @@
 		if(XENO_CASTE_BOILER)
 			to_flick = "gibbed-a-boiler"
 		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
-			icon_path = 'icons/mob/xenos/larva.dmi'
+			icon_path = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 

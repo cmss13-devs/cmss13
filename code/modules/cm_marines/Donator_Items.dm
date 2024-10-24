@@ -11,8 +11,8 @@
 	icon_state = null
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/hats.dmi'
-	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
+	icon = 'icons/obj/items/clothing/hats/donator.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
@@ -69,8 +69,8 @@
 	item_state = null
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'  //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
@@ -82,8 +82,8 @@
 	item_state = null
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi' //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
@@ -128,6 +128,10 @@
 
 /obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
 	name = "ITEM NAME"
@@ -959,10 +963,11 @@
 	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	icon_state = null
 	item_state = null
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
 	)
 
 //END UNIFORM TEMPLATE
@@ -1221,7 +1226,7 @@
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
 	desc = "A white colored PMC Mask.  DONOR ITEM."
-	icon_override = 'icons/mob/humans/onmob/mask.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
@@ -1323,12 +1328,22 @@
 	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "tactical radiopack"
@@ -1340,9 +1355,28 @@
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
 	desc = "Plenty of pouches and pockets. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "skinnerrangerpack"
 	item_state = "skinnerrangerpack"
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"
@@ -1361,12 +1395,17 @@
 	desc = "Belt worn by the dreaded Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "swordbelt_u"
 	item_state = "swordbelt_u"
+	icon = 'icons/obj/items/clothing/belts/donator.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/donator.dmi',
+	)
+	has_gamemode_skin = FALSE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex
 	name = "purple zippo lighter"
 	desc = "A Purple Zippo lighter, engraved with the name John Donable... UNIQUE DONOR ITEM."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "bluezippo"
 
 /obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex

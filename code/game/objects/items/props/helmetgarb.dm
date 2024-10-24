@@ -542,8 +542,8 @@
 /obj/item/prop/helmetgarb/family_photo
 	name = "family photo"
 	desc = ""
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	///The human who spawns with the photo
 	var/datum/weakref/owner
 	///The belonging human name
@@ -601,7 +601,7 @@
 /obj/item/prop/helmetgarb/compass
 	name = "compass"
 	desc = "It always faces north. Are you sure it is not broken?"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "compass"
 	w_class = SIZE_SMALL
 

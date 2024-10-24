@@ -1,7 +1,7 @@
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "banana_peel"
 	item_state = "banana_peel"
 	w_class = SIZE_TINY
@@ -15,23 +15,10 @@
 		var/mob/living/carbon/C = AM
 		C.slip(name, 4, 2)
 
-/*
-/obj/item/game_kit
-	name = "Gaming Kit"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "game_kit"
-	var/selected = null
-	var/board_stat = null
-	var/data = ""
-	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
-	item_state = "sheet-metal"
-	w_class = SIZE_HUGE
-*/
-
 /obj/item/gift
 	name = "gift"
 	desc = "A wrapped item."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift3"
 	var/size = 3
 	var/obj/item/gift = null
@@ -41,7 +28,7 @@
 /obj/item/weapon/pole
 	name = "wooden pole"
 	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
 	force = 20
@@ -295,7 +282,10 @@
 /obj/item/parachute
 	name = "parachute"
 	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
+	)
 	icon_state = "parachute_pack"
 	item_state = "parachute_pack"
 	w_class = SIZE_MASSIVE

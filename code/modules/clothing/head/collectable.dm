@@ -16,13 +16,17 @@
 	desc = "A top hat worn by only the most prestigious hat collectors."
 	icon_state = "tophat"
 	item_state = "that"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/collectable/tophat/super
 	name = "collectable super top hat"
 	desc = "A super top hat worn by only the highest echelon of hat collectors."
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_64.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
 	icon_state = "super_top_hat"
 	item_state = "super_top_hat"

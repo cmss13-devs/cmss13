@@ -288,7 +288,7 @@
 /obj/item/storage/pouch/pistol/proc/update_gun_icon()
 	if(current_gun)
 		playsound(src, drawSound, 15, TRUE)
-		gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
+		gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
 		gun_underlay.pixel_x = icon_x
 		gun_underlay.pixel_y = icon_y
 		gun_underlay.color = current_gun.color

@@ -176,8 +176,8 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 		)
 
 	/// The typepath of the flag structure that gets spawned when the flag is planted.

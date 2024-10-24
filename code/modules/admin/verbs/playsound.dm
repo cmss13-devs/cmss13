@@ -74,7 +74,7 @@
 		music_extra_data["start"] = data["start_time"]
 		music_extra_data["end"] = data["end_time"]
 
-		if(isnull[data["title"]])
+		if(isnull(data["title"]))
 			data["title"] = tgui_input_text(src, "What is the title of this media?", "Media Title")
 		title = data["title"]
 		music_extra_data["title"] = data["title"]

@@ -43,6 +43,7 @@
 #define CLAN_RANK_ELDER_INT 5
 #define CLAN_RANK_LEADER_INT 6
 #define CLAN_RANK_ADMIN_INT 7
+#define CLAN_RANK_SUPERADMIN_INT 10
 
 /// Hard limit
 #define CLAN_LIMIT_NUMBER 1
@@ -91,3 +92,12 @@
 		)
 
 #define CLAN_SHIP_PUBLIC -1
+
+#define CLAN_ANCILLARY_NONE "None"
+#define CLAN_ANCILLARY_ENFORCER "Enforcer"
+#define CLAN_ANCILLARY_HOUND_MASTER "Hound Master"
+#define CLAN_ANCILLARY_TASK_MASTER "Task Master"
+#define CLAN_ANCILLARY_ADJUTANT "Adjutant"
+#define CLAN_ANCILLARY_SHAMAN "Shaman"
+#define CLAN_ANCILLARY_HIGH_ENFORCER "High Enforcer"
+#define CLAN_ANCILLARY_HIGH_SHAMAN "High Shaman"

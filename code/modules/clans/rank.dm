@@ -42,3 +42,50 @@
 
 	permission_required = CLAN_PERMISSION_ADMIN_MANAGER
 	permissions = CLAN_PERMISSION_ADMIN_ANCIENT
+
+
+
+/datum/yautja_ancillary
+	var/name
+
+	var/limit_type = CLAN_LIMIT_SIZE
+	var/limit = 5
+
+	/// The rank INTEGER or Ancillary TEXT needed to grant.
+	var/granter_title_required = CLAN_RANK_LEADER_INT
+	/// The target rank INTEGER needed for the ancillary.
+	var/target_rank_required = CLAN_RANK_ELITE_INT
+
+/datum/yautja_ancillary/high_enforcer
+	name = CLAN_ANCILLARY_HIGH_ENFORCER
+	target_rank_required = CLAN_RANK_ELDER_INT
+	limit_type = CLAN_LIMIT_NUMBER
+	limit = 1
+
+/datum/yautja_ancillary/enforcer
+	name = CLAN_ANCILLARY_ENFORCER
+	granter_title_required = CLAN_ANCILLARY_HIGH_ENFORCER
+
+/datum/yautja_ancillary/high_shaman
+	name = CLAN_ANCILLARY_HIGH_SHAMAN
+	target_rank_required = CLAN_RANK_ELDER_INT
+	limit_type = CLAN_LIMIT_NUMBER
+	limit = 1
+
+/datum/yautja_ancillary/shaman
+	name = CLAN_ANCILLARY_SHAMAN
+	granter_title_required = CLAN_ANCILLARY_HIGH_SHAMAN
+
+/datum/yautja_ancillary/adjutant
+	name = CLAN_ANCILLARY_ADJUTANT
+
+/datum/yautja_ancillary/hound_master
+	name = CLAN_ANCILLARY_HOUND_MASTER
+
+/datum/yautja_ancillary/task_master
+	name = CLAN_ANCILLARY_TASK_MASTER
+
+/datum/yautja_ancillary/clear
+	name = CLAN_ANCILLARY_NONE
+	limit = null
+	limit_type = null

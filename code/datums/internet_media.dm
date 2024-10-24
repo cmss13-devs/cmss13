@@ -44,8 +44,8 @@
 
 	try
 		data = json_decode(stdout)
-	catch(var/exception/e)
-		error = "Youtube-dl JSON parsing FAILED: [e]: [stdout]"
+	catch(var/exception/decode_error)
+		error = "Youtube-dl JSON parsing FAILED: [decode_error]: [stdout]"
 		return
 
 	return new /datum/media_response(data["url"], data["title"], data["start_time"], data["end_time"])
@@ -83,8 +83,8 @@
 	var/list/response
 	try
 		response = json_decode(response_raw.body)
-	catch(var/exception/e)
-		error = "cobalt.tools JSON parsing FAILED: [e]: [response_raw.body]"
+	catch(var/exception/decode_error)
+		error = "cobalt.tools JSON parsing FAILED: [decode_error]: [response_raw.body]"
 		return
 
 	if(!(response["status"] in list("redirect", "tunnel")))

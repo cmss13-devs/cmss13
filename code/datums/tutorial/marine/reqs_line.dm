@@ -89,6 +89,7 @@
 		/obj/item/device/binoculars = list("Binos", "Binoculars"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
+		/obj/item/pamphlet/skill/fireman_carry = list("Fireman Carry Pamphlet"),
 		/* Explosives */
 		/obj/item/explosive/grenade/high_explosive = list("M40 HEDP", "HEDP"),
 		/obj/item/explosive/grenade/incendiary = list("M40 HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),

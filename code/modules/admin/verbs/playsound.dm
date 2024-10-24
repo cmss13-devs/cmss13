@@ -16,15 +16,15 @@
 	var/announce_title = TRUE
 
 	if(sound_mode == "Web")
-		var/datum/internet_media/media_player
+		var/list/datum/internet_media/media_players = list()
+
+		if(CONFIG_GET(string/invoke_youtubedl))
+			media_players = new /datum/internet_media/yt_dlp
 
 		if(CONFIG_GET(string/cobalt_base_api))
-			media_player = new /datum/internet_media/cobalt
+			media_players = new /datum/internet_media/cobalt
 
-		else if(CONFIG_GET(string/invoke_youtubedl))
-			media_player = new /datum/internet_media/yt_dlp
-
-		if(!media_player)
+		if(!length(media_players))
 			to_chat(src, SPAN_BOLDWARNING("Your server host has not set up any web media players."))
 			return
 
@@ -34,7 +34,19 @@
 
 		web_sound_input = trim(web_sound_input)
 
-		var/datum/media_response/response = media_player.get_media(web_sound_input)
+		var/datum/media_response/response
+		for(var/datum/internet_media/player as anything in media_players)
+			response = player.get_media(web_sound_input)
+
+			if(istype(response))
+				break
+
+		if(!istype(response))
+			to_chat(src, SPAN_BOLDWARNING("All configured web media players failed to provide a valid response:"))
+			for(var/datum/internet_media/player as anything in media_players)
+				to_chat(src, SPAN_WARNING("[player.type] error: [player.error]"))
+			return
+
 		data = response.get_list()
 
 	else if(sound_mode == "Upload")

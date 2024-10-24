@@ -649,6 +649,12 @@
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
 	icon_state = "bluemetal1"
 
+/turf/open/floor/hybrisa/metal/red_warning_floor
+	icon_state = "warning_red_floor"
+
+/turf/open/floor/hybrisa/metal/yellow_warning_floor
+	icon_state = "warning_yellow_floor"
+
 /turf/open/floor/hybrisa/metal/bluemetal1
 	icon_state = "bluemetal1"
 

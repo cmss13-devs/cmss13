@@ -112,3 +112,8 @@
 	secondary_skill = SKILL_RESEARCH
 	secondary_skill_cap = 3
 	skill_increment = 3
+
+/datum/character_trait/skills/fireman_carry
+	trait_name = "Fireman Carry Training"
+	trait_desc = "Boosts the Fireman Carry skill to 1. Crewmember recieved training in more effective man-carrying."
+	skill = SKILL_FIREMAN

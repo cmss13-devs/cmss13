@@ -60,6 +60,12 @@
 	icon_state = "pamphlet_jtac"
 	trait = /datum/character_trait/skills/jtac
 
+/obj/item/pamplet/skill/fireman_carry
+	name = "Fireman carry instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of someone being fireman carried."
+	icon_state = "pamphlet_written" // Note to self: make sprite
+	trait = /datum/character_trait/skills/fireman_carry
+
 /obj/item/pamphlet/skill/spotter
 	name = "Spotter instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a pair of binoculars on it."

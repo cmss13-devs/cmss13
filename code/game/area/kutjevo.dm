@@ -67,18 +67,25 @@
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/spring
 	name = "Kutjevo - Southern Spring"
 	icon_state = "lz_river"
 
 /area/kutjevo/exterior/scrubland
-	name = "Kutjevo - Scrubland"
+	name = "Kutjevo - North Scrubland"
 	icon_state = "scrubland"
+	linked_lz = DROPSHIP_LZ2
+
+/area/kutjevo/exterior/scrubland/south
+	name = "Kutjevo - South Scrubland"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/kutjevo/exterior/stonyfields
 	name = "Kutjevo - Stony Fields"
 	icon_state = "stone_fields"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/Northwest_Colony
 	name = "Kutjevo - Northwest Colony Grounds"
@@ -88,6 +95,7 @@
 /area/kutjevo/exterior/runoff_dunes
 	name = "Kutjevo - Runoff Dunes"
 	icon_state = "rf_dunes"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/runoff_river
 	name = "Kutjevo - Runoff River"
@@ -227,6 +235,7 @@
 	ceiling = CEILING_METAL
 	icon_state = "power"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/interior/power/comms
 	name = "Kutjevo - Hydroelectric Dam Comms Relay"

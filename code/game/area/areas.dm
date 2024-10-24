@@ -82,6 +82,10 @@
 	/// Doesn't need to be set for areas/Z levels that are marked as admin-only
 	var/block_game_interaction = FALSE
 
+	/// Which, if any, LZ this area belongs to. If an area belongs to an LZ, if that LZ is designated as the primary
+	/// LZ, all weeds will be destroyed and further weed placement disabled
+	var/linked_lz = FALSE
+
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -418,3 +422,10 @@
 		areas_in_z["[z]"] = list()
 	areas_in_z["[z]"] += src
 
+/**
+ * Purges existing weeds, and prevents future weeds from being placed.
+ */
+/area/proc/purge_weeds()
+	SEND_SIGNAL(src, COMSIG_AREA_RESIN_DISALLOWED)
+
+	is_resin_allowed = FALSE

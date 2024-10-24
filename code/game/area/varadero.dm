@@ -59,11 +59,13 @@
 	name = "New Varadero - Communications Project Site"
 	icon_state = "comms2"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/interior/comms3
 	name = "New Varadero - Engineering Communications"
 	icon_state = "comms3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/exterior/comms4
 	name = "New Varadero - Walkway Extension"
@@ -201,6 +203,7 @@
 	name = "New Varadero - Medical"
 	icon_state = "offices2"
 	minimap_color = MINIMAP_AREA_MEDBAY
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/varadero/interior/maintenance
 	name = "New Varadero - Central Maintenance"
@@ -215,11 +218,19 @@
 	name = "New Varadero - Research Maintenance"
 	icon_state = "tunnels1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	linked_lz = DROPSHIP_LZ1
 
 /area/varadero/interior/maintenance/security
-	name = "New Varadero - Security Maintenance"
+	name = "New Varadero - Sec. Maintenance"
 	icon_state = "tunnels2"
 	minimap_color = MINIMAP_AREA_SEC_CAVE
+
+/area/varadero/interior/maintenance/security/north
+	name = "New Varadero - North Sec. Maintenance"
+	linked_lz = DROPSHIP_LZ2
+
+/area/varadero/interior/maintenance/security/south
+	name = "New Varadero - South Sec. Maintenance"
 
 /area/varadero/interior/research
 	name = "New Varadero - Research Offices"
@@ -230,6 +241,7 @@
 	name = "New Varadero - Electrical Annex"
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/interior/toilets
 	name = "New Varadero - Restrooms"
@@ -264,11 +276,13 @@
 	name = "New Varadero - Basketball Court"
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/varadero/interior/mess
 	name = "New Varadero - Mess Hall"
 	icon_state = "req2"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/interior/bunks
 	name = "New Varadero - Level 1 Quarters"

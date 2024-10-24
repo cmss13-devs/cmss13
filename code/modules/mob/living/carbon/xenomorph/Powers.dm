@@ -142,6 +142,10 @@
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 
+	var/area/resin_area = get_area(new_resin)
+	if(resin_area && resin_area.linked_lz)
+		new_resin.AddComponent(/datum/component/resin_cleanup)
+
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
 			if(enclosed_human.stat == DEAD)

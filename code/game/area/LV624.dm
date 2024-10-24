@@ -38,6 +38,7 @@
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/west_jungle/ceiling
 	ceiling = CEILING_GLASS
@@ -177,10 +178,12 @@
 /area/lv624/ground/colony/north_tcomms_road
 	name = "\improper North T-Comms Road"
 	icon_state = "north"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
@@ -193,11 +196,13 @@
 
 /area/lv624/ground/colony/telecomm/cargo
 	name = "\improper Far North Storage Dome Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 
 /area/lv624/ground/colony/telecomm/sw_lz1
 	name = "\improper South-West LZ1 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/colony/telecomm/tcommdome
 	name = "\improper Telecomms Dome Communications Relay"
@@ -209,6 +214,7 @@
 /area/lv624/ground/colony/telecomm/sw_lz2
 	name = "\improper South-West LZ2 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
@@ -283,9 +289,11 @@
 
 /area/lv624/lazarus/landing_zones/lz1
 	name = "\improper Alamo Landing Zone"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/landing_zones/lz2
 	name = "\improper Normandy Landing Zone"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus
 	name = "\improper Lazarus"
@@ -295,11 +303,13 @@
 /area/lv624/lazarus/corporate_dome
 	name = "\improper Corporate Dome"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/yggdrasil
 	name = "\improper Yggdrasil Tree"
 	icon_state = "atmos"
 	ceiling = CEILING_GLASS
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
@@ -315,16 +325,19 @@
 	name = "\improper Security"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
 	icon_state = "captain"
 	minimap_color = MINIMAP_AREA_COMMAND
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
 	minimap_color = MINIMAP_AREA_COMMAND
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
@@ -344,6 +357,7 @@
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/chapel
 	name = "\improper Chapel"

@@ -108,23 +108,42 @@
 	name = "Fiorina - Low Security Cells"
 	icon_state = "station1"
 
+/area/fiorina/station/lowsec/showers_laundry
+	name = "Fiorina - Low Security Showers & Laundry"
+	linked_lz = DROPSHIP_LZ2
+
+/area/fiorina/station/lowsec/east
+	name = "Fiorina - Low Security Eastside"
+	linked_lz = DROPSHIP_LZ1
+
 /area/fiorina/station/power_ring
 	name = "Fiorina - Engineering Ring"
 	icon_state = "power0"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
+
+/area/fiorina/station/power_ring/reactor
+	name = "Fiorina - Engineering Reactor"
+	linked_lz = null
 
 /area/fiorina/station/disco
-	name = "Fiorina - Disco Storage"
+	name = "Fiorina - West Disco Storage"
 	icon_state = "disco"
+
+/area/fiorina/station/disco/east_disco
+	name = "Fiorina - East Disco Storage"
+	linked_lz = DROPSHIP_LZ1
 
 /area/fiorina/station/flight_deck
 	name = "Fiorina - Flight Deck"
 	icon_state = "police_line"
+	linked_lz = DROPSHIP_LZ1
 
 /area/fiorina/station/security
 	name = "Fiorina - Security Hub"
 	icon_state = "security_hub"
 	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ2
 
 /area/fiorina/station/security/wardens
 	name = "Fiorina - Warden's Office"
@@ -166,6 +185,16 @@
 	icon_state = "station0"
 	minimap_color = MINIMAP_AREA_RESEARCH
 
+/area/fiorina/station/research_cells/west
+	name = "Fiorina - West Research Cellblock"
+
+/area/fiorina/station/research_cells/east
+	name = "Fiorina - East Research Cellblock"
+	linked_lz = DROPSHIP_LZ1
+
+/area/fiorina/station/research_cells/basketball
+	name = "Fiorina - Basketball Court"
+	linked_lz = DROPSHIP_LZ1
 
 //telecomms areas
 /area/fiorina/station/telecomm

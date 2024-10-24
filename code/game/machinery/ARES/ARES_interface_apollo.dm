@@ -73,75 +73,14 @@
 		ui.open()
 
 /obj/structure/machinery/computer/working_joe/ui_data(mob/user)
-	var/list/data = list()
+	var/list/data = datacore.get_interface_data()
 
-	data["current_menu"] = current_menu
-	data["last_page"] = last_menu
-
-	data["logged_in"] = last_login
-
-	data["access_text"] = "access level [authentication], [ares_auth_to_text(authentication)]."
-	data["access_level"] = authentication
-
-	data["alert_level"] = GLOB.security_level
-	data["worldtime"] = world.time
-
-	data["access_log"] = list()
-	data["access_log"] += datacore.apollo_login_list
-
-	data["apollo_log"] = datacore.apollo_log
-
-	data["notify_sounds"] = notify_sounds
-
-	var/list/logged_maintenance = list()
-	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
-		if(!istype(maint_ticket))
-			continue
-		var/lock_status = TICKET_OPEN
-		switch(maint_ticket.ticket_status)
-			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
-				lock_status = TICKET_CLOSED
-
-		var/list/current_maint = list()
-		current_maint["id"] = maint_ticket.ticket_id
-		current_maint["time"] = maint_ticket.ticket_time
-		current_maint["priority_status"] = maint_ticket.ticket_priority
-		current_maint["category"] = maint_ticket.ticket_name
-		current_maint["details"] = maint_ticket.ticket_details
-		current_maint["status"] = maint_ticket.ticket_status
-		current_maint["submitter"] = maint_ticket.ticket_submitter
-		current_maint["assignee"] = maint_ticket.ticket_assignee
-		current_maint["lock_status"] = lock_status
-		current_maint["ref"] = "\ref[maint_ticket]"
-		logged_maintenance += list(current_maint)
-	data["maintenance_tickets"] = logged_maintenance
-
-	var/list/logged_access = list()
-	var/list/requesting_access = list()
-	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
-		var/lock_status = TICKET_OPEN
-		switch(access_ticket.ticket_status)
-			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_REVOKED)
-				lock_status = TICKET_CLOSED
-
-		var/list/current_ticket = list()
-		current_ticket["id"] = access_ticket.ticket_id
-		current_ticket["time"] = access_ticket.ticket_time
-		current_ticket["priority_status"] = access_ticket.ticket_priority
-		current_ticket["title"] = access_ticket.ticket_name
-		current_ticket["details"] = access_ticket.ticket_details
-		current_ticket["status"] = access_ticket.ticket_status
-		current_ticket["submitter"] = access_ticket.ticket_submitter
-		current_ticket["assignee"] = access_ticket.ticket_assignee
-		current_ticket["lock_status"] = lock_status
-		current_ticket["ref"] = "\ref[access_ticket]"
-		logged_access += list(current_ticket)
-
-		if(lock_status == TICKET_OPEN)
-			requesting_access += access_ticket.ticket_name
-	data["access_tickets"] = logged_access
-
-	data["security_vents"] = link.get_ares_vents()
+	data["local_current_menu"] = current_menu
+	data["local_last_page"] = last_menu
+	data["local_logged_in"] = last_login
+	data["local_access_text"] = "access level [authentication], [ares_auth_to_text(authentication)]."
+	data["local_access_level"] = authentication
+	data["local_notify_sounds"] = notify_sounds
 
 	return data
 

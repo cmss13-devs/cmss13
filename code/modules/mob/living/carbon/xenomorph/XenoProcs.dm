@@ -145,15 +145,19 @@
 		else
 			. += "Hive Orders: -"
 
+	if(HAS_TRAIT(src, TRAIT_WEAVE_SENSITIVE))
+		var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+		. += "Weave Energy: [hive.weave_energy]"
+
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
-		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
+		if(is_mob_incapacitated() || ((body_position == LYING_DOWN) && (caste_type != WEAVE_CASTE_PRIME)) || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
-		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
+		else if((caste_type != XENO_CASTE_QUEEN) && (caste_type != WEAVE_CASTE_PRIME) && observed_xeno)
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else

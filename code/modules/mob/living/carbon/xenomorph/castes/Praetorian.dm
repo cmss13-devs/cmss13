@@ -53,6 +53,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 	organ_value = 3000
+	organ_chem_value = 7
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

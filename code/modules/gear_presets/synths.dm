@@ -457,6 +457,7 @@
 /datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
@@ -481,6 +482,7 @@
 /datum/equipment_preset/synth/survivor/wy/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
@@ -504,6 +506,7 @@
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
 	idtype = /obj/item/card/id/data
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,

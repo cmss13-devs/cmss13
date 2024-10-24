@@ -178,7 +178,7 @@
 // Yautja Bracer
 #define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
 #define COMSIG_KB_YAUTJA_BRACER_MESSAGE "keybinding_yautja_bracer_message"
-#define COMSIG_KB_YAUTJA_WRISTBLADES "keybinding_yautja_wristblades"
+#define COMSIG_KB_YAUTJA_BRACER_ATTACHMENT "keybinding_yautja_bracer_attachement"
 #define COMSIG_KB_YAUTJA_TRACK_GEAR "keybinding_yautja_track_gear"
 #define COMSIG_KB_YAUTJA_CLOAKER "keybinding_yautja_cloaker"
 #define COMSIG_KB_YAUTJA_CASTER "keybinding_yautja_caster"

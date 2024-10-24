@@ -22,6 +22,7 @@
 	var/shovelspeed = 30
 	var/dirt_amt = 0
 	var/dirt_amt_per_dig = 6
+	inherent_traits = list(TRAIT_TOOL_SHOVEL)
 
 
 /obj/item/tool/shovel/update_icon()

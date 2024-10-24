@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 	return ..()
 
 /obj/item/stack/snow/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/tool/shovel))
+	if(HAS_TRAIT(W,  TRAIT_TOOL_SHOVEL))
 		var/obj/item/tool/shovel/ET = W
 		if(isturf(loc))
 			if(ET.dirt_amt)

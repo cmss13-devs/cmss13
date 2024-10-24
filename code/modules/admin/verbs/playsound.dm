@@ -16,36 +16,26 @@
 	var/announce_title = TRUE
 
 	if(sound_mode == "Web")
-		var/ytdl = CONFIG_GET(string/invoke_youtubedl)
-		if(!ytdl)
-			to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		var/datum/internet_media/media_player
+
+		if(CONFIG_GET(string/cobalt_base_api))
+			media_player = new /datum/internet_media/cobalt
+
+		else if(CONFIG_GET(string/invoke_youtubedl))
+			media_player = new /datum/internet_media/yt_dlp
+
+		if(!media_player)
+			to_chat(src, SPAN_BOLDWARNING("Your server host has not set up any web media players."))
 			return
 
-		web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound via youtube-dl") as text|null
+		web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound") as text|null
 		if(!istext(web_sound_input) || !length(web_sound_input))
 			return
 
 		web_sound_input = trim(web_sound_input)
 
-		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, SPAN_WARNING("Non-http(s) URIs are not allowed."))
-			to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
-			return
-
-		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height<=360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_url_scrub(web_sound_input)]\"")
-		var/errorlevel = output[SHELLEO_ERRORLEVEL]
-		var/stdout = output[SHELLEO_STDOUT]
-		var/stderr = output[SHELLEO_STDERR]
-
-		if(errorlevel)
-			to_chat(src, SPAN_WARNING("Youtube-dl URL retrieval FAILED: [stderr]"))
-			return
-
-		try
-			data = json_decode(stdout)
-		catch(var/exception/e)
-			to_chat(src, SPAN_WARNING("Youtube-dl JSON parsing FAILED: [e]: [stdout]"))
-			return
+		var/datum/media_response/response = media_player.get_media(web_sound_input)
+		data = response.get_list()
 
 	else if(sound_mode == "Upload")
 		var/current_transport = CONFIG_GET(string/asset_transport)
@@ -80,16 +70,20 @@
 	var/list/music_extra_data = list()
 	if(data["url"])
 		music_extra_data["link"] = data["url"]
-		music_extra_data["title"] = data["title"]
 		web_sound_url = data["url"]
-		title = data["title"]
 		music_extra_data["start"] = data["start_time"]
 		music_extra_data["end"] = data["end_time"]
+
+		if(isnull[data["title"]])
+			data["title"] = tgui_input_text(src, "What is the title of this media?", "Media Title")
+		title = data["title"]
+		music_extra_data["title"] = data["title"]
 
 	if(!must_send_assets && web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
 		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
 		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
 		return
+
 
 	switch(tgui_alert(src, "Show the name of this sound to the players?", "Sound Name", list("Yes","No","Cancel")))
 		if("No")

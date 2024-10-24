@@ -44,22 +44,20 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 /datum/controller/subsystem/entity_manager/New()
 	tables = list()
 	tables_unsorted = list()
-	var/list/all_entities = typesof(/datum/entity_meta) - list(/datum/entity_meta)
+	var/list/all_entities = subtypesof(/datum/entity_meta)
 	for(var/entity_meta in all_entities)
 		var/datum/entity_meta/table = new entity_meta()
 		if(table.active_entity)
 			tables[table.entity_type] = table
 			tables_unsorted.Add(table)
 
-	var/list/all_links = typesof(/datum/entity_link) - list(/datum/entity_link)
-	for(var/entity_link in all_links)
-		var/datum/entity_link/link = new entity_link()
+	var/list/datum/entity_link/entity_links = list()
+	get_entity_links(entity_links)
+	for(var/datum/entity_link/link as anything in entity_links)
 		var/datum/entity_meta/parent = tables[link.parent_entity]
 		var/datum/entity_meta/child = tables[link.child_entity]
-		if(link.child_name)
-			parent.inbound_links[link.child_name] = link
-		if(link.parent_name)
-			child.outbound_links[link.parent_name] = link
+		parent.inbound_links[link.child_entity] = link
+		child.outbound_links[link.parent_entity] = link
 		link.parent_meta = parent
 		link.child_meta = child
 
@@ -67,6 +65,12 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	views_unsorted = list()
 
 	NEW_SS_GLOBAL(SSentity_manager)
+
+// Override this proc to populate entity_links list that is passed as an argument
+/datum/controller/subsystem/entity_manager/proc/get_entity_links(list/datum/entity_link/entity_links)
+	PRIVATE_PROC(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /datum/controller/subsystem/entity_manager/proc/start_up()
 	set waitfor=0
@@ -87,15 +91,14 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 /datum/controller/subsystem/entity_manager/proc/prepare_tables()
 	adapter.sync_table_meta()
-	for(var/ET in tables)
-		var/datum/entity_meta/EM = tables[ET]
-		adapter.sync_table(EM.entity_type, EM.table_name, EM.field_types)
-		if(EM.indexes)
-			for(var/datum/db/index/I in EM.indexes)
-				adapter.sync_index(I.name, EM.table_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
-		if(EM.key_field)
-			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, list(EM.key_field), TRUE, TRUE)
-
+	for(var/entity_type in tables)
+		var/datum/entity_meta/entity_meta = tables[entity_type]
+		adapter.sync_table(entity_meta.entity_type, entity_meta.table_name, entity_meta.field_typepaths)
+		if(entity_meta.indexes)
+			for(var/datum/db/index/index in entity_meta.indexes)
+				adapter.sync_index(index.name, entity_meta.table_name, index.fields, index.hints & DB_INDEXHINT_UNIQUE, index.hints & DB_INDEXHINT_CLUSTER)
+		if(entity_meta.key_field)
+			adapter.sync_index("keyfield_index_[entity_meta.key_field::name]", entity_meta.table_name, list(entity_meta.key_field::name), TRUE, TRUE)
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
 	if (!resumed)
@@ -130,16 +133,16 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	var/currid = text2num("[first_id]")
 	meta.inserting = list()
 	// order between those two has to be same
-	for(var/datum/entity/IE in inserted_entities)
-		IE.id = "[currid]"
-		meta.on_insert(IE)
-		meta.on_action(IE)
+	for(var/datum/entity/inserted_entity in inserted_entities)
+		inserted_entity.id = "[currid]"
+		meta.on_insert(inserted_entity)
+		meta.on_action(inserted_entity)
 		currid++
-		if(IE.status == DB_ENTITY_STATE_ADD_DETACH)
-			qdel(IE)
+		if(inserted_entity.status == DB_ENTITY_STATE_ADD_DETACH)
+			qdel(inserted_entity)
 			continue
-		IE.status = DB_ENTITY_STATE_SYNCED
-		meta.managed["[IE.id]"] = IE
+		inserted_entity.status = DB_ENTITY_STATE_SYNCED
+		meta.managed["[inserted_entity.id]"] = inserted_entity
 
 /datum/controller/subsystem/entity_manager/proc/do_update(datum/entity_meta/meta)
 	var/list/datum/entity/to_update = meta.to_update
@@ -154,10 +157,10 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	adapter.update_table(meta.table_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_update), meta, to_update))
 
 /datum/controller/subsystem/entity_manager/proc/after_update(datum/entity_meta/meta, list/datum/entity/updated_entities)
-	for(var/datum/entity/IE in updated_entities)
-		IE.status = DB_ENTITY_STATE_SYNCED
-		meta.on_update(IE)
-		meta.on_action(IE)
+	for(var/datum/entity/updated_entity in updated_entities)
+		updated_entity.status = DB_ENTITY_STATE_SYNCED
+		meta.on_update(updated_entity)
+		meta.on_action(updated_entity)
 
 /datum/controller/subsystem/entity_manager/proc/do_delete(datum/entity_meta/meta)
 	var/list/datum/entity/to_delete = meta.to_delete
@@ -171,9 +174,9 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	adapter.delete_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_delete), meta, to_delete))
 
 /datum/controller/subsystem/entity_manager/proc/after_delete(datum/entity_meta/meta, list/datum/entity/deleted_entities)
-	for(var/datum/entity/IE in deleted_entities)
-		IE.status = DB_ENTITY_STATE_BROKEN
-		meta.on_delete(IE)
+	for(var/datum/entity/deleted_entity in deleted_entities)
+		deleted_entity.status = DB_ENTITY_STATE_BROKEN
+		meta.on_delete(deleted_entity)
 
 /datum/controller/subsystem/entity_manager/proc/do_select(datum/entity_meta/meta)
 	var/list/datum/entity/to_select = meta.to_read
@@ -181,8 +184,8 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		return
 	meta.to_read = list() // release the list early
 	var/list/ids = list()
-	for(var/datum/entity/item in to_select)
-		ids += item.id
+	for(var/datum/entity/entity in to_select)
+		ids += entity.id
 
 	adapter.read_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select), meta, to_select))
 

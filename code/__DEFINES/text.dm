@@ -24,3 +24,6 @@
 #define MAX_PAPER_MESSAGE_LEN 3072
 #define MAX_BOOK_MESSAGE_LEN 9216
 #define MAX_NAME_LEN 28
+
+#define COPY_FROM_START(T, loc) copytext(T, 1, loc)
+#define COPY_AFTER_FOUND(T, loc) copytext(T, loc+1)

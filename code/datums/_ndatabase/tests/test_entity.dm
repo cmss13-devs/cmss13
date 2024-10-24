@@ -6,7 +6,7 @@
 /datum/entity_meta/test_entity
 	entity_type = /datum/entity/test_entity
 	table_name = "test_table"
-	field_types = list("name"=DB_FIELDTYPE_STRING_MEDIUM, "description"=DB_FIELDTYPE_STRING_MAX, "value"=DB_FIELDTYPE_BIGINT)
+	field_typepaths = list("name"=DB_FIELDTYPE_STRING_MEDIUM, "description"=DB_FIELDTYPE_STRING_MAX, "value"=DB_FIELDTYPE_BIGINT)
 
 // redefine this for faster operations
 /datum/entity_meta/test_entity/map(datum/entity/test_entity/ET, list/values)

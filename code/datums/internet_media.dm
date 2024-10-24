@@ -28,6 +28,7 @@
 		return
 
 	if(findtext(url, ":") && !findtext(url, GLOB.is_http_protocol))
+		error = "Youtube-dl FAILED: Non-http(s) URIs are not allowed. For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."
 		return
 
 	var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height<=360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_url_scrub(url)]\"")

@@ -209,6 +209,7 @@
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
+	var/faction = FACTION_MARINE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -331,6 +332,9 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_LANDED)
 
+/obj/docking_port/stationary/marine_dropship/upp
+	faction = FACTION_UPP
+
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
@@ -342,3 +346,5 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+

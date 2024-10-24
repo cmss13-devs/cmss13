@@ -29,6 +29,11 @@
 	var/linked_lz
 
 	var/can_change_shuttle = FALSE
+	var/faction = FACTION_MARINE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/upp
+	req_one_access = list(ACCESS_UPP_FLIGHT)
+	faction = FACTION_UPP
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
@@ -41,6 +46,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/marine_dropship/dock in SSshuttle.stationary)
+		if(dock.faction != faction)
+			continue
 		if(istype(dock, /obj/docking_port/stationary/marine_dropship/crash_site))
 			continue
 		. += list(dock)

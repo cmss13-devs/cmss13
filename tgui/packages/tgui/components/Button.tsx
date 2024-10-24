@@ -329,11 +329,15 @@ const ButtonInput = (props: InputProps) => {
     <Box
       className={classes([
         'Button',
+        disabled && 'Button--disabled',
         fluid && 'Button--fluid',
         'Button--color--' + color,
       ])}
       {...rest}
-      onClick={() => setInInput(true)}
+      onClick={() => {
+        if (disabled) return;
+        setInInput(true);
+      }}
     >
       {icon && <Icon name={icon} rotation={iconRotation} spin={iconSpin} />}
       <div>{toDisplay}</div>

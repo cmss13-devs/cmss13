@@ -52,7 +52,7 @@
 	ares_final_words()
 	icon_state = "hydra-off"
 	var/datum/cause_data/cause_data = create_cause_data("rapid unscheduled disassembly", src, src)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12, TRUE, FALSE, 0, cause_data), 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, 120, 12, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message) //General communication across the ship.

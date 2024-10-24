@@ -2,7 +2,6 @@
 	name = "Synth"
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
-	skills = /datum/skills/synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 
 	minimap_icon = "synth"
@@ -12,10 +11,22 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
+	var/generation_selection = SYNTH_GEN_THREE
 	if(new_human.client?.prefs?.synthetic_type)
-		new_human.set_species(new_human.client.prefs.synthetic_type)
-		return
-	new_human.set_species(SYNTH_GEN_THREE)
+		generation_selection = new_human.client.prefs.synthetic_type
+	switch(generation_selection)
+		if(SYNTH_GEN_THREE)
+			new_human.set_species(SYNTH_GEN_THREE)
+			skills = /datum/skills/synthetic
+		if(SYNTH_GEN_TWO)
+			new_human.set_species(SYNTH_COLONY_GEN_TWO)
+			skills = /datum/skills/colonial_synthetic
+		if(SYNTH_GEN_ONE)
+			new_human.set_species(SYNTH_COLONY_GEN_ONE)
+			skills = /datum/skills/colonial_synthetic
+		else
+			new_human.set_species(SYNTH_GEN_THREE)
+			skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"

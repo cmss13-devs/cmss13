@@ -168,6 +168,9 @@
 		return
 	. = ..()
 
+/obj/item/weapon/gun/smartgun/get_ammo_type_chambered(mob/user)
+	return ammo_primary
+
 /obj/item/weapon/gun/smartgun/update_icon()
 	. = ..()
 	if(cover_open)

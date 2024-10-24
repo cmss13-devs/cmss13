@@ -19,10 +19,10 @@
 		var/list/datum/internet_media/media_players = list()
 
 		if(CONFIG_GET(string/invoke_youtubedl))
-			media_players = new /datum/internet_media/yt_dlp
+			media_players += new /datum/internet_media/yt_dlp
 
 		if(CONFIG_GET(string/cobalt_base_api))
-			media_players = new /datum/internet_media/cobalt
+			media_players += new /datum/internet_media/cobalt
 
 		if(!length(media_players))
 			to_chat(src, SPAN_BOLDWARNING("Your server host has not set up any web media players."))

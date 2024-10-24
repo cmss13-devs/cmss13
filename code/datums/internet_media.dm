@@ -45,7 +45,7 @@
 	request.prepare(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/cobalt_base_api), json_encode(list(
 		"url" = url,
 		"downloadMode" = "audio"
-	)), json_encode(headers))
+	)), headers)
 
 	request.execute_blocking()
 

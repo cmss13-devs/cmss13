@@ -129,13 +129,17 @@
 		generation_selection = new_human.client.prefs.synthetic_type
 	switch(generation_selection)
 		if(SYNTH_GEN_THREE)
-			new_human.set_species(SYNTH_COLONY)
+			new_human.set_species(SYNTH_GEN_THREE)
+			skills = /datum/skills/synthetic
 		if(SYNTH_GEN_TWO)
 			new_human.set_species(SYNTH_COLONY_GEN_TWO)
+			skills = /datum/skills/colonial_synthetic
 		if(SYNTH_GEN_ONE)
 			new_human.set_species(SYNTH_COLONY_GEN_ONE)
+			skills = /datum/skills/colonial_synthetic
 		else
-			new_human.set_species(SYNTH_COLONY)
+			new_human.set_species(SYNTH_GEN_THREE)
+			skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()

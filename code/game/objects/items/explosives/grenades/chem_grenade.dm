@@ -8,8 +8,8 @@
 	customizable = TRUE
 	underslug_launchable = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/timer)
-	max_container_volume = 90
-	matter = list("metal" = 3750)
+	max_container_volume = 120
+	matter = list("metal" = 4250)
 	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/grenade/custom/prime()

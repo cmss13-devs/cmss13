@@ -74,7 +74,7 @@
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
 	var/slash_charge_cdr = 3 SECONDS // Amount to reduce charge cooldown by per slash
-	var/knockdown_amount = 2
+	var/knockdown_amount = 1.3
 	var/fling_distance = 3
 	var/empower_targets = 0
 	var/super_empower_threshold = 3

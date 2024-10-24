@@ -130,7 +130,6 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -160,7 +159,6 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/technical
 	name = "technical officer uniform"
@@ -1235,3 +1233,4 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
+

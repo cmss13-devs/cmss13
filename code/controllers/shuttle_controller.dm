@@ -4,6 +4,7 @@
 	var/list/locs_crash
 
 /datum/controller/shuttle_controller/process()
+
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
 
@@ -21,7 +22,7 @@
 	process_shuttles = list()
 	locs_crash = list()
 
-	var/datum/shuttle/ferry/shuttle
+	var/datum/shuttle/ferry/supply/shuttle
 
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()
@@ -29,19 +30,37 @@
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
 	for(var/area/A in GLOB.all_areas)
-		if(A.type == /area/supply/dock)
+		if(A.type == /area/supply/dock/uscm)
 			shuttle.area_offsite = A
 			break
 
 	for(var/area/A in GLOB.all_areas)
-		if(A.type == /area/supply/station)
+		if(A.type == /area/supply/station/uscm)
 			shuttle.area_station = A
 			break
 
 	shuttles["Supply"] = shuttle
 	process_shuttles += shuttle
-
 	GLOB.supply_controller.shuttle = shuttle
+
+	shuttle = new/datum/shuttle/ferry/supply/upp()
+	shuttle.location = 1
+	shuttle.warmup_time = 1
+	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
+	for(var/area/A in GLOB.all_areas)
+		if(A.type == /area/supply/dock/upp)
+			shuttle.area_offsite = A
+			break
+
+	for(var/area/A in GLOB.all_areas)
+		if(A.type == /area/supply/station/upp)
+			shuttle.area_station = A
+			break
+
+	shuttles["Supply upp"] = shuttle
+	process_shuttles += shuttle
+
+	GLOB.supply_controller_upp.shuttle = shuttle
 
 //---ELEVATOR---//
 	// Elevator I

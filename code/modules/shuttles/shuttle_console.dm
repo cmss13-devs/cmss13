@@ -301,7 +301,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 
-					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+					Q.count_statistic_stat(STATISTICS_FLIGHT)
 
 					if(Q.hive)
 						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
@@ -328,7 +328,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(is_ground_level(z)) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
-					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+					M.count_statistic_stat(STATISTICS_FLIGHT)
 			msg_admin_niche("[M] ([M.key]) launched \a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	ui_interact(usr)

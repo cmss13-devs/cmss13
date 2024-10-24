@@ -216,12 +216,15 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
 	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	if(user.faction == faction)
+		user.track_friendly_hit(initial(I.name))
+		user.track_friendly_damage(initial(I.name), src, damage)
+	else
+		user.track_hit(initial(I.name))
+		user.track_damage(initial(I.name), src, damage)
 
 	if(damage > 5)
 		last_damage_data = create_cause_data(initial(I.name), user)
-		user.track_hit(initial(I.name))
-		if(user.faction == faction)
-			user.track_friendly_fire(initial(I.name))
 
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
@@ -329,11 +332,14 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		var/client/assailant = M.client
+		if(M.faction == faction)
+			M.track_friendly_hit(initial(O.name))
+			M.track_friendly_damage(initial(O.name), src, damage)
+		else
+			M.track_hit(initial(O.name))
+			M.track_damage(initial(O.name), src, damage)
 		if (damage > 5)
 			last_damage_mob = M
-			M.track_hit(initial(O.name))
-			if (M.faction == faction)
-				M.track_friendly_fire(initial(O.name))
 		if (assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")

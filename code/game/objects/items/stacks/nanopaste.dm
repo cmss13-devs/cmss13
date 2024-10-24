@@ -26,6 +26,7 @@
 		if (S && (S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			if(S.get_damage())
 				S.heal_damage(15, 15, robo_repair = 1)
+				user.track_heal_damage(initial(name), H, 30)
 				H.pain.recalculate_pain()
 				H.updatehealth()
 				use(1)

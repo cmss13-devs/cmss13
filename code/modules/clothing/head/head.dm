@@ -24,13 +24,35 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmbandana/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmbandana)
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(/obj/item/clothing/head/cmbandana)
 
 /obj/item/clothing/head/cmbandana/tan
 	icon_state = "band2"
+	flags_atom = null
+
+/obj/item/clothing/head/cmbandana/tan/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/beanie
@@ -62,7 +84,8 @@
 
 /obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/beret/cm)
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(/obj/item/clothing/head/beret/cm)
 
 /obj/item/clothing/head/beret/cm/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -92,15 +115,22 @@
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/cm/white
-	icon_state = "s_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/cm/black
 	icon_state = "beret_black"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/cm/green
 	icon_state = "beret_green"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
@@ -109,12 +139,10 @@
 /obj/item/clothing/head/beret/cm/white/civilian
 	name = "White Beret"
 	desc = "A nice fashionable beret, popular with executives."
-	icon_state = "s_beret"
 
 /obj/item/clothing/head/beret/cm/black/civilian
 	name = "Black Beret"
 	desc = "A nice fashionable beret, popular with executives."
-	icon_state = "beret_black"
 
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
@@ -169,7 +197,8 @@
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/headband)
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(/obj/item/clothing/head/headband)
 
 /obj/item/clothing/head/headband/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -195,18 +224,26 @@
 
 /obj/item/clothing/head/headband/brown
 	icon_state = "headbandbrown"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/gray
 	icon_state = "headbandgray"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/squad
 	var/dummy_icon_state = "headband%SQUAD%"
 
 	var/static/list/valid_icon_states
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
 	. = ..()
@@ -255,6 +292,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headset
 	name = "\improper USCM headset"
@@ -431,7 +469,6 @@
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
-	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -440,8 +477,12 @@
 
 /obj/item/clothing/head/cmcap/co/formal
 	name = "\improper USCM formal Commanding Officer's white cap"
-	icon_state = "co_formalhat_white"
 	desc = "A formal cover worn by senior officers of the USCM."
+	icon_state = "co_formalhat_white"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_marine_hat = HAT_GARB_OVERLAY
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
@@ -449,17 +490,20 @@
 	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
-/obj/item/clothing/head/cmcap/req/ro
-	name = "\improper USCM quartermaster cap"
-	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
-	icon_state = "rocap"
-	flags_atom = NO_SNOW_TYPE
-
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = FPRINT|NO_SNOW_TYPE
+
+/obj/item/clothing/head/cmcap/req/ro
+	name = "\improper USCM quartermaster cap"
+	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
+	icon_state = "rocap"
 
 /obj/item/clothing/head/cmcap/bridge
 	name = "\improper USCM officer cap"
@@ -477,6 +521,10 @@
 	desc = "A faithful cap for any terrain war correspondents may find themselves in."
 	icon_state = "cc_flagcap"
 	item_state = "cc_flagcap"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
@@ -511,32 +559,53 @@
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
 	desc = "A peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. It is typically used by Wardens on USCM ships."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 
 /obj/item/clothing/head/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
 	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/mp/mppeaked
 	name = "\improper USCM MP peaked cap"
 	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
 	icon_state = "mppeaked"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 
 /obj/item/clothing/head/beret/marine/mp/mpcap
 	name = "\improper USCM MP ball-cap"
 	desc = "A ball-cap, typically worn by the more casual of the USCM's Military Police."
 	icon_state = "mpcap"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 
 /obj/item/clothing/head/beret/marine/mp/provost
 	name = "\improper USCM provost beret"
-	icon_state = "beretwo"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	icon_state = "beretwo"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
+
 
 /obj/item/clothing/head/beret/marine/mp/provost/senior
 	name = "\improper USCM senior provost beret"
-	icon_state = "coblackberet"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	icon_state = "coblackberet"
 
 /obj/item/clothing/head/beret/marine/mp/provost/chief
 	name = "\improper USCM provost command beret"
@@ -544,14 +613,27 @@
 
 /obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
-	icon_state = "berettis"
 	desc = "A beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
+	icon_state = "berettis"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine commanding officer beret"
 	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon_state = "coberet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	black_market_value = 30
+
+/obj/item/clothing/head/beret/marine/commander/Initialize(mapload, ...)
+	. = ..()
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(/obj/item/clothing/head/beret/marine/commander)
 
 /obj/item/clothing/head/beret/marine/commander/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -571,23 +653,27 @@
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
-	icon_state = "codressberet"
 	desc = "A white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	icon_state = "codressberet"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine major black beret"
 	icon_state = "coblackberet"
 	desc = "A black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
 	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
 	icon_state = "cdreberet"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
 	name = "marine colonel beret"
 	desc = "A dark blue, custom-tailored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
@@ -637,11 +723,12 @@
 /obj/item/clothing/head/beret/marine/ro
 	name = "\improper USCM quartermaster beret"
 	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
-	icon = 'icons/obj/items/clothing/hats/berets.dmi'
-	icon_state = "ro_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
+	icon_state = "ro_beret"
+
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\

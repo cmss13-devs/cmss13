@@ -48,6 +48,12 @@
 	flags_armor_protection = 0
 	pickup_sound = null
 	drop_sound = null
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi'
+	)
 
 //Security
 /obj/item/clothing/head/beret/sec

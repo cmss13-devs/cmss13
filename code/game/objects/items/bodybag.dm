@@ -5,6 +5,7 @@
 	desc = "A folded bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag_folded"
+	item_state = "bodybag"
 	w_class = SIZE_SMALL
 	var/unfolded_path = /obj/structure/closet/bodybag
 
@@ -33,6 +34,7 @@
 	desc = "A folded, reusable bag designed to prevent additional damage to an occupant."
 	icon = 'icons/obj/cryobag.dmi'
 	icon_state = "bodybag_folded"
+	item_state = "cryobag"
 	unfolded_path = /obj/structure/closet/bodybag/cryobag
 	matter = list("plastic" = 7500)
 	var/used = 0

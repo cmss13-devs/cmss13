@@ -146,7 +146,7 @@
 	name = "Space Milk"
 	desc = "It's milk. White and nutritious goodness!"
 	icon_state = "milk"
-	item_state = "carton"
+	item_state = "milk"
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/milk/Initialize()
@@ -172,7 +172,7 @@
 	name = "soy milk"
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
-	item_state = "carton"
+	item_state = "soymilk"
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/soymilk/Initialize()
@@ -183,6 +183,7 @@
 	name = "\improper Coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
+	item_state = "coffee"
 	center_of_mass = "x=15;y=10"
 
 /obj/item/reagent_container/food/drinks/coffee/Initialize()
@@ -196,7 +197,7 @@
 	name = "\improper Duke Purple Tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
 	icon_state = "tea"
-	item_state = "coffee"
+	item_state = "tea"
 	center_of_mass = "x=16;y=14"
 
 /obj/item/reagent_container/food/drinks/tea/Initialize()
@@ -218,7 +219,7 @@
 	name = "\improper Dutch hot coco"
 	desc = "Made in Space South America."
 	icon_state = "hot_coco"
-	item_state = "coffee"
+	item_state = "hot_coco"
 	center_of_mass = "x=15;y=13"
 
 /obj/item/reagent_container/food/drinks/h_chocolate/Initialize()
@@ -240,6 +241,7 @@
 	name = "paper cup"
 	desc = "A paper water cup."
 	icon_state = "water_cup_e"
+	item_state = "water_cup_e"
 	possible_transfer_amounts = null
 	volume = 10
 	center_of_mass = "x=16;y=12"
@@ -302,6 +304,7 @@
 	name = "metal flask"
 	desc = "A metal flask with a decent liquid capacity."
 	icon_state = "flask"
+	item_state = "flask"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
@@ -309,6 +312,7 @@
 	name = "\improper USCM flask"
 	desc = "A metal flask embossed with the USCM logo and probably filled with a slurry of water, motor oil, and medicinal alcohol."
 	icon_state = "flask_uscm"
+	item_state = "flask_uscm"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
@@ -321,6 +325,7 @@
 	name = "\improper Weyland-Yutani flask"
 	desc = "A metal flask embossed with Weyland-Yutani's signature logo that some corporate bootlicker probably ordered to be stocked in USS military vessels' canteen vendors."
 	icon_state = "flask_wy"
+	item_state = "flask_wy"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
@@ -332,6 +337,7 @@
 	name = "canteen"
 	desc = "You take a sip from your trusty USCM canteen..."
 	icon_state = "canteen"
+	item_state = "canteen"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
@@ -343,6 +349,7 @@
 	name = "brown leather flask"
 	desc = "A flask with a leather band around the sides, often seen filled with whiskey and carried by rugged, gritty detectives."
 	icon_state = "brownflask"
+	item_state = "brownflask"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
@@ -355,6 +362,7 @@
 	name = "black leather flask"
 	desc = "A flask with a slick black leather band around the sides. For those who can't be bothered to hang out at the bar to drink."
 	icon_state = "blackflask"
+	item_state = "blackflask"
 	volume = 60
 	center_of_mass = "x=17;y=7"
 
@@ -369,6 +377,7 @@
 	name = "coffee mug"
 	desc = "A ceramic coffee mug. Practically guaranteed to fall and spill scalding-hot drink onto your brand-new shirt. Ouch."
 	icon_state = "coffeecup"
+	item_state = "coffecup"
 	volume = 30
 	center_of_mass = "x=15;y=13"
 
@@ -376,9 +385,11 @@
 	name = "USCM coffee mug"
 	desc = "A red, white and blue coffee mug depicting the emblem of the USCM. Patriotic and bold, and commonly seen among veterans as a novelty."
 	icon_state = "uscmcup"
+	item_state = "uscmcup"
 
 /obj/item/reagent_container/food/drinks/coffeecup/wy
 	name = "Weyland-Yutani coffee mug"
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
+	item_state = "wycup"
 

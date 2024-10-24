@@ -27,6 +27,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "candle1"
 	item_state = "candle1"
 	w_class = SIZE_TINY
+	flags_obj = OBJ_IS_HELMET_GARB
 
 	var/wax = 800
 

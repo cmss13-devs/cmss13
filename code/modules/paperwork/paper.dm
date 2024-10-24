@@ -913,3 +913,15 @@
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
 	update_icon()
+
+/obj/item/paper/liaison_brief
+	name = "Liaison Colony Briefing"
+	desc = "A brief from the Company about the colony the ship is responding to."
+
+/obj/item/paper/liaison_brief/Initialize(mapload, ...)
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = "[SSmapping.configs[GROUND_MAP].liaison_briefing]"
+	else
+		info = "<center><img src = wylogo.png><small><br><b>Weyland-Yutani Corporation</b><br>\"Building Better Worlds\"</center></small><br><u>Special Services Division</u><br>Liaison Colony Briefing<br><hr><br>The ship AI aboard your stationed ship has informed us that a distress signal has been picked up from a nearby colony, however at this time the records for the facility there are classified or unavailable. We apologize for the inconvenience."
+	update_icon()

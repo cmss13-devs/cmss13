@@ -3,7 +3,7 @@
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
 	probability = 10
-	home_base = /datum/lazy_template/ert/weyland_station
+	home_base = /datum/lazy_template/ert/anchorpoint_station
 
 	var/max_synths = 1
 	var/synths = 0

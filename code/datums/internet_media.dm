@@ -1,7 +1,17 @@
+/**
+ * Generic implementation to get a URL that can be sent to
+ * clients to play audio via [/datum/tgui_panel/proc/play_music], from a provided URL
+ */
 /datum/internet_media
 
+/**
+ * Handles a request for an audio file, from a provided media URL
+ * Must return a [/datum/media_response], which must have at least the [/datum/media_response/var/url] filled out
+ */
 /datum/internet_media/proc/get_media(url)
 	RETURN_TYPE(/datum/media_response)
+
+	CRASH("[type] does not override [nameof(__PROC__)].")
 
 /datum/internet_media/yt_dlp
 
@@ -71,6 +81,9 @@
 	var/end_time
 
 /datum/media_response/New(url, title, start_time, end_time)
+	if(isnull(url))
+		CRASH("/datum/media_response created without a URL field.")
+
 	src.url = url
 	src.title = title
 	src.start_time = start_time

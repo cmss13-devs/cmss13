@@ -182,10 +182,10 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
-	shrapnel_count = 5
+	shrapnel_count = 15
 	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 	direct_hit_shrapnel = 5
-	dispersion_angle = 15//tight cone
+	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
 	name = "\improper M74 AGM-S Star Shell"

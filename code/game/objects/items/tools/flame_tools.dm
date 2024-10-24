@@ -174,6 +174,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigoff"
 	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
+	icon = 'icons/obj/items/smoking/cigarettes.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+	)
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EAR | SLOT_FACE
@@ -453,6 +457,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigar_off"
 	icon_on = "cigar_on"
 	icon_off = "cigar_off"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
@@ -566,7 +571,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A pipe, for smoking. Probably made of meershaum or something."
 	icon_state = "pipeoff"
 	item_state = "pipeoff"
-	/// Note - these are in masks.dmi
+	icon = 'icons/obj/items/smoking/pipes.dmi'
 	icon_on = "pipeon"
 	icon_off = "pipeoff"
 	w_class = SIZE_SMALL

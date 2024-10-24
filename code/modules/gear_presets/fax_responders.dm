@@ -6,7 +6,7 @@
 	role_comm_title = "Resp."
 
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_NEUTRAL
+	faction = FACTION_FAX
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	skills = /datum/skills/civilian/fax_responder

@@ -11,15 +11,15 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_7
+	speed = XENO_SPEED_HELLHOUND
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)
 	deevolves_to = list("Larva")
 	acid_level = 1
 
-	tackle_min = 4
-	tackle_max = 4
+	tackle_min = 3
+	tackle_max = 3
 	tackle_chance = 50
 	tacklestrength_min = 4
 	tacklestrength_max = 4
@@ -49,6 +49,7 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/activable/hibernate, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -68,7 +69,7 @@
 	// State
 	var/next_slash_buffed = FALSE
 
-#define NEURO_TOUCH_DELAY 4 SECONDS
+#define NEURO_TOUCH_DELAY 3 SECONDS
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!next_slash_buffed)
@@ -103,6 +104,6 @@
 #undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.KnockDown(2)
-	human_target.Stun(2)
+	human_target.KnockDown(2.5)
+	human_target.Stun(2.5)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

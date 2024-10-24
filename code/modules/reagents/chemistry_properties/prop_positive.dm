@@ -858,7 +858,7 @@
 	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/xeno = M
-	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency * 1.2, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -884,7 +884,7 @@
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/xeno = M
-		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_VHIGH * volume * potency, 0)
 		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
@@ -935,7 +935,7 @@
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
-		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
+		X.gain_health(min(potency * volume * 0.8, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
@@ -1008,7 +1008,7 @@
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 6
+	value = 5
 	max_level = 1
 
 /datum/chem_property/positive/firepenetrating/reset_reagent()

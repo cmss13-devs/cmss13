@@ -271,6 +271,13 @@
 
 	var/indestructible_splints = FALSE
 
+/obj/item/stack/medical/splint/Initialize(mapload, amount)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_INDESTRUCTIBLE_SPLINTS))
+		icon_state = "nanosplint"
+		indestructible_splints = TRUE
+		update_icon()
+
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
 	if(..()) return 1
 

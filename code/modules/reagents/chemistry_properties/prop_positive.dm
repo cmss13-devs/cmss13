@@ -237,7 +237,7 @@
 	if(!..())
 		return
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency * delta_time)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!..())

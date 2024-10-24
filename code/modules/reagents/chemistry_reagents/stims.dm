@@ -37,7 +37,7 @@
 	color = "#ffff00"
 	properties = list(
 		PROPERTY_MUSCLESTIMULATING = 40,
-		PROPERTY_PAINKILLING = 3,
+		PROPERTY_PAINKILLING = 1.5,
 	)
 
 /datum/reagent/stimulant/brain_stimulant
@@ -47,7 +47,7 @@
 	color = "#a800ff"
 	properties = list(
 		PROPERTY_NERVESTIMULATING = 30,
-		PROPERTY_PAINKILLING = 6,
+		PROPERTY_PAINKILLING = 3,
 		PROPERTY_NEUROSHIELDING = 13,
 	)
 

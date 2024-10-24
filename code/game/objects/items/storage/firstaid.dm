@@ -740,7 +740,6 @@
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-//NOT FOR USCM USE!!!!
 /obj/item/storage/pill_bottle/paracetamol
 	name = "\improper Paracetamol pill bottle"
 	desc = "This is probably someone's prescription bottle."
@@ -779,6 +778,12 @@
 	storage_close(user)
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	qdel(src)
+
+/obj/item/storage/pill_bottle/packet/paracetamol
+	name = "Paracetamol pill packet"
+	icon_state = "tramadol_packet"
+	desc = "This packet contains paracetamol pills, a soft painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

@@ -30,12 +30,12 @@
 	id = "paracetamol"
 	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
 	reagent_state = LIQUID
-	color = "#C855DC"
+	color = "#ca65c5"
 	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
-	overdose = HIGH_REAGENTS_OVERDOSE
-	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 2)
+	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_OPIOID = 1)
 
 /datum/reagent/medical/tramadol
 	name = "Tramadol"
@@ -47,19 +47,19 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 5)
+	properties = list(PROPERTY_PAINKILLING = 2.5 , PROPERTY_OPIOID = 2)
 
 /datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
-	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
+	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. CAUTION Extended use of oxycodone can cause lung damage causing oxygen starvation to the brain and potential death."
 	reagent_state = LIQUID
 	color = "#1cc282"
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 8)
+	properties = list(PROPERTY_PAINKILLING = 4 , PROPERTY_OPIOID = 4)
 
 /datum/reagent/medical/sterilizine
 	name = "Sterilizine"

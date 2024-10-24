@@ -123,10 +123,19 @@
 	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/paracetamol
+	name = "paracetamol autoinjector"
+	chemname = "paracetamol"
+	desc = "An auto-injector loaded with 3 uses of Paracetamol, a weak but effective painkiller for normal wounds."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Pc"
+
 /obj/item/reagent_container/hypospray/autoinjector/tramadol
 	name = "tramadol autoinjector"
 	chemname = "tramadol"
-	desc = "An auto-injector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds."
+	desc = "An auto-injector loaded with 3 uses of Tramadol, a mild painkiller for normal wounds."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -134,13 +143,13 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
 	name = "tramadol EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a mild painkiller for normal wounds. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
-	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a mild painkiller for normal wounds. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
@@ -213,8 +222,8 @@
 	icon_state = "emptyskill"
 	item_state = "emptyskill"
 	chemname = "emergency"
-	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
-	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
+	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE / 2)
+	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE / 2)
 	mixed_chem = TRUE
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
@@ -227,7 +236,7 @@
 	. = ..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
-	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
+	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE / 2)
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine

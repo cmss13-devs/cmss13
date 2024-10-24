@@ -89,7 +89,6 @@
 /mob/living/carbon/xenomorph/weaveguard/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
-	resin_build_order = GLOB.resin_build_order_drone
 
 /mob/living/carbon/xenomorph/weaveguard/update_icons()
 	if (stat == DEAD)

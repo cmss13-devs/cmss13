@@ -46,6 +46,14 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"acI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "acN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/defibrillator,
@@ -79,7 +87,7 @@
 	pixel_y = -3;
 	pixel_x = -6
 	},
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "aet" = (
 /obj/structure/bed/chair/vehicle{
@@ -90,6 +98,13 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
+/area/space)
+"aeB" = (
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = -17;
+	pixel_y = 23
+	},
+/turf/open/floor/corsat/lightplate,
 /area/space)
 "aeF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -242,6 +257,10 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/space)
+"ajF" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/corsat/spiralplate,
 /area/space)
 "ajR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -447,6 +466,13 @@
 /obj/item/fuel_cell/used,
 /turf/open/floor/prison/floor_marked,
 /area/event/metal/dynamic)
+"auC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic)
 "auX" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
@@ -621,6 +647,20 @@
 /obj/item/tool/wrench,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/event/metal/dynamic)
+"aBn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "aBV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/flour,
@@ -648,6 +688,10 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
+/area/space)
+"aCg" = (
+/obj/structure/prop/almayer/hangar_stencil,
+/turf/open/floor/corsat/plate,
 /area/space)
 "aCl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -759,6 +803,17 @@
 	dir = 2
 	},
 /turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
+"aId" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_x = 15;
+	pixel_y = -14
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic)
+"aIh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "aIo" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
@@ -907,6 +962,13 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"aNj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
 "aNv" = (
 /obj/item/tool/mop{
 	pixel_y = 20
@@ -1076,6 +1138,18 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/space)
+"aTg" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "aTi" = (
 /obj/item/reagent_container/glass/bucket/mopbucket{
 	pixel_x = -10;
@@ -1130,6 +1204,11 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/lightplate,
+/area/space)
+"aWb" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/space)
 "aWG" = (
 /obj/structure/machinery/light{
@@ -1192,6 +1271,10 @@
 /obj/structure/medical_supply_link,
 /turf/open/floor/almayer/silverfull,
 /area/space)
+"bbY" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
 "bcD" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/almayer/no_build/plating,
@@ -1218,8 +1301,18 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"bfh" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_x = 15;
+	pixel_y = -14
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
 "bfw" = (
 /obj/effect/attach_point/weapon/dropship3/right_wing,
 /obj/structure/shuttle/part/dropship3/transparent/lower_right_wing,
@@ -1302,6 +1395,16 @@
 "biL" = (
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"bjj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "bjl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -1311,11 +1414,24 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"bjo" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
 "bjK" = (
 /turf/open/space,
 /area/space)
 "bkr" = (
 /turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
+"bkt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "blb" = (
 /obj/effect/decal/warning_stripes{
@@ -1356,6 +1472,14 @@
 	pixel_x = 9
 	},
 /turf/open/floor/corsat/plate,
+/area/space)
+"bmx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/floor2,
 /area/space)
 "bmA" = (
 /turf/open/floor/strata/cyan3,
@@ -1463,6 +1587,11 @@
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"bte" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "btf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -1774,6 +1903,14 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"bKG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
 "bKR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
@@ -1832,6 +1969,10 @@
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/event/metal/dynamic)
+"bOc" = (
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "bOm" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -1865,6 +2006,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/event/metal/dynamic)
 "bPI" = (
@@ -1946,6 +2088,17 @@
 	req_one_access = list(232, 240)
 	},
 /turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
+"bSU" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
 "bSY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2069,6 +2222,12 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic)
+"bXG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "bXZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light/small{
@@ -2084,6 +2243,16 @@
 "cai" = (
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
@@ -2116,7 +2285,11 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/strata/multi_tiles,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "cdt" = (
 /obj/effect/decal/warning_stripes{
@@ -2176,6 +2349,12 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/event/metal/dynamic)
+"ciN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "cjd" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/computer{
@@ -2284,6 +2463,13 @@
 "coi" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/event/metal/dynamic)
+"com" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic)
 "cop" = (
 /turf/open/floor/strata/purp3{
 	dir = 10
@@ -2361,6 +2547,10 @@
 	name = "oil"
 	},
 /area/event/metal/dynamic)
+"ctA" = (
+/obj/structure/cargo_container/seegson/mid,
+/turf/open/floor/strata/floor2,
+/area/space)
 "cun" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -2486,6 +2676,11 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/space)
+"cEg" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/plating,
+/area/space)
 "cEh" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/corsat/squares,
@@ -2565,6 +2760,11 @@
 	dir = 4
 	},
 /turf/open/floor/strata/green3,
+/area/event/metal/dynamic)
+"cGz" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cargo_container/arious/left,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "cGH" = (
 /obj/structure/machinery/prop{
@@ -2691,6 +2891,9 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "cNZ" = (
@@ -2801,7 +3004,8 @@
 /area/event/metal/dynamic)
 "cVC" = (
 /obj/structure/machinery/light,
-/turf/open/floor/corsat/plate,
+/obj/structure/largecrate/random/mini/chest/b,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "cVY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -3080,6 +3284,16 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"dqk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "dqy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -3089,6 +3303,11 @@
 "dqV" = (
 /obj/item/tool/extinguisher,
 /turf/closed/wall/almayer/white,
+/area/space)
+"drz" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/red1,
 /area/space)
 "dsj" = (
 /obj/structure/platform_decoration{
@@ -3103,7 +3322,7 @@
 /obj/structure/prop/almayer/hangar_stencil{
 	icon_state = "dropship2"
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "dsN" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -3161,7 +3380,10 @@
 /area/event/metal/dynamic)
 "dum" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/corsat/plate,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "dvl" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -3283,6 +3505,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic)
+"dze" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
 "dzk" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3333,6 +3559,18 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"dBI" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "dBX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -3419,6 +3657,19 @@
 	},
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/strata,
+/area/event/metal/dynamic)
+"dEd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
+"dEJ" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -27;
+	pixel_x = -16
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "dEM" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -3648,6 +3899,14 @@
 "dPb" = (
 /turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic)
+"dPd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic)
 "dPg" = (
 /obj/structure/platform{
 	density = 0;
@@ -3679,6 +3938,10 @@
 	pixel_y = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
+"dQr" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "dQO" = (
 /obj/structure/machinery/light{
@@ -3796,6 +4059,18 @@
 	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/event/metal/dynamic)
+"dUo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "dUD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
@@ -3857,6 +4132,10 @@
 	light_color = "#ffd4d4"
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/space)
+"dWe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
 /area/space)
 "dWC" = (
 /obj/effect/decal/warning_stripes{
@@ -3987,6 +4266,11 @@
 /obj/item/device/megaphone,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"ebr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
 "ebu" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -4005,6 +4289,11 @@
 	dir = 4
 	},
 /area/event/metal/dynamic)
+"ede" = (
+/turf/open/floor/strata/orange_edge{
+	dir = 1
+	},
+/area/space)
 "edD" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -4025,13 +4314,6 @@
 /obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer/silverfull,
 /area/space)
-"efI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/strata/floor3,
-/area/event/metal/dynamic)
 "efV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -4123,6 +4405,9 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"eiE" = (
+/turf/open/floor/strata/red3/east,
+/area/space)
 "eiG" = (
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic)
@@ -4219,6 +4504,17 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/lightplate,
+/area/space)
+"epE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/space)
 "epO" = (
 /obj/structure/janitorialcart,
@@ -4416,6 +4712,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"eAT" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
 "eCu" = (
 /obj/structure/shuttle/part/dropship3/transparent/upper_left_wing,
@@ -4652,6 +4956,15 @@
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/event/metal/dynamic)
+"eLA" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/red1,
+/area/space)
 "eLZ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -4696,6 +5009,25 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
+"eOa" = (
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = -17;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
+"eOi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "eOQ" = (
 /obj/item/trash/syndi_cakes{
 	pixel_y = 20
@@ -4956,6 +5288,11 @@
 	icon_state = "ramptop"
 	},
 /turf/open/floor/strata,
+/area/event/metal/dynamic)
+"faJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "faR" = (
 /obj/structure/machinery/cm_vending/gear/antag{
@@ -5237,6 +5574,14 @@
 	},
 /turf/open/floor/strata/cyan4/east,
 /area/event/metal/dynamic)
+"flF" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -17
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "flQ" = (
 /turf/open/floor/strata/blue3{
 	dir = 4
@@ -5436,6 +5781,9 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"ftx" = (
+/turf/open/floor/strata/red3,
+/area/space)
 "fua" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5450,6 +5798,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"fvF" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "fwt" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -5641,10 +5994,6 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/event/metal/dynamic)
-"fAT" = (
-/obj/structure/prop/almayer/hangar_stencil,
-/turf/open/floor/strata/floor2,
-/area/event/metal/dynamic)
 "fAY" = (
 /obj/item/stack/rods{
 	amount = 40
@@ -5770,6 +6119,10 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "fFq" = (
@@ -5804,6 +6157,14 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/floor_marked,
 /area/event/metal/dynamic)
+"fGQ" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/red1,
+/area/space)
 "fHO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -5879,6 +6240,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"fMi" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "fMj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -6067,6 +6434,13 @@
 	dir = 8
 	},
 /area/space)
+"fVp" = (
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = -17;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "fVv" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -6095,6 +6469,16 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
+"fXM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
 "fXS" = (
 /turf/open/floor/corsat/purple{
 	dir = 1
@@ -6161,6 +6545,12 @@
 	pixel_y = 13
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"gal" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/flight_recorder,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "gaz" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -6348,6 +6738,17 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/event/metal/dynamic)
+"gne" = (
+/obj/structure/sign/safety/security{
+	pixel_x = -17
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "gnq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -6376,6 +6777,20 @@
 	layer = 3.1
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
+"goL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
+"goM" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "gpl" = (
 /turf/open/floor/almayer/red/north,
@@ -6656,6 +7071,10 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
+"gFD" = (
+/obj/structure/cargo_container/seegson/left,
+/turf/open/floor/strata/floor2,
+/area/space)
 "gFY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/roller/bedroll,
@@ -6910,6 +7329,14 @@
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"gOH" = (
+/obj/structure/machinery/landinglight/ds1,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "gOI" = (
@@ -6988,6 +7415,10 @@
 	req_access_txt = "240"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
+/area/event/metal/dynamic)
+"gSH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "gSK" = (
 /obj/structure/coatrack,
@@ -7307,6 +7738,10 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
+"hdQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/space)
 "hdW" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -7510,6 +7945,11 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"hog" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "hol" = (
 /obj/structure/platform{
 	dir = 8
@@ -7530,6 +7970,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"hoU" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3,
+/area/space)
 "hqb" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "56"
@@ -7807,6 +8253,14 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "hEW" = (
@@ -7886,6 +8340,13 @@
 /obj/item/tool/warning_cone{
 	pixel_x = -7;
 	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"hJc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
@@ -8332,6 +8793,15 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"hYL" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
 "hZS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkbrown2/east,
@@ -8371,6 +8841,15 @@
 	icon_state = "floor3"
 	},
 /area/space)
+"icP" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/red1,
+/area/event/metal/dynamic)
 "ido" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/head/bearpelt,
@@ -8450,6 +8929,13 @@
 	},
 /turf/open/shuttle/escapepod/floor4,
 /area/event/metal/dynamic)
+"igJ" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -27;
+	pixel_x = -16
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "igK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/strata/floor3/east,
@@ -8502,6 +8988,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic)
+"iiO" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/strata/floor2,
+/area/space)
 "iiR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -8693,6 +9183,10 @@
 /obj/structure/closet/crate/construction,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"iqG" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "iro" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair{
@@ -8710,6 +9204,10 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "isY" = (
@@ -8718,6 +9216,13 @@
 	pixel_y = -2
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"isZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "itj" = (
 /obj/structure/ladder{
@@ -9043,6 +9548,19 @@
 /obj/effect/decal/strata_decals/grime/grime1,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"iLs" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "iLI" = (
 /turf/closed/wall/almayer/white,
 /area/space)
@@ -9095,6 +9613,10 @@
 /obj/item/tool/extinguisher,
 /turf/open/floor/prison/darkbrown3,
 /area/event/metal/dynamic)
+"iMB" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "iMV" = (
 /obj/structure/ladder{
 	height = 1;
@@ -9104,6 +9626,10 @@
 /area/event/metal/dynamic)
 "iOl" = (
 /obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
 "iOJ" = (
@@ -9123,6 +9649,13 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
+"iQd" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "iQh" = (
 /obj/effect/decal/warning_stripes{
@@ -9153,6 +9686,14 @@
 	light_color = "#ffcc66"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"iQV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "iQZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -9236,6 +9777,10 @@
 	},
 /turf/open/floor/almayer/tcomms,
 /area/event/metal/dynamic)
+"iWh" = (
+/obj/structure/barricade/handrail/medical,
+/turf/open/floor/corsat/lightplate,
+/area/space)
 "iWV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/candle_box,
@@ -9246,6 +9791,11 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"iWY" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/plating,
+/area/space)
 "iXf" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -9277,6 +9827,12 @@
 "iYu" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_x = -1;
+	pixel_y = 1
+	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
 "iYM" = (
@@ -9502,6 +10058,14 @@
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer/silverfull,
 /area/space)
+"jkq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "jkR" = (
 /obj/structure/window/framed/upp/hull,
 /turf/open/floor/plating,
@@ -9570,6 +10134,10 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/squares,
+/area/space)
+"joc" = (
+/obj/structure/cargo_container/seegson/right,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "jof" = (
 /turf/open/floor/prison/darkbrown2/north,
@@ -9664,6 +10232,13 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"jrO" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(230, 240);
+	dir = 2
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "jrV" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/arrow_south,
@@ -9707,6 +10282,14 @@
 /turf/closed/shuttle/dropship3{
 	icon_state = "37"
 	},
+/area/space)
+"juM" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/orange_cover,
 /area/space)
 "juV" = (
 /turf/open/floor/corsat/brown,
@@ -9776,6 +10359,12 @@
 	dir = 9
 	},
 /area/space)
+"jxW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "jye" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -9812,6 +10401,10 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"jzB" = (
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "jzI" = (
 /obj/structure/stairs,
 /obj/effect/step_trigger/teleporter_vector{
@@ -9835,6 +10428,10 @@
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/event/metal/dynamic)
+"jAB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "jAD" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T7";
@@ -10003,6 +10600,12 @@
 	dir = 4
 	},
 /area/event/metal/dynamic)
+"jJh" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "jJp" = (
 /obj/item/tool/wrench{
 	pixel_x = 6;
@@ -10015,6 +10618,13 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"jJu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "jJL" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/event/metal/dynamic)
@@ -10056,6 +10666,13 @@
 "jLP" = (
 /obj/structure/machinery/prop/almayer/CICmap/upp,
 /turf/open/floor/corsat/plate,
+/area/space)
+"jMC" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/space)
 "jMD" = (
 /obj/structure/bed/chair/comfy{
@@ -10109,6 +10726,10 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"jPs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/red1,
+/area/event/metal/dynamic)
 "jQr" = (
 /obj/structure/closet,
 /turf/open/floor/strata/multi_tiles,
@@ -10148,6 +10769,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/spiralplate,
+/area/space)
+"jSM" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/strata/floor2,
 /area/space)
 "jSX" = (
 /obj/structure/surface/rack,
@@ -10327,6 +10955,13 @@
 /obj/structure/largecrate/supply,
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
+"kaA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "kaB" = (
 /turf/open/floor/strata/cyan4{
 	dir = 8
@@ -10357,6 +10992,18 @@
 	light_color = "#ccecff"
 	},
 /turf/open/floor/almayer/sterile_green_corner/east,
+/area/event/metal/dynamic)
+"kcH" = (
+/obj/item/stack/tile/plasteel{
+	pixel_y = 17;
+	pixel_x = 14
+	},
+/obj/item/tool/crowbar{
+	pixel_x = -15;
+	pixel_y = -19
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "kdz" = (
 /obj/structure/machinery/cm_vending/sorted/attachments{
@@ -10442,6 +11089,11 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp3"
 	},
+/area/space)
+"khC" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/space)
 "khK" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -10942,6 +11594,11 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
+"kBq" = (
+/obj/structure/largecrate/random/case/small,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/space)
 "kBv" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -11013,6 +11670,15 @@
 	dir = 4
 	},
 /area/event/metal/dynamic)
+"kES" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "kEX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -11034,6 +11700,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"kFs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "kFz" = (
 /turf/open/floor/corsat/yellow,
@@ -11091,16 +11768,11 @@
 	dir = 1
 	},
 /area/space)
-"kIk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+"kIs" = (
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic)
 "kIA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -11503,6 +12175,13 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
+"kYF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "kZq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -11671,6 +12350,12 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"lhx" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/box,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "lhy" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/large,
@@ -11744,6 +12429,12 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"llc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "llr" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "14"
@@ -11881,6 +12572,12 @@
 /turf/closed/shuttle/dropship3{
 	icon_state = "72"
 	},
+/area/space)
+"luE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/space)
 "luL" = (
 /obj/structure/stairs/perspective{
@@ -12096,6 +12793,13 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic)
+"lIL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
 "lIZ" = (
 /obj/structure/pipes/vents/pump/on{
 	dir = 8
@@ -12152,6 +12856,16 @@
 "lLz" = (
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/space)
+"lLP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "lLV" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	req_access = list(240);
@@ -12329,6 +13043,18 @@
 /obj/structure/largecrate/random/mini/ammo,
 /turf/open/floor/corsat/cargo,
 /area/event/metal/dynamic)
+"lTw" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "lTF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -12475,6 +13201,24 @@
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/event/metal/dynamic)
+"lZa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
+"lZc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "lZT" = (
 /obj/structure/stairs{
 	dir = 1
@@ -12552,6 +13296,12 @@
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
+"meV" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
+/turf/open/floor/strata/red3,
+/area/space)
 "mfo" = (
 /obj/structure/closet/coffin/woodencrate,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -12626,6 +13376,13 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/event/metal/dynamic)
+"mkJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "mkX" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -12683,6 +13440,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"moi" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
+"moF" = (
+/obj/structure/largecrate/random/mini/small_case/b,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/space)
 "mpz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
@@ -12728,7 +13499,7 @@
 /area/event/metal/dynamic)
 "msL" = (
 /obj/structure/cargo_container/seegson/left,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "msM" = (
 /obj/structure/machinery/suit_storage_unit/standard_unit,
@@ -12776,6 +13547,18 @@
 /obj/structure/platform/strata/metal,
 /turf/open/floor/prison/floor_marked/west,
 /area/event/metal/dynamic)
+"mvJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn{
+	pixel_y = -3;
+	pixel_x = -6
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
 "mwS" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -12790,7 +13573,18 @@
 /area/space)
 "mxJ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"mya" = (
+/obj/structure/sign/safety/security{
+	pixel_x = -17
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "myd" = (
 /obj/structure/machinery/cryopod/right{
@@ -12820,6 +13614,14 @@
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
+"mzg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "mzk" = (
 /obj/effect/decal/warning_stripes{
@@ -12936,6 +13738,13 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/event/metal/dynamic)
+"mGu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/space)
 "mGS" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -12953,6 +13762,9 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"mGZ" = (
+/turf/open/floor/strata/red4/west,
+/area/space)
 "mHr" = (
 /obj/item/vehicle_clamp,
 /obj/item/vehicle_clamp,
@@ -13238,6 +14050,16 @@
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/event/metal/dynamic)
+"mWq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "mXd" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/processor,
@@ -13324,6 +14146,22 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/carpet,
 /area/event/metal/dynamic)
+"nda" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "ndy" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 9;
@@ -13348,6 +14186,10 @@
 "nep" = (
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
+"net" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/space)
 "nex" = (
 /obj/structure/closet/crate/supply,
 /obj/item/weapon/gun/smg/bizon,
@@ -13465,6 +14307,15 @@
 	dir = 4
 	},
 /turf/open/floor/strata/red4,
+/area/event/metal/dynamic)
+"nme" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "nmk" = (
 /obj/structure/surface/table/almayer,
@@ -13598,6 +14449,10 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"nut" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "nuP" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -13797,6 +14652,12 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"nFP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "nFZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -13849,14 +14710,6 @@
 	},
 /turf/closed/wall/upp/reinforced,
 /area/event/metal/dynamic)
-"nIj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/event/metal/dynamic)
 "nJk" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -13900,6 +14753,14 @@
 	icon_state = "floor3"
 	},
 /area/space)
+"nMh" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/red1,
+/area/event/metal/dynamic)
 "nMz" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 8;
@@ -14167,9 +15028,28 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkbrown3,
 /area/event/metal/dynamic)
+"oau" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "oaw" = (
 /turf/open/floor/prison/darkbrownfull2,
 /area/event/metal/dynamic)
+"oaV" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "obx" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
@@ -14221,13 +15101,6 @@
 "odu" = (
 /obj/effect/decal/floor_symbol/westface/northwest,
 /turf/open/floor/strata/floor2,
-/area/event/metal/dynamic)
-"odw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "odQ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -14391,6 +15264,10 @@
 	},
 /turf/open/floor/wood/ship,
 /area/event/metal/dynamic)
+"okx" = (
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/corsat/marked,
+/area/space)
 "okQ" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
@@ -14562,6 +15439,18 @@
 	invisibility = 101
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"oty" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
+"otE" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "oul" = (
 /obj/structure/bed/chair/comfy/ares,
@@ -14826,6 +15715,13 @@
 /turf/open/floor/almayer/silvercorner{
 	dir = 1
 	},
+/area/space)
+"oEf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
 /area/space)
 "oEk" = (
 /obj/structure/machinery/light/small{
@@ -15239,6 +16135,14 @@
 	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/event/metal/dynamic)
+"oVn" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/item/prop/colony/usedbandage{
+	dir = 8;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "oVB" = (
 /obj/effect/decal/floor_symbol{
 	dir = 8
@@ -15294,6 +16198,9 @@
 	dir = 5
 	},
 /turf/open/floor/almayer/silverfull,
+/area/space)
+"oXR" = (
+/turf/open/floor/strata/floor3,
 /area/space)
 "oYv" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -15532,6 +16439,10 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
+"pkd" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/corsat/marked,
+/area/space)
 "pkr" = (
 /obj/structure/machinery/light{
 	light_color = "#ccecff"
@@ -15549,6 +16460,16 @@
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "96"
 	},
+/area/space)
+"plC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/space)
 "plE" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -15913,6 +16834,17 @@
 	name = "oil"
 	},
 /area/event/metal/dynamic)
+"pFd" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "pFm" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/helmet_visor/medical/advanced,
@@ -15944,7 +16876,7 @@
 	pixel_x = 3;
 	current_rounds = 0
 	},
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "pFN" = (
 /obj/structure/surface/table/almayer,
@@ -16263,6 +17195,11 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/space)
+"pVu" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cargo_container/arious/mid,
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "pVH" = (
 /obj/structure/bed/sofa/south/white/right,
 /turf/open/floor/almayer/silverfull,
@@ -16373,6 +17310,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/firecloset,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "qcl" = (
@@ -16388,8 +17335,18 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"qcY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/floor3,
+/area/event/metal/dynamic)
 "qdl" = (
 /turf/open/floor/wood,
+/area/event/metal/dynamic)
+"qdo" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "qdY" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -16414,6 +17371,10 @@
 	},
 /turf/open/floor/strata/red1,
 /area/event/metal/dynamic)
+"qfP" = (
+/obj/structure/cargo_container/seegson/left,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "qfT" = (
 /obj/structure/sink{
 	dir = 4;
@@ -16467,6 +17428,13 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
+"qgE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/space)
 "qgI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -16494,6 +17462,10 @@
 "qhx" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /turf/open/floor/corsat/squares,
+/area/event/metal/dynamic)
+"qhA" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "qhX" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -16546,6 +17518,15 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/event/metal/dynamic)
+"qlj" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "qlo" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/strata/floor3,
@@ -16599,6 +17580,11 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"qmf" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/red1,
 /area/event/metal/dynamic)
 "qmo" = (
 /obj/structure/bed/chair/office/dark{
@@ -16658,7 +17644,7 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "qpJ" = (
 /obj/structure/ladder{
@@ -16746,6 +17732,11 @@
 /obj/structure/girder/displaced,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"qvf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "qvn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -16879,12 +17870,30 @@
 	dir = 8
 	},
 /area/event/metal/dynamic)
+"qDj" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -27;
+	pixel_x = -16
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "qDl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating,
+/area/event/metal/dynamic)
+"qDx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "qDI" = (
 /obj/structure/ladder{
@@ -16986,6 +17995,17 @@
 	pixel_x = -6
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
+"qIp" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
+"qJl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "qJB" = (
 /turf/open/floor/prison/darkyellow2/west,
@@ -17235,6 +18255,14 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
+"qVz" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -17
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "qWJ" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp20"
@@ -17548,6 +18576,18 @@
 "rir" = (
 /turf/open/shuttle/escapepod/west,
 /area/event/metal/dynamic)
+"ris" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn{
+	pixel_y = -3;
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "riu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -17619,6 +18659,10 @@
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/event/metal/dynamic)
+"rlk" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "rlm" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine{
@@ -17689,6 +18733,27 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/strata/blue3,
 /area/event/metal/dynamic)
+"rpx" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 4
+	},
+/turf/open/floor/corsat/lightplate,
+/area/space)
+"rpY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
+"rqg" = (
+/obj/item/stack/rods,
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "rqy" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -17729,6 +18794,13 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/almayer/sterile_green,
 /area/space)
+"rsz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "rtg" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp_leftengine"
@@ -17745,6 +18817,15 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/space)
+"ruz" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
 "ruE" = (
 /obj/structure/platform/strata/metal,
 /obj/structure/stairs{
@@ -17799,6 +18880,14 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"rwn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/space)
 "rwt" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -17887,6 +18976,16 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
+"rzC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
 "rzK" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp2"
@@ -17898,6 +18997,14 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"rAH" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "rAJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -17957,6 +19064,16 @@
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic)
+"rEC" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/strata/red1,
 /area/event/metal/dynamic)
 "rFl" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -18081,17 +19198,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
 /area/space)
-"rPb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/event/metal/dynamic)
 "rPq" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
@@ -18126,6 +19232,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"rQh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "rSu" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -18151,6 +19264,10 @@
 	name = "Foxhound"
 	},
 /area/event/metal/dynamic)
+"rTj" = (
+/obj/structure/cargo_container/seegson/mid,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "rTY" = (
 /turf/open/floor/plating/catwalk,
 /area/space)
@@ -18183,6 +19300,17 @@
 	icon_state = "floor2"
 	},
 /area/space)
+"rVf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "rVz" = (
 /obj/structure/surface/rack,
 /obj/structure/largecrate/random/mini/small_case,
@@ -18241,6 +19369,10 @@
 "rXZ" = (
 /turf/open/shuttle/escapepod/floor2,
 /area/event/metal/dynamic)
+"rYA" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/marked,
+/area/space)
 "rYG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -18276,6 +19408,15 @@
 	layer = 2.5;
 	pixel_x = -1;
 	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/handheld1{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/stack/rods{
+	pixel_x = -10;
+	pixel_y = 4
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
@@ -18635,7 +19776,7 @@
 "sps" = (
 /obj/structure/machinery/light,
 /obj/item/prop/almayer/comp_open,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "spx" = (
 /obj/structure/machinery/light,
@@ -18753,6 +19894,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"swp" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/chaff_launcher,
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "swq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/floodlights,
@@ -18796,6 +19943,17 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/event/metal/dynamic)
+"sAV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/structure/sign/safety/security{
+	pixel_x = -17
+	},
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "sAZ" = (
 /obj/structure/platform/strata/metal{
 	layer = 2.9
@@ -19056,6 +20214,13 @@
 	},
 /turf/open/floor/strata/red2,
 /area/event/metal/dynamic)
+"sJt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "sJH" = (
 /obj/structure/stairs,
 /obj/effect/projector{
@@ -19166,6 +20331,22 @@
 	dir = 4
 	},
 /area/event/metal/dynamic)
+"sPX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
+/turf/open/floor/strata/red1,
+/area/space)
+"sQi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
 "sQl" = (
 /obj/structure/pipes/vents/pump/on{
 	dir = 1
@@ -19183,6 +20364,14 @@
 	},
 /obj/structure/platform_decoration,
 /turf/open/floor/engine,
+/area/space)
+"sQM" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -17
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/space)
 "sRb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -19281,6 +20470,28 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
+"sVf" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
+"sVs" = (
+/obj/structure/surface/table/almayer,
+/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/skill/powerloader,
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/event/metal/dynamic)
 "sVy" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
@@ -19291,6 +20502,24 @@
 /turf/open/floor/strata/cyan4{
 	dir = 8
 	},
+/area/event/metal/dynamic)
+"sXi" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"sXs" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "sYA" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -19408,13 +20637,6 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
-"tfj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/event/metal/dynamic)
 "tfH" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/corsat/marked,
@@ -19529,6 +20751,10 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"tjt" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/corsat/marked,
+/area/space)
 "tjH" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
@@ -19579,6 +20805,20 @@
 	},
 /obj/structure/platform,
 /turf/open/floor/engine,
+/area/space)
+"tkp" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
+"tkr" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "tlg" = (
 /obj/structure/platform{
@@ -19836,6 +21076,18 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"tsW" = (
+/obj/item/stack/tile/plasteel{
+	pixel_y = 17;
+	pixel_x = 14
+	},
+/obj/item/tool/crowbar{
+	pixel_x = -15;
+	pixel_y = -19
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/space)
 "ttc" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -19899,6 +21151,16 @@
 "tuU" = (
 /obj/structure/prop/almayer/hangar_stencil,
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
+"tvu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "tvy" = (
 /obj/structure/platform/strata/metal,
@@ -19967,6 +21229,10 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"txU" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/strata/floor2,
+/area/space)
 "tyB" = (
 /obj/structure/ladder{
 	height = 1;
@@ -19984,6 +21250,14 @@
 	dir = 10
 	},
 /area/space)
+"tzt" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "tzY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -20090,6 +21364,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
+"tFD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/event/metal/dynamic)
 "tFR" = (
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/space)
@@ -20170,6 +21448,10 @@
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"tLv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/red1,
+/area/space)
 "tLY" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/almayer/sterile_green,
@@ -20186,6 +21468,13 @@
 	dir = 5
 	},
 /area/event/metal/dynamic)
+"tNI" = (
+/obj/structure/barricade/handrail/medical,
+/obj/structure/machinery/line_nexter/med{
+	dir = 4
+	},
+/turf/open/floor/corsat/lightplate,
+/area/space)
 "tNO" = (
 /turf/open/shuttle/dropship/light_grey_bottom_left,
 /area/space)
@@ -20253,6 +21542,10 @@
 	dir = 8
 	},
 /area/event/metal/dynamic)
+"tQb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/space)
 "tQf" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -20605,6 +21898,10 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic)
+"udy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
+/area/event/metal/dynamic)
 "udz" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1;
@@ -20618,6 +21915,11 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"ufj" = (
+/turf/open/floor/strata/orange_edge{
+	dir = 4
+	},
+/area/space)
 "ufJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
@@ -20844,6 +22146,10 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
+"uuL" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "uuN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/lights/tubes{
@@ -20896,6 +22202,18 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/item/roller/surgical,
 /turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic)
+"uyQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
 "uzo" = (
 /obj/structure/platform/strata/metal{
@@ -21077,7 +22395,10 @@
 /obj/structure/prop/almayer/hangar_stencil{
 	icon_state = "dropship2"
 	},
-/turf/open/floor/strata/multi_tiles,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "uKx" = (
 /obj/structure/surface/table/almayer,
@@ -21106,7 +22427,7 @@
 "uKZ" = (
 /obj/structure/machinery/light,
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "uLh" = (
 /obj/structure/platform/strata/metal{
@@ -21114,6 +22435,13 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
+"uLi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
 "uLp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -21149,7 +22477,7 @@
 /area/space)
 "uND" = (
 /obj/structure/cargo_container/seegson/mid,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "uNF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -21486,7 +22814,7 @@
 	dir = 1
 	},
 /obj/structure/largecrate,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "vbG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -21735,7 +23063,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/corsat/plate,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "vjI" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -21763,6 +23092,10 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /turf/open/floor/prison/darkbrownfull2,
 /area/event/metal/dynamic)
+"vlw" = (
+/obj/structure/cargo_container/seegson/right,
+/turf/open/floor/strata/floor2,
+/area/space)
 "vly" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/medical{
@@ -22070,6 +23403,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer/sterile_green,
 /area/space)
+"vBm" = (
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
 "vBs" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 4
@@ -22166,7 +23503,7 @@
 /area/event/metal/dynamic)
 "vGr" = (
 /obj/structure/cargo_container/seegson/right,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "vGz" = (
 /turf/open/floor/prison/cell_stripe/west,
@@ -22297,6 +23634,20 @@
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/event/metal/dynamic)
+"vMn" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "vMu" = (
 /turf/open/gm/river/desert/deep/covered,
 /area/event/metal/dynamic)
@@ -22315,7 +23666,7 @@
 "vNP" = (
 /obj/structure/machinery/light,
 /obj/structure/largecrate/random/case/double,
-/turf/open/floor/corsat/plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "vNV" = (
 /obj/effect/decal/warning_stripes{
@@ -22347,6 +23698,15 @@
 "vOw" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing,
 /turf/open/floor/plating,
+/area/space)
+"vOy" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
+/obj/structure/barricade/handrail/medical{
+	dir = 4
+	},
+/turf/open/floor/corsat/lightplate,
 /area/space)
 "vPa" = (
 /obj/structure/machinery/line_nexter,
@@ -22423,6 +23783,13 @@
 /obj/item/tool/pen,
 /turf/open/floor/corsat/plate,
 /area/space)
+"vRb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/event/metal/dynamic)
 "vRD" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
@@ -22483,6 +23850,10 @@
 	},
 /turf/open/floor/wood/ship,
 /area/event/metal/dynamic)
+"vSR" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
 "vTf" = (
 /obj/structure/platform{
 	dir = 4;
@@ -22534,6 +23905,10 @@
 "vUg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/barcardine,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "vUJ" = (
@@ -22561,6 +23936,15 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
+"vWA" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "vWD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata,
@@ -22816,6 +24200,23 @@
 /obj/item/storage/box/bodybags,
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"wfy" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	light_color = "#ffd4d4"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "wfL" = (
 /obj/structure/closet/crate/explosives,
 /obj/item/weapon/gun/pistol/t73,
@@ -22831,6 +24232,12 @@
 	dir = 4
 	},
 /area/event/metal/dynamic)
+"wga" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "why" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/space)
@@ -23007,6 +24414,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green,
 /area/event/metal/dynamic)
+"woB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/floor3,
+/area/space)
 "woC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/medical_supply_link,
@@ -23261,6 +24674,12 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
+"wCf" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "wCp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/cable/heavyduty{
@@ -23321,6 +24740,12 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"wFu" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "wGy" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
@@ -23629,6 +25054,10 @@
 /obj/structure/prop/almayer/minigun_crate,
 /turf/open/floor/corsat/cargo,
 /area/event/metal/dynamic)
+"wWc" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/strata/orange_cover,
+/area/space)
 "wWh" = (
 /obj/structure/window/framed/upp/reinforced,
 /turf/open/floor/strata,
@@ -23683,6 +25112,10 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"wZY" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "xan" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -23785,6 +25218,16 @@
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
+"xed" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/strata/red1,
+/area/space)
 "xet" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -24092,17 +25535,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
-"xpN" = (
-/obj/structure/largecrate/random/secure,
-/turf/open/floor/corsat/plate,
-/area/event/metal/dynamic)
 "xqd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 3;
 	pixel_x = -1
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "xqf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -24225,6 +25664,9 @@
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic)
+"xyw" = (
+/turf/open/floor/strata/orange_icorner/north,
+/area/space)
 "xyA" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/shotgun/heavyflechette,
@@ -24351,6 +25793,16 @@
 /obj/item/clothing/under/marine/veteran/UPP/officer,
 /obj/item/device/whistle,
 /turf/open/floor/wood,
+/area/event/metal/dynamic)
+"xDu" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
 "xDA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -24861,6 +26313,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"yjA" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/strata/floor2,
+/area/space)
 "ykg" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/cargo_container/lockmart/right,
@@ -51109,31 +52565,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+dXR
+dXR
+dXR
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
 ofW
 ofW
 ofW
@@ -51376,31 +52832,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+eOa
+fMi
+wCf
+xAs
+xAs
+xAs
+xAs
+wCf
+fMi
+kES
+sJt
+luE
+luE
+gne
+xAs
+wCf
+xAs
+xAs
+xAs
+xAs
+xAs
+wCf
+ris
+mjm
 ofW
 ofW
 ofW
@@ -51643,31 +53099,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+lFY
+xAs
+hdQ
+uQq
+uQq
+tLv
+mnb
+drz
+mnb
+tLv
+bKi
+pqG
+pqG
+pqG
+bKi
+ymd
+qvf
+nut
+wWc
+wWc
+uQq
+uQq
+uQq
+qfP
+mjm
 ofW
 ofW
 ofW
@@ -51910,31 +53366,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+xAs
+uQq
+uQq
+uQq
+dXR
+net
+tjt
+dXR
+dXR
+bKi
+pqG
+pqG
+pqG
+bKi
+dXR
+rYA
+dXR
+okx
+net
+uQq
+hdQ
+uQq
+rTj
+mjm
 ofW
 ofW
 ofW
@@ -52177,31 +53633,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+oVn
+uQq
+uQq
+uQq
+jfU
+cEg
+hrA
+iWY
+jfU
+bKi
+pqG
+pqG
+pqG
+bKi
+jfU
+bKi
+hrA
+bKi
+tQb
+uQq
+uQq
+uQq
+joc
+mjm
 ofW
 ofW
 ofW
@@ -52444,31 +53900,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+iLI
+tkr
+bfh
+uQq
+uQq
+dXR
+dXR
+dXR
+dXR
+dXR
+bKi
+pqG
+pqG
+pqG
+bKi
+dXR
+pkd
+dXR
+dXR
+dXR
+uQq
+uQq
+uQq
+oty
+mjm
 ofW
 ofW
 ofW
@@ -52711,31 +54167,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jrO
+rsz
+uQq
+tsW
+uQq
+xed
+fGQ
+eLA
+eLA
+fGQ
+bKi
+pqG
+pqG
+pqG
+bKi
+qlj
+vWA
+juM
+pFd
+juM
+uQq
+uQq
+uQq
+llc
+jrO
 ofW
 ofW
 ofW
@@ -52978,31 +54434,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+mjm
+nda
+uQq
+hdQ
+uQq
+uQq
+uQq
+uQq
+uQq
+uQq
+jMC
+pqG
+jAB
+pqG
+jMC
+uQq
+uQq
+uQq
+uQq
+uQq
+uQq
+uQq
+uQq
+aTg
+mjm
 ofW
 ofW
 ofW
@@ -53245,31 +54701,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jrO
+epE
+oEf
+oEf
+bmx
+uQq
+uQq
+uQq
+uQq
+uQq
+mjm
+pqG
+pqG
+pqG
+mjm
+uQq
+uQq
+uQq
+uQq
+hdQ
+sQi
+oEf
+oEf
+dqk
+jrO
 ofW
 ofW
 ofW
@@ -53512,31 +54968,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+mjm
+jfU
+jfU
+aCg
+rwn
+bKi
+bKi
+bKi
+bKi
+bKi
+mjm
+sQM
+fst
+igJ
+mjm
+bKi
+bKi
+bKi
+bKi
+bKi
+qgE
+jfU
+jfU
+aCg
+mjm
 ofW
 ofW
 ofW
@@ -53779,31 +55235,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+nFP
+jfU
+jfU
+jfU
+mGu
+oXR
+oXR
+oXR
+oXR
+oXR
+hoU
+dWe
+oXR
+oXR
+hoU
+oXR
+oXR
+oXR
+oXR
+oXR
+woB
+jfU
+jfU
+jfU
+mGu
 ofW
 ofW
 ofW
@@ -53857,8 +55313,8 @@ oBA
 dPb
 dPb
 rNC
-hii
-twv
+xDu
+qjj
 iOl
 uOd
 ojd
@@ -54046,31 +55502,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+plC
+jJu
+jJu
+jJu
+epE
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+uLi
+fXM
+jJu
+jJu
+jJu
+eOi
 ofW
 ofW
 ofW
@@ -54313,31 +55769,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+wga
+qiA
+gIe
+gIe
+gIe
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+cCn
+jaC
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+qiA
+rQh
 ofW
 ofW
 ofW
@@ -54381,28 +55837,28 @@ rNC
 dPb
 ebu
 hjn
-biL
-biL
-kbt
-biL
-biL
-biL
-biL
-kbt
-biL
-biL
-twv
-twv
-twv
-biL
-biL
-kbt
-biL
-biL
-biL
-biL
-biL
-kbt
+fVp
+jJh
+wFu
+sYA
+sYA
+sYA
+sYA
+wFu
+jJh
+nme
+bkt
+jxW
+jxW
+mya
+sYA
+wFu
+sYA
+sYA
+sYA
+sYA
+sYA
+wFu
 adA
 pPQ
 kwA
@@ -54648,25 +56104,25 @@ rNC
 vCn
 toU
 wCK
-biL
+sYA
+mYl
 eiG
 eiG
-eiG
+jPs
 nJK
+qmf
 nJK
-nJK
-nJK
-nJK
-eiG
+jPs
+tpc
 sVy
 sVy
 sVy
-eiG
+tpc
 kIf
-kIf
-kIf
-kIf
-kIf
+ebr
+dze
+vSR
+vSR
 eiG
 eiG
 eiG
@@ -54847,31 +56303,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+iLI
+dXR
+dXR
+dXR
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
+nRJ
 ofW
 ofW
 ofW
@@ -54915,27 +56371,27 @@ rNC
 ymc
 bCX
 hjn
-biL
+sYA
 eiG
 eiG
 eiG
 kdK
+mST
+bbY
 kdK
 kdK
-kdK
-kdK
-eiG
+tpc
 sVy
 sVy
 sVy
+tpc
+kdK
+qIp
+kdK
+vBm
+mST
 eiG
-kdK
-kdK
-kdK
-kdK
-kdK
-eiG
-eiG
+mYl
 eiG
 uND
 pPQ
@@ -55114,31 +56570,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+aeB
+vOy
+rpx
+rpx
+uQq
+uQq
+bKi
+bKi
+meV
+sPX
+luE
+luE
+luE
+sAV
+ede
+bKi
+moF
+yjA
+kBq
+khC
+uQq
+uQq
+mvJ
+mjm
 ofW
 ofW
 ofW
@@ -55182,25 +56638,25 @@ rNC
 vRD
 fAS
 hjn
+wDZ
+eiG
+eiG
+eiG
 biL
-eiG
-eiG
-eiG
+hog
+lXJ
+otE
+biL
+tpc
+sVy
+sVy
+sVy
+tpc
 biL
 tpc
 lXJ
 tpc
-biL
-eiG
-sVy
-sVy
-sVy
-eiG
-biL
-tpc
-lXJ
-tpc
-biL
+aIh
 eiG
 eiG
 eiG
@@ -55381,31 +56837,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+lFY
+iWh
+iiO
+uQq
+uQq
+uQq
+uQq
+bKi
+bKi
+ftx
+ftx
+pqG
+pqG
+pqG
+ede
+ede
+bKi
+bKi
+txU
+aWb
+bKi
+uQq
+uQq
+gFD
+mjm
 ofW
 ofW
 ofW
@@ -55449,29 +56905,29 @@ rNC
 rNC
 rNC
 rNC
-biL
+sXi
+aId
 eiG
 eiG
-eiG
 kdK
 kdK
 kdK
 kdK
 kdK
-eiG
+tpc
 sVy
 sVy
 sVy
+tpc
+kdK
+wZY
+kdK
+kdK
+kdK
 eiG
-kdK
-kdK
-kdK
-kdK
-kdK
 eiG
 eiG
-eiG
-biL
+mkJ
 pPQ
 pPQ
 pcg
@@ -55648,31 +57104,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+tNI
+uQq
+uQq
+bKi
+bKi
+jSM
+bKi
+bKi
+ftx
+ftx
+pqG
+pqG
+pqG
+ede
+ede
+bKi
+bKi
+jSM
+bKi
+bKi
+uQq
+uQq
+ctA
+mjm
 ofW
 ofW
 ofW
@@ -55714,31 +57170,31 @@ sYA
 sYA
 sYA
 sYA
-tnF
+acI
 aHS
-twv
+xkK
 eiG
+kcH
 eiG
-eiG
-nJK
-nJK
-nJK
-nJK
-nJK
-eiG
+rEC
+nMh
+icP
+icP
+nMh
+tpc
 sVy
 sVy
 sVy
+tpc
+ruz
+hYL
+eAT
+bSU
+eAT
 eiG
-kIf
-kIf
-kIf
-kIf
-kIf
 eiG
 eiG
-eiG
-twv
+oau
 aHS
 vUg
 fvD
@@ -55915,31 +57371,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+eif
+uQq
+uQq
+uQq
+bKi
+bKi
+uQq
+bKi
+bKi
+ftx
+ftx
+pqG
+pqG
+pqG
+ede
+ede
+bKi
+bKi
+uQq
+bKi
+bKi
+uQq
+uQq
+vlw
+mjm
 ofW
 ofW
 ofW
@@ -55985,17 +57441,18 @@ hEU
 pPQ
 cai
 eiG
+mYl
 eiG
 eiG
 eiG
 eiG
 eiG
 eiG
-eiG
-eiG
+qJl
 sVy
+lZa
 sVy
-sVy
+qJl
 eiG
 eiG
 eiG
@@ -56004,10 +57461,9 @@ eiG
 eiG
 eiG
 eiG
-eiG
-eSt
+lTw
 pPQ
-oEk
+wfy
 aPD
 mJI
 eZG
@@ -56182,31 +57638,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+iLI
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+mGZ
+ftx
+pqG
+pqG
+pqG
+ede
+xyw
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+mjm
 ofW
 ofW
 ofW
@@ -56248,33 +57704,33 @@ sYA
 bYr
 mdQ
 eAu
-bYr
+kYF
 aHS
-twv
+rpY
+auC
+auC
+dPd
 eiG
 eiG
 eiG
 eiG
 eiG
-eiG
-eiG
-eiG
-eiG
+pPQ
 sVy
 sVy
 sVy
+pPQ
 eiG
 eiG
 eiG
 eiG
-eiG
-eiG
-eiG
-eiG
-eiG
-twv
+mYl
+com
+auC
+auC
+mWq
 aHS
-sYA
+lrn
 fvD
 gON
 ljr
@@ -56449,31 +57905,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+mjm
+mnb
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+eiE
+mnb
+pqG
+pqG
+pqG
+ymd
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+ufj
+ymd
+mjm
 ofW
 ofW
 ofW
@@ -56518,27 +57974,27 @@ pPQ
 pPQ
 pPQ
 biL
-eiG
-fAT
-eiG
-eiG
+biL
+tuU
+iQV
 tpc
 tpc
 tpc
-eiG
-eiG
-sVy
-sVy
-sVy
-eiG
-eiG
+tpc
+tpc
+pPQ
+flF
+twv
+dEJ
+pPQ
 tpc
 tpc
 tpc
-eiG
-eiG
-eiG
-eiG
+tpc
+tpc
+kaA
+biL
+biL
 tuU
 pPQ
 pPQ
@@ -56716,31 +58172,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jrO
+fst
+fst
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+fst
+fst
+fst
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+fst
+jrO
 ofW
 ofW
 ofW
@@ -56781,33 +58237,33 @@ rAu
 bYr
 pUp
 pPQ
+sYA
+sYA
+bXG
 biL
 biL
 biL
+vRb
+cLn
+cLn
+cLn
+cLn
+cLn
+kIs
+udy
+cLn
+cLn
+kIs
+cLn
+cLn
+cLn
+cLn
+cLn
+qcY
 biL
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
-cLn
+biL
+biL
+vRb
 pPQ
 pPQ
 pPQ
@@ -56983,31 +58439,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jrO
+fst
+fst
+bjo
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+bjo
+fst
+fst
+fst
+bjo
+jeU
+jeU
+jeU
+jeU
+jeU
+jeU
+bjo
+jeU
+fst
+jrO
 ofW
 ofW
 ofW
@@ -57048,9 +58504,13 @@ bYr
 bYr
 uuN
 pPQ
-vjD
+elw
 twv
 cNY
+aNj
+aNj
+aNj
+rpY
 hcF
 hcF
 hcF
@@ -57066,17 +58526,13 @@ hcF
 hcF
 hcF
 hcF
-hcF
-hcF
-hcF
-hcF
-hcF
-hcF
-hcF
-hcF
+rzC
+aNj
+aNj
+aNj
 irE
 twv
-dum
+qmQ
 pPQ
 aBV
 hve
@@ -57250,31 +58706,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+mjm
+pqG
+pqG
+mjm
+kqe
+rlk
+rqg
+jzB
+kqe
+kqe
+mjm
+pqG
+pqG
+pqG
+mjm
+hlG
+kqe
+kqe
+bte
+ajF
+kqe
+mjm
+pqG
+pqG
+mjm
 ofW
 ofW
 ofW
@@ -57315,7 +58771,7 @@ bYr
 xlL
 aGB
 pPQ
-biL
+iMB
 sVy
 aZF
 spJ
@@ -57517,31 +58973,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+nFP
+pqG
+pqG
+mjm
+oaV
+oaV
+oaV
+oaV
+vMn
+iLs
+mjm
+qVz
+pqG
+qDj
+mjm
+oaV
+oaV
+oaV
+oaV
+iLs
+iLs
+mjm
+pqG
+pqG
+xAs
 ofW
 ofW
 ofW
@@ -57582,7 +59038,7 @@ bPr
 sYA
 sYA
 pPQ
-tpc
+cGz
 sVy
 aZF
 rxQ
@@ -57784,31 +59240,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+plC
+fst
+fst
+ciN
+kqe
+bOc
+kqe
+kqe
+kqe
+rlk
+ciN
+pqG
+pqG
+pqG
+ciN
+iqG
+kqe
+kqe
+fvF
+kqe
+hlG
+ciN
+fst
+fst
+eOi
 ofW
 ofW
 ofW
@@ -57849,8 +59305,8 @@ bYr
 sYA
 bYr
 pPQ
-tpc
-sVy
+pVu
+lZa
 aZF
 wlI
 nxG
@@ -58051,31 +59507,31 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+wga
+qiA
+gIe
+gIe
+gIe
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+cCn
+jaC
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+cCn
+gIe
+rxm
+hHd
+qiA
+rQh
 ofW
 ofW
 ofW
@@ -58116,8 +59572,8 @@ bYr
 sYA
 pIg
 pPQ
-tpc
-sVy
+faJ
+goM
 aZF
 vfs
 nxG
@@ -58142,9 +59598,9 @@ nxG
 nxG
 nxG
 aTQ
-tBd
+mzg
 sVy
-tpc
+tkp
 pPQ
 bYr
 bPr
@@ -58383,8 +59839,8 @@ bYr
 sYA
 bjl
 pPQ
-biL
-sVy
+dIC
+qhA
 aZF
 rjn
 nxG
@@ -58411,7 +59867,7 @@ nxG
 phr
 tBd
 sVy
-cVC
+lhx
 pPQ
 lQK
 ojl
@@ -58651,7 +60107,7 @@ sYA
 hUf
 pPQ
 vjD
-sVy
+uuL
 aZF
 rxQ
 nxG
@@ -58678,7 +60134,7 @@ nxG
 wjj
 tBd
 sVy
-tpc
+swp
 pPQ
 lNv
 bYr
@@ -58874,19 +60330,19 @@ ofW
 ofW
 ofW
 ofW
-hKX
-qWJ
-bGp
-iSo
-qOK
-bGp
-bGp
-iSo
-bGp
-rtg
-ttl
-eKf
-omj
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59141,19 +60597,19 @@ ofW
 ofW
 ofW
 ofW
-hKX
-cHJ
-hCt
-aGw
-gWk
-gWk
-gWk
-aGw
-nZd
-vnS
-bGp
-bGp
-sHk
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59187,7 +60643,7 @@ pPQ
 tpc
 sVy
 aZF
-vfs
+gOH
 nxG
 nxG
 nxG
@@ -59408,19 +60864,19 @@ ofW
 ofW
 ofW
 ofW
-qWJ
-jYS
-oTO
-pDB
-pDB
-pDB
-pDB
-pDB
-tNO
-aGw
-aGw
-aGw
-mQa
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59451,7 +60907,7 @@ mdQ
 vfU
 pPQ
 pPQ
-tpc
+sXs
 sVy
 aZF
 rjn
@@ -59675,19 +61131,19 @@ ofW
 ofW
 ofW
 ofW
-jML
-jWC
-wPX
-coe
-coe
-coe
-coe
-coe
-wPX
-eEp
-eEp
-eEp
-rzK
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59718,7 +61174,7 @@ bYr
 tnF
 bet
 mXm
-twv
+xkK
 sVy
 aZF
 rxQ
@@ -59942,19 +61398,6 @@ ofW
 ofW
 ofW
 ofW
-cjk
-usY
-kLB
-pDB
-pDB
-pDB
-pDB
-pDB
-iZS
-aGw
-aGw
-aGw
-mQa
 ofW
 ofW
 ofW
@@ -59966,6 +61409,19 @@ ofW
 ofW
 ofW
 ofW
+hKX
+qWJ
+bGp
+iSo
+qOK
+bGp
+bGp
+iSo
+bGp
+rtg
+ttl
+eKf
+omj
 ofW
 ofW
 ofW
@@ -59983,9 +61439,9 @@ bGC
 dRD
 flS
 wZo
-bPr
+jkq
 kdK
-twv
+xkK
 sVy
 aZF
 wlI
@@ -60209,30 +61665,30 @@ ofW
 ofW
 ofW
 ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 hKX
 cHJ
-uJl
+hCt
 aGw
-kUQ
-kUQ
-kUQ
+gWk
+gWk
+gWk
 aGw
-gbg
-llM
-hRF
-hRF
-kgw
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+nZd
+vnS
+bGp
+bGp
+sHk
 ofW
 ofW
 ofW
@@ -60252,7 +61708,7 @@ dRD
 dRD
 dRD
 dRD
-tpc
+moi
 sVy
 aZF
 vfs
@@ -60280,9 +61736,9 @@ nxG
 aTQ
 tBd
 sVy
-tpc
+tzt
 pPQ
-tnF
+lLP
 dvB
 vgO
 pPQ
@@ -60476,19 +61932,6 @@ ofW
 ofW
 ofW
 ofW
-hKX
-cjk
-hRF
-iSo
-hRF
-hRF
-hRF
-iSo
-hRF
-msU
-uxk
-hPZ
-diJ
 ofW
 ofW
 ofW
@@ -60500,6 +61943,19 @@ ofW
 ofW
 ofW
 ofW
+qWJ
+jYS
+oTO
+pDB
+pDB
+pDB
+pDB
+pDB
+tNO
+aGw
+aGw
+aGw
+mQa
 ofW
 ofW
 ofW
@@ -60519,9 +61975,9 @@ bGC
 iFa
 iFa
 dRD
-tpc
-sVy
-aZF
+tzt
+qjj
+goL
 spJ
 iOS
 hgZ
@@ -60545,9 +62001,9 @@ dOB
 nfN
 iOS
 spJ
-xOh
-bkr
-twv
+dUo
+qjj
+kFs
 aHS
 fFe
 bYr
@@ -60754,19 +62210,19 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jML
+jWC
+wPX
+coe
+coe
+coe
+coe
+coe
+wPX
+eEp
+eEp
+eEp
+rzK
 ofW
 ofW
 ofW
@@ -60786,10 +62242,11 @@ ofW
 wuU
 iFa
 dRD
-tpc
-sVy
+iQd
+biL
 qpk
 uKj
+qDx
 qjw
 qjw
 qjw
@@ -60807,14 +62264,13 @@ qjw
 qjw
 qjw
 qjw
+uyQ
 qjw
-qjw
-qjw
-qjw
+qDx
 ccU
 xqd
 dsr
-eSt
+sVf
 pPQ
 qch
 aQo
@@ -61021,19 +62477,19 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+cjk
+usY
+kLB
+pDB
+pDB
+pDB
+pDB
+pDB
+iZS
+aGw
+aGw
+aGw
+mQa
 ofW
 ofW
 ofW
@@ -61054,16 +62510,16 @@ wuU
 iFa
 dRD
 gOE
-sVy
-sVy
-aZF
+biL
+biL
+dEd
 spJ
 biL
 biL
 biL
 biL
 biL
-biL
+aIh
 biL
 biL
 biL
@@ -61078,12 +62534,12 @@ biL
 biL
 biL
 spJ
-xOh
-bkr
-bkr
-twv
+lIL
+biL
+biL
+bjj
 aHS
-sYA
+lrn
 ovt
 dRD
 dRD
@@ -61288,19 +62744,19 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+hKX
+cHJ
+uJl
+aGw
+kUQ
+kUQ
+kUQ
+aGw
+gbg
+llM
+hRF
+hRF
+kgw
 ofW
 ofW
 ofW
@@ -61321,9 +62777,9 @@ wuU
 iFa
 dRD
 dum
-tfj
-efI
-kIk
+biL
+biL
+dEd
 biL
 nxG
 nxG
@@ -61340,15 +62796,15 @@ uVc
 fAY
 nxG
 nxG
-nxG
+gSH
 nxG
 nxG
 nxG
 biL
-rPb
-odw
-nIj
-tpc
+lIL
+biL
+biL
+dBI
 dRD
 dRD
 dRD
@@ -61555,19 +63011,19 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+hKX
+cjk
+hRF
+iSo
+hRF
+hRF
+hRF
+iSo
+hRF
+msU
+uxk
+hPZ
+diJ
 ofW
 ofW
 ofW
@@ -61587,10 +63043,10 @@ ofW
 wuU
 iFa
 dRD
-tpc
-aZF
-sYA
-cCl
+rAH
+tvu
+hJc
+lZc
 biL
 nxG
 nxG
@@ -61612,9 +63068,9 @@ nxG
 nxG
 nxG
 biL
-iKS
-sYA
-tBd
+aBn
+hJc
+rVf
 iYu
 dRD
 iFa
@@ -62655,9 +64111,9 @@ ofW
 wuU
 iFa
 dRD
-xpN
+daA
 aZF
-sYA
+pVc
 cCl
 biL
 nxG
@@ -62669,7 +64125,7 @@ laW
 gyS
 pfN
 rvy
-rvy
+tFD
 cLo
 shX
 shX
@@ -62940,11 +64396,11 @@ xlS
 jlq
 rvy
 rvy
-rvy
+tFD
 xnb
 gLw
 nxG
-nxG
+gSH
 nxG
 biL
 iKS
@@ -63751,7 +65207,7 @@ biL
 piP
 eQX
 rZO
-tpc
+gal
 dRD
 iFa
 jtG
@@ -63992,7 +65448,7 @@ iFa
 dRD
 dRD
 dRD
-twv
+dQr
 aZF
 biL
 nxG
@@ -64016,7 +65472,7 @@ gEq
 nxG
 biL
 tBd
-twv
+qdo
 dRD
 dRD
 dRD
@@ -64264,7 +65720,7 @@ kuO
 biL
 nxG
 nxG
-nxG
+gSH
 gYt
 jCY
 nxG
@@ -64527,7 +65983,7 @@ ofW
 jUv
 wuU
 dRD
-aZF
+isZ
 biL
 nxG
 nxG
@@ -64538,6 +65994,7 @@ nBf
 wSs
 nxG
 nxG
+gSH
 nxG
 nxG
 nxG
@@ -64547,8 +66004,7 @@ nxG
 nxG
 nxG
 nxG
-nxG
-biL
+aIh
 tBd
 dRD
 jtG
@@ -65343,7 +66799,7 @@ qgI
 kmj
 kmj
 kmj
-kmj
+bKG
 kmj
 kmj
 qgI
@@ -65866,7 +67322,7 @@ iFa
 iFa
 dRD
 kkt
-kkt
+sVs
 qJB
 qJB
 qJB

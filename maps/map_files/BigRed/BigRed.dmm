@@ -1465,7 +1465,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "agm" = (
 /turf/closed/wall/solaris/rock,
-/area/bigredv2/caves_north)
+/area/bigredv2/outside/marshal_office)
 "agn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -21186,7 +21186,7 @@
 /area/bigredv2/outside/s)
 "fOc" = (
 /turf/open/mars_cave/mars_cave_3,
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "fOf" = (
 /obj/item/trash/eat{
 	pixel_x = 2;
@@ -22113,10 +22113,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
-"gJw" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave,
-/area/bigredv2/caves_virology)
 "gJB" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -36938,7 +36934,7 @@
 "vNm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "vND" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/mars,
@@ -40112,10 +40108,10 @@ aao
 aao
 aao
 aao
-jCY
-fLj
-fLj
-fmn
+fxK
+csE
+csE
+sQw
 aao
 aao
 aao
@@ -40330,10 +40326,10 @@ aao
 aao
 fxK
 xmy
-rDP
-rDP
-rDP
-fmn
+xmy
+xmy
+xmy
+sQw
 aao
 aao
 aao
@@ -40547,10 +40543,10 @@ aao
 fxK
 xmy
 xmy
-rDP
-iwG
-rDP
-rDP
+xmy
+lrH
+xmy
+xmy
 fmn
 aao
 aao
@@ -40764,10 +40760,10 @@ aao
 rCA
 xmy
 xmy
-rDP
-rDP
-rDP
-rDP
+xmy
+xmy
+xmy
+xmy
 rDP
 rDP
 rDP
@@ -40981,10 +40977,10 @@ fxK
 xmy
 xmy
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 rDP
 rDP
 rDP
@@ -41198,10 +41194,10 @@ rCA
 xmy
 xmy
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 rDP
 rDP
 rDP
@@ -41415,10 +41411,10 @@ rCA
 xmy
 xmy
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 rDP
 rDP
 rDP
@@ -41632,10 +41628,10 @@ xmy
 xmy
 hcb
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 rDP
 rDP
 rDP
@@ -41849,10 +41845,10 @@ xmy
 xmy
 xmy
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 aao
 aao
 aao
@@ -42066,10 +42062,10 @@ xmy
 xmy
 xmy
 xmy
-rDP
-rDP
-rDP
-oAf
+xmy
+xmy
+xmy
+sGi
 aao
 aao
 aao
@@ -42284,10 +42280,10 @@ xmy
 gda
 gda
 fOc
-rDP
-rDP
-iwG
-fmn
+xmy
+xmy
+lrH
+sQw
 aao
 aao
 aao
@@ -42500,10 +42496,10 @@ gda
 eci
 aao
 aao
-fwa
-gJw
-gJw
-vNh
+rCA
+pQM
+pQM
+eOd
 vNm
 aao
 aao
@@ -42717,7 +42713,7 @@ aao
 aao
 aao
 aao
-mZC
+eci
 aao
 wvk
 aGo

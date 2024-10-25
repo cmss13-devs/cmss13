@@ -465,6 +465,7 @@
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_MEDIUM
 	minimap_color = MINIMAP_AREA_MEDBAY
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/dorms
 	name = "\improper Dormitories"
@@ -528,6 +529,7 @@
 /area/bigredv2/outside/telecomm/n_cave
 	name = "\improper North Cave Communications Relay"
 	is_landing_zone = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/telecomm/warehouse
 	name = "\improper Warehouse Communications Relay"
@@ -659,7 +661,7 @@
 	name = "\improper Northern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/lz1_telecomm_cas
 	name = "\improper Virology Caves Entrance"

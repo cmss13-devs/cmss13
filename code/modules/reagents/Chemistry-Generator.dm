@@ -182,7 +182,7 @@
 	//Properties
 	if(!no_properties)
 		var/gen_value
-		var/properties_buff = rand(0, 4)
+		var/properties_buff = rand(2, 3)
 		for(var/i in 1 to gen_tier+properties_buff)
 			if(i == 1) //The first property is random to offset the value balance
 				if(gen_tier > 2)

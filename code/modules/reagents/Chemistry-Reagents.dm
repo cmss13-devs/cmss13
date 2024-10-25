@@ -186,9 +186,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
 		if(potency <= 0)
 			continue
+		P.process(M, potency, delta_time)
 		if(flags & REAGENT_CANNOT_OVERDOSE)
 			continue
-		P.process(M, potency, delta_time)
 		if(overdose && volume > overdose)
 			P.process_overdose(M, potency, delta_time)
 			if(overdose_critical && volume > overdose_critical)

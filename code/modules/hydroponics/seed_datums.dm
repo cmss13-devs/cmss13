@@ -1232,7 +1232,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_name = "S'randar's hand"
 	display_name = "S'randar's hand leaves"
 	packet_icon = "seed-shand"
-	products = list(/obj/item/stack/medical/advanced/bruise_pack/predator)
+	products = list(/obj/item/reagent_container/food/snacks/grown/shand)
 	plant_icon = "shand"
 	chems = list("bicaridine" = list(0,10))
 
@@ -1248,7 +1248,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_name = "Messa's tear"
 	display_name = "Messa's tear leaves"
 	packet_icon = "seed-mtear"
-	products = list(/obj/item/stack/medical/advanced/ointment/predator)
+	products = list(/obj/item/reagent_container/food/snacks/grown/mtear)
 	plant_icon = "mtear"
 	chems = list("honey" = list(1,10), "kelotane" = list(3,5))
 	chems_special = list("digoxin")

@@ -50,7 +50,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
-	matter = list("metal" = 20,"glass" = 50)
+	matter = list("metal" = 20,"glass" = 100)
 
 	var/max_uses = 50
 	var/uses = 0

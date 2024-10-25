@@ -10,7 +10,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	unacidable = TRUE
-	explo_proof = TRUE
+	indestructible = TRUE
 	muzzle_flash = null
 
 	current_mag = /obj/item/ammo_magazine/rifle/sharp/explosive

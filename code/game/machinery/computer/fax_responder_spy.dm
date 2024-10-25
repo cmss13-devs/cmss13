@@ -211,7 +211,7 @@
 		if(spy_faction in FACTION_LIST_MARINE_FAXES)
 			return COMPONENT_TURF_ALLOW_MOVEMENT
 
-	var/list/turf_area = range(spy_range, crossing_turf)
+	var/list/turf_area = view(spy_range, crossing_turf)
 	temporary_list = turf_area
 
 	var/list/obj/structure/machinery/camera/camera_list = list()

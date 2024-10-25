@@ -40,10 +40,18 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 	var/hardcore = FALSE
 
+	///Whether or not the fax response station has loaded.
+	var/loaded_fax_base = FALSE
+
 /datum/game_mode/New()
 	..()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
+
+	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+	if(!loaded_fax_base)
+		log_debug("Error loading fax response base!")
+		return FALSE
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")

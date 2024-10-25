@@ -758,6 +758,23 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"aGC" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	req_access = list(240)
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "UPP CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
 "aGK" = (
 /obj/structure/platform{
 	dir = 8;
@@ -1445,6 +1462,10 @@
 /area/event/metal/dynamic)
 "blf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/strata/red3,
 /area/event/metal/dynamic)
 "blm" = (
@@ -1464,6 +1485,11 @@
 /obj/item/roller/surgical,
 /turf/closed/wall/almayer/white,
 /area/space)
+"bmb" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "bmn" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	pixel_x = -7
@@ -1636,6 +1662,13 @@
 "bwH" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/space)
+"bwQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "bwX" = (
 /obj/structure/machinery/door_control{
 	id = "synth";
@@ -1786,6 +1819,16 @@
 /obj/structure/largecrate/supply/medicine/medkits,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"bEy" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "bEW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -1797,7 +1840,10 @@
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
 "bGc" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/strata/red4{
 	dir = 8
 	},
@@ -2416,6 +2462,9 @@
 	pixel_x = 16;
 	pixel_y = -16
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "clW" = (
@@ -2492,6 +2541,16 @@
 	dir = 8
 	},
 /area/event/metal/dynamic)
+"cpt" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 4;
+	network = list("Rostock")
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/event/metal/dynamic)
 "cpW" = (
 /obj/effect/spawner/random/tool,
 /obj/structure/surface/rack,
@@ -2507,6 +2566,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
 "cqA" = (
@@ -2757,6 +2819,9 @@
 /area/event/metal/dynamic)
 "cGi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/strata/green3,
@@ -3142,6 +3207,12 @@
 	},
 /turf/open/floor/almayer/tcomms,
 /area/event/metal/dynamic)
+"dif" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "dir" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/supplies/mre,
@@ -3330,6 +3401,9 @@
 	dir = 8
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
 "dsU" = (
@@ -3825,6 +3899,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/green3,
 /area/event/metal/dynamic)
 "dML" = (
@@ -4058,6 +4135,15 @@
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellow2/east,
+/area/event/metal/dynamic)
+"dTU" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "dUo" = (
 /obj/effect/decal/warning_stripes{
@@ -4914,11 +5000,11 @@
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "eJQ" = (
-/obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
 	pixel_x = 17;
 	light_color = "#ccecff"
 	},
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "eJT" = (
@@ -5185,6 +5271,15 @@
 /area/event/metal/dynamic)
 "eVR" = (
 /obj/structure/platform_decoration/strata/metal,
+/turf/open/floor/strata/orange_cover,
+/area/event/metal/dynamic)
+"eWF" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
 "eWO" = (
@@ -5744,6 +5839,10 @@
 "frt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
@@ -6389,6 +6488,13 @@
 	},
 /turf/open/floor/corsat/red,
 /area/event/metal/dynamic)
+"fSf" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = 32;
+	pixel_x = 16
+	},
+/turf/open/floor/strata/cyan3,
+/area/event/metal/dynamic)
 "fSN" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/corsat/marked,
@@ -6454,6 +6560,9 @@
 "fVG" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/green4{
 	dir = 4
 	},
@@ -6524,6 +6633,22 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"fYU" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.7
+	},
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 4;
+	network = list("Rostock")
+	},
+/turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
 "fZB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -6558,6 +6683,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
 "gaW" = (
@@ -6973,6 +7101,18 @@
 	id = "northengi4"
 	},
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
+"gya" = (
+/obj/structure/sign/safety/security{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/red4{
+	dir = 8
+	},
 /area/event/metal/dynamic)
 "gyS" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -7575,6 +7715,14 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/corsat/plate,
 /area/space)
+"gYd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "gYt" = (
 /obj/item/storage/toolbox{
 	pixel_x = 13;
@@ -7880,6 +8028,11 @@
 	},
 /turf/open/gm/river/desert/deep/covered,
 /area/event/metal/dynamic)
+"hkh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/strata,
+/area/event/metal/dynamic)
 "hks" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -7942,6 +8095,9 @@
 "hoe" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
@@ -8061,6 +8217,16 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = -5
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"hvH" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	light_color = "#ffd4d4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
@@ -8358,6 +8524,11 @@
 	},
 /turf/open/floor/almayer/no_build,
 /area/event/metal/dynamic)
+"hJh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic)
 "hJw" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
@@ -8415,6 +8586,7 @@
 	light_color = "#ccecff"
 	},
 /obj/structure/surface/rack,
+/obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
@@ -8505,6 +8677,14 @@
 	opacity = 0
 	},
 /area/space)
+"hQd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "hQi" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	icon_state = "flammable_pipe_3";
@@ -9164,6 +9344,14 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/space)
+"ioU" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink";
+	name = "rostock"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/event/metal/dynamic)
 "ipn" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/lightplate,
@@ -9187,6 +9375,13 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"irh" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "iro" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair{
@@ -9256,6 +9451,15 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"iwu" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/event/metal/dynamic)
 "iwZ" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 8;
@@ -9320,6 +9524,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	icon_state = "exposed01-supply"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
@@ -9715,6 +9922,10 @@
 /obj/item/ammo_box/magazine/type73/impact,
 /obj/item/ammo_box/magazine/type73/impact,
 /turf/open/floor/prison/floor_marked/west,
+/area/event/metal/dynamic)
+"iUs" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "iUR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -10218,6 +10429,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/strata/red4{
 	dir = 1
 	},
@@ -10229,6 +10444,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15;
 	pixel_y = -32
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic)
@@ -10315,7 +10533,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "jvI" = (
-/obj/structure/largecrate/random/barrel/white,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/machinery/disposal,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "jvZ" = (
@@ -10335,6 +10556,8 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "jxq" = (
@@ -10346,6 +10569,9 @@
 "jxE" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
@@ -10367,6 +10593,9 @@
 /area/event/metal/dynamic)
 "jye" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/strata/green1,
@@ -10427,6 +10656,16 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plating,
+/area/event/metal/dynamic)
+"jAr" = (
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/cyan3,
 /area/event/metal/dynamic)
 "jAB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10549,6 +10788,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/green4{
 	dir = 8
 	},
@@ -10589,6 +10831,9 @@
 /area/event/metal/dynamic)
 "jHC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/strata/green4{
@@ -11167,6 +11412,12 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/space)
+"kkc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
 "kki" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -11546,6 +11797,13 @@
 /obj/structure/platform_decoration,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"kyE" = (
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "kyH" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
@@ -11576,6 +11834,9 @@
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	req_access = list(240);
 	name = "\improper Command Section"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
@@ -11728,6 +11989,24 @@
 /turf/open/floor/strata/red3{
 	dir = 8
 	},
+/area/event/metal/dynamic)
+"kGd" = (
+/obj/structure/machinery/alarm{
+	dir = 1
+	},
+/turf/open/floor/strata/red3{
+	dir = 1
+	},
+/area/event/metal/dynamic)
+"kHP" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "kHS" = (
 /obj/structure/bookcase{
@@ -11933,6 +12212,13 @@
 /obj/vehicle/powerloader/jd,
 /turf/open/floor/corsat/cargo,
 /area/event/metal/dynamic)
+"kQp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "kQr" = (
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
@@ -12117,6 +12403,13 @@
 	pixel_y = 17
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/medical{
+	pixel_x = 16;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = -32
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "kWN" = (
@@ -12262,6 +12555,7 @@
 "lcP" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/red3{
 	dir = 4
 	},
@@ -12606,6 +12900,15 @@
 	dir = 8
 	},
 /area/space)
+"lwe" = (
+/obj/structure/sign/safety/two{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/red3{
+	dir = 4
+	},
+/area/event/metal/dynamic)
 "lxh" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -13276,6 +13579,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
 "mdC" = (
@@ -13454,20 +13758,53 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
 /area/space)
+"moQ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "mpz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
 /turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic)
+"mpE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "mpW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/medicine/iv,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"mqx" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(230, 240)
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
 "mqy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/sterile_green_side,
 /area/space)
+"mrp" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/event/metal/dynamic)
 "mrt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -13475,6 +13812,16 @@
 	},
 /obj/item/tool/pen,
 /turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic)
+"mrF" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "exitor2";
+	name = "Morgue";
+	req_one_access = list(231, 240)
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "mrI" = (
 /obj/effect/decal/warning_stripes{
@@ -13694,6 +14041,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
+"mFe" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/strata/red3,
+/area/event/metal/dynamic)
 "mFj" = (
 /obj/structure/ladder{
 	height = 2;
@@ -13776,6 +14130,15 @@
 	},
 /turf/open/floor/strata/red4,
 /area/event/metal/dynamic)
+"mIc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic)
 "mJF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -13812,6 +14175,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "mKd" = (
@@ -14658,6 +15022,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
+"nFY" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "nFZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -14685,6 +15055,10 @@
 /obj/structure/machinery/light/small{
 	dir = 4;
 	light_color = "#ccecff"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
@@ -14740,6 +15114,15 @@
 /obj/structure/largecrate/supply/medicine/iv,
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"nLh" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "nMa" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
@@ -14925,6 +15308,10 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
+	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
 "nTs" = (
@@ -14986,6 +15373,18 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic)
+"nYX" = (
+/obj/structure/machinery/crema_switch{
+	req_access_txt = "25";
+	pixel_y = 26;
+	id = "cremaupp"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "nZd" = (
 /obj/structure/surface/rack,
@@ -15174,8 +15573,9 @@
 "ohK" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
@@ -15337,6 +15737,15 @@
 	opacity = 0
 	},
 /area/space)
+"omm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
 "omu" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -15379,6 +15788,9 @@
 "oqb" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/strata/orange_cover,
 /area/event/metal/dynamic)
@@ -15469,10 +15881,6 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/event/metal/dynamic)
-"ovA" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata/cyan3,
 /area/event/metal/dynamic)
 "owf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -16501,11 +16909,13 @@
 	},
 /area/space)
 "pmQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	icon_state = "exposed01-supply"
-	},
 /obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "pmR" = (
@@ -16527,6 +16937,22 @@
 /area/event/metal/dynamic)
 "poD" = (
 /turf/open/floor/corsat/lightplate,
+/area/event/metal/dynamic)
+"poQ" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 3.0
+	},
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 8;
+	network = list("Rostock")
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic)
 "pqq" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -16736,6 +17162,19 @@
 	icon_state = "floor2"
 	},
 /area/space)
+"pzC" = (
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "pAk" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/roller/surgical,
@@ -16758,6 +17197,16 @@
 "pBd" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"pBJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "pBQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -16906,6 +17355,10 @@
 	req_access = list(240);
 	req_one_access = null
 	},
+/obj/structure/sign/safety/one{
+	pixel_x = 32;
+	pixel_y = 32
+	},
 /turf/open/floor/strata/red4{
 	dir = 1
 	},
@@ -16992,6 +17445,10 @@
 /area/space)
 "pJl" = (
 /obj/item/toy/katana,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"pJq" = (
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "pJN" = (
@@ -17613,6 +18070,15 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
+"qnK" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic)
 "qnY" = (
 /obj/structure/bed/sofa/south/grey,
 /turf/open/floor/strata/floor2,
@@ -17665,6 +18131,14 @@
 	},
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
+"qqG" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "qqV" = (
 /obj/structure/machinery/conveyor_switch{
@@ -17866,6 +18340,9 @@
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan4{
 	dir = 8
 	},
@@ -18142,6 +18619,13 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/space)
+"qPA" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "qPK" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -7;
@@ -18461,6 +18945,7 @@
 	req_one_access = list(233, 240);
 	req_access = null
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "rdj" = (
@@ -19011,6 +19496,9 @@
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
 "rAT" = (
@@ -20296,6 +20784,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
 "sOA" = (
@@ -20327,6 +20816,9 @@
 	dir = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan4{
 	dir = 4
 	},
@@ -20676,6 +21168,10 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic)
 "thx" = (
@@ -20797,6 +21293,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "tke" = (
@@ -21362,6 +21862,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "tFD" = (
@@ -21418,6 +21921,12 @@
 /obj/structure/catwalk/prison/alt,
 /turf/open/space/basic,
 /area/space)
+"tIc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "tID" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/strata/blue3,
@@ -21748,7 +22257,13 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "tYK" = (
-/obj/structure/closet/coffin,
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "tYR" = (
@@ -21787,7 +22302,7 @@
 /area/event/metal/dynamic)
 "tZy" = (
 /obj/structure/morgue/crematorium{
-	id = "crema"
+	id = "cremaupp"
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
@@ -21857,6 +22372,7 @@
 /area/space)
 "uck" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/red1,
 /area/event/metal/dynamic)
 "ucv" = (
@@ -21880,6 +22396,12 @@
 	id_tag = "mining_outpost_pump"
 	},
 /turf/open/floor/prison/west,
+/area/event/metal/dynamic)
+"ucZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
 "udb" = (
 /obj/structure/pipes/vents/pump/on,
@@ -21914,6 +22436,13 @@
 	pixel_x = 16
 	},
 /turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic)
+"ueU" = (
+/obj/structure/machinery/alarm{
+	dir = 1
+	},
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "ufj" = (
 /turf/open/floor/strata/orange_edge{
@@ -22061,6 +22590,9 @@
 /obj/structure/sign/safety/ammunition{
 	pixel_y = -32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic)
 "upZ" = (
@@ -22120,6 +22652,15 @@
 	density = 0
 	},
 /turf/open/floor/strata/red1,
+/area/event/metal/dynamic)
+"utx" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "utD" = (
 /obj/structure/platform_decoration{
@@ -22252,6 +22793,7 @@
 	name = "Morgue";
 	req_one_access = list(231, 240)
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic)
 "uBG" = (
@@ -22642,9 +23184,24 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
+"uRN" = (
+/obj/structure/morgue,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "uSA" = (
 /obj/structure/platform/strata/metal,
 /turf/open/floor/corsat/red,
+/area/event/metal/dynamic)
+"uSQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/red3,
 /area/event/metal/dynamic)
 "uTd" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
@@ -23177,6 +23734,9 @@
 	pixel_y = 28
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan3,
 /area/event/metal/dynamic)
 "vot" = (
@@ -23540,6 +24100,16 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/marked,
+/area/event/metal/dynamic)
+"vIA" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "vIC" = (
 /obj/effect/decal/warning_stripes{
@@ -23936,6 +24506,10 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
+"vWd" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/cyan1,
+/area/event/metal/dynamic)
 "vWA" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -24097,6 +24671,7 @@
 	dir = 8;
 	light_color = "#ccecff"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "wcD" = (
@@ -24107,7 +24682,10 @@
 	dir = 8;
 	pixel_y = 21
 	},
-/obj/structure/closet/coffin,
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "wdB" = (
@@ -24353,6 +24931,10 @@
 "wnk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
@@ -24627,6 +25209,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/strata/red4{
 	dir = 8
 	},
@@ -24793,6 +25379,15 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/event/metal/dynamic)
+"wIO" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "wKk" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -24842,6 +25437,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
+"wLY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "wMt" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -25171,6 +25772,9 @@
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan3,
 /area/event/metal/dynamic)
 "xcS" = (
@@ -25206,6 +25810,9 @@
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan1,
 /area/event/metal/dynamic)
 "xdE" = (
@@ -25249,6 +25856,12 @@
 "xeZ" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/wood/ship,
+/area/event/metal/dynamic)
+"xfq" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "xfM" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -25456,6 +26069,10 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/metal/dynamic)
 "xno" = (
@@ -25513,6 +26130,15 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/space)
+"xpg" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic)
 "xpj" = (
 /obj/item/vehicle_clamp,
 /obj/item/vehicle_clamp,
@@ -25603,6 +26229,10 @@
 "xsk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/floor2,
+/area/event/metal/dynamic)
+"xth" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic)
 "xtL" = (
 /obj/structure/machinery/light{
@@ -25729,6 +26359,7 @@
 "xAF" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/gibber,
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature,
 /turf/open/floor/corsat/retrosquares,
 /area/event/metal/dynamic)
 "xAI" = (
@@ -25892,6 +26523,15 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
+"xLu" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/event/metal/dynamic)
 "xLA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Sapper Prep Area";
@@ -25991,6 +26631,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic)
+"xRg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic)
 "xRE" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkbrown3,
@@ -26032,6 +26680,15 @@
 	dir = 1;
 	pixel_y = 26;
 	layer = 2.7
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic)
+"xUE" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic)
@@ -26078,6 +26735,9 @@
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
@@ -39919,7 +40579,7 @@ dRD
 dRD
 vIC
 igP
-hxv
+ioU
 lve
 qUu
 dRD
@@ -40454,7 +41114,7 @@ uME
 uME
 mvj
 sVy
-bkr
+kkc
 ckJ
 eiG
 mYl
@@ -41520,7 +42180,7 @@ swd
 vjb
 twv
 xtL
-qyH
+mrp
 bkr
 bkr
 pPQ
@@ -43122,7 +43782,7 @@ aZG
 aZG
 mnX
 mho
-bip
+qnK
 bkr
 bkr
 bkr
@@ -43389,7 +44049,7 @@ kCw
 kCw
 kYd
 mho
-bip
+qnK
 ckJ
 ckJ
 uME
@@ -43656,7 +44316,7 @@ faR
 eTm
 efV
 sHN
-mvj
+mIc
 sVy
 uME
 uME
@@ -43923,7 +44583,7 @@ aZG
 aZG
 mnX
 aLP
-mvj
+mIc
 sVy
 eiG
 xOV
@@ -45792,7 +46452,7 @@ hjP
 uaD
 uaD
 eJb
-xao
+xUE
 qEc
 gUG
 niF
@@ -46059,7 +46719,7 @@ eiG
 eiG
 eiG
 xJh
-twv
+ucZ
 twv
 bkr
 bip
@@ -46326,7 +46986,7 @@ vws
 vws
 vws
 fDj
-sVy
+dif
 sVy
 uME
 rkU
@@ -46593,7 +47253,7 @@ aJu
 hot
 aJu
 aCl
-sVy
+dif
 sVy
 uME
 egs
@@ -48729,7 +49389,7 @@ inN
 ipn
 ipn
 pYp
-fNy
+qqG
 bkr
 bkr
 dRD
@@ -48996,7 +49656,7 @@ ymi
 poD
 poD
 xOV
-fcu
+kHP
 dKo
 dKo
 dRD
@@ -49263,7 +49923,7 @@ ymi
 iHn
 pPQ
 pPQ
-fcu
+kHP
 dKo
 dlS
 dRD
@@ -49530,7 +50190,7 @@ apy
 poD
 pxe
 pPQ
-fcu
+kHP
 dKo
 kIf
 mho
@@ -49797,7 +50457,7 @@ wSY
 poD
 pPQ
 pPQ
-fcu
+kHP
 dKo
 kIf
 oFZ
@@ -50064,7 +50724,7 @@ ymi
 poD
 pxe
 pPQ
-fcu
+kHP
 dKo
 kIf
 oFZ
@@ -50331,7 +50991,7 @@ ymi
 poD
 pPQ
 pPQ
-fcu
+kHP
 dKo
 kIf
 twv
@@ -50599,7 +51259,7 @@ poD
 pxe
 pPQ
 wnk
-vWD
+hkh
 frt
 oFZ
 goA
@@ -50867,7 +51527,7 @@ pPQ
 pPQ
 sVy
 dKo
-puB
+eWF
 mho
 wHr
 wUJ
@@ -51668,7 +52328,7 @@ wnL
 bkr
 bkr
 bkr
-hdm
+omm
 pPQ
 oaw
 prl
@@ -51935,7 +52595,7 @@ uME
 uME
 uME
 uME
-cwq
+xLu
 pPQ
 kIf
 lTF
@@ -52186,7 +52846,7 @@ qrS
 sfu
 nTi
 ohK
-mdA
+xpg
 mdA
 mdA
 mdA
@@ -52200,9 +52860,9 @@ mdA
 mdA
 mdA
 mdA
-dhv
-dhv
-oGG
+hJh
+hJh
+qPA
 pPQ
 kIf
 ccE
@@ -52452,7 +53112,7 @@ uME
 pBQ
 wTR
 pPQ
-gWH
+mqx
 rNC
 rNC
 rNC
@@ -52469,7 +53129,7 @@ rNC
 rNC
 hUW
 dKo
-cwq
+xLu
 pPQ
 aWG
 pID
@@ -52719,24 +53379,24 @@ eiG
 wQg
 pPQ
 pPQ
-sYA
+wLY
 rNC
 tYK
 wbq
 chA
 chA
 iZg
-iZg
+uRN
 qcl
 iZg
 iZg
 iZg
 sYA
-fpc
+bYr
 rNC
 knY
 dKo
-pFA
+bEy
 pPQ
 pPQ
 pID
@@ -52986,24 +53646,24 @@ eiG
 cwq
 pPQ
 wnh
-sYA
+wLY
 rNC
-tYK
-sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-fpc
+pzC
+tIc
+iUs
+iUs
+iUs
+iUs
+iUs
+iUs
+iUs
+iUs
+iUs
+nLh
 rNC
-bmA
+fSf
 dKo
-vVl
+dTU
 itp
 wWh
 qqV
@@ -53253,24 +53913,24 @@ eiG
 cwq
 pPQ
 wdo
-sYA
+wLY
 rNC
-tYK
-sYA
+kyE
+xfq
+gYd
+bYr
 fpc
 fpc
 fpc
+eAu
 fpc
 fpc
 fpc
-fpc
-fpc
-fpc
-fpc
+nFY
 uBe
-brt
-dKo
-hdm
+vWd
+vWD
+irh
 oXg
 jOx
 vSf
@@ -53520,24 +54180,24 @@ eiG
 cwq
 pPQ
 gJh
-tvQ
+xRg
 rNC
-fpc
+ueU
 sYA
 sYA
 sYA
 sYA
-sYA
-sYA
-sYA
-sYA
-sYA
-fpc
+bwQ
+pJq
+pJq
+pJq
+pJq
+xth
 jvI
 rNC
-bmA
+jAr
 dKo
-vVl
+dTU
 eHx
 wWh
 pID
@@ -53789,12 +54449,12 @@ pPQ
 ffE
 clg
 rNC
-fpc
+wIO
 sYA
 xgw
 xgw
 xgw
-sYA
+wLY
 xgw
 xgw
 xgw
@@ -53804,7 +54464,7 @@ eJQ
 rNC
 bmA
 dKo
-pFA
+bEy
 pPQ
 pPQ
 pID
@@ -54054,24 +54714,24 @@ eiG
 cwq
 pPQ
 mMp
-eAu
+hQd
 rNC
 hLh
 sYA
 iZg
 iZg
 iZg
-pVc
+mpE
 nod
 nod
 nod
 sYA
-fpc
+bYr
 mDc
 rNC
-ovA
-vWD
-iQZ
+bmA
+dKo
+omm
 pPQ
 aWG
 pID
@@ -54321,14 +54981,14 @@ eiG
 hdm
 pPQ
 pPQ
-oEk
+hvH
 rNC
 tZy
 sYA
 sYA
+pVc
 sYA
-sYA
-sYA
+wLY
 sYA
 sYA
 sYA
@@ -54588,14 +55248,14 @@ kdK
 uxR
 pPQ
 pPQ
-hRk
+vIA
 rNC
 rNC
-sYA
-sYA
-sYA
-sYA
-sYA
+nYX
+pJq
+pJq
+pJq
+kQp
 sYA
 sYA
 sYA
@@ -54857,7 +55517,7 @@ biL
 pPQ
 tjY
 mKc
-uBe
+mrF
 nGF
 xgw
 xgw
@@ -55673,7 +56333,7 @@ cNG
 dFb
 cwD
 uME
-fcu
+kHP
 oim
 kdK
 sYA
@@ -55939,8 +56599,8 @@ nEm
 blf
 rdd
 uck
-qEc
-fNy
+bmb
+moQ
 wqN
 pPQ
 fwD
@@ -56203,11 +56863,11 @@ uME
 uME
 uME
 mvj
-cwD
+uSQ
 kdK
 nJK
 sVy
-fcu
+kHP
 sVy
 pPQ
 pPQ
@@ -56470,11 +57130,11 @@ dKo
 dKo
 dKo
 mvj
-cwD
+uSQ
 dFb
 cwD
 sVy
-rkU
+pBJ
 vws
 vws
 vws
@@ -56741,7 +57401,7 @@ bGc
 dFb
 cwD
 sVy
-fcu
+kHP
 dKo
 dKo
 dKo
@@ -57006,9 +57666,9 @@ uOd
 uOd
 uOd
 uOd
-eJl
+gya
 sVy
-fcu
+kHP
 uME
 uME
 kIf
@@ -57275,7 +57935,7 @@ apZ
 uOd
 fua
 sVy
-fcu
+kHP
 uME
 dxn
 pPQ
@@ -57542,7 +58202,7 @@ eJl
 uOd
 dKo
 sVy
-fcu
+kHP
 uME
 hBZ
 pPQ
@@ -57799,9 +58459,9 @@ uOd
 uOd
 uOd
 uOd
-aGL
+kGd
 cwq
-cwD
+mFe
 uOd
 uOd
 uOd
@@ -58076,7 +58736,7 @@ cnS
 uOd
 dKo
 sVy
-fcu
+kHP
 uOd
 iVI
 trf
@@ -58333,7 +58993,7 @@ pGR
 qXu
 qXu
 kJK
-qXu
+lwe
 qXu
 qXu
 kJK
@@ -58343,7 +59003,7 @@ xbz
 uOd
 dKo
 sVy
-fcu
+kHP
 uOd
 weP
 rmX
@@ -58610,7 +59270,7 @@ jkR
 uOd
 jPl
 sVy
-fcu
+kHP
 uOd
 bMP
 gQt
@@ -58877,7 +59537,7 @@ rnx
 uOd
 dKo
 sVy
-fcu
+kHP
 uOd
 uOd
 uOd
@@ -59144,7 +59804,7 @@ cIO
 uOd
 dKo
 sVy
-fcu
+kHP
 uOd
 dKY
 nCp
@@ -59678,7 +60338,7 @@ psc
 vUU
 vws
 vws
-fNy
+qqG
 uOd
 kkF
 nyy
@@ -59945,7 +60605,7 @@ rmX
 dFb
 dKo
 dKo
-rbj
+iwu
 uOd
 vPR
 hYa
@@ -60212,7 +60872,7 @@ rmX
 dFb
 uME
 uME
-mvj
+mIc
 uOd
 uOd
 xku
@@ -60479,7 +61139,7 @@ rmX
 uOd
 uME
 uME
-mvj
+mIc
 kdK
 uME
 mvj
@@ -61013,7 +61673,7 @@ nZo
 uOd
 sVy
 dKo
-rbj
+iwu
 kdK
 knx
 knx
@@ -61280,7 +61940,7 @@ uOd
 uOd
 kdK
 kdK
-uxR
+utx
 uOd
 uOd
 uOd
@@ -61814,7 +62474,7 @@ udv
 uOd
 dKo
 dKo
-rbj
+iwu
 uOd
 nHf
 uOd
@@ -62081,7 +62741,7 @@ vTQ
 dFb
 dKo
 dKo
-rbj
+iwu
 uOd
 epo
 utu
@@ -62615,7 +63275,7 @@ dOQ
 tqn
 vws
 vws
-fNy
+qqG
 xqf
 jqF
 jqF
@@ -63683,7 +64343,7 @@ uOd
 uOd
 vit
 pjP
-xJG
+aGC
 uOd
 uOd
 uOd
@@ -63950,7 +64610,7 @@ gGK
 uME
 sVy
 sVy
-cwq
+xLu
 uME
 gGK
 iAq
@@ -64479,7 +65139,7 @@ dhv
 igK
 eiJ
 nDa
-ssC
+fYU
 rCl
 tmx
 rSu
@@ -64487,7 +65147,7 @@ pjC
 hzt
 imU
 rCl
-ssC
+fYU
 ohU
 gcL
 mvj
@@ -65285,7 +65945,7 @@ biL
 wxG
 cFS
 lzw
-lYO
+cpt
 gfK
 biL
 bPd
@@ -66882,7 +67542,7 @@ hUW
 mvj
 eiJ
 vTf
-mvq
+poQ
 gNY
 uhn
 gcL
@@ -66890,7 +67550,7 @@ sVy
 eiJ
 dBx
 gNY
-mvq
+poQ
 nDv
 gcL
 mvj

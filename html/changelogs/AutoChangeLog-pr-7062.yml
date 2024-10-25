@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a staff event verb to check for a particular whitelist and report online players that have it. Code for the proc from HarryOB"

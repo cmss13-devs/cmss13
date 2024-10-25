@@ -64,6 +64,7 @@
 	name = "Fireman carry instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. Contains simple instructions on how to perform a fireman carry."
 	trait = /datum/character_trait/skills/fireman_carry
+	bypass_pamphlet_limit = TRUE
 
 /obj/item/pamphlet/skill/spotter
 	name = "Spotter instructional pamphlet"

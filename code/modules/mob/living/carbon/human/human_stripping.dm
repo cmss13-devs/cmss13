@@ -239,7 +239,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	tag.dogtag_taken = TRUE
 	tag.icon_state = "dogtag_taken"
 	var/obj/item/dogtag/newtag = new(sourcemob.loc)
-	newtag.fallen_references = list(tag.registered_ref?.resolve())
+	newtag.fallen_references = list(tag.registered_ref)
 	newtag.fallen_names = list(tag.registered_name)
 	newtag.fallen_assgns = list(tag.assignment)
 	newtag.fallen_blood_types = list(tag.blood_type)

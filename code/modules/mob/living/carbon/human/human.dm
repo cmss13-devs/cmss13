@@ -408,7 +408,7 @@
 							DT.dogtag_taken = TRUE
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
-							D.fallen_references = list(DT.registered_ref?.resolve())
+							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
 							D.fallen_assgns = list(DT.assignment)
 							D.fallen_blood_types = list(DT.blood_type)

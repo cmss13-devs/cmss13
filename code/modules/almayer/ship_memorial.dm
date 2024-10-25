@@ -55,8 +55,8 @@
 		)
 	///All mobs that went through a squad flashback.
 	var/list/went_through_flashback = list()
-	///Mob references to the owners of the dogtags that are placed on the slab.
-	var/list/fallen_personnel = list()
+	///Weakrefs of mobs of the dogtags that are placed on the slab.
+	var/list/datum/weakref/fallen_personnel = list()
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
@@ -118,11 +118,20 @@
 
 	fallen_personnel = shuffle(fallen_personnel)
 
+	///References of all fallen personnel whose mobs still exist.
+	var/list/fallen_personnel_resolved = list()
 	var/list/voicelines = hallucination_sounds.Copy()
 	var/list/voicelines_female = hallucination_sounds_female.Copy()
+	resolve_refs(fallen_personnel_resolved)
+
+	//If we somehow failed to resolve any references, go back.
+	if(!length(fallen_personnel_resolved))
+		to_chat(user, SPAN_NOTICE("...but nothing catches your attention."))
+		return ..()
+
 	///Did a flashback event trigger?
 	var/had_flashback = FALSE
-	for(var/i in 1 to clamp(length(fallen_personnel), 1, 8))
+	for(var/i in 1 to clamp(length(fallen_personnel_resolved), 1, 8))
 		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
 			if(had_flashback)
 				cancel_flashback(user, null, FLASHBACK_DEFAULT)
@@ -137,7 +146,7 @@
 			if(mob != user && mob.stat == CONSCIOUS)
 				interrupted_by_mob = TRUE
 
-		var/mob/living/carbon/human/person = fallen_personnel[i]
+		var/mob/living/carbon/human/person = fallen_personnel_resolved[i]
 
 		//There is a chance for special flashback events to trigger, and a guaranteed one for squad marines
 		//if they recover enough dogtags from their squad.
@@ -148,7 +157,7 @@
 			if(user.assigned_squad)
 				///Every squad member of the user that is listed on the memorial.
 				var/list/squad_members = list()
-				for(var/mob/living/carbon/human/squad_member in fallen_personnel)
+				for(var/mob/living/carbon/human/squad_member in fallen_personnel_resolved)
 					if(squad_member.assigned_squad == user.assigned_squad)
 						squad_members += squad_member
 
@@ -157,10 +166,10 @@
 					INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, squad_members)
 					return
 
-			if(prob(i*2) && length(fallen_personnel) >= 5)
+			if(prob(i*2) && length(fallen_personnel_resolved) >= 5)
 				had_flashback = TRUE
 				flashback_type = FLASHBACK_DEFAULT
-				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type)
+				INVOKE_ASYNC(src, PROC_REF(flashback_trigger), user, flashback_type, fallen_personnel_resolved)
 
 		//If we somehow lose a mob reference, we need to account for it.
 		if(!person)
@@ -198,6 +207,16 @@
 		"You say your goodbyes silently.",
 		"Nothing good lasts forever.")
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>[pick(realization_text)]</b>")), 1 SECONDS)
+
+///Proc for resolving weakrefs from fallen_personnel.
+/obj/structure/prop/almayer/ship_memorial/proc/resolve_refs(list/list_to_add)
+	for(var/i in 1 to length(fallen_personnel))
+		var/resolved_mob = fallen_personnel[i].resolve()
+		if(resolved_mob)
+			list_to_add += resolved_mob
+		else
+			//weakref didn't get resolved, bad reference. remove it from the list.
+			fallen_personnel -= fallen_personnel[i]
 
 ///Proc for canceling memorial interaction. Used when interrupted by a mob or when the do_after() is cancelled.
 /obj/structure/prop/almayer/ship_memorial/proc/cancel_flashback(mob/user, list/ghosts, flashback_type)
@@ -256,7 +275,7 @@
 	return ghost
 
 ///Proc that handles special flashback events.
-/obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/carbon/human/user, flashback_type = FLASHBACK_DEFAULT, list/squad_members)
+/obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/carbon/human/user, flashback_type = FLASHBACK_DEFAULT, list/mob_references)
 	playsound_client(user.client, 'sound/hallucinations/ears_ringing.ogg', user.loc, 40)
 	to_chat(user, SPAN_DANGER("<b>It's like time has stopped. All you can focus on are the names on that list.</b>"))
 	user.apply_effect(6, ROOT)
@@ -270,14 +289,14 @@
 	switch(flashback_type)
 		//Default flashback. Spawns ghost images of every (max 16) name listed on the memorial.
 		if(FLASHBACK_DEFAULT)
-			var/list/personnel_copy = fallen_personnel.Copy()
-			for(var/i = clamp(length(fallen_personnel), 1, 16), i > 0, i--)
+			var/list/references_copy = mob_references.Copy()
+			for(var/i = clamp(length(references_copy), 1, 16), i > 0, i--)
 				if(!do_after(user, 0.1 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
 					cancel_flashback(user, all_ghosts, FLASHBACK_DEFAULT)
 					return
 
 				for(var/times_to_generate = rand(1, 2), times_to_generate > 0, times_to_generate--)
-					all_ghosts += generate_ghost(pick_n_take(personnel_copy), user, 4)
+					all_ghosts += generate_ghost(pick_n_take(references_copy), user, 4)
 
 			for(var/obj/effect/client_image_holder/memorial_ghost/ghost in all_ghosts)
 				ghost.disappear()

@@ -101,9 +101,15 @@
 		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this right now."))
 		return ..()
 
-	if(!length(fallen_personnel) || user.faction != FACTION_MARINE)
+	///References of all fallen personnel whose mobs still exist.
+	var/list/fallen_personnel_resolved = list()
+	resolve_refs(fallen_personnel_resolved)
+
+	if(!length(fallen_personnel) || !length(fallen_personnel_resolved) || user.faction != FACTION_MARINE)
 		to_chat(user, SPAN_NOTICE("You start looking through the names on the slab but nothing catches your attention."))
 		return ..()
+
+	fallen_personnel_resolved = shuffle(fallen_personnel_resolved)
 
 	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
 	///Text that's prefixed everytime a name is listed.
@@ -116,18 +122,8 @@
 		"Your attention is drawn to this name,",
 		"You read the name on the slab,")
 
-	fallen_personnel = shuffle(fallen_personnel)
-
-	///References of all fallen personnel whose mobs still exist.
-	var/list/fallen_personnel_resolved = list()
 	var/list/voicelines = hallucination_sounds.Copy()
 	var/list/voicelines_female = hallucination_sounds_female.Copy()
-	resolve_refs(fallen_personnel_resolved)
-
-	//If we somehow failed to resolve any references, go back.
-	if(!length(fallen_personnel_resolved))
-		to_chat(user, SPAN_NOTICE("...but nothing catches your attention."))
-		return ..()
 
 	///Did a flashback event trigger?
 	var/had_flashback = FALSE

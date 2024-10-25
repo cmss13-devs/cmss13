@@ -41,7 +41,7 @@
 /obj/item/device/lightreplacer
 
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with working lightbulbs."
+	desc = "A device to automatically replace lights. Can be refill with working lightbulbs and sheets of glass, and can recycle broken lightbulbs."
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
@@ -56,6 +56,8 @@
 	var/uses = 0
 	var/failmsg = ""
 	var/charge = 1
+	var/recycle = 0
+	var/max_recycle = 3
 
 /obj/item/device/lightreplacer/Initialize()
 	. = ..()
@@ -64,7 +66,7 @@
 
 /obj/item/device/lightreplacer/get_examine_text(mob/user)
 	. = ..()
-	. += "It has [uses] lights remaining."
+	. += "It has [uses] lights remaining, and [recycle] broken lights stored."
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/glass))
@@ -84,18 +86,21 @@
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, "You insert the [L.name] into the [src.name]. You have [uses] lights remaining.")
+				to_chat(user, SPAN_NOTICE("You insert the [L.name] into the [src.name]. You have [uses] lights remaining."))
 				user.drop_held_item()
 				qdel(L)
 				return
 		else
-			to_chat(user, "You need a working light.")
+			Recycle()
+			to_chat(user, SPAN_NOTICE("You insert the [L.name] into the [src.name] for recycling."))
+			user.drop_held_item()
+			qdel(L)
 			return
 
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
 	..()
-	to_chat(usr, "It has [uses] lights remaining.")
+	to_chat(usr, "It has [uses] lights remaining, and has [recycle] broken lights stored.")
 
 /obj/item/device/lightreplacer/update_icon()
 	icon_state = "lightreplacer0"
@@ -103,12 +108,12 @@
 
 /obj/item/device/lightreplacer/proc/Use(mob/user)
 
-	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
 	AddUses(-1)
 	return 1
 
 // Negative numbers will subtract
 /obj/item/device/lightreplacer/proc/AddUses(amount = 1)
+	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
 /obj/item/device/lightreplacer/proc/Charge(mob/user)
@@ -116,6 +121,17 @@
 	if(charge > 7)
 		AddUses(1)
 		charge = 1
+
+/obj/item/device/lightreplacer/proc/Recycle(mob/living/U)
+	if(recycle == max_recycle)
+		recycle = 0
+		AddUses(1)
+		playsound(src.loc, 'sound/machines/ding.ogg', 5, 1)
+		return
+	else
+		playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
+		recycle += 1
+		return
 
 /obj/item/device/lightreplacer/proc/ReplaceLight(obj/structure/machinery/light/target, mob/living/U)
 
@@ -126,26 +142,21 @@
 
 			if(target.status != LIGHT_EMPTY)
 
-				var/obj/item/light_bulb/L1 = new target.light_type(target.loc)
-				L1.status = target.status
-				L1.rigged = target.rigged
-				L1.brightness = target.brightness
-				L1.switchcount = target.switchcount
 				target.switchcount = 0
-				L1.update()
-
 				target.status = LIGHT_EMPTY
 				target.update()
 
-			var/obj/item/light_bulb/L2 = new target.light_type()
+				Recycle()
 
-			target.status = L2.status
-			target.switchcount = L2.switchcount
+			var/obj/item/light_bulb/bulb = new target.light_type()
+
+			target.status = bulb.status
+			target.switchcount = bulb.switchcount
 			target.rigged = FALSE
-			target.brightness = L2.brightness
+			target.brightness = bulb.brightness
 			target.on = target.has_power()
 			target.update()
-			qdel(L2)
+			qdel(bulb)
 
 			if(target.on && target.rigged)
 				target.explode()

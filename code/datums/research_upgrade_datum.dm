@@ -98,7 +98,7 @@
 	item_reference = /obj/item/research_upgrades/reroll
 	change_purchase = 200
 	maximum_price = 2000
-	clearance_req = 3
+	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"

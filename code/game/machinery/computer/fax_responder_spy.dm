@@ -115,6 +115,9 @@
 	var/list/temporary_list = list()
 	var/list/temporary_list_2 = list()
 
+	///Whether or not the camera is on cooldown for a warning message it can't move to a certain tile, locked to one message every 3 seconds.
+	var/move_warn = FALSE
+
 
 /mob/hologram/spy_camera/Initialize(mapload, mob/living/carbon/spy_operator, obj/structure/machinery/computer/spy_camera/console)
 	if(!console || !spy_operator)
@@ -205,6 +208,10 @@
 	if(istype(crossing_turf, /turf/closed/wall))
 		var/turf/closed/wall/crossing_wall = crossing_turf
 		if(crossing_wall.hull)
+			if(!move_warn)
+				move_warn = TRUE
+				addtimer(CALLBACK(src, PROC_REF(reset_warn)), 3 SECONDS)
+				to_chat(linked_mob, SPAN_WARNING("You cannot move the camera here, it's a solid wall!"))
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	if(is_mainship_level(z))
@@ -228,7 +235,14 @@
 		if(spy_faction in possible_camera.owner_factions)
 			return COMPONENT_TURF_ALLOW_MOVEMENT
 
+	if(!move_warn)
+		move_warn = TRUE
+		addtimer(CALLBACK(src, PROC_REF(reset_warn)), 3 SECONDS)
+		to_chat(linked_mob, SPAN_WARNING("You can't move the spy here, there's no camera you have access to nearby!"))
 	return COMPONENT_TURF_DENY_MOVEMENT
+
+/mob/hologram/spy_camera/proc/reset_warn()
+	move_warn = FALSE
 
 /mob/hologram/spy_camera/proc/is_spy_faction(atom/target_atom)
 	if(!ismob(target_atom))

@@ -375,8 +375,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
 											) = list(1,rand(1,2)))
-				if(prob(40) && chems_special)
-					chem_to_add = list(pick(chems_special) = list(2,rand(2,3)))
+				if(prob(30) && chems_special)
+					chem_to_add = list(pick(chems_special) = list(3,rand(3,5)))
 				chems += chem_to_add
 
 

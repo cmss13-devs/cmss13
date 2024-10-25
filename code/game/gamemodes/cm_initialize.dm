@@ -338,7 +338,7 @@ Additional game mode variables.
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
 	var/mob/living/carbon/human/new_responder = new(spawn_point)
 	responder_candidate.mind.transfer_to(new_responder, TRUE)
-	new_responder.client?.prefs.copy_all_to(new_responder, JOB_FAX_RESPONDER, TRUE, FALSE)
+	new_responder.client?.prefs.copy_all_to(new_responder, JOB_FAX_RESPONDER, TRUE, TRUE)
 
 	var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[sub_job]
 

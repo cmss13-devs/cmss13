@@ -324,7 +324,7 @@
 
 			var/list/voicelines = hallucination_sounds.Copy()
 			var/list/voicelines_female = hallucination_sounds_female.Copy()
-			for(var/i = clamp(length(squad_members), 1, 12), i > 0, i--)
+			for(var/i = clamp(length(mob_references), 1, 12), i > 0, i--)
 				if(!do_after(user, 4 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE))
 					cancel_flashback(user, all_ghosts, FLASHBACK_SQUAD)
 					return
@@ -334,7 +334,7 @@
 						cancel_flashback(user, all_ghosts, FLASHBACK_SQUAD)
 						return
 
-				var/mob/living/carbon/human/picked_member = pick_n_take(squad_members)
+				var/mob/living/carbon/human/picked_member = pick_n_take(mob_references)
 				var/obj/effect/client_image_holder/memorial_ghost/generated_ghost = generate_ghost(picked_member, user, 2)
 				all_ghosts += generated_ghost
 

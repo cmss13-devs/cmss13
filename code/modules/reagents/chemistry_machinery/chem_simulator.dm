@@ -324,7 +324,7 @@
 					continue
 				switch(mode)
 					if(MODE_AMPLIFY)
-						property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
+						property_costs[P.name] = max(min(P.level - 2, PROPERTY_COST_MAX), 1)
 					if(MODE_SUPPRESS)
 						property_costs[P.name] = 2
 					if(MODE_RELATE)

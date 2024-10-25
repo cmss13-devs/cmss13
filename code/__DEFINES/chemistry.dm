@@ -291,8 +291,8 @@
 #define PROPERTY_COST_MAX 8
 #define PROPERTY_MULTIPLIER_RARE 2
 #define PROPERTY_MULTIPLIER_ANOMALOUS 5
-#define PROPERTY_MULTIPLIER_ADD_BULK 3 // if you use the add mode if target has X(currently 6) or more properties
-#define PROPERTY_MULTIPLIER_ADD_VALUE 4 // if you use the add mode if the target total value of the properties is above a certain value
+#define PROPERTY_MULTIPLIER_ADD_BULK 2 // if you use the add mode if target has X(currently 6) or more properties
+#define PROPERTY_MULTIPLIER_ADD_VALUE 3 // if you use the add mode if the target total value of the properties is above a certain value
 
 /*
 	For minimum potencies for properties

@@ -182,7 +182,7 @@
 	//Properties
 	if(!no_properties)
 		var/gen_value
-		var/properties_buff = rand(2, 3)
+		var/properties_buff = rand(3, 4)
 		for(var/i in 1 to gen_tier+properties_buff)
 			if(i == 1) //The first property is random to offset the value balance
 				if(gen_tier > 2)
@@ -199,7 +199,7 @@
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(max(gen_tier*2, 4),11);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),13);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
 		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose

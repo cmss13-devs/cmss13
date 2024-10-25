@@ -44,6 +44,7 @@
 	description = "A thick green blood, definitely not human."
 	color = BLOOD_COLOR_YAUTJA
 	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_NO_GENERATION
 	objective_value = OBJECTIVE_HIGH_VALUE
 
 /datum/reagent/blood/synth_blood
@@ -685,6 +686,18 @@
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
 
+/datum/reagent/viroxeno
+	name = "Xenogenetic Catalyst"
+	id = "xenogenic"
+	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	reagent_state = LIQUID
+	color = "#a244d8"
+	overdose = 10
+	overdose_critical = 20
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 1)
+
 
 // Chemfire supplements
 
@@ -958,6 +971,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 6)
 
 /datum/reagent/plasma/chitin
@@ -969,6 +983,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
 
 /datum/reagent/plasma/catecholamine
@@ -991,6 +1006,7 @@
 	overdose_critical = 100
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HEMOSITIC = 4)
 
 /datum/reagent/plasma/egg/on_mob_life(mob/living/M)
@@ -1022,6 +1038,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
@@ -1033,6 +1050,7 @@
 	objective_value = OBJECTIVE_MEDIUM_VALUE
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
 /datum/reagent/plasma/purple
@@ -1055,7 +1073,8 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"
@@ -1068,4 +1087,4 @@
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
-	flags = REAGENT_SCANNABLE
+	flags = REAGENT_SCANNABLE | REAGENT_NO_GENERATION

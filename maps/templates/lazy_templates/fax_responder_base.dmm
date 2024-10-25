@@ -149,6 +149,20 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"rS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
+	phone_id = "Free Press Relay"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "rV" = (
 /obj/effect/landmark/late_join/responder/uscm/provost,
 /turf/open/floor/wood/ship,
@@ -414,8 +428,7 @@
 	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
-	phone_id = "WY Communications Executive";
-	
+	phone_id = "WY Communications Executive"
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -557,21 +570,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/upp/highcom{
 	pixel_y = 8
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"Wv" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/folder/red{
-	pixel_x = 6
-	},
-/obj/item/folder/black{
-	pixel_x = 12
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
-	phone_id = "Free Press Relay";
-	
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2104,13 +2102,60 @@ Yy
 Yy
 Yy
 xX
-Dy
-Dy
-Dy
-Dy
-Dy
-Dy
+xX
+xX
+xX
+xX
+xX
+xX
 pu
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(33,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+vc
 Ml
 Ml
 Ml
@@ -2139,7 +2184,7 @@ Yy
 Yy
 Yy
 "}
-(33,1,1) = {"
+(34,1,1) = {"
 Yy
 Yy
 Yy
@@ -2186,7 +2231,7 @@ Yy
 Yy
 Yy
 "}
-(34,1,1) = {"
+(35,1,1) = {"
 Yy
 Yy
 Yy
@@ -2233,53 +2278,6 @@ Yy
 Yy
 Yy
 "}
-(35,1,1) = {"
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-xX
-Dy
-gu
-gu
-gu
-gu
-pH
-vc
-pH
-gu
-gu
-gu
-gu
-Ml
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-"}
 (36,1,1) = {"
 Yy
 Yy
@@ -2293,17 +2291,17 @@ Yy
 Yy
 xX
 Dy
-ny
-ST
 gu
-Nb
-Dy
+gu
+gu
+gu
+pH
 vc
-Ml
-qw
-ST
+pH
 gu
-Wv
+gu
+gu
+gu
 Ml
 xX
 Yy
@@ -2328,6 +2326,53 @@ Yy
 Yy
 "}
 (37,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+ny
+ST
+gu
+Nb
+Dy
+vc
+Ml
+qw
+ST
+gu
+rS
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(38,1,1) = {"
 Yy
 Yy
 Yy
@@ -2374,7 +2419,7 @@ Yy
 Yy
 Yy
 "}
-(38,1,1) = {"
+(39,1,1) = {"
 Yy
 Yy
 Yy
@@ -2421,53 +2466,6 @@ Yy
 Yy
 Yy
 "}
-(39,1,1) = {"
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-"}
 (40,1,1) = {"
 Yy
 Yy
@@ -2479,21 +2477,21 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
 Yy
 Yy
 Yy

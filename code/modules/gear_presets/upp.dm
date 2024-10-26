@@ -2277,7 +2277,7 @@
 /datum/job/antag/upp/officer/lt_kolonel
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
-	gear_preset = /datum/equipment_preset/upp/officer/lt_kolonel
+	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
 
 
 /datum/equipment_preset/upp/officer/podpolkovnik
@@ -2458,7 +2458,7 @@
 /datum/job/antag/upp/officer/kolonel
 	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
-	gear_preset = /datum/equipment_preset/upp/officer/kolonel
+	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
 
 /datum/equipment_preset/upp/officer/polkovnik
 	name = "UPP General Mayjor (Cryo)"

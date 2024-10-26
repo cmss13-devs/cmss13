@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "Underbarel flamer no more can drain fuel from empty tanks"

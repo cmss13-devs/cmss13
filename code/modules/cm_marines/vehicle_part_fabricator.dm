@@ -68,10 +68,10 @@
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
-	process_build_queue()
-
 	if(generate_points)
 		add_to_point_store()
+
+	process_build_queue()
 
 	update_icon()
 
@@ -86,11 +86,23 @@
 		busy = TRUE
 		var/datum/build_queue_entry/entry = build_queue[1]
 
-		if(ispath(entry.item, /obj/structure/ship_ammo/sentry))
+		var/is_omnisentry = ispath(entry.item, /obj/structure/ship_ammo/sentry)
+
+		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
+			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
+				balloon_alert_to_viewers("out of points - printing paused!")
+				visible_message(SPAN_WARNING("[src] flashes a warning light."))
+				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
+			busy = FALSE
+			return
+
+		if(is_omnisentry)
+			spend_point_store(omnisentry_price)
 			omnisentry_price += omnisentry_price_scale
+		else
+			spend_point_store(entry.cost)
 
 		visible_message(SPAN_NOTICE("[src] starts printing something."))
-		spend_point_store(entry.cost)
 		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
@@ -142,7 +154,7 @@
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 		else
 			var/produce_list = list()
@@ -159,13 +171,16 @@
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 	if(action == "cancel")
 		var/index = params["index"]
 
 		if(length(build_queue))
-			if(index == 1)
+			if(index == null || index > length(build_queue))
+				return
+
+			if(busy && index == 1)
 				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
 				return
 
@@ -173,7 +188,7 @@
 
 			build_queue.Remove(entry)
 			add_to_point_store(entry.cost)
-			return
+			return TRUE
 
 	else
 		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")

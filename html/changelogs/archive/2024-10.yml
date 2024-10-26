@@ -115,3 +115,99 @@
   - maptweak: replaces hangar banshee with launchbay and omnisentry
   realforest2001:
   - rscadd: Added new player markers for SEAs/Mentors
+2024-10-10:
+  VileBeggar, SubjectD9341:
+  - rscadd: Giant lizards are now capable of breaking structures and their combat
+      capabilities are slightly enhanced. Several other tweaks and minor additions
+      have been made, such as wound overlays and tongue flickering.
+  - rscadd: After a random amount of time, a 2nd wave of lizards might pop up in the
+      jungles if their numbers are too low.
+  - bugfix: Giant lizards no longer become paralyzed after getting disarmed, nor will
+      they randomly become paralyzed due to weird combat logic.
+  deathrobotpunch:
+  - bugfix: fusion reactor overload messages now show correctly
+  realforest2001:
+  - bugfix: Fixes runtime from null areas.
+2024-10-13:
+  efzapa:
+  - qol: Mouth Target Suicide now takes 2 seconds instead of 4.
+  realforest2001:
+  - code_imp: Changes a one letter var in follow menu code.
+  - rscadd: Mobs in Thunder Dome now populate their own category, instead of being
+      confused with live-round mobs.
+  - bugfix: Yautja no longer appear in the Escaped category of follow menu after round
+      end.
+2024-10-14:
+  Drathek:
+  - bugfix: Fixed autoinjectors not reducing vendor reagents on refill if they were
+      fully emptied.
+  - bugfix: Fixed crystals (and any other reagent container not whitelisted) from
+      being refilled in vendors
+  - balance: This means emergency injectors do not refill again.
+  - balance: Added tricord hypospray chem refill support to Wey-Med Plus
+  zzzmike:
+  - balance: hands-only CPR now possible
+2024-10-15:
+  Mister-moon1:
+  - imageadd: new yautja cape, the damaged cape available to elites +
+  - bugfix: fixed spriting issues with ceremonial cape and armour 5
+2024-10-16:
+  JayTacos:
+  - rscadd: Added a varient of combistick that has no block chance.
+  private-tristan:
+  - rscadd: Req line tutorial NPCs have a bigger list of items to ask for.
+2024-10-17:
+  BeagleGaming1:
+  - rscadd: Tutorials can be locked until a prerequisite tutorial is completed
+  - code_imp: Tutorials are saved in preferences instead of per character slot
+  BlackCrystalic:
+  - bugfix: Code writing of CMB New() proc and setting initial values
+  SpartanBobby:
+  - maptweak: Reshuffles tables in squad hypersleep bay adds some new decals
+  private-tristan:
+  - balance: Increased the starting amount of mk2 and m39 mags in prep vendors
+  realforest2001:
+  - rscadd: Added a giant message to end of ERT spawns so they know if they're hostile
+      or not.
+  - rscadd: CLF armor now protects from cold weather so hostile survivors are not
+      penalized.
+2024-10-18:
+  blackdragonTOW:
+  - rscadd: Added Synthetic K9 Rescue Teams
+  - bugfix: Monkeys no longer have access to marine emotes AND now have access to
+      their own emotes but were blocked from.
+  - code_imp: Added a NO_OVERLAYS flag for species should we ever want a species to
+      not use onmob overlays.
+  - refactor: Altered emote whitelisting and blacklisting so that species that were
+      blacklisted out of the basic emotes will able to be whitelisted for other emotes
+  - soundadd: added dog sounds for Synthetic K9 Rescue Teams
+  - imageadd: added icons for Synthetic K9 Rescue Teams
+2024-10-19:
+  harryob:
+  - bugfix: pilots can no longer take out enormous loans to buy their equipment
+2024-10-20:
+  Drathek:
+  - qol: Added examine text to vendors that are connected via medlink
+  - balance: Blood vendors restock blood bags when connected via medlink (requires
+      20 mins from round start)
+  - maptweak: Added more medlinks to the Almayer
+2024-10-23:
+  Detective-Google:
+  - qol: the HM vendor's recommendations have been tweaked to be easier to understand.
+  Tyranicranger4:
+  - qol: Increased the ChemMaster reagent buffer from 300 to 500
+  Willzadl:
+  - spellcheck: fixed typos in the names of the SEATech vendor and the chef's apron
+  efzapa:
+  - bugfix: Chinook Dock now works.
+  harryob:
+  - bugfix: the unbuckled message is now slightly more accurate
+  ihatethisengine:
+  - rscadd: Military CC now can take broadcasting camera from CC vendor.
+  realforest2001:
+  - admin: Moderators now have access to remote control as intended.
+  zzzmike:
+  - qol: xenos get the same bomb decryption timer notification that preds get
+2024-10-25:
+  BOBAMA:
+  - bugfix: Fixes splint removal dupe bug

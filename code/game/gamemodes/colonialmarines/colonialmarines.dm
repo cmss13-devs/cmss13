@@ -145,9 +145,11 @@
 	var/right = marine_dropship.x + marine_dropship.dwidth + 2
 	var/z = marine_dropship.z
 
+	var/dropship_type = marine_dropship.type
+
 	// Bottom left
-	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left])
-		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_LEFT]
 	else
 		options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
 		options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
@@ -155,8 +157,8 @@
 
 	// Bottom right
 	options.Cut()
-	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_right])
-		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_RIGHT]
 	else
 		options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
 		options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
@@ -164,8 +166,8 @@
 
 	// Top left
 	options.Cut()
-	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/top_left])
-		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_LEFT]
 	else
 		options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
 		options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
@@ -173,8 +175,8 @@
 
 	// Top right
 	options.Cut()
-	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/top_right])
-		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_RIGHT]
 	else
 		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
 		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)

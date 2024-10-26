@@ -107,6 +107,12 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 
 	var/abstract_type = /obj/effect/sentry_landmark
 
+	/// Which landing zone this landmark should be connected to
+	var/landing_zone
+
+	/// Which position this sentry should spawn at
+	var/position
+
 
 /obj/effect/sentry_landmark/Initialize(mapload, ...)
 	. = ..()
@@ -115,17 +121,41 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 		log_mapping("A [type] was created that should not have been! Use a subtype instead.")
 		return INITIALIZE_HINT_QDEL
 
-	LAZYADD(GLOB.sentry_spawns[type], src)
+	LAZYADDASSOC(GLOB.sentry_spawns[landing_zone], position, src)
 
 /obj/effect/sentry_landmark/Destroy(force)
 	. = ..()
 
-	GLOB.sentry_spawns[type] -= src
+	GLOB.sentry_spawns[landing_zone][position] -= src
 
-/obj/effect/sentry_landmark/top_left
+/obj/effect/sentry_landmark/lz_1
+	abstract_type = /obj/effect/sentry_landmark/lz_1
+	landing_zone = /obj/docking_port/stationary/marine_dropship/lz1
 
-/obj/effect/sentry_landmark/top_right
+/obj/effect/sentry_landmark/lz_1/top_left
+	position = SENTRY_TOP_LEFT
 
-/obj/effect/sentry_landmark/bottom_left
+/obj/effect/sentry_landmark/lz_1/top_right
+	position = SENTRY_TOP_RIGHT
 
-/obj/effect/sentry_landmark/bottom_right
+/obj/effect/sentry_landmark/lz_1/bottom_left
+	position = SENTRY_BOTTOM_LEFT
+
+/obj/effect/sentry_landmark/lz_1/bottom_right
+	position = SENTRY_BOTTOM_RIGHT
+
+/obj/effect/sentry_landmark/lz_2
+	abstract_type = /obj/effect/sentry_landmark/lz_2
+	landing_zone = /obj/docking_port/stationary/marine_dropship/lz2
+
+/obj/effect/sentry_landmark/lz_2/top_left
+	position = SENTRY_TOP_LEFT
+
+/obj/effect/sentry_landmark/lz_2/top_right
+	position = SENTRY_TOP_RIGHT
+
+/obj/effect/sentry_landmark/lz_2/bottom_left
+	position = SENTRY_BOTTOM_LEFT
+
+/obj/effect/sentry_landmark/lz_2/bottom_right
+	position = SENTRY_BOTTOM_RIGHT

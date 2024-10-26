@@ -700,7 +700,7 @@
 	var/turf/impact = pick(possible_turfs)
 
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
+		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/i in 0 to total_seconds)
 			sleep(1 SECONDS)

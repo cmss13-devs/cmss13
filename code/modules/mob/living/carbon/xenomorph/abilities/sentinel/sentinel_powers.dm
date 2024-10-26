@@ -63,9 +63,9 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/paraslash_user = owner
 
-	if (!istype(xeno))
+	if (!istype(paraslash_user))
 		return
 
 	if (!action_cooldown_check())
@@ -74,11 +74,11 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/sentinel_base/behavior = paraslash_user.behavior_delegate
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
+	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
@@ -87,15 +87,15 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/paralyzing_slash/proc/unbuff_slash()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	var/mob/living/carbon/xenomorph/unbuffslash_user = owner
+	if (!istype(unbuffslash_user))
 		return
-	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/sentinel_base/behavior = unbuffslash_user.behavior_delegate
 	if (istype(behavior))
 		// In case slash has already landed
 		if (!behavior.next_slash_buffed)
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
+	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"

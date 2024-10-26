@@ -117,7 +117,7 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/elder
 	name = "\improper Yautja Elder Hunting Gear Rack"
 	icon_state = "pred_vendor_elder_left"
-	req_access = list(ACCESS_YAUTJA_ELDER)
+	req_access = list(ACCESS_YAUTJA_ELITE)
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/right
 	icon_state = "pred_vendor_elder_right"

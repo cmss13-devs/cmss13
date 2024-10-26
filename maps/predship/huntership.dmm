@@ -883,7 +883,8 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "cC" = (
-/turf/open/space/basic,
+/obj/structure/machinery/autolathe/yautja,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "cE" = (
 /obj/structure/machinery/prop/almayer/CICmap/yautja,

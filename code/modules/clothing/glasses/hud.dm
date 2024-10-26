@@ -104,13 +104,18 @@
 			report.read_paper(user)
 
 /obj/item/clothing/glasses/hud/health/science
-	name = "combined HealthMate HUD and reagant scanner googles" //combined googles for CMO
-	desc = "These old HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagant analyzer, allowing them to combine the functionality of a HealthMate and reagant scanner HUD without compromising on the form of the googles, allowing for a comfortable wearing experience."
+	name = "\improper custom HealthMate HUD" //combined googles for CMO
+	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagant analyzer, allowing them to combine the functionality of a HealthMate and reagant scanner HUD without compromising on the form of the googles."
 	icon_state = "healthhud"
 	deactive_state = "degoggles"
 	req_skill = SKILL_MEDICAL && SKILL_RESEARCH
 	req_skill_level = SKILL_MEDICAL_MEDIC && SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/hud/health/science/prescription
+	name = "\improper Prescription custom HealthMate HUD"
+	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagant analyzer, allowing them to combine the functionality of a HealthMate and reagant scanner HUD without compromising on the form of the googles. This pair contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/sensor
 	name = "\improper SensorMate HUD"

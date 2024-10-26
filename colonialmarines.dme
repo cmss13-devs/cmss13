@@ -1859,6 +1859,7 @@
 #include "code\modules\logging\global_logs.dm"
 #include "code\modules\logging\log_category.dm"
 #include "code\modules\logging\log_holder.dm"
+#include "code\modules\mapping\mapping_helpers.dm"
 #include "code\modules\mapping\map_template.dm"
 #include "code\modules\mapping\merge_conflicts.dm"
 #include "code\modules\mapping\preloader.dm"

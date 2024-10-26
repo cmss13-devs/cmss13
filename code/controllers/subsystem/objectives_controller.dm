@@ -1,4 +1,4 @@
-#define CORPSES_TO_SPAWN 25
+#define CORPSES_TO_SPAWN 100
 
 SUBSYSTEM_DEF(objectives)
 	name = "Objectives"

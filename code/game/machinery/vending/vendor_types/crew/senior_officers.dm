@@ -227,8 +227,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmo, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Combined Medical and Reagant Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Prescription Combined Medical and Reagant Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Combined Medical and Reagent Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Prescription Combined Medical and Reagent Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Medical Officer's Uniform", 0, /obj/item/clothing/under/rank/chief_medical_officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),

@@ -399,7 +399,6 @@
 	name = "USCM Solar Devils patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
 	icon_state = "solardevilspatch"
-// Make it available to Custom loadout for marines
 
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"

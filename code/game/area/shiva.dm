@@ -124,6 +124,7 @@
 /area/shiva/exterior/valley
 	name = "Shiva's Snowball - Storage Bunker Valley"
 	icon_state = "junkyard1"
+	unoviable_timer = FALSE
 
 /area/shiva/exterior/southwest_valley
 	name = "Shiva's Snowball - Southwest Valley"
@@ -173,6 +174,7 @@
 /area/shiva/interior/caves/right_spiders
 	name = "Shiva's Snowball - Forgotten Passage"
 	icon_state = "caves1"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/caves/left_spiders
 	name = "Shiva's Snowball - Crevice Passage"
@@ -193,10 +195,12 @@
 	name = "Shiva's Snowball - South Research Hab Caves"
 	icon_state = "caves2"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	unoviable_timer = FALSE
 
 /area/shiva/interior/caves/medseceng_caves
 	name = "Shiva's Snowball - South Med-Sec-Eng Complex Caves"
 	icon_state = "caves3"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/colony
 	name = "Shiva's Snowball - Colony MegaStruct(TM)"
@@ -224,10 +228,12 @@
 /area/shiva/interior/colony/research_hab
 	name = "Shiva's Snowball - Research Hab Interior"
 	icon_state = "res2"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/colony/medseceng
 	name = "Shiva's Snowball - Colony MegaStruct(TM) Med-Sec-Eng Segment"
 	icon_state = "res0"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/colony/deck
 	name = "Shiva's Snowball - Colony MegaStruct(TM) Open Deck"

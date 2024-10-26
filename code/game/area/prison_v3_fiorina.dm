@@ -29,6 +29,8 @@
 	icon_state = "tumor0"
 	temperature = 309.15 //its uh, gettin' kinda warm in here SL...
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	unoviable_timer = FALSE
+
 /area/fiorina/tumor/deep
 	icon_state = "tumor0-deep"
 
@@ -41,6 +43,7 @@
 	icon_state = "tumor1"
 	requires_power = 0
 	minimap_color = MINIMAP_AREA_SHIP
+	unoviable_timer = 25 MINUTES
 
 /area/fiorina/tumor/civres
 	name = "Fiorina - Green Block Residences"
@@ -174,6 +177,7 @@
 /area/fiorina/station/civres_blue
 	name = "Fiorina - Blue Block Residences"
 	icon_state = "station1"
+	unoviable_timer = FALSE
 
 /area/fiorina/station/medbay
 	name = "Fiorina - Medical Bay"

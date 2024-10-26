@@ -263,6 +263,7 @@
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
 	minimap_color = MINIMAP_AREA_RESEARCH
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves/lambda/virology
 	name = "\improper Lambda Virology"
@@ -290,6 +291,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
 
 // serve for the security checkpoint.
 /area/bigredv2/outside/lambda_cave_cas
@@ -389,7 +391,7 @@
 	name = "\improper Southwest Abandoned Mining Caves"
 	icon_state = "bluenew"
 	color = "purple"
-
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves/eta
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
@@ -397,6 +399,7 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
+	unoviable_timer = FALSE
 
 /area/bigredv2/outside/eta
 	name = "\improper Eta Labs Compound"
@@ -612,6 +615,7 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_se
 	name = "\improper Southeastern Caves"
@@ -622,6 +626,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_east
 	name = "\improper Eastern Caves"
@@ -632,6 +637,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_north
 	name = "\improper Northern Caves"

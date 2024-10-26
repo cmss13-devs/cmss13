@@ -72,6 +72,7 @@
 /area/kutjevo/exterior/spring
 	name = "Kutjevo - Southern Spring"
 	icon_state = "lz_river"
+	unoviable_timer = FALSE
 
 /area/kutjevo/exterior/scrubland
 	name = "Kutjevo - North Scrubland"
@@ -116,6 +117,7 @@
 /area/kutjevo/exterior/construction
 	name = "Kutjevo - Abandoned Construction"
 	icon_state = "construction"
+	unoviable_timer = FALSE
 
 /area/kutjevo/exterior/complex_border
 	name = "Kutjevo Complex - Exterior"
@@ -272,26 +274,31 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_central/mine_elevator
 	name = "Kutjevo - Central Colony Elevator"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_north
 	name = "Kutjevo - North Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_1"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_S_East
 	name = "Kutjevo - North East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_N_East
 	name = "Kutjevo - South East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_South
 	name = "Kutjevo - South Colony Caves"

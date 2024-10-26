@@ -326,7 +326,7 @@
 	power_equip = FALSE
 	power_environ = FALSE
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
-
+	unoviable_timer = FALSE
 
 /area/varadero/interior_protected/caves/central
 	name = "New Varadero - Grass Caves"
@@ -345,10 +345,10 @@
 	name = "New Varadero - Southern Maintenance"
 	icon_state = "deepcaves4"
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/varadero/interior_protected/vessel
 	name = "New Varadero - Unknown Vessel"
 	icon_state = "predship"
 	minimap_color = MINIMAP_AREA_SHIP
-
-
+	unoviable_timer = FALSE

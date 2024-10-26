@@ -139,6 +139,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Deep Jungle - Carp Lake Center Island"
 	icon_state = "ug_jung_1"
 	weather_enabled = TRUE
+	unoviable_timer = FALSE
 
 //-Marsh
 
@@ -487,6 +488,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/carplake
 	name = "Do not use."
 	icon_state = "ug_jung_1"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/carplake/north
 	name = "Deep Jungle - North of Carp Lake"
@@ -503,10 +505,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/platform/south
 	name = "Deep Jungle - South of Underground Platform"
 	icon_state = "ug_jung_4"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/platform/east
 	name = "Deep Jungle - East of Underground Platform"
 	icon_state = "ug_jung_0"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures
 	name = "Do not use."
@@ -517,6 +521,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_2"
 	name = "Deep Jungle - Classified Research Station"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures/research/south
 	icon_state = "ug_jung_3"
@@ -537,6 +542,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_5"
 	name = "Deep Jungle - Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures/monitoring/west
 	icon_state = "ug_jung_6"
@@ -556,10 +562,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/structures/ruin
 	icon_state = "ug_jung_mine_4"
 	name = "Deep Jungle - Ancient Dorms"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/tearlake
 	name = "Deep Jungle - Weeping Pool"
 	icon_state = "ug_jung_3"
+	unoviable_timer = FALSE
 
 //-Others
 

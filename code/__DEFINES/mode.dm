@@ -74,6 +74,7 @@
 #define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
 #define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
 #define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
+#define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
 
 
 #define ROUNDSTATUS_FOG_DOWN 1
@@ -297,6 +298,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_LIST_MARINE_WY list(FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_UPP list(FACTION_MARINE, FACTION_UPP)
 #define FACTION_LIST_MARINE_TWE list(FACTION_MARINE, FACTION_TWE)
+#define FACTION_LIST_YAUTJA list(FACTION_YAUTJA)
 
 // Xenomorphs
 #define FACTION_PREDALIEN "Predalien"

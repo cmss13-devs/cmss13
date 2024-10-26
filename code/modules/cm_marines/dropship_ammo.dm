@@ -3,7 +3,7 @@
 
 /// Dropship weaponry ammunition
 /obj/structure/ship_ammo
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_ammo.dmi'
 	density = TRUE
 	anchored = TRUE
 	throwpass = TRUE
@@ -38,6 +38,15 @@
 	/// Mob that fired this ammunition (the pilot pressing the trigger)
 	var/mob/source_mob
 	var/combat_equipment = TRUE
+
+/obj/structure/ship_ammo/update_icon()
+	. = ..()
+	
+	var/ammo_stage = ammo_count / ammo_used_per_firing
+	icon_state = "[initial(icon_state)]_[ammo_stage]"
+
+	if (ammo_count == max_ammo_count)
+		icon_state = initial(icon_state)
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -215,7 +224,6 @@
 	travelling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100
-	ammo_used_per_firing = 40
 	equipment_type = /obj/structure/dropship_equipment/weapon/laser_beam_gun
 	ammo_name = "charge"
 	transferable_ammo = TRUE
@@ -257,7 +265,7 @@
 /obj/structure/ship_ammo/rocket
 	name = "abstract rocket"
 	icon_state = "single"
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/dropship_ammo64.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
 	ammo_count = 1
 	max_ammo_count = 1
@@ -268,10 +276,10 @@
 	travelling_time = 60 //faster than 30mm rounds
 	max_inaccuracy = 5
 	point_cost = 0
+	fire_mission_delay = 4
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
-
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
@@ -281,7 +289,6 @@
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
 	point_cost = 300
-	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -294,7 +301,6 @@
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 300
-	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -309,7 +315,6 @@
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
 	point_cost = 300
-	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -345,13 +350,12 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/thermobaric
-	name = "\improper BLU-200 'Dragons Breath'"
-	desc = "The BLU-200 Dragons Breath a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
+	name = "\improper BLU-200 'Dragon's Breath'"
+	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 50
 	point_cost = 300
-	fire_mission_delay = 4
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -367,7 +371,6 @@
 	name = "\improper AGR-59 'Mini-Mike'"
 	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket"
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/minirocket_pod
 	ammo_count = 6
 	max_ammo_count = 6

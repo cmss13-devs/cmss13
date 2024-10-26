@@ -1,0 +1,4 @@
+author: "Rem1, Mistfrag"
+delete-after: True
+changes:
+  - spellcheck: "Converts UPP Ranks to follow USSR ranks without the silly looking Latinization."

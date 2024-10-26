@@ -313,7 +313,7 @@
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
@@ -367,7 +367,7 @@
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	aiming_time = 2 SECONDS
 	aimed_shot_cooldown_delay = 4.5 SECONDS
 	var/focused_fire_counter = 0

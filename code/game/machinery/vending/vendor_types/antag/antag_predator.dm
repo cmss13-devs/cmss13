@@ -85,6 +85,20 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
+/obj/structure/machinery/cm_vending/clothing/yautja/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(!allowed(user))
+		if(display)
+			to_chat(user, SPAN_WARNING("Access denied."))
+			vend_fail()
+		return FALSE
+
+	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+		if(display)
+			to_chat(user, SPAN_WARNING("This machine isn't for you."))
+			vend_fail()
+		return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/clothing/yautja/left_centre
 	icon_state = "pred_vendor_lcenter"
 

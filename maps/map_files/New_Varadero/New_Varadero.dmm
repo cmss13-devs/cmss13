@@ -2971,6 +2971,29 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
+"coT" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/weapon/harpoon/yautja{
+	anchored = 1;
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/caves/digsite)
 "coX" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -9263,10 +9286,6 @@
 "huF" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
-"huU" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "hvh" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -15175,6 +15194,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
+"mbQ" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "mca" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
@@ -24394,28 +24417,6 @@
 	},
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
-"tfC" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/caves/digsite)
 "tgk" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -26295,6 +26296,10 @@
 /obj/item/weapon/gun/pistol/mod88,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
+"uMX" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "uNh" = (
 /obj/structure/closet/secure_closet/personal{
 	density = 0;
@@ -28004,10 +28009,6 @@
 	},
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach/lz)
-"vWx" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "vWG" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/storm_siren{
@@ -42299,7 +42300,7 @@ wMw
 wMw
 wMw
 wMw
-huU
+uMX
 xcE
 wMw
 wMw
@@ -55750,7 +55751,7 @@ lTg
 wlB
 wlB
 wlB
-vWx
+mbQ
 wlB
 lTg
 wlB
@@ -65354,7 +65355,7 @@ izi
 qAd
 izi
 xuX
-tfC
+coT
 bsf
 brT
 uvd

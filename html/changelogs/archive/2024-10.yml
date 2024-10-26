@@ -208,3 +208,6 @@
   - admin: Moderators now have access to remote control as intended.
   zzzmike:
   - qol: xenos get the same bomb decryption timer notification that preds get
+2024-10-25:
+  BOBAMA:
+  - bugfix: Fixes splint removal dupe bug

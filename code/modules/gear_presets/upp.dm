@@ -1120,7 +1120,7 @@
 
 
 /datum/equipment_preset/upp/doctor
-	name = "UPP Doctor"
+	name = "UPP Doktor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_medic
@@ -1347,7 +1347,7 @@
 //================//
 
 /datum/equipment_preset/upp/officer
-	name = "UPP Lieutenant"
+	name = "UPP Mladshiy Leytenant"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/officer
@@ -1509,7 +1509,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/senior
-	name = "UPP Senior Lieutenant"
+	name = "UPP Starshiy Leytenant"
 	assignment = JOB_UPP_SRLT_OFFICER
 	rank = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
@@ -1828,7 +1828,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/major
-	name = "UPP Major"
+	name = "UPP Mayjor"
 	assignment = JOB_UPP_MAY_OFFICER
 	rank = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
@@ -1989,15 +1989,15 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/officer/lt_kolonel
-	name = "UPP Leytenant Kolonel"
+/datum/equipment_preset/upp/officer/podpolkovnik
+	name = "UPP Podpolkovnik"
 	assignment = JOB_UPP_LTKOL_OFFICER
 	rank = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/lt_kolonel/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/officer/podpolkovnik/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
@@ -2039,7 +2039,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/officer/lt_kolonel/get_antag_clothing_equipment()
+/datum/equipment_preset/upp/officer/podpolkovnik/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2089,7 +2089,7 @@
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
-/datum/equipment_preset/upp/officer/lt_kolonel/get_antag_gear_equipment()
+/datum/equipment_preset/upp/officer/podpolkovnik/get_antag_gear_equipment()
 	return list(
 		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
@@ -2150,15 +2150,15 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/officer/kolonel
-	name = "UPP Kolonel"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+/datum/equipment_preset/upp/officer/polkovnik
+	name = "UPP General Mayjor"
+	assignment = JOB_UPP_BRIG_GENERAL
+	rank = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "Kol."
-	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/kolonel/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/officer/polkovnik/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
@@ -2200,7 +2200,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/officer/kolonel/get_antag_clothing_equipment()
+/datum/equipment_preset/upp/officer/polkovnik/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2250,7 +2250,7 @@
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
-/datum/equipment_preset/upp/officer/kolonel/get_antag_gear_equipment()
+/datum/equipment_preset/upp/officer/polkovnik/get_antag_gear_equipment()
 	return list(
 		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
@@ -2316,9 +2316,9 @@
 //===============//
 
 /datum/equipment_preset/upp/officer/may_gen
-	name = "UPP Mayjor General"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	name = "UPP General Leytenant"
+	assignment = JOB_UPP_MAY_GENERAL
+	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "May. Gen."
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2477,9 +2477,9 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/ley_gen
-	name = "UPP Leytenant General"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	name = "UPP General Polkovnik"
+	assignment = JOB_UPP_LT_GENERAL
+	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
@@ -2638,9 +2638,9 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/gen
-	name = "UPP Army General"
-	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	name = "UPP General Armii"
+	assignment = JOB_UPP_GENERAL
+	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander

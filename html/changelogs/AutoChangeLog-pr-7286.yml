@@ -1,0 +1,5 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - balance: "The contractor ABR40 now fires slightly faster and does a bit more damage, also having an integrated magharn."
+  - rscadd: "Shuffles around contractor ABR40 loadout, sacrificing the smoke grenades and holotargeting rounds for a bit more normal ammo."

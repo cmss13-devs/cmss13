@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "No more multiple surgeries on same operation table for 2x and more patients at same time"

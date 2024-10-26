@@ -45691,6 +45691,13 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"enQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "eqo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -47435,10 +47442,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
-"loy" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/landing_pad_two)
 "lrn" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "damtemple_intact"
@@ -47630,6 +47633,10 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
+"mbx" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "mdP" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal9"
@@ -47732,29 +47739,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"mth" = (
-/obj/structure/showcase{
-	color = "#880808";
-	desc = "A large red statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "The Titan"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1;
-	icon_state = "halfarmor7_ebony"
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1;
-	icon_state = "y-boots4_ebony"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	icon_state = "pred_mask12_ebony";
-	unacidable = 0
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
 "muj" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
@@ -48227,13 +48211,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"owr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
 "oyf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -48288,6 +48265,30 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"oIf" = (
+/obj/structure/showcase{
+	color = "#880808";
+	desc = "A large red statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "The Titan"
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1;
+	icon_state = "halfarmor7_ebony"
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1;
+	icon_state = "y-boots4_ebony"
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	icon_state = "pred_mask12_ebony";
+	unacidable = 0;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/desert_dam/interior/caves/temple)
 "oIE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -54194,7 +54195,7 @@ lIt
 lIt
 lIt
 lIt
-loy
+mbx
 lIt
 lIt
 lIt
@@ -57052,7 +57053,7 @@ aQW
 aQW
 aQW
 aQW
-owr
+enQ
 aQW
 aQW
 aQW
@@ -104841,7 +104842,7 @@ aBE
 aBE
 aAv
 rCp
-mth
+oIf
 fgo
 qJU
 aCk

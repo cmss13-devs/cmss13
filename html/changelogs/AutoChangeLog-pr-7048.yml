@@ -1,0 +1,5 @@
+author: "TheManWithNoHands"
+delete-after: True
+changes:
+  - code_imp: "changed the icon path of LTAA mags to be not literally the painless mag"
+  - imageadd: "changed LTAA-AP minigun, 20m Autocanon, DRG-N flamer, LTAA-AP mag, DRG-N mag, to use green tank camo"

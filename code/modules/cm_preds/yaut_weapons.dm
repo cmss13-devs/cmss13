@@ -208,6 +208,24 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
+/obj/item/weapon/yautja/sword/alt_1
+	name = "rending sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt"
+	item_state = "clansword_alt"
+
+/obj/item/weapon/yautja/sword/alt_2
+	name = "piercing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt2"
+	item_state = "clansword_alt2"
+
+/obj/item/weapon/yautja/sword/alt_3
+	name = "severing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt3"
+	item_state = "clansword_alt3"
+
 /obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
@@ -249,7 +267,7 @@
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe_alt"
-	item_state = "scythe_double"
+	item_state = "scythe_dual"
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -543,7 +561,7 @@
 	var/mob/living/carbon/human/victim = target
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
 	if(issamespecies(user, victim))
@@ -551,7 +569,7 @@
 		return
 
 	if(isspeciessynth(victim))
-		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You can't flay metal..."))
 		return TRUE
 
 	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
@@ -793,9 +811,9 @@
 
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
-	icon_state = "glaive"
-	item_state = "glaive"
+	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
 	throwforce = MELEE_FORCE_TIER_3
@@ -804,6 +822,8 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	var/skull_attached = FALSE
+
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
@@ -814,8 +834,40 @@
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
-	icon_state = "glaive_alt"
-	item_state = "glaive_alt"
+	name = "cleaving glaive "
+	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive"
+	item_state = "glaive"
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/get_examine_text(mob/user)
+	. = ..()
+	if(skull_attached)
+		. += SPAN_NOTICE("[src] has a human skull mounted on it.")
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/update_icon()
+	if(skull_attached)
+		icon_state = "glaive_skull"
+	else
+		icon_state = "glaive"
+
+///attaching the skull
+/obj/item/weapon/twohanded/yautja/glaive/alt/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/clothing/accessory/limb/skeleton/head))
+		return ..()
+
+	var/obj/item/clothing/accessory/limb/skeleton/head/skull = attacking_item
+	if(skull_attached)
+		to_chat(user, SPAN_WARNING("You already have a [skull] mounted on [src]."))
+		return
+
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.drop_inv_item_to_loc(skull, src)
+	skull_attached = TRUE
+	update_icon()
+	return ..()
 
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"

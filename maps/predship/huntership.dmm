@@ -570,11 +570,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/zombie_claws{
-	anchored = 1;
-	desc = "Claws from a creature that defies nature, you dare not touch it.";
-	force = 1
-	},
+/obj/item/weapon/gun/pistol/heavy/co/gold,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "bS" = (
@@ -887,8 +883,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "cC" = (
-/obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/space/basic,
 /area/yautja)
 "cE" = (
 /obj/structure/machinery/prop/almayer/CICmap/yautja,
@@ -1657,8 +1652,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/twohanded/dualsaber{
-	force_wielded = 35
+/obj/item/weapon/gun/pistol/m1911/socom{
+	pixel_y = 0
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)

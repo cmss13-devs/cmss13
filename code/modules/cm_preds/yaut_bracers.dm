@@ -589,7 +589,10 @@
 				bracer_attachment_deployed = TRUE
 
 	if(bracer_attachment_deployed)
-		playsound(loc,right_bracer_attachment.deployment_sound, 30, TRUE)
+		if(!right_bracer_attachment)
+			playsound(loc,left_bracer_attachment.deployment_sound, 30, TRUE)
+		else
+			playsound(loc,right_bracer_attachment.deployment_sound, 30, TRUE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/caller) //if the attachments weapon is in the callers hands, retract them back into the attachments
 	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == caller)
@@ -601,7 +604,10 @@
 		to_chat(caller, SPAN_NOTICE("You retract [right_bracer_attachment.attached_weapon]."))
 
 	bracer_attachment_deployed = FALSE
-	playsound(loc, right_bracer_attachment.retract_sound, 30, TRUE)
+	if(!right_bracer_attachment)
+		playsound(loc, left_bracer_attachment.retract_sound, 30, TRUE)
+	else
+		playsound(loc, right_bracer_attachment.retract_sound, 30, TRUE)
 	return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()

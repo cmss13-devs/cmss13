@@ -995,6 +995,7 @@
 	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
 	icon_state = "l_arm"

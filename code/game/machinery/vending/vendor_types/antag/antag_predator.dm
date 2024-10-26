@@ -4,8 +4,11 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
-		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Basic Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Rending Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_1, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_2, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Severing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_3, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Sundering Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -31,7 +34,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Damaged-Cape", 0, /obj/item/clothing/yautja_cape/damaged, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	))
+			))
 
 GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
@@ -39,8 +42,11 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
-		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("The Rending Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Basic Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Rending Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_1, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_2, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Severing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_3, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Sundering Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -68,7 +74,7 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Damaged-Cape", 0, /obj/item/clothing/yautja_cape/damaged, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Ceremonial Cape", 0, /obj/item/clothing/yautja_cape/ceremonial, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Full-Cape", 0, /obj/item/clothing/yautja_cape, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	))
+			))
 
 /obj/structure/machinery/cm_vending/clothing/yautja
 	name = "\improper Yautja Hunting Gear Rack"

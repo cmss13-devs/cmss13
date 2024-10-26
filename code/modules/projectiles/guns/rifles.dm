@@ -1726,11 +1726,11 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40/tactical/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
-	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	Integrated.hidden = TRUE
-	Integrated.Attach(src)
-	update_attachable(Integrated.slot)
+	var/obj/item/attachable/magnetic_harness/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.hidden = TRUE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
 
 /obj/item/weapon/gun/rifle/l42a/abr40/tactical/set_gun_config_values()
 	..()

@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 /obj/effect/sentry_landmark/Destroy(force)
 	. = ..()
 
-	GLOB.sentry_spawns[type] -= src
+	GLOB.sentry_spawns[landing_zone][position] -= src
 
 /obj/effect/sentry_landmark/lz_1
 	abstract_type = /obj/effect/sentry_landmark/lz_1

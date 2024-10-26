@@ -22,6 +22,11 @@
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison
+	name = "\improper Room Divider"
+	id = "CLRoomDivider"
+	layer = 3.1
+
 /obj/structure/machinery/door/poddoor/almayer/blended/open
 	density = FALSE
 

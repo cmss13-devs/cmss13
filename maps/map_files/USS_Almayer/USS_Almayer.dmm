@@ -66993,11 +66993,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/command/securestorage)
 "xqQ" = (
-/obj/structure/machinery/door/poddoor/almayer/blended{
-	id = "RoomDivider";
-	layer = 3.1;
-	name = "\improper Room Divider"
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "xrg" = (

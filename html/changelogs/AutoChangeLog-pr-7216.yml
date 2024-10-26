@@ -1,0 +1,4 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - rscadd: "Added a warning to thermobaric missile direct fire."

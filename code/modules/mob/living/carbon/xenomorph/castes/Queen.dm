@@ -822,6 +822,7 @@
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(src == hive?.living_xeno_queen)
+		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 
 		// Reset the banished ckey list

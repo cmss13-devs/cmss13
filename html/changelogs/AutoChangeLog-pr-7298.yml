@@ -1,0 +1,4 @@
+author: "Sargeantmuffinman"
+delete-after: True
+changes:
+  - qol: "Added auto wiki for requisitions."

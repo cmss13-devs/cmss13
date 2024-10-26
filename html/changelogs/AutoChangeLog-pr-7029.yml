@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Added keybindings to let humans pixel shift objects they are holding"

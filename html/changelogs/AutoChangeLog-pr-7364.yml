@@ -1,0 +1,8 @@
+author: "Drdodo"
+delete-after: True
+changes:
+  - code_imp: "Added the Engineer Kit pouch to the CE vendor"
+  - code_imp: "Added the M277 pattern construction rig to the CE vendor"
+  - code_imp: "Added the Small Tool Webbing to the CE vendor"
+  - code_imp: "Added the M276 G8-A General Utility Pouch to the CE vendor"
+  - code_imp: "Added a toolbelt section with the new changes to the vendor"

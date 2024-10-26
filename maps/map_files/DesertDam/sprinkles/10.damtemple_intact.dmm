@@ -105,7 +105,7 @@
 	desc = "A clan mask of uncertain origin, whoever wore it must have been cruel and sadistic.";
 	icon_state = "pred_mask_elder_tr";
 	name = "ancient clan mask";
-	pixel_y = 20
+	pixel_y = 30
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
@@ -216,7 +216,8 @@
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
 	icon_state = "pred_mask12_ebony";
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)

@@ -102,6 +102,15 @@
 
 #undef NEURO_TOUCH_DELAY
 
+/datum/behavior_delegate/sentinel_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(next_slash_buffed)
+		return INTENT_HARM
+
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
 	human_target.KnockDown(2)
 	human_target.Stun(2)

@@ -314,8 +314,6 @@
 	if(!action_cooldown_check())
 		return
 
-
-
 	if(!xeno.submerge)
 		to_chat(xeno, SPAN_XENOWARNING("We start burrowing into the ground."))
 		if(!do_after(xeno, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -368,8 +366,6 @@ Cannibalize for contact damage*/
 	if(!action_cooldown_check())
 		return
 	if(!xeno.check_state())
-		return
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		return
 
 	var/turf/turf = xeno.loc

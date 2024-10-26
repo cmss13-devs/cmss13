@@ -34,25 +34,76 @@
 /turf/closed/wall/cult,
 /area/yautja)
 "ah" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/corsat/squareswood/north,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southleft,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "ai" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southleft,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
 	},
-/turf/open/shuttle/predship,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/sandstone/runed,
+/area/yautja)
+"aj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southleft,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "ak" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southright,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
 "al" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southright,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
 	},
 /obj/item/hunting_trap,
 /obj/item/hunting_trap,
@@ -65,8 +116,16 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "am" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/southright,
+/obj/item/clothing/shoes/yautja/hunter,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -99,7 +158,7 @@
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_n";
-	pixel_y = 29
+	pixel_y = 39
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
@@ -126,7 +185,7 @@
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 30
+	pixel_y = 40
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
@@ -475,7 +534,7 @@
 	},
 /obj/item/clothing/mask/gas/yautja/hunter{
 	anchored = 1;
-	pixel_y = 20
+	pixel_y = 30
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)

@@ -412,7 +412,11 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
                         disabled={!buffer}
                         currentValue={internal_reagent_name}
                         onCommit={(_, value) =>
-                          act('create_glass', { type: 'vial', label: value })
+                          act('create_glass', {
+                            type: 'vial',
+                            label: value,
+                            store: true,
+                          })
                         }
                       >
                         Create and Transfer

@@ -132,7 +132,8 @@
 /area/adminlevel/ert_station/fax_response_station)
 "pH" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
-	dir = 1
+	dir = 1;
+	req_one_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	unacidable = 1;

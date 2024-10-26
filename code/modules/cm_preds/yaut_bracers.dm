@@ -548,7 +548,7 @@
 	set desc = "Extend your bracer attachment. They cannot be dropped, but can be retracted."
 	set category = "Yautja.Weapons"
 	set src in usr
-	. = attachment_internal(usr, FALSE)
+	return attachment_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/attachment_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))

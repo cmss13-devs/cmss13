@@ -1,13 +1,13 @@
 /datum/action/xeno_action/activable/slowing_spit/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno.check_state())
+	var/mob/living/carbon/xenomorph/slowspit_user = owner
+	if(!slowspit_user.check_state())
 		return
 
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
 		return
 
-	var/turf/current_turf = get_turf(xeno)
+	var/turf/current_turf = get_turf(slowspit_user)
 
 	if(!current_turf)
 		return
@@ -15,31 +15,31 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target]!"), \
+	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"), \
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(xeno.loc, sound_to_play, 25, 1)
+	playsound(slowspit_user.loc, sound_to_play, 25, 1)
 
-	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
-	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
-	projectile.generate_bullet(xeno.ammo)
-	projectile.permutated += xeno
-	projectile.def_zone = xeno.get_limbzone_target()
-	projectile.fire_at(target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+	slowspit_user.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(slowspit_user.caste_type), slowspit_user))
+	projectile.generate_bullet(slowspit_user.ammo)
+	projectile.permutated += slowspit_user
+	projectile.def_zone = slowspit_user.get_limbzone_target()
+	projectile.fire_at(target, slowspit_user, slowspit_user, slowspit_user.ammo.max_range, slowspit_user.ammo.shell_speed)
 
 	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno.check_state())
+	var/mob/living/carbon/xenomorph/scatterspit_user = owner
+	if(!scatterspit_user.check_state())
 		return
 
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
 		return
 
-	var/turf/current_turf = get_turf(xeno)
+	var/turf/current_turf = get_turf(scatterspit_user)
 
 	if(!current_turf)
 		return
@@ -47,17 +47,17 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target]!"), \
+	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"), \
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(xeno.loc, sound_to_play, 25, 1)
+	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 
-	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]
-	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
-	projectile.generate_bullet(xeno.ammo)
-	projectile.permutated += xeno
-	projectile.def_zone = xeno.get_limbzone_target()
-	projectile.fire_at(target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+	scatterspit_user.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(scatterspit_user.caste_type), scatterspit_user))
+	projectile.generate_bullet(scatterspit_user.ammo)
+	projectile.permutated += scatterspit_user
+	projectile.def_zone = scatterspit_user.get_limbzone_target()
+	projectile.fire_at(target, scatterspit_user, scatterspit_user, scatterspit_user.ammo.max_range, scatterspit_user.ammo.shell_speed)
 
 	apply_cooldown()
 	return ..()

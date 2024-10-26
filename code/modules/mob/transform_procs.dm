@@ -290,6 +290,7 @@
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
+	new_xeno.set_hive_and_update(XENO_HIVE_WEAVE)
 
 	if (new_xeno.client)
 		new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)

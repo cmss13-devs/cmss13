@@ -24559,8 +24559,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "jAo" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_sw)
 "jAJ" = (
@@ -24600,6 +24599,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
+"jBC" = (
+/obj/effect/timed_event/scrapeaway{
+	time = 40
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/outside/lz2_west_cas)
 "jCg" = (
 /obj/effect/spawner/random/attachment,
 /obj/structure/machinery/light{
@@ -28613,6 +28618,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/filtration_cave_cas)
+"nGN" = (
+/obj/effect/timed_event/scrapeaway{
+	time = 40
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves_sw)
 "nHQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -37323,6 +37334,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
+"whG" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave,
+/area/bigredv2/outside/lz2_west_cas)
 "whL" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidwarning/west,
@@ -42128,10 +42143,10 @@ cYJ
 vMj
 vMj
 cYJ
-cYJ
-wog
-wog
-wog
+jBC
+nGN
+nGN
+nGN
 wog
 wog
 wog
@@ -42341,15 +42356,15 @@ cYJ
 cYJ
 ski
 eEy
-ski
-cYJ
-cYJ
+whG
 cYJ
 ovB
+cYJ
+jBC
+nGN
+nGN
 wog
-icQ
-gYt
-gYt
+wog
 wog
 sLy
 gYt
@@ -42561,12 +42576,12 @@ cYJ
 cYJ
 uyk
 cYJ
-cYJ
-cYJ
-wog
+jBC
+jBC
+nGN
 wog
 jAo
-gYt
+wog
 wog
 wog
 wog
@@ -42778,9 +42793,9 @@ cYJ
 cYJ
 uyk
 cYJ
-tDv
-wog
-wog
+jBC
+nGN
+nGN
 wog
 wog
 wog
@@ -42994,11 +43009,11 @@ aao
 aao
 aao
 bQb
-ski
-ski
+jBC
+jBC
+nGN
+nGN
 wog
-gYt
-gYt
 wog
 wog
 wog
@@ -43213,9 +43228,9 @@ aao
 aao
 aao
 aao
-kvp
-gYt
-gYt
+nGN
+wog
+wog
 wog
 sLy
 wog

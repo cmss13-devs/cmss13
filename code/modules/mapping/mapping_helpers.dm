@@ -65,7 +65,7 @@
 		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
 		: "The ground of this world trembles, and new routes are accessible in [announcement_areas]."
 
-	xeno_announcement(xeno_announcement_text, "everything", XENO_GENERAL_ANNOUNCE)
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
 
 	qdel(src)
 
@@ -95,6 +95,6 @@
 		? "The shattered metal of this place has collapsed, and we can create routes through [announcement_areas]." \
 		: "The ground of this world trembles, and new routes may be created through [announcement_areas]."
 
-	xeno_announcement(xeno_announcement_text, "everything", XENO_GENERAL_ANNOUNCE)
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
 
 	qdel(src)

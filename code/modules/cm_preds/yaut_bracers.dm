@@ -482,7 +482,7 @@
 
 	var/attach_to_left = TRUE
 	if(!left_bracer_attachment && !right_bracer_attachment)
-		if(tgui_alert(user, "Do you want to attach [bracer_attachment] to the left or right hand?", "[src]", list("Right", "Left",), 15 SECONDS) == "Right") //its right, left because in-game itll show up as left, right
+		if(tgui_alert(user, "Do you want to attach [bracer_attachment] to the left or right hand?", "[src]", list("Right", "Left"), 15 SECONDS) == "Right") //its right, left because in-game itll show up as left, right
 			attach_to_left = FALSE
 
 	var/bracer_attached = FALSE

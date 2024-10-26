@@ -36,7 +36,7 @@
 
 	sleep(5)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	if(leaders < cryo_squad.roles_cap[JOB_SQUAD_LEADER] && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(leaders < cryo_squad.max_leaders && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/cryo, TRUE, TRUE)

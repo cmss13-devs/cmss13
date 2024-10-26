@@ -3786,8 +3786,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/doctor
-	name = "UPP Doktor"
 /datum/equipment_preset/upp/conscript
 	//meme role
 	name = "UPP Conscript"

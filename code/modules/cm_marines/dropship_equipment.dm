@@ -703,7 +703,7 @@
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/i in 0 to total_seconds)
-			sleep(10)
+			sleep(1 SECONDS)
 			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
 
 	if(ammo_warn_sound)

@@ -917,11 +917,18 @@
 /obj/item/paper/liaison_brief
 	name = "Liaison Colony Briefing"
 	desc = "A brief from the Company about the colony the ship is responding to."
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
+	icon_state = "paper_wy_words"
 
 /obj/item/paper/liaison_brief/Initialize(mapload, ...)
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
-		info = "[SSmapping.configs[GROUND_MAP].liaison_briefing]"
+		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+
+		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])
 	else
-		info = "<center><img src = wylogo.png><small><br><b>Weyland-Yutani Corporation</b><br>\"Building Better Worlds\"</center></small><br><u>Special Services Division</u><br>Liaison Colony Briefing<br><hr><br>The ship AI aboard your stationed ship has informed us that a distress signal has been picked up from a nearby colony, however at this time the records for the facility there are classified or unavailable. We apologize for the inconvenience."
-	update_icon()
+		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+
+		info = file2text(placeholder)
+		info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

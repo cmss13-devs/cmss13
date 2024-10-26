@@ -126,6 +126,11 @@
 /area/space)
 "aeC" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
@@ -3072,6 +3077,17 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"cjJ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "cjO" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(231, 240);
@@ -3475,6 +3491,11 @@
 "cED" = (
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
@@ -6014,7 +6035,14 @@
 	name = "SSV Rostock"
 	})
 "eyN" = (
-/turf/open/space/basic,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/obj/item/trash/crushed_cup{
+	pixel_x = -2;
+	pixel_y = -3;
+	layer = 3.2
+	},
+/turf/open/floor/corsat/spiralplate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -6591,6 +6619,16 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"eTY" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -8828,6 +8866,17 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"gvu" = (
+/obj/structure/platform/strata/metal,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/corsat/plate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "gwl" = (
 /turf/closed/wall/almayer/outer,
 /area/space)
@@ -8841,6 +8890,16 @@
 	tag = "icon-W"
 	},
 /turf/open/floor/almayer/plating/northeast,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"gxu" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -10673,6 +10732,18 @@
 /obj/item/tool/weldingtool,
 /obj/item/tool/wrench,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"hJV" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/strata/red4{
+	dir = 8
+	},
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -17490,7 +17561,8 @@
 "mFe" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "rostock camera";
-	network = list("Rostock")
+	network = list("Rostock");
+	dir = 1
 	},
 /turf/open/floor/strata/red3,
 /area/event/metal/dynamic{
@@ -22191,6 +22263,16 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"pZB" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "pZH" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
@@ -22839,6 +22921,16 @@
 "qAi" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/gun/upp_secondary/highchance,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"qAw" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "rostock camera";
+	network = list("Rostock")
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
@@ -28937,7 +29029,7 @@
 "uRN" = (
 /obj/structure/morgue,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "rostock camera";
 	network = list("Rostock")
 	},
@@ -29914,6 +30006,18 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"vBB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/corsat/squares,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "vBY" = (
 /obj/structure/machinery/iv_drip,
 /obj/item/reagent_container/blood/OMinus,
@@ -30410,6 +30514,16 @@
 	pixel_y = 1
 	},
 /turf/open/floor/strata/floor3,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"vRo" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -31277,6 +31391,17 @@
 	})
 "wsj" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"wtc" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -32981,6 +33106,19 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"xIw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/obj/item/trash/cigbutt{
+	layer = 3.2;
+	pixel_x = 4;
+	pixel_y = 10;
+	randpixel = 0
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "xID" = (
 /obj/structure/closet/emcloset{
 	pixel_x = 8
@@ -33126,6 +33264,17 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"xNA" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
+/turf/open/floor/strata/fake_wood,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "xOh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -33197,6 +33346,16 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"xRy" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock")
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "xRE" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkbrown3,
@@ -33219,6 +33378,11 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type71/ap,
 /obj/item/ammo_box/magazine/type71/ap,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
@@ -56836,7 +57000,7 @@ rio
 mmC
 sYA
 sYA
-sYA
+gxu
 uOd
 aaf
 dMx
@@ -57885,7 +58049,7 @@ biL
 biL
 biL
 vzT
-kXj
+eTY
 uOd
 sYA
 sYA
@@ -57939,7 +58103,7 @@ iVM
 pPQ
 tUN
 uOd
-gII
+vBB
 lmh
 cbM
 cun
@@ -58454,7 +58618,7 @@ oqb
 lND
 vws
 mmf
-bgG
+cjJ
 pPQ
 bNQ
 hzS
@@ -62621,7 +62785,7 @@ dPb
 dPb
 dPb
 dPb
-dPb
+vRo
 vDF
 cgO
 vfM
@@ -63158,7 +63322,7 @@ jJh
 wFu
 sYA
 sYA
-sYA
+qAw
 sYA
 wFu
 jJh
@@ -63171,7 +63335,7 @@ sYA
 wFu
 sYA
 sYA
-sYA
+qAw
 sYA
 sYA
 wFu
@@ -66985,7 +67149,7 @@ pPQ
 dVv
 upZ
 aMh
-upZ
+pZB
 nCp
 psc
 psc
@@ -67155,7 +67319,7 @@ bYr
 sYA
 bjl
 pPQ
-dIC
+xRy
 qhA
 aZF
 rjn
@@ -67717,7 +67881,7 @@ nxG
 lnO
 tBd
 sVy
-tpc
+cjJ
 pPQ
 oNZ
 mLi
@@ -70473,7 +70637,7 @@ qXu
 gBe
 qXu
 qXu
-eJl
+hJV
 dRD
 dRD
 bYr
@@ -70723,7 +70887,7 @@ xEn
 bfG
 bfG
 kXM
-bfG
+xNA
 bfG
 bfG
 bfG
@@ -70893,7 +71057,7 @@ ofW
 wuU
 iFa
 dRD
-tpc
+bgG
 sVy
 bXG
 wlI
@@ -71276,10 +71440,10 @@ xeK
 uOd
 uOd
 sYA
-eyN
-eyN
-eyN
-eyN
+sYA
+sYA
+dRD
+dRD
 ofW
 ofW
 ofW
@@ -71455,7 +71619,7 @@ nxG
 phr
 lrn
 sVy
-tpc
+cjJ
 dRD
 iFa
 jtG
@@ -71543,9 +71707,9 @@ lIw
 uME
 pxQ
 sYA
+sYA
 eyN
-eyN
-eyN
+jkR
 ofW
 ofW
 ofW
@@ -71810,9 +71974,9 @@ mIc
 uME
 uOd
 sYA
-eyN
-eyN
-eyN
+sYA
+cSl
+jkR
 ofW
 ofW
 ofW
@@ -72077,9 +72241,9 @@ fCS
 uOd
 uOd
 sYA
-eyN
-eyN
-eyN
+kyQ
+xIw
+jkR
 ofW
 ofW
 ofW
@@ -72344,9 +72508,9 @@ mIc
 nGd
 uOd
 sYA
-eyN
-eyN
-eyN
+jET
+dRD
+dRD
 ofW
 ofW
 ofW
@@ -72611,8 +72775,8 @@ mIc
 iAq
 uOd
 bYr
-eyN
-eyN
+cqe
+dRD
 ofW
 ofW
 ofW
@@ -72878,8 +73042,8 @@ mIc
 uME
 uOd
 rAu
-eyN
-eyN
+lkx
+dRD
 ofW
 ofW
 ofW
@@ -73145,8 +73309,8 @@ mIc
 uME
 uOd
 oEk
-eyN
-eyN
+dIC
+dRD
 ofW
 ofW
 ofW
@@ -73412,8 +73576,8 @@ mIc
 uME
 uOd
 sYA
-eyN
-eyN
+dRD
+dRD
 ofW
 ofW
 ofW
@@ -73679,7 +73843,7 @@ mIc
 uME
 uOd
 sYA
-eyN
+dRD
 ofW
 ofW
 ofW
@@ -73946,7 +74110,7 @@ mIc
 uME
 uOd
 bYr
-eyN
+dRD
 ofW
 ofW
 ofW
@@ -74213,7 +74377,7 @@ mIc
 dxn
 uOd
 tnF
-eyN
+dRD
 ofW
 ofW
 ofW
@@ -74480,7 +74644,7 @@ axW
 uME
 pxQ
 bYr
-eyN
+dRD
 ofW
 ofW
 ofW
@@ -74747,7 +74911,7 @@ fjR
 xLG
 dRD
 dRD
-eyN
+dRD
 ofW
 ofW
 ofW
@@ -75187,7 +75351,7 @@ fpc
 fpc
 bkr
 twv
-eSt
+wtc
 dRD
 jtG
 ofW
@@ -75979,7 +76143,7 @@ biL
 fRq
 nuo
 ttc
-glA
+gvu
 pPQ
 xnw
 mvr

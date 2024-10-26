@@ -919,7 +919,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	name = "poisonapple"
 	mutants = null
 	products = list(/obj/item/reagent_container/food/snacks/grown/apple/poisoned)
-	chems = list("cyanide" = list(1,5))
+	chems = list("cyanide" = list(1,10))
 
 /datum/seed/apple/gold
 	name = "goldapple"
@@ -1018,7 +1018,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	mutants = list("libertycap")
 	packet_icon = "mycelium-reishi"
 	plant_icon = "reishi"
-	chems = list("mushroom" = list(1,50), "psilocybin" = list(3,5))
+	chems = list("mushroom" = list(1,50), "psilocybin" = list(3,5), "amatoxin" = list(3,10))
 	chems_special = list("zygacine")
 
 	maturation = 10

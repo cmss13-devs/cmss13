@@ -279,7 +279,7 @@
 ///reroll in X minutes if our contract is NOT picked
 #define RESEARCH_CONTRACT_NOT_PICKED 4 MINUTES
 ///reroll in X minutes if our contract IS picked
-#define RESEARCH_CONTRACT_PICKED 10 MINUTES
+#define RESEARCH_CONTRACT_PICKED 7 MINUTES
 /// Scales tech level to max amplification level
 #define TECHTREE_LEVEL_MULTIPLIER 2
 /// how many properties to combine into legendary

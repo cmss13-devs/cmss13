@@ -36,7 +36,7 @@
 	description = "A powerful poison derived from certain species of mushroom."
 	reagent_state = LIQUID
 	color = "#792300" // rgb: 121, 35, 0
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_HYDRO
 
 /datum/reagent/toxin/mutagen
 	name = "Unstable mutagen"
@@ -79,7 +79,7 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_SEDATIVE = 1)
 
 /datum/reagent/toxin/minttoxin

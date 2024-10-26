@@ -738,20 +738,20 @@
 			name = "Transmission Intercepted"
 			txt += "[MAIN_SHIP_NAME] intelligence Relay</H2></center>"
 			txt += "Progress report<BR>\n\n"
-			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[1]], Recent discovery made us believe the one of the missing pieces has [isNeutralProperty(hint[3]) ? "neutral" : "negative"] effects.<BR>\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>, Recent discovery made us believe the one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
 			txt += "This will be the last transmission before the scheduled communications blackout, Testing is successful so far.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("ciph_hint_complete") //todo, rewrite this, same for ^^^
 			icon_state = "paper_wy_words"
-			name = "Research Progress Report"
+			name = "Research Ciphering Breakthrough"
 			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
-			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[2]] [prob(30) ? ("and "+ hint[3]) :""]. Recent discovery made us believe the one of the missing pieces has positive effects, as well as a XX-121 sample.<BR>\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[2]]</b> and <b>[hint[3]]</b>. Recent discovery made us believe the one of the missing pieces has positive effects, as well as a <b>XX-121 Queen sample</b>.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("leg_hint")
 			icon_state = "paper_wy_words"
 			name = "Property Breakthrough"
 			txt += "Weyland-Yutani Pharmaceuticals Division(TM).</H2></center>"
-			txt += "During XRF process on substance <I>[rand(10000,99999)]</I>, the theorized component [picked_property] was found to be made of [hint[1]], and [hint[2]]. Final discovery made us believe the final missing piece was [hint[3]].<BR>\n"
+			txt += "During XRF process on substance <I>[rand(10000,99999)]</I>, the theorized component <b>[picked_property]</b> was found to be made of <b>[hint[1]]</b>, and <b>[hint[2]]</b>. Final discovery made us believe the final missing piece was <b>[hint[3]]</b>.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
 

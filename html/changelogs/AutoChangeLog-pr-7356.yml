@@ -1,0 +1,4 @@
+author: "detectivegoogle"
+delete-after: True
+changes:
+  - rscadd: "the CL now gets a briefing about the lore of the active map, assuming one has been written."

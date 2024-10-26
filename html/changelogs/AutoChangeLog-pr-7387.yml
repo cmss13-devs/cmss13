@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - bugfix: "Dropships notify about hostile xeno flying on them again."

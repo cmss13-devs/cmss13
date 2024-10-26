@@ -24512,7 +24512,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/caves/digsite)

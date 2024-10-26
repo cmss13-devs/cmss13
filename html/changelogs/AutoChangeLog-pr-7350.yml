@@ -1,0 +1,5 @@
+author: "TheManWithNoHands"
+delete-after: True
+changes:
+  - balance: "rebalances hornet shells, increasing the spread cone to 25, inceasing the projectile count to 15, lowers projectile dmg to 8."
+  - balance: "Inceases Star shell fuel time from 30-60 seconds to 4.5- 5.5 minutes. Increases starshell applyd fire stacks from 1 to 2"

@@ -75,11 +75,11 @@
 	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/bracer_attachment))
 		attack_speed = initial(attack_speed) - 2
 
-/obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
+/obj/item/weapon/bracer_attachment/dropped(mob/living/carbon/human/M)
 	. = ..()
 	attack_speed = initial(attack_speed)
 
-/obj/item/weapon/wristblades/afterattack(atom/attacked_target, mob/user, proximity)
+/obj/item/weapon/bracer_attachment/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
 		return FALSE
 

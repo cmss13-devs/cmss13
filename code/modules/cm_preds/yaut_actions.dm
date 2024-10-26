@@ -145,7 +145,7 @@
 	require_bracers = TRUE
 
 /datum/action/predator_action/bracer/wristblade
-	name = "Toggle Bracer Attachment"
+	name = "Use Bracer Attachments"
 	action_icon_state = "wristblade"
 	listen_signal = COMSIG_KB_YAUTJA_BRACER_ATTACHMENT
 

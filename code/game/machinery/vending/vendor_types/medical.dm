@@ -276,8 +276,12 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
+	if(inoperable())
+		return .
 	if(healthscan)
 		. += SPAN_NOTICE("[src] offers assisted medical scans, for ease of use with minimal training. Present the target in front of the scanner to scan.")
+	if(allow_supply_link_restock && get_supply_link())
+		. += SPAN_NOTICE("A supply link is connected.")
 
 /obj/structure/machinery/cm_vending/sorted/medical/ui_data(mob/user)
 	. = ..()
@@ -719,7 +723,7 @@
 	wrenchable = TRUE
 	hackable = TRUE
 	healthscan = FALSE
-	allow_supply_link_restock = FALSE
+	allow_supply_link_restock = TRUE
 	chem_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted

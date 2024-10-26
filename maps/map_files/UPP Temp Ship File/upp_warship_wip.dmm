@@ -10210,13 +10210,6 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
-"hog" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/turf/open/floor/plating,
-/area/event/metal/dynamic{
-	name = "SSV Rostock"
-	})
 "hol" = (
 /obj/structure/platform{
 	dir = 8
@@ -19248,6 +19241,16 @@
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
+"nQl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
 "nQJ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -19974,13 +19977,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
-"otE" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/dropship_equipment/fuel/cooling_system,
-/turf/open/floor/plating,
-/area/event/metal/dynamic{
-	name = "SSV Rostock"
-	})
 "oul" = (
 /obj/structure/bed/chair/comfy/ares,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -22896,6 +22892,16 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/toxin,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"qtx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -31643,6 +31649,14 @@
 	langchat_color = null;
 	name = "oil"
 	},
+/area/event/metal/dynamic{
+	name = "SSV Rostock"
+	})
+"wwx" = (
+/obj/vehicle/powerloader/jd{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock"
 	})
@@ -58489,9 +58503,9 @@ eiG
 eiG
 eiG
 biL
-hog
+tpc
 lXJ
-otE
+tpc
 biL
 tpc
 sVy
@@ -59786,7 +59800,7 @@ biL
 vRb
 cLn
 cLn
-cLn
+wwx
 cLn
 cLn
 kIs
@@ -60002,8 +60016,8 @@ aNj
 rpY
 hcF
 hcF
-hcF
-hcF
+qtx
+nQl
 hcF
 hcF
 hcF
@@ -68209,7 +68223,7 @@ jUv
 dRD
 bNJ
 lic
-bNJ
+cNT
 biL
 fRq
 nuo

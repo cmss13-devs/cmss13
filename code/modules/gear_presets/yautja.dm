@@ -76,12 +76,21 @@
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
+/datum/equipment_preset/yautja/blooded/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
+
+
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
+
+/datum/equipment_preset/yautja/elite/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()

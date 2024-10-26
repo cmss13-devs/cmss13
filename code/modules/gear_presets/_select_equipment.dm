@@ -115,7 +115,7 @@
 		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
 			return PAY_SHORT_ME2
 		else
-			GLOB.data_core.leveled_riflemen_max++
+			GLOB.data_core.leveled_riflemen++
 			return final_paygrade
 	if(!final_paygrade)
 		. = "???"
@@ -282,8 +282,8 @@
 		return
 
 	for(var/trait in real_client.prefs.traits)
-		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(new_human, src)
+		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+		character_trait.apply_trait(new_human, src)
 
 /datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
 	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")

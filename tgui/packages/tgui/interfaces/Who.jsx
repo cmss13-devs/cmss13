@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,20 +13,24 @@ import {
 import { Window } from '../layouts';
 
 export const Who = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
   const {
-    admin,
-    all_clients,
-    total_players = [],
-    additional_info = [],
-    factions = [],
-    xenomorphs = [],
+    base_data,
+    player_additional,
+    player_stealthed_additional,
+    factions_additional,
   } = data;
 
-  const [searchQuery, setSearchQuery] = useLocalState('searchQuery', '');
+  const total_players = mergeArrays(
+    base_data?.total_players,
+    player_additional?.total_players,
+    player_stealthed_additional?.total_players,
+  );
+
+  const [searchQuery, setSearchQuery] = useState('');
 
   const searchPlayers = () =>
-    total_players.filter((player) => isMatch(player, searchQuery));
+    total_players.filter((playerObj) => isMatch(playerObj, searchQuery));
 
   const filteredTotalPlayers = searchPlayers();
 
@@ -42,11 +48,13 @@ export const Who = (props, context) => {
                   <Input
                     autoFocus
                     fluid
-                    onEnter={(e, value) =>
+                    onEnter={(e, value) => {
+                      const clientObj = searchPlayers()?.[0];
+                      if (!clientObj) return;
                       act('get_player_panel', {
-                        ckey: searchPlayers()?.[0].ckey,
-                      })
-                    }
+                        ckey: Object.keys(clientObj)[0],
+                      });
+                    }}
                     onInput={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
                     value={searchQuery}
@@ -56,55 +64,34 @@ export const Who = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item mt={0.2} grow>
-            <Section>
-              <WhoCollapsible title={'Players - ' + all_clients} color="good">
-                {filteredTotalPlayers.length ? (
-                  <Box>
-                    {filteredTotalPlayers.map((x) => (
-                      <GetPlayerInfo key={x.ckey} admin={admin} player={x} />
-                    ))}
-                  </Box>
-                ) : null}
-              </WhoCollapsible>
-            </Section>
-            {admin !== 0 ? (
+            {filteredTotalPlayers && (
               <Section>
-                <WhoCollapsible title="Information" color="olive">
-                  <Box direction="column">
-                    {additional_info.length
-                      ? additional_info.map((x, index) => (
-                          <GetAddInfo
-                            key={index}
-                            content={x.content}
-                            color={x.color}
-                            text={x.text}
-                          />
-                        ))
-                      : null}
-                    {factions.length
-                      ? factions.map((x, index) => (
-                          <GetAddInfo
-                            key={index}
-                            content={x.content}
-                            color={x.color}
-                            text={x.text}
-                          />
-                        ))
-                      : null}
-                    {xenomorphs.length
-                      ? xenomorphs.map((x, index) => (
-                          <GetAddInfo
-                            key={index}
-                            content={x.content}
-                            color={x.color}
-                            text={x.text}
-                          />
-                        ))
-                      : null}
+                <WhoCollapsible
+                  title={'Players - ' + filteredTotalPlayers.length}
+                  color="good"
+                >
+                  <Box>
+                    <FilterPlayers players_to_filter={filteredTotalPlayers} />
                   </Box>
                 </WhoCollapsible>
               </Section>
-            ) : null}
+            )}
+            {factions_additional && (
+              <Section>
+                <WhoCollapsible title="Information" color="olive">
+                  <Box direction="column">
+                    {factions_additional.map((x, index) => (
+                      <GetAddInfo
+                        key={index}
+                        content={x.content}
+                        color={x.color}
+                        text={x.text}
+                      />
+                    ))}
+                  </Box>
+                </WhoCollapsible>
+              </Section>
+            )}
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -122,16 +109,15 @@ const WhoCollapsible = (props, context) => {
 };
 
 const GetAddInfo = (props, context) => {
-  const { act } = useBackend(context);
   const { content, color, text } = props;
 
   return (
     <Button
-      color={'transparent'}
+      color="transparent"
       style={{
-        'border-color': color,
-        'border-style': 'solid',
-        'border-width': '1px',
+        borderColor: color,
+        borderStyle: 'solid',
+        borderWidth: '1px',
         color: color,
       }}
       tooltip={text}
@@ -142,48 +128,84 @@ const GetAddInfo = (props, context) => {
   );
 };
 
+const FilterPlayers = (props, context) => {
+  const { players_to_filter } = props;
+
+  return players_to_filter.map((clientObj) => {
+    const ckey = Object.keys(clientObj)[0];
+    return <GetPlayerInfo key={ckey} ckey={ckey} {...clientObj[ckey][0]} />;
+  });
+};
+
 const GetPlayerInfo = (props, context) => {
-  const { act } = useBackend(context);
-  const {
-    admin,
-    player: { ckey, ckey_color, color, text },
-  } = props;
-  return admin !== 0 ? (
+  const { act } = useBackend();
+  const { ckey, text, color, ckey_color } = props;
+
+  return (
     <Button
-      color={'transparent'}
+      color="transparent"
       style={{
-        'border-color': admin ? color : '#2185d0',
-        'border-style': 'solid',
-        'border-width': '1px',
-        color: admin ? color : ckey_color,
+        borderColor: color || '#2185d0',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        color: color || ckey_color || '#2185d0',
       }}
       onClick={() => act('get_player_panel', { ckey: ckey })}
       tooltip={text}
       tooltipPosition="bottom-start"
     >
-      <div color={ckey_color}>{ckey}</div>
-    </Button>
-  ) : (
-    <Button
-      color={'transparent'}
-      style={{
-        'border-color': '#2185d0',
-        'border-style': 'solid',
-        'border-width': '1px',
-        color: ckey_color,
-      }}
-    >
-      <div color={ckey_color}>{ckey}</div>
+      <div style={{ color: color || ckey_color || '#2185d0' }}>{ckey}</div>
     </Button>
   );
 };
 
-const isMatch = (player, searchQuery) => {
+const isMatch = (playerObj, searchQuery) => {
   if (!searchQuery) {
     return true;
   }
 
-  return (
-    player.ckey.toLowerCase().includes(searchQuery?.toLowerCase()) || false
-  );
+  const key = Object.keys(playerObj)[0];
+  return key.toLowerCase().includes(searchQuery?.toLowerCase()) || false;
+};
+
+// Krill me please
+const mergeArrays = (...arrays) => {
+  const mergedObject = {};
+
+  arrays.forEach((array) => {
+    if (!array) return;
+
+    array.forEach((item) => {
+      if (!item) return;
+
+      const key = Object.keys(item)[0];
+      const value = item[key];
+
+      if (!mergedObject[key]) {
+        mergedObject[key] = [];
+      }
+
+      value.forEach((subItem) => {
+        if (typeof subItem !== 'object' || subItem === null) return;
+
+        const existingItemIndex = mergedObject[key].findIndex(
+          (existingSubItem) =>
+            Object.keys(existingSubItem).some((subKey) =>
+              Object.prototype.hasOwnProperty.call(subItem, subKey),
+            ),
+        );
+
+        if (existingItemIndex !== -1) {
+          mergedObject[key][existingItemIndex] = {
+            ...mergedObject[key][existingItemIndex],
+            ...subItem,
+          };
+        } else {
+          mergedObject[key].push(subItem);
+        }
+      });
+    });
+  });
+
+  return Object.keys(mergedObject).map((key) => ({ [key]: mergedObject[key] }));
 };

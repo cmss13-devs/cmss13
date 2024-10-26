@@ -808,4 +808,23 @@
 /datum/sprite_accessory/hair/bun3
 	name = "Bun"
 	icon_state = "hair_space_buns"
+
+/datum/sprite_accessory/hair/diagonalbangs
+	name = "Diagonal Bangs"
+	icon_state = "hair_diagonal_bangs"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/bobcutovereye
+	name = "Bobcut Overeye"
+	icon_state = "hair_bobcut_overeye"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/shorthime
+	name = "Hime Cut Short"
+	icon_state = "hair_short_hime"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/emofringe
+	name = "Emo Fringe"
+	icon_state = "hair_emo_fringe"
 	gender = FEMALE

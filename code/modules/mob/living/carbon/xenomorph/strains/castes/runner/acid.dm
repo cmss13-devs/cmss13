@@ -120,7 +120,7 @@
 	var/max_burn_damage = acid_amount / caboom_burn_damage_ratio
 	var/burn_range = acid_amount / caboom_burn_range_ratio
 
-	for(var/barricades in view(bound_xeno, acid_range))
+	for(var/barricades in dview(acid_range, bound_xeno))
 		if(istype(barricades, /obj/structure/barricade))
 			new caboom_struct_acid_type(get_turf(barricades), barricades)
 			continue
@@ -129,7 +129,7 @@
 			continue
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y
-	for(var/mob/living/target_living in view(bound_xeno, burn_range))
+	FOR_DVIEW(var/mob/living/target_living, burn_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
 		if (!isxeno_human(target_living) || bound_xeno.can_not_harm(target_living))
 			continue
 		var/dist = 0
@@ -145,8 +145,10 @@
 			damage *= XVX_ACID_DAMAGEMULT
 
 		target_living.apply_damage(damage, BURN)
-	for(var/turf/T in view(bound_xeno, acid_range))
+	FOR_DVIEW_END
+	FOR_DVIEW(var/turf/T, acid_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
 		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
+	FOR_DVIEW_END
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
 		var/datum/hive_status/hive_status = bound_xeno.hive

@@ -26,10 +26,6 @@
 	name = "APC - No FPW"
 	interior_id = "apc_no_fpw"
 
-/datum/map_template/interior/fancy_locker
-	name = "Fancy Locker"
-	interior_id = "fancylocker"
-
 /datum/map_template/interior/tank
 	name = "Tank"
 	interior_id = "tank"

@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "Now ejecting chambered bullet from smartgun drop /datum/ammo/bullet/smartgun type bullet only"

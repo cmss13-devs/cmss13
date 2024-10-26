@@ -1,0 +1,4 @@
+author: "Killfish"
+delete-after: True
+changes:
+  - qol: "Paralyzing Slash now makes you slash regardless of intent for the duration of the buff."

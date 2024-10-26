@@ -10,6 +10,7 @@
 	var/mob/living/carbon/human/owner = null
 	var/vital //Lose a vital limb, die immediately.
 	var/damage = 0 // amount of damage to the organ
+	var/min_little_bruised_damage = 1 //to make sure the stethoscope/penlight will not lie to the player
 	var/min_bruised_damage = 10
 	var/min_broken_damage = 30
 	var/parent_limb = "chest"
@@ -36,14 +37,19 @@
 
 /// Set the correct organ state
 /datum/internal_organ/proc/set_organ_status()
-	if(damage > min_broken_damage || cut_away)
+	if(damage >= min_broken_damage || cut_away)
 		if(organ_status != ORGAN_BROKEN)
 			organ_status = ORGAN_BROKEN
 			return TRUE
 		return FALSE
-	if(damage > min_bruised_damage)
+	if(damage >= min_bruised_damage)
 		if(organ_status != ORGAN_BRUISED)
 			organ_status = ORGAN_BRUISED
+			return TRUE
+		return FALSE
+	if(damage >= min_little_bruised_damage) // Only for the stethoscopes and penlights, smaller damage check for extra precision
+		if(organ_status != ORGAN_LITTLE_BRUISED)
+			organ_status = ORGAN_LITTLE_BRUISED
 			return TRUE
 		return FALSE
 	if(organ_status != ORGAN_HEALTHY)

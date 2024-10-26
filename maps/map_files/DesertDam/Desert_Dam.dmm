@@ -47748,7 +47748,7 @@
 	anchored = 1;
 	icon_state = "pred_mask12_ebony";
 	unacidable = 0;
-	pixel_y = 10
+	pixel_y = 9
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)

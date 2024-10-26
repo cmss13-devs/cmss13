@@ -26002,6 +26002,10 @@
 	pixel_x = -17
 	},
 /obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/item/paper/liaison_brief{
+	pixel_y = 8;
+	pixel_x = -4
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "gQu" = (

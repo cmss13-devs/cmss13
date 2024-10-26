@@ -917,18 +917,16 @@
 /obj/item/paper/liaison_brief
 	name = "Liaison Colony Briefing"
 	desc = "A brief from the Company about the colony the ship is responding to."
-	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
 	icon_state = "paper_wy_words"
+	
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
 
 /obj/item/paper/liaison_brief/Initialize(mapload, ...)
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
-		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-
 		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
-		info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])
 	else
-		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-
 		info = file2text(placeholder)
-		info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])
+		
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

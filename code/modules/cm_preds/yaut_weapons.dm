@@ -68,12 +68,14 @@
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
-	var/has_speed_bonus = TRUE
+	var/speed_bonus_amount = 0
 
 /obj/item/weapon/bracer_attachment/equipped(mob/user, slot)
 	. = ..()
-	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/bracer_attachment))
-		attack_speed = initial(attack_speed) - 2
+	if(!speed_bonus_amount)
+		return
+	if(((slot == WEAR_L_HAND) && istype(user.r_hand, /obj/item/weapon/bracer_attachment)) || ((slot == WEAR_R_HAND) && istype(user.l_hand, /obj/item/weapon/bracer_attachment)))
+		attack_speed = initial(attack_speed) + speed_bonus_amount
 
 /obj/item/weapon/bracer_attachment/dropped(mob/living/carbon/human/M)
 	. = ..()
@@ -129,7 +131,7 @@
 	attack_speed = 6
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_4
-	has_speed_bonus = TRUE
+	speed_bonus_amount = -2
 
 /obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
@@ -140,7 +142,7 @@
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
-	has_speed_bonus = FALSE
+	speed_bonus_amount = 0
 
 /obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
@@ -150,7 +152,7 @@
 	item_state = "scim_alt"
 	attack_speed = 5
 	force = MELEE_FORCE_TIER_5
-	has_speed_bonus = FALSE
+	speed_bonus_amount = 0
 
 /*#########################################
 ########### One Handed Weapons ############

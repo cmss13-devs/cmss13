@@ -5310,8 +5310,8 @@
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aWb" = (
-/obj/structure/foamed_metal,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/sentry_landmark/lz_2/bottom_right,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "aWs" = (
@@ -6568,6 +6568,10 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
+"ceh" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/interior/caves/cp_camp)
 "cex" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -7829,6 +7833,10 @@
 "dQF" = (
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
+"dQH" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/lz1_valley)
 "dQZ" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -9928,6 +9936,10 @@
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
+"gGg" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/floor/shiva/floor3,
+/area/shiva/exterior/lz2_fortress)
 "gGB" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -10170,6 +10182,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/n_admin)
+"gSC" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "gSG" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/objective_landmark/close,
@@ -10882,6 +10898,10 @@
 /obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
+"hIW" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "hJH" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
@@ -13111,6 +13131,10 @@
 "ktd" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/garage)
+"ktn" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/floor/shiva/radiator_tile,
+/area/shiva/exterior/lz2_fortress)
 "kts" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/beakers,
@@ -15209,6 +15233,10 @@
 /obj/structure/dispenser,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
+"mNQ" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/caves/cp_camp)
 "mOu" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/yellow,
@@ -15628,6 +15656,10 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
+"npK" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/interior/caves/cp_camp)
 "npM" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
@@ -15761,6 +15793,10 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
+"nxV" = (
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "nyc" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer3,
@@ -18176,6 +18212,10 @@
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/southwest_valley)
+"quv" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/shiva/floor3,
+/area/shiva/exterior/lz2_fortress)
 "qvr" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -19469,6 +19509,10 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
+"siG" = (
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/lz1_valley)
 "siZ" = (
 /turf/closed/wall/shiva/prefabricated/orange,
 /area/shiva/exterior/cp_s_research)
@@ -20767,6 +20811,10 @@
 	},
 /turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/cp_lz2)
+"tMZ" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "tNm" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/fork,
@@ -23042,6 +23090,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
+"wFU" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/caves/cp_camp)
 "wGD" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/s_admin)
@@ -26429,7 +26481,7 @@ mFm
 mFm
 uRn
 mFm
-mFm
+tMZ
 xYx
 mFm
 nNd
@@ -26501,7 +26553,7 @@ aFO
 aFO
 aFO
 aFO
-aFO
+wFU
 xAS
 oRH
 oRH
@@ -26593,7 +26645,7 @@ mFm
 fOE
 mFm
 mFm
-mFm
+tMZ
 mFm
 xYx
 mFm
@@ -26665,7 +26717,7 @@ elf
 too
 xAS
 oRH
-aFO
+wFU
 aFO
 xAS
 aFO
@@ -26823,7 +26875,7 @@ aFO
 aFO
 xAS
 xAS
-oRH
+npK
 uIO
 oRH
 oRH
@@ -26919,7 +26971,7 @@ mFm
 mFm
 mFm
 xYx
-mFm
+tMZ
 mFm
 caS
 caS
@@ -27830,7 +27882,7 @@ iQq
 kLM
 kLM
 uqb
-kLM
+nxV
 uqb
 puZ
 puZ
@@ -28151,7 +28203,7 @@ cQW
 cQW
 iQq
 iQq
-iQq
+siG
 kLM
 kLM
 ath
@@ -28477,7 +28529,7 @@ kLM
 cQW
 iQq
 kLM
-kLM
+nxV
 wgM
 kLM
 ath
@@ -29020,7 +29072,7 @@ mhP
 mFm
 wMj
 wMj
-iuK
+gGg
 mFm
 kEh
 jMD
@@ -29158,7 +29210,7 @@ mFm
 mFm
 mFm
 mFm
-mFm
+hIW
 mFm
 mFm
 mFm
@@ -29170,7 +29222,7 @@ iuK
 mFm
 mFm
 mFm
-mFm
+gSC
 mFm
 mFm
 mFm
@@ -29256,10 +29308,10 @@ tlB
 tlB
 hBq
 tlB
-tlB
+ceh
 tlB
 xAS
-aFO
+mNQ
 tlB
 xAS
 tlB
@@ -29317,18 +29369,18 @@ caS
 caS
 mFm
 mFm
+hIW
 mFm
 mFm
 mFm
 mFm
 mFm
+hIW
 mFm
 mFm
 mFm
-mFm
-mFm
+quv
 iuK
-iuK
 mFm
 mFm
 mFm
@@ -29336,7 +29388,7 @@ mFm
 mFm
 mFm
 mFm
-mFm
+gSC
 mFm
 mFm
 mFm
@@ -29349,7 +29401,7 @@ ftm
 umj
 hjx
 vOd
-slj
+ktn
 mFm
 hlO
 kAp
@@ -29745,7 +29797,7 @@ aFO
 aFO
 xAS
 tlB
-tlB
+ceh
 tlB
 xAS
 aFO
@@ -30086,11 +30138,11 @@ kLM
 iQq
 iQq
 iQq
+dQH
 iQq
 iQq
 iQq
-iQq
-iQq
+dQH
 kLM
 kLM
 qoU
@@ -30245,7 +30297,7 @@ kLM
 knI
 iQq
 iQq
-iQq
+dQH
 iQq
 iQq
 iQq

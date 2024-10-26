@@ -36148,6 +36148,7 @@
 	icon_state = "E"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/sentry_landmark/lz_2/bottom_right,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "cXD" = (
@@ -44152,6 +44153,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_civilian)
+"dWU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_two)
 "dWV" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -47178,6 +47184,16 @@
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"kcc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "kcH" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz2_containers)
@@ -47964,6 +47980,10 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_two)
+"niQ" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "nji" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/east,
@@ -48498,6 +48518,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"pAn" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "pAE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -49084,6 +49108,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"rSC" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "rTP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -49533,6 +49561,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"trD" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "trP" = (
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/desert/dirt,
@@ -49634,6 +49666,10 @@
 /obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
+"tIJ" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "tKQ" = (
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -49766,6 +49802,10 @@
 "ulg" = (
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/telecomm/lz2_storage)
+"uli" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_two)
 "ulm" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -50280,6 +50320,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
+"wkI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_two)
 "wnE" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/close,
@@ -50751,6 +50798,11 @@
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"xMh" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_two)
 "xMr" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/barricade/wooden{
@@ -56265,9 +56317,9 @@ crx
 dlM
 crx
 crx
-crx
+tIJ
 dFo
-doE
+rSC
 doE
 cDb
 cGS
@@ -57433,11 +57485,11 @@ crx
 crx
 crx
 dlM
-crx
+tIJ
 crx
 crx
 dFo
-doE
+pAn
 doE
 alh
 cMC
@@ -57669,7 +57721,7 @@ cMJ
 cUk
 crx
 crx
-crx
+trD
 dFo
 doE
 doE
@@ -57685,7 +57737,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+niQ
 cDX
 cDX
 cDX
@@ -57928,7 +57980,7 @@ djl
 djl
 djl
 djl
-djl
+xMh
 djl
 djl
 djl
@@ -58385,7 +58437,7 @@ vGu
 dws
 bhp
 mfH
-bhp
+dWU
 bhp
 mfH
 bhp
@@ -58400,7 +58452,7 @@ vGu
 dws
 dws
 vGu
-dws
+uli
 dws
 dws
 tlh
@@ -58605,7 +58657,7 @@ doE
 cAV
 cuJ
 cuJ
-cuJ
+kcc
 cuJ
 cuJ
 cuJ
@@ -58628,7 +58680,7 @@ djk
 djk
 djk
 djk
-djk
+wkI
 djk
 djk
 eCk

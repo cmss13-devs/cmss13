@@ -1412,6 +1412,7 @@
 	icon_state = "cassette_pouch_closed"
 	var/base_icon_state = "cassette_pouch"
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 

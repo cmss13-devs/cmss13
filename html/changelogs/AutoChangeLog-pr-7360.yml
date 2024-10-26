@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "fixes being able to use hotkeys for humans when you're a dead human"

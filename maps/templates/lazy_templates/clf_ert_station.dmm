@@ -369,7 +369,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)

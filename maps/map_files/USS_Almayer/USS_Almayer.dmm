@@ -26002,6 +26002,10 @@
 	pixel_x = -17
 	},
 /obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/item/paper/liaison_brief{
+	pixel_y = 8;
+	pixel_x = -4
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "gQu" = (
@@ -29212,6 +29216,7 @@
 /area/almayer/maint/lower/constr)
 "ihw" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
 "ihI" = (
@@ -46722,6 +46727,7 @@
 /area/almayer/shipboard/brig/cells)
 "pnC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
 "pnL" = (
@@ -57255,6 +57261,7 @@
 	unslashable = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lockerroom)
 "tzF" = (
@@ -59999,6 +60006,7 @@
 /area/almayer/shipboard/starboard_point_defense)
 "uLE" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/shipboard/brig/medical)
 "uLG" = (
@@ -66540,6 +66548,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lockerroom)
 "xgN" = (

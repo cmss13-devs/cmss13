@@ -228,7 +228,6 @@
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/threedglasses
 	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."

@@ -442,9 +442,7 @@
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
-	if(is_dead())
-		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-		return
+
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.hivenumber == hivenumber)
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
@@ -819,6 +817,8 @@
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(src == hive?.living_xeno_queen)
+
+		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 
 		// Reset the banished ckey list

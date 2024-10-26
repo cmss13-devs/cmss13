@@ -86,23 +86,15 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 	show_points = FALSE
 
 /obj/structure/machinery/cm_vending/clothing/yautja/left_centre
-	name = "\improper Yautja Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_lcenter"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/centre
-	name = "\improper Yautja Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_centre"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/right_centre
-	name = "\improper Yautja Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_rcentre"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/right
-	name = "\improper Yautja Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/get_listed_products(mob/user)
@@ -110,13 +102,10 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder
 	name = "\improper Yautja Elder Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_elder_left"
 	req_access = list(ACCESS_YAUTJA_ELDER)
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/right
-	name = "\improper Yautja Elder Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
 	icon_state = "pred_vendor_elder_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/get_listed_products(mob/user)

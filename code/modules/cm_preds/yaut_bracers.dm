@@ -461,8 +461,8 @@
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
-	deployment_sound = 'sound/weapons/Scims_alt_on.ogg'
-	retract_sound = 'sound/weapons/Scims_alt_off.ogg'
+	deployment_sound = 'sound/weapons/scims_alt_on.ogg'
+	retract_sound = 'sound/weapons/scims_alt_off.ogg'
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
@@ -580,6 +580,8 @@
 			if(caller.put_in_l_hand(left_bracer_attachment.attached_weapon))
 				to_chat(caller, SPAN_NOTICE("You extend [left_bracer_attachment.attached_weapon]."))
 				bracer_attachment_deployed = TRUE
+				playsound(loc,left_bracer_attachment.deployment_sound, 30, TRUE)
+
 
 	if(right_bracer_attachment)
 		var/obj/limb/right_hand = caller.get_limb("r_hand")
@@ -587,28 +589,21 @@
 			if(caller.put_in_r_hand(right_bracer_attachment.attached_weapon))
 				to_chat(caller, SPAN_NOTICE("You extend [right_bracer_attachment.attached_weapon]."))
 				bracer_attachment_deployed = TRUE
+				playsound(loc,right_bracer_attachment.deployment_sound, 30, TRUE)
 
-	if(bracer_attachment_deployed)
-		if(!right_bracer_attachment)
-			playsound(loc,left_bracer_attachment.deployment_sound, 30, TRUE)
-		else
-			playsound(loc,right_bracer_attachment.deployment_sound, 30, TRUE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/caller) //if the attachments weapon is in the callers hands, retract them back into the attachments
 	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == caller)
 		caller.drop_inv_item_to_loc(left_bracer_attachment.attached_weapon, left_bracer_attachment, FALSE, TRUE)
 		to_chat(caller, SPAN_NOTICE("You retract [left_bracer_attachment.attached_weapon]."))
+		playsound(loc, left_bracer_attachment.retract_sound, 30, TRUE)
 
 	if(right_bracer_attachment && right_bracer_attachment.attached_weapon.loc == caller)
 		caller.drop_inv_item_to_loc(right_bracer_attachment.attached_weapon, right_bracer_attachment, FALSE, TRUE)
 		to_chat(caller, SPAN_NOTICE("You retract [right_bracer_attachment.attached_weapon]."))
+		playsound(loc, right_bracer_attachment.retract_sound, 30, TRUE)
 
 	bracer_attachment_deployed = FALSE
-	if(!right_bracer_attachment)
-		playsound(loc, left_bracer_attachment.retract_sound, 30, TRUE)
-	else
-		playsound(loc, right_bracer_attachment.retract_sound, 30, TRUE)
-	return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"

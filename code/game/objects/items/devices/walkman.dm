@@ -7,7 +7,6 @@
 	icon_state = "walkman"
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
-	flags_obj = OBJ_IS_HELMET_GARB
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
 	var/obj/item/device/cassette_tape/tape
 	var/paused = TRUE
@@ -312,7 +311,6 @@
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	w_class = SIZE_SMALL
-	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side

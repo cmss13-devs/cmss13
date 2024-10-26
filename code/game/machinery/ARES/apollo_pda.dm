@@ -14,7 +14,6 @@
 
 	var/current_menu = "login"
 	var/last_menu = "off"
-	var/base_icon_state = "karnak"
 
 	var/authentication = APOLLO_ACCESS_LOGOUT
 	/// The last person to login.
@@ -63,11 +62,11 @@
 /obj/item/device/working_joe_pda/update_icon()
 	. = ..()
 	if(last_menu == "off")
-		icon_state = "[base_icon_state]_off"
+		icon_state = "karnak_off"
 	else if(current_menu == "login")
-		icon_state = "[base_icon_state]_login_anim"
+		icon_state = "karnak_login_anim"
 	else
-		icon_state = "[base_icon_state]_on_anim"
+		icon_state = "karnak_on_anim"
 
 // ------ Maintenance Controller UI ------ //
 /obj/item/device/working_joe_pda/attack_self(mob/user)
@@ -474,9 +473,3 @@
 	if(playsound)
 		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
 		playsound(src, sound, 15, TRUE)
-
-/obj/item/device/working_joe_pda/uscm
-	name = "KN5500/2 PDA"
-	desc = "A portable interface used by AI technicians, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
-	icon_state = "karnak_uscm_off"
-	base_icon_state = "karnak_uscm"

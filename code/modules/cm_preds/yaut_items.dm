@@ -61,7 +61,7 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
@@ -87,7 +87,7 @@
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 				return
 
-	if(armor_number > 8)
+	if(armor_number > 7)
 		armor_number = 1
 	if(armor_number) //Don't change full armor number
 		icon_state = "halfarmor[armor_number]_[armor_material]"

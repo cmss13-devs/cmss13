@@ -760,23 +760,3 @@
 	name = "Gentle Braid"
 	icon_state = "hair_braid3"
 	gender = FEMALE
-
-/datum/sprite_accessory/hair/diagonalbangs
-	name = "Diagonal Bangs"
-	icon_state = "hair_diagonal_bangs"
-	gender = FEMALE
-
-/datum/sprite_accessory/hair/bobcutovereye
-	name = "Bobcut Overeye"
-	icon_state = "hair_bobcut_overeye"
-	gender = FEMALE
-
-/datum/sprite_accessory/hair/shorthime
-	name = "Hime Cut Short"
-	icon_state = "hair_short_hime"
-	gender = FEMALE
-
-/datum/sprite_accessory/hair/emofringe
-	name = "Emo Fringe"
-	icon_state = "hair_emo_fringe"
-	gender = FEMALE

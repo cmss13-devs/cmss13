@@ -21,7 +21,6 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
 	w_class = SIZE_TINY
-	flags_obj = OBJ_IS_HELMET_GARB
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -51,7 +50,6 @@
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
 	max_cards = 108
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/toy/deck/uno/populate_deck()
 	var/card_id = 1

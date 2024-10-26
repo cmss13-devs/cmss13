@@ -73,7 +73,6 @@
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
-	flags_area = AREA_NOTUNNEL
 
 /area/shuttle/escape_pod/afterShuttleMove(new_parallax_dir)
 	. = ..()

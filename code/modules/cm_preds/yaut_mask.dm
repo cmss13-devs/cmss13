@@ -46,7 +46,7 @@
 	///A list of all intrinsic mask actions
 	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy = "None")
 	..()
 	forceMove(location)
 	if(thrall)
@@ -71,7 +71,7 @@
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 				return
 
-	if(mask_number > 17)
+	if(mask_number > 12)
 		mask_number = 1
 	icon_state = "pred_mask[mask_number]_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")

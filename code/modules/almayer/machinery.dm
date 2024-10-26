@@ -187,6 +187,47 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/prop/almayer/ship_memorial
+	name = "slab of victory"
+	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon_state = "ship_memorial"
+	bound_width = 64
+	bound_height = 32
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/almayer/ship_memorial/centcomm
+	name = "slab of remembrance"
+	desc = "A memorial to all Maintainer Team members that have retired from working on CM. No mentor names are present."
+
+
+/obj/structure/prop/almayer/ship_memorial/centcomm/admin
+	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
+
+
+/obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/dogtag))
+		var/obj/item/dogtag/D = I
+		if(D.fallen_names)
+			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
+			GLOB.fallen_list += D.fallen_names
+			qdel(D)
+		return TRUE
+	else
+		. = ..()
+
+/obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
+	. = ..()
+	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
+		var/faltext = ""
+		for(var/i = 1 to length(GLOB.fallen_list))
+			if(i != length(GLOB.fallen_list))
+				faltext += "[GLOB.fallen_list[i]], "
+			else
+				faltext += GLOB.fallen_list[i]
+		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
+
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
 	desc = "The Mark 74 Railgun is top of the line for space-based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at any time with its newly designed feed system."

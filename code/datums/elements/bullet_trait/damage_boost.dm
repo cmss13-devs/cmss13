@@ -55,7 +55,6 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 
 /datum/element/bullet_trait_damage_boost/proc/check_type(atom/A)
 	if(istype(A, /obj/structure/machinery/door)) return "door"
-	else if(istype(A, /turf/closed/wall)) return "wall"
 	//add more cases for other interactions (switch doesn't seem to work with istype)
 	else return 0
 
@@ -72,12 +71,6 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 					active_damage_mult = damage_mult * hit_door.masterkey_mod
 				else
 					active_damage_mult = 1 //no bonus damage
-			else
-				active_damage_mult = damage_mult
-		if("wall")
-			var/turf/closed/wall/hit_wall = hit_atom
-			if(locate(/mob/living) in hit_wall)
-				active_damage_mult = 1 //block bonus damage reflected on mobs from wall turfs
 			else
 				active_damage_mult = damage_mult
 		//add more cases for other interactions

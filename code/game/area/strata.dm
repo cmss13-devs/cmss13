@@ -21,14 +21,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "shuttle"
 	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 
 //Begin actual area definitions. There's probably a better way to do this.
@@ -90,25 +90,25 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "landingzone_2"
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landing_zones/lz2
 	name = "Landing Zone 2 Pad - Ice Fields"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	weather_enabled = FALSE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/landing_zones/near_lz2
 	name = "Landing Zone 2 - Ice Fields"
 	icon_state = "nearlz2"
 	weather_enabled = TRUE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/interior/landing_zones
 	name = "Do not use."
 	icon_state = "landingzone_1"
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 	weather_enabled = FALSE
 	ceiling = CEILING_NONE
 
@@ -116,11 +116,13 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/landing_zones/near_lz1
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 
 //-Caves

@@ -332,7 +332,6 @@
 /area/bigredv2/outside/nw
 	name = "\improper Northwest Colony Grounds"
 	icon_state = "northwest"
-	is_resin_allowed = FALSE
 	linked_lz = DROPSHIP_LZ1
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
@@ -352,7 +351,7 @@
 /area/bigredv2/outside/w
 	name = "\improper Western Colony Grounds"
 	icon_state = "west"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/e
 	name = "\improper Eastern Colony Grounds"
@@ -372,7 +371,7 @@
 /area/bigredv2/outside/sw
 	name = "\improper Southwest Colony Grounds"
 	icon_state = "southwest"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/caves
@@ -427,7 +426,7 @@
 	name = "\improper Cargo"
 	icon_state = "storage"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/general_store
 	name = "\improper General Store"
@@ -504,14 +503,14 @@
 	name = "\improper Space Port"
 	icon_state = "green"
 	ceiling = CEILING_GLASS
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 
 /area/bigredv2/outside/space_port_lz2
 	name = "\improper Cargo Landing Pad"
 	icon_state = "green"
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -520,7 +519,7 @@
 	name = "\improper LZ1 Communications Relay"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 	is_landing_zone = TRUE

@@ -14,14 +14,14 @@
 	name = "Shiva's Snowball - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/shuttle/drop2/shiva
 	name = "Shiva's Snowball - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/lz1_console
@@ -60,11 +60,11 @@
 /area/shiva/exterior/telecomm
 	name = "Shiva's Snowball - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 
 /area/shiva/exterior/telecomm/lz1_north
 	name = "Shiva's Snowball - North LZ1 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/exterior/telecomm/lz2_southeast
 	name = "Shiva's Snowball - South-East LZ2 Communications Relay"
@@ -80,44 +80,46 @@
 /area/shiva/interior/telecomm
 	name = "Shiva's Snowball - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 
 /area/shiva/interior/telecomm/lz1_biceps
 	name = "Shiva's Snowball - Fort Biceps Communications Relay"
 	icon_state = "hangars0"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/interior/telecomm/lz1_flight
 	name = "Shiva's Snowball - LZ1 Aerodrome Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/interior/telecomm/lz2_research
 	name = "Shiva's Snowball - Argentinian Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ2
 
 //telecomms areas - caves
 /area/shiva/caves/telecomm
 	name = "Shiva's Snowball - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 
 /area/shiva/caves/telecomm/lz2_south
 	name = "Shiva's Snowball - Backup Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ2
 
 //exterior areas
 
 /area/shiva/exterior/lz1_valley
 	name = "Shiva's Snowball - Landing Valley"
 	icon_state = "landing_valley"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/lz2_fortress
 	name = "Shiva's Snowball - Landing Bulwark"
 	icon_state = "lz2_fortress"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -129,7 +131,6 @@
 /area/shiva/exterior/southwest_valley
 	name = "Shiva's Snowball - Southwest Valley"
 	icon_state = "sw"
-	is_resin_allowed = FALSE
 	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/exterior/cp_colony_grounds

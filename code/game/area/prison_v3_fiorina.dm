@@ -77,29 +77,33 @@
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
+	linked_lz = DROPSHIP_LZ1
+	is_resin_allowed = null
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
+	linked_lz = DROPSHIP_LZ2
+	is_resin_allowed = null
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"
 	icon_state = "lz1"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/fiorina/lz/console_II
 	name = "Fiorina - LZ2 Control Console"
 	icon_state = "lz2"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/shuttle/drop1/prison_v3
 	name = "Fiorina - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/prison_v3
 	name = "Fiorina - Normandy Landing Zone"
 	icon_state = "shuttle2"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 //STATION AREAS AAAA
 /area/fiorina/station
@@ -204,7 +208,7 @@
 /area/fiorina/station/telecomm
 	name = "Fiorina - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 

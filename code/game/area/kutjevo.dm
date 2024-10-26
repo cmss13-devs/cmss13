@@ -91,7 +91,7 @@
 /area/kutjevo/exterior/Northwest_Colony
 	name = "Kutjevo - Northwest Colony Grounds"
 	icon_state = "rf_dunes"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/runoff_dunes
 	name = "Kutjevo - Runoff Dunes"
@@ -139,21 +139,24 @@
 /area/kutjevo/exterior/telecomm
 	name = "Kutjevo - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 
 /area/kutjevo/exterior/telecomm/lz1_north
 	name = "Kutjevo - North LZ1 Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/telecomm/lz1_south
 	name = "Kutjevo - South LZ1 Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/telecomm/lz2_north
 	name = "Kutjevo - North LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/telecomm/lz2_south
 	name = "Kutjevo - South LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 //interior areas + caves
 
@@ -213,21 +216,21 @@
 	name = "Kutjevo Complex - Northwest Colony Dorms"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Flight_Control
 	name =  "Kutjevo Complex - Northwest Flight Control Room"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint
 	name = "Kutjevo Complex - Northwest Security Checkpoint"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_SEC
 	is_landing_zone = TRUE
 

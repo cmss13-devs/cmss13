@@ -248,7 +248,7 @@
 /area/desert_dam/building/substation/west
 	name = "Command Substation"
 	icon_state = "western_ss"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 //Administration
 /area/desert_dam/building/administration
@@ -257,37 +257,37 @@
 /area/desert_dam/building/administration/control_room
 	name = "Administration Landing Control Room"
 	icon_state = "yellow"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/lobby
 	name = "Administration Lobby"
 	icon_state = "green"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/hallway
 	name = "Administration Hallway"
 	icon_state = "purple"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/office
 	name = "Administration Office"
 	icon_state = "blue-red"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/overseer_office
 	name = "Administration Overseer's Office"
 	icon_state = "red"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/meetingrooom
 	name = "Administration Meeting Room"
 	icon_state = "yellow"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/administration/archives
 	name = "Administration Archives"
 	icon_state = "green"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 
 //Bar
@@ -429,17 +429,17 @@
 /area/desert_dam/building/warehouse/warehouse
 	name = "Warehouse"
 	icon_state = "yellow"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/desert_dam/building/warehouse/loading
 	name = "Warehouse Loading Room"
 	icon_state = "red"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/desert_dam/building/warehouse/breakroom
 	name = "Warehouse Breakroom"
 	icon_state = "green"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 
 //Hydroponics
@@ -625,7 +625,7 @@
 /area/desert_dam/building/church
 	name = "Church"
 	icon_state = "courtroom"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 //Mining area
 /area/desert_dam/building/mining/workshop
@@ -663,7 +663,7 @@
 /area/desert_dam/exterior/landing_pad_one
 	name = "Airstrip Landing Pad"
 	icon_state = "landing_pad"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -671,7 +671,7 @@
 /area/desert_dam/exterior/landing_pad_two
 	name = "Aerodrome Landing Pad"
 	icon_state = "landing_pad"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -680,20 +680,23 @@
 //TODO: incorporate valleys and substrations for floodlight coverage
 
 /area/desert_dam/exterior/valley
+	name = "Valley"
+	icon_state = "red"
+
 /area/desert_dam/exterior/valley/valley_northwest
 	name = "Northwest Valley"
 	icon_state = "valley_north_west"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/exterior/valley/valley_cargo
 	name = "Shipping Valley"
 	icon_state = "valley_south_west"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/desert_dam/exterior/valley/valley_telecoms
 	name = "Telecomms Valley"
 	icon_state = "valley_west"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 // Generic bridge used in nightmare inserts... Can in fact be different places (sigh)
 /area/desert_dam/exterior/valley/valley_bridge
@@ -704,28 +707,35 @@
 /area/desert_dam/exterior/telecomm
 	name = "\improper Trijent Dam Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 	always_unpowered = 0
 
 /area/desert_dam/exterior/telecomm/lz2_containers
 	name = "\improper Containers Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/desert_dam/exterior/telecomm/lz2_tcomms
 	name = "\improper Telecomms Communications Relay"
+	linked_lz = DROPSHIP_LZ2
+
 
 /area/desert_dam/exterior/telecomm/lz2_storage
 	name = "\improper East LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
+
 
 /area/desert_dam/exterior/telecomm/lz1_south
 	name = "\improper South LZ1 Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/exterior/telecomm/lz1_valley
 	name = "\improper LZ1 Valley Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/exterior/telecomm/lz1_xenoflora
 	name = "\improper Xenoflora Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 //Away from LZ
 

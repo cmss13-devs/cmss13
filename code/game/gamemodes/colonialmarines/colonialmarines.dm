@@ -146,26 +146,38 @@
 	var/z = marine_dropship.z
 
 	// Bottom left
-	options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left])
+		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	else
+		options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Bottom right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_right])
+		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	else
+		options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top left
 	options.Cut()
-	options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/top_left])
+		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	else
+		options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[/obj/effect/sentry_landmark/top_right])
+		options += GLOB.sentry_spawns[/obj/effect/sentry_landmark/bottom_left]
+	else
+		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 ///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types

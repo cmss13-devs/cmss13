@@ -98,3 +98,29 @@
 	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
 
 	qdel(src)
+
+GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
+
+/obj/effect/sentry_landmark
+	icon = 'icons/landmarks.dmi'
+	icon_state = "x3"
+
+	var/abstract_type = /obj/effect/sentry_landmark
+
+
+/obj/effect/sentry_landmark/Initialize(mapload, ...)
+	. = ..()
+
+	if(type == abstract_type)
+		log_mapping("A [type] was created that should not have been! Use a subtype instead.")
+		return INITIALIZE_HINT_QDEL
+
+	LAZYADD(GLOB.sentry_spawns[type], src)
+
+/obj/effect/sentry_landmark/top_left
+
+/obj/effect/sentry_landmark/top_right
+
+/obj/effect/sentry_landmark/bottom_left
+
+/obj/effect/sentry_landmark/bottom_right

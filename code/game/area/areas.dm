@@ -86,6 +86,9 @@
 	/// LZ, all weeds will be destroyed and further weed placement disabled
 	var/linked_lz = FALSE
 
+	/// How long this area should be un-oviable
+	var/unoviable_timer = 25 MINUTES
+
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -108,6 +111,9 @@
 		GLOB.ship_areas += src
 
 	update_base_lighting()
+
+	if(unoviable_timer)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -429,3 +435,7 @@
 	SEND_SIGNAL(src, COMSIG_AREA_RESIN_DISALLOWED)
 
 	is_resin_allowed = FALSE
+
+/// From roundstart, sets a timer to make an area oviable.
+/area/proc/handle_ovi_timer()
+	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)

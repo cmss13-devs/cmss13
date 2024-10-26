@@ -158,4 +158,4 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 	position = SENTRY_BOTTOM_LEFT
 
 /obj/effect/sentry_landmark/lz_2/bottom_right
-	positon = SENTRY_BOTTOM_RIGHT
+	position = SENTRY_BOTTOM_RIGHT

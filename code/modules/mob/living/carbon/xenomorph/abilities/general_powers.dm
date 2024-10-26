@@ -660,6 +660,9 @@
 	if(!spacecheck(X, T, structure_template)) //doublechecking
 		return FALSE
 
+	if(choice == XENO_STRUCTURE_CORE && AR.unoviable_timer)
+		to_chat(X, SPAN_WARNING("This area does not feel right for you to build this in."))
+
 	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("We can't rebuild this structure!"))

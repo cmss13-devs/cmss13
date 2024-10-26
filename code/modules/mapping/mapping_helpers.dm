@@ -117,6 +117,11 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 
 	LAZYADD(GLOB.sentry_spawns[type], src)
 
+/obj/effect/sentry_landmark/Destroy(force)
+	. = ..()
+
+	GLOB.sentry_spawns[type] -= src
+
 /obj/effect/sentry_landmark/top_left
 
 /obj/effect/sentry_landmark/top_right

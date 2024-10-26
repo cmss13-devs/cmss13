@@ -4748,10 +4748,6 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
-"asP" = (
-/obj/structure/flora/grass/desert/lightgrass_6,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "asQ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/emails,
@@ -14363,12 +14359,6 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_central_north)
-"bfQ" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bfR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
@@ -14608,10 +14598,6 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bgR" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bgT" = (
-/obj/structure/platform,
-/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bgU" = (
 /obj/structure/platform,
@@ -14862,12 +14848,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bie" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bif" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -15168,19 +15148,13 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bjs" = (
-/obj/structure/stairs,
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/desert_dam/exterior/valley/north_valley_dam)
-"bjt" = (
-/obj/structure/stairs,
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/desert_dam/exterior/valley/north_valley_dam)
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
 "bju" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -15240,27 +15214,19 @@
 	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
-"bjJ" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
 "bjK" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform_decoration,
+/turf/open/gm/river/desert/shallow,
+/area/desert_dam/exterior/river/riverside_central_north)
 "bjL" = (
-/obj/structure/platform{
-	dir = 1
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
+/area/desert_dam/exterior/river/riverside_central_north)
 "bjM" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -15527,12 +15493,12 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/lobby)
 "blg" = (
+/obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/platform,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/north_valley_dam)
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/desert_dam/exterior/river/riverside_central_north)
 "blh" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
@@ -23961,10 +23927,11 @@
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXj" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
 /obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXk" = (
@@ -24045,20 +24012,20 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
-"bXy" = (
-/obj/structure/platform,
+"bXz" = (
 /obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform{
+	dir = 4
+	},
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river/riverside_central_north)
-"bXz" = (
-/obj/structure/platform,
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/gm/river/desert/shallow_edge/northeast,
-/area/desert_dam/exterior/river/riverside_central_north)
 "bXA" = (
-/obj/structure/platform,
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/west,
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration,
+/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXB" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -47780,7 +47747,8 @@
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
 	icon_state = "pred_mask12_ebony";
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 9
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
@@ -80726,16 +80694,16 @@ dTs
 dTs
 dTs
 dTs
-bcY
-bcY
+and
+ard
 anb
 bcY
 bdK
 bdt
-aKw
-aZe
-aXS
-bXv
+bjK
+blg
+bXz
+bjs
 bYc
 bTi
 bTi
@@ -80961,16 +80929,16 @@ dTs
 dTs
 dTs
 dTs
-and
-and
+bjL
+bXA
 and
 and
 bek
 bXj
-bdt
-aZe
-bXy
-bYc
+bhk
+bhk
+bhk
+blM
 bTi
 bTi
 bTi
@@ -81200,11 +81168,11 @@ bif
 biS
 bhk
 bhk
-bfQ
-bdK
-bdt
-bXz
-bYc
+bhk
+bhk
+bhk
+bhk
+blM
 bYF
 bYF
 bYF
@@ -81431,13 +81399,13 @@ dTs
 dTs
 bgP
 biw
-biT
-bit
-bjs
-bjJ
-bgj
-bdK
-bXA
+bmv
+bhk
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 biP
@@ -81665,13 +81633,13 @@ dTs
 dTs
 bgQ
 bhi
-bhD
-bia
-bjt
-bjK
-bgj
-asP
-bgT
+bmv
+bhk
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 bki
@@ -81899,13 +81867,13 @@ dTs
 bhH
 bhj
 bhi
-bhD
-bhZ
+bmv
 bhk
-bjL
-bie
-bie
-blg
+bhk
+bhk
+bhk
+bhk
+bhk
 blM
 bir
 biP
@@ -82133,8 +82101,8 @@ dTs
 bgA
 bgP
 bix
-bhD
-bia
+biT
+bit
 bit
 bjM
 bjM

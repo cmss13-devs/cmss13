@@ -1,6 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - rscadd: "Added toggle fullscreen hotkey, default F11"
-  - qol: "fullscreening hides the menu bar"
-  - bugfix: "toggling fullscreen preserves your non-fullscreened window options"

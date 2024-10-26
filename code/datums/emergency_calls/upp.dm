@@ -2,7 +2,7 @@
 
 //UPP Strike Team
 /datum/emergency_call/upp
-	name = "UPP Naval Infantry (Squad)"
+	name = "UPP Naval Infantry (Squad) (RANDOM)"
 	mob_max = 9
 	probability = 20
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT3
@@ -49,6 +49,7 @@
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
 
 ///////////////////UPP///////////////////////////
 

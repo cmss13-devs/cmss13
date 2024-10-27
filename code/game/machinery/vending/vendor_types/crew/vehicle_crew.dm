@@ -353,6 +353,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
+	desc = "A giant canon firing explosive 86mm shells. You be lucky if this even leaves dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -363,6 +364,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/gatling
+	desc = "A primary LTAA Minigun utelizing AP ammo for tanks. The barrel spins up as it is fired, improving its fire rate and accuracy dramaticly. Capable of shreeding apart even the thickest walls in seconds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
@@ -370,6 +372,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/dragonflamer
+	desc = "A heavy flamer that spews out high-combustion napalm in a wide radius. The fuel burns intensely and quickly, which allows for it to be used offensively by armoured vehicles."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
@@ -377,6 +380,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/autocannon
+	desc = "An Automatic Canon for tanks. Capable of firing precise even at long ranges. Loads 20mm explosive shells."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -386,12 +390,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
+	desc = "A small LZR-N Flamer Unit. Essentially a modified version of your bog standart flamer."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 	)
 
 /obj/effect/essentials_set/tank/tow
+	desc = "A quad rocket launcher capable of firing four rockets in quick succession."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
@@ -399,12 +405,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/m56cupola
+	desc = "A permantly fixed M56D, firing standart issue 10x28mm rounds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 	)
 
 /obj/effect/essentials_set/tank/tankgl
+	desc = "A magazin feed grenade launcher capable of holding 10 grenades. This model loads M40 grenades."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,

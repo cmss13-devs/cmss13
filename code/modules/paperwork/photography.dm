@@ -354,7 +354,7 @@
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	pictures_left = 20
 	pictures_max = 20
 	w_class = SIZE_HUGE

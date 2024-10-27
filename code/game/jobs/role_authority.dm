@@ -209,7 +209,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
+	var/chance = trim(file2text("data/predchance.txt"))
+	if(chance)
+		chance = text2num(chance)
+	else
+		chance = 20
+
+	if(prob(chance) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -221,6 +227,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		//RUCM START
 		REDIS_PUBLISH("byond.round", "type" = "predator", "state" = "predator")
 		//RUCM END
+		chance = 0
+
+	chance += 20
+	fdel("data/predchance.txt")
+	WRITE_FILE(file("data/predchance.txt"), chance)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)

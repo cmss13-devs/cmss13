@@ -9,7 +9,7 @@
 	density = TRUE
 	unacidable = TRUE
 	anchored = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	var/generate_time = 2 MINUTES // time for the machine to generate the disc
 	var/segment_time = 10 SECONDS // time to start the hack

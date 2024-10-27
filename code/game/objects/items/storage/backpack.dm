@@ -453,6 +453,26 @@
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/k9_synth/
+	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
+	uniform_restricted = list(/obj/item/clothing/under/rank/synthetic/synth_k9) //K9 Synth only
+	force_overlays_on = TRUE
+
+/obj/item/storage/backpack/marine/k9_synth/cargopack
+	name = "\improper M209 portable K9 backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. Designed to lug gear into the battlefield."
+	icon_state = "marinepack_k9"
+
+/obj/item/storage/backpack/marine/k9_synth/medicalpack
+	name = "\improper M210 portable K9 medical backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. For carrying medical supplies."
+	icon_state = "marinepack_medic_k9"
+
+/obj/item/storage/backpack/marine/k9_synth/mppack
+	name = "\improper M553 portable K9 police backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. For carrying MP Equipment."
+	icon_state = "mppack_k9"
+
 /obj/item/storage/backpack/marine/medic/upp
 	name = "\improper UPP corpsman backpack"
 	desc = "Uncommon issue backpack worn by UPP medics from isolated sectors. You can swear you can see a faded USCM symbol."
@@ -732,7 +752,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE

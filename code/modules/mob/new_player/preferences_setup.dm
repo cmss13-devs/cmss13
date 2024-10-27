@@ -205,7 +205,8 @@
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
-
+	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
+		character_trait.unapply_trait(preview_dummy)
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.

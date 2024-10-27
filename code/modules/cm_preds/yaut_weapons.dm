@@ -832,7 +832,7 @@
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
-	name = "cleaving glaive "
+	name = "cleaving glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
 	icon_state = "glaive"
 	item_state = "glaive"

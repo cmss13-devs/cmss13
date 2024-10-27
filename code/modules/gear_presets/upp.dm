@@ -1279,6 +1279,7 @@
 	assignment = JOB_UPP_SUPPLY
 	rank = JOB_UPP_SUPPLY
 	role_comm_title = "Log."
+	minimap_icon = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/supply/load_gear(mob/living/carbon/human/new_human)
@@ -3930,6 +3931,7 @@
 	rank = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Commissar"
+	minimap_icon = "upp_plt"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 

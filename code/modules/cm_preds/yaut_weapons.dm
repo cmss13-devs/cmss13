@@ -68,7 +68,7 @@
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
-	var/speed_bonus_amount = 0
+	var/speed_bonus_amount
 
 /obj/item/weapon/bracer_attachment/equipped(mob/user, slot)
 	. = ..()
@@ -76,10 +76,6 @@
 		return
 	if(((slot == WEAR_L_HAND) && istype(user.r_hand, /obj/item/weapon/bracer_attachment)) || ((slot == WEAR_R_HAND) && istype(user.l_hand, /obj/item/weapon/bracer_attachment)))
 		attack_speed = initial(attack_speed) + speed_bonus_amount
-
-/obj/item/weapon/bracer_attachment/dropped(mob/living/carbon/human/M)
-	. = ..()
-	attack_speed = initial(attack_speed)
 
 /obj/item/weapon/bracer_attachment/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
@@ -128,10 +124,10 @@
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "wrist"
 	item_state = "wristblade"
-	attack_speed = 6
+	attack_speed = 0.5 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_4
-	speed_bonus_amount = -2
+	speed_bonus_amount = 0 SECONDS
 
 /obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
@@ -139,10 +135,10 @@
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
-	attack_speed = 5
+	attack_speed = 1 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
-	speed_bonus_amount = 0
+	speed_bonus_amount = -0.4 SECONDS
 
 /obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
@@ -150,9 +146,9 @@
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
-	attack_speed = 5
+	attack_speed = 1 SECONDS
 	force = MELEE_FORCE_TIER_5
-	speed_bonus_amount = 0
+	speed_bonus_amount =  -0.4 SECONDS
 
 /*#########################################
 ########### One Handed Weapons ############

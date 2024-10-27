@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(objectives)
 	var/disks = 30
 	var/experimental_devices = 15
 	var/research_papers = 15
-	var/vial_boxes = 5
+	var/vial_boxes = 15
 	var/research_legendary_hints = 8
 
 	//A stub of tweaking item spawns based on map

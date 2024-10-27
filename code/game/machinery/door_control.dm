@@ -53,13 +53,16 @@
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door_control/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return FALSE
 	..()
 
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
+		return
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
+	if(comp?.dropship_control_lost)
 		return
 	if(is_mainship_level(z)) // on the almayer
 		return

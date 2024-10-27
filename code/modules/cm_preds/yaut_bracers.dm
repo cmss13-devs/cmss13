@@ -32,7 +32,7 @@
 	var/charge = 1500
 	var/charge_max = 1500
 	/// The amount charged per process
-	var/charge_rate = 30
+	var/charge_rate = 60
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
 	var/cloak_timer = 0
@@ -480,7 +480,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/human/M = caller
+	var/mob/living/carbon/human/hunter = caller
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -499,7 +499,8 @@
 			continue
 		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		if(istype(get_area(tracked_item), /area/yautja))
+		var/area/location = get_area(loc)
+		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
 		if(is_reserved_level(loc.z))
 			gear_low_orbit++
@@ -507,47 +508,48 @@
 			gear_on_almayer++
 		else if(is_ground_level(loc.z))
 			gear_on_planet++
-		if(M.z == loc.z)
-			var/dist = get_dist(M,loc)
+		if(hunter.z == loc.z)
+			var/dist = get_dist(hunter, loc)
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = Get_Compass_Dir(M,loc)
+				direction = Get_Compass_Dir(hunter, loc)
 				areaLoc = loc
-	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
-		if(Y.stat != DEAD)
+	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
+		if(dead_yautja.stat != DEAD)
 			continue
-		if(istype(get_area(Y), /area/yautja))
+		var/area/location = get_area(dead_yautja)
+		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
-		if(is_reserved_level(Y.z))
+		if(is_reserved_level(dead_yautja.z))
 			dead_low_orbit++
-		else if(is_mainship_level(Y.z))
+		else if(is_mainship_level(dead_yautja.z))
 			dead_on_almayer++
-		else if(is_ground_level(Y.z))
+		else if(is_ground_level(dead_yautja.z))
 			dead_on_planet++
-		if(M.z == Y.z)
-			var/dist = get_dist(M,Y)
+		if(hunter.z == dead_yautja.z)
+			var/dist = get_dist(hunter, dead_yautja)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(M,Y)
+				direction = Get_Compass_Dir(hunter, dead_yautja)
 				areaLoc = loc
 
 	var/output = FALSE
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
 		output = TRUE
-		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures[dead_on_planet ? ", <b>[dead_on_planet]</b> in the hunting grounds" : ""][dead_on_almayer ? ", <b>[dead_on_almayer]</b> in orbit" : ""][dead_low_orbit ? ", <b>[dead_low_orbit]</b> in low orbit" : ""]."))
+		to_chat(hunter, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures[dead_on_planet ? ", <b>[dead_on_planet]</b> in the hunting grounds" : ""][dead_on_almayer ? ", <b>[dead_on_almayer]</b> in orbit" : ""][dead_low_orbit ? ", <b>[dead_low_orbit]</b> in low orbit" : ""]."))
 	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
 		output = TRUE
-		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
+		to_chat(hunter, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
 	if(closest < 900)
 		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
-			to_chat(M, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
+			to_chat(hunter, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
 		else
-			to_chat(M, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+			to_chat(hunter, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
-		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
+		to_chat(hunter, SPAN_NOTICE("There are no signatures that require your attention."))
 	return TRUE
 
 

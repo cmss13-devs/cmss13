@@ -43,7 +43,6 @@
 		var/obj/item/clothing/under/uniform = new_human.w_uniform
 		if(istype(uniform))
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
-			uniform.sensor_faction = FACTION_TWE
 	return ..()
 
 //*****************************************************************************************************/
@@ -61,7 +60,7 @@
 
 /datum/equipment_preset/twe/royal_marine/standard
 	name = "TWE Royal Marine Commando (Rifleman)"
-	paygrade = PAY_SHORT_RMC1
+	paygrades = list(PAY_SHORT_RMC1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Rifleman"
@@ -115,7 +114,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/spec
-	paygrade = PAY_SHORT_RMC2
+	paygrades = list(PAY_SHORT_RMC2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC SPC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/rmc/specialist
@@ -253,7 +252,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/team_leader
 	name = "TWE Royal Marine Commando (Teamleader)"
-	paygrade = PAY_SHORT_RMC4
+	paygrades = list(PAY_SHORT_RMC4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Team Leader"
@@ -305,7 +304,7 @@
 
 /datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
 	name = "TWE Royal Marine Commando (Officer)"
-	paygrade = PAY_SHORT_RNO1
+	paygrades = list(PAY_SHORT_RNO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC LT"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Team Commander"

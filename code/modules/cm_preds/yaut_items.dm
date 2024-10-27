@@ -61,7 +61,7 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
@@ -87,7 +87,7 @@
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 				return
 
-	if(armor_number > 7)
+	if(armor_number > 8)
 		armor_number = 1
 	if(armor_number) //Don't change full armor number
 		icon_state = "halfarmor[armor_number]_[armor_material]"
@@ -123,7 +123,7 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	slowdown = 1
+	slowdown = 0.75
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
@@ -197,6 +197,11 @@
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
 	clan_rank_required = CLAN_RANK_BLOODED_INT
+
+/obj/item/clothing/yautja_cape/damaged
+	name = PRED_YAUTJA_DAMAGED_CAPE
+	icon_state = "damagedcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -277,12 +282,11 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -295,7 +299,7 @@
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
 	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -693,6 +697,8 @@
 	var/datum/effects/tethering/tether_effect
 	var/tether_range = 5
 	var/mob/trapped_mob
+	var/duration = 30 SECONDS
+	var/disarm_timer
 	layer = LOWER_ITEM_LAYER
 	flags_item = ITEM_PREDATOR
 
@@ -766,6 +772,7 @@
 		xeno.AddComponent(/datum/component/status_effect/interference, 100) // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(xeno, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
+	disarm_timer = addtimer(CALLBACK(src, PROC_REF(disarm)), duration, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
@@ -799,6 +806,8 @@
 
 /obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
+	if(disarm_timer)
+		deltimer(disarm_timer)
 	armed = FALSE
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"
@@ -916,6 +925,7 @@
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."
 	icon_state = "medicomp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
 	w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_DEFAULT

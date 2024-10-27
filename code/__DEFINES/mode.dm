@@ -57,7 +57,7 @@
 #define MODE_BASIC_RT (1<<11)
 #define MODE_RANDOM_HIVE (1<<12)// Makes Join-as-Xeno choose a hive to join as burrowed larva at random rather than at user's input..
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
-#define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses
+#define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
 
 // Gamemode Toggleable Flags
 #define MODE_NO_SNIPER_SENTRY (1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
@@ -73,6 +73,9 @@
 #define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
 #define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
 #define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
+#define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
+#define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
+
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -280,7 +283,8 @@ DEFINE_BITFIELD(whitelist_status, list(
 
 #define FACTION_LIST_MARINE list(FACTION_MARINE)
 #define FACTION_LIST_HUMANOID list(FACTION_MARINE, FACTION_PMC, FACTION_WY, FACTION_WY_DEATHSQUAD, FACTION_CLF, FACTION_CONTRACTOR, FACTION_MARSHAL, FACTION_UPP, FACTION_FREELANCER, FACTION_SURVIVOR, FACTION_NEUTRAL, FACTION_COLONIST, FACTION_MERCENARY, FACTION_DUTCH, FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO, FACTION_YAUTJA, FACTION_ZOMBIE, FACTION_TWE)
-#define FACTION_LIST_ERT list(FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO)
+#define FACTION_LIST_ERT_OTHER list(FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO)
+#define FACTION_LIST_ERT_ALL list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY, FACTION_CLF, FACTION_CONTRACTOR, FACTION_UPP, FACTION_FREELANCER, FACTION_MERCENARY, FACTION_DUTCH, FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO, FACTION_MARSHAL, FACTION_TWE)
 #define FACTION_LIST_WY list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_UPP list(FACTION_UPP)
 #define FACTION_LIST_CLF list(FACTION_CLF)
@@ -294,6 +298,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_LIST_MARINE_WY list(FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_UPP list(FACTION_MARINE, FACTION_UPP)
 #define FACTION_LIST_MARINE_TWE list(FACTION_MARINE, FACTION_TWE)
+#define FACTION_LIST_YAUTJA list(FACTION_YAUTJA)
 
 // Xenomorphs
 #define FACTION_PREDALIEN "Predalien"

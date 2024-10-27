@@ -385,9 +385,11 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/living/mob_behind_table in oview(src, 0))
+	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		FOR_DVIEW_END
 		return FALSE
+	FOR_DVIEW_END
 
 	var/list/directions = list()
 	if(direction)

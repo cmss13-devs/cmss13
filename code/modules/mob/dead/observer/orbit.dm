@@ -71,6 +71,7 @@
 	var/list/npcs = list()
 	var/list/vehicles = list()
 	var/list/escaped = list()
+	var/list/in_thunderdome = list()
 
 	var/is_admin = FALSE
 	if(user && user.client)
@@ -84,32 +85,32 @@
 
 		serialized["ref"] = REF(poi)
 
-		var/mob/M = poi
-		if(!istype(M))
-			if(isVehicleMultitile(M))
+		var/mob/poi_mob = poi
+		if(!istype(poi_mob))
+			if(isVehicleMultitile(poi_mob))
 				vehicles += list(serialized)
 			else
 				misc += list(serialized)
 			continue
 
-		var/number_of_orbiters = length(M.get_all_orbiters())
+		var/number_of_orbiters = length(poi_mob.get_all_orbiters())
 		if(number_of_orbiters)
 			serialized["orbiters"] = number_of_orbiters
 
-		if(isobserver(M))
+		if(isobserver(poi_mob))
 			ghosts += list(serialized)
 			continue
 
-		if(M.stat == DEAD)
+		if(poi_mob.stat == DEAD)
 			dead += list(serialized)
 			continue
 
-		if(M.ckey == null)
+		if(poi_mob.ckey == null)
 			npcs += list(serialized)
 			continue
 
-		if(isliving(M))
-			var/mob/living/player = M
+		if(isliving(poi_mob))
+			var/mob/living/player = poi_mob
 			serialized["health"] = floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))
@@ -120,6 +121,7 @@
 					serialized["icon"] = caste.minimap_icon
 					serialized["background_icon"] = caste.minimap_background
 					serialized["hivenumber"] = xeno.hivenumber
+					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
 				continue
 
@@ -145,7 +147,9 @@
 				else
 					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
 
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
+				if(istype(get_area(human), /area/tdome))
+					in_thunderdome += list(serialized)
+				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
@@ -153,7 +157,7 @@
 					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
-				else if(human.faction in FACTION_LIST_ERT)
+				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
@@ -204,6 +208,7 @@
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles
 	data["escaped"] = escaped
+	data["in_thunderdome"] = in_thunderdome
 	data["icons"] = GLOB.minimap_icons
 
 	return data

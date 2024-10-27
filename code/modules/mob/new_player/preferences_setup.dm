@@ -188,6 +188,10 @@
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
+
+	preview_dummy.blocks_emissive = FALSE
+	preview_dummy.update_emissive_block()
+
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
@@ -196,7 +200,8 @@
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
-
+	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
+		character_trait.unapply_trait(preview_dummy)
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.

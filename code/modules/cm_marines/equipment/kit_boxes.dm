@@ -2,13 +2,14 @@
 //******************************************Spec Kits****************************************************************/
 
 /obj/item/storage/box/spec
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	var/kit_overlay = null
 	w_class = SIZE_HUGE
 	storage_slots = 14
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
+	max_w_class = 0
 	foldable = null
 
 /obj/item/storage/box/spec/update_icon()
@@ -177,7 +178,7 @@
 /obj/item/spec_kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
@@ -248,63 +249,32 @@
 			return TRUE
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes, 10 SECONDS)
+	var/list/available_specialist_kits = list()
+	for(var/path in GLOB.specialist_set_datums)
+		var/datum/specialist_set/specset = GLOB.specialist_set_datums[path]
+		if(specset.get_available_kit_num() >= 1)
+			available_specialist_kits += specset.get_name()
+
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kits, 10 SECONDS)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!GLOB.available_specialist_kit_boxes[selection] || GLOB.available_specialist_kit_boxes[selection] <= 0)
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
+		return FALSE
+	if(!GLOB.specialist_set_name_dict[selection] || (GLOB.specialist_set_name_dict[selection].get_available_kit_num() <= 0))
 		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
 		return FALSE
 	var/obj/item/card/id/card = user.get_idcard()
 	if(!card || card.registered_ref != WEAKREF(user))
 		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
-		return
-	var/turf/T = get_turf(loc)
-	var/obj/item/storage/box/spec/spec_box
-	var/specialist_assignment
-	switch(selection)
-		if("Pyro")
-			spec_box = new /obj/item/storage/box/spec/pyro(T)
-			specialist_assignment = "Pyro"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-		if("Grenadier")
-			spec_box = new /obj/item/storage/box/spec/heavy_grenadier(T)
-			specialist_assignment = "Grenadier"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-		if("Sniper")
-			spec_box = new /obj/item/storage/box/spec/sniper(T)
-			specialist_assignment = "Sniper"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-		if("Anti-materiel Sniper")
-			spec_box = new /obj/item/storage/box/spec/sniper/anti_materiel(T)
-			specialist_assignment = "Heavy Sniper"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-		if("Scout")
-			spec_box = new /obj/item/storage/box/spec/scout(T)
-			specialist_assignment = "Scout"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
-		if("Demo")
-			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
-			specialist_assignment = "Demo"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
-	if(specialist_assignment)
-		user.put_in_hands(spec_box)
-		card.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + card.assignment + " ([specialist_assignment])")
-		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
-		GLOB.available_specialist_kit_boxes[selection]--
-		return TRUE
-	return FALSE
+		return FALSE
+	return GLOB.specialist_set_name_dict[selection].redeem_set(user, TRUE)
 
 
 //******************************************PFC Kits****************************************************************/
 
 /obj/item/storage/box/kit
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pro_case_mini"//to-do redo these sprites, they're out of date by current standards
 	w_class = SIZE_HUGE
 	storage_slots = 12
@@ -318,7 +288,7 @@
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
 	if(pro_case_overlay)
-		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
+		overlays += image('icons/obj/items/storage/kits.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))
@@ -574,6 +544,34 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/k9_handler/mp
+	name = "\improper Police K9 handler Kit"
+	desc = "Contains the equipment needed for a Police K9 Handler to perform their duties."
+	pro_case_overlay = "k9_handler"
+
+/obj/item/storage/box/kit/k9_handler/mp/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/storage/box/evidence(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+
+/obj/item/storage/box/kit/k9_handler/corpsman
+	name = "\improper Medical K9 handler Kit"
+	desc = "Contains the equipment needed for a Medical K9 Handler to perform their duties."
+	pro_case_overlay = "k9_handler"
+
+/obj/item/storage/box/kit/k9_handler/corpsman/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/storage/pouch/autoinjector/full(src)
 
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"

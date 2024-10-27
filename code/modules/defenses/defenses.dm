@@ -185,7 +185,7 @@
 				additional_shock++
 			if(prob(50))
 				var/mob/living/carbon/human/H = user
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 					if(turned_on)
 						additional_shock++
 					H.electrocute_act(40, src, additional_shock)//god damn Hans...
@@ -204,7 +204,7 @@
 			to_chat(user, SPAN_WARNING("You've hacked \the [src], it's now ours!"))
 			return
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 		// if the sentry can have key interacted with
@@ -368,7 +368,7 @@
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
@@ -490,7 +490,7 @@
 		return
 	if(!friendly_faction(usr.faction))
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))
 		return
 

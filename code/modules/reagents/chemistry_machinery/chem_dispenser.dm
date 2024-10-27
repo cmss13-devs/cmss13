@@ -276,7 +276,6 @@
 	name = "pressurized chemical dispenser"
 	desc = "A more basic chemical dispenser, designed for use with pressurized reagent canisters. A Wey-Yu product."
 	icon_state = "mixer0"
-	var/base_state = "mixer"
 	ui_title = "Chem Dispenser 4000"
 	req_skill_level = SKILL_MEDICAL_MEDIC
 	accept_beaker_only = FALSE
@@ -292,6 +291,8 @@
 		"tramadol",
 		"tricordrazine",
 	)
+	
+	var/base_state = "mixer"
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"

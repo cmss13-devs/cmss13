@@ -45,6 +45,7 @@
 	var/omni_squad_vendor = FALSE
 	/// Squad roles max caps per role list
 	var/list/roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 3,
 		JOB_SQUAD_MEDIC = 4,
 		JOB_SQUAD_SMARTGUN = 1,
@@ -189,6 +190,7 @@
 	prepend_squad_name_to_assignment = FALSE
 
 	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 0,
 		JOB_SQUAD_MEDIC = 0,
 		JOB_SQUAD_SMARTGUN = 0,

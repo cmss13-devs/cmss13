@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/gatling
-	desc = "A primary LTAA Minigun utelizing AP ammo for tanks. The barrel spins up as it is fired, improving its fire rate and accuracy dramaticly. Capable of shreeding apart even the thickest walls in seconds."
+	desc = "A primary LTAA Minigun utilizing AP ammo for tanks. The barrel spins up as it is fired, improving its fire rate and accuracy dramatically. Capable of shredding apart even the thickest walls in seconds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,

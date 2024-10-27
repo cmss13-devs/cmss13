@@ -520,11 +520,11 @@
 		if(JOB_UPP_ENGI)
 			assignment = JOB_SQUAD_ENGI
 			num_engineers++
-			C.claimedgear = FALSE
+			id_card.claimedgear = FALSE
 		if(JOB_UPP_MEDIC)
 			assignment = JOB_SQUAD_MEDIC
 			num_medics++
-			C.claimedgear = FALSE
+			id_card.claimedgear = FALSE
 		if(JOB_UPP_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
@@ -613,7 +613,7 @@
 
 //gracefully remove a marine from squad system, alive, dead or otherwise
 /datum/squad/proc/forget_marine_in_squad(mob/living/carbon/human/target_mob)
-	if(M.assigned_squad.squad_leader == target_mob)
+	if(target_mob.assigned_squad.squad_leader == target_mob)
 		if(GET_DEFAULT_ROLE(target_mob.job) != JOB_SQUAD_LEADER || GET_DEFAULT_ROLE(target_mob.job) != JOB_UPP_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()
 		else

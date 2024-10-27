@@ -553,7 +553,7 @@ const ObservableIcon = (props: {
   const { data } = useBackend<OrbitData>();
   const { icons = [] } = data;
   const { icon, background_color, background_icon } = props;
-  if (!icon || !icons[icon]) {
+  if (!icon || !icons[icon] || !background_icon || !icons[background_icon]) {
     return null;
   }
 

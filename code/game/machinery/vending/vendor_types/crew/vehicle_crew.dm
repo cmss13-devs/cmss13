@@ -353,7 +353,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
-	desc = "A giant canon firing explosive 86mm shells. You be lucky if this even leaves dust of whatever you hit with it."
+	desc = "A giant cannon firing explosive 86mm shells. You'd be lucky if this even leaves the dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,

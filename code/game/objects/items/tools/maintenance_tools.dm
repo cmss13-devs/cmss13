@@ -199,9 +199,9 @@
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
-	if (starting_fuel) {
+	if (starting_fuel)
 		reagents.add_reagent("fuel", max_fuel)
-	}
+
 	base_icon_state = initial(icon_state)
 	return
 

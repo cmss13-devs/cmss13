@@ -380,7 +380,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/autocannon
-	desc = "An Automatic Canon for tanks. Capable of firing precise even at long ranges. Loads 20mm explosive shells."
+	desc = "An automatic cannon for tanks, capable of firing precisely even at long ranges. Loads 20mm explosive shells."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,

@@ -29,6 +29,7 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	var/duration = 5
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/bloodsplatter/Initialize(mapload, angle, fx_duration, color_override)
 	. = ..()

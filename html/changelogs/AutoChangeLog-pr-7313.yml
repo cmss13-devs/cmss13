@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - rscadd: "Dual-tube shotguns (like the HG-37) can now rechamber their currently loaded shell with the other tube. This allows you to instantly switch from, e.g. a tube filled with buck to one filled with slugs, and fire the slug immediately just by switching shotgun tubes."

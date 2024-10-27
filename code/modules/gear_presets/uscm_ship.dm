@@ -5,8 +5,6 @@
 	minimum_age = 20
 	languages = list(LANGUAGE_ENGLISH)
 
-	minimap_background_color = FALSE
-
 	utility_under = list(/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap)
 	utility_gloves = list(/obj/item/clothing/gloves/marine)
@@ -53,7 +51,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background_color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background = "background_civillian"
 
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,
@@ -169,8 +167,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	minimap_background_color = MINIMAP_ICON_BACKGROUND_CIVILIAN
-
+	minimap_background = "background_civillian"
 	dress_under = list()
 	dress_over = list()
 	dress_hat = list()
@@ -204,7 +201,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 	minimap_icon = "correspondent"
-	minimap_background_color = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_background = "background_civillian"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -289,7 +286,7 @@
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
-	minimap_icon = "engi"
+	minimap_icon = "mt"
 	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)

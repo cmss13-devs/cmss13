@@ -6,7 +6,6 @@
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_cmb"
-	minimap_background_color = FALSE
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
@@ -428,6 +427,8 @@
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	minimap_icon = "private"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/uscm/cmb/New()
 	. = ..()
@@ -478,6 +479,7 @@
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
+	minimap_icon = "leader"
 
 /datum/equipment_preset/uscm/cmb/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
@@ -519,6 +521,7 @@
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
+	minimap_icon = "tl"
 
 /datum/equipment_preset/uscm/cmb/rto/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
@@ -561,6 +564,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
+	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -619,6 +623,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/cmb/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)

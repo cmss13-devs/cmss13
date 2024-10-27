@@ -7,7 +7,6 @@
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
 	minimap_background = "background_clf"
-	minimap_background_color = FALSE
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()

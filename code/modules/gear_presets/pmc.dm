@@ -8,7 +8,6 @@
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_pmc"
-	minimap_background_color = FALSE
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc
 

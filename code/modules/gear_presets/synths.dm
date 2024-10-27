@@ -5,8 +5,6 @@
 	skills = /datum/skills/synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 
-	minimap_background = "background_synth"
-	minimap_background_color = FALSE
 	minimap_icon = "synth"
 
 /datum/equipment_preset/synth/New()

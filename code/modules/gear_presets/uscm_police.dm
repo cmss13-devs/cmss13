@@ -2,7 +2,6 @@
 	name = "USCM (police roles)"
 	faction = FACTION_MARINE
 	minimap_background = "background_mp"
-	minimap_background_color = FALSE
 	minimum_age = 27
 
 //*****************************************************************************************************/

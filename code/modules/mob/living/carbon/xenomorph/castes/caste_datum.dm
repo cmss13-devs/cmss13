@@ -177,7 +177,6 @@
 
 /datum/caste_datum/proc/get_minimap_icon()
 	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
-	background.color = MINIMAP_ICON_BACKGROUND_XENO
 
 	var/iconstate = minimap_icon ? minimap_icon : "unknown"
 	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)

@@ -108,11 +108,11 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
-	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
-	var/prepend_squad_name_to_assignment = TRUE
+	///Icon for the background of minimap icon
+	var/background_icon = "background"
 
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
-	var/background_icon = "background"
+	var/prepend_squad_name_to_assignment = TRUE
 
 
 
@@ -216,6 +216,7 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+	background_icon = "background_sof"
 
 	active = FALSE
 	roundstart = FALSE
@@ -227,6 +228,7 @@
 	chat_color = "#553EB2"
 	radio_freq = CBRN_FREQ
 	minimap_color = "#3B2A7B"
+	background_icon = "background_cbrn"
 
 	active = FALSE
 	roundstart = FALSE
@@ -238,6 +240,7 @@
 	chat_color = "#32CD32"
 	radio_freq = FORECON_FREQ
 	minimap_color = "#32CD32"
+	background_icon = "background_forecon"
 
 	active = FALSE
 	roundstart = FALSE
@@ -249,6 +252,7 @@
 	chat_color = "#5a2c2c"
 	radio_freq = SOF_FREQ
 	minimap_color = "#5a2c2c"
+	background_icon = "background_civillian"
 
 	active = FALSE
 	roundstart = FALSE
@@ -288,6 +292,7 @@
 	chat_color = "#c47a50"
 	squad_type = "Team"
 	locked = TRUE
+
 //###############################
 /datum/squad/pmc
 	name = "Root"

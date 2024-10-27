@@ -22,7 +22,8 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
-	minimap_icon = "co"
+	minimap_icon = "co_wo"
+	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -101,7 +102,8 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "xo"
+	minimap_icon = "xo_wo"
+	minimap_background = "background_command"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
@@ -145,7 +147,8 @@
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "cmp"
+	minimap_icon = "hgsl"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/new_human)
 
@@ -181,7 +184,8 @@
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "so"
+	minimap_icon = "vhg"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -223,7 +227,8 @@
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
 
-	minimap_icon = "spec"
+	minimap_icon = "hgspec"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -262,7 +267,8 @@
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
 
-	minimap_icon = "mp"
+	minimap_icon = "hg"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/hg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -296,7 +302,8 @@
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
 
-	minimap_icon = "vc"
+	minimap_icon = "wo_mcrew"
+	minimap_background = "background_shipside"
 
 /datum/equipment_preset/wo/mortar_crew/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -332,7 +339,8 @@
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "ro"
+	minimap_icon = "cargo"
+	minimap_background = "background_medical"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -361,6 +369,9 @@
 	role_comm_title = "BCL"
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id
+
+	minimap_icon = "cargo"
+	minimap_background = "background_shipside"
 
 /datum/equipment_preset/wo/cargo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -394,7 +405,8 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "cmo"
+	minimap_icon = "cmo_wo"
+	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -437,7 +449,8 @@
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
-	minimap_icon = "doctor"
+	minimap_icon = "medic"
+	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -477,7 +490,8 @@
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
 
-	minimap_icon = "researcher"
+	minimap_icon = "chemist_wo"
+	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -518,6 +532,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "ce"
+	minimap_background = "background_medical"
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -552,6 +567,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "mt"
+	minimap_background = "background_shipside"
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -584,8 +600,8 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
-	minimap_icon = "surv"
-	minimap_background_color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_icon = "correspondent"
+	minimap_background = "background_civillian"
 
 /datum/equipment_preset/wo/reporter/New()
 	. = ..()
@@ -613,6 +629,7 @@
 /datum/equipment_preset/wo/marine
 	name = "WO Dust Raider" //Stub other Marine equipment stems from
 	flags = EQUIPMENT_PRESET_STUB
+	minimap_background = "background_intel"
 
 //*****************************************************************************************************/
 
@@ -626,6 +643,7 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
+	minimap_icon = "leader"
 
 /datum/equipment_preset/wo/marine/sl/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -661,6 +679,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
+	minimap_icon = "spec"
 
 /datum/equipment_preset/wo/marine/spec/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -696,6 +715,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/wo/marine/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -720,6 +740,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
+	minimap_icon = "engi"
 
 /datum/equipment_preset/wo/marine/engineer/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -754,6 +775,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
+	minimap_icon = "medic"
 
 /datum/equipment_preset/wo/marine/medic/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic

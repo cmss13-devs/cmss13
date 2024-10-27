@@ -42,7 +42,6 @@
 
 	minimap_icon = list("doctor")
 	minimap_background = "background_command"
-	minimap_background_color = FALSE
 
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
 	utility_hat = list()

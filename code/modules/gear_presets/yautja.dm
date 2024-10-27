@@ -8,7 +8,6 @@
 	uses_special_name = TRUE
 	skills = /datum/skills/yautja/warrior
 
-	minimap_background_color = FALSE
 	minimap_icon = "predator"
 
 	var/default_cape_type = "None"

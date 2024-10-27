@@ -4,7 +4,6 @@
 	faction_group = list(FACTION_TWE, FACTION_MARINE)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_twe"
-	minimap_background_color = FALSE
 
 /datum/equipment_preset/twe/royal_marine/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20,))

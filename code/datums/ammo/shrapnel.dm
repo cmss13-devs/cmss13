@@ -79,9 +79,9 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_4
 
-/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(M.slowed < 6)
-		M.adjust_effect(0.8, SLOW)
+/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/mob, obj/projectile/projectile)
+	if(mob.slowed < 6)
+		mob.adjust_effect(0.8, SLOW)
 
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"

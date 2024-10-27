@@ -739,8 +739,8 @@
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = -2
-	duration_per_level = 6
+	intensity_per_level = -3
+	duration_per_level = 8
 
 	intensitymod_per_level = -0.1
 	durationmod_per_level = 0.3
@@ -766,8 +766,8 @@
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = 6
-	duration_per_level = -2
+	intensity_per_level = 8
+	duration_per_level = -3
 
 	intensitymod_per_level = 0.3
 	durationmod_per_level = -0.15
@@ -786,7 +786,7 @@
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
 	value = 1
-	range_per_level = 1
+	range_per_level = 2
 
 	intensitymod_per_level = -0.08
 	radiusmod_per_level = 0.1

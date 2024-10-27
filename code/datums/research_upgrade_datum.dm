@@ -112,10 +112,10 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 3000
+	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	clearance_req = 4
+	clearance_req = 3
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 
 

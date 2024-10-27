@@ -29,9 +29,9 @@
 			hud_icon_state = "xo"
 		if(JOB_UPP_MAY_OFFICER)
 			hud_icon_state = "co"
-		if(JOB_UPP_LTKOL_OFFICER)
-			hud_icon_state = "co"
 		if(JOB_UPP_KOL_OFFICER)
+			hud_icon_state = "co"
+		if(JOB_UPP_BRIG_GENERAL)
 			hud_icon_state = "co"
 		if(JOB_UPP_MAY_GENERAL)
 			hud_icon_state = "co"

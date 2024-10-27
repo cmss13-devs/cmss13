@@ -39,6 +39,7 @@
 	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 	power_machine = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()

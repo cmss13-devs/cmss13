@@ -17,16 +17,12 @@
 	switch(generation_selection)
 		if(SYNTH_GEN_THREE)
 			new_human.set_species(SYNTH_GEN_THREE)
-			skills = /datum/skills/synthetic
 		if(SYNTH_GEN_TWO)
 			new_human.set_species(SYNTH_COLONY_GEN_TWO)
-			skills = /datum/skills/colonial_synthetic
 		if(SYNTH_GEN_ONE)
 			new_human.set_species(SYNTH_COLONY_GEN_ONE)
-			skills = /datum/skills/colonial_synthetic
 		else
 			new_human.set_species(SYNTH_GEN_THREE)
-			skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"
@@ -43,6 +39,22 @@
 
 	new_human.allow_gun_usage = FALSE
 
+/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
+    new_human.allow_gun_usage = FALSE
+
+    if(iscolonysynthetic(new_human) && !isworkingjoe(new_human))
+        new_human.set_skills(/datum/skills/colonial_synthetic)
+        return
+
+    if(!mob_client)
+        new_human.set_skills(/datum/skills/synthetic)
+        return
+
+    switch(mob_client.prefs.synthetic_type)
+        if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
+            new_human.set_skills(/datum/skills/colonial_synthetic)
+        else
+            new_human.set_skills(/datum/skills/synthetic)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm
@@ -141,16 +153,12 @@
 	switch(generation_selection)
 		if(SYNTH_GEN_THREE)
 			new_human.set_species(SYNTH_GEN_THREE)
-			skills = /datum/skills/synthetic
 		if(SYNTH_GEN_TWO)
 			new_human.set_species(SYNTH_COLONY_GEN_TWO)
-			skills = /datum/skills/colonial_synthetic
 		if(SYNTH_GEN_ONE)
 			new_human.set_species(SYNTH_COLONY_GEN_ONE)
-			skills = /datum/skills/colonial_synthetic
 		else
 			new_human.set_species(SYNTH_GEN_THREE)
-			skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()

@@ -151,7 +151,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 
 	list("TREADS", 0, null, null, null),
 	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("Treads", 0, /obj/item/hardpoint/locomotion/treads, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR)))
+	list("Treads", 0, /obj/item/hardpoint/locomotion/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR)))
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
@@ -397,7 +397,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tow
-	desc = "A quad rocket launcher capable of firing four rockets in quick succession."
+	desc = "A quint rocket launcher capable of firing four rockets in quick succession."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,

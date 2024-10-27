@@ -1,5 +1,0 @@
-author: "Katskan"
-delete-after: True
-changes:
-  - rscadd: "Pen light added to synthetic points vendor"
-  - rscdel: "Removed stethoscope from the clothing vendor, left the one in the points vendor"

@@ -92,11 +92,11 @@
 
 /obj/structure/machinery/chem_dispenser/corpsman/update_icon()
 	if(stat & BROKEN)
-		icon_state = (beaker?"mixer1_b":"mixer0_b")
+		icon_state = (beaker ? "mixer1_b" : "mixer0_b")
 	else if(stat & NOPOWER)
-		icon_state = (beaker?"[base_state]1_nopower":"[base_state]0_nopower")
+		icon_state = (beaker ? "[base_state]1_nopower" : "[base_state]0_nopower")
 	else
-		icon_state = (beaker?"[base_state]1":"[base_state]0")
+		icon_state = (beaker ? "[base_state]1" : "[base_state]0")
 
 /obj/structure/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)

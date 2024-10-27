@@ -61,7 +61,7 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
@@ -87,7 +87,7 @@
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 				return
 
-	if(armor_number > 7)
+	if(armor_number > 8)
 		armor_number = 1
 	if(armor_number) //Don't change full armor number
 		icon_state = "halfarmor[armor_number]_[armor_material]"
@@ -197,6 +197,11 @@
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
 	clan_rank_required = CLAN_RANK_BLOODED_INT
+
+/obj/item/clothing/yautja_cape/damaged
+	name = PRED_YAUTJA_DAMAGED_CAPE
+	icon_state = "damagedcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"

@@ -59,7 +59,7 @@
 			if(YAUTJA_GEAR_SCYTHE)
 				spawned_weapon = new /obj/item/weapon/yautja/scythe(wearer.loc)
 			if(YAUTJA_GEAR_STICK)
-				spawned_weapon = new /obj/item/weapon/yautja/combistick(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/chained/combistick(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_MACHETE)
 				spawned_weapon = new /obj/item/weapon/sword/machete(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_RAPIER)

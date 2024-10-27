@@ -41,7 +41,9 @@
 /obj/structure/machinery/door/window/southleft,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -53,7 +55,9 @@
 /obj/structure/machinery/door/window/southleft,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -69,7 +73,9 @@
 /obj/structure/machinery/door/window/southleft,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -81,7 +87,9 @@
 /obj/structure/machinery/door/window/southright,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -93,7 +101,9 @@
 /obj/structure/machinery/door/window/southright,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -109,7 +119,9 @@
 /obj/structure/machinery/door/window/southright,
 /obj/item/clothing/shoes/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
-/obj/item/clothing/mask/gas/yautja/hunter,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 10
+	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -145,7 +157,7 @@
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_n";
-	pixel_y = 29
+	pixel_y = 39
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
@@ -182,7 +194,7 @@
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 30
+	pixel_y = 40
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
@@ -562,7 +574,7 @@
 	},
 /obj/item/clothing/mask/gas/yautja/hunter{
 	anchored = 1;
-	pixel_y = 20
+	pixel_y = 30
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
@@ -2295,15 +2307,11 @@
 	color = "#6b675e";
 	name = "Secure Yautja crate"
 	},
-/obj/item/weapon/yautja/combistick,
-/obj/item/weapon/yautja/combistick{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
 /obj/item/weapon/yautja/chain,
 /obj/item/weapon/yautja/sword,
 /obj/item/weapon/yautja/scythe,
+/obj/item/weapon/yautja/chained/combistick,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Br" = (

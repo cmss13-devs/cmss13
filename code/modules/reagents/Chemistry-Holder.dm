@@ -628,14 +628,14 @@
 		return
 
 	if(my_atom) //It exists outside of null space.
-		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron")
-				shards += floor(R.volume)
-			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
+		for(var/datum/reagent/reagent in reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(reagent.id == "iron")
+				shards += floor(reagent.volume)
+			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-			else if(R.id == "sulphuric acid" && R.volume >= EXPLOSION_ACID_THRESHOLD)
+			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
-			else if(R.id == "neurotoxinplasma" && R.volume >= EXPLOSION_NEURO_THRESHOLD)
+			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/neuro
 
 		// some upper limits

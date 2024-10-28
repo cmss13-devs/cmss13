@@ -43,6 +43,8 @@
 	rank = "Synthetic"
 	role_comm_title = "Syn"
 
+	minimap_icon = "synth"
+
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
@@ -434,6 +436,7 @@
 	name = "Survivor - Synthetic - CMB Synth"
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
+	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -458,6 +461,7 @@
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
+	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
@@ -482,6 +486,7 @@
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
 	role_comm_title = "WY Syn"
+	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
@@ -528,6 +533,7 @@
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Syn"
+	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_R_EAR = /obj/item/tool/pen/clicky,
@@ -573,6 +579,9 @@
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
+
+	minimap_icon = "joe"
+
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 	/// Used to set species when loading race

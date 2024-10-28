@@ -1,4 +1,0 @@
-author: "Tyranicranger4"
-delete-after: True
-changes:
-  - bugfix: "Fixed exiting ventcrawling through a covered pipe segment not triggering a warning notification for nearby mobs"

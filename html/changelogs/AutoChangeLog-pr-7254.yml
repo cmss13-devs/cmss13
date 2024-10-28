@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - balance: "The Lever action rifles R4T and XM88 now begin falloff at 7 tiles instead of 0."

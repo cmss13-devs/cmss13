@@ -28,7 +28,7 @@
 /obj/item/hardpoint/secondary/grenade_launcher/set_bullet_traits()
 	..()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff|PASS_MOB_THRU|PASS_HIGH_OVER)
 	))
 
 /obj/item/hardpoint/secondary/grenade_launcher/try_fire(atom/target, mob/living/user, params)

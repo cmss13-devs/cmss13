@@ -244,7 +244,6 @@
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
 	if (randomize_speed)
 		src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-		src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
 
 	// Safety to avoid loop hazards
 	src.speed = clamp(src.speed, 0.1, 100)

@@ -390,7 +390,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
-	desc = "A small LZR-N Flamer Unit. Essentially a modified version of your bog standart flamer."
+	desc = "A small LZR-N Flamer Unit - a modified version of your bog standard flamer."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,

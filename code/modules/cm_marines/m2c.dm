@@ -644,7 +644,7 @@
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
-	var/obj/item/ammo_magazine/m2c/t37/AM = new /obj/item/ammo_magazine/m2c/t37(src.loc)
+	var/obj/item/ammo_magazine/m2c/t37/AM = new(loc)
 	AM.current_rounds = 0
 	AM.update_icon()
 

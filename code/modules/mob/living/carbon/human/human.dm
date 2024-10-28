@@ -1350,11 +1350,14 @@
 	if(wear_mask && wear_mask.vision_impair)
 		tint_level += wear_mask.vision_impair
 
-	if(tint_level > VISION_IMPAIR_STRONG)
-		tint_level = VISION_IMPAIR_STRONG
+	if(tint_level > VISION_IMPAIR_MAX)
+		tint_level = VISION_IMPAIR_MAX
 
 	if(tint_level)
-		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
+		if(tint_level == VISION_IMPAIR_MAX)
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/blind)
+		else
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)

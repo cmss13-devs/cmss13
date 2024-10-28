@@ -25,7 +25,7 @@
 	mask = null
 
 	var/mob/living/carbon/human/mob = owner
-	if(!isyautja(mob))
+	if(!ishuman(mob))
 		return FALSE
 	if(mob.is_mob_incapacitated())
 		return FALSE

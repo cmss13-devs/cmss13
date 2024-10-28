@@ -25,6 +25,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
+	minimap_background = "background_upp"
 	origin_override = ORIGIN_UPP
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
@@ -95,6 +96,7 @@
 	assignment = JOB_UPP
 	rank = JOB_UPP
 	role_comm_title = "Sol"
+	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
 /datum/job/antag/upp/rifleman
@@ -298,6 +300,7 @@
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	role_comm_title = "Med"
+	minimap_icon = "upp_med"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/medic/dressed
@@ -492,6 +495,7 @@
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
+	minimap_icon = "upp_sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/sapper/dressed
@@ -655,6 +659,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
+	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/specialist/dressed
@@ -804,6 +809,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
+	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/machinegunner/dressed
@@ -948,6 +954,7 @@
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	role_comm_title = "SL"
+	minimap_icon = "upp_sl"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/leader/dressed
@@ -1133,6 +1140,7 @@
 	assignment = JOB_UPP_POLICE
 	rank = JOB_UPP_POLICE
 	role_comm_title = "MP"
+	minimap_icon = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/job/antag/upp/military_police
@@ -1487,6 +1495,7 @@
 	assignment = JOB_UPP_SUPPLY
 	rank = JOB_UPP_SUPPLY
 	role_comm_title = "Log."
+	minimap_icon = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/supply/load_gear(mob/living/carbon/human/new_human)
@@ -1589,6 +1598,7 @@
 	assignment = JOB_UPP_LT_OFFICER
 	rank = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
+	minimap_icon = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 
 
@@ -1778,6 +1788,7 @@
 	assignment = JOB_UPP_SRLT_OFFICER
 	rank = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
+	minimap_icon = "upp_slt"
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/senior/dressed
@@ -1935,6 +1946,7 @@
 	assignment = JOB_UPP_KPT_OFFICER
 	rank = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
+	minimap_icon = "upp_xo"
 	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/kapitan
 
@@ -2108,6 +2120,7 @@
 	assignment = JOB_UPP_MAY_OFFICER
 	rank = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2285,6 +2298,7 @@
 	assignment = JOB_UPP_LTKOL_OFFICER
 	rank = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2465,6 +2479,7 @@
 	assignment = JOB_UPP_BRIG_GENERAL
 	rank = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "Kol."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2638,6 +2653,7 @@
 	assignment = JOB_UPP_MAY_GENERAL
 	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "May. Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2811,6 +2827,7 @@
 	assignment = JOB_UPP_LT_GENERAL
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2983,6 +3000,7 @@
 	assignment = JOB_UPP_GENERAL
 	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -3194,6 +3212,7 @@
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	rank = JOB_UPP_SUPPORT_SYNTH
+	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 
@@ -3490,6 +3509,9 @@
 	role_comm_title = "JKdo"
 	paygrades = list(PAY_SHORT_UC1 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/data
+
+	minimap_icon = "upp_com"
+
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/upp/commando/dressed
@@ -3620,6 +3642,7 @@
 	assignment = JOB_UPP_COMMANDO_MEDIC
 	rank = JOB_UPP_COMMANDO_MEDIC
 	role_comm_title = "2ndKdo"
+	minimap_icon = "upp_commed"
 	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/commando/medic/dressed
@@ -3789,6 +3812,7 @@
 	assignment = JOB_UPP_COMMANDO_LEADER
 	rank = JOB_UPP_COMMANDO_LEADER
 	role_comm_title = "1stKdo"
+	minimap_icon = "upp_comsl"
 	paygrades = list(PAY_SHORT_UC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
 
@@ -4057,6 +4081,9 @@
 	rank = JOB_UPP_CREWMAN
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TANK"
+
+	minimap_icon = "upp_vc"
+
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
@@ -4278,6 +4305,7 @@
 	assignment = JOB_UPP_CONSCRIPT
 	rank = JOB_UPP_CONSCRIPT
 	role_comm_title = "Cons"
+	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/new_human)
@@ -4376,5 +4404,97 @@
 		list("Black Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest, null, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR)
+	)
+
+/datum/equipment_preset/upp/commissar
+	name = "UPP Political Commissar"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_UPP_COMMISSAR
+	rank = JOB_UPP_COMMISSAR
+	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "Commissar"
+	minimap_icon = "upp_plt"
+	minimum_age = 30
+	skills = /datum/skills/upp/commissar
+
+/datum/equipment_preset/upp/commissar/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/revolver(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/gimmick/jason(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
+
+/datum/equipment_preset/upp/commissar/load_status()
+	return
+
+/datum/equipment_preset/upp/commissar/get_antag_clothing_equipment()
+	return list(
+		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+
+		list("HELMET (CHOOSE 1)", 0, null, null, null),
+		list("UL2 Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("UL3 Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("UL8 Ushanka", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+
+		list("POUCHES (CHOOSE 2)", 0, null, null, null),
+		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("MASK (CHOOSE 1)", 0, null, null, null),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+	)
+
+/datum/equipment_preset/upp/commissar/get_antag_gear_equipment()
+	return list(
+		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
+		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
+		list("GENERAL SUPPLIES", 0, null, null, null),
+		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+
+		list("ENGINEERING SUPPLIES", 0, null, null, null),
+		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
+		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
+		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
+
+		list("MEDICAL SUPPLIES", 0, null, null, null),
+		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
+		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
+		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
+
+		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
+		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
+
+		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
+		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
+
+		list("UTILITIES", 0, null, null, null),
+		list("Brown Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest/brown_vest, null, VENDOR_ITEM_RECOMMENDED),
+		list("Black Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest, null, VENDOR_ITEM_RECOMMENDED),
+		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
+		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
+		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 

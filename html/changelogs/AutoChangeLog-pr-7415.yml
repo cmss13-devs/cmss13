@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "fixed a bug with the pixel shift keybindings"

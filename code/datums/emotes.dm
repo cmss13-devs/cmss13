@@ -294,6 +294,9 @@
 		if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
 			return FALSE
 
+		if(istype(user.wear_mask, /obj/item/clothing/mask/facehugger))
+			return FALSE
+
 	if(only_forced_audio && intentional)
 		return FALSE
 	return TRUE

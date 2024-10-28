@@ -13,6 +13,9 @@
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	minimap_icon = "private"
+	minimap_background = "background_pmc"
+
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -50,6 +53,7 @@
 	name = "Survivor - PMC Medic"
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
+	minimap_icon = "pmc_md"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/pmc/medic
 
@@ -71,6 +75,7 @@
 	name = "Survivor - PMC Engineer"
 	assignment = JOB_PMC_ENGINEER
 	rank = JOB_PMC_ENGINEER
+	minimap_icon = "engi"
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/pmc/engineer
 
@@ -88,6 +93,7 @@
 	name = "Survivor - PMC Leader"
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
+	minimap_icon = "pmc_ld"
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/civilian/survivor/pmc/lead
@@ -107,6 +113,8 @@
 /datum/equipment_preset/survivor/corporate/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_background = "background"
+	minimap_icon = "private"
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
@@ -176,6 +184,8 @@
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
+	minimap_background = "background_pmc"
+	minimap_icon = "pmc_syn"
 	role_comm_title = "WY Syn"
 
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)

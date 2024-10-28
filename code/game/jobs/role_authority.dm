@@ -711,6 +711,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 							lowest = S
 						else if(S.num_smartgun < lowest.num_smartgun)
 							lowest = S
+
 		if(!lowest)
 			var/ranpick = rand(1,4)
 			lowest = mixed_squads[ranpick]

@@ -1,0 +1,5 @@
+author: "Ansekishokuu"
+delete-after: True
+changes:
+  - qol: "Squad engineer vendors now have welding visor."
+  - qol: "Organized the corpsman vendor so that the perixadon revival mix is near the tricordrazine revival mix."

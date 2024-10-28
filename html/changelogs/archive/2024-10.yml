@@ -307,3 +307,33 @@
   - rscadd: Fiorina Corporate Liaison
   - rscadd: Kutjevo Corporate Liaison
   - rscadd: WY Headsets to WY roles on Fiorina
+2024-10-28:
+  Blundir:
+  - rscadd: returned bimex description and flash protection, but price of it inscread
+      from 2 to 5 pref points
+  - rscadd: minimap icons for all factions, roles, etc
+  - code_imp: tweaked how icons are assembled, added support for custom icon background
+      on equipment preset
+  - imageadd: added a lot of new minimap icons
+  Killfish:
+  - balance: Added Stim and Medical Chem draining effects to Sentinel's Slowing Spit.
+  LordJike:
+  - rscadd: ASO now starts with a senior command headset (and thus access to the MP
+      radio channel.) and can also get a new one from their locker.
+  Red-byte3D:
+  - code_imp: Sentinel proper vars
+  SpypigDev:
+  - rscadd: Pressurized Chemical Dispenser
+  Tyranicranger4:
+  - balance: The surgical case can now hold Surgical Line, Synthetic-Graft, and Fix-O-Vein
+      (for real this time)
+  Venuska1117:
+  - code_imp: Removed code for some boudlers, removed code makes boulders meltable
+      and destructable by large explosions.
+  cuberound:
+  - bugfix: vehicle light turns back on after the vehicle is fixed
+  deathrobotpunch:
+  - balance: buffed the stun subtype of rubber bullets to have hit accuracy tier 4
+  private-tristan:
+  - balance: The Lever action rifles R4T and XM88 now begin falloff at 7 tiles instead
+      of 0.

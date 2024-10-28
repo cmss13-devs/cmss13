@@ -1,0 +1,7 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "fixed larva bursting on mob image not working"
+  - soundadd: "new hugging sounds to humans"
+  - soundadd: "bursting screams to humans and yautja"
+  - imageadd: "added yautja bursting and afterburst gore icons"

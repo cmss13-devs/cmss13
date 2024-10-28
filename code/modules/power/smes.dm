@@ -39,6 +39,7 @@
 	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 	power_machine = TRUE
+	var/explosion_proof = TRUE
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()
@@ -61,6 +62,12 @@
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
 
 	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/power/smes/ex_act(severity)
+	if(explosion_proof)
+		return
+	else
+		.=..()
 
 /obj/structure/machinery/power/smes/LateInitialize()
 	. = ..()

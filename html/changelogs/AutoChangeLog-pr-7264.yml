@@ -1,0 +1,6 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - bugfix: "Fixes missing paygrades,ranks and comms titles to PMC Survivors and PMC Medic. Fixes certain PMC Survivors having incorrect headsets."
+  - balance: "PMC Synthvivor skillset has been buffed to be consistent with the regular PMC Synth. PMC Synthvivor's loadout has been nerfed. Dutch Lifesaver belt (used by PMCs and DDs) has been buffed with improved splints and kits."
+  - rscadd: "PMC Synthetics were granted a higher budget and they gained a Maintenance Jack in their loadout."

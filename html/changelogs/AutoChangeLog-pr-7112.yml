@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - balance: "shotgun slugs have had their accurate range increased to 8, and their accuracy tripled. any targets shot within 8 tiles will always be hit. incendiary have had a milder accuracy increase."

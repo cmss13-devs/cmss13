@@ -1,0 +1,5 @@
+author: "TheManWithNoHands"
+delete-after: True
+changes:
+  - rscadd: "Added vendor description to: AC3-E autocanon, LTAA-AP Minigun, DRG-N Flamer, LTB canon, LZR-N Flamer, TOW launcher, M56cupola, and M92T Grenade Launcher."
+  - rscadd: "Expanded the description of: LTAA-AP Minigun, TOW launcher, M56cupola, M92T Grenade Launcher and the magazins of the AC3-E autocanon, LTAA-AP Minigun, DRG-N Flamer, LZR-N Flamer, and M92T Grenade Launcher. As well as for the snowplow hardpoint and heavy and ligth treads."

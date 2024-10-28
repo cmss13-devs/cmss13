@@ -1,0 +1,16 @@
+author: "Joe Lampost, Beaglegaming, Sleepynecrons"
+delete-after: True
+changes:
+  - rscadd: "Adds two new vendors for preds"
+  - rscadd: "Re-sprites all but one of the pred weapons"
+  - balance: "Gives thwei brain and eye healing properties."
+  - bugfix: "fixes the on mobs for retro caster"
+  - rscdel: "Removes being able to choose what accessory you spawn with (adds it to the vendor)"
+  - rscdel: "Removes the conscious check for big SD laugh so SDing a dead pred triggers the laugh"
+  - rscdel: "Removes all of the code related to claim gear"
+  - refactor: "refactored wrist blade code (now bracer attachments)"
+  - soundadd: "adds 3 pairs of deployment and retracting sounds for each current bracer attachment"
+  - soundadd: "adds a sound for attaching attachments to the bracer"
+  - maptweak: "Re maps the predator blooded area to be more open"
+  - maptweak: "Removes the lightsabre from the pred ship"
+  - rscadd: "adds two new pred masks"

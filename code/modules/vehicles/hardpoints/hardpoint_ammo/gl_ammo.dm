@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/tank_glauncher
 	name = "M92T Grenade Launcher Magazine"
-	desc = "A magazin loaded with M40 grenades. Used to reaload the Magazin feed M92T Grenade launcher."
+	desc = "A magazine loaded with M40 grenades. Used to reload the magazine fed M92T Grenade launcher."
 	caliber = "grenade"
 	icon_state = "glauncher_2"
 	w_class = SIZE_LARGE

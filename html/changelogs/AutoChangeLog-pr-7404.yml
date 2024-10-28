@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "vehicle light turns back on after the vehicle is fixed"

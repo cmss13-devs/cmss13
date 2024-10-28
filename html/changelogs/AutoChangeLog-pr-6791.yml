@@ -1,6 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "minimap icons for all factions, roles, etc"
-  - code_imp: "tweaked how icons are assembled, added support for custom icon background on equipment preset"
-  - imageadd: "added a lot of new minimap icons"

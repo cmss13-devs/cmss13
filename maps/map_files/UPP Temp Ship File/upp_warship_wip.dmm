@@ -748,10 +748,6 @@
 /obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 /obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 /obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -12695,8 +12691,6 @@
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -21007,6 +21001,10 @@
 	pixel_x = -8;
 	pixel_y = 3
 	},
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#ffcccc"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -24206,8 +24204,8 @@
 	base_lighting_alpha = 0
 	})
 "omj" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Rostock Hanger bay 1 (UPP ONLY)"
+/obj/docking_port/stationary/marine_dropship/upp{
+	name = "Rostock Hanger bay 1"
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
@@ -34613,10 +34611,6 @@
 /obj/item/weapon/gun/shotgun/type23/riot_control,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,

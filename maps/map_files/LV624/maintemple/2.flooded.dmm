@@ -382,7 +382,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -908,7 +909,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -1035,7 +1037,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -1095,7 +1098,8 @@
 	armor_rad = 0;
 	desc = "A beautifully designed stone face mask, both ornate and functional.";
 	name = "stone clan mask";
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /obj/item/clothing/suit/armor/yautja_flavor{
@@ -1216,7 +1220,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -1406,7 +1411,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -1507,7 +1513,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -1741,7 +1748,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)

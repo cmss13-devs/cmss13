@@ -115,7 +115,7 @@
 
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno?.iff_tag.faction_groups))
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
 			var/name = "Unidentified Lifesigns"
 			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."

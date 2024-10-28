@@ -4,6 +4,7 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
+	minimap_background = "background_forecon"
 	rank = JOB_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -110,6 +111,7 @@
 	name = "Survivor - USCM Reconnaissance Marine"
 	assignment = JOB_FORECON_RIFLEMAN
 	skills = /datum/skills/military/survivor/forecon_standard
+	minimap_icon = "private"
 
 /datum/equipment_preset/survivor/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -124,6 +126,7 @@
 	name = "Survivor - USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
 	skills = /datum/skills/military/survivor/forecon_techician
+	minimap_icon = "engi"
 
 /datum/equipment_preset/survivor/forecon/tech/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
@@ -146,6 +149,7 @@
 	name = "Survivor - USCM Reconnaissance Designated Marksman"
 	assignment = JOB_FORECON_MARKSMAN
 	skills = /datum/skills/military/survivor/forecon_marksman
+	minimap_icon = "spec"
 
 /datum/equipment_preset/survivor/forecon/marksman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra_custom(new_human), WEAR_L_HAND)
@@ -162,6 +166,7 @@
 	name = "Survivor - USCM Reconnaissance Smartgunner"
 	assignment = JOB_FORECON_SMARTGUNNER
 	skills = /datum/skills/military/survivor/forecon_smartgunner
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -180,6 +185,7 @@
 	name = "Survivor - USCM Reconnaissance Sniper"
 	assignment = JOB_FORECON_SNIPER
 	skills = /datum/skills/military/survivor/forecon_sniper
+	minimap_icon = "spec"
 
 /datum/equipment_preset/survivor/forecon/sniper/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -215,6 +221,7 @@
 	assignment = JOB_FORECON_SL
 	skills = /datum/skills/military/survivor/forecon_squad_leader
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "leader"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -247,6 +254,8 @@
 	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
+	minimap_icon = "co"
+	minimap_background = "background_command"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

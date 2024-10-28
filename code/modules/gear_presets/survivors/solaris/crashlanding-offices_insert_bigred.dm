@@ -148,6 +148,7 @@
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
 	role_comm_title = "WY Syn"
+	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)

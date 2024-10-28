@@ -24,7 +24,8 @@
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
-	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
+	death_message = "lets out a final bellowing cry, falling motionless and lifeless soon after..."
+	death_sound = "pred_death"
 	darksight = 5
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
 	flags_sight = SEE_MOBS
@@ -32,7 +33,7 @@
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
 
 	heat_level_1 = 500
 	heat_level_2 = 700

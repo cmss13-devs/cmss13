@@ -1229,7 +1229,7 @@
 	force = 0
 	fire_delay = 3
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
+	flags_item = NOBLUDGEON|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 	explo_proof = TRUE
@@ -1353,7 +1353,6 @@
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
-		return
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)

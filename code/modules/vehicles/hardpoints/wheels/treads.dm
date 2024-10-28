@@ -18,7 +18,7 @@
 
 /obj/item/hardpoint/locomotion/treads/robust
 	name = "\improper Reinforced Treads"
-	desc = "These treads are made of soldi steel plates and are more durable. However, the extra weight slows the tank down."
+	desc = "These treads are made of solid steel plates and are more durable. However, the extra weight slows the tank down."
 
 	health = 500
 	acid_resistant = TRUE

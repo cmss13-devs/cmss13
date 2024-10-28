@@ -58,6 +58,9 @@
 	if (istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
 		return
 
+	if (istype(src.wear_mask, /obj/item/clothing/mask/facehugger))
+		return
+
 	//TODO: handle_speech_problems
 	if (src.stuttering)
 		message = stutter(message, stuttering)

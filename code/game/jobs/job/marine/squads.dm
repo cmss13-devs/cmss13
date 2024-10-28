@@ -108,8 +108,12 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Icon for the background of minimap icon
+	var/background_icon = "background"
+
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
+
 
 
 /datum/squad/marine
@@ -126,6 +130,7 @@
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
+	background_icon = "background_alpha"
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -134,6 +139,7 @@
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
+	background_icon = "background_bravo"
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -142,6 +148,7 @@
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
+	background_icon = "background_charlie"
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -150,6 +157,7 @@
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
+	background_icon = "background_delta"
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -159,6 +167,7 @@
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
+	background_icon = "background_echo"
 
 	active = FALSE
 	roundstart = FALSE
@@ -170,6 +179,7 @@
 	chat_color = "#c47a50"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
+	background_icon = "background_foxtrot"
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -184,6 +194,7 @@
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
+	background_icon = "background_intel"
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
@@ -205,6 +216,7 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+	background_icon = "background_sof"
 
 	active = FALSE
 	roundstart = FALSE
@@ -216,6 +228,7 @@
 	chat_color = "#553EB2"
 	radio_freq = CBRN_FREQ
 	minimap_color = "#3B2A7B"
+	background_icon = "background_cbrn"
 
 	active = FALSE
 	roundstart = FALSE
@@ -227,6 +240,7 @@
 	chat_color = "#32CD32"
 	radio_freq = FORECON_FREQ
 	minimap_color = "#32CD32"
+	background_icon = "background_forecon"
 
 	active = FALSE
 	roundstart = FALSE
@@ -238,6 +252,7 @@
 	chat_color = "#5a2c2c"
 	radio_freq = SOF_FREQ
 	minimap_color = "#5a2c2c"
+	background_icon = "background_civillian"
 
 	active = FALSE
 	roundstart = FALSE
@@ -277,6 +292,7 @@
 	chat_color = "#c47a50"
 	squad_type = "Team"
 	locked = TRUE
+
 //###############################
 /datum/squad/pmc
 	name = "Root"

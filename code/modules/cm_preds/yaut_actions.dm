@@ -90,16 +90,6 @@
 	. = ..()
 	yautja.mark_panel()
 
-/datum/action/predator_action/claim_equipment
-	name = "Claim Equipment"
-	action_icon_state = "claim_equipment"
-	listen_signal = COMSIG_KB_YAUTJA_PRED_BUY
-	active = PREDATOR_ACTION_ON_CLICK
-
-/datum/action/predator_action/claim_equipment/action_activate()
-	. = ..()
-	yautja.pred_buy()
-
 //Actions that require wearing a mask
 /datum/action/predator_action/mask
 	require_mask = TRUE
@@ -155,13 +145,13 @@
 	require_bracers = TRUE
 
 /datum/action/predator_action/bracer/wristblade
-	name = "Toggle Wristblades"
+	name = "Use Bracer Attachments"
 	action_icon_state = "wristblade"
-	listen_signal = COMSIG_KB_YAUTJA_WRISTBLADES
+	listen_signal = COMSIG_KB_YAUTJA_BRACER_ATTACHMENT
 
 /datum/action/predator_action/bracer/wristblade/action_activate()
 	. = ..()
-	bracers.wristblades()
+	bracers.bracer_attachment()
 
 /datum/action/predator_action/bracer/chained
 	name = "Yank Weapon"

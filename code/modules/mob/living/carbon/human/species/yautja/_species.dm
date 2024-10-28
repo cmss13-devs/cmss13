@@ -42,7 +42,6 @@
 	heat_level_3 = 1000
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/pred_buy,
 		/mob/living/carbon/human/proc/butcher,
 		/mob/living/carbon/human/proc/mark_for_hunt,
 		/mob/living/carbon/human/proc/remove_from_hunt,
@@ -215,7 +214,6 @@
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
-	give_action(hunter, /datum/action/predator_action/claim_equipment)
 	give_action(hunter, /datum/action/yautja_emote_panel)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)

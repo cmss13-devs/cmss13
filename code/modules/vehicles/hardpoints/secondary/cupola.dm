@@ -25,4 +25,4 @@
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
 	)
-	fire_delay = 0.7 SECONDS
+	fire_delay = 0.3 SECONDS

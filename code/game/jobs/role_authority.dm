@@ -549,7 +549,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
-		if(slot_check && !skip_limit)
+		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 

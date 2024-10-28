@@ -268,52 +268,62 @@
 	name = "toy firefighting ripley"
 	desc = "Mini-Mecha action figure! Collect them all! 2/11."
 	icon_state = "fireripleytoy"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/deathripley
 	name = "toy deathsquad ripley"
 	desc = "Mini-Mecha action figure! Collect them all! 3/11."
 	icon_state = "deathripleytoy"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/gygax
 	name = "toy gygax"
 	desc = "Mini-Mecha action figure! Collect them all! 4/11."
 	icon_state = "gygaxtoy"
+	w_class = SIZE_TINY
 
 
 /obj/item/toy/prize/durand
 	name = "toy durand"
 	desc = "Mini-Mecha action figure! Collect them all! 5/11."
 	icon_state = "durandprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/honk
 	name = "toy H.O.N.K."
 	desc = "Mini-Mecha action figure! Collect them all! 6/11."
 	icon_state = "honkprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/marauder
 	name = "toy marauder"
 	desc = "Mini-Mecha action figure! Collect them all! 7/11."
 	icon_state = "marauderprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/seraph
 	name = "toy seraph"
 	desc = "Mini-Mecha action figure! Collect them all! 8/11."
 	icon_state = "seraphprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/mauler
 	name = "toy mauler"
 	desc = "Mini-Mecha action figure! Collect them all! 9/11."
 	icon_state = "maulerprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/odysseus
 	name = "toy odysseus"
 	desc = "Mini-Mecha action figure! Collect them all! 10/11."
 	icon_state = "odysseusprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/prize/phazon
 	name = "toy phazon"
 	desc = "Mini-Mecha action figure! Collect them all! 11/11."
 	icon_state = "phazonprize"
+	w_class = SIZE_TINY
 
 /obj/item/toy/inflatable_duck
 	name = "inflatable duck"

@@ -507,7 +507,7 @@
 	set desc = "Remove Bracer Attachment From Your Bracer."
 	set category = "Yautja.Weapons"
 	set src in usr
-	. = remove_attachment_internal(usr, TRUE)
+	return remove_attachment_internal(usr, TRUE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/remove_attachment_internal(mob/living/carbon/human/user, forced = FALSE)
 	if(!user.loc || user.is_mob_incapacitated() || !ishuman(user))

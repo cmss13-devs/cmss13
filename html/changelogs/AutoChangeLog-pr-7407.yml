@@ -1,0 +1,5 @@
+author: "Ansekishoku"
+delete-after: True
+changes:
+  - bugfix: "Fixed autolathes printing blowtorches with fuel."
+  - spellcheck: "Added description to blowtorches."

@@ -34,7 +34,6 @@
 	var/is_wired = FALSE
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
-	projectile_coverage_distance_limit = 2
 	var/upgraded
 	var/brute_multiplier = 1
 	var/burn_multiplier = 1

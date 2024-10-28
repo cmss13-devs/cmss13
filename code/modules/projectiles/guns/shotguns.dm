@@ -71,10 +71,10 @@ can cause issues with ammo types getting mixed up during the burst.
 			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 	return TRUE
 
-/obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user)
+/obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user, silent = FALSE, only_chamber = FALSE)
 	if(!current_mag)
 		return
-	if(current_mag.current_rounds <= 0)
+	if(only_chamber || current_mag.current_rounds <= 0)
 		if(in_chamber)
 			in_chamber = null
 			var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(ammo.type)
@@ -82,9 +82,10 @@ can cause issues with ammo types getting mixed up during the burst.
 			new_handful.forceMove(get_turf(src))
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
-				to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+				if(!silent)
+					to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 		else
-			if(user)
+			if(user && !silent)
 				to_chat(user, SPAN_WARNING("[src] is already empty."))
 		return
 
@@ -858,7 +859,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "twobore"
 	item_state = "twobore"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	force = 20 //Big heavy elephant gun.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/twobore
 	gauge = "2 bore"
@@ -1195,13 +1196,30 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	var/obj/item/ammo_magazine/internal/shotgun/primary_tube
 	var/obj/item/ammo_magazine/internal/shotgun/secondary_tube
+	var/chamber_swap = FALSE
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/Initialize(mapload, spawn_empty)
+	LAZYADD(actions_types, /datum/action/item_action/dual_tube/toggle_chamber_swap)
 	. = ..()
 	primary_tube = current_mag
 	secondary_tube = new current_mag.type(src, spawn_empty ? TRUE : FALSE)
 	current_mag = secondary_tube
 	replace_tube(current_mag.current_rounds)
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/get_examine_text(mob/user)
+	. = ..()
+	var/has_chamber_swap = locate(/datum/action/item_action/dual_tube/toggle_chamber_swap) in actions
+	if(has_chamber_swap)
+		. += SPAN_NOTICE("Use <b>toggle firemode</b> to toggle chamber-swapping.</b>")
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
+	var/datum/action/item_action/dual_tube/toggle_chamber_swap/chamber_swap_ability = locate() in actions
+	if(chamber_swap_ability)
+		//do_toggle_firemode is a signal handler. needs async to stop sleep override warnings
+		INVOKE_ASYNC(chamber_swap_ability, TYPE_PROC_REF(/datum/action/item_action/dual_tube/toggle_chamber_swap, action_activate))
+		return
+
+	. = ..()
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/Destroy()
 	QDEL_NULL(primary_tube)
@@ -1217,10 +1235,32 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 	if(!current_mag)
 		return
+
+	///The currently chambered shell in the gun before the tube gets swapped.
+	var/obj/item/ammo_magazine/chambered_shell
+	if(chamber_swap && in_chamber)
+		if(current_mag.current_rounds == current_mag.max_rounds)
+			to_chat(user, SPAN_WARNING("The current tube is overloaded! [src] spits out the chambered shell!"))
+			empty_chamber(user, TRUE, TRUE)
+		else
+			chambered_shell = retrieve_shell(ammo.type)
+			in_chamber = null
+
+	if(chambered_shell)
+		add_to_tube(user, chambered_shell.default_ammo)
+		current_mag.current_rounds++
+
 	if(current_mag == primary_tube)
 		current_mag = secondary_tube
 	else
 		current_mag = primary_tube
+
+	//Chamber swaps require the gun to be pumped afterwards. We'll force the gun to be pumped as it would be pretty annoying otherwise.
+	if(!in_chamber && chamber_swap)
+		ready_shotgun_tube()
+		if(in_chamber)
+			pumped = TRUE
+
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
@@ -1234,6 +1274,32 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = get_active_firearm(usr)
 	if(shotgun == src)
 		swap_tube(usr)
+
+//item action for handling switching chambered shells when swapping tubes.
+/datum/action/item_action/dual_tube/toggle_chamber_swap/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Chamber Swap"
+	action_icon_state = "chamber_swap"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/dual_tube/toggle_chamber_swap/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/shotgun/pump/dual_tube/holder_gun = holder_item
+	holder_gun.chamber_swap = !holder_gun.chamber_swap
+
+	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
+	if(holder_gun.chamber_swap)
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
+		button.icon_state = "template_on"
+	else
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
+		button.icon_state = "template"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 //SHOTGUN FROM ISOLATION
 
@@ -1263,7 +1329,6 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
-
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_config_values()
 	..()

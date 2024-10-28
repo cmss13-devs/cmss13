@@ -172,7 +172,7 @@
 	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
-	if(stat || resting)
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && (stat || resting))
 		if(is_zoomed)
 			is_zoomed = 0
 			zoom_out()

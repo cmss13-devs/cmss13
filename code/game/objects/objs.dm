@@ -1,8 +1,6 @@
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter
-	/// determines whether or not the object can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/health = null
 	/// Used by SOME devices to determine how reliable they are.
 	var/reliability = 100
@@ -23,8 +21,6 @@
 
 	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/projectile_coverage = 0
-	/// How many tiles away from this object that a shooter needs to be to maximize this barricade's projectile coverage
-	var/projectile_coverage_distance_limit = 6
 	/// set to true if the item is garbage and should be deleted after awhile
 	var/garbage = FALSE
 
@@ -267,7 +263,7 @@
 					SPAN_NOTICE("You hear metal clanking."))
 			else
 				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),\
 					SPAN_NOTICE("You unbuckle yourself from [src]."),\
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle(buckled_mob)

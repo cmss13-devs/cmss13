@@ -1,0 +1,7 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - balance: "enable generation selection to affect species and skillset for synthetics"
+  - balance: "removed generation 3 leadership skills"
+  - balance: "increased generation 1/2 engineering and construction skills"
+  - bugfix: "fixed the Solaris PMC nightmare spawn being incorrect skillset"

@@ -1,0 +1,4 @@
+author: "blackcrystall"
+delete-after: True
+changes:
+  - bugfix: "fix of squad marines not getting squads"

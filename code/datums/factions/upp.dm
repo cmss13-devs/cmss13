@@ -29,9 +29,9 @@
 			hud_icon_state = "xo"
 		if(JOB_UPP_MAY_OFFICER)
 			hud_icon_state = "co"
-		if(JOB_UPP_LTKOL_OFFICER)
-			hud_icon_state = "co"
 		if(JOB_UPP_KOL_OFFICER)
+			hud_icon_state = "co"
+		if(JOB_UPP_BRIG_GENERAL)
 			hud_icon_state = "co"
 		if(JOB_UPP_MAY_GENERAL)
 			hud_icon_state = "co"
@@ -53,6 +53,10 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
+		if(JOB_UPP_SUPPLY)
+			hud_icon_state = "log"
+		if(JOB_UPP_COMMISSAR)
+			hud_icon_state = "commi"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 
@@ -69,14 +73,14 @@
 		list("Type 71 Magazine (5.45x39mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("Type 73 Pistol", 25, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Pistol", 15, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
 		list("NP92 Pistol", 15, /obj/item/weapon/gun/pistol/np92, null, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("Type 73 Magazine (7.62x25mm Tokarev)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
-		list("NP92 Magazine (9x18mm Makarov)", 40, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (9x18mm Makarov)", 5, /obj/item/ammo_magazine/pistol/np92, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),

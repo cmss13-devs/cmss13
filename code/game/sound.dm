@@ -406,8 +406,16 @@
 				sound = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg',5;'sound/voice/pred_pain_rare1.ogg')
 			if("pred_preburst")
 				sound = pick('sound/voice/pred_pain_rare1.ogg')
+			if("pred_death")
+				sound = pick('sound/voice/pred_death1.ogg', 'sound/voice/pred_death2.ogg')
+			if("pred_laugh4")
+				sound = pick('sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg')
 			if("clownstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			if("giant_lizard_growl")
+				sound = pick('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
+			if("giant_lizard_hiss")
+				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

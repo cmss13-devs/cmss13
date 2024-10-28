@@ -102,42 +102,60 @@
 
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	desc = "An outdated, but still useful, medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
-/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
-	if(ishuman(M) && isliving(user))
+/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/being, mob/living/user)
+	if(ishuman(being) && isliving(user))
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
-				var/their = "their"
-				switch(M.gender)
-					if(MALE) their = "his"
-					if(FEMALE) their = "her"
-
-				var/sound = "pulse"
-				var/sound_strength
-
-				if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
-					sound_strength = "cannot hear"
-					sound = "anything"
+				var/sound = null
+				if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
+					sound = "can't hear anything at all, they must have kicked the bucket"
 				else
-					sound_strength = "hear a weak"
 					switch(body_part)
 						if("chest")
-							if(M.oxyloss < 50)
-								sound_strength = "hear a healthy"
-							sound = "pulse and respiration"
+							if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) // only medical personnel can take advantage of it
+								if(!ishuman(being))
+									return // not a human; only humans have the variable internal_organs_by_name // "cast" it a human type since we confirmed it is one
+								if(isnull(being.internal_organs_by_name))
+									return // they have no organs somehow
+								var/datum/internal_organ/heart/heart = being.internal_organs_by_name["heart"]
+								if(heart)
+									switch(heart.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											sound = "hear <font color='yellow'>small murmurs with each heart beat</font>, it is possible that [being.p_their()] heart is <font color='yellow'>subtly damaged</font>"
+										if(ORGAN_BRUISED)
+											sound = "hear <font color='orange'>deviant heart beating patterns</font>, result of probable <font color='orange'>heart damage</font>"
+										if(ORGAN_BROKEN)
+											sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [being.p_their()] heart is certainly <font color='red'>failing</font>"
+										else
+											sound = "hear <font color='green'>normal heart beating patterns</font>, [being.p_their()] heart is surely <font color='green'>healthy</font>"
+								var/datum/internal_organ/lungs/lungs = being.internal_organs_by_name["lungs"]
+								if(lungs)
+									if(sound)
+										sound += ". You also "
+									switch(lungs.organ_status)
+										if(ORGAN_LITTLE_BRUISED)
+											sound += "hear <font color='yellow'>some crackles when [being.p_they()] breath</font>, [being.p_they()] is possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
+										if(ORGAN_BRUISED)
+											sound += "hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
+										if(ORGAN_BROKEN)
+											sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
+										else
+											sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+								else
+									sound = "can't hear. Really, anything at all, how weird"
+							else
+								sound = "hear a lot of sounds... it's quite hard to distinguish, really"
 						if("eyes","mouth")
-							sound_strength = "cannot hear"
-							sound = "anything"
+							sound = "can't hear anything. Maybe that isn't the smartest idea"
 						else
-							sound_strength = "hear a weak"
-
-				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
+							sound = "hear a sound here and there, but none of them give you any good information"
+				user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
 				return
-	return ..(M,user)
-
+	return ..(being,user)
 
 //Medals
 /obj/item/clothing/accessory/medal
@@ -369,11 +387,18 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/accessory/patch/devils
+	name = "USCM Solar Devils patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
+	icon_state = "solardevilspatch"
 
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"
@@ -815,7 +840,7 @@
 		/obj/item/storage/bible,
 		/obj/item/storage/toolkit,
 		)
-	storage_flags = NONE //no verb, no quick draw, no tile gathering
+	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"

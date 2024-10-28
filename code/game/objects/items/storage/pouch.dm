@@ -919,7 +919,7 @@
 	. = ..()
 	fill_with("oxycodone")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
@@ -930,6 +930,21 @@
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
+	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("peridaxon", A.volume/3)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
@@ -1397,6 +1412,7 @@
 	icon_state = "cassette_pouch_closed"
 	var/base_icon_state = "cassette_pouch"
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 
@@ -1426,7 +1442,7 @@
 /obj/item/storage/pouch/machete
 	name = "\improper H6B pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "macheteB_holster"
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE

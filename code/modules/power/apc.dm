@@ -56,22 +56,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-/obj/structure/machinery/power/apc/weak
-	cell_type = /obj/item/cell
-
-/obj/structure/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
-
-/obj/structure/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
-
-/obj/structure/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
-
 /obj/structure/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/structures/machinery/power.dmi'
+	icon = 'icons/obj/structures/machinery/apc.dmi'
 	icon_state = "apc_mapicon"
 	anchored = TRUE
 	use_power = USE_POWER_NONE
@@ -98,7 +86,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/locked = 1
 	var/coverlocked = 1
 	var/aidisabled = 0
-	var/tdir = null
 	var/obj/structure/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
@@ -131,19 +118,31 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/printout = FALSE
 	power_machine = TRUE
+	light_range = 1
+	light_power = 0.5
 
 	appearance_flags = TILE_BOUND
 
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
-	//Offset 24 pixels in direction of dir
+	//Offset apc depending on the dir
 	//This allows the APC to be embedded in a wall, yet still inside an area
 
 	if(building)
 		setDir(ndir)
 
-	set_pixel_location()
+	switch(dir)
+		if(NORTH)
+			pixel_y = 32
+		if(SOUTH)
+			pixel_y = -26
+		if(EAST)
+			pixel_x = 30
+			pixel_y = 6
+		if(WEST)
+			pixel_x = -30
+			pixel_y = 6
 
 	if(building == 0)
 		init()
@@ -160,13 +159,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	if(!start_charge && is_ground_level(z) && prob(10))
 		set_broken()
-
-/obj/structure/machinery/power/apc/set_pixel_location()
-	tdir = dir //To fix Vars bug
-	setDir(SOUTH)
-
-	pixel_x = (tdir & 3) ? 0 : (tdir == 4 ? 24 : -24)
-	pixel_y = (tdir & 3) ? (tdir == 1 ? 24 : -24) : 0
 
 /obj/structure/machinery/power/apc/Destroy()
 	if(terminal)
@@ -344,7 +336,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
 	terminal = new/obj/structure/machinery/power/terminal(src.loc)
-	terminal.setDir(tdir)
+	terminal.setDir(dir)
 	terminal.master = src
 
 /obj/structure/machinery/power/apc/proc/init()
@@ -436,6 +428,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
+	
+	set_light(0)
 
 	if(update & 1) //Updating the icon state
 		if(update_state & UPSTATE_ALLGOOD)
@@ -467,12 +461,32 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			overlays = 0
 
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
-			overlays += status_overlays_lock[locked + 1]
-			overlays += status_overlays_charging[charging + 1]
+			var/image/_lock = status_overlays_lock[locked + 1]
+			var/image/_charging = status_overlays_charging[charging + 1]
+			var/image/_equipment = status_overlays_equipment[equipment + 1]
+			var/image/_lighting = status_overlays_lighting[lighting + 1]
+			var/image/_environ = status_overlays_environ[environ + 1]
+
+			overlays += emissive_appearance(_lock.icon, _lock.icon_state)
+			overlays += mutable_appearance(_lock.icon, _lock.icon_state)
+			overlays += emissive_appearance(_charging.icon, _charging.icon_state)
+			overlays += mutable_appearance(_charging.icon, _charging.icon_state)
 			if(operating)
-				overlays += status_overlays_equipment[equipment + 1]
-				overlays += status_overlays_lighting[lighting + 1]
-				overlays += status_overlays_environ[environ + 1]
+				overlays += emissive_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += mutable_appearance(_equipment.icon, _equipment.icon_state)
+				overlays += emissive_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
+				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
+				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
+			
+			switch(charging)
+				if(APC_NOT_CHARGING)
+					set_light_color(LIGHT_COLOR_RED)
+				if(APC_CHARGING)
+					set_light_color(LIGHT_COLOR_BLUE)
+				if(APC_FULLY_CHARGED)
+					set_light_color(LIGHT_COLOR_GREEN)
+			set_light(initial(light_range))
 
 /obj/structure/machinery/power/apc/proc/check_updates()
 
@@ -1367,13 +1381,122 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
+/obj/structure/machinery/power/apc/almayer/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/almayer/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/west
+	pixel_x = -30
+	dir = 8
+
 /obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
 
-#undef APC_UPDATE_ICON_COOLDOWN
+/obj/structure/machinery/power/apc/almayer/hardened/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/almayer/hardened/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/almayer/hardened/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/almayer/hardened/west
+	pixel_x = -30
+	dir = 8
+
+//------ Directional APCs ------//
+
+/obj/structure/machinery/power/apc/no_power
+	start_charge = 0
+
+/obj/structure/machinery/power/apc/no_power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/no_power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/no_power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/no_power/west
+	pixel_x = -30
+	dir = 8
+
+// Powered APCs with directions
+/obj/structure/machinery/power/apc/power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/power/west
+	pixel_x = -30
+	dir = 8
+
+// Upgraded APC's with directions
+/obj/structure/machinery/power/apc/upgraded/power
+	desc = "A control terminal for the area electrical systems. This one is upgraded with better power cell to sustain higher power usage."
+	cell_type = /obj/item/cell/high
+
+
+/obj/structure/machinery/power/apc/upgraded/power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/power/west
+	pixel_x = -30
+	dir = 8
 
 // apc that start at zero charge.
-/obj/structure/machinery/power/apc/nocharge
+
+/obj/structure/machinery/power/apc/upgraded/no_power
 	start_charge = 0
+
+/obj/structure/machinery/power/apc/upgraded/no_power/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upgraded/no_power/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upgraded/no_power/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upgraded/no_power/west
+	pixel_x = -30
+	dir = 8
+
+#undef APC_UPDATE_ICON_COOLDOWN

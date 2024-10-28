@@ -13,6 +13,7 @@
 #define SQUAD_SOF "SOF"
 #define SQUAD_CBRN "CBRN"
 #define SQUAD_FORECON "FORECON"
+#define SQUAD_SOLAR "Solar Devils"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
@@ -66,6 +67,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
+#define JOB_SYNTH_K9 "Synthetic K9"
 #define JOB_WORKING_JOE "Working Joe"
 
 #define JOB_CO "Commanding Officer"
@@ -124,6 +126,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_GENERAL "USCM General"
 #define JOB_ACMC "Assistant Commandant of the Marine Corps"
 #define JOB_CMC "Commandant of the Marine Corps"
+#define JOB_PLT_MED "Platoon Corpsman"
+#define JOB_PLT_SL "Platoon Squad Leader"
+#define JOB_SQUAD_TECH "Reconnaissance Support Technician"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
@@ -256,23 +261,25 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_FORECON_SMARTGUNNER "Reconnaissance Smartgunner"
 
 //-------- UPP --------//
-#define JOB_UPP "UPP Private"
+#define JOB_UPP	"UPP Ryadovoy"
 #define JOB_UPP_CONSCRIPT "UPP Conscript"
-#define JOB_UPP_ENGI "UPP Korporal Sapper"
-#define JOB_UPP_MEDIC "UPP Korporal Medic"
+#define JOB_UPP_ENGI "UPP MSzht Engineer"
+#define JOB_UPP_MEDIC "UPP MSzht Medic"
 #define JOB_UPP_SPECIALIST "UPP Serzhant"
-#define JOB_UPP_LEADER "UPP Master Serzhant"
+#define JOB_UPP_LEADER "UPP Starshiy Serzhant"
 #define JOB_UPP_POLICE "UPP Politsiya"
-#define JOB_UPP_LT_OFFICER "UPP Leytenant"
+#define JOB_UPP_LT_OFFICER "UPP Mladshiy Leytenant"
+#define JOB_UPP_SUPPLY "UPP Logistics Technician"
 #define JOB_UPP_LT_DOKTOR "UPP Leytenant Doktor"
-#define JOB_UPP_SRLT_OFFICER "UPP Senior Leytenant"
+#define JOB_UPP_SRLT_OFFICER "UPP Starshiy Leytenant"
 #define JOB_UPP_KPT_OFFICER "UPP Kapitan"
 #define JOB_UPP_MAY_OFFICER "UPP Mayjor"
-#define JOB_UPP_LTKOL_OFFICER "UPP Leytenant Kolonel"
-#define JOB_UPP_KOL_OFFICER "UPP Kolonel"
-#define JOB_UPP_MAY_GENERAL "UPP Mayjor General"
-#define JOB_UPP_LT_GENERAL "UPP Leytenant General"
-#define JOB_UPP_GENERAL "UPP Army General"
+#define JOB_UPP_LTKOL_OFFICER "UPP Podpolkovnik"
+#define JOB_UPP_KOL_OFFICER "UPP Polkovnik"
+#define JOB_UPP_BRIG_GENERAL "UPP General Mayjor"
+#define JOB_UPP_MAY_GENERAL "UPP General Leytenant"
+#define JOB_UPP_LT_GENERAL "UPP General Polkovnik"
+#define JOB_UPP_GENERAL "UPP General Armii"
 
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 #define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"
@@ -289,6 +296,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_REPRESENTATIVE "UPP Representative"
 
 #define JOB_UPP_CREWMAN "UPP Tank Crewman"
+
+#define JOB_UPP_COMMISSAR "UPP Political Commissar"
 
 //-------- CLF --------//
 #define JOB_CLF "CLF Guerilla"
@@ -331,11 +340,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PROVOST_TML "Provost Team Leader"
 #define JOB_PROVOST_ADVISOR "Provost Advisor"
 #define JOB_PROVOST_INSPECTOR "Provost Inspector"
+#define JOB_PROVOST_CINSPECTOR "Provost Chief Inspector"
+#define JOB_PROVOST_UNDERCOVER "Provost Undercover Inspector"
+
+#define JOB_PROVOST_DMARSHAL "Provost Deputy Marshal"
 #define JOB_PROVOST_MARSHAL "Provost Marshal"
 #define JOB_PROVOST_SMARSHAL "Provost Sector Marshal"
 #define JOB_PROVOST_CMARSHAL "Provost Chief Marshal"
 
-#define PROVOST_JOB_LIST list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+#define PROVOST_JOB_LIST list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_CINSPECTOR, JOB_PROVOST_DMARSHAL, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
 
 #define JOB_RIOT "Riot Control"
 #define JOB_RIOT_CHIEF "Chief Riot Control"

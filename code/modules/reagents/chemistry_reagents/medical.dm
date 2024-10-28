@@ -186,7 +186,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	overdose = 2
 	overdose_critical = 3
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
 	flags = REAGENT_TYPE_MEDICAL
 

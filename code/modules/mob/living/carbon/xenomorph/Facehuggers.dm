@@ -16,6 +16,7 @@
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1
+	vision_impair = VISION_IMPAIR_MAX
 	layer = FACEHUGGER_LAYER
 	black_market_value = 20
 

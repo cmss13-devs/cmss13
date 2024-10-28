@@ -637,8 +637,7 @@
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		qdel(src)
 		return
-	else
-		..()
+	return ..()
 
 /obj/structure/machinery/m56d_hmg/auto/t37/handle_ammo_out(mob/user)
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))

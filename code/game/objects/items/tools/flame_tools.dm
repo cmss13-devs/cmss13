@@ -94,7 +94,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon = 'icons/obj/items/cigarettes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	icon_state = "match"
+	item_state = "match"
 	var/burnt = 0
 	var/smoketime = 10 SECONDS
 	var/burnt_name = "burnt match"
@@ -144,6 +149,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
+	item_state = "[initial(item_state)]_lit"
 	turn_light(toggle_on = TRUE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
@@ -154,7 +160,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	burnt = 1
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
-	item_state = "cigoff"
+	item_state = "[initial(item_state)]_burnt"
 	turn_light(toggle_on = FALSE)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
@@ -164,6 +170,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "paper match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon_state = "papermatch"
+	item_state = "papermatch"
 	burnt_name = "burnt paper match"
 
 //////////////////
@@ -173,8 +180,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A roll of tobacco and fillers, wrapped in paper with a filter at the end. Apparently, inhaling the smoke makes you feel happier."
 	icon_state = "cigoff"
-	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
+	throw_speed = SPEED_AVERAGE
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EAR | SLOT_FACE
@@ -687,6 +698,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	light_color = LIGHT_COLOR_LAVA
 	var/icon_on = "lighter_g_on"
 	var/icon_off = "lighter_g"

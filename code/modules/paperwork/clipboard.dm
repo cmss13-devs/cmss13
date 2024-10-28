@@ -3,6 +3,10 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "clipboard"
 	item_state = "clipboard"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	throwforce = 0
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST

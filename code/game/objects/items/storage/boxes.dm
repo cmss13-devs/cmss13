@@ -487,6 +487,11 @@
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "matchbox"
+	item_state = "matchbox"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB

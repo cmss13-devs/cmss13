@@ -327,7 +327,6 @@
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
 	icon_state = "mpacket"
-	item_state = "zippo"
 	storage_slots = 6
 	can_hold = list()
 	icon_type = "match"

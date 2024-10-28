@@ -294,7 +294,7 @@
 	human.disable_lights()
 	human.disable_special_items()
 	if(ishuman_strict(human))
-		playsound(loc, human.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+		playsound(loc, human.gender == "male" ? "male_hugged" : "female_hugged" , 25, 0)
 	else if(isyautja(human))
 		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)

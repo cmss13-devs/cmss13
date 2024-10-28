@@ -412,7 +412,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tankgl
-	desc = "A magazin feed grenade launcher capable of holding 10 grenades. This model loads M40 grenades."
+	desc = "A magazine feed grenade launcher capable of holding 10 grenades. This model loads M40 grenades."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,

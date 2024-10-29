@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "stops a crisis in the part fabricator point economy by preventing infinite money generation through cancelling items in the queue"

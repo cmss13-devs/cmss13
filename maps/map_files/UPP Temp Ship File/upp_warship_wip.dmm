@@ -3354,6 +3354,10 @@
 /area/space)
 "bRF" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
+/obj/structure/sign/safety/terminal{
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/silver,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -4299,6 +4303,21 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/space)
+"cCs" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "cDM" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
@@ -4306,6 +4325,15 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/space)
+"cDO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "cEg" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
@@ -4449,6 +4477,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 34
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic{
@@ -12609,6 +12640,9 @@
 "hrh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer/silver,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -15781,6 +15815,21 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jhS" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/obj/structure/sign/safety/terminal{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "jib" = (
 /obj/structure/platform{
 	dir = 4
@@ -16554,6 +16603,9 @@
 	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = -24
+	},
 /turf/open/floor/almayer/silver/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -16787,6 +16839,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/almayer/silver/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -22572,9 +22625,21 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nhl" = (
+/obj/structure/machinery/computer/crew/upp,
+/obj/structure/sign/safety/terminal{
+	pixel_x = 38
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "niz" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/megaphone,
+/obj/item/device/camera,
+/obj/item/device/camera_film,
+/obj/item/device/camera_film,
 /turf/open/floor/almayer/silver/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -29914,6 +29979,20 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ryK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 7;
+	pixel_y = 32
+	},
+/obj/structure/reagent_dispensers/fueltank{
+	layer = 2.97
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "rzh" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -30577,6 +30656,9 @@
 /obj/item/device/megaphone,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 34
 	},
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic{
@@ -73205,8 +73287,8 @@ iFa
 iFa
 iFa
 dRD
-rgw
-bYr
+cDO
+cSl
 uOd
 bOB
 mvj
@@ -73421,7 +73503,7 @@ bGC
 bGC
 iFa
 dRD
-cSl
+ryK
 wav
 uOd
 bRF
@@ -74720,7 +74802,7 @@ wuU
 dRD
 dRD
 dRD
-eEB
+kiR
 lMH
 cGU
 jCu
@@ -75587,17 +75669,17 @@ iFa
 iFa
 dRD
 dRD
-kWN
+cCs
 nPh
 rbj
 fzT
 hKO
-tLs
+nhl
 hKO
 mrt
 lYe
 lSG
-egq
+jhS
 dRD
 dRD
 iFa

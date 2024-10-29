@@ -30,6 +30,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/atom/movable/screen/rotate/alt/rotate_left
 	var/atom/movable/screen/rotate/rotate_right
 
+	var/static/datum/body_picker/picker = new
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
@@ -285,6 +287,39 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	else
 		client_mob_status = "client mob is OK"
 	CRASH("Preferences deleted unexpectedly: [client_status]; [client_mob_status]")
+
+/datum/body_picker/static_ui_data(mob/user)
+	. = ..()
+
+	.["icon"] = /datum/species::ico_base
+
+	.["body_types"] = list()
+	for(var/key in GLOB.body_type_list)
+		var/datum/body_type/type = GLOB.body_type_list[key]
+		.["body_types"] += list(
+			list("name" = type.name, "icon" = type.icon_name)
+		)
+
+	.["skin_colors"] = list()
+	for(var/key in GLOB.skin_color_list)
+		var/datum/skin_color/color = GLOB.skin_color_list[key]
+		.["skin_colors"] += list(
+			list("name") = color.name, "color" = color.color
+		)
+
+	.["body_size"] = list()
+	for(var/key in GLOB.body_size_list)
+		var/datum/body_size/size = GLOB.body_size_list[key]
+		.["body_size"] += list(
+			list("name" = size.name, "icon" = size.icon_name)
+		)
+
+/datum/body_picker/ui_data(mob/user)
+	. = ..()
+
+	.["body_type"] = user.client.prefs.body_type
+	.["skin_color"] = user.client.prefs.skin_color
+	.["body_size"] = user.client.prefs.body_size
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)

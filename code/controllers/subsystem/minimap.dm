@@ -46,28 +46,54 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[level]"] = new /datum/hud_displays
 		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
-		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //512x512 blank icon template for drawing on the map
+		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
+		var/xmin = world.maxx
+		var/ymin = world.maxy
+		var/xmax = 1
+		var/ymax = 1
 		for(var/xval in 1 to world.maxx)
 			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
-				var/turf/location = locate(xval,yval,level)
-				if(istype(location, /turf/open/space))
-					continue
+				var/turf/location = locate(xval, yval, level)
 				if(location.z != level)
 					continue
 				if(location.density)
+					if(!istype(location, /turf/closed/wall/almayer/outer))
+						xmin = min(xmin, xval)
+						ymin = min(ymin, yval)
+						xmax = max(xmax, xval)
+						ymax = max(ymax, yval)
 					icon_gen.DrawBox(location.minimap_color, xval, yval)
+					continue
+				if(istype(location, /turf/open/space))
 					continue
 				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
 				if(alttarget)
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
 					icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
 					continue
 				var/area/turfloc = location.loc
 				if(turfloc.minimap_color)
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
 					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
 					continue
+				xmin = min(xmin, xval)
+				ymin = min(ymin, yval)
+				xmax = max(xmax, xval)
+				ymax = max(ymax, yval)
 				icon_gen.DrawBox(location.minimap_color, xval, yval)
-		icon_gen.Scale(512 * MINIMAP_SCALE, 512 * MINIMAP_SCALE) //scale it up x2 to make it easer to see
-		icon_gen.Crop(1, 1, min(icon_gen.Width(), 512), min(icon_gen.Height(), 512)) //then cut all the empty pixels
+
+		var/width = min(xmax, icon_gen.Width())
+		var/height = min(ymax, icon_gen.Height())
+		var/extents = max(width, height)
+		icon_gen.Crop(xmin, ymin, extents, extents) //cut all the empty pixels
+
+		icon_gen.Scale(extents * MINIMAP_SCALE, extents * MINIMAP_SCALE) //scale it up x2 to make it easer to see
 
 		//generation is done, now we need to center the icon to someones view, this can be left out if you like it ugly and will halve SSinit time
 		//calculate the offset of the icon

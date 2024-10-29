@@ -65,7 +65,7 @@
 		/obj/item/clothing/glasses/sunglasses/aviator,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/glasses/sunglasses/prescription,
-		/obj/item/clothing/glasses/regular/hipster,
+		/obj/item/clothing/glasses/regular/prescription,
 	)
 	dress_gloves = list(
 		/obj/item/clothing/gloves/black,

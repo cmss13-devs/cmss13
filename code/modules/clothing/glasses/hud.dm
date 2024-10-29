@@ -19,7 +19,9 @@
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. Contains prescription lenses."
+	desc = "A heads-up display that analyzes visible health markers on humans in view, providing accurate data about their health status. It is fitted to a set of prescription lenses."
+	icon_state = "rxhealthhud"
+	deactive_state = "rxdegoggles"
 	prescription = TRUE
 
 /datum/action/item_action/view_publications/New(Target)

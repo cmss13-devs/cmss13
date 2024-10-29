@@ -6031,7 +6031,7 @@
 "aGZ" = (
 /obj/structure/surface/table,
 /obj/item/poster,
-/obj/item/clothing/glasses/regular/hipster,
+/obj/item/clothing/glasses/regular/prescription,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)

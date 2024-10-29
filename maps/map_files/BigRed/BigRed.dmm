@@ -6548,7 +6548,7 @@
 /area/bigredv2/outside/medical)
 "aED" = (
 /obj/structure/bed,
-/obj/item/clothing/glasses/regular/hipster,
+/obj/item/clothing/glasses/regular/prescription,
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "aEE" = (

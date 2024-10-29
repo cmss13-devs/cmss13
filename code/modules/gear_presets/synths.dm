@@ -314,7 +314,7 @@
 /datum/equipment_preset/synth/survivor/teacher_synth
 	name = "Survivor - Synthetic - Teacher Synth"
 	equipment_to_spawn = list(
-		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
+		WEAR_EYES = /obj/item/clothing/glasses/regular/prescription,
 		WEAR_BODY = /obj/item/clothing/under/colonist/wy_davisone,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/wy_chips/pepper,

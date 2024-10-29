@@ -1553,6 +1553,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "aiF" = (
@@ -3680,6 +3681,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "aAp" = (
@@ -6775,6 +6777,11 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
+"cuL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/asphalt/cement,
+/area/shiva/interior/warehouse)
 "cvn" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/plating,
@@ -7543,6 +7550,8 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "drM" = (
@@ -8422,6 +8431,14 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
+"eNI" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/aerodrome)
 "eOG" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/light/double{
@@ -10384,7 +10401,7 @@
 /area/shiva/exterior/lz2_fortress)
 "hmo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/rifle/m41a,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "hms" = (
@@ -11868,6 +11885,10 @@
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
+"iUo" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/central)
 "iVj" = (
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/exterior/cp_lz2)
@@ -13101,6 +13122,11 @@
 "kuM" = (
 /turf/open/floor/shiva/yellow/northwest,
 /area/shiva/interior/colony/deck)
+"kuN" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/asphalt/cement,
+/area/shiva/interior/warehouse)
 "kuS" = (
 /obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
@@ -16627,6 +16653,11 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
+"oHw" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva,
+/area/shiva/interior/aerodrome)
 "oHz" = (
 /obj/structure/machinery/space_heater,
 /turf/open/floor/shiva/yellow/north,
@@ -18384,6 +18415,12 @@
 	},
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
+"qOh" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/central)
 "qOD" = (
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/deck)
@@ -18991,6 +19028,13 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
+"rKp" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/botany)
 "rKq" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/auto_turf/snow/layer3,
@@ -19265,6 +19309,8 @@
 /area/shiva/interior/colony/research_hab)
 "rZP" = (
 /obj/structure/machinery/optable,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "rZV" = (
@@ -20242,6 +20288,7 @@
 "tnz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/landmark/corpsespawner/chef,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
 "tnG" = (
@@ -20317,6 +20364,13 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/research_hab)
+"tqA" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/aerodrome)
 "tqL" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/shiva/north,
@@ -20976,6 +21030,10 @@
 /obj/item/stack/cable_coil/cyan,
 /turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
+"uaw" = (
+/obj/item/weapon/baseballbat/metal,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/aerodrome)
 "ubv" = (
 /obj/structure/prop/invuln{
 	desc = "big pile energy.";
@@ -21541,6 +21599,12 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
+"uIZ" = (
+/obj/structure/bed,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/botany)
 "uJg" = (
 /obj/item/clothing/shoes/snow,
 /obj/structure/surface/rack,
@@ -23890,6 +23954,15 @@
 "xYx" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/lz2_fortress)
+"xYB" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva/yellow/north,
+/area/shiva/interior/garage)
 "xZd" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
@@ -32589,7 +32662,7 @@ iDW
 bzh
 fRg
 fRg
-fRg
+uaw
 fRg
 aKS
 fRg
@@ -32750,8 +32823,8 @@ bKV
 bsC
 pvv
 pvv
-pvv
-pvv
+tqA
+oHw
 pvv
 pvv
 pvv
@@ -32770,7 +32843,7 @@ exX
 alW
 arW
 anJ
-dQq
+kuN
 hmo
 rdS
 axJ
@@ -34364,7 +34437,7 @@ pvv
 kJw
 pvv
 pvv
-pvv
+eNI
 pvv
 pvv
 sYh
@@ -34392,7 +34465,7 @@ anG
 axJ
 axJ
 ggh
-rdS
+cuL
 owe
 axJ
 rdS
@@ -39340,8 +39413,8 @@ gjY
 gjY
 bJF
 tFk
-uCp
-wZW
+rKp
+uIZ
 rBH
 hYT
 ejt
@@ -42525,7 +42598,7 @@ kLz
 anE
 anE
 cTY
-jqY
+gRG
 jqY
 ndR
 qSe
@@ -43010,7 +43083,7 @@ bfc
 qrz
 anE
 anE
-ndR
+iUo
 jqY
 jqY
 ndR
@@ -43495,7 +43568,7 @@ axz
 axz
 axz
 jqY
-jqY
+gRG
 ndR
 jqY
 vIL
@@ -45130,8 +45203,8 @@ xha
 bBB
 axz
 wTP
-xha
-xha
+qOh
+qOh
 xha
 xha
 vBg
@@ -46961,7 +47034,7 @@ arX
 arX
 tVZ
 ktd
-axI
+xYB
 ver
 ver
 ver

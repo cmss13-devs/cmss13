@@ -98,6 +98,7 @@
 "aej" = (
 /obj/item/weapon/gun/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "aeo" = (
@@ -862,6 +863,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gibmid3"
 	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "aFZ" = (
@@ -3195,6 +3197,11 @@
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
+"cwh" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/kitchen,
+/area/fiorina/station/research_cells)
 "cwB" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -3857,6 +3864,11 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/ice_lab)
+"cXE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "cXV" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/effect/decal/cleanable/blood/oil,
@@ -4488,6 +4500,13 @@
 /obj/structure/platform_decoration,
 /turf/open/floor/prison,
 /area/fiorina/tumor/ice_lab)
+"dvP" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/kitchen,
+/area/fiorina/station/research_cells)
 "dwf" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -7117,6 +7136,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "fwY" = (
@@ -8223,6 +8243,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
+"gps" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/whitepurple/southeast,
+/area/fiorina/station/research_cells)
 "gpA" = (
 /obj/item/trash/pistachios,
 /turf/open/floor/prison/whitegreen,
@@ -9072,6 +9099,8 @@
 "gWg" = (
 /obj/structure/powerloader_wreckage,
 /obj/effect/decal/cleanable/blood/gibs/robot/limb,
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/research_cells)
 "gWq" = (
@@ -23835,6 +23864,13 @@
 /obj/item/stool,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
+"snD" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/fiorina/station/research_cells)
 "snW" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "rack"
@@ -24271,6 +24307,11 @@
 	},
 /obj/item/tool/stamp,
 /turf/open/floor/prison/darkredfull2,
+/area/fiorina/station/lowsec)
+"sFU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "sFY" = (
 /obj/structure/barricade/metal/wired{
@@ -28055,6 +28096,13 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
+"vvH" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/yellow/southeast,
+/area/fiorina/station/lowsec)
 "vvM" = (
 /obj/structure/prop/structure_lattice{
 	dir = 8;
@@ -61120,7 +61168,7 @@ tir
 sCH
 ceC
 kIA
-psm
+cXE
 ubP
 pTj
 ubP
@@ -63210,7 +63258,7 @@ ioc
 ioc
 kqC
 qNF
-mDO
+vvH
 kqC
 dHD
 upY
@@ -65957,7 +66005,7 @@ wzE
 dHD
 voV
 sxc
-cxA
+sFU
 xbM
 xbM
 xbM
@@ -67821,7 +67869,7 @@ bOx
 cKa
 cKa
 wZt
-wZt
+snD
 cKa
 jmG
 gHh
@@ -68033,7 +68081,7 @@ rLG
 cKa
 uyC
 dzB
-dzB
+dvP
 aYg
 cKa
 kjt
@@ -68245,7 +68293,7 @@ rLG
 cKa
 onW
 pZp
-dzB
+cwh
 shh
 cKa
 kjt
@@ -72477,7 +72525,7 @@ kXk
 lzz
 cKa
 kXk
-rhH
+gps
 cKa
 kXk
 amn

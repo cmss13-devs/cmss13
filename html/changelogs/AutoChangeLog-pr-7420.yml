@@ -1,0 +1,4 @@
+author: "joookschad"
+delete-after: True
+changes:
+  - qol: "Toy mechs will now fit into storage."

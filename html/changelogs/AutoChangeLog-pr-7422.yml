@@ -1,0 +1,4 @@
+author: "Joe lampost"
+delete-after: True
+changes:
+  - bugfix: "Changes what armor is spawned from the pred vendor"

@@ -1,0 +1,8 @@
+author: "Nanu, HarryOb, Spartanbobby"
+delete-after: True
+changes:
+  - rscadd: "Added a feature that will delete weeds in the surrounding area of the Marines selected landing zone, and keep them subject to be unweedable for the next eight minutes."
+  - balance: "Maps currently affected by this change/test - Big Red, LV-624, Kutjevo, New Varadero, Sorokyne Strata, Prison Station Science Annex, Shiva's Snowball."
+  - maptweak: "Slight area tweaks and changes to allow more subjective control over areas."
+  - maptweak: "Big Red, South West Cave now has timed blockers to hinder a SW hive and Marines alike from going a straight line to attack each other. These blockers dissappear in a \"cavein\" at fourty minutes, Roughly on average twenty minutes after marines land."
+  - balance: "Queens can only ovi and build the hivecore on \"their\" side of the map at roundstart, this protection drops off 25min from roundstart."

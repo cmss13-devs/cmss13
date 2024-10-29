@@ -337,3 +337,80 @@
   private-tristan:
   - balance: The Lever action rifles R4T and XM88 now begin falloff at 7 tiles instead
       of 0.
+2024-10-29:
+  Ansekishoku:
+  - bugfix: Buckshot additional projectiles no more miss the target when they get
+      stunned by the main projectile.
+  - bugfix: Fixed autolathes printing blowtorches with fuel.
+  - spellcheck: Added description to blowtorches.
+  Ansekishokuu:
+  - qol: Squad engineer vendors now have welding visor.
+  - qol: Organized the corpsman vendor so that the perixadon revival mix is near the
+      tricordrazine revival mix.
+  BeagleGaming1:
+  - bugfix: fixed a bug with the pixel shift keybindings
+  Blundir:
+  - rscadd: you can no longer see or talk with a hugger on your face
+  - bugfix: welding protection now adds correct amount of vision impairment
+  - bugfix: blindfold now actually blinds
+  - bugfix: fixed larva bursting on mob image not working
+  - soundadd: new hugging sounds to humans
+  - soundadd: bursting screams to humans and yautja
+  - imageadd: added yautja bursting and afterburst gore icons
+  Joe Lampost, Beaglegaming, Sleepynecrons:
+  - rscadd: Adds two new vendors for preds
+  - rscadd: Re-sprites all but one of the pred weapons
+  - balance: Gives thwei brain and eye healing properties.
+  - bugfix: fixes the on mobs for retro caster
+  - rscdel: Removes being able to choose what accessory you spawn with (adds it to
+      the vendor)
+  - rscdel: Removes the conscious check for big SD laugh so SDing a dead pred triggers
+      the laugh
+  - rscdel: Removes all of the code related to claim gear
+  - refactor: refactored wrist blade code (now bracer attachments)
+  - soundadd: adds 3 pairs of deployment and retracting sounds for each current bracer
+      attachment
+  - soundadd: adds a sound for attaching attachments to the bracer
+  - maptweak: Re maps the predator blooded area to be more open
+  - maptweak: Removes the lightsabre from the pred ship
+  - rscadd: adds two new pred masks
+  Katskan:
+  - balance: enable generation selection to affect species and skillset for synthetics
+  - balance: removed generation 3 leadership skills
+  - balance: increased generation 1/2 engineering and construction skills
+  - bugfix: fixed the Solaris PMC nightmare spawn being incorrect skillset
+  MistChristmas, Private-Tristan:
+  - balance: You can no longer crawl while being grabbed by a xenomorph.
+  TheManWithNoHands:
+  - rscadd: 'Added vendor description to: AC3-E autocanon, LTAA-AP Minigun, DRG-N
+      Flamer, LTB canon, LZR-N Flamer, TOW launcher, M56cupola, and M92T Grenade Launcher.'
+  - rscadd: 'Expanded the description of: LTAA-AP Minigun, TOW launcher, M56cupola,
+      M92T Grenade Launcher and the magazins of the AC3-E autocanon, LTAA-AP Minigun,
+      DRG-N Flamer, LZR-N Flamer, and M92T Grenade Launcher. As well as for the snowplow
+      hardpoint and heavy and ligth treads.'
+  Unknownity:
+  - bugfix: Fixes missing paygrades,ranks and comms titles to PMC Survivors and PMC
+      Medic. Fixes certain PMC Survivors having incorrect headsets.
+  - balance: PMC Synthvivor skillset has been buffed to be consistent with the regular
+      PMC Synth. PMC Synthvivor's loadout has been nerfed. Dutch Lifesaver belt (used
+      by PMCs and DDs) has been buffed with improved splints and kits.
+  - rscadd: PMC Synthetics were granted a higher budget and they gained a Maintenance
+      Jack in their loadout.
+  VileBeggar:
+  - balance: Egg morphers now generate facehuggers on their own, up to 6 in total
+      every 2 minutes. Bodies can no longer be fed to egg morphers. Eggs can now get
+      planted beneath light fixtures and nested mobs. Egg morphers can no longer be
+      built in tallgrass.
+  - qol: Carriers can now automatically fill egg morphers with their own egg supply
+      by using the Retrieve Egg ability on them.
+  - balance: shotgun slugs have had their accurate range increased to 8, and their
+      accuracy tripled. any targets shot within 8 tiles will always be hit. incendiary
+      have had a milder accuracy increase.
+  blackcrystall:
+  - bugfix: fix of squad marines not getting squads
+  cuberound:
+  - balance: containers are destructible with bullets and xeno slashing
+  - rscadd: faction shuttle computers functionality
+  - bugfix: SMES units made explosion proof
+  ihatethisengine:
+  - balance: limbs are now only be delimb-able if they were fractured BEFORE the hit

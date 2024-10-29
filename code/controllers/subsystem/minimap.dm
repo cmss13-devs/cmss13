@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[level]"] = new /datum/hud_displays
 		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
-		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //480x480 blank icon template for drawing on the map
+		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //512x512 blank icon template for drawing on the map
 		for(var/xval in 1 to world.maxx)
 			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
 				var/turf/location = locate(xval,yval,level)
@@ -66,8 +66,8 @@ SUBSYSTEM_DEF(minimaps)
 					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
 					continue
 				icon_gen.DrawBox(location.minimap_color, xval, yval)
-		icon_gen.Scale(480 * MINIMAP_SCALE ,480 * MINIMAP_SCALE) //scale it up x2 to make it easer to see
-		icon_gen.Crop(1, 1, min(icon_gen.Width(), 480), min(icon_gen.Height(), 480)) //then cut all the empty pixels
+		icon_gen.Scale(512 * MINIMAP_SCALE, 512 * MINIMAP_SCALE) //scale it up x2 to make it easer to see
+		icon_gen.Crop(1, 1, min(icon_gen.Width(), 512), min(icon_gen.Height(), 512)) //then cut all the empty pixels
 
 		//generation is done, now we need to center the icon to someones view, this can be left out if you like it ugly and will halve SSinit time
 		//calculate the offset of the icon
@@ -522,6 +522,7 @@ SUBSYSTEM_DEF(minimaps)
 	layer = ABOVE_HUD_LAYER
 	screen_loc = "1,1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = TILE_BOUND
 
 /atom/movable/screen/minimap/Initialize(mapload, target, flags)
 	. = ..()
@@ -960,6 +961,7 @@ SUBSYSTEM_DEF(minimaps)
 	map = SSminimaps.fetch_minimap_object(zlevel, flags)
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
+	map.appearance_flags = NONE
 
 /datum/tacmap_holder/Destroy()
 	map = null

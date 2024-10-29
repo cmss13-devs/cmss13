@@ -47,6 +47,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	minimap_background = "xeno_ruler"
+
 	royal_caste = TRUE
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive

@@ -18128,10 +18128,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
 "dAl" = (
-/obj/item/paper_bin/wy,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/clicky,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
@@ -21015,6 +21012,10 @@
 	pixel_x = -10;
 	pixel_y = 8
 	},
+/obj/item/paper_bin/wy{
+	pixel_x = 17;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "eGq" = (
@@ -22303,13 +22304,29 @@
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
 "fiE" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_display/research_cell{
+	dir = 4;
+	id = "Containment Cell 4";
+	name = "Control Panel";
+	pixel_x = -17;
+	req_access_txt = "200";
+	pixel_y = 9
+	},
+/obj/item/storage/photo_album,
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = -5;
+	plane = -5
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/photo_album,
-/obj/item/device/camera_film,
+/obj/item/device/camera_film{
+	pixel_x = -3
+	},
+/obj/structure/machinery/door_control/cl/office/divider{
+	pixel_x = 7;
+	pixel_y = -7
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "fiQ" = (
@@ -41337,19 +41354,22 @@
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube{
 	pixel_x = 4;
-	pixel_y = 4
+	pixel_y = 10
 	},
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube{
 	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = 10
 	},
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube{
 	pixel_x = -4;
-	pixel_y = -4
+	pixel_y = 2
 	},
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/yirencube{
 	pixel_x = 4;
-	pixel_y = -4
+	pixel_y = 2
+	},
+/obj/item/storage/xeno_tag_case/full{
+	pixel_y = -6
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -42913,16 +42933,22 @@
 "nOb" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/sake{
-	pixel_x = 5;
+	pixel_y = -3;
+	pixel_x = 4;
+	plane = -5
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 4;
 	pixel_y = 5
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_x = -4;
+	pixel_y = -3;
+	plane = -5
 	},
-/obj/item/reagent_container/food/drinks/bottle/sake,
 /obj/item/reagent_container/food/drinks/bottle/sake{
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 5
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
@@ -45229,7 +45255,7 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/structure/machinery/door_control/cl/office/divider{
+/obj/structure/machinery/door_control/cl/quarter/windows{
 	pixel_x = -5;
 	pixel_y = -3
 	},
@@ -47233,13 +47259,6 @@
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/bravo)
 "pyx" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Containment Cell 4";
-	name = "Control Panel";
-	pixel_x = -15;
-	req_access_txt = "200"
-	},
 /obj/item/storage/fancy/cigarettes/blackpack{
 	pixel_x = -1;
 	pixel_y = 1
@@ -47251,6 +47270,12 @@
 	},
 /obj/item/tool/lighter/zippo/gold{
 	pixel_x = 2
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	dir = 4;
+	layer = 3.2;
+	pixel_x = -15;
+	pixel_y = 1
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -51498,12 +51523,6 @@
 /area/almayer/engineering/lower/engine_core)
 "rjV" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -3;
-	pixel_y = 6
-	},
 /obj/structure/sign/poster{
 	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE.";
 	icon_state = "poster11";
@@ -51528,6 +51547,12 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	dir = 8;
+	layer = 3.2;
+	pixel_x = -3;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer/blue/southeast,
 /area/almayer/living/port_emb)
@@ -52591,6 +52616,15 @@
 	req_one_access_txt = "200"
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky{
+	pixel_x = 14;
+	plane = -5;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 14;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "rHc" = (
@@ -56956,18 +56990,17 @@
 "ttX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular{
-	pixel_x = 8;
-	pixel_y = -2
+	pixel_y = 6
 	},
 /obj/item/storage/box/drinkingglasses{
-	pixel_x = -7
+	pixel_x = -8
 	},
 /obj/item/reagent_container/spray/cleaner{
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/obj/item/storage/xeno_tag_case/full{
-	pixel_y = 8
+/obj/item/storage/box/wy_mre{
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -66993,10 +67026,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/command/securestorage)
 "xqQ" = (
-/obj/structure/machinery/door/poddoor/almayer/blended{
-	id = "RoomDivider";
-	layer = 3.1;
-	name = "\improper Room Divider"
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	id = RoomDivider
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -102035,7 +102066,7 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -102647,7 +102678,7 @@ bdH
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -103052,7 +103083,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa

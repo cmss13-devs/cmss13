@@ -804,6 +804,10 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/park)
+"aBV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells)
 "aBZ" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/prison,
@@ -4675,7 +4679,7 @@
 	icon_state = "4"
 	},
 /obj/item/prop/helmetgarb/flair_initech,
-/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "dCn" = (
@@ -5603,6 +5607,13 @@
 	},
 /turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring)
+"eqC" = (
+/obj/structure/bed/roller,
+/obj/item/bedsheet/green,
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells)
 "eqJ" = (
 /obj/structure/platform{
 	dir = 1
@@ -16076,7 +16087,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "mlg" = (
-/obj/effect/landmark/corpsespawner/ua_riot/burst,
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells)
 "mlu" = (
@@ -16631,6 +16642,10 @@
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
+"mGa" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/research_cells)
 "mGf" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/blue/east,
@@ -27942,6 +27957,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
+"vqn" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/research_cells)
 "vqs" = (
 /obj/item/paper/prison_station/inmate_handbook,
 /turf/open/floor/prison/darkredfull2,
@@ -64693,7 +64712,7 @@ wqs
 dVA
 cKa
 awU
-mgz
+vqn
 rLG
 aLX
 cKa
@@ -64904,7 +64923,7 @@ vUP
 dVA
 vUP
 cKa
-uKK
+eqC
 hjB
 rLG
 vUP
@@ -65116,8 +65135,8 @@ eow
 eow
 lFB
 oNC
-kjt
-mgz
+aBV
+mGa
 rLG
 vUP
 lcE

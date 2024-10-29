@@ -288,10 +288,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		client_mob_status = "client mob is OK"
 	CRASH("Preferences deleted unexpectedly: [client_status]; [client_mob_status]")
 
-/datum/body_picker/static_ui_data(mob/user)
+/datum/body_picker/ui_static_data(mob/user)
 	. = ..()
 
-	.["icon"] = /datum/species::ico_base
+	.["icon"] = /datum/species::icobase
 
 	.["body_types"] = list()
 	for(var/key in GLOB.body_type_list)
@@ -304,22 +304,60 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	for(var/key in GLOB.skin_color_list)
 		var/datum/skin_color/color = GLOB.skin_color_list[key]
 		.["skin_colors"] += list(
-			list("name") = color.name, "color" = color.color
+			list("name" = color.name, "icon" = color.icon_name, "color" = color.color)
 		)
 
-	.["body_size"] = list()
+	.["body_sizes"] = list()
 	for(var/key in GLOB.body_size_list)
 		var/datum/body_size/size = GLOB.body_size_list[key]
-		.["body_size"] += list(
+		.["body_sizes"] += list(
 			list("name" = size.name, "icon" = size.icon_name)
 		)
 
 /datum/body_picker/ui_data(mob/user)
 	. = ..()
 
-	.["body_type"] = user.client.prefs.body_type
-	.["skin_color"] = user.client.prefs.skin_color
-	.["body_size"] = user.client.prefs.body_size
+	.["body_type"] = GLOB.body_type_list[user.client.prefs.body_type].icon_name
+	.["skin_color"] = GLOB.skin_color_list[user.client.prefs.skin_color].icon_name
+	.["body_size"] = GLOB.body_size_list[user.client.prefs.body_size].icon_name
+
+/datum/body_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	var/datum/preferences/prefs = ui.user.client.prefs
+
+	switch(action)
+		if("type")
+			if(!GLOB.body_type_list[params["name"]])
+				return
+
+			prefs.body_type = params["name"]
+
+		if("size")
+			if(!GLOB.body_size_list[params["name"]])
+				return
+
+			prefs.body_size = params["name"]
+
+		if("color")
+			if(!GLOB.skin_color_list[params["name"]])
+				return
+
+			prefs.skin_color = params["name"]
+
+	return TRUE
+
+/datum/body_picker/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+
+	if(!ui)
+		ui = new(user, src, "BodyPicker", "Body Picker")
+		ui.open()
+
+/datum/body_picker/ui_state(mob/user)
+	return GLOB.always_state
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
@@ -1611,6 +1649,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						skin_color = new_skin_color
 
 				if ("body_size")
+					picker.tgui_interact(user)
+
 					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
 
 					if (new_body_size)

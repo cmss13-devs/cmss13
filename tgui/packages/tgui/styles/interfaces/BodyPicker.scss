@@ -1,0 +1,17 @@
+.BodyPicker {
+  .colorPickerContainer:first-of-type {
+    margin-left: 6px;
+  }
+
+  .typePicker {
+    border: 1px dotted #807272;
+  }
+
+  .typePicker.active {
+    border: 1px solid #666363;
+  }
+
+  .colorPicker.active {
+    outline: solid 2px white;
+  }
+}

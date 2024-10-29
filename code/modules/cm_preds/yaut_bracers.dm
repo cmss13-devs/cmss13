@@ -342,6 +342,8 @@
 /obj/item/clothing/gloves/yautja/hunter/Destroy()
 	QDEL_NULL(caster)
 	QDEL_NULL(embedded_id)
+	QDEL_NULL(left_bracer_attachment)
+	QDEL_NULL(right_bracer_attachment)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/process()
@@ -490,6 +492,10 @@
 
 		if(selected == "Right") //its right, left because in-game itll show up as left, right
 			attach_to_left = FALSE
+
+	if(attacking_item.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot attach [attacking_item] without holding it."))
+		return
 
 	var/bracer_attached = FALSE
 	if(attach_to_left && !left_bracer_attachment)

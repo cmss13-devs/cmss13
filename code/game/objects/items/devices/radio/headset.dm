@@ -362,7 +362,16 @@
 
 ///Change the minimap icon to a dead icon
 /obj/item/device/radio/headset/proc/set_dead_on_minimap(z_level, marker_flags)
-	SSminimaps.add_marker(wearer, z_level, marker_flags, given_image = wearer.assigned_equipment_preset.get_minimap_icon(wearer), overlay_iconstates = list("defibbable"))
+	var/icon_to_use
+	if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 1 MINUTES)
+		icon_to_use = "defibbable4"
+	else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 2 MINUTES)
+		icon_to_use = "defibbable3"
+	else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 3 MINUTES)
+		icon_to_use = "defibbable2"
+	else
+		icon_to_use = "defibbable"
+	SSminimaps.add_marker(wearer, z_level, marker_flags, given_image = wearer.assigned_equipment_preset.get_minimap_icon(wearer), overlay_iconstates = list(icon_to_use))
 
 ///Change the minimap icon to a undefibbable icon
 /obj/item/device/radio/headset/proc/set_undefibbable_on_minimap(z_level, marker_flags)

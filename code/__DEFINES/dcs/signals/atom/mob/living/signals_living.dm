@@ -35,6 +35,9 @@
 /// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)
 #define COMSIG_LIVING_ATTACKHAND_HUMAN "living_attackhand_human"
 
+/// From /obj/item/device/healthanalyzer/attack()
+#define COMSIG_LIVING_HEALTH_ANALYZED "living_health_analyzed"
+
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
 #define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
 

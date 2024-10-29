@@ -218,7 +218,7 @@
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
 
-/area/yautja
+/area/yautja_ship
 	name = "\improper Yautja Ship"
 	icon_state = "teleporter"
 	//music = "signal"

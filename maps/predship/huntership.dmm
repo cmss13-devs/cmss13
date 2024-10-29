@@ -3045,6 +3045,15 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
+"Zq" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/door_control/yautja_grounds{
+	pixel_y = 4
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
 "Zs" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Heavy Armory"
@@ -5605,7 +5614,7 @@ bL
 cP
 bL
 Hp
-Et
+Zq
 sx
 sx
 "}

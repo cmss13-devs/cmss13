@@ -528,6 +528,7 @@
 #include "code\datums\emergency_calls\dutch.dm"
 #include "code\datums\emergency_calls\emergency_call.dm"
 #include "code\datums\emergency_calls\ert_stations.dm"
+#include "code\datums\emergency_calls\hunting_grounds.dm"
 #include "code\datums\emergency_calls\feral_xenos.dm"
 #include "code\datums\emergency_calls\forecon.dm"
 #include "code\datums\emergency_calls\forsaken_xenos.dm"

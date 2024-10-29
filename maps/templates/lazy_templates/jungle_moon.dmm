@@ -1,0 +1,15136 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ag" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"ah" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"ak" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"am" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/meatsteak{
+	desc = "A chunk of meat taken from the most worthy foe that could be found in the known universe. Nothing more than a meal for a noble Elder.";
+	name = "Primordial Empress Steak";
+	pixel_y = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"ao" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"az" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"aG" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"aH" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"aO" = (
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds/temple)
+"be" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"bl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/soap,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"bx" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"bG" = (
+/obj/structure/kitchenspike{
+	icon_state = "spikebloodygreen"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"bH" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"bJ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"bQ" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"bT" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"bV" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"bW" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"ca" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"ce" = (
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"cl" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"cm" = (
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds/caves)
+"cB" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
+/area/adminlevel/yautja_grounds/caves)
+"cJ" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"cT" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"cZ" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"dh" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"di" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"do" = (
+/turf/closed/wall/cult,
+/area/adminlevel/yautja_grounds/temple)
+"dp" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"ds" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"du" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"dL" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"dO" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"dQ" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"em" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"es" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"eE" = (
+/obj/structure/sink{
+	pixel_y = 19
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"eY" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirtgrassborder/weedable{
+	icon_state = "grass1"
+	},
+/area/adminlevel/yautja_grounds)
+"fc" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"fk" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"fl" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"fm" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"fp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"fq" = (
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"fv" = (
+/obj/structure/prop/brazier,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"fy" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"fC" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"fG" = (
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"fH" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"fL" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"fN" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"fT" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"gf" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"gh" = (
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"gp" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"gq" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"gw" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"gD" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 24
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"gJ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"gN" = (
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"gP" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"gU" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"hc" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"hj" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds/caves)
+"hM" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ik" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"it" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"iC" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"iJ" = (
+/obj/structure/closet/coffin/predator,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"jb" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds)
+"jh" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"jj" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"jl" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"jo" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"jr" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/adminlevel/yautja_grounds)
+"js" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"ju" = (
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds/temple)
+"jx" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"jB" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"jI" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"jL" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"jN" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"kh" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	dir = 1;
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"kl" = (
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/adminlevel/yautja_grounds)
+"kn" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"kp" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"kr" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"kt" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"kx" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"kz" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds)
+"kT" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"kW" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"kX" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"kY" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"kZ" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"lj" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert0"
+	},
+/area/adminlevel/yautja_grounds)
+"ln" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"lH" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"lI" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirtgrassborder/weedable{
+	icon_state = "grass1"
+	},
+/area/adminlevel/yautja_grounds)
+"lN" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"lO" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"lP" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"ma" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"mh" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds/temple)
+"mo" = (
+/obj/structure/flora/jungle/plantbot1,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"mt" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"my" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"mE" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"nb" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"nk" = (
+/turf/open/gm/dirt{
+	icon_state = "desert2"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"nl" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"nn" = (
+/turf/open/gm/coast,
+/area/adminlevel/yautja_grounds)
+"nq" = (
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"ns" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"nu" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"ny" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"nA" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"nD" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"nH" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"nY" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"oa" = (
+/obj/structure/prop/brazier,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"of" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"oi" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"op" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"ot" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"oP" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"oU" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"oV" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"pa" = (
+/obj/structure/prop/brazier/torch,
+/turf/closed/wall/cult,
+/area/adminlevel/yautja_grounds/temple)
+"pc" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"ph" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"pi" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"pl" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"pm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"pn" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"py" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"pz" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_x = -28
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"pG" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"pJ" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt{
+	icon_state = "desert3"
+	},
+/area/adminlevel/yautja_grounds)
+"pV" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"qb" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"qi" = (
+/obj/structure/platform/mineral/sandstone/runed,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"qm" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"qo" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/weldingtool/hugetank,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"qp" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"qq" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"qC" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"qD" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 24
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"qF" = (
+/turf/open/gm/dirt{
+	icon_state = "desert2"
+	},
+/area/adminlevel/yautja_grounds)
+"qI" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"qP" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"qT" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"qW" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"rd" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"rh" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"rj" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"rs" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds)
+"rz" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast,
+/area/adminlevel/yautja_grounds/temple)
+"rS" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"rX" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"sc" = (
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"se" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"su" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"sy" = (
+/turf/open/gm/dirtgrassborder,
+/area/adminlevel/yautja_grounds)
+"sA" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/meatballsoup{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"sB" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"sE" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"sJ" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"sT" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"sY" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"ta" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"ti" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"tk" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
+	},
+/area/adminlevel/yautja_grounds)
+"tl" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 5;
+	tag = "icon-beach (NORTHEAST)"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"tm" = (
+/turf/open/gm/coast{
+	dir = 5;
+	tag = "icon-beach (NORTHEAST)"
+	},
+/area/adminlevel/yautja_grounds)
+"tq" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"tu" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"tw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt{
+	icon_state = "desert3"
+	},
+/area/adminlevel/yautja_grounds)
+"tz" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"tC" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"tI" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"tO" = (
+/obj/structure/bed/alien{
+	color = "#aba9a9"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"tW" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds/temple)
+"tY" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ud" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"ui" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"ul" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"up" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder,
+/area/adminlevel/yautja_grounds)
+"uq" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"us" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ut" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"uu" = (
+/obj/structure/kitchenspike{
+	icon_state = "spikebloody"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"uB" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"uH" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"uQ" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"vr" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"vL" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"vM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"vY" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"wa" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"wg" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds/temple)
+"wr" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ws" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"wt" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"wG" = (
+/turf/open/gm/dirt{
+	icon_state = "desert3"
+	},
+/area/adminlevel/yautja_grounds)
+"wI" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"wN" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"wO" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"wR" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"wT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"xe" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"xj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"xt" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"xx" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"xz" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"xB" = (
+/obj/effect/decal/cleanable/blood{
+	basecolor = "#20d450";
+	color = "#20d450"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds/temple)
+"xC" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"xF" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"xI" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"xJ" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"xL" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"yb" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast,
+/area/adminlevel/yautja_grounds/temple)
+"yc" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"yd" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"yf" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"yh" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"yk" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"yq" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"yI" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"yV" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner2"
+	},
+/area/adminlevel/yautja_grounds)
+"ze" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"zf" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"zj" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"zl" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_x = -28
+	},
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"zm" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"zn" = (
+/turf/closed/wall/cult,
+/area/adminlevel/yautja_grounds)
+"zu" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"zI" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8;
+	tag = "icon-comfychair (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"zU" = (
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"zY" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ag" = (
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Ak" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"An" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"As" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 3
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Au" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"Ax" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"AN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"AO" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"Bb" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Bo" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Bw" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirtgrassborder/weedable{
+	icon_state = "grass1"
+	},
+/area/adminlevel/yautja_grounds)
+"BC" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"BI" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"BJ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"BQ" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"BS" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"BU" = (
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"BX" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/sheet/animalhide/xeno{
+	anchored = 1;
+	name = "Warrior Hide";
+	pixel_y = 30
+	},
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Cf" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = 5
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = -7
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Co" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Ct" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Cv" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"CD" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"CE" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"CH" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"CN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/hand_labeler,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"CQ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"CS" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"CT" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"CU" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"CV" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"Da" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Dq" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Dx" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"DG" = (
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"DP" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"DR" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ef" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Eh" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Ei" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"Ek" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner2"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Em" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"Eq" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/adminlevel/yautja_grounds)
+"Ew" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Ex" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"EN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"EP" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ES" = (
+/obj/structure/prop/brazier/torch,
+/turf/closed/wall/cult,
+/area/adminlevel/yautja_grounds)
+"ET" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"EW" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"EX" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Fd" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/dirtgrassborder,
+/area/adminlevel/yautja_grounds)
+"Fn" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"Fo" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Fw" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Fy" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"FK" = (
+/obj/structure/prop/brazier,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"FU" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"FZ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 6;
+	tag = "icon-beach (SOUTHEAST)"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Gb" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Gc" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Gf" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Gj" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Gk" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Gz" = (
+/obj/effect/decal/remains/xeno,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"GC" = (
+/turf/open/gm/dirt{
+	icon_state = "desert0"
+	},
+/area/adminlevel/yautja_grounds)
+"GI" = (
+/turf/open/gm/dirt{
+	icon_state = "desert1"
+	},
+/area/adminlevel/yautja_grounds)
+"GN" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Hc" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert2"
+	},
+/area/adminlevel/yautja_grounds)
+"Hj" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Hr" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"HD" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"HE" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"HI" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/tool/kitchen/utensil/spoon{
+	desc = "It's a spoon. Covered in red slime and mold.";
+	pixel_x = -10;
+	pixel_y = 3
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"HJ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"HL" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"HP" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"HV" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ib" = (
+/turf/open/gm/dirt{
+	icon_state = "desert3"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Il" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"Ir" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_x = -28
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Iu" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Iw" = (
+/turf/open/gm/dirt{
+	icon_state = "desert0"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"IC" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Jg" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Jm" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Jr" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Jt" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert3"
+	},
+/area/adminlevel/yautja_grounds)
+"JC" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"JE" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"JG" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"JI" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 24
+	},
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"JR" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast,
+/area/adminlevel/yautja_grounds/temple)
+"JS" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Kf" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Km" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ks" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"KB" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"KC" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"KE" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt{
+	icon_state = "desert2"
+	},
+/area/adminlevel/yautja_grounds)
+"KG" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"KL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/tool/kitchen/utensil/spoon{
+	desc = "It's a spoon. Covered in red slime and mold.";
+	pixel_x = -10;
+	pixel_y = 3
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"KX" = (
+/obj/structure/prop/brazier,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ll" = (
+/obj/structure/prop/brazier,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Lu" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"LN" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"LV" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"LX" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"Mg" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"My" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ME" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"MK" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"MR" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"MS" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"MT" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Nd" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Ng" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"Nn" = (
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"No" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Nq" = (
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/adminlevel/yautja_grounds)
+"Nv" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"Nw" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"NA" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"NC" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
+/area/adminlevel/yautja_grounds)
+"NT" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds/temple)
+"NU" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Ob" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"Oc" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Oe" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"Of" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Oj" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds)
+"Or" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"OB" = (
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"OC" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"OJ" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"OM" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds/temple)
+"OO" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/closed/wall/cult,
+/area/adminlevel/yautja_grounds/temple)
+"OP" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"OW" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_x = -28
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Pe" = (
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/adminlevel/yautja_grounds)
+"Pn" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Py" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"PC" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"PD" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"PJ" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert_dug"
+	},
+/area/adminlevel/yautja_grounds)
+"Qb" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Qi" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/hatchet,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Qn" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"Qr" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"QD" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"QE" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"QK" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"QQ" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"QS" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Rl" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Rx" = (
+/obj/item/stool,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"RA" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"RK" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds/temple)
+"RR" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"RZ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Sc" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush{
+	desc = "The oranges aren't done yet.. this sucks.";
+	name = "orange tree";
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"Sk" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Sl" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Su" = (
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner2"
+	},
+/area/adminlevel/yautja_grounds)
+"SD" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"SE" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"SK" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"SQ" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"SU" = (
+/turf/open/gm/dirt{
+	icon_state = "desert1"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"SW" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/yautja_grounds)
+"Tf" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Tk" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"To" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Tp" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Ts" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Tt" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"Ty" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"TE" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"TI" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"TR" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Ub" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Ud" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"Uk" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"Ul" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Uy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/backpack/yautja,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"UE" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"UM" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"UP" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"UQ" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Vb" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"Vg" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Vk" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Vt" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"Vw" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"Vx" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Vy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/storage/box/monkeycubes/neaeracubes{
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/item/storage/box/monkeycubes/farwacubes{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"Vz" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"VX" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"VZ" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"Wi" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Wp" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Ws" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner2"
+	},
+/area/adminlevel/yautja_grounds)
+"Wv" = (
+/turf/open/gm/coast{
+	dir = 6;
+	tag = "icon-beach (SOUTHEAST)"
+	},
+/area/adminlevel/yautja_grounds)
+"WB" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"WE" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"WF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"WH" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"WI" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/gm/river,
+/area/adminlevel/yautja_grounds)
+"WK" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"WO" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"WR" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Xh" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Xj" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Xl" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"Xo" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Xq" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"Xr" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Xv" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"Xw" = (
+/obj/structure/showcase{
+	color = "#FFE55C";
+	desc = "This statue seems taller and somehow mightier than the others.. it makes you want to steer away from it.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "massive statue"
+	},
+/obj/item/clothing/mask/gas/yautja/damaged{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "pred_mask_elder_n";
+	name = "unsettling stone mask"
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "halfarmor_elder_n";
+	name = "gilded clan armor"
+	},
+/obj/item/clothing/shoes/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "y-boots2";
+	name = "gilded clan greaves"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Xx" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"Xy" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"XA" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/adminlevel/yautja_grounds)
+"XB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"XM" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/yautja_grounds)
+"XP" = (
+/obj/item/tool/kitchen/tray{
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/snacks/bearmeat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"XS" = (
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
+	},
+/area/adminlevel/yautja_grounds)
+"XT" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"XX" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/wall/rock/brown,
+/area/adminlevel/yautja_grounds)
+"Ya" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/adminlevel/yautja_grounds)
+"Yi" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 8;
+	color = "#2e1e21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"Yv" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Yw" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/space/basic,
+/area/adminlevel/yautja_grounds)
+"Yx" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/space/basic,
+/area/adminlevel/yautja_grounds)
+"Yy" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	color = "#2e1e21"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"YA" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	dir = 4;
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds)
+"YB" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_y = 26
+	},
+/turf/open/gm/dirtgrassborder,
+/area/adminlevel/yautja_grounds)
+"YC" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/tray,
+/obj/item/reagent_container/food/snacks/meatsteak{
+	desc = "A chunk of meat taken from the most worthy foe that could be found in the known universe. Nothing more than a meal for a noble Elder.";
+	name = "Primordial Empress Steak";
+	pixel_y = 1
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds/temple)
+"YD" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/adminlevel/yautja_grounds)
+"YE" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/adminlevel/yautja_grounds)
+"YU" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/yautja_grounds)
+"Zh" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/adminlevel/yautja_grounds)
+"Zq" = (
+/obj/structure/platform/mineral/sandstone/runed{
+	dir = 1;
+	color = "#2e1e21"
+	},
+/turf/open/gm/dirt,
+/area/adminlevel/yautja_grounds)
+"ZA" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"ZG" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
+	},
+/turf/open/gm/grass,
+/area/adminlevel/yautja_grounds)
+"ZI" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/adminlevel/yautja_grounds)
+"ZX" = (
+/obj/structure/platform_decoration/mineral/sandstone/runed{
+	color = "#2e1e21"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/adminlevel/yautja_grounds/temple)
+
+(1,1,1) = {"
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+Dq
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+"}
+(2,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(3,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+do
+do
+do
+do
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(4,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+pa
+gN
+gN
+gN
+gN
+gN
+gN
+pa
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(5,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+do
+do
+do
+do
+tW
+tW
+tW
+tW
+tW
+do
+gN
+gN
+ah
+ah
+ah
+ah
+gN
+gN
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(6,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+fv
+do
+fv
+do
+fv
+do
+do
+do
+do
+tW
+tW
+do
+gN
+BU
+Xj
+KL
+sA
+KL
+BU
+gN
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(7,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+BU
+BU
+BU
+ik
+BU
+ik
+BU
+ik
+BU
+BU
+pa
+do
+tW
+do
+gN
+BU
+KL
+YC
+KL
+Xj
+BU
+gN
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(8,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+BU
+BU
+BU
+ik
+BU
+ik
+BU
+ik
+BU
+gN
+BU
+do
+tW
+do
+gN
+gN
+zI
+zI
+zI
+zI
+gN
+gN
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(9,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+pa
+Yy
+Yy
+pa
+do
+do
+do
+do
+do
+gN
+BU
+BU
+do
+tW
+do
+pa
+gN
+gN
+gN
+gN
+gN
+gN
+pa
+do
+tW
+tW
+do
+do
+do
+do
+do
+do
+do
+xt
+Il
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(10,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+do
+do
+gN
+gN
+gN
+BU
+BU
+gN
+gN
+gN
+do
+do
+do
+do
+BU
+BU
+do
+tW
+tW
+do
+do
+do
+Kf
+Kf
+do
+do
+do
+tW
+tW
+do
+ES
+Fy
+Fy
+gh
+kn
+IC
+qq
+Gj
+ph
+Cv
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(11,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+do
+KX
+se
+NT
+KB
+KB
+KB
+KB
+Ei
+se
+KX
+do
+tW
+do
+BU
+BU
+do
+tW
+tW
+tW
+tW
+pa
+gN
+gN
+pa
+tW
+tW
+tW
+do
+do
+gh
+Sk
+Sk
+YU
+op
+oa
+xI
+ZA
+ph
+nq
+uB
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(12,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+do
+do
+se
+NT
+Ex
+aO
+aO
+aO
+aO
+Ek
+Ei
+se
+do
+do
+do
+BU
+BU
+do
+do
+do
+do
+tW
+do
+ET
+ET
+do
+tW
+tW
+tW
+do
+IC
+QQ
+WI
+my
+HD
+ca
+pn
+SK
+Tf
+ph
+nq
+nq
+nq
+Qn
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(13,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+Xy
+NT
+Ex
+UP
+ju
+Iw
+ju
+ju
+fG
+Ek
+Ei
+jN
+do
+do
+BU
+BU
+do
+FK
+yq
+do
+do
+do
+oP
+BJ
+do
+do
+do
+do
+do
+Xq
+Tk
+Ud
+az
+qC
+BC
+gh
+ZA
+su
+MR
+pG
+Fn
+rX
+Oj
+OB
+OB
+OB
+OB
+OB
+Xv
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+OB
+qI
+ot
+ot
+ot
+Xx
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(14,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+iJ
+dh
+wg
+ju
+ju
+ju
+ju
+OM
+ju
+rz
+be
+jN
+BU
+pa
+BU
+BU
+do
+qb
+mE
+BU
+pa
+tI
+Xr
+ME
+FK
+yq
+BU
+BU
+do
+UQ
+SK
+ZI
+ln
+TI
+gh
+gh
+ao
+An
+jB
+Ef
+oa
+xx
+Lu
+Jm
+tz
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+ui
+du
+OB
+OB
+OB
+OB
+OB
+OB
+gP
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(15,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+Xy
+dh
+wg
+ju
+DG
+ju
+ju
+Ib
+ju
+yb
+qP
+gN
+BU
+BU
+gN
+BU
+pa
+xz
+lP
+gN
+MT
+qb
+PD
+wO
+Ct
+Nw
+gN
+gN
+pa
+Yw
+EW
+Ul
+oa
+KG
+gh
+gh
+Ul
+oi
+rS
+QE
+QE
+QE
+Gj
+kh
+Zq
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+ui
+us
+sy
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(16,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+iJ
+dh
+wg
+ju
+ju
+ju
+ju
+xB
+ju
+yb
+jN
+BU
+gN
+BU
+gN
+BU
+Yy
+gN
+HV
+gN
+BU
+BU
+BU
+CQ
+nl
+gw
+se
+se
+RK
+Nn
+XT
+lH
+pn
+SK
+Fy
+Fy
+RZ
+ud
+Nn
+qW
+IC
+Hj
+Nn
+eY
+Dx
+OB
+OB
+OB
+OB
+OB
+OB
+qI
+Ng
+ot
+Xx
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(17,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+fv
+dh
+wg
+ju
+ju
+ju
+ju
+ju
+ju
+yb
+jN
+BU
+BU
+gN
+BU
+gN
+do
+gN
+Sl
+gN
+gN
+gN
+gN
+ME
+tI
+Xr
+gN
+gN
+do
+Nn
+XT
+Nn
+Nn
+Nn
+Nn
+Nn
+gh
+gh
+gh
+Ul
+Fy
+xI
+gh
+lI
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(18,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+iJ
+dh
+wg
+ju
+xB
+nk
+ju
+ju
+ju
+yb
+jN
+BU
+gN
+BU
+gN
+BU
+Yy
+gN
+HV
+gN
+BU
+BU
+BU
+wO
+Yi
+PD
+se
+se
+RK
+Nn
+XT
+qW
+IC
+qq
+Fy
+Fy
+kn
+sE
+Nn
+lH
+pn
+YA
+Nn
+Bw
+tz
+OB
+OB
+Hc
+OB
+OB
+OB
+OB
+Hc
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kl
+wG
+wG
+wG
+OB
+OB
+qF
+OB
+OB
+OB
+OB
+LN
+yV
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(19,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+Xy
+dh
+wg
+ju
+OM
+ju
+ju
+ju
+ju
+yb
+ul
+gN
+BU
+BU
+gN
+BU
+pa
+fl
+Gc
+gN
+BJ
+fH
+gw
+CQ
+ny
+JE
+gN
+gN
+pa
+Yx
+Qr
+Ul
+oa
+KG
+gh
+gh
+Ul
+oi
+js
+Sk
+jx
+Sk
+Tf
+kh
+Zq
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+Bb
+LN
+YD
+YD
+fc
+OB
+OB
+OB
+OB
+OB
+OB
+LN
+yV
+uB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(20,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+iJ
+dh
+wg
+ju
+ju
+ju
+SU
+ju
+ju
+JR
+Ei
+jN
+BU
+pa
+BU
+BU
+do
+fH
+oP
+BU
+pa
+tI
+Xr
+ME
+FK
+yq
+BU
+BU
+do
+gq
+qq
+tq
+yd
+VZ
+gh
+gh
+Iu
+ag
+Gf
+SE
+oa
+oU
+lO
+Vg
+Dx
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+LN
+yV
+nq
+nq
+tm
+uH
+OB
+OB
+OB
+OB
+OB
+nn
+nq
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(21,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+OO
+Xy
+xt
+tl
+vr
+ju
+ju
+ju
+ju
+WB
+FZ
+be
+jN
+do
+do
+BU
+BU
+do
+FK
+yq
+do
+do
+do
+mE
+MT
+do
+do
+do
+do
+do
+Xq
+Tk
+WI
+my
+HD
+BC
+gh
+ZA
+Oe
+fN
+pc
+nD
+gJ
+fc
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kZ
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+nn
+nq
+uB
+uB
+nq
+Qn
+OB
+OB
+OB
+OB
+OB
+nn
+uB
+nq
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(22,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+do
+do
+se
+xt
+tl
+mh
+mh
+mh
+mh
+FZ
+be
+se
+do
+do
+do
+BU
+BU
+do
+do
+do
+do
+tW
+do
+BU
+BU
+do
+tW
+tW
+tW
+do
+pn
+CD
+Ud
+az
+qC
+rd
+IC
+qq
+Gj
+ph
+uB
+nq
+nq
+Ws
+fc
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+nn
+nq
+nq
+nq
+uB
+Ws
+fc
+OB
+OB
+OB
+OB
+nn
+nq
+nq
+wT
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(23,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+do
+KX
+se
+xt
+ds
+ds
+ds
+ds
+be
+se
+KX
+do
+tW
+do
+BU
+BU
+do
+tW
+tW
+tW
+tW
+do
+BU
+BU
+do
+tW
+tW
+tW
+do
+zn
+gh
+QE
+QE
+yk
+op
+oa
+xI
+ZA
+ph
+nq
+CV
+nq
+nq
+Qn
+OB
+OB
+OB
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+of
+du
+OB
+OB
+zU
+Su
+XS
+Pe
+Su
+nq
+tm
+fc
+OB
+OB
+OB
+nn
+nq
+nq
+nq
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(24,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+do
+do
+gN
+gN
+gN
+BU
+BU
+gN
+gN
+gN
+do
+do
+do
+do
+BU
+BU
+do
+tW
+tW
+do
+do
+do
+BU
+BU
+do
+do
+do
+tW
+tW
+do
+pa
+Fy
+Fy
+gh
+RZ
+pn
+SK
+Tf
+ph
+nq
+nq
+nq
+nq
+Qn
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+CE
+ce
+ce
+sy
+OB
+OB
+Ks
+nn
+Qn
+Bb
+nn
+CV
+nq
+tm
+YD
+fc
+OB
+nn
+uB
+nq
+nq
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(25,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+pa
+Yy
+Yy
+pa
+do
+do
+do
+do
+do
+gN
+BU
+BU
+do
+tW
+do
+do
+fv
+Vk
+BU
+BU
+TR
+fv
+do
+do
+tW
+do
+do
+do
+do
+do
+do
+do
+do
+NT
+dL
+nq
+nq
+Cv
+nq
+kz
+kz
+Vz
+OB
+OB
+OB
+OB
+wG
+OB
+OB
+OB
+OB
+Em
+ce
+bT
+Sc
+Xx
+OB
+OB
+OB
+nn
+tm
+fc
+zU
+Su
+nq
+nq
+nq
+tm
+YD
+Wv
+nq
+nq
+Cv
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(26,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+BU
+BU
+BU
+ik
+BU
+ik
+BU
+ik
+BU
+gN
+BU
+do
+tW
+do
+MT
+qb
+PD
+se
+se
+wO
+yh
+mE
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+tW
+kz
+kz
+nq
+nq
+kz
+kz
+kz
+OB
+OB
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+qI
+ot
+ot
+Xx
+gP
+OB
+OB
+OB
+zU
+Su
+tm
+YD
+yV
+uB
+nq
+nq
+nq
+nq
+nq
+nq
+nq
+nq
+nq
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(27,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+BU
+BU
+BU
+ik
+BU
+ik
+BU
+ik
+BU
+BU
+pa
+do
+tW
+do
+BU
+se
+BU
+BU
+BU
+BU
+se
+BU
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+kz
+kz
+kz
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+EN
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+zU
+Su
+Cv
+nq
+nq
+tk
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
+Su
+wT
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(28,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+fv
+do
+fv
+do
+fv
+do
+do
+do
+do
+tW
+do
+do
+BU
+se
+BU
+BU
+BU
+BU
+se
+BU
+do
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+jb
+kz
+kz
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+zU
+Pe
+Pe
+Pe
+Oj
+OB
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(29,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+do
+do
+do
+do
+do
+tW
+tW
+tW
+tW
+do
+CQ
+ny
+oP
+gN
+BU
+BU
+gN
+BJ
+ny
+gw
+do
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kY
+OB
+kz
+kz
+OB
+OB
+OB
+OB
+gP
+OB
+OB
+zn
+zn
+Ty
+zn
+zn
+fm
+Pn
+tz
+OB
+OB
+OB
+OB
+OB
+OB
+Co
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+Ks
+jI
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(30,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+zY
+KX
+Xr
+gN
+BU
+BU
+gN
+ME
+KX
+yq
+do
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+YB
+OB
+OB
+kz
+kz
+kz
+OB
+OB
+OB
+OB
+OB
+zn
+zn
+Nn
+Nn
+Nn
+zn
+zn
+oa
+Zq
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(31,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+wO
+Ct
+kx
+ma
+tu
+tu
+OP
+Wi
+Ct
+PD
+do
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+ce
+sy
+OB
+OB
+OB
+kz
+kz
+OB
+OB
+OB
+OB
+zn
+ES
+eE
+gh
+gh
+gh
+Nn
+ES
+zn
+Dx
+OB
+OB
+OB
+OB
+OB
+Hc
+OB
+OB
+Jt
+OB
+OB
+OB
+Hc
+OB
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(32,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+se
+BU
+zY
+Ll
+sT
+sT
+Ll
+yq
+BU
+BU
+do
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+nA
+it
+du
+OB
+OB
+OB
+OB
+gP
+OB
+fm
+Pn
+zn
+RA
+gh
+HJ
+qo
+HJ
+gh
+Nn
+zn
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(33,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+se
+BU
+EX
+DP
+gN
+gN
+Km
+Nw
+BU
+se
+do
+tW
+tW
+tW
+tW
+tW
+kz
+us
+ce
+ak
+sy
+OB
+OB
+OB
+OB
+OB
+OB
+KC
+oa
+zn
+Vy
+gh
+gh
+AN
+Uy
+gh
+Nn
+Ty
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+CE
+ce
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(34,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+se
+BU
+ZX
+Da
+jl
+qm
+Vx
+JE
+BU
+se
+do
+tW
+tW
+tW
+tW
+tW
+kz
+ce
+bW
+ce
+sy
+OB
+gP
+OB
+OB
+OB
+OB
+zn
+zn
+zn
+zn
+ES
+HJ
+gh
+HJ
+gh
+Nn
+zn
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+lj
+OB
+OB
+OB
+OB
+OB
+OB
+Em
+ce
+bW
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(35,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+BU
+se
+zY
+JC
+BU
+BU
+vY
+yq
+se
+BU
+do
+tW
+tW
+tW
+tW
+tW
+kz
+ce
+bW
+ce
+sy
+OB
+OB
+OB
+OB
+OB
+zn
+zn
+BX
+Nn
+CN
+zn
+zn
+XP
+gh
+Ag
+ES
+zn
+OB
+OB
+OB
+tw
+OB
+OB
+OB
+OB
+gp
+of
+of
+du
+OB
+gp
+CE
+Mg
+ce
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(36,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+pa
+BJ
+DR
+em
+fH
+fH
+WO
+Xo
+oP
+pa
+do
+tW
+tW
+tW
+tW
+kz
+Hr
+bW
+ce
+ce
+sy
+OB
+OB
+OB
+OB
+zn
+ES
+Nn
+gh
+gh
+gh
+Nn
+ES
+zn
+Cf
+zn
+zn
+YB
+OB
+gp
+of
+of
+du
+OB
+gp
+of
+CE
+ce
+fp
+it
+of
+CE
+ce
+bW
+ce
+us
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(37,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+CH
+zY
+Xw
+iJ
+yq
+CH
+do
+do
+tW
+tW
+tW
+tW
+tW
+kz
+zm
+bW
+ce
+ce
+sy
+OB
+OB
+OB
+OB
+zn
+Nn
+gh
+tO
+tO
+tO
+gh
+cZ
+zn
+zn
+zn
+Gk
+jh
+pm
+Ax
+UM
+zn
+zn
+Ty
+zn
+zn
+ce
+bW
+bT
+ce
+ce
+ce
+bW
+bW
+ce
+yc
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(38,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+do
+do
+pa
+do
+do
+pa
+do
+do
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+ce
+bW
+ce
+ce
+it
+du
+OB
+OB
+OB
+Ty
+Nn
+gh
+Qi
+bl
+nu
+gh
+Nn
+zn
+oa
+WE
+Ya
+OB
+xJ
+oa
+zn
+ES
+Nn
+Nn
+Nn
+ES
+zn
+ti
+bW
+cJ
+JS
+ce
+ce
+bW
+ce
+aH
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(39,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+kz
+QD
+Wp
+bW
+ce
+ce
+sy
+OB
+OB
+gP
+zn
+Nn
+gh
+tO
+tO
+tO
+gh
+fk
+zn
+Ob
+Vb
+OB
+OB
+UE
+zn
+zn
+Nn
+gh
+gh
+gh
+Nn
+zn
+zn
+Mg
+ce
+bW
+ce
+bT
+bW
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(40,1,1) = {"
+Dq
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+tW
+kz
+kz
+QD
+QD
+QD
+bW
+dp
+ce
+sy
+OB
+OB
+OB
+zn
+ES
+Nn
+gh
+gh
+gh
+Nn
+ES
+zn
+Vz
+OB
+OB
+KE
+qI
+zn
+Nn
+gh
+Rx
+Rx
+Rx
+gh
+Nn
+zn
+Gk
+ot
+ot
+lN
+ce
+bW
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(41,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+cT
+bW
+it
+du
+OB
+OB
+OB
+zn
+zn
+Nn
+Nn
+Nn
+zn
+zn
+jr
+OB
+OB
+OB
+OB
+OB
+Ty
+Nn
+gh
+HI
+am
+HI
+gh
+Nn
+zn
+Xx
+OB
+OB
+qI
+lN
+bW
+WK
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(42,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+kz
+QD
+QD
+QD
+QD
+iC
+ce
+sy
+OB
+OB
+OB
+OB
+zn
+zn
+Ty
+zn
+zn
+oa
+Zq
+gP
+OB
+OB
+OB
+gp
+zn
+Nn
+gh
+Rx
+Rx
+Rx
+gh
+Nn
+zn
+OB
+OB
+OB
+PJ
+qI
+lN
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(43,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+ce
+it
+du
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+kr
+Ew
+Dx
+OB
+OB
+jI
+OB
+wa
+zn
+zn
+Nn
+gh
+gh
+gh
+Nn
+zn
+zn
+OB
+OB
+OB
+gP
+OB
+Em
+bW
+bW
+ce
+ui
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(44,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+Ak
+ce
+ce
+it
+of
+du
+OB
+OB
+OB
+OB
+OB
+gP
+GI
+OB
+OB
+OB
+OB
+OB
+KC
+oa
+zn
+ES
+bG
+TE
+uu
+ES
+zn
+OB
+OB
+OB
+OB
+OB
+OB
+Em
+ce
+bW
+ce
+ce
+zm
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(45,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+Gk
+lN
+ce
+ce
+it
+du
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+pJ
+OB
+kr
+Ew
+xF
+zn
+zn
+zn
+zn
+zn
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+Em
+ak
+ce
+ce
+Gk
+lN
+us
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(46,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+QD
+Nd
+bW
+Gk
+Xx
+qI
+ot
+lN
+ce
+it
+du
+OB
+OB
+OB
+WH
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+CE
+ce
+ce
+Gk
+Xx
+qI
+XA
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(47,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+LX
+bW
+bT
+ce
+ce
+bW
+di
+QD
+us
+ce
+QD
+kz
+kz
+kz
+kz
+QD
+QD
+ta
+sy
+WH
+OB
+OB
+qI
+lN
+ce
+it
+du
+OB
+OB
+OB
+OB
+OB
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+Em
+ce
+ce
+ce
+SQ
+sy
+OB
+OB
+Em
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(48,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+kz
+ce
+Nd
+Nd
+aH
+QD
+ce
+ta
+cT
+HP
+us
+ce
+ce
+ce
+kz
+kz
+kz
+QD
+Bo
+bW
+sy
+OB
+OB
+qF
+OB
+Em
+ce
+ce
+it
+du
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+of
+fT
+ce
+bW
+Gk
+ot
+Xx
+OB
+OB
+Em
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(49,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+QD
+kz
+kz
+ce
+Bo
+us
+di
+bW
+bW
+us
+us
+Nd
+us
+bW
+ce
+ce
+ce
+kz
+kz
+QD
+bW
+bT
+sy
+wG
+gP
+OB
+gp
+CE
+ce
+ak
+ce
+it
+du
+OB
+OB
+OB
+OB
+kl
+OB
+gP
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+CE
+ce
+ce
+ce
+bW
+bW
+sy
+OB
+OB
+OB
+gp
+CE
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(50,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+QD
+kz
+kz
+ce
+ta
+us
+us
+bW
+QD
+us
+pV
+us
+ta
+bW
+bW
+bW
+bW
+ce
+QD
+QD
+ui
+ce
+it
+of
+du
+OB
+Em
+ce
+bW
+bW
+ce
+xe
+sy
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+CE
+ce
+ce
+ce
+ce
+bW
+bW
+fy
+it
+of
+du
+OC
+YE
+HP
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(51,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+kz
+kz
+kz
+ce
+di
+us
+us
+QD
+QD
+us
+us
+us
+di
+bW
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+us
+gf
+it
+of
+CE
+ak
+ce
+bW
+bW
+ce
+it
+of
+du
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+gp
+of
+CE
+ce
+ce
+bW
+bW
+bW
+bW
+ce
+ce
+ce
+ce
+it
+uQ
+BS
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(52,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+kz
+kz
+kz
+ce
+ce
+py
+uq
+Nd
+QD
+ce
+QD
+us
+us
+us
+aH
+Nd
+bW
+bT
+ce
+QD
+QD
+QD
+QD
+nA
+ce
+us
+nA
+ce
+us
+Mg
+QD
+QD
+ce
+ce
+ce
+it
+du
+OB
+OB
+OB
+OB
+gP
+OB
+OB
+OB
+gp
+CE
+ce
+ce
+ce
+bW
+bW
+dp
+bW
+bW
+nA
+ui
+QD
+QD
+us
+us
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(53,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+kz
+kz
+ce
+ce
+ce
+QD
+cT
+us
+aH
+ce
+QD
+ce
+Bo
+us
+us
+us
+ce
+Gk
+ot
+QD
+QD
+QD
+QD
+QD
+us
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+yc
+Mg
+ce
+sy
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+Em
+xe
+ce
+ce
+bW
+JS
+ce
+kX
+us
+ws
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(54,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+bW
+aH
+us
+di
+BQ
+ce
+bW
+bW
+us
+QD
+QD
+No
+Xx
+OB
+qF
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ui
+QD
+QD
+kt
+zm
+us
+ce
+ak
+it
+of
+of
+of
+of
+du
+OB
+OB
+gp
+CE
+ce
+ce
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(55,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+bW
+bW
+ce
+kX
+ce
+HP
+bW
+ce
+xe
+ce
+bW
+ce
+sy
+OB
+OB
+OB
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+yc
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+us
+ce
+ce
+it
+of
+of
+CE
+ce
+ce
+bW
+bW
+ce
+us
+HP
+QD
+QD
+di
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(56,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+ce
+CS
+ce
+QD
+ce
+ce
+bW
+QD
+ce
+ce
+ce
+bW
+ce
+QD
+QD
+ce
+To
+ce
+it
+du
+GC
+OB
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+ZG
+CT
+QS
+tC
+bW
+ce
+ce
+ce
+aH
+QD
+ui
+ce
+ce
+ak
+ce
+ce
+ce
+ce
+bW
+ce
+kX
+us
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(57,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+ce
+CT
+EP
+ce
+ce
+bW
+ce
+ce
+ce
+bW
+ce
+ce
+ak
+ce
+ce
+bW
+QD
+ce
+rj
+of
+of
+QD
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+nA
+CT
+jL
+jL
+qT
+bW
+bW
+ce
+NU
+us
+us
+QD
+QD
+ce
+ce
+ce
+ce
+bW
+bW
+ce
+ce
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(58,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+As
+jL
+EP
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+SQ
+CT
+EP
+ce
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+QD
+us
+ce
+nb
+nb
+Tp
+ce
+ce
+bW
+bW
+ce
+ce
+ce
+WF
+QD
+QD
+ce
+ce
+ce
+JS
+ce
+nA
+ce
+bW
+bW
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(59,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+ce
+fp
+ce
+As
+jL
+jL
+Xh
+PC
+ce
+Mg
+gU
+ce
+bW
+ce
+ce
+bW
+ce
+Rl
+jL
+bJ
+EP
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+QD
+kt
+ce
+Or
+qT
+ce
+ce
+ce
+ce
+ce
+bW
+bW
+ce
+ce
+ce
+bW
+ce
+ce
+bW
+ce
+us
+QD
+aH
+ce
+bW
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(60,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+ui
+ui
+HP
+ce
+pi
+jL
+jL
+qT
+QD
+ce
+ce
+ce
+ce
+bW
+ce
+aG
+PC
+vL
+nb
+nb
+RR
+qT
+ce
+QD
+QD
+kz
+kz
+nq
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+bW
+ce
+bW
+bW
+bW
+ce
+HP
+yc
+QD
+QD
+QD
+cT
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(61,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+us
+kX
+ce
+ce
+ce
+pi
+qT
+ce
+bW
+bW
+QD
+CT
+QS
+EP
+ce
+ws
+ce
+pi
+MK
+qT
+bW
+bW
+ce
+ce
+QD
+kz
+nq
+nq
+nq
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+dp
+ce
+bW
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+us
+cT
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(62,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+QD
+ce
+Ub
+ws
+HP
+ce
+QD
+ce
+QD
+ce
+ce
+JS
+ce
+CT
+jL
+nb
+Qb
+ce
+ws
+kX
+QD
+ce
+Ts
+ce
+ce
+QD
+ce
+kz
+kz
+nq
+nq
+XS
+Oj
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+ce
+Nd
+HP
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(63,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+QD
+ce
+bW
+us
+kX
+ui
+QD
+kX
+kX
+QD
+QD
+ce
+ce
+As
+nb
+nb
+qT
+ce
+us
+hM
+kX
+ce
+ce
+bW
+aG
+PC
+ce
+kz
+kz
+nq
+nq
+Qn
+es
+OB
+OB
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+ce
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(64,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+QD
+bW
+ce
+ui
+ws
+us
+QD
+HP
+kX
+QD
+bW
+ce
+Ts
+pi
+MK
+qT
+ce
+ce
+jj
+ws
+ws
+HP
+QD
+bW
+ce
+ce
+ce
+kz
+kz
+Pe
+Pe
+Oj
+OB
+GI
+GC
+OB
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+HP
+WR
+HP
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+ce
+bW
+ce
+QD
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(65,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+QD
+QD
+us
+bW
+ce
+ui
+QD
+kX
+HP
+kX
+ws
+QD
+bW
+ce
+gU
+ce
+ce
+QD
+bW
+ce
+QD
+us
+HP
+tY
+ce
+ce
+bT
+ce
+kz
+kz
+kz
+OB
+kl
+wG
+wG
+OB
+OB
+OB
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+bW
+ce
+ce
+QD
+QD
+ce
+ce
+bT
+ce
+bW
+QD
+bW
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(66,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+QD
+QD
+us
+ta
+ce
+QD
+QD
+kX
+kX
+ce
+ce
+ce
+bW
+QD
+QD
+Ub
+ce
+ce
+ce
+ce
+ws
+QD
+QD
+ws
+ce
+ce
+bW
+ce
+kz
+kz
+XX
+kl
+OB
+OB
+OB
+es
+OB
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+zm
+ce
+bW
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+sB
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(67,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+QD
+QD
+kX
+bW
+gf
+ce
+QD
+QD
+us
+ws
+ns
+zu
+bW
+ce
+QD
+QD
+aG
+PC
+ce
+ce
+QD
+QD
+us
+ns
+ws
+ce
+bW
+ce
+ce
+kz
+kz
+kz
+OB
+OB
+OB
+OB
+OB
+kz
+kz
+QD
+QD
+ce
+ce
+Bo
+bW
+kX
+aH
+QD
+QD
+QD
+ce
+CT
+Gz
+ce
+ce
+ce
+HP
+HP
+us
+us
+us
+bW
+kX
+ui
+kX
+ce
+us
+ws
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(68,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+QD
+ws
+QD
+QD
+kX
+HP
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+Mg
+QD
+us
+us
+HP
+us
+kX
+bW
+ce
+jo
+QD
+kz
+kz
+kz
+OB
+OB
+OB
+OB
+kz
+kz
+QD
+QD
+ce
+us
+Nd
+bW
+ta
+wr
+ui
+QD
+ce
+CT
+jL
+qT
+ce
+QD
+uq
+HP
+LV
+QD
+fq
+fq
+ot
+fq
+yf
+us
+us
+Nd
+us
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(69,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+ce
+bW
+bW
+ce
+aH
+us
+ui
+QD
+us
+QD
+QD
+jo
+ce
+ce
+ce
+bW
+bW
+bW
+QD
+QD
+us
+wr
+kX
+QD
+ce
+NA
+ws
+kT
+kz
+kz
+kz
+XX
+OB
+OB
+rs
+kz
+QD
+QD
+ws
+ce
+bW
+ws
+ce
+HP
+Nd
+fL
+ws
+kX
+pi
+ab
+PC
+QD
+us
+qp
+us
+zu
+QD
+fq
+wN
+OB
+Jr
+yf
+Eq
+yf
+QD
+Bo
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(70,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+ce
+jo
+bW
+bW
+ce
+ws
+us
+kX
+us
+us
+ce
+ce
+bW
+QD
+My
+ce
+ce
+bW
+ce
+ce
+ce
+ce
+ce
+ce
+Ub
+bW
+ce
+QK
+us
+nH
+us
+Fd
+OB
+GC
+kz
+kz
+QD
+QD
+us
+us
+ce
+ce
+ce
+QD
+us
+Nd
+bH
+HP
+QD
+ak
+ce
+QD
+QD
+us
+kX
+QD
+QD
+Nq
+XM
+OB
+xj
+sc
+XM
+fq
+qD
+HP
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(71,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+bW
+ce
+ce
+wr
+us
+QD
+QD
+QD
+ce
+bW
+bW
+ce
+ce
+QD
+QD
+ce
+HP
+QD
+aG
+PC
+HP
+ce
+ce
+bW
+Bo
+Nd
+rs
+HP
+dQ
+oV
+OB
+kz
+kz
+QD
+ce
+ce
+us
+kX
+ce
+QD
+QD
+QD
+Nd
+cT
+us
+aH
+QD
+QD
+QD
+di
+us
+HP
+us
+Jg
+fq
+BI
+sc
+xj
+OB
+Bb
+fq
+kp
+ws
+vM
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(72,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+ce
+bW
+ce
+us
+us
+QD
+QD
+QD
+QD
+ce
+bW
+fp
+bW
+QD
+ce
+ce
+QD
+ta
+ce
+us
+us
+ce
+Mg
+QD
+ce
+bW
+Fo
+XX
+kz
+HP
+HL
+Oc
+XX
+kz
+kz
+QD
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+HP
+ns
+us
+ce
+QD
+QD
+us
+ce
+Ub
+ws
+up
+pl
+Uk
+sc
+Gb
+OB
+xj
+fq
+gD
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(73,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+bW
+ce
+ce
+bW
+QD
+ce
+ce
+ws
+ws
+us
+QD
+ws
+us
+ws
+bW
+ce
+JS
+bW
+ce
+ce
+ce
+QD
+ce
+kz
+kz
+kz
+QD
+bW
+bW
+QD
+QD
+QD
+QD
+QD
+QD
+di
+kX
+ws
+Nd
+us
+HP
+Bo
+aG
+cl
+us
+ws
+sy
+pl
+Vt
+OB
+xj
+xj
+OB
+Jr
+Em
+bW
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(74,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+bW
+ce
+us
+QD
+HP
+kX
+ce
+Fw
+ce
+QD
+bW
+bW
+ce
+ce
+us
+HP
+us
+QD
+QD
+ws
+kX
+ce
+ce
+kz
+ce
+CT
+bJ
+EP
+ce
+ce
+SQ
+kz
+QD
+QD
+bW
+bW
+ce
+ce
+QD
+QD
+QD
+QD
+kX
+Py
+HP
+ws
+QD
+us
+Nd
+Nd
+ta
+HP
+py
+bQ
+fq
+bV
+sJ
+nY
+sc
+OB
+fq
+CU
+HP
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(75,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+ce
+ce
+bW
+kX
+HP
+kX
+ws
+ce
+ce
+ce
+ce
+ce
+bW
+ce
+QD
+QD
+QD
+HP
+Eh
+HP
+ze
+us
+kX
+py
+kz
+vL
+jL
+jL
+Qb
+ce
+ce
+ce
+QD
+QD
+QD
+ce
+Yv
+PC
+ce
+ce
+ce
+kX
+us
+us
+ns
+QD
+QD
+di
+us
+kX
+ns
+di
+di
+QD
+QD
+fq
+qi
+xL
+Vw
+yI
+fC
+Nq
+JI
+rh
+PC
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(76,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+NU
+bW
+kX
+kX
+ce
+ce
+QD
+ce
+ce
+ce
+gf
+HP
+ce
+ce
+bW
+us
+us
+us
+ws
+uq
+MS
+HP
+bW
+bW
+Or
+jL
+jL
+qT
+ce
+QD
+ce
+QD
+QD
+QD
+ws
+us
+us
+QD
+QD
+ce
+Nd
+us
+zu
+cT
+QD
+kX
+kX
+us
+us
+QD
+QD
+xe
+ce
+wR
+fq
+Au
+sY
+VX
+xj
+JG
+Nq
+xC
+ce
+bW
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(77,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+QD
+ce
+aG
+PC
+ce
+QD
+QD
+ce
+ce
+QD
+us
+ce
+ce
+HP
+us
+QD
+us
+QD
+HP
+us
+ws
+ce
+OJ
+gf
+Rl
+Qb
+ce
+jo
+ce
+ak
+QD
+QD
+QD
+us
+us
+ce
+ce
+QD
+ce
+QD
+QD
+us
+Nd
+QD
+QD
+us
+ce
+QD
+QD
+ce
+ce
+ce
+us
+fq
+zj
+AO
+fC
+fq
+zj
+fq
+kX
+My
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(78,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+bW
+ce
+fp
+ce
+NU
+QD
+QD
+QD
+kX
+aG
+PC
+ce
+ce
+ce
+WF
+QD
+HP
+us
+us
+ce
+My
+ce
+ce
+vL
+jL
+MK
+bJ
+EP
+ce
+Gk
+QD
+QD
+QD
+ce
+kX
+QD
+ce
+bW
+bW
+QD
+us
+HP
+us
+HP
+QD
+ce
+ce
+ce
+QD
+ws
+ce
+bW
+QD
+QD
+fq
+Nq
+fq
+fq
+zl
+Ir
+ce
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(79,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+vL
+EP
+ce
+ce
+ce
+ce
+QD
+aH
+us
+ws
+vL
+EP
+bW
+cT
+ce
+QD
+QD
+us
+bW
+HP
+ce
+ce
+lN
+pi
+qT
+QD
+pi
+qT
+ce
+sy
+QD
+QD
+QD
+ce
+QD
+QD
+ce
+bW
+ce
+QD
+us
+ns
+kT
+HP
+bW
+ce
+NU
+HP
+us
+us
+kX
+bW
+QD
+QD
+zl
+pz
+Ir
+OW
+ce
+QD
+QD
+ce
+ce
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(80,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+As
+jL
+EP
+ce
+aG
+mo
+HP
+di
+us
+ws
+pi
+Qb
+ce
+bW
+ce
+ce
+jo
+ce
+ce
+ce
+bW
+ce
+kz
+kz
+QD
+QD
+ce
+ce
+ce
+sy
+OB
+QD
+QD
+QD
+QD
+QD
+ws
+us
+us
+QD
+kX
+us
+kX
+us
+CT
+bJ
+EP
+ce
+HP
+QD
+QD
+bW
+ak
+ce
+ce
+QD
+QD
+QD
+ce
+bW
+ce
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(81,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+Or
+MK
+qT
+QD
+ce
+ws
+us
+kX
+us
+us
+ce
+ce
+ce
+Zh
+ce
+ce
+ce
+ws
+ce
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+HP
+kX
+kW
+of
+Of
+PC
+QD
+us
+QD
+QD
+us
+kX
+QD
+ui
+QD
+us
+us
+pi
+jL
+jL
+EP
+di
+QD
+kX
+ce
+aG
+PC
+ce
+ce
+ce
+QD
+us
+us
+Nd
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(82,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+CS
+zu
+QD
+HP
+ce
+ce
+ce
+QD
+us
+us
+us
+us
+aH
+ce
+ce
+jo
+ce
+ce
+QD
+ce
+kX
+QD
+QD
+ce
+ce
+QD
+QD
+us
+ws
+ce
+pi
+MK
+qT
+ws
+us
+kX
+gf
+ce
+ce
+ce
+My
+QD
+QD
+kX
+HE
+ws
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(83,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+bW
+bW
+ce
+bW
+bW
+ce
+HP
+di
+ce
+ce
+ce
+kX
+ce
+us
+Xl
+ui
+aH
+ce
+ce
+QD
+QD
+QD
+us
+QD
+ce
+gf
+ce
+ce
+CS
+ws
+Nd
+Nd
+ce
+QD
+ce
+bW
+ce
+aH
+aH
+kX
+kX
+ce
+ce
+ws
+us
+us
+us
+HP
+QD
+QD
+ce
+ce
+QD
+QD
+QD
+QD
+Nd
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(84,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+bW
+ce
+Ub
+HP
+us
+us
+QD
+ce
+jo
+QD
+QD
+HP
+ce
+ns
+ns
+ce
+QD
+QD
+QD
+us
+us
+ws
+ce
+CT
+EP
+ce
+ce
+ce
+Nd
+ce
+ce
+ce
+bW
+bW
+Fw
+QD
+QD
+di
+QD
+ws
+kX
+us
+us
+QD
+ta
+NU
+ce
+QD
+fy
+QD
+QD
+QD
+QD
+us
+us
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(85,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+bW
+ce
+ce
+ce
+us
+QD
+ce
+ce
+QD
+QD
+zu
+kX
+di
+ns
+HP
+ce
+us
+QD
+QD
+QD
+kX
+kX
+Ub
+jL
+jL
+EP
+ce
+bW
+bW
+ce
+QD
+kX
+ce
+ui
+us
+QD
+kX
+py
+us
+us
+HP
+QD
+QD
+bW
+bW
+ce
+ce
+us
+QD
+QD
+ce
+QD
+ce
+ce
+ws
+ce
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(86,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+bW
+ce
+ce
+us
+HP
+ak
+ce
+QD
+us
+gf
+di
+QD
+QD
+us
+ce
+us
+us
+us
+HP
+zu
+ce
+ce
+pi
+mt
+Qb
+ce
+ce
+ce
+QD
+QD
+QD
+ce
+ui
+QD
+HP
+us
+kX
+wt
+us
+QD
+QD
+us
+Nd
+ce
+QD
+ce
+ce
+ce
+CT
+EP
+Yv
+PC
+ce
+Gk
+ot
+lN
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(87,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+QD
+ce
+ce
+ce
+bW
+ce
+HP
+py
+HP
+QD
+ce
+QD
+us
+zu
+kX
+QD
+QD
+QD
+QD
+us
+QD
+us
+ws
+kX
+ak
+ce
+ce
+pi
+qT
+ce
+QD
+bW
+ce
+QD
+ce
+us
+QD
+py
+py
+Nd
+us
+ws
+QD
+QD
+ce
+us
+fy
+ce
+ce
+SQ
+ce
+CT
+jL
+qT
+ce
+Fo
+Gk
+Xx
+OB
+Em
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(88,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+ce
+ce
+ce
+cT
+us
+QD
+QD
+ce
+ce
+QD
+Xl
+QD
+HP
+QD
+ui
+HP
+ws
+kX
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+QD
+ce
+ce
+us
+us
+kX
+ui
+kX
+HP
+ns
+di
+ui
+wI
+cT
+bW
+ce
+ce
+QD
+ce
+ce
+CT
+nb
+jL
+EP
+ce
+ce
+sy
+OB
+OB
+Em
+ui
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(89,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+kz
+kz
+kz
+ce
+QD
+QD
+ce
+us
+ns
+kX
+us
+ws
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+QD
+ce
+bT
+QD
+QD
+ce
+ws
+bW
+bW
+ce
+ce
+ce
+bW
+bW
+bW
+ce
+ce
+ce
+ce
+ce
+us
+us
+ce
+bx
+nb
+jL
+qT
+ce
+ce
+it
+of
+of
+CE
+kX
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(90,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+kz
+ce
+ce
+ce
+QD
+QD
+us
+ce
+ce
+CS
+ce
+QD
+QD
+QD
+ws
+QD
+ce
+ce
+SQ
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+ce
+ce
+kX
+ta
+aG
+cl
+bW
+ce
+ce
+kX
+us
+ce
+ce
+us
+us
+ce
+bW
+Rl
+jL
+qT
+ce
+QD
+us
+us
+QD
+ce
+us
+ws
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(91,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+bW
+ce
+ce
+SQ
+ce
+ce
+ce
+ce
+Fo
+ce
+ce
+ce
+kX
+QD
+ws
+us
+kX
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+us
+us
+us
+us
+bW
+ce
+us
+ui
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+pi
+qT
+ce
+us
+QD
+kX
+ws
+ce
+bW
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(92,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+fy
+CT
+EP
+aG
+PC
+ui
+HP
+QD
+HP
+ce
+ce
+CT
+bJ
+EP
+ce
+SW
+QD
+QD
+QD
+QD
+QD
+kX
+ce
+ce
+QD
+ws
+us
+bW
+ce
+ws
+ws
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+us
+ws
+QD
+QD
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(93,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+bW
+bW
+CT
+jL
+jL
+EP
+QD
+ui
+us
+zu
+ce
+ce
+ce
+pi
+MK
+qT
+bT
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+ce
+ce
+bW
+kX
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+QD
+QD
+us
+QD
+ce
+bW
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(94,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+ot
+ot
+lN
+bT
+ce
+CT
+nb
+jL
+MK
+qT
+ce
+ws
+kX
+HP
+ce
+My
+ce
+QD
+ce
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+us
+ws
+Nd
+QD
+QD
+ce
+ce
+QD
+QD
+QD
+kX
+ce
+ws
+QD
+QD
+ce
+bW
+bW
+QD
+ce
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(95,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+OB
+OB
+qI
+lN
+ce
+pi
+MK
+XB
+bW
+ce
+ce
+QD
+zu
+ce
+ce
+ce
+ce
+ce
+ce
+bW
+ce
+bW
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+zf
+us
+bW
+bW
+bW
+us
+QD
+QD
+us
+ws
+bW
+Nd
+us
+QD
+bW
+ce
+ce
+ce
+bW
+Nd
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(96,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+OB
+OB
+Xv
+Tt
+kX
+ce
+ce
+ce
+dp
+ce
+ce
+QD
+QD
+QD
+xe
+ce
+aG
+PC
+OJ
+ce
+ce
+CS
+ce
+kz
+QD
+QD
+kz
+QD
+QD
+QD
+QD
+QD
+bW
+ce
+ws
+ce
+Bo
+Nd
+ce
+QD
+QD
+QD
+ce
+ce
+Nd
+us
+ce
+ce
+bW
+bW
+us
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(97,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+OB
+OB
+OB
+Nv
+XA
+aG
+PC
+ce
+ce
+bW
+bW
+kX
+QD
+QD
+QD
+QD
+ce
+bW
+ce
+QD
+ce
+ce
+ce
+kz
+QD
+QD
+kz
+kz
+kz
+QD
+QD
+QD
+ce
+ce
+QD
+QD
+us
+ce
+ce
+bW
+bW
+ce
+ce
+QD
+ws
+us
+kX
+ui
+ui
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(98,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+OB
+OB
+OB
+OB
+FU
+ws
+CT
+EP
+ce
+ce
+bW
+ce
+QD
+ce
+ce
+ce
+ce
+QD
+ce
+ce
+ws
+ta
+us
+HP
+QD
+QD
+QD
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+ws
+us
+ce
+QD
+ce
+bW
+Nd
+bW
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(99,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+OB
+OB
+OB
+OB
+dO
+SD
+As
+jL
+EP
+aG
+PC
+ce
+ce
+ce
+CT
+QS
+EP
+ce
+ce
+SQ
+bW
+ws
+zu
+us
+QD
+QD
+QD
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+us
+us
+kX
+ws
+ce
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(100,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+hj
+cm
+cm
+cm
+cm
+OB
+OB
+OB
+OB
+hc
+Tt
+As
+jL
+Qb
+ce
+ce
+ce
+CT
+bJ
+jL
+nb
+Qb
+ce
+CS
+ce
+GN
+ce
+QD
+QD
+kz
+QD
+QD
+QD
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(101,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+hj
+hj
+cm
+cm
+cm
+OB
+OB
+OB
+OB
+OB
+Tt
+pi
+jL
+Qb
+bW
+ce
+ce
+pi
+MK
+jL
+jL
+qT
+bW
+ce
+ce
+bW
+ce
+ce
+QD
+kz
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(102,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+cm
+OB
+OB
+OB
+OB
+OB
+ut
+ce
+pi
+qT
+ce
+ce
+Ub
+QD
+ce
+pi
+qT
+bW
+fp
+ce
+ce
+ce
+xe
+ce
+ws
+kz
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(103,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+kz
+OB
+OB
+OB
+OB
+Xv
+dO
+XA
+ce
+NU
+fp
+ce
+ce
+ce
+bW
+To
+bW
+ce
+QD
+QD
+ot
+ot
+ot
+lN
+aG
+kz
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(104,1,1) = {"
+cB
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+kz
+OB
+OB
+OB
+OB
+OB
+OB
+FU
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+QD
+OB
+OB
+OB
+Em
+ce
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(105,1,1) = {"
+cB
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+OB
+OB
+OB
+QD
+Tt
+fp
+ce
+ce
+ce
+QD
+ce
+xe
+ce
+ce
+QD
+ce
+QD
+QD
+OC
+OB
+Em
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(106,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+ce
+ce
+ce
+QD
+QD
+QD
+QD
+QD
+OB
+OB
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(107,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(108,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+cm
+cm
+cm
+hj
+hj
+hj
+cm
+cm
+cm
+cm
+cm
+cm
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(109,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+kz
+QD
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(110,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(111,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(112,1,1) = {"
+cB
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+hj
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+kz
+NC
+"}
+(113,1,1) = {"
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+cB
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+"}

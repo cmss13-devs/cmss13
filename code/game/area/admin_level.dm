@@ -142,6 +142,23 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
+///Predator Hunting Grounds areas
+
+/area/adminlevel/yautja_grounds
+	name = "\improper Yautja Hunting Grounds"
+	icon_state = "green"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/adminlevel/yautja_grounds/caves
+	name = "\improper Yautja Hunting Grounds Caves"
+	icon_state = "cave"
+	ambience_exterior = AMBIENCE_CAVE
+
+/area/adminlevel/yautja_grounds/temple
+	name = "\improper Yautja Hunting Grounds Temple"
+	icon_state = "bluenew"
+	ambience_exterior = AMBIENCE_CAVE
+
 //Simulation area
 /area/adminlevel/simulation
 	name = "Simulated Reality"

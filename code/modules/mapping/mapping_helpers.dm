@@ -1,3 +1,5 @@
+/// Generic system for processing events after a certain time on multiple turfs, and
+/// announcing them together.
 /obj/effect/timed_event
 	icon = 'icons/landmarks.dmi'
 	icon_state = "o_red"
@@ -101,6 +103,8 @@
 
 GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 
+/// Allows a mapper to override the location of turrets on specific LZs, in specific placements. If multiple
+/// are placed, it picks randomly.
 /obj/effect/sentry_landmark
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x3"

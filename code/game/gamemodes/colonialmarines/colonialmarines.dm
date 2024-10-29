@@ -257,6 +257,7 @@
 		smoke.time_to_live = rand(1, 5)
 	lz_smoke.Cut()
 
+/// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
 /datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
 	clear_proximity_resin()
 

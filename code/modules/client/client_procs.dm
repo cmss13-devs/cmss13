@@ -885,7 +885,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
 		return TRUE
 
-	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_MENTOR(src))
 		return TRUE
 
 	if((flag_to_check & WHITELIST_FAX_RESPONDER) && isCouncil(src))

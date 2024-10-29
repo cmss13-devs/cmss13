@@ -3381,7 +3381,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
@@ -10336,7 +10337,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
@@ -11838,7 +11840,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -14314,7 +14317,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -15996,7 +16000,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -17566,7 +17571,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -18844,7 +18850,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -18964,7 +18971,8 @@
 	},
 /obj/item/clothing/mask/yautja_flavor{
 	anchored = 1;
-	unacidable = 0
+	unacidable = 0;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -19246,7 +19254,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)

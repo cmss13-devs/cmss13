@@ -8023,8 +8023,9 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_two)
 "bcZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/squads/alpha)
 "bda" = (
@@ -8248,8 +8249,9 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_one)
 "bew" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "bez" = (
@@ -8761,11 +8763,6 @@
 /area/almayer/medical/chemistry)
 "biy" = (
 /obj/structure/pipes/unary/freezer,
-/obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/sign/safety/autodoc{
-	pixel_x = 20;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/cryo_tubes)
 "biA" = (
@@ -12024,8 +12021,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bKX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/emerald/north,
 /area/almayer/squads/charlie)
 "bLc" = (
@@ -13449,8 +13447,9 @@
 /turf/open/floor/almayer/bluecorner/east,
 /area/almayer/living/briefing)
 "bVy" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/masks,
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
 "bVE" = (
@@ -17893,6 +17892,10 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/port)
+"duO" = (
+/obj/structure/machinery/chem_dispenser/corpsman,
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/lower_medical_medbay)
 "duT" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -21544,6 +21547,14 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_aft_hallway)
+"eTB" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 20;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/lower_medical_medbay)
 "eTC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /obj/structure/medical_supply_link,
@@ -26002,6 +26013,10 @@
 	pixel_x = -17
 	},
 /obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/item/paper/liaison_brief{
+	pixel_y = 8;
+	pixel_x = -4
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "gQu" = (
@@ -45711,13 +45726,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
 "oRy" = (
-/obj/structure/sign/safety/autodoc{
-	pixel_x = 20;
-	pixel_y = -32
+/obj/structure/sign/safety/med_cryo{
+	pixel_x = -6;
+	pixel_y = 32
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/green,
-/turf/open/floor/almayer/sterile_green_side,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_medbay)
 "oRJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -46549,6 +46562,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"phW" = (
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link/green,
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 20;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/lower_medical_medbay)
 "pij" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -49355,10 +49377,6 @@
 /area/almayer/living/briefing)
 "quv" = (
 /obj/structure/pipes/standard/tank/oxygen,
-/obj/structure/sign/safety/med_cryo{
-	pixel_x = -6;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/cryo_tubes)
 "quJ" = (
@@ -98639,9 +98657,9 @@ bkE
 bQM
 rlZ
 izY
-rlZ
-rlZ
-rlZ
+xsw
+bZn
+kFv
 izY
 rlZ
 hZN
@@ -98842,9 +98860,9 @@ bkE
 bRP
 rlZ
 rlZ
-xsw
-bZn
-kFv
+phW
+kan
+eTB
 rlZ
 rlZ
 siW
@@ -99045,8 +99063,8 @@ bst
 cjW
 rlZ
 rlZ
-oRy
-kan
+pnC
+dBH
 biy
 boX
 rlZ
@@ -99248,7 +99266,7 @@ vhX
 akQ
 rlZ
 rlZ
-pnC
+duO
 dBH
 bky
 ryt
@@ -99654,7 +99672,7 @@ vhX
 gDW
 rlZ
 rlZ
-wYr
+duO
 dBH
 bky
 ryt
@@ -99857,8 +99875,8 @@ xMs
 cjW
 rlZ
 rlZ
-kSC
-kan
+wYr
+dBH
 quv
 rZB
 rlZ
@@ -100060,9 +100078,9 @@ bgw
 eXb
 rlZ
 rlZ
-thP
-beW
-bgP
+kSC
+kan
+oRy
 rlZ
 rlZ
 hAU
@@ -100263,9 +100281,9 @@ bgw
 fbw
 rlZ
 rlZ
-pqD
-pqD
-pqD
+thP
+beW
+bgP
 rlZ
 rlZ
 rFH
@@ -100466,9 +100484,9 @@ bgy
 fxZ
 rlZ
 aZK
-vYt
-fDj
-eBZ
+pqD
+pqD
+pqD
 hBc
 rlZ
 pKZ
@@ -100669,9 +100687,9 @@ bgw
 icw
 qni
 klH
-tgV
-tgV
-tgV
+vYt
+fDj
+eBZ
 klH
 qni
 uah
@@ -100872,9 +100890,9 @@ bgw
 jxi
 rlZ
 rlZ
-rlZ
-rlZ
-rlZ
+tgV
+tgV
+tgV
 rlZ
 rlZ
 nrN

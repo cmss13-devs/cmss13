@@ -14,7 +14,7 @@
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
-	effective_range_max = 7
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"

@@ -1,0 +1,5 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - balance: "Egg morphers now generate facehuggers on their own, up to 6 in total every 2 minutes. Bodies can no longer be fed to egg morphers. Eggs can now get planted beneath light fixtures and nested mobs. Egg morphers can no longer be built in tallgrass."
+  - qol: "Carriers can now automatically fill egg morphers with their own egg supply by using the Retrieve Egg ability on them."

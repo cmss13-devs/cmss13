@@ -17,6 +17,7 @@
 	name = "Northeastern Lab"
 	icon_state = "purple"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	unoviable_timer = FALSE
 
 /area/desert_dam/interior/lab_northeast/east_lab_lobby
 	name = "East Lab Lobby"
@@ -207,14 +208,17 @@
 /area/desert_dam/interior/caves/east_caves
 	name = "Eastern Caves"
 	icon_state = "red"
+	unoviable_timer = FALSE
 
 /area/desert_dam/interior/caves/central_caves
 	name = "Central Caves"
 	icon_state = "yellow"
+	unoviable_timer = FALSE
 
 /area/desert_dam/interior/caves/temple
 	name = "Sand Temple"
 	icon_state = "green"
+	unoviable_timer = FALSE
 
 //BUILDING
 //areas not under rock
@@ -305,6 +309,11 @@
 
 
 //Cafe
+/area/desert_dam/building/cafeteria
+	name = "DO NOT USE"
+	icon_state = "purple"
+	unoviable_timer = FALSE
+
 /area/desert_dam/building/cafeteria/cafeteria
 	name = "Cafeteria"
 	icon_state = "yellow"
@@ -323,6 +332,11 @@
 
 
 //Dorms
+/area/desert_dam/building/dorms
+	name = "DO NOT USE"
+	icon_state = "purple"
+	unoviable_timer = FALSE
+
 /area/desert_dam/building/dorms/hallway_northwing
 	name = "Dormitory North Wing"
 	icon_state = "yellow"
@@ -343,6 +357,7 @@
 //Medical
 /area/desert_dam/building/medical
 	minimap_color = MINIMAP_AREA_MEDBAY
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/medical/garage
 	name = "Medical Garage"
@@ -506,6 +521,7 @@
 //Water Treatment Plant 2
 /area/desert_dam/building/water_treatment_two
 	minimap_color = MINIMAP_AREA_ENGI
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/water_treatment_two
 	name = "Water Treatment Two"
@@ -628,6 +644,11 @@
 	linked_lz = DROPSHIP_LZ2
 
 //Mining area
+/area/desert_dam/building/mining
+	name = "DO NOT USE"
+	icon_state = "purple"
+	unoviable_timer = FALSE
+
 /area/desert_dam/building/mining/workshop
 	name = "Mining Workshop"
 	icon_state = "yellow"
@@ -746,14 +767,17 @@
 /area/desert_dam/exterior/valley/valley_mining
 	name = "Mining Valley"
 	icon_state = "valley_east"
+	unoviable_timer = FALSE
 
 /area/desert_dam/exterior/valley/valley_civilian
 	name = "Civilian Valley"
 	icon_state = "valley_south_excv"
+	unoviable_timer = FALSE
 
 /area/desert_dam/exterior/valley/valley_medical
 	name = "Medical Valley"
 	icon_state = "valley"
+	unoviable_timer = FALSE
 
 /area/desert_dam/exterior/valley/valley_hydro
 	name = "Hydro Valley"
@@ -762,6 +786,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite
 	name = "Crash Site Valley"
 	icon_state = "yellow"
+	unoviable_timer = FALSE
 
 /area/desert_dam/exterior/valley/north_valley_dam
 	name = "North Dam Valley"
@@ -778,6 +803,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
+	unoviable_timer = FALSE
 
 
 //Rivers

@@ -34,6 +34,7 @@
 
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison
 	name = "hull"
+	desc = "A metal wall used to separate rooms and make up the ship."
 	icon_state = "liaison_pdoor1"
 	base_icon_state = "liaison_pdoor"
 

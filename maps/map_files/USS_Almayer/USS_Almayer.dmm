@@ -67041,7 +67041,7 @@
 /area/almayer/command/securestorage)
 "xqQ" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	id = RoomDivider
+	id = "RoomDivider"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)

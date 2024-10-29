@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
 		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/device/yautja_teleporter), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
 		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/device/yautja_teleporter), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 
 /obj/structure/machinery/cm_vending/clothing/yautja
 	name = "\improper Yautja Hunting Gear Rack"
-	desc = "A gear rack for hunting, expose your bracers ID chip to access."
+	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
 	req_access = list(ACCESS_YAUTJA_SECURE)

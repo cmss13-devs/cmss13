@@ -165,7 +165,7 @@
 			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
 
 	if(istype(W, /obj/item/device/encryptionkey/))
-		for (var/obj/item/device/encryptionkey/key in keys)
+		for (var/obj/item/device/encryptionkey/key as anything in keys)
 			if (key.type == W.type)
 				to_chat(user, SPAN_NOTICE("A [W.name] is already installed on this device!"))
 				return

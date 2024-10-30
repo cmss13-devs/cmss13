@@ -62,7 +62,7 @@
 	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
 	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 9 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
 	message_to_player("Click on the <b>Bicaridine pill</b> with an empty hand to pick it up. Then click on the Dummy while holding it and standing next to them to medicate them.")
@@ -89,17 +89,67 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
 
-	message_to_player("Signal check cleared")
+	message_to_player("When administered in pill form, chemicals take a few seconds to be digested before they can enter the patients bloodstream, and heal damage.")
+	message_to_player("Medications administered when a patient is dead will not heal damage until the patient has been revived.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/bicaridine, pill)
-	remove_highlight(pill)
-	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
+
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_4()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.apply_damage(5, BRUTE, "chest")
+
+	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use/brute_injector = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(brute_injector)
+	add_highlight(brute_injector)
+
+	message_to_player("Medicines can also be directly injected into the bloodstream using <b>Autoinjectors</b>, allowing the medication to begin work immediately, without the need to be digested first.")
+	message_to_player("Click on the <b>Bicaridine Autoinjector</b> with an empty hand to pick it up, and then click on the Dummy while standing next to it to administer an injection")
+	update_objective("Pick up, and inject the Dummy with the Bicaridine Autoinjector")
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_inject_self))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_tutorial_5))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_inject_self()
 	var/mob/living/living_mob = tutorial_mob
-	living_mob.adjustFireLoss(10)
-	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
+	living_mob.rejuvenate()
+	message_to_player("Dont use the injector on yourself, try again.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
+	remove_highlight(brute_injector)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5()
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.apply_damage(15, BRUTE, "chest")
+	human_dummy.apply_damage(15, BRUTE, "arm/l_arm")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
+	remove_highlight(brute_injector)
+	update_objective("")
+	message_to_player("More severe injuries can be treated through the use of <b>Advanced Trauma Kits</b>.")
+	message_to_player("These items are used to treat moderate to high levels of brute damage, but must be manually applied to each damaged limb.")
+	message_to_player("They only heal 12 damage per application, and should be used alongside medicines like <b>Bicaridine</b> when treating a patient.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_6)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_6()
+	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(brutekit, COLOR_GREEN)
+	add_highlight(brutekit)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
+	remove_highlight(brute_injector)
+	message_to_player("Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
+
+	//var/mob/living/living_mob = tutorial_mob
+	//living_mob.adjustFireLoss(10)
+	//addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2()
 	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))

@@ -1,9 +1,32 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ad" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
+"ah" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/effect/decal/remains/xeno{
+	pixel_x = -1;
+	pixel_y = 31
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
+/area/lv624/ground/barrens/south_eastern_barrens)
 "as" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -27,6 +50,10 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple/powered)
+"aH" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "aI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -67,18 +94,39 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"bx" = (
+"ba" = (
+/obj/item/weapon/sword{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	dir = 1;
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
+"bq" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
+	color = "#6b675e";
+	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"bG" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "bP" = (
 /obj/structure/bed/chair/comfy/black,
@@ -91,6 +139,47 @@
 /obj/item/tool/pickaxe/plasmacutter,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
+"cG" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/shuttle/red,
+/area/lv624/ground/caves/sand_temple)
+"cN" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"cT" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"dp" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"dz" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "dA" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -179,10 +268,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ek" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "el" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -207,12 +292,20 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"eH" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "eM" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"eT" = (
+/obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
@@ -268,10 +361,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"gr" = (
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "gw" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
@@ -296,12 +385,32 @@
 /obj/item/weapon/twohanded/yautja/spear,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"hg" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "hi" = (
 /turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"hp" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -336,6 +445,31 @@
 /obj/item/weapon/yautja/knife,
 /turf/open/gm/dirtgrassborder/desert2,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"hI" = (
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	dir = 1;
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "hO" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -347,17 +481,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ig" = (
-/obj/structure/morgue/sarcophagus,
-/obj/item/weapon/twohanded/yautja/glaive/damaged{
-	name = "damaged war glaive"
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
-"iN" = (
-/obj/item/weapon/sword{
-	pixel_x = -6;
-	pixel_y = 7
+"hX" = (
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = -7
 	},
 /obj/structure/showcase{
 	color = "#95948B";
@@ -368,7 +495,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -376,8 +504,29 @@
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
 	},
-/turf/open/floor/strata/grey_multi_tiles,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"ig" = (
+/obj/structure/morgue/sarcophagus,
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
+	name = "damaged war glaive"
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
+"iu" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"iH" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/east_river)
 "iW" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -395,23 +544,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
-"jC" = (
+"jd" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
+	color = "#6b675e";
+	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"jH" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "kb" = (
@@ -426,20 +565,24 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
+"kM" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "kO" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ld" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"lT" = (
-/obj/effect/landmark/lv624/fog_blocker,
+"kW" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/river/east_river)
-"mr" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"lr" = (
 /obj/structure/showcase{
 	color = "#95948B";
 	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
@@ -447,16 +590,9 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/effect/decal/remains/xeno{
-	pixel_x = 1;
-	pixel_y = 31
-	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -464,18 +600,9 @@
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
 	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"mv" = (
-/turf/open/floor/sandstone/runed,
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"mH" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
+"mv" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mI" = (
@@ -496,6 +623,34 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"mL" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = -7
+	},
+/obj/effect/decal/remains/xeno{
+	pixel_x = 1;
+	pixel_y = 31
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "mN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -518,39 +673,6 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"mZ" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"nB" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -562,8 +684,37 @@
 /obj/item/tool/surgery/scalpel/predatorscalpel,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
+"nV" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "oi" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
+/area/lv624/ground/caves/sand_temple)
+"ot" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/sword{
+	layer = 3.1;
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "oR" = (
 /obj/structure/stairs/perspective{
@@ -573,22 +724,9 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"oX" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "pb" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
-"pn" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "po" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -604,53 +742,29 @@
 	},
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
-"pC" = (
+"qk" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#6b675e";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/turf/open/shuttle/red,
+/area/lv624/ground/caves/sand_temple)
 "qz" = (
 /obj/structure/bed/alien{
 	color = "#aba9a9"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"qJ" = (
+"qZ" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
-	dir = 4;
+	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"rI" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "rS" = (
 /obj/structure/closet/coffin/predator,
@@ -688,58 +802,17 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"tR" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"uk" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"uo" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
+"tX" = (
+/obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"uy" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "uE" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"uV" = (
+"vf" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "we" = (
 /obj/structure/stairs/perspective{
@@ -760,6 +833,15 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"wJ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "wS" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -775,13 +857,13 @@
 	},
 /turf/open/gm/dirtgrassborder/desert0,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xc" = (
-/obj/structure/platform/stone/runed_sandstone,
+"xg" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
-	dir = 6;
+	dir = 10;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xy" = (
@@ -803,50 +885,34 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"yj" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"yp" = (
+"yh" = (
+/obj/structure/platform/stone/runed_sandstone,
 /obj/structure/stairs/perspective{
-	color = "#6b675e";
+	color = "#b29082";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"yu" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"yJ" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"zp" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
-/turf/open/floor/sandstone/runed,
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"zq" = (
+"yJ" = (
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"zu" = (
+"ze" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"zf" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"zA" = (
+/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "zG" = (
@@ -858,49 +924,26 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Ai" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"Ao" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"Ax" = (
+"zV" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#6b675e";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"AK" = (
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"Ah" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	dir = 4;
+	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
-/turf/open/floor/sandstone/runed,
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"Ai" = (
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Ba" = (
 /obj/structure/stairs/perspective{
@@ -910,25 +953,21 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Br" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple/powered)
-"BI" = (
-/obj/item/weapon/sword{
-	pixel_x = 6;
-	pixel_y = 7
-	},
+"Bg" = (
 /obj/structure/showcase{
 	color = "#95948B";
 	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
+/obj/item/weapon/harpoon/yautja{
+	name = "Alien Harpoon";
+	pixel_x = -7
+	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -936,8 +975,25 @@
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
 	},
-/turf/open/floor/strata/grey_multi_tiles,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"Bm" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"Br" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple/powered)
+"Bt" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "BY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -957,6 +1013,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"Cj" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "Cr" = (
 /obj/effect/decal/cleanable/blood{
 	basecolor = "#20d450";
@@ -976,40 +1041,12 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"Do" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "DG" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"DH" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "Eq" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1028,10 +1065,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Ew" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+"EA" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "EJ" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1045,10 +1082,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ER" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "Ff" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -1057,6 +1090,15 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
+"Fp" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "FS" = (
 /obj/structure/xenoautopsy/tank/alien,
 /turf/open/shuttle/red,
@@ -1064,13 +1106,29 @@
 "Ge" = (
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"GB" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "GT" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
+"GX" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1
+	},
+/obj/item/clothing/mask/gas/yautja/damaged{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/shoes/yautja/hunter{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple/powered)
 "He" = (
 /obj/structure/curtain/red,
 /turf/open/floor/strata/grey_multi_tiles,
@@ -1096,66 +1154,14 @@
 /obj/item/stool,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Hu" = (
-/obj/structure/showcase{
-	color = "#FFE55C";
-	desc = "This statue seems taller and somehow mightier than the others... it makes you want to steer away from it.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "massive statue"
+"HK" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
 	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "pred_mask_elder_n";
-	name = "unsettling stone mask"
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "halfarmor_elder_n";
-	name = "gilded clan armor"
-	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1;
-	color = "#FFE55C";
-	icon_state = "y-boots2";
-	name = "gilded clan greaves"
-	},
-/obj/item/weapon/yautja/chained/combistick{
-	color = "#FFE55C";
-	name = "strange spear";
-	anchored = 1;
-	desc = "This ancient and frayed gilded spear almost gleans with it's razor sharp edge."
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"Hx" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"HJ" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ix" = (
 /obj/structure/barricade/handrail/strata,
@@ -1164,9 +1170,38 @@
 	},
 /turf/open/gm/dirtgrassborder/weedable/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"IQ" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "IR" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"IW" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/sword{
+	layer = 3.1;
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "IZ" = (
 /obj/structure/barricade/handrail/strata{
@@ -1204,6 +1239,19 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"Js" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"Jz" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "KB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1229,33 +1277,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"LL" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
+"Mj" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
 	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/effect/decal/remains/xeno{
-	pixel_x = -1;
-	pixel_y = 31
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "Mn" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -1275,13 +1305,8 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Mr" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/strata/grey_multi_tiles,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Mx" = (
 /obj/structure/prop/brazier,
@@ -1310,6 +1335,10 @@
 "MK" = (
 /turf/open/gm/dirtgrassborder/desert_dug,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"Nm" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Nt" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1318,10 +1347,25 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"Oa" = (
-/obj/structure/platform/stone/runed_sandstone,
+"NX" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"NZ" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
+/area/lv624/ground/barrens/south_eastern_barrens)
 "Od" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1348,47 +1392,29 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/weedable/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"Pf" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"Pm" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"Pz" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "PA" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple/powered)
-"PC" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"PG" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"PI" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"PN" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple/powered)
 "PO" = (
 /obj/item/weapon/harpoon/yautja{
@@ -1416,6 +1442,20 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"Qa" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"Qe" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "QG" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -1430,6 +1470,10 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
+"Rc" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Rh" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed/decor,
@@ -1440,24 +1484,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"RC" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
-"RE" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "RV" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -1470,15 +1496,31 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"Sl" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
+"Sc" = (
+/obj/item/weapon/sword{
+	pixel_x = -6;
+	pixel_y = 7
 	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	dir = 1;
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "Sm" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1518,18 +1560,57 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple/powered)
+"TL" = (
+/obj/structure/showcase{
+	color = "#FFE55C";
+	desc = "This statue seems taller and somehow mightier than the others... it makes you want to steer away from it.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "massive statue"
+	},
+/obj/item/clothing/mask/gas/yautja/damaged{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "pred_mask_elder_n";
+	name = "unsettling stone mask";
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "halfarmor_elder_n";
+	name = "gilded clan armor"
+	},
+/obj/item/clothing/shoes/yautja/hunter{
+	anchored = 1;
+	color = "#FFE55C";
+	icon_state = "y-boots2";
+	name = "gilded clan greaves"
+	},
+/obj/item/weapon/yautja/chained/combistick{
+	color = "#FFE55C";
+	name = "strange spear";
+	anchored = 1;
+	desc = "This ancient and frayed gilded spear almost gleans with it's razor sharp edge."
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"TO" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "TY" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
-"Ue" = (
+"UA" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
 	},
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "UK" = (
 /turf/open/gm/dirtgrassborder/desert,
@@ -1551,22 +1632,13 @@
 /obj/item/tool/surgery/scalpel/predatorscalpel,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
-"Vf" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"Vg" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "Vu" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
+"Wj" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -1594,15 +1666,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"WP" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Xg" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -1612,58 +1675,12 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"XE" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
-"Yh" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"YB" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
-"Zq" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
 "Zt" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/sandstone/runed,
@@ -1671,10 +1688,6 @@
 "ZG" = (
 /turf/open/gm/dirtgrassborder/desert1,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ZO" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "ZX" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1941,14 +1954,14 @@ GT
 GT
 OC
 IR
-Vg
-Zq
+bq
+qk
 pu
-RC
-Mr
+cG
+Mj
 IR
 OC
-hg
+TO
 Ai
 Ai
 GT
@@ -1990,7 +2003,7 @@ Jc
 gL
 wS
 oi
-hg
+TO
 Ai
 GT
 GT
@@ -2024,7 +2037,7 @@ GT
 GT
 GT
 oi
-YB
+lr
 gL
 Jc
 Jc
@@ -2032,7 +2045,7 @@ Jc
 gL
 Mn
 OC
-hg
+TO
 Ai
 Ai
 GT
@@ -2074,7 +2087,7 @@ Jc
 gL
 wS
 oi
-hg
+TO
 dK
 Ai
 GT
@@ -2108,7 +2121,7 @@ GT
 GT
 GT
 oi
-YB
+lr
 gL
 Jc
 Jc
@@ -2116,7 +2129,7 @@ Jc
 gL
 Mn
 OC
-hg
+TO
 Ai
 Ai
 Ai
@@ -2158,7 +2171,7 @@ Jc
 fQ
 wS
 oi
-hg
+TO
 Ai
 Ai
 Ai
@@ -2192,7 +2205,7 @@ GT
 GT
 GT
 OC
-YB
+lr
 gL
 Jc
 Jc
@@ -2200,8 +2213,8 @@ Jc
 gL
 Mn
 OC
-yj
-Do
+Pm
+Jz
 Ai
 Ai
 dK
@@ -2243,7 +2256,7 @@ He
 IR
 OC
 OC
-hg
+TO
 Ai
 Ai
 Ai
@@ -2275,17 +2288,17 @@ GT
 GT
 GT
 OC
-PG
-yu
-mH
+ze
+zV
+jd
 SO
 SO
 SO
-WP
-yp
-Hx
+Pz
+wJ
+nV
 OC
-hg
+TO
 Ai
 Ai
 Ai
@@ -2317,17 +2330,17 @@ GT
 GT
 GT
 OC
-ZO
-ld
-bG
+Nm
+Rc
+Mr
 mv
 mv
 mv
-ZO
-ld
-bG
+Nm
+Rc
+Mr
 OC
-hg
+TO
 Ai
 Ai
 Ai
@@ -2344,9 +2357,9 @@ ZX
 ZX
 ZX
 ZX
-Ew
-GB
-lT
+Pf
+zA
+iH
 ZX
 ZX
 ZX
@@ -2359,17 +2372,17 @@ wi
 GT
 OC
 OC
-Oa
-DH
-Vf
+IQ
+IW
+EA
 mv
 mv
 mv
-Oa
-iN
-Vf
+IQ
+Sc
+EA
 OC
-AK
+iu
 aT
 aT
 aT
@@ -2384,14 +2397,14 @@ ZX
 ZX
 ZX
 ZX
-bx
-Ue
-oX
+qZ
+zf
+xg
 Zt
-RE
-nB
-Yh
-zu
+NX
+dz
+Js
+kW
 "}
 (18,1,1) = {"
 SF
@@ -2401,17 +2414,17 @@ mv
 Dd
 IR
 mv
-PG
-gr
-Hx
+ze
+eT
+nV
 mv
 mv
 mv
-PG
-gr
-yJ
+ze
+eT
+vf
 mO
-ld
+Rc
 mv
 mv
 mv
@@ -2421,19 +2434,19 @@ mv
 OC
 OC
 fV
-tR
+UA
 xy
 xy
 xy
-Sl
-HJ
+kM
+Bg
 fD
 DG
 DG
 DG
 aN
-mZ
-pn
+hX
+tX
 "}
 (19,1,1) = {"
 SF
@@ -2462,12 +2475,12 @@ mv
 mv
 mv
 OC
-mr
+mL
 uE
 uE
 uE
 uE
-ER
+Wj
 Ws
 dF
 Cr
@@ -2475,7 +2488,7 @@ UK
 hD
 hi
 OJ
-pn
+tX
 "}
 (20,1,1) = {"
 eM
@@ -2517,7 +2530,7 @@ MK
 UK
 hi
 OP
-pn
+tX
 "}
 (21,1,1) = {"
 SF
@@ -2546,12 +2559,12 @@ mv
 mv
 mv
 OC
-LL
+ah
 uE
 uE
 uE
 uE
-PC
+Qe
 iW
 dF
 ZG
@@ -2559,7 +2572,7 @@ UK
 wZ
 hi
 Ix
-pn
+tX
 "}
 (22,1,1) = {"
 eM
@@ -2569,17 +2582,17 @@ kb
 Dd
 IR
 mv
-ZO
-ld
-bG
+Nm
+Rc
+Mr
 mv
 mv
 mv
-ZO
-ld
-ad
+Nm
+Rc
+dp
 mO
-gr
+eT
 mv
 mv
 mv
@@ -2589,19 +2602,19 @@ mv
 OC
 OC
 fV
-zp
+NZ
 RV
 RV
 RV
-uk
-Ao
+cT
+hp
 Xg
 QG
 QG
 QG
 IZ
-rI
-pn
+hI
+tX
 "}
 (23,1,1) = {"
 oR
@@ -2611,17 +2624,17 @@ eb
 GT
 OC
 OC
-Oa
-uy
-Vf
+IQ
+ot
+EA
 mv
 mv
 mv
-Oa
-BI
-Vf
+IQ
+ba
+EA
 OC
-jH
+Qa
 eb
 eb
 eb
@@ -2636,14 +2649,14 @@ ZX
 ZX
 ZX
 ZX
-Ax
-pC
-xc
+HK
+Fp
+yh
 Zt
-PI
-XE
-jC
-uo
+cN
+Ah
+Cj
+aH
 "}
 (24,1,1) = {"
 mv
@@ -2653,17 +2666,17 @@ mv
 GT
 GT
 oi
-PG
-gr
-Hx
+ze
+eT
+nV
 mv
 mv
 mv
-PG
-gr
-Hx
+ze
+eT
+nV
 OC
-hg
+TO
 Ai
 Ai
 Ai
@@ -2680,9 +2693,9 @@ ZX
 ZX
 ZX
 ZX
-ek
-zq
-uo
+Bt
+yJ
+aH
 ZX
 ZX
 ZX
@@ -2738,16 +2751,16 @@ GT
 GT
 OC
 OC
-jH
+Qa
 eb
 eb
 eb
 eb
 eb
-qJ
+Bm
 OC
 OC
-hg
+TO
 Ai
 dK
 Ai
@@ -2780,16 +2793,16 @@ GT
 GT
 GT
 IR
-Hx
+nV
 mv
 mv
 mv
 mv
 mv
-PG
+ze
 IR
 GT
-uV
+eH
 Ai
 Ai
 Ai
@@ -3160,9 +3173,9 @@ mv
 mv
 mv
 mv
-ZO
-ld
-bG
+Nm
+Rc
+Mr
 mv
 mv
 mv
@@ -3202,9 +3215,9 @@ mv
 mv
 mv
 mv
-Oa
-Hu
-Vf
+IQ
+TL
+EA
 mv
 mv
 mv
@@ -3244,9 +3257,9 @@ mv
 mv
 mv
 mv
-PG
-gr
-Hx
+ze
+eT
+nV
 mv
 mv
 mv
@@ -3492,8 +3505,8 @@ ZX
 GT
 OC
 aA
-PN
-PN
+GX
+GX
 dQ
 OC
 fE

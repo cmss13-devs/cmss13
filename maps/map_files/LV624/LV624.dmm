@@ -811,10 +811,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
-"aep" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/lv624/ground/caves/sand_temple)
 "aer" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -928,19 +924,6 @@
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"afi" = (
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"afj" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "afk" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
@@ -957,10 +940,6 @@
 /obj/structure/cargo_container/ferret/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"afq" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/caves/sand_temple)
 "afr" = (
 /obj/structure/ore_box,
 /obj/structure/fence,
@@ -2142,6 +2121,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"amz" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "amA" = (
 /obj/structure/disposalpipe/broken{
 	dir = 1
@@ -3356,28 +3339,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"avk" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "avm" = (
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
@@ -4442,10 +4403,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"aAd" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "aAh" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/warnplate/west,
@@ -4854,10 +4811,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
-"aBN" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "aBO" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
@@ -5943,6 +5896,10 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
+"aGD" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
 "aGE" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
@@ -8707,14 +8664,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
-"aVd" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/platform/metal/almayer,
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/plating/warnplate/southeast,
-/area/lv624/lazarus/engineering)
 "aVe" = (
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/engineering)
@@ -8735,17 +8684,6 @@
 	},
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/warnplate/east,
-/area/lv624/lazarus/engineering)
-"aVj" = (
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	locked = 1;
-	name = "\improper Engineering Dome SMES";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/delivery,
 /area/lv624/lazarus/engineering)
 "aVk" = (
 /obj/structure/sign/safety/maint,
@@ -8836,21 +8774,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
-"aVG" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/stair_cut/platform_left,
-/obj/item/clothing/head/hardhat/orange,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aVH" = (
@@ -8972,14 +8895,6 @@
 	},
 /turf/open/floor/delivery,
 /area/lv624/lazarus/engineering)
-"aWg" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/platform/metal/almayer,
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/plating/warnplate/southwest,
-/area/lv624/lazarus/engineering)
 "aWh" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
@@ -9098,23 +9013,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
-"aWG" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/almayer,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
-"aWH" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/folder,
-/obj/item/device/assembly/signaller,
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "aWI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight,
@@ -9211,16 +9109,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
-"aXa" = (
-/obj/structure/machinery/light,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/almayer,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "aXc" = (
 /obj/structure/surface/table,
 /turf/open/floor/bluecorner,
@@ -9989,6 +9877,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_east_caves)
+"bdq" = (
+/obj/structure/platform/stone/runed_sandstone,
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "bdu" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 8
@@ -10309,28 +10206,6 @@
 "bEq" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"bEU" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/effect/decal/remains/xeno{
-	pixel_x = 1;
-	pixel_y = 31
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "bFa" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -10345,10 +10220,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
-"bIO" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/caves/sand_temple)
 "bJe" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/brown/northwest,
@@ -10431,15 +10302,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_west_caves)
-"bPG" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "bQf" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
 /obj/effect/decal/cleanable/dirt,
@@ -10487,6 +10349,16 @@
 /obj/item/shard,
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
+"bUo" = (
+/obj/structure/machinery/light,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "bUs" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -10512,15 +10384,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"bYV" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "bZb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -10636,6 +10499,10 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
+"ciy" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "ciz" = (
 /obj/item/device/assembly/signaller{
 	pixel_x = -6;
@@ -10661,6 +10528,19 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"cjY" = (
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/ground/caves/sand_temple)
+"cls" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "clO" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/grass_overlay/grass1{
@@ -10775,23 +10655,10 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
-"cyf" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "cys" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_central_jungle)
-"cyP" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/stair_cut/platform_right,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "czq" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -10981,15 +10848,6 @@
 /obj/item/device/multitool,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
-"cQX" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "cRm" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/mineral/sandstone/runed/decor,
@@ -11118,10 +10976,6 @@
 /obj/item/tool/crowbar,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"djF" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "djI" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
@@ -11162,10 +11016,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"doJ" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "dql" = (
 /obj/structure/largecrate,
 /turf/open/floor/dark,
@@ -11197,6 +11047,15 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"drJ" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "drX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -11355,10 +11214,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
-"dHT" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/coast/north,
-/area/lv624/ground/caves/sand_temple)
 "dId" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/whiteblue,
@@ -11487,6 +11342,15 @@
 "dTm" = (
 /turf/open/gm/dirt/desert1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"dTQ" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "dTY" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -11514,6 +11378,27 @@
 /obj/item/reagent_container/food/drinks/cans/souto/classic,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
+"dVU" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "dWa" = (
 /obj/effect/landmark/objective_landmark/science,
 /obj/structure/barricade/wooden,
@@ -11685,11 +11570,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"elO" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "enn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -11808,34 +11688,14 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_central_jungle)
-"ezC" = (
+"eBe" = (
 /obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
+	color = "#b29082";
+	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
-"eAr" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eBu" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -12051,10 +11911,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ffZ" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "fgS" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -12182,15 +12038,6 @@
 "fuY" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
-"fvt" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "fyA" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -12238,6 +12085,15 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"fCo" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "fDq" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -12429,6 +12285,10 @@
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
+"fYh" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/ground/caves/sand_temple)
 "fYl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -12619,15 +12479,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"gsX" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "gte" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
@@ -12670,6 +12521,15 @@
 "gxd" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
+"gxj" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "gyP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -12754,10 +12614,6 @@
 "gKg" = (
 /turf/open/floor/plating/warnplate/northeast,
 /area/lv624/lazarus/engineering)
-"gKN" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "gMe" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-rightsidepass"
@@ -12818,10 +12674,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"gTM" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "gUq" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -12859,6 +12711,10 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"gWY" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "gXu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor/white,
@@ -12867,6 +12723,15 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
+"gXT" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "gYs" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
@@ -13001,21 +12866,21 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"hke" = (
-/obj/structure/platform/stone/runed_sandstone,
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "hkT" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
+"hln" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "hmq" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -13033,6 +12898,10 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"hnl" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/ground/caves/sand_temple)
 "hnX" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -13142,6 +13011,29 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"hCE" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	anchored = 1;
+	name = "Alien Harpoon";
+	pixel_x = -7
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "hDe" = (
 /obj/structure/bed/stool,
 /obj/item/prop/alien/hugger,
@@ -13227,6 +13119,14 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
+"hKK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder,
+/obj/item/device/assembly/signaller,
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "hKP" = (
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
@@ -13256,10 +13156,6 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
-"hNq" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "hNR" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
@@ -13305,6 +13201,29 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
+"hRQ" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/sword{
+	layer = 3.1;
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "hRS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -13501,6 +13420,10 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
+"ijP" = (
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ikA" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -13532,6 +13455,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"inQ" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "ioC" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/east_jungle)
@@ -13586,15 +13518,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/north_nexus_road)
-"iwl" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "iye" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -13653,6 +13576,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
+"iEC" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"iFe" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "iFp" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/barricade/wooden{
@@ -13715,6 +13646,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"iLY" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "iNB" = (
 /obj/structure/ore_box,
 /turf/open/gm/dirt,
@@ -13758,6 +13693,32 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
+"iTl" = (
+/obj/item/weapon/sword{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	dir = 1;
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "iTQ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -13783,6 +13744,10 @@
 "iXj" = (
 /turf/closed/wall,
 /area/lv624/ground/barrens/east_barrens/ceiling)
+"iXt" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "iXz" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/west_barrens)
@@ -13838,6 +13803,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"jbO" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "jcb" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/purple/northwest,
@@ -13862,10 +13831,6 @@
 "jeL" = (
 /turf/closed/wall/r_wall,
 /area/lv624/ground/caves/north_central_caves)
-"jfN" = (
-/obj/structure/platform/metal/almayer/east,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "jga" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
@@ -13940,6 +13905,27 @@
 /obj/item/tool/pen/clicky,
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/corporate_dome)
+"jpx" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "jpX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -13955,6 +13941,15 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"jrx" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "jrC" = (
 /obj/structure/curtain/red,
 /turf/open/shuttle/red,
@@ -13981,14 +13976,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"jwW" = (
-/obj/structure/platform_decoration/metal/almayer,
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating/warnplate/southeast,
-/area/lv624/lazarus/engineering)
 "jxw" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -14039,16 +14026,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"jAK" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
 "jBl" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
@@ -14073,6 +14050,10 @@
 "jFc" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lv624/ground/caves/sand_temple)
+"jFp" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "jFF" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -14183,25 +14164,29 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
-"jMH" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
 "jMS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
+"jNn" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/caves/sand_temple)
 "jNR" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
+"jOt" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "jQj" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -14267,28 +14252,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
-"jSp" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "jTm" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -14366,10 +14329,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"kgY" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "kip" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
@@ -14681,10 +14640,6 @@
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/east_barrens)
-"kPU" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "kPY" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate,
@@ -14742,6 +14697,10 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"kVR" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "kVS" = (
 /obj/item/weapon/gun/rifle/m41a,
 /turf/open/gm/dirt,
@@ -14778,15 +14737,6 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"kZs" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "kZw" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
@@ -14865,6 +14815,15 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
+"lki" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/caves/sand_temple)
 "lkj" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/gm/dirt,
@@ -14922,15 +14881,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"lse" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "lsq" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/plantbot1,
@@ -15249,15 +15199,6 @@
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"lWw" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "lWO" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -15318,6 +15259,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
+"mcG" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/lv624/ground/caves/sand_temple)
 "mdw" = (
 /obj/structure/prop/mech/drill,
 /turf/open/floor/greengrid,
@@ -15415,11 +15360,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"mkZ" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/structure/foamed_metal,
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "mmu" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -15444,6 +15384,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"mpc" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/shuttle/red,
+/area/lv624/ground/caves/sand_temple)
 "mph" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
@@ -15505,6 +15454,14 @@
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/asteroidfloor/north,
 /area/lv624/ground/colony/telecomm/cargo)
+"mvd" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating/warnplate/southwest,
+/area/lv624/lazarus/engineering)
 "mvr" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -15530,6 +15487,16 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"mzi" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/caves/sand_temple)
 "mBH" = (
 /obj/structure/foamed_metal{
 	layer = 3.1
@@ -15567,6 +15534,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
+"mFy" = (
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "mFZ" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 6
@@ -15598,6 +15569,23 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
+"mJK" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/suit/armor/yautja/hunter{
+	anchored = 1
+	},
+/obj/item/clothing/mask/gas/yautja/damaged{
+	anchored = 1;
+	pixel_y = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "mKf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_nexus_road)
@@ -15674,6 +15662,10 @@
 "mSo" = (
 /turf/open/gm/dirt/desert1,
 /area/lv624/ground/barrens/central_barrens)
+"mSH" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "mSN" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/east,
@@ -15685,10 +15677,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"mUZ" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/coast/north,
-/area/lv624/ground/caves/sand_temple)
 "mVg" = (
 /obj/item/weapon/harpoon/yautja{
 	anchored = 1;
@@ -15785,10 +15773,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
-"nfX" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nha" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -15846,6 +15830,11 @@
 "nnL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/barrens/east_barrens)
+"nnY" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "npf" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/jungle/west_jungle)
@@ -15905,15 +15894,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"nsF" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "ntr" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -15932,47 +15912,10 @@
 "nuW" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_west_jungle)
-"nvS" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/effect/decal/remains/xeno{
-	pixel_x = -1;
-	pixel_y = 31
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nwI" = (
 /obj/item/bananapeel,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"nwR" = (
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating/warnplate/southwest,
-/area/lv624/lazarus/engineering)
 "nxe" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/microwave{
@@ -15996,6 +15939,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
+"nAv" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/caves/sand_temple)
 "nAR" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -16031,10 +15979,6 @@
 /obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"nEr" = (
-/obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
@@ -16175,6 +16119,15 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
+"nPI" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "nQH" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -16214,6 +16167,10 @@
 /obj/structure/curtain/red,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
+"nUa" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "nUs" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -16253,29 +16210,10 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"nVZ" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nWe" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"nWw" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nWJ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
@@ -16324,11 +16262,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"ocL" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/river/east_river)
 "odw" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
@@ -16454,6 +16387,10 @@
 "opS" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_east_jungle)
+"opZ" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "oqO" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/colony/north_nexus_road)
@@ -16570,6 +16507,16 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"oCz" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "oDE" = (
 /obj/effect/decal/grass_overlay/grass1,
 /turf/open/gm/dirt,
@@ -16614,19 +16561,14 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"oFO" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
-"oGj" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
+"oGi" = (
+/obj/structure/lattice{
+	layer = 2.9
 	},
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/obj/structure/platform/metal/almayer,
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating/warnplate/southeast,
+/area/lv624/lazarus/engineering)
 "oGr" = (
 /turf/open/gm/dirt/desert3,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -16645,6 +16587,10 @@
 /obj/structure/girder,
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves)
+"oIa" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "oIO" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -16775,6 +16721,11 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
+"oVz" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "oVM" = (
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/east_barrens/ceiling)
@@ -16803,6 +16754,15 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
+"pae" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/caves/sand_temple)
 "pas" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/north,
@@ -16873,11 +16833,6 @@
 /obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"pfK" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "pgc" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -17031,10 +16986,6 @@
 "pyG" = (
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
-"pyN" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "pyS" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -17066,6 +17017,14 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
+"pCf" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/warnplate/southwest,
+/area/lv624/lazarus/engineering)
 "pDh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -17159,6 +17118,10 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
+"pJm" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "pJr" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -17303,6 +17266,15 @@
 "pUm" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east_caves)
+"pUE" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "pVZ" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -17338,15 +17310,6 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"qap" = (
-/obj/structure/machinery/light,
-/obj/structure/stairs/perspective{
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "qaE" = (
 /obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
@@ -17417,6 +17380,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"qia" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "qit" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = -20;
@@ -17440,6 +17407,15 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"qko" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/caves/sand_temple)
 "qns" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -17467,10 +17443,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
-"qsM" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/caves/sand_temple)
 "qtj" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -17486,27 +17458,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"quK" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "qvf" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/north,
@@ -17515,6 +17466,15 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/west_nexus_road)
+"qxk" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "qxo" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/white{
@@ -17536,10 +17496,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"qAc" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "qAf" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
 	desc = "The oranges aren't done yet... this sucks.";
@@ -17561,15 +17517,6 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"qBQ" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "qBW" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
@@ -17694,16 +17641,6 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"qPO" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "qPY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -17765,6 +17702,11 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
+"qVx" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/caves/sand_temple)
 "qVN" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -17896,6 +17838,11 @@
 "rit" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
+"rkh" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "rkq" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/green/northwest,
@@ -17905,6 +17852,15 @@
 /obj/item/stack/rods,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
+"rls" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "rmg" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -17952,6 +17908,15 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"rqN" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "rrz" = (
 /obj/structure/curtain/red,
 /obj/effect/decal/cleanable/blood/drip,
@@ -18076,6 +18041,10 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/platingdmg1,
 /area/lv624/lazarus/secure_storage)
+"rEI" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/coast/north,
+/area/lv624/ground/caves/sand_temple)
 "rER" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
@@ -18234,6 +18203,10 @@
 "rTT" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
+"rUx" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/coast/north,
+/area/lv624/ground/caves/sand_temple)
 "rUX" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -18267,10 +18240,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
-"rYA" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "rYI" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/river,
@@ -18287,6 +18256,10 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"sbj" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "sbt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
@@ -18342,6 +18315,10 @@
 /obj/effect/decal/grass_overlay/grass1,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"sho" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "shq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -18364,10 +18341,6 @@
 "smx" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/west_central_jungle)
-"smE" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "snc" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -18406,6 +18379,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"sph" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
 "spm" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
@@ -18531,15 +18508,6 @@
 "sBY" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_west_caves)
-"sCg" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "sCx" = (
 /obj/item/clothing/head/welding,
 /obj/effect/decal/cleanable/dirt,
@@ -18589,6 +18557,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"sGE" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "sHT" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -18607,15 +18579,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
-"sIM" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "sJM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/dirt,
@@ -18736,26 +18699,6 @@
 /obj/structure/largecrate,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"sWL" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "sXg" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -18785,6 +18728,10 @@
 "taK" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_tcomms_road)
+"tbt" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "tbV" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/heavy,
@@ -18857,31 +18804,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
-"thn" = (
-/obj/item/weapon/sword{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "thI" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -18983,15 +18905,6 @@
 /obj/item/tool/shovel,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"trJ" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "tsa" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -19070,10 +18983,6 @@
 "tzo" = (
 /turf/open/gm/dirt/desert_dug,
 /area/lv624/ground/barrens/central_barrens)
-"tzB" = (
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/caves/sand_temple)
 "tzK" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -19085,6 +18994,11 @@
 	},
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
+"tAF" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "tBB" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -19093,15 +19007,15 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"tDa" = (
+"tCD" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
+	color = "#6b675e";
+	dir = 6;
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/area/lv624/ground/caves/sand_temple)
 "tEm" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -19114,6 +19028,11 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz2)
+"tEJ" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/east_river)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/white,
@@ -19136,22 +19055,6 @@
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
-"tJh" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "tJN" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
@@ -19189,15 +19092,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
-"tMF" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "tMP" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating,
@@ -19266,6 +19160,15 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"tTJ" = (
+/obj/structure/machinery/light,
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/brown/northwest,
+/area/lv624/lazarus/comms)
 "tTX" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -19349,10 +19252,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"udj" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "udM" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/dark,
@@ -19475,6 +19374,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv624/lazarus/secure_storage)
+"ulQ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
 "umb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -19495,10 +19404,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
-"upp" = (
-/obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "upM" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -19520,6 +19425,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
+"urp" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirt/desert_dug,
+/area/lv624/ground/caves/sand_temple)
 "ury" = (
 /obj/effect/landmark/lizard_spawn,
 /turf/open/floor/whiteyellowfull/east,
@@ -19541,10 +19450,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"uuv" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "uuV" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirtgrassborder/south,
@@ -19565,6 +19470,10 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
+"uxp" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "uxq" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/security/liaison,
@@ -19666,10 +19575,36 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
+"uIl" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/ground/caves/sand_temple)
 "uIF" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
+"uIZ" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "uKT" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -19697,6 +19632,36 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
+"uMN" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	anchored = 1;
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/effect/decal/remains/xeno{
+	pixel_x = -1;
+	pixel_y = 31
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "uOi" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -19737,6 +19702,15 @@
 "uSy" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/east_barrens)
+"uSz" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "uSF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
@@ -19822,6 +19796,16 @@
 	},
 /turf/open/floor/warningcorner/north,
 /area/lv624/lazarus/landing_zones/lz1)
+"uZt" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/shuttle/red,
+/area/lv624/ground/caves/sand_temple)
 "uZz" = (
 /obj/structure/surface/table/holotable,
 /obj/structure/machinery/computer/objective{
@@ -19852,6 +19836,17 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
+"vde" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engineering Dome SMES";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/delivery,
+/area/lv624/lazarus/engineering)
 "vdl" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -19883,23 +19878,10 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"ver" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
-"vft" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirt/desert_dug,
-/area/lv624/ground/caves/sand_temple)
 "vfR" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"vgJ" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "vgM" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -19984,15 +19966,11 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"vpu" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+"vpW" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/foamed_metal,
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "vqT" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
@@ -20019,10 +19997,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"vvs" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/caves/sand_temple)
 "vvE" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
@@ -20155,6 +20129,15 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"vLi" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "vLO" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -20321,10 +20304,6 @@
 	},
 /turf/open/gm/dirtgrassborder/weedable/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"wcj" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "wcK" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest,
@@ -20336,11 +20315,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"wcW" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/lv624/ground/caves/sand_temple)
 "weB" = (
 /obj/item/stack/rods/plasteel,
 /turf/open/floor/greengrid,
@@ -20353,11 +20327,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/secure_storage)
-"wgk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/caves/sand_temple)
 "whk" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -20398,6 +20367,21 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
+"wjK" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/item/clothing/head/hardhat/orange,
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "wjT" = (
 /obj/structure/sign/safety/analysis_lab{
 	pixel_x = 40
@@ -20430,10 +20414,6 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"wmj" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "wol" = (
 /obj/item/ammo_magazine/rifle/extended,
 /turf/open/floor/plating,
@@ -20510,6 +20490,10 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
+"wvx" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "wvO" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -20575,6 +20559,14 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle/ceiling)
+"wFF" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/warnplate/southeast,
+/area/lv624/lazarus/engineering)
 "wFR" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/drip,
@@ -20666,6 +20658,15 @@
 	},
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
+"wOV" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "wPN" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
@@ -20706,16 +20707,6 @@
 "wSo" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/barrens/west_barrens)
-"wSA" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "wSR" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/surface/table/reinforced/prison,
@@ -20835,10 +20826,6 @@
 "wZW" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xak" = (
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "xar" = (
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
@@ -20861,6 +20848,10 @@
 "xdO" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
+"xef" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/ground/caves/sand_temple)
 "xei" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -20915,6 +20906,29 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"xoh" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/decal/remains/xeno{
+	pixel_x = 1;
+	pixel_y = 31
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "xov" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -20928,10 +20942,6 @@
 "xpf" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_nexus_road)
-"xpz" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
-/area/lv624/ground/caves/sand_temple)
 "xpR" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_east_caves)
@@ -20960,11 +20970,6 @@
 "xvj" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/secure_storage)
-"xvz" = (
-/obj/structure/platform_decoration/metal/almayer,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "xvN" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -21230,15 +21235,15 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"ybO" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/pole/fancy_cane,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
+"ydj" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/sand_temple)
 "ydp" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
@@ -21275,6 +21280,10 @@
 /obj/structure/surface/rack,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"ygI" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/caves/sand_temple)
 "yhd" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
@@ -38432,12 +38441,12 @@ aQn
 aTi
 aTi
 qit
-upp
-jfN
-jfN
-gKN
-xvz
-elO
+iLY
+gWY
+gWY
+sbj
+tAF
+rkh
 aPT
 kxI
 lIU
@@ -38660,11 +38669,11 @@ aTg
 aTg
 kKL
 aXn
-qap
+tTJ
 aTg
 aTg
-cyP
-aXa
+gXT
+bUo
 aPt
 aPt
 kxI
@@ -40712,7 +40721,7 @@ aSL
 aSL
 aVg
 tem
-aVd
+oGi
 kzp
 aTq
 aTq
@@ -40940,7 +40949,7 @@ aSL
 lHc
 ogR
 aUs
-nwR
+pCf
 aTM
 aTq
 kzp
@@ -41624,7 +41633,7 @@ aSL
 lHc
 gKg
 aVe
-jwW
+wFF
 aTM
 aTM
 gqG
@@ -41852,7 +41861,7 @@ aSL
 aSL
 aVf
 jMk
-aWg
+mvd
 lzW
 kyz
 aWF
@@ -42537,9 +42546,9 @@ aTs
 aTR
 aUu
 aSX
-aVG
+wjK
 vdl
-aWG
+inQ
 aSX
 aXt
 aWi
@@ -42764,10 +42773,10 @@ aSL
 aTu
 fLf
 fQx
-aVj
-mkZ
+vde
+vpW
 hDe
-aWH
+hKK
 aSX
 aXu
 aXN
@@ -51775,14 +51784,14 @@ ahv
 ahv
 afS
 aej
-wSA
-jAK
+ulQ
+uZt
 ubJ
-jMH
-iwl
+mpc
+hln
 aej
 ssK
-rYA
+oIa
 agX
 agX
 ahv
@@ -52010,7 +52019,7 @@ mhZ
 pEV
 uFA
 cRm
-rYA
+oIa
 agX
 ahv
 ahv
@@ -52230,7 +52239,7 @@ ahv
 ahv
 ahv
 slW
-quK
+uIZ
 pEV
 mhZ
 mhZ
@@ -52238,7 +52247,7 @@ mhZ
 lDh
 pws
 ssK
-rYA
+oIa
 agX
 agX
 ahv
@@ -52466,7 +52475,7 @@ mhZ
 dID
 kbr
 jFc
-rYA
+oIa
 agX
 gxd
 ahv
@@ -52686,7 +52695,7 @@ ahv
 ahv
 ahv
 slW
-quK
+uIZ
 pEV
 mhZ
 mhZ
@@ -52694,7 +52703,7 @@ mhZ
 pEV
 lJm
 aeg
-rYA
+oIa
 gxd
 qeW
 btX
@@ -52922,7 +52931,7 @@ mhZ
 pEV
 uDd
 slW
-rYA
+oIa
 fPi
 btX
 wPN
@@ -53142,7 +53151,7 @@ ahv
 ahv
 ahv
 afS
-sWL
+dVU
 pEV
 mhZ
 mhZ
@@ -53150,8 +53159,8 @@ mhZ
 pEV
 fzZ
 aeg
-vgJ
-mUZ
+nnY
+rUx
 wPN
 gQr
 agX
@@ -53379,7 +53388,7 @@ nTE
 afS
 afS
 aeg
-wcW
+nAv
 gQr
 agX
 xBi
@@ -53597,17 +53606,17 @@ ahv
 ahv
 ahv
 aeg
-wcj
-lse
-gsX
+jOt
+pUE
+pae
 oyI
 oyI
 oyI
-ezC
-trJ
-dHT
+qko
+tCD
+rEI
 aeg
-rYA
+oIa
 agX
 agX
 agX
@@ -53825,17 +53834,17 @@ ahv
 ahv
 ahv
 ufW
-xpz
-nEr
-djF
+xef
+pJm
+wvx
 boe
 boe
 boe
-kPU
-nEr
-bIO
+sho
+pJm
+ygI
 afS
-rYA
+oIa
 agX
 agX
 agX
@@ -53852,9 +53861,9 @@ xch
 xch
 xch
 xch
-udj
-nfX
-ocL
+nUa
+iEC
+tEJ
 uxT
 uxT
 uxT
@@ -54053,17 +54062,17 @@ aeb
 dkN
 ufW
 ufW
-aAd
-avk
-wmj
+aGD
+hRQ
+jbO
 boe
 boe
 boe
-qAc
-thn
-qsM
+amz
+iTl
+fYh
 ufW
-fvt
+jNn
 rCK
 rCK
 rCK
@@ -54073,19 +54082,19 @@ slW
 afS
 ahv
 ahv
-aBN
+tbt
 xch
 xch
 xch
-udj
-qBQ
-bYV
-cQX
+nUa
+cls
+rls
+wOV
 nnq
-oGj
-tMF
-nVZ
-aBN
+eBe
+dTQ
+uSz
+tbt
 ajw
 ajI
 alz
@@ -54281,15 +54290,15 @@ agA
 rac
 ufW
 msd
-aep
-afi
-uuv
+mcG
+mFy
+sGE
 boe
 boe
 boe
-doJ
-afi
-ver
+ciy
+mFy
+sph
 hqS
 agX
 agX
@@ -54301,19 +54310,19 @@ wUz
 afS
 aeg
 lUy
-sCg
+rqN
 qpX
 qpX
 pRx
-vpu
-jSp
+vLi
+hCE
 oTx
 jhG
 jhG
 jhG
 thS
 btr
-gTM
+opZ
 ajw
 ajI
 ajI
@@ -54528,12 +54537,12 @@ kqL
 kqL
 boe
 aeg
-bEU
+xoh
 wBS
 ahB
 wZW
 wZW
-ffZ
+mSH
 dVO
 bEq
 iuO
@@ -54541,7 +54550,7 @@ lPJ
 whv
 dGc
 lBq
-gTM
+opZ
 jLc
 aqu
 ajI
@@ -54769,7 +54778,7 @@ rxV
 lPJ
 dGc
 shy
-gTM
+opZ
 xch
 ajw
 ajI
@@ -54984,12 +54993,12 @@ iLM
 boe
 boe
 aeg
-nvS
+uMN
 wZW
 wZW
 wZW
 wZW
-oFO
+qia
 xvN
 bEq
 uUJ
@@ -54997,7 +55006,7 @@ lPJ
 mUH
 dGc
 wca
-gTM
+opZ
 xch
 ajw
 alA
@@ -55193,15 +55202,15 @@ aeT
 rac
 aej
 boe
-kPU
-smE
-djF
+sho
+iXt
+wvx
 agX
 agX
 agX
-kPU
-vvs
-ybO
+sho
+hnl
+uIl
 dDa
 boe
 agX
@@ -55213,19 +55222,19 @@ kqL
 aeg
 aeg
 lUy
-nWw
+oCz
 dqo
 dqo
 bQA
-lWw
-eAr
+drJ
+jpx
 ktf
 iOz
 iOz
 iOz
 ttZ
 mVg
-gTM
+opZ
 arT
 ajw
 ajI
@@ -55421,17 +55430,17 @@ aKj
 ahv
 aeg
 aeg
-qAc
+amz
 woM
-rYA
+oIa
 yhd
 dxy
 agX
-hNq
+uxp
 idz
-afq
+ydj
 ufW
-qPO
+mzi
 aBi
 aBi
 aBi
@@ -55441,19 +55450,19 @@ aeg
 aeg
 ahv
 ahv
-pfK
+oVz
 iIF
 xch
 xch
-cyf
-tDa
-bPG
-hke
+jFp
+qxk
+fCo
+bdq
 nnq
-sIM
-nsF
-kZs
-kgY
+jrx
+nPI
+gxj
+kVR
 rGZ
 ajw
 alz
@@ -55649,17 +55658,17 @@ gWE
 ahv
 ahv
 slW
-wcj
-afi
-pyN
+jOt
+mFy
+iFe
 qqJ
 aev
 agX
-wcj
-tzB
-wgk
+jOt
+cjY
+qVx
 ufW
-rYA
+oIa
 agX
 agX
 agX
@@ -55676,9 +55685,9 @@ xch
 xch
 xch
 xch
-cyf
-xak
-kgY
+jFp
+ijP
+kVR
 dGc
 eER
 iIF
@@ -56106,16 +56115,16 @@ ahv
 ahv
 aeg
 aeg
-qPO
+mzi
 aBi
 aBi
 aBi
 aBi
 aBi
-afj
+lki
 afS
 afS
-rYA
+oIa
 agX
 agX
 agX
@@ -56334,16 +56343,16 @@ ahv
 ahv
 ahv
 aeg
-uuv
+sGE
 boe
 boe
 boe
 boe
 boe
-doJ
+ciy
 afS
 ahv
-vft
+urp
 agX
 agX
 agX
@@ -60208,7 +60217,7 @@ whU
 ahv
 ahv
 ahv
-tJh
+mJK
 agX
 ahv
 ahv

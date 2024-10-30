@@ -166,7 +166,7 @@
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		for (var/obj/item/device/encryptionkey/key as anything in keys)
-			if (key.type == W.type)
+			if (istype(key, W.type))
 				to_chat(user, SPAN_NOTICE("A [W.name] is already installed on this device!"))
 				return
 

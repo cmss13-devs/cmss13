@@ -164,12 +164,12 @@
 		else
 			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
 
-	if(key_type in keys)
-		to_chat(user, SPAN_NOTICE("There is already a key of the same type in the headset!"))
-    	return
-
-
 	if(istype(W, /obj/item/device/encryptionkey/))
+		for (var/obj/item/device/encryptionkey/key in keys)
+			if (key.type == W.type)
+				to_chat(user, SPAN_NOTICE("There is already the same type of encryption key in the headset!"))
+				return
+
 		var/keycount = 0
 		for (var/obj/item/device/encryptionkey/key in keys)
 			if(!key.abstract)

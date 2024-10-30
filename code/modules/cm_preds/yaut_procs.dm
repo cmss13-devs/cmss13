@@ -217,7 +217,6 @@
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-
 /area/yautja_ship
 	name = "\improper Yautja Ship"
 	icon_state = "teleporter"
@@ -227,3 +226,29 @@
 	requires_power = FALSE
 	base_lighting_alpha = 255
 	flags_area = AREA_YAUTJA_GROUNDS
+
+///Predator Hunting Grounds stuff
+
+/obj/effect/landmark/ert_spawns/hunt_spawner
+	name = "hunt spawner"
+
+/area/yautja_grounds
+	name = "\improper Yautja Hunting Grounds"
+	icon_state = "green"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/caves
+	name = "\improper Yautja Hunting Grounds Caves"
+	icon_state = "cave"
+	ambience_exterior = AMBIENCE_CAVE
+
+/area/yautja_grounds/temple
+	name = "\improper Yautja Hunting Grounds Temple"
+	icon_state = "bluenew"
+	ambience_exterior = AMBIENCE_CAVE
+
+///TP Areas
+
+/area/yautja_grounds/prep_room
+	name = "\improper Jungle Moon"
+	icon_state = "red"

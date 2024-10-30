@@ -59,7 +59,7 @@
 
 /obj/item/xeno_egg/proc/plant_egg_human(mob/living/carbon/human/user, turf/T)
 	if(user.hivenumber != hivenumber)
-		if(!istype(T, /turf/open/floor/almayer/research/containment))
+		if(!istype(T, /turf/open/floor/almayer/research/containment) && !HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 			return
 		for (var/obj/O in T)

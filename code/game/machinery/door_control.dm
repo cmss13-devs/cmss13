@@ -207,15 +207,7 @@
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
 
-/obj/structure/machinery/door_control/yautja_grounds
-    name = "Activate hunting grounds"
-    desc = "A button for activating the hunting grounds."
 
-/obj/structure/machinery/door_control/yautja_grounds/use_button(mob/living/user, force)
-
-	if(!isyautja(user))
-		return
-	SSmapping.lazy_load_template(/datum/lazy_template/pred/hunting_grounds_1)
 
 
 /obj/structure/machinery/door_control/brbutton

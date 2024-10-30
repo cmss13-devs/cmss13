@@ -544,7 +544,7 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = ""
 	layer = ABOVE_HUD_LAYER
 	screen_loc = "1,1"
-	//mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = TILE_BOUND
 	var/cur_x_shift = 0
 	var/cur_y_shift = 0
@@ -1022,7 +1022,7 @@ SUBSYSTEM_DEF(minimaps)
 	map = SSminimaps.fetch_minimap_object(zlevel, flags)
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
-	map.appearance_flags = NONE
+	map.appearance_flags = NONE // If you really want TILE_BOUND for the tacmaps, you need to CENTER it but it won't be scaled right
 
 /datum/tacmap_holder/Destroy()
 	map = null

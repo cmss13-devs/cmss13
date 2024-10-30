@@ -20443,6 +20443,16 @@
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/command/lifeboat)
+"eto" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control{
+	id = "CMO Shutters";
+	name = "Office Shutters";
+	req_access_txt = "5";
+	pixel_x = -29
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/almayer/medical/upper_medical)
 "ets" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /obj/effect/decal/warning_stripes{
@@ -98951,7 +98961,7 @@ ans
 axm
 ans
 aGX
-aGX
+eto
 ans
 ans
 axm

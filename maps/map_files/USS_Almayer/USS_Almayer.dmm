@@ -2588,8 +2588,11 @@
 	dir = 8
 	},
 /obj/structure/sign/safety/terminal{
-	pixel_x = -3;
+	pixel_x = -10;
 	pixel_y = -27
+	},
+/obj/structure/closet/secure_closet/professor_dummy{
+	pixel_y = -30
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/upper_medical)

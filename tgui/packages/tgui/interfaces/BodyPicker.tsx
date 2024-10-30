@@ -1,7 +1,15 @@
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, ColorBox, DmIcon, Modal, Stack, Tooltip } from '../components';
+import {
+  Box,
+  Button,
+  ColorBox,
+  DmIcon,
+  Modal,
+  Stack,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
 
 type PickerData = {
@@ -32,7 +40,7 @@ export const BodyPicker = () => {
   )[0];
 
   return (
-    <Window width={390} height={180}>
+    <Window width={390} height={180} theme={'crtblue'}>
       <Window.Content className="BodyPicker">
         {picker && (
           <Modal m={1}>
@@ -50,29 +58,51 @@ export const BodyPicker = () => {
                   mt={-5}
                 />
               </Stack.Item>
-              <Stack>
-                <Tooltip content={'Change Body Type'} position="bottom-start">
-                  <Box position="relative" onClick={() => setPicker('type')}>
-                    <DmIcon
-                      icon={icon}
-                      icon_state={`${skin_color}_torso_${body_size}_${unselectedBodyType.icon}`}
-                      width={'80px'}
-                      mt={-5}
-                    />
-                  </Box>
-                </Tooltip>
-                <Tooltip content={'Change Body Size'} position="bottom-start">
-                  <Box position="relative" onClick={() => setPicker('size')}>
-                    <DmIcon
-                      icon={icon}
-                      icon_state={`${skin_color}_torso_${unselectedBodySize.icon}_${body_type}`}
-                      width={'80px'}
-                      mt={-5}
-                      ml={-5}
-                      position="relative"
-                    />
-                  </Box>
-                </Tooltip>
+              <Stack width="100%" fill mt={-4} justify="space-around">
+                <Stack.Item>
+                  <Button width={'4em'} height={'4em'}>
+                    <Tooltip
+                      content={'Change Body Type'}
+                      position="bottom-start"
+                    >
+                      <Box
+                        position="relative"
+                        onClick={() => setPicker('type')}
+                      >
+                        <DmIcon
+                          position="relative"
+                          icon={icon}
+                          icon_state={`${skin_color}_torso_${body_size}_${unselectedBodyType.icon}`}
+                          width={'80px'}
+                          right={'22px'}
+                          bottom={'18px'}
+                        />
+                      </Box>
+                    </Tooltip>
+                  </Button>
+                </Stack.Item>
+                <Stack.Item>
+                  <Button width={'4em'} height={'4em'}>
+                    <Tooltip
+                      content={'Change Body Size'}
+                      position="bottom-start"
+                    >
+                      <Box
+                        position="relative"
+                        onClick={() => setPicker('size')}
+                      >
+                        <DmIcon
+                          position="relative"
+                          icon={icon}
+                          icon_state={`${skin_color}_torso_${unselectedBodySize.icon}_${body_type}`}
+                          width={'80px'}
+                          right={'22px'}
+                          bottom={'18px'}
+                        />
+                      </Box>
+                    </Tooltip>
+                  </Button>
+                </Stack.Item>
               </Stack>
             </Stack>
           </Stack.Item>

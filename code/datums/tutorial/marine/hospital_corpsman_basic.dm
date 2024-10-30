@@ -16,58 +16,83 @@
 	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner()
-	message_to_player("The first step to any medical treatment, is always identifying the source of injury.")
-	message_to_player("To do this, you should first get to know your new best friend, the <b>Health Analyzer</b>.")
+	message_to_player("First things first, you should get to know your new best friend, the <b>Health Analyzer</b>.")
 	var/obj/item/device/healthanalyzer/healthanalyzer = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	message_to_player("Pick up the <b>Health Analyzer</b> by clicking on it with an empty hand.")
 	update_objective("Pick up the Health Analyzer.")
-	var/mob/living/living_mob = tutorial_mob
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(brute_tutorial))
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
+
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_2()
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
-	message_to_player("There are four main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
-	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 8 SECONDS)
+	message_to_player("The first step to any medical treatment, is identifying the source and type of injury.")
+	message_to_player("You can use your <b>Health Analyzer</b> on wounded Marines to see the locations, severity, and types of damage they have sustained.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 5 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
+	message_to_player("There are four main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
+	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
+	SIGNAL_HANDLER
+
 	var/mob/living/carbon/human/human_dummy = new(loc_from_corner(2,2))
 	add_to_tracking_atoms(human_dummy)
-	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_dummy.limbs
-	mob_chest.adjustBruteLoss(10)
-	message_to_player("The Dummy has sustained some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them!")
+	human_dummy.apply_damage(5, BRUTE, "chest")
+	message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(human_dummy, COLOR_GREEN)
 	update_objective("Click on the Dummy with your Health Analyzer")
-	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(on_health_examine))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(scanner_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/on_health_examine(datum/source, mob/living/carbon/human/attacked_mob)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_3(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
 	if(attacked_mob == tutorial_mob)
 		return
 
-	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HEALTH_ANALYZED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
-	update_objective("Inject yourself with the bicaridine injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use/brute_injector = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(brute_injector)
-	add_highlight(brute_injector)
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_brute_inject))
+	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
+	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
+	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 6 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/on_brute_inject(datum/source, obj/item/reagent_container/hypospray/injector)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
+	message_to_player("Click on the <b>Bicaridine pill</b> with an empty hand to pick it up. Then click on the Dummy while holding it and standing next to them to medicate them.")
+	message_to_player("Feeding someone a pill takes concentration, and comes with a slight delay. Neither of you should move while the blue circle is over your head, or the process will be disrupted, and you will have to try again.")
+	update_objective("Feed the Dummy the Bicaridine pill.")
+	var/obj/item/reagent_container/pill/bicaridine/pill = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(pill)
+	add_highlight(pill, COLOR_GREEN)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(brute_pill_fed_reject))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(brute_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed_reject()
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 2 SECONDS)
+
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use))
-		return
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
 
-	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
-	remove_highlight(brute_injector)
+	message_to_player("Signal check cleared")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/bicaridine, pill)
+	remove_highlight(pill)
 	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob

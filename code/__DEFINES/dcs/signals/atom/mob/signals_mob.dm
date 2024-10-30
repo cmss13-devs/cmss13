@@ -185,3 +185,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_MOB_PILL_FED "mob_pill_fed"

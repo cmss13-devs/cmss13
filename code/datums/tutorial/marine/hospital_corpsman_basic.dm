@@ -24,8 +24,6 @@
 	update_objective("Pick up the Health Analyzer.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
-
-
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_2()
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -35,9 +33,10 @@
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 5 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
+	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
 	message_to_player("There are four main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
 	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
 	SIGNAL_HANDLER
@@ -125,20 +124,50 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
-	human_dummy.apply_damage(15, BRUTE, "chest")
-	human_dummy.apply_damage(15, BRUTE, "arm/l_arm")
+	human_dummy.apply_damage(10, BRUTE, "chest")
+	human_dummy.apply_damage(10, BRUTE, "arm/l_arm")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
 	update_objective("")
+	message_to_player("The Dummy has taken some moderate brute damage on two different limbs. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
+	add_highlight(human_dummy, COLOR_GREEN)
+	update_objective("Click on the Dummy with your Health Analyzer")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(brute_tutorial_6))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_6()
+	message_to_player("As you can see, the Dummy has taken 10 brute damage to its chest and left arm.")
 	message_to_player("More severe injuries can be treated through the use of <b>Advanced Trauma Kits</b>.")
 	message_to_player("These items are used to treat moderate to high levels of brute damage, but must be manually applied to each damaged limb.")
 	message_to_player("They only heal 12 damage per application, and should be used alongside medicines like <b>Bicaridine</b> when treating a patient.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_6)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_7)), 11 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_6()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_7()
 	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brutekit, COLOR_GREEN)
 	add_highlight(brutekit)
+	message_to_player("We will first focus on healing the wound on the Dummy's chest.")
+	message_to_player("Click on the <b>Advanced Trauma Kit</b> with an empty hand to pick it up, then click on the Dummy while standing next to them to apply the trauma kit.")
+
+
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_7)), 5 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_7()
+	var/datum/hud/human/human_hud = tutorial_mob.hud_used
+	add_highlight(human_hud.zone_sel)
+	message_to_player("Well done!")
+	message_to_player("<b>Advanced Trauma Kits</b> can only be applied to one section of the body at a time, and you must select which part of the body you are trying to heal.")
+	message_to_player("Since we are manually applying the trauma kit to two different limbs, we will need to change our selected limb to the Dummy's left arm.")
+	message_to_player("Use the highlighted <b>zone selection</b> element on the bottom right of your HUD, and change your target to the <b>left arm</b> by clicking the left arm on the little man in the selection box")
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_7()
+COMSIG_LIMB_ADD_SUTURES
+TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+zone_selected
+var/atom/movable/screen/zone_sel/zone_sel
+	if(human_dummy.getBruteLoss() != 0)
+		return
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)

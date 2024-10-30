@@ -20,7 +20,7 @@
 	///Datum used for mob detection.
 	var/datum/shape/range_bounds
 	///How long it takes to generate one facehugger.
-	var/spawn_cooldown_length = 120 SECONDS
+	var/spawn_cooldown_length = 60 SECONDS
 	COOLDOWN_DECLARE(spawn_cooldown)
 
 

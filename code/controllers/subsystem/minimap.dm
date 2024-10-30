@@ -352,13 +352,13 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags)
-	var/hash = "[zlevel]-[flags]"
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE)
+	var/hash = "[zlevel]-[flags]-[shifting]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, zlevel, flags)
+	var/atom/movable/screen/minimap/map = new(null, zlevel, flags, shifting)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
-		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
+		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
@@ -544,16 +544,51 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = ""
 	layer = ABOVE_HUD_LAYER
 	screen_loc = "1,1"
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	//mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = TILE_BOUND
+	var/cur_x_shift = 0
+	var/cur_y_shift = 0
+	var/shift_size = 8
+	var/x_max = 1
+	var/y_max = 1
+	var/x_east = TRUE
+	var/y_east = TRUE
 
-/atom/movable/screen/minimap/Initialize(mapload, target, flags)
+/atom/movable/screen/minimap/Initialize(mapload, target, flags, shifting = FALSE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
 	SSminimaps.add_to_updaters(src, flags, target)
 
+	x_max = SSminimaps.minimaps_by_z["[target]"].x_max
+	y_max = SSminimaps.minimaps_by_z["[target]"].y_max
+
+	if(shifting && (SSminimaps.minimaps_by_z["[target]"].x_max > SCREEN_PIXEL_SIZE || SSminimaps.minimaps_by_z["[target]"].y_max > SCREEN_PIXEL_SIZE))
+		START_PROCESSING(SSobj, src)
+		if(findtext(screen_loc, "1") != 1)
+			CRASH("Shifting a minimap screen_loc of '[screen_loc]' is not currently implemented!") // Just need to do string manip in process to support it
+
+/atom/movable/screen/minimap/process()
+	if(x_max > SCREEN_PIXEL_SIZE)
+		if(x_east)
+			cur_x_shift = min(cur_x_shift + shift_size, x_max - SCREEN_PIXEL_SIZE)
+			if(cur_x_shift == x_max - SCREEN_PIXEL_SIZE)
+				x_east = !x_east
+		else
+			cur_x_shift = max(cur_x_shift - shift_size, 0)
+			if(cur_x_shift == 0)
+				x_east = !x_east
+	if(y_max > SCREEN_PIXEL_SIZE)
+		if(y_east)
+			cur_y_shift = min(cur_y_shift + shift_size, y_max - SCREEN_PIXEL_SIZE)
+			if(cur_y_shift == x_max - SCREEN_PIXEL_SIZE)
+				y_east = !y_east
+		else
+			cur_y_shift = max(cur_y_shift - shift_size, 0)
+			if(cur_y_shift == 0)
+				y_east = !y_east
+	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]"
 
 /**
  * Action that gives the owner access to the minimap pool
@@ -571,6 +606,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/map
 	///This is mostly for the AI & other things which do not move groundside.
 	var/default_overwatch_level = 0
+	///Whether this minimap should shift or not
+	var/shifting = FALSE
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -590,7 +627,7 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 
 	if(default_overwatch_level)
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
 	else
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 
@@ -601,7 +638,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(!SSminimaps.minimaps_by_z["[z_level]"] || !SSminimaps.minimaps_by_z["[z_level]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags)
+	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags, shifting)
 
 /datum/action/minimap/remove_from(mob/target)
 	. = ..()
@@ -623,9 +660,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
 		return
 	if(default_overwatch_level)
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
@@ -638,6 +675,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
 	hidden = TRUE
+	shifting = TRUE
 
 /datum/tacmap
 	var/allowed_flags = MINIMAP_FLAG_USCM

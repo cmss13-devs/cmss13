@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "new minimap icons for numerous things"
-  - bugfix: "fixed squads having incorrect colors on minimap"

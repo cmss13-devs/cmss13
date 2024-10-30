@@ -29,7 +29,7 @@ AddTimelock(/datum/job/fax_responder/uscm_hc, list(
 	gear_preset = /datum/equipment_preset/fax_responder/uscm/provost
 
 AddTimelock(/datum/job/fax_responder/uscm_pvst, list(
-	JOB_POLICE_ROLES = 150 HOURS,
+	JOB_POLICE_ROLES = 75 HOURS,
 	JOB_COMMAND_ROLES = 75 HOURS,
 ))
 

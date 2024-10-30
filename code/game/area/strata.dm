@@ -21,14 +21,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "shuttle"
 	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	base_lighting_alpha = 255
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 
 //Begin actual area definitions. There's probably a better way to do this.
@@ -90,25 +90,25 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "landingzone_2"
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/landing_zones/lz2
 	name = "Landing Zone 2 Pad - Ice Fields"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	weather_enabled = FALSE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/landing_zones/near_lz2
 	name = "Landing Zone 2 - Ice Fields"
 	icon_state = "nearlz2"
 	weather_enabled = TRUE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/interior/landing_zones
 	name = "Do not use."
 	icon_state = "landingzone_1"
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 	weather_enabled = FALSE
 	ceiling = CEILING_NONE
 
@@ -116,11 +116,13 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/landing_zones/near_lz1
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 
 //-Caves
@@ -133,11 +135,13 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/caves/lz_caves
 	name = "External Mining Aerodrome Caves"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/jungle/carplake_center
 	name = "Deep Jungle - Carp Lake Center Island"
 	icon_state = "ug_jung_1"
 	weather_enabled = TRUE
+	unoviable_timer = FALSE
 
 //-Marsh
 
@@ -147,34 +151,42 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/marsh/spring_marshes
 	name = "Cryo-Thermal Springs Marshes"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water_marshes
 	name = "Cryo-Thermal Water Marshes"
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/island_marshes
 	name = "Cryo-Thermal Island Marshes"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/relay_marshes
 	name = "Cryo-Thermal Relay Marshes"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/center
 	name = "Cryo-Thermal Springs"
 	icon_state = "marshcenter"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/river
 	name = "Cryo-Thermal River"
 	icon_state = "marshriver"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/marsh/crash
 	name = "Cryo-Thermal Crashed Lifeboat"
 	icon_state = "marshship"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water
 	name = "Cryo-Thermal Water"
 	icon_state = "marshwater"
 	temperature = TCMB //space cold
+	linked_lz = DROPSHIP_LZ2
 
 //-Outside "interiors"
 
@@ -204,9 +216,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/paths/flight_control_exterior
 	name = "Flight Control Exterior"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/mining_outpost_exterior
 	name = "Mining Outpost Exterior"
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/north_outpost
 	name = "Outpost - North Access Channel"
@@ -219,6 +233,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //
@@ -304,6 +319,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/mining_outpost
 	name = "Do not use."
 	minimap_color = MINIMAP_AREA_MINING
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/mining_outpost/central
 	name = "Mining Outpost Central Hallway"
@@ -347,6 +363,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "offices"
 	minimap_color = MINIMAP_AREA_COMMAND
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/interior/outside/wooden_hospital
 	name = "Wooden Hospital - Hospital Proper"
@@ -388,6 +405,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "outpost_engi_3"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/interior/outside/engineering/parts_storage
 	name = "Engineering Parts Storage"
@@ -472,6 +490,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/carplake
 	name = "Do not use."
 	icon_state = "ug_jung_1"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/carplake/north
 	name = "Deep Jungle - North of Carp Lake"
@@ -488,10 +507,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/platform/south
 	name = "Deep Jungle - South of Underground Platform"
 	icon_state = "ug_jung_4"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/platform/east
 	name = "Deep Jungle - East of Underground Platform"
 	icon_state = "ug_jung_0"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures
 	name = "Do not use."
@@ -502,6 +523,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_2"
 	name = "Deep Jungle - Classified Research Station"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures/research/south
 	icon_state = "ug_jung_3"
@@ -522,6 +544,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_5"
 	name = "Deep Jungle - Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/structures/monitoring/west
 	icon_state = "ug_jung_6"
@@ -541,10 +564,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug/interior/jungle/structures/ruin
 	icon_state = "ug_jung_mine_4"
 	name = "Deep Jungle - Ancient Dorms"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/jungle/tearlake
 	name = "Deep Jungle - Weeping Pool"
 	icon_state = "ug_jung_3"
+	unoviable_timer = FALSE
 
 //-Others
 

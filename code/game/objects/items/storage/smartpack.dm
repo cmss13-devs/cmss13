@@ -322,6 +322,8 @@
 	item_state = "w_smartpack"
 	icon_state = "w_smartpack"
 
+/obj/item/storage/backpack/marine/smartpack/white/drained
+	battery_charge = 0
 
 #undef BACKPACK_LIGHT_LEVEL
 #undef PROTECTIVE_COST

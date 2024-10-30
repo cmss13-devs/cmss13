@@ -719,6 +719,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"arU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "aso" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null;
@@ -1601,6 +1614,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"aOQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "aOZ" = (
 /turf/open/floor/strata,
 /area/space)
@@ -1764,6 +1786,17 @@
 	pixel_y = 18
 	},
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"aTy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -2032,6 +2065,9 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -2214,6 +2250,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -2381,6 +2420,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bnn" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "bno" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32;
@@ -2497,6 +2543,9 @@
 	},
 /area/space)
 "brt" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan1,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -3421,6 +3470,20 @@
 	icon_state = "33"
 	},
 /area/space)
+"bTD" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lock UPP";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "bTI" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
@@ -3489,6 +3552,9 @@
 	})
 "bVd" = (
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -4318,6 +4384,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"cDy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "cDM" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
@@ -5029,6 +5108,16 @@
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/silverfull,
 /area/space)
+"dbQ" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "dch" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat/squares,
@@ -5119,6 +5208,9 @@
 	req_one_access = list(232, 240)
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/corsat/marked,
@@ -5382,6 +5474,9 @@
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 16;
 	pixel_y = 26
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/strata,
 /area/event/metal/dynamic{
@@ -5774,6 +5869,9 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -5898,6 +5996,9 @@
 	base_lighting_alpha = 0
 	})
 "dCW" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -6079,6 +6180,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dJB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "dJG" = (
 /obj/structure/machinery/cryopod{
 	dir = 8
@@ -6198,6 +6308,15 @@
 	pixel_x = 16
 	},
 /turf/open/floor/almayer/aicore/no_build,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"dMe" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -7694,6 +7813,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"eEX" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "eFc" = (
 /obj/structure/platform{
 	dir = 4;
@@ -8944,6 +9073,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/cell_stripe/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -8952,6 +9082,9 @@
 "fkV" = (
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/strata/cyan4/east,
 /area/event/metal/dynamic{
@@ -8975,6 +9108,9 @@
 	dir = 1;
 	pixel_y = 26;
 	pixel_x = -17
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
@@ -9161,6 +9297,15 @@
 	icon_state = "S"
 	},
 /turf/open/shuttle/escapepod/floor4,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"fqy" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -12037,6 +12182,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -12452,6 +12600,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -12595,6 +12744,7 @@
 	dir = 8
 	},
 /obj/structure/stairs,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellow2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -12820,6 +12970,20 @@
 /turf/open/floor/strata/red3{
 	dir = 5
 	},
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"hxq" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Entrance UPP";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -13884,6 +14048,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hXX" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "hYa" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -14674,6 +14850,9 @@
 	pixel_x = 16;
 	pixel_y = 26
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -14858,6 +15037,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellow2/north,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -15086,6 +15266,9 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
@@ -16260,6 +16443,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jsB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan3,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "jtG" = (
 /turf/open/floor/upp_hull/outerhull_dir,
 /area/space)
@@ -16667,6 +16859,18 @@
 /obj/structure/shuttle/part/dropship3/transparent/engine_left_cap,
 /turf/open/floor/plating,
 /area/space)
+"jDK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "jDT" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -17010,6 +17214,9 @@
 	})
 "jNC" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/northeast,
@@ -17952,6 +18159,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -18157,6 +18367,9 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
@@ -18388,6 +18601,9 @@
 "kBD" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -19346,6 +19562,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lbY" = (
+/obj/structure/platform_decoration,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "lcd" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light{
@@ -19775,6 +20001,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lrt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/multi_tiles,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "lrN" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/floor3,
@@ -19896,6 +20133,16 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/space)
+"lxH" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "lxS" = (
 /obj/structure/platform{
 	dir = 1
@@ -19991,6 +20238,18 @@
 	dir = 8
 	},
 /area/space)
+"lDs" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = list(232, 240);
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "lDQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -20143,6 +20402,9 @@
 	})
 "lHo" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -20545,6 +20807,9 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/west,
@@ -21456,6 +21721,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -22376,6 +22644,15 @@
 	id = "southengi2"
 	},
 /turf/open/floor/corsat/plate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"mZl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -23393,6 +23670,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nHp" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/cell_stripe/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "nJk" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -23851,6 +24135,7 @@
 	network = list("Rostock");
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -24927,6 +25212,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oEu" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "oEI" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp5";
@@ -25455,6 +25749,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oRU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "oSh" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/taperecorder{
@@ -25956,6 +26258,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"piL" = (
+/obj/structure/pipes/vents/pump/on,
+/turf/open/floor/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "piQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -26359,6 +26668,17 @@
 	dir = 8
 	},
 /turf/open/floor/carpet,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"puW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -27368,6 +27688,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qbf" = (
+/obj/structure/pipes/vents/pump/on,
+/turf/open/floor/prison/darkyellow2,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "qch" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -28217,6 +28544,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -28736,6 +29064,15 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/corsat/spiralplate,
 /area/space)
+"qPO" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "qQE" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -31012,6 +31349,7 @@
 	})
 "siQ" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/strata/cyan1,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -32332,6 +32670,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan4{
 	dir = 8
 	},
@@ -33330,6 +33671,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tvt" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "tvy" = (
 /obj/structure/platform/strata/metal,
 /turf/open/floor/strata,
@@ -33728,6 +34078,9 @@
 "tHN" = (
 /obj/structure/platform_decoration{
 	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/event/metal/dynamic{
@@ -34217,6 +34570,7 @@
 	dir = 8;
 	invisibility = 101
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/multi_tiles,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -34510,6 +34864,9 @@
 	})
 "udy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -34558,6 +34915,13 @@
 	dir = 4
 	},
 /area/space)
+"ufx" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/cell_stripe/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "ufJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
@@ -36033,6 +36397,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -36813,6 +37180,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vvA" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "vvL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/case/small,
@@ -37125,6 +37504,9 @@
 	base_lighting_alpha = 0
 	})
 "vGz" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -38308,6 +38690,16 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/space)
+"whp" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "why" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/space)
@@ -38666,6 +39058,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wtN" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "wuk" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -38791,6 +39192,9 @@
 /obj/structure/sign/safety/medical{
 	pixel_x = 16;
 	pixel_y = 26
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
@@ -39154,6 +39558,13 @@
 	pixel_y = 7
 	},
 /turf/open/floor/corsat/squares,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"wIq" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/darkyellow2/northwest,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -40047,6 +40458,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xkE" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/cell_stripe,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "xkK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -40658,6 +41076,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -41003,6 +41424,7 @@
 	dir = 8;
 	invisibility = 101
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -41022,6 +41444,9 @@
 "xRi" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -41234,6 +41659,15 @@
 	},
 /turf/open/floor/plating,
 /area/space)
+"yad" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "yat" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -52667,7 +53101,7 @@ ofW
 dRD
 oZA
 jbl
-uME
+lxH
 uuK
 lFZ
 raW
@@ -52692,7 +53126,7 @@ vco
 jqe
 uOd
 ugK
-ugK
+oSy
 nRG
 ugK
 ugK
@@ -52719,7 +53153,7 @@ pPQ
 tcy
 xEi
 uME
-uME
+lxH
 exM
 keJ
 dRD
@@ -52883,59 +53317,59 @@ ofW
 dRD
 nFD
 twv
-bkr
-wnL
-slH
-tAA
-oKt
-sqE
+aOQ
+oRU
+lrt
+wIq
+lDs
+bnn
 hjf
 nZd
-dCB
-tAA
-oKt
+jDK
+wIq
+lDs
 hol
 qBk
 dCW
-mim
-mim
-mim
-mim
-mim
-mim
-mim
-mim
-mim
+ydC
+ydC
+ydC
+ydC
+ydC
+ydC
+ydC
+ydC
+fqy
 xQS
-vGz
+ufx
 beI
 fkh
-vGz
-vGz
+ufx
+qPO
 xQS
-mim
-mim
-mim
-mim
-mim
-mim
-mim
-mim
-mim
-dCc
+ydC
+fqy
+ydC
+ydC
+ydC
+ydC
+ydC
+ydC
+ydC
+xkE
 tHN
 iBr
-oKt
-sqE
-xOh
+lDs
+bnn
+puW
 nZd
 tXi
-tAA
-oKt
-sqE
-xkK
-wnL
-bkr
+wIq
+lDs
+bnn
+aTy
+oRU
+ygu
 twv
 nFD
 dRD
@@ -53112,7 +53546,7 @@ pTu
 dFb
 pKg
 ugK
-dCW
+tvt
 wab
 jof
 mim
@@ -53121,16 +53555,16 @@ wab
 jof
 mim
 mim
-wab
+oEu
 jof
 mim
 hRT
 uOd
 puM
-mim
+jnw
 wab
 jof
-mim
+jnw
 mim
 wab
 jof
@@ -53139,7 +53573,7 @@ mim
 wab
 jof
 dCc
-ugK
+oSy
 upt
 dFb
 cvF
@@ -53328,7 +53762,7 @@ opt
 oKt
 hIc
 frE
-dCW
+tvt
 mim
 mim
 mbE
@@ -53337,16 +53771,16 @@ yif
 yif
 yif
 yif
-yif
+eEX
 yif
 snX
 qCA
 uOd
 uOd
-mbE
+cDy
 yif
 yif
-yif
+eEX
 yif
 yif
 yif
@@ -53355,7 +53789,7 @@ yif
 snX
 mim
 dCc
-kjq
+lbY
 xcY
 oKt
 obV
@@ -53544,7 +53978,7 @@ uOd
 uOd
 uOd
 xID
-qJB
+dMe
 qJB
 hOX
 apY
@@ -53553,7 +53987,7 @@ qJB
 xVb
 awt
 qJB
-qJB
+dMe
 ugK
 vQZ
 ewT
@@ -53562,7 +53996,7 @@ jWC
 lHo
 ugK
 qJB
-qJB
+dMe
 qJB
 uoc
 iSo
@@ -53571,7 +54005,7 @@ qJB
 kLR
 qJB
 sqE
-tHN
+vvA
 uOd
 uOd
 uOd
@@ -53760,16 +54194,16 @@ kdK
 uBH
 uOd
 nRY
-sOQ
-sOQ
+dJB
+wtN
 uOd
 uOd
 sOQ
 sOQ
 uOd
 uOd
-sOQ
-sOQ
+piL
+mZl
 mUM
 mim
 vFi
@@ -53778,15 +54212,15 @@ yif
 dBk
 nre
 sOQ
-sOQ
-sOQ
+dJB
+wtN
 uOd
 uOd
 sOQ
 sOQ
 uOd
 uOd
-cvF
+qbf
 vGz
 sYA
 bqM
@@ -53989,9 +54423,9 @@ sYA
 mUM
 jJL
 vaE
-jJL
-jJL
-jJL
+nHp
+nHp
+yad
 nre
 sOQ
 sOQ
@@ -58092,7 +58526,7 @@ aJu
 hot
 aJu
 wKN
-efX
+arU
 ppK
 ouZ
 bRd
@@ -58308,7 +58742,7 @@ djD
 pRh
 oUq
 xkK
-dKo
+rbj
 sVy
 aiQ
 eiy
@@ -58524,7 +58958,7 @@ pPQ
 pPQ
 pPQ
 hLe
-dKo
+rbj
 sVy
 aiQ
 pPQ
@@ -58740,7 +59174,7 @@ byx
 baS
 xzK
 tpc
-dKo
+rbj
 sVy
 aiQ
 pPQ
@@ -59604,7 +60038,7 @@ byx
 baS
 jrV
 fLj
-hEL
+whp
 dgD
 vNB
 hEL
@@ -59820,7 +60254,7 @@ sYA
 sYA
 pBd
 fLj
-hEL
+whp
 dgD
 vNB
 hEL
@@ -60036,7 +60470,7 @@ sYA
 sYA
 pBd
 fLj
-hEL
+whp
 dgD
 vNB
 hEL
@@ -60252,7 +60686,7 @@ fbx
 miv
 jrV
 fLj
-ruO
+dbQ
 ofv
 oPk
 dRD
@@ -60468,7 +60902,7 @@ byx
 baS
 jrV
 fLj
-ruO
+dbQ
 ofv
 alN
 pPQ
@@ -60684,7 +61118,7 @@ sYA
 sYA
 pBd
 fLj
-ruO
+dbQ
 ofv
 wNm
 pPQ
@@ -60900,7 +61334,7 @@ sYA
 sYA
 sYA
 tpc
-uME
+mvj
 sVy
 wjp
 pPQ
@@ -61116,7 +61550,7 @@ byx
 baS
 xzK
 tpc
-uME
+mvj
 sVy
 trk
 pPQ
@@ -61332,7 +61766,7 @@ pPQ
 pPQ
 pPQ
 pPQ
-hUW
+hXX
 sVy
 fiQ
 pPQ
@@ -61548,7 +61982,7 @@ pPQ
 pPQ
 pPQ
 pPQ
-uME
+mvj
 sVy
 trk
 pPQ
@@ -61764,7 +62198,7 @@ rOw
 rOw
 eAu
 aHS
-uME
+mvj
 sVy
 efX
 dyi
@@ -62196,7 +62630,7 @@ tnF
 bYr
 bYr
 aHS
-tpc
+fcu
 sVy
 pip
 dyi
@@ -62628,7 +63062,7 @@ lUF
 obx
 cFx
 rNC
-tpc
+fcu
 sVy
 aiQ
 uOd
@@ -63492,7 +63926,7 @@ dPb
 oNT
 gQa
 hjn
-bmA
+jsB
 sVy
 jXj
 xOV
@@ -64140,7 +64574,7 @@ dPb
 lkN
 rEp
 hjn
-bmA
+jsB
 sVy
 jXj
 xOV
@@ -64788,7 +65222,7 @@ nxZ
 wAS
 dPb
 rNC
-ggg
+hxq
 ggg
 jlz
 uOd
@@ -65220,7 +65654,7 @@ rNC
 rNC
 rNC
 rNC
-jqS
+bTD
 jqS
 qOt
 uOd
@@ -65652,7 +66086,7 @@ qmf
 nJK
 jPs
 tpc
-sVy
+cwq
 sVy
 dif
 tpc
@@ -65868,7 +66302,7 @@ bbY
 kdK
 kdK
 tpc
-sVy
+cwq
 sVy
 dif
 tpc
@@ -66084,7 +66518,7 @@ lXJ
 tpc
 biL
 tpc
-sVy
+cwq
 sVy
 dif
 tpc
@@ -66300,7 +66734,7 @@ kdK
 kdK
 kdK
 tpc
-sVy
+cwq
 sVy
 dif
 tpc
@@ -66516,7 +66950,7 @@ icP
 icP
 nMh
 tpc
-sVy
+cwq
 sVy
 dif
 tpc
@@ -66732,7 +67166,7 @@ eiG
 eiG
 eiG
 qJl
-sVy
+cwq
 lZa
 dif
 qJl
@@ -66948,7 +67382,7 @@ eiG
 eiG
 eiG
 pPQ
-sVy
+cwq
 sVy
 dif
 pPQ

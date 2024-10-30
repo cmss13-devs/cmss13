@@ -551,8 +551,8 @@
 	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_WELDING
 	has_tint = TRUE
-	vision_impair = VISION_IMPAIR_MAX
-	var/vision_impair_on = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
+	var/vision_impair_on = VISION_IMPAIR_ULTRA
 	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
@@ -632,7 +632,7 @@
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = DISABILITY_BLIND // This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	vision_impair = VISION_IMPAIR_MAX
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."

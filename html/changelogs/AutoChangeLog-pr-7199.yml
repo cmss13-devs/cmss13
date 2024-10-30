@@ -1,4 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - code_imp: "Removed code for some boudlers, removed code makes boulders meltable and destructable by large explosions."

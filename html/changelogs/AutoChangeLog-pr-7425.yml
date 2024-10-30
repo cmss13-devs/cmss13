@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Fixes chat showing \"You fire the plasma caster\" when firing an energy weapon after equipping the plasma caster"

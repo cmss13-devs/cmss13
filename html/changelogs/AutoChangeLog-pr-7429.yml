@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Bracer attachments get properly deleted on bracer destruction"
+  - bugfix: "One bracer attachment cannot be attached to both bracer attachment slots"

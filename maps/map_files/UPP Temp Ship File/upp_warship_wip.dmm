@@ -856,8 +856,8 @@
 /obj/docking_port/stationary/emergency_response/external/hangar_port{
 	dwidth = 8;
 	name = "Rostock hanger port external airlock";
-	airlock_id = s;
-	id = "rostock-ert-hangar-port"
+	id = "rostock-ert-hangar-port";
+	airlock_id = "upp_umbilical"
 	},
 /turf/open/space,
 /area/space)
@@ -18789,6 +18789,12 @@
 	},
 /obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons,
 /turf/open/floor/plating,
+/area/space)
+"kMm" = (
+/obj/docking_port/stationary/lifeboat_dock{
+	name = "Rostock Lifeboat docking port"
+	},
+/turf/open/space,
 /area/space)
 "kNe" = (
 /obj/structure/platform/strata/metal{
@@ -52600,7 +52606,7 @@ bjK
 bjK
 bjK
 bjK
-bjK
+kMm
 bjK
 bjK
 ofW

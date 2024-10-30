@@ -564,9 +564,9 @@ SUBSYSTEM_DEF(minimaps)
 	x_max = SSminimaps.minimaps_by_z["[target]"].x_max
 	y_max = SSminimaps.minimaps_by_z["[target]"].y_max
 
-	if(shifting && (SSminimaps.minimaps_by_z["[target]"].x_max > SCREEN_PIXEL_SIZE || SSminimaps.minimaps_by_z["[target]"].y_max > SCREEN_PIXEL_SIZE))
+	if(shifting && (x_max > SCREEN_PIXEL_SIZE || y_max > SCREEN_PIXEL_SIZE))
 		START_PROCESSING(SSobj, src)
-		if(findtext(screen_loc, "1") != 1)
+		if(findtext(screen_loc, "1") != 1) // We're detecting the first position matching, not the 1 there
 			CRASH("Shifting a minimap screen_loc of '[screen_loc]' is not currently implemented!") // Just need to do string manip in process to support it
 
 /atom/movable/screen/minimap/process()
@@ -588,7 +588,7 @@ SUBSYSTEM_DEF(minimaps)
 			cur_y_shift = max(cur_y_shift - shift_size, 0)
 			if(cur_y_shift == 0)
 				y_east = !y_east
-	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]"
+	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]" // Pixel shift the map
 
 /**
  * Action that gives the owner access to the minimap pool

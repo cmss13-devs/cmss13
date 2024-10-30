@@ -31,9 +31,9 @@
 	apply_cooldown()
 	..()
 
-	adbuct_user.visible_message(SPAN_XENOWARNING("[adbuct_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
+	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
 	var/datum/callback/grab_target_callback = CALLBACK(src, PROC_REF(grab_target), WEAKREF(carbon))
-	adbuct_user.throw_atom(get_step_towards(affected_atom, adbuct_user), grab_range, SPEED_FAST, adbuct_user, end_throw_callback = grab_target_callback)
+	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, end_throw_callback = grab_target_callback)
 	return TRUE
 
 /datum/action/xeno_action/activable/lunge/proc/grab_target(datum/weakref/target_ref)

@@ -346,7 +346,7 @@
 /// Iterate through targets
 /datum/action/xeno_action/activable/prae_abduct/proc/abduct_chain(list/datum/abduction_parameters/abduction_parameters, turf/throw_target_turf, target_count, datum/beam/last_tail_beam, image/last_tail_image, mob/living/carbon/last_target)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
-	if (!xeno)
+	if (!abduct_user)
 		abduction_parameters.Cut()
 		return
 
@@ -401,9 +401,6 @@
 		end_throw_callback = CALLBACK(src, PROC_REF(abduct_chain), abduction_parameters, throw_target_turf, target_count, tail_beam, tail_image),
 		custom_turf_path = abduct_path,
 	)
-
-/datum/action/xeno_action/activable/prae_abduct/proc/end_abduct_throw()
-
 
 /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(mob/living/carbon/human/overlayed_human, image/tail_image)
 	overlayed_human.overlays -= tail_image

@@ -167,7 +167,7 @@
 	if(istype(W, /obj/item/device/encryptionkey/))
 		for (var/obj/item/device/encryptionkey/key in keys)
 			if (key.type == W.type)
-				to_chat(user, SPAN_NOTICE("There is already the same type of encryption key in the headset!"))
+				to_chat(user, SPAN_NOTICE("A [W.name] is already installed on this device!"))
 				return
 
 		var/keycount = 0

@@ -46,26 +46,31 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[level]"] = new /datum/hud_displays
 		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
+
 		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
 		var/xmin = world.maxx
 		var/ymin = world.maxy
 		var/xmax = 1
 		var/ymax = 1
+
 		for(var/xval in 1 to world.maxx)
 			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
 				var/turf/location = locate(xval, yval, level)
 				if(location.z != level)
 					continue
+
 				if(location.density)
-					if(!istype(location, /turf/closed/wall/almayer/outer))
+					if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
 						xmin = min(xmin, xval)
 						ymin = min(ymin, yval)
 						xmax = max(xmax, xval)
 						ymax = max(ymax, yval)
 					icon_gen.DrawBox(location.minimap_color, xval, yval)
 					continue
+
 				if(istype(location, /turf/open/space))
 					continue
+
 				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
 				if(alttarget)
 					xmin = min(xmin, xval)
@@ -74,6 +79,7 @@ SUBSYSTEM_DEF(minimaps)
 					ymax = max(ymax, yval)
 					icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
 					continue
+
 				var/area/turfloc = location.loc
 				if(turfloc.minimap_color)
 					xmin = min(xmin, xval)
@@ -82,43 +88,30 @@ SUBSYSTEM_DEF(minimaps)
 					ymax = max(ymax, yval)
 					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
 					continue
+
 				xmin = min(xmin, xval)
 				ymin = min(ymin, yval)
 				xmax = max(xmax, xval)
 				ymax = max(ymax, yval)
 				icon_gen.DrawBox(location.minimap_color, xval, yval)
 
-		var/width = min(xmax, icon_gen.Width())
-		var/height = min(ymax, icon_gen.Height())
-		var/extents = max(width, height)
-		icon_gen.Crop(xmin, ymin, extents, extents) //cut all the empty pixels
+		xmin = xmin * MINIMAP_SCALE - 1
+		ymin = ymin * MINIMAP_SCALE - 1
+		xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+		ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
 
-		icon_gen.Scale(extents * MINIMAP_SCALE, extents * MINIMAP_SCALE) //scale it up x2 to make it easer to see
+		icon_gen.Scale(icon_gen.Width() * MINIMAP_SCALE, icon_gen.Height() * MINIMAP_SCALE) //scale it up x2 to make it easer to see
+		icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
 
-		//generation is done, now we need to center the icon to someones view, this can be left out if you like it ugly and will halve SSinit time
-		//calculate the offset of the icon
-		var/largest_x = 0
-		var/smallest_x = SCREEN_PIXEL_SIZE
-		var/largest_y = 0
-		var/smallest_y = SCREEN_PIXEL_SIZE
-		for(var/xval=1 to SCREEN_PIXEL_SIZE step 2)
-			for(var/yval=1 to SCREEN_PIXEL_SIZE step 2)
-				if(!icon_gen.GetPixel(xval, yval))
-					continue
-				if(xval > largest_x)
-					largest_x = xval
-				else if(xval < smallest_x)
-					smallest_x = xval
-				if(yval > largest_y)
-					largest_y = yval
-				else if(yval < smallest_y)
-					smallest_y = yval
+		// Determine and assign the offsets
+		minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / MINIMAP_SCALE) - xmin
+		minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / MINIMAP_SCALE) - ymin
+		minimaps_by_z["[level]"].x_max = xmax
+		minimaps_by_z["[level]"].y_max = ymax
 
-		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
-		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
-
-		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
-		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
+		// Center the map icon
+		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
+		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
 
 		minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
 
@@ -222,6 +215,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/x_offset = 0
 	///y offset of the actual icons to keep it to screens
 	var/y_offset = 0
+	///max x for this zlevel
+	var/x_max = 1
+	///max y for this zlevel
+	var/y_max = 1
 
 /datum/hud_displays/New()
 	..()

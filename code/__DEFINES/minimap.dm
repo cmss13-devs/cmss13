@@ -1,4 +1,3 @@
-
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_USCM (1<<1)
 #define MINIMAP_FLAG_PMC (1<<2)
@@ -17,12 +16,15 @@
 #define MINIMAP_FLAG_XENO_RENEGADE (1<<15)
 #define MINIMAP_FLAG_ALL (1<<16) - 1
 
-///Converts the overworld x and y to minimap x and y values
+///The minimap zoom scale
 #define MINIMAP_SCALE 2
+///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 
-//actual size of a users screen in pixels
+///The actual size of a users screen in pixels
 #define SCREEN_PIXEL_SIZE 480
+///The actual size of the minimap in pixels
+#define MINIMAP_PIXEL_SIZE 512
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
@@ -78,7 +80,6 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
 
 #define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
-
 
 //Prison
 #define MINIMAP_AREA_CELL_MAX "#570101ee"

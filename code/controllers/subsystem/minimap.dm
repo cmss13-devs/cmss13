@@ -546,13 +546,20 @@ SUBSYSTEM_DEF(minimaps)
 	screen_loc = "1,1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = TILE_BOUND
-	var/cur_x_shift = 0
-	var/cur_y_shift = 0
+	/// How many pixels to shift each update
 	var/shift_size = 8
+	/// The horizontal max for this map (set at Initialize)
 	var/x_max = 1
+	/// The vertical max for this map (set at Initialize)
 	var/y_max = 1
-	var/x_east = TRUE
-	var/y_east = TRUE
+	/// The current x pixel shift
+	var/cur_x_shift = 0
+	/// The current y pixel shift
+	var/cur_y_shift = 0
+	/// Whether the horizontal shift is currently pushing the map westward
+	var/west_x_shift = TRUE
+	/// Whether the vertical shift is currently pushing the map southward
+	var/south_y_shift = TRUE
 
 /atom/movable/screen/minimap/Initialize(mapload, target, flags, shifting = FALSE)
 	. = ..()
@@ -571,23 +578,23 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap/process()
 	if(x_max > SCREEN_PIXEL_SIZE)
-		if(x_east)
+		if(west_x_shift)
 			cur_x_shift = min(cur_x_shift + shift_size, x_max - SCREEN_PIXEL_SIZE)
 			if(cur_x_shift == x_max - SCREEN_PIXEL_SIZE)
-				x_east = !x_east
+				west_x_shift = !west_x_shift
 		else
 			cur_x_shift = max(cur_x_shift - shift_size, 0)
 			if(cur_x_shift == 0)
-				x_east = !x_east
+				west_x_shift = !west_x_shift
 	if(y_max > SCREEN_PIXEL_SIZE)
-		if(y_east)
+		if(south_y_shift)
 			cur_y_shift = min(cur_y_shift + shift_size, y_max - SCREEN_PIXEL_SIZE)
 			if(cur_y_shift == x_max - SCREEN_PIXEL_SIZE)
-				y_east = !y_east
+				south_y_shift = !south_y_shift
 		else
 			cur_y_shift = max(cur_y_shift - shift_size, 0)
 			if(cur_y_shift == 0)
-				y_east = !y_east
+				south_y_shift = !south_y_shift
 	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]" // Pixel shift the map
 
 /**

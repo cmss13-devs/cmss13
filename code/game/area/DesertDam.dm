@@ -118,6 +118,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel
 	name = "Engineering Western Tunnel"
 	icon_state = "yellow"
+	remote_override_timer  = FALSE
 
 /area/desert_dam/interior/dam_interior/central_tunnel
 	name = "Engineering Central Tunnel"
@@ -126,6 +127,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel
 	name = "Engineering Southern Tunnel"
 	icon_state = "purple"
+	remote_override_timer  = FALSE
 
 /area/desert_dam/interior/dam_interior/northeastern_tunnel
 	name = "Engineering Northeastern Tunnel"
@@ -240,6 +242,8 @@
 /area/desert_dam/building/substation/northeast
 	name = "Command Substation"
 	icon_state = "northeastern_ss"
+	unoviable_timer = FALSE
+
 
 /area/desert_dam/building/substation/central
 	name = "Command Substation"

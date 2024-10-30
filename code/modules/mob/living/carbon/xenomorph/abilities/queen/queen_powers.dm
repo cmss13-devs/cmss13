@@ -678,6 +678,9 @@
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
+	if(AR.remote_override_timer && AR.unoviable_timer)
+		to_chat(X, SPAN_XENOWARNING("It's too early to project the hive this far remotely."))
+		return
 
 	var/obj/effect/alien/weeds/located_weeds = locate() in T
 	if(located_weeds)

@@ -667,6 +667,11 @@
 
 	if(choice == XENO_STRUCTURE_CORE && AR.unoviable_timer)
 		to_chat(X, SPAN_WARNING("This area does not feel right for you to build this in."))
+		return FALSE
+
+	if(AR.remote_override_timer && AR.unoviable_timer && HAS_TRAIT(owner, TRAIT_ABILITY_OVIPOSITOR))
+		to_chat(X, SPAN_WARNING("It is too early to project the hive here remotely."))
+		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)

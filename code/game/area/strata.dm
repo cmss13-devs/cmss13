@@ -229,6 +229,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/far_north_outpost
 	name = "Far North Of The Outpost"
 	icon_state = "cabin"
+	remote_override_timer  = FALSE
 
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
@@ -270,6 +271,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/outpost/maint
 	name = "Outpost Canteen - Eastern Maintenance"
 	icon_state = "outpost_maint"
+	remote_override_timer  = FALSE
 
 /area/strata/ag/interior/outpost/med
 	name = "Outpost Medical"
@@ -369,6 +371,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Wooden Hospital - Hospital Proper"
 	icon_state = "cabin3"
 	minimap_color = MINIMAP_AREA_CAVES
+	remote_override_timer  = FALSE
 
 /area/strata/ag/interior/mountain
 	name = "Outside mountain"
@@ -427,12 +430,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "outpost_gen_4"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_CAVES
+	remote_override_timer  = FALSE
 
 /area/strata/ag/interior/outside/bball/cave //come on BURST AND DIE.
 	name = "Outpost - B-Ball Caves"
 	icon_state = "hive_1"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	minimap_color = MINIMAP_AREA_CAVES_DEEP
+	unoviable_timer = FALSE
 
 
 //-Underground Dorms
@@ -446,6 +451,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "ug_jung_dorm"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
+	remote_override_timer  = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -479,6 +485,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Underground Platform"
 	icon_state = "ug_jung_1"
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
+	remote_override_timer  = FALSE
 
 //-Underground Jungle
 

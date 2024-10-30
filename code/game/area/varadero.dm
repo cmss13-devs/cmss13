@@ -130,6 +130,7 @@
 	name = "New Varadero - Monsoon"
 	icon_state = "varadero1"
 	minimap_color = MINIMAP_AREA_JUNGLE
+	remote_override_timer  = FALSE
 
 /area/varadero/exterior/pool
 	name = "New Varadero - Interior Pool"
@@ -186,6 +187,7 @@
 /area/varadero/interior/hall_SE
 	name = "New Varadero - Hallway SE"
 	icon_state = "hall1"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/chapel
 	name = "New Vardero - Chapel"
@@ -231,11 +233,13 @@
 
 /area/varadero/interior/maintenance/security/south
 	name = "New Varadero - South Sec. Maintenance"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/research
 	name = "New Varadero - Research Offices"
 	icon_state = "offices4"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/electrical
 	name = "New Varadero - Electrical Annex"
@@ -246,6 +250,7 @@
 /area/varadero/interior/toilets
 	name = "New Varadero - Restrooms"
 	icon_state = "req0"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/technical_storage
 	name = "New Varadero - Technical Storage"
@@ -255,11 +260,13 @@
 /area/varadero/interior/laundry
 	name = "New Varadero - Laundry"
 	icon_state = "req2"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/disposals
 	name = "New Varadero - Disposals"
 	icon_state = "offices4"
 	minimap_color = MINIMAP_AREA_ENGI
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/administration
 	name = "New Varadero - Administrative Offices"
@@ -293,10 +300,12 @@
 	name = "New Varadero - Security Offices"
 	icon_state = "offices0"
 	minimap_color = MINIMAP_AREA_SEC
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/records
 	name = "New Varadero - Records"
 	icon_state = "offices2"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior/rear_elevator
 	name = "New Varadero - Main Lift"
@@ -318,6 +327,7 @@
 /area/varadero/interior/caves/east
 	name = "New Varadero - Beach Caves"
 	icon_state = "tunnels2"
+	remote_override_timer  = FALSE
 
 /area/varadero/interior_protected/caves
 	name = "New Varadero - South Research Caves"

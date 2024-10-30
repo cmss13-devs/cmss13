@@ -161,6 +161,7 @@
 	name = "Fiorina - Botany Growtrays"
 	icon_state = "botany"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	remote_override_timer  = FALSE
 
 /area/fiorina/station/park
 	name = "Fiorina - Park"
@@ -169,6 +170,7 @@
 /area/fiorina/station/transit_hub
 	name = "Fiorina - Transit Hub"
 	icon_state = "station1"
+	remote_override_timer  = FALSE
 
 /area/fiorina/station/central_ring
 	name = "Fiorina - Central Ring"
@@ -177,6 +179,7 @@
 /area/fiorina/station/chapel
 	name = "Fiorina - Chapel"
 	icon_state = "station3"
+	remote_override_timer  = FALSE
 
 /area/fiorina/station/civres_blue
 	name = "Fiorina - Blue Block Residences"

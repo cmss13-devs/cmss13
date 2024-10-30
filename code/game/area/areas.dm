@@ -89,6 +89,9 @@
 	/// How long this area should be un-oviable
 	var/unoviable_timer = 25 MINUTES
 
+	/// How long this area should prevent remote building.
+	var/remote_override_timer = 30 MINUTES
+
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -114,6 +117,9 @@
 
 	if(unoviable_timer)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
+
+	if(remote_override_timer)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_remote_timer)))
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -439,3 +445,7 @@
 /// From roundstart, sets a timer to make an area oviable.
 /area/proc/handle_ovi_timer()
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
+
+/// From roundstart, sets a timer to make an area remote-buildable.
+/area/proc/handle_remote_timer()
+	addtimer(VARSET_CALLBACK(src, remote_override_timer, FALSE), remote_override_timer)

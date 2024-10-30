@@ -46,6 +46,10 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
 
+	if(AR.remote_override_timer && AR.unoviable_timer && HAS_TRAIT(X, TRAIT_ABILITY_OVIPOSITOR))
+		to_chat(X, SPAN_WARNING("It is too early to project the hive here remotely."))
+		return FALSE
+
 	if(alien_weeds?.block_structures >= BLOCK_ALL_STRUCTURES)
 		to_chat(X, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
 		return FALSE

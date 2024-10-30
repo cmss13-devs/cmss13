@@ -82,6 +82,7 @@
 /area/lv624/ground/barrens
 	name = "\improper Barrens"
 	icon_state = "yellow"
+	remote_override_timer  = FALSE
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
 /area/lv624/ground/barrens/west_barrens

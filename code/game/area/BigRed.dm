@@ -299,6 +299,7 @@
 	icon_state = "decontamination"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_SEC
+	remote_override_timer  = FALSE
 
 //Big Red V2
 /area/bigredv2
@@ -405,6 +406,7 @@
 	icon_state = "yellow"
 	ceiling = CEILING_NONE
 	base_muffle = MUFFLE_MEDIUM
+	remote_override_timer  = FALSE
 
 /area/bigredv2/caves/eta/living
 	name = "\improper Eta Living Quarters"
@@ -603,6 +605,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	remote_override_timer  = FALSE
 
 /area/bigredv2/caves_research
 	name = "\improper Wey-Yu Research Lab Caves"
@@ -647,6 +650,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	remote_override_timer  = FALSE
 
 /area/bigredv2/landing
 	minimap_color = MINIMAP_AREA_LZ
@@ -690,3 +694,4 @@
 	name = "\improper Filtration Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	remote_override_timer  = FALSE

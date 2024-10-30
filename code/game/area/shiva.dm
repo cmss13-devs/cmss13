@@ -136,6 +136,7 @@
 /area/shiva/exterior/cp_colony_grounds
 	name = "Shiva's Snowball - Colony Grounds"
 	icon_state = "junkyard2"
+	remote_override_timer  = FALSE
 
 /area/shiva/exterior/junkyard
 	name = "Shiva's Snowball - Junkyard"
@@ -148,10 +149,12 @@
 /area/shiva/exterior/junkyard/cp_bar
 	name = "Shiva's Snowball - Bar Grounds"
 	icon_state = "bar0"
+	remote_override_timer  = FALSE
 
 /area/shiva/exterior/cp_s_research
 	name = "Shiva's Snowball - Research Hab Exterior"
 	icon_state = "junkyard1"
+	remote_override_timer  = FALSE
 
 /area/shiva/exterior/cp_lz2
 	name = "Shiva's Snowball - North Colony Grounds"
@@ -266,6 +269,7 @@
 /area/shiva/interior/valley_huts
 	name = "Shiva's Snowball - Valley Bunker 1"
 	icon_state = "hangars1"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/valley_huts/no2
 	name = "Shiva's Snowball - Valley Bunker 2"
@@ -278,6 +282,7 @@
 /area/shiva/interior/garage
 	name = "Shiva's Snowball - Cargo Tug Repair Station"
 	icon_state = "hangars2"
+	remote_override_timer  = FALSE
 
 /area/shiva/interior/lz2_habs
 	name = "Shiva's Snowball - Argentinian Research Headquarters"

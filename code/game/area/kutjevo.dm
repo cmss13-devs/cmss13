@@ -126,6 +126,7 @@
 /area/kutjevo/exterior/complex_border/botany_medical_cave
 	name = "Kutjevo Complex - Botany - Medical Cave"
 	icon_state = "med_ext"
+	remote_override_timer  = FALSE
 
 /area/kutjevo/exterior/complex_border/med_park
 	name = "Kutjevo Complex - Medical Park"
@@ -134,6 +135,7 @@
 /area/kutjevo/exterior/complex_border/med_rec
 	name = "Kutjevo Complex - Water Tank Cave"
 	icon_state = "construction2"
+	remote_override_timer  = FALSE
 
 //telecomms areas
 /area/kutjevo/exterior/telecomm
@@ -251,11 +253,13 @@
 	name = "Kutjevo - Abandoned Construction Interior"
 	ceiling = CEILING_METAL
 	icon_state = "construction_int"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/foremans_office
 	name = "Kutjevo - Foreman's Office"
 	ceiling = CEILING_METAL
 	icon_state = "foremans"
+	remote_override_timer  = FALSE
 
 /area/kutjevo/interior/botany_bay_int
 	name = "Kutjevo - Space Weed Farm Interior"
@@ -307,6 +311,7 @@
 	name = "Kutjevo - South Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_South/power2
 	name = "Kutjevo - South Colony Treatment Plant"

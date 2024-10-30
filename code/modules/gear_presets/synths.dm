@@ -509,6 +509,7 @@
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	idtype = /obj/item/card/id/pmc
 	role_comm_title = "WY Syn"
+	minimap_icon = "pmc_syn"
 	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
@@ -719,6 +720,8 @@
 /datum/equipment_preset/synth/survivor/cultist_synth
 	name = "Cultist - Xeno Cultist Synthetic"
 	faction = FACTION_XENOMORPH
+	minimap_icon = "cult_synth"
+	minimap_background = "background_cultist"
 
 /datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic

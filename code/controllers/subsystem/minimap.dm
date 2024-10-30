@@ -589,7 +589,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(y_max > SCREEN_PIXEL_SIZE)
 		if(south_y_shift)
 			cur_y_shift = min(cur_y_shift + shift_size, y_max - SCREEN_PIXEL_SIZE)
-			if(cur_y_shift == x_max - SCREEN_PIXEL_SIZE)
+			if(cur_y_shift == y_max - SCREEN_PIXEL_SIZE)
 				south_y_shift = !south_y_shift
 		else
 			cur_y_shift = max(cur_y_shift - shift_size, 0)

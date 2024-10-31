@@ -271,7 +271,11 @@
 			if(!pill_maker)
 				return
 
-			var/to_create = floor(clamp(params["number"], 1, max_pill_count))
+			var/param_num = params["number"]
+			if(!isnum(param_num))
+				return
+
+			var/to_create = floor(clamp(param_num, 1, max_pill_count))
 
 			if(reagents.total_volume / to_create < 1)
 				return

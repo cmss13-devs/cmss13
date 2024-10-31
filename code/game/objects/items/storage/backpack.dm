@@ -591,7 +591,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		icon_state = "[base_icon]_ear"
 		return
 
-	if(internal_transmitter.caller)
+	if(internal_transmitter.inbound_call)
 		icon_state = "[base_icon]_ring"
 	else
 		icon_state = base_icon

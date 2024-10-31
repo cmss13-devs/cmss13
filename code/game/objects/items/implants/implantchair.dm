@@ -38,9 +38,9 @@
 	var/dat ="<B>Implanter Status</B><BR>"
 
 	dat +="<B>Current occupant:</B> [src.occupant ? "<BR>Name: [src.occupant]<BR>Health: [health_text]<BR>" : "<FONT color=red>None</FONT>"]<BR>"
-	dat += "<B>Implants:</B> [length(src.implant_list) ? "[length(implant_list)]" : "<A href='?src=\ref[src];replenish=1'>Replenish</A>"]<BR>"
+	dat += "<B>Implants:</B> [length(src.implant_list) ? "[length(implant_list)]" : "<A href='byond://?src=\ref[src];replenish=1'>Replenish</A>"]<BR>"
 	if(src.occupant)
-		dat += "[src.ready ? "<A href='?src=\ref[src];implant=1'>Implant</A>" : "Recharging"]<BR>"
+		dat += "[src.ready ? "<A href='byond://?src=\ref[src];implant=1'>Implant</A>" : "Recharging"]<BR>"
 	user.set_interaction(src)
 	user << browse(dat, "window=implant")
 	onclose(user, "implant")

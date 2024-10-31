@@ -94,10 +94,10 @@
 
 		dat += "Set Temperature: "
 
-		dat += "<A href='?src=\ref[src];op=temp;val=-5'>-</A>"
+		dat += "<A href='byond://?src=\ref[src];op=temp;val=-5'>-</A>"
 
 		dat += " [set_temperature]K ([set_temperature-T0C]&deg;C)"
-		dat += "<A href='?src=\ref[src];op=temp;val=5'>+</A><BR>"
+		dat += "<A href='byond://?src=\ref[src];op=temp;val=5'>+</A><BR>"
 
 		user.set_interaction(src)
 		show_browser(user, dat, "Space Heater Control Panel", "spaceheater")

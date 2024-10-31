@@ -313,7 +313,7 @@
 				if(!(R.fields["last_scan_time"]))
 					. += "<span class = 'deptradio'>No scan report on record</span>\n"
 				else
-					. += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
+					. += "<span class = 'deptradio'><a href='byond://?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
 				break
 
 

@@ -96,13 +96,13 @@
 
 	// Open/Close Door
 	if (open)
-		data += "<a href='?src=\ref[src];open=0'>Close Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=0'>Close Door</a><br/>"
 	else
-		data += "<a href='?src=\ref[src];open=1'>Open Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=1'>Open Door</a><br/>"
 
 	data += "<br/>"
 
-	data += "<br/><a href='?src=\ref[user];mach_close=computer'>Close Display</a>"
+	data += "<br/><a href='byond://?src=\ref[user];mach_close=computer'>Close Display</a>"
 	data += "</TT></BODY></HTML>"
 
 	return data

@@ -919,7 +919,7 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 
 			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
+			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
 			updated_canvas = FALSE
 
 	return TRUE

@@ -117,7 +117,7 @@
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
 	if(faction == FACTION_MARINE)
 		. += ""
-		. += "<a href='?MapView=1'>View Tactical Map</a>"
+		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -540,7 +540,7 @@
 							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+								to_chat(usr, "<a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -576,7 +576,7 @@
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
 					if(!isobserver(usr))
-						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+						to_chat(usr, "<a href='byond://?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -609,7 +609,7 @@
 					else
 						var/new_com_i = length(R.fields["comments"]) + 1
 						R.fields["comments"]["[new_com_i]"] = new_comment
-					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -664,7 +664,7 @@
 									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
 									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
 
 			if(!read)
@@ -693,7 +693,7 @@
 										counter++
 									if(counter == 1)
 										to_chat(usr, "No comment found")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -1678,7 +1678,7 @@
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
 	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
 

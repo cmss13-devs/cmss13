@@ -748,10 +748,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if (shuttle)
 			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
 			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
-		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
-		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
-		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
-		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
+		<BR>\n<A href='byond://?src=\ref[src];order=categories'>Request items</A><BR><BR>
+		<A href='byond://?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
+		<A href='byond://?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
+		<A href='byond://?src=\ref[user];mach_close=computer'>Close</A>"}
 
 	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 	return
@@ -769,20 +769,20 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			//Request what?
 			last_viewed_group = "categories"
 			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
+			temp += "<A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
 			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
-				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+				temp += "<A href='byond://?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
 			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+			temp += "<A href='byond://?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_type in GLOB.supply_packs_datums)
 				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
 					continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
+				temp += "<A href='byond://?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -839,21 +839,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		GLOB.supply_controller.requestlist += supply_order
 
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
 		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["mainmenu"])
 		temp = null
@@ -887,34 +887,34 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 						switch(shuttle.docking_controller.get_docking_status())
 							if ("docked") dat += "Raised<BR>"
 							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='byond://?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='byond://?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
 
 					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
+						dat += "<A href='byond://?src=\ref[src];send=1'>Lower platform</A>"
 					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
+						dat += "<A href='byond://?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
 				else
 					dat += "Lowered<BR>"
 					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
+						dat += "<A href='byond://?src=\ref[src];send=1'>Raise platform</A>"
 					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
+						dat += "<A href='byond://?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
 
 
 		dat += {"<HR>\nSupply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
-		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
-		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
+		\n<A href='byond://?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
+		\n<A href='byond://?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
+		\n<A href='byond://?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
+		\n<A href='byond://?src=\ref[user];mach_close=computer'>Close</A>"}
 
 
 	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
@@ -939,13 +939,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(href_list["send"])
 		if(shuttle.at_station())
 			if (shuttle.forbidden_atoms_check())
-				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 			else
 				shuttle.launch(src)
-				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				temp = "Lowering platform. \[[SPAN_WARNING("<A href='byond://?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 		else
 			shuttle.launch(src)
-			temp = "Raising platform.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			temp = "Raising platform.<BR><BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 			post_signal("supply")
 
 	if (href_list["force_send"])
@@ -961,12 +961,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			//Request what?
 			last_viewed_group = "categories"
 			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
+			temp += "<A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
 			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
-				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+				temp += "<A href='byond://?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 			if(can_order_contraband)
-				temp += "<A href='?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
+				temp += "<A href='byond://?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
 			if(last_viewed_group == "Black Market")
@@ -975,13 +975,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				handle_black_market_groups()
 			else
 				temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+				temp += "<A href='byond://?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 				for(var/supply_type in GLOB.supply_packs_datums)
 					var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 					if(!is_buyable(supply_pack))
 						continue
-					temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+					temp += "<A href='byond://?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -1040,7 +1040,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		GLOB.supply_controller.requestlist += supply_order
 
 		temp = "Order request placed.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[supply_order.ordernum]'>Authorize Order</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='byond://?src=\ref[src];confirmorder=[supply_order.ordernum]'>Authorize Order</A>"
 
 	else if(href_list["confirmorder"])
 		//Find the correct supply_order datum
@@ -1048,7 +1048,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		var/datum/supply_order/supply_order
 		var/datum/supply_packs/supply_pack
 		temp = "Invalid Request"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 		if(length(GLOB.supply_controller.shoppinglist) > 20)
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
@@ -1068,7 +1068,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					GLOB.supply_controller.shoppinglist += supply_order
 					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
-					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+					temp += "<BR><A href='byond://?src=\ref[src];viewrequests=1'>Back</A> <A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[key_name(usr)] confirmed supply order of [supply_pack.name].")
 					if(GLOB.supply_controller.black_market_heat == 100)
@@ -1082,15 +1082,15 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
-					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+					temp += "<BR><A href='byond://?src=\ref[src];viewrequests=1'>Back</A> <A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>"
 				break
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='byond://?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 /*
 	else if (href_list["cancelorder"])
 		var/datum/supply_order/remove_supply = href_list["cancelorder"]
@@ -1100,17 +1100,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		for(var/S in supply_shuttle_shoppinglist)
 			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.orderedby] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			temp += "[SO.object.name] approved by [SO.orderedby] <A href='byond://?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 */
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
 		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby] <A href='?src=\ref[src];confirmorder=[SO.ordernum]'>Approve</A> <A href='?src=\ref[src];rreq=[SO.ordernum]'>Remove</A><BR>"
+			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby] <A href='byond://?src=\ref[src];confirmorder=[SO.ordernum]'>Approve</A> <A href='byond://?src=\ref[src];rreq=[SO.ordernum]'>Remove</A><BR>"
 
-		temp += "<BR><A href='?src=\ref[src];clearreq=1'>Clear list</A>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];clearreq=1'>Clear list</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
@@ -1121,12 +1121,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				GLOB.supply_controller.requestlist.Cut(i,i+1)
 				temp = "Request removed.<BR>"
 				break
-		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];viewrequests=1'>Back</A> <A href='byond://?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["clearreq"])
 		GLOB.supply_controller.requestlist.Cut()
 		temp = "List cleared.<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+		temp += "<BR><A href='byond://?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["mainmenu"])
 		temp = null
@@ -1138,7 +1138,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market()
 
 	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
-	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+	temp += "<A href='byond://?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
 	if(black_market_lockout)
 		temp += "<DIV ALIGN='center'><BR><img src='cmblogo.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
@@ -1151,17 +1151,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	temp += "<b>[last_viewed_group]</b><BR><BR>"
 
 	for(var/supply_group_name in GLOB.supply_controller.contraband_supply_groups)
-		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+		temp += "<A href='byond://?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()
 	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
-	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
+	temp += "<A href='byond://?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
 	for(var/supply_type in GLOB.supply_packs_datums)
 		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
 		if(!is_buyable(supply_pack))
 			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.dollar_cost)]<BR>"
+		temp += "<A href='byond://?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.dollar_cost)]<BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
 
@@ -1421,7 +1421,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			dat += "Raised"
 			if(!spent)
-				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
+				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1437,7 +1437,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(VO.has_vehicle_lock())
 				dat += VO.failure_message
 			else
-				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
+				dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 

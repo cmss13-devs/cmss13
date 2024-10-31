@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "When gibbed, the ghost will stay as the character instead of turning into a brain"

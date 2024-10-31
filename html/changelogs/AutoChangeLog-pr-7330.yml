@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscadd: "the chem master ui is now tgui, and faster. hopefully better"

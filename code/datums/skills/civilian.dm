@@ -216,15 +216,6 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
-/datum/skills/civilian/survivor/gangleader
-	name = "Survivor Gang Leader"
-	additional_skills = list(
-		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
-		SKILL_CQC = SKILL_CQC_SKILLED,
-		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
-		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
-	)
-
 /datum/skills/civilian/survivor/wy_pilot
 	name = "Survivor - Weyland Yutani - Pilot"
 	additional_skills = list(
@@ -257,4 +248,13 @@ CIVILIAN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
+/datum/skills/civilian/survivor/gangleader
+	name = "Survivor Gang Leader"
+	additional_skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)

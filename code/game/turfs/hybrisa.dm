@@ -13,6 +13,9 @@
 /turf/open/floor/plating/engineer_ship
 	icon = 'icons/turf/floors/engineership.dmi'
 
+/turf/open/floor/plating/hybrisa_rock
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+
 // Hybrisa auto-turf
 
 /turf/open/auto_turf/hybrisa_auto_turf
@@ -1056,6 +1059,7 @@
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
 	hull = TRUE
+	baseturfs = /turf/open/floor/plating/hybrisa_rock
 
 // Marshalls
 

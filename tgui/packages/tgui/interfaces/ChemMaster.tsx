@@ -106,10 +106,10 @@ export const ChemMaster = () => {
               </Button>
             }
           >
-            {!beaker.reagents && <NoticeBox info>Beaker is empty.</NoticeBox>}
-
-            {beaker.reagents && (
+            {beaker.reagents ? (
               <Reagents reagents={beaker.reagents} type={'beaker'} />
+            ) : (
+              <NoticeBox info>Beaker is empty.</NoticeBox>
             )}
           </Section>
         )}
@@ -124,8 +124,11 @@ export const ChemMaster = () => {
             </Button>
           }
         >
-          {!buffer && <NoticeBox info>Buffer is empty.</NoticeBox>}
-          {buffer?.length && <Reagents reagents={buffer} type="buffer" />}
+          {buffer?.length ? (
+            <Reagents reagents={buffer} type="buffer" />
+          ) : (
+            <NoticeBox info>Buffer is empty.</NoticeBox>
+          )}
         </Section>
         <Glassware setPicker={setGlasswarePicker} />
         {glasswarePicker && (
@@ -250,7 +253,7 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
             <Stack>
               <Stack.Item>
                 <Button.Input
-                  onCommit={(e, value) => {
+                  onCommit={(_, value) => {
                     act('label_pill', { text: value });
                   }}
                 >

@@ -159,6 +159,7 @@
  */
 /obj/item/tool/weldingtool
 	name = "blowtorch"
+	desc = "A blowtorch for welding and cutting metals."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
@@ -188,6 +189,8 @@
 	var/welding = 0
 	/// The max amount of fuel the welder can hold
 	var/max_fuel = 40
+	/// Adding this line of code to determine whether a welder should have fuel when created or not.
+	var/starting_fuel = TRUE
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
@@ -196,7 +199,9 @@
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
-	reagents.add_reagent("fuel", max_fuel)
+	if (starting_fuel)
+		reagents.add_reagent("fuel", max_fuel)
+
 	base_icon_state = initial(icon_state)
 	return
 
@@ -416,6 +421,9 @@
 			if(E.damage > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
+
+/obj/item/tool/weldingtool/empty
+	starting_fuel = FALSE
 
 /obj/item/tool/weldingtool/screen
 	name = "shielded blowtorch"

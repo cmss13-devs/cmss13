@@ -178,7 +178,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 
@@ -541,7 +543,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_ALLOW_QUICKDRAW (1<<11) // Whether the storage can be drawn with E or Holster verb
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
-#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
 

@@ -85,6 +85,8 @@
 	paygrades = list("Ser" = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "OHEFA"
 
+	minimap_icon = "hefa"
+
 	skills = /datum/skills/specialist
 
 /datum/equipment_preset/fun/hefa/load_skills(mob/living/carbon/human/new_human)

@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "dead marines now have minimap revival icons animated, different icons depending on how much time is left"

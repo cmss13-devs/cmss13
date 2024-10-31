@@ -408,6 +408,7 @@
 							DT.dogtag_taken = TRUE
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
+							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
 							D.fallen_assgns = list(DT.assignment)
 							D.fallen_blood_types = list(DT.blood_type)
@@ -1349,11 +1350,14 @@
 	if(wear_mask && wear_mask.vision_impair)
 		tint_level += wear_mask.vision_impair
 
-	if(tint_level > VISION_IMPAIR_STRONG)
-		tint_level = VISION_IMPAIR_STRONG
+	if(tint_level > VISION_IMPAIR_MAX)
+		tint_level = VISION_IMPAIR_MAX
 
 	if(tint_level)
-		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
+		if(tint_level == VISION_IMPAIR_MAX)
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/blind)
+		else
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)

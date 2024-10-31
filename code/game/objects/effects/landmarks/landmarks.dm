@@ -237,6 +237,10 @@
 
 /obj/effect/landmark/xeno_hive_spawn/Initialize(mapload, ...)
 	. = ..()
+
+	var/area/area = get_area(src)
+	area.unoviable_timer = FALSE
+
 	GLOB.xeno_hive_spawns += src
 
 /obj/effect/landmark/xeno_hive_spawn/Destroy()

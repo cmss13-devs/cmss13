@@ -193,6 +193,7 @@
 	item_state = "eyepatch"
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -219,6 +220,7 @@
 	prescription = TRUE
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "Prescription Glasses"
@@ -257,6 +259,7 @@
 	item_state = "mBCG"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
@@ -548,8 +551,8 @@
 	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_WELDING
 	has_tint = TRUE
-	vision_impair = VISION_IMPAIR_MAX
-	var/vision_impair_on = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
+	var/vision_impair_on = VISION_IMPAIR_ULTRA
 	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
@@ -620,6 +623,7 @@
 	item_state = "sunglasses"
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold
@@ -628,13 +632,14 @@
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = DISABILITY_BLIND // This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	vision_impair = VISION_IMPAIR_MAX
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
 	name = "prescription sunglasses"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "\improper BiMex personal shades"
@@ -644,7 +649,7 @@
 	eye_protection = EYE_PROTECTION_FLASH
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
@@ -652,6 +657,7 @@
 	icon_state = "aviator"
 	item_state = "aviator"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/aviator/silver
 	name = "aviator shades"
@@ -664,6 +670,7 @@
 	icon_state = "sunhud"
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud/blue
 	name = "Security HUD-Glasses"

@@ -63,13 +63,18 @@
 		return 0
 	return 1
 
-/obj/structure/closet/proc/can_close()
+/obj/structure/closet/proc/can_close(mob/user)
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
-			return 0
+			return FALSE
 	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
-		return 0
-	return 1
+		return FALSE
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
+		for(var/mob/living/carbon/human/closing_mob in get_turf(src))
+			if(ishuman(closing_mob))
+				if( (closing_mob.stat == DEAD || closing_mob.health < HEALTH_THRESHOLD_CRIT) && !closing_mob.get_target_lock(user.faction_group))
+					return FALSE
+	return TRUE
 
 /obj/structure/closet/proc/dump_contents()
 
@@ -102,10 +107,10 @@
 	density = FALSE
 	return 1
 
-/obj/structure/closet/proc/close()
+/obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
 		return 0
-	if(!src.can_close())
+	if(!src.can_close(user))
 		return 0
 
 	var/stored_units = 0

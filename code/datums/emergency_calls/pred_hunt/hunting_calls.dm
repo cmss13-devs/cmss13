@@ -8,7 +8,7 @@
 
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds Mutil Faction Small"
-	hunt_name = "Multi Faction (Easy)"
+	hunt_name = "multi Faction (small)"
 	mob_max = 4
 	mob_min = 3
 
@@ -27,28 +27,34 @@
 		hunted.client?.prefs.copy_all_to(hunted, JOB_SQUAD_SPECIALIST, TRUE, TRUE)
 		arm_equipment(hunted, /datum/equipment_preset/other/elite_merc, man == null, TRUE)
 		to_chat(hunted, SPAN_BOLD("You are an Elite Mercenary!"))
+		playsound(hunted, 'sound/misc/hunt_start.ogg')
 	else if(medics < max_medics && HAS_FLAG(hunted.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(hunted.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		hunted.client?.prefs.copy_all_to(hunted, JOB_SQUAD_MEDIC, TRUE, TRUE)
 		arm_equipment(hunted, /datum/equipment_preset/upp/medic, man == null, TRUE)
 		to_chat(hunted, SPAN_BOLD("You are a Medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		playsound(hunted, 'sound/misc/hunt_start.ogg')
 	else if(heavies < max_heavies && HAS_FLAG(hunted.client.prefs.toggles_ert, PLAY_HEAVY))
 		heavies++
 		hunted.client?.prefs.copy_all_to(hunted, JOB_SQUAD_SPECIALIST, TRUE, TRUE)
 		arm_equipment(hunted, /datum/equipment_preset/dutch, man == null, TRUE)
+		to_chat(hunted, SPAN_BOLD("You are a"))
+		playsound(hunted, 'sound/misc/hunt_start.ogg')
 	else if(smartgunners < max_smartgunners && HAS_FLAG(hunted.client.prefs.toggles_ert, PLAY_SMARTGUNNER))
 		smartgunners++
 		hunted.client?.prefs.copy_all_to(hunted, JOB_SQUAD_SMARTGUN, TRUE, TRUE)
-		arm_equipment(hunted, /datum/equipment_preset/uscm/sg_pve, man == null, TRUE)
-		to_chat(hunted, SPAN_BOLD("You are a Solar Devils Smartgunner!"))
+		arm_equipment(hunted, /datum/equipment_preset/uscm/rifleman_pve, man == null, TRUE)
+		to_chat(hunted, SPAN_BOLD("You are a Solar Devils Marine"))
+		playsound(hunted, 'sound/misc/hunt_start.ogg')
 	else
 		hunted.client?.prefs.copy_all_to(hunted, JOB_SQUAD_MARINE, TRUE, TRUE)
 		arm_equipment(hunted, /datum/equipment_preset/clf/soldier, man == null, TRUE)
 		to_chat(hunted, SPAN_BOLD("You awake, startled. The last thing you remember is a firefight with the Colonial Marshals on UV-941 before a blinding light washed out your vision. Your head is pounding.!"))
+		playsound(hunted, 'sound/misc/hunt_start.ogg')
 
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds Mutil Faction Medium"
-	hunt_name = "Multi Faction (Medium)"
+	hunt_name = "multi Faction (group)"
 	mob_max = 6
 	mob_min = 4
 
@@ -57,7 +63,7 @@
 
 /datum/emergency_call/pred/mixed/hard
 	name = "Hunting Grounds Mutil Faction Large"
-	hunt_name = "Multi Faction (HARD)"
+	hunt_name = "multi Faction (large)"
 	mob_max = 8
 	mob_min = 6
 
@@ -66,7 +72,7 @@
 
 /datum/emergency_call/pred/xeno
 	name = "Hunting Grounds Xenos Small"
-	hunt_name = "Serpents (easy)"
+	hunt_name = "serpents (small)"
 	mob_max = 2
 	hostility = TRUE
 
@@ -91,18 +97,18 @@
 		var/picked = pick(/mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/praetorian)
 		new_xeno = new picked(spawn_loc)
 
-	new_xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
+	new_xeno.set_hive_and_update(XENO_HIVE_FERAL)
 
 	QDEL_NULL(current_mob)
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds Xenos Medium"
-	hunt_name = "Serpents (Medium)"
+	hunt_name = "serpents (group)"
 	mob_max = 4
 	hostility = TRUE
 
 /datum/emergency_call/pred/xeno/hard
 	name = "Hunting Grounds Xenos Large"
-	hunt_name = "Serpents (Hard)"
+	hunt_name = "serpents (large)"
 	mob_max = 6
 	hostility = TRUE

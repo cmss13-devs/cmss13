@@ -536,15 +536,14 @@
 	SSmapping.lazy_load_template(potential_hunting_grounds[choice])
 
 /obj/structure/machinery/hunt_ground_spawner
+	name = "huntsmasters console"
 	desc = "A console for creating hunts."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 	///List of what ERTs can be called
 	var/static/list/potential_prey = list()
-	var/hunt_active = FALSE
-
-#define YAUTJA_HUNT_COOL_DOWN "hunt_cooldown"
+	COOLDOWN_DECLARE(yautja_hunt_cooldown)
 
 /obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -563,9 +562,8 @@
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
-	if(!hunt_active)
-		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_HUNT_COOL_DOWN))
-		to_chat(user, SPAN_WARNING("You recently actiavted a hunt a new one will be able to be actiaved [remaining_time]."))
+	if(!COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
+		to_chat(user, DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown)))
 		return
 
 	if(!length(potential_prey))
@@ -577,19 +575,11 @@
 		to_chat(user, SPAN_WARNING("You have not chosen any prey to hunt."))
 		return
 
-	if(!hunt_active)
-		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_HUNT_COOL_DOWN))
-		to_chat(user, SPAN_WARNING("You recently actiavted a hunt a new one will be able to be actiaved [remaining_time]."))
-		return ///double check just in chase
-
 	to_chat(user, SPAN_NOTICE("you choose [choice] as your prey."))
 	message_all_yautja("[usr.real_name] Has chosen [choice] as their prey")
+	message_admins(FONT_SIZE_MEDIUM("ALERT: [user] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	S_TIMER_COOLDOWN_START(src, YAUTJA_HUNT_COOL_DOWN, 20 MINUTES)
-	hunt_active = TRUE
-#undef YAUTJA_HUNT_COOL_DOWN
-
-
+	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
 
 //=================//\\=================\\
 //======================================\\

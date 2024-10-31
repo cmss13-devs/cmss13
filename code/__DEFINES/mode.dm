@@ -75,6 +75,7 @@
 #define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
 #define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
 #define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
+#define MODE_NO_BODY_C4 (1<<15) //prevents c4 to be planted on mobs
 
 
 #define ROUNDSTATUS_FOG_DOWN 1

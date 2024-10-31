@@ -175,6 +175,8 @@
 /// From /mob/proc/a_intent_change() : (new_intent)
 #define COMSIG_MOB_INTENT_CHANGE "mob_intent_change"
 
+#define COMSIG_MOB_ZONE_SEL_CHANGE "mob_zone_sel_change"
+
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
 	#define COMSIG_MOB_AGGRESIVE_GRAB_CANCEL (1<<0)

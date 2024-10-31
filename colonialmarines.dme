@@ -1522,6 +1522,7 @@
 #include "code\modules\asset_cache\asset_list.dm"
 #include "code\modules\asset_cache\asset_list_items.dm"
 #include "code\modules\asset_cache\assets\fontawesome.dm"
+#include "code\modules\asset_cache\assets\icon_ref_map.dm"
 #include "code\modules\asset_cache\assets\medals.dm"
 #include "code\modules\asset_cache\assets\tgfont.dm"
 #include "code\modules\asset_cache\assets\tgui.dm"

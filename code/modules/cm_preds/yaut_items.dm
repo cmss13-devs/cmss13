@@ -543,6 +543,7 @@
 	density = TRUE
 	///List of what ERTs can be called
 	var/static/list/potential_prey = list()
+	var/obj/structure/machinery/hunting_ground_selection/hunt
 	COOLDOWN_DECLARE(yautja_hunt_cooldown)
 
 /obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
@@ -578,7 +579,7 @@
 	to_chat(user, SPAN_NOTICE("you choose [choice] as your prey."))
 	message_all_yautja("[usr.real_name] Has chosen [choice] as their prey")
 	message_admins(FONT_SIZE_MEDIUM("ALERT: [user] ([user.key]) triggered [choice] inside the hunting grounds"))
-	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
+	SSticker.mode.get_specific_call(potential_prey[choice])
 	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
 
 //=================//\\=================\\

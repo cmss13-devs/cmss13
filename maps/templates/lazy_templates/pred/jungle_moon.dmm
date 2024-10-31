@@ -223,13 +223,6 @@
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds)
-"dn" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark/ert_spawns/hunt_spawner,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/yautja_grounds)
 "do" = (
 /turf/closed/wall/cult,
 /area/yautja_grounds/temple)
@@ -485,13 +478,6 @@
 "hj" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/caves)
-"hz" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 8
-	},
-/obj/effect/landmark/ert_spawns/hunt_spawner,
-/turf/open/gm/grass,
-/area/yautja_grounds)
 "hM" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/flora/jungle/vines,
@@ -534,6 +520,10 @@
 	icon_tag = "light_2"
 	},
 /turf/closed/wall/rock/brown,
+/area/yautja_grounds)
+"je" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/grass,
 /area/yautja_grounds)
 "jh" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -1211,10 +1201,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja_grounds)
-"rc" = (
-/obj/effect/landmark/ert_spawns/hunt_spawner,
-/turf/open/gm/dirt,
-/area/yautja_grounds/caves)
 "rd" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -1552,12 +1538,22 @@
 	dir = 8
 	},
 /area/yautja_grounds)
+"vg" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/yautja_grounds)
 "vr" = (
 /turf/open/gm/coast{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
 /area/yautja_grounds/temple)
+"vK" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/dirt,
+/area/yautja_grounds)
 "vL" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -3302,12 +3298,6 @@
 	dir = 1
 	},
 /area/yautja_grounds)
-"Tu" = (
-/obj/effect/landmark/ert_spawns/hunt_spawner,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/yautja_grounds)
 "Ty" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	color = "#2e1e21"
@@ -3842,10 +3832,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja_grounds/temple)
-"Yo" = (
-/obj/effect/landmark/ert_spawns/hunt_spawner,
-/turf/open/gm/grass,
-/area/yautja_grounds)
 "Yv" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass{
@@ -8479,8 +8465,8 @@ QD
 QD
 ce
 ce
+je
 ce
-Yo
 ce
 ce
 ce
@@ -10107,7 +10093,7 @@ QD
 QD
 QD
 ce
-dn
+Nd
 HP
 ce
 QD
@@ -10397,7 +10383,7 @@ QD
 QD
 ce
 bW
-ce
+je
 ce
 QD
 QD
@@ -10781,7 +10767,7 @@ kz
 QD
 QD
 ws
-Yo
+ce
 bW
 ws
 ce
@@ -10844,7 +10830,7 @@ QD
 ce
 jo
 bW
-Tu
+bW
 ce
 ws
 us
@@ -11041,7 +11027,7 @@ QD
 QD
 QD
 ce
-bW
+vg
 ce
 us
 us
@@ -11252,7 +11238,7 @@ ce
 QD
 bW
 bW
-Yo
+ce
 ce
 us
 HP
@@ -11773,7 +11759,7 @@ ce
 QD
 QD
 ce
-bW
+vg
 ce
 QD
 us
@@ -11953,7 +11939,7 @@ ce
 ce
 ws
 ce
-ce
+je
 ce
 ce
 ce
@@ -12264,7 +12250,7 @@ CT
 EP
 ce
 ce
-Yo
+ce
 Nd
 ce
 ce
@@ -13174,7 +13160,7 @@ QD
 QD
 QD
 QD
-ce
+je
 QD
 QD
 us
@@ -13239,7 +13225,7 @@ ce
 CT
 nb
 jL
-hz
+MK
 qT
 ce
 ws
@@ -13444,7 +13430,7 @@ QD
 QD
 QD
 xe
-ce
+je
 aG
 PC
 OJ
@@ -13510,7 +13496,7 @@ cm
 cm
 cm
 cm
-rc
+cm
 cm
 cm
 cm
@@ -13565,7 +13551,7 @@ ce
 QD
 QD
 us
-Yo
+ce
 ce
 bW
 bW
@@ -13823,7 +13809,7 @@ cm
 hj
 cm
 cm
-OB
+vK
 OB
 OB
 OB

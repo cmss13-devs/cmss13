@@ -229,7 +229,7 @@
 
 ///Predator Hunting Grounds stuff
 
-/obj/effect/landmark/ert_spawns/hunt_spawner
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	name = "hunt spawner"
 
 /area/yautja_grounds

@@ -648,6 +648,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Spawn as Engineer:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_ENGINEER]'><b>[toggles_ert & PLAY_ENGINEER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Specialist:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_HEAVY]'><b>[toggles_ert & PLAY_HEAVY ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Smartgunner:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SMARTGUNNER]'><b>[toggles_ert & PLAY_SMARTGUNNER ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno Tier 2:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_XENO_T2]'><b>[toggles_ert & PLAY_XENO_T2 ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno Tier 3:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_XENO_T3]'><b>[toggles_ert & PLAY_XENO_T3 ? "Yes" : "No"]</b></a><br>"
 			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"

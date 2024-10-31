@@ -210,7 +210,7 @@
 	if(ishuman(target))
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_BODY_C4))
 			to_chat(user, SPAN_WARNING("This feels wrong, you do not want to do it."))
-			return
+			return FALSE
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))

@@ -71,9 +71,8 @@
 		return FALSE
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
 		for(var/mob/living/carbon/human/closing_mob in get_turf(src))
-			if(ishuman(closing_mob))
-				if( (closing_mob.stat == DEAD || closing_mob.health < HEALTH_THRESHOLD_CRIT) && !closing_mob.get_target_lock(user.faction_group))
-					return FALSE
+			if( (closing_mob.stat == DEAD || closing_mob.health < HEALTH_THRESHOLD_CRIT) && !closing_mob.get_target_lock(user.faction_group))
+				return FALSE
 	return TRUE
 
 /obj/structure/closet/proc/dump_contents()

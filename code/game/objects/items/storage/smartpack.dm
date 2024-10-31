@@ -265,7 +265,7 @@
 
 
 /obj/item/storage/backpack/marine/smartpack/proc/repair_form(mob/user)
-	if(!istype(user) || activated_form || repairing || user.stat == DEAD)
+	if(!ishuman(user) || activated_form || repairing || user.stat == DEAD)
 		to_chat(user, SPAN_WARNING("You cannot use the S-V42 prototype smartpack right now."))
 		return
 

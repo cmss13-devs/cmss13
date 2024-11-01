@@ -6,6 +6,10 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	item_state = "space"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
 	permeability_coefficient = 0.01
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE

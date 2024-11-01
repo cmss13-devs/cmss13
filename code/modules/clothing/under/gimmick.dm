@@ -11,7 +11,6 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	displays_id = 0
 	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
-
 	item_icons = list(
 		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
 	)
@@ -137,6 +136,10 @@
 	desc = "The impersonal face of the law. Constructed from titanium and laminated with kevlar."
 	icon_state = "robocop_helmet"
 	item_state = "robocop_helmet"
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_laser = CLOTHING_ARMOR_HIGH
@@ -152,7 +155,7 @@
 /obj/item/clothing/suit/armor/gimmick
 	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
+		WEAR_JACKET = 'icons/obj/items/clothing/halloween_clothes.dmi',
 	)
 
 /obj/item/clothing/suit/armor/gimmick/robocop

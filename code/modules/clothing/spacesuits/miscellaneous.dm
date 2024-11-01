@@ -3,6 +3,10 @@
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
 	icon_state = "santa_hat_red"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEYES
 	flags_armor_protection = BODY_FLAG_HEAD

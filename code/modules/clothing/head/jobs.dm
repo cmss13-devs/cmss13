@@ -92,6 +92,10 @@
 	name = "surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
+	icon = 'icons/obj/items/clothing/hats/surgical_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/surgical_caps.dmi'
+	)
 	flags_inv_hide = HIDETOPHAIR
 
 /obj/item/clothing/head/surgery/purple
@@ -116,6 +120,10 @@
 	name = "hat"
 	desc = "Someone who wears this will look very smart."
 	icon_state = "detective"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
 	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW

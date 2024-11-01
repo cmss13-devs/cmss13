@@ -768,6 +768,9 @@
 	assignment = "Cultist"
 	rank = "Cultist"
 
+	minimap_icon = "cultist"
+	minimap_background = "background_cultist"
+
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_COLONIAL_ALL)
@@ -828,6 +831,8 @@
 
 	assignment = "Cultist Leader"
 	rank = "Cultist Leader"
+
+	minimap_icon = "cult_leader"
 
 /datum/equipment_preset/other/xeno_cultist/leader/load_gear(mob/living/carbon/human/new_human)
 	. = ..()

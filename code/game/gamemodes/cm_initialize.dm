@@ -119,10 +119,10 @@ Additional game mode variables.
 	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
 	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-		if(sq)
-			sq.max_engineers = engi_slot_formula(marine_starting_num)
-			sq.max_medics = medic_slot_formula(marine_starting_num)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
 
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
@@ -165,6 +165,7 @@ Additional game mode variables.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
 				player.mind.setup_human_stats()
 				player.faction = FACTION_YAUTJA
+				player.faction_group = FACTION_LIST_YAUTJA
 				players += player.mind
 	return players
 
@@ -389,15 +390,39 @@ Additional game mode variables.
 			available_xenos[larva_option] = list(hive)
 
 	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
-		if(!xeno_candidate.client?.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+		var/is_new_player = isnewplayer(xeno_candidate)
+		if(!xeno_candidate.client?.prefs || (!(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !is_new_player))
 			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
 				You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in \
 				Preferences -> Toggle SpecialRole Candidacy."))
 			return FALSE
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
 
+		// If a lobby player is trying to join as xeno, estimate their possible position
+		if(is_new_player)
+			var/mob/new_player/candidate_new_player = xeno_candidate
+			if(candidate_new_player.larva_queue_message_stale_time <= world.time)
+				// No cached/current lobby message, determine the position
+				var/list/valid_candidates = get_alien_candidates()
+				var/candidate_time = candidate_new_player.client.player_details.larva_queue_time
+				var/position = 1
+				for(var/mob/dead/observer/current in valid_candidates)
+					if(current.client.player_details.larva_queue_time >= candidate_time)
+						break
+					position++
+				candidate_new_player.larva_queue_message_stale_time = world.time + 3 MINUTES // spam prevention
+				candidate_new_player.larva_queue_cached_message = "Your position would be [position]\th in the larva queue if you observed and were eligible to be a xeno. \
+					The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+					you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
+					Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
+					Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
+					This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
+			to_chat(candidate_new_player, SPAN_XENONOTICE(candidate_new_player.larva_queue_cached_message))
+			return FALSE
+
 		if(!isobserver(xeno_candidate))
 			return FALSE
+
 		var/mob/dead/observer/candidate_observer = xeno_candidate
 
 		// If an observing mod wants to join as a xeno, disable their larva protection so that they can enter the queue.
@@ -410,16 +435,23 @@ Additional game mode variables.
 			return FALSE
 
 		// No cache, lets check now then
-		message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
+		var/list/valid_candidates = get_alien_candidates()
+		message_alien_candidates(valid_candidates, dequeued = 0, cache_only = TRUE)
 
 		// If we aren't in the queue yet, let's teach them about the queue
 		if(!candidate_observer.larva_queue_cached_message)
-			candidate_observer.larva_queue_cached_message = "You are currently awaiting assignment in the larva queue. \
+			var/candidate_time = candidate_observer.client.player_details.larva_queue_time
+			var/position = 1
+			for(var/mob/dead/observer/current in valid_candidates)
+				if(current.client.player_details.larva_queue_time >= candidate_time)
+					break
+				position++
+			candidate_observer.larva_queue_cached_message = "You are currently ineligible to be a larva but would be [position]\th in queue. \
 				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
 				you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
 				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-				Note: Playing as a facehugger or in the thunderdome will not alter your time of death. \
-				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
+				Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
+				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
 			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
 			return FALSE
 

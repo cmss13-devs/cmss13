@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 26
+#define SAVEFILE_VERSION_MAX 28
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -161,6 +161,25 @@
 		else
 			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
 
+	if(savefile_version < 27)
+		// Gives staff afk protection by default.
+		S["toggles_admin"] << TOGGLES_ADMIN_DEFAULT
+		// Updates default chat settings to enable FF logs for new staff.
+		var/chat_settings = 0
+		S["toggles_chat"] >> chat_settings
+		chat_settings &= ~CHAT_ATTACKLOGS
+		chat_settings |= CHAT_FFATTACKLOGS
+		S["toggles_chat"] << chat_settings
+
+	if(savefile_version < 28)
+		var/tutorial_string = ""
+		S["completed_tutorials"] >> tutorial_string
+		tutorial_savestring_to_list(tutorial_string)
+		if("requisitions_line" in completed_tutorials)
+			completed_tutorials -= "requisitions_line"
+			completed_tutorials += "marine_req_1"
+		S["completed_tutorials"] << tutorial_list_to_savestring()
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -253,7 +272,6 @@
 	S["pred_armor_mat"] >> predator_armor_material
 	S["pred_greave_mat"] >> predator_greave_material
 	S["pred_caster_mat"] >> predator_caster_material
-	S["pred_cape_type"] >> predator_cape_type
 	S["pred_cape_color"] >> predator_cape_color
 	S["pred_h_style"] >> predator_h_style
 	S["pred_skin_color"] >> predator_skin_color
@@ -278,6 +296,10 @@
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
+
+	var/tutorial_string = ""
+	S["completed_tutorials"] >> tutorial_string
+	tutorial_savestring_to_list(tutorial_string)
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
@@ -335,7 +357,6 @@
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
 	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
-	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
@@ -378,7 +399,7 @@
 		owner.typing_indicators = TRUE
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	return 1
 
@@ -451,7 +472,6 @@
 	S["pred_armor_mat"] << predator_armor_material
 	S["pred_greave_mat"] << predator_greave_material
 	S["pred_caster_mat"] << predator_caster_material
-	S["pred_cape_type"] << predator_cape_type
 	S["pred_cape_color"] << predator_cape_color
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color
@@ -477,6 +497,8 @@
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
+
+	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return TRUE
 
@@ -565,10 +587,6 @@
 
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"] >> exploit_record
-
-	var/tutorial_string = ""
-	S["completed_tutorials"] >> tutorial_string
-	tutorial_savestring_to_list(tutorial_string)
 
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
@@ -717,8 +735,6 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
-
-	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return 1
 

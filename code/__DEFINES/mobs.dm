@@ -219,6 +219,7 @@
 #define SPECIAL_BONEBREAK (1<<13) //species do not get their bonebreak chance modified by endurance
 #define NO_SHRAPNEL (1<<14)
 #define HAS_HARDCRIT (1<<15)
+#define NO_OVERLAYS (1<<16) // Stop OnMob overlays from appearing on sprite
 
 //=================================================
 
@@ -347,6 +348,7 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"
 #define SPECIES_SYNTHETIC "Synthetic"
+#define SPECIES_SYNTHETIC_K9 "Synthetic K9"
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
 

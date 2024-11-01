@@ -213,7 +213,7 @@ CULT
 	if(human.selected_ability == src)
 		human.set_selected_ability(null)
 
-/datum/action/human_action/activable/proc/use_ability(mob/M)
+/datum/action/human_action/activable/proc/use_ability(mob/mob)
 	return
 
 /datum/action/human_action/activable/update_button_icon()
@@ -311,8 +311,8 @@ CULT
 	if(!to_send_to)
 		to_send_to = list(human)
 	message_admins("[key_name_admin(human)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
-	for(var/M in to_send_to)
-		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
+	for(var/mob in to_send_to)
+		to_chat(mob, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
@@ -452,7 +452,7 @@ CULT
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
-/datum/action/human_action/activable/cult_leader/convert/use_ability(mob/M)
+/datum/action/human_action/activable/cult_leader/convert/use_ability(mob/mob)
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
@@ -464,7 +464,7 @@ CULT
 
 	var/mob/living/carbon/human/human = owner
 
-	var/mob/living/carbon/human/chosen = M
+	var/mob/living/carbon/human/chosen = mob
 
 	if(!can_target(chosen))
 		return
@@ -498,7 +498,7 @@ CULT
 
 	cooldown = 1 MINUTES
 
-/datum/action/human_action/activable/cult_leader/stun/use_ability(mob/M)
+/datum/action/human_action/activable/cult_leader/stun/use_ability(mob/mob)
 	if(!action_cooldown_check())
 		return
 
@@ -513,7 +513,7 @@ CULT
 
 	var/mob/living/carbon/human/human = owner
 
-	var/mob/living/carbon/human/chosen = M
+	var/mob/living/carbon/human/chosen = mob
 
 	if(!can_target(chosen))
 		return
@@ -550,12 +550,12 @@ CULT
 
 	var/list/converted = list()
 
-/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(mob/M)
+/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(mob/mob)
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/human = owner
-	var/mob/living/carbon/human/chosen = M
+	var/mob/living/carbon/human/chosen = mob
 
 	if(!istype(chosen))
 		return
@@ -609,12 +609,12 @@ CULT
 	action_icon_state = "mutineer_convert" //need someone to sprite icon
 
 
-/datum/action/human_action/activable/loyalist/loyalist_convert/use_ability(mob/M)
+/datum/action/human_action/activable/loyalist/loyalist_convert/use_ability(mob/mob)
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/human = owner
-	var/mob/living/carbon/human/chosen = M
+	var/mob/living/carbon/human/chosen = mob
 
 	if(!istype(chosen))
 		return

@@ -153,6 +153,23 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/gagarin
+	name = "Gagarin"
+	id = DROPSHIP_GAGARIN
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/gagarin/get_transit_path_type()
+	return /turf/open/space/transit/dropship/gagarin
+
+/obj/docking_port/mobile/marine_dropship/korolev
+	name = "Korolev"
+	id = DROPSHIP_KOROLEV
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/korolev/get_transit_path_type()
+	return /turf/open/space/transit/dropship/korolev
+
+
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
 
@@ -306,6 +323,12 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1
+	name = "UPP Hangar bay 1"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/gagarin
+
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
 
@@ -346,5 +369,13 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/gagarin
+	name = "Gagarin"
+	shuttle_id = DROPSHIP_GAGARIN
+
+/datum/map_template/shuttle/korolev
+	name = "Korolev"
+	shuttle_id = DROPSHIP_KOROLEV
 
 

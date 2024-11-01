@@ -268,6 +268,14 @@
 	shuttle_tag = DROPSHIP_SAIPAN
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/gagarin
+	shuttle_tag = DROPSHIP_GAGARIN
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/korolev
+	shuttle_tag = DROPSHIP_KOROLEV
+	dir = SOUTH
+
 /turf/open/space/transit/south
 	dir = SOUTH
 

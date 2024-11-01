@@ -420,6 +420,54 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	onboard = 1
 	density = TRUE
 
+/obj/structure/machinery/computer/shuttle_control/dropship_upp
+	name = "\improper 'Gagarin' dropship console"
+	desc = "The remote controls for the 'Gagarin' Dropship. Named after the first man to fly into space."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_GAGARIN
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
+	name = "\improper 'Gagarin' flight controls"
+	desc = "The flight controls for the 'Gagarin' Dropship. Named after the first man to fly into space."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2
+	name = "\improper 'Korolev' dropship console"
+	desc = "The remote controls for the 'Korolev' Dropship."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_KOROLEV
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
+	name = "\improper 'Korolev' flight controls"
+	desc = "The flight controls for the 'Korolev' Dropship."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony

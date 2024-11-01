@@ -1,0 +1,853 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_center,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"am" = (
+/obj/structure/stairs,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"ax" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/shuttle/drop_upp/gagarin)
+"aL" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop_upp/gagarin)
+"bd" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/dropship/flight/upp{
+	req_one_access = list(235, 240)
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"bg" = (
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop_upp/gagarin)
+"bv" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_left_wing{
+	icon_state = "upp_wing_top_left"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"bI" = (
+/obj/structure/machinery/door_control{
+	name = "Dropship Lockdown";
+	pixel_y = -19;
+	id = "dropship_gagarin";
+	throw_range = 15;
+	normaldoorcontrol = 3;
+	req_one_access_txt = "235;240"
+	},
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop_upp/gagarin)
+"bM" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/outer_left_weapons,
+/obj/effect/attach_point/weapon/dropship_upp/left_fore,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"bR" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/sign/flag/upp{
+	dir = 8;
+	pixel_y = 28
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"bS" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "93b"
+	},
+/area/shuttle/drop_upp/gagarin)
+"bZ" = (
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop_upp/gagarin)
+"cw" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_right_wing{
+	icon_state = "upp_wing_top_right"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"cC" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp{
+	id = "aft_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"dd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "67"
+	},
+/area/shuttle/drop_upp/gagarin)
+"dx" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "73"
+	},
+/area/shuttle/drop_upp/gagarin)
+"dT" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/right_inner_bottom_wing{
+	icon_state = "tail_5"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"ex" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "30"
+	},
+/area/shuttle/drop_upp/gagarin)
+"fu" = (
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop_upp/gagarin)
+"fD" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "78"
+	},
+/area/shuttle/drop_upp/gagarin)
+"fJ" = (
+/obj/structure/shuttle/part/dropshipupp/nose_front_left,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"fO" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_top_left,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"gH" = (
+/obj/structure/shuttle/part/dropshipupp/nose_front_right,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"gQ" = (
+/obj/structure/shuttle/part/dropshipupp/left_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"hI" = (
+/obj/docking_port/mobile/marine_dropship/gagarin,
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68"
+	},
+/area/shuttle/drop_upp/gagarin)
+"hN" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/inner_left_weapons,
+/obj/effect/attach_point/electronics/dropship_upp,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"hP" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_y = 43;
+	pixel_x = 21
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"is" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"jp" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "92"
+	},
+/area/shuttle/drop_upp/gagarin)
+"jO" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "25"
+	},
+/area/shuttle/drop_upp/gagarin)
+"kE" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "23"
+	},
+/area/shuttle/drop_upp/gagarin)
+"kV" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "48"
+	},
+/area/shuttle/drop_upp/gagarin)
+"mk" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "96"
+	},
+/area/shuttle/drop_upp/gagarin)
+"mz" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "69"
+	},
+/area/shuttle/drop_upp/gagarin)
+"mG" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/right_outer_bottom_wing{
+	icon_state = "tail_6"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"nk" = (
+/obj/structure/shuttle/part/dropshipupp/lower_right_wall,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"nW" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "21"
+	},
+/area/shuttle/drop_upp/gagarin)
+"ow" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/obj/structure/shuttle/part/dropshipupp/transparent/middle_right_wing{
+	icon_state = "wing_right_red"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"oJ" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/inner_right_weapons,
+/obj/effect/attach_point/electronics/dropship_upp,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"oX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "39"
+	},
+/area/shuttle/drop_upp/gagarin)
+"po" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"pK" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "27"
+	},
+/area/shuttle/drop_upp/gagarin)
+"qj" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"re" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "64"
+	},
+/area/shuttle/drop_upp/gagarin)
+"rh" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/outer_right_weapons,
+/obj/effect/attach_point/weapon/dropship_upp/right_fore,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"rt" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "31"
+	},
+/area/shuttle/drop_upp/gagarin)
+"sf" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "26"
+	},
+/area/shuttle/drop_upp/gagarin)
+"tD" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"tK" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "19"
+	},
+/area/shuttle/drop_upp/gagarin)
+"va" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "97"
+	},
+/area/shuttle/drop_upp/gagarin)
+"vM" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "89"
+	},
+/area/shuttle/drop_upp/gagarin)
+"wV" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"xd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "63"
+	},
+/area/shuttle/drop_upp/gagarin)
+"xm" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "32"
+	},
+/area/shuttle/drop_upp/gagarin)
+"xT" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"yf" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp{
+	dir = 2;
+	id = "port_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"yk" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp{
+	id = "starboard_door";
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"yJ" = (
+/obj/structure/shuttle/part/dropshipupp/lower_left_wall,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"yQ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/hatch/cockpit/upp{
+	req_access = null;
+	req_one_access = list(235, 240)
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"yU" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "47"
+	},
+/area/shuttle/drop_upp/gagarin)
+"zk" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "10"
+	},
+/area/shuttle/drop_upp/gagarin)
+"zq" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68";
+	dir = 1
+	},
+/area/shuttle/drop_upp/gagarin)
+"zJ" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "81"
+	},
+/area/shuttle/drop_upp/gagarin)
+"zS" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_top_right,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Dj" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "72"
+	},
+/area/shuttle/drop_upp/gagarin)
+"DW" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/shuttle/drop_upp/gagarin)
+"Ei" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "34"
+	},
+/area/shuttle/drop_upp/gagarin)
+"EC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"EN" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/engine_left_cap,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"FI" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"FO" = (
+/obj/effect/attach_point/fuel/dropship_upp{
+	dir = 1
+	},
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "28"
+	},
+/area/shuttle/drop_upp/gagarin)
+"FS" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "86"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Gx" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/obj/item/device/radio/intercom/gagarin{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"GJ" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_x = -10
+	},
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "18"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Hp" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"HE" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "83"
+	},
+/area/shuttle/drop_upp/gagarin)
+"HX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "22"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Iy" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/obj/structure/shuttle/part/dropshipupp/transparent/middle_left_wing{
+	icon_state = "wing_left_red"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"IM" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/left_outer_inner_wing{
+	icon_state = "tail_2"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"JB" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "98"
+	},
+/area/shuttle/drop_upp/gagarin)
+"JO" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Kc" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/lower_left_wing{
+	icon_state = "upp_wing_eng_left"
+	},
+/obj/effect/attach_point/weapon/dropship_upp/left_wing,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Kl" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"Ky" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "76"
+	},
+/area/shuttle/drop_upp/gagarin)
+"KQ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "93a"
+	},
+/area/shuttle/drop_upp/gagarin)
+"KW" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/engine_right_cap,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Lb" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "18"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Nd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "24"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Nv" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_x = 10
+	},
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "19"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Op" = (
+/obj/item/device/radio/intercom/gagarin{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop_upp/gagarin)
+"Or" = (
+/obj/effect/attach_point/fuel/dropship_upp{
+	dir = 1;
+	pixel_x = -32
+	},
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "33"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Pc" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/gagarin)
+"Qn" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "77"
+	},
+/area/shuttle/drop_upp/gagarin)
+"RW" = (
+/obj/structure/shuttle/part/dropshipupp/right_outer_wing_connector{
+	icon_state = "tail_4"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"RX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "35"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Ti" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "94"
+	},
+/area/shuttle/drop_upp/gagarin)
+"TT" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_left_wing{
+	icon_state = "tail_1"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Vk" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "20"
+	},
+/area/shuttle/drop_upp/gagarin)
+"VN" = (
+/turf/template_noop,
+/area/space)
+"VO" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "29"
+	},
+/area/shuttle/drop_upp/gagarin)
+"Wc" = (
+/obj/structure/shuttle/part/dropshipupp/left_outer_wing_connector{
+	icon_state = "tail_3"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Xl" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "38"
+	},
+/area/shuttle/drop_upp/gagarin)
+"XZ" = (
+/obj/structure/shuttle/part/dropshipupp/right_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"Yi" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/lower_right_wing{
+	icon_state = "upp_wing_eng_right"
+	},
+/obj/effect/attach_point/weapon/dropship_upp/right_wing,
+/turf/template_noop,
+/area/shuttle/drop_upp/gagarin)
+"YV" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "75"
+	},
+/area/shuttle/drop_upp/gagarin)
+"ZX" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "62"
+	},
+/area/shuttle/drop_upp/gagarin)
+
+(1,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+bv
+Iy
+Kc
+VN
+VN
+VN
+VN
+VN
+EN
+Ei
+FO
+HX
+Vk
+VN
+VN
+VN
+"}
+(2,1,1) = {"
+VN
+VN
+VN
+bM
+YV
+Dj
+dd
+ZX
+qj
+yf
+GJ
+Lb
+yJ
+KW
+RX
+VO
+kE
+nW
+VN
+VN
+TT
+"}
+(3,1,1) = {"
+VN
+VN
+VN
+hN
+Ky
+bR
+po
+po
+qj
+qj
+po
+po
+yU
+Lb
+Lb
+ex
+Nd
+Lb
+yJ
+VN
+IM
+"}
+(4,1,1) = {"
+fO
+fJ
+jp
+FS
+zJ
+aL
+xT
+xT
+xT
+xT
+xT
+DW
+Hp
+FI
+po
+tD
+po
+po
+zk
+gQ
+Wc
+"}
+(5,1,1) = {"
+ah
+mk
+KQ
+Pc
+fD
+bZ
+po
+po
+po
+bZ
+po
+fu
+EC
+am
+xT
+xT
+xT
+xT
+cC
+VN
+VN
+"}
+(6,1,1) = {"
+ah
+va
+bd
+hP
+yQ
+bI
+JO
+zq
+Gx
+bZ
+hI
+xd
+xd
+zq
+wV
+Kl
+qj
+Kl
+qj
+VN
+VN
+"}
+(7,1,1) = {"
+ah
+JB
+bS
+Pc
+fD
+bZ
+po
+po
+po
+bZ
+po
+bg
+EC
+am
+xT
+xT
+xT
+xT
+qj
+VN
+VN
+"}
+(8,1,1) = {"
+zS
+gH
+Ti
+vM
+Qn
+Op
+xT
+xT
+xT
+xT
+xT
+ax
+Hp
+FI
+po
+is
+po
+po
+zk
+XZ
+RW
+"}
+(9,1,1) = {"
+VN
+VN
+VN
+oJ
+Ky
+bR
+po
+po
+qj
+qj
+po
+po
+kV
+tK
+tK
+rt
+jO
+tK
+nk
+VN
+dT
+"}
+(10,1,1) = {"
+VN
+VN
+VN
+rh
+HE
+dx
+mz
+re
+qj
+yk
+Nv
+tK
+nk
+EN
+Xl
+xm
+sf
+Vk
+VN
+VN
+mG
+"}
+(11,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+cw
+ow
+Yi
+VN
+VN
+VN
+VN
+VN
+KW
+oX
+Or
+pK
+nW
+VN
+VN
+VN
+"}

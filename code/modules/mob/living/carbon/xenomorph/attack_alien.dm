@@ -802,6 +802,11 @@
 			ship_id = "sh_dropship2"
 		if(shuttle_tag == DROPSHIP_SAIPAN)
 			ship_id = "sh_dropship3"
+		if(shuttle_tag == DROPSHIP_GAGARIN)
+			ship_id = "sh_dropship4"
+		if(shuttle_tag == DROPSHIP_KOROLEV)
+			ship_id = "sh_dropship5"
+
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)

@@ -7,6 +7,8 @@
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
 #define CAMERA_NET_SAIPAN "Saipan"
+#define CAMERA_NET_GAGARIN "Gagarin"
+#define CAMERA_NET_KOROLEV "Korolev"
 #define CAMERA_NET_COLONY "Colony"
 #define CAMERA_NET_ARES "ARES"
 

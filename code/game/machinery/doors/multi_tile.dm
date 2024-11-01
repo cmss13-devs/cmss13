@@ -333,6 +333,14 @@
 	name = "\improper Saipan cargo door"
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp
+	name = "\improper Gagarin cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp2
+	name = "\improper Korolev cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
 	width = 2
 
@@ -347,6 +355,14 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3
 	name = "\improper Saipan crew hatch"
 	icon = 'icons/obj/structures/doors/dropship3_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp
+	name = "\improper Gagarin crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp2
+	name = "\improper Korolev crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
 	name = "bulkhead blast door"

@@ -10,6 +10,9 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
+	minimap_icon = "cl"
+	minimap_background = "background_civillian"
+
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,
 		/obj/item/clothing/under/liaison_suit/blue,

@@ -716,11 +716,14 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/update_burst()
 	remove_overlay(BURST_LAYER)
 	var/image/standing
+	var/bursting_icon = "stand"
+	if(isyautja(src))
+		bursting_icon = "yautja_stand"
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_[bursting_icon]", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_[bursting_icon]", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

@@ -806,7 +806,7 @@
 	gender = MALE
 
 /datum/sprite_accessory/hair/bun3
-	name = "Bun"
+	name = "Double Bun"
 	icon_state = "hair_space_buns"
 
 /datum/sprite_accessory/hair/diagonalbangs

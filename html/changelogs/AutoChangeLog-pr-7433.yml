@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Forecon M39 spawn now has its spawn ammo in belt, instead of in satchel."

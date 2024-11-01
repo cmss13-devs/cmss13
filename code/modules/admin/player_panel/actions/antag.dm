@@ -13,7 +13,6 @@
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer/leader]
 
-
 	preset.load_status(H)
 
 	var/title = params["leader"]? "mutineer leader" : "mutineer"
@@ -21,6 +20,10 @@
 
 
 // LOYALIST
+/datum/player_action/make_loyalist
+	action_tag = "make_loyalist"
+	name = "Make Loyalist"
+
 /datum/player_action/make_loyalist/act(client/user, mob/target, list/params)
 	if(!ishuman(target))
 		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))

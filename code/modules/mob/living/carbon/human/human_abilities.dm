@@ -625,7 +625,7 @@ CULT
 		return
 	var/datum/equipment_preset/other/loyalist/XC = new()
 	XC.load_status(chosen)
-	to_chat(chosen, SPAN_WARNING("You'll become a loyalist when the mutiny begins. Prepare yourself and do not cause any harm until you've been made into a loyalist."))
+	to_chat(chosen, SPAN_WARNING("You are a loyalist. Prepare yourself and do not cause any harm until the mutiny begins."))
 
 	message_admins("[key_name_admin(chosen)] has been converted into a loyalist by [key_name_admin(H)].")
 

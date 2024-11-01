@@ -717,6 +717,26 @@ const AntagActions = (props) => {
               Make Mutineering Leader
             </Button>
           </Stack>
+          <Stack align="right" grow={1}>
+            <Button
+              width="100%"
+              icon="chess-pawn"
+              color="orange"
+              disabled={!hasPermission(data, 'make_mutineer')}
+              onClick={() => act('make_loyalist')}
+            >
+              Make Loyalist
+            </Button>
+            <Button
+              width="100%"
+              icon="crown"
+              color="orange"
+              disabled={!hasPermission(data, 'make_mutineer')}
+              onClick={() => act('make_loyalist', { leader: true })}
+            >
+              Make Loyalist Leader
+            </Button>
+          </Stack>
         </Section>
       )}
       <Section

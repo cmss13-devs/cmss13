@@ -265,9 +265,7 @@
 	list/roles_cap = list(
 		JOB_UPP_ENGI = 3,
 		JOB_UPP_MEDIC = 4,
-		JOB_UPP_SMARTGUN = 1,
 		JOB_UPP_SPECIALIST = 1,
-		JOB_UPP_TEAM_LEADER = 2,
 		JOB_UPP_LEADER = 1,
 	)
 

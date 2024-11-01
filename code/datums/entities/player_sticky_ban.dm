@@ -172,6 +172,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("player_id", DB_EQUALS, player.id))
 	if(!length(alts))
 		to_chat(src, SPAN_WARNING("User has no alts on record."))
+		return
 
 	var/options = list()
 	for(var/datum/view_record/known_alt/alt in alts)

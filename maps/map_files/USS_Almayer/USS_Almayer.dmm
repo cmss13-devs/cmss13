@@ -47968,6 +47968,12 @@
 "pnx" = (
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
+"pnH" = (
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/orange,
+/area/almayer/squads/bravo)
 "pnL" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_2"
@@ -112478,7 +112484,7 @@ bnt
 bpG
 brs
 aRT
-aVf
+pnH
 aQL
 atH
 dAm

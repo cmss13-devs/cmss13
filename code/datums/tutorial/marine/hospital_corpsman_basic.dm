@@ -124,6 +124,7 @@
 	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
+	qdel(brute_injector)
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
@@ -145,6 +146,7 @@
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
+	qdel(brute_injector)
 	update_objective("")
 	message_to_player("The Dummy has taken some moderate brute damage on two different limbs. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(human_dummy, COLOR_GREEN)
@@ -223,6 +225,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
 	remove_highlight(brutekit)
+	qdel(brutekit)
 	remove_highlight(human_hud.zone_sel)
 	update_objective("")
 
@@ -274,7 +277,7 @@
 	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
 
 	message_to_player("Well done!")
-	message_to_player("While rare, when a large amount of <b>burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
+	message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
 	update_objective("")
 
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_4)), 11 SECONDS)
@@ -310,6 +313,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/ointment, burnkit)
 	remove_highlight(human_hud.zone_sel)
 	remove_highlight(burnkit)
+	qdel(burnkit)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
@@ -350,6 +354,7 @@
 	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, burn_injector)
 	remove_highlight(burn_injector)
+	qdel(burn_injector)
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
@@ -371,6 +376,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use, burn_injector)
 	remove_highlight(burn_injector)
+	qdel(burn_injector)
 	message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob

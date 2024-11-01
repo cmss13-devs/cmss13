@@ -61,6 +61,9 @@
 /area/shuttle/drop3/sulaco)
 "fb" = (
 /obj/structure/shuttle/part/dropship3/right_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "fh" = (
@@ -137,6 +140,9 @@
 /area/shuttle/drop3/sulaco)
 "jZ" = (
 /obj/structure/shuttle/part/dropship3/transparent/middle_left_wing,
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "kP" = (
@@ -284,6 +290,9 @@
 /area/shuttle/drop3/sulaco)
 "wY" = (
 /obj/structure/shuttle/part/dropship3/left_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "xi" = (
@@ -311,19 +320,19 @@
 /area/shuttle/drop3/sulaco)
 "zW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3{
-	id = "port_door";
-	dir = 2
+	dir = 2;
+	id = "port_door"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
 "BR" = (
 /obj/structure/machinery/door_control{
-	id = "dropship_saipan";
 	name = "Dropship Lockdown";
-	normaldoorcontrol = 3;
 	pixel_y = -19;
-	req_one_access_txt = "3;22";
-	throw_range = 15
+	id = "dropship_saipan";
+	throw_range = 15;
+	normaldoorcontrol = 3;
+	req_one_access_txt = "3;22"
 	},
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/shuttle/drop3/sulaco)
@@ -454,6 +463,9 @@
 /area/shuttle/drop3/sulaco)
 "Ns" = (
 /obj/structure/shuttle/part/dropship3/transparent/middle_right_wing,
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "Nt" = (
@@ -539,10 +551,10 @@
 /obj/structure/machinery/computer/dropship_weapons/dropship3,
 /obj/structure/transmitter/rotary{
 	name = "saipan Telephone";
-	phone_category = "Dropship";
-	phone_id = "saipan";
 	pixel_x = 11;
-	pixel_y = 16
+	pixel_y = 16;
+	phone_category = "Dropship";
+	phone_id = "saipan"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,

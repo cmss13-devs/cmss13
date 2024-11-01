@@ -52,7 +52,7 @@
 	var/cover_open = FALSE
 
 	unacidable = 1
-	indestructible = 1
+	explo_proof = TRUE
 
 	attachable_allowed = list(
 		/obj/item/attachable/smartbarrel,
@@ -167,6 +167,9 @@
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/get_ammo_type_chambered(mob/user)
+	return ammo_primary
 
 /obj/item/weapon/gun/smartgun/update_icon()
 	. = ..()

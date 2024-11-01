@@ -10,7 +10,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
 	var/deployment_time = 3 SECONDS
 

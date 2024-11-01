@@ -202,8 +202,6 @@
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/dam.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
 /obj/structure/prop/dam/boulder/boulder2
@@ -218,8 +216,6 @@
 	icon = 'icons/obj/structures/props/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2
@@ -284,7 +280,7 @@
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
 	density = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/on = FALSE
@@ -321,7 +317,7 @@
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
 	density = FALSE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -392,7 +388,7 @@
 	desc = "this needs to be defined by a coder"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -1090,7 +1086,7 @@
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 

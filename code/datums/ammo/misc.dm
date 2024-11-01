@@ -184,7 +184,7 @@
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 1)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2)
 	))
 
 /datum/ammo/souto

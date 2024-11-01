@@ -18,10 +18,3 @@
 	set hidden = TRUE
 	var/action_name = "Paralyzing Slash"
 	handle_xeno_macro(src,action_name)
-
-/datum/action/xeno_action/verb/verb_hibernate()
-	set category = "Alien"
-	set name = "hibernate"
-	set hidden = TRUE
-	var/action_name = "hibernate"
-	handle_xeno_macro(src,action_name)

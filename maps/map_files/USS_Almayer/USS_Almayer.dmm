@@ -34530,9 +34530,6 @@
 	name = "\improper Kitchen Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/atm{
-	pixel_y = -32
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "knL" = (
@@ -52277,9 +52274,6 @@
 	name = "\improper Kitchen Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/atm{
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "rur" = (

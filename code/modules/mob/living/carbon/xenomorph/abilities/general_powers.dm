@@ -669,6 +669,7 @@
 
 	if(choice == XENO_STRUCTURE_CORE && AR.unoviable_timer)
 		to_chat(X, SPAN_WARNING("This area does not feel right for you to build this in."))
+		qdel(structure_template)
 		return FALSE
 
 	if(AR.remote_override_timer && AR.unoviable_timer && HAS_TRAIT(owner, TRAIT_ABILITY_OVIPOSITOR))

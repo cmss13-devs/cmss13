@@ -533,20 +533,14 @@
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
 
-			if(GET_DEFAULT_ROLE(target_mob.job) == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
-				num_leaders++
-
 		if(JOB_UPP_ENGI)
 			assignment = JOB_SQUAD_ENGI
-			num_engineers++
 			id_card.claimedgear = FALSE
 		if(JOB_UPP_MEDIC)
 			assignment = JOB_SQUAD_MEDIC
-			num_medics++
 			id_card.claimedgear = FALSE
 		if(JOB_UPP_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
-			num_specialists++
 		if(JOB_UPP_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
 				var/old_lead = squad_leader
@@ -556,9 +550,6 @@
 			squad_leader = target_mob
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
-
-			if(GET_DEFAULT_ROLE(target_mob.job) == JOB_UPP_LEADER) //field promoted SL don't count as real ones
-				num_leaders++
 
 		if(JOB_MARINE_RAIDER)
 			assignment = JOB_MARINE_RAIDER

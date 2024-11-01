@@ -2526,4 +2526,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
+#include "modular\modular.dme" // BANDASTATION EDIT
 // END_INCLUDE

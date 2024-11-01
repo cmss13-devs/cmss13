@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "The ghost observer tacmap will now scroll both horizontally and vertically as needed to display a large map."
+  - ui: "The TGUI panels for tacmaps and drawings have been polished to utilize more minimap space fully."
+  - refactor: "Refactored minimap generation code to calculate min and max faster, to more aggressively trim minimaps, and to support larger minimaps (was 480px now 512px)."
+  - bugfix: "Fixes an issue where predator tacmap would take over the ghost tacmap preventing it from opening for observers"

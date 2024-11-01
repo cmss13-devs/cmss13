@@ -102,13 +102,13 @@
 		var/ascii_char = text2ascii(t_in,i)
 		switch(ascii_char)
 			// A  .. Z
-			if(65 to 90) //Uppercase Letters
+			if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters //SS220 EDIT CHANGE - Cyrillic Fixes
 				t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
 
 			// a  .. z
-			if(97 to 122) //Lowercase Letters
+			if(97 to 122, 1072 to 1103, 1105) //Lowercase Letters //SS220 EDIT CHANGE - Cyrillic Fixes
 				if(last_char_group<2)
 					t_out += ascii2text(ascii_char-32) //Force uppercase first character
 				else

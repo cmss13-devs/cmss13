@@ -295,8 +295,8 @@
 			if(W.isOn())
 				W.toggle()
 				goes_out++
-		for(var/obj/item/tool/match/M in contents)
-			M.burn_out(src)
+		for(var/obj/item/tool/match/mob in contents)
+			mob.burn_out(src)
 		for(var/obj/item/tool/lighter/Z in contents)
 			if(Z.turn_off(src))
 				goes_out++
@@ -414,13 +414,13 @@
 /mob/living/carbon/human/proc/has_item_in_ears(item)
 	return (item == wear_l_ear) || (item == wear_r_ear)
 
-/mob/living/carbon/human/can_be_pulled_by(mob/M)
+/mob/living/carbon/human/can_be_pulled_by(mob/mob)
 	var/ignores_stripdrag_flag = FALSE
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(mob))
+		var/mob/living/carbon/human/H = mob
 		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group)&& !(mob.status_flags & PERMANENTLY_DEAD))
-		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group)&& !(mob.status_flags & PERMANENTLY_DEAD))
+		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE
 

@@ -22,9 +22,9 @@
 	action_icon_state = "order"
 	var/order_type = "help"
 
-/datum/action/human_action/issue_order/give_to(mob/living/L)
+/datum/action/human_action/issue_order/give_to(mob/living/living)
 	..()
-	if(!ishuman(L))
+	if(!ishuman(living))
 		return
 	cooldown = COMMAND_ORDER_COOLDOWN
 
@@ -76,11 +76,11 @@
 		var/obj/item/storage/backpack/marine/smartpack/smartpack = human.back
 		form_call(smartpack, human)
 
-/datum/action/human_action/smartpack/give_to(mob/living/L)
+/datum/action/human_action/smartpack/give_to(mob/living/living)
 	..()
-	if(!ishuman(L))
+	if(!ishuman(living))
 		return
-	var/mob/living/carbon/human/human = L
+	var/mob/living/carbon/human/human = living
 	if(istype(human.back, /obj/item/storage/backpack/marine/smartpack))
 		var/obj/item/storage/backpack/marine/smartpack/smartpack = human.back
 		cooldown = set_cooldown(smartpack)
@@ -642,9 +642,9 @@ CULT
 	. = ..()
 	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from)) // will delete the button even if you reset view by resisting or the verb
 
-/datum/action/human_action/cancel_view/remove_from(mob/L)
+/datum/action/human_action/cancel_view/remove_from(mob/living)
 	. = ..()
-	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(living, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/cancel_view/action_activate()
 	. = ..()
@@ -669,9 +669,9 @@ CULT
 	. = ..()
 	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))//since unbuckling from special vehicle seats also resets the view, gonna use same signal
 
-/datum/action/human_action/vehicle_unbuckle/remove_from(mob/L)
+/datum/action/human_action/vehicle_unbuckle/remove_from(mob/living)
 	. = ..()
-	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(living, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/vehicle_unbuckle/action_activate()
 	. = ..()

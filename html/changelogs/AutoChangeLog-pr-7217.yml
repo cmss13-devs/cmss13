@@ -1,0 +1,10 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - balance: "OT M40 grenade casing volume from 90 to 120, power 175 to 180, falloff 75 to 80, shards 32 to 40, fire intensity 20 to 25, metal cost from 3750 to 4250 which is 12% of a single metal sheet"
+  - balance: "OT M15 grenade casing power 215 to 220, falloff 90 to 120, shards 32 to 80, fire radius from 5 to 6, fire intensity 20 to 30 and fire duration 24 to 32"
+  - balance: "OT claymore casing power 105 to 100, falloff 60 to 80, shards 32 to 40, fire radius 5 to 4, fire intensity 12 to 20"
+  - balance: "OT C4 casing damage multiplier against walls from 1.5 to 2, power 260 to 280, falloff 90 to 120, shards 64 to 100, fire radius 6 to 4, fire intensity 26 to 50, duration 30 to 20"
+  - balance: "OT rocket casing power 240 to 220, falloff 90 to 160, shards 64 to 80, fire radius 6 to 4, fire intensity 40 to 45"
+  - balance: "OT mortar casing falloff 90 to 130, shards 128 to 200, fire intensity 40 to 45"
+  - balance: "Custom rocket accuracy raised from tier 2 to 5 and range lowered from 8 to 7"

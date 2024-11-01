@@ -20018,10 +20018,6 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/nw)
-"etn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/space/basic,
-/area/bigredv2/caves_east)
 "etw" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/e)
@@ -77726,7 +77722,7 @@ gCE
 gCE
 gCE
 gCE
-etn
+wWK
 gCE
 gCE
 gCE

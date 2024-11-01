@@ -8,15 +8,15 @@
 		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))
 		return
 
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/human = target
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer]
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer/leader]
 
-	preset.load_status(H)
+	preset.load_status(human)
 
 	var/title = params["leader"]? "mutineer leader" : "mutineer"
-	message_admins("[key_name_admin(user)] has made [key_name_admin(H)] into a [title].")
+	message_admins("[key_name_admin(user)] has made [key_name_admin(human)] into a [title].")
 
 
 // LOYALIST
@@ -29,14 +29,14 @@
 		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))
 		return
 
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/human = target
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/loyalist]
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/loyalist/leader]
 
-	preset.load_status(H)
+	preset.load_status(human)
 	var/title = params["leader"]? "loyalist leader" : "loyalist"
-	message_admins("[key_name_admin(user)] has made [key_name_admin(H)] into a [title].")
+	message_admins("[key_name_admin(user)] has made [key_name_admin(human)] into a [title].")
 
 // XENO
 /datum/player_action/change_hivenumber
@@ -69,14 +69,14 @@
 	if(!ishuman(target))
 		return
 
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/human = target
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 
-	preset.load_race(H)
-	preset.load_status(H, params["hivenumber"])
+	preset.load_race(human)
+	preset.load_status(human, params["hivenumber"])
 
 	var/title = params["leader"]? "xeno cultist leader" : "cultist"
 

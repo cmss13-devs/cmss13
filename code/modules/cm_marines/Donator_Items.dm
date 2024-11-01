@@ -581,6 +581,10 @@
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
 	icon_state = "santa_hat_red"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
@@ -593,6 +597,10 @@
 	name = "Fancy Helmet"
 	desc = "That's not red paint. That's real blood. DONOR ITEM"
 	icon_state = "syndicate"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
 
@@ -600,6 +608,10 @@
 	name = "Top Penguin Hat"
 	icon_state = "petehat"
 	desc = "A hat for a penguin, maybe even the TOP Penguin... DONOR ITEM"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
@@ -613,24 +625,40 @@
 	name = "Tanya's Beret"
 	desc = "A bright red beret, owned by Tanya Edenia."
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/robin //CKEY=robin63
 	name = "Robin Low's Beret"
 	desc = "A bright red beret, owned by Robin Low."
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Pimp Hat"
-	icon_state = "petehat"
 	desc = "A pimp hat, for the classic pimp. DONOR ITEM"
+	icon_state = "petehat"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Priest hood"
-	icon_state = "chaplain_hood"
 	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
+	icon_state = "chaplain_hood"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock //CKEY=biolock
 	name = "M10-Custom"
@@ -642,6 +670,10 @@
 	name = "Pararescue Beret"
 	desc = "A Pararescue Beret, issued only to the very best.  DONOR ITEM"
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
@@ -652,14 +684,18 @@
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Helmet"
 	desc = "A M3 Ranger helmet, probably not many of these laying around. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "rangerhelmet"
 	item_state = "rangerhelmet"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 
 /obj/item/clothing/head/helmet/marine/fluff/officialjake
 	name = "Timothy's Beret"
 	desc = "A fancy red beret owned by Timothy Seidner.  DONOR ITEM"
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/ningajai
@@ -692,6 +728,10 @@
 	desc = "A hat, very closely affiliated with accusations of people being bad at security...  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "detective"
 	item_state = "detective"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/limo //CKEY=limodish (UNIQUE)
@@ -699,6 +739,10 @@
 	desc = "It looks like a costume hardsuit helmet.  DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
 
@@ -729,6 +773,10 @@
 	desc = "A red beret with a shiny Security badge.  DONOR ITEM"
 	icon_state = "beret_badge"
 	item_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
@@ -736,6 +784,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/eastgerman
@@ -743,6 +795,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/chimera //CKEY=theultimatechimera
@@ -750,6 +806,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/lostmixup
@@ -793,6 +853,10 @@
 	desc = "A fancy red beret owned by Juan 'Rook' Garcia.  DONOR ITEM"
 	icon_state = "beret_badge"
 	item_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/chris1464 //CKEY=chris1464
@@ -800,6 +864,10 @@
 	desc = "Beret from a Mercenary Company.  DONOR ITEM"
 	icon_state = "cargosoft"
 	item_state = "cargosoft"
+	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/radical
@@ -846,7 +914,7 @@
 	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -917,6 +985,10 @@
 	desc = "A little old and shabby. The color has slightly faded over time.  DONOR ITEM"
 	icon_state = "bluesoft"
 	item_state = "bluesoft"
+	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/titus

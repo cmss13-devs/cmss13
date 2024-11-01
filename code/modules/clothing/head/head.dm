@@ -886,6 +886,10 @@
 	name = "\improper armored General cap"
 	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
 	icon_state = "general_helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+	)
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -906,6 +910,10 @@
 	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon_state = "durag"
 	flags_inv_hide = HIDETOPHAIR
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 
 /obj/item/clothing/head/durag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()

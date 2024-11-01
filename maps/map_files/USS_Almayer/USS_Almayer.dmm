@@ -16636,10 +16636,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_s)
 "cQc" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -22529,9 +22525,6 @@
 /obj/item/reagent_container/glass/rag{
 	pixel_x = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/briefing)
 "fml" = (
@@ -27566,7 +27559,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/observer_start,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -28879,6 +28871,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/observer_start,
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/living/briefing)
 "hWB" = (
@@ -29229,14 +29222,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/water_cooler/walk_past{
 	pixel_y = 21;
-	pixel_x = 10
+	pixel_x = 10;
+	layer = 2.9
 	},
 /obj/structure/reagent_dispensers/water_cooler/walk_past{
 	pixel_y = 21;
-	pixel_x = -10
+	pixel_x = -10;
+	layer = 2.9
 	},
 /obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_y = 21
+	pixel_y = 21;
+	layer = 2.9
 	},
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/green/west,

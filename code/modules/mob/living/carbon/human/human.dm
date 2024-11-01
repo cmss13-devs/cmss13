@@ -408,6 +408,7 @@
 							DT.dogtag_taken = TRUE
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
+							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
 							D.fallen_assgns = list(DT.assignment)
 							D.fallen_blood_types = list(DT.blood_type)
@@ -1349,11 +1350,14 @@
 	if(wear_mask && wear_mask.vision_impair)
 		tint_level += wear_mask.vision_impair
 
-	if(tint_level > VISION_IMPAIR_STRONG)
-		tint_level = VISION_IMPAIR_STRONG
+	if(tint_level > VISION_IMPAIR_MAX)
+		tint_level = VISION_IMPAIR_MAX
 
 	if(tint_level)
-		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
+		if(tint_level == VISION_IMPAIR_MAX)
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/blind)
+		else
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)
@@ -1397,7 +1401,8 @@
 		if(user.get_limb(cur_hand).status & LIMB_DESTROYED)
 			to_chat(user, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
-		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
+		var/is_splint = FALSE
+		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) //check for any splints before do_after
 			var/obj/limb/l = target.get_limb(bodypart)
 			if(l && (l.status & LIMB_SPLINTED))
 				if(user == target)
@@ -1407,13 +1412,31 @@
 					if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
 						same_arm_side = TRUE
 						continue
-				to_splint.Add(l)
+				is_splint = TRUE
+				break
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(length(to_splint))
+		if(is_splint)
 			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
+				for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) // make sure the splints still exist before removing
+					var/obj/limb/target_limb = target.get_limb(bodypart)
+					if(target_limb && (target_limb.status & LIMB_SPLINTED))
+						if(user == target)
+							if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
+								same_arm_side = TRUE
+								continue
+							if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
+								same_arm_side = TRUE
+								continue
+						to_splint += target_limb
+				if(!length(to_splint))
+					if(same_arm_side)
+						to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
+					else
+						to_chat(user, SPAN_WARNING("There are no splints to remove."))
+					return
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
 					var/obj/item/clothing/suit/space/suit = target.wear_suit
 					if(LAZYLEN(suit.supporting_limbs))

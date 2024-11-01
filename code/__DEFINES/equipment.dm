@@ -178,7 +178,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 

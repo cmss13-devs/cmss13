@@ -20396,6 +20396,10 @@
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
+"caw" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "cay" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -23681,6 +23685,10 @@
 	},
 /turf/open/floor/plating,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"epz" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "eqO" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -26643,6 +26651,10 @@
 /obj/structure/prop/dam/drill,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
+"jpC" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "jqg" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/detective,
@@ -28529,6 +28541,10 @@
 /obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"mpU" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "mqs" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -29130,6 +29146,10 @@
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/carplake/north)
+"nxc" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/auto_turf/ice/layer1,
+/area/strata/ag/exterior/marsh/water_marshes)
 "nxh" = (
 /obj/structure/surface/rack,
 /obj/item/paper_bin,
@@ -29761,6 +29781,10 @@
 "oKo" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)
+"oKr" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/auto_turf/ice/layer1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "oKV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -30367,6 +30391,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
+"pAZ" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "pDb" = (
 /obj/structure/dropship_equipment/sentry_holder,
 /turf/open/floor/strata/floor3/east,
@@ -34760,6 +34788,10 @@
 	},
 /turf/open/floor/strata/purp2,
 /area/strata/ug/interior/jungle/structures/monitoring)
+"xgU" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "xhA" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/strata/orange_cover,
@@ -40865,7 +40897,7 @@ aac
 wXw
 qPu
 uhM
-wXw
+nxc
 rNI
 rNI
 bvE
@@ -41042,7 +41074,7 @@ uTt
 tJX
 bvE
 rNI
-bvE
+jpC
 rNI
 bxh
 aac
@@ -41391,7 +41423,7 @@ aac
 aac
 bwA
 rNI
-rNI
+oKr
 bvE
 bvE
 bwv
@@ -41757,7 +41789,7 @@ bvE
 bvD
 mcX
 rxL
-bvD
+caw
 bvE
 rNI
 bvE
@@ -41928,7 +41960,7 @@ bxC
 bvD
 bvD
 bvD
-bvD
+caw
 bvM
 mcX
 rxL
@@ -42110,7 +42142,7 @@ bwt
 bwb
 jLc
 bwt
-bwt
+epz
 bwt
 aac
 aac
@@ -44006,7 +44038,7 @@ buK
 tFA
 wSb
 wSb
-bvE
+pAZ
 bvD
 bvD
 bvD
@@ -44707,7 +44739,7 @@ wSb
 tFA
 rni
 bvD
-bvE
+pAZ
 bvE
 bvE
 xTU
@@ -45059,7 +45091,7 @@ wSb
 bvD
 bvD
 bvD
-bvD
+xgU
 bvD
 xTU
 bwt
@@ -45946,7 +45978,7 @@ kBL
 bwt
 bvE
 bvE
-bvD
+mpU
 bvD
 bwI
 bxH
@@ -46126,7 +46158,7 @@ bvD
 bvD
 bvD
 bvE
-bvD
+mpU
 bvD
 bvE
 bvE
@@ -46298,7 +46330,7 @@ naw
 bvE
 bvE
 bvD
-bvD
+mpU
 bvD
 bvE
 bvE

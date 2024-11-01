@@ -61,7 +61,7 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
@@ -87,7 +87,7 @@
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 				return
 
-	if(armor_number > 7)
+	if(armor_number > 8)
 		armor_number = 1
 	if(armor_number) //Don't change full armor number
 		icon_state = "halfarmor[armor_number]_[armor_material]"
@@ -153,7 +153,6 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
@@ -176,32 +175,26 @@
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
-	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/third
 	name = PRED_YAUTJA_THIRD_CAPE
 	icon_state = "thirdcape"
-	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/half
 	name = PRED_YAUTJA_HALF_CAPE
 	icon_state = "halfcape"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/quarter
 	name = PRED_YAUTJA_QUARTER_CAPE
 	icon_state = "quartercape"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/poncho
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/damaged
 	name = PRED_YAUTJA_DAMAGED_CAPE
 	icon_state = "damagedcape"
-	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -915,10 +908,12 @@
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
 	if(istype(bracer) && bracer.owner_rank)
 		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELITE_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE)
 			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
 			if(CLAN_RANK_ADMIN_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
 
 /obj/item/storage/medicomp
@@ -1002,6 +997,7 @@
 	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
 	icon_state = "l_arm"

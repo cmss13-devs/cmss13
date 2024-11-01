@@ -3192,7 +3192,7 @@
 	},
 /obj/structure/machinery/door_control{
 	dir = 1;
-	id = nortexit2;
+	id = nortent2;
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
@@ -58904,14 +58904,14 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = "nortexit2";
-	name = "\improper Treatment Center";
-	req_access = null
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "northtreatcenter2";
 	name = "\improper North Treatment Center Shutters"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	id_tag = "nortent2";
+	name = "\improper Treatment Center";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

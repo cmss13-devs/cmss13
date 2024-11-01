@@ -3192,7 +3192,7 @@
 	},
 /obj/structure/machinery/door_control{
 	dir = 1;
-	id = norexit2;
+	id = nortexit2;
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
@@ -21370,7 +21370,7 @@
 	},
 /obj/structure/machinery/door_control{
 	dir = 1;
-	id = norexit1;
+	id = nortexit1;
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
@@ -24896,7 +24896,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = norexit1;
+	id_tag = "nortexit1";
 	name = "\improper Treatment Center";
 	req_access = null
 	},
@@ -40881,7 +40881,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = souexit1;
+	id_tag = "souexit1";
 	name = "\improper Treatment Center";
 	req_access = null
 	},
@@ -58905,7 +58905,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = norexit2;
+	id_tag = "nortexit2";
 	name = "\improper Treatment Center";
 	req_access = null
 	},
@@ -67266,7 +67266,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = souexit2;
+	id_tag = "souexit2";
 	name = "\improper Treatment Center";
 	req_access = null
 	},

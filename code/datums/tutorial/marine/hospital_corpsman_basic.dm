@@ -13,7 +13,7 @@
 
 	init_mob()
 	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
-	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner()
 	SIGNAL_HANDLER
@@ -36,7 +36,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
 	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
-	message_to_player("There are four main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
+	message_to_player("There are two main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
 	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 12 SECONDS)
 
@@ -420,6 +420,63 @@
 	human_dummy.reagents.clear_reagents()
 
 	message_to_player("Great work. The Dummy is no longer bleeding all over the floor, which is always good.")
+
+	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
+
+	message_to_player("In the line of duty, Marines occasionally recieve embedded shrapnel in wounds.")
+	message_to_player("Shrapnel can come in a variety of forms, all of which can be dug out of the body with a <b>Knife</b> or <b>Scalpel</b>.")
+	message_to_player("Pick up the boot-knife by clicking on it with an empty hand")
+	var/obj/item/attachable/bayonet/knife = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(knife)
+	add_highlight(knife)
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(shrapnel_tutorial_2))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_2()
+
+	message_to_player("When removing shrapnel from a patient, you must make sure that <b>Surgery Mode</b> is always <b>disabled</b> first.")
+	message_to_player("<b>Surgery Mode</b> is toggled on and off by clicking the highlighted button on the top left of your HUD. When it is highlighted <b>Green</b> it is <b>Enabled</b>.")
+	message_to_player("You must toggle this option off when removing shrapnel, otherwise you may accidentally create a surgical incision, which needs to be cauterized.")
+	message_to_player("Disable <b>Surgery Mode</b> by clicking the yellow and green highlighted button on the top left of your HUD")
+
+	var/datum/action/surgery_toggle = get_action(tutorial_mob, /datum/action/surgery_toggle)
+	add_highlight(surgery_toggle.button)
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_SURGERY_MODE_TOGGLED, PROC_REF(shrapnel_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3()
+
+	if(tutorial_mob.mob_flags & SURGERY_MODE_ON)
+		return
+
+	message_to_player("Well done, keep surgery mode <b>Disabled</b> for the remainder of the tutorial.")
+	message_to_player("It seem that our friend Mr Dummy is suddenly bleeding. Use your <b>Health Analyzer</b> to scan them.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+
+	var/obj/item/shard/shrapnel/tutorial/shrapnel = new
+	shrapnel.on_embed(human_dummy, mob_chest, TRUE)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(shrapnel_tutorial_4))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_4()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
+	message_to_player("To remove the shrapnel, keep Surgery Mode <b>Disabled</b>, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
+
+	//RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(on_shrapnel_removed))
 
 	update_objective("Tutorial completed.")
 	tutorial_end_in(5 SECONDS)

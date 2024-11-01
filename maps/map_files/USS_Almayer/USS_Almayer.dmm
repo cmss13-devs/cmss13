@@ -8226,16 +8226,9 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_lobby)
 "ber" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "north_central_checkpoint";
-	name = "North Checkpoint Shutters";
-	req_one_access_txt = "3;12;19"
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
 /area/almayer/living/briefing)
 "bet" = (
 /obj/structure/bed/stool,
@@ -9556,12 +9549,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "south_central_checkpoint";
-	name = "South Checkpoint Shutters";
-	req_one_access_txt = "3;12;19"
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "bpw" = (
@@ -10867,7 +10854,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/window/framed/almayer,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/living/briefing)
 "bCk" = (
@@ -11762,14 +11749,10 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/navigation)
 "bIJ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/sliceable/bread{
-	pixel_y = 8
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/barricade/handrail{
+	dir = 4
 	},
-/obj/item/reagent_container/food/snacks/sliceable/bread{
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/sliceable/bread,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "bIM" = (
@@ -17970,6 +17953,12 @@
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 4
 	},
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 9;
+	pixel_x = 13
+	},
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/briefing)
 "duv" = (
@@ -18562,6 +18551,9 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "dEQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "dEX" = (
@@ -23276,6 +23268,7 @@
 	req_access = null;
 	req_one_access_txt = "3;19"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "fDG" = (
@@ -30459,15 +30452,10 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/lower/engine_core)
 "iIl" = (
-/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
-	pixel_x = 1;
-	pixel_y = -5
+/obj/structure/machinery/vending/cola{
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -37337,6 +37325,15 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cichallway)
+"lsw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper{
+	name = "OFFICER TABLE";
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/silverfull,
+/area/almayer/living/briefing)
 "lsD" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -38523,15 +38520,13 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "lVS" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/juicer{
+	pixel_y = 10;
+	pixel_x = 4
+	},
 /obj/structure/machinery/reagentgrinder{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner,
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = 6
+	pixel_y = 4;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -39708,6 +39703,13 @@
 	pixel_y = 20
 	},
 /obj/item/stack/sheet/cardboard/full_stack,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "mwP" = (
@@ -42293,6 +42295,9 @@
 "nuK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "nuM" = (
@@ -61017,13 +61022,18 @@
 	name = "Kitchen Telephone";
 	phone_category = "Almayer";
 	phone_id = "Kitchen";
-	pixel_x = -8;
+	pixel_x = -10;
 	pixel_y = 29
 	},
 /obj/structure/machinery/juicer{
-	pixel_y = 9
+	pixel_y = 21;
+	pixel_x = 7
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 6;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "uYa" = (
@@ -62409,8 +62419,14 @@
 /area/almayer/medical/lower_medical_lobby)
 "vwI" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/rollingpin,
-/obj/item/tool/kitchen/knife,
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = 1;
+	pixel_y = -5
+	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/briefing)
 "vwT" = (
@@ -66701,8 +66717,14 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "xaN" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/briefing)
 "xaS" = (
@@ -67017,8 +67039,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_p)
 "xjb" = (
-/turf/closed/wall/almayer/white,
-/area/almayer/living/briefing)
+/turf/closed/wall/almayer,
+/area/almayer/medical/lower_medical_medbay)
 "xjt" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/card{
@@ -101659,17 +101681,17 @@ eGZ
 qPk
 qPk
 pha
-kan
-kan
-kan
-kan
-kan
-kan
-kan
-kan
-kan
-kan
-kan
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
+xjb
 rIO
 knm
 knm
@@ -101862,7 +101884,7 @@ eGZ
 qPk
 qPk
 iXU
-xjb
+bdd
 neS
 rAx
 rAx
@@ -101872,7 +101894,7 @@ oEw
 rAx
 rAx
 rAx
-xjb
+bdd
 bPu
 knm
 knm
@@ -102872,7 +102894,7 @@ aQF
 ldb
 rYI
 fzc
-bdg
+bCh
 vyg
 bni
 cwX
@@ -102887,12 +102909,12 @@ wCs
 bES
 nVi
 bqZ
-bIJ
+nBw
 vuA
 snb
 xbd
 bAU
-bdg
+bCh
 jlD
 pYN
 raE
@@ -103075,7 +103097,7 @@ bwG
 pzj
 uhq
 pzj
-bdg
+bdd
 apz
 dyd
 fyD
@@ -103095,7 +103117,7 @@ bdd
 vPw
 bvr
 bBQ
-bdg
+bdd
 sgL
 aRL
 sgL
@@ -103278,10 +103300,10 @@ bwG
 wsS
 vxY
 wsS
-bdg
+bCh
 auj
 bbf
-ber
+bpv
 vuA
 xaN
 qCc
@@ -103685,9 +103707,9 @@ nhE
 naa
 nVQ
 bdd
-vuA
+ber
 fDj
-vuA
+ber
 bdd
 uXU
 fuS
@@ -103701,9 +103723,9 @@ qCc
 wLK
 sBL
 bdd
-vuA
+ber
 fDj
-vuA
+ber
 bdd
 fvV
 ter
@@ -106122,7 +106144,7 @@ naa
 meQ
 fZE
 bdg
-dEQ
+bIJ
 eFP
 qSE
 hgg
@@ -106138,7 +106160,7 @@ qnC
 dNM
 fIZ
 gSk
-dEQ
+bIJ
 bdg
 oSM
 awE
@@ -107145,7 +107167,7 @@ tSp
 wmz
 rJu
 luS
-hGO
+lsw
 hjB
 wHo
 lkW

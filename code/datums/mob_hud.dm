@@ -672,6 +672,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(mob_flags & MUTINEER)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
+	if(mob_flags &LOYALIST)
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
+		return
 
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)

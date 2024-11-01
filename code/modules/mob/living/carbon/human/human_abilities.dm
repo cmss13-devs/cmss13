@@ -62,8 +62,8 @@
 		return FALSE
 	var/mob/living/carbon/human/human = owner
 	if(istype(human.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = human.back
-		return cooldown_check(S)
+		var/obj/item/storage/backpack/marine/smartpack/smartpack = human.back
+		return cooldown_check(smartpack)
 	else
 		return FALSE
 
@@ -73,8 +73,8 @@
 		return
 	var/mob/living/carbon/human/human = owner
 	if(istype(human.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = human.back
-		form_call(S, human)
+		var/obj/item/storage/backpack/marine/smartpack/smartpack = human.back
+		form_call(smartpack, human)
 
 /datum/action/human_action/smartpack/give_to(mob/living/L)
 	..()
@@ -82,50 +82,50 @@
 		return
 	var/mob/living/carbon/human/human = L
 	if(istype(human.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = human.back
-		cooldown = set_cooldown(S)
+		var/obj/item/storage/backpack/marine/smartpack/smartpack = human.back
+		cooldown = set_cooldown(smartpack)
 	else
 		return
 
-/datum/action/human_action/smartpack/proc/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/human)
+/datum/action/human_action/smartpack/proc/form_call(obj/item/storage/backpack/marine/smartpack/smartpack, mob/living/carbon/human/human)
 	return
 
-/datum/action/human_action/smartpack/proc/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/proc/set_cooldown(obj/item/storage/backpack/marine/smartpack/smartpack)
 	return
 
-/datum/action/human_action/smartpack/proc/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
-	return S.activated_form
+/datum/action/human_action/smartpack/proc/cooldown_check(obj/item/storage/backpack/marine/smartpack/smartpack)
+	return smartpack.activated_form
 
 
 /datum/action/human_action/smartpack/protective_form
 	name = "Protective Form"
 	action_icon_state = "smartpack_protect"
 
-/datum/action/human_action/smartpack/protective_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
-	return S.protective_form_cooldown
+/datum/action/human_action/smartpack/protective_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/smartpack)
+	return smartpack.protective_form_cooldown
 
-/datum/action/human_action/smartpack/protective_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/human)
-	S.protective_form(human)
+/datum/action/human_action/smartpack/protective_form/form_call(obj/item/storage/backpack/marine/smartpack/smartpack, mob/living/carbon/human/human)
+	smartpack.protective_form(human)
 
 /datum/action/human_action/smartpack/immobile_form
 	name = "Immobile Form"
 	action_icon_state = "smartpack_immobile"
 
-/datum/action/human_action/smartpack/immobile_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/human)
-	S.immobile_form(human)
+/datum/action/human_action/smartpack/immobile_form/form_call(obj/item/storage/backpack/marine/smartpack/smartpack, mob/living/carbon/human/human)
+	smartpack.immobile_form(human)
 
 /datum/action/human_action/smartpack/repair_form
 	name = "Repair Form"
 	action_icon_state = "smartpack_repair"
 
-/datum/action/human_action/smartpack/repair_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
-	return S.repair_form_cooldown
+/datum/action/human_action/smartpack/repair_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/smartpack)
+	return smartpack.repair_form_cooldown
 
-/datum/action/human_action/smartpack/repair_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/human)
-	S.repair_form(human)
+/datum/action/human_action/smartpack/repair_form/form_call(obj/item/storage/backpack/marine/smartpack/smartpack, mob/living/carbon/human/human)
+	smartpack.repair_form(human)
 
-/datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
-	return S.repairing
+/datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/smartpack)
+	return smartpack.repairing
 
 
 /datum/action/human_action/psychic_whisper

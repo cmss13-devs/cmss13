@@ -1,0 +1,42 @@
+2024-11-01:
+  Ansekishoku:
+  - bugfix: Headsets no longer accept multiple encryption keys of the same kind.
+  BeagleGaming1:
+  - bugfix: Bracers properly update owner when unequipped or worn
+  - rscadd: When gibbed, the ghost will stay as the character instead of turning into
+      a brain
+  Blundir:
+  - rscadd: dead marines now have minimap revival icons animated, different icons
+      depending on how much time is left
+  - bugfix: fixed working joe not being able to use ai lockdown/nerve gas
+  GoldenDarkness55:
+  - balance: OT M40 grenade casing volume from 90 to 120, power 175 to 180, falloff
+      75 to 80, shards 32 to 40, fire intensity 20 to 25, metal cost from 3750 to
+      4250 which is 12% of a single metal sheet
+  - balance: OT M15 grenade casing power 215 to 220, falloff 90 to 120, shards 32
+      to 80, fire radius from 5 to 6, fire intensity 20 to 30 and fire duration 24
+      to 32
+  - balance: OT claymore casing power 105 to 100, falloff 60 to 80, shards 32 to 40,
+      fire radius 5 to 4, fire intensity 12 to 20
+  - balance: OT C4 casing damage multiplier against walls from 1.5 to 2, power 260
+      to 280, falloff 90 to 120, shards 64 to 100, fire radius 6 to 4, fire intensity
+      26 to 50, duration 30 to 20
+  - balance: OT rocket casing power 240 to 220, falloff 90 to 160, shards 64 to 80,
+      fire radius 6 to 4, fire intensity 40 to 45
+  - balance: OT mortar casing falloff 90 to 130, shards 128 to 200, fire intensity
+      40 to 45
+  - balance: Custom rocket accuracy raised from tier 2 to 5 and range lowered from
+      8 to 7
+  Red-byte3D:
+  - balance: base ravager empowered charge stun is increased from 1.3 to 1.6
+  Steelpoint:
+  - maptweak: The north-east and south-east areas of Shivas Snowball start of pre-weeded,
+      in addition to a few resin doors and walls near the main entrances to hive locations.
+  ghostsheet:
+  - balance: Beserker Ravs no longer heals while on fire.
+  harryob:
+  - rscadd: the chem master ui is now tgui, and faster. hopefully better
+  - server: server hosts can now configure a cobalt.tools api to provide media playing
+      with "COBALT_BASE_API" and "COBALT_API_KEY"
+  realforest2001:
+  - bugfix: No store cryo pods now work as intended.

@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - server: "server hosts can now configure a cobalt.tools api to provide media playing with \"COBALT_BASE_API\" and \"COBALT_API_KEY\""

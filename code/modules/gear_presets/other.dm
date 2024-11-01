@@ -50,8 +50,8 @@
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist Leader!"))
 	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a loyalist.<hr>"))
-	for(var/datum/action/human_action/activable/loyalist/A in new_human.actions)
-		A.remove_from(new_human)
+	for(var/datum/action/human_action/activable/loyalist/loyalist in new_human.actions)
+		loyalist.remove_from(new_human)
 
 	var/list/abilities = subtypesof(/datum/action/human_action/activable/loyalist)
 	for(var/type in abilities)

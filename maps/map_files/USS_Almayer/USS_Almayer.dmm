@@ -7758,10 +7758,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/east,
 /area/almayer/medical/lower_medical_lobby)
 "bag" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8779,9 +8776,7 @@
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_two)
 "biJ" = (
 /obj/structure/flora/pottedplant{
@@ -8931,9 +8926,7 @@
 /obj/structure/machinery/medical_pod/autodoc{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "bkz" = (
 /obj/structure/barricade/handrail/medical{
@@ -8959,9 +8952,7 @@
 	id_tag = "or02";
 	name = "Operating Theatre 2"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_two)
 "bkM" = (
 /obj/effect/decal/warning_stripes{
@@ -9188,9 +9179,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "bml" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -9280,9 +9269,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bmW" = (
 /obj/effect/decal/warning_stripes{
@@ -9423,9 +9410,7 @@
 "boh" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "bom" = (
 /obj/structure/sign/safety/south{
@@ -9676,9 +9661,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bqL" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass,
@@ -9688,9 +9671,7 @@
 	name = "\improper South Treatment Center Shutters";
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bqT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -9849,10 +9830,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/east,
 /area/almayer/medical/lower_medical_lobby)
 "bsp" = (
 /obj/structure/sink{
@@ -10571,9 +10549,7 @@
 /obj/item/clothing/glasses/hud/health/prescription,
 /obj/item/clothing/glasses/hud/health/prescription,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "bym" = (
 /obj/structure/disposalpipe/segment{
@@ -10626,9 +10602,7 @@
 	},
 /obj/structure/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "bzz" = (
 /obj/structure/disposalpipe/trunk{
@@ -10910,9 +10884,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Foreship Lower Medical Ladders"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bCe" = (
 /turf/open/floor/almayer/sterile_green_side/southeast,
@@ -14075,9 +14047,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "cbF" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
@@ -15240,9 +15210,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "cnu" = (
 /obj/structure/disposalpipe/segment{
@@ -15576,9 +15544,7 @@
 	id_tag = "or04";
 	name = "Operating Theatre 4"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "cpK" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -16026,9 +15992,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "cAR" = (
 /turf/closed/wall/almayer/reinforced,
@@ -16291,9 +16255,7 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_three)
 "cGd" = (
 /turf/closed/wall/almayer,
@@ -16811,9 +16773,7 @@
 	id = "southtreatcenter1";
 	name = "\improper South Treatment Center Shutters"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "cPK" = (
 /obj/effect/decal/warning_stripes{
@@ -17767,10 +17727,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/medical/lower_medical_medbay)
 "dkj" = (
 /obj/structure/surface/table/almayer,
@@ -19578,9 +19535,7 @@
 	icon_state = "W";
 	pixel_x = -2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "dUZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20274,10 +20229,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (
 /obj/structure/machinery/light{
@@ -20412,9 +20364,7 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_two)
 "elR" = (
 /turf/closed/wall/almayer/research/containment/wall/corner{
@@ -20510,9 +20460,7 @@
 	name = "ship-grade camera";
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "enK" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -22701,9 +22649,7 @@
 	name = "ship-grade camera";
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "feS" = (
 /obj/structure/machinery/door_control{
@@ -23234,9 +23180,7 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "frb" = (
 /obj/structure/surface/table/almayer,
@@ -23268,9 +23212,7 @@
 	id_tag = "or03";
 	name = "Operating Theatre 3"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_three)
 "frt" = (
 /obj/structure/surface/table/almayer,
@@ -24625,9 +24567,7 @@
 	id = "northtreatcenter1";
 	name = "\improper North Treatment Center Shutters"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "fYZ" = (
 /obj/effect/decal/warning_stripes{
@@ -24986,9 +24926,7 @@
 /obj/structure/bed/chair/wheelchair,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "ggD" = (
 /obj/structure/largecrate/random/case/double,
@@ -26138,10 +26076,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/lower_medical_lobby)
 "gFa" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -26609,9 +26544,7 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "gNo" = (
 /turf/open/floor/almayer/plate,
@@ -27176,9 +27109,7 @@
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "had" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -28534,9 +28465,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "hBr" = (
 /obj/effect/decal/warning_stripes{
@@ -28606,9 +28535,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "hCV" = (
 /obj/structure/toilet{
@@ -30814,10 +30741,7 @@
 	height = 1;
 	id = "med2"
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_lobby)
 "iDa" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
@@ -32167,9 +32091,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "jcP" = (
 /turf/open/floor/almayer/plating_striped,
@@ -32204,9 +32126,7 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "jdZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -33186,9 +33106,7 @@
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "jvc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34571,9 +34489,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "jZe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34867,9 +34783,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "keG" = (
 /obj/structure/machinery/door/airlock/almayer/security{
@@ -35187,10 +35101,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/medical/lower_medical_medbay)
 "klT" = (
 /obj/structure/machinery/light/small,
@@ -36436,18 +36347,6 @@
 /obj/structure/platform_decoration,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_s)
-"kMl" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ChemistryShu";
-	name = "\improper Medical Chemistry Shutters";
-	dir = 2
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/almayer/hallways/hangar)
 "kMp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -36732,9 +36631,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/chemistry)
 "kRg" = (
 /obj/structure/closet/firecloset,
@@ -37413,9 +37310,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "leM" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -39218,9 +39113,7 @@
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_three)
 "lRh" = (
 /turf/open/floor/almayer/bluecorner/north,
@@ -39617,9 +39510,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "maK" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -39648,11 +39539,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/upper_medical)
-"mbo" = (
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hallways/lower/port_fore_hallway)
 "mbx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -40139,9 +40025,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "mlP" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
@@ -40475,9 +40359,7 @@
 	name = "\improper Treatment Center";
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "mtl" = (
 /turf/closed/wall/almayer/reinforced,
@@ -42231,10 +42113,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/medical/lower_medical_lobby)
 "nbu" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -45706,9 +45585,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Hall Connection Room"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "oqS" = (
 /obj/structure/toilet{
@@ -46757,11 +46634,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"oLs" = (
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hallways/lower/starboard_fore_hallway)
 "oLF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -47406,18 +47278,14 @@
 	layer = 1.9;
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "oYd" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "oYi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -49508,9 +49376,7 @@
 	req_access = null;
 	req_one_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "pUp" = (
 /obj/item/device/radio/intercom{
@@ -50534,10 +50400,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/medical/lower_medical_medbay)
 "qnl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -50765,9 +50628,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "qtv" = (
 /obj/structure/disposalpipe/segment,
@@ -51487,10 +51348,7 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "qGU" = (
 /obj/structure/closet/firecloset,
@@ -51932,9 +51790,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "qOk" = (
 /obj/docking_port/stationary/lifeboat_dock/port,
@@ -51989,9 +51845,7 @@
 	name = "\improper North Treatment Center Shutters";
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "qPU" = (
 /obj/structure/machinery/light,
@@ -52350,9 +52204,7 @@
 	id = "northtreatcenter1";
 	name = "\improper North Treatment Center Shutters"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "qXO" = (
 /obj/structure/surface/table/almayer,
@@ -53764,10 +53616,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "rxJ" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/lower_medical_lobby)
 "rxK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -54236,9 +54085,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "rHq" = (
 /obj/structure/sign/safety/storage{
@@ -54877,9 +54724,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow,
 /area/almayer/medical/lower_medical_lobby)
 "rVt" = (
 /obj/structure/machinery/status_display{
@@ -55866,9 +55711,7 @@
 	id = "or1entshutter";
 	name = "\improper Privacy Shutters"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_one)
 "soP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -57351,9 +57194,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "sXd" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -57884,9 +57725,7 @@
 	layer = 1.9;
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "thc" = (
 /obj/item/device/radio/intercom{
@@ -57991,9 +57830,7 @@
 	name = "\improper North Treatment Center Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "tiE" = (
 /obj/structure/window/framed/almayer,
@@ -58172,9 +58009,7 @@
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/maint/upper/u_a_s)
 "tmg" = (
-/turf/open/floor/almayer{
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow,
 /area/almayer/medical/lower_medical_lobby)
 "tml" = (
 /obj/structure/largecrate/supply/supplies/mre,
@@ -58358,9 +58193,7 @@
 	name = "\improper Treatment Center";
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "tpn" = (
 /turf/closed/wall/almayer,
@@ -58374,9 +58207,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "tpB" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -58973,10 +58804,7 @@
 	height = 1;
 	id = "med1"
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_lobby)
 "tAb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -59681,9 +59509,7 @@
 	req_access = null;
 	req_one_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "tRs" = (
 /obj/structure/surface/table/almayer,
@@ -60608,10 +60434,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "ujZ" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/medical/lower_medical_lobby)
 "uky" = (
 /obj/effect/decal/warning_stripes{
@@ -61041,9 +60864,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "utK" = (
 /obj/structure/machinery/light{
@@ -61664,9 +61485,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lockerroom)
 "uFp" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -61749,9 +61568,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/lower/s_bow)
 "uIl" = (
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_lobby)
 "uIv" = (
 /turf/open/floor/almayer/orange,
@@ -63032,9 +62849,7 @@
 	req_one_access = null;
 	req_access = null
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "viu" = (
 /obj/structure/machinery/shower{
@@ -63353,9 +63168,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow,
 /area/almayer/medical/lower_medical_lobby)
 "vno" = (
 /turf/open/floor/almayer/blue/east,
@@ -64105,9 +63918,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "vAq" = (
 /obj/structure/bed/chair{
@@ -64736,9 +64547,7 @@
 	name = "\improper South Treatment Center Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "vMA" = (
 /obj/structure/machinery/firealarm{
@@ -65728,9 +65537,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "wbV" = (
 /obj/structure/machinery/disposal,
@@ -66364,9 +66171,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "wos" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
@@ -66632,9 +66437,7 @@
 	id = "southtreatcenter2";
 	name = "\improper South Treatment Center Shutters"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "wty" = (
 /obj/effect/decal/warning_stripes{
@@ -68186,10 +67989,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "cargo_arrow"
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/lower_medical_lobby)
 "wYS" = (
 /turf/open/floor/almayer/sterile_green_side,
@@ -68354,9 +68154,7 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_one)
 "xdA" = (
 /obj/structure/surface/rack{
@@ -68480,9 +68278,7 @@
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_one)
 "xga" = (
 /turf/closed/wall/almayer,
@@ -68983,10 +68779,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "xqQ" = (
 /obj/structure/machinery/door/poddoor/almayer/blended{
@@ -71137,9 +70930,7 @@
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "ygp" = (
 /obj/structure/disposalpipe/segment,
@@ -96054,7 +95845,7 @@ aRu
 aRu
 bcm
 bGR
-kMl
+exB
 xyw
 gVC
 dzS
@@ -98897,7 +98688,7 @@ wNG
 wDr
 qZT
 pSF
-oLs
+eZC
 qXI
 cdd
 gOJ
@@ -98919,7 +98710,7 @@ bCe
 bCe
 sdO
 cPG
-mbo
+hBW
 dxJ
 rdT
 wDr
@@ -99912,7 +99703,7 @@ hwH
 wDr
 iGi
 pSF
-oLs
+eZC
 bst
 eHj
 oDJ
@@ -99934,7 +99725,7 @@ cvW
 psO
 xbW
 biA
-mbo
+hBW
 ltv
 uYM
 wDr
@@ -101739,7 +101530,7 @@ aQF
 aQF
 mNG
 pSF
-oLs
+eZC
 tpg
 avW
 cLA
@@ -101761,7 +101552,7 @@ cLA
 cLA
 xIk
 wtq
-mbo
+hBW
 ltv
 qEz
 bJt
@@ -103160,7 +102951,7 @@ buB
 aWD
 eZC
 pSF
-oLs
+eZC
 kan
 kan
 kan
@@ -103182,7 +102973,7 @@ kan
 kan
 kan
 kan
-mbo
+hBW
 ltv
 kGw
 bJt

@@ -226,6 +226,7 @@
 	human_dummy.rejuvenate()
 	remove_highlight(brutekit)
 	qdel(brutekit)
+	remove_from_tracking_atoms(brutekit)
 	remove_highlight(human_hud.zone_sel)
 	update_objective("")
 
@@ -344,10 +345,6 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_inject_self()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
@@ -360,8 +357,70 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
 	//adds a slight grace period, so humans are not rejuved before kelo is registered in their system
 
-	message_to_player("Well done!")
-	addtimer(CALLBACK(src, PROC_REF(on_burn_inject)), 3 SECONDS)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+
+	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial()
+	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
+	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
+	update_objective("")
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	mob_chest.add_bleeding(damage_amount = 15)
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 4 SECONDS)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+
+	message_to_player("The Dummy appears to be bleeding. Scan them with your <b>Health Analyzer</b> to identify which limb they are bleeding from.")
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(bleed_tutorial_2))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial_2()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	message_to_player("Now we can see that the Dummy is bleeding from their chest")
+	message_to_player("Bleeding wounds can clot themselves over time, with this process taking longer for more severe injuries.")
+	message_to_player("We can also fix it quickly with an <b>Advanced Trauma Kit</b>. Pick up the kit and click on the Dummy while targeting its chest to stop the bleeding.")
+
+	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(brutekit)
+	add_highlight(brutekit, COLOR_GREEN)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	RegisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING, PROC_REF(on_chest_bleed_stop))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
+	SIGNAL_HANDLER
+
+	// If you exit on this step, your limbs get deleted, which stops the bleeding, which progresses the tutorial despite it ending
+	if(!tutorial_mob || QDELETED(src))
+		return
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	UnregisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/bruise_pack, brutekit)
+	remove_from_tracking_atoms(brutekit)
+	remove_highlight(brutekit)
+	qdel(brutekit)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+
+	message_to_player("Great work. The Dummy is no longer bleeding all over the floor, which is always good.")
+
 
 
 

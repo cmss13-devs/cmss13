@@ -21260,9 +21260,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "eCo" = (
 /obj/structure/platform{
@@ -23678,9 +23676,7 @@
 /obj/structure/machinery/cryopod{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "fDG" = (
 /obj/structure/machinery/vending/coffee,
@@ -40505,9 +40501,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "mwP" = (
 /turf/open/floor/almayer/plate,
@@ -43586,9 +43580,7 @@
 /obj/structure/machinery/cryopod{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "nEc" = (
 /obj/structure/largecrate/random/case/small,
@@ -64111,9 +64103,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = 32
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "vEf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{

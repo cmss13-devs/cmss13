@@ -187,7 +187,6 @@
 			var/datum/build_queue_entry/entry = build_queue[index]
 
 			build_queue.Remove(entry)
-			add_to_point_store(entry.cost)
 			return TRUE
 
 	else

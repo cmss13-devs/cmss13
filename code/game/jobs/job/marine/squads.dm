@@ -87,12 +87,6 @@
 							) //3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
 
-	var/num_engineers = 0
-	var/num_medics = 0
-	var/num_leaders = 0
-	var/num_smartgun = 0
-	var/num_specialists = 0
-	var/num_tl = 0
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
@@ -268,6 +262,14 @@
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
 	radio_freq = UPP_FREQ
+  list/roles_cap = list(
+		JOB_UPP_ENGI = 3,
+		JOB_UPP_MEDIC = 4,
+		JOB_UPP_SMARTGUN = 1,
+		JOB_UPP_SPECIALIST = 1,
+		JOB_UPP_TEAM_LEADER = 2,
+		JOB_UPP_LEADER = 1,
+	)
 
 /datum/squad/upp/one
 	name = SQUAD_UPP_1
@@ -649,27 +651,9 @@
 	update_free_mar()
 	target_mob.assigned_squad = null
 
-	switch(GET_DEFAULT_ROLE(target_mob.job))
-		if(JOB_SQUAD_ENGI)
-			num_engineers--
-		if(JOB_SQUAD_MEDIC)
-			num_medics--
-		if(JOB_SQUAD_SPECIALIST)
-			num_specialists--
-		if(JOB_SQUAD_SMARTGUN)
-			num_smartgun--
-		if(JOB_SQUAD_TEAM_LEADER)
-			num_tl--
-		if(JOB_SQUAD_LEADER)
-			num_leaders--
-		if(JOB_UPP_ENGI)
-			num_engineers--
-		if(JOB_UPP_MEDIC)
-			num_medics--
-		if(JOB_UPP_SPECIALIST)
-			num_specialists--
-		if(JOB_UPP_LEADER)
-			num_leaders--
+	var/slot_check = GET_DEFAULT_ROLE(target_mob.job)
+	if(slot_check && !isnull(roles_cap[slot_check]))
+		roles_in[slot_check]--
 
 //proc for demoting current Squad Leader
 /datum/squad/proc/demote_squad_leader(leader_killed)

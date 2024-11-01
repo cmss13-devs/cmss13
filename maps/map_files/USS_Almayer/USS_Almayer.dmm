@@ -3190,14 +3190,6 @@
 	throw_range = 15;
 	pixel_x = -28
 	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = nortent2;
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = -28;
-	pixel_y = -3
-	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -58907,11 +58899,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "northtreatcenter2";
 	name = "\improper North Treatment Center Shutters"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	id_tag = "nortent2";
-	name = "\improper Treatment Center";
-	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

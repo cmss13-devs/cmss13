@@ -17,8 +17,6 @@ GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
 GLOBAL_LIST_EMPTY(mainship_yautja_desc)
 GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
-GLOBAL_LIST_EMPTY(hunting_grounds_yautja_teleports)
-GLOBAL_LIST_EMPTY(hunting_grounds_yautja_yautja_teleport_descs)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)

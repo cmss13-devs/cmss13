@@ -122,6 +122,14 @@
 	default_ammo = /datum/ammo/flare
 
 //-------------------------------------------------------
+//Flare gun. Close enough?
+/obj/item/ammo_magazine/internal/bow
+	name = "flare gun internal magazine"
+	caliber = "FL"
+	max_rounds = 1
+	default_ammo = /datum/ammo/arrow
+
+//-------------------------------------------------------
 //M5 RPG
 
 /obj/item/ammo_magazine/rocket

@@ -2245,6 +2245,7 @@
 #include "code\modules\projectiles\ammo_boxes\misc_boxes.dm"
 #include "code\modules\projectiles\ammo_boxes\round_boxes.dm"
 #include "code\modules\projectiles\guns\boltaction.dm"
+#include "code\modules\projectiles\guns\bow.dm"
 #include "code\modules\projectiles\guns\energy.dm"
 #include "code\modules\projectiles\guns\flare_gun.dm"
 #include "code\modules\projectiles\guns\lever_action.dm"

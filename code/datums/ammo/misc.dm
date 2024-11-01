@@ -174,6 +174,69 @@
 		var/obj/item/weapon/gun/flare/flare_gun_fired_from = fired_projectile.shot_from
 		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
 
+/datum/ammo/arrow
+	name = "arrow"
+	ping = null //no bounce off.
+	damage_type = BRUTE
+	icon_state = "arrow"
+
+	damage = 40
+	accuracy = HIT_ACCURACY_TIER_3
+	max_range = 14
+	shell_speed = AMMO_SPEED_TIER_3
+
+	handful_type = /obj/item/arrow
+	var/activated = FALSE
+
+/datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
+	var/obj/item/arrow/G = new handful_type(T)
+	var/matrix/rotation = matrix()
+	rotation.Turn(fired_projectile.angle - 90)
+	G.apply_transform(rotation)
+
+/datum/ammo/arrow/on_hit_obj(obj/O,obj/projectile/P)
+	drop_arrow(get_turf(P), P)
+
+/datum/ammo/arrow/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_arrow(P.loc, P)
+	else
+		drop_arrow(T, P)
+
+/datum/ammo/arrow/do_at_max_range(obj/projectile/P, mob/firer)
+	drop_arrow(get_turf(P), P)
+
+/datum/ammo/arrow/expl
+	activated = TRUE
+	handful_type = /obj/item/arrow/expl
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
+	var/datum/effect_system/smoke_spread/smoke
+
+/datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)
+	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	smoke.set_up(1, get_turf(mob))
+	smoke.start()
+
+/datum/ammo/arrow/expl/on_hit_obj(obj/object,obj/projectile/projectile)
+	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	smoke.set_up(1, get_turf(projectile))
+	smoke.start()
+/datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(turf.density && isturf(projectile.loc))
+		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+		smoke.set_up(1, get_turf(projectile))
+		smoke.start()
+	else
+		cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+		smoke.set_up(1, turf)
+		smoke.start()
+
+/datum/ammo/arrow/expl/do_at_max_range(obj/projectile/projectile, mob/firer)
+	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	smoke.set_up(1, get_turf(projectile))
+	smoke.start()
+
 /datum/ammo/flare/starshell
 	name = "starshell ash"
 	icon_state = "starshell_bullet"

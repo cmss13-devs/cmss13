@@ -771,13 +771,13 @@
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN)) return
 
-		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["monkeyone"])
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
-		H.monkeyize()
+		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(human)]")
+		human.monkeyize()
 
 	else if(href_list["forcespeech"])
 		if(!check_rights(R_ADMIN)) return
@@ -795,8 +795,8 @@
 
 	else if(href_list["zombieinfect"])
 		if(!check_rights(R_ADMIN)) return
-		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["zombieinfect"])
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /human")
 			return
 
@@ -809,13 +809,13 @@
 		else
 			bg.carrier = FALSE
 
-		H.AddDisease(bg, FALSE)
+		human.AddDisease(bg, FALSE)
 
-		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
+		message_admins("[key_name_admin(usr)] infected [key_name_admin(human)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN)) return
-		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["larvainfect"])
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /human")
 			return
 
@@ -830,58 +830,58 @@
 
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
-		if(!H)
+		if(!human)
 			to_chat(usr, "This mob no longer exists")
 			return
 
-		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(human)
 		embryo.hivenumber = hives[newhive]
 		embryo.faction = newhive
 
-		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
+		message_admins("[key_name_admin(usr)] infected [key_name_admin(human)] with a xeno ([newhive]) larva.")
 
 	else if(href_list["makemutineer"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["makemutineer"])
+		if(!istype(human))
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(H.faction != FACTION_MARINE)
+		if(human.faction != FACTION_MARINE)
 			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a mutineer.")
 			return
 
 		var/datum/equipment_preset/other/mutineer/leader/leader_preset = new()
-		leader_preset.load_status(H)
+		leader_preset.load_status(human)
 
-		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
+		message_admins("[key_name_admin(usr)] has made [key_name_admin(human)] into a mutineer leader.")
 
 	else if(href_list["makeloyalist"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list["makeloyalist"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["makeloyalist"])
+		if(!istype(human))
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(H.faction != FACTION_MARINE)
+		if(human.faction != FACTION_MARINE)
 			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a loyalist.")
 			return
 
 		var/datum/equipment_preset/other/loyalist/leader/leader_preset = new()
-		leader_preset.load_status(H)
+		leader_preset.load_status(human)
 
-		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a loyalist leader.")
+		message_admins("[key_name_admin(usr)] has made [key_name_admin(human)] into a loyalist leader.")
 
 	else if(href_list["makecultist"] || href_list["makecultistleader"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
+		if(!istype(human))
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
@@ -899,17 +899,17 @@
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-			preset.load_race(H)
-			preset.load_status(H, hive.hivenumber)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
+			preset.load_race(human)
+			preset.load_status(human, hive.hivenumber)
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(human)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
-			preset.load_race(H)
-			preset.load_status(H, hive.hivenumber)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
+			preset.load_race(human)
+			preset.load_status(human, hive.hivenumber)
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(human)] into a cultist leader for [hive.name].")
 
-		H.faction = hive.internal_faction
+		human.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_ADMIN)) return
@@ -1047,22 +1047,22 @@
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN)) return
 
-		var/mob/living/carbon/human/H = locate(href_list["makealien"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["makealien"])
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		usr.client.cmd_admin_alienize(H)
+		usr.client.cmd_admin_alienize(human)
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN)) return
 
-		var/mob/living/carbon/H = locate(href_list["changehivenumber"])
-		if(!istype(H))
+		var/mob/living/carbon/human = locate(href_list["changehivenumber"])
+		if(!istype(human))
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/")
 			return
 		if(usr.client)
-			usr.client.cmd_admin_change_their_hivenumber(H)
+			usr.client.cmd_admin_change_their_hivenumber(human)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN)) return
@@ -1070,9 +1070,9 @@
 		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
 			return
 
-		var/mob/H = locate(href_list["makeyautja"])
+		var/mob/human = locate(href_list["makeyautja"])
 
-		if(!istype(H))
+		if(!istype(human))
 			to_chat(usr, "This can only be used on mobs. How did you even do this?")
 			return
 
@@ -1095,11 +1095,11 @@
 		spawn(0)
 			M.gender = y_gend
 			M.regenerate_icons()
-			message_admins("[key_name(usr)] made [H] into a Yautja, [M.real_name].")
-			if(H.mind)
-				H.mind.transfer_to(M)
+			message_admins("[key_name(usr)] made [human] into a Yautja, [M.real_name].")
+			if(human.mind)
+				human.mind.transfer_to(M)
 			else
-				M.key = H.key
+				M.key = human.key
 				if(M.client) M.client.change_view(GLOB.world_view_size)
 
 			if(M.skills)
@@ -1109,8 +1109,8 @@
 			M.change_real_name(M, y_name)
 			M.name = "Unknown" // Yautja names are not visible for oomans
 
-			if(H)
-				qdel(H) //May have to clear up round-end vars and such....
+			if(human)
+				qdel(human) //May have to clear up round-end vars and such....
 
 		return
 
@@ -1198,8 +1198,8 @@
 		if(!check_rights(R_MOD))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
-		if(!ishuman(H))
+		var/mob/living/carbon/human/human = locate(href_list["adminspawncookie"])
+		if(!ishuman(human))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
@@ -1210,9 +1210,9 @@
 		var/obj/item/reagent_container/food/snacks/snack
 		switch(cookie_type)
 			if("cookie")
-				snack = new /obj/item/reagent_container/food/snacks/cookie(H.loc)
+				snack = new /obj/item/reagent_container/food/snacks/cookie(human.loc)
 			if("random fortune cookie")
-				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc)
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(human.loc)
 			if("custom fortune cookie")
 				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customisation", list("Random", "Custom", "None"))
 				if(!fortune_text)
@@ -1231,13 +1231,13 @@
 				if(fortune_text == "None" && fortune_numbers == "None")
 					to_chat(usr, "No fortune provided, Give Cookie code crumbled!")
 					return
-				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc, fortune_text, fortune_numbers)
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(human.loc, fortune_text, fortune_numbers)
 
 		if(!snack)
 			error("Give Cookie code crumbled!")
-		H.put_in_hands(snack)
-		message_admins("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
-		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
+		human.put_in_hands(snack)
+		message_admins("[key_name(human)] got their [cookie_type], spawned by [key_name(src.owner)]")
+		to_chat(human, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["adminalert"])
 		if(!check_rights(R_MOD))
@@ -1247,52 +1247,52 @@
 		usr.client.cmd_admin_alert_message(M)
 
 	else if(href_list["CentcommReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
+		var/mob/living/carbon/human/human = locate(href_list["CentcommReply"])
 
-		if(!istype(H))
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		//unanswered_distress -= H
+		//unanswered_distress -= human
 
-		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
+		if(!human.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via their headset.","Outgoing message from USCM", "")
 		if(!input)
 			return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
-		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
+		to_chat(src.owner, "You sent [input] to [human] via a secure channel.")
+		log_admin("[src.owner] replied to [key_name(human)]'s USCM message with the message [input].")
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
-		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
+				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(human)]'s USCM message with: \blue \")[input]\"</b>"))
+		to_chat(human, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
-		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
-		if(!istype(H))
+		var/mob/living/carbon/human/human = locate(href_list["SyndicateReply"])
+		if(!istype(human))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
-		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
+		if(!human.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via their headset.","Outgoing message from The Syndicate", "")
 		if(!input)
 			return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
-		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
-		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+		to_chat(src.owner, "You sent [input] to [human] via a secure channel.")
+		log_admin("[src.owner] replied to [key_name(human)]'s Syndicate message with the message [input].")
+		to_chat(human, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["UpdateFax"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 		fax.update_departments()
 
 	else if(href_list["PressFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["PressFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["PressFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
@@ -1301,7 +1301,7 @@
 		var/organization_type = ""
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Press", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Press", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1312,7 +1312,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Press", "") as message|null
 					if(!addressed_to)
@@ -1370,12 +1370,12 @@
 						P.stamps += "<HR><i>This paper has been stamped by the Free Press Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["USCMFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
@@ -1383,7 +1383,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1394,7 +1394,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from USCM", "") as message|null
 					if(!addressed_to)
@@ -1453,12 +1453,12 @@
 						P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["WYFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["WYFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
@@ -1466,7 +1466,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland-Yutani", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1477,7 +1477,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weyland-Yutani", "") as message|null
 					if(!addressed_to)
@@ -1535,12 +1535,12 @@
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["TWEFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["TWEFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["TWEFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
@@ -1548,7 +1548,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from TWE", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from TWE", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1559,7 +1559,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from TWE", "") as message|null
 					if(!addressed_to)
@@ -1616,12 +1616,12 @@
 						P.stamps += "<HR><i>This paper has been stamped by the Three World Empire Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["UPPFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["UPPFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["UPPFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
@@ -1629,7 +1629,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from UPP", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from UPP", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1640,7 +1640,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from UPP", "") as message|null
 					if(!addressed_to)
@@ -1697,12 +1697,12 @@
 						P.stamps += "<HR><i>This paper has been stamped by the Union of Progressive Peoples Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["CLFFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CLFFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["CLFFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
@@ -1710,7 +1710,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CLF", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CLF", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1721,7 +1721,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from CLF", "") as message|null
 					if(!addressed_to)
@@ -1778,12 +1778,12 @@
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Colonial Liberation Front Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["CMBFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CMBFaxReply"])
+		var/mob/living/carbon/human/human = locate(href_list["CMBFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
@@ -1791,7 +1791,7 @@
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
@@ -1802,7 +1802,7 @@
 				var/addressed_to = ""
 				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
-					addressed_to = "[H.real_name]"
+					addressed_to = "[human.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 					if(!addressed_to)
@@ -1860,7 +1860,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(human)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 

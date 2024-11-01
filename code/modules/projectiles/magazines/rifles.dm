@@ -117,13 +117,6 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/rifle/m41aMK1/pve
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 99 rounds."
-	max_rounds = 99
-
-/obj/item/ammo_magazine/rifle/m41aMK1/ap/pve
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 99 rounds. This one contains AP bullets."
-	max_rounds = 99
 //-------------------------------------------------------
 //M4RA, l42 reskin, same stats as before but different, lore friendly, shell.
 

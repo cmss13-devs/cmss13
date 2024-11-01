@@ -8302,12 +8302,6 @@
 "bev" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_two)
-"bew" = (
-/obj/structure/machinery/chem_dispenser/corpsman{
-	pixel_y = 3
-	},
-/turf/open/floor/almayer/orange,
-/area/almayer/squads/bravo)
 "bez" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -37954,7 +37948,8 @@
 	name = "ship-grade camera";
 	dir = 8
 	},
-/turf/open/floor/almayer/sterile_green_side/east,
+/obj/structure/machinery/gel_refiller,
+/turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "loV" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -70122,9 +70117,11 @@
 /turf/open/floor/almayer/uscm/directional/southeast,
 /area/almayer/command/cic)
 "xMF" = (
-/obj/structure/machinery/gel_refiller,
 /obj/structure/machinery/status_display{
 	pixel_x = 32
+	},
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
@@ -112700,7 +112697,7 @@ bnt
 bpG
 brs
 aRT
-bew
+aVf
 aQL
 atH
 dAm

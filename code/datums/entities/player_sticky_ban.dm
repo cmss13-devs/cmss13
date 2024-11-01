@@ -132,6 +132,17 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"linked_stickyban",
 	)
 
+/proc/get_player_is_alt(ckey)
+	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("ckey", DB_EQUALS, ckey))
+	if(!length(alts))
+		return FALSE
+
+	var/ckeys = list()
+	for(var/datum/view_record/known_alt/alt as anything in alts)
+		ckeys += alt.player_ckey
+
+	return ckeys
+
 /client/proc/add_known_alt()
 	set name = "Add Known Alt"
 	set category = "Admin.Alt"
@@ -143,6 +154,13 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/datum/entity/player/player = get_player_from_key(player_ckey)
 	if(!istype(player))
 		return
+
+	var/existing_alts = get_player_is_alt(player_ckey)
+	if(existing_alts)
+		var/confirm = tgui_alert(src, "Primary Ckey [player_ckey] is already an alt for [english_list(existing_alts)].", "Primary Ckey", list("Confirm", "Cancel"))
+
+		if(confirm != "Confirm")
+			return
 
 	var/whitelist_to_add = ckey(tgui_input_text(src, "What is the Ckey that should be added to known alts?", "Alt Ckey"))
 	if(!whitelist_to_add)
@@ -168,6 +186,13 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/datum/entity/player/player = get_player_from_key(player_ckey)
 	if(!istype(player))
 		return
+
+	var/existing_alts = get_player_is_alt(player.id)
+	if(existing_alts)
+		var/confirm = tgui_alert(src, "Primary Ckey [player_ckey] is already an alt for [english_list(existing_alts)].", "Primary Ckey", list("Confirm", "Cancel"))
+
+		if(confirm != "Confirm")
+			return
 
 	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("player_id", DB_EQUALS, player.id))
 	if(!length(alts))

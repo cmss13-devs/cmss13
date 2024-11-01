@@ -18,8 +18,8 @@
 	deevolves_to = list("Larva")
 	acid_level = 1
 
-	tackle_min = 3
-	tackle_max = 3
+	tackle_min = 4
+	tackle_max = 4
 	tackle_chance = 50
 	tacklestrength_min = 4
 	tacklestrength_max = 4
@@ -49,7 +49,6 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
-		/datum/action/xeno_action/activable/hibernate, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(

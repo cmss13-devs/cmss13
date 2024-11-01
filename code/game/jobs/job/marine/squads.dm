@@ -262,7 +262,7 @@
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
 	radio_freq = UPP_FREQ
-  list/roles_cap = list(
+	list/roles_cap = list(
 		JOB_UPP_ENGI = 3,
 		JOB_UPP_MEDIC = 4,
 		JOB_UPP_SMARTGUN = 1,

@@ -2448,6 +2448,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/yautja_grounds)
+"Gv" = (
+/obj/effect/alien/weeds/node/feral,
+/turf/open/gm/dirt,
+/area/yautja_grounds/caves)
 "Gz" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -2899,6 +2903,10 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
+/area/yautja_grounds)
+"NS" = (
+/obj/effect/alien/weeds/node/feral,
+/turf/open/gm/dirt,
 /area/yautja_grounds)
 "NT" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -10463,7 +10471,7 @@ XX
 kl
 OB
 OB
-OB
+NS
 es
 OB
 kz
@@ -12999,7 +13007,7 @@ hj
 hj
 cm
 cm
-cm
+Gv
 cm
 cm
 cm
@@ -13303,7 +13311,7 @@ cm
 cm
 cm
 cm
-cm
+Gv
 cm
 cm
 cm
@@ -13397,7 +13405,7 @@ cm
 cm
 cm
 cm
-cm
+Gv
 cm
 cm
 cm
@@ -13605,7 +13613,7 @@ cm
 cm
 cm
 cm
-cm
+Gv
 cm
 cm
 cm
@@ -13890,7 +13898,7 @@ hj
 hj
 cm
 cm
-cm
+Gv
 cm
 cm
 cm
@@ -14297,7 +14305,7 @@ cm
 cm
 cm
 cm
-cm
+Gv
 cm
 cm
 hj
@@ -14391,7 +14399,7 @@ cm
 cm
 cm
 cm
-cm
+Gv
 cm
 cm
 cm

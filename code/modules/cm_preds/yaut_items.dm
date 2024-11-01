@@ -532,6 +532,7 @@
 
 	to_chat(user, SPAN_NOTICE("you choose [choice] as the hunting ground."))
 	message_all_yautja("[usr.real_name] Has chosen [choice] as the new hunting ground")
+	message_admins(FONT_SIZE_LARGE("ALERT: [usr.real_name] ([user.key]) spawned [choice] (hunting grounds)"))
 	hunting_ground_activated = TRUE
 	SSmapping.lazy_load_template(potential_hunting_grounds[choice])
 
@@ -578,8 +579,8 @@
 
 	to_chat(user, SPAN_NOTICE("you choose [choice] as your prey."))
 	message_all_yautja("[usr.real_name] Has chosen [choice] as their prey")
-	message_admins(FONT_SIZE_MEDIUM("ALERT: [user] ([user.key]) triggered [choice] inside the hunting grounds"))
-	SSticker.mode.get_specific_call(potential_prey[choice])
+	message_admins(FONT_SIZE_LARGE("ALERT: [usr.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
+	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
 	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
 
 //=================//\\=================\\

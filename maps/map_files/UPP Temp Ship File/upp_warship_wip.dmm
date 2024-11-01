@@ -30,18 +30,10 @@
 	base_lighting_alpha = 0
 	})
 "acD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/drinkingglasses{
-	pixel_y = 8
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,2"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat/plate,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "acI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -63,6 +55,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"adj" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,3"
+	},
+/area/space)
 "adr" = (
 /obj/structure/machinery/door_control{
 	id = "BORIS Exit";
@@ -285,6 +282,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ajn" = (
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "ajR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/red{
@@ -329,7 +329,7 @@
 	vector_x = 1;
 	vector_y = 91
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -410,6 +410,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"apX" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 8;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "apY" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -577,6 +584,20 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"atR" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/strata,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"aui" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "aus" = (
 /obj/structure/machinery/fuelcell_recycler,
 /turf/open/floor/prison/floor_marked,
@@ -594,6 +615,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"auE" = (
+/turf/closed/shuttle/lifeboat,
+/area/space)
 "awt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/frame/light_fixture,
@@ -760,6 +784,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"azo" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Command Dining Hall";
+	dir = 1;
+	req_access = list(240)
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "azC" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -963,6 +996,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -1046,6 +1080,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"aIx" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	req_access = list(240)
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "UPP CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "aJp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -1193,18 +1238,9 @@
 	base_lighting_alpha = 0
 	})
 "aMh" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 8;
-	invisibility = 101
-	},
-/turf/open/floor/wood/ship,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/effect/decal/floor_symbol/westface,
+/turf/open/floor/strata/floor2,
+/area/space)
 "aMv" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -1531,6 +1567,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"aVO" = (
+/turf/open/shuttle/escapepod/floor1/east,
+/area/space)
 "aWG" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1543,17 +1582,9 @@
 	})
 "aYy" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/faxmachine{
-	target_department = "UPP High Command";
-	name = "UPP Command Fax Machine";
-	department = "Command Briefing Room";
-	network = "UPP Encrypted Network"
-	},
+/obj/item/device/flashlight/lamp/green,
 /turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "aYz" = (
 /obj/structure/machinery/cm_vending/gear/vehicle_crew,
 /turf/open/floor/corsat/cargo,
@@ -1711,12 +1742,12 @@
 	base_lighting_alpha = 0
 	})
 "bfG" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4;
+	name = "pilot seat"
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "bgf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -1887,14 +1918,13 @@
 	base_lighting_alpha = 0
 	})
 "blm" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
+/obj/effect/projector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
 	},
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/almayer/no_build/plate,
+/area/space)
 "blw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2076,6 +2106,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"btb" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/space)
 "btf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -2503,6 +2539,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bKC" = (
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/space)
 "bKR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
@@ -2514,6 +2562,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bKT" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "bKX" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -2581,6 +2640,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bNT" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/space)
 "bNV" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/prison/darkyellow2/northeast,
@@ -2598,6 +2663,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bOt" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 15;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "bOB" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer/silver,
@@ -2814,12 +2886,10 @@
 	base_lighting_alpha = 0
 	})
 "bUV" = (
-/obj/structure/bed/chair/comfy{
+/obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/carpet,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -2850,6 +2920,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bVC" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Command Dining Hall";
+	dir = 1;
+	req_access = list(240)
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "bVO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/coffin,
@@ -2939,6 +3018,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bYa" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	pixel_y = 2
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "bYr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/spiralplate,
@@ -3390,15 +3482,8 @@
 	base_lighting_alpha = 0
 	})
 "cry" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/chem_dispenser/soda{
-	pixel_y = 5
-	},
-/turf/open/floor/corsat/plate,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/wood/ship,
+/area/space)
 "crZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3535,6 +3620,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"czk" = (
+/obj/structure/machinery/chem_dispenser/soda/beer,
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood/ship,
+/area/space)
 "czD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
 /obj/structure/machinery/light{
@@ -3866,12 +3956,7 @@
 	base_lighting_alpha = 0
 	})
 "cKp" = (
-/obj/structure/filingcabinet{
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet{
-	pixel_x = 8
-	},
+/obj/structure/stairs,
 /turf/open/floor/corsat/plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -4132,6 +4217,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"cXl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/strata,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "cXB" = (
 /turf/open/floor/strata/orange_edge{
 	dir = 4
@@ -4189,6 +4287,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dbP" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "dbQ" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -4404,6 +4510,20 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dlT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Command Fax Machine";
+	department = "1VAN/3 Core Room";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/space)
 "dlZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -4513,6 +4633,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dqG" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,1"
+	},
+/area/space)
 "dsj" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -4551,14 +4676,24 @@
 	base_lighting_alpha = 0
 	})
 "dsZ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
-/turf/open/floor/wood/ship,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dtu" = (
+/turf/open/floor/almayer/plating_striped/north,
+/area/space)
+"dtw" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "dtE" = (
 /obj/structure/machinery/power/reactor,
 /obj/structure/machinery/light{
@@ -4693,15 +4828,17 @@
 	base_lighting_alpha = 0
 	})
 "dwU" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
 	},
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen,
+/turf/open/floor/almayer/aicore/no_build,
+/area/space)
 "dxa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -4781,13 +4918,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/sign/safety/bridge{
-	pixel_y = 32
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 32;
-	pixel_x = 15
-	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -4831,6 +4962,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dBm" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "window2"
+	},
+/area/space)
 "dBx" = (
 /obj/structure/platform{
 	dir = 4;
@@ -5026,6 +5162,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dHC" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D4";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
+"dHV" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 1
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "dIl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -5262,15 +5411,12 @@
 	base_lighting_alpha = 0
 	})
 "dOQ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/corsat/plate,
+/area/space)
 "dOZ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -5317,6 +5463,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dPu" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
 "dQk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -5409,6 +5559,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dSB" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,1"
+	},
+/area/space)
 "dSC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/girder,
@@ -5417,6 +5572,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dSU" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "1,0"
+	},
+/turf/template_noop,
+/area/space)
 "dTp" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Second Officers Quarters";
@@ -5426,6 +5587,20 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/marked,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"dTx" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -5663,6 +5838,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"dZf" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,1"
+	},
+/area/space)
 "dZy" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -5957,6 +6137,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"emd" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "emx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -6107,6 +6297,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"euA" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/space)
 "euJ" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -6123,6 +6319,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"evn" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,6"
+	},
+/area/space)
+"evo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/closed/wall/almayer/aicore/reinforced,
+/area/space)
 "evp" = (
 /obj/item/stack/rods{
 	pixel_x = -13;
@@ -6133,6 +6341,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ewc" = (
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "ewT" = (
 /obj/structure/machinery/vending/cigarette,
 /obj/structure/disposalpipe/junction{
@@ -6490,6 +6708,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"eHr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "eHx" = (
 /obj/structure/pipes/vents/pump/on{
 	dir = 1
@@ -7103,6 +7327,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fbT" = (
+/obj/docking_port/mobile/crashable/lifeboat/starboard,
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,0"
+	},
+/turf/template_noop,
+/area/space)
 "fbW" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -7195,6 +7426,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ffl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "ffE" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
@@ -7383,16 +7620,17 @@
 	base_lighting_alpha = 0
 	})
 "fiP" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/microwave{
-	pixel_x = -2;
-	pixel_y = 7
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "umbilical wall"
 	},
-/turf/open/floor/corsat/plate,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/upp_hull/outerhull_dir{
+	dir = 4
+	},
+/area/space)
 "fiQ" = (
 /obj/structure/machinery/light,
 /obj/structure/disposalpipe/segment{
@@ -7413,6 +7651,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fjE" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "16,0"
+	},
+/area/space)
 "fjI" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
@@ -7451,6 +7694,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fjW" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "fkc" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/corsat/plate,
@@ -7522,6 +7774,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"flU" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/space)
 "fmx" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -7604,13 +7863,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fpC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,2"
+	},
+/area/space)
 "fpK" = (
-/obj/structure/bed/chair/comfy/orange,
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/closed/wall/upp,
+/area/space)
 "fpR" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/item/clothing/head/ushanka{
@@ -7737,6 +7997,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fvk" = (
+/turf/open/floor/strata/multi_tiles,
+/area/space)
 "fvD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -7850,6 +8113,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fzS" = (
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "fzT" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer3/laptop/secure_data,
@@ -7902,6 +8168,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fCp" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,6"
+	},
+/area/space)
 "fCy" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -7913,6 +8184,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fCB" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "12,0"
+	},
+/area/space)
 "fCS" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -8017,6 +8293,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fGl" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "26,1"
+	},
+/turf/template_noop,
+/area/space)
 "fGx" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/floor_marked,
@@ -8182,6 +8464,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fPu" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "fQg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -8227,6 +8519,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fSj" = (
+/turf/open/floor/upp_hull/outerhull_dir/northeast,
+/area/space)
 "fSN" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/corsat/marked,
@@ -8264,7 +8559,7 @@
 	vector_x = 1;
 	vector_y = 91
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -8321,6 +8616,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fWH" = (
+/obj/effect/decal/floor_symbol/westface/west,
+/turf/open/floor/strata/floor2,
+/area/space)
 "fXs" = (
 /obj/item/tool/weldingtool{
 	pixel_y = 21
@@ -8448,6 +8747,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gaI" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Conference Room";
+	dir = 1;
+	req_access = list(240)
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/corsat/marked,
+/area/space)
 "gbg" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras/almayer_network{
@@ -8528,6 +8837,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gec" = (
+/turf/open/floor/upp_hull/outerhull_dir/southeast,
+/area/space)
+"gel" = (
+/obj/effect/decal/floor_symbol/westface/northeast,
+/turf/open/floor/strata/floor2,
+/area/space)
 "geY" = (
 /obj/structure/platform{
 	dir = 1
@@ -9048,6 +9364,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gBd" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,1"
+	},
+/area/space)
 "gBe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -9224,6 +9545,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gGJ" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,2"
+	},
+/turf/template_noop,
+/area/space)
 "gGK" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9411,13 +9738,8 @@
 	base_lighting_alpha = 0
 	})
 "gLJ" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/device/flashlight/lamp/green,
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/closed/wall/almayer/aicore/reinforced,
+/area/space)
 "gMQ" = (
 /obj/structure/stairs{
 	dir = 1
@@ -9763,6 +10085,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gVJ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D2";
+	throw_dir = 1
+	},
+/turf/open/shuttle/lifeboat/test_floor4,
+/area/space)
 "gWk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -9776,6 +10105,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gWs" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "gWH" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240)
@@ -9955,7 +10290,10 @@
 	base_lighting_alpha = 0
 	})
 "hbD" = (
-/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -18
+	},
 /turf/open/floor/carpet,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -10193,6 +10531,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hfY" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,0"
+	},
+/area/space)
 "hgS" = (
 /obj/structure/barricade/handrail/medical,
 /turf/open/floor/almayer/silvercorner/north,
@@ -10271,6 +10614,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hiy" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "hiB" = (
 /obj/effect/decal/floor_symbol/westface/north,
 /turf/open/floor/strata/floor2,
@@ -10439,6 +10789,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hpt" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "hqx" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 8;
@@ -10737,6 +11094,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hBg" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,2"
+	},
+/area/space)
 "hBL" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -10940,6 +11302,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hII" = (
+/turf/open/shuttle/lifeboat/plating_striped,
+/area/space)
 "hJd" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "upp_down1";
@@ -11122,6 +11487,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hNX" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D3";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "hOz" = (
 /obj/structure/machinery/line_nexter,
 /turf/open/floor/strata/multi_tiles,
@@ -11146,6 +11518,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hOR" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/safety/bridge{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = 32;
+	pixel_x = 15
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "hOX" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -11474,6 +11859,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hWX" = (
+/obj/structure/window/framed/upp/reinforced,
+/turf/open/floor/plating,
+/area/space)
 "hXL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime2{
@@ -11826,6 +12215,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iiV" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
+"ijn" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,5"
+	},
+/area/space)
 "ijo" = (
 /obj/effect/projector{
 	name = "upp_down1";
@@ -11904,6 +12304,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ilN" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,4"
+	},
+/area/space)
 "ilP" = (
 /obj/structure/bed/chair,
 /turf/open/floor/strata,
@@ -11943,6 +12348,20 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"imR" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -19;
+	pixel_x = -9
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -19;
+	pixel_x = 10
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/space)
 "imU" = (
 /obj/structure/platform{
 	layer = 2.9;
@@ -12125,6 +12544,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iqm" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/carpet,
+/area/space)
+"iqQ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/overwatch/upp,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "irh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
@@ -12259,6 +12690,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ivD" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "25,6"
+	},
+/turf/template_noop,
+/area/space)
+"ivR" = (
+/obj/structure/pipes/vents/pump/on{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
 "iwu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -12415,6 +12858,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iCj" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor,
+/turf/open/floor/corsat/marked,
+/area/space)
 "iCE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/supplies/mre,
@@ -12552,6 +12999,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iKc" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "iKx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -13077,6 +13531,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jed" = (
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/space)
 "jeQ" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
@@ -13190,6 +13651,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jiN" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/carpet,
+/area/space)
 "jjt" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security{
@@ -13263,6 +13728,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jlv" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,1"
+	},
+/area/space)
 "jlx" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/medical_supply_link,
@@ -13447,6 +13917,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jrp" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,4"
+	},
+/area/space)
 "jrB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -13458,6 +13933,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -13502,6 +13978,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jsX" = (
+/turf/open/floor/almayer/aicore/no_build,
+/area/space)
 "jtG" = (
 /turf/open/floor/upp_hull/outerhull_dir,
 /area/space)
@@ -13554,6 +14033,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jup" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,1"
+	},
+/area/space)
 "jvv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/hotdog{
@@ -13844,13 +14328,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jCN" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/donut_box,
+/turf/open/floor/wood/ship,
+/area/space)
 "jCP" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "upp_up1";
 	vector_x = 1;
 	vector_y = 91
 	},
-/turf/open/floor/plating/almayer/no_build,
+/turf/open/floor/strata/floor2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -14182,14 +14671,8 @@
 	base_lighting_alpha = 0
 	})
 "jMD" = (
-/obj/structure/bed/chair/comfy{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/strata/floor2,
+/area/space)
 "jNo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bunks"
@@ -14221,6 +14704,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jOv" = (
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/carpet,
+/area/space)
 "jOx" = (
 /obj/structure/plasticflaps,
 /obj/structure/machinery/conveyor{
@@ -14255,6 +14742,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jQx" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/carpet,
+/area/space)
 "jRd" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/disposal,
@@ -14352,6 +14846,20 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jTh" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "jTl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -14436,6 +14944,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jWt" = (
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "jWu" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -15006,6 +15517,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kot" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,4"
+	},
+/turf/template_noop,
+/area/space)
 "koE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -15036,6 +15553,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kpI" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "kqc" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -15188,6 +15709,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kvZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/carpet,
+/area/space)
 "kws" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -15325,6 +15850,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kzg" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/space)
 "kAx" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -15404,6 +15937,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kDh" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "kDp" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -16002,10 +16542,14 @@
 	base_lighting_alpha = 0
 	})
 "kVd" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = 8
 	},
-/turf/closed/wall/almayer/outer,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
 /area/space)
 "kVg" = (
 /obj/effect/decal/warning_stripes{
@@ -16016,6 +16560,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kWp" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
+/turf/open/shuttle/lifeboat,
+/area/space)
 "kWM" = (
 /obj/item/storage/firstaid/adv/empty{
 	pixel_x = 8;
@@ -16065,15 +16613,10 @@
 	base_lighting_alpha = 0
 	})
 "kXM" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 4
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,4"
 	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "kXR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -16132,6 +16675,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kYW" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,5"
+	},
+/area/space)
+"kZv" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D1";
+	throw_dir = 1
+	},
+/turf/open/shuttle/lifeboat/test_floor4,
+/area/space)
 "lae" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type73,
@@ -16572,6 +17127,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lra" = (
+/turf/template_noop,
+/area/space)
 "lri" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
@@ -16640,6 +17198,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ltx" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "umbilical wall"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/upp_hull/outerhull_dir{
+	dir = 8
+	},
+/area/space)
 "ltW" = (
 /obj/structure/surface/table/almayer,
 /obj/item/parachute{
@@ -16692,6 +17262,27 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lvZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	desc = "A premium double-malt whiskey, this bottle was gifted to the Captain of the USS Almayer after the completion of the ship's space trials by the VADM. himself.";
+	pixel_x = 3;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "lxh" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -16765,6 +17356,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lCc" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/lifeboat{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "lDs" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
@@ -17165,6 +17763,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lQs" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/tray,
+/turf/open/floor/wood/ship,
+/area/space)
 "lQK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
@@ -17498,6 +18104,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"mbD" = (
+/obj/structure/machinery/chem_dispenser/soda,
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood/ship,
+/area/space)
 "mbE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -17687,7 +18298,7 @@
 	pixel_y = 8;
 	pixel_x = 9
 	},
-/turf/open/floor/wood/ship,
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -18033,6 +18644,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"myc" = (
+/turf/open/floor/almayer/plating_striped,
+/area/space)
 "myd" = (
 /obj/structure/machinery/cryopod/right{
 	dir = 1
@@ -18462,6 +19076,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"mNO" = (
+/obj/structure/bed/chair/comfy/orange{
+	pixel_x = -16
+	},
+/turf/open/floor/carpet,
+/area/space)
 "mNS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18801,6 +19421,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"mXz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "mYe" = (
 /obj/structure/surface/rack,
 /obj/item/mortar_shell/he,
@@ -18897,8 +19521,7 @@
 	base_lighting_alpha = 0
 	})
 "ncC" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/open/floor/carpet,
+/turf/open/floor/almayer/no_build,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -18965,6 +19588,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nfo" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,5"
+	},
+/area/space)
 "nft" = (
 /obj/structure/prop/almayer/cannon_cable_connector,
 /obj/structure/blocker/invisible_wall,
@@ -19063,6 +19691,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nkT" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "1,6"
+	},
+/turf/template_noop,
+/area/space)
 "nkU" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /obj/item/reagent_container/glass/bucket/janibucket{
@@ -19305,6 +19939,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ntD" = (
+/turf/open/floor/carpet,
+/area/space)
+"nud" = (
+/obj/structure/bed/chair/comfy/orange,
+/turf/open/floor/carpet,
+/area/space)
 "nuo" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -19760,6 +20401,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nLw" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "nMh" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -19910,7 +20557,24 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"nRE" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	pixel_y = 2
+	},
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -20001,6 +20665,24 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nVN" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = 6
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "nWl" = (
 /obj/structure/prop/static_tank/water,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -20008,13 +20690,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nWp" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/space)
 "nWu" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/kitchen/tray,
-/obj/item/tool/kitchen/tray,
-/obj/item/tool/kitchen/tray,
-/obj/item/tool/kitchen/tray,
-/turf/open/floor/wood/ship,
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -20063,7 +20748,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/turf/open/floor/wood/ship,
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -20077,6 +20762,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nZP" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,6"
+	},
+/area/space)
 "nZZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -20355,6 +21045,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"okL" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -18
+	},
+/turf/open/floor/carpet,
+/area/space)
+"olc" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,0"
+	},
+/area/space)
 "oli" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -20421,14 +21123,13 @@
 	base_lighting_alpha = 0
 	})
 "ome" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/effect/projector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/almayer/no_build,
+/area/space)
 "omj" = (
 /obj/docking_port/stationary/marine_dropship/upp{
 	name = "Rostock Hanger bay"
@@ -20472,15 +21173,8 @@
 	base_lighting_alpha = 0
 	})
 "ooE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/flora/pottedplant{
-	pixel_y = 2
-	},
-/turf/open/floor/corsat/plate,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/shuttle/lifeboat/plating_striped/north,
+/area/space)
 "opt" = (
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/event/metal/dynamic{
@@ -20571,6 +21265,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oub" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,0"
+	},
+/area/space)
 "oul" = (
 /obj/structure/bed/chair/comfy/ares,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -20579,6 +21278,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ouI" = (
+/turf/open/shuttle/lifeboat/test_floor4,
+/area/space)
 "ouT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -20924,6 +21626,17 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkbrown2,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"oEF" = (
+/obj/structure/stairs,
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -21349,6 +22062,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oQh" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "oQk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -21525,6 +22245,21 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oUF" = (
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/projector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/space)
 "oVh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -21539,6 +22274,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"oVu" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "oVv" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/silver/north,
@@ -21664,6 +22405,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"paz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/space)
 "pbT" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -21728,6 +22475,15 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/squares,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"peO" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -21809,6 +22565,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"phb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/tool/pen,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "phh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -21956,6 +22720,7 @@
 	id = "UPP CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -21976,6 +22741,15 @@
 	id_tag = "mining_outpost_pump"
 	},
 /turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"pkW" = (
+/obj/structure/bed/chair/comfy/orange{
+	pixel_x = -16
+	},
+/turf/open/floor/carpet,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -22028,17 +22802,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"pnZ" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin{
-	pixel_y = 6
+"pnq" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,5"
 	},
-/obj/item/tool/pen,
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
+"pnZ" = (
+/obj/structure/stairs,
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "poe" = (
 /turf/open/floor/strata/green3{
 	dir = 1
@@ -22047,6 +22823,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pol" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,4"
+	},
+/area/space)
 "poD" = (
 /turf/open/floor/corsat/lightplate,
 /area/event/metal/dynamic{
@@ -22071,6 +22852,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ppF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/closed/wall/almayer/aicore/reinforced,
+/area/space)
 "ppK" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -22125,8 +22913,10 @@
 	base_lighting_alpha = 0
 	})
 "psc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/wood/ship,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -22215,6 +23005,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"puG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "puM" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/floor_plate,
@@ -22294,6 +23091,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pwz" = (
+/obj/effect/decal/floor_symbol/westface/southeast,
+/turf/open/floor/strata/floor2,
+/area/space)
 "pxe" = (
 /obj/structure/toilet{
 	dir = 1
@@ -22378,6 +23179,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pyM" = (
+/obj/effect/decal/floor_symbol/westface/northwest,
+/turf/open/floor/strata/floor2,
+/area/space)
 "pzC" = (
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
@@ -22569,6 +23374,38 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pFq" = (
+/obj/structure/closet/secure_closet/freezer{
+	density = 0;
+	pixel_y = 1;
+	pixel_x = 19
+	},
+/obj/item/reagent_container/food/snacks/sausage,
+/obj/item/reagent_container/food/snacks/sausage,
+/obj/item/reagent_container/food/snacks/sandwich,
+/obj/item/reagent_container/food/snacks/sandwich,
+/obj/item/reagent_container/food/snacks/sandwich,
+/obj/item/reagent_container/food/snacks/pancakes,
+/obj/item/reagent_container/food/snacks/pancakes,
+/obj/item/reagent_container/food/snacks/pastatomato,
+/obj/item/reagent_container/food/snacks/pastatomato,
+/obj/item/reagent_container/food/snacks/pastatomato,
+/obj/item/reagent_container/food/snacks/muffin,
+/obj/item/reagent_container/food/snacks/meatpie,
+/obj/item/reagent_container/food/snacks/meatpie,
+/obj/item/reagent_container/food/snacks/jelliedtoast,
+/obj/item/reagent_container/food/snacks/jelliedtoast,
+/obj/item/reagent_container/food/snacks/grilledcheese,
+/obj/item/reagent_container/food/snacks/grilledcheese,
+/obj/item/reagent_container/food/snacks/fishburger,
+/obj/item/reagent_container/food/snacks/fishburger,
+/obj/item/reagent_container/food/snacks/donut,
+/obj/item/reagent_container/food/snacks/chocolatecakeslice,
+/obj/item/reagent_container/food/snacks/chocolatecakeslice,
+/obj/item/reagent_container/food/snacks/chocolatecakeslice,
+/obj/item/reagent_container/food/snacks/cheeseburger,
+/turf/open/floor/wood/ship,
+/area/space)
 "pFA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -22748,6 +23585,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pLe" = (
+/turf/open/shuttle/lifeboat/plate,
+/area/space)
 "pLf" = (
 /obj/structure/platform/strata/metal{
 	dir = 4;
@@ -23056,16 +23896,11 @@
 	base_lighting_alpha = 0
 	})
 "pZB" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock");
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/wood/ship,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "pZH" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
@@ -23118,6 +23953,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qcq" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "qcY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -23164,6 +24005,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qfb" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "qft" = (
 /obj/structure/machinery/cm_vending/clothing/antag{
 	name = "\improper Automated Equipment Rack"
@@ -23450,12 +24297,11 @@
 	base_lighting_alpha = 0
 	})
 "qmF" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
 	dir = 8;
 	invisibility = 101
 	},
-/turf/open/floor/wood/ship,
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -23506,6 +24352,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qoV" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/carpet,
+/area/space)
 "qpJ" = (
 /obj/structure/ladder{
 	height = 1;
@@ -23546,6 +24397,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qqN" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = 8;
+	pixel_x = 9
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "qqV" = (
 /obj/structure/machinery/conveyor_switch{
 	id = "cargo_belt"
@@ -23654,6 +24517,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qvG" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/wood/ship,
+/area/space)
+"qwo" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,5"
+	},
+/turf/template_noop,
+/area/space)
 "qwB" = (
 /obj/structure/platform{
 	density = 0;
@@ -23687,6 +24560,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qyq" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/flora/pottedplant{
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "qyH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -23857,6 +24737,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qCG" = (
+/obj/structure/bed/chair/comfy{
+	pixel_x = -16
+	},
+/turf/open/floor/carpet,
+/area/space)
 "qCP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -24042,6 +24928,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qJx" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "qJB" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/event/metal/dynamic{
@@ -24279,6 +25172,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qSh" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,1"
+	},
+/area/space)
 "qSn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -24483,6 +25381,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qYT" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "qYX" = (
 /obj/structure/machinery/light,
 /obj/effect/projector{
@@ -24698,6 +25603,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rej" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,1"
+	},
+/turf/template_noop,
+/area/space)
 "rer" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm{
@@ -24719,6 +25630,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rfv" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,5"
+	},
+/area/space)
 "rfU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -24735,6 +25651,22 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"rgy" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/obj/structure/flora/pottedplant{
+	pixel_y = 2
+	},
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -25094,6 +26026,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rwm" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,0"
+	},
+/area/space)
 "rwt" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -25114,6 +26051,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rxb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "rxo" = (
 /obj/structure/machinery/prop/almayer/CICmap/upp{
 	pixel_x = 18;
@@ -25250,6 +26193,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rAP" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,2"
+	},
+/area/space)
 "rAT" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -25440,6 +26388,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rLM" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,2"
+	},
+/area/space)
 "rNs" = (
 /obj/structure/prop/almayer/cannon_cable_connector,
 /obj/structure/machinery/light/small{
@@ -25537,6 +26490,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rRI" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"rRS" = (
+/obj/structure/pipes/vents/pump/on,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "rSu" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -25588,6 +26553,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rUL" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "rVz" = (
 /obj/structure/surface/rack,
 /obj/structure/largecrate/random/mini/small_case,
@@ -25596,6 +26567,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rVA" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,3"
+	},
+/area/space)
 "rVT" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -25915,6 +26891,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"seV" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,4"
+	},
+/area/space)
 "seY" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -25951,6 +26932,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sfE" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "sht" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -26075,6 +27065,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -26181,16 +27172,9 @@
 	base_lighting_alpha = 0
 	})
 "soH" = (
-/obj/structure/machinery/cm_vending/sorted/marine_food{
-	density = 0;
-	pixel_x = -16;
-	pixel_y = 17
-	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/stairs,
+/turf/open/floor/corsat/plate,
+/area/space)
 "sps" = (
 /obj/structure/machinery/light,
 /obj/item/prop/almayer/comp_open,
@@ -26243,6 +27227,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sqF" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/donut_box,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "srR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -26257,6 +27246,21 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ssf" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "26,5"
+	},
+/turf/template_noop,
+/area/space)
+"stz" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "stH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -26529,13 +27533,9 @@
 	base_lighting_alpha = 0
 	})
 "sFf" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/computer/overwatch/upp,
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/window/framed/upp/hull,
+/turf/open/floor/plating,
+/area/space)
 "sFn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -26546,6 +27546,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sFR" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "sGj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -26557,25 +27566,17 @@
 	base_lighting_alpha = 0
 	})
 "sGT" = (
-/obj/structure/machinery/light{
-	dir = 8
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,6"
 	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "sHe" = (
 /obj/effect/projector{
 	name = "upp_up1";
 	vector_x = 1;
 	vector_y = 91
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -26831,6 +27832,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sOV" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating,
+/area/space)
 "sPy" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/prison/floor_marked/west,
@@ -27029,6 +28035,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sWF" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,6"
+	},
+/area/space)
 "sXi" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/warning_stripes{
@@ -27058,12 +28069,23 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sYk" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	density = 0;
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "sYA" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sZn" = (
+/turf/open/floor/upp_hull/outerhull_dir/east,
+/area/space)
 "sZo" = (
 /obj/item/trash/uscm_mre{
 	name = "\improper crumbled UPP MRE";
@@ -27189,6 +28211,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tfQ" = (
+/turf/closed/shuttle/lifeboat/transparent,
+/area/space)
 "tgF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -27300,6 +28325,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tjh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "tjH" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
@@ -27430,6 +28462,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tmC" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/space)
 "tmM" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer/silverfull,
@@ -27583,14 +28621,8 @@
 	base_lighting_alpha = 0
 	})
 "tqn" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Conference Room";
-	dir = 1;
-	req_access = list(240)
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/corsat/marked,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -27740,6 +28772,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tuD" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/obj/structure/flora/pottedplant{
+	pixel_y = 2
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "tuU" = (
 /obj/structure/prop/almayer/hangar_stencil,
 /turf/open/floor/corsat/plate,
@@ -27846,6 +28891,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tzs" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/chem_dispenser/soda{
+	pixel_y = 5
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "tzt" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/warning_stripes{
@@ -28006,6 +29058,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tFU" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/space)
 "tGx" = (
 /obj/item/reagent_container/glass/bucket/janibucket{
 	pixel_x = -1;
@@ -28074,6 +29132,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tJd" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "tJS" = (
 /obj/item/stack/rods{
 	pixel_y = 17;
@@ -28112,6 +29181,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tMy" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,0"
+	},
+/area/space)
 "tMI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Rest and Relaxation Area";
@@ -28151,6 +29225,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tOF" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/microwave{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
 "tPq" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "vehicledoor";
@@ -28218,6 +29300,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tQG" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "tQM" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -28270,6 +29359,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tRV" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = 8;
+	pixel_x = 9
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "tTu" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type64,
@@ -28355,6 +29456,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tVm" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "tVp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -28374,6 +29486,16 @@
 	pixel_y = 38
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"tVA" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -28704,14 +29826,14 @@
 	base_lighting_alpha = 0
 	})
 "udv" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
+/obj/structure/stairs,
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
 	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/plating/almayer/no_build,
+/area/space)
 "udy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -28747,6 +29869,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ufr" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "ufx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/cell_stripe/west,
@@ -28836,7 +29968,7 @@
 "uiV" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/donut_box,
-/turf/open/floor/wood/ship,
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -28981,6 +30113,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"uob" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet,
+/area/space)
 "uoc" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -29022,6 +30158,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -29156,6 +30293,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"utJ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "18,0"
+	},
+/area/space)
 "utQ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -29224,6 +30366,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"uvx" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,5"
+	},
+/area/space)
 "uvz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -29312,6 +30459,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"uAE" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "uBd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -29446,6 +30599,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"uHi" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/wood/ship,
+/area/space)
 "uHu" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/almayer/aicore/glowing/no_build,
@@ -29891,6 +31048,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"uVe" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "uXX" = (
 /obj/structure/ladder{
 	height = 2;
@@ -30263,6 +31426,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vhb" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,6"
+	},
+/turf/template_noop,
+/area/space)
 "vhg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -30282,6 +31451,7 @@
 	id = "UPP CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -30377,6 +31547,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vlC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,3"
+	},
+/area/space)
 "vlM" = (
 /obj/structure/platform{
 	dir = 4;
@@ -30576,6 +31751,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vtP" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,1"
+	},
+/area/space)
 "vtQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -30735,6 +31915,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vyz" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,5"
+	},
+/area/space)
 "vzT" = (
 /obj/structure/stairs/perspective,
 /turf/open/floor/corsat/red,
@@ -30786,14 +31971,8 @@
 	base_lighting_alpha = 0
 	})
 "vCr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/shuttle/lifeboat,
+/area/space)
 "vCS" = (
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/almayer/tcomms,
@@ -30830,6 +32009,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vEi" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Command Fax Machine";
+	department = "Command Briefing Room";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "vEH" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -30883,6 +32072,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vGn" = (
+/obj/effect/decal/floor_symbol/westface/southwest,
+/turf/open/floor/strata/floor2,
+/area/space)
 "vGr" = (
 /obj/structure/cargo_container/seegson/right,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -30923,6 +32116,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vHS" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/kitchen/tray,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "vHZ" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -31215,6 +32413,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vQd" = (
+/turf/open/floor/strata,
+/area/space)
 "vQs" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/glasses/hud/health,
@@ -31291,15 +32492,8 @@
 	base_lighting_alpha = 0
 	})
 "vRQ" = (
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26
-	},
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/closed/wall/upp/reinforced/outer,
+/area/space)
 "vSf" = (
 /obj/structure/machinery/conveyor{
 	id = "cargo_belt";
@@ -31401,14 +32595,8 @@
 	base_lighting_alpha = 0
 	})
 "vTq" = (
-/obj/structure/bed/chair/comfy{
-	pixel_x = -16
-	},
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/upp_hull/outerhull_dir/north,
+/area/space)
 "vTB" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -31472,12 +32660,12 @@
 	base_lighting_alpha = 0
 	})
 "vUU" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Command Dining Hall";
 	dir = 1;
 	req_access = list(240)
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -31692,6 +32880,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"waZ" = (
+/obj/effect/decal/floor_symbol/westface/east,
+/turf/open/floor/strata/floor2,
+/area/space)
 "wbk" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/prison/bright_clean_marked,
@@ -31752,6 +32944,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wdT" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,3"
+	},
+/area/space)
+"wef" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,6"
+	},
+/area/space)
 "weh" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/strata/red1,
@@ -31975,6 +33177,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wke" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
 "wkD" = (
 /obj/structure/ladder{
 	height = 1;
@@ -32026,6 +33231,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wnu" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,3"
+	},
+/turf/template_noop,
+/area/space)
 "wnL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/west,
@@ -32126,6 +33337,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wpW" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,3"
+	},
+/area/space)
 "wqm" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -32133,6 +33349,28 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wqL" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/fancy/cigar{
+	layer = 3.04;
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/storage/fancy/cigar{
+	layer = 3.04;
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/tool/lighter/zippo{
+	pixel_y = -1;
+	pixel_x = 13
+	},
+/obj/item/tool/lighter/zippo/black{
+	pixel_y = 7;
+	pixel_x = 13
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "wqN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -32264,6 +33502,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wwM" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/space)
 "wxc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -32398,6 +33645,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wAI" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "25,0"
+	},
+/turf/template_noop,
+/area/space)
 "wAT" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
@@ -32502,6 +33755,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wDS" = (
+/turf/open/floor/almayer/aicore/glowing/no_build,
+/area/space)
 "wDZ" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/item/prop/colony/usedbandage{
@@ -32664,6 +33920,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wKP" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,6"
+	},
+/area/space)
 "wLr" = (
 /obj/structure/surface/rack,
 /obj/item/device/encryptionkey/upp/engi,
@@ -32848,18 +34109,8 @@
 	base_lighting_alpha = 0
 	})
 "wSy" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/wood/ship,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/closed/wall/upp/reinforced,
+/area/space)
 "wSP" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -33023,6 +34274,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wYg" = (
+/obj/effect/decal/floor_symbol/westface/north,
+/turf/open/floor/strata/floor2,
+/area/space)
 "wYt" = (
 /obj/structure/platform,
 /obj/structure/cable/heavyduty{
@@ -33177,12 +34432,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"xex" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+"xee" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "22,0"
 	},
-/turf/open/floor/strata/fake_wood,
+/area/space)
+"xex" = (
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/turf/open/floor/corsat/plate,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -33194,6 +34454,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xfg" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,0"
+	},
+/area/space)
 "xfq" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -33337,6 +34602,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xkz" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "xkC" = (
 /obj/structure/closet/secure_closet/freezer{
 	density = 0;
@@ -33446,6 +34719,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xmF" = (
+/obj/effect/decal/floor_symbol{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
 "xnb" = (
 /turf/open/shuttle/dropship/can_surgery,
 /area/event/metal/dynamic{
@@ -33534,12 +34813,18 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xqb" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,5"
+	},
+/area/space)
 "xqf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "upp_armory";
 	name = "\improper Armory Shutters"
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/marked,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -33684,6 +34969,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xtV" = (
+/turf/open/floor/corsat/marked,
+/area/space)
 "xun" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -33707,6 +34995,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xvh" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "11,0"
+	},
+/area/space)
 "xvl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -33748,13 +35041,9 @@
 	base_lighting_alpha = 0
 	})
 "xxx" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/device/flashlight/lamp/green,
-/turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/obj/structure/foamed_metal,
+/turf/open/floor/plating,
+/area/space)
 "xyw" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -33912,13 +35201,13 @@
 	base_lighting_alpha = 0
 	})
 "xBX" = (
-/obj/structure/bookcase{
-	icon_state = "book-5"
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/wood/ship,
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/fake_wood,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -33984,8 +35273,12 @@
 	base_lighting_alpha = 0
 	})
 "xEn" = (
-/obj/structure/pipes/vents/pump/on,
-/turf/open/floor/strata/fake_wood,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -34012,6 +35305,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xGU" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Down1";
+	vector_x = 19;
+	vector_y = -98
+	},
+/turf/open/floor/almayer/no_build,
+/area/space)
 "xHb" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -34056,6 +35357,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xIX" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/space)
 "xJh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34066,14 +35371,8 @@
 	base_lighting_alpha = 0
 	})
 "xJn" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/turf/open/floor/almayer/no_build,
+/area/space)
 "xJs" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/largecrate/random/mini/wooden{
@@ -34084,6 +35383,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xJv" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "xKG" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access = list(240);
@@ -34150,6 +35455,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xMN" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "xNe" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_edge,
@@ -34185,16 +35498,8 @@
 	})
 "xNA" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock");
-	dir = 8
-	},
 /turf/open/floor/strata/fake_wood,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
+/area/space)
 "xOh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -34436,6 +35741,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -34730,6 +36036,18 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"yhC" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -52009,13 +53327,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -52191,13 +53509,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -52373,13 +53691,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-kVd
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -52555,13 +53873,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -52737,13 +54055,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -52919,13 +54237,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53101,13 +54419,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53283,13 +54601,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53465,13 +54783,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53647,13 +54965,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53689,14 +55007,14 @@ eEU
 kTZ
 tQq
 uJU
-pPQ
 dVv
 upZ
-aMh
-pZB
-nCp
-psc
-psc
+rgy
+uMA
+uMA
+tJd
+uMA
+uMA
 qmF
 psc
 vUU
@@ -53829,13 +55147,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -53871,16 +55189,16 @@ eEU
 tyI
 aiP
 tEy
-pPQ
 cPM
 upZ
-hYa
-rmX
+peO
+qhX
 bUV
-jMD
-jMD
-jMD
-rmX
+bUV
+bUV
+bUV
+qhX
+jTl
 dFb
 dKo
 dKo
@@ -54011,13 +55329,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54053,16 +55371,16 @@ bcD
 mVG
 akY
 oKo
-pPQ
 hft
 upZ
-dsZ
-qhX
-dwU
-hbD
-hbD
-hbD
+vTQ
 rmX
+cjI
+cjI
+cjI
+cjI
+eGq
+uMA
 dFb
 uME
 uME
@@ -54193,13 +55511,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54235,16 +55553,16 @@ eEU
 slD
 nwR
 tEy
-pPQ
 vSP
 upZ
-hYa
-vTq
+vTQ
+pkW
+cjI
 hbD
+cjI
 hbD
-hbD
-hbD
-rmX
+eGq
+uMA
 uOd
 yaB
 uME
@@ -54375,13 +55693,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54417,16 +55735,16 @@ jAp
 rer
 kQV
 tEy
-pPQ
 tuh
 upZ
-hYa
+vTQ
 rmX
-blm
-blm
-blm
-blm
+puP
+puP
+puP
+puP
 rmX
+uMA
 uOd
 twv
 bkr
@@ -54557,13 +55875,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54599,10 +55917,10 @@ dKM
 cjd
 nwR
 tEy
-pPQ
 dvl
 xkC
-wSy
+nRE
+uMA
 uiV
 mji
 nWu
@@ -54610,7 +55928,7 @@ nZo
 xBX
 nZo
 uOd
-ome
+sVy
 dKo
 jio
 kdK
@@ -54739,13 +56057,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54781,17 +56099,17 @@ rxo
 jzd
 dLJ
 tEy
-pPQ
-pPQ
-uOd
-uOd
-uOd
-uOd
-uOd
-uOd
-uOd
-uOd
-uOd
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
 kdK
 kdK
 utx
@@ -54921,13 +56239,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -54963,18 +56281,18 @@ aTL
 tEy
 tEy
 tEy
-pPQ
-uOd
-cry
-acD
-fiP
+dRD
+eiG
+eiG
+eiG
 cKp
 cKp
-ooE
-sGT
-uMA
-uOd
-fua
+oEF
+cKp
+cKp
+cKp
+dRD
+dKo
 dKo
 cqi
 uOd
@@ -55103,13 +56421,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -55144,18 +56462,18 @@ hbB
 oCi
 hbB
 hPr
-pPQ
-uOd
-soH
-uMA
-uMA
-uMA
-uMA
-uMA
-uMA
-vCr
-udv
-uOd
+dRD
+dRD
+eiG
+eiG
+eiG
+cKp
+cKp
+cKp
+cKp
+cKp
+cKp
+dRD
 dKo
 dKo
 iwu
@@ -55285,13 +56603,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -55326,21 +56644,21 @@ dRD
 dRD
 dRD
 dRD
-uOd
-vRQ
-rmX
-xJn
-xJn
-xJn
-xJn
-xJn
-rmX
-vCr
-vTQ
-dFb
-dKo
-dKo
-iwu
+kwA
+dRD
+eiG
+eiG
+eiG
+cKp
+cKp
+cKp
+cKp
+cKp
+cKp
+dRD
+atR
+atR
+cXl
 uOd
 epo
 utu
@@ -55467,13 +56785,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -55508,20 +56826,20 @@ wuU
 iFa
 iFa
 dRD
-xxx
-uMA
-ncC
-cjI
-cjI
-cjI
-cjI
-cjI
-eGq
-vCr
-vTQ
-dFb
-dKo
-dKo
+kwA
+dRD
+tVA
+sYA
+aMv
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+atR
+atR
 jrB
 uOd
 nlV
@@ -55649,13 +56967,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -55689,22 +57007,22 @@ ofW
 wuU
 iFa
 iFa
-jkR
-sFf
-uMA
-fpK
-cjI
-gLJ
-cjI
-gLJ
-cjI
-eGq
+dRD
+kwA
+dRD
+ncC
+ncC
+ncC
 xex
-dOQ
+xex
+xex
+xex
+xex
+xex
 tqn
-wfQ
-wfQ
-moQ
+fLj
+fLj
+dTx
 xqf
 jqF
 jqF
@@ -55831,13 +57149,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -55871,21 +57189,21 @@ ofW
 wuU
 iFa
 iFa
-jkR
-aYy
-uMA
+dRD
+kwA
+dRD
 ncC
-cjI
-cjI
-cjI
-cjI
-cjI
-eGq
-uMA
-vTQ
-dFb
-kub
-kub
+ncC
+ncC
+xex
+xex
+xex
+xex
+xex
+xex
+tqn
+xEn
+xEn
 xVX
 xqf
 kub
@@ -56013,13 +57331,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -56053,19 +57371,19 @@ ofW
 wuU
 iFa
 iFa
-jkR
-pnZ
-uMA
-rmX
-puP
-puP
-puP
-puP
-puP
-rmX
-uMA
-vTQ
-dFb
+dRD
+kwA
+dRD
+ncC
+ncC
+ncC
+xex
+xex
+dsZ
+xex
+xex
+xex
+yhC
 skf
 nQG
 upF
@@ -56195,13 +57513,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -56236,21 +57554,21 @@ wuU
 iFa
 iFa
 dRD
-xxx
-xEn
-bfG
-bfG
-kXM
-xNA
-bfG
-bfG
-bfG
-kXM
-jTl
-uOd
+kwA
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
+dRD
 dzk
-kdK
-tFf
+aui
+jTh
 uOd
 wAT
 siT
@@ -56377,13 +57695,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -56559,13 +57877,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -56741,13 +58059,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -56923,13 +58241,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -57105,13 +58423,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -57287,13 +58605,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -57469,13 +58787,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -57651,13 +58969,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -57833,13 +59151,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58015,13 +59333,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58197,13 +59515,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58379,13 +59697,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58561,13 +59879,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58743,13 +60061,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -58925,13 +60243,13 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59107,21 +60425,21 @@ ofW
 ofW
 ofW
 ofW
-dKd
 ofW
 ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
 ofW
 ofW
 ofW
@@ -59281,29 +60599,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+fpK
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
+vRQ
 ofW
 ofW
 ofW
@@ -59463,29 +60781,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+pnZ
+soH
+soH
+soH
+dPu
+xIX
+xIX
+xIX
+jMD
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+vRQ
 ofW
 ofW
 ofW
@@ -59645,29 +60963,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+soH
+soH
+soH
+soH
+dPu
+xIX
+xIX
+xIX
+jMD
+xtV
+ajn
+ajn
+ajn
+ajn
+ajn
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -59827,29 +61145,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+soH
+soH
+soH
+soH
+dPu
+xIX
+xIX
+xIX
+jMD
+fpK
+fpK
+ajn
+ajn
+fpK
+fpK
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60009,29 +61327,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+tQG
+dtw
+kpI
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+fpK
+ajn
+ajn
+ajn
+fpK
+fpK
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60191,29 +61509,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+ajn
+dtw
+dtw
+dtw
+ajn
+ajn
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60373,29 +61691,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+ajn
+dtw
+dtw
+dtw
+ajn
+ajn
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60555,29 +61873,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+ewc
+dOQ
+dOQ
+dOQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+ajn
+dtw
+dtw
+dtw
+fpK
+fpK
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60737,29 +62055,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+jMD
+jMD
+jMD
+fpK
+ajn
+dtw
+dtw
+dtw
+fpK
+fpK
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -60920,28 +62238,28 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
+fpK
+jMD
+jMD
+jMD
+fpK
+ajn
+ajn
+ajn
+ajn
+ajn
+fpK
+ajn
+vRQ
 ofW
 ofW
 ofW
@@ -61102,29 +62420,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+jMD
+jMD
+jMD
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+fpK
+xtV
+vRQ
+vRQ
 ofW
 ofW
 ofW
@@ -61284,29 +62602,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -61466,37 +62784,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -61505,12 +62815,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+paz
 ofW
 ofW
 ofW
@@ -61648,37 +62966,29 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -61687,12 +62997,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+dlT
+evo
+fpK
+mbD
+cry
+fPu
+rRI
+uVe
+uHi
+uHi
+xMN
+uHi
+azo
+sOV
 ofW
 ofW
 ofW
@@ -61829,6 +63147,31 @@ ofW
 ofW
 ofW
 ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+fpK
+vRQ
+vRQ
+vRQ
+sFf
+sFf
+sFf
+vRQ
+vRQ
+vRQ
+fpK
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
 ofW
 ofW
 ofW
@@ -61836,45 +63179,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+imR
+gLJ
+fpK
+czk
+cry
+qfb
+ntD
+wwM
+euA
+euA
+euA
+ntD
+hWX
+vQd
 ofW
 ofW
 ofW
@@ -62011,6 +63329,31 @@ ofW
 ofW
 ofW
 ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+iFa
+iFa
+iFa
+iFa
+iFa
+iFa
+iFa
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -62018,45 +63361,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+dwU
+ppF
+fpK
+qvG
+cry
+pZB
+kvZ
+iqm
+uob
+uob
+uob
+ntD
+hWX
+fzS
 ofW
 ofW
 ofW
@@ -62193,6 +63511,31 @@ ofW
 ofW
 ofW
 ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+bGC
+bGC
+bGC
+bGC
+bGC
+bGC
+bGC
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -62200,45 +63543,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+wDS
+gLJ
+fpK
+lvZ
+cry
+qfb
+qCG
+uob
+uob
+uob
+uob
+ntD
+wSy
+mXz
 ofW
 ofW
 ofW
@@ -62375,6 +63693,31 @@ ofW
 ofW
 ofW
 ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
+vhb
+qwo
+kot
+wnu
+gGJ
+rej
+fbT
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
 ofW
 ofW
 ofW
@@ -62382,45 +63725,20 @@ ofW
 ofW
 ofW
 ofW
-ofW
-dKd
-ofW
-ofW
-gwl
-ofW
-ofW
-dKd
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+jsX
+gLJ
+fpK
+nVN
+cry
+qfb
+ntD
+nWp
+nWp
+nWp
+nWp
+ntD
+wSy
+fvk
 ofW
 ofW
 ofW
@@ -62558,6 +63876,29 @@ ofW
 ofW
 ofW
 ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+jtG
+nkT
+nfo
+jrp
+vlC
+fpC
+gBd
+dSU
+vTq
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
 ofW
 ofW
 ofW
@@ -62565,13 +63906,8544 @@ ofW
 ofW
 ofW
 ofW
-dKd
+ofW
+wDS
+gLJ
+fpK
+wqL
+pFq
+ufr
+jCN
+qqN
+lQs
+oVu
+sFR
+oVu
+wSy
+gWs
 ofW
 ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(154,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+jtG
+fCp
+ijn
+pol
+wpW
+acD
+dSB
+auE
+vTq
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+jed
+gLJ
+fpK
+fpK
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+xtV
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(155,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+jtG
+wef
+vyz
+nLw
+nLw
+nLw
+dqG
+olc
+vTq
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+gLJ
+gLJ
+fpK
+wSy
+tzs
+kVd
+tOF
+fjW
+fjW
+qyq
+emd
+jWt
+wSy
+paz
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(156,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+jtG
+dBm
+kWp
+vCr
+aVO
+vCr
+dHV
+tfQ
+vTq
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ivR
+fpK
+wSy
+sYk
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+eHr
+uAE
+wSy
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(157,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+sFf
+jtG
+dBm
+kWp
+vCr
+aVO
+vCr
+dHV
+tfQ
+vTq
+sFf
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+wSy
+qJx
+ntD
+tFU
+tFU
+tFU
+tFU
+tFU
+ntD
+eHr
+iiV
+hWX
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(158,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+sFf
+jtG
+sWF
+uvx
+apX
+pLe
+vCr
+qSh
+rwm
+vTq
+sFf
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+aYy
+jWt
+jiN
+jOv
+jOv
+jOv
+jOv
+jOv
+tmC
+eHr
+iiV
+hWX
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(159,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+fiP
+sGT
+vyz
+kDh
+pLe
+vCr
+dqG
+xfg
+fiP
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+sFf
+iqQ
+jWt
+nud
+jOv
+qoV
+jOv
+qoV
+jOv
+tmC
+tjh
+oQh
+gaI
+bNT
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(160,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+iCj
+myc
+kZv
+ooE
+vCr
+aVO
+vCr
+hII
+hNX
+dtu
+iCj
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+sFf
+vEi
+jWt
+jiN
+jOv
+jOv
+jOv
+jOv
+jOv
+tmC
+jWt
+iiV
+hWX
+flU
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(161,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+xtV
+myc
+ouI
+ooE
+vCr
+aVO
+vCr
+hII
+vCr
+dtu
+xtV
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+sFf
+phb
+jWt
+ntD
+btb
+btb
+btb
+btb
+btb
+ntD
+jWt
+iiV
+hWX
+puG
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(162,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+xtV
+myc
+ouI
+ooE
+vCr
+aVO
+vCr
+hII
+vCr
+dtu
+xtV
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+aYy
+rRS
+xNA
+xNA
+iKc
+stz
+xNA
+xNA
+xNA
+iKc
+ffl
+wSy
+hOR
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(163,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ltx
+sWF
+uvx
+vCr
+pLe
+vCr
+qSh
+xvh
+ltx
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+aIx
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(164,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+fiP
+sGT
+vyz
+vCr
+pLe
+vCr
+dqG
+fCB
+fiP
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(165,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+iCj
+myc
+gVJ
+ooE
+vCr
+aVO
+vCr
+hII
+dHC
+dtu
+iCj
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+xtV
+paz
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(166,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+xtV
+myc
+ouI
+ooE
+vCr
+aVO
+vCr
+hII
+vCr
+dtu
+xtV
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+dlT
+evo
+mbD
+cry
+tuD
+jWt
+jWt
+dbP
+jWt
+jWt
+qYT
+xJv
+bVC
+sOV
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(167,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+xtV
+myc
+ouI
+ooE
+vCr
+aVO
+vCr
+hII
+vCr
+dtu
+xtV
+jMD
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+imR
+gLJ
+czk
+cry
+qcq
+kvZ
+jQx
+jQx
+jQx
+jQx
+kvZ
+ffl
+hWX
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(168,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+jMD
+pyM
+fWH
+vGn
+jMD
+vRQ
+ltx
+sWF
+uvx
+bOt
+pLe
+vCr
+qSh
+fjE
+ltx
+vRQ
+jMD
+pyM
+fWH
+vGn
+jMD
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+dwU
+ppF
+qvG
+cry
+iiV
+ntD
+jOv
+jOv
+jOv
+jOv
+tmC
+jWt
+hWX
+fzS
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(169,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+wYg
+xmF
+aMh
+jMD
+sFf
+jtG
+evn
+rfv
+bKT
+pLe
+vCr
+dZf
+tMy
+vTq
+sFf
+jMD
+wYg
+xmF
+aMh
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+wDS
+gLJ
+lvZ
+cry
+iiV
+mNO
+jOv
+okL
+jOv
+okL
+tmC
+jWt
+wSy
+mXz
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(170,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+gel
+waZ
+pwz
+jMD
+sFf
+jtG
+sGT
+vyz
+vCr
+pLe
+vCr
+dqG
+utJ
+vTq
+sFf
+jMD
+gel
+waZ
+pwz
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+jsX
+gLJ
+nVN
+cry
+iiV
+ntD
+btb
+btb
+btb
+btb
+ntD
+jWt
+wSy
+fvk
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(171,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+jtG
+dBm
+kWp
+vCr
+aVO
+vCr
+dHV
+tfQ
+vTq
+vRQ
+jMD
+jMD
+jMD
+jMD
+jMD
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+wDS
+gLJ
+wqL
+pFq
+bYa
+jWt
+sqF
+tRV
+vHS
+rUL
+sfE
+rUL
+wSy
+wke
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(172,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+jMD
+jMD
+jMD
+vRQ
+vRQ
+jtG
+dBm
+kWp
+vCr
+aVO
+vCr
+dHV
+tfQ
+vTq
+vRQ
+vRQ
+jMD
+jMD
+jMD
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+jed
+gLJ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+xtV
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(173,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+sZn
+gec
+dBm
+kWp
+vCr
+aVO
+vCr
+dHV
+tfQ
+fSj
+sZn
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+gLJ
+gLJ
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+soH
+soH
+soH
+soH
+vRQ
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(174,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+sWF
+uvx
+bfG
+bfG
+bfG
+qSh
+xee
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ivR
+vRQ
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+soH
+soH
+soH
+soH
+vRQ
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(175,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+nZP
+xqb
+hiy
+lCc
+hpt
+vtP
+oub
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+jMD
+jMD
+jMD
+soH
+soH
+soH
+soH
+soH
+soH
+vRQ
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(176,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+wKP
+pnq
+seV
+rVA
+rAP
+jlv
+hfY
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+dtw
+dtw
+dtw
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vQd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(177,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ivD
+kYW
+ilN
+adj
+rLM
+jup
+wAI
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dPu
+bNT
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(178,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+lra
+ssf
+kXM
+wdT
+hBg
+fGl
+lra
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dPu
+flU
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(179,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+xJn
+xJn
+xJn
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dOQ
+dPu
+puG
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(180,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+xxx
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+rxb
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(181,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+vRQ
+vRQ
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+wSy
+aIx
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(182,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(183,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+xGU
+xGU
+kzg
+udv
+udv
+udv
+udv
+udv
+udv
+udv
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(184,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+xGU
+xGU
+kzg
+udv
+udv
+udv
+udv
+udv
+udv
+udv
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(185,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+xGU
+xGU
+kzg
+udv
+udv
+udv
+udv
+udv
+udv
+udv
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(186,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+tVm
+xkz
+xkz
+gwl
+gwl
+gwl
+gwl
+gwl
+gwl
 gwl
 ofW
 ofW
-dKd
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(187,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ome
+ome
+blm
+bKC
+bKC
+bKC
+bKC
+bKC
+bKC
+bKC
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(188,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ome
+ome
+blm
+bKC
+bKC
+bKC
+bKC
+bKC
+bKC
+bKC
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(189,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ome
+ome
+blm
+bKC
+bKC
+bKC
+oUF
+bKC
+bKC
+bKC
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(190,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(191,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(192,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(193,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(194,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(195,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(196,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(197,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(198,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(199,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+"}
+(200,1,1) = {"
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW

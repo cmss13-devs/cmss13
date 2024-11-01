@@ -364,7 +364,7 @@ CULT
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(!(copytext(message, -1) in ENDING_PUNCT))
+	if(!(copytext_char(message, -1) in ENDING_PUNCT)) // SS220 Edit - RU fix
 		message += "."
 
 	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]

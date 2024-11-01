@@ -433,8 +433,8 @@
 	if(stat)
 		return
 
-	if(copytext(message,1,2) == "*")
-		INVOKE_ASYNC(src, PROC_REF(emote), copytext(message,2))
+	if(copytext_char(message,1,2) == "*") // SS220 EDIT - RU fix
+		INVOKE_ASYNC(src, PROC_REF(emote), copytext_char(message,2)) // SS220 EDIT - RU fix
 		return
 
 	if(stat)

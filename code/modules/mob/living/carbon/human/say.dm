@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = copytext_char(message, 2) // SS220 EDIT - RU fix
 		.["modes"] += "headset"
 		return
 
@@ -16,7 +16,7 @@
 				i--
 				break
 			.["modes"] += GLOB.department_radio_keys[":[current_channel]"]
-		.["message_and_language"] = copytext(message, i+1)
+		.["message_and_language"] = copytext_char(message, i+1) // SS220 EDIT - RU fix
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
 			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
@@ -30,9 +30,9 @@
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
-		var/channel_prefix = copytext(message, 1, 3)
+		var/channel_prefix = copytext_char(message, 1, 3)
 		if(channel_prefix in GLOB.department_radio_keys)
-			.["message_and_language"] = copytext(message, 3)
+			.["message_and_language"] = copytext_char(message, 3) // SS220 EDIT - RU fix
 			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 
@@ -49,7 +49,7 @@
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
 		.["language"] = parsed_language
-		.["message"] = copytext(message_and_language, 3)
+		.["message"] = copytext_char(message_and_language, 3) // SS220 EDIT - RU fix
 	else
 		.["message"] = message_and_language
 
@@ -77,9 +77,9 @@
 	if(stat == DEAD)
 		return say_dead(message)
 
-	if(copytext(message,1,2) == "*")
+	if(copytext_char(message,1,2) == "*") // SS220 EDIT - RU fix
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+			return emote(lowertext(copytext_char(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt). // SS220 EDIT - RU fix
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -98,7 +98,7 @@
 	if(!speaking)
 		speaking = get_default_language()
 
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message)) // SS220 EDIT - RU fix
 	if (speaking)
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
@@ -133,7 +133,7 @@
 
 	// Automatic punctuation
 	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
-		if(!(copytext(message, -1) in ENDING_PUNCT))
+		if(!(copytext_char(message, -1) in ENDING_PUNCT)) // SS220 EDIT - RU fix
 			message += "."
 
 	for(var/message_mode in parsed["modes"])
@@ -255,7 +255,7 @@ for it but just ignore it.
 
 /mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message)) // SS220 EDIT - RU fix
 
 	if(speaking)
 		verb = speaking.get_spoken_verb(ending)

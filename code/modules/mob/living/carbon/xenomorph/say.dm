@@ -16,19 +16,19 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(copytext(message, 1, 2) == "*")
+	if(copytext_char(message, 1, 2) == "*") // SS220 EDIT - RU fix
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
+			return emote(lowertext(copytext_char(message, 2)), intentional = TRUE) // SS220 EDIT - RU fix
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
+		if(can_hivemind_speak && copytext_char(message,1,2) == ";" && length(languages)) // SS220 EDIT - RU fix
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
-		var/channel_prefix = copytext(message, 1, 3)
+		var/channel_prefix = copytext_char(message, 1, 3) // SS220 EDIT - RU fix
 		if(length(languages))
 			for(var/datum/language/L in languages)
 				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
@@ -59,10 +59,10 @@
 		if(old_message != message)
 			verb = "lisps"
 
-	if(copytext(message,1,2) == ";")
-		message = trim(copytext(message,2))
-	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
-		message = trim(copytext(message,3))
+	if(copytext_char(message,1,2) == ";") // SS220 EDIT - RU fix
+		message = trim(copytext_char(message,2)) // SS220 EDIT - RU fix
+	else if (copytext_char(message,1,3) == ":q" || copytext_char(message,1,3) == ":Q") // SS220 EDIT - RU fix
+		message = trim(copytext_char(message,3)) // SS220 EDIT - RU fix
 
 	message = capitalize(trim_left(message))
 
@@ -71,7 +71,7 @@
 
 	// Automatic punctuation
 	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
-		if(!(copytext(message, -1) in ENDING_PUNCT))
+		if(!(copytext_char(message, -1) in ENDING_PUNCT)) // SS220 EDIT - RU fix
 			message += "."
 
 	if(forced)

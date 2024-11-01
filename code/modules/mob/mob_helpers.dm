@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/message_length = length(message)
 	var/index = 1
 	while(index <= message_length)
-		var/char = copytext(message, index, index + 1)
+		var/char = copytext_char(message, index, index + 1) // SS220 EDIT - RU fix
 		if(char == " " || prob(clear_char_probability))
 			output_message += char
 		else
@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
-		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
+		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2) // SS220 Edit - RU fix
 		if(rand(1,3)==3)
 			if(lowertext(newletter)=="o") newletter="u"
 			if(lowertext(newletter)=="s") newletter="ch"

@@ -35,9 +35,9 @@
 	if (stat == 2)
 		return say_dead(message)
 
-	if(copytext(message,1,2) == "*")
+	if(copytext_char(message,1,2) == "*") // SS220 EDIT - RU fix
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)))
+			return emote(lowertext(copytext_char(message,2))) // SS220 EDIT - RU fix
 
 	//Must be conscious to speak
 	if (stat)
@@ -49,15 +49,15 @@
 	var/message_mode = parse_message_mode(message, "general")
 	if (message_mode)
 		if (message_mode == "general")
-			message = trim(copytext(message,2))
+			message = trim(copytext_char(message,2)) // SS220 EDIT - RU fix
 		else
-			message = trim(copytext(message,3))
+			message = trim(copytext_char(message,3)) // SS220 EDIT - RU fix
 
 	//parse language key and consume it
 	var/datum/language/speaking = parse_language(message)
 	if (speaking)
 		verb = speaking.speech_verb
-		message = copytext(message,3)
+		message = copytext_char(message,3) // SS220 EDIT - RU fix
 
 		if(speaking.flags & HIVEMIND)
 			speaking.broadcast(src,trim(message))

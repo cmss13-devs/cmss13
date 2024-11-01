@@ -12,7 +12,6 @@
 		return
 
 	init_mob()
-	tutorial_mob.set_skills(/datum/skills/combat_medic)
 	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
 	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
 
@@ -143,7 +142,6 @@
 	human_dummy.reagents.clear_reagents()
 	human_dummy.apply_damage(10, BRUTE, "chest", 0, 0)
 	human_dummy.apply_damage(10, BRUTE, "l_arm", 0, 0)
-	human_dummy.remove_all_bleeding(TRUE, TRUE)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
@@ -156,6 +154,7 @@
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(brute_tutorial_6))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_6()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
@@ -214,6 +213,7 @@
 	RegisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_larm)
 	UnregisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES)
@@ -224,24 +224,142 @@
 	human_dummy.rejuvenate()
 	remove_highlight(brutekit)
 	remove_highlight(human_hud.zone_sel)
-	remove_highlight(human_dummy)
 	update_objective("")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
-	remove_highlight(brute_injector)
-	message_to_player("Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
+	human_dummy.adjustFireLoss(40)
 
-	//var/mob/living/living_mob = tutorial_mob
-	//living_mob.adjustFireLoss(10)
-	//addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+
+	message_to_player("Great work! That covers the three basic methods to treat <b>Brute</b> damage on the field.")
+	message_to_player("The next most common type of injury is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
+	message_to_player("The Dummy has taken a large amount of <b>Burn</b> damage. Use your <b>Health Analyzer</b> to scan their condition.")
+
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2()
-	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
-	update_objective("Inject yourself with the kelotane injector.")
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	message_to_player("Unlike brute damage, <b>burn</b> damage is very rarely concentrated on one part of the body, more commonly spread across multiple limbs.")
+	message_to_player("Because of this, medication is the most effective treatment for burn wounds, as they heal the whole body at once.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time. Feed the Dummy the <b>Kelotane pill</b>.")
+	update_objective("Feed the Dummy the Kelotane pill.")
+	var/obj/item/reagent_container/pill/kelotane/kelopill = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(kelopill)
+	add_highlight(kelopill, COLOR_GREEN)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(burn_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(burn_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_pill_fed_reject()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_2)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_3()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+
+	message_to_player("Well done!")
+	message_to_player("While rare, when a large amount of <b>burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
+	update_objective("")
+
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_4)), 11 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_4()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	TUTORIAL_ATOM_FROM_TRACKING(/datum/hud/human, human_hud)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+	human_dummy.apply_damage(40, BURN, "chest", 0, 0)
+	var/obj/item/stack/medical/advanced/ointment/burnkit = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(burnkit)
+	add_highlight(human_hud.zone_sel)
+	add_highlight(burnkit, COLOR_GREEN)
+
+	message_to_player("The Dummy has taken concentrated burn damage on their <b>chest</b>. We will use an <b>Advanced Burn Kit</b> on the area.")
+	message_to_player("First make sure you are targeting the chest in the <b>zone selection</b> element, highlighted on the bottom right of your hud. Then click on the Dummy with your <b>Advanced Burn Kit</b> in hand, while standing next to them, to treat their burn wound.")
+
+	RegisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial_5))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_5()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	UnregisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES)
+
+	message_to_player("Good work! We will now use our <b>Health Analyzer</b> to scan the Dummy, to see how much burn damage remains on their chest.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/datum/hud/human, human_hud)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/ointment, burnkit)
+	remove_highlight(human_hud.zone_sel)
+	remove_highlight(burnkit)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_6))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_6()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
 	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
 	add_highlight(burn_injector)
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_burn_inject))
+
+	message_to_player("As you can see, the Dummy still has some burn damage left on their chest")
+	message_to_player("To heal this remaining damage, we will use a <b>Kelotane Autoinjector</b>.")
+	message_to_player("Click on the autoinjector with an empty hand to pick it up, then click on the Dummy while holding it in hand to inject them with <b>Kelotane</b>.")
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_inject_self))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_tutorial_7_pre))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_inject_self()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	living_mob.reagents.clear_reagents()
+	message_to_player("Dont use the injector on yourself, try again.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, burn_injector)
+	remove_highlight(burn_injector)
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
+	//adds a slight grace period, so humans are not rejuved before kelo is registered in their system
+
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(on_burn_inject)), 3 SECONDS)
+
+
+
 
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/on_burn_inject(datum/source, obj/item/reagent_container/hypospray/injector)
@@ -348,6 +466,7 @@
 /datum/tutorial/marine/hospital_corpsman_basic/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
+	tutorial_mob.set_skills(/datum/skills/combat_medic)
 
 
 /datum/tutorial/marine/hospital_corpsman_basic/init_map()

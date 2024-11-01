@@ -321,6 +321,9 @@
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/tool/surgery/hemostat,
 		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
 	)
 
 /obj/item/storage/surgical_case/regular
@@ -358,6 +361,23 @@
 	maptext_width = 16
 	maptext_x = 18
 	maptext_y = 3
+
+	var/base_icon = "pill_canister"
+	var/static/list/possible_colors = list(
+		"Orange" = "",
+		"Blue" = "1",
+		"Yellow" = "2",
+		"Light Purple" = "3",
+		"Light Grey" = "4",
+		"White" = "5",
+		"Light Green" = "6",
+		"Cyan" = "7",
+		"Bordeaux" = "8",
+		"Aquamarine" = "9",
+		"Grey" = "10",
+		"Red" = "11",
+		"Black" = "12",
+	)
 
 /obj/item/storage/pill_bottle/Initialize()
 	. = ..()
@@ -515,28 +535,14 @@
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
 		user = usr
-	var/static/list/possible_colors = list(
-		"Orange" = "",
-		"Blue" = "1",
-		"Yellow" = "2",
-		"Light Purple" = "3",
-		"Light Grey" = "4",
-		"White" = "5",
-		"Light Green" = "6",
-		"Cyan" = "7",
-		"Bordeaux" = "8",
-		"Aquamarine" = "9",
-		"Grey" = "10",
-		"Red" = "11",
-		"Black" = "12",
-	)
+
 	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
 	if(!selected_color)
 		return
 
 	selected_color = possible_colors[selected_color]
 
-	icon_state = "pill_canister" + selected_color
+	icon_state = base_icon + selected_color
 	to_chat(user, SPAN_NOTICE("You color [src]."))
 	update_icon()
 

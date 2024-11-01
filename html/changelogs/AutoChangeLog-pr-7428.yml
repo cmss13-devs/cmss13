@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "sg effective range nerfed to 5"
+  - balance: "sg falloff increased"

@@ -151,7 +151,7 @@
 				if(SSticker.mode.check_xeno_late_join(src))
 					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 					if(!new_xeno)
-						if(tgui_alert(src, "Do you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
+						if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
 							if(!client)
 								return TRUE
 							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
@@ -283,10 +283,10 @@
 	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
 
-	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-		if(sq)
-			sq.max_engineers = engi_slot_formula(length(GLOB.clients))
-			sq.max_medics = medic_slot_formula(length(GLOB.clients))
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 

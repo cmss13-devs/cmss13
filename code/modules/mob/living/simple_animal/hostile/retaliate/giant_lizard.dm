@@ -34,18 +34,27 @@
 	speak_chance = 2
 	speak_emote = "hisses"
 	emote_hear = list("hisses.", "growls.", "roars.", "bellows.")
-	emote_see = list("shakes its head.", "wags its tail.", "flicks its tongue.", "yawns.")
+	emote_see = list("shakes its head.", "wags its tail.", "yawns.")
 
 	melee_damage_lower = 20
 	melee_damage_upper = 25
+	break_stuff_probability = 100
 	attack_same = FALSE
 	langchat_color = LIGHT_COLOR_GREEN
 
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
+	///Reference to the tongue flick overlay.
+	var/atom/movable/vis_obj/giant_lizard_icon_holder/tongue_icon_holder
+	///Reference to the wound icon.
+	var/atom/movable/vis_obj/giant_lizard_icon_holder/wound_icon_holder
 
+	///How far the mob is willing to chase before losing its target.
+	var/max_attack_distance = 16
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
+	///Every type of structure that can get attacked in the DestroySurroundings() proc.
+	var/list/destruction_targets = list(/obj/structure/mineral_door/resin, /obj/structure/window, /obj/structure/closet, /obj/structure/surface/table, /obj/structure/grille, /obj/structure/barricade, /obj/structure/machinery/door, /obj/structure/largecrate)
 
 	///Emotes to play when being pet by a friend.
 	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "rolls on the ground.")
@@ -71,11 +80,12 @@
 	var/retreat_attempts = 0
 	///Tied directly to retreat_attempts. If our retreat fail, then we will completely stop trying to retreat for the length of this cooldown.
 	COOLDOWN_DECLARE(retreat_cooldown)
-
+	///Can this mob be tamed?
+	var/tameable = TRUE
 	///The food object that the mob is trying to eat.
 	var/food_target
-	///A list of foods the mob is interested in eating.
-	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/packaged_meal, /obj/item/reagent_container/food/snacks/resin_fruit)
+	///A list of foods the mob is interested in eating. The mob will eat anything that has meat protein in it even if it's not in this list.
+	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/packaged_meal, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
 	///Cooldown dictating how long the mob will wait between eating food.
@@ -86,12 +96,74 @@
 	///Cooldown for when the mob calms down, so the mob doesn't start attacking immediately after calming down.
 	COOLDOWN_DECLARE(calm_cooldown)
 
+//For displaying wound states, and the tongue flicker.
+/atom/movable/vis_obj/giant_lizard_icon_holder
+	icon = 'icons/mob/mob_64.dmi'
+
+//Due to being constrained to 64x64, we need to change the icon's offsets manually whenever the mob's dir is changed.
+//apparantly movement sets both olddir and newdir to the same value, in comparison to manually switching facing which returns the right values.
+//i don't know if there's any worthwhile performance gain in having a second signal exclusively for movement so we can check if the olddir and newdir are same.
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir)
+	SIGNAL_HANDLER
+
+	if(!newdir)
+		newdir = dir
+
+	switch(newdir)
+		if(WEST)
+			if(resting)
+				tongue_icon_holder.pixel_x = 7
+				tongue_icon_holder.pixel_y = -4
+				return
+
+			tongue_icon_holder.pixel_x = -2
+			tongue_icon_holder.pixel_y = 0
+
+		if(EAST)
+			if(resting)
+				tongue_icon_holder.pixel_x = -7
+				tongue_icon_holder.pixel_y = -4
+				return
+
+			tongue_icon_holder.pixel_x = 2
+			tongue_icon_holder.pixel_y = 0
+		if(SOUTH)
+			tongue_icon_holder.pixel_x = 0
+			tongue_icon_holder.pixel_y = 0
+	//there is no north facing tongue animation
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/face_dir(ndir, specific_dir)
+	//there is no north or south facing rest sprite, so updating the direction would mess up tongue flicking.
+	if(resting && (ndir == NORTH || ndir == SOUTH))
+		return
+	return ..()
+
+//we also have to check for the keybind apparantly...
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/keybind_face_direction(direction)
+	if(resting && (direction == NORTH || direction == SOUTH))
+		return
+	return ..()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Initialize()
 	. = ..()
+	wound_icon_holder = new(null, src)
+	tongue_icon_holder = new(null, src)
+	tongue_icon_holder.pixel_x = 2
+	vis_contents += wound_icon_holder
+	vis_contents += tongue_icon_holder
+
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
+
+	GLOB.giant_lizards_alive++
 	change_real_name(src, "[name] ([rand(1, 999)])")
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper)
 	pounce_callbacks[/obj] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_obj_wrapper)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+	..()
+	if(pass_flags_container)
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()
@@ -128,11 +200,16 @@
 	. = ..()
 	find_target_on_trait_loss()
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/on_floored_trait_loss(datum/source)
+	. = ..()
+	find_target_on_trait_loss()
+
 ///Proc for handling the AI post-status effect.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/find_target_on_trait_loss()
+	update_transform()
 	is_retreating = FALSE
 	if(stance > HOSTILE_STANCE_ALERT)
-		FindTarget()
+		target_mob = FindTarget()
 		MoveToTarget()
 
 //procs for handling sleeping icons when resting
@@ -154,6 +231,7 @@
 	walk_to(src, 0)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/update_transform(instant_update = FALSE)
+	tongue_icon_holder.alpha = alpha
 	if(stat == DEAD)
 		icon_state = icon_dead
 	else if(body_position == LYING_DOWN)
@@ -161,9 +239,46 @@
 			icon_state = "Giant Lizard Sleeping"
 		else
 			icon_state = "Giant Lizard Knocked Down"
+			tongue_icon_holder.alpha = 0
+			//we can't stop an animation that's called via flick(). best we can do is hide it.
 	else
 		icon_state = icon_living
+	update_wounds()
+	change_tongue_offset()
 	return ..()
+
+
+#define NO_WOUNDS 4
+#define SMALL_WOUNDS 3
+#define BIG_WOUNDS 2
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/update_wounds()
+	if(!wound_icon_holder)
+		return
+
+	var/health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
+	switch(health_threshold)
+		if(NO_WOUNDS)
+			health_threshold = "none"
+		if(SMALL_WOUNDS)
+			health_threshold = "Wounds Small"
+		if(0 to BIG_WOUNDS)
+			health_threshold = "Wounds Big"
+
+	if(health > 0)
+		if(health_threshold == "none")
+			wound_icon_holder.icon_state = "none"
+		else if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Rest"
+			else
+				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Stun"
+		else
+			wound_icon_holder.icon_state = "Giant Lizard [health_threshold]"
+
+#undef NO_WOUNDS
+#undef SMALL_WOUNDS
+#undef BIG_WOUNDS
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/get_examine_text(mob/user)
 	. = ..()
@@ -183,13 +298,22 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/set_resting(new_resting, silent, instant)
 	. = ..()
+	//north and south rest sprites don't exist, we need to set it to WEST for tongue flicks to work properly
+	if(resting && dir == NORTH || dir == SOUTH)
+		setDir(WEST)
 	if(!resting)
 		RemoveSleepingIcon()
 	update_transform()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/death()
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/rejuvenate()
+	//if the mob was dead beforehand, it's now alive and therefore it's an extra lizard to the count
+	if(stat == DEAD)
+		GLOB.giant_lizards_alive++
+	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
 	playsound(loc, 'sound/effects/giant_lizard_death.ogg', 70)
-	manual_emote("lets out a waning growl.")
+	GLOB.giant_lizards_alive--
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_hand(mob/living/carbon/human/attacking_mob)
@@ -224,11 +348,13 @@
 			chance_to_rest = 0
 			if(COOLDOWN_FINISHED(src, emote_cooldown))
 				COOLDOWN_START(src, emote_cooldown, rand(5, 8) SECONDS)
-				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.", "flicks its tongue at [attacking_mob].")
+				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.")
 				if(prob(50))
 					playsound(loc, "giant_lizard_hiss", 25)
-	if(attacking_mob.a_intent == INTENT_DISARM && prob(75))
-		step_to(src, get_step(loc, attacking_mob.dir), 0, LIZARD_SPEED_NORMAL)
+					flick("Giant Lizard Tongue", tongue_icon_holder)
+	if(attacking_mob.a_intent == INTENT_DISARM && prob(25))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		KnockDown(0.4)
 
 //apply blood splatter when attacked by a sufficently damaging sharp weapon
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)
@@ -249,14 +375,15 @@
 			addtimer(VARSET_CALLBACK(src, speed, LIZARD_SPEED_NORMAL_CLIENT), 8 SECONDS)
 			addtimer(VARSET_CALLBACK(src, is_retreating, FALSE), 8 SECONDS)
 		else
-			MoveTo(target_mob, 12, TRUE, 8 SECONDS)
+			MoveTo(target_mob, 12, TRUE, 4.5 SECONDS)
 	if(damage >= 10 && damagetype == BRUTE)
 		add_splatter_floor(loc, TRUE)
 		bleed_ticks = clamp(bleed_ticks + ceil(damage / 10), 0, 30)
+	update_wounds()
 
 ///Proc that forces the mob to disengage and try to extinguish itself. Will not be called if the mob is already retreating.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/try_to_extinguish()
-	if(is_retreating || !on_fire || client)
+	if(is_retreating || !on_fire || client || stat == DEAD || body_position == LYING_DOWN)
 		return
 
 	//forget EVERYTHING. we need to stop the flames!!!
@@ -280,16 +407,27 @@
 		try_to_extinguish()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Life(delta_time)
-	//simplemobs don't have innate knockdown reduction so we'll manually lower it here.
-	AdjustKnockDown(-0.5)
-	AdjustStun(-0.5)
+	//simplemobs don't have innate knockdown reduction so we'll just remove the status effects manually. works alright due to the 2 second delay on life()
+	SetKnockOut(0)
+	SetStun(0)
+	SetKnockDown(0)
 	if(aggression_value > 0)
 		aggression_value--
 
+	//it is possible for the mob to keep a target_mob saved, yet be stuck in alert stance and never lose said target.
+	//this will cause it to be paralyzed and do nothing for the rest of its life, so this specific check is here to remedy that (hopefully)
+	if(!client && stance == HOSTILE_STANCE_ALERT && target_mob && !is_retreating && !on_fire)
+		target_mob = FindTarget()
+		MoveToTarget()
+
 	if(resting && stat != DEAD)
 		health += maxHealth * 0.05
+		update_wounds()
 		if(prob(33) && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			AddSleepingIcon()
+
+	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED) && prob(25))
+		flick("Giant Lizard Tongue", tongue_icon_holder)
 
 	if(bleed_ticks)
 		var/is_small_pool = FALSE
@@ -297,6 +435,20 @@
 			is_small_pool = TRUE
 		bleed_ticks--
 		add_splatter_floor(loc, is_small_pool)
+
+	//done before the parent proccall because it would result in it moving before resting
+	if(stance == HOSTILE_STANCE_IDLE && !client)
+		stop_automated_movement = FALSE
+		//if there's a friend on the same tile as us, don't bother getting up (cute!)
+		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
+		if((friend?.faction in faction_group) && resting)
+			chance_to_rest = 0
+
+		if(prob(chance_to_rest))
+			set_resting(!resting)
+			chance_to_rest = 0
+
+		chance_to_rest += rand(1, 2)
 
 	. = ..()
 
@@ -316,25 +468,16 @@
 	if(stance > HOSTILE_STANCE_ALERT)
 		is_eating = FALSE
 
-	if(stance == HOSTILE_STANCE_IDLE)
-		stop_automated_movement = FALSE
-		//if there's a friend on the same tile as us, don't bother getting up (cute!)
-		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
-		if((friend?.faction in faction_group) && resting)
-			chance_to_rest = 0
-
-		if(prob(chance_to_rest))
-			set_resting(!resting)
-			chance_to_rest = 0
-
-		chance_to_rest += rand(1, 2)
-
 	//if we're resting and something catches our interest, get up
 	if(stance != HOSTILE_STANCE_IDLE && resting)
 		set_resting(FALSE)
 
 	if(target_mob && !is_retreating && target_mob.stat == CONSCIOUS && stance == HOSTILE_STANCE_ATTACKING && COOLDOWN_FINISHED(src, pounce_cooldown) && (prob(75) || get_dist(src, target_mob) <= 5) && (target_mob in view(5, src)))
 		pounce(target_mob)
+
+	//if we're trying to get away and there's obstacles around us, try to break them
+	if(target_mob && is_retreating && stance >= HOSTILE_STANCE_ALERT && destroy_surroundings)
+		INVOKE_ASYNC(src, PROC_REF(DestroySurroundings))
 
 	if(target_mob || on_fire)
 		return
@@ -345,15 +488,16 @@
 		stance = HOSTILE_STANCE_IDLE
 
 	//if we're hungry and we don't have already have our eyes on a snack, try eating food if possible
-	if(!food_target && COOLDOWN_FINISHED(src, food_cooldown))
+	if(tameable && !food_target && COOLDOWN_FINISHED(src, food_cooldown))
 		for(var/obj/item/reagent_container/food/snacks/food in view(6, src))
-			if(!is_type_in_list(food, acceptable_foods))
-				continue
-			food_target = food
-			stance = HOSTILE_STANCE_ALERT
-			stop_automated_movement = TRUE
-			MoveTo(food_target)
-			break
+			var/is_meat = locate(/datum/reagent/nutriment/meat) in food.reagents.reagent_list
+
+			if(is_type_in_list(food, acceptable_foods) || is_meat)
+				food_target = food
+				stance = HOSTILE_STANCE_ALERT
+				stop_automated_movement = TRUE
+				MoveTo(food_target)
+				break
 
 	//handling mobs that are invading our personal space
 	if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
@@ -384,7 +528,6 @@
 		//if the food is next to us AND not in the hands of a mob, start eating
 		else if(!check_food_loc(food_target) && Adjacent(food_target))
 			INVOKE_ASYNC(src, PROC_REF(handle_food), food_target)
-
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bullet_act(obj/projectile/projectile)
 	. = ..()
@@ -418,6 +561,11 @@
 		target.attack_animal(src)
 		animation_attack_on(target)
 
+		//xenos take extra damage
+		if(isxeno(target))
+			var/extra_damage = rand(melee_damage_lower, melee_damage_upper) * 0.33
+			target.apply_damage(extra_damage, BRUTE)
+
 		if(prob(33))
 			if(client && !is_retreating)
 				is_retreating = TRUE
@@ -428,6 +576,33 @@
 			else
 				MoveTo(target_mob, 8, TRUE, 2 SECONDS, TRUE) //skirmish around our target
 		return target
+
+	if(isStructure(inherited_target))
+		var/obj/structure/structure = inherited_target
+		if(structure.unslashable)
+			return
+
+		var/is_xeno_structure = FALSE
+		if(structure.flags_obj & OBJ_ORGANIC)
+			is_xeno_structure = TRUE
+
+		animation_attack_on(structure)
+		playsound(loc, is_xeno_structure ? "alien_resin_break" : 'sound/effects/metalhit.ogg', 25)
+		visible_message(SPAN_DANGER("[src] slashes [structure]!"), SPAN_DANGER("You slash [structure]!"), null, 5, CHAT_TYPE_COMBAT_ACTION)
+		var/damage_multiplier = 2
+		if(is_xeno_structure)
+			damage_multiplier = !client ? 15 : 5 //ai mobs need that extra oomph else they won't be able to break anything before they die
+		structure.update_health(rand(melee_damage_lower, melee_damage_upper) * damage_multiplier)
+		return
+
+	if(client && !is_eating && istype(inherited_target, /obj/item/reagent_container/food/snacks))
+		handle_food_client(inherited_target)
+		return
+
+	//if it's not an object or a structure, just swipe at it
+	animation_attack_on(inherited_target)
+	visible_message(SPAN_DANGER("[src] swipes at [inherited_target]!"), SPAN_DANGER("You swipe at [inherited_target]!"), null, 5, CHAT_TYPE_COMBAT_ACTION)
+	playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1)
 
 //Used to handle attacks when a client is in the mob. Otherwise we'd default to a generic animal attack.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/UnarmedAttack(atom/target)
@@ -444,9 +619,32 @@
 			target = targets
 			break
 
-	if(isliving(target))
-		AttackingTarget(target)
-		next_move = world.time + 8
+	AttackingTarget(target)
+	//turf attacks are missed attacks so it should just be a minor penalty to attack delay
+	next_move = isturf(target) ? world.time + 4 : world.time + 8
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/DestroySurroundings()
+	if(!prob(break_stuff_probability))
+		return
+
+	for(var/obj/structure/obstacle in view(1, src))
+		if(is_type_in_list(obstacle, destruction_targets))
+			AttackingTarget(obstacle)
+			return
+
+//no longer checks for distance with ListTargets(). thershold for losing targets is increased, due to needing range for skirmishing
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackTarget()
+	stop_automated_movement = TRUE
+	if(!target_mob || SA_attackable(target_mob))
+		LoseTarget()
+		return
+	if(get_dist(src, target_mob) > max_attack_distance)
+		LoseTarget()
+		return
+	if(in_range(src, target_mob)) //Attacking
+		AttackingTarget()
+		return TRUE
+
 
 ///Proc for when the mob finds food and starts DEVOURING it.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/handle_food(obj/item/reagent_container/food/snacks/food)
@@ -460,18 +658,37 @@
 		playsound(loc,'sound/items/eatfood.ogg', 25, 1)
 
 	for(var/mob/living/carbon/nearest_mob in view(7, src))
-		if(nearest_mob != food.last_dropped_by || (nearest_mob in faction_group))
+		if(nearest_mob != food.last_dropped_by || (nearest_mob.faction in faction_group))
 			continue
 		face_atom(nearest_mob)
 		manual_emote("stares curiously at [nearest_mob].")
 		faction_group += nearest_mob.faction_group
 		break
 
+	health += maxHealth * 0.15
+	update_wounds()
 	qdel(food)
 	food_target = null
 	is_eating = FALSE
 	stance = HOSTILE_STANCE_IDLE
 	COOLDOWN_START(src, food_cooldown, 30 SECONDS)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/handle_food_client(obj/item/reagent_container/food/snacks/food)
+	manual_emote("starts gnawing [food].")
+	playsound(loc,'sound/items/eatfood.ogg', 25, 1)
+	is_eating = TRUE
+	if(!do_after(src, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
+		is_eating = FALSE
+		return
+
+	is_eating = FALSE
+	if(!Adjacent(food))
+		return
+
+	playsound(loc,'sound/items/eatfood.ogg', 25, 1)
+	health += maxHealth * 0.10
+	update_wounds()
+	qdel(food)
 
 ///Proc for checking if someone picked our food target.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/check_food_loc(obj/food)
@@ -525,7 +742,7 @@
 
 //Immediately retaliate after being attacked.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Retaliate()
-	if(stat == DEAD || target_mob || on_fire)
+	if(stat == DEAD || get_dist(src, target_mob) < 6 || on_fire)
 		return
 	aggression_value = clamp(aggression_value + 5, 0, 15)
 
@@ -537,7 +754,7 @@
 		MoveToTarget()
 
 	//basic pack behaviour
-	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member in view(7, src))
+	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member in view(12, src))
 		if(pack_member == src || pack_member.target_mob)
 			continue
 		pack_member.Retaliate()
@@ -545,18 +762,19 @@
 ///Proc for moving to targets. walk_to() doesn't check for resting and status effects so we will do it ourselves.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/MoveTo(target, distance = 1, retreat = FALSE, time = 6 SECONDS, return_to_combat = FALSE)
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED))
-		return
+		return FALSE
 	if(resting)
 		set_resting(FALSE)
 	if(!retreat)
 		walk_to(src, target ? target : get_turf(src), distance, move_to_delay)
-		return
+		return TRUE
 	if(!is_retreating)
 		is_retreating = TRUE
 		stop_automated_movement = TRUE
 		stance = HOSTILE_STANCE_ALERT
 		walk_away(src, target ? target : get_turf(src), distance, LIZARD_SPEED_RETREAT)
 		addtimer(CALLBACK(src, PROC_REF(stop_retreat), return_to_combat), time)
+		return TRUE
 
 //Proc that's called after the retreat has run its course.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/stop_retreat(return_to_combat = FALSE)
@@ -568,7 +786,7 @@
 	if(!return_to_combat)
 		//can't retreat? go back to fighting
 		if(retreat_attempts >= 2)
-			FindTarget()
+			target_mob = FindTarget()
 			MoveToTarget()
 			retreat_attempts = 0
 			//seems like it's a life or death situation. we will stop trying to run away.
@@ -578,13 +796,13 @@
 		for(var/mob/living/carbon/hostile_mob in view(7, src))
 			if(hostile_mob.faction in faction_group)
 				continue
-			MoveTo(hostile_mob, 10, TRUE, 3 SECONDS, FALSE)
+			MoveTo(hostile_mob, 10, TRUE, 2 SECONDS, FALSE)
 			retreat_attempts++
 			return
 		retreat_attempts = 0
 		LoseTarget()
 	else
-		FindTarget()
+		target_mob = FindTarget()
 		MoveToTarget()
 
 //Replaced walk_to() with MoveTo().
@@ -592,9 +810,9 @@
 	stop_automated_movement = TRUE
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
-	if(target_mob in ListTargets(10))
-		stance = HOSTILE_STANCE_ATTACKING
-		MoveTo(target_mob)
+	if(get_dist(src, target_mob) <= max_attack_distance)
+		if(MoveTo(target_mob))
+			stance = HOSTILE_STANCE_ATTACKING
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/resist_fire()
 	visible_message(SPAN_NOTICE("[src] rolls frantically on the ground to extinguish itself!"))
@@ -611,8 +829,14 @@
 
 	var/successful_attacks = 0
 	for(var/times_to_attack = 3, times_to_attack > 0, times_to_attack--)
+		if(body_position == LYING_DOWN)
+			return
+
 		if(Adjacent(target))
 			var/damage = rand(melee_damage_lower, melee_damage_upper) * 0.4
+			//xenos take extra damage
+			if(isxeno(target))
+				damage *= 1.33
 			var/attack_type = pick(ATTACK_SLASH, ATTACK_BITE)
 			attacktext = attack_type ? "claws" : "bites"
 			flick_attack_overlay(target, attack_type ? "slash" : "animalbite")
@@ -628,6 +852,7 @@
 			face_atom(target)
 			sleep(0.5 SECONDS)
 			successful_attacks++
+
 	if(successful_attacks == 3 && !COOLDOWN_FINISHED(src, pounce_cooldown))
 		to_chat(src, SPAN_BOLDWARNING("The bloodlust invigorates you! You will be ready to pounce much sooner."))
 		COOLDOWN_START(src, pounce_cooldown, COOLDOWN_TIMELEFT(src, pounce_cooldown) * 0.5)
@@ -690,7 +915,7 @@
 	playsound(loc, "giant_lizard_hiss", 25)
 	pounced_mob.KnockDown(0.5)
 	step_to(src, pounced_mob)
-	if(!client)
+	if(!client && !(pounced_mob.faction in faction_group))
 		ravagingattack(pounced_mob)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf(turf/turf_target)
@@ -754,6 +979,18 @@
 	message = "hisses."
 	sound = "giant_lizard_hiss"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/giant_lizard/flicktongue
+	key = "flicktongue"
+	message = null
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/giant_lizard/flicktongue/run_emote(mob/living/simple_animal/hostile/retaliate/giant_lizard/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+
+	flick("Giant Lizard Tongue", user.tongue_icon_holder)
 
 #undef ATTACK_SLASH
 #undef ATTACK_BITE

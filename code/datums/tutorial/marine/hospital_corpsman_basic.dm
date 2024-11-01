@@ -12,6 +12,7 @@
 		return
 
 	init_mob()
+	tutorial_mob.set_skills(/datum/skills/combat_medic)
 	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
 	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
 
@@ -129,10 +130,8 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
-	human_dummy.reagents.clear_reagents()
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_5)), 2 SECONDS)
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_5)), 3 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5()
 	SIGNAL_HANDLER
@@ -140,8 +139,12 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	human_dummy.apply_damage(10, BRUTE, "chest")
-	human_dummy.apply_damage(10, BRUTE, "arm/l_arm")
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+	human_dummy.apply_damage(10, BRUTE, "chest", 0, 0)
+	human_dummy.apply_damage(10, BRUTE, "l_arm", 0, 0)
+	human_dummy.remove_all_bleeding(TRUE, TRUE)
+
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
 	update_objective("")
@@ -222,7 +225,7 @@
 	remove_highlight(brutekit)
 	remove_highlight(human_hud.zone_sel)
 	remove_highlight(human_dummy)
-
+	update_objective("")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)

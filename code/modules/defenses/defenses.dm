@@ -42,6 +42,7 @@
 	var/list/choice_categories = list()
 
 	var/list/selected_categories = list()
+	var/map_icon_passive = TRUE
 
 
 /obj/structure/machinery/defenses/Initialize()
@@ -151,11 +152,13 @@
 
 
 /obj/structure/machinery/defenses/start_processing()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, iconstate = "sentry_passive")
 	if(!machine_processing)
 		machine_processing = TRUE
 	START_PROCESSING(SSdefprocess, src)
 
 /obj/structure/machinery/defenses/stop_processing()
+	SSminimaps.remove_marker(src)
 	if(machine_processing)
 		machine_processing = FALSE
 	STOP_PROCESSING(SSdefprocess, src)

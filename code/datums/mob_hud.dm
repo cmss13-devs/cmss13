@@ -478,6 +478,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 						holder2.icon_state = "huddeaddefib"
 						holder3.icon_state = "huddead"
 						holder2_set = 1
+				update_minimap_icon()
 			else
 				if(is_heart_broken()) // broken heart icon
 					holder.icon_state = "huddeadheart"

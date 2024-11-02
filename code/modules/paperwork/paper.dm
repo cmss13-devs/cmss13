@@ -738,8 +738,8 @@
 			name = "Transmission Intercepted"
 			txt += "[MAIN_SHIP_NAME] intelligence Relay</H2></center>"
 			txt += "Progress report<BR>\n\n"
-			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>, Recent discovery made us believe the one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
-			txt += "This will be the last transmission before the scheduled communications blackout, Testing is successful so far.<BR>\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>. Recent discoveries have made us believe that one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
+			txt += "This will be the last transmission before the scheduled communications blackout, testing has been successful so far.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("ciph_hint_complete") //todo, rewrite this, same for ^^^
 			icon_state = "paper_wy_words"

@@ -77,7 +77,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/nettle
 	plantname = "nettle"
-	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
+	desc = "It's probably wise to <B>not touch it with your bare hands...</B>"
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	name = "nettle"
 	icon_state = "nettle"
@@ -100,17 +100,13 @@
 
 /obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
 	. = ..()
-	if(istype(user) && !user.gloves)
-		to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
-		if(istype(user, /mob/living/carbon/human))
-			var/organ = ((user.hand ? "l_":"r_") + "arm")
-			var/obj/limb/affecting = user.get_limb(organ)
-			if(affecting.take_damage(0, force))
-				user.UpdateDamageIcon()
-		else
-			user.take_limb_damage(0, force)
-		return TRUE
-	return FALSE
+	if(!istype(user) || user.gloves)
+		return FALSE
+
+	to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
+	var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
+	affecting.take_damage(0, force)
+	return TRUE
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death
 	plantname = "deathnettle"
@@ -128,7 +124,7 @@
 
 	if(..() && prob(50))
 		user.apply_effect(5, PARALYZE)
-		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle when you try picking it up!"))
+		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle as you try to pick it up!"))
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"

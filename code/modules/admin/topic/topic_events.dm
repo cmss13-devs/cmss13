@@ -93,7 +93,7 @@
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				GLOB.chemical_data.update_credits(amount)
 		if("reroll_contracts")
-			var/confirm = tgui_alert(usr, "This will immediatly reroll the contract chemicals, Confirm?", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
+			var/confirm = tgui_alert(usr, "This will immediately reroll the contract chemicals, Confirm?", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
 			if(confirm != "Yes")
 				return
 			GLOB.chemical_data.reroll_chemicals()

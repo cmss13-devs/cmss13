@@ -90,7 +90,7 @@
 /datum/chem_property/special/regulating
 	name = PROPERTY_REGULATING
 	code = "REG"
-	description = "The chemical regulates its own metabolization and can thus never cause overdosis."
+	description = "The chemical regulates its metabolization and can never cause an overdose."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 	max_level = 1
@@ -128,7 +128,7 @@
 /datum/chem_property/special/encrypted
 	name = PROPERTY_ENCRYPTED
 	code = "ENC"
-	description = "This extremely complex chemical structure contains a cipher that appears to be missing a few parts to complete the process"
+	description = "This extremely complex chemical structure contains a cipher that appears to be missing a few parts to complete the process."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 

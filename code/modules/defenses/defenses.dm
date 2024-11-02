@@ -152,7 +152,8 @@
 
 
 /obj/structure/machinery/defenses/start_processing()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, iconstate = "sentry_passive")
+	if(z)
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, iconstate = "sentry_passive")
 	if(!machine_processing)
 		machine_processing = TRUE
 	START_PROCESSING(SSdefprocess, src)

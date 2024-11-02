@@ -288,77 +288,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		client_mob_status = "client mob is OK"
 	CRASH("Preferences deleted unexpectedly: [client_status]; [client_mob_status]")
 
-/datum/body_picker/ui_static_data(mob/user)
-	. = ..()
-
-	.["icon"] = /datum/species::icobase
-
-	.["body_types"] = list()
-	for(var/key in GLOB.body_type_list)
-		var/datum/body_type/type = GLOB.body_type_list[key]
-		.["body_types"] += list(
-			list("name" = type.name, "icon" = type.icon_name)
-		)
-
-	.["skin_colors"] = list()
-	for(var/key in GLOB.skin_color_list)
-		var/datum/skin_color/color = GLOB.skin_color_list[key]
-		.["skin_colors"] += list(
-			list("name" = color.name, "icon" = color.icon_name, "color" = color.color)
-		)
-
-	.["body_sizes"] = list()
-	for(var/key in GLOB.body_size_list)
-		var/datum/body_size/size = GLOB.body_size_list[key]
-		.["body_sizes"] += list(
-			list("name" = size.name, "icon" = size.icon_name)
-		)
-
-/datum/body_picker/ui_data(mob/user)
-	. = ..()
-
-	.["body_type"] = GLOB.body_type_list[user.client.prefs.body_type].icon_name
-	.["skin_color"] = GLOB.skin_color_list[user.client.prefs.skin_color].icon_name
-	.["body_size"] = GLOB.body_size_list[user.client.prefs.body_size].icon_name
-
-/datum/body_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-
-	var/datum/preferences/prefs = ui.user.client.prefs
-
-	switch(action)
-		if("type")
-			if(!GLOB.body_type_list[params["name"]])
-				return
-
-			prefs.body_type = params["name"]
-
-		if("size")
-			if(!GLOB.body_size_list[params["name"]])
-				return
-
-			prefs.body_size = params["name"]
-
-		if("color")
-			if(!GLOB.skin_color_list[params["name"]])
-				return
-
-			prefs.skin_color = params["name"]
-
-	return TRUE
-
-/datum/body_picker/tgui_interact(mob/user, datum/tgui/ui)
-	. = ..()
-
-	ui = SStgui.try_update_ui(user, src, ui)
-
-	if(!ui)
-		ui = new(user, src, "BodyPicker", "Body Picker")
-		ui.open()
-
-/datum/body_picker/ui_state(mob/user)
-	return GLOB.always_state
-
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
@@ -413,10 +342,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
-			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
-			dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'><b>[body_size]</b></a><br>"
-			dat += "<b>Body Muscularity:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+
+			dat += "<b>Skin Color:</b> [skin_color]<br>"
+			dat += "<b>Body Size:</b> [body_size]<br>"
+			dat += "<b>Body Muscularity:</b> [body_type]<br>"
+			dat += "<b>Edit Body:</b> <a href='?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
+
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -1642,25 +1574,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_h_gradient_style)
 						grad_style = new_h_gradient_style
 
-				if ("skin_color")
-					var/new_skin_color = tgui_input_list(user, "Choose your character's skin color:", "Character Preferences", GLOB.skin_color_list)
-
-					if (new_skin_color)
-						skin_color = new_skin_color
-
-				if ("body_size")
+				if ("body")
 					picker.tgui_interact(user)
-
-					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
-
-					if (new_body_size)
-						body_size = new_body_size
-
-				if ("body_type")
-					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_type_list)
-
-					if (new_body_type)
-						body_type = new_body_type
+					return
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null

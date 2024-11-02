@@ -104,17 +104,15 @@
 			report.read_paper(user)
 
 /obj/item/clothing/glasses/hud/health/science
-	name = "\improper custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
+	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
 	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
-	icon_state = "healthhud"
-	deactive_state = "degoggles"
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
 /obj/item/clothing/glasses/hud/health/science/prescription
-	name = "\improper Prescription custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
-	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles. This pair contains prescription lenses."
+	name = "prescription custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
+	desc = parent_type::desc + " This pair contains prescription lenses."
 	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/sensor

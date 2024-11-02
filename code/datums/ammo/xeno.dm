@@ -37,15 +37,21 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, insta_neuro)
+/proc/apply_neuro(mob/living/M, power, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(drain_stims)
+			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
+				H.reagents.remove_reagent(stim.id, power, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
+		if(drain_medchems)
+			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
+				H.reagents.remove_reagent(med.id, power, TRUE)
 
 	if(!isxeno(M))
 		if(insta_neuro)
@@ -89,10 +95,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, TRUE)
+			neuro_callback.Invoke(H, effect_power, TRUE, TRUE, TRUE)
 			return
 
-	neuro_callback.Invoke(M, effect_power, FALSE)
+	neuro_callback.Invoke(M, effect_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -110,7 +116,7 @@
 	max_range = 6 - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, TRUE)
+	neuro_callback.Invoke(M, effect_power, TRUE, FALSE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"

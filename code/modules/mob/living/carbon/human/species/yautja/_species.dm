@@ -35,6 +35,8 @@
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
 
+	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000

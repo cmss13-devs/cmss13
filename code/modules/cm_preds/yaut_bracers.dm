@@ -52,8 +52,7 @@
 	. = ..()
 	if(slot == WEAR_HANDS)
 		START_PROCESSING(SSobj, src)
-		if(!owner)
-			owner = user
+		owner = user
 		if(isyautja(owner))
 			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
 		toggle_lock_internal(user, TRUE)
@@ -62,12 +61,14 @@
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	owner = null
 	if(linked_bracer)
 		linked_bracer.linked_bracer = null
 		linked_bracer = null
 	return ..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
+	owner = null
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
 	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))

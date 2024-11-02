@@ -14,7 +14,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background = "background_civillian"
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
@@ -37,6 +37,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/workwear/blue,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -55,6 +56,10 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
 	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,
@@ -258,6 +263,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	assignment = "CMB Deputy"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
+	minimap_icon = "deputy"
+	minimap_background = "background_cmb"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB DEP"
@@ -370,6 +377,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	survivor_variant = CORPORATE_SURVIVOR
+	minimap_icon = "cl"
+	minimap_background = "background_civillian"
 
 /datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human, client/mob_client)
 	if(paygrades.len == 1)
@@ -463,6 +472,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
+	minimap_icon = "obs"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -489,6 +500,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
+	minimap_icon = "icc"
+	minimap_background = "background_cmb"
 
 	survivor_variant = CORPORATE_SURVIVOR
 

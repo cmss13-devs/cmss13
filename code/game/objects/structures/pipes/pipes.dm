@@ -132,7 +132,8 @@
 
 		ventcrawl_message_busy = world.time + 20
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
-		visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
+		var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
+		alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
 		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
 		animate_ventcrawl()
 		user.remove_specific_pipe_image(src)

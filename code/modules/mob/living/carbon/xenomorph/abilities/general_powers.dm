@@ -241,7 +241,7 @@
 	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 2)
+				apply_cooldown_override(xeno_cooldown * 3)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)

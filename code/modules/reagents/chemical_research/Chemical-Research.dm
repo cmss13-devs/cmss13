@@ -155,30 +155,30 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 	contract_chems = list()
 	for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
-		var/datum/reagent/generated/C = new /datum/reagent/generated
-		C.id = "contract-chem-[i]"//we dont actually give it proper id.
-		C.generate_name()
-		C.gen_tier = rand(1,3) //easy, hard and medium
-		C.generate_stats()
+		var/datum/reagent/generated/contract_chemical = new /datum/reagent/generated
+		contract_chemical.id = "contract-chem-[i]"//we dont actually give it proper id.
+		contract_chemical.generate_name()
+		contract_chemical.gen_tier = rand(1,3) //easy, hard and medium
+		contract_chemical.generate_stats()
 		var/roll = rand(1, 100)
-		switch(C.gen_tier) // pick a reagent hint.
+		switch(contract_chemical.gen_tier) // pick a reagent hint.
 			if(1)
-				C.credit_reward = 4
+				contract_chemical.credit_reward = 3
 				if(roll<=60)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
+					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
 				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
+					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 			if(2)
-				C.credit_reward = 5
+				contract_chemical.credit_reward = 4
 				if(roll<=40)
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
+					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 				else
-					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
+					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
-				C.credit_reward = 9
-				C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
-		C.property_hint = pick(C.properties)
-		contract_chems[C.id] = C
+				contract_chemical.credit_reward = 8
+				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
+		contract_chemical.property_hint = pick(contract_chemical.properties)
+		contract_chems[contract_chemical.id] = contract_chemical
 	next_reroll = world.time + RESEARCH_CONTRACT_NOT_PICKED
 	if(picked_chem)
 		picked_chem = FALSE

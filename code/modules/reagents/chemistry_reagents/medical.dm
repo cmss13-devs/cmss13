@@ -188,7 +188,7 @@
 	overdose_critical = 3
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
 /datum/reagent/medical/arithrazine
 	name = "Arithrazine"

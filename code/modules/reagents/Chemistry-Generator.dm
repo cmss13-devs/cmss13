@@ -183,25 +183,28 @@
 	if(!no_properties)
 		var/gen_value
 		var/properties_buff = rand(3, 4)
+		///do we have a rare property in a low quality paper. In which case every other property will be negative.
+		var/specific_property = "none"
 		for(var/i in 1 to gen_tier+properties_buff)
 			if(i == 1) //The first property is random to offset the value balance
 				if(gen_tier > 2)
-					gen_value = add_property(null,null,0,TRUE) //Give rare property
-				else if (gen_tier > 1 && prob(30))
-					gen_value = add_property(null,null,0,TRUE)
+					gen_value = add_property(null,null,0,"rare") //Give rare property
+				else if (gen_tier > 1 && prob(40))
+					gen_value = add_property(null,null,0,"rare",TRUE)
+					specific_property = "negative"
 				else
-					gen_value = add_property(null,null,0,FALSE,TRUE)
+					gen_value = add_property(null,null,0,"none",TRUE)
 			else if(gen_value == gen_tier * 2 + 2) //If we are balanced, don't add any more
 				break
 			else if(gen_tier < 3)
-				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
-			else gen_value += add_property(0,0, gen_tier - gen_value - 1)
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property,TRUE) //add property based on our offset from the prefered balance
+			else gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(max(gen_tier*2, 4),13);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),9);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
 		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
@@ -216,7 +219,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, make_rare = FALSE, track_added_properties = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE, )
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -248,8 +251,8 @@
 
 	var/property
 	var/roll = rand(1,100)
-	if(make_rare)
-		property = pick(GLOB.chemical_properties_list["rare"])
+	if(type_to_add != "none")
+		property = pick(GLOB.chemical_properties_list[type_to_add])
 	//Pick the property by value and roll
 	else if(value_offset > 0) //Balance the value of our chemical
 		property = pick(GLOB.chemical_properties_list["positive"])

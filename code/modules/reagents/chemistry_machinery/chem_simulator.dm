@@ -129,7 +129,7 @@
 				"id" = recipe_option.id,
 				"name" = recipe_option.name,
 			))
-	if(target && length(target?.data?.properties))
+	if(target && length(target?.data?.properties) && target.completed)
 		for(var/datum/chem_property/target_property_data in target.data.properties)
 			var/is_locked = FALSE
 			var/conflicting_tooltip = null
@@ -149,7 +149,7 @@
 	else
 		data["target_data"] = null
 
-	if(reference && length(reference?.data?.properties))
+	if(reference && length(reference?.data?.properties) && reference.completed)
 		for(var/datum/chem_property/reference_property_data in reference.data.properties)
 			var/is_locked = FALSE
 			var/conflicting_tooltip = null

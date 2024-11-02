@@ -640,7 +640,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/strata/green4/west,
+/turf/open/floor/strata/green3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -651,16 +651,6 @@
 	pixel_x = 1
 	},
 /turf/open/floor/strata/floor2,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
-"avR" = (
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26
-	},
-/turf/open/floor/strata/green3/north,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -1857,7 +1847,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -30
 	},
-/turf/open/floor/strata/green3,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -2051,7 +2041,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/strata/green3,
+/turf/open/floor/strata/green4/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -2634,11 +2624,12 @@
 	base_lighting_alpha = 0
 	})
 "bKa" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock")
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -16
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -5649,7 +5640,7 @@
 	})
 "dOy" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -5733,6 +5724,15 @@
 "dPu" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata/red3,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"dPV" = (
+/obj/structure/bed/sofa/vert/grey/bot{
+	pixel_x = 6
+	},
+/turf/open/floor/strata/floor2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -8658,6 +8658,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fFW" = (
+/obj/structure/bed/chair/comfy{
+	buckling_y = 2;
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/floor3,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "fGx" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/floor_marked,
@@ -8856,12 +8867,6 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"fQQ" = (
-/turf/open/floor/corsat/darkgreen/southwest,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
 "fRq" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -9013,7 +9018,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/strata/green4/north,
+/turf/open/floor/strata/green3/north,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -9374,7 +9379,7 @@
 	pixel_x = 15;
 	pixel_y = -32
 	},
-/turf/open/floor/strata/green4/west,
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -11221,12 +11226,6 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"hsB" = (
-/turf/open/floor/corsat/darkgreen,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
 "hsC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -11831,7 +11830,12 @@
 	base_lighting_alpha = 0
 	})
 "hLt" = (
-/turf/open/floor/corsat/darkgreen/north,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 18
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -13925,6 +13929,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iXP" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "iYa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ladder{
@@ -14659,12 +14672,6 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"jyi" = (
-/turf/open/floor/corsat/darkgreen/southeast,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
 "jyz" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -15278,6 +15285,17 @@
 "jPs" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"jPu" = (
+/obj/structure/bed/chair/comfy{
+	buckling_y = 2;
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/floor2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -18318,12 +18336,6 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"lMe" = (
-/turf/open/floor/corsat/darkgreen/east,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
 "lMf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -19517,7 +19529,7 @@
 	pixel_y = 28;
 	pixel_x = -18
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -21248,6 +21260,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nOW" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "nPf" = (
 /obj/structure/prop/almayer/computers/mapping_computer{
 	density = 0;
@@ -22315,13 +22333,6 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
-"oCb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/green3/east,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
 "oCi" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -22594,11 +22605,11 @@
 	base_lighting_alpha = 0
 	})
 "oJa" = (
-/obj/structure/bed/sofa/vert/grey/top{
-	pixel_x = -6
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat/spiralplate,
+/obj/structure/bed/sofa/vert/grey/top{
+	pixel_x = 6
+	},
+/turf/open/floor/strata/floor2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -23668,6 +23679,12 @@
 "pmR" = (
 /obj/item/trash/burger,
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"pnJ" = (
+/turf/open/floor/strata/green4/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -25321,7 +25338,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/strata/green4/north,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -27223,7 +27240,7 @@
 	pixel_x = -1
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/strata/green3,
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -27475,6 +27492,15 @@
 	icon_state = "1-4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"rQL" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -27843,12 +27869,6 @@
 	pixel_y = -28
 	},
 /turf/open/floor/strata/red3,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
-"seb" = (
-/turf/open/floor/corsat/darkgreen/northeast,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -28902,7 +28922,7 @@
 	pixel_x = 15;
 	pixel_y = -32
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -30175,7 +30195,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -30218,7 +30238,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
 	},
-/turf/open/floor/strata/green3,
+/turf/open/floor/strata/floor3,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -32605,7 +32625,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/strata/green4,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -32814,12 +32834,6 @@
 	dir = 4
 	},
 /turf/open/floor/strata/cyan3,
-/area/event/metal/dynamic{
-	name = "SSV Rostock";
-	base_lighting_alpha = 0
-	})
-"vog" = (
-/turf/open/floor/corsat/darkgreen/west,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -33979,10 +33993,11 @@
 	base_lighting_alpha = 0
 	})
 "vYD" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock")
 	},
-/turf/open/floor/corsat/darkgreen/northwest,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -36065,6 +36080,15 @@
 	pixel_y = 18
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"xpQ" = (
+/obj/structure/bed/sofa/vert/grey{
+	pixel_x = 6
+	},
+/turf/open/floor/strata/floor2,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -63366,7 +63390,7 @@ dRD
 dRD
 dRD
 bHY
-fpc
+cLn
 cwD
 pPQ
 oIK
@@ -63548,7 +63572,7 @@ kwA
 kwA
 pPQ
 bHY
-fpc
+cLn
 cwD
 pPQ
 qRi
@@ -63730,7 +63754,7 @@ pPQ
 pPQ
 pPQ
 bIj
-sYA
+nOW
 cwD
 pPQ
 pPQ
@@ -63912,7 +63936,7 @@ woG
 bpE
 bpE
 bHY
-fpc
+cLn
 cwD
 bpE
 bpE
@@ -64085,16 +64109,16 @@ vTq
 iFa
 dRD
 ksl
-fpc
-sYA
-fpc
+odu
+pjC
+gJW
 lBo
 kdK
 bHY
-sYA
+nOW
 eiG
 bHY
-fpc
+cLn
 cwD
 mYl
 sYA
@@ -64267,9 +64291,9 @@ vTq
 iFa
 dRD
 ksl
-fpc
-sYA
-bYr
+hiB
+oVB
+fIz
 lBo
 kdK
 kJu
@@ -64449,9 +64473,9 @@ vTq
 dRD
 dRD
 fXJ
-lBU
-lBU
-lBU
+wRt
+dVf
+oBg
 auA
 pPQ
 dRD
@@ -64631,9 +64655,9 @@ vTq
 jkR
 kNx
 qpg
-eiG
-fpc
-eiG
+lBU
+lBU
+lBU
 blZ
 kNx
 dRD
@@ -64812,11 +64836,11 @@ ofW
 vTq
 jkR
 sZu
-qpg
-fpc
-sYA
-fpc
-blZ
+vRb
+ksl
+eiG
+lBo
+qcY
 sZu
 dRD
 bGC
@@ -64995,9 +65019,9 @@ vTq
 dRD
 dRD
 tGc
-eiG
-fhz
-eiG
+ksl
+nOW
+lBo
 rCr
 dRD
 dRD
@@ -65176,11 +65200,11 @@ ofW
 vTq
 iFa
 dRD
+nOW
 ksl
-eiG
-pPQ
-eiG
+rQL
 lBo
+nOW
 dRD
 jtG
 ofW
@@ -65358,11 +65382,11 @@ ofW
 vTq
 iFa
 dRD
-ksl
-eiG
+nOW
+wJg
 pPQ
-eiG
-lBo
+pnJ
+nOW
 dRD
 jtG
 ofW
@@ -65541,9 +65565,9 @@ vTq
 iFa
 dRD
 mBi
-eiG
-sLI
-eiG
+kLg
+pPQ
+tup
 bhc
 dRD
 jtG
@@ -65722,11 +65746,11 @@ ofW
 vTq
 iFa
 dRD
+nOW
 ksl
-fpc
-sYA
-fpc
+iXP
 lBo
+nOW
 dRD
 jtG
 ofW
@@ -65905,10 +65929,10 @@ vTq
 dRD
 dRD
 vfT
-fpc
-sYA
-fpc
-lBo
+eiG
+nOW
+eiG
+tup
 jkR
 jtG
 ofW
@@ -66088,7 +66112,7 @@ jkR
 nEJ
 ksl
 eiG
-fpc
+eiG
 eiG
 lBo
 jkR
@@ -66268,11 +66292,11 @@ ofW
 vTq
 jkR
 nEJ
-kLg
-epA
-epA
-epA
-tup
+wJg
+lBU
+lBU
+lBU
+pnJ
 dRD
 fiP
 ofW
@@ -66450,11 +66474,11 @@ ofW
 vTq
 dRD
 dRD
-vfT
-odu
-pjC
-gJW
-lBo
+fiw
+eiG
+woG
+bpE
+xZl
 iCj
 myc
 ofW
@@ -66633,10 +66657,10 @@ vTq
 iFa
 dRD
 bKa
-hiB
-oVB
-fIz
-lBo
+eiG
+bHY
+nOW
+cwD
 kdK
 myc
 ofW
@@ -66814,11 +66838,11 @@ ofW
 vTq
 iFa
 dRD
-avR
-wRt
-dVf
-oBg
-lBo
+nOW
+eiG
+dZH
+wwk
+kWP
 kdK
 myc
 ofW
@@ -66995,11 +67019,11 @@ ofW
 ofW
 vTq
 iFa
-dRD
-ksl
-fpc
-sYA
-fpc
+jkR
+nOW
+eiG
+cLn
+cLn
 tGH
 dRD
 ltx
@@ -67177,11 +67201,11 @@ ofW
 ofW
 vTq
 iFa
-dRD
-wJg
-oCb
-lBU
-lBU
+jkR
+nOW
+mYl
+cLn
+cLn
 gkj
 dRD
 fiP
@@ -67358,13 +67382,13 @@ ofW
 ofW
 ofW
 vTq
-dRD
+iFa
 dRD
 vYD
-vog
-vog
-vog
-fQQ
+eiG
+woG
+bpE
+xZl
 iCj
 myc
 ofW
@@ -67540,13 +67564,13 @@ ofW
 ofW
 ofW
 vTq
-jkR
-nEJ
+iFa
+dRD
 hLt
-biL
-oPc
-biL
-hsB
+eiG
+bHY
+nOW
+cwD
 kdK
 myc
 ofW
@@ -67722,13 +67746,13 @@ ofW
 ofW
 ofW
 vTq
-jkR
-nEJ
-seb
-lMe
-lMe
-lMe
-jyi
+dRD
+dRD
+fiw
+eiG
+dZH
+wwk
+kWP
 kdK
 myc
 ofW
@@ -67904,13 +67928,13 @@ ofW
 ofW
 ofW
 vTq
-dRD
-dRD
-sYA
+jkR
+nEJ
 eiG
 eiG
 eiG
-aMv
+eiG
+lOh
 dRD
 ltx
 ofW
@@ -68086,13 +68110,13 @@ ofW
 ofW
 ofW
 vTq
-iFa
-dRD
-fpc
+jkR
+nEJ
+eiG
 oJa
-xmF
-aMh
-fpc
+xpQ
+dPV
+eiG
 jkR
 jtG
 ofW
@@ -68268,13 +68292,13 @@ ofW
 ofW
 ofW
 vTq
-iFa
 dRD
-fpc
-uhN
-tjt
-kCR
-fpc
+dRD
+eiG
+eiG
+eiG
+eiG
+eiG
 jkR
 jtG
 ofW
@@ -68453,9 +68477,9 @@ vTq
 iFa
 dRD
 dOy
-eiG
-eiG
-eiG
+nOW
+nOW
+nOW
 sQD
 dRD
 jtG
@@ -68635,9 +68659,9 @@ vTq
 iFa
 dRD
 dRD
-dSY
-dSY
-dSY
+fFW
+fFW
+jPu
 dRD
 dRD
 jtG

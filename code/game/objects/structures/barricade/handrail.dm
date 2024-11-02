@@ -288,5 +288,5 @@
 	icon_state = "centerroadbarrierdouble"
 
 /obj/structure/barricade/handrail/hybrisa/handrail
-	name = "haindrail"
+	name = "handrail"
 	icon_state = "handrail_hybrisa"

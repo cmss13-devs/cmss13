@@ -1,0 +1,6 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - balance: "Sentinel neuro spit cooldown raised 1.5 to 2s, superslow 2.5 to 4s"
+  - balance: "Sentinel scatter spit scatter lowered 60 to 45, cooldown lowered 8s to 6s"
+  - balance: "Sentinel paralyzing slash stuns after 3 seconds instead of 4 and lasts 2.5 seconds from 2."

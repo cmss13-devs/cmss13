@@ -82,6 +82,13 @@
 	/// Doesn't need to be set for areas/Z levels that are marked as admin-only
 	var/block_game_interaction = FALSE
 
+	/// Which, if any, LZ this area belongs to. If an area belongs to an LZ, if that LZ is designated as the primary
+	/// LZ, all weeds will be destroyed and further weed placement disabled
+	var/linked_lz = FALSE
+
+	/// How long this area should be un-oviable
+	var/unoviable_timer = 25 MINUTES
+
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -104,6 +111,9 @@
 		GLOB.ship_areas += src
 
 	update_base_lighting()
+
+	if(unoviable_timer)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -418,3 +428,14 @@
 		areas_in_z["[z]"] = list()
 	areas_in_z["[z]"] += src
 
+/**
+ * Purges existing weeds, and prevents future weeds from being placed.
+ */
+/area/proc/purge_weeds()
+	SEND_SIGNAL(src, COMSIG_AREA_RESIN_DISALLOWED)
+
+	is_resin_allowed = FALSE
+
+/// From roundstart, sets a timer to make an area oviable.
+/area/proc/handle_ovi_timer()
+	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)

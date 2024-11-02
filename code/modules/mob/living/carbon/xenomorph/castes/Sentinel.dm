@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HELLHOUND
+	speed = XENO_SPEED_TIER_7
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)

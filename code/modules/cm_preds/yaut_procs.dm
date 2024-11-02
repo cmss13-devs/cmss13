@@ -236,6 +236,33 @@
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
 	ambience_exterior = AMBIENCE_JUNGLE
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS
+	block_game_interaction = TRUE
+
+/area/yautja_grounds/jungle
+	name = "\improper Yautja Hunting Grounds Jungle Central"
+	icon_state = "red"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/jungle/north
+	name = "\improper Yautja Hunting Grounds Jungle north"
+	icon_state = "blue"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/jungle/east
+	name = "\improper Yautja Hunting Grounds Jungle east"
+	icon_state = "yellow"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/south
+	name = "\improper Yautja Hunting Grounds Jungle south"
+	icon_state = "orange"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/jungle/west
+	name = "\improper Yautja Hunting Grounds Jungle west"
+	icon_state = "purple"
+	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/caves
 	name = "\improper Yautja Hunting Grounds Caves"
@@ -252,3 +279,4 @@
 /area/yautja_grounds/prep_room
 	name = "\improper Jungle Moon"
 	icon_state = "red"
+	ambience_exterior = AMBIENCE_CAVE

@@ -976,7 +976,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	path = /obj/item/clothing/accessory/patch/falcon
 
 /datum/gear/misc/patch_uscm/devils
-	display_name = "USCM Solar Devils patch "
+	display_name = "USCM Solar Devils patch"
 	path = /obj/item/clothing/accessory/patch/devils
 
 /datum/gear/misc/patch_uscm/forecon

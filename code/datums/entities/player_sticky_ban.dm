@@ -132,6 +132,8 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"linked_stickyban",
 	)
 
+/// Returns either a list containing the primary CKEYs this alt is connected to,
+/// or FALSE.
 /proc/get_player_is_alt(ckey)
 	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("ckey", DB_EQUALS, ckey))
 	if(!length(alts))
@@ -165,6 +167,17 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/whitelist_to_add = ckey(tgui_input_text(src, "What is the Ckey that should be added to known alts?", "Alt Ckey"))
 	if(!whitelist_to_add)
 		return
+
+	var/alts_existing_primaries = get_player_is_alt(whitelist_to_add)
+	if(alts_existing_primaries)
+		if(player_ckey in alts_existing_primaries)
+			to_chat(src, SPAN_WARNING("The alt '[whitelist_to_add]' is already set as an alt Ckey for '[player_ckey]'."))
+			return
+
+		var/confirm = tgui_alert(src, "Alt is already an alt for [english_list(alts_existing_primaries)].", "Alt Ckey", list("Confirm", "Cancel"))
+
+		if(confirm != "Confirm")
+			return
 
 	var/datum/entity/known_alt/alt = DB_ENTITY(/datum/entity/known_alt)
 	alt.player_id = player.id

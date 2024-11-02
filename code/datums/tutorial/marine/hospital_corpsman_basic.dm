@@ -63,7 +63,7 @@
 	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
 	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(splint_tutorial)), 11 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
 	SIGNAL_HANDLER
@@ -210,14 +210,14 @@
 	message_to_player("Excellent. As you can see, the left arm of the little man in the <b>zone selection</b> element is now highlighted. This means we will target the left arm of patients when treating them.")
 	message_to_player("Now, just like before, keep the left arm selected, and click on the Dummy while holding the <b>Advanced Trauma Kit</b> in your hand to apply it to their left arm")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	var/obj/limb/chest/mob_larm = locate(/obj/limb/arm/l_arm) in human_dummy.limbs
+	var/obj/limb/arm/mob_larm = locate(/obj/limb/arm/l_arm) in human_dummy.limbs
 	add_to_tracking_atoms(mob_larm)
 	RegisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_larm)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/arm, mob_larm)
 	UnregisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/bruise_pack, brutekit)
@@ -492,6 +492,59 @@
 	message_to_player("To remove the shrapnel, keep Surgery Mode <b>Disabled</b>, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
 
 	RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(tutorial_close))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial()
+	SIGNAL_HANDLER
+
+	message_to_player("When someone recieves an exceptionally severe injury, there is a chance it might cause a <b>Bone Fracture</b> in their body.")
+	message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single <b>Bone Fracture</b> capable of triggering <b>Internal Bleeding</b>, and blood loss.")
+	message_to_player("While <b>Bone Fractures</b> cannot be fully treated by a Hospital Corpsman through typical means, you can apply a <b>Splint</b> to the damaged area to stabilize the wound.")
+	message_to_player("<b>Bone Fractures</b> can be identified through a <b>Health Analyzer</b> scan.")
+	message_to_player("Scan the Dummy with your <b>Health Analyzer</b>.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	var/obj/limb/leg/l_leg/mob_lleg = locate(/obj/limb/leg/l_leg) in human_dummy.limbs
+	add_to_tracking_atoms(mob_lleg)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+	mob_lleg.fracture()
+	add_highlight(healthanalyzer, COLOR_GREEN)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(splint_tutorial_2))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_2()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	message_to_player("As you can see, your Health Analyzer indicates the Dummy has a fracture on their <b>Left Leg</b>.")
+	message_to_player("We are going to apply a <b>Splint</b> to the fractured limb.")
+	message_to_player("Like Trauma Kits, you must first select which part of the body you want to apply a splint to")
+	message_to_player("Select the <b>Left Leg</b> in the <b>Zone Selection</b> element, highlighted on the bottom right of your HUD. Then, click on the Dummy while holding a splint in hand to apply it to their left leg")
+
+	var/obj/item/stack/medical/splint/splint = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(splint)
+	add_highlight(splint, COLOR_GREEN)
+
+	RegisterSignal(human_dummy, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(splint_tutorial_3_pre))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_3_pre()
+	//cooldown to register splint application
+	addtimer(CALLBACK(src, PROC_REF(splint_tutorial_3)), 1 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_3(/obj/limb/leg/l_leg, status)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/leg/l_leg, mob_lleg)
+	if(!(mob_lleg.status & LIMB_SPLINTED))
+		message_to_player("You have applied a splint to the wrong limb. Make sure you have the <b>Left Leg</b> selected.")
+		addtimer(CALLBACK(src, PROC_REF(splint_tutorial_2)), 3 SECONDS)
+		return
+
+	message_to_player("Signal Check Cleared!")
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER

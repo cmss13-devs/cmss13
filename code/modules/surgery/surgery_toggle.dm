@@ -26,4 +26,5 @@
 		button.icon_state = "template_on"
 		owner.mob_flags |= SURGERY_MODE_ON
 		to_chat(owner, "You prepare to perform surgery.")
-	SEND_SIGNAL(L, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_SURGERY_MODE_TOGGLED)

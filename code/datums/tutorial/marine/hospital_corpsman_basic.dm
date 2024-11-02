@@ -13,7 +13,7 @@
 
 	init_mob()
 	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
-	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner()
 	SIGNAL_HANDLER
@@ -355,13 +355,17 @@
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
+	SIGNAL_HANDLER
+
 	//adds a slight grace period, so humans are not rejuved before kelo is registered in their system
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	human_dummy.rejuvenate()
-	human_dummy.reagents.clear_reagents()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, burn_injector)
+	remove_highlight(burn_injector)
+	qdel(burn_injector)
 
 	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
@@ -372,6 +376,8 @@
 	update_objective("")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
 	mob_chest.add_bleeding(damage_amount = 15)
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 4 SECONDS)
 
@@ -424,6 +430,7 @@
 	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
+	SIGNAL_HANDLER
 
 	message_to_player("In the line of duty, Marines occasionally recieve embedded shrapnel in wounds.")
 	message_to_player("Shrapnel can come in a variety of forms, all of which can be dug out of the body with a <b>Knife</b> or <b>Scalpel</b>.")
@@ -435,6 +442,9 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(shrapnel_tutorial_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_2()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
 	message_to_player("When removing shrapnel from a patient, you must make sure that <b>Surgery Mode</b> is always <b>disabled</b> first.")
 	message_to_player("<b>Surgery Mode</b> is toggled on and off by clicking the highlighted button on the top left of your HUD. When it is highlighted <b>Green</b> it is <b>Enabled</b>.")
@@ -442,17 +452,22 @@
 	message_to_player("Disable <b>Surgery Mode</b> by clicking the yellow and green highlighted button on the top left of your HUD")
 
 	var/datum/action/surgery_toggle = get_action(tutorial_mob, /datum/action/surgery_toggle)
+	add_to_tracking_atoms(surgery_toggle)
 	add_highlight(surgery_toggle.button)
 
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_SURGERY_MODE_TOGGLED, PROC_REF(shrapnel_tutorial_3))
+	RegisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED, PROC_REF(shrapnel_tutorial_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3(datum/source)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/datum/action, surgery_toggle)
+	UnregisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
 
 	if(tutorial_mob.mob_flags & SURGERY_MODE_ON)
 		return
 
 	message_to_player("Well done, keep surgery mode <b>Disabled</b> for the remainder of the tutorial.")
-	message_to_player("It seem that our friend Mr Dummy is suddenly bleeding. Use your <b>Health Analyzer</b> to scan them.")
+	message_to_player("It seem that our friend Mr Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
@@ -476,9 +491,20 @@
 	message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
 	message_to_player("To remove the shrapnel, keep Surgery Mode <b>Disabled</b>, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
 
-	//RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(on_shrapnel_removed))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(tutorial_close))
 
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
+
+	message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
+	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
+	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
 	update_objective("Tutorial completed.")
+
+
 	tutorial_end_in(5 SECONDS)
 
 // END OF SCRIPTING

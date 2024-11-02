@@ -307,3 +307,143 @@
   - rscadd: Fiorina Corporate Liaison
   - rscadd: Kutjevo Corporate Liaison
   - rscadd: WY Headsets to WY roles on Fiorina
+2024-10-28:
+  Blundir:
+  - rscadd: returned bimex description and flash protection, but price of it inscread
+      from 2 to 5 pref points
+  - rscadd: minimap icons for all factions, roles, etc
+  - code_imp: tweaked how icons are assembled, added support for custom icon background
+      on equipment preset
+  - imageadd: added a lot of new minimap icons
+  Killfish:
+  - balance: Added Stim and Medical Chem draining effects to Sentinel's Slowing Spit.
+  LordJike:
+  - rscadd: ASO now starts with a senior command headset (and thus access to the MP
+      radio channel.) and can also get a new one from their locker.
+  Red-byte3D:
+  - code_imp: Sentinel proper vars
+  SpypigDev:
+  - rscadd: Pressurized Chemical Dispenser
+  Tyranicranger4:
+  - balance: The surgical case can now hold Surgical Line, Synthetic-Graft, and Fix-O-Vein
+      (for real this time)
+  Venuska1117:
+  - code_imp: Removed code for some boudlers, removed code makes boulders meltable
+      and destructable by large explosions.
+  cuberound:
+  - bugfix: vehicle light turns back on after the vehicle is fixed
+  deathrobotpunch:
+  - balance: buffed the stun subtype of rubber bullets to have hit accuracy tier 4
+  private-tristan:
+  - balance: The Lever action rifles R4T and XM88 now begin falloff at 7 tiles instead
+      of 0.
+2024-10-29:
+  Ansekishoku:
+  - bugfix: Buckshot additional projectiles no more miss the target when they get
+      stunned by the main projectile.
+  - bugfix: Fixed autolathes printing blowtorches with fuel.
+  - spellcheck: Added description to blowtorches.
+  Ansekishokuu:
+  - qol: Squad engineer vendors now have welding visor.
+  - qol: Organized the corpsman vendor so that the perixadon revival mix is near the
+      tricordrazine revival mix.
+  BeagleGaming1:
+  - bugfix: fixed a bug with the pixel shift keybindings
+  Blundir:
+  - rscadd: you can no longer see or talk with a hugger on your face
+  - bugfix: welding protection now adds correct amount of vision impairment
+  - bugfix: blindfold now actually blinds
+  - bugfix: fixed larva bursting on mob image not working
+  - soundadd: new hugging sounds to humans
+  - soundadd: bursting screams to humans and yautja
+  - imageadd: added yautja bursting and afterburst gore icons
+  Joe Lampost, Beaglegaming, Sleepynecrons:
+  - rscadd: Adds two new vendors for preds
+  - rscadd: Re-sprites all but one of the pred weapons
+  - balance: Gives thwei brain and eye healing properties.
+  - bugfix: fixes the on mobs for retro caster
+  - rscdel: Removes being able to choose what accessory you spawn with (adds it to
+      the vendor)
+  - rscdel: Removes the conscious check for big SD laugh so SDing a dead pred triggers
+      the laugh
+  - rscdel: Removes all of the code related to claim gear
+  - refactor: refactored wrist blade code (now bracer attachments)
+  - soundadd: adds 3 pairs of deployment and retracting sounds for each current bracer
+      attachment
+  - soundadd: adds a sound for attaching attachments to the bracer
+  - maptweak: Re maps the predator blooded area to be more open
+  - maptweak: Removes the lightsabre from the pred ship
+  - rscadd: adds two new pred masks
+  Katskan:
+  - balance: enable generation selection to affect species and skillset for synthetics
+  - balance: removed generation 3 leadership skills
+  - balance: increased generation 1/2 engineering and construction skills
+  - bugfix: fixed the Solaris PMC nightmare spawn being incorrect skillset
+  MistChristmas, Private-Tristan:
+  - balance: You can no longer crawl while being grabbed by a xenomorph.
+  TheManWithNoHands:
+  - rscadd: 'Added vendor description to: AC3-E autocanon, LTAA-AP Minigun, DRG-N
+      Flamer, LTB canon, LZR-N Flamer, TOW launcher, M56cupola, and M92T Grenade Launcher.'
+  - rscadd: 'Expanded the description of: LTAA-AP Minigun, TOW launcher, M56cupola,
+      M92T Grenade Launcher and the magazins of the AC3-E autocanon, LTAA-AP Minigun,
+      DRG-N Flamer, LZR-N Flamer, and M92T Grenade Launcher. As well as for the snowplow
+      hardpoint and heavy and ligth treads.'
+  Unknownity:
+  - bugfix: Fixes missing paygrades,ranks and comms titles to PMC Survivors and PMC
+      Medic. Fixes certain PMC Survivors having incorrect headsets.
+  - balance: PMC Synthvivor skillset has been buffed to be consistent with the regular
+      PMC Synth. PMC Synthvivor's loadout has been nerfed. Dutch Lifesaver belt (used
+      by PMCs and DDs) has been buffed with improved splints and kits.
+  - rscadd: PMC Synthetics were granted a higher budget and they gained a Maintenance
+      Jack in their loadout.
+  VileBeggar:
+  - balance: Egg morphers now generate facehuggers on their own, up to 6 in total
+      every 2 minutes. Bodies can no longer be fed to egg morphers. Eggs can now get
+      planted beneath light fixtures and nested mobs. Egg morphers can no longer be
+      built in tallgrass.
+  - qol: Carriers can now automatically fill egg morphers with their own egg supply
+      by using the Retrieve Egg ability on them.
+  - balance: shotgun slugs have had their accurate range increased to 8, and their
+      accuracy tripled. any targets shot within 8 tiles will always be hit. incendiary
+      have had a milder accuracy increase.
+  blackcrystall:
+  - bugfix: fix of squad marines not getting squads
+  cuberound:
+  - balance: containers are destructible with bullets and xeno slashing
+  - rscadd: faction shuttle computers functionality
+  - bugfix: SMES units made explosion proof
+  ihatethisengine:
+  - balance: limbs are now only be delimb-able if they were fractured BEFORE the hit
+2024-10-30:
+  BeagleGaming1:
+  - bugfix: Fixes chat showing "You fire the plasma caster" when firing an energy
+      weapon after equipping the plasma caster
+  - bugfix: Bracer attachments get properly deleted on bracer destruction
+  - bugfix: One bracer attachment cannot be attached to both bracer attachment slots
+  Blundir:
+  - rscadd: new minimap icons for numerous things
+  - bugfix: fixed squads having incorrect colors on minimap
+  Joe lampost:
+  - bugfix: Changes what armor is spawned from the pred vendor
+  Nanu, HarryOb, Spartanbobby:
+  - rscadd: Added a feature that will delete weeds in the surrounding area of the
+      Marines selected landing zone, and keep them subject to be unweedable for the
+      next eight minutes.
+  - balance: Maps currently affected by this change/test - Big Red, LV-624, Kutjevo,
+      New Varadero, Sorokyne Strata, Prison Station Science Annex, Shiva's Snowball.
+  - maptweak: Slight area tweaks and changes to allow more subjective control over
+      areas.
+  - maptweak: Big Red, South West Cave now has timed blockers to hinder a SW hive
+      and Marines alike from going a straight line to attack each other. These blockers
+      dissappear in a "cavein" at fourty minutes, Roughly on average twenty minutes
+      after marines land.
+  - balance: Queens can only ovi and build the hivecore on "their" side of the map
+      at roundstart, this protection drops off 25min from roundstart.
+  harryob:
+  - bugfix: stops a crisis in the part fabricator point economy by preventing infinite
+      money generation through cancelling items in the queue
+  joookschad:
+  - qol: Toy mechs will now fit into storage.
+2024-10-31:
+  SpartanBobby:
+  - maptweak: Rearranges Almayer Upper Medical to accommodate a Psychiatric Care Unit

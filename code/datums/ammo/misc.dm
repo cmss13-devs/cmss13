@@ -180,13 +180,22 @@
 	damage_type = BRUTE
 	icon_state = "arrow"
 
-	damage = 40
+	damage = 110
+	penetration = 20
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 14
 	shell_speed = AMMO_SPEED_TIER_3
-
+	flags_ammo_behavior = AMMO_SPECIAL_EMBED
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_10
+	shrapnel_type = /obj/item/arrow
 	handful_type = /obj/item/arrow
+	sound_hit = 'sound/weapons/pierce.ogg'
 	var/activated = FALSE
+
+/datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
+	if(ishuman(embedded_mob) && !isyautja(embedded_mob))
+		if(istype(target_organ))
+			target_organ.embed(new shrapnel_type)
 
 /datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
 	var/obj/item/arrow/G = new handful_type(T)
@@ -211,6 +220,7 @@
 	handful_type = /obj/item/arrow/expl
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
+	shrapnel_chance = 0
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)

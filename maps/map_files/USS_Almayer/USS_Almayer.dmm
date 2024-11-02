@@ -44287,6 +44287,12 @@
 	pixel_x = 4;
 	pixel_y = 15
 	},
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case,
+/obj/item/storage/syringe_case,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (

@@ -4,6 +4,10 @@
 	icon_state = "cargosoft"
 	flags_inventory = COVEREYES
 	item_state = "helmet"
+	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+	)
 	var/cap_color = "cargo"
 	var/flipped = 0
 	siemens_coefficient = 0.9

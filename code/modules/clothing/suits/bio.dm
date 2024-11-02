@@ -1,8 +1,12 @@
 //Biosuit complete with shoes (in the item sprite)
 /obj/item/clothing/head/bio_hood
 	name = "bio hood"
-	icon_state = "bio"
 	desc = "A hood that protects the head and face from biological contaminants."
+	icon_state = "bio"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+	)
 	permeability_coefficient = 0.2
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE

@@ -1,13 +1,4 @@
 
-
-/obj/item/clothing/head/centhat
-	name = "\improper CentComm. hat"
-	icon_state = "centcom"
-	desc = "It's good to be emperor."
-	item_state = "centhat"
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
-
 /obj/item/clothing/head/hairflower
 	name = "hair flower pin"
 	icon_state = "hairflower"
@@ -26,6 +17,10 @@
 	desc = "It's an Amish-looking hat."
 	icon_state = "tophat"
 	item_state = "that"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 
@@ -38,9 +33,13 @@
 
 /obj/item/clothing/head/syndicatefake
 	name = "red space-helmet replica"
+	desc = "A plastic replica of a syndicate agent's space helmet, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
 	icon_state = "syndicate"
 	item_state = "syndicate"
-	desc = "A plastic replica of a syndicate agent's space helmet, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+	)
 	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	siemens_coefficient = 2
@@ -90,24 +89,35 @@
 	desc = "Gentleman, elite aboard!"
 	icon_state = "bowler"
 	item_state = "bowler"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	flags_armor_protection = 0
 
 //stylish bs12 hats
 
 /obj/item/clothing/head/bowlerhat
 	name = "bowler hat"
+	desc = "For the gentleman of distinction."
 	icon_state = "bowler_hat"
 	item_state = "bowler_hat"
-	desc = "For the gentleman of distinction."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/director
 	name = "director's hat"
+	desc = "Belongs to someone very important. Has minor protection to all damage types"
 	icon_state = "director_hat"
 	item_state = "director_hat"
-	desc = "Belongs to someone very important. Has minor protection to all damage types"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	flags_armor_protection = BODY_FLAG_HEAD
-
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -119,11 +129,14 @@
 
 /obj/item/clothing/head/manager
 	name = "manager's hat"
+	desc = "Belongs to someone important. Offers minor protection from all forms of damage."
 	icon_state = "manager_hat"
 	item_state = "manager_hat"
-	desc = "Belongs to someone important. Offers minor protection from all forms of damage."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 	flags_armor_protection = BODY_FLAG_HEAD
-
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -135,27 +148,43 @@
 
 /obj/item/clothing/head/beaverhat
 	name = "beaver hat"
+	desc = "Soft felt makes this hat both comfortable and elegant."
 	icon_state = "beaver_hat"
 	item_state = "beaver_hat"
-	desc = "Soft felt makes this hat both comfortable and elegant."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 
 /obj/item/clothing/head/boaterhat
 	name = "boater hat"
+	desc = "The ultimate in summer fashion."
 	icon_state = "boater_hat"
 	item_state = "boater_hat"
-	desc = "The ultimate in summer fashion."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 
 /obj/item/clothing/head/fedora
 	name = "\improper fedora"
+	desc = "A sharp, stylish hat."
 	icon_state = "fedora"
 	item_state = "fedora"
-	desc = "A sharp, stylish hat."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 
 /obj/item/clothing/head/feathertrilby
 	name = "\improper feather trilby"
+	desc = "A sharp, stylish hat with a feather."
 	icon_state = "feather_trilby"
 	item_state = "feather_trilby"
-	desc = "A sharp, stylish hat with a feather."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
 
 /obj/item/clothing/head/fez
 	name = "\improper fez"

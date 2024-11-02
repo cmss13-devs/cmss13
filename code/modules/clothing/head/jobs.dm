@@ -120,9 +120,9 @@
 	name = "hat"
 	desc = "Someone who wears this will look very smart."
 	icon_state = "detective"
-	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
 	)
 	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
 	armor_melee = CLOTHING_ARMOR_MEDIUM

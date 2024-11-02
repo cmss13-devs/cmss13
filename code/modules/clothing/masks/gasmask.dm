@@ -3,13 +3,17 @@
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
 	icon_state = "gas_alt"
+	item_state = "gas_alt"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	w_class = SIZE_SMALL
-	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.9
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -36,6 +40,10 @@
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter."
 	item_state = "helmet"
 	icon_state = "pmc_mask"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+	)
 	anti_hug = 3
 	vision_impair = VISION_IMPAIR_NONE
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -54,10 +62,18 @@
 	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
 	icon_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 
 /obj/item/clothing/mask/gas/pmc/upp
 	name = "\improper UPP armored commando balaclava"
 	icon_state = "upp_mask"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+	)
 
 /obj/item/clothing/mask/gas/pmc/leader
 	name = "\improper M8 pattern armored balaclava"
@@ -76,16 +92,6 @@
 	icon_state = "swat"
 	siemens_coefficient = 0.7
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
-
-/obj/item/clothing/mask/gas/syndicate
-	name = "syndicate mask"
-	desc = "A close-fitting tactical mask that can be connected to an air supply."
-	icon_state = "swat"
-	siemens_coefficient = 0.7
-
-/obj/item/clothing/mask/gas/voice
-	name = "gas mask"
-	desc = "A face-covering mask that can be connected to an air supply. It seems to house some odd electronics."
 
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"

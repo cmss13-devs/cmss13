@@ -177,7 +177,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigoff"
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
 	)
 	w_class = SIZE_TINY
 	flags_armor_protection = 0

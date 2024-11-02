@@ -40,3 +40,28 @@
       with "COBALT_BASE_API" and "COBALT_API_KEY"
   realforest2001:
   - bugfix: No store cryo pods now work as intended.
+2024-11-02:
+  Drathek:
+  - ui: The ghost observer tacmap will now scroll both horizontally and vertically
+      as needed to display a large map.
+  - ui: The TGUI panels for tacmaps and drawings have been polished to utilize more
+      minimap space fully.
+  - refactor: Refactored minimap generation code to calculate min and max faster,
+      to more aggressively trim minimaps, and to support larger minimaps (was 480px
+      now 512px).
+  - bugfix: Fixes an issue where predator tacmap would take over the ghost tacmap
+      preventing it from opening for observers
+  - bugfix: Fix hive core placement restriction
+  Red-byte3D:
+  - balance: sg effective range nerfed to 5
+  - balance: sg falloff increased
+  Sporticusmge:
+  - balance: Night Vision Optic now works 2 times longer, and recharge 2 times longer.
+      Squad Leader NVO prices changed, from 20 to 25.
+  Zenith00000:
+  - bugfix: fixed some un-needed code and added missing tiles
+  deathrobotpunch:
+  - balance: The Tactical compact nail gun is now available in the Chief Engineers
+      vendor.
+  private-tristan:
+  - balance: Forecon M39 spawn now has its spawn ammo in belt, instead of in satchel.

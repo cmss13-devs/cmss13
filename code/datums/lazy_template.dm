@@ -98,6 +98,8 @@
 
 		new/datum/static_lighting_object(initializing_turf)
 
+	SSatoms.InitializeAtoms(loaded_areas + loaded_atom_movables + loaded_turfs)
+
 	SEND_SIGNAL(src, COMSIG_LAZY_TEMPLATE_LOADED, loaded_atom_movables, loaded_turfs, loaded_areas)
 	reservations += reservation
 	return reservation

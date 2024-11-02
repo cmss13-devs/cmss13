@@ -208,7 +208,7 @@
 /datum/fluff_email/almayer/immunization
 	title = "RE: Immunizations & Training"
 	entry_text = {"<html>
-				One of the battalions just got mulched by a Beebop group and the AAR suggested that training was neglected, it's one hell of a shit show over here.
+				One of the battalions just got mulched by a Beebop group and the AAR suggests their training was neglected, it's one hell of a shit show over here.
 				Command is breathing down everyone's necks and wants the entire regiment on high readiness. Orders are going out to immediately assess each battalion's state and conduct training.
 				<br>
 				<br>
@@ -217,11 +217,23 @@
 				<br>
 				<br>
 				This is your heads-up, don't make me get chewed out chief.
+				</html>
+				"}
+
+/datum/fluff_email/almayer/morevehicles
+	title = "RE: Any chance of replacement vehicles?"
+	entry_text = {"<htrml>
+				No, sorry. What we lost on Tychon was what we had. Maisie thinks there might be enough spare bits left to refurbish
+				one of the old rust buckets, but the chances of that are next to nil unless she can pull more than coins from behind her ear.
+				</html>
 				"}
 
 //Sticking this here because I'm too lazy to type it all out.
 /*
 /datum/fluff_email/almayer/
-	title =
-	entry_text =
+	title = ""
+	entry_text = {"<html>
+
+				</html>
+				"}
 */

@@ -32630,10 +32630,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_sw)
-"rGr" = (
-/obj/effect/landmark/corpsespawner/colonist,
-/turf/open/floor/wood,
-/area/bigredv2/outside/dorms)
 "rGD" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/red/north,
@@ -63766,7 +63762,7 @@ amD
 asc
 amn
 jlr
-rGr
+atY
 amn
 avG
 awq

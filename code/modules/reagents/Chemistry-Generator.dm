@@ -219,7 +219,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE, )
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)

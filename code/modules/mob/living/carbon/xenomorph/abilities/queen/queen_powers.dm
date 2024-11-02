@@ -185,6 +185,11 @@
 		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
 		return
 
+	var/area/current_area = get_area(xeno)
+	if(current_area.unoviable_timer)
+		to_chat(xeno, SPAN_XENOWARNING("This area is not right for you to grow an ovipositor in."))
+		return
+
 	if(!xeno.check_alien_construction(current_turf))
 		return
 

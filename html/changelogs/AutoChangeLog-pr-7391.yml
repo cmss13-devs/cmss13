@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "returned bimex description and flash protection, but price of it inscread from 2 to 5 pref points"

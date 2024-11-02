@@ -45,6 +45,7 @@
 	var/omni_squad_vendor = FALSE
 	/// Squad roles max caps per role list
 	var/list/roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 3,
 		JOB_SQUAD_MEDIC = 4,
 		JOB_SQUAD_SMARTGUN = 1,
@@ -86,12 +87,6 @@
 							) //3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
 
-	var/num_engineers = 0
-	var/num_medics = 0
-	var/num_leaders = 0
-	var/num_smartgun = 0
-	var/num_specialists = 0
-	var/num_tl = 0
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
@@ -108,8 +103,12 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Icon for the background of minimap icon
+	var/background_icon = "background"
+
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
+
 
 
 /datum/squad/marine
@@ -126,6 +125,7 @@
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
+	background_icon = "background_alpha"
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -134,6 +134,7 @@
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
+	background_icon = "background_bravo"
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -142,6 +143,7 @@
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
+	background_icon = "background_charlie"
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -150,6 +152,7 @@
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
+	background_icon = "background_delta"
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -159,6 +162,7 @@
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
+	background_icon = "background_echo"
 
 	active = FALSE
 	roundstart = FALSE
@@ -170,6 +174,7 @@
 	chat_color = "#c47a50"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
+	background_icon = "background_foxtrot"
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -184,11 +189,13 @@
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
+	background_icon = "background_intel"
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
 
 	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 0,
 		JOB_SQUAD_MEDIC = 0,
 		JOB_SQUAD_SMARTGUN = 0,
@@ -205,6 +212,7 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+	background_icon = "background_sof"
 
 	active = FALSE
 	roundstart = FALSE
@@ -216,6 +224,7 @@
 	chat_color = "#553EB2"
 	radio_freq = CBRN_FREQ
 	minimap_color = "#3B2A7B"
+	background_icon = "background_cbrn"
 
 	active = FALSE
 	roundstart = FALSE
@@ -227,6 +236,7 @@
 	chat_color = "#32CD32"
 	radio_freq = FORECON_FREQ
 	minimap_color = "#32CD32"
+	background_icon = "background_forecon"
 
 	active = FALSE
 	roundstart = FALSE
@@ -238,6 +248,7 @@
 	chat_color = "#5a2c2c"
 	radio_freq = SOF_FREQ
 	minimap_color = "#5a2c2c"
+	background_icon = "background_civillian"
 
 	active = FALSE
 	roundstart = FALSE
@@ -277,6 +288,7 @@
 	chat_color = "#c47a50"
 	squad_type = "Team"
 	locked = TRUE
+
 //###############################
 /datum/squad/pmc
 	name = "Root"
@@ -601,19 +613,9 @@
 	update_free_mar()
 	target_mob.assigned_squad = null
 
-	switch(GET_DEFAULT_ROLE(target_mob.job))
-		if(JOB_SQUAD_ENGI)
-			num_engineers--
-		if(JOB_SQUAD_MEDIC)
-			num_medics--
-		if(JOB_SQUAD_SPECIALIST)
-			num_specialists--
-		if(JOB_SQUAD_SMARTGUN)
-			num_smartgun--
-		if(JOB_SQUAD_TEAM_LEADER)
-			num_tl--
-		if(JOB_SQUAD_LEADER)
-			num_leaders--
+	var/slot_check = GET_DEFAULT_ROLE(target_mob.job)
+	if(slot_check && !isnull(roles_cap[slot_check]))
+		roles_in[slot_check]--
 
 //proc for demoting current Squad Leader
 /datum/squad/proc/demote_squad_leader(leader_killed)

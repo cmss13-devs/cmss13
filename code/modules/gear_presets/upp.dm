@@ -3,6 +3,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
+	minimap_background = "background_upp"
 	origin_override = ORIGIN_UPP
 
 /datum/equipment_preset/upp/New()
@@ -68,6 +69,7 @@
 	assignment = JOB_UPP
 	rank = JOB_UPP
 	role_comm_title = "Sol"
+	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/new_human)
@@ -235,6 +237,7 @@
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	role_comm_title = "Med"
+	minimap_icon = "upp_med"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/new_human)
@@ -406,6 +409,7 @@
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
+	minimap_icon = "upp_sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/new_human)
@@ -542,6 +546,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
+	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/new_human)
@@ -671,6 +676,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
+	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/machinegunner/load_gear(mob/living/carbon/human/new_human)
@@ -798,6 +804,7 @@
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	role_comm_title = "SL"
+	minimap_icon = "upp_sl"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/new_human)
@@ -972,6 +979,7 @@
 	assignment = JOB_UPP_POLICE
 	rank = JOB_UPP_POLICE
 	role_comm_title = "MP"
+	minimap_icon = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/military_police/load_gear(mob/living/carbon/human/new_human)
@@ -1271,6 +1279,7 @@
 	assignment = JOB_UPP_SUPPLY
 	rank = JOB_UPP_SUPPLY
 	role_comm_title = "Log."
+	minimap_icon = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/supply/load_gear(mob/living/carbon/human/new_human)
@@ -1354,6 +1363,7 @@
 	assignment = JOB_UPP_LT_OFFICER
 	rank = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
+	minimap_icon = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/load_gear(mob/living/carbon/human/new_human)
@@ -1513,6 +1523,7 @@
 	assignment = JOB_UPP_SRLT_OFFICER
 	rank = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
+	minimap_icon = "upp_slt"
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/senior/load_gear(mob/living/carbon/human/new_human)
@@ -1672,6 +1683,7 @@
 	assignment = JOB_UPP_KPT_OFFICER
 	rank = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
+	minimap_icon = "upp_xo"
 	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/kapitan
 
@@ -1832,6 +1844,7 @@
 	assignment = JOB_UPP_MAY_OFFICER
 	rank = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -1994,6 +2007,7 @@
 	assignment = JOB_UPP_LTKOL_OFFICER
 	rank = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2155,6 +2169,7 @@
 	assignment = JOB_UPP_BRIG_GENERAL
 	rank = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "Kol."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2320,6 +2335,7 @@
 	assignment = JOB_UPP_MAY_GENERAL
 	rank = JOB_UPP_MAY_GENERAL
 	role_comm_title = "May. Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2481,6 +2497,7 @@
 	assignment = JOB_UPP_LT_GENERAL
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2642,6 +2659,7 @@
 	assignment = JOB_UPP_GENERAL
 	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
+	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2848,6 +2866,7 @@
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	rank = JOB_UPP_SUPPORT_SYNTH
+	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 
@@ -3124,6 +3143,9 @@
 	role_comm_title = "JKdo"
 	paygrades = list(PAY_SHORT_UC1 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/data
+
+	minimap_icon = "upp_com"
+
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/upp/commando/New()
@@ -3249,6 +3271,7 @@
 	assignment = JOB_UPP_COMMANDO_MEDIC
 	rank = JOB_UPP_COMMANDO_MEDIC
 	role_comm_title = "2ndKdo"
+	minimap_icon = "upp_commed"
 	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)
@@ -3416,6 +3439,7 @@
 	assignment = JOB_UPP_COMMANDO_LEADER
 	rank = JOB_UPP_COMMANDO_LEADER
 	role_comm_title = "1stKdo"
+	minimap_icon = "upp_comsl"
 	paygrades = list(PAY_SHORT_UC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
 
@@ -3676,6 +3700,9 @@
 	rank = JOB_UPP_CREWMAN
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TANK"
+
+	minimap_icon = "upp_vc"
+
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
@@ -3795,6 +3822,7 @@
 	assignment = JOB_UPP_CONSCRIPT
 	rank = JOB_UPP_CONSCRIPT
 	role_comm_title = "Cons"
+	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/new_human)
@@ -3903,6 +3931,7 @@
 	rank = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Commissar"
+	minimap_icon = "upp_plt"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 

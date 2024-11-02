@@ -1,0 +1,4 @@
+author: "Ansekishoku"
+delete-after: True
+changes:
+  - bugfix: "Smartpack abilities no longer function if the user is dead."

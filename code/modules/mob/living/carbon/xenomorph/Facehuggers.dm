@@ -409,7 +409,7 @@
 			qdel(src)
 			return
 		var/obj/effect/alien/resin/special/eggmorph/M = locate() in loc
-		if(istype(M) && M.stored_huggers < M.huggers_to_grow_max)
+		if(istype(M) && M.stored_huggers < M.huggers_max_amount)
 			visible_message(SPAN_XENOWARNING("[src] crawls back into [M]!"))
 			M.stored_huggers++
 			qdel(src)

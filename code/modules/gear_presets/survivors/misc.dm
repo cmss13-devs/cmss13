@@ -258,6 +258,8 @@ Everything below isn't used or out of place.
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "xo"
+	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

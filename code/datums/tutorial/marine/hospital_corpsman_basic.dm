@@ -507,6 +507,29 @@
 
 	tutorial_end_in(5 SECONDS)
 
+// ---------- TO DO LIST ---------- //
+// Basic Damage Treatment
+// - Fractures
+//
+// Intermediate Damage Treatment
+// - Toxin Damage, With Basic Chemicals
+// - Oxygen Damage
+// - Managing Pain
+// - Synthetic Limb Repair
+//
+// Overdoses
+//
+// Triage(?)
+//
+// Know Your Equipment
+// - Medbelt
+// - Using Your Health Scanner
+// - Medical Hud
+
+
+
+
+
 // END OF SCRIPTING
 // START OF SCRIPT HELPERS
 

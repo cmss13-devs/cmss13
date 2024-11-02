@@ -32,7 +32,7 @@
 	var/obj/projectile/P = new(create_cause_data(initial(name), owner_mob))
 	P.generate_bullet(new ammo.default_ammo)
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)
+	P.fire_at(A, owner_mob, src, P.ammo.max_range, P.ammo.shell_speed, null)
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)

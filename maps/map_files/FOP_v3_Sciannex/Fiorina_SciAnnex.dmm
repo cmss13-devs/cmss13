@@ -267,11 +267,12 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/tumor/aux_engi)
 "aiF" = (
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "aiN" = (
@@ -4798,7 +4799,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "dDI" = (
@@ -17628,6 +17629,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
+"nta" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/park)
 "ntc" = (
 /turf/open/floor/prison/green/east,
 /area/fiorina/tumor/civres)
@@ -46504,7 +46512,7 @@ rBz
 wbI
 qUC
 oer
-uff
+nta
 sTm
 sTm
 hxc

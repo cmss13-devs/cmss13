@@ -32089,7 +32089,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "cSR" = (
@@ -42011,7 +42011,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "eRn" = (
@@ -42205,7 +42205,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_mining)
 "fgU" = (
@@ -42314,7 +42314,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
 "fwp" = (
@@ -42394,7 +42394,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "fEQ" = (
@@ -42479,7 +42479,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "fPc" = (
@@ -42995,7 +42995,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "gYH" = (
@@ -44287,7 +44287,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_cargo)
 "kxu" = (
@@ -44765,7 +44765,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "lGd" = (
@@ -45226,7 +45226,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "mOS" = (
@@ -46612,7 +46612,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_hydro)
 "qAP" = (
@@ -46774,10 +46774,10 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "qWL" = (
@@ -47905,7 +47905,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "tFi" = (
@@ -47938,7 +47938,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
 "tJp" = (
@@ -48763,10 +48763,10 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_northwest)
 "vHj" = (
@@ -48994,10 +48994,10 @@
 /obj/structure/stairs{
 	dir = 8
 	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "wky" = (
@@ -49752,7 +49752,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "xWd" = (
@@ -49889,7 +49889,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "ylS" = (

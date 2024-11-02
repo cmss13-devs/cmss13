@@ -3392,12 +3392,12 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/security)
 "aoG" = (
+/obj/structure/platform/metal/strata/north,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/outpost_decks)
 "aoH" = (
@@ -16516,7 +16516,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_left,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "bJV" = (
@@ -18716,7 +18716,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "cjN" = (
@@ -22926,7 +22926,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "gVw" = (
@@ -27263,7 +27263,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
 "nsq" = (

@@ -19425,12 +19425,8 @@
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
 "eiF" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -21844,7 +21840,7 @@
 /area/almayer/maint/hull/lower/s_bow)
 "fge" = (
 /obj/structure/bed/sofa/south/white/left,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
@@ -27609,16 +27605,9 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/medical_science)
 "hFP" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5;
-	layer = 3.51
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 6;
@@ -28374,9 +28363,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
 "hXC" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/sofa/south/white/right,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/toy/plush/therapy/random_color{
@@ -29300,21 +29287,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/lifeboat_pumps/north1)
 "isR" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10;
-	layer = 3.51
-	},
-/obj/structure/platform_decoration{
-	dir = 5;
-	layer = 3.51
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -29595,9 +29572,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices)
 "izT" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "izY" = (
@@ -30280,7 +30255,7 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "iQO" = (
 /obj/structure/bed/sofa/south/white/right,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "iRp" = (
@@ -39370,14 +39345,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "mCW" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10;
-	layer = 3.51
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
@@ -46532,14 +46502,9 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
 "psP" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10;
-	layer = 3.51
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -49719,16 +49684,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/lifeboat_pumps/south2)
 "qHb" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5;
-	layer = 3.51
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "qHe" = (
@@ -57988,9 +57946,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_f_p)
 "tVP" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
@@ -59939,9 +59895,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "uNY" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)

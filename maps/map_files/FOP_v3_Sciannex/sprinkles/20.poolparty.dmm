@@ -1050,6 +1050,13 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/template_noop)
+"Ul" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/plating/prison,
+/area/template_noop)
 "Us" = (
 /obj/item/toy/syndicateballoon{
 	pixel_x = 14;
@@ -1539,7 +1546,7 @@ rW
 nf
 rq
 Rs
-YP
+Ul
 Rr
 Rr
 TS

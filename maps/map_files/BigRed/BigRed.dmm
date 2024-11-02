@@ -17688,7 +17688,7 @@
 "bZR" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /turf/open/floor/darkyellow2/northwest,
@@ -26135,7 +26135,7 @@
 /obj/structure/barricade/handrail,
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -27308,7 +27308,7 @@
 "mxr" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -27321,7 +27321,7 @@
 "mxL" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /turf/open/floor/darkyellow2/north,
@@ -28141,6 +28141,11 @@
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"nng" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "nny" = (
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves_research)
@@ -33027,7 +33032,7 @@
 "rZl" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /obj/structure/barricade/handrail,
@@ -37210,7 +37215,7 @@
 "whd" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3.01;
+	layer = 3.05;
 	pixel_y = 9
 	},
 /turf/open/floor/darkyellow2/northeast,
@@ -54199,7 +54204,7 @@ oKR
 cQT
 ohr
 liJ
-oKR
+nng
 cQT
 ohr
 wYD

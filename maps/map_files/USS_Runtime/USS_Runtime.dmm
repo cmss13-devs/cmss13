@@ -29,9 +29,6 @@
 /obj/effect/landmark/start/marine/medic,
 /turf/open/floor/almayer/plating,
 /area/event)
-"m" = (
-/turf/closed/wall/mineral/sandstone/runed,
-/area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
 /turf/open/floor/almayer/plating,
@@ -162,7 +159,7 @@ k
 z
 q
 b
-m
+b
 b
 b
 b
@@ -180,7 +177,7 @@ v
 h
 D
 b
-m
+b
 b
 b
 b
@@ -198,7 +195,7 @@ t
 n
 d
 b
-m
+b
 b
 b
 b
@@ -216,7 +213,7 @@ T
 e
 V
 b
-m
+b
 b
 b
 b

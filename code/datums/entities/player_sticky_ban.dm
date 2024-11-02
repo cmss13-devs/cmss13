@@ -187,7 +187,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	if(!istype(player))
 		return
 
-	var/existing_alts = get_player_is_alt(player.id)
+	var/existing_alts = get_player_is_alt(player_ckey)
 	if(existing_alts)
 		var/confirm = tgui_alert(src, "Primary Ckey [player_ckey] is already an alt for [english_list(existing_alts)].", "Primary Ckey", list("Confirm", "Cancel"))
 

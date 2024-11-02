@@ -322,7 +322,7 @@
 	icon_state = "6"
 
 /obj/structure/shuttle/part/dropshipupp
-	name = "\improper Gagarin"
+	name = "\improper Morana"
 	icon = 'icons/turf/upp_dropship.dmi'
 	icon_state = "1"
 	opacity = TRUE
@@ -429,7 +429,7 @@
 ///
 
 /obj/structure/shuttle/part/dropshipupp2
-	name = "\improper Korolev"
+	name = "\improper Devana"
 	icon = 'icons/turf/upp_dropship.dmi'
 	icon_state = "1"
 	opacity = TRUE

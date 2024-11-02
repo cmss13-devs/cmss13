@@ -334,11 +334,11 @@
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp
-	name = "\improper Gagarin cargo door"
+	name = "\improper Morana cargo door"
 	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp2
-	name = "\improper Korolev cargo door"
+	name = "\improper Devana cargo door"
 	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
@@ -357,11 +357,11 @@
 	icon = 'icons/obj/structures/doors/dropship3_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp
-	name = "\improper Gagarin crew hatch"
+	name = "\improper Morana crew hatch"
 	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp2
-	name = "\improper Korolev crew hatch"
+	name = "\improper Devana crew hatch"
 	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor

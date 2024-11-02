@@ -296,10 +296,10 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
 	else if (linked_shuttle.id == DROPSHIP_SAIPAN)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_SAIPAN)
-	else if (linked_shuttle.id == DROPSHIP_GAGARIN)
-		deployed_turret.linked_cam.network = list(CAMERA_NET_GAGARIN)
-	else if (linked_shuttle.id == DROPSHIP_KOROLEV)
-		deployed_turret.linked_cam.network = list(CAMERA_NET_KOROLEV)
+	else if (linked_shuttle.id == DROPSHIP_MORANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MORANA)
+	else if (linked_shuttle.id == DROPSHIP_DEVANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_DEVANA)
 
 
 

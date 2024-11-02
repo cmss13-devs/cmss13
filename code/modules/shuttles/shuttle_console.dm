@@ -421,8 +421,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp
-	name = "\improper 'Gagarin' dropship console"
-	desc = "The remote controls for the 'Gagarin' Dropship. Named after the first man to fly into space."
+	name = "\improper 'Morana' dropship console"
+	desc = "The remote controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -434,19 +434,19 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp/Initialize()
 	. = ..()
-	shuttle_tag = DROPSHIP_GAGARIN
+	shuttle_tag = DROPSHIP_MORANA
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
-	name = "\improper 'Gagarin' flight controls"
-	desc = "The flight controls for the 'Gagarin' Dropship. Named after the first man to fly into space."
+	name = "\improper 'Morana' flight controls"
+	desc = "The flight controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console_upp"
 	onboard = 1
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp2
-	name = "\improper 'Korolev' dropship console"
-	desc = "The remote controls for the 'Korolev' Dropship."
+	name = "\improper 'Devana' dropship console"
+	desc = "The remote controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -458,11 +458,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp2/Initialize()
 	. = ..()
-	shuttle_tag = DROPSHIP_KOROLEV
+	shuttle_tag = DROPSHIP_DEVANA
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
-	name = "\improper 'Korolev' flight controls"
-	desc = "The flight controls for the 'Korolev' Dropship."
+	name = "\improper 'Devana' flight controls"
+	desc = "The flight controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console_upp"
 	onboard = 1

@@ -122,7 +122,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp
-	ship_tag = DROPSHIP_GAGARIN
+	ship_tag = DROPSHIP_MORANA
 
 /obj/effect/attach_point/weapon/dropship_upp/left_wing
 	name = "port wing weapon attach point"
@@ -163,7 +163,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp2
-	ship_tag = DROPSHIP_KOROLEV
+	ship_tag = DROPSHIP_DEVANA
 
 /obj/effect/attach_point/weapon/dropship_upp2/left_wing
 	name = "port wing weapon attach point"
@@ -226,13 +226,13 @@
 	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/crew_weapon/dropship_upp
-	ship_tag = DROPSHIP_GAGARIN
+	ship_tag = DROPSHIP_MORANA
 
 /obj/effect/attach_point/crew_weapon/dropship_upp/floor
 	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/crew_weapon/dropship_upp2
-	ship_tag = DROPSHIP_KOROLEV
+	ship_tag = DROPSHIP_DEVANA
 
 /obj/effect/attach_point/crew_weapon/dropship_upp2/floor
 	plane = FLOOR_PLANE
@@ -253,10 +253,10 @@
 	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/electronics/dropship_upp
-	ship_tag = DROPSHIP_GAGARIN
+	ship_tag = DROPSHIP_MORANA
 
 /obj/effect/attach_point/electronics/dropship_upp2
-	ship_tag = DROPSHIP_KOROLEV
+	ship_tag = DROPSHIP_DEVANA
 
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
@@ -274,10 +274,10 @@
 	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/fuel/dropship_upp
-	ship_tag = DROPSHIP_GAGARIN
+	ship_tag = DROPSHIP_MORANA
 
 /obj/effect/attach_point/fuel/dropship_upp2
-	ship_tag = DROPSHIP_KOROLEV
+	ship_tag = DROPSHIP_DEVANA
 
 
 /obj/effect/attach_point/computer
@@ -293,4 +293,4 @@
 	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/computer/dropship_upp
-	ship_tag = DROPSHIP_GAGARIN
+	ship_tag = DROPSHIP_MORANA

@@ -297,7 +297,7 @@
 	name = "\improper Typhoon"
 
 /turf/closed/shuttle/upp_dropship
-	name = "\improper Gagarin"
+	name = "\improper Morana"
 	icon = 'icons/turf/upp_dropship.dmi'
 	icon_state = "1"
 
@@ -305,7 +305,7 @@
 	opacity = FALSE
 
 /turf/closed/shuttle/upp_dropship2
-	name = "\improper Korolev"
+	name = "\improper Devana"
 	icon = 'icons/turf/upp_dropship.dmi'
 	icon_state = "1"
 

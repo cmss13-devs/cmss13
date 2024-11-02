@@ -802,9 +802,9 @@
 			ship_id = "sh_dropship2"
 		if(shuttle_tag == DROPSHIP_SAIPAN)
 			ship_id = "sh_dropship3"
-		if(shuttle_tag == DROPSHIP_GAGARIN)
+		if(shuttle_tag == DROPSHIP_MORANA)
 			ship_id = "sh_dropship4"
-		if(shuttle_tag == DROPSHIP_KOROLEV)
+		if(shuttle_tag == DROPSHIP_DEVANA)
 			ship_id = "sh_dropship5"
 
 

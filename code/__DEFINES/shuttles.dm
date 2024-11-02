@@ -114,8 +114,8 @@
 #define DROPSHIP_ALAMO "dropship_alamo"
 #define DROPSHIP_NORMANDY "dropship_normandy"
 #define DROPSHIP_SAIPAN "dropship_saipan"
-#define DROPSHIP_GAGARIN "dropship_gagarin"
-#define DROPSHIP_KOROLEV "dropship_korolev"
+#define DROPSHIP_MORANA "dropship_morana"
+#define DROPSHIP_DEVANA "dropship_devana"
 
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"

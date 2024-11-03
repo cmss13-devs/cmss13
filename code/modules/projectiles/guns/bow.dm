@@ -1,7 +1,7 @@
 /obj/item/weapon/gun/bow
 	name = "\improper hunting bow"
 	desc = "here be dragons"
-	icon = 'icons/obj/items/weapons/guns/pred_bow.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
 	item_state = "bow"
 	item_icons = list(
@@ -20,8 +20,7 @@
 
 /obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
 	. = ..(mapload, TRUE) //is there a better way?
-	if(spawn_empty)
-		update_icon()
+	update_icon()
 
 /obj/item/weapon/gun/bow/set_gun_config_values()
 	..()
@@ -69,8 +68,10 @@
 		if(current_mag && current_mag.current_rounds == 0)
 			if (user.r_hand != src && user.l_hand != src)
 				to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
+				return
 			if (!isyautja(user))
 				to_chat(user, SPAN_WARNING("You lack the strength to draw [src]!"))
+				return
 			ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] on [src]."))
@@ -98,7 +99,7 @@
 	name = "\improper arrow"
 	w_class = SIZE_SMALL
 	var/activated = FALSE
-	icon = 'icons/obj/items/weapons/guns/pred_bow.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "arrow"
 	item_state = "arrow"
 	var/ammo_datum = /datum/ammo/arrow

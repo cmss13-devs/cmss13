@@ -69,6 +69,8 @@
 		if(current_mag && current_mag.current_rounds == 0)
 			if (user.r_hand != src && user.l_hand != src)
 				to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
+			if (!isyautja(user))
+				to_chat(user, SPAN_WARNING("You lack the strength to draw [src]!"))
 			ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] on [src]."))
@@ -112,6 +114,8 @@
 
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
+	if (!isyautja(user))
+		return
 	if (activated)
 		activated = FALSE
 		icon_state = "arrow"

@@ -44,7 +44,6 @@
 	description = "A thick green blood, definitely not human."
 	color = BLOOD_COLOR_YAUTJA
 	chemclass = CHEM_CLASS_SPECIAL
-	flags = REAGENT_NO_GENERATION
 	objective_value = OBJECTIVE_HIGH_VALUE
 
 /datum/reagent/blood/synth_blood
@@ -68,7 +67,6 @@
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/blood/xeno_blood/royal
@@ -77,7 +75,6 @@
 	color = BLOOD_COLOR_XENO_ROYAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_CORROSIVE = 6)
 
 /datum/reagent/vaccine
@@ -450,7 +447,7 @@
 	description = "Chemical element of atomic number 92. A silvery-white metallic chemical element in the actinide series, weakly radioactive. Has been historically used for nuclear power and in the creation of nuclear bombs."
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CARCINOGENIC = 2)
 
 /datum/reagent/uranium/reaction_turf(turf/T, volume)
@@ -973,7 +970,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 6)
 
 /datum/reagent/plasma/chitin
@@ -985,7 +981,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
 
 /datum/reagent/plasma/catecholamine
@@ -997,7 +992,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
@@ -1009,7 +1003,6 @@
 	overdose_critical = 100
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_HEMOSITIC = 4)
 
 /datum/reagent/plasma/egg/on_mob_life(mob/living/M)
@@ -1041,7 +1034,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
@@ -1053,7 +1045,6 @@
 	objective_value = OBJECTIVE_MEDIUM_VALUE
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
 /datum/reagent/plasma/purple
@@ -1065,7 +1056,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/plasma/royal
@@ -1077,7 +1067,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
@@ -1091,4 +1080,4 @@
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
-	flags = REAGENT_SCANNABLE | REAGENT_NO_GENERATION
+	flags = REAGENT_SCANNABLE

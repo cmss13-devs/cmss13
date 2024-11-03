@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixes additional projectiles being fired from humans that placed a shotgun sentry instead of the sentry."
+  - bugfix: "Fixes cause_data for flamer sentries so now kills they make are explained in the message and attributed to the kill counter for the sentry."

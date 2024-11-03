@@ -20402,7 +20402,7 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "bIp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bIq" = (
@@ -45870,7 +45870,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "flj" = (
@@ -46440,7 +46440,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
 "hgz" = (
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/item/ammo_magazine/revolver/cmb,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hgY" = (
@@ -48953,7 +48953,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "pPW" = (
@@ -50357,7 +50357,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/green,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/revolver/cmb,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uez" = (

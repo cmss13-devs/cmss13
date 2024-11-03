@@ -1755,7 +1755,7 @@
 /obj/item/storage/belt/gun/quiver
 	name = "\improper quiver"
 	desc = "ahhhhh."
-	storage_slots = 9
+	storage_slots = 8
 	max_storage_space = 20
 	icon_state = "quiver"
 	item_state = "s_marinebelt"

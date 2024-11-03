@@ -28141,11 +28141,6 @@
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"nng" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "nny" = (
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves_research)
@@ -37787,11 +37782,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"wLJ" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/west,
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "wLU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -54198,13 +54188,13 @@ axX
 oKR
 cQT
 cQT
-wLJ
+ohr
 rZl
 oKR
 cQT
 ohr
 liJ
-nng
+oKR
 cQT
 ohr
 wYD

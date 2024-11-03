@@ -10,7 +10,7 @@
 	anchored = TRUE
 	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
-	layer = ABOVE_OBJ_LAYER
+	layer = OBJ_LAYER
 	breakable = TRUE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
@@ -144,7 +144,7 @@
 	anchored = TRUE
 	density = FALSE
 	throwpass = TRUE
-	layer = ABOVE_TABLE_LAYER
+	layer = OBJ_LAYER
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE

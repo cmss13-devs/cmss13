@@ -4070,12 +4070,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja_grounds)
-"RK" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	color = "#2e1e21"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple)
 "RL" = (
 /turf/open/gm/coast{
 	dir = 9;
@@ -4921,7 +4915,10 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja_grounds/jungle/west)
 "Yx" = (
 /obj/structure/stairs/perspective{
@@ -6592,7 +6589,7 @@ nl
 gw
 se
 se
-RK
+ET
 hx
 XT
 lH
@@ -6790,7 +6787,7 @@ Yi
 PD
 se
 se
-RK
+ET
 hx
 XT
 qW

@@ -251,6 +251,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Sorokyne Outpost"
 	icon_state = "shed_x_ag"
 	minimap_color = MINIMAP_AREA_CAVES
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outpost/foyer
 	name = "Outpost Main Foyer"
@@ -436,7 +437,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "shed_x_ug"
 	minimap_color = MINIMAP_AREA_CAVES
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ug/interior/outpost/underground_dorms
 	name = "Do not use."

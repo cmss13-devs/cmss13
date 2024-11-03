@@ -114,7 +114,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/green/west,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "afz" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -2805,13 +2805,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/electrical)
-"cit" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_SE)
 "ciu" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/shiva/yellow/north,
@@ -6591,7 +6584,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva/green/west,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "fkd" = (
 /obj/item/toy/beach_ball,
 /turf/open/auto_turf/sand_white/layer1,
@@ -7136,7 +7129,7 @@
 	dir = 8
 	},
 /turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "fJw" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/m41a,
@@ -12888,7 +12881,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "kmo" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -16719,7 +16712,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "ngC" = (
 /obj/structure/largecrate/random/mini/chest,
 /turf/open/floor/asteroidfloor/north,
@@ -19340,7 +19333,7 @@
 	pixel_y = -8
 	},
 /turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "pox" = (
 /obj/structure/machinery/storm_siren{
 	dir = 8;
@@ -19959,7 +19952,7 @@
 	},
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "pNk" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden,
@@ -21444,6 +21437,14 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
+"qPv" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/hall_N)
 "qPG" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -21507,7 +21508,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/green/west,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "qRe" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/asteroidwarning,
@@ -22296,7 +22297,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "ruq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/surgery{
@@ -22353,7 +22354,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "rxa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/snow_mat/east,
@@ -25824,6 +25825,12 @@
 "ulv" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
+"umy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
 "umA" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/red/north,
@@ -29933,6 +29940,16 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
+"xsa" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
 "xsi" = (
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/red/north,
@@ -49403,15 +49420,15 @@ bih
 mux
 pot
 kmb
-mvI
-mvI
-mvI
-wVE
-mvI
-mvI
+mGb
+mGb
+mGb
+umy
+mGb
+mGb
 pot
 fJb
-mvI
+mGb
 wVE
 mvI
 mvI
@@ -49583,17 +49600,17 @@ xWY
 hvO
 bih
 hvO
-tEJ
+hvO
 rtV
-tEJ
-tEJ
-tEJ
-uXw
-tEJ
-tEJ
-tEJ
+hvO
+hvO
+hvO
+tPz
+hvO
+hvO
+hvO
 rwV
-tEJ
+hvO
 uXw
 tEJ
 tEJ
@@ -49765,17 +49782,17 @@ fQr
 hvO
 pXp
 oZw
-oGc
+oZw
 ngm
-oGc
-oGc
-oGc
-eAJ
-oGc
-oGc
-oGc
-lEc
-cit
+oZw
+oZw
+oZw
+jsh
+oZw
+oZw
+oZw
+xsa
+kzJ
 eAJ
 oGc
 oGc
@@ -49947,15 +49964,15 @@ arg
 oMs
 qPs
 lzu
-rBP
+yeH
 afx
-rBP
-rBP
-rBP
-rBP
-rBP
-gvE
-rBP
+yeH
+yeH
+yeH
+yeH
+yeH
+lNX
+yeH
 qQN
 fjU
 rBP
@@ -50130,15 +50147,15 @@ bLN
 viP
 wUj
 juW
-nTG
-nTG
-nTG
-lNb
-vqd
-lNb
-nTG
-nTG
-nTG
+pGJ
+pGJ
+pGJ
+lsU
+qPv
+lsU
+pGJ
+pGJ
+pGJ
 pNf
 vqd
 lNb

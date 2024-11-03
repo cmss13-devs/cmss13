@@ -68,6 +68,7 @@
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/blood/xeno_blood/royal
@@ -76,6 +77,7 @@
 	color = BLOOD_COLOR_XENO_ROYAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_CORROSIVE = 6)
 
 /datum/reagent/vaccine
@@ -995,6 +997,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
@@ -1062,6 +1065,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/plasma/royal

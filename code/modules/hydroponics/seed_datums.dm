@@ -768,6 +768,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	products = list(/obj/item/reagent_container/food/snacks/grown/deathberries)
 	packet_icon = "seed-deathberry"
 	plant_icon = "deathberry"
+	chems_special = list("thymol")
 	chems = list("fruit" = list(1), "toxin" = list(3,3), "lexorin" = list(1,5))
 
 	yield = 3

@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscadd: "a new tgui with better previews for the different skin colors / body types / body sizes"

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix reloading under barrel flamers with any reagent from a flamer tank"

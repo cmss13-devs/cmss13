@@ -450,7 +450,7 @@
 	description = "Chemical element of atomic number 92. A silvery-white metallic chemical element in the actinide series, weakly radioactive. Has been historically used for nuclear power and in the creation of nuclear bombs."
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_CARCINOGENIC = 2)
 
 /datum/reagent/uranium/reaction_turf(turf/T, volume)

@@ -122,10 +122,10 @@
 	default_ammo = /datum/ammo/flare
 
 //-------------------------------------------------------
-//Flare gun. Close enough?
+//Bow
 /obj/item/ammo_magazine/internal/bow
-	name = "flare gun internal magazine"
-	caliber = "FL"
+	name = "bow internal magazine"
+	caliber = "arrow"
 	max_rounds = 1
 	default_ammo = /datum/ammo/arrow
 

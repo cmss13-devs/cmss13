@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Fixed the ping relay buttons not displaying anything when clicked on the first time. Now Button.Confirm.confirmContent will only replace children if it is truthy."

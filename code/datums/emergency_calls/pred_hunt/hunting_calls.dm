@@ -11,7 +11,7 @@
 
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds Mutil Faction Small"
-	hunt_name = "multi Faction (small)"
+	hunt_name = "Multi Faction (small)"
 	mob_max = 4
 	mob_min = 1
 	max_clf = 1
@@ -35,7 +35,7 @@
 		to_chat(hunted, SPAN_BOLD("No one is more professional than I. Unlike other mercenaries, your group was registered as a legitimate business that dealt in violence. Working for various high profile clients, information classified to the public circulated somewhat freely in your circle - stories you dismissed as anecdotal or hearsay. The last job you took proved particularly hazardous and truthful: as you were clearing local fauna around a dig site, a massive man-shaped shimmering thing lunged at you and knocked you out in one blow. Groggily opening your eyes, you try to make sense of your surroundings, and get up."))
 	else if(upp < max_upp && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_UPP))
 		upp++
-		var/list/hunted_types = list(/datum/equipment_preset/upp/soldier/hunted, /datum/equipment_preset/upp/leader/hunted, /datum/equipment_preset/upp/machinegunner/hunted, /datum/equipment_preset/upp/sapper,hunted)
+		var/list/hunted_types = list(/datum/equipment_preset/upp/soldier/hunted, /datum/equipment_preset/upp/leader/hunted, /datum/equipment_preset/upp/machinegunner/hunted, /datum/equipment_preset/upp/sapper/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Life was alright. Previously relocated from your noisier post on the frontier, you were now stationed just on the outer veil of Union territory. Combat patrols and sawdust rations turned into boring guard shifts and proper food, making your peacekeeping duty a much envied task. Then, your life came crumbling down. An unknown alien surprised you and the rest of your garrison, slaughtering effectively everyone. Just as you were about to escape, it caught you in a trap, and dragged you into the darkness. Now awake in a completely different place, still sore from the confrontation, you wonder what you'd have to do to get back home safe and sound."))
@@ -52,7 +52,7 @@
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Your whole life was a struggle. Fighting tooth and nail for the independence of your colony from one master to the next, with not much change, your home ended up crushed under the boot of the oppressor. Filled with rage, you traveled with your cell of freedom fighters from one system to the next, wreaking havoc and mayhem, which eventually makes you notorious for your brutal executions of government officials and military. While on a raid gone wrong, your comrades get slaughtered by a marine squad, and as you scamper to get away, something else catches you off guard. KO'd and taken away, you wake up in conditions not much different from your previous ones, determined to get revenge against your oppressor once more."))
 	else
-		var/list/hunted_types = list(/datum/equipment_preset/uscm/rifleman_pve/hunted, /datum/equipment_preset/uscm/tl_pve/hunted, /datum/equipment_preset/uscm/sg_pve,)
+		var/list/hunted_types = list(/datum/equipment_preset/uscm/rifleman_pve/hunted, /datum/equipment_preset/uscm/tl_pve/hunted, /datum/equipment_preset/uscm/sg_pve/hunted,)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You dreamt of becoming the ultimate badass ever since you were a kid. Nukes, knives, sharp sticks - and the corps was for you, enlisting into the marines as soon as you could join. There were little regrets from you, happily gunning down anything, anytime, and anywhere you were told to go... until now. During a jungle patrol, your entire squad was torn to shreds by a single cloaker - something you previously figured was made up just to scare chickenshit privates. Riddling the freak with bullet holes, it finally catches you off guard, and after that it's all hazy. Waking up, you realize you're still alive... and that it left you with your weapon. Big mistake. You get up."))
@@ -63,7 +63,7 @@
 
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds Mutil Faction Medium"
-	hunt_name = "multi Faction (group)"
+	hunt_name = "Multi Faction (group)"
 	mob_max = 6
 	mob_min = 4
 	max_clf = 2
@@ -74,13 +74,23 @@
 
 /datum/emergency_call/pred/mixed/hard
 	name = "Hunting Grounds Mutil Faction Large"
-	hunt_name = "multi Faction (large)"
+	hunt_name = "Multi Faction (large)"
 	mob_max = 8
 	mob_min = 6
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 1
 	max_mercs = 1
+
+/datum/emergency_call/pred/mixed/harder
+	name = "Hunting Grounds Mutil Faction Larger"
+	hunt_name = "Multi Faction (larger)"
+	mob_max = 12
+	mob_min = 6
+	max_clf = 3
+	max_upp = 2
+	max_royal_marines = 2
+	max_mercs = 2
 
 /datum/emergency_call/pred/xeno
 	name = "Hunting Grounds Xenos Small"
@@ -116,7 +126,7 @@
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strang "))
 	else
-		var/list/xeno_types = list(/mob/living/carbon/xenomorph/defender)
+		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)

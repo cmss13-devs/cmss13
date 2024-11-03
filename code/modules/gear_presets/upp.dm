@@ -4042,7 +4042,6 @@
 /datum/equipment_preset/upp/soldier/predproc/load_upp_soldier(mob/living/carbon/human/new_human, obj/item/clothing/under/marine/veteran/UPP/UPP)
 	var/percentage = rand(1, 100)
 	switch(percentage)
-		//most UPP are rifleman, most others are breachers, some have both primaries.
 		if(1 to 66)
 			load_upp_rifleman(new_human, UPP)
 		if(67 to 85)

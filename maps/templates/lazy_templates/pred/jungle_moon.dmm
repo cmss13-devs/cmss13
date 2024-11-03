@@ -39,8 +39,7 @@
 /area/yautja_grounds/jungle/west)
 "ah" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -92,6 +91,10 @@
 	},
 /turf/open/gm/grass,
 /area/yautja_grounds/south)
+"at" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast/north,
+/area/yautja_grounds)
 "az" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4;
@@ -382,7 +385,7 @@
 /area/yautja_grounds/temple)
 "es" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/gm/dirt,
+/turf/open/gm/coast/east,
 /area/yautja_grounds)
 "ew" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -601,6 +604,9 @@
 "hj" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/caves)
+"hq" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/yautja_grounds)
 "hx" = (
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1129,6 +1135,9 @@
 "nq" = (
 /turf/open/gm/river,
 /area/yautja_grounds)
+"nr" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/yautja_grounds)
 "ns" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -1240,6 +1249,9 @@
 	icon_state = "squareswood"
 	},
 /area/yautja_grounds/jungle/west)
+"oq" = (
+/turf/open/gm/coast/east,
+/area/yautja_grounds)
 "ot" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -1556,6 +1568,10 @@
 	},
 /turf/open/gm/coast,
 /area/yautja_grounds/temple)
+"rD" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/coast/beachcorner/north_east,
+/area/yautja_grounds)
 "rL" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -1715,29 +1731,16 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
 /area/yautja_grounds/jungle/east)
-"tk" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
-	},
-/area/yautja_grounds/jungle/west)
 "tl" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8;
 	color = "#2e1e21"
 	},
-/turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+/turf/open/gm/dirt{
+	icon_state = "beach";
+	dir = 5
 	},
 /area/yautja_grounds/temple)
-"tm" = (
-/turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
-	},
-/area/yautja_grounds/jungle/west)
 "tq" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1;
@@ -1914,13 +1917,6 @@
 	icon_state = "grass2"
 	},
 /area/yautja_grounds/south)
-"uH" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
-/area/yautja_grounds/jungle/west)
 "uP" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
@@ -1990,6 +1986,9 @@
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
+/area/yautja_grounds)
+"wc" = (
+/turf/open/gm/coast/south,
 /area/yautja_grounds)
 "wg" = (
 /turf/open/gm/coast{
@@ -2238,6 +2237,15 @@
 	icon_state = "squareswood"
 	},
 /area/yautja_grounds/jungle/west)
+"yp" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/yautja_grounds/south)
 "yq" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1;
@@ -2333,8 +2341,7 @@
 /area/yautja_grounds/south)
 "zI" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -2347,12 +2354,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/yautja_grounds/jungle/north)
-"zU" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
-/area/yautja_grounds/jungle/west)
 "zY" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -2417,6 +2418,9 @@
 	},
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle/west)
+"Aq" = (
+/turf/open/gm/coast/west,
+/area/yautja_grounds)
 "Ar" = (
 /turf/open/gm/coast{
 	dir = 4;
@@ -2429,6 +2433,9 @@
 	},
 /turf/open/gm/grass,
 /area/yautja_grounds/jungle/east)
+"At" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/yautja_grounds)
 "Au" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1
@@ -2728,6 +2735,9 @@
 	icon_state = "pwall"
 	},
 /area/yautja_grounds/temple)
+"Dr" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/yautja_grounds)
 "Dx" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4;
@@ -2859,9 +2869,9 @@
 	dir = 4;
 	color = "#2e1e21"
 	},
-/turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
+/turf/open/gm/dirt{
+	icon_state = "beach";
+	dir = 9
 	},
 /area/yautja_grounds/temple)
 "EN" = (
@@ -2991,9 +3001,9 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
 	},
-/turf/open/gm/coast{
-	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
+/turf/open/gm/dirt{
+	icon_state = "beach";
+	dir = 6
 	},
 /area/yautja_grounds/temple)
 "Gb" = (
@@ -3050,6 +3060,15 @@
 "Gl" = (
 /turf/open/gm/grass,
 /area/yautja_grounds/jungle/north)
+"Gt" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/yautja_grounds)
 "Gv" = (
 /obj/effect/alien/weeds/node/feral,
 /turf/open/gm/dirt,
@@ -3771,10 +3790,7 @@
 	},
 /area/yautja_grounds)
 "Oj" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/north,
 /area/yautja_grounds)
 "On" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -3859,11 +3875,6 @@
 	icon_state = "cult"
 	},
 /area/yautja_grounds/jungle/west)
-"Pe" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
-/area/yautja_grounds)
 "Pg" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -3933,6 +3944,15 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/jungle/north)
+"PW" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/yautja_grounds)
 "PX" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass{
@@ -3965,9 +3985,8 @@
 	},
 /area/yautja_grounds)
 "Qn" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/yautja_grounds)
 "Qo" = (
 /turf/open/gm/dirt{
@@ -4037,6 +4056,15 @@
 	icon_state = "grass2"
 	},
 /area/yautja_grounds)
+"Rb" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/yautja_grounds/south)
 "Rl" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
@@ -4070,12 +4098,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja_grounds)
-"RL" = (
-/turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
-	},
-/area/yautja_grounds/jungle/west)
 "RQ" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
@@ -4262,6 +4284,9 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
+/area/yautja_grounds)
+"TD" = (
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/yautja_grounds)
 "TE" = (
 /obj/structure/surface/rack{
@@ -4594,9 +4619,8 @@
 /turf/closed/wall/cult/hunting_grounds,
 /area/yautja_grounds/temple)
 "Wv" = (
-/turf/open/gm/coast{
-	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
+/turf/open/gm/dirt{
+	icon_state = "beach"
 	},
 /area/yautja_grounds/jungle/west)
 "Wy" = (
@@ -4857,10 +4881,8 @@
 	},
 /area/yautja_grounds)
 "XS" = (
-/turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
-	},
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
 /area/yautja_grounds)
 "XT" = (
 /obj/structure/stairs/perspective{
@@ -4970,11 +4992,6 @@
 	icon_state = "cult"
 	},
 /area/yautja_grounds/temple)
-"YD" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
-/area/yautja_grounds/jungle/west)
 "YE" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -6921,10 +6938,10 @@ Nj
 Nj
 Nj
 ve
-LN
-YD
-YD
-fc
+Nj
+Nj
+Nj
+Nj
 Nj
 Nj
 Nj
@@ -7019,12 +7036,12 @@ Nj
 Nj
 Nj
 Nj
-LN
-yV
-Qw
-Qw
-tm
-uH
+Nj
+Nj
+Nj
+Nj
+Nj
+Xe
 Nj
 Nj
 Nj
@@ -7118,12 +7135,12 @@ Nj
 Nj
 Nj
 Nj
-nn
-Qw
-uB
-uB
-Qw
-aQ
+Nj
+Nj
+Xe
+Xe
+Nj
+Nj
 Nj
 Nj
 Nj
@@ -7217,13 +7234,13 @@ Nj
 Nj
 Nj
 Nj
-nn
-Qw
-Qw
-Qw
-uB
-Ws
-fc
+Nj
+Nj
+Nj
+Nj
+Xe
+Nj
+Nj
 Nj
 Nj
 Nj
@@ -7316,14 +7333,14 @@ FG
 rL
 Nj
 Nj
-zU
-Su
-RL
-dK
-Su
-Qw
-tm
-fc
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
 Nj
 Nj
 Nj
@@ -7416,15 +7433,15 @@ ie
 Nj
 Nj
 Ks
-nn
-aQ
-ve
-nn
-CV
-Qw
-tm
-YD
-fc
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
 Nj
 nn
 uB
@@ -7515,16 +7532,16 @@ Gh
 Nj
 Nj
 Nj
-nn
-tm
-fc
-zU
-Su
-Qw
-Qw
-Qw
-tm
-YD
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
 Wv
 Qw
 Qw
@@ -7614,17 +7631,17 @@ Xe
 Nj
 Nj
 Nj
-zU
-Su
-tm
-YD
-yV
-uB
-Qw
-Qw
-Qw
-Qw
-Qw
+Nj
+Nj
+Nj
+Nj
+Nj
+Xe
+Nj
+Nj
+Nj
+Nj
+Wv
 Qw
 Qw
 Qw
@@ -7714,16 +7731,16 @@ Nj
 Nj
 Nj
 Nj
-zU
-Su
-Cv
-Qw
-Qw
-tk
-dK
-dK
-dK
-dK
+Nj
+Nj
+Nj
+Nj
+Nj
+Xe
+Nj
+Nj
+Nj
+Wv
 dK
 dK
 Su
@@ -7814,11 +7831,11 @@ Nj
 Nj
 Nj
 Nj
-zU
-dK
-dK
-dK
-Ar
+Nj
+Nj
+Nj
+Nj
+Nj
 Nj
 Nj
 Nj
@@ -8710,7 +8727,7 @@ bT
 eB
 eB
 eB
-KO
+Rb
 KO
 eB
 QC
@@ -9699,7 +9716,7 @@ OB
 OB
 Ic
 Ic
-ey
+yp
 eB
 eB
 eB
@@ -10479,7 +10496,7 @@ us
 ce
 ce
 it
-of
+Gt
 of
 CE
 ce
@@ -10583,7 +10600,7 @@ ce
 ce
 ce
 ce
-bW
+PW
 ce
 kX
 us
@@ -10955,10 +10972,10 @@ QD
 QD
 kz
 kz
-nq
 kz
 kz
-QD
+kz
+kz
 QD
 QD
 QD
@@ -11053,10 +11070,10 @@ ce
 ce
 QD
 kz
-nq
-nq
-nq
-kz
+hq
+nr
+oq
+hq
 kz
 kz
 QD
@@ -11152,11 +11169,11 @@ QD
 ce
 kz
 kz
-nq
-nq
+at
+wc
 XS
 Oj
-kz
+nq
 kz
 kz
 QD
@@ -11251,12 +11268,12 @@ PC
 ce
 kz
 kz
-nq
-nq
+Oj
+TD
 Qn
-es
-NS
-OB
+rD
+hq
+kz
 kz
 kz
 kz
@@ -11350,13 +11367,13 @@ ce
 ce
 kz
 kz
-Pe
-Pe
-Oj
-OB
-GI
-GC
-OB
+Dr
+hq
+TD
+Aq
+At
+kz
+kz
 kz
 kz
 kz
@@ -11449,13 +11466,13 @@ ce
 kz
 kz
 kz
-OB
-kl
-wG
-wG
-OB
-OB
-OB
+gP
+Dr
+hq
+nq
+nq
+kz
+kz
 kz
 kz
 QD
@@ -11548,12 +11565,12 @@ ce
 kz
 kz
 XX
-kl
 OB
 OB
-OB
+Dr
+oq
 es
-OB
+kz
 kz
 kz
 QD

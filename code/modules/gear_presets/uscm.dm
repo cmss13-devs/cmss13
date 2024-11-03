@@ -1358,7 +1358,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap(new_human.back), WEAR_IN_BELT)
 	spawn_marine_fluff_items(new_human)
 
-	/datum/equipment_preset/uscm/sg_pve/hunted
+/datum/equipment_preset/uscm/sg_pve/hunted
 	name = "USCM Smartgunner (Hunted)"
 
 /datum/equipment_preset/uscm/sg_pve/hunted/load_gear(mob/living/carbon/human/new_human)

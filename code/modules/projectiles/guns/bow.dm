@@ -12,14 +12,14 @@
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/effects/throwing/swoosh1.ogg'
 	aim_slowdown = 0
-	flags_equip_slot = NONE
+	flags_equip_slot = SLOT_BLOCK_SUIT_STORE
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	gun_category = GUN_CATEGORY_HEAVY
 	muzzle_flash = null
-	w_class = SIZE_HUGE
+	w_class = SIZE_LARGE
 
-/obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
-	. = ..()
+/obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
+	. = ..(mapload, TRUE) //is there a better way?
 	if(spawn_empty)
 		update_icon()
 
@@ -35,24 +35,23 @@
 /obj/item/weapon/gun/bow/reload_into_chamber(mob/user)
 	. = ..()
 	update_icon()
-	//UnregisterSignal(src, COMSIG_ITEM_DROPPED)
 
 /obj/item/weapon/gun/bow/wield(mob/living/user)
 	return
 
 /obj/item/weapon/gun/bow/unload(mob/user)
-	//SIGNAL_HANDLER
 	if(!current_mag)
 		return
-	if(current_mag.current_rounds)
-		var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
-		playsound(user, reload_sound, 25, TRUE)
-		current_mag.current_rounds--
-		if(user)
-			to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from \the [src]."))
-			user.put_in_hands(unloaded_arrow)
-		update_icon()
-		//UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	if(!current_mag.current_rounds)
+		return
+	var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
+	playsound(user, reload_sound, 25, TRUE)
+	current_mag.current_rounds--
+	if(user)
+		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from \the [src]."))
+		user.put_in_hands(unloaded_arrow)
+	update_icon()
+
 
 /obj/item/weapon/gun/bow/update_icon()
 	..()
@@ -68,13 +67,14 @@
 	if(istype(attacking_item, /obj/item/arrow))
 		var/obj/item/arrow/attacking_arrow = attacking_item
 		if(current_mag && current_mag.current_rounds == 0)
+			if (user.r_hand != src && user.l_hand != src)
+				to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
 			ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] on [src]."))
 			current_mag.current_rounds++
 			qdel(attacking_arrow)
 			update_icon()
-			//RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(unload))
 		else
 			to_chat(user, SPAN_WARNING("[src] is already loaded!"))
 	else
@@ -82,6 +82,11 @@
 
 /obj/item/weapon/gun/bow/dropped(mob/user)
 	. = ..()
+	if(!current_mag)
+		return
+	if(!current_mag.current_rounds)
+		return
+	to_chat(user, SPAN_WARNING("The projectile falls out of [src]!"))
 	unload(null)
 
 /obj/item/weapon/gun/bow/click_empty(mob/user)
@@ -89,13 +94,14 @@
 
 /obj/item/arrow
 	name = "\improper arrow"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	var/activated = FALSE
 	icon = 'icons/obj/items/weapons/guns/pred_bow.dmi'
 	icon_state = "arrow"
 	item_state = "arrow"
 	var/ammo_datum = /datum/ammo/arrow
 	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = TRUE
 	force = 20
 
 /obj/item/arrow/expl
@@ -110,9 +116,9 @@
 		activated = FALSE
 		icon_state = "arrow"
 		ammo_datum = /datum/ammo/arrow
-		to_chat(user, SPAN_NOTICE("You activate \the [src]."))
+		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	else
 		activated = TRUE
 		icon_state = "arrow_expl"
 		ammo_datum = /datum/ammo/arrow/expl
-		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
+		to_chat(user, SPAN_NOTICE("You activate \the [src]."))

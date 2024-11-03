@@ -169,7 +169,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				else
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 			if(2)
-				contract_chemical.credit_reward = 4
+				contract_chemical.credit_reward = 5
 				if(roll<=40)
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 				else

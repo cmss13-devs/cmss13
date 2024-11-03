@@ -6,6 +6,19 @@
 
 // START OF SCRIPTING
 
+// ------------ CONTENTS ------------ //
+//
+// Section 1 - Basic Damage Treatment
+// 1.1 Brute Damage
+// 1.2 Burn Damage
+// 1.3 Treating Bleeding
+// 1.4 Shrapnel Removal
+// 1.5 Bone Fractures
+//
+// Section 2 - Intermediate Damage Treatment
+// 2.1 Pain Levels
+//
+
 /datum/tutorial/marine/hospital_corpsman_basic/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
@@ -62,9 +75,10 @@
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
 	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
+	message_to_player("<b>Section 1.1: Brute Damage</b>")
 	message_to_player("There are two main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
 	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 12 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
 	SIGNAL_HANDLER
@@ -262,6 +276,7 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 
 	message_to_player("Great work! That covers the three basic methods to treat <b>Brute</b> damage on the field.")
+	message_to_player("<b>Section 1.2: Burn Damage</b>")
 	message_to_player("The next most common type of injury is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	message_to_player("The Dummy has taken a large amount of <b>Burn</b> damage. Use your <b>Health Analyzer</b> to scan their condition.")
 
@@ -401,6 +416,7 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial()
+	message_to_player("<b>Section 1.3: Treating Bleeding</b>")
 	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
 	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
 	update_objective("")
@@ -409,7 +425,7 @@
 	human_dummy.rejuvenate()
 	human_dummy.reagents.clear_reagents()
 	mob_chest.add_bleeding(damage_amount = 15)
-	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 7 SECONDS)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
@@ -466,6 +482,7 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
 	SIGNAL_HANDLER
 
+	message_to_player("<b>Section 1.4: Shrapnel Removal</b>")
 	message_to_player("In the line of duty, Marines occasionally recieve embedded shrapnel in wounds.")
 	message_to_player("Shrapnel can come in a variety of forms, all of which can be dug out of the body with a <b>Knife</b> or <b>Scalpel</b>.")
 	message_to_player("Pick up the boot-knife by clicking on it with an empty hand")
@@ -542,6 +559,7 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial()
 	SIGNAL_HANDLER
 
+	message_to_player("<b>Section 1.5: Bone Fractures</b>")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 

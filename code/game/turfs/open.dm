@@ -795,39 +795,6 @@
 			var/mob/rivermob = AM
 			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
-/turf/open/gm/coast/beachcorner2
-    icon_state = "beachcorner2"
-
-/turf/open/gm/coast/beachcorner2/east
-    dir = EAST
-
-/turf/open/gm/coast/east
-    dir = EAST
-
-/turf/open/gm/coast/beachcorner
-    icon_state = "beachcorner"
-
-/turf/open/gm/dirtgrassborder/north
-    dir = NORTH
-
-/turf/open/gm/dirtgrassborder/grassdirt_corner
-    icon_state = "grassdirt_corner"
-
-/turf/open/gm/dirtgrassborder/grassdirt_corner2
-    icon_state = "grassdirt_corner2"
-
-/turf/open/gm/dirt/beach
-    icon_state = "beach"
-
-/turf/open/gm/dirt/beach/northeast
-    dir = NORTHEAST
-
-/turf/open/gm/dirt/beach/southeast
-    dir = SOUTHEAST
-
-/turf/open/gm/dirt/beach/northwest
-    dir = NORTHWEST
-
 /turf/open/gm/coast
 	name = "coastline"
 	icon_state = "beach"
@@ -875,6 +842,39 @@
 
 /turf/open/gm/coast/beachcorner2/south_east
 	dir = 8
+
+/turf/open/gm/coast/beachcorner2
+	icon_state = "beachcorner2"
+
+/turf/open/gm/coast/beachcorner2/east
+	dir = EAST
+
+/turf/open/gm/coast/east
+	dir = EAST
+
+/turf/open/gm/coast/beachcorner
+	icon_state = "beachcorner"
+
+/turf/open/gm/dirtgrassborder/north
+	dir = NORTH
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner
+	icon_state = "grassdirt_corner"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2
+	icon_state = "grassdirt_corner2"
+
+/turf/open/gm/dirt/beach
+	icon_state = "beach"
+
+/turf/open/gm/dirt/beach/northeast
+	dir = NORTHEAST
+
+/turf/open/gm/dirt/beach/southeast
+	dir = SOUTHEAST
+
+/turf/open/gm/dirt/beach/northwest
+	dir = NORTHWEST
 
 /turf/open/gm/riverdeep
 	name = "river"

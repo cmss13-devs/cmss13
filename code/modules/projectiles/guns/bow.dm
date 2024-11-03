@@ -13,7 +13,7 @@
 	fire_sound = 'sound/effects/throwing/swoosh1.ogg'
 	aim_slowdown = 0
 	flags_equip_slot = SLOT_BLOCK_SUIT_STORE
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_UNUSUAL_DESIGN
 	gun_category = GUN_CATEGORY_HEAVY
 	muzzle_flash = null
 	w_class = SIZE_LARGE

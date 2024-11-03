@@ -868,14 +868,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/royal_marines_station)
-"vt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/ert_station/royal_marines_station)
 "vB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
@@ -3510,7 +3502,7 @@ Xs
 Ur
 sf
 sh
-vt
+Xs
 Ur
 sf
 sh

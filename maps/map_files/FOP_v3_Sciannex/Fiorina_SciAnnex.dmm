@@ -267,12 +267,11 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/tumor/aux_engi)
 "aiF" = (
-/obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "aiN" = (
@@ -4799,7 +4798,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "dDI" = (
@@ -6469,12 +6468,12 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eSY" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/ice/thin/indestructible{
 	dir = 4;
 	icon_state = "Corner"
 	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "eTb" = (
@@ -17629,13 +17628,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
-"nta" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/metal/almayer/north,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/park)
 "ntc" = (
 /turf/open/floor/prison/green/east,
 /area/fiorina/tumor/civres)
@@ -30354,12 +30346,12 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "xAj" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/ice/thin/indestructible{
 	dir = 8;
 	icon_state = "Straight"
 	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "xAl" = (
@@ -30494,12 +30486,12 @@
 /turf/open/floor/prison/yellow/northwest,
 /area/fiorina/station/central_ring)
 "xFj" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/ice/thin/indestructible{
 	dir = 1;
 	icon_state = "Corner"
 	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/platform/metal/almayer/north,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "xFL" = (
@@ -46512,7 +46504,7 @@ rBz
 wbI
 qUC
 oer
-nta
+uff
 sTm
 sTm
 hxc

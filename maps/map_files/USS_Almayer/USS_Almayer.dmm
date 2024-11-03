@@ -56279,7 +56279,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/lower/engine_core)
 "tmH" = (

@@ -2328,14 +2328,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
-"Bq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/ert_station/uscm_station)
 "Bs" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -7259,7 +7251,7 @@ VT
 Rv
 gd
 zs
-Bq
+VT
 Rv
 gd
 zs

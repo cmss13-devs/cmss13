@@ -1805,17 +1805,17 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "bpP" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 5
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
 	},
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
@@ -2250,10 +2250,10 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
 "bNx" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
@@ -2977,11 +2977,11 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
 "cpB" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -4477,19 +4477,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"dEv" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/oob)
 "dEJ" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
@@ -6697,10 +6684,12 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "fqS" = (
-/obj/structure/catwalk,
 /obj/structure/platform/metal/almayer/north{
 	density = 0;
 	climb_delay = 0
+	},
+/obj/structure/catwalk{
+	layer = 3
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
@@ -11658,11 +11647,11 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
 "jrQ" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -15223,19 +15212,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/central)
-"mnN" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/oob)
 "mol" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
@@ -16400,12 +16376,12 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "nol" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -21276,11 +21252,11 @@
 	},
 /area/varadero/interior/hall_N)
 "rfg" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -21823,11 +21799,11 @@
 /turf/open/floor/shiva/yellow/northeast,
 /area/varadero/interior/cargo)
 "rxu" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -23030,10 +23006,12 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ssI" = (
-/obj/structure/catwalk,
 /obj/structure/platform/metal/almayer{
 	density = 0;
 	climb_delay = 0
+	},
+/obj/structure/catwalk{
+	layer = 3
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
@@ -25799,11 +25777,11 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "uLv" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -25939,15 +25917,15 @@
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
 "uTg" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
 	},
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
@@ -28050,10 +28028,10 @@
 /area/varadero/interior/chapel)
 "woQ" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 4
 	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "wph" = (
@@ -29029,10 +29007,10 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
 	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -29739,10 +29717,10 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 6
 	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -30102,20 +30080,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/carpet,
 /area/varadero/interior/maintenance/north)
-"ydd" = (
-/obj/structure/plasticflaps/mining,
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/oob)
 "ydx" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -36811,7 +36775,7 @@ huF
 huF
 huF
 huF
-dEv
+iUn
 huF
 huF
 huF
@@ -38802,7 +38766,7 @@ pGs
 pGs
 huF
 huF
-mnN
+rxu
 huF
 huF
 huF
@@ -38984,7 +38948,7 @@ pGs
 pGs
 huF
 huF
-mnN
+rxu
 huF
 huF
 huF
@@ -39166,7 +39130,7 @@ pGs
 pGs
 huF
 huF
-mnN
+rxu
 huF
 huF
 huF
@@ -39348,7 +39312,7 @@ pGs
 pGs
 huF
 huF
-mnN
+rxu
 huF
 huF
 huF
@@ -39530,7 +39494,7 @@ huF
 huF
 huF
 huF
-mnN
+rxu
 huF
 pGs
 pGs
@@ -39712,7 +39676,7 @@ huF
 huF
 huF
 huF
-ydd
+nol
 huF
 pGs
 pGs
@@ -40071,7 +40035,7 @@ mPk
 mPk
 xSL
 kkF
-iUn
+rxu
 huF
 pGs
 dfs
@@ -40253,7 +40217,7 @@ mPk
 mPk
 xSL
 kkF
-iUn
+rxu
 huF
 pGs
 wpC
@@ -40435,7 +40399,7 @@ mPk
 mPk
 xSL
 kkF
-iUn
+rxu
 huF
 huF
 dWP

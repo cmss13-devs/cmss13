@@ -11232,12 +11232,10 @@
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "rqL" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
 "rst" = (
@@ -12005,8 +12003,10 @@
 /turf/open/floor/kutjevo/colors/purple/edge,
 /area/kutjevo/interior/construction)
 "sDe" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
+	layer = 3
+	},
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/colony_South/power2)
 "sDG" = (
@@ -12089,9 +12089,11 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med/pano)
 "sJm" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/machinery/vending/cigarette/colony{
+	layer = 3
+	},
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/colony_South/power2)
 "sJM" = (

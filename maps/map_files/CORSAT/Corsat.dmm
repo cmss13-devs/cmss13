@@ -5751,8 +5751,10 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/checkpoint)
 "axc" = (
-/obj/structure/machinery/vending/coffee,
 /obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/coffee{
+	layer = 3
+	},
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/gamma/hallwaysouth)
 "axd" = (
@@ -9379,8 +9381,8 @@
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/control)
 "aKb" = (
-/obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
 "aKc" = (
@@ -34980,8 +34982,10 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/complex)
 "lBx" = (
-/obj/structure/machinery/vending/snack,
 /obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/snack{
+	layer = 3
+	},
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/hallwaysouth)
 "lCa" = (
@@ -45899,8 +45903,10 @@
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/biodome/complex)
 "xaQ" = (
-/obj/structure/machinery/vending/coffee,
 /obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/coffee{
+	layer = 3
+	},
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/gamma/hallwaysouth)
 "xbu" = (

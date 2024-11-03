@@ -3392,12 +3392,12 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/security)
 "aoG" = (
-/obj/structure/platform/metal/strata/north,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/outpost_decks)
 "aoH" = (
@@ -16516,7 +16516,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "bJV" = (
@@ -18716,7 +18716,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "cjN" = (
@@ -20409,8 +20409,8 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "dhZ" = (
-/obj/structure/machinery/space_heater,
 /obj/structure/platform/metal/strata/north,
+/obj/structure/machinery/space_heater,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/sec2)
 "dii" = (
@@ -21459,9 +21459,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "eKk" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/microwave,
 /obj/structure/platform/metal/strata/north,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave{
+	layer = 3
+	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "eLg" = (
@@ -22926,7 +22928,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "gVw" = (
@@ -24611,8 +24613,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
 "jCp" = (
-/obj/structure/machinery/space_heater,
 /obj/structure/platform/metal/strata/north,
+/obj/structure/machinery/space_heater,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/ruin)
 "jCE" = (
@@ -24653,8 +24655,8 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/exterior/paths/north_outpost)
 "jEU" = (
-/obj/structure/machinery/space_heater,
 /obj/structure/platform/metal/strata/north,
+/obj/structure/machinery/space_heater,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "jEW" = (

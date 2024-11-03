@@ -393,16 +393,16 @@
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/largecrate/random/barrel{
 	pixel_x = -8;
-	layer = 2.9
+	layer = 3.1
 	},
 /obj/structure/largecrate/random/barrel{
 	pixel_x = 13;
-	layer = 2.9
+	layer = 3.1
 	},
 /obj/structure/largecrate/random/barrel{
 	pixel_x = 3;
-	layer = 2.9;
-	pixel_y = -8
+	pixel_y = -8;
+	layer = 3.1
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/template_noop)

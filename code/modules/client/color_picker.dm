@@ -66,6 +66,9 @@
 	if(!ui)
 		ui = new(user, src, "BodyPicker", "Body Picker")
 		ui.open()
+		ui.set_autoupdate(FALSE)
+
+	winset(user, ui.window.id, "focus=true")
 
 /datum/body_picker/ui_state(mob/user)
 	return GLOB.always_state

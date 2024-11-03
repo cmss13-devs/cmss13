@@ -4039,7 +4039,7 @@
 
 	load_upp_soldier(new_human, UPP)
 
-/datum/equipment_preset/upp/soldier/predproc/load_upp_soldier(mob/living/carbon/human/new_human, obj/item/clothing/under/marine/veteran/UPP/UPP)
+/datum/equipment_preset/upp/soldier/hunted/load_upp_soldier(mob/living/carbon/human/new_human, obj/item/clothing/under/marine/veteran/UPP/UPP)
 	var/percentage = rand(1, 100)
 	switch(percentage)
 		if(1 to 66)

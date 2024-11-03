@@ -32,7 +32,33 @@
 	remove_highlight(healthanalyzer)
 	message_to_player("The first step to any medical treatment, is identifying the source and type of injury.")
 	message_to_player("You can use your <b>Health Analyzer</b> on wounded Marines to see the locations, severity, and types of damage they have sustained.")
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 8 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(medihud)), 8 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/medihud()
+	message_to_player("Next, you should get to know a Medics second best friend on the field, the <b>HealthMate HUD</b>.")
+	message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
+	message_to_player("Squad Medical helmets come with an inbuilt <b>HealthMate HUD</b> optic, that activates whilst wearing it on your head.")
+	message_to_player("Pick up the <b>M10 corpsman helmet</b>, and wear it on your head, highlighted in green.")
+
+	var/obj/item/clothing/head/helmet/marine/medic/helmet = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(helmet)
+	add_highlight(helmet, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(medihud_2))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/medihud_2()
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/head/helmet/marine/medic, helmet)
+	remove_highlight(helmet)
+
+	message_to_player("While not as detailed as a Health Analyzer scan, your <b>HealthMate HUD</b> will display a healthbar over the head of any injured Marine, which will indicate their general condition.")
+	message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>Fully Healthy</b>.")
+	message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
+
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 20 SECONDS)
+
+
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
 	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
@@ -63,7 +89,7 @@
 	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
 	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	addtimer(CALLBACK(src, PROC_REF(splint_tutorial)), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 11 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
 	SIGNAL_HANDLER
@@ -370,6 +396,10 @@
 	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
 
+
+
+
+
 /datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial()
 	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
 	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
@@ -429,6 +459,10 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
 
+
+
+
+
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
 	SIGNAL_HANDLER
 
@@ -437,12 +471,15 @@
 	message_to_player("Pick up the boot-knife by clicking on it with an empty hand")
 	var/obj/item/attachable/bayonet/knife = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(knife)
-	add_highlight(knife)
+	add_highlight(knife, COLOR_GREEN)
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(shrapnel_tutorial_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_2()
 	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
+	remove_highlight(knife)
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
@@ -461,6 +498,7 @@
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/datum/action, surgery_toggle)
+	remove_highlight(surgery_toggle)
 	UnregisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
 
 	if(tutorial_mob.mob_flags & SURGERY_MODE_ON)
@@ -473,6 +511,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 
 	var/obj/item/shard/shrapnel/tutorial/shrapnel = new
+	add_to_tracking_atoms(shrapnel)
 	shrapnel.on_embed(human_dummy, mob_chest, TRUE)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -488,13 +527,28 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
+	add_highlight(knife, COLOR_GREEN)
+
 	message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
 	message_to_player("To remove the shrapnel, keep Surgery Mode <b>Disabled</b>, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
 
-	RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(tutorial_close))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(splint_tutorial))
+
+
+
+
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial()
 	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
+	remove_highlight(knife)
+	remove_from_tracking_atoms(knife)
+	qdel(knife)
 
 	message_to_player("When someone recieves an exceptionally severe injury, there is a chance it might cause a <b>Bone Fracture</b> in their body.")
 	message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single <b>Bone Fracture</b> capable of triggering <b>Internal Bleeding</b>, and blood loss.")
@@ -502,7 +556,6 @@
 	message_to_player("<b>Bone Fractures</b> can be identified through a <b>Health Analyzer</b> scan.")
 	message_to_player("Scan the Dummy with your <b>Health Analyzer</b>.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	var/obj/limb/leg/l_leg/mob_lleg = locate(/obj/limb/leg/l_leg) in human_dummy.limbs
 	add_to_tracking_atoms(mob_lleg)
@@ -544,7 +597,98 @@
 		addtimer(CALLBACK(src, PROC_REF(splint_tutorial_2)), 3 SECONDS)
 		return
 
-	message_to_player("Signal Check Cleared!")
+	message_to_player("Well done! This completes the first section of your basic training.")
+
+	//section 1 cleanup
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
+	remove_highlight(splint)
+	remove_from_tracking_atoms(splint)
+	qdel(splint)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+
+	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 3 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/intermediate_damage_treatment()
+	message_to_player("<b>Section 2: Intermediate Damage Treatment</b>")
+	message_to_player("Now that you have a grasp on how to treat the most common forms of damage, it's time to tackle some more complex skills in the Hospital Corpsman arsenal.")
+
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 8 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial()
+	message_to_player("When treating the injuries of any patient, it is critical that you also manage their <b>Pain Levels</b>.")
+	message_to_player("<b>Pain Levels</b>, while not directly life threatening, can still severely debilitate an untreated Marine in the line of duty.")
+	message_to_player("A Marine with high levels of pain will experience slowed movements, blurry vision, or sudden unconsciousness.")
+	message_to_player("A patients pain levels with vary according to the severity and types of injury.")
+	message_to_player("If a Marine is in especially severe pain, they will enter a <b>Paincrit</b>. Where they are held unconscious in critical condition until their pain levels are reduced.")
+
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 25 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_2()
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.adjustFireLoss(130)
+	message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
+	message_to_player("The flashing red healthbar above their head indicates the Dummy is in <b>Critical Condition</b>.")
+	message_to_player("To reduce their pain levels, the chemical painkiller <b>Tramadol</b> is primarily used.")
+	message_to_player("Feed the Dummy the <b>Tramadol Pill</b>, highlighted in green.")
+
+	var/obj/item/reagent_container/pill/tramadol/tram = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(tram)
+	add_highlight(tram, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(tram_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(tram_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed_reject()
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 2 SECONDS)
+
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+
+	message_to_player("Well done! But it looks like the Dummy is still in extreme pain.")
+	message_to_player("Like pain levels, each type of painkiller has a varying degree of potency. While effective as a general painkiller, Tramadol is not powerful enough to fully supress extreme levels of pain.")
+	message_to_player("<b>Oxycodone</b> is the most powerful painkiller used by field Medics, and is capable of nullifying almost all pain in the body for a short period of time.")
+	message_to_player("Apply the <b>Oxycodone Autoinjector</b> to the Dummy.")
+
+	var/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use/oxy = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(oxy)
+	add_highlight(oxy, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject_self))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_inject_self()
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	living_mob.reagents.clear_reagents()
+	message_to_player("Dont use the injector on yourself, try again.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
+	remove_highlight(oxy)
+	qdel(oxy)
+	addtimer(CALLBACK(src, PROC_REF(tram_pill_fed)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_inject()
+	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
+
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3)), 3 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER
@@ -563,11 +707,11 @@
 // ---------- TO DO LIST ---------- //
 // Basic Damage Treatment
 // - Fractures
+// - Still need to clean up the code
 //
 // Intermediate Damage Treatment
 // - Toxin Damage, With Basic Chemicals
 // - Oxygen Damage
-// - Managing Pain
 // - Synthetic Limb Repair
 //
 // Overdoses

@@ -70,7 +70,7 @@
 				to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
 				return
 			if (!isyautja(user))
-				to_chat(user, SPAN_WARNING("You lack the strength to draw [src]!"))
+				to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back the drawstring of [src]!"))
 				return
 			ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
 			playsound(user, reload_sound, 25, 1)

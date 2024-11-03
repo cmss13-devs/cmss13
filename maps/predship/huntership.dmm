@@ -2193,15 +2193,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja_ship)
-"xS" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
-	},
-/obj/structure/machinery/computer/overwatch/yautja{
-	icon_state = ""
-	},
-/turf/open/floor/grey_dark2,
-/area/yautja_ship)
 "xX" = (
 /obj/structure/platform_decoration/kutjevo/smooth{
 	dir = 4
@@ -5754,7 +5745,7 @@ cP
 ct
 cP
 bL
-xS
+hI
 LX
 bL
 bL

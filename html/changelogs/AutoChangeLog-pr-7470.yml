@@ -1,0 +1,4 @@
+author: "vero5123"
+delete-after: True
+changes:
+  - bugfix: "Special characters are now properly sanitized and removed in bug reports."

@@ -554,7 +554,7 @@
 #include "code\datums\emergency_calls\xeno_cultists.dm"
 #include "code\datums\emergency_calls\xenos.dm"
 #include "code\datums\emergency_calls\zombie.dm"
-#include "code\datums\emergency_calls\pred_hunt.dm\hunting_calls.dm"
+#include "code\datums\emergency_calls\pred_hunt\hunting_calls.dm"
 #include "code\datums\entities\chemical_information.dm"
 #include "code\datums\entities\clans.dm"
 #include "code\datums\entities\discord_identifier.dm"

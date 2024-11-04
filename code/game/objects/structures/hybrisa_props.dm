@@ -1493,46 +1493,61 @@
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	name = "coffee machine"
 	desc = "A coffee machine."
+	wrenchable = TRUE
 	icon_state = "coffee"
-	var/making = FALSE
-	var/cups = 10
+	var/vends = "coffee"
+	var/base_state = "coffee"
+	var/fiting_cups = list(/obj/item/reagent_container/food/drinks/coffee,/obj/item/reagent_container/food/drinks/coffeecup)
 	var/making_time = 10 SECONDS
-	var/product = /obj/item/reagent_container/food/drinks/coffee/cuppa_joes
+	var/obj/item/reagent_container/food/drinks/cup = null
 
-
-/obj/structure/machinery/hybrisa/coffee_machine/attack_hand(mob/living/user)
-	icon_state = "coffee_cup"
-	if(making)
+/obj/structure/machinery/hybrisa/coffee_machine/attackby(obj/item/reagent_container/attacking_object, mob/user)
+	if(cup)
+		to_chat(user, SPAN_WARNING("There is already cup there."))
 		return
-	if(cups<=0)
-		to_chat(user, "Damn, there is no coffee left!")
+	if(!is_type_in_list(attacking_object,fiting_cups ))
+		to_chat(user, SPAN_WARNING("\The [attacking_object] does not quite fit in."))
 		return
-	icon_state = "coffee_cup"
-	making = TRUE
-	addtimer(CALLBACK(src, PROC_REF(vend_coffee), user), making_time)
-
-/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/living/user)
-	cups --
-	var/vended_item = new product(get_turf(src))
-	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
-	if(user.Adjacent(src) && user.put_in_hands(vended_item))
-		to_chat(user, SPAN_NOTICE("You take [vended_item] in your hand."))
 	else
-		to_chat(user, SPAN_WARNING("\The [vended_item] sits ready in the machine."))
-	icon_state = "coffee"
+		playsound(src, "sound/machines/coffee1.ogg", 40, TRUE)
+		cup = attacking_object
+		user.drop_inv_item_to_loc(attacking_object, src)
+		update_icon()
+		addtimer(CALLBACK(src, PROC_REF(vend_coffee), user), making_time)
+
+/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user)
+	var/datum/reagents/current_reagent = cup.reagents
+	var/space = current_reagent.maximum_volume - current_reagent.total_volume
+	if(space<current_reagent.maximum_volume)
+		to_chat(user, SPAN_WARNING("\The [vends] spills around as it does not fit the [cup], you should have emptied it first."))
+	current_reagent.add_reagent(vends,space)
+	cup.reagents = current_reagent
+	if(user.Adjacent(src) && user.put_in_hands(cup))
+		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
+	else
+		cup.forceMove(src.loc)
+		to_chat(user, SPAN_WARNING("\The [cup] sits ready in the machine."))
+	cup = null
 	update_icon()
-	making = FALSE
 
+/obj/structure/machinery/hybrisa/coffee_machine/update_icon()
+	if(!cup)
+		if(stat & NOPOWER)
+			icon_state = ("[base_state]_empty_on")
+		else
+			icon_state = ("[base_state]_empty_off")
+	else
+		icon_state = ("[base_state]_cup_generic")
+		switch(cup.type)
+			if(/obj/item/reagent_container/food/drinks/coffeecup)
+				icon_state = ("[base_state]_mug")
+			if(/obj/item/reagent_container/food/drinks/coffee/cuppa_joes)
+				icon_state = ("[base_state]_cup")
+			if(/obj/item/reagent_container/food/drinks/coffeecup/wy)
+				icon_state = ("[base_state]_mug_wy")
+			if(/obj/item/reagent_container/food/drinks/coffeecup/uscm)
+				icon_state = ("[base_state]_mug_uscm")
 
-/obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
-	name = "coffee machine"
-	desc = "A coffee machine."
-	icon_state = "coffee"
-
-/obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine2
-	name = "coffee machine"
-	desc = "A coffee machine."
-	icon_state = "coffee_cup"
 
 // Big Computer Units 32x32
 

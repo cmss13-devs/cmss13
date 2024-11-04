@@ -906,6 +906,10 @@
 	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	chosen_theme = list("UPP", "Green", "Yellow", "Red")
 
+/obj/structure/machinery/computer/overwatch/upp/Initialize()
+	. = ..()
+	current_orbital_cannon = null
+
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
 /obj/structure/machinery/computer/overwatch/twe

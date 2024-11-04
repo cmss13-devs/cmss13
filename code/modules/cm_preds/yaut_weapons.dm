@@ -1403,6 +1403,9 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	muzzle_flash = null
 	w_class = SIZE_LARGE
+	explo_proof = TRUE
+	unacidable = TRUE
+	flags_item = TWOHANDED|ITEM_PREDATOR
 
 /obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
 	. = ..(mapload, TRUE) //is there a better way?
@@ -1498,6 +1501,8 @@
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
 	force = 20
+	explo_proof = TRUE
+	unacidable = TRUE
 
 /obj/item/arrow/expl
 	name = "\improper activated arrow"
@@ -1538,6 +1543,8 @@
 		/obj/item/weapon/gun/bow,
 		/obj/item/arrow,
 	)
+	explo_proof = TRUE
+	unacidable = TRUE
 
 /obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())

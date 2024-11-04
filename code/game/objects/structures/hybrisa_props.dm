@@ -1489,6 +1489,41 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/hybrisa/coffee_machine
+	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	name = "coffee machine"
+	desc = "A coffee machine."
+	icon_state = "coffee"
+	var/making = FALSE
+	var/cups = 10
+	var/making_time = 10 SECONDS
+	var/product = /obj/item/reagent_container/food/drinks/coffee/cuppa_joes
+
+
+/obj/structure/machinery/hybrisa/coffee_machine/attack_hand(mob/living/user)
+	icon_state = "coffee_cup"
+	if(making)
+		return
+	if(cups<=0)
+		to_chat("Damn, there is no coffee left!")
+		return
+	icon_state = "coffee_cup"
+	making = TRUE
+	addtimer(CALLBACK(src, PROC_REF(vend_coffee), user), making_time)
+
+/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/living/user)
+	cups --
+	var/vended_item = new product(get_turf(src))
+	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
+	if(user.Adjacent(src) && user.put_in_hands(vended_item))
+		to_chat(user, SPAN_NOTICE("You take [vended_item] in your hand."))
+	else
+		to_chat(user, SPAN_WARNING("\The [vended_item] sits ready in the machine."))
+	icon_state = "coffee"
+	update_icon()
+	making = FALSE
+
+
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
 	desc = "A coffee machine."

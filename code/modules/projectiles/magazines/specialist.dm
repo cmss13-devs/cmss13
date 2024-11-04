@@ -121,7 +121,6 @@
 	max_rounds = 1
 	default_ammo = /datum/ammo/flare
 
-
 //-------------------------------------------------------
 //M5 RPG
 

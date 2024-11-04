@@ -1560,6 +1560,7 @@
 #include "code\modules\clans\ship.dm"
 #include "code\modules\client\client_defines.dm"
 #include "code\modules\client\client_procs.dm"
+#include "code\modules\client\color_picker.dm"
 #include "code\modules\client\country_flags.dm"
 #include "code\modules\client\hair_picker.dm"
 #include "code\modules\client\player_details.dm"

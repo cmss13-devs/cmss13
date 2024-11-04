@@ -1752,29 +1752,6 @@
 	else
 		return ..()
 
-/obj/item/storage/belt/gun/quiver
-	name = "\improper quiver"
-	desc = "ahhhhh."
-	storage_slots = 8
-	max_storage_space = 20
-	icon_state = "quiver"
-	item_state = "s_marinebelt"
-	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
-	max_w_class = SIZE_LARGE
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
-	)
-	can_hold = list(
-		/obj/item/weapon/gun/bow,
-		/obj/item/arrow,
-	)
-
-/obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/bow())
-	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/arrow(src)
-
 /obj/item/storage/belt/gun/webley
 	name = "\improper Webley Mk VI gunbelt"
 	desc = "Finely-tooled British leather, a Webley, and six speedloaders of .455. More than enough to kill anything with legs."

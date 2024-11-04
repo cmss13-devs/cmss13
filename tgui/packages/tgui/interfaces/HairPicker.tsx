@@ -1,5 +1,5 @@
 import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { useState } from 'react';
+import { createRef, useState } from 'react';
 
 import { useBackend } from '../backend';
 import {
@@ -142,6 +142,8 @@ const PickerElement = (props: {
 
   const { act } = useBackend();
 
+  const scrollRef = createRef<HTMLDivElement>();
+
   return (
     <Section
       title={name}
@@ -153,6 +155,10 @@ const PickerElement = (props: {
           Color
         </Button>
       }
+      ref={scrollRef}
+      onMouseOver={() => {
+        scrollRef.current?.focus();
+      }}
     >
       <Stack wrap="wrap" height="200px" width="400px">
         {hair.map((hair) => (

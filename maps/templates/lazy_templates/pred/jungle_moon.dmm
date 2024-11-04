@@ -3413,9 +3413,6 @@
 	},
 /turf/open/gm/dirtgrassborder/north,
 /area/yautja_grounds/jungle)
-"UJ" = (
-/turf/open/floor/strata/gray_multi_tiles/pred/south,
-/area/yautja_grounds/prep_room)
 "UM" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8;
@@ -8197,7 +8194,7 @@ LW
 HJ
 HJ
 HJ
-UJ
+LW
 Az
 NB
 ju

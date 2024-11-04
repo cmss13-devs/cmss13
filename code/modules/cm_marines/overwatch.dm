@@ -45,7 +45,7 @@
 	. = ..()
 
 	current_orbital_cannon = GLOB.almayer_orbital_cannon
-	if (faction == FACTION_MARINE)
+	if(faction == FACTION_MARINE)
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
 		tacmap = new(src, minimap_type) // Non-drawing version
@@ -900,19 +900,11 @@
 	faction = FACTION_CLF
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 	command_channel_key = "#v"
 	ui_theme = "crtupp"
 	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	chosen_theme = list("UPP", "Green", "Yellow", "Red")
-
-/obj/structure/machinery/computer/overwatch/upp/Initialize()
-	. = ..()
-
-	current_orbital_cannon = null
-	if (faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC

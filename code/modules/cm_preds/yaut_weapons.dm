@@ -1443,40 +1443,37 @@
 
 /obj/item/weapon/gun/bow/update_icon()
 	..()
-	if (current_mag && current_mag.current_rounds > 0)
-		if (istype(ammo, /datum/ammo/arrow))
-			var/datum/ammo/arrow/arrow = ammo
-			if (arrow.activated)
-				icon_state = "bow_expl"
-			else
-				icon_state = "bow_loaded"
+	if (!current_mag || current_mag.current_rounds == 0 || !istype(ammo, /datum/ammo/arrow))
+		return
+	var/datum/ammo/arrow/arrow = ammo
+	if (arrow.activated)
+		icon_state = "bow_expl"
+	else
+		icon_state = "bow_loaded"
 
 /obj/item/weapon/gun/bow/attackby(obj/item/attacking_item, mob/user)
-	if(istype(attacking_item, /obj/item/arrow))
-		var/obj/item/arrow/attacking_arrow = attacking_item
-		if(current_mag && current_mag.current_rounds == 0)
-			if (user.r_hand != src && user.l_hand != src)
-				to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
-				return
-			if (!isyautja(user))
-				to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back the drawstring of [src]!"))
-				return
-			ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
-			playsound(user, reload_sound, 25, 1)
-			to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] on [src]."))
-			current_mag.current_rounds++
-			qdel(attacking_arrow)
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("[src] is already loaded!"))
-	else
+	if(!istype(attacking_item, /obj/item/arrow))
 		to_chat(user, SPAN_WARNING("That's not an arrow!"))
+		return
+	if(!current_mag || current_mag.current_rounds == 1)
+		return to_chat(user, SPAN_WARNING("[src] is already loaded!"))
+	var/obj/item/arrow/attacking_arrow = attacking_item
+	if (user.r_hand != src && user.l_hand != src)
+		to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
+		return
+	if (!isyautja(user))
+		to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back the drawstring of [src]!"))
+		return
+	ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
+	playsound(user, reload_sound, 25, 1)
+	to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] onto [src]."))
+	current_mag.current_rounds++
+	qdel(attacking_arrow)
+	update_icon()
 
 /obj/item/weapon/gun/bow/dropped(mob/user)
 	. = ..()
-	if(!current_mag)
-		return
-	if(!current_mag.current_rounds)
+	if(!current_mag || !current_mag.current_rounds)
 		return
 	to_chat(user, SPAN_WARNING("The projectile falls out of [src]!"))
 	unload(null)

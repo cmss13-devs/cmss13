@@ -2306,19 +2306,6 @@
 /turf/open/floor/corsat/squareswood/north
 	dir = NORTH
 
-/turf/open/floor/strata/multi_tiles
-	color = "#5e5d5d"
-	icon_state = "multi_tiles"
-
-/turf/open/floor/cult
-	icon_state = "cult"
-
-/turf/open/gm/grass/grass2
-	icon_state = "grass2"
-
-/turf/open/floor/corsat/tan
-	icon_state = "tan"
-
 /turf/open/floor/corsat/tan/north
 	dir = NORTH
 

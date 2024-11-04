@@ -1522,6 +1522,7 @@
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
 	if (!isyautja(user))
+		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] \the [src], but nothing happens."))
 		return
 	if (activated)
 		activated = FALSE

@@ -3568,3 +3568,22 @@
 
 /turf/open/floor/yellowfull
 	icon_state = "yellowfull"
+
+/turf/open/floor/corsat/squareswood/pred
+	icon_state = "squareswood"
+
+/turf/open/floor/corsat/squareswood/pred/north
+	dir = NORTH
+
+/turf/open/floor/strata/gray_multi_tiles/pred
+	color = "#5e5d5d"
+	icon_state = "multi_tiles"
+
+/turf/open/floor/strata/gray_multi_tiles/south/pred
+	dir = SOUTH
+
+/turf/open/floor/cult/pred
+	icon_state = "cult"
+
+/turf/open/gm/grass/grass2/pred
+	icon_state = "grass2"

@@ -1396,10 +1396,10 @@
 		)
 	current_mag = /obj/item/ammo_magazine/internal/bow
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
-	fire_sound = 'sound/effects/throwing/swoosh1.ogg'
+	fire_sound = 'sound/weapons/bow_shot.ogg'
 	aim_slowdown = 0
 	flags_equip_slot = SLOT_BLOCK_SUIT_STORE
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_UNUSUAL_DESIGN
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_UNUSUAL_DESIGN
 	gun_category = GUN_CATEGORY_HEAVY
 	muzzle_flash = null
 	w_class = SIZE_LARGE
@@ -1415,17 +1415,12 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = 0
 	recoil = RECOIL_AMOUNT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/bow/reload_into_chamber(mob/user)
 	. = ..()
 	update_icon()
-
-/obj/item/weapon/gun/bow/wield(mob/living/user)
-	return
 
 /obj/item/weapon/gun/bow/unload(mob/user)
 	if(!current_mag)

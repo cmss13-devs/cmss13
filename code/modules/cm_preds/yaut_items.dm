@@ -473,11 +473,116 @@
 		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
 		return TRUE
 
+
+///HUNTING GROUNDS STUFF!!!!///
+
+//Allow Yautja to generate a new hunting ground separate from the main ground Z level
+/obj/structure/machinery/hunting_ground_selection
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+	///List of where they can choose to go to
+	var/static/list/potential_hunting_grounds = list()
+	///If one has already been spawned, dont let more be spawned
+	var/static/hunting_ground_activated = FALSE
+
+/obj/structure/machinery/hunting_ground_selection/Initialize(mapload, ...)
+	. = ..()
+	if(!length(potential_hunting_grounds))
+		generate_hunting_grounds_list()
+
+/obj/structure/machinery/hunting_ground_selection/proc/generate_hunting_grounds_list()
+	for(var/datum/lazy_template/pred/hunting_ground as anything in subtypesof(/datum/lazy_template/pred))
+		if(!hunting_ground::hunting_ground_name) //if theres no name, assume its abstract
+			continue
+		potential_hunting_grounds[hunting_ground::hunting_ground_name] = hunting_ground
+
+/obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(hunting_ground_activated)
+		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
+		return
+
+	if(!length(potential_hunting_grounds))
+		to_chat(user, SPAN_WARNING("There are no available hunting grounds to select."))
+		return
+
+	var/choice = tgui_input_list(user, "Which hunting grounds do you choose.", "[src]", potential_hunting_grounds)
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You have not chosen any hunting grounds."))
+		return
+
+	if(hunting_ground_activated) //check again after the choice just in case
+		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
+		return
+
+	to_chat(user, SPAN_NOTICE("you choose [choice] as the hunting ground."))
+	message_all_yautja("[usr.real_name] Has chosen [choice] as the new hunting ground")
+	message_admins(FONT_SIZE_LARGE("ALERT: [usr.real_name] ([user.key]) spawned [choice] (hunting grounds)"))
+	hunting_ground_activated = TRUE
+	SSmapping.lazy_load_template(potential_hunting_grounds[choice])
+
+/obj/structure/machinery/hunt_ground_spawner
+	name = "huntsmasters console"
+	desc = "A console for creating hunts."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+	///List of what ERTs can be called
+	var/static/list/potential_prey = list()
+	var/obj/structure/machinery/hunting_ground_selection/hunt
+	COOLDOWN_DECLARE(yautja_hunt_cooldown)
+
+/obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
+	. = ..()
+	if(!length(potential_prey))
+		generate_hunt_list()
+
+/obj/structure/machinery/hunt_ground_spawner/proc/generate_hunt_list()
+	for(var/datum/emergency_call/pred/hunting_type as anything in subtypesof(/datum/emergency_call/pred))
+		if(!hunting_type::hunt_name)
+			continue
+		potential_prey[hunting_type::hunt_name] = hunting_type
+
+/obj/structure/machinery/hunt_ground_spawner/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(!COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
+		to_chat(user, DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown)))
+		return
+
+	if(!length(potential_prey))
+		to_chat(user, SPAN_WARNING("There are no available hunts to select."))
+		return
+
+	var/choice = tgui_input_list(user, "What will you hunt today?.", "[src]", potential_prey)
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You have not chosen any prey to hunt."))
+		return
+
+	to_chat(user, SPAN_NOTICE("you choose [choice] as your prey."))
+	message_all_yautja("[usr.real_name] Has chosen [choice] as their prey")
+	message_admins(FONT_SIZE_LARGE("ALERT: [usr.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
+	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
+	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
+
+//=================//\\=================\\
+//======================================\\
+
 //=================//\\=================\\
 //======================================\\
 
 /*
-			   OTHER THINGS
+			OTHER THINGS
 */
 
 //======================================\\

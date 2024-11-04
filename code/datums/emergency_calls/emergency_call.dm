@@ -49,6 +49,21 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
+	///xeno roles
+	var/xeno_t3 = 0
+	var/xeno_t2 = 0
+	var/max_xeno_t3 = 1
+	var/max_xeno_t2 = 1
+	///Hunting Grounds
+	var/mercs = 0
+	var/royal_marines= 0
+	var/upp = 0
+	var/clf = 0
+	var/max_mercs = 1
+	var/max_royal_marines= 1
+	var/max_upp = 1
+	var/max_clf = 1
+
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE

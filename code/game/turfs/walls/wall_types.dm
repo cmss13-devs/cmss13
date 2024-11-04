@@ -479,6 +479,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	. = ..()
 	icon_state = "[type]vault"
 
+/turf/closed/wall/cult/hunting_grounds
+	name = "wall"
+	hull = 1
+
 
 //Hangar walls
 /turf/closed/wall/hangar

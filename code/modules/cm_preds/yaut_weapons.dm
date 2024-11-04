@@ -1471,7 +1471,7 @@
 	if(!current_mag || !current_mag.current_rounds)
 		return
 	to_chat(user, SPAN_WARNING("The projectile falls out of [src]!"))
-	unload(null)
+	unload()
 
 /obj/item/weapon/gun/bow/click_empty(mob/user)
 	return

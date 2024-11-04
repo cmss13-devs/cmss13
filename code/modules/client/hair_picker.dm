@@ -1,22 +1,44 @@
 /datum/hair_picker/ui_static_data(mob/user)
 	. = ..()
 
-	.["icon"] = /datum/sprite_accessory/hair::icon
+	.["hair_icon"] = /datum/sprite_accessory/hair::icon
 
-	.["hair_styles"] = list()
-	for(var/key in GLOB.hair_styles_list)
-		var/datum/sprite_accessory/hair/hair = GLOB.hair_styles_list[key]
-		.["hair_styles"] += list(
-			list("name" = hair.name, "icon" = hair.icon_state)
-		)
+	.["facial_hair_icon"] = /datum/sprite_accessory/facial_hair::icon
+
 
 /datum/hair_picker/ui_data(mob/user)
 	. = ..()
 
 	var/datum/preferences/prefs = user.client.prefs
 
-	.["hair_style"] = GLOB.hair_styles_list[prefs.h_style].icon_name
+	.["hair_style"] = GLOB.hair_styles_list[prefs.h_style].icon_state
 	.["hair_color"] = "#[num2hex(prefs.r_hair, 2)][num2hex(prefs.g_hair, 2)][num2hex(prefs.b_hair)]"
+
+	.["hair_styles"] = list()
+	for(var/key in GLOB.hair_styles_list)
+		var/datum/sprite_accessory/hair/hair = GLOB.hair_styles_list[key]
+		if(!hair.selectable)
+			continue
+		if(!(prefs.species in hair.species_allowed))
+			continue
+
+		.["hair_styles"] += list(
+			list("name" = hair.name, "icon" = hair.icon_state)
+		)
+
+	.["facial_hair_styles"] = list()
+	for(var/key in GLOB.facial_hair_styles_list)
+		var/datum/sprite_accessory/facial_hair/facial_hair = GLOB.facial_hair_styles_list[key]
+		if(!facial_hair.selectable)
+			continue
+		if(!(prefs.species in facial_hair.species_allowed))
+			continue
+		if(prefs.gender != facial_hair.gender)
+			continue
+
+		.["facial_hair_styles"] += list(
+			list("name" = facial_hair.name, "icon" = facial_hair.icon_state)
+		)
 
 /datum/hair_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

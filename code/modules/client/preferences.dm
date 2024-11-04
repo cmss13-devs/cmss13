@@ -30,6 +30,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/atom/movable/screen/rotate/alt/rotate_left
 	var/atom/movable/screen/rotate/rotate_right
 
+	var/static/datum/hair_picker/hair_picker = new
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
@@ -1531,6 +1533,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 							b_hair = hex2num(copytext(new_hair, 6, 8))
 
 				if("h_style")
+
+					hair_picker.tgui_interact(user)
+
 					var/list/valid_hairstyles = list()
 					for(var/hairstyle in GLOB.hair_styles_list)
 						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_styles_list[hairstyle]

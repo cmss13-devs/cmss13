@@ -193,9 +193,9 @@
 	var/activated = FALSE
 
 /datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
-	if(ishuman(embedded_mob) && !isyautja(embedded_mob))
-		if(istype(target_organ))
-			target_organ.embed(new shrapnel_type)
+	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
+		return
+	target_organ.embed(new shrapnel_type)
 
 /datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
 	var/obj/item/arrow/G = new handful_type(T)
@@ -206,6 +206,8 @@
 /datum/ammo/arrow/on_hit_mob(mob/mob,obj/projectile/projectile)
 	mob.apply_effect(1, STUN)
 	mob.apply_effect(3, DAZE)
+	if(!ishumansynth_strict(mob))
+		drop_arrow(get_turf(mob), projectile)
 	pushback(mob, projectile, 7)
 
 /datum/ammo/arrow/on_hit_obj(obj/O,obj/projectile/P)

@@ -50,6 +50,7 @@
 // Interfaces
 @include meta.load-css('./interfaces/BodyPicker.scss');
 @include meta.load-css('./interfaces/Changelog.scss');
+@include meta.load-css('./interfaces/ColorPicker.scss');
 @include meta.load-css('./interfaces/ListInput.scss');
 @include meta.load-css('./interfaces/CasSim.scss');
 @include meta.load-css('./interfaces/AlertModal.scss');

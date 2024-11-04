@@ -1,10 +1,11 @@
-import { rgbaStringToHsva } from 'common/color';
+import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
 import {
   Box,
   Button,
+  ColorBox,
   DmIcon,
   Modal,
   Section,
@@ -12,15 +13,18 @@ import {
   Tooltip,
 } from '../components';
 import { Window } from '../layouts';
+import { createLogger } from '../logging';
 import { ColorSelector } from './ColorPickerModal';
 
 type HairPickerData = {
   hair_icon: string;
-  facial_hair_icon: string;
   hair_styles: { name: string; icon: string }[];
   hair_style: string;
+  hair_color: string;
+  facial_hair_icon: string;
   facial_hair_styles: { name: string; icon: string }[];
-  facial_hair: string;
+  facial_hair_style: string;
+  facial_hair_color: string;
 };
 
 export const HairPicker = () => {
@@ -30,9 +34,11 @@ export const HairPicker = () => {
     hair_icon,
     hair_style,
     hair_styles,
+    hair_color,
     facial_hair_icon,
-    facial_hair,
+    facial_hair_style,
     facial_hair_styles,
+    facial_hair_color,
   } = data;
 
   const height = facial_hair_styles.length > 0 ? 550 : 290;
@@ -49,28 +55,77 @@ export const HairPicker = () => {
           icon={hair_icon}
           hair={hair_styles}
           active={hair_style}
+          color={hair_color}
           setColor={setColorPicker}
-          act="hair"
+          action="hair"
         />
         <PickerElement
           name="Facial Hair"
           icon={facial_hair_icon}
           hair={facial_hair_styles}
-          active={facial_hair}
+          active={facial_hair_style}
+          color={facial_hair_color}
           setColor={setColorPicker}
-          act="facial_hair"
+          action="facial_hair"
         />
         {colorPicker && (
-          <Modal>
-            <ColorSelector
-              color={rgbaStringToHsva('#ffffff')}
-              setColor={() => {}}
-              defaultColor="#ffffff"
-            />
-          </Modal>
+          <ColorPicker
+            type={colorPicker}
+            close={() => setColorPicker(false)}
+            default_color={
+              colorPicker === 'hair' ? hair_color : facial_hair_color
+            }
+          />
         )}
       </Window.Content>
     </Window>
+  );
+};
+
+const ColorPicker = (props: {
+  readonly type: 'hair' | 'facial_hair';
+  readonly close: () => void;
+  readonly default_color: string;
+}) => {
+  const { act } = useBackend();
+
+  const { type, close, default_color } = props;
+
+  const [currentColor, setCurrentColor] = useState<HsvaColor>(
+    hexToHsva(default_color || '#000000'),
+  );
+
+  const logger = createLogger('log');
+  logger.log(currentColor);
+
+  return (
+    <Modal width="100%">
+      <Box width="350px">
+        <Stack vertical>
+          <Stack.Item>
+            <Stack align="center" justify="space-around">
+              <Stack.Item>
+                <Button
+                  onClick={() => {
+                    close();
+                    act(`${type}_color`, { color: hsvaToHex(currentColor) });
+                  }}
+                >
+                  Confirm
+                </Button>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <ColorSelector
+              color={currentColor}
+              setColor={setCurrentColor}
+              defaultColor={default_color}
+            />
+          </Stack.Item>
+        </Stack>
+      </Box>
+    </Modal>
   );
 };
 
@@ -79,29 +134,40 @@ const PickerElement = (props: {
   readonly icon: string;
   readonly active: string;
   readonly hair: { icon: string; name: string }[];
-  readonly act: 'hair' | 'facial_hair';
+  readonly action: 'hair' | 'facial_hair';
   readonly setColor: (_) => void;
+  readonly color: string;
 }) => {
-  const { name, icon, hair, active, act, setColor } = props;
+  const { name, icon, hair, active, action, setColor, color } = props;
+
+  const { act } = useBackend();
 
   return (
     <Section
       title={name}
       height="250px"
       scrollable
-      buttons={<Button onClick={() => setColor(act)}>Color</Button>}
+      buttons={
+        <Button onClick={() => setColor(action)}>
+          <ColorBox color={color} mr={1} />
+          Color
+        </Button>
+      }
     >
       <Stack wrap="wrap" height="200px" width="400px">
-        {hair.map((facial_hair) => (
+        {hair.map((hair) => (
           <Stack.Item
-            key={facial_hair.name}
-            className={`Picker${active === facial_hair.icon ? ' Active' : ''}`}
+            key={hair.name}
+            className={`Picker${active === hair.icon ? ' Active' : ''}`}
           >
-            <Tooltip content={facial_hair.name}>
-              <Box position="relative">
+            <Tooltip content={hair.name}>
+              <Box
+                position="relative"
+                onClick={() => act(action, { name: hair.name })}
+              >
                 <DmIcon
                   icon={icon}
-                  icon_state={`${facial_hair.icon}_s`}
+                  icon_state={`${hair.icon}_s`}
                   height="64px"
                   width="64px"
                 />

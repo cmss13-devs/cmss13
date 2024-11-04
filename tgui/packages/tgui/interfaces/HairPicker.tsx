@@ -13,7 +13,6 @@ import {
   Tooltip,
 } from '../components';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
 import { ColorSelector } from './ColorPickerModal';
 
 type HairPickerData = {
@@ -94,9 +93,6 @@ const ColorPicker = (props: {
   const [currentColor, setCurrentColor] = useState<HsvaColor>(
     hexToHsva(default_color || '#000000'),
   );
-
-  const logger = createLogger('log');
-  logger.log(currentColor);
 
   return (
     <Modal width="100%">

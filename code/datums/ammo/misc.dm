@@ -203,6 +203,11 @@
 	rotation.Turn(fired_projectile.angle - 90)
 	G.apply_transform(rotation)
 
+/datum/ammo/arrow/on_hit_mob(mob/mob,obj/projectile/projectile)
+	mob.apply_effect(1, STUN)
+	mob.apply_effect(3, DAZE)
+	pushback(mob, projectile, 7)
+
 /datum/ammo/arrow/on_hit_obj(obj/O,obj/projectile/P)
 	drop_arrow(get_turf(P), P)
 

@@ -1418,6 +1418,9 @@
 	explo_proof = TRUE
 	unacidable = TRUE
 	flags_item = TWOHANDED|ITEM_PREDATOR
+	explo_proof = TRUE
+	unacidable = TRUE
+	flags_item = TWOHANDED|ITEM_PREDATOR
 
 /obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
 	. = ..(mapload, TRUE) //is there a better way?

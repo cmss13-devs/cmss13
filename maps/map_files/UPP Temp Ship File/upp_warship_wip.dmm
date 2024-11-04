@@ -2722,8 +2722,11 @@
 	},
 /obj/structure/ladder{
 	id = "hatch2";
-	icon_state = "hatchclosed";
-	name = "functional hatch"
+	height = 1
+	},
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
+	name = "functional hatch";
+	layer = 2.8
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/event/metal/dynamic{
@@ -16361,10 +16364,12 @@
 	pixel_y = 6
 	},
 /obj/structure/ladder{
-	height = 2;
 	id = "hatch1";
-	icon_state = "hatchclosed";
-	name = "functional hatch"
+	height = 1
+	},
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
+	name = "functional hatch";
+	layer = 2.8
 	},
 /turf/open/floor/prison/greenfull,
 /area/event/metal/dynamic{
@@ -27002,9 +27007,8 @@
 	})
 "rkt" = (
 /obj/structure/ladder{
-	height = 1;
+	height = 2;
 	id = "hatch1";
-	icon_state = "hatchclosed";
 	name = "functional hatch"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -29105,9 +29109,8 @@
 	})
 "sKT" = (
 /obj/structure/ladder{
-	height = 1;
+	height = 2;
 	id = "hatch2";
-	icon_state = "hatchclosed";
 	name = "functional hatch"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,

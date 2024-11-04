@@ -3533,10 +3533,10 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/surface/rack,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
+/obj/structure/machinery/power/reactor/colony{
+	desc = "A thermoelectric generator fueled by searing hot uranium!";
+	name = "thermoelectric generator"
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -5803,11 +5803,15 @@
 /area/prison/medbay)
 "apu" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	dir = 2;
-	name = "Research-Infirmary Maintenance"
+	name = "Research-Infirmary Maintenance";
+	welded = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2"
+	},
 /area/prison/medbay)
 "apv" = (
 /turf/closed/wall/r_wall/prison,
@@ -21118,6 +21122,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -21630,6 +21637,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -30107,11 +30117,14 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "bIl" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	dir = 2;
 	name = "Research-Infirmary Maintenance"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2"
+	},
 /area/prison/medbay)
 "bIm" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -38182,7 +38195,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/box/packet/high_explosive{
 	pixel_x = -5;
-	pixel_y = -14
+	pixel_y = -5
 	},
 /obj/item/storage/box/packet/high_explosive,
 /turf/open/floor/prison,
@@ -44933,6 +44946,11 @@
 "esR" = (
 /turf/open/organic/grass,
 /area/prison/residential/north)
+"esU" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison,
+/area/prison/hallway/entrance)
 "etX" = (
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
@@ -45800,6 +45818,10 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -47526,6 +47548,18 @@
 	icon_state = "darkyellow2"
 	},
 /area/prison/telecomms)
+"itd" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/entrance)
 "itf" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -48090,14 +48124,10 @@
 	},
 /area/prison/cellblock/lowsec/nw)
 "jlq" = (
-/obj/structure/machinery/power/reactor/colony{
-	desc = "A thermoelectric generator fueled by searing hot uranium!";
-	name = "thermoelectric generator"
-	},
-/turf/open/floor/prison{
-	icon_state = "darkyellow2"
-	},
-/area/prison/maintenance/research_medbay)
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/entrance)
 "jmk" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating,
@@ -51134,6 +51164,12 @@
 	},
 /turf/open/floor/wood,
 /area/prison/security/monitoring/highsec)
+"onV" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/entrance)
 "oog" = (
 /obj/structure/lattice,
 /obj/structure/monorail,
@@ -51665,6 +51701,10 @@
 	icon_state = "kitchen"
 	},
 /area/prison/toilet/security)
+"oYE" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison,
+/area/prison/hallway/entrance)
 "oZV" = (
 /obj/structure/window/framed/prison,
 /turf/open/floor/prison{
@@ -51686,6 +51726,16 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
+"pbR" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/prison/hallway/entrance)
 "pcb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -51713,6 +51763,10 @@
 	},
 /turf/open/floor/plating,
 /area/prison/visitation)
+"pdH" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/entrance)
 "pdQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -52712,6 +52766,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/prison/cellblock/vip)
+"qJx" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/entrance)
 "qJX" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
@@ -53352,6 +53413,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/prison/residential/north)
+"scn" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean"
+	},
+/area/prison/hallway/entrance)
 "scy" = (
 /obj/structure/machinery/power/reactor/colony{
 	desc = "A thermoelectric generator fueled by searing hot uranium!";
@@ -54276,6 +54346,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/prison/residential/north)
+"tSA" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/prison/hallway/entrance)
 "tTf" = (
 /obj/structure/janitorialcart,
 /obj/item/reagent_container/glass/bucket{
@@ -89537,7 +89616,7 @@ dEb
 pct
 juX
 vRm
-jlq
+jXg
 gIC
 akG
 alw
@@ -101687,7 +101766,7 @@ bcz
 bcz
 bcz
 bcz
-jKA
+esU
 bcz
 bpf
 bud
@@ -101888,7 +101967,7 @@ syj
 bdp
 aZE
 bjE
-bdp
+itd
 bdp
 bdp
 bdp
@@ -101897,7 +101976,7 @@ bnU
 bdp
 bpe
 aZE
-syj
+qJx
 bjE
 bdp
 bst
@@ -102100,7 +102179,7 @@ bcA
 oHC
 bcA
 wvm
-bcA
+jvT
 bcA
 bkr
 blB
@@ -102109,9 +102188,9 @@ bcA
 bcA
 bkr
 bcA
-bcA
+pdH
 bkr
-oHC
+jlq
 bcA
 oHC
 bcA
@@ -102323,7 +102402,7 @@ bpf
 puz
 bcz
 vzA
-bcz
+oYE
 bcz
 bcz
 bcz
@@ -102526,13 +102605,13 @@ bcC
 bcC
 bcC
 kcE
-bpf
+tSA
 blC
-bcA
+onV
 bcA
 bcz
-bFj
-blD
+pbR
+scn
 bcC
 bcC
 bcC
@@ -102737,7 +102816,7 @@ bcC
 aAO
 aAO
 bcC
-blD
+scn
 bpf
 bcz
 bcA
@@ -102952,11 +103031,11 @@ bcC
 blD
 bFj
 bcz
-bcA
-bcA
+onV
+onV
 bcz
 bpf
-blD
+scn
 bcC
 aAO
 aAO

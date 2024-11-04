@@ -4,6 +4,10 @@
       margin-left: 6px;
     }
 
+    .Picker.Active {
+      outline: 2px solid #8ac8ff;
+    }
+
     .Picker img {
       background: white;
     }

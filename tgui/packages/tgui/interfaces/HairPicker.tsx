@@ -1,6 +1,18 @@
+import { rgbaStringToHsva } from 'common/color';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
-import { Box, DmIcon, Section, Stack, Tooltip } from '../components';
+import {
+  Box,
+  Button,
+  DmIcon,
+  Modal,
+  Section,
+  Stack,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
+import { ColorSelector } from './ColorPickerModal';
 
 type HairPickerData = {
   hair_icon: string;
@@ -25,6 +37,10 @@ export const HairPicker = () => {
 
   const height = facial_hair_styles.length > 0 ? 550 : 290;
 
+  const [colorPicker, setColorPicker] = useState<
+    'hair' | 'facial_hair' | false
+  >(false);
+
   return (
     <Window width={400} height={height} theme={'crtblue'}>
       <Window.Content className="HairPicker">
@@ -33,13 +49,26 @@ export const HairPicker = () => {
           icon={hair_icon}
           hair={hair_styles}
           active={hair_style}
+          setColor={setColorPicker}
+          act="hair"
         />
         <PickerElement
           name="Facial Hair"
           icon={facial_hair_icon}
           hair={facial_hair_styles}
           active={facial_hair}
+          setColor={setColorPicker}
+          act="facial_hair"
         />
+        {colorPicker && (
+          <Modal>
+            <ColorSelector
+              color={rgbaStringToHsva('#ffffff')}
+              setColor={() => {}}
+              defaultColor="#ffffff"
+            />
+          </Modal>
+        )}
       </Window.Content>
     </Window>
   );
@@ -50,11 +79,18 @@ const PickerElement = (props: {
   readonly icon: string;
   readonly active: string;
   readonly hair: { icon: string; name: string }[];
+  readonly act: 'hair' | 'facial_hair';
+  readonly setColor: (_) => void;
 }) => {
-  const { name, icon, hair, active } = props;
+  const { name, icon, hair, active, act, setColor } = props;
 
   return (
-    <Section title={name} height="250px" scrollable>
+    <Section
+      title={name}
+      height="250px"
+      scrollable
+      buttons={<Button onClick={() => setColor(act)}>Color</Button>}
+    >
       <Stack wrap="wrap" height="200px" width="400px">
         {hair.map((facial_hair) => (
           <Stack.Item

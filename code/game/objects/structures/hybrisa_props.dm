@@ -1505,7 +1505,7 @@
 	if(making)
 		return
 	if(cups<=0)
-		to_chat("Damn, there is no coffee left!")
+		to_chat(user, "Damn, there is no coffee left!")
 		return
 	icon_state = "coffee_cup"
 	making = TRUE

@@ -28,10 +28,7 @@
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle/west)
 "ah" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
-	},
+/obj/item/stool,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -2260,15 +2257,6 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/yautja_grounds/jungle/north)
-"zI" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/yautja_grounds/temple)
 "Ae" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja_grounds/jungle/east)
@@ -5410,10 +5398,10 @@ Kn
 zn
 gN
 gN
-zI
-zI
-zI
-zI
+ah
+ah
+ah
+ah
 gN
 gN
 zn

@@ -1487,7 +1487,6 @@
 	max_rounds = 1
 	default_ammo = /datum/ammo/arrow
 
-
 /obj/item/arrow
 	name = "\improper arrow"
 	w_class = SIZE_SMALL
@@ -1544,6 +1543,7 @@
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
+
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP
 #undef FLAY_STAGE_SKIN

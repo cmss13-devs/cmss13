@@ -1423,9 +1423,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/bow/unload(mob/user)
-	if(!current_mag)
-		return
-	if(!current_mag.current_rounds)
+	if(!current_mag || !current_mag.current_rounds)
 		return
 	var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
 	playsound(user, reload_sound, 25, TRUE)

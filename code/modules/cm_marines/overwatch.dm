@@ -226,7 +226,7 @@
 
 
 		switch(role)
-			if(JOB_SQUAD_LEADER)
+			if(JOB_SQUAD_LEADER, JOB_UPP_LEADER)
 				leader_count++
 				if(mob_state != "Dead")
 					leaders_alive++
@@ -234,7 +234,7 @@
 				ftl_count++
 				if(mob_state != "Dead")
 					ftl_alive++
-			if(JOB_SQUAD_SPECIALIST)
+			if(JOB_SQUAD_SPECIALIST, JOB_UPP_SPECIALIST)
 				spec_count++
 				if(marine_human)
 					var/obj/item/card/id/card = marine_human.get_idcard()
@@ -249,11 +249,11 @@
 					specialist_type = "UNKNOWN"
 				if(mob_state != "Dead")
 					spec_alive++
-			if(JOB_SQUAD_MEDIC)
+			if(JOB_SQUAD_MEDIC, JOB_UPP_MEDIC)
 				medic_count++
 				if(mob_state != "Dead")
 					medic_alive++
-			if(JOB_SQUAD_ENGI)
+			if(JOB_SQUAD_ENGI, JOB_UPP_ENGI)
 				engi_count++
 				if(mob_state != "Dead")
 					engi_alive++
@@ -261,7 +261,7 @@
 				smart_count++
 				if(mob_state != "Dead")
 					smart_alive++
-			if(JOB_SQUAD_MARINE)
+			if(JOB_SQUAD_MARINE, JOB_UPP)
 				marine_count++
 				if(mob_state != "Dead")
 					marines_alive++
@@ -984,184 +984,6 @@
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
-
-/obj/structure/machinery/computer/overwatch/upp/count_marines(list/data)
-	var/leader_count = 0
-	var/ftl_count = 0
-	var/spec_count = 0
-	var/medic_count = 0
-	var/engi_count = 0
-	var/smart_count = 0
-	var/marine_count = 0
-
-	var/leaders_alive = 0
-	var/ftl_alive = 0
-	var/spec_alive= 0
-	var/medic_alive= 0
-	var/engi_alive = 0
-	var/smart_alive = 0
-	var/marines_alive = 0
-
-	var/specialist_type
-
-	var/SL_z //z level of the Squad Leader
-	if(current_squad.squad_leader)
-		var/turf/SL_turf = get_turf(current_squad.squad_leader)
-		SL_z = SL_turf.z
-
-	for(var/marine in current_squad.marines_list)
-		if(!marine)
-			continue //just to be safe
-		var/mob_name = "unknown"
-		var/mob_state = ""
-		var/has_helmet = TRUE
-		var/role = "unknown"
-		var/acting_sl = ""
-		var/fteam = ""
-		var/distance = "???"
-		var/area_name = "???"
-		var/is_squad_leader = FALSE
-		var/mob/living/carbon/human/marine_human
-
-
-		if(ishuman(marine))
-			marine_human = marine
-			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
-				continue
-			mob_name = marine_human.real_name
-			var/area/current_area = get_area(marine_human)
-			var/turf/current_turf = get_turf(marine_human)
-			if(!current_turf)
-				continue
-			if(current_area)
-				area_name = sanitize_area(current_area.name)
-
-			switch(z_hidden)
-				if(HIDE_ALMAYER)
-					if(is_mainship_level(current_turf.z))
-						continue
-				if(HIDE_GROUND)
-					if(is_ground_level(current_turf.z))
-						continue
-
-			var/obj/item/card/id/card = marine_human.get_idcard()
-			if(marine_human.job)
-				role = marine_human.job
-			else if(card?.rank) //decapitated marine is mindless,
-				role = card.rank
-
-			if(current_squad.squad_leader)
-				if(marine_human == current_squad.squad_leader)
-					distance = "N/A"
-					if(current_squad.name == SQUAD_SOF)
-						if(marine_human.job == JOB_MARINE_RAIDER_CMD)
-							acting_sl = " (direct command)"
-						else if(marine_human.job != JOB_MARINE_RAIDER_SL)
-							acting_sl = " (acting TL)"
-					else if(marine_human.job != JOB_SQUAD_LEADER)
-						acting_sl = " (acting SL)"
-					is_squad_leader = TRUE
-				else if(current_turf && (current_turf.z == SL_z))
-					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
-
-
-			switch(marine_human.stat)
-				if(CONSCIOUS)
-					mob_state = "Conscious"
-
-				if(UNCONSCIOUS)
-					mob_state = "Unconscious"
-
-				if(DEAD)
-					mob_state = "Dead"
-
-			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
-				has_helmet = FALSE
-
-			if(!marine_human.key || !marine_human.client)
-				if(marine_human.stat != DEAD)
-					mob_state += " (SSD)"
-
-
-			if(marine_human.assigned_fireteam)
-				fteam = " [marine_human.assigned_fireteam]"
-
-		else //listed marine was deleted or gibbed, all we have is their name
-			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
-				if(marine_record.fields["name"] == marine)
-					role = marine_record.fields["real_rank"]
-					break
-			mob_state = "Dead"
-			mob_name = marine
-
-
-		switch(role)
-			if(JOB_UPP_LEADER)
-				leader_count++
-				if(mob_state != "Dead")
-					leaders_alive++
-			if(JOB_SQUAD_TEAM_LEADER) // no upp team leader
-				ftl_count++
-				if(mob_state != "Dead")
-					ftl_alive++
-			if(JOB_UPP_SPECIALIST)
-				spec_count++
-				if(marine_human)
-					var/obj/item/card/id/card = marine_human.get_idcard()
-					if(card?.assignment) //decapitated marine is mindless,
-						if(specialist_type)
-							specialist_type = "MULTIPLE"
-						else
-							var/list/spec_type = splittext(card.assignment, "(")
-							if(islist(spec_type) && (length(spec_type) > 1))
-								specialist_type = splittext(spec_type[2], ")")[1]
-				else if(!specialist_type)
-					specialist_type = "UNKNOWN"
-				if(mob_state != "Dead")
-					spec_alive++
-			if(JOB_UPP_MEDIC)
-				medic_count++
-				if(mob_state != "Dead")
-					medic_alive++
-			if(JOB_UPP_ENGI)
-				engi_count++
-				if(mob_state != "Dead")
-					engi_alive++
-			if(JOB_SQUAD_SMARTGUN) // no upp smartgun
-				smart_count++
-				if(mob_state != "Dead")
-					smart_alive++
-			if(JOB_UPP)
-				marine_count++
-				if(mob_state != "Dead")
-					marines_alive++
-
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
-		data["marines"] += marine_data
-		if(is_squad_leader)
-			if(!data["squad_leader"])
-				data["squad_leader"] = marine_data[1]
-
-	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
-	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
-
-	data["leader_count"] = leader_count
-	data["ftl_count"] = ftl_count
-	data["spec_count"] = spec_count
-	data["medic_count"] = medic_count
-	data["engi_count"] = engi_count
-	data["smart_count"] = smart_count
-
-	data["leaders_alive"] = leaders_alive
-	data["ftl_alive"] = ftl_alive
-	data["spec_alive"] = spec_alive
-	data["medic_alive"] = medic_alive
-	data["engi_alive"] = engi_alive
-	data["smart_alive"] = smart_alive
-	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
-
-	return data
-
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

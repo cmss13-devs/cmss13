@@ -59,7 +59,7 @@
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
 		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
-		if(GLOB.master_mode == "Faction Clash UPP CM")
+		if(GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name)
 			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_upp'>Join the UPP!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)

@@ -1481,6 +1481,13 @@
 /obj/item/weapon/gun/bow/click_empty(mob/user)
 	return
 
+/obj/item/ammo_magazine/internal/bow
+	name = "bow internal magazine"
+	caliber = "arrow"
+	max_rounds = 1
+	default_ammo = /datum/ammo/arrow
+
+
 /obj/item/arrow
 	name = "\improper arrow"
 	w_class = SIZE_SMALL

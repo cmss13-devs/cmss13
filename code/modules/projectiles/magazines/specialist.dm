@@ -121,13 +121,6 @@
 	max_rounds = 1
 	default_ammo = /datum/ammo/flare
 
-//-------------------------------------------------------
-//Bow
-/obj/item/ammo_magazine/internal/bow
-	name = "bow internal magazine"
-	caliber = "arrow"
-	max_rounds = 1
-	default_ammo = /datum/ammo/arrow
 
 //-------------------------------------------------------
 //M5 RPG

@@ -1489,6 +1489,8 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+// Coffee Machine (Works with Empty Coffee cups, Mugs ect.)
+
 /obj/structure/machinery/hybrisa/coffee_machine
 	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	name = "coffee machine"

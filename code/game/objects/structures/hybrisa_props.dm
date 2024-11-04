@@ -1509,9 +1509,9 @@
 		return
 	icon_state = "coffee_cup"
 	making = TRUE
-	addtimer(CALLBACK(src, PROC_REF(vend_coffee), product, user), making_time)
+	addtimer(CALLBACK(src, PROC_REF(vend_coffee), user), making_time)
 
-/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(product, mob/living/user)
+/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/living/user)
 	cups --
 	var/vended_item = new product(get_turf(src))
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)

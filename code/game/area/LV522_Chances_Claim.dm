@@ -403,6 +403,7 @@
 	ceiling = CEILING_REINFORCED_METAL
 	ambience_exterior = AMBIENCE_SHIP
 	minimap_color = MINIMAP_AREA_ENGI
+	unoviable_timer = FALSE
 
 /area/lv522/atmos/outdoor
 	name = "Atmospheric Processor - Outdoors"

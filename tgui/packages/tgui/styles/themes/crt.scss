@@ -214,6 +214,13 @@ $scrollbar-color-multiplier: 0.5 !default;
     }
   }
 
+  .Dropdown__control {
+    & > .Dropdown__selected-text,
+    & > .Dropdown__arrow-button {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+
   hr {
     color: base.$color-fg;
     border: 1px solid base.$color-fg;

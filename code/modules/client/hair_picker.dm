@@ -11,7 +11,7 @@
 	var/datum/preferences/prefs = user.client.prefs
 
 	.["hair_style"] = GLOB.hair_styles_list[prefs.h_style].icon_state
-	.["hair_color"] = "#[num2hex(prefs.r_hair, 2)][num2hex(prefs.g_hair, 2)][num2hex(prefs.b_hair)]"
+	.["hair_color"] = rgb(prefs.r_hair, prefs.g_hair, prefs.b_hair)
 
 	.["hair_styles"] = list()
 	for(var/key in GLOB.hair_styles_list)
@@ -26,7 +26,7 @@
 		)
 
 	.["facial_hair_style"] = GLOB.facial_hair_styles_list[prefs.f_style].icon_state
-	.["facial_hair_color"] = "#[num2hex(prefs.r_facial, 2)][num2hex(prefs.g_facial, 2)][num2hex(prefs.b_facial)]"
+	.["facial_hair_color"] = rgb(prefs.r_facial, prefs.g_facial, prefs.b_facial)
 
 	.["facial_hair_styles"] = list()
 	for(var/key in GLOB.facial_hair_styles_list)
@@ -41,6 +41,20 @@
 		.["facial_hair_styles"] += list(
 			list("name" = facial_hair.name, "icon" = facial_hair.icon_state)
 		)
+
+	.["gradient_available"] = !!(/datum/character_trait/hair_dye in prefs.traits)
+	.["gradient_style"] = prefs.grad_style
+	.["gradient_color"] = rgb(prefs.r_gradient, prefs.g_gradient, prefs.b_gradient)
+
+	.["gradient_styles"] = list()
+	for(var/key in GLOB.hair_gradient_list)
+		var/datum/sprite_accessory/hair_gradient/gradient = GLOB.hair_gradient_list[key]
+		if(!gradient.selectable)
+			continue
+		if(!(prefs.species in gradient.species_allowed))
+			continue
+
+		.["gradient_styles"] += gradient.name
 
 /datum/hair_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -108,6 +122,35 @@
 			prefs.r_facial = clamp(r, 0, 255)
 			prefs.g_facial = clamp(g, 0, 255)
 			prefs.b_facial = clamp(b, 0, 255)
+
+		if("gradient")
+			var/datum/sprite_accessory/hair_gradient/gradient = GLOB.hair_gradient_list[params["name"]]
+			if(!gradient)
+				return
+
+			if(!gradient.selectable)
+				return
+
+			if(!(prefs.species in gradient.species_allowed))
+				return
+
+			prefs.grad_style = params["name"]
+
+		if("gradient_color")
+			var/param_color = params["color"]
+			if(!param_color)
+				return
+
+			var/r = hex2num(copytext(param_color, 2, 4))
+			var/g = hex2num(copytext(param_color, 4, 6))
+			var/b = hex2num(copytext(param_color, 6, 8))
+
+			if(!isnum(r) || !isnum(g) || !isnum(b))
+				return
+
+			prefs.r_gradient = clamp(r, 0, 255)
+			prefs.g_gradient = clamp(g, 0, 255)
+			prefs.b_gradient = clamp(b, 0, 255)
 
 	prefs.ShowChoices(ui.user)
 	return TRUE

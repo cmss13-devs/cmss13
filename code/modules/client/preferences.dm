@@ -372,16 +372,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<span class='square' style='background-color: #[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)];'></span>"
 			dat += "<br>"
 
-			dat += "<b>Edit Hair:</b> <a href='?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
-
 			if(/datum/character_trait/hair_dye in traits)
-				dat += "<b>Hair Gradient:</b> "
-				dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
+				dat += "<b>Hair Gradient:</b> [grad_style]"
 				dat += " | "
-				dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
-				dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
-				dat += "</a>"
+				dat += "<span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
 				dat += "<br>"
+
+			dat += "<b>Edit Hair:</b> <a href='?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
 
 			dat += "<b>Eye:</b> "
 			dat += "<a href='?_src_=prefs;preference=eyes;task=input'>"
@@ -1524,29 +1521,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_metadata)
 						metadata = strip_html(new_metadata)
 
-				if("grad")
-					if(species == "Human")
-						var/new_hair_grad = input(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
-						if(new_hair_grad)
-							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
-							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
-							b_gradient = hex2num(copytext(new_hair_grad, 6, 8))
-
-				if("grad_style")
-					var/list/valid_hair_gradients = list()
-					for(var/hair_gradient in GLOB.hair_gradient_list)
-						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_gradient_list[hair_gradient]
-						if(!(species in sprite_accessory.species_allowed))
-							continue
-						if(!sprite_accessory.selectable)
-							continue
-						valid_hair_gradients[hair_gradient] = GLOB.hair_gradient_list[hair_gradient]
-					valid_hair_gradients = sortList(valid_hair_gradients)
-
-					var/new_h_gradient_style = input(user, "Choose your character's hair gradient style:", "Character Preference")  as null|anything in valid_hair_gradients
-					if(new_h_gradient_style)
-						grad_style = new_h_gradient_style
-
 				if("hair")
 					hair_picker.tgui_interact(user)
 					return
@@ -1576,7 +1550,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
+					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
+
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))

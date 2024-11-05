@@ -1,4 +1,5 @@
 import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
+import { BooleanLike } from 'common/react';
 import { createRef, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -7,6 +8,7 @@ import {
   Button,
   ColorBox,
   DmIcon,
+  Dropdown,
   Modal,
   Section,
   Stack,
@@ -20,10 +22,16 @@ type HairPickerData = {
   hair_styles: { name: string; icon: string }[];
   hair_style: string;
   hair_color: string;
+
   facial_hair_icon: string;
   facial_hair_styles: { name: string; icon: string }[];
   facial_hair_style: string;
   facial_hair_color: string;
+
+  gradient_available: BooleanLike;
+  gradient_styles: string[];
+  gradient_style: string;
+  gradient_color: string;
 };
 
 export const HairPicker = () => {
@@ -38,13 +46,40 @@ export const HairPicker = () => {
     facial_hair_style,
     facial_hair_styles,
     facial_hair_color,
+    gradient_available,
+    gradient_style,
+    gradient_styles,
+    gradient_color,
   } = data;
 
-  const height = facial_hair_styles.length > 0 ? 550 : 290;
-
   const [colorPicker, setColorPicker] = useState<
-    'hair' | 'facial_hair' | false
+    'hair' | 'facial_hair' | 'gradient' | false
   >(false);
+
+  let height = 290;
+  if (facial_hair_styles.length > 0) {
+    height = height + 260;
+  }
+
+  if (gradient_available) {
+    height = height + 85;
+  }
+
+  let defaultColor = '#000000';
+  switch (colorPicker) {
+    case 'hair':
+      defaultColor = hair_color;
+      break;
+    case 'facial_hair':
+      defaultColor = facial_hair_color;
+      break;
+    case 'gradient':
+      defaultColor = gradient_color;
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <Window width={400} height={height} theme={'crtblue'}>
@@ -58,22 +93,40 @@ export const HairPicker = () => {
           setColor={setColorPicker}
           action="hair"
         />
-        <PickerElement
-          name="Facial Hair"
-          icon={facial_hair_icon}
-          hair={facial_hair_styles}
-          active={facial_hair_style}
-          color={facial_hair_color}
-          setColor={setColorPicker}
-          action="facial_hair"
-        />
+        {!!(facial_hair_styles.length > 0) && (
+          <PickerElement
+            name="Facial Hair"
+            icon={facial_hair_icon}
+            hair={facial_hair_styles}
+            active={facial_hair_style}
+            color={facial_hair_color}
+            setColor={setColorPicker}
+            action="facial_hair"
+          />
+        )}
+        {gradient_available && (
+          <Section
+            title="Gradient"
+            buttons={
+              <Button onClick={() => setColorPicker('gradient')}>
+                <ColorBox color={gradient_color} mr={1} />
+                Color
+              </Button>
+            }
+          >
+            <Dropdown
+              options={gradient_styles}
+              selected={gradient_style}
+              onSelected={(selected) => act('gradient', { name: selected })}
+              over
+            />
+          </Section>
+        )}
         {colorPicker && (
           <ColorPicker
             type={colorPicker}
             close={() => setColorPicker(false)}
-            default_color={
-              colorPicker === 'hair' ? hair_color : facial_hair_color
-            }
+            default_color={defaultColor}
           />
         )}
       </Window.Content>
@@ -82,7 +135,7 @@ export const HairPicker = () => {
 };
 
 const ColorPicker = (props: {
-  readonly type: 'hair' | 'facial_hair';
+  readonly type: 'hair' | 'facial_hair' | 'gradient';
   readonly close: () => void;
   readonly default_color: string;
 }) => {

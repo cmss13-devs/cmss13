@@ -278,6 +278,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
@@ -310,6 +311,13 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Help intent can perform harmful actions again."))
 	prefs.save_preferences()
+
+/client/proc/toggle_auto_shove()
+	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE
+	if(prefs.toggle_prefs & TOGGLE_AUTO_SHOVE)
+		to_chat(src, SPAN_BOLDNOTICE("You will now automatically shove anyone in your way as the Queen."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("You will no longer automatically shove anyone in your way as the Queen"))
 
 /client/proc/toggle_auto_eject() // Toggle whether guns with auto-ejectors will automatically eject magazines
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
@@ -348,6 +356,15 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE("The 'Unload Weapon' verb will no longer put magazines in your offhand."))
 	prefs.save_preferences()
+
+/client/proc/toggle_automatic_shove()
+	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE
+	if(prefs.toggle_prefs & TOGGLE_AUTO_SHOVE)
+		to_chat(src, SPAN_BOLDNOTICE("You will now automatically shove people."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("You will no longer automatically shove people as the Queen"))
+	prefs.save_preferences()
+
 
 /client/proc/toggle_automatic_punctuation() // Toggle whether your sentences are automatically punctuated
 	prefs.toggle_prefs ^= TOGGLE_AUTOMATIC_PUNCTUATION

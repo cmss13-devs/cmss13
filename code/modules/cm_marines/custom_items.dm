@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 		return
 
 	if(length(possible_kits) == 1)
-		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(src, user.ckey, possible_kits[1]))
+		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(src, user.ckey, possible_kits[possible_kits[1]]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
 		ckeys_redeemed_kits += user.ckey
 		return

@@ -2173,6 +2173,9 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -2763,7 +2766,7 @@
 	},
 /obj/structure/ladder{
 	id = "hatch2";
-	height = 1
+	height = 2
 	},
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
 	name = "functional hatch";
@@ -4937,6 +4940,16 @@
 /obj/item/ammo_box/magazine/misc/power_cell,
 /obj/item/ammo_box/magazine/misc/power_cell,
 /turf/open/floor/prison/floor_marked/west,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"dnh" = (
+/obj/item/stack/rods,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -9562,6 +9575,19 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gjd" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
 "gkj" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15;
@@ -9846,6 +9872,9 @@
 	})
 "guL" = (
 /obj/item/stack/sheet/metal,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
@@ -16541,7 +16570,7 @@
 	},
 /obj/structure/ladder{
 	id = "hatch1";
-	height = 1
+	height = 2
 	},
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
 	name = "functional hatch";
@@ -27278,9 +27307,8 @@
 	})
 "rkt" = (
 /obj/structure/ladder{
-	height = 2;
-	id = "hatch1";
-	name = "functional hatch"
+	height = 1;
+	id = "hatch1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
@@ -29402,9 +29430,8 @@
 	})
 "sKT" = (
 /obj/structure/ladder{
-	height = 2;
-	id = "hatch2";
-	name = "functional hatch"
+	height = 1;
+	id = "hatch2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
@@ -32503,6 +32530,18 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/corsat/spiralplate,
+/area/event/metal/dynamic{
+	name = "SSV Rostock";
+	base_lighting_alpha = 0
+	})
+"uIu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic{
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
@@ -49233,7 +49272,7 @@ bYr
 vfU
 pPQ
 sYA
-sEt
+dnh
 quP
 dRD
 iFa
@@ -49415,7 +49454,7 @@ bYr
 sYA
 pPQ
 sYA
-sYA
+ovt
 eAu
 dRD
 iFa
@@ -49776,10 +49815,10 @@ tRC
 dRD
 bpt
 isY
-sYA
+rOw
 aHS
-sYA
-jET
+rOw
+gjd
 bPr
 dRD
 iFa
@@ -49961,7 +50000,7 @@ kkG
 oMu
 pPQ
 sYA
-sYA
+ovt
 bPr
 dRD
 iFa
@@ -50689,7 +50728,7 @@ kwA
 kwA
 pPQ
 gRr
-kVg
+uIu
 sjt
 dRD
 iFa
@@ -50871,7 +50910,7 @@ kwA
 kwA
 pPQ
 dqy
-sYA
+ovt
 bYr
 dRD
 iFa
@@ -51053,7 +51092,7 @@ kwA
 kwA
 pPQ
 hnH
-sYA
+ovt
 bYr
 dRD
 iFa
@@ -51235,7 +51274,7 @@ pPQ
 pPQ
 pPQ
 eAu
-sYA
+ovt
 cUo
 dRD
 dRD

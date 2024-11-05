@@ -37,6 +37,15 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/white/open
 	density = FALSE
 
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison
+	name = "hull"
+	desc = "A metal wall used to separate rooms and make up the ship."
+	icon_state = "liaison_pdoor1"
+	base_icon_state = "liaison_pdoor"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/almayer/blended/aicore
 	icon_state = "aidoor1"
 	base_icon_state = "aidoor"

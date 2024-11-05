@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixes double bun hairstyle overriding normal bun hairstyle"

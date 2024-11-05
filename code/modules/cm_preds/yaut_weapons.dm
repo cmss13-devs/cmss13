@@ -44,10 +44,10 @@
 	force = MELEE_FORCE_TIER_2
 	throwforce = MELEE_FORCE_TIER_6
 
-/obj/item/weapon/wristblades
-	name = "wrist blades"
+/obj/item/weapon/bracer_attachment
+	name = "bracer attachment"
+	desc = "How did you get these?."
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -68,18 +68,16 @@
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
-	var/has_speed_bonus = TRUE
+	var/speed_bonus_amount
 
-/obj/item/weapon/wristblades/equipped(mob/user, slot)
+/obj/item/weapon/bracer_attachment/equipped(mob/user, slot)
 	. = ..()
-	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/wristblades))
-		attack_speed = initial(attack_speed) - 2
+	if(!speed_bonus_amount)
+		return
+	if(((slot == WEAR_L_HAND) && istype(user.r_hand, /obj/item/weapon/bracer_attachment)) || ((slot == WEAR_R_HAND) && istype(user.l_hand, /obj/item/weapon/bracer_attachment)))
+		attack_speed = initial(attack_speed) + speed_bonus_amount
 
-/obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
-	. = ..()
-	attack_speed = initial(attack_speed)
-
-/obj/item/weapon/wristblades/afterattack(atom/attacked_target, mob/user, proximity)
+/obj/item/weapon/bracer_attachment/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
 		return FALSE
 
@@ -113,32 +111,44 @@
 				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
 				door.Close()
 
-/obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
+/obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
 	..()
 	if(istype(user))
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
-		gloves.wristblades_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
+		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
-/obj/item/weapon/wristblades/scimitar
+
+/obj/item/weapon/bracer_attachment/wristblades
+	name = "wrist blade"
+	plural_name = "wrist blades"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "wrist"
+	item_state = "wristblade"
+	attack_speed = 0.5 SECONDS
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	force = MELEE_FORCE_TIER_4
+	speed_bonus_amount = 0 SECONDS
+
+/obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
-	attack_speed = 5
+	attack_speed = 1 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
-	has_speed_bonus = FALSE
+	speed_bonus_amount = -0.4 SECONDS
 
-/obj/item/weapon/wristblades/scimitar/alt
+/obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
-	attack_speed = 5
+	attack_speed = 1 SECONDS
 	force = MELEE_FORCE_TIER_5
-	has_speed_bonus = FALSE
+	speed_bonus_amount =  -0.4 SECONDS
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -196,6 +206,24 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
+/obj/item/weapon/yautja/sword/alt_1
+	name = "rending sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt"
+	item_state = "clansword_alt"
+
+/obj/item/weapon/yautja/sword/alt_2
+	name = "piercing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt2"
+	item_state = "clansword_alt2"
+
+/obj/item/weapon/yautja/sword/alt_3
+	name = "severing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt3"
+	item_state = "clansword_alt3"
+
 /obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
@@ -237,7 +265,7 @@
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe_alt"
-	item_state = "scythe_double"
+	item_state = "scythe_dual"
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -531,7 +559,7 @@
 	var/mob/living/carbon/human/victim = target
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
 	if(issamespecies(user, victim))
@@ -539,7 +567,7 @@
 		return
 
 	if(isspeciessynth(victim))
-		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You can't flay metal..."))
 		return TRUE
 
 	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
@@ -781,9 +809,9 @@
 
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
-	icon_state = "glaive"
-	item_state = "glaive"
+	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
 	throwforce = MELEE_FORCE_TIER_3
@@ -792,6 +820,8 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	var/skull_attached = FALSE
+
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
@@ -802,8 +832,40 @@
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
-	icon_state = "glaive_alt"
-	item_state = "glaive_alt"
+	name = "cleaving glaive"
+	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive"
+	item_state = "glaive"
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/get_examine_text(mob/user)
+	. = ..()
+	if(skull_attached)
+		. += SPAN_NOTICE("[src] has a human skull mounted on it.")
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/update_icon()
+	if(skull_attached)
+		icon_state = "glaive_skull"
+	else
+		icon_state = "glaive"
+
+///attaching the skull
+/obj/item/weapon/twohanded/yautja/glaive/alt/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/clothing/accessory/limb/skeleton/head))
+		return ..()
+
+	var/obj/item/clothing/accessory/limb/skeleton/head/skull = attacking_item
+	if(skull_attached)
+		to_chat(user, SPAN_WARNING("You already have a [skull] mounted on [src]."))
+		return
+
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.drop_inv_item_to_loc(skull, src)
+	skull_attached = TRUE
+	update_icon()
+	return ..()
 
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
@@ -1167,7 +1229,7 @@
 	force = 0
 	fire_delay = 3
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
+	flags_item = NOBLUDGEON|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 	explo_proof = TRUE
@@ -1291,7 +1353,6 @@
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
-		return
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)

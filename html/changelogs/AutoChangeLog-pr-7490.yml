@@ -1,0 +1,4 @@
+author: "detectivegoogle Drathek"
+delete-after: True
+changes:
+  - balance: "Morphers generate huggers twice as fast if queen is on ovi"

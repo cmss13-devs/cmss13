@@ -229,6 +229,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/far_north_outpost
 	name = "Far North Of The Outpost"
 	icon_state = "cabin"
+	unoviable_timer = FALSE
 
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
@@ -351,6 +352,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Wooden Hospital - Hospital Proper"
 	icon_state = "cabin3"
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/strata/ag/interior/mountain
 	name = "Outside mountain"
@@ -432,21 +434,26 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/sec2
 	name = "Underground Security Dorm #2"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin1
 	name = "Underground General Staff Dorm #1"
 
 /area/strata/ug/interior/outpost/underground_dorms/admin2
 	name = "Underground General Staff Dorm #2"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin3
 	name = "Underground General Staff Dorm #3"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin4
 	name = "Underground General Staff Dorm #4"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/med1
 	name = "Underground Medical Dorm #1"

@@ -198,10 +198,10 @@
 	target_organ.embed(new shrapnel_type)
 
 /datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
-	var/obj/item/arrow/G = new handful_type(T)
+	var/obj/item/arrow/arrow = new handful_type(T)
 	var/matrix/rotation = matrix()
 	rotation.Turn(fired_projectile.angle - 90)
-	G.apply_transform(rotation)
+	arrow.apply_transform(rotation)
 
 /datum/ammo/arrow/on_hit_mob(mob/mob,obj/projectile/projectile)
 	mob.apply_effect(1, STUN)

@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
 		var/random_item = pick(random_personal_possessions)
-		user.put_in_any_hand_if_possible(new random_item(src))
+		user.put_in_any_hand_if_possible(new random_item(get_turf(src)))
 		to_chat(user, SPAN_NOTICE("You take [random_item] from [src]."))
 		ckeys_redeemed_kits += user.ckey
 		return

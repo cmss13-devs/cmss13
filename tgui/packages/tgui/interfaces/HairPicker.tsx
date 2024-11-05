@@ -99,24 +99,14 @@ const ColorPicker = (props: {
       <Box width="350px">
         <Stack vertical>
           <Stack.Item>
-            <Stack align="center" justify="space-around">
-              <Stack.Item>
-                <Button
-                  onClick={() => {
-                    close();
-                    act(`${type}_color`, { color: hsvaToHex(currentColor) });
-                  }}
-                >
-                  Confirm
-                </Button>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
             <ColorSelector
               color={currentColor}
               setColor={setCurrentColor}
               defaultColor={default_color}
+              onConfirm={() => {
+                close();
+                act(`${type}_color`, { color: hsvaToHex(currentColor) });
+              }}
             />
           </Stack.Item>
         </Stack>

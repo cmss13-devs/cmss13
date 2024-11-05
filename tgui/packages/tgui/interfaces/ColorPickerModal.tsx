@@ -13,16 +13,24 @@ import {
   rgbaToHsva,
   validHex,
 } from 'common/color';
+import { KEY } from 'common/keys';
 import { clamp } from 'common/math';
 import { classes } from 'common/react';
-import { Component, FocusEvent, FormEvent, ReactNode, useState } from 'react';
+import {
+  Component,
+  FocusEvent,
+  FormEvent,
+  KeyboardEvent,
+  ReactNode,
+  useState,
+} from 'react';
 import { Interaction, Interactive } from 'tgui/components/Interactive';
-import { logger } from 'tgui/logging';
 
 import { useBackend } from '../backend';
 import {
   Autofocus,
   Box,
+  Button,
   Flex,
   NumberInput,
   Pointer,
@@ -96,10 +104,12 @@ export const ColorSelector = ({
   color,
   setColor,
   defaultColor,
+  onConfirm,
 }: {
   readonly color: HsvaColor;
   readonly setColor: (_) => void;
   readonly defaultColor: string;
+  readonly onConfirm?: (_) => void;
 }) => {
   const handleChange = (params: Partial<HsvaColor>) => {
     setColor((current: HsvaColor) => {
@@ -134,7 +144,7 @@ export const ColorSelector = ({
               <Box
                 inline
                 width="100px"
-                height="30px"
+                height={onConfirm ? '42px' : '30px'}
                 backgroundColor={hexColor}
               />
             </Tooltip>
@@ -142,7 +152,7 @@ export const ColorSelector = ({
               <Box
                 inline
                 width="100px"
-                height="30px"
+                height={onConfirm ? '42px' : '30px'}
                 backgroundColor={defaultColor}
               />
             </Tooltip>
@@ -161,7 +171,6 @@ export const ColorSelector = ({
                   fluid
                   color={hsvaToHex(color).substring(1)}
                   onChange={(value) => {
-                    logger.info(value);
                     setColor(hexToHsva(value));
                   }}
                   prefixed
@@ -181,7 +190,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={color.h}
-                  callback={(_, v) => handleChange({ h: v })}
+                  callback={(v) => handleChange({ h: v })}
                   max={360}
                   unit="°"
                 />
@@ -199,7 +208,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={color.s}
-                  callback={(_, v) => handleChange({ s: v })}
+                  callback={(v) => handleChange({ s: v })}
                   unit="%"
                 />
               </Stack.Item>
@@ -216,7 +225,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={color.v}
-                  callback={(_, v) => handleChange({ v: v })}
+                  callback={(v) => handleChange({ v: v })}
                   unit="%"
                 />
               </Stack.Item>
@@ -234,7 +243,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={rgb.r}
-                  callback={(_, v) => {
+                  callback={(v) => {
                     rgb.r = v;
                     handleChange(rgbaToHsva(rgb));
                   }}
@@ -254,7 +263,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={rgb.g}
-                  callback={(_, v) => {
+                  callback={(v) => {
                     rgb.g = v;
                     handleChange(rgbaToHsva(rgb));
                   }}
@@ -274,7 +283,7 @@ export const ColorSelector = ({
               <Stack.Item>
                 <TextSetter
                   value={rgb.b}
-                  callback={(_, v) => {
+                  callback={(v) => {
                     rgb.b = v;
                     handleChange(rgbaToHsva(rgb));
                   }}
@@ -283,6 +292,13 @@ export const ColorSelector = ({
               </Stack.Item>
             </Stack>
           </Stack.Item>
+          {onConfirm && (
+            <Stack.Item>
+              <Button onClick={onConfirm} width="100%" textAlign="center">
+                Confirm
+              </Button>
+            </Stack.Item>
+          )}
         </Stack>
       </Flex.Item>
     </Flex>
@@ -406,6 +422,16 @@ export class ColorInput extends Component {
     }
   };
 
+  handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === KEY.Enter) {
+      e.currentTarget.blur();
+      return;
+    }
+    if (e.key === KEY.Escape) {
+      e.currentTarget.blur();
+    }
+  };
+
   componentDidUpdate(prevProps, prevState): void {
     if (prevProps.color !== this.props.color) {
       // Update the local state when `color` property value is changed
@@ -427,6 +453,7 @@ export class ColorInput extends Component {
           spellCheck="false" // the element should not be checked for spelling errors
           onInput={this.handleInput}
           onBlur={this.handleBlur}
+          onKeyDown={this.handleKeyDown}
         />
       </Box>
     );

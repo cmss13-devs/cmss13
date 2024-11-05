@@ -210,17 +210,17 @@
 		drop_arrow(get_turf(mob), projectile)
 	pushback(mob, projectile, 7)
 
-/datum/ammo/arrow/on_hit_obj(obj/O,obj/projectile/P)
-	drop_arrow(get_turf(P), P)
+/datum/ammo/arrow/on_hit_obj(obj/object,obj/projectile/projectile)
+	drop_arrow(get_turf(projectile), projectile)
 
-/datum/ammo/arrow/on_hit_turf(turf/T, obj/projectile/P)
-	if(T.density && isturf(P.loc))
-		drop_arrow(P.loc, P)
+/datum/ammo/arrow/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(turf.density && isturf(projectile.loc))
+		drop_arrow(projectile.loc, projectile)
 	else
-		drop_arrow(T, P)
+		drop_arrow(turf, projectile)
 
-/datum/ammo/arrow/do_at_max_range(obj/projectile/P, mob/firer)
-	drop_arrow(get_turf(P), P)
+/datum/ammo/arrow/do_at_max_range(obj/projectile/projectile, mob/firer)
+	drop_arrow(get_turf(projectile), projectile)
 
 /datum/ammo/arrow/expl
 	activated = TRUE

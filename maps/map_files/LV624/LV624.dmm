@@ -4451,7 +4451,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "aAd" = (
 /obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "aAh" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -8905,7 +8905,7 @@
 	pixel_y = -22
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
 "aVU" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -10066,6 +10066,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"bkx" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/colony/south_medbay_road)
 "bkG" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
@@ -10781,6 +10784,9 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"cAj" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/west_central_jungle)
 "cAl" = (
 /obj/structure/girder/displaced,
 /obj/effect/decal/cleanable/blood/oil,
@@ -11575,7 +11581,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "ecO" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/west_nexus_road)
 "edS" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -13063,7 +13069,7 @@
 "hqS" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "hrD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -15302,7 +15308,7 @@
 	layer = 4.13;
 	pixel_y = 18
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "mbu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -17557,7 +17563,7 @@
 /area/lv624/ground/caves/sand_temple)
 "qvf" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "qvC" = (
 /obj/structure/fence,
@@ -20883,7 +20889,7 @@
 "wUv" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
 "wUz" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -21380,6 +21386,9 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
+"ydL" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
 "ydX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	name = "\improper Communications Dome";
@@ -23746,7 +23755,7 @@ kJu
 aVA
 aKf
 aLj
-exf
+xdO
 acr
 aWo
 aWP
@@ -35801,7 +35810,7 @@ oGs
 oGs
 oGs
 hFO
-qUM
+cAj
 byY
 byY
 byY
@@ -38741,7 +38750,7 @@ aqA
 txL
 tIg
 nSg
-opP
+bkx
 udP
 udP
 asU
@@ -38969,7 +38978,7 @@ apV
 pwq
 dId
 nSg
-opP
+bkx
 udP
 udP
 asV
@@ -40565,7 +40574,7 @@ aoI
 hZg
 qJg
 nSg
-opP
+bkx
 udP
 udP
 udP
@@ -40793,7 +40802,7 @@ pzt
 aqQ
 atV
 nSg
-opP
+bkx
 udP
 udP
 udP
@@ -57378,7 +57387,7 @@ ahv
 ahv
 afS
 ufW
-cpQ
+ydL
 agX
 mrQ
 boe
@@ -58524,7 +58533,7 @@ yhd
 jas
 ufW
 ufW
-cpQ
+ydL
 agX
 boe
 boe

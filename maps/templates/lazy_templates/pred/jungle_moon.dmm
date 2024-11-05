@@ -880,10 +880,6 @@
 	},
 /turf/open/gm/river,
 /area/yautja_grounds/temple)
-"mB" = (
-/obj/structure/machinery/hunt_ground_spawner,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/temple)
 "mD" = (
 /turf/closed/wall/cult/hunting_grounds,
 /area/yautja_grounds/jungle/west)
@@ -1151,6 +1147,10 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
+"qh" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "qi" = (
 /obj/structure/platform/mineral/sandstone/runed,
 /obj/effect/decal/cleanable/dirt,
@@ -3604,10 +3604,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/north)
-"Wy" = (
-/obj/effect/landmark/yautja_teleport,
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
 "WA" = (
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
@@ -5274,7 +5270,7 @@ be
 jN
 gh
 lI
-mB
+gh
 gh
 zn
 pn
@@ -5470,9 +5466,9 @@ ge
 yb
 jN
 gh
-LW
-HJ
-LW
+gN
+gh
+gN
 gh
 wd
 gN
@@ -5569,9 +5565,9 @@ ge
 yb
 jN
 gh
-HJ
-Wy
-HJ
+gh
+gN
+gh
 gN
 zn
 gN
@@ -5668,9 +5664,9 @@ ge
 yb
 jN
 gh
-LW
-HJ
-LW
+gN
+gh
+gN
 gh
 wd
 gN
@@ -7191,7 +7187,7 @@ Th
 NB
 Vy
 HJ
-HJ
+qh
 AN
 Uy
 HJ

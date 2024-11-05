@@ -2716,7 +2716,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "LX" = (
-/obj/structure/prop/pred_flight,
+/obj/structure/machinery/hunting_ground_selection,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Mb" = (

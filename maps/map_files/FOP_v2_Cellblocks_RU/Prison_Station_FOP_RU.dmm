@@ -36983,7 +36983,7 @@
 	dir = 8;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cdG" = (
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
@@ -37519,7 +37519,7 @@
 	dir = 10;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cfm" = (
 /obj/item/weapon/gun/pistol/b92fs,
 /obj/structure/machinery/light{
@@ -37529,7 +37529,7 @@
 	dir = 1;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cfn" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -37540,13 +37540,13 @@
 	dir = 1;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cfo" = (
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cfp" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -37955,7 +37955,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cgA" = (
 /obj/effect/landmark/static_comms/net_one{
 	broken_on_spawn = 1
@@ -37963,7 +37963,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "cgB" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -38349,10 +38349,10 @@
 /area/prison/parole/protective_custody)
 "chI" = (
 /turf/closed/wall/r_wall/prison,
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "chJ" = (
 /turf/closed/wall/prison,
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "chK" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/cobweb,
@@ -44469,7 +44469,7 @@
 	dir = 4;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "dzH" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/prison{
@@ -45518,7 +45518,7 @@
 	dir = 1;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "fqG" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -47734,7 +47734,7 @@
 	dir = 4;
 	icon_state = "darkyellowcorners2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "iCH" = (
 /obj/structure/machinery/computer/telecomms/traffic{
 	req_one_access_txt = "19;200"
@@ -47912,7 +47912,7 @@
 	dir = 1;
 	icon_state = "darkyellowcorners2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "iRi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49331,7 +49331,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "kTN" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -51715,7 +51715,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "oPZ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -52666,7 +52666,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "qpq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -53316,7 +53316,7 @@
 	dir = 9;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "rJl" = (
 /obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/plating,
@@ -54934,7 +54934,7 @@
 	dir = 5;
 	icon_state = "darkyellow2"
 	},
-/area/prison/sub_telecommunications)
+/area/prison/relay)
 "uEn" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	density = 0;

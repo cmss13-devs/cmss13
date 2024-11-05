@@ -1,0 +1,10 @@
+author: "thevandie"
+delete-after: True
+changes:
+  - imageadd: "added a new sprite for the liaison's wall divider behind his desk"
+  - mapadd: "added a WY mre to the liaison's liquor cabinet (cardboard box full of donk pockets)"
+  - mapadd: "added a tv to the liaison's desk, in place of the containment cell console"
+  - mapadd: "added a new button to the liaison's desk to replace the wall divider button. it controls the back office shutters"
+  - maptweak: "moved the liaison's shutters button and console to the back office"
+  - maptweak: "moved some stuff around in the liquor cabinet to accommodate the MRE being placed into it"
+  - maptweak: "moved some stuff around on the liaison's desk to make it look cleaner"

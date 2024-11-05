@@ -115,6 +115,10 @@
 	icon_state = "green"
 	ceiling = CEILING_NONE
 
+/area/lv522/outdoors/colony_streets/containers
+	name = "Colony Streets - Container Yard"
+	icon_state = "yellow"
+
 /area/lv522/outdoors/colony_streets/windbreaker
 	name = "Colony Windbreakers"
 	icon_state = "tcomsatcham"
@@ -129,11 +133,11 @@
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
 /area/lv522/outdoors/colony_streets/central_streets
-	name = "Central Street - West"
+	name = "Central Streets - West"
 	icon_state = "west"
 
 /area/lv522/outdoors/colony_streets/east_central_street
-	name = "Central Street - East"
+	name = "Central Streets - East"
 	icon_state = "east"
 
 /area/lv522/outdoors/colony_streets/south_street
@@ -403,6 +407,7 @@
 	ceiling = CEILING_REINFORCED_METAL
 	ambience_exterior = AMBIENCE_SHIP
 	minimap_color = MINIMAP_AREA_ENGI
+	unoviable_timer = FALSE
 
 /area/lv522/atmos/outdoor
 	name = "Atmospheric Processor - Outdoors"

@@ -667,7 +667,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
 /datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)
-	if(transfer_marine.job in new_squad.roles_cap)
+	if(!isnull(new_squad.roles_cap[transfer_marine.job]))
 		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
 			return TRUE
 	return FALSE

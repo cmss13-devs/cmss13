@@ -114,6 +114,7 @@
 	.["title"] = title
 	.["default_color"] = default
 	.["message"] = message
+	.["large_buttons"] = TRUE
 
 /datum/tgui_color_picker/ui_data(mob/user)
 	. = list()

@@ -6,7 +6,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 2 SECONDS
+	xeno_cooldown = 1.5 SECONDS
 	plasma_cost = 20
 
 // Scatterspit
@@ -17,7 +17,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_scattered_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 6 SECONDS
+	xeno_cooldown = 8 SECONDS
 	plasma_cost = 30
 
 // Paralyzing slash

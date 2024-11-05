@@ -1,4 +1,0 @@
-author: "Nanu, HarryOb"
-delete-after: True
-changes:
-  - code_imp: "Adds some code so if you're above the pointcap on your loadout, items will be removed to put you at the point cap limit."

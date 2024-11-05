@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Enabled 3 more OD pragmas for linting and fixed some ambiguous usage of In"

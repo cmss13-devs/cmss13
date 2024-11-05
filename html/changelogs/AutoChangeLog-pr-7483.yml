@@ -1,4 +1,0 @@
-author: "Killfish"
-delete-after: True
-changes:
-  - balance: "Improved consistency of Scatter Spits accuracy. Now one of your projectiles is guaranteed to to go in the direction you're aiming at, instead of potentially going everywhere except where you're aiming and missing everything."

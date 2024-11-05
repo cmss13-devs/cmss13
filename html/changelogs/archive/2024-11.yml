@@ -100,3 +100,16 @@
   - admin: you can add "known alts" to players, now
   vero5123:
   - bugfix: Special characters are now properly sanitized and removed in bug reports.
+2024-11-05:
+  Drathek:
+  - code_imp: Enabled 3 more OD pragmas for linting and fixed some ambiguous usage
+      of In
+  Killfish:
+  - balance: Improved consistency of Scatter Spits accuracy. Now one of your projectiles
+      is guaranteed to to go in the direction you're aiming at, instead of potentially
+      going everywhere except where you're aiming and missing everything.
+  Nanu, HarryOb:
+  - code_imp: Adds some code so if you're above the pointcap on your loadout, items
+      will be removed to put you at the point cap limit.
+  Sargeantmuffinman:
+  - rscadd: Added more lore emails to the computers

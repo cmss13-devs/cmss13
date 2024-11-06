@@ -235,6 +235,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"agV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/security{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "aiP" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/computer{
@@ -972,6 +983,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"aAL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm{
+	pixel_y = 7
+	},
+/obj/item/tool/pen,
+/turf/open/floor/strata,
+/area/space)
 "aBk" = (
 /obj/item/tool/wrench,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
@@ -4757,6 +4776,14 @@
 "cWn" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/space)
+"cWz" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
+/area/space)
 "cWF" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -5831,6 +5858,9 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 6
 	},
+/obj/structure/sign/safety/maint{
+	pixel_y = -32
+	},
 /turf/open/floor/strata/red4/east,
 /area/space)
 "dJj" = (
@@ -6558,6 +6588,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"eag" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1;
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/space)
 "eaB" = (
 /obj/item/trash/cheesie,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -6694,6 +6732,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"egn" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1;
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/space)
 "egs" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -9454,6 +9500,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"fQZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/toy/deck,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "fRq" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -9754,6 +9805,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gbL" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "gcb" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "rostock_umbilical";
@@ -9985,6 +10042,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"gjE" = (
+/obj/structure/sign/safety/security{
+	pixel_x = 34
+	},
+/turf/open/floor/strata/red4,
+/area/space)
 "gkj" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15;
@@ -10345,6 +10408,18 @@
 	})
 "gxF" = (
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/dr_gibb{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
 /turf/open/floor/strata/red4/north,
 /area/space)
 "gxI" = (
@@ -11804,6 +11879,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hmR" = (
+/obj/structure/bed/chair/wood/normal,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "hnn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -13949,6 +14028,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ixn" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1;
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "ixA" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/disposalpipe/segment{
@@ -14056,6 +14143,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iAZ" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/turf/open/floor/strata/red4/west,
+/area/space)
 "iBh" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -14346,7 +14439,7 @@
 /obj/structure/closet/crate/green{
 	name = "item transfer crate"
 	},
-/turf/open/floor/strata/red1,
+/turf/open/floor/strata/red2,
 /area/space)
 "iLp" = (
 /obj/effect/decal/strata_decals/grime/grime1,
@@ -15520,6 +15613,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jwc" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "jwz" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -16394,6 +16494,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jTg" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 6;
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ffd4d4";
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/space)
 "jTh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -16859,6 +16970,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kgJ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Command Fax Machine";
+	department = "Holding Area";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/strata,
+/area/space)
 "khK" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -18004,6 +18125,11 @@
 	name = "item transfer crate"
 	},
 /turf/open/floor/almayer/cargo,
+/area/space)
+"kNv" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/turf/open/floor/strata/red4/north,
 /area/space)
 "kNx" = (
 /obj/structure/closet/firecloset,
@@ -19200,6 +19326,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"lDD" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "lEl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/safety/maint{
@@ -20915,6 +21047,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"mHS" = (
+/obj/structure/sign/safety/storage{
+	pixel_y = -32
+	},
+/turf/open/floor/strata,
+/area/space)
 "mIc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -21182,6 +21320,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"mQT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/strata,
+/area/space)
 "mRd" = (
 /obj/structure/machinery/gear{
 	id = "supply_elevator_gear"
@@ -22459,6 +22603,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"nJQ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
+/area/space)
 "nLh" = (
 /obj/structure/machinery/autodoc_console{
 	upgrades = list(1, 2, 3, 4)
@@ -22732,7 +22884,7 @@
 /turf/open/floor/corsat/marked,
 /area/space)
 "nTd" = (
-/turf/open/floor/strata/red1,
+/turf/open/floor/strata/red2,
 /area/space)
 "nTi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22824,6 +22976,7 @@
 	})
 "nXp" = (
 /obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/green,
 /turf/open/floor/strata/red3/east,
 /area/space)
 "nYm" = (
@@ -23631,6 +23784,7 @@
 	req_access = null
 	},
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/map_item,
 /turf/open/floor/plating,
 /area/space)
 "ozt" = (
@@ -24774,6 +24928,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pfm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/strata,
+/area/space)
 "pfz" = (
 /obj/structure/machinery/cm_vending/gear/antag_guns{
 	name = "\improper Automated Guns Rack"
@@ -25050,6 +25210,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"plA" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/storage/box/zipcuffs,
+/obj/item/storage/box/zipcuffs,
+/turf/open/floor/strata,
+/area/space)
 "plE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine{
@@ -25284,6 +25452,17 @@
 	})
 "pug" = (
 /obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 26
+	},
 /turf/open/floor/strata/red3/north,
 /area/space)
 "pun" = (
@@ -26629,6 +26808,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qiF" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/strata,
+/area/space)
 "qjj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -27393,6 +27576,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qIw" = (
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = 16;
+	pixel_y = -32
+	},
+/turf/open/space/basic,
+/area/space)
 "qJl" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -27409,6 +27599,12 @@
 	pixel_y = 26
 	},
 /turf/open/floor/strata/fake_wood,
+/area/space)
+"qJA" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/turf/open/floor/strata/red2,
 /area/space)
 "qJB" = (
 /turf/open/floor/prison/darkyellow2/west,
@@ -27783,6 +27979,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"qVC" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box,
+/obj/item/storage/donut_box,
+/turf/open/floor/strata,
+/area/space)
 "qVJ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28197,6 +28399,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rhJ" = (
+/obj/structure/machinery/computer/crew/upp,
+/turf/open/floor/strata,
+/area/space)
 "rio" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -28494,6 +28700,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rtZ" = (
+/obj/structure/machinery/computer/crew/upp,
+/turf/open/floor/strata/red4,
+/area/space)
 "rut" = (
 /turf/open/floor/strata/blue3{
 	dir = 9
@@ -28907,6 +29117,10 @@
 	})
 "rEL" = (
 /obj/structure/surface/table/almayer,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
 /turf/open/floor/strata,
 /area/space)
 "rFl" = (
@@ -29851,6 +30065,13 @@
 /obj/structure/stairs,
 /turf/open/floor/corsat/plate,
 /area/space)
+"soU" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 12
+	},
+/turf/open/floor/strata,
+/area/space)
 "sps" = (
 /obj/structure/machinery/light,
 /obj/item/prop/almayer/comp_open,
@@ -30206,6 +30427,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"sDY" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/vending/cola{
+	density = 0;
+	pixel_y = -16
+	},
+/turf/open/floor/plating,
+/area/space)
 "sEt" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -31547,6 +31776,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"tsZ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 26
+	},
+/obj/item/reagent_container/spray/pepper,
+/obj/item/reagent_container/spray/pepper,
+/obj/item/reagent_container/spray/pepper,
+/obj/item/reagent_container/spray/pepper,
+/turf/open/floor/strata,
+/area/space)
 "ttc" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -32734,6 +32974,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"ude" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 34
+	},
+/turf/open/floor/strata/red4/east,
+/area/space)
 "udf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34685,6 +34931,16 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vkS" = (
+/obj/structure/sign/safety/security{
+	pixel_x = 16;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/reception{
+	pixel_y = -32
+	},
+/turf/open/space/basic,
+/area/space)
 "vlk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -35135,6 +35391,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vCG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18"
+	},
+/turf/open/floor/strata,
+/area/space)
 "vCS" = (
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/almayer/tcomms,
@@ -37005,6 +37267,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wDE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flash,
+/obj/item/device/flash,
+/turf/open/floor/strata,
+/area/space)
 "wDS" = (
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/space)
@@ -37251,6 +37519,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wLn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/toy/deck/uno,
+/obj/item/toy/dice/d20,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "wLr" = (
 /obj/structure/surface/rack,
 /obj/item/device/encryptionkey/upp/engi,
@@ -37494,6 +37768,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wTW" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/vending/cigarette/free{
+	pixel_y = -16
+	},
+/turf/open/floor/plating,
+/area/space)
 "wUb" = (
 /obj/structure/surface/rack,
 /obj/item/attachable/bayonet/upp,
@@ -37602,6 +37883,14 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"wXC" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/strata,
+/area/space)
 "wYa" = (
 /obj/structure/closet/firecloset,
 /obj/effect/decal/cleanable/dirt,
@@ -39050,6 +39339,11 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"xSa" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/turf/open/floor/strata/red4/north,
+/area/space)
 "xSk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -39387,6 +39681,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"yeF" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/strata/fake_wood,
+/area/space)
 "yeT" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -66923,16 +67221,16 @@ ofW
 dKd
 ofW
 wSy
-rEL
+wDE
 rEL
 kAN
 cWn
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+wSy
+qJA
+qJA
+qJA
+wSy
+plA
 wSy
 vhj
 vhj
@@ -67105,14 +67403,14 @@ ofW
 dKd
 ofW
 wSy
-rEL
+wXC
 vQd
 kAN
 cWn
 vQd
-vQd
-vQd
-vQd
+gIl
+gIl
+gIl
 vQd
 vQd
 wSy
@@ -67287,7 +67585,7 @@ ofW
 dKd
 ofW
 wSy
-vQd
+rhJ
 vQd
 kAN
 fvk
@@ -67469,7 +67767,7 @@ ofW
 dKd
 ofW
 wSy
-rEL
+tsZ
 vQd
 kAN
 cWn
@@ -67478,7 +67776,7 @@ vQd
 vQd
 vQd
 vQd
-vQd
+mHS
 wSy
 dXh
 dXh
@@ -67651,13 +67949,13 @@ ofW
 dKd
 ofW
 wSy
-rEL
-rEL
+kgJ
+aAL
 kAN
 cWn
 vQd
-vQd
-vQd
+qiF
+qVC
 bPz
 kNi
 kNi
@@ -67835,7 +68133,7 @@ ofW
 wSy
 wSy
 wSy
-hWX
+wSy
 oFW
 hWX
 wSy
@@ -68013,11 +68311,11 @@ ofW
 ofW
 ofW
 dKd
-ofW
+qIw
 wSy
 maF
 dXh
-mnA
+iAZ
 cWn
 gxF
 nXp
@@ -68026,7 +68324,7 @@ iyv
 dXh
 kpC
 wSy
-lfd
+agV
 hdD
 uhN
 bnw
@@ -68559,17 +68857,17 @@ ofW
 ofW
 ofW
 dKd
-ofW
+vkS
 wSy
 kSj
 gIl
 gIl
 gIl
 gIl
-htT
+ude
 cWn
 cWn
-mDY
+gjE
 dIW
 wSy
 wSy
@@ -68925,11 +69223,11 @@ ofW
 dKd
 ofW
 wSy
-mDY
+rtZ
 ugo
 htT
 wSy
-gxF
+kNv
 mnA
 cWn
 cWn
@@ -69289,7 +69587,7 @@ ofW
 dKd
 ofW
 wSy
-gxF
+xSa
 dXh
 mnA
 wSy
@@ -69660,10 +69958,10 @@ vQd
 vQd
 vQd
 vQd
+egn
 vQd
 vQd
-vQd
-vQd
+vCG
 wSy
 tpO
 gee
@@ -69835,8 +70133,8 @@ ofW
 dKd
 ofW
 wSy
+nJQ
 xGB
-xGB
 jWt
 jWt
 jWt
@@ -69845,7 +70143,7 @@ jWt
 jWt
 jWt
 xGB
-xGB
+sDY
 wSy
 dVI
 bnw
@@ -70020,11 +70318,11 @@ wSy
 jWt
 jWt
 jWt
+lDD
 jWt
 jWt
 jWt
-jWt
-jWt
+lDD
 jWt
 jWt
 jWt
@@ -70199,17 +70497,17 @@ ofW
 dKd
 ofW
 wSy
+ixn
+jWt
+wLn
+fQZ
 jWt
 jWt
+hmR
+yeF
+yeF
 jWt
-jWt
-jWt
-jWt
-jWt
-jWt
-jWt
-jWt
-jWt
+jwc
 wSy
 oIb
 dtw
@@ -70383,8 +70681,8 @@ ofW
 wSy
 jWt
 jWt
-jWt
-jWt
+gbL
+gbL
 jWt
 jWt
 jWt
@@ -70563,8 +70861,8 @@ ofW
 dKd
 ofW
 wSy
+cWz
 xGB
-xGB
 jWt
 jWt
 jWt
@@ -70573,7 +70871,7 @@ jWt
 jWt
 jWt
 xGB
-xGB
+wTW
 wSy
 kka
 dtw
@@ -70745,17 +71043,17 @@ ofW
 dKd
 ofW
 wSy
+soU
+vQd
+eag
 vQd
 vQd
 vQd
 vQd
+eag
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+mQT
+pfm
 wSy
 bnw
 kTI
@@ -70937,7 +71235,7 @@ wSy
 wSy
 wSy
 wSy
-wSy
+xGB
 wSy
 hIW
 bnw
@@ -71118,9 +71416,9 @@ dtw
 dtw
 qyF
 aKL
-fpK
-xxx
-fpK
+wSy
+jTg
+wSy
 qol
 bnw
 bnw
@@ -71300,9 +71598,9 @@ jMD
 jMD
 jMD
 yfo
-fpK
-xxx
-fpK
+wSy
+wSy
+wSy
 rBK
 bnw
 sei

@@ -24120,10 +24120,6 @@
 /obj/item/bananapeel,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/bar)
-"xMH" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/central)
 "xMQ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/shiva/floor3,
@@ -44719,7 +44715,7 @@ vBg
 ndR
 lHX
 axz
-xMH
+ndR
 jqY
 jqY
 rAF

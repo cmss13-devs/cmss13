@@ -2,15 +2,15 @@
 
 
 /datum/emergency_call/pred
-	name = "template"
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
+	name = "template"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 
 /datum/emergency_call/pred/mixed
-	name = "Hunting Grounds Mutil Faction Small"
+	name = "Hunting Grounds multi Faction Small"
 	hunt_name = "Multi Faction (small)"
 	mob_max = 4
 	mob_min = 1
@@ -62,7 +62,7 @@
 	message_all_yautja("Let the hunt begin!")
 
 /datum/emergency_call/pred/mixed/medium
-	name = "Hunting Grounds Mutil Faction Medium"
+	name = "Hunting Grounds multi Faction Medium"
 	hunt_name = "Multi Faction (group)"
 	mob_max = 6
 	mob_min = 4
@@ -73,7 +73,7 @@
 
 
 /datum/emergency_call/pred/mixed/hard
-	name = "Hunting Grounds Mutil Faction Large"
+	name = "Hunting Grounds multi Faction Large"
 	hunt_name = "Multi Faction (large)"
 	mob_max = 8
 	mob_min = 6
@@ -83,7 +83,7 @@
 	max_mercs = 1
 
 /datum/emergency_call/pred/mixed/harder
-	name = "Hunting Grounds Mutil Faction Larger"
+	name = "Hunting Grounds multi Faction Larger"
 	hunt_name = "Multi Faction (larger)"
 	mob_max = 12
 	mob_min = 6

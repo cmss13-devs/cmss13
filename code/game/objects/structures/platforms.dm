@@ -46,11 +46,11 @@
 		return
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_VLOW to EXPLOSION_THRESHOLD_LOW)
-			if (prob(15))
+			if(prob(15))
 				broken()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_HIGH)
-			if (prob(30))
+			if(prob(30))
 				broken()
 				return
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
@@ -60,8 +60,6 @@
 
 /obj/structure/platform/get_examine_text(mob/user)
 	. = ..()
-	if(!stat)
-		return
 
 	if(stat & BROKEN)
 		. += SPAN_WARNING("It looks destroyed.")
@@ -94,6 +92,10 @@
 			user.pulling.forceMove(move_to_turf)
 
 /obj/structure/platform/attack_alien(mob/living/carbon/xenomorph/user)
+	if(user.action_busy)
+		return XENO_NO_DELAY_ACTION
+	if(user.a_intent != INTENT_DISARM)
+
 	if(stat & BROKEN)
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
 		return XENO_NO_DELAY_ACTION
@@ -102,12 +104,7 @@
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(user.action_busy)
 		return XENO_NO_DELAY_ACTION
-	if(user.a_intent != INTENT_DISARM)
-		user.set_interaction(src)
-		tgui_interact(user)
-		return XENO_ATTACK_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
@@ -127,7 +124,7 @@
 
 	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
 
-	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = shove_time * 0.1))
 		return
 	user.animation_attack_on(src)
 	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
@@ -181,8 +178,8 @@
 //------------------------------//
 
 /obj/structure/platform/metal/stair_cut
-	icon_state = "platform_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
-	dir = 1
+	icon_state = "platform_stair" //icon will be honked in all dirs except (1 = NORTH), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
+	dir = NORTH
 
 /obj/structure/platform/metal/stair_cut/platform_left
 	icon_state = "platform_stair"
@@ -213,8 +210,8 @@
 //------------------------------//
 
 /obj/structure/platform/stone/stair_cut
-	icon_state = "kutjevo_rock_stair" //icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
-	dir = 1
+	icon_state = "kutjevo_rock_stair" //icon will be honked in all dirs except (1 = NORTH), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
+	dir = NORTH
 
 /obj/structure/platform/stone/stair_cut/shiva_left
 	icon_state = "strata_platform_stair"

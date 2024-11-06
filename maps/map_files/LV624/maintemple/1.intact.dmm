@@ -236,7 +236,8 @@
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_n";
-	name = "unsettling stone mask"
+	name = "unsettling stone mask";
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1;
@@ -440,7 +441,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -512,7 +514,8 @@
 	pixel_y = 31
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -600,7 +603,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -709,7 +713,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -816,7 +821,8 @@
 	pixel_y = 7
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1012,7 +1018,8 @@
 	pixel_x = 6
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1059,7 +1066,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1127,7 +1135,8 @@
 	pixel_y = 7
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1252,7 +1261,8 @@
 	pixel_x = -7
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1385,7 +1395,8 @@
 	pixel_y = 31
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -1512,7 +1523,8 @@
 	anchored = 1
 	},
 /obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1
@@ -1724,7 +1736,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1

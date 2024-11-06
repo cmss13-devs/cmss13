@@ -1,5 +1,6 @@
 /mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
+	ghostize() 
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue
@@ -131,5 +132,5 @@
 	else if(death_data?.cause_name == "existing")
 		// Corpses spawn as gibbed true to avoid sfx, even though they aren't actually gibbed...
 		AddComponent(/datum/component/weed_food)
-	
+
 	update_execute_hud()

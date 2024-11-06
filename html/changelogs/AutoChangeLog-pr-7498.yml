@@ -1,0 +1,5 @@
+author: "Joe Lampost"
+delete-after: True
+changes:
+  - code_imp: "Makes using LOOC use your real name instead of unknown"
+  - code_imp: "Sding preds now have their name shown instead of unknown"

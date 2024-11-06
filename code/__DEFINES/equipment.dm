@@ -178,7 +178,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 
@@ -467,6 +469,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_DECOR "Decor"
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
+#define ACCESSORY_SLOT_TROPHY "Trophy"
 
 /// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"

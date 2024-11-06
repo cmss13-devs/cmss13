@@ -33,6 +33,10 @@
 			var/obj/effect/build_blocker/blocker = new(turf, src)
 			blockers.Add(blocker)
 
+	var/area/current_area = get_area(src)
+	if(current_area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
+
 /obj/effect/alien/resin/Destroy()
 	QDEL_LIST(blockers)
 	return ..()

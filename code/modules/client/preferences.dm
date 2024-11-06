@@ -30,6 +30,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/atom/movable/screen/rotate/alt/rotate_left
 	var/atom/movable/screen/rotate/rotate_right
 
+	var/static/datum/body_picker/picker = new
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
@@ -101,7 +103,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
-	var/predator_cape_type = "None"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
@@ -341,10 +342,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
-			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
-			dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'><b>[body_size]</b></a><br>"
-			dat += "<b>Body Muscularity:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+
+			dat += "<b>Skin Color:</b> [skin_color]<br>"
+			dat += "<b>Body Size:</b> [body_size]<br>"
+			dat += "<b>Body Muscularity:</b> [body_type]<br>"
+			dat += "<b>Edit Body:</b> <a href='?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
+
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -541,7 +545,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				dat += "<div id='column3'>"
 				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
-				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[capitalize_first_letters(predator_cape_type)]</b></a><br>"
 				dat += "<b>Cape Color:</b> "
 				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
 				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
@@ -1309,10 +1312,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 					predator_translator_type = new_translator_type
 				if("pred_mask_type")
-					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
+					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, 19, 1)
 					if(new_predator_mask_type) predator_mask_type = floor(text2num(new_predator_mask_type))
 				if("pred_armor_type")
-					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
+					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-8)", "Armor Selection", 1, 8, 1)
 					if(new_predator_armor_type) predator_armor_type = floor(text2num(new_predator_armor_type))
 				if("pred_boot_type")
 					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
@@ -1337,20 +1340,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
-				if("pred_cape_type")
-					var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(owner)]
-
-					var/list/options = list("None" = "None")
-					for(var/cape_name in GLOB.all_yautja_capes)
-						var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
-						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
-							options += list(capitalize_first_letters(cape_name) = cape_name)
-
-					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
-					if(!new_cape)
-						return
-					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)
@@ -1585,23 +1574,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_h_gradient_style)
 						grad_style = new_h_gradient_style
 
-				if ("skin_color")
-					var/new_skin_color = tgui_input_list(user, "Choose your character's skin color:", "Character Preferences", GLOB.skin_color_list)
-
-					if (new_skin_color)
-						skin_color = new_skin_color
-
-				if ("body_size")
-					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
-
-					if (new_body_size)
-						body_size = new_body_size
-
-				if ("body_type")
-					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_type_list)
-
-					if (new_body_type)
-						body_type = new_body_type
+				if ("body")
+					picker.tgui_interact(user)
+					return
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null

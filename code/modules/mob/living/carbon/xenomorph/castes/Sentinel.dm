@@ -19,7 +19,7 @@
 	acid_level = 1
 
 	tackle_min = 4
-	tackle_max = 4
+	tackle_max = 6
 	tackle_chance = 50
 	tacklestrength_min = 4
 	tacklestrength_max = 4

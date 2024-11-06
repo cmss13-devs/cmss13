@@ -2337,6 +2337,10 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
+"Dm" = (
+/obj/structure/machinery/hunt_ground_spawner,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
 "Dr" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	explo_proof = 1;
@@ -5743,7 +5747,7 @@ ct
 cP
 bL
 hI
-LX
+Dm
 bL
 bL
 cP

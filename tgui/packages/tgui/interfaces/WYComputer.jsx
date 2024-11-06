@@ -9,6 +9,7 @@ import { Window } from '../layouts';
 const PAGES = {
   login: () => Login,
   main: () => MainMenu,
+  vents: () => SecVents,
 };
 
 export const WYComputer = (props) => {
@@ -106,8 +107,20 @@ const Login = (props) => {
 
 const MainMenu = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, access_level } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_level,
+    has_hidden_cell,
+    has_room_divider,
+    open_divider,
+    open_cell_door,
+    open_cell_shutters,
+    cell_flash_cooldown,
+    sec_flash_cooldown,
+  } = data;
 
   return (
     <>
@@ -172,44 +185,195 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {access_level >= 3 && (
+      {(access_level === 3 || access_level >= 5) && (
         <Section>
           <h1 align="center">Security Protocols</h1>
-          <Stack>
-            <Stack.Item grow>
-              <Button.Confirm
-                align="center"
-                tooltip="Activate/Deactivate the concealed Room Divider."
-                icon="lock"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('unlock_divider')}
-              >
-                Room Divider
-              </Button.Confirm>
-            </Stack.Item>
-            <Stack.Item grow>
-              <Button
-                align="center"
-                tooltip="Release stored CN20-X nerve gas from security vents."
-                icon="wind"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="100%"
-                bold
-                onClick={() => act('page_core_sec')}
-                disabled={access_level}
-              >
-                Nerve Gas Control
-              </Button>
-            </Stack.Item>
-          </Stack>
+          {!!has_room_divider && !has_hidden_cell && (
+            <Button.Confirm
+              align="center"
+              tooltip="Activate/Deactivate the concealed Room Divider."
+              icon="fingerprint"
+              color={open_divider ? 'green' : 'red'}
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('unlock_divider')}
+              disabled={!has_room_divider}
+            >
+              Room Divider
+            </Button.Confirm>
+          )}
+          <Button.Confirm
+            align="center"
+            tooltip="Activate any security flashbulbs."
+            icon="lightbulb"
+            color="yellow"
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('security_flash')}
+            disabled={sec_flash_cooldown}
+          >
+            Security Flash
+          </Button.Confirm>
+          {(access_level === 3 || access_level >= 6) && (
+            <Button
+              align="center"
+              tooltip="Release stored CN20-X nerve gas from security vents."
+              icon="wind"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('page_vents')}
+            >
+              Nerve Gas Control
+            </Button>
+          )}
         </Section>
       )}
+      {(access_level === 3 || access_level >= 6) && !!has_hidden_cell && (
+        <Section>
+          <h1 align="center">Hidden Cell Controls</h1>
+          {!!has_room_divider && (
+            <Button.Confirm
+              align="center"
+              tooltip="Activate/Deactivate the concealed Room Divider."
+              icon="fingerprint"
+              color={open_divider ? 'green' : 'red'}
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('unlock_divider')}
+              disabled={!has_room_divider}
+            >
+              Room Divider
+            </Button.Confirm>
+          )}
+          <Button
+            align="center"
+            tooltip="Open/Close the cell security shutters."
+            icon={open_cell_shutters ? 'lock-open' : 'lock'}
+            color={open_cell_shutters ? 'green' : 'red'}
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('cell_shutters')}
+            disabled={!has_hidden_cell}
+          >
+            Door Shutters
+          </Button>
+          <Button
+            align="center"
+            tooltip="Open/Close the cell door."
+            icon={open_cell_door ? 'door-open' : 'door-closed'}
+            color={open_cell_door ? 'green' : 'red'}
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('cell_door')}
+            disabled={!has_hidden_cell}
+          >
+            Door Control
+          </Button>
+          <Button.Confirm
+            align="center"
+            tooltip="Activate the cell's flashbulb."
+            icon="lightbulb"
+            color="yellow"
+            ml="auto"
+            px="2rem"
+            width="100%"
+            bold
+            onClick={() => act('cell_flash')}
+            disabled={cell_flash_cooldown}
+          >
+            Cell Flash
+          </Button.Confirm>
+        </Section>
+      )}
+    </>
+  );
+};
+
+const SecVents = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+              disabled={current_menu === 'main'}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Security Vent Controls</h1>
+      </Section>
+      <Section>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={
+                (access_level < 6 && access_level !== 3) || !vent.available
+              }
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            >
+              {vent.vent_tag}
+            </Button.Confirm>
+          );
+        })}
+      </Section>
     </>
   );
 };

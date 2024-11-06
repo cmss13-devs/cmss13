@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/get_ares_vents()
 	var/list/security_vents = list()
 	var/datum/ares_link/link = GLOB.ares_link
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/ares/vent in link.linked_vents)
 		if(!vent.vent_tag)
 			vent.vent_tag = "Security Vent #[link.tag_num]"
 			link.tag_num++

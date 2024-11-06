@@ -2,6 +2,9 @@
 	var/list/unique_icons_and_states = list()
 
 	for(var/datum/sprite_accessory/accessory as anything in subtypesof(/datum/sprite_accessory))
+		if(!length(accessory::icon_state))
+			continue
+
 		var/icon_and_state = "[accessory::icon]_[accessory::icon_state]"
 
 		if(icon_and_state in unique_icons_and_states)

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 28
+#define SAVEFILE_VERSION_MAX 29
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -179,6 +179,18 @@
 			completed_tutorials -= "requisitions_line"
 			completed_tutorials += "marine_req_1"
 		S["completed_tutorials"] << tutorial_list_to_savestring()
+
+	if(savefile_version < 29)
+		var/hair_style = ""
+		S["hair_style_name"] >> hair_style
+
+		switch(hair_style)
+			if("Shoulder-length Hair Alt")
+				hair_style = "Long Fringe"
+			if("Long Hair Alt")
+				hair_style = "Longer Fringe"
+
+		S["hair_style_name"] << hair_style
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

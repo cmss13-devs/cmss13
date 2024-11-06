@@ -314,9 +314,14 @@
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
 
-/area/lv759/indoors/caves/central_caves/north
+/area/lv759/indoors/caves/central_caves_north
 	name = "Caverns - Central"
 	icon_state = "caves_central"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 /area/lv759/indoors/caves/north_east_caves_comms
 	name = "KMCC - Mining Outpost - East - Subspace-Communications"

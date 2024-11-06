@@ -12,7 +12,7 @@ type BackendData = {
   icons: IconInfo[];
   state: any[];
   balance: number;
-  working: boolean;
+  rolling: boolean;
   money: number;
   cost: number;
   plays: number;
@@ -80,7 +80,7 @@ export const SlotMachine = (props) => {
     state,
     balance,
     jackpot,
-    working: rolling,
+    rolling,
     paymode,
   } = data;
 

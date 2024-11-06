@@ -565,14 +565,14 @@
 		to_chat(user, SPAN_WARNING("There are no available hunts to select."))
 		return
 
-	var/choice = tgui_input_list(user, "What will you hunt today?.", "[src]", potential_prey)
+	var/choice = tgui_input_list(user, "What will you hunt today?", "[src]", potential_prey)
 	if(!choice)
 		to_chat(user, SPAN_WARNING("You have not chosen any prey to hunt."))
 		return
 
-	to_chat(user, SPAN_NOTICE("you choose [choice] as your prey."))
-	message_all_yautja("[usr.real_name] Has chosen [choice] as their prey")
-	message_admins(FONT_SIZE_LARGE("ALERT: [usr.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
+	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
+	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
 	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
 

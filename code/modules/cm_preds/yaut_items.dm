@@ -526,7 +526,7 @@
 	message_all_yautja("[user.real_name] Has chosen [choice] as the new hunting ground")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) spawned [choice] (hunting grounds)"))
 	if(SSmapping.lazy_load_template(potential_hunting_grounds[choice]))
-	hunting_ground_activated = TRUE
+		hunting_ground_activated = TRUE
 
 
 /obj/structure/machinery/hunt_ground_spawner

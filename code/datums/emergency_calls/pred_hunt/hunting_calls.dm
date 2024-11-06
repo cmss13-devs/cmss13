@@ -2,12 +2,12 @@
 
 
 /datum/emergency_call/pred
-	var/hunt_name
-	var/message = "You are still expected to uphold the RP of the standard as this character!"
 	name = "template"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
+	var/hunt_name
+	var/message = "You are still expected to uphold the RP of the standard as this character!"
 
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds multi Faction Small"

@@ -1,0 +1,4 @@
+author: "Nomoresolvalou"
+delete-after: True
+changes:
+  - rscadd: "Hunters can now put their bone trophies on their armor to have it show up there instead of on their mesh."

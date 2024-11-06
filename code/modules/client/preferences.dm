@@ -30,6 +30,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/atom/movable/screen/rotate/alt/rotate_left
 	var/atom/movable/screen/rotate/rotate_right
 
+	var/static/datum/body_picker/picker = new
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
@@ -340,10 +342,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
-			dat += "<b>Skin Color:</b> <a href='?_src_=prefs;preference=skin_color;task=input'><b>[skin_color]</b></a><br>"
-			dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'><b>[body_size]</b></a><br>"
-			dat += "<b>Body Muscularity:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+
+			dat += "<b>Skin Color:</b> [skin_color]<br>"
+			dat += "<b>Body Size:</b> [body_size]<br>"
+			dat += "<b>Body Muscularity:</b> [body_type]<br>"
+			dat += "<b>Edit Body:</b> <a href='?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
+
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -1569,23 +1574,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_h_gradient_style)
 						grad_style = new_h_gradient_style
 
-				if ("skin_color")
-					var/new_skin_color = tgui_input_list(user, "Choose your character's skin color:", "Character Preferences", GLOB.skin_color_list)
-
-					if (new_skin_color)
-						skin_color = new_skin_color
-
-				if ("body_size")
-					var/new_body_size = tgui_input_list(user, "Choose your character's body size:", "Character Preferences", GLOB.body_size_list)
-
-					if (new_body_size)
-						body_size = new_body_size
-
-				if ("body_type")
-					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_type_list)
-
-					if (new_body_type)
-						body_type = new_body_type
+				if ("body")
+					picker.tgui_interact(user)
+					return
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null

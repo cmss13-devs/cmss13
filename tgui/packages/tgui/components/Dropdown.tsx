@@ -143,7 +143,9 @@ export function Dropdown(props: Props) {
       scrollTo(selectedIndex);
     }
 
-    innerRef.current?.focus();
+    innerRef.current?.addEventListener('load', () => {
+      innerRef.current?.focus();
+    });
   }, [open]);
 
   return (

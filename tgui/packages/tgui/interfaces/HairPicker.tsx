@@ -56,9 +56,9 @@ export const HairPicker = () => {
     'hair' | 'facial_hair' | 'gradient' | false
   >(false);
 
-  let height = 290;
+  let height = 340;
   if (facial_hair_styles.length > 0) {
-    height = height + 260;
+    height = height + 300;
   }
 
   if (gradient_available) {
@@ -122,7 +122,7 @@ export const HairPicker = () => {
             />
           </Section>
         )}
-        {colorPicker && (
+        {!!colorPicker && (
           <ColorPicker
             type={colorPicker}
             close={() => setColorPicker(false)}
@@ -186,7 +186,7 @@ const PickerElement = (props: {
   return (
     <Section
       title={name}
-      height="250px"
+      height="300px"
       scrollable
       buttons={
         <Button onClick={() => setColor(action)}>
@@ -199,7 +199,7 @@ const PickerElement = (props: {
         scrollRef.current?.focus();
       }}
     >
-      <Stack wrap="wrap" height="200px" width="400px">
+      <Stack wrap="wrap" height="240px" width="400px">
         {hair.map((hair) => (
           <Stack.Item
             key={hair.name}

@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - bugfix: "Memorial ghosts will now face the user instead of facing south."

@@ -3044,6 +3044,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"bPz" = (
+/turf/open/floor/almayer/cargo,
+/area/space)
 "bPC" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
@@ -11474,6 +11477,17 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"hdD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/space)
 "hdW" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -14328,6 +14342,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"iLh" = (
+/obj/structure/closet/crate/green{
+	name = "item transfer crate"
+	},
+/turf/open/floor/strata/red1,
+/area/space)
 "iLp" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /turf/open/floor/strata/floor3/east,
@@ -15139,6 +15159,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"jlf" = (
+/turf/open/floor/strata/red4/north,
+/area/space)
 "jli" = (
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -17512,6 +17535,9 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kAN" = (
+/turf/open/floor/strata/red3,
+/area/space)
 "kBq" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/silver,
@@ -17973,6 +17999,12 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"kNi" = (
+/obj/structure/closet/crate/green{
+	name = "item transfer crate"
+	},
+/turf/open/floor/almayer/cargo,
+/area/space)
 "kNx" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/prison/floor_marked/west,
@@ -25822,6 +25854,15 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"pIY" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/space)
 "pJl" = (
 /obj/item/toy/katana,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -28864,6 +28905,10 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"rEL" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/strata,
+/area/space)
 "rFl" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -34548,6 +34593,13 @@
 	name = "SSV Rostock";
 	base_lighting_alpha = 0
 	})
+"vhj" = (
+/obj/structure/closet/secure_closet/brig{
+	req_access = list(240);
+	req_one_access = null
+	},
+/turf/open/floor/almayer/cargo,
+/area/space)
 "vit" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	req_access = list(240)
@@ -65779,13 +65831,13 @@ ofW
 dKd
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+gIl
+gIl
+htT
+cWn
+jlf
+dXh
+dXh
 ofW
 ofW
 ofW
@@ -65961,13 +66013,13 @@ ofW
 dKd
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vQd
+vQd
+kAN
+cWn
+vQd
+vQd
+vQd
 ofW
 ofW
 ofW
@@ -66143,13 +66195,13 @@ ofW
 dKd
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vQd
+vQd
+kAN
+cWn
+vQd
+vQd
+vQd
 ofW
 ofW
 ofW
@@ -66325,13 +66377,13 @@ ofW
 dKd
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+vQd
+vQd
+kAN
+cWn
+vQd
+vQd
+vQd
 ofW
 ofW
 ofW
@@ -66507,13 +66559,13 @@ ofW
 dKd
 ofW
 ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
-ofW
+dXh
+dXh
+mnA
+cWn
+mDY
+gIl
+gIl
 ofW
 ofW
 ofW
@@ -66871,21 +66923,21 @@ ofW
 dKd
 ofW
 wSy
+rEL
+rEL
+kAN
+cWn
 vQd
 vQd
 vQd
 vQd
 vQd
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+wSy
+vhj
+vhj
+vhj
+vhj
 wSy
 xfl
 bkz
@@ -67053,21 +67105,21 @@ ofW
 dKd
 ofW
 wSy
+rEL
+vQd
+kAN
+cWn
 vQd
 vQd
 vQd
 vQd
 vQd
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+wSy
+gIl
+gIl
+gIl
+gIl
 wSy
 ovT
 lfd
@@ -67237,19 +67289,19 @@ ofW
 wSy
 vQd
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+kAN
+fvk
+wke
+wke
+wke
+wke
+wke
+wke
+lsc
+wke
+wke
+wke
+wke
 wSy
 txG
 fKs
@@ -67417,21 +67469,21 @@ ofW
 dKd
 ofW
 wSy
+rEL
+vQd
+kAN
+cWn
 vQd
 vQd
 vQd
 vQd
 vQd
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+wSy
+dXh
+dXh
+dXh
+dXh
 wSy
 cNd
 fUP
@@ -67599,21 +67651,21 @@ ofW
 dKd
 ofW
 wSy
+rEL
+rEL
+kAN
+cWn
 vQd
 vQd
 vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+bPz
+kNi
+kNi
+wSy
+vhj
+vhj
+vhj
+vhj
 wSy
 dgc
 fUP
@@ -67974,8 +68026,8 @@ iyv
 dXh
 kpC
 wSy
-wEt
-jYZ
+lfd
+hdD
 uhN
 bnw
 bnw
@@ -68156,8 +68208,8 @@ wke
 wke
 wke
 avl
-nmV
-fUP
+lfd
+pIY
 dtw
 bnw
 bnw
@@ -68338,8 +68390,8 @@ wke
 wke
 wke
 avl
+lfd
 nmV
-bnw
 hyy
 bnw
 kEM
@@ -68883,7 +68935,7 @@ cWn
 cWn
 wSy
 doB
-doB
+vhj
 wSy
 gZm
 dtw
@@ -69247,7 +69299,7 @@ miQ
 nZn
 wSy
 nTd
-nTd
+iLh
 wSy
 uyb
 ydg
@@ -69783,17 +69835,17 @@ ofW
 dKd
 ofW
 wSy
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+xGB
+xGB
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+xGB
+xGB
 wSy
 dVI
 bnw
@@ -69965,17 +70017,17 @@ ofW
 dKd
 sbV
 wSy
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
 wSy
 nLX
 uwb
@@ -70147,17 +70199,17 @@ ofW
 dKd
 ofW
 wSy
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
 wSy
 oIb
 dtw
@@ -70329,17 +70381,17 @@ ofW
 dKd
 ofW
 wSy
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
 wSy
 kZd
 dtw
@@ -70511,17 +70563,17 @@ ofW
 dKd
 ofW
 wSy
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
-vQd
+xGB
+xGB
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+jWt
+xGB
+xGB
 wSy
 kka
 dtw

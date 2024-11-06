@@ -109,9 +109,9 @@
 		return ..()
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attack_hand(mob/living/user)
 	. = ..()
-	ui_interact(user)
+	tgui_interact(user)
 
-/obj/structure/machinery/computer/hybrisa/misc/slotmachine/ui_interact(mob/living/user, datum/tgui/ui)
+/obj/structure/machinery/computer/hybrisa/misc/slotmachine/tgui_interact(mob/living/user, datum/tgui/ui)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

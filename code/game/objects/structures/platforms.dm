@@ -95,6 +95,7 @@
 	if(user.action_busy)
 		return XENO_NO_DELAY_ACTION
 	if(user.a_intent != INTENT_DISARM)
+		return XENO_NO_DELAY_ACTION
 
 	if(stat & BROKEN)
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
@@ -104,7 +105,6 @@
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
-		return XENO_NO_DELAY_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)

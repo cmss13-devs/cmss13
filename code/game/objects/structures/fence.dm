@@ -62,7 +62,7 @@
 		tforce = 40
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throwforce
+		tforce = I.throwforce/2
 	health = max(0, health - tforce)
 	healthcheck()
 
@@ -162,11 +162,17 @@
 
 	if(W.flags_item & NOBLUDGEON) return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet))
 		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
 		SPAN_NOTICE("You start cutting through [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+
+		//Bayonets are half as effective at cutting fence
+		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
+		if(istype(W, /obj/item/attachable/bayonet))
+			duration *= 1.5
+
+		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
 			SPAN_NOTICE("You cut through [src] with [W]."))

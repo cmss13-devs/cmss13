@@ -183,6 +183,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
 
 /area/lv759/indoors/caves/west_caves
 	name = "Caverns - West"
@@ -192,6 +193,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
 
 /area/lv759/indoors/caves/west_caves_alarm
 	name = "Caverns - West"
@@ -211,6 +213,11 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
+/area/lv759/indoors/caves/east_caves/north
+	name = "Caverns - East"
+	icon_state = "caves_east"
+	unoviable_timer = FALSE
+
 /area/lv759/indoors/caves/south_caves
 	name = "Caverns - South"
 	icon_state = "caves_south"
@@ -219,6 +226,11 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+
+/area/lv759/indoors/caves/south_caves/derelict_ship
+	name = "Caverns - South"
+	icon_state = "caves_south"
+	unoviable_timer = FALSE
 
 /area/lv759/indoors/caves/south_east_caves
 	name = "Caverns - Southeast"
@@ -255,6 +267,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
 
 /area/lv759/outdoors/caves/north_west_caves_outdoors
 	name = "Caverns - Northwest"
@@ -264,6 +277,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
 
 /area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"
@@ -298,6 +312,12 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
+
+/area/lv759/indoors/caves/central_caves/north
+	name = "Caverns - Central"
+	icon_state = "caves_central"
+	unoviable_timer = TRUE
 
 /area/lv759/indoors/caves/north_east_caves_comms
 	name = "KMCC - Mining Outpost - East - Subspace-Communications"
@@ -321,6 +341,7 @@
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
 
 // Colony Streets
 
@@ -1128,6 +1149,7 @@
 	icon_state = "wylab"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	ceiling = CEILING_METAL
+	unoviable_timer = FALSE
 
 /area/lv759/indoors/wy_research_complex/medical_annex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"

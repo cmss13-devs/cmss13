@@ -271,6 +271,7 @@
 	caliber = "5.7×28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "p90"
+	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90
 	max_rounds = 50
 //-------------------------------------------------------
@@ -283,5 +284,6 @@
 	caliber = "5.7×28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
 	icon_state = "p90_twe"
+	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90/twe
 	max_rounds = 50

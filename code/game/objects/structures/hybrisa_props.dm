@@ -13,7 +13,7 @@
 	icon_state = "meridian_red"
 	health = 3000
 	var/damage_state = 0
-	var/brute_multiplier = 1
+	var/brute_multiplier = 3
 
 /obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
 	user.animation_attack_on(src)

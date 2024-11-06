@@ -317,7 +317,6 @@
 /area/lv759/indoors/caves/central_caves/north
 	name = "Caverns - Central"
 	icon_state = "caves_central"
-	unoviable_timer = TRUE
 
 /area/lv759/indoors/caves/north_east_caves_comms
 	name = "KMCC - Mining Outpost - East - Subspace-Communications"

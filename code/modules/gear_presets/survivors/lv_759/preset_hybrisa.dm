@@ -327,7 +327,7 @@
 
 	name = "Survivor - Hybrisa - NSPA Constable"
 	assignment = "NSPA Constable"
-	faction_group = FACTION_LIST_NSPA
+	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

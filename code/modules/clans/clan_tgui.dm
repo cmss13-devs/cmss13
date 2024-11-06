@@ -421,13 +421,14 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 /datum/yautja_panel/proc/populate_clan_data()
 	clan_name_to_index = list("Clanless" = 0)
-	clan_index_to_id = list("0" = 0)
+	clan_index_to_id = list("0" = null)
 	var/list/clan_names = list("Clanless")
 	var/index = 1
 	var/list/data = list()
 	data["clans"] = list()
 
 	data["clans"] += list(populate_clan("Clanless", null))
+	data["clans"] += list(populate_clan("Clanless", 0))
 	var/list/datum/view_record/clan_view/clan_list = DB_VIEW(/datum/view_record/clan_view/)
 	for(var/datum/view_record/clan_view/viewed_clan in clan_list)
 		data["clans"] += list(populate_clan("[viewed_clan.name]", viewed_clan.clan_id))

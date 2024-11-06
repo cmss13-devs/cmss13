@@ -22,7 +22,7 @@
 	tackle_max = 6
 	tackle_chance = 50
 	tacklestrength_min = 4
-	tacklestrength_max = 4
+	tacklestrength_max = 6
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 	minimap_icon = "sentinel"

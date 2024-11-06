@@ -564,7 +564,7 @@
 		to_chat(user, SPAN_WARNING("There are no available hunts to select."))
 		return
 
-	var/choice = tgui_input_list(user, "What will you hunt today?.", "[src]", potential_prey)
+	var/choice = tgui_input_list(user, "What will you hunt today?", "[src]", potential_prey)
 	if(!choice)
 		to_chat(user, SPAN_WARNING("You have not chosen any prey to hunt."))
 		return

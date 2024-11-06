@@ -43,7 +43,6 @@
 	icon_state = "tumor1"
 	requires_power = 0
 	minimap_color = MINIMAP_AREA_SHIP
-	unoviable_timer = 25 MINUTES
 
 /area/fiorina/tumor/civres
 	name = "Fiorina - Green Block Residences"

@@ -180,7 +180,8 @@
 	update_icon(user)
 
 /obj/item/storage/backpack/marine/smartpack/proc/protective_form(mob/living/carbon/human/user)
-	if(!istype(user) || activated_form || immobile_form)
+	if(!istype(user) || activated_form || immobile_form || user.stat == DEAD)
+		to_chat(user, SPAN_WARNING("You cannot use the S-V42 prototype smartpack right now."))
 		return
 
 	if(battery_charge < PROTECTIVE_COST)
@@ -228,7 +229,8 @@
 
 
 /obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/living/user)
-	if(activated_form)
+	if(activated_form || user.stat == DEAD)
+		to_chat(user, SPAN_WARNING("You cannot use the S-V42 prototype smartpack right now."))
 		return
 
 	if(battery_charge < IMMOBILE_COST && !immobile_form)
@@ -267,7 +269,8 @@
 
 
 /obj/item/storage/backpack/marine/smartpack/proc/repair_form(mob/user)
-	if(!ishuman(user) || activated_form || repairing)
+	if(!ishuman(user) || activated_form || repairing || user.stat == DEAD)
+		to_chat(user, SPAN_WARNING("You cannot use the S-V42 prototype smartpack right now."))
 		return
 
 	if(battery_charge < REPAIR_COST)

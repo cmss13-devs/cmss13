@@ -1,0 +1,173 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"e" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"h" = (
+/turf/closed/wall/r_wall/prison,
+/area/prison/research/secret/testing)
+"i" = (
+/turf/open/gm/grass/gbcorner/north_east,
+/area/prison/research/secret/testing)
+"m" = (
+/turf/open/gm/grass/gbcorner/south_east,
+/area/prison/research/secret/testing)
+"n" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
+	},
+/obj/structure/machinery/door/window/northright,
+/turf/open/floor/plating,
+/area/prison/research/secret/testing)
+"o" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"s" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"w" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"x" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"C" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"E" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/grass/gbcorner/north_west,
+/area/prison/research/secret/testing)
+"H" = (
+/obj/structure/window/framed/prison/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
+	},
+/turf/open/floor/plating,
+/area/prison/research/secret/testing)
+"I" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
+	},
+/obj/structure/machinery/door/window/northleft,
+/turf/open/floor/plating,
+/area/prison/research/secret/testing)
+"N" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"Q" = (
+/turf/open/gm/grass/grassbeach/south,
+/area/prison/research/secret/testing)
+"R" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/grass/grass2,
+/area/prison/research/secret/testing)
+"U" = (
+/turf/open/gm/grass/gbcorner/south_west,
+/area/prison/research/secret/testing)
+"V" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/prison/research/secret/testing)
+"Z" = (
+/turf/open/gm/grass/grassbeach/north,
+/area/prison/research/secret/testing)
+
+(1,1,1) = {"
+h
+h
+h
+h
+h
+h
+h
+"}
+(2,1,1) = {"
+e
+C
+a
+a
+a
+a
+H
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+R
+N
+H
+"}
+(4,1,1) = {"
+a
+E
+U
+o
+a
+a
+H
+"}
+(5,1,1) = {"
+a
+Z
+Q
+a
+a
+a
+I
+"}
+(6,1,1) = {"
+a
+i
+m
+a
+a
+a
+n
+"}
+(7,1,1) = {"
+s
+a
+a
+a
+x
+C
+H
+"}
+(8,1,1) = {"
+a
+R
+N
+a
+a
+a
+H
+"}
+(9,1,1) = {"
+V
+w
+a
+a
+a
+o
+H
+"}

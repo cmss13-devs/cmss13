@@ -235,7 +235,7 @@ const MainMenu = (props) => {
           )}
         </Section>
       )}
-      {(access_level === 3 || access_level >= 6) && !!has_hidden_cell && (
+      {(access_level === 3 || access_level >= 5) && !!has_hidden_cell && (
         <Section>
           <h1 align="center">Hidden Cell Controls</h1>
           {!!has_room_divider && (

@@ -227,10 +227,10 @@
 					return WY_COMP_ACCESS_SENIOR_LEAD
 				if(PAY_SHORT_WYC7, PAY_SHORT_WYC6)
 					return WY_COMP_ACCESS_SUPERVISOR
-				if(PAY_SHORT_WYC5, PAY_SHORT_WYC4)
-					return WY_COMP_ACCESS_CORPORATE_SENIOR
 		if(card.assignment == JOB_CORPORATE_LIAISON)
 			return WY_COMP_ACCESS_LIAISON
+		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC4))
+			return WY_COMP_ACCESS_CORPORATE_SENIOR
 		return WY_COMP_ACCESS_CORPORATE
 	else
 		return WY_COMP_ACCESS_FORBIDDEN

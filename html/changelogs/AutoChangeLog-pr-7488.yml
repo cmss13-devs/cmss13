@@ -1,0 +1,6 @@
+author: "BOBAMA"
+delete-after: True
+changes:
+  - bugfix: "bugged Shivas areas"
+  - maptweak: "Removed Sorokyne \"hallway areas\""
+  - balance: "Areas on Sorokyne that were only CASable because of the \"hallway areas\" can now just be CASd"

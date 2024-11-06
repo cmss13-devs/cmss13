@@ -366,6 +366,14 @@
 		to_chat(src, SPAN_BOLDNOTICE("Your messages will no longer be automatically punctuated if they are not punctuated already."))
 	prefs.save_preferences()
 
+/client/proc/toggle_auto_shove()
+	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
+	if (prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
+	else
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+	prefs.save_preferences()
+
 /client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
 	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
 	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)

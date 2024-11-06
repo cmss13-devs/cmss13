@@ -312,14 +312,6 @@
 		to_chat(src, SPAN_BOLDNOTICE("Help intent can perform harmful actions again."))
 	prefs.save_preferences()
 
-/client/proc/toggle_auto_shove()
-	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE
-	if(prefs.toggle_prefs & TOGGLE_AUTO_SHOVE)
-		to_chat(src, SPAN_BOLDNOTICE("You will now automatically shove anyone in your way as the Queen."))
-	else
-		to_chat(src, SPAN_BOLDNOTICE("You will no longer automatically shove anyone in your way as the Queen"))
-	prefs.save_preferences()
-
 /client/proc/toggle_auto_eject() // Toggle whether guns with auto-ejectors will automatically eject magazines
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
 	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)

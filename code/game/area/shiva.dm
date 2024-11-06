@@ -236,11 +236,6 @@
 	icon_state = "res0"
 	unoviable_timer = FALSE
 
-/area/shiva/interior/colony/deck
-	name = "Shiva's Snowball - Colony MegaStruct(TM) Open Deck"
-	icon_state = "res1"
-	ceiling = CEILING_GLASS
-
 /area/shiva/interior/aerodrome
 	name = "Shiva's Snowball - Aerodrome"
 	icon_state = "hangars0"

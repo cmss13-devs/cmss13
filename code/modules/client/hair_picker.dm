@@ -35,7 +35,7 @@
 			continue
 		if(!(prefs.species in facial_hair.species_allowed))
 			continue
-		if(prefs.gender != facial_hair.gender)
+		if(facial_hair.gender != NEUTER && prefs.gender != facial_hair.gender)
 			continue
 
 		.["facial_hair_styles"] += list(
@@ -102,7 +102,7 @@
 			if(!(prefs.species in facial_hair.species_allowed))
 				return
 
-			if(prefs.gender != facial_hair.gender)
+			if(facial_hair.gender != NEUTER && prefs.gender != facial_hair.gender)
 				return
 
 			prefs.f_style = params["name"]

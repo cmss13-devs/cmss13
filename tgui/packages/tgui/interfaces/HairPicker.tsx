@@ -57,7 +57,7 @@ export const HairPicker = () => {
   >(false);
 
   let height = 340;
-  if (facial_hair_styles.length > 0) {
+  if (facial_hair_styles.length > 1) {
     height = height + 300;
   }
 
@@ -93,7 +93,7 @@ export const HairPicker = () => {
           setColor={setColorPicker}
           action="hair"
         />
-        {!!(facial_hair_styles.length > 0) && (
+        {!!(facial_hair_styles.length > 1) && (
           <PickerElement
             name="Facial Hair"
             icon={facial_hair_icon}

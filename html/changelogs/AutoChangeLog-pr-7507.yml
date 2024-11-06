@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Fix XvX landmarks being used for roundstart oviable locations"
+  - balance: "Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent Dam, Chances's Claim, and Fiorina"
+  - bugfix: "XvX now makes all areas oviable"

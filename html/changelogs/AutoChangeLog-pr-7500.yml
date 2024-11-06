@@ -1,0 +1,4 @@
+author: "TheDonkified"
+delete-after: True
+changes:
+  - code_imp: "Xeno ability names in chat and stats page changed to match the names for xeno ability buttons"

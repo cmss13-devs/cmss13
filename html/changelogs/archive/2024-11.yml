@@ -1,0 +1,144 @@
+2024-11-01:
+  Ansekishoku:
+  - bugfix: Headsets no longer accept multiple encryption keys of the same kind.
+  BeagleGaming1:
+  - bugfix: Bracers properly update owner when unequipped or worn
+  - rscadd: When gibbed, the ghost will stay as the character instead of turning into
+      a brain
+  Blundir:
+  - rscadd: dead marines now have minimap revival icons animated, different icons
+      depending on how much time is left
+  - bugfix: fixed working joe not being able to use ai lockdown/nerve gas
+  GoldenDarkness55:
+  - balance: OT M40 grenade casing volume from 90 to 120, power 175 to 180, falloff
+      75 to 80, shards 32 to 40, fire intensity 20 to 25, metal cost from 3750 to
+      4250 which is 12% of a single metal sheet
+  - balance: OT M15 grenade casing power 215 to 220, falloff 90 to 120, shards 32
+      to 80, fire radius from 5 to 6, fire intensity 20 to 30 and fire duration 24
+      to 32
+  - balance: OT claymore casing power 105 to 100, falloff 60 to 80, shards 32 to 40,
+      fire radius 5 to 4, fire intensity 12 to 20
+  - balance: OT C4 casing damage multiplier against walls from 1.5 to 2, power 260
+      to 280, falloff 90 to 120, shards 64 to 100, fire radius 6 to 4, fire intensity
+      26 to 50, duration 30 to 20
+  - balance: OT rocket casing power 240 to 220, falloff 90 to 160, shards 64 to 80,
+      fire radius 6 to 4, fire intensity 40 to 45
+  - balance: OT mortar casing falloff 90 to 130, shards 128 to 200, fire intensity
+      40 to 45
+  - balance: Custom rocket accuracy raised from tier 2 to 5 and range lowered from
+      8 to 7
+  Red-byte3D:
+  - balance: base ravager empowered charge stun is increased from 1.3 to 1.6
+  Steelpoint:
+  - maptweak: The north-east and south-east areas of Shivas Snowball start of pre-weeded,
+      in addition to a few resin doors and walls near the main entrances to hive locations.
+  ghostsheet:
+  - balance: Beserker Ravs no longer heals while on fire.
+  harryob:
+  - rscadd: the chem master ui is now tgui, and faster. hopefully better
+  - server: server hosts can now configure a cobalt.tools api to provide media playing
+      with "COBALT_BASE_API" and "COBALT_API_KEY"
+  realforest2001:
+  - bugfix: No store cryo pods now work as intended.
+2024-11-02:
+  Drathek:
+  - ui: The ghost observer tacmap will now scroll both horizontally and vertically
+      as needed to display a large map.
+  - ui: The TGUI panels for tacmaps and drawings have been polished to utilize more
+      minimap space fully.
+  - refactor: Refactored minimap generation code to calculate min and max faster,
+      to more aggressively trim minimaps, and to support larger minimaps (was 480px
+      now 512px).
+  - bugfix: Fixes an issue where predator tacmap would take over the ghost tacmap
+      preventing it from opening for observers
+  - bugfix: Fix hive core placement restriction
+  Red-byte3D:
+  - balance: sg effective range nerfed to 5
+  - balance: sg falloff increased
+  Sporticusmge:
+  - balance: Night Vision Optic now works 2 times longer, and recharge 2 times longer.
+      Squad Leader NVO prices changed, from 20 to 25.
+  Zenith00000:
+  - bugfix: fixed some un-needed code and added missing tiles
+  deathrobotpunch:
+  - balance: The Tactical compact nail gun is now available in the Chief Engineers
+      vendor.
+  private-tristan:
+  - balance: Forecon M39 spawn now has its spawn ammo in belt, instead of in satchel.
+2024-11-03:
+  Ansekishoku:
+  - bugfix: Smartpack abilities no longer function if the user is dead.
+  GoldenDarkness55:
+  - balance: Cooldown multiplier for interrupting remote building raised from 2 to
+      3
+  - balance: Queen remote building modifier raised from 1 to 1.5 (slower, around 2.3-2.5s),
+      cooldown raised from 2s to 4s
+  - balance: Resin Whisperer remote building modifier raised from 2 to 2.5 (slower,
+      around 2.5s), cooldown raised from 1s to 2.5s
+  - balance: Sentinel neuro spit cooldown raised 1.5 to 2s, superslow 2.5 to 4s
+  - balance: Sentinel scatter spit scatter lowered 60 to 45, cooldown lowered 8s to
+      6s
+  - balance: Sentinel paralyzing slash stuns after 3 seconds instead of 4 and lasts
+      2.5 seconds from 2.
+2024-11-04:
+  Drathek:
+  - bugfix: Fixes additional projectiles being fired from humans that placed a shotgun
+      sentry instead of the sentry.
+  - bugfix: Fixes cause_data for flamer sentries so now kills they make are explained
+      in the message and attributed to the kill counter for the sentry.
+  - bugfix: Fix reloading under barrel flamers with any reagent from a flamer tank
+  - ui: Fixed the ping relay buttons not displaying anything when clicked on the first
+      time. Now Button.Confirm.confirmContent will only replace children if it is
+      truthy.
+  - balance: Buffed SG armor penetration ammo damage falloff from 5 to 3.
+  VileBeggar:
+  - qol: You can now use the 'check status' verb and any stethoscope you might have
+      attached to your uniform directly by examining an adjacent human.
+  harryob:
+  - rscadd: a new tgui with better previews for the different skin colors / body types
+      / body sizes
+  - admin: you can add "known alts" to players, now
+  vero5123:
+  - bugfix: Special characters are now properly sanitized and removed in bug reports.
+2024-11-05:
+  Drathek:
+  - code_imp: Enabled 3 more OD pragmas for linting and fixed some ambiguous usage
+      of In
+  Killfish:
+  - balance: Improved consistency of Scatter Spits accuracy. Now one of your projectiles
+      is guaranteed to to go in the direction you're aiming at, instead of potentially
+      going everywhere except where you're aiming and missing everything.
+  Nanu, HarryOb:
+  - code_imp: Adds some code so if you're above the pointcap on your loadout, items
+      will be removed to put you at the point cap limit.
+  Sargeantmuffinman:
+  - rscadd: Added more lore emails to the computers
+2024-11-06:
+  BOBAMA:
+  - balance: You can now go on Ovi and build Hive Cores anywhere in the Atmospheric
+      Processor on Chance's Claim
+  - bugfix: bugged Shivas areas
+  - maptweak: Removed Sorokyne "hallway areas"
+  - balance: Areas on Sorokyne that were only CASable because of the "hallway areas"
+      can now just be CASd
+  Blundir:
+  - rscadd: XO spawning is now announced just like SEA/CO
+  detectivegoogle Drathek:
+  - balance: Morphers generate huggers twice as fast if queen is on ovi
+  efzapa:
+  - rscadd: All USCM Flag Officers now understand and can use Tactical Sign Language.
+  - qol: Tactical Sign Language is now the default language for all MARSOC spawned.
+  harryob:
+  - bugfix: you can transfer riflemen between squads again
+  - bugfix: sebb grenades can no longer degroin synths through EMPs, which was unintended
+  thevandie:
+  - imageadd: added a new sprite for the liaison's wall divider behind his desk
+  - mapadd: added a WY mre to the liaison's liquor cabinet (cardboard box full of
+      donk pockets)
+  - mapadd: added a tv to the liaison's desk, in place of the containment cell console
+  - mapadd: added a new button to the liaison's desk to replace the wall divider button.
+      it controls the back office shutters
+  - maptweak: moved the liaison's shutters button and console to the back office
+  - maptweak: moved some stuff around in the liquor cabinet to accommodate the MRE
+      being placed into it
+  - maptweak: moved some stuff around on the liaison's desk to make it look cleaner

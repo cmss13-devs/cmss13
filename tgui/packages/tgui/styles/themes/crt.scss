@@ -99,6 +99,11 @@ $background-radial-opacity: 0.2 !default;
     )
   );
 
+  @include meta.load-css(
+    '../components/Modal.scss',
+    $with: ('background-color': base.$color-bg)
+  );
+
   .Layout__content {
     background-image: none;
     background: radial-gradient(

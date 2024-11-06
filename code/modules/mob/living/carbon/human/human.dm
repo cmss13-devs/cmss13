@@ -408,6 +408,7 @@
 							DT.dogtag_taken = TRUE
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
+							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
 							D.fallen_assgns = list(DT.assignment)
 							D.fallen_blood_types = list(DT.blood_type)
@@ -771,6 +772,21 @@
 					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 						tgui_interact(usr)
 					break
+
+	if(href_list["check_status"])
+		if(!usr.Adjacent(src))
+			return
+		var/mob/living/carbon/human/user = usr
+		user.check_status(src)
+
+	if(href_list["use_stethoscope"])
+		var/mob/living/carbon/human/user = usr
+		var/obj/item/clothing/accessory/stethoscope/stethoscope = locate() in user.w_uniform
+		if(!stethoscope || !user.Adjacent(src))
+			return
+
+		stethoscope.attack(src, user)
+
 	..()
 	return
 
@@ -989,45 +1005,44 @@
 		if(prob(30)) // Spam chat less
 			to_chat(src, SPAN_HIGHDANGER("Your movement jostles [W] in your [organ.display_name] painfully."))
 
-/mob/living/carbon/human/verb/check_status()
-	set category = "Object"
-	set name = "Check Status"
-	set src in view(1)
-	var/self = (usr == src)
-	var/msg = ""
-
-
-	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return
+/mob/living/carbon/human/proc/check_status(mob/living/carbon/human/target)
+	if(is_dead() || is_mob_restrained())
+		return
+	///Final message detailing injuries on the target.
+	var/msg
+	///Is the target the user or somebody else?
+	var/self = (target == src)
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [src]."]"))
 
 	if(self)
-		var/list/L = get_broken_limbs() - list("chest","head","groin")
-		if(length(L) > 0)
-			msg += "Your [english_list(L)] [length(L) > 1 ? "are" : "is"] broken\n"
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
-	if(toxloss > 20)
-		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
-	if(is_bleeding())
-		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body\n"
+		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
+		if(length(broken_limbs))
+			msg += "Your [english_list(broken_limbs)] [length(broken_limbs) > 1 ? "are" : "is"] broken.\n"
+	if(target.toxloss > 20)
+		msg += "[self ? "Your" : "Their"] skin is slightly green.\n"
+
+	if(target.is_bleeding())
+		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body.\n"
 
 	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
-			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
+		for(var/datum/effects/bleeding/internal/internal_bleed in target.effects_list)
+			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name].\n"
 
-	if(stat == UNCONSCIOUS)
-		msg += "They seem to be unconscious\n"
-	else if(stat == DEAD)
-		if(src.check_tod() && is_revivable())
-			msg += "They're not breathing"
-		else
-			if(has_limb("head"))
-				msg += "Their eyes have gone blank, there are no signs of life"
+	switch(target.stat)
+		if(DEAD)
+			if(target.check_tod() && target.is_revivable())
+				msg += "They're not breathing."
 			else
-				msg += "They are definitely dead"
-	else
-		msg += "[self ? "You're":"They're"] alive and breathing"
+				if(has_limb("head"))
+					msg += "Their eyes have gone blank, there are no signs of life."
+				else
+					msg += "They are definitely dead."
+		if(UNCONSCIOUS)
+			msg += "They seem to be unconscious.\n"
+		if(CONSCIOUS)
+			msg += "[self ? "You're" : "They're"] alive and breathing."
 
-
-	to_chat(usr,SPAN_WARNING(msg))
+	to_chat(src, SPAN_WARNING(msg))
 
 
 /mob/living/carbon/human/verb/view_manifest()
@@ -1349,11 +1364,14 @@
 	if(wear_mask && wear_mask.vision_impair)
 		tint_level += wear_mask.vision_impair
 
-	if(tint_level > VISION_IMPAIR_STRONG)
-		tint_level = VISION_IMPAIR_STRONG
+	if(tint_level > VISION_IMPAIR_MAX)
+		tint_level = VISION_IMPAIR_MAX
 
 	if(tint_level)
-		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
+		if(tint_level == VISION_IMPAIR_MAX)
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/blind)
+		else
+			overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)
@@ -1397,7 +1415,8 @@
 		if(user.get_limb(cur_hand).status & LIMB_DESTROYED)
 			to_chat(user, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
-		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
+		var/is_splint = FALSE
+		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) //check for any splints before do_after
 			var/obj/limb/l = target.get_limb(bodypart)
 			if(l && (l.status & LIMB_SPLINTED))
 				if(user == target)
@@ -1407,13 +1426,31 @@
 					if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
 						same_arm_side = TRUE
 						continue
-				to_splint.Add(l)
+				is_splint = TRUE
+				break
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(length(to_splint))
+		if(is_splint)
 			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
+				for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) // make sure the splints still exist before removing
+					var/obj/limb/target_limb = target.get_limb(bodypart)
+					if(target_limb && (target_limb.status & LIMB_SPLINTED))
+						if(user == target)
+							if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
+								same_arm_side = TRUE
+								continue
+							if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
+								same_arm_side = TRUE
+								continue
+						to_splint += target_limb
+				if(!length(to_splint))
+					if(same_arm_side)
+						to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
+					else
+						to_chat(user, SPAN_WARNING("There are no splints to remove."))
+					return
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
 					var/obj/item/clothing/suit/space/suit = target.wear_suit
 					if(LAZYLEN(suit.supporting_limbs))

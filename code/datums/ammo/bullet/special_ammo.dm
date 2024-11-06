@@ -109,6 +109,10 @@
 	penetration= ARMOR_PENETRATION_TIER_10 //Bumped the penetration to serve a different role from sentries, MGs are a bit more offensive
 	accuracy = HIT_ACCURACY_TIER_3
 
+/datum/ammo/bullet/machinegun/setup_faction_clash_values()
+	.=..()
+	accurate_range = 12
+
 /datum/ammo/bullet/machinegun/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(

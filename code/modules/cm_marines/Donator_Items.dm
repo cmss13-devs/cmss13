@@ -52,6 +52,10 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
+	icon = 'icons/obj/items/clothing/masks/donator.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
+	)
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE
@@ -182,6 +186,10 @@
 	desc = "A black Balaclava used for hiding your face.  DISCLAIMER: May not actually hide your face... DONOR ITEM"
 	item_state = "balaclava"
 	icon_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
@@ -1298,9 +1306,12 @@
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
 	desc = "A white colored PMC Mask.  DONOR ITEM."
-	icon_override = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
@@ -1315,6 +1326,10 @@
 	desc = "Swat Gas Mask.  DONOR ITEM"
 	icon_state = "swat"
 	item_state = "swat"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
 
@@ -1323,6 +1338,10 @@
 	desc = "A standard issue gas mask.  DONOR ITEM"
 	icon_state = "swat"
 	item_state = "swat"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
 
@@ -1347,6 +1366,10 @@
 	desc = "It's a g-g-g-g-g-ghost cigar.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "cigar_on"
 	item_state = "cigar_on"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEFACE
 
@@ -1483,6 +1506,7 @@
 /obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex
 	name = "XXX's custom Cigar"
 	desc = "A custom rolled giant, made specifically for John Donable in the best, hottest, and most abusive of Cuban sweat shops.  UNIQUE DONOR ITEM."
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	icon_state = "cigar2_off"
 	icon_on = "cigar2_on"
 	icon_off = "cigar_2off"

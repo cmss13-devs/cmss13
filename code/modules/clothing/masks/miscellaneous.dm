@@ -38,6 +38,10 @@
 	name = "Snorkel"
 	desc = "For the Swimming Savant."
 	icon_state = "snorkel"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inv_hide = HIDEFACE
 	flags_armor_protection = 0
 
@@ -46,6 +50,10 @@
 	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD

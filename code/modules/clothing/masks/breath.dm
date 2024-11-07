@@ -3,6 +3,10 @@
 	name = "breath mask"
 	icon_state = "breath"
 	item_state = "breath"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
@@ -48,6 +52,10 @@
 	desc = "A close-fitting device that instantly heats or cools down air when you inhale so it doesn't damage your lungs."
 	icon_state = "rebreather"
 	item_state = "rebreather"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	w_class = SIZE_SMALL
 	flags_armor_protection = 0
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
@@ -58,6 +66,10 @@
 	desc = "The face of your nightmares. Or at least that's how you imagined it'd be. Additionally protects against the cold."
 	icon_state = "blue_skull_balaclava"
 	item_state = "blue_skull_balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
@@ -74,6 +86,10 @@
 	desc = "A close-fitting cap that covers the top, back, and sides of the head. Can also be adjusted to cover the lower part of the face so it keeps the user warm in harsh conditions."
 	icon_state = "coif"
 	item_state = "coif"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
@@ -128,6 +144,10 @@
 	desc = "A tactical wrap used by soldiers to conceal their face."
 	icon_state = "scarf_gray"
 	item_state = "scarf_gray"
+	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+	)
 	original_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
@@ -201,6 +221,10 @@
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
+	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+	)
 	w_class = SIZE_SMALL
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
@@ -231,6 +255,10 @@
 	desc = "A close-fitting mask that can be connected to an air supply."
 	icon_state = "owlf_mask"
 	item_state = "owlf_mask"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL

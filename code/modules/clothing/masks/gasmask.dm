@@ -6,7 +6,7 @@
 	item_state = "gas_alt"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
 	)
 	flags_inventory = COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
@@ -42,7 +42,7 @@
 	icon_state = "pmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
 	)
 	anti_hug = 3
 	vision_impair = VISION_IMPAIR_NONE
@@ -64,7 +64,7 @@
 	icon_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 
 /obj/item/clothing/mask/gas/pmc/upp
@@ -72,19 +72,13 @@
 	icon_state = "upp_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
 	)
 
 /obj/item/clothing/mask/gas/pmc/leader
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_mask"
-
-/obj/item/clothing/mask/gas/bear
-	name = "tactical balaclava"
-	desc = "A superior balaclava worn by the Iron Bears."
-	icon_state = "bear_mask"
-	anti_hug = 2
 
 /obj/item/clothing/mask/gas/swat
 	name = "\improper SWAT mask"
@@ -98,6 +92,10 @@
 	desc = "A true prankster's facial attire. A clown is incomplete without their wig and mask."
 	icon_state = "clown"
 	item_state = "clown_hat"
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi'
+	)
 	vision_impair = VISION_IMPAIR_NONE
 	black_market_value = 25
 
@@ -105,9 +103,12 @@
 	name = "fake mustache"
 	desc = "It is almost perfect."
 	icon_state = "souto_man"
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi'
+	)
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
-// flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
 
 //=ROYAL MARINES=\\
@@ -116,4 +117,8 @@
 	name = "\improper L7 gasmask"
 	desc = "The L7 Gasmask used by members of the three world empires royal marines commando."
 	icon_state = "rmc_mask"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi'
+	)
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE

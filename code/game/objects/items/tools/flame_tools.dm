@@ -652,6 +652,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/electronic_cigarette
 	name = "electronic cigarette"
 	desc = "An electronic cigarette by The American Tobacco Company, who also made Lucky Strikes."
+	icon = 'icons/obj/items/smoking/cigarettes.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+	)
 	icon_state = "cigoff"
 	item_state = "cigoff"
 	w_class = SIZE_SMALL
@@ -678,6 +682,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/electronic_cigarette/cigar
 	name = "electronic cigar"
 	desc = "A luxury electronic cigar, with its labels scratched off. Where could this be from?"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	icon_state = "cigar_off"
 	item_state = "cigar_off"
 	icon_on = "cigar_on"

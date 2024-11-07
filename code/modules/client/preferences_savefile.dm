@@ -266,6 +266,7 @@
 	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_mask_type"] >> predator_mask_type
+	S["pred_accessory_type"] >> predator_accessory_type
 	S["pred_armor_type"] >> predator_armor_type
 	S["pred_boot_type"] >> predator_boot_type
 	S["pred_mask_mat"] >> predator_mask_material
@@ -351,6 +352,7 @@
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
+	predator_accessory_type = sanitize_integer(predator_accessory_type,0,1000000, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type = sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
@@ -466,6 +468,7 @@
 	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_mask_type"] << predator_mask_type
+	S["pred_accessory_type"] << predator_accessory_type
 	S["pred_armor_type"] << predator_armor_type
 	S["pred_boot_type"] << predator_boot_type
 	S["pred_mask_mat"] << predator_mask_material

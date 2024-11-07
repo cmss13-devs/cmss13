@@ -26,7 +26,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ah" = (
 /obj/item/stool,
 /turf/open/floor/engine/cult,
@@ -56,7 +56,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ar" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle/west)
@@ -186,7 +186,10 @@
 	dir = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
+"cr" = (
+/turf/open/gm/dirt,
+/area/yautja_grounds/temple/entrance)
 "cA" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -213,7 +216,7 @@
 /area/yautja_grounds/jungle/north)
 "cW" = (
 /turf/open/gm/coast/south,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "cZ" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -225,7 +228,7 @@
 /area/yautja_grounds/jungle)
 "dd" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "di" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
@@ -239,7 +242,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "dO" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder/north,
@@ -281,7 +284,7 @@
 "eG" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "eM" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -310,13 +313,13 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "fb" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/jungle)
 "fc" = (
 /turf/open/gm/coast/beachcorner/south_west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "fk" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -333,7 +336,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "fm" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -388,7 +391,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "fT" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -475,7 +478,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "gN" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
@@ -508,7 +511,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "hw" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -537,7 +540,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ig" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -584,7 +587,7 @@
 	icon_tag = "light_2"
 	},
 /turf/closed/wall/rock/brown,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "jd" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -607,7 +610,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "jo" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -628,7 +631,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ju" = (
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle)
@@ -640,7 +643,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "jB" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -657,7 +660,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "jF" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
@@ -699,7 +702,7 @@
 	anchored = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "kn" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -777,7 +780,7 @@
 	icon_tag = "light_2"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "kZ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirt,
@@ -805,14 +808,17 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
+"lr" = (
+/turf/closed/wall/rock/brown,
+/area/yautja_grounds/temple/entrance)
 "lH" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1;
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "lI" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/cult/hunting_grounds,
@@ -833,7 +839,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "lP" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -945,7 +951,7 @@
 /area/yautja_grounds/south)
 "nq" = (
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ns" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -980,7 +986,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "nH" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -1027,13 +1033,13 @@
 	anchored = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "op" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	color = "#2e1e21"
 	},
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "oq" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	color = "#2e1e21"
@@ -1072,7 +1078,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "oV" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/jungle/west)
@@ -1086,7 +1092,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ph" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1;
@@ -1133,7 +1139,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "pJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/desert,
@@ -1217,7 +1223,10 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
+"qz" = (
+/turf/closed/wall/cult/hunting_grounds,
+/area/yautja_grounds/temple/entrance)
 "qC" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4;
@@ -1227,7 +1236,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "qD" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 24
@@ -1260,7 +1269,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "rd" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -1269,7 +1278,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "rf" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1315,14 +1324,14 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "rX" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8;
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "sb" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/yautja_grounds/south)
@@ -1331,7 +1340,7 @@
 /area/yautja_grounds/south)
 "se" = (
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "sf" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -1348,7 +1357,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/beachcorner/north_east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "sy" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle)
@@ -1379,7 +1388,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "sJ" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -1427,7 +1436,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "tu" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1532,7 +1541,7 @@
 "uB" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "uH" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/beachcorner/south_west,
@@ -1575,7 +1584,7 @@
 "vA" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "vG" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4;
@@ -1698,7 +1707,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "xe" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
@@ -1726,7 +1735,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "xu" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -1749,7 +1758,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "xy" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/yautja_grounds/jungle)
@@ -1791,7 +1800,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "xJ" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -1839,7 +1848,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "yf" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
@@ -1860,14 +1869,14 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "yl" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1;
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ym" = (
 /turf/open/gm/dirt,
 /area/yautja_grounds/caves)
@@ -1888,7 +1897,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "yM" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -1906,7 +1915,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "yO" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
@@ -1917,7 +1926,7 @@
 /area/yautja_grounds/jungle/north)
 "yV" = (
 /turf/open/gm/coast/beachcorner2/south_west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "zd" = (
 /turf/open/gm/dirt,
 /area/yautja_grounds/south)
@@ -2027,7 +2036,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Aq" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass/grass1,
@@ -2085,7 +2094,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Bz" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/yautja_grounds/south)
@@ -2147,7 +2156,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Cv" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
@@ -2162,7 +2171,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "CE" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja_grounds/jungle)
@@ -2176,7 +2185,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "CK" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4;
@@ -2214,7 +2223,7 @@
 	luminosity = 2
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Da" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -2303,7 +2312,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Eh" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/flora/jungle/vines{
@@ -2377,7 +2386,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Fc" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -2400,7 +2409,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Fo" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
@@ -2455,7 +2464,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Gf" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -2472,14 +2481,14 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Gj" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Gk" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/yautja_grounds/jungle)
@@ -2534,7 +2543,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "HE" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/heavy,
@@ -2597,14 +2606,14 @@
 /area/yautja_grounds/south)
 "Ij" = (
 /turf/open/gm/coast/beachcorner/south_east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Il" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8;
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Ir" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_x = -28
@@ -2618,14 +2627,14 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "IC" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4;
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "IU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
@@ -2640,7 +2649,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Jl" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -2665,7 +2674,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Jr" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -2740,7 +2749,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Kf" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -2848,7 +2857,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "LF" = (
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner,
 /turf/open/gm/grass/grass1,
@@ -2887,7 +2896,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "My" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -2914,7 +2923,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/east,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "MS" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines{
@@ -3002,7 +3011,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/coast/beachcorner/north_west,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Of" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -3025,7 +3034,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/river,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "OC" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirt,
@@ -3095,7 +3104,7 @@
 "Pr" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/cult/hunting_grounds,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Py" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -3141,7 +3150,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Qb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -3175,7 +3184,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "QF" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -3196,7 +3205,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "QS" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
@@ -3319,7 +3328,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Sl" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -3359,7 +3368,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "SP" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/yautja_grounds/jungle/east)
@@ -3372,7 +3381,7 @@
 /area/yautja_grounds/jungle/west)
 "SU" = (
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "SW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/closed/wall/strata_ice/jungle,
@@ -3387,7 +3396,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Th" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/engine/cult,
@@ -3405,7 +3414,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "To" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja_grounds/south)
@@ -3451,7 +3460,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "TR" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	color = "#2e1e21"
@@ -3481,7 +3490,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Uu" = (
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle)
@@ -3529,7 +3538,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Vl" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -3639,7 +3648,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Wi" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8;
@@ -3784,7 +3793,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Xo" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1;
@@ -3814,7 +3823,7 @@
 	anchored = 1
 	},
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Xr" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1;
@@ -3915,7 +3924,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "XX" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/rock/brown,
@@ -4004,7 +4013,7 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/squareswood,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "YZ" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -4012,7 +4021,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "Zm" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/yautja_grounds/jungle)
@@ -4033,7 +4042,7 @@
 "ZA" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ZG" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines{
@@ -4050,7 +4059,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/jungle/west)
+/area/yautja_grounds/temple/entrance)
 "ZM" = (
 /turf/open/floor/corsat/squareswood,
 /area/yautja_grounds/temple)
@@ -4791,7 +4800,7 @@ oV
 oV
 oV
 oV
-mD
+qz
 oV
 oV
 oV
@@ -4883,21 +4892,21 @@ gN
 lI
 zn
 Kn
-oV
-mD
-mD
-mD
-mD
-mD
-mD
-mD
+lr
+qz
+qz
+qz
+qz
+qz
+qz
+qz
 xt
 Il
 nq
-oV
-oV
-oV
-oV
+lr
+lr
+lr
+lr
 oV
 oV
 oV
@@ -4982,7 +4991,7 @@ zn
 zn
 Kn
 Kn
-mD
+qz
 Pr
 se
 se
@@ -4994,9 +5003,9 @@ Gj
 yl
 vA
 nq
-oV
-oV
-oV
+lr
+lr
+lr
 oV
 oV
 oV
@@ -5081,7 +5090,7 @@ Kn
 Kn
 Kn
 zn
-mD
+qz
 SU
 Sk
 Sk
@@ -5094,8 +5103,8 @@ yl
 nq
 uB
 nq
-oV
-oV
+lr
+lr
 oV
 oV
 oV
@@ -5194,7 +5203,7 @@ nq
 nq
 nq
 cW
-XC
+cr
 XC
 XC
 oV
@@ -5293,7 +5302,7 @@ pG
 Fn
 rX
 Ij
-XC
+cr
 XC
 XC
 XC
@@ -5674,7 +5683,7 @@ eM
 Xr
 gN
 gN
-zn
+qz
 dd
 XT
 dd
@@ -6085,7 +6094,7 @@ pc
 nD
 gJ
 fc
-XC
+cr
 XC
 XC
 XC
@@ -6269,7 +6278,7 @@ Kn
 Kn
 Kn
 zn
-mD
+qz
 SU
 QE
 QE
@@ -6368,7 +6377,7 @@ zn
 zn
 Kn
 Kn
-mD
+qz
 Pr
 se
 se
@@ -6467,21 +6476,21 @@ fv
 zn
 zn
 Kn
-mD
-mD
-mD
-mD
-mD
-mD
-mD
-mD
+qz
+qz
+qz
+qz
+qz
+qz
+qz
+qz
 CI
 dL
 nq
 nq
 vA
 nq
-oV
+lr
 oV
 pT
 XC
@@ -6566,21 +6575,21 @@ yh
 mE
 zn
 Kn
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-mD
-oV
-oV
-oV
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+qz
+lr
+lr
+lr
 nq
 nq
-oV
-oV
+lr
+lr
 oV
 XC
 XC
@@ -6665,21 +6674,21 @@ ZM
 gh
 zn
 Kn
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 XC
 IU
 XC
@@ -6764,21 +6773,21 @@ ZM
 gh
 zn
 zn
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 jb
-oV
-oV
+lr
+lr
 XC
 XC
 XC
@@ -6863,21 +6872,21 @@ kn
 ny
 gw
 zn
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
-oV
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 kY
-XC
-oV
-oV
-XC
-XC
+cr
+lr
+lr
+cr
+cr
 XC
 XC
 IU

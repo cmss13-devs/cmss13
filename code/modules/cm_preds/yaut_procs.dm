@@ -278,6 +278,11 @@
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_CAVE
 
+/area/yautja_grounds/temple/entrance
+	name = "\improper Yautja Hunting Grounds Temple"
+	icon_state = "bluenew"
+	ambience_exterior = AMBIENCE_JUNGLE
+
 ///TP Areas
 
 /area/yautja_grounds/prep_room

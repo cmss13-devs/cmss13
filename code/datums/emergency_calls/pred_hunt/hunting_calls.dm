@@ -18,7 +18,7 @@
 	max_upp = 1
 	max_royal_marines = 1
 
-/datum/emergency_call/pred/create_member(datum/mind/man, turf/override_spawn_loc)
+/datum/emergency_call/pred/spawn_candidates(datum/mind/man, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -59,6 +59,7 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+	message_all_yautja("Let the hunt begin!")
 
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds multi Faction Medium"
@@ -100,7 +101,7 @@
 	max_xeno_t3 = 1
 	max_xeno_t2 = 1
 
-/datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
+/datum/emergency_call/pred/xeno/spawn_candidates(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 	var/mob/current_mob = player.current
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -133,6 +134,7 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+	message_all_yautja("Let the hunt begin!")
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds Xenos Medium"

@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "sebb grenades can no longer degroin synths through EMPs, which was unintended"

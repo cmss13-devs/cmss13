@@ -233,6 +233,9 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	name = "hunt spawner"
 
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	name = "hunt spawner xeno"
+
 /area/yautja_grounds
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"

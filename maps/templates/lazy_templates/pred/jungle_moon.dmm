@@ -743,6 +743,10 @@
 "kC" = (
 /turf/open/gm/dirtgrassborder/desert3,
 /area/yautja_grounds/south)
+"kJ" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
+/turf/open/gm/dirt,
+/area/yautja_grounds/caves)
 "kM" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/yautja_grounds/jungle/west)
@@ -1177,6 +1181,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/yautja_grounds/south)
+"qk" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
+/turf/open/gm/dirt,
+/area/yautja_grounds/jungle)
 "qm" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1;
@@ -10429,7 +10437,7 @@ oh
 hj
 Cl
 ju
-ju
+qk
 ju
 ju
 ju
@@ -13264,7 +13272,7 @@ ym
 ym
 ym
 ym
-ym
+kJ
 ym
 gt
 ym
@@ -13472,7 +13480,7 @@ ym
 ym
 ym
 ym
-ym
+kJ
 ym
 ym
 ym
@@ -14361,7 +14369,7 @@ ym
 ym
 ym
 ym
-ym
+kJ
 gt
 ym
 ym
@@ -14452,7 +14460,7 @@ ym
 ym
 ym
 ym
-ym
+kJ
 ym
 ym
 ym

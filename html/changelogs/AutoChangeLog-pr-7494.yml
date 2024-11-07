@@ -1,0 +1,8 @@
+author: "Nomoresolvalou, Thwomper"
+delete-after: True
+changes:
+  - rscadd: "Adds a new predator mask accessory"
+  - ui: "added a selection for mask accessories in yautja prefs"
+  - bugfix: "fixes one speicifc yautja mask having no sprite onmob"
+  - code_imp: "infrastructure for adding in new mask accessories"
+  - imageadd: "added Thwomp's cool as hell horn sprites"

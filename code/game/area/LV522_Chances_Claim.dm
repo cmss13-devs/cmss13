@@ -118,6 +118,7 @@
 /area/lv522/outdoors/colony_streets/containers
 	name = "Colony Streets - Container Yard"
 	icon_state = "yellow"
+	unoviable_timer = FALSE
 
 /area/lv522/outdoors/colony_streets/windbreaker
 	name = "Colony Windbreakers"

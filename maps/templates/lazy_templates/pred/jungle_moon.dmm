@@ -137,6 +137,10 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/jungle/east)
+"bD" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/north)
 "bE" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -2049,13 +2053,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja_grounds/south)
-"BQ" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
-/turf/open/gm/grass/grass1,
-/area/yautja_grounds/jungle/north)
 "BR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -2510,6 +2507,10 @@
 "HJ" = (
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room)
+"HK" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/south)
 "HL" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines,
@@ -3087,6 +3088,10 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle)
+"Qx" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle/east)
 "Qz" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -3683,6 +3688,10 @@
 	},
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple)
+"Xk" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle)
 "Xl" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines/heavy,
@@ -9240,7 +9249,7 @@ ih
 QF
 us
 yO
-BQ
+oG
 ih
 ih
 ih
@@ -9776,7 +9785,7 @@ uS
 vN
 aH
 WA
-WA
+HK
 WA
 QD
 QD
@@ -10553,7 +10562,7 @@ fb
 hN
 hN
 iV
-hN
+Xk
 iV
 sf
 fb
@@ -10721,7 +10730,7 @@ us
 PT
 PT
 jo
-ih
+oG
 ih
 ih
 ih
@@ -10811,7 +10820,7 @@ PT
 ih
 jo
 ih
-ih
+oG
 ih
 GJ
 us
@@ -11748,7 +11757,7 @@ MW
 kT
 uL
 WA
-WA
+HK
 sB
 Ln
 uS
@@ -11921,7 +11930,7 @@ ih
 GJ
 ih
 ih
-ih
+oG
 ih
 ih
 PT
@@ -12205,7 +12214,7 @@ ih
 ih
 ih
 ih
-md
+bD
 bo
 HP
 us
@@ -12331,7 +12340,7 @@ jL
 bE
 uh
 uh
-uh
+Qx
 uh
 Yk
 Aq
@@ -12654,7 +12663,7 @@ XQ
 WA
 WA
 WA
-WA
+HK
 WA
 WA
 Qz
@@ -13317,7 +13326,7 @@ lQ
 uh
 lQ
 lQ
-uh
+Qx
 uh
 uh
 Yk
@@ -13403,7 +13412,7 @@ Nv
 Aq
 uh
 uh
-uh
+Qx
 ec
 uh
 uh

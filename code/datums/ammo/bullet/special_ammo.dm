@@ -111,7 +111,7 @@
 
 /datum/ammo/bullet/machinegun/setup_faction_clash_values()
 	.=..()
-	accurate_range = 12
+	accurate_range = 12 //we revert the reduction
 
 /datum/ammo/bullet/machinegun/set_bullet_traits()
 	. = ..()

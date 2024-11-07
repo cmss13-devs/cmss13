@@ -202,6 +202,10 @@
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_3
 
+/datum/ammo/bullet/rifle/type71/setup_hvh_values()
+	penetration = ARMOR_PENETRATION_TIER_1
+	. = ..()
+
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
 

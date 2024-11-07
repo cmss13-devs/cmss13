@@ -27,6 +27,8 @@
 /datum/body_picker/ui_data(mob/user)
 	. = ..()
 
+	.["body_presentation"] = get_gender_name(user.client.prefs.get_body_presentation())
+
 	.["body_type"] = GLOB.body_type_list[user.client.prefs.body_type].icon_name
 	.["skin_color"] = GLOB.skin_color_list[user.client.prefs.skin_color].icon_name
 	.["body_size"] = GLOB.body_size_list[user.client.prefs.body_size].icon_name
@@ -54,6 +56,17 @@
 				return
 
 			prefs.skin_color = params["name"]
+
+		if("body_presentation")
+			var/picked = params["picked"]
+
+			switch(picked)
+				if("M")
+					prefs.body_presentation = MALE
+				if("F")
+					prefs.body_presentation = FEMALE
+				else
+					return
 
 	prefs.ShowChoices(ui.user)
 	return TRUE

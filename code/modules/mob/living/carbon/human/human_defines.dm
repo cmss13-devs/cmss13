@@ -29,6 +29,7 @@
 	var/skin_color = "Pale 2" // Skin color
 	var/body_size = "Average" // Body Size
 	var/body_type = "Lean" // Body Buffness
+	var/body_presentation
 
 	//Skin color
 	var/r_skin = 0

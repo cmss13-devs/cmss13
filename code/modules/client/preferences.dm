@@ -129,6 +129,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/be_random_body = 0 //whether we have a random appearance every round
 	var/gender = MALE //gender of character (well duh)
+	var/body_presentation
+
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
@@ -2039,6 +2041,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
+	character.body_presentation = get_body_presentation()
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2120,6 +2123,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
+	character.body_presentation = get_body_presentation()
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2318,6 +2322,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 /datum/preferences/proc/tutorial_savestring_to_list(savestring)
 	completed_tutorials = splittext(savestring, ";")
 	return completed_tutorials
+
+/datum/preferences/proc/get_body_presentation()
+	return body_presentation || gender
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

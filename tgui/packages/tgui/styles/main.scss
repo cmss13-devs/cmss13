@@ -50,6 +50,7 @@
 // Interfaces
 @include meta.load-css('./interfaces/BodyPicker.scss');
 @include meta.load-css('./interfaces/Changelog.scss');
+@include meta.load-css('./interfaces/ColorPicker.scss');
 @include meta.load-css('./interfaces/ListInput.scss');
 @include meta.load-css('./interfaces/CasSim.scss');
 @include meta.load-css('./interfaces/AlertModal.scss');
@@ -62,6 +63,7 @@
 @include meta.load-css('./interfaces/DropshipWeapons.scss');
 @include meta.load-css('./interfaces/ElevatorControl.scss');
 @include meta.load-css('./interfaces/ExperimentConfigure.scss');
+@include meta.load-css('./interfaces/HairPicker.scss');
 @include meta.load-css('./interfaces/MarkMenu.scss');
 @include meta.load-css('./interfaces/MedalsViewer.scss');
 @include meta.load-css('./interfaces/NavigationShuttle.scss');

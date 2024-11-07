@@ -281,3 +281,4 @@
 	name = "\improper Jungle Moon"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_CAVE
+	block_game_interaction = FALSE

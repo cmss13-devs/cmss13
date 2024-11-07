@@ -142,3 +142,23 @@
   - maptweak: moved some stuff around in the liquor cabinet to accommodate the MRE
       being placed into it
   - maptweak: moved some stuff around on the liaison's desk to make it look cleaner
+2024-11-07:
+  Drathek:
+  - balance: Fix XvX landmarks being used for roundstart oviable locations
+  - balance: Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent
+      Dam, Chances's Claim, and Fiorina
+  - bugfix: XvX now makes all areas oviable
+  Joe Lampost:
+  - code_imp: Makes using LOOC use your real name instead of unknown
+  - code_imp: Sding preds now have their name shown instead of unknown
+  Joelampost:
+  - rscadd: Added first names for spawned preds
+  - rscadd: Added last names for spawned preds
+  Nomoresolvalou:
+  - rscadd: Hunters can now put their bone trophies on their armor to have it show
+      up there instead of on their mesh.
+  TheDonkified:
+  - code_imp: Xeno ability names in chat and stats page changed to match the names
+      for xeno ability buttons
+  VileBeggar:
+  - bugfix: Memorial ghosts will now face the user instead of facing south.

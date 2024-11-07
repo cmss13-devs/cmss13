@@ -213,6 +213,10 @@
 
 /obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
 	. = ..()
+
+	var/area/area = get_area(src)
+	area.unoviable_timer = FALSE
+
 	GLOB.queen_spawns += src
 
 /obj/effect/landmark/queen_spawn/Destroy()
@@ -232,15 +236,11 @@
 	return ..()
 
 /obj/effect/landmark/xeno_hive_spawn
-	name = "xeno hive spawn"
+	name = "xeno vs xeno hive spawn"
 	icon_state = "hive_spawn"
 
 /obj/effect/landmark/xeno_hive_spawn/Initialize(mapload, ...)
 	. = ..()
-
-	var/area/area = get_area(src)
-	area.unoviable_timer = FALSE
-
 	GLOB.xeno_hive_spawns += src
 
 /obj/effect/landmark/xeno_hive_spawn/Destroy()

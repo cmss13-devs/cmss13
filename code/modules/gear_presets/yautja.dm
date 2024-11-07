@@ -44,7 +44,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
-	var/final_name = "Le'pro"
+	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.gender = MALE
 	new_human.age = 100
 	new_human.flavor_text = ""
@@ -57,7 +57,7 @@
 		new_human.flavor_text = new_human.client.prefs.predator_flavor_text
 		new_human.flavor_texts["general"] = new_human.flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			final_name = "Le'pro"
+			final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.change_real_name(new_human, final_name)
 
 // YOUNG BLOOD

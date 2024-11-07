@@ -251,11 +251,13 @@
 	name = "Kutjevo - Abandoned Construction Interior"
 	ceiling = CEILING_METAL
 	icon_state = "construction_int"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/foremans_office
 	name = "Kutjevo - Foreman's Office"
 	ceiling = CEILING_METAL
 	icon_state = "foremans"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/botany_bay_int
 	name = "Kutjevo - Space Weed Farm Interior"
@@ -313,3 +315,4 @@
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	unoviable_timer = FALSE

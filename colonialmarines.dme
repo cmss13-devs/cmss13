@@ -762,6 +762,7 @@
 #include "code\game\area\prison.dm"
 #include "code\game\area\Prison_Station_FOP.dm"
 #include "code\game\area\prison_v3_fiorina.dm"
+#include "code\game\area\rostock.dm"
 #include "code\game\area\shiva.dm"
 #include "code\game\area\shuttles.dm"
 #include "code\game\area\space_station_13_areas.dm"

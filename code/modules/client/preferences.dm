@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Body Muscularity:</b> [body_type]<br>"
 			dat += "<b>Edit Body:</b> <a href='?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
 
-			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
+			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits'><b>Character Traits</b></a>"
 			dat += "<br>"
 
 			dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
@@ -1135,44 +1135,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				winset(user, null, "input.focus=false")
 
 		if("traits")
-			switch(href_list["task"])
-				if("open")
-					traits_picker.tgui_interact(user)
-
-					open_character_traits(user)
-					return TRUE
-				if("change_slot")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					open_character_traits(user, trait_group)
-					return TRUE
-				if("give_trait")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-					character_trait?.try_give_trait(src)
-					open_character_traits(user, trait_group)
-					if(character_trait.refresh_choices)
-						ShowChoices(user)
-					if(character_trait.refresh_mannequin)
-						update_preview_icon()
-					return TRUE
-				if("remove_trait")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-					character_trait?.try_remove_trait(src)
-					open_character_traits(user, trait_group)
-					if(character_trait.refresh_choices)
-						ShowChoices(user)
-					if(character_trait.refresh_mannequin)
-						update_preview_icon()
-					return TRUE
+			traits_picker.tgui_interact(user)
 
 		if("toggle_job_gear")
 			show_job_gear = !show_job_gear
@@ -2259,52 +2222,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	alert("The key sequence is [key_buf].")
 	return key_buf
-
-/datum/preferences/proc/open_character_traits(mob/user, character_trait_group)
-	if(!read_traits)
-		read_traits = TRUE
-		for(var/trait in traits)
-			var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-			trait_points -= character_trait.cost
-	var/dat = "<body onselectstart='return false;'>"
-	dat += "<center>"
-	var/datum/character_trait_group/current_trait_group
-	var/i = 1
-	for(var/trait_group in GLOB.character_trait_groups)
-		var/datum/character_trait_group/CTG = GLOB.character_trait_groups[trait_group]
-		if(!CTG.group_visible)
-			continue
-		var/button_class = ""
-		if(!character_trait_group && i == 1 || character_trait_group == trait_group)
-			button_class = "class='linkOn'"
-			current_trait_group = CTG
-		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=traits;task=change_slot;trait_group=[trait_group]' [button_class]>"
-		dat += CTG.trait_group_name
-		dat += "</a>"
-		i++
-	dat += "</center>"
-	dat += "<table>"
-	for(var/trait in current_trait_group.traits)
-		var/datum/character_trait/character_trait = trait
-		if(!character_trait.applyable)
-			continue
-		var/has_trait = (character_trait.type in traits)
-		var/task = has_trait ? "remove_trait" : "give_trait"
-		var/button_class = has_trait ? "class='linkOn'" : ""
-		dat += "<tr><td width='40%'>"
-		if(has_trait || character_trait.can_give_trait(src))
-			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[character_trait.type];trait_group=[current_trait_group.type]' [button_class]>"
-			dat += "[character_trait.trait_name]"
-			dat += "</a>"
-		else
-			dat += "<i>[character_trait.trait_name]</i>"
-		var/cost_text = character_trait.cost ? " ([character_trait.cost] points)" : ""
-		dat += "</td><td>[character_trait.trait_desc][cost_text]</td></tr>"
-		dat += ""
-	dat += "</table>"
-	dat += "</body>"
-	show_browser(user, dat, "Character Traits", "character_traits")
-	update_preview_icon(TRUE)
 
 /// Converts a client's list of completed tutorials into a string for saving
 /datum/preferences/proc/tutorial_list_to_savestring()

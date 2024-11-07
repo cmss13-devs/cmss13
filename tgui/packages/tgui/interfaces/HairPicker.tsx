@@ -58,7 +58,7 @@ export const HairPicker = () => {
 
   let height = 340;
   if (facial_hair_styles.length > 1) {
-    height = height + 300;
+    height = height + 310;
   }
 
   if (gradient_available) {
@@ -104,7 +104,7 @@ export const HairPicker = () => {
             action="facial_hair"
           />
         )}
-        {gradient_available && (
+        {!!gradient_available && (
           <Section
             title="Gradient"
             buttons={

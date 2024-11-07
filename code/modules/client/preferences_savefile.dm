@@ -648,7 +648,7 @@
 	if(!organ_data)
 		organ_data = list()
 
-	gear = sanitize_list(gear)
+	gear = sanitize_gear(gear, owner)
 
 	traits = sanitize_list(traits)
 	read_traits = FALSE

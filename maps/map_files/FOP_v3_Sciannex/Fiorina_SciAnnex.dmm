@@ -95,11 +95,6 @@
 "aeb" = (
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/fiorina/tumor/servers)
-"aej" = (
-/obj/item/weapon/gun/rifle/m16,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/damaged3,
-/area/fiorina/station/security)
 "aeo" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -878,12 +873,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/telecomm/lz1_cargo)
-"aFQ" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "gibmid3"
-	},
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
 "aFZ" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
@@ -2632,6 +2621,13 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/chapel)
+"bTf" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/kitchen,
+/area/fiorina/station/research_cells/west)
 "bTo" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/space,
@@ -4719,19 +4715,6 @@
 "dBZ" = (
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/fiorina/station/flight_deck)
-"dCg" = (
-/obj/structure/bed/chair,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip{
-	icon_state = "2"
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	icon_state = "4"
-	},
-/obj/item/prop/helmetgarb/flair_initech,
-/obj/effect/landmark/corpsespawner/ua_riot,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
 "dCn" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -7246,13 +7229,6 @@
 /obj/item/poster,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
-"fwt" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecaldir"
-	},
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
 "fwY" = (
 /obj/structure/barricade/metal/wired{
 	health = 250;
@@ -9172,11 +9148,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/park)
-"gTc" = (
-/obj/item/storage/belt/quackers,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/gm/river/darkred_pool,
-/area/fiorina/station/park)
 "gTi" = (
 /turf/open/floor/prison/blue,
 /area/fiorina/station/chapel)
@@ -9235,11 +9206,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/flight_deck)
-"gWg" = (
-/obj/structure/powerloader_wreckage,
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/research_cells/basketball)
 "gWq" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_1"
@@ -9665,6 +9631,31 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
+"hls" = (
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/invuln{
+	desc = "It is slimy.";
+	dir = 4;
+	icon = 'icons/mob/xenos/castes/tier_1/sentinel.dmi';
+	icon_state = "Normal Sentinel Knocked Down";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -22;
+	pixel_y = 8
+	},
+/obj/structure/prop/invuln{
+	desc = "He knows something that you don't.";
+	dir = 4;
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
+	icon_state = "Larva Sleeping";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = 8;
+	pixel_y = -18
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
 "hlB" = (
 /obj/item/tool/kitchen/knife,
 /turf/open/floor/prison,
@@ -11506,6 +11497,19 @@
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring/reactor)
+"iAw" = (
+/obj/structure/bed/chair,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "4"
+	},
+/obj/item/prop/helmetgarb/flair_initech,
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "iAA" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gib5"
@@ -11611,6 +11615,10 @@
 /obj/structure/platform_decoration,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"iEw" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/research_cells/west)
 "iEA" = (
 /obj/structure/closet/crate/miningcar{
 	name = "\improper materials storage bin"
@@ -13091,6 +13099,11 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
+"jLY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "jMf" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 5;
@@ -13115,6 +13128,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/fiorina/tumor/ship)
+"jMM" = (
+/obj/structure/powerloader_wreckage,
+/obj/effect/decal/cleanable/blood/gibs/robot/limb,
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/research_cells/basketball)
 "jNi" = (
 /obj/item/ammo_casing{
 	dir = 2;
@@ -13951,6 +13971,11 @@
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
+"kuR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/lowsec)
 "kvg" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -16362,10 +16387,6 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
-"mlg" = (
-/obj/effect/landmark/corpsespawner/ua_riot/burst,
-/turf/open/floor/prison/whitepurple/north,
-/area/fiorina/station/research_cells/west)
 "mlu" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 1
@@ -16714,11 +16735,6 @@
 /obj/item/tool/plantspray/pests,
 /turf/open/floor/prison/blue_plate/east,
 /area/fiorina/station/botany)
-"mxs" = (
-/obj/item/storage/belt/quackers,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/gm/river/darkred_pool,
-/area/fiorina/station/park)
 "mxQ" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
@@ -16882,12 +16898,6 @@
 	},
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
-"mDO" = (
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/turf/open/floor/prison/yellow/southeast,
-/area/fiorina/station/lowsec)
 "mDS" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -16911,6 +16921,13 @@
 /obj/structure/machinery/computer/secure_data,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"mEN" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/floor_marked/west,
+/area/fiorina/station/research_cells/west)
 "mEO" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
@@ -17532,6 +17549,14 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"neJ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir"
+	},
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "neT" = (
 /obj/item/tool/wet_sign,
 /turf/open/floor/prison,
@@ -18471,21 +18496,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/ice_lab)
-"nMZ" = (
-/obj/structure/ice/thin/indestructible,
-/obj/structure/prop/invuln{
-	desc = "Its eyes follow you around through the ice.";
-	dir = 4;
-	icon = 'icons/mob/xenos/castes/tier_4/queen.dmi';
-	icon_state = "Normal Queen Knocked Down";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = -15;
-	pixel_y = -16
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/ice/noweed,
-/area/fiorina/tumor/ice_lab)
 "nNJ" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating/prison,
@@ -18663,31 +18673,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
-"nUr" = (
-/obj/structure/ice/thin/indestructible,
-/obj/structure/prop/invuln{
-	desc = "It is slimy.";
-	dir = 4;
-	icon = 'icons/mob/xenos/castes/tier_1/sentinel.dmi';
-	icon_state = "Normal Sentinel Knocked Down";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = -22;
-	pixel_y = 8
-	},
-/obj/structure/prop/invuln{
-	desc = "He knows something that you don't.";
-	dir = 4;
-	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
-	icon_state = "Larva Sleeping";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = 8;
-	pixel_y = -18
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/ice/noweed,
-/area/fiorina/tumor/ice_lab)
 "nUJ" = (
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/plating/prison,
@@ -19099,51 +19084,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
-"okF" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/ice/thin/indestructible,
-/obj/structure/prop/invuln{
-	desc = "The underside softly pulses.";
-	dir = 4;
-	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
-	icon_state = "facehugger_thrown";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = -22;
-	pixel_y = -10
-	},
-/obj/structure/prop/invuln{
-	desc = "The underside softly pulses.";
-	dir = 4;
-	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
-	icon_state = "facehugger_thrown";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = 22;
-	pixel_y = 8
-	},
-/obj/structure/prop/invuln{
-	desc = "The underside softly pulses.";
-	dir = 4;
-	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
-	icon_state = "facehugger_thrown";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = -22;
-	pixel_y = 8
-	},
-/obj/structure/prop/invuln{
-	desc = "The underside softly pulses.";
-	dir = 4;
-	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
-	icon_state = "facehugger_thrown";
-	layer = 2.5;
-	name = "frozen creature";
-	pixel_x = 22;
-	pixel_y = -10
-	},
-/turf/open/ice/noweed,
-/area/fiorina/station/research_cells/basketball)
 "okG" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -19201,6 +19141,11 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
+"olM" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/kitchen,
+/area/fiorina/station/research_cells/west)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/guestpass,
@@ -19315,6 +19260,10 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/prison/yellow/east,
 /area/fiorina/station/lowsec/east)
+"opz" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/research_cells/west)
 "opM" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison/bluefull,
@@ -19999,6 +19948,12 @@
 /obj/structure/bed/roller,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
+"oPG" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/damaged3,
+/area/fiorina/station/security)
 "oPN" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/plating/prison,
@@ -20975,6 +20930,10 @@
 	},
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec/showers_laundry)
+"pHb" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells/west)
 "pHh" = (
 /obj/structure/ice/thin/indestructible{
 	dir = 4;
@@ -21270,6 +21229,13 @@
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
+"pVB" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/yellow/southeast,
+/area/fiorina/station/lowsec)
 "pVD" = (
 /obj/structure/window/framed/prison,
 /turf/open/floor/prison/blue_plate/north,
@@ -23360,6 +23326,51 @@
 "rEx" = (
 /turf/open/floor/prison/whitepurplecorner/east,
 /area/fiorina/station/research_cells/east)
+"rEI" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/invuln{
+	desc = "The underside softly pulses.";
+	dir = 4;
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
+	icon_state = "facehugger_thrown";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -22;
+	pixel_y = -10
+	},
+/obj/structure/prop/invuln{
+	desc = "The underside softly pulses.";
+	dir = 4;
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
+	icon_state = "facehugger_thrown";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = 22;
+	pixel_y = 8
+	},
+/obj/structure/prop/invuln{
+	desc = "The underside softly pulses.";
+	dir = 4;
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
+	icon_state = "facehugger_thrown";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -22;
+	pixel_y = 8
+	},
+/obj/structure/prop/invuln{
+	desc = "The underside softly pulses.";
+	dir = 4;
+	icon = 'icons/mob/xenonids/xenonid_crab.dmi';
+	icon_state = "facehugger_thrown";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = 22;
+	pixel_y = -10
+	},
+/turf/open/ice/noweed,
+/area/fiorina/station/research_cells/basketball)
 "rFu" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/chapel_carpet/doubleside,
@@ -23978,6 +23989,13 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
+"sdn" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/whitepurple/southeast,
+/area/fiorina/station/research_cells/east)
 "sdr" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -24723,6 +24741,13 @@
 "sFd" = (
 /turf/open/floor/prison/greenblue/northeast,
 /area/fiorina/station/botany)
+"sFg" = (
+/obj/structure/bed/roller,
+/obj/item/bedsheet/green,
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells/west)
 "sFo" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
@@ -25956,6 +25981,21 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/oob)
+"tsu" = (
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/invuln{
+	desc = "Its eyes follow you around through the ice.";
+	dir = 4;
+	icon = 'icons/mob/xenos/castes/tier_4/queen.dmi';
+	icon_state = "Normal Queen Knocked Down";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -15;
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
 "tsA" = (
 /obj/structure/barricade/metal{
 	dir = 8;
@@ -28684,6 +28724,11 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrown2/north,
 /area/fiorina/station/park)
+"vxy" = (
+/obj/item/storage/belt/quackers,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/gm/river/darkred_pool,
+/area/fiorina/station/park)
 "vxz" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	explo_proof = 1;
@@ -29866,6 +29911,10 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
+"wvF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells/west)
 "wvH" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/chapel_carpet/doubleside,
@@ -30395,6 +30444,13 @@
 "wNX" = (
 /turf/open/floor/prison/green/west,
 /area/fiorina/station/chapel)
+"wOF" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibmid3"
+	},
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "wOG" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -46522,7 +46578,7 @@ oyT
 oWw
 oer
 pGK
-mxs
+vxy
 vhI
 fgM
 tkj
@@ -46947,7 +47003,7 @@ tkj
 oer
 pGK
 uxN
-gTc
+vxy
 sQL
 nWk
 oer
@@ -58367,7 +58423,7 @@ ngn
 wWs
 wWs
 gag
-aej
+oPG
 wWs
 wWs
 ihB
@@ -58509,7 +58565,7 @@ tja
 yhs
 hVI
 kYi
-aFQ
+wOF
 xxX
 iAA
 aRt
@@ -59105,7 +59161,7 @@ kpq
 mvp
 ddL
 ntH
-nMZ
+tsu
 oHX
 pFP
 iUr
@@ -61260,7 +61316,7 @@ tja
 mMh
 gFp
 ikL
-fwt
+neJ
 vBH
 bLM
 dOO
@@ -61437,7 +61493,7 @@ kpq
 mvp
 ddL
 ntH
-nUr
+hls
 oHX
 pFP
 blA
@@ -61772,7 +61828,7 @@ tir
 sCH
 ceC
 kIA
-psm
+jLY
 ubP
 pTj
 ubP
@@ -63862,7 +63918,7 @@ ioc
 ioc
 kqC
 qNF
-mDO
+pVB
 rjw
 btJ
 oLE
@@ -65277,7 +65333,7 @@ mvl
 sKu
 chx
 rDu
-dCg
+iAw
 hXN
 jmG
 xVw
@@ -65297,7 +65353,7 @@ wqs
 dVA
 cKa
 awU
-mgz
+iEw
 rLG
 aLX
 cKa
@@ -65508,7 +65564,7 @@ vUP
 dVA
 vUP
 cKa
-uKK
+sFg
 hjB
 rLG
 vUP
@@ -65720,8 +65776,8 @@ eow
 eow
 lFB
 oNC
-kjt
-mgz
+wvF
+opz
 rLG
 vUP
 lcE
@@ -66609,7 +66665,7 @@ wzE
 dHD
 voV
 sxc
-cxA
+kuR
 xbM
 xbM
 xbM
@@ -68473,7 +68529,7 @@ bOx
 cKa
 cKa
 wZt
-wZt
+mEN
 cKa
 jmG
 gHh
@@ -68679,13 +68735,13 @@ cKa
 oMw
 yhJ
 cKa
-mlg
+pHb
 mgz
 rLG
 cKa
 uyC
 dzB
-dzB
+bTf
 aYg
 cKa
 kjt
@@ -68897,7 +68953,7 @@ rLG
 cKa
 onW
 pZp
-dzB
+olM
 shh
 cKa
 kjt
@@ -73129,7 +73185,7 @@ mVE
 lzz
 cIa
 mVE
-sEK
+sdn
 cIa
 mVE
 gAD
@@ -74819,7 +74875,7 @@ rAw
 rAw
 vsr
 nmm
-gWg
+jMM
 nmm
 nmm
 wJd
@@ -75879,7 +75935,7 @@ jii
 jii
 mUd
 ubQ
-okF
+rEI
 fis
 lUs
 pqz

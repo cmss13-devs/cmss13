@@ -2,9 +2,9 @@
 	var/name
 	var/icon_name
 
-/datum/body_type/twig
+/datum/body_type/nomuscle
 	name = "No Muscles"
-	icon_name = "twig"
+	icon_name = "nomuscle"
 
 /datum/body_type/lean
 	name = "Lean"
@@ -12,7 +12,7 @@
 
 /datum/body_type/ripped
 	name = "Ripped"
-	icon_name = "buff"
+	icon_name = "ripped"
 
 /datum/body_size
 	var/name
@@ -20,7 +20,7 @@
 
 /datum/body_size/thin
 	name = "Thin"
-	icon_name = "sml"
+	icon_name = "thin"
 
 /datum/body_size/average
 	name = "Average"
@@ -28,4 +28,4 @@
 
 /datum/body_size/large
 	name = "Large"
-	icon_name = "lrg"
+	icon_name = "large"

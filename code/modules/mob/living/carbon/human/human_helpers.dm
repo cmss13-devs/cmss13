@@ -14,9 +14,9 @@
 		if(S.special_body_types)
 			switch(limb_name)
 				if("torso")
-					return "[skin_color]_torso_[body_size]_[body_type]"
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(gender)]"
 				if("chest")
-					return "[skin_color]_torso_[body_size]_[body_type]"
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(gender)]"
 				if("head")
 					return "[skin_color]_[limb_name]"
 				if("groin")

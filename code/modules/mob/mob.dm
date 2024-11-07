@@ -805,7 +805,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			affected.add_bleeding(I, TRUE)
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
-	playsound(src.loc, 'sound/weapons/bladeslice.ogg', 25)
+	playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 	usr.put_in_hands(selection)
 	return TRUE
 

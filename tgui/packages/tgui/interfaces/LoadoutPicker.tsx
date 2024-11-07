@@ -40,7 +40,11 @@ export const LoadoutPicker = () => {
                   <Stack vertical height="200px">
                     {categories.map((category) => (
                       <Stack.Item key={category.name}>
-                        <Button fluid onClick={() => setSelected(category)}>
+                        <Button
+                          fluid
+                          selected={selected === category}
+                          onClick={() => setSelected(category)}
+                        >
                           {category.name}
                         </Button>
                       </Stack.Item>

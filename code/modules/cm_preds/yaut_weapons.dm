@@ -1385,7 +1385,7 @@
 	return TRUE
 
 /obj/item/weapon/gun/bow
-	name = "\improper hunting bow"
+	name = "hunting bow"
 	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
@@ -1429,7 +1429,7 @@
 	playsound(user, reload_sound, 25, TRUE)
 	current_mag.current_rounds--
 	if(user)
-		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from \the [src]."))
+		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from [src]."))
 		user.put_in_hands(unloaded_arrow)
 	update_icon()
 
@@ -1455,7 +1455,7 @@
 		to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
 		return
 	if (!isyautja(user))
-		to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back \the [src]'s drawstring!"))
+		to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back [src]'s drawstring!"))
 		return
 	ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
 	playsound(user, reload_sound, 25, 1)
@@ -1481,18 +1481,19 @@
 	default_ammo = /datum/ammo/arrow
 
 /obj/item/arrow
-	name = "\improper arrow"
+	name = "arrow"
 	w_class = SIZE_SMALL
-	var/activated = FALSE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "arrow"
 	item_state = "arrow"
-	var/ammo_datum = /datum/ammo/arrow
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
 	force = 20
 	explo_proof = TRUE
 	unacidable = TRUE
+
+	var/activated = FALSE
+	var/ammo_datum = /datum/ammo/arrow
 
 /obj/item/arrow/expl
 	name = "\improper activated arrow"
@@ -1503,22 +1504,22 @@
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
 	if (!isyautja(user))
-		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] \the [src], but nothing happens."))
+		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
 		return
 	if (activated)
 		activated = FALSE
 		icon_state = "arrow"
 		ammo_datum = /datum/ammo/arrow
-		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
-	else
-		activated = TRUE
-		icon_state = "arrow_expl"
-		ammo_datum = /datum/ammo/arrow/expl
-		to_chat(user, SPAN_NOTICE("You activate \the [src]."))
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		return
+	activated = TRUE
+	icon_state = "arrow_expl"
+	ammo_datum = /datum/ammo/arrow/expl
+	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
 
 /obj/item/storage/belt/gun/quiver
-	name = "\improper quiver strap"
+	name = "quiver strap"
 	desc = "A strap that can hold a bow with a quiver for arrows."
 	storage_slots = 8
 	max_storage_space = 20

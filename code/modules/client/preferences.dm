@@ -98,6 +98,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_use_legacy = "None"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
+	var/predator_accessory_type = 0
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
 	var/predator_armor_material = "ebony"
@@ -529,6 +530,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					dat += "<b>Legacy Gear:</b> <a href='?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
 				dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
 				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
+				dat += "<b>Mask Accessory:</b> <a href='?_src_=prefs;preference=pred_accessory_type;task=input'><b>([predator_accessory_type])</b></a><br>"
 				dat += "<b>Armor Style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
 				dat += "<b>Greave Style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
 				dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
@@ -1311,6 +1313,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, 19, 1)
 					if(new_predator_mask_type) predator_mask_type = floor(text2num(new_predator_mask_type))
+				if("pred_accessory_type")
+					var/new_predator_accessory_type = tgui_input_number(user, "Choose your mask accessory type:\n(0-1)", "accessory Selection", 0, 1, 0)
+					if(new_predator_accessory_type)
+						predator_accessory_type = floor(text2num(new_predator_accessory_type))
 				if("pred_armor_type")
 					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-8)", "Armor Selection", 1, 8, 1)
 					if(new_predator_armor_type) predator_armor_type = floor(text2num(new_predator_armor_type))

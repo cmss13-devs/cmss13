@@ -1715,6 +1715,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 
+					// Refresh hair picker
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+
 				if("hear_adminhelps")
 					toggles_sound ^= SOUND_ADMINHELP
 
@@ -1924,6 +1929,14 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					load_character()
 					reload_cooldown = world.time + 50
 
+					// Refresh pickers
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+					picker_ui = SStgui.get_open_ui(user, body_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
 						open_load_dialog(user)
@@ -1939,6 +1952,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
+
+					// Refresh pickers
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+					picker_ui = SStgui.get_open_ui(user, body_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")

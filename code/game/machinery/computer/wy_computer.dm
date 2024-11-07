@@ -141,6 +141,9 @@
 			var/mob/living/carbon/human/human_user = user
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			if(istype(idcard))
+				if(!idcard.check_biometrics(human_user))
+					to_chat(human_user, SPAN_WARNING("ERROR: Biometric identification failure. You must use your own ID card during login procedures."))
+					return FALSE
 				authentication = get_wy_access(idcard)
 				last_login = idcard.registered_name
 			else if(human_user.wear_id)

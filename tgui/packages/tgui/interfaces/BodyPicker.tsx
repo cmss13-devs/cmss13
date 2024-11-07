@@ -115,14 +115,24 @@ export const BodyPicker = () => {
               </Stack>
             </Stack>
           </Stack.Item>
-          <Stack.Item height={'100%'}>
-            <Stack vertical justify="space-evenly" fill>
-              <Button onClick={() => act('body_presentation', { picked: 'M' })}>
-                ♂
-              </Button>
-              <Button onClick={() => act('body_presentation', { picked: 'F' })}>
-                ♀
-              </Button>
+          <Stack.Item>
+            <Stack vertical fill>
+              <Stack.Item>
+                <Button
+                  onClick={() => act('body_presentation', { picked: 'M' })}
+                  height="5em"
+                  lineHeight="5em"
+                  icon="mars"
+                />
+              </Stack.Item>
+              <Stack.Item>
+                <Button
+                  height="5em"
+                  lineHeight="5em"
+                  onClick={() => act('body_presentation', { picked: 'F' })}
+                  icon="venus"
+                />
+              </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>

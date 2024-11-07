@@ -538,6 +538,7 @@
 	S["skin_color"] >> skin_color
 	S["body_type"] >> body_type
 	S["body_size"] >> body_size
+	S["body_presentation"] >> body_presentation
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
 
@@ -611,6 +612,7 @@
 	be_random_name = sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
+	body_presentation = sanitize_gender(body_presentation)
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
 	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
@@ -688,6 +690,7 @@
 	S["skin_color"] << skin_color
 	S["body_type"] << body_type
 	S["body_size"] << body_size
+	S["body_presentation"] << body_presentation
 	S["language"] << language
 	S["hair_red"] << r_hair
 	S["hair_green"] << g_hair

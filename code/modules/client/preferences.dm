@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/static/datum/hair_picker/hair_picker = new
 	var/static/datum/body_picker/body_picker = new
+	var/static/datum/loadout_picker/loadout_picker = new
 
 	//doohickeys for savefiles
 	var/path
@@ -395,7 +396,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Preferred Armor:</b> <a href ='?_src_=prefs;preference=prefarmor;task=input'><b>[preferred_armor]</b></a><br>"
 
 			dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
-			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
+			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br><br>"
 
 			dat += "<b>Custom Loadout:</b> "
 			var/total_cost = 0
@@ -409,16 +410,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
-						dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'><b>Remove</b></a><br>"
+						dat += "[gear[i]] ([G.cost] points)<br>"
 
 				dat += "<b>Used:</b> [total_cost] points"
 			else
 				dat += "None"
 
-			if(total_cost < MAX_GEAR_COST)
-				dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'><b>Add</b></a>"
-				if(LAZYLEN(gear))
-					dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'><b>Clear</b></a>"
+			dat += "<br><a href='byond://?src=\ref[user];preference=loadout'><b>Open Loadout</b></a>"
 
 			dat += "</div>"
 
@@ -1031,39 +1029,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					set_job_slots(user)
 			return TRUE
 		if("loadout")
-			switch(href_list["task"])
-				if("input")
-					var/gear_category = tgui_input_list(user, "Select gear category: ", "Gear to add", GLOB.gear_datums_by_category)
-					if(!gear_category)
-						return
-					var/choice = tgui_input_list(user, "Select gear to add: ", gear_category, GLOB.gear_datums_by_category[gear_category])
-					if(!choice)
-						return
-
-					var/total_cost = 0
-					var/datum/gear/G
-					if(isnull(gear) || !islist(gear))
-						gear = list()
-					if(length(gear))
-						for(var/gear_name in gear)
-							G = GLOB.gear_datums_by_name[gear_name]
-							total_cost += G?.cost
-
-					G = GLOB.gear_datums_by_category[gear_category][choice]
-					total_cost += G.cost
-					if(total_cost <= MAX_GEAR_COST)
-						gear += G.display_name
-						to_chat(user, SPAN_NOTICE("Added \the '[G.display_name]' for [G.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
-					else
-						to_chat(user, SPAN_WARNING("Adding \the '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points."))
-
-				if("remove")
-					var/i_remove = text2num(href_list["gear"])
-					if(i_remove < 1 || i_remove > length(gear)) return
-					gear.Cut(i_remove, i_remove + 1)
-
-				if("clear")
-					gear.Cut()
+			loadout_picker.tgui_interact(user)
 
 		if("flavor_text")
 			switch(href_list["task"])

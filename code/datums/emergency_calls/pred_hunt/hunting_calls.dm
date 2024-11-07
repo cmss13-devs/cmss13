@@ -59,7 +59,6 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
-	message_all_yautja("Let the hunt begin!")
 
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds multi Faction Medium"
@@ -134,7 +133,6 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
-	message_all_yautja("Let the hunt begin!")
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds Xenos Medium"

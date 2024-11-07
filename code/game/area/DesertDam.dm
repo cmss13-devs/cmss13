@@ -240,10 +240,12 @@
 /area/desert_dam/building/substation/northeast
 	name = "Command Substation"
 	icon_state = "northeastern_ss"
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/substation/central
 	name = "Command Substation"
 	icon_state = "central_ss"
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/substation/southwest
 	name = "Command Substation"

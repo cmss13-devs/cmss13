@@ -113,3 +113,52 @@
       will be removed to put you at the point cap limit.
   Sargeantmuffinman:
   - rscadd: Added more lore emails to the computers
+2024-11-06:
+  BOBAMA:
+  - balance: You can now go on Ovi and build Hive Cores anywhere in the Atmospheric
+      Processor on Chance's Claim
+  - bugfix: bugged Shivas areas
+  - maptweak: Removed Sorokyne "hallway areas"
+  - balance: Areas on Sorokyne that were only CASable because of the "hallway areas"
+      can now just be CASd
+  Blundir:
+  - rscadd: XO spawning is now announced just like SEA/CO
+  detectivegoogle Drathek:
+  - balance: Morphers generate huggers twice as fast if queen is on ovi
+  efzapa:
+  - rscadd: All USCM Flag Officers now understand and can use Tactical Sign Language.
+  - qol: Tactical Sign Language is now the default language for all MARSOC spawned.
+  harryob:
+  - bugfix: you can transfer riflemen between squads again
+  - bugfix: sebb grenades can no longer degroin synths through EMPs, which was unintended
+  thevandie:
+  - imageadd: added a new sprite for the liaison's wall divider behind his desk
+  - mapadd: added a WY mre to the liaison's liquor cabinet (cardboard box full of
+      donk pockets)
+  - mapadd: added a tv to the liaison's desk, in place of the containment cell console
+  - mapadd: added a new button to the liaison's desk to replace the wall divider button.
+      it controls the back office shutters
+  - maptweak: moved the liaison's shutters button and console to the back office
+  - maptweak: moved some stuff around in the liquor cabinet to accommodate the MRE
+      being placed into it
+  - maptweak: moved some stuff around on the liaison's desk to make it look cleaner
+2024-11-07:
+  Drathek:
+  - balance: Fix XvX landmarks being used for roundstart oviable locations
+  - balance: Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent
+      Dam, Chances's Claim, and Fiorina
+  - bugfix: XvX now makes all areas oviable
+  Joe Lampost:
+  - code_imp: Makes using LOOC use your real name instead of unknown
+  - code_imp: Sding preds now have their name shown instead of unknown
+  Joelampost:
+  - rscadd: Added first names for spawned preds
+  - rscadd: Added last names for spawned preds
+  Nomoresolvalou:
+  - rscadd: Hunters can now put their bone trophies on their armor to have it show
+      up there instead of on their mesh.
+  TheDonkified:
+  - code_imp: Xeno ability names in chat and stats page changed to match the names
+      for xeno ability buttons
+  VileBeggar:
+  - bugfix: Memorial ghosts will now face the user instead of facing south.

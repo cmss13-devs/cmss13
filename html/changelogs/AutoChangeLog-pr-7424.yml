@@ -1,5 +1,0 @@
-author: "efzapa"
-delete-after: True
-changes:
-  - rscadd: "All USCM Flag Officers now understand and can use Tactical Sign Language."
-  - qol: "Tactical Sign Language is now the default language for all MARSOC spawned."

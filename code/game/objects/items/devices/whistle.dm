@@ -8,7 +8,7 @@
 	flags_equip_slot = SLOT_FACE
 	actions_types = list(/datum/action/item_action/toggle/use)
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
 	)
 	var/volume = 60
 	var/spam_cooldown_time = 10 SECONDS

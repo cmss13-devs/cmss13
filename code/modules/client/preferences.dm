@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/static/datum/hair_picker/hair_picker = new
 	var/static/datum/body_picker/body_picker = new
+	var/static/datum/traits_picker/traits_picker = new
 
 	//doohickeys for savefiles
 	var/path
@@ -1136,6 +1137,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if("traits")
 			switch(href_list["task"])
 				if("open")
+					traits_picker.tgui_interact(user)
+
 					open_character_traits(user)
 					return TRUE
 				if("change_slot")

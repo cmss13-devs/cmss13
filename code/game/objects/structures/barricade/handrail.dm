@@ -18,7 +18,18 @@
 	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE //Reinforced to be a cade or not
 	var/can_be_reinforced = TRUE //can we even reinforce this handrail or not?
+	///Whether a ground z-level handrail allows auto-climbing on harm intent
 	var/autoclimb = TRUE
+
+/obj/structure/barricade/handrail/Initialize(mapload, ...)
+	. = ..()
+	if(!is_ground_level(z))
+		if(autoclimb && is_mainship_level(z))
+			RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(reset_autoclimb))
+		autoclimb = FALSE
+
+/obj/structure/barricade/handrail/proc/reset_autoclimb()
+	autoclimb = initial(autoclimb)
 
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
@@ -42,26 +53,35 @@
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
-	if(istype(movable,/mob/living/carbon/xenomorph/ravager) || istype(movable,/mob/living/carbon/xenomorph/crusher))
+	if(!ismob(movable))
+		return ..()
+
+	if(istype(movable, /mob/living/carbon/xenomorph/ravager) || istype(movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/xenomorph = movable
 		if(!xenomorph.stat)
 			visible_message(SPAN_DANGER("[xenomorph] plows straight through [src]!"))
 			deconstruct(FALSE)
 			return
 	else
-		if(ismob(movable) && autoclimb)
-			var/mob/living/climber = movable
-			if(climber.a_intent == INTENT_HARM)
-				climber.client?.move_delay += 3 DECISECONDS
-				var/climbed = do_climb(climber)
-				if(climbed)
-					if(prob(25))
-						if(ishuman(climber))
-							var/mob/living/carbon/human/human = climber
-							human.apply_damage(5,BRUTE,no_limb_loss = TRUE)
-						else
-							climber.apply_damage(5,BRUTE)
-						climber.visible_message(SPAN_WARNING("You hit yourself as you vault over the [src]"))
+		if(!autoclimb)
+			return ..()
+
+		if(movable.last_bumped == world.time)
+			return ..()
+
+		var/mob/living/climber = movable
+		if(climber.a_intent != INTENT_HARM)
+			return ..()
+
+		climber.client?.move_delay += 3 DECISECONDS
+		if(do_climb(climber))
+			if(prob(25))
+				if(ishuman(climber))
+					var/mob/living/carbon/human/human = climber
+					human.apply_damage(5, BRUTE, no_limb_loss = TRUE)
+				else
+					climber.apply_damage(5, BRUTE)
+				climber.visible_message(SPAN_WARNING("[climber] injures themselves vaulting over [src]."), SPAN_WARNING("You hit yourself as you vault over [src]."))
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)

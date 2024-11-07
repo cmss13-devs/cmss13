@@ -4408,10 +4408,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "dtE" = (
-/obj/structure/machinery/power/reactor,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "dtF" = (
@@ -24615,6 +24615,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/upp,
 /area/rostock/upperdeck_maint/p_a)
+"seH" = (
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/reactor)
 "seY" = (
 /obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -40275,15 +40279,15 @@ jnX
 rXZ
 wcD
 jnX
-dhu
+seH
 ubs
 oQg
-dhu
+seH
 vlk
-dhu
-dhu
+seH
+seH
 vlk
-dhu
+seH
 ubs
 wZb
 dhu
@@ -40455,17 +40459,17 @@ eCK
 kiO
 jnX
 gLr
-dhu
+seH
 jnX
 dtE
 qFr
 igD
-dhu
+seH
 fqm
-dhu
-dhu
+seH
+seH
 fqm
-dhu
+seH
 qFr
 rqE
 vPO
@@ -40639,15 +40643,15 @@ jnX
 rmb
 uOa
 jnX
-dhu
+seH
 vNV
 tTM
-dhu
+seH
 tTW
-dhu
-dhu
+seH
+seH
 tTW
-dhu
+seH
 vNV
 bHE
 dhu

@@ -168,11 +168,11 @@
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 
 		//Bayonets are 3/4th as effective at cutting fences
-		var d = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
+		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
 		if(istype(W, /obj/item/attachable/bayonet))
-			d *= 1.5
+			duration *= 1.5
 
-		if(do_after(user, d, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
 			SPAN_NOTICE("You cut through [src] with [W]."))

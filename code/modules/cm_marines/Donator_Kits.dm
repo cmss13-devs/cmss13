@@ -414,28 +414,28 @@
 	donor_key = "sailordave"
 	donor_gear = list(/obj/item/clothing/under/marine/fluff/sailordave)
 
-/obj/item/storage/box/donator_kit/sasoperative_elite //sasoperative has several sets
+/obj/item/storage/box/donator_kit/sasoperative_hunk_blackout //sasoperative has several sets
 	donor_key = "sasoperative"
-	kit_variant = "Elite"
+	kit_variant = "Blackout"
 	donor_gear = list(
-		/obj/item/clothing/head/helmet/marine/fluff/sas_elite,
-		/obj/item/clothing/mask/fluff/sas_elite,
-		/obj/item/clothing/suit/storage/marine/fluff/sas_elite,
-		/obj/item/clothing/under/marine/fluff/sas_elite,
+		/obj/item/clothing/head/helmet/marine/fluff/sas_hunk_helmet,
+		/obj/item/clothing/mask/fluff/sas_hunk_mask,
+		/obj/item/clothing/suit/storage/marine/fluff/sas_hunk_armor,
+		/obj/item/clothing/under/marine/fluff/sas_hunk_uniform,
 	)
 
-/obj/item/storage/box/donator_kit/sasoperative_juggernaut
+/obj/item/storage/box/donator_kit/sasoperative_hunk_officer
 	donor_key = "sasoperative"
-	kit_variant = "Juggernaut"
+	kit_variant = "Officer"
 	donor_gear = list(
-		/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut,
-		/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut,
-		/obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut,
+		/obj/item/storage/backpack/marine/satchel/fluff/sas_hunk_backpack,
+		/obj/item/clothing/head/helmet/marine/fluff/sas_hunk_beret,
+		/obj/item/clothing/suit/storage/marine/fluff/sas_hunk_jacket,
 	)
 
-/obj/item/storage/box/donator_kit/sasoperative_legion
+/obj/item/storage/box/donator_kit/sasoperative_ranger
 	donor_key = "sasoperative"
-	kit_variant = "Legion"
+	kit_variant = "Ranger"
 	donor_gear = list(
 		/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion,
 		/obj/item/clothing/head/helmet/marine/fluff/sas_legion,

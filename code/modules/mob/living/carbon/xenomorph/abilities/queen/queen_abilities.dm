@@ -58,6 +58,18 @@
 
 	var/boosted = FALSE
 
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/target_atom, mods)
+	if(boosted)
+		var/area/target_area = get_area(target_atom)
+		if(!target_area)
+			return
+
+		if(target_area.linked_lz && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			to_chat(owner, SPAN_XENONOTICE("It's too early to spread the hive this far."))
+			return
+
+	return ..()
+
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))

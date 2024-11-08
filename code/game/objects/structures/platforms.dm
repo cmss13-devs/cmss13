@@ -252,11 +252,11 @@
 
 
 /obj/structure/platform/hybrisa/metalplatform1
-	icon_state = "hybrisastone"
+	icon_state = "hybrisametal"
 	name = "raised metal edge"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1
-	icon_state = "hybrisastone_deco"
+	icon_state = "hybrisametal_deco"
 	name = "raised metal corner"
 	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
 

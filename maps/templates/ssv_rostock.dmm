@@ -13170,6 +13170,7 @@
 /area/rostock/upper_deck/hallway)
 "jOx" = (
 /obj/structure/surface/table/almayer,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/strata,
 /area/rostock/req)
 "jPa" = (
@@ -18687,11 +18688,15 @@
 /area/rostock/lower_deck/m_hallway)
 "oiU" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/pkp{
-	pixel_y = -8;
-	pixel_x = -4
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 5;
+	pixel_y = 7
 	},
-/obj/item/weapon/gun/pkp,
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_y = -8;
+	pixel_x = -5
+	},
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "ojj" = (
@@ -26973,10 +26978,6 @@
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
-"uCo" = (
-/obj/item/tool/hand_labeler,
-/turf/open/floor/almayer/plating,
-/area/rostock/req)
 "uDd" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -46355,7 +46356,7 @@ oNk
 oNk
 oNk
 oNk
-uCo
+oNk
 oNk
 oNk
 xyL

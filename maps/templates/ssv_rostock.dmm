@@ -1320,13 +1320,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/rostock/engineering/reactor)
-"aWG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/emcloset,
-/turf/open/floor/strata/orange_icorner/north,
-/area/rostock/req)
 "aWV" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_y = 32;
@@ -1341,6 +1334,17 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata,
 /area/rostock/lower_deck/m_hallway)
+"aXs" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
+/obj/item/clothing/under/marine/veteran/UPP/officer,
+/obj/item/clothing/suit/storage/webbing,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/rostock/command/so)
 "aXS" = (
 /obj/structure/window/framed/upp/reinforced,
 /turf/open/floor/plating,
@@ -2563,6 +2567,11 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Automated Equipment Rack";
+	pixel_x = -32;
+	density = 0
+	},
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
 "bTK" = (
@@ -2920,6 +2929,17 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
+"clB" = (
+/obj/effect/landmark/start/upp{
+	name = "UPP soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lower_deck/cryogenics)
 "clW" = (
 /obj/structure/ladder{
 	height = 1;
@@ -4034,6 +4054,14 @@
 	pixel_y = 26;
 	pixel_x = -17
 	},
+/obj/effect/landmark/start/upp{
+	name = "UPP soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/cryogenics)
 "dkE" = (
@@ -4158,6 +4186,28 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
+"dpC" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet/brown,
+/obj/structure/pipes/vents/pump/on,
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	density = 0;
+	pixel_x = 32
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Starshiy Leytenant");
+	name = "UPP Senior SO"
+	},
+/turf/open/floor/wood/ship,
+/area/rostock/command/so)
 "dqk" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4;
@@ -6051,12 +6101,6 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/accessway)
-"eHx" = (
-/obj/structure/pipes/vents/pump/on{
-	dir = 1
-	},
-/turf/open/floor/strata/orange_cover,
-/area/rostock/req)
 "eHy" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -7539,6 +7583,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/p_a_hallway)
+"fPb" = (
+/obj/structure/supply_drop/upp1,
+/turf/open/floor/strata,
+/area/rostock/req)
 "fPq" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellow2/north,
@@ -8027,6 +8075,10 @@
 	},
 /turf/open/floor/strata/red3,
 /area/rostock/security/brig_office)
+"gjZ" = (
+/obj/structure/supply_drop/upp3,
+/turf/open/floor/strata,
+/area/rostock/req)
 "gkj" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15;
@@ -8156,9 +8208,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "gqo" = (
-/obj/structure/surface/table/almayer,
-/obj/item/packageWrap,
-/obj/item/packageWrap,
+/obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_icorner/north,
 /area/rostock/req)
 "gqt" = (
@@ -8274,6 +8324,10 @@
 "gul" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Polkovnik");
+	name = "UPP CO"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/co)
@@ -8401,6 +8455,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
+"gBc" = (
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Leytenant Doktor");
+	name = "UPP Doctor"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/req)
 "gBe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -8742,6 +8803,13 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/strata/blue4/east,
 /area/rostock/lower_deck/briefing)
+"gNT" = (
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late support join";
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/upper_deck/hallway)
 "gNY" = (
 /obj/structure/platform{
 	dir = 4;
@@ -9720,6 +9788,14 @@
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	pixel_x = -17
+	},
+/obj/effect/landmark/start/upp{
+	name = "UPP soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/cryogenics)
@@ -10762,6 +10838,13 @@
 	},
 /turf/open/floor/strata,
 /area/rostock/req)
+"ihS" = (
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Logistics Technician");
+	name = "UPP LogTech"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/req)
 "iid" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240);
@@ -10823,10 +10906,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/vehiclehangar)
 "ilb" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/clipboard,
-/turf/open/floor/strata/orange_cover,
+/obj/structure/closet/firecloset,
+/turf/open/floor/strata/orange_icorner,
 /area/rostock/req)
 "ilf" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -10930,6 +11011,18 @@
 /obj/item/roller,
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "ins" = (
@@ -11137,12 +11230,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/m_hallway)
-"itp" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/turf/open/floor/strata/orange_cover,
-/area/rostock/req)
 "ius" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -11341,13 +11428,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellow2/north,
 /area/rostock/engineering/main_area)
-"iBy" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/firecloset,
-/turf/open/floor/strata/orange_icorner,
-/area/rostock/req)
 "iBS" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = -6;
@@ -12114,6 +12194,26 @@
 "jfJ" = (
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/starboard_aft_accessway)
+"jgO" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet/brown,
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/gear/antag_guns{
+	name = "\improper Automated Guns Rack";
+	pixel_x = 32;
+	density = 0
+	},
+/obj/structure/machinery/light,
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Starshiy Leytenant");
+	name = "UPP Senior SO"
+	},
+/turf/open/floor/wood/ship,
+/area/rostock/command/so)
 "jgP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -12369,6 +12469,10 @@
 	pixel_x = 14;
 	light_color = "#66ccff";
 	invisibility = 101
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late support join";
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -13065,11 +13169,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/rostock/upper_deck/hallway)
 "jOx" = (
-/obj/structure/plasticflaps,
-/obj/structure/machinery/conveyor{
-	id = "cargo_belt";
-	dir = 1
-	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/strata,
 /area/rostock/req)
 "jPa" = (
@@ -13574,6 +13674,17 @@
 	},
 /obj/item/bedsheet/brown,
 /obj/structure/pipes/vents/pump/on,
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	density = 0;
+	pixel_x = 32
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Starshiy Leytenant");
+	name = "UPP Senior SO"
+	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "khq" = (
@@ -15133,8 +15244,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Automated Equipment Rack";
+	pixel_x = 32;
+	density = 0
 	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
@@ -15607,6 +15720,10 @@
 "lMs" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Kapitan");
+	name = "UPP XO"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
@@ -16589,6 +16706,12 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
+"mCO" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/rostock/lower_deck/m_hallway)
 "mCU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -18604,6 +18727,15 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/gear/antag_guns{
+	name = "\improper Automated Guns Rack";
+	pixel_x = 32;
+	density = 0
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Starshiy Leytenant");
+	name = "UPP Senior SO"
+	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "oli" = (
@@ -19212,6 +19344,10 @@
 /turf/open/floor/almayer,
 /area/rostock/req)
 "oJE" = (
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Support Synthetic");
+	name = "UPP Synth"
+	},
 /turf/open/floor/corsat/arrow_north,
 /area/rostock/command/cic)
 "oJJ" = (
@@ -19652,13 +19788,6 @@
 /obj/effect/decal/strata_decals/grime/grime1,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
-"oXg" = (
-/obj/structure/machinery/conveyor{
-	id = "cargo_belt";
-	dir = 1
-	},
-/turf/open/floor/strata/orange_cover,
-/area/rostock/req)
 "oXx" = (
 /obj/structure/barricade/handrail{
 	dir = 8;
@@ -20137,6 +20266,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/security/brig_accessway)
+"ppl" = (
+/obj/structure/pipes/vents/pump/on{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/rostock/lower_deck/m_hallway)
 "ppz" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -20657,6 +20792,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
@@ -23343,6 +23481,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
+"rUW" = (
+/obj/structure/supply_drop/upp4,
+/turf/open/floor/strata,
+/area/rostock/req)
 "rVz" = (
 /obj/structure/surface/rack,
 /obj/structure/largecrate/random/mini/small_case,
@@ -23661,6 +23803,11 @@
 "sfk" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
+/obj/structure/machinery/cm_vending/gear/antag_guns{
+	name = "\improper Automated Guns Rack";
+	pixel_x = -32;
+	density = 0
+	},
 /turf/open/floor/wood,
 /area/rostock/command/xo)
 "sfp" = (
@@ -25013,10 +25160,6 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
-"tke" = (
-/obj/item/device/camera/broadcasting,
-/turf/open/floor/wood,
-/area/rostock/command/polcom)
 "tkp" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/cleanable/dirt,
@@ -25197,16 +25340,30 @@
 /area/rostock/command/hallway)
 "tqt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/firstaid/rad/empty,
-/obj/item/storage/firstaid/rad/empty,
-/obj/item/storage/firstaid/o2/empty,
-/obj/item/storage/firstaid/o2/empty,
-/obj/item/storage/firstaid/fire/empty,
-/obj/item/storage/firstaid/fire/empty,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid,
-/obj/item/storage/firstaid,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/synthgraft,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "tqI" = (
@@ -25711,6 +25868,10 @@
 	dir = 1;
 	light_color = "#66ccff";
 	invisibility = 101
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late support join";
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -26932,8 +27093,12 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "uKO" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	density = 0;
+	pixel_x = -32
 	},
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
@@ -28000,6 +28165,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/rostock/lower_deck/s_a_hallway)
+"vwH" = (
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Politsiya");
+	name = "UPP MP"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/req)
 "vwN" = (
 /obj/structure/machinery/cm_vending/gear/antag{
 	hacked = 1;
@@ -28470,8 +28642,12 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/rostock/engineering/lower_aft_corridor)
 "vQn" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	density = 0;
+	pixel_x = -32
 	},
 /turf/open/floor/wood,
 /area/rostock/command/xo)
@@ -28535,17 +28711,6 @@
 "vRQ" = (
 /turf/closed/wall/upp/reinforced/outer,
 /area/space)
-"vSf" = (
-/obj/structure/machinery/conveyor{
-	id = "cargo_belt";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/strata/orange_cover,
-/area/rostock/req)
 "vSh" = (
 /obj/structure/machinery/vending/coffee/simple,
 /obj/structure/sign/safety/coffee{
@@ -28879,6 +29044,15 @@
 "waj" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
+	},
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Automated Equipment Rack";
+	pixel_x = -32;
+	density = 0
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Political Commissar");
+	name = "UPP PolCom"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/polcom)
@@ -30163,7 +30337,7 @@
 /turf/open/floor/corsat/cargo,
 /area/rostock/railgun/starboard)
 "wWh" = (
-/obj/structure/window/framed/upp/reinforced,
+/obj/structure/supply_drop/upp2,
 /turf/open/floor/strata,
 /area/rostock/req)
 "wWJ" = (
@@ -30962,6 +31136,14 @@
 /obj/item/device/whistle,
 /obj/item/clothing/suit/storage/webbing,
 /obj/item/storage/backpack/lightpack,
+/obj/structure/machinery/cm_vending/gear/antag_guns{
+	name = "\improper Automated Guns Rack";
+	pixel_x = -32;
+	density = 0
+	},
+/obj/item/device/camera/broadcasting,
+/obj/item/clothing/suit/storage/snow_suit/soviet,
+/obj/item/clothing/suit/gimmick/jason,
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "xDu" = (
@@ -31642,6 +31824,15 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/command/hallway)
+"yfz" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
+/obj/item/clothing/under/marine/veteran/UPP/officer,
+/obj/item/clothing/suit/storage/webbing,
+/obj/structure/machinery/light,
+/turf/open/floor/wood/ship,
+/area/rostock/command/so)
 "yfV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -31764,6 +31955,14 @@
 	invisibility = 101
 	},
 /obj/structure/machinery/power/apc/power/east,
+/obj/effect/landmark/start/upp{
+	name = "UPP soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late soldier join";
+	job_list = list("UPP Ryadovoy","UPP MSzht Engineer","UPP MSzht Medic","UPP Serzhant","UPP Starshiy Serzhant")
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/cryogenics)
 "ykg" = (
@@ -38659,10 +38858,10 @@ hgp
 ldD
 hYF
 aAZ
-mcx
-mcx
-mcx
-mcx
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -38842,9 +39041,9 @@ euJ
 sRW
 aAZ
 dkz
-mcx
-mcx
-mcx
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -39387,10 +39586,10 @@ hgp
 nVD
 pbs
 aAZ
-mcx
-mcx
-mcx
-mcx
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -39570,9 +39769,9 @@ vvL
 pbs
 aAZ
 hyW
-mcx
-mcx
-mcx
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -40115,10 +40314,10 @@ hgp
 gVz
 daA
 aAZ
-mcx
-mcx
-mcx
-mcx
+clB
+clB
+clB
+clB
 mcx
 rkU
 vHK
@@ -40298,9 +40497,9 @@ aLQ
 hId
 aAZ
 dkz
-mcx
-mcx
-mcx
+clB
+clB
+clB
 mcx
 vNW
 wIi
@@ -40843,10 +41042,10 @@ hgp
 wjb
 wvm
 aAZ
-mcx
-mcx
-mcx
-mcx
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -41026,9 +41225,9 @@ dkU
 sRW
 aAZ
 hyW
-mcx
-mcx
-mcx
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -41571,10 +41770,10 @@ hgp
 mlH
 pKP
 aAZ
-mcx
-mcx
+clB
+clB
 yjz
-mcx
+clB
 bWp
 qxx
 vHK
@@ -42442,8 +42641,8 @@ lwL
 lwL
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -42592,9 +42791,9 @@ ekM
 oxy
 oEs
 tOw
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
 pBd
 kHo
 bVd
@@ -42624,8 +42823,8 @@ lwL
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -42773,10 +42972,10 @@ gWP
 pVK
 oxy
 djn
-rJo
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
+gNT
 pBd
 kHo
 bVd
@@ -42806,8 +43005,8 @@ lwL
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -42988,8 +43187,8 @@ tHu
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -43170,8 +43369,8 @@ tHu
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -43320,9 +43519,9 @@ uMl
 qNR
 oEs
 jqs
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
 pBd
 kHo
 whp
@@ -43352,8 +43551,8 @@ tHu
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -43501,10 +43700,10 @@ gWP
 arL
 tXv
 oEs
-rJo
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
+gNT
 pBd
 kHo
 whp
@@ -43534,8 +43733,8 @@ tHu
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -43716,8 +43915,8 @@ tHu
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -43898,8 +44097,8 @@ lwL
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -44047,10 +44246,10 @@ dWO
 ozt
 jFx
 djn
-rJo
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
+gNT
 pBd
 kHo
 dbQ
@@ -44080,8 +44279,8 @@ jXB
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -44230,9 +44429,9 @@ oxy
 sPX
 oEs
 tOw
-rJo
-rJo
-rJo
+gNT
+gNT
+gNT
 rJo
 xqj
 oJU
@@ -44262,8 +44461,8 @@ jXB
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -44444,8 +44643,8 @@ jXB
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -44626,8 +44825,8 @@ jXB
 iFa
 iFa
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -44808,8 +45007,8 @@ jXB
 jXB
 jXB
 iFa
-ofW
-ofW
+iFa
+iFa
 iFa
 iFa
 iFa
@@ -45786,7 +45985,7 @@ qzR
 xnR
 xLu
 hfN
-aWG
+hfN
 pID
 pCX
 pCX
@@ -45965,10 +46164,10 @@ xrJ
 jLP
 rNC
 xyw
-xnR
+mCO
 bEy
 hfN
-hfN
+fPb
 cmP
 nCh
 nCh
@@ -46149,7 +46348,7 @@ hjn
 bmA
 xnR
 dTU
-itp
+hfN
 wWh
 qqV
 oNk
@@ -46331,9 +46530,9 @@ nEB
 vWd
 aXp
 irh
-oXg
+hfN
 jOx
-vSf
+cmP
 oNk
 qYy
 oNk
@@ -46513,8 +46712,8 @@ hjn
 xkV
 xnR
 dTU
-eHx
-wWh
+hfN
+gjZ
 cmP
 oNk
 oNk
@@ -46693,10 +46892,10 @@ inn
 pFm
 rNC
 xyw
-xnR
+ppl
 bEy
 hfN
-hfN
+rUW
 cmP
 jSX
 tab
@@ -46878,7 +47077,7 @@ bmA
 xnR
 omm
 hfN
-iBy
+hfN
 pID
 bQc
 tiP
@@ -47789,10 +47988,10 @@ qYI
 izG
 oim
 cJG
-pMS
-pMS
-pMS
-pMS
+gBc
+gBc
+gBc
+gBc
 hfN
 kUd
 hwi
@@ -47971,15 +48170,15 @@ qYI
 kHP
 oim
 pzh
-pMS
-pMS
-pMS
-pMS
+vwH
+vwH
+vwH
+vwH
 hfN
 igM
-pMS
-pMS
-pMS
+ihS
+ihS
+ihS
 hfN
 fpc
 rbj
@@ -50348,7 +50547,7 @@ pkI
 oMV
 tlF
 tVT
-tke
+qdl
 jLH
 ojj
 hTD
@@ -51986,9 +52185,9 @@ aYY
 hYa
 oIO
 sNQ
-oIO
+aXs
 hYa
-oIO
+yfz
 sNQ
 kFe
 qjG
@@ -52164,9 +52363,9 @@ pNi
 pNi
 pNi
 pNi
-kfY
+dpC
 lqx
-okw
+jgO
 sNQ
 kfY
 lqx

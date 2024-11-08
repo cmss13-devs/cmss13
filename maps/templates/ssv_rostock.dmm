@@ -524,6 +524,9 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_hallway)
+"atA" = (
+/turf/open/floor/prison/floor_plate,
+/area/rostock/engineering/lower_aft_corridor)
 "atE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1930,7 +1933,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "bwk" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
@@ -2054,7 +2057,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "bBZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -2177,7 +2180,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "bHC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -2392,6 +2395,13 @@
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer/silver,
 /area/rostock/command/cic)
+"bOQ" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = list(232, 240)
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/lower_aft_corridor)
 "bPc" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -2804,7 +2814,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "ceG" = (
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
@@ -2951,6 +2961,10 @@
 "cnm" = (
 /turf/closed/wall/upp,
 /area/rostock/lower_deck/bathroom)
+"cnp" = (
+/obj/structure/window/framed/upp/reinforced,
+/turf/open/floor/plating,
+/area/rostock/engineering/lower_aft_corridor)
 "cnL" = (
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/p_a_hallway)
@@ -3001,7 +3015,7 @@
 /area/rostock/security/brig_office)
 "coi" = (
 /turf/open/floor/prison/darkbrown2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "com" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -4650,6 +4664,9 @@
 	},
 /turf/open/floor/strata/red1,
 /area/rostock/upper_deck/hallway)
+"dJr" = (
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/rostock/engineering/lower_aft_corridor)
 "dJB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -5172,7 +5189,7 @@
 	id = "engi2"
 	},
 /turf/open/floor/corsat/plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "dYM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -5661,7 +5678,7 @@
 	id = "engi1"
 	},
 /turf/open/floor/corsat/plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "euJ" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -5918,7 +5935,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "eEU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -6277,7 +6294,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "eTm" = (
 /obj/structure/machinery/cm_vending/clothing/antag{
 	name = "\improper Response Team Automated Equipment Rack"
@@ -6326,7 +6343,7 @@
 "eVw" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellowcorners2/west,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "eVH" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -6421,7 +6438,7 @@
 	id = "engi4"
 	},
 /turf/open/floor/corsat/plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "eYL" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -7814,6 +7831,12 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
+"gcS" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/rostock/engineering/lower_aft_corridor)
 "gdm" = (
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/surgery)
@@ -10022,7 +10045,7 @@
 	network = list("Rostock")
 	},
 /turf/open/floor/prison/floor_plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "hLd" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -10522,7 +10545,7 @@
 "hZS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkbrown2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "hZX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/silverfull,
@@ -11930,6 +11953,9 @@
 	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
+"jaP" = (
+/turf/closed/wall/upp/reinforced/outer,
+/area/rostock/engineering/lower_aft_corridor)
 "jaR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/eat,
@@ -12333,7 +12359,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "jqy" = (
 /obj/structure/ladder{
 	height = 1;
@@ -13360,7 +13386,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "jZB" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1
@@ -13494,7 +13520,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "keJ" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/item/clothing/head/hardhat{
@@ -15340,7 +15366,7 @@
 "lEP" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/floor_plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "lFi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15425,7 +15451,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "lGU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -15905,7 +15931,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "lZa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -16131,7 +16157,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "mjw" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/spawner/random/balaclavas,
@@ -16538,7 +16564,7 @@
 	req_one_access = list(232, 240)
 	},
 /turf/open/floor/corsat/marked,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "mCp" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -16622,7 +16648,7 @@
 	id = "engi3"
 	},
 /turf/open/floor/corsat/plate,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "mFp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -17201,7 +17227,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "ncC" = (
 /obj/effect/projector{
 	name = "upp_up2";
@@ -17419,6 +17445,12 @@
 /obj/item/reagent_container/food/snacks/upp,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
+"nmI" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/engineering/lower_aft_corridor)
 "nnl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -17951,6 +17983,9 @@
 "nJK" = (
 /turf/open/floor/strata/red1,
 /area/rostock/lower_deck/m_hallway)
+"nKw" = (
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/rostock/engineering/lower_aft_corridor)
 "nLh" = (
 /obj/structure/machinery/autodoc_console{
 	upgrades = list(1, 2, 3, 4)
@@ -18046,9 +18081,9 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lifeboat)
 "nPf" = (
-/obj/structure/prop/almayer/computers/mapping_computer{
-	density = 0;
-	pixel_y = 16
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/rostock/airoom)
@@ -21048,7 +21083,7 @@
 "qbM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "qch" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -22157,7 +22192,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "qUL" = (
 /obj/docking_port/stationary/emergency_response/port2{
 	name = "Rostock starboard landing pad"
@@ -23268,7 +23303,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/prison/darkyellowcorners2/west,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "rUr" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -24548,7 +24583,7 @@
 "sUj" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellowcorners2,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "sUC" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/goldappleseed,
@@ -25215,7 +25250,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowcorners2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "ttR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/cargo,
@@ -25595,7 +25630,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "tMr" = (
 /obj/structure/machinery/light,
 /obj/structure/disposalpipe/segment{
@@ -27374,7 +27409,7 @@
 "vch" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/prison/darkyellowfull2/east,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "vco" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -27782,7 +27817,7 @@
 "vrV" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "vss" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -28215,7 +28250,7 @@
 /area/rostock/lower_deck/ammunition_storage)
 "vLD" = (
 /turf/open/floor/prison/darkbrown2/west,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "vLK" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -28369,7 +28404,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "vQn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28874,7 +28909,7 @@
 "wdB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellow2,
-/area/rostock/engineering/main_area)
+/area/rostock/engineering/lower_aft_corridor)
 "wdD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -30284,6 +30319,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
+"xfE" = (
+/turf/open/floor/prison/darkyellow2,
+/area/rostock/engineering/lower_aft_corridor)
 "xfM" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -31690,6 +31728,10 @@
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/engineering/main_area)
+"ylD" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/floor_plate,
+/area/rostock/engineering/lower_aft_corridor)
 "ymg" = (
 /obj/structure/prop/almayer/cannon_cables,
 /obj/structure/blocker/invisible_wall,
@@ -32479,13 +32521,13 @@ ofW
 ofW
 ofW
 ofW
-xyz
-xyz
-xyz
-xyz
-xyz
-xyz
-xyz
+jaP
+jaP
+jaP
+jaP
+jaP
+jaP
+jaP
 ofW
 ofW
 ofW
@@ -32661,13 +32703,13 @@ ofW
 ofW
 ofW
 ofW
-xyz
+jaP
 eYt
 qUJ
 cej
 eSY
 mFj
-xyz
+jaP
 ofW
 ofW
 ofW
@@ -32843,13 +32885,13 @@ ofW
 ofW
 ofW
 ofW
-xyz
+jaP
 bHd
 vQb
 hZS
 jZy
 eEN
-xyz
+jaP
 ofW
 ofW
 ofW
@@ -33025,13 +33067,13 @@ gxt
 gxt
 gxt
 gxt
-xyz
+jaP
 tMn
 bvV
 vLD
 jqt
 tMn
-xyz
+jaP
 gxt
 gxt
 gxt
@@ -33207,13 +33249,13 @@ xyz
 xyz
 xyz
 xyz
-xyz
+jaP
 euu
 lYY
-caC
+atA
 eSY
 dYJ
-xyz
+jaP
 xyz
 xyz
 xyz
@@ -33389,13 +33431,13 @@ sbu
 sbu
 sbu
 sbu
-xyz
-xyz
+jaP
+jaP
 lGK
-caC
+atA
 rUg
-xyz
-xyz
+jaP
+jaP
 sbu
 sbu
 sbu
@@ -33572,11 +33614,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
+jaP
 ttu
-caC
+atA
 sUj
-xyz
+jaP
 sbu
 sbu
 sbu
@@ -33752,15 +33794,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-xyz
-xyz
+jaP
+jaP
+jaP
 bBU
-caC
-sry
-xyz
-xyz
-xyz
+atA
+xfE
+jaP
+jaP
+jaP
 sbu
 sbu
 sbu
@@ -33934,15 +33976,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
-ihj
+jaP
+nmI
+nKw
 bBU
-caC
-sry
-ihj
-qeV
-xyz
+atA
+xfE
+nKw
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -34116,15 +34158,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
+jaP
+nmI
 vch
 vrV
-sIN
+ylD
 wdB
 nbN
-qeV
-xyz
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -34298,15 +34340,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
-ihj
+jaP
+nmI
+nKw
 bBU
-caC
-sry
+atA
+xfE
 qbM
-qeV
-xyz
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -34480,15 +34522,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-xyz
-xyz
+jaP
+jaP
+jaP
 bBU
-caC
-sry
-xyz
-xyz
-xyz
+atA
+xfE
+jaP
+jaP
+jaP
 sbu
 sbu
 sbu
@@ -34664,11 +34706,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
+jaP
 kep
-caC
+atA
 eVw
-xyz
+jaP
 sbu
 sbu
 sbu
@@ -34846,11 +34888,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
-jnw
-caC
-caC
-xyz
+jaP
+gcS
+atA
+atA
+jaP
 sbu
 sbu
 sbu
@@ -35028,11 +35070,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
+jaP
 hKX
 coi
 lEP
-xyz
+jaP
 sbu
 sbu
 sbu
@@ -35210,11 +35252,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
-jnw
+jaP
+gcS
 vLD
-caC
-xyz
+atA
+jaP
 sbu
 sbu
 sbu
@@ -35392,11 +35434,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
-jnw
-caC
-caC
-xyz
+jaP
+gcS
+atA
+atA
+jaP
 sbu
 sbu
 sbu
@@ -35574,11 +35616,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
+jaP
 ttu
-caC
+atA
 sUj
-xyz
+jaP
 sbu
 sbu
 sbu
@@ -35754,15 +35796,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-xyz
-xyz
+jaP
+jaP
+jaP
 bBU
-caC
-sry
-xyz
-xyz
-xyz
+atA
+xfE
+jaP
+jaP
+jaP
 sbu
 sbu
 sbu
@@ -35936,15 +35978,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
-ihj
+jaP
+nmI
+nKw
 bBU
-caC
-sry
-ihj
-qeV
-xyz
+atA
+xfE
+nKw
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -36118,15 +36160,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
+jaP
+nmI
 vch
 vrV
-sIN
+ylD
 wdB
 nbN
-qeV
-xyz
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -36300,15 +36342,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-qeV
+jaP
+nmI
 qbM
 bBU
-caC
-sry
-ihj
-qeV
-xyz
+atA
+xfE
+nKw
+nmI
+jaP
 sbu
 sbu
 sbu
@@ -36482,15 +36524,15 @@ sbu
 sbu
 sbu
 sbu
-xyz
-xyz
-xyz
+jaP
+jaP
+jaP
 bBU
-caC
-sry
-xyz
-xyz
-xyz
+atA
+xfE
+jaP
+jaP
+jaP
 sbu
 sbu
 sbu
@@ -36666,11 +36708,11 @@ sbu
 sbu
 sbu
 sbu
-xyz
+jaP
 mjj
-caC
-rxS
-xyz
+atA
+dJr
+jaP
 sbu
 sbu
 sbu
@@ -36848,11 +36890,11 @@ xyz
 xyz
 sbu
 xyz
-xyz
+jaP
 mCo
-biQ
-dvF
-xyz
+cnp
+bOQ
+jaP
 xyz
 sbu
 xyz

@@ -169,7 +169,7 @@
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/engineering/lower_aft_corridor
-	name = "SSV Rostock - Lower Aft Entrance Corridor"
+	name = "SSV Rostock - Upper Aft Entrance Corridor"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 

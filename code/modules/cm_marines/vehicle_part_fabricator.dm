@@ -12,7 +12,6 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
-
 	var/faction = FACTION_MARINE
 	var/datum/controller/supply/linked_supply_controller
 	var/list/datum/build_queue_entry/build_queue = list()
@@ -82,10 +81,10 @@
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
-	process_build_queue()
-
 	if(generate_points)
 		add_to_point_store()
+
+	process_build_queue()
 
 	update_icon()
 
@@ -100,11 +99,23 @@
 		busy = TRUE
 		var/datum/build_queue_entry/entry = build_queue[1]
 
-		if(ispath(entry.item, /obj/structure/ship_ammo/sentry))
+		var/is_omnisentry = ispath(entry.item, /obj/structure/ship_ammo/sentry)
+
+		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
+			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
+				balloon_alert_to_viewers("out of points - printing paused!")
+				visible_message(SPAN_WARNING("[src] flashes a warning light."))
+				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
+			busy = FALSE
+			return
+
+		if(is_omnisentry)
+			spend_point_store(omnisentry_price)
 			omnisentry_price += omnisentry_price_scale
+		else
+			spend_point_store(entry.cost)
 
 		visible_message(SPAN_NOTICE("[src] starts printing something."))
-		spend_point_store(entry.cost)
 		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
@@ -142,36 +153,54 @@
 		var/index = params["index"]
 
 		if(is_ammo == 0)
-			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/dropship_equipment)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 		else
-			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/ship_ammo)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
 			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 	if(action == "cancel")
 		var/index = params["index"]
 
 		if(length(build_queue))
-			if(index == 1)
+			if(index == null || index > length(build_queue))
+				return
+
+			if(busy && index == 1)
 				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
 				return
 
 			var/datum/build_queue_entry/entry = build_queue[index]
 
 			build_queue.Remove(entry)
-			add_to_point_store(entry.cost)
-			return
+			return TRUE
 
 	else
 		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")
@@ -212,6 +241,8 @@
 /obj/structure/machinery/part_fabricator/dropship/upp
 	name = "UPP dropship part fabricator"
 	faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_FLIGHT)
+
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
 	return linked_supply_controller.dropship_points
@@ -229,6 +260,10 @@
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
+		if(dropship_equipment_data.faction_exclusive)
+			if(faction != dropship_equipment_data.faction_exclusive)
+				continue
+
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
@@ -250,6 +285,9 @@
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
+		if(ship_ammo_data.faction_exclusive)
+			if(faction != ship_ammo_data.faction_exclusive)
+				continue
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue

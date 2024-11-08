@@ -61,9 +61,9 @@
 			var/picked = params["picked"]
 
 			switch(picked)
-				if("M")
+				if("m")
 					prefs.body_presentation = MALE
-				if("F")
+				if("f")
 					prefs.body_presentation = FEMALE
 				else
 					return

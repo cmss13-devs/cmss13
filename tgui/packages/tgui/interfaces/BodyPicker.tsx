@@ -119,18 +119,20 @@ export const BodyPicker = () => {
             <Stack vertical fill>
               <Stack.Item>
                 <Button
-                  onClick={() => act('body_presentation', { picked: 'M' })}
+                  onClick={() => act('body_presentation', { picked: 'm' })}
                   height="5em"
                   lineHeight="5em"
                   icon="mars"
+                  selected={body_presentation === 'm'}
                 />
               </Stack.Item>
               <Stack.Item>
                 <Button
                   height="5em"
                   lineHeight="5em"
-                  onClick={() => act('body_presentation', { picked: 'F' })}
+                  onClick={() => act('body_presentation', { picked: 'f' })}
                   icon="venus"
+                  selected={body_presentation === 'f'}
                 />
               </Stack.Item>
             </Stack>

@@ -94,6 +94,8 @@
 	name = "stun pistol bullet"
 	sound_override = null
 
+	accuracy = HIT_ACCURACY_TIER_4
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"

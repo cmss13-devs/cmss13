@@ -91,9 +91,9 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in GLOB.all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+	for(var/area/cur_area in GLOB.all_areas)
+		cur_area.is_resin_allowed = TRUE
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 

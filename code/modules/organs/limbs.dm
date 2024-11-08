@@ -182,11 +182,14 @@
 	if(severity == 2)
 		probability = 1
 		damage = 3
-	if(prob(probability))
+	if(can_emp_delimb() && prob(probability))
 		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
+/// If this limb can be dropped as a result of an EMP
+/obj/limb/proc/can_emp_delimb()
+	return TRUE
 
 /obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
@@ -277,6 +280,7 @@
 
 	var/previous_brute = brute_dam
 	var/previous_burn = burn_dam
+	var/previous_bonebreak = (status & LIMB_BROKEN)
 
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
@@ -370,7 +374,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (status & LIMB_BROKEN))
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && previous_bonebreak) //delimbable only if broken before this hit
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -531,6 +535,9 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
+	if(internal && SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_INTERNAL_BLEEDING))
+		internal = FALSE
+
 
 	if(length(bleeding_effects_list))
 		if(!internal)
@@ -1308,6 +1315,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	vital = 1
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
+
+/obj/limb/groin/can_emp_delimb()
+	if(status & (LIMB_ROBOT | LIMB_SYNTHSKIN))
+		return FALSE
+
+	return TRUE
 
 /obj/limb/leg
 	name = "leg"

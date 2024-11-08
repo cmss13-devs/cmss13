@@ -1,0 +1,13 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "UPP req vendor no longer spends points"
+  - rscadd: "adds UPP vs USCM gamemode, event only"
+  - ui: "adds option to both early and latejoin UPP roles from lobby on UPP vs USCM"
+  - rscadd: "adds early and latespawners for UPP roles"
+  - balance: "updates UPP ERT vendors to have 45 points"
+  - rscadd: "Added standard apparel to every UPP roles to clothing vendor"
+  - balance: "A lot of changes to upp vendor stuff in order to make them on pair with USCM"
+  - rscadd: "adds option for spawners to use lists of jobs"
+  - rscadd: "enables overwatch consoles of other factions"
+  - rscadd: "UPP squad supply drops"

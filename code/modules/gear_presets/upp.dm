@@ -653,7 +653,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/specialist
-	name = "UPP Specialist (Cryo)"
+	name = "UPP Specialist minigun (Cryo)"
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST

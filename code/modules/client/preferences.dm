@@ -1898,13 +1898,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					load_character()
 					reload_cooldown = world.time + 50
 
-					// Refresh pickers
-					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
-					if(picker_ui)
-						picker_ui.send_update()
-					picker_ui = SStgui.get_open_ui(user, body_picker)
-					if(picker_ui)
-						picker_ui.send_update()
+					update_all_pickers(user)
 
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
@@ -1922,13 +1916,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(istype(np))
 						np.new_player_panel_proc()
 
-					// Refresh pickers
-					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
-					if(picker_ui)
-						picker_ui.send_update()
-					picker_ui = SStgui.get_open_ui(user, body_picker)
-					if(picker_ui)
-						picker_ui.send_update()
+					update_all_pickers(user)
 
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
@@ -2284,6 +2272,17 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 /datum/preferences/proc/tutorial_savestring_to_list(savestring)
 	completed_tutorials = splittext(savestring, ";")
 	return completed_tutorials
+
+/// Refreshes all open TGUI interfaces inside the character prefs menu
+/datum/preferences/proc/update_all_pickers(mob/user)
+	var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, body_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, loadout_picker)
+	picker_ui?.send_update()
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

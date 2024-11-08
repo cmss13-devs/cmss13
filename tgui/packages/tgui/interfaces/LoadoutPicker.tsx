@@ -98,7 +98,7 @@ const ItemRender = (props: {
 
   const { points, max_points } = data;
 
-  const atLimit = points + cost >= max_points;
+  const atLimit = points + cost > max_points;
 
   return (
     <Stack>

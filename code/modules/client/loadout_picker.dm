@@ -22,7 +22,7 @@
 /datum/loadout_picker/ui_data(mob/user)
 	. = ..()
 
-	var/datum/preferences/prefs = user.client.prefs
+	var/datum/preferences/prefs = user.client?.prefs
 	if(!prefs)
 		return
 
@@ -43,7 +43,9 @@
 /datum/loadout_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	var/datum/preferences/prefs = ui.user.client.prefs
+	var/datum/preferences/prefs = ui.user.client?.prefs
+	if(!prefs)
+		return
 
 	switch(action)
 		if("add")

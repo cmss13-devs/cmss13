@@ -2819,7 +2819,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
-	title = JOB_UPP_KOL_OFFICER
+	title = JOB_UPP_LT_GENERAL
 	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
 /datum/equipment_preset/upp/officer/ley_gen
@@ -2992,7 +2992,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
-	title = JOB_UPP_KOL_OFFICER
+	title = JOB_UPP_GENERAL
 	gear_preset = /datum/equipment_preset/upp/officer/gen
 
 /datum/equipment_preset/upp/officer/gen

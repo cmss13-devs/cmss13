@@ -229,6 +229,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/far_north_outpost
 	name = "Far North Of The Outpost"
 	icon_state = "cabin"
+	unoviable_timer = FALSE
 
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
@@ -249,22 +250,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Sorokyne Outpost"
 	icon_state = "shed_x_ag"
 	minimap_color = MINIMAP_AREA_CAVES
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outpost/foyer
 	name = "Outpost Main Foyer"
 	icon_state = "outpost_gen_1"
-
-/area/strata/ag/interior/outpost/hallways
-	name = "Do not use."
-	icon_state = "outpost_admin_3"
-	minimap_color = MINIMAP_AREA_GLASS
-	ceiling = CEILING_GLASS
-
-/area/strata/ag/interior/outpost/hallways/north
-	name = "Outpost North Hallways"
-
-/area/strata/ag/interior/outpost/hallways/south
-	name = "Outpost South Hallways"
 
 /area/strata/ag/interior/outpost/maint
 	name = "Outpost Canteen - Eastern Maintenance"
@@ -297,21 +287,16 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Outpost Administration"
 	icon_state = "outpost_admin_0"
 	minimap_color = MINIMAP_AREA_COMMAND
+	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/outpost/canteen
 	name = "Outpost Canteen"
 	icon_state = "outpost_canteen_0"
+	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/outpost/canteen/bar
 	name = "Outpost Bar"
 	icon_state = "outpost_canteen_2"
-
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria
-	name = "Outpost Cafeteria"
-	icon_state = "outpost_canteen_0"
-
-/area/strata/ag/interior/outpost/canteen/personal_storage
-	name = "Outpost Personal Storage"
 
 //-Mining Outpost
 
@@ -319,24 +304,21 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	minimap_color = MINIMAP_AREA_MINING
 	linked_lz = DROPSHIP_LZ1
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/mining_outpost/central
-	name = "Mining Outpost Central Hallway"
+	name = "Mining Outpost Central"
 	icon_state = "dorms_0"
+	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/south_dormitories
 	name = "Mining Outpost South Dormitories"
 	icon_state = "dorms_3"
+	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/maintenance
 	name = "Mining Outpost Dormitory Maintenance"
 	icon_state = "outpost_maint"
-
-/area/strata/ag/interior/mining_outpost/hallways
-	name = "Mining Outpost Hallways"
-	icon_state = "outpost_admin_3"
-	minimap_color = MINIMAP_AREA_GLASS
-	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/hive
 	name = "Mining Outpost Dormitory Thermal Storage"
@@ -345,6 +327,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/mining_outpost/canteen
 	name = "Mining Outpost Dormitory Canteen"
 	icon_state = "dorms_canteen"
+	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/flight_control
 	name = "Mining Outpost Flight Control"
@@ -368,6 +351,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Wooden Hospital - Hospital Proper"
 	icon_state = "cabin3"
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/strata/ag/interior/mountain
 	name = "Outside mountain"
@@ -432,6 +416,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "hive_1"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	minimap_color = MINIMAP_AREA_CAVES_DEEP
+	unoviable_timer = FALSE
 
 
 //-Underground Dorms
@@ -448,21 +433,26 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/sec2
 	name = "Underground Security Dorm #2"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin1
 	name = "Underground General Staff Dorm #1"
 
 /area/strata/ug/interior/outpost/underground_dorms/admin2
 	name = "Underground General Staff Dorm #2"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin3
 	name = "Underground General Staff Dorm #3"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/admin4
 	name = "Underground General Staff Dorm #4"
+	unoviable_timer = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/med1
 	name = "Underground Medical Dorm #1"

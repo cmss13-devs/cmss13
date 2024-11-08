@@ -15,7 +15,7 @@
 
 /datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	leaders = cryo_squad.num_leaders
+	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
 	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
 	if(mob_max > length(members))

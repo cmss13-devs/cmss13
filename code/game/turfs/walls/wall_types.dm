@@ -663,6 +663,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1
+	baseturfs = /turf/open/mars_cave/mars_cave_2
 
 
 

@@ -40,6 +40,7 @@
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
@@ -57,6 +58,7 @@
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/landing_zone_1/lz1_console
 	name = "Chance's Claim - Dropship Alamo Console"
@@ -71,6 +73,7 @@
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
@@ -79,6 +82,7 @@
 	name = "Chance's Claim - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/landing_zone_2/lz2_console
 	name = "Chance's Claim - Dropship Normandy Console"
@@ -131,22 +135,27 @@
 /area/lv522/outdoors/colony_streets/central_streets
 	name = "Central Street - West"
 	icon_state = "west"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/outdoors/colony_streets/east_central_street
 	name = "Central Street - East"
 	icon_state = "east"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/outdoors/colony_streets/south_street
 	name = "Colony Streets - South"
 	icon_state = "south"
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/lv522/outdoors/colony_streets/south_east_street
 	name = "Colony Streets - Southeast"
 	icon_state = "southeast"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/outdoors/colony_streets/south_west_street
 	name = "Colony Streets - Southwest"
 	icon_state = "southwest"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/outdoors/colony_streets/north_west_street
 	name = "Colony Streets - Northwest"
@@ -173,11 +182,13 @@
 /area/lv522/indoors/toilet
 	name = "LV522 - Outdoor Toilets"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/indoors/lone_buildings/engineering
 	name = "Emergency Engineering"
 	icon_state = "engine_smes"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/indoors/lone_buildings/spaceport
 	name = "North LZ1 - Spaceport"
@@ -189,14 +200,17 @@
 	name = "East LZ1 - Outdoor T-Comms"
 	icon_state = "yellow"
 	ceiling = CEILING_GLASS
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/indoors/lone_buildings/storage_blocks
 	name = "Outdoor Storage"
 	icon_state = "blue"
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/lv522/indoors/lone_buildings/chunk
 	name = "Chunk 'N Dump"
 	icon_state = "blue"
+	linked_lz = DROPSHIP_LZ1
 
 //A Block
 /area/lv522/indoors/a_block
@@ -317,6 +331,7 @@
 	name = "B-Block"
 	icon_state = "red"
 	ceiling =  CEILING_METAL
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv522/indoors/b_block/hydro
 	name = "B-Block - Hydroponics"
@@ -325,6 +340,7 @@
 
 /area/lv522/indoors/b_block/hydro/glass
 	ceiling = CEILING_GLASS
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/lv522/indoors/b_block/bar
 	name = "B-Block - Bar"
@@ -334,12 +350,14 @@
 	name = "B-Block - Hydroponics Bridge Network"
 	icon_state = "hallC1"
 	ceiling = CEILING_GLASS
+	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 //C Block
 
 /area/lv522/indoors/c_block
 	name = "C-Block"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/indoors/c_block/cargo
 	name = "C-Block - Cargo"
@@ -348,6 +366,7 @@
 /area/lv522/indoors/c_block/mining
 	name = "C-Block - Mining"
 	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv522/indoors/c_block/garage
 	name = "C-Block - Garage"

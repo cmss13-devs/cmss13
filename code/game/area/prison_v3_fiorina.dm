@@ -121,7 +121,6 @@
 
 /area/fiorina/station/lowsec/east
 	name = "Fiorina - Low Security Eastside"
-	linked_lz = DROPSHIP_LZ1
 
 /area/fiorina/station/power_ring
 	name = "Fiorina - Engineering Ring"
@@ -227,9 +226,12 @@
 
 /area/fiorina/station/telecomm/lz2_engineering
 	name = "Fiorina - Engineering Secondary Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fiorina/station/telecomm/lz2_north
 	name = "Fiorina - LZ2 North Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fiorina/station/telecomm/lz2_maint
 	name = "Fiorina - Backup Communications Relay"
+	linked_lz = DROPSHIP_LZ2

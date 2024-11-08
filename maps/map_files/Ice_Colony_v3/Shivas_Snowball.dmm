@@ -7010,7 +7010,7 @@
 "cIV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/warehouse/caves)
+/area/shiva/interior/caves/research_caves)
 "cIZ" = (
 /obj/structure/surface/rack,
 /obj/item/stack/cable_coil/blue,
@@ -7375,7 +7375,7 @@
 "dbv" = (
 /obj/structure/largecrate/random/case,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/aerodrome)
+/area/shiva/exterior/junkyard/cp_bar)
 "dbH" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
@@ -9659,9 +9659,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
-"gik" = (
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/aerodrome)
 "giH" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony,
 /turf/open/floor/plating,
@@ -9714,9 +9711,6 @@
 	dir = 8
 	},
 /area/shiva/interior/colony/central)
-"goe" = (
-/turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/aerodrome)
 "goh" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
@@ -11393,7 +11387,7 @@
 "ijm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/warehouse/caves)
+/area/shiva/interior/caves/research_caves)
 "ijq" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/shiva/north,
@@ -12882,9 +12876,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
-"kaC" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/aerodrome)
 "kaL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
@@ -14234,7 +14225,7 @@
 "lxD" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/aerodrome)
+/area/shiva/exterior/junkyard/cp_bar)
 "lyh" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -18539,7 +18530,7 @@
 "qEH" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/aerodrome)
+/area/shiva/exterior/junkyard/cp_bar)
 "qEK" = (
 /obj/structure/prop/invuln/ice_prefab/standalone{
 	icon_state = "white"
@@ -20032,9 +20023,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
-"sFs" = (
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/interior/aerodrome)
 "sFu" = (
 /obj/item/tool/mop,
 /turf/open/floor/wood,
@@ -20506,9 +20494,6 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
-"tjL" = (
-/turf/open/auto_turf/snow/layer4,
-/area/shiva/interior/aerodrome)
 "tkb" = (
 /obj/structure/surface/table,
 /obj/item/tool/pen/blue,
@@ -20563,7 +20548,7 @@
 "tmP" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/aerodrome)
+/area/shiva/exterior/junkyard/cp_bar)
 "tmV" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/arrivals,
 /turf/open/shuttle/elevator/grating,
@@ -22004,9 +21989,6 @@
 	},
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
-"uLi" = (
-/turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/aerodrome)
 "uLn" = (
 /obj/structure/closet/secure_closet/medical1{
 	req_access_txt = "100"
@@ -23599,7 +23581,7 @@
 "wXs" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/aerodrome)
+/area/shiva/exterior/junkyard/cp_bar)
 "wXQ" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/floor3,
@@ -24064,9 +24046,6 @@
 "xHu" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/aerodrome)
-"xHv" = (
-/turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/aerodrome)
 "xIL" = (
 /obj/item/powerloader_clamp,
@@ -46123,7 +46102,7 @@ uFl
 sod
 sod
 sod
-sax
+jrg
 sPM
 vUH
 sod
@@ -46281,11 +46260,11 @@ alA
 tHd
 fnG
 rEV
-sax
-sax
+jrg
+jrg
 luD
-sax
-sax
+jrg
+jrg
 sod
 sod
 sod
@@ -46443,10 +46422,10 @@ oZq
 ijm
 cIV
 cIV
-sax
-sax
-sax
-sax
+jrg
+jrg
+jrg
+jrg
 wiy
 wiy
 wiy
@@ -48888,7 +48867,7 @@ bJj
 bJj
 bJj
 bJj
-sax
+jrg
 puZ
 puZ
 puZ
@@ -49050,9 +49029,9 @@ bJj
 bJj
 gpz
 bJj
-sax
-sax
-sax
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49212,9 +49191,9 @@ jrg
 ean
 jMB
 lsR
-sax
-sax
-sax
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49374,9 +49353,9 @@ jrg
 bJj
 bJj
 bJj
-sax
-sax
-sax
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49482,9 +49461,9 @@ qbF
 gJo
 qbF
 daD
-xHv
-xHv
-xHv
+gJo
+gJo
+gJo
 wXs
 asz
 abn
@@ -49536,9 +49515,9 @@ bJj
 bJj
 dIE
 osE
-sax
-sax
-sax
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49644,9 +49623,9 @@ qdH
 qdH
 qbF
 bIV
-xHv
-xHv
-xHv
+gJo
+gJo
+gJo
 wXs
 asz
 abp
@@ -49698,10 +49677,10 @@ bJj
 bJj
 gpz
 osE
-sax
-sax
-sax
-sax
+jrg
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49806,9 +49785,9 @@ qdH
 qbF
 qbF
 gJo
-xHv
-xHv
-xHv
+gJo
+gJo
+gJo
 wXs
 asz
 abp
@@ -49860,10 +49839,10 @@ bJj
 bJj
 gpz
 osE
-sax
-sax
-sax
-sax
+jrg
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -49961,16 +49940,16 @@ bIV
 cZk
 cZk
 cZk
-sFs
-xHv
-sFs
-xHv
-xHv
-xHv
-xHv
-xHv
-xHv
-uLi
+bIV
+gJo
+bIV
+gJo
+gJo
+gJo
+gJo
+gJo
+gJo
+qbF
 wXs
 asz
 aNR
@@ -50022,10 +50001,10 @@ bJj
 bJj
 bJj
 amu
-sax
-sax
-sax
-sax
+jrg
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -50123,16 +50102,16 @@ cZk
 cZk
 cZk
 cZk
-tjL
-xHv
-xHv
-gik
-gik
-gik
+xvA
+gJo
+gJo
+bFg
+bFg
+bFg
 dbv
-kaC
-xHv
-xHv
+aUd
+gJo
+gJo
 wXs
 asz
 aNP
@@ -50184,9 +50163,9 @@ efO
 osE
 bJj
 amu
-sax
-sax
-sax
+jrg
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -50285,16 +50264,16 @@ bIV
 bFg
 cZk
 bIV
-xHv
-sFs
-xHv
-xHv
-gik
-xHv
+gJo
+bIV
+gJo
+gJo
+bFg
+gJo
 tmP
-kaC
-xHv
-goe
+aUd
+gJo
+bsV
 wXs
 asz
 abp
@@ -50447,16 +50426,16 @@ bIV
 fUZ
 bIV
 bIV
-xHv
-xHv
-xHv
-xHv
-xHv
-goe
-kaC
-kaC
-kaC
-xHv
+gJo
+gJo
+gJo
+gJo
+gJo
+bsV
+aUd
+aUd
+aUd
+gJo
 wXs
 asz
 abp
@@ -50609,16 +50588,16 @@ bIV
 bFg
 bFg
 bFg
-xHv
-xHv
-uLi
-xHv
+gJo
+gJo
+qbF
+gJo
 qEH
-kaC
-kaC
-kaC
-xHv
-xHv
+aUd
+aUd
+aUd
+gJo
+gJo
 wXs
 asz
 abx
@@ -50772,15 +50751,15 @@ bFg
 bFg
 bFg
 bIV
-xHv
-sFs
-xHv
-xHv
-goe
-kaC
-xHv
-gik
-xHv
+gJo
+bIV
+gJo
+gJo
+bsV
+aUd
+gJo
+bFg
+gJo
 wXs
 asz
 asz
@@ -50934,15 +50913,15 @@ bFg
 bFg
 bFg
 bFg
-xHv
-xHv
-xHv
-sFs
-xHv
-xHv
-xHv
-gik
-gik
+gJo
+gJo
+gJo
+bIV
+gJo
+gJo
+gJo
+bFg
+bFg
 wXs
 asz
 aNN
@@ -51096,15 +51075,15 @@ bFg
 bFg
 bFg
 bIV
-xHv
-xHv
-xHv
-uLi
-xHv
-xHv
-xHv
-gik
-xHv
+gJo
+gJo
+gJo
+qbF
+gJo
+gJo
+gJo
+bFg
+gJo
 wXs
 bXo
 kxx
@@ -51257,16 +51236,16 @@ bFg
 bFg
 bFg
 bIV
-kaC
-xHv
-xHv
-xHv
-sFs
-xHv
-xHv
-uLi
-xHv
-goe
+aUd
+gJo
+gJo
+gJo
+bIV
+gJo
+gJo
+qbF
+gJo
+bsV
 wXs
 lSU
 aNL
@@ -51419,16 +51398,16 @@ gJo
 bFg
 bFg
 cZk
-kaC
-xHv
-xHv
-xHv
-xHv
-xHv
-goe
-xHv
-xHv
-xHv
+aUd
+gJo
+gJo
+gJo
+gJo
+gJo
+bsV
+gJo
+gJo
+gJo
 wXs
 lSU
 lSU
@@ -51581,16 +51560,16 @@ oQl
 acI
 acI
 acI
-kaC
-kaC
-kaC
-kaC
-kaC
-kaC
-xHv
-xHv
+aUd
+aUd
+aUd
+aUd
+aUd
+aUd
+gJo
+gJo
 lxD
-xHv
+gJo
 wXs
 lSU
 lSU
@@ -52614,7 +52593,7 @@ fXX
 osE
 fXX
 amu
-sax
+jrg
 puZ
 puZ
 puZ
@@ -52776,9 +52755,9 @@ gpz
 bJj
 osE
 amu
-sax
-sax
-sax
+jrg
+jrg
+puZ
 puZ
 puZ
 puZ
@@ -52938,9 +52917,9 @@ rbq
 rbq
 rbq
 amu
-sax
-sax
-sax
+jrg
+jrg
+puZ
 puZ
 puZ
 puZ
@@ -53100,7 +53079,7 @@ rbq
 rbq
 rbq
 amu
-sax
+jrg
 puZ
 puZ
 puZ
@@ -53262,7 +53241,7 @@ fXX
 fXX
 bJj
 amu
-sax
+jrg
 puZ
 puZ
 puZ
@@ -53424,7 +53403,7 @@ fXX
 bJj
 fXX
 amu
-sax
+jrg
 puZ
 puZ
 puZ
@@ -53586,7 +53565,7 @@ bJj
 fXX
 fXX
 iTQ
-sax
+jrg
 puZ
 puZ
 puZ
@@ -53748,8 +53727,8 @@ gpz
 fXX
 jrg
 iTQ
-sax
-sax
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -53910,8 +53889,8 @@ gpz
 bJj
 jrg
 jrg
-sax
-sax
+jrg
+jrg
 puZ
 puZ
 puZ
@@ -54072,7 +54051,7 @@ gpz
 efO
 jrg
 jrg
-sax
+jrg
 puZ
 puZ
 puZ
@@ -54234,7 +54213,7 @@ gpz
 bJj
 bJj
 jrg
-sax
+jrg
 puZ
 puZ
 puZ
@@ -55834,7 +55813,7 @@ dAt
 dwQ
 flN
 flN
-amu
+pxA
 bJj
 jrg
 jrg

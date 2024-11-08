@@ -85,7 +85,6 @@
 	name = "Shiva's Snowball - Fort Biceps Communications Relay"
 	icon_state = "hangars0"
 	minimap_color = MINIMAP_AREA_LZ
-	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/interior/telecomm/lz1_flight
 	name = "Shiva's Snowball - LZ1 Aerodrome Communications Relay"
@@ -283,6 +282,7 @@
 	name = "Shiva's Snowball - Argentinian Research Headquarters"
 	icon_state = "bar1"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/shiva/interior/aux_power
 	name = "Shiva's Snowball - Auxiliary Generator Station"

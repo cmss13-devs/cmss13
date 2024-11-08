@@ -15,11 +15,13 @@
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_kutjevo.dmi'
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/kutjevo
 	name = "Kutjevo - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_kutjevo.dmi'
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"
@@ -55,6 +57,7 @@
 	unlimited_power = 1//ds computer
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
@@ -63,6 +66,7 @@
 	weather_enabled =  FALSE
 	unlimited_power = 1//DS Computer
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"

@@ -30,6 +30,9 @@
 /obj/item/weapon/gun/smg/unique_action(mob/user)
 	cock(user)
 
+/obj/item/weapon/gun/smg/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 4

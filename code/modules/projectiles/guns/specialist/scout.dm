@@ -60,6 +60,9 @@
 	update_attachable(integrated.slot)
 
 
+/obj/item/weapon/gun/rifle/m4ra_custom/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
 

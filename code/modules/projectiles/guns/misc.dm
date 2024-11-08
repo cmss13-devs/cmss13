@@ -22,6 +22,9 @@
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
+/obj/item/weapon/gun/minigun/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_12)
@@ -94,6 +97,9 @@
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
+
+/obj/item/weapon/gun/m60/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)

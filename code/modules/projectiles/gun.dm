@@ -766,12 +766,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
 
+	update_mouse_pointer(user, TRUE)
+
 	return 1
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()
 	if(.)
+		update_mouse_pointer(user, FALSE)
 		slowdown = initial(slowdown)
+
+/obj/item/weapon/gun/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
+
+/obj/item/weapon/gun/proc/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
 //----------------------------------------------------------
 			// \\

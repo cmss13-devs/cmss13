@@ -1256,7 +1256,6 @@
 	. = ..()
 	source = null
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
@@ -1343,6 +1342,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+	update_mouse_pointer(M, FALSE)
 
 	var/datum/action/predator_action/bracer/caster/caster_action
 	for(caster_action as anything in M.actions)

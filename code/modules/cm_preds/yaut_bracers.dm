@@ -853,6 +853,8 @@
 			return
 		caller.put_in_active_hand(caster)
 		caster_deployed = TRUE
+		if(caller.client?.prefs.custom_cursors)
+			caller.client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/plasma_caster_mouse.dmi'
 		to_chat(caller, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
 		playsound(src, 'sound/weapons/pred_plasmacaster_on.ogg', 15, TRUE)
 

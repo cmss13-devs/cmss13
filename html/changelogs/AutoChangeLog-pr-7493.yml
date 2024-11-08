@@ -1,6 +1,0 @@
-author: "harryob, drathek"
-delete-after: True
-changes:
-  - ui: "replaces the lists for hair/facial hair with images in a separate picker"
-  - ui: "replaces the eye color picker with a tgui color picker"
-  - code_imp: "added unit test for duplicate sprite accessories (hair)"

@@ -192,3 +192,102 @@
 
 
 
+/obj/structure/platform/hybrisa/engineer{dir=1} : /obj/structure/platform/metal/hybrisa/engineer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer{dir=4} : /obj/structure/platform/metal/hybrisa/engineer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer{dir=8} : /obj/structure/platform/metal/hybrisa/engineer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer : /obj/structure/platform/metal/hybrisa/engineer{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/rockdark{dir=1} : /obj/structure/platform/stone/hybrisa/rockdark/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark{dir=4} : /obj/structure/platform/stone/hybrisa/rockdark/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark{dir=8} : /obj/structure/platform/stone/hybrisa/rockdark/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark : /obj/structure/platform/stone/hybrisa/rockdark{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=1} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=4} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=8} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark : /obj/structure/platform_decoration/stone/hybrisa/rockdark{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform1{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform1/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform1/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform1/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1 : /obj/structure/platform/metal/hybrisa/metalplatform1{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform2{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform2/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform2/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform2/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2 : /obj/structure/platform/metal/hybrisa/metalplatform2{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform3{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform3/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform3/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform3/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3 : /obj/structure/platform/metal/hybrisa/metalplatform3{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform4{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform4/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform4/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform4/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4 : /obj/structure/platform/metal/hybrisa/metalplatform4{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform5{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform5/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform5/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform5/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5 : /obj/structure/platform/metal/hybrisa/metalplatform5{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform6{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform6/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform6/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform6/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6 : /obj/structure/platform/metal/hybrisa/metalplatform6{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/hybrisa/metalplatformstair1{dir=1} : /obj/structure/platform/metal/stair_cut/hybrisa_metal_left{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair2{dir=1} : /obj/structure/platform/metal/stair_cut/hybrisa_metal_right{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair1 : /obj/structure/platform/metal/stair_cut/hybrisa_metal_left{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair2 : /obj/structure/platform/metal/stair_cut/hybrisa_metal_right{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+

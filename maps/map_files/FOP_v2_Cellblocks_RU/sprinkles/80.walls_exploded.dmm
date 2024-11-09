@@ -25,6 +25,13 @@
 	icon_state = "red"
 	},
 /area/space)
+"g" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 15;
+	pixel_y = -8
+	},
+/turf/closed/wall/prison,
+/area/space)
 "k" = (
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/prison{
@@ -163,7 +170,7 @@ m
 Y
 o
 S
-J
+g
 "}
 (5,1,1) = {"
 J

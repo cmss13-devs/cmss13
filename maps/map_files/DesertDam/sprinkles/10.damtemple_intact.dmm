@@ -7,6 +7,10 @@
 /obj/structure/prop/brazier,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"bk" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "by" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -53,10 +57,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"eA" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "fl" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -77,6 +77,10 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"gl" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "gX" = (
@@ -233,10 +237,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"re" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "rh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -273,14 +273,14 @@
 "td" = (
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
-"tn" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/interior/caves/temple)
 "tq" = (
 /obj/structure/closet/coffin/predator,
 /obj/item/storage/large_holster/katana,
 /turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
+"uA" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "uK" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
@@ -318,10 +318,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"wi" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -333,7 +329,7 @@
 "zg" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/desert_dam/interior/caves/temple)
-"An" = (
+"Ab" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
@@ -368,6 +364,10 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
+"BT" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "Co" = (
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -399,9 +399,9 @@
 "EB" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
-"FE" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
+"Gq" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "Gz" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -474,17 +474,9 @@
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
-"JM" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "JP" = (
 /obj/structure/xenoautopsy/tank,
 /turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"JU" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "JZ" = (
 /obj/structure/machinery/autolathe/yautja,
@@ -534,6 +526,10 @@
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"NJ" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "NL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/rock,
@@ -573,8 +569,8 @@
 /obj/item/weapon/unathiknife,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"QT" = (
-/obj/structure/platform/stone/runed_sandstone/west,
+"QR" = (
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "RB" = (
@@ -583,17 +579,13 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
-"SD" = (
+"Sa" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "TO" = (
 /obj/structure/xenoautopsy,
 /turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"TU" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "UB" = (
 /obj/structure/machinery/power/smes/magical{
@@ -609,6 +601,10 @@
 	hull = 1
 	},
 /area/desert_dam/interior/caves/temple)
+"VQ" = (
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "WM" = (
 /obj/structure/curtain/red,
 /turf/open/floor/corsat/squareswood/north,
@@ -616,6 +612,10 @@
 "WV" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"XH" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "XQ" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -750,12 +750,12 @@ MH
 mB
 mB
 MH
-An
-wi
-wi
-wi
-wi
-tn
+Ab
+Gq
+Gq
+Gq
+Gq
+uA
 MH
 "}
 (6,1,1) = {"
@@ -953,9 +953,9 @@ MH
 MH
 mB
 mB
-SD
-JM
-FE
+Sa
+BT
+gl
 mB
 mB
 MH
@@ -979,9 +979,9 @@ mB
 uK
 mB
 mB
-JU
+QR
 pC
-eA
+XH
 mB
 mB
 zg
@@ -1005,9 +1005,9 @@ mB
 MH
 mB
 mB
-re
-QT
-TU
+bk
+VQ
+NJ
 mB
 mB
 Eh

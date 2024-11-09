@@ -60,9 +60,14 @@
 			hud_icon_state = "commi"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_background")
-		var/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 		if(istype(squad))
 			rank_icon_image.color = squad.equipment_color
+			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', H, "upp_squad_circle")
+			squad_circle.color = squad.equipment_color
+			holder.overlays += squad_circle
+		else
+			rank_icon_image.color = "#e61919"
 		holder.overlays += rank_icon_image
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()

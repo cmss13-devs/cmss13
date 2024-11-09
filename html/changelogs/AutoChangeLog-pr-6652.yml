@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - qol: "handrails are autoclimbable when on harm intent, you take some harm when doing so"
+  - balance: "crusher and ravager destroy handrails when trying to pass them similar to tables"

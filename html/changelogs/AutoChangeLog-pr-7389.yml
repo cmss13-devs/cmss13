@@ -1,7 +1,0 @@
-author: "BOBAMA"
-delete-after: True
-changes:
-  - maptweak: "quadrupled the limit for roundstart corpses on maps."
-  - maptweak: "Removed Corpses from Solaris. Added corpses to Shivas, Fiorina, and Trijent"
-  - maptweak: "added some \"last stand\" holds to Trijent and Shivas to put bodies in. Trijent research lab had most CMB weapons replaced with corporate/goon stuff."
-  - balance: "Intel points from human bodies are now capped at 5 (50 bodies)"

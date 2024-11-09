@@ -278,6 +278,7 @@
 	anchored = TRUE
 	var/job
 	var/squad
+	var/job_list
 
 /obj/effect/landmark/start/Initialize(mapload, ...)
 	. = ..()
@@ -287,6 +288,15 @@
 			LAZYADD(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYADD(GLOB.spawns_by_job[job], src)
+	if(job_list)
+		for(var/job_from_list in job_list)
+			if(squad)
+				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
+				LAZYADD(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+			else
+				LAZYADD(GLOB.spawns_by_job[job_from_list], src)
+	else
+		return
 
 /obj/effect/landmark/start/Destroy()
 	if(job)
@@ -294,6 +304,14 @@
 			LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYREMOVE(GLOB.spawns_by_job[job], src)
+	if(job_list)
+		for(var/job_from_list in job_list)
+			if(squad)
+				LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+				LAZYREMOVE(GLOB.latejoin_by_squad[squad][job_from_list], src)
+			else
+				LAZYREMOVE(GLOB.spawns_by_job[job_from_list], src)
+				LAZYREMOVE(GLOB.latejoin_by_job[job_from_list], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -413,6 +431,7 @@
 	var/squad
 	/// What job should latejoin on this landmark
 	var/job
+	var/job_list
 
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
@@ -468,12 +487,17 @@
 	name = "Chief Military Police late join"
 	job = JOB_CHIEF_POLICE
 
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
 		LAZYADD(GLOB.latejoin_by_job[job], src)
+	else if(job_list)
+		for(var/job_to_add in job_list)
+			LAZYADD(GLOB.latejoin_by_job[job_to_add], src)
+
 	else
 		GLOB.latejoin += src
 
@@ -482,6 +506,9 @@
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
 		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
+	else if(job_list)
+		for(var/job_to_add in job_list)
+			LAZYREMOVE(GLOB.latejoin_by_job[job_to_add], src)
 	else
 		GLOB.latejoin -= src
 	return ..()

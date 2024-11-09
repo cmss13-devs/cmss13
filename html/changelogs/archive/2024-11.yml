@@ -162,3 +162,43 @@
       for xeno ability buttons
   VileBeggar:
   - bugfix: Memorial ghosts will now face the user instead of facing south.
+2024-11-08:
+  BOBAMA:
+  - maptweak: quadrupled the limit for roundstart corpses on maps.
+  - maptweak: Removed Corpses from Solaris. Added corpses to Shivas, Fiorina, and
+      Trijent
+  - maptweak: added some "last stand" holds to Trijent and Shivas to put bodies in.
+      Trijent research lab had most CMB weapons replaced with corporate/goon stuff.
+  - balance: Intel points from human bodies are now capped at 5 (50 bodies)
+  BOBAMAx:
+  - bugfix: extra apc in shivas removed
+  Nomoresolvalou, Thwomper:
+  - rscadd: Adds a new predator mask accessory
+  - ui: added a selection for mask accessories in yautja prefs
+  - bugfix: fixes one speicifc yautja mask having no sprite onmob
+  - code_imp: infrastructure for adding in new mask accessories
+  - imageadd: added Thwomp's cool as hell horn sprites
+  Red-byte3D:
+  - rscadd: New preference toggle that allows Queen's to pick if they want to automatically
+      shove people they step on or not
+  cuberound:
+  - balance: binoculars have miniscope level zoom on HvH
+  harryob, drathek:
+  - ui: replaces the lists for hair/facial hair with images in a separate picker
+  - ui: replaces the eye color picker with a tgui color picker
+  - code_imp: added unit test for duplicate sprite accessories (hair)
+2024-11-09:
+  SerheyKr:
+  - balance: Changing the UPP vendors stuff
+  cuberound:
+  - bugfix: UPP req vendor no longer spends points
+  - rscadd: adds UPP vs USCM gamemode, event only
+  - ui: adds option to both early and latejoin UPP roles from lobby on UPP vs USCM
+  - rscadd: adds early and latespawners for UPP roles
+  - balance: updates UPP ERT vendors to have 45 points
+  - rscadd: Added standard apparel to every UPP roles to clothing vendor
+  - balance: A lot of changes to upp vendor stuff in order to make them on pair with
+      USCM
+  - rscadd: adds option for spawners to use lists of jobs
+  - rscadd: enables overwatch consoles of other factions
+  - rscadd: UPP squad supply drops

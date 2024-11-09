@@ -1,0 +1,293 @@
+/obj/structure/platform{dir=1;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform{dir=4;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform{dir=8;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform{icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform{dir=1} : /obj/structure/platform/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform{dir=4} : /obj/structure/platform/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform{dir=8} : /obj/structure/platform/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform : /obj/structure/platform/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration{dir=1} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=4} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=5} : /obj/structure/platform_decoration/metal/almayer/northeast{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=6} : /obj/structure/platform_decoration/metal/almayer/southeast{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=8} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=9} : /obj/structure/platform_decoration/metal/almayer/northwest{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration{dir=10} : /obj/structure/platform_decoration/metal/almayer/southwest{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+
+/obj/structure/platform/kutjevo{dir=1;icon_state="kutjevo_platform_deco"} : /obj/structure/platform_decoration/metal/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo{dir=4;icon_state="kutjevo_platform_deco"} : /obj/structure/platform_decoration/metal/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo{dir=8;icon_state="kutjevo_platform_deco"} : /obj/structure/platform_decoration/metal/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo{icon_state="kutjevo_platform_deco"} : /obj/structure/platform_decoration/metal/kutjevo{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/kutjevo{dir=1} : /obj/structure/platform/metal/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo{dir=4} : /obj/structure/platform/metal/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo{dir=8} : /obj/structure/platform/metal/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo : /obj/structure/platform/metal/kutjevo{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/kutjevo/smooth{dir=1;icon_state="kutjevo_platform_sm_deco"} : /obj/structure/platform_decoration/metal/kutjevo_smooth/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=4;icon_state="kutjevo_platform_sm_deco"} : /obj/structure/platform_decoration/metal/kutjevo_smooth/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=8;icon_state="kutjevo_platform_sm_deco"} : /obj/structure/platform_decoration/metal/kutjevo_smooth/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/smooth{icon_state="kutjevo_platform_sm_deco"} : /obj/structure/platform_decoration/metal/kutjevo_smooth{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/kutjevo/smooth{dir=1} : /obj/structure/platform/metal/kutjevo_smooth/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=4} : /obj/structure/platform/metal/kutjevo_smooth/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/smooth{dir=8} : /obj/structure/platform/metal/kutjevo_smooth/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/smooth : /obj/structure/platform/metal/kutjevo_smooth{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/kutjevo/rock{dir=1;icon_state="kutjevo_rock_deco"} : /obj/structure/platform_decoration/stone/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=4;icon_state="kutjevo_rock_deco"} : /obj/structure/platform_decoration/stone/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=8;icon_state="kutjevo_rock_deco"} : /obj/structure/platform_decoration/stone/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/kutjevo/rock{icon_state="kutjevo_rock_deco"} : /obj/structure/platform_decoration/stone/kutjevo{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/kutjevo/rock{dir=1} : /obj/structure/platform/stone/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=4} : /obj/structure/platform/stone/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/rock{dir=8} : /obj/structure/platform/stone/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/kutjevo/rock : /obj/structure/platform/stone/kutjevo{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/kutjevo/smooth/stair_plate : /obj/structure/platform/metal/kutjevo_smooth/stair_plate{@OLD;layer=@SKIP}
+
+/obj/structure/platform_decoration/kutjevo{dir=1} : /obj/structure/platform_decoration/metal/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo{dir=4} : /obj/structure/platform_decoration/metal/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo{dir=8} : /obj/structure/platform_decoration/metal/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo : /obj/structure/platform_decoration/metal/kutjevo{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/kutjevo/smooth{dir=1} : /obj/structure/platform_decoration/metal/kutjevo_smooth/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth{dir=4} : /obj/structure/platform_decoration/metal/kutjevo_smooth/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth{dir=8} : /obj/structure/platform_decoration/metal/kutjevo_smooth/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/smooth : /obj/structure/platform_decoration/metal/kutjevo_smooth{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/kutjevo/rock{dir=1} : /obj/structure/platform_decoration/stone/kutjevo/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock{dir=4} : /obj/structure/platform_decoration/stone/kutjevo/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock{dir=8} : /obj/structure/platform_decoration/stone/kutjevo/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/kutjevo/rock : /obj/structure/platform_decoration/stone/kutjevo{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+
+/obj/structure/platform/shiva{dir=1;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva{dir=4;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva{dir=8;icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva{icon_state="platform_deco"} : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/shiva{dir=1} : /obj/structure/platform/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva{dir=4} : /obj/structure/platform/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva{dir=8} : /obj/structure/platform/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva : /obj/structure/platform/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/shiva/catwalk{dir=1;icon_state="shiva_deco"} : /obj/structure/platform_decoration/metal/shiva/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=4;icon_state="shiva_deco"} : /obj/structure/platform_decoration/metal/shiva/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=8;icon_state="shiva_deco"} : /obj/structure/platform_decoration_decoration/metal/shiva/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/shiva/catwalk{icon_state="shiva_deco"} : /obj/structure/platform_decoration/metal/shiva{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/shiva/catwalk{dir=1} : /obj/structure/platform/metal/shiva/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=4} : /obj/structure/platform/metal/shiva/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva/catwalk{dir=8} : /obj/structure/platform/metal/shiva/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/shiva/catwalk : /obj/structure/platform/metal/shiva{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/shiva{dir=1} : /obj/structure/platform_decoration/metal/almayer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva{dir=4} : /obj/structure/platform_decoration/metal/almayer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva{dir=8} : /obj/structure/platform_decoration/metal/almayer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva : /obj/structure/platform_decoration/metal/almayer{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/shiva/catwalk{dir=1} : /obj/structure/platform_decoration/metal/shiva/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk{dir=4} : /obj/structure/platform_decoration/metal/shiva/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk{dir=8} : /obj/structure/platform_decoration/metal/shiva/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/shiva/catwalk : /obj/structure/platform_decoration/metal/shiva{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/strata{dir=1;icon_state="strata_platform_deco"} : /obj/structure/platform_decoration/stone/strata/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata{dir=4;icon_state="strata_platform_deco"} : /obj/structure/platform_decoration/stone/strata/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata{dir=8;icon_state="strata_platform_deco"} : /obj/structure/platform_decoration/stone/strata/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata{icon_state="strata_platform_deco"} : /obj/structure/platform_decoration/stone/strata{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/strata{dir=1} : /obj/structure/platform/stone/strata/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata{dir=4} : /obj/structure/platform/stone/strata/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata{dir=8} : /obj/structure/platform/stone/strata/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata : /obj/structure/platform/stone/strata{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/strata/metal{dir=1;icon_state="strata_metalplatform_deco"} : /obj/structure/platform_decoration/metal/strata/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata/metal{dir=4;icon_state="strata_metalplatform_deco"} : /obj/structure/platform_decoration/metal/strata/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata/metal{dir=8;icon_state="strata_metalplatform_deco"} : /obj/structure/platform_decoration/metal/strata/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/strata/metal{icon_state="strata_metalplatform_deco"} : /obj/structure/platform_decoration/metal/strata{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/strata/metal{dir=1} : /obj/structure/platform/metal/strata/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata/metal{dir=4} : /obj/structure/platform/metal/strata/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata/metal{dir=8} : /obj/structure/platform/metal/strata/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/strata/metal : /obj/structure/platform/metal/strata{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/strata{dir=1} : /obj/structure/platform_decoration/stone/strata/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata{dir=4} : /obj/structure/platform_decoration/stone/strata/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata{dir=8} : /obj/structure/platform_decoration/stone/strata/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata : /obj/structure/platform_decoration/stone/strata{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/strata/metal{dir=1} : /obj/structure/platform_decoration/metal/strata/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata/metal{dir=4} : /obj/structure/platform_decoration/metal/strata/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata/metal{dir=8} : /obj/structure/platform_decoration/metal/strata/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/strata/metal : /obj/structure/platform_decoration/metal/strata{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/mineral{dir=1;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/mineral/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral{dir=4;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/mineral/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral{dir=8;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/mineral/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral{icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/mineral{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/mineral{dir=1} : /obj/structure/platform/stone/mineral/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral{dir=4} : /obj/structure/platform/stone/mineral/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral{dir=8} : /obj/structure/platform/stone/mineral/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral : /obj/structure/platform/stone/mineral{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/mineral{dir=1} : /obj/structure/platform_decoration/stone/mineral/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral{dir=4} : /obj/structure/platform_decoration/stone/mineral/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral{dir=8} : /obj/structure/platform_decoration/stone/mineral/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral : /obj/structure/platform_decoration/stone/mineral{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/mineral/sandstone{dir=1;icon_state="sandstone_deco"} : /obj/structure/platform_decoration/stone/sandstone/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=4;icon_state="sandstone_deco"} : /obj/structure/platform_decoration/stone/sandstone/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=8;icon_state="sandstone_deco"} : /obj/structure/platform_decoration/stone/sandstone/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone{icon_state="sandstone_deco"} : /obj/structure/platform_decoration/stone/sandstone{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/mineral/sandstone{dir=1} : /obj/structure/platform/stone/sandstone/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=4} : /obj/structure/platform/stone/sandstone/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone{dir=8} : /obj/structure/platform/stone/sandstone/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone : /obj/structure/platform/stone/sandstone{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/mineral/sandstone/runed{dir=1;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/runed_sandstone/north{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=4;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/runed_sandstone/east{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=8;icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/runed_sandstone/west{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{icon_state="stone_deco"} : /obj/structure/platform_decoration/stone/runed_sandstone{@OLD;dir=@SKIP;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/mineral/sandstone/runed{dir=1} : /obj/structure/platform/stone/runed_sandstone/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=4} : /obj/structure/platform/stone/runed_sandstone/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed{dir=8} : /obj/structure/platform/stone/runed_sandstone/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/mineral/sandstone/runed : /obj/structure/platform/stone/runed_sandstone{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+
+/obj/structure/platform_decoration/mineral/sandstone{dir=1} : /obj/structure/platform_decoration/stone/sandstone/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone{dir=4} : /obj/structure/platform_decoration/stone/sandstone/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone{dir=8} : /obj/structure/platform_decoration/stone/sandstone/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone : /obj/structure/platform_decoration/stone/sandstone{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=1} : /obj/structure/platform_decoration/stone/runed_sandstone/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=4} : /obj/structure/platform_decoration/stone/runed_sandstone/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed{dir=8} : /obj/structure/platform_decoration/stone/runed_sandstone/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/mineral/sandstone/runed : /obj/structure/platform_decoration/stone/runed_sandstone{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+
+/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair_alt"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut/alt{icon_state="kutjevo_platform_sm_stair_alt"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut{icon_state="kutjevo_platform_sm_stair"} : /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left{@OLD;layer=@SKIP;icon_state=@SKIP}
+
+/obj/structure/platform/stair_cut{icon_state="platform_stair_alt"} : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut/alt{icon_state="platform_stair_alt"} : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut{icon_state="platform_stair"} : /obj/structure/platform/metal/stair_cut/platform_left{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut : /obj/structure/platform/metal/stair_cut/platform_left{@OLD;layer=@SKIP;icon_state=@SKIP}
+/obj/structure/platform/stair_cut/alt : /obj/structure/platform/metal/stair_cut/platform_right{@OLD;layer=@SKIP;icon_state=@SKIP}
+
+
+
+/obj/structure/platform/hybrisa/engineer{dir=1} : /obj/structure/platform/metal/hybrisa/engineer/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer{dir=4} : /obj/structure/platform/metal/hybrisa/engineer/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer{dir=8} : /obj/structure/platform/metal/hybrisa/engineer/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/engineer : /obj/structure/platform/metal/hybrisa/engineer{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_corner : /obj/structure/platform_decoration/metal/hybrisa/engineer_corner{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/engineer_cornerbits : /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/rockdark{dir=1} : /obj/structure/platform/stone/hybrisa/rockdark/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark{dir=4} : /obj/structure/platform/stone/hybrisa/rockdark/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark{dir=8} : /obj/structure/platform/stone/hybrisa/rockdark/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/rockdark : /obj/structure/platform/stone/hybrisa/rockdark{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=1} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=4} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark{dir=8} : /obj/structure/platform_decoration/stone/hybrisa/rockdark/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/rockdark : /obj/structure/platform_decoration/stone/hybrisa/rockdark{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform1{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform1/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform1/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform1/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform1 : /obj/structure/platform/metal/hybrisa/metalplatform1{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco1 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform2{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform2/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform2/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform2/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform2 : /obj/structure/platform/metal/hybrisa/metalplatform2{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform3{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform3/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform3/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform3/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform3 : /obj/structure/platform/metal/hybrisa/metalplatform3{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco3 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform4{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform4/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform4/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform4/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform4 : /obj/structure/platform/metal/hybrisa/metalplatform4{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco4 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform5{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform5/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform5/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform5/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform5 : /obj/structure/platform/metal/hybrisa/metalplatform5{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco5 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+/obj/structure/platform/hybrisa/metalplatform6{dir=1} : /obj/structure/platform/metal/hybrisa/metalplatform6/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6{dir=4} : /obj/structure/platform/metal/hybrisa/metalplatform6/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6{dir=8} : /obj/structure/platform/metal/hybrisa/metalplatform6/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatform6 : /obj/structure/platform/metal/hybrisa/metalplatform6{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=1} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=4} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/east{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{dir=8} : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/west{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco6 : /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6{@OLD;dir=@SKIP;layer=@SKIP}
+
+/obj/structure/platform/hybrisa/metalplatformstair1{dir=1} : /obj/structure/platform/metal/stair_cut/hybrisa_metal_left{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair2{dir=1} : /obj/structure/platform/metal/stair_cut/hybrisa_metal_right{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair1 : /obj/structure/platform/metal/stair_cut/hybrisa_metal_left{@OLD;dir=@SKIP;layer=@SKIP}
+/obj/structure/platform/hybrisa/metalplatformstair2 : /obj/structure/platform/metal/stair_cut/hybrisa_metal_right{@OLD;dir=@SKIP;layer=@SKIP}
+
+
+

@@ -12,6 +12,7 @@
 
 	if(H.mind)
 		_role = H.job
+
 	else if(ID)
 		_role = ID.rank
 
@@ -71,7 +72,6 @@
 	if(hud_icon_state)
 		holder.overlays += IMG
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
-
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

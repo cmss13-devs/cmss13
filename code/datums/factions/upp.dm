@@ -8,7 +8,7 @@
 	var/datum/squad/squad = H.assigned_squad
 	var/_role
 	var/squad_color
-	var/image/IMG = image('icons/mob/hud/marine_hud.dmi', H, "uppsquad") /// location of background IMG
+	var/image/background_image = image('icons/mob/hud/marine_hud.dmi', H, "uppsquad") /// location of background IMG
 
 	if(H.mind)
 		_role = H.job
@@ -17,8 +17,7 @@
 		_role = ID.rank
 
 	if(squad)
-		squad_color = H.assigned_squad.equipment_color
-		IMG.color = squad_color
+		background_image.color = H.assigned_squad.equipment_color
 
 	switch(_role)
 		if(JOB_UPP_MEDIC)
@@ -68,7 +67,7 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += IMG
+		holder.overlays += background_image
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()

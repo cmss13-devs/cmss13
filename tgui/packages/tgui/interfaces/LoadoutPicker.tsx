@@ -107,12 +107,18 @@ const ItemRender = (props: {
           tooltip={name}
           onClick={() => act(loadout ? 'remove' : 'add', { name: name })}
           disabled={!loadout && atLimit}
+          width="78px"
+          height="74px"
+          mb="3px"
+          mt="3px"
         >
           <DmIcon
             icon={icon}
             icon_state={icon_state}
             height="64px"
             width="64px"
+            mb={1}
+            mt={1}
             fallback={<Loader />}
           />
           <Box position="absolute" bottom="0px">

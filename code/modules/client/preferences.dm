@@ -1030,6 +1030,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			return TRUE
 		if("loadout")
 			loadout_picker.tgui_interact(user)
+			return
 
 		if("flavor_text")
 			switch(href_list["task"])

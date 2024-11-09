@@ -179,6 +179,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
 		/obj/item/attachable/stock/pkpstock,
+		/obj/item/attachable/bipod,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
@@ -201,6 +202,12 @@
 	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
 	Integrated.Attach(src)
 	update_attachable(Integrated.slot)
+
+	var/obj/item/attachable/bipod/bipod = new /obj/item/attachable/bipod(src)
+	bipod.flags_attach_features &= ~ATTACH_REMOVABLE
+	bipod.Attach(src)
+	update_attachable(attachie.slot)
+
 
 /obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
 	. = ..()

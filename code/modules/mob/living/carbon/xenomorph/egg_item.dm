@@ -114,6 +114,10 @@
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
+	if(T.is_weedable() < FULLY_WEEDABLE) //no planting eggs on not originally intended tiles
+		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted on overextended weeds."))
+		return
+
 	if(!hive_weeds && needs_hive_weeds)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return

@@ -167,9 +167,7 @@
 	pixel_y = 27;
 	anchored = 1
 	},
-/obj/structure/platform/stair_cut{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/shuttle/predship,
 /area/yautja)
 "az" = (
@@ -1492,9 +1490,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stair_cut{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /obj/item/clothing/mask/gas/yautja/hunter{
 	pixel_y = 27;
 	anchored = 1
@@ -1707,9 +1703,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "mU" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "nd" = (
@@ -1746,9 +1740,7 @@
 	pixel_y = 27;
 	anchored = 1
 	},
-/obj/structure/platform/stair_cut/alt{
-	icon_state = "kutjevo_platform_sm_stair_alt"
-	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/shuttle/predship,
 /area/yautja)
 "nT" = (
@@ -1810,9 +1802,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "pl" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
 /turf/open/shuttle/predship,
 /area/yautja)
 "ps" = (
@@ -1821,9 +1811,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stair_cut/alt{
-	icon_state = "kutjevo_platform_sm_stair_alt"
-	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /obj/item/clothing/mask/gas/yautja/hunter{
 	pixel_y = 27;
 	anchored = 1
@@ -1900,9 +1888,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "st" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "sx" = (
@@ -1959,9 +1945,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "th" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
 /turf/open/shuttle/predship,
 /area/yautja)
 "ti" = (
@@ -2088,9 +2072,7 @@
 	color = "#6b675e";
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "vO" = (
@@ -2106,9 +2088,7 @@
 	color = "#6b675e";
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "ww" = (
@@ -2191,9 +2171,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "xX" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "yr" = (
@@ -2397,7 +2375,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Fu" = (
-/obj/structure/platform_decoration/kutjevo/smooth,
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Fx" = (
@@ -2701,7 +2679,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "KV" = (
@@ -2792,9 +2770,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "PM" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Qi" = (
@@ -2824,9 +2800,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "QK" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Rq" = (
@@ -2891,9 +2865,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Uz" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "UR" = (
@@ -2917,15 +2889,11 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Vj" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "VC" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
 /turf/open/shuttle/predship,
 /area/yautja)
 "VT" = (

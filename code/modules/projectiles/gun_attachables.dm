@@ -3004,9 +3004,16 @@ Defined in conflicts.dm of the #defines folder.
 			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
 
-		var/datum/reagent/to_remove
-		if(length(fuel_holder.reagents.reagent_list))
-			to_remove = fuel_holder.reagents.reagent_list[1]
+		if(!fuel_holder.reagents || length(fuel_holder.reagents.reagent_list) < 1)
+			to_chat(user, SPAN_WARNING("[fuel_holder] is empty!"))
+			return
+
+		var/datum/reagent/to_remove = fuel_holder.reagents.reagent_list[1]
+
+		var/flamer_chem = "utnapthal"
+		if(!istype(to_remove) || flamer_chem != to_remove.id || length(fuel_holder.reagents.reagent_list) > 1)
+			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
+			return
 
 		var/fuel_amt
 		if(to_remove)

@@ -93,9 +93,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "aA" = (
@@ -653,12 +651,8 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/offices)
 "cm" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "cp" = (
@@ -1207,7 +1201,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "er" = (
@@ -1269,9 +1263,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -1305,9 +1297,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "eG" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -1349,9 +1339,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "eO" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "eP" = (
@@ -1818,7 +1806,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/chinook)
 "gM" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "gN" = (
@@ -2188,19 +2176,12 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"il" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
 "in" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 2.1
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "ip" = (
@@ -2236,11 +2217,11 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 2.1
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "iw" = (
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
@@ -2282,7 +2263,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "iD" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "iF" = (
@@ -2292,7 +2273,7 @@
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
 "iG" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_full"
@@ -2310,7 +2291,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "iL" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -2318,9 +2299,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "iN" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "iO" = (
@@ -2391,9 +2370,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
 "jb" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
@@ -2470,7 +2447,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "jq" = (
@@ -2579,15 +2556,11 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "jN" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "jO" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "jQ" = (
@@ -2891,9 +2864,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "ld" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "lf" = (
@@ -2952,9 +2923,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "ls" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "lu" = (
@@ -3213,16 +3182,12 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
 "mC" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "mD" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "mF" = (
@@ -3370,11 +3335,11 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "nk" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "nl" = (
@@ -3644,9 +3609,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "oh" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
@@ -3705,9 +3668,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "ot" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "ou" = (
@@ -3741,9 +3702,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "oz" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
@@ -3916,7 +3875,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "ph" = (
@@ -3931,13 +3890,11 @@
 /turf/open/floor/almayer/redfull,
 /area/adminlevel/chinook)
 "pl" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "pm" = (
@@ -3979,9 +3936,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "pv" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "pw" = (
@@ -4092,9 +4047,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "pP" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "pQ" = (
@@ -4116,21 +4069,17 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "pU" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "pV" = (
@@ -4261,9 +4210,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "qw" = (
@@ -4385,9 +4332,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "qS" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "qT" = (
@@ -4508,9 +4453,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
 "rw" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "rx" = (
@@ -4865,12 +4808,8 @@
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
 "sU" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook/cargo)
 "sV" = (
@@ -4881,7 +4820,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "sW" = (
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
@@ -4950,10 +4889,8 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "to" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "tp" = (
@@ -5256,9 +5193,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "uC" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "uD" = (
@@ -5584,9 +5519,7 @@
 /area/adminlevel/chinook/event)
 "vQ" = (
 /obj/structure/largecrate/supply,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "vR" = (
@@ -5826,9 +5759,7 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
 "wX" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "wY" = (
@@ -5863,12 +5794,8 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "xf" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "xg" = (
@@ -5918,12 +5845,8 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "xq" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "xr" = (
@@ -6190,7 +6113,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "yO" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -6438,7 +6361,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
 "zU" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_full"
@@ -6452,7 +6375,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/adminlevel/chinook/engineering)
 "zX" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -6657,9 +6580,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "AV" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -6865,9 +6786,7 @@
 /turf/open/floor/almayer/green/northwest,
 /area/adminlevel/chinook/cargo)
 "BP" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "BR" = (
@@ -6878,18 +6797,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/shuttle)
 "BU" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "BV" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "BW" = (
@@ -6984,9 +6899,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
 "Cp" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -7448,9 +7361,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "Eq" = (
@@ -7662,9 +7573,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
 "Fv" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Fx" = (
@@ -7785,9 +7694,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "FY" = (
@@ -7831,12 +7738,8 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
 "Gi" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Gk" = (
@@ -8148,9 +8051,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "HC" = (
@@ -8246,9 +8147,7 @@
 "HQ" = (
 /obj/structure/largecrate/supply,
 /obj/effect/spawner/random/tool,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/sign/safety/coffee{
 	pixel_x = -16
 	},
@@ -8414,9 +8313,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "IB" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "IC" = (
@@ -8616,9 +8513,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "JB" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "JC" = (
@@ -8647,7 +8542,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "JI" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -8710,7 +8605,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "JU" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "JV" = (
@@ -8736,9 +8631,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Ke" = (
@@ -8760,15 +8653,11 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Kl" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Km" = (
@@ -8901,9 +8790,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cargo)
 "KM" = (
@@ -9391,9 +9278,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
 "MD" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "ME" = (
@@ -9738,9 +9623,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "Oj" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
@@ -9922,7 +9805,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook)
 "OZ" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/barricade/handrail/strata{
 	layer = 4.5
 	},
@@ -9955,9 +9838,7 @@
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "Pe" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "Pf" = (
@@ -10002,9 +9883,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "Po" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -10535,9 +10414,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "Rp" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook/cargo)
 "Rq" = (
@@ -10553,9 +10430,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
 "Rt" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = -15;
 	pixel_y = 5
@@ -10603,7 +10478,7 @@
 /area/adminlevel/chinook/sec)
 "RD" = (
 /obj/structure/machinery/light,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -10911,7 +10786,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "SV" = (
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -11374,12 +11249,8 @@
 /area/adminlevel/chinook/medical)
 "UY" = (
 /obj/vehicle/powerloader,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/chinook/cargo)
 "UZ" = (
@@ -12018,12 +11889,8 @@
 /area/adminlevel/chinook/medical)
 "XK" = (
 /obj/vehicle/powerloader,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/chinook/cargo)
@@ -12172,9 +12039,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cryo)
 "Yk" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Ym" = (
@@ -25507,7 +25372,7 @@ Zu
 al
 Qx
 TQ
-il
+IB
 SL
 SL
 kA
@@ -25634,7 +25499,7 @@ Zu
 al
 Qx
 NU
-il
+IB
 iD
 jN
 jN
@@ -26650,7 +26515,7 @@ Zu
 al
 Qx
 NU
-il
+IB
 iN
 jO
 jO
@@ -26777,7 +26642,7 @@ Zu
 al
 Qx
 TQ
-il
+IB
 SL
 SL
 kI

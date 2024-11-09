@@ -1174,11 +1174,11 @@
 /turf/open/floor/vault
 	icon_state = "rockvault"
 
-/turf/open/floor/vault/Initialize(mapload, type)
-	. = ..()
-	icon_state = "[type]vault"
+/turf/open/floor/vault/sandstone
+	icon_state = "sandstonevault"
 
-
+/turf/open/floor/vault/alien
+	icon_state = "alienvault"
 
 /turf/open/floor/engine
 	name = "reinforced floor"

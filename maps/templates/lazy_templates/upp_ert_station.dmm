@@ -25,9 +25,7 @@
 /turf/open/floor/strata/green3/west,
 /area/adminlevel/ert_station/upp_station)
 "au" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/space)
 "ax" = (
@@ -228,10 +226,8 @@
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "di" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/space,
 /area/space)
 "dz" = (
@@ -302,7 +298,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/adminlevel/ert_station/upp_station)
 "eV" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -325,18 +321,12 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/space)
 "fc" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space/basic,
 /area/space)
 "fd" = (
@@ -418,9 +408,7 @@
 /turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/upp_station)
 "gx" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/strata/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -442,10 +430,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "hA" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/space)
 "hF" = (
@@ -522,7 +508,7 @@
 /area/adminlevel/ert_station/upp_station)
 "jt" = (
 /obj/structure/lattice,
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/space/basic,
 /area/space)
 "jH" = (
@@ -688,7 +674,7 @@
 /area/adminlevel/ert_station/upp_station)
 "mJ" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/space)
 "mP" = (
@@ -777,9 +763,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "oP" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -789,9 +773,7 @@
 /turf/open/space/basic,
 /area/space)
 "oS" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space/basic,
 /area/space)
 "pb" = (
@@ -830,9 +812,7 @@
 /turf/open/floor/plating/prison,
 /area/space)
 "pN" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -850,7 +830,7 @@
 /area/adminlevel/ert_station/upp_station)
 "qA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /obj/structure/curtain/open/black,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -970,9 +950,7 @@
 /area/adminlevel/ert_station/upp_station)
 "sr" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space/basic,
 /area/space)
 "sy" = (
@@ -1078,9 +1056,7 @@
 /area/adminlevel/ert_station/upp_station)
 "ue" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -1096,7 +1072,7 @@
 /turf/open/floor/strata/white_cyan2,
 /area/adminlevel/ert_station/upp_station)
 "uE" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "uI" = (
@@ -1107,7 +1083,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "uL" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -1167,9 +1143,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "vS" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/lattice,
 /turf/open/space,
 /area/space)
@@ -1178,13 +1152,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "vZ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -1199,9 +1169,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
 "wr" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
+/obj/structure/platform/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison{
 	layer = 2.2
 	},
@@ -1308,9 +1276,7 @@
 /turf/open/floor/strata/green4,
 /area/adminlevel/ert_station/upp_station)
 "yt" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/space)
 "yH" = (
@@ -1441,9 +1407,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "Bw" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space/basic,
 /area/space)
 "BH" = (
@@ -1594,7 +1558,7 @@
 /area/adminlevel/ert_station/upp_station)
 "FF" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
@@ -1651,9 +1615,7 @@
 /area/adminlevel/ert_station/upp_station)
 "Gu" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space/basic,
 /area/space)
 "Gw" = (
@@ -1675,7 +1637,7 @@
 /area/adminlevel/ert_station/upp_station)
 "GN" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -1686,12 +1648,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "Hc" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 4
-	},
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/lattice,
 /turf/open/space,
 /area/space)
@@ -1715,7 +1673,7 @@
 /turf/open/floor/greengrid,
 /area/adminlevel/ert_station/upp_station)
 "HR" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "Is" = (
@@ -1728,13 +1686,9 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/space)
 "IK" = (
@@ -1845,10 +1799,8 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
 /area/space)
 "Kn" = (
@@ -1923,15 +1875,11 @@
 /area/adminlevel/ert_station/upp_station)
 "LG" = (
 /obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/space)
 "LI" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space/basic,
 /area/space)
 "LK" = (
@@ -1977,7 +1925,7 @@
 /turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/upp_station)
 "Mt" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/space)
 "MB" = (
@@ -2041,12 +1989,8 @@
 /turf/open/floor/strata/red3/south,
 /area/adminlevel/ert_station/upp_station)
 "NQ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -2061,9 +2005,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "OA" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
+/obj/structure/platform/metal/strata/west,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 8;
@@ -2093,9 +2035,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
 "Pj" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
 /area/space)
 "PI" = (
@@ -2408,7 +2348,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "TI" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "TM" = (
@@ -2417,13 +2357,9 @@
 	icon_state = "hr_kutjevo";
 	name = "solar lattice"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/space)
 "TQ" = (
@@ -2627,9 +2563,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "Wi" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -2656,9 +2590,7 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/adminlevel/ert_station/upp_station)
 "WQ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
@@ -2729,9 +2661,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "YK" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/space)
 "YO" = (
@@ -2773,9 +2703,7 @@
 /area/adminlevel/ert_station/upp_station)
 "ZH" = (
 /obj/structure/lattice,
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space/basic,
 /area/space)
 "ZM" = (

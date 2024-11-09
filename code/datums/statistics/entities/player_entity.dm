@@ -28,7 +28,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic)
 	if(!player || !faction || !statistic_type || !general_name || !statistic_name)
 		return
 
-	if(!(faction in FACTION_LIST_ALL + list(STATISTIC_TYPE_GLOBAL)))
+	if(!(faction in (FACTION_LIST_ALL + list(STATISTIC_TYPE_GLOBAL))))
 		faction = FACTION_NEUTRAL
 
 	var/datum/entity/statistic/statistic = player.player_entity?.get_statistic(faction, statistic_type, general_name, statistic_name)

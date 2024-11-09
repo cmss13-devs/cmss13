@@ -26,7 +26,7 @@
 
 	if(GLOB.round_statistics && length(GLOB.round_statistics.death_stats_list))
 		for(var/datum/entity/statistic_death/death in GLOB.round_statistics.death_stats_list)
-			if(check_human && (death.faction_name in FACTION_LIST_XENOMORPH && check_xeno))
+			if(check_human && (death.faction_name in FACTION_LIST_XENOMORPH) && check_xeno)
 				continue
 			if(death_stat_gotten < death_grab_stat(death))
 				death_to_report = death

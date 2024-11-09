@@ -46,6 +46,7 @@
 #define WL_PANEL_RIGHT_OVERSEER (1<<4)
 #define WL_PANEL_RIGHT_MANAGER (1<<5)
 #define WL_PANEL_ALL_COUNCILS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA)
+#define WL_PANEL_RIGHTS_OVERSEER (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_OVERSEER)
 #define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER|WL_PANEL_RIGHT_MANAGER)
 
 /datum/whitelist_panel
@@ -69,7 +70,7 @@
 	if(person.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		rights |= WL_PANEL_RIGHT_YAUTJA
 	if(rights == WL_PANEL_ALL_COUNCILS)
-		rights |= WL_PANEL_RIGHT_OVERSEER
+		rights |= WL_PANEL_RIGHTS_OVERSEER
 	return rights
 
 /datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -115,7 +116,7 @@ GLOBAL_LIST_INIT(syn_flags, list(
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
 	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_MANAGER),
 	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)

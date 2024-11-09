@@ -20,10 +20,6 @@
 	var/creaking_sound
 	var/breaking_sound
 	var/shove_time
-	var/stat = 0
-	var/creaking_sound
-	var/breaking_sound
-	var/shove_time
 
 /obj/structure/platform/Initialize()
 	. = ..()
@@ -74,38 +70,7 @@
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
 			broken()
 			return
-/obj/structure/platform/ex_act(severity)
-	if(explo_proof)
-		return
-	switch(severity)
-		if(EXPLOSION_THRESHOLD_VLOW to EXPLOSION_THRESHOLD_LOW)
-			if(prob(15))
-				broken()
-				return
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_HIGH)
-			if(prob(30))
-				broken()
-				return
-		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
-			broken()
-			return
 	return
-
-/obj/structure/platform/get_examine_text(mob/user)
-	. = ..()
-
-	if(stat & BROKEN)
-		. += SPAN_WARNING("It looks destroyed.")
-
-/obj/structure/platform/update_icon()
-	if(stat & BROKEN)
-		icon_state = "[initial(icon_state)]_broken"
-
-/obj/structure/platform/proc/broken()
-	stat |= BROKEN
-	density = FALSE
-	layer = ABOVE_BLOOD_LAYER //lets hope it will appear under everything except weeds and blood.
-	update_icon()
 
 /obj/structure/platform/get_examine_text(mob/user)
 	. = ..()
@@ -139,48 +104,6 @@
 			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
 			user.pulling.forceMove(move_to_turf)
-
-/obj/structure/platform/attack_alien(mob/living/carbon/xenomorph/user)
-	if(user.action_busy)
-		return XENO_NO_DELAY_ACTION
-	if(user.a_intent != INTENT_DISARM)
-		return XENO_NO_DELAY_ACTION
-
-	if(stat & BROKEN)
-		to_chat(user, SPAN_WARNING("Its already destroyed!"))
-		return XENO_NO_DELAY_ACTION
-
-	if(stat & explo_proof)
-		to_chat(user, SPAN_WARNING("Its too strong for us!"))
-		return XENO_NO_DELAY_ACTION
-
-	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
-	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-	playsound(loc, creaking_sound, 30, 1)
-
-	var/shove_time
-	switch(user.mob_size)
-		if(MOB_SIZE_XENO_VERY_SMALL)
-			shove_time = 30 SECONDS
-		if(MOB_SIZE_XENO_SMALL)
-			shove_time = 9 SECONDS
-		if(MOB_SIZE_XENO)
-			shove_time = 7 SECONDS
-		if(MOB_SIZE_BIG)
-			shove_time = 4 SECONDS
-		if(MOB_SIZE_IMMOBILE)
-			shove_time = 2 SECONDS
-
-	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
-
-	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = shove_time * 0.1))
-		return
-	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
-	SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	playsound(loc, breaking_sound, 25, 1)
-	broken()
-	return XENO_NO_DELAY_ACTION
 
 /obj/structure/platform/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.action_busy)
@@ -263,30 +186,6 @@
 
 //Map variants//
 
-//
-//Parent used to attach sounds depending on material they are made from.//
-//
-
-/obj/structure/platform/metal
-	icon_state = "platform"
-	creaking_sound = 'sound/effects/metal_creaking.ogg'
-	breaking_sound = 'sound/effects/metalhit.ogg'
-
-/obj/structure/platform/stone
-	icon_state = "kutjevo_rock"
-	creaking_sound = 'sound/effects/rock_creaking.ogg'
-	breaking_sound = 'sound/effects/meteorimpact.ogg'
-
-//------------------------------//
-//    Metal Stairs Platforms    //
-//------------------------------//
-
-/obj/structure/platform/metal/stair_cut
-	icon_state = "platform_stair" //icon will be honked in all dirs except (1 = NORTH), that's because the behavior breaks if it ain't (1), don't use (2) its made as mapping tool visual indicator.
-	dir = NORTH
-
-/obj/structure/platform/metal/stair_cut/platform_left
-	icon_state = "platform_stair"
 //
 //Parent used to attach sounds depending on material they are made from.//
 //

@@ -56068,7 +56068,7 @@
 "qXa" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/research)
 "qYn" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tank/air,
@@ -97346,7 +97346,7 @@ aEt
 aFX
 awf
 aKd
-cnB
+aKd
 acL
 acL
 lpo
@@ -97558,7 +97558,7 @@ aEw
 aFY
 aJj
 jbq
-cnB
+aKd
 aAO
 aAO
 aAO
@@ -98194,7 +98194,7 @@ aEz
 aFZ
 aHh
 asb
-cnB
+aKd
 aAO
 aAO
 aAO

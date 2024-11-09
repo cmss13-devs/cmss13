@@ -4,64 +4,64 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "c" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "red"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "d" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "e" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "red"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "g" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 15;
 	pixel_y = -8
 	},
 /turf/closed/wall/prison,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "k" = (
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "damaged1"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "m" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "damaged1"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "n" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "o" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "p" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "q" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -70,18 +70,18 @@
 	dir = 10;
 	icon_state = "damaged1"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "v" = (
 /turf/open/floor/panelscorched,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "w" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "x" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "y" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/stack/rods,
@@ -89,48 +89,48 @@
 	dir = 10;
 	icon_state = "damaged1"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "z" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "C" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "J" = (
 /turf/closed/wall/prison,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "P" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "S" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "V" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "X" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/burnt_platingdmg3,
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 "Y" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "damaged1"
 	},
-/area/space)
+/area/prison/cellblock/highsec/south/south)
 
 (1,1,1) = {"
 k

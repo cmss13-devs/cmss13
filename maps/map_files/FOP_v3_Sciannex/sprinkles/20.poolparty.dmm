@@ -44,7 +44,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "cK" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "cU" = (
@@ -87,9 +87,7 @@
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/template_noop)
 "fN" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "fX" = (
@@ -106,9 +104,7 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "hP" = (
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/template_noop)
 "hY" = (
@@ -135,9 +131,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "is" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/template_noop)
 "iC" = (
@@ -187,9 +181,7 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "kA" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "lc" = (
@@ -209,9 +201,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "ly" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison,
 /area/template_noop)
 "lS" = (
@@ -274,15 +264,6 @@
 "ni" = (
 /turf/closed/wall/prison,
 /area/template_noop)
-"nC" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/template_noop)
 "nS" = (
 /obj/structure/prop/souto_land/pole,
 /turf/open/floor/wood,
@@ -294,7 +275,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "ou" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "oL" = (
@@ -311,9 +292,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/template_noop)
 "pG" = (
@@ -321,13 +300,11 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut,
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "pH" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "ql" = (
@@ -343,7 +320,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "qG" = (
@@ -365,9 +342,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "ro" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "rp" = (
@@ -427,9 +402,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "ty" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/template_noop)
 "tz" = (
@@ -453,9 +426,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "uw" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/template_noop)
 "vd" = (
@@ -472,9 +443,7 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "vf" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "vU" = (
@@ -536,9 +505,7 @@
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/template_noop)
 "wV" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -556,9 +523,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "xS" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -574,9 +539,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "zc" = (
@@ -584,7 +547,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "zR" = (
@@ -688,17 +651,15 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "DN" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/template_noop)
 "DT" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/gm/river/pool,
 /area/template_noop)
 "Fj" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/wood,
 /area/template_noop)
 "Fl" = (
@@ -790,15 +751,9 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "Hn" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "HP" = (
@@ -900,9 +855,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "La" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/gm/river/pool,
 /area/template_noop)
 "Ls" = (
@@ -944,29 +897,19 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "LW" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "Mn" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "MS" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "ND" = (
@@ -984,9 +927,7 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "PA" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/template_noop)
 "PR" = (
@@ -1072,9 +1013,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/souto_land/pole,
 /obj/structure/prop/souto_land/pole{
 	dir = 4;
@@ -1104,7 +1043,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "Us" = (
@@ -1150,7 +1089,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "VV" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison,
 /area/template_noop)
 "Wa" = (
@@ -1163,16 +1102,14 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "We" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison,
 /area/template_noop)
 "Wh" = (
 /turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "Wx" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/item/trash/crushed_cup{
 	pixel_y = 13;
 	pixel_x = 45
@@ -1180,9 +1117,7 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "WY" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "Xn" = (
@@ -1200,7 +1135,7 @@
 /turf/open/gm/river/pool,
 /area/template_noop)
 "Xu" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
@@ -1223,9 +1158,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/souto_land/pole{
 	dir = 1
 	},
@@ -1240,7 +1173,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/template_noop)
 "XX" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Yd" = (
@@ -1262,14 +1195,14 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "YG" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison,
 /area/template_noop)
 "YP" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "Zr" = (
@@ -1277,7 +1210,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "ZB" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 
@@ -1602,7 +1535,7 @@ rW
 nf
 rq
 Rs
-nC
+YP
 Rr
 Rr
 TS

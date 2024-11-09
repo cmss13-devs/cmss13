@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - rscadd: "New preference toggle that allows Queen's to pick if they want to automatically shove people they step on or not"

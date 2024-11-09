@@ -561,11 +561,6 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
-"act" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -684,22 +679,6 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
-"ada" = (
-/mob/living/simple_animal/hostile/retaliate/clown{
-	desc = "Always returning. Always watching.";
-	health = 10000;
-	move_to_delay = 2;
-	name = "Gonzo the Magnificent";
-	rapid = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/space)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -1468,6 +1447,9 @@
 "agl" = (
 /turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
+"agm" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/outside/marshal_office)
 "agn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -2087,16 +2069,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
-"ajn" = (
-/obj/structure/platform/shiva{
-	dir = 1
-	},
-/obj/structure/platform/shiva,
-/obj/structure/machinery/light/small/built{
-	dir = 8
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "ajp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -2923,6 +2895,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
+"ane" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer,
+/obj/structure/machinery/light/small/built{
+	dir = 8
+	},
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "anf" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -8441,6 +8421,10 @@
 /obj/item/tool/pen,
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
+"aNA" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "aNB" = (
 /obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
@@ -10186,12 +10170,6 @@
 /obj/item/storage/box/snappops,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
-"aVc" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/turf/open/mars/mars_dirt_9,
-/area/space)
 "aVd" = (
 /obj/structure/surface/table,
 /obj/item/toy/dice,
@@ -10353,16 +10331,6 @@
 	},
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/general_store)
-"aVQ" = (
-/obj/structure/platform_decoration/kutjevo/rock,
-/turf/open/mars,
-/area/space)
-"aVR" = (
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 1
-	},
-/turf/open/mars/mars_dirt_12,
-/area/space)
 "aVS" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -10830,18 +10798,6 @@
 "aYh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkredcorners2/west,
-/area/bigredv2/outside/admin_building)
-"aYi" = (
-/obj/effect/spawner/random/toolbox,
-/obj/structure/platform_decoration,
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
-"aYk" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aYl" = (
 /obj/item/cell/hyper/empty,
@@ -12261,6 +12217,10 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
+"beD" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "beG" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/asteroidwarning/southeast,
@@ -13388,9 +13348,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"blk" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/marshal_office)
 "bll" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
@@ -15083,6 +15040,12 @@
 "buj" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves/mining)
+"buk" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/structure/flora/grass/desert/lightgrass_11,
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "bun" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/s)
@@ -15169,6 +15132,13 @@
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
+"bvF" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor,
+/area/bigredv2/outside/lz2_south_cas)
 "bvH" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_dirt_4,
@@ -17453,6 +17423,9 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_se)
+"bLE" = (
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "bLG" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -17465,12 +17438,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
-"bLY" = (
-/obj/structure/machinery/power/reactor/colony{
-	name = "Reactor Turbine"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/engineering/reactor)
 "bMa" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/mod88,
@@ -17505,19 +17472,18 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/medical)
-"bOj" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "bOR" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell,
 /turf/open/floor/whiteblue/southeast,
 /area/bigredv2/outside/medical)
+"bPe" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "bPl" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
@@ -17716,13 +17682,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
-"bZm" = (
-/obj/item/storage/toolbox{
-	pixel_x = 4;
-	pixel_y = 9
-	},
-/turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
 "bZp" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -17745,12 +17704,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
-"bZW" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "caD" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/asteroidwarning/north,
@@ -17770,9 +17723,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
-"ccX" = (
-/turf/open/mars_cave/mars_cave_3,
-/area/bigredv2/outside/lz1_telecomm_cas)
 "cdA" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/lz2_west_cas)
@@ -17866,6 +17816,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/caves_lambda)
+"chw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering/reactor)
 "chx" = (
 /obj/structure/surface/table,
 /obj/item/trash/kepler{
@@ -17900,6 +17854,10 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
+"cjS" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "ckr" = (
 /obj/item/device/defibrillator{
 	pixel_x = -9;
@@ -17911,6 +17869,15 @@
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"ckC" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/engineering/reactor)
 "cla" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17952,24 +17919,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
-"cnk" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/space)
 "cns" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "se-checkpoint"
@@ -17981,12 +17930,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/eta)
-"cnG" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "cnQ" = (
 /obj/item/paper,
 /turf/open/floor,
@@ -18071,10 +18014,6 @@
 "csE" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz1_telecomm_cas)
-"ctq" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/eta)
 "ctw" = (
 /obj/item/tool/warning_cone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -18181,12 +18120,17 @@
 /obj/item/stack/sheet/wood,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_north)
-"cAx" = (
-/obj/structure/machinery/light{
-	dir = 4
+"cAM" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = 12;
+	pixel_y = 3
 	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
 "cAN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -18196,12 +18140,31 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/mars,
 /area/bigredv2/outside/n)
+"cBj" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/flora/jungle/planttop1{
+	pixel_y = 10
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "cBq" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
+"cCq" = (
+/mob/living/simple_animal/hostile/retaliate/clown{
+	desc = "Always returning. Always watching.";
+	health = 10000;
+	move_to_delay = 2;
+	name = "Gonzo the Magnificent";
+	rapid = 1
+	},
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/mars_cave/mars_cave_2,
+/area/space)
 "cCr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_3,
@@ -18274,10 +18237,6 @@
 	},
 /turf/open/floor/red/west,
 /area/bigredv2/outside/marshal_office)
-"cGs" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkyellow2,
-/area/bigredv2/outside/engineering/reactor)
 "cGR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18436,6 +18395,13 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitepurplecorner/east,
 /area/bigredv2/outside/medical)
+"cNb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering/reactor)
 "cNH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/delivery,
@@ -18467,6 +18433,11 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
+"cOH" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/item/disk,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "cOJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18617,10 +18588,6 @@
 	},
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
-"cXf" = (
-/obj/structure/window/framed/solaris,
-/turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering/reactor)
 "cXG" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -18723,9 +18690,6 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"dfD" = (
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/engineering/reactor)
 "dgi" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/trash/crushed_cup{
@@ -18802,11 +18766,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitegreen/southeast,
 /area/bigredv2/outside/medical)
-"diW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail,
-/turf/open/floor/darkyellow2/southeast,
-/area/bigredv2/outside/engineering/reactor)
 "djV" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/freezerfloor,
@@ -18822,10 +18781,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
-"dkY" = (
-/obj/structure/platform,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "dme" = (
 /turf/open/mars/mars_dirt_5,
 /area/bigredv2/outside/nw)
@@ -18932,16 +18887,6 @@
 /obj/item/ammo_magazine/pistol/m1911,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"dsl" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "dsm" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/dark,
@@ -19068,6 +19013,10 @@
 "dyv" = (
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
+"dyA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/engineering/reactor)
 "dyH" = (
 /obj/structure/machinery/computer/area_atmos{
 	dir = 1
@@ -19087,13 +19036,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/se)
-"dzg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light_construct{
-	dir = 8
-	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "dzD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19124,12 +19066,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"dBm" = (
-/obj/structure/platform{
-	dir = 8
+"dBx" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
 	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "dBE" = (
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_x = 2;
@@ -19331,14 +19273,9 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_lambda)
-"dLJ" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/item/trash/used_stasis_bag{
-	pixel_y = 8;
-	pixel_x = 9
-	},
-/turf/open/mars_cave/mars_cave_9,
-/area/bigredv2/outside/nw)
+"dLd" = (
+/turf/open/floor/darkyellow2/southwest,
+/area/bigredv2/outside/engineering/reactor)
 "dLS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
@@ -19438,10 +19375,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_sw)
-"dQE" = (
-/obj/effect/sentry_landmark/lz_1/top_right,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
 "dQF" = (
 /obj/effect/spawner/random/tool,
 /turf/open/mars_cave/mars_dirt_5,
@@ -19520,6 +19453,10 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves/mining)
+"dUN" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "dVj" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
@@ -19576,6 +19513,13 @@
 /obj/structure/bed,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/marshal_office)
+"dYb" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "dYv" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
@@ -19631,6 +19575,12 @@
 "eak" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/c)
+"eaC" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "eaW" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/frame/rack,
@@ -19806,6 +19756,10 @@
 	},
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
+"ehN" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/mars,
+/area/bigredv2/outside/space_port_lz2)
 "eiK" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/mars,
@@ -20011,13 +19965,6 @@
 /obj/structure/window,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
-"etg" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/item/trash/cigbutt/cigarbutt,
-/turf/open/mars_cave/mars_cave_13,
-/area/bigredv2/outside/nw)
 "etw" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/e)
@@ -20067,13 +20014,6 @@
 "evt" = (
 /turf/open/asphalt/cement/cement9,
 /area/bigredv2/caves_lambda)
-"evA" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 8
-	},
-/obj/structure/platform_decoration/shiva,
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "evQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -20101,6 +20041,10 @@
 "exc" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigred/ground/garage_workshop)
+"eyR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "ezz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/hotdog{
@@ -20137,12 +20081,10 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
-"eCM" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
+"eCF" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "eDQ" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/landmark/objective_landmark/medium,
@@ -20185,6 +20127,11 @@
 	},
 /turf/open/floor/red/north,
 /area/bigredv2/outside/marshal_office)
+"eFX" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/outside/nw)
 "eGa" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/mars_cave/mars_cave_17,
@@ -20220,18 +20167,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
-"eGH" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "eGM" = (
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/engineering)
@@ -20250,6 +20185,11 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
+"eIN" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "eJf" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/mars,
@@ -20480,16 +20420,17 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/c)
+"eTm" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "eTK" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
-"eTU" = (
-/obj/structure/platform,
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "eUs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/prison,
@@ -20624,13 +20565,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
-"eZp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/engineering/reactor)
 "eZw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -20654,23 +20588,29 @@
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
-"fcn" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
 "fcG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"fcO" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "fdr" = (
 /turf/open/mars_cave/mars_cave_10,
 /area/bigredv2/caves_sw)
 "fdy" = (
 /turf/open/floor,
 /area/bigredv2/caves/eta/living)
+"fdP" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "feN" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/space_port_lz2)
@@ -20760,6 +20700,10 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
+"fiQ" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "fjz" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/objective{
@@ -20771,6 +20715,11 @@
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars/mars_dirt_6,
 /area/bigredv2/outside/w)
+"fjN" = (
+/obj/effect/spawner/random/toolbox,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "fjP" = (
 /turf/open/floor/delivery,
 /area/bigredv2/caves)
@@ -20852,6 +20801,10 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"frs" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "fsy" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/mars_cave/mars_cave_13,
@@ -21055,14 +21008,6 @@
 "fBo" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
-"fBJ" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9;
-	pixel_x = -3
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "fCb" = (
 /turf/open/floor,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -21083,6 +21028,12 @@
 "fEb" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
+"fEv" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	name = "\improper Engine Reactor"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/engineering/reactor)
 "fEE" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/outside/ne)
@@ -21217,6 +21168,9 @@
 "fNT" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/s)
+"fOc" = (
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/outside/lz1_telecomm_cas)
 "fOf" = (
 /obj/item/trash/eat{
 	pixel_x = 2;
@@ -21367,6 +21321,13 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/filtration_plant)
+"fUp" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 1;
+	name = "\improper Engine Reactor"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/engineering/reactor)
 "fVt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -21382,10 +21343,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/medical)
-"fVE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
 "fVX" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached,
@@ -21517,15 +21474,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
-"gan" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 1
-	},
-/obj/structure/platform_decoration/shiva{
-	dir = 4
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "gat" = (
 /obj/structure/machinery/shower{
 	dir = 8
@@ -21633,6 +21581,10 @@
 "gio" = (
 /turf/open/mars_cave,
 /area/bigredv2/outside/filtration_cave_cas)
+"giB" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave,
+/area/bigredv2/outside/lz2_south_cas)
 "giC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
@@ -21770,6 +21722,12 @@
 "gpB" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves_research)
+"gpE" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "gpR" = (
 /turf/open/gm/river,
 /area/bigredv2/outside/c)
@@ -21832,13 +21790,14 @@
 /obj/structure/fence,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
-"gsW" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
+"gtk" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
 	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/space)
+/turf/open/floor/darkyellow2/northwest,
+/area/bigredv2/outside/engineering/reactor)
 "gts" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -21857,6 +21816,10 @@
 "gtX" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_se)
+"guu" = (
+/obj/structure/machinery/light,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering/reactor)
 "guM" = (
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_research)
@@ -21870,6 +21833,14 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/breakroom)
+"gvs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "gvC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	layer = 3.5
@@ -21887,11 +21858,6 @@
 	},
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
-"gvN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail,
-/turf/open/floor/darkyellow2,
-/area/bigredv2/outside/engineering/reactor)
 "gvU" = (
 /obj/item/shard,
 /turf/open/floor/whitegreen/east,
@@ -22006,6 +21972,12 @@
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
+"gAg" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/turf/open/mars,
+/area/space)
 "gAE" = (
 /obj/structure/sink{
 	dir = 1;
@@ -22063,6 +22035,10 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/red,
 /area/bigredv2/outside/lambda_cave_cas)
+"gFR" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "gGf" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -22205,6 +22181,10 @@
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"gML" = (
+/obj/structure/machinery/power/turbine,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "gNv" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -22245,6 +22225,13 @@
 "gPc" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/telecomm/n_cave)
+"gPh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	name = "\improper Engine Reactor"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/engineering/reactor)
 "gPE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lantern,
@@ -22316,17 +22303,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
-"gVj" = (
-/obj/effect/decal/cleanable/blood{
-	dir = 8;
-	icon_state = "gib6";
-	layer = 4;
-	pixel_x = 12;
-	pixel_y = 3
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/mars_cave/mars_cave_13,
-/area/bigredv2/caves/mining)
 "gVl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -22376,15 +22352,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
-"gXg" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/obj/structure/barricade/handrail,
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/engineering/reactor)
 "gXp" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_lambda)
@@ -22437,6 +22404,10 @@
 "haV" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/e)
+"hbg" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/mars,
+/area/bigredv2/outside/space_port_lz2)
 "hby" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
@@ -22607,13 +22578,10 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"hkS" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_14,
-/area/bigredv2/outside/nw)
+"hkR" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "hkY" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -22651,15 +22619,10 @@
 	},
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves_research)
-"hos" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9;
-	pixel_x = -3
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
+"hot" = (
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/mars/mars_dirt_12,
+/area/space)
 "hoI" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
@@ -22749,6 +22712,12 @@
 "htb" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
+"hub" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/mars/mars_dirt_12,
+/area/space)
 "hvd" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -22956,12 +22925,6 @@
 /obj/item/shard/shrapnel,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"hFv" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "hFP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
@@ -23036,10 +22999,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
-"hJw" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "hJH" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/podhatchfloor,
@@ -23077,9 +23036,9 @@
 	},
 /turf/open/floor/red/southwest,
 /area/bigredv2/outside/lambda_cave_cas)
-"hLt" = (
-/obj/effect/sentry_landmark/lz_1/bottom_right,
-/turf/open/floor/plating,
+"hLq" = (
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "hLS" = (
 /obj/structure/sign/poster/safety,
@@ -23213,12 +23172,6 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
-"hZc" = (
-/obj/structure/platform/shiva{
-	dir = 4
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "hZl" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 3;
@@ -23413,10 +23366,6 @@
 	},
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
-"ifl" = (
-/obj/effect/sentry_landmark/lz_2/top_right,
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/space_port_lz2)
 "ifo" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -23462,6 +23411,11 @@
 "ihW" = (
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/eta)
+"iig" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "iih" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/floor4,
@@ -23502,6 +23456,11 @@
 /obj/item/frame/rack,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"ilG" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "ilH" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -23598,18 +23557,6 @@
 "ioS" = (
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
-"ioT" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "ipf" = (
 /obj/item/device/flashlight/lantern{
 	pixel_x = -6
@@ -23902,10 +23849,23 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
+"iFa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/bananapeel,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "iFr" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
+"iFT" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "iGp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -23983,6 +23943,9 @@
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/telecomm/warehouse)
+"iNR" = (
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "iOR" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/asteroidfloor/north,
@@ -24059,18 +24022,10 @@
 "iUe" = (
 /turf/open/floor/darkred2/southeast,
 /area/bigredv2/caves/eta/research)
-"iVd" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/turf/open/mars,
-/area/space)
+"iUW" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "iVi" = (
 /obj/structure/fence,
 /turf/open/mars,
@@ -24112,21 +24067,15 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
+"iWP" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "iXo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
-"iXs" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/obj/structure/prop/server_equipment/yutani_server{
-	density = 0;
-	pixel_y = 16
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "iXx" = (
 /turf/open/mars_cave,
 /area/bigredv2/outside/n)
@@ -24141,12 +24090,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
-"iXO" = (
-/obj/structure/machinery/compressor{
-	dir = 1
-	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "iXV" = (
 /obj/item/stack/sheet/metal{
 	pixel_x = 2;
@@ -24155,10 +24098,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"iYt" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/bigredv2/outside/engineering/reactor)
 "iYN" = (
 /obj/structure/closet/secure_closet,
 /obj/effect/landmark/objective_landmark/close,
@@ -24348,10 +24287,6 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"jli" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/mars,
-/area/bigredv2/outside/space_port_lz2)
 "jlr" = (
 /obj/structure/bed,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -24492,13 +24427,11 @@
 "juF" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/se)
-"jwj" = (
-/obj/structure/platform/shiva{
-	dir = 8
-	},
-/obj/item/disk,
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
+"jwa" = (
+/obj/structure/platform_decoration/stone/kutjevo,
+/obj/effect/decal/cleanable/generic,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/outside/nw)
 "jwU" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -24517,6 +24450,16 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
+"jxA" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/engineering/reactor)
+"jxS" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "jxV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/northeast,
@@ -24538,18 +24481,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
-"jzq" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/engineering/reactor)
-"jzv" = (
-/obj/structure/closet/radiation,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/engineering/reactor)
 "jzD" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkish,
@@ -24567,6 +24498,10 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
+"jAo" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_sw)
 "jAJ" = (
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/engineering)
@@ -24604,6 +24539,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
+"jBC" = (
+/obj/effect/timed_event/scrapeaway{
+	time = 40
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/outside/lz2_west_cas)
 "jCg" = (
 /obj/effect/spawner/random/attachment,
 /obj/structure/machinery/light{
@@ -24650,6 +24591,10 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
+"jFi" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "jFq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
@@ -24668,6 +24613,9 @@
 /obj/item/storage/box/gloves,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
+"jFG" = (
+/turf/open/floor/darkyellowcorners2/east,
+/area/bigredv2/outside/engineering/reactor)
 "jGd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
@@ -24720,12 +24668,6 @@
 "jIQ" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/lz1_north_cas)
-"jIV" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_17,
-/area/bigredv2/outside/nw)
 "jJB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -24762,10 +24704,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
-"jKg" = (
-/obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
 "jKh" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
 /obj/effect/decal/cleanable/blood,
@@ -24785,16 +24723,12 @@
 	},
 /turf/open/floor/red/north,
 /area/bigredv2/outside/lambda_cave_cas)
-"jKI" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 8
-	},
-/obj/structure/platform_decoration/shiva,
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
+"jLa" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "jLj" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/mars,
@@ -24812,10 +24746,6 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
-"jMC" = (
-/obj/effect/sentry_landmark/lz_1/top_left,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
 "jNf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/security,
@@ -24871,6 +24801,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet13_5/west,
 /area/bigredv2/outside/bar)
+"jPK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "jPQ" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/ne)
@@ -25069,17 +25005,17 @@
 	},
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
-"jXw" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/mars_cave/mars_cave_13,
-/area/bigredv2/outside/nw)
 "jXA" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"jXJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light_construct{
+	dir = 8
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "jXP" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/mars_cave/mars_cave_16,
@@ -25252,6 +25188,14 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
+"keO" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"keU" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "kfg" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -25315,12 +25259,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/n)
-"khP" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "khR" = (
 /obj/structure/machinery/floodlight,
 /turf/open/mars_cave/mars_dirt_6,
@@ -25409,6 +25347,15 @@
 /obj/structure/bed,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"kkJ" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/stack/cable_coil/random,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "kle" = (
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -25488,10 +25435,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/engineering)
-"knf" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
 "knL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/armor/riot{
@@ -25571,10 +25514,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/general_offices)
-"ksu" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "ksO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -25626,6 +25565,14 @@
 "kvp" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_sw)
+"kvs" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
+	},
+/turf/open/floor/darkyellow2/northeast,
+/area/bigredv2/outside/engineering/reactor)
 "kvB" = (
 /obj/item/device/flashlight,
 /turf/open/floor/plating/platingdmg3/west,
@@ -25675,10 +25622,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
-"kyU" = (
-/obj/structure/barricade/handrail,
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/engineering/reactor)
 "kzF" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/ne)
@@ -25689,14 +25632,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
-"kAs" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "kAD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/cardboard{
@@ -25710,11 +25645,11 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
-"kAI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/bananapeel,
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
+"kAM" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/mars_cave/mars_dirt_4,
+/area/space)
 "kBn" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/caves)
@@ -25814,6 +25749,12 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
+"kID" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "kIF" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
@@ -25829,11 +25770,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"kKw" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/eta)
 "kKx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash,
@@ -25867,6 +25803,12 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating/platingdmg1,
 /area/bigredv2/outside/medical)
+"kMk" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer,
+/obj/item/stack/cable_coil,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "kMs" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "Righty tighty, lefty loosey!";
@@ -25920,13 +25862,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
-"kNg" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor,
-/area/bigredv2/outside/lz2_south_cas)
 "kNs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26031,6 +25966,11 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"kSB" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "kSH" = (
 /obj/structure/ore_box,
 /turf/open/mars_cave/mars_cave_19,
@@ -26038,6 +25978,11 @@
 "kSL" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/filtration_cave_cas)
+"kSZ" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "kTs" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -26128,6 +26073,10 @@
 "lbh" = (
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/n)
+"lbw" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "lbZ" = (
 /obj/item/frame/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -26264,6 +26213,11 @@
 	},
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
+"ljE" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "ljS" = (
 /obj/item/stack/rods{
 	pixel_x = 9;
@@ -26352,21 +26306,10 @@
 /obj/structure/surface/table,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
-"lqp" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "lqC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/bigredv2/caves_lambda)
-"lqQ" = (
-/obj/effect/sentry_landmark/lz_1/bottom_right,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
 "lrf" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/platebotc,
@@ -26377,10 +26320,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/admin_building)
-"lrt" = (
-/obj/effect/landmark/crap_item,
-/turf/open/mars_cave,
-/area/bigredv2/outside/lz2_west_cas)
 "lrH" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_2,
@@ -26435,9 +26374,6 @@
 /obj/item/tool/crowbar/red,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"luV" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/engineering/reactor)
 "lvh" = (
 /obj/item/weapon/gun/rifle/m4ra,
 /obj/effect/landmark/corpsespawner/ua_riot,
@@ -26471,14 +26407,14 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
-"lwR" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4;
-	layer = 2.9;
-	pixel_x = 4
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
+"lwt" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/mars_cave/mars_cave_2,
+/area/space)
 "lwT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -26494,6 +26430,12 @@
 /obj/item/reagent_container/food/drinks/bottle/cognac,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
+"lxN" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/turf/open/mars_cave/mars_dirt_4,
+/area/space)
 "lxQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper/bigred/union,
@@ -26579,6 +26521,10 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"lBL" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "lBQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26589,6 +26535,12 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
+"lCt" = (
+/obj/structure/machinery/power/reactor/colony{
+	name = "Reactor Turbine"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/engineering/reactor)
 "lCR" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask{
@@ -26724,10 +26676,6 @@
 "lIS" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/ne)
-"lJY" = (
-/obj/effect/decal/cleanable/dirt/greenglow,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/engineering/reactor)
 "lKw" = (
 /obj/item/paper/bigred/walls,
 /obj/structure/machinery/light/small{
@@ -26735,6 +26683,14 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"lKH" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer,
+/obj/structure/machinery/light/small/built{
+	dir = 4
+	},
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "lKL" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -26806,6 +26762,10 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
+"lOV" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "lOY" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "etatunnel_open"
@@ -26822,23 +26782,6 @@
 	},
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
-"lPp" = (
-/turf/open/mars_cave/mars_cave_23,
-/area/bigredv2/outside/lz2_south_cas)
-"lPL" = (
-/obj/structure/platform/shiva{
-	dir = 4
-	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
-"lPQ" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/eta)
 "lQb" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
@@ -27078,12 +27021,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
-"mcY" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "\improper Engine Reactor"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/engineering/reactor)
 "mda" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves_lambda)
@@ -27148,6 +27085,9 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
+"mge" = (
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/engineering/reactor)
 "mgr" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -27291,13 +27231,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
+"mon" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "moE" = (
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_research)
-"mpU" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/engineering/reactor)
+"moH" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/open/mars/mars_dirt_9,
+/area/space)
 "mqf" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -27306,6 +27250,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"mqh" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
+"mqu" = (
+/obj/item/tool/extinguisher,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "mqK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/space_port_lz2)
@@ -27320,6 +27273,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
+"mrc" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/bigredv2/outside/space_port_lz2)
 "mrF" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/mars,
@@ -27350,6 +27307,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
 /area/bigred/ground/garage_workshop)
+"mtj" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/outside/nw)
 "mts" = (
 /obj/item/ore,
 /turf/open/mars_cave/mars_cave_2,
@@ -27409,10 +27371,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"mxi" = (
-/obj/effect/sentry_landmark/lz_1/bottom_left,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
 "mxC" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/effect/decal/cleanable/generic,
@@ -27494,15 +27452,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/e)
-"mzC" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9;
-	pixel_x = -3
-	},
-/obj/structure/platform/kutjevo/rock,
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "mzV" = (
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
@@ -27648,10 +27597,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement15,
 /area/bigredv2/caves_lambda)
-"mHQ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/engineering/reactor)
 "mIc" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/podhatchfloor,
@@ -27678,12 +27623,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"mIX" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "mIZ" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -27691,6 +27630,12 @@
 /obj/item/tank/air,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/filtration_plant)
+"mJx" = (
+/obj/structure/platform/stone/kutjevo/east{
+	pixel_x = 4
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "mKi" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -27785,9 +27730,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
-"mPH" = (
-/turf/open/floor/darkyellowcorners2/north,
-/area/bigredv2/outside/engineering/reactor)
 "mPK" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/dirt,
@@ -27845,14 +27787,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
-"mRo" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
 "mRz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27892,6 +27826,13 @@
 	},
 /turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
+"mSC" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "mSS" = (
 /turf/open/floor/darkyellowcorners2/west,
 /area/bigredv2/outside/engineering)
@@ -28016,17 +27957,11 @@
 "mZC" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_virology)
-"nap" = (
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
+"mZY" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/whitegreen,
-/area/bigredv2/outside/medical)
-"naV" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/eta)
 "nbi" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -28083,9 +28018,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"neE" = (
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "nfP" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -28138,13 +28070,6 @@
 "njf" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/lz2_south_cas)
-"njJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "\improper Engine Reactor"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/engineering/reactor)
 "nkm" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -28224,14 +28149,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
-"nlW" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/structure/platform_decoration/kutjevo/rock,
-/turf/open/mars,
-/area/space)
 "nmb" = (
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_4"
@@ -28332,9 +28249,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"nql" = (
-/turf/open/floor/darkyellow2/southwest,
-/area/bigredv2/outside/engineering/reactor)
 "nqr" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -28413,14 +28327,16 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
+"nuz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail,
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/engineering/reactor)
 "nuQ" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
-"nvf" = (
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "nvn" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	density = 0;
@@ -28448,6 +28364,17 @@
 	},
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
+"nxl" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/space_port_lz2)
+"nxG" = (
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
+"nxK" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "nyZ" = (
 /obj/item/tool/minihoe{
 	pixel_x = -4;
@@ -28489,6 +28416,10 @@
 	},
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"nAJ" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "nBb" = (
 /obj/item/ammo_magazine/pistol/b92fs,
 /obj/item/weapon/gun/pistol/b92fs{
@@ -28543,6 +28474,11 @@
 "nEl" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/lz2_south_cas)
+"nEt" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/eta)
 "nEv" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -28618,6 +28554,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/filtration_cave_cas)
+"nGN" = (
+/obj/effect/timed_event/scrapeaway{
+	time = 40
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves_sw)
 "nHQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -28696,12 +28638,6 @@
 	},
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigred/ground/garage_workshop)
-"nME" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "nMG" = (
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
@@ -28761,13 +28697,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
-"nPH" = (
-/obj/structure/platform_decoration/kutjevo/rock{
-	layer = 3.1
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/mars_cave/mars_cave_19,
-/area/bigredv2/outside/nw)
 "nQl" = (
 /obj/item/ore{
 	pixel_x = -1;
@@ -28807,12 +28736,6 @@
 "nRT" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
-"nRZ" = (
-/obj/structure/machinery/light_construct{
-	dir = 4
-	},
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "nSp" = (
 /obj/structure/machinery/power/apc/power/north{
 	name = "Control Center APC"
@@ -28960,12 +28883,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/telecomm/n_cave)
-"nZD" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "nZK" = (
 /obj/item/ore/diamond,
 /obj/item/stack/sheet/mineral/diamond{
@@ -29007,12 +28924,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"ocV" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "odw" = (
 /obj/structure/bed,
 /turf/open/floor/plating,
@@ -29058,11 +28969,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
-"ofU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail,
-/turf/open/floor/darkyellow2/southwest,
-/area/bigredv2/outside/engineering/reactor)
 "ofX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -29242,14 +29148,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/asphalt/cement,
 /area/bigredv2/caves_lambda)
-"ooi" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 8
-	},
-/obj/structure/platform_decoration/shiva,
-/obj/item/stack/cable_coil,
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "oox" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -29391,6 +29289,10 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"ouh" = (
+/obj/item/tool/extinguisher,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "ouo" = (
 /turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
@@ -29449,25 +29351,6 @@
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/mars,
 /area/bigredv2/caves_north)
-"owp" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
-"owG" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "owR" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
@@ -29494,10 +29377,6 @@
 "oye" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/filtration_cave_cas)
-"oyp" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/mars/mars_dirt_10,
-/area/bigredv2/outside/space_port_lz2)
 "oyM" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 5;
@@ -29567,10 +29446,6 @@
 "oAf" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_virology)
-"oBo" = (
-/obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/bigredv2/outside/space_port_lz2)
 "oBy" = (
 /turf/open/asphalt/cement/cement12,
 /area/bigredv2/caves_lambda)
@@ -29585,6 +29460,10 @@
 /obj/item/shard,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"oCA" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/space_port_lz2)
 "oCK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
@@ -29637,10 +29516,6 @@
 /obj/item/device/flashlight/lantern,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/ne)
-"oFI" = (
-/obj/structure/window/framed/solaris,
-/turf/open/floor/panelscorched,
-/area/bigredv2/outside/engineering/reactor)
 "oFQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
@@ -29651,6 +29526,9 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"oHc" = (
+/turf/open/floor/darkyellow2/southeast,
+/area/bigredv2/outside/engineering/reactor)
 "oHu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal{
@@ -29922,13 +29800,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
-"oUY" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "oVg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/glass,
@@ -29948,9 +29819,6 @@
 	},
 /turf/open/mars,
 /area/bigredv2/outside/nw)
-"oVZ" = (
-/turf/open/floor/darkyellowcorners2/east,
-/area/bigredv2/outside/engineering/reactor)
 "oWc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -29967,6 +29835,11 @@
 	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/outside/admin_building)
+"oWp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail,
+/turf/open/floor/darkyellow2/southwest,
+/area/bigredv2/outside/engineering/reactor)
 "oWC" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A heavy duty power cable for high voltage applications";
@@ -29977,6 +29850,11 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
+"oWE" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
 "oXj" = (
 /obj/structure/surface/table,
 /turf/open/floor/dark,
@@ -30211,10 +30089,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
-"pjy" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave,
-/area/bigredv2/outside/lz2_south_cas)
 "pjD" = (
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/wood,
@@ -30316,6 +30190,15 @@
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"ppu" = (
+/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/engineering/reactor)
 "ppZ" = (
 /obj/structure/barricade/handrail/medical{
 	dir = 4
@@ -30332,6 +30215,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
+"pqL" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "pri" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -30352,6 +30239,11 @@
 	},
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/lambda_cave_cas)
+"prN" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/outside/nw)
 "prU" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -30467,12 +30359,6 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"pxq" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "pxv" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -30484,12 +30370,6 @@
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
-"pxH" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "pxP" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -30497,11 +30377,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/lambda_cave_cas)
-"pxT" = (
-/obj/item/tool/extinguisher,
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "pxV" = (
 /turf/open/asphalt/cement/cement1,
 /area/bigredv2/caves_lambda)
@@ -30751,6 +30626,12 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
+"pOg" = (
+/obj/structure/machinery/compressor{
+	dir = 1
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "pOt" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/whiteblue/east,
@@ -30837,20 +30718,14 @@
 /obj/item/restraint/handcuffs,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"pTA" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 1
-	},
-/obj/structure/platform_decoration/shiva{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "pTH" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_se)
+"pTY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/engineering/reactor)
 "pUi" = (
 /obj/item/weapon/broken_bottle,
 /turf/open/floor/plating,
@@ -30862,12 +30737,22 @@
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/medical)
+"pVi" = (
+/turf/open/floor/darkyellowcorners2/north,
+/area/bigredv2/outside/engineering/reactor)
 "pVp" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
 	},
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
+"pVv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/compressor{
+	dir = 1
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "pVP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
@@ -30920,6 +30805,10 @@
 /obj/item/weapon/gun/rifle/m41a/training,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
+"pXM" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "pXY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -31167,12 +31056,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
-"qlU" = (
-/obj/structure/machinery/compressor{
-	dir = 1
-	},
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "qlW" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool{
@@ -31274,12 +31157,6 @@
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/filtration_plant)
-"qpE" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "qpP" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood{
@@ -31321,10 +31198,6 @@
 	},
 /turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
-"qrw" = (
-/obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/space_port_lz2)
 "qrZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/fire,
@@ -31355,6 +31228,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
+"qtv" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/mars_cave/mars_cave_2,
+/area/space)
 "qty" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -31372,6 +31251,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
+"qtZ" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "qus" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/delivery,
@@ -31406,10 +31289,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
-"qvi" = (
-/obj/effect/sentry_landmark/lz_1/top_right,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "qvA" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave/mars_cave_2,
@@ -31643,6 +31522,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"qGD" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/mars/mars_dirt_10,
+/area/bigredv2/outside/space_port_lz2)
 "qGT" = (
 /obj/item/stack/sheet/metal{
 	pixel_x = 4;
@@ -31693,6 +31576,10 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"qJK" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "qJM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -31925,13 +31812,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
-"qVd" = (
-/obj/item/reagent_container/food/snacks/sausage,
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/space)
 "qVi" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -31971,6 +31851,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
+"qYf" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
+	},
+/obj/structure/platform/stone/kutjevo,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "qYB" = (
 /obj/structure/sink{
 	dir = 8;
@@ -32167,18 +32054,6 @@
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
-"rfe" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/space)
 "rfL" = (
 /obj/item/shard,
 /turf/open/floor/whitegreencorner,
@@ -32309,10 +32184,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
-"rnR" = (
-/obj/effect/sentry_landmark/lz_2/top_left,
-/turf/open/mars,
-/area/bigredv2/outside/space_port_lz2)
 "rnV" = (
 /obj/item/stack/sheet/glass,
 /turf/open/floor/dark,
@@ -32549,14 +32420,6 @@
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
-"rAg" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/turf/open/floor/darkyellow2/northeast,
-/area/bigredv2/outside/engineering/reactor)
 "rAs" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_east)
@@ -32626,7 +32489,7 @@
 /obj/structure/barricade/deployable,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"rFs" = (
+"rGz" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_sw)
@@ -32634,11 +32497,6 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/red/north,
 /area/bigredv2/outside/lambda_cave_cas)
-"rGJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/window/framed/solaris,
-/turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering/reactor)
 "rGP" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_7,
@@ -32904,18 +32762,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/bigredv2/outside/nw)
-"rQQ" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/engineering/reactor)
-"rRF" = (
-/obj/item/tool/extinguisher,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "rSf" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -32974,6 +32820,12 @@
 /obj/structure/fence,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/filtration_plant)
+"rTP" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/mars_cave/mars_cave_2,
+/area/space)
 "rUn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -33037,11 +32889,6 @@
 /obj/structure/fence,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
-"rVV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/window/framed/solaris,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering/reactor)
 "rVY" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -33109,10 +32956,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/virology)
-"rXN" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/outside/lz1_telecomm_cas)
 "rXY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -33178,6 +33021,10 @@
 	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
+"saX" = (
+/obj/structure/machinery/power/turbine,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "sbc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -33197,16 +33044,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
-"sbz" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 1
-	},
-/turf/open/mars/mars_dirt_12,
-/area/space)
+"sbt" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/gm/river,
+/area/bigredv2/outside/engineering/reactor)
 "sbA" = (
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
@@ -33240,12 +33083,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
-"scK" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "scP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33468,6 +33305,12 @@
 /obj/item/tank/air,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/filtration_cave_cas)
+"snv" = (
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "snT" = (
 /obj/item/stack/rods{
 	pixel_y = 13;
@@ -33710,6 +33553,9 @@
 	},
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
+"syJ" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/outside/lz2_south_cas)
 "syK" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -33742,6 +33588,14 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
+"sAw" = (
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/nw)
+"sAG" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/lz2_south_cas)
 "sAS" = (
 /obj/item/toy/prize/fireripley{
 	pixel_y = 19
@@ -33817,6 +33671,10 @@
 "sDC" = (
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_sw)
+"sDO" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "sDZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/head/welding,
@@ -33856,9 +33714,6 @@
 "sFv" = (
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/caves_north)
-"sFL" = (
-/turf/open/floor/darkyellow2,
-/area/bigredv2/outside/engineering/reactor)
 "sFW" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/mars_cave/mars_cave_17,
@@ -33951,6 +33806,10 @@
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
+"sLU" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "sMg" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -33973,6 +33832,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
+"sNP" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
 "sNQ" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_lambda)
@@ -34060,10 +33923,6 @@
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
-"sSP" = (
-/obj/effect/sentry_landmark/lz_2/top_left,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/space_port_lz2)
 "sSU" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/lz2_south_cas)
@@ -34116,9 +33975,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"sXA" = (
-/turf/closed/wall/mineral/uranium,
-/area/bigredv2/outside/engineering/reactor)
 "sYL" = (
 /turf/open/mars_cave/mars_cave_8,
 /area/bigredv2/outside/lambda_cave_cas)
@@ -34207,6 +34063,10 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"tcP" = (
+/obj/effect/decal/cleanable/dirt/greenglow,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/engineering/reactor)
 "tcV" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -34608,6 +34468,14 @@
 	},
 /turf/open/floor/loadingarea/west,
 /area/bigredv2/outside/cargo)
+"tuG" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/item/trash/used_stasis_bag{
+	pixel_y = 8;
+	pixel_x = 9
+	},
+/turf/open/mars_cave/mars_cave_9,
+/area/bigredv2/outside/nw)
 "tuN" = (
 /obj/structure/machinery/light/small,
 /turf/open/mars_cave,
@@ -34615,6 +34483,12 @@
 "tvh" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/lz2_south_cas)
+"tvH" = (
+/obj/structure/machinery/compressor{
+	dir = 1
+	},
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "twt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -34755,10 +34629,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
-"tCP" = (
-/obj/structure/machinery/power/turbine,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
 "tCQ" = (
 /turf/open/gm/river/red,
 /area/bigredv2/outside/c)
@@ -34805,9 +34675,6 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"tET" = (
-/turf/open/floor/darkyellow2/southeast,
-/area/bigredv2/outside/engineering/reactor)
 "tFt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
@@ -34986,19 +34853,6 @@
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port_lz2)
-"tMq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/compressor{
-	dir = 1
-	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering/reactor)
-"tMv" = (
-/obj/structure/flora/grass/desert/lightgrass_4,
-/obj/structure/flora/grass/desert/lightgrass_11,
-/obj/effect/sentry_landmark/lz_2/top_right,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
 "tMA" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -35142,12 +34996,6 @@
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
-"tSI" = (
-/obj/structure/platform/shiva{
-	dir = 8
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "tSY" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitegreencorner,
@@ -35176,6 +35024,13 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
+"tUB" = (
+/obj/structure/machinery/iv_drip,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/whitegreen,
+/area/bigredv2/outside/medical)
 "tUL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hefa_cult_decals/d32,
@@ -35226,9 +35081,6 @@
 	},
 /turf/open/mars,
 /area/bigredv2/outside/c)
-"tWC" = (
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "tWS" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/mars_cave/mars_cave_13,
@@ -35348,6 +35200,11 @@
 	},
 /turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
+"ueL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
 "ueM" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -35394,6 +35251,10 @@
 /obj/effect/decal/strata_decals/grime/grime2,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/bigredv2/outside/space_port_lz2)
+"ugT" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/space_port_lz2)
 "ugW" = (
 /obj/structure/machinery/light/small,
@@ -35674,6 +35535,10 @@
 "uyk" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/lz2_west_cas)
+"uyS" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/w)
 "uzb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -35786,10 +35651,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
-"uEd" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/outside/lz2_south_cas)
 "uEi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
@@ -35887,6 +35748,12 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"uJj" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "uJu" = (
 /obj/item/robot_parts/robot_component/diagnosis_unit{
 	pixel_y = 15
@@ -35965,16 +35832,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
-"uPK" = (
-/obj/structure/platform/shiva{
-	dir = 1
-	},
-/obj/structure/platform/shiva,
-/obj/structure/machinery/light/small/built{
-	dir = 4
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "uQZ" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/mars,
@@ -36118,6 +35975,9 @@
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"uZy" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/engineering/reactor)
 "uZG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -36179,6 +36039,12 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/eta)
+"vct" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_sw)
 "vcy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
@@ -36270,13 +36136,6 @@
 /obj/structure/fence,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/n)
-"vgZ" = (
-/obj/structure/platform/shiva,
-/obj/structure/platform/shiva{
-	dir = 1
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "vhF" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/mars_cave/mars_cave_13,
@@ -36309,15 +36168,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/filtration_plant)
-"vjN" = (
-/obj/structure/bed/bedroll{
-	dir = 5
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "vjR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/explosive/grenade/custom/large{
@@ -36471,17 +36321,15 @@
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
+"voG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail,
+/turf/open/floor/darkyellow2/southeast,
+/area/bigredv2/outside/engineering/reactor)
 "vpu" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
-"vpx" = (
-/obj/structure/platform,
-/obj/structure/flora/jungle/planttop1{
-	pixel_y = 10
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "vpY" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "eta";
@@ -36547,6 +36395,14 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
+"vsS" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/prop/server_equipment/yutani_server{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/telecomm/n_cave)
 "vsX" = (
 /obj/item/trash/semki{
 	layer = 2;
@@ -36599,12 +36455,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"vvv" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "vvx" = (
 /obj/structure/surface/table,
 /obj/item/bodybag{
@@ -36771,6 +36621,10 @@
 "vCU" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/lz2_south_cas)
+"vDq" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "vDw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
@@ -36780,6 +36634,13 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
+"vDJ" = (
+/obj/item/storage/toolbox{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
 "vDK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -36860,10 +36721,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/nw)
-"vGT" = (
-/obj/structure/machinery/power/turbine,
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "vHw" = (
 /turf/closed/wall/wood,
 /area/bigredv2/caves/mining)
@@ -36891,6 +36748,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
+"vKl" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/engineering/reactor)
 "vKv" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port_lz2)
@@ -36940,6 +36805,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
+"vNm" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/outside/lz1_telecomm_cas)
 "vND" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/mars,
@@ -37009,6 +36878,12 @@
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/darkred2/east,
 /area/bigredv2/caves/eta/research)
+"vQt" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform_decoration/stone/kutjevo,
+/turf/open/mars,
+/area/space)
 "vQF" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/darkyellowcorners2/north,
@@ -37123,6 +36998,10 @@
 "vXJ" = (
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_lambda)
+"vYf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "vYp" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/decal/cleanable/blood,
@@ -37152,12 +37031,6 @@
 /obj/item/device/flashlight,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
-"waO" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering/reactor)
 "waX" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/mars_cave/mars_cave_2,
@@ -37207,10 +37080,6 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
-"wcX" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkyellow2/east,
-/area/bigredv2/outside/engineering/reactor)
 "wdd" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -37223,18 +37092,6 @@
 	},
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
-"wdM" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/space)
 "wdV" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -37324,6 +37181,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"whp" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 3.05;
+	pixel_y = 9
+	},
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/engineering/reactor)
 "whw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/woodentable,
@@ -37334,6 +37199,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
+"whG" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave,
+/area/bigredv2/outside/lz2_west_cas)
 "whL" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidwarning/west,
@@ -37373,12 +37242,6 @@
 	},
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
-"wjW" = (
-/obj/structure/platform/shiva{
-	dir = 1
-	},
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "wko" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -37389,12 +37252,6 @@
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/mars,
 /area/bigredv2/outside/se)
-"wkV" = (
-/obj/effect/timed_event/scrapeaway{
-	time = 40
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves_sw)
 "wlr" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
@@ -37417,12 +37274,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/caves_lambda)
-"wmA" = (
-/obj/effect/timed_event/scrapeaway{
-	time = 40
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/lz2_west_cas)
 "wmN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
@@ -37438,6 +37289,15 @@
 "wni" = (
 /turf/open/floor/darkredcorners2,
 /area/bigredv2/caves/eta/xenobiology)
+"wnl" = (
+/obj/structure/bed/bedroll{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "wnZ" = (
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
@@ -37449,10 +37309,6 @@
 "wog" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
-"woI" = (
-/obj/effect/sentry_landmark/lz_2/top_right,
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/w)
 "woK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -37468,6 +37324,10 @@
 "wpf" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/caves_north)
+"wpn" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/engineering/reactor)
 "wpv" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -37632,6 +37492,10 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"wwT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/engineering/reactor)
 "wxo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
@@ -37943,9 +37807,6 @@
 /obj/item/ammo_magazine/pistol/m1911,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"wOY" = (
-/turf/open/floor/dark,
-/area/bigredv2/outside/engineering/reactor)
 "wPk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -37995,11 +37856,19 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"wRD" = (
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "wRH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
+"wRP" = (
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering/reactor)
 "wSj" = (
 /obj/structure/sign/safety/life_support,
 /obj/structure/sign/safety/maint{
@@ -38007,15 +37876,6 @@
 	},
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/oob)
-"wSH" = (
-/obj/structure/barricade/handrail,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/engineering/reactor)
 "wUc" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -38235,19 +38095,6 @@
 	},
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/c)
-"xfN" = (
-/obj/structure/platform_decoration/shiva{
-	dir = 1
-	},
-/obj/structure/platform_decoration/shiva{
-	dir = 4
-	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/item/stack/cable_coil/random,
-/turf/open/floor/bluegrid/bcircuitoff,
-/area/bigredv2/caves/lambda/research)
 "xfW" = (
 /turf/open/jungle/impenetrable,
 /area/bigredv2/caves/eta/living)
@@ -38346,10 +38193,6 @@
 	},
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
-"xlz" = (
-/obj/structure/machinery/light,
-/turf/open/floor/dark,
-/area/bigredv2/outside/engineering/reactor)
 "xlD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/pistachios{
@@ -38375,16 +38218,6 @@
 "xmy" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
-"xmT" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 1
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/space)
 "xnf" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -38463,6 +38296,10 @@
 	},
 /turf/open/floor/whitepurplecorner/north,
 /area/bigredv2/outside/medical)
+"xqk" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/eta)
 "xqy" = (
 /obj/effect/spawner/random/tool{
 	pixel_x = -11;
@@ -38624,13 +38461,6 @@
 /obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/mars,
 /area/bigredv2/outside/se)
-"xxG" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 1;
-	name = "\improper Engine Reactor"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/engineering/reactor)
 "xxN" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -38669,6 +38499,10 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
+"xzC" = (
+/obj/structure/platform_decoration/stone/kutjevo,
+/turf/open/mars,
+/area/space)
 "xAh" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -38689,12 +38523,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/nw)
-"xBn" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "xBo" = (
 /obj/structure/barricade/metal{
 	dir = 1
@@ -38716,6 +38544,15 @@
 "xBS" = (
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/lz1_north_cas)
+"xBY" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/bluegrid/bcircuitoff,
+/area/bigredv2/caves/lambda/research)
+"xCk" = (
+/obj/item/reagent_container/food/snacks/sausage,
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/turf/open/mars_cave/mars_dirt_4,
+/area/space)
 "xCX" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/dark,
@@ -38918,11 +38755,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"xMz" = (
-/obj/structure/platform_decoration,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/telecomm/n_cave)
 "xMT" = (
 /obj/structure/closet,
 /obj/item/explosive/grenade/high_explosive/frag,
@@ -38972,6 +38804,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
+"xQa" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "xQb" = (
 /obj/structure/pipes/vents/pump/on,
 /obj/effect/decal/cleanable/dirt,
@@ -39003,6 +38839,9 @@
 /obj/structure/prop/dam/crane,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
+"xSu" = (
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/engineering/reactor)
 "xTk" = (
 /obj/limb/arm/l_arm,
 /obj/effect/decal/cleanable/blood/drip,
@@ -39161,10 +39000,6 @@
 "xZL" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/lambda_cave_cas)
-"xZS" = (
-/obj/structure/window/framed/solaris,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering/reactor)
 "yar" = (
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
@@ -39322,12 +39157,6 @@
 /obj/structure/flora/grass/desert/lightgrass_12,
 /turf/open/mars,
 /area/bigredv2/outside/w)
-"yiY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
 "yjU" = (
 /obj/item/weapon/broken_bottle,
 /turf/open/floor/plating/platingdmg3/west,
@@ -39349,6 +39178,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/s)
+"ykR" = (
+/turf/closed/wall/mineral/uranium,
+/area/bigredv2/outside/engineering/reactor)
 "ykW" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -3;
@@ -39374,14 +39206,6 @@
 /obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"ylp" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 3.01;
-	pixel_y = 9
-	},
-/turf/open/floor/darkyellow2/northwest,
-/area/bigredv2/outside/engineering/reactor)
 "ylx" = (
 /obj/item/clothing/suit/storage/CMB{
 	pixel_x = -6;
@@ -40057,8 +39881,8 @@ aaa
 aab
 aao
 aao
-rfe
-xmT
+rTP
+qtv
 aao
 aao
 aao
@@ -40273,10 +40097,10 @@ aaa
 aaa
 aab
 aao
-cnk
-ada
+lwt
+cCq
 qjO
-gsW
+kAM
 aao
 aao
 aao
@@ -40491,10 +40315,10 @@ aaa
 aab
 aao
 aao
-wdM
-qVd
-aVR
-sbz
+lxN
+xCk
+hot
+hub
 aao
 aao
 aao
@@ -40709,9 +40533,9 @@ aab
 aao
 aao
 aao
-aVc
-aVQ
-nlW
+moH
+xzC
+vQt
 aao
 aao
 aao
@@ -40926,8 +40750,8 @@ aab
 aao
 aao
 aao
-iVd
-nlW
+gAg
+vQt
 aao
 aao
 aao
@@ -42141,10 +41965,10 @@ cYJ
 vMj
 vMj
 cYJ
-wmA
-wkV
-wkV
-wkV
+jBC
+nGN
+nGN
+nGN
 wog
 wog
 wog
@@ -42292,7 +42116,7 @@ xmy
 xmy
 gda
 gda
-ccX
+fOc
 xmy
 xmy
 lrH
@@ -42354,13 +42178,13 @@ cYJ
 cYJ
 ski
 eEy
-lrt
+whG
 cYJ
 ovB
 cYJ
-wmA
-wkV
-wkV
+jBC
+nGN
+nGN
 wog
 wog
 wog
@@ -42513,7 +42337,7 @@ rCA
 pQM
 pQM
 eOd
-rXN
+vNm
 aao
 aao
 aao
@@ -42574,11 +42398,11 @@ cYJ
 cYJ
 uyk
 cYJ
-wmA
-wmA
-wkV
+jBC
+jBC
+nGN
 wog
-fVE
+jAo
 wog
 wog
 wog
@@ -42791,9 +42615,9 @@ cYJ
 cYJ
 uyk
 cYJ
-wmA
-wkV
-wkV
+jBC
+nGN
+nGN
 wog
 wog
 wog
@@ -42891,7 +42715,7 @@ aaf
 aaf
 aar
 aaf
-jMC
+qtZ
 aaf
 aaf
 aaf
@@ -43007,10 +42831,10 @@ aao
 aao
 aao
 bQb
-wmA
-wmA
-wkV
-wkV
+jBC
+jBC
+nGN
+nGN
 wog
 wog
 wog
@@ -43226,7 +43050,7 @@ aao
 aao
 aao
 aao
-wkV
+nGN
 wog
 wog
 wog
@@ -43321,7 +43145,7 @@ aaf
 aaf
 aaf
 aaf
-jMC
+qtZ
 aaf
 aaf
 aaf
@@ -43556,7 +43380,7 @@ acJ
 aaf
 aaf
 aaf
-mxi
+hLq
 aaf
 aaf
 aaf
@@ -43752,7 +43576,7 @@ aao
 aao
 aae
 aag
-jMC
+qtZ
 aaf
 aaf
 aaf
@@ -43776,7 +43600,7 @@ aaf
 aaf
 aaf
 aaf
-mxi
+hLq
 aaf
 aaf
 aae
@@ -44292,7 +44116,7 @@ cVY
 cVY
 cVY
 cVY
-rnR
+ehN
 cVY
 ayf
 ayf
@@ -44428,7 +44252,7 @@ aah
 aei
 aaf
 aaf
-mxi
+hLq
 acJ
 aae
 aao
@@ -44505,7 +44329,7 @@ nbu
 cVY
 cVY
 cVY
-rnR
+ehN
 hpg
 mMf
 cVY
@@ -44739,12 +44563,12 @@ tVp
 fFO
 cVY
 cVY
-oyp
+qGD
 tVp
 fFO
 cVY
 cVY
-jli
+hbg
 ayf
 ayf
 aao
@@ -44891,7 +44715,7 @@ aao
 vGR
 iKU
 jYp
-dLJ
+tuG
 aeI
 aeI
 jHK
@@ -45105,10 +44929,10 @@ aeI
 aeI
 aao
 aao
-jIV
-jXw
-etg
-hkS
+sAw
+mtj
+eFX
+prN
 aeI
 aeI
 aeI
@@ -45153,7 +44977,7 @@ cVY
 cVY
 hpg
 tVp
-sSP
+oCA
 eWd
 eWd
 eWd
@@ -45830,7 +45654,7 @@ bie
 bsc
 eWd
 dAX
-knf
+nAJ
 tVp
 ayf
 aao
@@ -46381,7 +46205,7 @@ aah
 aej
 aaf
 aaf
-lqQ
+lOV
 acJ
 aae
 aao
@@ -46573,7 +46397,7 @@ aao
 aao
 aae
 aaf
-dQE
+cjS
 aap
 aav
 aaG
@@ -47246,7 +47070,7 @@ jmQ
 lrf
 mSz
 dbO
-hLt
+keO
 rIx
 iuI
 hyO
@@ -47605,7 +47429,7 @@ hzP
 fnO
 xkR
 tWS
-gVj
+cAM
 iJF
 omG
 pJX
@@ -47677,7 +47501,7 @@ dbO
 skZ
 skZ
 dbO
-hLt
+keO
 aah
 aah
 aah
@@ -47750,7 +47574,7 @@ aSB
 mQY
 jzO
 jzO
-woI
+uyS
 vDS
 woe
 tVp
@@ -47878,7 +47702,7 @@ aae
 aae
 wHg
 aah
-qvi
+pXM
 aaU
 abc
 aah
@@ -48100,7 +47924,7 @@ aah
 aah
 aah
 aah
-qvi
+pXM
 abD
 aah
 aah
@@ -48628,7 +48452,7 @@ tVp
 bgX
 sbm
 eWd
-ifl
+nxl
 kOv
 qNH
 mDt
@@ -48644,13 +48468,13 @@ qcQ
 tVp
 tVp
 tVp
-oBo
+mrc
 mVp
 mqK
 tVp
 qcQ
 tVp
-jKg
+iWP
 tVp
 aao
 aao
@@ -48895,7 +48719,7 @@ kvp
 wog
 wog
 wog
-yiY
+vct
 bvV
 rUn
 dSg
@@ -49055,7 +48879,7 @@ jzO
 jzO
 woP
 tVp
-tMv
+buk
 tVp
 tVp
 tVp
@@ -49112,7 +48936,7 @@ fus
 kgx
 wog
 wog
-rFs
+rGz
 uHQ
 tBf
 qjA
@@ -49515,7 +49339,7 @@ eKY
 tCn
 mic
 mic
-qrw
+ugT
 tCn
 tCn
 tCn
@@ -49529,7 +49353,7 @@ bGL
 qCK
 keg
 xIP
-kNg
+bvF
 keg
 bvS
 bvS
@@ -50933,8 +50757,8 @@ aao
 aao
 aao
 aao
-blk
-blk
+agm
+agm
 aao
 aao
 aao
@@ -51149,9 +50973,9 @@ aao
 aao
 aao
 aao
-blk
-blk
-blk
+agm
+agm
+agm
 aao
 aao
 aao
@@ -51366,8 +51190,8 @@ aao
 aao
 aao
 aao
-blk
-blk
+agm
+agm
 aao
 aao
 aao
@@ -51583,9 +51407,9 @@ aao
 aao
 aao
 aao
-blk
-blk
-blk
+agm
+agm
+agm
 aao
 aao
 aao
@@ -51800,9 +51624,9 @@ aao
 aao
 aao
 aao
-blk
-blk
-blk
+agm
+agm
+agm
 aao
 aao
 aao
@@ -52017,8 +51841,8 @@ aao
 aao
 aao
 aao
-blk
-blk
+agm
+agm
 aao
 aao
 aao
@@ -52234,8 +52058,8 @@ aao
 aao
 aao
 aao
-blk
-blk
+agm
+agm
 aao
 aao
 aao
@@ -52569,7 +52393,7 @@ aao
 aao
 aao
 kgx
-lPp
+syJ
 kgx
 kgx
 kgx
@@ -52785,9 +52609,9 @@ kgx
 kgx
 kgx
 kgx
-uEd
+sAG
 kgx
-lPp
+syJ
 kgx
 kgx
 kgx
@@ -53214,15 +53038,15 @@ nLw
 aao
 aao
 aao
-pjy
-pjy
-pjy
-pjy
-pjy
-pjy
-pjy
-pjy
-pjy
+giB
+giB
+giB
+giB
+giB
+giB
+giB
+giB
+giB
 aao
 aao
 aao
@@ -53337,7 +53161,7 @@ mPR
 nJt
 siK
 hEr
-nPH
+jwa
 wNe
 rcR
 alD
@@ -53426,23 +53250,23 @@ ayZ
 axX
 axX
 axX
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-mpU
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+wwT
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
 aao
 aao
 aao
@@ -53643,23 +53467,23 @@ kVT
 ayZ
 bsP
 ayZ
-pxT
-ksu
-dzg
-nvf
-naV
-iXO
-tCP
-tMq
-tCP
-act
-ksu
-nvf
-xZS
-nvf
-nql
-luV
-luV
+mqu
+eyR
+jXJ
+nxG
+sDO
+pOg
+saX
+pVv
+saX
+eIN
+eyR
+nxG
+hkR
+nxG
+dLd
+uZy
+uZy
 aao
 aao
 wog
@@ -53860,23 +53684,23 @@ tTI
 nIi
 bte
 nIi
-tWC
-wcX
-wcX
-wcX
-iYt
-tWC
-wcX
-wcX
-iYt
-tWC
-tWC
-oVZ
-xxG
-wOY
-sFL
-jzv
-luV
+bLE
+vYf
+vYf
+vYf
+chw
+bLE
+vYf
+vYf
+chw
+bLE
+bLE
+jFG
+fUp
+wRP
+xSu
+wpn
+uZy
 aao
 wog
 wog
@@ -54077,23 +53901,23 @@ gfX
 axX
 axX
 axX
-rVV
-rVV
-rVV
-oFI
-mcY
-rVV
-rVV
-xZS
-mcY
-rGJ
-rGJ
-xZS
-luV
-mcY
-xZS
-luV
-luV
+iig
+iig
+iig
+mqh
+fEv
+iig
+iig
+hkR
+fEv
+ueL
+ueL
+hkR
+uZy
+fEv
+hkR
+uZy
+uZy
 aao
 wog
 wog
@@ -54294,22 +54118,22 @@ uDA
 bsP
 bsP
 axX
-ioT
-qpE
-qpE
-bOj
-gXg
-ioT
-qpE
-owp
-wSH
-owG
-qpE
-owp
-xZS
-oVZ
-sFL
-luV
+sbt
+pqL
+pqL
+jLa
+ckC
+sbt
+pqL
+jLa
+ppu
+sbt
+pqL
+jLa
+hkR
+jFG
+xSu
+uZy
 aao
 aao
 wog
@@ -54511,22 +54335,22 @@ mSS
 mij
 kVT
 dhN
-mIX
-neE
-sXA
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-sXA
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+ykR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+ykR
+beD
+hkR
+mge
+xSu
+uZy
 aao
 wog
 qgY
@@ -54652,7 +54476,7 @@ alu
 gNv
 awO
 kNs
-nap
+tUB
 amj
 ayl
 ayL
@@ -54728,22 +54552,22 @@ slG
 dWd
 sCt
 dhN
-mIX
-neE
-neE
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-neE
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+iNR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+iNR
+beD
+hkR
+mge
+xSu
+uZy
 aao
 wog
 wog
@@ -54945,22 +54769,22 @@ gwg
 cla
 gdx
 dhN
-eGH
-pxq
-sXA
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-sXA
-eTU
-xZS
-dfD
-sFL
-luV
+bPe
+jFi
+ykR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+ykR
+beD
+hkR
+mge
+xSu
+uZy
 uVn
 wog
 wog
@@ -55163,21 +54987,21 @@ uaS
 axX
 axX
 axX
-mIX
-neE
-eTU
-gXg
-eGH
-waO
-dsl
-wSH
-mIX
-neE
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+beD
+ckC
+bPe
+lbw
+eaC
+ppu
+frs
+iNR
+beD
+hkR
+mge
+xSu
+uZy
 dQw
 wog
 qgY
@@ -55380,21 +55204,21 @@ cla
 btr
 jTk
 dhN
-mIX
-sXA
-eTU
-jzq
-bLY
-bLY
-bLY
-kyU
-mIX
-sXA
-eTU
-rGJ
-mHQ
-sFL
-lJY
+frs
+ykR
+beD
+vKl
+lCt
+lCt
+lCt
+jxA
+frs
+ykR
+beD
+ueL
+pTY
+xSu
+tcP
 dQw
 wog
 wog
@@ -55597,21 +55421,21 @@ bqN
 btt
 uGs
 gmm
-mIX
-neE
-eTU
-ylp
-nvf
-cAx
-nvf
-ofU
-mIX
-neE
-eTU
-rGJ
-mHQ
-cGs
-lJY
+frs
+iNR
+beD
+gtk
+nxG
+jxS
+nxG
+oWp
+frs
+iNR
+beD
+ueL
+pTY
+dyA
+tcP
 rvS
 wog
 wog
@@ -55814,21 +55638,21 @@ tTI
 nVq
 qUF
 dhN
-mIX
-sXA
-eTU
-rQQ
-xlz
-luV
-eZp
-gvN
-mIX
-sXA
-eTU
-xZS
-dfD
-cGs
-luV
+frs
+ykR
+beD
+whp
+guu
+uZy
+cNb
+nuz
+frs
+ykR
+beD
+hkR
+mge
+dyA
+uZy
 rvS
 wog
 wog
@@ -56031,21 +55855,21 @@ tTI
 btt
 nmU
 dhN
-mIX
-neE
-eTU
-rAg
-tWC
-ocV
-wcX
-diW
-mIX
-neE
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+beD
+kvs
+bLE
+uJj
+vYf
+voG
+frs
+iNR
+beD
+hkR
+mge
+xSu
+uZy
 rvS
 wog
 wog
@@ -56248,21 +56072,21 @@ nVq
 btu
 gHV
 dhN
-mIX
-sXA
-eTU
-jzq
-bLY
-bLY
-bLY
-kyU
-mIX
-sXA
-eTU
-xZS
-mHQ
-sFL
-luV
+frs
+ykR
+beD
+vKl
+lCt
+lCt
+lCt
+jxA
+frs
+ykR
+beD
+hkR
+pTY
+xSu
+uZy
 rvS
 wog
 jXX
@@ -56465,21 +56289,21 @@ tzJ
 axX
 axX
 axX
-mIX
-neE
-eTU
-gXg
-ioT
-qpE
-owp
-wSH
-mIX
-neE
-eTU
-xZS
-mHQ
-sFL
-luV
+frs
+iNR
+beD
+ckC
+sbt
+pqL
+jLa
+ppu
+frs
+iNR
+beD
+hkR
+pTY
+xSu
+uZy
 aao
 aao
 aao
@@ -56681,22 +56505,22 @@ btr
 tTI
 kVT
 dhN
-ioT
-bZW
-sXA
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-sXA
-eTU
-rVV
-mHQ
-sFL
-luV
+sbt
+lBL
+ykR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+ykR
+beD
+iig
+pTY
+xSu
+uZy
 aao
 aao
 aao
@@ -56898,22 +56722,22 @@ nVq
 tTI
 sCt
 dhN
-mIX
-neE
-neE
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-neE
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+iNR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+iNR
+beD
+hkR
+mge
+xSu
+uZy
 aao
 aao
 aao
@@ -57115,22 +56939,22 @@ iQC
 nVq
 vWm
 dhN
-mIX
-neE
-sXA
-eTU
-gXg
-mIX
-neE
-eTU
-wSH
-mIX
-sXA
-eTU
-xZS
-dfD
-sFL
-luV
+frs
+iNR
+ykR
+beD
+ckC
+frs
+iNR
+beD
+ppu
+frs
+ykR
+beD
+hkR
+mge
+xSu
+uZy
 aao
 aao
 aao
@@ -57332,22 +57156,22 @@ eGM
 btu
 dyH
 axX
-eGH
-waO
-waO
-dsl
-gXg
-eGH
-waO
-dsl
-wSH
-eGH
-waO
-dsl
-xZS
-mPH
-sFL
-luV
+bPe
+lbw
+lbw
+eaC
+ckC
+bPe
+lbw
+eaC
+ppu
+bPe
+lbw
+eaC
+hkR
+pVi
+xSu
+uZy
 aao
 aao
 aao
@@ -57549,23 +57373,23 @@ wFL
 axX
 axX
 axX
-xZS
-xZS
-xZS
-xZS
-mcY
-xZS
-cXf
-rGJ
-njJ
-cXf
-xZS
-xZS
-luV
-mcY
-xZS
-luV
-luV
+hkR
+hkR
+hkR
+hkR
+fEv
+hkR
+sNP
+ueL
+gPh
+sNP
+hkR
+hkR
+uZy
+fEv
+hkR
+uZy
+uZy
 aao
 aao
 aao
@@ -57722,9 +57546,9 @@ bMa
 aof
 mEH
 aOM
-aYi
-xBn
-nZD
+fjN
+aNA
+sLU
 aPS
 aOM
 aOM
@@ -57766,23 +57590,23 @@ tTI
 nIi
 gZc
 nIi
-nvf
-ksu
-ksu
-ksu
-iYt
-ksu
-ksu
-rRF
-iYt
-nvf
-nvf
-mPH
-xxG
-wOY
-sFL
-jzv
-luV
+nxG
+eyR
+eyR
+eyR
+chw
+eyR
+eyR
+ouh
+chw
+nxG
+nxG
+pVi
+fUp
+wRP
+xSu
+wpn
+uZy
 aao
 aao
 aao
@@ -57939,9 +57763,9 @@ aof
 aof
 mEH
 aOM
-vpx
+cBj
 aFd
-khP
+fiQ
 aZW
 aOK
 bbk
@@ -57983,23 +57807,23 @@ pMi
 ayZ
 bsP
 ayZ
-tWC
-kAI
-nRZ
-tWC
-hJw
-qlU
-vGT
-qlU
-vGT
-hJw
-tWC
-tWC
-xZS
-tWC
-tET
-luV
-luV
+bLE
+iFa
+snv
+bLE
+gFR
+tvH
+gML
+tvH
+gML
+gFR
+bLE
+bLE
+hkR
+bLE
+oHc
+uZy
+uZy
 aao
 aao
 aao
@@ -58086,10 +57910,10 @@ dQR
 fsy
 aaB
 pRP
-xMz
-hFv
-hFv
-kAs
+eTm
+qJK
+qJK
+fdP
 oMf
 aWy
 acP
@@ -58156,9 +57980,9 @@ aRd
 bcJ
 aSW
 aOM
-aYk
-dBm
-pxH
+wRD
+mon
+vDq
 aZX
 aof
 aof
@@ -58200,22 +58024,22 @@ sDZ
 axX
 axX
 axX
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
-luV
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
+uZy
 aao
 aao
 aao
@@ -58303,10 +58127,10 @@ kfx
 fsT
 aaB
 oMf
-dkY
+iUW
 qDZ
 hJH
-lqp
+kSZ
 iRf
 aWy
 acP
@@ -58325,8 +58149,8 @@ afT
 ikq
 rEe
 aer
-bZm
-mRo
+vDJ
+gvs
 pMc
 aer
 aoi
@@ -58520,10 +58344,10 @@ kfx
 aqL
 nZB
 oMf
-dkY
+iUW
 qDZ
 qDZ
-cnG
+nxK
 iRf
 aWy
 acP
@@ -58543,7 +58367,7 @@ lYc
 akm
 fyC
 lAV
-fcn
+fcO
 ahj
 acp
 aer
@@ -58737,10 +58561,10 @@ kfx
 aqL
 nZB
 pRP
-iXs
-scK
-scK
-oUY
+vsS
+dUN
+dUN
+ljE
 oMf
 wmN
 acP
@@ -59299,7 +59123,7 @@ vpY
 wIE
 bvH
 ihW
-kKw
+nEt
 kdr
 kdr
 kdr
@@ -59377,10 +59201,10 @@ aao
 aao
 aao
 aao
-lwR
-lwR
-lwR
-lwR
+mJx
+mJx
+mJx
+mJx
 aao
 aao
 aao
@@ -59598,7 +59422,7 @@ aao
 aao
 aao
 uut
-eCM
+xQa
 ylx
 aao
 aao
@@ -59730,7 +59554,7 @@ jwV
 vpY
 xnm
 vpY
-ctq
+xqk
 bvQ
 eAU
 tUe
@@ -59815,7 +59639,7 @@ aao
 aao
 cUN
 fkD
-eCM
+xQa
 rvB
 aao
 tjX
@@ -60028,11 +59852,11 @@ aao
 aao
 aao
 aao
-fBJ
-mzC
+dBx
+qYf
 rSE
 lSA
-eCM
+xQa
 rvB
 aao
 xqW
@@ -60247,8 +60071,8 @@ aao
 aao
 aao
 aao
-fBJ
-hos
+dBx
+dYb
 btZ
 tHH
 aao
@@ -62334,7 +62158,7 @@ bjw
 vpY
 jBq
 vpY
-lPQ
+mZY
 vcd
 bvQ
 kdr
@@ -67013,7 +66837,7 @@ opn
 oEz
 poL
 kGK
-vjN
+wnl
 ako
 vjW
 atE
@@ -70267,7 +70091,7 @@ akL
 pwa
 cIC
 qYH
-nME
+jPK
 bZH
 apU
 qFq
@@ -70483,7 +70307,7 @@ aao
 akL
 pqj
 apn
-vvv
+gpE
 tcI
 oGr
 fik
@@ -80710,11 +80534,11 @@ aIQ
 wko
 anI
 aMr
-wjW
+xBY
 ePk
-ajn
+ane
 aMr
-wjW
+xBY
 xKb
 anI
 aao
@@ -80926,13 +80750,13 @@ anI
 aIR
 aJL
 anI
-tSI
-gan
-tSI
-xfN
-jwj
-pTA
-tSI
+eCF
+ilG
+eCF
+kkJ
+cOH
+kID
+eCF
 anI
 aao
 aao
@@ -81143,13 +80967,13 @@ anI
 aIL
 aJM
 anI
-hZc
-jKI
-hZc
-evA
-lPL
-ooi
-hZc
+keU
+iFT
+keU
+oWE
+mSC
+kMk
+keU
 anI
 aao
 aao
@@ -81361,11 +81185,11 @@ aIK
 wko
 anI
 aMr
-vgZ
+kSB
 aMr
-uPK
+lKH
 ePk
-wjW
+xBY
 uUV
 anI
 aao

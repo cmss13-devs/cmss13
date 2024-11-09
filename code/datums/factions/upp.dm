@@ -7,7 +7,6 @@
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/datum/squad/squad = H.assigned_squad
 	var/_role
-	var/squad_color
 	var/image/background_image = image('icons/mob/hud/marine_hud.dmi', H, "uppsquad") /// location of background IMG
 
 	if(H.mind)

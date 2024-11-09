@@ -570,7 +570,6 @@
 /obj/item/storage/box/kit/spotter/fill_preset_inventory()
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
-	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)

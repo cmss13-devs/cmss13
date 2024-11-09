@@ -398,6 +398,8 @@
 	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
+	var/lighting_alpha = 100 // lighnign alpha for NVGs
+	var/nvg_colour = "#00f7ff" // color of the NVG FILTER
 	COOLDOWN_DECLARE(spotting_cooldown)
 
 	/// The off-white band that covers the binoculars.
@@ -418,6 +420,40 @@
 		overlays += range_laser_overlay
 	else
 		overlays += cas_laser_overlay
+
+/obj/item/device/binoculars/range/designator/spotter/zoom(mob/living/user, tileoffset, viewsize, keep_zoom)
+	. = ..()
+
+	if(zoom) // we only want to proc this if we did succesfully zoom
+		enable_nvgs(user)
+
+/obj/item/device/binoculars/range/designator/spotter/unzoom(mob/living/user)
+	. = ..()
+	disable_nvgs(user)
+
+/obj/item/device/binoculars/range/designator/spotter/proc/update_nvgs(mob/M)
+	SIGNAL_HANDLER
+
+	if(lighting_alpha < 255)
+		M.see_in_dark = 12
+	M.lighting_alpha = lighting_alpha
+	M.sync_lighting_plane_alpha()
+
+/obj/item/device/binoculars/range/designator/spotter/proc/enable_nvgs(mob/living/carbon/human/user)
+
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_nvgs))
+	user.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(nvg_colour)))
+	user.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+	user.update_sight()
+
+/obj/item/device/binoculars/range/designator/spotter/proc/disable_nvgs(mob/living/carbon/human/user)
+
+	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
+	user.clear_fullscreen("nvg_visor", 0.5 SECONDS)
+	user.clear_fullscreen("nvg_visor_blur", 0.5 SECONDS)
+	user.update_sight()
 
 /datum/action/item_action/specialist/spotter_target
 	ability_primacy = SPEC_PRIMARY_ACTION_1

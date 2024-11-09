@@ -241,7 +241,6 @@
 	icon_state = "green"
 	ambience_exterior = AMBIENCE_JUNGLE
 	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS
-	block_game_interaction = TRUE
 
 /area/yautja_grounds/jungle
 	name = "\improper Yautja Hunting Grounds Jungle Central"
@@ -289,4 +288,3 @@
 	name = "\improper Jungle Moon"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_CAVE
-	block_game_interaction = FALSE ///temp fix for TPing

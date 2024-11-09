@@ -302,6 +302,7 @@ const ObservableContent = () => {
     marshal = [],
     synthetics = [],
     predators = [],
+    hunted = [],
     animals = [],
     dead = [],
     ghosts = [],
@@ -369,6 +370,11 @@ const ObservableContent = () => {
         color="light-grey"
         section={contractor}
         title="Military Contractors"
+      />
+      <ObservableSection
+        color="red"
+        section={hunted}
+        title="Hunted In Preserve"
       />
       <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
       <ObservableSection

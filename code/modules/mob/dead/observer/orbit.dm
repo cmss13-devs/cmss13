@@ -64,6 +64,7 @@
 	var/list/marshal = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
+	var/list/hunted = list()
 	var/list/animals = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -159,6 +160,8 @@
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
+				else if(human.faction in FACTION_LIST_HUNTED)
+					hunted += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)
@@ -201,6 +204,7 @@
 	data["marshal"] = marshal
 	data["synthetics"] = synthetics
 	data["predators"] = predators
+	data["hunted"] = hunted
 	data["animals"] = animals
 	data["dead"] = dead
 	data["ghosts"] = ghosts

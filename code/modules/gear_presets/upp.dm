@@ -4410,6 +4410,8 @@
 
 /datum/equipment_preset/upp/soldier/hunted
 	name = "UPP Soldier (Hunted)"
+	faction = FACTION_HUNTED
+
 
 /datum/equipment_preset/upp/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	//head
@@ -4443,6 +4445,8 @@
 
 /datum/equipment_preset/upp/machinegunner/hunted
 	name = "UPP Machinegunner (Hunted)"
+	faction = FACTION_HUNTED
+
 
 /datum/equipment_preset/upp/machinegunner/hunted/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -4478,6 +4482,8 @@
 
 /datum/equipment_preset/upp/leader/hunted
 	name = "UPP Squad Leader (Hunted)"
+	faction = FACTION_HUNTED
+
 
 /datum/equipment_preset/upp/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/UPPleadsidearm = rand(1,4)
@@ -4525,6 +4531,8 @@
 
 /datum/equipment_preset/upp/sapper/hunted
 	name = "UPP Sapper (Hunted)"
+	faction = FACTION_HUNTED
+
 
 /datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/new_human)
 

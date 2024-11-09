@@ -1276,6 +1276,7 @@
 
 /datum/equipment_preset/uscm/rifleman_pve/hunted
 	name = "USCM Rifleman (Hunted)"
+	faction = FACTION_HUNTED
 
 /datum/equipment_preset/uscm/rifleman_pve/hunted/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_MAX
@@ -1313,6 +1314,8 @@
 
 /datum/equipment_preset/uscm/tl_pve/hunted
 	name = "USCM Team Leader (Hunted)"
+	faction = FACTION_HUNTED
+
 
 /datum/equipment_preset/uscm/tl_pve/hunted/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -1347,6 +1350,7 @@
 
 /datum/equipment_preset/uscm/sg_pve/hunted
 	name = "USCM Smartgunner (Hunted)"
+	faction = FACTION_HUNTED
 
 /datum/equipment_preset/uscm/sg_pve/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

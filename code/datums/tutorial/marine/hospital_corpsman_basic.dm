@@ -697,9 +697,9 @@
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
 
 	message_to_player("Well done!")
-	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3)), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
@@ -707,6 +707,113 @@
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	human_dummy.rejuvenate()
 	human_dummy.reagents.clear_reagents()
+	human_dummy.adjustToxLoss(15)
+
+	message_to_player("While far less common than Brute or Burn damage, knowing how to treat <b>Toxin Damage</b> is still a must for any would-be Hospital Corpsman in training.")
+	message_to_player("Although <b>Toxin Damage</b> is almost never directly fatal, it can easily wreak havoc in the body to a magnitude not seen from other forms of damage.")
+	message_to_player("Symptoms of <b>Toxin Damage</b> include, vomiting, nausea, organ damage, and extreme pain across the body. It is commonly caused by overdoses, organ failure, or ingesting poisons.")
+	message_to_player("The Dummy has taken some <b>Toxin Damage</b>. Scan them with your Health Analyzer.")
+
+	add_highlight(healthanalyzer, COLOR_GREEN)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(tox_tutorial_2))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
+	message_to_player("The chemical <b>Dylovene</b> is used to treat Toxin Damage.")
+	message_to_player("Feed the Dummy a <b>Dylovene Pill</b>")
+
+	var/obj/item/reagent_container/pill/antitox/dylo = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(dylo)
+	add_highlight(dylo, COLOR_GREEN)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(dylo_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(dylo_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed_reject()
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2)), 2 SECONDS)
+
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+
+	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
+	message_to_player("Unfortunately, unlike Brute and Burn damage, Toxin damage has no treatment kits, making it extremely difficult to treat in large amounts.")
+
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_3()
+	//adds a slight grace period, so humans are not rejuved before dylo is registered in their system
+
+	message_to_player("<b>Section 2.3: Overdoses</b>")
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 3 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.reagents.clear_reagents()
+
+	message_to_player("Every chemical available to a Marine Hospital Corpsman will have a known <b>Overdose Amount</b>.")
+	message_to_player("If a person is has more than the <b>Overdose Amount</b> of any chemical in their body, the chemical will begin damaging the body to varying levels of severity")
+	message_to_player("Generally, the more powerful a chemical is at healing the body, the more destructive it will become if <b>Overdosed</b>.")
+
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_1)), 9 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_1()
+
+	message_to_player("All standard-issue Medical pills and autoinjectors will contain exactly <u>half the overdose amount</u> for their given chemical (with some exceptions).")
+	message_to_player("This means administering a Marine with two uses of the same pill or autoinjector in a short span of time will place them <u>just below the overdose amount</u>.")
+	message_to_player("The overdose amounts for Bicaridine, Kelotane, Tramadol and Dylovene, is <b>30 units</b>. Pills and Autoinjectors for each will contain 15 units per use.")
+
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 11 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_2()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.adjustBruteLoss(55)
+	human_dummy.add_reagent("bicaridine", 35)
+
+	message_to_player("The Dummy has taken some Brute damage, indicated by the fact that they are <i>once again</i> bleeding all over the floor.")
+	message_to_player("However, in a combat environment, you can never be sure how recently someone may have been treated by another Medic, and what chemicals will remain in their bloodstream")
+	message_to_player("Before administering any form of chemical medication, you must <b>ALWAYS</b> scan the patient with your Health Analyzer to check the amounts of chemicals in their body, and ensure you will not accidentally overdose them.")
+
+	message_to_player("Scan the Dummy with your Health Analyzer.")
+
+	add_highlight(healthanalyzer, COLOR_GREEN)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(od_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_3()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	message_to_player("It seems that Mr Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 5 units.")
+	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
+	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
+
+
+
+
+
+
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER
@@ -728,9 +835,6 @@
 // - Still need to clean up the code
 //
 // Intermediate Damage Treatment
-// - Toxin Damage, With Basic Chemicals
-// - Oxygen Damage
-// - Synthetic Limb Repair
 //
 // Overdoses
 //

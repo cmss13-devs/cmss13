@@ -304,7 +304,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/caves/north_east_caves/south
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/lv759/indoors/caves/north_caves
 	name = "Caverns - North"
@@ -342,7 +342,7 @@
 	icon_state = "comms_1"
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_COMMS
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/lv759/indoors/caves/north_east_caves_comms_2
 	name = "NMHC - Emergency Response - Landing Zone One - Caverns - Northeast - Subspace-Communications"
@@ -821,7 +821,7 @@
 /area/lv759/indoors/mining_outpost/east
 	name = "KMCC - Mining Outpost - East"
 	icon_state = "mining"
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/lv759/indoors/mining_outpost/east_dorms
 	name = "KMCC - Mining Outpost - East - Dorms"

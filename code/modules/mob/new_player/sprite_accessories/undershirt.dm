@@ -10,17 +10,20 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 		if(undershirt_datum.camo_conforming)
 			undershirt_list["[undershirt_datum.name] (Camo Conforming)"] = undershirt_datum
 			var/datum/sprite_accessory/undershirt/classic_datum = new undershirt_type
-			classic_datum.generate_non_conforming("c")
+			classic_datum.generate_non_conforming("classic")
 			undershirt_list[classic_datum.name] = classic_datum
 			var/datum/sprite_accessory/undershirt/jungle_datum = new undershirt_type
-			jungle_datum.generate_non_conforming("j")
+			jungle_datum.generate_non_conforming("jungle")
 			undershirt_list[jungle_datum.name] = jungle_datum
 			var/datum/sprite_accessory/undershirt/desert_datum = new undershirt_type
-			desert_datum.generate_non_conforming("d")
+			desert_datum.generate_non_conforming("desert")
 			undershirt_list[desert_datum.name] = desert_datum
 			var/datum/sprite_accessory/undershirt/snow_datum = new undershirt_type
-			snow_datum.generate_non_conforming("s")
+			snow_datum.generate_non_conforming("snow")
 			undershirt_list[snow_datum.name] = snow_datum
+			var/datum/sprite_accessory/undershirt/urban_datum = new undershirt_type
+			urban_datum.generate_non_conforming("urban")
+			undershirt_list[urban_datum.name] = urban_datum
 		else
 			undershirt_list[undershirt_datum.name] = undershirt_datum
 	return undershirt_list
@@ -34,15 +37,15 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	if(camo_conforming)
 		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 			if("classic")
-				selected_icon_state = "c_" + selected_icon_state
+				selected_icon_state = "classic_" + selected_icon_state
 			if("jungle")
-				selected_icon_state = "j_" + selected_icon_state
+				selected_icon_state = "jungle_" + selected_icon_state
 			if("desert")
-				selected_icon_state = "d_" + selected_icon_state
+				selected_icon_state = "desert_" + selected_icon_state
 			if("snow")
-				selected_icon_state = "s_" + selected_icon_state
+				selected_icon_state = "snow_" + selected_icon_state
 			if("urban")
-				selected_icon_state = "u_" + selected_icon_state
+				selected_icon_state = "urban_" + selected_icon_state
 
 	if(gender == PLURAL)
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
@@ -52,14 +55,16 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	camo_conforming = FALSE
 	icon_state = "[camo_key]_[icon_state]"
 	switch(camo_key)
-		if("c")
+		if("classic")
 			name += " (Classic)"
-		if("j")
+		if("jungle")
 			name += " (Jungle)"
-		if("d")
+		if("desert")
 			name += " (Desert)"
-		if("s")
+		if("snow")
 			name += " (Snow)"
+		if("urban")
+			name += " (Urban)"
 
 // Plural
 /datum/sprite_accessory/undershirt/undershirt
@@ -104,7 +109,7 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 // Female
 /datum/sprite_accessory/undershirt/bra
 	name = "Bra"
-	icon_state = "classic"
+	icon_state = "bra"
 	gender = FEMALE
 	camo_conforming = TRUE
 

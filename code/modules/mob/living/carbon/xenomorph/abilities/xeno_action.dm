@@ -61,12 +61,10 @@
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
 	if(!owner)
 		return
-	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(ability_name)
-		if(GLOB.round_statistics)
-			GLOB.round_statistics.track_ability_usage(name)
-		xeno.track_ability_usage(ability_name, xeno.caste_type)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(name)
+		xeno.track_ability_usage(name, xeno.caste_type)
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)

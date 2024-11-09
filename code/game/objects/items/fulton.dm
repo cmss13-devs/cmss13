@@ -23,6 +23,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 	var/datum/turf_reservation/reservation
+	var/faction
 
 /obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
@@ -125,6 +126,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			F.add_fingerprint(user)
 			user.count_statistic_stat(STATISTICS_FULTON)
 			use(1)
+			F.faction = user.faction
 			F.deploy_fulton()
 	else
 		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))

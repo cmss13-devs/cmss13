@@ -5,11 +5,22 @@
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
+	var/datum/squad/squad = H.assigned_squad
 	var/_role
+	var/squad_color
+	var/image/IMG = image('icons/mob/hud/marine_hud.dmi', H, "uppsquad") /// location of background IMG
+
 	if(H.mind)
 		_role = H.job
 	else if(ID)
 		_role = ID.rank
+
+	if(squad)
+		squad_color = H.assigned_squad.equipment_color
+		IMG.color = squad_color
+	else
+		IMG.color = "#ff0000"
+
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"
@@ -58,7 +69,9 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
+		holder.overlays += IMG
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

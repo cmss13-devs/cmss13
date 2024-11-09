@@ -1,3 +1,4 @@
+import { BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -11,6 +12,7 @@ type TraitsPickerData = {
   categories: {
     name: string;
     traits: Trait[];
+    mutually_exclusive: BooleanLike;
   }[];
 };
 
@@ -27,6 +29,12 @@ export const TraitsPicker = () => {
   const { categories, traits, trait_points, starting_points } = data;
 
   const [selected, setSelected] = useState(categories[0]);
+
+  const disableAll =
+    selected.mutually_exclusive &&
+    selected.traits.some((trait) =>
+      traits.flatMap((trait) => trait.name).includes(trait.name),
+    );
 
   return (
     <Window width={900} height={545} theme="crtblue">
@@ -51,7 +59,7 @@ export const TraitsPicker = () => {
                   <Stack vertical>
                     {selected.traits.map((trait) => (
                       <Stack.Item key={trait.name}>
-                        <RenderTrait trait={trait} />
+                        <RenderTrait trait={trait} disabled={!!disableAll} />
                       </Stack.Item>
                     ))}
                   </Stack>
@@ -79,8 +87,11 @@ export const TraitsPicker = () => {
   );
 };
 
-const RenderTrait = (props: { readonly trait: Trait }) => {
-  const { trait } = props;
+const RenderTrait = (props: {
+  readonly trait: Trait;
+  readonly disabled?: boolean;
+}) => {
+  const { trait, disabled } = props;
 
   const { act, data } = useBackend<TraitsPickerData>();
 
@@ -99,7 +110,9 @@ const RenderTrait = (props: { readonly trait: Trait }) => {
           onClick={() =>
             act(activated ? 'remove' : 'add', { type: trait.type })
           }
-          disabled={!activated && trait.cost > 0 && trait_points === 0}
+          disabled={
+            !activated && ((trait.cost > 0 && trait_points === 0) || disabled)
+          }
         >
           {activated ? 'Remove' : 'Add'}
         </Button>

@@ -18,13 +18,22 @@
 			)
 
 		.["categories"] += list(
-			list("name" = group.trait_group_name, "traits" = traits)
+			list("name" = group.trait_group_name, "traits" = traits, "mutually_exclusive" = group.mutually_exclusive)
 		)
 
 /datum/traits_picker/ui_data(mob/user)
 	. = ..()
 
-	var/datum/preferences/prefs = user.client.prefs
+	var/datum/preferences/prefs = user.client?.prefs
+	if(!prefs)
+		return
+
+	if(!prefs.read_traits)
+		prefs.read_traits = TRUE
+
+		for(var/trait in prefs.traits)
+			var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+			prefs.trait_points -= character_trait.cost
 
 	.["trait_points"] = prefs.trait_points
 	.["starting_points"] = initial(prefs.trait_points)
@@ -40,7 +49,9 @@
 /datum/traits_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	var/datum/preferences/prefs = ui.user.client.prefs
+	var/datum/preferences/prefs = ui.user.client?.prefs
+	if(!prefs)
+		return
 
 	switch(action)
 		if("add")

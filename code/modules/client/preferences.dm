@@ -1105,6 +1105,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 		if("traits")
 			traits_picker.tgui_interact(user)
+			return
 
 		if("toggle_job_gear")
 			show_job_gear = !show_job_gear
@@ -2209,6 +2210,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	picker_ui?.send_update()
 
 	picker_ui = SStgui.get_open_ui(user, loadout_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, traits_picker)
 	picker_ui?.send_update()
 
 #undef MENU_MARINE

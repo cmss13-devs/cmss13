@@ -678,6 +678,10 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 
+/datum/action/minimap/upp
+	minimap_flags =  MINIMAP_FLAG_UPP
+	marker_flags = MINIMAP_FLAG_UPP
+
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE

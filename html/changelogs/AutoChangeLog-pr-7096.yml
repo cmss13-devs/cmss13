@@ -1,0 +1,6 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - code_imp: "Added ability to Destroy Platform Edges by xenos on \"Disarm\" intent, now depending on xenos \"size\" they can break Platform Edges quicker or Slower, Now Explosives have chance to destroy Platform Edges by depending on how strong explosion is."
+  - imageadd: "Added Sprites for Broken Platforms Edges."
+  - soundadd: "Added Sound for Breaking \"Stone\" Edges."

@@ -808,7 +808,7 @@
 	assignment = "Marine Raider"
 	rank = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
+	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
 	ert_squad = TRUE

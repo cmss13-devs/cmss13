@@ -30,7 +30,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/atom/movable/screen/rotate/alt/rotate_left
 	var/atom/movable/screen/rotate/rotate_right
 
-	var/static/datum/body_picker/picker = new
+	var/static/datum/hair_picker/hair_picker = new
+	var/static/datum/body_picker/body_picker = new
 
 	//doohickeys for savefiles
 	var/path
@@ -98,6 +99,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_use_legacy = "None"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
+	var/predator_accessory_type = 0
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
 	var/predator_armor_material = "ebony"
@@ -362,30 +364,23 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Hair and Eyes:</u></b></h2>"
-			dat += "<b>Hair:</b> "
-			dat += "<a href='?_src_=prefs;preference=h_style;task=input'><b>[h_style]</b></a>"
+			dat += "<b>Hair:</b> [h_style]"
 			dat += " | "
-			dat += "<a href='?_src_=prefs;preference=hair;task=input'>"
-			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)];'></span>"
-			dat += "</a>"
+			dat += "<span class='square' style='background-color: #[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)];'></span>"
+			dat += "<br>"
+
+			dat += "<b>Facial Hair:</b> [f_style]"
+			dat += " | "
+			dat += "<span class='square' style='background-color: #[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)];'></span>"
 			dat += "<br>"
 
 			if(/datum/character_trait/hair_dye in traits)
-				dat += "<b>Hair Gradient:</b> "
-				dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
+				dat += "<b>Hair Gradient:</b> [grad_style]"
 				dat += " | "
-				dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
-				dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
-				dat += "</a>"
+				dat += "<span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
 				dat += "<br>"
 
-			dat += "<b>Facial Hair:</b> "
-			dat += "<a href='?_src_=prefs;preference=f_style;task=input'><b>[f_style]</b></a>"
-			dat += " | "
-			dat += "<a href='?_src_=prefs;preference=facial;task=input'>"
-			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)];'></span>"
-			dat += "</a>"
-			dat += "<br>"
+			dat += "<b>Edit Hair:</b> <a href='?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
 
 			dat += "<b>Eye:</b> "
 			dat += "<a href='?_src_=prefs;preference=eyes;task=input'>"
@@ -536,6 +531,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					dat += "<b>Legacy Gear:</b> <a href='?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
 				dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
 				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
+				dat += "<b>Mask Accessory:</b> <a href='?_src_=prefs;preference=pred_accessory_type;task=input'><b>([predator_accessory_type])</b></a><br>"
 				dat += "<b>Armor Style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
 				dat += "<b>Greave Style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
 				dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
@@ -624,6 +620,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Automatic Shove: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_SHOVE_OFF]'><b>[toggle_prefs & TOGGLE_AUTO_SHOVE_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Ability Deactivation: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ABILITY_DEACTIVATION_OFF]'><b>[toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Directional Assist: \
@@ -646,6 +644,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AMMO_DISPLAY_TYPE]'><b>[toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>"
 		if(MENU_SPECIAL) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
@@ -1325,6 +1324,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, 19, 1)
 					if(new_predator_mask_type) predator_mask_type = floor(text2num(new_predator_mask_type))
+				if("pred_accessory_type")
+					var/new_predator_accessory_type = tgui_input_number(user, "Choose your mask accessory type:\n(0-1)", "accessory Selection", 0, 1, 0)
+					if(new_predator_accessory_type)
+						predator_accessory_type = floor(text2num(new_predator_accessory_type))
 				if("pred_armor_type")
 					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-8)", "Armor Selection", 1, 8, 1)
 					if(new_predator_armor_type) predator_armor_type = floor(text2num(new_predator_armor_type))
@@ -1539,82 +1542,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						metadata = strip_html(new_metadata)
 
 				if("hair")
-					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair color:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
-						if(new_hair)
-							r_hair = hex2num(copytext(new_hair, 2, 4))
-							g_hair = hex2num(copytext(new_hair, 4, 6))
-							b_hair = hex2num(copytext(new_hair, 6, 8))
-
-				if("h_style")
-					var/list/valid_hairstyles = list()
-					for(var/hairstyle in GLOB.hair_styles_list)
-						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_styles_list[hairstyle]
-						if( !(species in sprite_accessory.species_allowed))
-							continue
-						if(!sprite_accessory.selectable)
-							continue
-
-						valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
-					valid_hairstyles = sortList(valid_hairstyles)
-
-					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
-					if(new_h_style)
-						h_style = new_h_style
-
-				if("grad")
-					if(species == "Human")
-						var/new_hair_grad = input(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
-						if(new_hair_grad)
-							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
-							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
-							b_gradient = hex2num(copytext(new_hair_grad, 6, 8))
-
-				if("grad_style")
-					var/list/valid_hair_gradients = list()
-					for(var/hair_gradient in GLOB.hair_gradient_list)
-						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_gradient_list[hair_gradient]
-						if(!(species in sprite_accessory.species_allowed))
-							continue
-						if(!sprite_accessory.selectable)
-							continue
-						valid_hair_gradients[hair_gradient] = GLOB.hair_gradient_list[hair_gradient]
-					valid_hair_gradients = sortList(valid_hair_gradients)
-
-					var/new_h_gradient_style = input(user, "Choose your character's hair gradient style:", "Character Preference")  as null|anything in valid_hair_gradients
-					if(new_h_gradient_style)
-						grad_style = new_h_gradient_style
-
-				if ("body")
-					picker.tgui_interact(user)
+					hair_picker.tgui_interact(user)
 					return
 
-				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
-					if(new_facial)
-						r_facial = hex2num(copytext(new_facial, 2, 4))
-						g_facial = hex2num(copytext(new_facial, 4, 6))
-						b_facial = hex2num(copytext(new_facial, 6, 8))
-
-				if("f_style")
-					var/list/valid_facialhairstyles = list()
-					for(var/facialhairstyle in GLOB.facial_hair_styles_list)
-						var/datum/sprite_accessory/sprite_accessory = GLOB.facial_hair_styles_list[facialhairstyle]
-						if(gender == MALE && sprite_accessory.gender == FEMALE)
-							continue
-						if(gender == FEMALE && sprite_accessory.gender == MALE)
-							continue
-						if( !(species in sprite_accessory.species_allowed))
-							continue
-						if(!sprite_accessory.selectable)
-							continue
-
-						valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
-					valid_facialhairstyles = sortList(valid_facialhairstyles)
-
-					var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_facialhairstyles
-					if(new_f_style)
-						f_style = new_f_style
+				if ("body")
+					body_picker.tgui_interact(user)
+					return
 
 				if("underwear")
 					var/list/underwear_options = gender == MALE ? GLOB.underwear_m : GLOB.underwear_f
@@ -1637,7 +1570,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
+					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
+
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1800,6 +1734,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						gender = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
+
+					// Refresh hair picker
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
 
 				if("hear_adminhelps")
 					toggles_sound ^= SOUND_ADMINHELP
@@ -2014,6 +1953,14 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					load_character()
 					reload_cooldown = world.time + 50
 
+					// Refresh pickers
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+					picker_ui = SStgui.get_open_ui(user, body_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
 						open_load_dialog(user)
@@ -2029,6 +1976,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
+
+					// Refresh pickers
+					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+					picker_ui = SStgui.get_open_ui(user, body_picker)
+					if(picker_ui)
+						picker_ui.send_update()
+
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")

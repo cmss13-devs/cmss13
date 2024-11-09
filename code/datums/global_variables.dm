@@ -211,7 +211,7 @@
 			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables")
 			return
 
-		if(param_var_name in locked && !check_rights(R_DEBUG))
+		if((param_var_name in locked) && !check_rights(R_DEBUG))
 			return
 
 		variable = param_var_name
@@ -270,7 +270,7 @@
 		if(!variable) return
 		var_value = global.vars[variable]
 
-		if(variable in locked && !check_rights(R_DEBUG))
+		if((variable in locked) && !check_rights(R_DEBUG))
 			return
 
 	if(!autodetect_class)

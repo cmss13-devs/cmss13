@@ -35,6 +35,9 @@
 		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)

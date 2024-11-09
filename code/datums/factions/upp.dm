@@ -19,8 +19,6 @@
 	if(squad)
 		squad_color = H.assigned_squad.equipment_color
 		IMG.color = squad_color
-	else
-		IMG.color = "#ff0000"
 
 	switch(_role)
 		if(JOB_UPP_MEDIC)

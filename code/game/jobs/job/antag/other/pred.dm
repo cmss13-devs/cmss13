@@ -53,7 +53,7 @@
 
 /datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
 	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
-	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and expirenced hunters."))
+	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
 	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
 	to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
 

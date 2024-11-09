@@ -59,7 +59,11 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_background")
+		var/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		if(istype(squad))
+			rank_icon_image.color = squad.equipment_color
+		holder.overlays += rank_icon_image
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

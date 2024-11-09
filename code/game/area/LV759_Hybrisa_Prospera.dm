@@ -77,6 +77,7 @@
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/landing_zone_1/lz1_console
 	name = "Nova Medica Hospital Complex - Emergency Response - Landing Zone One - Dropship Alamo Console"
@@ -84,6 +85,7 @@
 	requires_power = FALSE
 	ceiling = CEILING_METAL
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 // Landing Zone 2
 
@@ -100,65 +102,77 @@
 	name = "KMCC Interstellar Freight Hub - Flight Control Room"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security
 	name = "KMCC Interstellar Freight Hub - Security Checkpoint Office"
 	icon_state = "security_checkpoint"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge North"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel
 	name = "KMCC Interstellar Freight Hub - Fuel Storage & Maintenance - North"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge South"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Hallway"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - South Office"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance
 	name = "KMCC Interstellar Freight Hub - Passenger Departures - Maintenance"
 	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub/lz2_console
 	name = "KMCC Interstellar Freight Hub - Dropship Normandy Console"
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo
 	name = "KMCC Interstellar Freight Hub - Cargo Processing Center"
 	icon_state = "mining_cargo"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north
 	name = "KMCC Interstellar Freight Hub - Cargo Processing Center - Maintenance"
 	icon_state = "mining"
 	ceiling = CEILING_METAL
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south
 	name = "KMCC Interstellar Freight Hub - Cargo Processing Center - Main Entrance & South Unloading Platform"
 	icon_state = "mining"
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_COLONY
+	linked_lz = DROPSHIP_LZ2
 
 // Derelict Ship
 
@@ -302,7 +316,7 @@
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 /area/lv759/indoors/caves/north_caves/east
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/caves/central_caves
 	name = "Caverns - Central"
@@ -1032,18 +1046,22 @@
 
 /area/lv759/indoors/recycling_plant/garage
 	name = "Weyland-Yutani - Resource Recovery Facility - Garage"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/recycling_plant/synthetic_storage
 	name = "Synthetic Storage"
 	icon_state = "synthetic"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/recycling_plant_office
 	name = "Weyland-Yutani - Resource Recovery Facility - Office"
 	icon_state = "recycling"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv759/indoors/recycling_plant_waste_disposal_incinerator
 	name = "Weyland-Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
 	icon_state = "recycling"
+	linked_lz = DROPSHIP_LZ1
 
 // Restrooms
 
@@ -1122,7 +1140,7 @@
 /area/lv759/indoors/wy_security/checkpoint_east
 	name = "Weyland-Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/lv759/indoors/wy_security/checkpoint_central
 	name = "Weyland-Yutani Security Checkpoint - Central"

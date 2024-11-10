@@ -468,18 +468,23 @@
 
 /turf/open/gm/dirt/desert0
 	icon_state = "desert0"
+	scorchable = FALSE
 
 /turf/open/gm/dirt/desert1
 	icon_state = "desert1"
+	scorchable = FALSE
 
 /turf/open/gm/dirt/desert2
 	icon_state = "desert2"
+	scorchable = FALSE
 
 /turf/open/gm/dirt/desert3
 	icon_state = "desert3"
+	scorchable = FALSE
 
 /turf/open/gm/dirt/desert_dug
 	icon_state = "desert_dug"
+	scorchable = FALSE
 
 /turf/open/gm/grass
 	name = "grass"

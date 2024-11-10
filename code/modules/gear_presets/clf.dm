@@ -1156,6 +1156,7 @@
 
 /datum/equipment_preset/clf/engineer/hunted
 	name = "CLF Engineer (Hunted)"
+	faction = FACTION_HUNTED
 
 /datum/equipment_preset/clf/engineer/hunted/load_gear(mob/living/carbon/human/new_human)
 

@@ -414,10 +414,6 @@
 /obj/structure/closet/coffin/predator,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
-"iK" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/river,
-/area/yautja_grounds/south)
 "iV" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass/grass1,
@@ -952,10 +948,6 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
-"tk" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/yautja_grounds/south)
 "tl" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
@@ -1196,10 +1188,6 @@
 	pixel_y = -22
 	},
 /turf/open/gm/grass/grass1,
-/area/yautja_grounds/south)
-"wT" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/river,
 /area/yautja_grounds/south)
 "xa" = (
 /obj/structure/stairs/perspective{
@@ -4676,7 +4664,7 @@ zd
 zd
 LN
 XS
-iK
+Ah
 Ld
 Ld
 Ld
@@ -4863,8 +4851,8 @@ XC
 XC
 nn
 Ah
-iK
-iK
+nI
+Ah
 Ah
 Ib
 zd
@@ -4873,7 +4861,7 @@ zd
 zd
 zd
 nn
-iK
+nI
 Ah
 Ah
 Ld
@@ -4964,7 +4952,7 @@ nn
 Ah
 Ah
 Ah
-iK
+Ah
 FU
 xn
 zd
@@ -4974,7 +4962,7 @@ zd
 nn
 Ah
 Ah
-wT
+Ah
 Ld
 Ld
 Ld
@@ -5170,7 +5158,7 @@ mh
 xn
 zd
 nn
-iK
+Ah
 Ah
 Ah
 Ah
@@ -5362,7 +5350,7 @@ Su
 Ah
 Ah
 Ah
-iK
+Ah
 Ah
 Ah
 Ah
@@ -5462,7 +5450,7 @@ Su
 nI
 Ah
 Ah
-tk
+Ws
 aO
 aO
 aO
@@ -5470,7 +5458,7 @@ aO
 aO
 aO
 Su
-wT
+Ah
 Ld
 Ld
 Ld

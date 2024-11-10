@@ -1054,6 +1054,26 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/beachcorner/south_west,
 /area/yautja_grounds/south)
+"uI" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/mask/yautja_flavor/map_random{
+	anchored = 1;
+	pixel_y = 9
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja_grounds/temple)
 "uJ" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass/grass1,
@@ -2265,9 +2285,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
-"RQ" = (
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/jungle)
 "RR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -2635,7 +2652,8 @@
 	name = "Eternal guardian"
 	},
 /obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1
+	anchored = 1;
+	pixel_y = 10
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
@@ -4583,7 +4601,7 @@ Kn
 Kn
 Kn
 zn
-Xy
+uI
 cG
 GK
 ge
@@ -4781,7 +4799,7 @@ Kn
 Kn
 Kn
 zn
-Xy
+uI
 cG
 lR
 nO
@@ -5924,7 +5942,7 @@ HJ
 qo
 HJ
 HJ
-RQ
+LW
 NB
 ju
 ju
@@ -6023,7 +6041,7 @@ qh
 AN
 Uy
 HJ
-RQ
+LW
 Ty
 ju
 ju
@@ -6122,7 +6140,7 @@ HJ
 HJ
 HJ
 HJ
-RQ
+LW
 NB
 ju
 ju

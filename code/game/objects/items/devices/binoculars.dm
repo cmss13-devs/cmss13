@@ -399,7 +399,7 @@
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
 	var/lighting_alpha = 100 // lighnign alpha for NVGs
-	var/nvg_colour = "#00f7ff" // color of the NVG FILTER
+	var/matrix_color = NV_COLOR_GREEN
 	COOLDOWN_DECLARE(spotting_cooldown)
 
 	/// The off-white band that covers the binoculars.
@@ -440,9 +440,11 @@
 	M.sync_lighting_plane_alpha()
 
 /obj/item/device/binoculars/range/designator/spotter/proc/enable_nvgs(mob/living/carbon/human/user)
-
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_nvgs))
-	user.add_client_color_matrix("nvg_binos", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(nvg_colour)))
+
+	if(user.client?.prefs?.night_vision_color)
+		matrix_color = user.client.prefs.night_vision_color
+	user.add_client_color_matrix("nvg_binos", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)))
 	user.overlay_fullscreen("nvg_binosr", /atom/movable/screen/fullscreen/flash/noise/nvg)
 	user.overlay_fullscreen("nvg_binos_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	user.update_sight()

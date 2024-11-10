@@ -184,6 +184,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/language = "None" //Secondary language
 	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
+	var/night_vision_color = NV_COLOR_GREEN
+	var/night_vision_preference = "Green"
 
 		//Some faction information.
 	var/origin = ORIGIN_USCM
@@ -1549,6 +1551,27 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
+
+				if("prefnvg")
+					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)
+					if(!new_nvg_color)
+						return
+					night_vision_preference = new_nvg_color
+					switch(new_nvg_color)
+						if("Green")
+							night_vision_color = NV_COLOR_GREEN
+						if("White")
+							night_vision_color = NV_COLOR_WHITE
+						if("YELLOW")
+							night_vision_color = NV_COLOR_YELLOW
+						if("Orange")
+							night_vision_color = NV_COLOR_ORANGE
+						if("Red")
+							night_vision_color = NV_COLOR_RED
+						if("Blue")
+							night_vision_color = NV_COLOR_BLUE
+						else
+							night_vision_color = NV_COLOR_GREEN
 
 				if("prefarmor")
 					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)

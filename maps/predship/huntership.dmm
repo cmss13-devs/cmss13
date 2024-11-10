@@ -157,21 +157,6 @@
 /obj/structure/curtain/red,
 /turf/open/shuttle/predship,
 /area/yautja)
-"ay" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 27;
-	anchored = 1
-	},
-/obj/structure/platform/stair_cut{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
 "az" = (
 /obj/structure/window/phoronreinforced{
 	dir = 10;
@@ -1486,21 +1471,6 @@
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"gC" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stair_cut{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 27;
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
 "gG" = (
 /obj/structure/machinery/door_control{
 	id = "Yautja Armory";
@@ -1574,6 +1544,19 @@
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /turf/open/floor/darkred2/west,
 /area/yautja)
+"iG" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 27;
+	anchored = 1
+	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/turf/open/shuttle/predship,
+/area/yautja)
 "iL" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/shuttle/predship,
@@ -1587,6 +1570,10 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"jp" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "jP" = (
@@ -1629,6 +1616,10 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"kf" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "kA" = (
@@ -1706,12 +1697,6 @@
 /obj/item/weapon/sword/katana,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"mU" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
 "nd" = (
 /turf/open/gm/dirtgrassborder/desert0,
 /area/yautja)
@@ -1736,20 +1721,9 @@
 /obj/item/weapon/twohanded/yautja/spear,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"nP" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 27;
-	anchored = 1
-	},
-/obj/structure/platform/stair_cut/alt{
-	icon_state = "kutjevo_platform_sm_stair_alt"
-	},
-/turf/open/shuttle/predship,
+"nI" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "nT" = (
 /obj/structure/bed/chair/comfy/black{
@@ -1809,26 +1783,13 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"pl" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 1
-	},
+"pb" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/shuttle/predship,
 /area/yautja)
-"ps" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/stair_cut/alt{
-	icon_state = "kutjevo_platform_sm_stair_alt"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 27;
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
+"pn" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/turf/open/shuttle/predship,
 /area/yautja)
 "qj" = (
 /obj/structure/surface/rack{
@@ -1850,6 +1811,14 @@
 	pixel_y = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"qZ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "rt" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1899,12 +1868,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"st" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
 "sx" = (
 /obj/structure/window/framed/colony/reinforced/hull{
 	color = "#aba9a9"
@@ -1913,6 +1876,19 @@
 /area/yautja)
 "sz" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/right,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"sE" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 27;
+	anchored = 1
+	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "sS" = (
@@ -1957,12 +1933,6 @@
 "tg" = (
 /obj/structure/curtain/red,
 /turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
-"th" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 4
-	},
-/turf/open/shuttle/predship,
 /area/yautja)
 "ti" = (
 /obj/structure/shuttle/window{
@@ -2083,32 +2053,12 @@
 /obj/item/weapon/sword/ceremonial,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"vD" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
 "vO" = (
 /obj/structure/machinery/shower{
 	dir = 4
 	},
 /obj/structure/machinery/door/window/tinted,
 /obj/structure/window/reinforced/tinted,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
-"wp" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "ww" = (
@@ -2118,6 +2068,19 @@
 	pixel_y = 30
 	},
 /turf/open/shuttle/predship,
+/area/yautja)
+"wF" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 27;
+	anchored = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "wH" = (
 /obj/structure/surface/rack{
@@ -2190,10 +2153,12 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"xX" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 4
-	},
+"yb" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"yk" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "yr" = (
@@ -2263,6 +2228,10 @@
 /obj/item/frame/table/wood/fancy,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
+"Av" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/turf/open/shuttle/predship,
+/area/yautja)
 "AA" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/corsat/squareswood/north,
@@ -2297,6 +2266,19 @@
 "BS" = (
 /obj/structure/machinery/prop/yautja/bubbler,
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Cd" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 27;
+	anchored = 1
+	},
+/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
+/turf/open/shuttle/predship,
 /area/yautja)
 "Cn" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2335,10 +2317,6 @@
 /obj/item/device/flashlight/slime{
 	anchored = 1
 	},
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
-"Dm" = (
-/obj/structure/machinery/hunt_ground_spawner,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Dr" = (
@@ -2398,10 +2376,6 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/medicomp/full,
-/turf/open/shuttle/predship,
-/area/yautja)
-"Fu" = (
-/obj/structure/platform_decoration/kutjevo/smooth,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Fx" = (
@@ -2470,6 +2444,10 @@
 /obj/item/restraint/handcuffs,
 /obj/item/restraint/handcuffs,
 /turf/open/shuttle/predship,
+/area/yautja)
+"GA" = (
+/obj/structure/machinery/hunt_ground_spawner,
+/turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "GM" = (
 /turf/open/gm/dirtgrassborder/desert_dug,
@@ -2699,15 +2677,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"KL" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/kutjevo/smooth,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
 "KV" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2719,9 +2688,18 @@
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"LX" = (
-/obj/structure/machinery/hunting_ground_selection,
-/turf/open/floor/corsat/squareswood/north,
+"Ls" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open/shuttle/predship,
+/area/yautja)
+"LB" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Mb" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2734,6 +2712,10 @@
 	name = "corroder hide"
 	},
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"Mi" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/turf/open/shuttle/predship,
 /area/yautja)
 "ME" = (
 /obj/structure/stairs/perspective{
@@ -2795,12 +2777,6 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
-"PM" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
 "Qi" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/darkred2/southeast,
@@ -2827,12 +2803,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"QK" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/turf/open/shuttle/predship,
-/area/yautja)
 "Rq" = (
 /obj/structure/machinery/prop/almayer/CICmap/yautja{
 	pixel_y = 2
@@ -2858,6 +2828,10 @@
 "SO" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/left_centre,
 /turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"Ul" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/shuttle/predship,
 /area/yautja)
 "Ut" = (
 /obj/structure/surface/rack{
@@ -2894,12 +2868,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"Uz" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
 "UR" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -2918,18 +2886,6 @@
 /obj/item/xeno_restraints,
 /obj/item/xeno_restraints,
 /obj/item/xeno_restraints,
-/turf/open/shuttle/predship,
-/area/yautja)
-"Vj" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
-"VC" = (
-/obj/structure/platform_decoration/kutjevo/smooth{
-	dir = 8
-	},
 /turf/open/shuttle/predship,
 /area/yautja)
 "VT" = (
@@ -2977,6 +2933,18 @@
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"WD" = (
+/obj/structure/machinery/hunting_ground_selection,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"WQ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Xg" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -5048,7 +5016,7 @@ cP
 JH
 al
 bj
-Vj
+jp
 FG
 FG
 FG
@@ -5119,8 +5087,8 @@ Ob
 cP
 JH
 JH
-vD
-xX
+qZ
+kf
 ai
 ai
 ai
@@ -5260,8 +5228,8 @@ aa
 ac
 bj
 bj
-PM
-VC
+Ul
+Mi
 cP
 df
 bL
@@ -5333,15 +5301,15 @@ ad
 bj
 bj
 bj
-ps
+wF
 cP
-wp
-st
-VC
+WQ
+nI
+Mi
 ca
 ca
-Fu
-PM
+Av
+Ul
 bj
 bj
 JH
@@ -5409,10 +5377,10 @@ df
 cP
 bj
 bj
-nP
+iG
 ME
 ME
-KL
+LB
 bj
 bj
 bj
@@ -5603,7 +5571,7 @@ ct
 cP
 bL
 hI
-LX
+WD
 bL
 bL
 cP
@@ -5747,7 +5715,7 @@ ct
 cP
 bL
 hI
-Dm
+GA
 bL
 bL
 cP
@@ -5841,10 +5809,10 @@ df
 cP
 bj
 bj
-ay
+Cd
 ME
 ME
-KL
+LB
 bj
 bj
 bj
@@ -5909,15 +5877,15 @@ ac
 bj
 bj
 bj
-gC
+sE
 cP
-vD
-Uz
-th
+qZ
+yk
+pn
 am
 am
-pl
-QK
+Ls
+pb
 bj
 bj
 JH
@@ -5980,8 +5948,8 @@ aa
 ad
 bj
 bj
-QK
-th
+pb
+pn
 cP
 df
 bL
@@ -6127,8 +6095,8 @@ EP
 cP
 JH
 JH
-wp
-mU
+WQ
+yb
 ai
 ai
 ai
@@ -6200,7 +6168,7 @@ cP
 JH
 al
 bj
-Vj
+jp
 FG
 FG
 FG

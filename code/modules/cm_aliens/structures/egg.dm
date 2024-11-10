@@ -92,14 +92,16 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/effect/alien/egg/clicked(mob/user, list/mods)
+	if(..())
+		return TRUE
+
 	if(isobserver(user) || get_dist(src, user) > 1)
 		return
+
 	var/mob/living/carbon/xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
 		return TRUE
-
-	return ..()
 
 /obj/effect/alien/egg/proc/Grow()
 	if(status == EGG_GROWING)

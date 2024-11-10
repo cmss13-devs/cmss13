@@ -76,6 +76,9 @@
 
 	var/turf/my_turf = get_turf(src)
 	var/obj/effect/alien/egg/carrier_egg/orphan/newegg = new(my_turf, hivenumber, weed_strength_required)
+	newegg.flags_embryo = flags_embryo
+	newegg.fingerprintshidden = fingerprintshidden
+	newegg.fingerprintslast = fingerprintslast
 	switch(status)
 		if(EGG_GROWN)
 			newegg.Grow()
@@ -491,6 +494,9 @@ SPECIAL EGG USED WHEN WEEDS LOST
 
 	var/turf/my_turf = get_turf(src)
 	var/obj/effect/alien/egg/newegg = new(my_turf, hivenumber)
+	newegg.flags_embryo = flags_embryo
+	newegg.fingerprintshidden = fingerprintshidden
+	newegg.fingerprintslast = fingerprintslast
 	switch(status)
 		if(EGG_GROWN)
 			newegg.Grow()

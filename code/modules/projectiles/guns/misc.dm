@@ -184,6 +184,7 @@
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 
+
 /obj/item/weapon/gun/pkp/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/attachie = new /obj/item/attachable/pkpbarrel(src)
@@ -204,7 +205,7 @@
 	update_attachable(Integrated.slot)
 
 	var/obj/item/attachable/bipod/bipod = new /obj/item/attachable/bipod(src)
-	bipod.flags_attach_features &= ~ATTACH_REMOVABLE
+	bipod.flags_attach_features
 	bipod.Attach(src)
 	update_attachable(attachie.slot)
 
@@ -215,7 +216,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 39, "under_y" = 7, "stock_x" = 10, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 29, "under_y" = 13, "stock_x" = 10, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()

@@ -811,16 +811,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
-"aep" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/lv624/ground/caves/sand_temple)
-"aeq" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "aer" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -934,21 +924,6 @@
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"afi" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"afj" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "afk" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
@@ -965,12 +940,6 @@
 /obj/structure/cargo_container/ferret/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"afq" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/caves/sand_temple)
 "afr" = (
 /obj/structure/ore_box,
 /obj/structure/fence,
@@ -2106,7 +2075,7 @@
 "alZ" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/river/central_river)
 "ama" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -4453,10 +4422,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"aAd" = (
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
 "aAh" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/warnplate/west,
@@ -8710,7 +8675,6 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/platform,
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/engineering)
@@ -8736,9 +8700,6 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/engineering)
 "aVj" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	locked = 1;
@@ -8850,7 +8811,6 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stair_cut,
 /obj/item/clothing/head/hardhat/orange,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -8977,7 +8937,6 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/platform,
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/engineering)
@@ -9104,9 +9063,6 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform{
-	layer = 3.1
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -9114,9 +9070,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder,
 /obj/item/device/assembly/signaller,
-/obj/structure/platform_decoration{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -9222,7 +9175,6 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
@@ -9389,7 +9341,7 @@
 	},
 /obj/effect/decal/remains/xeno,
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_tcomms_road)
 "aXJ" = (
 /obj/structure/foamed_metal{
@@ -10355,9 +10307,6 @@
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "bIO" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "bJe" = (
@@ -10412,12 +10361,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"bOg" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "bOm" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -10780,7 +10723,6 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stair_cut/alt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
@@ -10976,15 +10918,6 @@
 /obj/item/device/multitool,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
-"cQX" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "cRm" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/mineral/sandstone/runed/decor,
@@ -11227,17 +11160,6 @@
 	},
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
-"dws" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "dwt" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -11521,10 +11443,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"dXq" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "dYx" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 6
@@ -11671,12 +11589,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ekJ" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "elm" = (
 /obj/structure/machinery/vending/hydroseeds,
 /obj/structure/machinery/light{
@@ -11693,13 +11605,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"elO" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "enn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -11818,17 +11723,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_central_jungle)
-"ezC" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "eAr" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -12073,17 +11967,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"fhs" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "fhJ" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -12207,9 +12090,6 @@
 	color = "#b29082";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
@@ -12764,24 +12644,12 @@
 "gKg" = (
 /turf/open/floor/plating/warnplate/northeast,
 /area/lv624/lazarus/engineering)
-"gKN" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "gMe" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-rightsidepass"
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"gNo" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "gPu" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 9
@@ -12833,12 +12701,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"gTM" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "gUq" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -13018,15 +12880,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"hke" = (
-/obj/structure/platform/mineral/sandstone/runed,
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "hkT" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
@@ -13273,10 +13126,6 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
-"hNq" = (
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "hNR" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
@@ -13605,9 +13454,6 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "iye" = (
@@ -13877,12 +13723,6 @@
 "jeL" = (
 /turf/closed/wall/r_wall,
 /area/lv624/ground/caves/north_central_caves)
-"jfN" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "jga" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
@@ -13999,7 +13839,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "jwW" = (
-/obj/structure/platform_decoration,
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full"
@@ -14063,9 +13902,6 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "jBl" = (
@@ -14202,17 +14038,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
-"jMH" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/shuttle/red,
-/area/lv624/ground/caves/sand_temple)
 "jMS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -14699,12 +14524,6 @@
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/east_barrens)
-"kPU" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "kPY" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate,
@@ -14807,9 +14626,6 @@
 	color = "#b29082";
 	dir = 6;
 	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -14953,9 +14769,6 @@
 	color = "#6b675e";
 	dir = 5;
 	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -15277,15 +15090,6 @@
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"lWw" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "lWO" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -15443,13 +15247,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"mkZ" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "mmu" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -15719,12 +15516,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"mUZ" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/coast/north,
-/area/lv624/ground/caves/sand_temple)
 "mVg" = (
 /obj/item/weapon/harpoon/yautja{
 	anchored = 1;
@@ -15829,12 +15620,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
-"nfX" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "nha" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -15951,17 +15736,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"nsF" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "ntr" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -16011,9 +15785,6 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "nwR" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full"
@@ -16077,12 +15848,6 @@
 	},
 /obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"nEr" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -16308,9 +16073,6 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nWe" = (
@@ -16323,9 +16085,6 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -16377,13 +16136,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"ocL" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/river/east_river)
 "odw" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
@@ -16629,12 +16381,6 @@
 /obj/effect/decal/grass_overlay/grass1,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"oDY" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/coast/north,
-/area/lv624/ground/caves/sand_temple)
 "oEc" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_6_1"
@@ -16675,20 +16421,11 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"oFO" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "oGj" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 9;
 	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -16940,9 +16677,6 @@
 /area/lv624/ground/caves/north_central_caves)
 "pfK" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "pgc" = (
@@ -17218,10 +16952,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_nexus_road)
-"pIz" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "pIB" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -17415,7 +17145,6 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "qaE" = (
@@ -17542,12 +17271,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
-"qsM" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/caves/sand_temple)
 "qtj" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_central_jungle)
@@ -17614,10 +17337,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"qAc" = (
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "qAf" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
 	desc = "The oranges aren't done yet... this sucks.";
@@ -17639,17 +17358,6 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"qBQ" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "qBW" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
@@ -17780,9 +17488,6 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
@@ -18298,12 +18003,6 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
-"rQu" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "rRE" = (
 /obj/item/tool/minihoe{
 	pixel_x = 1;
@@ -18359,12 +18058,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
-"rYA" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "rYI" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/river,
@@ -18458,12 +18151,6 @@
 "smx" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/west_central_jungle)
-"smE" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "snc" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -18525,17 +18212,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"sqR" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/sand_temple)
 "srn" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 8
@@ -18648,9 +18324,6 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sCx" = (
@@ -18721,9 +18394,6 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
 "sIM" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	color = "#b29082";
 	dir = 5;
@@ -19110,9 +18780,6 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "tsa" = (
@@ -19200,12 +18867,6 @@
 "tzo" = (
 /turf/open/gm/dirt/desert_dug,
 /area/lv624/ground/barrens/central_barrens)
-"tzB" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/caves/sand_temple)
 "tzK" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -19225,17 +18886,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"tDa" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "tEm" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -19324,15 +18974,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
-"tMF" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "tMP" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating,
@@ -19484,12 +19125,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"udj" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "udM" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/dark,
@@ -19632,10 +19267,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
-"upp" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "upM" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -20016,31 +19647,13 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"ver" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "vft" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
 /turf/open/gm/dirt/desert_dug,
 /area/lv624/ground/caves/sand_temple)
 "vfR" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"vgJ" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "vgM" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -20129,15 +19742,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"vpu" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "vqT" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
@@ -20164,12 +19768,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"vvs" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/caves/sand_temple)
 "vvE" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
@@ -20221,12 +19819,6 @@
 "vBe" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_central_jungle)
-"vBu" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "vBQ" = (
 /obj/structure/largecrate,
 /turf/open/floor/bot/north,
@@ -20474,12 +20066,6 @@
 	},
 /turf/open/gm/dirtgrassborder/weedable/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"wcj" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "wcK" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest,
@@ -20493,9 +20079,6 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "wcW" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "weB" = (
@@ -20512,9 +20095,6 @@
 /area/lv624/lazarus/secure_storage)
 "wgk" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 4
-	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "whk" = (
@@ -20589,12 +20169,6 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"wmj" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "wol" = (
 /obj/item/ammo_magazine/rifle/extended,
 /turf/open/floor/plating,
@@ -20874,9 +20448,6 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "wSR" = (
@@ -20998,12 +20569,6 @@
 "wZW" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xak" = (
-/obj/structure/platform/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "xar" = (
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
@@ -21093,10 +20658,6 @@
 "xpf" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_nexus_road)
-"xpz" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
-/area/lv624/ground/caves/sand_temple)
 "xpR" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_east_caves)
@@ -21125,11 +20686,6 @@
 "xvj" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/secure_storage)
-"xvz" = (
-/obj/structure/platform_decoration,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/brown/northwest,
-/area/lv624/lazarus/comms)
 "xvN" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -21399,12 +20955,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"ybO" = (
-/obj/structure/platform_decoration/mineral/sandstone/runed{
-	dir = 8
-	},
-/turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/pole/fancy_cane,
@@ -32203,7 +31753,7 @@ aDv
 aZP
 anP
 aXX
-aZP
+gHw
 aOB
 wHp
 ncV
@@ -38606,12 +38156,12 @@ aQn
 aTi
 aTi
 qit
-upp
-jfN
-jfN
-gKN
-xvz
-elO
+aQn
+aQn
+aQn
+aQn
+aTi
+aTi
 aPT
 kxI
 lIU
@@ -42939,7 +42489,7 @@ aTu
 fLf
 fQx
 aVj
-mkZ
+aTq
 hDe
 aWH
 aSX
@@ -51952,11 +51502,11 @@ aej
 wSA
 jAK
 ubJ
-jMH
+ubJ
 iwl
 aej
 ssK
-rYA
+agX
 agX
 agX
 ahv
@@ -52184,7 +51734,7 @@ mhZ
 pEV
 uFA
 cRm
-rYA
+agX
 agX
 ahv
 ahv
@@ -52412,7 +51962,7 @@ mhZ
 lDh
 pws
 ssK
-rYA
+agX
 agX
 agX
 ahv
@@ -52640,7 +52190,7 @@ mhZ
 dID
 kbr
 jFc
-rYA
+agX
 agX
 gxd
 ahv
@@ -52868,7 +52418,7 @@ mhZ
 pEV
 lJm
 aeg
-rYA
+agX
 gxd
 qeW
 btX
@@ -53096,7 +52646,7 @@ mhZ
 pEV
 uDd
 slW
-rYA
+agX
 fPi
 btX
 wPN
@@ -53324,8 +52874,8 @@ mhZ
 pEV
 fzZ
 aeg
-vgJ
-mUZ
+agX
+fPi
 wPN
 gQr
 agX
@@ -53771,17 +53321,17 @@ ahv
 ahv
 ahv
 aeg
-wcj
+agX
 lse
-sqR
 oyI
 oyI
 oyI
-ezC
+oyI
+oyI
 trJ
-oDY
+fPi
 aeg
-rYA
+agX
 agX
 agX
 agX
@@ -53999,17 +53549,17 @@ ahv
 ahv
 ahv
 ufW
-xpz
-nEr
-rQu
+kRR
+agX
 boe
 boe
 boe
-aeq
-nEr
+boe
+boe
+agX
 bIO
 afS
-rYA
+agX
 agX
 agX
 agX
@@ -54026,9 +53576,9 @@ xch
 xch
 xch
 xch
-dXq
-nfX
-ocL
+xch
+xch
+jLc
 uxT
 uxT
 uxT
@@ -54227,15 +53777,15 @@ aeb
 dkN
 ufW
 ufW
-aAd
+cpQ
 avk
-wmj
 boe
 boe
 boe
-qAc
+boe
+boe
 thn
-qsM
+yhd
 ufW
 fvt
 rCK
@@ -54247,19 +53797,19 @@ slW
 afS
 ahv
 ahv
-udj
 xch
 xch
 xch
-dXq
-qBQ
-dws
-cQX
+xch
+xch
+oGj
+qpX
+nVZ
 nnq
 oGj
-tMF
+qpX
 nVZ
-udj
+xch
 ajw
 ajI
 alz
@@ -54455,15 +54005,15 @@ agA
 rac
 ufW
 msd
-aep
-afi
-gNo
+aev
+agX
 boe
 boe
 boe
-kPU
-afi
-ver
+boe
+boe
+agX
+cpQ
 hqS
 agX
 agX
@@ -54479,7 +54029,7 @@ sCg
 qpX
 qpX
 pRx
-vpu
+pRx
 jSp
 oTx
 jhG
@@ -54487,7 +54037,7 @@ jhG
 jhG
 thS
 btr
-gTM
+xch
 ajw
 ajI
 ajI
@@ -54707,7 +54257,7 @@ wBS
 ahB
 wZW
 wZW
-oFO
+wZW
 dVO
 dGc
 iuO
@@ -54715,7 +54265,7 @@ lPJ
 whv
 bEq
 lBq
-gTM
+xch
 jLc
 aqu
 ajI
@@ -54943,7 +54493,7 @@ rxV
 lPJ
 bEq
 shy
-gTM
+xch
 xch
 ajw
 ajI
@@ -55163,7 +54713,7 @@ wZW
 wZW
 wZW
 wZW
-pIz
+wZW
 xvN
 dGc
 uUJ
@@ -55171,7 +54721,7 @@ lPJ
 mUH
 bEq
 wca
-gTM
+xch
 xch
 ajw
 alA
@@ -55367,15 +54917,15 @@ aeT
 rac
 aej
 boe
-aeq
-smE
-rQu
+boe
+boe
+boe
 agX
 agX
 agX
-aeq
-vvs
-ybO
+boe
+yhd
+fur
 dDa
 boe
 agX
@@ -55391,7 +54941,7 @@ nWw
 dqo
 dqo
 bQA
-lWw
+bQA
 eAr
 ktf
 iOz
@@ -55399,7 +54949,7 @@ iOz
 iOz
 ttZ
 mVg
-gTM
+xch
 arT
 ajw
 ajI
@@ -55595,15 +55145,15 @@ aKj
 ahv
 aeg
 aeg
-qAc
+boe
 woM
-rYA
+agX
 yhd
 dxy
 agX
-hNq
+agX
 idz
-afq
+kHU
 ufW
 qPO
 aBi
@@ -55619,15 +55169,15 @@ pfK
 iIF
 xch
 xch
-bOg
-tDa
-fhs
-hke
+xch
+sIM
+dqo
+kZs
 nnq
 sIM
-nsF
+dqo
 kZs
-ekJ
+xch
 rGZ
 ajw
 alz
@@ -55823,17 +55373,17 @@ gWE
 ahv
 ahv
 slW
-wcj
-afi
-vBu
+agX
+agX
+agX
 qqJ
 aev
 agX
-wcj
-tzB
+agX
+qqJ
 wgk
 ufW
-rYA
+agX
 agX
 agX
 agX
@@ -55850,9 +55400,9 @@ xch
 xch
 xch
 xch
-bOg
-xak
-ekJ
+xch
+xch
+xch
 bEq
 eER
 iIF
@@ -56286,10 +55836,10 @@ aBi
 aBi
 aBi
 aBi
-afj
+aBi
 afS
 afS
-rYA
+agX
 agX
 agX
 agX
@@ -56508,13 +56058,13 @@ ahv
 ahv
 ahv
 aeg
-gNo
 boe
 boe
 boe
 boe
 boe
-kPU
+boe
+boe
 afS
 ahv
 vft

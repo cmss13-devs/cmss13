@@ -375,5 +375,5 @@ SPECIAL EGG USED BY EGG CARRIER
 	if(owner)
 		var/datum/behavior_delegate/carrier_eggsac/behavior = owner.behavior_delegate
 		behavior.remove_egg_owner(src)
-	if(life_timer)
+	if(kill && life_timer)
 		deltimer(life_timer)

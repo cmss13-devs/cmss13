@@ -452,7 +452,8 @@ SPECIAL EGG USED WHEN WEEDS LOST
 	if(isnull(weed_strength_required))
 		return .
 
-	life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+	if(hivenumber != XENO_HIVE_FORSAKEN)
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 
 	var/my_turf = get_turf(src)
 	if(my_turf)
@@ -471,6 +472,11 @@ SPECIAL EGG USED WHEN WEEDS LOST
 		return
 
 	convert()
+
+/obj/effect/alien/egg/carrier_egg/orphan/forsaken_handling()
+	. = ..()
+	if(life_timer)
+		deltimer(life_timer)
 
 /obj/effect/alien/egg/carrier_egg/orphan/can_convert()
 	if(!..())

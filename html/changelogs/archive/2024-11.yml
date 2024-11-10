@@ -202,3 +202,20 @@
   - rscadd: adds option for spawners to use lists of jobs
   - rscadd: enables overwatch consoles of other factions
   - rscadd: UPP squad supply drops
+2024-11-10:
+  Joe Lampost:
+  - code_imp: Changes the spawn message for predators
+  Venuska1117:
+  - code_imp: Added ability to Destroy Platform Edges by xenos on "Disarm" intent,
+      now depending on xenos "size" they can break Platform Edges quicker or Slower,
+      Now Explosives have chance to destroy Platform Edges by depending on how strong
+      explosion is.
+  - imageadd: Added Sprites for Broken Platforms Edges.
+  - soundadd: Added Sound for Breaking "Stone" Edges.
+  cuberound:
+  - qol: handrails are autoclimbable when on harm intent, you take some harm when
+      doing so
+  - balance: crusher and ravager destroy handrails when trying to pass them similar
+      to tables
+  harryob:
+  - ui: adds a prettier custom loadout menu with images

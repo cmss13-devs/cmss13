@@ -1,4 +1,0 @@
-author: "Joe Lampost"
-delete-after: True
-changes:
-  - code_imp: "Changes the spawn message for predators"

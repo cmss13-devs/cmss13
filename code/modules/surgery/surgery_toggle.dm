@@ -17,7 +17,7 @@
 		owner.mob_flags |= SURGERY_MODE_ON
 
 // Called when the action is clicked on.
-/datum/action/surgery_toggle/action_activate(mob/living/L)
+/datum/action/surgery_toggle/action_activate(mob/living/user)
 	. = ..()
 	if(owner.mob_flags & SURGERY_MODE_ON)
 		button.icon_state = "template"

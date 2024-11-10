@@ -155,7 +155,7 @@
 	maptext_label = "Ox"
 
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use
-	desc = "An single use auto-injector loaded with 5 units of Oxycodone, a powerful painkiller intended for life-threatening situations."
+	desc = "A single use auto-injector loaded with 5 units of Oxycodone, a powerful painkiller intended for life-threatening situations."
 	volume = 5
 	amount_per_transfer_from_this = 5
 	uses_left = 1

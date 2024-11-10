@@ -4,8 +4,6 @@
 	tutorial_id = "marine_hm_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 
-// START OF SCRIPTING
-
 // ------------ CONTENTS ------------ //
 //
 // Section 1 - Basic Damage Treatment
@@ -867,11 +865,6 @@
 
 
 	tutorial_end_in(15 SECONDS)
-
-// END OF SCRIPTING
-// START OF SCRIPT HELPERS
-
-// END OF SCRIPT HELPERS
 
 /datum/tutorial/marine/hospital_corpsman_basic/init_mob()
 	. = ..()

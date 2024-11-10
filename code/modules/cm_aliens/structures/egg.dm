@@ -16,6 +16,8 @@
 	var/on_fire = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
+	/// The weed strength that needs to be maintained in order for this egg to not decay; null disables check
+	var/weed_strength_required = WEED_LEVEL_HIVE
 
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
@@ -30,6 +32,10 @@
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(Grow)), rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 
+	var/turf/my_turf = get_turf(src)
+	if(my_turf?.weeds && !isnull(weed_strength_required))
+		RegisterSignal(my_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
+
 /obj/effect/alien/egg/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
@@ -37,6 +43,29 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of weeds to potentially orphan this egg
+/obj/effect/alien/egg/proc/on_weed_deletion()
+	SIGNAL_HANDLER
+
+	// Make sure we can oprhan
+	if(on_fire)
+		return
+	if(status == EGG_DESTROYED)
+		return
+
+	// Actually orphan
+	var/turf/my_turf = get_turf(src)
+	var/obj/effect/alien/egg/carrier_egg/orphan/newegg = new (my_turf, hivenumber, weed_strength_required)
+	switch(status)
+		if(EGG_GROWN)
+			newegg.Grow()
+		if(EGG_BURSTING, EGG_BURST)
+			newegg.status = EGG_BURST
+			newegg.hide_egg_triggers()
+			newegg.icon_state = "Egg Opened"
+
+	qdel(src)
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
@@ -324,6 +353,7 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg
 	name = "fragile egg"
 	desc = "It looks like a weird, fragile egg."
+	weed_strength_required = null
 	///Owner of the fragile egg, must be a mob/living/carbon/xenomorph/carrier
 	var/mob/living/carbon/xenomorph/carrier/owner = null
 	///Time that the carrier was last within refresh range of the egg (14 tiles)
@@ -334,13 +364,13 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
 	. = ..()
 	last_refreshed = world.time
-	if(!planter)
-		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
-		start_unstoppable_decay()
-	else
+	if(iscarrier(planter))
 		//Die after maximum lifetime
 		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 		set_owner(planter)
+	else if(isnull(planter))
+		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
+		start_unstoppable_decay()
 
 /obj/effect/alien/egg/carrier_egg/Destroy()
 	if(life_timer)
@@ -377,3 +407,53 @@ SPECIAL EGG USED BY EGG CARRIER
 		behavior.remove_egg_owner(src)
 	if(kill && life_timer)
 		deltimer(life_timer)
+
+/*
+SPECIAL EGG USED WHEN WEEDS LOST
+*/
+
+/obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
+	src.weed_strength_required = weed_strength_required
+
+	. = ..()
+
+	if(isnull(weed_strength_required))
+		return .
+
+	life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+
+	var/my_turf = get_turf(src)
+	if(my_turf)
+		RegisterSignal(my_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_weed_growth))
+
+/// SIGNAL_HANDLER for COMSIG_WEEDNODE_GROWTH to potentially restore this orphan
+/obj/effect/alien/egg/carrier_egg/orphan/proc/on_weed_growth()
+	SIGNAL_HANDLER
+
+	// Make sure we can restore
+	if(on_fire)
+		return
+	if(status == EGG_DESTROYED)
+		return
+	if(isnull(weed_strength_required))
+		return
+
+	// Check weed strength
+	var/turf/my_turf = get_turf(src)
+	var/obj/effect/alien/weeds/weed = my_turf?.weeds
+	if(!weed)
+		return
+	if(weed.weed_strength < weed_strength_required)
+		return
+
+	// Actually unorphan
+	var/obj/effect/alien/egg/newegg = new(my_turf, hivenumber)
+	switch(status)
+		if(EGG_GROWN)
+			newegg.Grow()
+		if(EGG_BURSTING, EGG_BURST)
+			newegg.status = EGG_BURST
+			newegg.hide_egg_triggers()
+			newegg.icon_state = "Egg Opened"
+
+	qdel(src)

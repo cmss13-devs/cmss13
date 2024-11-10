@@ -17,6 +17,10 @@
 		list("Soldier Radio Headset", floor(scale * 15), /obj/item/device/radio/headset/distress/UPP, VENDOR_ITEM_REGULAR),
 		list("UM4 Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine/veteran/UPP, VENDOR_ITEM_REGULAR),
 
+		list("HEADWEAR", -1, null, null),
+		list("UL3 armored beret", 15, /obj/item/clothing/head/uppcap/beret, VENDOR_ITEM_REGULAR),
+		list("UL8 armored ushanka", 15, /obj/item/clothing/head/uppcap/ushanka, VENDOR_ITEM_REGULAR),
+
 		list("WEBBINGS", -1, null, null),
 		list("Brown Webbing Vest", 1, /obj/item/clothing/accessory/storage/black_vest/brown_vest, VENDOR_ITEM_REGULAR),
 		list("Black Webbing Vest", 1, /obj/item/clothing/accessory/storage/black_vest, VENDOR_ITEM_REGULAR),

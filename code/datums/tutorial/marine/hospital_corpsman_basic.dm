@@ -17,6 +17,8 @@
 //
 // Section 2 - Intermediate Damage Treatment
 // 2.1 Pain Levels
+// 2.2 Toxin Damage
+// 2.3 Overdoses
 //
 
 /datum/tutorial/marine/hospital_corpsman_basic/start_tutorial(mob/starting_mob)
@@ -40,6 +42,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_2()
+
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
@@ -48,6 +51,7 @@
 	addtimer(CALLBACK(src, PROC_REF(medihud)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/medihud()
+
 	message_to_player("Next, you should get to know a Medics second best friend on the field, the <b>HealthMate HUD</b>.")
 	message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
 	message_to_player("Squad Medical helmets come with an inbuilt <b>HealthMate HUD</b> optic, that activates whilst wearing it on your head.")
@@ -60,6 +64,8 @@
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(medihud_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/medihud_2()
+	SIGNAL_HANDLER
+
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/head/helmet/marine/medic, helmet)
@@ -69,11 +75,10 @@
 	message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>Fully Healthy</b>.")
 	message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
 
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 20 SECONDS)
-
-
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 16 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
+
 	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
 	message_to_player("<b>Section 1.1: Brute Damage</b>")
 	message_to_player("There are two main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
@@ -103,7 +108,7 @@
 	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
 	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 11 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
 	SIGNAL_HANDLER
@@ -411,10 +416,6 @@
 	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
 
-
-
-
-
 /datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial()
 	message_to_player("<b>Section 1.3: Treating Bleeding</b>")
 	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
@@ -474,10 +475,6 @@
 	message_to_player("Great work. The Dummy is no longer bleeding all over the floor, which is always good.")
 
 	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
-
-
-
-
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
 	SIGNAL_HANDLER
@@ -552,13 +549,10 @@
 
 	RegisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(splint_tutorial))
 
-
-
-
-
 /datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial()
 	SIGNAL_HANDLER
 
+	message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
 	message_to_player("<b>Section 1.5: Bone Fractures</b>")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
@@ -628,12 +622,15 @@
 	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 3 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/intermediate_damage_treatment()
+
 	message_to_player("<b>Section 2: Intermediate Damage Treatment</b>")
 	message_to_player("Now that you have a grasp on how to treat the most common forms of damage, it's time to tackle some more complex skills in the Hospital Corpsman arsenal.")
 
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial()
+
+	message_to_player("<b>Section 2.1: Pain Levels</b>")
 	message_to_player("When treating the injuries of any patient, it is critical that you also manage their <b>Pain Levels</b>.")
 	message_to_player("<b>Pain Levels</b>, while not directly life threatening, can still severely debilitate an untreated Marine in the line of duty.")
 	message_to_player("A Marine with high levels of pain will experience slowed movements, blurry vision, or sudden unconsciousness.")
@@ -643,6 +640,8 @@
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 25 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_2()
+	SIGNAL_HANDLER
+
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.adjustFireLoss(130)
 	message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
@@ -658,6 +657,8 @@
 	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(tram_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed_reject()
+	SIGNAL_HANDLER
+
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	message_to_player("Dont feed yourself the pill, try again.")
@@ -684,6 +685,8 @@
 	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_inject_self()
+	SIGNAL_HANDLER
+
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
@@ -697,10 +700,10 @@
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
 
 	message_to_player("Well done!")
+	message_to_player("<b>Section 2.2: Toxin Damage</b>")
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial()
-	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
@@ -714,6 +717,7 @@
 	message_to_player("Symptoms of <b>Toxin Damage</b> include, vomiting, nausea, organ damage, and extreme pain across the body. It is commonly caused by overdoses, organ failure, or ingesting poisons.")
 	message_to_player("The Dummy has taken some <b>Toxin Damage</b>. Scan them with your Health Analyzer.")
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(tox_tutorial_2))
 
@@ -737,6 +741,8 @@
 	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(dylo_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed_reject()
+	SIGNAL_HANDLER
+
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	message_to_player("Dont feed yourself the pill, try again.")
@@ -753,15 +759,16 @@
 	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
 	message_to_player("Unfortunately, unlike Brute and Burn damage, Toxin damage has no treatment kits, making it extremely difficult to treat in large amounts.")
 
-	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_3()
 	//adds a slight grace period, so humans are not rejuved before dylo is registered in their system
 
 	message_to_player("<b>Section 2.3: Overdoses</b>")
-	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
@@ -771,7 +778,7 @@
 	message_to_player("If a person is has more than the <b>Overdose Amount</b> of any chemical in their body, the chemical will begin damaging the body to varying levels of severity")
 	message_to_player("Generally, the more powerful a chemical is at healing the body, the more destructive it will become if <b>Overdosed</b>.")
 
-	addtimer(CALLBACK(src, PROC_REF(od_tutorial_1)), 9 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_1)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_1()
 
@@ -779,20 +786,22 @@
 	message_to_player("This means administering a Marine with two uses of the same pill or autoinjector in a short span of time will place them <u>just below the overdose amount</u>.")
 	message_to_player("The overdose amounts for Bicaridine, Kelotane, Tramadol and Dylovene, is <b>30 units</b>. Pills and Autoinjectors for each will contain 15 units per use.")
 
-	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 16 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_2()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.adjustBruteLoss(55)
-	human_dummy.add_reagent("bicaridine", 35)
+	human_dummy.adjustFireLoss(40)
+	human_dummy.reagents.add_reagent("bicaridine", 40)
 
-	message_to_player("The Dummy has taken some Brute damage, indicated by the fact that they are <i>once again</i> bleeding all over the floor.")
+	message_to_player("The Dummy has taken some Brute damage, indicated by the fact that they are <I>once again</I> bleeding all over the floor.")
 	message_to_player("However, in a combat environment, you can never be sure how recently someone may have been treated by another Medic, and what chemicals will remain in their bloodstream")
 	message_to_player("Before administering any form of chemical medication, you must <b>ALWAYS</b> scan the patient with your Health Analyzer to check the amounts of chemicals in their body, and ensure you will not accidentally overdose them.")
 
 	message_to_player("Scan the Dummy with your Health Analyzer.")
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(od_tutorial_3))
 
@@ -809,11 +818,42 @@
 	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
 	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
 
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 13 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_4()
+	SIGNAL_HANDLER
+
+	message_to_player("The effects of every overdose will have different methods of treatment depending on the chemical.")
+	message_to_player("To stabilize a patient after an overdose, you should follow the automatic medicine recommendations displayed in your <b>Health Analyzer</b> interface.")
+	message_to_player("As you can see on your Health Analyzer scan, the Bicaridine overdose is creating <b>Burn Damage</b> on the Dummy.")
+	message_to_player("To counteract this, we will follow the Health Analyzers recommendations, and feed the Dummy a <b>Kelotane Pill</b>.")
+
+	var/obj/item/reagent_container/pill/kelotane/kelo = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(kelo)
+	add_highlight(kelo, COLOR_GREEN)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(kelo_pill_fed_reject))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(kelo_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed_reject()
+	SIGNAL_HANDLER
+
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 2 SECONDS)
 
 
+/datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
 
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
 
+	message_to_player("Well done, the Dummy's condition is now stable, and their overdose will disappear over time.")
 
+	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER
@@ -821,33 +861,12 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
-	message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
 	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
 	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
 	update_objective("Tutorial completed.")
 
 
-	tutorial_end_in(5 SECONDS)
-
-// ---------- TO DO LIST ---------- //
-// Basic Damage Treatment
-// - Fractures
-// - Still need to clean up the code
-//
-// Intermediate Damage Treatment
-//
-// Overdoses
-//
-// Triage(?)
-//
-// Know Your Equipment
-// - Medbelt
-// - Using Your Health Scanner
-// - Medical Hud
-
-
-
-
+	tutorial_end_in(15 SECONDS)
 
 // END OF SCRIPTING
 // START OF SCRIPT HELPERS

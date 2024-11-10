@@ -6,19 +6,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
-"ag" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "ah" = (
 /obj/item/stool,
 /turf/open/floor/engine/cult,
@@ -481,19 +468,6 @@
 	},
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple/entrance)
-"jB" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "jF" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
@@ -521,7 +495,7 @@
 	color = "#6b675e";
 	icon_state = "p_stair_full"
 	},
-/turf/open/space/basic,
+/turf/open/gm/dirt,
 /area/yautja_grounds/temple/entrance)
 "kp" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -607,19 +581,6 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/north)
-"lO" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "lP" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -746,6 +707,15 @@
 "oh" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/jungle/north)
+"on" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/temple/entrance)
 "oq" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	color = "#2e1e21"
@@ -768,24 +738,6 @@
 "oM" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/yautja_grounds/south)
-"oU" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "oV" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/jungle/west)
@@ -1254,19 +1206,6 @@
 "xn" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/yautja_grounds/south)
-"xx" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "xy" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/yautja_grounds/jungle)
@@ -1474,13 +1413,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja_grounds/south)
-"Bw" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/yautja_grounds/temple/entrance)
 "Bz" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/yautja_grounds/south)
@@ -1637,11 +1569,6 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
 "EF" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
 	dir = 4;
@@ -1859,11 +1786,6 @@
 /area/yautja_grounds/temple)
 "Jm" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
 	color = "#6b675e";
 	dir = 10;
 	icon_state = "p_stair_full"
@@ -2015,16 +1937,6 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
 "Lu" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
 	dir = 8;
@@ -2414,19 +2326,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/yautja_grounds/south)
-"SE" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/open/gm/dirt,
-/area/yautja_grounds/temple/entrance)
 "SP" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/yautja_grounds/jungle/east)
@@ -4226,11 +4125,11 @@ QE
 SU
 SU
 ZA
-xx
-jB
-Jm
+cr
+cr
+cr
+cr
 eG
-xx
 Lu
 Jm
 XC
@@ -4325,12 +4224,12 @@ se
 SU
 SU
 SU
+QE
+on
+QE
+QE
+QE
 SU
-QE
-QE
-QE
-QE
-Gj
 kh
 XC
 XC
@@ -4628,7 +4527,7 @@ dd
 dd
 dd
 dd
-Bw
+eY
 XC
 XC
 XC
@@ -4721,7 +4620,7 @@ se
 SU
 SU
 SU
-SU
+Sk
 Sk
 Sk
 jx
@@ -4820,11 +4719,11 @@ Sk
 SU
 SU
 ZA
-ag
-lO
-SE
+cr
+cr
+cr
+cr
 eG
-oU
 EF
 Vg
 CK

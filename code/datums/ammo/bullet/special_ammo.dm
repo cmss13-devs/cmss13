@@ -9,17 +9,18 @@
 	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
-	effective_range_max = 7
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"
 	icon_state = "bullet"
 
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20

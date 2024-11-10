@@ -1,5 +1,5 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_squad_prep
-	name = "\improper UnionUnitedCorp Surplus Uniform Vendor"
+	name = "\improper UnionAraratCorp Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a small storage of standard soldier uniforms."
 	req_access = list(ACCESS_UPP_GENERAL)
 	vendor_theme = VENDOR_THEME_UPP

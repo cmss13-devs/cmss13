@@ -12236,6 +12236,9 @@
 /obj/item/reagent_container/food/snacks/grown/mushroom/angel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
+"fLo" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/colony/south_medbay_road)
 "fMa" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/dark,
@@ -13777,7 +13780,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
 "jbg" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/quartstorage/outdoors)
 "jbB" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -15836,6 +15839,10 @@
 "nrm" = (
 /turf/open/gm/dirt/desert3,
 /area/lv624/ground/barrens/west_barrens)
+"nrG" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/colony/north_nexus_road)
 "nrK" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -18517,6 +18524,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
+"szF" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/lazarus/quartstorage/outdoors)
 "sAh" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 4
@@ -19296,6 +19307,10 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"tUG" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/colony/south_medbay_road)
 "tVw" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 9
@@ -40469,7 +40484,7 @@ gRx
 udP
 udP
 udP
-aCS
+tUG
 jHN
 jHN
 jHN
@@ -40697,7 +40712,7 @@ gRx
 udP
 udP
 udP
-aCS
+tUG
 bgQ
 buW
 jHN
@@ -40925,7 +40940,7 @@ aCS
 udP
 udP
 udP
-aCS
+tUG
 jHN
 eoo
 jHN
@@ -41153,7 +41168,7 @@ aCS
 udP
 udP
 udP
-aCS
+tUG
 jHN
 jHN
 ofv
@@ -41381,7 +41396,7 @@ aCS
 udP
 oua
 udP
-aCS
+tUG
 atw
 adp
 adp
@@ -41609,7 +41624,7 @@ aCS
 udP
 udP
 udP
-gRx
+fLo
 adp
 auz
 atX
@@ -44116,7 +44131,7 @@ aoA
 anT
 jRm
 jRm
-iwh
+nrG
 aGY
 atw
 atz
@@ -44344,7 +44359,7 @@ anG
 anG
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 aXv
@@ -44572,7 +44587,7 @@ anT
 jRm
 jRm
 jRm
-iwh
+nrG
 oUy
 oHx
 oUy
@@ -44800,7 +44815,7 @@ anT
 xpf
 jRm
 mFu
-iwh
+nrG
 aWC
 oUy
 oUy
@@ -45028,7 +45043,7 @@ anG
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 oUy
@@ -45256,7 +45271,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 aKo
 oUy
 wvO
@@ -45484,7 +45499,7 @@ xze
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 aKo
@@ -45712,7 +45727,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 lEY
 oUy
 aKo
@@ -45940,7 +45955,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 aKo
 oUy
 aKo
@@ -46168,7 +46183,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 aKo
@@ -46396,7 +46411,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 aKo
 aKo
@@ -46624,7 +46639,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 aKo
@@ -46852,7 +46867,7 @@ tyG
 iwh
 mFu
 jRm
-iwh
+nrG
 aMD
 oUy
 oUy
@@ -47080,7 +47095,7 @@ tyG
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 oUy
@@ -47308,7 +47323,7 @@ cpY
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 aWC
@@ -47536,7 +47551,7 @@ cpY
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 bad
 oUy
@@ -47764,7 +47779,7 @@ cpY
 iwh
 jRm
 jRm
-iwh
+nrG
 oUy
 oUy
 oUy
@@ -49138,7 +49153,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 fjM
 fjM
 fjM
@@ -49366,7 +49381,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 fjM
 kuZ
 fjM
@@ -49594,7 +49609,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 fjM
 fjM
 cOs
@@ -49822,7 +49837,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 fjM
 fjM
 cOs
@@ -50050,7 +50065,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 cOs
 fjM
 fjM
@@ -50278,7 +50293,7 @@ avP
 aqW
 aqW
 aqW
-avP
+szF
 fjM
 fjM
 fjM
@@ -50506,7 +50521,7 @@ aqV
 aqX
 aqW
 aqW
-avP
+szF
 fjM
 fjM
 cOs
@@ -50734,7 +50749,7 @@ aqW
 aqW
 aqW
 aqX
-avP
+szF
 fjM
 mxd
 sSE

@@ -21,6 +21,9 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 			var/datum/sprite_accessory/underwear/snow_datum = new underwear_type
 			snow_datum.generate_non_conforming("snow")
 			underwear_list[snow_datum.name] = snow_datum
+			var/datum/sprite_accessory/underwear/urban_datum = new underwear_type
+			urban_datum.generate_non_conforming("urban")
+			underwear_list[urban_datum.name] = urban_datum
 		else
 			underwear_list[underwear_datum.name] = underwear_datum
 	return underwear_list
@@ -41,6 +44,8 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 				selected_icon_state = "desert_" + selected_icon_state
 			if("snow")
 				selected_icon_state = "snow_" + selected_icon_state
+			if("urban")
+				selected_icon_state = "urban_" + selected_icon_state
 	if(gender == PLURAL)
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
 	return image(icon, selected_icon_state)
@@ -57,6 +62,8 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 			name += " (Desert)"
 		if("snow")
 			name += " (Snow)"
+		if("urban")
+			name += " (Urban)"
 
 // Both
 /datum/sprite_accessory/underwear/boxers

@@ -203,7 +203,7 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/setup_hvh_values()
-	if(is_type(/datum/ammo/bullet/rifle/type71/ap)||is_type(/datum/ammo/bullet/rifle/type71/heap))
+	if(istype(src,/datum/ammo/bullet/rifle/type71/ap)||istype(src,/datum/ammo/bullet/rifle/type71/heap))
 		penetration = ARMOR_PENETRATION_TIER_6
 	else
 		penetration = ARMOR_PENETRATION_TIER_1

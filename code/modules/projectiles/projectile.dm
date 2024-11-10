@@ -620,9 +620,9 @@
 
 
 /obj/projectile/proc/get_effective_accuracy()
-	#if DEBUG_HIT_CHANCE
+
 	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>; distance: <b>[distance_travelled]</b>"))
-	#endif
+
 
 	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
@@ -640,9 +640,9 @@
 			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
-	#if DEBUG_HIT_CHANCE
+
 	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))
-	#endif
+
 
 	return effective_accuracy
 

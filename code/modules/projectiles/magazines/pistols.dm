@@ -352,3 +352,40 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20
+
+//-------------------------------------------------------
+/*
+M10 Auto Pistol: A compact machine pistol that sacrifices accuracy for an impressive fire rate, shredding close-range targets with ease.
+With a 40-round magazine, it can keep up sustained fire in tense situations, though its high recoil and low stability make it tricky to control.
+Unlike other pistols, it can be equipped with limited mods (small muzzle, magazine, and optics) but has no burst-fire option.
+*/
+
+/obj/item/ammo_magazine/pistol/m10
+	name = "\improper M10 HV magazine (10x20mm)"
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "m10"
+	bonus_overlay = "m10_overlay"
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/extended
+	name = "\improper M10 HV extended magazine (10x20mm)"
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "m10_ext"
+	bonus_overlay = "m10_ex_overlay"
+	max_rounds = 80
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/drum
+	name = "\improper M10 HV drum magazine (10x20mm)"
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "m10_drum"
+	bonus_overlay = "m10_drum_overlay"
+	max_rounds = 120
+	gun_type = /obj/item/weapon/gun/pistol/m10

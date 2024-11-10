@@ -868,3 +868,50 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
+//-------------------------------------------------------
+/*
+M10 Auto Pistol: A compact machine pistol that sacrifices accuracy for an impressive fire rate, shredding close-range targets with ease.
+With a 40-round magazine, it can keep up sustained fire in tense situations, though its high recoil and low stability make it tricky to control.
+Unlike other pistols, it can be equipped with limited mods (small muzzle, magazine, and optics) but has no burst-fire option.
+*/
+
+/obj/item/weapon/gun/pistol/m10
+	name = "\improper M10 auto-pistol"
+	desc = "An advanced, select-fire machine pistol capable of three-round burst. Last seen cleaning up the mean streets of Detroit."
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
+	icon_state = "m10"
+	item_state = "m10"
+	attachable_allowed = list(
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/suppressor, //Muzzle
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/lasersight, //Underbarrel
+		/obj/item/attachable/burstfire_assembly,
+	)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER
+	start_automatic = TRUE
+	map_specific_decoration = TRUE
+
+	fire_sound = 'sound/weapons/m10_auto_pistol.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/m10
+
+/obj/item/weapon/gun/pistol/m10/set_gun_config_values()
+	..()
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_7
+	fa_max_scatter = SCATTER_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_13)
+	set_burst_amount(BURST_AMOUNT_TIER_8)
+	set_burst_delay(FIRE_DELAY_TIER_13)
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_10
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4

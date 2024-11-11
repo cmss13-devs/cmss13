@@ -1,7 +1,8 @@
 /datum/tutorial/marine/hospital_corpsman_basic
 	name = "Marine - Hospital Corpsman (Basic)"
-	desc = "Learn how to treat common injuries you may face as a marine."
+	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
+	//required_tutorial = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 
 // ------------ CONTENTS ------------ //

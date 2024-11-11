@@ -1,0 +1,4 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - bugfix: "G2 cosmetic working properly"

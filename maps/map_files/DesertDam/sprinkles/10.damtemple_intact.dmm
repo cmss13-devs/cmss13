@@ -7,10 +7,6 @@
 /obj/structure/prop/brazier,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"bk" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "by" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -79,10 +75,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"gl" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "gX" = (
 /obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
@@ -95,21 +87,13 @@
 	hull = 1
 	},
 /area/desert_dam/interior/caves/temple)
-"ik" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	color = "#880808";
-	desc = "A clan mask of uncertain origin, whoever wore it must have been cruel and sadistic.";
-	icon_state = "pred_mask_elder_tr";
-	name = "ancient clan mask";
-	pixel_y = 30
-	},
-/turf/open/floor/corsat/squareswood/north,
+"hn" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"iC" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
+/turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "iM" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -160,6 +144,30 @@
 "mB" = (
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"mL" = (
+/obj/structure/showcase{
+	color = "#880808";
+	desc = "A large red statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "The Titan"
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1;
+	icon_state = "halfarmor7_ebony"
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1;
+	icon_state = "y-boots4_ebony"
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	icon_state = "pred_mask12_ebony";
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/desert_dam/interior/caves/temple)
 "mQ" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -197,30 +205,6 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "oR" = (
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"pC" = (
-/obj/structure/showcase{
-	color = "#880808";
-	desc = "A large red statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "The Titan"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1;
-	icon_state = "halfarmor7_ebony"
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1;
-	icon_state = "y-boots4_ebony"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	icon_state = "pred_mask12_ebony";
-	unacidable = 0;
-	pixel_y = 10
-	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "qv" = (
@@ -270,6 +254,10 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
+"sZ" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/interior/caves/temple)
 "td" = (
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
@@ -277,10 +265,6 @@
 /obj/structure/closet/coffin/predator,
 /obj/item/storage/large_holster/katana,
 /turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"uA" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "uK" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
@@ -318,6 +302,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"wl" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -329,9 +317,9 @@
 "zg" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/desert_dam/interior/caves/temple)
-"Ab" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/river/desert/deep,
+"zH" = (
+/obj/structure/platform/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "Ax" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -364,13 +352,29 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
-"BT" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "Co" = (
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"CC" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/north,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"CH" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/item/clothing/mask/gas/yautja/damaged{
+	anchored = 1;
+	color = "#880808";
+	desc = "A clan mask of uncertain origin, whoever wore it must have been cruel and sadistic.";
+	icon_state = "pred_mask_elder_tr";
+	name = "ancient clan mask";
+	pixel_y = 30
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
 "Dc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/rock,
@@ -399,10 +403,6 @@
 "EB" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
-"Gq" = (
-/obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/interior/caves/temple)
 "Gz" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
@@ -424,6 +424,14 @@
 	},
 /obj/item/xeno_egg,
 /turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
+"Hn" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"Im" = (
+/obj/structure/platform_decoration/stone/runed_sandstone,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "Ix" = (
 /obj/structure/surface/rack{
@@ -458,6 +466,10 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"Jg" = (
+/obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "Jh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -487,6 +499,10 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/chainofcommand,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"Kl" = (
+/obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "KA" = (
@@ -524,10 +540,6 @@
 	},
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"NJ" = (
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "NL" = (
@@ -569,19 +581,11 @@
 /obj/item/weapon/unathiknife,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"QR" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "RB" = (
 /obj/structure/machinery/door/window{
 	dir = 8
 	},
 /turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"Sa" = (
-/obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "TO" = (
 /obj/structure/xenoautopsy,
@@ -601,10 +605,6 @@
 	hull = 1
 	},
 /area/desert_dam/interior/caves/temple)
-"VQ" = (
-/obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "WM" = (
 /obj/structure/curtain/red,
 /turf/open/floor/corsat/squareswood/north,
@@ -613,15 +613,15 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"XH" = (
-/obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "XQ" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/tool/kitchen/tray{
 	pixel_y = -3
 	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"YH" = (
+/obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "ZI" = (
@@ -750,12 +750,12 @@ MH
 mB
 mB
 MH
-Ab
-Gq
-Gq
-Gq
-Gq
-uA
+wl
+sZ
+sZ
+sZ
+sZ
+iC
 MH
 "}
 (6,1,1) = {"
@@ -953,9 +953,9 @@ MH
 MH
 mB
 mB
-Sa
-BT
-gl
+Im
+hn
+Kl
 mB
 mB
 MH
@@ -979,9 +979,9 @@ mB
 uK
 mB
 mB
-QR
-pC
-XH
+YH
+mL
+zH
 mB
 mB
 zg
@@ -1005,9 +1005,9 @@ mB
 MH
 mB
 mB
-bk
-VQ
-NJ
+CC
+Jg
+Hn
 mB
 mB
 Eh
@@ -1284,7 +1284,7 @@ EB
 EB
 EB
 MH
-ik
+CH
 MH
 MH
 rh

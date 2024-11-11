@@ -59,11 +59,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"aF" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "aL" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -128,9 +123,10 @@
 "cH" = (
 /turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
-"cM" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer0,
+"cT" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "dd" = (
 /turf/open/gm/coast/south,
@@ -147,6 +143,11 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"eg" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "eo" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -180,10 +181,14 @@
 /obj/structure/largecrate/supply/medicine/blood,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"fL" = (
-/obj/structure/largecrate/supply/weapons/shotgun,
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer1,
+"fI" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
 /area/adminlevel/ert_station/clf_station)
 "fX" = (
 /obj/structure/prop/wooden_cross,
@@ -203,39 +208,9 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"gM" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "gN" = (
 /obj/effect/decal/cleanable/egg_smudge,
 /turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/clf_station)
-"gQ" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"gR" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"gS" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/strata_grass/layer0,
-/area/adminlevel/ert_station/clf_station)
-"gW" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "hd" = (
 /obj/structure/reagent_dispensers/beerkeg{
@@ -243,24 +218,29 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
+"hj" = (
+/obj/structure/largecrate/supply/weapons/shotgun,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "hr" = (
 /obj/structure/machinery/light/small/built{
 	dir = 4
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"hD" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "hE" = (
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"hF" = (
+"hH" = (
+/obj/structure/platform/metal/kutjevo,
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"hK" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0,
 /area/adminlevel/ert_station/clf_station)
 "hL" = (
 /obj/structure/window/reinforced{
@@ -298,35 +278,12 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"ie" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/wood,
+"hY" = (
+/obj/structure/platform/metal/kutjevo/east,
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
-"ij" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"iB" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"iG" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"iK" = (
-/obj/structure/barricade/sandbags,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"iO" = (
+"ib" = (
 /obj/structure/showcase{
 	color = "#95948B";
 	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
@@ -349,31 +306,54 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
+"ie" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"iB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iC" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"iG" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iK" = (
+/obj/structure/barricade/sandbags,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iR" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"jb" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/supply/weapons/flamers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "jp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"jv" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
 "jG" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"jM" = (
+"jV" = (
+/obj/structure/platform/metal/kutjevo/north,
 /obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/adminlevel/ert_station/clf_station)
-"jO" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "jZ" = (
@@ -382,11 +362,6 @@
 /area/adminlevel/ert_station/clf_station)
 "ki" = (
 /obj/structure/largecrate/black_market/confiscated_equipment,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"kj" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "kk" = (
@@ -416,15 +391,15 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"kK" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "kS" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/shaker,
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"lo" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/supply/explosives/grenades,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "lp" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -437,30 +412,23 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"lq" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"ls" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/largecrate/random/case/small,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"lH" = (
+"lz" = (
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/flora/jungle/vines,
-/obj/structure/flora/jungle/vines{
-	icon_state = "heavy_1"
-	},
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lD" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "lI" = (
 /obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lL" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "lX" = (
@@ -481,6 +449,11 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"mp" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "ms" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
@@ -500,17 +473,17 @@
 "mw" = (
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"mx" = (
+/obj/structure/platform/metal/kutjevo/east,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "mR" = (
 /obj/structure/machinery/gibber{
 	pixel_y = 10
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/clf_station)
-"mW" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/supply/explosives/mines,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "ne" = (
 /obj/structure/bed{
@@ -533,13 +506,6 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
-"nD" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
-	},
-/turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
 "nJ" = (
 /obj/item/clothing/shoes/jackboots,
 /turf/open/floor/wood,
@@ -548,10 +514,6 @@
 /obj/item/clothing/mask/cigarette/cigar/classic,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/clf_station)
-"oa" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/adminlevel/ert_station/clf_station)
 "oc" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -562,6 +524,11 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"oe" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "om" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -606,9 +573,10 @@
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
 /area/adminlevel/ert_station/clf_station)
-"oZ" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/grass,
+"pj" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "pk" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -616,14 +584,6 @@
 /area/adminlevel/ert_station/clf_station)
 "pF" = (
 /turf/open/floor/wood/wood_broken6,
-/area/adminlevel/ert_station/clf_station)
-"pH" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/adminlevel/ert_station/clf_station)
-"pU" = (
-/obj/structure/platform/metal/kutjevo,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "pY" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -643,20 +603,19 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
-"qt" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 9
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "qy" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
-"qR" = (
+"qI" = (
+/obj/structure/platform/metal/kutjevo/west,
 /obj/structure/platform/metal/kutjevo,
-/turf/open/gm/grass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"qM" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "rm" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -686,6 +645,13 @@
 /obj/item/restraint/handcuffs,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"sy" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "sC" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
@@ -710,6 +676,29 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
 	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"tc" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"tf" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"ti" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "ts" = (
@@ -787,6 +776,13 @@
 /obj/item/bedsheet/yellow,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"uR" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "uX" = (
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/clf_station)
@@ -799,15 +795,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
-"vf" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "vm" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"vn" = (
+/obj/structure/platform/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "vx" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -817,6 +813,14 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"vy" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
 "vA" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -824,11 +828,21 @@
 "vI" = (
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
-"vY" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
+"vJ" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"wa" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"we" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
 	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "wI" = (
@@ -838,28 +852,20 @@
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "wP" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/adminlevel/ert_station/clf_station)
-"wV" = (
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass/grass2,
-/area/adminlevel/ert_station/clf_station)
-"wW" = (
-/turf/open/gm/coast/south_east,
-/area/adminlevel/ert_station/clf_station)
-"xd" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_1"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"xq" = (
+"wS" = (
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/platform/metal/kutjevo,
+/obj/structure/largecrate/supply/explosives/mines,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"wW" = (
+/turf/open/gm/coast/south_east,
 /area/adminlevel/ert_station/clf_station)
 "xE" = (
 /turf/open/gm/coast/beachcorner2/south_east,
@@ -898,8 +904,13 @@
 	},
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
-"yw" = (
-/obj/structure/platform/metal/kutjevo/north,
+"yh" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/east,
+/area/adminlevel/ert_station/clf_station)
+"yp" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "yE" = (
@@ -921,6 +932,13 @@
 /obj/item/ammo_magazine/pistol/clfpistol,
 /turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
+"yS" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
 "yU" = (
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
@@ -928,14 +946,17 @@
 /obj/structure/prop/brazier/frame/full,
 /turf/open/floor/plating/asteroidwarning,
 /area/adminlevel/ert_station/clf_station)
-"zv" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
+"zg" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/case/double,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"zk" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "zy" = (
 /obj/structure/machinery/light/small/built{
@@ -967,15 +988,12 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
-"Am" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"Av" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer1,
+"Ax" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "AO" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -986,6 +1004,10 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"AP" = (
+/obj/structure/platform/metal/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "AV" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1016,6 +1038,11 @@
 /obj/item/trash/burger,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"Bo" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "Bx" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/prison/kitchen,
@@ -1031,14 +1058,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
-"BD" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
-"BE" = (
-/obj/structure/platform/metal/kutjevo/north,
-/turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
 "BP" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave{
@@ -1053,9 +1072,9 @@
 /obj/structure/machinery/recharger,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"CD" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/closet/coffin/woodencrate,
+"Cu" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "CE" = (
@@ -1066,11 +1085,6 @@
 "CQ" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
-"CX" = (
-/obj/structure/largecrate/black_market/clf_supplies,
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Dn" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -1084,7 +1098,7 @@
 /area/adminlevel/ert_station/clf_station)
 "DB" = (
 /obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "DF" = (
 /turf/open/floor/wood/wood_broken3,
@@ -1122,16 +1136,11 @@
 	},
 /turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
-"EV" = (
+"EZ" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"EX" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/supply/explosives/grenades,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Fj" = (
@@ -1139,27 +1148,31 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"Fm" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/dirtgrassborder/east,
-/area/adminlevel/ert_station/clf_station)
 "FD" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"FT" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "FV" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"Gh" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
 "Gl" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/spacecash/c10,
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/clf_station)
-"Gw" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/floodlight,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "GB" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1173,18 +1186,8 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
-"GI" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/strata_grass/layer0,
-/area/adminlevel/ert_station/clf_station)
-"GT" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/platform/metal/kutjevo/west,
+"GK" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "GV" = (
@@ -1194,14 +1197,22 @@
 /obj/docking_port/stationary/emergency_response/idle_port1,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/clf_station)
+"HG" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "HI" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
-"HQ" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/auto_turf/strata_grass/layer1,
+"HN" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "Ia" = (
 /obj/structure/bed/chair{
@@ -1215,8 +1226,18 @@
 "Ie" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/adminlevel/ert_station/clf_station)
+"Ip" = (
+/obj/structure/largecrate/black_market/clf_supplies,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "IH" = (
 /turf/open/floor/wood/wood_broken4,
+/area/adminlevel/ert_station/clf_station)
+"II" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "IT" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -1227,20 +1248,17 @@
 /obj/item/clothing/mask/gas/swat,
 /turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
-"IZ" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"Jt" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/grass,
-/area/adminlevel/ert_station/clf_station)
-"Jz" = (
+"Jj" = (
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/flora/jungle/vines,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"JR" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"JY" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/adminlevel/ert_station/clf_station)
 "Ke" = (
 /obj/structure/flora/jungle/vines{
@@ -1250,10 +1268,6 @@
 /area/adminlevel/ert_station/clf_station)
 "KT" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/adminlevel/ert_station/clf_station)
-"Ll" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Lu" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1279,9 +1293,18 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"Md" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "Me" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"MA" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "ME" = (
 /obj/structure/machinery/door/window/brigdoor{
@@ -1355,37 +1378,14 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
-"Nm" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "Ns" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"Nv" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "NB" = (
 /turf/open/floor/freezerfloor,
-/area/adminlevel/ert_station/clf_station)
-"NN" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/case/double,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"NS" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "NV" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1414,6 +1414,10 @@
 "Oi" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"Or" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/adminlevel/ert_station/clf_station)
 "Ou" = (
 /obj/structure/window/reinforced{
@@ -1473,13 +1477,13 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"OP" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "OY" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Pf" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Ph" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -1489,6 +1493,13 @@
 	name = "Edwin"
 	},
 /turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"Pw" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "PC" = (
 /obj/item/trash/candle,
@@ -1512,10 +1523,9 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"PP" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/supply/weapons/flamers,
-/turf/open/auto_turf/strata_grass/layer1,
+"PX" = (
+/obj/structure/platform/metal/kutjevo,
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "Qw" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1537,11 +1547,6 @@
 /obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"QN" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "QV" = (
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
@@ -1554,11 +1559,6 @@
 /area/adminlevel/ert_station/clf_station)
 "Rg" = (
 /turf/open/gm/dirt,
-/area/adminlevel/ert_station/clf_station)
-"Rn" = (
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Ro" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1574,11 +1574,6 @@
 "Rv" = (
 /obj/structure/curtain/red,
 /turf/open/floor/wood/wood_broken,
-/area/adminlevel/ert_station/clf_station)
-"RA" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "RB" = (
 /obj/structure/flora/jungle/plantbot1{
@@ -1653,17 +1648,8 @@
 /obj/structure/flora/bush/ausbushes/var3,
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
-"Ut" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/gm/grass/grass2,
-/area/adminlevel/ert_station/clf_station)
 "Uu" = (
 /turf/open/floor/plating/asteroidwarning,
-/area/adminlevel/ert_station/clf_station)
-"Uy" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/largecrate/random/secure,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "UB" = (
 /turf/open/floor/plating/asteroidwarning/north,
@@ -1696,15 +1682,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"VQ" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"VW" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "Wb" = (
 /obj/structure/curtain/red,
 /turf/open/floor/wood,
@@ -1718,6 +1695,10 @@
 	},
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"We" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Wo" = (
 /obj/item/weapon/throwing_knife,
@@ -1739,18 +1720,15 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"WD" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "WO" = (
 /obj/structure/prop/wooden_cross,
 /obj/item/clothing/head/helmet/marine/fluff/limo,
 /turf/open/gm/dirt,
-/area/adminlevel/ert_station/clf_station)
-"WP" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "WU" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1777,12 +1755,9 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/adminlevel/ert_station/clf_station)
-"XY" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/gm/grass/grass2,
+"XO" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "Yq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1790,12 +1765,26 @@
 	},
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
+"Yy" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "YA" = (
 /obj/structure/machinery/light/small/built,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "YB" = (
 /turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"YH" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/machinery/floodlight,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"YN" = (
+/obj/structure/platform/metal/kutjevo/north,
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "Ze" = (
 /obj/structure/bed/chair{
@@ -1830,9 +1819,20 @@
 "ZI" = (
 /turf/closed/wall/wood,
 /area/adminlevel/ert_station/clf_station)
+"ZK" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
 "ZO" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"ZQ" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass/grass2,
 /area/adminlevel/ert_station/clf_station)
 "ZS" = (
 /obj/structure/stairs/perspective{
@@ -2041,7 +2041,7 @@ ax
 ax
 Rg
 Rg
-iO
+ib
 LO
 ax
 ax
@@ -2229,25 +2229,25 @@ Rg
 Ie
 Ee
 Ee
-DB
-jM
-Fm
-Fm
-wP
-oZ
-Ut
-oZ
-oZ
-Ut
-Ut
-oZ
-oZ
-oZ
-oZ
-oZ
-wV
-oZ
-BD
+XO
+Or
+yh
+yh
+Gh
+vJ
+ZQ
+vJ
+vJ
+ZQ
+ZQ
+vJ
+vJ
+vJ
+vJ
+vJ
+hY
+vJ
+HN
 QV
 QV
 Nk
@@ -2271,7 +2271,7 @@ Ie
 OY
 YB
 ql
-qR
+PX
 yY
 Tu
 Tu
@@ -2289,7 +2289,7 @@ Tu
 Tu
 Tu
 az
-BE
+YN
 YB
 QV
 Nk
@@ -2313,7 +2313,7 @@ OY
 QV
 QV
 YB
-qR
+PX
 Uu
 uX
 uX
@@ -2331,7 +2331,7 @@ uX
 uX
 uX
 UB
-BE
+YN
 Aj
 Xv
 Nk
@@ -2355,7 +2355,7 @@ QV
 QV
 QV
 QV
-qR
+PX
 Uu
 uX
 uX
@@ -2373,10 +2373,10 @@ uX
 Hs
 uX
 UB
-Jt
-oZ
-oZ
-XY
+cT
+vJ
+vJ
+Ax
 pk
 pk
 BB
@@ -2397,7 +2397,7 @@ CQ
 QV
 QV
 QV
-qR
+PX
 Uu
 uX
 uX
@@ -2418,7 +2418,7 @@ UB
 oI
 oI
 oI
-yw
+AP
 gj
 ON
 pk
@@ -2439,7 +2439,7 @@ QV
 CQ
 wI
 ye
-qR
+PX
 Uu
 uX
 uX
@@ -2460,7 +2460,7 @@ UB
 oI
 cB
 oI
-yw
+AP
 iB
 Ez
 TZ
@@ -2481,7 +2481,7 @@ sN
 LN
 Nk
 GG
-nD
+iC
 Uu
 uX
 uX
@@ -2502,7 +2502,7 @@ UB
 oI
 oI
 Oi
-yw
+AP
 zO
 zO
 zO
@@ -2523,7 +2523,7 @@ ZI
 ZI
 Yq
 GG
-jv
+zk
 Uu
 uX
 uX
@@ -2544,7 +2544,7 @@ UB
 IT
 Rr
 qb
-yw
+AP
 zO
 yH
 zO
@@ -2565,7 +2565,7 @@ aN
 Wb
 FD
 iB
-qt
+ZK
 Uu
 uX
 uX
@@ -2583,10 +2583,10 @@ uX
 uX
 uX
 UB
-Av
-hD
-hD
-NS
+Md
+Jj
+Jj
+JR
 zO
 zO
 zO
@@ -2607,7 +2607,7 @@ ZI
 ZI
 FD
 zO
-pU
+vn
 Uu
 uX
 uX
@@ -2625,19 +2625,19 @@ uX
 uX
 uX
 UB
-yw
+AP
 bI
 jZ
-VQ
-vf
-vf
-vf
-vf
-vf
-vf
-vf
-Rn
-gR
+DB
+We
+We
+We
+We
+We
+We
+We
+mx
+GK
 KT
 KT
 "}
@@ -2649,7 +2649,7 @@ ER
 Wb
 FD
 zO
-pU
+vn
 Uu
 uX
 uX
@@ -2667,10 +2667,10 @@ uX
 uX
 uX
 UB
-yw
+AP
 zO
-VQ
-Am
+DB
+Yy
 ZI
 eP
 eP
@@ -2679,8 +2679,8 @@ ZI
 eP
 eP
 ZI
-OP
-gR
+jV
+GK
 KT
 "}
 (21,1,1) = {"
@@ -2691,7 +2691,7 @@ ZI
 ZI
 FD
 zO
-pU
+vn
 yY
 GV
 GV
@@ -2709,9 +2709,9 @@ GV
 GV
 GV
 az
-yw
+AP
 zO
-pU
+vn
 ZI
 ZI
 Ia
@@ -2722,7 +2722,7 @@ Xp
 Xp
 ZI
 ZI
-yw
+AP
 KT
 "}
 (22,1,1) = {"
@@ -2733,27 +2733,27 @@ zO
 zO
 FD
 zO
-gM
-Uy
-RA
-fL
-gQ
-PP
-hF
-hF
-mW
-Nv
+oe
+lz
+mp
+hj
+eg
+jb
+Pf
+Pf
+wS
+tc
 OK
 OK
 OK
-ij
-EX
-Nm
-CX
-NN
-ls
+we
+lo
+II
+Ip
+zg
+Bo
 jG
-pU
+vn
 eP
 vx
 WU
@@ -2764,7 +2764,7 @@ Xp
 Xp
 gi
 eP
-yw
+AP
 KT
 "}
 (23,1,1) = {"
@@ -2795,7 +2795,7 @@ tt
 ki
 zO
 zO
-pU
+vn
 eP
 jp
 Gl
@@ -2806,7 +2806,7 @@ Xp
 Xp
 nC
 eP
-VW
+iR
 KT
 "}
 (24,1,1) = {"
@@ -2837,7 +2837,7 @@ FD
 FD
 FD
 zO
-pU
+vn
 eP
 Ns
 qa
@@ -2848,7 +2848,7 @@ Xp
 Xp
 gN
 eP
-VW
+iR
 KT
 "}
 (25,1,1) = {"
@@ -2879,7 +2879,7 @@ FD
 FD
 FD
 FD
-GI
+fI
 ZI
 ce
 mw
@@ -2890,7 +2890,7 @@ Wq
 Xp
 Xp
 eP
-yw
+AP
 KT
 "}
 (26,1,1) = {"
@@ -2932,36 +2932,36 @@ ZI
 rz
 rz
 ZI
-VW
+iR
 KT
 "}
 (27,1,1) = {"
 ax
 zO
-VQ
-vf
-zv
+DB
+We
+HG
 Ba
 Ba
-lq
-vf
-gR
-VQ
-vf
-zv
+FT
+We
+GK
+DB
+We
+HG
 Ba
 Ba
-lq
-vf
-gR
-HQ
-vf
-zv
+FT
+We
+GK
+lL
+We
+HG
 Ba
 Ba
-lq
-vf
-Gw
+FT
+We
+YH
 FD
 ZS
 Wb
@@ -2974,38 +2974,38 @@ Of
 Xp
 Xp
 eP
-VW
+iR
 KT
 "}
 (28,1,1) = {"
 DN
 zO
-pU
+vn
 ZI
 ZI
 Wb
 Wb
 ZI
 ZI
-yw
-pU
+AP
+vn
 ZI
 ZI
 Wb
 Wb
 ZI
 ZI
-yw
-pU
+AP
+vn
 ZI
 ZI
 Wb
 Wb
 ZI
 ZI
-yw
+AP
 yH
-gS
+tf
 zZ
 ma
 mw
@@ -3016,38 +3016,38 @@ Vm
 NY
 hd
 eP
-VW
+iR
 KT
 "}
 (29,1,1) = {"
 KT
 NV
-pU
+vn
 ZI
 up
 mw
 mw
 YA
 ZI
-yw
-pU
+AP
+vn
 ZI
 at
 mw
 DF
 Ou
 ZI
-yw
-pU
+AP
+vn
 ZI
 zy
 pF
 mw
 tz
 ZI
-CD
+qM
 FD
-pU
+vn
 eP
 Ns
 Bn
@@ -3058,38 +3058,38 @@ mR
 Xp
 cc
 ZI
-yw
+AP
 KT
 "}
 (30,1,1) = {"
 KT
 DN
-QN
+yp
 eP
 mw
 Vk
 lp
 pF
 eP
-yw
-pU
+AP
+vn
 eP
 yE
 mw
 mw
 IW
 eP
-yw
-pU
+AP
+vn
 ZI
 ZE
 kF
 DF
 TM
 eP
-CD
+qM
 FD
-pU
+vn
 eP
 MQ
 mw
@@ -3100,38 +3100,38 @@ BP
 Xp
 Bx
 ZI
-yw
+AP
 KT
 "}
 (31,1,1) = {"
 KT
 KT
-QN
+yp
 eP
 mw
 Sj
 mw
 mw
 eP
-yw
-pU
+AP
+vn
 zZ
 MP
 mw
 mw
 ow
 ZI
-yw
-pU
+AP
+vn
 ZI
 rm
 mw
 mw
 aA
 eP
-yw
+AP
 FD
-pU
+vn
 eP
 WU
 hE
@@ -3142,38 +3142,38 @@ ms
 Xp
 fd
 ZI
-yw
+AP
 KT
 "}
 (32,1,1) = {"
 KT
 NV
-QN
+yp
 zZ
 mw
 mw
 mw
 mw
 ZI
-yw
-pU
+AP
+vn
 eP
 QE
 Xc
 DF
 WA
 eP
-yw
-pU
+AP
+vn
 ZI
 zH
 cH
 mw
 fx
 eP
-yw
+AP
 FD
-pU
+vn
 ZI
 ZI
 hE
@@ -3184,39 +3184,39 @@ RR
 Xp
 ZI
 ZI
-yw
+AP
 KT
 "}
 (33,1,1) = {"
 KT
 jG
-pU
+vn
 ZI
 eP
 Wb
 Rv
 eP
 ZI
-yw
-pU
+AP
+vn
 ZI
 at
 mw
 mw
 Ou
 ZI
-yw
-xd
+AP
+uR
 ZI
 PI
 MU
 mw
 ie
 ZI
-yw
+AP
 FD
-EV
-GT
+EZ
+hH
 ZI
 eP
 eP
@@ -3225,79 +3225,79 @@ ZI
 ZI
 ZI
 ZI
-Av
-NS
+Md
+JR
 KT
 "}
 (34,1,1) = {"
 KT
 zO
-pU
+vn
 ZI
 oc
 mw
 mw
 AV
 ZI
-yw
-kj
+AP
+pj
 eP
 Uj
 Pr
 mw
 Wz
 eP
-yw
-pU
+AP
+vn
 ZI
 MT
 MU
 IH
 Xz
 ZI
-yw
+AP
 FD
 FD
-Ll
-hD
-hD
-hD
-hD
-hD
-Jz
-aF
-lH
-IZ
+MA
+Jj
+Jj
+Jj
+Jj
+Jj
+Cu
+WD
+wP
+lD
 zO
 KT
 "}
 (35,1,1) = {"
 KT
 zO
-pU
+vn
 ZI
 sK
 DF
 mw
 Bl
 ZI
-yw
-pU
+AP
+vn
 zZ
 MP
 xO
 nJ
 MP
 ZI
-yw
-pU
+AP
+vn
 ZI
 ZI
 ZI
 Wb
 ZI
 ZI
-yw
+AP
 EJ
 FD
 FD
@@ -3316,30 +3316,30 @@ KT
 (36,1,1) = {"
 KT
 KT
-pU
+vn
 ZI
 sK
 mw
 IH
 Ck
 ZI
-yw
-pU
+AP
+vn
 eP
 yM
 mw
 mw
 av
 eP
-yw
-pU
+AP
+vn
 ZI
 tG
 Sd
 NB
 aL
 ZI
-yw
+AP
 yH
 zO
 zO
@@ -3358,39 +3358,39 @@ KT
 (37,1,1) = {"
 KT
 KT
-pU
+vn
 ZI
 AO
 dg
 kk
 Qw
 ZI
-yw
-pU
+AP
+vn
 ZI
 hL
 mw
 mw
 Ou
 ZI
-yw
-kj
+AP
+pj
 ZI
 tG
 NB
 NB
 aL
 ZI
-yw
+AP
 zO
-HQ
-vf
-zv
+lL
+We
+HG
 Ba
 Ba
-lq
-vf
-gR
+FT
+We
+GK
 Ad
 un
 VO
@@ -3400,39 +3400,39 @@ KT
 (38,1,1) = {"
 KT
 NV
-pU
+vn
 ZI
 ZI
 QG
 lX
 ZI
 ZI
-yw
-pU
+AP
+vn
 ZI
 ZI
 Zj
 gc
 ZI
 ZI
-yw
-pU
+AP
+vn
 ZI
 fk
 cx
 xM
 ZI
 ZI
-yw
+AP
 zO
-pU
+vn
 ZI
 ZI
 Wb
 Wb
 ZI
 ZI
-yw
+AP
 zO
 NV
 KT
@@ -3442,39 +3442,39 @@ KT
 (39,1,1) = {"
 KT
 NV
-kK
-xq
+ti
+qI
 ZI
 ZI
 ZI
 ZI
-Av
-NS
-Ll
-xq
+Md
+JR
+MA
+qI
 ZI
 eP
 eP
 ZI
-Av
-NS
-Ll
-xq
+Md
+JR
+MA
+qI
 ZI
 ZI
 ZI
 ZI
-Av
-NS
+Md
+JR
 zO
-pU
+vn
 ZI
 DW
 pF
 mw
 sx
 ZI
-yw
+AP
 zO
 KT
 KT
@@ -3485,38 +3485,38 @@ KT
 KT
 jG
 zO
-kK
-hD
-hD
-hD
-hD
-jO
+ti
+Jj
+Jj
+Jj
+Jj
+sy
 ta
 ta
-vY
-hD
-hD
-hD
-hD
-NS
+Pw
+Jj
+Jj
+Jj
+Jj
+JR
 zO
 zO
-Ll
-cM
-pH
-oa
-hD
-NS
+MA
+hK
+wa
+JY
+Jj
+JR
 yH
 zO
-pU
+vn
 ZI
 LH
 mw
 DF
 Ro
 ZI
-yw
+AP
 KT
 KT
 KT
@@ -3551,14 +3551,14 @@ ta
 bL
 zO
 zO
-pU
+vn
 ZI
 eH
 ME
 eH
 eH
 ZI
-yw
+AP
 KT
 KT
 KT
@@ -3593,14 +3593,14 @@ pk
 pk
 bL
 uZ
-WP
+vy
 eH
 uO
 cH
 mw
 vm
 eH
-yw
+AP
 KT
 KT
 KT
@@ -3635,7 +3635,7 @@ pk
 pk
 pk
 Wc
-gW
+yS
 eH
 Re
 mw

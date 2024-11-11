@@ -45325,18 +45325,14 @@
 "xLr" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
-	id = "map_corpo";
-	explo_proof = 1;
+	id = "map_corpo2";
 	name = "Emergency Blast Door";
-	unacidable = 1;
 	use_power = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
-	id = "map_corpo2";
-	explo_proof = 1;
+	id = "map_corpo";
 	name = "Emergency Blast Door";
-	unacidable = 1;
 	use_power = 0
 	},
 /turf/open/floor/corsat/marked,
@@ -72523,9 +72519,9 @@ fwo
 hTd
 xZE
 xZE
-alI
-alI
-alI
+wUp
+wUp
+abo
 bel
 ftd
 gok
@@ -72728,10 +72724,10 @@ yld
 saC
 saC
 xZE
-alI
-alI
+wUp
+wUp
 gib
-alI
+abo
 btP
 eJR
 eJR
@@ -72934,7 +72930,7 @@ saC
 saC
 xZE
 xZE
-alI
+wUp
 caV
 pcV
 xLr
@@ -73140,10 +73136,10 @@ saC
 xZE
 xZE
 xZE
-alI
-alI
+wUp
+wUp
 tyb
-alI
+abo
 iJE
 gok
 rtX
@@ -73347,9 +73343,9 @@ xZE
 xZE
 xZE
 xZE
-alI
-alI
-alI
+wUp
+wUp
+abo
 rtX
 iJE
 rtX

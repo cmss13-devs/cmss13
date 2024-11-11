@@ -6,7 +6,6 @@
 	req_one_access = list()
 	listed_products = list()
 	hackable = TRUE
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_STOCK_DYNAMIC
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_squad_prep/populate_product_list(scale)
 	listed_products = list(

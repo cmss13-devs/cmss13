@@ -118,7 +118,7 @@
 		list("Box of M94 Marking Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
 		list("Box of M89 Signal Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares/signal, VENDOR_ITEM_REGULAR),
 		list("Box of High-Capacity Power Cells", 0, /obj/item/ammo_box/magazine/misc/power_cell, VENDOR_ITEM_REGULAR),
-		list("Nailgun Magazine Box (7x45mm)", floor(scale * 2), /obj/item/ammo_box/magazine/nailgun, VENDOR_ITEM_REGULAR)
+		list("Nailgun Magazine Box (7x45mm)", floor(scale * 2), /obj/item/ammo_box/magazine/nailgun, VENDOR_ITEM_REGULAR),
 		)
 
 //------------UPP AMMUNITION VENDOR---------------
@@ -133,7 +133,6 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo/populate_product_list(scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
-
 		list("Type 71 Magazine (5.45x39mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
@@ -196,7 +195,6 @@
 		list("Underbarrel Extinguisher", 4.5, /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flashlight Grip", 9.5, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 9.5, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
-
 		)
 
 //------------UNIFORM VENDOR---------------
@@ -231,8 +229,6 @@
 		list("Soldier Combat Gloves", 40, /obj/item/clothing/gloves/marine/veteran/upp, VENDOR_ITEM_REGULAR),
 
 		list("RADIO", -1, null, null),
-
-
 		list("Engineering/JTAC Encryption Key", 5, /obj/item/device/encryptionkey/upp/engi, VENDOR_ITEM_REGULAR),
 		list("Medical Encryption Key", 5, /obj/item/device/encryptionkey/upp/medic, VENDOR_ITEM_REGULAR),
 

@@ -104,6 +104,10 @@
 	name = "\improper M70B1 light flak jacket"
 	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
 	icon_state = "pilot_alt"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "pilot_alt"
@@ -367,6 +371,10 @@
 /obj/item/clothing/suit/storage/jacket/marine/reporter/blue
 	icon_state = "cc_blue"
 	item_state = "cc_blue"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+	)
 
 
 //==================Corporate Liaison==================\\

@@ -3,23 +3,26 @@
 /obj/effect/step_trigger
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
+	/// Proc ref for any method to check a trigger
+	var/can_trigger_proc_ref
 	invisibility = 101 // nope cant see this shit
 	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
 
-/obj/effect/step_trigger/proc/Trigger(atom/movable/A)
-	return 0
+/obj/effect/step_trigger/proc/trigger(atom/movable/stepped_by)
+	return
 
-/obj/effect/step_trigger/Crossed(H as mob|obj)
+/obj/effect/step_trigger/Crossed(atom/movable/crossed_by)
 	..()
-	if(!H)
+	if(!crossed_by)
 		return
-	if(istype(H, /mob/dead/observer) && !affect_ghosts)
+	if(istype(crossed_by, /mob/dead/observer) && !affect_ghosts)
 		return
-	Trigger(H)
-
-
+	/// If we have a proc to validate trigger, call it to see whether trigger can occur
+	if(can_trigger_proc_ref && !call(src, can_trigger_proc_ref)(crossed_by))
+		return
+	trigger(crossed_by)
 
 /* Tosses things in a certain direction */
 
@@ -32,7 +35,7 @@
 	var/nostop = 0 // if 1: will only be stopped by teleporters
 	var/list/affecting = list()
 
-/obj/effect/step_trigger/thrower/Trigger(atom/A)
+/obj/effect/step_trigger/thrower/trigger(atom/A)
 	if(!A || !istype(A, /atom/movable))
 		return
 
@@ -98,7 +101,7 @@
 /obj/effect/step_trigger/clone_cleaner
 	icon_state = "cleaner"
 
-/obj/effect/step_trigger/clone_cleaner/Trigger(atom/movable/A)
+/obj/effect/step_trigger/clone_cleaner/trigger(atom/movable/A)
 	if(A.clone)
 		A.destroy_clone()
 
@@ -110,7 +113,7 @@
 	var/vector_z = 0
 	affect_ghosts = 1
 
-/obj/effect/step_trigger/teleporter_vector/Trigger(atom/movable/A)
+/obj/effect/step_trigger/teleporter_vector/trigger(atom/movable/A)
 	if(A && A.loc && A.type != /atom/movable/clone) //Prevent clones from teleporting
 		var/lx = A.x
 		var/ly = A.y
@@ -150,7 +153,7 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A, teleportation_type)
+/obj/effect/step_trigger/teleporter/trigger(atom/movable/A, teleportation_type)
 	set waitfor = 0
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
@@ -188,7 +191,7 @@
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
-/obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
+/obj/effect/step_trigger/teleporter/yautja_ship/trigger(atom/movable/A)
 	var/turf/destination
 	if(length(GLOB.yautja_teleports)) //We have some possible locations.
 		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
@@ -207,7 +210,7 @@
 	var/teleport_y_offset = 0
 	var/teleport_z_offset = 0
 
-/obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
+/obj/effect/step_trigger/teleporter/random/trigger(atom/movable/A)
 	if(istype(A, /obj)) //mobs and objects only.
 		if(istype(A, /obj/effect)) return
 		qdel(A)

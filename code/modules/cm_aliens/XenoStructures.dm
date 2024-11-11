@@ -65,17 +65,17 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/hitby(AM as mob|obj)
+/obj/effect/alien/resin/hitby(atom/movable/launched, datum/launch_result/launch_result)
 	..()
-	if(istype(AM,/mob/living/carbon/xenomorph))
+	if(istype(launched,/mob/living/carbon/xenomorph))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [launched]."), \
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
-	if(ismob(AM))
+	if(ismob(launched))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		tforce = launched:throwforce
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
 	else
@@ -167,15 +167,15 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
-		return .
+		return
 	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
-		return .
+		return
 
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -216,7 +216,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/H = AM
 	if(!istype(H))
 		return
@@ -257,11 +257,8 @@
 	desc = "A layer of disgusting sleek slime."
 	icon_state = "fast"
 	health = HEALTH_RESIN_XENO_FAST
+	slow_amt = 0
 	var/speed_amt = 0.7
-
-/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
-	return
-
 
 //xeno marker :0)
 /obj/effect/alien/resin/marker
@@ -771,9 +768,9 @@
 	attackby(I, M)
 	return COMPONENT_CANCEL_ATTACKBY
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_hitby(turf/T, atom/movable/AM)
+/obj/effect/alien/resin/resin_pillar/proc/handle_hitby(turf/T, atom/movable/launched, datum/launch_result/launch_result)
 	SIGNAL_HANDLER
-	hitby(AM)
+	hitby(launched, launch_result)
 
 /obj/effect/alien/resin/resin_pillar/proc/handle_bullet(turf/T, obj/projectile/P)
 	SIGNAL_HANDLER
@@ -823,9 +820,9 @@
 
 //bullet_act() by default only pings, so it's not overridden here. it should not damage, only ping even post-brittle
 
-/obj/effect/alien/resin/resin_pillar/hitby(atom/movable/AM)
+/obj/effect/alien/resin/resin_pillar/hitby(atom/movable/launched, datum/launch_result/launch_result)
 	if(!brittle)
-		visible_message(SPAN_DANGER("[AM] harmlessly bounces off [src]!"))
+		visible_message(SPAN_DANGER("[launched] harmlessly bounces off [src]!"))
 		return
 	return ..()
 

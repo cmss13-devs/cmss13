@@ -6,6 +6,9 @@
 	#define COMPONENT_CANCEL_THROW (1<<0)
 ///from base of atom/movable/Moved(): (/atom, dir, forced)
 #define COMSIG_MOVABLE_MOVED "movable_moved"
+/// From base of atom/movable/Collide(): (atom/collide_target)
+#define COMSIG_MOVABLE_COLLIDE "movable_collide"
+	#define COMPONENT_SKIP_DEFAULT_COLLIDE (1<<0)
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
@@ -21,6 +24,15 @@
 
 #define COMSIG_MOVABLE_PULLED "movable_pulled"
 	#define COMPONENT_IGNORE_ANCHORED (1<<0)
+
+/// When an atom is launching from a non-launching state.
+/// From base of /datum/component/launching/RegisterWithParent().
+#define COMSIG_MOVABLE_LAUNCHING "movable_launching"
+/// When an atom is launching and has its original launch overridden by a new one.
+/// From base of /datum/component/launching/InheritComponent().
+#define COMSIG_MOVABLE_LAUNCHING_OVERRIDE "movable_launching_override"
+	/// Indicates a launch should be cancelled, applies for COMSIG_MOVABLE_LAUNCHING and COMSIG_MOVABLE_LAUNCHING_OVERRIDE.
+	#define COMPONENT_CANCEL_LAUNCH (1<<0)
 
 #define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
 	#define COMPONENT_LAUNCH_CANCEL (1<<0)

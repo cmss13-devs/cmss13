@@ -156,26 +156,39 @@
 /obj/item/explosive/grenade/high_explosive/airburst/prime()
 // We don't prime, we use launch_impact.
 
-/obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	var/turf/hit_turf = hit_atom
+	// Not rebounding and either an object or a dense turf
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && (isobj(hit_atom) || isturf(hit_turf) && hit_turf.density))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
-		detonate = FALSE
-	if(active && detonate) // Active, and we reached our destination.
-		if(ismob(hit_atom))
-			var/mob/M = hit_atom
-			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
-			M.apply_effect(3.0, SUPERSLOW)
-			shrapnel_count -= direct_hit_shrapnel
-		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-		apply_explosion_overlay()
-		if(explosion_power)
-			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
-		qdel(src)
+
+	if (!active || !detonate)
+		return
+
+	// Active, and we reached our destination.
+	if (ismob(hit_atom))
+		var/mob/M = hit_atom
+		create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
+		M.apply_effect(3.0, SUPERSLOW)
+		shrapnel_count -= direct_hit_shrapnel
+	var/datum/callback/detonate_callback = CALLBACK(src, PROC_REF(detonate))
+	var/delay = 0
+	if (shrapnel_count)
+		create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
+		delay = 0.2 SECONDS
+
+	if (delay)
+		addtimer(detonate_callback, delay)
+	else
+		detonate_callback.Invoke()
+
+/obj/item/explosive/grenade/high_explosive/airburst/proc/detonate()
+	apply_explosion_overlay()
+	if(explosion_power)
+		cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+	qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell
 	name = "\improper M74 AGM-H 40mm Hornet Shell"
@@ -221,26 +234,27 @@
 /obj/item/explosive/grenade/incendiary/impact/prime()
 	return
 
-/obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/detonate = TRUE
-	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	var/turf/hit_turf = hit_atom
+	// Not rebounding and either an object or a dense turf
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && (isobj(hit_atom) || isturf(hit_turf) && hit_turf.density))
 		detonate = FALSE
-	if(isturf(hit_atom))
-		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
-			detonate = FALSE
-	if(active && detonate) // Active, and we reached our destination.
-		var/angle = dir2angle(last_move_dir)
-		var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
-		if(target)
-			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
-		else
-			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
-			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
-		playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-		qdel(src)
+
+	if (!active || !detonate)
+		return
+
+	// Active, and we reached our destination.
+	var/angle = dir2angle(last_move_dir)
+	var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
+	if(target)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+	else
+		//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+	playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+	qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell
 	name = "\improper 40mm HE grenade"
@@ -257,17 +271,21 @@
 /obj/item/explosive/grenade/high_explosive/impact/prime()
 // We don't prime, we use launch_impact.
 
-/obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	var/turf/hit_turf = hit_atom
+	// Not rebounding and either an object or a dense turf
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && (isobj(hit_atom) || isturf(hit_turf) && hit_turf.density))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
-		detonate = FALSE
-	if(active && detonate) // Active, and we reached our destination.
-		if(explosion_power)
-			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
-		qdel(src)
+
+	if (!active || !detonate)
+		return
+
+	// Active, and we reached our destination.
+	if(explosion_power)
+		cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+	qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/airburst/buckshot
 	name = "\improper 40mm Buckshot Shell"
@@ -364,28 +382,29 @@
 
 /obj/item/explosive/grenade/incendiary/airburst/prime()
 
-/obj/item/explosive/grenade/incendiary/airburst/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/incendiary/airburst/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/detonate = TRUE
-	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	var/turf/hit_turf = hit_atom
+	// Not rebounding and either an object or a dense turf
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && (isobj(hit_atom) || isturf(hit_turf) && hit_turf.density))
 		detonate = FALSE
-	if(isturf(hit_atom))
-		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
-			detonate = FALSE
-	if(active && detonate) // Active, and we reached our destination.
-		var/angle = dir2angle(last_move_dir)
-		var/turf/target = locate(src.loc.x + sin(angle)*radius, src.loc.y + cos(angle)*radius, src.loc.z)
-		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, cause_data, FALSE, 0)
-		if(target)
-			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
-		else
-			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
-			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
-		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-		qdel(src)
+
+	if(!active || !detonate)
+		return
+
+	// Active, and we reached our destination.
+	var/angle = dir2angle(last_move_dir)
+	var/turf/target = locate(src.loc.x + sin(angle)*radius, src.loc.y + cos(angle)*radius, src.loc.z)
+	if(shrapnel_count)
+		create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, cause_data, FALSE, 0)
+	if(target)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+	else
+		//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+	qdel(src)
 
 /*
 //================================================
@@ -714,17 +733,14 @@
 /obj/item/explosive/grenade/smokebomb/airburst/prime()
 // We don't prime, we use launch_impact.
 
-/obj/item/explosive/grenade/smokebomb/airburst/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/smokebomb/airburst/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	..()
 	var/detonate = TRUE
-	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	var/turf/hit_turf = hit_atom
+	// Not rebounding and either an object or a dense turf, then detonate
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && (isobj(hit_atom) || isturf(hit_turf) && hit_turf.density))
 		detonate = FALSE
-	if(isturf(hit_atom))
-		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
-			detonate = FALSE
-	if(active && detonate) // Active, and we reached our destination.
+	if (active && detonate) // Active, and we reached our destination.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 		smoke.set_up(radius = smoke_radius, c = 0, loca = get_turf(src), direct = null, smoke_time = 6)
 		smoke.start()
@@ -764,7 +780,7 @@
 	throw_min = initial(throw_min)
 	ram_distance = initial(ram_distance)
 
-/obj/item/explosive/grenade/slug/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/slug/launch_impact(atom/hit_atom, datum/launch_result/launch_result)
 	if(!active)
 		return
 	if(ismob(hit_atom))

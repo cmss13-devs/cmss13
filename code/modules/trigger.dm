@@ -5,8 +5,8 @@
 /obj/effect/step_trigger/message/memorial
 	message = "Please stand silently for a moment of reflection and respect. "
 	once = 0
-	
-/obj/effect/step_trigger/message/Trigger(mob/M)
+
+/obj/effect/step_trigger/message/trigger(mob/M)
 	if(!istype(M) || !M)
 		return
 	if(M.client)
@@ -23,7 +23,7 @@
 	var/entersmoke = 0
 	var/exitsmoke = 0
 
-/obj/effect/step_trigger/teleport_fancy/Trigger(mob/M)
+/obj/effect/step_trigger/teleport_fancy/trigger(mob/M)
 	var/dest = locate(locationx, locationy, z)
 	if(!M || !istype(M))
 		return

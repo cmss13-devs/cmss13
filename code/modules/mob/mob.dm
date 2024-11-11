@@ -441,13 +441,13 @@
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if ( QDELETED(AM) || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
-	if (AM.anchored || AM.throwing)
+	if (AM.anchored || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
-	if(throwing || is_mob_incapacitated())
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED) || is_mob_incapacitated())
 		return
 
 	if(pulling)

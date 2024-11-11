@@ -49,6 +49,7 @@
 #define LAZYSET(L, A, I) if(!L) { L = list(); } L[A] = I;
 // Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
+#define LAZYLAST(L) (length(L) ? L[length(L)] : null)
 // Reads the length of L, returning 0 if null
 #define LAZYLEN(L) length(L)
 // Safely checks if I is in L
@@ -75,6 +76,16 @@
 
 // Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
 #define ADD_SORTED(list, A, cmp_proc) if(!length(list)) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
+
+/// Returns the value if it is not null, default value otherwise
+#define VAL_OR_DEFAULT(val, default) (!QDELETED(val) ? val : default)
+
+/// If `proc_ref` exists (and assuming it is an actual proc ref), call proc `proc_ref` on `caller` with arguments `args`.
+/// `args` supports named arguments.
+#define CALL_PROC_REF(caller, proc_ref, args...) (proc_ref && call(caller, proc_ref)(args))
+/// If `proc_ref` exists (and assuming it is an actual proc ref), call proc `proc_ref` with arguments `args`.
+/// `args` supports named arguments.
+#define CALL_GLOBAL_PROC_REF(proc_ref, args...) (proc_ref && call(proc_ref)(args))
 
 //Currently used in SDQL2 stuff
 #define send_output(target, msg, control) target << output(msg, control)

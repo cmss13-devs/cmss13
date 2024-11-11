@@ -490,6 +490,7 @@
 
 /// Deletes dummies coming onto it, purely and simply
 /obj/effect/landmark/tutorial/reqs_line_cleaner/Crossed(atom/movable/passer)
+	..()
 	if(istype(passer, /mob/living/carbon/human))
 		qdel(passer)
 

@@ -108,7 +108,7 @@
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
-/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
+/obj/effect/step_trigger/hell_hound_blocker/trigger(mob/living/carbon/xenomorph/hellhound/H)
 	if(istype(H)) H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()

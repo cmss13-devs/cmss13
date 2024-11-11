@@ -51,6 +51,13 @@
 	Draw()
 	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(origin, COMSIG_PARENT_QDELETING, PROC_REF(on_reference_destroyed))
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_reference_destroyed))
+
+/// Proc for beam to delete itself when any of its reference points are deleted
+/datum/beam/proc/on_reference_destroyed()
+	SIGNAL_HANDLER
+	qdel(src)
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -61,6 +68,7 @@
  * direction: in what direction mover moved from.
  */
 /datum/beam/proc/redrawing(atom/movable/mover, atom/oldloc, direction)
+	// TODO: make this a subsystem, redrawing cannot sleep
 	if(origin && target && get_dist(origin,target)<max_distance && origin.z == target.z)
 		QDEL_LIST(elements)
 		Draw()

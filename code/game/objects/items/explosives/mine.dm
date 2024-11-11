@@ -282,6 +282,7 @@
 	return
 
 /obj/effect/mine_tripwire/Crossed(atom/movable/AM)
+	..()
 	if(!linked_claymore)
 		qdel(src)
 		return

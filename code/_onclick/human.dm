@@ -91,6 +91,7 @@
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU
 
+/// Proc for when clicked by a mob unarmed
 /atom/proc/attack_hand(mob/user)
 	return
 

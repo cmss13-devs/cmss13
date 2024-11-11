@@ -16,8 +16,9 @@
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	can_trigger_proc_ref = TYPE_PROC_REF(/obj/effect/step_trigger/ares_alert, can_trigger)
 
-/obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
+/obj/effect/step_trigger/ares_alert/proc/can_trigger(mob/living/passer)
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		return FALSE
 	if(!passer)
@@ -38,9 +39,7 @@
 			for(var/tag in pass_accesses)
 				if(tag in card.access)
 					return FALSE
-	Trigger(passer)
 	return TRUE
-
 
 /obj/effect/step_trigger/ares_alert/Initialize(mapload, ...)
 	link_systems(override = FALSE)
@@ -63,7 +62,7 @@
 		link = null
 
 
-/obj/effect/step_trigger/ares_alert/Trigger(mob/living/passer)
+/obj/effect/step_trigger/ares_alert/trigger(mob/living/passer)
 	var/broadcast_message = alert_message
 	if(area_based)
 		var/area_name = get_area_name(src, TRUE)
@@ -111,15 +110,16 @@
 
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
+	..()
 	if(isobserver(passer) || isxeno(passer))
-		return FALSE
+		return
 	if(!passer)
-		return FALSE
+		return
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))//Can't be seen/detected to trigger alert.
-		return FALSE
+		return
 	var/area/pass_area = get_area(get_step(passer, passer.dir))
 	if(istype(pass_area, /area/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
-		return FALSE
+		return
 	var/obj/item/card/id/idcard
 	var/check_contents = TRUE
 	if(ishuman(passer))
@@ -140,16 +140,16 @@
 				if(idcard)
 					break
 	if(!istype(idcard) && ismob(passer))
-		Trigger(passer, failure = TRUE)
-		return FALSE
+		trigger(passer, failure = TRUE)
+		return
 	if(!(ACCESS_MARINE_AI_TEMP in idcard.access))//No temp access, don't care
-		return FALSE
+		return
 	if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))//Permanent access prevents loss of temporary
-		return FALSE
-	Trigger(passer, idcard)
-	return TRUE
+		return
+	trigger(passer, idcard)
+	return
 
-/obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
+/obj/effect/step_trigger/ares_alert/access_control/trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
 	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link

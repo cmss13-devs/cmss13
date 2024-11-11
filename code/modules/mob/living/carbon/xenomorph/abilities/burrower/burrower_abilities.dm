@@ -27,5 +27,5 @@
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 30 SECONDS
+	xeno_cooldown = 45 SECONDS
 	plasma_cost = 100

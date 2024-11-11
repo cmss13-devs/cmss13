@@ -84,7 +84,7 @@
 	timeofdeath = world.time
 	life_time_total = world.time - life_time_start
 	if(mind)
-		mind?.store_memory("Time of death: [worldtime2text()]", 0)
+		mind.store_memory("Time of death: [worldtime2text()]", 0)
 	GLOB.alive_mob_list -= src
 	GLOB.dead_mob_list += src
 

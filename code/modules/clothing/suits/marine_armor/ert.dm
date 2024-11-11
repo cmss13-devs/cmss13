@@ -5,6 +5,10 @@
 	name = "\improper SOF Armor"
 	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."
 	icon_state = "marsoc"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
@@ -30,7 +34,7 @@
 	icon_state = "pmc_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
@@ -187,6 +191,10 @@
 	name = "\improper H1 Iron Bears vest"
 	desc = "A protective vest worn by Iron Bears mercenaries."
 	icon_state = "bear_armor"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -634,8 +642,11 @@
 /obj/item/clothing/suit/storage/marine/M3G/hefa
 	name = "\improper HEFA Knight armor"
 	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight."
-	specialty = "HEFA Knight"
 	icon_state = "hefadier"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+	)
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_item = NO_CRYO_STORE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY

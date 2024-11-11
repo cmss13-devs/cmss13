@@ -1267,6 +1267,7 @@
 	name = "Spaghetti"
 	desc = "A bundle of raw spaghetti."
 	icon_state = "spagetti"
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	filling_color = "#EDDD00"
 
 /obj/item/reagent_container/food/snacks/spagetti/Initialize()

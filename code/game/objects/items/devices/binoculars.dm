@@ -23,8 +23,6 @@
 	var/hvh_tile_offset = 6 //same as miniscopes
 	var/hvh_zoom_viewsize = 7
 
-	//matter = list("metal" = 50,"glass" = 50)
-
 /obj/item/device/binoculars/Initialize()
 	. = ..()
 	if(!uses_camo)

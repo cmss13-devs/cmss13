@@ -487,6 +487,10 @@
 	name = "\improper M3-VL pattern ballistics vest"
 	desc = "Up until 2182 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-L shell is the result of a 6-year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel."
 	icon_state = "VL"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -506,6 +510,10 @@
 	name = "\improper M3-VL pattern flak vest"
 	desc = "A combination of the standard non-combat M3-VL ballistics vest and M70 flak jacket, this piece of armor has been distributed to dropship crew to keep them safe from threats external and internal..."
 	icon_state = "VL_FLAK"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	storage_slots = 2
 
 /obj/item/clothing/suit/storage/marine/light/synvest
@@ -530,22 +538,50 @@
 
 /obj/item/clothing/suit/storage/marine/light/synvest/grey
 	icon_state = "VL_syn"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/light/synvest/jungle
 	icon_state = "VL_syn_camo"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/light/synvest/snow
-	icon_state = "s_VL_syn_camo"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	icon_state = "VL_syn_camo"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/light/synvest/desert
-	icon_state = "d_VL_syn_camo"
+	icon_state = "VL_syn_camo"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/light/synvest/dgrey
-	icon_state = "c_VL_syn_camo"
+	icon_state = "VL_syn_camo"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/light/recon
@@ -699,5 +735,9 @@
 	name = "press body armor"
 	desc = "Body armor used by war correspondents in battles and wars across the universe."
 	icon_state = "cc_armor"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 

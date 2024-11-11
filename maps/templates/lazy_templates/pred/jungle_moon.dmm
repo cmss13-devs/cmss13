@@ -511,7 +511,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
 "kC" = (
-/turf/open/gm/dirtgrassborder/desert3,
+/turf/open/gm/dirt/desert3,
 /area/yautja_grounds/south)
 "kJ" = (
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
@@ -563,9 +563,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
-"lj" = (
-/turf/open/gm/dirtgrassborder/desert1,
-/area/yautja_grounds/jungle/west)
 "lr" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/temple/entrance)
@@ -765,10 +762,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
-"pJ" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/desert,
-/area/yautja_grounds/jungle)
 "pK" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines,
@@ -833,7 +826,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/south)
 "qF" = (
-/turf/open/gm/dirtgrassborder/desert0,
+/turf/open/gm/dirt/desert1,
 /area/yautja_grounds/jungle/west)
 "qI" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -958,7 +951,7 @@
 /area/yautja_grounds/jungle/east)
 "tw" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/desert1,
+/turf/open/gm/dirt/desert1,
 /area/yautja_grounds/jungle)
 "tC" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1166,7 +1159,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/yautja_grounds/south)
 "wG" = (
-/turf/open/gm/dirtgrassborder/desert2,
+/turf/open/gm/dirt/desert2,
 /area/yautja_grounds/jungle)
 "wI" = (
 /obj/structure/flora/jungle/vines{
@@ -1278,7 +1271,7 @@
 /turf/open/floor/sandstone/runed,
 /area/yautja_grounds/south)
 "yJ" = (
-/turf/open/gm/dirtgrassborder/desert_dug,
+/turf/open/gm/dirt/desert_dug,
 /area/yautja_grounds/south)
 "yM" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1529,7 +1522,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/north)
 "DG" = (
-/turf/open/gm/dirtgrassborder/desert_dug,
+/turf/open/gm/dirt/desert_dug,
 /area/yautja_grounds/jungle)
 "DK" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -1692,12 +1685,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
-"GO" = (
-/turf/open/gm/dirtgrassborder/desert1,
-/area/yautja_grounds/south)
-"Hc" = (
-/turf/open/gm/dirtgrassborder/desert,
-/area/yautja_grounds/jungle)
 "HA" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -1807,7 +1794,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
 "Jt" = (
-/turf/open/gm/dirtgrassborder/desert3,
+/turf/open/gm/dirt/desert3,
 /area/yautja_grounds/jungle/west)
 "Jv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1907,11 +1894,11 @@
 /turf/open/gm/dirt,
 /area/yautja_grounds/south)
 "KD" = (
-/turf/open/gm/dirtgrassborder/desert0,
+/turf/open/gm/dirt/desert1,
 /area/yautja_grounds/south)
 "KE" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/desert2,
+/turf/open/gm/dirt/desert2,
 /area/yautja_grounds/jungle)
 "KP" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -2339,7 +2326,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
 "ST" = (
-/turf/open/gm/dirtgrassborder/desert2,
+/turf/open/gm/dirt/desert2,
 /area/yautja_grounds/jungle/west)
 "SU" = (
 /turf/open/floor/engine/cult,
@@ -4537,7 +4524,7 @@ eY
 XC
 XC
 XC
-lj
+qF
 XC
 XC
 XC
@@ -6137,7 +6124,7 @@ ju
 ju
 zd
 zd
-GO
+KD
 zd
 zd
 zd
@@ -7118,7 +7105,7 @@ wG
 ju
 ju
 ju
-Hc
+ju
 ju
 ju
 Th
@@ -7217,7 +7204,7 @@ ju
 ju
 ju
 ju
-pJ
+KE
 ju
 ju
 ju

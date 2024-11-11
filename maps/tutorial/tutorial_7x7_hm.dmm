@@ -1,0 +1,125 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial)
+"e" = (
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/misc/tutorial)
+"f" = (
+/obj/structure/machinery/optable{
+	anes_tank = 0
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"g" = (
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/misc/tutorial)
+"i" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	locked = 1;
+	lights = 0;
+	not_weldable = 1;
+	heavy = 1;
+	needs_power = 0;
+	use_power = 0;
+	breakable = 0;
+	unslashable = 1;
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial)
+"o" = (
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"s" = (
+/turf/open/floor/almayer/sterile_green_corner,
+/area/misc/tutorial)
+"u" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/misc/tutorial)
+"z" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial)
+"B" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/misc/tutorial)
+"F" = (
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/misc/tutorial)
+"R" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/misc/tutorial)
+"Y" = (
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/misc/tutorial)
+"Z" = (
+/turf/open/floor/almayer/sterile_green_side,
+/area/misc/tutorial)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+B
+Y
+Y
+Y
+R
+a
+"}
+(3,1,1) = {"
+a
+u
+z
+o
+z
+Z
+a
+"}
+(4,1,1) = {"
+a
+g
+o
+f
+o
+Z
+a
+"}
+(5,1,1) = {"
+a
+g
+z
+o
+z
+Z
+a
+"}
+(6,1,1) = {"
+a
+s
+e
+e
+e
+F
+a
+"}
+(7,1,1) = {"
+a
+a
+i
+a
+i
+a
+a
+"}

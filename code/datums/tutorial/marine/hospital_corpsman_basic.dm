@@ -3,9 +3,12 @@
 	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
 	//required_tutorial = "marine_basic_1"
-	tutorial_template = /datum/map_template/tutorial/s7x7
+	tutorial_template = /datum/map_template/tutorial/s7x7/hm
+	var/clothing_items_to_vend = 4
 
 // ------------ CONTENTS ------------ //
+//
+// Section 0 - Equipment and You
 //
 // Section 1 - Basic Damage Treatment
 // 1.1 Brute Damage
@@ -27,12 +30,49 @@
 
 	init_mob()
 	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
-	addtimer(CALLBACK(src, PROC_REF(scanner)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/uniform()
+
+	message_to_player("<b>Section 0 - Equipment and You</b>.")
+
+	message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on...")
+	message_to_player("Stroll on over to the outlined vendor and vend everything inside.")
+	update_objective("Vend everything inside the ColMarTech Automated Closet.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic, medical_vendor)
+	add_highlight(medical_vendor, COLOR_GREEN)
+	medical_vendor.req_access = list()
+	RegisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(uniform_vend))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/uniform_vend(datum/source)
+	SIGNAL_HANDLER
+
+	clothing_items_to_vend--
+	if(clothing_items_to_vend <= 0)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic, medical_vendor)
+		UnregisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
+		medical_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
+		remove_highlight(medical_vendor)
+
+		var/obj/item/storage/belt/medical/lifesaver/medbelt = locate(/obj/item/storage/belt/medical/lifesaver) in tutorial_mob.contents
+		add_to_tracking_atoms(medbelt)
+		add_highlight(medbelt, COLOR_GREEN)
+
+		message_to_player("Well done. This comprises the most basic gear available to a Marine Hospital Corpsman")
+		message_to_player("Alongside your standard uniform, you are also provided a <b>M276 Lifesaver Bag</b>, which you are currently wearing on your belt slot.")
+		message_to_player("Although yours is empty at the moment, the <b>M276 Lifesaver Bag</b> typically holds a wide range of essential medical gear, which you will be introduced to as you progress this tutorial.")
+
+		addtimer(CALLBACK(src, PROC_REF(scanner)), 13 SECONDS)
+
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner()
 	SIGNAL_HANDLER
 
-	message_to_player("First things first, you should get to know your new best friend, the <b>Health Analyzer</b>.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_highlight(medbelt)
+
+	message_to_player("On the topic of introductions! You should get to know your new best friend, the <b>Health Analyzer</b>.")
 	var/obj/item/device/healthanalyzer/healthanalyzer = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
@@ -89,11 +129,12 @@
 
 	var/mob/living/carbon/human/human_dummy = new(loc_from_corner(2,2))
 	add_to_tracking_atoms(human_dummy)
+	//human_dummy.KnockDown(-1)
 	human_dummy.apply_damage(5, BRUTE, "chest")
 	message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(human_dummy, COLOR_GREEN)
 	update_objective("Click on the Dummy with your Health Analyzer")
-	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(scanner_3))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(brute_tutorial_3_pre))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_3(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
@@ -107,16 +148,48 @@
 	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
 	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 11 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
+/obj/item/storage/pill_bottle/tutorial
+	name = "\improper Bicaridine pill bottle"
+	icon_state = "pill_canister11"
+	maptext_label = "Bi"
+	max_storage_space = 1
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
-	message_to_player("Click on the <b>Bicaridine pill</b> with an empty hand to pick it up. Then click on the Dummy while holding it and standing next to them to medicate them.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+
+	var/obj/item/storage/pill_bottle/bica = new(medbelt)
+	medbelt.update_icon()
+	add_to_tracking_atoms(bica)
+	bica.name = "\improper Bicaridine pill bottle"
+	bica.icon_state = "pill_canister11"
+	bica.maptext_label = "Bi"
+	bica.maptext = SPAN_LANGCHAT("Bi")
+	bica.max_storage_space = 1
+	bica.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/bicaridine/pill = new(bica)
+
+	add_to_tracking_atoms(pill)
+
+
+	message_to_player("A <b>Bicaridine Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Bicaridine Pill Bottle</b> to draw a pill.")
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/bicaridine, pill)
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>Bicaridine Pill</b> and standing next to them to medicate it.")
 	message_to_player("Feeding someone a pill takes concentration, and comes with a slight delay. Neither of you should move while the blue circle is over your head, or the process will be disrupted, and you will have to try again.")
 	update_objective("Feed the Dummy the Bicaridine pill.")
-	var/obj/item/reagent_container/pill/bicaridine/pill = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(pill)
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(bica, COLOR_GREEN)
 	add_highlight(pill, COLOR_GREEN)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(brute_pill_fed_reject))
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
@@ -125,6 +198,10 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed_reject()
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	remove_highlight(bica)
+	remove_from_tracking_atoms(bica)
+	qdel(bica)
 	message_to_player("Dont feed yourself the pill, try again.")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3)), 2 SECONDS)
 
@@ -138,6 +215,13 @@
 
 	message_to_player("When administered in pill form, chemicals take a few seconds to be digested before they can enter the patients bloodstream, and heal damage.")
 	message_to_player("Medications administered when a patient is dead will not heal damage until the patient has been revived.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_highlight(bica)
+	remove_highlight(medbelt)
+	remove_from_tracking_atoms(bica)
+	qdel(bica)
 
 	update_objective("")
 
@@ -874,4 +958,5 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_basic/init_map()
-	new /obj/structure/surface/table/almayer(loc_from_corner(0, 4))
+	var/obj/structure/machinery/cm_vending/clothing/tutorial/medic/medical_vendor = new(loc_from_corner(4, 4))
+	add_to_tracking_atoms(medical_vendor)

@@ -28,3 +28,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tutorial, list(
 
 /obj/structure/machinery/cm_vending/clothing/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_tutorial
+
+GLOBAL_LIST_INIT(cm_vending_clothing_medic_tutorial, list(
+		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine/medic, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+
+		list("BELT (CHOOSE 1)", 0, null, null, null),
+		list("M276 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+
+	))
+
+/obj/structure/machinery/cm_vending/clothing/tutorial/medic
+	name = "\improper ColMarTech Squad Medical Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment."
+
+/obj/structure/machinery/cm_vending/clothing/tutorial/medic/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_medic_tutorial

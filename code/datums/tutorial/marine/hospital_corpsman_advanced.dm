@@ -39,6 +39,39 @@
 
 	tutorial_end_in(15 SECONDS)
 
+
+
+// TO DO LIST
+//
+// Section 0 - More Introductions
+// 0.1 Lifesaver Bag
+// 0.2 Learning Your Kit(?)
+//
+// Section 1 - Advanced Damage Treatment
+// 1.1 Oxygen Damage Treatment
+// 1.2 Stabilizing Types of Organ Damage
+//
+// Section 2 - Revivals
+// 2.1 Defib
+// 2.2 Revival Mix and Epi
+// 2.3 CPR
+// 2.4 Emergency Revivals
+// 2.5 Lost Causes
+//
+// Section 3 - Field Surgery
+// 3.1 Surgical Damage Treatment
+// 3.2 Internal Bleeding
+// 3.3 Synthetic Limb Repair
+//
+// Section 4 - Specialized Treatments
+// 4.1 Medical Evacuations, Stasis
+// 4.2 Genetic Damage
+// 4.3 Extreme Overdoses
+//
+
+
+
+
 /datum/tutorial/marine/hospital_corpsman_advanced/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)

@@ -420,10 +420,10 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	return "Populated"
 
 /datum/yautja_panel/proc/populate_clan_data()
-	clan_name_to_index = list("Clanless" = 0)
-	clan_index_to_id = list("0" = null)
+	clan_name_to_index = list("Clanless" = 1)
+	clan_index_to_id = list("1" = null)
 	var/list/clan_names = list("Clanless")
-	var/index = 1
+	var/index = 2
 	var/list/data = list()
 	data["clans"] = list()
 

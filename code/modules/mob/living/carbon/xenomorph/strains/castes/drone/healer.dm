@@ -51,7 +51,6 @@
 /datum/action/xeno_action/activable/apply_salve
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
-	ability_name = "Apply Resin Salve"
 	var/health_transfer_amount = 100
 	var/max_range = 1
 	var/damage_taken_mod = 0.75
@@ -207,7 +206,6 @@
 /datum/action/xeno_action/activable/healer_sacrifice
 	name = "Sacrifice"
 	action_icon_state = "screech"
-	ability_name = "sacrifice"
 	var/max_range = 1
 	var/transfer_mod = 0.75 // only transfers 75% of current healer's health
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice

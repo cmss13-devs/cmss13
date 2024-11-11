@@ -893,17 +893,22 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		return
 	var/found_handful
+	var/ammo_type = get_ammo_type_chambered(user)
 	for(var/obj/item/ammo_magazine/handful/H in user.loc)
-		if(H.default_ammo == in_chamber.ammo.type && H.caliber == caliber && H.current_rounds < H.max_rounds)
+		if(H.default_ammo == ammo_type && H.caliber == caliber && H.current_rounds < H.max_rounds)
 			found_handful = TRUE
 			H.current_rounds++
 			H.update_icon()
 			break
 	if(!found_handful)
 		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
+		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
+
+//Funny fix for smatrgun
+/obj/item/weapon/gun/proc/get_ammo_type_chambered(mob/user)
+	return in_chamber.ammo.type
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
@@ -1269,7 +1274,7 @@ and you're good to go.
 			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
 			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return TRUE

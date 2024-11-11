@@ -4827,7 +4827,7 @@
 /area/prison/research/RD)
 "aqF" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
 	dir = 4
 	},
@@ -5144,9 +5144,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hanger/research)
 "arI" = (
@@ -5519,7 +5517,7 @@
 /area/prison/medbay)
 "ate" = (
 /obj/structure/machinery/power/apc/no_power/south,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hanger/research)
 "atf" = (
@@ -9236,9 +9234,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
 "aHV" = (
@@ -9342,9 +9338,7 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "aIv" = (
@@ -9352,9 +9346,7 @@
 /area/prison/residential/central)
 "aIw" = (
 /obj/structure/pipes/vents/scrubber,
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "aIx" = (
@@ -10067,9 +10059,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/n)
 "aLq" = (
@@ -14041,9 +14031,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "baX" = (
@@ -14849,9 +14837,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/canteen)
 "beg" = (
@@ -16117,9 +16103,7 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "biI" = (
@@ -16408,9 +16392,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/storage/vip)
 "bka" = (
@@ -19583,9 +19565,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hallway/central/west)
 "bxG" = (
@@ -21999,9 +21979,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.1
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "bHx" = (
@@ -32840,13 +32818,11 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/canteen)
 "cSA" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "cWg" = (
@@ -32974,7 +32950,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/storage/vip)
 "dqf" = (
@@ -32990,9 +32966,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "dxF" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkpurplefull2,
 /area/prison/hanger/research)
 "dyt" = (
@@ -33009,7 +32983,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/north)
 "dzH" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/prison/canteen)
 "dAz" = (
@@ -33441,9 +33415,7 @@
 /turf/open/floor/prison/redfull,
 /area/prison/cellblock/highsec/north/south)
 "fyi" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "fCr" = (
@@ -34134,7 +34106,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/prison/cellblock/mediumsec/north)
 "hXJ" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/prison/canteen)
 "hXW" = (
@@ -34230,9 +34202,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/east)
 "iqo" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/prison/canteen)
 "irh" = (
@@ -34437,9 +34407,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "jfe" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/darkpurple2/east,
 /area/prison/hanger/research)
 "jfp" = (
@@ -34469,9 +34437,7 @@
 /area/prison/cellblock/mediumsec/south)
 "jmr" = (
 /obj/structure/largecrate/random/barrel/red,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "jmY" = (
@@ -34496,7 +34462,7 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "joJ" = (
@@ -34612,9 +34578,7 @@
 /area/prison/storage/medsec)
 "jHy" = (
 /obj/structure/largecrate/random/barrel/white,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "jJE" = (
@@ -34770,9 +34734,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/east)
 "koj" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "kpc" = (
@@ -35448,9 +35410,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "nkB" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkpurple2/east,
 /area/prison/hanger/research)
 "nmr" = (
@@ -35601,7 +35561,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "nSK" = (
@@ -35665,9 +35625,7 @@
 /turf/open/floor/prison/yellow/east,
 /area/prison/cellblock/mediumsec/south)
 "ocS" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "odp" = (
@@ -35716,9 +35674,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/maintenance/residential/access/south)
 "onp" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/darkpurplefull2,
 /area/prison/hanger/research)
 "onA" = (
@@ -35777,9 +35733,7 @@
 /turf/open/floor/prison/damaged2/southwest,
 /area/prison/storage/medsec)
 "oyQ" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/canteen)
 "oyZ" = (
@@ -35843,9 +35797,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/security)
 "oJi" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/darkpurplefull2,
 /area/prison/hanger/research)
 "oLL" = (
@@ -35891,9 +35843,7 @@
 /turf/open/floor/prison/yellow/west,
 /area/prison/cellblock/mediumsec/north)
 "oTg" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "oTO" = (
@@ -35992,9 +35942,7 @@
 /area/prison/residential/south)
 "pmO" = (
 /obj/structure/largecrate/random/case/small,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "pnT" = (
@@ -36220,7 +36168,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hanger/research)
 "qjI" = (
@@ -36256,9 +36204,7 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/prison/hanger/research)
 "qqm" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "qqn" = (
@@ -36279,7 +36225,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "qwg" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/prison/hanger/research)
 "qxY" = (
@@ -36465,9 +36411,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "rxa" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
 "rxG" = (
@@ -36488,9 +36432,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/hallway/central/west)
 "rFO" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/prison/canteen)
 "rKA" = (
@@ -36627,9 +36569,7 @@
 /area/prison/cellblock/highsec/north/south)
 "sxx" = (
 /obj/structure/machinery/light,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/south)
 "sye" = (
@@ -36649,7 +36589,7 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "sEd" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "sGc" = (
@@ -36675,9 +36615,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "sIA" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkpurple2/east,
 /area/prison/hanger/research)
 "sLI" = (
@@ -36788,9 +36726,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "thZ" = (
@@ -36843,7 +36779,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/hallway/central/west)
 "tuQ" = (
@@ -36878,7 +36814,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/n)
 "tzm" = (
@@ -37399,9 +37335,7 @@
 /area/prison/hanger/research)
 "vGg" = (
 /obj/structure/largecrate/random,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/west)
 "vHX" = (
@@ -37779,7 +37713,7 @@
 /turf/open/floor/wood,
 /area/prison/parole/protective_custody)
 "xIA" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/canteen)
 "xKa" = (
@@ -37796,9 +37730,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
 "xNi" = (
@@ -37853,9 +37785,7 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "yaY" = (

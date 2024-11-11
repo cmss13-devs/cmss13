@@ -115,7 +115,7 @@
 
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno?.iff_tag.faction_groups))
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
 			var/name = "Unidentified Lifesigns"
 			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
@@ -209,6 +209,7 @@
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
+	var/faction = FACTION_MARINE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -331,6 +332,9 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_LANDED)
 
+/obj/docking_port/stationary/marine_dropship/upp
+	faction = FACTION_UPP
+
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
@@ -342,3 +346,5 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+

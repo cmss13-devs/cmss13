@@ -52,6 +52,13 @@
 		/obj/item/ammo_magazine/minigun,
 	)
 
+/obj/effect/essentials_set/upp_heavy_pkp
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+	)
+
 /obj/effect/essentials_set/leader/upp
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,

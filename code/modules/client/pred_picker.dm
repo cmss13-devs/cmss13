@@ -19,6 +19,8 @@
 /datum/pred_picker/ui_static_data(mob/user)
 	. = ..()
 
+	.["can_use_legacy"] = user.client.check_whitelist_status(WHITELIST_YAUTJA_LEGACY)
+
 	.["hair_icon"] = /datum/sprite_accessory/yautja_hair::icon
 
 	.["hair_styles"] = list()
@@ -45,6 +47,8 @@
 	.["mask_accessory_types"] = PRED_MASK_ACCESSORY_TYPE_MAX
 
 	.["materials"] = PRED_MATERIALS
+	.["translators"] = PRED_TRANSLATORS
+	.["legacies"] = PRED_LEGACIES
 
 /datum/pred_picker/ui_data(mob/user)
 	. = ..()
@@ -64,11 +68,13 @@
 	.["use_legacy"] = prefs.predator_use_legacy
 	.["translator_type"] = prefs.predator_translator_type
 	.["armor_type"] = prefs.predator_armor_type
+	.["armor_material"] = prefs.predator_armor_material
+
 	.["greave_type"] = prefs.predator_boot_type
+	.["greave_material"] = prefs.predator_greave_material
+
 	.["mask_type"] = prefs.predator_mask_type
 	.["mask_material"] = prefs.predator_mask_material
-	.["armor_material"] = prefs.predator_armor_material
-	.["greave_material"] = prefs.predator_greave_material
 	.["caster_material"] = prefs.predator_caster_material
 
 	.["cape_color"] = prefs.predator_cape_color

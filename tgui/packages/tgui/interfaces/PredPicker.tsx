@@ -4,9 +4,11 @@ import { useState } from 'react';
 
 import { useBackend } from '../backend';
 import {
+  Box,
   Button,
   ColorBox,
   DmIcon,
+  Dropdown,
   LabeledList,
   Modal,
   NumberInput,
@@ -25,7 +27,8 @@ type PredData = {
   flavor_text: string;
   yautja_status: string;
 
-  use_legacy: BooleanLike;
+  can_use_legacy: BooleanLike;
+  use_legacy: string;
   translator_type: string;
   armor_type: number;
   greave_type: number;
@@ -54,6 +57,8 @@ type PredData = {
   skin_colors: { [key: string]: string };
 
   materials: string[];
+  translators: string[];
+  legacies: string[];
 };
 
 export const PredPicker = () => {
@@ -152,10 +157,32 @@ const PredEquipment = () => {
     greave_type,
     greave_material,
     greave_types,
+
+    translator_type,
+    translators,
+    use_legacy,
+    can_use_legacy,
+    legacies,
   } = data;
 
   return (
     <Stack vertical>
+      <Stack.Item>
+        <Box width="150px">
+          <LabeledList>
+            <LabeledList.Item label="Translator Type">
+              <Dropdown
+                options={translators}
+                selected={translator_type}
+                lineHeight={5}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item labelWrap label="Legacy">
+              <Dropdown options={legacies} selected={use_legacy} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Box>
+      </Stack.Item>
       <Stack.Item>
         <PredItem
           icon={armor_icon}

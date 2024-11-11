@@ -527,6 +527,7 @@
 /area/bigredv2/outside/telecomm/lz2_cave
 	name = "\improper Central Grounds Communications Relay"
 	is_landing_zone = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/telecomm/n_cave
 	name = "\improper North Cave Communications Relay"

@@ -873,11 +873,11 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /*
 M10 Auto Pistol: A compact machine pistol that sacrifices accuracy for an impressive fire rate, shredding close-range targets with ease.
 With a 40-round magazine, it can keep up sustained fire in tense situations, though its high recoil and low stability make it tricky to control.
-Unlike other pistols, it can be equipped with limited mods (small muzzle, magazine, and optics) but has no burst-fire option.
+Unlike other pistols, it can be equipped with limited mods (small muzzle, underbarrel laser, magazine, and optics) but has no burst-fire option.
 */
 
 /obj/item/weapon/gun/pistol/m10
-	name = "\improper M10 auto-pistol"
+	name = "\improper M10 Auto Pistol"
 	desc = "The Armat Battlefield Systems M10 Auto Pistol, a compact, rapid-firing sidearm designed for close-quarters defense. With a 40-round magazine, it emphasizes fire rate over precision, providing effective suppressive fire in short-range engagements."
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
 	icon_state = "m10"

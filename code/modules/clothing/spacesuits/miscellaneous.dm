@@ -19,6 +19,10 @@
 	desc = "Festive!"
 	icon_state = "santa"
 	item_state = "santa"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+	)
 	slowdown = 0
 	allowed = list(/obj/item) //for stuffing extra special presents
 
@@ -70,6 +74,10 @@
 	desc = "The tank top worn by Souto Man. As fresh as a nice can of Souto Classic!"
 	item_state = "souto_man"
 	icon_state = "souto_man"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_HARDCORE
 	armor_bullet = CLOTHING_ARMOR_HARDCORE
 	armor_laser = CLOTHING_ARMOR_HARDCORE

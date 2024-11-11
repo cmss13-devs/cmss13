@@ -77,7 +77,7 @@
 
 #define NO_CLAN_LIST list(\
 			clan_id = null,\
-			clan_name = "Clanless",\
+			clan_name = CLAN_NAME_CLANLESS,\
 			clan_description = "This is a list of players without a clan",\
 			clan_honor = null,\
 			clan_keys = list(),\
@@ -101,3 +101,5 @@
 #define CLAN_ANCILLARY_SHAMAN "Shaman"
 #define CLAN_ANCILLARY_HIGH_ENFORCER "High Enforcer"
 #define CLAN_ANCILLARY_HIGH_SHAMAN "High Shaman"
+
+#define CLAN_NAME_CLANLESS "Clanless"

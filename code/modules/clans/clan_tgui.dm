@@ -21,6 +21,8 @@
 	var/list/global_data
 	/// Whether an early update of the global data is queued.
 	var/early_queued = FALSE
+	/// Whether global data is reloading or not.
+	var/reloading_data = FALSE
 
 GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE))
 
@@ -46,6 +48,9 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 	if(!GLOB.yautja_clan_data.global_data)
 		to_chat(usr, SPAN_WARNING("Clan Data has not populated yet, please wait for up to 30 seconds."))
+		return FALSE
+	if(GLOB.yautja_clan_data.reloading_data)
+		to_chat(usr, SPAN_WARNING("Clan Data is currently reloading, please wait for up to 30 seconds."))
 		return FALSE
 
 	if(yautja_panel)
@@ -87,6 +92,10 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	if(.)
 		return
 	var/mob/user = ui.user
+	if(!GLOB.yautja_clan_data.global_data || GLOB.yautja_clan_data.reloading_data)
+		ui.close()
+		to_chat(user, SPAN_WARNING("Clan Data is missing or being reloaded, please re-open the UI later."))
+		return
 	var/data_reloader = TRUE
 
 	if(action == "change_clan_list")
@@ -330,6 +339,14 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			if(!new_clan)
 				return FALSE
 
+			if(new_clan == CLAN_NAME_CLANLESS)
+				target_yautja.clan_id = null
+				target_yautja.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
+				early_conclude_data_act(target_clan, target_yautja)
+				to_chat(user, SPAN_NOTICE("Moved [target_ckey] to the Clanless list."))
+				message_admins("Yautja Clans: [key_name_admin(user)] has moved [target_ckey] to the Clanless list.")
+				return TRUE
+
 			target_yautja.clan_id = get_clan_id(new_clan)
 
 			to_chat(user, SPAN_NOTICE("Moved [target_ckey] to [new_clan]."))
@@ -365,6 +382,15 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		target_yautja.sync()
 
 	return TRUE
+
+/datum/yautja_panel/proc/early_conclude_data_act(datum/entity/clan/target_clan, datum/entity/clan_player/target_yautja)
+	GLOB.yautja_clan_data.queue_early_repopulate()
+	if(target_clan)
+		target_clan.save()
+		target_clan.sync()
+	if(target_yautja)
+		target_yautja.save()
+		target_yautja.sync()
 
 /datum/yautja_panel/proc/get_clan_id(clan_name)
 	var/index_holder = GLOB.yautja_clan_data.clan_name_to_index[clan_name]
@@ -411,24 +437,26 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	if(type == "early")
 		early_queued = FALSE
 
+	reloading_data = TRUE
 	message_admins("Yautja Clans: Populating Global Data.")
 	global_data = populate_clan_data()
 	message_admins("Yautja Clans: Global Data has been populated.")
+	reloading_data = FALSE
 	if(start_timer)
 		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE, "regular"), 30 MINUTES)
 		message_admins("Yautja Clans: Clan Global Data will repopulate in 30 minutes.")
 	return "Populated"
 
 /datum/yautja_panel/proc/populate_clan_data()
-	clan_name_to_index = list("Clanless" = 1)
+	clan_name_to_index = list(CLAN_NAME_CLANLESS = 1)
 	clan_index_to_id = list("1" = null)
-	var/list/clan_names = list("Clanless")
+	var/list/clan_names = list(CLAN_NAME_CLANLESS)
 	var/index = 2
 	var/list/data = list()
 	data["clans"] = list()
 
-	data["clans"] += list(populate_clan("Clanless", null))
-	data["clans"] += list(populate_clan("Clanless", 0))
+	data["clans"] += list(populate_clan(CLAN_NAME_CLANLESS, null))
+	data["clans"] += list(populate_clan(CLAN_NAME_CLANLESS, 0))
 	var/list/datum/view_record/clan_view/clan_list = DB_VIEW(/datum/view_record/clan_view/)
 	for(var/datum/view_record/clan_view/viewed_clan in clan_list)
 		data["clans"] += list(populate_clan("[viewed_clan.name]", viewed_clan.clan_id))
@@ -467,12 +495,19 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		yautja["clan_id"] = (CP.clan_id)
 
 		var/datum/entity/player/player = get_player_from_key(CP.ckey)
+		if(player.check_whitelist_status(WHITELIST_PREDATOR))
+			yautja["active_whitelist"] = TRUE
+		else
+			yautja["player_label"] = "[CP.ckey] (DEWHITELISTED)"
+
+		if(player.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
+			yautja["player_label"] = "[CP.ckey] (LEGACY)"
+			yautja["is_legacy"] = TRUE
+
 		if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 			yautja["player_label"] = "[CP.ckey] (SENATOR)"
 		else if(player.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 			yautja["player_label"] = "[CP.ckey] (COUNCILLOR)"
-		else if(player.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
-			yautja["player_label"] = "[CP.ckey] (LEGACY)"
 
 		members_list += list(yautja)
 

@@ -109,7 +109,11 @@ const ViewClans = (props) => {
         )}
       </Section>
       {clans[current_clan_index].members.map((yautja, i) => (
-        <Section key={i} title={yautja.player_label}>
+        <Section
+          key={i}
+          title={yautja.player_label}
+          color={yautja.active_whitelist ? 'white' : 'red'}
+        >
           <LabeledList>
             <LabeledList.Item label="Name">{yautja.name}</LabeledList.Item>
             <LabeledList.Item label="Rank">{yautja.rank}</LabeledList.Item>
@@ -183,7 +187,7 @@ const ViewClans = (props) => {
               bold
               mt="1rem"
               width="23vw"
-              disabled={!user_is_superadmin}
+              disabled={!user_is_superadmin || yautja.is_legacy}
               onClick={() =>
                 act('delete_player_data', { target_player: yautja.player_id })
               }

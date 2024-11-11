@@ -187,3 +187,47 @@
   - ui: replaces the lists for hair/facial hair with images in a separate picker
   - ui: replaces the eye color picker with a tgui color picker
   - code_imp: added unit test for duplicate sprite accessories (hair)
+2024-11-09:
+  SerheyKr:
+  - balance: Changing the UPP vendors stuff
+  cuberound:
+  - bugfix: UPP req vendor no longer spends points
+  - rscadd: adds UPP vs USCM gamemode, event only
+  - ui: adds option to both early and latejoin UPP roles from lobby on UPP vs USCM
+  - rscadd: adds early and latespawners for UPP roles
+  - balance: updates UPP ERT vendors to have 45 points
+  - rscadd: Added standard apparel to every UPP roles to clothing vendor
+  - balance: A lot of changes to upp vendor stuff in order to make them on pair with
+      USCM
+  - rscadd: adds option for spawners to use lists of jobs
+  - rscadd: enables overwatch consoles of other factions
+  - rscadd: UPP squad supply drops
+2024-11-10:
+  Joe Lampost:
+  - code_imp: Changes the spawn message for predators
+  Venuska1117:
+  - code_imp: Added ability to Destroy Platform Edges by xenos on "Disarm" intent,
+      now depending on xenos "size" they can break Platform Edges quicker or Slower,
+      Now Explosives have chance to destroy Platform Edges by depending on how strong
+      explosion is.
+  - imageadd: Added Sprites for Broken Platforms Edges.
+  - soundadd: Added Sound for Breaking "Stone" Edges.
+  cuberound:
+  - qol: handrails are autoclimbable when on harm intent, you take some harm when
+      doing so
+  - balance: crusher and ravager destroy handrails when trying to pass them similar
+      to tables
+  harryob:
+  - ui: adds a prettier custom loadout menu with images
+2024-11-11:
+  Drathek:
+  - balance: Queen remote building (while boosted) is now prevented in LZ linked weed
+      restricted areas
+  - balance: Adjusted/added LZ linked weed restriction areas on all maps in rotation
+  - maptweak: Fixed misplaced areas on Shivas.
+  - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
+  cuberound:
+  - bugfix: UPP CO joining from lobby should recive proper rank
+  harryob:
+  - ui: added a new tgui to select character traits. it's quite similar to the old
+      one

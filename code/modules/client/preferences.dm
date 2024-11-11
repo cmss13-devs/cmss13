@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_PREDATOR))
-		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_YAUTJA]\"><b>Yautja</b></a> - "
+		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
@@ -512,12 +512,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
-		if(MENU_YAUTJA)
-			if(owner.check_whitelist_status(WHITELIST_PREDATOR))
-				pred_picker.tgui_interact(user)
-
-			current_menu = MENU_MARINE
-			return
 
 		if(MENU_MENTOR)
 			if(owner.check_whitelist_status(WHITELIST_MENTOR))
@@ -1870,6 +1864,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("change_menu")
 					current_menu = href_list["menu"]
+
+				if("yautja")
+					if(!owner.check_whitelist_status(WHITELIST_PREDATOR))
+						return
+
+					pred_picker.tgui_interact(user)
+					return
 
 	ShowChoices(user)
 	return 1

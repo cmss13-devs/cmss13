@@ -258,7 +258,7 @@
 
 			prefs.predator_cape_color = sanitize_hexcolor(color)
 
-	prefs.ShowChoices(ui.user)
+	prefs.update_preview_icon()
 	return TRUE
 
 /datum/pred_picker/tgui_interact(mob/user, datum/tgui/ui)

@@ -130,7 +130,7 @@
 			if(!age)
 				return
 
-			prefs.predator_age = prefs.predator_age
+			prefs.predator_age = age
 
 		if("flavor_text")
 			var/text = tgui_input_text(ui.user, "Choose your Predator's flavor text:", "Flavor Text", multiline = TRUE)

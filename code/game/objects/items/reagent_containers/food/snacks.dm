@@ -321,7 +321,7 @@
 	name = "candy corn"
 	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
 	icon_state = "candy_corn"
-	icon = 'icons/obj/items/food/candy.dmi'
+	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#FFFCB0"
 
 /obj/item/reagent_container/food/snacks/candy_corn/Initialize()
@@ -371,7 +371,7 @@
 	name = "Chocolate Bar"
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolatebar"
-	icon = 'icons/obj/items/food/candy.dmi'
+	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#7D5F46"
 
 /obj/item/reagent_container/food/snacks/chocolatebar/Initialize()
@@ -2010,7 +2010,7 @@
 	name = "Candied Apple"
 	desc = "An apple coated in sugary sweetness."
 	icon_state = "candiedapple"
-	icon = 'icons/obj/items/food/candy.dmi'
+	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#F21873"
 
 /obj/item/reagent_container/food/snacks/candiedapple/Initialize()

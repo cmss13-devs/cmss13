@@ -187,44 +187,36 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/datum/action/xeno_action/onclick/tremor/action_cooldown_check()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	return !xeno.used_tremor
 
-/mob/living/carbon/xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
-	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("We must be above ground to do this."))
+/datum/action/xeno_action/onclick/tremor/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/burrower_tremor = owner
+
+	if (HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
+		to_chat("We must be above ground to do this.")
 		return
 
-	if(!check_state())
+	if (burrower_tremor.is_ventcrawling)
+		to_chat("We must be above ground to do this.")
 		return
 
-	if(used_tremor)
-		to_chat(src, SPAN_XENOWARNING("We aren't ready to cause more tremors yet!"))
+	if (!burrower_tremor.check_state())
+		return
+	if (!check_and_use_plasma_owner())
 		return
 
-	if(!check_plasma(100)) return
+	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
+	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
 
-	use_plasma(100)
-	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	visible_message(SPAN_XENODANGER("[src] digs itself into the ground and shakes the earth itself, causing violent tremors!"), \
-	SPAN_XENODANGER("We dig into the ground and shake it around, causing violent tremors!"))
-	create_stomp() //Adds the visual effect. Wom wom wom
-	used_tremor = 1
 
-	for(var/mob/living/carbon/carbon_target in range(7, loc))
+	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))
 		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
 		shake_camera(carbon_target, 2, 3)
-		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+		if(get_dist(burrower_tremor, carbon_target) <= 3 && !burrower_tremor.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
 				carbon_target.apply_effect(1, SLOW)
 			else
 				carbon_target.apply_effect(1, WEAKEN)
 			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
-	spawn(caste.tremor_cooldown)
-		used_tremor = 0
-		to_chat(src, SPAN_NOTICE("We gather enough strength to cause tremors again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
+	apply_cooldown()
+	return ..()

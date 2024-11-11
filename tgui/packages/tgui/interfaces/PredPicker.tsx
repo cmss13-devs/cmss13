@@ -84,7 +84,7 @@ export const PredPicker = () => {
   const [modal, setModal] = useState<'hair' | 'skin' | false>(false);
 
   return (
-    <Window height={950} width={700} theme="ntos_spooky">
+    <Window height={885} width={700} theme="ntos_spooky">
       <Window.Content className="PredPicker">
         <Section title="Yautja Information">
           <Stack>
@@ -129,7 +129,7 @@ export const PredPicker = () => {
         </Section>
 
         <Section title="Equipment">
-          <PredEquipment />
+          <PredEquipment pick={setModal} />
         </Section>
         {modal && (
           <Modal>
@@ -141,10 +141,182 @@ export const PredPicker = () => {
   );
 };
 
-const PredEquipment = () => {
+const PredEquipment = (props: { readonly pick: (_) => void }) => {
+  const { pick } = props;
+
   const { data } = useBackend<PredData>();
 
   const {
+    armor_icon,
+    armor_type,
+    armor_material,
+    mask_icon,
+    mask_type,
+    mask_material,
+    greave_icon,
+    greave_type,
+    greave_material,
+
+    translators,
+    translator_type,
+
+    legacies,
+    use_legacy,
+  } = data;
+
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <Stack fill>
+          <Stack.Item grow>
+            <Button
+              fluid
+              tooltip="Customize Armor"
+              onClick={() => pick('armor')}
+            >
+              <Stack justify="center">
+                <Stack.Item>
+                  <DmIcon
+                    icon={armor_icon}
+                    icon_state={`halfarmor${armor_type}_${armor_material}`}
+                    height="128px"
+                  />
+                </Stack.Item>
+              </Stack>
+            </Button>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Button fluid tooltip="Customize Mask" onClick={() => pick('mask')}>
+              <Stack justify="center">
+                <Stack.Item>
+                  <DmIcon
+                    icon={mask_icon}
+                    icon_state={`pred_mask${mask_type}_${mask_material}`}
+                    height="128px"
+                  />
+                </Stack.Item>
+              </Stack>
+            </Button>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Button
+              fluid
+              tooltip="Customize Greaves"
+              onClick={() => pick('greaves')}
+            >
+              <Stack justify="center">
+                <Stack.Item>
+                  <DmIcon
+                    icon={greave_icon}
+                    icon_state={`y-boots${greave_type}_${greave_material}`}
+                    height="128px"
+                  />
+                </Stack.Item>
+              </Stack>
+            </Button>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+
+      <Stack.Item>
+        <Box width="150px">
+          <LabeledList>
+            <LabeledList.Item label="Translator Type">
+              <Dropdown options={translators} selected={translator_type} />
+            </LabeledList.Item>
+            <LabeledList.Item labelWrap label="Legacy">
+              <Dropdown options={legacies} selected={use_legacy} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Box>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const PredItem = (props: {
+  readonly title: string;
+  readonly icon: string;
+  readonly selected_type: number;
+  readonly selected_material: string;
+  readonly available_types: number;
+  readonly prefix: string;
+  readonly close: () => void;
+}) => {
+  const { data } = useBackend<PredData>();
+
+  const {
+    icon,
+    selected_type,
+    selected_material,
+    available_types,
+    prefix,
+    title,
+    close,
+  } = props;
+
+  const { materials } = data;
+
+  return (
+    <Section
+      title={title}
+      buttons={<Button icon="x" onClick={() => close()} />}
+    >
+      <Stack>
+        <Stack.Item style={{ backgroundColor: '#66031C' }}>
+          <DmIcon
+            icon={icon}
+            icon_state={`${prefix}${selected_type}_${selected_material}`}
+            height="128px"
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <Stack vertical>
+            <Stack.Item>
+              <Stack wrap width="500px">
+                {Array.from({ length: available_types }).map((num, i) => (
+                  <Button tooltip={i + 1} key={i}>
+                    <DmIcon
+                      icon={icon}
+                      icon_state={`${prefix}${i + 1}_${selected_material}`}
+                      height="64px"
+                    />
+                  </Button>
+                ))}
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Stack>
+                {materials.map((material) => (
+                  <Button key={material} tooltip={capitalizeFirst(material)}>
+                    <DmIcon
+                      icon={icon}
+                      icon_state={`${prefix}${selected_type}_${material}`}
+                      height="64px"
+                    />
+                  </Button>
+                ))}
+              </Stack>
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
+const PredModal = (props: {
+  readonly type: 'hair' | 'skin' | 'armor' | 'greaves' | 'mask';
+  readonly close: () => void;
+}) => {
+  const { type, close } = props;
+
+  const { data } = useBackend<PredData>();
+
+  const {
+    hair_icon,
+    hair_style,
+    hair_styles,
     armor_icon,
     armor_type,
     armor_material,
@@ -165,122 +337,6 @@ const PredEquipment = () => {
     legacies,
   } = data;
 
-  return (
-    <Stack vertical>
-      <Stack.Item>
-        <Box width="150px">
-          <LabeledList>
-            <LabeledList.Item label="Translator Type">
-              <Dropdown
-                options={translators}
-                selected={translator_type}
-                lineHeight={5}
-              />
-            </LabeledList.Item>
-            <LabeledList.Item labelWrap label="Legacy">
-              <Dropdown options={legacies} selected={use_legacy} />
-            </LabeledList.Item>
-          </LabeledList>
-        </Box>
-      </Stack.Item>
-      <Stack.Item>
-        <PredItem
-          icon={armor_icon}
-          selected_type={armor_type}
-          selected_material={armor_material}
-          available_types={armor_types}
-          prefix="halfarmor"
-        />
-      </Stack.Item>
-      <Stack.Item>
-        <PredItem
-          icon={mask_icon}
-          selected_type={mask_type}
-          selected_material={mask_material}
-          available_types={mask_types}
-          prefix="pred_mask"
-        />
-      </Stack.Item>
-      <Stack.Item>
-        <PredItem
-          icon={greave_icon}
-          selected_type={greave_type}
-          selected_material={greave_material}
-          available_types={greave_types}
-          prefix="y-boots"
-        />
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-const PredItem = (props: {
-  readonly icon: string;
-  readonly selected_type: number;
-  readonly selected_material: string;
-  readonly available_types: number;
-  readonly prefix: string;
-}) => {
-  const { data } = useBackend<PredData>();
-
-  const { icon, selected_type, selected_material, available_types, prefix } =
-    props;
-
-  const { materials } = data;
-
-  return (
-    <Stack>
-      <Stack.Item style={{ backgroundColor: '#66031C' }}>
-        <DmIcon
-          icon={icon}
-          icon_state={`${prefix}${selected_type}_${selected_material}`}
-          height="128px"
-        />
-      </Stack.Item>
-      <Stack.Item>
-        <Stack vertical>
-          <Stack.Item>
-            <Stack wrap width="600px">
-              {Array.from({ length: available_types }).map((num, i) => (
-                <Button tooltip={i + 1} key={i}>
-                  <DmIcon
-                    icon={icon}
-                    icon_state={`${prefix}${i + 1}_${selected_material}`}
-                    height="64px"
-                  />
-                </Button>
-              ))}
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <Stack>
-              {materials.map((material) => (
-                <Button key={material} tooltip={capitalizeFirst(material)}>
-                  <DmIcon
-                    icon={icon}
-                    icon_state={`${prefix}${selected_type}_${material}`}
-                    height="64px"
-                  />
-                </Button>
-              ))}
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-const PredModal = (props: {
-  readonly type: 'hair' | 'skin';
-  readonly close: () => void;
-}) => {
-  const { type, close } = props;
-
-  const { data } = useBackend<PredData>();
-
-  const { hair_icon, hair_style, hair_styles } = data;
-
   switch (type) {
     case 'hair':
       return (
@@ -296,6 +352,43 @@ const PredModal = (props: {
 
     case 'skin':
       return <SkinColorPicker close={close} />;
+
+    case 'armor':
+      return (
+        <PredItem
+          title="Armor"
+          icon={armor_icon}
+          selected_type={armor_type}
+          selected_material={armor_material}
+          available_types={armor_types}
+          prefix="halfarmor"
+          close={close}
+        />
+      );
+    case 'greaves':
+      return (
+        <PredItem
+          title="Greaves"
+          icon={greave_icon}
+          selected_type={greave_type}
+          selected_material={greave_material}
+          available_types={greave_types}
+          prefix="y-boots"
+          close={close}
+        />
+      );
+    case 'mask':
+      return (
+        <PredItem
+          title="Mask"
+          icon={mask_icon}
+          selected_type={mask_type}
+          selected_material={mask_material}
+          available_types={mask_types}
+          prefix="pred_mask"
+          close={close}
+        />
+      );
 
     default:
       break;

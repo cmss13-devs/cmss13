@@ -886,30 +886,32 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/suppressor, //Muzzle
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
-		/obj/item/attachable/burstfire_assembly,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	map_specific_decoration = TRUE
-
 	fire_sound = 'sound/weapons/m10_auto_pistol.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m10
+
+/obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 16, "stock_x" = 18, "stock_y" = 14)
 
 /obj/item/weapon/gun/pistol/m10/set_gun_config_values()
 	..()
 	set_burst_amount(0)
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_7
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_3
 	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_4
 	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_8
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4

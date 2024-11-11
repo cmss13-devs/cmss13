@@ -260,6 +260,8 @@
 		list("M4A3 AP Magazine (9mm)", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
+		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", floor(scale * 8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 

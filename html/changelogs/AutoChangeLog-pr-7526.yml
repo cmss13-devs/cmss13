@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - ui: "added a new tgui to select character traits. it's quite similar to the old one"

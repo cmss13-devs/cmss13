@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Queen remote building (while boosted) is now prevented in LZ linked weed restricted areas"
+  - balance: "Adjusted/added LZ linked weed restriction areas on all maps in rotation"
+  - maptweak: "Fixed misplaced areas on Shivas."
+  - maptweak: "Split the Telecoms Valley area to make a Security Valley area on Trijent."

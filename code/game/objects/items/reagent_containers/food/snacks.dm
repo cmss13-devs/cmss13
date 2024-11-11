@@ -631,6 +631,7 @@
 	name = "Stuffing"
 	desc = "Moist, peppery breadcrumbs for filling the body cavities of dead birds. Dig in!"
 	icon_state = "stuffing"
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	filling_color = "#C9AC83"
 
 /obj/item/reagent_container/food/snacks/stuffing/Initialize()
@@ -1342,6 +1343,7 @@
 	name = "Poppy pretzel"
 	desc = "It's all twisted up!"
 	icon_state = "poppypretzel"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	bitesize = 2
 	filling_color = "#916E36"
 
@@ -1504,23 +1506,6 @@
 	reagents.add_reagent("frostoil", 3)
 	reagents.add_reagent("tomatojuice", 2)
 	bitesize = 5
-
-/* No more of this
-/obj/item/reagent_container/food/snacks/telebacon
-	name = "Tele Bacon"
-	desc = "It tastes a little odd but it is still delicious."
-	icon_state = "bacon"
-	var/obj/item/device/radio/beacon/bacon/baconbeacon
-	bitesize = 2
-	/Initialize()
-		..()
-		reagents.add_reagent("nutriment", 4)
-		baconbeacon = new /obj/item/device/radio/beacon/bacon(src)
-	On_Consume()
-		if(!reagents.total_volume)
-			baconbeacon.forceMove(usr)
-			baconbeacon.digest_delay()
-*/
 
 /obj/item/reagent_container/food/snacks/monkeycube
 	name = "monkey cube"
@@ -2510,6 +2495,7 @@
 	name = "Birthday Cake slice"
 	desc = "A slice of your birthday"
 	icon_state = "birthdaycakeslice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FFD6D6"
 	bitesize = 2
@@ -2518,6 +2504,7 @@
 	name = "Bread"
 	icon_state = "Some plain old Earthen bread."
 	icon_state = "bread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/breadslice
 	filling_color = "#FFE396"
 
@@ -2530,6 +2517,7 @@
 	name = "Bread slice"
 	desc = "A slice of home."
 	icon_state = "breadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#D27332"
 	bitesize = 2
@@ -2538,6 +2526,7 @@
 	name = "Cream Cheese Bread"
 	desc = "Yum yum yum!"
 	icon_state = "creamcheesebread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/creamcheesebreadslice
 	filling_color = "#FFF896"
 
@@ -2551,6 +2540,7 @@
 	name = "Cream Cheese Bread slice"
 	desc = "A slice of yum!"
 	icon_state = "creamcheesebreadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FFF896"
 	bitesize = 2
@@ -2559,6 +2549,7 @@
 	name = "Watermelon Slice"
 	desc = "A slice of watery goodness."
 	icon_state = "watermelonslice"
+	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#FF3867"
 	bitesize = 2
 
@@ -2566,6 +2557,7 @@
 	name = "Apple Cake"
 	desc = "A cake centred with Apple"
 	icon_state = "applecake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/applecakeslice
 	filling_color = "#EBF5B8"
 
@@ -2579,6 +2571,7 @@
 	name = "Apple Cake slice"
 	desc = "A slice of heavenly cake."
 	icon_state = "applecakeslice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#EBF5B8"
 	bitesize = 2
@@ -2587,6 +2580,7 @@
 	name = "Pumpkin Pie"
 	desc = "A delicious treat for the autumn months."
 	icon_state = "pumpkinpie"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/pumpkinpieslice
 	filling_color = "#F5B951"
 
@@ -2600,6 +2594,7 @@
 	name = "Pumpkin Pie slice"
 	desc = "A slice of pumpkin pie, with whipped cream on top. Perfection."
 	icon_state = "pumpkinpieslice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#F5B951"
 	bitesize = 2
@@ -2608,6 +2603,7 @@
 	name = "Cracker"
 	desc = "It's a salted cracker."
 	icon_state = "cracker"
+	icon = 'icons/obj/items/food/mre_food.dmi'
 	filling_color = "#F5DEB8"
 
 /obj/item/reagent_container/food/snacks/cracker/Initialize()
@@ -2626,6 +2622,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza
 	filling_color = "#BAA14C"
+	icon = 'icons/obj/items/food/pizza.dmi'
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery
@@ -2646,6 +2643,7 @@
 /obj/item/reagent_container/food/snacks/mysteryslice
 	name = "Mysterious pizza slice"
 	desc = "You go first."
+	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2669,6 +2667,7 @@
 	name = "Margherita slice"
 	desc = "A slice of the classic pizza."
 	icon_state = "pizzamargheritaslice"
+	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2689,6 +2688,7 @@
 	name = "Meatpizza slice"
 	desc = "A slice of a meaty pizza."
 	icon_state = "meatpizzaslice"
+	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2707,6 +2707,7 @@
 	name = "Mushroompizza slice"
 	desc = "Maybe it is the last slice of pizza in your life."
 	icon_state = "mushroompizzaslice"
+	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2727,6 +2728,7 @@
 	name = "Vegetable pizza slice"
 	desc = "A slice of the most green pizza of all pizzas not containing green ingredients "
 	icon_state = "vegetablepizzaslice"
+	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -3201,6 +3203,7 @@
 	name = "\improper UPP ration"
 	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
 	icon_state = "upp_ration"
+	icon = 'icons/obj/items/food/mre_food.dmi'
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/upp/Initialize()
@@ -3344,9 +3347,10 @@
 /obj/item/reagent_container/food/snacks/packaged_meal
 	name = "\improper MRE component"
 	desc = "A package from a Meal Ready-to-Eat, property of the US Colonial Marines. Contains a part of a meal, prepared for field consumption."
+	icon_state = "entree"
+	icon = 'icons/obj/items/food/mre_food.dmi'
 	package = 1
 	bitesize = 5
-	icon_state = "entree"
 	var/flavor = "boneless pork ribs"//default value
 
 /obj/item/reagent_container/food/snacks/packaged_meal/Initialize(mapload, newflavor)

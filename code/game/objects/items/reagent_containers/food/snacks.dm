@@ -281,6 +281,7 @@
 	name = "Aesir salad"
 	desc = "Probably too incredible for mortal men to fully enjoy."
 	icon_state = "aesirsalad"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#468C00"
 
@@ -320,6 +321,7 @@
 	name = "candy corn"
 	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
 	icon_state = "candy_corn"
+	icon = 'icons/obj/items/food/candy.dmi'
 	filling_color = "#FFFCB0"
 
 /obj/item/reagent_container/food/snacks/candy_corn/Initialize()
@@ -357,6 +359,7 @@
 	name = "cookie"
 	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#DBC94F"
 
 /obj/item/reagent_container/food/snacks/cookie/Initialize()
@@ -368,6 +371,7 @@
 	name = "Chocolate Bar"
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolatebar"
+	icon = 'icons/obj/items/food/candy.dmi'
 	filling_color = "#7D5F46"
 
 /obj/item/reagent_container/food/snacks/chocolatebar/Initialize()
@@ -381,6 +385,7 @@
 	name = "Chocolate Egg"
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolateegg"
+	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = "#7D5F46"
 
 /obj/item/reagent_container/food/snacks/chocolateegg/Initialize()
@@ -394,6 +399,7 @@
 	name = "donut"
 	desc = "A donut pastry, which is a common snack on Earth. Goes great with coffee."
 	icon_state = "donut1"
+	icon = 'icons/obj/items/food/donuts.dmi'
 	filling_color = "#D9C386"
 	var/overlay_state = "donut"
 	w_class = SIZE_TINY
@@ -491,6 +497,7 @@
 	name = "egg"
 	desc = "An egg!"
 	icon_state = "egg"
+	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = "#FDFFD1"
 	var/egg_color
 
@@ -563,6 +570,7 @@
 	name = "Fried egg"
 	desc = "A fried egg, with a touch of salt and pepper."
 	icon_state = "friedegg"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#FFDF78"
 
 /obj/item/reagent_container/food/snacks/friedegg/Initialize()
@@ -575,6 +583,7 @@
 	name = "Boiled egg"
 	desc = "A hard-boiled egg."
 	icon_state = "egg"
+	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = COLOR_WHITE
 
 /obj/item/reagent_container/food/snacks/boiledegg/Initialize()
@@ -585,6 +594,7 @@
 	name = "flour"
 	desc = "A small bag filled with some flour."
 	icon_state = "flour"
+	icon = 'icons/obj/items/food/condiments.dmi'
 
 /obj/item/reagent_container/food/snacks/flour/Initialize()
 	. = ..()
@@ -606,8 +616,9 @@
 
 /obj/item/reagent_container/food/snacks/tofu
 	name = "Tofu"
-	icon_state = "tofu"
 	desc = "We all love tofu."
+	icon_state = "tofu"
+	icon = 'icons/obj/items/food/cheese.dmi'
 	filling_color = "#FFFEE0"
 
 /obj/item/reagent_container/food/snacks/tofu/Initialize()
@@ -619,6 +630,7 @@
 	name = "Tofurkey"
 	desc = "A fake turkey made from tofu."
 	icon_state = "tofurkey"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#FFFEE0"
 
 /obj/item/reagent_container/food/snacks/tofurkey/Initialize()
@@ -643,6 +655,7 @@
 	name = "carp fillet"
 	desc = "A fillet of spess carp meat"
 	icon_state = "fishfillet"
+	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
 
 /obj/item/reagent_container/food/snacks/carpmeat/Initialize()
@@ -663,6 +676,7 @@
 	name = "Fish Fingers"
 	desc = "A finger of fish."
 	icon_state = "fishfingers"
+	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
 
 /obj/item/reagent_container/food/snacks/fishfingers/Initialize()
@@ -674,6 +688,7 @@
 	name = "huge mushroom slice"
 	desc = "A slice from a huge mushroom."
 	icon_state = "hugemushroomslice"
+	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#E0D7C5"
 
 /obj/item/reagent_container/food/snacks/hugemushroomslice/Initialize()
@@ -686,6 +701,7 @@
 	name = "tomato slice"
 	desc = "A slice from a huge tomato"
 	icon_state = "tomatomeat"
+	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#DB0000"
 
 /obj/item/reagent_container/food/snacks/tomatomeat/Initialize()
@@ -697,6 +713,7 @@
 	name = "bear meat"
 	desc = "A very manly slab of meat."
 	icon_state = "bearmeat"
+	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
 
 /obj/item/reagent_container/food/snacks/bearmeat/Initialize()
@@ -708,6 +725,7 @@
 	name = "meatball"
 	desc = "A great meal all round."
 	icon_state = "meatball"
+	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
 
 /obj/item/reagent_container/food/snacks/meatball/Initialize()
@@ -719,6 +737,7 @@
 	name = "Sausage"
 	desc = "A piece of mixed, long meat."
 	icon_state = "sausage"
+	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
 
 /obj/item/reagent_container/food/snacks/sausage/Initialize()
@@ -730,6 +749,7 @@
 	name = "Donk-pocket"
 	desc = "The food of choice for the seasoned traitor."
 	icon_state = "donkpocket"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#DEDEAB"
 	var/warm = 0
 
@@ -750,6 +770,7 @@
 	name = "brainburger"
 	desc = "A strange looking burger. It looks almost sentient."
 	icon_state = "brainburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#F2B6EA"
 
 /obj/item/reagent_container/food/snacks/brainburger/Initialize()
@@ -762,6 +783,7 @@
 	name = "Ghost Burger"
 	desc = "Spooky! It doesn't look very filling."
 	icon_state = "ghostburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFF2FF"
 
 /obj/item/reagent_container/food/snacks/ghostburger/Initialize()
@@ -776,6 +798,7 @@
 	name = "bob burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 
 /obj/item/reagent_container/food/snacks/human/burger/Initialize()
 	. = ..()
@@ -787,6 +810,7 @@
 	name = "cheeseburger"
 	desc = "The cheese adds a good flavor."
 	icon_state = "hamburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 
 /obj/item/reagent_container/food/snacks/cheeseburger/Initialize()
 	. = ..()
@@ -798,6 +822,7 @@
 	name = "burger"
 	desc = "The cornerstone of every nutritious breakfast."
 	icon_state = "hburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/monkeyburger/Initialize()
@@ -810,6 +835,7 @@
 	name = "Fillet -o- Carp Sandwich"
 	desc = "Almost like a carp is yelling somewhere... Give me back that fillet -o- carp, give me that carp."
 	icon_state = "fishburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFDEFE"
 
 /obj/item/reagent_container/food/snacks/fishburger/Initialize()
@@ -822,6 +848,7 @@
 	name = "Tofu Burger"
 	desc = "What... is that meat?"
 	icon_state = "tofuburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFFEE0"
 
 /obj/item/reagent_container/food/snacks/tofuburger/Initialize()
@@ -834,6 +861,7 @@
 	name = "roburger"
 	desc = "The lettuce is the only organic component. Beep."
 	icon_state = "roburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#CCCCCC"
 
 /obj/item/reagent_container/food/snacks/roburger/Initialize(mapload, ...)
@@ -842,21 +870,11 @@
 	reagents.add_reagent("iron", 3)
 	bitesize = 2
 
-/obj/item/reagent_container/food/snacks/roburgerbig
-	name = "roburger"
-	desc = "This massive patty looks like poison. Beep."
-	icon_state = "roburger"
-	filling_color = "#CCCCCC"
-	volume = 100
-
-/obj/item/reagent_container/food/snacks/roburgerbig/Initialize()
-	. = ..()
-	bitesize = 0.1
-
 /obj/item/reagent_container/food/snacks/xenoburger
 	name = "xenoburger"
 	desc = "Smells caustic. Tastes like heresy."
 	icon_state = "xburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#43DE18"
 
 /obj/item/reagent_container/food/snacks/xenoburger/Initialize()
@@ -869,15 +887,11 @@
 	name = "Clown Burger"
 	desc = "This tastes funny..."
 	icon_state = "clownburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = COLOR_MAGENTA
 
 /obj/item/reagent_container/food/snacks/clownburger/Initialize()
 	. = ..()
-/*
-	var/datum/disease/F = new /datum/disease/pierrot_throat(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent("blood", 4, data)
-*/
 	reagents.add_reagent("bread", 6)
 	bitesize = 2
 
@@ -885,6 +899,7 @@
 	name = "Mime Burger"
 	desc = "Its taste defies language."
 	icon_state = "mimeburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = COLOR_WHITE
 
 /obj/item/reagent_container/food/snacks/mimeburger/Initialize()
@@ -896,6 +911,7 @@
 	name = "Omelette Du Fromage"
 	desc = "That's all you can say!"
 	icon_state = "omelette"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FFF9A8"
 
@@ -909,6 +925,7 @@
 	name = "Muffin"
 	desc = "A little muffin. Spongy, moist, and delicious."
 	icon_state = "muffin"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#E0CF9B"
 
 /obj/item/reagent_container/food/snacks/muffin/Initialize()
@@ -921,6 +938,7 @@
 	name = "Banana Cream Pie"
 	desc = "Just like back home, on clown planet! HONK!"
 	icon_state = "pie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FBFFB8"
 
@@ -940,6 +958,7 @@
 	name = "Berry Clafoutis"
 	desc = "No black birds, this is a good sign."
 	icon_state = "berryclafoutis"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 
 /obj/item/reagent_container/food/snacks/berryclafoutis/Initialize()
@@ -952,6 +971,7 @@
 	name = "waffles"
 	desc = "Mmm, waffles."
 	icon_state = "waffles"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
 	filling_color = "#E6DEB5"
 
@@ -965,6 +985,7 @@
 	name = "pancakes"
 	desc = "Golden brown creamy pancakes fresh from the griddle. Drizzled with maple syrup and topped with a slice of butter."
 	icon_state = "pancakes"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#bb9857"
 	bitesize = 2
 
@@ -978,6 +999,7 @@
 	name = "Eggplant Parmigiana"
 	desc = "The only good recipe for eggplant."
 	icon_state = "eggplantparm"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#4D2F5E"
 
@@ -991,6 +1013,7 @@
 	name = "Soylent Green"
 	desc = "Not made of people. Honest." //Totally people.
 	icon_state = "soylent_green"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
 	filling_color = "#B8E6B5"
 
@@ -1004,6 +1027,7 @@
 	name = "Soylen Virdians"
 	desc = "Not made of people. Honest." //Actually honest for once.
 	icon_state = "soylent_yellow"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
 	filling_color = "#E6FA61"
 
@@ -1014,8 +1038,9 @@
 
 /obj/item/reagent_container/food/snacks/meatpie
 	name = "Meat-pie"
-	icon_state = "meatpie"
 	desc = "An old barber recipe, very delicious!"
+	icon_state = "meatpie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#948051"
 
@@ -1027,8 +1052,9 @@
 
 /obj/item/reagent_container/food/snacks/tofupie
 	name = "Tofu-pie"
-	icon_state = "meatpie"
 	desc = "A delicious tofu pie."
+	icon_state = "meatpie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FFFEE0"
 
@@ -1042,6 +1068,7 @@
 	name = "amanita pie"
 	desc = "Sweet and tasty poison pie."
 	icon_state = "amanita_pie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#FFCCCC"
 
 /obj/item/reagent_container/food/snacks/amanita_pie/Initialize()
@@ -1055,6 +1082,7 @@
 	name = "plump pie"
 	desc = "I bet you love stuff made out of plump helmets!"
 	icon_state = "plump_pie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#B8279B"
 
 /obj/item/reagent_container/food/snacks/plump_pie/Initialize()
@@ -1073,8 +1101,9 @@
 
 /obj/item/reagent_container/food/snacks/xemeatpie
 	name = "Xeno-pie"
-	icon_state = "xenomeatpie"
 	desc = "A delicious meatpie. Probably heretical."
+	icon_state = "xenomeatpie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#43DE18"
 
@@ -1088,6 +1117,7 @@
 	name = "Wing Fang Chu"
 	desc = "A savory dish of alien wing wang in soy."
 	icon_state = "wingfangchu"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#43DE18"
 
@@ -1099,8 +1129,9 @@
 
 /obj/item/reagent_container/food/snacks/human/kabob
 	name = "kabob"
-	icon_state = "kabob"
 	desc = "A human meat, on a stick."
+	icon_state = "kabob"
+	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
 	filling_color = "#A85340"
 
@@ -1111,8 +1142,9 @@
 
 /obj/item/reagent_container/food/snacks/monkeykabob
 	name = "Meat-kabob"
-	icon_state = "kabob"
 	desc = "Delicious meat, on a stick."
+	icon_state = "kabob"
+	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
 	filling_color = "#A85340"
 
@@ -1123,8 +1155,9 @@
 
 /obj/item/reagent_container/food/snacks/tofukabob
 	name = "Tofu-kabob"
-	icon_state = "kabob"
 	desc = "Vegan meat, on a stick."
+	icon_state = "kabob"
+	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
 	filling_color = "#FFFEE0"
 
@@ -1137,6 +1170,7 @@
 	name = "Cuban Carp"
 	desc = "A grifftastic sandwich that burns your tongue and then leaves it numb!"
 	icon_state = "cubancarp"
+	icon = 'icons/obj/items/food/fish.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#E9ADFF"
 
@@ -1168,8 +1202,8 @@
 
 /obj/item/reagent_container/food/snacks/sosjerky
 	name = "Scaredy's Private Reserve Beef Jerky"
-	icon_state = "sosjerky"
 	desc = "Beef jerky made from the finest space cows."
+	icon_state = "sosjerky"
 	trash = /obj/item/trash/sosjerky
 	filling_color = "#631212"
 
@@ -1230,6 +1264,7 @@
 	name = "Loaded Baked Potato"
 	desc = "Totally baked."
 	icon_state = "loadedbakedpotato"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#9C7A68"
 
 /obj/item/reagent_container/food/snacks/loadedbakedpotato/Initialize()
@@ -1242,6 +1277,7 @@
 	name = "Space Fries"
 	desc = "AKA: French Fries, Freedom Fries, etc."
 	icon_state = "fries"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
 
@@ -1255,6 +1291,7 @@
 	name = "Soy Dope"
 	desc = "Dope from a soy."
 	icon_state = "soydope"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#C4BF76"
 
@@ -1278,6 +1315,7 @@
 	name = "Cheesy Fries"
 	desc = "Fries. Covered in cheese. Duh."
 	icon_state = "cheesyfries"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
 
@@ -1291,6 +1329,7 @@
 	name = "Burned mess"
 	desc = "Someone should be demoted from chef for this."
 	icon_state = "badrecipe"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#211F02"
 
 /obj/item/reagent_container/food/snacks/badrecipe/Initialize()
@@ -1303,6 +1342,7 @@
 	name = "steak"
 	desc = "A fine cut of grilled meat, spiced with salt and pepper. Where the meat came from is, well, probably best left unanswered."
 	icon_state = "meatstake"
+	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#7A3D11"
 
@@ -1317,6 +1357,7 @@
 	name = "Spacy Liberty Duff"
 	desc = "Jello gelatin, from Alfred Hubbard's cookbook"
 	icon_state = "spacylibertyduff"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#42B873"
 
@@ -1330,6 +1371,7 @@
 	name = "Amanita Jelly"
 	desc = "Looks curiously toxic"
 	icon_state = "amanitajelly"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#ED0758"
 
@@ -1358,6 +1400,7 @@
 	name = "Meatball soup"
 	desc = "You've got balls kid, BALLS!"
 	icon_state = "meatballsoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#785210"
 
@@ -1371,6 +1414,7 @@
 	name = "Tomato soup"
 	desc = "Smells like copper"
 	icon_state = "tomatosoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = COLOR_RED
 
 /obj/item/reagent_container/food/snacks/bloodsoup/Initialize()
@@ -1384,6 +1428,7 @@
 	name = "Clown's Tears"
 	desc = "Not very funny."
 	icon_state = "clownstears"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#C4FBFF"
 
 /obj/item/reagent_container/food/snacks/clownstears/Initialize()
@@ -1395,8 +1440,9 @@
 
 /obj/item/reagent_container/food/snacks/vegetablesoup
 	name = "Vegetable soup"
-	desc = "A true vegan meal" //TODO
+	desc = "A true vegan meal."
 	icon_state = "vegetablesoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#AFC4B5"
 
@@ -1410,6 +1456,7 @@
 	name = "Nettle soup"
 	desc = "To think, the botanist would've beat you to death with one of these."
 	icon_state = "nettlesoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#AFC4B5"
 
@@ -1424,6 +1471,7 @@
 	name = "Mystery soup"
 	desc = "The mystery is, why aren't you eating it?"
 	icon_state = "mysterysoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#F082FF"
 
@@ -1468,6 +1516,7 @@
 	name = "Wish Soup"
 	desc = "I wish this was soup."
 	icon_state = "wishsoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#D1F4FF"
 
@@ -1483,6 +1532,7 @@
 	name = "Hot Chili"
 	desc = "A five alarm Texan Chili!"
 	icon_state = "hotchili"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FF3C00"
 
@@ -1497,6 +1547,7 @@
 	name = "Cold Chili"
 	desc = "This slush is barely a liquid!"
 	icon_state = "coldchili"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#2B00FF"
 
 	trash = /obj/item/trash/snack_bowl
@@ -1512,6 +1563,7 @@
 	name = "monkey cube"
 	desc = "Just add water!"
 	icon_state = "monkeycube"
+	icon = 'icons/obj/items/food/monkeycubes.dmi'
 	bitesize = 12
 	filling_color = "#ADAC7F"
 	black_market_value = 25
@@ -1625,6 +1677,7 @@
 	name = "Big Bite Burger"
 	desc = "Forget the Big Mac. THIS is the future!"
 	icon_state = "bigbiteburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#E3D681"
 
 /obj/item/reagent_container/food/snacks/bigbiteburger/Initialize()
@@ -1637,6 +1690,7 @@
 	name = "Enchiladas"
 	desc = "Viva La Mexico!"
 	icon_state = "enchiladas"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/tray
 	filling_color = "#A36A1F"
 
@@ -1651,6 +1705,7 @@
 	name = "monkey's Delight"
 	desc = "Eeee Eee!"
 	icon_state = "monkeysdelight"
+	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/trash/tray
 	filling_color = "#5C3C11"
 
@@ -1666,6 +1721,7 @@
 	name = "Baguette"
 	desc = "Bon appetit!"
 	icon_state = "baguette"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#E3D796"
 
 /obj/item/reagent_container/food/snacks/baguette/Initialize()
@@ -1679,6 +1735,7 @@
 	name = "Fish and Chips"
 	desc = "I do say so myself chap."
 	icon_state = "fishandchips"
+	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#E3D796"
 
 /obj/item/reagent_container/food/snacks/fishandchips/Initialize()
@@ -1690,6 +1747,7 @@
 	name = "Sandwich"
 	desc = "A grand creation of meat, cheese, bread, and several leaves of lettuce! Arthur Dent would be proud."
 	icon_state = "sandwich"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#D9BE29"
 
@@ -1704,6 +1762,7 @@
 	name = "Toasted Sandwich"
 	desc = "Now if you only had a pepper bar."
 	icon_state = "toastedsandwich"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#D9BE29"
 
@@ -1717,6 +1776,7 @@
 	name = "Grilled Cheese Sandwich"
 	desc = "Goes great with Tomato soup!"
 	icon_state = "toastedsandwich"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#D9BE29"
 
@@ -1730,6 +1790,7 @@
 	name = "Tomato Soup"
 	desc = "Drinking this feels like being a vampire! A tomato vampire..."
 	icon_state = "tomatosoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#D92929"
 
@@ -1743,6 +1804,7 @@
 	name = "Roffle Waffles"
 	desc = "Waffles from Roffle. Co."
 	icon_state = "rofflewaffles"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
 	filling_color = "#FF00F7"
 
@@ -1756,6 +1818,7 @@
 	name = "Stew"
 	desc = "A nice and warm stew. Healthy and strong."
 	icon_state = "stew"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#9E673A"
 
 /obj/item/reagent_container/food/snacks/stew/Initialize()
@@ -1772,6 +1835,7 @@
 	name = "Jellied Toast"
 	desc = "A slice of bread covered with delicious jam."
 	icon_state = "jellytoast"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#B572AB"
 
@@ -1790,6 +1854,7 @@
 	name = "Jelly Burger"
 	desc = "Culinary delight..?"
 	icon_state = "jellyburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#B572AB"
 
 /obj/item/reagent_container/food/snacks/jellyburger/Initialize()
@@ -1807,6 +1872,7 @@
 	name = "Milosoup"
 	desc = "The universes best soup! Yum!!!"
 	icon_state = "milosoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 
 /obj/item/reagent_container/food/snacks/milosoup/Initialize()
@@ -1819,6 +1885,7 @@
 	name = "Stewed Soy Meat"
 	desc = "Even non-vegetarians will LOVE this!"
 	icon_state = "stewedsoymeat"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 
 /obj/item/reagent_container/food/snacks/stewedsoymeat/Initialize()
@@ -1830,6 +1897,7 @@
 	name = "Boiled Spaghetti"
 	desc = "A plain dish of noodles, this sucks."
 	icon_state = "spagettiboiled"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FCEE81"
 
@@ -1842,6 +1910,7 @@
 	name = "Boiled Rice"
 	desc = "A boring dish of boring rice."
 	icon_state = "boiledrice"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FFFBDB"
 
@@ -1854,6 +1923,7 @@
 	name = "Rice Pudding"
 	desc = "Where's the Jam!"
 	icon_state = "rpudding"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FFFBDB"
 
@@ -1867,6 +1937,7 @@
 	name = "Spaghetti"
 	desc = "Spaghetti and crushed tomatoes. Just like your abusive father used to make!"
 	icon_state = "pastatomato"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#DE4545"
 
@@ -1880,6 +1951,7 @@
 	name = "Spaghetti & Meatballs"
 	desc = "Now thats a nic'e meatball!"
 	icon_state = "meatballspagetti"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#DE4545"
 
@@ -1893,6 +1965,7 @@
 	name = "Spesslaw"
 	desc = "A lawyer's favourite"
 	icon_state = "spesslaw"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#DE4545"
 
 /obj/item/reagent_container/food/snacks/spesslaw/Initialize()
@@ -1905,6 +1978,7 @@
 	name = "Carrot Fries"
 	desc = "Tasty fries from fresh Carrots."
 	icon_state = "carrotfries"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FAA005"
 
@@ -1918,6 +1992,7 @@
 	name = "Super Bite Burger"
 	desc = "This is a mountain of a burger. FOOD!"
 	icon_state = "superbiteburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#CCA26A"
 
 /obj/item/reagent_container/food/snacks/superbiteburger/Initialize()
@@ -1935,6 +2010,7 @@
 	name = "Candied Apple"
 	desc = "An apple coated in sugary sweetness."
 	icon_state = "candiedapple"
+	icon = 'icons/obj/items/food/candy.dmi'
 	filling_color = "#F21873"
 
 /obj/item/reagent_container/food/snacks/candiedapple/Initialize()
@@ -1947,6 +2023,7 @@
 	name = "Apple Pie"
 	desc = "A pie containing sweet sweet love... or apple."
 	icon_state = "applepie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#E0EDC5"
 
 /obj/item/reagent_container/food/snacks/applepie/Initialize()
@@ -1961,6 +2038,7 @@
 	name = "Cherry Pie"
 	desc = "Taste so good, make a grown man cry."
 	icon_state = "cherrypie"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#FF525A"
 
 /obj/item/reagent_container/food/snacks/cherrypie/Initialize()
@@ -1974,6 +2052,7 @@
 	name = "Two Bread"
 	desc = "It is very bitter and winy."
 	icon_state = "twobread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	filling_color = "#DBCC9A"
 
 /obj/item/reagent_container/food/snacks/twobread/Initialize()
@@ -1986,6 +2065,7 @@
 	name = "Jelly Sandwich"
 	desc = "You wish you had some peanut butter to go with this..."
 	icon_state = "jellysandwich"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#9E3A78"
 
@@ -2004,6 +2084,7 @@
 	name = "mint"
 	desc = "it is only wafer thin."
 	icon_state = "mint"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#F2F2F2"
 
 /obj/item/reagent_container/food/snacks/mint/Initialize()
@@ -2014,6 +2095,7 @@
 	name = "chantrelle soup"
 	desc = "A delicious and hearty mushroom soup."
 	icon_state = "mushroomsoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#E386BF"
 
@@ -2027,6 +2109,7 @@
 	name = "plump helmet biscuit"
 	desc = "This is a finely-prepared plump helmet biscuit. The ingredients are exceptionally minced plump helmet, and well-minced dwarven wheat flour."
 	icon_state = "phelmbiscuit"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#CFB4C4"
 
 /obj/item/reagent_container/food/snacks/plumphelmetbiscuit/Initialize()
@@ -2047,6 +2130,7 @@
 	name = "chawanmushi"
 	desc = "A legendary egg custard that makes friends out of enemies. Probably too hot for a cat to eat."
 	icon_state = "chawanmushi"
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#F0F2E4"
 
@@ -2060,6 +2144,7 @@
 	name = "beet soup"
 	desc = "Wait, how do you spell it again..?"
 	icon_state = "beetsoup"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FAC9FF"
 
@@ -2085,6 +2170,7 @@
 	name = "tossed salad"
 	desc = "A proper salad, basic and simple, with little bits of carrot, tomato and apple intermingled. Vegan!"
 	icon_state = "herbsalad"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#76B87F"
 
@@ -2098,6 +2184,7 @@
 	name = "valid salad"
 	desc = "It's just a salad of questionable 'herbs' with meatballs and fried potato slices. Nothing suspicious about it."
 	icon_state = "validsalad"
+	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#76B87F"
 
@@ -2112,6 +2199,7 @@
 	name = "golden apple streusel tart"
 	desc = "A tasty dessert that won't make it through a metal detector."
 	icon_state = "gappletart"
+	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = COLOR_YELLOW
 
@@ -2135,6 +2223,7 @@
 	name = "meatbread loaf"
 	desc = "The culinary base of every self-respecting eloquen/tg/entleman."
 	icon_state = "meatbread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/meatbreadslice
 	filling_color = "#FF7575"
 
@@ -2149,6 +2238,7 @@
 	name = "meatbread slice"
 	desc = "A slice of delicious meatbread."
 	icon_state = "meatbreadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FF7575"
 	bitesize = 2
@@ -2157,6 +2247,7 @@
 	name = "xenomeatbread loaf"
 	desc = "The culinary base of every self-respecting eloquent gentleman. Extra Heretical."
 	icon_state = "xenomeatbread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/xenomeatbreadslice
 	filling_color = "#8AFF75"
 
@@ -2171,6 +2262,7 @@
 	name = "xenomeatbread slice"
 	desc = "A slice of delicious meatbread. Extra Heretical."
 	icon_state = "xenobreadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#8AFF75"
 	bitesize = 2
@@ -2179,6 +2271,7 @@
 	name = "Banana-nut bread"
 	desc = "A heavenly and filling treat."
 	icon_state = "bananabread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/bananabreadslice
 	filling_color = "#EDE5AD"
 
@@ -2193,6 +2286,7 @@
 	name = "Banana-nut bread slice"
 	desc = "A slice of delicious banana bread."
 	icon_state = "bananabreadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#EDE5AD"
 	bitesize = 2
@@ -2201,6 +2295,7 @@
 	name = "Tofubread"
 	icon_state = "Like meatbread but for vegetarians. Not guaranteed to give superpowers."
 	icon_state = "tofubread"
+	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/tofubreadslice
 	filling_color = "#F7FFE0"
 
@@ -2215,6 +2310,7 @@
 	name = "Tofubread slice"
 	desc = "A slice of delicious tofubread."
 	icon_state = "tofubreadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#F7FFE0"
 	bitesize = 2
@@ -2223,6 +2319,7 @@
 	name = "Carrot Cake"
 	desc = "A favorite desert of a certain wascally wabbit. Not a lie."
 	icon_state = "carrotcake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/carrotcakeslice
 	filling_color = "#FFD675"
 
@@ -2238,6 +2335,7 @@
 	name = "Carrot Cake slice"
 	desc = "Carroty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
 	icon_state = "carrotcake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FFD675"
 	bitesize = 2
@@ -2246,6 +2344,7 @@
 	name = "Brain Cake"
 	desc = "A squishy cake-thing."
 	icon_state = "braincake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/braincakeslice
 	filling_color = "#E6AEDB"
 
@@ -2260,6 +2359,7 @@
 	name = "Brain Cake slice"
 	desc = "Lemme tell you something about prions. THEY'RE DELICIOUS."
 	icon_state = "braincakeslice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#E6AEDB"
 	bitesize = 2
@@ -2268,6 +2368,7 @@
 	name = "Cheese Cake"
 	desc = "DANGEROUSLY cheesy."
 	icon_state = "cheesecake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
 	filling_color = "#FAF7AF"
 	black_market_value = 30
@@ -2282,6 +2383,7 @@
 	name = "Cheese Cake slice"
 	desc = "Slice of pure cheestisfaction"
 	icon_state = "cheesecake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FAF7AF"
 	bitesize = 2
@@ -2291,6 +2393,7 @@
 	name = "Vanilla Cake"
 	desc = "A plain cake, not a lie."
 	icon_state = "plaincake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/plaincakeslice
 	filling_color = "#F7EDD5"
 
@@ -2303,6 +2406,7 @@
 	name = "Vanilla Cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "plaincake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#F7EDD5"
 	bitesize = 2
@@ -2311,6 +2415,7 @@
 	name = "Orange Cake"
 	desc = "A cake with added orange."
 	icon_state = "orangecake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/orangecakeslice
 	filling_color = "#FADA8E"
 
@@ -2325,6 +2430,7 @@
 	name = "Orange Cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "orangecake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FADA8E"
 	bitesize = 2
@@ -2333,6 +2439,7 @@
 	name = "Lime Cake"
 	desc = "A cake with added lime."
 	icon_state = "limecake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/limecakeslice
 	filling_color = "#CBFA8E"
 
@@ -2347,6 +2454,7 @@
 	name = "Lime Cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "limecake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#CBFA8E"
 	bitesize = 2
@@ -2355,6 +2463,7 @@
 	name = "Lemon Cake"
 	desc = "A cake with added lemon."
 	icon_state = "lemoncake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/lemoncakeslice
 	filling_color = "#FAFA8E"
 
@@ -2369,6 +2478,7 @@
 	name = "Lemon Cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "lemoncake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#FAFA8E"
 	bitesize = 2
@@ -2377,6 +2487,7 @@
 	name = "Chocolate Cake"
 	desc = "A cake with added chocolate"
 	icon_state = "chocolatecake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/chocolatecakeslice
 	filling_color = "#805930"
 
@@ -2390,6 +2501,7 @@
 	name = "Chocolate Cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "chocolatecake_slice"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = "#805930"
 	bitesize = 2
@@ -2398,6 +2510,7 @@
 	name = "Cheese wheel"
 	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
+	icon = 'icons/obj/items/food/cheese.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	filling_color = "#FFF700"
 	black_market_value = 25 //mendoza likes cheese.
@@ -2411,6 +2524,7 @@
 	name = "Cheese wedge"
 	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
 	icon_state = "cheesewedge"
+	icon = 'icons/obj/items/food/cheese.dmi'
 	filling_color = "#FFF700"
 	bitesize = 2
 	black_market_value = 10
@@ -2482,6 +2596,7 @@
 	name = "Birthday Cake"
 	desc = "Happy Birthday..."
 	icon_state = "birthdaycake"
+	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/birthdaycakeslice
 	filling_color = "#FFD6D6"
 
@@ -3157,6 +3272,7 @@
 	name = "Packaged Cheeseburger"
 	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "burger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	bitesize = 3
 	package = 1
 

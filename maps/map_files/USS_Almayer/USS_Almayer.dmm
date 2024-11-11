@@ -13160,6 +13160,14 @@
 	pixel_x = 2;
 	pixel_y = 9
 	},
+/obj/structure/machinery/door_control/cl/office/window{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_x = 6;
+	pixel_y = -3
+	},
 /obj/item/spacecash/c500{
 	pixel_x = -10;
 	pixel_y = 8
@@ -24561,7 +24569,7 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	vent_tag = "Core Chamber"
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -25313,7 +25321,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "gFz" = (
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 1;
 	vent_tag = "Records"
 	},
@@ -31525,7 +31533,7 @@
 "jiH" = (
 /obj/structure/machinery/flasher{
 	alpha = 1;
-	id = "CL_Containment";
+	id = "Containment Cell 4";
 	layer = 2.1;
 	name = "Mounted Flash";
 	pixel_x = -15;
@@ -32408,6 +32416,9 @@
 	},
 /area/almayer/medical/containment/cell)
 "jCe" = (
+/obj/structure/machinery/computer/skills{
+	req_one_access_txt = "200"
+	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky{
 	pixel_x = 14;
@@ -32418,7 +32429,6 @@
 	pixel_x = 14;
 	pixel_y = 6
 	},
-/obj/structure/machinery/computer/wy_intranet/liaison,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "jCg" = (
@@ -35678,11 +35688,7 @@
 /obj/item/desk_bell{
 	anchored = 1;
 	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/structure/machinery/door_control/cl/office/evac{
-	pixel_x = -5;
-	pixel_y = -3
+	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -35710,7 +35716,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/almayer/command/telecomms)
 "kTC" = (
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 8;
 	vent_tag = "Access Hall"
 	},
@@ -36371,7 +36377,7 @@
 /turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
 "lhH" = (
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 1;
 	vent_tag = "Comms"
 	},
@@ -36418,17 +36424,15 @@
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "liM" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 8;
 	pixel_y = -32
 	},
 /obj/structure/machinery/door_control/cl/quarter/backdoor{
 	pixel_x = 25
-	},
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 8;
-	vent_tag = "Private Quarters";
-	network_id = "CL_Security"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -40535,10 +40539,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/mess)
 "mWp" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 1;
-	vent_tag = "Main Office";
-	network_id = "CL_Security"
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -42427,7 +42429,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "nGD" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison,
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	id = "RoomDivider"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "nGM" = (
@@ -42446,12 +42450,12 @@
 /area/almayer/lifeboat_pumps/north2)
 "nHp" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "CL_Containment";
+	id = "Containment Cell 4";
 	name = "\improper Containment Cell 4"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	dir = 1;
-	id = "CL_Containment";
+	id = "Containment Cell 4";
 	locked = 1;
 	name = "\improper Containment Cell 4"
 	},
@@ -43801,14 +43805,27 @@
 /area/almayer/engineering/lower)
 "ojp" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_display/research_cell{
+	dir = 4;
+	id = "Containment Cell 4";
+	name = "Control Panel";
+	pixel_x = -17;
+	req_access_txt = "200";
+	pixel_y = 9
+	},
 /obj/item/storage/photo_album,
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
 	pixel_x = -17;
+	pixel_y = -5;
 	plane = -5
 	},
 /obj/item/device/camera_film{
 	pixel_x = -3
+	},
+/obj/structure/machinery/door_control/cl/office/divider{
+	pixel_x = 7;
+	pixel_y = -7
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
@@ -47449,7 +47466,7 @@
 /area/almayer/maint/upper/u_a_s)
 "pJX" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 8;
 	vent_tag = "Reception"
 	},
@@ -48502,15 +48519,6 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	name = "Ceiling Flashbulb";
-	range = 3;
-	layer = 2.1;
-	mouse_opacity = 0;
-	pixel_x = -14;
-	id = "CL_Security"
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -55859,11 +55867,11 @@
 	pixel_y = 3
 	},
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control/cl/office/window{
+/obj/structure/machinery/door_control/cl/office/evac{
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/structure/machinery/door_control/cl/office/door{
+/obj/structure/machinery/door_control/cl/quarter/windows{
 	pixel_x = -5;
 	pixel_y = -3
 	},
@@ -68781,7 +68789,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
 "yen" = (
-/obj/structure/pipes/vents/pump/no_boom/gas/ares{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 8;
 	vent_tag = "Synth Bay"
 	},

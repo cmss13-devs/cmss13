@@ -199,6 +199,9 @@
 		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
+	if (!action_cooldown_check())
+		return
+
 	if (!burrower_tremor.check_state())
 		return
 	if (!check_and_use_plasma_owner())

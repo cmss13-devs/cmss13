@@ -206,6 +206,10 @@
 	desc = "Festive!  DONOR ITEM"
 	icon_state = "santa"
 	item_state = "santa"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/commandercookies //CKEY=commandercookies
 	name = "marine armor w/ ammo"
@@ -224,6 +228,10 @@
 	desc = "Some fancy looking armor.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "juggernaut armor"

@@ -59,8 +59,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
-								halitem.icon_state = "revolver"
+								halitem.icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+								halitem.icon_state = "m44r"
 								halitem.name = "Revolver"
 							if(2) //c4
 								halitem.icon = 'icons/obj/items/assemblies.dmi'

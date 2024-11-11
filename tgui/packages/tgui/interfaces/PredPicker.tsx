@@ -1,3 +1,4 @@
+import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
 import { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
@@ -9,6 +10,7 @@ import {
   ColorBox,
   DmIcon,
   Dropdown,
+  Icon,
   LabeledList,
   Modal,
   NumberInput,
@@ -16,6 +18,7 @@ import {
   Stack,
 } from '../components';
 import { Window } from '../layouts';
+import { ColorSelector } from './ColorPickerModal';
 import { HairPickerElement } from './HairPicker';
 
 type PredData = {
@@ -26,29 +29,35 @@ type PredData = {
   skin_color: string;
   flavor_text: string;
   yautja_status: string;
+  available_statuses: string[];
 
   can_use_legacy: BooleanLike;
   use_legacy: string;
   translator_type: string;
-  armor_type: number;
-  greave_type: number;
-  mask_type: number;
-  mask_material: string;
-  armor_material: string;
-  greave_material: string;
-  caster_material: string;
 
   cape_color: string;
 
   armor_icon: string;
+  armor_type: number;
   armor_types: number;
+  armor_material: string;
 
   mask_icon: string;
+  mask_type: number;
   mask_types: number;
+  mask_material: string;
 
   greave_icon: string;
+  greave_type: number;
   greave_types: number;
+  greave_material: string;
 
+  caster_icon: string;
+  caster_prefix: string;
+  caster_material: string;
+
+  mask_accessory_icon: string;
+  mask_accessory_type: number;
   mask_accessory_types: number;
 
   hair_icon: string;
@@ -61,8 +70,18 @@ type PredData = {
   legacies: string[];
 };
 
+type ModalOptions =
+  | 'hair'
+  | 'skin'
+  | 'armor'
+  | 'greaves'
+  | 'mask'
+  | 'mask_accessory'
+  | 'caster'
+  | 'cape_color';
+
 export const PredPicker = () => {
-  const { data } = useBackend<PredData>();
+  const { data, act } = useBackend<PredData>();
 
   const {
     name,
@@ -74,6 +93,7 @@ export const PredPicker = () => {
     flavor_text,
     skin_colors,
     skin_color,
+    available_statuses,
     yautja_status,
   } = data;
 
@@ -81,30 +101,45 @@ export const PredPicker = () => {
     (hair) => hair.name === hair_style,
   )[0];
 
-  const [modal, setModal] = useState<'hair' | 'skin' | false>(false);
+  const [modal, setModal] = useState<ModalOptions | false>(false);
 
   return (
-    <Window height={885} width={700} theme="ntos_spooky">
+    <Window height={600} width={700} theme="ntos_spooky">
       <Window.Content className="PredPicker">
         <Section title="Yautja Information">
           <Stack>
             <Stack.Item>
               <LabeledList>
                 <LabeledList.Item label="Name">
-                  <Button.Input>{name}</Button.Input>
+                  <Button.Input
+                    onCommit={(_, value) => act('name', { name: value })}
+                  >
+                    {name}
+                  </Button.Input>
                 </LabeledList.Item>
                 <LabeledList.Item label="Gender">
-                  <Button.Input>{capitalizeFirst(gender)}</Button.Input>
+                  <Button onClick={() => act('gender')}>
+                    {capitalizeFirst(gender)}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
-                  <NumberInput value={age} minValue={175} maxValue={3000} />
+                  <NumberInput
+                    value={age}
+                    minValue={175}
+                    maxValue={3000}
+                    onChange={(val) => act('age', { age: val })}
+                  />
                 </LabeledList.Item>
               </LabeledList>
             </Stack.Item>
             <Stack.Item>
               <LabeledList>
                 <LabeledList.Item label="Flavor Text">
-                  {flavor_text.length > 0 ? flavor_text : 'None'}
+                  <Button onClick={() => act('flavor_text')}>
+                    {flavor_text.length > 0
+                      ? flavor_text.substring(0, 10) + '...'
+                      : 'None'}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Skin Color">
                   <Button onClick={() => setModal('skin')}>
@@ -112,7 +147,13 @@ export const PredPicker = () => {
                   </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Yautja Status">
-                  {yautja_status}
+                  <Dropdown
+                    selected={yautja_status}
+                    options={available_statuses}
+                    onSelected={(selected) =>
+                      act('yautja_status', { selected: selected })
+                    }
+                  />
                 </LabeledList.Item>
               </LabeledList>
             </Stack.Item>
@@ -120,7 +161,7 @@ export const PredPicker = () => {
               <Button tooltip="Select Quill" onClick={() => setModal('hair')}>
                 <DmIcon
                   icon={hair_icon}
-                  icon_state={selectedHair.icon}
+                  icon_state={`${selectedHair.icon}_s`}
                   width="64px"
                 />
               </Button>
@@ -141,21 +182,33 @@ export const PredPicker = () => {
   );
 };
 
-const PredEquipment = (props: { readonly pick: (_) => void }) => {
+const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
   const { pick } = props;
 
-  const { data } = useBackend<PredData>();
+  const { act, data } = useBackend<PredData>();
 
   const {
     armor_icon,
     armor_type,
     armor_material,
+
     mask_icon,
     mask_type,
     mask_material,
+
     greave_icon,
     greave_type,
     greave_material,
+
+    caster_icon,
+    caster_material,
+    caster_prefix,
+
+    mask_accessory_icon,
+    mask_accessory_type,
+    mask_accessory_types,
+
+    can_use_legacy,
 
     translators,
     translator_type,
@@ -219,13 +272,72 @@ const PredEquipment = (props: { readonly pick: (_) => void }) => {
       </Stack.Item>
 
       <Stack.Item>
+        <Stack fill>
+          <Stack.Item grow>
+            <Button
+              fluid
+              tooltip="Select Plasma Caster"
+              onClick={() => pick('caster')}
+            >
+              <Stack justify="center">
+                <Stack.Item>
+                  <DmIcon
+                    icon={caster_icon}
+                    icon_state={`${caster_prefix}_${caster_material}`}
+                    height="128px"
+                  />
+                </Stack.Item>
+              </Stack>
+            </Button>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Button
+              fluid
+              height={11}
+              tooltip="Select Mask Accessory"
+              onClick={() => pick('mask_accessory')}
+            >
+              <Stack justify="center">
+                <Stack.Item>
+                  {mask_accessory_type > 0 ? (
+                    <DmIcon
+                      icon={mask_accessory_icon}
+                      icon_state={`pred_accessory${mask_accessory_types}_${mask_material}`}
+                      height="128px"
+                    />
+                  ) : (
+                    <Icon name="x" size={5} mt={5} />
+                  )}
+                </Stack.Item>
+              </Stack>
+            </Button>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+
+      <Stack.Item>
         <Box width="150px">
           <LabeledList>
             <LabeledList.Item label="Translator Type">
-              <Dropdown options={translators} selected={translator_type} />
+              <Dropdown
+                options={translators}
+                selected={translator_type}
+                onSelected={(val) => act('translator_type', { selected: val })}
+              />
             </LabeledList.Item>
-            <LabeledList.Item labelWrap label="Legacy">
-              <Dropdown options={legacies} selected={use_legacy} />
+            {!!can_use_legacy && (
+              <LabeledList.Item labelWrap label="Legacy">
+                <Dropdown
+                  options={legacies}
+                  selected={use_legacy}
+                  onSelected={(val) => act('legacy', { selected: val })}
+                />
+              </LabeledList.Item>
+            )}
+            <LabeledList.Item label="Cape Color">
+              <Button onClick={() => pick('cape_color')}>
+                <ColorBox color={data.cape_color} />
+              </Button>
             </LabeledList.Item>
           </LabeledList>
         </Box>
@@ -242,8 +354,9 @@ const PredItem = (props: {
   readonly available_types: number;
   readonly prefix: string;
   readonly close: () => void;
+  readonly action: string;
 }) => {
-  const { data } = useBackend<PredData>();
+  const { act, data } = useBackend<PredData>();
 
   const {
     icon,
@@ -253,6 +366,7 @@ const PredItem = (props: {
     prefix,
     title,
     close,
+    action,
   } = props;
 
   const { materials } = data;
@@ -275,7 +389,12 @@ const PredItem = (props: {
             <Stack.Item>
               <Stack wrap width="500px">
                 {Array.from({ length: available_types }).map((num, i) => (
-                  <Button tooltip={i + 1} key={i}>
+                  <Button
+                    tooltip={i + 1}
+                    selected={selected_type === i + 1}
+                    key={i}
+                    onClick={() => act(`${action}_type`, { type: i + 1 })}
+                  >
                     <DmIcon
                       icon={icon}
                       icon_state={`${prefix}${i + 1}_${selected_material}`}
@@ -288,7 +407,14 @@ const PredItem = (props: {
             <Stack.Item>
               <Stack>
                 {materials.map((material) => (
-                  <Button key={material} tooltip={capitalizeFirst(material)}>
+                  <Button
+                    key={material}
+                    tooltip={capitalizeFirst(material)}
+                    selected={selected_material === material}
+                    onClick={() =>
+                      act(`${action}_material`, { material: material })
+                    }
+                  >
                     <DmIcon
                       icon={icon}
                       icon_state={`${prefix}${selected_type}_${material}`}
@@ -306,35 +432,40 @@ const PredItem = (props: {
 };
 
 const PredModal = (props: {
-  readonly type: 'hair' | 'skin' | 'armor' | 'greaves' | 'mask';
+  readonly type: ModalOptions;
   readonly close: () => void;
 }) => {
   const { type, close } = props;
 
-  const { data } = useBackend<PredData>();
+  const { data, act } = useBackend<PredData>();
 
   const {
     hair_icon,
     hair_style,
     hair_styles,
+
     armor_icon,
     armor_type,
     armor_material,
     armor_types,
+
     mask_icon,
     mask_type,
     mask_material,
     mask_types,
+
     greave_icon,
     greave_type,
     greave_material,
     greave_types,
 
-    translator_type,
-    translators,
-    use_legacy,
-    can_use_legacy,
-    legacies,
+    mask_accessory_icon,
+    mask_accessory_type,
+    mask_accessory_types,
+
+    caster_material,
+
+    materials,
   } = data;
 
   switch (type) {
@@ -343,9 +474,11 @@ const PredModal = (props: {
         <HairPickerElement
           name="Quill Style"
           icon={hair_icon}
-          active={hair_style}
+          active={
+            hair_styles.filter((hair) => hair.name === hair_style)[0].icon
+          }
           hair={hair_styles}
-          action={() => {}}
+          action={(style) => act('hair_style', style)}
           close={() => close()}
         />
       );
@@ -363,6 +496,7 @@ const PredModal = (props: {
           available_types={armor_types}
           prefix="halfarmor"
           close={close}
+          action="armor"
         />
       );
     case 'greaves':
@@ -375,6 +509,7 @@ const PredModal = (props: {
           available_types={greave_types}
           prefix="y-boots"
           close={close}
+          action="greaves"
         />
       );
     case 'mask':
@@ -387,18 +522,111 @@ const PredModal = (props: {
           available_types={mask_types}
           prefix="pred_mask"
           close={close}
+          action="mask"
         />
       );
+
+    case 'caster':
+      return (
+        <Section
+          title="Caster"
+          p={2}
+          buttons={<Button icon="x" onClick={() => close()} />}
+        >
+          <Stack>
+            {materials.map((material) => (
+              <Stack.Item key={material}>
+                <Button
+                  selected={material === caster_material}
+                  onClick={() => act('caster_material', { material: material })}
+                  tooltip={capitalizeFirst(material)}
+                >
+                  <DmIcon
+                    icon={data.caster_icon}
+                    icon_state={`${data.caster_prefix}_${material}`}
+                    height="96px"
+                  />
+                </Button>
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Section>
+      );
+
+    case 'mask_accessory':
+      return (
+        <Section
+          title="Mask Accessory"
+          width={20}
+          buttons={<Button icon="x" onClick={() => close()} />}
+        >
+          <Stack>
+            {Array.from({ length: mask_accessory_types + 1 }).map(
+              (_, index) => (
+                <Stack.Item key={index}>
+                  <Button
+                    tooltip={index === 0 ? 'Unequipped' : index}
+                    selected={mask_accessory_type === index}
+                    onClick={() => act('mask_accessory', { type: index })}
+                  >
+                    <Stack align="center">
+                      <Stack.Item width="96px" height="96px">
+                        {index === 0 ? (
+                          <Icon name="x" size={5} p={3} pl={6.5} />
+                        ) : (
+                          <DmIcon
+                            icon={mask_accessory_icon}
+                            icon_state={`pred_accessory${index}_${mask_material}`}
+                            width="96px"
+                          />
+                        )}
+                      </Stack.Item>
+                    </Stack>
+                  </Button>
+                </Stack.Item>
+              ),
+            )}
+          </Stack>
+        </Section>
+      );
+
+    case 'cape_color':
+      return <CapeColorPicker close={close} />;
 
     default:
       break;
   }
 };
 
+const CapeColorPicker = (props: { readonly close: () => void }) => {
+  const { close } = props;
+
+  const { act, data } = useBackend<PredData>();
+  const { cape_color } = data;
+
+  const [currentColor, setCurrentColor] = useState<HsvaColor>(
+    hexToHsva(cape_color || '#000000'),
+  );
+
+  return (
+    <Box width="500px">
+      <ColorSelector
+        color={currentColor}
+        setColor={setCurrentColor}
+        defaultColor={cape_color}
+        onConfirm={() => {
+          close();
+          act(`cape_color`, { color: hsvaToHex(currentColor) });
+        }}
+      />
+    </Box>
+  );
+};
+
 const SkinColorPicker = (props: { readonly close: () => void }) => {
   const { close } = props;
 
-  const { data } = useBackend<PredData>();
+  const { act, data } = useBackend<PredData>();
   const { skin_colors, skin_color } = data;
 
   return (
@@ -410,7 +638,11 @@ const SkinColorPicker = (props: { readonly close: () => void }) => {
       <Stack>
         {Object.keys(skin_colors).map((color) => (
           <Stack.Item key={color}>
-            <Button p={1} tooltip={capitalizeFirst(color)}>
+            <Button
+              p={1}
+              tooltip={capitalizeFirst(color)}
+              onClick={() => act('skin_color', { color: color })}
+            >
               <ColorBox p={2} color={skin_colors[color]} />
             </Button>
           </Stack.Item>

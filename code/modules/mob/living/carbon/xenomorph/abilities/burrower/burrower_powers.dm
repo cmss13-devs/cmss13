@@ -206,6 +206,7 @@
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
+	burrower_tremor.create_stomp()
 
 
 	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))

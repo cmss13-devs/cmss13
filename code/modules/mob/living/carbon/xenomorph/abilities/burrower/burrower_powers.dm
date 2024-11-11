@@ -192,11 +192,11 @@
 	var/mob/living/carbon/xenomorph/burrower_tremor = owner
 
 	if (HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
-		to_chat("We must be above ground to do this.")
+		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
 	if (burrower_tremor.is_ventcrawling)
-		to_chat("We must be above ground to do this.")
+		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
 	if (!burrower_tremor.check_state())

@@ -29,7 +29,7 @@
 		return
 
 	init_mob()
-	message_to_player("This tutorial will teach you the fundamental skills for playing a Marine Hospital Corpsman.")
+	message_to_player("This tutorial will teach you the fundamental skills for playing as a Marine Hospital Corpsman.")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/uniform()
@@ -134,7 +134,7 @@
 	message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(human_dummy, COLOR_GREEN)
 	update_objective("Click on the Dummy with your Health Analyzer")
-	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(brute_tutorial_3_pre))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(scanner_3))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_3(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
@@ -199,9 +199,9 @@
 	remove_highlight(medbelt)
 	remove_highlight(bica)
 
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(brute_pill_fed_reject))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed_reject))
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(brute_pill_fed))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed_reject()
 	var/mob/living/living_mob = tutorial_mob
@@ -217,9 +217,9 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
 	message_to_player("When administered in pill form, chemicals take a few seconds to be digested before they can enter the patients bloodstream, and heal damage.")
 	message_to_player("Medications administered when a patient is dead will not heal damage until the patient has been revived.")
@@ -343,14 +343,14 @@
 	message_to_player("Excellent. As you can see, the left arm of the little man in the <b>zone selection</b> element is now highlighted. This means we will target the left arm of patients when treating them.")
 	message_to_player("Now, just like before, keep the left arm selected, and click on the Dummy while holding the <b>Advanced Trauma Kit</b> in your hand to apply it to their left arm")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	var/obj/limb/arm/mob_larm = locate(/obj/limb/arm/l_arm) in human_dummy.limbs
+	var/obj/limb/arm/l_arm/mob_larm = locate(/obj/limb/arm/l_arm) in human_dummy.limbs
 	add_to_tracking_atoms(mob_larm)
 	RegisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/arm, mob_larm)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/arm/l_arm, mob_larm)
 	UnregisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/bruise_pack, brutekit)
@@ -375,7 +375,7 @@
 
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_2_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_pre()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -383,7 +383,6 @@
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
-
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	var/obj/item/storage/pill_bottle/kelo = new(medbelt)
@@ -431,14 +430,13 @@
 	remove_highlight(medbelt)
 	remove_highlight(kelo)
 
-	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(burn_tutorial_3))
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(burn_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_tutorial_3))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_pill_fed_reject))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_pill_fed_reject()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
@@ -452,8 +450,8 @@
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
 	message_to_player("Well done!")
 	message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
@@ -785,8 +783,8 @@
 	add_to_tracking_atoms(tram)
 	add_highlight(tram, COLOR_GREEN)
 
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(tram_pill_fed_reject))
-	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(tram_pill_fed))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed_reject()
 	SIGNAL_HANDLER
@@ -800,9 +798,9 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
 	message_to_player("Well done! But it looks like the Dummy is still in extreme pain.")
 	message_to_player("Like pain levels, each type of painkiller has a varying degree of potency. While effective as a general painkiller, Tramadol is not powerful enough to fully supress extreme levels of pain.")
@@ -858,7 +856,7 @@
 
 
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_pre()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -914,14 +912,14 @@
 	remove_highlight(medbelt)
 	remove_highlight(dylo)
 
-	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(dylo_pill_fed))
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(dylo_pill_fed_reject))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dylo_pill_fed))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dylo_pill_fed_reject))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed_reject()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
@@ -934,9 +932,9 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
 	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
 	message_to_player("Unfortunately, unlike Brute and Burn damage, Toxin damage has no treatment kits, making it extremely difficult to treat in large amounts.")
@@ -1014,9 +1012,9 @@
 	var/obj/item/reagent_container/pill/kelotane/kelo = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(kelo)
 	add_highlight(kelo, COLOR_GREEN)
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED, PROC_REF(kelo_pill_fed_reject))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(kelo_pill_fed_reject))
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_MOB_PILL_FED, PROC_REF(kelo_pill_fed))
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(kelo_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed_reject()
 	SIGNAL_HANDLER
@@ -1030,9 +1028,9 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_PILL_FED)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
 	message_to_player("Well done, the Dummy's condition is now stable, and their overdose will disappear over time.")
 

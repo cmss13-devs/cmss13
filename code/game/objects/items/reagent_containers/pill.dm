@@ -69,7 +69,7 @@
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
 		SPAN_HELPFUL("You swallow [src]."))
-		SEND_SIGNAL(M, COMSIG_MOB_PILL_FED, src)
+		SEND_SIGNAL(M, COMSIG_HUMAN_PILL_FED, src)
 		var/list/reagents_in_pill = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents_in_pill += R.name
@@ -105,7 +105,7 @@
 
 		user.drop_inv_item_on_ground(src) //icon update
 
-		SEND_SIGNAL(M, COMSIG_MOB_PILL_FED, src)
+		SEND_SIGNAL(M, COMSIG_HUMAN_PILL_FED, src)
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [M] a pill."),

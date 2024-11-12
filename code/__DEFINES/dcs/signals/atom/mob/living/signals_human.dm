@@ -73,3 +73,6 @@
 
 // From /obj/limb/proc/apply_splints() : (obj/item/stack/medical/splint/splint, mob/living/user, mob/living/carbon/human/target)
 #define COMSIG_HUMAN_SPLINT_APPLIED "human_splint_applied"
+
+/// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_HUMAN_PILL_FED "human_pill_fed"

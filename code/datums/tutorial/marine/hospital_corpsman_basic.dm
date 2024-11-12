@@ -173,6 +173,8 @@
 
 
 	message_to_player("A <b>Bicaridine Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Pill Bottles are color-coded to correspond with the type of damage they heal.")
+	message_to_player("The Bicaridine Pill Bottle is <b>Red</b>, to match brute damage.")
 	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Bicaridine Pill Bottle</b> to draw a pill.")
 
 	add_highlight(medbelt, COLOR_GREEN)
@@ -994,7 +996,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	message_to_player("It seems that Mr Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 5 units.")
+	message_to_player("It seems that Mr Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 10 units.")
 	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
 	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
 
@@ -1004,9 +1006,10 @@
 	SIGNAL_HANDLER
 
 	message_to_player("The effects of every overdose will have different methods of treatment depending on the chemical.")
-	message_to_player("To stabilize a patient after an overdose, you should follow the automatic medicine recommendations displayed in your <b>Health Analyzer</b> interface.")
-	message_to_player("As you can see on your Health Analyzer scan, the Bicaridine overdose is creating <b>Burn Damage</b> on the Dummy.")
-	message_to_player("To counteract this, we will follow the Health Analyzers recommendations, and feed the Dummy a <b>Kelotane Pill</b>.")
+	message_to_player("To stabilize a patient after an overdose, you should follow the automatic medicine recommendations displayed on the bottom of your <b>Health Analyzer</b> interface (you may need to scroll down to see them).")
+	message_to_player("As you can see on your Health Analyzer scan, the Bicaridine overdose is creating Burn Damage on the Dummy.")
+	message_to_player("Kelotane, which is used to primarily treat <b>Burn</b> damage, can also be used to counteract the effects of this overdose.")
+	message_to_player("We will follow the Health Analyzers recommendations on the bottom of the interface, and feed the Dummy a <b>Kelotane Pill</b>.")
 
 	var/obj/item/reagent_container/pill/kelotane/kelo = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(kelo)

@@ -3582,6 +3582,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	flags_attach_features = ATTACH_ACTIVATION
 
+/obj/item/attachable/bipod/pkp
+	name = "pkp bipod"
+	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing."
+	icon_state = "qjy72_bipod"
+	attach_icon = "qjy72_bipod"
+
 /obj/item/attachable/bipod/vulture
 	name = "heavy bipod"
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."

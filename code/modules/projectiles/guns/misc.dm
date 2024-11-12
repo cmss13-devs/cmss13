@@ -179,7 +179,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
 		/obj/item/attachable/stock/pkpstock,
-		/obj/item/attachable/bipod,
+		/obj/item/attachable/bipod/pkp,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
@@ -198,16 +198,16 @@
 	update_attachable(pkpstock.slot)
 
 	//invisible mag harness
-	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
-	Integrated.hidden = TRUE
-	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	Integrated.Attach(src)
-	update_attachable(Integrated.slot)
+	var/obj/item/attachable/magnetic_harness/harness = new(src)
+	harness.hidden = TRUE
+	harness.flags_attach_features &= ~ATTACH_REMOVABLE
+	harness.Attach(src)
+	update_attachable(harness.slot)
 
-	var/obj/item/attachable/bipod/bipod = new /obj/item/attachable/bipod(src)
-	bipod.flags_attach_features
+	var/obj/item/attachable/bipod/pkp/bipod = new /obj/item/attachable/bipod/pkp(src)
+	bipod.flags_attach_features &= ~ATTACH_REMOVABLE
 	bipod.Attach(src)
-	update_attachable(attachie.slot)
+	update_attachable(bipod.slot)
 
 
 /obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
@@ -216,7 +216,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 29, "under_y" = 13, "stock_x" = 10, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 26, "under_y" = 15, "stock_x" = 10, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()

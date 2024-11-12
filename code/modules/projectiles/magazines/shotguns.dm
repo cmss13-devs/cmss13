@@ -198,6 +198,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	handful_state = "slug_shell"
 	transfer_handful_amount = 5
 
+
 /obj/item/ammo_magazine/handful/shotgun/slug
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary

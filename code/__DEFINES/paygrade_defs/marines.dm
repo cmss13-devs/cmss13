@@ -78,3 +78,6 @@
 
 /// MO10S, Commandant of the Marine Corps
 #define PAY_SHORT_MO10S "MO10S"
+
+/// SYN_K9, Synthetic K9
+#define PAY_SHORT_SYN_K9 "K9"

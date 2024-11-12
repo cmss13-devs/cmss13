@@ -74,6 +74,9 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
 	/client/proc/toggle_admin_afk_safety,
+	/client/proc/add_known_alt,
+	/client/proc/remove_known_alt,
+	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -156,7 +159,6 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,

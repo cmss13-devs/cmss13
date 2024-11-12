@@ -244,6 +244,10 @@
 	desc = "An 18th-century trenchcoat. Someone who wears this means serious business.  DONOR ITEM"
 	icon_state = "detective"
 	item_state = "det_suit"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/marine/fluff/wright //CKEY=wrightthewrong
@@ -294,12 +298,20 @@
 	desc = "A vintage DONOR ITEM"
 	icon_state = "bulletproof"
 	item_state = "bulletproof"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/john56 //CKEY=johnkilla56
 	name = "A red trenchcoat"
 	desc = "A special trenchcoat made famous for instilling fear into greytide everywhere. DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/marine/light/fluff/biolock //CKEY=biolock
@@ -319,6 +331,10 @@
 	desc = "Looks like a hardsuit.  Unique DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/Zynax //CKEY=zynax
 	name = "Gorka Vest"
@@ -349,6 +365,10 @@
 	desc = "A fairly advanced set of armor.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/mitii
 	name = "Mya's Trenchcoat"

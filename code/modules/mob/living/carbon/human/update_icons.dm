@@ -142,7 +142,7 @@ There are several things that need to be remembered:
 	overlays_standing[BODYPARTS_LAYER] = new_limbs
 	apply_overlay(BODYPARTS_LAYER)
 
-	update_underwear()
+	update_undergarments()
 
 /// Recalculates and reapplies damage overlays to every limb
 /mob/living/carbon/human/proc/update_damage_overlays()
@@ -160,18 +160,30 @@ There are several things that need to be remembered:
 	apply_overlay(DAMAGE_LAYER)
 
 /// If this human should have underwear, reapply the overlays
-/mob/living/carbon/human/proc/update_underwear()
+/mob/living/carbon/human/proc/update_undergarments()
 	if(!(species.flags & HAS_UNDERWEAR))
 		return
 
-	remove_overlay(UNDERSHIRT_LAYER)
+	update_underwear()
+	update_undershirt()
+
+/// Checks if the mob's specific [/datum/sprite_accessory/underwear] should be equipped
+/mob/living/carbon/human/proc/update_underwear()
 	remove_overlay(UNDERWEAR_LAYER)
+
+	if(w_uniform)
+		return
 
 	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
 	var/image/underwear_icon = underwear_datum.get_image(gender)
 	underwear_icon.layer = -UNDERWEAR_LAYER
+
 	overlays_standing[UNDERWEAR_LAYER] = underwear_icon
 	apply_overlay(UNDERWEAR_LAYER)
+
+/// Checks if the mob's specific [/datum/sprite_accessory/undershirt] should be equipped
+/mob/living/carbon/human/proc/update_undershirt()
+	remove_overlay(UNDERSHIRT_LAYER)
 
 	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
 	if(w_uniform && !undershirt_datum.shown_under_uniform)
@@ -345,7 +357,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			overlays_standing[UNIFORM_LAYER] = I
 			apply_overlay(UNIFORM_LAYER)
 
-	update_underwear()
+	update_undergarments()
 	update_inv_wear_id()
 
 

@@ -167,16 +167,16 @@ There are several things that need to be remembered:
 	remove_overlay(UNDERSHIRT_LAYER)
 	remove_overlay(UNDERWEAR_LAYER)
 
-	if(w_uniform)
-		return
-
 	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
 	var/image/underwear_icon = underwear_datum.get_image(gender)
 	underwear_icon.layer = -UNDERWEAR_LAYER
 	overlays_standing[UNDERWEAR_LAYER] = underwear_icon
 	apply_overlay(UNDERWEAR_LAYER)
 
-	var/datum/sprite_accessory/underwear/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
+	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
+	if(w_uniform && !undershirt_datum.shown_under_uniform)
+		return
+
 	var/image/undershirt_icon = undershirt_datum.get_image(gender)
 	undershirt_icon.layer = -UNDERSHIRT_LAYER
 	overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
@@ -339,17 +339,13 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(species.flags & NO_OVERLAYS && !w_uniform.force_overlays_on)
 			return
 
-		remove_underwear()
-
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
 			var/image/I = w_uniform.get_mob_overlay(src, WEAR_BODY)
 			I.layer = -UNIFORM_LAYER
 			overlays_standing[UNIFORM_LAYER] = I
 			apply_overlay(UNIFORM_LAYER)
 
-	else
-		update_underwear()
-
+	update_underwear()
 	update_inv_wear_id()
 
 

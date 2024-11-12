@@ -160,6 +160,10 @@
 	icon_state = "47"
 	},
 /area/shuttle/drop_upp2/devana)
+"qV" = (
+/obj/structure/shuttle/part/dropshipupp2/transparent/engine_right_cap,
+/turf/template_noop,
+/area/shuttle/drop_upp2/devana)
 "rf" = (
 /obj/structure/shuttle/part/dropshipupp2/transparent/middle_left_wing{
 	icon_state = "upp_wing_left_red_logo"
@@ -417,6 +421,7 @@
 	},
 /area/shuttle/drop_upp2/devana)
 "KV" = (
+/obj/structure/shuttle/part/dropshipupp2/transparent/engine_left_cap,
 /turf/template_noop,
 /area/shuttle/drop_upp2/devana)
 "Lj" = (
@@ -632,7 +637,7 @@ Sg
 Gq
 Wf
 uw
-KV
+qV
 LN
 ja
 fN
@@ -839,7 +844,7 @@ Hi
 Hi
 Hi
 Hi
-KV
+qV
 tX
 NI
 uR

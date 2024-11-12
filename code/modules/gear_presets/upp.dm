@@ -653,7 +653,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/specialist
-	name = "UPP Specialist (Cryo)"
+	name = "UPP Specialist minigun (Cryo)"
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
@@ -3204,6 +3204,11 @@
 //===================//
 //  UPP Synthetics  //
 //================//
+
+/datum/job/antag/upp/synth
+	title = JOB_UPP_SUPPORT_SYNTH
+	gear_preset = /datum/equipment_preset/upp/synth
+
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
 

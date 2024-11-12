@@ -554,7 +554,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
-			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			if(ghost.client)
+				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			else if(persistent_ckey)
+				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+				if(details)
+					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost

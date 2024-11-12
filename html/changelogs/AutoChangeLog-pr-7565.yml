@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - maptweak: "Fixed the rotation of the telecoms APC in the Aerodome on Shivas"

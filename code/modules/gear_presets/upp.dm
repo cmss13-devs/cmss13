@@ -3204,6 +3204,11 @@
 //===================//
 //  UPP Synthetics  //
 //================//
+
+/datum/job/antag/upp/synth
+	title = JOB_UPP_SUPPORT_SYNTH
+	gear_preset = /datum/equipment_preset/upp/synth
+
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
 

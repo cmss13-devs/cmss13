@@ -40,7 +40,7 @@ def insert_into_tree(repo, tree_builder, path, blob_oid):
         tree_builder.insert(first, inner.write(), pygit2.GIT_FILEMODE_TREE)
 
 
-def main(repo):
+def main(repo : pygit2.Repository):
     if repo.index.conflicts:
         print("You need to resolve merge conflicts first.")
         return 1
@@ -51,25 +51,44 @@ def main(repo):
             continue
         if status & STATUS_INDEX:
             print("You have changes staged for commit. Commit them or unstage them first.")
-            print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
+            print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
             return 1
         if path.endswith(".dmm") and (status & STATUS_WT):
             print("You have modified maps. Commit them first.")
-            print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
+            print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
             return 1
 
-    # Read the HEAD commit.
+    # Read the HEAD and ancestor commits.
     head_commit = repo[repo.head.target]
+    ancestor = repo.merge_base(repo.head.target, repo.branches.local.get('master').target)
     head_files = {}
     for path, blob in walk_tree(head_commit.tree):
         if path.endswith(".dmm"):
             data = blob.read_raw()
+
+            # test: is every DMM in TGM format
             if not data.startswith(TGM_HEADER):
                 head_files[path] = dmm.DMM.from_bytes(data)
+                continue
+
+            # test: does every DMM convert cleanly
+            try:
+                ancestor_blob = repo[repo[ancestor].tree[path].id]
+            except KeyError:
+                pass # New map
+            else:
+                head_map = dmm.DMM.from_bytes(data)
+                ancestor_map = dmm.DMM.from_bytes(ancestor_blob.read_raw())
+                merged_map = merge_map(head_map, ancestor_map, suppress_notices=True)
+                originalBytes = head_map.to_bytes()
+                mergedBytes = merged_map.to_bytes()
+                if originalBytes != mergedBytes:
+                    head_files[path] = head_map
+                    continue
 
     if not head_files:
         print("All committed maps appear to be in the correct format.")
-        print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
+        print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
         return 1
 
     # Work backwards to find a base for each map, converting as found.

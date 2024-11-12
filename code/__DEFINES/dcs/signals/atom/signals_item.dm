@@ -29,6 +29,9 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+// From /obj/item/proc/on_exit_storage()
+#define COMSIG_ITEM_DRAWN_FROM_STORAGE "item_drawn_from_storage"
+
 ///from /obj/item/device/camera/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
 #define COMSIG_BROADCAST_HEAR_TALK "broadcast_hear_talk"

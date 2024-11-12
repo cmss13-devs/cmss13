@@ -398,6 +398,7 @@ cases. Override_icon_state should be a list.*/
 		if(!LAZYLEN(S.hearing_items))
 			S.flags_atom &= ~USES_HEARING
 	var/atom/location = S.get_loc_turf()
+	SEND_SIGNAL(src, COMSIG_ITEM_DRAWN_FROM_STORAGE)
 	do_drop_animation(location)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.

@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "removes dupe definitions and corrects items i UPP Loudouts"

@@ -6,7 +6,7 @@ on:
   merge_group:
 jobs:
   run_linters:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Run Linters
     runs-on: ubuntu-latest
     concurrency:
@@ -75,7 +75,7 @@ jobs:
       - run: ./DMCompiler_linux-x64/DMCompiler --suppress-unimplemented colonialmarines.dme
 
   compile_all_maps:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +92,7 @@ jobs:
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   find_all_maps:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Find Maps to Test
     runs-on: ubuntu-latest
     outputs:
@@ -117,7 +117,7 @@ jobs:
           ALTERNATE_TESTS_JSON=$(jq -nRc '[inputs | capture("^(?<major>[0-9]+)\\.(?<minor>[0-9]+): (?<map>.+)$")]' .github/alternate_byond_versions.txt)
           echo "alternate_tests=$ALTERNATE_TESTS_JSON" >> $GITHUB_OUTPUT
   run_all_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Unit Tests
     needs: [find_all_maps]
     strategy:
@@ -132,7 +132,7 @@ jobs:
       map: ${{ matrix.map }}
 
   run_alternate_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Alternate Tests
     needs: [find_all_maps]
     strategy:
@@ -149,7 +149,7 @@ jobs:
       minor: ${{ matrix.setup.minor }}
 
   check_alternate_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Check Alternate Tests
     needs: [run_alternate_tests]
     runs-on: ubuntu-latest
@@ -157,7 +157,7 @@ jobs:
       - run: echo Alternate tests passed.
 
   test_windows:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Windows Build
     runs-on: windows-latest
     concurrency:

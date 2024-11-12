@@ -38,7 +38,6 @@
 /datum/action/xeno_action/activable/sweep
 	name = "Tail Sweep"
 	action_icon_state = "agility_on"
-	ability_name = "sweep"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 2 SECONDS
@@ -46,7 +45,6 @@
 /datum/action/xeno_action/activable/chomp
 	name = "Chomp"
 	action_icon_state = "headbite"
-	ability_name = "chomp"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 2 SECONDS
@@ -54,7 +52,6 @@
 /datum/action/xeno_action/onclick/submerge
 	name = "Submerge"
 	action_icon_state = "stomp"
-	ability_name = "submerge"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 

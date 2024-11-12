@@ -20556,9 +20556,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "omj" = (
-/obj/docking_port/stationary/marine_dropship/upp{
-	name = "Rostock Hanger bay"
-	},
+/obj/docking_port/stationary/marine_dropship/upp,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "omm" = (

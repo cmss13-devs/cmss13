@@ -219,3 +219,26 @@
       to tables
   harryob:
   - ui: adds a prettier custom loadout menu with images
+2024-11-11:
+  Drathek:
+  - balance: Queen remote building (while boosted) is now prevented in LZ linked weed
+      restricted areas
+  - balance: Adjusted/added LZ linked weed restriction areas on all maps in rotation
+  - maptweak: Fixed misplaced areas on Shivas.
+  - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
+  cuberound:
+  - bugfix: UPP CO joining from lobby should recive proper rank
+  harryob:
+  - ui: added a new tgui to select character traits. it's quite similar to the old
+      one
+2024-11-12:
+  An A Jay:
+  - balance: Made Medicomp heal to full for predators.
+  Katskan:
+  - bugfix: G2 cosmetic working properly
+  Nomoresolvalou, Thwomper:
+  - rscadd: 'Added two new yautja weapons: the longaxe and the staff'
+  - imageadd: Added sprites for the new weapons
+  Sunless2:
+  - rscadd: Added the ability for bayonets to cut down fences
+  - balance: It now takes twice the amount of throws to bring down a fence

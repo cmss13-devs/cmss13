@@ -302,7 +302,7 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 5
+	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
@@ -327,7 +327,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
+	fuel = 15 MINUTES
 	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
@@ -362,6 +362,19 @@
 
 /obj/item/device/flashlight/flare/process(delta_time)
 	fuel -= fuel_rate * delta_time
+	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
+		if( 14.25 MINUTES to 15 MINUTES)
+			set_light_range(7)
+		if(13.5 MINUTES to 14.24 MINUTES)
+			set_light_range(6)
+		if(3.5 MINUTES to 13.49 MINUTES)
+			set_light_range(5)
+		if(2.5 MINUTES to 3.49 MINUTES)
+			set_light_range(4)
+		if(1.5 MINUTES to 2.49 MINUTES)
+			set_light_range(3)
+		if(0 MINUTES to 1.49 MINUTES)
+			set_light_range(2)
 	if(fuel <= 0 || !on)
 		burn_out()
 

@@ -710,7 +710,7 @@
 	qdel(knife)
 
 	message_to_player("When someone recieves an exceptionally severe injury, there is a chance it might cause a <b>Bone Fracture</b> in their body.")
-	message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single <b>Bone Fracture</b> capable of triggering <b>Internal Bleeding</b>, and blood loss.")
+	message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single Bone Fracture capable of triggering <b>Internal Bleeding</b>, and blood loss.")
 	message_to_player("While <b>Bone Fractures</b> cannot be fully treated by a Hospital Corpsman through typical means, you can apply a <b>Splint</b> to the damaged area to stabilize the wound.")
 	message_to_player("<b>Bone Fractures</b> can be identified through a <b>Health Analyzer</b> scan.")
 	message_to_player("Scan the Dummy with your <b>Health Analyzer</b>.")

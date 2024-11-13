@@ -5,12 +5,6 @@
 "e" = (
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/misc/tutorial)
-"f" = (
-/obj/structure/machinery/optable{
-	anes_tank = 0
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial)
 "g" = (
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/misc/tutorial)
@@ -27,7 +21,7 @@
 	req_one_access = null;
 	req_access = null
 	},
-/turf/open/floor/almayer/dark_sterile,
+/turf/closed/wall/almayer/white/hull,
 /area/misc/tutorial)
 "o" = (
 /turf/open/floor/almayer/sterile_green,
@@ -91,7 +85,7 @@ a
 a
 g
 o
-f
+o
 o
 Z
 a

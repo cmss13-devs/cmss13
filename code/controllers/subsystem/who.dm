@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(who)
 	factions_additional += list(list("content" = "Marines: [counted_additional["uscm_marines"]]", "color" = "#5442bd", "text" = "Players playing as Marines"))
 	factions_additional += list(list("content" = "Yautjas: [counted_additional["yautja"]]", "color" = "#7ABA19", "text" = "Players playing as Yautja"))
 	factions_additional += list(list("content" = "Infected Predators: [counted_additional["infected_preds"]]", "color" = "#7ABA19", "text" = "Players playing as Infected Yautja"))
-	factions_additional += list(list("content" = "Infected Predators: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
+	factions_additional += list(list("content" = "Hunted In Preserve: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
 
 	for(var/i in 1 to length(counted_factions))
 		if(!counted_factions[counted_factions[i]])

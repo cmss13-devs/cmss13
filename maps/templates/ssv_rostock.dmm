@@ -23524,20 +23524,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/s_a_hallway)
-"rXZ" = (
-/obj/structure/window/framed/upp/hull,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 2;
-	id = "uppbrig1";
-	name = "Brig Lockdown"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "uppcourtyard";
-	name = "\improper Privacy Shutters"
-	},
-/turf/closed/wall/almayer/upp/reinforced,
-/area/rostock/security/brig_holding_area)
 "rYG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -27061,10 +27047,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/bunk)
-"uOd" = (
-/obj/structure/window/framed/upp/hull,
-/turf/closed/wall/almayer/upp/reinforced/outer,
-/area/rostock/upperdeck_maint/p_f)
 "uOh" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ammo_magazine/rocket/upp{
@@ -47338,7 +47320,7 @@ ncO
 doM
 vhg
 syq
-rXZ
+hRH
 ogL
 ddO
 jHz
@@ -51725,7 +51707,7 @@ gAs
 gAs
 pZW
 acX
-uOd
+vYh
 jtG
 ofW
 ofW

@@ -1,4 +1,4 @@
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_squad_prep
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep
 	name = "\improper UnionAraratCorp Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a small storage of standard soldier uniforms."
 	req_access = list(ACCESS_UPP_GENERAL)
@@ -7,9 +7,9 @@
 	listed_products = list()
 	hackable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_squad_prep/populate_product_list(scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep/populate_product_list(scale)
 	listed_products = list(
-		list("STANDARD EQUIPMENT", -1, null, null, null),
+		list("STANDARD EQUIPMENT", -1, null, null),
 		list("Soldier Combat Boots", floor(scale * 15), /obj/item/clothing/shoes/marine/upp/knife, VENDOR_ITEM_REGULAR),
 		list("UPP Uniform", floor(scale * 15), /obj/item/clothing/under/marine/veteran/UPP, VENDOR_ITEM_REGULAR),
 		list("Soldier Combat Gloves", floor(scale * 15), /obj/item/clothing/gloves/marine/veteran/upp, VENDOR_ITEM_REGULAR),
@@ -31,7 +31,7 @@
 		list("UM5 Medium Personal Armor", floor(scale * 15), /obj/item/clothing/suit/storage/marine/faction/UPP, VENDOR_ITEM_REGULAR),
 		list("UL6 Light Personal Armor", floor(scale * 15), /obj/item/clothing/suit/storage/marine/faction/UPP/support, VENDOR_ITEM_REGULAR),
 
-		list("BACKPACK", -1, null, null, null),
+		list("BACKPACK", -1, null, null),
 		list("Combat Pack", floor(scale * 15), /obj/item/storage/backpack/lightpack/upp, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED BACKPACKS", -1, null, null),
@@ -45,7 +45,7 @@
 		list("Shotgun Shell Loading Rig", floor(scale * 15), /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("G8-A General Utility Pouch", floor(scale * 15), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
 
-		list("POUCHES", -1, null, null, null),
+		list("POUCHES", -1, null, null),
 		list("Bayonet Sheath (Full)",floor(scale * 15), /obj/item/storage/pouch/bayonet, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", floor(scale * 15), /obj/item/storage/pouch/firstaid/full/alternate, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Pill Packets)", floor(scale * 15), /obj/item/storage/pouch/firstaid/full/pills, VENDOR_ITEM_REGULAR),
@@ -57,7 +57,7 @@
 		list("Pistol Magazine Pouch", floor(scale * 15), /obj/item/storage/pouch/magazine/pistol, VENDOR_ITEM_REGULAR),
 		list("Pistol Pouch", floor(scale * 15), /obj/item/storage/pouch/pistol, VENDOR_ITEM_REGULAR),
 
-		list("RESTRICTED POUCHES", -1, null, null, null),
+		list("RESTRICTED POUCHES", -1, null, null),
 		list("Construction Pouch", 1.25, /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", 1.25, /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First Responder Pouch (Empty)", 2.5, /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
@@ -65,12 +65,12 @@
 		list("Tools Pouch", 1.25, /obj/item/storage/pouch/tools, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 1.25, /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
 
-		list("MASK", -1, null, null, null),
+		list("MASK", -1, null, null),
 		list("Gas Mask", floor(scale * 15), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", floor(scale * 10), /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		list("Rebreather", floor(scale * 10), /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
-		list("MISCELLANEOUS", -1, null, null, null),
+		list("MISCELLANEOUS", -1, null, null),
 		list("Ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles, VENDOR_ITEM_REGULAR),
 		list("M1A1 Ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/v2, VENDOR_ITEM_REGULAR),
 		list("Prescription ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/prescription, VENDOR_ITEM_REGULAR),
@@ -84,7 +84,7 @@
 		list("UPP Naval Infantry patch", floor(scale * 15), /obj/item/clothing/accessory/patch/upp/naval, VENDOR_ITEM_REGULAR),
 		list("Bedroll", floor(scale * 20), /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
 
-		list("OPTICS", -1, null, null, null),
+		list("OPTICS", -1, null, null),
 		list("Advanced Medical Optic (CORPSMAN ONLY)", floor(scale * 4), /obj/item/device/helmet_visor/medical/advanced, VENDOR_ITEM_REGULAR),
 
 		)

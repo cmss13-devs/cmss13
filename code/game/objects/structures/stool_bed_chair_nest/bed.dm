@@ -182,6 +182,13 @@
 /obj/structure/bed/alien
 	icon_state = "abed"
 
+/obj/structure/bed/alien/yautja
+	icon_state = "abed"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/bed/alien/yautja/leader
+	icon_state = "bed"
+
 /*
  * Roller beds
  */

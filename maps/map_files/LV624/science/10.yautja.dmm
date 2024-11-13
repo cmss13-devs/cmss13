@@ -196,6 +196,9 @@
 	name = "Science Wing Lockdown";
 	pixel_x = 25
 	},
+/obj/structure/showcase/yautja{
+	dir = 8
+	},
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aL" = (
@@ -341,6 +344,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
+"fr" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
 "gd" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
@@ -349,6 +356,26 @@
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/crap_item,
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"nM" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table,
+/obj/structure/machinery/juicer{
+	pixel_y = 10;
+	pixel_x = -12
+	},
+/obj/item/stack/yautja_rope{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"pV" = (
+/obj/structure/closet/yautja,
+/obj/item/tool/wirecutters/yautja,
+/obj/item/tool/crowbar/yautja,
+/obj/item/tool/wrench/yautja,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "rg" = (
@@ -367,6 +394,13 @@
 "CC" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"CS" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = 7
+	},
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "FO" = (
@@ -392,6 +426,16 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/white,
+/area/lv624/lazarus/research)
+"Ta" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"Ti" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8
+	},
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Zw" = (
 /obj/structure/surface/table,
@@ -425,7 +469,7 @@ ao
 ab
 as
 ak
-ec
+CS
 ab
 ao
 ao
@@ -442,7 +486,7 @@ aq
 ar
 gM
 aO
-aE
+nM
 ar
 aW
 aX
@@ -453,7 +497,7 @@ aa
 (4,1,1) = {"
 aa
 ai
-al
+fr
 ax
 al
 aG
@@ -470,13 +514,13 @@ aa
 (5,1,1) = {"
 aa
 ai
-al
+Ta
 al
 aD
 ar
-al
+Ti
 ak
-al
+pV
 ar
 aY
 aX

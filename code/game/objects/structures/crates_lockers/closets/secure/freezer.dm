@@ -63,6 +63,9 @@
 /obj/structure/closet/secure_closet/freezer/fridge/ex_act(severity) // positively devious
 	return
 
+/obj/structure/closet/secure_closet/freezer/fridge/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/closet/secure_closet/freezer/fridge/groceries
 	name = "Groceries"
 
@@ -98,6 +101,9 @@
 		new /obj/item/reagent_container/food/snacks/grown/orange(src)
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
+
+/obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/closet/secure_closet/freezer/money
 	name = "Freezer"

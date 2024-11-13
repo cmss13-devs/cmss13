@@ -750,6 +750,8 @@
 /obj/structure/machinery/computer/crew/alt/yautja
 	name = "\improper Yautja health monitor"
 	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "crew"
 	faction = FACTION_YAUTJA
 	crewmonitor_type = /datum/crewmonitor/yautja
 

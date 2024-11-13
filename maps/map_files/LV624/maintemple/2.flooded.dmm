@@ -91,21 +91,8 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "cG" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	pixel_y = 10
-	},
-/turf/open/gm/dirt,
+/obj/structure/showcase/yautja,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "de" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
@@ -126,10 +113,9 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/stack/sheet/animalhide/xeno{
-	color = "#524e4e";
-	desc = "An old hide from a fearsome creature.";
-	name = "hunter hide"
+/obj/item/skull/hunter{
+	pixel_y = 2;
+	anchored = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -168,56 +154,12 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"eq" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "es" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = -1;
 	pixel_y = 31
 	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
-	},
+/obj/structure/showcase/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ev" = (
@@ -319,10 +261,6 @@
 "hi" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"hu" = (
-/obj/item/weapon/sword,
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/lv624/ground/caves/sand_temple)
 "hA" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/sand_temple)
@@ -330,7 +268,7 @@
 /turf/open/gm/dirtgrassborder/desert2,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hO" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /obj/structure/flora/jungle/vines/light_3,
@@ -397,26 +335,6 @@
 "jz" = (
 /obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"jP" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "jZ" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -494,23 +412,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -546,32 +449,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "qz" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
-	},
+/obj/structure/bed/alien/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rd" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -620,30 +506,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"tS" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "tU" = (
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
@@ -671,23 +533,8 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "uy" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -747,32 +594,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "wl" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
 /obj/structure/flora/jungle/vines/heavy,
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
-	},
+/obj/structure/showcase/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wt" = (
@@ -865,24 +692,8 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "zu" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor/map_random{
-	anchored = 1;
-	pixel_y = 10
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -921,9 +732,6 @@
 /obj/item/stack/sheet/metal{
 	amount = 3
 	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BE" = (
@@ -933,24 +741,6 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/runed_sandstone/west,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
-"BI" = (
-/obj/item/weapon/sword{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Ce" = (
@@ -1117,8 +907,9 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/stack/sheet/animalhide/xeno{
-	name = "Warrior hide"
+/obj/item/skull/warrior{
+	pixel_y = 3;
+	anchored = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1174,28 +965,13 @@
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "Je" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = -1;
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1213,20 +989,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "JN" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/structure/showcase/yautja/alt,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Ki" = (
@@ -1273,24 +1036,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
-"Mn" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "Mq" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
@@ -1358,30 +1103,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "PO" = (
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/effect/spider/stickyweb,
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/effect/spider/stickyweb,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Qj" = (
@@ -1427,7 +1157,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Rx" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -1590,35 +1320,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "WW" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	armor_bio = 0;
-	armor_bomb = 0;
-	armor_bullet = 0;
-	armor_energy = 0;
-	armor_internaldamage = 0;
-	armor_laser = 0;
-	armor_melee = 0;
-	armor_rad = 0;
-	desc = "A beautifully designed stone face mask, both ornate and functional.";
-	name = "stone clan mask";
-	unacidable = 0;
-	pixel_y = 10
-	},
 /obj/structure/flora/jungle/vines/heavy,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/structure/showcase/yautja/alt,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Xg" = (
@@ -1642,16 +1345,14 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "XV" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Zi" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
-	},
-/turf/open/gm/dirt,
+/obj/structure/bed/alien/yautja/leader,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Zs" = (
 /obj/structure/prop/brazier,
@@ -2187,13 +1888,13 @@ GT
 GT
 GT
 OC
-jP
+JN
 gL
 Jc
 Jc
 Jc
 gL
-Mn
+WW
 xO
 fG
 po
@@ -2402,7 +2103,7 @@ Tv
 mv
 mv
 wU
-hu
+po
 ci
 vY
 eY
@@ -2421,7 +2122,7 @@ xy
 xy
 xy
 gJ
-tS
+mZ
 fD
 DG
 DG
@@ -2589,7 +2290,7 @@ RV
 RV
 RV
 Jz
-eq
+rI
 Xg
 QG
 QG
@@ -2613,7 +2314,7 @@ Ai
 ax
 ci
 jq
-BI
+uy
 sH
 dA
 Uj
@@ -3361,7 +3062,7 @@ ZX
 GT
 if
 Ai
-Ai
+mv
 mv
 tn
 OC
@@ -3404,7 +3105,7 @@ GT
 OC
 as
 XV
-Ai
+mv
 lt
 OC
 qz
@@ -3451,7 +3152,7 @@ XQ
 Mq
 Zi
 mv
-qz
+Zi
 xO
 UX
 MX

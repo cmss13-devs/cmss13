@@ -481,7 +481,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/cult/hunting_grounds
 	name = "wall"
-	hull = 1
+	hull = TRUE
 
 
 //Hangar walls

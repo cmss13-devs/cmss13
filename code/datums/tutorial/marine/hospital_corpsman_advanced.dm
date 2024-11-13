@@ -1,8 +1,8 @@
 /datum/tutorial/marine/hospital_corpsman_advanced
-	name = "Marine - Hospital Corpsman (Advanced)"
+	name = "Marine - Hospital Corpsman (Advanced) - Under Construction"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
-	//required_tutorial = "marine_hm_1"
+	required_tutorial = "marine_debug"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 
 // ------------ CONTENTS ------------ //
@@ -42,10 +42,6 @@
 
 
 // TO DO LIST
-//
-// Section 0 - More Introductions
-// 0.1 Lifesaver Bag
-// 0.2 Learning Your Kit(?)
 //
 // Section 1 - Advanced Damage Treatment
 // 1.1 Oxygen Damage Treatment

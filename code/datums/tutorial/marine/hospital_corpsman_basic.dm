@@ -571,16 +571,19 @@
 	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
 	update_objective("")
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	human_dummy.rejuvenate()
-	human_dummy.reagents.clear_reagents()
-	mob_chest.add_bleeding(damage_amount = 15)
-	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 7 SECONDS)
 
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_1)), 9 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial_1()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	mob_chest.add_bleeding(damage_amount = 25)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 
 	message_to_player("The Dummy appears to be bleeding. Scan them with your <b>Health Analyzer</b> to identify which limb they are bleeding from.")
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(bleed_tutorial_2))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial_2()
@@ -604,10 +607,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
 	SIGNAL_HANDLER
-
-	// If you exit on this step, your limbs get deleted, which stops the bleeding, which progresses the tutorial despite it ending
-	if(!tutorial_mob || QDELETED(src))
-		return
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	UnregisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING)

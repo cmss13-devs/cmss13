@@ -7,6 +7,11 @@
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
+/datum/ammo/bullet/shotgun/setup_hvh_values()
+	. = ..()
+	accuracy = accuracy * 2 + 85 //we revert accuracy reduction that is applied on other bullets shotguns are accurate but already have short range only
+
+
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	handful_state = "slug_shell"
@@ -19,9 +24,6 @@
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
-/datum/ammo/bullet/shotgun/slug/setup_hvh_values()
-	. = ..()
-	accuracy = accuracy * 2 + 85 //we revert accuracy reduction that is applied on other bullets shotguns are accurate but already have short range only
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 6)

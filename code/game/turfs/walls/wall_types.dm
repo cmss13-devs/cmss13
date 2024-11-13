@@ -282,7 +282,6 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
-//	walltype = WALL_UPP_REINFORCED
 
 /turf/closed/wall/almayer/upp/reinforced/outer
 	name = "ultra reinforced hull"

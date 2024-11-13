@@ -275,7 +275,7 @@
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m10"
-	overlay_content = "_hv"
+	overlay_content = "_m10"
 	num_of_magazines = 22
 	magazine_type = /obj/item/ammo_magazine/pistol/m10
 
@@ -285,7 +285,7 @@
 /obj/item/ammo_box/magazine/m10/extended
 	name = "magazine box (Ext m10 x 10)"
 	overlay_ammo_type = "_ext"
-	overlay_content = "_hv"
+	overlay_content = "_m10"
 	num_of_magazines = 14
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/extended
 
@@ -295,7 +295,7 @@
 /obj/item/ammo_box/magazine/m10/drum
 	name = "magazine box (Drum m10 x 10)"
 	overlay_ammo_type = "_ext"
-	overlay_content = "_hv"
+	overlay_content = "_m10"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum
 

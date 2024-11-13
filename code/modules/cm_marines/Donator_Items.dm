@@ -213,11 +213,11 @@
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 
-/obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut armor"
-	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "skinnerarmor"
-	item_state = "skinnerarmor"
+/obj/item/clothing/suit/storage/marine/fluff/sas_hunk_jacket //CKEY=sasoperative (UNIQUE)
+	name = "Ranger Jacket"
+	desc = "A service Jacket for a once forgotten service branch. DONOR ITEM"
+	icon_state = "hunkjacket"
+	item_state = "hunkjacket"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
@@ -288,11 +288,11 @@
 	item_state = "bio_armor"
 	icon_state = "bio_armor"
 
-/obj/item/clothing/suit/storage/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Armor"
-	desc = "A combat armor with blood stains on it from previous battles.  UNIQUE DONOR ITEM"
-	icon_state = "hecuarmor_u"
-	item_state = "hecuarmor_u"
+/obj/item/clothing/suit/storage/marine/fluff/sas_hunk_armor //CKEY=sasoperative (UNIQUE)
+	name = "M3 Blackout Armor"
+	desc = "A discontinued varient of the M3 marine armor, it never saw service. This is probably hard to come by now.  UNIQUE DONOR ITEM"
+	icon_state = "hunkarmor"
+	item_state = "hunkarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/limo //CKEY=limodish (UNIQUE)
 	name = "Blood-Red Hardsuit"
@@ -580,10 +580,10 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
-/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut helmet"
-	icon_state = "skinnerhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
+/obj/item/clothing/head/helmet/marine/fluff/sas_hunk_beret //CKEY=sasoperative (UNIQUE)
+	name = "Ranger Beret"
+	icon_state = "hunkberet"
+	desc = "A beret for a long forgotten service branch. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
 	name = "Fancy Helmet"
@@ -640,10 +640,10 @@
 	icon_state = "beret_badge"
 	flags_inventory = BLOCKSHARPOBJ
 
-/obj/item/clothing/head/helmet/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Helmet"
-	icon_state = "hecuhelm_u"
-	desc = "A combat helmet, bearing the scars of many battles. UNIQUE DONOR ITEM"
+/obj/item/clothing/head/helmet/marine/fluff/sas_hunk_helmet //CKEY=sasoperative (UNIQUE)
+	name = "M3 Blackout Helmet"
+	icon_state = "hunkhelmet"
+	desc = "A dicontinued varient of the M3 armor, this is probably pretty rare now. UNIQUE DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Helmet"
@@ -1007,11 +1007,12 @@
 	worn_state = "pink"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Black Fatigues"
+/obj/item/clothing/under/marine/fluff/sas_hunk_uniform //CKEY=sasoperative (UNIQUE)
+	name = "Ranger Fatigues"
 	desc = "Black camo Fatigues usually used on Night Operations.  UNIQUE DONOR ITEM."
-	icon_state = "hecu_u"
-	worn_state = "hecu_u"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	icon_state = "hunkuni"
+	worn_state = "hunkuni"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
@@ -1227,11 +1228,11 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
-/obj/item/clothing/mask/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
+/obj/item/clothing/mask/fluff/sas_hunk_mask //CKEY=sasoperative (UNIQUE)
 	name = "Compact Gas Mask"
 	desc = "A compact Gas Mask with a pure red tint to it.  UNIQUE  DONOR ITEM."
-	item_state = "hecumask_u"
-	icon_state = "hecumask_u"
+	item_state = "hunkmask"
+	icon_state = "hunkmask"
 
 /obj/item/clothing/mask/fluff/limo //CKEY=limodish
 	name = "Swat Mask"
@@ -1330,12 +1331,12 @@
 	icon_state = "securitypack"
 	item_state = "securitypack"
 
-/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "tactical radiopack"
-	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
-	icon_state = "skinnerpack"
-	item_state = "securitypack"
-	has_gamemode_skin = FALSE //same sprite for all gamemodes.
+/obj/item/storage/backpack/marine/satchel/fluff/sas_hunk_backpack //CKEY=sasoperative (UNIQUE)
+	name = "M3 Ranger Pack"
+	desc = "A backpack worn by a now forgotten service branch. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	icon_state = "hunkpack"
+	item_state = "hunkpack"
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"

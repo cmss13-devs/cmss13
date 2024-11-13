@@ -1,6 +1,6 @@
 {
     "map_name": "SSV Rostock",
     "map_path": "templates/",
-    "map_file": "ssv_rostock.dmm",
+    "map_file": "SSV_Rostock.dmm",
 	"traits": [{ "Ground": true, "Admin": true }]
 }

@@ -590,15 +590,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
-"axw" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_port{
-	dwidth = 8;
-	name = "Rostock hanger port external airlock";
-	id = "rostock-ert-hangar-port";
-	airlock_id = "upp_umbilical"
-	},
-/turf/open/space,
-/area/space)
 "axU" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light{
@@ -2428,6 +2419,26 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/rostock/hangar/hangarbay)
+"bPL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	invisibility = 101
+	},
+/turf/open/floor/strata/floor2,
+/area/rostock/req)
 "bPS" = (
 /turf/open/floor/prison/darkbrown2/north,
 /area/rostock/engineering/main_area)
@@ -2867,7 +2878,7 @@
 /area/rostock/hangar/hangarbay)
 "cjZ" = (
 /obj/structure/machinery/line_nexter{
-	id = "lineupp";
+	id = "uppline1";
 	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles,
@@ -8789,8 +8800,7 @@
 /obj/structure/machinery/line_nexter_control{
 	id = "uppline2";
 	pixel_x = -4;
-	pixel_y = 10;
-	req_one_access_txt = "1;21"
+	pixel_y = 10
 	},
 /obj/structure/machinery/door_control{
 	id = "cargdoor";
@@ -10230,7 +10240,9 @@
 /turf/open/floor/plating,
 /area/rostock/security/brig_holding_area)
 "hOz" = (
-/obj/structure/machinery/line_nexter,
+/obj/structure/machinery/line_nexter{
+	id = "uppline2"
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/req)
 "hOL" = (
@@ -13010,6 +13022,11 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
 /turf/open/floor/strata/purp2,
 /area/rostock/req)
 "jKq" = (
@@ -13535,6 +13552,14 @@
 "kaF" = (
 /turf/closed/wall/upp,
 /area/rostock/ert_dock/starboard)
+"kaN" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
+/turf/open/floor/strata/orange_edge/east,
+/area/rostock/req)
 "kbh" = (
 /obj/structure/closet/crate/supply,
 /obj/item/stack/sandbags_empty/small_stack,
@@ -24601,6 +24626,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/m_hallway)
+"sKN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/rostock/req)
 "sKT" = (
 /obj/structure/ladder{
 	height = 1;
@@ -28989,8 +29020,7 @@
 /obj/structure/machinery/line_nexter_control{
 	id = "uppline1";
 	pixel_x = 8;
-	pixel_y = 10;
-	req_one_access_txt = "1;21"
+	pixel_y = 10
 	},
 /obj/structure/machinery/door_control{
 	id = "cargdoor";
@@ -30918,6 +30948,18 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer/mono,
+/area/rostock/req)
+"xyL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 3
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/strata/orange_edge,
 /area/rostock/req)
 "xzK" = (
 /turf/open/floor/corsat/arrow_south,
@@ -37189,7 +37231,7 @@ bjK
 bjK
 bjK
 bjK
-axw
+bjK
 dKd
 "}
 (30,1,1) = {"
@@ -43887,7 +43929,7 @@ xnR
 oga
 mho
 oFZ
-nVl
+sKN
 ixC
 kCa
 vZg
@@ -45171,7 +45213,7 @@ mVP
 qiT
 bxm
 pAY
-qPy
+bPL
 qPy
 vvm
 uZj
@@ -45538,7 +45580,7 @@ eiy
 sJS
 awv
 nld
-sGj
+xyL
 hfN
 hfN
 hfN
@@ -47346,7 +47388,7 @@ izG
 hfN
 gqo
 cXB
-cXB
+kaN
 wem
 cXB
 cXB

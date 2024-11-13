@@ -287,7 +287,7 @@
 	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
-	walltype = WALL_UPP_REINFORCED
+//	walltype = WALL_UPP_REINFORCED
 
 /turf/closed/wall/upp/reinforced/outer
 	name = "outer hull"
@@ -320,6 +320,7 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
 	opacity = TRUE
+	hull = 1
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"

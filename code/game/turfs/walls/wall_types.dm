@@ -287,7 +287,7 @@
 	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
-//	walltype = WALL_UPP_REINFORCED
+	walltype = WALL_UPP_REINFORCED
 
 /turf/closed/wall/upp/reinforced/outer
 	name = "outer hull"
@@ -295,7 +295,6 @@
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	hull = 1
-
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
@@ -316,7 +315,11 @@
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
-
+/turf/closed/wall/indestructible
+	name = "wall"
+	icon = 'icons/turf/walls/walls.dmi'
+	icon_state = "riveted"
+	opacity = TRUE
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"

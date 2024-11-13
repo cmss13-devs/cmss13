@@ -383,7 +383,6 @@
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_BASE "testwall"
 #define WALL_UPP_REINFORCED "reinforced"
-//#define WALL_UPP_HULL = "hull"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

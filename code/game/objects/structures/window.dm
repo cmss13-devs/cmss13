@@ -1063,9 +1063,8 @@
 	window_frame = /obj/structure/window_frame/upp/reinforced
 
 /obj/structure/window/framed/upp/hull
-	icon_state = "alm_rwindow0"
-	basestate = "alm_rwindow"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
+//	icon_state = "alm_rwindow0"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE

@@ -1379,6 +1379,12 @@
 	network = list("Rostock");
 	dir = 1
 	},
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 1;
+	network = list("Rostock");
+	pixel_y = -3
+	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/strata/red4/east,
 /area/rostock/security/brig_entryway)
 "bbt" = (
@@ -2548,7 +2554,7 @@
 	},
 /obj/structure/barricade/handrail/type_b,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat/browncorner/west,
+/turf/open/floor/corsat/brown,
 /area/rostock/upperdeck_maint/p_a)
 "bUc" = (
 /turf/open/floor/corsat/arrow_west,
@@ -2595,7 +2601,10 @@
 /area/rostock/upper_deck/hallway)
 "bVO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/coffin,
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "bWb" = (
@@ -2824,9 +2833,7 @@
 /area/rostock/security/brig_entryway)
 "ciX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
-	layer = 3
-	},
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal,
 /obj/structure/sign/safety/autoopenclose{
 	pixel_y = -32
 	},
@@ -3674,14 +3681,6 @@
 	},
 /turf/open/floor/strata/red3/west,
 /area/rostock/security/brig_entryway)
-"cTu" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer/empty/requisitions,
-/area/rostock/upperdeck_maint/p_a)
 "cUo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime2{
@@ -4820,10 +4819,7 @@
 /turf/open/floor/strata/purp3/east,
 /area/rostock/lower_deck/p_a_hallway)
 "dMZ" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_port{
-	dwidth = 8;
-	name = "Rostock hanger port external airlock"
-	},
+/obj/docking_port/stationary/emergency_response/external/hangar_port_upp,
 /turf/open/space,
 /area/space)
 "dNb" = (
@@ -6048,7 +6044,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "eDF" = (
-/obj/effect/decal/cleanable/vomit,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
@@ -6683,9 +6678,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "fbT" = (
-/obj/docking_port/stationary/lifeboat_dock{
-	name = "Rostock Lifeboat docking port"
-	},
+/obj/docking_port/stationary/lifeboat_dock/upp,
 /turf/open/space/basic,
 /area/space)
 "fbW" = (
@@ -7897,13 +7890,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "gcb" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "rostock_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1
-	},
-/turf/open/floor/corsat/plate,
-/area/rostock/lowerdeck_maint/s_a)
+/turf/closed/wall/upp/reinforced/outer,
+/area/rostock/lower_deck/starboard_umbilical)
 "gcm" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -8536,26 +8524,11 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "gEE" = (
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -10;
-	pixel_y = 14
-	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = 5;
-	pixel_y = -2
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/vomit,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "gEV" = (
@@ -9033,7 +9006,7 @@
 	req_one_access = list(230, 240)
 	},
 /turf/open/floor/corsat/marked,
-/area/rostock/lowerdeck_maint/s_a)
+/area/rostock/lower_deck/starboard_umbilical)
 "gWP" = (
 /obj/structure/window/framed/upp/hull,
 /obj/structure/blocker/invisible_wall,
@@ -12279,13 +12252,6 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
-"jky" = (
-/obj/structure/prop/dam/crane/damaged{
-	pixel_x = -16;
-	pixel_y = -14
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/vehiclehangar)
 "jkR" = (
 /obj/structure/window/framed/upp/hull,
 /turf/open/floor/plating,
@@ -13566,9 +13532,6 @@
 /obj/item/storage/box/nade_box,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
-"kdK" = (
-/turf/open/floor/corsat/marked,
-/area/rostock/lowerdeck_maint/s_a)
 "kdQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -13750,6 +13713,7 @@
 "kkt" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/power/apc/power/west,
+/obj/item/storage/belt,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/rostock/hangar/repairbay)
 "kkF" = (
@@ -17748,10 +17712,7 @@
 /turf/open/floor/strata,
 /area/rostock/command/astronavigation)
 "nzl" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
-	req_one_access = null;
-	req_one_access_txt = "7;23;27;102"
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/rostock/hangar/repairbay)
 "nzn" = (
@@ -18688,22 +18649,6 @@
 /area/rostock/lowerdeck_maint/p_a)
 "ols" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -10;
-	pixel_y = 14
-	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
 /obj/effect/decal/cleanable/generic,
 /obj/item/trash/buritto{
 	pixel_x = 5;
@@ -20498,16 +20443,16 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
 "pzC" = (
-/obj/structure/closet/coffin{
-	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
-	},
 /obj/structure/sign/flag/upp{
 	dir = 1;
 	pixel_y = 26;
 	layer = 2.7
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "pAq" = (
@@ -22356,9 +22301,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/rostock/engineering/lower_aft_corridor)
 "qUL" = (
-/obj/docking_port/stationary/emergency_response/port2{
-	name = "Rostock starboard landing pad"
-	},
+/obj/docking_port/stationary/emergency_response/port1_upp,
 /turf/open/floor/plating,
 /area/rostock/ert_dock/starboard)
 "qVJ" = (
@@ -22711,11 +22654,7 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/rostock/airoom)
 "riG" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "7;23;27;102"
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/rostock/hangar/repairbay)
 "riU" = (
@@ -23797,10 +23736,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun)
-"seA" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer/empty/requisitions,
-/area/rostock/upperdeck_maint/p_a)
 "seC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/upp,
@@ -25840,11 +25775,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/rostock/vehiclehangar)
 "tPw" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "7;23;27;102"
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/rostock/hangar/repairbay)
 "tPM" = (
@@ -26131,14 +26062,14 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/port_aft_accessway)
 "tYK" = (
-/obj/structure/closet/coffin{
-	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
-	},
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
 	},
 /obj/structure/machinery/power/apc/power/west,
+/obj/structure/closet/coffin{
+	name = "\improper UPP coffin";
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "tYR" = (
@@ -26179,9 +26110,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "tZl" = (
-/obj/docking_port/stationary/emergency_response/port2{
-	name = "Rostock port landing pad"
-	},
+/obj/docking_port/stationary/emergency_response/port2_upp,
 /turf/open/floor/plating,
 /area/rostock/ert_dock/port)
 "tZy" = (
@@ -29960,7 +29889,8 @@
 /area/rostock/medical/morgue)
 "wMt" = (
 /obj/structure/machinery/part_fabricator/dropship{
-	layer = 3.1
+	layer = 3.1;
+	req_access = null
 	},
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/corsat/plate,
@@ -30445,12 +30375,10 @@
 /turf/open/floor/corsat/retrosquares,
 /area/rostock/lower_deck/kitchen)
 "xhk" = (
-/obj/structure/machinery/recharge_station{
-	layer = 2.9
-	},
 /obj/structure/sign/safety/synth_storage{
 	pixel_y = 32
 	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/rostock/hangar/repairbay)
 "xho" = (
@@ -38592,7 +38520,7 @@ msM
 adH
 pbD
 gWH
-xfY
+gcb
 bjK
 bjK
 bjK
@@ -38773,8 +38701,8 @@ fOh
 tPM
 idS
 xXY
-kdK
-gcb
+bJs
+xXY
 bjK
 bjK
 bjK
@@ -38955,8 +38883,8 @@ joP
 kXj
 wUt
 xXY
-kdK
-gcb
+bJs
+xXY
 ofW
 ofW
 ofW
@@ -39137,8 +39065,8 @@ joP
 kXj
 wUt
 xXY
-kdK
-gcb
+bJs
+xXY
 ofW
 ofW
 ofW
@@ -39319,8 +39247,8 @@ uUl
 sqg
 dVi
 xXY
-kdK
-gcb
+bJs
+xXY
 ofW
 ofW
 ofW
@@ -39502,7 +39430,7 @@ msM
 hio
 pbD
 gWH
-xfY
+gcb
 ofW
 ofW
 ofW
@@ -40479,7 +40407,7 @@ vpP
 tZG
 oSB
 oSB
-jky
+oSB
 oSB
 oSB
 byO
@@ -44280,9 +44208,9 @@ hXL
 vGQ
 dWO
 bTK
-cTu
-seA
-cTu
+jjA
+awX
+jjA
 dWO
 oxy
 sPX

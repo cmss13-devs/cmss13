@@ -130,6 +130,13 @@
 	id = "almayer-lifeboat2"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_starboard
 
+/// UPP Lifeboat default dock
+/obj/docking_port/stationary/lifeboat_dock/upp
+	name = "Rostock Lifeboat Docking Port"
+	dir = NORTH
+	id = "rostock-lifeboat1"
+//	roundstart_template = /datum/map_template/shuttle/lifeboat_upp
+
 /obj/docking_port/stationary/lifeboat_dock/Initialize(mapload)
 	. = ..()
 	GLOB.lifeboat_almayer_docks += src

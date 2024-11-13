@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "working joe's and early gen synth's eyes now glow in a dark"
+  - rscadd: "working joe's and early gen synth's eyes color tweak on disarm and grab"

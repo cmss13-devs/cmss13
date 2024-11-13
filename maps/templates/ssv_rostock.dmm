@@ -22155,7 +22155,6 @@
 /obj/structure/machinery/computer/cameras{
 	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
 	name = "\improper Foxhound flight controls";
-	network = null;
 	pixel_y = 21
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -23112,7 +23111,6 @@
 "pGG" = (
 /obj/structure/reagent_dispensers/beerkeg/alt_dark{
 	anchored = 1;
-	chemical = null;
 	density = 0;
 	pixel_x = -7;
 	pixel_y = 10

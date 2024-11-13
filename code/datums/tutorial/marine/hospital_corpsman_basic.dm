@@ -959,6 +959,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
 	remove_highlight(dylo)
 	remove_from_tracking_atoms(dylo)
 	qdel(dylo)

@@ -324,10 +324,16 @@
 	roundstart_template = /datum/map_template/shuttle/normandy
 
 /obj/docking_port/stationary/marine_dropship/upp_hangar_1
-	name = "UPP Hangar bay 1"
-	id = UPP_DROPSHIP_LZ2
+	name = "Rostock Hangar bay 1"
+	id = UPP_DROPSHIP_LZ1
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
+
+/obj/docking_port/stationary/marine_dropship/upp_hangar_2
+	name = "Rostock Hangar bay 2"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/devana
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

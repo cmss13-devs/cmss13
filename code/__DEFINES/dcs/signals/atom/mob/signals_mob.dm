@@ -174,7 +174,7 @@
 
 /// From /mob/proc/a_intent_change() : (new_intent)
 #define COMSIG_MOB_INTENT_CHANGE "mob_intent_change"
-// From /mob/proc/select_body_zone() : (target_zone)
+// From /mob/proc/select_body_zone()
 #define COMSIG_MOB_ZONE_SEL_CHANGE "mob_zone_sel_change"
 
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)

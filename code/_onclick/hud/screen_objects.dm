@@ -210,6 +210,7 @@
 
 	if(old_selecting != selecting)
 		user.zone_selected = selecting
+		SEND_SIGNAL(user, COMSIG_MOB_ZONE_SEL_CHANGE, selecting)
 		update_icon(user)
 	return 1
 

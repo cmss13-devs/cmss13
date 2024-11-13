@@ -27,4 +27,4 @@
 		owner.mob_flags |= SURGERY_MODE_ON
 		to_chat(owner, "You prepare to perform surgery.")
 
-	SEND_SIGNAL(src, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
+	SEND_SIGNAL(src, COMSIG_LIVING_SURGERY_MODE_TOGGLED, owner)

@@ -657,15 +657,14 @@
 
 	RegisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED, PROC_REF(shrapnel_tutorial_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3(datum/source)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3(datum/action/source, mob/owner)
 	SIGNAL_HANDLER
-
-	TUTORIAL_ATOM_FROM_TRACKING(/datum/action, surgery_toggle)
-	remove_highlight(surgery_toggle)
-	UnregisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
 
 	if(tutorial_mob.mob_flags & SURGERY_MODE_ON)
 		return
+
+	remove_highlight(source.button)
+	UnregisterSignal(source, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
 
 	message_to_player("Well done, keep surgery mode <b>Disabled</b> for the remainder of the tutorial.")
 	message_to_player("It seem that our friend Mr Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
@@ -753,15 +752,18 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_3(/obj/limb/leg/l_leg, status)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/leg/l_leg, mob_lleg)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
 	if(!(mob_lleg.status & LIMB_SPLINTED))
 		message_to_player("You have applied a splint to the wrong limb. Make sure you have the <b>Left Leg</b> selected.")
+		remove_highlight(splint)
+		remove_from_tracking_atoms(splint)
+		qdel(splint)
 		addtimer(CALLBACK(src, PROC_REF(splint_tutorial_2)), 3 SECONDS)
 		return
 
 	message_to_player("Well done! This completes the first section of your basic training.")
 
 	//section 1 cleanup
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
 	remove_highlight(splint)
 	remove_from_tracking_atoms(splint)
 	qdel(splint)
@@ -796,23 +798,76 @@
 	message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
 	message_to_player("The flashing red healthbar above their head indicates the Dummy is in <b>Critical Condition</b>.")
 	message_to_player("To reduce their pain levels, the chemical painkiller <b>Tramadol</b> is primarily used.")
-	message_to_player("Feed the Dummy the <b>Tramadol Pill</b>, highlighted in green.")
 
-	var/obj/item/reagent_container/pill/tramadol/tram = new(loc_from_corner(0, 4))
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)), 7 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3_pre()
+	SIGNAL_HANDLER
+
+	message_to_player("A <b>Tramadol Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Tramadol Pill Bottle</b> to draw a pill.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+
+	var/obj/item/storage/pill_bottle/tram = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(tram)
+
+	medbelt.update_icon()
+
+	tram.name = "\improper Tramadol pill bottle"
+	tram.icon_state = "pill_canister5"
+	tram.maptext_label = "Tr"
+	tram.maptext = SPAN_LANGCHAT("Tr")
+	tram.max_storage_space = 1
+	tram.overlays.Cut()
+	tram.bottle_lid = FALSE
+	tram.overlays += "pills_closed"
+	var/obj/item/reagent_container/pill/tramadol/trampill = new(tram)
+
+	add_to_tracking_atoms(trampill)
 	add_to_tracking_atoms(tram)
+
+	add_highlight(medbelt, COLOR_GREEN)
 	add_highlight(tram, COLOR_GREEN)
 
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
+	RegisterSignal(trampill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(pain_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/tramadol, trampill)
+
+	UnregisterSignal(trampill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>Tramadol Pill</b> and standing next to them to medicate it.")
+	update_objective("Feed the Dummy the Tramadol pill.")
+
+	add_highlight(trampill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(tram)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed_reject()
 	SIGNAL_HANDLER
 
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
+	remove_highlight(tram)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(tram)
+	qdel(tram)
+	medbelt.update_icon()
 	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 2 SECONDS)
-
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
 	SIGNAL_HANDLER
@@ -842,6 +897,7 @@
 	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
 	remove_highlight(oxy)
+	remove_from_tracking_atoms(oxy)
 	qdel(oxy)
 	addtimer(CALLBACK(src, PROC_REF(tram_pill_fed)), 4 SECONDS)
 
@@ -853,6 +909,11 @@
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
+	remove_highlight(oxy)
+	remove_from_tracking_atoms(oxy)
+	qdel(oxy)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)

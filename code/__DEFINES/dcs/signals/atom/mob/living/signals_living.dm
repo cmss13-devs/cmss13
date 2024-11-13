@@ -38,7 +38,7 @@
 /// From /obj/item/device/healthanalyzer/attack()
 #define COMSIG_LIVING_HEALTH_ANALYZED "living_health_analyzed"
 
-//From /datum/action/surgery_toggle/action_activate
+//From /datum/action/surgery_toggle/action_activate(): (mob/owner)
 #define COMSIG_LIVING_SURGERY_MODE_TOGGLED "living_surgery_mode_toggled"
 
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)

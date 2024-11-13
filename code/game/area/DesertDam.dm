@@ -142,6 +142,7 @@
 /area/desert_dam/interior/dam_interior/hanger
 	name = "Engineering Hangar"
 	icon_state = "hangar"
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/interior/dam_interior/hangar_storage
 	name = "Engineering Hangar Storage"
@@ -236,14 +237,17 @@
 	name = "Command Substation"
 	icon_state = "northewestern_ss"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/substation/northeast
 	name = "Command Substation"
 	icon_state = "northeastern_ss"
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/substation/central
 	name = "Command Substation"
 	icon_state = "central_ss"
+	unoviable_timer = FALSE
 
 /area/desert_dam/building/substation/southwest
 	name = "Command Substation"
@@ -718,6 +722,10 @@
 	name = "Telecomms Valley"
 	icon_state = "valley_west"
 	linked_lz = DROPSHIP_LZ2
+
+/area/desert_dam/exterior/valley/valley_security
+	name = "Security Valley"
+	icon_state = "valley_west"
 
 // Generic bridge used in nightmare inserts... Can in fact be different places (sigh)
 /area/desert_dam/exterior/valley/valley_bridge

@@ -142,3 +142,129 @@
   - maptweak: moved some stuff around in the liquor cabinet to accommodate the MRE
       being placed into it
   - maptweak: moved some stuff around on the liaison's desk to make it look cleaner
+2024-11-07:
+  Drathek:
+  - balance: Fix XvX landmarks being used for roundstart oviable locations
+  - balance: Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent
+      Dam, Chances's Claim, and Fiorina
+  - bugfix: XvX now makes all areas oviable
+  Joe Lampost:
+  - code_imp: Makes using LOOC use your real name instead of unknown
+  - code_imp: Sding preds now have their name shown instead of unknown
+  Joelampost:
+  - rscadd: Added first names for spawned preds
+  - rscadd: Added last names for spawned preds
+  Nomoresolvalou:
+  - rscadd: Hunters can now put their bone trophies on their armor to have it show
+      up there instead of on their mesh.
+  TheDonkified:
+  - code_imp: Xeno ability names in chat and stats page changed to match the names
+      for xeno ability buttons
+  VileBeggar:
+  - bugfix: Memorial ghosts will now face the user instead of facing south.
+2024-11-08:
+  BOBAMA:
+  - maptweak: quadrupled the limit for roundstart corpses on maps.
+  - maptweak: Removed Corpses from Solaris. Added corpses to Shivas, Fiorina, and
+      Trijent
+  - maptweak: added some "last stand" holds to Trijent and Shivas to put bodies in.
+      Trijent research lab had most CMB weapons replaced with corporate/goon stuff.
+  - balance: Intel points from human bodies are now capped at 5 (50 bodies)
+  BOBAMAx:
+  - bugfix: extra apc in shivas removed
+  Nomoresolvalou, Thwomper:
+  - rscadd: Adds a new predator mask accessory
+  - ui: added a selection for mask accessories in yautja prefs
+  - bugfix: fixes one speicifc yautja mask having no sprite onmob
+  - code_imp: infrastructure for adding in new mask accessories
+  - imageadd: added Thwomp's cool as hell horn sprites
+  Red-byte3D:
+  - rscadd: New preference toggle that allows Queen's to pick if they want to automatically
+      shove people they step on or not
+  cuberound:
+  - balance: binoculars have miniscope level zoom on HvH
+  harryob, drathek:
+  - ui: replaces the lists for hair/facial hair with images in a separate picker
+  - ui: replaces the eye color picker with a tgui color picker
+  - code_imp: added unit test for duplicate sprite accessories (hair)
+2024-11-09:
+  SerheyKr:
+  - balance: Changing the UPP vendors stuff
+  cuberound:
+  - bugfix: UPP req vendor no longer spends points
+  - rscadd: adds UPP vs USCM gamemode, event only
+  - ui: adds option to both early and latejoin UPP roles from lobby on UPP vs USCM
+  - rscadd: adds early and latespawners for UPP roles
+  - balance: updates UPP ERT vendors to have 45 points
+  - rscadd: Added standard apparel to every UPP roles to clothing vendor
+  - balance: A lot of changes to upp vendor stuff in order to make them on pair with
+      USCM
+  - rscadd: adds option for spawners to use lists of jobs
+  - rscadd: enables overwatch consoles of other factions
+  - rscadd: UPP squad supply drops
+2024-11-10:
+  Joe Lampost:
+  - code_imp: Changes the spawn message for predators
+  Venuska1117:
+  - code_imp: Added ability to Destroy Platform Edges by xenos on "Disarm" intent,
+      now depending on xenos "size" they can break Platform Edges quicker or Slower,
+      Now Explosives have chance to destroy Platform Edges by depending on how strong
+      explosion is.
+  - imageadd: Added Sprites for Broken Platforms Edges.
+  - soundadd: Added Sound for Breaking "Stone" Edges.
+  cuberound:
+  - qol: handrails are autoclimbable when on harm intent, you take some harm when
+      doing so
+  - balance: crusher and ravager destroy handrails when trying to pass them similar
+      to tables
+  harryob:
+  - ui: adds a prettier custom loadout menu with images
+2024-11-11:
+  Drathek:
+  - balance: Queen remote building (while boosted) is now prevented in LZ linked weed
+      restricted areas
+  - balance: Adjusted/added LZ linked weed restriction areas on all maps in rotation
+  - maptweak: Fixed misplaced areas on Shivas.
+  - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
+  cuberound:
+  - bugfix: UPP CO joining from lobby should recive proper rank
+  harryob:
+  - ui: added a new tgui to select character traits. it's quite similar to the old
+      one
+2024-11-12:
+  An A Jay:
+  - balance: Made Medicomp heal to full for predators.
+  Katskan:
+  - bugfix: G2 cosmetic working properly
+  Nomoresolvalou, Thwomper:
+  - rscadd: 'Added two new yautja weapons: the longaxe and the staff'
+  - imageadd: Added sprites for the new weapons
+  Sunless2:
+  - rscadd: Added the ability for bayonets to cut down fences
+  - balance: It now takes twice the amount of throws to bring down a fence
+2024-11-13:
+  Blundir:
+  - rscadd: working joe's and early gen synth's eyes now glow in a dark
+  - rscadd: working joe's and early gen synth's eyes color tweak on disarm and grab
+  Drathek:
+  - maptweak: Fixed the rotation of the telecoms APC in the Aerodome on Shivas
+  - balance: LZ smoke is now disabled by default on distress signal
+  - admin: Added game mode toggle to toggle LZ smoke during the first 3 minutes of
+      the round (otherwise is locked in)
+  - balance: Eggs that lose their hive weeds will now turn fragile (like egg carrier
+      eggs) lasting 5 minutes.
+  - bugfix: Fixed an exploit allowing egg carrier eggs to last indefinitely.
+  - bugfix: Fixed the inability to examine planted eggs from further than one tile.
+  - code_imp: Added some more sanity code to ensure time of death is recorded for
+      larva queue
+  JustLat:
+  - imageadd: Adds icon states for l_hand and r_hand for yautja accessories.
+  Steelpoint, Zenith:
+  - mapadd: Two UPP dropships have been added for event use, the Morana and the Devana.
+  - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
+      by admins for events.
+  cuberound:
+  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: makes UPP synth lobby joinable for events
+  zzzmike:
+  - rscadd: tip of the round regarding lesser known cryotube utility

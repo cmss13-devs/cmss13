@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 28
+#define SAVEFILE_VERSION_MAX 29
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -180,6 +180,18 @@
 			completed_tutorials += "marine_req_1"
 		S["completed_tutorials"] << tutorial_list_to_savestring()
 
+	if(savefile_version < 29)
+		var/hair_style = ""
+		S["hair_style_name"] >> hair_style
+
+		switch(hair_style)
+			if("Shoulder-length Hair Alt")
+				hair_style = "Long Fringe"
+			if("Long Hair Alt")
+				hair_style = "Longer Fringe"
+
+		S["hair_style_name"] << hair_style
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -266,6 +278,7 @@
 	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_mask_type"] >> predator_mask_type
+	S["pred_accessory_type"] >> predator_accessory_type
 	S["pred_armor_type"] >> predator_armor_type
 	S["pred_boot_type"] >> predator_boot_type
 	S["pred_mask_mat"] >> predator_mask_material
@@ -351,6 +364,7 @@
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
+	predator_accessory_type = sanitize_integer(predator_accessory_type,0,1, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type = sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
@@ -466,6 +480,7 @@
 	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_mask_type"] << predator_mask_type
+	S["pred_accessory_type"] << predator_accessory_type
 	S["pred_armor_type"] << predator_armor_type
 	S["pred_boot_type"] << predator_boot_type
 	S["pred_mask_mat"] << predator_mask_material

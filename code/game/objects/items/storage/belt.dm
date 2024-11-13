@@ -1314,7 +1314,7 @@
 	has_gamemode_skin = FALSE
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 3
-	max_w_class = SIZE_MEDIUM
+	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
@@ -1344,7 +1344,7 @@
 	has_gamemode_skin = FALSE
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 9
-	max_w_class = SIZE_MEDIUM
+	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/m10,
 		/obj/item/ammo_magazine/pistol,

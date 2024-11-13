@@ -896,7 +896,10 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	map_specific_decoration = TRUE
-	fire_sound = 'sound/weapons/m10_auto_pistol.ogg'
+	fire_sound = 'sound/weapons/gun_m10_auto_pistol.ogg'
+	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
+	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/pistol/m10
 
 /obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()

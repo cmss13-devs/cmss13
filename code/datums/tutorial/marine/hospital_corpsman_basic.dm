@@ -154,7 +154,8 @@
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/bica = new(medbelt)
+	var/obj/item/storage/pill_bottle/bica = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(bica)
 	medbelt.update_icon()
 
 	bica.name = "\improper Bicaridine pill bottle"
@@ -204,12 +205,17 @@
 	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed_reject()
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
 	remove_highlight(bica)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	remove_from_tracking_atoms(bica)
 	qdel(bica)
+	medbelt.update_icon()
 	message_to_player("Dont feed yourself the pill, try again.")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3_pre)), 2 SECONDS)
 
@@ -363,6 +369,8 @@
 	remove_highlight(human_hud.zone_sel)
 	update_objective("")
 
+	human_dummy.rejuvenate()
+
 	human_dummy.adjustFireLoss(40)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -375,7 +383,7 @@
 
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_2_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_pre(obj/item/storage/pill_bottle)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_pre(datum/source, obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -384,8 +392,12 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
+
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/kelo = new(medbelt)
+
+	var/obj/item/storage/pill_bottle/kelo = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(kelo)
+
 	medbelt.update_icon()
 
 	kelo.name = "\improper Kelotane pill bottle"
@@ -396,7 +408,6 @@
 	kelo.overlays.Cut()
 	kelo.bottle_lid = FALSE
 	kelo.overlays += "pills_closed"
-
 	var/obj/item/reagent_container/pill/kelotane/kelopill = new(kelo)
 
 	add_to_tracking_atoms(kelopill)
@@ -415,9 +426,8 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/kelotane, kelopill)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 
 	UnregisterSignal(kelopill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
 
@@ -425,11 +435,11 @@
 	message_to_player("Good. Now click on the Dummy while holding the <b>Kelotane Pill</b> and standing next to them to medicate it.")
 	update_objective("Feed the Dummy the Kelotane pill.")
 
-	add_highlight(human_dummy, COLOR_GREEN)
 	add_highlight(kelopill, COLOR_GREEN)
 	remove_highlight(medbelt)
-	remove_highlight(kelo)
+	remove_highlight(bica)
 
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_tutorial_3))
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_pill_fed_reject))
 
@@ -437,12 +447,16 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
 	remove_highlight(kelo)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	remove_from_tracking_atoms(kelo)
 	qdel(kelo)
+	medbelt.update_icon()
 	message_to_player("Dont feed yourself the pill, try again.")
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_2_pre)), 2 SECONDS)
 
@@ -452,6 +466,11 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
+	remove_highlight(kelo)
+	remove_from_tracking_atoms(kelo)
+	qdel(kelo)
 
 	message_to_player("Well done!")
 	message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
@@ -867,7 +886,8 @@
 
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/dylo = new(medbelt)
+	var/obj/item/storage/pill_bottle/dylo = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(dylo)
 	medbelt.update_icon()
 
 	dylo.name = "\improper Dylovene pill bottle"
@@ -918,14 +938,17 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed_reject()
 	SIGNAL_HANDLER
 
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
 	remove_highlight(dylo)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	remove_from_tracking_atoms(dylo)
 	qdel(dylo)
+	medbelt.update_icon()
 	message_to_player("Dont feed yourself the pill, try again.")
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2_pre)), 2 SECONDS)
 
@@ -935,6 +958,10 @@
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	remove_highlight(dylo)
+	remove_from_tracking_atoms(dylo)
+	qdel(dylo)
 
 	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
 	message_to_player("Unfortunately, unlike Brute and Burn damage, Toxin damage has no treatment kits, making it extremely difficult to treat in large amounts.")

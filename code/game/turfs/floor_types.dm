@@ -1053,12 +1053,12 @@
 
 /turf/open/floor/upp_hull
 	icon = 'icons/turf/walls/upp_hull.dmi'
-	icon_state = "outerhull"
+	icon_state = "outerhull_upp"
 	name = "hull"
 	hull_floor = TRUE
 
 /turf/open/floor/upp_hull/outerhull_dir
-	icon_state = "outerhull_dir"
+	icon_state = "outerhull_dir_upp"
 
 /turf/open/floor/upp_hull/outerhull_dir/southwest
 	dir = SOUTHWEST

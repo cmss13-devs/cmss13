@@ -149,7 +149,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun)
 "agd" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/port_aft_accessway)
 "agn" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -391,7 +391,7 @@
 "aqg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/glass/reinforced/medium_stack,
-/turf/open/floor/prison/bright_clean_marked,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/main_area)
 "aqt" = (
 /obj/structure/machinery/light{
@@ -500,7 +500,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_armory)
 "ati" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/briefing)
 "att" = (
 /obj/structure/pipes/vents/pump/on,
@@ -745,7 +745,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/s_a_hallway)
 "aAZ" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/cryogenics)
 "aBV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -791,7 +791,7 @@
 /turf/open/floor/corsat/arrow_west,
 /area/rostock/lower_deck/p_hallway)
 "aDN" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_lobby)
 "aEM" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -882,7 +882,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "aHY" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/starboard_aft_accessway)
 "aId" = (
 /obj/effect/spawner/random/toolbox{
@@ -982,7 +982,7 @@
 	dir = 4;
 	pixel_y = -14
 	},
-/turf/open/floor/prison/darkyellow2/northeast,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/main_area)
 "aLd" = (
 /obj/structure/pipes/vents/scrubber{
@@ -1139,7 +1139,7 @@
 /area/rostock/upperdeck_maint/p_f)
 "aPH" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/reactor)
 "aQo" = (
 /obj/structure/cable/heavyduty{
@@ -1209,7 +1209,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "aTk" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/railgun)
 "aTu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1530,7 +1530,7 @@
 	icon_state = "lattice9";
 	pixel_x = -5
 	},
-/turf/open/floor/corsat/spiralplate,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_f)
 "biL" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -2933,7 +2933,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_f)
 "cnm" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/bathroom)
 "cnp" = (
 /obj/structure/window/framed/upp/reinforced,
@@ -3181,7 +3181,7 @@
 /area/rostock/lower_deck/m_hallway)
 "cwJ" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "cwM" = (
 /obj/effect/decal/warning_stripes{
@@ -3251,7 +3251,7 @@
 /turf/open/floor/almayer,
 /area/rostock/req)
 "cAE" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/hangar/repairbay)
 "cAQ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -3662,7 +3662,7 @@
 	icon_state = "pottedplant_29";
 	pixel_y = 7
 	},
-/turf/open/floor/strata/blue3/north,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/cic)
 "cSU" = (
 /obj/effect/decal/warning_stripes{
@@ -3704,7 +3704,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "cVK" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_f)
 "cVL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4816,7 +4816,7 @@
 /obj/structure/sign/safety/ladder{
 	pixel_x = 39
 	},
-/turf/open/floor/strata/purp3/east,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/p_a_hallway)
 "dMZ" = (
 /obj/docking_port/stationary/emergency_response/external/hangar_port_upp,
@@ -4838,7 +4838,7 @@
 	pixel_x = 16;
 	pixel_y = -15
 	},
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lifeboat)
 "dNI" = (
 /obj/structure/platform{
@@ -4856,7 +4856,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
 "dOc" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lowerdeck_maint/p_f)
 "dOy" = (
 /obj/structure/machinery/vending/snack,
@@ -4954,7 +4954,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "dRD" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/railgun/starboard)
 "dSo" = (
 /obj/structure/surface/table/reinforced/almayer_B{
@@ -5140,7 +5140,7 @@
 /area/rostock/lowerdeck_maint/s_m)
 "dWO" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/upperdeck_maint/p_a)
 "dWR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5246,7 +5246,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/engineering/port_aft_accessway)
 "dYY" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/hallway)
 "dZs" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -5951,10 +5951,10 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/starboard)
 "eyD" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/prep)
 "eyL" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/vehiclehangar)
 "eyN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6063,8 +6063,8 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/rostock/lower_deck/s_a_hallway)
 "eEu" = (
-/turf/open/floor/prison/darkyellow2/southeast,
-/area/rostock/engineering/main_area)
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/rostock/ert_dock/starboard)
 "eEN" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -6666,7 +6666,7 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "fbF" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/starboard_aft_accessway)
 "fbO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6932,7 +6932,7 @@
 /turf/open/floor/upp_hull/outerhull_dir/east,
 /area/rostock/lifeboat)
 "fje" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/brig_office)
 "fjh" = (
 /obj/effect/decal/warning_stripes{
@@ -7002,7 +7002,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/security/brig_office)
 "flA" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/engineering/main_area)
 "flF" = (
 /obj/structure/sign/flag/upp{
@@ -7261,8 +7261,8 @@
 /turf/open/floor/strata,
 /area/rostock/lower_deck/s_a_hallway)
 "fum" = (
-/turf/closed/wall/upp/reinforced,
-/area/rostock/railgun)
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/airoom)
 "fvD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -7289,8 +7289,12 @@
 /turf/open/floor/plating,
 /area/rostock/lower_deck/p_a_hallway)
 "fww" = (
-/turf/closed/wall/upp/reinforced,
-/area/rostock/ert_dock/starboard)
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(230, 240);
+	dir = 2
+	},
+/turf/closed/wall/almayer/upp,
+/area/rostock/upperdeck_maint/p_a)
 "fwz" = (
 /turf/open/floor/carpet,
 /area/rostock/command/co)
@@ -7685,9 +7689,6 @@
 "fSj" = (
 /turf/open/floor/upp_hull/outerhull_dir/northeast,
 /area/space)
-"fSD" = (
-/turf/closed/wall/upp/reinforced/outer,
-/area/rostock/lower_deck/m_hallway)
 "fSF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -7890,7 +7891,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "gcb" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/starboard_umbilical)
 "gcm" = (
 /obj/structure/machinery/light{
@@ -8337,7 +8338,7 @@
 	dir = 4;
 	light_color = "#ffd4d4"
 	},
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_m)
 "gtI" = (
 /obj/structure/machinery/light{
@@ -8353,7 +8354,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/engineering/main_area)
 "guf" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/brig_holding_area)
 "gul" = (
 /obj/structure/bed/chair/comfy{
@@ -8407,7 +8408,7 @@
 /turf/open/floor/corsat/lightplate,
 /area/rostock/lower_deck/bathroom)
 "gwb" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/brig_accessway)
 "gxo" = (
 /obj/structure/machinery/light/small{
@@ -8696,7 +8697,7 @@
 	dir = 1;
 	light_color = "#ffcc66"
 	},
-/turf/open/shuttle/escapepod/east,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/reactor)
 "gLv" = (
 /obj/structure/surface/table/almayer,
@@ -8776,7 +8777,7 @@
 /obj/item/ammo_magazine/rocket/upp{
 	pixel_y = 4
 	},
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/armory)
 "gOx" = (
 /obj/structure/filingcabinet,
@@ -9316,7 +9317,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "hfN" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/req)
 "hfX" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -9330,7 +9331,7 @@
 /turf/open/floor/plating,
 /area/rostock/req)
 "hgp" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lowerdeck_maint/p_a)
 "hgS" = (
 /obj/structure/barricade/handrail/medical,
@@ -9435,7 +9436,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/rostock/lower_deck/m_hallway)
 "hke" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/repairbay)
 "hkf" = (
 /obj/structure/machinery/light{
@@ -10007,7 +10008,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_a)
 "hIM" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_m)
 "hJd" = (
 /obj/effect/step_trigger/teleporter_vector{
@@ -10400,7 +10401,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
 "hTD" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/polcom)
 "hTG" = (
 /obj/structure/machinery/power/apc/power/north,
@@ -10550,7 +10551,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/rostock/hangar/hangarbay)
 "hZn" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/cic)
 "hZS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -10891,7 +10892,7 @@
 /area/rostock/req)
 "imp" = (
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
 "imq" = (
 /obj/structure/stairs/perspective{
@@ -11011,7 +11012,7 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/rostock/lower_deck/engineering_lower_access)
 "ion" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/lower_deck/ammunition_storage)
 "ioU" = (
 /obj/structure/disposalpipe/down/almayer{
@@ -11216,7 +11217,7 @@
 /turf/open/floor/strata,
 /area/rostock/command/astronavigation)
 "iwV" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/ert_dock/port)
 "iwZ" = (
 /obj/structure/machinery/cryopod{
@@ -11302,7 +11303,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "iAg" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/hangar/hangarbay)
 "iAp" = (
 /obj/structure/stairs{
@@ -11431,7 +11432,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "iFY" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/hangar/pilotbunk)
 "iGs" = (
 /obj/structure/surface/rack,
@@ -11721,7 +11722,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/reactor)
 "iQV" = (
 /obj/effect/decal/warning_stripes{
@@ -11736,7 +11737,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/p_a_hallway)
 "iRj" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/p_m)
 "iSo" = (
 /obj/structure/machinery/computer/atmos_alert{
@@ -11775,7 +11776,7 @@
 /turf/open/floor/strata,
 /area/rostock/command/astronavigation)
 "iSJ" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/s_f)
 "iTx" = (
 /obj/structure/surface/rack,
@@ -11979,7 +11980,7 @@
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "jaP" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/lower_aft_corridor)
 "jaR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12314,8 +12315,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/rostock/engineering/main_area)
 "jnX" = (
-/turf/closed/wall/upp/reinforced,
-/area/rostock/engineering/reactor)
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/rostock/engineering/main_area)
 "jof" = (
 /turf/open/floor/prison/darkbrown2/north,
 /area/rostock/req)
@@ -12480,7 +12482,7 @@
 /turf/open/floor/strata/cyan3,
 /area/rostock/upper_deck/hallway)
 "jsG" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/m_hallway)
 "jtf" = (
 /obj/structure/pipes/vents/pump{
@@ -13133,7 +13135,7 @@
 /turf/open/floor/strata/red3/north,
 /area/rostock/upper_deck/hallway)
 "jPY" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_bunk)
 "jQr" = (
 /obj/structure/closet,
@@ -13368,7 +13370,7 @@
 /turf/open/floor/corsat/brown/west,
 /area/rostock/command/cic)
 "jXB" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/upperdeck_maint/p_m)
 "jYv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -13460,8 +13462,8 @@
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "kaF" = (
-/turf/closed/wall/upp,
-/area/rostock/ert_dock/starboard)
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/stair_clone)
 "kaN" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "rostock camera";
@@ -13868,7 +13870,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/prep)
 "kqL" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/hangarbay)
 "krk" = (
 /obj/structure/machinery/prop/almayer/computer{
@@ -14181,7 +14183,7 @@
 	layer = 3;
 	name = "\improper UPP Requisitions Office Guidelines"
 	},
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/req)
 "kCw" = (
 /obj/effect/decal/warning_stripes{
@@ -14809,7 +14811,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/prep)
 "kYh" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp,
 /area/rostock/airoom)
 "kYF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14819,8 +14821,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "kYI" = (
-/turf/closed/wall/upp/reinforced/outer,
-/area/rostock/lifeboat)
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/command/astronavigation)
 "kZL" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
@@ -15105,7 +15107,7 @@
 /turf/closed/wall/almayer/white,
 /area/rostock/medical/accessway)
 "lmA" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/pilotbunk)
 "lmI" = (
 /obj/structure/surface/table/almayer,
@@ -15175,7 +15177,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "lpK" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/railgun/starboard)
 "lqx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -15265,7 +15267,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "ltN" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/cic)
 "ltW" = (
 /obj/structure/surface/table/almayer,
@@ -15311,7 +15313,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "lwL" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/upperdeck_maint/p_a)
 "lxh" = (
 /obj/structure/machinery/light{
@@ -15350,7 +15352,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "lyz" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/co)
 "lzs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -15711,7 +15713,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "lPy" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/brig_entryway)
 "lPO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15840,7 +15842,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/brig_holding_area)
 "lUc" = (
 /obj/effect/decal/floor_symbol/westface/west,
@@ -16931,7 +16933,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/prep)
 "mNT" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/port_aft_accessway)
 "mOy" = (
 /obj/effect/decal/warning_stripes{
@@ -16951,7 +16953,7 @@
 /turf/open/floor/strata/green3/north,
 /area/rostock/upper_deck/hallway)
 "mOY" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/bunk)
 "mPx" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
@@ -17261,7 +17263,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "nbf" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/airoom)
 "nbv" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -17604,7 +17606,7 @@
 /turf/open/floor/plating/prison,
 /area/rostock/upperdeck_maint/p_m)
 "nsr" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/p_a_hallway)
 "nsI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17615,7 +17617,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "nsP" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/engineering_lower_access)
 "nsQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17986,7 +17988,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/armory)
 "nHp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -18307,7 +18309,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "nXT" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp,
 /area/rostock/ert_dock/starboard)
 "nYm" = (
 /obj/structure/machinery/light,
@@ -18332,7 +18334,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "nYE" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "nYH" = (
 /obj/effect/decal/warning_stripes{
@@ -18875,7 +18877,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "oxi" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/kitchen)
 "oxk" = (
 /obj/structure/machinery/door/airlock/almayer/security{
@@ -19077,7 +19079,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_f)
 "oEs" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upper_deck/hallway)
 "oEu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -19115,7 +19117,7 @@
 	name = "Storage";
 	unacidable = 1
 	},
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "oFO" = (
 /obj/structure/sign/flag/upp{
@@ -19199,7 +19201,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/reactor)
 "oIO" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
@@ -19238,7 +19240,7 @@
 /turf/open/floor/corsat/arrow_north,
 /area/rostock/command/cic)
 "oJJ" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/req)
 "oJT" = (
 /obj/structure/flora/pottedplant{
@@ -19742,7 +19744,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
 "pbD" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/starboard_umbilical)
 "pcg" = (
 /obj/effect/decal/warning_stripes{
@@ -19828,7 +19830,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_one_access = list(232, 240)
 	},
-/turf/open/floor/prison/bright_clean_marked,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/main_area)
 "pgU" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -20337,7 +20339,7 @@
 /turf/open/floor/strata/red3/north,
 /area/rostock/security/brig_entryway)
 "pvT" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_armory)
 "pvX" = (
 /obj/structure/machinery/light/small{
@@ -20404,7 +20406,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "pxG" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/vehiclehangar)
 "pxQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -20823,7 +20825,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "pNi" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/armory)
 "pNp" = (
 /obj/structure/machinery/vending/cola,
@@ -20901,7 +20903,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/hangar/hangarbay)
 "pPQ" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/s_a_hallway)
 "pQv" = (
 /obj/effect/decal/warning_stripes{
@@ -21575,8 +21577,14 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "qrE" = (
-/turf/closed/wall/upp,
-/area/rostock/command/dining)
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "upp_armory";
+	name = "\improper Armory Shutters"
+	},
+/obj/effect/step_trigger/clone_cleaner,
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/command/armory)
 "qrS" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -21668,7 +21676,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "qvE" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_interrogation)
 "qwB" = (
 /obj/structure/platform{
@@ -21698,7 +21706,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "qyA" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/s_m)
 "qyH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -21825,7 +21833,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/main_area)
 "qCP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -22063,7 +22071,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/upper_deck/hallway)
 "qOI" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/railgun)
 "qOK" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -22386,7 +22394,7 @@
 	vector_y = -91
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/stair_clone)
+/area/rostock/upper_deck/hallway)
 "rag" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -22496,7 +22504,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/hangar/hangarbay)
 "rcY" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lower_deck/s_a_hallway)
 "rda" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -22690,7 +22698,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/hangarbay)
 "rkL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22698,7 +22706,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "rkR" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/stair_clone)
 "rkU" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -22728,7 +22736,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "rmb" = (
-/turf/open/shuttle/escapepod/floor0,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/reactor)
 "rmS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22881,7 +22889,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "rub" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lifeboat)
 "ruz" = (
 /obj/structure/barricade/handrail{
@@ -23111,7 +23119,7 @@
 /turf/open/floor/strata/green4,
 /area/rostock/upper_deck/hallway)
 "rCX" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
 "rDj" = (
 /obj/structure/surface/table/almayer,
@@ -23517,8 +23525,19 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/s_a_hallway)
 "rXZ" = (
-/turf/open/shuttle/escapepod/floor2,
-/area/rostock/engineering/reactor)
+/obj/structure/window/framed/upp/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "uppbrig1";
+	name = "Brig Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "uppcourtyard";
+	name = "\improper Privacy Shutters"
+	},
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/security/brig_holding_area)
 "rYG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -23616,7 +23635,7 @@
 /area/rostock/upperdeck_maint/p_m)
 "sbg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/bathroom)
 "sbu" = (
 /obj/structure/blocker/invisible_wall,
@@ -23738,7 +23757,7 @@
 /area/rostock/railgun)
 "seC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
 "seH" = (
 /obj/structure/prop/invuln/fusion_reactor,
@@ -23769,7 +23788,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240)
 	},
-/turf/open/floor/corsat/marked,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/m_hallway)
 "sfu" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -24120,7 +24139,7 @@
 /obj/structure/sign/poster/clf{
 	pixel_x = 16
 	},
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lifeboat)
 "suW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24279,7 +24298,7 @@
 "sBx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/soft/purple,
-/turf/open/floor/strata/purp3/east,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/p_a_hallway)
 "sBO" = (
 /obj/structure/bed/chair{
@@ -24295,7 +24314,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/hangarbay)
 "sCS" = (
 /turf/closed/wall/almayer/white,
@@ -24535,10 +24554,13 @@
 /turf/open/floor/plating,
 /area/rostock/lower_deck/m_hallway)
 "sNQ" = (
-/turf/closed/wall/upp/reinforced,
-/area/rostock/command/so)
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(230, 240)
+	},
+/turf/closed/wall/almayer/upp,
+/area/rostock/upperdeck_maint/p_m)
 "sNZ" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/upperdeck_maint/p_f)
 "sOQ" = (
 /turf/open/floor/prison,
@@ -24668,10 +24690,6 @@
 /obj/item/seeds/appleseed,
 /turf/open/floor/strata/green4/west,
 /area/rostock/security/brig_holding_area)
-"sUL" = (
-/obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp/reinforced/outer,
-/area/space)
 "sUQ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine{
@@ -25072,7 +25090,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "tlF" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/xo)
 "tlO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -25096,7 +25114,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/command/astronavigation)
 "tlW" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/p_a_hallway)
 "tmc" = (
 /obj/structure/surface/rack,
@@ -25693,7 +25711,7 @@
 	name = "\improper Disposal Airlock";
 	unacidable = 1
 	},
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/upperdeck_maint/p_a)
 "tKG" = (
 /obj/structure/platform{
@@ -25739,8 +25757,11 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
 "tMY" = (
-/turf/open/floor/strata/purp3/east,
-/area/rostock/lower_deck/p_a_hallway)
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/security/brig_office)
 "tNA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -25844,13 +25865,8 @@
 /turf/open/floor/strata/orange_icorner/north,
 /area/rostock/lower_deck/prep)
 "tRC" = (
-/obj/effect/projector{
-	name = "upp_down1";
-	vector_x = -1;
-	vector_y = -91
-	},
-/turf/open/floor/strata/floor2,
-/area/rostock/stair_clone)
+/turf/closed/wall/almayer/upp/reinforced,
+/area/rostock/lowerdeck_maint/s_f)
 "tRR" = (
 /turf/open/floor/strata,
 /area/rostock/hangar/pilotbunk)
@@ -26711,7 +26727,7 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_y = -32
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
 "uvJ" = (
 /obj/effect/decal/medical_decals{
@@ -27046,8 +27062,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/bunk)
 "uOd" = (
-/turf/closed/wall/upp/reinforced,
-/area/rostock/railgun/starboard)
+/obj/structure/window/framed/upp/hull,
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/rostock/upperdeck_maint/p_f)
 "uOh" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ammo_magazine/rocket/upp{
@@ -27169,7 +27186,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "uRe" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/so)
 "uRW" = (
 /turf/open/floor/strata/orange_icorner,
@@ -27738,7 +27755,7 @@
 /turf/open/floor/plating,
 /area/rostock/security/brig_holding_area)
 "vmc" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/p_f)
 "vmk" = (
 /obj/structure/disposalpipe/segment{
@@ -28063,7 +28080,7 @@
 /turf/open/floor/strata/blue3/northwest,
 /area/rostock/lower_deck/briefing)
 "vzz" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/dining)
 "vzK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28150,7 +28167,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/s_a_hallway)
 "vEe" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/s_a)
 "vEG" = (
 /obj/structure/bed/sofa/south/grey,
@@ -28185,6 +28202,9 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
+"vFH" = (
+/turf/closed/wall/almayer/upp,
+/area/rostock/security/brig_office)
 "vGb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -28553,8 +28573,8 @@
 /turf/open/floor/plating,
 /area/rostock/command/astronavigation)
 "vRQ" = (
-/turf/closed/wall/upp/reinforced/outer,
-/area/space)
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/rostock/lifeboat)
 "vSh" = (
 /obj/structure/machinery/vending/coffee/simple,
 /obj/structure/sign/safety/coffee{
@@ -29065,7 +29085,7 @@
 "wfO" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/strata/purp3/east,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lower_deck/p_a_hallway)
 "wfQ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -29387,7 +29407,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/pilotbunk)
 "wtn" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/lowerdeck_maint/p_a)
 "wtt" = (
 /obj/structure/surface/table/almayer,
@@ -29596,7 +29616,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "wAQ" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/upperdeck_maint/p_m)
 "wAT" = (
 /obj/structure/medical_supply_link,
@@ -29910,10 +29930,10 @@
 /turf/open/floor/strata/blue3,
 /area/rostock/upper_deck/hallway)
 "wNt" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/astronavigation)
 "wNx" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_storage)
 "wNH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30143,7 +30163,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "wXC" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/engineering/main_area)
 "wXQ" = (
 /obj/structure/window/framed/upp/hull,
@@ -30358,7 +30378,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
 "xfY" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lowerdeck_maint/s_a)
 "xgw" = (
 /obj/structure/morgue{
@@ -30767,7 +30787,7 @@
 /turf/open/floor/strata/cyan4/east,
 /area/rostock/lower_deck/m_hallway)
 "xyz" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/main_area)
 "xyA" = (
 /obj/structure/machinery/gear{
@@ -30942,7 +30962,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/rostock/lower_deck/engineering_lower_access)
 "xDI" = (
-/turf/closed/wall/upp/reinforced,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/command/armory)
 "xEi" = (
 /obj/effect/decal/warning_stripes{
@@ -30962,7 +30982,7 @@
 /turf/open/floor/plating,
 /area/rostock/command/hallway)
 "xEG" = (
-/turf/closed/wall/upp,
+/turf/closed/wall/almayer/upp,
 /area/rostock/ert_dock/port)
 "xES" = (
 /obj/effect/decal/warning_stripes{
@@ -31306,7 +31326,7 @@
 /turf/open/floor/strata/cyan1,
 /area/rostock/lower_deck/prep)
 "xTh" = (
-/turf/closed/wall/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/lowerdeck_maint/s_f)
 "xUA" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
@@ -31426,7 +31446,7 @@
 /area/rostock/engineering/main_area)
 "xYk" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor/strata/red4/west,
+/turf/closed/wall/almayer/upp/reinforced,
 /area/rostock/security/headquarters_lobby)
 "xZa" = (
 /obj/structure/machinery/light{
@@ -34761,7 +34781,7 @@ kep
 atA
 eVw
 jaP
-sbu
+jnX
 sbu
 sbu
 sbu
@@ -36920,7 +36940,7 @@ cPT
 cPT
 cPT
 cPT
-mNT
+agd
 xyz
 xyz
 sbu
@@ -37109,13 +37129,13 @@ xyz
 xyz
 llz
 llz
-flA
-xyz
-xyz
+wXC
+wXC
+wXC
 biG
 fGx
 fke
-xyz
+wXC
 egz
 aus
 egz
@@ -37133,12 +37153,12 @@ xyz
 oQY
 oQY
 oQY
-xyz
+wXC
 lRG
 lRG
 rbC
-flA
-flA
+wXC
+wXC
 llz
 llz
 llz
@@ -37288,10 +37308,10 @@ agd
 wXC
 wXC
 wXC
-flA
-flA
-flA
-flA
+wXC
+wXC
+wXC
+wXC
 dTJ
 oVh
 wyW
@@ -37303,13 +37323,13 @@ wyW
 wyW
 vco
 jqe
-flA
+wXC
 ihj
 kUJ
 nRG
 ihj
 ihj
-flA
+wXC
 cwz
 umm
 hxv
@@ -37320,9 +37340,9 @@ hxv
 hxv
 hxv
 uDd
-flA
-flA
-flA
+wXC
+wXC
+wXC
 wXC
 wXC
 wXC
@@ -37670,7 +37690,7 @@ oEu
 bPS
 caC
 hRT
-flA
+wXC
 puM
 jnw
 wab
@@ -37737,7 +37757,7 @@ rFr
 dMR
 wfO
 sBx
-tMY
+tlW
 lIZ
 cqI
 edl
@@ -37852,8 +37872,8 @@ eEX
 yif
 snX
 qCA
-flA
-flA
+wXC
+wXC
 cDy
 yif
 yif
@@ -38016,10 +38036,10 @@ agd
 nAH
 uKR
 arL
-jnX
-jnX
-jnX
-jnX
+rmb
+rmb
+rmb
+rmb
 xID
 dMe
 qJB
@@ -38034,7 +38054,7 @@ dMe
 ihj
 vQZ
 ewT
-flA
+wXC
 jWC
 lHo
 ihj
@@ -38049,10 +38069,10 @@ kLR
 qJB
 sqE
 vvA
-flA
-flA
-flA
-flA
+wXC
+wXC
+wXC
+wXC
 qdf
 jzx
 jSw
@@ -38198,19 +38218,19 @@ agd
 eRU
 oxy
 agE
-jnX
-woH
+rmb
+rmb
 uBH
-jnX
+rmb
 nRY
 dJB
 wtN
-flA
-flA
+wXC
+wXC
 cSO
 cSO
-flA
-flA
+wXC
+wXC
 piL
 mZl
 sry
@@ -38223,18 +38243,18 @@ jdy
 cSO
 dJB
 wtN
-flA
-flA
+wXC
+wXC
 cSO
 cSO
-flA
-flA
+wXC
+wXC
 qbf
 vGz
 uWQ
 bqM
 xaO
-flA
+wXC
 iyB
 qeV
 qdf
@@ -38380,10 +38400,10 @@ rCX
 oxy
 oxy
 arL
-jnX
-woH
+rmb
+rmb
 enK
-jnX
+rmb
 wel
 uWQ
 uWQ
@@ -38416,7 +38436,7 @@ caC
 uWQ
 uWQ
 rez
-flA
+wXC
 mBh
 qeV
 uWQ
@@ -38562,10 +38582,10 @@ rag
 arL
 vrz
 vrz
-jnX
+rmb
+rmb
 woH
-woH
-jnX
+rmb
 tTP
 dAb
 nET
@@ -38598,7 +38618,7 @@ caC
 uWQ
 ylr
 hEQ
-flA
+wXC
 hMu
 qeV
 qdf
@@ -38744,7 +38764,7 @@ dKW
 vrz
 lAw
 arL
-jnX
+rmb
 iQN
 nDz
 vPx
@@ -38760,11 +38780,11 @@ aVf
 peF
 vtQ
 aVf
-jnX
+rmb
 lSX
 voZ
 rPO
-flA
+wXC
 biQ
 sVt
 iFS
@@ -38780,7 +38800,7 @@ caC
 uWQ
 uWQ
 rez
-flA
+wXC
 qss
 qeV
 lGU
@@ -38926,10 +38946,10 @@ lwL
 ntW
 vrz
 vrz
-jnX
-rXZ
+rmb
+rmb
 wcD
-jnX
+rmb
 seH
 ubs
 oQg
@@ -38942,11 +38962,11 @@ seH
 ubs
 wZb
 seH
-jnX
+rmb
 dgs
 biQ
 dvF
-flA
+wXC
 vpz
 jdy
 sry
@@ -38962,7 +38982,7 @@ caC
 uWQ
 ylr
 hEQ
-flA
+wXC
 bnm
 iso
 gCt
@@ -39108,10 +39128,10 @@ lwL
 vrz
 eCK
 kiO
-jnX
+rmb
 gLr
 seH
-jnX
+rmb
 dtE
 qFr
 igD
@@ -39124,11 +39144,11 @@ seH
 qFr
 rqE
 vPO
-jnX
+rmb
 jNC
 ozj
 fXa
-flA
+wXC
 mPx
 jdy
 sry
@@ -39141,23 +39161,23 @@ lnd
 flA
 jGE
 ics
-fww
-fww
-fww
-fww
-kaF
+nXT
+nXT
+nXT
+nXT
+nXT
 bOm
-kaF
 nXT
-nXT
-nXT
-nXT
-nXT
-nXT
-nXT
-nXT
-nXT
-nXT
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
 ofW
 ofW
 ofW
@@ -39290,10 +39310,10 @@ lwL
 hpu
 vrz
 oxy
-jnX
+rmb
 rmb
 uOa
-jnX
+rmb
 seH
 vNV
 tTM
@@ -39306,14 +39326,14 @@ seH
 vNV
 bHE
 seH
-jnX
+rmb
 kpt
 crZ
 xBr
-flA
+wXC
 pgS
 aKR
-eEu
+wXC
 aqg
 flA
 rqF
@@ -39323,7 +39343,7 @@ hPW
 flA
 geY
 hGK
-fww
+nXT
 xbJ
 pgZ
 viy
@@ -39472,11 +39492,11 @@ lwL
 sNk
 oxy
 oxy
-jnX
+rmb
 oIL
 dzF
-jnX
-jnX
+rmb
+rmb
 jUX
 wQZ
 tdo
@@ -39487,25 +39507,25 @@ lHw
 tdo
 wHY
 rWP
-jnX
-jnX
+rmb
+rmb
 xRi
 hpI
 hpI
-eyL
-eyL
-eyL
-eyL
-eyL
+pxG
+pxG
+pxG
+pxG
+pxG
 eyL
 eyL
 eyL
 eyL
 eyL
 flA
-flA
+wXC
 prk
-fww
+nXT
 uvq
 nxG
 nxG
@@ -39687,7 +39707,7 @@ vKE
 urf
 pxG
 pmR
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -39869,7 +39889,7 @@ xUY
 rDE
 pxG
 npN
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -40051,7 +40071,7 @@ heb
 dlS
 pxG
 gFw
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -40233,7 +40253,7 @@ xUY
 rDE
 pxG
 gIh
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -40415,7 +40435,7 @@ xUY
 rDE
 hFm
 arL
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -40597,7 +40617,7 @@ xUY
 iLK
 pxG
 vdN
-kaF
+nXT
 uvq
 nxG
 nxG
@@ -40779,7 +40799,7 @@ ooi
 bMB
 pxG
 gUk
-kaF
+nXT
 kyR
 bBf
 qGw
@@ -40961,23 +40981,23 @@ xUY
 rDE
 pxG
 oxy
-kaF
-kaF
-kaF
-kaF
-kaF
+nXT
+nXT
+nXT
+nXT
+nXT
 bOm
-kaF
-kaF
-kaF
 nXT
 nXT
 nXT
 nXT
 nXT
-nXT
-nXT
-nXT
+eEu
+eEu
+eEu
+eEu
+eEu
+eEu
 ofW
 ofW
 ofW
@@ -41332,7 +41352,7 @@ rCX
 oxy
 arL
 eBZ
-xOA
+fww
 arL
 fNK
 uWg
@@ -42698,11 +42718,11 @@ uYB
 fIh
 vEe
 tvQ
-uOd
-uOd
-uOd
-uOd
-uOd
+lpK
+lpK
+lpK
+lpK
+lpK
 dRD
 xfY
 xfY
@@ -42827,7 +42847,7 @@ hjd
 hjd
 gDA
 xpw
-fum
+qOI
 hYs
 oQk
 mOY
@@ -42867,7 +42887,7 @@ rkR
 rkR
 rkR
 rkR
-fSD
+rkR
 alM
 sHe
 fTT
@@ -42880,7 +42900,7 @@ eHf
 knI
 vEe
 bYr
-uOd
+lpK
 aNv
 cNT
 cNT
@@ -43009,7 +43029,7 @@ gDA
 hjd
 hjd
 xpw
-fum
+qOI
 pii
 lFk
 mOY
@@ -43062,7 +43082,7 @@ lpK
 lpK
 lpK
 aoZ
-uOd
+lpK
 aTi
 cNT
 wVK
@@ -43143,7 +43163,7 @@ sJH
 sJH
 pOg
 pOg
-tRC
+pOg
 rkR
 oxy
 oxy
@@ -43191,8 +43211,8 @@ elw
 gWY
 gWY
 xpw
-fum
-fum
+qOI
+qOI
 lgm
 mOY
 tQM
@@ -43325,7 +43345,7 @@ sJH
 sJH
 pOg
 pOg
-tRC
+pOg
 rkR
 bpt
 isY
@@ -43374,7 +43394,7 @@ hjd
 ttR
 xpw
 xBL
-fum
+qOI
 hRk
 hPo
 qSq
@@ -43426,7 +43446,7 @@ lpK
 lpK
 lpK
 aoZ
-uOd
+lpK
 lAg
 cNT
 cNT
@@ -43507,7 +43527,7 @@ sJH
 sJH
 pOg
 pOg
-tRC
+pOg
 rkR
 jJp
 kkG
@@ -43556,7 +43576,7 @@ hjd
 hjd
 xpw
 xBL
-fum
+qOI
 dcQ
 mOY
 sUQ
@@ -43608,7 +43628,7 @@ hfN
 hfN
 iSJ
 ilV
-uOd
+lpK
 lAg
 cNT
 cNT
@@ -43678,7 +43698,7 @@ kHo
 dbQ
 kxy
 oPk
-rkR
+kaF
 rkR
 rkR
 rkR
@@ -43694,7 +43714,7 @@ rkR
 fje
 fje
 fje
-fje
+vFH
 wnQ
 arL
 oVe
@@ -43733,12 +43753,12 @@ aTk
 aTk
 aTk
 aTk
-fum
-fum
-fum
-fum
+qOI
+qOI
+qOI
+qOI
 oxk
-fum
+qOI
 mXu
 mOY
 mOY
@@ -43790,12 +43810,12 @@ hHO
 skm
 iSJ
 tYX
-uOd
+lpK
 fLq
-uOd
-uOd
-uOd
-uOd
+lpK
+lpK
+lpK
+lpK
 dRD
 dRD
 dRD
@@ -43866,7 +43886,7 @@ coh
 jWe
 cZM
 fje
-iQG
+tMY
 iQG
 tWr
 fje
@@ -43920,7 +43940,7 @@ ggV
 xpw
 gGg
 ylp
-fum
+qOI
 eoP
 qpW
 ius
@@ -43972,7 +43992,7 @@ ucT
 oap
 iSJ
 qjG
-uOd
+lpK
 dGo
 gLc
 kbt
@@ -44102,7 +44122,7 @@ hjd
 xpw
 fSb
 xBL
-fum
+qOI
 sRW
 sRW
 sRW
@@ -44154,7 +44174,7 @@ dug
 hNu
 iSJ
 pcK
-uOd
+lpK
 dGo
 gLc
 rpa
@@ -44284,7 +44304,7 @@ xpw
 xpw
 fSb
 xBL
-fum
+qOI
 sRW
 sRW
 sRW
@@ -44336,7 +44356,7 @@ dug
 kOZ
 iSJ
 jvA
-uOd
+lpK
 dGo
 nLt
 rpa
@@ -44458,7 +44478,7 @@ ofW
 ofW
 aTk
 aTk
-fum
+qOI
 fse
 nYH
 xpw
@@ -44466,7 +44486,7 @@ xpw
 xpw
 vzT
 eTY
-fum
+qOI
 sRW
 sRW
 sRW
@@ -44518,7 +44538,7 @@ oyc
 iVM
 iSJ
 tUN
-uOd
+lpK
 vBB
 lmh
 cbM
@@ -44526,7 +44546,7 @@ cun
 rpa
 fkc
 ybU
-uOd
+lpK
 dRD
 dRD
 ofW
@@ -44567,7 +44587,7 @@ oxH
 hIM
 djz
 gtH
-djz
+sNQ
 hIM
 oQB
 xNs
@@ -44648,7 +44668,7 @@ wbo
 xpw
 fSb
 xBL
-fum
+qOI
 gVz
 tMO
 qYk
@@ -44700,7 +44720,7 @@ dug
 iMA
 iSJ
 vfU
-uOd
+lpK
 gva
 gLc
 rpa
@@ -44830,7 +44850,7 @@ xpw
 xpw
 fSb
 xBL
-fum
+qOI
 fgw
 pbs
 pbs
@@ -44882,7 +44902,7 @@ dug
 xRE
 iSJ
 nNN
-uOd
+lpK
 gva
 gLc
 rpa
@@ -45012,7 +45032,7 @@ xpw
 xpw
 nfn
 fsb
-fum
+qOI
 sRW
 qlY
 pbs
@@ -45064,7 +45084,7 @@ hcm
 oap
 iSJ
 ilx
-uOd
+lpK
 bXo
 jZj
 rpa
@@ -45185,7 +45205,7 @@ ofW
 ofW
 ofW
 aTk
-fum
+qOI
 blb
 ldx
 nAl
@@ -45194,7 +45214,7 @@ sey
 sey
 wCp
 bWN
-fum
+qOI
 qOI
 qOI
 njE
@@ -45246,7 +45266,7 @@ oCJ
 jkT
 iSJ
 eOQ
-uOd
+lpK
 kSI
 rOw
 rOw
@@ -45255,7 +45275,7 @@ rOw
 rOw
 rOw
 kiK
-uOd
+lpK
 dRD
 ofW
 ofW
@@ -45428,7 +45448,7 @@ hfN
 hfN
 iSJ
 qjG
-uOd
+lpK
 rpa
 mtf
 cbM
@@ -45558,7 +45578,7 @@ mGP
 jbQ
 hTL
 xxA
-fum
+qOI
 qOI
 qOI
 njE
@@ -45610,7 +45630,7 @@ sPB
 tdi
 iSJ
 qjG
-uOd
+lpK
 gZL
 gZL
 oWp
@@ -45740,7 +45760,7 @@ bhw
 wLo
 dSo
 ejR
-fum
+qOI
 tyD
 gnq
 ofg
@@ -45792,7 +45812,7 @@ wqK
 eNM
 iSJ
 vFs
-uOd
+lpK
 xAm
 mJY
 orS
@@ -45922,7 +45942,7 @@ xQi
 xQi
 jYI
 mTT
-fum
+qOI
 eba
 nTV
 ofg
@@ -45974,7 +45994,7 @@ wqK
 xqh
 iSJ
 qjG
-uOd
+lpK
 ugN
 ipu
 ipu
@@ -46104,7 +46124,7 @@ xQi
 xQi
 xQi
 qRH
-fum
+qOI
 wqm
 nTV
 ofg
@@ -46156,7 +46176,7 @@ wqK
 dtF
 iSJ
 qjG
-uOd
+lpK
 ugN
 ipu
 ipu
@@ -46286,7 +46306,7 @@ xQi
 xQi
 xPS
 etP
-fum
+qOI
 wbl
 lQK
 ofg
@@ -46338,7 +46358,7 @@ wqK
 gVT
 iSJ
 fTd
-uOd
+lpK
 umv
 ipu
 ipu
@@ -47318,7 +47338,7 @@ ncO
 doM
 vhg
 syq
-hRH
+rXZ
 ogL
 ddO
 jHz
@@ -49479,7 +49499,7 @@ ofW
 vTq
 iFa
 sNZ
-sNZ
+cVK
 cVK
 cVK
 mSH
@@ -50671,7 +50691,7 @@ eEU
 kTZ
 tQq
 uJU
-qrE
+vzz
 dVv
 rgy
 uMA
@@ -50853,7 +50873,7 @@ eEU
 tyI
 aiP
 tEy
-qrE
+vzz
 cPM
 peO
 qhX
@@ -51035,7 +51055,7 @@ bcD
 mVG
 akY
 oKo
-qrE
+vzz
 hft
 vTQ
 hrQ
@@ -51217,7 +51237,7 @@ eEU
 slD
 nwR
 tEy
-qrE
+vzz
 vSP
 vTQ
 pkW
@@ -51399,7 +51419,7 @@ jAp
 rer
 kQV
 tEy
-qrE
+vzz
 tuh
 vTQ
 hrQ
@@ -51581,7 +51601,7 @@ dKM
 cjd
 nwR
 tEy
-qrE
+vzz
 dvl
 nRE
 arn
@@ -51705,7 +51725,7 @@ gAs
 gAs
 pZW
 acX
-vYh
+uOd
 jtG
 ofW
 ofW
@@ -51785,15 +51805,15 @@ wtA
 wtA
 wtA
 wtA
-sNQ
-sNQ
+uRe
+uRe
 pxq
-sNQ
-sNQ
-sNQ
+uRe
+uRe
+uRe
 pxq
-sNQ
-sNQ
+uRe
+uRe
 dYY
 qjG
 uZO
@@ -51967,15 +51987,15 @@ hUG
 cIN
 pNp
 gIC
-sNQ
+uRe
 aYY
 hYa
 oIO
-sNQ
+uRe
 aXs
 hYa
 yfz
-sNQ
+uRe
 kFe
 qjG
 eXo
@@ -52126,7 +52146,7 @@ hbB
 oCi
 hbB
 hPr
-kYh
+fum
 rkR
 aOW
 aOW
@@ -52153,11 +52173,11 @@ pNi
 dpC
 lqx
 jgO
-sNQ
+uRe
 kfY
 lqx
 okw
-sNQ
+uRe
 fxr
 qjG
 gEC
@@ -52331,15 +52351,15 @@ eQk
 oDK
 utu
 qft
-xDI
+pNi
 uRe
-sNQ
-sNQ
-sNQ
-sNQ
-sNQ
-sNQ
-sNQ
+uRe
+uRe
+uRe
+uRe
+uRe
+uRe
+uRe
 qjG
 qjG
 nCG
@@ -52687,7 +52707,7 @@ tqn
 fLj
 fLj
 dTx
-xqf
+qrE
 xIX
 xIX
 xIX
@@ -53059,7 +53079,7 @@ gBe
 jsp
 qXu
 hJV
-xDI
+pNi
 xTh
 ltk
 fes
@@ -53608,7 +53628,7 @@ hZn
 qjG
 qjG
 qjG
-xTh
+tRC
 xTh
 ofW
 ofW
@@ -56091,19 +56111,19 @@ iFa
 iFa
 iFa
 iFa
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
-kYI
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
+vRQ
 iFa
 iFa
 jtG
@@ -56285,7 +56305,7 @@ eTO
 eTO
 eTO
 eTO
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -56467,7 +56487,7 @@ rub
 rub
 rub
 rub
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -56649,7 +56669,7 @@ nhW
 ajn
 cXE
 iOG
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -56831,7 +56851,7 @@ kxB
 rub
 rub
 iOG
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -56869,11 +56889,11 @@ wNt
 kiR
 uFw
 huN
-wNt
-wNt
-wNt
-wNt
-wNt
+kYI
+kYI
+kYI
+kYI
+kYI
 iSG
 mKd
 grV
@@ -57013,7 +57033,7 @@ sVA
 rub
 rub
 iOG
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -57195,7 +57215,7 @@ nhW
 pjD
 dSC
 nhW
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -57377,7 +57397,7 @@ nhW
 xAD
 iOG
 pIg
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -57559,7 +57579,7 @@ nhW
 rub
 rub
 jWu
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -57741,7 +57761,7 @@ vBb
 rub
 rub
 sDT
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -57902,7 +57922,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 eTO
 eTO
 eTO
@@ -57923,7 +57943,7 @@ iOG
 oCP
 rub
 nhW
-kYI
+vRQ
 iFa
 iFa
 jtG
@@ -58084,7 +58104,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 rub
 rub
 rub
@@ -58105,8 +58125,8 @@ rub
 rub
 rub
 pyR
-kYI
-kYI
+vRQ
+vRQ
 iFa
 jtG
 ofW
@@ -58266,7 +58286,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 syz
 dTv
 pRY
@@ -58288,7 +58308,7 @@ ktf
 jVj
 pJQ
 pJy
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -58448,7 +58468,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 ksl
 xre
 uwj
@@ -58470,7 +58490,7 @@ xre
 uwj
 xct
 qAj
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -58630,7 +58650,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 ksl
 pus
 rMA
@@ -58652,7 +58672,7 @@ pus
 rMA
 urx
 pxS
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -58811,31 +58831,31 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 fXJ
 wRt
 dVf
 oBg
 auA
 rub
-kYI
-kYI
+vRQ
+vRQ
 bsn
 bsn
 bsn
 bsn
 bsn
-kYI
-kYI
+vRQ
+vRQ
 rub
 lvw
 wRt
 dVf
 oBg
 oII
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -59001,7 +59021,7 @@ lBU
 lBU
 blZ
 kNx
-kYI
+vRQ
 iFa
 iFa
 iFa
@@ -59009,7 +59029,7 @@ iFa
 iFa
 iFa
 iFa
-kYI
+vRQ
 kNx
 lDu
 cHq
@@ -59183,7 +59203,7 @@ wEN
 rYK
 qcY
 sZu
-kYI
+vRQ
 sZn
 sZn
 sZn
@@ -59191,7 +59211,7 @@ sZn
 sZn
 sZn
 sZn
-kYI
+vRQ
 sZu
 vRb
 wPH
@@ -59357,15 +59377,15 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 iZa
 ksl
 nOW
 eQP
 fmb
-kYI
-kYI
+vRQ
+vRQ
 ofW
 ofW
 ofW
@@ -59373,15 +59393,15 @@ ofW
 ofW
 ofW
 fbT
-kYI
-kYI
+vRQ
+vRQ
 tGc
 wPH
 nOW
 pxS
 rCr
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -59540,13 +59560,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 nOW
 ksl
 rQL
 eQP
 nOW
-kYI
+vRQ
 jtG
 ofW
 ofW
@@ -59556,13 +59576,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
+vRQ
 nOW
 wPH
 rQL
 pxS
 nOW
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -59722,13 +59742,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 nOW
 wJg
 suq
 pnJ
 nOW
-kYI
+vRQ
 jtG
 ofW
 ofW
@@ -59738,13 +59758,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
+vRQ
 nOW
 mYL
 suq
 twm
 nOW
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -59904,13 +59924,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 mBi
 iuD
 rub
 tup
 bhc
-kYI
+vRQ
 jtG
 ofW
 ofW
@@ -59920,13 +59940,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
+vRQ
 ghB
 uRW
 rub
 glc
 rnZ
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -60086,13 +60106,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 nOW
 ksl
 iXP
 eQP
 nOW
-kYI
+vRQ
 jtG
 ofW
 ofW
@@ -60102,13 +60122,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
+vRQ
 nOW
 wPH
 iXP
 pxS
 nOW
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -60267,8 +60287,8 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 vfT
 koQ
 nOW
@@ -60290,8 +60310,8 @@ azp
 nOW
 uVz
 umw
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -60638,7 +60658,7 @@ lBU
 lBU
 lBU
 hSi
-kYI
+vRQ
 fiP
 ofW
 ofW
@@ -60648,7 +60668,7 @@ ofW
 ofW
 ofW
 fiP
-kYI
+vRQ
 sNm
 cHq
 cHq
@@ -60813,8 +60833,8 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 eRO
 wEN
 woG
@@ -60836,8 +60856,8 @@ bpE
 xZl
 wEN
 umu
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -60996,7 +61016,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 bKa
 wEN
 ePO
@@ -61018,7 +61038,7 @@ nOW
 uEl
 wEN
 ccG
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -61178,7 +61198,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 nOW
 wEN
 dZH
@@ -61200,7 +61220,7 @@ wwk
 kWP
 wEN
 nOW
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -61366,7 +61386,7 @@ wEN
 rXx
 rXx
 tGH
-kYI
+vRQ
 ltx
 ofW
 ofW
@@ -61376,7 +61396,7 @@ ofW
 ofW
 ofW
 ltx
-kYI
+vRQ
 cre
 vzK
 rXx
@@ -61548,7 +61568,7 @@ xkc
 rXx
 rXx
 gkj
-kYI
+vRQ
 fiP
 ofW
 ofW
@@ -61558,7 +61578,7 @@ ofW
 ofW
 ofW
 fiP
-kYI
+vRQ
 kCV
 eoV
 rXx
@@ -61724,7 +61744,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 vYD
 wEN
 woG
@@ -61746,7 +61766,7 @@ bpE
 xZl
 wEN
 hWI
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -61906,7 +61926,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 bKa
 wEN
 ePO
@@ -61928,7 +61948,7 @@ nOW
 uEl
 wEN
 ccG
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -62087,8 +62107,8 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 eRO
 wEN
 dZH
@@ -62110,8 +62130,8 @@ wwk
 kWP
 wEN
 umu
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -62276,7 +62296,7 @@ wEN
 wEN
 wEN
 vnb
-kYI
+vRQ
 ltx
 ofW
 ofW
@@ -62286,7 +62306,7 @@ ofW
 ofW
 ofW
 ltx
-kYI
+vRQ
 eRO
 wEN
 wEN
@@ -62633,8 +62653,8 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 xvT
 wEN
 wEN
@@ -62656,8 +62676,8 @@ wEN
 wEN
 wEN
 wEN
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -62816,13 +62836,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 dOy
 nOW
 nOW
 nOW
 sQD
-kYI
+vRQ
 jtG
 ofW
 ofW
@@ -62832,13 +62852,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
+vRQ
 vSh
 nOW
 nOW
 nOW
 jli
-kYI
+vRQ
 iFa
 jtG
 ofW
@@ -62998,13 +63018,13 @@ ofW
 ofW
 vTq
 iFa
-kYI
-kYI
+vRQ
+vRQ
 fFW
 fFW
 jPu
-kYI
-kYI
+vRQ
+vRQ
 jtG
 ofW
 ofW
@@ -63014,13 +63034,13 @@ ofW
 ofW
 ofW
 vTq
-kYI
-kYI
+vRQ
+vRQ
 fFW
 fFW
 fFW
-kYI
-kYI
+vRQ
+vRQ
 iFa
 jtG
 ofW
@@ -63181,11 +63201,11 @@ ofW
 fSj
 iFa
 iFa
-kYI
+vRQ
 bsn
 bsn
 bsn
-kYI
+vRQ
 iFa
 gec
 ofW
@@ -63197,7 +63217,7 @@ ofW
 ofW
 vTq
 iFa
-kYI
+vRQ
 bsn
 bsn
 bsn
@@ -66394,7 +66414,7 @@ cwJ
 wIG
 izJ
 tvD
-sUL
+cwJ
 ofW
 ofW
 ofW
@@ -66576,7 +66596,7 @@ cwJ
 cZE
 izJ
 iwj
-sUL
+cwJ
 ofW
 ofW
 ofW
@@ -66758,7 +66778,7 @@ cwJ
 svT
 nzn
 qSO
-sUL
+cwJ
 ofW
 ofW
 ofW
@@ -66940,7 +66960,7 @@ cwJ
 cwJ
 oFl
 cwJ
-sUL
+cwJ
 ofW
 ofW
 ofW

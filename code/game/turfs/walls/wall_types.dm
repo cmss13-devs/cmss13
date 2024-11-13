@@ -273,28 +273,22 @@
 
 //UPP walls.
 
-/turf/closed/wall/upp
-	name = "hull"
-	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
-	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
-	icon_state = "testwall"
-
-	damage_cap = HEALTH_WALL
+/turf/closed/wall/almayer/upp
 	walltype = WALL_UPP_BASE
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
+	icon_state = "uppwall"
 
-/turf/closed/wall/upp/reinforced
+/turf/closed/wall/almayer/upp/reinforced
 	name = "reinforced hull"
-	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 //	walltype = WALL_UPP_REINFORCED
 
-/turf/closed/wall/upp/reinforced/outer
-	name = "outer hull"
-	desc = "A metal wall used to separate space from the ship"
-	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
-	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
-	hull = 1
+/turf/closed/wall/almayer/upp/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"

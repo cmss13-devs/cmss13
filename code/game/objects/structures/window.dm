@@ -1047,16 +1047,16 @@
 /obj/structure/window/framed/upp
 	name = "window"
 	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
-	icon_state = "alm_window0"
-	basestate = "alm_window"
+	icon_state = "upp_window0"
+	basestate = "upp_window"
 	desc = "A glass window inside a wall frame."
 	health = 40
 	window_frame = /obj/structure/window_frame/upp
 
 /obj/structure/window/framed/upp/reinforced
 	name = "reinforced window"
-	icon_state = "alm_rwindow0"
-	basestate = "alm_rwindow"
+	icon_state = "upp_rwindow0"
+	basestate = "upp_rwindow"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
@@ -1064,7 +1064,7 @@
 
 /obj/structure/window/framed/upp/hull
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-//	icon_state = "alm_rwindow0"
+//	icon_state = "upp_rwindow0"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE

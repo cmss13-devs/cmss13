@@ -320,16 +320,16 @@
 
 /obj/structure/window_frame/upp
 	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
-	icon_state = "window0_frame"
-	basestate = "alm_window0"
+	icon_state = "upp_window0_frame"
+	basestate = "upp_window0"
 
 /obj/structure/window_frame/upp/reinforced
-	icon_state = "window0_frame"
-	basestate = "alm_rwindow0"
+	icon_state = "upp_window0_frame"
+	basestate = "upp_rwindow0"
 	reinforced = TRUE
 
 /obj/structure/window_frame/upp/hull
-	icon_state = "window0_frame"
-	basestate = "alm_rwindow0"
+	icon_state = "upp_window0_frame"
+	basestate = "upp_rwindow0"
 	unslashable = TRUE
 	unacidable = TRUE

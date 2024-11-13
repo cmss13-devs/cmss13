@@ -1,0 +1,1232 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/prison/hallway/central/west)
+"am" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"aq" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/office,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"ax" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"aB" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.1
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white"
+	},
+/area/prison/hallway/central/west)
+"aP" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"bB" = (
+/turf/closed/wall/prison{
+	damage = 300
+	},
+/area/prison/security/checkpoint/highsec/n)
+"ca" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"dh" = (
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"dM" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"eJ" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"eW" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/prison/cellblock/highsec/north/south)
+"fj" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"fF" = (
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"gr" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"gx" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/prison/cellblock/highsec/north/south)
+"gQ" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkredcorners2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"gY" = (
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"hK" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"hN" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"ib" = (
+/turf/closed/wall/prison,
+/area/prison/chapel)
+"iB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "North High-Security Cellblock"
+	},
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/prison/security/checkpoint/highsec/n)
+"iG" = (
+/turf/closed/wall/prison,
+/area/prison/security/checkpoint/highsec/n)
+"jJ" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/cellblock/highsec/north/south)
+"jK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall/prison,
+/area/prison/chapel)
+"kN" = (
+/turf/closed/wall/r_wall/prison,
+/area/prison/chapel)
+"kQ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"lp" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"lr" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"lB" = (
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"ml" = (
+/turf/closed/wall/prison{
+	damage = 200
+	},
+/area/prison/storage/vip)
+"mt" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	icon_state = "damaged2"
+	},
+/area/prison/cellblock/highsec/north/south)
+"mz" = (
+/turf/closed/wall/r_wall/prison,
+/area/prison/security/checkpoint/highsec/n)
+"mD" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"mK" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/filingcabinet{
+	pixel_y = 12;
+	breakable = 1
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 15;
+	pixel_y = 15;
+	breakable = 1
+	},
+/obj/structure/filingcabinet{
+	pixel_y = 19;
+	pixel_x = -10;
+	breakable = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "damaged3"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"mS" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1;
+	welded = 1
+	},
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"nb" = (
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"ns" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"nx" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/turf/open/floor/prison{
+	icon_state = "damaged2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"nP" = (
+/obj/structure/window_frame/prison/reinforced,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec/n)
+"oB" = (
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/prison/security/checkpoint/highsec/n)
+"oV" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/north)
+"pq" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/surface/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"pT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	welded = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"qq" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	icon_state = "damaged3"
+	},
+/area/prison/cellblock/highsec/north/south)
+"rj" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/sheet/metal,
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"rp" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/explosive/grenade/incendiary,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"su" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"sz" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"sV" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"sW" = (
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/item/ammo_casing,
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"tr" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"tQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"ud" = (
+/obj/structure/surface/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"ut" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"uM" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/prison/hallway/central/west)
+"uN" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/stack/rods,
+/obj/item/ammo_casing,
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"uV" = (
+/obj/structure/bed/chair/office{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"wk" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"wF" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec/n)
+"xx" = (
+/obj/structure/machinery/computer/secure_data,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"xS" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged2"
+	},
+/area/prison/storage/vip)
+"yx" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"yC" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white"
+	},
+/area/prison/hallway/central/west)
+"yX" = (
+/turf/closed/wall/prison,
+/area/prison/hallway/central/west)
+"zk" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/item/tool/wirecutters/tactical{
+	pixel_y = -16
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"zW" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gibarm_flesh";
+	pixel_y = -1;
+	pixel_x = -22
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"AH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall/prison,
+/area/prison/storage/highsec/n)
+"AY" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Bi" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/prison/hallway/central/west)
+"BD" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"CB" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"Dn" = (
+/turf/closed/wall/r_wall/prison,
+/area/prison/storage/highsec/n)
+"DC" = (
+/obj/structure/machinery/light,
+/obj/item/ammo_casing,
+/obj/structure/machinery/defenses/tesla_coil,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"DD" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/prison/cellblock/highsec/north/south)
+"DN" = (
+/obj/structure/largecrate/random,
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"GU" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"He" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/prison/cellblock/highsec/north/south)
+"Iy" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating,
+/area/prison/hallway/central/west)
+"Jh" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white"
+	},
+/area/prison/hallway/central/west)
+"Jw" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"Jy" = (
+/obj/structure/bed/chair/office,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"JH" = (
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON")
+	},
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"KB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"KM" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	pixel_y = 20;
+	pixel_x = -4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Lb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"LW" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Md" = (
+/turf/closed/wall/r_wall/prison{
+	damage = 1500
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Mw" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"Oa" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"OD" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white"
+	},
+/area/prison/hallway/central/west)
+"OE" = (
+/obj/item/phone,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor{
+	icon_state = "hydrofloor"
+	},
+/area/prison/hallway/central/west)
+"OL" = (
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON")
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Pc" = (
+/obj/item/ammo_casing,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"Ps" = (
+/obj/structure/window_frame/prison/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec/n)
+"Pz" = (
+/obj/effect/landmark/item_pool_spawner/prison_lock,
+/obj/structure/surface/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"PA" = (
+/turf/closed/wall/prison{
+	damage = 1700
+	},
+/area/prison/security/checkpoint/highsec/n)
+"PD" = (
+/obj/structure/machinery/vending/security,
+/obj/item/tool/screwdriver{
+	pixel_x = -17
+	},
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"PX" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+"QF" = (
+/obj/structure/machinery/power/apc{
+	start_charge = 40
+	},
+/obj/item/stack/rods,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec/n)
+"QQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 2;
+	name = "Security Booth"
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"QS" = (
+/turf/closed/wall/prison,
+/area/prison/storage/highsec/n)
+"Rc" = (
+/turf/closed/wall/prison,
+/area/prison/storage/vip)
+"Sf" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/prison/hallway/central/west)
+"TP" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec/n)
+"Um" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Un" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/office{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/prison/hallway/central/west)
+"Uz" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"UD" = (
+/turf/closed/wall/prison{
+	damage = 600
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Vc" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/obj/effect/landmark/item_pool_spawner/prison_lock,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkredfull2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Vf" = (
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/prison/hallway/central/west)
+"Vm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/cellblock/highsec/north/south)
+"VC" = (
+/obj/structure/pipes/vents/scrubber{
+	welded = 1
+	},
+/obj/item/weapon/gun/flamer,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Wu" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"Wv" = (
+/turf/closed/wall/prison,
+/area/prison/security/checkpoint/vip)
+"XO" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1;
+	welded = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"Ye" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibarm"
+	},
+/turf/open/floor/prison,
+/area/prison/security/checkpoint/highsec/n)
+"Yh" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "darkred2"
+	},
+/area/prison/security/checkpoint/highsec/n)
+"Zg" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/prison/hallway/central/west)
+
+(1,1,1) = {"
+AH
+QS
+QS
+QS
+Dn
+gx
+jJ
+Vm
+qq
+PA
+UD
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+Wv
+"}
+(2,1,1) = {"
+jK
+am
+tQ
+ut
+QQ
+eW
+He
+DD
+mt
+nx
+mK
+dM
+pq
+zW
+TP
+iG
+sV
+Mw
+Mw
+iG
+Rc
+"}
+(3,1,1) = {"
+ib
+su
+gr
+BD
+mz
+mz
+oB
+iB
+Md
+Md
+KM
+dh
+ud
+zk
+QF
+bB
+gY
+Ye
+XO
+lB
+ml
+"}
+(4,1,1) = {"
+ib
+GU
+Yh
+ax
+mz
+mz
+ac
+uM
+mz
+mz
+Uz
+Um
+Pz
+rj
+DC
+bB
+kQ
+Wu
+Pc
+fF
+xS
+"}
+(5,1,1) = {"
+ib
+wk
+lp
+Vc
+mz
+aq
+Sf
+uM
+Un
+mz
+ax
+eJ
+VC
+gQ
+lr
+uN
+tr
+Lb
+mS
+fF
+ml
+"}
+(6,1,1) = {"
+ib
+sV
+Oa
+xx
+mz
+Jy
+Vf
+Bi
+nb
+mz
+xx
+fj
+sW
+pT
+ns
+bB
+su
+Pc
+Mw
+iG
+yX
+"}
+(7,1,1) = {"
+ib
+yx
+aP
+OL
+wF
+uV
+ac
+uM
+ca
+wF
+JH
+AY
+rp
+LW
+PD
+iG
+iG
+iG
+iG
+iG
+yX
+"}
+(8,1,1) = {"
+kN
+wF
+wF
+wF
+wF
+aB
+yC
+Jh
+OD
+wF
+wF
+nP
+Ps
+Ps
+wF
+iG
+OE
+OE
+OE
+OE
+yX
+"}
+(9,1,1) = {"
+kN
+oV
+Jw
+Jw
+Jw
+sz
+hK
+KB
+CB
+Jw
+DN
+Zg
+hN
+PX
+mD
+sz
+hK
+hK
+hK
+hK
+Iy
+"}

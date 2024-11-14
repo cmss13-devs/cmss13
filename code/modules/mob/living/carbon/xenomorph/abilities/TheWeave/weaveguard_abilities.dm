@@ -1,7 +1,6 @@
 /datum/action/xeno_action/activable/spray_acid/weaveguard
 	name = "Spray Fey Acid"
 	action_icon_state = "spray_acid"
-	ability_name = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3

@@ -10,7 +10,6 @@
 
 /datum/action/xeno_action/onclick/change_fruit/weave
 	name = "Change Garden"
-	ability_name = "change garden"
 	plasma_cost = 0
 	xeno_cooldown = 0
 	action_type = XENO_ACTION_CLICK
@@ -19,7 +18,6 @@
 /datum/action/xeno_action/onclick/exude_energy
 	name = "Exude Energy"
 	action_icon_state = "empower"
-	ability_name = "weave blessing"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	xeno_cooldown = 60 SECONDS

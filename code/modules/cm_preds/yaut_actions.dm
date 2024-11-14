@@ -15,6 +15,12 @@
 	///If the action is currently on or in use
 	var/active = FALSE
 
+/datum/action/predator_action/remove_from(mob/user)
+	yautja = null
+	bracers = null
+	mask = null
+	. = ..()
+
 /datum/action/predator_action/can_use_action()
 	. = ..()
 	if(!.)

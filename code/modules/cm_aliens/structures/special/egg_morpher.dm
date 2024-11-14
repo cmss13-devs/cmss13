@@ -21,12 +21,14 @@
 	var/datum/shape/range_bounds
 	///How long it takes to generate one facehugger.
 	var/spawn_cooldown_length = 120 SECONDS
+	///How long it takes to generate one facehugger if queen is on ovi.
+	var/spawn_cooldown_length_ovi = 60 SECONDS
 	COOLDOWN_DECLARE(spawn_cooldown)
 
 
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
-	COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
+	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
@@ -107,7 +109,7 @@
 
 	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
-	COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
+	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 
@@ -148,7 +150,7 @@
 	if(stored_huggers)
 		//this way another hugger doesn't immediately spawn after we pick one up
 		if(stored_huggers == huggers_to_grow_max)
-			COOLDOWN_START(src, spawn_cooldown, spawn_cooldown_length)
+			COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
@@ -160,6 +162,11 @@
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
 	join_as_facehugger_from_this(user)
+
+/obj/effect/alien/resin/special/eggmorph/proc/get_egg_cooldown()
+	if(linked_hive?.living_xeno_queen?.ovipositor)
+		return spawn_cooldown_length_ovi
+	return spawn_cooldown_length
 
 /obj/effect/alien/resin/special/eggmorph/proc/join_as_facehugger_from_this(mob/dead/observer/user)
 	if(stored_huggers <= huggers_reserved)

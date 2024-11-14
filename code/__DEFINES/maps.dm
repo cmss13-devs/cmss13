@@ -120,3 +120,8 @@ require only minor tweaks.
 
 /// A map key that corresponds to being one exclusively for Space.
 #define SPACE_KEY "space"
+
+#define SENTRY_TOP_LEFT "top_left"
+#define SENTRY_TOP_RIGHT "top_right"
+#define SENTRY_BOTTOM_LEFT "bottom_left"
+#define SENTRY_BOTTOM_RIGHT "bottom_right"

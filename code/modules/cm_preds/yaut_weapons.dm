@@ -267,6 +267,12 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
+/obj/item/weapon/yautja/sword/staff
+	name = "cruel staff"
+	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	icon_state = "staff"
+	item_state = "staff"
+
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
 	name = "combi-stick"
@@ -877,6 +883,11 @@
 	item_state = "glaive_alt"
 	flags_item = NOSHIELD|TWOHANDED
 
+/obj/item/weapon/twohanded/yautja/glaive/longaxe
+	name = "longaxe"
+	desc = "A frighteningly big axe. The blade edge is chipped and gnarled from thousands of bone-crushing blows."
+	icon_state = "longaxe"
+	item_state = "longaxe"
 
 /*#########################################
 ############## Ranged Weapons #############
@@ -1229,7 +1240,7 @@
 	force = 0
 	fire_delay = 3
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
+	flags_item = NOBLUDGEON|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 	explo_proof = TRUE
@@ -1353,7 +1364,6 @@
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
-		return
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)

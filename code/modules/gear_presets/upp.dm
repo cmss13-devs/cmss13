@@ -3230,6 +3230,7 @@
 	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
+	flags_whitelist =  WHITELIST_SYNTHETIC
 
 
 /datum/equipment_preset/upp/synth/dressed

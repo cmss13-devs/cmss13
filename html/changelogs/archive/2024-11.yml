@@ -231,3 +231,40 @@
   harryob:
   - ui: added a new tgui to select character traits. it's quite similar to the old
       one
+2024-11-12:
+  An A Jay:
+  - balance: Made Medicomp heal to full for predators.
+  Katskan:
+  - bugfix: G2 cosmetic working properly
+  Nomoresolvalou, Thwomper:
+  - rscadd: 'Added two new yautja weapons: the longaxe and the staff'
+  - imageadd: Added sprites for the new weapons
+  Sunless2:
+  - rscadd: Added the ability for bayonets to cut down fences
+  - balance: It now takes twice the amount of throws to bring down a fence
+2024-11-13:
+  Blundir:
+  - rscadd: working joe's and early gen synth's eyes now glow in a dark
+  - rscadd: working joe's and early gen synth's eyes color tweak on disarm and grab
+  Drathek:
+  - maptweak: Fixed the rotation of the telecoms APC in the Aerodome on Shivas
+  - balance: LZ smoke is now disabled by default on distress signal
+  - admin: Added game mode toggle to toggle LZ smoke during the first 3 minutes of
+      the round (otherwise is locked in)
+  - balance: Eggs that lose their hive weeds will now turn fragile (like egg carrier
+      eggs) lasting 5 minutes.
+  - bugfix: Fixed an exploit allowing egg carrier eggs to last indefinitely.
+  - bugfix: Fixed the inability to examine planted eggs from further than one tile.
+  - code_imp: Added some more sanity code to ensure time of death is recorded for
+      larva queue
+  JustLat:
+  - imageadd: Adds icon states for l_hand and r_hand for yautja accessories.
+  Steelpoint, Zenith:
+  - mapadd: Two UPP dropships have been added for event use, the Morana and the Devana.
+  - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
+      by admins for events.
+  cuberound:
+  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: makes UPP synth lobby joinable for events
+  zzzmike:
+  - rscadd: tip of the round regarding lesser known cryotube utility

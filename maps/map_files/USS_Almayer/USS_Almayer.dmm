@@ -12137,7 +12137,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bMg" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Synth Bay"
 	},
@@ -22241,7 +22241,7 @@
 	},
 /area/almayer/medical/containment/cell/cl)
 "flf" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 1;
 	vent_tag = "Records"
 	},
@@ -42330,7 +42330,7 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	vent_tag = "Core Chamber"
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -44675,7 +44675,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/cichallway)
 "oBD" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Access Hall"
 	},
@@ -46013,7 +46013,7 @@
 /area/almayer/shipboard/brig/cryo)
 "pax" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Reception"
 	},
@@ -67094,7 +67094,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "xwU" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 1;
 	vent_tag = "Comms"
 	},

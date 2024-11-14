@@ -326,6 +326,7 @@
 	name = "destination tagger"
 	desc = "Used to set the destination of properly wrapped packages."
 	icon_state = "dest_tagger"
+	icon = 'icons/obj/items/tools.dmi'
 	var/currTag = 0
 
 	w_class = SIZE_SMALL

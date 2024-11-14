@@ -116,6 +116,10 @@
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	item_state = "apronchef"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
+	)
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (

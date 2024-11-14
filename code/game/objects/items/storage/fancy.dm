@@ -64,7 +64,7 @@
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
 	desc = "A pack of red candles."
-	icon = 'icons/obj/items/candle.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "candlebox5"
 	icon_type = "candle"
 	item_state = "candlebox5"
@@ -335,6 +335,7 @@
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
 	icon_state = "mpacket"
 	item_state = "zippo"
+	icon = 'icons/obj/items/smoking/matches.dmi'
 	storage_slots = 6
 	can_hold = list()
 	icon_type = "match"

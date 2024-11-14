@@ -96,6 +96,10 @@
 	desc = "The hat worn by Souto Man. As tall as the new 24oz cans of Souto Lime!"
 	item_state = "souto_man"
 	icon_state = "souto_man"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/hats.dmi'
+	)
 	armor_melee = CLOTHING_ARMOR_HARDCORE
 	armor_bullet = CLOTHING_ARMOR_HARDCORE
 	armor_laser = CLOTHING_ARMOR_HARDCORE

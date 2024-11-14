@@ -478,6 +478,7 @@ K9 SCANNER
 	desc = "A security access tuner with wires and electrical pins sticking out at odd angles. A handwritten label on the bottom says something about the ASRS system."
 	icon_state = "bm_hacker"
 	item_state = "analyzer"
+	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST

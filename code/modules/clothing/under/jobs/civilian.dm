@@ -54,6 +54,10 @@
 	desc = "A long dress with a purple scarf, often worn by religious folk."
 	icon_state = "priest_robe"
 	item_state = "priest_robe"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/under/rank/worker_overalls
 	name = "worker overalls"

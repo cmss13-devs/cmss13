@@ -679,7 +679,7 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/tools.dmi'
+	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

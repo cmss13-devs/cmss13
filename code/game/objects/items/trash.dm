@@ -150,6 +150,7 @@
 	name = "cigar butt"
 	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 
 ////////////
 ///Dishes///

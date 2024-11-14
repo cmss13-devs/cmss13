@@ -91,6 +91,10 @@
 	desc = "A suit designed for safety when handling explosives."
 	icon_state = "bombsuit"
 	item_state = "bombsuit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -160,6 +164,10 @@
 	desc = "A suit that protects against radiation. Label: Made with lead, do not eat insulation."
 	icon_state = "rad"
 	item_state = "rad_suit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50

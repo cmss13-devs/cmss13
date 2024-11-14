@@ -3,6 +3,7 @@
 	desc = "A device used to project your voice. Loudly."
 	icon_state = "megaphone"
 	item_state = "megaphone"
+	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 

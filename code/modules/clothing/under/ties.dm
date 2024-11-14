@@ -857,23 +857,6 @@
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/clothing/accessory/storage/knifeharness/duelling
-	name = "decorated harness"
-	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
-	icon_state = "unathiharness2"
-	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
-
-/obj/item/storage/internal/accessory/knifeharness/duelling
-	storage_slots = 2
-	max_storage_space = 2
-	can_hold = list(
-		/obj/item/weapon/unathiknife,
-	)
-
-/obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
-	new /obj/item/weapon/unathiknife(src)
-	new /obj/item/weapon/unathiknife(src)
-
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"
 	desc = "A convenient pouch to carry loose items around."

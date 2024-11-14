@@ -5,8 +5,8 @@
 /obj/item/clothing/under/marine
 	name = "\improper USCM uniform"
 	desc = "Standard-issue Marine uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
-	siemens_coefficient = 0.9
 	icon_state = "marine_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
 	worn_state = "marine_jumpsuit"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -18,6 +18,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	drop_sound = "armorequip"
+	siemens_coefficient = 0.9
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
 	layer = UPPER_ITEM_LAYER
@@ -152,9 +153,9 @@
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
 	desc = "Softer than silk. Lighter than feather. More protective than Kevlar. Fancier than a regular jumpsuit, too. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "officertanclothes"
-	item_state = "officertanclothes"
-	worn_state = "officertanclothes"
+	icon_state = ""
+	item_state = ""
+	worn_state = ""
 	suit_restricted = null //so most officers can wear whatever suit they want
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
@@ -750,14 +751,6 @@
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 	flags_jumpsuit = FALSE
 	suit_restricted = null
-
-/obj/item/clothing/under/marine/ucf_clown
-	name = "\improper UCF uniform"
-	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology."
-	icon_state = "clown"
-	worn_state = "clown"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
-	black_market_value = 25
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

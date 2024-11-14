@@ -752,8 +752,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 
 /obj/item/clothing/head/helmet/marine/desert
-	icon_state = "d_helmet"
-	item_state = "d_helmet"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE

@@ -208,7 +208,7 @@
 /obj/item/tool/shovel/etool
 	name = "entrenching tool"
 	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces."
-	icon = 'icons/obj/items/marine-items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool"
 	item_state = "etool"
 	force = 30

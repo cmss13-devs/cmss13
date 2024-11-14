@@ -375,6 +375,10 @@
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/gromi
 	name = "Hawkeye's Jacket"
@@ -400,6 +404,10 @@
 	desc = "The fanciest bullet proof vest you've ever seen.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/crazyh206
 	name = "Templar Armor"
@@ -1080,18 +1088,6 @@
 
 //END UNIFORM TEMPLATE
 
-/obj/item/clothing/under/marine/fluff/marinemedic //UNUSED
-	name = "Marine Medic jumpsuit"
-	desc = "A standard quilted Colonial Marine jumpsuit. Weaved with armored plates to protect against low-caliber rounds and light impacts. Has medical markings. "
-	icon_state = "marine_medic"
-	worn_state = "marine_medic"
-
-/obj/item/clothing/under/marine/fluff/marineengineer //UNUSED
-	name = "Marine Technician jumpsuit"
-	desc = "A standard quilted Colonial Marine jumpsuit. Weaved with armored plates to protect against low-caliber rounds and light impacts. Has engineer markings. "
-	icon_state = "marine_engineer"
-	worn_state = "marine_engineer"
-
 /obj/item/clothing/under/marine/fluff/tristan //CKEY=tristan63
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
 	name = "captain's jumpsuit"
@@ -1117,6 +1113,10 @@
 	name = "Pink Pride Jumpsuit"
 	desc = "A jumpsuit for showing your pride in pink... Donor Item"
 	icon_state = "pink"
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+	)
 	worn_state = "pink"
 	flags_jumpsuit = FALSE
 
@@ -1166,6 +1166,10 @@
 	name = "Corporate Security Uniform"
 	desc = "A security jumpsuit, worthy of a Corporate Head of Security.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "hos_corporate"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	worn_state = "hos_corporate"
 	flags_jumpsuit = FALSE
 
@@ -1173,6 +1177,10 @@
 	name = "Selena's Tactical Suit"
 	desc = "A strange looking black jumpsuit.  DONOR ITEM"
 	icon_state = "robotics"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/science.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/science.dmi',
+	)
 	worn_state = "robotics"
 
 /obj/item/clothing/under/marine/fluff/gromi
@@ -1228,6 +1236,10 @@
 	name = "Dress Uniform"
 	desc = "A Dress uniform, worn by standard marines. DONOR ITEM"
 	icon_state = "BO_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	worn_state = "BO_jumpsuit"
 	flags_jumpsuit = FALSE
 

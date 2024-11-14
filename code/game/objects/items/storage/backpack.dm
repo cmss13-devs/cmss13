@@ -414,9 +414,14 @@
 	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
 	item_state = "marinepack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 	xeno_icon_state = "marinepack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
+
 
 /obj/item/storage/backpack/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()

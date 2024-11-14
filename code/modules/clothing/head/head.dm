@@ -33,6 +33,10 @@
 
 /obj/item/clothing/head/cmbandana/tan
 	icon_state = "band2"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	)
 	flags_atom = null
 
 /obj/item/clothing/head/cmbandana/tan/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -108,6 +112,10 @@
 
 /obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	)
 
 /obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
 	. = ..()
@@ -189,8 +197,10 @@
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
 	icon_state = "headband"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
@@ -224,10 +234,18 @@
 
 /obj/item/clothing/head/headband/brown
 	icon_state = "headbandbrown"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/gray
 	icon_state = "headbandgray"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/headband/rebel
@@ -307,7 +325,9 @@
 	name = "patrol cap"
 	desc = "A casual cap issued as part of the non-combat uniform. While it only protects from the sun, it's much more comfortable than a helmet."
 	icon_state = "cap"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
@@ -624,9 +644,9 @@
 	name = "marine commanding officer beret"
 	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon_state = "coberet"
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	)
 	black_market_value = 30
 
@@ -655,24 +675,40 @@
 	name = "marine major white beret"
 	desc = "A white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 	icon_state = "codressberet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine major black beret"
-	icon_state = "coblackberet"
 	desc = "A black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	icon_state = "coblackberet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
 	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
 	icon_state = "cdreberet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
 	name = "marine colonel beret"
 	desc = "A dark blue, custom-tailored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/marine/peaked
@@ -909,8 +945,10 @@
 	name = "durag"
 	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon_state = "durag"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
+		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)

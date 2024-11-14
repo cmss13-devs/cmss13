@@ -179,15 +179,27 @@
 	desc = "It's a suit that oozes with authority. Belongs to someone very important."
 	item_state = "director_uniform"
 	icon_state = "director_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 
 /obj/item/clothing/under/suit_jacket/manager
 	desc = "It's a suit worn by those with the know-how to achieve the position of \"Corporate Manager\"."
 	name = "manager's suit"
 	icon_state = "manager_uniform"
 	item_state = "manager_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 
 /obj/item/clothing/under/suit_jacket/trainee
 	name = "trainee's uniform"
 	desc = "It's a uniform that has a Wey-Yu insignia on it with the words \"Trainee\" stamped below."
 	icon_state = "trainee_uniform"
 	item_state = "trainee_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)

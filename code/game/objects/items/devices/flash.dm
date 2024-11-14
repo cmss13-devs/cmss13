@@ -178,7 +178,3 @@
 		broken = TRUE
 		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
 		update_icon()
-
-/obj/item/device/flash/old
-	name = "old-looking flash"
-	icon_state = "flash_old"

@@ -15,6 +15,30 @@
 		WEAR_BODY = 'icons/obj/items/clothing/halloween_clothes.dmi',
 	)
 
+/obj/item/clothing/suit/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
+/obj/item/clothing/shoes/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_FEET = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
+/obj/item/clothing/mask/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
+/obj/item/clothing/gloves/gimmick
+	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
+	item_icons = list(
+		WEAR_HANDS = 'icons/obj/items/clothing/halloween_clothes.dmi',
+	)
+
 //JASON
 /obj/item/clothing/under/gimmick/jason
 	name = "dirty work attire"

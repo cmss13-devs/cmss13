@@ -353,6 +353,7 @@
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built-in printer for action shots."
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
+	icon = 'icons/obj/items/tools.dmi'
 	unacidable = TRUE
 	explo_proof = TRUE
 	pictures_left = 20

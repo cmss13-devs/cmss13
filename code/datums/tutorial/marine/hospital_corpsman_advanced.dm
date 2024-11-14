@@ -144,7 +144,7 @@
 	message_to_player("This condition is known as <b>Heartbreak</b>, and your response to such will be covered in later sections.")
 	message_to_player("")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_5)), 8 SECONDS)
+	//addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_5)), 8 SECONDS)
 
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_33()

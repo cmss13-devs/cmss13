@@ -191,4 +191,6 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pkp
+/datum/ammo/bullet/pkp/setup_hvh_values()
+	. = ..()
+	accurate_range = 14

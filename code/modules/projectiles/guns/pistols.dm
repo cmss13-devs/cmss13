@@ -827,6 +827,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+	AddComponent(/datum/component/iff_fire_prevention)
 
 //-------------------------------------------------------
 //SKORPION //Based on the same thing.

@@ -106,6 +106,7 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
+	AddComponent(/datum/component/iff_fire_prevention)
 
 /obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
 	. = ..()
@@ -363,6 +364,7 @@
 		remove_bullet_trait("iff")
 		drain -= 10
 		MD.iff_signal = null
+	SEND_SIGNAL(src, COMSIG_GUN_IFF_TOGGLED, iff_enabled)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_battery)

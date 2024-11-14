@@ -8,7 +8,9 @@
 
 // ------------ CONTENTS ------------ //
 //
-// Section 1 -
+// Section 1 - Stabilizing Types of Organ Damage
+// 1.1 Internal Organ Damage (Chest)
+// 1.2 Heart Damage
 //
 
 /datum/tutorial/marine/hospital_corpsman_advanced/start_tutorial(mob/starting_mob)
@@ -48,7 +50,7 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(organ_tutorial)), 5 SECONDS)
 		//RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
@@ -70,13 +72,14 @@
 	message_to_player("Healthy -> Slighty Bruised -> Bruised -> Ruptured / Broken")
 	message_to_player("Each increase in organ damage severity will produce similarly life-threatening side effects on the body.")
 	message_to_player("A <b>Ruptured Internal Organ</b> has been damaged beyond the point of function, and will require immediate surgical intervention from a <u>trained Doctor</u>.")
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 21 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_chest)), 21 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_3()
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest()
+
+	message_to_player("<b>1.1 Internal Organ Damage (Chest)</b>.")
 
 	message_to_player("Unlike the rest of the body, the condition of <b>Internal Organs</b> do not appear on a Health Analyzer scan.")
-	message_to_player("Instead, a more specialized tool is used!")
-	message_to_player("On that note, it's time to make another introduction. Say hello to the humble <b>Stethoscope</b>!")
+	message_to_player("Instead, a more specialized tool is used. Say hello to the humble <b>Stethoscope</b>!")
 
 	var/obj/item/clothing/accessory/stethoscope/steth = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(steth)
@@ -84,9 +87,9 @@
 
 	message_to_player("Pick up the <b>Stethoscope</b>, and revel is its simple beauty.")
 
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial_4))
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial_chest_2))
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_4()
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_2()
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
@@ -99,36 +102,59 @@
 
 	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")
 
-	//RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_5))
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
-	RegisterSignal(steth, COMSIG_ITEM_ATTACK, PROC_REF(organ_tutorial_5))
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_chest_3))
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_5(datum/source, mob/living/carbon/human/being, mob/living/user)
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_3(datum/source, mob/living/carbon/human/being, mob/living/user)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	if(being != human_dummy)
-		message_to_player("Returned")
 		return
 	else
-		if(tutorial_mob.zone_selected == "chest")
-			message_to_player("Chest Returned")
+		if(tutorial_mob.zone_selected != "chest")
+			message_to_player("Make sure to have the Dummys <b>Chest</b> selected as your target. Use the <b>Zone Selection Element</b> on the bottom right of your hud to target the Dummys chest, and try again.")
 		else
-			message_to_player("Select Chest")
-			return
-	message_to_player("Signal Check Cleared")
+			message_to_player("Well done! If you check the <b>Chat-Box</b> on the right of your screen, you will now see the following message from your <b>Stethoscope</b>:")
+			message_to_player("You hear normal heart beating patterns, his heart is surely <u>Healthy</u>. You also hear normal respiration sounds aswell, that means his lungs are <u>Healthy</u>,")
+			message_to_player("This means that all internal organs in Mr Dummys chest are <b>Fully Healthy</b>!")
 
-	//addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 15 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart)), 22 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart()
+
+	message_to_player("<b>Section 1.2: Heart Damage</b>.")
+	message_to_player("Despite their otherwise stone-cold exterior, the heart of a combat Marine is in actuality, quite delecate.") // naturally excepting members of Delta squad
+	message_to_player("A damaged heart is the most common source of <b>Oxygen Damage</b> on the field, as even small amounts of <b>Heart Damage</b> proves capable of seriously impairing the human body.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_2)), 12 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_2()
+	message_to_player("Depending on the levels of damage to the heart, patients will experience escelating symptoms.")
+	message_to_player("<b>Heart - Slightly Bruised (Damage: 1-9) |</b> Slowly creates up to 21 points of <b>Oxygen Damage</b>.")
+	message_to_player("")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 8 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_3()
+	message_to_player("<b>Heart - Bruised (Damage: 10-29) |</b> Rapidly creates 50 points of <b>Oxygen Damage</b>, and continues to create Oxygen damage at a slower pace indefinitely past this point.")
+	message_to_player("")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_4)), 8 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_4()
+	message_to_player("<b>Heart - Broken (Damage: 30+) |</b> The Heart has been damaged so severely, that it can no longer function. A broken Heart will rapidly and indefinitely create <b>Oxygen and Toxin Damage</b>, with no damage limit.")
+	message_to_player("This condition is known as <b>Heartbreak</b>, and your response to such will be covered in later sections.")
+	message_to_player("")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_5)), 8 SECONDS)
+
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_33()
 
 	message_to_player("<b>Section 1.1: Brain and Eye Damage</b>.")
 	message_to_player("Brain and Eye damage are both the easiest to treat, and the easiest to incur on the field.")
 	message_to_player("Both Brain and Eye damage are directly caused as a result of excessive <b>Brute Damage Injuries</b> to head.")
-	message_to_player("Brain Damage is also caused by <b>Tricordrazine overdose</b>, and <b> BrainHemorrhaging</b> (to be covered further on)")
+	message_to_player("Brain Damage is also caused by <b>Tricordrazine overdose</b>, and <b>Brain Hemorrhaging</b> (to be covered further on)")
 	message_to_player("Symptoms of a <b>Bruised Brain</b> can include randomly dropping held items, sudden unconsciousness, erratic movements, headaches, and impaired vision.")
 	message_to_player("As well as this, symptoms of a <b>Ruptured Brain</b> brain can <u>also include</u> sudden seizures, and paralysis.")
-
-
 
 
 
@@ -173,9 +199,12 @@
 // TO DO LIST
 //
 // Section 1 - Stabilizing Types of Organ Damage
-// 1.1 Brain and Eye Damage (IA)
-// 1.2 Heart and Lung Damage (Oxygen)
-// 1.3 Liver and Kidney Damage (Toxin)
+// 1.1 Internal Organ Damage (Chest)
+// 1.2 Heart Damage
+// 1.3 Lung Damage
+// 1.4 Brain Damage
+// 1.5 Eye Damage (IA)
+// 1.6 Liver and Kidney Damage
 //
 // Section 2 - Revivals
 // 2.1 Defib

@@ -466,10 +466,16 @@
 	icon_state = "" //No sprite
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	show_flame = FALSE
+	light_range = 7
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(5.0 MINUTES, 6.0 MINUTES) // Approximately half the effective duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/process(delta_time)
+	fuel -= fuel_rate * delta_time
+	if(fuel <= 0 || !on)
+		burn_out()
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -488,12 +494,32 @@
 	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
+	light_range = 6
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(4.5 MINUTES, 5.5 MINUTES)
+	fuel = rand(6.0 MINUTES, 6.5 MINUTES)
+
+/obj/item/device/flashlight/flare/on/starshell_ash/process(delta_time)
+	fuel -= fuel_rate * delta_time
+	switch(fuel) //Similar to the flare code, starshells have their own burn-out timings.
+		if(6.0 MINUTES to 6.5 MINUTES)
+			set_light_range(6)
+		if(2.5 MINUTES to 5.99 MINUTES)
+			set_light_range(5)
+		if(2.0 MINUTES to 2.49 MINUTES)
+			set_light_range(4)
+		if(1.5 MINUTES to 1.99 MINUTES)
+			set_light_range(3)
+		if(1.0 MINUTES to 1.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 0.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5) //As above, this light power is needed for light_range of 1 to show anything.
+	if(fuel <= 0 || !on)
+		burn_out()
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"

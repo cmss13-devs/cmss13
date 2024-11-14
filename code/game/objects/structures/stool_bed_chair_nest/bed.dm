@@ -337,6 +337,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	var/view_range = 5
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
+	var/faction = FACTION_MARINE
+
+/obj/structure/bed/medevac_stretcher/upp
+	name = "UPP medevac stretcher"
+	faction = FACTION_UPP
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)

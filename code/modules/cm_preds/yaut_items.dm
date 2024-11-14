@@ -56,7 +56,7 @@
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_TROPHY)
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 100
@@ -290,6 +290,7 @@
 /obj/item/clothing/under/chainshirt/hunter
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+	valid_accessory_slots = list(ACCESSORY_SLOT_TROPHY)
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -995,6 +996,7 @@
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
+	slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 

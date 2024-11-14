@@ -119,4 +119,31 @@ GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M35, /datum/game_mode/
 	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
 ))
 
+//************ USCM Helmet Values ************//
+
+GAMEMODE_DECORATOR(/obj/item/clothing/head/helmet/marine, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
+GAMEMODE_DECORATOR(/obj/item/clothing/head/helmet/marine/specialist, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_ULTRAHIGH),
+))
+
+//************ Shoe Values ************//
+
+GAMEMODE_DECORATOR(/obj/item/clothing/shoes/marine, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGHPLUS),
+	ARMOR_EDIT(armor_bomb, CLOTHING_ARMOR_MEDIUM),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_MEDIUMHIGH)
+))
+
+//************ Glove Values ************//
+
+GAMEMODE_DECORATOR(/obj/item/clothing/gloves/marine, /datum/game_mode/extended/faction_clash, list(
+	ARMOR_EDIT(armor_bullet, CLOTHING_ARMOR_HIGH),
+	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
+))
+
 //*********************** ------------------ ***********************//

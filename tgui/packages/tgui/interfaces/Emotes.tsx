@@ -64,6 +64,7 @@ const EmoteTab = () => {
                 key={item}
                 selected={!search && item === categoryIndex}
                 onClick={() => {
+                  setSearch('');
                   setCategoryIndex(item);
                 }}
               >

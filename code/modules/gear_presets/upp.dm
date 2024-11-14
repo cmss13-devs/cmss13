@@ -1943,6 +1943,7 @@
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/kapitan
+	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan (Cryo)"
@@ -1952,7 +1953,7 @@
 	minimap_icon = "upp_xo"
 	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/kapitan
-	flags_whitelist =  WHITELIST_COMMANDER
+
 
 /datum/equipment_preset/upp/officer/kapitan/dressed
 	name = "UPP Kapitan"
@@ -2118,6 +2119,7 @@
 	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major
+	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Mayjor (Cryo)"
@@ -2127,7 +2129,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/major/dressed
 	name = "UPP Major"
@@ -2292,11 +2293,10 @@
 	)
 
 //*****************************************************************************************************/
-/datum/job/antag/upp/officer/lt_kolonel
+/datum/job/antag/upp/officer/podpolkovnik
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
-
 
 
 /datum/equipment_preset/upp/officer/podpolkovnik
@@ -2307,7 +2307,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/podpolkovnik/dressed
 	name = "UPP Leytenant Kolonel"
@@ -2481,6 +2480,8 @@
 	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
 
+	flags_whitelist =  WHITELIST_COMMANDER
+
 /datum/equipment_preset/upp/officer/polkovnik
 	name = "UPP General Mayjor (Cryo)"
 	assignment = JOB_UPP_BRIG_GENERAL
@@ -2489,7 +2490,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-	flags_whitelist =  WHITELIST_COMMANDER
 
 
 /datum/equipment_preset/upp/officer/polkovnik/dressed
@@ -2664,7 +2664,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/may_gen/dressed
 	name = "UPP Mayjor General"
@@ -2831,6 +2830,8 @@
 	title = JOB_UPP_LT_GENERAL
 	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
+	flags_whitelist =  WHITELIST_COMMANDER
+
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP General Polkovnik (Cryo)"
 	assignment = JOB_UPP_LT_GENERAL
@@ -2839,7 +2840,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/ley_gen/dressed
 	name = "UPP Leytenant General"
@@ -3219,6 +3219,8 @@
 	title = JOB_UPP_SUPPORT_SYNTH
 	gear_preset = /datum/equipment_preset/upp/synth
 
+	flags_whitelist =  WHITELIST_SYNTHETIC
+
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
 
@@ -3230,7 +3232,6 @@
 	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
-	flags_whitelist =  WHITELIST_SYNTHETIC
 
 
 /datum/equipment_preset/upp/synth/dressed

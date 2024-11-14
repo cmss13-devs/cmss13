@@ -391,7 +391,7 @@
 "aqg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/glass/reinforced/medium_stack,
-/turf/closed/wall/almayer/upp,
+/turf/open/floor/prison/bright_clean_marked,
 /area/rostock/engineering/main_area)
 "aqt" = (
 /obj/structure/machinery/light{
@@ -982,7 +982,7 @@
 	dir = 4;
 	pixel_y = -14
 	},
-/turf/closed/wall/almayer/upp,
+/turf/open/floor/prison/darkyellow2/north,
 /area/rostock/engineering/main_area)
 "aLd" = (
 /obj/structure/pipes/vents/scrubber{
@@ -19842,7 +19842,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_one_access = list(232, 240)
 	},
-/turf/closed/wall/almayer/upp,
+/turf/open/floor/prison/bright_clean_marked,
 /area/rostock/engineering/main_area)
 "pgU" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -39327,7 +39327,7 @@ xBr
 wXC
 pgS
 aKR
-wXC
+sry
 aqg
 flA
 rqF
@@ -49493,7 +49493,7 @@ ofW
 vTq
 iFa
 sNZ
-cVK
+sNZ
 cVK
 cVK
 mSH

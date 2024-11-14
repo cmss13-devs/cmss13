@@ -126,7 +126,7 @@
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strang "))
 	else
-		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
+		var/list/xeno_types = list(/mob/living/carbon/xenomorph/drone)
 		var/xeno_type = pick(xeno_types)
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)

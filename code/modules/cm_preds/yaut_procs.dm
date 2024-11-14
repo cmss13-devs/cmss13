@@ -240,6 +240,7 @@
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
 	ambience_exterior = AMBIENCE_JUNGLE
+	weather_enabled = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS
 
 /area/yautja_grounds/jungle

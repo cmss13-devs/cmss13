@@ -34,6 +34,10 @@
 			SP.linked_structure = src
 			blocks.Add(SP)
 
+	var/area/current_area = get_area(src)
+	if(current_area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
+
 /obj/effect/alien/resin/Destroy()
 	if(block_range)
 		for(var/obj/effect/build_blocker/SP as anything in blocks)

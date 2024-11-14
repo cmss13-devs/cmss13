@@ -72,8 +72,9 @@
 
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
-	uses_skin_color = FALSE //2nd gen uses generic human look
-	special_body_types = FALSE
+	uses_skin_color = TRUE
+	special_body_types = TRUE
+
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
@@ -96,8 +97,8 @@
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
-	uses_skin_color = FALSE //2nd gen uses generic human look
-	special_body_types = FALSE
+	uses_skin_color = TRUE
+	special_body_types = TRUE
 
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE

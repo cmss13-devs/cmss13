@@ -2,7 +2,6 @@
 /datum/action/xeno_action/onclick/feralrush
 	name = "Feral Rush"
 	action_icon_state = "charge_spit"
-	ability_name = "toughen up"
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_ACTIVATE
@@ -21,7 +20,6 @@
 /datum/action/xeno_action/onclick/predalien_roar
 	name = "Roar"
 	action_icon_state = "screech"
-	ability_name = "roar"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	macro_path = /datum/action/xeno_action/verb/verb_predalien_roar
@@ -36,7 +34,6 @@
 
 /datum/action/xeno_action/activable/feral_smash
 	name = "Feral Smash"
-	ability_name = "Feral Smash"
 	action_icon_state = "lunge"
 	action_type = XENO_ACTION_CLICK
 	macro_path = /datum/action/xeno_action/verb/feral_smash
@@ -53,7 +50,6 @@
 /datum/action/xeno_action/activable/feralfrenzy
 	name = "Feral Frenzy"
 	action_icon_state = "rav_eviscerate"
-	ability_name = "Feral Frenzy"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	macro_path = /datum/action/xeno_action/verb/verb_feralfrenzy

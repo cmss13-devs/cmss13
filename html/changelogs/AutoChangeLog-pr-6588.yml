@@ -1,4 +1,0 @@
-author: "BlackCrystalic"
-delete-after: True
-changes:
-  - code_imp: "squads now have lists for roles limit and taken number, not hardcoded role list in vars, plus one letter vars change"

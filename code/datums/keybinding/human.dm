@@ -150,7 +150,7 @@
 	if(!istype(grab))
 		return FALSE
 	var/obj/grabbed_atom = grab.grabbed_thing
-	if(ishuman(grabbed_atom))
+	if(ismob(grabbed_atom))
 		return FALSE
 	if(grabbed_atom.anchored)
 		return FALSE

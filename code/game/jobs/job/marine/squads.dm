@@ -45,6 +45,7 @@
 	var/omni_squad_vendor = FALSE
 	/// Squad roles max caps per role list
 	var/list/roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 3,
 		JOB_SQUAD_MEDIC = 4,
 		JOB_SQUAD_SMARTGUN = 1,
@@ -63,7 +64,7 @@
 	// Whether the squad is available for squad management
 	var/locked = FALSE
 	/// Whether it is visible in overwatch
-	var/active = FALSE
+	var/active = TRUE //this var in fact looks COMPLEATLY useless as visibility in overwatch is also determined by faction
 	/// Which faction the squad is in
 	var/faction = FACTION_MARINE
 
@@ -86,12 +87,6 @@
 							) //3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
 
-	var/num_engineers = 0
-	var/num_medics = 0
-	var/num_leaders = 0
-	var/num_smartgun = 0
-	var/num_specialists = 0
-	var/num_tl = 0
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
@@ -108,8 +103,12 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Icon for the background of minimap icon
+	var/background_icon = "background"
+
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
+
 
 
 /datum/squad/marine
@@ -126,6 +125,7 @@
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
+	background_icon = "background_alpha"
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -134,6 +134,7 @@
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
+	background_icon = "background_bravo"
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -142,6 +143,7 @@
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
+	background_icon = "background_charlie"
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -150,6 +152,7 @@
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
+	background_icon = "background_delta"
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -159,6 +162,7 @@
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
+	background_icon = "background_echo"
 
 	active = FALSE
 	roundstart = FALSE
@@ -170,6 +174,7 @@
 	chat_color = "#c47a50"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
+	background_icon = "background_foxtrot"
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -184,11 +189,13 @@
 	equipment_color = "#053818"
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
+	background_icon = "background_intel"
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
 
 	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
 		JOB_SQUAD_ENGI = 0,
 		JOB_SQUAD_MEDIC = 0,
 		JOB_SQUAD_SMARTGUN = 0,
@@ -205,6 +212,7 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+	background_icon = "background_sof"
 
 	active = FALSE
 	roundstart = FALSE
@@ -216,6 +224,7 @@
 	chat_color = "#553EB2"
 	radio_freq = CBRN_FREQ
 	minimap_color = "#3B2A7B"
+	background_icon = "background_cbrn"
 
 	active = FALSE
 	roundstart = FALSE
@@ -227,6 +236,7 @@
 	chat_color = "#32CD32"
 	radio_freq = FORECON_FREQ
 	minimap_color = "#32CD32"
+	background_icon = "background_forecon"
 
 	active = FALSE
 	roundstart = FALSE
@@ -238,6 +248,7 @@
 	chat_color = "#5a2c2c"
 	radio_freq = SOF_FREQ
 	minimap_color = "#5a2c2c"
+	background_icon = "background_civillian"
 
 	active = FALSE
 	roundstart = FALSE
@@ -250,33 +261,42 @@
 	usable = TRUE
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
+	radio_freq = UPP_FREQ
+	roles_cap = list(
+		JOB_UPP_ENGI = 3,
+		JOB_UPP_MEDIC = 4,
+		JOB_UPP_SPECIALIST = 1,
+		JOB_UPP_LEADER = 1,
+	)
 
 /datum/squad/upp/one
-	name = "UPPS1"
+	name = SQUAD_UPP_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
 
 /datum/squad/upp/twp
-	name = "UPPS2"
+	name = SQUAD_UPP_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
 
 /datum/squad/upp/three
-	name = "UPPS3"
+	name = SQUAD_UPP_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
 
 /datum/squad/upp/four
-	name = "UPPS4"
+	name = SQUAD_UPP_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
 
 /datum/squad/upp/kdo
-	name = "UPPKdo"
+	name = SQUAD_UPP_5
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
 	squad_type = "Team"
 	locked = TRUE
+	usable = FALSE
+
 //###############################
 /datum/squad/pmc
 	name = "Root"
@@ -510,6 +530,25 @@
 			squad_leader = target_mob
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
+
+		if(JOB_UPP_ENGI)
+			assignment = JOB_SQUAD_ENGI
+			id_card.claimedgear = FALSE
+		if(JOB_UPP_MEDIC)
+			assignment = JOB_SQUAD_MEDIC
+			id_card.claimedgear = FALSE
+		if(JOB_UPP_SPECIALIST)
+			assignment = JOB_SQUAD_SPECIALIST
+		if(JOB_UPP_LEADER)
+			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
+				var/old_lead = squad_leader
+				demote_squad_leader() //replaced by the real one
+				SStracking.start_tracking(tracking_id, old_lead)
+			assignment = squad_type + " Leader"
+			squad_leader = target_mob
+			SStracking.set_leader(tracking_id, target_mob)
+			SStracking.start_tracking("marine_sl", target_mob)
+
 		if(JOB_MARINE_RAIDER)
 			assignment = JOB_MARINE_RAIDER
 			if(name == JOB_MARINE_RAIDER)
@@ -583,7 +622,7 @@
 //gracefully remove a marine from squad system, alive, dead or otherwise
 /datum/squad/proc/forget_marine_in_squad(mob/living/carbon/human/target_mob)
 	if(target_mob.assigned_squad.squad_leader == target_mob)
-		if(GET_DEFAULT_ROLE(target_mob.job) != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
+		if(GET_DEFAULT_ROLE(target_mob.job) != JOB_SQUAD_LEADER || GET_DEFAULT_ROLE(target_mob.job) != JOB_UPP_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()
 		else
 			target_mob.assigned_squad.squad_leader = null
@@ -601,19 +640,9 @@
 	update_free_mar()
 	target_mob.assigned_squad = null
 
-	switch(GET_DEFAULT_ROLE(target_mob.job))
-		if(JOB_SQUAD_ENGI)
-			num_engineers--
-		if(JOB_SQUAD_MEDIC)
-			num_medics--
-		if(JOB_SQUAD_SPECIALIST)
-			num_specialists--
-		if(JOB_SQUAD_SMARTGUN)
-			num_smartgun--
-		if(JOB_SQUAD_TEAM_LEADER)
-			num_tl--
-		if(JOB_SQUAD_LEADER)
-			num_leaders--
+	var/slot_check = GET_DEFAULT_ROLE(target_mob.job)
+	if(slot_check && !isnull(roles_cap[slot_check]))
+		roles_in[slot_check]--
 
 //proc for demoting current Squad Leader
 /datum/squad/proc/demote_squad_leader(leader_killed)
@@ -623,39 +652,60 @@
 	SStracking.stop_tracking("marine_sl", old_lead)
 
 	squad_leader = null
-	switch(GET_DEFAULT_ROLE(old_lead.job))
-		if(JOB_SQUAD_SPECIALIST)
-			old_lead.comm_title = "Spc"
-		if(JOB_SQUAD_ENGI)
-			old_lead.comm_title = "ComTech"
-		if(JOB_SQUAD_MEDIC)
-			old_lead.comm_title = "HM"
-		if(JOB_SQUAD_TEAM_LEADER)
-			old_lead.comm_title = "FTL"
-		if(JOB_SQUAD_SMARTGUN)
-			old_lead.comm_title = "SG"
-		if(JOB_SQUAD_LEADER)
-			if(!leader_killed)
-				old_lead.comm_title = "Sgt"
-		if(JOB_MARINE_RAIDER)
-			old_lead.comm_title = "Op."
-		if(JOB_MARINE_RAIDER_SL)
-			old_lead.comm_title = "TL."
-		if(JOB_MARINE_RAIDER_CMD)
-			old_lead.comm_title = "CMD."
-		else
-			old_lead.comm_title = "RFN"
-
-	if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
-		var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-		if(R)
-			for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)
-				R.keys -= key
-				qdel(key)
-			R.recalculateChannels()
-		var/obj/item/card/id/card = old_lead.get_idcard()
-		if(card)
-			card.access -= ACCESS_MARINE_LEADER
+	switch(faction)
+		if (FACTION_UPP)
+			switch(GET_DEFAULT_ROLE(old_lead.job))
+				if(JOB_UPP_SPECIALIST)
+					old_lead.comm_title = "Spec"
+				if(JOB_UPP_ENGI)
+					old_lead.comm_title = "Sapper"
+				if(JOB_UPP_MEDIC)
+					old_lead.comm_title = "Med"
+				if(JOB_UPP_LEADER)
+					if(!leader_killed)
+						old_lead.comm_title = "MSzh"
+				else
+					old_lead.comm_title = "Sld"
+			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_UPP_LEADER || !leader_killed)
+				var/obj/item/device/radio/headset/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)
+				if(headset)
+					for(var/obj/item/device/encryptionkey/upp/command/acting/key in headset.keys)
+						headset.keys -= key
+						qdel(key)
+					headset.recalculateChannels()
+		if (FACTION_MARINE)
+			switch(GET_DEFAULT_ROLE(old_lead.job))
+				if(JOB_SQUAD_SPECIALIST)
+					old_lead.comm_title = "Spc"
+				if(JOB_SQUAD_ENGI)
+					old_lead.comm_title = "ComTech"
+				if(JOB_SQUAD_MEDIC)
+					old_lead.comm_title = "HM"
+				if(JOB_SQUAD_TEAM_LEADER)
+					old_lead.comm_title = "FTL"
+				if(JOB_SQUAD_SMARTGUN)
+					old_lead.comm_title = "SG"
+				if(JOB_SQUAD_LEADER)
+					if(!leader_killed)
+						old_lead.comm_title = "Sgt"
+				if(JOB_MARINE_RAIDER)
+					old_lead.comm_title = "Op."
+				if(JOB_MARINE_RAIDER_SL)
+					old_lead.comm_title = "TL."
+				if(JOB_MARINE_RAIDER_CMD)
+					old_lead.comm_title = "CMD."
+				else
+					old_lead.comm_title = "RFN"
+			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
+				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+				if(headset)
+					for(var/obj/item/device/encryptionkey/squadlead/acting/key in headset.keys)
+						headset.keys -= key
+						qdel(key)
+					headset.recalculateChannels()
+				var/obj/item/card/id/card = old_lead.get_idcard()
+				if(card)
+					card.access -= ACCESS_MARINE_LEADER
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
@@ -776,7 +826,8 @@
 //moved the main proc for ft management from human.dm here to make it support both examine and squad info way to edit fts
 /datum/squad/proc/manage_fireteams(mob/living/carbon/human/target_mob)
 	var/obj/item/card/id/ID = target_mob.get_idcard()
-	if(!ID || !(ID.rank in GLOB.ROLES_MARINES))
+
+	if(!ID || ((!(ID.rank in GLOB.ROLES_MARINES) && faction == FACTION_MARINE) || (!(ID.rank in GLOB.ROLES_MARINES_ANTAG) && faction == FACTION_UPP)))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target_mob) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))

@@ -56,7 +56,7 @@
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_TROPHY)
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 100
@@ -153,7 +153,6 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
@@ -176,32 +175,26 @@
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
-	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/third
 	name = PRED_YAUTJA_THIRD_CAPE
 	icon_state = "thirdcape"
-	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/half
 	name = PRED_YAUTJA_HALF_CAPE
 	icon_state = "halfcape"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/quarter
 	name = PRED_YAUTJA_QUARTER_CAPE
 	icon_state = "quartercape"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/poncho
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
-	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/damaged
 	name = PRED_YAUTJA_DAMAGED_CAPE
 	icon_state = "damagedcape"
-	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -297,6 +290,7 @@
 /obj/item/clothing/under/chainshirt/hunter
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+	valid_accessory_slots = list(ACCESSORY_SLOT_TROPHY)
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -915,10 +909,12 @@
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
 	if(istype(bracer) && bracer.owner_rank)
 		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELITE_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE)
 			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
 			if(CLAN_RANK_ADMIN_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
 
 /obj/item/storage/medicomp
@@ -1000,8 +996,10 @@
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
+	slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
 	icon_state = "l_arm"

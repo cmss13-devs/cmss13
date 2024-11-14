@@ -1,4 +1,0 @@
-author: "Ibessas"
-delete-after: True
-changes:
-  - bugfix: "Prevent tackle noises from Queen corpses"

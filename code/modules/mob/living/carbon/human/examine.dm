@@ -497,6 +497,12 @@
 			if(assigned_squad == H.assigned_squad) //same squad
 				msg += "<a href='?src=\ref[src];squadfireteam=1'>\[Manage Fireteams.\]</a>\n"
 
+	if(user.Adjacent(src) && ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		var/temp_msg = "<a href='?src=\ref[src];check_status=1'>\[Check Status\]</a>"
+		if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && locate(/obj/item/clothing/accessory/stethoscope) in human_user.w_uniform)
+			temp_msg += " <a href='?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
+		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
 
 	if(print_flavor_text())
 		msg += "[print_flavor_text()]\n"

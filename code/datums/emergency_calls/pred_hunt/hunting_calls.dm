@@ -20,16 +20,12 @@
 
 /datum/emergency_call/pred/create_member(datum/mind/man, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
-	var/obj/structure/droppod/container/drop = new()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/hunted = new
+	var/mob/living/carbon/human/hunted = new(spawn_loc)
 	man.transfer_to(hunted, TRUE)
-	hunted.forceMove(drop)
-	drop.launch(spawn_loc ? spawn_loc : pick(name_of_spawn))
-	addtimer(CALLBACK(drop, TYPE_PROC_REF(/obj/structure/droppod, recall)), 20 MINUTES)
 
 	if(mercs < max_mercs && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_MERC))
 		mercs++

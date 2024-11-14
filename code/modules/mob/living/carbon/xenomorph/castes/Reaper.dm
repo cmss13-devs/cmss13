@@ -3,24 +3,27 @@
 	caste_desc = "A flexible frontline supporter."
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_3
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
-	plasma_max = XENO_PLASMA_TIER_5
+	plasma_max = XENO_PLASMA_TIER_8
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
+	behavior_delegate_type = /datum/behavior_delegate/base_reaper
+
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_CARRIER)
 	throwspeed = SPEED_AVERAGE
+	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	weed_level = WEED_LEVEL_STANDARD
 
-	behavior_delegate_type = /datum/behavior_delegate/base_reaper
+	hugger_nurturing = TRUE
 
 	tackle_min = 2
 	tackle_max = 5
@@ -37,7 +40,7 @@
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
-	desc = "A horrifying alien with a grim visage. A vile stench follows it wherever it goes."
+	desc = "A horrifying alien with a grim visage. The stench of rot follows it wherever it goes."
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/reaper.dmi'
 	icon_state = "Reaper Walking"
@@ -58,9 +61,10 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/activable/flesh_harvest, //second macro
-		/datum/action/xeno_action/activable/rapture, //third macro
-		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
+		/datum/action/xeno_action/activable/haul_corpse, //second macro
+		/datum/action/xeno_action/activable/flesh_harvest, //third macro
+		/datum/action/xeno_action/activable/rapture, //fourth macro
+		/datum/action/xeno_action/onclick/emit_mist, //fifth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -75,6 +79,15 @@
 	weed_food_states = list("Reaper_1","Reaper_2","Reaper_3")
 	weed_food_states_flipped = list("Reaper_1","Reaper_2","Reaper_3")
 
+	// Reaper vars
+	var/list/corpses_hauled = list()
+	var/corpse_no = 0
+	var/corpse_max = 4
+
+/mob/living/carbon/xenomorph/reaper/get_status_tab_items()
+	. = ..()
+	. += "Hauled corpses: [corpse_no] / [corpse_max]"
+
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
@@ -82,7 +95,7 @@
 	var/flesh_plasma_max = 1000
 	var/passive_flesh_regen = 1
 	var/passive_flesh_multi= 1
-	var/passive_multi_max = 10
+	var/passive_multi_max = 5
 	var/pause_decay = FALSE
 	var/pause_dur = 5 SECONDS
 	var/unpause_incoming = FALSE

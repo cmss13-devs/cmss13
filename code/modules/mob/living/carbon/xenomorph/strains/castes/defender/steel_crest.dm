@@ -11,8 +11,8 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/headbutt/steel_crest,
-		/datum/action/xeno_action/activable/fortify/steel_crest,
 		/datum/action/xeno_action/onclick/soak,
+		/datum/action/xeno_action/activable/fortify/steel_crest,
 	)
 
 /datum/xeno_strain/steel_crest/apply_strain(mob/living/carbon/xenomorph/defender/defender)

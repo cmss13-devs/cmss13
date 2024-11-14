@@ -13,6 +13,7 @@
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
+	valid_accessory_slots = list(ACCESSORY_SLOT_MASK)
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -46,7 +47,7 @@
 	///A list of all intrinsic mask actions
 	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
 	..()
 	forceMove(location)
 	if(thrall)
@@ -71,7 +72,7 @@
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 				return
 
-	if(mask_number > 12)
+	if(mask_number > 17)
 		mask_number = 1
 	icon_state = "pred_mask[mask_number]_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
@@ -308,3 +309,11 @@
 
 /obj/item/clothing/mask/yautja_flavor/map_random
 	map_random = TRUE
+
+/obj/item/clothing/accessory/mask
+	name = "Mask Ornament"
+	desc = "An ornate addition to your mask"
+	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
+	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
+	icon_state = null
+	slot = ACCESSORY_SLOT_MASK

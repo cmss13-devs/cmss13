@@ -143,3 +143,4 @@
 #define ADMIN_LANDING_PAD_3 "base-ert3"
 #define ADMIN_LANDING_PAD_4 "base-ert4"
 #define ADMIN_LANDING_PAD_5 "base-ert5"
+#define ADMIN_LANDING_PAD_6 "base-ert6"

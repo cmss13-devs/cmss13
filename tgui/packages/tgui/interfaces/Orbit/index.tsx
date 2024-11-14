@@ -127,13 +127,16 @@ const ObservableSearch = () => {
 };
 
 const xenoSplitter = (members: Array<Observable>) => {
+  const tdomeHive: Array<Observable> = [];
   const primeHive: Array<Observable> = [];
   const corruptedHive: Array<Observable> = [];
   const forsakenHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.hivenumber?.includes('normal')) {
+    if (x.area_name?.includes('Thunderdome')) {
+      tdomeHive.push(x);
+    } else if (x.hivenumber?.includes('normal')) {
       primeHive.push(x);
     } else if (x.hivenumber?.includes('corrupted')) {
       corruptedHive.push(x);
@@ -144,6 +147,7 @@ const xenoSplitter = (members: Array<Observable>) => {
     }
   });
   const squads = [
+    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
     buildSquadObservable('Prime', 'xeno', primeHive),
     buildSquadObservable('Corrupted', 'green', corruptedHive),
     buildSquadObservable('Forsaken', 'grey', forsakenHive),
@@ -306,6 +310,7 @@ const ObservableContent = () => {
     npcs = [],
     vehicles = [],
     escaped = [],
+    in_thunderdome = [],
   } = data;
 
   return (
@@ -379,6 +384,11 @@ const ObservableContent = () => {
       />
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
+      <ObservableSection
+        color="orange"
+        section={in_thunderdome}
+        title="Thunderdome"
+      />
       <ObservableSection section={vehicles} title="Vehicles" />
       <ObservableSection section={animals} title="Animals" />
       <ObservableSection section={dead} title="Dead" />
@@ -441,8 +451,16 @@ const ObservableItem = (props: {
 }) => {
   const { act } = useBackend<OrbitData>();
   const { color, item } = props;
-  const { health, icon, full_name, nickname, orbiters, ref, background_color } =
-    item;
+  const {
+    health,
+    icon,
+    full_name,
+    nickname,
+    orbiters,
+    ref,
+    background_color,
+    background_icon,
+  } = item;
 
   const displayHealth = typeof health === 'number';
 
@@ -461,7 +479,11 @@ const ObservableItem = (props: {
     >
       {displayHealth && <ColorBox color={getHealthColor(health)} mr="0.5em" />}
       {!!icon && (
-        <ObservableIcon icon={icon} background_color={background_color} />
+        <ObservableIcon
+          icon={icon}
+          background_color={background_color}
+          background_icon={background_icon}
+        />
       )}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
@@ -478,7 +500,15 @@ const ObservableItem = (props: {
 /** Displays some info on the mob as a tooltip. */
 const ObservableTooltip = (props: { readonly item: Observable }) => {
   const {
-    item: { caste, health, job, full_name, icon, background_color },
+    item: {
+      caste,
+      health,
+      job,
+      full_name,
+      icon,
+      background_color,
+      background_icon,
+    },
   } = props;
 
   const displayHealth = typeof health === 'number';
@@ -492,7 +522,11 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
       {!!caste && (
         <LabeledList.Item label="Caste">
           {!!icon && (
-            <ObservableIcon icon={icon} background_color={background_color} />
+            <ObservableIcon
+              icon={icon}
+              background_color={background_color}
+              background_icon={background_icon}
+            />
           )}
           {caste}
         </LabeledList.Item>
@@ -500,7 +534,11 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
       {!!job && (
         <LabeledList.Item label="Job">
           {!!icon && (
-            <ObservableIcon icon={icon} background_color={background_color} />
+            <ObservableIcon
+              icon={icon}
+              background_color={background_color}
+              background_icon={background_icon}
+            />
           )}
           {job}
         </LabeledList.Item>
@@ -516,24 +554,40 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
 const ObservableIcon = (props: {
   readonly icon: Observable['icon'];
   readonly background_color: Observable['background_color'];
+  readonly background_icon: Observable['background_icon'];
 }) => {
   const { data } = useBackend<OrbitData>();
   const { icons = [] } = data;
-  const { icon, background_color } = props;
-  if (!icon || !icons[icon]) {
+  const { icon, background_color, background_icon } = props;
+  if (!icon || !icons[icon] || !background_icon || !icons[background_icon]) {
     return null;
   }
 
   return (
-    <Image
-      mr={1.3}
-      src={`data:image/jpeg;base64,${icons[icon]}`}
-      fixBlur
-      verticalAlign="middle"
-      backgroundColor={background_color ? background_color : undefined}
-      style={{
-        transform: 'scale(2) translatey(-1px)',
-      }}
-    />
+    <>
+      <Image
+        mr={1}
+        src={`data:image/jpeg;base64,${icons[background_icon]}`}
+        fixBlur
+        color={background_color ? background_color : undefined}
+        verticalAlign="middle"
+        style={{
+          transform: 'scale(2) translatey(-1px)',
+          position: 'relative',
+        }}
+      />
+      <Image
+        mr={1}
+        src={`data:image/jpeg;base64,${icons[icon]}`}
+        fixBlur
+        verticalAlign="middle"
+        style={{
+          transform: 'scale(2) translatey(-1px)',
+          position: 'relative',
+          right: '13px',
+          marginRight: '-5px',
+        }}
+      />
+    </>
   );
 };

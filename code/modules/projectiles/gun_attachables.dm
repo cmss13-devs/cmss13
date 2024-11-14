@@ -1027,15 +1027,6 @@ Defined in conflicts.dm of the #defines folder.
 	G.slowdown -= dynamic_aim_slowdown
 	..()
 
-/obj/item/attachable/scope/mini_iff/Attach(obj/item/weapon/gun/gun)
-	. = ..()
-	gun.AddComponent(/datum/component/iff_fire_prevention, FIRE_DELAY_TIER_5)
-
-
-/obj/item/attachable/scope/mini_iff/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	. = ..()
-	detaching_gun.GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
-
 /obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
 	if(using_scope)
 		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))

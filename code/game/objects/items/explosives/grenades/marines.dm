@@ -182,10 +182,10 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
-	shrapnel_count = 5
+	shrapnel_count = 15
 	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 	direct_hit_shrapnel = 5
-	dispersion_angle = 15//tight cone
+	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
 	name = "\improper M74 AGM-S Star Shell"
@@ -421,9 +421,9 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
-	name = "\improper M40 HPDP grenade"
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
-	icon_state = "grenade_phos"
+	name = "\improper M40 CCDP grenade"
+	desc = "The M40 CCDP is a small, but powerful chemical compound grenade, similar in effect to WPDP. Word on the block says that the CCDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	icon_state = "grenade_chem"
 	det_time = 20
 	item_state = "grenade_phos"
 	underslug_launchable = TRUE
@@ -437,7 +437,9 @@
 	return ..()
 
 /obj/item/explosive/grenade/phosphorus/weak
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	name = "\improper M40 WPDP grenade"
+	icon_state = "grenade_phos"
+	desc = "The M40 WPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
 	. = ..()

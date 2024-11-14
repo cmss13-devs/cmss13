@@ -282,12 +282,35 @@
 /turf/closed/shuttle/twe_dropship/transparent
 	opacity = FALSE
 
-/turf/closed/shuttle/dropship2/tornado
-	name = "\improper Tornado"
+/turf/closed/shuttle/dropship3
+	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
+	icon_state = "1"
 
-/turf/closed/shuttle/dropship2/tornado/typhoon
+/turf/closed/shuttle/dropship3/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship3/tornado
+	name = "\improper Tornado"
+
+/turf/closed/shuttle/dropship3/tornado/typhoon
 	name = "\improper Typhoon"
+
+/turf/closed/shuttle/upp_dropship
+	name = "\improper Morana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_dropship2
+	name = "\improper Devana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship2/transparent
+	opacity = FALSE
 
 /turf/closed/shuttle/escapepod
 	name = "wall"

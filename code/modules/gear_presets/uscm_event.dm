@@ -64,8 +64,10 @@
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GEN"
 	minimum_age = 50
+	minimap_icon = "deputy"
+	minimap_background = "background_command"
 	skills = /datum/skills/general
-	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/general, /obj/item/clothing/under/marine/officer/bridge)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/general, /obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -190,6 +192,7 @@
 
 	idtype = /obj/item/card/id/provost
 	skills = /datum/skills/provost
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/uscm_event/provost/New()
 	. = ..()
@@ -197,12 +200,12 @@
 
 /datum/equipment_preset/uscm_event/provost/enforcer
 	name = "Provost Enforcer"
-
 	assignment = JOB_PROVOST_ENFORCER
-	rank = "Provost Enforcer"
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_ENFORCER
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "pve"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
@@ -243,12 +246,12 @@
 /datum/equipment_preset/uscm_event/provost/tml
 	name = "Provost Team Leader"
 	skills = /datum/skills/CMP
-
 	assignment = JOB_PROVOST_TML
-	rank = "Provost Team Leader"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_TML
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "pve_leader"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -289,12 +292,12 @@
 
 /datum/equipment_preset/uscm_event/provost/inspector
 	name = "Provost Inspector"
-
 	assignment = JOB_PROVOST_INSPECTOR
-	rank = "Provost Inspector"
+	rank = JOB_PROVOST_INSPECTOR
 	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "pve_inspector"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -323,21 +326,74 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug/radio_linked/hc/pvst(new_human), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug/radio_linked/hc/pvst(new_human), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon/provost(new_human.back), WEAR_IN_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
+
+/datum/equipment_preset/uscm_event/provost/inspector/chief
+	name = "Provost Chief Inspector"
+	assignment = JOB_PROVOST_CINSPECTOR
+	rank = JOB_PROVOST_CINSPECTOR
+	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "PvCI"
+	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "pve_chief_inspector"
+
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
+
+/datum/equipment_preset/uscm_event/provost/inspector/chief/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel/sec
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/security
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/provost(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/chief(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/chief(new_human), WEAR_JACKET)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost/chief(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug/radio_linked/hc/pvst(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug/radio_linked/hc/pvst(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug/radio_linked/hc/pvst(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi(new_human.back), WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
 	name = "Provost Advisor"
-
 	assignment = JOB_PROVOST_ADVISOR
-	rank = "Provost Advisor"
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	rank = JOB_PROVOST_ADVISOR
+	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "pve_advisor"
+
+/datum/equipment_preset/uscm_event/provost/marshal/deputy
+	name = "Provost Deputy Marshal (MO6)"
+	minimum_age = 45
+	skills = /datum/skills/general
+
+	assignment = JOB_PROVOST_DMARSHAL
+	rank = JOB_PROVOST_DMARSHAL
+	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
+	role_comm_title = PAY_SHORT_PVDM
+	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "deputy"
 
 /datum/equipment_preset/uscm_event/provost/marshal
-	name = "Provost Marshal (MO6)"
+	name = "Provost Marshal (MO7)"
 	minimum_age = 45
 	skills = /datum/skills/general
 
@@ -346,6 +402,7 @@
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
+	minimap_icon = "deputy"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -372,9 +429,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/marshal(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon/provost(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
-	name = "Provost Sector Marshal (MO7)"
+	name = "Provost Sector Marshal (MO9)"
 	minimum_age = 50
 
 	assignment = JOB_PROVOST_SMARSHAL
@@ -392,6 +450,9 @@
 	role_comm_title = PAY_SHORT_PVCM
 
 /*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_event/uaac
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/uscm_event/uaac/tis
 	name = "UAAC-TIS"
@@ -412,6 +473,7 @@
 	rank = "UAAC-TIS Intelligence Officer"
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-IO"
+	minimap_icon = "cmb_syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/uaac/tis/io/load_gear(mob/living/carbon/human/new_human)
@@ -439,6 +501,7 @@
 	rank = "UAAC-TIS Special Agent"
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-SA"
+	minimap_icon = "tissa"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/uaac/tis/sa/load_gear(mob/living/carbon/human/new_human)

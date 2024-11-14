@@ -7,6 +7,9 @@
 		to_chat(src, "Guests may not use OOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -101,6 +104,9 @@
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -136,7 +142,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -158,7 +164,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))

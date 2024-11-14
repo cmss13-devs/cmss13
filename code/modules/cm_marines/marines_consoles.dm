@@ -925,9 +925,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PROVOST_CMARSHAL = 00,
 				JOB_GENERAL = 00,
 				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O8
+				JOB_PROVOST_MARSHAL = 02,//Grade O7
+				JOB_PROVOST_DMARSHAL = 03,//Grade O6
 				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_INSPECTOR = 04,
+				JOB_PROVOST_CINSPECTOR = 05,
+				JOB_PROVOST_INSPECTOR = 06,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -967,6 +969,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
 				// 70-139: SQUADS (look below)
+				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
 				JOB_PASSENGER = 141,
@@ -1115,12 +1118,14 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_UPP_COMMANDO = 22,
 				// 30-39: Security
 				JOB_UPP_POLICE = 31,
+				JOB_UPP_COMMISSAR = 41,
 				// 40-49: MedSci
 				JOB_UPP_LT_DOKTOR = 41,
 				// 50-59: Engineering
 				JOB_UPP_COMBAT_SYNTH = 50,
 				JOB_UPP_CREWMAN = 51,
 				JOB_UPP_SUPPORT_SYNTH = 52,
+				JOB_UPP_SUPPLY = 53,
 				// 60-69: Soldiers
 				JOB_UPP_LEADER = 60,
 				JOB_UPP_SPECIALIST = 61,

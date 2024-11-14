@@ -5,7 +5,7 @@
 	icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	needs_power = FALSE
 	var/override_being_removed = FALSE
 
@@ -29,6 +29,15 @@
 	var/linked_lz
 
 	var/can_change_shuttle = FALSE
+	var/faction = FACTION_MARINE
+
+	/// If this computer should respect the faction variable of destination LZ
+	var/use_factions = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/upp
+	icon_state = "console_upp"
+	req_one_access = list(ACCESS_UPP_FLIGHT)
+	faction = FACTION_UPP
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
@@ -41,6 +50,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/marine_dropship/dock in SSshuttle.stationary)
+		if(use_factions && dock.faction != faction)
+			continue
 		if(istype(dock, /obj/docking_port/stationary/marine_dropship/crash_site))
 			continue
 		. += list(dock)

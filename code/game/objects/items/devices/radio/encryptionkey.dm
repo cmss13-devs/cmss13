@@ -88,7 +88,7 @@
 /obj/item/device/encryptionkey/cmo
 	name = "Chief Medical Officer's Encryption Key"
 	icon_state = "cmo_key"
-	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_INTEL = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE)
 
 /obj/item/device/encryptionkey/med
 	name = "Medical Radio Encryption Key"
@@ -287,6 +287,9 @@
 /obj/item/device/encryptionkey/upp/command
 	name = "\improper UPP Command Radio Encryption Key"
 	channels = list(RADIO_CHANNEL_UPP_CMD = TRUE, RADIO_CHANNEL_UPP_GEN = TRUE, RADIO_CHANNEL_UPP_ENGI = TRUE, RADIO_CHANNEL_UPP_MED = TRUE, RADIO_CHANNEL_UPP_CCT = TRUE)
+
+/obj/item/device/encryptionkey/upp/command/acting
+	abstract = TRUE
 //---------------------------------------------------
 //CLF Keys
 /obj/item/device/encryptionkey/clf

@@ -7,9 +7,9 @@
 	name = "shrapnel"
 	icon_state = "buckshot"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
-	accuracy = HIT_ACCURACY_TIER_6
+	accuracy = HIT_ACCURACY_TIER_4
 	accurate_range = 7
-	max_range = 14 // 2 screens wide
+	max_range = 10
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
@@ -19,6 +19,11 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(5, 10)
 		B.update_health(1)
+
+/datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user)
+	if(isxeno(xeno))
+		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
+		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE) // xenos have a lot of HP
 
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
@@ -34,7 +39,7 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 8
+	damage = 10
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
@@ -55,8 +60,8 @@
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	shell_speed = AMMO_SPEED_TIER_1
-	damage = 20
-	penetration = ARMOR_PENETRATION_TIER_4
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_10 //molten metal pierces your armor
 
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
 	. = ..()

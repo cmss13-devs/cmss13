@@ -623,10 +623,21 @@
 "mD" = (
 /turf/closed/wall/cult/hunting_grounds,
 /area/yautja_grounds/jungle/west)
+"mE" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle/east)
 "mK" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
+"mM" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/north)
 "mN" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -1249,6 +1260,10 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/south)
+"yd" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/east)
 "yf" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
@@ -7276,7 +7291,7 @@ No
 ih
 ih
 ih
-ih
+No
 ih
 fb
 fb
@@ -8156,7 +8171,7 @@ PT
 PT
 ih
 ih
-ih
+No
 ih
 md
 md
@@ -8258,7 +8273,7 @@ ih
 PT
 ih
 ih
-md
+mM
 PT
 ih
 ih
@@ -8463,7 +8478,7 @@ md
 ih
 ih
 ih
-ih
+No
 ih
 QW
 vL
@@ -8649,7 +8664,7 @@ ih
 JF
 JF
 HP
-ih
+No
 Db
 Vn
 Vn
@@ -8853,7 +8868,7 @@ PT
 ih
 ih
 JS
-ih
+No
 vL
 Vn
 Vn
@@ -9154,7 +9169,7 @@ gU
 ih
 ih
 ih
-ih
+No
 ih
 PT
 us
@@ -9436,7 +9451,7 @@ PT
 PT
 PT
 ih
-md
+mM
 ih
 ih
 PT
@@ -9833,7 +9848,7 @@ PT
 PT
 PT
 md
-ih
+No
 ih
 us
 us
@@ -10067,7 +10082,7 @@ hj
 fb
 fb
 hN
-hN
+tj
 hN
 hN
 fb
@@ -10854,7 +10869,7 @@ BS
 BS
 bC
 uh
-uh
+MC
 SY
 uh
 uh
@@ -11060,7 +11075,7 @@ uh
 BS
 uh
 uh
-uh
+MC
 uh
 uh
 PK
@@ -11273,7 +11288,7 @@ BS
 uS
 vN
 QD
-WA
+LF
 WA
 WA
 Ww
@@ -11377,7 +11392,7 @@ WA
 Ww
 BB
 qT
-WA
+LF
 mK
 vN
 vN
@@ -11548,7 +11563,7 @@ Yk
 uh
 uh
 lQ
-uh
+MC
 uh
 pU
 Yk
@@ -11560,7 +11575,7 @@ uh
 lQ
 lQ
 lQ
-lQ
+yd
 lQ
 uh
 uh
@@ -11579,7 +11594,7 @@ WA
 WA
 vN
 WA
-WA
+LF
 WA
 kX
 QD
@@ -11939,7 +11954,7 @@ ui
 BS
 zu
 uh
-uh
+MC
 uh
 Ex
 Se
@@ -12269,7 +12284,7 @@ uS
 uS
 WA
 WA
-WA
+LF
 WA
 uS
 QD
@@ -12426,7 +12441,7 @@ Rf
 xh
 kW
 hc
-bE
+mE
 uh
 uh
 uh
@@ -12834,7 +12849,7 @@ Jv
 uh
 GN
 uh
-uh
+MC
 uh
 xe
 uh
@@ -13020,7 +13035,7 @@ Rf
 JJ
 uh
 kW
-uh
+MC
 lQ
 lQ
 lQ

@@ -256,8 +256,6 @@
 	switch(percentage)
 		if(1 to 66)
 			load_freelancer_rifleman(new_human)
-		if(67 to 85)
-			load_freelancer_shotgunner(new_human)
 		else
 			load_freelancer_machinegunner(new_human)
 

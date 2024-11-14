@@ -1177,9 +1177,9 @@
 	name = "Selena's Tactical Suit"
 	desc = "A strange looking black jumpsuit.  DONOR ITEM"
 	icon_state = "robotics"
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/science.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/science.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
 	)
 	worn_state = "robotics"
 

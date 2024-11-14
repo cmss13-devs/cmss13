@@ -51,3 +51,6 @@
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+
+/// From /obj/item/clothing/accessory/stethoscope/attack): (mob/living/user, mob/living/carbon/human/being, body_part)
+#define COMSIG_LIVING_STETHOSCOPE_USED "living_stethoscope_used"

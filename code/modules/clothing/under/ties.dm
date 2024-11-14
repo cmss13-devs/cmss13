@@ -154,6 +154,7 @@
 						else
 							sound = "hear a sound here and there, but none of them give you any good information"
 				user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
+				SEND_SIGNAL(user, COMSIG_LIVING_STETHOSCOPE_USED, being, body_part)
 				return
 	return ..(being,user)
 

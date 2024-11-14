@@ -701,7 +701,7 @@
 #include "code\datums\tutorial\tutorial_example.dm"
 #include "code\datums\tutorial\marine\_marine.dm"
 #include "code\datums\tutorial\marine\basic_marine.dm"
-//#include "code\datums\tutorial\marine\hospital_corpsman_advanced.dm"
+#include "code\datums\tutorial\marine\hospital_corpsman_advanced.dm"
 #include "code\datums\tutorial\marine\hospital_corpsman_basic.dm"
 #include "code\datums\tutorial\marine\medical_basic.dm"
 #include "code\datums\tutorial\marine\reqs_line.dm"

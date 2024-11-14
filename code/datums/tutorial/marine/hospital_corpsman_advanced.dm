@@ -2,7 +2,7 @@
 	name = "Marine - Hospital Corpsman (Advanced) - Under Construction"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
-	required_tutorial = "marine_debug"
+	//required_tutorial = "marine_hm_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 6
 
@@ -48,7 +48,8 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
+		addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 5 SECONDS)
+		//RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
 
@@ -60,18 +61,65 @@
 	message_to_player("In a combat environment, <b>Internal Damage</b> can be just as deadly as its external counterparts.")
 	message_to_player("A patient can accumulate internal damage in a variety of forms. However, this section will focus specifically on <b>Internal Organ Damage</b>.")
 	message_to_player("A skilled Marine Hospital Corpsman (you) must be able to detect the cause and location of <b>Organ Damage</b>, as well as understanding its various methods of treatment")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_2)), 21 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_2()
 
 	message_to_player("Like the rest of the body, damage to <b>Internal Organs</b> can be classified in levels.")
 	message_to_player("As an internal organ sustains increasing amounts of damage, its condition will change from:")
-	message_to_player("Healthy -> Slighty Bruised")
-	message_to_player("Slighty Bruised -> Bruised")
-	message_to_player("Bruised -> Ruptured/Broken")
+	message_to_player("Healthy -> Slighty Bruised -> Bruised -> Ruptured / Broken")
 	message_to_player("Each increase in organ damage severity will produce similarly life-threatening side effects on the body.")
 	message_to_player("A <b>Ruptured Internal Organ</b> has been damaged beyond the point of function, and will require immediate surgical intervention from a <u>trained Doctor</u>.")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 21 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_1()
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_3()
+
+	message_to_player("Unlike the rest of the body, the condition of <b>Internal Organs</b> do not appear on a Health Analyzer scan.")
+	message_to_player("Instead, a more specialized tool is used!")
+	message_to_player("On that note, it's time to make another introduction. Say hello to the humble <b>Stethoscope</b>!")
+
+	var/obj/item/clothing/accessory/stethoscope/steth = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(steth)
+	add_highlight(steth, COLOR_GREEN)
+
+	message_to_player("Pick up the <b>Stethoscope</b>, and revel is its simple beauty.")
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial_4))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_4()
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
+
+	message_to_player("When someone takes any amount of <b>Internal Organ Damage</b>, the <b>Stethoscope</b> can be used in exactly the same manner as a Health Analyzer to scan their condition.")
+	message_to_player("Oh, look's like our old friend <b>Mr Dummy</b> is back, and looking for a health checkup!")
+
+	var/mob/living/carbon/human/human_dummy = new(loc_from_corner(2,2))
+	add_to_tracking_atoms(human_dummy)
+	add_highlight(human_dummy, COLOR_GREEN)
+
+	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")
+
+	//RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_5))
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
+	RegisterSignal(steth, COMSIG_ITEM_ATTACK, PROC_REF(organ_tutorial_5))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_5(datum/source, mob/living/carbon/human/being, mob/living/user)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	if(being != human_dummy)
+		message_to_player("Returned")
+		return
+	else
+		if(tutorial_mob.zone_selected == "chest")
+			message_to_player("Chest Returned")
+		else
+			message_to_player("Select Chest")
+			return
+	message_to_player("Signal Check Cleared")
+
+	//addtimer(CALLBACK(src, PROC_REF(organ_tutorial_3)), 15 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_33()
 
 	message_to_player("<b>Section 1.1: Brain and Eye Damage</b>.")
 	message_to_player("Brain and Eye damage are both the easiest to treat, and the easiest to incur on the field.")
@@ -95,23 +143,7 @@
 
 
 
-	message_to_player("On that note, it's time to make another introduction. Say hello to the humble <b>Stethoscope</b>!")
 
-	var/obj/item/clothing/accessory/stethoscope/steth = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(steth)
-	add_highlight(steth, COLOR_GREEN)
-
-	message_to_player("Pick up the <b>Stethoscope</b>, and revel is its simple beauty.")
-
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial_2))
-
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_2()
-
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
-	remove_highlight(steth)
-
-	message_to_player("When a
 
 
 

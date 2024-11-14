@@ -6250,7 +6250,10 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/lower_deck/p_hallway)
 "eKA" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass,
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	req_one_access = list(233, 240);
+	req_access = list()
+	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "uppbrig1";
@@ -8675,7 +8678,10 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "gKY" = (
-/obj/structure/machinery/door/airlock/almayer/security,
+/obj/structure/machinery/door/airlock/almayer/security{
+	req_one_access = list(233, 240);
+	req_access = list()
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -12975,7 +12981,7 @@
 "jLG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
 	name = "Brig Lobby";
-	req_one_access = list(233, 240);
+	req_one_access = list(230, 240);
 	req_access = null
 	},
 /turf/open/floor/corsat/marked,
@@ -16845,12 +16851,14 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/astronavigation)
 "mKh" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	req_access = list();
+	req_one_access = list(233, 240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_entryway)
@@ -19137,6 +19145,10 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/lobby)
+"oGi" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/strata/cyan3/north,
+/area/rostock/lower_deck/m_hallway)
 "oGG" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -21577,13 +21589,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "qrE" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "upp_armory";
-	name = "\improper Armory Shutters"
-	},
-/obj/effect/step_trigger/clone_cleaner,
-/turf/closed/wall/almayer/upp/reinforced,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating,
 /area/rostock/command/armory)
 "qrS" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
@@ -21847,7 +21855,7 @@
 	pixel_x = 8;
 	pixel_y = 25
 	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/cyan4/west,
 /area/rostock/lower_deck/m_hallway)
 "qDl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -23505,7 +23513,7 @@
 "rXb" = (
 /obj/structure/machinery/light,
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/cyan4/north,
 /area/rostock/lower_deck/m_hallway)
 "rXx" = (
 /turf/open/floor/strata/floor3,
@@ -25470,7 +25478,9 @@
 /area/rostock/req)
 "tzo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1
+	dir = 1;
+	req_access = list();
+	req_one_access = list(233, 240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_entryway)
@@ -30244,7 +30254,9 @@
 /area/rostock/lifeboat)
 "xcv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1
+	dir = 1;
+	req_one_access = list(233, 240);
+	req_access = list()
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_office)
@@ -42314,7 +42326,7 @@ xgE
 oxi
 vYe
 ofv
-vHA
+oGi
 hEL
 oca
 nPw
@@ -42496,7 +42508,7 @@ hcN
 oxi
 voe
 ofv
-vHA
+oGi
 hEL
 oca
 nPw
@@ -52689,10 +52701,10 @@ tqn
 fLj
 fLj
 dTx
+xqf
+xIX
 qrE
-xIX
-xIX
-xIX
+qrE
 fNy
 qNm
 qNm

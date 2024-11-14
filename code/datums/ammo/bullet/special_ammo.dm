@@ -22,7 +22,7 @@
 
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
-	damage = 26
+	damage = 24
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 	penetration = ARMOR_PENETRATION_TIER_8

@@ -372,7 +372,7 @@
 
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
-	set category = "OOC"
+	set category = "Admin.Mentor"
 	set hidden = 0
 
 	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
@@ -608,7 +608,7 @@
 	return
 
 /datum/admins/proc/imaginary_friend()
-	set category = "OOC.Mentor"
+	set category = "Admin.Mentor"
 	set name = "Imaginary Friend"
 
 	var/mob/user = usr
@@ -886,3 +886,26 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_DISABLE_JOE_RESPAWN
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) ? "disabled" : "enabled"] Working Joe respawns.")
+
+/client/proc/toggle_lz_hazards()
+	set name = "Toggle LZ Hazards"
+	set category = "Admin.Flags"
+	set desc = "Distress Signal: Whether miasma smoke is spawned 3 minutes after the start of the round."
+
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		to_chat(usr, SPAN_WARNING("LZ hazards are only applicable to distress signal!"))
+		return
+
+	if(ROUND_TIME > LZ_HAZARD_START)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_LZ_HAZARD_ACTIVATED
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED) ? "enabled" : "disabled"] LZ hazards.")

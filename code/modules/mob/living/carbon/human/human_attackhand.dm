@@ -28,12 +28,6 @@
 				help_shake_act(attacking_mob)
 				return 1
 
-			if(attacking_mob.head && (attacking_mob.head.flags_inventory & COVERMOUTH) || attacking_mob.wear_mask && (attacking_mob.wear_mask.flags_inventory & COVERMOUTH) && !(attacking_mob.wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove your mask!</B>"))
-				return 0
-			if(head && (head.flags_inventory & COVERMOUTH) || wear_mask && (wear_mask.flags_inventory & COVERMOUTH) && !(wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
-				return 0
 			if(cpr_attempt_timer >= world.time)
 				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
 				return 0

@@ -202,8 +202,6 @@
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/dam.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
 /obj/structure/prop/dam/boulder/boulder2
@@ -218,8 +216,6 @@
 	icon = 'icons/obj/structures/props/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2
@@ -1090,7 +1086,7 @@
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 

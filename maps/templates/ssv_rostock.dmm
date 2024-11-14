@@ -811,8 +811,8 @@
 /turf/open/floor/prison/greenfull,
 /area/rostock/lower_deck/p_a_hallway)
 "aGw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "aGB" = (
@@ -896,8 +896,8 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "aIo" = (
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "aII" = (
@@ -1244,8 +1244,6 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "aTX" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/belt/utility/full,
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "aUt" = (
@@ -1427,6 +1425,9 @@
 "bcG" = (
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 34
 	},
 /turf/open/floor/strata/red3/west,
 /area/rostock/security/brig_accessway)
@@ -2801,11 +2802,6 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "cgf" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Specialist Prep Room";
-	req_one_access = list(234, 240);
-	req_access = list()
-	},
 /turf/open/floor/strata/red1,
 /area/rostock/lower_deck/prep)
 "cgO" = (
@@ -3072,8 +3068,8 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/starboard)
 "cqA" = (
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/chemistry)
 "cqI" = (
@@ -3210,7 +3206,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "czD" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/upp,
 /obj/structure/machinery/light{
 	dir = 4;
 	invisibility = 101;
@@ -4217,6 +4213,9 @@
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/rostock/airoom)
+"dsX" = (
+/turf/open/floor/strata/orange_edge/west,
+/area/rostock/lower_deck/prep)
 "dsZ" = (
 /obj/structure/stairs{
 	dir = 1;
@@ -6262,10 +6261,8 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_entryway)
 "eKH" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access{
-	req_access = null
-	},
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "eKN" = (
@@ -11552,8 +11549,8 @@
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/chemistry)
 "iLI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/medical_supply_link/green,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/storage)
 "iLK" = (
@@ -12285,9 +12282,7 @@
 /turf/open/floor/plating,
 /area/rostock/lifeboat)
 "jlx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/obj/structure/medical_supply_link,
-/turf/open/floor/corsat/spiralplate,
+/turf/open/floor/strata/cyan3/west,
 /area/rostock/lower_deck/prep)
 "jlz" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -12743,7 +12738,7 @@
 /area/rostock/command/cic)
 "jCq" = (
 /obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/headquarters_lobby)
@@ -15042,24 +15037,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/port_aft_accessway)
 "ljJ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "ljL" = (
@@ -15911,8 +15890,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/engineering_lower_access)
 "lXH" = (
-/obj/structure/window/framed/upp/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/strata/red3/west,
 /area/rostock/lower_deck/prep)
 "lXJ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -16225,8 +16203,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "mjG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "mkF" = (
@@ -16746,17 +16724,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/ammunition_storage)
 "mGo" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit{
-	pixel_x = 4;
-	pixel_y = 8
-	},
-/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
-/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit{
-	pixel_x = -4;
-	pixel_y = -8
-	},
-/turf/open/floor/strata/floor3,
+/turf/open/floor/strata/red4,
 /area/rostock/lower_deck/prep)
 "mGL" = (
 /turf/open/floor/strata/red3/east,
@@ -16896,8 +16864,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
 "mML" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/medical_supply_link/green,
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/storage)
 "mNz" = (
@@ -18424,12 +18392,12 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/rostock/lower_deck/s_a_hallway)
 "oaV" = (
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /obj/structure/medical_supply_link,
 /obj/structure/sign/nosmoking_2{
 	pixel_x = -13;
 	pixel_y = 31
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "obx" = (
@@ -18590,18 +18558,14 @@
 /turf/open/floor/corsat/arrow_north,
 /area/rostock/lower_deck/m_hallway)
 "oiU" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_x = 5;
-	pixel_y = 7
+/obj/structure/window/framed/upp/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "uppbrig1";
+	name = "Brig Lockdown"
 	},
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_y = -8;
-	pixel_x = -5
-	},
-/turf/open/floor/strata/floor3,
-/area/rostock/lower_deck/prep)
+/turf/open/floor/plating,
+/area/rostock/security/brig_entryway)
 "ojj" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light,
@@ -18785,7 +18749,6 @@
 /turf/open/floor/plating,
 /area/rostock/lower_deck/kitchen)
 "osO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/medical_supply_link,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18794,6 +18757,7 @@
 /obj/structure/machinery/light{
 	invisibility = 101
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "otX" = (
@@ -19558,9 +19522,6 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/accessway)
 "oRz" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/strata/red2,
 /area/rostock/security/brig_entryway)
 "oRA" = (
@@ -19701,6 +19662,9 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/plating,
 /area/rostock/lower_deck/briefing)
+"oYo" = (
+/turf/open/floor/strata/orange_icorner,
+/area/rostock/lower_deck/prep)
 "oYt" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 8;
@@ -20095,7 +20059,7 @@
 /area/rostock/lower_deck/kitchen)
 "pmO" = (
 /obj/structure/closet/secure_closet/brig{
-	req_access = list(240);
+	req_access = list(230);
 	req_one_access = null
 	},
 /turf/open/floor/almayer/cargo,
@@ -21463,17 +21427,41 @@
 /area/rostock/command/cic)
 "qlU" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/ammo_magazine/rocket/upp/at{
-	pixel_y = 9
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit{
+	pixel_x = -4;
+	pixel_y = -8
 	},
-/obj/item/ammo_magazine/rocket/upp/at{
-	pixel_y = 3
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit{
+	pixel_x = 4;
+	pixel_y = 8
 	},
-/obj/item/ammo_magazine/rocket/upp/at{
-	pixel_y = -3
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_y = -8;
+	pixel_x = -5
 	},
-/obj/item/ammo_magazine/rocket/upp/at{
-	pixel_y = -9
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 5;
+	pixel_y = 7
 	},
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
@@ -23154,10 +23142,8 @@
 /turf/open/floor/strata/orange_edge,
 /area/rostock/vehiclehangar)
 "rEp" = (
-/obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/turf/open/floor/almayer/silverfull,
-/area/rostock/medical/lobby)
+/turf/open/floor/strata/cyan1,
+/area/rostock/lower_deck/prep)
 "rEq" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -23319,12 +23305,12 @@
 /turf/closed/wall/almayer/white,
 /area/rostock/medical/prep)
 "rNG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /obj/structure/medical_supply_link,
 /obj/structure/sign/safety/ref_bio_storage{
 	pixel_x = -22;
 	pixel_y = -17
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "rOb" = (
@@ -23520,9 +23506,7 @@
 /area/rostock/lifeboat)
 "rXz" = (
 /obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/no_access{
-	req_access = null
-	},
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "rXN" = (
@@ -23889,7 +23873,7 @@
 /area/rostock/lifeboat)
 "siT" = (
 /obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "siW" = (
@@ -24298,6 +24282,9 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer/cargo,
 /area/rostock/security/brig_entryway)
 "sBT" = (
@@ -24316,6 +24303,9 @@
 "sDd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/brig_entryway)
 "sDg" = (
@@ -27071,6 +27061,18 @@
 /obj/item/ammo_magazine/rocket/upp{
 	pixel_y = -3
 	},
+/obj/item/ammo_magazine/rocket/upp{
+	pixel_y = 9
+	},
+/obj/item/ammo_magazine/rocket/upp{
+	pixel_y = 3
+	},
+/obj/item/ammo_magazine/rocket/upp{
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rocket/upp{
+	pixel_y = -9
+	},
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "uOk" = (
@@ -27911,7 +27913,7 @@
 /area/rostock/lower_deck/s_a_hallway)
 "vsu" = (
 /obj/structure/closet/secure_closet/brig{
-	req_access = list(240);
+	req_access = list(230);
 	req_one_access = null
 	},
 /turf/open/floor/almayer/cargo,
@@ -29326,12 +29328,12 @@
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "woC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/medical_supply_link,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = -1
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "woG" = (
@@ -29612,9 +29614,7 @@
 /area/rostock/upperdeck_maint/p_m)
 "wAT" = (
 /obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/no_access{
-	req_access = null
-	},
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /obj/structure/sign/flag/upp{
 	pixel_y = 28
 	},
@@ -29977,9 +29977,6 @@
 /area/rostock/lower_deck/p_a_hallway)
 "wQR" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/strata/red4/west,
 /area/rostock/security/brig_entryway)
 "wQW" = (
@@ -30008,9 +30005,6 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "wRv" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 34
-	},
 /turf/open/floor/strata/red4/east,
 /area/rostock/security/brig_accessway)
 "wSf" = (
@@ -31124,10 +31118,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/m_hallway)
 "xLA" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Sapper Prep Area";
-	req_one_access = list(232, 240)
-	},
 /turf/open/floor/strata/orange_cover,
 /area/rostock/lower_deck/prep)
 "xLG" = (
@@ -31313,11 +31303,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/rostock/hangar/repairbay)
 "xTf" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	name = "\improper Medic Prep Area";
-	req_one_access = list(231, 240)
-	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/cyan4,
 /area/rostock/lower_deck/prep)
 "xTh" = (
 /turf/closed/wall/almayer/upp/reinforced/outer,
@@ -40307,20 +40293,20 @@ wIi
 qez
 eyD
 xTf
-lXH
-lXH
-lXH
+jlx
+jlx
+rEp
 eyD
+mGo
+lXH
+lXH
+lXH
 cgf
-lXH
-lXH
-lXH
-lXH
 eyD
+oYo
+dsX
+dsX
 xLA
-lXH
-lXH
-lXH
 eyD
 dMB
 hAv
@@ -40490,14 +40476,14 @@ ffU
 eyD
 grM
 kZL
+kZL
 tqt
-jlx
 eyD
 bHY
 kZL
-mGo
+kZL
+kZL
 uEI
-oiU
 eyD
 vQw
 kZL
@@ -45700,7 +45686,7 @@ fjU
 pjY
 lPy
 lPy
-lPy
+pjY
 ciN
 uqw
 lPy
@@ -46249,7 +46235,7 @@ siW
 dwx
 dwx
 kSD
-lPy
+pjY
 oRz
 jiy
 lPy
@@ -46423,9 +46409,9 @@ jsB
 wTm
 fpV
 lPy
-gYI
-gYI
-gYI
+oiU
+oiU
+oiU
 lPy
 lPy
 lPy
@@ -46963,7 +46949,7 @@ uvJ
 pkD
 dPb
 lkN
-rEp
+aIo
 lWt
 jsB
 wTm

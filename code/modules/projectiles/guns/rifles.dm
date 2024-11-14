@@ -495,7 +495,6 @@
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 	var/iff_enabled = TRUE
-	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
@@ -505,7 +504,6 @@
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
-	AddComponent(/datum/component/iff_fire_prevention)
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/rifle/m46c/Destroy()
@@ -637,7 +635,17 @@
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 	else
 		remove_bullet_trait("iff")
-	SEND_SIGNAL(src, COMSIG_GUN_IFF_TOGGLED, iff_enabled)
+
+/obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
+	. = ..()
+	if(iff_enabled)
+		modify_fire_delay(FIRE_DELAY_TIER_12)
+		remove_firemode(GUN_FIREMODE_BURSTFIRE)
+		remove_firemode(GUN_FIREMODE_AUTOMATIC)
+
+	else
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
+		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H

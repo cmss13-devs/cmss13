@@ -757,7 +757,8 @@
 
 	affected_mob.last_damage_data = cause_data
 
-	if(isxeno(affected_mob) && !(istype(affected_mob, /mob/living/carbon/xenomorph/reaper)))
+	if(isxeno(affected_mob))
+		var/affected_xeno =
 		to_chat(affected_mob, SPAN_XENODANGER("We feel very lethargic!"))
 		affected_mob.Slow(2)
 	else

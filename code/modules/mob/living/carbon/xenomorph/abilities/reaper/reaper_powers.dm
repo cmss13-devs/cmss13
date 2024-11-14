@@ -1,3 +1,68 @@
+/datum/action/xeno_action/activable/haul_corpse/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/reaper/xeno = owner
+	var/mob/living/carbon/carbon = target
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+
+	if(!action_cooldown_check())
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(target == xeno)
+		if(xeno.corpse_no > 0)
+			corpse_retrieve(carbon)
+			return
+		else
+			to_chat(xeno, SPAN_XENONOTICE("We aren't hauling any corpses."))
+			return
+
+	var/distance = get_dist(xeno, target)
+	if((distance > 2) && !xeno.Adjacent(target))
+		return
+
+	if(!iscarbon(carbon))
+		return
+
+	if(reaper.harvesting == TRUE)
+		to_chat(xeno, SPAN_XENOWARNING("We are busy harvesting!"))
+		return
+
+	if(xeno.corpse_no == xeno.corpse_max)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot haul more!"))
+		return
+
+	if(issynth(carbon))
+		to_chat(xeno, SPAN_XENOWARNING("This one is a fake, why would we try hauling it?"))
+		return
+
+	if(!carbon.chestburst)
+		to_chat(xeno, SPAN_XENOWARNING("We can only haul those that have burst."))
+		return
+
+	if(ishuman(carbon))
+		corpse_add(carbon)
+
+	return ..()
+
+/datum/action/xeno_action/activable/haul_corpse/proc/corpse_add(mob/living/corpse)
+	var/mob/living/carbon/xenomorph/reaper/xeno = owner
+
+	to_chat(xeno, SPAN_XENOWARNING("Adding Corpse"))
+	xeno.corpses_hauled.Add(corpse)
+	xeno.corpse_no += 1
+	corpse.forceMove(xeno)
+
+/datum/action/xeno_action/activable/haul_corpse/proc/corpse_retrieve(mob/living/corpse)
+	var/mob/living/carbon/xenomorph/reaper/xeno = owner
+
+	to_chat(xeno, SPAN_XENOWARNING("Retrieving Corpse"))
+	for(var/atom/movable/corpse_mob in xeno.corpses_hauled)
+		xeno.corpses_hauled.Remove(corpse_mob)
+		xeno.corpse_no -= 1
+		corpse_mob.forceMove(get_true_turf(xeno.loc))
+		break
+
 /datum/action/xeno_action/activable/flesh_harvest/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/mob/living/carbon/carbon = target
@@ -20,7 +85,7 @@
 		return
 
 	if(reaper.harvesting == TRUE)
-		to_chat(xeno, SPAN_XENOWARNING("We are busy!"))
+		to_chat(xeno, SPAN_XENOWARNING("We are already harvesting!"))
 		return
 
 	if(isxeno(carbon))
@@ -46,13 +111,13 @@
 	switch(target_limb.name)
 		if("head")
 			cannot_harvest()
-			return ..()
+			return
 		if("chest")
 			cannot_harvest()
-			return ..()
+			return
 		if("groin")
 			cannot_harvest()
-			return ..()
+			return
 		else
 			xeno.face_atom(carbon)
 			var/obj/limb/limb = target_limb
@@ -69,11 +134,13 @@
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
 			SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
 			playsound(victim, limb_remove_start, 50, TRUE)
-			if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-				reaper.harvesting = FALSE
-				return
-			do_harvest(carbon, target_limb)
-			return ..()
+			if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				if((distance > 2) && !xeno.Adjacent(target))
+					to_chat(xeno, SPAN_XENOWARNING("Our harvest was interrupted!"))
+				else
+					do_harvest(carbon, target_limb)
+			reaper.harvesting = FALSE
+	return ..()
 
 /datum/action/xeno_action/activable/flesh_harvest/proc/do_harvest(mob/living/carbon/carbon, obj/limb/limb)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -92,7 +159,6 @@
 		SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
 		limb.droplimb(FALSE, TRUE, "flesh harvest")
 		reaper.flesh_plasma += harvest_gain
-	reaper.harvesting = FALSE
 	reaper.pause_decay = TRUE
 	apply_cooldown()
 
@@ -126,6 +192,9 @@
 		to_chat(xeno, SPAN_WARNING("They are too far away!"))
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	var/list/turf/path = get_line(xeno, carbon, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
@@ -157,7 +226,7 @@
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws at [carbon], piercing them in the [target_limb ? target_limb.display_name : "chest"]!"), \
 		SPAN_XENOWARNING("We pierce [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
 		if(iscarbon(carbon))
-			carbon.apply_effect(2, DAZE)
+			carbon.apply_effect(3, DAZE)
 			var/mob/living/carbon/human/victim = carbon
 			if(!issynth(victim))
 				victim.reagents.add_reagent("sepsicine", toxin_amount)
@@ -165,6 +234,7 @@
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws infront of it as tendrils of resin whip outwards, striking [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"), \
 		SPAN_XENOWARNING("We strike [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
+		carbon.apply_effect(1.5, DAZE)
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 	reaper.pause_decay = TRUE
 	reaper.passive_flesh_multi += 1
@@ -175,7 +245,7 @@
 /datum/action/xeno_action/onclick/emit_mist/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-	var/datum/effect_system/smoke_spread/reaper_mist/cloud
+	var/datum/effect_system/smoke_spread/reaper_mist/cloud = new /datum/effect_system/smoke_spread/reaper_mist
 
 	if(!isxeno(owner))
 		return
@@ -194,7 +264,6 @@
 		return
 
 	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
-	cloud = new /datum/effect_system/smoke_spread/reaper_mist
 	cloud.set_up(3, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
 	cloud.start()
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly green mist!"), \

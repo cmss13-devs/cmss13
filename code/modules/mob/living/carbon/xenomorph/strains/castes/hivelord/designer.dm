@@ -46,7 +46,6 @@
 /datum/action/xeno_action/activable/secrete_resin/design
 	name = "Design Resin Construction (50)"
 	action_icon_state = "secrete_resin"
-	ability_name = "design resin"
 	xeno_cooldown = 1 SECONDS
 	thick = FALSE
 	make_message = FALSE

@@ -1943,7 +1943,6 @@
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/kapitan
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan (Cryo)"
@@ -2119,7 +2118,6 @@
 	flags_whitelist =  WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Mayjor (Cryo)"
@@ -2476,11 +2474,9 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/kolonel
-	flags_whitelist =  WHITELIST_COMMANDER_COLONEL
+	flags_whitelist = WHITELIST_COMMANDER_COLONEL
 	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
-
-	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/polkovnik
 	name = "UPP General Mayjor (Cryo)"

@@ -92,7 +92,7 @@
 	name = "UPP Soldier (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	skills = /datum/skills/upp
+	skills = /datum/skills/pfc
 	assignment = JOB_UPP
 	rank = JOB_UPP
 	role_comm_title = "Sol"
@@ -107,6 +107,7 @@
 /datum/equipment_preset/upp/soldier/dressed
 	name = "UPP Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/upp
 
 /datum/equipment_preset/upp/soldier/dressed/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -296,7 +297,7 @@
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic (Cryo)"
 
-	skills = /datum/skills/upp/combat_medic
+	skills = /datum/skills/combat_medic
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	role_comm_title = "Med"
@@ -305,6 +306,8 @@
 
 /datum/equipment_preset/upp/medic/dressed
 	name = "UPP Medic"
+
+	skills = /datum/skills/upp/combat_medic
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/medic/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -491,7 +494,7 @@
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper (Cryo)"
 
-	skills = /datum/skills/upp/combat_engineer
+	skills = /datum/skills/combat_engineer
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
@@ -500,6 +503,8 @@
 
 /datum/equipment_preset/upp/sapper/dressed
 	name = "UPP Sapper"
+
+	skills = /datum/skills/upp/combat_engineer
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/sapper/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -647,10 +652,6 @@
 	)
 
 //*****************************************************************************************************/
-/datum/job/antag/upp/specialist
-	title = JOB_UPP_SPECIALIST
-	gear_preset = /datum/equipment_preset/upp/specialist
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist minigun (Cryo)"
@@ -950,7 +951,7 @@
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader (Cryo)"
 
-	skills = /datum/skills/upp/SL
+	skills = /datum/skills/SL
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	role_comm_title = "SL"
@@ -959,6 +960,8 @@
 
 /datum/equipment_preset/upp/leader/dressed
 	name = "UPP Squad Leader"
+
+	skills = /datum/skills/upp/SL
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/leader/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -2819,7 +2822,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
-	title = JOB_UPP_LT_GENERAL
+	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
 
 /datum/equipment_preset/upp/officer/ley_gen
@@ -2992,7 +2995,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
-	title = JOB_UPP_GENERAL
+	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/gen
 
 /datum/equipment_preset/upp/officer/gen
@@ -3204,11 +3207,6 @@
 //===================//
 //  UPP Synthetics  //
 //================//
-
-/datum/job/antag/upp/synth
-	title = JOB_UPP_SUPPORT_SYNTH
-	gear_preset = /datum/equipment_preset/upp/synth
-
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
 
@@ -3355,7 +3353,7 @@
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver/upp/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Medical Storage Belt", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 

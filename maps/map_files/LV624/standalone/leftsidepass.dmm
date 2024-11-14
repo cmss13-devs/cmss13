@@ -50,7 +50,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/west_river)
 "au" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_jungle)
 "aw" = (
 /turf/open/gm/coast/beachcorner/south_west,

@@ -12,6 +12,19 @@ def has_tgm_header(fname):
 
 def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
+
+    # Set up upstream remote if needed
+    if not repo.remotes["upstream"]:
+        repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
+
+    # Read the ancestor commit.
+    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
+    ancestor_commit = None
+    if not ancestor:
+        print("Unable to determine merge base!")
+    else:
+        ancestor_commit = repo[ancestor]
+
     count = 0
     for dirpath, dirnames, filenames in os.walk('.'):
         if '.git' in dirnames:
@@ -29,23 +42,24 @@ def _self_test():
                         raise Exception('Map is not in TGM format! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
 
                     # test: does every DMM convert cleanly
-                    try:
-                        head_blob = repo[repo[repo.head.target].tree[path].id]
-                    except KeyError:
-                        # New map, no entry in HEAD
-                        merged_map = merge_map(index_map, index_map)
-                        original_bytes = index_map.to_bytes()
-                        merged_bytes = merged_map.to_bytes()
-                        if original_bytes != merged_bytes:
-                            raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
-                    else:
-                        # Entry in HEAD, merge the index over it
-                        head_map = DMM.from_bytes(head_blob.read_raw())
-                        merged_map = merge_map(index_map, head_map)
-                        original_bytes = index_map.to_bytes()
-                        merged_bytes = merged_map.to_bytes()
-                        if original_bytes != merged_bytes:
-                            raise Exception('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                    if ancestor_commit:
+                        try:
+                            ancestor_blob = ancestor_commit.tree[path]
+                        except KeyError:
+                            # New map, no entry in HEAD
+                            merged_map = merge_map(index_map, index_map)
+                            original_bytes = index_map.to_bytes()
+                            merged_bytes = merged_map.to_bytes()
+                            if original_bytes != merged_bytes:
+                                raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                        else:
+                            # Entry in HEAD, merge the index over it
+                            ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
+                            merged_map = merge_map(index_map, ancestor_map)
+                            original_bytes = index_map.to_bytes()
+                            merged_bytes = merged_map.to_bytes()
+                            if original_bytes != merged_bytes:
+                                raise Exception('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                 except Exception:
                     print('Failed on:', fullpath)
                     raise

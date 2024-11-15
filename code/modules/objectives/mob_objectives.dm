@@ -121,7 +121,7 @@
 	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) <= 48) // Limit human corpse recovery to 5 total points (.1 each)
 		return OBJECTIVE_LOW_VALUE
 
-	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) = 49)
+	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) == 49)
 		announcement_helper("Maximum intel points for non-xenomorph corpses has been achieved.", "[MAIN_AI_SYSTEM] Intel Tracker", humans_uscm, 'sound/misc/notice2.ogg')
 		return OBJECTIVE_LOW_VALUE
 

@@ -69,13 +69,15 @@ GLOBAL_LIST_EMPTY(donator_items)
 		random_personal_possessions += initial(current_gear.path)
 
 /obj/structure/machinery/personal_gear_vendor/attack_hand(mob/living/user)
-	. = ..()
+	if(..())
+		return TRUE
+
 	if(!ishuman(user))
-		return
+		return FALSE
 
 	if(user.ckey in ckeys_redeemed_kits)
 		to_chat(user, SPAN_NOTICE("You have already retrieved your kit."))
-		return
+		return TRUE
 
 	var/list/possible_kits = list()
 	if(user.ckey in GLOB.donator_items)
@@ -83,42 +85,44 @@ GLOBAL_LIST_EMPTY(donator_items)
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
 		var/random_item = pick(random_personal_possessions)
-		user.put_in_any_hand_if_possible(new random_item(get_turf(src)))
+		random_item = new random_item(get_turf(src))
+		user.put_in_any_hand_if_possible(random_item)
 		to_chat(user, SPAN_NOTICE("You take [random_item] from [src]."))
 		ckeys_redeemed_kits += user.ckey
-		return
+		return TRUE
 
 	if(length(possible_kits) == 1)
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[possible_kits[1]]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
 		ckeys_redeemed_kits += user.ckey
-		return
+		return TRUE
 
 	if(length(possible_kits) >= 2)
 		var/kit_choice = tgui_input_list(user, "Pick a kit to take:", "Donation Kit Selection", possible_kits)
 		if(!kit_choice)
 			to_chat(user, SPAN_NOTICE("You choose not to take any kits."))
-			return
+			return TRUE
 		if(!user.Adjacent(src))
 			to_chat(user, SPAN_NOTICE("You are too far from [src]."))
-			return
+			return TRUE
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[kit_choice]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
 		ckeys_redeemed_kits += user.ckey
+		return TRUE
 
 /obj/structure/machinery/personal_gear_vendor/attackby(obj/item/attacking_item, mob/user)
-	. = ..()
 	if(!istype(attacking_item, /obj/item/storage/box/donator_kit))
-		return
+		return ..()
 
 	var/obj/item/storage/box/donator_kit/kit = attacking_item
-	if(kit.linked_ckey && kit.linked_ckey != user.ckey)
+	if(!kit.allowed(user))
 		to_chat(user, SPAN_WARNING("[src] denies [kit]."))
-		return
+		return TRUE
 	to_chat(user, SPAN_NOTICE("You return [kit] to [src]."))
 	user.drop_held_item(kit)
 	kit.forceMove(src)
 	qdel(kit)
+	return TRUE
 
 /obj/item/storage/box/donator_kit
 	name = "personal gear kit"
@@ -144,13 +148,18 @@ GLOBAL_LIST_EMPTY(donator_items)
 		new current_item(src)
 
 /obj/item/storage/box/donator_kit/open(mob/user)
-	if(linked_ckey && user.ckey != linked_ckey)
+	if(!allowed(user))
 		to_chat(user, SPAN_NOTICE("You do not have access to [src]."))
 		return
-	. = ..()
+	return ..()
 
 /obj/item/storage/box/donator_kit/empty(mob/user, turf/drop_to)
-	if(linked_ckey && user.ckey != linked_ckey)
+	if(!allowed(user))
 		to_chat(user, SPAN_NOTICE("You do not have access to [src]."))
 		return
-	. = ..()
+	return ..()
+
+/obj/item/storage/box/donator_kit/allowed(mob/user)
+	if(linked_ckey && user.ckey != linked_ckey)
+		return FALSE
+	return TRUE

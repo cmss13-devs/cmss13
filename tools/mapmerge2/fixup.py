@@ -68,7 +68,7 @@ def main(repo : pygit2.Repository):
 
     # Read the HEAD and ancestor commits.
     head_commit = repo[repo.head.target]
-    repo.remotes["upstream"].fetch(repo.remotes["upstream"].fetch_refspecs)
+    repo.remotes["upstream"].fetch()
     ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
     if not ancestor:
         print("Unable to automatically fix anything because merge base could not be determined.")

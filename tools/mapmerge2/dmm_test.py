@@ -13,15 +13,8 @@ def has_tgm_header(fname):
 def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
 
-    # Set up upstream remote if needed
-    try:
-        repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
-    except ValueError:
-        pass
-
     # Read the ancestor commit.
-    repo.remotes["upstream"].fetch(repo.remotes["upstream"].fetch_refspecs)
-    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
+    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/origin/master").id)
     ancestor_commit = None
     if not ancestor:
         print("Unable to determine merge base!")

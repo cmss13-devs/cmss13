@@ -59,9 +59,12 @@ def main(repo : pygit2.Repository):
             return 1
 
     # Set up upstream remote if needed
-    if not repo.remotes["upstream"]:
-        print("Adding upstream remote...")
+    try:
         repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
+    except ValueError:
+        pass
+    else:
+        print("Adding upstream remote...")
 
     # Read the HEAD and ancestor commits.
     head_commit = repo[repo.head.target]

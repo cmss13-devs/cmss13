@@ -14,8 +14,10 @@ def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
 
     # Set up upstream remote if needed
-    if not repo.remotes["upstream"]:
+    try:
         repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
+    except ValueError:
+        pass
 
     # Read the ancestor commit.
     ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)

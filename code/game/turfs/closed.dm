@@ -296,6 +296,22 @@
 /turf/closed/shuttle/dropship3/tornado/typhoon
 	name = "\improper Typhoon"
 
+/turf/closed/shuttle/upp_dropship
+	name = "\improper Morana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_dropship2
+	name = "\improper Devana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship2/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/escapepod
 	name = "wall"
 	icon = 'icons/turf/escapepods.dmi'

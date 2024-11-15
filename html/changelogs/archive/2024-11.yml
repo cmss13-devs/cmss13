@@ -202,3 +202,69 @@
   - rscadd: adds option for spawners to use lists of jobs
   - rscadd: enables overwatch consoles of other factions
   - rscadd: UPP squad supply drops
+2024-11-10:
+  Joe Lampost:
+  - code_imp: Changes the spawn message for predators
+  Venuska1117:
+  - code_imp: Added ability to Destroy Platform Edges by xenos on "Disarm" intent,
+      now depending on xenos "size" they can break Platform Edges quicker or Slower,
+      Now Explosives have chance to destroy Platform Edges by depending on how strong
+      explosion is.
+  - imageadd: Added Sprites for Broken Platforms Edges.
+  - soundadd: Added Sound for Breaking "Stone" Edges.
+  cuberound:
+  - qol: handrails are autoclimbable when on harm intent, you take some harm when
+      doing so
+  - balance: crusher and ravager destroy handrails when trying to pass them similar
+      to tables
+  harryob:
+  - ui: adds a prettier custom loadout menu with images
+2024-11-11:
+  Drathek:
+  - balance: Queen remote building (while boosted) is now prevented in LZ linked weed
+      restricted areas
+  - balance: Adjusted/added LZ linked weed restriction areas on all maps in rotation
+  - maptweak: Fixed misplaced areas on Shivas.
+  - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
+  cuberound:
+  - bugfix: UPP CO joining from lobby should recive proper rank
+  harryob:
+  - ui: added a new tgui to select character traits. it's quite similar to the old
+      one
+2024-11-12:
+  An A Jay:
+  - balance: Made Medicomp heal to full for predators.
+  Katskan:
+  - bugfix: G2 cosmetic working properly
+  Nomoresolvalou, Thwomper:
+  - rscadd: 'Added two new yautja weapons: the longaxe and the staff'
+  - imageadd: Added sprites for the new weapons
+  Sunless2:
+  - rscadd: Added the ability for bayonets to cut down fences
+  - balance: It now takes twice the amount of throws to bring down a fence
+2024-11-13:
+  Blundir:
+  - rscadd: working joe's and early gen synth's eyes now glow in a dark
+  - rscadd: working joe's and early gen synth's eyes color tweak on disarm and grab
+  Drathek:
+  - maptweak: Fixed the rotation of the telecoms APC in the Aerodome on Shivas
+  - balance: LZ smoke is now disabled by default on distress signal
+  - admin: Added game mode toggle to toggle LZ smoke during the first 3 minutes of
+      the round (otherwise is locked in)
+  - balance: Eggs that lose their hive weeds will now turn fragile (like egg carrier
+      eggs) lasting 5 minutes.
+  - bugfix: Fixed an exploit allowing egg carrier eggs to last indefinitely.
+  - bugfix: Fixed the inability to examine planted eggs from further than one tile.
+  - code_imp: Added some more sanity code to ensure time of death is recorded for
+      larva queue
+  JustLat:
+  - imageadd: Adds icon states for l_hand and r_hand for yautja accessories.
+  Steelpoint, Zenith:
+  - mapadd: Two UPP dropships have been added for event use, the Morana and the Devana.
+  - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
+      by admins for events.
+  cuberound:
+  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: makes UPP synth lobby joinable for events
+  zzzmike:
+  - rscadd: tip of the round regarding lesser known cryotube utility

@@ -29,6 +29,8 @@
 	name = "\improper 80mm high explosive mortar shell"
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
+	throw_speed = SPEED_SLOW
+	throw_range = 1
 
 /obj/item/mortar_shell/he/detonate(turf/T)
 	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
@@ -37,6 +39,8 @@
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
+	throw_speed = SPEED_SLOW
+	throw_range = 1
 
 /obj/item/mortar_shell/frag/detonate(turf/T)
 	create_shrapnel(T, 60, cause_data = cause_data)
@@ -47,6 +51,8 @@
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
 	icon_state = "mortar_ammo_inc"
+	throw_speed = SPEED_SLOW
+	throw_range = 1
 	var/radius = 5
 	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
 	var/burn_level = BURN_LEVEL_TIER_2
@@ -62,6 +68,8 @@
 	name = "\improper 80mm flare/camera mortar shell"
 	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"
+	throw_speed = SPEED_SLOW
+	throw_range = 1
 
 /obj/item/mortar_shell/flare/detonate(turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
@@ -72,6 +80,8 @@
 	name = "\improper 80mm custom mortar shell"
 	desc = "An 80mm mortar shell."
 	icon_state = "mortar_ammo_custom"
+	throw_speed = SPEED_SLOW
+	throw_range = 1
 	matter = list("metal" = 18750) //5 sheets
 	var/obj/item/explosive/warhead/mortar/warhead
 	var/obj/item/reagent_container/glass/fuel
@@ -168,7 +178,7 @@
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
 	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	
+
 	if(burning)
 		return
 	burning = TRUE
@@ -200,10 +210,10 @@
 
 		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
-		
+
 
 /obj/item/mortar_shell/proc/explode(flame_cause_data)
-	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
+	cell_explosion(src, 175, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

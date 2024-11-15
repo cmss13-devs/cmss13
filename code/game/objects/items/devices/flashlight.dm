@@ -360,7 +360,13 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/device/flashlight/flare/proc/flare_burn_down()
+/obj/item/device/flashlight/flare/process(delta_time)
+	fuel -= fuel_rate * delta_time
+	flare_burn_down()
+	if(fuel <= 0 || !on)
+		burn_out()
+
+/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
 	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
 		if(14.25 MINUTES to 15 MINUTES)
 			set_light_range(7)
@@ -377,38 +383,6 @@
 		if(0 MINUTES to 0.49 MINUTES)
 			set_light_range(1)
 			set_light_power(0.5) // A power of 2 results in no light at all, while .5 results in a small light.
-
-obj/item/device/flashlight/flare/proc/ash_burn_down()
-	switch(fuel) //Similar to the flare code, starshells have their own burn-out timings.
-		if(6.0 MINUTES to 6.5 MINUTES)
-			set_light_range(6)
-		if(2.5 MINUTES to 5.99 MINUTES)
-			set_light_range(5)
-		if(2.0 MINUTES to 2.49 MINUTES)
-			set_light_range(4)
-		if(1.5 MINUTES to 1.99 MINUTES)
-			set_light_range(3)
-		if(1.0 MINUTES to 1.49 MINUTES)
-			set_light_range(2)
-		if(0 MINUTES to 0.99 MINUTES)
-			set_light_range(1)
-			set_light_power(0.5) //As above, this light power is needed for light_range of 1 to show anything.
-
-/obj/item/device/flashlight/flare/process(delta_time)
-	fuel -= fuel_rate * delta_time
-	if(fuel <= 0 || !on)
-		burn_out()
-	switch(name)
-		if("flare")
-			flare_burn_down()
-			return
-		if("burning star shell ash")
-			ash_burn_down()
-			return
-		if("illumination flare")
-			return
-		if("signal flare")
-			return
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
@@ -501,6 +475,9 @@ obj/item/device/flashlight/flare/proc/ash_burn_down()
 	. = ..()
 	fuel = rand(5.0 MINUTES, 6.0 MINUTES) // Approximately half the effective duration of a flare, but justified since it's invincible
 
+/obj/item/device/flashlight/flare/on/illumination/flare_burn_down() // Empty proc to override parent.
+	return
+
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
 
@@ -525,6 +502,22 @@ obj/item/device/flashlight/flare/proc/ash_burn_down()
 		return INITIALIZE_HINT_QDEL
 	. = ..()
 	fuel = rand(6.0 MINUTES, 6.5 MINUTES)
+
+/obj/item/device/flashlight/flare/on/starshell_ash/flare_burn_down() // Starshell's own burn_down curve, overrides parent flare.
+	switch(fuel)
+		if(6.0 MINUTES to 6.5 MINUTES)
+			set_light_range(6)
+		if(2.5 MINUTES to 5.99 MINUTES)
+			set_light_range(5)
+		if(2.0 MINUTES to 2.49 MINUTES)
+			set_light_range(4)
+		if(1.5 MINUTES to 1.99 MINUTES)
+			set_light_range(3)
+		if(1.0 MINUTES to 1.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 0.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
@@ -586,6 +579,9 @@ obj/item/device/flashlight/flare/proc/ash_burn_down()
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
 	fuel = rand(160 SECONDS, 200 SECONDS)
+
+/obj/item/device/flashlight/flare/signal/flare_burn_down() // Empty proc to override parent.
+	return
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))

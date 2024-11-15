@@ -124,7 +124,7 @@ def main(repo : pygit2.Repository):
         repo.head.name,
         signature,  # author
         signature,  # committer
-        f'Convert maps to TGM\n\n{joined}\n\nAutomatically commited by: {os.path.relpath(__file__, repo.workdir)}',
+        f'Fixup maps in TGM format\n\n{joined}\n\nAutomatically commited by: {os.path.relpath(__file__, repo.workdir)}',
         tree_builder.write(),
         [head_commit.id],
     )

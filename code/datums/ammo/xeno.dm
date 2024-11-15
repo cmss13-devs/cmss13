@@ -37,24 +37,31 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, insta_neuro)
+/proc/apply_neuro(mob/living/M, power, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(drain_stims)
+			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
+				H.reagents.remove_reagent(stim.id, power, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
+		if(drain_medchems)
+			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
+				H.reagents.remove_reagent(med.id, power, TRUE)
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 3) // If they have less than somewhere random between 4 and 6 seconds KD left and assuming it doesnt get refreshed itnernally
-				M.adjust_effect(1 * power, WEAKEN)
+			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				M.KnockDown(power)
+				M.Stun(power)
 				return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.apply_effect(4, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -65,8 +72,9 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownValueNotADurationDoNotUse() < 5) // If they have less than somewhere random between 8 and 10 seconds KD left and assuming it doesnt get refreshed itnernally
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
+				M.KnockDown(power)
+				M.Stun(power)
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
@@ -79,18 +87,18 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.GetKnockDownValueNotADurationDoNotUse() < 0.7) // basically (knocked_down && prob(90))
-			M.apply_effect(0.7, WEAKEN)
-			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		M.Stun(0.7)
+		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, TRUE)
+			neuro_callback.Invoke(H, effect_power, TRUE, TRUE, TRUE)
 			return
 
-	neuro_callback.Invoke(M, effect_power, FALSE)
+	neuro_callback.Invoke(M, effect_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -108,7 +116,7 @@
 	max_range = 6 - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, TRUE)
+	neuro_callback.Invoke(M, effect_power, TRUE, FALSE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
@@ -119,7 +127,6 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 5
 	max_range = 5
-	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_4
 
 /datum/ammo/xeno/toxin/shotgun/New()
@@ -130,6 +137,7 @@
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
 
+	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/acid
@@ -184,7 +192,7 @@
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
 
-	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 4
@@ -361,7 +369,7 @@
 	name = "tail hook"
 	icon_state = "none"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER
 	damage_type = BRUTE
 
 	damage = XENO_DAMAGE_TIER_5
@@ -384,7 +392,8 @@
 	target.overlays += tail_image
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
-	target.apply_effect(0.5, STUN)
+
+	target.apply_effect(0.5, ROOT)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 
 	qdel(tail_beam)

@@ -24,6 +24,7 @@
 
 /mob/living/Destroy()
 	GLOB.living_mob_list -= src
+	cleanup_status_effects()
 	pipes_shown = null
 
 	. = ..()
@@ -33,6 +34,17 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
+	status_effects = null
+
+/// Clear all running status effects assuming deletion
+/mob/living/proc/cleanup_status_effects()
+	PROTECTED_PROC(TRUE)
+	if(length(status_effects))
+		for(var/datum/status_effect/S as anything in status_effects)
+			if(S?.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S?.be_replaced()
 
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)
@@ -54,7 +66,7 @@
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
-		var/divided_damage = (burn_amount)/(H.limbs.len)
+		var/divided_damage = (burn_amount)/(length(H.limbs))
 		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting) continue
@@ -62,9 +74,6 @@
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
-
-	else if(isAI(src))
-		return 0
 
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
@@ -215,19 +224,34 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	if(pulledby.grab_level)
-		if(prob(50))
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
-			pulledby.stop_pulling()
-			return 1
-		if(moving_resist && client) //we resisted by trying to move
-			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
-			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
-	else
-		pulledby.stop_pulling()
-		return 1
+	// vars for checks of strengh
+	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
+	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
+	if(!pulledby.grab_level && (!pulledby_is_strong || src_is_strong)) // if passive grab, check if puller is stronger than src, and if not, break free
+		pulledby.stop_pulling()
+		return TRUE
+
+	// Chance for person to break free of grip, defaults to 50.
+	var/chance = 50
+	if(src_is_strong && !isxeno(pulledby)) // no extra chance to resist warrior grabs
+		chance += 30 // you are strong, you can overpower them easier
+	if(pulledby_is_strong)
+		chance -= 30 // stronger grip
+	// above code means that if you are super strong, 80% chance to resist, otherwise, 20 percent. if both are super strong, standard 50.
+
+	if(prob(chance))
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), max_distance = 5)
+		pulledby.stop_pulling()
+		return TRUE
+	if(moving_resist && client) //we resisted by trying to move
+		visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), max_distance = 5)
+		// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
+		if(pulledby_is_strong && !src_is_strong)
+			client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay
+		else
+			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 
 /mob/living/movement_delay()
 	. = ..()
@@ -364,20 +388,23 @@
 			if(loc && !loc.Adjacent(L.loc))
 				now_pushing = FALSE
 				return
-			var/oldloc = loc
-			var/oldLloc = L.loc
 
-			L.add_temp_pass_flags(PASS_MOB_THRU)
-			add_temp_pass_flags(PASS_MOB_THRU)
+			if(!(L.pass_flags.flags_pass & PASS_MOB_THRU)) //if they already pass through mob thi stuff is unnecessary
 
-			L.Move(oldloc)
-			Move(oldLloc)
+				var/oldloc = loc
+				var/oldLloc = L.loc
 
-			remove_temp_pass_flags(PASS_MOB_THRU)
-			L.remove_temp_pass_flags(PASS_MOB_THRU)
+				L.add_temp_pass_flags(PASS_MOB_THRU)
+				add_temp_pass_flags(PASS_MOB_THRU)
 
-			now_pushing = FALSE
-			return
+				L.Move(oldloc)
+				Move(oldLloc)
+
+				remove_temp_pass_flags(PASS_MOB_THRU)
+				L.remove_temp_pass_flags(PASS_MOB_THRU)
+
+				now_pushing = FALSE
+				return
 
 	now_pushing = FALSE
 
@@ -389,7 +416,10 @@
 /mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	if(!istype(LM) || !LM.target || !src || buckled)
+	if(!istype(LM) || !LM.target || !src)
+		return
+	if(buckled)
+		LM.invoke_end_throw_callbacks(src)
 		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
@@ -433,16 +463,19 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, flash_timer = 40)
-	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
-		overlay_fullscreen("flash", type)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, flash_timer = 40, type = /atom/movable/screen/fullscreen/flash, dark_type = /atom/movable/screen/fullscreen/flash/dark)
+	if(bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
+		if(client?.prefs?.flash_overlay_pref == FLASH_OVERLAY_DARK)
+			overlay_fullscreen("flash", dark_type)
+		else
+			overlay_fullscreen("flash", type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return TRUE
 
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()
-	src.clone.hud_list = new /list(src.hud_list.len)
+	src.clone.hud_list = new /list(length(src.hud_list))
 	for(var/h in src.hud_possible) //Clone HUD
 		src.clone.hud_list[h] = new /image("loc" = src.clone, "icon" = src.hud_list[h].icon)
 
@@ -495,6 +528,7 @@
 //			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 //			remove_from_alive_mob_list()
 //			add_to_dead_mob_list()
+	update_layer() // Force update layers so that lying down works as intended upon death. This is redundant otherwise. Replace this by trait signals
 
 /**
  * Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.
@@ -577,12 +611,16 @@
 	drop_l_hand()
 	drop_r_hand()
 	add_temp_pass_flags(PASS_MOB_THRU)
+	update_layer()
+
+/// Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually
+/mob/living/proc/update_layer()
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)
 		layer = ABOVE_MOB_LAYER
-	else if (stat == DEAD)
+	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-	else if(layer == initial(layer)) //to avoid things like hiding larvas.
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
 		layer = LYING_LIVING_MOB_LAYER
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
@@ -597,6 +635,7 @@
 		return
 	. = body_position
 	body_position = new_value
+	body_position_changed = world.time
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
 		on_lying_down()

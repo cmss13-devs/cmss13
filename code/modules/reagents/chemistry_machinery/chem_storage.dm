@@ -12,7 +12,7 @@
 	var/recharge_cooldown = 15
 	var/recharge_rate = 10
 	var/energy = 50
-	var/max_energy = 50
+	var/max_energy = 100
 
 	unslashable = TRUE
 	unacidable = TRUE
@@ -41,7 +41,7 @@
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		var/charge = round((energy / max_energy) * 100)
+		var/charge = floor((energy / max_energy) * 100)
 		. += SPAN_NOTICE("The charge meter reads [charge]%")
 
 /obj/structure/machinery/chem_storage/process()
@@ -57,4 +57,4 @@
 	if(energy >= max_energy)
 		return
 	energy = min(energy + recharge_rate, max_energy)
-	use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
+	use_power(1500) // This thing uses up a lot of power (this is still low as shit for creating reagents from thin air)

@@ -196,6 +196,8 @@
 			return
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 
 		if(WT)
 			WT.remove_fuel(1, user)
@@ -248,7 +250,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
-		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(X, SPAN_XENOWARNING("We're too small to do any significant damage to this vehicle!"))
 		return XENO_NO_DELAY_ACTION
 
 	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
@@ -269,11 +271,11 @@
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
-		SPAN_DANGER("You swipe at \the [src] to no effect!"))
+		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
 	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"))
+	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * damage_mult, "slash", X)
@@ -297,7 +299,7 @@
 
 	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
+		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
@@ -330,80 +332,61 @@
 
 	healthcheck()
 
-/obj/vehicle/multitile/handle_click(mob/living/user, atom/A, list/mods)
+/obj/vehicle/multitile/on_set_interaction(mob/user)
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
+	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
+	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
 
-	var/seat
-	for(var/vehicle_seat in seats)
-		if(seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+/obj/vehicle/multitile/on_unset_interaction(mob/user)
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
-	if(istype(A, /atom/movable/screen) || !seat)
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
+	if(hardpoint)
+		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //abort fire when crew leaves
+
+/// Relays crew mouse release to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
 		return
 
-	if(seat == VEHICLE_DRIVER)
-		if(mods["shift"] && !mods["alt"])
-			A.examine(user)
-			return
+	hardpoint.stop_fire(source, object, location, control, params)
 
-		if(mods["ctrl"] && !mods["alt"])
-			activate_horn()
-			return
+/// Relays crew mouse movement to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
-		if(!HP.can_activate(user, A))
-			return
+/// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
 
-		HP.activate(user, A)
+	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+		return
 
-	if(seat == VEHICLE_GUNNER)
-		if(mods["shift"] && !mods["middle"])
-			if(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER)
-				shoot_other_weapon(user, seat, A)
-			else
-				A.examine(user)
-			return
-		if(mods["middle"] && !mods["shift"])
-			if(!(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
-				shoot_other_weapon(user, seat, A)
-			return
-		if(mods["alt"])
-			toggle_gyrostabilizer()
-			return
-		if(mods["ctrl"])
-			activate_support_module(user, seat, A)
-			return
+	var/seat = get_mob_seat(source)
+	switch(seat)
+		if(VEHICLE_DRIVER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				activate_horn()
+				return
+		if(VEHICLE_GUNNER)
+			if(modifiers[LEFT_CLICK] && modifiers[ALT_CLICK])
+				toggle_gyrostabilizer()
+				return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
 
-		if(!HP.can_activate(user, A))
-			return
-
-		HP.activate(user, A)
-
-	if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)
-		if(mods["shift"])
-			A.examine(user)
-			return
-		if(mods["middle"] || mods["alt"] || mods["ctrl"])
-			return
-
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
-
-		if(!HP.can_activate(user, A))
-			return
-
-		HP.activate(user, A)
+	hardpoint.start_fire(source, object, location, control, params)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null) return
@@ -439,9 +422,9 @@
 	else if(!entrance_used && !isxeno(M))
 		return
 
-	var/enter_msg = "You start climbing into \the [src]..."
+	var/enter_msg = "We start climbing into \the [src]..."
 	if(health <= 0 && isxeno(M))
-		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
+		enter_msg = "We start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything
 	var/atom/dragged_atom
@@ -526,7 +509,7 @@
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
 	else
 		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return

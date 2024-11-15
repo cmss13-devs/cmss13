@@ -1,17 +1,24 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
 //Nanu told me to put them here so they dont clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
-	paygrade = "ME5"
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
+	minimap_background = "background_forecon"
 	rank = JOB_SURVIVOR
-	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_CIVILIAN_LOGISTICS,
 	)
+
+	dress_shoes = list(/obj/item/clothing/shoes/dress)
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -65,10 +72,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BELT)
 		if(3 , 4)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/full/extended, WEAR_WAIST)
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human),WEAR_WAIST)
 
@@ -104,6 +108,7 @@
 	name = "Survivor - USCM Reconnaissance Marine"
 	assignment = JOB_FORECON_RIFLEMAN
 	skills = /datum/skills/military/survivor/forecon_standard
+	minimap_icon = "private"
 
 /datum/equipment_preset/survivor/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -118,6 +123,7 @@
 	name = "Survivor - USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
 	skills = /datum/skills/military/survivor/forecon_techician
+	minimap_icon = "engi"
 
 /datum/equipment_preset/survivor/forecon/tech/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
@@ -140,6 +146,7 @@
 	name = "Survivor - USCM Reconnaissance Designated Marksman"
 	assignment = JOB_FORECON_MARKSMAN
 	skills = /datum/skills/military/survivor/forecon_marksman
+	minimap_icon = "spec"
 
 /datum/equipment_preset/survivor/forecon/marksman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra_custom(new_human), WEAR_L_HAND)
@@ -156,6 +163,7 @@
 	name = "Survivor - USCM Reconnaissance Smartgunner"
 	assignment = JOB_FORECON_SMARTGUNNER
 	skills = /datum/skills/military/survivor/forecon_smartgunner
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -174,6 +182,7 @@
 	name = "Survivor - USCM Reconnaissance Sniper"
 	assignment = JOB_FORECON_SNIPER
 	skills = /datum/skills/military/survivor/forecon_sniper
+	minimap_icon = "spec"
 
 /datum/equipment_preset/survivor/forecon/sniper/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -208,7 +217,12 @@
 	name = "Survivor - USCM Reconnaissance Squad Leader"
 	assignment = JOB_FORECON_SL
 	skills = /datum/skills/military/survivor/forecon_squad_leader
-	paygrade = "MO1"
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "leader"
+
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/survivor/forecon/squad_leader/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -234,9 +248,15 @@
 	name = "Survivor - USCM Reconnaissance Major"
 	assignment = JOB_FORECON_CO
 	skills = /datum/skills/commander
-	paygrade = "MO4"
+	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
+	minimap_icon = "co"
+	minimap_background = "background_command"
+
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -264,7 +284,7 @@
 //----------------------\\
 
 /datum/equipment_preset/synth/survivor/forecon
-	name = "Survivor - USCM Synthetic"
+	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold

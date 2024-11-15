@@ -21,9 +21,9 @@
 	. = ..()
 
 	var/datum/supply_order/new_order = new()
-	new_order.ordernum = GLOB.supply_controller.ordernum
-	GLOB.supply_controller.ordernum++
-	new_order.object = GLOB.supply_controller.supply_packs["Encrypted Operational Nuke"]
+	new_order.ordernum = GLOB.supply_controller.ordernum++
+	var/actual_type = GLOB.supply_packs_types["Encrypted Operational Nuke"]
+	new_order.object = GLOB.supply_packs_datums[actual_type]
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 
@@ -36,10 +36,10 @@
 		return
 
 	if(ROUND_TIME < NUKE_UNLOCK_TIME)
-		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [Ceiling((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation."))
+		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [ceil((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation."))
 		return FALSE
 
 	return TRUE
 
 /datum/tech/nuke/proc/handle_description()
-	desc = "Purchase a nuclear device. Only purchasable [Ceiling((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation. It's the only way to be sure."
+	desc = "Purchase a nuclear device. Only purchasable [ceil((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation. It's the only way to be sure."

@@ -50,19 +50,20 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
-/datum/game_mode/proc/can_start()
-	var/playerC = 0
+/datum/game_mode/proc/can_start(bypass_checks = FALSE)
+	if(bypass_checks)
+		return TRUE
+	var/players = 0
 	for(var/mob/new_player/player in GLOB.new_player_list)
-		if((player.client)&&(player.ready))
-			playerC++
-
-	if(GLOB.master_mode=="secret")
-		if(playerC >= required_players_secret)
-			return 1
+		if(player.client && player.ready)
+			players++
+	if(GLOB.master_mode == "secret")
+		if(players >= required_players_secret)
+			return TRUE
 	else
-		if(playerC >= required_players)
-			return 1
-	return 0
+		if(players >= required_players)
+			return TRUE
+	return FALSE
 
 
 ///pre_setup()
@@ -107,7 +108,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	log_game("Round started at [time2text(world.realtime)]")
 	log_game("Operation time at round start is [worldtime2text()]")
 	if(SSticker.mode)
-		log_game("Game mode set to [SSticker.mode]")
+		log_game("Game mode set to [SSticker.mode] on the [SSmapping.configs[GROUND_MAP].map_name] map")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
 

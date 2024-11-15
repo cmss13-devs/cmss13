@@ -179,9 +179,6 @@
 /obj/structure/inflatable/door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
 		return
-	else if(isrobot(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
@@ -262,6 +259,7 @@
 /obj/item/storage/briefcase/inflatable
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "inf_box"
 	item_state = "syringe_kit"
 	max_storage_space = 21

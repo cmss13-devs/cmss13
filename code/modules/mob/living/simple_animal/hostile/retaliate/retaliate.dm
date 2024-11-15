@@ -13,7 +13,7 @@
 			enemies -= L
 
 /mob/living/simple_animal/hostile/retaliate/ListTargets()
-	if(!enemies.len)
+	if(!length(enemies))
 		return list()
 	var/list/see = ..()
 	see &= enemies // Remove all entries that aren't in enemies
@@ -27,7 +27,7 @@
 			continue
 		if(isliving(A))
 			var/mob/living/M = A
-			if(!attack_same && M.faction != faction)
+			if(evaluate_target(M))
 				enemies |= M
 
 	for(var/mob/living/simple_animal/hostile/retaliate/H in around)
@@ -35,6 +35,7 @@
 			H.enemies |= enemies
 	return 0
 
-/mob/living/simple_animal/hostile/retaliate/adjustBruteLoss(damage)
-	..(damage)
+/mob/living/simple_animal/hostile/retaliate/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
 	Retaliate()
+	return ..()
+

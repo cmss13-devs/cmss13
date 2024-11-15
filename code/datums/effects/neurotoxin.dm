@@ -37,6 +37,10 @@
 		return FALSE
 	if(affected_mob.stat == DEAD)
 		return
+
+	if(issynth(affected_atom))
+		return
+	
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
@@ -83,12 +87,12 @@
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
 	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
-		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
+		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
 		affected_mob.apply_damage(2,TOX)
-		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, round(strength*1.5))) //Paralysis of hearing system, aka deafness
+		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")
@@ -150,7 +154,7 @@
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination
-			playsound_client(victim.client,pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"))
+			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
 
 
 

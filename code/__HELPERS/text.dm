@@ -30,6 +30,11 @@
 		text = replacetext(text, char, repl_chars[char])
 	return text
 
+///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
+/proc/replace_non_alphanumeric_plus(text)
+	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
+	return alphanumeric.Replace(text, "")
+
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
@@ -194,6 +199,24 @@
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 
+	return ""
+
+//Returns a string with reserved characters and spaces after the first and last letters removed
+//Like trim(), but very slightly faster. worth it for niche usecases
+/proc/trim_reduced(text)
+	var/starting_coord = 1
+	var/text_len = length(text)
+	for (var/i in 1 to text_len)
+		if (text2ascii(text, i) > 32)
+			starting_coord = i
+			break
+
+	for (var/i = text_len, i >= starting_coord, i--)
+		if (text2ascii(text, i) > 32)
+			return copytext(text, starting_coord, i + 1)
+
+	if(starting_coord > 1)
+		return copytext(text, starting_coord)
 	return ""
 
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
@@ -376,3 +399,7 @@
 		if(.)
 			return
 	return 0
+
+/// Check if the string `haystack` begins with the string `needle`.
+/proc/string_starts_with(haystack, needle)
+	return (copytext(haystack, 1, length(needle) + 1) == needle)

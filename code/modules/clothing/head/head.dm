@@ -81,9 +81,22 @@
 /obj/item/clothing/head/beret/cm/black
 	icon_state = "beret_black"
 
+/obj/item/clothing/head/beret/cm/green
+	icon_state = "beret_green"
+
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
+
+/obj/item/clothing/head/beret/cm/white/civilian
+	name = "White Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "s_beret"
+
+/obj/item/clothing/head/beret/cm/black/civilian
+	name = "Black Beret"
+	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "beret_black"
 
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
@@ -247,8 +260,11 @@
 						/obj/item/clothing/glasses/mgoggles = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/black/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/orange/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/v2/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
@@ -410,10 +426,8 @@
 /obj/item/clothing/head/cmcap/reporter
 	name = "combat correspondent cap"
 	desc = "A faithful cap for any terrain war correspondents may find themselves in."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_flagcap"
-	item_state = "wc_flagcap"
-	contained_sprite = TRUE
+	icon_state = "cc_flagcap"
+	item_state = "cc_flagcap"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
@@ -474,6 +488,10 @@
 	name = "\improper USCM senior provost beret"
 	icon_state = "coblackberet"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+
+/obj/item/clothing/head/beret/marine/mp/provost/chief
+	name = "\improper USCM provost command beret"
+	icon_state = "pvciberet"
 
 /obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
@@ -562,6 +580,15 @@
 	name = "logistics officer beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
 	icon_state = "beret_badge"
+
+/obj/item/clothing/head/beret/marine/ro
+	name = "\improper USCM quartermaster beret"
+	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "ro_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\

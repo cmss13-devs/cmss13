@@ -1,5 +1,5 @@
 GLOBAL_LIST_EMPTY(gear_datums_by_category)
-GLOBAL_LIST_EMPTY(gear_datums_by_name)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /proc/populate_gear_list()
 	var/datum/gear/G
@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear
 	var/display_name  // Name/index.
 	var/category //Used for sorting in the loadout selection.
-	var/path  // Path to item.
+	var/obj/item/path  // Path to item.
 	var/cost = 2 // Number of points used.
 	var/slot // Slot to equip to, if any.
 	var/list/allowed_roles   // Roles that can spawn with this item.
@@ -58,17 +58,30 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Ballistic goggles, black"
 	path = /obj/item/clothing/glasses/mgoggles/black
 
+/datum/gear/eyewear/goggles_black/prescription
+	display_name = "Prescription ballistic goggles, black"
+	path = /obj/item/clothing/glasses/mgoggles/black/prescription
+
 /datum/gear/eyewear/goggles_orange
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
+
+/datum/gear/eyewear/goggles_orange/prescription
+	display_name = "Prescription ballistic goggles, orange"
+	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
 
 /datum/gear/eyewear/goggles2
 	display_name = "Ballistic goggles, M1A1"
 	path = /obj/item/clothing/glasses/mgoggles/v2
 
+/datum/gear/eyewear/goggles2/prescription
+	display_name = "Prescription ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
+
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
+	cost = 5
 
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
@@ -161,14 +174,14 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM balaclava, tan"
 	path = /obj/item/clothing/mask/rebreather/scarf/tan
 
-/datum/gear/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
+/datum/gear/mask/uscm/skull_balaclava_blue
+	display_name = "USCM balaclava, blue skull"
 	path = /obj/item/clothing/mask/rebreather/skull
 	cost = 4 //same as skull facepaint
 	slot = WEAR_FACE
 
-/datum/gear/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
+/datum/gear/mask/uscm/skull_balaclava_black
+	display_name = "USCM balaclava, black skull"
 	path = /obj/item/clothing/mask/rebreather/skull/black
 	cost = 4
 	slot = WEAR_FACE
@@ -215,7 +228,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 
 /datum/gear/headwear/uscm/beret_green
 	display_name = "USCM beret, green"
-	path = /obj/item/clothing/head/beret/cm
+	path = /obj/item/clothing/head/beret/cm/green
 
 /datum/gear/headwear/uscm/beret_tan
 	display_name = "USCM beret, tan"
@@ -503,6 +516,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Card, Uno Reverse - yellow"
 	path = /obj/item/toy/handcard/uno_reverse_yellow
 
+/datum/gear/toy/card/trading_card
+	display_name = "Card, random WeyYu Trading"
+	path = /obj/item/toy/trading_card
+
 /datum/gear/toy/deck
 	display_name = "Deck of cards, regular"
 	path = /obj/item/toy/deck
@@ -510,6 +527,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/toy/deck/uno
 	display_name = "Deck of cards, Uno"
 	path = /obj/item/toy/deck/uno
+
+/datum/gear/toy/trading_card
+	display_name = "Trading Card Packet"
+	path = /obj/item/storage/fancy/trading_card
 
 /datum/gear/toy/d6
 	display_name = "Die, 6 sides"
@@ -526,6 +547,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/toy/crayon
 	display_name = "Crayon"
 	path = /obj/item/toy/crayon/rainbow
+
+/datum/gear/toy/pride
+	display_name = "Box of Prideful Crayons"
+	path = /obj/item/storage/box/pride
 
 /datum/gear/plush
 	category = "Plushies"
@@ -863,6 +888,14 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Lighter, zippo"
 	path = /obj/item/tool/lighter/zippo
 
+/datum/gear/smoking/zippo/black
+	display_name = "Black lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/black
+
+/datum/gear/smoking/zippo/blue
+	display_name = "Blue lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/blue
+
 /datum/gear/smoking/electronic_cigarette
 	display_name = "Electronic cigarette"
 	path = /obj/item/clothing/mask/electronic_cigarette
@@ -888,10 +921,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Facepaint, black"
 	path = /obj/item/facepaint/black
 
-/datum/gear/skullfacepaint
-	display_name = "Skull Facepaint"
+/datum/gear/misc/facepaint_skull
+	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
-	cost = 3 
+	cost = 3
 
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
@@ -922,6 +955,13 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "USCM issue sunscreen"
 	path = /obj/item/facepaint/sunscreen_stick
 	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/misc/dogtags
+	display_name = "Attachable Dogtags"
+	path = /obj/item/clothing/accessory/dogtags
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm

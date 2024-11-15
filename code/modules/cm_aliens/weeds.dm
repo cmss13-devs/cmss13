@@ -58,9 +58,9 @@
 	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
-			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
-			RGB[2] = Clamp(RGB[2] + 35, 0, 255)
-			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
+			RGB[1] = clamp(RGB[1] + 35, 0, 255)
+			RGB[2] = clamp(RGB[2] + 35, 0, 255)
+			RGB[3] = clamp(RGB[3] + 35, 0, 255)
 			color = rgb(RGB[1], RGB[2], RGB[3])
 		else
 			color = "#a1a1a1"
@@ -85,6 +85,10 @@
 	), PROC_REF(set_turf_weeded))
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	var/area/area = get_area(src)
+	if(area && area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER
@@ -123,7 +127,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak
-	name = "weak resin node"
+	name = "weak weed node"
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
@@ -186,7 +190,7 @@
 	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEED_SLOWDOWN, slowdata, src)
 	var/final_slowdown = slowdata["movement_slowdown"]
 
-	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
+	crossing_mob.next_move_slowdown = max(crossing_mob.next_move_slowdown, POSITIVE(final_slowdown))
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
@@ -230,7 +234,7 @@
 
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
-			if(W.indestructible)
+			if(W.explo_proof)
 				continue
 			else if(W.weed_strength >= WEED_LEVEL_HIVE)
 				continue
@@ -352,12 +356,12 @@
 		overlays += secretion
 
 /obj/effect/alien/weeds/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
-	if(!indestructible && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
+	if(!explo_proof && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
 		attacking_xeno.animation_attack_on(src)
 		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
@@ -366,7 +370,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
-	if(indestructible)
+	if(explo_proof)
 		return FALSE
 
 	if(QDELETED(attacking_item) || QDELETED(user) || (attacking_item.flags_item & NOBLUDGEON))
@@ -377,7 +381,7 @@
 	else
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
 
-	var/damage = attacking_item.force / 3
+	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
 	playsound(loc, "alien_resin_break", 25)
 
 	if(iswelder(attacking_item))
@@ -395,7 +399,7 @@
 	return TRUE //don't call afterattack
 
 /obj/effect/alien/weeds/proc/take_damage(damage)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	health -= damage
@@ -403,7 +407,7 @@
 		deconstruct(FALSE)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	. = ..()
@@ -411,7 +415,7 @@
 		QDEL_IN(src, rand(1 SECONDS, 2 SECONDS)) // 1-2 seconds
 
 /obj/effect/alien/weeds/acid_spray_act()
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	. = ..()
@@ -469,7 +473,7 @@
 
 
 /obj/effect/alien/weeds/node
-	name = "resin node"
+	name = "weed node"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading
@@ -624,7 +628,7 @@
 	return
 
 /obj/effect/alien/weeds/node/pylon/cluster
-	spread_on_semiweedable = FALSE
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	if(!resin_parent)

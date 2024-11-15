@@ -25,10 +25,10 @@
 
 	X.emote("roar")
 	L.apply_effect(2, WEAKEN)
-	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
+	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("We brutalize [H] as we crush them underfoot!"))
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
-	xeno_throw_human(H, X, X.dir, 3)
+	X.throw_carbon(H, X.dir, 3)
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
 	return
@@ -37,7 +37,7 @@
 	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -51,7 +51,7 @@
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -62,7 +62,7 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -82,7 +82,7 @@
 
 // This ties the pounce/throwing backend into the old collision backend
 /mob/living/carbon/xenomorph/crusher/pounced_obj(obj/O)
-	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_action(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
 
@@ -110,7 +110,7 @@
 		return
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
-	X.visible_message(SPAN_XENODANGER("[X] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
+	X.visible_message(SPAN_XENODANGER("[X] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
 	X.create_stomp()
 
 	for (var/mob/living/carbon/H in get_turf(X))
@@ -154,7 +154,7 @@
 		return
 
 	playsound(get_turf(Xeno), 'sound/effects/bang.ogg', 25, 0)
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
 	Xeno.create_stomp()
 
 	for (var/mob/living/carbon/Human in get_turf(Xeno)) // MOBS ONTOP
@@ -199,7 +199,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("You hunker down and bolster your defenses!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("We hunker down and bolster our defenses!"))
 	button.icon_state = "template_active"
 
 	xeno.create_crusher_shield()
@@ -223,7 +223,7 @@
 
 	xeno.explosivearmor_modifier -= 1000
 	xeno.recalculate_armor()
-	to_chat(xeno, SPAN_XENODANGER("Your immunity to explosion damage ends!"))
+	to_chat(xeno, SPAN_XENODANGER("Our immunity to explosion damage ends!"))
 
 /datum/action/xeno_action/onclick/crusher_shield/proc/remove_shield()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -239,7 +239,7 @@
 	if (istype(found))
 		found.on_removal()
 		qdel(found)
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your enhanced shield end!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
 		button.icon_state = "template"
 
 	xeno.overlay_shields()
@@ -249,7 +249,7 @@
 
 	activated = !activated
 	var/will_charge = "[activated ? "now" : "no longer"]"
-	to_chat(Xeno, SPAN_XENONOTICE("You will [will_charge] charge when moving."))
+	to_chat(Xeno, SPAN_XENONOTICE("We will [will_charge] charge when moving."))
 	if(activated)
 		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
 		RegisterSignal(Xeno, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_position_change))
@@ -294,7 +294,7 @@
 	if(!target_dir)
 		return
 
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("You tumble over to the side!"))
+	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
 	Xeno.spin(5,1) // note: This spins the sprite and DOES NOT affect directional armor
 	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
 	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)
@@ -302,17 +302,11 @@
 	playsound(Xeno,"alien_tail_swipe", 50, 1)
 
 	Xeno.use_plasma(plasma_cost)
-	var/datum/launch_metadata/LM = new()
-	LM.target = get_step(get_step(Xeno, target_dir), target_dir)
-	LM.range = target_dist
-	LM.speed = SPEED_FAST
-	LM.thrower = Xeno
-	LM.spin = FALSE
-	LM.pass_flags = PASS_CRUSHER_CHARGE
-	LM.collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
-	LM.end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
 
-	Xeno.launch_towards(LM)
+	var/target = get_step(get_step(Xeno, target_dir), target_dir)
+	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
+	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
 
 	apply_cooldown()
 	return ..()

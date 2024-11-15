@@ -218,6 +218,32 @@
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
 
+// Dropship lights that use no power
+/obj/structure/machinery/light/dropship
+	use_power = USE_POWER_IDLE
+	active_power_usage = 0
+	brightness = 8
+
+/obj/structure/machinery/light/dropship/has_power()
+	return TRUE
+
+/obj/structure/machinery/light/dropship/set_pixel_location()
+	pixel_x = pixel_y = 0
+
+/obj/structure/machinery/light/dropship/green
+	icon_state = "gtube1"
+	base_state = "gtube"
+	desc = "A lighting fixture that is fitted with a bright green fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
+
+/obj/structure/machinery/light/dropship/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright red fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
+
+/obj/structure/machinery/light/dropship/blue
+	icon_state = "btube1"
+	base_state = "btube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles"
 
 /obj/structure/machinery/light/built/Initialize()
 	. = ..()
@@ -252,17 +278,15 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 23
+					pixel_y = 6
 				if(EAST)
-					pixel_x = 10
+					pixel_x = 6
 				if(WEST)
-					pixel_x = -10
+					pixel_x = -4
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 10
-				if(SOUTH)
-					pixel_y = -10
+					pixel_y = 23
 				if(EAST)
 					pixel_x = 10
 				if(WEST)
@@ -390,7 +414,7 @@
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
 
 
-		if(prob(1+W.force * 5))
+		if(prob(1+W.force * W.demolition_mod * 5))
 
 			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M as anything in viewers(src))
@@ -530,7 +554,7 @@
 
 	L.update()
 
-	if(user.put_in_active_hand(L)) //succesfully puts it in our active hand
+	if(user.put_in_active_hand(L)) //successfully puts it in our active hand
 		L.add_fingerprint(user)
 	else
 		L.forceMove(loc) //if not, put it on the ground

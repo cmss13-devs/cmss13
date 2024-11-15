@@ -17,7 +17,7 @@
 			return
 
 		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("You start to gather your acid for a massive blast!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
@@ -29,7 +29,7 @@
 		var/range = base_range + stacks*range_per_stack
 		var/damage = base_damage + stacks*damage_per_stack
 		var/turfs_visited = 0
-		for (var/turf/turf in getline2(get_turf(xeno), affected_atom))
+		for (var/turf/turf in get_line(get_turf(xeno), affected_atom))
 			if(turf.density || turf.opacity)
 				break
 
@@ -54,8 +54,8 @@
 
 			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("You fire a massive blast of acid at [affected_atom]!"))
-		remove_stack_effects("You feel your speed return to normal!")
+		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
+		remove_stack_effects("We feel our speed return to normal!")
 		return TRUE
 
 /datum/action/xeno_action/activable/acid_lance/proc/stack()
@@ -74,7 +74,7 @@
 		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
 		return
 	else
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You have charged your acid lance to maximum!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We have charged our acid lance to maximum!"))
 		return
 
 /datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
@@ -97,7 +97,7 @@
 /datum/action/xeno_action/activable/acid_lance/proc/timeout()
 	if (activated_once)
 		activated_once = FALSE
-		remove_stack_effects("You have waited too long and can no longer use your acid lance!")
+		remove_stack_effects("We have waited too long and can no longer use our acid lance!")
 
 
 /datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
@@ -108,7 +108,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)
-			var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
 			if (!istype(xeno_action))
 				continue
 
@@ -132,7 +132,7 @@
 		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
 
 	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
-		to_chat(xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
+		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our gas shroud."))
 		return
 
 	playsound(xeno,"acid_sizzle", 50, 1)
@@ -146,10 +146,10 @@
 	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
 	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
-	to_chat(xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
 
 	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
 		if (!istype(xeno_action))
 			continue
 
@@ -177,7 +177,7 @@
 		return
 
 	if (!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
-		to_chat(xeno, SPAN_XENODANGER("You cannot see that location!"))
+		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -218,11 +218,11 @@
 		empowered = FALSE
 		empowering_charge_counter = 0
 		button.overlays -= "+empowered"
-		var/datum/action/xeno_action/activable/acid_mine/mine = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/acid_mine)
+		var/datum/action/xeno_action/activable/acid_mine/mine = get_action(xeno, /datum/action/xeno_action/activable/acid_mine)
 		if(!mine.empowered)
 			mine.empowered = TRUE
 			mine.button.overlays += "+empowered"
-			to_chat(xeno, SPAN_XENODANGER("You tap in your reserves to prepare a stronger [mine.name]!"))
+			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
 	return ..()
@@ -254,7 +254,7 @@
 	if(empowered)
 		acid_bolt_message = "a powerful bolt of acid"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
 
 	for (var/turf/target_turf in orange(1, turf))
@@ -278,7 +278,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("You fire a blast of acid at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))

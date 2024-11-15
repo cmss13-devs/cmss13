@@ -68,16 +68,8 @@
 
 	message_admins("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
 
-	var/mob/new_player/NP = new()
-
-	if(!target.mind)
-		target.mind_initialize()
-
-	target.mind.transfer_to(NP)
-
-	qdel(target)
+	target.send_to_lobby()
 	return TRUE
-
 
 /datum/player_action/force_say
 	action_tag = "mob_force_say"

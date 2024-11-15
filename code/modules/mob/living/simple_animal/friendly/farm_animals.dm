@@ -39,10 +39,10 @@
 	. = ..()
 	if(.)
 		//chance to go crazy and start wacking stuff
-		if(!enemies.len && prob(1))
+		if(!length(enemies) && prob(1))
 			Retaliate()
 
-		if(enemies.len && prob(10))
+		if(length(enemies) && prob(10))
 			enemies = list()
 			LoseTarget()
 			src.visible_message(SPAN_NOTICE("[src] calms down."))
@@ -83,7 +83,7 @@
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("The [O] is full."))
+			to_chat(user, SPAN_DANGER("[O] is full."))
 		if(!transfered)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else

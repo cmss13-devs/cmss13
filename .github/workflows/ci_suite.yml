@@ -63,30 +63,16 @@ jobs:
 
   odlint:
     name: Lint with OpenDream
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - name: Get OpenDream Version
-        run: |
-          source dependencies.sh
-          echo "OPENDREAM_VERSION=$OPENDREAM_VERSION" >> $GITHUB_ENV
-      - name: Restore OpenDream cache
-        uses: actions/cache@v3
-        id: cache-od
+      - uses: actions/checkout@v4
+      - uses: robinraju/release-downloader@v1.9
         with:
-          path: ~/OpenDream
-          key: ${{ runner.os }}-opendream-${{ env.OPENDREAM_VERSION }}
-      - name: Download OpenDream
-        if: steps.cache-od.outputs.cache-hit != 'true'
-        run: |
-          bash tools/ci/download_od.sh
-      - name: Setup OpenDream
-        if: steps.cache-od.outputs.cache-hit != 'true'
-        run: |
-          bash tools/ci/setup_od.sh
-      - name: Run OpenDream
-        run: |
-          bash tools/ci/run_od.sh
+          repository: "OpenDreamProject/OpenDream"
+          tag: "latest"
+          fileName: "DMCompiler_linux-x64.tar.gz"
+          extract: true
+      - run: ./DMCompiler_linux-x64/DMCompiler --suppress-unimplemented colonialmarines.dme
 
   compile_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"

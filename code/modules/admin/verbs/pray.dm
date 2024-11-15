@@ -12,26 +12,25 @@
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return
 
-	var/liaison = 0
-	if(job == "Corporate Liaison")
-		liaison = 1
+	var/prefix = SPAN_PURPLE("PRAY: ")
+	var/receipt = "Your prayers have been received by the gods."
+	if(job == JOB_CORPORATE_LIAISON)
+		prefix = SPAN_PURPLE("LIAISON: ")
+		receipt = "Your corporate overlords at Weyland-Yutani have received your message."
 
-	if(liaison)
-		msg = SPAN_STAFF_IC("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
-	else
-		msg = SPAN_STAFF_IC("<b><font color=purple>PRAY: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
+	msg = SPAN_BIGNOTICE("[prefix][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]")
 	log_admin(msg)
-	for(var/client/C in GLOB.admins)
-		if(AHOLD_IS_MOD(C.admin_holder) && C.prefs.toggles_chat & CHAT_PRAYER)
-			to_chat(C, msg)
-	if(liaison)
-		to_chat(usr, "Your corporate overlords at Weyland-Yutani have received your message.")
-	else
-		to_chat(usr, "Your prayers have been received by the gods.")
+	for(var/client/admin in GLOB.admins)
+		if(AHOLD_IS_MOD(admin.admin_holder))
+			to_chat(admin, SPAN_STAFF_IC(msg))
+			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
+				admin << 'sound/machines/terminal_alert.ogg'
+
+	to_chat(usr, receipt)
 
 /proc/high_command_announce(text , mob/Sender , iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
-	msg = "<b>[SPAN_STAFF_IC("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] [CC_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [CC_REPLY(Sender)]:</b> [msg]"
+	msg = "<b><big>[SPAN_STAFF_IC("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] [CC_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [CC_REPLY(Sender)]: [msg]</big></b>"
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)

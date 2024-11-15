@@ -73,13 +73,13 @@
 				M.track_friendly_fire(initial(O.name))
 		var/client/assailant = M.client
 		if(assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				if(src.loc)
-					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 				else
-					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, M)
 
@@ -174,7 +174,7 @@
 	switch(fire_reagent.fire_type)
 		if(FIRE_VARIANT_TYPE_B)
 			max_stacks = 10 //Armor Shredding Greenfire caps at 1 resist/pat
-	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
+	fire_stacks = clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()

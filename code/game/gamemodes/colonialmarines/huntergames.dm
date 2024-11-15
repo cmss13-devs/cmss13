@@ -1,7 +1,7 @@
 #define HUNTER_BEST_ITEM  pick(\
 								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
 								100; list(/obj/item/weapon/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
-								50; list(/obj/item/weapon/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
+								50; list(/obj/item/weapon/yautja/chained/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
 								50; list(/obj/item/clothing/under/marine/veteran/pmc/commando, /obj/item/clothing/suit/storage/marine/veteran/pmc/commando, /obj/item/clothing/gloves/marine/veteran/pmc/commando, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/commando), \
 								125; list(/obj/item/weapon/yautja/chain, /obj/item/weapon/yautja/knife, /obj/item/weapon/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
@@ -212,10 +212,10 @@
 	var/mob/living/carbon/human/H
 	var/turf/picked
 
-	if(GLOB.hunter_primaries.len)
+	if(length(GLOB.hunter_primaries))
 		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
 	else
-		if(GLOB.hunter_secondaries.len)
+		if(length(GLOB.hunter_secondaries))
 			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
 			message_admins("There were no spawn points available for a contestant.")
@@ -226,7 +226,7 @@
 
 	if(istype(M,/mob/living/carbon/human)) //somehow?
 		H = M
-		if(H.contents.len)
+		if(length(H.contents))
 			for(var/obj/item/I in H.contents)
 				qdel(I)
 		H.forceMove(picked)
@@ -244,7 +244,8 @@
 
 	H.skills = null //no restriction on what the contestants can do
 
-	H.apply_effect(15, WEAKEN)
+	H.KnockDown(15)
+	H.Stun(15)
 	H.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)
@@ -314,7 +315,7 @@
 			last_drop = world.time
 			waiting_for_drop_votes = 1
 			sleep(600)
-			if(!supply_votes.len)
+			if(!length(supply_votes))
 				to_world(SPAN_ROUNDBODY("Nobody got anything! .. weird."))
 				waiting_for_drop_votes = 0
 				supply_votes = list()

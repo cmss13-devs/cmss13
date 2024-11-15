@@ -176,12 +176,12 @@
 	if(src != user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)) // level 2 is enough to repair damaged NVG
 		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
 		return
 
 	if(shape == NVG_SHAPE_BROKEN)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 3 is needed to repair broken NVG
 			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
 			return
 
@@ -204,7 +204,7 @@
 			to_chat(user, SPAN_WARNING("Nothing to fix."))
 		else if(shape == NVG_SHAPE_COSMETIC)
 
-			to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
+			to_chat(user, SPAN_WARNING("It's nothing but a husk of what it used to be."))
 
 	else
 		to_chat(user, "You begin to repair \the [src].")
@@ -450,6 +450,9 @@
 	shape = NVG_SHAPE_COSMETIC
 	garbage = TRUE
 
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno)
+	return
+
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"
 	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
@@ -495,6 +498,30 @@
 	name = "\improper M5 integrated gasmask"
 	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
 	icon_state = "helmet_gasmask"
+
+/obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/helmet_internal_inventory)
+	..()
+	if(!istype(helmet_internal_inventory))
+		return
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+
+	if(!istype(helmet_item))
+		return
+
+	helmet_item.flags_inventory |= BLOCKGASEFFECT
+	helmet_item.flags_inv_hide |= HIDEFACE
+
+/obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/helmet_internal_inventory)
+	..()
+	if(!istype(helmet_internal_inventory))
+		return
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+
+	if(!istype(helmet_item))
+		return
+
+	helmet_item.flags_inventory &= ~(BLOCKGASEFFECT)
+	helmet_item.flags_inv_hide &= ~(HIDEFACE)
 
 /obj/item/prop/helmetgarb/trimmed_wire
 	name = "trimmed barbed wire"
@@ -577,6 +604,13 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "compass"
 	w_class = SIZE_SMALL
+
+/obj/item/prop/helmetgarb/compass/get_examine_text(mob/user)
+	. = ..()
+	if(is_ground_level(user.z) && !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE])
+		. += SPAN_NOTICE("It seems you are facing [dir2text(user.dir)].")
+		return
+	. += SPAN_NOTICE("The needle is not moving.")
 
 /obj/item/prop/helmetgarb/bug_spray
 	name = "insect repellent"

@@ -16,7 +16,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	w_class = SIZE_MEDIUM
 	blood_overlay_type = "uniform"
-	var/sensor_faction = FACTION_MARINE
 	var/has_sensor = UNIFORM_HAS_SENSORS // For the crew computer
 	var/sensor_mode = SENSOR_MODE_LOCATION
 		/*
@@ -326,7 +325,7 @@
 		return
 	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
 	if(user.head && !istype(user.head, hood_state))
-		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head]!"))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing [user.head]!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_CLOTHING_HOOD))

@@ -58,6 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
+	if(istype(A, /obj/item/storage/pill_bottle))		
+		var/obj/item/storage/pill_bottle/target_pill_bottle = A
+		target_pill_bottle.choose_color(user)
+	
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
@@ -132,7 +136,7 @@
 			qdel(I) //delete the paper item
 			labels_left = initial(labels_left)
 		else
-			to_chat(user, SPAN_NOTICE("The [src] is already full."))
+			to_chat(user, SPAN_NOTICE("[src] is already full."))
 
 /*
 	Instead of updating labels_left to user every label used,
@@ -161,7 +165,7 @@
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
 	/// what color the ink is!
-	var/pen_colour = "black"
+	var/pen_color = "black"
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -180,7 +184,7 @@
 /obj/item/tool/pen/proc/update_pen_state()
 	overlays.Cut()
 	if(on)
-		overlays += "+[pen_colour]_tip"
+		overlays += "+[pen_color]_tip"
 
 /obj/item/tool/pen/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -246,7 +250,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	pen_colour = "blue"
+	pen_color = "blue"
 
 /obj/item/tool/pen/blue/clicky
 	desc = "It's a WY brand extra clicky blue ink pen."
@@ -255,7 +259,7 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	pen_colour = "red"
+	pen_color = "red"
 
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
@@ -264,7 +268,7 @@
 
 /obj/item/tool/pen/green
 	desc = "It's a normal green ink pen."
-	pen_colour = "green"
+	pen_color = "green"
 
 /obj/item/tool/pen/green/clicky
 	desc = "It's a WY brand extra clicky green ink pen."
@@ -273,7 +277,7 @@
 
 /obj/item/tool/pen/invisible
 	desc = "It's an invisible pen marker."
-	pen_colour = "white"
+	pen_color = "white"
 
 /obj/item/tool/pen/fountain
 	desc = "A lavish testament to the ingenuity of ARMAT's craftsmanship, this fountain pen is a paragon of design and functionality. Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility."
@@ -282,8 +286,8 @@
 	icon_state = "fountain_pen"
 	item_state = "fountain_pen"
 	matter = list("metal" = 20, "gold" = 10)
-	var/static/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
-	var/current_colour_index = 1
+	var/static/list/color_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
+	var/current_color_index = 1
 	var/owner_name
 
 /obj/item/tool/pen/fountain/pickup(mob/user, silent)
@@ -305,9 +309,9 @@
 
 /obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)
 	if(on)
-		current_colour_index = (current_colour_index % length(colour_list)) + 1
-		pen_colour = colour_list[current_colour_index]
-		balloon_alert(user,"you twist the pen and change the ink color to [pen_colour].")
+		current_color_index = (current_color_index % length(color_list)) + 1
+		pen_color = color_list[current_color_index]
+		balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
 		if(clicky)
 			playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
 		update_pen_state()
@@ -414,6 +418,10 @@
 /obj/item/tool/stamp/denied
 	name = "\improper DENIED rubber stamp"
 	icon_state = "stamp-deny"
+
+/obj/item/tool/stamp/approved
+	name = "\improper APPROVED rubber stamp"
+	icon_state = "stamp-approve"
 
 /obj/item/tool/stamp/clown
 	name = "clown's rubber stamp"

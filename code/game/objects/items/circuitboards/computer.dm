@@ -26,6 +26,12 @@
 	if (..(C))
 		network = C.network
 
+/obj/item/circuitboard/computer/cameras/tv
+	name = "Circuit board (Television Set)"
+	build_path = /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
+	network = list(CAMERA_NET_CORRESPONDENT)
+	req_access = list()
+
 /obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
 	build_path = /obj/structure/machinery/computer/cameras/engineering
@@ -174,7 +180,7 @@
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 				return
 			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
@@ -279,7 +285,7 @@
 			return
 		var/list/tempnetwork = splittext(input, ",")
 		tempnetwork = difflist(tempnetwork,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
-		if(tempnetwork.len < 1)
+		if(length(tempnetwork) < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return
 		network = tempnetwork
@@ -287,14 +293,12 @@
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-		user.visible_message(SPAN_NOTICE("\the [user] adjusts the jumper on the [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
+		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/structure/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/robotics
-			to_chat(user, SPAN_NOTICE(" Access protocols set to robotics."))
+			to_chat(user, SPAN_NOTICE("Access protocols set to robotics."))
 		else
 			src.name = "Circuit Board (RD Console)"
 			src.build_path = /obj/structure/machinery/computer/rdconsole/core
-			to_chat(user, SPAN_NOTICE(" Access protocols set to default."))
-
-
+			to_chat(user, SPAN_NOTICE("Access protocols set to default."))

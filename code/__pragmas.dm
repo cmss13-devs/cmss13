@@ -12,7 +12,6 @@
 #pragma SoftReservedKeyword error
 #pragma DuplicateVariable error
 #pragma DuplicateProcDefinition error
-#pragma TooManyArguments error
 #pragma PointlessParentCall error
 #pragma PointlessBuiltinCall error
 #pragma SuspiciousMatrixCall error
@@ -22,6 +21,10 @@
 #pragma InvalidOverride error
 #pragma DanglingVarType error
 #pragma MissingInterpolatedExpression error
+#pragma InvalidIndexOperation error
+#pragma PointlessPositionalArgument error
+#pragma ProcArgumentGlobal error
 
 //3000-3999
 #pragma EmptyBlock error
+#pragma AmbiguousInOrder error

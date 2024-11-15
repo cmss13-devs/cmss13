@@ -23,7 +23,7 @@
 	faction = temp_list[faction]
 
 	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occured, [faction] category is not found.")
+		to_chat(usr, "Error has occurred, [faction] category is not found.")
 		return
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
@@ -41,6 +41,23 @@
 	message_admins("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
 
 	CEI.handle_event_info_update(faction)
+
+/client/proc/get_whitelisted_clients()
+	set name = "Find Whitelisted Players"
+	set category = "Admin.Events"
+	if(!admin_holder)
+		return
+	
+	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+
+	var/list/ckeys = list()
+	for(var/client/test_client in GLOB.clients)
+		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
+			ckeys += test_client.ckey
+	if(!length(ckeys))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		return
+	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
@@ -81,6 +98,8 @@
 
 /client/proc/handle_bomb_drop(atom/epicenter)
 	var/custom_limit = 5000
+	var/power_warn_threshold = 500
+	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
@@ -113,6 +132,11 @@
 
 			if(power > custom_limit)
 				return
+
+			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
+				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
+					return
+
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
 			message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_admins("[ckey] used 'Drop Bomb' at [epicenter.loc].")
@@ -217,18 +241,15 @@
 
 	if(!istype(chosen_ert))
 		return
+	var/quiet_launch = TRUE
+	var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(ql_prompt == "Yes")
+		quiet_launch = FALSE
 
-	var/launch_broadcast = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-	if(launch_broadcast == "Yes")
-		launch_broadcast = TRUE
-	else
-		launch_broadcast = FALSE
-
-	var/announce_receipt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
-	if(announce_receipt == "Yes")
+	var/announce_receipt = FALSE
+	var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+	if(ar_prompt == "Yes")
 		announce_receipt = TRUE
-	else
-		announce_receipt = FALSE
 
 	var/turf/override_spawn_loc
 	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
@@ -238,7 +259,7 @@
 	if(prompt == "Current Location")
 		override_spawn_loc = get_turf(usr)
 
-	chosen_ert.activate(quiet_launch = launch_broadcast, announce_incoming = announce_receipt, override_spawn_loc = override_spawn_loc)
+	chosen_ert.activate(quiet_launch, announce_receipt, override_spawn_loc)
 
 	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
@@ -325,7 +346,11 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
+	var/list/options = list(
+		"Weyland-Yutani", "High Command", "Provost", "Press",
+		"Colonial Marshal Bureau", "Union of Progressive Peoples",
+		"Three World Empire", "Colonial Liberation Front",
+		"Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -337,6 +362,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+
 		if("High Command")
 			var/body = "<body>"
 
@@ -346,6 +372,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+
 		if("Provost")
 			var/body = "<body>"
 
@@ -364,9 +391,9 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
 
-		if("CMB")
+		if("Colonial Marshal Bureau")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CMBFaxes)
@@ -375,6 +402,36 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
+		if("Union of Progressive Peoples")
+			var/body = "<body>"
+
+			for(var/text in GLOB.UPPFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+
+		if("Three World Empire")
+			var/body = "<body>"
+
+			for(var/text in GLOB.TWEFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+
+		if("Colonial Liberation Front")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CLFFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
 
 		if("Other")
 			var/body = "<body>"
@@ -405,7 +462,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0 || hive.total_dead_xenos.len > 0)
+		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -424,25 +481,26 @@
 /client/proc/give_nuke()
 	if(!check_rights(R_ADMIN))
 		return
-	var/nuketype = "Decrypted Operational Nuke"
+	var/nukename = "Decrypted Operational Nuke"
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
-		nuketype = "Encrypted Operational Nuke"
+		nukename = "Encrypted Operational Nuke"
 	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
 
+	var/nuketype = GLOB.supply_packs_types[nukename]
+
 	var/datum/supply_order/new_order = new()
-	new_order.ordernum = GLOB.supply_controller.ordernum
-	GLOB.supply_controller.ordernum++
-	new_order.object = GLOB.supply_controller.supply_packs[nuketype]
+	new_order.ordernum = GLOB.supply_controller.ordernum++
+	new_order.object = GLOB.supply_packs_datums[nuketype]
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
 
 	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
-	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
-	log_game("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
@@ -458,8 +516,8 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			if(H.wear_id)
-				var/obj/item/card/id/card = H.wear_id
+			var/obj/item/card/id/card = H.get_idcard()
+			if(card)
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 
@@ -524,7 +582,7 @@
 	else
 		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	message_admins("[key_name_admin(src)] has created a [faction] command report")
+	message_admins("[key_name_admin(src)] has created \a [faction] command report")
 	log_admin("[key_name_admin(src)] [faction] command report: [input]")
 
 /client/proc/cmd_admin_xeno_report()
@@ -572,7 +630,12 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input)
 		return FALSE
@@ -581,7 +644,7 @@
 		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
-			return
+			return FALSE
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -594,13 +657,17 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.processor_apollo.inoperable())
+	if(!ares_can_apollo())
 		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt != "Yes")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
@@ -668,7 +735,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	remote_control = !remote_control
@@ -716,7 +783,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
@@ -730,6 +797,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
 		<BR>
 		"}
 
@@ -1009,10 +1077,11 @@
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
 			if("Marine")
-				var/force_check = tgui_alert(usr, "Do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
 				var/force_status = FALSE
-				if(force_check == "Yes")
-					force_status = TRUE
+				if(!ares_can_interface()) //proc checks if ARES is dead or if ARES cannot do announcements
+					var/force_check = tgui_alert(usr, "ARES is currently unable to properly display and/or perform the Bioscan, do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+					if(force_check == "Yes")
+						force_status = TRUE
 				GLOB.bioscan_data.ares_bioscan(force_status, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()

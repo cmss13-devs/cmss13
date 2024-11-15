@@ -20,11 +20,11 @@ interface PortableVendorProps {
 }
 
 interface RecordEntryProps {
-  record: PortableVendorProduct;
+  readonly record: PortableVendorProduct;
 }
 
-const PointCounter = (props, context) => {
-  const { act, data } = useBackend<PortableVendorProps>(context);
+const PointCounter = (props) => {
+  const { act, data } = useBackend<PortableVendorProps>();
 
   return (
     <Stack.Item>
@@ -35,8 +35,8 @@ const PointCounter = (props, context) => {
   );
 };
 
-const RecordEntry = (props: RecordEntryProps, context) => {
-  const { act, data } = useBackend<PortableVendorProps>(context);
+const RecordEntry = (props: RecordEntryProps) => {
+  const { act, data } = useBackend<PortableVendorProps>();
   const { record } = props;
 
   if (!record.description) {
@@ -59,8 +59,8 @@ const RecordEntry = (props: RecordEntryProps, context) => {
   );
 };
 
-export const PortableVendor = (props, context) => {
-  const { act, data } = useBackend<PortableVendorProps>(context);
+export const PortableVendor = (props) => {
+  const { act, data } = useBackend<PortableVendorProps>();
 
   return (
     <Window width={400} height={700}>

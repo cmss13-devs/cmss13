@@ -44,11 +44,11 @@
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
-	SEND_SIGNAL(current.client, COMSIG_CLIENT_MIND_TRANSFER, new_character)
-
+	var/mob/old_current = current
 	if(current)
 		current.mind = null //remove ourself from our old body's mind variable
 		SSnano.nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		SStgui.on_transfer(current, new_character) // and active TGUI instances
 
 	if(key)
 		if(new_character.key != key)
@@ -78,6 +78,7 @@
 						continue
 			player_entity = setup_player_entity(ckey)
 
+	SEND_SIGNAL(src, COMSIG_MIND_TRANSFERRED, old_current)
 	SEND_SIGNAL(new_character, COMSIG_MOB_NEW_MIND, current.client)
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body

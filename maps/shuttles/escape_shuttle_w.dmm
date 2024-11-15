@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/docking_port/mobile/crashable/escape_shuttle/w,
-/turf/closed/shuttle/escapepod{
-	icon_state = "wall9"
-	},
-/area/shuttle/escape_pod)
 "b" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall8"
@@ -13,6 +7,12 @@
 "e" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall6"
+	},
+/area/shuttle/escape_pod)
+"g" = (
+/obj/docking_port/mobile/crashable/escape_shuttle/w,
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall9"
 	},
 /area/shuttle/escape_pod)
 "j" = (
@@ -30,6 +30,13 @@
 	icon_state = "wall2"
 	},
 /area/shuttle/escape_pod)
+"r" = (
+/obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/escape_pod)
+"A" = (
+/turf/open/shuttle/escapepod/floor0/north,
+/area/shuttle/escape_pod)
 "B" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10"
@@ -45,21 +52,14 @@
 	icon_state = "wall4"
 	},
 /area/shuttle/escape_pod)
-"H" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+"N" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel{
+	pixel_y = 30
 	},
+/turf/open/shuttle/escapepod/floor2,
 /area/shuttle/escape_pod)
-"I" = (
-/obj/structure/machinery/cryopod/evacuation,
-/obj/structure/sign/safety/cryo{
-	pixel_x = 36
-	},
-/turf/open/shuttle/escapepod,
-/area/shuttle/escape_pod)
-"M" = (
-/obj/structure/machinery/cryopod/evacuation,
-/turf/open/shuttle/escapepod,
+"O" = (
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/escape_pod)
 "P" = (
 /turf/closed/shuttle/escapepod{
@@ -70,22 +70,14 @@
 /obj/structure/machinery/door/airlock/evacuation{
 	name = "\improper Evacuation Airlock PL-3"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
-"V" = (
-/obj/structure/machinery/computer/shuttle/escape_pod_panel{
-	pixel_y = 30
+"T" = (
+/obj/structure/machinery/cryopod/evacuation,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 36
 	},
-/turf/open/shuttle/escapepod{
-	icon_state = "floor4"
-	},
-/area/shuttle/escape_pod)
-"W" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor12"
-	},
+/turf/open/shuttle/escapepod/floor4,
 /area/shuttle/escape_pod)
 
 (1,1,1) = {"
@@ -93,20 +85,20 @@ P
 B
 S
 B
-a
+g
 "}
 (2,1,1) = {"
 F
-V
-H
-W
+N
+O
+A
 b
 "}
 (3,1,1) = {"
 p
-M
-I
-M
+r
+T
+r
 j
 "}
 (4,1,1) = {"

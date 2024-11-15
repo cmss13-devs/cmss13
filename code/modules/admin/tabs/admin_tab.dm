@@ -29,21 +29,12 @@
 
 	if(!admin_holder)
 		return
+	if(!isobserver(mob))
+		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
 
-	if(istype(mob,/mob/dead/observer))
-		var/mob/dead/observer/ghost = mob
-		if(ghost.adminlarva == 0)
-			ghost.adminlarva = 1
-			to_chat(usr, SPAN_BOLDNOTICE("You have disabled your larva protection."))
-		else if(ghost.adminlarva == 1)
-			ghost.adminlarva = 0
-			to_chat(usr, SPAN_BOLDNOTICE("You have re-activated your larva protection."))
-		else
-			to_chat(usr, SPAN_BOLDNOTICE("Something went wrong tell a coder"))
-	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>")
-	else
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>")
+	var/mob/dead/observer/ghost = mob
+	ghost.admin_larva_protection = !ghost.admin_larva_protection
+	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"
@@ -52,6 +43,12 @@
 	if(admin_holder)
 		admin_holder.unbanpanel()
 	return
+
+/client/proc/stickyban_panel()
+	set name = "Stickyban Panel"
+	set category = "Admin.Panels"
+
+	admin_holder?.stickypanel()
 
 /client/proc/player_panel_new()
 	set name = "Player Panel"
@@ -184,6 +181,29 @@
 
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
+
+/datum/admins/proc/check_ckey(target_key as text)
+	set name = "Check CKey"
+	set category = "Admin"
+
+	var/mob/user = usr
+	if (!istype(src, /datum/admins))
+		src = user.client.admin_holder
+	if (!istype(src, /datum/admins) || !(rights & R_MOD))
+		to_chat(user, "Error: you are not an admin!")
+		return
+	target_key = ckey(target_key)
+	if(!target_key)
+		to_chat(user, "Error: No key detected!")
+		return
+	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	var/list/keys = analyze_ckey(target_key)
+	if(!keys)
+		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		return
+	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+
+	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
@@ -352,7 +372,7 @@
 
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
-	set category = "OOC"
+	set category = "Admin.Mentor"
 	set hidden = 0
 
 	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
@@ -415,7 +435,7 @@
 	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
 		strip_self = TRUE
 
-	for(var/mob/living/current_mob in view())
+	for(var/mob/living/current_mob in view(src))
 		if(!strip_self && usr == current_mob)
 			continue
 		for (var/obj/item/current_item in current_mob)
@@ -438,7 +458,7 @@
 	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/M in view())
+	for(var/mob/living/M in view(src))
 		M.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
@@ -456,7 +476,7 @@
 	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
+	for(var/mob/living/carbon/human/M in view(src))
 		M.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
@@ -473,7 +493,7 @@
 	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
+	for(var/mob/living/carbon/human/M in view(src))
 		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
@@ -499,7 +519,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view(src))
 		X.rejuvenate(FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
@@ -588,7 +608,7 @@
 	return
 
 /datum/admins/proc/imaginary_friend()
-	set category = "OOC.Mentor"
+	set category = "Admin.Mentor"
 	set name = "Imaginary Friend"
 
 	var/mob/user = usr
@@ -843,7 +863,7 @@
 	set name = "Toggle Working Joe Restrictions"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
 		return
 
 	if(!SSticker.mode)
@@ -852,3 +872,40 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_BYPASS_JOE
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE) ? "allowed players to bypass (except whitelist)" : "prevented players from bypassing"] Working Joe spawn conditions.")
+
+/client/proc/toggle_joe_respawns()
+	set name = "Toggle Working Joe Respawns"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_DISABLE_JOE_RESPAWN
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) ? "disabled" : "enabled"] Working Joe respawns.")
+
+/client/proc/toggle_lz_hazards()
+	set name = "Toggle LZ Hazards"
+	set category = "Admin.Flags"
+	set desc = "Distress Signal: Whether miasma smoke is spawned 3 minutes after the start of the round."
+
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		to_chat(usr, SPAN_WARNING("LZ hazards are only applicable to distress signal!"))
+		return
+
+	if(ROUND_TIME > LZ_HAZARD_START)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_LZ_HAZARD_ACTIVATED
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED) ? "enabled" : "disabled"] LZ hazards.")

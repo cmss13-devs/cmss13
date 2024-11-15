@@ -72,3 +72,18 @@
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Mortar"
+
+/datum/supply_packs/ammo_mortar_frag
+	name = "M402 mortar shells crate (x6 Frag)"
+	cost = 20
+	contains = list(
+		/obj/item/mortar_shell/frag,
+		/obj/item/mortar_shell/frag,
+		/obj/item/mortar_shell/frag,
+		/obj/item/mortar_shell/frag,
+		/obj/item/mortar_shell/frag,
+		/obj/item/mortar_shell/frag,
+	)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 mortar frag shells crate"
+	group = "Mortar"

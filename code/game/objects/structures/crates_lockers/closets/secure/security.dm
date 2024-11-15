@@ -196,6 +196,59 @@
 	locked = TRUE
 	var/id = null
 
+/obj/structure/closet/secure_closet/brig/prisoner
+
+/obj/structure/closet/secure_closet/brig/prisoner/Initialize()
+	. = ..()
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/device/radio/headset(src)
+
+/obj/structure/closet/secure_closet/brig/prison_uni
+	name = "Spare Prison Uniforms"
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	anchored = TRUE
+	locked = TRUE
+
+
+/obj/structure/closet/secure_closet/brig/prison_uni/Initialize()
+	. = ..()
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/shoes/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/clothing/under/color/orange(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset(src)
+
+/obj/structure/closet/secure_closet/brig/restraints
+	name = "Spare Restraints"
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	anchored = TRUE
+	locked = TRUE
+
+
+/obj/structure/closet/secure_closet/brig/restraints/Initialize()
+	. = ..()
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
+
 /obj/structure/closet/secure_closet/brig/Initialize()
 	. = ..()
 	new /obj/item/clothing/under/color/orange(src)

@@ -254,8 +254,6 @@
 /obj/structure/surface/table/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
@@ -274,19 +272,23 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15)) M.apply_effect(5, WEAKEN)
+					if (prob(15))
+						M.KnockDown(5)
+						M.Stun(5)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
-					SPAN_DANGER("You slam [M]'s face against [src]!"))
+					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
+					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 					return
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
-				M.apply_effect(5, WEAKEN)
-				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
-				SPAN_DANGER("You throw [M] on [src]."))
+				M.KnockDown(5)
+				M.Stun(5)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
+				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
@@ -299,10 +301,10 @@
 			deconstruct(TRUE)
 		return
 
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
@@ -351,7 +353,11 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(!can_touch(usr) || ismouse(usr))
+	if(!can_touch(usr))
+		return
+
+	if(usr.mob_size == MOB_SIZE_SMALL)
+		to_chat(usr, SPAN_WARNING("[isxeno(usr) ? "We are" : "You're"] too small to flip [src]."))
 		return
 
 	if(usr.a_intent != INTENT_HARM)
@@ -379,9 +385,11 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/living/mob_behind_table in oview(src, 0))
+	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		FOR_DVIEW_END
 		return FALSE
+	FOR_DVIEW_END
 
 	var/list/directions = list()
 	if(direction)
@@ -655,8 +663,6 @@
 /obj/structure/surface/rack/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
@@ -666,7 +672,7 @@
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
 	..()
 

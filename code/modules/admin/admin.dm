@@ -24,7 +24,7 @@
 
 /proc/msg_admin_niche(msg) //Toggleable Niche Messages
 	log_admin(msg)
-	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
+	msg = SPAN_NICHE("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
@@ -67,7 +67,7 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || !infos.len) return 0
+	if(!LAZYLEN(infos)) return 0
 	else return 1
 
 /datum/admins/proc/player_notes_all(key as text)
@@ -95,12 +95,8 @@
 				color = "#AA0055"
 			else if(N.note_category == NOTE_MERIT)
 				color = "#9e3dff"
-			else if(N.note_category == NOTE_COMMANDER)
+			else if(N.note_category == NOTE_WHITELIST)
 				color = "#324da5"
-			else if(N.note_category == NOTE_SYNTHETIC)
-				color = "#39e7a4"
-			else if(N.note_category == NOTE_YAUTJA)
-				color = "#114e11"
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || check_for_rights(R_PERMISSIONS))
@@ -145,7 +141,7 @@
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
-		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Inmediately Send Tip</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
@@ -183,11 +179,11 @@
 		if(findtext("[path]", object))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)

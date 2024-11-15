@@ -6,7 +6,7 @@
 	w_class = SIZE_TINY
 
 	///The type of HUD our visor shows
-	var/hud_type = MOB_HUD_FACTION_USCM
+	var/hud_type = MOB_HUD_FACTION_MARINE
 
 	///The sound when toggling on the visor
 	var/toggle_on_sound = 'sound/handling/hud_on.ogg'
@@ -82,7 +82,7 @@
 
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
-	helmet_overlay = "med_sight_left"
+	helmet_overlay = "med_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
@@ -146,6 +146,7 @@
 			return
 
 /datum/action/item_action/view_publications/helmet_visor/action_activate()
+	. = ..()
 	var/obj/item/device/helmet_visor/medical/advanced/medical_visor = locate() in holder_item
 
 	if(!medical_visor)
@@ -168,7 +169,7 @@
 	helmet_overlay = "weld_visor"
 
 /obj/item/device/helmet_visor/welding_visor/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
-	attached_helmet.vision_impair = VISION_IMPAIR_MAX
+	attached_helmet.vision_impair = VISION_IMPAIR_ULTRA
 	attached_helmet.flags_inventory |= COVEREYES|COVERMOUTH
 	attached_helmet.flags_inv_hide |= HIDEEYES|HIDEFACE
 	attached_helmet.eye_protection = EYE_PROTECTION_WELDING
@@ -200,9 +201,9 @@
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
 
 	/// The internal battery for the visor
-	var/obj/item/cell/high/power_cell
+	var/obj/item/cell/super/power_cell
 
-	/// About 5 minutes active use charge (hypothetically)
+	/// About 10 minutes active use charge (hypothetically)
 	var/power_use = 33
 
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able
@@ -225,7 +226,7 @@
 /obj/item/device/helmet_visor/night_vision/get_examine_text(mob/user)
 	. = ..()
 
-	. += SPAN_NOTICE("It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE("It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
@@ -238,6 +239,7 @@
 		on_light = new(attached_helmet)
 		on_light.set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
+	RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view))
 
 /obj/item/device/helmet_visor/night_vision/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
@@ -247,6 +249,7 @@
 	if(visor_glows)
 		qdel(on_light)
 	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+	UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
 	user.update_sight()
 	STOP_PROCESSING(SSobj, src)
@@ -271,6 +274,10 @@
 	if(!.)
 		return
 
+	if(user.client.view > 7)
+		to_chat(user, SPAN_WARNING("You cannot use [src] while using optics."))
+		return FALSE
+
 	if(!NVG_VISOR_USAGE(FALSE))
 		to_chat(user, SPAN_NOTICE("Your [src] is out of power! You'll need to recharge it."))
 		return FALSE
@@ -280,7 +287,7 @@
 /obj/item/device/helmet_visor/night_vision/get_helmet_examine_text()
 	. = ..()
 
-	. += SPAN_NOTICE(" It is currently at [round((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
+	. += SPAN_NOTICE(" It is currently at [floor((power_cell.charge / power_cell.maxcharge) * 100)]% charge.")
 
 /obj/item/device/helmet_visor/night_vision/proc/on_update_sight(mob/user)
 	SIGNAL_HANDLER
@@ -290,19 +297,34 @@
 	user.lighting_alpha = lighting_alpha
 	user.sync_lighting_plane_alpha()
 
+/obj/item/device/helmet_visor/night_vision/proc/change_view(mob/user, new_size)
+	SIGNAL_HANDLER
+	if(new_size > 7) // cannot use binos with NVO
+		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
+		if(!istype(attached_helmet))
+			return
+		deactivate_visor(attached_helmet, user)
+		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+		playsound_client(user.client, toggle_off_sound, null, 75)
+		attached_helmet.active_visor = null
+		attached_helmet.update_icon()
+		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
+		if(cycle_action)
+			cycle_action.set_default_overlay()
+
 #undef NVG_VISOR_USAGE
 
 /atom/movable/nvg_light
 	light_power = 0.5
 	light_range = 1
-	light_color = COLOUR_GREEN
+	light_color = COLOR_LIGHT_GREEN
 	light_system = MOVABLE_LIGHT
 	light_flags = LIGHT_ATTACHED
 
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
-	hud_type = list(MOB_HUD_FACTION_USCM, MOB_HUD_MEDICAL_ADVANCED)
+	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0
 	visor_glows = FALSE

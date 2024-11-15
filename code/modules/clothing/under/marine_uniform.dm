@@ -17,6 +17,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	drop_sound = "armorequip"
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
 	///List of map variants that use sleeve rolling on something else, like snow uniforms rolling the collar, and therefore shouldn't hide patches etc when rolled.
@@ -380,6 +381,12 @@
 	icon_state = "provost_tml"
 	worn_state = "provost_tml"
 
+/obj/item/clothing/under/marine/mp/provost/chief
+	name = "\improper Provost Command Uniform"
+	desc = "The crisp uniform of a commanding member of the Provost Office."
+	icon_state = "provost_ci"
+	worn_state = "provost_ci"
+
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
@@ -509,6 +516,9 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/bear)
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
 
 /obj/item/clothing/under/marine/veteran/UPP
 	name = "\improper UPP fatigues"
@@ -517,7 +527,6 @@
 	worn_state = "upp_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_UPP
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
@@ -686,14 +695,46 @@
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_COLONIST
+
+/obj/item/clothing/under/colonist/workwear
+	name = "grey workwear"
+	desc = "A pair of black slacks and a short-sleeve grey workshirt. Standard uniform for Weyland Yutani employees working in colony operations and administration."
+	icon_state = "workwear_grey"
+	worn_state = "workwear_grey"
+
+/obj/item/clothing/under/colonist/workwear/khaki
+	name = "khaki workwear"
+	desc = "A pair of jeans paired with a khaki workshirt. A common pairing among blue-collar workers due to its drab look."
+	icon_state = "workwear_khaki"
+	worn_state = "workwear_khaki"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/pink
+	name = "pink workwear"
+	desc = "A pair of jeans paired with a pink workshirt. Pink? Your wife might not think so, but such outlandish attire deserves questioning by corporate security. What are you, some kind of free-thinking anarchist?"
+	icon_state = "workwear_pink"
+	worn_state = "workwear_pink"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/blue
+	name = "blue workwear"
+	desc = "A pair of brown canvas workpants paired with a dark blue workshirt. A common pairing among blue-collar workers."
+	icon_state = "workwear_blue"
+	worn_state = "workwear_blue"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/green
+	name = "green workwear"
+	desc = "A pair of brown canvas workpants paired with a green workshirt. An common pairing among blue-collar workers."
+	icon_state = "workwear_green"
+	worn_state = "workwear_green"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/colonist/clf
 	name = "\improper Colonial Liberation Front uniform"
 	desc = "A stylish grey-green jumpsuit - standard issue for colonists. This version appears to have the symbol of the Colonial Liberation Front emblazoned in select areas."
 	icon_state = "clf_uniform"
 	worn_state = "clf_uniform"
-	sensor_faction = FACTION_CLF
 
 /obj/item/clothing/under/colonist/ua_civvies
 	name = "\improper UA gray utility uniform"
@@ -701,7 +742,6 @@
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_davisone
 	name = "\improper UA brown utility uniform"
@@ -709,7 +749,13 @@
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
+
+/obj/item/clothing/under/colonist/white_service
+	name = "white service uniform"
+	desc = "A white dress shirt and tie with sleek pants. Standard clothing for anyone on professional business."
+	icon_state = "CO_service"
+	worn_state = "CO_service"
+	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/colonist/wy_joliet_shopsteward
 	name = "steward utilities"
@@ -717,7 +763,6 @@
 	icon_state = "wy_joliet_shopsteward"
 	worn_state = "wy_joliet_shopsteward"
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt
 	name = "T-shirt parent object"
@@ -730,7 +775,7 @@
 	worn_state = "tshirt_w_br"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
+
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
 	desc = "A comfortable gray T-shirt and blue jeans."
@@ -738,7 +783,6 @@
 	worn_state = "tshirt_gray_blu"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt/r_bla
 	name = "red T-shirt and black pants"
@@ -747,11 +791,10 @@
 	worn_state = "tshirt_r_bla"
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/CM_uniform
 	name = "\improper Colonial Marshal uniform"
-	desc = "A blue shirt and tan trousers - the official uniform for a Colonial Marshal."
+	desc = "A pair of off-white slacks and a blue button-down shirt with a dark brown tie; the standard uniform of the Colonial Marshals."
 	icon_state = "marshal"
 	worn_state = "marshal"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -762,7 +805,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/liaison_suit
 	name = "liaison's tan suit"
@@ -793,7 +836,7 @@
 	worn_state = "liaison_formal"
 
 /obj/item/clothing/under/liaison_suit/suspenders
-	name = "liaison's attire"
+	name = "liaison's suspenders"
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
@@ -804,14 +847,69 @@
 	icon_state = "liaison_blue_blazer"
 	worn_state = "liaison_blue_blazer"
 
+/obj/item/clothing/under/liaison_suit/field
+	name = "corporate casual"
+	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	icon_state = "corporate_field"
+	worn_state = "corporate_field"
+
+/obj/item/clothing/under/liaison_suit/ivy
+	name = "country club outfit"
+	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
+	icon_state = "corporate_ivy"
+	worn_state = "corporate_ivy"
+
+/obj/item/clothing/under/liaison_suit/orange
+	name = "orange outfit"
+	desc = "A pair of black pants paired with a very Wey-Yu orange shirt. A popular look with those in the corporate world that conduct the majority of their business from Weyland Yutani offices."
+	icon_state = "corporate_orange"
+	worn_state = "corporate_orange"
+
+/obj/item/clothing/under/liaison_suit/corporate_formal
+	name = "white suit pants"
+	desc = "A pair of ivory slacks paired with a white shirt. A popular pairing for formal corporate events."
+	icon_state = "corporate_formal"
+	worn_state = "corporate_formal"
+
+/obj/item/clothing/under/liaison_suit/black
+	name = "black suit pants"
+	desc = "A pair of black slacks paired with a white shirt. The most common pairing among corporate workers."
+	icon_state = "corporate_black"
+	worn_state = "corporate_black"
+
+/obj/item/clothing/under/liaison_suit/brown
+	name = "brown suit pants"
+	desc = "A pair of brown slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_brown"
+	worn_state = "corporate_brown"
+
+/obj/item/clothing/under/liaison_suit/blue
+	name = "blue suit pants"
+	desc = "A pair of blue slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_blue"
+	worn_state = "corporate_blue"
+
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_uniform"
-	worn_state = "wc_uniform"
-	contained_sprite = TRUE
-	flags_atom = NO_NAME_OVERRIDE
+	icon_state = "cc_white"
+	worn_state = "cc_white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
+/obj/item/clothing/under/marine/reporter/black
+	icon_state = "cc_black"
+	worn_state = "cc_black"
+
+/obj/item/clothing/under/marine/reporter/orange
+	icon_state = "cc_orange"
+	worn_state = "cc_orange"
+
+/obj/item/clothing/under/marine/reporter/red
+	icon_state = "cc_red"
+	worn_state = "cc_red"
 
 /obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
@@ -842,6 +940,15 @@
 	desc = "A simple uniform made for Synthetic crewmembers."
 	icon_state = "rdalt"
 	worn_state = "rdalt"
+	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/rank/synthetic/synth_k9
+	name = "\improper W-Y K9 serial identification collar"
+	desc = "Contains a serialized manufacturing number related to this unit's manufacturing date and time."
+	icon = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
+	flags_item = NODROP
+	icon_state = "k9_dogtags"
+	worn_state = "k9_dogtags"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic/frontier
@@ -902,6 +1009,31 @@
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+	flags_item = NO_CRYO_STORE
+	var/obj/structure/machinery/camera/camera
+
+/obj/item/clothing/under/rank/synthetic/joe/Initialize()
+	. = ..()
+	camera = new /obj/structure/machinery/camera/autoname/almayer/containment/ares(src)
+
+/obj/item/clothing/under/rank/synthetic/joe/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/clothing/under/rank/synthetic/joe/equipped(mob/living/carbon/human/mob, slot)
+	if(camera)
+		camera.c_tag = mob.name
+	..()
+
+/obj/item/clothing/under/rank/synthetic/joe/dropped(mob/living/carbon/human/mob)
+	if(camera)
+		camera.c_tag = "3RR0R"
+	..()
+
+/obj/item/clothing/under/rank/synthetic/joe/get_examine_text(mob/user)
+	. = ..()
+	if(camera)
+		. += SPAN_ORANGE("There is a small camera mounted to the front.")
 
 /obj/item/clothing/under/rank/synthetic/joe/engi
 	name = "\improper Working Joe Hazardous Uniform"
@@ -948,7 +1080,7 @@
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"
-	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. Despite somewhat resembling commonplace synthetic rubber HAZMAT suits, the Venlar composition provides a significantly more dense and durable baseline material, allowing for modifications without the loss of its air-tight nature. The wearer’s comfort has been significantly taken into consideration, with the suit providing sufficient freedom of movement for even delicate maneuvers and movements once it is donned. As the sealed environment retains many issues from the past, measures have been taken to significantly reduce the suit's passive heat absorption and increase internal absorbance through linings, as well as the capability to fully integrate with external cooling, air cycling, and other life support systems. Strips of M11 detector paper are included with each suit, designed to be slotted into the dominant arm of the wearer’s protective suit, the non-dominant wrist, and then back to the knee, providing at-a-glance warning signs across alternating sides of the body while working. The arm and knee markers are intended to be on the user's dominant The papers change color upon contact with harmful chemical agents, displaying a clear white initially and turning red when activated. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less. Beyond that point, the accuracy of the detector papers deteriorates significantly, as does the protection of the suit itself."
+	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less."
 	desc_lore = "Since the outbreak of the New Earth Plague in 2157 and the subsequent Interstellar Commerce Commission (ICC) sanctioned decontamination of the colony and its 40 million inhabitants, the abandoned colony has been left under a strict quarantine blockade to prevent any potential scavengers from spreading what’s left of the highly-durable airborne flesh-eating bacteria. Following those events, the three major superpowers have been investing heavily in the development and procurement of CBRN equipment, in no small part due to the extensive damage that the plague and other similar bioweapons could do. The \"Marine 70\" upgrade package and the launch of the M3 pattern armor series saw the first M3-M prototypes approved for CBRN usage."
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	icon_state = "cbrn"
@@ -958,8 +1090,8 @@
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_VERYLOW
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
@@ -1089,6 +1221,7 @@
 	button.overlays += button_overlay
 
 /datum/action/item_action/specialist/toggle_cbrn_hood/action_activate()
+	. = ..()
 	var/obj/item/clothing/under/marine/cbrn/armor = holder_item
 	if(!istype(armor))
 		return
@@ -1098,7 +1231,7 @@
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
-	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced

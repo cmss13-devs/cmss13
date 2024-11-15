@@ -7,7 +7,7 @@
 		return
 	for(var/atom/A as anything in src)
 		if(!(is_type_in_list(A, canEnterVentWith)))
-			to_chat(src, SPAN_WARNING("You can't be carrying items or have items equipped when vent crawling!"))
+			to_chat(src, SPAN_WARNING("We cannot be carrying items or have items equipped when vent crawling!"))
 			return FALSE
 
 /mob/living/click(atom/A, list/mods)
@@ -24,10 +24,10 @@
 	for(var/obj/structure/pipes/vents/V in range(1))
 		if(Adjacent(V) && !V.welded)
 			pipes |= V
-	if(!pipes || !pipes.len)
-		to_chat(src, SPAN_WARNING("There are no pipes that you can ventcrawl into within range!"))
+	if(!LAZYLEN(pipes))
+		to_chat(src, SPAN_WARNING("There are no pipes that we can ventcrawl into within range!"))
 		return
-	if(pipes.len == 1)
+	if(length(pipes) == 1)
 		pipe = pipes[1]
 	else
 		pipe = tgui_input_list(usr, "Crawl Through Vent", "Pick a pipe", pipes)
@@ -42,11 +42,11 @@
 
 /mob/living/proc/handle_ventcrawl(atom/clicked_on)
 	if(stat)
-		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
+		to_chat(src, SPAN_WARNING("We must be conscious to do this!"))
 		return
 
 	if(is_mob_incapacitated())
-		to_chat(src, SPAN_WARNING("You can't vent crawl while you're stunned!"))
+		to_chat(src, SPAN_WARNING("We can't vent crawl while we are stunned!"))
 		return
 
 	var/obj/structure/pipes/vents/vent_found
@@ -59,11 +59,11 @@
 		vent_found = locate(/obj/structure/pipes/vents/) in range(1, src)
 
 	if(!vent_found)
-		to_chat(src, SPAN_WARNING("You must be standing on or beside an air vent to enter it."))
+		to_chat(src, SPAN_WARNING("We must be standing on or beside an air vent to enter it."))
 		return
 
 	if(vent_found.welded)
-		to_chat(src, SPAN_WARNING("This vent is closed off, you cannot climb through it."))
+		to_chat(src, SPAN_WARNING("This vent is closed off, we cannot climb through it."))
 		return
 
 	if(!ventcrawl_carry())
@@ -78,10 +78,10 @@
 
 	if(length(vent_found.connected_to))
 		if(src.action_busy)
-			to_chat(src, SPAN_WARNING("You are already busy with something."))
+			to_chat(src, SPAN_WARNING("We are already busy with something."))
 			return
 
-		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("You begin climbing into [vent_found]."))
+		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("We begin climbing into [vent_found]."))
 		vent_found.animate_ventcrawl()
 		if(!do_after(src, 45, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			vent_found.animate_ventcrawl_reset()

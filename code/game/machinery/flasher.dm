@@ -60,7 +60,7 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for (var/mob/O in viewers(src, null))
+	for (var/mob/living/O in viewers(src, null))
 		if (get_dist(src, O) > src.range)
 			continue
 
@@ -72,7 +72,9 @@
 		if (istype(O, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.apply_effect(strength, WEAKEN)
+		O.KnockDown(strength)
+		O.Stun(strength)
+
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]

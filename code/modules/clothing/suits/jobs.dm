@@ -116,7 +116,7 @@
 
 //Chef
 /obj/item/clothing/suit/chef/classic
-	name = "A classic chef's apron."
+	name = "A classic chef's apron"
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	item_state = "apronchef"
@@ -181,11 +181,11 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -245,7 +245,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -310,7 +310,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -409,7 +409,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 

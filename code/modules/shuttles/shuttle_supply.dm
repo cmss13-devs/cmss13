@@ -10,10 +10,10 @@
 	var/max_late_time = 300
 	var/railing_id = "supply_elevator_railing"
 	var/gear_id = "supply_elevator_gear"
-	var/obj/effect/elevator/supply/SW //elevator effects (four so the entire elevator doesn't vanish when
-	var/obj/effect/elevator/supply/SE //there's one opaque obstacle between you and the actual elevator loc).
-	var/obj/effect/elevator/supply/NW
-	var/obj/effect/elevator/supply/NE
+	var/obj/effect/elevator/SW //elevator effects (four so the entire elevator doesn't vanish when
+	var/obj/effect/elevator/SE //there's one opaque obstacle between you and the actual elevator loc).
+	var/obj/effect/elevator/NW
+	var/obj/effect/elevator/NE
 	var/Elevator_x
 	var/Elevator_y
 	var/Elevator_z
@@ -34,15 +34,15 @@
 		Elevator_x = pick_loc().x
 		Elevator_y = pick_loc().y
 		Elevator_z = pick_loc().z
-		SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+		SW = new /obj/effect/elevator(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
 		SW.vis_contents += elevator_animation
-		SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
+		SE = new /obj/effect/elevator(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 		SE.pixel_x = -128
 		SE.vis_contents += elevator_animation
-		NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
+		NW = new /obj/effect/elevator(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 		NW.pixel_y = -128
 		NW.vis_contents += elevator_animation
-		NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+		NE = new /obj/effect/elevator(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
 		NE.pixel_x = -128
 		NE.pixel_y = -128
 		NE.vis_contents += elevator_animation
@@ -88,6 +88,11 @@
 		for(var/turf/T in away_area)
 			elevator_animation.vis_contents += T
 
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = FALSE
+				vis_content.update_emissive_block()
+
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
@@ -126,6 +131,12 @@
 
 		moving_status = SHUTTLE_IDLE
 		stop_gears()
+
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = initial(vis_content.blocks_emissive)
+				vis_content.update_emissive_block()
+
 		elevator_animation.vis_contents.Cut()
 
 		if (!at_station()) //at centcom
@@ -184,15 +195,3 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
-
-/obj/effect/landmark/vehicleelevator/Initialize(mapload, ...)
-	. = ..()
-	GLOB.vehicle_elevator = get_turf(src)
-	return INITIALIZE_HINT_QDEL
-
-/datum/shuttle/ferry/supply/vehicle
-	railing_id = "vehicle_elevator_railing"
-	gear_id = "vehicle_elevator_gears"
-
-/datum/shuttle/ferry/supply/vehicle/pick_loc()
-	return GLOB.vehicle_elevator

@@ -42,8 +42,6 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 		if(guest_jobbans(rank))
 			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
 				return "Guest Job-ban"
-			if(CONFIG_GET(flag/usewhitelist) && !check_whitelist(M))
-				return "Whitelisted Job"
 		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
 		return PJB ? PJB.text : null
 

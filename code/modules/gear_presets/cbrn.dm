@@ -2,7 +2,7 @@
 	name = "Generic CBRN" //Parent type for easier gear
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME3"
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CBRN"
 	flags = EQUIPMENT_PRESET_EXTRA
 	auto_squad_name = SQUAD_CBRN
@@ -67,7 +67,7 @@
 
 /datum/equipment_preset/uscm/cbrn/engineer
 	name = "CBRN Combat Technician"
-	paygrade = "ME4"
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/uscm/cbrn/medic
 	name = "CBRN Hospital Corpsman"
-	paygrade = "ME4"
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
@@ -154,7 +154,7 @@
 
 /datum/equipment_preset/uscm/cbrn/leader
 	name = "CBRN Fireteam Leader"
-	paygrade = "ME5"
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
 	role_comm_title = "TL"
@@ -189,7 +189,7 @@
 
 /datum/equipment_preset/uscm/cbrn/specialist
 	name = "CBRN Specialist"
-	paygrade = "O"
+	paygrades = list(PAY_SHORT_OPR = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"

@@ -26,7 +26,7 @@
 
 /obj/item/tool/shovel/update_icon()
 	var/image/I = image(icon,src,dirt_overlay)
-	switch(dirt_type) // We can actually shape the color for what enviroment we dig up our dirt in.
+	switch(dirt_type) // We can actually shape the color for what environment we dig up our dirt in.
 		if(DIRT_TYPE_GROUND) I.color = "#512A09"
 		if(DIRT_TYPE_MARS) I.color = "#FF5500"
 		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
@@ -151,7 +151,7 @@
 
 /obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T

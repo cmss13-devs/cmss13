@@ -234,7 +234,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/reagent_container/food/drinks/flask = "helmet_flask",
 	/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 	/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
-	/obj/item/reagent_container/food/snacks/packaged_burrito = "helmet_snack_burrito",
 	/obj/item/reagent_container/food/snacks/mushroompizzaslice = "pizza", // Fuck whoever put these under different paths for some REASON
 	/obj/item/reagent_container/food/snacks/vegetablepizzaslice = "pizza",
 	/obj/item/reagent_container/food/snacks/meatpizzaslice = "pizza",
@@ -249,9 +248,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// EYEWEAR
 	/obj/item/clothing/glasses/mgoggles = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/v2 = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/clothing/glasses/mgoggles/v2/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/black = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/clothing/glasses/mgoggles/black/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/orange = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/clothing/glasses/mgoggles/orange/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/sunglasses = "sunglasses",
 	/obj/item/clothing/glasses/sunglasses/prescription = "sunglasses",
 	/obj/item/clothing/glasses/sunglasses/aviator = "aviator",
@@ -259,6 +261,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/sunglasses/sechud = "sechud",
 	/obj/item/clothing/glasses/eyepatch = "eyepatch",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
+	/obj/item/clothing/glasses/regular = "persc-glasses",
+	/obj/item/clothing/glasses/mbcg = "persc-glasses",
 
 	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = HELMET_GARB_RELAY_ICON_STATE,
@@ -324,6 +328,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/toy/crayon/blue = "crayonblue",
 	/obj/item/toy/crayon/purple = "crayonpurple",
 	/obj/item/toy/crayon/rainbow = "crayonrainbow",
+	/obj/item/toy/crayon/pride/trans = "crayontrans",
+	/obj/item/toy/crayon/pride/gay = "crayongay",
+	/obj/item/toy/crayon/pride/lesbian = "crayonlesbian",
+	/obj/item/toy/crayon/pride/bi = "crayonbi",
+	/obj/item/toy/crayon/pride/pan = "crayonpan",
+	/obj/item/toy/crayon/pride/ace = "crayonace",
+	/obj/item/toy/crayon/pride/trans = "crayontrans",
+	/obj/item/toy/crayon/pride/enby = "crayonenby",
+	/obj/item/toy/crayon/pride/fluid = "crayonfluid",
 	/obj/item/paper = "paper",
 	/obj/item/device/flashlight/flare = "flare",
 	/obj/item/clothing/head/headset = "headset",
@@ -352,7 +365,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
@@ -364,7 +377,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/obj/structure/machinery/camera/camera
 	var/helmet_overlays[]
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS
+	flags_inv_hide = NONE
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
 
@@ -377,8 +390,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 
 	var/obj/item/storage/internal/headgear/pockets
-	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
-	var/storage_slots_reserved_for_garb = 1
+	var/storage_slots = 2 // Small items like injectors, bandages, etc
+	var/storage_slots_reserved_for_garb = 2 // Cosmetic items & now cigarettes and lighters for RP
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
 
@@ -474,10 +487,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
-		var/ammo_level = "somewhat"
+		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
-		if(M.current_rounds > (M.max_rounds/2))
-			ammo_level = "more than half full."
+		if(M.current_rounds == (M.max_rounds/2))
+			ammo_level = "half full."
 		if(M.current_rounds < (M.max_rounds/2))
 			ammo_level = "less than half full."
 		if(M.current_rounds < (M.max_rounds/6))
@@ -509,7 +522,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			new_action.give_to(user)
 		return
 
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+		// If there isn't anything to remove, return.
+		if(!length(inserted_visors))
+			// If the user is trying to remove a built-in visor, give them a more helpful failure message.
+			switch(length(built_in_visors))
+				if(1) // Messy plural handling
+					to_chat(user, SPAN_WARNING("The visor on [src] is built-in!"))
+				if(2 to INFINITY)
+					to_chat(user, SPAN_WARNING("The visors on [src] are built-in!"))
+			return
+
 		if(active_visor)
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
@@ -545,7 +568,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// the human sprite is the only thing that reliably renders things, so
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
-	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+	if(pockets && length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		var/list/above_band_layer = list()
 		var/list/below_band_layer = list()
 		var/has_helmet_band = FALSE
@@ -664,30 +687,50 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/list/total_visors = built_in_visors + inserted_visors
 
 	if(!length(total_visors))
+		to_chat(user, SPAN_WARNING("There are no visors to swap to."))
 		return FALSE
 
 	if(active_visor)
+		var/visor_to_deactivate = active_visor
+		var/skipped_hud = FALSE
 		var/iterator = 1
-		for(var/hud_type in total_visors)
-			if(hud_type == active_visor)
+		for(var/obj/item/device/helmet_visor/current_visor as anything in total_visors)
+			if(current_visor == active_visor || skipped_hud)
 				if(length(total_visors) > iterator)
-					active_visor = total_visors[(iterator + 1)]
-					toggle_visor(user, total_visors[iterator], TRUE)
+					var/obj/item/device/helmet_visor/next_visor = total_visors[iterator + 1]
+
+					if(!isnull(GLOB.huds[next_visor.hud_type]?.hudusers[user]))
+						iterator++
+						skipped_hud = TRUE
+						continue
+
+					if(!next_visor.can_toggle(user))
+						iterator++
+						skipped_hud = TRUE
+						continue
+
+					active_visor = next_visor
+					toggle_visor(user, visor_to_deactivate, silent = TRUE) // disables the old visor
 					toggle_visor(user)
 					return active_visor
 				else
 					active_visor = null
-					toggle_visor(user, total_visors[iterator], FALSE)
+					toggle_visor(user, visor_to_deactivate, FALSE)
 					return FALSE
 			iterator++
 
-	if(total_visors[1])
-		active_visor = total_visors[1]
+	for(var/obj/item/device/helmet_visor/new_visor in total_visors)
+		if(!isnull(GLOB.huds[new_visor.hud_type]?.hudusers[user]))
+			continue
+
+		if(!new_visor.can_toggle(user))
+			continue
+
+		active_visor = new_visor
 		toggle_visor(user)
 		return active_visor
 
-	active_visor = null
-	recalculate_visors(user)
+	to_chat(user, SPAN_WARNING("There are no visors to swap to currently."))
 	return FALSE
 
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
@@ -768,9 +811,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
+/obj/item/clothing/head/helmet/marine/medic/white
+	name = "\improper M10 white corpsman helmet"
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
+	icon_state = "med_helmet_white"
+	specialty = "M10 pattern medic white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
-	desc = "An M10 marine helmet version designed for use in darkened enviroments. It is coated with a special anti-reflective paint."
+	desc = "An M10 marine helmet version designed for use in darkened environments. It is coated with a special anti-reflective paint."
 	icon_state = "marsoc_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1391,10 +1442,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/reporter
 	name = "press helmet"
 	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_helm"
-	item_state = "wc_helm"
-	contained_sprite = TRUE
+	icon_state = "cc_helmet"
+	item_state = "cc_helmet"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 	built_in_visors = list()
@@ -1411,8 +1460,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	force = 0 //"The M3 MOPP mask would be a normal weapon if you were to hit someone with it."
 	throwforce = 0
 	flags_inventory = BLOCKSHARPOBJ
@@ -1425,7 +1474,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
-	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 
 //=ROYAL MARINES=\\

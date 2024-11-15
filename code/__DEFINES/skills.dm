@@ -42,6 +42,8 @@
 #define SKILL_SPEC_DEFAULT 0
 /// Is trained to use specialist gear, but hasn't picked a kit.
 #define SKILL_SPEC_TRAINED 1
+/// Is trained to use specialist gear & HAS picked a kit. (Functionally same as SPEC_ROCKET)
+#define SKILL_SPEC_KITTED 2
 /// Can use RPG
 #define SKILL_SPEC_ROCKET 2
 /// Can use thermal cloaks and custom M4RA rifle
@@ -68,10 +70,11 @@
 
 // engineer skill
 #define SKILL_ENGINEER_DEFAULT 0
-#define SKILL_ENGINEER_TRAINED 1   //barricade repair && c4 use (mini-engis, specs)
-#define SKILL_ENGINEER_ENGI 2   //plasteel barricade deconstruction, hacking&&planet engine fixing&&apc building, Telecomms fixing (Combat Engi, OT, etc.)
-#define SKILL_ENGINEER_MASTER 3   //Synths
-#define SKILL_ENGINEER_MAX 3
+#define SKILL_ENGINEER_NOVICE 1   //barricade repair && c4 use (mini-engis, specs)
+#define SKILL_ENGINEER_TRAINED 2   //plasteel barricade deconstruction, hacking&&planet engine fixing&&apc building, Telecomms fixing  (OT, etc.)
+#define SKILL_ENGINEER_ENGI 3      // Slightly faster at everything (Combat Technicians)
+#define SKILL_ENGINEER_MASTER 4   //Synths
+#define SKILL_ENGINEER_MAX 4
 
 //medical skill
 #define SKILL_MEDICAL_DEFAULT 0

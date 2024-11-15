@@ -5,9 +5,11 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
-	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	var/hull = 0
 	var/walltype = WALL_METAL
-	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
+	/// when walls smooth with one another, the type of junction each wall is.
+	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -21,7 +23,8 @@
 	)
 
 	var/damage = 0
-	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	/// Wall will break down to girders if damage reaches this point
+	var/damage_cap = HEALTH_WALL
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -30,12 +33,12 @@
 	var/image/bullet_overlay = null
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
-	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
-	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
+	/// the acid hole inside the wall
+	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
@@ -76,6 +79,12 @@
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 
+			if(istype(T, /turf/closed/wall))
+				var/turf/closed/wall/neighbour_wall = T
+
+				neighbour_wall.update_connections()
+				neighbour_wall.update_icon()
+
 			//nearby glowshrooms updated
 			for(var/obj/effect/glowshroom/shroom in T)
 				if(!shroom.floor) //shrooms drop to the floor
@@ -88,7 +97,7 @@
 			if(istype(found_object, /obj/structure/sign/poster))
 				var/obj/structure/sign/poster/found_poster = found_object
 				found_poster.roll_and_drop(src)
-			if(istype(found_object, /obj/effect/alien/weeds))
+			if(istype(found_object, /obj/effect/alien/weeds/weedwall))
 				qdel(found_object)
 
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
@@ -170,9 +179,12 @@
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
 
+	if(turf_flags & TURF_ORGANIC)
+		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
+
 	switch(d_state)
 		if(WALL_STATE_WELD)
-			. += SPAN_INFO("The outer plating is intact. A blowtorch should slice it open.")
+			. += SPAN_INFO("The outer plating is intact. If you are not on help intent, a blowtorch should slice it open.")
 		if(WALL_STATE_SCREW)
 			. += SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines.")
 		if(WALL_STATE_WIRECUTTER)
@@ -292,7 +304,7 @@
 			break
 
 		if(thermite > (damage_cap - damage)/100) // Thermite gains a speed buff when the amount is overkill
-			var/timereduction = round((thermite - (damage_cap - damage)/100)/5) // Every 5 units over the required amount reduces the sleep by 0.1s
+			var/timereduction = floor((thermite - (damage_cap - damage)/100)/5) // Every 5 units over the required amount reduces the sleep by 0.1s
 			sleep(max(2, 20 - timereduction))
 		else
 			sleep(20)
@@ -332,7 +344,7 @@
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(attacker_grab.grabbed_thing, src)
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
@@ -476,13 +488,15 @@
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
 	if(!damage || !iswelder(W))
 		return FALSE
+	if(user.a_intent != INTENT_HELP)
+		return FALSE
 
 	var/obj/item/tool/weldingtool/WT = W
 	if(WT.remove_fuel(0, user))
 		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
+		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
 			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
@@ -497,6 +511,8 @@
 		return
 	if(!(WT.remove_fuel(0, user)))
 		to_chat(user, SPAN_WARNING("You need more welding fuel!"))
+		return
+	if(user.a_intent == INTENT_HELP)
 		return
 
 	playsound(src, 'sound/items/Welder.ogg', 25, 1)
@@ -556,7 +572,7 @@
 
 	// Check again for presence of objects
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		to_chat(user, SPAN_WARNING("You seem to have misplaced the repair material!"))
 		return FALSE
 
 	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < (4*amount_needed-1))

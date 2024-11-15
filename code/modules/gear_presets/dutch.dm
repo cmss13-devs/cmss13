@@ -2,7 +2,7 @@
 
 /datum/equipment_preset/dutch
 	name = JOB_DUTCH_RIFLEMAN
-	paygrade = "DTC"
+	paygrades = list(PAY_SHORT_DTC = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_RIFLEMAN
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_DUTCH
@@ -83,7 +83,7 @@
 
 /datum/equipment_preset/dutch/minigun
 	name = JOB_DUTCH_MINIGUNNER
-	paygrade = "DTCMG"
+	paygrades = list(PAY_SHORT_DTCMG = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_MINIGUNNER
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -116,7 +116,7 @@
 
 /datum/equipment_preset/dutch/flamer
 	name = JOB_DUTCH_FLAMETHROWER
-	paygrade = "DTCF"
+	paygrades = list(PAY_SHORT_DTCF = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_FLAMETHROWER
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -150,7 +150,7 @@
 
 /datum/equipment_preset/dutch/medic
 	name = JOB_DUTCH_MEDIC
-	paygrade = "DTCM"
+	paygrades = list(PAY_SHORT_DTCM = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_MEDIC
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -193,7 +193,7 @@
 
 /datum/equipment_preset/dutch/arnie
 	name = "Dutch's Dozen - Arnold"
-	paygrade = "ARN"
+	paygrades = list(PAY_SHORT_DTCA = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_ARNOLD
 	flags = EQUIPMENT_PRESET_EXTRA
 

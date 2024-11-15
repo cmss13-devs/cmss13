@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = SS_INIT_MAPPING
-	flags = SS_NO_FIRE
+	runlevels = ALL
 
 	var/list/datum/map_config/configs
 	var/list/datum/map_config/next_map_configs
@@ -19,15 +19,26 @@ SUBSYSTEM_DEF(mapping)
 	var/list/turf/unused_turfs = list() //Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
 	var/list/datum/turf_reservations //list of turf reservations
 	var/list/used_turfs = list() //list of turf = datum/turf_reservation
+	/// List of lists of turfs to reserve
+	var/list/lists_to_reserve = list()
 
 	var/list/reservation_ready = list()
 	var/clearing_reserved_turfs = FALSE
 
 	// Z-manager stuff
 	var/ground_start  // should only be used for maploading-related tasks
-	var/list/z_list
+	///list of all z level datums in the order of their z (z level 1 is at index 1, etc.)
+	var/list/datum/space_level/z_list
 	var/datum/space_level/transit
 	var/num_of_res_levels = 1
+
+	/// True when in the process of adding a new Z-level, global locking
+	var/adding_new_zlevel = FALSE
+	/// list of traits and their associated z leves
+	var/list/z_trait_levels = list()
+
+	/// list of lazy templates that have been loaded
+	var/list/loaded_lazy_templates
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -52,32 +63,72 @@ SUBSYSTEM_DEF(mapping)
 	loadWorld()
 	repopulate_sorted_areas()
 	preloadTemplates()
-	// Add the transit level
-	transit = add_new_zlevel("Transit/Reserved", list(ZTRAIT_RESERVED = TRUE))
-	initialize_reserved_level(transit.z_value)
+	// Add the first transit level
+	var/datum/space_level/base_transit = add_reservation_zlevel()
+	initialize_reserved_level(base_transit.z_value)
 	repopulate_sorted_areas()
-	for(var/maptype as anything in configs)
-		var/datum/map_config/MC = configs[maptype]
-		if(MC.perf_mode)
-			GLOB.perf_flags |= MC.perf_mode
+
+	if(configs[GROUND_MAP])
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Round restarted! Map is [configs[GROUND_MAP].map_name]"), CONFIG_GET(string/new_round_alert_channel))
+	else
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Round started!"), CONFIG_GET(string/new_round_alert_channel))
 
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/mapping/fire(resumed)
+	// Cache for sonic speed
+	var/list/unused_turfs = src.unused_turfs
+	// CM TODO: figure out if these 2 are needed. Might be required by updated versions of map reader
+	//var/list/world_contents = GLOB.areas_by_type[world.area].contents
+	//var/list/world_turf_contents = GLOB.areas_by_type[world.area].contained_turfs
+	var/list/lists_to_reserve = src.lists_to_reserve
+	var/index = 0
+	while(index < length(lists_to_reserve))
+		var/list/packet = lists_to_reserve[index + 1]
+		var/packetlen = length(packet)
+		while(packetlen)
+			if(MC_TICK_CHECK)
+				if(index)
+					lists_to_reserve.Cut(1, index)
+				return
+			var/turf/T = packet[packetlen]
+			T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
+			LAZYINITLIST(unused_turfs["[T.z]"])
+			unused_turfs["[T.z]"] |= T
+			//var/area/old_area = T.loc
+			//old_area.turfs_to_uncontain += T
+			T.turf_flags = UNUSED_RESERVATION_TURF
+			//world_contents += T
+			//world_turf_contents += T
+			packet.len--
+			packetlen = length(packet)
+
+		index++
+	lists_to_reserve.Cut(1, index)
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
 	if(clearing_reserved_turfs || !initialized) //in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
 	message_admins("Clearing dynamic reservation space.")
+	// /tg/ Shuttles have extra handling here to avoid them being desallocated
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
+
+/datum/controller/subsystem/mapping/proc/get_reservation_from_turf(turf/T)
+	RETURN_TYPE(/datum/turf_reservation)
+	return used_turfs[T]
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	initialized = SSmapping.initialized
 	map_templates = SSmapping.map_templates
+
+	shuttle_templates = SSmapping.shuttle_templates
 	unused_turfs = SSmapping.unused_turfs
 	turf_reservations = SSmapping.turf_reservations
 	used_turfs = SSmapping.used_turfs
+	areas_in_z = SSmapping.areas_in_z
 
 	configs = SSmapping.configs
 	next_map_configs = SSmapping.next_map_configs
@@ -110,29 +161,44 @@ SUBSYSTEM_DEF(mapping)
 	if (!length(traits))  // null or empty - default
 		for (var/i in 1 to total_z)
 			traits += list(default_traits)
-	else if (total_z != traits.len)  // mismatch
-		INIT_ANNOUNCE("WARNING: [traits.len] trait sets specified for [total_z] z-levels in [path]!")
-		if (total_z < traits.len)  // ignore extra traits
+	else if (total_z != length(traits))  // mismatch
+		INIT_ANNOUNCE("WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!")
+		if (total_z < length(traits))  // ignore extra traits
 			traits.Cut(total_z + 1)
-		while (total_z > traits.len)  // fall back to defaults on extra levels
+		while (total_z > length(traits))  // fall back to defaults on extra levels
 			traits += list(default_traits)
 
 	// preload the relevant space_level datums
 	var/start_z = world.maxz + 1
 	var/i = 0
 	for (var/level in traits)
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level)
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
 		++i
+
+	// ================== CM Change ==================
+	// For some reason /tg/ SSmapping attempts to center the map in new Z-Level
+	// but because it's done before loading, it's calculated before performing
+	// X/Y world expansion. When loading a map bigger than world, this results
+	// in a negative offset and the start of the map to not be loaded.
 
 	// load the maps
 	for (var/datum/parsed_map/pm as anything in parsed_maps)
-		var/cur_z = start_z + parsed_maps[pm]
-		if (!pm.load(1, 1, cur_z, no_changeturf = TRUE))
+		var/bounds = pm.bounds
+		var/x_offset = 1
+		var/y_offset = 1
+		if(bounds && world.maxx > bounds[MAP_MAXX])
+			x_offset = floor(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1
+		if(bounds && world.maxy > bounds[MAP_MAXY])
+			y_offset = floor(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
+		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
-		if(istype(z_list[cur_z], /datum/space_level))
-			var/datum/space_level/cur_level = z_list[cur_z]
-			cur_level.x_bounds = pm.bounds[MAP_MAXX]
-			cur_level.y_bounds = pm.bounds[MAP_MAXY]
+		// CM Snowflake for Mass Screenshot dimensions auto detection
+		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
+			var/datum/space_level/zlevel = z_list[start_z + z - 1]
+			zlevel.bounds = list(bounds[MAP_MINX], bounds[MAP_MINY], z, bounds[MAP_MAXX], bounds[MAP_MAXY], z)
+
+	// =============== END CM Change =================
+
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
@@ -170,8 +236,8 @@ SUBSYSTEM_DEF(mapping)
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
-		if(FailedZs.len > 1)
-			for(var/I in 2 to FailedZs.len)
+		if(length(FailedZs) > 1)
+			for(var/I in 2 to length(FailedZs))
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
@@ -210,7 +276,7 @@ SUBSYSTEM_DEF(mapping)
 	. = list()
 	var/list/Lines = file2list(filename)
 
-	if(!Lines.len)
+	if(!length(Lines))
 		return
 	for (var/t in Lines)
 		if (!t)
@@ -251,66 +317,76 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/tent/new_tent = new template()
 		tent_type_templates[new_tent.map_id] = new_tent
 
-/datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
-	UNTIL(initialized && !clearing_reserved_turfs)
-	var/datum/turf_reservation/reserve = new type
-	if(turf_type_override)
+/// Adds a new reservation z level. A bit of space that can be handed out on request
+/// Of note, reservations default to transit turfs, to make their most common use, shuttles, faster
+/datum/controller/subsystem/mapping/proc/add_reservation_zlevel(for_shuttles)
+	num_of_res_levels++
+	return add_new_zlevel("Transit/Reserved #[num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
+
+/// Requests a /datum/turf_reservation based on the given width, height, and z_size. You can specify a z_reservation to use a specific z level, or leave it null to use any z level.
+/datum/controller/subsystem/mapping/proc/request_turf_block_reservation(
+	width,
+	height,
+	z_size = 1,
+	z_reservation = null,
+	reservation_type = /datum/turf_reservation,
+	turf_type_override = null,
+)
+	UNTIL((!z_reservation || reservation_ready["[z_reservation]"]) && !clearing_reserved_turfs)
+	var/datum/turf_reservation/reserve = new reservation_type
+	if(!isnull(turf_type_override))
 		reserve.turf_type = turf_type_override
-	if(!z)
+	if(!z_reservation)
 		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
-			if(reserve.Reserve(width, height, i))
+			if(reserve.reserve(width, height, z_size, i))
 				return reserve
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
-		log_debug("Ran out of space in existing transit levels, adding a new one")
-		num_of_res_levels++
-		var/datum/space_level/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
+		var/datum/space_level/newReserved = add_reservation_zlevel()
 		initialize_reserved_level(newReserved.z_value)
-		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
-			if(reserve.Reserve(width, height, i))
-				return reserve
-		CRASH("Despite adding a fresh reserved zlevel still failed to get a reservation")
+		if(reserve.reserve(width, height, z_size, newReserved.z_value))
+			return reserve
 	else
-		if(!level_trait(z, ZTRAIT_RESERVED))
-			log_debug("Cannot block reserve on a non-ZTRAIT_RESERVED level")
+		if(!level_trait(z_reservation, ZTRAIT_RESERVED))
 			qdel(reserve)
 			return
 		else
-			if(reserve.Reserve(width, height, z))
+			if(reserve.reserve(width, height, z_size, z_reservation))
 				return reserve
-	log_debug("unknown reservation failure")
 	QDEL_NULL(reserve)
 
-//This is not for wiping reserved levels, use wipe_reservations() for that.
+///Sets up a z level as reserved
+///This is not for wiping reserved levels, use wipe_reservations() for that.
+///If this is called after SSatom init, it will call Initialize on all turfs on the passed z, as its name promises
 /datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
 	UNTIL(!clearing_reserved_turfs) //regardless, lets add a check just in case.
 	clearing_reserved_turfs = TRUE //This operation will likely clear any existing reservations, so lets make sure nothing tries to make one while we're doing it.
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
-	var/turf/A = get_turf(locate(8,8,z))
-	var/turf/B = get_turf(locate(world.maxx - 8,world.maxy - 8,z))
-	var/block = block(A, B)
-	for(var/t in block)
-		// No need to empty() these, because it's world init and they're
-		// already /turf/open/space/basic.
-		var/turf/T = t
-		T.flags_atom |= UNUSED_RESERVATION_TURF
+	var/block = block(SHUTTLE_TRANSIT_BORDER, SHUTTLE_TRANSIT_BORDER, z, world.maxx - SHUTTLE_TRANSIT_BORDER, world.maxy - SHUTTLE_TRANSIT_BORDER, z)
+	for(var/turf/T as anything in block)
+		// No need to empty() these, because they just got created and are already /turf/open/space/basic.
+		T.turf_flags = UNUSED_RESERVATION_TURF
+		CHECK_TICK
+
+	// Gotta create these suckers if we've not done so already
+	if(SSatoms.initialized)
+		SSatoms.InitializeAtoms(Z_TURFS(z))
+
 	unused_turfs["[z]"] = block
 	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
 
-/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
-	for(var/i in turfs)
-		var/turf/T = i
-		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
-		LAZYINITLIST(unused_turfs["[T.z]"])
-		unused_turfs["[T.z]"] |= T
-		T.flags_atom |= UNUSED_RESERVATION_TURF
-		GLOB.areas_by_type[world.area].contents += T
-		CHECK_TICK
+/// Schedules a group of turfs to be handed back to the reservation system's control
+/// If await is true, will sleep until the turfs are finished work
+/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs, await = FALSE)
+	lists_to_reserve += list(turfs)
+	if(await)
+		UNTIL(!length(turfs))
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
 /datum/controller/subsystem/mapping/proc/do_wipe_turf_reservations()
+	PRIVATE_PROC(TRUE)
 	UNTIL(initialized) //This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
 	for(var/i in turf_reservations)
 		var/datum/turf_reservation/TR = i
@@ -318,18 +394,27 @@ SUBSYSTEM_DEF(mapping)
 			qdel(TR, TRUE)
 	UNSETEMPTY(turf_reservations)
 	var/list/clearing = list()
-	for(var/l in unused_turfs) //unused_turfs is a assoc list by z = list(turfs)
+	for(var/l in unused_turfs) //unused_turfs is an assoc list by z = list(turfs)
 		if(islist(unused_turfs[l]))
 			clearing |= unused_turfs[l]
 	clearing |= used_turfs //used turfs is an associative list, BUT, reserve_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
 	unused_turfs.Cut()
 	used_turfs.Cut()
-	reserve_turfs(clearing)
+	reserve_turfs(clearing, await = TRUE)
 
 /datum/controller/subsystem/mapping/proc/reg_in_areas_in_z(list/areas)
 	for(var/B in areas)
 		var/area/A = B
 		A.reg_in_areas_in_z()
+
+/// Takes a z level datum, and tells the mapping subsystem to manage it
+/// Also handles things like plane offset generation, and other things that happen on a z level to z level basis
+/datum/controller/subsystem/mapping/proc/manage_z_level(datum/space_level/new_z, filled_with_space, contain_turfs = TRUE)
+	// First, add the z
+	z_list += new_z
+	// Then we build our lookup lists
+	//var/z_value = new_z.z_value
+	//TODO: All the Z-plane init stuff goes below here normally, we don't have that yet
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()
@@ -339,3 +424,28 @@ SUBSYSTEM_DEF(mapping)
 	if(!MC)
 		return MAIN_SHIP_DEFAULT_NAME
 	return MC.map_name
+
+/datum/controller/subsystem/mapping/proc/lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	RETURN_TYPE(/datum/turf_reservation)
+
+	UNTIL(initialized)
+	var/static/lazy_loading = FALSE
+	UNTIL(!lazy_loading)
+
+	lazy_loading = TRUE
+	. = _lazy_load_template(template_to_load, force)
+	lazy_loading = FALSE
+	return .
+
+/datum/controller/subsystem/mapping/proc/_lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	PRIVATE_PROC(TRUE)
+
+	if(LAZYACCESS(loaded_lazy_templates, template_to_load) && !force)
+		var/datum/lazy_template/template = GLOB.lazy_templates[template_to_load]
+		return template.reservations[1]
+	LAZYSET(loaded_lazy_templates, template_to_load, TRUE)
+
+	var/datum/lazy_template/target = GLOB.lazy_templates[template_to_load]
+	if(!target)
+		CRASH("Attempted to lazy load a template key that does not exist: '[template_to_load]'")
+	return target.lazy_load()

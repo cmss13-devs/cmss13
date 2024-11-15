@@ -149,6 +149,7 @@
 		CRASH("No bound wound to link action")
 
 /datum/action/human_action/rest_legs/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/homan = owner
 	if(in_use)
 		to_chat(homan, SPAN_WARNING("You're already doing that!"))

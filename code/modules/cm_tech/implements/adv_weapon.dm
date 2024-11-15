@@ -40,7 +40,7 @@
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/techweb_railgun
@@ -130,6 +130,7 @@
 	name = "Start Charging"
 
 /datum/action/item_action/techweb_railgun_start_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.start_charging(owner)
@@ -138,6 +139,7 @@
 	name = "Abort Charge"
 
 /datum/action/item_action/techweb_railgun_abort_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.abort_charge(owner)

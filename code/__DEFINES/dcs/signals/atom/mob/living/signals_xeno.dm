@@ -50,6 +50,10 @@
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_PRE_ACTION_USED "xeno_pre_action_used"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_FAILED_ACTION_USED "xeno_failed_action_used"
 /// From /mob/living/carbon/xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/xenomorph/proc/recalculate_speed()
@@ -62,3 +66,22 @@
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
+
+/// From /datum/action/xeno_action/onclick/plant_weeds/use_ability(): (atom/A)
+#define COMSIG_XENO_PLANT_RESIN_NODE "xeno_plant_resin_node"
+
+/// From //mob/living/carbon/xenomorph/proc/emit_pheromones(): (pheromone, emit_cost)
+#define COMSIG_XENO_START_EMIT_PHEROMONES "xeno_start_emit_pheromones"
+
+/// From /obj/effect/alien/resin/special/eggmorph/attack_alien: (mob/living/carbon/xenomorph/M)
+#define COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER "xeno_take_hugger_from_morpher"
+
+/// From /mob/living/carbon/xenomorph/proc/handle_crit()
+#define COMSIG_XENO_ENTER_CRIT "xeno_entering_critical"
+
+/// From /mob/living/carbon/xenomorph/proc/hivemind_talk(): (message)
+#define COMSIG_XENO_TRY_HIVEMIND_TALK "xeno_try_hivemind_talk"
+	#define COMPONENT_OVERRIDE_HIVEMIND_TALK (1<<0)
+
+/// used in /datum/component/status_effect/cleanse()
+#define COMSIG_XENO_DEBUFF_CLEANSE "xeno_debuff_cleanse"

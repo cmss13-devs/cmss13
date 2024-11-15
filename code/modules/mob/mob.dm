@@ -102,6 +102,8 @@
 				I = image('icons/mob/hud/sec_hud.dmi', src, "")
 			if(HUNTER_CLAN,HUNTER_HUD)
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
+			if(HOLOCARD_HUD)
+				I = image('icons/mob/hud/marine_hud.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -370,25 +372,6 @@
 	SIGNAL_HANDLER
 	reset_view(null)
 
-/mob/proc/show_inv(mob/user)
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=mask'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
-	<BR>[(internal ? text("<A href='?src=\ref[src];item=internal'>Remove Internal</A>") : "")]
-	<BR><A href='?src=\ref[src];item=pockets'>Empty Pockets</A>
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
-	return
-
-
-
 /mob/proc/point_to_atom(atom/A, turf/T)
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
@@ -446,23 +429,9 @@
 		update_flavor_text()
 	return
 
-
-/mob/MouseDrop(mob/M)
-	..()
-	if(M != usr) return
-	if(usr == src) return
-	if(!Adjacent(usr)) return
-	if(!ishuman(M) && !ismonkey(M)) return
-	if(!ishuman(src) && !ismonkey(src)) return
-	if(M.is_mob_incapacitated())
-		return
-	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
-		return
-
-	show_inv(M)
-
 /mob/proc/swap_hand()
 	hand = !hand
+	SEND_SIGNAL(src, COMSIG_MOB_SWAPPED_HAND)
 
 //attempt to pull/grab something. Returns true upon success.
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
@@ -501,7 +470,13 @@
 		if(!M.can_be_pulled_by(src))
 			return
 	else if(istype(AM, /obj))
+		if(recently_grabbed > world.time)
+			return FALSE
+		recently_grabbed = world.time + 6
 		AM.add_fingerprint(src)
+		animation_attack_on(AM)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		flick_attack_overlay(AM, "grab")
 
 	if(!QDELETED(AM.pulledby) && !QDELETED(M))
 		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
@@ -565,6 +540,7 @@
 		msg_admin_attack("[key_name(src)] grabbed [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		if(!no_msg)
+			animation_attack_on(M)
 			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
@@ -693,7 +669,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(client.moving) return 0
+	if(client?.moving) return 0
 	if(stat==2) return 0
 	if(anchored) return 0
 	if(monkeyizing) return 0
@@ -760,7 +736,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "You are unconscious and cannot do that!")
 		return
 
 	if(usr.is_mob_restrained())
@@ -802,7 +778,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
-	if(valid_objects.len == 1) //Yanking out last object - removing verb.
+	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
@@ -833,27 +809,17 @@ note dizziness decrements automatically in the mob's Life() proc.
 	selection.forceMove(get_turf(src))
 	return TRUE
 
+///Can this mob resist (default FALSE)
+/mob/proc/can_resist()
+	return FALSE
+
 /mob/living/proc/handle_statuses()
-	handle_stunned()
-	handle_knocked_down()
-	handle_knocked_out()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
-	handle_dazed()
 	handle_slowed()
 	handle_superslowed()
-
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		adjust_effect(-1, STUN)
-	return stunned
-
-/mob/living/proc/handle_dazed()
-	if(dazed)
-		adjust_effect(-1, DAZE)
-	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -864,19 +830,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
-
-
-/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
-	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0)
-		knocked_down_callback_check()
-	return knocked_down
-
-/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
-	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0)
-		knocked_out_callback_check()
-	return knocked_out
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -952,7 +905,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			conga_line += S.buckled
 	while(!end_of_conga)
 		var/atom/movable/A = S.pulling
-		if(A in conga_line || A.anchored) //No loops, nor moving anchored things.
+		if((A in conga_line) || A.anchored) //No loops, nor moving anchored things.
 			end_of_conga = TRUE
 			break
 		conga_line += A
@@ -1006,6 +959,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+	SEND_SIGNAL(src, COMSIG_MOB_GET_STATUS_TAB_ITEMS, .)
 
 /mob/proc/get_role_name()
 	return
@@ -1073,3 +1027,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/update_stat()
 	return
+
+/// Send src back to the lobby as a `/mob/new_player()`
+/mob/proc/send_to_lobby()
+	var/mob/new_player/new_player = new
+
+	if(!mind)
+		mind_initialize()
+
+	mind.transfer_to(new_player)
+
+	qdel(src)

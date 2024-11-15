@@ -1,7 +1,9 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { BooleanLike } from '../../common/react';
+import { useBackend } from '../backend';
 import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { BooleanLike } from '../../common/react';
 
 type Emote = {
   id: string;
@@ -16,25 +18,22 @@ type BackendContext = {
   on_cooldown: BooleanLike;
 };
 
-const EmoteTab = (props, context) => {
-  const { data, act } = useBackend<BackendContext>(context);
+const EmoteTab = (props) => {
+  const { data, act } = useBackend<BackendContext>();
   const { categories, emotes, on_cooldown } = data;
-  const [categoryIndex, setCategoryIndex] = useLocalState(
-    context,
-    'category_index',
-    'Fake Sound'
-  );
+  const [categoryIndex, setCategoryIndex] = useState('Fake Sound');
   const mapped_emote = emotes.filter(
-    (emote) => emote && emote.category === categoryIndex
+    (emote) => emote && emote.category === categoryIndex,
   );
   return (
     <Stack fill vertical>
       <Stack.Item>
         <span
           style={{
-            'position': 'relative',
-            'top': '8px',
-          }}>
+            position: 'relative',
+            top: '8px',
+          }}
+        >
           <Tabs>
             {categories.map((item, key) => (
               <Tabs.Tab
@@ -42,7 +41,8 @@ const EmoteTab = (props, context) => {
                 selected={item === categoryIndex}
                 onClick={() => {
                   setCategoryIndex(item);
-                }}>
+                }}
+              >
                 {item}
               </Tabs.Tab>
             ))}
@@ -58,7 +58,7 @@ const EmoteTab = (props, context) => {
                 <Stack>
                   <span
                     style={{
-                      'vertical-align': 'middle',
+                      verticalAlign: 'middle',
                     }}
                   />{' '}
                   <Stack.Item>
@@ -67,14 +67,12 @@ const EmoteTab = (props, context) => {
                       height="20px"
                       width="32px"
                       style={{
-                        '-ms-interpolation-mode': 'nearest-neighbor',
-                        'vertical-align': 'middle',
+                        verticalAlign: 'middle',
                       }}
                     />
                   </Stack.Item>
                   <Stack.Item mt={-0.5}>
                     <Button
-                      content={item.text}
                       tooltip={item.id}
                       disabled={on_cooldown}
                       onClick={() =>
@@ -82,7 +80,9 @@ const EmoteTab = (props, context) => {
                           emotePath: item.path,
                         })
                       }
-                    />
+                    >
+                      {item.text}
+                    </Button>
                   </Stack.Item>
                 </Stack>
                 <Divider />
@@ -95,13 +95,14 @@ const EmoteTab = (props, context) => {
   );
 };
 
-export const YautjaEmotes = (props, context) => {
+export const YautjaEmotes = (props) => {
   return (
     <Window
       width={750}
       height={600}
       theme="crtgreen"
-      title="Yautja Audio Panel">
+      title="Yautja Audio Panel"
+    >
       <Window.Content>
         <EmoteTab />
       </Window.Content>

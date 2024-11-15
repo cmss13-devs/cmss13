@@ -43,7 +43,7 @@
 	old_x = -16
 	tier = 2
 	pull_speed = 2 // about what it was before, slightly faster
-
+	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -55,12 +55,17 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
+
 	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
+	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
+
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
@@ -95,10 +100,13 @@
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
 			living_mob.drop_held_items()
-			living_mob.apply_effect(get_xeno_stun_duration(living_mob, 2), WEAKEN)
-			living_mob.pulledby = src
+			var/duration = get_xeno_stun_duration(living_mob, 2)
+			living_mob.KnockDown(duration)
+			living_mob.Stun(duration)
+			if(living_mob.pulledby != src)
+				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
-			SPAN_XENOWARNING("You grab [living_mob] by the throat!"))
+			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
@@ -144,7 +152,7 @@
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)
 			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
-			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
+			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("We glow as we heal even more from our injuries!"))
 			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
 			bound_xeno.emote("roar")
@@ -152,7 +160,7 @@
 			emote_cooldown = world.time + 5 SECONDS
 		addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
 
-	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
+	bound_xeno.gain_health(clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 
 /datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
 	bound_xeno.remove_filter("empower_rage")
@@ -182,11 +190,11 @@
 	var/obj/limb/limb = human.get_limb(check_zone(zone_selected))
 
 	if(can_not_harm(human))
-		to_chat(src, SPAN_XENOWARNING("You can't harm this host!"))
+		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
 		return
 
 	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
+		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
 		return FALSE
 	var/limb_time = rand(40,60)
 
@@ -194,12 +202,12 @@
 		limb_time = rand(90,110)
 
 	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"), \
-	SPAN_XENOWARNING("You begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
+	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
 		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_NOTICE("You detect an embryo inside [mob] which overwhelms your instinct to rip."))
+			to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
@@ -210,7 +218,7 @@
 		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"), \
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
 	else
-		visible_message(SPAN_XENOWARNING("You hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"), \
+		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"), \
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
 		limb.take_damage(rand(15,25), 0, 0)
 		limb.fracture(100)
@@ -220,7 +228,7 @@
 	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
-		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)

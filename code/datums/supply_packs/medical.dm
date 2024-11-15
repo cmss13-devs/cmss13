@@ -17,13 +17,58 @@
 		/obj/item/storage/pill_bottle/peridaxon,
 		/obj/item/storage/box/pillbottles,
 	)
+	cost = 15
+	containertype = /obj/structure/closet/crate/medical
+	containername = "medical crate"
+	group = "Medical"
+
+/datum/supply_packs/medical_restock_cart
+	name = "medical restock cart"
+	contains = list(
+		/obj/structure/restock_cart/medical,
+	)
 	cost = 20
+	containertype = null
+	containername = "medical restock cart"
+	group = "Medical"
+
+/datum/supply_packs/medical_reagent_cart
+	name = "medical reagent restock cart"
+	contains = list(
+		/obj/structure/restock_cart/medical/reagent,
+	)
+	cost = 20
+	containertype = null
+	containername = "medical reagent restock cart"
+	group = "Medical"
+
+/datum/supply_packs/pillbottle
+	name = "pill bottle crate (x2 each)"
+	contains = list(
+		/obj/item/storage/pill_bottle/inaprovaline,
+		/obj/item/storage/pill_bottle/antitox,
+		/obj/item/storage/pill_bottle/bicaridine,
+		/obj/item/storage/pill_bottle/dexalin,
+		/obj/item/storage/pill_bottle/kelotane,
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/storage/pill_bottle/peridaxon,
+		/obj/item/storage/pill_bottle/inaprovaline,
+		/obj/item/storage/pill_bottle/antitox,
+		/obj/item/storage/pill_bottle/bicaridine,
+		/obj/item/storage/pill_bottle/dexalin,
+		/obj/item/storage/pill_bottle/kelotane,
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/storage/pill_bottle/peridaxon,
+		/obj/item/storage/box/pillbottles,
+		/obj/item/storage/box/pillbottles,
+	)
+	cost = 15
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
 
 /datum/supply_packs/firstaid
-	name = "first aid kit crate (2x each)"
+	name = "first aid kit crate (x2 each)"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,
@@ -36,7 +81,7 @@
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/adv,
 	)
-	cost = 20
+	cost = 11
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -49,7 +94,7 @@
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
 	)
-	cost = 20
+	cost = 7
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
 	group = "Medical"
@@ -61,7 +106,7 @@
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
 	)
-	cost = 40
+	cost = 15
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"
@@ -76,7 +121,7 @@
 		/obj/item/storage/box/masks,
 		/obj/item/storage/box/gloves,
 	)
-	cost = 30
+	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery
 	containername = "surgery crate"
 	access = ACCESS_MARINE_MEDBAY

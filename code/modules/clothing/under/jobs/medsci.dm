@@ -2,10 +2,27 @@
  * Science
  */
 
+/obj/item/clothing/under/rank/rd
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
+	name = "research director's uniform"
+	icon_state = "rdalt_s"
+	worn_state = "rdalt_s"
+	permeability_coefficient = 0.50
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
+
 /obj/item/clothing/under/rank/rdalt
-	desc = "A simple blue utilitarian jumpsuit that serves as the standard issue service uniform of support synthetics onboard USCM facilities. While commonly associated with the staple Bishop units, reduced funding to the Colonial Marines has led to a wide range of models filling these uniforms, especially in battalions operating in the edge frontier."
-	name = "synthetic service uniform"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
+	name = "research director's jumpsuit"
 	icon_state = "rdalt"
+	permeability_coefficient = 0.50
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -144,7 +161,7 @@
 	item_state_slots = list(WEAR_BODY = "orderly")
 
 /obj/item/clothing/under/rank/medical
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. They have a cross on the chest denoting that the wearer is trained medical personnel."
 	name = "medical doctor's uniform"
 	icon_state = "medical"
 	item_state = "w_suit"
@@ -159,33 +176,54 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	item_state_slots = list(WEAR_BODY = "medical")
 
-/obj/item/clothing/under/rank/medical/nurse
-	name = "medical nurse scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one features an orange armband."
-	icon_state = "scrubsnurse"
-	item_state = "scrubsnurse"
-	item_state_slots = list(WEAR_BODY = "scrubsnurse")
+/obj/item/clothing/under/rank/medical/lightblue
+	name = "medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in light blue."
+	icon_state = "scrubslightblue"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubslightblue")
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in formal blue."
 	icon_state = "scrubsblue"
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in jade green."
 	icon_state = "scrubsgreen"
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsgreen")
 
 /obj/item/clothing/under/rank/medical/purple
 	name = "medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in berry red."
 	icon_state = "scrubspurple"
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
+
+/obj/item/clothing/under/rank/medical/olive
+	name = "medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in olive green."
+	icon_state = "scrubsolive"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsolive")
+
+/obj/item/clothing/under/rank/medical/grey
+	name = "medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in mundane grey."
+	icon_state = "scrubsgrey"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsgrey")
+
+/obj/item/clothing/under/rank/medical/orange
+	name = "medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in prisoner orange."
+	icon_state = "scrubsorange"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsorange")
 
 /obj/item/clothing/under/rank/psych
 	desc = "A basic white jumpsuit. It has turquoise markings that denote the wearer as a psychiatrist."

@@ -1,5 +1,5 @@
 /obj/item/folded_tent
-	name = "Folded Abstract Tent"
+	name = "folded abstract tent"
 	icon = 'icons/obj/structures/tents_folded.dmi'
 	icon_state = "tent"
 	w_class = SIZE_LARGE
@@ -48,14 +48,14 @@
 			return FALSE
 		if(turf.density)
 			if(message_receiver)
-				to_chat(message_receiver, SPAN_WARNING("You cannot deploy the [src] here, something ([turf]) is in the way."))
+				to_chat(message_receiver, SPAN_WARNING("You cannot deploy [src] here, something ([turf]) is in the way."))
 			if(display_error)
 				new /obj/effect/overlay/temp/tent_deployment_area/error(turf)
 			return FALSE
 		for(var/atom/movable/atom as anything in turf)
 			if(isliving(atom) || (atom.density && atom.can_block_movement) || istype(atom, /obj/structure/tent))
 				if(message_receiver)
-					to_chat(message_receiver, SPAN_WARNING("You cannot deploy the [src] here, something ([atom.name]) is in the way."))
+					to_chat(message_receiver, SPAN_WARNING("You cannot deploy [src] here, something ([atom.name]) is in the way."))
 				if(display_error)
 					new /obj/effect/overlay/temp/tent_deployment_area/error(turf)
 				return FALSE
@@ -69,8 +69,7 @@
 
 /obj/item/folded_tent/proc/get_deployment_area(turf/ref_turf)
 	RETURN_TYPE(/list/turf)
-	var/turf/block_end_turf = locate(ref_turf.x + dim_x - 1, ref_turf.y + dim_y - 1, ref_turf.z)
-	return block(ref_turf, block_end_turf)
+	return CORNER_BLOCK(ref_turf, dim_x, dim_y)
 
 /obj/item/folded_tent/attack_self(mob/living/user)
 	. = ..()
@@ -108,8 +107,8 @@
 	for(var/turf/turf in deployment_area)
 		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area/casting(turf)
 
-	user.visible_message(SPAN_INFO("[user] starts deploying the [src]..."), \
-		SPAN_WARNING("You start assembling the [src]... Stand still, it might take a bit to figure it out..."))
+	user.visible_message(SPAN_INFO("[user] starts deploying [src]..."), \
+		SPAN_WARNING("You start assembling [src]... Stand still, it might take a bit to figure it out..."))
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		for(var/gfx in turf_overlay)
@@ -122,7 +121,7 @@
 		return
 
 	unfold(user, deploy_turf)
-	user.visible_message(SPAN_INFO("[user] finishes deploying the [src]!"), SPAN_INFO("You finish deploying the [src]!"))
+	user.visible_message(SPAN_INFO("[user] finishes deploying [src]!"), SPAN_INFO("You finish deploying [src]!"))
 	for(var/gfx in turf_overlay)
 		qdel(gfx)
 	qdel(src) // Success!

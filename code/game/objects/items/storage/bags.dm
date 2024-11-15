@@ -46,9 +46,9 @@
 
 	if(!sum_storage_cost)
 		icon_state = "trashbag0"
-	else if(sum_storage_cost < round(max_storage_space * 0.35))
+	else if(sum_storage_cost < floor(max_storage_space * 0.35))
 		icon_state = "trashbag1"
-	else if(sum_storage_cost < round(max_storage_space * 0.7))
+	else if(sum_storage_cost < floor(max_storage_space * 0.7))
 		icon_state = "trashbag2"
 	else
 		icon_state = "trashbag3"
@@ -93,7 +93,7 @@
 // -----------------------------
 
 /obj/item/storage/bag/plants
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "plantbag"
 	name = "Plant Bag"
 	storage_slots = 50; //the number of plant pieces it can carry.
@@ -203,7 +203,7 @@
 	var/row_num = 0
 	var/col_count = min(7,storage_slots) -1
 	if (adjusted_contents > 7)
-		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+		row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 	slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
@@ -253,7 +253,7 @@
 // -----------------------------
 
 /obj/item/storage/bag/cash
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "cashbag"
 	name = "Cash bag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."

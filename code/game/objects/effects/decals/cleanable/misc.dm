@@ -36,7 +36,7 @@
 	acid_damage = 1
 	icon_state = "greenglow"
 	light_range = 1
-	light_color = COLOUR_GREEN
+	light_color = COLOR_LIGHT_GREEN
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -55,7 +55,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 	light_range = 1
-	light_color = COLOUR_GREEN
+	light_color = COLOR_LIGHT_GREEN
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
@@ -99,7 +99,7 @@
 	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
 	garbage = FALSE
 /obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
-	alpha += round(webscale * 120)
+	alpha += floor(webscale * 120)
 	var/angle = dir2angle(targetdir)
 	var/matrix/TM = new
 	TM *= webscale

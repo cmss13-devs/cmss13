@@ -47,12 +47,12 @@
 	src.add_fingerprint(user)
 	if(chameleon_on)
 		user.alpha = 25
-		to_chat(user, SPAN_NOTICE("You activate the [src]."))
+		to_chat(user, SPAN_NOTICE("You activate [src]."))
 		spark_system.start()
 		src.icon_state = "shield1"
 	else
 		user.alpha = initial(user.alpha)
-		to_chat(user, SPAN_NOTICE("You deactivate the [src]."))
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		src.icon_state = "shield0"
 		spark_system.start()
 

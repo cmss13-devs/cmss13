@@ -22,6 +22,9 @@
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/attack_hand(mob/user)
 	if(..())
 		return
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied!"))
+		return
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -55,7 +58,7 @@
 			.["docking_status"] = STATE_LAUNCHED
 	var/obj/structure/machinery/door/door = shuttle.door_handler.doors[1]
 	.["door_state"] = door.density
-	.["door_lock"] = shuttle.door_handler.is_locked
+	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
 	.["launch_without_evac"] = launch_without_evac
 
@@ -86,6 +89,7 @@
 			. = TRUE
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison
+	req_access = list(ACCESS_WY_GENERAL)
 	launch_without_evac = TRUE
 
 //=========================================================================================
@@ -97,14 +101,19 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	time_till_despawn = 6000000 //near infinite so despawn never occurs.
+	/// The name of the mob who injected the occupant into the pod. If it does not match the occupant, the occupant can leave.
+	var/injector_name
 	var/being_forced = 0 //Simple variable to prevent sound spam.
 	var/dock_state = STATE_IDLE
 
 /obj/structure/machinery/cryopod/evacuation/ex_act(severity)
 	return FALSE
 
-/obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/G, mob/user)
-	if(istype(G))
+/obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/the_grab, mob/user)
+	if(istype(the_grab))
+		if(user.is_mob_incapacitated() || !(ishuman(user)))
+			return FALSE
+
 		if(being_forced)
 			to_chat(user, SPAN_WARNING("There's something forcing it open!"))
 			return FALSE
@@ -117,16 +126,20 @@
 			to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 			return FALSE
 
-		var/mob/living/carbon/human/M = G.grabbed_thing
-		if(!istype(M))
+		var/mob/living/carbon/human/grabbed_mob = the_grab.grabbed_thing
+		if(!istype(grabbed_mob))
+			return FALSE
+		if(grabbed_mob.stat == DEAD) //This mob is dead
+			to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
 			return FALSE
 
-		visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), null, null, 3)
+		visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M)
+			if(!grabbed_mob || !the_grab || !the_grab.grabbed_thing || !the_grab.grabbed_thing.loc || the_grab.grabbed_thing != grabbed_mob)
 				return FALSE
-			move_mob_inside(M)
+			move_mob_inside(grabbed_mob)
+			injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/eject()
 	set name = "Eject Pod"
@@ -136,17 +149,24 @@
 	if(!occupant || !usr.stat || usr.is_mob_restrained())
 		return FALSE
 
-	if(occupant) //Once you're in, you cannot exit, and outside forces cannot eject you.
-		//The occupant is actually automatically ejected once the evac is canceled.
-		if(occupant != usr) to_chat(usr, SPAN_WARNING("You are unable to eject the occupant unless the evacuation is canceled."))
-
 	add_fingerprint(usr)
+	//Once you're in, you cannot exit, and outside forces cannot eject you.
+	//The occupant is actually automatically ejected once the evac is canceled.
+	if(occupant != usr)
+		to_chat(usr, SPAN_WARNING("You are unable to eject the occupant unless the evacuation is canceled."))
+		return FALSE
+	if(occupant.real_name != injector_name)
+		go_out()
+	else
+		to_chat(usr, SPAN_WARNING("You are unable to leave the [src] until evacuation completes, or is cancelled!."))
+		return FALSE
 
 /obj/structure/machinery/cryopod/evacuation/go_out() //When the system ejects the occupant.
 	if(occupant)
 		occupant.forceMove(get_turf(src))
 		occupant.in_stasis = FALSE
 		occupant = null
+		injector_name = null
 		icon_state = orient_right ? "body_scanner_open-r" : "body_scanner_open"
 
 /obj/structure/machinery/cryopod/evacuation/move_inside()
@@ -176,6 +196,7 @@
 	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		user.stop_pulling()
 		move_mob_inside(user)
+		injector_name = user.real_name
 
 /obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user)
 	if(being_forced)
@@ -221,7 +242,7 @@
 
 /obj/structure/machinery/door/airlock/evacuation/Destroy()
 	if(linked_shuttle)
-		linked_shuttle.mode = SHUTTLE_CRASHED
+		linked_shuttle.set_mode(SHUTTLE_CRASHED)
 		linked_shuttle.door_handler.doors -= list(src)
 	. = ..()
 

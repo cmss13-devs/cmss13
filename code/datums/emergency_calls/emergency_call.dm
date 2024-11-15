@@ -28,9 +28,13 @@
 	var/mob_min = 3
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
+	/// Probability that the message will be replaced with static. - prob(chance_hidden)
+	var/chance_hidden = 20
+	/// Message to display when distress beacon is hidden
+	var/static_message = "**STATIC** %$#&!- *!%^#$$ ^%%$# +_!@* &*%$## **STATIC** &%$#^*! @!*%$# ^%&$#@ *%&$#^ **STATIC** --SIGNAL LOST"
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
-	var/probability = 0 //Chance of it occurring. Total must equal 100%
+	var/probability = 0
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
 	var/list/datum/mind/members = list() //Currently-joined members.
 	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
@@ -46,19 +50,25 @@
 	var/max_heavies = 1
 	var/max_smartgunners = 1
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
-	var/auto_shuttle_launch = FALSE
+	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
 
 	var/time_required_for_job = 5 HOURS
 
+	/// the shuttle being used by this distress call
+	var/obj/docking_port/mobile/emergency_response/shuttle
+
+	/// the [/datum/lazy_template] we should attempt to spawn in for the return journey
+	var/home_base = /datum/lazy_template/ert/freelancer_station
+
 /datum/game_mode/proc/initialize_emergency_calls()
-	if(all_calls.len) //It's already been set up.
+	if(length(all_calls)) //It's already been set up.
 		return
 
 	var/list/total_calls = typesof(/datum/emergency_call)
-	if(!total_calls.len)
+	if(!length(total_calls))
 		to_world(SPAN_DANGER("\b Error setting up emergency calls, no datums found."))
 		return FALSE
 	for(var/S in total_calls)
@@ -92,12 +102,19 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.name == call_name)
-			var/datum/emergency_call/em_call = new E.type()
-			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce_incoming)
-			return
+	if(ispath(call_name, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_name
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
+	var/call_path = text2path(call_name)
+	if(ispath(call_path, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_path
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
 
@@ -137,7 +154,7 @@
 	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
 		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
-	if(!SSticker.mode || !SSticker.mode.picked_calls.len)
+	if(!SSticker.mode || !length(SSticker.mode.picked_calls))
 		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return
 
@@ -200,21 +217,25 @@
 	SSticker.mode.picked_calls += src
 
 	show_join_message() //Show our potential candidates the message to let them join.
-	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
+	message_admins("Distress beacon: '[name]' activated [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(!quiet_launch)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
+/datum/emergency_call/proc/remove_nonqualifiers(list/datum/mind/candidates_list)
+	return candidates_list //everyone gets selected on 99% of distress beacons.
+
 /datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
 	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
+	candidates = remove_nonqualifiers(candidates)
 
-	if(candidates.len < mob_min && !spawn_max_amount)
-		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
+	if(length(candidates) < mob_min && !spawn_max_amount)
+		message_admins("Aborting distress beacon, not enough candidates: found [length(candidates)].")
 		members = list() //Empty the members list.
 		candidates = list()
 
@@ -227,7 +248,7 @@
 	var/list/datum/mind/picked_candidates = list()
 	if(mob_max > 0)
 		var/mob_count = 0
-		while (mob_count < mob_max && candidates.len)
+		while (mob_count < mob_max && length(candidates))
 			var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
 			if(!istype(M))//Something went horrifically wrong
 				candidates.Remove(M)
@@ -237,13 +258,13 @@
 				continue
 			if(M.current && M.current.stat != DEAD)
 				candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-				if(!candidates.len)
+				if(!length(candidates))
 					break //NO picking from empty lists
 				continue
 			picked_candidates.Add(M)
 			candidates.Remove(M)
 			mob_count++
-		if(candidates.len)
+		if(length(candidates))
 			for(var/datum/mind/I in candidates)
 				if(I.current)
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
@@ -251,19 +272,22 @@
 	if(announce_incoming)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
+	message_admins("Distress beacon: [src.name] finalized, setting up candidates. [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"].")
 
 	//Let the deadchat know what's up since they are usually curious
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
 			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttle_id)
+	if(shuttle_id && !override_spawn_loc)
+		if(!SSmapping.shuttle_templates[shuttle_id])
+			message_admins("Distress beacon: [name] does not have a valid shuttle_id: [shuttle_id]")
+			CRASH("ert called with invalid shuttle_id")
 
-	if(!istype(shuttle))
-		if(shuttle_id) //Cryo distress doesn't have a shuttle
-			message_admins("Warning: Distress shuttle not found.")
-	spawn_items()
+		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
+		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
+		shuttle.control_doors("force-lock", force = TRUE, external_only = TRUE)
+		shuttle.distress_beacon = src
 
 	if(shuttle && auto_shuttle_launch)
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
@@ -290,7 +314,7 @@
 		SSshuttle.moveShuttleToDock(shuttle, pick(active_lzs), TRUE)
 
 	var/i = 0
-	if(picked_candidates.len)
+	if(length(picked_candidates))
 		for(var/datum/mind/M in picked_candidates)
 			members += M
 			i++
@@ -300,12 +324,22 @@
 
 
 	if(spawn_max_amount && i < mob_max)
-		for(var/c in i to mob_max)
+		for(var/c in i to mob_max - 1)
 			create_member(null, override_spawn_loc)
 
 	candidates = list()
 	if(arrival_message && announce_incoming)
-		marine_announcement(arrival_message, "Intercepted Transmission:")
+		if(prob(chance_hidden))
+			marine_announcement(static_message, "Intercepted Transmission:")
+		else
+			marine_announcement(arrival_message, "Intercepted Transmission:")
+
+	for(var/datum/mind/spawned as anything in members)
+		if(ishuman(spawned.current))
+			var/mob/living/carbon/human/spawned_human = spawned.current
+			var/obj/item/card/id/id = spawned_human.get_idcard()
+			if(id)
+				ADD_TRAIT(id, TRAIT_ERT_ID, src)
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
@@ -321,6 +355,23 @@
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
 	var/landmark
+
+	if(shuttle)
+		if(is_for_items)
+			landmark = SAFEPICK(shuttle.local_landmarks[item_spawn])
+		else
+			landmark = SAFEPICK(shuttle.local_landmarks[name_of_spawn])
+
+		if(landmark)
+			return get_turf(landmark)
+
+		var/list/valid_turfs = list()
+		for(var/turf/open/floor/valid_turf in shuttle.return_turfs())
+			valid_turfs += valid_turf
+
+		if(length(valid_turfs))
+			return pick(valid_turfs)
+
 	if(is_for_items)
 		landmark = SAFEPICK(GLOB.ert_spawns[item_spawn])
 	else

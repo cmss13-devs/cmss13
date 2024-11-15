@@ -27,8 +27,8 @@
 	var/mouse_x = text2num(click_data["icon-x"])-1 // Ranging from 0 to 31
 	var/mouse_y = text2num(click_data["icon-y"])-1
 
-	var/cell_x = Clamp(round(mouse_x/CELLSIZE), 0, CELLS-1) // Ranging from 0 to CELLS-1
-	var/cell_y = Clamp(round(mouse_y/CELLSIZE), 0, CELLS-1)
+	var/cell_x = clamp(floor(mouse_x/CELLSIZE), 0, CELLS-1) // Ranging from 0 to CELLS-1
+	var/cell_y = clamp(floor(mouse_y/CELLSIZE), 0, CELLS-1)
 
 	var/list/center = cached_key_number_decode(new_item.center_of_mass)
 

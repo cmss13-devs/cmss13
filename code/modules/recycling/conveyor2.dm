@@ -101,7 +101,6 @@
 
 // attack with item, place item on conveyor
 /obj/structure/machinery/conveyor/attackby(obj/item/I, mob/user)
-	if(isrobot(user)) return //Carn: fix for borgs dropping their modules on conveyor belts
 	var/obj/item/grab/G = I
 	if(istype(G)) // handle grabbed mob
 		if(ismob(G.grabbed_thing))

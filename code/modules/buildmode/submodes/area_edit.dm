@@ -66,7 +66,7 @@
 		var/choice = alert("Are you sure you want to fill area?", "Area Fill Confirmation", "Yes", "No")
 		if(choice != "Yes")
 			return
-		for(var/turf/T in block(get_turf(cornerA),get_turf(cornerB)))
+		for(var/turf/T as anything in block(get_turf(cornerA),get_turf(cornerB)))
 			storedarea.contents.Add(T)
 		log_admin("Build Mode: [key_name(c)] set the area of the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)] to [storedarea].")
 

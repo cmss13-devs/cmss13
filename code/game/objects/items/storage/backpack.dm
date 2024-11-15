@@ -15,8 +15,9 @@
 	cant_hold = list(/obj/item/storage/firstaid, /obj/item/storage/toolkit)
 	can_hold_skill = list(
 		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
-		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
+		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		)
+	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
@@ -124,6 +125,9 @@
 	..()
 
 /obj/item/storage/backpack/proc/is_accessible_by(mob/user)
+	// If the user is already looking inside this backpack.
+	if(user.s_active == src)
+		return TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!worn_accessible)
@@ -150,7 +154,7 @@
 
 //Returns true if the user's id matches the lock's
 /obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/card = H.wear_id
+	var/obj/item/card/id/card = H.get_idcard()
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
 	else return TRUE
@@ -264,6 +268,7 @@
 	return TRUE
 
 /datum/action/item_action/specialist/santabag/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
 	santa_bag.refill_santa_bag(owner)
 	update_button_icon()
@@ -346,6 +351,12 @@
 
 /obj/item/storage/backpack/satchel/lockable/liaison
 	lock_overridable = FALSE
+
+/obj/item/storage/backpack/satchel/blue
+	icon_state = "satchel_blue"
+
+/obj/item/storage/backpack/satchel/black
+	icon_state = "satchel_black"
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
@@ -442,6 +453,26 @@
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/k9_synth/
+	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
+	uniform_restricted = list(/obj/item/clothing/under/rank/synthetic/synth_k9) //K9 Synth only
+	force_overlays_on = TRUE
+
+/obj/item/storage/backpack/marine/k9_synth/cargopack
+	name = "\improper M209 portable K9 backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. Designed to lug gear into the battlefield."
+	icon_state = "marinepack_k9"
+
+/obj/item/storage/backpack/marine/k9_synth/medicalpack
+	name = "\improper M210 portable K9 medical backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. For carrying medical supplies."
+	icon_state = "marinepack_medic_k9"
+
+/obj/item/storage/backpack/marine/k9_synth/mppack
+	name = "\improper M553 portable K9 police backpack"
+	desc = "Form fitted for the K9 Rescue Unit line of synthetics. For carrying MP Equipment."
+	icon_state = "mppack_k9"
+
 /obj/item/storage/backpack/marine/medic/upp
 	name = "\improper UPP corpsman backpack"
 	desc = "Uncommon issue backpack worn by UPP medics from isolated sectors. You can swear you can see a faded USCM symbol."
@@ -458,6 +489,12 @@
 	name = "\improper USCM lightweight expedition pack"
 	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "marinebigsatch"
+	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/chestrig
+	name = "\improper USCM expedition chestrig"
+	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_chestrig"
 	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel
@@ -487,6 +524,12 @@
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
 
+/obj/item/storage/backpack/marine/satchel/chestrig
+	name = "\improper USCM chestrig"
+	desc = "A chestrig used by some USCM personnel."
+	icon_state = "chestrig"
+	has_gamemode_skin = FALSE
+
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
 /obj/item/storage/backpack/marine/satchel/rto
@@ -515,6 +558,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
+	. = ..()
 	for(var/obj/item/storage/backpack/marine/satchel/rto/radio_backpack in owner)
 		radio_backpack.use_phone(owner)
 		return
@@ -707,6 +751,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper M68 Thermal Cloak"
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
+	unacidable = TRUE
+	explo_proof = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
@@ -846,6 +892,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()
+	. = ..()
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
 	SC.camouflage()
 

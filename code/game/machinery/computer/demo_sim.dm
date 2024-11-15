@@ -2,7 +2,7 @@
 	name = "demolitions simulator"
 	desc = "A powerful simulator that can simulate explosions. Its processors need a cooldown of approximately 1 minute after each simulation."
 	icon_state = "demo_sim"
-	exproof = TRUE
+	explo_proof = TRUE
 	unacidable = TRUE
 	var/datum/simulator/simulation
 	var/turf/sim_location
@@ -11,7 +11,7 @@
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
 	if(inoperable())
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to configure [src]."))
 		return
 	if(configuration)
@@ -55,7 +55,6 @@
 	var/list/data = list()
 
 	data["configuration"] = configuration
-	data["looking"] = simulation.looking_at_simulation
 	data["dummy_mode"] = simulation.dummy_mode
 
 	data["worldtime"] = world.time
@@ -104,8 +103,7 @@
 /obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
 
 	. = ..()
-	if(simulation.looking_at_simulation)
-		simulation.stop_watching(user)
+	simulation.stop_watching(user)
 
 // DEMOLITIONS TGUI SHIT END \\
 

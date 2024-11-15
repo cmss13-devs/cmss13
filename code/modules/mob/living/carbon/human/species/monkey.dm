@@ -21,6 +21,8 @@
 		/mob/living/proc/ventcrawl,
 		/mob/living/proc/hide,
 	)
+	fire_sprite_prefix = "monkey"
+	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 /datum/species/monkey/New()
 	equip_adjust = list(
@@ -70,7 +72,7 @@
 		for(var/obj/O in range(1,get_turf(H)))
 			if(O.Adjacent(H))
 				touchables += O
-		if(touchables.len)
+		if(length(touchables))
 			var/obj/touchy = pick(touchables)
 			touchy.attack_hand(H)
 

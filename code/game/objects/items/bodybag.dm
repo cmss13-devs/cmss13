@@ -137,7 +137,7 @@
 			continue
 		dead_mobs += mob
 	var/mob/living/mob_to_store
-	if(dead_mobs.len)
+	if(length(dead_mobs))
 		mob_to_store = pick(dead_mobs)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
@@ -169,7 +169,7 @@
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
 		if(!ishuman(usr)) return
-		if(contents.len) return 0
+		if(length(contents)) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)
@@ -271,7 +271,7 @@
 			continue
 		mobs_can_store += H
 	var/mob/living/carbon/human/mob_to_store
-	if(mobs_can_store.len)
+	if(length(mobs_can_store))
 		mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size

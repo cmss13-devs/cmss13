@@ -11,10 +11,11 @@
 	name = "shotgun slug"
 	handful_state = "slug_shell"
 
-	accurate_range = 6
+	accurate_range = 8
 	max_range = 8
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_3
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
@@ -25,7 +26,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(3, SLOW)
 	else
@@ -64,7 +66,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	accuracy = -HIT_ACCURACY_TIER_2
+	accuracy = HIT_ACCURACY_TIER_2
 	max_range = 12
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
@@ -249,7 +251,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
@@ -309,6 +312,32 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
 
+/*
+					16 GAUGE SHOTGUN AMMO
+*/
+
+/datum/ammo/bullet/shotgun/light/breaching
+	name = "light breaching shell"
+	icon_state = "flechette"
+	handful_state = "breaching_shell"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/light/breaching/spread
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	damage = 55
+	max_range = 5
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/shotgun/light/breaching/spread
+	name = "additional light breaching fragments"
+	bonus_projectiles_amount = 0
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_3
+	damage = 10
+
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
 /datum/ammo/bullet/shotgun/twobore
 	name = "two bore bullet"
@@ -338,7 +367,8 @@
 		return
 
 	shake_camera(M, 3, 4)
-	M.apply_effect(2, WEAKEN)
+	M.KnockDown(2) // If you ask me the KD should be left out, but players like their visual cues
+	M.Stun(2)
 	M.apply_effect(4, SLOW)
 	if(iscarbonsizexeno(M))
 		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
@@ -351,7 +381,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else

@@ -198,7 +198,7 @@
 						transaction_locked = 0
 						transaction_paid = 0
 					else
-						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction")
+						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction", 1000, 999999, 1000)
 						if(attempt_code == access_code)
 							transaction_locked = 0
 							transaction_paid = 0
@@ -234,7 +234,7 @@
 					var/attempt_pin = ""
 					var/datum/money_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
-						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction")
+						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction", 1111, 111111, 1111)
 						D = null
 					D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 					if(D)

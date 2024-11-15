@@ -118,15 +118,11 @@
 
 /client/proc/debug_global_variable(name, value, level)
 	var/html = ""
-	var/change = 0
 	//to make the value bold if changed
 	if(!(admin_holder.rights & R_DEBUG))
 		return html
 
 	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
-	if(value != initial(global.vars[name]))
-		html += "<font color='#B300B3'>"
-		change = 1
 
 	if (isnull(value))
 		html += "[name] = <span class='value'>null</span>"
@@ -158,9 +154,9 @@
 
 	else if (istype(value, /list))
 		var/list/L = value
-		html += "[name] = /list ([L.len])"
+		html += "[name] = /list ([length(L)])"
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
+		if (length(L) > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || length(L) > 500))
 			// not sure if this is completely right...
 			html += "<ul>"
 			var/index = 1
@@ -175,8 +171,6 @@
 
 	else
 		html += "[name] = <span class='value'>[value]</span>"
-	if(change)
-		html += "</font>"
 
 	html += "</li>"
 
@@ -217,7 +211,7 @@
 			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables")
 			return
 
-		if(param_var_name in locked && !check_rights(R_DEBUG))
+		if((param_var_name in locked) && !check_rights(R_DEBUG))
 			return
 
 		variable = param_var_name
@@ -276,7 +270,7 @@
 		if(!variable) return
 		var_value = global.vars[variable]
 
-		if(variable in locked && !check_rights(R_DEBUG))
+		if((variable in locked) && !check_rights(R_DEBUG))
 			return
 
 	if(!autodetect_class)
@@ -353,7 +347,6 @@
 		if(admin_holder && admin_holder.marked_datum)
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
-		possible_classes += "restore to default"
 
 		class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 		if(!class)
@@ -364,9 +357,6 @@
 		if("list")
 			mod_list(global.vars[variable])
 			return
-
-		if("restore to default")
-			global.vars[variable] = initial(global.vars[variable])
 
 		if("edit referenced object")
 			return .(global.vars[variable])

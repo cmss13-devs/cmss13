@@ -14,7 +14,7 @@
 	var/hostile = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
-	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
+	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/survivor)
@@ -85,6 +85,8 @@
 
 	if(hostile)
 		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+	else if(survivor.faction == FACTION_CLF)
+		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM, but NOT to other survivors!"))
 	else
 		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
 
@@ -185,7 +187,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	if(CO_survivor_types.len)
+	if(length(CO_survivor_types))
 		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions

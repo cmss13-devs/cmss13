@@ -8,6 +8,7 @@
 	objectives = "Assault the USCM, and sabotage as much as you can. Ensure any survivors escape in your custody."
 	probability = 20
 	hostility = TRUE
+	home_base = /datum/lazy_template/ert/clf_station
 	var/max_synths = 1
 	var/synths = 0
 
@@ -32,6 +33,8 @@
 	to_chat(H, SPAN_BOLD("The arrival of the USCM Battalion, the Falling Falcons, and their flagship, the [MAIN_SHIP_NAME], have reaffirmed that the United Americas considers the Neroid Sector part of their holdings."))
 	to_chat(H, SPAN_BOLD("It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs."))
 
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE HOSTILE to the USCM")))
+
 /datum/emergency_call/clf/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
@@ -45,7 +48,7 @@
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Cell Leader of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Multi-Purpose Synthetic for the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/synth, TRUE, TRUE)

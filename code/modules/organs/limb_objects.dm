@@ -22,27 +22,34 @@
 
 
 	icon = base
-	var/datum/ethnicity/E = GLOB.ethnicities_list[H.ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[H.body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
+	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
+	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
 
-	var/e_icon
-	var/b_icon
+	var/skin_color_icon
+	var/body_type_icon
+	var/body_size_icon
 
-	if (!E)
-		e_icon = "western"
+	if(!set_skin_color)
+		skin_color_icon = "pale2"
 	else
-		e_icon = E.icon_name
+		skin_color_icon = set_skin_color.icon_name
 
-	if (!B)
-		b_icon = "mesomorphic"
+	if(!set_body_type)
+		body_type_icon = "lean"
 	else
-		b_icon = B.icon_name
+		body_type_icon = set_body_type.icon_name
+
+	if(!set_body_size)
+		body_size_icon = "avg"
+	else
+		body_size_icon = set_body_size.icon_name
 
 	if(isspeciesyautja(H))
-		e_icon = H.ethnicity
-		b_icon = H.body_type
+		skin_color_icon = H.skin_color
+		body_type_icon = H.body_type
 
-	icon_state = "[get_limb_icon_name(H.species, b_icon, H.gender, name, e_icon)]"
+	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))
 
@@ -105,7 +112,7 @@
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[H.f_style]
 		if(facial_hair_style)
 			var/icon/facial = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial.Blend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
 
 			overlays.Add(facial) // icon.Blend(facial, ICON_OVERLAY)
@@ -115,7 +122,7 @@
 		if(hair_style)
 			var/icon/hair = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/eyes = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
-			if(hair_style.do_colouration)
+			if(hair_style.do_coloration)
 				hair.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
 				eyes.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 

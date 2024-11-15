@@ -25,11 +25,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thanatometabolizing/pre_process(mob/living/M)
-	if(M.stat != DEAD && M.oxyloss < 50 && round(M.blood_volume) > BLOOD_VOLUME_OKAY)
+	if(M.stat != DEAD && M.oxyloss < 50 && floor(M.blood_volume) > BLOOD_VOLUME_OKAY)
 		return list(REAGENT_CANCEL = TRUE)
 	var/effectiveness = 1
 	if(M.stat != DEAD)
-		effectiveness = Clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
+		effectiveness = clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
 	return list(REAGENT_FORCE = TRUE, REAGENT_EFFECT = effectiveness)
 
 /datum/chem_property/neutral/excreting
@@ -519,6 +519,34 @@
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(potency * delta_time, PARALYZE)
 
+/datum/chem_property/neutral/encephalophrasive
+	name = PROPERTY_ENCEPHALOPHRASIVE
+	code = "ESP"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 8
+
+/datum/chem_property/neutral/encephalophrasive/on_delete(mob/living/chem_host)
+	..()
+
+	chem_host.pain.recalculate_pain()
+	remove_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+
+/datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	give_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+
+/datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.pain.apply_pain(1 * potency)
+
+/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+
+/datum/chem_property/neutral/encephalophrasive/process_critical(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_effect(20, PARALYZE)
+
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS
 	code = "VIS"
@@ -592,6 +620,7 @@
 	rarity = PROPERTY_RARE
 	starter = FALSE
 	value = 3
+	cost_penalty = FALSE
 	var/heal_amount = 0.75
 
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)

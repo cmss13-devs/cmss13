@@ -23,6 +23,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 	var/datum/turf_reservation/reservation
+	var/faction
 
 /obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
@@ -125,6 +126,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			F.add_fingerprint(user)
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)
 			use(1)
+			F.faction = user.faction
 			F.deploy_fulton()
 	else
 		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
@@ -140,10 +142,12 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
-	reservation = SSmapping.RequestBlockReservation(3, 3, turf_type_override = /turf/open/space)
-	var/middle_x = reservation.bottom_left_coords[1] + FLOOR((reservation.top_right_coords[1] - reservation.bottom_left_coords[1]) / 2, 1)
-	var/middle_y = reservation.bottom_left_coords[2] + FLOOR((reservation.top_right_coords[2] - reservation.bottom_left_coords[2]) / 2, 1)
-	var/turf/space_tile = locate(middle_x, middle_y, reservation.bottom_left_coords[3])
+	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
+	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
+	var/turf/top_right_turf = reservation.top_right_turfs[1]
+	var/middle_x = bottom_left_turf.x + floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return

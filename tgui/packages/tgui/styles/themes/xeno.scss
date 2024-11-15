@@ -7,15 +7,15 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
-   $primary: #43096d,
-   $fg-map-keys: (),
-   $bg-map-keys: (),
- );
+  $primary: #43096d,
+  $fg-map-keys: (),
+  $bg-map-keys: ()
+);
 @use '../base.scss' with (
-   $color-bg: #290041,
-   $color-bg-grad-spread: 6%,
-   $border-radius: 2px,
- );
+  $color-bg: #290041,
+  $color-bg-grad-spread: 6%,
+  $border-radius: 2px
+);
 
 .theme-xeno {
   // Atomic classes

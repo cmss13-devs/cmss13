@@ -47,8 +47,6 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
-	voteweight 0
-	disabled
 endmap
 
 map kutjevo
@@ -59,7 +57,6 @@ map sorokyne_strata
 endmap
 
 map lv522_chances_claim
-	minplayers 130
 endmap
 
 map new_varadero

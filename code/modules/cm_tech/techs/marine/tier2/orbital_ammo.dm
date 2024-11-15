@@ -2,12 +2,10 @@
 	name = "OB Ammo"
 	desc = "Purchase orbital bombardment ammo."
 
-	required_points = 10
+	required_points = 5
 	increase_per_purchase = 2
 
 	tier = /datum/tier/two
-
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 
 	var/type_to_give
 
@@ -17,9 +15,9 @@
 		return
 
 	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = GLOB.supply_controller.ordernum
-	GLOB.supply_controller.ordernum++
-	O.object = GLOB.supply_controller.supply_packs[type_to_give]
+	O.ordernum = GLOB.supply_controller.ordernum++
+	var/actual_type = GLOB.supply_packs_types[type_to_give]
+	O.object = GLOB.supply_packs_datums[actual_type]
 	O.orderedby = MAIN_AI_SYSTEM
 
 	GLOB.supply_controller.shoppinglist += O

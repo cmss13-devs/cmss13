@@ -25,6 +25,10 @@
 	var/next_inject = 0
 	var/inject_cd = 0.75 SECONDS
 
+/obj/item/reagent_container/hypospray/Destroy()
+	QDEL_NULL(mag)
+	. = ..()
+
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
 
@@ -206,6 +210,7 @@
 	to_chat(user, SPAN_NOTICE(" You inject [M] with [src]."))
 	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
 	playsound(loc, injectSFX, injectVOL, 1)
+	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
 	reagents.reaction(M, INGEST)
 	if(M.reagents)
@@ -235,6 +240,9 @@
 
 /obj/item/reagent_container/hypospray/tricordrazine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
+
+/obj/item/reagent_container/hypospray/epinephrine
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"

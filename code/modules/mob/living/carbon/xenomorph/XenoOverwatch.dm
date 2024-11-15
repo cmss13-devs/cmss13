@@ -18,6 +18,7 @@
 		return TRUE
 
 /datum/action/xeno_action/watch_xeno/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/X = owner
 	if (!X.check_state(TRUE))
 		return FALSE
@@ -27,7 +28,7 @@
 		isQueen = TRUE
 
 	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
-		to_chat(X, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(X, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
 	// We are already overwatching something
@@ -43,12 +44,12 @@
 
 	var/list/possible_xenos = list()
 	for(var/mob/living/carbon/xenomorph/T in GLOB.living_xeno_list)
-		if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
+		if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
 	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
-	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(TRUE))
+	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(TRUE))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
@@ -73,7 +74,7 @@
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		if(oldXeno)
-			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
+			to_chat(src, SPAN_XENOWARNING("We stop watching [oldXeno]."))
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
@@ -82,22 +83,30 @@
 			return
 
 		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
-			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+			to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 			return
 
 		if(targetXeno == src)
-			to_chat(src, SPAN_XENOWARNING("You can't watch yourself!"))
+			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
 			return
 
-		if(targetXeno.interference)
-			to_chat(src, SPAN_XENOWARNING("Your target's psychic connection is cut off!"))
+		if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(src, SPAN_XENOWARNING("Our psychic connection is cut off!"))
+			return
+
+		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			return
+
+		if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+			to_chat(src, SPAN_XENOWARNING("We cannot do this in our current state!"))
 			return
 
 		if(observed_xeno && targetXeno && observed_xeno == targetXeno)
 			if(istype(targetXeno, /obj/effect/alien/resin/marker))
-				to_chat(src, SPAN_XENOWARNING("You are already watching that mark!"))
+				to_chat(src, SPAN_XENOWARNING("We are already watching that mark!"))
 				return
-			to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
+			to_chat(src, SPAN_XENOWARNING("We are already watching that sister!"))
 			return
 
 		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
@@ -128,8 +137,19 @@
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if (observed_xeno && (observed_xeno.stat == DEAD || QDELETED(observed_xeno)))
+	if(observed_xeno)
+		if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
+			overwatch(null, TRUE)
+			return
+
+		if(HAS_TRAIT(observed_xeno, TRAIT_HIVEMIND_INTERFERENCE))
+			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			overwatch(null, TRUE)
+			return
+
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		overwatch(null, TRUE)
+		return
 
 /mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -177,7 +197,7 @@
 		var/mob/living/carbon/xenomorph/xenoTarget = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		var/mob/living/carbon/xenomorph/xenoSrc = locate(href_list[XENO_OVERWATCH_SRC_HREF]) in GLOB.living_xeno_list
 
-		if(!istype(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+		if(!istype(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 			return
 
 		if(!istype(xenoSrc) || xenoSrc.stat == DEAD)
@@ -199,7 +219,7 @@
 			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
 			return
 		else
-			to_chat(src, SPAN_XENONOTICE("You psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			to_chat(src, SPAN_XENONOTICE("We psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
 			overwatch(target)
 	if(href_list["track"])
 		var/input2 = href_list["target"]

@@ -92,6 +92,9 @@
 	if(type == "telemetry")
 		analyze_telemetry(payload)
 		return TRUE
+	if(type == "act/ping_relays")
+		ping_relays()
+		return TRUE
 
 /**
  * public

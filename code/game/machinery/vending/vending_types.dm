@@ -200,25 +200,30 @@
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
+		/obj/item/storage/fancy/cigarettes/trading_card = 15,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
+
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
+
 	)
 
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
-		/obj/item/storage/fancy/cigarettes/wypacket = 35,
+		/obj/item/storage/fancy/cigarettes/wypacket = 30,
+		/obj/item/storage/fancy/cigarettes/trading_card = 35,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 30,
 		/obj/item/storage/fancy/cigarettes/blackpack = 75,
 		/obj/item/storage/fancy/cigar/tarbacks = 35,
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
+
 	)
 
 /obj/structure/machinery/vending/security
@@ -229,8 +234,9 @@
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
 	products = list(
-		/obj/item/handcuffs = 8,
-		/obj/item/handcuffs/zip = 10,
+		/obj/item/restraint/handcuffs = 8,
+		/obj/item/restraint/handcuffs/zip = 10,
+		/obj/item/restraint/legcuffs = 3,
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,
@@ -252,9 +258,27 @@
 	)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
+/obj/structure/machinery/vending/security/riot
+	name = "\improper RiotTech"
+	desc = "A security riot equipment vendor."
+	hacking_safety = TRUE
+	wrenchable = FALSE
+	products = list(
+		/obj/item/restraint/handcuffs/zip = 40,
+		/obj/item/explosive/grenade/flashbang = 20,
+		/obj/item/explosive/grenade/custom/teargas = 40,
+		/obj/item/ammo_magazine/smg/m39/rubber = 40,
+		/obj/item/ammo_magazine/pistol/rubber = 40,
+		/obj/item/ammo_magazine/pistol/mod88/rubber = 40,
+		/obj/item/ammo_magazine/rifle/rubber = 40,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber = 40,
+		/obj/item/clothing/head/helmet/marine/MP = 8,
+		/obj/item/explosive/plastic/breaching_charge/rubber = 6,
+	)
+
 /obj/structure/machinery/vending/sea
-	name = "\improper SeaTech"
-	desc = "An equipment vendor designed to save lives"
+	name = "\improper SEATech"
+	desc = "An equipment vendor designed to save lives."
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
 	icon_deny = "sec-deny"
@@ -272,6 +296,7 @@
 		/obj/item/storage/firstaid/fire = 2,
 		/obj/item/storage/firstaid/rad = 1,
 		/obj/item/device/radio/headset = 6,
+		/obj/item/tool/crew_monitor = 1,
 	)
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 
@@ -389,7 +414,7 @@
 	name = "\improper Rec-Vend"
 	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
-	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
+	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!;Say goodbye to the lucky strike military tobacco monopoly, with the new Weyland Yutani Military Trading Card Gold cigarette pack!"
 	vend_delay = 0.5 SECONDS
 	idle_power_usage = 200
 
@@ -418,6 +443,10 @@
 		/obj/item/tool/pen/blue = 10,
 		/obj/item/tool/pen/red = 10,
 		/obj/item/tool/pen/fountain = 3,
+		/obj/item/storage/fancy/cigarettes/trading_card = 20,
+		/obj/item/storage/fancy/trading_card = 20,
+		/obj/item/toy/trading_card = 50,
+
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -445,5 +474,75 @@
 		/obj/item/tool/pen/blue = 2,
 		/obj/item/tool/pen/red = 2,
 		/obj/item/tool/pen/fountain = 30,
+		/obj/item/storage/fancy/cigarettes/trading_card = 30,
+		/obj/item/storage/fancy/trading_card = 20,
+		/obj/item/toy/trading_card = 5,
+
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
+
+//vendor of ingredients for kitchen
+/obj/structure/machinery/vending/ingredients
+	name = "\improper Galley Auxiliary Storage Requisition System"
+	desc = "A vending machine meant to be use for cooks."
+	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	icon_state = "snack"
+	hacking_safety = TRUE
+	products = list(
+		/obj/item/storage/fancy/egg_box = 12,
+		/obj/item/storage/box/fish = 12,
+		/obj/item/storage/box/meat = 12,
+		/obj/item/storage/box/milk = 12,
+		/obj/item/storage/box/soymilk = 12,
+		/obj/item/storage/box/enzyme = 12,
+		/obj/item/storage/box/flour = 12,
+		/obj/item/storage/box/sugar = 12,
+		/obj/item/storage/box/saltshaker = 12,
+		/obj/item/storage/box/peppermill = 12,
+		/obj/item/storage/box/mint = 12,
+		/obj/item/storage/box/apple = 12,
+		/obj/item/storage/box/banana = 12,
+		/obj/item/storage/box/chanterelle = 12,
+		/obj/item/storage/box/cherries = 12,
+		/obj/item/storage/box/chili = 12,
+		/obj/item/storage/box/cabbage = 12,
+		/obj/item/storage/box/carrot = 12,
+		/obj/item/storage/box/corn = 12,
+		/obj/item/storage/box/eggplant = 12,
+		/obj/item/storage/box/lemon = 12,
+		/obj/item/storage/box/lime = 12,
+		/obj/item/storage/box/orange = 12,
+		/obj/item/storage/box/potato = 12,
+		/obj/item/storage/box/tomato = 12,
+		/obj/item/storage/box/whitebeet = 12,
+	)
+
+	prices = list(
+		/obj/item/storage/fancy/egg_box = 1,
+		/obj/item/storage/box/fish = 1,
+		/obj/item/storage/box/meat = 1,
+		/obj/item/storage/box/milk =1,
+		/obj/item/storage/box/soymilk = 1,
+		/obj/item/storage/box/enzyme = 1,
+		/obj/item/storage/box/flour = 1,
+		/obj/item/storage/box/sugar = 1,
+		/obj/item/storage/box/saltshaker = 1,
+		/obj/item/storage/box/peppermill = 1,
+		/obj/item/storage/box/mint = 1,
+		/obj/item/storage/box/apple = 1,
+		/obj/item/storage/box/banana = 2,
+		/obj/item/storage/box/chanterelle = 2,
+		/obj/item/storage/box/cherries = 2,
+		/obj/item/storage/box/chili = 2,
+		/obj/item/storage/box/cabbage = 2,
+		/obj/item/storage/box/carrot = 2,
+		/obj/item/storage/box/corn = 2,
+		/obj/item/storage/box/eggplant = 2,
+		/obj/item/storage/box/lemon = 2,
+		/obj/item/storage/box/lime = 2,
+		/obj/item/storage/box/orange = 2,
+		/obj/item/storage/box/potato = 2,
+		/obj/item/storage/box/tomato = 2,
+		/obj/item/storage/box/whitebeet = 2,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD

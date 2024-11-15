@@ -66,14 +66,16 @@ Frequency range: 1200 to 1600
 Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency, even during mapmaking)
 */
 
+#define UNIVERSAL_FREQ 1
+
 #define MIN_FREE_FREQ 1201 // -------------------------------------------------
 
 //Misc channels
 #define YAUT_FREQ 1205
 #define DUT_FREQ 1210
-#define CMB_FREQ 1220
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
+#define CMB_FREQ 1220
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
@@ -91,6 +93,8 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define UPP_MED_FREQ 1254
 #define UPP_CCT_FREQ 1255
 #define UPP_KDO_FREQ 1259
+#define UPP_DS1_FREQ 1260
+#define UPP_DS2_FREQ 1261
 
 //CLF Channels (1270-1289)
 #define CLF_FREQ 1271
@@ -99,6 +103,11 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define CLF_MED_FREQ 1274
 #define CLF_CCT_FREQ 1275
 
+//Listening Bugs (1290-1291)
+#define BUG_A_FREQ 1290
+#define BUG_B_FREQ 1291
+
+//General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
 #define MAX_FREQ 1468 // ------------------------------------------------------
@@ -108,6 +117,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define SOF_FREQ 1472
 #define PVST_FREQ 1473
 #define CBRN_FREQ 1474
+#define FORECON_FREQ 1475
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -121,6 +131,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define DS1_FREQ 1488
 #define DS2_FREQ 1489
+#define DS3_FREQ 1490
 
 //Marine Squad channels
 #define ALPHA_FREQ 1491
@@ -164,9 +175,12 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_MARINE_CRYO = CRYO_FREQ,
 	SQUAD_SOF = SOF_FREQ,
 	SQUAD_CBRN = CBRN_FREQ,
+	SQUAD_FORECON = FORECON_FREQ,
+	SQUAD_SOLAR = SOF_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
+	RADIO_CHANNEL_SAIPAN = DS3_FREQ,
 
 	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 
@@ -185,12 +199,17 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_UPP_MED = UPP_MED_FREQ,
 	RADIO_CHANNEL_UPP_CCT = UPP_CCT_FREQ,
 	RADIO_CHANNEL_UPP_KDO = UPP_KDO_FREQ,
+	RADIO_CHANNEL_UPP_MORANA = UPP_DS1_FREQ,
+	RADIO_CHANNEL_UPP_KOROLOV = UPP_DS2_FREQ,
 
 	RADIO_CHANNEL_CLF_GEN = CLF_FREQ,
 	RADIO_CHANNEL_CLF_CMD = CLF_CMD_FREQ,
 	RADIO_CHANNEL_CLF_ENGI = CLF_ENGI_FREQ,
 	RADIO_CHANNEL_CLF_MED = CLF_MED_FREQ,
 	RADIO_CHANNEL_CLF_CCT = CLF_CCT_FREQ,
+
+	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
+	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
 ))
 
 // Response Teams
@@ -204,6 +223,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 // PMC Frequencies
 #define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
+
+//Listening Device Frequencies
+#define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
@@ -257,7 +279,6 @@ SUBSYSTEM_DEF(radio)
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
 		"[CMB_FREQ]" = "cmbradio",
-		"[CLF_FREQ]" = "clfradio",
 		"[ALPHA_FREQ]" = "alpharadio",
 		"[BRAVO_FREQ]" = "bravoradio",
 		"[CHARLIE_FREQ]" = "charlieradio",
@@ -265,10 +286,24 @@ SUBSYSTEM_DEF(radio)
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
+		"[FORECON_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
 		"[PVST_FREQ]" = "pvstradio",
 		"[COLONY_FREQ]" = "deptradio",
+		"[BUG_A_FREQ]" = "airadio",
+		"[BUG_B_FREQ]" = "aiprivradio",
+		"[UPP_FREQ]" = "syndradio",
+		"[UPP_CMD_FREQ]" = "opforcmd",
+		"[UPP_ENGI_FREQ]" = "opforeng",
+		"[UPP_MED_FREQ]" = "opformed",
+		"[UPP_CCT_FREQ]" = "opforcct",
+		"[UPP_KDO_FREQ]" = "opforspe",
+		"[CLF_FREQ]" = "clfradio",
+		"[CLF_CMD_FREQ]" = "opforcmd",
+		"[CLF_ENGI_FREQ]" = "opforeng",
+		"[CLF_MED_FREQ]" = "opformed",
+		"[CLF_CCT_FREQ]" = "opforcct",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
@@ -314,11 +349,11 @@ SUBSYSTEM_DEF(radio)
 	if(length(extra_zs))
 		target_zs += extra_zs
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_ground)
-		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+		if((UNIVERSAL_FREQ in T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
 			break
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
-		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+		if((UNIVERSAL_FREQ in T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
@@ -341,10 +376,6 @@ SUBSYSTEM_DEF(radio)
 		return freq_span
 	if(frequency in PMC_FREQS)
 		return "pmcradio"
-	if(frequency in UPP_FREQS)
-		return "syndradio"
-	if(frequency in CLF_FREQS)
-		return "clfradio"
 	if(frequency in ERT_FREQS)
 		return "centradio"
 	if(frequency in DEPT_FREQS)

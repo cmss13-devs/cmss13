@@ -82,7 +82,7 @@
 /datum/beam/proc/Draw()
 	if(always_turn)
 		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
-	var/Angle = round(Get_Angle(origin,target))
+	var/Angle = floor(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
 	rot_matrix.Turn(Angle)
@@ -91,7 +91,7 @@
 	var/DX = get_pixel_position_x(target) - get_pixel_position_x(origin)
 	var/DY = get_pixel_position_y(target) - get_pixel_position_y(origin)
 	var/N = 0
-	var/length = round(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
+	var/length = floor(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
 
 	for(N in 0 to length-1 step world.icon_size)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
 		if(QDELETED(src))
@@ -116,20 +116,20 @@
 		if(DX == 0)
 			Pixel_x = 0
 		else
-			Pixel_x = round(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
+			Pixel_x = floor(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
 		if(DY == 0)
 			Pixel_y = 0
 		else
-			Pixel_y = round(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
+			Pixel_y = floor(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
 		//Position the effect so the beam is one continous line
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
-			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
+			a = Pixel_x > 0 ? floor(Pixel_x/32) : ceil(Pixel_x/world.icon_size)
 			X.x += a
 			Pixel_x %= world.icon_size
 		if(abs(Pixel_y)>world.icon_size)
-			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
+			a = Pixel_y > 0 ? floor(Pixel_y/32) : ceil(Pixel_y/world.icon_size)
 			X.y += a
 			Pixel_y %= world.icon_size
 
@@ -215,13 +215,7 @@
 	return newbeam
 
 /proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
-	var/list/zap_data = list()
-	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
-		zap_data += beno
-	for(var/xeno in zap_data)
-		var/mob/living/carbon/xenomorph/living = xeno
-		if(!living)
-			return
+	FOR_DOVIEW(var/mob/living/carbon/xenomorph/living, zap_range, source, HIDE_INVISIBLE_OBSERVER)
 		if(living.stat == DEAD)
 			continue
 		if(living in blacklistmobs)
@@ -229,3 +223,4 @@
 		source.beam(living, icon_state="lightning[rand(1,12)]", time = 3, maxdistance = zap_range + 2)
 		living.set_effect(2, SLOW)
 		log_attack("[living] was zapped by [source]")
+	FOR_DOVIEW_END

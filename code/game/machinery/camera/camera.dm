@@ -10,7 +10,6 @@
 
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
-	var/c_tag_order = 999
 	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
@@ -35,11 +34,14 @@
 
 	var/colony_camera_mapload = TRUE
 
-	/// If this camera should have innate EMP-proofing
-	var/emp_proof = FALSE
+	///Autonaming
+	var/autoname = FALSE
+	var/autonumber = 0 //camera number in area
 
+GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
+	GLOB.all_cameras += src
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
@@ -47,24 +49,50 @@
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	if(!src.network || src.network.len < 1)
+	if(LAZYLEN(src.network) < 1)
 		if(loc)
 			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z]) has errored. [src.network?"Empty network list":"Null network list"]")
 		else
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
-		ASSERT(src.network.len > 0)
+		ASSERT(length(src.network) > 0)
 
 	set_pixel_location()
 	update_icon()
 
+	//This camera automatically sets it's name to whatever the area that it's in is called.
+	if(autoname)
+		autonumber = 1
+		var/area/my_area = get_area(src)
+		if(my_area)
+			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
+				if(current_camera == src)
+					continue
+				var/area/current_camera_area = get_area(current_camera)
+				if(current_camera_area.type != my_area.type)
+					continue
+
+				if(!current_camera.autonumber)
+					continue
+
+				autonumber = max(autonumber, current_camera.autonumber + 1)
+			c_tag = "[my_area.name] #[autonumber]"
+
 /obj/structure/machinery/camera/Destroy()
+	GLOB.all_cameras -= src
 	. = ..()
 	QDEL_NULL(assembly)
 
 /obj/structure/machinery/camera/update_icon()
 	. = ..()
-	if(icon_state == "autocam_editor")
+	// If the camera has been EMPed.
+	if(stat & EMPED)
+		icon_state = "cameraemp"
+	// If the camera isn't EMPed, but is disabled.
+	else if(!status)
+		icon_state = "camera1"
+	// Otherwise, just give it the normal animated `icon_state`.
+	else
 		icon_state = "camera"
 
 /obj/structure/machinery/camera/set_pixel_location()
@@ -76,24 +104,27 @@
 
 /obj/structure/machinery/camera/emp_act(severity)
 	. = ..()
-	if(!isEmpProof())
-		if(prob(100/severity))
-			icon_state = "[initial(icon_state)]emp"
-			var/list/previous_network = network
-			network = list()
-			GLOB.cameranet.removeCamera(src)
-			stat |= EMPED
-			set_light(0)
-			triggerCameraAlarm()
-			spawn(900)
-				network = previous_network
-				icon_state = initial(icon_state)
-				stat &= ~EMPED
-				cancelCameraAlarm()
-				if(can_use())
-					GLOB.cameranet.addCamera(src)
-			kick_viewers()
+	// If the camera is EMP proof, or it passed the RNG check.
+	if(isEmpProof() || !prob(100 / severity))
+		return
 
+	var/list/previous_network = network
+	network = list()
+	GLOB.all_cameras -= src
+	stat |= EMPED
+	update_icon()
+	set_light(0)
+	triggerCameraAlarm()
+	kick_viewers()
+	addtimer(CALLBACK(src, PROC_REF(undo_emp), previous_network), 90 SECONDS)
+
+/obj/structure/machinery/camera/proc/undo_emp(previous_network)
+	network = previous_network
+	stat &= ~EMPED
+	update_icon()
+	cancelCameraAlarm()
+	if(can_use())
+		GLOB.all_cameras += src
 
 /obj/structure/machinery/camera/ex_act(severity)
 	if(src.invuln)
@@ -104,7 +135,6 @@
 
 /obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
-	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 
@@ -166,16 +196,6 @@
 				if (S.current == src)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					show_browser(O, info, itemname, itemname)
-	else if (istype(W, /obj/item/device/camera_bug))
-		if (!src.can_use())
-			to_chat(user, SPAN_NOTICE(" Camera non-functional"))
-			return
-		if (src.bugged)
-			to_chat(user, SPAN_NOTICE(" Camera bug removed."))
-			src.bugged = 0
-		else
-			to_chat(user, SPAN_NOTICE(" Camera bugged."))
-			src.bugged = 1
 	else
 		..()
 	return
@@ -189,10 +209,7 @@
 			visible_message(SPAN_WARNING("[user] has reactivated [src]!"))
 		else
 			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
-	if(status)
-		icon_state = "camera"
-	else
-		icon_state = "camera1"
+	update_icon()
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
 	//I guess that doesn't matter since they can't use it anyway?
@@ -209,15 +226,10 @@
 				to_chat(O, "The screen bursts into static.")
 
 /obj/structure/machinery/camera/proc/triggerCameraAlarm()
-	alarm_on = 1
-	for(var/mob/living/silicon/S in GLOB.mob_list)
-		S.triggerAlarm("Camera", get_area(src), list(src), src)
-
+	alarm_on = TRUE
 
 /obj/structure/machinery/camera/proc/cancelCameraAlarm()
-	alarm_on = 0
-	for(var/mob/living/silicon/S in GLOB.mob_list)
-		S.cancelAlarm("Camera", get_area(src), src)
+	alarm_on = FALSE
 
 /obj/structure/machinery/camera/proc/can_use()
 	if(!status)
@@ -248,9 +260,11 @@
 //Return a working camera that can see a given mob
 //or null if none
 /proc/seen_by_camera(mob/M)
-	for(var/obj/structure/machinery/camera/C in oview(4, M))
+	FOR_DOVIEW(var/obj/structure/machinery/camera/C, 4, M, HIDE_INVISIBLE_OBSERVER)
 		if(C.can_use()) // check if camera disabled
+			FOR_DOVIEW_END
 			return C
+	FOR_DOVIEW_END
 	return null
 
 /proc/near_range_camera(mob/M)
@@ -283,6 +297,22 @@
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/correspondent
+	network = list(CAMERA_NET_CORRESPONDENT)
+	invisibility = INVISIBILITY_ABSTRACT
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	colony_camera_mapload = FALSE
+	var/obj/item/device/camera/broadcasting/linked_broadcasting
+
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/camera/broadcasting/camera_item)
+	. = ..()
+	if(!camera_item)
+		return INITIALIZE_HINT_QDEL
+	linked_broadcasting = camera_item
+	c_tag = linked_broadcasting.get_broadcast_name()
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

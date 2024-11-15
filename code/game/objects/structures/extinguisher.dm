@@ -24,8 +24,6 @@
 	icon_state = "extinguisher_alt"
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/item, mob/user)
-	if(isrobot(user))
-		return
 	if(istype(item, /obj/item/tool/extinguisher))
 		if(!has_extinguisher && opened)
 			user.drop_held_item()
@@ -40,9 +38,6 @@
 
 
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user)
-	if(isrobot(user))
-		return
-
 	if(has_extinguisher)
 		user.put_in_hands(has_extinguisher)
 		to_chat(user, SPAN_NOTICE("You take [has_extinguisher] from [src]."))

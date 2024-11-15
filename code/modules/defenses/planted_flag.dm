@@ -7,7 +7,7 @@
 	desc = "A planted flag with the iconic USCM flag plastered all over it, you feel a burst of energy by its mere sight."
 	handheld_type = /obj/item/defenses/handheld/planted_flag
 	disassemble_time = 10
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 	var/area_range = PLANTED_FLAG_RANGE
 	var/buff_intensity = PLANTED_FLAG_BUFF
 	health = 200
@@ -16,11 +16,11 @@
 	can_be_near_defense = TRUE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
@@ -33,7 +33,7 @@
 		apply_area_effect()
 		start_processing()
 
-	range_bounds = RECT(x, y, PLANTED_FLAG_RANGE, PLANTED_FLAG_RANGE)
+	range_bounds = SQUARE(x, y, PLANTED_FLAG_RANGE)
 	update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Destroy()
@@ -70,9 +70,9 @@
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_area_effect()
 	if(!range_bounds)
-		range_bounds = RECT(x, y, area_range, area_range)
+		range_bounds = SQUARE(x, y, area_range)
 
-	var/list/targets = SSquadtree.players_in_range(RECT(x, y, area_range, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
 		return
 
@@ -115,6 +115,40 @@
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 5 SECONDS)
 
+/obj/structure/machinery/defenses/planted_flag/wy
+	name = "WY planted flag"
+	desc = "A planted flag with the iconic WY flag plastered all over it, you feel a burst of energy by its mere sight."
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	disassemble_time = 6 SECONDS
+	hack_time = 25 SECONDS
+	health = 300
+	health_max = 300
+	area_range = 11
+	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
+	defense_type = "WY"
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
+	)
+
+/obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)
+	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 2 SECONDS)
+	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 2 SECONDS)
+	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 2 SECONDS)
+
+/obj/structure/machinery/defenses/planted_flag/upp
+	name = "UPP planted flag"
+	desc = "A planted flag with the iconic UPP flag plastered all over it, you feel a burst of energy by its mere sight."
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	disassemble_time = 5 SECONDS
+	health = 300
+	health_max = 300
+	area_range = 11
+	handheld_type = /obj/item/defenses/handheld/planted_flag/upp
+	defense_type = "UPP"
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_UPP,
+	)
+
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -146,7 +180,7 @@
 	if(!M.x && !M.y && !M.z)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	targets |= M
 
 	for(var/mob/living/carbon/human/H in targets)

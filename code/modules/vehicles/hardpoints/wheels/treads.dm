@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/treads
-	name = "Treads"
-	desc = "Integral to the movement of the vehicle."
+	name = "\improper Treads"
+	desc = "Integral to the movement of the vehicle. Steel reinforced rubber tracks, they allow the tank to move faster but in turn need repairs more often."
 
 	icon_state = "treads"
 	disp_icon = "tank"
@@ -8,7 +8,7 @@
 
 	slot = HDPT_TREADS
 
-	health = 500
+	health = 300
 
 	//with this settings, takes 3 tiles to reach top speed
 	move_delay = 3.8
@@ -17,10 +17,10 @@
 	move_turn_momentum_loss_factor = 0.6
 
 /obj/item/hardpoint/locomotion/treads/robust
-	name = "Reinforced Treads"
-	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down slightly."
+	name = "\improper Reinforced Treads"
+	desc = "These treads are made of solid steel plates and are more durable. However, the extra weight slows the tank down."
 
-	health = 750
+	health = 500
 	acid_resistant = TRUE
 
 	move_max_momentum = 5 //same top speed, but takes 5 tiles to reach it

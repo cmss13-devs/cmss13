@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("HEDP Grenade Pack", 15, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
 		list("HEFA Grenade Pack", 15, /obj/item/storage/box/packet/hefa, null, VENDOR_ITEM_REGULAR),
 		list("WP Grenade Pack", 15, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
+		list("G2 Electroshock Grenade Packet (x3 grenades)",  15, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
@@ -119,6 +120,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("PATCHES (DISCRETIONARY)", 0, null, null, null),
+		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
+		list("USCM Shoulder Patch", 0, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer

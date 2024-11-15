@@ -274,8 +274,15 @@
 	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
+/obj/item/ammo_magazine/rifle/lmg/ap
+	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
+	desc = "A semi-rectangular box of armor-piercing rounds for the M41AE2 Heavy Pulse Rifle."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 300
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
 /obj/item/ammo_magazine/rifle/lmg/heap
-	name = "\improper M41AE2 HEAP ammo box (10x24mm)"
+	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box of rounds for the M41AE2 Heavy Pulse Rifle. This one contains the standard Armor-Piercing explosive tipped round of the USCM."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	max_rounds = 300
@@ -457,6 +464,14 @@
 	max_rounds = 4
 	gun_type = /obj/item/weapon/gun/boltaction/vulture
 	w_class = SIZE_MEDIUM // maybe small? This shit's >4 inches long mind you
+	ammo_band_icon = "+vulture_band"
+	ammo_band_icon_empty = "+vulture_band_e"
+
+/obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
+	name = "\improper M707 \"Vulture\" holo-target magazine (20x102mm)"
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
+	default_ammo =  /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
+	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
 //=ROYAL MARINES=\\
 
@@ -499,3 +514,17 @@
 	item_state = "aug_dmr"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+//--------------------------------------------------------
+//XM51 BREACHING SHOTGUN
+
+/obj/item/ammo_magazine/rifle/xm51
+	name = "\improper XM51 magazine (16g)"
+	desc = "A 16 gauge pump-action shotgun magazine."
+	icon_state = "xm51"
+	caliber = "16g"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/light/breaching
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/rifle/xm51
+	transfer_handful_amount = 6

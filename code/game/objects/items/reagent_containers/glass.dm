@@ -217,17 +217,16 @@
 	overlays.Cut()
 
 	if(reagents && reagents.total_volume)
-		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-20")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 9) filling.icon_state = "[icon_state]-10"
-			if(10 to 24) filling.icon_state = "[icon_state]10"
-			if(25 to 49) filling.icon_state = "[icon_state]25"
-			if(50 to 74) filling.icon_state = "[icon_state]50"
-			if(75 to 79) filling.icon_state = "[icon_state]75"
-			if(80 to 90) filling.icon_state = "[icon_state]80"
-			if(91 to INFINITY) filling.icon_state = "[icon_state]100"
+			if(0) filling.icon_state = null
+			if(1 to 20) filling.icon_state = "[icon_state]-20"
+			if(21 to 40) filling.icon_state = "[icon_state]-40"
+			if(41 to 60) filling.icon_state = "[icon_state]-60"
+			if(61 to 80) filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -237,7 +236,7 @@
 		overlays += lid
 
 /obj/item/reagent_container/glass/minitank
-	name = "MS-11 Smart Refill Tank"
+	name = "\improper MS-11 Smart Refill Tank"
 	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "mini_reagent_tank"
@@ -277,7 +276,7 @@
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into the [src]'s valve. It's probably not compatible."))
+			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
 			return
 		if(reagents.has_reagent(A.chemname, A.volume))
 			reagents.trans_id_to(A, A.chemname, A.volume)
@@ -285,10 +284,10 @@
 			A.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
-			to_chat(user, SPAN_WARNING("A small LED on \the [src] blinks. The tank can't refill \the [A] - it's either incompatible or out of chemicals to fill it with!"))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
 			. = ..()
 			return
-		to_chat(user,SPAN_INFO("You successfully refill \the [W.name] with \the [src]!"))
+		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
 	set category = "Object"
@@ -299,7 +298,7 @@
 		to_chat(user, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush \the [src]'s contents!"))
+	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return
@@ -308,7 +307,7 @@
 	overlays.Cut()
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
 		if(percent > 24) round_percent = round(percent, 25)
 		else round_percent = 10
@@ -345,8 +344,8 @@
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
-	name = "bluespace beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure - affectionately nicknamed \"bluespace\". Can hold up to 300 units."
+	name = "high-capacity beaker"
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
 	icon_state = "beakerbluespace"
 	matter = list("glass" = 10000)
 	volume = 300
@@ -365,6 +364,14 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine
+	name = "epinephrine vial"
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 30)
+	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
@@ -545,10 +552,6 @@
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/set_APTFT()
-	to_chat(usr, SPAN_WARNING("[src] has no transfer control valve! Use a dispenser to fill it!"))
-	return
-
 /obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
 	update_icon()
 
@@ -612,7 +615,7 @@
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-00-65")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
 			if(34 to 65) filling.icon_state = "[icon_state]-34-65"
@@ -672,5 +675,5 @@
 	if(istype(AM) && (src in user))
 		user.visible_message("[user] starts to wipe down [AM] with [src]!")
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message("[user] finishes wiping off the [AM]!")
+			user.visible_message("[user] finishes wiping off [AM]!")
 			AM.clean_blood()

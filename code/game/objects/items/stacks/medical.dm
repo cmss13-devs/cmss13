@@ -21,7 +21,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))
 		return 1
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return 1
 
@@ -94,6 +94,9 @@
 			else
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
+
+/obj/item/stack/medical/bruise_pack/two
+	amount = 2
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
@@ -267,6 +270,13 @@
 	stack_id = "splint"
 
 	var/indestructible_splints = FALSE
+
+/obj/item/stack/medical/splint/Initialize(mapload, amount)
+	. = ..()
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_INDESTRUCTIBLE_SPLINTS))
+		icon_state = "nanosplint"
+		indestructible_splints = TRUE
+		update_icon()
 
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
 	if(..()) return 1

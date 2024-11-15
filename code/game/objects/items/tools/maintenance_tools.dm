@@ -29,6 +29,7 @@
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_WRENCH)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /*
@@ -50,8 +51,9 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
-
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /obj/item/tool/screwdriver/Initialize()
@@ -96,8 +98,8 @@
 		if(E)
 			var/safety = H.get_eye_protection()
 			if(!safety)
-				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
-				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with [src]!"),
+					SPAN_DANGER("You stab [H] in the eyes with [src]!"))
 				E.take_damage(rand(8,20))
 	return ..()
 /obj/item/tool/screwdriver/tactical
@@ -134,6 +136,7 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/wirecutters/tactical
 	name = "tactical wirecutters"
@@ -141,7 +144,7 @@
 	icon_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
-	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
+	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
 		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
 		"You hear cable being cut.")
@@ -156,12 +159,14 @@
  */
 /obj/item/tool/weldingtool
 	name = "blowtorch"
+	desc = "A blowtorch for welding and cutting metals."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	var/base_icon_state = ""
 
 	//Amount of OUCH when it's thrown
 	force = 3
@@ -184,14 +189,20 @@
 	var/welding = 0
 	/// The max amount of fuel the welder can hold
 	var/max_fuel = 40
+	/// Adding this line of code to determine whether a welder should have fuel when created or not.
+	var/starting_fuel = TRUE
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
-	reagents.add_reagent("fuel", max_fuel)
+	if (starting_fuel)
+		reagents.add_reagent("fuel", max_fuel)
+
+	base_icon_state = initial(icon_state)
 	return
 
 /obj/item/tool/weldingtool/Destroy()
@@ -336,7 +347,7 @@
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
-			icon_state = "welder1"
+			icon_state = base_icon_state + "_on"
 			w_class = SIZE_LARGE
 			heat_source = 3800
 			START_PROCESSING(SSobj, src)
@@ -348,7 +359,7 @@
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
 		force = 3
 		damtype = "brute"
-		icon_state = "welder"
+		icon_state = base_icon_state
 		welding = 0
 		w_class = initial(w_class)
 		heat_source = 0
@@ -411,10 +422,14 @@
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
 
+/obj/item/tool/weldingtool/empty
+	starting_fuel = FALSE
+
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
 	max_fuel = 60
 	matter = list("metal" = 70, "glass" = 60)
+	icon_state = "welder_c"
 
 
 /obj/item/tool/weldingtool/hugetank
@@ -442,9 +457,9 @@
 	name = "\improper ME3 hand welder"
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
 	max_fuel = 5
-	color = "#cc0000"
 	has_welding_screen = TRUE
 	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+	icon_state = "welder_b"
 
 /*
  * Crowbar
@@ -468,6 +483,7 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/items/items.dmi'
@@ -490,6 +506,7 @@
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
+	flags_atom = FPRINT|QUICK_DRAWABLE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
 	var/crowbar_mode = TRUE //False for wrench mode
@@ -552,12 +569,18 @@
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 				return
-		if(!attacked_door.density) //If its open
-			return
 		if(attacked_door.heavy) //Unopenable
 			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
 			return
 		if(user.action_busy)
+			return
+		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
+			attacked_door.close(TRUE)
+			return
+		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
+			attacked_door.open(TRUE)
+			return
+		if(!attacked_door.density) //If its open
 			return
 
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),

@@ -22,8 +22,7 @@
 		color = linked_hive.color
 
 /obj/effect/alien/resin/construction/Destroy()
-	if(template && linked_hive && (template.crystals_stored < template.crystals_required))
-		linked_hive.crystal_stored += template.crystals_stored
+	if(template && linked_hive && (template.plasma_stored < template.plasma_required))
 		linked_hive.remove_construction(src)
 	template = null
 	linked_hive = null
@@ -42,7 +41,7 @@
 /obj/effect/alien/resin/construction/get_examine_text(mob/user)
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
-		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
+		var/message = "A [template.name] construction is designated here. It requires [template.plasma_required - template.plasma_stored] more plasma."
 		. += message
 
 /obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/xenomorph/M)

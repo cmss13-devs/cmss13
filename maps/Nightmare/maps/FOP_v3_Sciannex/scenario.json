@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "type": "pick", "name": "Riot Control",
+        "choices": [
+            { "weight": 4, "type": "def", "values": { "riot_in_progress": "none" } },
+            { "weight": 2, "type": "def", "values": { "riot_in_progress": "true" } }
+        ]
+    }
+]

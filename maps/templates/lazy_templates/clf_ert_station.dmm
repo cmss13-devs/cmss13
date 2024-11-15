@@ -1,0 +1,3693 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/structure/target/syndicate,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"at" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/clf_station)
+"av" = (
+/obj/structure/closet/crate,
+/obj/item/explosive/grenade/phosphorus/clf,
+/turf/open/floor/wood/wood_broken4,
+/area/adminlevel/ert_station/clf_station)
+"ax" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/ert_station/clf_station)
+"az" = (
+/obj/structure/prop/brazier/frame/full,
+/turf/open/floor/plating/asteroidwarning/north,
+/area/adminlevel/ert_station/clf_station)
+"aA" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"aE" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"aL" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/clf_station)
+"aN" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/structure/machinery/light/small/built{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken6,
+/area/adminlevel/ert_station/clf_station)
+"by" = (
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"bI" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"bL" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"cc" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"ce" = (
+/obj/item/trash/chips,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"cx" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/obj/structure/mirror{
+	pixel_y = 32
+	},
+/turf/open/floor/freezerfloor,
+/area/adminlevel/ert_station/clf_station)
+"cB" = (
+/obj/vehicle/powerloader/ft,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"cH" = (
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"cT" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"dd" = (
+/turf/open/gm/coast/south,
+/area/adminlevel/ert_station/clf_station)
+"dg" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"dI" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"dM" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"eg" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"eo" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"eE" = (
+/obj/structure/largecrate/black_market/clf_supplies,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"eH" = (
+/obj/structure/window/framed/wood/reinforced,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"eP" = (
+/obj/structure/window/framed/wood,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"fd" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"fk" = (
+/obj/structure/pipes/vents/pump,
+/turf/closed/wall/wood,
+/area/adminlevel/ert_station/clf_station)
+"fx" = (
+/obj/structure/largecrate/supply/medicine/blood,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"fI" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"fX" = (
+/obj/structure/prop/wooden_cross,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"gc" = (
+/obj/structure/closet/crate,
+/obj/item/device/encryptionkey/clf,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"gi" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/whiskey,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"gj" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"gN" = (
+/obj/effect/decal/cleanable/egg_smudge,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"hd" = (
+/obj/structure/reagent_dispensers/beerkeg{
+	density = 0
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"hj" = (
+/obj/structure/largecrate/supply/weapons/shotgun,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"hr" = (
+/obj/structure/machinery/light/small/built{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"hE" = (
+/obj/structure/bed/chair,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"hH" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"hK" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"hL" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/item/weapon/gun/pistol/clfpistol,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/clf_station)
+"hO" = (
+/obj/item/reagent_container/food/drinks/bottle/whiskey,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"hY" = (
+/obj/structure/platform/metal/kutjevo/east,
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"ib" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/weapon/harpoon/yautja{
+	anchored = 1;
+	name = "Alien Harpoon";
+	pixel_x = 6
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1;
+	unacidable = 0;
+	pixel_y = 10
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"ie" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"iB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iC" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"iG" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iK" = (
+/obj/structure/barricade/sandbags,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"iR" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"jb" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/supply/weapons/flamers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"jp" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/whiskey,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"jG" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"jV" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"jZ" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ki" = (
+/obj/structure/largecrate/black_market/confiscated_equipment,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"kk" = (
+/obj/item/ammo_box/magazine/l42a,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"kr" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"kF" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/pill_bottle{
+	pixel_y = 12;
+	pixel_x = 5
+	},
+/obj/item/storage/pill_bottle/ultrazine/antag{
+	pixel_y = 14;
+	pixel_x = -3
+	},
+/obj/item/storage/pill_bottle{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"kS" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/shaker,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"lo" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/supply/explosives/grenades,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lp" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/weapon/gun/pistol/heavy{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"lz" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lD" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lI" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lL" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"lX" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"ma" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/fancy/cigarettes/lucky_strikes_4,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"mp" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ms" = (
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/spacecash/c50,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"mt" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/head/chefhat,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"mw" = (
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"mx" = (
+/obj/structure/platform/metal/kutjevo/east,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"mR" = (
+/obj/structure/machinery/gibber{
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"ne" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"nn" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"nC" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"nJ" = (
+/obj/item/clothing/shoes/jackboots,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"nQ" = (
+/obj/item/clothing/mask/cigarette/cigar/classic,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"oc" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"oe" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"om" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/adminlevel/ert_station/clf_station)
+"ow" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/item/stock_parts/subspace/crystal,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/clf_station)
+"oy" = (
+/obj/item/trash/candy,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"oI" = (
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"oN" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/ert_station/clf_station)
+"pj" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"pk" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"pF" = (
+/turf/open/floor/wood/wood_broken6,
+/area/adminlevel/ert_station/clf_station)
+"pY" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirtgrassborder/east,
+/area/adminlevel/ert_station/clf_station)
+"qa" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken6,
+/area/adminlevel/ert_station/clf_station)
+"qb" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"ql" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"qy" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"qI" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/platform/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"qM" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"rm" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/healthanalyzer{
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"rz" = (
+/obj/structure/curtain/red,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"rD" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"sv" = (
+/obj/structure/target/syndicate,
+/obj/item/weapon/throwing_knife,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"sx" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/restraint/handcuffs,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"sy" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"sC" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/adminlevel/ert_station/clf_station)
+"sK" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"sN" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"ta" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"tc" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"tf" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"ti" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ts" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"tt" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"tz" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver{
+	pixel_y = 5
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = -1
+	},
+/obj/item/storage/belt/medical/full/with_suture_and_graft{
+	pixel_y = 10
+	},
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"tG" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/clf_station)
+"tJ" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Eternal guardian"
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"ug" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"un" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"up" = (
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/adminlevel/ert_station/clf_station)
+"uO" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/item/bedsheet/yellow,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"uR" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"uX" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/clf_station)
+"uZ" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 14
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"vm" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"vn" = (
+/obj/structure/platform/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"vx" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/trash/candle,
+/obj/item/reagent_container/syringe/drugs{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"vy" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"vA" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"vI" = (
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"vJ" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"wa" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"we" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"wI" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"wP" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"wS" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/supply/explosives/mines,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"wW" = (
+/turf/open/gm/coast/south_east,
+/area/adminlevel/ert_station/clf_station)
+"xE" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/adminlevel/ert_station/clf_station)
+"xJ" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"xL" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"xM" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/obj/item/tool/soap,
+/turf/open/floor/freezerfloor,
+/area/adminlevel/ert_station/clf_station)
+"xO" = (
+/obj/item/holder/cat/kitten{
+	name = "Isabelle"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"ye" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"yh" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/east,
+/area/adminlevel/ert_station/clf_station)
+"yp" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"yE" = (
+/obj/structure/closet/crate,
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"yH" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"yM" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/pistol/clfpistol,
+/obj/item/ammo_magazine/pistol/clfpistol,
+/obj/item/ammo_magazine/pistol/clfpistol,
+/obj/item/ammo_magazine/pistol/clfpistol,
+/turf/open/floor/wood/wood_broken3,
+/area/adminlevel/ert_station/clf_station)
+"yS" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"yU" = (
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"yY" = (
+/obj/structure/prop/brazier/frame/full,
+/turf/open/floor/plating/asteroidwarning,
+/area/adminlevel/ert_station/clf_station)
+"zg" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"zk" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"zy" = (
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"zH" = (
+/obj/structure/closet/secure_closet/medical_doctor,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"zO" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"zZ" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/wood,
+/area/adminlevel/ert_station/clf_station)
+"Ad" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_4"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Ag" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"Aj" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Ax" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"AO" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"AP" = (
+/obj/structure/platform/metal/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"AV" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/weapon/gun/smg/mac15/extended,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Ba" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"Bl" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/weapon/gun/smg/mp5,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Bn" = (
+/obj/item/trash/burger,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Bo" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Bx" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"BB" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"BC" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple"
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"BP" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave{
+	pixel_y = 10
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Ck" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/radio/headset/distress/CLF,
+/obj/item/device/radio/headset/distress/CLF/command,
+/obj/structure/machinery/recharger,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Cu" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"CE" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"CQ" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Dn" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"Dy" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"DB" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"DF" = (
+/turf/open/floor/wood/wood_broken3,
+/area/adminlevel/ert_station/clf_station)
+"DN" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/ert_station/clf_station)
+"DW" = (
+/obj/structure/closet/secure_closet/brig,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Ee" = (
+/turf/open/gm/dirtgrassborder/east,
+/area/adminlevel/ert_station/clf_station)
+"Ez" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"EJ" = (
+/obj/structure/machinery/floodlight,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ER" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/structure/machinery/light/small/built{
+	dir = 4
+	},
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"EZ" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Fj" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"FD" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"FT" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"FV" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Gh" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Gl" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/spacecash/c10,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"GB" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"GG" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"GK" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"GV" = (
+/turf/open/floor/plating/asteroidwarning/west,
+/area/adminlevel/ert_station/clf_station)
+"Hs" = (
+/obj/docking_port/stationary/emergency_response/idle_port1,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/clf_station)
+"HG" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"HI" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"HN" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Ia" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/antag{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/adminlevel/ert_station/clf_station)
+"Ie" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Ip" = (
+/obj/structure/largecrate/black_market/clf_supplies,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"IH" = (
+/turf/open/floor/wood/wood_broken4,
+/area/adminlevel/ert_station/clf_station)
+"II" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"IT" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"IW" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/mask/gas/swat,
+/turf/open/floor/wood/wood_broken6,
+/area/adminlevel/ert_station/clf_station)
+"Jj" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"JR" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"JY" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"Ke" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_4"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/ert_station/clf_station)
+"KT" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/adminlevel/ert_station/clf_station)
+"Lu" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"LH" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"LN" = (
+/obj/structure/machinery/floodlight,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"LO" = (
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"LQ" = (
+/obj/structure/machinery/light/small/built{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Md" = (
+/obj/structure/platform/metal/kutjevo/north,
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Me" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"MA" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ME" = (
+/obj/structure/machinery/door/window/brigdoor{
+	dir = 8;
+	req_access = null
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"MI" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/rock/brown,
+/area/adminlevel/ert_station/clf_station)
+"MP" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/clf_station)
+"MQ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/adminlevel/ert_station/clf_station)
+"MT" = (
+/obj/item/tank/anesthetic,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/mask/breath/medical,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"MU" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Ng" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/adminlevel/ert_station/clf_station)
+"Ni" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/condiment/peppermill,
+/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Nk" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Ns" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"NB" = (
+/turf/open/floor/freezerfloor,
+/area/adminlevel/ert_station/clf_station)
+"NV" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"NY" = (
+/obj/effect/decal/cleanable/tomato_smudge,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Of" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 3
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -8
+	},
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/book/manual/chef_recipes,
+/obj/structure/machinery/light/small/built{
+	dir = 1
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Oi" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"Or" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/adminlevel/ert_station/clf_station)
+"Ou" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/clf_station)
+"Oy" = (
+/obj/item/spacecash/c1,
+/obj/item/storage/box/matches,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary{
+	name = "CLF Outpost";
+	phone_category = "CLF";
+	phone_id = "CLF Outpost";
+	do_not_disturb = 2;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"OG" = (
+/obj/item/storage/belt/shotgun/full/quackers,
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"OK" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+"ON" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"OY" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Pf" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Ph" = (
+/turf/open/gm/coast/beachcorner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Pr" = (
+/mob/living/simple_animal/cat{
+	name = "Edwin"
+	},
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"Pw" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"PC" = (
+/obj/item/trash/candle,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"PI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray{
+	pixel_y = 8
+	},
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/mask/surgical{
+	desc = "A sterile mask designed to help prevent the spread of diseases. This one has already been used.";
+	name = "used sterile mask"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"PX" = (
+/obj/structure/platform/metal/kutjevo,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Qw" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/radio/headset/distress/CLF,
+/obj/item/device/radio/headset/distress/CLF/medic,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Qx" = (
+/turf/open/gm/coast/east,
+/area/adminlevel/ert_station/clf_station)
+"QE" = (
+/obj/structure/closet/crate,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"QG" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_box/magazine/shotgun/buckshot,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"QV" = (
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Re" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/item/bedsheet/green,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Rg" = (
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"Ro" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Rr" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/adminlevel/ert_station/clf_station)
+"Rv" = (
+/obj/structure/curtain/red,
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"RB" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	light_range = 2
+	},
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"RR" = (
+/obj/structure/machinery/chem_dispenser/soda/beer{
+	density = 0;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Sd" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/machinery/light/small/built{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/adminlevel/ert_station/clf_station)
+"Sj" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken4,
+/area/adminlevel/ert_station/clf_station)
+"SD" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Tk" = (
+/obj/structure/bed/chair,
+/turf/open/floor/wood/wood_broken4,
+/area/adminlevel/ert_station/clf_station)
+"Tr" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/adminlevel/ert_station/clf_station)
+"Tu" = (
+/turf/open/floor/plating/asteroidwarning/east,
+/area/adminlevel/ert_station/clf_station)
+"TM" = (
+/obj/structure/machinery/recharger,
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/defibrillator,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"TN" = (
+/obj/structure/largecrate/random/case,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"TZ" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Uj" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/head/welding,
+/obj/item/tool/weldingtool/experimental,
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"Um" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Uo" = (
+/obj/structure/flora/bush/ausbushes/var3,
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"Uu" = (
+/turf/open/floor/plating/asteroidwarning,
+/area/adminlevel/ert_station/clf_station)
+"UB" = (
+/turf/open/floor/plating/asteroidwarning/north,
+/area/adminlevel/ert_station/clf_station)
+"Vf" = (
+/obj/structure/largecrate/black_market/confiscated_weaponry,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Vi" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast/east,
+/area/adminlevel/ert_station/clf_station)
+"Vk" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/prop/helmetgarb/gunoil,
+/obj/item/weapon/baton/cattleprod,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Vm" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/processor{
+	pixel_y = 10
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"VO" = (
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines{
+	icon_state = "heavy_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Wb" = (
+/obj/structure/curtain/red,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Wc" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 14
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"We" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Wo" = (
+/obj/item/weapon/throwing_knife,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"Wq" = (
+/obj/structure/machinery/light/small/built{
+	dir = 4
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Wz" = (
+/obj/structure/closet/crate,
+/obj/item/weapon/baton/cattleprod,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"WA" = (
+/obj/structure/closet/crate,
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"WD" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"WO" = (
+/obj/structure/prop/wooden_cross,
+/obj/item/clothing/head/helmet/marine/fluff/limo,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"WU" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Xc" = (
+/obj/item/clothing/under/colonist/clf,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Xp" = (
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/clf_station)
+"Xv" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Xz" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"XE" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/adminlevel/ert_station/clf_station)
+"XO" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/adminlevel/ert_station/clf_station)
+"Yq" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Yy" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"YA" = (
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"YB" = (
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"YH" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/machinery/floodlight,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"YN" = (
+/obj/structure/platform/metal/kutjevo/north,
+/turf/open/gm/grass,
+/area/adminlevel/ert_station/clf_station)
+"Ze" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/flask/barflask,
+/obj/structure/machinery/light/small/built,
+/turf/open/floor/wood/wood_broken6,
+/area/adminlevel/ert_station/clf_station)
+"Zj" = (
+/obj/structure/closet/crate,
+/obj/item/reagent_container/food/snacks/appletart,
+/turf/open/floor/wood/wood_broken,
+/area/adminlevel/ert_station/clf_station)
+"ZE" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/box/beakers{
+	pixel_y = 12;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/glass/beaker{
+	pixel_y = 4;
+	pixel_x = 12
+	},
+/obj/item/reagent_container/glass/beaker/silver,
+/obj/item/reagent_container/glass/beaker/vial/random/good{
+	pixel_x = 18;
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"ZI" = (
+/turf/closed/wall/wood,
+/area/adminlevel/ert_station/clf_station)
+"ZK" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ZO" = (
+/obj/structure/prop/brazier/torch,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
+"ZQ" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/clf_station)
+"ZS" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/adminlevel/ert_station/clf_station)
+
+(1,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(2,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+yU
+yU
+yU
+yU
+yU
+RB
+yU
+yU
+dd
+WO
+Rg
+Rg
+Rg
+Rg
+vI
+ZO
+LO
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(3,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+qy
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+xE
+Ph
+Rg
+Rg
+ax
+Rg
+Rg
+Rg
+tJ
+LO
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(4,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+yU
+yU
+yU
+OG
+yU
+yU
+Uo
+yU
+yU
+yU
+dd
+Rg
+Rg
+ax
+ax
+ax
+Rg
+vI
+vI
+BC
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(5,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+yU
+RB
+yU
+yU
+yU
+yU
+wW
+Qx
+Qx
+Qx
+Qx
+Qx
+Ph
+ax
+ax
+ax
+ax
+ax
+Rg
+Rg
+ib
+LO
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(6,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+yU
+yU
+yU
+yU
+yU
+wW
+Qx
+Qx
+Ph
+ug
+Dn
+Rg
+Rg
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+Rg
+Rg
+ZO
+LO
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(7,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+ax
+Vi
+Qx
+Qx
+Qx
+Qx
+Qx
+Ph
+Rg
+Rg
+Dn
+dI
+Rg
+Rg
+Rg
+dI
+Rg
+Rg
+ax
+MI
+MI
+Rg
+Rg
+Rg
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(8,1,1) = {"
+KT
+KT
+KT
+KT
+Rg
+fX
+ug
+Rg
+Rg
+Rg
+Rg
+Rg
+Ie
+om
+Rg
+Ie
+Me
+Ng
+om
+Rg
+Rg
+Dn
+Rg
+Ie
+Ee
+om
+HI
+HI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(9,1,1) = {"
+KT
+KT
+KT
+Rg
+Dn
+Rg
+Rg
+Ie
+om
+fX
+ug
+Ie
+OY
+Tr
+Ee
+OY
+QV
+YB
+Tr
+Ee
+Ee
+Ee
+Ee
+OY
+QV
+Tr
+Ee
+MI
+ax
+ax
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(10,1,1) = {"
+KT
+KT
+Rg
+Rg
+Ie
+Ee
+Ee
+XO
+Or
+yh
+yh
+Gh
+vJ
+ZQ
+vJ
+vJ
+ZQ
+ZQ
+vJ
+vJ
+vJ
+vJ
+vJ
+hY
+vJ
+HN
+QV
+QV
+Nk
+ax
+KT
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+ax
+ax
+"}
+(11,1,1) = {"
+KT
+DN
+Rg
+Ie
+OY
+YB
+ql
+PX
+yY
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+az
+YN
+YB
+QV
+Nk
+iG
+KT
+KT
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+ax
+"}
+(12,1,1) = {"
+KT
+sC
+pY
+OY
+QV
+QV
+YB
+PX
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+YN
+Aj
+Xv
+Nk
+BB
+iG
+iG
+iG
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+"}
+(13,1,1) = {"
+KT
+YB
+QV
+QV
+QV
+QV
+QV
+PX
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+Hs
+uX
+UB
+cT
+vJ
+vJ
+Ax
+pk
+pk
+BB
+pk
+pk
+KT
+KT
+ax
+ax
+ax
+ax
+"}
+(14,1,1) = {"
+DN
+YB
+YB
+CQ
+QV
+QV
+QV
+PX
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+oI
+oI
+oI
+AP
+gj
+ON
+pk
+ON
+pk
+pk
+KT
+ax
+ax
+ax
+ax
+"}
+(15,1,1) = {"
+DN
+ts
+sN
+QV
+CQ
+wI
+ye
+PX
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+oI
+cB
+oI
+AP
+iB
+Ez
+TZ
+eo
+pk
+pk
+ax
+ax
+ax
+ax
+ax
+"}
+(16,1,1) = {"
+KT
+dM
+ye
+sN
+LN
+Nk
+GG
+iC
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+oI
+oI
+Oi
+AP
+zO
+zO
+zO
+zO
+iB
+xL
+pk
+ax
+ax
+ax
+ax
+"}
+(17,1,1) = {"
+ax
+dM
+ZI
+ZI
+ZI
+Yq
+GG
+zk
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+IT
+Rr
+qb
+AP
+zO
+yH
+zO
+bI
+jZ
+iB
+Ez
+ax
+ax
+KT
+KT
+"}
+(18,1,1) = {"
+ax
+GG
+ZI
+aN
+Wb
+FD
+iB
+ZK
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+Md
+Jj
+Jj
+JR
+zO
+zO
+zO
+zO
+zO
+zO
+zO
+zO
+DN
+KT
+KT
+"}
+(19,1,1) = {"
+ax
+pk
+ZI
+ZI
+ZI
+FD
+zO
+vn
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+AP
+bI
+jZ
+DB
+We
+We
+We
+We
+We
+We
+We
+mx
+GK
+KT
+KT
+"}
+(20,1,1) = {"
+ax
+rD
+ZI
+ER
+Wb
+FD
+zO
+vn
+Uu
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+UB
+AP
+zO
+DB
+Yy
+ZI
+eP
+eP
+eP
+ZI
+eP
+eP
+ZI
+jV
+GK
+KT
+"}
+(21,1,1) = {"
+ax
+zO
+ZI
+ZI
+ZI
+FD
+zO
+vn
+yY
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+az
+AP
+zO
+vn
+ZI
+ZI
+Ia
+mw
+mw
+LQ
+Xp
+Xp
+ZI
+ZI
+AP
+KT
+"}
+(22,1,1) = {"
+ax
+bI
+jZ
+zO
+zO
+FD
+zO
+oe
+lz
+mp
+hj
+eg
+jb
+Pf
+Pf
+wS
+tc
+OK
+OK
+OK
+we
+lo
+II
+Ip
+zg
+Bo
+jG
+vn
+eP
+vx
+WU
+mw
+hE
+mt
+Xp
+Xp
+gi
+eP
+AP
+KT
+"}
+(23,1,1) = {"
+ax
+zO
+zO
+zO
+EJ
+FD
+zO
+zO
+zO
+Um
+CE
+jZ
+TN
+vA
+SD
+lI
+zO
+FD
+FD
+Dy
+EJ
+eE
+Vf
+tt
+ki
+zO
+zO
+vn
+eP
+jp
+Gl
+mw
+Tk
+Ni
+Xp
+Xp
+nC
+eP
+iR
+KT
+"}
+(24,1,1) = {"
+ax
+zO
+zO
+iK
+GB
+Lu
+zO
+zO
+FD
+FD
+FD
+FD
+FD
+XE
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+zO
+zO
+FD
+FD
+FD
+zO
+vn
+eP
+Ns
+qa
+mw
+hE
+kS
+Xp
+Xp
+gN
+eP
+iR
+KT
+"}
+(25,1,1) = {"
+ax
+sv
+zO
+iK
+FD
+FD
+FD
+FD
+FD
+FD
+zO
+FD
+FD
+FD
+zO
+zO
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+fI
+ZI
+ce
+mw
+mw
+hE
+Fj
+Wq
+Xp
+Xp
+eP
+AP
+KT
+"}
+(26,1,1) = {"
+ax
+ac
+Wo
+iK
+xJ
+zO
+FD
+FD
+zO
+zO
+yH
+zO
+EJ
+FD
+FD
+zO
+zO
+Dy
+FD
+zO
+zO
+FD
+FD
+zO
+zO
+FD
+FD
+ZS
+Wb
+mw
+mw
+mw
+oy
+ZI
+ZI
+rz
+rz
+ZI
+iR
+KT
+"}
+(27,1,1) = {"
+ax
+zO
+DB
+We
+HG
+Ba
+Ba
+FT
+We
+GK
+DB
+We
+HG
+Ba
+Ba
+FT
+We
+GK
+lL
+We
+HG
+Ba
+Ba
+FT
+We
+YH
+FD
+ZS
+Wb
+mw
+mw
+cH
+aE
+ZI
+Of
+Xp
+Xp
+eP
+iR
+KT
+"}
+(28,1,1) = {"
+DN
+zO
+vn
+ZI
+ZI
+Wb
+Wb
+ZI
+ZI
+AP
+vn
+ZI
+ZI
+Wb
+Wb
+ZI
+ZI
+AP
+vn
+ZI
+ZI
+Wb
+Wb
+ZI
+ZI
+AP
+yH
+tf
+zZ
+ma
+mw
+mw
+FV
+ZI
+Vm
+NY
+hd
+eP
+iR
+KT
+"}
+(29,1,1) = {"
+KT
+NV
+vn
+ZI
+up
+mw
+mw
+YA
+ZI
+AP
+vn
+ZI
+at
+mw
+DF
+Ou
+ZI
+AP
+vn
+ZI
+zy
+pF
+mw
+tz
+ZI
+qM
+FD
+vn
+eP
+Ns
+Bn
+mw
+Ns
+zZ
+mR
+Xp
+cc
+ZI
+AP
+KT
+"}
+(30,1,1) = {"
+KT
+DN
+yp
+eP
+mw
+Vk
+lp
+pF
+eP
+AP
+vn
+eP
+yE
+mw
+mw
+IW
+eP
+AP
+vn
+ZI
+ZE
+kF
+DF
+TM
+eP
+qM
+FD
+vn
+eP
+MQ
+mw
+aE
+Ze
+ZI
+BP
+Xp
+Bx
+ZI
+AP
+KT
+"}
+(31,1,1) = {"
+KT
+KT
+yp
+eP
+mw
+Sj
+mw
+mw
+eP
+AP
+vn
+zZ
+MP
+mw
+mw
+ow
+ZI
+AP
+vn
+ZI
+rm
+mw
+mw
+aA
+eP
+AP
+FD
+vn
+eP
+WU
+hE
+Oy
+nQ
+ZI
+ms
+Xp
+fd
+ZI
+AP
+KT
+"}
+(32,1,1) = {"
+KT
+NV
+yp
+zZ
+mw
+mw
+mw
+mw
+ZI
+AP
+vn
+eP
+QE
+Xc
+DF
+WA
+eP
+AP
+vn
+ZI
+zH
+cH
+mw
+fx
+eP
+AP
+FD
+vn
+ZI
+ZI
+hE
+hO
+PC
+ZI
+RR
+Xp
+ZI
+ZI
+AP
+KT
+"}
+(33,1,1) = {"
+KT
+jG
+vn
+ZI
+eP
+Wb
+Rv
+eP
+ZI
+AP
+vn
+ZI
+at
+mw
+mw
+Ou
+ZI
+AP
+uR
+ZI
+PI
+MU
+mw
+ie
+ZI
+AP
+FD
+EZ
+hH
+ZI
+eP
+eP
+eP
+ZI
+ZI
+ZI
+ZI
+Md
+JR
+KT
+"}
+(34,1,1) = {"
+KT
+zO
+vn
+ZI
+oc
+mw
+mw
+AV
+ZI
+AP
+pj
+eP
+Uj
+Pr
+mw
+Wz
+eP
+AP
+vn
+ZI
+MT
+MU
+IH
+Xz
+ZI
+AP
+FD
+FD
+MA
+Jj
+Jj
+Jj
+Jj
+Jj
+Cu
+WD
+wP
+lD
+zO
+KT
+"}
+(35,1,1) = {"
+KT
+zO
+vn
+ZI
+sK
+DF
+mw
+Bl
+ZI
+AP
+vn
+zZ
+MP
+xO
+nJ
+MP
+ZI
+AP
+vn
+ZI
+ZI
+ZI
+Wb
+ZI
+ZI
+AP
+EJ
+FD
+FD
+Ag
+FD
+FD
+zO
+zO
+zO
+oN
+Ke
+VO
+NV
+KT
+"}
+(36,1,1) = {"
+KT
+KT
+vn
+ZI
+sK
+mw
+IH
+Ck
+ZI
+AP
+vn
+eP
+yM
+mw
+mw
+av
+eP
+AP
+vn
+ZI
+tG
+Sd
+NB
+aL
+ZI
+AP
+yH
+zO
+zO
+FD
+Ag
+Ag
+FD
+zO
+yH
+NV
+oN
+NV
+oN
+KT
+"}
+(37,1,1) = {"
+KT
+KT
+vn
+ZI
+AO
+dg
+kk
+Qw
+ZI
+AP
+vn
+ZI
+hL
+mw
+mw
+Ou
+ZI
+AP
+pj
+ZI
+tG
+NB
+NB
+aL
+ZI
+AP
+zO
+lL
+We
+HG
+Ba
+Ba
+FT
+We
+GK
+Ad
+un
+VO
+KT
+KT
+"}
+(38,1,1) = {"
+KT
+NV
+vn
+ZI
+ZI
+QG
+lX
+ZI
+ZI
+AP
+vn
+ZI
+ZI
+Zj
+gc
+ZI
+ZI
+AP
+vn
+ZI
+fk
+cx
+xM
+ZI
+ZI
+AP
+zO
+vn
+ZI
+ZI
+Wb
+Wb
+ZI
+ZI
+AP
+zO
+NV
+KT
+KT
+KT
+"}
+(39,1,1) = {"
+KT
+NV
+ti
+qI
+ZI
+ZI
+ZI
+ZI
+Md
+JR
+MA
+qI
+ZI
+eP
+eP
+ZI
+Md
+JR
+MA
+qI
+ZI
+ZI
+ZI
+ZI
+Md
+JR
+zO
+vn
+ZI
+DW
+pF
+mw
+sx
+ZI
+AP
+zO
+KT
+KT
+KT
+KT
+"}
+(40,1,1) = {"
+KT
+jG
+zO
+ti
+Jj
+Jj
+Jj
+Jj
+sy
+ta
+ta
+Pw
+Jj
+Jj
+Jj
+Jj
+JR
+zO
+zO
+MA
+hK
+wa
+JY
+Jj
+JR
+yH
+zO
+vn
+ZI
+LH
+mw
+DF
+Ro
+ZI
+AP
+KT
+KT
+KT
+KT
+KT
+"}
+(41,1,1) = {"
+KT
+zO
+KT
+KT
+KT
+ta
+ta
+ta
+ax
+ax
+ax
+pk
+ta
+bL
+yH
+zO
+kr
+ta
+pk
+bL
+by
+by
+kr
+ta
+bL
+zO
+zO
+vn
+ZI
+eH
+ME
+eH
+eH
+ZI
+AP
+KT
+KT
+KT
+KT
+KT
+"}
+(42,1,1) = {"
+KT
+KT
+KT
+KT
+KT
+KT
+pk
+ax
+ax
+ax
+ax
+KT
+KT
+nn
+ta
+ta
+pk
+pk
+pk
+pk
+ta
+ta
+pk
+pk
+pk
+bL
+uZ
+vy
+eH
+uO
+cH
+mw
+vm
+eH
+AP
+KT
+KT
+KT
+KT
+KT
+"}
+(43,1,1) = {"
+KT
+KT
+KT
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+KT
+KT
+KT
+KT
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+pk
+Wc
+yS
+eH
+Re
+mw
+hr
+ne
+ZI
+ax
+KT
+KT
+KT
+KT
+KT
+"}
+(44,1,1) = {"
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+KT
+KT
+KT
+"}

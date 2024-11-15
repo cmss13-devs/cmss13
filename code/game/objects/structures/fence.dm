@@ -3,6 +3,7 @@
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
+	throwpass = TRUE
 	density = TRUE
 	anchored = TRUE
 	layer = WINDOW_LAYER
@@ -61,7 +62,7 @@
 		tforce = 40
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throwforce
+		tforce = I.throwforce/2
 	health = max(0, health - tforce)
 	healthcheck()
 
@@ -152,16 +153,26 @@
 					M.apply_damage(20)
 					health -= 50
 
+			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(M)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
+
 			healthcheck(1, 1, M) //The person thrown into the window literally shattered it
 		return
 
 	if(W.flags_item & NOBLUDGEON) return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet))
 		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
 		SPAN_NOTICE("You start cutting through [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+
+		//Bayonets are 3/4th as effective at cutting fences
+		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
+		if(istype(W, /obj/item/attachable/bayonet))
+			duration *= 1.5
+
+		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
 			SPAN_NOTICE("You cut through [src] with [W]."))
@@ -170,9 +181,9 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.force * W.demolition_mod
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.force * W.demolition_mod * 0.1
 		healthcheck(1, 1, user, W)
 		..()
 
@@ -230,6 +241,6 @@
 
 /obj/structure/fence/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
-		health -= round(exposed_volume / 100)
+		health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()

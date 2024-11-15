@@ -24,14 +24,14 @@
 	votable = FALSE // broken
 
 /* Pre-pre-startup */
-/datum/game_mode/xenovs/can_start()
+/datum/game_mode/xenovs/can_start(bypass_checks = FALSE)
 	for(var/hivename in SSmapping.configs[GROUND_MAP].xvx_hives)
 		if(GLOB.readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
 			hives += hivename
 	xeno_starting_num = GLOB.readied_players
-	if(!initialize_starting_xenomorph_list(hives, TRUE))
+	if(!initialize_starting_xenomorph_list(hives, bypass_checks))
 		hives.Cut()
-		return
+		return FALSE
 	return TRUE
 
 /datum/game_mode/xenovs/announce()
@@ -44,8 +44,8 @@
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
-		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+		if(length(monkey_types))
+			for(var/i = min(floor(monkey_amount*length(GLOB.clients)), length(GLOB.monkey_spawns)), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
@@ -91,9 +91,9 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in GLOB.all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+	for(var/area/cur_area in GLOB.all_areas)
+		cur_area.is_resin_allowed = TRUE
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 
@@ -154,7 +154,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures
@@ -265,7 +265,7 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
 		GLOB.round_statistics.log_round_statistics()
 

@@ -57,6 +57,17 @@
 
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
+/datum/language/scandinavian
+	name = LANGUAGE_SCANDINAVIAN
+	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
+	speech_verb = "blubbers"
+	ask_verb = "queries"
+	exclaim_verb = "yelps"
+	color = "scandinavian"
+	key = "0"
+
+	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
+
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
@@ -174,7 +185,7 @@
 
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
-	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job])")
+	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
 	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
@@ -195,12 +206,6 @@
 		if(isSilicon(M) || M.hear_apollo())
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
-
-	//robot binary xmitter component power usage
-	if (isrobot(speaker))
-		var/mob/living/silicon/robot/R = speaker
-		var/datum/robot_component/C = R.components["comms"]
-		R.cell_use_power(C.active_usage)
 
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH

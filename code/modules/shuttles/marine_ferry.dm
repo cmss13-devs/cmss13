@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -147,12 +147,12 @@
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
-		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
+		recharging = floor(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
 
 	//START: Heavy lifting backend
@@ -164,7 +164,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -194,7 +194,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				travel_time  = floor(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
 				break
 	else
 		if(transit_optimized)
@@ -205,7 +205,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
+				travel_time  = floor(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
 				break
 
 	//START: Heavy lifting backend
@@ -218,8 +218,8 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
-			if(X && X.stat != DEAD)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
@@ -324,7 +324,7 @@
 	if(moving_status != SHUTTLE_IDLE) return
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
@@ -349,7 +349,7 @@
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
+			if(length(crash_turfs)) T_trg = pick(crash_turfs)
 			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
@@ -454,17 +454,8 @@
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
-	for(var/i in GLOB.hijack_bustable_windows)
-		var/obj/structure/window/H = i
-		H.deconstruct(FALSE)
 
-	for(var/k in GLOB.hijack_bustable_ladders)
-		var/obj/structure/ladder/fragile_almayer/L = k
-		L.deconstruct()
-
-	// Delete the briefing door(s).
-	for(var/D in GLOB.hijack_deletable_windows)
-		qdel(D)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
@@ -599,14 +590,13 @@
 
 /datum/shuttle/ferry/marine/force_close_launch(obj/structure/machinery/door/AL)
 	if(!iselevator)
-		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-			if(isliving(M))
-				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-				M.apply_effect(4, WEAKEN)
-				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
-					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
-						M.forceMove(T)
-						break
+		for(var/mob/living/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+			M.KnockDown(4)
+			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
+				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+					M.forceMove(T)
+					break
 	return ..() // Sleeps
 
 /datum/shuttle/ferry/marine/open_doors(list/L)

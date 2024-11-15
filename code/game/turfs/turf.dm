@@ -24,7 +24,6 @@
 */
 
 
-
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
@@ -47,7 +46,7 @@
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
 
-	var/flags_turf = NO_FLAGS
+	var/turf_flags = NO_FLAGS
 
 	/// Whether we've broken through the ceiling yet
 	var/ceiling_debrised = FALSE
@@ -57,6 +56,7 @@
 
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
+
 	///List of light sources affecting this turf.
 	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
 	var/directional_opacity = NONE
@@ -78,8 +78,6 @@
 	assemble_baseturfs()
 
 	levelupdate()
-
-	visibilityChanged()
 
 	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
@@ -103,11 +101,6 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	//Get area light
-	var/area/A = loc
-	if(A?.lighting_effect)
-		overlays += A.lighting_effect
-
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
@@ -127,7 +120,6 @@
 		for(var/I in B.vars)
 			B.vars[I] = null
 		return
-	visibilityChanged()
 	flags_atom &= ~INITIALIZED
 	..()
 
@@ -147,6 +139,22 @@
 
 /turf/proc/update_icon() //Base parent. - Abby
 	return
+
+/// Call to move a turf from its current area to a new one
+/turf/proc/change_area(area/old_area, area/new_area)
+	//dont waste our time
+	if(old_area == new_area)
+		return
+
+	//move the turf
+	new_area.contents += src
+
+	//changes to make after turf has moved
+	on_change_area(old_area, new_area)
+
+/// Allows for reactions to an area change without inherently requiring change_area() be called (I hate maploading)
+/turf/proc/on_change_area(area/old_area, area/new_area)
+	transfer_area_lighting(old_area, new_area)
 
 /turf/proc/add_cleanable_overlays()
 	for(var/cleanable_type in cleanables)
@@ -362,7 +370,7 @@
 		next_target = initial(current_target.baseturfs)
 
 	baseturfs = new_baseturfs
-	created_baseturf_lists[new_baseturfs[new_baseturfs.len]] = new_baseturfs.Copy()
+	created_baseturf_lists[new_baseturfs[length(new_baseturfs)]] = new_baseturfs.Copy()
 	return new_baseturfs
 
 // Creates a new turf
@@ -438,20 +446,24 @@
 	W.levelupdate()
 	return W
 
+//If you modify this function, ensure it works correctly with lateloaded map templates.
+/turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
+	return // Placeholder. This is mostly used by /tg/ code for atmos updates
+
 // Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)
 	if(!amount)
 		return
 	if(length(baseturfs))
 		var/list/new_baseturfs = baseturfs.Copy()
-		var/turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		var/turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
 		while(ispath(turf_type, /turf/baseturf_skipover))
 			amount++
-			if(amount > new_baseturfs.len)
+			if(amount > length(new_baseturfs))
 				CRASH("The bottomost baseturf of a turf is a skipover [src]([type])")
-			turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
-		new_baseturfs.len -= min(amount, new_baseturfs.len - 1) // No removing the very bottom
-		if(new_baseturfs.len == 1)
+			turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
+		new_baseturfs.len -= min(amount, length(new_baseturfs) - 1) // No removing the very bottom
+		if(length(new_baseturfs) == 1)
 			new_baseturfs = new_baseturfs[1]
 		return ChangeTurf(turf_type, new_baseturfs, flags)
 
@@ -466,18 +478,20 @@
 
 /turf/proc/AdjacentTurfs()
 	var/L[] = new()
-	for(var/turf/t in oview(src,1))
+	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
 			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
 				L.Add(t)
+	FOR_DOVIEW_END
 	return L
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
-	for(var/turf/t in oview(src,1))
+	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
 			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
 				L.Add(t)
+	FOR_DOVIEW_END
 	return L
 
 /turf/proc/Distance(turf/t)
@@ -504,10 +518,10 @@
 		return
 
 	var/amount = size
-	var/spread = round(sqrt(size)*1.5)
+	var/spread = floor(sqrt(size)*1.5)
 
 	var/list/turfs = list()
-	for(var/turf/open/floor/F in range(src,spread))
+	for(var/turf/open/floor/F in range(spread, src))
 		turfs += F
 
 	switch(A.ceiling)
@@ -762,13 +776,40 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	insert_self_into_baseturfs()
 	var/turf/change_type
 	if(length(new_baseturfs))
-		change_type = new_baseturfs[new_baseturfs.len]
+		change_type = new_baseturfs[length(new_baseturfs)]
 		new_baseturfs.len--
-		if(new_baseturfs.len)
+		if(length(new_baseturfs))
 			baseturfs += new_baseturfs
 	else
 		change_type = new_baseturfs
 	return ChangeTurf(change_type, null, flags)
+
+/// Places a turf on top - for map loading
+/turf/proc/load_on_top(turf/added_layer, flags)
+	var/area/our_area = get_area(src)
+	flags = our_area.PlaceOnTopReact(list(baseturfs), added_layer, flags)
+
+	if(flags & CHANGETURF_SKIP) // We haven't been initialized
+		if(flags_atom & INITIALIZED)
+			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
+		assemble_baseturfs()
+
+	var/turf/new_turf
+	if(!length(baseturfs))
+		baseturfs = list(baseturfs)
+
+	var/list/old_baseturfs = baseturfs.Copy()
+	if(!isclosedturf(src))
+		old_baseturfs += type
+
+	new_turf = ChangeTurf(added_layer, null, flags)
+	new_turf.assemble_baseturfs(initial(added_layer.baseturfs)) // The baseturfs list is created like roundstart
+	if(!length(new_turf.baseturfs))
+		new_turf.baseturfs = list(baseturfs)
+
+	// The old baseturfs are put underneath, and we sort out the unwanted ones
+	new_turf.baseturfs = baseturfs_string_list(old_baseturfs + (new_turf.baseturfs - GLOB.blacklisted_automated_baseturfs), new_turf)
+	return new_turf
 
 /turf/proc/insert_self_into_baseturfs()
 	baseturfs += type
@@ -778,7 +819,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
 	var/list/removable_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	removable_contents -= src
-	for(var/i in 1 to removable_contents.len)
+	for(var/i in 1 to length(removable_contents))
 		var/thing = removable_contents[i]
 		qdel(thing, force=TRUE)
 
@@ -795,9 +836,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(depth)
 		var/list/target_baseturfs
 		if(length(copytarget.baseturfs))
-			// with default inputs this would be Copy(clamp(2, -INFINITY, baseturfs.len))
+			// with default inputs this would be Copy(clamp(2, -INFINITY, length(baseturfs)))
 			// Don't forget a lower index is lower in the baseturfs stack, the bottom is baseturfs[1]
-			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + copytarget.baseturfs.len - depth, copytarget.baseturfs.len))
+			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + length(copytarget.baseturfs) - depth, length(copytarget.baseturfs)))
 		else if(!ignore_bottom)
 			target_baseturfs = list(copytarget.baseturfs)
 		if(target_baseturfs)

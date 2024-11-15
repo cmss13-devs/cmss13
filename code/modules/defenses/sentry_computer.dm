@@ -48,41 +48,18 @@
 	// Stuff needed to render the map
 
 	/// asset name for the game map
-	var/map_name
-
-	/// camera screen which renders the world
-	var/atom/movable/screen/map_view/cam_screen
-
-	/// camera screen which shows a blank error
-	var/atom/movable/screen/background/cam_background
-
-	var/list/cam_plane_masters
+	var/camera_map_name
 
 /obj/item/device/sentry_computer/Initialize(mapload)
 	. = ..()
 	if(cell_type)
 		cell = new cell_type()
 		cell.charge = cell.maxcharge
-	// set up cameras
-	map_name = "sentry_computer_[REF(src)]_map"
-	cam_screen = new
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
 
-	cam_plane_masters = list()
-	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
-		var/atom/movable/screen/plane_master/instance = new plane()
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		if(instance.blend_mode_override)
-			instance.blend_mode = instance.blend_mode_override
-		instance.screen_loc = "[map_name]:CENTER"
-		cam_plane_masters += instance
+	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
+
+	AddComponent(/datum/component/camera_manager)
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	faction_group = FACTION_LIST_MARINE
 	transceiver.forceMove(src)
@@ -94,15 +71,19 @@
 
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 	QDEL_NULL(cell)
-	QDEL_NULL(cam_background)
-	QDEL_NULL(cam_screen)
 	QDEL_NULL(transceiver)
 	QDEL_NULL(voice)
 	last_camera_turf = null
 	current = null
 	registered_tools = null
+	for(var/obj/structure/machinery/defenses/sentry/sentrygun as anything in paired_sentry)
+		unpair_sentry(sentrygun)
 	paired_sentry = null
+
+/obj/item/device/sentry_computer/proc/camera_mapname_update(source, value)
+	camera_map_name = value
 
 /obj/item/device/sentry_computer/Move(NewLoc, direct)
 	..()
@@ -232,7 +213,7 @@
 					for(var/key_id in tool.encryption_keys)
 						var/datum/weakref/ref = tool.encryption_keys[key_id]
 						var/obj/item/device/sentry_computer/key_object = ref.resolve()
-						key_object.registered_tools -= id
+						key_object?.registered_tools -= id
 					tool.encryption_keys = list()
 				to_chat(user, SPAN_NOTICE("Existing encryption keys cleared."))
 			to_chat(usr, SPAN_NOTICE("You begin encryption key to \the [tool]."))
@@ -321,30 +302,27 @@
 
 	if(current == target)
 		current = null
-		update_active_camera()
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/item/device/sentry_computer/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!on)
 		return UI_CLOSE
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		return UI_UPDATE
 
 
 /obj/item/device/sentry_computer/ui_close(mob/user)
-
-	// Unregister map objects
-	user.client.clear_map(map_name)
+	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 
 
 /obj/item/device/sentry_computer/ui_static_data(mob/user)
 	. = list()
 	.["sentry_static"] = list()
-	.["mapRef"] = map_name
+	.["mapRef"] = camera_map_name
 	var/index = 1
-	for(var/sentry in paired_sentry)
+	for(var/obj/structure/machinery/defenses/sentry/sentrygun as anything in paired_sentry)
 		var/list/sentry_holder = list()
-		var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
 		sentry_holder["selection_menu"] = list()
 		sentry_holder["index"] = index
 		sentry_holder["name"] = sentrygun.name
@@ -396,13 +374,8 @@
 
 /obj/item/device/sentry_computer/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	update_active_camera()
 	if (!ui)
-		// Register map objects
-		user.client.register_map_obj(cam_background)
-		user.client.register_map_obj(cam_screen)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "SentryGunUI", name)
 		ui.open()
 
@@ -410,7 +383,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
 		return
 	if(params["index"])
@@ -426,7 +399,11 @@
 				if("set-camera")
 					current = sentry
 					playsound(src, get_sfx("terminal_button"), 25, FALSE)
-					update_active_camera()
+					var/obj/structure/machinery/defenses/sentry/defense = sentry
+					if (defense.has_camera)
+						defense.set_range()
+						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
+
 					return TRUE
 				if("ping")
 					playsound(sentry, 'sound/machines/twobeep.ogg', 50, 1)
@@ -439,62 +416,8 @@
 		if("clear-camera")
 			current = null
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
-			update_active_camera()
+			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 			return TRUE
 		if("ui-interact")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return FALSE
-
-/**
- * Set the displayed camera to the static not-connected.
- */
-/obj/item/device/sentry_computer/proc/show_camera_static()
-	cam_screen.vis_contents.Cut()
-	last_camera_turf = null
-	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, 15, 15)
-
-/**
- * Update camera settings and redraw camera on the current variable.
- */
-/obj/item/device/sentry_computer/proc/update_active_camera()
-	// Show static if can't use the camera
-	if(isnull(current) || !current.has_camera || current.placed != 1)
-		show_camera_static()
-		return
-
-	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
-	var/cam_location = current
-	if(isliving(current.loc) || isVehicle(current.loc))
-		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
-	// If we're not forcing an update for some reason and the cameras are in the same location,
-	// we don't need to update anything.
-	// Most security cameras will end here as they're not moving.
-	if(last_camera_turf == get_turf(cam_location))
-		return
-
-	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
-	last_camera_turf = get_turf(cam_location)
-	current.set_range()
-	var/datum/shape/rectangle/current_bb = current.range_bounds
-	var/x_size = current_bb.width
-	var/y_size = current_bb.height
-	var/target = locate(current_bb.center_x, current_bb.center_y, current.loc.z)
-	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
-
-	var/list/visible_turfs = list()
-
-	for(var/turf/visible_turf in guncamera_zone)
-		visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-	cam_screen.icon = null
-	cam_screen.icon_state = "clear"
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)

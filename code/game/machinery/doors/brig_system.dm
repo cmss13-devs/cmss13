@@ -13,7 +13,7 @@
 	anchored = TRUE // can't pick it up
 	density = FALSE // can walk through it.
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	/// id of door it controls.
 	var/id = null
@@ -279,7 +279,7 @@
 		var/obj/item/card/id/id_card = human.get_idcard()
 
 		if (id_card)
-			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.uscm_highcom_paygrades))
 				return TRUE
 
 	return FALSE
@@ -389,6 +389,14 @@
 /obj/structure/machinery/brig_cell/cell_4
 	name = "Cell 4"
 	id = "Cell 4"
+
+/obj/structure/machinery/brig_cell/cell_5
+	name = "Cell 5"
+	id = "Cell 5"
+
+/obj/structure/machinery/brig_cell/cell_6
+	name = "Cell 6"
+	id = "Cell 6"
 
 /obj/structure/machinery/brig_cell/perma_1
 	name = "Perma 1"

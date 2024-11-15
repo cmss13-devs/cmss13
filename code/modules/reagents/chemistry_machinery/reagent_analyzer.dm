@@ -13,24 +13,27 @@
 
 /obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
 	if(processing)
-		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
+		to_chat(user, SPAN_WARNING("[src] is still processing!"))
 		return
 	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
 		if(sample || status)
-			to_chat(user, SPAN_WARNING("Something is already loaded into the [src]."))
+			to_chat(user, SPAN_WARNING("Something is already loaded into [src]."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			sample = B
 			icon_state = "reagent_analyzer_sample"
-			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
+			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring [src]."))
 			updateUsrDialog()
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
+			if(!sample)
+				to_chat(user, SPAN_WARNING("Someone else removed the sample. Make up your mind!"))
+				return
 			processing = TRUE
-			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+			if(sample.reagents.total_volume < 30 || length(sample.reagents.reagent_list) > 1)
 				icon_state = "reagent_analyzer_error"
 				reagent_process()
 			else
@@ -51,12 +54,12 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/reagent_analyzer, finish_reagent_process)), 4 SECONDS)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
-	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || length(sample.reagents.reagent_list) > 1)
 		if(!sample || !sample.reagents)
 			print_report(0, "SAMPLE EMPTY.")
 		else if(sample.reagents.total_volume < 30)
 			print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
-		else if(sample.reagents.reagent_list.len > 1)
+		else if(length(sample.reagents.reagent_list) > 1)
 			print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")
 		else
 			print_report(0, "UNKNOWN.")
@@ -72,12 +75,12 @@
 
 /obj/structure/machinery/reagent_analyzer/attack_hand(mob/user as mob)
 	if(processing)
-		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
+		to_chat(user, SPAN_WARNING("[src] is still processing!"))
 		return
 	if(!sample)
-		to_chat(user, SPAN_WARNING("The [src] is empty."))
+		to_chat(user, SPAN_WARNING("[src] is empty."))
 		return
-	to_chat(user, SPAN_NOTICE("You remove the [sample] from the [src]."))
+	to_chat(user, SPAN_NOTICE("You remove [sample] from [src]."))
 	user.put_in_active_hand(sample)
 	sample = null
 	icon_state = "reagent_analyzer"

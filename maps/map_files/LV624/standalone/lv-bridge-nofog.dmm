@@ -4,52 +4,31 @@
 /area/lv624/ground/river/central_river)
 "ab" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 9;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/river/central_river)
 "ac" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/river/central_river)
 "ad" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 5;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/northeast,
 /area/lv624/ground/river/central_river)
 "ae" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/river/central_river)
 "af" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
 "ag" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv624/ground/river/central_river)
 "ah" = (
 /obj/structure/fence,
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv624/ground/river/central_river)
 "ai" = (
 /turf/open/gm/dirt,
@@ -62,20 +41,14 @@
 /area/lv624/ground/jungle/north_jungle)
 "al" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "dC" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "jr" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -97,10 +70,7 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "lY" = (
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "mq" = (
 /obj/structure/machinery/colony_floodlight,
@@ -129,10 +99,7 @@
 "qL" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "xB" = (
 /obj/effect/landmark/crap_item,
@@ -146,16 +113,10 @@
 /area/lv624/ground/jungle/north_jungle)
 "BW" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "DX" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "EG" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -167,10 +128,7 @@
 "Uh" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "VN" = (
 /turf/open/gm/grass/grass1,
@@ -179,10 +137,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
 "Yw" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
+/turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"

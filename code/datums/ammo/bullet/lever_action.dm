@@ -12,6 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
+	effective_range_max = 7
 	handful_state = "lever_action_bullet"
 
 //unused and not working. need to refactor MD code. Unobtainable.
@@ -34,6 +35,7 @@
 	damage = 70  //blanks CAN hurt you if shot very close
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
+	effective_range_max = 0
 	damage_falloff = DAMAGE_FALLOFF_BLANK //not much, though (comparatively)
 	shell_speed = AMMO_SPEED_TIER_5
 	handful_state = "training_lever_action_bullet"
@@ -52,7 +54,7 @@
 /datum/ammo/bullet/lever_action/xm88
 	name = ".458 SOCOM round"
 
-	damage = 80
+	damage = 104
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6

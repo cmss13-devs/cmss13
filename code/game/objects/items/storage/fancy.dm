@@ -103,11 +103,11 @@
 	overlays = list() //resets list
 	overlays += image('icons/obj/items/crayons.dmi',"crayonbox")
 	for(var/obj/item/toy/crayon/crayon in contents)
-		overlays += image('icons/obj/items/crayons.dmi',crayon.colourName)
+		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/toy/crayon))
-		switch(W:colourName)
+		switch(W:colorName)
 			if("mime")
 				to_chat(usr, "This crayon is too sad to be contained in this box.")
 				return
@@ -126,6 +126,7 @@
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	max_w_class = SIZE_TINY
 	storage_slots = 20
 	can_hold = list(
@@ -218,6 +219,46 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
+/obj/item/storage/fancy/cigarettes/trading_card
+	name = "\improper WeyYu Gold Military Trading Card packet"
+	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
+	icon_state = "collectpacket"
+	item_state = "collectpacket"
+	storage_slots = 21
+	can_hold = list(
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/clothing/mask/cigarette/ucigarette,
+		/obj/item/clothing/mask/cigarette/bcigarette,
+		/obj/item/tool/lighter,
+		/obj/item/toy/trading_card,
+	)
+	var/obj/item/toy/trading_card/trading_card
+
+/obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
+	flags_atom |= NOREACT
+	for(var/i = 1 to (storage_slots-1))
+		new default_cig_type(src)
+	trading_card = new(src)
+
+/obj/item/storage/fancy/cigarettes/trading_card/attack_hand(mob/user, mods)
+	if(trading_card?.loc == src && loc == user)
+		to_chat(user, SPAN_NOTICE("You pull a [trading_card.collection_color] trading card out of the cigarette pack."))
+		//have to take two disparate systems n' ram 'em together
+		remove_from_storage(trading_card, user.loc)
+		user.put_in_hands(trading_card)
+		trading_card = null
+
+	return ..()
+
+/obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
+		trading_card = attacked_by_item
+
+	return ..()
+
+/////////////
+//CIGAR BOX//
+/////////////
 // CIGAR BOX
 
 /obj/item/storage/fancy/cigar
@@ -302,7 +343,7 @@
 		if(istype(W) && !W.heat_source && !W.burnt)
 			if(prob(burn_chance))
 				to_chat(user, SPAN_WARNING("\The [W] lights, but you burn your hand in the process! Ouch!"))
-				user.apply_damage(3, BRUTE, pick("r_hand", "l_hand"))
+				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
 				W.light_match()
@@ -409,3 +450,73 @@
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
+
+// Trading Card Pack
+
+/obj/item/storage/fancy/trading_card
+	name = "pack of Red WeyYu Military Trading Cards"
+	desc = "A 5 pack of Red Weyland Yutani Military Trading Cards."
+	icon = 'icons/obj/items/playing_cards.dmi'
+	icon_state = "trading_red_pack_closed"
+	storage_slots = 5
+	icon_type = "trading card"
+	can_hold = list(/obj/item/toy/trading_card)
+	foldable = /obj/item/stack/sheet/cardboard
+	var/collection_color = null
+	var/obj/item/toy/trading_card/top_trading_card
+
+/obj/item/storage/fancy/trading_card/Initialize()
+	if(!collection_color)
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+
+	. = ..()
+
+	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
+	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
+	icon_state = "trading_[collection_color]_pack_closed"
+
+
+/obj/item/storage/fancy/trading_card/fill_preset_inventory()
+
+	for(var/i in 1 to storage_slots)
+		top_trading_card = new /obj/item/toy/trading_card(src)
+
+/obj/item/storage/fancy/trading_card/update_icon()
+	if(!(top_trading_card))
+		icon_state = "trading_[collection_color]_pack_empty"
+		return
+	if(length(contents) == storage_slots)
+		icon_state = "trading_[collection_color]_pack_closed"
+		return
+	icon_state = "trading_[collection_color]_pack_open"
+
+/obj/item/storage/fancy/trading_card/attack_hand(mob/user, mods)
+	if(top_trading_card?.loc == src && loc == user)
+		to_chat(user, SPAN_NOTICE("You pull a [top_trading_card.collection_color] trading card out of the pack."))
+		//have to take two disparate systems n' ram 'em together
+		remove_from_storage(top_trading_card, user.loc)
+		user.put_in_hands(top_trading_card)
+		if(!(length(contents)))
+			top_trading_card = null
+			update_icon()
+			return
+		top_trading_card = contents[(length(contents))]
+		update_icon()
+		return
+
+	return ..()
+
+/obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
+		top_trading_card = attacked_by_item
+
+	return ..()
+
+/obj/item/storage/fancy/trading_card/red
+	collection_color = "red"
+
+/obj/item/storage/fancy/trading_card/green
+	collection_color = "green"
+
+/obj/item/storage/fancy/trading_card/blue
+	collection_color = "blue"

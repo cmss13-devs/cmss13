@@ -8,6 +8,13 @@
         { "weight": 1, "type": "def", "values": { "lz2-southwest": "half", "lz2-south-gate": "none", "lz2-southeast": "half", "lz2-eastsouth": "full", "lz2-southeast-gate": "full", "lz2-east": "none", "lz2-east-gate": "half", "lz2-north": "none"} },
         { "weight": 1, "type": "def", "values": { "lz2-southwest": "full", "lz2-south-gate": "none", "lz2-southeast": "half", "lz2-eastsouth": "none", "lz2-southeast-gate": "open", "lz2-east": "full", "lz2-east-gate": "none", "lz2-north": "open"} }
     ]
+},
+{
+    "type": "pick", "name": "Panic Room",
+    "choices": [
+        { "weight": 10, "type": "def", "values": { "panic_room": "none"} },
+        { "weight": 3, "type": "def", "values": { "panic_room": "full"} }
+    ]
 }
 ]
 

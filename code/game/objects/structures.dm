@@ -46,7 +46,7 @@
 	..()
 
 /obj/structure/ex_act(severity, direction)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	if(src.health) //Prevents unbreakable objects from being destroyed
@@ -110,7 +110,7 @@
 
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
-		return
+		return FALSE
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
@@ -120,10 +120,10 @@
 	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
-		return
+		return FALSE
 
 	if(!can_climb(user))
-		return
+		return FALSE
 
 	var/turf/TT = get_turf(src)
 	if(flags_atom & ON_BORDER)
@@ -145,6 +145,7 @@
 	user.forceMove(TT)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(TT)
+	return TRUE
 
 /obj/structure/proc/structure_shaken()
 
@@ -209,7 +210,7 @@
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
+		to_chat(user, SPAN_WARNING("[src] cannot be [anchored ? "un" : ""]anchored."))
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering
@@ -219,8 +220,12 @@
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(anchored)
 				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
 			else
 				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
 			return TRUE
 
 /obj/structure/get_applying_acid_time()

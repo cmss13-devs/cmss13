@@ -32,7 +32,7 @@
 
 	var/value = SStechtree.trees[1]
 
-	if(trees.len > 1)
+	if(length(trees) > 1)
 		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
 
 	if(!value)
@@ -60,7 +60,7 @@
 
 	var/value = SStechtree.trees[1]
 
-	if(trees.len > 1)
+	if(length(trees) > 1)
 		value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
 
 	if(!value)
@@ -160,15 +160,6 @@
 
 	message_admins("[usr.ckey] manually reloaded admins.")
 	load_admins()
-
-/client/proc/reload_whitelist()
-	set name = "Reload Whitelist"
-	set category = "Debug"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
-	if(!check_rights(R_SERVER) || !GLOB.RoleAuthority) return
-
-	message_admins("[usr.ckey] manually reloaded the role whitelist.")
-	GLOB.RoleAuthority.load_whitelist()
 
 /client/proc/bulk_fetcher()
 	set name = "Bulk Fetch Items"

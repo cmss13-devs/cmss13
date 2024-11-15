@@ -202,8 +202,6 @@
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/dam.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
 /obj/structure/prop/dam/boulder/boulder2
@@ -218,8 +216,6 @@
 	icon = 'icons/obj/structures/props/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2
@@ -234,212 +230,6 @@
 
 /obj/structure/prop/dam/wide_boulder/boulder1
 	icon_state = "boulder1"
-
-
-/obj/structure/prop/mech
-	icon = 'icons/obj/structures/props/mech.dmi'
-
-/obj/structure/prop/mech/hydralic_clamp
-	name = "Hydraulic Clamp"
-	icon_state = "mecha_clamp"
-
-/obj/structure/prop/mech/drill
-	name = "Drill"
-	desc = "This is the drill that'll pierce the heavens!"
-	icon_state = "mecha_drill"
-
-/obj/structure/prop/mech/armor_booster
-	name = "Armor Booster Module (Close Combat Weaponry)"
-	desc = "Boosts exosuit armor against armed melee attacks. Requires energy to operate."
-	icon_state = "mecha_abooster_ccw"
-
-/obj/structure/prop/mech/repair_droid
-	name = "Repair Droid"
-	desc = "Automated repair droid. Scans exosuit for damage and repairs it. Can fix almost all types of external or internal damage."
-	icon_state = "repair_droid"
-
-/obj/structure/prop/mech/tesla_energy_relay
-	name = "Energy Relay"
-	desc = "Wirelessly drains energy from any available power channel in area. The performance index is quite low."
-	icon_state = "tesla"
-
-/obj/structure/prop/mech/mech_parts
-	name = "mecha part"
-	flags_atom = FPRINT|CONDUCT
-
-/obj/structure/prop/mech/mech_parts/chassis
-	name="Mecha Chassis"
-	icon_state = "backbone"
-
-/obj/structure/prop/mech/mech_parts/chassis/ripley
-	name = "Ripley Chassis"
-	icon_state = "ripley_chassis"
-
-/obj/structure/prop/mech/mech_parts/part/ripley_torso
-	name="Ripley Torso"
-	desc="A torso part of Ripley APLU. Contains power unit, processing core and life support systems."
-	icon_state = "ripley_harness"
-
-/obj/structure/prop/mech/mech_parts/part/ripley_left_arm
-	name="Ripley Left Arm"
-	desc="A Ripley APLU left arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "ripley_l_arm"
-
-/obj/structure/prop/mech/mech_parts/part/ripley_right_arm
-	name="Ripley Right Arm"
-	desc="A Ripley APLU right arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "ripley_r_arm"
-
-/obj/structure/prop/mech/mech_parts/part/ripley_left_leg
-	name="Ripley Left Leg"
-	desc="A Ripley APLU left leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "ripley_l_leg"
-
-/obj/structure/prop/mech/mech_parts/part/ripley_right_leg
-	name="Ripley Right Leg"
-	desc="A Ripley APLU right leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "ripley_r_leg"
-
-/obj/structure/prop/mech/mech_parts/chassis/gygax
-	name = "Gygax Chassis"
-	icon_state = "gygax_chassis"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_torso
-	name="Gygax Torso"
-	desc="A torso part of Gygax. Contains power unit, processing core and life support systems. Has an additional equipment slot."
-	icon_state = "gygax_harness"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_head
-	name="Gygax Head"
-	desc="A Gygax head. Houses advanced surveilance and targeting sensors."
-	icon_state = "gygax_head"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_left_arm
-	name="Gygax Left Arm"
-	desc="A Gygax left arm. Data and power sockets are compatible with most exosuit tools and weapons."
-	icon_state = "gygax_l_arm"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_right_arm
-	name="Gygax Right Arm"
-	desc="A Gygax right arm. Data and power sockets are compatible with most exosuit tools and weapons."
-	icon_state = "gygax_r_arm"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_left_leg
-	name="Gygax Left Leg"
-	icon_state = "gygax_l_leg"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_right_leg
-	name="Gygax Right Leg"
-	icon_state = "gygax_r_leg"
-
-/obj/structure/prop/mech/mech_parts/part/gygax_armor
-	name="Gygax Armor Plates"
-	icon_state = "gygax_armor"
-
-/obj/structure/prop/mech/mech_parts/chassis/durand
-	name = "Durand Chassis"
-	icon_state = "durand_chassis"
-
-/obj/structure/prop/mech/mech_parts/part/durand_torso
-	name="Durand Torso"
-	icon_state = "durand_harness"
-
-/obj/structure/prop/mech/mech_parts/part/durand_head
-	name="Durand Head"
-	icon_state = "durand_head"
-
-/obj/structure/prop/mech/mech_parts/part/durand_left_arm
-	name="Durand Left Arm"
-	icon_state = "durand_l_arm"
-
-/obj/structure/prop/mech/mech_parts/part/durand_right_arm
-	name="Durand Right Arm"
-	icon_state = "durand_r_arm"
-
-/obj/structure/prop/mech/mech_parts/part/durand_left_leg
-	name="Durand Left Leg"
-	icon_state = "durand_l_leg"
-
-/obj/structure/prop/mech/mech_parts/part/durand_right_leg
-	name="Durand Right Leg"
-	icon_state = "durand_r_leg"
-
-/obj/structure/prop/mech/mech_parts/part/durand_armor
-	name="Durand Armor Plates"
-	icon_state = "durand_armor"
-
-/obj/structure/prop/mech/mech_parts/chassis/firefighter
-	name = "Firefighter Chassis"
-	icon_state = "ripley_chassis"
-
-/obj/structure/prop/mech/mech_parts/chassis/phazon
-	name = "Phazon Chassis"
-	icon_state = "phazon_chassis"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_torso
-	name="Phazon Torso"
-	icon_state = "phazon_harness"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_head
-	name="Phazon Head"
-	icon_state = "phazon_head"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_left_arm
-	name="Phazon Left Arm"
-	icon_state = "phazon_l_arm"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_right_arm
-	name="Phazon Right Arm"
-	icon_state = "phazon_r_arm"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_left_leg
-	name="Phazon Left Leg"
-	icon_state = "phazon_l_leg"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_right_leg
-	name="Phazon Right Leg"
-	icon_state = "phazon_r_leg"
-
-/obj/structure/prop/mech/mech_parts/part/phazon_armor_plates
-	name="Phazon Armor Plates"
-	icon_state = "phazon_armor"
-
-/obj/structure/prop/mech/mech_parts/chassis/odysseus
-	name = "Odysseus Chassis"
-	icon_state = "odysseus_chassis"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_head
-	name="Odysseus Head"
-	icon_state = "odysseus_head"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_torso
-	name="Odysseus Torso"
-	desc="A torso part of Odysseus. Contains power unit, processing core and life support systems."
-	icon_state = "odysseus_torso"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_left_arm
-	name="Odysseus Left Arm"
-	desc="An Odysseus left arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "odysseus_l_arm"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_right_arm
-	name="Odysseus Right Arm"
-	desc="An Odysseus right arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "odysseus_r_arm"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_left_leg
-	name="Odysseus Left Leg"
-	desc="An Odysseus left leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "odysseus_l_leg"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_right_leg
-	name="Odysseus Right Leg"
-	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "odysseus_r_leg"
-
-/obj/structure/prop/mech/mech_parts/part/odysseus_armor_plates
-	name="Odysseus Armor Plates"
-	icon_state = "odysseus_armor"
 
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
@@ -490,7 +280,7 @@
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
 	density = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/on = FALSE
@@ -527,7 +317,7 @@
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
 	density = FALSE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -598,7 +388,7 @@
 	desc = "this needs to be defined by a coder"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
-	indestructible = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -780,7 +570,7 @@
 
 	for(var/mob/living/carbon/human/mob in range(heating_range, src))
 		if(mob.bodytemperature < T20C)
-			mob.bodytemperature += min(round(T20C - mob.bodytemperature)*0.7, 25)
+			mob.bodytemperature += min(floor(T20C - mob.bodytemperature)*0.7, 25)
 			mob.recalculate_move_delay = TRUE
 
 	if(quiet)
@@ -891,6 +681,20 @@
 /obj/structure/prop/ice_colony/dense
 	health = 75
 	density = TRUE
+
+/obj/structure/prop/ice_colony/dense/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
 
 /obj/structure/prop/ice_colony/dense/ice_tray
 	name = "ice slab tray"
@@ -1132,7 +936,7 @@
 	name = "\improper S-52 fusion reactor"
 	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
-	icon_state = "off-0"
+	icon_state = "off"
 
 /obj/structure/prop/invuln/pipe_water
 	name = "pipe water"
@@ -1187,7 +991,7 @@
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] drapes [W] around [src]."))
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
@@ -1198,7 +1002,7 @@
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			to_chat(user, SPAN_WARNING("There's already a dog tag on [src]!"))
 			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))
@@ -1282,7 +1086,7 @@
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 
@@ -1372,4 +1176,3 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
-

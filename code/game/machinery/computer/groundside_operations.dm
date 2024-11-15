@@ -1,3 +1,5 @@
+#define COMMAND_SQUAD "Command"
+
 /obj/structure/machinery/computer/groundside_operations
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
@@ -19,6 +21,7 @@
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
 	var/faction = FACTION_MARINE
+	var/show_command_squad = FALSE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -69,8 +72,11 @@
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
-		dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
-		if(current_squad)
+		if(show_command_squad)
+			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>Command</A><BR>"
+		else
+			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
+		if(current_squad || show_command_squad)
 			dat += get_overwatch_info()
 
 	dat += "<BR><A HREF='?src=\ref[user];mach_close=groundside_operations'>Close</A>"
@@ -104,93 +110,93 @@
 	</script>
 	"}
 
-	if(!current_squad)
-		dat += "No Squad selected!<BR>"
+	if(show_command_squad)
+		dat += format_list_of_marines(list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO]) + GLOB.marine_leaders[JOB_SO], list(JOB_CO, JOB_XO, JOB_SO))
+	else if(current_squad)
+		dat += format_list_of_marines(current_squad.marines_list, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE))
 	else
-		var/leader_text = ""
-		var/spec_text = ""
-		var/medic_text = ""
-		var/engi_text = ""
-		var/smart_text = ""
-		var/marine_text = ""
-		var/misc_text = ""
-		var/living_count = 0
-		var/almayer_count = 0
-		var/SSD_count = 0
-		var/helmetless_count = 0
-
-		for(var/X in current_squad.marines_list)
-			if(!X)
-				continue //just to be safe
-			var/mob_name = "unknown"
-			var/mob_state = ""
-			var/role = "unknown"
-			var/act_sl = ""
-			var/area_name = "<b>???</b>"
-			var/mob/living/carbon/human/H
-			if(ishuman(X))
-				H = X
-				mob_name = H.real_name
-				var/area/A = get_area(H)
-				var/turf/M_turf = get_turf(H)
-				if(A)
-					area_name = sanitize_area(A.name)
-
-				if(H.job)
-					role = H.job
-				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
-					if(ID.rank)
-						role = ID.rank
-
-				switch(H.stat)
-					if(CONSCIOUS)
-						mob_state = "Conscious"
-						living_count++
-					if(UNCONSCIOUS)
-						mob_state = "<b>Unconscious</b>"
-						living_count++
-					else
-						continue
-
-				if(!is_ground_level(M_turf.z))
-					almayer_count++
-					continue
-
-				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
-					helmetless_count++
-					continue
-
-				if(!H.key || !H.client)
-					SSD_count++
-					continue
-
-			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
-			switch(role)
-				if(JOB_SQUAD_LEADER)
-					leader_text += marine_infos
-				if(JOB_SQUAD_SPECIALIST)
-					spec_text += marine_infos
-				if(JOB_SQUAD_MEDIC)
-					medic_text += marine_infos
-				if(JOB_SQUAD_ENGI)
-					engi_text += marine_infos
-				if(JOB_SQUAD_SMARTGUN)
-					smart_text += marine_infos
-				if(JOB_SQUAD_MARINE)
-					marine_text += marine_infos
-				else
-					misc_text += marine_infos
-
-		dat += "<b>Total: [current_squad.marines_list.len] Deployed</b><BR>"
-		dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
-		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
-		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
-		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
-		dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
-		dat += "</table>"
+		dat += "No Squad selected!<BR>"
 	dat += "<br><hr>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
+	return dat
+
+/obj/structure/machinery/computer/groundside_operations/proc/format_list_of_marines(list/mob/living/carbon/human/marine_list, list/jobs_in_order)
+	var/dat = ""
+	var/list/job_order = list()
+
+	for(var/job in jobs_in_order)
+		job_order[job] = ""
+
+	var/misc_text = ""
+
+	var/living_count = 0
+	var/almayer_count = 0
+	var/SSD_count = 0
+	var/helmetless_count = 0
+	var/total_count = 0
+
+	for(var/X in marine_list)
+		if(!X)
+			continue //just to be safe
+		total_count++
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/role = "unknown"
+		var/area_name = "<b>???</b>"
+		var/mob/living/carbon/human/H
+		var/act_sl = ""
+		if(ishuman(X))
+			H = X
+			mob_name = H.real_name
+			var/area/A = get_area(H)
+			var/turf/M_turf = get_turf(H)
+			if(A)
+				area_name = sanitize_area(A.name)
+
+			var/obj/item/card/id/card = H.get_idcard()
+			if(H.job)
+				role = H.job
+			else if(card?.rank) //decapitated marine is mindless,
+				role = card.rank
+
+			switch(H.stat)
+				if(CONSCIOUS)
+					mob_state = "Conscious"
+					living_count++
+				if(UNCONSCIOUS)
+					mob_state = "<b>Unconscious</b>"
+					living_count++
+				else
+					continue
+
+			if(!is_ground_level(M_turf.z))
+				almayer_count++
+				continue
+
+			if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+				helmetless_count++
+				continue
+
+			if(!H.key || !H.client)
+				SSD_count++
+				continue
+			if(current_squad)
+				if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
+					act_sl = " (ASL)"
+		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+		if(role in job_order)
+			job_order[role] += marine_infos
+		else
+			misc_text += marine_infos
+	dat += "<b>Total: [total_count] Deployed</b><BR>"
+	dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
+	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
+	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
+	dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
+	for(var/job in job_order)
+		dat += job_order[job]
+	dat += misc_text
+	dat += "</table>"
 	return dat
 
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
@@ -205,6 +211,19 @@
 			return
 
 		if("announce")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(usr.client.prefs.muted & MUTE_IC)
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
@@ -216,7 +235,7 @@
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !is_announcement_active || !(usr in view(1,src)))
+			if(!input || !is_announcement_active || !(usr in dview(1, src)))
 				return FALSE
 
 			is_announcement_active = FALSE
@@ -224,8 +243,8 @@
 			var/signed = null
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
-				if(istype(id))
+				var/obj/item/card/id/id = H.get_idcard()
+				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 
@@ -235,7 +254,7 @@
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("selectlz")
 			if(SSticker.mode.active_lz)
@@ -254,23 +273,31 @@
 			for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 				if(S.active && S.faction == faction)
 					squad_list += S.name
+			squad_list += COMMAND_SQUAD
 
 			var/name_sel = tgui_input_list(usr, "Which squad would you like to look at?", "Pick Squad", squad_list)
 			if(!name_sel)
 				return
 
-			var/datum/squad/selected = get_squad_by_name(name_sel)
-			if(selected)
-				current_squad = selected
+			if(name_sel == COMMAND_SQUAD)
+				show_command_squad = TRUE
+				current_squad = null
+
 			else
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+				show_command_squad = FALSE
+
+				var/datum/squad/selected = get_squad_by_name(name_sel)
+				if(selected)
+					current_squad = selected
+				else
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 
 		if("use_cam")
 			if(isRemoteControlling(usr))
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
 				return
 
-			if(current_squad)
+			if(current_squad || show_command_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
 				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
 				if(!new_cam || !new_cam.can_use())
@@ -290,6 +317,19 @@
 					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
@@ -321,7 +361,7 @@
 
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad)
+	if(current_squad || show_command_squad)
 		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
@@ -348,3 +388,9 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/structure/machinery/computer/groundside_operations/arc
+	icon = 'icons/obj/vehicles/interiors/arc.dmi'
+	icon_state = "groundsideop_computer"
+
+#undef COMMAND_SQUAD

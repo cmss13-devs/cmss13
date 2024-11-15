@@ -14,11 +14,11 @@
 	. = ..()
 
 	begin_decay_time = world.timeofday + QUEEN_OVIPOSITOR_DECAY_TIME
-	START_PROCESSING(SSeffects, src) // Process every second
+	START_PROCESSING(SSoldeffects, src) // Process every second
 
 /obj/ovipositor/Destroy()
 	if(!decayed && !destroyed)
-		STOP_PROCESSING(SSeffects, src)
+		STOP_PROCESSING(SSoldeffects, src)
 
 	return ..()
 
@@ -32,7 +32,7 @@
 
 /obj/ovipositor/proc/do_decay()
 	decayed = TRUE
-	STOP_PROCESSING(SSeffects, src)
+	STOP_PROCESSING(SSoldeffects, src)
 
 	icon_state = "ovipositor_molted"
 	flick("ovipositor_decay", src)
@@ -46,7 +46,7 @@
 
 /obj/ovipositor/proc/explode()
 	destroyed = TRUE
-	STOP_PROCESSING(SSeffects, src)
+	STOP_PROCESSING(SSoldeffects, src)
 
 	icon_state = "ovipositor_gibbed"
 	flick("ovipositor_explosion", src)

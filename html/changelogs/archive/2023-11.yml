@@ -402,3 +402,24 @@
       than if lying down.
   stalkerino:
   - rscadd: readds skull facepaint and skull balaclava (blue and black)
+2023-11-29:
+  realforest2001:
+  - rscdel: Whiskey Outpost no longer rolls pred rounds naturally.
+2023-11-30:
+  Birdtalon:
+  - code_imp: Refactiors xenomorph initialize & removes some duplicate proc calls
+  HeresKozmos:
+  - mapadd: added a new spring area to kutjevo's south caves
+  Huffie56:
+  - rscadd: Added a lot's of food boxes for that hold the basic ingredients for cooking.
+  - rscadd: Added a file to handle the fridges in almayer kitchen.
+  - rscadd: Added a vendor in the kitchen that sell boxes of ingredients.
+  - rscadd: Added a a food crate called surplus boxes ingredient containing random
+      boxes of ingredients.
+  - rscadd: Added a version of this crate that will be freely given via the ASR system.
+  SabreML:
+  - bugfix: Fixed a few space tiles under a window in Kutjevo Refinery.
+  harryob:
+  - bugfix: the health indicator in the tooltip and colorbox is still present when
+      a POI has 0 health
+  - bugfix: admins can refresh the orbit menu without runtimes

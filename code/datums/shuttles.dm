@@ -106,11 +106,11 @@
 
 //ice classic elevators
 /datum/map_template/shuttle/trijent_elevator/ice_elevator
-	name = "Classic Ice Elevator"
+	name = "Ice Classic Elevator (Dorm)"
 	shuttle_id = "ice_classic_shuttle"
+	elevator_network = "dorm"
 
 /datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+	name = "Ice Classic Elevator (Lab)"
+	shuttle_id = "ice_classic_shuttle_north"
 	elevator_network = "lab"
-
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
-	elevator_network = "dorm"

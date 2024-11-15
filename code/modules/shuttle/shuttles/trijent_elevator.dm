@@ -27,6 +27,8 @@
 	door_control.label = "elevator"
 	for(var/area/shuttle_area in shuttle_areas)
 		for(var/obj/structure/machinery/door/door in shuttle_area)
+			if(door.abstract_door)
+				continue
 			door_control.add_door(door, door.id)
 
 /obj/docking_port/mobile/trijent_elevator/Destroy(force, ...)
@@ -112,8 +114,47 @@
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"
 
+//ice classic
 /obj/docking_port/mobile/trijent_elevator/ice_classic
-	name = "Classic Ice Elevator"
+	name = "Ice Classic Elevator (Dorm)"
 	id = "ice_classic_shuttle"
 	width = 8
 	height = 5
+
+/obj/docking_port/mobile/trijent_elevator/ice_classic/north
+	name = "Ice Classic Elevator (Lab)"
+	id = "ice_classic_shuttle_north"
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic
+	width = 8
+	height = 5
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm
+	elevator_network = "dorm"
+	airlock_exit = "elevator_dorm"
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/upper
+	name = "Dormitory Upper Floor"
+	id = "ice_dorm_upper"
+	airlock_area = /area/shuttle/elevator2/ground
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/lower
+	name = "Dormitory Lower Floor"
+	id = "ice_dorm_lower"
+	airlock_area = /area/shuttle/elevator2/underground
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/lab
+	elevator_network = "lab"
+	airlock_exit = "elevator_lab"
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/lab/upper
+	name = "Laboratory Upper Floor"
+	id = "ice_lab_upper"
+	airlock_area = /area/shuttle/elevator3/ground
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+
+/obj/docking_port/stationary/trijent_elevator/ice_classic/lab/lower
+	name = "Laboratory Lower Floor"
+	id = "ice_lab_lower"
+	airlock_area = /area/shuttle/elevator3/underground

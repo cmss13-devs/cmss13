@@ -148,14 +148,17 @@
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open
 	density = FALSE
 
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/pivot/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(direction_change_move))
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch
+	name = "elevator hatch"
+	base_icon_state = "hatch"
+	icon_state = "hatch1"
+	openspeed = 22
+	unslashable = TRUE
+	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/pivot/proc/direction_change_move(source, old_dir, new_dir)
-	if(old_dir == new_dir)
-		return
-	x -= 3
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch/opened
+	icon_state = "hatch0"
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/two_tile/secure
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'

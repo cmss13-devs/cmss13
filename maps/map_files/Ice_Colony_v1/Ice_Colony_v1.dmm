@@ -46,11 +46,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "acP" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering/generator)
 "acV" = (
@@ -727,8 +723,8 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/sample)
 "aTm" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 8
+/obj/structure/machinery/power/apc/power/west{
+	start_charge = 20
 	},
 /turf/open/floor/engine,
 /area/ice_colony/underground/research)
@@ -768,8 +764,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S-corner"
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "darkbrowncorners2"
@@ -1076,8 +1072,8 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "bqE" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 4
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -1502,10 +1498,6 @@
 /area/ice_colony/surface/storage_unit/power)
 "bRH" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -1577,8 +1569,8 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "bUC" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -1710,8 +1702,8 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "cdA" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "darkgreencorners2"
@@ -2318,7 +2310,9 @@
 	},
 /area/ice_colony/underground/engineering/substation)
 "cUj" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkbrowncorners2"
@@ -2355,11 +2349,7 @@
 	},
 /area/ice_colony/surface/requesitions)
 "cXm" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -2852,7 +2842,9 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "dNx" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /obj/structure/surface/table/holotable,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor{
@@ -3015,8 +3007,8 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "dYr" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /obj/structure/closet,
 /turf/open/floor{
@@ -3505,8 +3497,8 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "eJE" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/north)
@@ -3528,8 +3520,8 @@
 	},
 /area/ice_colony/surface/requesitions)
 "eKv" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "darkbrowncorners2"
@@ -3984,8 +3976,8 @@
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/north)
 "frL" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 4
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -4017,8 +4009,8 @@
 	},
 /area/ice_colony/surface/excavation)
 "fuR" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -4254,16 +4246,7 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/storage)
 "fLz" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "ice_dorm_upper";
-	name = "Dormitory Upper Floor";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	airlock_exit = "elevator";
-	elevator_network = "dorm";
-	airlock_area = /area/shuttle/elevator2/ground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -4338,8 +4321,8 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/sample)
 "fPR" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 8
+/obj/structure/machinery/power/apc/power/west{
+	start_charge = 20
 	},
 /obj/structure/surface/table/holotable,
 /obj/item/folder/black_random,
@@ -5211,17 +5194,6 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/mining)
 "hgB" = (
-/obj/docking_port/stationary/trijent_elevator{
-	id = "ice_lab_upper";
-	elevator_network = "lab";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/lab;
-	name = "Laboratory Upper Floor";
-	dir = 2;
-	height = 5;
-	width = 8;
-	airlock_area = /area/shuttle/elevator3/ground;
-	airlock_exit = "elevator"
-	},
 /turf/open/floor/plating/icefloor{
 	dir = 5;
 	icon_state = "warnplate"
@@ -5259,11 +5231,7 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "hiO" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -5426,7 +5394,9 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "hvx" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -6470,9 +6440,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/substation/smes)
 "iTv" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle2";
-	dockId = "ice_dorm_upper";
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/dorm/upper{
 	pixel_y = 32
 	},
 /turf/open/floor{
@@ -6569,7 +6537,9 @@
 /area/ice_colony/underground/maintenance/south)
 "iZq" = (
 /obj/structure/closet/crate/trashcart,
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	icon_state = "darkgreen2"
 	},
@@ -6779,11 +6749,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellowcorners2"
@@ -7279,11 +7245,7 @@
 	},
 /area/ice_colony/underground/reception)
 "kcj" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -7395,11 +7357,7 @@
 "klz" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick,
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -7755,7 +7713,9 @@
 	},
 /area/ice_colony/surface/excavation)
 "kGt" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkbluecorners2"
@@ -7868,9 +7828,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle2";
-	dockId = "ice_dorm_lower";
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/dorm/lower{
 	dir = 8;
 	pixel_y = 32
 	},
@@ -7892,8 +7850,8 @@
 	},
 /area/ice_colony/surface/excavation)
 "kQd" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 4;
@@ -7941,11 +7899,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "kUO" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkbrowncorners2"
@@ -8260,8 +8214,8 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/crew/disposals)
 "luL" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 4;
@@ -8294,7 +8248,9 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "lvQ" = (
 /obj/structure/surface/table/holotable,
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellowcorners2"
@@ -8653,8 +8609,8 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research)
 "lVr" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -8765,7 +8721,9 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -9120,6 +9078,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "mBm" = (
+/obj/docking_port/stationary/trijent_elevator/ice_classic/lab/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -9137,7 +9096,9 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "mCQ" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -9515,7 +9476,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "ndN" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/south)
 "neP" = (
@@ -10164,7 +10125,9 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/sample)
 "nVh" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/south)
 "nVJ" = (
@@ -10201,15 +10164,7 @@
 	},
 /area/ice_colony/surface/dorms/restroom_w)
 "nXP" = (
-/obj/docking_port/stationary/trijent_elevator{
-	airlock_area = /area/shuttle/elevator2/underground;
-	airlock_exit = "elevator";
-	elevator_network = "dorm";
-	width = 8;
-	height = 5;
-	id = "ice_dorm_lower";
-	name = "Dormitory Lower Floor"
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -10324,8 +10279,8 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "oew" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 4
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "darkgreencorners2"
@@ -10472,8 +10427,8 @@
 	},
 /area/ice_colony/underground/engineering/substation)
 "ond" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -10511,7 +10466,7 @@
 /area/ice_colony/underground/research/work)
 "opu" = (
 /obj/structure/surface/table/holotable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkredcorners2"
@@ -10705,8 +10660,8 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "oCX" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -10973,8 +10928,8 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "oVO" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -11010,6 +10965,7 @@
 /turf/closed/wall/hangar,
 /area/ice_colony/underground/research/storage)
 "oYv" = (
+/obj/docking_port/stationary/trijent_elevator/ice_classic/lab/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -11033,11 +10989,7 @@
 "oZJ" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkyellowcorners2"
@@ -11419,8 +11371,8 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "pzy" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
@@ -11508,7 +11460,9 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "pFp" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor{
 	icon_state = "darkredcorners2"
 	},
@@ -11594,10 +11548,7 @@
 	},
 /area/ice_colony/surface/substation)
 "pMl" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor{
 	icon_state = "darkbrown2"
 	},
@@ -12032,9 +11983,7 @@
 	},
 /area/ice_colony/surface/hydroponics/north)
 "qnf" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle";
-	dockId = "ice_lab_upper";
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/lab/upper{
 	dir = 1;
 	pixel_y = -32
 	},
@@ -12185,7 +12134,9 @@
 	},
 /area/ice_colony/surface/substation)
 "qxO" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/crew/disposals)
 "qxS" = (
@@ -13200,8 +13151,8 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/sample)
 "rGs" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -13693,16 +13644,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "srY" = (
-/obj/docking_port/stationary/trijent_elevator{
-	id = "ice_lab_lower";
-	elevator_network = "lab";
-	name = "Laboratory Lower Floor";
-	dir = 2;
-	width = 8;
-	height = 5;
-	airlock_area = /area/shuttle/elevator3/underground;
-	airlock_exit = "elevator"
-	},
 /turf/open/floor/plating/icefloor{
 	dir = 5;
 	icon_state = "warnplate"
@@ -13716,11 +13657,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "ssX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellowcorners2"
@@ -14044,8 +13981,8 @@
 	},
 /area/ice_colony/surface/requesitions)
 "sPy" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;
@@ -14112,8 +14049,8 @@
 	},
 /area/ice_colony/exterior/surface/valley/southeast/apc_support)
 "sTR" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/sample)
@@ -14513,7 +14450,7 @@
 /area/ice_colony/underground/engineering)
 "tvP" = (
 /obj/structure/surface/table/holotable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2"
@@ -14828,8 +14765,8 @@
 	},
 /area/ice_colony/surface/disposals)
 "tRF" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/east)
@@ -14988,8 +14925,8 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "tZy" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/storage)
@@ -15225,9 +15162,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
 	},
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent{
-	shuttleId = "ice_classic_shuttle";
-	dockId = "ice_lab_lower";
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/lab/lower{
 	dir = 1;
 	pixel_y = -32
 	},
@@ -15276,8 +15211,8 @@
 	},
 /area/ice_colony/underground/reception)
 "uwJ" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/research)
@@ -15410,8 +15345,8 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/dig)
 "uEf" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 4
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 4;
@@ -15722,10 +15657,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "vcw" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -15751,7 +15683,9 @@
 /turf/open/floor/engine,
 /area/ice_colony/underground/research)
 "vcY" = (
-/obj/structure/machinery/power/apc/weak,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "vds" = (
@@ -16254,7 +16188,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/dorms)
 "vIg" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering/generator)
 "vIP" = (
@@ -16445,10 +16379,7 @@
 	},
 /area/ice_colony/underground/storage)
 "vTW" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/closet/crate,
 /turf/open/floor{
 	dir = 8;
@@ -17033,8 +16964,8 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/south)
 "wMZ" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 8;
@@ -17661,8 +17592,8 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "xEk" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
@@ -18041,11 +17972,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "yfX" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -18093,8 +18020,8 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "ykr" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /turf/open/floor{
 	dir = 1;

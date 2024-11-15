@@ -66,6 +66,22 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles_red
+	display_name = "Ballistic goggles, red"
+	path = /obj/item/clothing/glasses/mgoggles/red
+
+/datum/gear/eyewear/goggles_red/prescription
+	display_name = "Prescription ballistic goggles, red"
+	path = /obj/item/clothing/glasses/mgoggles/red/prescription
+
+/datum/gear/eyewear/goggles_blue
+	display_name = "Ballistic goggles, blue"
+	path = /obj/item/clothing/glasses/mgoggles/blue
+
+/datum/gear/eyewear/goggles_blue/prescription
+	display_name = "Prescription ballistic goggles, blue"
+	path = /obj/item/clothing/glasses/mgoggles/blue/prescription
+
 /datum/gear/eyewear/goggles_orange/prescription
 	display_name = "Prescription ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
@@ -77,6 +93,30 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/eyewear/goggles2/prescription
 	display_name = "Prescription ballistic goggles, M1A1"
 	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
+
+/datum/gear/eyewear/goggles2/blue
+	display_name = "Blue Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/blue
+
+/datum/gear/eyewear/goggles2/blue/prescription
+	display_name = "Blue Prescription ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/blue/prescription
+
+/datum/gear/eyewear/goggles2/polarized_blue
+	display_name = "Blue Polarized Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue
+
+/datum/gear/eyewear/goggles2/polarized_blue/prescription
+	display_name = "Blue Prescription Polarized ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
+
+/datum/gear/eyewear/goggles2/polarized_orange
+	display_name = "Orange Polarized Ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange
+
+/datum/gear/eyewear/goggles2/polarized_orange/prescription
+	display_name = "Orange Prescription Polarized ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
 
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
@@ -314,6 +354,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Helmet netting"
 	path = /obj/item/prop/helmetgarb/netting
 
+/datum/gear/helmet_garb/netting/desert
+	display_name = "Desert Helmet netting"
+	path = /obj/item/prop/helmetgarb/netting/desert
+
+/datum/gear/helmet_garb/netting/jungle
+	display_name = "Jungle Helmet netting"
+	path = /obj/item/prop/helmetgarb/netting/jungle
+
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
@@ -341,6 +389,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/helmet_garb/raincover
 	display_name = "Rain cover"
 	path = /obj/item/prop/helmetgarb/raincover
+
+/datum/gear/helmet_garb/raincover/jungle
+	display_name = "Jungle Rain cover"
+	path = /obj/item/prop/helmetgarb/raincover/jungle
+
+/datum/gear/helmet_garb/raincover/urban
+	display_name = "Urban Rain cover"
+	path = /obj/item/prop/helmetgarb/raincover/urban
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -944,6 +1000,21 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
+	cost = 2
+
+/datum/gear/misc/grey_boots
+	display_name = "grey combat boots"
+	path = /obj/item/clothing/shoes/marine/grey
+	cost = 2
+
+/datum/gear/misc/urban_boots
+	display_name = "Urban pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/urban
+	cost = 2
+
+/datum/gear/misc/grey_gloves
+	display_name = "grey combat gloves"
+	path = /obj/item/clothing/gloves/marine/grey
 	cost = 2
 
 /datum/gear/misc/pdt_kit

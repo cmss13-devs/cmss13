@@ -59,6 +59,13 @@
 	item_state = "brown"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/grey
+	name = "marine grey combat gloves"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are a shade of grey instead of the classic black."
+	icon_state = "marine_grey"
+	item_state = "marine_grey"
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/medical
 	name = "marine medical combat gloves"
 	desc = "Standard issue marine sterile gloves, offers regular protection whilst offering the user a better grip when performing medical work."

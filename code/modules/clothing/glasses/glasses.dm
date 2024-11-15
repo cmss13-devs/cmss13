@@ -475,6 +475,81 @@
 	inactive_icon_state = "mgoggles2"
 	prescription = TRUE
 
+/obj/item/clothing/glasses/mgoggles/red
+	name = "red marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	icon_state = "mgogglesred"
+	active_icon_state = "mgogglesred_down"
+	inactive_icon_state = "mgogglesred"
+
+/obj/item/clothing/glasses/mgoggles/red/prescription
+	name = "prescription red marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	icon_state = "mgogglesred"
+	active_icon_state = "mgogglesred_down"
+	inactive_icon_state = "mgogglesred"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/blue
+	name = "blue marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	icon_state = "mgogglesblue"
+	active_icon_state = "mgogglesblue_down"
+	inactive_icon_state = "mgogglesblue"
+
+/obj/item/clothing/glasses/mgoggles/blue/prescription
+	name = "prescription blue marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	icon_state = "mgogglesblue"
+	active_icon_state = "mgogglesblue_down"
+	inactive_icon_state = "mgogglesblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/blue
+	name = "M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "m2gogglesblue"
+	active_icon_state = "m2gogglesblue_down"
+	inactive_icon_state = "m2gogglesblue"
+
+/obj/item/clothing/glasses/mgoggles/v2/blue/prescription
+	name = "prescription M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "m2gogglesblue"
+	active_icon_state = "m2gogglesblue_down"
+	inactive_icon_state = "m2gogglesblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_blue
+	name = "M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedblue"
+	active_icon_state = "polarizedblue_down"
+	inactive_icon_state = "polarizedblue"
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
+	name = "prescription M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedblue"
+	active_icon_state = "polarizedblue_down"
+	inactive_icon_state = "polarizedblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_orange
+	name = "M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedorange"
+	active_icon_state = "polarizedorange_down"
+	inactive_icon_state = "polarizedorange"
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
+	name = "prescription M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedorange"
+	active_icon_state = "polarizedorange_down"
+	inactive_icon_state = "polarizedorange"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()
 

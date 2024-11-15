@@ -6273,6 +6273,11 @@
 	id = "uppbrig1";
 	name = "Brig Lockdown"
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "uppentrancebrig";
+	name = "\improper Entrance Shutters"
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_entryway)
 "eKH" = (
@@ -9141,6 +9146,11 @@
 	dir = 4;
 	id = "uppbrig1";
 	name = "Brig Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "uppentrancebrig";
+	name = "\improper Entrance Shutters"
 	},
 /turf/open/floor/plating,
 /area/rostock/security/brig_entryway)
@@ -12249,6 +12259,12 @@
 "jiy" = (
 /obj/structure/closet/crate/green{
 	name = "item transfer crate"
+	},
+/obj/structure/machinery/door_control{
+	pixel_x = 6;
+	pixel_y = -25;
+	id = "uppentrancebrig";
+	name = "Entrance Shutter"
 	},
 /turf/open/floor/strata/red2,
 /area/rostock/security/brig_entryway)

@@ -20,7 +20,7 @@ def _self_test():
         pass
 
     # Read the ancestor commit.
-    repo.remotes["upstream"].fetch()
+    repo.remotes["upstream"].fetch(repo.remotes["upstream"].fetch_refspecs)
     ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
     ancestor_commit = None
     if not ancestor:

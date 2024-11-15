@@ -267,6 +267,12 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
+/obj/item/weapon/yautja/sword/staff
+	name = "cruel staff"
+	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	icon_state = "staff"
+	item_state = "staff"
+
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
 	name = "combi-stick"
@@ -877,6 +883,11 @@
 	item_state = "glaive_alt"
 	flags_item = NOSHIELD|TWOHANDED
 
+/obj/item/weapon/twohanded/yautja/glaive/longaxe
+	name = "longaxe"
+	desc = "A frighteningly big axe. The blade edge is chipped and gnarled from thousands of bone-crushing blows."
+	icon_state = "longaxe"
+	item_state = "longaxe"
 
 /*#########################################
 ############## Ranged Weapons #############

@@ -269,7 +269,7 @@
 
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
-	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
 

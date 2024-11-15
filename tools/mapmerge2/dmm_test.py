@@ -7,7 +7,7 @@ from .mapmerge import merge_map
 
 def has_tgm_header(fname):
     with open(fname, 'r', encoding=ENCODING) as f:
-        data = f.read()
+        data = f.read(len(TGM_HEADER))
         return data.startswith(TGM_HEADER)
 
 def _self_test():
@@ -34,17 +34,17 @@ def _self_test():
                     except KeyError:
                         # New map, no entry in HEAD
                         merged_map = merge_map(index_map, index_map)
-                        originalBytes = index_map.to_bytes()
-                        mergedBytes = merged_map.to_bytes()
-                        if originalBytes != mergedBytes:
+                        original_bytes = index_map.to_bytes()
+                        merged_bytes = merged_map.to_bytes()
+                        if original_bytes != merged_bytes:
                             raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                     else:
                         # Entry in HEAD, merge the index over it
                         head_map = DMM.from_bytes(head_blob.read_raw())
                         merged_map = merge_map(index_map, head_map)
-                        originalBytes = index_map.to_bytes()
-                        mergedBytes = merged_map.to_bytes()
-                        if originalBytes != mergedBytes:
+                        original_bytes = index_map.to_bytes()
+                        merged_bytes = merged_map.to_bytes()
+                        if original_bytes != merged_bytes:
                             raise Exception('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                 except Exception:
                     print('Failed on:', fullpath)

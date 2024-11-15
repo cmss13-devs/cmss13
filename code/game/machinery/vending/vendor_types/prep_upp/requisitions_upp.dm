@@ -23,6 +23,7 @@
 		list("M82F Flare Gun", floor(scale * 20), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", -1, null, null),
+		list("M240 Incinerator Unit", floor(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
 		list("XM51 Breaching Scattergun", floor(scale * 3), /obj/item/storage/box/guncase/xm51, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),

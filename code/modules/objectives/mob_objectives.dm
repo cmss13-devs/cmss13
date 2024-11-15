@@ -122,7 +122,7 @@
 		return OBJECTIVE_LOW_VALUE
 
 	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) == 49)
-		announcement_helper("Maximum intel points for non-xenomorph corpses has been achieved.", "[MAIN_AI_SYSTEM] Intel Tracker", humans_uscm, 'sound/misc/notice2.ogg')
+		marine_announcement("Maximum intel points for non-xenomorph corpses has been achieved.", "Intel Announcement", 'sound/misc/notice2.ogg')
 		return OBJECTIVE_LOW_VALUE
 
 	return value

@@ -106,7 +106,7 @@
 	. = ..()
 	GLOB.active_areas += src
 	GLOB.all_areas += src
-	reg_in_areas_in_z()
+	reg_in_areas_in_z()	
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 
@@ -114,6 +114,13 @@
 
 	if(unoviable_timer)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
+
+	else //DEBUG REMOVE THIS
+		for(var/turf/T in src)
+			var/obj/temp = new(T)
+			temp.icon = 'icons/turf/areas.dmi'
+			temp.icon_state = "tutorial"
+			temp.density = FALSE
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)

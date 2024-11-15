@@ -14,7 +14,7 @@ def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
 
     # Read the ancestor commit.
-    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("origin/master").id)
+    ancestor = repo.merge_base(repo.head.target, repo.branches.remote.get('origin/master').target)
     ancestor_commit = None
     if not ancestor:
         print("Unable to determine merge base!")

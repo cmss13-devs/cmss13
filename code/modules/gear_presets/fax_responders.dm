@@ -38,7 +38,7 @@
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/XO
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
 	headset_type = /obj/item/device/radio/headset/almayer/highcom
 	idtype = /obj/item/card/id/gold
 
@@ -77,6 +77,7 @@
 	assignment = JOB_FAX_RESPONDER_WY
 	rank = JOB_FAX_RESPONDER_WY
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_3)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_EXEC, ACCESS_WY_GENERAL, ACCESS_WY_LEADERSHIP)
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 	idtype = /obj/item/card/id/pmc
 
@@ -98,6 +99,10 @@
 	skills = /datum/skills/upp/kapitan
 	headset_type = /obj/item/device/radio/headset/distress/UPP/kdo/command
 	idtype = /obj/item/card/id/gold
+
+/datum/equipment_preset/fax_responder/upp/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/fax_responder/upp/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
@@ -143,6 +148,10 @@
 	headset_type = /obj/item/device/radio/headset/distress/CLF/command
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 
+/datum/equipment_preset/fax_responder/clf/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_ALL)
+
 /datum/equipment_preset/fax_responder/clf/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
@@ -159,6 +168,10 @@
 	headset_type = /obj/item/device/radio/headset/distress/CMB
 	idtype = /obj/item/card/id/marshal
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/fax_responder/cmb/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/fax_responder/cmb/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
@@ -180,6 +193,10 @@
 	headset_type = /obj/item/device/radio/headset/almayer/reporter
 	idtype = /obj/item/card/id/silver/cl
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/fax_responder/press/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/fax_responder/press/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(new_human), WEAR_BODY)

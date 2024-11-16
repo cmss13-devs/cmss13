@@ -182,6 +182,7 @@
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"
 	item_state = "prod"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	force = 3
 	throwforce = 5
 	stunforce = 40

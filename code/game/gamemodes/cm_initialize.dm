@@ -48,6 +48,7 @@ Additional game mode variables.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/predators	= list()
 	var/list/joes		= list()
+	var/list/fax_responders = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
@@ -352,6 +353,7 @@ Additional game mode variables.
 	SSticker.minds += new_responder.mind
 
 	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
+	new_responder.add_fax_responder()
 
 	return TRUE
 

@@ -17,7 +17,7 @@ export const FaxMachine = () => {
   const { idcard } = data;
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
   const windowWidth = idcard ? 600 : 400;
-  const windowHeight = idcard ? 295 : 215;
+  const windowHeight = idcard ? 340 : 215;
 
   return (
     <Window width={windowWidth} height={windowHeight} theme="weyland">
@@ -28,14 +28,26 @@ export const FaxMachine = () => {
 
 const FaxMain = (props) => {
   const { data } = useBackend();
-  const { machine_id_tag } = data;
+  const { machine_id_tag, awake_responder, highcom_dept } = data;
   return (
     <>
       <FaxId />
       <FaxSelect />
       <NoticeBox color="grey" textAlign="center">
-        The machine identification is {machine_id_tag}
+        The machine identification is {machine_id_tag}.
       </NoticeBox>
+      {!!highcom_dept && (
+        <NoticeBox
+          color={awake_responder ? 'orange' : 'grey'}
+          textAlign="center"
+        >
+          A designated communications operator is
+          {awake_responder ? ' currently' : ' not currently'} awake.
+          <br />
+          Message responses
+          {awake_responder ? ' are likely to be swift.' : ' may be delayed.'}
+        </NoticeBox>
+      )}
     </>
   );
 };

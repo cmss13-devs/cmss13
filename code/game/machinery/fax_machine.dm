@@ -263,6 +263,13 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	if(target_department == DEPARTMENT_TARGET)
 		data["target_department"] = target_machine_id
 
+	if(target_department in HIGHCOM_DEPARTMENTS)
+		data["highcom_dept"] = TRUE
+	else
+		data["highcom_dept"] = FALSE
+
+	data["awake_responder"] = is_department_responder_awake(target_department)
+
 	data["worldtime"] = world.time
 	data["nextfaxtime"] = send_cooldown
 	data["faxcooldown"] = fax_cooldown
@@ -747,3 +754,32 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	photo_list = new_photo_list
 	if(new_name != "paper")
 		paper_name = new_name
+
+
+
+/obj/structure/machinery/faxmachine/proc/is_department_responder_awake(target_department)
+	if(!(target_department in HIGHCOM_DEPARTMENTS))
+		return FALSE
+	var/target_job = JOB_FAX_RESPONDER
+	switch(target_department)
+		if(DEPARTMENT_CLF)
+			target_job = JOB_FAX_RESPONDER_CLF
+		if(DEPARTMENT_CMB)
+			target_job = JOB_FAX_RESPONDER_CMB
+		if(DEPARTMENT_HC)
+			target_job = JOB_FAX_RESPONDER_USCM_HC
+		if(DEPARTMENT_PRESS)
+			target_job = JOB_FAX_RESPONDER_PRESS
+		if(DEPARTMENT_PROVOST)
+			target_job = JOB_FAX_RESPONDER_USCM_PVST
+		if(DEPARTMENT_TWE)
+			target_job = JOB_FAX_RESPONDER_TWE
+		if(DEPARTMENT_UPP)
+			target_job = JOB_FAX_RESPONDER_UPP
+		if(DEPARTMENT_WY)
+			target_job = JOB_FAX_RESPONDER_WY
+
+	for(var/mob/living/carbon/human/responder in SSticker.mode.fax_responders)
+		if(!(responder.stat) && (responder.job == target_job))
+			return TRUE
+	return FALSE

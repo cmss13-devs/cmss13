@@ -11,6 +11,7 @@
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.1 Internal Organ Damage (Chest)
 // 1.2 Heart Damage
+// 1.3 Lung Damage
 //
 
 /datum/tutorial/marine/hospital_corpsman_advanced/start_tutorial(mob/starting_mob)
@@ -53,6 +54,7 @@
 		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
+	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -89,6 +91,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial_chest_2))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_2()
+	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
@@ -101,7 +104,7 @@
 
 	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")
 
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_chest_3))
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_lungs))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_3(datum/source, mob/living/carbon/human/being, mob/living/user)
 
@@ -159,6 +162,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_heart_6))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_6(datum/source, mob/living/carbon/human/being, mob/living/user)
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	if(being != human_dummy)
@@ -209,6 +213,7 @@
 	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(organ_tutorial_heart_7))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_7()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
@@ -229,6 +234,8 @@
 	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/dex_pill_fed_reject()
+	SIGNAL_HANDLER
+
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
@@ -297,6 +304,7 @@
 	RegisterSignal(peripill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(organ_tutorial_heart_8))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_8()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
@@ -317,6 +325,8 @@
 	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/peri_pill_fed_reject()
+	SIGNAL_HANDLER
+
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
@@ -348,6 +358,252 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+
+	message_to_player("<b>Section 1.3: Lung Damage</b>.")
+
+	message_to_player("As you may have guessed, the second vital organ in the chest is of course, the <b>Lungs</b>!")
+	message_to_player("The Lungs, alongside other functions, allow Marines to breathe while carrying out their combat-related duties.")
+	message_to_player("Like Heart damage, <b>Lung Damage</b> can be caused by moving with an <b>Unsplinted Chest Fracture, Extreme Brute Damage</b>, or being shot by an <b>Armor Piercing Bullet</b>.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_2)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_2()
+
+	message_to_player("However, unlike Heart damage, symptoms of <b>Lung Damage</b> will only appear <u>beyond the point of rupture</u>.")
+	message_to_player("A <b>Bruised Lung</b> will generate no harmful side-effects on the body, but is still detectable with a <b>Stethoscope</b>.")
+	message_to_player("Once the Lungs have taken more than <b>30 Points of Internal Damage</b>, they will become <b>Ruptured</b>.")
+	message_to_player("<b>Ruptured Lungs</b> will create <b>Oxygen Damage</b> at a rapid pace, as well as causing afflicted patients to cough up blood.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_3()
+
+	message_to_player("Mr Dummys Lungs are looking rather squishy... Use your <b>Stethoscope</b> to test the condition of his <b>Lungs</b>.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.apply_internal_damage(35, "lungs")
+	human_dummy.setOxyLoss(15)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
+	add_highlight(steth, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_lungs_4))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_4(datum/source, mob/living/carbon/human/being, mob/living/user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	if(being != human_dummy)
+		return
+	else
+		if(tutorial_mob.zone_selected != "chest")
+			message_to_player("Make sure to have the Dummys <b>Chest</b> selected as your target. Use the <b>Zone Selection Element</b> on the bottom right of your hud to target the Dummys chest, and try again.")
+		else
+			UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
+			remove_highlight(steth)
+
+			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Stethoscope</b> has reported that: <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, the Dummys lungs are <font color='red'>heavily failing</font>")
+			message_to_player("This tells you that Mr Dummys Lungs have <b>Ruptured</b>, and <u>need to be stabilized immediately</u>.")
+
+			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_5)), 14 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_5(datum/source, obj/item/storage/pill_bottle)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	var/obj/item/storage/pill_bottle/dex = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(dex)
+	medbelt.update_icon()
+
+	dex.name = "\improper Dexalin pill bottle"
+	dex.icon_state = "pill_canister1"
+	dex.maptext_label = "Dx"
+	dex.maptext = SPAN_LANGCHAT("Dx")
+	dex.max_storage_space = 1
+	dex.overlays.Cut()
+	dex.bottle_lid = FALSE
+	dex.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/dexalin/pill = new(dex)
+
+	add_to_tracking_atoms(pill)
+	add_to_tracking_atoms(dex)
+
+
+	message_to_player("To counteract the immediate <b>Oxygen Damage</b>, a <b>Dexalin Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Dexalin Pill Bottle</b> to draw a pill.")
+
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(dex, COLOR_GREEN)
+
+	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(organ_tutorial_lungs_6))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_6()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/dexalin, pill)
+
+	UnregisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>Dexalin Pill</b> and standing next to them to medicate it.")
+	update_objective("Feed the Dummy the Dexalin pill.")
+
+	add_highlight(pill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(dex)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_reject_2))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_2))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/dex_pill_fed_reject_2()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	remove_highlight(dex)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(dex)
+	qdel(dex)
+	medbelt.update_icon()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_5)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/dex_pill_fed_2(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	remove_highlight(dex)
+	remove_from_tracking_atoms(dex)
+	qdel(dex)
+
+	message_to_player("Well done. Next, we need to stabilize Mr Dummys <b>Ruptured Lungs</b> with <b>Peridaxon</b>.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_7)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_7(obj/item/storage/pill_bottle)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	var/obj/item/storage/pill_bottle/peri = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(peri)
+	medbelt.update_icon()
+
+	peri.name = "\improper Peridaxon pill bottle"
+	peri.icon_state = "pill_canister10"
+	peri.maptext_label = "Pr"
+	peri.maptext = SPAN_LANGCHAT("Pr")
+	peri.max_storage_space = 1
+	peri.overlays.Cut()
+	peri.bottle_lid = FALSE
+	peri.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/peridaxon/peripill = new(peri)
+
+	add_to_tracking_atoms(peripill)
+	add_to_tracking_atoms(peri)
+
+
+	message_to_player("A <b>Peridaxon Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Peridaxon Pill Bottle</b> to draw a pill.")
+
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(peri, COLOR_GREEN)
+
+	RegisterSignal(peripill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(organ_tutorial_lungs_8))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_8()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/peridaxon, peripill)
+
+	UnregisterSignal(peripill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>Peridaxon Pill</b> and standing next to them to medicate it.")
+	update_objective("Feed the Dummy the Peridaxon pill.")
+
+	add_highlight(peripill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(peri)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_reject_2))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_2))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/peri_pill_fed_reject_2()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
+	remove_highlight(peri)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(peri)
+	qdel(peri)
+	medbelt.update_icon()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_7)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/peri_pill_fed_2(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
+	remove_highlight(peri)
+	remove_from_tracking_atoms(peri)
+	qdel(peri)
+
+	message_to_player("Well done! The Dummys condition has been stabilized.")
+	message_to_player("However, one Peridaxon pill will be fully metabolized in just over <u>5 minutes</u>, at which point full symptoms will return.")
+	message_to_player("Once you have stabilized a patient with a ruptured organ, you <u>MUST</u> transport them to a <b>Trained Doctor for Surgery</b> as <u>SOON AS POSSIBLE</u>.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // SCRATCHPAD

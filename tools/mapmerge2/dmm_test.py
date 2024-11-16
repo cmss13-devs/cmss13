@@ -10,6 +10,9 @@ def has_tgm_header(fname):
         data = f.read(len(TGM_HEADER))
         return data.startswith(TGM_HEADER)
 
+class LintException(Exception):
+    pass
+
 def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
 
@@ -37,7 +40,7 @@ def _self_test():
 
                     # test: is every DMM in TGM format
                     if not has_tgm_header(fullpath):
-                        raise Exception('Map is not in TGM format! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                        raise LintException('Map is not in TGM format! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
 
                     # test: does every DMM convert cleanly
                     if ancestor_commit:
@@ -50,7 +53,7 @@ def _self_test():
                             original_bytes = index_map.to_bytes()
                             merged_bytes = merged_map.to_bytes()
                             if original_bytes != merged_bytes:
-                                raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                                raise LintException('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                         else:
                             # Entry in HEAD, merge the index over it
                             ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
@@ -58,9 +61,12 @@ def _self_test():
                             original_bytes = index_map.to_bytes()
                             merged_bytes = merged_map.to_bytes()
                             if original_bytes != merged_bytes:
-                                raise Exception('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                                raise LintException('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+                except LintException as error:
+                    print('Failed on:', path)
+                    print(error)
                 except Exception:
-                    print('Failed on:', fullpath)
+                    print('Failed on:', path)
                     raise
                 count += 1
 

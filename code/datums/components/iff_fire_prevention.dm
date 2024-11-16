@@ -14,13 +14,13 @@
 /datum/component/iff_fire_prevention/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
-	RegisterSignal(parent, COMSIG_GUN_IFF_TOGGLED, PROC_REF(handle_iff_toggle))
+	RegisterSignal(parent, COMSIG_GUN_ALT_IFF_TOGGLED, PROC_REF(handle_iff_toggle))
 
 /datum/component/iff_fire_prevention/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, list(
 		COMSIG_GUN_BEFORE_FIRE,
-		COMSIG_GUN_IFF_TOGGLED
+		COMSIG_GUN_ALT_IFF_TOGGLED
 	))
 
 /datum/component/iff_fire_prevention/proc/check_firing_lane(obj/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)

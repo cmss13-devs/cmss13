@@ -30,6 +30,7 @@
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
@@ -37,6 +38,7 @@
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
+	var/frontline_enabled = FALSE //Begins with 'normal IFF' enabled (shoots through friendly marines, instead of Alt-IFF)
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
@@ -73,6 +75,7 @@
 	MD = new(src)
 	battery = new /obj/item/smartgun_battery(src)
 	. = ..()
+	AddComponent(/datum/component/iff_fire_prevention)
 	update_icon()
 
 /obj/item/weapon/gun/smartgun/Destroy()
@@ -100,13 +103,12 @@
 	else
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+		damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
-	AddComponent(/datum/component/iff_fire_prevention)
 
 /obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
 	. = ..()
@@ -115,6 +117,7 @@
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	. += message
+	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 	if(battery && get_dist(user, src) <= 1)
@@ -271,10 +274,29 @@
 	else
 		button.icon_state = "template"
 
+/datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Frontline Mode"
+	action_icon_state = "iff_toggle_on"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	G.toggle_frontline_mode(usr)
+	if(G.frontline_enabled)
+		action_icon_state = "iff_toggle_off"
+	else
+		action_icon_state = "iff_toggle_on"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle IFF"
-	action_icon_state = "iff_toggle_on"
+	action_icon_state = "id_lock_locked"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -284,9 +306,9 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_lethal_mode(usr)
 	if(G.iff_enabled)
-		action_icon_state = "iff_toggle_on"
+		action_icon_state = "id_lock_locked"
 	else
-		action_icon_state = "iff_toggle_off"
+		action_icon_state = "id_lock_unlocked"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
@@ -314,6 +336,17 @@
 
 //more general procs
 
+/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user)
+	to_chat(user, "[icon2html(src, usr)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	frontline_enabled = !frontline_enabled
+	ammo = ammo_primary
+	secondary_toggled = FALSE
+	if(frontline_enabled)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
+	if(!frontline_enabled)
+		AddComponent(/datum/component/iff_fire_prevention)
+
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
 	if(.)
@@ -338,13 +371,16 @@
 	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
-	if(!iff_enabled)
-		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src]'s fire restriction is disabled.")
-		return
 	secondary_toggled = !secondary_toggled
 	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	balloon_alert(user, "firing [secondary_toggled ? "armor shredding" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	if(!iff_enabled || !frontline_enabled)
+		ammo_primary = /datum/ammo/bullet/smartgun/alt
+		ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing/alt
+	else
+		ammo_primary = /datum/ammo/bullet/smartgun
+		ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
 	TAT.update_icon()
@@ -363,11 +399,13 @@
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 		drain += 10
 		MD.iff_signal = initial(MD.iff_signal)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
 		drain -= 10
 		MD.iff_signal = null
-	SEND_SIGNAL(src, COMSIG_GUN_IFF_TOGGLED, iff_enabled)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+		recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_battery)

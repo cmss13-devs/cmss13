@@ -3,6 +3,7 @@
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
 	item_state = "baton"
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	flags_equip_slot = SLOT_WAIST
 	force = 15
 	throwforce = 7

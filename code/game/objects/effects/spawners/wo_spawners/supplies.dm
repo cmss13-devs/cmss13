@@ -137,7 +137,7 @@
 
 /obj/effect/landmark/wo_supplies/storage/m37holster
 	icon_state = "m37_holster"
-	icon = 'icons/obj/items/storage/holsters.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/large_holster/m37)
 
 /obj/effect/landmark/wo_supplies/storage/belts

@@ -38,6 +38,7 @@
 	/// Mob that fired this ammunition (the pilot pressing the trigger)
 	var/mob/source_mob
 	var/combat_equipment = TRUE
+	var/faction_exclusive //if this ammo is obtainable only by certain faction
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()

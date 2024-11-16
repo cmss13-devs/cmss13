@@ -21,6 +21,7 @@ def _self_test():
         print("Unable to determine merge base!")
     else:
         ancestor_commit = repo[ancestor]
+        print("Determined ancestor commit SHA to be:", ancestor)
 
     count = 0
     for dirpath, dirnames, filenames in os.walk('.'):

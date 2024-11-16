@@ -74,6 +74,7 @@ def main(repo : pygit2.Repository):
         print("Unable to automatically fix anything because merge base could not be determined.")
         return 1
     ancestor_commit = repo[ancestor]
+    print("Determined ancestor commit SHA to be:", ancestor)
 
     # Walk the head commit tree and convert as needed
     converted = {}

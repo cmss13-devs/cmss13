@@ -160,21 +160,3 @@
 					M.apply_effect(10, WEAKEN)
 					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
 
-/obj/item/device/flash/synthetic
-	name = "synthetic flash"
-	desc = "When a problem arises, SCIENCE is the solution. Only good for one use."
-	icon_state = "sflash"
-
-/obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()
-
-/obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()

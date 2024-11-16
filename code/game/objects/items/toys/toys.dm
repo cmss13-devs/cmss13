@@ -659,6 +659,3 @@
 		icon_state = "runner_beret"
 		return
 	icon_state = "runner"
-
-/obj/item/toy/plush/shark/alt
-	icon_state = "shark_alt"

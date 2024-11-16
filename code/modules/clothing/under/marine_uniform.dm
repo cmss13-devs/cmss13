@@ -103,10 +103,9 @@
 	specialty = "USCM tanker"
 
 /obj/item/clothing/under/marine/tanker/New(loc,
-	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT),
-	override_icon_state = list(MAP_ICE_COLONY = "s_marine_tanker"))
+	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 
-	..(loc, new_protection, override_icon_state)
+	..(loc, new_protection)
 
 /obj/item/clothing/under/marine/chef
 	name = "\improper USCM Mess Technician uniform"

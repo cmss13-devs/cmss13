@@ -151,6 +151,8 @@
 
 /obj/item/clothing/suit/storage/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'

@@ -445,9 +445,13 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Military Police and peacekeepers, though it can hold some light munitions."
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	item_state_slots = list(
-		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt"
+		WEAR_L_HAND = "marinebelt",
+		WEAR_R_HAND = "marinebelt"
 	)
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -1390,6 +1394,7 @@
 	name = "customized nailgun holster"
 	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
 	icon_state = "nailgun_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
@@ -1532,6 +1537,12 @@
 	name = "custom-tooled gunslinger's belt"
 	desc = "It's always high noon <i>somewhere</i>."
 	icon_state = "gunslinger_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	storage_slots = 6
 	can_hold = list(
@@ -1874,6 +1885,7 @@
 	max_storage_space = 20
 	icon_state = "m82f_holster"
 	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'

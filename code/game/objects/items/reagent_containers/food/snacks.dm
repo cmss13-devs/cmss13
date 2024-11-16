@@ -2200,7 +2200,7 @@
 	name = "golden apple streusel tart"
 	desc = "A tasty dessert that won't make it through a metal detector."
 	icon_state = "gappletart"
-	icon = 'icons/obj/items/food/dishes.dmi'
+	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
 	filling_color = COLOR_YELLOW
 

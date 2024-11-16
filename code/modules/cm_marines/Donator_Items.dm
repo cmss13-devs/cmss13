@@ -129,12 +129,17 @@
 
 /obj/item/storage/backpack/marine/fluff
 	xeno_types = null
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+	)
 
 /obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
+	icon_state = ""
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
 	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -271,9 +276,17 @@
 /obj/item/clothing/suit/storage/marine/light/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Armor"
 	desc = "A set of M3 Pattern Ranger Armor, There probably are not many of these laying around.  DONOR ITEM."
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "rangerarmor"
 	item_state = "rangerarmor"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_armor",
+		WEAR_R_HAND = "marine_armor"
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
@@ -1500,25 +1513,6 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "skinnerrangerpack"
 	item_state = "skinnerrangerpack"
-
-/obj/item/storage/backpack/marine/satchel/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
-			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
-			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
-			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
-			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/backpack/donator.dmi'
-			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"

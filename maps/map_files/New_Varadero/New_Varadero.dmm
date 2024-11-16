@@ -14772,7 +14772,7 @@
 /area/varadero/interior/technical_storage)
 "lXv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "lYi" = (

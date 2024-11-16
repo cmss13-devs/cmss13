@@ -65,6 +65,10 @@
 /obj/item/clothing/head/helmet/riot/vintage_riot
 	desc = "A scarred riot helmet covered in cobwebs. It still protects your ears."
 	icon_state = "old_riot"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 
 /obj/item/clothing/head/helmet/augment
 	name = "augment array"

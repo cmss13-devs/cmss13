@@ -39,11 +39,12 @@ endmap
 
 map ice_colony_v1
 	minplayers 130
-	voteweight 0.1
+	voteweight 0.5
 endmap
 
 map ice_colony_v2
 	minplayers 130
+	voteweight 0.5
 endmap
 
 map shivas_snowball

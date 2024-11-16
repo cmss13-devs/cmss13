@@ -13,21 +13,15 @@ def has_tgm_header(fname):
 def _self_test():
     repo = pygit2.Repository(pygit2.discover_repository(os.getcwd()))
 
-    # Set up upstream remote if needed
-    try:
-        repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
-    except ValueError:
-        pass
-
-    # Read the ancestor commit.
-    repo.remotes["upstream"].fetch()
-    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
+    # Read the HEAD and ancestor commits
+    # Assumption: origin on the runner is what we'd normally call upstream
+    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/origin/master").id)
     ancestor_commit = None
     if not ancestor:
         print("Unable to determine merge base!")
     else:
         ancestor_commit = repo[ancestor]
-        print("Determined ancestor commit SHA to be:", ancestor, ancestor_commit)
+        print("Determined ancestor commit SHA to be:", ancestor)
 
     count = 0
     for dirpath, dirnames, filenames in os.walk('.'):
@@ -50,7 +44,7 @@ def _self_test():
                         try:
                             ancestor_blob = ancestor_commit.tree[path]
                         except KeyError:
-                            print("keyerror for", path, fullpath)
+                            print("New map? Could not find ancestor version of", path)
                             # New map, no entry in HEAD
                             merged_map = merge_map(index_map, index_map)
                             original_bytes = index_map.to_bytes()
@@ -58,7 +52,6 @@ def _self_test():
                             if original_bytes != merged_bytes:
                                 raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                         else:
-                            print("found", path, fullpath)
                             # Entry in HEAD, merge the index over it
                             ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
                             merged_map = merge_map(index_map, ancestor_map)

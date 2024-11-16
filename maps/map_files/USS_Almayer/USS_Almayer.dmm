@@ -17227,7 +17227,9 @@
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/shipboard/brig/execution)
 "dhj" = (
-/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/west{
+	name = "testing"
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/repair_bay)
 "dho" = (

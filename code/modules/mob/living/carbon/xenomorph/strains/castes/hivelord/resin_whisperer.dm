@@ -45,14 +45,13 @@
 /datum/action/xeno_action/activable/secrete_resin/remote
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "coerce resin"
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2 // the actual building part takes twice as long
+	build_speed_mod = 2.5 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -93,8 +92,10 @@
 	if(care_about_adjacency)
 		if(owner.Adjacent(target_turf))
 			build_speed_mod = 1
+			xeno_cooldown = 1 SECONDS
 		else
 			build_speed_mod = initial(build_speed_mod)
+			xeno_cooldown = initial(xeno_cooldown)
 
 	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())

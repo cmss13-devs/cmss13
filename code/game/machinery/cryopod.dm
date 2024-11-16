@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	item_loop:
 		for(var/obj/item/W in items)
-			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !gearless_role(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
+			if((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE) || gearless_role(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
 				if(istype(W, /obj/item/clothing/suit/storage))
 					var/obj/item/clothing/suit/storage/SS = W
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
@@ -321,6 +321,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	stripped_items:
 		for(var/obj/item/A in strippeditems)
+			if(gearless_role(occupant))
+				qdel(A)
+				continue stripped_items
 			for(var/DAA in deleteall)
 				if(istype(A, DAA))
 					qdel(A)

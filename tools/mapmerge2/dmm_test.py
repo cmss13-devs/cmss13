@@ -27,7 +27,7 @@ def _self_test():
         print("Unable to determine merge base!")
     else:
         ancestor_commit = repo[ancestor]
-        print("Determined ancestor commit SHA to be:", ancestor)
+        print("Determined ancestor commit SHA to be:", ancestor, ancestor_commit)
 
     count = 0
     for dirpath, dirnames, filenames in os.walk('.'):
@@ -36,7 +36,7 @@ def _self_test():
         for filename in filenames:
             if filename.endswith('.dmm'):
                 fullpath = os.path.join(dirpath, filename)
-                path = fullpath.removeprefix(".\\").replace("\\", "/")
+                path = fullpath.replace("\\", "/").removeprefix("./")
                 try:
                     # test: can we load every DMM in the tree
                     index_map = DMM.from_file(fullpath)
@@ -50,6 +50,7 @@ def _self_test():
                         try:
                             ancestor_blob = ancestor_commit.tree[path]
                         except KeyError:
+                            print("keyerror for", path, fullpath)
                             # New map, no entry in HEAD
                             merged_map = merge_map(index_map, index_map)
                             original_bytes = index_map.to_bytes()
@@ -57,6 +58,7 @@ def _self_test():
                             if original_bytes != merged_bytes:
                                 raise Exception('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                         else:
+                            print("found", path, fullpath)
                             # Entry in HEAD, merge the index over it
                             ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
                             merged_map = merge_map(index_map, ancestor_map)

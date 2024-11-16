@@ -42,7 +42,7 @@ def _self_test():
                 fullpath = os.path.join(dirpath, filename)
                 path = fullpath.replace("\\", "/").removeprefix("./")
                 try:
-                    # test: can we load every DMM in the tree
+                    # test: can we load every DMM
                     index_map = DMM.from_file(fullpath)
 
                     # test: is every DMM in TGM format
@@ -54,15 +54,15 @@ def _self_test():
                         try:
                             ancestor_blob = ancestor_commit.tree[path]
                         except KeyError:
+                            # New map, no entry in ancestor
                             print("New map? Could not find ancestor version of", path)
-                            # New map, no entry in HEAD
-                            merged_map = merge_map(index_map, index_map)
+                            merged_map = merge_map(index_map, index_map) # basically only tests unused keys
                             original_bytes = index_map.to_bytes()
                             merged_bytes = merged_map.to_bytes()
                             if original_bytes != merged_bytes:
                                 raise LintException('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                         else:
-                            # Entry in HEAD, merge the index over it
+                            # Entry in ancestor, merge the index over it
                             ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
                             merged_map = merge_map(index_map, ancestor_map)
                             original_bytes = index_map.to_bytes()

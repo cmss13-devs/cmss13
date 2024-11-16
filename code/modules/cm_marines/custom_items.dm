@@ -79,18 +79,18 @@ GLOBAL_LIST_EMPTY(donator_items)
 	if(user.ckey in GLOB.donator_items)
 		possible_kits += GLOB.donator_items[user.ckey]
 
-    if(user.ckey in ckeys_redeemed_kits)
-        if(length(possible_kits) <= 1)
-            to_chat(user, SPAN_NOTICE("You have already retrieved your kit."))
-            return TRUE
-        if(length(possible_kits) >= 2)
-            var/redeemed_kit_count = 0
-            for(var/U in ckeys_redeemed_kits)
-                if(U == user.ckey)
-                    redeemed_kit_count++
-            if(redeemed_kit_count >= length(possible_kits))
-                to_chat(user, SPAN_NOTICE("You have already retrieved your kits."))
-                return TRUE
+	if(user.ckey in ckeys_redeemed_kits)
+		if(length(possible_kits) <= 1)
+			to_chat(user, SPAN_NOTICE("You have already retrieved your kit."))
+			return TRUE
+		if(length(possible_kits) >= 2)
+			var/redeemed_kit_count = 0
+			for(var/U in ckeys_redeemed_kits)
+				if(U == user.ckey)
+					redeemed_kit_count++
+			if(redeemed_kit_count >= length(possible_kits))
+				to_chat(user, SPAN_NOTICE("You have already retrieved your kits."))
+				return TRUE
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
 		var/random_item = pick(random_personal_possessions)

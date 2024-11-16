@@ -875,3 +875,87 @@
 	name = "\improper LZ2 'Underground'"
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
+
+//ice classic
+//making it so the whole underground area doesnt have the unoviable timer
+
+/area/ice_colony/underground/research/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/work/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/sample/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/storage/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/north_west/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/south_east/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/research/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/north/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/south/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/east/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/locker/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/substation/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/canteen/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/library/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/lavatory/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/dorm_r/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/disposals/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/armory/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/brig/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/storage/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/command/center/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/medical/lobby/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/reception/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/surface/bar/bar/ice_v1
+	unoviable_timer = FALSE

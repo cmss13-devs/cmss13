@@ -122,3 +122,14 @@
 	var/obj/docking_port/mobile/trijent_elevator/elev = M
 	elev.elevator_network = elevator_network
 	log_debug("Adding network [elevator_network] to [M.id]")
+
+//ice classic elevators
+/datum/map_template/shuttle/trijent_elevator/ice_elevator
+	name = "Ice Classic Elevator (Dorm)"
+	shuttle_id = "ice_classic_shuttle"
+	elevator_network = "dorm"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+	name = "Ice Classic Elevator (Lab)"
+	shuttle_id = "ice_classic_shuttle_north"
+	elevator_network = "lab"

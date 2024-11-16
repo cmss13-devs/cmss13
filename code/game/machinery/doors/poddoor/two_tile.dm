@@ -22,6 +22,8 @@
 	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/open()
+	if(!density)
+		return
 	if(operating) //doors can still open when emag-disabled
 		return
 
@@ -59,6 +61,8 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/close()
+	if(density)
+		return
 	if(operating)
 		return
 	start_closing()
@@ -142,6 +146,18 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch
+	name = "elevator hatch"
+	base_icon_state = "hatch"
+	icon_state = "hatch1"
+	openspeed = 22
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch/opened
+	icon_state = "hatch0"
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/two_tile/secure

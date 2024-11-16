@@ -1,118 +1,118 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch{
-	id = "elevator_dorm"
+	id = "elevator_lab"
 	},
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
-"f" = (
-/turf/closed/shuttle/elevator{
-	dir = 5
-	},
+"d" = (
+/turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
-"j" = (
-/obj/docking_port/mobile/trijent_elevator/ice_classic,
-/turf/closed/shuttle/elevator{
-	dir = 10
-	},
-/area/shuttle/trijent_shuttle/elevator)
-"k" = (
-/turf/closed/shuttle/elevator,
-/area/shuttle/trijent_shuttle/elevator)
-"t" = (
-/turf/closed/shuttle/elevator{
-	dir = 6
-	},
-/area/shuttle/trijent_shuttle/elevator)
-"u" = (
-/turf/closed/shuttle/elevator{
-	dir = 8
-	},
-/area/shuttle/trijent_shuttle/elevator)
-"w" = (
-/turf/closed/shuttle/elevator{
-	dir = 1
-	},
-/area/shuttle/trijent_shuttle/elevator)
-"A" = (
-/turf/closed/shuttle/elevator{
-	dir = 4
-	},
-/area/shuttle/trijent_shuttle/elevator)
-"E" = (
-/turf/open/shuttle/elevator,
-/area/shuttle/trijent_shuttle/elevator)
-"F" = (
+"g" = (
 /turf/closed/shuttle/elevator{
 	dir = 9
 	},
 /area/shuttle/trijent_shuttle/elevator)
-"L" = (
-/turf/open/shuttle/elevator/grating,
+"k" = (
+/turf/closed/shuttle/elevator{
+	dir = 1
+	},
+/area/shuttle/trijent_shuttle/elevator)
+"p" = (
+/turf/open/shuttle/elevator,
+/area/shuttle/trijent_shuttle/elevator)
+"z" = (
+/turf/closed/shuttle/elevator{
+	dir = 6
+	},
+/area/shuttle/trijent_shuttle/elevator)
+"J" = (
+/turf/closed/shuttle/elevator{
+	dir = 4
+	},
+/area/shuttle/trijent_shuttle/elevator)
+"M" = (
+/turf/closed/shuttle/elevator,
 /area/shuttle/trijent_shuttle/elevator)
 "R" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller{
-	pixel_y = 32
+	pixel_y = -12
 	},
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
 "S" = (
+/turf/closed/shuttle/elevator{
+	dir = 5
+	},
+/area/shuttle/trijent_shuttle/elevator)
+"V" = (
+/obj/docking_port/mobile/trijent_elevator/ice_classic/north,
+/turf/closed/shuttle/elevator{
+	dir = 10
+	},
+/area/shuttle/trijent_shuttle/elevator)
+"X" = (
 /turf/closed/shuttle/elevator/gears,
+/area/shuttle/trijent_shuttle/elevator)
+"Y" = (
+/turf/closed/shuttle/elevator{
+	dir = 8
+	},
 /area/shuttle/trijent_shuttle/elevator)
 
 (1,1,1) = {"
-F
-k
-k
-k
-j
+g
+M
+M
+M
+V
 "}
 (2,1,1) = {"
-S
-E
-L
-E
-u
+Y
+p
+d
+p
+X
 "}
 (3,1,1) = {"
-S
-L
-L
-L
 a
+d
+d
+d
+X
 "}
 (4,1,1) = {"
-A
+d
+d
+p
 R
-E
-L
-L
+J
 "}
 (5,1,1) = {"
-u
-L
-E
-L
-L
+d
+d
+p
+d
+Y
 "}
 (6,1,1) = {"
-S
-L
-L
-L
-L
+d
+d
+d
+d
+X
 "}
 (7,1,1) = {"
-S
-E
-L
-E
-A
+X
+p
+d
+p
+X
 "}
 (8,1,1) = {"
-f
-w
-w
-w
-t
+S
+k
+k
+k
+z
 "}

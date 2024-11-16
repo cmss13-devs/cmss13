@@ -54,7 +54,7 @@
 /obj/structure/restock_cart
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/liquid_tanks.dmi'
 	icon_state = "tank_normal" // Temporary
 	var/overlay_color = rgb(252, 186, 3) // Temporary
 

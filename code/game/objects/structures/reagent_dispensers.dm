@@ -398,7 +398,6 @@
 /obj/structure/reagent_dispensers/fueltank/oxygentank
 	name = "oxygentank"
 	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "oxygentank"
 	chemical = "oxygen"
 

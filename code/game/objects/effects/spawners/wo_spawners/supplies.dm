@@ -157,22 +157,27 @@
 
 /obj/effect/landmark/wo_supplies/storage/belts/m41abelt
 	icon_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/marine)
 
 /obj/effect/landmark/wo_supplies/storage/belts/knifebelt
 	icon_state = "knifebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/knifepouch)
 
 /obj/effect/landmark/wo_supplies/storage/belts/shotgunbelt
 	icon_state = "shotgunbelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/shotgun)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m44belt
 	icon_state = "m44r_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/gun/m44)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m4a3belt
 	icon_state = "m4a3_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/gun/m4a3)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m39holster
@@ -184,6 +189,7 @@
 
 /obj/effect/landmark/wo_supplies/storage/belts/lifesaver
 	icon_state = "medicbag"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/medical/lifesaver/full)
 
 

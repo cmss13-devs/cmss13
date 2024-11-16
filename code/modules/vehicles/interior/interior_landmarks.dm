@@ -83,7 +83,7 @@
 // Gunner's seat spawner
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat
 	name = "gunner's seat spawner"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/chairs.dmi'
 	icon_state = "comfychair"
 	color = "blue"
 

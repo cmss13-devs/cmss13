@@ -128,6 +128,7 @@
 //END FEET TEMPLATE
 
 /obj/item/storage/backpack/marine/fluff
+	icon_state = null
 	xeno_types = null
 	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
 	item_icons = list(
@@ -135,8 +136,8 @@
 	)
 
 /obj/item/storage/backpack/marine/satchel/fluff
+	icon_state = null
 	xeno_types = null
-	icon_state = ""
 	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'

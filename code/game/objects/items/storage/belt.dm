@@ -2091,6 +2091,17 @@
 	storage_slots = 9
 	icon_state = "combatutility"
 	item_state= "utility"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_WAIST = "combatutility",
+		WEAR_L_HAND = "utility",
+		WEAR_R_HAND = "utility"
+	)
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,

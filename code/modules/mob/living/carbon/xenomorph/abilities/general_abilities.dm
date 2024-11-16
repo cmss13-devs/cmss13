@@ -114,7 +114,7 @@
 	thick = TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/sculptor
-
+	build_speed_mod = 0.8
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker

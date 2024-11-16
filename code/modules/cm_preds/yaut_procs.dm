@@ -242,6 +242,9 @@
 	ambience_exterior = AMBIENCE_JUNGLE
 	weather_enabled = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS
+	resin_construction_allowed = FALSE
+	can_build_special = FALSE
+	is_resin_allowed = TRUE
 
 /area/yautja_grounds/jungle
 	name = "\improper Yautja Hunting Grounds Jungle Central"

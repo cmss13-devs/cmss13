@@ -15,7 +15,7 @@ def _self_test():
 
     # Read the ancestor commit.
     repo.remotes["origin"].fetch()
-    ancestor = repo.merge_base(repo.head.target, repo.branches.remote.get('origin/master').target)
+    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/origin/master").id)
     ancestor_commit = None
     if not ancestor:
         print("Unable to determine merge base!")

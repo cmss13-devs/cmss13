@@ -1,4 +1,5 @@
 /obj/item/restraint
+	icon = 'icons/obj/items/security.dmi'
 	/// SLOT_HANDS or SLOT_LEGS, for handcuffs or legcuffs
 	var/target_zone = SLOT_HANDS
 	/// How long to break out
@@ -65,7 +66,6 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -78,8 +78,9 @@
 /obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
 
-	var/image/handcuffs = overlay_image('icons/mob/mob.dmi', "handcuff1", color, RESET_COLOR)
-	ret.overlays += handcuffs
+	if(slot == WEAR_HANDCUFFS)
+		var/image/handcuffs = overlay_image('icons/mob/humans/onmob/cuffs.dmi', "handcuff1", color, RESET_COLOR)
+		ret.overlays += handcuffs
 
 	return ret
 

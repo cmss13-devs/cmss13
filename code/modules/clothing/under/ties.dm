@@ -483,6 +483,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
 	slot = ACCESSORY_SLOT_PONCHO
+	flags_atom = MAP_COLOR_INDEX
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()

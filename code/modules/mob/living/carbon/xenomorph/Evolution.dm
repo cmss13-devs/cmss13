@@ -40,7 +40,7 @@
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([round((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
 	if(!evolve_checks())
@@ -130,7 +130,9 @@
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 
@@ -143,7 +145,7 @@
 		return
 
 	var/area/xeno_area = get_area(new_xeno)
-	if(!is_admin_level(new_xeno.z) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+	if(!should_block_game_interaction(new_xeno) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
 			if(2)
 				hive.tier_2_xenos |= new_xeno
@@ -211,7 +213,10 @@
 		return FALSE
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't evolve."))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
@@ -269,7 +274,10 @@
 		return
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
 
@@ -324,7 +332,9 @@
 			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/xenomorph/burrower
-
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	new_xeno.built_structures = built_structures.Copy()
@@ -385,7 +395,7 @@
 				used_tier_3_slots -= min(slots_used, slots_free)
 
 	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	var/totalXenos = round(burrowed_factor)
+	var/totalXenos = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++

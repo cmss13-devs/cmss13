@@ -21,7 +21,7 @@
 	///The minimum amount of alive, non-AFK human players on server required to start the event.
 	var/min_players = 0
 
-	///How many times this event has occured
+	///How many times this event has occurred
 	var/occurrences = 0
 	//The maximum number of times this event can occur (naturally), it can still be forced.By setting this to 0 you can effectively disable an event.
 	var/max_occurrences = 20

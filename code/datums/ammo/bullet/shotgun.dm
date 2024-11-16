@@ -11,10 +11,11 @@
 	name = "shotgun slug"
 	handful_state = "slug_shell"
 
-	accurate_range = 6
+	accurate_range = 8
 	max_range = 8
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_3
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
@@ -65,7 +66,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	accuracy = -HIT_ACCURACY_TIER_2
+	accuracy = HIT_ACCURACY_TIER_2
 	max_range = 12
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
@@ -310,6 +311,32 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
+
+/*
+					16 GAUGE SHOTGUN AMMO
+*/
+
+/datum/ammo/bullet/shotgun/light/breaching
+	name = "light breaching shell"
+	icon_state = "flechette"
+	handful_state = "breaching_shell"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/light/breaching/spread
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	damage = 55
+	max_range = 5
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/shotgun/light/breaching/spread
+	name = "additional light breaching fragments"
+	bonus_projectiles_amount = 0
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_3
+	damage = 10
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
 /datum/ammo/bullet/shotgun/twobore

@@ -258,7 +258,7 @@
 /obj/vehicle/multitile/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There is \a [H] module installed."
+		. += "There [H.p_are()] \a [H] module[H.p_s()] installed."
 		H.examine(user, TRUE)
 	if(clamped)
 		. += "There is a vehicle clamp attached."
@@ -267,7 +267,7 @@
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
-			. += "You can sense approximately [passengers_amount] hosts inside."
+			. += "You can sense approximately [passengers_amount] host\s inside."
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -293,14 +293,14 @@
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
 		if(H.can_take_damage())
-			H.take_damage(round(damage * get_dmg_multi(type)))
+			H.take_damage(floor(damage * get_dmg_multi(type)))
 			all_broken = FALSE
 
 	// If all hardpoints are broken, the vehicle frame begins taking full damage
 	if(all_broken)
 		health = max(0, health - damage * get_dmg_multi(type))
 	else //otherwise, 1/10th of damage lands on the hull
-		health = max(0, health - round(damage * get_dmg_multi(type) / 10))
+		health = max(0, health - floor(damage * get_dmg_multi(type) / 10))
 
 	if(ismob(attacker))
 		var/mob/M = attacker
@@ -334,11 +334,12 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.set_interaction(src)
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+	return TRUE
 
 /// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)
@@ -383,6 +384,9 @@
 	//vehicle is dead, no more lights
 	if(health <= 0 && lighting_holder.light_range)
 		lighting_holder.set_light_on(FALSE)
+	else
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 	update_icon()
 
 /*

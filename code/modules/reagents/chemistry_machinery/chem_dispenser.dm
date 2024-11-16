@@ -20,6 +20,7 @@
 	var/network = "Ground"
 	var/amount = 30
 	var/accept_beaker_only = TRUE
+	var/pressurized_only = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
@@ -89,6 +90,14 @@
 		if(!inoperable())
 			overlays += "+onlight"
 
+/obj/structure/machinery/chem_dispenser/corpsman/update_icon()
+	if(stat & BROKEN)
+		icon_state = (beaker ? "mixer1_b" : "mixer0_b")
+	else if(stat & NOPOWER)
+		icon_state = (beaker ? "[base_state]1_nopower" : "[base_state]0_nopower")
+	else
+		icon_state = (beaker ? "[base_state]1" : "[base_state]0")
+
 /obj/structure/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)
 		beaker = null
@@ -134,13 +143,13 @@
 /obj/structure/machinery/chem_dispenser/ui_data(mob/user)
 	. = list()
 	.["amount"] = amount
-	.["energy"] = round(chem_storage.energy)
-	.["maxEnergy"] = round(chem_storage.max_energy)
+	.["energy"] = floor(chem_storage.energy)
+	.["maxEnergy"] = floor(chem_storage.max_energy)
 	.["isBeakerLoaded"] = beaker ? 1 : 0
 
 	var/list/beakerContents = list()
 	var/beakerCurrentVolume = 0
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/current_reagent in beaker.reagents.reagent_list)
 			beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
 			beakerCurrentVolume += current_reagent.volume
@@ -201,12 +210,13 @@
 			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
-	if(isrobot(user))
-		return
-
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
+			return
+		if(pressurized_only && !istype(attacking_object, /obj/item/reagent_container/glass/pressurized_canister))
+			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters"))
+			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
 			beaker = attacking_object
@@ -261,6 +271,28 @@
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	tgui_interact(user)
+
+/obj/structure/machinery/chem_dispenser/corpsman
+	name = "pressurized chemical dispenser"
+	desc = "A more basic chemical dispenser, designed for use with pressurized reagent canisters. A Wey-Yu product."
+	icon_state = "mixer0"
+	ui_title = "Chem Dispenser 4000"
+	req_skill_level = SKILL_MEDICAL_MEDIC
+	accept_beaker_only = FALSE
+	pressurized_only = TRUE
+	dispensable_reagents = list(
+		"bicaridine",
+		"kelotane",
+		"anti_toxin",
+		"dexalin",
+		"inaprovaline",
+		"adrenaline",
+		"peridaxon",
+		"tramadol",
+		"tricordrazine",
+	)
+	
+	var/base_state = "mixer"
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"

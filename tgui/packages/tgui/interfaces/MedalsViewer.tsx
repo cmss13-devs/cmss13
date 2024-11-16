@@ -1,4 +1,5 @@
 import { BooleanLike, classes } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Section } from '../components';
 import { Window } from '../layouts';
@@ -18,8 +19,8 @@ interface Medal {
   citation?: string;
 }
 
-export const MedalsViewer = (props, context) => {
-  const { data, act } = useBackend<MedalProps>(context);
+export const MedalsViewer = (props) => {
+  const { data, act } = useBackend<MedalProps>();
   const { medals } = data;
 
   return (
@@ -35,7 +36,8 @@ export const MedalsViewer = (props, context) => {
             <Section
               key={medal.citation}
               title={sectionTitle}
-              className={sectionType}>
+              className={sectionType}
+            >
               Issued to{' '}
               <b>
                 {medal.recipient_name}{' '}

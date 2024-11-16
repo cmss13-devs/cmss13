@@ -82,7 +82,7 @@
 	if(current_pain - new_pain_reduction > max_pain)
 		return 100
 
-	var/percentage = round(((current_pain - new_pain_reduction) / max_pain) * 100)
+	var/percentage = floor(((current_pain - new_pain_reduction) / max_pain) * 100)
 	if(percentage < 0)
 		return 0
 	else
@@ -193,7 +193,7 @@
 			if(!isnull(threshold_horrible))
 				activate_horrible()
 
-	if(new_level >= PAIN_LEVEL_SEVERE)
+	if(new_level >= PAIN_LEVEL_SEVERE && feels_pain)
 		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, PROC_REF(oxyloss_drag), override = TRUE)
 		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, PROC_REF(handle_devour), override = TRUE)
 		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, PROC_REF(oxy_kill), override = TRUE)
@@ -286,14 +286,19 @@
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
 	if(isxeno(puller) && source.stat == UNCONSCIOUS)
+		var/mob/living/carbon/xenomorph/xeno_puller = puller
+		if(source.ally_of_hivenumber(xeno_puller.hivenumber))
+			return
 		if(source.get_species())
 			var/mob/living/carbon/human/H = source
 			if(H.species.flags & HAS_HARDCRIT)
 				source.apply_damage(20, OXY)
 
-/datum/pain/proc/handle_devour(mob/living/source)
+/datum/pain/proc/handle_devour(mob/living/source, mob/living/carbon/xenomorph/devourer)
 	SIGNAL_HANDLER
 	if(source.chestburst)
+		return
+	if(source.ally_of_hivenumber(devourer.hivenumber))
 		return
 	oxy_kill(source)
 	return COMPONENT_CANCEL_DEVOUR

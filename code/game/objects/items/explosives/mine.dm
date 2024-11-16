@@ -14,10 +14,11 @@
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
+	antigrief_protection = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list( "max_ex_power" = 105, "base_ex_falloff" = 60, "max_ex_shards" = 32,
-							"max_fire_rad" = 5, "max_fire_int" = 12, "max_fire_dur" = 18,
+	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 40,
+							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 18,
 							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
@@ -71,7 +72,12 @@
 	if(active || user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
+		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
@@ -197,7 +203,7 @@
 		return
 	if(L.stat == DEAD)
 		return
-	if(L.get_target_lock(iff_signal) || isrobot(L))
+	if(L.get_target_lock(iff_signal))
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
@@ -266,6 +272,8 @@
 
 /obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
+		if(linked_claymore.tripwire == src)
+			linked_claymore.tripwire = null
 		linked_claymore = null
 	. = ..()
 
@@ -315,3 +323,19 @@
 	customizable = TRUE
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
+
+/obj/item/explosive/mine/sebb
+	name = "\improper G2 Electroshock grenade"
+	icon_state = "grenade_sebb_planted"
+	desc = "A G2 electroshock grenade planted as a landmine."
+	pixel_y = -5
+	anchored = TRUE // this is supposed to be planeted already when spawned
+
+/obj/item/explosive/mine/sebb/disarm()
+	. = ..()
+	new /obj/item/explosive/grenade/sebb(get_turf(src))
+	qdel(src)
+
+/obj/item/explosive/mine/sebb/prime()
+	new /obj/item/explosive/grenade/sebb/primed(get_turf(src))
+	qdel(src)

@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	for(var/type in typesof(/datum/seed)-/datum/seed)
 		var/datum/seed/S = new type
 		GLOB.seed_types[S.name] = S
-		S.uid = "[GLOB.seed_types.len]"
+		S.uid = "[length(GLOB.seed_types)]"
 		S.roundstart = 1
 
 	// Make sure any seed packets that were mapped in are updated
@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/list/gene_tags = list("products","consumption","environment","resistance","vigour","flowers")
 	var/list/used_masks = list()
 
-	while(gene_tags && gene_tags.len)
+	while(LAZYLEN(gene_tags))
 		var/gene_tag = pick(gene_tags)
 		var/gene_mask = "[num2hex(rand(0,255))] - [gene_tag]"
 
@@ -111,13 +111,13 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	// Cosmetics.
 	var/plant_icon   // Icon to use for the plant growing in the tray.
 	var/product_icon // Base to use for fruit coming from this plant (if a vine).
-	var/product_colour   // Color to apply to product base (if a vine).
+	var/product_color   // Color to apply to product base (if a vine).
 	var/packet_icon = "seed" // Icon to use for physical seed packet item.
 	var/biolum   // Plant is bioluminescent.
-	var/biolum_colour    // The color of the plant's radiance.
+	var/biolum_color    // The color of the plant's radiance.
 	var/flowers  // Plant has a flower overlay.
 	var/flower_icon = "vine_fruit"  // Which overlay to use.
-	var/flower_colour    // Which color to use.
+	var/flower_color    // Which color to use.
 
 //Creates a random seed. MAKE SURE THE LINE HAS DIVERGED BEFORE THIS IS CALLED.
 /datum/seed/proc/randomize()
@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 			)
 
 		for(var/x=1;x<=additional_chems;x++)
-			if(!possible_chems.len)
+			if(!length(possible_chems))
 				break
 			var/new_chem = pick(possible_chems)
 			possible_chems -= new_chem
@@ -301,7 +301,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 	if(prob(5))
 		biolum = 1
-		biolum_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+		biolum_color = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 
 	endurance = rand(60,100)
 	yield = rand(3,15)
@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 //Returns a key corresponding to an entry in the global seed list.
 /datum/seed/proc/get_mutant_variant()
-	if(!mutants || !mutants.len || immutable > 0) return 0
+	if(!LAZYLEN(mutants) || immutable > 0) return 0
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
@@ -364,8 +364,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					if(biolum)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] begins to glow!"))
 						if(prob(degree*2))
-							biolum_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes color</font>!"))
+							biolum_color = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_color]'>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow dims..."))
 			if(11) //Flowers?
@@ -374,8 +374,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					if(flowers)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] sprouts a bevy of flowers!"))
 						if(prob(degree*2))
-							flower_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes color</font>!"))
+							flower_color = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_color]>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
@@ -400,11 +400,11 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		//Splicing products has some detrimental effects on yield and lifespan.
 		if("products")
 
-			if(gene.values.len < 6) return
+			if(length(gene.values) < 6) return
 
-			if(yield > 0)  yield =  max(1,round(yield*0.85))
-			if(endurance > 0) endurance = max(1,round(endurance*0.85))
-			if(lifespan > 0)  lifespan =  max(1,round(lifespan*0.85))
+			if(yield > 0)  yield =  max(1,floor(yield*0.85))
+			if(endurance > 0) endurance = max(1,floor(endurance*0.85))
+			if(lifespan > 0)  lifespan =  max(1,floor(lifespan*0.85))
 
 			if(!products) products = list()
 			products |= gene.values[1]
@@ -420,12 +420,12 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					chems[rid] = gene_chem.Copy()
 					continue
 
-				for(var/i=1;i<=gene_chem.len;i++)
+				for(var/i=1;i<=length(gene_chem);i++)
 
 					if(isnull(gene_chem[i])) gene_chem[i] = 0
 
 					if(chems[rid][i])
-						chems[rid][i] = max(1,round((gene_chem[i] + chems[rid][i])/2))
+						chems[rid][i] = max(1,floor((gene_chem[i] + chems[rid][i])/2))
 					else
 						chems[rid][i] = gene_chem[i]
 
@@ -434,7 +434,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				if(!exude_gasses) exude_gasses = list()
 				exude_gasses |= new_gasses
 				for(var/gas in exude_gasses)
-					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
+					exude_gasses[gas] = max(1,floor(exude_gasses[gas]*0.8))
 
 			alter_temp =    gene.values[4]
 			potency =   gene.values[5]
@@ -442,7 +442,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("consumption")
 
-			if(gene.values.len < 7) return
+			if(length(gene.values) < 7) return
 
 			consume_gasses =    gene.values[1]
 			requires_nutrients =   gene.values[2]
@@ -454,7 +454,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("environment")
 
-			if(gene.values.len < 6) return
+			if(length(gene.values) < 6) return
 
 			ideal_heat =    gene.values[1]
 			heat_tolerance =    gene.values[2]
@@ -465,7 +465,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("resistance")
 
-			if(gene.values.len < 3) return
+			if(length(gene.values) < 3) return
 
 			toxins_tolerance =  gene.values[1]
 			pest_tolerance =    gene.values[2]
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("vigour")
 
-			if(gene.values.len < 6) return
+			if(length(gene.values) < 6) return
 
 			endurance = gene.values[1]
 			yield = gene.values[2]
@@ -484,15 +484,15 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("flowers")
 
-			if(gene.values.len < 7) return
+			if(length(gene.values) < 7) return
 
 			product_icon =  gene.values[1]
-			product_colour =    gene.values[2]
+			product_color =    gene.values[2]
 			biolum =    gene.values[3]
-			biolum_colour = gene.values[4]
+			biolum_color = gene.values[4]
 			flowers =   gene.values[5]
 			flower_icon =   gene.values[6]
-			flower_colour = gene.values[7]
+			flower_color = gene.values[7]
 
 //Returns a list of the desired trait values.
 /datum/seed/proc/get_gene(genetype)
@@ -554,12 +554,12 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		if("flowers")
 			P.values = list(
 				(product_icon  ? product_icon  : 0),
-				(product_colour    ? product_colour    : 0),
+				(product_color    ? product_color    : 0),
 				(biolum    ? biolum    : 0),
-				(biolum_colour ? biolum_colour : 0),
+				(biolum_color ? biolum_color : 0),
 				(flowers   ? flowers   : 0),
 				(flower_icon   ? flower_icon   : 0),
-				(flower_colour ? flower_colour : 0)
+				(flower_color ? flower_color : 0)
 				)
 
 	return (P ? P : 0)
@@ -571,7 +571,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		return
 
 	var/got_product
-	if(!isnull(products) && products.len && yield > 0)
+	if(LAZYLEN(products) && yield > 0)
 		got_product = 1
 
 	if(!got_product && !harvest_sample)
@@ -581,7 +581,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in GLOB.seed_types))
-			uid = GLOB.seed_types.len + 1
+			uid = length(GLOB.seed_types) + 1
 			name = "[uid]"
 			GLOB.seed_types[name] = src
 
@@ -673,10 +673,10 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	new_seed.parasite =  parasite
 	new_seed.plant_icon =    plant_icon
 	new_seed.product_icon =  product_icon
-	new_seed.product_colour =    product_colour
+	new_seed.product_color =    product_color
 	new_seed.packet_icon =   packet_icon
 	new_seed.biolum =    biolum
-	new_seed.biolum_colour = biolum_colour
+	new_seed.biolum_color = biolum_color
 	new_seed.flowers =   flowers
 	new_seed.flower_icon =   flower_icon
 	new_seed.alter_temp = alter_temp
@@ -1099,7 +1099,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	potency = 30
 	growth_stages = 4
 	biolum = 1
-	biolum_colour = "#006622"
+	biolum_color = "#006622"
 
 /datum/seed/mushroom/plastic
 	name = "plastic"
@@ -1551,7 +1551,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	packet_icon = "seed-kudzu"
 	products = list(/obj/item/reagent_container/food/snacks/grown/kudzupod)
 	plant_icon = "kudzu"
-	product_colour = "#96D278"
+	product_color = "#96D278"
 	chems = list("plantmatter" = list(1,50), "anti_toxin" = list(1,25))
 
 	lifespan = 20

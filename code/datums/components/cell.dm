@@ -71,7 +71,7 @@
 /datum/component/cell/proc/on_emp(datum/source, severity)
 	SIGNAL_HANDLER
 
-	use_charge(null, round(max_charge / severity))
+	use_charge(null, floor(max_charge / severity))
 
 /datum/component/cell/proc/start_drain(datum/source)
 	SIGNAL_HANDLER
@@ -92,7 +92,7 @@
 	if((charge_examine_range != UNLIMITED_DISTANCE) && get_dist(examiner, parent) > charge_examine_range)
 		return
 
-	examine_text += "A small gauge in the corner reads \"Power: [round(100 * charge / max_charge)]%\"."
+	examine_text += "A small gauge in the corner reads \"Power: [floor(100 * charge / max_charge)]%\"."
 
 /datum/component/cell/proc/on_object_hit(datum/source, obj/item/cell/attack_obj, mob/living/attacker, params)
 	SIGNAL_HANDLER
@@ -154,7 +154,7 @@
 		var/to_transfer = min(max_recharge_tick, power_cell.charge, (max_charge - charge))
 		if(power_cell.use(to_transfer))
 			add_charge(null, to_transfer)
-			to_chat(user, "You transfer some power between [power_cell] and [parent]. The gauge now reads: [round(100 * charge / max_charge)]%.")
+			to_chat(user, "You transfer some power between [power_cell] and [parent]. The gauge now reads: [floor(100 * charge / max_charge)]%.")
 
 /datum/component/cell/proc/add_charge(datum/source, charge_add = 0)
 	SIGNAL_HANDLER

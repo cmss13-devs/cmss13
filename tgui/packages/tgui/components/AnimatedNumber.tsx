@@ -5,7 +5,7 @@
  */
 
 import { clamp, toFixed } from 'common/math';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 
 const isSafeNumber = (value: number) => {
   // prettier-ignore
@@ -18,20 +18,20 @@ export type AnimatedNumberProps = {
   /**
    * The target value to approach.
    */
-  value: number;
+  readonly value: number;
 
   /**
    * If provided, the initial value displayed. By default, the same as `value`.
    * If `initial` and `value` are different, the component immediately starts
    * animating.
    */
-  initial?: number;
+  readonly initial?: number;
 
   /**
    * If provided, a function that formats the inner string. By default,
    * attempts to match the numeric precision of `value`.
    */
-  format?: (value: number) => string;
+  readonly format?: (value: number) => string;
 };
 
 /**
@@ -100,8 +100,6 @@ export class AnimatedNumber extends Component<AnimatedNumberProps> {
       this.startTicking();
     }
 
-    // We render the inner `span` directly using a ref to bypass inferno diffing
-    // and reach 60 frames per second--tell inferno not to re-render this tree.
     return false;
   }
 
@@ -157,7 +155,6 @@ export class AnimatedNumber extends Component<AnimatedNumberProps> {
     }
 
     if (this.ref.current) {
-      // Directly update the inner span, without bothering inferno.
       this.ref.current.textContent = this.getText();
     }
   }

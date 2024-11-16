@@ -9,6 +9,7 @@
 /obj/item/storage/firstaid
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -123,7 +124,6 @@
 	desc = "It's an emergency medical kit containing lifesaving anti-toxic medication. With medical training you can fit this in a backpack."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
-	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -173,7 +173,7 @@
 
 /obj/item/storage/firstaid/synth
 	name = "synthetic repair kit"
-	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.' With medical training you can fit this in a backpack."
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack separately.' With medical training you can fit this in a backpack."
 	icon_state = "bezerk"
 	item_state = "firstaid-advanced"
 	can_hold = list(
@@ -255,6 +255,7 @@
 /obj/item/storage/syringe_case
 	name = "syringe case"
 	desc = "It's a medical case for storing syringes and bottles."
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -309,7 +310,7 @@
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
-
+	icon = 'icons/obj/items/storage/medical.dmi'
 	icon_state = "surgical_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -320,6 +321,9 @@
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/tool/surgery/hemostat,
 		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
 	)
 
 /obj/item/storage/surgical_case/regular
@@ -358,6 +362,23 @@
 	maptext_x = 18
 	maptext_y = 3
 
+	var/base_icon = "pill_canister"
+	var/static/list/possible_colors = list(
+		"Orange" = "",
+		"Blue" = "1",
+		"Yellow" = "2",
+		"Light Purple" = "3",
+		"Light Grey" = "4",
+		"White" = "5",
+		"Light Green" = "6",
+		"Cyan" = "7",
+		"Bordeaux" = "8",
+		"Aquamarine" = "9",
+		"Grey" = "10",
+		"Red" = "11",
+		"Black" = "12",
+	)
+
 /obj/item/storage/pill_bottle/Initialize()
 	. = ..()
 	if(display_maptext == FALSE)
@@ -384,9 +405,9 @@
 
 /obj/item/storage/pill_bottle/get_examine_text(mob/user)
 	. = ..()
-	var/pills_amount = contents.len
+	var/pills_amount = length(contents)
 	if(pills_amount)
-		var/percentage_filled = round(pills_amount/max_storage_space * 100)
+		var/percentage_filled = floor(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
 				. += SPAN_INFO("The [name] seems fairly full.")
@@ -410,7 +431,7 @@
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		error_idlock(user)
 		return
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
 			playsound(loc, use_sound, 10, TRUE, 3)
@@ -465,7 +486,7 @@
 	if(C.is_mob_restrained())
 		to_chat(user, SPAN_WARNING("You are restrained!"))
 		return FALSE
-	if(!contents.len)
+	if(!length(contents))
 		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return FALSE
 	var/obj/item/I = contents[1]
@@ -510,6 +531,20 @@
 
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
+
+/obj/item/storage/pill_bottle/proc/choose_color(mob/user)
+	if(!user)
+		user = usr
+
+	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
+	if(!selected_color)
+		return
+
+	selected_color = possible_colors[selected_color]
+
+	icon_state = base_icon + selected_color
+	to_chat(user, SPAN_NOTICE("You color [src]."))
+	update_icon()
 
 /obj/item/storage/pill_bottle/verb/set_maptext()
 	set category = "Object"
@@ -656,8 +691,8 @@
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	var/obj/item/card/id/idcard = human_user.wear_id
-	if(!istype(idcard)) //not wearing an ID
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	if(!idcard) //not wearing an ID
 		to_chat(human_user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
@@ -732,6 +767,24 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX
 	display_maptext = FALSE
+
+/obj/item/storage/pill_bottle/packet/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/pill_bottle/packet/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(locate(/obj/item/reagent_container/pill) in src)
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

@@ -110,7 +110,7 @@
 
 	wound_icon_holder.layer = layer + 0.01
 	wound_icon_holder.dir = dir
-	var/health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
+	var/health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"
@@ -126,7 +126,7 @@
 	. = ..()
 	if(P.damage)
 		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+		new /obj/effect/bloodsplatter/xenosplatter(loc, splatter_dir)
 		if(prob(15))
 			roar_emote()
 

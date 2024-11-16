@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "aU" = (
 /obj/structure/sign/poster{
@@ -18,44 +15,30 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/template_noop)
 "bO" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
+/turf/open/floor/prison/floorscorched1,
 /area/template_noop)
 "bZ" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
+/turf/open/floor/prison/floorscorched2,
 /area/template_noop)
 "cz" = (
 /obj/structure/machinery/vending/sovietsoda,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "cL" = (
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "cM" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "dR" = (
 /obj/structure/bookcase/manuals/research_and_development{
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "eG" = (
 /obj/structure/closet/secure_closet/guncabinet{
@@ -67,24 +50,18 @@
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "eQ" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "fg" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "fk" = (
 /obj/item/explosive/grenade/incendiary/molotov{
@@ -94,16 +71,11 @@
 /turf/open/space/basic,
 /area/template_noop)
 "gy" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/west,
 /area/template_noop)
 "gB" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "gR" = (
 /obj/structure/extinguisher_cabinet{
@@ -126,64 +98,43 @@
 	dir = 4;
 	health = 150
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "jM" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/item/reagent_container/food/snacks/wrapped/barcardine,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "ke" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "ks" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/item/card/id/visa,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "kx" = (
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "kY" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/prison/platingdmg1,
 /area/template_noop)
 "me" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "mu" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/effect/spawner/random/pills/lowchance,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "mz" = (
 /obj/item/tool/kitchen/utensil/pspoon,
@@ -194,68 +145,42 @@
 	dir = 4;
 	health = 200
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "nw" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "on" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	health = 55
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "oR" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "pp" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged1/southwest,
 /area/template_noop)
 "pP" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/prison/whitepurplecorner/west,
 /area/template_noop)
 "qk" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "qu" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged1/southwest,
 /area/template_noop)
 "qL" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/template_noop)
 "rb" = (
 /obj/structure/toilet{
@@ -266,10 +191,7 @@
 	dir = 6
 	},
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northeast,
 /area/template_noop)
 "sa" = (
 /obj/structure/sink{
@@ -277,56 +199,38 @@
 	pixel_x = -12
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "tc" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/item/toy/deck,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "tr" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/east,
 /area/template_noop)
 "tB" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	health = 65
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "tD" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "tI" = (
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "tN" = (
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "ux" = (
 /obj/structure/sink{
@@ -334,45 +238,32 @@
 	pixel_x = -12
 	},
 /obj/effect/spawner/random/pills/lowchance,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "uF" = (
 /obj/effect/decal/prints{
 	pixel_y = 3;
 	pixel_x = -10
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/west,
 /area/template_noop)
 "uM" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "we" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "wv" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "wy" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -387,49 +278,32 @@
 /obj/item/implanter{
 	pixel_x = -4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "xy" = (
 /obj/structure/grille,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "yv" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 12
 	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "zj" = (
 /obj/item/stack/sheet/metal{
 	pixel_y = -9;
 	pixel_x = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "zA" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northeast,
 /area/template_noop)
 "zT" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "Bl" = (
 /obj/structure/sink{
@@ -437,17 +311,11 @@
 	pixel_x = 12
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "Bx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/west,
 /area/template_noop)
 "Dq" = (
 /obj/structure/barricade/metal/wired{
@@ -458,70 +326,45 @@
 	pixel_y = 4;
 	pixel_x = -10
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Dt" = (
 /obj/structure/bed{
 	icon_state = "abed"
 	},
 /obj/item/toy/beach_ball/holoball,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "DE" = (
 /obj/structure/toilet{
 	dir = 4;
 	pixel_y = 8
 	},
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "DV" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "EQ" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northeast,
 /area/template_noop)
 "ES" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "Fc" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "FP" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
 	health = 55
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "Gy" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "GR" = (
 /turf/closed/wall/r_wall/prison_unmeltable{
@@ -531,71 +374,47 @@
 /area/template_noop)
 "Hf" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "Hp" = (
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "Hw" = (
 /obj/structure/toilet{
 	dir = 8;
 	pixel_y = 8
 	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northeast,
 /area/template_noop)
 "HN" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Id" = (
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Ig" = (
 /obj/structure/machinery/vending/snack/packaged,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Io" = (
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
+/turf/open/floor/prison/floorscorched1,
 /area/template_noop)
 "Ix" = (
 /obj/structure/machinery/door/airlock/prison/horizontal,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "IN" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/north,
 /area/template_noop)
 "IW" = (
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/template_noop)
 "Jm" = (
 /obj/structure/sink{
@@ -605,38 +424,25 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "JQ" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -12
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southwest,
 /area/template_noop)
 "Kc" = (
 /obj/structure/barricade/metal/wired,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Kj" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/east,
 /area/template_noop)
 "KF" = (
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/template_noop)
 "LM" = (
 /turf/closed/wall/prison,
@@ -652,10 +458,7 @@
 	icon_state = "abed"
 	},
 /obj/item/storage/fancy/crayons,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "Mo" = (
 /obj/structure/window/framed/prison/cell,
@@ -665,30 +468,20 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "MI" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/core,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "MO" = (
 /obj/structure/barricade/metal/wired,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "Nr" = (
 /obj/structure/machinery/light/double/blue,
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "Ns" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -696,22 +489,17 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = -3;
 	pixel_y = 10
 	},
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "NI" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "Oo" = (
 /obj/effect/spawner/gibspawner/human,
@@ -719,96 +507,63 @@
 /area/template_noop)
 "Pd" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/east,
 /area/template_noop)
 "Pk" = (
 /obj/effect/decal/cleanable/spiderling_remains,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "PS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Qc" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "Qn" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/east,
 /area/template_noop)
 "QF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "QU" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Sx" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
+/turf/open/floor/prison/floorscorched2,
 /area/template_noop)
 "TD" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "TE" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	health = 150
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2"
-	},
+/turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "TH" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/prison/platingdmg3,
 /area/template_noop)
 "VP" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8;
 	health = 200
 	},
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northwest,
 /area/template_noop)
 "VQ" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/west,
 /area/template_noop)
 "Wo" = (
 /obj/structure/toilet{
@@ -816,10 +571,7 @@
 	pixel_y = 8
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/northeast,
 /area/template_noop)
 "Yw" = (
 /obj/structure/extinguisher_cabinet,
@@ -830,14 +582,10 @@
 	dir = 8;
 	health = 55
 	},
-/turf/open/floor/prison{
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple,
 /area/template_noop)
 "YY" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg2"
-	},
+/turf/open/floor/prison/platingdmg2,
 /area/template_noop)
 "Zi" = (
 /turf/open/space/basic,
@@ -847,10 +595,7 @@
 	icon_state = "abed"
 	},
 /obj/item/storage/fancy/cigar/tarbacks,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "whitepurple"
-	},
+/turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 
 (1,1,1) = {"

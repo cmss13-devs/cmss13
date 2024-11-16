@@ -8,6 +8,8 @@
 
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_NEW_Z "!new_z"
+/// sent after world.maxx and/or world.maxy are expanded: (has_exapnded_world_maxx, has_expanded_world_maxy)
+#define COMSIG_GLOB_EXPANDED_WORLD_BOUNDS "!expanded_world_bounds"
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_VEHICLE_ORDERED "!vehicle_ordered"
 /// from /datum/controller/subsystem/ticker/fire
@@ -32,9 +34,11 @@
 
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
-#define COMSIG_GLOB_CLIENT_LOGIN "!client_login"
+/// Called from /client/New() when a client logs in to the game: (client)
+#define COMSIG_GLOB_CLIENT_LOGGED_IN "!client_logged_in"
 
-#define COMSIG_GLOB_MOB_LOGIN "!mob_login"
+/// Called from /mob/Login() when a client logs into a mob: (mob)
+#define COMSIG_GLOB_MOB_LOGGED_IN "!mob_logged_in"
 
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
@@ -65,8 +69,15 @@
 /// From /proc/biohazard_lockdown()
 #define COMSIG_GLOB_RESEARCH_LOCKDOWN "!research_lockdown_closed"
 #define COMSIG_GLOB_RESEARCH_LIFT "!research_lockdown_opened"
+/// From /proc/aicore_lockdown()
+#define COMSIG_GLOB_AICORE_LOCKDOWN "!aicore_lockdown_closed"
+#define COMSIG_GLOB_AICORE_LIFT "!aicore_lockdown_opened"
 
-/// From /obj/structure/machinery/power/fusion_engine/proc/set_overloading() : (set_overloading)
+/// From /obj/structure/machinery/power/reactor/proc/set_overloading() : (set_overloading)
 #define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
+#define COMSIG_GLOB_HIJACK_LANDED "!hijack_landed"
+
+/// From /datum/controller/subsystem/hijack/fire()
+#define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"

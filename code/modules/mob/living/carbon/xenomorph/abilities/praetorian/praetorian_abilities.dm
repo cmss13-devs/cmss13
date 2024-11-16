@@ -6,7 +6,6 @@
 /datum/action/xeno_action/activable/pierce
 	name = "Pierce"
 	action_icon_state = "prae_pierce"
-	ability_name = "pierce"
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -21,11 +20,11 @@
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"
 	action_icon_state = "prae_dash"
-	ability_name = "dash"
+	action_text = "dash"
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 110
+	xeno_cooldown = 11 SECONDS
 	plasma_cost = 50
 
 	// Config options
@@ -47,15 +46,14 @@
 /datum/action/xeno_action/activable/cleave
 	name = "Cleave"
 	action_icon_state = "prae_cleave_action"
-	ability_name = "cleave"
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 120
+	xeno_cooldown = 12 SECONDS
 
 	// Root config
 	var/root_duration_unbuffed = 1 SECONDS
-	var/root_duration_buffed = 2.5 SECONDS
+	var/root_duration_buffed = 1.8 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3
@@ -87,7 +85,7 @@
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(X, /datum/action/xeno_action/activable/cleave)
 
 	if (!istype(cAction))
 		return
@@ -111,7 +109,6 @@
 /datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
 	name = "Tail Seize"
 	action_icon_state = "tail_seize"
-	ability_name = "tail seize"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 0.5 SECONDS
 	xeno_cooldown = 15 SECONDS
@@ -120,7 +117,6 @@
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
 	action_icon_state = "abduct"
-	ability_name = "abduct"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
@@ -129,16 +125,15 @@
 
 	// Config
 	var/max_distance = 7
-	var/windup = 7 DECISECONDS
+	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
 	action_icon_state = "punch"
-	ability_name = "dislocate"
 	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 55
 
 	// Configurables
@@ -150,7 +145,7 @@
 /*datum/action/xeno_action/onclick/crush
 	name = "Crush"
 	action_icon_state = "prae_crush"
-	ability_name = "crush"
+	action_text = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 100
@@ -160,11 +155,10 @@
 /datum/action/xeno_action/activable/tail_lash
 	name = "Tail Lash"
 	action_icon_state = "prae_tail_lash"
-	ability_name = "tail lash"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
 	// Config
@@ -176,22 +170,20 @@
 /datum/action/xeno_action/activable/prae_impale
 	name = "Impale"
 	action_icon_state = "prae_impale"
-	ability_name = "impale"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
 	action_icon_state = "prae_dodge"
-	ability_name = "dodge"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 200
-	xeno_cooldown = 190
+	xeno_cooldown = 19 SECONDS
 
 	// Config
 	var/duration = 70
@@ -200,11 +192,10 @@
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"
 	action_icon_state = "prae_tail_trip"
-	ability_name = "tail trip"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 30
 
 	// Config
@@ -220,11 +211,11 @@
 /datum/action/xeno_action/activable/pounce/base_prae_dash
 	name = "Dash"
 	action_icon_state = "prae_dash"
-	ability_name = "dash"
+	action_text = "dash"
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 40
 
 	// Config options
@@ -236,7 +227,6 @@
 /datum/action/xeno_action/activable/prae_acid_ball
 	name = "Acid Ball"
 	action_icon_state = "prae_acid_ball"
-	ability_name = "acid ball"
 	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -249,13 +239,12 @@
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
-	ability_name = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	plasma_cost = 80
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE
@@ -270,7 +259,7 @@
 /datum/action/xeno_action/activable/spray_acid/prae_warden
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 130
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 
 
 	// Configurable options
@@ -284,11 +273,10 @@
 /datum/action/xeno_action/activable/warden_heal
 	name = "Aid Xenomorph"
 	action_icon_state = "prae_aid"
-	ability_name = "aid"
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
 	// Config
@@ -328,7 +316,7 @@
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/warden_heal/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/warden_heal)
+	var/datum/action/xeno_action/activable/warden_heal/WH = get_action(X, /datum/action/xeno_action/activable/warden_heal)
 	if (!istype(WH))
 		return
 
@@ -349,7 +337,6 @@
 /datum/action/xeno_action/activable/prae_retrieve
 	name = "Retrieve"
 	action_icon_state = "retrieve"
-	ability_name = "retrieve"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK

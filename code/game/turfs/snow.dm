@@ -8,6 +8,7 @@
 	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
 	is_groundmap_turf = TRUE
+	scorchable = TRUE
 
 	//PLACING/REMOVING/BUILDING
 /turf/open/snow/attackby(obj/item/I, mob/user)
@@ -131,6 +132,22 @@
 			if(bleed_layer)
 				bleed_layer = 0
 				update_icon(1, 0)
+
+//Flames act
+/turf/open/snow/scorch(heat_level)
+	if(bleed_layer <= 0)
+		return
+	switch(heat_level)
+		if(1 to 19)
+			bleed_layer--
+			update_icon(update_full = TRUE, skip_sides = FALSE)
+		if(20 to 39)
+			bleed_layer = max(bleed_layer - 2, 0)
+			update_icon(update_full = TRUE, skip_sides = FALSE)
+		if(40 to INFINITY)
+			bleed_layer = 0
+			update_icon(update_full = TRUE, skip_sides = FALSE)
+
 
 //SNOW LAYERS-----------------------------------//
 /turf/open/snow/layer0

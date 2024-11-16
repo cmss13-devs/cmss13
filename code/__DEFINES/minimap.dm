@@ -1,4 +1,3 @@
-
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_USCM (1<<1)
 #define MINIMAP_FLAG_PMC (1<<2)
@@ -17,12 +16,15 @@
 #define MINIMAP_FLAG_XENO_RENEGADE (1<<15)
 #define MINIMAP_FLAG_ALL (1<<16) - 1
 
-///Converts the overworld x and y to minimap x and y values
+///The minimap zoom scale
 #define MINIMAP_SCALE 2
+///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 
-//actual size of a users screen in pixels
+///The actual size of a users screen in pixels
 #define SCREEN_PIXEL_SIZE 480
+///The actual size of the minimap in pixels
+#define MINIMAP_PIXEL_SIZE 512
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
@@ -49,10 +51,14 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_AREA_COMMAND "#2d3fa2ee"
 #define MINIMAP_AREA_COMMAND_CAVE "#132242ee"
 #define MINIMAP_AREA_CAVES "#3f3c3cef"
+#define MINIMAP_AREA_CAVES_DEEP "#272525ef"
+#define MINIMAP_AREA_CAVES_STRUCTURE "#5b5757"
 #define MINIMAP_AREA_JUNGLE "#2b5b2bee"
 #define MINIMAP_AREA_COLONY "#6c6767d8"
 #define MINIMAP_AREA_LZ "#ebe5e5e3"
 #define MINIMAP_AREA_CONTESTED_ZONE "#0603c4ee"
+#define MINIMAP_AREA_GLASS "#80a0b0ee"
+#define MINIMAP_AREA_MINING "#4d3619e7"
 
 #define MINIMAP_SQUAD_UNKNOWN "#d8d8d8"
 #define MINIMAP_SQUAD_ALPHA "#ed1c24"
@@ -63,19 +69,6 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
 #define MINIMAP_SQUAD_INTEL "#053818"
-
-#define MINIMAP_ICON_BACKGROUND_CIVILIAN "#7D4820"
-#define MINIMAP_ICON_BACKGROUND_CIC "#3f3f3f"
-#define MINIMAP_ICON_BACKGROUND_USCM "#888888"
-#define MINIMAP_ICON_BACKGROUND_XENO "#3a064d"
-
-#define MINIMAP_ICON_COLOR_COMMANDER "#c6fcfc"
-#define MINIMAP_ICON_COLOR_HEAD "#F0C542"
-#define MINIMAP_ICON_COLOR_SILVER "#c0c0c0"
-#define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
-
-#define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
-
 
 //Prison
 #define MINIMAP_AREA_CELL_MAX "#570101ee"

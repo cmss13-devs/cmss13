@@ -5,7 +5,7 @@
 /obj/item/device/portable_vendor
 	name = "\improper Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8
@@ -58,8 +58,8 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
-	var/obj/item/card/id/idcard = human_user.wear_id
-	if(!istype(idcard)) //not wearing an ID
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	if(!idcard) //not wearing an ID
 		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
@@ -117,7 +117,7 @@
 
 	.["vendor_name"] = name
 	.["show_points"] = use_points
-	.["current_points"] = round(points)
+	.["current_points"] = floor(points)
 	.["max_points"] = max_points
 	.["displayed_records"] = available_items
 
@@ -178,7 +178,7 @@
 
 	if(special_prod_time_lock && (product[3] in special_prods))
 		if(ROUND_TIME < special_prod_time_lock)
-			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [floor((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
 			return
 
 	if(use_points)
@@ -267,8 +267,11 @@
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
+		list("Corporate Security Bodyguard", 50, /obj/item/handheld_distress_beacon/bodyguard, "white", "A beacon which sends the Corporate Security Division an encoded message informing them of your request for a Corporate Security Bodyguard."),
+		list("Corporate Lawyer Team", 50, /obj/item/handheld_distress_beacon/lawyer, "white", "A beacon which sends the Corporate Affairs Division an encoded message informing them of your request for a Corporate Lawyer, required when a contract signee breaks one of their clauses."),
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
@@ -276,12 +279,13 @@
 		list("SMOKABLES", 0, null, null, null),
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
 		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weyland-Yutani Gold packet, for the more sophisticated taste."),
-		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
+		list("Zippo", 5, /obj/item/tool/lighter/zippo/executive, "white", "A Weyland-Yutani brand Zippo lighter, for those smoking in style."),
 
 		list("DRINKABLES", 0, null, null, null),
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
+		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
 		list("STATIONARY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),

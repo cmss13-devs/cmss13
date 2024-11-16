@@ -6,7 +6,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 #define DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define DEPARTMENT_PROVOST "USCM Provost Office"
 #define DEPARTMENT_PRESS "Various Press Organizations"
-#define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS)
+#define DEPARTMENT_TWE "Three World Empire"
+#define DEPARTMENT_UPP "Union of Progress Peoples"
+#define DEPARTMENT_CLF "Colonial Liberation Front"
+#define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS, DEPARTMENT_TWE, DEPARTMENT_UPP, DEPARTMENT_CLF)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -84,7 +87,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-		flick("faxsend", src)
+		flick("[initial(icon_state)]send", src)
 		updateUsrDialog()
 		return
 
@@ -138,6 +141,13 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		GLOB.alldepartments += DEPARTMENT_CMB
 	if(!(DEPARTMENT_PRESS in GLOB.alldepartments))
 		GLOB.alldepartments += DEPARTMENT_PRESS
+	if(!(DEPARTMENT_TWE in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_TWE
+	if(!(DEPARTMENT_UPP in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_UPP
+	if(!(DEPARTMENT_CLF in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_CLF
+
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -235,7 +245,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				else
 					to_chat(ui.user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-				flick("faxsend", src)
+				flick("[initial(icon_state)]send", src)
 			. = TRUE
 
 		if("ejectid")
@@ -277,9 +287,12 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[usr];originfax=\ref[src]'>Send CMB fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[usr];originfax=\ref[src]'>Send Press fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[usr];originfax=\ref[src]'>Send UPP fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[usr];originfax=\ref[src]'>Send CLF fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[usr];originfax=\ref[src]'>Send TWE fax message</option>"
 
 // converting whatever type the fax is into a single paper with all the information on it.
 /obj/structure/machinery/faxmachine/proc/copy_fax_paper(mob/living/user)
@@ -339,13 +352,22 @@ GLOBAL_LIST_EMPTY(alldepartments)
 			GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_WY)
-			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
-			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_PRESS)
 			GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_TWE)
+			GLOB.TWEFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_UPP)
+			GLOB.UPPFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_CLF)
+			GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		else
-			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 
 	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")
@@ -365,7 +387,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				to_chat(C, msg_admin)
 			else
 				to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+			if(C.prefs?.toggles_sound & SOUND_FAX_MACHINE)
+				C << 'sound/effects/incoming-fax.ogg'
 	if(msg_ghost)
 		for(var/i in GLOB.observer_list)
 			var/mob/dead/observer/g = i
@@ -376,7 +399,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
 			to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+			if(C.prefs?.toggles_sound & SOUND_FAX_MACHINE)
+				C << 'sound/effects/incoming-fax.ogg'
 
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
@@ -386,10 +410,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				return
 			if(! (F.inoperable() ) )
 
-				flick("faxreceive", F)
+				flick("[initial(icon_state)]receive", F)
 
 				// give the sprite some time to flick
-				spawn(20)
+				spawn(30)
 					var/obj/item/paper/P = new(F.loc,faxcontents.photo_list)
 					P.name = "faxed message"
 					P.info = "[faxcontents.data]"
@@ -416,6 +440,30 @@ GLOBAL_LIST_EMPTY(alldepartments)
 							P.stamped += /obj/item/tool/stamp
 							P.overlays += stampoverlay
 							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
+						if("TWE Royal Marines Commando Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-twe"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped by the TWE Royal Marines Commando Quantum Relay.</i>"
+						if("UPP High Kommand Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-upp"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped by the UPP High Kommand Quantum Relay.</i>"
+						if("CLF Gureilla Command Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-clf"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped and encrypted by the CLF Gureilla Command Quantum Relay.</i>"
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)
@@ -468,6 +516,85 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"
+
+
+///The deployed fax machine backpack
+/obj/structure/machinery/faxmachine/backpack
+	name = "\improper Portable Press Fax Machine"
+	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
+	icon_state = "fax_backpack"
+	needs_power = FALSE
+	use_power = USE_POWER_NONE
+	health = 150
+
+///The wearable and deployable part of the fax machine backpack
+/obj/item/device/fax_backpack
+	name = "\improper Portable Press Fax Machine"
+	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
+	icon = 'icons/obj/structures/machinery/library.dmi'
+	icon_state = "fax_backpack"
+	item_state = "fax_backpack"
+	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+
+/obj/item/device/fax_backpack/attack_self(mob/user) //activate item version fax inhand to deploy
+	if(!ishuman(user))
+		return
+	var/turf/deployturf = get_turf(user)
+	if(istype(deployturf, /turf/open))
+		var/turf/open/floor = deployturf
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			return FALSE
+	var/fail = FALSE
+	if(deployturf.density)
+		fail = TRUE
+	else
+		var/static/list/blocking_types = typecacheof(list(
+			/obj/structure/machinery/defenses,
+			/obj/structure/window,
+			/obj/structure/windoor_assembly,
+			/obj/structure/machinery/door,
+		))
+		for(var/obj/blockingobj in deployturf.contents)
+			if(blockingobj.density && !(blockingobj.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(is_type_in_typecache(blockingobj, blocking_types))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
+		return
+	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf)
+		transfer_label_component(deployedfax)
+		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
+		qdel(src)
+		return
+	return ..()
+
+/obj/structure/machinery/faxmachine/backpack/MouseDrop(over_object, src_location, over_location) //Drag the deployed fax onto you to pick it up.
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+	if(over_object == user && in_range(src, user))
+		if(original_fax || scan)
+			to_chat(user, SPAN_NOTICE("There is still something in [src]. Remove it before you pick it up."))
+			return
+		to_chat(user, SPAN_NOTICE("You begin to pick up [src]..."))
+		if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			to_chat(user, SPAN_NOTICE("You pick up [src]."))
+			var/obj/item/device/fax_backpack/faxbag = new(loc)
+			transfer_label_component(faxbag)
+			user.put_in_hands(faxbag)
+			qdel(src)
+			return
+		return ..()
 
 /datum/fax
 	var/data

@@ -113,6 +113,10 @@
 	name = "UPP Station"
 	icon_state = "green"
 
+/area/adminlevel/ert_station/pizza_station
+	name = "Pizza Galaxy"
+	icon_state = "red"
+
 /area/adminlevel/ert_station/clf_station
 	name = "CLF Station"
 	icon_state = "white"
@@ -120,6 +124,10 @@
 /area/adminlevel/ert_station/weyland_station
 	name = "Weyland-Yutani Station"
 	icon_state = "red"
+
+/area/adminlevel/ert_station/uscm_station
+	name = "USCM Station"
+	icon_state = "green"
 
 /area/adminlevel/ert_station/freelancer_station
 	name = "Freelancer Station"
@@ -141,6 +149,28 @@
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 
+/area/misc
+	weather_enabled = FALSE
+
 /area/misc/testroom
 	requires_power = FALSE
 	name = "Test Room"
+
+/area/misc/tutorial
+	name = "Tutorial Zone"
+	icon_state = "tutorial"
+	requires_power = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
+	statistic_exempt = TRUE
+	ceiling = CEILING_METAL
+	block_game_interaction = TRUE
+	unique = TRUE
+
+	base_lighting_alpha = 255
+
+/area/misc/tutorial/Initialize(mapload, ...)
+	. = ..()
+	update_base_lighting()
+
+/area/misc/tutorial/no_baselight
+	base_lighting_alpha = 0

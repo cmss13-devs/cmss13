@@ -35,7 +35,7 @@
 	)
 	thrall = TRUE
 
-	items_allowed = list(
+	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/holdout,

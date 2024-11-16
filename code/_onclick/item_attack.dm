@@ -3,6 +3,7 @@
 /obj/item/proc/attack_self(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src)
 
 	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
 		dig_out_shrapnel(user)
@@ -11,10 +12,12 @@
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
 		return TRUE
+	SEND_SIGNAL(user, COMSIG_MOB_PARENT_ATTACKBY, src, W)
 	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
-	if(W)
+	. = ..()
+	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			user.animation_attack_on(src)
@@ -84,10 +87,10 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
+		power = floor(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
 	if(!ishuman(M))
 		var/used_verb = "attacked"
-		if(attack_verb && attack_verb.len)
+		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
 		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."), \
 			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5, CHAT_TYPE_MELEE_HIT)

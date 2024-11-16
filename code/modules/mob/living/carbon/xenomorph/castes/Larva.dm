@@ -25,6 +25,8 @@
 	minimum_evolve_time = 0
 
 /mob/living/carbon/xenomorph/larva
+	AUTOWIKI_SKIP(TRUE)
+
 	name = XENO_CASTE_LARVA
 	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
@@ -37,6 +39,7 @@
 	crit_health = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
+	speaking_noise = "larva_talk"
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -46,7 +49,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = "Normal"
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
@@ -68,24 +70,38 @@
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/larva/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/larva/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/larva/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/larva/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/larva/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien
+	AUTOWIKI_SKIP(TRUE)
+
 	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
@@ -157,7 +173,27 @@
 	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)
+	// Custom emote
+	if(act == "me")
+		return ..()
+
+	switch(stat)
+		if(UNCONSCIOUS)
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			return FALSE
+		if(DEAD)
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			return FALSE
+	if(client)
+		if(client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			return FALSE
+		if(!client.attempt_talking())
+			return FALSE
+
+	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
+	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE

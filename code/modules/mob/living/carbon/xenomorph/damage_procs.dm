@@ -16,6 +16,16 @@
 			return
 		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
 		return
+	if(stat == DEAD)
+		if(!istype(item, /obj/item/reagent_container/syringe))
+			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+			if(current_surgery)
+				if(current_surgery.attempt_next_step(user, item))
+					return
+			else
+				if(initiate_surgery_moment(item, src, "head" , user))
+					return
+		return
 	if(item.type in SURGERY_TOOLS_PINCH)
 		if(!iff_tag)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))
@@ -36,7 +46,7 @@
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -44,7 +54,7 @@
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
-	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
+	if(severity > EXPLOSION_THRESHOLD_LOW && length(stomach_contents))
 		for(var/mob/M in stomach_contents)
 			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
@@ -160,7 +170,7 @@
 		return
 
 	var/shielded = FALSE
-	if(xeno_shields.len != 0 && damage > 0)
+	if(length(xeno_shields) != 0 && damage > 0)
 		shielded = TRUE
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			damage = XS.on_hit(damage)
@@ -228,7 +238,7 @@
 	if(!caste) return
 	sleep(XENO_ARMOR_BREAK_PASS_TIME)
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
-		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
+		armor_break_to_apply = floor(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	if(caste)
 		armor_integrity -= armor_break_to_apply
 	if(armor_integrity < 0)
@@ -299,7 +309,7 @@
 	. = ..()
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)
-			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occurred.
 				reset_xeno_armor_debuff_after_time(src, delta_time*10)
 			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
 
@@ -313,4 +323,4 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
+				to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))

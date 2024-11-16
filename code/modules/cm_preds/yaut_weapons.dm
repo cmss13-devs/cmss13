@@ -44,10 +44,10 @@
 	force = MELEE_FORCE_TIER_2
 	throwforce = MELEE_FORCE_TIER_6
 
-/obj/item/weapon/wristblades
-	name = "wrist blades"
+/obj/item/weapon/bracer_attachment
+	name = "bracer attachment"
+	desc = "How did you get these?."
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -68,18 +68,16 @@
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
-	var/has_speed_bonus = TRUE
+	var/speed_bonus_amount
 
-/obj/item/weapon/wristblades/equipped(mob/user, slot)
+/obj/item/weapon/bracer_attachment/equipped(mob/user, slot)
 	. = ..()
-	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/wristblades))
-		attack_speed = initial(attack_speed) - 2
+	if(!speed_bonus_amount)
+		return
+	if(((slot == WEAR_L_HAND) && istype(user.r_hand, /obj/item/weapon/bracer_attachment)) || ((slot == WEAR_R_HAND) && istype(user.l_hand, /obj/item/weapon/bracer_attachment)))
+		attack_speed = initial(attack_speed) + speed_bonus_amount
 
-/obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
-	. = ..()
-	attack_speed = initial(attack_speed)
-
-/obj/item/weapon/wristblades/afterattack(atom/attacked_target, mob/user, proximity)
+/obj/item/weapon/bracer_attachment/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
 		return FALSE
 
@@ -113,21 +111,44 @@
 				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
 				door.Close()
 
-/obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
+/obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
 	..()
 	if(istype(user))
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
-		gloves.wristblades_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
+		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
-/obj/item/weapon/wristblades/scimitar
+
+/obj/item/weapon/bracer_attachment/wristblades
+	name = "wrist blade"
+	plural_name = "wrist blades"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "wrist"
+	item_state = "wristblade"
+	attack_speed = 0.5 SECONDS
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	force = MELEE_FORCE_TIER_4
+	speed_bonus_amount = 0 SECONDS
+
+/obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
-	attack_speed = 5
+	attack_speed = 1 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
+	speed_bonus_amount = -0.4 SECONDS
+
+/obj/item/weapon/bracer_attachment/scimitar/alt
+	name = "wrist scimitar"
+	plural_name = "wrist scimitars"
+	desc = "A huge, serrated blade extending from metal gauntlets."
+	icon_state = "scim_alt"
+	item_state = "scim_alt"
+	attack_speed = 1 SECONDS
+	force = MELEE_FORCE_TIER_5
+	speed_bonus_amount =  -0.4 SECONDS
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -146,7 +167,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
@@ -165,13 +186,13 @@
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
@@ -185,18 +206,36 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
+/obj/item/weapon/yautja/sword/alt_1
+	name = "rending sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt"
+	item_state = "clansword_alt"
+
+/obj/item/weapon/yautja/sword/alt_2
+	name = "piercing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt2"
+	item_state = "clansword_alt2"
+
+/obj/item/weapon/yautja/sword/alt_3
+	name = "severing sword"
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	icon_state = "clansword_alt3"
+	item_state = "clansword_alt3"
+
 /obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
@@ -213,7 +252,7 @@
 	..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 15
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
 
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
@@ -226,14 +265,20 @@
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe_alt"
-	item_state = "scythe_double"
+	item_state = "scythe_dual"
+
+/obj/item/weapon/yautja/sword/staff
+	name = "cruel staff"
+	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	icon_state = "staff"
+	item_state = "staff"
 
 //Combistick
-/obj/item/weapon/yautja/combistick
+/obj/item/weapon/yautja/chained/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
@@ -248,36 +293,42 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = 1
-	var/charged
-
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
+
+/obj/item/weapon/yautja/chained
+	var/on = TRUE
+	var/charged = FALSE
+
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
+	///The mob the chain is linked to
+	var/mob/living/linked_to
 
-/obj/item/weapon/yautja/combistick/Destroy()
+/obj/item/weapon/yautja/chained/Destroy()
 	cleanup_chain()
 	return ..()
 
-/obj/item/weapon/yautja/combistick/dropped(mob/user)
+/obj/item/weapon/yautja/chained/dropped(mob/user)
 	. = ..()
 	if(on && isturf(loc))
 		setup_chain(user)
 
-/obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
+/obj/item/weapon/yautja/chained/try_to_throw(mob/living/user)
 	if(!charged)
-		to_chat(user, SPAN_WARNING("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
+		to_chat(user, SPAN_WARNING("Your [src] refuses to leave your hand. You must charge it with blood from prey before throwing it."))
 		return FALSE
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	if(on)
-		setup_chain(user)
 	return TRUE
 
-/obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+/obj/item/weapon/yautja/chained/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/chained)
+	add_verb(user, /mob/living/carbon/human/proc/call_combi)
+	linked_to = user
+
 	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
@@ -285,14 +336,18 @@
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 
 /// The chain normally breaks if it's put into a container, so let's yank it back if that's the case
-/obj/item/weapon/yautja/combistick/proc/on_move(datum/source, atom/moved, dir, forced)
+/obj/item/weapon/yautja/chained/proc/on_move(datum/source, atom/moved, dir, forced)
 	SIGNAL_HANDLER
 	if(!z && !is_type_in_list(loc, list(/obj/structure/surface, /mob))) // I rue for the day I can remove the surface snowflake check
 		recall()
 
 /// Clean up the chain, deleting/nulling/unregistering as needed
-/obj/item/weapon/yautja/combistick/proc/cleanup_chain()
+/obj/item/weapon/yautja/chained/proc/cleanup_chain()
 	SIGNAL_HANDLER
+	if(linked_to)
+		remove_action(linked_to, /datum/action/predator_action/bracer/chained)
+		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
+
 	if(!QDELETED(chain))
 		QDEL_NULL(chain)
 
@@ -302,15 +357,15 @@
 	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
-/obj/item/weapon/yautja/combistick/proc/on_pickup(datum/source, mob/user)
+/obj/item/weapon/yautja/chained/proc/on_pickup(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(user != chain.affected_atom)
 		to_chat(chain.affected_atom, SPAN_WARNING("You feel the chain of [src] be torn from your grasp!")) // Recall the fuckin combi my man
 
 	cleanup_chain()
 
-/// recall the combistick to the pred's hands or to be at their feet
-/obj/item/weapon/yautja/combistick/proc/recall()
+/// recall the combistick or war axe to the pred's hands or to be at their feet
+/obj/item/weapon/yautja/chained/proc/recall()
 	SIGNAL_HANDLER
 	if(!chain)
 		return
@@ -334,10 +389,10 @@
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
 
-/obj/item/weapon/yautja/combistick/IsShield()
+/obj/item/weapon/yautja/chained/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/fold_combistick()
+/obj/item/weapon/yautja/chained/combistick/verb/fold_combistick()
 	set category = "Weapons"
 	set name = "Collapse Combi-stick"
 	set desc = "Collapse or extend the combistick."
@@ -345,7 +400,7 @@
 
 	unique_action(usr)
 
-/obj/item/weapon/yautja/combistick/attack_self(mob/user)
+/obj/item/weapon/yautja/chained/attack_self(mob/user)
 	..()
 	if(on)
 		if(flags_item & WIELDED)
@@ -356,21 +411,21 @@
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
-/obj/item/weapon/yautja/combistick/wield(mob/user)
+/obj/item/weapon/yautja/chained/combistick/wield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_wielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/unwield(mob/user)
+/obj/item/weapon/yautja/chained/combistick/unwield(mob/user)
 	. = ..()
 	if(!.)
 		return
 	force = force_unwielded
 	update_icon()
 
-/obj/item/weapon/yautja/combistick/update_icon()
+/obj/item/weapon/yautja/chained/combistick/update_icon()
 	if(flags_item & WIELDED)
 		item_state = "combistick_w"
 	else if(!on)
@@ -378,7 +433,7 @@
 	else
 		item_state = "combistick"
 
-/obj/item/weapon/yautja/combistick/unique_action(mob/living/user)
+/obj/item/weapon/yautja/chained/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
 	if(!on)
@@ -423,13 +478,13 @@
 
 	return
 
-/obj/item/weapon/yautja/combistick/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/yautja/chained/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -438,21 +493,21 @@
 		return
 
 	if(!charged)
-		to_chat(user, SPAN_DANGER("Your combistick's reservoir fills up with your opponent's blood! You may now throw it!"))
+		to_chat(user, SPAN_DANGER("Your [src]'s reservoir fills up with your opponent's blood! You may now throw it!"))
 		charged = TRUE
 		var/color = target.get_blood_color()
 		var/alpha = 70
 		color += num2text(alpha, 2, 16)
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
-/obj/item/weapon/yautja/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
+/obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 
-/obj/item/weapon/yautja/combistick/launch_impact(atom/hit_atom)
+/obj/item/weapon/yautja/chained/launch_impact(atom/hit_atom)
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
@@ -461,12 +516,31 @@
 			return
 	..()
 
+/obj/item/weapon/yautja/chained/war_axe
+	name = "war axe"
+	desc = "A swift weapon designed to gouge and gore the hunter's prey. A chain is attached to the hilt, allowing for a quick retrieval."
+	icon_state = "war_axe"
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_PREDATOR
+	w_class = SIZE_LARGE
+	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 4
+	unacidable = TRUE
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_6
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("slashed", "chopped", "diced")
+
 /obj/item/weapon/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -477,7 +551,7 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
@@ -491,7 +565,7 @@
 	var/mob/living/carbon/human/victim = target
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
 	if(issamespecies(user, victim))
@@ -499,7 +573,7 @@
 		return
 
 	if(isspeciessynth(victim))
-		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You can't flay metal..."))
 		return TRUE
 
 	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
@@ -575,7 +649,6 @@
 					SPAN_DANGER("<B>[victim] is missing \his head. Pelts like this just aren't the same... You peel the skin around the stump loose with your [tool.name].</B>"))
 			else
 				victim.apply_damage(10, BRUTE, v_head, sharp = TRUE)
-				v_head.disfigured = TRUE
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
 					user.visible_message(SPAN_DANGER("<B>[user] makes some rough cuts on [victim]'s head and face with \a [tool].</B>"),
@@ -742,17 +815,19 @@
 
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
-	icon_state = "glaive"
-	item_state = "glaive"
+	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
 	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	var/skull_attached = FALSE
+
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
@@ -760,11 +835,43 @@
 		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
-	icon_state = "glaive_alt"
-	item_state = "glaive_alt"
+	name = "cleaving glaive"
+	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glaive"
+	item_state = "glaive"
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/get_examine_text(mob/user)
+	. = ..()
+	if(skull_attached)
+		. += SPAN_NOTICE("[src] has a human skull mounted on it.")
+
+/obj/item/weapon/twohanded/yautja/glaive/alt/update_icon()
+	if(skull_attached)
+		icon_state = "glaive_skull"
+	else
+		icon_state = "glaive"
+
+///attaching the skull
+/obj/item/weapon/twohanded/yautja/glaive/alt/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/clothing/accessory/limb/skeleton/head))
+		return ..()
+
+	var/obj/item/clothing/accessory/limb/skeleton/head/skull = attacking_item
+	if(skull_attached)
+		to_chat(user, SPAN_WARNING("You already have a [skull] mounted on [src]."))
+		return
+
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.drop_inv_item_to_loc(skull, src)
+	skull_attached = TRUE
+	update_icon()
+	return ..()
 
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
@@ -776,6 +883,11 @@
 	item_state = "glaive_alt"
 	flags_item = NOSHIELD|TWOHANDED
 
+/obj/item/weapon/twohanded/yautja/glaive/longaxe
+	name = "longaxe"
+	desc = "A frighteningly big axe. The blade edge is chipped and gnarled from thousands of bone-crushing blows."
+	icon_state = "longaxe"
+	item_state = "longaxe"
 
 /*#########################################
 ############## Ranged Weapons #############
@@ -885,6 +997,8 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null
 	works_in_recharger = FALSE
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
@@ -899,7 +1013,6 @@
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = null // TO DO, add a decent one.
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
@@ -929,7 +1042,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*2)
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -984,6 +1097,7 @@
 
 #define FIRE_MODE_STANDARD "Standard"
 #define FIRE_MODE_INCENDIARY "Incendiary"
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
@@ -994,7 +1108,8 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_MEDIUM
 	/// Max amount of shots
 	var/charge_time = 40
@@ -1119,15 +1234,16 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	flags_atom = FPRINT|CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_item = NOBLUDGEON|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 
@@ -1138,7 +1254,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
-	item_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_item_state]_[caster_material]"
 	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
@@ -1238,10 +1354,16 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
-		return
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)

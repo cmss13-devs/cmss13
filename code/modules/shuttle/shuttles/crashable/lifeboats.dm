@@ -41,6 +41,9 @@
 	port_direction = EAST
 
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch()
+	if (status == LIFEBOAT_LOCKED)
+		return
+
 	. = ..()
 
 	available = FALSE

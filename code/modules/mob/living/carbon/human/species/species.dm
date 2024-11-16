@@ -14,7 +14,8 @@
 	var/icobase_source // if we want to use sourcing system
 	var/deform_source
 	var/eyes = "eyes_s"   // Icon for eyes.
-	var/uses_ethnicity = FALSE  //Set to TRUE to load proper ethnicities and what have you
+	var/uses_skin_color = FALSE  //Set to TRUE to load proper skin_colors and what have you
+	var/special_body_types = FALSE
 
 	var/primitive   // Lesser form, if any (ie. monkey for humans)
 	var/tail    // Name of tail image in species effects icon file.
@@ -40,7 +41,7 @@
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/remains_type = /obj/effect/decal/remains/xeno
-	var/bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+	var/bloodsplatter_type = /obj/effect/bloodsplatter/human
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 
@@ -117,6 +118,12 @@
 	var/ignores_stripdrag_flag = FALSE
 
 	var/has_species_tab_items = FALSE
+
+	///Species specific emote sound lists
+	var/list/burstscreams = list()
+
+	var/fire_sprite_prefix = "Standing"
+	var/fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 /datum/species/New()
 	if(unarmed_type)
@@ -400,7 +407,7 @@
 
 /datum/species/proc/get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
-	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
+	if(!spritesheet && length(equip_adjust) && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
 
 		// Check the cache for previously made icons.
 		var/image_key = "[mob_icon]-[mob_state]-[color]"
@@ -482,7 +489,7 @@
 		if(D)
 			color_override = D.color
 
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
+	var/obj/effect/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
 	return bloodsplatter
 
 /datum/species/proc/get_status_tab_items()

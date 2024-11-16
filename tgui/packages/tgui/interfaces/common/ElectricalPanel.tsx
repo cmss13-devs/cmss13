@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox, Stack, ColorBox } from '../../components';
+import { Box, Button, Flex, Icon, NoticeBox, Stack } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
@@ -20,25 +21,26 @@ interface WireSpec {
   cut: number;
 }
 
-const ElectricalPanelClosed = (props: BoxProps, context) => {
+const ElectricalPanelClosed = (props: BoxProps) => {
   return (
     <NoticeBox
       className={classes([
         'PanelClosed',
         'ElectricalSafetySign',
         props.className,
-      ])}>
+      ])}
+    >
       <Flex
         direction="row"
         justify="space-between"
-        fill
-        className="ElectricalSafetySign">
+        className="ElectricalSafetySign"
+      >
         <Flex.Item grow>
           <Flex
             justify="space-between"
             direction="column"
-            fill
-            className={classes(['ElectricalSafetySign'])}>
+            className={classes(['ElectricalSafetySign'])}
+          >
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -47,15 +49,15 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        <Flex.Item fill>
+        <Flex.Item>
           <Flex
             justify="space-around"
             align="center"
             inline
-            fill
             wrap
             className="WarningIcon"
-            direction="column">
+            direction="column"
+          >
             <Flex.Item>
               <Icon name="bolt" size={2} />
             </Flex.Item>
@@ -72,8 +74,8 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
             justify="space-between"
             align="flex-end"
             direction="column"
-            fill
-            className={classes(['ElectricalSafetySign'])}>
+            className={classes(['ElectricalSafetySign'])}
+          >
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -87,21 +89,24 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
   );
 };
 
-const WireControl = (props: { wire: WireSpec; index: number }, context) => {
-  const { data, act } = useBackend<ElectricalData>(context);
+const WireControl = (props: {
+  readonly wire: WireSpec;
+  readonly index: number;
+}) => {
+  const { data, act } = useBackend<ElectricalData>();
   const target = props.index + 1;
-  let boxColor = 'green';
-  if (props.wire.cut) {
-    boxColor = 'red';
-  }
-  if (!data.electrical.powered) {
-    boxColor = 'grey';
-  }
   return (
     <Stack>
       <Stack.Item grow>{props.wire.desc}</Stack.Item>
-      <Stack.Item>
-        <ColorBox color={boxColor} align={'center'} />
+      <Stack.Item pr={1}>
+        <div
+          className={classes([
+            'led',
+            props.wire.cut === 0 && 'led-green',
+            props.wire.cut === 1 && 'led-red',
+            data.electrical.powered === 1 && 'led-off',
+          ])}
+        />
       </Stack.Item>
       <Stack.Item>
         {props.wire.cut === 0 && (
@@ -109,6 +114,7 @@ const WireControl = (props: { wire: WireSpec; index: number }, context) => {
             icon="scissors"
             onClick={() => act('cutwire', { wire: target })}
             tooltip={'Cut'}
+            tooltipPosition="left"
           />
         )}
         {props.wire.cut === 1 && (
@@ -116,6 +122,7 @@ const WireControl = (props: { wire: WireSpec; index: number }, context) => {
             icon="wrench"
             onClick={() => act('fixwire', { wire: target })}
             tooltip={'Fix'}
+            tooltipPosition="left"
           />
         )}
       </Stack.Item>
@@ -125,23 +132,25 @@ const WireControl = (props: { wire: WireSpec; index: number }, context) => {
           disabled={props.wire.cut === 1}
           onClick={() => act('pulsewire', { wire: target })}
           tooltip={'Pulse'}
+          tooltipPosition="left"
         />
       </Stack.Item>
     </Stack>
   );
 };
 
-const ElectricalPanelOpen = (props: BoxProps, context) => {
-  const { data } = useBackend<ElectricalData>(context);
+const ElectricalPanelOpen = (props: BoxProps) => {
+  const { data } = useBackend<ElectricalData>();
   return (
     <Box className={classes(['PanelOpen', props.className])}>
       <Flex
         direction="column"
         justify="space-between"
-        fill
-        className="ElectricalSafetySign">
+        fill={1}
+        className="ElectricalSafetySign"
+      >
         <Flex.Item>
-          <Table vertical className="WirePanel">
+          <Table className="WirePanel">
             {data.electrical.wires.map((x, index) => (
               <TableRow key={x.desc}>
                 <WireControl wire={x} index={index} />
@@ -157,8 +166,8 @@ const ElectricalPanelOpen = (props: BoxProps, context) => {
   );
 };
 
-export const ElectricalPanel = (props: BoxProps, context) => {
-  const { data } = useBackend<ElectricalData>(context);
+export const ElectricalPanel = (props: BoxProps) => {
+  const { data } = useBackend<ElectricalData>();
   const isOpen = data.electrical.panel_open === 1;
   return (
     <div className={classes(['ElectricalAccessPanel', props.className])}>

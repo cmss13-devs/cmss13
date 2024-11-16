@@ -6,7 +6,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_ethnicity = TRUE
+	uses_skin_color = TRUE
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
@@ -14,6 +14,7 @@
 		TRAIT_FOREIGN_BIO,
 		TRAIT_DEXTROUS,
 		TRAIT_EMOTE_CD_EXEMPT,
+		TRAIT_IRON_TEETH,
 	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
@@ -23,7 +24,8 @@
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
-	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
+	death_message = "lets out a final bellowing cry, falling motionless and lifeless soon after..."
+	death_sound = "pred_death"
 	darksight = 5
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
 	flags_sight = SEE_MOBS
@@ -31,14 +33,15 @@
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
+
+	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
 
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/pred_buy,
 		/mob/living/carbon/human/proc/butcher,
 		/mob/living/carbon/human/proc/mark_for_hunt,
 		/mob/living/carbon/human/proc/remove_from_hunt,
@@ -53,8 +56,8 @@
 		/mob/living/carbon/human/proc/mark_panel,
 	)
 
-	knock_down_reduction = 4
-	stun_reduction = 4
+	knock_down_reduction = 1.5
+	stun_reduction = 1.5
 	weed_slowdown_mult = 0 // no slowdown!
 
 	icobase = 'icons/mob/humans/species/r_predator.dmi'
@@ -212,6 +215,8 @@
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	give_action(hunter, /datum/action/yautja_emote_panel)
+	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
+	give_action(hunter, /datum/action/predator_action/mark_panel)
 	return ..()
 
 /datum/species/yautja/get_hairstyle(style)
@@ -228,100 +233,3 @@
 /datum/species/yautja/open_emote_panel()
 	var/datum/yautja_emote_panel/ui = new(usr)
 	ui.ui_interact(usr)
-
-/datum/action/yautja_emote_panel
-	name = "Open Emote Panel"
-	action_icon_state = "looc_toggle"
-
-/datum/action/yautja_emote_panel/can_use_action()
-	. = ..()
-	if(!.)
-		return FALSE
-
-	if(!isyautja(owner))
-		return FALSE
-
-	return TRUE
-
-/datum/action/yautja_emote_panel/action_activate()
-	if(!can_use_action())
-		return
-
-	var/mob/living/carbon/human/human_owner = owner
-	var/datum/species/yautja/yautja_species = human_owner.species
-	yautja_species.open_emote_panel()
-
-/datum/yautja_emote_panel
-	/// Static dict ("category" : (emotes)) of every yautja emote typepath
-	var/static/list/yautja_emotes
-	/// Static list of categories
-	var/static/list/yautja_categories = list()
-	/// Panel allows you to spam, so a manual CD is added here
-	COOLDOWN_DECLARE(panel_emote_cooldown)
-
-/datum/yautja_emote_panel/New()
-	if(!length(yautja_emotes))
-		var/list/emotes_to_add = list()
-		for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
-			if(!initial(emote.key) || initial(emote.no_panel))
-				continue
-
-			if(!(initial(emote.category) in yautja_categories))
-				yautja_categories += initial(emote.category)
-			emotes_to_add += emote
-		yautja_emotes = emotes_to_add
-
-/datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "YautjaEmotes")
-		ui.open()
-
-/datum/yautja_emote_panel/ui_data(mob/user)
-	var/list/data = list()
-
-	data["on_cooldown"] = !COOLDOWN_FINISHED(src, panel_emote_cooldown)
-
-	return data
-
-/datum/yautja_emote_panel/ui_state(mob/user)
-	return GLOB.conscious_state
-
-/datum/yautja_emote_panel/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["categories"] = yautja_categories
-	data["emotes"] = list()
-
-	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)
-		data["emotes"] += list(list(
-			"id" = initial(emote.key),
-			"text" = (initial(emote.override_say) || initial(emote.say_message) || initial(emote.key)),
-			"category" = initial(emote.category),
-			"path" = "[emote]",
-		))
-
-	return data
-
-/datum/yautja_emote_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	switch(action)
-		if("emote")
-			var/datum/emote/living/carbon/human/yautja/path
-			if(!params["emotePath"])
-				return FALSE
-
-			path = text2path(params["emotePath"])
-
-			if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
-				return
-
-			if(!(path in subtypesof(/datum/emote/living/carbon/human/yautja)))
-				return FALSE
-
-			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
-			usr.emote(initial(path.key))
-			return TRUE

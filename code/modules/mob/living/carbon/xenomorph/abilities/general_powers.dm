@@ -78,6 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
@@ -110,9 +111,9 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
-	for(var/i in 1 to X.caste.spit_types.len)
+	for(var/i in 1 to length(X.caste.spit_types))
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
-			if(i == X.caste.spit_types.len)
+			if(i == length(X.caste.spit_types))
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
 			else
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
@@ -131,7 +132,7 @@
 		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
 		return
 
-	if(X.stomach_contents.len)
+	if(length(X.stomach_contents))
 		for(var/mob/living/M in X.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
 			X.regurgitate(M, TRUE)
@@ -240,7 +241,7 @@
 	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 2)
+				apply_cooldown_override(xeno_cooldown * 3)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)
@@ -363,9 +364,10 @@
 		current_aura = pheromone
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
-	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
+	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
@@ -382,21 +384,21 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state())
 		return
 
 	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [ability_name] with that thing on our leg!"))
+		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
 		if(hide)
 			hide.post_attack()
 
@@ -416,7 +418,7 @@
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [ability_name]!"))
+			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
 				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
@@ -428,12 +430,12 @@
 			X.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
 
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-	X.throw_atom(A, distance, throw_speed, X, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
+	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
 	X.update_icons()
 
 	additional_effects_always()
@@ -454,7 +456,7 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state() || X.action_busy)
@@ -481,7 +483,7 @@
 
 	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
@@ -512,7 +514,7 @@
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER
-	if(new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS)
+	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
@@ -638,7 +640,7 @@
 		if(!choice)
 			return
 		if(choice == "help")
-			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of plasma to construct the following:<br>"
 			for(var/structure_name in X.hive.hive_structure_types)
 				var/datum/construction_template/xenomorph/structure_type = X.hive.hive_structure_types[structure_name]
 				message += "<b>[capitalize_first_letters(structure_name)]</b> - [initial(structure_type.description)]<br>"
@@ -650,19 +652,33 @@
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
 	if(!spacecheck(X, T, structure_template))
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in T)
+		to_chat(X, SPAN_WARNING("The tallgrass is preventing us from building the egg morpher!"))
+		qdel(structure_template)
 		return FALSE
 
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
 	if(!spacecheck(X, T, structure_template)) //doublechecking
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if(choice == XENO_STRUCTURE_CORE && AR.unoviable_timer)
+		to_chat(X, SPAN_WARNING("This area does not feel right for you to build this in."))
+		qdel(structure_template)
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("We can't rebuild this structure!"))
+			qdel(structure_template)
 			return FALSE
 		if(alert(X, "Are we sure that we want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
+			qdel(structure_template)
 			return FALSE
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
@@ -706,12 +722,12 @@
 
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/TA in range(T, tem.block_range))
-			if(!X.check_alien_construction(TA, FALSE, TRUE))
+		for(var/turf/TA in range(tem.block_range, T))
+			if(!X.check_alien_construction(TA, FALSE, TRUE, ignore_nest = TRUE))
 				to_chat(X, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
 				return FALSE
-		if(!X.check_alien_construction(T))
+		if(!X.check_alien_construction(T, ignore_nest = TRUE))
 			to_chat(X, SPAN_WARNING("We need more open space to build here."))
 			qdel(tem)
 			return FALSE
@@ -909,7 +925,7 @@
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if(!stabbing_xeno.check_state())
+	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
 		return FALSE
 
 	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)
@@ -924,10 +940,10 @@
 		return FALSE
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(distance > 2)
+	if(distance > stab_range)
 		return FALSE
 
-	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
@@ -1013,14 +1029,16 @@
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
-	stabbing_xeno.setDir(stab_direction)
-	stabbing_xeno.emote("tail")
-
-	/// Ditto.
-	var/new_dir = stabbing_xeno.dir
-
-	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+	if(last_dir != stab_direction)
+		stabbing_xeno.setDir(stab_direction)
+		stabbing_xeno.emote("tail")
+		/// Ditto.
+		var/new_dir = stabbing_xeno.dir
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
@@ -1033,7 +1051,10 @@
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
 
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
-	target.apply_effect(3, DAZE)
+	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
+		target.apply_effect(3, DAZE)
+	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)
+		target.apply_effect(1, DAZE)
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))

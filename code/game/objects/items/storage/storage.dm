@@ -7,7 +7,6 @@
 
 /obj/item/storage
 	name = "storage"
-	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
@@ -259,7 +258,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 	if(!opened) //initialize background box
 		storage_start.screen_loc = "4:16,2:16"
-		storage_continue.screen_loc = "4:[round(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
+		storage_continue.screen_loc = "4:[floor(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
 		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
 
 	var/startpoint = 0
@@ -294,7 +293,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		storage_start.overlays += ISB.continued
 		storage_start.overlays += ISB.end
 
-		O.screen_loc = "4:[round((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
+		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
 
@@ -366,7 +365,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
 
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
@@ -390,13 +389,13 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/row_num = 0
 		var/col_count = min(7,storage_slots) -1
 		if (adjusted_contents > 7)
-			row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
 /obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
-	if(storage_slots != null && contents.len < storage_slots)
+	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
@@ -458,7 +457,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		return
 
 	var/w_limit_bypassed = 0
-	if(bypass_w_limit.len)
+	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
 			if(istype(W, A))
 				w_limit_bypassed = 1
@@ -559,11 +558,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	if(isrobot(user))
-		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
-		return //Robots can't interact with storage items.
-
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)
@@ -590,7 +584,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
 			else
-				I = contents[contents.len]
+				I = contents[length(contents)]
 			I.attack_hand(user)
 		else
 			open(user)
@@ -712,7 +706,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 		item_obj = contents[1]
 	else
-		item_obj = contents[contents.len]
+		item_obj = contents[length(contents)]
 	if(!istype(item_obj))
 		return
 	remove_from_storage(item_obj, tile)
@@ -730,11 +724,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots)
+			if(length(contents) < storage_slots)
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots)
+					if(length(contents) < storage_slots)
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
@@ -759,7 +753,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(user.action_busy)
 		return
 
-	if(!origin_storage.contents.len)
+	if(!length(origin_storage.contents))
 		to_chat(user, SPAN_WARNING("[origin_storage] is empty."))
 		return
 	if(!has_room(origin_storage.contents[1])) //Does it have room for the first item to be inserted?
@@ -862,7 +856,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
-	if(contents.len)
+	if(length(contents))
 		empty(user)
 		return
 

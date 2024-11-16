@@ -87,14 +87,19 @@
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
+	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
+		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
+		return
+
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
-	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 
@@ -115,7 +120,7 @@
 		if(pulled.stat == DEAD && !pulled.chestburst)
 			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
-		if(xeno.stomach_contents.len) //Only one thing in the stomach at a time, please
+		if(length(xeno.stomach_contents)) //Only one thing in the stomach at a time, please
 			to_chat(xeno, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
 			return 0
 			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
@@ -128,20 +133,22 @@
 		if(user.action_busy)
 			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
 			return
+		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		xeno.visible_message(SPAN_DANGER("[xeno] starts to devour [pulled]!"), \
 		SPAN_DANGER("We start to devour [pulled]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to devour you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isxeno(pulled.loc) && !xeno.stomach_contents.len)
+			if(isxeno(pulled.loc) && !length(xeno.stomach_contents))
 				to_chat(xeno, SPAN_WARNING("Someone already ate \the [pulled]."))
 				return 0
-			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.stomach_contents.len) //make sure you've still got them in your claws, and alive
+			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !length(xeno.stomach_contents)) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, xeno) & COMPONENT_CANCEL_DEVOUR)
 					return FALSE
 
 				xeno.visible_message(SPAN_WARNING("[xeno] devours [pulled]!"), \
 					SPAN_WARNING("We devour [pulled]!"), null, 5)
+				log_interact(xeno, pulled, "[key_name(xeno)] devoured [key_name(pulled)] at [get_area_name(xeno)]")
 
 				if(ishuman(pulled))
 					var/mob/living/carbon/human/pulled_human = pulled

@@ -67,10 +67,16 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
-	/client/proc/toggle_ares_ping,
+	/client/proc/toggle_admin_pings,
+	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
+	/client/proc/other_records,
+	/client/proc/toggle_admin_afk_safety,
+	/client/proc/add_known_alt,
+	/client/proc/remove_known_alt,
+	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -91,13 +97,13 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
 	/client/proc/force_teleporter,
-	/client/proc/matrix_editor,
-	/datum/admins/proc/open_shuttlepanel
+	/client/proc/matrix_editor
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
-	/client/proc/unban_panel
-	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
+	/client/proc/unban_panel,
+	/client/proc/stickyban_panel,
+	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -110,6 +116,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
+	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
@@ -135,12 +142,16 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
+	/client/proc/toggle_joe_respawns,
+	/client/proc/toggle_lz_hazards,
+	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/get_whitelisted_clients,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
-	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/free_all_mobs_in_view,
 	/client/proc/drop_bomb,
@@ -149,11 +160,11 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
+	/client/proc/force_load_lazy_template,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
@@ -190,7 +201,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/reload_admins,
-	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
 	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
@@ -215,6 +225,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
+	/datum/admins/proc/open_shuttlepanel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
@@ -238,16 +249,21 @@ GLOBAL_LIST_INIT(debug_verbs, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_possess, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/possess,
 	/client/proc/release
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
-	/client/proc/ToRban
+	/client/proc/whitelist_panel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(
 	/client/proc/set_ooc_color_self
+))
+
+GLOBAL_LIST_INIT(admin_verbs_stealth, list(
+	/client/proc/toggle_admin_stealth
 ))
 
 GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
@@ -258,10 +274,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 	/client/proc/editappear,
 	/client/proc/cmd_admin_addhud,
 	/client/proc/cmd_admin_change_their_hivenumber,
-	/client/proc/cmd_assume_direct_control,
 	/client/proc/free_mob_for_ghosts,
-	/client/proc/possess,
-	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
 	/client/proc/cmd_admin_grantallskills,
 	/client/proc/admin_create_account
@@ -269,6 +282,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/release,
 	/client/proc/possess,
 	/client/proc/callproc_datum,
@@ -307,6 +321,13 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	/client/proc/toggle_ob_spawn
 ))
 
+GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/cmd_mentor_say,
+	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_newplayer_ghost_hud,
+	/client/proc/toggle_newplayer_ic_hud
+))
+
 /client/proc/add_admin_verbs()
 	if(!admin_holder)
 		return
@@ -321,8 +342,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_admin)
 		add_verb(src, GLOB.admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
-		add_verb(src, /client/proc/cmd_mentor_say)
-		add_verb(src, /datum/admins/proc/imaginary_friend)
+		add_verb(src, GLOB.mentor_verbs)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -341,14 +361,10 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_sounds)
 	if(CLIENT_HAS_RIGHTS(src, R_SPAWN))
 		add_verb(src, GLOB.admin_verbs_spawn)
-	if(GLOB.RoleAuthority && (GLOB.RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
+	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
+		add_verb(src, GLOB.admin_verbs_stealth)
+	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		add_verb(src, GLOB.clan_verbs)
-
-/client/proc/add_admin_whitelists()
-	if(CLIENT_IS_MENTOR(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
-	if(CLIENT_IS_STAFF(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(
@@ -370,6 +386,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		GLOB.admin_mob_event_verbs_hideable,
 		GLOB.admin_verbs_hideable,
 		GLOB.debug_verbs,
+		GLOB.admin_verbs_stealth,
 	))
 
 /client/proc/jobbans()
@@ -585,16 +602,33 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
 
-/client/proc/toggle_ares_ping()
-	set name = "Toggle ARES notification sound"
-	set category = "Preferences.Logs"
+/client/proc/toggle_admin_pings()
+	set name = "Toggle StaffIC log sounds"
+	set category = "Preferences.Sound"
 
 	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
 	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now hear a ping for ARES messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("You will now hear an audio cue for ARES and Prayer messages."))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear a ping for ARES messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear an audio cue for ARES and Prayer messages."))
 
+/client/proc/toggle_admin_stealth()
+	set name = "Toggle Admin Stealth"
+	set category = "Preferences.Admin"
+	prefs.toggles_admin ^= ADMIN_STEALTHMODE
+	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
+
+/client/proc/toggle_admin_afk_safety()
+	set name = "Toggle AFK Safety"
+	set category = "Preferences.Admin"
+	prefs.toggles_admin ^= ADMIN_AFK_SAFE
+	if(prefs.toggles_admin & ADMIN_AFK_SAFE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

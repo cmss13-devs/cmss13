@@ -106,14 +106,16 @@
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
-			M.ExtinguishMob()
+
+			if(M != cause_data.resolve_mob())
+				M.ExtinguishMob()
+
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
-
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -123,6 +125,10 @@
 			var/obj/vehicle/multitile/V = atm
 			V.handle_acidic_environment(src)
 			continue
+		if (istype(loc, /turf/open))
+			var/turf/open/scorch_turf_target = loc
+			if(scorch_turf_target.scorchable)
+				scorch_turf_target.scorch(damage_amount)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -144,15 +150,15 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.ally_of_hivenumber(hivenumber))
-			return
-		apply_spray(AM)
-	else if (isxeno(AM))
-		var/mob/living/carbon/xenomorph/X = AM
-		if (X.hivenumber != hivenumber)
-			apply_spray(AM)
+	if(AM == cause_data.resolve_mob())
+		return
+
+	if(isliving(AM))
+		var/mob/living/living_mob = AM
+		if(living_mob.ally_of_hivenumber(hivenumber))
+			living_mob.ExtinguishMob()
+		else
+			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)
@@ -500,13 +506,13 @@
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	color = COLOUR_DARK_RED
+	color = COLOR_DARK_RED
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	color = COLOUR_BROWN
+	color = COLOR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	color = COLOUR_GREEN
+	color = COLOR_LIGHT_GREEN
 
 /// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook
@@ -595,7 +601,7 @@
 
 		total_hits++
 
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
 
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 

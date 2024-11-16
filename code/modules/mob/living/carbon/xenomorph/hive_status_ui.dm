@@ -11,6 +11,7 @@
 	var/hive_location
 	var/burrowed_larva
 	var/evilution_level
+	var/pylon_status
 
 	var/data_initialized = FALSE
 
@@ -104,6 +105,7 @@
 	update_xeno_vitals()
 	update_xeno_keys(FALSE)
 	update_xeno_info(FALSE)
+	update_pylon_status(FALSE)
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -113,7 +115,18 @@
 	data_initialized = TRUE
 	update_all_xeno_data(FALSE)
 	update_burrowed_larva(FALSE)
+	update_pylon_status(FALSE)
 	SStgui.update_uis(src)
+
+/datum/hive_status_ui/proc/update_pylon_status(send_update = TRUE)
+	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 1)
+		pylon_status = ""
+	else if(assoc_hive.hit_larva_pylon_limit)
+		pylon_status = "The hive's power has surpassed what the pylons can provide."
+	else
+		pylon_status = "Pylons are strengthening our numbers!"
+	if(send_update)
+		SStgui.update_uis(src)
 
 /datum/hive_status_ui/ui_state(mob/user)
 	return GLOB.hive_state[assoc_hive.internal_faction]
@@ -123,6 +136,10 @@
 	if(isobserver(user))
 		return UI_INTERACTIVE
 
+	// If the Queen died or is otherwise missing.
+	if(!assoc_hive.living_xeno_queen && !assoc_hive.allow_no_queen_actions)
+		return UI_CLOSE
+
 /datum/hive_status_ui/ui_data(mob/user)
 	. = list()
 	.["total_xenos"] = total_xenos
@@ -131,10 +148,13 @@
 	.["xeno_keys"] = xeno_keys
 	.["xeno_info"] = xeno_info
 	.["xeno_vitals"] = xeno_vitals
-	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
+	.["queen_location"] = null
+	if(assoc_hive.living_xeno_queen)
+		.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
 	.["hive_location"] = hive_location
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
+	.["pylon_status"] = pylon_status
 
 	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
@@ -175,33 +195,33 @@
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
-			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
 				return
 
 			if(xenoSrc.stat == DEAD)

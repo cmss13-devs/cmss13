@@ -12,7 +12,7 @@
 	var/cooldown = 50
 	var/last_use = 0
 
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/toggle/use)
 
 /obj/item/clothing/gloves/marine/boom_glove/item_action_slot_check(mob/user, slot)
 	if(!ishuman(user)) return FALSE

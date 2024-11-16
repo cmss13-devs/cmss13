@@ -64,7 +64,21 @@
 
 			M.start_pulling(src)
 
-		else
+		if(INTENT_DISARM)
+			M.animation_attack_on(src)
+			M.flick_attack_overlay(src, "disarm")
+			//friendly lessers, huggers and larva can be pushed around
+			if(M.ally_of_hivenumber(hivenumber) && mob_size < MOB_SIZE_XENO_SMALL && prob(85))
+				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+				M.visible_message(SPAN_DANGER("[M] shoves [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+				apply_effect(1, WEAKEN)
+				return
+
+			var/shove_sound = pick('sound/weapons/punchmiss.ogg', 'sound/weapons/thudswoosh.ogg')
+			playsound(loc, shove_sound, 25, 1, 7)
+			visible_message(SPAN_DANGER("[M] tries to shove [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+
+		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
 			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M))
@@ -78,7 +92,11 @@
 				damage += attack.damage > 5 ? attack.damage : 0
 
 				playsound(loc, attack.attack_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				var/picked_verb = pick(attack.attack_verb)
+				visible_message(SPAN_DANGER("[M] [picked_verb]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				log_attack("[key_name(M)] [picked_verb]ed [key_name(src)] at [get_area_name(M)]")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>was [picked_verb]ed by [key_name(M)]</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[picked_verb]ed [key_name(src)]</font>")
 				apply_damage(damage, BRUTE)
 				updatehealth()
 			else

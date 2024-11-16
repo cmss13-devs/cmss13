@@ -11,6 +11,7 @@
 	paygrade = PAY_SHORT_CMBM
 	name = "CMB Marshal"
 	prefix = "Marshal"
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/cmb/syn
 	paygrade = PAY_SHORT_CMBS

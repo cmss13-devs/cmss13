@@ -45,37 +45,37 @@
 				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
-	if(src.opened)
+	if(opened)
 		to_chat(user, SPAN_NOTICE("Close the locker first."))
 		return
-	if(src.broken)
+	if(broken)
 		to_chat(user, SPAN_WARNING("The locker appears to be broken."))
 		return
 	if(user.loc == src)
 		to_chat(user, SPAN_NOTICE("You can't reach the lock from inside."))
 		return
-	if(src.allowed(user))
+	if(allowed(user))
 		if(slotlocked && ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.wear_id)
-				var/obj/item/card/id/I = H.wear_id
-				if(I.claimedgear)
+			var/mob/living/carbon/human/human = user
+			var/obj/item/card/id/card = human.get_idcard()
+			if(card)
+				if(card.claimedgear)
 					return
 				switch(slotlocktype)
 					if("engi")
-						if(H.job != "Squad Combat Technician")
+						if(human.job != "Squad Combat Technician")
 							return // stop people giving medics engineer prep access or IDs somehow
 					if("medic")
-						if(H.job != "Squad Hospital Corpsman")
+						if(human.job != "Squad Hospital Corpsman")
 							return // same here
-				I.claimedgear = 1 // you only get one locker, all other roles have this set 1 by default
-				slotlocked = 0 // now permanently unlockable
+				card.claimedgear = TRUE // you only get one locker, all other roles have this set 1 by default
+				slotlocked = FALSE // now permanently unlockable
 			else
 				return // they have no ID on, fuck them.
-		src.locked = !src.locked
-		for(var/mob/O in viewers(user, 3))
-			if((O.client && !( O.blinded )))
-				to_chat(O, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
+		locked = !locked
+		for(var/mob/mob in viewers(user, 3))
+			if((mob.client && !( mob.blinded )))
+				to_chat(mob, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
 		update_icon()
 	else
 		to_chat(user, SPAN_NOTICE("Access Denied"))
@@ -90,7 +90,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("The locker is too small to stuff [W:affecting] into!"))
 			return
-		if(isrobot(user) || iszombie(user))
+		if(iszombie(user))
 			return
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))

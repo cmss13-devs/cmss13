@@ -1,5 +1,4 @@
 @use 'sass:color';
-@use 'sass:selector';
 @use './colors.scss';
 
 .button {
@@ -14,7 +13,7 @@
   padding: 0;
   text-align: center;
   vertical-align: middle;
-  width: 6rem;
+  width: 5rem;
 
   &:hover {
     background-color: lighten(colors.$button, 10%);
@@ -22,25 +21,11 @@
 }
 
 .button-lightMode {
-  @extend .button;
   background-color: colors.$lightBorder;
   border: none;
   color: black;
 
   &:hover {
     background-color: colors.$lightHover;
-  }
-}
-
-/** Creates a button for each channel */
-@each $channel, $color in colors.$channel-map {
-  .button-#{$channel} {
-    color: $color;
-    border-color: darken($color, 10%);
-
-    &:hover {
-      border-color: lighten($color, 10%);
-      color: lighten($color, 5%);
-    }
   }
 }

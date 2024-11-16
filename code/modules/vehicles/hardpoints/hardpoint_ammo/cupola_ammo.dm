@@ -1,11 +1,11 @@
 /obj/item/ammo_magazine/hardpoint/m56_cupola
 	name = "M56 Cupola Magazine"
-	desc = "A secondary armament MG magazine"
+	desc = "A box of 500, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system."
 	caliber = "10x28mm" //Correlates to smartguns
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "cupola_1"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun
 	max_rounds = 500
 	gun_type = /obj/item/hardpoint/secondary/m56cupola
 

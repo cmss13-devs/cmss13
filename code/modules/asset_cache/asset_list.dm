@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/icon/big = size[SPRSZ_STRIPPED]
 		var/per_line = big.Width() / tiny.Width()
 		var/x = (idx % per_line) * tiny.Width()
-		var/y = round(idx / per_line) * tiny.Height()
+		var/y = floor(idx / per_line) * tiny.Height()
 
 		out += ".[name][size_id].[sprite_id]{background-position:-[x]px -[y]px;}"
 
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 	for (var/icon_state_name in icon_states(I))
 		for (var/direction in directions)
-			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]-" : ""
+			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]-" : ""
 			Insert("[prefix][prefix2][icon_state_name]", I, icon_state=icon_state_name, dir=direction)
 
 /datum/asset/spritesheet/proc/css_tag()
@@ -260,7 +260,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 			if (!asset)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
-			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]." : ""
+			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]." : ""
 			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
 			if (generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"
@@ -324,6 +324,33 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/simple/namespaced/proc/get_htmlloader(filename)
 	return url2htmlloader(SSassets.transport.get_asset_url(filename, assets[filename]))
 
+/// A subtype to generate a JSON file from a list
+/datum/asset/json
+	_abstract = /datum/asset/json
+	/// The filename, will be suffixed with ".json"
+	var/name
+
+/datum/asset/json/send(client)
+	return SSassets.transport.send_assets(client, "[name].json")
+
+/datum/asset/json/get_url_mappings()
+	return list(
+		"[name].json" = SSassets.transport.get_asset_url("[name].json"),
+	)
+
+/datum/asset/json/register()
+	var/filename = "data/[name].json"
+	fdel(filename)
+	text2file(json_encode(generate()), filename)
+	SSassets.transport.register_asset("[name].json", fcopy_rsc(filename))
+	fdel(filename)
+
+/// Returns the data that will be JSON encoded
+/datum/asset/json/proc/generate()
+	SHOULD_CALL_PARENT(FALSE)
+	CRASH("generate() not implemented for [type]!")
+
+
 /datum/asset/changelog_item
 	_abstract = /datum/asset/changelog_item
 	var/item_filename
@@ -341,3 +368,25 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	if (!item_filename)
 		return
 	. = list("[item_filename]" = SSassets.transport.get_asset_url(item_filename))
+
+/datum/asset/simple/inventory
+	assets = list(
+		"inventory-glasses.png" = 'icons/ui_Icons/inventory/glasses.png',
+		"inventory-head.png" = 'icons/ui_Icons/inventory/head.png',
+		"inventory-neck.png" = 'icons/ui_Icons/inventory/neck.png',
+		"inventory-mask.png" = 'icons/ui_Icons/inventory/mask.png',
+		"inventory-ears.png" = 'icons/ui_Icons/inventory/ears.png',
+		"inventory-uniform.png" = 'icons/ui_Icons/inventory/uniform.png',
+		"inventory-suit.png" = 'icons/ui_Icons/inventory/suit.png',
+		"inventory-gloves.png" = 'icons/ui_Icons/inventory/gloves.png',
+		"inventory-hand_l.png" = 'icons/ui_Icons/inventory/hand_l.png',
+		"inventory-hand_r.png" = 'icons/ui_Icons/inventory/hand_r.png',
+		"inventory-shoes.png" = 'icons/ui_Icons/inventory/shoes.png',
+		"inventory-suit_storage.png" = 'icons/ui_Icons/inventory/suit_storage.png',
+		"inventory-id.png" = 'icons/ui_Icons/inventory/id.png',
+		"inventory-belt.png" = 'icons/ui_Icons/inventory/belt.png',
+		"inventory-back.png" = 'icons/ui_Icons/inventory/back.png',
+		"inventory-pocket.png" = 'icons/ui_Icons/inventory/pocket.png',
+		"inventory-collar.png" = 'icons/ui_Icons/inventory/collar.png',
+	)
+

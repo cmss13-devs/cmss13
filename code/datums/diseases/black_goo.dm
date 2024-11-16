@@ -1,7 +1,16 @@
 //Disease Datum
+#define ZOMBIE_INFECTION_STAGE_ONE 1
+#define ZOMBIE_INFECTION_STAGE_TWO 2
+#define ZOMBIE_INFECTION_STAGE_THREE 3
+#define ZOMBIE_INFECTION_STAGE_FOUR 4
+#define SLOW_INFECTION_RATE 1
+#define FAST_INFECTION_RATE 7
+#define STAGE_LEVEL_THRESHOLD 360
+#define MESSAGE_COOLDOWN_TIME 1 MINUTES
+
 /datum/disease/black_goo
 	name = "Black Goo"
-	max_stages = 3
+	max_stages = 4
 	cure = "Anti-Zed"
 	cure_id = "antiZed"
 	spread = "Bites"
@@ -16,123 +25,131 @@
 	longevity = 500 //the virus tend to die before the dead is turn into zombie this should fix it.
 	stage_prob = 0//no randomness
 
-	/// whether we're currently transforming the host into a zombie.
-	var/zombie_transforming = 0
-	/// tells a dead infectee their stage, so they can know when-abouts they'll revive
+	/// boolean value to determine if the mob is currently transforming into a zombie.
+	var/zombie_is_transforming = FALSE
+
+	/// variable to keep track of the stage level, used to prevent the stage message from being displayed more than once for any given stage.
 	var/stage_counter = 0
 
 //new variables to handle infection progression inside a stage.
 
-	/// variable that contain accumulated virus progression for an host.
+	/// variable that contains accumulated virus progression for a host. Iterates to a value above 360 and is then reset.
 	var/stage_level = 0
-	/// variable that handle passive increase of the virus of an host.
-	var/infection_rate = 1
 
-	///the number of stage level needed to pass another stage.
-	var/stage_level_check = 360
+	/// variable that handles passive increase of the virus of a host.
+	var/infection_rate = SLOW_INFECTION_RATE
 
-	/// cooldown between each check to see if we display a symptome idea is to get 60s between symptome atleast.
-	var/message_cooldown_time = 1 MINUTES
+	/// cooldown for the living mob's symptom messages
 	COOLDOWN_DECLARE(goo_message_cooldown)
 
 /datum/disease/black_goo/stage_act()
 	..()
-	if(!ishuman(affected_mob)) return
-	var/mob/living/carbon/human/H = affected_mob
+	if(!ishuman_strict(affected_mob))
+		return
+	var/mob/living/carbon/human/infected_mob = affected_mob
 
-	// check if your already a zombie or in the process of being transform into one...
-	if(iszombie(H))
+	if(iszombie(infected_mob))
 		return
 
-	// check if dead
-	if(H.stat == DEAD)
-		infection_rate = 4
+	// infection rate is faster for dead mobs
+	if(infected_mob.stat == DEAD)
+		infection_rate = FAST_INFECTION_RATE
 
-	// check if he isn't dead
-	if(H.stat != DEAD)
-		infection_rate = 1
+	// standard infection rate for living mobs
+	if(infected_mob.stat != DEAD)
+		infection_rate = SLOW_INFECTION_RATE
 
-	// here we add the new infection rate to the stage level.
 	stage_level += infection_rate
 
-	// we want to check if we have reach enough stage level to gain a stage 3 stage of 6 min if you get it once.
-	if(stage_level >= stage_level_check)
+	// resets the stage_level once it passes the threshold.
+	if(stage_level >= STAGE_LEVEL_THRESHOLD)
 		stage++
-		stage_level -= stage_level_check
+		stage_level = stage_level % STAGE_LEVEL_THRESHOLD
 
 	switch(stage)
-		if(1)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
+		if(ZOMBIE_INFECTION_STAGE_ONE)
+			if(infected_mob.stat == DEAD && stage_counter != stage)
+				to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
 				stage_counter = stage
 
-			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
-				return
-			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
-
-			switch(rand(0, 100))
-				if(0 to 25)
+			// dead mobs should not have symptoms, because... they are dead.
+			if(infected_mob.stat != DEAD)
+				if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 					return
-				if(25 to 75)
-					to_chat(affected_mob, SPAN_DANGER("You feel warm..."))
-					stage_level += 9
-				if(75 to 95)
-					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level += 18
-				if(95 to 100)
-					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 36
+				COOLDOWN_START(src, goo_message_cooldown, MESSAGE_COOLDOWN_TIME)
 
-		if(2)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
+				switch(rand(0, 100))
+					if(0 to 25)
+						return
+					if(25 to 75)
+						to_chat(infected_mob, SPAN_DANGER("You feel warm..."))
+						stage_level += 9
+					if(75 to 95)
+						to_chat(infected_mob, SPAN_DANGER("Your throat is really dry..."))
+						stage_level += 18
+					if(95 to 100)
+						to_chat(infected_mob, SPAN_DANGER("You can't trust them..."))
+						stage_level += 36
+
+		if(ZOMBIE_INFECTION_STAGE_TWO)
+			if(infected_mob.stat == DEAD && stage_counter != stage)
+				to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
 				stage_counter = stage
 
-			if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
-				return
-			COOLDOWN_START(src, goo_message_cooldown, message_cooldown_time)
-
-			switch(rand(0, 100))
-				if(0 to 25)
+			if(infected_mob.stat != DEAD)
+				if (!COOLDOWN_FINISHED(src, goo_message_cooldown))
 					return
-				if(25 to 50)
-					to_chat(affected_mob, SPAN_DANGER("You can't trust them..."))
-					stage_level += 5
-				if(50 to 75)
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					stage_level += 9
-				if(75 to 85)
-					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					stage_level += 18
-				if(85 to 95)
-					H.vomit_on_floor()
-					stage_level += 36
-				if(95 to 100)
-					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					stage_level += 42
+				COOLDOWN_START(src, goo_message_cooldown, MESSAGE_COOLDOWN_TIME)
 
-		if(3)
-			//check if your already a zombie just return to avoid weird stuff... if for some weird reason first filter deoesn't work...
-			if(iszombie(H))
+				switch(rand(0, 100))
+					if(0 to 25)
+						return
+					if(25 to 50)
+						to_chat(infected_mob, SPAN_DANGER("You can't trust them..."))
+						stage_level += 5
+					if(50 to 75)
+						to_chat(infected_mob, SPAN_DANGER("You feel really warm..."))
+						stage_level += 9
+					if(75 to 85)
+						to_chat(infected_mob, SPAN_DANGER("Your throat is really dry..."))
+						stage_level += 18
+					if(85 to 95)
+						infected_mob.vomit_on_floor()
+						stage_level += 36
+					if(95 to 100)
+						to_chat(infected_mob, SPAN_DANGER("You cough up some black fluid..."))
+						stage_level += 42
+
+		if(ZOMBIE_INFECTION_STAGE_THREE)
+			// if zombie or transforming we upgrade it to stage four.
+			if(iszombie(infected_mob))
+				stage++
 				return
+			// if not a zombie(above check) and isn't transforming then we transform you into a zombie.
+			if(!zombie_is_transforming)
+				// if your dead we inform you that you're going to turn into a zombie.
+				if(infected_mob.stat == DEAD && stage_counter != stage)
+					to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
+					stage_counter = stage
+				zombie_transform(infected_mob)
+				hidden = list(0,0)
+				infected_mob.next_move_slowdown = max(infected_mob.next_move_slowdown, 2)
 
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
-				stage_counter = stage
-			hidden = list(0,0)
-			if(!zombie_transforming)
-				zombie_transform(H)
-			H.next_move_slowdown = max(H.next_move_slowdown, 2)
+		if(ZOMBIE_INFECTION_STAGE_FOUR)
+			return
+			// final stage of infection it's to avoid running the above test once you're a zombie for now. maybe more later.
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
-	zombie_transforming = TRUE
+	zombie_is_transforming = TRUE
 	human.vomit_on_floor()
 	human.adjust_effect(5, STUN)
 	sleep(20)
 	human.make_jittery(500)
 	sleep(30)
 	if(human && human.loc)
+		if(human.buckled)
+			human.buckled.unbuckle()
 		if(human.stat == DEAD)
 			human.revive(TRUE)
 			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.
@@ -141,9 +158,9 @@
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 		human.jitteriness = 0
 		human.set_species(SPECIES_ZOMBIE)
-		stage = 3
+		stage = 4
 		human.faction = FACTION_ZOMBIE
-		zombie_transforming = FALSE
+		zombie_is_transforming = FALSE
 
 
 /obj/item/weapon/zombie_claws
@@ -242,7 +259,6 @@
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure
 	name = "\"Pathogen\" cure bottle"
 	desc = "The bottle has a biohazard symbol on the front, and has a label, designating its use against Agent A0-3959X.91–15, colloquially known as the \"Black Goo\"."
-	icon_state = "bottle20"
 
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure/Initialize()
 	. = ..()
@@ -285,12 +301,12 @@
 /obj/item/storage/fancy/blackgoo/get_examine_text(mob/user)
 	. = ..()
 	. += "A strange looking metal container..."
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		. += "There are no bottles left inside it."
-	else if(contents.len == 1)
+	else if(length(contents) == 1)
 		. += "There is one bottle left inside it."
 	else
-		. += "There are [src.contents.len] bottles inside the container."
+		. += "There are [length(src.contents)] bottles inside the container."
 
 
 /obj/item/storage/fancy/blackgoo/Initialize()
@@ -298,3 +314,12 @@
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/drinks/bottle/black_goo(src)
 	return
+
+#undef ZOMBIE_INFECTION_STAGE_ONE
+#undef ZOMBIE_INFECTION_STAGE_TWO
+#undef ZOMBIE_INFECTION_STAGE_THREE
+#undef ZOMBIE_INFECTION_STAGE_FOUR
+#undef STAGE_LEVEL_THRESHOLD
+#undef SLOW_INFECTION_RATE
+#undef FAST_INFECTION_RATE
+#undef MESSAGE_COOLDOWN_TIME

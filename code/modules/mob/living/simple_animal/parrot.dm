@@ -107,23 +107,6 @@
 	walk(src,0)
 	. = ..()
 
-/*
- * Inventory
- */
-/mob/living/simple_animal/parrot/show_inv(mob/user as mob)
-	user.set_interaction(src)
-	if(user.stat) return
-
-	var/dat = "<div align='center'><b>Inventory of [name]</b></div><p>"
-	if(ears)
-		dat += "<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
-	else
-		dat += "<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
-
-	user << browse(dat, text("window=mob[];size=325x500", name))
-	onclose(user, "mob[real_name]")
-	return
-
 /mob/living/simple_animal/parrot/Topic(href, href_list)
 
 	//Can the usr physically do this?
@@ -131,7 +114,7 @@
 		return
 
 	//Is the usr's mob type able to do this?
-	if(ishuman(usr) || isrobot(usr))
+	if(ishuman(usr))
 
 		//Removing from inventory
 		if(href_list["remove_inv"])
@@ -139,7 +122,7 @@
 			switch(remove_from)
 				if("ears")
 					if(ears)
-						if(available_channels.len)
+						if(length(available_channels))
 							src.say("[pick(available_channels)] BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
 						else
 							src.say("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
@@ -293,8 +276,8 @@
 	   Phrases that the parrot hears in mob/living/say() get added to speach_buffer.
 	   Every once in a while, the parrot picks one of the lines from the buffer and replaces an element of the 'speech' list.
 	   Then it clears the buffer to make sure they dont magically remember something from hours ago. */
-	if(speech_buffer.len && prob(10))
-		if(speak.len)
+	if(length(speech_buffer) && prob(10))
+		if(length(speak))
 			speak.Remove(pick(speak))
 
 		speak.Add(pick(speech_buffer))
@@ -321,10 +304,10 @@
 			parrot_sleep_dur = parrot_sleep_max
 
 			//Cycle through message modes for the headset
-			if(speak.len)
+			if(length(speak))
 				var/list/newspeak = list()
 
-				if(available_channels.len && src.ears)
+				if(length(available_channels) && src.ears)
 					for(var/possible_phrase in speak)
 
 						//50/50 chance to not use the radio at all
@@ -702,7 +685,7 @@
 		return
 
 	var/verb = "says"
-	if(speak_emote.len)
+	if(length(speak_emote))
 		verb = pick(speak_emote)
 
 

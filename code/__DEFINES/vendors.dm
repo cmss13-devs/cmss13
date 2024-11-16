@@ -19,6 +19,8 @@
 #define MARINE_CAN_BUY_COMBAT_ARMOR "combat_armor"
 #define MARINE_CAN_BUY_KIT "kit"
 #define MARINE_CAN_BUY_DRESS "dress"
+#define CIVILIAN_CAN_BUY_BACKPACK "civilian_backpack"
+#define CIVILIAN_CAN_BUY_UTILITY "civilian_utility"
 
 #define MARINE_CAN_BUY_ALL list(MARINE_CAN_BUY_UNIFORM = 1, MARINE_CAN_BUY_SHOES = 1, MARINE_CAN_BUY_HELMET = 1, MARINE_CAN_BUY_ARMOR = 1, MARINE_CAN_BUY_GLOVES = 1, MARINE_CAN_BUY_EAR = 1, MARINE_CAN_BUY_BACKPACK = 1, MARINE_CAN_BUY_POUCH = 2, MARINE_CAN_BUY_BELT = 1, MARINE_CAN_BUY_GLASSES = 1, MARINE_CAN_BUY_MASK = 1, MARINE_CAN_BUY_ESSENTIALS = 1, MARINE_CAN_BUY_SECONDARY = 1, MARINE_CAN_BUY_ATTACHMENT = 1, MARINE_CAN_BUY_MRE = 1, MARINE_CAN_BUY_ACCESSORY = 1, MARINE_CAN_BUY_COMBAT_SHOES = 1, MARINE_CAN_BUY_COMBAT_HELMET = 1, MARINE_CAN_BUY_COMBAT_ARMOR = 1, MARINE_CAN_BUY_KIT = 1, MARINE_CAN_BUY_DRESS = 99)
 
@@ -38,6 +40,7 @@
 #define VENDOR_THEME_USCM 1
 #define VENDOR_THEME_CLF 2
 #define VENDOR_THEME_UPP 3
+#define VENDOR_THEME_YAUTJA 4
 
 #define VENDOR_ITEM_REGULAR 1
 #define VENDOR_ITEM_MANDATORY 2
@@ -70,6 +73,8 @@
 /// Vendors with this flag will fill retroactively based on latejoining players,
 /// and expect a scale multiplier instead of amount of items
 #define VEND_STOCK_DYNAMIC (1<<10)
+/// Vends props looking like the items instead of the actual items. Basically for tutorials.
+#define VEND_PROPS (1<<11)
 
 // Redemption Tokens
 #define VEND_TOKEN_ENGINEER "Engineer"

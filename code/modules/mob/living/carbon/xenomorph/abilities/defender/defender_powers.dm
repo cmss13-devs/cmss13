@@ -17,6 +17,7 @@
 
 	if(xeno.crest_defense)
 		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
+
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
@@ -24,6 +25,7 @@
 		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
@@ -36,7 +38,7 @@
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/fendy = owner
-	if (!istype(fendy))
+	if(!istype(fendy))
 		return
 
 	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
@@ -45,13 +47,13 @@
 	if(!fendy.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(fendy.fortify && !(fendy.mutation_type == DEFENDER_STEELCREST))
+	if(fendy.fortify && !usable_while_fortified)
 		to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
 		return
 
@@ -77,28 +79,19 @@
 	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"), \
 	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
 
-	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)) )
-		var/h_damage = 30 - (fendy.crest_defense * 10)
-		if(fendy.mutation_type == DEFENDER_STEELCREST)
-			h_damage += 7.5
-		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
+	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
+		// -10 damage if their crest is down.
+		var/damage = base_damage - (fendy.crest_defense * 10)
+		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(fendy, carbone)
 	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
-	var/turf/thrown_turf = get_turf(fendy)
-	var/turf/temp = get_turf(fendy)
-
-	for(var/x in 0 to headbutt_distance)
-		temp = get_step(thrown_turf, facing)
-		if(!temp)
-			break
-		thrown_turf = temp
 
 	// Hmm today I will kill a marine while looking away from them
 	fendy.face_atom(carbone)
 	fendy.animation_attack_on(carbone)
 	fendy.flick_attack_overlay(carbone, "punch")
-	carbone.throw_atom(thrown_turf, headbutt_distance, SPEED_SLOW, src)
+	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
 	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	return ..()
@@ -161,10 +154,6 @@
 	if (!istype(xeno))
 		return
 
-	if(xeno.crest_defense && xeno.mutation_type == DEFENDER_STEELCREST)
-		to_chat(src, SPAN_XENOWARNING("We cannot fortify while our crest is already down!"))
-		return
-
 	if(xeno.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("We cannot use fortify with our crest lowered."))
 		return
@@ -178,11 +167,13 @@
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(death_check))
+		RegisterSignal(owner, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
+		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
 	else
+		UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
 		fortify_switch(xeno, FALSE)
 		if(xeno.selected_ability != src)
@@ -192,6 +183,7 @@
 	return ..()
 
 /datum/action/xeno_action/activable/fortify/action_activate()
+	. = ..()
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify && xeno.selected_ability != src)
@@ -203,59 +195,67 @@
 	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/X, fortify_state)
-	if(X.fortify == fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/xeno, fortify_state)
+	if(xeno.fortify == fortify_state)
 		return
 
 	if(fortify_state)
-		to_chat(X, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
-		if(X.mutation_type == DEFENDER_STEELCREST)
-			X.armor_deflection_buff += 10
-			X.armor_explosive_buff += 60
-			X.ability_speed_modifier += 3
-			X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-		else
-			X.armor_deflection_buff += 30
-			X.armor_explosive_buff += 60
-			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
-			X.anchored = TRUE
-			X.small_explosives_stun = FALSE
+		to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
-		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
-		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
-		X.update_icons()
-		X.fortify = TRUE
+		xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
+		xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
+		xeno.fortify = TRUE
 	else
-		to_chat(X, SPAN_XENOWARNING("We resume our normal stance."))
-		REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
-		X.anchored = FALSE
-		if(X.mutation_type == DEFENDER_STEELCREST)
-			X.armor_deflection_buff -= 10
-			X.armor_explosive_buff -= 60
-			X.ability_speed_modifier -= 3
-			X.damage_modifier += XENO_DAMAGE_MOD_SMALL
-		else
-			X.armor_deflection_buff -= 30
-			X.armor_explosive_buff -= 60
-			X.small_explosives_stun = TRUE
+		to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
+		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
+		xeno.anchored = FALSE
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
-		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		X.update_icons()
-		X.fortify = FALSE
+		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		xeno.mob_flags |= SQUEEZE_UNDER_VEHICLES
+		xeno.fortify = FALSE
+
+	apply_modifiers(xeno, fortify_state)
+	xeno.update_icons()
+
+/datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
+	if(fortify_state)
+		xeno.armor_deflection_buff += 30
+		xeno.armor_explosive_buff += 60
+		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
+		xeno.anchored = TRUE
+		xeno.small_explosives_stun = FALSE
+	else
+		xeno.armor_deflection_buff -= 30
+		xeno.armor_explosive_buff -= 60
+		xeno.small_explosives_stun = TRUE
+
+// Steel crest override
+/datum/action/xeno_action/activable/fortify/steel_crest/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
+	if(fortify_state)
+		xeno.armor_deflection_buff += 10
+		xeno.armor_explosive_buff += 60
+		xeno.ability_speed_modifier += 3
+		xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	else
+		xeno.armor_deflection_buff -= 10
+		xeno.armor_explosive_buff -= 60
+		xeno.ability_speed_modifier -= 3
+		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
 /datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
+	// If the defender is facing the projectile.
 	if(defendy.dir & REVERSE_DIR(projectile_direction))
-		if(defendy.mutation_type == DEFENDER_STEELCREST)
-			damagedata["armor"] += steelcrest_frontal_armor
-		else
-			damagedata["armor"] += frontal_armor
+		damagedata["armor"] += frontal_armor
 
-/datum/action/xeno_action/activable/fortify/proc/death_check()
+/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
 	SIGNAL_HANDLER
 
+	if(QDELETED(owner))
+		return
+
+	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
 
@@ -321,4 +321,3 @@
 
 /datum/action/xeno_action/onclick/soak/proc/remove_enrage()
 	owner.remove_filter("steelcrest_enraged")
-

@@ -178,9 +178,6 @@
 
 	add_fingerprint(usr)
 
-/obj/structure/ladder/attack_robot(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/ladder/ex_act(severity)
 	return
 

@@ -4,7 +4,6 @@
 /datum/action/xeno_action/activable/xeno_spit/spitter
 	name = "Spit Acid"
 	action_icon_state = "xeno_spit"
-	ability_name = "spit acid"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -14,7 +13,6 @@
 /datum/action/xeno_action/onclick/charge_spit
 	name = "Charge Spit"
 	action_icon_state = "charge_spit"
-	ability_name = "charge spit"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
@@ -34,7 +32,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 50
-	xeno_cooldown = 80
+	xeno_cooldown = 8 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do

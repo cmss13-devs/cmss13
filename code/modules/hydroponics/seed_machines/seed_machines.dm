@@ -31,7 +31,7 @@
 	seed.forceMove(get_turf(src))
 
 	if(seed.seed.name == "new line" || isnull(GLOB.seed_types[seed.seed.name]))
-		seed.seed.uid = GLOB.seed_types.len + 1
+		seed.seed.uid = length(GLOB.seed_types) + 1
 		seed.seed.name = "[seed.seed.uid]"
 		GLOB.seed_types[seed.seed.name] = seed.seed
 
@@ -75,7 +75,7 @@
 		else
 			var/obj/item/disk/botany/B = W
 
-			if(B.genes && B.genes.len)
+			if(LAZYLEN(B.genes))
 				if(!disk_needs_genes)
 					to_chat(user, SPAN_WARNING("That disk already has gene data loaded."))
 					return

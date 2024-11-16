@@ -7,6 +7,7 @@
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "kutjevo"
 	can_build_special = TRUE //T-Comms structure
+	powernet_name = "ground"
 	temperature = 308.7 //kelvin, 35c, 95f
 	minimap_color = MINIMAP_AREA_ENGI
 
@@ -14,11 +15,13 @@
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_kutjevo.dmi'
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/kutjevo
 	name = "Kutjevo - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_kutjevo.dmi'
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"
@@ -54,6 +57,7 @@
 	unlimited_power = 1//ds computer
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
@@ -62,31 +66,41 @@
 	weather_enabled =  FALSE
 	unlimited_power = 1//DS Computer
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/spring
 	name = "Kutjevo - Southern Spring"
 	icon_state = "lz_river"
+	unoviable_timer = FALSE
 
 /area/kutjevo/exterior/scrubland
-	name = "Kutjevo - Scrubland"
+	name = "Kutjevo - North Scrubland"
 	icon_state = "scrubland"
+	linked_lz = DROPSHIP_LZ2
+
+/area/kutjevo/exterior/scrubland/south
+	name = "Kutjevo - South Scrubland"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/kutjevo/exterior/stonyfields
 	name = "Kutjevo - Stony Fields"
 	icon_state = "stone_fields"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/Northwest_Colony
 	name = "Kutjevo - Northwest Colony Grounds"
 	icon_state = "rf_dunes"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/runoff_dunes
 	name = "Kutjevo - Runoff Dunes"
 	icon_state = "rf_dunes"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/runoff_river
 	name = "Kutjevo - Runoff River"
@@ -107,6 +121,7 @@
 /area/kutjevo/exterior/construction
 	name = "Kutjevo - Abandoned Construction"
 	icon_state = "construction"
+	unoviable_timer = FALSE
 
 /area/kutjevo/exterior/complex_border
 	name = "Kutjevo Complex - Exterior"
@@ -128,21 +143,24 @@
 /area/kutjevo/exterior/telecomm
 	name = "Kutjevo - Communications Relay"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 
 /area/kutjevo/exterior/telecomm/lz1_north
 	name = "Kutjevo - North LZ1 Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/telecomm/lz1_south
 	name = "Kutjevo - South LZ1 Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/telecomm/lz2_north
 	name = "Kutjevo - North LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/telecomm/lz2_south
 	name = "Kutjevo - South LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 //interior areas + caves
 
@@ -202,20 +220,23 @@
 	name = "Kutjevo Complex - Northwest Colony Dorms"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
+	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Flight_Control
 	name =  "Kutjevo Complex - Northwest Flight Control Room"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
+	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint
 	name = "Kutjevo Complex - Northwest Security Checkpoint"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_SEC
+	is_landing_zone = TRUE
 
 //Out buildings + foremans
 /area/kutjevo/interior/power
@@ -223,6 +244,7 @@
 	ceiling = CEILING_METAL
 	icon_state = "power"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/interior/power/comms
 	name = "Kutjevo - Hydroelectric Dam Comms Relay"
@@ -233,11 +255,13 @@
 	name = "Kutjevo - Abandoned Construction Interior"
 	ceiling = CEILING_METAL
 	icon_state = "construction_int"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/foremans_office
 	name = "Kutjevo - Foreman's Office"
 	ceiling = CEILING_METAL
 	icon_state = "foremans"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/botany_bay_int
 	name = "Kutjevo - Space Weed Farm Interior"
@@ -259,26 +283,31 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_central/mine_elevator
 	name = "Kutjevo - Central Colony Elevator"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_north
 	name = "Kutjevo - North Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_1"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_S_East
 	name = "Kutjevo - North East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_N_East
 	name = "Kutjevo - South East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
+	unoviable_timer = FALSE
 
 /area/kutjevo/interior/colony_South
 	name = "Kutjevo - South Colony Caves"
@@ -290,3 +319,4 @@
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	unoviable_timer = FALSE

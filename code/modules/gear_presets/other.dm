@@ -60,7 +60,7 @@
 
 /datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
-	paygrade = "Freelancer Standard"
+	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/freelancer
@@ -69,7 +69,7 @@
 	//generic clothing
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	spawn_merc_helmet(new_human)
 	//storage and specific stuff, they all get an ERT medpouch.
@@ -132,7 +132,7 @@
 
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
-	paygrade = "Freelancer Medic"
+	paygrades = list(PAY_SHORT_FL_M = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Medic"
 	skills = /datum/skills/freelancer/combat_medic
@@ -149,7 +149,7 @@
 		new_human.equip_to_slot_or_del(FREELANCER, WEAR_BODY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	spawn_merc_helmet(new_human)
 
@@ -203,7 +203,7 @@
 
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
-	paygrade = "Freelancer Leader"
+	paygrades = list(PAY_SHORT_FL_WL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE)
@@ -216,7 +216,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
@@ -269,7 +269,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard
 	name = "Elite Mercenary (Standard Miner)"
-	paygrade = "Elite Freelancer Standard"
+	paygrades = list(PAY_SHORT_EFL_S = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -306,7 +306,7 @@
 
 /datum/equipment_preset/other/elite_merc/heavy
 	name = "Elite Mercenary (Heavy)"
-	paygrade = "Elite Freelancer Heavy"
+	paygrades = list(PAY_SHORT_EFL_H = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -346,7 +346,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/other/elite_merc/engineer
 	name = "Elite Mercenary (Engineer)"
-	paygrade = "Elite Freelancer Engineer"
+	paygrades = list(PAY_SHORT_EFL_E = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
@@ -400,7 +400,7 @@
 
 /datum/equipment_preset/other/elite_merc/medic
 	name = "Elite Mercenary (Medic)"
-	paygrade = "Elite Freelancer Medic"
+	paygrades = list(PAY_SHORT_EFL_M = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -446,7 +446,7 @@
 
 /datum/equipment_preset/other/elite_merc/leader
 	name = "Elite Mercenary (Leader)"
-	paygrade = "Elite Freelancer Leader"
+	paygrades = list(PAY_SHORT_EFL_TL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
@@ -503,29 +503,6 @@
 
 	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	new_human.equip_if_possible(new /obj/item/clipboard, WEAR_WAIST)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/other/compression_suit
-	name = "Mk50 Compression Suit"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_PMC
-	skills = /datum/skills/pfc
-	idtype = /obj/item/card/id/data
-
-/datum/equipment_preset/other/compression_suit/load_gear(mob/living/carbon/human/new_human)
-	//TODO: add backpacks and satchels
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots, WEAR_FEET)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/space/compression, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/compression, WEAR_HEAD)
-	var /obj/item/tank/jetpack/J = new /obj/item/tank/jetpack/oxygen(new_human)
-	new_human.equip_to_slot_or_del(J, WEAR_BACK)
-	J.toggle()
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/breath, WEAR_FACE)
-	J.Topic(null, list("stat" = 1))
-	spawn_merc_weapon(new_human)
 
 
 //*****************************************************************************************************/
@@ -649,7 +626,6 @@
 	var/obj/item/clothing/under/uniform = new_human.w_uniform
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
-		uniform.sensor_faction = FACTION_COLONIST
 	new_human.job = "Zombie"
 	new_human.faction = faction
 	return ..()
@@ -768,13 +744,16 @@
 	assignment = "Cultist"
 	rank = "Cultist"
 
+	minimap_icon = "cultist"
+	minimap_background = "background_cultist"
+
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
@@ -829,6 +808,8 @@
 	assignment = "Cultist Leader"
 	rank = "Cultist Leader"
 
+	minimap_icon = "cult_leader"
+
 /datum/equipment_preset/other/xeno_cultist/leader/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/cultist(new_human), WEAR_EYES)
@@ -850,17 +831,17 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "DUMMY"
 	rank = "DUMMY"
+	paygrades = list(PAY_SHORT_CCMO)
 	idtype = /obj/item/card/id/dogtag
 	uses_special_name = TRUE
 
 /datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
-	new_human.real_name = "Professor DUMMY the Medical Mannequin"
+	new_human.real_name = "Alex the Medical Mannequin"
 	new_human.name = new_human.real_name
 	new_human.age = rand(1,5)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-
 
 /datum/equipment_preset/other/professor_dummy/load_race(mob/living/carbon/human/new_human)
 	. = ..()
@@ -870,7 +851,7 @@
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(new_human)
-	tablet.link_mob(new_human)
+	tablet.link_dummy(new_human)
 	new_human.equip_to_slot_or_del(tablet, WEAR_R_HAND)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
@@ -882,9 +863,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
-	assignment = JOB_CREWMAN
-	rank = JOB_CREWMAN
-	paygrade = "E4"
+	assignment = JOB_TANK_CREW
+	rank = JOB_TANK_CREW
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -924,7 +905,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = "Crewman Trainee"
 	rank = "Crewman Trainee"
-	paygrade = "E3"
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CRTR"
 	minimum_age = 25
 	skills = /datum/skills/tank_crew
@@ -952,3 +933,42 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/
+
+
+/datum/equipment_preset/tutorial
+	name = "Tutorial"
+	faction = FACTION_MARINE
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction_group = FACTION_LIST_MARINE
+	languages = list(LANGUAGE_ENGLISH)
+	idtype = /obj/item/card/id
+	/// If the player should start out underfed
+	var/underfed = TRUE
+
+/datum/equipment_preset/tutorial/load_status(mob/living/carbon/human/new_human)
+	if(underfed)
+		new_human.nutrition = NUTRITION_LOW
+
+/datum/equipment_preset/tutorial/fed
+	name = "Tutorial (Fed)"
+	underfed = FALSE
+
+
+/datum/equipment_preset/uscm/tutorial_rifleman
+	name = "Tutorial Rifleman"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_SQUAD_MARINE
+	rank = JOB_SQUAD_MARINE
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "RFN"
+	skills = /datum/skills/pfc/crafty
+	minimap_icon = "private"
+
+/datum/equipment_preset/uscm/tutorial_rifleman/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+

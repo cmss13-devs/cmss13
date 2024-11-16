@@ -44,6 +44,10 @@
 #define USES_HEARING (1<<17)
 /// Should we use the initial icon for display? Mostly used by overlay only objects
 #define HTML_USE_INITAL_ICON (1<<18)
+// Whether or not the object sees emotes
+#define USES_SEEING (1<<19)
+// Can be quick drawn
+#define QUICK_DRAWABLE (1<<20)
 
 //==========================================================================================
 
@@ -82,6 +86,10 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<13)
+/// Overrides NODROP in some cases (stripping)
+#define FORCEDROP_CONDITIONAL (1<<14)
+/// Overrides smartgunner not being able to wear backpacks
+#define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 //==========================================================================================
 
 
@@ -170,7 +178,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 
@@ -194,11 +204,11 @@
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.
-#define ARMOR_SQUAD_OVERLAY 1
-#define ARMOR_LAMP_OVERLAY 2
-#define ARMOR_LAMP_ON 4
-#define ARMOR_IS_REINFORCED 8
-#define SYNTH_ALLOWED 16
+#define ARMOR_SQUAD_OVERLAY (1<<0)
+#define ARMOR_LAMP_OVERLAY (1<<1)
+#define ARMOR_LAMP_ON (1<<2)
+#define ARMOR_IS_REINFORCED (1<<3)
+#define SYNTH_ALLOWED (1<<4)
 //===========================================================================================
 
 //===========================================================================================
@@ -459,6 +469,8 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_DECOR "Decor"
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
+#define ACCESSORY_SLOT_TROPHY "Trophy"
+#define ACCESSORY_SLOT_MASK "Mask"
 
 /// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"
@@ -533,7 +545,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_ALLOW_QUICKDRAW (1<<11) // Whether the storage can be drawn with E or Holster verb
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
-#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
 

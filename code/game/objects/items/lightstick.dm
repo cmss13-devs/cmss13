@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "lightstick_blue0"
 	light_range = 2
-	light_color = COLOUR_BLUE
+	light_color = COLOR_BLUE
 	var/s_color = "blue"
 	var/trample_chance = 30
 	var/can_trample = TRUE
@@ -68,7 +68,7 @@
 	name = "red lightstick"
 	icon_state = "lightstick_red0"
 	s_color = "red"
-	light_color = COLOUR_RED
+	light_color = COLOR_RED
 
 /obj/item/lightstick/red/planted
 	icon_state = "lightstick_red1"

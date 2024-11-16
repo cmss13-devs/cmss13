@@ -176,12 +176,12 @@
 	if(src != user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)) // level 2 is enough to repair damaged NVG
 		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
 		return
 
 	if(shape == NVG_SHAPE_BROKEN)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 3 is needed to repair broken NVG
 			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
 			return
 
@@ -449,6 +449,9 @@
 	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
 	shape = NVG_SHAPE_COSMETIC
 	garbage = TRUE
+
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno)
+	return
 
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"

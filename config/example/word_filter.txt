@@ -1,0 +1,1 @@
+# Words that should be filtered from being said, both IC and OOC, should be included here, one per line. Case insensitive.

@@ -4,9 +4,11 @@
 	if(..())
 		return TRUE
 
+	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
+
 	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
-		return 0
+		return FALSE
 
 	switch(attacking_mob.a_intent)
 		if(INTENT_HELP)
@@ -21,17 +23,11 @@
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
-			// If unconcious with oxygen damage, do CPR. If dead, we do CPR
+			// If unconscious with oxygen damage, do CPR. If dead, we do CPR
 			if(!(stat == UNCONSCIOUS && getOxyLoss() > 0) && !(stat == DEAD))
 				help_shake_act(attacking_mob)
 				return 1
 
-			if(attacking_mob.head && (attacking_mob.head.flags_inventory & COVERMOUTH) || attacking_mob.wear_mask && (attacking_mob.wear_mask.flags_inventory & COVERMOUTH) && !(attacking_mob.wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove your mask!</B>"))
-				return 0
-			if(head && (head.flags_inventory & COVERMOUTH) || wear_mask && (wear_mask.flags_inventory & COVERMOUTH) && !(wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
-				return 0
 			if(cpr_attempt_timer >= world.time)
 				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
 				return 0
@@ -58,9 +54,11 @@
 						revive_grace_period += 7 SECONDS
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
+						balloon_alert(attacking_mob, "you perform cpr")
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
+						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -86,7 +84,7 @@
 				attack = attacking_mob.species.secondary_unarmed
 				return
 
-			last_damage_data = create_cause_data("fisticuffs", src)
+			last_damage_data = create_cause_data("fisticuffs", attacking_mob)
 			attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [key_name(src)]</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [pick(attack.attack_verb)]ed by [key_name(attacking_mob)]</font>")
 			msg_admin_attack("[key_name(attacking_mob)] [pick(attack.attack_verb)]ed [key_name(src)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
@@ -189,12 +187,6 @@
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
 	//Target is us
 	if(src == M)
-		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
-			holo_card_color = null
-			update_targeted()
-			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
-				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
-			return
 		check_for_injuries()
 		return
 
@@ -211,7 +203,10 @@
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
-			set_resting(FALSE)
+			if(is_dizzy)
+				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+			else
+				set_resting(FALSE)
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))

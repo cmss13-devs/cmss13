@@ -92,7 +92,7 @@ update_flag
 
 /obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/projectile/Proj)
 	if(Proj.ammo.damage)
-		update_health(round(Proj.ammo.damage / 2))
+		update_health(floor(Proj.ammo.damage / 2))
 	..()
 	return 1
 

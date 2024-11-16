@@ -75,26 +75,25 @@
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
-	if(in_range(user, src) || istype(user, /mob/dead/observer))
+	if(in_range(user, src) || isobserver(user))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			if(photo_list)
-				for(var/photo in photo_list)
-					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
-			onclose(user, name)
+			read_paper(user,scramble = TRUE)
 		else
 			read_paper(user)
 	else
 		. += SPAN_NOTICE("It is too far away.")
 
-/obj/item/paper/proc/read_paper(mob/user)
+/obj/item/paper/proc/read_paper(mob/user, scramble = FALSE)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -115,10 +114,7 @@
 
 /obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
-	if(istype(user) && user.camera) //is AI
-		dist = get_dist(src, user.camera)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
+	dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
@@ -259,7 +255,7 @@
 		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
 		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
+		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
 		t = replacetext(t, "\[hr\]", "")
@@ -273,7 +269,7 @@
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
+		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[t]</b></font>"
 
 // t = replacetext(t, "#", "") // Junk converted to nothing!
 
@@ -362,8 +358,8 @@
 			iscrayon = 1
 
 
-		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
+		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
 			return
 
 		t = replacetext(t, "\n", "<BR>")
@@ -409,10 +405,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
-			P:RenamePaper(user,src)
-		else
-			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 		//openhelp(user)
 		return
 
@@ -694,7 +687,7 @@
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(G.required_catalysts && G.required_catalysts.len)
+			if(LAZYLEN(G.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
@@ -842,17 +835,16 @@
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-		if(C.required_catalysts)
-			if(C.required_catalysts.len)
-				info += "<BR>Reaction would require the following catalysts:<BR>\n"
-				for(var/I in C.required_catalysts)
-					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
-						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
-						completed = FALSE
-					else
-						var/U = C.required_catalysts[I]
-						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+		if(LAZYLEN(C.required_catalysts))
+			info += "<BR>Reaction would require the following catalysts:<BR>\n"
+			for(var/I in C.required_catalysts)
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+					completed = FALSE
+				else
+					var/U = C.required_catalysts[I]
+					info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 	else if(GLOB.chemical_gen_classes_list["C1"].Find(S.id))
 		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 	else
@@ -921,3 +913,20 @@
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
 	update_icon()
+
+/obj/item/paper/liaison_brief
+	name = "Liaison Colony Briefing"
+	desc = "A brief from the Company about the colony the ship is responding to."
+	icon_state = "paper_wy_words"
+	
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
+
+/obj/item/paper/liaison_brief/Initialize(mapload, ...)
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
+	else
+		info = file2text(placeholder)
+		
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

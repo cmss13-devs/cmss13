@@ -10,7 +10,7 @@
 	var/max_coils = 6 //30M capacity, 1.5MW input/output when fully upgraded /w default coils
 	var/cur_coils = 1 // Current amount of installed coils
 	var/safeties_enabled = 1 // If 0 modifications can be done without discharging the SMES, at risk of critical failure.
-	var/failing = 0 // If 1 critical failure has occured and SMES explosion is imminent.
+	var/failing = 0 // If 1 critical failure has occurred and SMES explosion is imminent.
 	should_be_mapped = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -39,7 +39,7 @@
 			capacity += C.ChargeCapacity
 			input_level_max += C.IOCapacity
 			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+		charge = clamp(charge, 0, capacity)
 		return 1
 	else
 		return 0
@@ -199,7 +199,7 @@
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = round((charge / capacity) * 100)
+		var/failure_probability = floor((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
 		if (failure_probability < 5)

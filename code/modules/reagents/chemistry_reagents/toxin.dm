@@ -205,10 +205,10 @@
 	id = "potassium_chloride"
 	description = "A bitter tasting salt that can be used as a spice, but can cause cardiac arrest in larger quantities. It has for this reason been used as a component in lethal injections for many years."
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255,255,255
+	color = COLOR_WHITE
 	chemfiresupp = TRUE
 	intensitymod = 0.1
-	burncolor = "#800080"
+	burncolor = COLOR_PURPLE
 	burncolormod = 5
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -219,7 +219,7 @@
 	id = "potassium_chlorophoride"
 	description = "A specific chemical based on Potassium Chloride used to stop the heart for surgery. Causes instant cardiac arrest. Not safe to eat!"
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255,255,255
+	color = COLOR_WHITE
 	overdose = 20
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
@@ -261,7 +261,7 @@
 	name = "Formaldehyde"
 	id = "formaldehyde"
 	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	reagent_state = GAS
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)

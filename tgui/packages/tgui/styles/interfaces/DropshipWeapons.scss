@@ -1,0 +1,253 @@
+@use '../base.scss';
+@import 'SidePanel';
+
+.Test {
+  border: 1px solid red;
+}
+
+.WeaponsConsoleBackground {
+  background-color: #040404;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.WeaponsConsole {
+  padding: 8px;
+  .primarypanel {
+    width: fit-content;
+    height: 512px;
+    width: 512px;
+    background-color: #121212;
+    border-collapse: separate;
+    border-radius: 16px;
+    border: 4px solid #080808;
+    padding: 4px;
+  }
+
+  .DLabel {
+    background-color: #606060;
+    border: 1px solid white;
+    font-family: monospace;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .displaypanel {
+    background-color: #000000;
+  }
+
+  .NavigationMenu {
+    height: 512px;
+    width: 512px;
+    border: 2px solid #00e94e;
+    border-style: outset;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: monospace;
+    padding: 2px;
+  }
+
+  .Input {
+    border: 1px solid #00e94e;
+    color: #00e94e;
+  }
+
+  .NumberInput {
+    border: 1px solid #00e94e;
+    color: #00e94e;
+  }
+
+  .FireMissionTitle {
+    height: 20px;
+    text-align: right;
+  }
+
+  .FireMissionOffsetLabel {
+    height: 20px;
+    text-align: center;
+  }
+
+  .FireMissionStack {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+  }
+
+  .FireMissionError {
+    width: 85px;
+  }
+
+  .FiremissionBadStep {
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    outline: 1px solid #00e94e;
+  }
+
+  .FireMissionOffset {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    .Button {
+      font-size: smaller;
+      background-color: transparent;
+      color: #00e94e;
+    }
+    .SelectedButton {
+      background: #00e94e;
+      color: #000000;
+      font-weight: bold;
+    }
+  }
+
+  .TargetText {
+    text-align: center;
+    width: 400px;
+  }
+
+  .welcome-page {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 40%;
+  }
+
+  .WeaponsDesc {
+    text-align: center;
+  }
+
+  .MapPanel {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .MapOverlay {
+    z-index: 2;
+    margin-top: -10px;
+  }
+
+  .MapContainer > * {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+  }
+
+  .CameraPanel {
+    width: 500px;
+    height: 500px;
+  }
+
+  .WeaponPanel {
+    height: 512px;
+    width: 512px;
+    display: inline-block;
+
+    .PanelTextBox {
+      margin: 2px;
+    }
+
+    .BaseSidePanel {
+      height: 100%;
+      width: 150px;
+    }
+
+    .WeaponPanelLeft {
+      @extend .BaseSidePanel;
+      border-right: 2px solid #00e94e;
+    }
+
+    .WeaponPanelRight {
+      @extend .BaseSidePanel;
+      border-left: 2px solid #00e94e;
+    }
+  }
+
+  .mfd_button {
+    background-color: #121212;
+    width: 50px;
+    height: 50px;
+    font-size: normal;
+    font-family: monospace;
+    line-height: 45px;
+    border-style: outset;
+    border-color: #121212;
+    box-shadow: 0px 0px 0px 4px black;
+    overflow: hidden;
+    padding: 0;
+
+    .Icon {
+      font-size: large;
+      padding-left: 8px;
+      padding-top: 12px;
+    }
+  }
+
+  .mfd_button_active {
+    @extend .mfd_button;
+    border-color: #00e94e;
+  }
+
+  .ButtonPanel {
+    padding: 0px;
+    margin: 0px;
+
+    .Flex__item {
+      padding: 0px;
+      margin: 0px;
+      align-content: center;
+      text-align: center;
+    }
+  }
+
+  .VerticalButtonPanel {
+    @extend .ButtonPanel;
+    height: 100%;
+
+    .Flex__item {
+      height: 100px;
+      line-height: 100px;
+    }
+  }
+
+  .HorizontalButtonPanel {
+    @extend .ButtonPanel;
+    width: 100%;
+
+    .Flex__item {
+      width: 100px;
+    }
+  }
+
+  .WeaponSidePanel {
+    @extend .SidePanel;
+    width: 250px;
+    .Button {
+      width: 100%;
+    }
+  }
+
+  .Table__cell {
+    vertical-align: middle;
+    padding: 2px;
+    margin: 0px;
+  }
+  .Screw_cell_top {
+    vertical-align: top;
+  }
+  .Screw_cell_bot {
+    vertical-align: bottom;
+  }
+  .Screw_cell_right {
+    text-align: right;
+  }
+  .Screw_cell_left {
+    text-align: left;
+  }
+}
+
+.Test {
+  border: 1px solid red;
+}

@@ -6,6 +6,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/security[] = list()
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
+	var/leveled_riflemen = 0
+	var/leveled_riflemen_max = 7
 
 /datum/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
 	var/list/cic = GLOB.ROLES_CIC.Copy()
@@ -206,8 +208,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			sleep(40)
 
 		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-			if(is_admin_level(H.z))
+		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(H))
 				continue
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
@@ -261,7 +263,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"
 	record_general.fields["m_stat"] = "Stable"
-	record_general.fields["sex"] = target.gender
+	record_general.fields["sex"] = capitalize(target.gender)
 	record_general.fields["species"] = target.get_species()
 	record_general.fields["origin"] = target.origin
 	record_general.fields["faction"] = target.personal_faction
@@ -351,31 +353,38 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/icon/icobase = H.species.icobase
 	var/icon/temp
 
-	var/datum/ethnicity/ET = GLOB.ethnicities_list[H.ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[H.body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
+	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
+	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
 
-	var/e_icon
-	var/b_icon
+	var/skin_color_icon
+	var/body_type_icon
+	var/body_size_icon
 
-	if (!ET)
-		e_icon = "western"
+	if(!set_skin_color)
+		skin_color_icon = "pale2"
 	else
-		e_icon = ET.icon_name
+		skin_color_icon = set_skin_color.icon_name
 
-	if (!B)
-		b_icon = "mesomorphic"
+	if(!set_body_type)
+		body_type_icon = "lean"
 	else
-		b_icon = B.icon_name
+		body_type_icon = set_body_type.icon_name
 
-	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "torso", e_icon))
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "groin", e_icon))
+	if(!set_body_size)
+		body_size_icon = "avg"
+	else
+		body_size_icon = set_body_size.icon_name
+
+	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "torso", skin_color_icon))
+	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "groin", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "head", e_icon))
+	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "head", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
 	for(var/obj/limb/E in H.limbs)
 		if(E.status & LIMB_DESTROYED) continue
-		temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, E.name, e_icon))
+		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		preview_icon.Blend(temp, ICON_OVERLAY)

@@ -102,3 +102,19 @@
 	name = "Unconscious"
 	desc = "You've been knocked out."
 	icon_state = ALERT_KNOCKEDOUT
+
+/// DAZED:
+/// This prevents talking as human or using abilities as Xenos, mainly
+/datum/status_effect/incapacitating/dazed
+	id = "dazed"
+	needs_update_stat = TRUE
+
+/datum/status_effect/incapacitating/dazed/on_apply()
+	. = ..()
+	if(!.)
+		return
+	ADD_TRAIT(owner, TRAIT_DAZED, TRAIT_STATUS_EFFECT(id))
+
+/datum/status_effect/incapacitating/dazed/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_DAZED, TRAIT_STATUS_EFFECT(id))
+	return ..()

@@ -62,6 +62,9 @@
 
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
+/// Defines for Abomination ability /datum/action/xeno_action/activable/feralfrenzy
+#define SINGLETARGETGUT 0
+#define AOETARGETGUT 1
 
 #define WARDEN_HEAL_SHIELD 0
 #define WARDEN_HEAL_HP 1
@@ -177,6 +180,20 @@
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
 #define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
 
+/// Evolution boost during hijack
+#define XENO_HIJACK_EVILUTION_BUFF 10
+
+/// For how long the buff lasts
+#define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
+
+/// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
+#define HIJACK_RATIO_FOR_TACMAP 0.8
+
+/// Xenos need to have their number to marines ratio lower than this to get larvae from pylons
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
+
+/// What percent of their numbers xeno get from pylons
+#define LARVA_ADDITION_MULTIPLIER 0.10
 
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
@@ -249,11 +266,6 @@
 #define XENO_PLASMA_TIER_6 600 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_TIER_8 800 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_TIER_10 1000 * XENO_UNIVERSAL_PLASMAMULT
-
-// Resource stockpile bands
-#define XENO_CRYSTAL_LOW 50
-#define XENO_CRYSTAL_MEDIUM 100
-#define XENO_CRYSTAL_HIGH 150
 
 // Plasma gain bands
 #define XENO_PLASMA_GAIN_TIER_1 1
@@ -351,6 +363,48 @@
 #define XENO_THICKEN_MEMBRANE_COST (XENO_RESIN_MEMBRANE_THICK_COST - XENO_RESIN_MEMBRANE_COST)
 
 #define RESIN_CONSTRUCTION_NO_MAX -1
+
+// -------------- //
+// STRAIN DEFINES //
+// -------------- //
+
+// Facehugger strain flags
+#define FACEHUGGER_WATCHER "Watcher"
+
+// Drone strain flags
+#define DRONE_HEALER "Healer"
+#define DRONE_GARDENER "Gardener"
+
+// Hivelord strain flags
+#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+
+// Carrier strain flags
+#define CARRIER_EGGSAC "Eggsac"
+
+// Boiler strain flags
+#define BOILER_TRAPPER "Trapper"
+
+// Runner strain flags
+#define RUNNER_ACIDER "Acider"
+
+// Lurker strain flags
+#define LURKER_VAMPIRE "Vampire"
+
+// Ravager strain flags
+#define RAVAGER_HEDGEHOG "Hedgehog"
+#define RAVAGER_BERSERKER "Berserker"
+
+// Defender strain flags
+#define DEFENDER_STEELCREST "Steelcrest"
+
+// Crusher strain flags
+#define CRUSHER_CHARGER "Charger"
+
+// Praetorian strain flags
+#define PRAETORIAN_VANGUARD "Vanguard"
+#define PRAETORIAN_DANCER "Dancer"
+#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_OPPRESSOR "Oppressor"
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -651,9 +705,9 @@
 // PARAMETERS:
 // source_hive integer  the hive to check the alliance of
 // target_hive  integer  the target hive to see if the source_hive is allied to it.
-#define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) (source_hive == target_hive || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))
+#define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) ((source_hive) == (target_hive) || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))
 
-#define QUEEN_SPAWN_TIMEOUT (2 MINUTES)
+#define QUEEN_SPAWN_TIMEOUT (1 MINUTES)
 
 #define FIRE_IMMUNITY_NONE				0
 #define FIRE_IMMUNITY_NO_DAMAGE			(1<<0)
@@ -668,6 +722,7 @@
 #define FIRE_MULTIPLIER_EXTREME	 	2
 #define FIRE_MULTIPLIER_DEADLY		3
 
+#define WHISPERER_VIEWRANGE 10
 #define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1

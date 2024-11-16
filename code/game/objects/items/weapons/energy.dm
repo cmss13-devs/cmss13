@@ -1,6 +1,6 @@
 /obj/item/weapon/energy
 	var/active = 0
-	flags_atom = FPRINT|NOBLOODY
+	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 
 /obj/item/weapon/energy/axe
 	name = "energy axe"
@@ -11,7 +11,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
-	flags_atom = FPRINT|CONDUCT|NOBLOODY
+	flags_atom = FPRINT|CONDUCT|QUICK_DRAWABLE|NOBLOODY
 	flags_item = NOSHIELD
 
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
@@ -47,7 +47,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	flags_atom = FPRINT|NOBLOODY
+	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 	flags_item = NOSHIELD
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

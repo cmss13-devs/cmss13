@@ -1,0 +1,9402 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/adminlevel/ert_station/uscm_station)
+"ac" = (
+/obj/structure/morgue,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"af" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"ag" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ah" = (
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/warnplate/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"au" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"aw" = (
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"aC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"aD" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/explosive/grenade/high_explosive/training,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"aF" = (
+/obj/item/ammo_magazine/rifle/lmg,
+/obj/item/weapon/gun/rifle/lmg,
+/obj/structure/surface/rack,
+/turf/open/floor/red/east,
+/area/adminlevel/ert_station/uscm_station)
+"aJ" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "s_umbilical";
+	name = "\improper Umbillical Airlock";
+	unacidable = 1;
+	dir = 4
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/uscm_station)
+"aM" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"aP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	id = "engladder";
+	height = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"aW" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	access_modified = 1;
+	name = "Morgue";
+	req_access_txt = "25";
+	req_one_access = null
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"ba" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"bc" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"bl" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"bB" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"bU" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
+	req_access = null
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/adminlevel/ert_station/uscm_station)
+"bV" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"bX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"bY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "tcomms";
+	name = "Telecommunications Entrance";
+	pixel_y = -19
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"cf" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/USCMtray{
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 13;
+	pixel_x = 12
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ci" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -20
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/adminlevel/ert_station/uscm_station)
+"cp" = (
+/obj/structure/sign/safety/rad_shield{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"cy" = (
+/turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/uscm_station)
+"cz" = (
+/obj/item/hardpoint/support/artillery_module,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"cG" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"cU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/autopsy_scanner,
+/turf/open/floor/podhatch/southeast,
+/area/adminlevel/ert_station/uscm_station)
+"cW" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"cZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"df" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"di" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"dj" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"dl" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/item/hardpoint/armor/paladin,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"do" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"du" = (
+/obj/structure/bed/roller,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"dy" = (
+/obj/structure/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"dz" = (
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"dH" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"dK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/uscm_station)
+"dP" = (
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"dQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"dR" = (
+/obj/structure/sign/safety/galley{
+	pixel_y = -30
+	},
+/obj/structure/sign/safety/food_storage{
+	pixel_y = -30;
+	pixel_x = 15
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"dT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"dW" = (
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"dX" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"eb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ec" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ei" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ej" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"ek" = (
+/obj/structure/sign/safety/hvac_old,
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"ep" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/red,
+/area/adminlevel/ert_station/uscm_station)
+"er" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"es" = (
+/obj/effect/decal/warning_stripes,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/down{
+	dir = 8
+	},
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"et" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"eF" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"eG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"eL" = (
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"eW" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"eY" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/closet/cabinet,
+/obj/item/clipboard,
+/obj/item/storage/lockbox/loyalty,
+/obj/item/storage/briefcase,
+/obj/item/reagent_container/spray/pepper,
+/obj/item/device/eftpos{
+	eftpos_name = "Weyland-Yutani EFTPOS scanner"
+	},
+/obj/item/device/portable_vendor/corporate,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"fc" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 2;
+	name = "\improper Medical Bay";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"fe" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/almayer/orange/east,
+/area/adminlevel/ert_station/uscm_station)
+"fh" = (
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/attachable/attached_gun/flamer,
+/obj/item/attachable/attached_gun/shotgun,
+/obj/item/attachable/attached_gun/shotgun,
+/obj/structure/surface/rack,
+/turf/open/floor/red/east,
+/area/adminlevel/ert_station/uscm_station)
+"fi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/sterile_green_side/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"fj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"fn" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"fp" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"fu" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"fw" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/space)
+"fz" = (
+/obj/item/weapon/gun/pistol/highpower,
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/item/weapon/gun/revolver/m44,
+/obj/item/weapon/gun/pistol/highpower,
+/obj/item/weapon/gun/pistol/m1911,
+/obj/item/ammo_magazine/pistol/ap,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/hp,
+/obj/item/ammo_magazine/pistol/incendiary,
+/obj/item/ammo_magazine/pistol/m1911,
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/red/southeast,
+/area/adminlevel/ert_station/uscm_station)
+"fE" = (
+/obj/structure/machinery/telecomms/broadcaster/preset_left,
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"fI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"fN" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	req_one_access = null
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"fP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"fQ" = (
+/obj/item/storage/lockbox/loyalty{
+	req_access = list(200)
+	},
+/obj/item/storage/briefcase,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"fV" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"fY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"gd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"gj" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"gl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"gE" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"gQ" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack{
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"gU" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"gY" = (
+/obj/structure/sign/safety/life_support{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/orangecorner/west,
+/area/adminlevel/ert_station/uscm_station)
+"hc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"hi" = (
+/obj/structure/machinery/telecomms/processor/preset_two,
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"hk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/uscm/directional/east,
+/area/adminlevel/ert_station/uscm_station)
+"hm" = (
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"hn" = (
+/obj/structure/platform/metal/almayer,
+/obj/item/storage/toolbox/mechanical,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"hq" = (
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"hu" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"hw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"hy" = (
+/obj/structure/target,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/uscm_station)
+"hz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"hB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/sign/safety/medical{
+	pixel_x = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"hJ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/turf/open/floor/red/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"hO" = (
+/obj/structure/ladder{
+	id = "regladder5";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"hW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"hY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/body_scanconsole,
+/obj/structure/sign/safety/autodoc{
+	pixel_x = -18;
+	pixel_y = 25
+	},
+/obj/structure/sign/safety/med_life_support{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"if" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"im" = (
+/obj/item/bedsheet/hos,
+/obj/item/clothing/mask/balaclava,
+/obj/structure/bed,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"in" = (
+/obj/structure/machinery/smartfridge/chemistry,
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"ip" = (
+/obj/structure/machinery/power/port_gen/pacman/mrs,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"iq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"ir" = (
+/turf/open/floor/almayer/cargo_arrow,
+/area/adminlevel/ert_station/uscm_station)
+"iv" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/adminlevel/ert_station/uscm_station)
+"iD" = (
+/obj/structure/machinery/computer/telecomms/traffic,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"iE" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"iF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/uscm/directional,
+/area/adminlevel/ert_station/uscm_station)
+"iK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	id = "regladder2";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"iM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"iO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/warnplate/west,
+/area/adminlevel/ert_station/uscm_station)
+"iP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/rocket/widowmaker,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"iS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_side/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"iW" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"iY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/adminlevel/ert_station/uscm_station)
+"ja" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "or01";
+	name = "Operating Theatre 1";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"jd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	id = "regladder2";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ji" = (
+/turf/closed/wall/almayer/white/hull,
+/area/adminlevel/ert_station/uscm_station)
+"jk" = (
+/turf/open/floor/podhatch/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"jn" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"jA" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/box/gloves{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"jP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"jW" = (
+/obj/structure/sign/safety/fibre_optics{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/commline_connection{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"jX" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"jZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ka" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"kb" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 6
+	},
+/obj/structure/machinery/meter,
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"kf" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ks" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"kA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/warnplate/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"kE" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/adminlevel/ert_station/uscm_station)
+"kL" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	explo_proof = 1;
+	locked = 1
+	},
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"kQ" = (
+/obj/structure/machinery/cryopod/no_store/right,
+/obj/structure/sign/safety/cryo{
+	pixel_y = 30
+	},
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = 30;
+	pixel_x = 15
+	},
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"kX" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"kZ" = (
+/turf/open/space/basic,
+/area/space)
+"lf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"li" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/safety/terminal{
+	pixel_x = -17
+	},
+/obj/structure/machinery/faxmachine/corporate/liaison,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"lj" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"lu" = (
+/obj/item/storage/toolbox/electrical,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"lz" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/adminlevel/ert_station/uscm_station)
+"lA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/plating/warnplate/east,
+/area/adminlevel/ert_station/uscm_station)
+"lE" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"lG" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber,
+/turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/uscm_station)
+"lH" = (
+/obj/structure/machinery/chem_master,
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"lI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"lN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"lO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"lP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"lR" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"lY" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/adminlevel/ert_station/uscm_station)
+"lZ" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/space)
+"md" = (
+/obj/structure/machinery/recharge_station,
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"mh" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = -24;
+	pixel_y = 32
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/uscm_station)
+"mk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/turf/open/floor/almayer/uscm/directional/logo_c/west,
+/area/adminlevel/ert_station/uscm_station)
+"mp" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Medical Bay";
+	req_one_access = null
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"mr" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"ms" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"mv" = (
+/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"mw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"mx" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"mD" = (
+/turf/closed/wall/almayer/white,
+/area/adminlevel/ert_station/uscm_station)
+"mF" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"mM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/belt/medical/lifesaver/full,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"mO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"mR" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "s_umbilical";
+	name = "\improper Umbillical Airlock";
+	unacidable = 1
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"mY" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz1";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"na" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/hardpoint/locomotion/apc_wheels,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"nc" = (
+/obj/structure/pipes/vents/pump/siphon/on{
+	dir = 1;
+	id_tag = "oxygen_lower_out"
+	},
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"nd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"nq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"nu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/safety/commline_connection{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = 16;
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"nv" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/cell_charger,
+/obj/item/cell/crap,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"nw" = (
+/obj/item/ammo_magazine/revolver/mateba,
+/obj/item/ammo_magazine/rifle/ap,
+/obj/item/ammo_magazine/rifle/incendiary,
+/obj/item/ammo_magazine/rifle/lmg,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/smg/m39/ap,
+/obj/structure/surface/rack,
+/turf/open/floor/red/east,
+/area/adminlevel/ert_station/uscm_station)
+"nH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"nJ" = (
+/obj/structure/target,
+/turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/uscm_station)
+"nK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"nN" = (
+/obj/structure/sign/safety/rewire{
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/uscm_station)
+"nP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"nQ" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz5";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"nS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 5;
+	pixel_x = -7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"nW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"nY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"od" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz6";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"oe" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"oh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/warnplate/west,
+/area/adminlevel/ert_station/uscm_station)
+"om" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"ot" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ow" = (
+/obj/item/hardpoint/primary/arc_sentry{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"oC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"oD" = (
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/uscm_station)
+"oT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"oU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	req_one_access = null
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"pg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ph" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"pi" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"ps" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"py" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"pD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"pF" = (
+/obj/structure/morgue{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"pI" = (
+/obj/structure/machinery/photocopier/wyphotocopier,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"pM" = (
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"pP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"pR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"pS" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"pX" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"qc" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"qi" = (
+/obj/structure/ore_box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"qr" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/space)
+"qu" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"qx" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"qy" = (
+/obj/structure/machinery/telecomms/hub/preset,
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"qE" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/space)
+"qH" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"qI" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"qL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"qQ" = (
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"qT" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ra" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	dir = 2;
+	name = "Telecommunications"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"rd" = (
+/obj/structure/ladder{
+	id = "regladder6";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"rj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"rm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"rr" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/space)
+"rs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"rw" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 32;
+	pixel_y = 8
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/adminlevel/ert_station/uscm_station)
+"rC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/uscm_station)
+"rD" = (
+/obj/structure/target,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"rG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"rP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"rS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/redfull/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"rW" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 2;
+	name = "\improper Medical Bay";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"rY" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"sa" = (
+/obj/structure/ladder{
+	id = "regladder5";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"sb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	id = "regladder1";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"sg" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"si" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = -22
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"sj" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "or01";
+	name = "Operating Theatre 1";
+	req_one_access = null
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"st" = (
+/obj/structure/bed/roller,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"su" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"sy" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"sG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"sL" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"sN" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"sU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"tf" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper,
+/obj/item/tool/lighter/random,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"th" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black,
+/obj/structure/machinery/door_control{
+	id = "tcomms";
+	name = "Telecommunications Entrance";
+	pixel_y = -19
+	},
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"tl" = (
+/obj/structure/largecrate/supply/powerloader,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"to" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"tw" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"tx" = (
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	dir = 2;
+	name = "Telecommunications"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"ty" = (
+/obj/structure/machinery/computer/skills{
+	req_one_access_txt = "200"
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"tC" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"tD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"tE" = (
+/obj/structure/closet/secure_closet/securecom,
+/obj/item/weapon/gun/smartgun,
+/turf/open/floor/red/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"tM" = (
+/obj/structure/ship_ammo/minirocket{
+	pixel_y = 9;
+	layer = 3.1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"tP" = (
+/obj/vehicle/powerloader{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"tR" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = null;
+	explo_proof = 1;
+	locked = 1;
+	opacity = 1
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"tY" = (
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"ue" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"ul" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"us" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"uu" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"ux" = (
+/obj/structure/machinery/portable_atmospherics/powered/pump,
+/obj/structure/sign/safety/high_rad{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32;
+	pixel_y = 7
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"uF" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"uG" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/weapon/gun/rifle/m41a/training,
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"uL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"uM" = (
+/obj/structure/largecrate/guns,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"uR" = (
+/obj/structure/window/framed/almayer/white,
+/turf/open/floor/plating/platebotc,
+/area/adminlevel/ert_station/uscm_station)
+"uY" = (
+/obj/structure/bed/chair/comfy/orange,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"vc" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Weyland-Yutani Office"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"vm" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/sign/poster/ad{
+	pixel_x = 30
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"vo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/uscm_station)
+"vu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/defibrillator/upgraded,
+/obj/item/device/defibrillator/upgraded,
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"vv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/medical{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"vx" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"vy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/west,
+/area/adminlevel/ert_station/uscm_station)
+"vA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"vF" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"vG" = (
+/obj/structure/window/framed/almayer/white,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"vI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"wc" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"wi" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"wo" = (
+/obj/structure/machinery/suit_storage_unit/carbon_unit,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"wr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/redfull/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"ws" = (
+/obj/structure/bookcase{
+	dir = 4
+	},
+/obj/item/book/manual/evaguide,
+/obj/item/book/manual/ripley_build_and_repair,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"wt" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/yellow,
+/obj/item/tool/pen,
+/turf/open/floor/almayer/orange/east,
+/area/adminlevel/ert_station/uscm_station)
+"ww" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/space)
+"wx" = (
+/turf/open/floor/red/north,
+/area/adminlevel/ert_station/uscm_station)
+"wA" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/orange/east,
+/area/adminlevel/ert_station/uscm_station)
+"wE" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"wF" = (
+/turf/open/floor/almayer/uscm/directional/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"wH" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80;
+	req_one_access = list(100)
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"wI" = (
+/obj/structure/bed/chair/comfy/orange,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"wN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"wO" = (
+/obj/structure/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"wW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"xb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"xl" = (
+/turf/open/floor/red/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"xn" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/pipes/standard/simple/visible,
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"xu" = (
+/obj/structure/machinery/iv_drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"xw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"xA" = (
+/obj/structure/largecrate/random,
+/obj/item/seeds/ambrosiavulgarisseed{
+	layer = 2.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"xB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black_random{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/tool/stamp{
+	name = "Corporate Liaison's stamp";
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"xF" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"xK" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"xL" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8
+	},
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"xP" = (
+/obj/structure/machinery/computer/telecomms/server,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"xT" = (
+/obj/structure/janitorialcart,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"xU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"xX" = (
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"yd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"yf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"yg" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ym" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"yq" = (
+/obj/structure/largecrate/supply/generator,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"yr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"yx" = (
+/obj/structure/prop/dam/crane,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	name = "Damaged FS/ACS-9 cooling system";
+	desc = "A cooling system for the Tripoli. It produces additional cooling reducing delays between launch. The pipes are crooked and bent,  hoses are sliced open, and that's not even mentioning the bullet holes. Looks to be an older model as well.";
+	density = 1;
+	pixel_y = 16;
+	layer = 3.1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"yz" = (
+/obj/structure/largecrate/supply/ammo/m41a,
+/obj/structure/largecrate/supply/ammo/sentry{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"yL" = (
+/obj/structure/largecrate/supply,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"yO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"yR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"yS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/item/clothing/glasses/welding,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/warnplate/east,
+/area/adminlevel/ert_station/uscm_station)
+"yU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"yX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"yY" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"zi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"zm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/weldingtool,
+/turf/open/floor/plating/warnplate/west,
+/area/adminlevel/ert_station/uscm_station)
+"zo" = (
+/obj/structure/sign/safety/commline_connection{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/laser{
+	pixel_y = -32;
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"zr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"zs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"zt" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"zC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"zG" = (
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"zK" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/uscm_station)
+"zO" = (
+/obj/structure/largecrate/supply/floodlights,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"zQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"zT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"zU" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"zW" = (
+/obj/item/storage/box/bodybags{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/bodybags,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/o2{
+	layer = 2.8;
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/adminlevel/ert_station/uscm_station)
+"zZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"Ad" = (
+/obj/item/tool/warning_cone,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/uscm_station)
+"Am" = (
+/obj/structure/morgue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"AA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/red/east,
+/area/adminlevel/ert_station/uscm_station)
+"AR" = (
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"AT" = (
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Ba" = (
+/obj/structure/machinery/door_display/research_cell{
+	dir = 4;
+	id = "Containment Cell 4";
+	name = "Control Panel";
+	pixel_x = -15;
+	req_access_txt = "200"
+	},
+/obj/item/storage/fancy/cigarettes/blackpack{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/tool/lighter/zippo/gold{
+	pixel_x = 2
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"Bc" = (
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Bh" = (
+/obj/structure/ladder{
+	id = "regladder3";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Bk" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Bn" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/redfull/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"Bp" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Bs" = (
+/turf/open/floor/almayer_hull,
+/area/space)
+"Bv" = (
+/obj/structure/morgue/crematorium{
+	id = "crema"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Bz" = (
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -22
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"BF" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"BH" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"BI" = (
+/turf/closed/wall/almayer/outer,
+/area/space)
+"BJ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"BO" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"BQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"BS" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"BX" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	access_modified = 1;
+	dir = 2;
+	name = "Morgue";
+	req_access_txt = "25";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Ce" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = null;
+	explo_proof = 1;
+	locked = 1;
+	opacity = 1
+	},
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"Ch" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/weapon/gun/rifle/l42a/training,
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/uscm_station)
+"Cj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/uscm/directional/north,
+/area/adminlevel/ert_station/uscm_station)
+"Cl" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/lightreplacer,
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"Cx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"CC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"CF" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"CL" = (
+/turf/open/floor/podhatch/north,
+/area/adminlevel/ert_station/uscm_station)
+"CN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/visible{
+	dir = 4
+	},
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 14;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"CO" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"CR" = (
+/obj/structure/machinery/door/poddoor/almayer,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/uscm_station)
+"CS" = (
+/turf/open/floor/almayer/redcorner/west,
+/area/adminlevel/ert_station/uscm_station)
+"CT" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"Df" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"Dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"Dh" = (
+/obj/structure/largecrate/supply/explosives/mines,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Dj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"Dm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"Dp" = (
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Dw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	id = "regladder1";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Dy" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Dz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"DE" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"DH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"DM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/belt/utility/full,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"DR" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"DU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"DW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Ee" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"Ef" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 10
+	},
+/obj/structure/machinery/meter,
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"Ei" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 7
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"Ej" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/structure/ladder{
+	id = "regladder3";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Ek" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Eq" = (
+/obj/structure/bed/chair/office/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"Er" = (
+/turf/open/floor/almayer/sterile_green_side,
+/area/adminlevel/ert_station/uscm_station)
+"Eu" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"EA" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"EG" = (
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"EH" = (
+/obj/structure/machinery/chem_dispenser/medbay,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"EI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"EL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"EN" = (
+/obj/structure/bed/chair/office/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"EQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"ER" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/extinguisher,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"EY" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Fb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/maint{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Fg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Fm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"Fo" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Fq" = (
+/obj/structure/largecrate/random,
+/obj/item/ammo_magazine/pistol/holdout{
+	layer = 2
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Ft" = (
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
+/turf/open/floor/red/west,
+/area/adminlevel/ert_station/uscm_station)
+"Fx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/sign/safety/medical{
+	pixel_x = -20;
+	pixel_y = -7
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -20;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Fz" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"FB" = (
+/obj/structure/closet/secure_closet/chemical{
+	req_access_txt = "100"
+	},
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"FE" = (
+/obj/item/book/manual/security_space_law,
+/obj/item/tool/crowbar,
+/obj/structure/surface/table/almayer,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/item/storage/backpack/satchel,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"FG" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = -17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"FH" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"FX" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	name = "\improper Armory"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/redfull/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"FZ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ge" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/sign/safety/medical{
+	pixel_x = -16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Gf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/explosives/grenades,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Gg" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/ladder{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Gj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/warnplate/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"Gm" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	access_modified = 1;
+	name = "\improper Chemistry Laboratory";
+	req_access_txt = "20";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 7;
+	pixel_y = -29
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"Gn" = (
+/turf/open/floor/almayer/redfull,
+/area/adminlevel/ert_station/uscm_station)
+"Gv" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"GD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 14;
+	pixel_y = 31
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"GG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"GJ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"GK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"GL" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"GT" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "tcomms"
+	},
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	dir = 2;
+	name = "Telecommunications"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"GW" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	unacidable = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Ha" = (
+/obj/structure/sign/safety/firingrange,
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Hc" = (
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Hm" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"HE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/uscm/directional/west,
+/area/adminlevel/ert_station/uscm_station)
+"HG" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"HI" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/bronze{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/item/spacecash/c500{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"HK" = (
+/obj/item/paper_bin/wy,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/clicky,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"HM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/uscm_station)
+"HT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/warnplate/southeast,
+/area/adminlevel/ert_station/uscm_station)
+"HU" = (
+/obj/structure/ladder{
+	id = "regladder4";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ik" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"IE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"IH" = (
+/obj/docking_port/stationary/emergency_response/idle_port6{
+	name = "USS Kurtz Landing Pad"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"IJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/vehicle_spawner/apc_cmd/decrepit{
+	dir = 8;
+	pixel_y = -34;
+	pixel_x = -32
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"IN" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/podhatch,
+/area/adminlevel/ert_station/uscm_station)
+"IP" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = 30
+	},
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/mask/surgical,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/adminlevel/ert_station/uscm_station)
+"IV" = (
+/obj/structure/bed/chair/wheelchair,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/weapon/gun/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Jc" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Jd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/warnplate/west,
+/area/adminlevel/ert_station/uscm_station)
+"Je" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Jh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Ji" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/space)
+"Ju" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Jv" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/machinery/door_control/cl/quarter/windows{
+	pixel_x = 11;
+	pixel_y = 37
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"Jw" = (
+/turf/open/floor/almayer/orange/east,
+/area/adminlevel/ert_station/uscm_station)
+"JF" = (
+/obj/structure/machinery/telecomms/relay/preset/telecomms{
+	listening_level = 6
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"JI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange,
+/area/adminlevel/ert_station/uscm_station)
+"JO" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"JP" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Hallway";
+	req_one_access = null;
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"Ka" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"Kj" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"Kl" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	access_modified = 1;
+	name = "Autopsy";
+	req_one_access = null;
+	dir = 2
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/adminlevel/ert_station/uscm_station)
+"Kn" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Kq" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Ks" = (
+/obj/structure/machinery/line_nexter{
+	id = "line2";
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/adminlevel/ert_station/uscm_station)
+"Kt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"Kw" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ky" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"KS" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"KX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/weapon/gun/pistol/mod88/training,
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/uscm_station)
+"KY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = 16;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -16;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/warnplate/east,
+/area/adminlevel/ert_station/uscm_station)
+"KZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/uscm_station)
+"Lf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"Lg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Li" = (
+/obj/structure/machinery/telecomms/relay/preset/telecomms{
+	listening_level = 4
+	},
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"Lo" = (
+/obj/structure/foamed_metal/iron,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Lq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Lu" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/weapon/gun/pistol/m4a3/training,
+/turf/open/floor/almayer/red/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"Lx" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -11
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Ly" = (
+/obj/structure/largecrate/random/case{
+	pixel_y = -5
+	},
+/obj/structure/largecrate/random/case{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Lz" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	name = "\improper Armory";
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"LE" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/space)
+"LG" = (
+/obj/structure/ladder{
+	id = "engladder";
+	height = 2
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 1;
+	pixel_y = -29
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"LH" = (
+/turf/open/floor/almayer/uscm/directional/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"LJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/dam/crane/cargo{
+	dir = 4;
+	desc = "Standard cargo crane used by the USCM. Looks like this one has replacement parts for the Tripoli on it. You probably couldn't name half of these."
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"LN" = (
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"LO" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/structure/sign/safety/maint{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/adminlevel/ert_station/uscm_station)
+"Mj" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "tcomms"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/uscm_station)
+"Mn" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"Mz" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"MB" = (
+/obj/structure/filingcabinet/security,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"MJ" = (
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"MN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/minirocket{
+	pixel_y = 9;
+	layer = 3.1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"MP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"MV" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"MZ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/scalpel,
+/obj/item/tool/surgery/hemostat,
+/obj/item/tool/surgery/circular_saw,
+/obj/item/tool/surgery/cautery,
+/obj/item/tool/surgery/retractor,
+/turf/open/floor/podhatch/southwest,
+/area/adminlevel/ert_station/uscm_station)
+"Ny" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"NE" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"NN" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"NQ" = (
+/turf/open/floor/almayer/uscm/directional/southeast,
+/area/adminlevel/ert_station/uscm_station)
+"NU" = (
+/turf/open/floor/red/west,
+/area/adminlevel/ert_station/uscm_station)
+"Od" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo_arrow/west,
+/area/adminlevel/ert_station/uscm_station)
+"Oh" = (
+/obj/structure/bed/roller,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"Ol" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Ow" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	dir = 2;
+	explo_proof = 1;
+	locked = 1
+	},
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"OA" = (
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"OE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"OM" = (
+/turf/open/floor/almayer/cargo_arrow/north,
+/area/adminlevel/ert_station/uscm_station)
+"ON" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"OR" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	req_access = null
+	},
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"OU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/vehicle_spawner/arc{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Pa" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz2";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"Po" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Pr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Pt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Pw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Px" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"PC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"PD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"PE" = (
+/obj/structure/ladder{
+	id = "regladder4";
+	height = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"PH" = (
+/obj/structure/sign/safety/firingrange{
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"PK" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = -18
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"PL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/warnplate/east,
+/area/adminlevel/ert_station/uscm_station)
+"PT" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/open/floor/podhatch/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"Qa" = (
+/obj/structure/largecrate/random/case/double{
+	layer = 2.98
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Qd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/east,
+/area/adminlevel/ert_station/uscm_station)
+"Qf" = (
+/obj/structure/closet/secure_closet/personal/patient{
+	name = "morgue closet"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Qj" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Qm" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Qt" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"Qu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Qv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"QB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"QC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/adminlevel/ert_station/uscm_station)
+"QD" = (
+/obj/structure/machinery/cm_vending/sorted/tech/circuits,
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"QI" = (
+/obj/item/tool/warning_cone,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"QL" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"QU" = (
+/obj/effect/vehicle_spawner/van/fixed{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Ra" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/sterile_green_corner,
+/area/adminlevel/ert_station/uscm_station)
+"Rg" = (
+/turf/open/floor/almayer/sterile_green_side/southeast,
+/area/adminlevel/ert_station/uscm_station)
+"Rh" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz3";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"Rj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control{
+	id = "tcomms";
+	name = "Telecommunications Entrance";
+	pixel_y = 23
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Rl" = (
+/obj/structure/ship_ammo/rocket/napalm,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Rv" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ry" = (
+/obj/structure/sign/safety/medical{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 16;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"RA" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"RE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"RI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"RJ" = (
+/turf/open/floor/almayer/no_build,
+/area/adminlevel/ert_station/uscm_station)
+"RL" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/adminlevel/ert_station/uscm_station)
+"RP" = (
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"RR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"RW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"Sj" = (
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/uscm_station)
+"SC" = (
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/shotgun/combat,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/structure/surface/rack,
+/turf/open/floor/red/east,
+/area/adminlevel/ert_station/uscm_station)
+"SF" = (
+/turf/open/floor/plating,
+/area/space)
+"SP" = (
+/obj/structure/ladder{
+	id = "regladder6";
+	height = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"SX" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	access_modified = 1;
+	name = "Morgue";
+	req_access_txt = "25";
+	req_one_access = null
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Td" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/fuelcell_recycler,
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Th" = (
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8
+	},
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Tm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Tr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/mass_spectrometer,
+/obj/item/device/mass_spectrometer,
+/obj/item/reagent_container/dropper,
+/obj/item/reagent_container/dropper,
+/obj/item/reagent_container/dropper,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/adminlevel/ert_station/uscm_station)
+"TB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/north,
+/area/adminlevel/ert_station/uscm_station)
+"TF" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	access_modified = 1;
+	dir = 2;
+	name = "Morgue";
+	req_access_txt = "25";
+	req_one_access = null
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"TH" = (
+/obj/structure/machinery/portable_atmospherics/powered/pump,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"TP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"TX" = (
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/props/ice_colony/barrel_yard.dmi';
+	icon_state = "pile_0";
+	name = "barrel pile";
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Ug" = (
+/obj/structure/pipes/unary/outlet_injector{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"Uh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/adminlevel/ert_station/uscm_station)
+"Ui" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Un" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/suit_storage_unit/carbon_unit,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Uy" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"UF" = (
+/obj/structure/barricade/plasteel/metal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"UH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platebot,
+/area/adminlevel/ert_station/uscm_station)
+"UL" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"UU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/adminlevel/ert_station/uscm_station)
+"Vc" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Ve" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Vk" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Vm" = (
+/obj/item/storage/box/monkeycubes,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"Vt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/adminlevel/ert_station/uscm_station)
+"Vx" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"VA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"VE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"VF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"VI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"VO" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"VT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"VZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Wd" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Wm" = (
+/obj/vehicle/powerloader{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Wq" = (
+/obj/structure/transmitter/rotary{
+	name = "CL Office Telephone";
+	phone_category = "Offices";
+	phone_id = "CL Office"
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/uscm_station)
+"Wr" = (
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Wv" = (
+/obj/structure/largecrate/random/case{
+	pixel_y = 11
+	},
+/obj/structure/largecrate/random/case,
+/obj/structure/largecrate/random/case{
+	pixel_y = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"Wz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/adminlevel/ert_station/uscm_station)
+"WE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"WO" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"WU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/uscm_station)
+"WV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"WW" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = -26;
+	pixel_y = -32
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 8;
+	pixel_x = -13
+	},
+/turf/open/floor/almayer/cargo_arrow,
+/area/adminlevel/ert_station/uscm_station)
+"Xb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 30;
+	pixel_x = 31
+	},
+/turf/open/floor/almayer/sterile_green_side/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Xd" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/liaison_suit,
+/obj/item/clothing/under/liaison_suit/formal,
+/obj/item/clothing/under/liaison_suit/suspenders,
+/obj/item/clothing/under/liaison_suit/outing,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Xh" = (
+/obj/structure/bookcase{
+	density = 0
+	},
+/obj/item/book/manual/engineering_hacking,
+/obj/item/book/manual/nuclear,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/uscm_station)
+"Xz" = (
+/obj/structure/largecrate/random,
+/obj/item/ammo_magazine/pistol/holdout{
+	layer = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"XA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"XB" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/item/hardpoint/special/firing_port_weapon,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"XC" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 5;
+	pixel_x = -13
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"XJ" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"XM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"XT" = (
+/obj/structure/machinery/computer/telecomms/monitor,
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
+"XX" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/uscm_station)
+"Yp" = (
+/obj/structure/machinery/pipedispenser,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Yq" = (
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/adminlevel/ert_station/uscm_station)
+"Ys" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/adminlevel/ert_station/uscm_station)
+"YJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/almayer/sterile_green_side,
+/area/adminlevel/ert_station/uscm_station)
+"YM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/uscm_station)
+"YP" = (
+/turf/open/floor/almayer/uscm/directional/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"YV" = (
+/obj/structure/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/engine,
+/area/adminlevel/ert_station/uscm_station)
+"YY" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/sign/safety/life_support{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"YZ" = (
+/obj/structure/machinery/telecomms/server/presets,
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"Zb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"Zd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/uscm_station)
+"Ze" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/uscm_station)
+"Zf" = (
+/obj/structure/prop/almayer/name_stencil{
+	icon_state = "kurtz4";
+	name = "USS Kurtz"
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"Zj" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/uscm_station)
+"Zm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green_side/northwest,
+/area/adminlevel/ert_station/uscm_station)
+"Zp" = (
+/turf/open/space,
+/area/space)
+"Zs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"Zx" = (
+/obj/structure/machinery/telecomms/bus,
+/turf/open/floor/almayer/tcomms,
+/area/adminlevel/ert_station/uscm_station)
+"ZI" = (
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
+/turf/open/floor/red/west,
+/area/adminlevel/ert_station/uscm_station)
+"ZM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/ert_station/uscm_station)
+"ZS" = (
+/obj/structure/target,
+/turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+
+(1,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(2,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(3,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(4,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(5,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+zK
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+zK
+zK
+tE
+NU
+ZI
+ZI
+Ft
+Ft
+hJ
+zK
+zK
+Zp
+Zp
+Zp
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(6,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+GW
+GW
+GW
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+wx
+wr
+wr
+wr
+Bn
+rS
+ep
+zK
+zK
+rr
+LE
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(7,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+SP
+mh
+nS
+WW
+jd
+zK
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+zK
+ej
+DW
+XM
+Zd
+DW
+Lz
+xl
+aF
+fh
+SC
+nw
+AA
+fz
+zK
+zK
+Bs
+fw
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(8,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+hO
+OM
+ks
+ir
+sb
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+mD
+fN
+ji
+ji
+ji
+ji
+ji
+ji
+zK
+FX
+zK
+zK
+zK
+aJ
+zK
+zK
+zK
+aJ
+zK
+zK
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(9,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Dy
+sU
+VF
+sU
+rj
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+LO
+Uh
+ym
+tC
+mD
+PT
+MZ
+mD
+Bz
+BJ
+si
+Hc
+YZ
+OA
+YZ
+YZ
+YZ
+OA
+hi
+zK
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(10,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+HU
+OM
+ks
+Lg
+Bk
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+VZ
+mD
+Qt
+CO
+CO
+Er
+Kl
+CL
+IN
+mD
+qL
+ks
+qL
+Hc
+YZ
+OA
+OA
+OA
+OA
+OA
+hi
+zK
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(11,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Bh
+Ad
+PD
+fu
+dR
+vo
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+aw
+CO
+CO
+Er
+mD
+jk
+cU
+mD
+Lg
+ks
+Dp
+Hc
+YZ
+OA
+OA
+Zx
+Zx
+OA
+hi
+zK
+LE
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(12,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+GW
+GW
+GW
+GW
+GW
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+WU
+Ik
+gl
+Er
+mD
+mD
+mD
+mD
+ms
+PD
+fV
+Hc
+YZ
+OA
+qy
+Zx
+Zx
+OA
+hi
+zK
+fw
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(13,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+hY
+fY
+oC
+fi
+EN
+pM
+qQ
+mp
+Dp
+bY
+Hc
+Hc
+Hc
+xX
+OA
+OA
+OA
+OA
+zo
+zK
+zK
+Zp
+Zp
+Zp
+Zp
+Zp
+"}
+(14,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Zd
+mD
+Oh
+IE
+IE
+Dm
+BQ
+Vm
+YJ
+rP
+sU
+Qj
+Mj
+tx
+Mj
+OA
+OA
+OA
+OA
+OA
+cp
+zK
+zK
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(15,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+FB
+VO
+BF
+Ys
+Xb
+Rg
+Yq
+mD
+ms
+nu
+Hc
+Hc
+Hc
+jW
+fE
+Li
+JF
+fE
+OA
+GT
+DW
+zK
+zK
+Zp
+Zp
+Zp
+"}
+(16,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+RE
+mD
+mD
+mD
+mD
+mD
+ph
+Er
+mD
+mD
+vI
+Ky
+yg
+Hc
+Zx
+OA
+Hc
+EY
+EY
+EY
+Hc
+Hc
+Rj
+Hc
+zK
+Zp
+Zp
+Zp
+"}
+(17,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+DW
+mD
+IP
+sL
+zG
+mD
+ph
+fi
+OR
+mD
+Lg
+ks
+Lg
+Hc
+Zx
+OA
+EY
+iD
+xP
+XT
+iD
+Hc
+Zd
+uM
+zK
+Zp
+Zp
+Zp
+"}
+(18,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Ji
+rr
+rr
+zK
+DW
+sj
+Vt
+TP
+RL
+ja
+zC
+CO
+bU
+mD
+Lg
+ks
+Lg
+Hc
+Zx
+OA
+EY
+eW
+Ka
+eF
+pD
+tx
+DW
+hc
+zK
+Zp
+Zp
+Zp
+"}
+(19,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+qE
+Bs
+Bs
+zK
+DW
+mD
+Ra
+xu
+ci
+mD
+vu
+mM
+iY
+mD
+fI
+NE
+FZ
+Hc
+Zx
+OA
+EY
+pD
+VA
+zZ
+pD
+Hc
+DW
+Xz
+zK
+Zp
+Zp
+Zp
+"}
+(20,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+qE
+Bs
+Bs
+zK
+DW
+mD
+mD
+vG
+Gm
+mD
+mD
+mD
+mD
+mD
+GD
+Hc
+ks
+Hc
+Hc
+Hc
+Hc
+AR
+di
+pD
+Df
+Hc
+DW
+Hc
+zK
+Zp
+Zp
+Zp
+"}
+(21,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+qE
+Bs
+zK
+zK
+DW
+xA
+mD
+lz
+bl
+LN
+Uh
+LN
+Tr
+vG
+Qv
+Kw
+xw
+Hc
+pD
+pD
+pD
+AR
+di
+Eq
+th
+Hc
+DW
+Hc
+zK
+Zp
+Zp
+Zp
+"}
+(22,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+qE
+Bs
+zK
+PC
+Zd
+au
+mD
+Fz
+fn
+Dm
+dT
+pP
+Er
+in
+Dp
+yY
+EQ
+ra
+dQ
+nK
+wo
+UL
+cG
+BO
+ER
+Hc
+DW
+om
+zK
+Zp
+Zp
+Zp
+"}
+(23,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+zK
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+zK
+DW
+mD
+mD
+mD
+lH
+EH
+cW
+KS
+mx
+iv
+vG
+Dp
+PD
+Lg
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+DW
+GL
+zK
+Zp
+Zp
+Zp
+"}
+(24,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+GW
+GW
+GW
+zK
+zK
+zK
+zK
+CR
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+zK
+DW
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+Dp
+ks
+Fb
+Hc
+kA
+oh
+vy
+zm
+Jd
+iO
+Gj
+Hc
+DW
+Fq
+zK
+Zp
+Zp
+Zp
+"}
+(25,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+Lx
+nS
+XC
+XX
+CF
+Lg
+WO
+CR
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+zK
+Zd
+mD
+ac
+ac
+ac
+jA
+ac
+ac
+ac
+vF
+mD
+Dp
+ks
+QI
+to
+ak
+PL
+yS
+lA
+PL
+KY
+HT
+Hc
+DW
+Hc
+zK
+Zp
+Zp
+Zp
+"}
+(26,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+Od
+Qv
+nH
+YM
+xF
+FZ
+zK
+CR
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+aW
+mD
+MJ
+MJ
+MJ
+xU
+WE
+ot
+nH
+nH
+BX
+sU
+ei
+Lg
+Hc
+Hc
+Hc
+Hc
+iM
+Hc
+Hc
+UH
+Hc
+DW
+Hc
+zK
+LE
+Zp
+Zp
+"}
+(27,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+Ks
+lY
+kE
+rw
+Lg
+Dp
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+Rv
+FG
+Rv
+Rv
+Rv
+Rv
+Rv
+Rv
+Rv
+MJ
+mD
+vv
+ks
+Dp
+Hc
+Lo
+Hc
+RW
+es
+aC
+Hc
+UH
+DW
+DW
+Xz
+zK
+fw
+Zp
+Zp
+"}
+(28,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+wH
+Eu
+zK
+zK
+dP
+Ow
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+Bv
+Rv
+pF
+pF
+pF
+Rv
+pF
+pF
+pF
+MJ
+mD
+tD
+fj
+MJ
+Hc
+Lo
+Hc
+Hc
+wN
+Hc
+Hc
+Hc
+Hc
+Zd
+Xz
+zK
+zK
+Zp
+Zp
+"}
+(29,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+wA
+wt
+zK
+fe
+Dg
+mw
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+mD
+tY
+ac
+ac
+ac
+qL
+Am
+Am
+Am
+MJ
+mD
+tD
+fj
+MJ
+Hc
+Lo
+Lo
+Hc
+Hc
+Hc
+IV
+DW
+XM
+DW
+DW
+DW
+zK
+Zp
+Zp
+"}
+(30,1,1) = {"
+kZ
+kZ
+kZ
+zK
+kL
+rs
+rs
+JP
+RJ
+Po
+LG
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+Qf
+Rv
+tD
+MJ
+MJ
+qL
+tD
+tD
+tD
+MJ
+mD
+Ry
+ks
+Dp
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+dz
+zK
+Zp
+Zp
+"}
+(31,1,1) = {"
+kZ
+kZ
+kZ
+zK
+cy
+nN
+cy
+zK
+lG
+CC
+ux
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+Rv
+qL
+Rv
+Rv
+Rv
+Rv
+Rv
+Rv
+Rv
+qL
+TF
+Dp
+ks
+Dp
+EY
+Sj
+hq
+HK
+Ba
+AT
+Hc
+li
+pi
+Ei
+ws
+Xh
+zK
+Zp
+Zp
+"}
+(32,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+Ce
+zK
+zK
+tR
+zK
+zK
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+qE
+Bs
+ji
+pF
+Rv
+pF
+pF
+pF
+tf
+pF
+pF
+pF
+Ol
+mD
+Dp
+PD
+Dp
+EY
+Sj
+wI
+HI
+hq
+AT
+Hc
+GJ
+Jv
+Sj
+AT
+AT
+zK
+Zp
+Zp
+"}
+(33,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+kZ
+kZ
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+zK
+zK
+ji
+mD
+SX
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+Lg
+ks
+Dp
+Hc
+Sj
+hq
+ty
+bB
+AT
+Hc
+xB
+hq
+hq
+AT
+AT
+zK
+Zp
+Zp
+"}
+(34,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+Ly
+Rv
+MJ
+tD
+GG
+Fx
+eb
+eb
+eb
+eb
+FZ
+MJ
+yg
+Hc
+Lg
+jZ
+sU
+vc
+BS
+uY
+hm
+Wq
+AT
+Hc
+eY
+hq
+hq
+AT
+fQ
+zK
+Zp
+Zp
+"}
+(35,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+Wv
+hz
+lP
+lP
+ON
+hW
+lP
+lP
+mw
+Px
+LJ
+MJ
+tD
+lE
+Lg
+ks
+pS
+Hc
+zT
+oT
+oT
+oT
+GK
+Wr
+uL
+oT
+oT
+Qu
+Xd
+zK
+Zp
+Zp
+"}
+(36,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+dK
+bX
+qI
+qI
+qI
+qI
+qI
+qI
+DW
+er
+jZ
+WE
+ot
+ot
+sU
+Qj
+us
+Hc
+AT
+AT
+AT
+AT
+AT
+Hc
+MB
+hq
+hq
+jP
+im
+zK
+Zp
+Zp
+"}
+(37,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+dK
+bX
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+hw
+Qj
+MJ
+MJ
+Hc
+Dp
+PD
+Lg
+EY
+AT
+AT
+ka
+AT
+AT
+Hc
+lR
+hq
+Hm
+FE
+pI
+zK
+Zp
+Zp
+"}
+(38,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+dK
+Pt
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+pR
+PD
+MJ
+st
+EY
+fI
+NE
+FZ
+EY
+AT
+AT
+AT
+AT
+AT
+Hc
+Hc
+dW
+zK
+zK
+zK
+zK
+Zp
+Zp
+"}
+(39,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+dK
+Pt
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+Lq
+ks
+tD
+yg
+Hc
+PD
+Hc
+PD
+Hc
+qH
+jn
+vm
+Sj
+qH
+Hc
+bc
+Zd
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+"}
+(40,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+OM
+Pt
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+pR
+ks
+tD
+Hc
+Hc
+rG
+Kw
+mO
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+DW
+DW
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+"}
+(41,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+OM
+Pt
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+hw
+ei
+tD
+EY
+rd
+Dp
+PD
+Dp
+iK
+Hc
+et
+au
+qi
+af
+Hc
+RE
+Hc
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+"}
+(42,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+mR
+OM
+Pt
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+pR
+ks
+tD
+EY
+sa
+YP
+HE
+LH
+Dw
+Hc
+au
+Uu
+DW
+DW
+DW
+DW
+DW
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+"}
+(43,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+QL
+lf
+Gf
+Dz
+Zs
+su
+ag
+ag
+ag
+Pr
+ks
+tD
+EY
+Dy
+Cj
+mk
+iF
+rj
+Hc
+hc
+DW
+DW
+DH
+Hc
+mv
+DW
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+"}
+(44,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+Ui
+MJ
+Wm
+MJ
+Qv
+nH
+yd
+eb
+eb
+hB
+ei
+tD
+EY
+PE
+wF
+hk
+NQ
+hu
+Hc
+xT
+DW
+Zd
+DW
+Hc
+Hc
+DW
+zK
+Bs
+fw
+kZ
+kZ
+kZ
+"}
+(45,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+yz
+Dh
+MJ
+mD
+mD
+mD
+QC
+rW
+uR
+mD
+PD
+MJ
+EY
+Ej
+sU
+NE
+sU
+sG
+pX
+DW
+DW
+bc
+bc
+Hc
+DW
+DW
+zK
+Bs
+qr
+kZ
+kZ
+kZ
+"}
+(46,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+zK
+zK
+Hc
+Hc
+mD
+UU
+HG
+Zm
+CO
+ba
+uR
+PD
+MJ
+Hc
+Ky
+Fo
+xL
+MJ
+yO
+Hc
+Hc
+Hc
+Hc
+Hc
+Hc
+Bp
+Hc
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(47,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+ww
+zK
+Lo
+Hc
+mD
+NN
+IE
+gj
+CO
+Er
+mD
+PD
+tD
+tD
+ks
+tD
+tD
+MJ
+PD
+st
+MV
+RP
+MP
+iW
+PK
+MJ
+Vk
+qT
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(48,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+zK
+Lo
+Hc
+mD
+kQ
+du
+iS
+CO
+zW
+uR
+yY
+eb
+eb
+pg
+eb
+yd
+eb
+pg
+eb
+nH
+nH
+eb
+eb
+eb
+xb
+EI
+tD
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(49,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+zK
+zK
+zK
+ji
+mD
+uR
+nY
+fc
+uR
+mD
+PD
+tD
+tD
+qL
+tD
+fj
+tD
+qL
+tD
+MJ
+Rl
+MN
+iP
+tM
+tD
+PD
+MJ
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(50,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+qE
+Bs
+zK
+tD
+tD
+yY
+nH
+nH
+Ge
+lN
+MJ
+MJ
+Rv
+MJ
+kf
+MJ
+Rv
+MJ
+tD
+tD
+MN
+MJ
+tM
+tD
+PD
+MJ
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(51,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+ww
+lZ
+zK
+XA
+Px
+PD
+MJ
+MJ
+fp
+jX
+Ve
+DU
+Rv
+rm
+Ve
+DU
+Rv
+rm
+Ve
+Ve
+Ve
+jX
+Kq
+tD
+nP
+ps
+zK
+kZ
+kZ
+kZ
+kZ
+"}
+(52,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+pR
+PD
+QU
+Rv
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+IH
+Jh
+fI
+yR
+ir
+mR
+kZ
+kZ
+kZ
+kZ
+"}
+(53,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+er
+jZ
+ot
+rj
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+ZM
+kf
+zr
+ir
+mR
+kZ
+kZ
+kZ
+kZ
+"}
+(54,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+er
+ks
+MJ
+tD
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+tD
+MJ
+zr
+ir
+mR
+kZ
+kZ
+kZ
+kZ
+"}
+(55,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+er
+ks
+MJ
+qL
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+tD
+MJ
+zr
+ir
+mR
+Zp
+Zp
+Zp
+Zp
+"}
+(56,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+KZ
+er
+ks
+MJ
+tD
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+MJ
+MJ
+zr
+ir
+mR
+Zp
+Zp
+Zp
+Zp
+"}
+(57,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+er
+jZ
+ot
+zt
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+vA
+OE
+zr
+ir
+mR
+Zp
+Zp
+Zp
+Zp
+"}
+(58,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+mR
+dK
+OU
+ks
+MJ
+Rv
+Vx
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+qI
+Jh
+Ii
+yR
+ir
+mR
+Zp
+Zp
+Zp
+Zp
+"}
+(59,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+kZ
+zK
+QB
+yr
+PD
+MJ
+MJ
+uu
+gU
+zs
+VT
+Rv
+gd
+zs
+VT
+Rv
+gd
+zs
+zs
+zs
+gU
+zU
+tD
+EL
+WV
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(60,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+Ji
+zK
+tD
+tD
+PD
+MJ
+tD
+tD
+MJ
+MJ
+MJ
+Rv
+MJ
+Qm
+MJ
+Rv
+MJ
+MJ
+MJ
+MJ
+MP
+tD
+tD
+PD
+tD
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(61,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+qE
+zK
+MP
+tD
+Qv
+nH
+yd
+EI
+MJ
+MJ
+MJ
+qL
+tD
+fj
+tD
+qL
+tD
+tD
+MJ
+MJ
+tD
+tD
+tD
+oe
+tD
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(62,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+qE
+zK
+Hc
+Hc
+Hc
+MJ
+Ky
+Qv
+nH
+bV
+TX
+Mz
+yd
+pg
+yd
+eb
+eb
+eb
+nH
+nH
+eb
+eb
+nH
+tP
+qc
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(63,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+qE
+zK
+Lo
+Lo
+Hc
+MJ
+Ky
+PH
+Vk
+vx
+vx
+vx
+ks
+tD
+PD
+tD
+MJ
+yx
+MJ
+md
+MJ
+gQ
+lj
+iE
+iW
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(64,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+Zp
+Zp
+Zp
+qE
+zK
+zK
+zK
+Hc
+MJ
+yO
+Hc
+Hc
+vx
+vx
+Gg
+PD
+Ju
+PD
+tD
+MJ
+MJ
+Hc
+Hc
+zK
+zK
+zK
+zK
+zK
+zK
+Zp
+Zp
+Zp
+Zp
+"}
+(65,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+kZ
+kZ
+qE
+Bs
+mY
+RA
+Lu
+Dp
+Kn
+uG
+Hc
+Hc
+Hc
+Hc
+Je
+Hc
+Je
+ek
+Hc
+Hc
+Hc
+kX
+zK
+EG
+EG
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+Zp
+"}
+(66,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+kZ
+kZ
+qE
+Bs
+Bs
+RA
+KX
+Lg
+wW
+CS
+eL
+FH
+Hc
+Ze
+PD
+MJ
+PD
+yg
+Hc
+Yp
+qL
+kb
+xn
+nc
+gE
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+Zp
+"}
+(67,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+kZ
+kZ
+qE
+Bs
+Pa
+RA
+Ch
+fI
+NE
+FZ
+oD
+FH
+Hc
+Ze
+PD
+MJ
+sN
+iW
+Hc
+Td
+qL
+CT
+zK
+EG
+EG
+zK
+Bs
+fw
+Zp
+Zp
+Zp
+Zp
+"}
+(68,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+Zp
+Zp
+kZ
+kZ
+kZ
+qE
+Bs
+Bs
+RA
+Vc
+lN
+Rv
+Qv
+nq
+Lg
+Hc
+BH
+ks
+tD
+PD
+YY
+Hc
+Un
+qL
+CN
+zK
+zK
+zK
+zK
+Bs
+qr
+Zp
+Zp
+Zp
+Zp
+"}
+(69,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+Rh
+RA
+tw
+tw
+aD
+tw
+uF
+UF
+Hc
+BH
+Ii
+yd
+lN
+Rv
+oU
+qL
+wE
+CT
+zK
+EG
+EG
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(70,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+Bs
+RA
+ah
+Gn
+fP
+Gn
+Cx
+yX
+Hc
+BH
+qL
+jZ
+nH
+nH
+nH
+nH
+FZ
+Ef
+xn
+Ug
+YV
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(71,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+Zf
+zK
+ah
+Gn
+zQ
+rC
+cZ
+Ha
+Hc
+zt
+ot
+Qj
+MJ
+MJ
+Th
+TH
+PD
+JI
+zK
+EG
+EG
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(72,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+Bs
+zK
+ah
+Gn
+zQ
+rC
+cZ
+EY
+cf
+tD
+Ny
+PD
+MJ
+df
+Hc
+TH
+PD
+gY
+zK
+zK
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(73,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+nQ
+zK
+ZS
+Gn
+zQ
+rC
+cZ
+EY
+ec
+tD
+tD
+PD
+MJ
+df
+Hc
+dH
+kf
+tD
+MJ
+Gv
+wO
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(74,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+Bs
+zK
+nd
+hy
+zQ
+rC
+cZ
+Hc
+Hc
+yq
+xK
+PD
+tl
+zO
+Hc
+dH
+Rv
+qL
+tD
+Wd
+wO
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(75,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+qE
+Bs
+od
+zK
+nd
+rC
+fP
+nJ
+nW
+dX
+Hc
+Hc
+Hc
+ab
+Hc
+Hc
+Hc
+Qa
+MJ
+tD
+MJ
+Gv
+dy
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(76,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+ww
+lZ
+lZ
+zK
+VE
+rC
+Zb
+Gn
+rD
+zK
+zK
+zK
+DE
+lO
+sg
+zK
+zK
+zK
+if
+py
+qx
+Gv
+dy
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(77,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+kZ
+zK
+EA
+lO
+ul
+zK
+kZ
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(78,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+EA
+lO
+sy
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(79,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+ip
+lO
+sy
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(80,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+ip
+lO
+nd
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(81,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+zK
+iq
+Jc
+zi
+zK
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(82,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+zK
+wc
+lO
+nd
+zK
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(83,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+yL
+lO
+nd
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(84,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+yL
+eG
+nd
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(85,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+RA
+yL
+eG
+nd
+RA
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(86,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+kZ
+zK
+Wz
+DR
+Mn
+zK
+kZ
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(87,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+kZ
+BI
+zK
+ab
+Hc
+ab
+zK
+zK
+kZ
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(88,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+SF
+zK
+zK
+RJ
+Dj
+tD
+Kt
+QD
+zK
+zK
+SF
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(89,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+XB
+do
+Fm
+Pw
+Lf
+RJ
+rY
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(90,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+cz
+na
+hn
+JI
+yf
+TB
+rs
+rs
+Kj
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(91,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+RR
+Bc
+mr
+dP
+qu
+mF
+rs
+rs
+RJ
+RA
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(92,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Bc
+IJ
+mr
+ow
+RI
+Cl
+wi
+rs
+RJ
+RA
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(93,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Bc
+RR
+Ek
+dP
+Tm
+nv
+RJ
+rs
+rs
+aM
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(94,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+Bc
+RR
+Ek
+yU
+mw
+Ee
+Jw
+Qd
+Qd
+aM
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(95,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+VI
+lu
+XJ
+Po
+aP
+lI
+tD
+MJ
+JO
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(96,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+zK
+zK
+dl
+dj
+HM
+Fg
+ue
+cy
+Zj
+zK
+zK
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(97,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+ww
+zK
+zK
+RJ
+Ze
+BH
+Uy
+DM
+zK
+zK
+qr
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(98,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+ww
+zK
+zK
+zK
+zK
+zK
+zK
+zK
+qr
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(99,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}
+(100,1,1) = {"
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+"}

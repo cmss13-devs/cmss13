@@ -78,7 +78,7 @@
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
 	var/overlay_content = "_reg"
-	var/magazine_type = /obj/item/ammo_magazine/rifle
+	var/obj/item/ammo_magazine/magazine_type = /obj/item/ammo_magazine/rifle
 	var/num_of_magazines = 10
 	var/handfuls = FALSE
 	var/icon_state_deployed = null
@@ -126,10 +126,10 @@
 	if(src.loc != user) //feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
-		if(contents.len < (num_of_magazines/3))
+		if(length(contents) < (num_of_magazines/3))
 			. += SPAN_INFO("It feels almost empty.")
 			return
-		if(contents.len < ((num_of_magazines*2)/3))
+		if(length(contents) < ((num_of_magazines*2)/3))
 			. += SPAN_INFO("It feels about half full.")
 			return
 		. += SPAN_INFO("It feels almost full.")
@@ -206,11 +206,11 @@
 	if(handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
-			severity = round(AM.current_rounds / 40)
+			severity = floor(AM.current_rounds / 40)
 	else
 		for(var/obj/item/ammo_magazine/AM in contents)
 			severity += AM.current_rounds
-		severity = round(severity / 150)
+		severity = floor(severity / 150)
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)
@@ -401,7 +401,7 @@
 	return
 
 /obj/item/ammo_box/rounds/get_severity()
-	return round(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
+	return floor(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
 
 /obj/item/ammo_box/rounds/process_burning(datum/cause_data/flame_cause_data)
 	if(can_explode)

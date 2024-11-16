@@ -2,6 +2,7 @@
 	name = "Marine Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine
 	pay_multiplier = 1.6
+	default_faction = FACTION_MARINE
 
 // ENLISTED PAYGRADES
 
@@ -110,6 +111,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
 	ranking = 12
 	pay_multiplier = 3
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o2
 	paygrade = PAY_SHORT_MO2
@@ -118,6 +120,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o2
 	ranking = 13
 	pay_multiplier = 3.2
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o3
 	paygrade = PAY_SHORT_MO3
@@ -126,6 +129,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o3
 	ranking = 14
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o4
 	paygrade = PAY_SHORT_MO4
@@ -134,6 +138,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o4
 	ranking = 15
 	pay_multiplier = 4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o5
 	paygrade = PAY_SHORT_MO5
@@ -142,6 +147,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o5
 	ranking = 16
 	pay_multiplier = 4.2
+	officer_grade = GRADE_OFFICER
 
 //Platoon Commander
 /datum/paygrade/marine/o6
@@ -151,6 +157,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6
 	ranking = 17
 	pay_multiplier = 4.4
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o6e
 	paygrade = PAY_SHORT_MO6E
@@ -159,6 +166,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6e
 	ranking = 18
 	pay_multiplier = 4.6
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/marine/o6c
 	paygrade = PAY_SHORT_MO6C
@@ -167,6 +175,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6c
 	ranking = 19
 	pay_multiplier = 4.8
+	officer_grade = GRADE_OFFICER
 
 //High Command
 /datum/paygrade/marine/o7
@@ -176,6 +185,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o7
 	ranking = 20
 	pay_multiplier = 6
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/marine/o8
 	paygrade = PAY_SHORT_MO8
@@ -184,6 +194,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o8
 	ranking = 21
 	pay_multiplier = 6.2
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/marine/o9
 	paygrade = PAY_SHORT_MO9
@@ -192,6 +203,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o9
 	ranking = 22
 	pay_multiplier = 6.4
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/marine/o10
 	paygrade = PAY_SHORT_MO10
@@ -200,6 +212,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10
 	ranking = 23
 	pay_multiplier = 6.6
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/marine/o10c
 	paygrade = PAY_SHORT_MO10C
@@ -208,6 +221,7 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
 	ranking = 24
 	pay_multiplier = 6.8
+	officer_grade = GRADE_FLAG
 
 /datum/paygrade/marine/o10s
 	paygrade = PAY_SHORT_MO10S
@@ -216,3 +230,14 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
 	ranking = 25
 	pay_multiplier = 7
+	officer_grade = GRADE_FLAG
+
+//Historical Background: Combat Dogs were given the lowest officer rank possible, they have no notional command but if someone were to abuse the animal, the offender could be charged with assaulting an officer.
+/datum/paygrade/marine/k9
+	paygrade = PAY_SHORT_SYN_K9
+	name = "Second Lieutenant Combat Lifesaver"
+	prefix = "2ndLt Combat Lifesaver"
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
+	ranking = 12
+	pay_multiplier = 0
+	officer_grade = GRADE_OFFICER

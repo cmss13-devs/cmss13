@@ -11,7 +11,7 @@
 	..()
 
 	// replace this by signals or trait signals
-	if(is_zoomed && (stat || body_position == LYING_DOWN))
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && is_zoomed && (stat || body_position == LYING_DOWN))
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
@@ -121,7 +121,7 @@
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -130,7 +130,8 @@
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
-		warding_aura = warding_new
+		if(health > crit_health || warding_new > warding_aura || !check_weeds_for_healing())
+			warding_aura = warding_new
 		recovery_aura = recovery_new
 		recalculate_move_delay = TRUE
 		hud_set_pheromone()
@@ -200,7 +201,7 @@
 			blinded = TRUE
 			set_stat(UNCONSCIOUS)
 		else
-			if(!interference)//If their connection to hivemind is affected, their vision should be too.
+			if(!HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))//If their connection to hivemind is affected, their vision should be too.
 				blinded = FALSE
 			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
@@ -214,13 +215,12 @@
 				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
-			handle_interference()
 
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/handle_stomach_contents()
 	//Deal with dissolving/damaging stuff in stomach.
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
@@ -251,7 +251,7 @@
 				hud_used.alien_armor_display.icon_state = "armor_00"
 		return TRUE
 
-	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
+	var/severity = HUD_PAIN_STATES_XENO - ceil(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
 		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, severity)
 	else
@@ -267,16 +267,11 @@
 	else if(client && !client.adminobs)
 		reset_view(null)
 
-	if(dazed)
-		overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
-	else
-		clear_fullscreen("dazed")
-
 	if(!hud_used)
 		return TRUE
 
 	if(hud_used.healths)
-		var/health_stacks = Ceiling((health / maxHealth) * HUD_HEALTH_STATES_XENO)
+		var/health_stacks = ceil((health / maxHealth) * HUD_HEALTH_STATES_XENO)
 		hud_used.healths.icon_state = "health_[health_stacks]"
 		if(health_stacks >= HUD_HEALTH_STATES_XENO)
 			hud_used.healths.icon_state = "health_full"
@@ -288,7 +283,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		else
 			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
-			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
+			hud_used.alien_plasma_display.icon_state = "power_display_[ceil(plasma_stacks)]"
 			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
 				hud_used.alien_plasma_display.icon_state = "power_display_full"
 			else if(plasma_stacks <= 0)
@@ -296,9 +291,16 @@
 
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
-		hud_used.alien_armor_display.icon_state = "armor_[Floor(armor_stacks)]0"
+		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
 
 	return TRUE
+
+/mob/living/carbon/xenomorph/on_dazed_trait_gain(datum/source)
+	. = ..()
+	overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
+/mob/living/carbon/xenomorph/on_dazed_trait_loss(datum/source)
+	. = ..()
+	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
 Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
@@ -339,7 +341,7 @@ Make sure their actual health updates immediately.*/
 			if(!hive) return // can't heal if you have no hive, sorry bud
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
-				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
@@ -389,75 +391,58 @@ Make sure their actual health updates immediately.*/
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
 /mob/living/carbon/xenomorph/proc/queen_locator()
-	if(!hud_used || !hud_used.locate_leader)
+	if(!hud_used?.locate_leader)
 		return
 
-	var/atom/movable/screen/queen_locator/QL = hud_used.locate_leader
-	if(!loc)
-		QL.icon_state = "trackoff"
+	var/atom/movable/screen/queen_locator/locator = hud_used.locate_leader
+	if(!loc || !hive)
+		locator.reset_tracking()
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state[1])
+	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
-			if(!hive || !hive.living_xeno_queen)
-				QL.icon_state = "trackoff"
-				return
 			tracking_atom = hive.living_xeno_queen
 		if(TRACKER_HIVE)
-			if(!hive || !hive.hive_location)
-				QL.icon_state = "trackoff"
-				return
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)
-			if(!QL.track_state[2])
-				QL.icon_state = "trackoff"
-				return
-
-			var/leader_tracker = QL.track_state[2]
-
-			if(!hive || !hive.xeno_leader_list)
-				QL.icon_state = "trackoff"
-				return
-			if(leader_tracker > hive.xeno_leader_list.len)
-				QL.icon_state = "trackoff"
-				return
-			if(!hive.xeno_leader_list[leader_tracker])
-				QL.icon_state = "trackoff"
-				return
-			tracking_atom = hive.xeno_leader_list[leader_tracker]
+			var/atom/leader = locator.tracking_ref?.resolve()
+			// If the leader exists, and is actually in the leader list.
+			if(leader && (leader in hive.xeno_leader_list))
+				tracking_atom = leader
 		if(TRACKER_TUNNEL)
-			if(!QL.track_state[2])
-				QL.icon_state = "trackoff"
-				return
+			tracking_atom = locator.tracking_ref?.resolve()
 
-			var/tunnel_tracker = QL.track_state[2]
-
-			if(!hive || !hive.tunnels)
-				QL.icon_state = "trackoff"
-				return
-			if(tunnel_tracker > hive.tunnels.len)
-				QL.icon_state = "trackoff"
-				return
-			if(!hive.tunnels[tunnel_tracker])
-				QL.icon_state = "trackoff"
-				return
-			tracking_atom = hive.tunnels[tunnel_tracker]
-
+	// If the atom can't be found/has been deleted.
 	if(!tracking_atom)
-		QL.icon_state = "trackoff"
+		var/already_tracking_queen = (locator.tracker_type == TRACKER_QUEEN)
+
+		// Reset the tracker back to the queen.
+		locator.reset_tracking()
+
+		// If it wasn't the queen that couldn't be found above, try again with her as the target.
+		// This is just to avoid the tracker going blank for one life tick.
+		// (There's no risk of an infinite loop here since `locator.tracker_type` just got set to `TRACKER_QUEEN`.)
+		if(!already_tracking_queen)
+			queen_locator()
 		return
 
+	if(tracking_atom.loc.z != loc.z && SSinterior.in_interior(tracking_atom))
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
+		var/atom/exterior = interior.exterior
+		if(exterior)
+			tracking_atom = exterior
+
 	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
-		QL.icon_state = "trackondirect"
+		locator.icon_state = "trackondirect"
 	else
-		var/area/A = get_area(loc)
-		var/area/QA = get_area(tracking_atom.loc)
-		if(A.fake_zlevel == QA.fake_zlevel)
-			QL.setDir(Get_Compass_Dir(src, tracking_atom))
-			QL.icon_state = "trackon"
+		var/area/our_area = get_area(loc)
+		var/area/target_area = get_area(tracking_atom.loc)
+		if(our_area.fake_zlevel == target_area.fake_zlevel)
+			locator.setDir(Get_Compass_Dir(src, tracking_atom))
+			locator.icon_state = "trackon"
 		else
-			QL.icon_state = "trackondirect"
+			locator.icon_state = "trackondirect"
 
 /mob/living/carbon/xenomorph/proc/mark_locator()
 	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
@@ -496,7 +481,7 @@ Make sure their actual health updates immediately.*/
 	if(status_flags & GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
-	else if(xeno_shields.len != 0)
+	else if(length(xeno_shields) != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
 	else
@@ -514,7 +499,7 @@ Make sure their actual health updates immediately.*/
 			if(hardcore)
 				async_gib(last_damage_data)
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
-				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
+				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(floor(warding_aura - 1), 0)) : 0
 				if(grace_time)
 					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
@@ -527,6 +512,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
+		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
 
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()
@@ -556,20 +542,9 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/GetKnockOutDuration(amount)
 	amount *= 2 / 3
 	return ..()
-
-/mob/living/carbon/xenomorph/proc/handle_interference()
-	if(interference)
-		interference = max(interference-2, 0)
-
-	if(observed_xeno && observed_xeno.interference)
-		overwatch(observed_xeno,TRUE)
-
-	return interference
-
-/mob/living/carbon/xenomorph/handle_dazed()
-	if(dazed)
-		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
-	return dazed
+/mob/living/carbon/xenomorph/GetDazeDuration(amount)
+	amount *= 2 / 3
+	return ..()
 
 /mob/living/carbon/xenomorph/handle_slowed()
 	if(slowed)

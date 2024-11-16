@@ -17,6 +17,10 @@
 	item_state = "electropack"
 	w_class = SIZE_TINY
 
+/** Picture metadata */
+/datum/picture
+	var/name = "image"
+	var/list/fields = list()
 
 /*
 * photo *
@@ -46,7 +50,7 @@
 	..()
 
 /obj/item/photo/get_examine_text(mob/user)
-	if(in_range(user, src))
+	if(in_range(user, src) || isobserver(user))
 		show(user)
 		return list(desc)
 	else
@@ -86,7 +90,7 @@
 	icon_state = "album"
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo,)
-	storage_slots = 20
+	storage_slots = 28
 
 /obj/item/storage/photo_album/MouseDrop(obj/over_object as obj)
 
@@ -118,9 +122,14 @@
 /obj/item/device/camera
 	name = "camera"
 	icon = 'icons/obj/items/items.dmi'
-	desc = "A polaroid camera. 10 photos left."
+	desc = "A polaroid camera."
 	icon_state = "camera"
-	item_state = "electropack"
+	item_state = "camera"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		)
+	flags_item = TWOHANDED
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -128,10 +137,22 @@
 	black_market_value = 20
 	var/pictures_max = 10
 	var/pictures_left = 10
-	var/on = 1
-	var/icon_on = "camera"
-	var/icon_off = "camera_off"
-	var/size = 3
+	var/size = 7
+
+/obj/item/device/camera/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [pictures_left] photos left."
+
+/obj/item/device/camera/attack_self(mob/user) //wielding capabilities
+	. = ..()
+	if(flags_item & WIELDED)
+		unwield(user)
+	else
+		wield(user)
+
+/obj/item/device/camera/dropped(mob/user)
+	..()
+	unwield(user)
 
 /obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"
@@ -145,24 +166,15 @@
 /obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
 
-/obj/item/device/camera/attack_self(mob/user)
-	..()
-	on = !on
-	if(on)
-		src.icon_state = icon_on
-	else
-		src.icon_state = icon_off
-	to_chat(user, "You switch the camera [on ? "on" : "off"].")
-
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
-		if(pictures_left)
-			to_chat(user, SPAN_NOTICE("[src] still has some film in it!"))
+		if(pictures_left > (pictures_max - 10))
+			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
 			return
 		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 		if(user.temp_drop_inv_item(I))
 			qdel(I)
-			pictures_left = pictures_max
+			pictures_left += 10
 		return
 	..()
 
@@ -266,24 +278,19 @@
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc))
+	if(pictures_left <= 0)
+		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
-	if(user.contains(target) || istype(target, /atom/movable/screen))
+	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
-
+	if(!(flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You need to wield the [src] with both hands to take a photo!"))
+		return
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
-
 	pictures_left--
-	desc = "A polaroid camera. It has [pictures_left] photos left."
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
-	captureimage(target, user, flag)
-
-	icon_state = icon_off
-	on = 0
-	spawn(64)
-		icon_state = icon_on
-		on = 1
+	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""
@@ -339,10 +346,70 @@
 	name = "Old Camera"
 	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
 	icon_state = "oldcamera"
-	icon_on = "oldcamera"
-	icon_off = "oldcamera_off"
 	pictures_left = 30
 
+/obj/item/device/camera/broadcasting
+	name = "Broadcasting Camera"
+	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built-in printer for action shots."
+	icon_state = "broadcastingcamera"
+	item_state = "broadcastingcamera"
+	unacidable = TRUE
+	explo_proof = TRUE
+	pictures_left = 20
+	pictures_max = 20
+	w_class = SIZE_HUGE
+	flags_equip_slot = NO_FLAGS //cannot be equiped
+	var/obj/structure/machinery/camera/correspondent/linked_cam
+
+/obj/item/device/camera/broadcasting/Initialize(mapload, ...)
+	. = ..()
+	linked_cam = new(loc, src)
+	linked_cam.status = FALSE
+	RegisterSignal(src, COMSIG_COMPONENT_ADDED, PROC_REF(handle_rename))
+
+/obj/item/device/camera/broadcasting/Destroy()
+	clear_broadcast()
+	return ..()
+
+/obj/item/device/camera/broadcasting/wield(mob/user)
+	. = ..()
+	if(!.)
+		return
+	flags_atom |= (USES_HEARING|USES_SEEING)
+	if(!linked_cam || QDELETED(linked_cam))
+		linked_cam = new(loc, src)
+	else
+		linked_cam.status = TRUE
+		linked_cam.forceMove(loc)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+
+/obj/item/device/camera/broadcasting/unwield(mob/user)
+	. = ..()
+	flags_atom &= ~(USES_HEARING|USES_SEEING)
+	linked_cam.status = FALSE
+
+/obj/item/device/camera/broadcasting/proc/handle_rename(obj/item/camera, datum/component/label)
+	SIGNAL_HANDLER
+	if(!istype(label, /datum/component/label))
+		return
+	linked_cam.c_tag = get_broadcast_name()
+
+/obj/item/device/camera/broadcasting/proc/clear_broadcast()
+	if(!QDELETED(linked_cam))
+		QDEL_NULL(linked_cam)
+
+/obj/item/device/camera/broadcasting/proc/get_broadcast_name()
+	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
+	if(src_label_component)
+		return src_label_component.label_name
+	return "Broadcast [serial_number]"
+
+/obj/item/device/camera/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, get_dist(sourcemob, src) < 3)
+
+/obj/item/device/camera/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, get_dist(sourcemob, src) < 3 && audible)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

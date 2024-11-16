@@ -180,7 +180,7 @@
 	var/t_dist = get_dist(user, t_turf)
 	if(!(t_dist > max_distance))
 		return
-	var/list/turf/path = getline2(user, t_turf, FALSE)
+	var/list/turf/path = get_line(user, t_turf, FALSE)
 	warning.forceMove(path[max_distance])
 
 /obj/item/hoverpack/proc/can_use_hoverpack(mob/living/carbon/human/user)
@@ -208,20 +208,19 @@
 		return TRUE
 
 /datum/action/item_action/hover/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/item_action/hover/update_button_icon()
 	var/obj/item/hoverpack/HP = holder_item
@@ -245,7 +244,7 @@
 /datum/action/item_action/hover/remove_from(mob/living/carbon/human/H)
 	..()
 	if(H.selected_ability == src)
-		H.selected_ability = null
+		H.set_selected_ability(null)
 		update_button_icon()
 		button.icon_state = "template"
 

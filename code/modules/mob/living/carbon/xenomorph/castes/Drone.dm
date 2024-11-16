@@ -7,11 +7,15 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
+
+	available_strains = list(
+		/datum/xeno_strain/gardener,
+		/datum/xeno_strain/healer,
+	)
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
@@ -49,6 +53,7 @@
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
+	organ_value = 800
 	pixel_x = -12
 	old_x = -12
 	base_actions = list(
@@ -70,11 +75,15 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'
-
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
+/mob/living/carbon/xenomorph/drone/tutorial
+	AUTOWIKI_SKIP(TRUE)
+
+/mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, 1)

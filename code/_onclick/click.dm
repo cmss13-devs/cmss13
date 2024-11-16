@@ -199,7 +199,7 @@
 
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && T.contents.len)
+		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
 
 		return TRUE
@@ -376,8 +376,8 @@
 	var/shiftX = C.pixel_x / world.icon_size
 	var/shiftY = C.pixel_y / world.icon_size
 	var/list/actual_view = getviewsize(C ? C.view : GLOB.world_view_size)
-	tX = Clamp(origin.x + text2num(tX) + shiftX - round(actual_view[1] / 2) - 1, 1, world.maxx)
-	tY = Clamp(origin.y + text2num(tY) + shiftY - round(actual_view[2] / 2) - 1, 1, world.maxy)
+	tX = clamp(origin.x + text2num(tX) + shiftX - floor(actual_view[1] / 2) - 1, 1, world.maxx)
+	tY = clamp(origin.y + text2num(tY) + shiftY - floor(actual_view[2] / 2) - 1, 1, world.maxy)
 	return locate(tX, tY, tZ)
 
 

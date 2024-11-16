@@ -93,22 +93,6 @@
 	qdel(src)
 	. = ..()
 
-/obj/effect/alien/resin/fruit/proc/delete_fruit()
-	//Notify and update the xeno count
-	if(!QDELETED(bound_xeno))
-		if(!picked)
-			to_chat(bound_xeno, SPAN_XENOWARNING("You sense one of your fruit has been destroyed."))
-		bound_xeno.current_fruits.Remove(src)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		prf.update_button_icon()
-
-		if(picked) // No need to update the number, since the fruit still exists (just as a different item)
-			return
-		var/number_of_fruit = length(bound_xeno.current_fruits)
-		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		prf.update_button_icon()
-		bound_xeno = null
-
 /obj/effect/alien/resin/fruit/proc/reduce_timer(maturity_increase)
 	if (mature || timer_id == TIMER_ID_NULL)
 		return
@@ -146,9 +130,13 @@
 /obj/effect/alien/resin/fruit/proc/finish_consume(mob/living/carbon/xenomorph/recipient)
 	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 	mature = FALSE
+	picked = TRUE
+	recipient.clear_debuffs() // all froots clear debuffs
 	icon_state = consumed_icon_state
 	update_icon()
-	QDEL_IN(src, 3 SECONDS)
+	if(!QDELETED(bound_xeno))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
+	QDEL_IN(src, 1 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno)
 	if(picked)
@@ -190,7 +178,19 @@
 	return FALSE
 
 /obj/effect/alien/resin/fruit/Destroy()
-	delete_fruit()
+	//Notify and update the xeno count
+	if(!QDELETED(bound_xeno))
+		if(!picked)
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We sense one of our fruit has been destroyed."))
+		bound_xeno.current_fruits.Remove(src)
+
+		var/number_of_fruit = length(bound_xeno.current_fruits)
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		plant_action.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
+		plant_action.update_button_icon()
+
+	bound_xeno = null
+
 	return ..()
 
 //Greater
@@ -239,7 +239,7 @@
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		recipient.add_xeno_shield(Clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
+		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		to_chat(recipient, SPAN_XENONOTICE("We feel our defense being bolstered, and begin to regenerate rapidly."))
 		// Every seconds, heal him for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
@@ -278,9 +278,9 @@
 	..()
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/alien/resin/fruit/spore/delete_fruit()
+/obj/effect/alien/resin/fruit/spore/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/effect/alien/resin/fruit/spore/process()
 	if(mature)
@@ -360,7 +360,7 @@
 	pixel_y = 0
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/X)
-	to_chat(X, SPAN_XENOWARNING("One of our resin fruits has been picked."))
+	to_chat(X, SPAN_XENOHIGHDANGER("One of our resin fruits has been picked."))
 	X.current_fruits.Add(src)
 	bound_xeno = X
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
@@ -377,7 +377,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/delete_fruit()
 	if(bound_xeno)
 		bound_xeno.current_fruits.Remove(src)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		var/number_of_fruit = length(bound_xeno.current_fruits)
 		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		prf.update_button_icon()
@@ -403,7 +403,8 @@
 	if(cant_consume)
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 	user.affected_message(affected_xeno,
 		SPAN_HELPFUL("You <b>start [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] [current_fruit]</b>."),
@@ -417,7 +418,8 @@
 	if(cant_consume) //Check again after the timer incase they ate another fruit
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 
 	user.affected_message(affected_xeno,
@@ -429,7 +431,7 @@
 
 	//Notify the fruit's bound xeno if they exist
 	if(!QDELETED(bound_xeno))
-		to_chat(bound_xeno, SPAN_XENOWARNING("One of our picked resin fruits has been consumed."))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
 	qdel(src)
 	return TRUE
 

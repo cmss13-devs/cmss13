@@ -25,7 +25,13 @@
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov, /obj/item/explosive/grenade/flashbang)
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade,
+										/obj/item/explosive/grenade/alien,
+										/obj/item/explosive/grenade/nerve_gas,
+										/obj/item/explosive/grenade/incendiary/bursting_pipe,
+										/obj/item/explosive/grenade/xeno_acid_grenade,
+										/obj/item/explosive/grenade/incendiary/molotov,
+										/obj/item/explosive/grenade/flashbang)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 
@@ -175,7 +181,7 @@
 	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 
-	var/angle = round(Get_Angle(user,target))
+	var/angle = floor(Get_Angle(user,target))
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 
@@ -222,6 +228,7 @@
 	update_icon()
 
 /datum/action/item_action/toggle_firing_level/action_activate()
+	. = ..()
 	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
 	if(!ishuman(owner))
 		return
@@ -256,7 +263,7 @@
 	icon_state = "m92"
 	item_state = "m92"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	matter = list("metal" = 6000)
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
@@ -317,7 +324,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81/riot
 	name = "\improper M81 riot grenade launcher"
 	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas)
+	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas, /obj/item/explosive/grenade/slug/baton)
 	preload = /obj/item/explosive/grenade/custom/teargas
 
 //-------------------------------------------------------
@@ -356,7 +363,7 @@
 	update_attachable(S.slot)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 11, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

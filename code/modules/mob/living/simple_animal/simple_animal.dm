@@ -1,26 +1,49 @@
+#define OVERLAY_FIRE_LAYER -1
+
 /mob/living/simple_animal
 	name = "animal"
 	icon = 'icons/mob/animal.dmi'
 	health = 20
 	maxHealth = 20
 
+	///Higher speed is slower, negative speed is faster.
+	speed = 0
+
+
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	attacktext = "attacks"
+	attack_sound = null
+	//Attacktext is the mob deal 0 damaage.
+	friendly = "nuzzles"
+	can_crawl = FALSE
+	black_market_value = 25
+	dead_black_market_value = 0
+
+	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
+
 	var/icon_living = ""
 	var/icon_dead = ""
-	var/icon_gib = null //We only try to show a gibbing animation if this exists.
+	var/icon_gib = null
 
 	var/list/speak = list()
 	var/speak_chance = 0
-	var/list/emote_hear = list() //Hearable emotes
-	var/list/emote_see = list() //Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps
+	///Emotes that can be heard by other mobs.
+	var/list/emote_hear = list()
+	///Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps.
+	var/list/emote_see = list()
 
 	var/turns_per_move = 1
 	var/turns_since_move = 0
 	universal_speak = 0 //No, just no.
 	var/meat_amount = 0
 	var/meat_type
-	var/stop_automated_movement = 0 //Use this to temporarely stop random movement or to if you write special movement code for animals.
-	var/wander = 1 // Does the mob wander around when idle?
-	var/stop_automated_movement_when_pulled = 1 //When set to 1 this stops the animal from moving when someone is pulling it.
+	///Use this to temporarely stop random movement or to if you write special movement code for animals.
+	var/stop_automated_movement = 0
+	///Does the mob wander around when idle?
+	var/wander = 1
+	///When set to 1 this stops the animal from moving when someone is pulling it.
+	var/stop_automated_movement_when_pulled = 1
 
 	//Interaction
 	var/response_help   = "tries to help"
@@ -31,30 +54,27 @@
 	//Temperature effect
 	var/minbodytemp = 250
 	var/maxbodytemp = 350
-	var/heat_damage_per_tick = 3 //amount of damage applied if animal's body temperature is higher than maxbodytemp
-	var/cold_damage_per_tick = 2 //same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	///amount of damage applied if animal's body temperature is higher than maxbodytemp
+	var/heat_damage_per_tick = 3
+	///same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	var/cold_damage_per_tick = 2
+
+	///Will this mob be affected by fire/napalm? Set to FALSE for all mobs as the implications could be weird due to not being tested for all simple mobs.
+	var/affected_by_fire = FALSE
 
 	//Atmos effect - Yes, you can make creatures that require phoron or co2 to survive. N2O is a trace gas and handled separately, hence why it isn't here. It'd be hard to add it. Hard and me don't mix (Yes, yes make all the dick jokes you want with that.) - Errorage
+	//Leaving something at 0 means it's off - has no maximum
 	var/min_oxy = 5
-	var/max_oxy = 0 //Leaving something at 0 means it's off - has no maximum
+	var/max_oxy = 0
 	var/min_tox = 0
 	var/max_tox = 1
 	var/min_co2 = 0
 	var/max_co2 = 5
 	var/min_n2 = 0
 	var/max_n2 = 0
-	var/unsuitable_atoms_damage = 2 //This damage is taken when atmos doesn't fit all the requirements above
-	speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
-
-	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
-	melee_damage_lower = 0
-	melee_damage_upper = 0
-	attacktext = "attacks"
-	attack_sound = null
-	friendly = "nuzzles" //If the mob does no damage with it's attack
-	can_crawl = FALSE
-	black_market_value = 25
-	dead_black_market_value = 0
+	///This damage is taken when atmos doesn't fit all the requirements above
+	var/unsuitable_atoms_damage = 2
+	var/fire_overlay
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -72,8 +92,63 @@
 /mob/living/simple_animal/updatehealth()
 	return
 
-/mob/living/simple_animal/Life(delta_time)
+/mob/living/simple_animal/rejuvenate()
+	health = maxHealth
+	SSmob.living_misc_mobs += src
+	return ..()
 
+/mob/living/simple_animal/get_examine_text(mob/user)
+	. = ..()
+	if(stat == DEAD)
+		. += SPAN_BOLDWARNING("[user == src ? "You are" : "It is"] DEAD. Kicked the bucket.")
+	else
+		var/percent = floor((health / maxHealth * 100))
+		switch(percent)
+			if(95 to INFINITY)
+				. += SPAN_NOTICE("[user == src ? "You look" : "It looks"] quite healthy.")
+			if(75 to 94)
+				. += SPAN_NOTICE("[user == src ? "You look" : "It looks"] slightly injured.")
+			if(50 to 74)
+				. += SPAN_DANGER("[user == src ? "You look" : "It looks"] injured.")
+			if(25 to 49)
+				. += SPAN_DANGER("[user == src ? "You are bleeding" : "It bleeds"] with gory wounds.")
+			if(-INFINITY to 24)
+				. += SPAN_BOLDWARNING("[user == src ? "You are" : "It is"] heavily injured and limping badly.")
+
+/mob/living/simple_animal/handle_fire()
+	if(..())
+		return
+	apply_damage(fire_reagent.intensityfire * 0.5, BURN)
+
+/mob/living/simple_animal/IgniteMob()
+	if(!affected_by_fire)
+		return
+	return ..()
+
+/mob/living/simple_animal/update_fire()
+	if(!on_fire)
+		overlays -= fire_overlay
+	if(on_fire && fire_reagent)
+		var/image/fire_overlay_image
+		if(mob_size >= MOB_SIZE_BIG)
+			if((body_position != LYING_DOWN))
+				fire_overlay_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer" = OVERLAY_FIRE_LAYER)
+			else
+				fire_overlay_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer" = OVERLAY_FIRE_LAYER)
+		else
+			fire_overlay_image = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state"="alien_fire", "layer" = OVERLAY_FIRE_LAYER)
+
+		fire_overlay_image.pixel_y -= pixel_y
+		fire_overlay_image.pixel_x -= pixel_x
+		fire_overlay_image.appearance_flags |= RESET_COLOR|RESET_ALPHA
+		fire_overlay_image.color = fire_reagent.burncolor
+		fire_overlay_image.color = fire_reagent.burncolor
+		overlays += fire_overlay_image
+		fire_overlay = fire_overlay_image
+
+/mob/living/simple_animal/Life(delta_time)
+	if(affected_by_fire)
+		handle_fire()
 	//Health
 	if(stat == DEAD)
 		if(health > 0)
@@ -107,33 +182,33 @@
 	//Speaking
 	if(!client && speak_chance)
 		if(rand(0,200) < speak_chance)
-			if(speak && speak.len)
-				if((emote_hear && emote_hear.len) || (emote_see && emote_see.len))
-					var/length = speak.len
-					if(emote_hear && emote_hear.len)
-						length += emote_hear.len
-					if(emote_see && emote_see.len)
-						length += emote_see.len
+			if(LAZYLEN(speak))
+				if(LAZYLEN(emote_hear) || LAZYLEN(emote_see))
+					var/length = length(speak)
+					if(LAZYLEN(emote_hear))
+						length += length(emote_hear)
+					if(LAZYLEN(emote_see))
+						length += length(emote_see)
 					var/randomValue = rand(1,length)
-					if(randomValue <= speak.len)
+					if(randomValue <= length(speak))
 						INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 					else
-						randomValue -= speak.len
-						if(emote_see && randomValue <= emote_see.len)
+						randomValue -= length(speak)
+						if(emote_see && randomValue <= length(emote_see))
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 						else
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				else
 					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
-				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
+				if(!LAZYLEN(emote_hear) && LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
-				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
+				if(LAZYLEN(emote_hear) && !LAZYLEN(emote_see))
 					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
-				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					var/length = emote_hear.len + emote_see.len
+				if(LAZYLEN(emote_hear) && LAZYLEN(emote_see))
+					var/length = length(emote_hear) + length(emote_see)
 					var/pick = rand(1,length)
-					if(pick <= emote_see.len)
+					if(pick <= length(emote_see))
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 					else
 						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
@@ -210,6 +285,7 @@
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 	black_market_value = dead_black_market_value
+	set_body_position(LYING_DOWN)
 
 
 /mob/living/simple_animal/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
@@ -237,32 +313,46 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		apply_damage(damage, BRUTE)
 
-
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/attack_hand(mob/living/carbon/human/attacking_mob)
 	..()
 
-	switch(M.a_intent)
-
+	switch(attacking_mob.a_intent)
 		if(INTENT_HELP)
 			if (health > 0)
-				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
-						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"), SHOW_MESSAGE_VISIBLE)
-
-		if(INTENT_GRAB)
-			if(M == src || anchored)
-				return 0
-			M.start_pulling(src)
-
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				visible_message(SPAN_NOTICE("[attacking_mob] [response_help] [src]."))
 			return 1
 
-		if(INTENT_HARM, INTENT_DISARM)
-			apply_damage(harm_intent_damage, BRUTE)
-			for(var/mob/O in viewers(src, null))
-				if ((O.client && !( O.blinded )))
-					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"), SHOW_MESSAGE_VISIBLE)
+		if(INTENT_GRAB)
+			attacking_mob.start_pulling(src)
+			return 1
 
-	return
+		if(INTENT_DISARM)
+			visible_message(SPAN_NOTICE("[attacking_mob] [response_disarm] [src]."))
+			attacking_mob.animation_attack_on(src)
+			attacking_mob.flick_attack_overlay(src, "disarm")
+			return 1
+
+		if(INTENT_HARM)
+			var/datum/unarmed_attack/attack = attacking_mob.species.unarmed
+			if(!attack.is_usable(attacking_mob))
+				attack = attacking_mob.species.secondary_unarmed
+				return 0
+
+			attacking_mob.animation_attack_on(src)
+			attacking_mob.flick_attack_overlay(src, "punch")
+
+			var/extra_cqc_dmg = 0
+			if(attacking_mob.skills)
+				extra_cqc_dmg = attacking_mob.skills?.get_skill_level(SKILL_CQC)
+			var/final_damage = 0
+
+			playsound(loc, attack.attack_sound, 25, 1)
+			visible_message(SPAN_DANGER("[attacking_mob] [response_harm] [src]!"), null, null, 5)
+
+			final_damage = attack.damage + extra_cqc_dmg + harm_intent_damage
+			apply_damage(final_damage, BRUTE, src, sharp = attack.sharp, edge = attack.edge)
+			return 1
 
 /mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
@@ -323,7 +413,10 @@
 		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
-	health = Clamp(health - damage, 0, maxHealth)
+	health = clamp(health - damage, 0, maxHealth)
+
+/mob/living/simple_animal/adjustFireLoss(damage)
+	health = clamp(health - damage, 0, maxHealth)
 
 /mob/living/simple_animal/proc/SA_attackable(target_mob)
 	if (isliving(target_mob))
@@ -349,7 +442,7 @@
 
 	var/verb = "says"
 
-	if(speak_emote.len)
+	if(length(speak_emote))
 		verb = pick(speak_emote)
 
 	message = capitalize(trim_left(message))
@@ -375,3 +468,5 @@
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
+
+#undef OVERLAY_FIRE_LAYER

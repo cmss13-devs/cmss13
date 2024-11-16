@@ -4,6 +4,7 @@
 # $include dbconfig.txt
 # $include resources.txt
 # $include icon_source.txt
+# $include relays.txt
 
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
 # SERVERNAME spacestation13
@@ -151,9 +152,6 @@ BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.5
 
-## Uncomment this to ban use of ToR
-#TOR_BAN
-
 ## Uncomment this to have country flags pop up in OOC alongside names if the user has the pref turned on (uses IP-API)
 #OOC_COUNTRY_FLAGS
 
@@ -238,8 +236,30 @@ AUTOOOCMUTE
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
 
+## cobalt.tools is an alternative player used by Play Internet Sound, if
+## both INVOKE_YOUTUBEDL and COBALT_BASE_API are specified. If only
+## COBALT_BASE_API is specified, it will exclusively cobalt.tools.
+# COBALT_BASE_API https://api.cobalt.tools/
+
 ## Default gamemode to auto-switch back to after a round has concluded
 GAMEMODE_DEFAULT Extended
 
 ## How long the mob will take to chestburst, in seconds
 #EMBRYO_BURST_TIMER 450
+
+## CLIENT VERSION CONTROL
+## This allows you to configure the minimum required client version, as well as a warning version, and message for both.
+## These trigger for any version below (non-inclusive) the given version, so 510 triggers on 509 or lower.
+## These messages will be followed by one stating the clients current version and the required version for clarity.
+#CLIENT_WARN_VERSION 514
+#CLIENT_WARN_BUILD 1589
+#CLIENT_WARN_MESSAGE Your version of BYOND may have issues or be blocked from accessing this server in the future.
+#CLIENT_WARN_POPUP
+CLIENT_ERROR_VERSION 514
+#CLIENT_ERROR_BUILD 1589
+#CLIENT_ERROR_MESSAGE Your version of BYOND is too old, may have issues, and is blocked from accessing this server.
+
+## GITHUB API
+#GITHUB_APP_API
+#REPO_NAME cmss13
+#ORG cmss13-devs

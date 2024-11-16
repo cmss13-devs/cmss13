@@ -20,6 +20,7 @@
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
+	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -60,11 +61,15 @@
 	if(. && buckled_mob == M)
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
+		M.pixel_x = buckling_x
+		M.old_x = buckling_x
 		if(base_bed_icon)
 			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
+		M.pixel_x = initial(buckled_mob.pixel_x)
+		M.old_x = initial(buckled_mob.pixel_x)
 		if(base_bed_icon)
 			density = FALSE
 
@@ -161,11 +166,14 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
+			if(!Adjacent(M))
+				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
+				return FALSE
 			if(blocker)
 				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
-			else
-				to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
-				M.forceMove(loc)
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+			M.forceMove(loc)
 		return TRUE
 
 	else
@@ -322,8 +330,14 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated
+	var/view_range = 5
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
+	var/faction = FACTION_MARINE
+
+/obj/structure/bed/medevac_stretcher/upp
+	name = "UPP medevac stretcher"
+	faction = FACTION_UPP
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
@@ -351,6 +365,14 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	set src in oview(1)
 
 	toggle_medevac_beacon(usr)
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/can_use()
+	return TRUE
+
+// Used to pretend to be a camera
+/obj/structure/bed/medevac_stretcher/proc/isXRay()
+	return FALSE
 
 /obj/structure/bed/medevac_stretcher/proc/toggle_medevac_beacon(mob/user)
 	if(!ishuman(user))
@@ -411,6 +433,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	buckling_y = 0
 	foldabletype = /obj/item/roller/bedroll
 	accepts_bodybag = FALSE
+	debris = null
+	buildstacktype = null
 
 /obj/item/roller/bedroll
 	name = "folded bedroll"

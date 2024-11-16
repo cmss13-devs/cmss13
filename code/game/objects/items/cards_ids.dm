@@ -67,7 +67,7 @@
 
 	/// The name registered_name on the card
 	var/registered_name = "Unknown"
-	var/registered_ref = null
+	var/datum/weakref/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
 
@@ -171,24 +171,24 @@
 	name = "corporate doctor badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
 	icon_state = "clearance"
-	var/clearance_access = 3
+	var/credits_to_give = 15 //gives the equivalent clearance access in credits
 
 /obj/item/card/id/silver/clearance_badge/scientist
 	name = "corporate scientist badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 4 access. It is commonly held by corporate scientists."
-	clearance_access = 4
+	credits_to_give = 27
 
 /obj/item/card/id/silver/clearance_badge/cl
 	name = "corporate liaison badge"
 	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
-	clearance_access = 5
+	credits_to_give = 42
 
 /obj/item/card/id/silver/clearance_badge/manager
 	name = "corporate manager badge"
 	desc = "A corporate holo-badge in standard corporate orange and white. It has a unique uncapped bottom. It is fingerprint locked with 5-X clearance level. Commonly held by corporate managers."
 	icon_state = "pmc"
-	clearance_access = 6
+	credits_to_give = 47
 
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
@@ -243,11 +243,13 @@
 	name = "\improper CMB marshal gold badge"
 	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
+	paygrade = PAY_SHORT_CMBM
 
 /obj/item/card/id/deputy
 	name = "\improper CMB deputy silver badge"
 	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbdep"
+	paygrade = PAY_SHORT_CMBD
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -269,79 +271,51 @@
 /obj/item/card/id/provost/New()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
-/obj/item/card/id/syndicate
+/obj/item/card/id/adaptive
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
-	var/registered_user=null
 
-/obj/item/card/id/syndicate/New(mob/user as mob)
+/obj/item/card/id/adaptive/New(mob/user as mob)
 	..()
 	if(!QDELETED(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.
-		registered_name = ishuman(user) ? user.real_name : user.name
-	else
-		registered_name = "Agent Card"
+		registered_name = ishuman(user) ? user.real_name : "Unknown"
 	assignment = "Agent"
 	name = "[registered_name]'s ID Card ([assignment])"
 
-/obj/item/card/id/syndicate/afterattack(obj/item/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/card/id/adaptive/afterattack(obj/item/O as obj, mob/user as mob, proximity)
+	if(!proximity)
+		return
 	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/I = O
-		src.access |= I.access
-		if(istype(user, /mob/living) && user.mind)
-			to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
+		var/obj/item/card/id/target_id = O
+		access |= target_id.access
+		if(ishuman(user))
+			to_chat(user, SPAN_NOTICE("The card's microscanners activate as you pass it over the ID, copying its access."))
 
-/obj/item/card/id/syndicate/attack_self(mob/user as mob)
-	if(!src.registered_name)
-		//Stop giving the players unsanitized unputs! You are giving ways for players to intentionally crash clients! -Nodrak
-		var t = reject_bad_name(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name))
-		if(!t) //Same as mob/new_player/prefrences.dm
-			alert("Invalid name.")
-			return
-		src.registered_name = t
-
-		var u = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Agent"))
-		if(!u)
-			alert("Invalid assignment.")
-			src.registered_name = ""
-			return
-		src.assignment = u
-		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
-		registered_user = user
-	else if(!registered_user || registered_user == user)
-
-		if(!registered_user) registered_user = user  //
-
-		switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
-			if("Rename")
-				var t = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
-				if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/new_player/prefrences.dm
-					alert("Invalid name.")
-					return
-				src.registered_name = t
-
-				var u = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
-				if(!u)
-					alert("Invalid assignment.")
-					return
-				src.assignment = u
-				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-				to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
+/obj/item/card/id/adaptive/attack_self(mob/user as mob)
+	switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
+		if("Rename")
+			var/new_name = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
+			if(!new_name || new_name == "Unknown" || new_name == "floor" || new_name == "wall" || new_name == "r-wall") //Same as mob/new_player/prefrences.dm
+				to_chat(user, SPAN_WARNING("Invalid Name."))
 				return
-			if("Show")
-				..()
-	else
-		..()
 
+			var/new_job = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
+			if(!new_job)
+				to_chat(user, SPAN_WARNING("Invalid Assignment."))
+				return
 
+			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civillian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
+			if(!new_rank || !(new_rank in GLOB.paygrades))
+				to_chat(user, SPAN_WARNING("Invalid Paygrade."))
+				return
 
-/obj/item/card/id/syndicate_command
-	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
-	registered_name = "Syndicate"
-	assignment = "Syndicate Overlord"
-	access = list(ACCESS_ILLEGAL_PIRATE)
+			registered_name = new_name
+			assignment = new_job
+			name = "[registered_name]'s ID Card ([assignment])"
+			paygrade = new_rank
+			to_chat(user, SPAN_NOTICE("You successfully forge the ID card."))
+			return
+	..()
 
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"
@@ -403,6 +377,7 @@
 	icon_state = "dogtag_taken"
 	icon = 'icons/obj/items/card.dmi'
 	w_class = SIZE_TINY
+	var/list/fallen_references
 	var/list/fallen_names
 	var/list/fallen_blood_types
 	var/list/fallen_assgns
@@ -410,6 +385,7 @@
 /obj/item/dogtag/Initialize()
 	. = ..()
 
+	fallen_references = list()
 	fallen_names = list()
 	fallen_blood_types = list()
 	fallen_assgns = list()
@@ -417,9 +393,10 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
+		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
+			fallen_references += D.fallen_references
 			fallen_names += D.fallen_names
 			fallen_blood_types += D.fallen_blood_types
 			fallen_assgns += D.fallen_assgns
@@ -430,11 +407,11 @@
 
 /obj/item/dogtag/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user) && fallen_names && fallen_names.len)
-		var/msg = "There [fallen_names.len>1 ? \
-			"are [fallen_names.len] tags.<br>They read":\
+	if(ishuman(user) && LAZYLEN(fallen_names))
+		var/msg = "There [length(fallen_names)>1 ? \
+			"are [length(fallen_names)] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
-		for (var/i=1 to fallen_names.len)
+		for (var/i=1 to length(fallen_names))
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
 		. += SPAN_NOTICE("[msg]")
 

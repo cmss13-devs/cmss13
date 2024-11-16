@@ -42,7 +42,7 @@
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
 			if(length(reagent_data) > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
+				rtotal += floor(potency/reagent_data[2])
 			if(reagents)
 				reagents.add_reagent(rid, max(1, rtotal))
 
@@ -62,7 +62,7 @@
 	name = "cherries"
 	desc = "Great for toppings!"
 	icon_state = "cherry"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	gender = PLURAL
 	plantname = "cherry"
 
@@ -357,7 +357,7 @@
 	name = "chili"
 	desc = "It's spicy! Wait... IT'S BURNING ME!!"
 	icon_state = "chilipepper"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "chili"
 
 /obj/item/reagent_container/food/snacks/grown/eggplant
@@ -379,7 +379,7 @@
 	name = "tomato"
 	desc = "I say to-mah-to, you say tom-mae-to."
 	icon_state = "tomato"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 10
 	plantname = "tomato"
 
@@ -395,7 +395,7 @@
 	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
 	icon_state = "killertomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 30
 	plantname = "killertomato"
 
@@ -414,7 +414,7 @@
 	desc = "So bloody...so...very...bloody....AHHHH!!!!"
 	icon_state = "bloodtomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "bloodtomato"
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
@@ -502,7 +502,7 @@
 	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
 	icon_state = "amanita"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "amanita"
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/angel
@@ -584,19 +584,14 @@
 		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 		qdel(src)
 		return
-	for(var/turf/T in orange(M,outer_teleport_radius))
-		if(T in orange(M,inner_teleport_radius)) continue
+	for(var/turf/T as anything in (RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M)))
 		if(istype(T,/turf/open/space)) continue
 		if(T.density) continue
 		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
 		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
-	if(!turfs.len)
-		var/list/turfs_to_pick_from = list()
-		for(var/turf/T in orange(M,outer_teleport_radius))
-			if(!(T in orange(M,inner_teleport_radius)))
-				turfs_to_pick_from += T
-		turfs += pick(/turf in turfs_to_pick_from)
+	if(!length(turfs))
+		turfs += pick(RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M))
 	var/turf/picked = pick(turfs)
 	if(!isturf(picked)) return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.

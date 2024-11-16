@@ -7,7 +7,7 @@
 	/// How many stacks are currently accumulated.
 	/// Also, the default stacks number given on application.
 	var/stacks = 0
-	// Deciseconds until ticks start occuring, which removes stacks
+	// Deciseconds until ticks start occurring, which removes stacks
 	/// (first stack will be removed at this time plus tick_interval)
 	var/delay_before_decay
 	/// How many stacks are lost per tick (decay trigger)
@@ -74,7 +74,7 @@
 		return FALSE
 	stacks += stacks_added
 	if(stacks > 0)
-		if(stacks >= stack_threshold && !threshold_crossed) //threshold_crossed check prevents threshold effect from occuring if changing from above threshold to still above threshold
+		if(stacks >= stack_threshold && !threshold_crossed) //threshold_crossed check prevents threshold effect from occurring if changing from above threshold to still above threshold
 			threshold_crossed = TRUE
 			on_threshold_cross()
 			if(consumed_on_threshold)

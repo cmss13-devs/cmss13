@@ -89,7 +89,7 @@
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(cooldown < world.time - 25)
-		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
+		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
@@ -101,7 +101,7 @@
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
-	flags_atom = FPRINT|CONDUCT|NOBLOODY
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
 	force = 3
 	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
 	readied_block = 50

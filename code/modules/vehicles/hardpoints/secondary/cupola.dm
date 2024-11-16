@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/m56cupola
-	name = "M56 Cupola"
-	desc = "A secondary weapon for tanks that shoots bullets"
+	name = "\improper M56 Cupola"
+	desc = "A secondary weapon for tanks. It's a M56D that was adjusted to be permanently fixed to its mount. You swear you can still see some weld tacks."
 
 	icon_state = "m56_cupola"
 	disp_icon = "tank"
@@ -9,8 +9,6 @@
 
 	health = 350
 	firing_arc = 120
-
-	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/m56_cupola
 	max_clips = 1
@@ -30,9 +28,3 @@
 	burst_amount = 3
 	burst_delay = 0.3 SECONDS
 	extra_delay = 0.6 SECONDS
-
-/obj/item/hardpoint/secondary/m56cupola/set_bullet_traits()
-	..()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))

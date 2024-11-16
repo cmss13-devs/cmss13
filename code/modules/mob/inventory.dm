@@ -164,8 +164,7 @@
 	if(pickup_recent_item_on_turf(user_turf))
 		return
 
-	var/range_list = orange(1, src)
-	for(var/turf/nearby_turf in range_list)
+	for(var/turf/nearby_turf in orange(1, src))
 		if(pickup_recent_item_on_turf(nearby_turf))
 			return
 
@@ -175,7 +174,9 @@
 		if(!previously_held_object)
 			remembered_dropped_objects -= weak_ref
 			break
-		if(previously_held_object.in_contents_of(check_turf))
+		if(previously_held_object in check_turf)
+			if(previously_held_object.throwing)
+				return FALSE
 			if(previously_held_object.anchored)
 				return FALSE
 			put_in_hands(previously_held_object, drop_on_fail = FALSE)
@@ -226,7 +227,7 @@
 //Remove an item on a mob's inventory.  It does not change the item's loc, just unequips it from the mob.
 //Used just before you want to delete the item, or moving it afterwards.
 /mob/proc/temp_drop_inv_item(obj/item/I, force)
-	return u_equip(I, null, force)
+	return u_equip(I, null, TRUE, force)
 
 
 //Outdated but still in use apparently. This should at least be a human proc.
@@ -254,15 +255,10 @@
 
 //proc to get the item in the active hand.
 /mob/proc/get_held_item()
-	if(isSilicon(src))
-		if(isrobot(src))
-			if(src:module_active)
-				return src:module_active
+	if (hand)
+		return l_hand
 	else
-		if (hand)
-			return l_hand
-		else
-			return r_hand
+		return r_hand
 
 /mob/living/carbon/human/proc/equip_if_possible(obj/item/W, slot, del_on_fail = 1) // since byond doesn't seem to have pointers, this seems like the best way to do this :/
 	//warning: icky code
@@ -343,21 +339,20 @@
 		if(WEAR_IN_BACK)
 			if (src.back && isstorage(src.back))
 				var/obj/item/storage/B = src.back
-				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+				if(length(B.contents) < B.storage_slots && W.w_class <= B.max_w_class)
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_SHOES)
-			if(!shoes)
-				return
+			// If the player isn't wearing shoes, or the shoes somehow aren't shoes.
 			if(!istype(shoes, /obj/item/clothing/shoes))
 				return
-			if(shoes.stored_item)
-				return
-			shoes.attempt_insert_item(src, shoes, TRUE)
+			// If the item was successfully inserted.
+			if(shoes.attempt_insert_item(src, W))
+				equipped = 1 // what is this proc
 		if(WEAR_IN_SCABBARD)
 			if(src.back && istype(src.back, /obj/item/storage/large_holster))
 				var/obj/item/storage/large_holster/B = src.back
-				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+				if(length(B.contents) < B.storage_slots && W.w_class <= B.max_w_class)
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_ACCESSORY)
@@ -381,25 +376,25 @@
 		if(WEAR_IN_BELT)
 			if(src.belt && isstorage(src.belt))
 				var/obj/item/storage/B = src.belt
-				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+				if(length(B.contents) < B.storage_slots && W.w_class <= B.max_w_class)
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_J_STORE)
 			if(src.s_store && isstorage(src.s_store))
 				var/obj/item/storage/B = src.s_store
-				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+				if(length(B.contents) < B.storage_slots && W.w_class <= B.max_w_class)
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_L_STORE)
 			if(src.l_store && istype(src.l_store, /obj/item/storage/pouch))
 				var/obj/item/storage/pouch/P = src.l_store
-				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
+				if(length(P.contents) < P.storage_slots && W.w_class <= P.max_w_class)
 					W.forceMove(P)
 					equipped = 1
 		if(WEAR_IN_R_STORE)
 			if(src.r_store && istype(src.r_store, /obj/item/storage/pouch))
 				var/obj/item/storage/pouch/P = src.r_store
-				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
+				if(length(P.contents) < P.storage_slots && W.w_class <= P.max_w_class)
 					W.forceMove(P)
 					equipped = 1
 

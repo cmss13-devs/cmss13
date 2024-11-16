@@ -39,11 +39,10 @@
 	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 	power_machine = TRUE
+	var/explosion_proof = TRUE
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()
-	if(!powernet)
-		connect_to_network()
 
 	dir_loop:
 		for(var/d in GLOB.cardinals)
@@ -56,13 +55,30 @@
 		stat |= BROKEN
 		return
 	terminal.master = src
-	if(!terminal.powernet)
-		terminal.connect_to_network()
 	updateicon()
 	start_processing()
 
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/power/smes/ex_act(severity)
+	if(explosion_proof)
+		return
+	else
+		.=..()
+
+/obj/structure/machinery/power/smes/LateInitialize()
+	. = ..()
+
+	if(QDELETED(src))
+		return
+
+	if(!powernet && !connect_to_network())
+		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
+	if(terminal && !terminal.powernet)
+		terminal.connect_to_network()
 
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()
@@ -85,7 +101,7 @@
 
 
 /obj/structure/machinery/power/smes/proc/chargedisplay()
-	return round(5.5*charge/(capacity ? capacity : 5e6))
+	return floor(5.5*charge/(capacity ? capacity : 5e6))
 
 #define SMESRATE 0.05 // rate of internal charge to external power
 
@@ -272,14 +288,13 @@
 // TGUI STUFF \\
 
 /obj/structure/machinery/power/smes/ui_status(mob/user)
-	if(!(stat & BROKEN) && !open_hatch)
-		. = UI_INTERACTIVE
-
-/obj/structure/machinery/power/smes/ui_state(mob/user)
+	. = ..()
 	if(stat & BROKEN)
 		return UI_CLOSE
 	if(open_hatch)
 		return UI_DISABLED
+
+/obj/structure/machinery/power/smes/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/power/smes/tgui_interact(mob/user, datum/tgui/ui)

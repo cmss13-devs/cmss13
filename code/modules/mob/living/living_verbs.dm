@@ -24,6 +24,10 @@
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return
 
+	if(pulledby && isxeno(pulledby))
+		to_chat(src, SPAN_WARNING("You can't resist while a xeno is grabbing you."))
+		return
+
 	resisting = TRUE
 
 	next_move = world.time + 20
@@ -66,7 +70,7 @@
 		if (BB.opened)
 			return
 		visible_message("[BB] begins to wiggle violently!")
-		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
+		if(do_after(src, 5 SECONDS, INTERRUPT_UNCONSCIOUS, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
 		///The medical machines below are listed separately to allow easier changes to each process
@@ -128,7 +132,7 @@
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
 
-		if(!C || !src || stat != CONSCIOUS || loc != C || C.opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
+		if(!C || !src || stat != CONSCIOUS || loc != C || C.opened) //closet/user destroyed OR user dead/unconscious OR user no longer in closet OR closet opened
 			return
 		//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
 		if(istype(loc, /obj/structure/closet/secure_closet))
@@ -170,24 +174,15 @@
 			return
 
 	//breaking out of handcuffs & putting out fires
-	if(!is_mob_incapacitated(TRUE))
+	if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire()
-
-		var/on_acid = FALSE
-		for(var/datum/effects/acid/A in effects_list)
-			on_acid = TRUE
-			break
-		if(on_acid)
+		if(locate(/datum/effects/acid) in effects_list)
 			resist_acid()
+		if(last_special <= world.time)
+			resist_restraints()
 
 	SEND_SIGNAL(src, COMSIG_MOB_RESISTED)
-
-	if(!iscarbon(src))
-		return
-	var/mob/living/carbon/C = src
-	if((C.handcuffed || C.legcuffed) && (C.mobility_flags & MOBILITY_MOVE) && (C.last_special <= world.time))
-		resist_restraints()
 
 /mob/living/proc/resist_buckle()
 	buckled.manual_unbuckle(src)

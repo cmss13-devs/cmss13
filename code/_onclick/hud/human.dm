@@ -120,7 +120,7 @@
 	if(!screenmob?.client)
 		return
 
-	if(!gear.len)
+	if(!length(gear))
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
 
@@ -272,18 +272,14 @@
 	static_inventory += using
 
 /datum/hud/human/proc/draw_hand_equip(datum/custom_hud/ui_datum, ui_alpha, ui_color)
-	var/atom/movable/screen/using = new /atom/movable/screen()
-	using.name = "equip"
-	using.icon = ui_datum.ui_style_icon
-	using.icon_state = "act_equip"
-	using.screen_loc = ui_datum.ui_equip
-	using.layer = ABOVE_HUD_LAYER
-	using.plane = ABOVE_HUD_PLANE
+	var/atom/movable/screen/equip/equip_button = new()
+	equip_button.icon = ui_datum.ui_style_icon
+	equip_button.screen_loc = ui_datum.ui_equip
 	if(ui_color)
-		using.color = ui_color
+		equip_button.color = ui_color
 	if(ui_alpha)
-		using.alpha = ui_alpha
-	static_inventory += using
+		equip_button.alpha = ui_alpha
+	static_inventory += equip_button
 
 /datum/hud/human/proc/draw_oxygen(datum/custom_hud/ui_datum)
 	oxygen_icon = new /atom/movable/screen/oxygen()
@@ -312,38 +308,28 @@
 	infodisplay += locate_leader
 
 /datum/hud/human/proc/draw_gun_related(datum/custom_hud/ui_datum, ui_alpha)
-	use_attachment = new /atom/movable/screen()
+	use_attachment = new /atom/movable/screen/gun/attachment()
 	use_attachment.icon = ui_datum.ui_style_icon
-	use_attachment.icon_state = "gun_attach"
-	use_attachment.name = "Activate weapon attachment"
 	use_attachment.screen_loc = ui_datum.ui_gun_attachment
 	static_inventory += use_attachment
 
-	toggle_raillight = new /atom/movable/screen()
+	toggle_raillight = new /atom/movable/screen/gun/rail_light()
 	toggle_raillight.icon = ui_datum.ui_style_icon
-	toggle_raillight.icon_state = "gun_raillight"
-	toggle_raillight.name = "Toggle Rail Flashlight"
 	toggle_raillight.screen_loc = ui_datum.ui_gun_railtoggle
 	static_inventory += toggle_raillight
 
-	eject_mag = new /atom/movable/screen()
+	eject_mag = new /atom/movable/screen/gun/eject_magazine()
 	eject_mag.icon = ui_datum.ui_style_icon
-	eject_mag.icon_state = "gun_loaded"
-	eject_mag.name = "Eject magazine"
 	eject_mag.screen_loc = ui_datum.ui_gun_eject
 	static_inventory += eject_mag
 
-	toggle_burst = new /atom/movable/screen()
+	toggle_burst = new /atom/movable/screen/gun/toggle_firemode()
 	toggle_burst.icon = ui_datum.ui_style_icon
-	toggle_burst.icon_state = "gun_burst"
-	toggle_burst.name = "Toggle burst fire"
 	toggle_burst.screen_loc = ui_datum.ui_gun_burst
 	static_inventory += toggle_burst
 
-	unique_action = new /atom/movable/screen()
+	unique_action = new /atom/movable/screen/gun/unique_action()
 	unique_action.icon = ui_datum.ui_style_icon
-	unique_action.icon_state = "gun_unique"
-	unique_action.name = "Use unique action"
 	unique_action.screen_loc = ui_datum.ui_gun_unique
 	static_inventory += unique_action
 

@@ -73,6 +73,7 @@
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
+	flags_area = AREA_NOTUNNEL
 
 /area/shuttle/escape_pod/afterShuttleMove(new_parallax_dir)
 	. = ..()
@@ -81,4 +82,4 @@
 /area/shuttle/lifeboat
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL

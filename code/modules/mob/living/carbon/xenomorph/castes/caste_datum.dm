@@ -16,8 +16,6 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
-	var/crystal_max = 0
-
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
 	///Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_allowed = 1
@@ -67,6 +65,9 @@
 	var/attack_delay = 0 //Bonus or pen to time in between attacks. + makes slashes slower.
 
 	var/agility_speed_increase = 0 // this opens up possibilities for balancing
+
+	/// A list of strain typepaths that are able to be chosen by this caste.
+	var/list/available_strains = list()
 
 	// The type of mutator delegate to instantiate on the base caste. Will
 	// be replaced when the Xeno chooses a strain.
@@ -131,6 +132,7 @@
 	var/minimum_evolve_time = 1 MINUTES
 	/// Iconstate for the xeno on the minimap
 	var/minimap_icon = "xeno"
+	var/minimap_background = "background_xeno"
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 
@@ -174,8 +176,7 @@
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
 /datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
-	background.color = MINIMAP_ICON_BACKGROUND_XENO
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
 
 	var/iconstate = minimap_icon ? minimap_icon : "unknown"
 	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)

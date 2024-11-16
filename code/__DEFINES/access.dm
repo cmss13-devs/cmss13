@@ -88,7 +88,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_ARMORY 212
 ///Secret research or other projects with highly restricted access
 #define ACCESS_WY_SECRETS 213
-
+#define ACCESS_WY_DATABASE 214
 #define ACCESS_WY_LEADERSHIP 215
 ///Senior leadership, the highest ranks
 #define ACCESS_WY_SENIOR_LEAD 216
@@ -147,11 +147,15 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 // Yautja Access Levels
 /// Requires a visible ID chip to open
 #define ACCESS_YAUTJA_SECURE 390
+/// Elites+ only
+#define ACCESS_YAUTJA_ELITE 391
 /// Elders+ only
-#define ACCESS_YAUTJA_ELDER 391
+#define ACCESS_YAUTJA_ELDER 392
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 392
+#define ACCESS_YAUTJA_ANCIENT 393
 
+/// Anything in a tutorial sequence that shouldn't be accessed
+#define ACCESS_TUTORIAL_LOCKED 998
 ///Temporary, just so I can flag places I need to change
 #define ACCESS_COME_BACK_TO_ME 999
 

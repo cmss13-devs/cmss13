@@ -1,4 +1,0 @@
-author: "Contrabang"
-delete-after: True
-changes:
-  - bugfix: "Matches now do burn damage instead of brute, when you accidently burn your own hand."

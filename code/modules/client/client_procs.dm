@@ -5,8 +5,6 @@
 #define UPLOAD_LIMIT 10485760 //Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION 0 //Just an ambiguously low version for now, I don't want to suddenly stop people playing.
 									//I would just like the code ready should it ever need to be used.
-#define GOOD_BYOND_MAJOR 513
-#define GOOD_BYOND_MINOR 1500
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -15,7 +13,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3
@@ -45,7 +43,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
-	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_auto_shove,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -55,7 +54,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
+	/client/proc/set_flash_type,
+	/client/proc/set_crit_type,
 ))
+
+/client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
+	if(topiclimiter[MINUTE_COUNT] > 0)
+		topiclimiter[MINUTE_COUNT] -= 1
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -181,39 +188,21 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.add_note(add, FALSE, NOTE_MERIT)
 
-	if(href_list["add_wl_info_1"])
-		var/key = href_list["add_wl_info_1"]
-		var/add = input("Add Commander Note") as null|message
+	if(href_list["add_wl_info"])
+		var/key = href_list["add_wl_info"]
+		var/add = input("Add Whitelist Note") as null|message
 		if(!add)
 			return
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_COMMANDER)
-
-	if(href_list["add_wl_info_2"])
-		var/key = href_list["add_wl_info_2"]
-		var/add = input("Add Synthetic Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_SYNTHETIC)
-
-	if(href_list["add_wl_info_3"])
-		var/key = href_list["add_wl_info_3"]
-		var/add = input("Add Yautja Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_YAUTJA)
+		P.add_note(add, FALSE, NOTE_WHITELIST)
 
 	if(href_list["remove_wl_info"])
 		var/key = href_list["remove_wl_info"]
 		var/index = text2num(href_list["remove_index"])
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.remove_note(index)
+		P.remove_note(index, whitelist = TRUE)
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -277,7 +266,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
 		return 0
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
@@ -308,23 +297,19 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
 	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	player_entity = setup_player_entity(ckey)
 
-	if(!CONFIG_GET(flag/no_localhost_rank))
-		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
-		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
-			admin.associate(src)
-			GLOB.RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+	if(check_localhost_status())
+		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
+		admin.associate(src)
 
 	//Admin Authorisation
 	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
-	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -336,6 +321,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
+
+	notify_login()
 
 	load_xeno_name()
 
@@ -358,14 +345,34 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		INVOKE_ASYNC(src, /client/proc/set_macros)
 
 	// Version check below if we ever need to start checking against BYOND versions again.
+	var/breaking_version = CONFIG_GET(number/client_error_version)
+	var/breaking_build = CONFIG_GET(number/client_error_build)
+	var/warn_version = CONFIG_GET(number/client_warn_version)
+	var/warn_build = CONFIG_GET(number/client_warn_build)
 
-	/*if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < world.byond_build)))
-		src << "<span class='warning'>Your version of Byond (v[byond_version].[byond_build]) differs from the server (v[world.byond_version].[world.byond_build]). You may experience graphical glitches, crashes, or other errors. You will be disconnected until your version matches or exceeds the server version.<br> \
-		Direct Download (Windows Installer): http://www.byond.com/download/build/[world.byond_version]/[world.byond_version].[world.byond_build]_byond.exe <br> \
-		Other versions (search for [world.byond_build] or higher): http://www.byond.com/download/build/[world.byond_version]</span>"
+	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
+		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		qdel(src)
-		return*/
-	//hardcode for now
+		return
+
+	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version].[byond_build]<br>"
+			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
+			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
@@ -375,10 +382,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
 		qdel(src)
 		return
-
-	//do this check after the blacklist check to avoid confusion
-	if((byond_version < GOOD_BYOND_MAJOR) || ((byond_version == GOOD_BYOND_MAJOR) && (byond_build < GOOD_BYOND_MINOR)))
-		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
 
 	// Initialize tgui panel
 	stat_panel.initialize(
@@ -416,11 +419,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
-		toggle_fullscreen(TRUE)
-	else
-		toggle_fullscreen(FALSE)
-
+	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -440,7 +439,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 
 	//////////////
 	//DISCONNECT//
@@ -470,7 +469,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	SSping.currentrun -= src
 
 	log_access("Logout: [key_name(src)]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin logout: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -487,7 +486,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin login: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -730,12 +729,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
-/client/proc/toggle_fullscreen(new_value)
-	if(new_value)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+/client/proc/update_fullscreen()
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
-		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
-	winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")
+
+	if(prefs.adaptive_zoom)
+		adaptive_zoom()
+	else if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.
@@ -842,3 +845,80 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		total_t3_playtime += get_job_playtime(src, caste_name)
 
 	return total_t3_playtime
+
+/client/verb/action_hide_menu()
+	set name = "Show/Hide Actions"
+	set category = "IC"
+
+	var/mob/user = usr
+
+	var/list/actions_list = list()
+	for(var/datum/action/action as anything in user.actions)
+		var/action_name = action.name
+		if(action.player_hidden)
+			action_name += " (Hidden)"
+		actions_list[action_name] += action
+
+	if(!LAZYLEN(actions_list))
+		to_chat(user, SPAN_WARNING("You have no actions available."))
+		return
+
+	var/selected_action_name = tgui_input_list(user, "Show or hide selected action", "Show/Hide Actions", actions_list, 30 SECONDS)
+	if(!selected_action_name)
+		to_chat(user, SPAN_WARNING("You did not select an action."))
+		return
+
+	var/datum/action/selected_action = actions_list[selected_action_name]
+	selected_action.player_hidden = !selected_action.player_hidden
+	user.update_action_buttons()
+
+	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, itll still not be visible
+		to_chat(user, SPAN_NOTICE("[selected_action] is forcefully hidden, bypassing player unhiding."))
+
+
+/client/proc/check_whitelist_status(flag_to_check)
+	if(check_localhost_status())
+		return TRUE
+
+	if((flag_to_check & WHITELIST_MENTOR) && CLIENT_IS_MENTOR(src))
+		return TRUE
+
+	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
+		return TRUE
+
+	if(!player_data)
+		load_player_data()
+	if(!player_data)
+		return FALSE
+
+	return player_data.check_whitelist_status(flag_to_check)
+
+/client/proc/check_whitelist_status_list(flags_to_check) /// Logical OR list, not match all.
+	var/success = FALSE
+	if(!player_data)
+		load_player_data()
+	for(var/bitfield in flags_to_check)
+		success = player_data.check_whitelist_status(bitfield)
+		if(success)
+			break
+	return success
+
+/client/proc/check_localhost_status()
+	if(CONFIG_GET(flag/no_localhost_rank))
+		return FALSE
+
+	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
+	if(isnull(address) || (address in localhost_addresses))
+		return TRUE
+
+	return FALSE
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")

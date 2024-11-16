@@ -6,9 +6,6 @@
 	if(!xeno.check_state())
 		return
 
-	if(xeno.mutation_type != RAVAGER_NORMAL)
-		return
-
 	if(!action_cooldown_check())
 		return
 
@@ -122,8 +119,6 @@
 
 	var/mob/living/carbon/human/human = living
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.mutation_type != RAVAGER_NORMAL)
-		return
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 	if(behavior.empower_targets < behavior.super_empower_threshold)
 		return
@@ -132,16 +127,8 @@
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
 	var/facing = get_dir(xeno, human)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
 
-	for(var/step in 0 to behavior.fling_distance-1)
-		temp = get_step(turf, facing)
-		if (!temp)
-			break
-		turf = temp
-
-	human.throw_atom(turf, behavior.fling_distance, SPEED_VERY_FAST, xeno, TRUE)
+	xeno.throw_carbon(human, facing, behavior.fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/ravager_user = owner
@@ -154,8 +141,6 @@
 
 	// Determine whether or not we should daze here
 	var/should_sslow = FALSE
-	if(ravager_user.mutation_type != RAVAGER_NORMAL)
-		return
 	var/datum/behavior_delegate/ravager_base/ravager_delegate = ravager_user.behavior_delegate
 	if(ravager_delegate.empower_targets >= ravager_delegate.super_empower_threshold)
 		should_sslow = TRUE
@@ -186,6 +171,11 @@
 				var/obj/structure/window/framed/framed_window = structure_blocker
 				if(!framed_window.unslashable)
 					framed_window.deconstruct(disassembled = FALSE)
+			if(istype(structure_blocker, /obj/structure/fence))
+				var/obj/structure/fence/fence = structure_blocker
+				if(!fence.unslashable)
+					fence.health -= 50
+					fence.healthcheck()
 
 			if(structure_blocker.opacity)
 				blocked = TRUE
@@ -310,17 +300,14 @@
 	if (carbon.stat == DEAD)
 		return
 
-	// All strain-specific behavior
-	if (xeno.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-
-		if (behavior.rage >= 2)
-			behavior.decrement_rage()
-			heal_amount += additional_healing_enraged
-		else
-			to_chat(xeno, SPAN_XENOWARNING("Our rejuvenation was weaker without rage!"))
-			debilitate = FALSE
-			fling_distance--
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (behavior.rage >= 2)
+		behavior.decrement_rage()
+		heal_amount += additional_healing_enraged
+	else
+		to_chat(xeno, SPAN_XENOWARNING("Our rejuvenation was weaker without rage!"))
+		debilitate = FALSE
+		fling_distance--
 
 	// Damage
 	var/obj/limb/head/head = carbon.get_limb("head")
@@ -348,7 +335,7 @@
 
 	// Negative stat effects
 	if (debilitate)
-		carbon.dazed += daze_amount
+		carbon.AdjustDaze(daze_amount)
 
 	apply_cooldown()
 	return ..()
@@ -369,17 +356,16 @@
 	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
-	if (xeno.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-		if (behavior.rage == 0)
-			to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
-			return
-		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		behavior.decrement_rage(behavior.rage)
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (behavior.rage == 0)
+		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
+		return
+	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	behavior.decrement_rage(behavior.rage)
 
-		apply_cooldown()
+	apply_cooldown()
 
 	if (range > 1)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
@@ -428,7 +414,7 @@
 
 	// This is the heal
 	if(!xeno.on_fire)
-		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+		xeno.gain_health(clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE
@@ -447,12 +433,11 @@
 	if (!xeno.check_state())
 		return
 
-	if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		if (!behavior.check_shards(shard_cost))
-			to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
-			return
-		behavior.use_shards(shard_cost)
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
 
@@ -476,10 +461,8 @@
 		return FALSE
 	else if (cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/xenomorph/xeno = owner
-		if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-			var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-			return behavior.check_shards(shard_cost)
-		return TRUE
+		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+		return behavior.check_shards(shard_cost)
 	return FALSE
 
 /datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
@@ -510,12 +493,11 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		if (!behavior.check_shards(shard_cost))
-			to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
-			return
-		behavior.use_shards(shard_cost)
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
 
@@ -539,11 +521,8 @@
 		var/mob/living/carbon/xenomorph/xeno = owner
 		if(!istype(xeno))
 			return FALSE
-		if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-			var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-			return behavior.check_shards(shard_cost)
-
-		return TRUE
+		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+		return behavior.check_shards(shard_cost)
 	else
 		return FALSE
 
@@ -556,13 +535,12 @@
 	if (!xeno.check_state())
 		return
 
-	if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		if (!behavior.check_shards(shard_cost))
-			to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
-			return
-		behavior.use_shards(shard_cost)
-		behavior.lock_shards()
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
+	behavior.lock_shards()
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
 	xeno.spin_circle()
@@ -575,10 +553,7 @@
 /datum/action/xeno_action/onclick/spike_shed/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/xenomorph/xeno = owner
-		if (xeno.mutation_type == RAVAGER_HEDGEHOG)
-			var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-			return behavior.check_shards(shard_cost)
-
-		return TRUE
+		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+		return behavior.check_shards(shard_cost)
 	else
 		return FALSE

@@ -90,9 +90,10 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 	GLOB.STUI?.debug.Add("\[[time]]DEBUG: [text]")
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
-	for(var/client/C in GLOB.admins)
-		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+	for(var/client/client in GLOB.admins)
+		if(CLIENT_IS_STAFF(client))
+			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
+				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)
@@ -125,11 +126,11 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_idmod(obj/item/card/id/target_id, msg)
+/proc/log_idmod(obj/item/card/id/target_id, msg, changer)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_idmod))
-		WRITE_LOG(GLOB.world_game_log, "ID MOD: [msg]")
-		LOG_REDIS("idmod", "\[[time]\] [msg]")
+		WRITE_LOG(GLOB.world_game_log, "ID MOD: ([changer]) [msg]")
+		LOG_REDIS("idmod", "\[[time]\] ([changer]) [msg]")
 	target_id.modification_log += "\[[time]]: [msg]"
 
 /proc/log_vote(text)
@@ -209,10 +210,10 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 	GLOB.STUI?.debug.Add("\[[time]]MISC: [text]")
 
-/proc/log_mutator(text)
-	if(!GLOB.mutator_logs)
+/proc/log_strain(text)
+	if(!GLOB.strain_logs)
 		return
-	WRITE_LOG(GLOB.mutator_logs, "[text]")
+	WRITE_LOG(GLOB.strain_logs, "[text]")
 
 /proc/log_hiveorder(text)
 	var/time = time_stamp()
@@ -284,6 +285,16 @@ GLOBAL_PROTECT(config_error_log)
 /* Rarely gets called; just here in case the config breaks. */
 /proc/log_config(text)
 	WRITE_LOG(GLOB.config_error_log, text)
+	SEND_TEXT(world.log, text)
+
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+#ifdef UNIT_TESTS
+	GLOB.unit_test_mapping_logs += text
+#endif
+	if(skip_world_log)
+		return
+	WRITE_LOG(GLOB.mapping_log, text)
 	SEND_TEXT(world.log, text)
 
 /proc/log_admin_private(text)

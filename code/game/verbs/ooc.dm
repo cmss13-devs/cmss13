@@ -7,6 +7,9 @@
 		to_chat(src, "Guests may not use OOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -42,7 +45,8 @@
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		display_colour = CONFIG_GET(string/ooc_color_other)
+		if(admin_holder.rights & R_MENTOR)
+			display_colour = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
 			display_colour = CONFIG_GET(string/ooc_color_debug)
 		if(admin_holder.rights & R_MOD)
@@ -100,6 +104,9 @@
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
 	if(!msg) return
 
@@ -135,7 +142,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -157,7 +164,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
@@ -217,7 +224,7 @@
 	if(!desired_width)
 		// Calculate desired pixel width using window size and aspect ratio
 		var/height = text2num(map_size[2])
-		desired_width = round(height * aspect_ratio)
+		desired_width = floor(height * aspect_ratio)
 
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])

@@ -45,7 +45,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/affected_atom, acid_type, plasma_cost)
-	if (mutation_type != RUNNER_ACIDER)
+	if(!istype(strain, /datum/xeno_strain/acider))
 		return ..()
 	if(!affected_atom.Adjacent(src))
 		if(istype(affected_atom,/obj/item/explosive/plastic))
@@ -76,12 +76,6 @@
 	//OBJ CHECK
 	if(isobj(affected_atom))
 		object = affected_atom
-
-		if(istype(object, /obj/structure/window_frame))
-			var/obj/structure/window_frame/window_frame = object
-			if(window_frame.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, SPAN_WARNING("This [object.name] is too tough to be melted by our weak acid."))
-				return
 
 		wait_time = object.get_applying_acid_time()
 		if(wait_time == -1)
@@ -163,9 +157,6 @@
 		return
 
 	if(!action_cooldown_check())
-		return
-
-	if(xeno.mutation_type != RUNNER_ACIDER)
 		return
 
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate

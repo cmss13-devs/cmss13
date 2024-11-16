@@ -37,7 +37,7 @@
 	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -51,7 +51,7 @@
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -62,7 +62,7 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+	if(!istype(xeno_owner))
 		return
 
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
@@ -82,7 +82,7 @@
 
 // This ties the pounce/throwing backend into the old collision backend
 /mob/living/carbon/xenomorph/crusher/pounced_obj(obj/O)
-	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_action(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
 
@@ -306,7 +306,7 @@
 	var/target = get_step(get_step(Xeno, target_dir), target_dir)
 	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
 	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
-	Xeno.throw_atom(target, target_dist, SPEED_FAST, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
 
 	apply_cooldown()
 	return ..()

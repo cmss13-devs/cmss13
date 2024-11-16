@@ -17,9 +17,8 @@ export const WYComputer = (props) => {
   const { current_menu, last_page, access_text, logged_in } = data;
   const PageComponent = PAGES[current_menu]();
 
-
   return (
-    <Window theme='weyland' width={800} height={725}>
+    <Window theme="weyland" width={800} height={725}>
       {!!current_menu === 'Login' && (
         <Section>
           <Flex align="center">

@@ -5,6 +5,12 @@ import pygit2
 from .dmm import *
 from .mapmerge import merge_map
 
+def green(text):
+    return "\033[32m" + str(text) + "\033[0m"
+
+def red(text):
+    return "\033[31m" + str(text) + "\033[0m"
+
 def has_tgm_header(fname):
     with open(fname, 'r', encoding=ENCODING) as f:
         data = f.read(len(TGM_HEADER))
@@ -63,14 +69,14 @@ def _self_test():
                             if original_bytes != merged_bytes:
                                 raise LintException('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                 except LintException as error:
-                    print('Failed on:', path)
+                    print(red(f'Failed on: {path}'))
                     print(error)
                 except Exception:
-                    print('Failed on:', path)
+                    print(red(f'Failed on: {path}'))
                     raise
                 count += 1
 
-    print(f"{os.path.relpath(__file__)}: successfully parsed {count} .dmm files")
+    print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count} .dmm files')}")
 
 
 def _usage():

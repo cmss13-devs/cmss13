@@ -1,7 +1,7 @@
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
-	icon = 'icons/obj/structure/liquid_tanks.dmi'
+	icon = 'icons/obj/structures/liquid_tanks.dmi'
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
@@ -451,7 +451,7 @@
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"
 	desc = "Refill pepper spray canisters."
-	icon = 'icons/obj/structure/wall_dispensers.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
 	drag_delay = 3
@@ -480,7 +480,7 @@
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg"
-	icon = 'icons/obj/structure/kegs.dmi'
+	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
@@ -495,7 +495,7 @@
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of virus food."
-	icon = 'icons/obj/structure/wall_dispensers.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE

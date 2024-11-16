@@ -5,7 +5,7 @@
 /obj/item/storage/backpack
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
-	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 	)

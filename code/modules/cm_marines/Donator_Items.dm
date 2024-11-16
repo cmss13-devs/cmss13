@@ -1471,7 +1471,7 @@
 	icon_state = "securitypack"
 	item_state = "securitypack"
 	has_gamemode_skin = FALSE
-	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 	)

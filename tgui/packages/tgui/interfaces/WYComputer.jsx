@@ -249,7 +249,7 @@ const MainMenu = (props) => {
               Room Divider
             </Button.Confirm>
           )}
-          <Button
+          <Button.Confirm
             align="center"
             tooltip="Open/Close the cell security shutters."
             icon={open_cell_shutters ? 'lock-open' : 'lock'}
@@ -262,8 +262,8 @@ const MainMenu = (props) => {
             disabled={!has_hidden_cell}
           >
             Door Shutters
-          </Button>
-          <Button
+          </Button.Confirm>
+          <Button.Confirm
             align="center"
             tooltip="Open/Close the cell door."
             icon={open_cell_door ? 'door-open' : 'door-closed'}
@@ -276,7 +276,7 @@ const MainMenu = (props) => {
             disabled={!has_hidden_cell}
           >
             Door Control
-          </Button>
+          </Button.Confirm>
           <Button.Confirm
             align="center"
             tooltip="Activate the cell's flashbulb."

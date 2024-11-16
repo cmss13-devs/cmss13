@@ -33,6 +33,7 @@ def _self_test():
         print("Determined ancestor commit SHA to be:", ancestor)
 
     count = 0
+    failed = 0
     for dirpath, dirnames, filenames in os.walk('.'):
         if '.git' in dirnames:
             dirnames.remove('.git')
@@ -69,14 +70,19 @@ def _self_test():
                             if original_bytes != merged_bytes:
                                 raise LintException('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                 except LintException as error:
+                    failed += 1
                     print(red(f'Failed on: {path}'))
                     print(error)
                 except Exception:
+                    failed += 1
                     print(red(f'Failed on: {path}'))
                     raise
                 count += 1
 
-    print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count} .dmm files')}")
+    print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count-failed} .dmm files')}")
+    if failed > 0:
+        print(f"{os.path.relpath(__file__)}: {red(f'failed to parse {failed} .dmm files')}")
+        exit(1)
 
 
 def _usage():

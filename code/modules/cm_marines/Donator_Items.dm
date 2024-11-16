@@ -132,9 +132,9 @@
 
 /obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
-	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
 	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -391,13 +391,16 @@
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/devilzhand
 	name = "Tank's Trenchcoat"
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
-
 
 /obj/item/clothing/suit/storage/marine/fluff/feweh //CKEY=feweh
 	name = "Pink's Ablative Armor Vest"
@@ -1139,6 +1142,10 @@
 	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item"
 	icon_state = "pink"
 	worn_state = "pink"
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+	)
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/wooki //CKEY=tophatpenguin (UNIQUE)
@@ -1475,7 +1482,7 @@
 	icon_state = "securitypack"
 	item_state = "securitypack"
 	has_gamemode_skin = FALSE
-	icon = 'icons/obj/items/clothing/backpack/misc.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 	)

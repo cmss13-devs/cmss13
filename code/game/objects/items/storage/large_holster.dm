@@ -4,7 +4,7 @@
 	name = "\improper Rifle Holster"
 	desc = "holster"
 	icon = 'icons/obj/items/storage/holsters.dmi'
-	icon_state = "m37_holster"
+	icon_state = ""
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	max_w_class = SIZE_LARGE
@@ -63,6 +63,10 @@
 	name = "\improper L44 M37A2 scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+	)
 	max_w_class = SIZE_HUGE
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,

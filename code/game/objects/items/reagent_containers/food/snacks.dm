@@ -1666,6 +1666,7 @@
 	name = "Spell Burger"
 	desc = "This is absolutely Ei Nath."
 	icon_state = "spellburger"
+	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#D505FF"
 
 /obj/item/reagent_container/food/snacks/spellburger/Initialize()
@@ -1721,7 +1722,7 @@
 	name = "Baguette"
 	desc = "Bon appetit!"
 	icon_state = "baguette"
-	icon = 'icons/obj/items/food/bakery.dmi'
+	icon = 'icons/obj/items/food/bread.dmi'
 	filling_color = "#E3D796"
 
 /obj/item/reagent_container/food/snacks/baguette/Initialize()

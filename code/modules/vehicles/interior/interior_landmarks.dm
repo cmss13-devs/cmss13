@@ -59,7 +59,7 @@
 // Driver's seat spawner
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat
 	name = "driver's seat spawner"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/chairs.dmi'
 	icon_state = "comfychair"
 	color = "red"
 

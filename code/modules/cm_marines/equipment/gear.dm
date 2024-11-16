@@ -192,6 +192,7 @@
 	name = "stale USCM protein bar"
 	desc = "The most fake-looking protein bar you have ever laid eyes on, covered in a substitution chocolate. The powder used to make these is a substitute of a substitute of whey substitute."
 	icon_state = "yummers"
+	icon = 'icons/obj/items/food/mre_food.dmi'
 	filling_color = "#ED1169"
 	w_class = SIZE_TINY
 

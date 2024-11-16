@@ -1,6 +1,6 @@
 /obj/structure/machinery/ignition_switch
 	name = "ignition switch"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	desc = "A remote control switch for a mounted igniter."
 	var/id = null
@@ -13,7 +13,7 @@
 /obj/structure/machinery/flasher_button
 	name = "flasher button"
 	desc = "A remote control switch for a mounted flasher."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	var/id = null
 	var/active = 0

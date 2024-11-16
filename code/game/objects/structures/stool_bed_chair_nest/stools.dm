@@ -11,7 +11,7 @@
 /obj/item/stool
 	name = "stool"
 	desc = "Uh-hoh, the bar is heating up."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/chairs.dmi'
 	icon_state = "stool"
 	force = 15
 	throwforce = 12

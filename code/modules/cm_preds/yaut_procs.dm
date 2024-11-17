@@ -248,27 +248,47 @@
 
 /area/yautja_grounds/jungle
 	name = "\improper Yautja Hunting Grounds Jungle Central"
-	icon_state = "red"
+	icon_state = "central"
 	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/jungle/north
 	name = "\improper Yautja Hunting Grounds Jungle north"
-	icon_state = "blue"
+	icon_state = "north"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/north_east
+	name = "\improper Yautja Hunting Grounds Jungle south east"
+	icon_state = "northeast"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/north_west
+	name = "\improper Yautja Hunting Grounds Jungle south west"
+	icon_state = "northwest"
 	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/jungle/east
 	name = "\improper Yautja Hunting Grounds Jungle east"
-	icon_state = "yellow"
+	icon_state = "east"
 	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/south
 	name = "\improper Yautja Hunting Grounds Jungle south"
-	icon_state = "orange"
+	icon_state = "south"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/south_east
+	name = "\improper Yautja Hunting Grounds Jungle south east"
+	icon_state = "southeast"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/south_west
+	name = "\improper Yautja Hunting Grounds Jungle south west "
+	icon_state = "southwest"
 	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/jungle/west
 	name = "\improper Yautja Hunting Grounds Jungle west"
-	icon_state = "purple"
+	icon_state = "west"
 	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/yautja_grounds/caves

@@ -9,6 +9,7 @@
 	name = "abstract tile"
 	singular_name = "abstract tile"
 	desc = "If you're seeing this, then a Dev made a mistake. Report it on Github."
+	icon = 'icons/obj/items/floor_tiles.dmi'
 	w_class = SIZE_MEDIUM
 	force = 1
 	throwforce = 1

@@ -3,6 +3,7 @@
 	desc = "Some rods. Can be used for building, or something."
 	singular_name = "metal rod"
 	icon_state = "rods"
+	icon = 'icons/obj/items/stacks.dmi'
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	force = 9

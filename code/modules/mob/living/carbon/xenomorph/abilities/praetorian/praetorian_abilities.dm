@@ -267,96 +267,57 @@
 
 ///////////////////////// WARDEN PRAE
 
-/datum/action/xeno_action/activable/spray_acid/prae_warden
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	plasma_cost = 130
-	xeno_cooldown = 13 SECONDS
+/datum/action/xeno_action/activable/valkyrie_rage
+	name = "Tantrum"
+	action_icon_state = "warden_heal"
+	ability_name = "Tantrum"
+//	macro_path = /datum/action/xeno_action/verb/valkyrie_rage
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+	plasma_cost = 50
+	xeno_cooldown = 5 SECONDS
+	var/datum/weakref/focus_rage = null
+
+	//rage configs
+
+	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
+	var/target_armor_buff = 30
+	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
+	var/armor_buffs_targer_dur = 3 SECONDS
+	var/armor_buffs_active_target = FALSE
+	var/armor_buffs_active = FALSE
 
 
-	// Configurable options
-
-	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
-	spray_distance = 7 // Distance to spray
-
-	activation_delay = TRUE
-	activation_delay_length = 5
-
-/datum/action/xeno_action/activable/warden_heal
-	name = "Aid Xenomorph"
-	action_icon_state = "prae_aid"
-	ability_name = "aid"
-	// todo: macro
+/datum/action/xeno_action/activable/high_gallop
+	name = "High Gallop"
+	action_icon_state = ""
+	ability_name = "High Gallop"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 10 SECONDS
+	xeno_cooldown = 12 SECONDS
+
+	// jump range and such
+
+	var/gallop_jumprange = 5
+	var/gallop_actv_delay = 1 SECONDS
+	var/gallop_damage = 45
+
+
+/datum/action/xeno_action/onclick/fight_or_flight
+	name = "Fight or Flight"
+	action_icon_state = "screech"
+	ability_name = "Fight or Flight"
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 45 SECONDS
 	plasma_cost = 100
 
-	// Config
 
-	// These values are used to determine the
-	// "HP costs" and effects of the three different, toggle-able, heal types.
-	var/heal_cost = 100
-	var/heal_amount = 150
+	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
 
-	var/shield_cost = 100
-	var/shield_amount = 125
-	var/shield_duration = 1 MINUTES
-	var/shield_decay = 25
-
-	var/debuff_cost = 100
-
-	var/curr_effect_type = WARDEN_HEAL_HP
+	var/low_rage_range = 3
+	var/high_rage_range = 7
+	var/rejuvenate_cost = 75
 
 
-/datum/action/xeno_action/onclick/prae_switch_heal_type
-	name = "Toggle Aid Type"
-	action_icon_state = "warden_heal" // default = heal
-	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
-	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_5
-
-/datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
-
-/datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
-
-	var/mob/living/carbon/xenomorph/X = owner
-	var/action_icon_result
-
-	if(!X.check_state(1))
-		return
-
-	var/datum/action/xeno_action/activable/warden_heal/WH = get_action(X, /datum/action/xeno_action/activable/warden_heal)
-	if (!istype(WH))
-		return
-
-	if (WH.curr_effect_type == WARDEN_HEAL_HP)
-		action_icon_result = "warden_rejuvenate"
-		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by curing their ailments!"))
-
-	else
-		action_icon_result = "warden_heal"
-		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by healing them!"))
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
-	return ..()
-
-/datum/action/xeno_action/activable/prae_retrieve
-	name = "Retrieve"
-	action_icon_state = "retrieve"
-	ability_name = "retrieve"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 100
-	plasma_cost = 180
-
-	// Config
-	var/max_distance = 7
-	var/windup = 6
-	var/retrieve_cost = 100

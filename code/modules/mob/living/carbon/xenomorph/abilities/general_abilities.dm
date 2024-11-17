@@ -418,9 +418,9 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/place_trap
-	name = "Place resin hole (200)"
+	name = "Place resin hole (300)"
 	action_icon_state = "place_trap"
-	plasma_cost = 200
+	plasma_cost = 300
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2

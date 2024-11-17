@@ -17,6 +17,7 @@
 		/datum/action/xeno_action/activable/valkyrie_rage,
 		/datum/action/xeno_action/activable/high_gallop,
 		/datum/action/xeno_action/onclick/fight_or_flight,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
@@ -76,14 +77,11 @@
 		to_chat(bound_xeno, SPAN_XENODANGER("We feel ourselves get angrier."))
 	base_fury = clamp(base_fury + amount, 0, fury_max)
 
-/datum/behavior_delegate/praetorian_valkyrie/proc/remove_base_fury(amount)
-	add_base_fury(-1*amount)
-
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
 	if (cost > base_fury)
 		to_chat(bound_xeno, SPAN_XENODANGER("We dont have enough rage! We need to be angrier."))
 		return FALSE
-	else
-		remove_base_fury(cost)
-		return TRUE
+
+	add_base_fury(-cost)
+	return TRUE
 

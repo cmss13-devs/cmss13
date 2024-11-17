@@ -257,7 +257,6 @@
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
-//	macro_path = /datum/action/xeno_action/verb/valkyrie_rage
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	macro_path = /datum/action/xeno_action/verb/verb_prae_rage

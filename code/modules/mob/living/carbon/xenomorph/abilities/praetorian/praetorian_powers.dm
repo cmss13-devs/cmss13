@@ -753,22 +753,22 @@
 
 	return ..()
 
-/datum/action/xeno_action/activable/valkyrie_rage/use_ability(atom/a)
+/datum/action/xeno_action/activable/valkyrie_rage/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/raging_valkyrie = owner
-	var/mob/living/carbon/xenomorph/buffing_target = a
+	var/mob/living/carbon/xenomorph/buffing_target = target
 
 
 	if (!raging_valkyrie.check_state() || raging_valkyrie.action_busy)
 		return
 
 	if (buffing_target.is_dead())
-		(to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back.")))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!isxeno_human(a))
+	if (!isxeno_human(target))
 		return
 
 	focus_rage = WEAKREF(buffing_target)
@@ -783,21 +783,15 @@
 	raging_valkyrie.armor_modifier += armor_buff
 	raging_valkyrie.recalculate_armor()
 
-
-
-
-
 	if(isxeno(buffing_target))
 		playsound(get_turf(buffing_target), "alien_roar", 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff
 		buffing_target.recalculate_armor()
-		buffing_target = WEAKREF(focus_rage)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
 	addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
-
 
 	apply_cooldown()
 	return ..()

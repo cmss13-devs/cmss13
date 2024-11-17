@@ -1,7 +1,6 @@
 /datum/xeno_strain/valkyrie
-	// i mean so basically im braum
 	name = PRAETORIAN_VALKYRIE
-	description = "You trade your acid ball, acid spray, dash, and a small bit of your slash damage and speed to become an effective medic. You gain the ability to emit strong pheromones, an ability that retrieves endangered, knocked-down or resting allies and pulls them to your location, and you gain an internal hitpoint pool that fills with every slash against your enemies, which can be spent to aid your allies and yourself by healing them or curing their ailments."
+	description = "You trade your ranged abilities and acidto gain the ability to buff other xenomorphs, giving them extra armor a dash that lets you dash to enemies to slice and root them or to an ally that dashes you towards them and knockdown the people around them. and lastly an ability that rejuvenates everyone in a certain rage depending on your rage."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
 
@@ -26,9 +25,7 @@
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.damage_modifier += XENO_DAMAGE_MOD_SMALL
 	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
-
 	prae.recalculate_everything()
-	to_chat(world, "test [prae.armor_modifier]")
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Valkyrie Behavior Delegate"
@@ -80,13 +77,13 @@
 		if(raging == TRUE)
 			xeno_in_range.gain_health(15)
 		else
-			xeno_in_range.gain_health(5)
+			xeno_in_range.gain_health(8)
 
 
 	bound_xeno.emote("roar")
 	bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
 	bound_xeno.xeno_jitter(1 SECONDS)
-	bound_xeno.gain_health(5) // you heal 10 in total per slash taking the other effect in count
+	bound_xeno.gain_health(8) // you heal 10 in total per slash taking the other effect in count
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/add_base_fury(amount)
 	if (amount > 0)

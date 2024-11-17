@@ -268,3 +268,10 @@
   - bugfix: makes UPP synth lobby joinable for events
   zzzmike:
   - rscadd: tip of the round regarding lesser known cryotube utility
+2024-11-16:
+  BeagleGaming1:
+  - rscadd: Adds the personal gear vendor, where people can get their donator items
+      or a random loadout item
+  - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
+      them
+  - config: Changes to config/custom_items.txt

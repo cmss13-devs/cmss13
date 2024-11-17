@@ -756,6 +756,7 @@
 /datum/action/xeno_action/activable/valkyrie_rage/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/raging_valkyrie = owner
 	var/mob/living/carbon/xenomorph/buffing_target = target
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = raging_valkyrie.behavior_delegate
 
 
 	if (!raging_valkyrie.check_state() || raging_valkyrie.action_busy)
@@ -774,6 +775,7 @@
 	focus_rage = WEAKREF(buffing_target)
 	armor_buffs_active = TRUE
 	armor_buffs_active_target = TRUE
+	behavior.raging = TRUE
 
 	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
 	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("Our rage drives us forward, our healing and armor is increased."))
@@ -799,9 +801,11 @@
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_rage()
 	var/mob/living/carbon/xenomorph/raging_valkyrie = owner
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = raging_valkyrie.behavior_delegate
 	raging_valkyrie.remove_filter("raging")
 	raging_valkyrie.armor_modifier -= armor_buff
 	armor_buffs_active = FALSE
+	behavior.raging = FALSE
 	raging_valkyrie.recalculate_armor()
 	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 
@@ -811,9 +815,11 @@
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
 	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		var/datum/behavior_delegate/praetorian_valkyrie/behavior = target_xeno.behavior_delegate
 		target_xeno.armor_modifier -= target_armor_buff
 		target_xeno.remove_filter("raging")
 		armor_buffs_active_target = FALSE
+		behavior.raging = FALSE
 		target_xeno.recalculate_armor()
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 
@@ -841,7 +847,7 @@
 		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
 		apply_cooldown()
 		to_chat(valkyrie, SPAN_WARNING("We dash to the aid of an ally."))
-		for(var/mob/living/carbon/human in orange(7, valkyrie))
+		for(var/mob/living/carbon/human in orange(3, valkyrie))
 
 			if(!isxeno_human(human) || valkyrie.can_not_harm(human))
 				continue

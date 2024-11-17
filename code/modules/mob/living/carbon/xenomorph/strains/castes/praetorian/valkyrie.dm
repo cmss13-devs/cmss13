@@ -34,9 +34,13 @@
 	name = "Praetorian Valkyrie Behavior Delegate"
 
 	// Config
-	var/fury_max = 200  // 20 seconds to recharge 1-hit shield
-	var/fury_per_attack = 25   // 1 second to use pierce
-	var/fury_per_life = 15   // How long you have to buffed cleave after the shield fully decays
+	var/fury_max = 200
+	var/fury_per_attack = 25
+	var/fury_per_life = 15
+
+
+	var/heal_range =  3
+	var/raging = FALSE
 
 	// State
 	var/base_fury = 0
@@ -69,6 +73,22 @@
 	..()
 
 	add_base_fury(fury_per_attack)
+
+	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		return
+
+	for(var/mob/living/carbon/xenomorph/xeno_in_range in range(heal_range, bound_xeno))
+		xeno_in_range.flick_heal_overlay(2 SECONDS, "#00B800")
+		if(raging == TRUE)
+			xeno_in_range.gain_health(15)
+		else
+			xeno_in_range.gain_health(5)
+
+
+	bound_xeno.emote("roar")
+	bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
+	bound_xeno.xeno_jitter(1 SECONDS)
+	bound_xeno.gain_health(5) // you heal 10 in total per slash taking the other effect in count
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/add_base_fury(amount)
 	if (amount > 0)

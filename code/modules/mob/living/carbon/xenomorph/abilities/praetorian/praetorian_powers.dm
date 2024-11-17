@@ -779,6 +779,9 @@
 	if (!behavior.use_internal_fury_ability(rage_cost))
 		return
 
+	if (behavior.raging == TRUE)
+		return
+
 	focus_rage = WEAKREF(buffing_target)
 	armor_buffs_active = TRUE
 	armor_buffs_active_target = TRUE
@@ -910,23 +913,14 @@
 	if (!behavior.use_internal_fury_ability(rejuvenate_cost))
 		return
 
-	if (behavior.base_fury < 100)
-		playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
-		for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(low_rage_range, valkyrie_flight))
-			to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
-			valkyrie_flight.create_shriekwave(3)
-			allied_xenomorphs.xeno_jitter(1 SECONDS,)
-			allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
-			effect_overlay.flick_overlay(allied_xenomorphs, 20)
-	else
-		playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
-		for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(high_rage_range, valkyrie_flight))
-
-			to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
-			valkyrie_flight.create_shriekwave(3)
-			allied_xenomorphs.xeno_jitter(1 SECONDS)
-			allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
-			effect_overlay.flick_overlay(allied_xenomorphs, 20)
+	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
+	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
+	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
+		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
+		valkyrie_flight.create_shriekwave(3)
+		allied_xenomorphs.xeno_jitter(1 SECONDS,)
+		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
+		effect_overlay.flick_overlay(allied_xenomorphs, 20)
 
 	apply_cooldown()
 	return ..()

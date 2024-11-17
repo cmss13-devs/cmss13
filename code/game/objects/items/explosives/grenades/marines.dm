@@ -613,7 +613,7 @@
 			mob.apply_damage(damage_applied, BURN)
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
-			mob.Slow(damage_applied/11)
+			mob.Slow(damage_applied/xeno_slowdown_numerator)
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.

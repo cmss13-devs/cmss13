@@ -209,8 +209,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
 
-	///if xenos can bypass XENO_COMM_ACQUISITION_TIME to corrupt the tower
-	var/bypass_round_time_requirements = FALSE
 	/// Tower has been taken over by xenos, is not usable
 	var/corrupted = FALSE
 
@@ -329,7 +327,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(!weeded_turf.weeds.parent)
 		return
 
-	if(istypestrict(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/core) || !istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon))
+	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
 		return
 
 	if(SSticker.mode.is_in_endgame)
@@ -338,49 +336,44 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(operable())
 		return
 
-	if(!bypass_round_time_requirements)
-		if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
-			addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-			return
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		return
 
 	if(!COOLDOWN_FINISHED(src, corruption_delay))
 		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	var/obj/effect/alien/weeds/node/pylon/parent_node = weeded_turf.weeds.parent
+	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
 
-	var/obj/effect/alien/resin/special/pylon_node_parent = parent_node.resin_parent
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
 
 	var/list/held_children_weeds = parent_node.children
-	var/cluster_loc = pylon_node_parent.loc
-	var/linked_hive = pylon_node_parent.linked_hive
+	var/cluster_loc = cluster_parent.loc
+	var/linked_hive = cluster_parent.linked_hive
 
 	parent_node.children = list()
 
-	var/obj/effect/alien/resin/special/pylon/endgame/pylon
-	if(istypestrict(parent_node.resin_parent, /obj/effect/alien/resin/special/pylon/endgame)) //if its already a pylon, just add the new tower
-		pylon = parent_node.resin_parent
-	else
-		qdel(pylon_node_parent)
-		pylon = new(cluster_loc, linked_hive)
-		pylon.node.children = held_children_weeds
+	qdel(cluster_parent)
 
-	for(var/obj/effect/alien/weeds/weed in pylon.node.children)
-		weed.parent = pylon.node
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
+	new_pylon.node.children = held_children_weeds
+
+	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
+		weed.parent = new_pylon.node
 		weed.spread_on_semiweedable = TRUE
 		weed.weed_expand()
 
-	RegisterSignal(pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
 
 	corrupted = TRUE
-	pylon.connected_towers += src
 
 	corruption_image = image(icon, icon_state = "resin_growing")
 
 	flick_overlay(src, corruption_image, (2 SECONDS))
 	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
 
-	pylon.comms_relay_connection(src)
+	new_pylon.comms_relay_connection()
 
 /// Handles removing corruption effects from the comms relay
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)

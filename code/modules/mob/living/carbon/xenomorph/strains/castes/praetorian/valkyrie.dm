@@ -30,16 +30,16 @@
 	to_chat(world, "test [prae.armor_modifier]")
 
 /datum/behavior_delegate/praetorian_valkyrie
-	name = "Praetorian Warden Behavior Delegate"
-// Config
-var/fury_max = 200
-var/fury_per_attack = 25
-var/fury_per_life = 3
+	name = "Praetorian Valkyrie Behavior Delegate"
 
+	// Config
+	var/fury_max = 200  // 20 seconds to recharge 1-hit shield
+	var/fury_per_attack = 25   // 1 second to use pierce
+	var/fury_per_life = 15   // How long you have to buffed cleave after the shield fully decays
 
-// State
-var/base_fury = 0
-var/transferred_healing = 0
+	// State
+	var/base_fury = 0
+	var/transferred_healing = 0
 
 /datum/behavior_delegate/praetorian_valkyrie/append_to_stat()
 	. = list()

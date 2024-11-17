@@ -903,7 +903,7 @@
 	if (!behavior.use_internal_fury_ability(rejuvenate_cost))
 		return
 
-	if (base_fury < 100)
+	if (behavior.base_fury < 100)
 		playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
 		for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(low_rage_range, valkyrie_flight))
 			to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))

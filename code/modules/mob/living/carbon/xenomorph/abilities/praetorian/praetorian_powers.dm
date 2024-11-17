@@ -766,10 +766,17 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
 		return
 
+	if (istype(buffing_target.strain, /datum/xeno_strain/valkyrie))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
+		return
+
 	if (!action_cooldown_check())
 		return
 
 	if (!isxeno_human(target))
+		return
+
+	if (!behavior.use_internal_fury_ability(rage_cost))
 		return
 
 	focus_rage = WEAKREF(buffing_target)
@@ -897,7 +904,7 @@
 	if (!valkyrie_flight.check_state())
 		return
 
-	if(!action_cooldown_check())
+	if (!action_cooldown_check())
 		return
 
 	if (!behavior.use_internal_fury_ability(rejuvenate_cost))

@@ -234,7 +234,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
 	ceiling = CEILING_NONE
-	linked_lz = DROPSHIP_LZ2
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //

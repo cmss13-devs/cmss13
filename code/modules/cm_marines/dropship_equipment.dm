@@ -297,6 +297,11 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
 	else if (linked_shuttle.id == DROPSHIP_SAIPAN)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_SAIPAN)
+	else if (linked_shuttle.id == DROPSHIP_MORANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MORANA)
+	else if (linked_shuttle.id == DROPSHIP_DEVANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_DEVANA)
+
 
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()

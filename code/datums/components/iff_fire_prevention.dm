@@ -13,7 +13,6 @@
 
 /datum/component/iff_fire_prevention/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 	RegisterSignal(parent, COMSIG_GUN_ALT_IFF_TOGGLED, PROC_REF(handle_iff_toggle))
 
 /datum/component/iff_fire_prevention/UnregisterFromParent()

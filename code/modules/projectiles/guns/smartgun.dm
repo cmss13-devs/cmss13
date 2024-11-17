@@ -397,7 +397,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
-	balloon_alert(user, "IFF [iff_enabled ? "disabled" : "enabled"]")
+	balloon_alert(user, "[iff_enabled ? "disabled" : "enabled"] IFF")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary

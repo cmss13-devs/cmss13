@@ -170,22 +170,22 @@
 	return TRUE
 
 /datum/keybinding/human/combat/toggle_frontline_mode
-    hotkey_keys = list("Unbound")
-    classic_keys = list("Unbound")
-    name = "toggle_frontline_mode"
-    full_name = "Toggle Smartgun Frontline Mode"
-    keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_frontline_mode"
+	full_name = "Toggle Smartgun Frontline Mode"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
 
 /datum/keybinding/human/combat/toggle_frontline_mode/down(client/user)
-    . = ..()
-    if(.)
-        return
-    var/mob/living/carbon/human/human = user.mob
-    var/obj/item/weapon/gun/held_item = human.get_held_item()
-    if(istype(held_item, /obj/item/weapon/gun/smartgun))
-        var/obj/item/weapon/gun/smartgun/clevergun = held_item
-        clevergun.toggle_frontline_mode(human)
-        return TRUE
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	if(istype(held_item, /obj/item/weapon/gun/smartgun))
+		var/obj/item/weapon/gun/smartgun/clevergun = held_item
+		clevergun.toggle_frontline_mode(human)
+		return TRUE
 
 /datum/keybinding/human/combat/toggle_iff
 	hotkey_keys = list("Unbound")

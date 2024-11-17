@@ -9,12 +9,15 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/design, //third macro
-		/datum/action/xeno_action/onclick/toggle_long_range/designer, //fourth macro
-		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
-		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/activable/secrete_resin/design,
+		/datum/action/xeno_action/onclick/destroy_design_nodes,
+		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
+		/datum/action/xeno_action/onclick/toggle_long_range/designer,
+		/datum/action/xeno_action/active_toggle/toggle_speed,
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
@@ -121,3 +124,48 @@
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
+
+/datum/action/xeno_action/verb/destroy_design_nodes()
+	set category = "Alien"
+	set name = "Destroy Design Nodes"
+	set hidden = TRUE
+	var/action_name = "Destroy Design Nodes"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/onclick/destroy_design_nodes
+	name = "Destroy Design Nodes (100)"
+	action_icon_state = "gardener_resin_surge"
+	plasma_cost = 100
+	xeno_cooldown = 30 SECONDS
+	macro_path = /datum/action/xeno_action/verb/destroy_design_nodes
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+
+/datum/action/xeno_action/onclick/destroy_design_nodes/use_ability(atom/target_atom)
+	.=..()
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state(TRUE))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	var/turf/target_turf = get_turf(target_atom)
+
+	var/obj/effect/alien/weeds/weeds_target = locate(/obj/effect/alien/weeds/node/designer/speed) in target_turf
+
+	if(weeds_target && istype(target_turf, /turf/open) && weeds_target.hivenumber == xeno.hivenumber)
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"), \
+		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
+		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
+		var/turf/closed/wall/resin/weak_wall = target_turf
+		weak_wall.hivenumber = xeno.hivenumber
+		set_hive_data(weak_wall, xeno.hivenumber)

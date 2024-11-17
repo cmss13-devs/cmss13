@@ -154,15 +154,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/human/emp_act(severity)
-	. = ..()
-	for(var/obj/limb/O in limbs)
-		if(O.status & LIMB_DESTROYED)
-			continue
-		for(var/datum/internal_organ/I in O.internal_organs)
-			if(I.robotic == FALSE)
-				continue
-			I.emp_act(severity)
+
 
 //Returns 1 if the attack hit, 0 if it missed.
 /mob/living/carbon/human/proc/attacked_by(obj/item/I, mob/living/user)

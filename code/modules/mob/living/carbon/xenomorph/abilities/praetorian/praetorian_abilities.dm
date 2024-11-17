@@ -271,7 +271,7 @@
 	var/armor_buffs_targer_dur = 3 SECONDS
 	var/armor_buffs_active_target = FALSE
 	var/armor_buffs_active = FALSE
-	var/rejuvenate_cost = 75
+	var/rage_cost = 50
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"

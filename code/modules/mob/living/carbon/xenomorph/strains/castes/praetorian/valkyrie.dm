@@ -37,8 +37,6 @@
 	var/fury_max = 200
 	var/fury_per_attack = 25
 	var/fury_per_life = 15
-
-
 	var/heal_range =  3
 	var/raging = FALSE
 
@@ -104,4 +102,3 @@
 
 	add_base_fury(-cost)
 	return TRUE
-

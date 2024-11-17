@@ -7918,7 +7918,7 @@
 /area/fiorina/station/chapel)
 "fVY" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -12890,7 +12890,7 @@
 /area/fiorina/tumor/servers)
 "jOd" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -13563,7 +13563,7 @@
 /area/fiorina/station/medbay)
 "koK" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -14181,7 +14181,7 @@
 /area/fiorina/maintenance)
 "kMV" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -18502,7 +18502,7 @@
 /area/fiorina/station/power_ring)
 "nZU" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -18741,7 +18741,7 @@
 /area/fiorina/tumor/ice_lab)
 "ojj" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -19976,7 +19976,7 @@
 /area/fiorina/tumor/servers)
 "pmC" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/darkyellow2,
@@ -20815,7 +20815,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "pXJ" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -23545,7 +23545,7 @@
 /area/fiorina/tumor/aux_engi)
 "sga" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -27080,7 +27080,7 @@
 /area/fiorina/station/power_ring/reactor)
 "uVk" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /obj/structure/machinery/light/double/blue{
@@ -27102,7 +27102,7 @@
 /area/fiorina/station/medbay)
 "uVH" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/darkyellow2/north,
@@ -27271,7 +27271,7 @@
 /area/fiorina/station/power_ring)
 "uZZ" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -29334,7 +29334,7 @@
 /area/fiorina/station/chapel)
 "wGX" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -30482,7 +30482,7 @@
 /area/fiorina/station/central_ring)
 "xFL" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/floor_plate/southwest,

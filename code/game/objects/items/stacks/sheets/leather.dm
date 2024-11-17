@@ -57,6 +57,7 @@
 	desc = "A piece of chitin from a terrible creature."
 	singular_name = "alien hide piece"
 	icon_state = "chitin"
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	sheettype = "chitin"
 	stack_id = "alien chitin"
 

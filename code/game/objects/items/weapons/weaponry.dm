@@ -30,7 +30,7 @@
 	desc = "Tharr she blows!"
 	icon_state = "harpoon"
 	item_state = "harpoon"
-	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	force = 20
 	throwforce = 15
 	w_class = SIZE_MEDIUM
@@ -136,6 +136,7 @@
 	name = "katana"
 	desc = "A ancient weapon from Japan."
 	icon_state = "samurai"
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/wirerod

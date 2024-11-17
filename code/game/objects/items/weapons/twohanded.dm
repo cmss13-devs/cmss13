@@ -159,7 +159,7 @@
 	desc = "a large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
-	icon = 'icons/obj/items/weapons/melee/misc.dmi'
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE

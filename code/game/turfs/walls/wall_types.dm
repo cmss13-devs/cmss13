@@ -754,7 +754,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
-	var/break_sound = "alien_resin_break"
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
@@ -1231,7 +1230,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_XENO_GELATINE
 	icon_state = "gelatin"
 	walltype = WALL_GELATIN
-	break_sound = "alien_resin_move"
 	var/slow_amt = 1.2
 
 /turf/closed/wall/resin/membrane/gelatin/Initialize(mapload)
@@ -1256,7 +1254,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	else if (isobj(AM))
 		var/obj/O = AM
 		tforce = O.throwforce
-	playsound(src, break_sound, 25)
+	playsound(src, "alien_resin_break", 25)
 	take_damage(tforce)
 
 
@@ -1272,7 +1270,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("We claw \the [src]."))
-	playsound(src, break_sound, 25)
+	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
@@ -1283,7 +1281,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/resin/attack_animal(mob/living/M)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
 	SPAN_DANGER("You tear \the [name]."))
-	playsound(src, break_sound, 25)
+	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
 	take_damage(80)
 
@@ -1303,7 +1301,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
-		playsound(src, break_sound, 25)
+		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
 

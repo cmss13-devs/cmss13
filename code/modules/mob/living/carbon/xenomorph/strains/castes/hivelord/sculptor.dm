@@ -13,6 +13,7 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/sculptor, //third macro
+		/datum/action/xeno_action/activable/corrosive_acid/weak, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision, // readding it so it gets at the end of the ability list
@@ -20,11 +21,10 @@
 
 /datum/xeno_strain/sculptor/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.plasmapool_modifier = 0.6 // -40% plasma pool
+	hivelord.plasmagain_modifier = XENO_PLASMA_GAIN_TIER_10
 	hivelord.health_modifier -= XENO_HEALTH_MOD_SCULPTOR
 	hivelord.speed_modifier += XENO_SPEED_FASTMOD_TIER_8
 	hivelord.damage_modifier += XENO_DAMAGE_MOD_SMALL
-	hivelord.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
-	hivelord.armor_modifier += XENO_ARMOR_MOD_SMALL
 
 	hivelord.recalculate_everything()
 	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_sculptor)

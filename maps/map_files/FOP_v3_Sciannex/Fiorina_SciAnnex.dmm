@@ -60,7 +60,7 @@
 /area/fiorina/station/flight_deck)
 "acO" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /obj/structure/machinery/light/double/blue{

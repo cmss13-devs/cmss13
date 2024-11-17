@@ -265,8 +265,7 @@
 	activation_delay_length = 5
 
 
-///////////////////////// WARDEN PRAE
-
+///////////////////////// VALKYR PRAE
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
@@ -279,14 +278,12 @@
 	var/datum/weakref/focus_rage = null
 
 	//rage configs
-
 	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
 	var/target_armor_buff = 30
 	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
 	var/armor_buffs_targer_dur = 3 SECONDS
 	var/armor_buffs_active_target = FALSE
 	var/armor_buffs_active = FALSE
-
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
@@ -301,7 +298,6 @@
 	var/gallop_actv_delay = 1 SECONDS
 	var/gallop_damage = 45
 
-
 /datum/action/xeno_action/onclick/fight_or_flight
 	name = "Fight or Flight"
 	action_icon_state = "screech"
@@ -310,11 +306,8 @@
 	xeno_cooldown = 45 SECONDS
 	plasma_cost = 100
 
-
 	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
 
 	var/low_rage_range = 3
 	var/high_rage_range = 7
 	var/rejuvenate_cost = 75
-
-

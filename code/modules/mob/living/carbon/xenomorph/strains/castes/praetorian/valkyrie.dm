@@ -31,16 +31,6 @@
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Warden Behavior Delegate"
-
-
-var/healing_done = 0
-var/healvalkyrie_percent = 7
-var/max_healing = 9
-var/lifesteal_range =  3 // Marines within 3 tiles of range will give extra health
-var/lifesteal_lock_duration = 2 // This will remove the glow effect after 2 seconds
-var/color = "#6c6f24"
-var/emote_cooldown = 0
-
 // Config
 var/fury_max = 200
 var/fury_per_attack = 25
@@ -96,3 +86,4 @@ var/transferred_healing = 0
 	else
 		remove_base_fury(cost)
 		return TRUE
+

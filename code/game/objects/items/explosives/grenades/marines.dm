@@ -485,9 +485,9 @@
 	/// Factor to mutiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
-	var/xeno_slowdown_numerator = 12
+	var/xeno_slowdown_numerator = 11
 	/// Post falloff calc damage is multipled by this to get human stamina damage
-	var/human_stam_dam_factor = 0.9
+	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
@@ -605,7 +605,7 @@
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
 				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
-			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
+			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 100) //100 means the dmg gets spread evenly over the entire body
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
 			shocked_human.emote("pain")
@@ -619,9 +619,9 @@
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
 			mob.Daze(1)
-		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
-			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
-			mob.eye_blurry = damage_applied/8
+		else if((mob_dist < (range-3)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker slow humans that are closer to the grenade and larvas too.
+			mob.apply_effect(1 + (damage_applied/100),SLOW) // 1 + damage/100
+			mob.eye_blurry = damage_applied/10
 
 		else
 			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))

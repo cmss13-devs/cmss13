@@ -277,7 +277,7 @@
 				continue
 
 		if(abomination)
-			if(!(/datum/tutorial/xenomorph/abomination::tutorial_id in cur_obs.client.prefs.completed_tutorials))
+			if(!IS_TUTORIAL_COMPLETED(cur_obs, "xeno_abom_1"))
 				to_chat(cur_obs, SPAN_BOLDNOTICE("You were passed over for playing as an Abomination because you have not completed its tutorial."))
 				continue
 

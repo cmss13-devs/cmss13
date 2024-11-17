@@ -181,6 +181,8 @@ Everything below isn't used or out of place.
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)
+	minimap_icon = "goon_standard"
+	minimap_background = "background_goon"
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -256,6 +258,8 @@ Everything below isn't used or out of place.
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "xo"
+	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 	unslashable = TRUE
 	///a random item that can be claimed if there is no valid kit
 	var/static/list/random_personal_possessions = list()
-	///list of ckeys of ckeys who redeemed kits
+	///assoc list of ckeys to list of kits redeemed
 	var/static/list/ckeys_redeemed_kits = list()
 
 /obj/structure/machinery/personal_gear_vendor/Initialize(mapload, ...)
@@ -80,30 +80,27 @@ GLOBAL_LIST_EMPTY(donator_items)
 		possible_kits += GLOB.donator_items[user.ckey]
 
 	if(user.ckey in ckeys_redeemed_kits)
-		if(length(possible_kits) <= 1)
-			to_chat(user, SPAN_NOTICE("You have already retrieved your kit."))
+		if(length(ckeys_redeemed_kits[user.ckey]) >= length(possible_kits))
+			// They are a donator but have gotten everything
+			to_chat(user, SPAN_NOTICE("You have already retrieved your kit(s)."))
 			return TRUE
-		if(length(possible_kits) >= 2)
-			var/redeemed_kit_count = 0
-			for(var/U in ckeys_redeemed_kits)
-				if(U == user.ckey)
-					redeemed_kit_count++
-			if(redeemed_kit_count >= length(possible_kits))
-				to_chat(user, SPAN_NOTICE("You have already retrieved your kits."))
-				return TRUE
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
-		var/random_item = pick(random_personal_possessions)
-		random_item = new random_item(get_turf(src))
+		var/random_item_path = pick(random_personal_possessions)
+		var/random_item = new random_item_path(get_turf(src))
 		user.put_in_any_hand_if_possible(random_item)
 		to_chat(user, SPAN_NOTICE("You take [random_item] from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], random_item_path)
 		return TRUE
+
+	// Remove any kits already grabbed
+	for(var/item in ckeys_redeemed_kits[user.ckey])
+		possible_kits -= item
 
 	if(length(possible_kits) == 1)
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[possible_kits[1]]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], possible_kits[1])
 		return TRUE
 
 	if(length(possible_kits) >= 2)
@@ -116,7 +113,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 			return TRUE
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[kit_choice]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], kit_choice)
 		return TRUE
 
 /obj/structure/machinery/personal_gear_vendor/attackby(obj/item/attacking_item, mob/user)

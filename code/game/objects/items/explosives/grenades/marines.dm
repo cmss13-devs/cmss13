@@ -619,9 +619,9 @@
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
 			mob.Daze(1)
-		else if((mob_dist < (range-3)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker slow humans that are closer to the grenade and larvas too.
-			mob.apply_effect(1 + (damage_applied/100),SLOW) // 1 + damage/100
-			mob.eye_blurry = damage_applied/10
+		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker slow humans that are closer to the grenade and larvas too.
+			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/100
+			mob.eye_blurry = damage_applied/8
 
 		else
 			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))

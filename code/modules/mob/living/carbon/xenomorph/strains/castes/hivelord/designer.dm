@@ -13,7 +13,7 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/design,
-		/datum/action/xeno_action/onclick/destroy_design_nodes,
+		/datum/action/xeno_action/activable/target_resin_surge,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
@@ -125,26 +125,27 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
 
-/datum/action/xeno_action/verb/destroy_design_nodes()
+/datum/action/xeno_action/verb/target_resin_surge()
 	set category = "Alien"
 	set name = "Destroy Design Nodes"
 	set hidden = TRUE
 	var/action_name = "Destroy Design Nodes"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/onclick/destroy_design_nodes
+/datum/action/xeno_action/activable/target_resin_surge
 	name = "Destroy Design Nodes (100)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 100
 	xeno_cooldown = 30 SECONDS
-	macro_path = /datum/action/xeno_action/verb/destroy_design_nodes
+	macro_path = /datum/action/xeno_action/verb/target_resin_surge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 
-/datum/action/xeno_action/onclick/destroy_design_nodes/use_ability(atom/target_atom)
+/datum/action/xeno_action/activable/target_resin_surge/use_ability(atom/target_atom)
 	.=..()
 
+	var/list/design_weeds = list()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -158,14 +159,5 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/turf/target_turf = get_turf(target_atom)
-
-	var/obj/effect/alien/weeds/weeds_target = locate(/obj/effect/alien/weeds/node/designer/speed) in target_turf
-
-	if(weeds_target && istype(target_turf, /turf/open) && weeds_target.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"), \
-		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
-		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
-		var/turf/closed/wall/resin/weak_wall = target_turf
-		weak_wall.hivenumber = xeno.hivenumber
-		set_hive_data(weak_wall, xeno.hivenumber)
+	if(/obj/effect/alien/weeds/node/designer/speed as anything in design_weeds)
+		PlaceOnTop(/turf/closed/wall/resin/weak)

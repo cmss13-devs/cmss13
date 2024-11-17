@@ -2102,7 +2102,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\lurker\vampire.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\dancer.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\oppressor.dm"
-#include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\valkyrie.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\praetorian\vanguard.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\ravager\berserker.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\ravager\hedgehog.dm"

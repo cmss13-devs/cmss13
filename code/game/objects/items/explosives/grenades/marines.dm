@@ -605,7 +605,7 @@
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
 				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
-			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 100) //100 means the dmg gets spread evenly over the entire body
+			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
 			shocked_human.emote("pain")

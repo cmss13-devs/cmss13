@@ -1317,7 +1317,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aex" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor{
 	icon_state = "platebot"
 	},
@@ -2043,10 +2043,10 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ags" = (
-/obj/structure/machinery/power/geothermal,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor{
 	icon_state = "platebot"
 	},
@@ -2075,6 +2075,7 @@
 /area/ice_colony/surface/engineering/generator)
 "agw" = (
 /obj/structure/surface/table,
+/obj/item/fuel_cell,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkyellow2"
@@ -2209,6 +2210,9 @@
 	pixel_x = 24;
 	start_charge = 0
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -2788,6 +2792,7 @@
 /area/ice_colony/exterior/surface/clearing/north)
 "aix" = (
 /obj/structure/surface/table,
+/obj/item/fuel_cell,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkyellow2"
@@ -3456,7 +3461,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "akm" = (
-/obj/structure/surface/table,
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -12284,7 +12289,6 @@
 /area/ice_colony/surface/command/crisis)
 "aIv" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
 /obj/item/tool/stamp,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -12768,10 +12772,6 @@
 /area/ice_colony/surface/storage_unit/research)
 "aKo" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
-/obj/item/ammo_rcd,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -20258,10 +20258,6 @@
 	icon_state = "bcircuit"
 	},
 /area/ice_colony/underground/hangar)
-"biw" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
 "bix" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/plating/icefloor,
@@ -24123,7 +24119,6 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/underground/caves)
 "buh" = (
-/obj/structure/machinery/power/geothermal,
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
 "bui" = (
@@ -24631,7 +24626,6 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
 "bvD" = (
-/obj/structure/machinery/power/geothermal,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -25002,12 +24996,7 @@
 	icon_state = "bcircuit"
 	},
 /area/ice_colony/underground/engineering/substation)
-"bwA" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
-/area/ice_colony/underground/engineering/substation)
 "bwB" = (
-/obj/structure/machinery/power/geothermal,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
@@ -29415,7 +29404,6 @@
 /area/ice_colony/underground/security/interrogation)
 "bJH" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -29437,6 +29425,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -30686,7 +30675,7 @@
 "bMX" = (
 /obj/item/book/manual/marine_law,
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -34530,7 +34519,6 @@
 /area/ice_colony/underground/medical/storage)
 "bXR" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
@@ -53775,9 +53763,9 @@ bht
 aZW
 aZW
 beB
-biw
-biw
-biw
+aZW
+aZW
+aZW
 aZG
 bgH
 bgH
@@ -71005,7 +70993,7 @@ buj
 buj
 buj
 bui
-bwA
+buj
 btz
 brt
 bsf
@@ -71287,7 +71275,7 @@ buk
 buk
 bvE
 bui
-bwA
+buj
 btz
 brt
 bsf

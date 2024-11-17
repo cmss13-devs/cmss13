@@ -1,5 +1,6 @@
 /obj/item/weapon/energy
 	var/active = 0
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 
 /obj/item/weapon/energy/axe

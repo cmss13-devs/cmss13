@@ -27,7 +27,7 @@
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor
 	desc = "A device that gives regular compression to the victim's ribcage, used in case of urgent heart issues.\nClick a person with it to place it on them."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "autocomp"
 	item_state = "autocomp"
 	item_state_slots = list(WEAR_JACKET = "autocomp")
@@ -193,7 +193,7 @@
 /obj/item/tool/portadialysis
 	name = "portable dialysis machine"
 	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "portadialysis"
 	item_state = "syringe_0"
 	flags_equip_slot = SLOT_WAIST

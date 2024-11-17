@@ -15,6 +15,7 @@
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
 	item_state = "nullrod"
+	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	flags_equip_slot = SLOT_WAIST
 	force = 15
 	throw_speed = SPEED_FAST
@@ -29,6 +30,7 @@
 	desc = "Tharr she blows!"
 	icon_state = "harpoon"
 	item_state = "harpoon"
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	force = 20
 	throwforce = 15
 	w_class = SIZE_MEDIUM
@@ -59,6 +61,7 @@
 	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
 	icon_state = "woodbat"
 	item_state = "woodbat"
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
@@ -84,6 +87,7 @@
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
 	item_state = null
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	hitsound = null
 	var/active = 0
 	w_class = SIZE_TINY
@@ -139,6 +143,7 @@
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
 	item_state = "rods"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK

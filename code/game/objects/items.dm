@@ -135,6 +135,7 @@
 	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
+	/// If item should have a map specific camo icon
 	var/map_specific_decoration = FALSE
 	/// color of the blood on us if there's any.
 	var/blood_color = ""

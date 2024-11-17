@@ -1,5 +1,6 @@
 /obj/item/stack/sheet
 	name = "sheet"
+	icon = 'icons/obj/items/stacks.dmi'
 	layer = UPPER_ITEM_LAYER
 	w_class = SIZE_MEDIUM
 	force = 0

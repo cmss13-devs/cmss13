@@ -3,6 +3,7 @@
 	desc = "A specialised prod designed for incapacitating xenomorphic lifeforms with."
 	icon_state = "stunbaton"
 	item_state = "baton"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	flags_equip_slot = SLOT_WAIST
 	force = 12
 	throwforce = 7

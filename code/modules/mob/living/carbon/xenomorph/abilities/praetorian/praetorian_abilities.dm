@@ -264,7 +264,6 @@
 	activation_delay = TRUE
 	activation_delay_length = 5
 
-
 ///////////////////////// VALKYR PRAE
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
@@ -272,7 +271,7 @@
 //	macro_path = /datum/action/xeno_action/verb/valkyrie_rage
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-
+	macro_path = /datum/action/xeno_action/verb/verb_prae_rage
 	plasma_cost = 50
 	xeno_cooldown = 5 SECONDS
 	var/datum/weakref/focus_rage = null
@@ -289,7 +288,8 @@
 	name = "High Gallop"
 	action_icon_state = "prae_dash"
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	macro_path = /datum/action/xeno_action/verb/verb_prae_high_gallop
 	xeno_cooldown = 12 SECONDS
 
 	// jump range and such
@@ -302,6 +302,7 @@
 	action_icon_state = "screech"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	macro_path = /datum/action/xeno_action/verb/verb_prae_fight_or_flight
 	xeno_cooldown = 45 SECONDS
 	plasma_cost = 100
 

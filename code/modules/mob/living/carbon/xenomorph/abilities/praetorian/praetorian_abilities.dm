@@ -293,7 +293,6 @@
 	xeno_cooldown = 12 SECONDS
 
 	// jump range and such
-
 	var/gallop_jumprange = 5
 	var/gallop_actv_delay = 1 SECONDS
 	var/gallop_damage = 45
@@ -307,7 +306,6 @@
 	plasma_cost = 100
 
 	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
-
 	var/low_rage_range = 3
 	var/high_rage_range = 7
 	var/rejuvenate_cost = 75

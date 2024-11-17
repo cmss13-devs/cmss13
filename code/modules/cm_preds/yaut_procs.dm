@@ -309,6 +309,6 @@
 ///TP Areas
 
 /area/yautja_grounds/prep_room
-	name = "\improper Jungle Moon"
+	name = "\improper Jungle Moon Campsite"
 	icon_state = "red"
-	ambience_exterior = AMBIENCE_CAVE
+	ambience_exterior = AMBIENCE_JUNGLE

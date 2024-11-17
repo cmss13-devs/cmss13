@@ -270,7 +270,6 @@
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
-	ability_name = "Tantrum"
 //	macro_path = /datum/action/xeno_action/verb/valkyrie_rage
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -291,8 +290,7 @@
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
-	action_icon_state = ""
-	ability_name = "High Gallop"
+	action_icon_state = "prae_dash"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 12 SECONDS
@@ -307,7 +305,6 @@
 /datum/action/xeno_action/onclick/fight_or_flight
 	name = "Fight or Flight"
 	action_icon_state = "screech"
-	ability_name = "Fight or Flight"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 45 SECONDS

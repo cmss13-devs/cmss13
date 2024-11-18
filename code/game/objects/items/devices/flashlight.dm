@@ -327,7 +327,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = 15 MINUTES
+	fuel = 16 MINUTES
 	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
@@ -368,19 +368,19 @@
 
 /obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
 	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
-		if(14.25 MINUTES to 15 MINUTES)
+		if(15.25 MINUTES to 16 MINUTES)
 			set_light_range(7)
-		if(13.5 MINUTES to 14.24 MINUTES)
+		if(14.5 MINUTES to 15.24 MINUTES)
 			set_light_range(6)
-		if(4.0 MINUTES to 13.49 MINUTES)
+		if(6.5 MINUTES to 14.49 MINUTES)
 			set_light_range(5)
-		if(3.0 MINUTES to 3.99 MINUTES)
+		if(5.0 MINUTES to 6.49 MINUTES)
 			set_light_range(4)
-		if(2.0 MINUTES to 2.99 MINUTES)
+		if(3.5 MINUTES to 4.99 MINUTES)
 			set_light_range(3)
-		if(0.5 MINUTES to 1.99 MINUTES)
+		if(2.0 MINUTES to 3.49 MINUTES)
 			set_light_range(2)
-		if(0 MINUTES to 0.49 MINUTES)
+		if(0 MINUTES to 1.99 MINUTES)
 			set_light_range(1)
 			set_light_power(0.5) // A power of 2 results in no light at all, while .5 results in a small light.
 

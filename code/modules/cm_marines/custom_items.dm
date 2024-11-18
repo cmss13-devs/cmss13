@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 
 		var/split_line = splittext(current_line, ":")
 
-		donor_key = trim(split_line[1])
+		donor_key = ckey(trim(split_line[1]))
 		if(length(split_line) > 2) //if someone has multiple kits, name them
 			kit_name = trim(split_line[2])
 

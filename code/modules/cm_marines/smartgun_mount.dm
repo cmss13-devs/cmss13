@@ -40,7 +40,7 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
@@ -158,7 +158,7 @@
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
@@ -181,7 +181,7 @@
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount"
 
 /// Causes the tripod to unfold
@@ -233,7 +233,7 @@
 /obj/structure/machinery/m56d_post
 	name = "\improper M56D mount"
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D_mount"
 	anchored = FALSE
 	density = TRUE
@@ -439,7 +439,7 @@
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
 	unslashable = TRUE
@@ -1154,7 +1154,7 @@
 	rounds_max = 1500
 	locked = 1
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	zoom = 1
 	ammo = /datum/ammo/bullet/machinegun/doorgun
 

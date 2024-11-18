@@ -63,7 +63,6 @@
 
 
 /obj/effect/landmark/wo_supplies/guns
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 
 /obj/effect/landmark/wo_supplies/guns/common
@@ -71,22 +70,27 @@
 
 /obj/effect/landmark/wo_supplies/guns/common/m41a
 	icon_state = "m41a"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/m41a)
 
 /obj/effect/landmark/wo_supplies/guns/common/shotgun
 	icon_state = "m37"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	stuff = list(/obj/item/weapon/gun/shotgun/pump)
 
 /obj/effect/landmark/wo_supplies/guns/common/m39
 	icon_state = "m39"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/smgs.dmi'
 	stuff = list(/obj/item/weapon/gun/smg/m39)
 
 /obj/effect/landmark/wo_supplies/guns/common/m44
 	icon_state = "m44r"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
 	stuff = list(/obj/item/weapon/gun/revolver/m44)
 
 /obj/effect/landmark/wo_supplies/guns/common/m4a3
 	icon_state = "m4a3"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	stuff = list(/obj/item/weapon/gun/pistol/m4a3)
 
 /obj/effect/landmark/wo_supplies/guns/rare
@@ -94,14 +98,17 @@
 
 /obj/effect/landmark/wo_supplies/guns/rare/flamer
 	icon_state = "m240"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	stuff = list(/obj/item/weapon/gun/flamer)
 
 /obj/effect/landmark/wo_supplies/guns/rare/hpr
 	icon_state = "m41ae2"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/lmg)
 
 /obj/effect/landmark/wo_supplies/guns/rare/m41aMK1
 	icon_state = "m41amk1"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/m41aMK1)
 
 

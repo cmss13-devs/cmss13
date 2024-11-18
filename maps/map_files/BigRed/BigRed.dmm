@@ -20209,7 +20209,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "eJI" = (
 /obj/item/prop{
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "m41ae2";
 	name = "M41AE2 Heavy Pulse Rifle";
 	desc = "A large claw mark across this weapon indicates it is inoperable.";

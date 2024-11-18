@@ -308,7 +308,7 @@
 	var/image/ret = ..()
 	if(slot == WEAR_BACK)
 		if(length(contents))
-			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/clothing/back/guns/flamers.dmi', "+m240t", color, RESET_COLOR)
+			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi', "+m240t", color, RESET_COLOR)
 			ret.overlays += weapon_holstered
 
 	return ret

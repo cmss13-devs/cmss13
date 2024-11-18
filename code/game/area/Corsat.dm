@@ -301,6 +301,7 @@
 /area/corsat/gamma/cargo
 	name = "\improper Gamma Cargo"
 	icon_state = "gamma_cargo"
+
 /area/corsat/gamma/cargo/lobby
 	name = "\improper Gamma Cargo Lobby"
 	icon_state = "gamma_cargo_lobby"

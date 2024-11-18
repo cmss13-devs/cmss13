@@ -1,5 +1,0 @@
-/turf/open/floor/corsat{dir=1;icon_state="squareswood";} : /turf/open/floor/corsat/squareswood/pred
-/turf/open/floor/strata{color="#5e5d5d";icon_state="multi_tiles";dir=2;} : /turf/open/floor/strata/gray_multi_tiles/pred/south
-/turf/open/floor/strata{color="#5e5d5d";icon_state="multi_tiles";} : /turf/open/floor/strata/gray_multi_tiles/pred
-/turf/open/floor{icon_state="cult";} : /turf/open/floor/cult/pred
-/turf/open/gm/grass{icon_state="grass2";} : /turf/open/gm/grass/grass2

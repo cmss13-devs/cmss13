@@ -65,11 +65,13 @@
 	name = "alien claw"
 	desc = "The claw of a terrible creature."
 	icon_state = "claw"
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/weed_extract
 	name = "weed extract"
 	desc = "A piece of slimy, greenish weed."
 	icon_state = "weed_extract"
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"

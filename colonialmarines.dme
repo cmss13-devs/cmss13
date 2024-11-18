@@ -758,6 +758,7 @@
 #include "code\game\area\chinook.dm"
 #include "code\game\area\Corsat.dm"
 #include "code\game\area\DesertDam.dm"
+#include "code\game\area\hunting_preserve.dm"
 #include "code\game\area\IceColony.dm"
 #include "code\game\area\kutjevo.dm"
 #include "code\game\area\LV522_Chances_Claim.dm"

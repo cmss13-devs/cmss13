@@ -268,3 +268,20 @@
   - bugfix: makes UPP synth lobby joinable for events
   zzzmike:
   - rscadd: tip of the round regarding lesser known cryotube utility
+2024-11-16:
+  BeagleGaming1:
+  - rscadd: Adds the personal gear vendor, where people can get their donator items
+      or a random loadout item
+  - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
+      them
+  - config: Changes to config/custom_items.txt
+2024-11-18:
+  Drulikar:
+  - code_imp: dmm_test now checks if there are pending mapmerge2 conversions.
+  - code_imp: Improved dmm_test error handling
+  - code_imp: mapmerge2 now uses keys sequentially rather than randomly.
+  - code_imp: mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes
+      pending mapmerge2 conversions.
+  SASoperative:
+  - rscadd: Personal Gear Vendor allows retrieval of additional kits for multi-kit
+      donators

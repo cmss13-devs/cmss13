@@ -429,6 +429,26 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the UPP Naval Infantry."
 	icon_state = "navalpatch"
 
+obj/item/clothing/accessory/patch/uapatch
+	name = "United Americas patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
+	icon_state = "uapatch"
+
+/obj/item/clothing/accessory/patch/falconalt
+	name = "USCM Falling Falcons UA patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	icon_state = "fallingfalconsaltpatch"
+
+obj/item/clothing/accessory/patch/twepatch
+	name = "Three World Empire patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women loyal to the Three World Empire, An older style symbol of the TWE."
+	icon_state = "twepatch"
+
+/obj/item/clothing/accessory/patch/falconlarge
+	name = "USCM Falling Falcons large patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	icon_state = "fallingfalconsbigpatch"
+
 //misc
 
 /obj/item/clothing/accessory/dogtags
@@ -549,6 +569,11 @@
 	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
+
+/obj/item/clothing/accessory/storage/webbing/black
+	name = "black webbing"
+	icon_state = "webbing_black"
+	item_state = "webbing_black"
 
 /obj/item/clothing/accessory/storage/webbing/five_slots
 	hold = /obj/item/storage/internal/accessory/webbing/five_slots

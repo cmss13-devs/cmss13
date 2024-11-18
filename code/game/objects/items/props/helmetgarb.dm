@@ -513,6 +513,10 @@
 	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
 	icon_state = "helmet_riot_shield"
 
+/obj/item/prop/helmetgarb/bearpelt
+	name = "synthetic bear pelt hat"
+	desc = "Fuzzy."
+	icon_state = "bearpelt"
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"

@@ -34,8 +34,20 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/aviator
 
 /datum/gear/eyewear/eyepatch
-	display_name = "Eyepatch"
+	display_name = "Eyepatch, black"
 	path = /obj/item/clothing/glasses/eyepatch
+
+/datum/gear/eyewear/eyepatch/left
+	display_name = "Eyepatch, black flipped"
+	path = /obj/item/clothing/glasses/eyepatch/left
+
+/datum/gear/eyewear/eyepatch/white
+	display_name = "Eyepatch, white"
+	path = /obj/item/clothing/glasses/eyepatch/white
+
+/datum/gear/eyewear/eyepatch/white/left
+	display_name = "Eyepatch, white flipped"
+	path = /obj/item/clothing/glasses/eyepatch/white/left
 
 /datum/gear/eyewear/rpg_glasses
 	display_name = "Marine RPG Glasses"
@@ -82,6 +94,22 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Prescription ballistic goggles, blue"
 	path = /obj/item/clothing/glasses/mgoggles/blue/prescription
 
+/datum/gear/eyewear/goggles_purple
+	display_name = "Ballistic goggles, purple"
+	path = /obj/item/clothing/glasses/mgoggles/purple
+
+/datum/gear/eyewear/goggles_purple/prescription
+	display_name = "Prescription ballistic goggles, purple"
+	path = /obj/item/clothing/glasses/mgoggles/purple/prescription
+
+/datum/gear/eyewear/goggles_yellow
+	display_name = "Ballistic goggles, yellow"
+	path = /obj/item/clothing/glasses/mgoggles/yellow
+
+/datum/gear/eyewear/goggles_yellow/prescription
+	display_name = "Prescription ballistic goggles, yellow"
+	path = /obj/item/clothing/glasses/mgoggles/yellow/prescription
+
 /datum/gear/eyewear/goggles_orange/prescription
 	display_name = "Prescription ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
@@ -95,27 +123,27 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
 
 /datum/gear/eyewear/goggles2/blue
-	display_name = "Blue Ballistic goggles, M1A1"
+	display_name = "Ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/blue
 
 /datum/gear/eyewear/goggles2/blue/prescription
-	display_name = "Blue Prescription ballistic goggles, M1A1"
+	display_name = "Prescription ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/blue/prescription
 
 /datum/gear/eyewear/goggles2/polarized_blue
-	display_name = "Blue Polarized Ballistic goggles, M1A1"
+	display_name = "Polarized Ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue
 
 /datum/gear/eyewear/goggles2/polarized_blue/prescription
-	display_name = "Blue Prescription Polarized ballistic goggles, M1A1"
+	display_name = "Prescription Polarized ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
 
 /datum/gear/eyewear/goggles2/polarized_orange
-	display_name = "Orange Polarized Ballistic goggles, M1A1"
+	display_name = "Polarized Ballistic goggles, M1A1 orange"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange
 
 /datum/gear/eyewear/goggles2/polarized_orange/prescription
-	display_name = "Orange Prescription Polarized ballistic goggles, M1A1"
+	display_name = "Prescription Polarized ballistic goggles, M1A1 orange"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
 
 /datum/gear/eyewear/bimex_shades
@@ -198,6 +226,36 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/mask/scarf_white
 	display_name = "Scarf, white"
 	path = /obj/item/clothing/mask/tornscarf/snow
+
+/datum/gear/mask/smock_classic
+	display_name = "Smock, classic" // much like the scarves, but larger - different design.
+	path = /obj/item/clothing/mask/smock/classic
+	cost = 4
+
+/datum/gear/mask/smock_jungle
+	display_name = "Smock, jungle"
+	path = /obj/item/clothing/mask/smock
+	cost = 4
+
+/datum/gear/mask/smock_snow
+	display_name = "Smock, snow"
+	path = /obj/item/clothing/mask/smock/snow
+	cost = 4
+
+/datum/gear/mask/smock_desert
+	display_name = "Smock, desert"
+	path = /obj/item/clothing/mask/smock/desert
+	cost = 4
+
+/datum/gear/mask/smock_urban
+	display_name = "Smock, urban"
+	path = /obj/item/clothing/mask/smock/urban
+	cost = 4
+
+/datum/gear/mask/smock_black
+	display_name = "Smock, black"
+	path = /obj/item/clothing/mask/smock/black
+	cost = 4
 
 /datum/gear/mask/uscm
 	allowed_origins = USCM_ORIGINS
@@ -682,6 +740,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Type 80 Bayonet"
 	path = /obj/item/attachable/bayonet/upp_replica
 
+/datum/gear/weapon/antique_Bayonet
+	display_name = "antique bayonet" // ancient bayonet - family heirloom perhaps
+	path = /obj/item/attachable/bayonet/antique
+
 /datum/gear/weapon/m8_cartridge_bayonet
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife
@@ -987,6 +1049,26 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/facepaint/sniper
 	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
 
+/datum/gear/misc/facepaint_body/snow
+	display_name = "Fullbody paint, snow"
+	path = /obj/item/facepaint/sniper/snow
+	cost = 4
+
+/datum/gear/misc/facepaint_body/desert
+	display_name = "Fullbody paint, desert"
+	path = /obj/item/facepaint/sniper/desert
+	cost = 4
+
+/datum/gear/misc/facepaint_body/jungle
+	display_name = "Fullbody paint, jungle"
+	path = /obj/item/facepaint/sniper/jungle
+	cost = 4
+
+/datum/gear/misc/facepaint_body/urban
+	display_name = "Fullbody paint, urban"
+	path = /obj/item/facepaint/sniper/urban
+	cost = 4
+
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"
 	path = /obj/item/clothing/shoes/marine/jungle
@@ -1045,6 +1127,22 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/patch_uscm/falcon
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
+
+/datum/gear/misc/patch_uscm/falconalt
+	display_name = "Falling Falcons UA shoulder patch"
+	path = /obj/item/clothing/accessory/patch/falconalt
+
+/datum/gear/misc/patch_uscm/falconlarge
+	display_name = "Falling Falcons large shoulder patch"
+	path = /obj/item/clothing/accessory/patch/falconlarge
+
+/datum/gear/misc/patch_uscm/uapatch
+	display_name = "United Americas shoulder patch"
+	path = /obj/item/clothing/accessory/patch/uapatch
+
+/datum/gear/misc/patch_uscm/twepatch
+	display_name = "Three World Empire shoulder patch"
+	path = /obj/item/clothing/accessory/patch/twepatch
 
 /datum/gear/misc/family_photo
 	display_name = "Family photo"

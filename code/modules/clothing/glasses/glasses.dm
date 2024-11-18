@@ -195,6 +195,18 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
+/obj/item/clothing/glasses/eyepatch/left
+	icon_state = "eyepatch_left"
+	item_state = "eyepatch_left"
+
+/obj/item/clothing/glasses/eyepatch/white
+	icon_state = "eyepatch_white"
+	item_state = "eyepatch_white"
+
+/obj/item/clothing/glasses/eyepatch/white/left
+	icon_state = "eyepatch_white_left"
+	item_state = "eyepatch_white_left"
+
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER
@@ -503,6 +515,36 @@
 	icon_state = "mgogglesblue"
 	active_icon_state = "mgogglesblue_down"
 	inactive_icon_state = "mgogglesblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/purple
+	name = "purple marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	icon_state = "mgogglespurple"
+	active_icon_state = "mgogglespurple_down"
+	inactive_icon_state = "mgogglespurple"
+
+/obj/item/clothing/glasses/mgoggles/purple/prescription
+	name = "prescription purple marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	icon_state = "mgogglespurple"
+	active_icon_state = "mgogglespurple_down"
+	inactive_icon_state = "mgogglespurple"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/yellow
+	name = "yellow marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	icon_state = "mgogglesyellow"
+	active_icon_state = "mgogglesyellow_down"
+	inactive_icon_state = "mgogglesyellow"
+
+/obj/item/clothing/glasses/mgoggles/yellow/prescription
+	name = "prescription yellow marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	icon_state = "mgogglesyellow"
+	active_icon_state = "mgogglesyellow_down"
+	inactive_icon_state = "mgogglesyellow"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/v2/blue

@@ -343,6 +343,13 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
+/obj/item/attachable/bayonet/antique
+	name = "\improper antique bayonet"
+	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
+	icon_state = "antique_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "antique_bayonet_a"
+
 /obj/item/attachable/bayonet/van_bandolier
 	name = "\improper Fairbairn-Sykes fighting knife"
 	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."

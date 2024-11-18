@@ -265,6 +265,10 @@
 						/obj/item/clothing/glasses/mgoggles/orange/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/blue = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/blue/prescription = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/purple = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/purple/prescription = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/yellow = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/yellow/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/red = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/red/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
@@ -635,7 +639,7 @@
 
 
 /obj/item/clothing/head/bearpelt
-	name = "bear pelt hat"
+	name = "synthetic bear pelt hat"
 	desc = "Fuzzy."
 	icon_state = "bearpelt"
 	siemens_coefficient = 2

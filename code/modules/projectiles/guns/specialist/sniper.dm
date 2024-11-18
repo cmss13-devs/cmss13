@@ -501,6 +501,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,

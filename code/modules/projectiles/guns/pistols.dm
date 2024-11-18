@@ -502,6 +502,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,

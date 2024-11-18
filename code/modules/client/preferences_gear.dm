@@ -1138,11 +1138,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/misc/patch_uscm/uapatch
 	display_name = "United Americas shoulder patch"
-	path = /obj/item/clothing/accessory/patch/uapatch
+	path = /obj/item/clothing/accessory/patch/ua
 
 /datum/gear/misc/patch_uscm/twepatch
 	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twepatch
+	path = /obj/item/clothing/accessory/patch/twe
 
 /datum/gear/misc/family_photo
 	display_name = "Family photo"

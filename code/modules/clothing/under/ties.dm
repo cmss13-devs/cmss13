@@ -429,7 +429,7 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the UPP Naval Infantry."
 	icon_state = "navalpatch"
 
-obj/item/clothing/accessory/patch/uapatch
+obj/item/clothing/accessory/patch/ua
 	name = "United Americas patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
 	icon_state = "uapatch"
@@ -439,7 +439,7 @@ obj/item/clothing/accessory/patch/uapatch
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconsaltpatch"
 
-obj/item/clothing/accessory/patch/twepatch
+obj/item/clothing/accessory/patch/twe
 	name = "Three World Empire patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women loyal to the Three World Empire, An older style symbol of the TWE."
 	icon_state = "twepatch"

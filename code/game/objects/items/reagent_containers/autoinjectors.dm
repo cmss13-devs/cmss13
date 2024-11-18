@@ -269,7 +269,7 @@
 		addtimer(CALLBACK(src, PROC_REF(destroy)), 120 SECONDS)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/proc/destroy()
-	visible_message("<span class='danger'>[src] collapses into nothing.</span>")
+	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless

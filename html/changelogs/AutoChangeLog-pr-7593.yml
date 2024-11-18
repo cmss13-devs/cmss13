@@ -1,0 +1,4 @@
+author: "AlanParkerMasters"
+delete-after: True
+changes:
+  - rscdel: "A single period from the ABR-40 description that shouldn't be there."

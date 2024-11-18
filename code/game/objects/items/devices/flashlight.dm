@@ -309,7 +309,7 @@
 	raillight_compatible = 0
 	can_be_broken = FALSE
 	var/burnt_out = FALSE
-	var/fuel = 0
+	var/fuel = 16 MINUTES
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
@@ -327,7 +327,6 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = 16 MINUTES
 	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()

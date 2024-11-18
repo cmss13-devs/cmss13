@@ -13,11 +13,11 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "d" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "e" = (
 /turf/open/floor/prison{
@@ -55,12 +55,12 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "p" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "q" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -72,15 +72,15 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "v" = (
-/turf/open/floor/panelscorched,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "w" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "x" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "y" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -111,18 +111,18 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "S" = (
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "V" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/cellblock/highsec/south/south)
 "X" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "Y" = (
 /obj/effect/decal/cleanable/dirt,

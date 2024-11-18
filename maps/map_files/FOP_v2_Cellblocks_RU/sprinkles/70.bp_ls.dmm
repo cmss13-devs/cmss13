@@ -24,11 +24,11 @@
 	},
 /area/prison/hallway/central/west)
 "ax" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -297,10 +297,10 @@
 	},
 /area/prison/hallway/central/west)
 "ns" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -343,8 +343,8 @@
 /area/prison/hallway/central/north)
 "pq" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/surface/table/reinforced{
-	dir = 1;
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
 	flipped = 1
 	},
 /turf/open/floor/prison{
@@ -447,8 +447,8 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "ud" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
 	flipped = 1
 	},
 /turf/open/floor/prison{
@@ -499,8 +499,8 @@
 	},
 /area/prison/hallway/central/west)
 "wk" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -512,7 +512,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "xx" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -714,8 +714,8 @@
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
-/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -790,7 +790,7 @@
 /area/prison/hallway/central/west)
 "OE" = (
 /obj/item/phone,
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor{
 	icon_state = "hydrofloor"
 	},
@@ -799,7 +799,7 @@
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -816,11 +816,11 @@
 /area/prison/security/checkpoint/highsec/n)
 "Pz" = (
 /obj/effect/landmark/item_pool_spawner/prison_lock,
-/obj/structure/surface/table/reinforced{
-	dir = 1;
+/obj/item/ammo_casing,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
 	flipped = 1
 	},
-/obj/item/ammo_casing,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -919,8 +919,8 @@
 	},
 /area/prison/hallway/central/west)
 "Uz" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -932,7 +932,6 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "Vc" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen{
 	pixel_x = 9;
 	pixel_y = 8
@@ -941,6 +940,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/item_pool_spawner/prison_lock,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"

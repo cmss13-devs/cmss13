@@ -174,12 +174,12 @@
 	},
 /area/prison/visitation)
 "mg" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/shard{
 	icon_state = "medium";
 	pixel_x = -10;
 	pixel_y = -8
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison,
 /area/prison/visitation)
 "mu" = (
@@ -200,11 +200,11 @@
 	},
 /area/prison/visitation)
 "nd" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -449,13 +449,13 @@
 	},
 /area/prison/visitation)
 "NL" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison,
 /area/prison/visitation)
 "NT" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/item_pool_spawner/prison_lock,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -538,10 +538,10 @@
 	},
 /area/prison/visitation)
 "Zt" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"

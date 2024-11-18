@@ -32,6 +32,20 @@
 	icon_state = "damaged1"
 	},
 /area/prison/canteen)
+"aB" = (
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean"
+	},
+/area/prison/canteen)
 "aE" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -119,8 +133,8 @@
 	},
 /area/prison/canteen)
 "cK" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/candiedapple,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -258,13 +272,13 @@
 	},
 /area/prison/canteen)
 "gH" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/item/trash/plate{
 	pixel_x = 1;
 	pixel_y = 3
 	},
 /obj/item/ammo_casing/bullet,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -543,11 +557,11 @@
 	},
 /area/prison/canteen)
 "ni" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/trash/plate{
 	pixel_x = 1;
 	pixel_y = 3
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -589,8 +603,8 @@
 	},
 /area/prison/canteen)
 "oS" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/prison/canteen)
@@ -716,8 +730,8 @@
 	},
 /area/prison/canteen)
 "rR" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/appletart,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -812,8 +826,11 @@
 	},
 /area/prison/canteen)
 "uf" = (
-/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -888,10 +905,10 @@
 /area/prison/canteen)
 "wi" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
 /turf/open/floor/prison,
 /area/prison/canteen)
 "wv" = (
@@ -958,8 +975,8 @@
 	},
 /area/prison/canteen)
 "xF" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/condiment/saltshaker,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -1029,19 +1046,29 @@
 	icon_state = "bright_clean2"
 	},
 /area/prison/canteen)
+"Ah" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean"
+	},
+/area/prison/canteen)
 "As" = (
-/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
 	},
 /area/prison/canteen)
 "Aw" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/canteen)
 "Az" = (
 /obj/item/stack/sheet/metal,
@@ -1217,7 +1244,6 @@
 	},
 /area/prison/canteen)
 "DF" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -1227,6 +1253,10 @@
 /obj/item/trash/plate{
 	pixel_x = 1;
 	pixel_y = 3
+	},
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1241,10 +1271,13 @@
 	},
 /area/prison/canteen)
 "Ef" = (
-/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/blood,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /obj/item/ammo_casing/bullet,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -1439,9 +1472,9 @@
 	},
 /area/prison/canteen)
 "JM" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -2012,7 +2045,10 @@
 	},
 /area/prison/canteen)
 "Xg" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -2110,8 +2146,11 @@
 	},
 /area/prison/canteen)
 "YT" = (
-/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -2280,7 +2319,7 @@ gH
 Jy
 gX
 LW
-ni
+aB
 ha
 vz
 As
@@ -2696,7 +2735,7 @@ zc
 ep
 zc
 el
-Xg
+Ah
 ju
 kL
 Zj

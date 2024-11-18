@@ -4498,8 +4498,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	UPP.attach_accessory(new_human, W)
+	var/obj/item/clothing/accessory/storage/webbing/webbing = new()
+	UPP.attach_accessory(new_human, webbing)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)

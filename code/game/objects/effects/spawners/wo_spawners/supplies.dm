@@ -120,7 +120,7 @@
 	stuff = list(/obj/item/storage/large_holster/machete/full)
 
 /obj/effect/landmark/wo_supplies/storage/m56d
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case"
 	stuff = list(/obj/item/storage/box/m56d_hmg)
 

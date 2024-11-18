@@ -2306,6 +2306,9 @@
 /turf/open/floor/corsat/squareswood/north
 	dir = NORTH
 
+/turf/open/floor/corsat/tan
+	icon_state = "tan"
+
 /turf/open/floor/corsat/tan/north
 	dir = NORTH
 

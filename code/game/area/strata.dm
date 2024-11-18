@@ -41,7 +41,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag
 	name = "Above Ground Area"
 	icon_state = "ag"
-	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior
 	name = "Exterior Above Ground Area"
@@ -62,7 +61,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ug
 	name = "Under Ground Area"
 	icon_state = "ug"
-	is_resin_allowed = TRUE
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/strata/ug/interior

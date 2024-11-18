@@ -653,7 +653,6 @@
 	minimap_color = MINIMAP_AREA_LZ
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 
 /area/bigredv2/landing/console
 	name = "\improper LZ1 'Telecomms'"

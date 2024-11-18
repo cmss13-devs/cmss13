@@ -72,17 +72,14 @@
 	name = "Fiorina - LZ"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
 	linked_lz = DROPSHIP_LZ1
-	is_resin_allowed = null
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
 	linked_lz = DROPSHIP_LZ2
-	is_resin_allowed = null
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"

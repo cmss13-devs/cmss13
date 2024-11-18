@@ -54,17 +54,15 @@
 	name = "Kutjevo Auxilliary Landing Zone"
 	icon_state = "lz_pad"
 	weather_enabled = FALSE
-	unlimited_power = 1//ds computer
-	is_resin_allowed = FALSE
+	unlimited_power = 1 //ds computer
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
 	icon_state = "lz_dunes"
-	is_resin_allowed = FALSE
 	weather_enabled =  FALSE
-	unlimited_power = 1//DS Computer
+	unlimited_power = 1 //DS Computer
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ1
 

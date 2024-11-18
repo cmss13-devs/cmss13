@@ -85,14 +85,12 @@
 /area/varadero/exterior/lz1_console
 	name = "New Varadero - Pontoon Dock"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
 	name = "New Varadero - Palm Airfield"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
 //exterior areas
@@ -146,7 +144,6 @@
 
 /area/varadero/exterior/farocean
 	name = "New Varadero - Far Ocean"
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE

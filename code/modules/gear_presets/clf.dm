@@ -1107,8 +1107,8 @@
 
 /datum/equipment_preset/clf/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/clf/jumpsuit = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	jumpsuit.attach_accessory(new_human, W)
+	var/obj/item/clothing/accessory/storage/webbing/webbing = new()
+	jumpsuit.attach_accessory(new_human, webbing)
 	new_human.equip_to_slot_or_del(jumpsuit, WEAR_BODY)
 	spawn_rebel_suit(new_human)
 	spawn_rebel_helmet(new_human)

@@ -551,7 +551,7 @@
 	dir = NORTH
 
 /turf/open/gm/dirtgrassborder/south
-	dir = 2
+	dir = SOUTH
 
 /turf/open/gm/dirtgrassborder/west
 	dir = 4

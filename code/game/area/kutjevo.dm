@@ -36,16 +36,14 @@
 	requires_power = 1
 
 /area/kutjevo/interior/oob
-	name = "Kutjevo -  Out Of Bounds"
+	name = "Kutjevo - Out Of Bounds"
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"
-	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
 	icon_state = "kutjevo"
 
 //exterior map areas

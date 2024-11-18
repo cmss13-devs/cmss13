@@ -266,7 +266,7 @@
 		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
 
 	if(uses_left == 0)
-		addtimer(CALLBACK(src, PROC_REF(destroy)), 60 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(destroy)), 120 SECONDS)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/proc/destroy()
 	visible_message("<span class='danger'>[src] collapses into nothing.</span>")

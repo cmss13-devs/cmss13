@@ -4780,7 +4780,7 @@
 /obj/structure/prop/invuln{
 	desc = "Let's take the caveman back to the malt shop.";
 	dir = 4;
-	icon = 'icons/mob/humans/onmob/head_0.dmi';
+	icon = 'icons/mob/humans/onmob/clothing/head/hats.dmi';
 	icon_state = "hopcap";
 	layer = 2.5;
 	name = "frozen hat";

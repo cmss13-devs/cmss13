@@ -2022,7 +2022,7 @@
 	density = 0;
 	desc = "Made in Little Japan.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-lizard";
 	name = "exotic bedsheet";
 	pixel_x = -1
@@ -9426,7 +9426,7 @@
 	density = 0;
 	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-mythril";
 	name = "funky wall bacon"
 	},
@@ -12200,7 +12200,7 @@
 /obj/item/weapon/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/toy.dmi';
 	icon_state = "game_kit";
 	name = "Thick Art LTD Gamepad"
 	},

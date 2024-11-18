@@ -96,7 +96,7 @@
 		if(!turf_area.static_lighting)
 			continue
 
-		new/datum/static_lighting_object(initializing_turf)
+		new /datum/static_lighting_object(initializing_turf)
 
 	SSatoms.InitializeAtoms(loaded_areas + loaded_atom_movables + loaded_turfs)
 

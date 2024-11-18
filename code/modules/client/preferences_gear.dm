@@ -744,6 +744,34 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "antique bayonet" // ancient bayonet - family heirloom perhaps
 	path = /obj/item/attachable/bayonet/antique
 
+/datum/gear/weapon/L5_Bayonet
+	display_name = "L5 Bayonet"
+	path = /obj/item/attachable/bayonet/rmc_replica
+
+/datum/gear/weapon/custom_Bayonet
+	display_name = "M5 'Raven's Claw' tactical bayonet" // custom style bayonet with variants, exclusive to loadout and unique. Name might need changing.
+	path = /obj/item/attachable/bayonet/custom
+
+/datum/gear/weapon/custom_Bayonet/red
+	display_name = "M5 'Raven's Claw' tactical bayonet, red"
+	path = /obj/item/attachable/bayonet/custom/red
+
+/datum/gear/weapon/custom_Bayonet/blue
+	display_name = "M5 'Raven's Claw' tactical bayonet, blue"
+	path = /obj/item/attachable/bayonet/custom/blue
+
+/datum/gear/weapon/custom_Bayonet/black
+	display_name = "M5 'Raven's Claw' tactical bayonet, black"
+	path = /obj/item/attachable/bayonet/custom/black
+
+/datum/gear/weapon/tanto_Bayonet
+	display_name = "T9 tactical bayonet" // TWE/CLF bayonet
+	path = /obj/item/attachable/bayonet/tanto
+
+/datum/gear/weapon/tanto_Bayonet/blue
+	display_name = "T9 tactical bayonet, blue"
+	path = /obj/item/attachable/bayonet/tanto/blue
+
 /datum/gear/weapon/m8_cartridge_bayonet
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife

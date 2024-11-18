@@ -335,9 +335,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/rmc
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
-	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
+	icon_state = "twe_bayonet" // PLACEHOLDER PLEASE REPLACE
 	item_state = "combat_knife"
-	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
+	attach_icon = "twe_bayonet_a" // PLACEHOLDER PLEASE REPLACE
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
@@ -349,6 +349,50 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "antique_bayonet"
 	item_state = "combat_knife"
 	attach_icon = "antique_bayonet_a"
+
+/obj/item/attachable/bayonet/rmc_replica
+	name = "\improper L5 bayonet"
+	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
+	icon_state = "twe_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "twe_bayonet_a"
+
+/obj/item/attachable/bayonet/custom
+	name = "\improper M5 'Raven's Claw' tactical bayonet"
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
+	icon_state = "bayonet_custom"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_a"
+
+/obj/item/attachable/bayonet/custom/red
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_red"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_red_a"
+
+/obj/item/attachable/bayonet/custom/blue
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_blue"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_blue_a"
+
+/obj/item/attachable/bayonet/custom/black
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_black"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_black_a"
+
+/obj/item/attachable/bayonet/tanto
+	name = "\improper T9 tactical bayonet"
+	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
+	icon_state = "bayonet_tanto"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_a"
+
+/obj/item/attachable/bayonet/tanto/blue
+	icon_state = "bayonet_tanto_alt"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
 	name = "\improper Fairbairn-Sykes fighting knife"

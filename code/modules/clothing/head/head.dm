@@ -639,7 +639,7 @@
 
 
 /obj/item/clothing/head/bearpelt
-	name = "synthetic bear pelt hat"
+	name = "bear pelt hat"
 	desc = "Fuzzy."
 	icon_state = "bearpelt"
 	siemens_coefficient = 2

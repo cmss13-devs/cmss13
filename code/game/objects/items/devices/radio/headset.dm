@@ -41,6 +41,9 @@
 	///The type of minimap this headset is added to
 	var/minimap_type = MINIMAP_FLAG_USCM
 
+	var/obj/item/device/radio/listening_bug/spy_bug
+	var/spy_bug_type
+
 	var/mob/living/carbon/human/wearer
 
 /obj/item/device/radio/headset/Initialize()
@@ -62,6 +65,10 @@
 		for(var/cycled_channel in GLOB.radiochannels)
 			if(GLOB.radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
+
+	if(spy_bug_type)
+		spy_bug = new spy_bug_type
+		spy_bug.forceMove(src)
 
 /obj/item/device/radio/headset/Destroy()
 	wearer = null

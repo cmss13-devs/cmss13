@@ -21,13 +21,13 @@
 	var/datum/cause_data/cause_data
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/xenomorph/X)
+/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	if(X)
-		created_by = X.ckey
-		hivenumber = X.hivenumber
+	if(xeno)
+		created_by = xeno.ckey
+		hivenumber = xeno.hivenumber
 
-	cause_data = create_cause_data("resin trap", X)
+	cause_data = create_cause_data("resin trap", xeno)
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
@@ -54,6 +54,8 @@
 			. += "It's filled with pressurised gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			. += "It's filled with pressurised acid."
+		if(RESIN_TRAP_MIST)
+			. += "It's filled with toxic mist."
 
 /obj/effect/alien/resin/trap/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -73,7 +75,7 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			burn_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_MIST)
 			trigger_trap(TRUE)
 	..()
 
@@ -81,13 +83,13 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			burn_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_MIST)
 			trigger_trap(TRUE)
 	..()
 
-/obj/effect/alien/resin/trap/bullet_act(obj/projectile/P)
-	var/mob/living/carbon/xenomorph/X = P.firer
-	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+/obj/effect/alien/resin/trap/bullet_act(obj/projectile/proj)
+	var/mob/living/carbon/xenomorph/xeno = proj.firer
+	if(istype(xeno) && HIVE_ALLIED_TO_HIVE(xeno.hivenumber, hivenumber))
 		return
 
 	. = ..()
@@ -101,21 +103,21 @@
 								SPAN_DANGER("You trip on [src]!"))
 				L.apply_effect(1, WEAKEN)
 				trigger_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_MIST)
 			if(ishuman(AM))
-				var/mob/living/carbon/human/H = AM
-				if(issynth(H) || isyautja(H))
+				var/mob/living/carbon/human/victim = AM
+				if(issynth(victim) || isyautja(victim))
 					return
-				if(H.stat == DEAD || H.body_position == LYING_DOWN)
+				if(victim.stat == DEAD || victim.body_position == LYING_DOWN)
 					return
-				if(H.ally_of_hivenumber(hivenumber))
+				if(victim.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
 			if(isxeno(AM))
-				var/mob/living/carbon/xenomorph/X = AM
-				if(X.hivenumber != hivenumber)
+				var/mob/living/carbon/xenomorph/xeno = AM
+				if(xeno.hivenumber != hivenumber)
 					trigger_trap()
-			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
+			if(isVehicleMultitile(AM) && trap_type != (RESIN_TRAP_GAS || RESIN_TRAP_MIST))
 				trigger_trap()
 
 /obj/effect/alien/resin/trap/proc/set_state(state = RESIN_TRAP_EMPTY)
@@ -138,14 +140,17 @@
 		if(RESIN_TRAP_GAS)
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
+		if(RESIN_TRAP_MIST)
+			trap_type = RESIN_TRAP_MIST
+			icon_state = "trapmist"
 
 /obj/effect/alien/resin/trap/proc/burn_trap()
-	var/area/A = get_area(src)
+	var/area/area = get_area(src)
 	facehugger_die()
 	clear_tripwires()
-	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [A.name] has been burnt!"))
+	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+		if(xeno.hivenumber == hivenumber)
+			to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [area.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
@@ -160,7 +165,7 @@
 
 /obj/effect/alien/resin/trap/proc/trigger_trap(destroyed = FALSE)
 	set waitfor = 0
-	var/area/A = get_area(src)
+	var/area/area = get_area(src)
 	var/trap_type_name = ""
 	switch(trap_type)
 		if(RESIN_TRAP_EMPTY)
@@ -181,6 +186,12 @@
 			smoke_system.start()
 			set_state()
 			clear_tripwires()
+		if(RESIN_TRAP_MIST)
+			trap_type_name = "mist"
+			smoke_system.set_up(2, 0, src.loc)
+			smoke_system.start()
+			set_state()
+			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trap_type_name = "acid"
 			var/spray_type = get_spray_type(trap_type)
@@ -194,113 +205,142 @@
 					SP.apply_spray(H)
 			set_state()
 			clear_tripwires()
-	if(!A)
+	if(!area)
 		return
-	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		if(X.hivenumber == hivenumber)
+	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+		if(xeno.hivenumber == hivenumber)
 			if(destroyed)
-				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
+				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [area.name] has been destroyed!"))
 			else
-				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been triggered!"))
+				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [area.name] has been triggered!"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	QDEL_NULL_LIST(tripwires)
 	tripwires = list()
 
-/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X)
-	if(X.hivenumber != hivenumber)
+/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.hivenumber != hivenumber)
 		return ..()
 
 	var/trap_acid_level = 0
 	if(trap_type >= RESIN_TRAP_ACID1)
 		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
-	if(X.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
+	if(xeno.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
 		return ..()
 
 	if(trap_type == RESIN_TRAP_HUGGER)
-		if(X.caste.can_hold_facehuggers)
+		if(xeno.caste.can_hold_facehuggers)
 			set_state()
 			var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
-			X.put_in_active_hand(F)
-			to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
+			xeno.put_in_active_hand(F)
+			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			return XENO_NONCOMBAT_ACTION
 		else
-			to_chat(X, SPAN_XENONOTICE("[src] is occupied by a child."))
+			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
 			return XENO_NO_DELAY_ACTION
 
-	if((!X.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
-		to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
+	if((!xeno.acid_level || trap_type == (RESIN_TRAP_GAS || RESIN_TRAP_MIST)) && trap_type != RESIN_TRAP_EMPTY)
+		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!X.acid_level)
-		to_chat(X, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
-		return XENO_NO_DELAY_ACTION
+	if(isreaper(xeno))
+		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
+		var/datum/behavior_delegate/base_reaper/reaper_behavior = reaper.behavior_delegate
 
-	if(trap_acid_level >= X.acid_level)
-		to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
-		return XENO_NO_DELAY_ACTION
-
-	if(isboiler(X))
-		var/mob/living/carbon/xenomorph/boiler/B = X
-
-		if(!B.check_plasma(200))
-			to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		if(reaper_behavior.flesh_plasma < 100)
+			to_chat(reaper, SPAN_XENOWARNING("You do not have enough flesh plasma for this."))
 			return XENO_NO_DELAY_ACTION
 
-		to_chat(X, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
-		xeno_attack_delay(X)
-		if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		to_chat(reaper, SPAN_XENONOTICE("You begin charging the resin trap with toxic mist."))
+		xeno_attack_delay(reaper)
+		if(!do_after(reaper, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
 
 		if(trap_type != RESIN_TRAP_EMPTY)
 			return XENO_NO_DELAY_ACTION
 
-		if(!B.check_plasma(200))
+		if(reaper_behavior.flesh_plasma < 100)
 			return XENO_NO_DELAY_ACTION
 
-		if(B.ammo.type == /datum/ammo/xeno/boiler_gas)
+		smoke_system = new /datum/effect_system/smoke_spread/reaper_mist()
+
+		setup_tripwires()
+		reaper_behavior.flesh_plasma -= 100
+		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+		set_state(RESIN_TRAP_MIST)
+		cause_data = create_cause_data("resin mist trap", reaper)
+		reaper.visible_message(SPAN_XENOWARNING("\The [reaper] pressurises the resin trap with toxic mist!"), \
+		SPAN_XENOWARNING("You pressurise the resin trap with toxic mist!"), null, 5)
+
+	if(!xeno.acid_level)
+		to_chat(xeno, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
+		return XENO_NO_DELAY_ACTION
+
+	if(trap_acid_level >= xeno.acid_level)
+		to_chat(xeno, SPAN_XENONOTICE("It already has good acid in."))
+		return XENO_NO_DELAY_ACTION
+
+	if(isboiler(xeno))
+		var/mob/living/carbon/xenomorph/boiler/boiler = xeno
+
+		if(!boiler.check_plasma(200))
+			to_chat(boiler, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+			return XENO_NO_DELAY_ACTION
+
+		to_chat(xeno, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+		xeno_attack_delay(xeno)
+		if(!do_after(boiler, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+			return XENO_NO_DELAY_ACTION
+
+		if(trap_type != RESIN_TRAP_EMPTY)
+			return XENO_NO_DELAY_ACTION
+
+		if(!boiler.check_plasma(200))
+			return XENO_NO_DELAY_ACTION
+
+		if(boiler.ammo.type == /datum/ammo/xeno/boiler_gas)
 			smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 		else
 			smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
 		setup_tripwires()
-		B.use_plasma(200)
+		boiler.use_plasma(200)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
-		cause_data = create_cause_data("resin gas trap", B)
-		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin trap with acid gas!"), \
+		cause_data = create_cause_data("resin gas trap", boiler)
+		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"), \
 		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
 		var/acid_cost = 70
-		if(X.acid_level == 2)
+		if(xeno.acid_level == 2)
 			acid_cost = 100
-		else if(X.acid_level == 3)
+		else if(xeno.acid_level == 3)
 			acid_cost = 200
 
-		if (!X.check_plasma(acid_cost))
-			to_chat(X, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		if (!xeno.check_plasma(acid_cost))
+			to_chat(xeno, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 			return XENO_NO_DELAY_ACTION
 
-		to_chat(X, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
-		xeno_attack_delay(X)
-		if(!do_after(X, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		to_chat(xeno, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+		xeno_attack_delay(xeno)
+		if(!do_after(xeno, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
 
-		if (!X.check_plasma(acid_cost))
+		if (!xeno.check_plasma(acid_cost))
 			return XENO_NO_DELAY_ACTION
 
-		X.use_plasma(acid_cost)
-		cause_data = create_cause_data("resin acid trap", X)
+		xeno.use_plasma(acid_cost)
+		cause_data = create_cause_data("resin acid trap", xeno)
 		setup_tripwires()
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 
-		if(isburrower(X))
+		if(isburrower(xeno))
 			set_state(RESIN_TRAP_ACID3)
 		else
-			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+			set_state(RESIN_TRAP_ACID1 + xeno.acid_level - 1)
 
-		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin trap with acid!"), \
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] pressurises the resin trap with acid!"), \
 		SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
 	return XENO_NO_DELAY_ACTION
 
@@ -324,11 +364,11 @@
 	if(FH.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else
-		var/mob/living/carbon/xenomorph/X = user
-		if (!istype(X))
+		var/mob/living/carbon/xenomorph/xeno = user
+		if (!istype(xeno))
 			return
 
-		if (X.hivenumber != hivenumber)
+		if (xeno.hivenumber != hivenumber)
 			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to your hive!"))
 			return
 

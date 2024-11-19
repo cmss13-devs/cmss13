@@ -48,7 +48,8 @@
 /datum/action/xeno_action/activable/haul_corpse/proc/corpse_add(mob/living/corpse)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
-	to_chat(xeno, SPAN_XENOWARNING("Adding Corpse"))
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] stabs a wing-like back limb through the gaping hole on [corpse]'s chest."), \
+	SPAN_XENONOTICE("We hoist the corpse onto one of our back limbs for hauling."))
 	xeno.corpses_hauled.Add(corpse)
 	xeno.corpse_no += 1
 	corpse.forceMove(xeno)
@@ -56,7 +57,8 @@
 /datum/action/xeno_action/activable/haul_corpse/proc/corpse_retrieve(mob/living/corpse)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
-	to_chat(xeno, SPAN_XENOWARNING("Retrieving Corpse"))
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] deftly uses its tail to slide a corpse off one of its wing-like back limbs."), \
+	SPAN_XENONOTICE("We retrieve a corpse from one of our back limbs."))
 	for(var/atom/movable/corpse_mob in xeno.corpses_hauled)
 		xeno.corpses_hauled.Remove(corpse_mob)
 		xeno.corpse_no -= 1
@@ -68,8 +70,6 @@
 	var/mob/living/carbon/carbon = target
 	var/mob/living/carbon/human/victim = carbon
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-
-	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
 
 	if(!action_cooldown_check())
 		return
@@ -95,51 +95,56 @@
 		to_chat(xeno, SPAN_XENOWARNING("This one is a fake, we get nothing from it!"))
 		return
 
-	if(carbon.stat != DEAD)
-		to_chat(xeno, SPAN_XENOWARNING("This one still lives, they are not suitable."))
-		return
+	if(affect_living != TRUE)
+		if(carbon.stat != DEAD)
+			to_chat(xeno, SPAN_XENOWARNING("This one still lives, they are not suitable."))
+			return
 
-	if(victim.is_revivable(TRUE) && victim.check_tod())
-		to_chat(xeno, SPAN_XENOWARNING("This one still pulses with life, they are not suitable."))
-		return
+		if(victim.is_revivable(TRUE) && victim.check_tod())
+			to_chat(xeno, SPAN_XENOWARNING("This one still pulses with life, they are not suitable."))
+			return
+
+	if(victim.status_flags & XENO_HOST)
+		for(var/obj/item/alien_embryo/embryo in victim)
+			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
+				to_chat(xeno, SPAN_WARNING("A sister is still growing inside this one, we should refrain from harvesting them yet."))
+				return
 
 	var/obj/limb/target_limb = victim.get_limb(check_zone(xeno.zone_selected))
 	if(ishuman(carbon) && !target_limb || (target_limb.status & LIMB_DESTROYED))
 		to_chat(xeno, SPAN_XENOWARNING("There is nothing to harvest!"))
 		return
 
-	switch(target_limb.name)
+	xeno.face_atom(carbon)
+	var/obj/limb/limb = target_limb
+	switch(limb.name)
 		if("head")
 			cannot_harvest()
 			return
-		if("chest")
-			cannot_harvest()
-			return
-		if("groin")
-			cannot_harvest()
-			return
-		else
-			xeno.face_atom(carbon)
-			var/obj/limb/limb = target_limb
-			switch(limb.name)
-				if("l_hand")
-					limb = carbon.get_limb("l_arm")
-				if("r_hand")
-					limb = carbon.get_limb("r_arm")
-				if("l_foot")
-					limb = carbon.get_limb("l_leg")
-				if("r_foot")
-					limb = carbon.get_limb("r_leg")
-			reaper.harvesting = TRUE
-			xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
-			SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
-			playsound(victim, limb_remove_start, 50, TRUE)
-			if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-				if((distance > 2) && !xeno.Adjacent(target))
-					to_chat(xeno, SPAN_XENOWARNING("Our harvest was interrupted!"))
-				else
-					do_harvest(carbon, target_limb)
-			reaper.harvesting = FALSE
+		if("chest", "groin")
+			burst_chest(victim, affect_living)
+		if("l_arm")
+			do_harvest(victim, limb)
+		if("l_hand")
+			limb = carbon.get_limb("l_arm")
+			do_harvest(victim, limb)
+		if("r_arm")
+			do_harvest(victim, limb)
+		if("r_hand")
+			limb = carbon.get_limb("r_arm")
+			do_harvest(victim, limb)
+		if("l_leg")
+			do_harvest(victim, limb)
+		if("l_foot")
+			limb = carbon.get_limb("l_leg")
+			do_harvest(victim, limb)
+		if("r_leg")
+			do_harvest(victim, limb)
+		if("r_foot")
+			limb = carbon.get_limb("r_leg")
+			do_harvest(victim, limb)
+
+	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/flesh_harvest/proc/do_harvest(mob/living/carbon/carbon, obj/limb/limb)
@@ -148,29 +153,81 @@
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
 	var/limb_remove_end = pick('sound/scp/firstpersonsnap.ogg','sound/scp/firstpersonsnap2.ogg')
+	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
+
+	reaper.harvesting = TRUE
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
+	SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
+
+	playsound(victim, limb_remove_start, 50, TRUE)
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!xeno.Adjacent(victim))
+			to_chat(xeno, SPAN_XENOWARNING("Our harvest was interrupted!"))
+			reaper.harvesting = FALSE
+			return
 
 	playsound(xeno, limb_remove_end, 25, TRUE)
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion!"), \
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and drops it!"), \
 		SPAN_XENOWARNING("We harvest the [limb.display_name], but it's a fake! Useless!"))
 		limb.droplimb(FALSE, FALSE, "flesh harvest")
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and swallows it whole!"), \
 		SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
 		limb.droplimb(FALSE, TRUE, "flesh harvest")
-		reaper.flesh_plasma += harvest_gain
+		reaper.modify_flesh_plasma(harvest_gain)
 	reaper.pause_decay = TRUE
-	apply_cooldown()
+	reaper.harvesting = FALSE
+
+/datum/action/xeno_action/activable/flesh_harvest/proc/burst_chest(mob/living/carbon/carbon, burst_living = FALSE)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/human/victim = carbon
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+
+	if(victim.chestburst)
+		to_chat(xeno, SPAN_XENOWARNING("A sister has already burst from them, there is nothing to harvest!"))
+		return
+
+	reaper.harvesting = TRUE
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] bends over and reaches [victim]!"), \
+	SPAN_XENONOTICE("We prepare our inner jaw to harvest [victim]'s chest organs!"))
+
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!xeno.Adjacent(victim))
+			to_chat(xeno, SPAN_XENOWARNING("Oopsies Our harvest was interrupted!"))
+			reaper.harvesting = FALSE
+			return
+
+	if(ishuman(victim))
+		var/mob/living/carbon/human/victim_human = victim
+		var/datum/internal_organ/organ
+		var/internal
+		for(internal in list("heart","lungs")) // Ripped from Embryo code for vibes, with single letter vars murdered (I wish I found this sooner)
+			organ = victim_human.internal_organs_by_name[internal]
+			victim_human.internal_organs_by_name -= internal
+			victim_human.internal_organs -= organ
+	if(burst_living == TRUE && victim.stat != DEAD)
+		var/datum/cause_data/cause = create_cause_data("reaper living burst chest", src)
+		victim.last_damage_data = cause
+		victim.death(cause)
+	playsound(victim, 'sound/weapons/alien_bite2.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]'s inner jaw shoots out of it's mouth, gouging a large hole in [victim]'s chest!"), \
+	SPAN_XENOWARNING("We plunge our inner jaw into [victim]'s chest and consume their organs!"))
+	victim.chestburst = 2
+	victim.update_burst()
+	reaper.modify_flesh_plasma(harvest_gain * 2)
+	reaper.pause_decay = TRUE
+	reaper.harvesting = FALSE
 
 /datum/action/xeno_action/activable/flesh_harvest/proc/cannot_harvest()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	to_chat(xeno, SPAN_XENOWARNING("This part is not worth harvesting!"))
+//	var/mob/living/carbon/xenomorph/xeno = owner
+	to_chat(owner, SPAN_XENOWARNING("This part is not worth harvesting!"))
 
-/datum/action/xeno_action/activable/rapture/use_ability(atom/target)
+/datum/action/xeno_action/activable/reap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/mob/living/carbon/carbon = target
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-	var/distance = get_dist(xeno, target)
+
 	var/damage = xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER
 
 	if(!action_cooldown_check())
@@ -188,7 +245,8 @@
 	if(HAS_TRAIT(carbon, TRAIT_NESTED))
 		return
 
-	if(distance > max_range)
+	var/distance = get_dist(xeno, target)
+	if(distance > range)
 		to_chat(xeno, SPAN_WARNING("They are too far away!"))
 		return
 
@@ -222,22 +280,17 @@
 	xeno.animation_attack_on(carbon)
 	xeno.flick_attack_overlay(carbon, "slash")
 	playsound(carbon, 'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-	if(distance <= normal_range)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws at [carbon], piercing them in the [target_limb ? target_limb.display_name : "chest"]!"), \
-		SPAN_XENOWARNING("We pierce [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
-		if(iscarbon(carbon))
-			carbon.apply_effect(3, DAZE)
-			var/mob/living/carbon/human/victim = carbon
-			if(!issynth(victim))
-				victim.reagents.add_reagent("sepsicine", toxin_amount)
-				victim.reagents.set_source_mob(xeno, /datum/reagent/toxin/sepsicine)
-	else
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its wing-like claws infront of it as tendrils of resin whip outwards, striking [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"), \
-		SPAN_XENOWARNING("We strike [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
-		carbon.apply_effect(1.5, DAZE)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its large claws at [carbon], slicing them in the [target_limb ? target_limb.display_name : "chest"]!"), \
+	SPAN_XENOWARNING("We slice [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
+	if(iscarbon(carbon))
+		var/mob/living/carbon/human/victim = carbon
+		if(!issynth(victim))
+			victim.reagents.add_reagent("sepsicine", toxin_amount)
+			victim.reagents.set_source_mob(xeno, /datum/reagent/toxin/sepsicine)
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+	carbon.apply_effect(2, DAZE)
 	reaper.pause_decay = TRUE
-	reaper.passive_flesh_multi += 1
+	reaper.modify_passive_mult(1)
 	shake_camera(target, 2, 1)
 	apply_cooldown()
 	return ..()
@@ -269,6 +322,6 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly green mist!"), \
 		SPAN_XENOWARNING("We consume flesh plasma and breath a cloud of mist!"))
 
-	reaper.flesh_plasma -= flesh_plasma_cost
+	reaper.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
 	return ..()

@@ -758,22 +758,27 @@
 	affected_mob.last_damage_data = cause_data
 
 	if(isxeno(affected_mob))
-		var/affected_xeno =
-		to_chat(affected_mob, SPAN_XENODANGER("We feel very lethargic!"))
-		affected_mob.Slow(2)
+		var/mob/living/carbon/xenomorph/affected_xeno = affected_mob
+		if(!isreaper(affected_xeno))
+			affected_xeno.Slow(2)
 	else
 		if(!issynth(affected_mob))
-			to_chat(affected_mob, SPAN_DANGER("You feel nauseous and lightheaded!"))
 			affected_mob.Slow(1)
 			affected_mob.reagents.add_reagent("sepsicine", toxin_amount)
 			affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
 
-	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob) && !affected_mob.lastpuke)
+	if(affected_mob.coughedtime < world.time && !affected_mob.stat && !affected_mob.lastpuke)
 		affected_mob.coughedtime = world.time + 2 SECONDS
-		if(prob(50))
-			affected_mob.emote("cough")
-		else if(prob(25))
-			affected_mob.emote("gasp")
+		if(ishuman(affected_mob) && !issynth(affected_mob))
+			if(prob(40))
+				affected_mob.emote("cough")
+			else if(prob(20))
+				affected_mob.emote("gasp")
+			else if(prob(20))
+				to_chat(affected_mob, SPAN_DANGER("You feel lightheaded and sick!"))
+		if(isxeno(affected_mob))
+			if(prob(50))
+				to_chat(affected_mob, SPAN_XENODANGER("We feel very lethargic!"))
 
 	affected_mob.last_damage_data = cause_data
 	return TRUE

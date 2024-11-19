@@ -8,7 +8,7 @@
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
-	plasma_max = XENO_PLASMA_TIER_8
+	plasma_max = XENO_PLASMA_TIER_6
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
@@ -63,7 +63,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/activable/haul_corpse, //second macro
 		/datum/action/xeno_action/activable/flesh_harvest, //third macro
-		/datum/action/xeno_action/activable/rapture, //fourth macro
+		/datum/action/xeno_action/activable/reap, //fourth macro
 		/datum/action/xeno_action/onclick/emit_mist, //fifth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -88,12 +88,28 @@
 	. = ..()
 	. += "Hauled corpses: [corpse_no] / [corpse_max]"
 
+/mob/living/carbon/xenomorph/reaper/get_examine_text(mob/user)
+	. = ..()
+	if(corpse_no > 0)
+		. += "[corpse_no] corpses are impaled on its back limbs."
+
+/mob/living/carbon/xenomorph/reaper/death(cause, gibbed)
+	. = ..(cause, gibbed)
+	if(.)
+		if(corpse_no > 0)
+			visible_message(SPAN_XENOWARNING("The corpses on [src]'s back limbs fall off!"))
+			for(var/atom/movable/corpse_mob in corpses_hauled)
+				corpses_hauled.Remove(corpse_mob)
+				corpse_no -= 1
+				corpse_mob.forceMove(get_true_turf(loc))
+				step_away(corpse_mob, src, 1)
+
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
 	var/flesh_plasma = 0
-	var/flesh_plasma_max = 1000
-	var/passive_flesh_regen = 1
+	var/flesh_plasma_max = 600
+	var/passive_flesh_regen = 1 // Base value for passive regen, this is not modified by abilities
 	var/passive_flesh_multi= 1
 	var/passive_multi_max = 5
 	var/pause_decay = FALSE
@@ -102,15 +118,27 @@
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
 
 /datum/behavior_delegate/base_reaper/proc/mult_decay()
-	if(passive_flesh_multi < 1)
-		passive_flesh_multi = 1
 	if(pause_decay == FALSE && passive_flesh_multi > 1)
-		passive_flesh_multi -= 1
+		modify_passive_mult(-1)
 
 /datum/behavior_delegate/base_reaper/proc/unpause_decay()
 	pause_decay = FALSE
 	unpause_incoming = FALSE
 	pause_dur = 5 SECONDS
+
+/datum/behavior_delegate/base_reaper/proc/modify_flesh_plasma(amount)
+	flesh_plasma += amount
+	if(flesh_plasma > flesh_plasma_max)
+		flesh_plasma = flesh_plasma_max
+	if(flesh_plasma < 0)
+		flesh_plasma = 0
+
+/datum/behavior_delegate/base_reaper/proc/modify_passive_mult(amount)
+	passive_flesh_multi += amount
+	if(passive_flesh_multi > passive_multi_max)
+		passive_flesh_multi = passive_multi_max
+	if(passive_flesh_multi < 1)
+		passive_flesh_multi = 1
 
 /datum/behavior_delegate/base_reaper/append_to_stat()
 	. = ..()
@@ -118,17 +146,11 @@
 	. += "Passive Gain: [passive_flesh_regen * passive_flesh_multi]"
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	passive_flesh_multi += 1
+	modify_passive_mult(1)
 
 /datum/behavior_delegate/base_reaper/on_life()
-	if(passive_flesh_multi > passive_multi_max)
-		passive_flesh_multi = passive_multi_max
-	if(flesh_plasma > flesh_plasma_max)
-		flesh_plasma = flesh_plasma_max
-	if(flesh_plasma < 0)
-		flesh_plasma = 0
 
-	flesh_plasma += passive_flesh_regen * passive_flesh_multi
+	modify_flesh_plasma(passive_flesh_regen * passive_flesh_multi)
 
 	mult_decay()
 	if(pause_decay == TRUE && unpause_incoming == FALSE)

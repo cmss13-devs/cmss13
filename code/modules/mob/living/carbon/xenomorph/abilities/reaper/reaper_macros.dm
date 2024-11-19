@@ -12,11 +12,11 @@
 	var/action_name = "Flesh Harvest"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_rapture()
+/datum/action/xeno_action/verb/verb_reap()
 	set category = "Alien"
-	set name = "Rapture"
+	set name = "Reap"
 	set hidden = TRUE
-	var/action_name = "Rapture"
+	var/action_name = "Reap"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_mist()

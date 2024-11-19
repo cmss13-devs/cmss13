@@ -11,8 +11,6 @@
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
-	minimap_icon = "private"
-	minimap_background = "background_pmc"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_icon = "private"
 	minimap_background = "background_pmc"
@@ -54,7 +52,6 @@
 	name = "Survivor - PMC Medic"
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
-	minimap_icon = "pmc_md"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CM"
 	skills = /datum/skills/civilian/survivor/pmc/medic
@@ -79,7 +76,6 @@
 	name = "Survivor - PMC Engineer"
 	assignment = JOB_PMC_ENGINEER
 	rank = JOB_PMC_ENGINEER
-	minimap_icon = "engi"
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 	skills = /datum/skills/civilian/survivor/pmc/engineer
@@ -100,10 +96,10 @@
 	name = "Survivor - PMC Leader"
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
-	minimap_icon = "pmc_ld"
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/civilian/survivor/pmc/lead
+	minimap_icon = "pmc_ld"
 
 /datum/equipment_preset/survivor/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
@@ -191,8 +187,6 @@
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
-	minimap_background = "background_pmc"
-	minimap_icon = "pmc_syn"
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
 	minimap_icon = "pmc_syn"

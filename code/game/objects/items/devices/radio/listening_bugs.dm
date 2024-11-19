@@ -274,3 +274,23 @@
 /obj/item/device/encryptionkey/listening_bug/freq_b
 	name = "Listening Bug Encryption Key (B)"
 	channels = list(RADIO_CHANNEL_BUG_B = TRUE)
+
+
+
+///An automatically active bug used to listen to things by a Fax Responder.
+/obj/item/device/radio/listening_bug/radio_linked/fax
+	name = "Comms Relay Device"
+	subspace_switchable = FALSE
+	broadcasting = TRUE
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/wy
+	frequency = FAX_WY_FREQ
+	req_one_access = list(ACCESS_WY_SENIOR_LEAD)
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst
+	frequency = FAX_USCM_PVST_FREQ
+	req_one_access = list(ACCESS_MARINE_CO)
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc
+	frequency = FAX_USCM_HC_FREQ
+	req_one_access = list(ACCESS_MARINE_CO)

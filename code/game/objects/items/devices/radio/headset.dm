@@ -65,6 +65,9 @@
 
 /obj/item/device/radio/headset/Destroy()
 	wearer = null
+	if(spy_bug)
+		qdel(spy_bug)
+		spy_bug = null
 	QDEL_NULL_LIST(keys)
 	return ..()
 
@@ -560,6 +563,12 @@
 	icon_state = "wy_headset"
 	maximum_keys = 5
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
+
+	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
+
+/obj/item/device/radio/headset/almayer/mcl/Initialize()
+	. = ..()
+	spy_bug.nametag = "CL Radio"
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"

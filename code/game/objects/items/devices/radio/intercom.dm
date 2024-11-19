@@ -93,3 +93,16 @@
 /obj/item/device/radio/intercom/devana
 	name = "dropship devana intercom"
 	frequency = UPP_DS2_FREQ
+
+/obj/item/device/radio/intercom/fax
+	name = "Monitoring Frequency Speaker"
+	canhear_range = 4
+
+/obj/item/device/radio/intercom/fax/wy
+	frequency = FAX_WY_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_hc
+	frequency = FAX_USCM_HC_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_pvst
+	frequency = FAX_USCM_PVST_FREQ

@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "reduces g2 electroshock grenade stamina damage"
+  - bugfix: "yauta bracers get properly drained by emp"

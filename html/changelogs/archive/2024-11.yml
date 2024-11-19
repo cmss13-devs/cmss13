@@ -242,3 +242,61 @@
   Sunless2:
   - rscadd: Added the ability for bayonets to cut down fences
   - balance: It now takes twice the amount of throws to bring down a fence
+2024-11-13:
+  Blundir:
+  - rscadd: working joe's and early gen synth's eyes now glow in a dark
+  - rscadd: working joe's and early gen synth's eyes color tweak on disarm and grab
+  Drathek:
+  - maptweak: Fixed the rotation of the telecoms APC in the Aerodome on Shivas
+  - balance: LZ smoke is now disabled by default on distress signal
+  - admin: Added game mode toggle to toggle LZ smoke during the first 3 minutes of
+      the round (otherwise is locked in)
+  - balance: Eggs that lose their hive weeds will now turn fragile (like egg carrier
+      eggs) lasting 5 minutes.
+  - bugfix: Fixed an exploit allowing egg carrier eggs to last indefinitely.
+  - bugfix: Fixed the inability to examine planted eggs from further than one tile.
+  - code_imp: Added some more sanity code to ensure time of death is recorded for
+      larva queue
+  JustLat:
+  - imageadd: Adds icon states for l_hand and r_hand for yautja accessories.
+  Steelpoint, Zenith:
+  - mapadd: Two UPP dropships have been added for event use, the Morana and the Devana.
+  - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
+      by admins for events.
+  cuberound:
+  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: makes UPP synth lobby joinable for events
+  zzzmike:
+  - rscadd: tip of the round regarding lesser known cryotube utility
+2024-11-16:
+  BeagleGaming1:
+  - rscadd: Adds the personal gear vendor, where people can get their donator items
+      or a random loadout item
+  - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
+      them
+  - config: Changes to config/custom_items.txt
+2024-11-18:
+  Drulikar:
+  - code_imp: dmm_test now checks if there are pending mapmerge2 conversions.
+  - code_imp: Improved dmm_test error handling
+  - code_imp: mapmerge2 now uses keys sequentially rather than randomly.
+  - code_imp: mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes
+      pending mapmerge2 conversions.
+  SASoperative:
+  - rscadd: Personal Gear Vendor allows retrieval of additional kits for multi-kit
+      donators
+2024-11-19:
+  AlanParkerMasters:
+  - rscdel: A single period from the ABR-40 description that shouldn't be there.
+  An A Jay:
+  - balance: Gave predators the ability to cut through fences
+  Red-byte3D:
+  - code_imp: rewrote tremor code
+  cuberound:
+  - bugfix: emp act is called once on each limb not three time
+  - balance: reduces g2 electroshock grenade stamina damage
+  - bugfix: yauta bracers get properly drained by emp
+  harryob:
+  - ui: adds a search bar to the pred/wj emote panels
+  zzzmike:
+  - qol: nuclear device messaging more helpful for newbies

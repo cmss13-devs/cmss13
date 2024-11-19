@@ -59,7 +59,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Detective Suit
 
@@ -78,7 +77,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
 
 /obj/item/clothing/under/hybrisa/detective_synth_uniform/alt
 	name = "\improper worn suit"
@@ -138,7 +137,6 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Engineer Worker Uniform
 
@@ -157,7 +155,6 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/hybrisa/engineering_utility/alt
 	name = "\improper Weyland-Yutani engineering utility uniform"
@@ -183,7 +180,6 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Weymart
 
@@ -202,7 +198,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Pizza-Galaxy
 
@@ -221,7 +216,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Cuppa Joe's
 
@@ -240,7 +234,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 // Science
 
@@ -280,7 +273,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket
 	icon_state = "wy_exec_suit_3_uniform"

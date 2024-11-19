@@ -275,3 +275,28 @@
   - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
       them
   - config: Changes to config/custom_items.txt
+2024-11-18:
+  Drulikar:
+  - code_imp: dmm_test now checks if there are pending mapmerge2 conversions.
+  - code_imp: Improved dmm_test error handling
+  - code_imp: mapmerge2 now uses keys sequentially rather than randomly.
+  - code_imp: mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes
+      pending mapmerge2 conversions.
+  SASoperative:
+  - rscadd: Personal Gear Vendor allows retrieval of additional kits for multi-kit
+      donators
+2024-11-19:
+  AlanParkerMasters:
+  - rscdel: A single period from the ABR-40 description that shouldn't be there.
+  An A Jay:
+  - balance: Gave predators the ability to cut through fences
+  Red-byte3D:
+  - code_imp: rewrote tremor code
+  cuberound:
+  - bugfix: emp act is called once on each limb not three time
+  - balance: reduces g2 electroshock grenade stamina damage
+  - bugfix: yauta bracers get properly drained by emp
+  harryob:
+  - ui: adds a search bar to the pred/wj emote panels
+  zzzmike:
+  - qol: nuclear device messaging more helpful for newbies

@@ -1,7 +1,0 @@
-author: "Drulikar"
-delete-after: True
-changes:
-  - code_imp: "dmm_test now checks if there are pending mapmerge2 conversions."
-  - code_imp: "Improved dmm_test error handling"
-  - code_imp: "mapmerge2 now uses keys sequentially rather than randomly."
-  - code_imp: "mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes pending mapmerge2 conversions."

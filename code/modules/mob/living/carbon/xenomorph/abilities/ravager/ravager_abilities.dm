@@ -3,7 +3,7 @@
 /datum/action/xeno_action/activable/pounce/charge
 	name = "Charge"
 	action_icon_state = "charge"
-	ability_name = "charge"
+	action_text = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_rav
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -21,7 +21,6 @@
 /datum/action/xeno_action/onclick/empower
 	name = "Empower"
 	action_icon_state = "empower"
-	ability_name = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_empower
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -42,7 +41,6 @@
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut
 	name = "Scissor Cut"
-	ability_name = "scissor cut"
 	action_icon_state = "rav_scissor_cut"
 	macro_path = /datum/action/xeno_action/verb/verb_scissorcut
 	action_type = XENO_ACTION_CLICK
@@ -60,7 +58,6 @@
 /datum/action/xeno_action/onclick/apprehend
 	name = "Apprehend"
 	action_icon_state = "rav_enrage"
-	ability_name = "apprehend"
 	macro_path = /datum/action/xeno_action/verb/verb_apprehend
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -75,7 +72,6 @@
 /datum/action/xeno_action/activable/clothesline
 	name = "Clothesline"
 	action_icon_state = "rav_clothesline"
-	ability_name = "clothesline"
 	macro_path = /datum/action/xeno_action/verb/verb_clothesline
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -92,7 +88,6 @@
 /datum/action/xeno_action/activable/eviscerate
 	name = "Eviscerate"
 	action_icon_state = "rav_eviscerate"
-	ability_name = "eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -113,7 +108,6 @@
 /datum/action/xeno_action/onclick/spike_shield
 	name = "Spike Shield (150 shards)"
 	action_icon_state = "rav_shard_shield"
-	ability_name = "spike shield"
 	macro_path = /datum/action/xeno_action/verb/verb_spike_shield
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -131,7 +125,6 @@
 /datum/action/xeno_action/activable/rav_spikes
 	name = "Fire Spikes (75 shards)"
 	action_icon_state = "rav_spike"
-	ability_name = "fire spikes"
 	macro_path = /datum/action/xeno_action/verb/verb_fire_spikes
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -145,7 +138,6 @@
 /datum/action/xeno_action/onclick/spike_shed
 	name = "Spike Shed (50 shards)"
 	action_icon_state = "rav_shard_shed"
-	ability_name = "spike shed"
 	macro_path = /datum/action/xeno_action/verb/verb_shed_spikes
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3

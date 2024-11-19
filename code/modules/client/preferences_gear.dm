@@ -975,10 +975,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
 
-/datum/gear/misc/patch_uscm/devils
-	display_name = "USCM Solar Devils patch"
-	path = /obj/item/clothing/accessory/patch/devils
-
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo

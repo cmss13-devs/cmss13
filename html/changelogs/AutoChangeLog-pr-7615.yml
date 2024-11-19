@@ -1,0 +1,4 @@
+author: "Joe Lampost"
+delete-after: True
+changes:
+  - rscadd: "Thwei crystals now delete themselves after a set time"

@@ -23,7 +23,7 @@
 	var/origin_override
 
 	var/minimap_icon = "private"
-	var/minimap_background = MINIMAP_ICON_BACKGROUND_USCM
+	var/minimap_background = "background"
 	var/always_minimap_visible = TRUE
 
 	//Uniform data
@@ -282,17 +282,11 @@
 		return
 
 	for(var/trait in real_client.prefs.traits)
-		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(new_human, src)
+		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+		character_trait.apply_trait(new_human, src)
 
 /datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
-	if(user.assigned_squad)
-		background.color = user.assigned_squad.minimap_color
-	else if(minimap_background)
-		background.color = minimap_background
-	else
-		background.color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
 
 	if(islist(minimap_icon))
 		for(var/icons in minimap_icon)

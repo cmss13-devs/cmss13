@@ -157,7 +157,7 @@
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = FALSE
 	specialty = "chief MP"
 
 /obj/item/clothing/under/marine/officer/technical

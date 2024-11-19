@@ -253,6 +253,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
 
 // WY-Exec Expensive Suits
 

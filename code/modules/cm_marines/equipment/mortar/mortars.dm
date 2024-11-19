@@ -365,7 +365,7 @@
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	if(GLOB.master_mode == "Faction Clash UPP CM")
+	if((SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_MORTAR_LASER_WARNING))
 		new /obj/effect/overlay/temp/blinking_laser(target)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)

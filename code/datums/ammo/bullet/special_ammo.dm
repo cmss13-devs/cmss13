@@ -17,7 +17,7 @@
 	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/setup_hvh_values()
-	.=..()
+	. = ..()
 	max_range = 17
 	accurate_range = 12
 	effective_range_max = 12

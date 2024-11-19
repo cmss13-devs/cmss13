@@ -1770,18 +1770,18 @@
 	var/temp = 0 //see setup.dm:694
 
 	if(species && species.flags & NO_BLOOD)
-		src.pulse = PULSE_NONE //No blood, no pulse.
+		pulse = PULSE_NONE //No blood, no pulse.
 
 	else if(stat == DEAD || status_flags & FAKEDEATH)
-		src.pulse = PULSE_NONE //That's it, you're dead, nothing can influence your pulse
+		pulse = PULSE_NONE //That's it, you're dead, nothing can influence your pulse
 
 	else if(floor(blood_volume) <= BLOOD_VOLUME_BAD) //How much blood do we have
-		src.pulse = PULSE_THREADY //not enough :(
+		pulse = PULSE_THREADY //not enough :(
 
 	else
-		src.pulse = PULSE_NORM
+		pulse = PULSE_NORM
 
-	switch(src.pulse)
+	switch(pulse)
 		if(PULSE_NONE)
 			return "0"
 		if(PULSE_SLOW)

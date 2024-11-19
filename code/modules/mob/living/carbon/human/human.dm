@@ -1764,8 +1764,9 @@
 
 	return .
 
-//generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/human/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
+/// generates realistic-ish pulse output based on preset levels.
+/// method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate
+/mob/living/carbon/human/proc/get_pulse(method) 
 	var/temp = 0 //see setup.dm:694
 
 	if(species && species.flags & NO_BLOOD)

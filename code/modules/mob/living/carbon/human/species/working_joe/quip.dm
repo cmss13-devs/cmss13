@@ -84,8 +84,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/corporate_representatives
 	key = "corporaterepresentatives"
 	sound = 'sound/voice/joe/corporate_representatives.ogg'
+	haz_sound = 'sound/voice/joe/corporate_representatives_haz.ogg'
 	say_message = "All visiting corporate representatives must report to their nearest synthetic."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/hmmmm
 	key = "hmmmmm"
@@ -96,21 +98,26 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/no_no
 	key = "nono"
 	sound = 'sound/voice/joe/no_no.ogg'
+	haz_sound = 'sound/voice/joe/no_no_haz.ogg'
 	say_message = "No-no."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/sophisticated
 	key = "sophisticated"
 	sound = 'sound/voice/joe/sophisticated.ogg'
+	haz_sound = 'sound/voice/joe/sophisticated_haz.ogg'
 	say_message = "I'm a very sophisticated machine."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/so_tiresome
 	key = "sotiresome"
 	sound = 'sound/voice/joe/so_tiresome.ogg'
+	haz_sound = 'sound/voice/joe/so_tiresome_haz.ogg'
 	say_message = "So tiresome."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/no_reason_to_be
 	key = "noreasontobe"
@@ -121,5 +128,13 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/hazard_level
 	key = "hazardlevel"
 	sound = 'sound/voice/joe/hazard_level.ogg'
+	haz_sound = 'sound/voice/joe/hazard_level_haz.ogg'
 	say_message = "We're experiencing a heightened containment hazard level today."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/misunderstanding
+	key = "misunderstanding"
+	sound = 'sound/voice/joe/misunderstanding.ogg'
+	say_message = "I'm sure this is a misunderstanding."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

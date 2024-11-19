@@ -87,8 +87,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/something_amiss
 	key = "somethingamiss"
 	sound = 'sound/voice/joe/something_amiss.ogg'
+	haz_sound = 'sound/voice/joe/something_amiss_haz.ogg'
 	say_message = "Something amiss?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/set_off_alarm
 	key = "setoffalarm"
@@ -111,23 +113,37 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/quitefinished
 	key = "quitefinished"
 	sound = 'sound/voice/joe/quite_finished.ogg'
+	haz_sound = 'sound/voice/joe/quite_finished_haz.ogg'
 	say_message = "Are you quite finished?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/are_you_going
 	key = "areyougoing"
 	sound = 'sound/voice/joe/where_are_you_going.ogg'
+	haz_sound = 'sound/voice/joe/where_are_you_going_haz.ogg'
 	say_message = "Where are you going?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/cant_see_you
 	key = "cantseeyou"
 	sound = 'sound/voice/joe/cant_see_you.ogg'
+	haz_sound = 'sound/voice/joe/cant_see_you_haz.ogg'
 	say_message = "I can't see you. Where are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/needs_assistance
 	key = "needsassistance"
 	sound = 'sound/voice/joe/needs_assistance.ogg'
 	say_message = "Is there someone that needs assistance?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/what_are_you
+	key = "whatareyou"
+	sound = 'sound/voice/joe/what_are_you.ogg'
+	haz_sound = 'sound/voice/joe/what_are_you_haz.ogg'
+	say_message = "What are you?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

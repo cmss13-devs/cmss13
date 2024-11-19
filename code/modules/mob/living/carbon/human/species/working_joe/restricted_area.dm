@@ -40,8 +40,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/interloper
 	key = "interloper"
 	sound = 'sound/voice/joe/interloper.ogg'
+	haz_sound = 'sound/voice/joe/interloper_haz.ogg'
 	say_message = "On top of innumerable duties, now I have a interloper."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/area_restricted
 	key = "arearestrict"

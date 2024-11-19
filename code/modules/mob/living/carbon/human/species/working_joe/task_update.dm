@@ -12,8 +12,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/let_me_help
 	key = "letmehelp"
 	sound = 'sound/voice/joe/let_me_help.ogg'
+	haz_sound = 'sound/voice/joe/let_me_help_haz.ogg'
 	say_message = "Let me help you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/follow_me
 	key = "followme"
@@ -109,4 +111,10 @@
 	key = "notcrawling"
 	sound = 'sound/voice/joe/not_crawling.ogg'
 	say_message = "I'm not crawling in there after you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/be_a_problem
+	key = "beaproblem"
+	sound = 'sound/voice/joe/be_a_problem.ogg'
+	say_message = "This is going to be a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

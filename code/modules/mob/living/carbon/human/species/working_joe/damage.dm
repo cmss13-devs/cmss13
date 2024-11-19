@@ -36,8 +36,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/really
 	key = "really"
 	sound = 'sound/voice/joe/really.ogg'
+	haz_sound = 'sound/voice/joe/really_haz.ogg'
 	say_message = "Really?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/enough
 	key = "enough"
@@ -50,8 +52,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/stop_that
 	key = "stopthat"
 	sound = 'sound/voice/joe/stop_that.ogg'
+	haz_sound = 'sound/voice/joe/stop_that_haz.ogg'
 	say_message = "Stop that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/tut_tut
 	key = "tuttut"
@@ -64,26 +68,34 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/unwarranted
 	key = "unwarranted"
 	sound = 'sound/voice/joe/unwarranted.ogg'
+	haz_sound = 'sound/voice/joe/unwarranted_haz.ogg'
 	say_message = "Unwarranted."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/expensive_mistake
 	key = "expensivemistake"
 	sound = 'sound/voice/joe/expensive_mistake.ogg'
+	haz_sound = 'sound/voice/joe/expensive_mistake_haz.ogg'
 	say_message = "That was an expensive mistake."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/this_isnt_the_answer
 	key = "isnttheanswer"
 	sound = 'sound/voice/joe/this_isnt_the_answer.ogg'
+	haz_sound = 'sound/voice/joe/this_isnt_the_answer_haz.ogg'
 	say_message = "This isn't the answer."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/my_turn_now
 	key = "myturnnow"
 	sound = 'sound/voice/joe/my_turn_now.ogg'
+	haz_sound = 'sound/voice/joe/my_turn_now_haz.ogg'
 	say_message = "My turn now."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged
 	key = "alwaysknowdamaged"

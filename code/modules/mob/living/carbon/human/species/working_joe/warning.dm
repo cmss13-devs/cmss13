@@ -12,14 +12,18 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_do_that
 	key = "dontdothat"
 	sound = 'sound/voice/joe/dontdothat.ogg'
+	haz_sound = 'sound/voice/joe/dontdothat_haz.ogg'
 	say_message = "Don't do that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_run
 	key = "dontrun"
 	sound = 'sound/voice/joe/dont_run.ogg'
+	haz_sound = 'sound/voice/joe/dont_run_haz.ogg'
 	say_message = "Don't run."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/running_accidents
 	key = "runningaccidents"
@@ -122,20 +126,26 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hold_still
 	key = "holdstill"
 	sound = 'sound/voice/joe/hold_still.ogg'
+	haz_sound = 'sound/voice/joe/hold_still_haz.ogg'
 	say_message = "Hold still."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/have_a_problem
 	key = "haveaproblem"
 	sound = 'sound/voice/joe/have_a_problem.ogg'
+	haz_sound = 'sound/voice/joe/have_a_problem_haz.ogg'
 	say_message = "It seems you and I have a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/getting_careless
 	key = "gettingcareless"
 	sound = 'sound/voice/joe/getting_careless.ogg'
+	haz_sound = 'sound/voice/joe/getting_careless_haz.ogg'
 	say_message = "I heard that, you are getting careless."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/you_are_here
 	key = "youarehere"
@@ -152,8 +162,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/protocol_demand
 	key = "protocolsdemand"
 	sound = 'sound/voice/joe/protocol_demand.ogg'
+	haz_sound = 'sound/voice/joe/protocol_demand_haz.ogg'
 	say_message = "Seegson protocols demand that I find you immediately."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/cant_help_you
 	key = "canthelpyou"
@@ -194,8 +206,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/very_dangerous
 	key = "verydangerous"
 	sound = 'sound/voice/joe/very_dangerous.ogg'
+	haz_sound = 'sound/voice/joe/very_dangerous_haz.ogg'
 	say_message = "That was very dangerous."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/patient_machine
 	key = "patientmachine"

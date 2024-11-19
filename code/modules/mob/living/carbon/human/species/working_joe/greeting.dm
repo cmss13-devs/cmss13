@@ -64,8 +64,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/been_looking_for_you
 	key = "beenlooking"
 	sound = 'sound/voice/joe/been_looking_for_you.ogg'
+	haz_sound = 'sound/voice/joe/been_looking_for_you_haz.ogg'
 	say_message = "I've been looking for you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/speak_to_you
 	key = "speaktoyou"
@@ -76,5 +78,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/found_you
 	key = "foundyou"
 	sound = 'sound/voice/joe/found_you.ogg'
+	haz_sound = 'sound/voice/joe/found_you_haz.ogg'
 	say_message = "Found you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

@@ -20,8 +20,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/be_careful
 	key = "careful"
 	sound = 'sound/voice/joe/be_careful_with_that.ogg'
+	haz_sound = 'sound/voice/joe/be_careful_with_that_haz.ogg'
 	say_message = "Be careful with that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm
 	key = "firearm"
@@ -46,8 +48,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/permit_for_that
 	key = "permitforthat"
 	sound = 'sound/voice/joe/permit_for_that.ogg'
+	haz_sound = 'sound/voice/joe/permit_for_that_haz.ogg'
 	say_message = "I assume you have a permit for that weapon."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/invest_disturbance
 	key = "investigatedisturbance"
@@ -102,8 +106,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/strange
 	key = "strange"
 	sound = 'sound/voice/joe/strange.ogg'
+	haz_sound = 'sound/voice/joe/strange_haz.ogg'
 	say_message = "Strange."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/report_this
 	key = "reportthis"
@@ -133,4 +139,28 @@
 	key = "sawthat"
 	sound = 'sound/voice/joe/saw_that.ogg'
 	say_message = "I saw that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/clean_up
+	key = "cleanup"
+	sound = 'sound/voice/joe/clean_up.ogg'
+	say_message = "Clean up required."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/curious
+	key = "curious"
+	sound = 'sound/voice/joe/curious.ogg'
+	say_message = "Curious."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/not_a_toy
+	key = "notatoy"
+	sound = 'sound/voice/joe/not_a_toy.ogg'
+	say_message = "That's not a toy."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/made_a_mess
+	key = "madeamess"
+	sound = 'sound/voice/joe/made_a_mess.ogg'
+	say_message = "Somebodies made a mess."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

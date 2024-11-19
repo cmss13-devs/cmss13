@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Added sanity checks for whenever AREA_UNWEEDABLE is used or when an area is somehow null"
+  - balance: "All maps have their round start is_resin_allowed restriction lifted unless out of bounds"
+  - maptweak: "All maps with OOB areas have now AREA_UNWEEDABLE set to make the restriction permanent"
+  - bugfix: "Resin walls and doors will now properly get weed killed"

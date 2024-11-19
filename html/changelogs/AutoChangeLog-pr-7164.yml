@@ -1,0 +1,8 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added unique identifier to all fax machines."
+  - rscadd: "Added a new way to contact fax machines directly, titled Specific Machine Code in the select department setting."
+  - rscadd: "Added a Fax Responder role, broken down into subsidiary jobs for each faction. This is currently experimental in handling, and access is restricted."
+  - rscadd: "Fax Machines will tell you (when selecting a faction's High Command) if a Fax Responder is awake."
+  - code_imp: "Makes the Whitelist Panel use the correct permissions for Overseer."

@@ -27,8 +27,5 @@
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-
-/datum/action/xeno_action/onclick/tremor/use_ability()
-	var/mob/living/carbon/xenomorph/X = owner
-	X.tremor()
-	return ..()
+	xeno_cooldown = 45 SECONDS
+	plasma_cost = 100

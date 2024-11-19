@@ -52,12 +52,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, PROC_REF(override_delete))
 	update_icon()
 
-	if(!get_turf(src))
-		return
-
 	outring_loop = new(attached_to)
 	busy_loop = new(attached_to)
 	hangup_loop = new(attached_to)
+
+	if(!get_turf(src))
+		return
 
 	GLOB.transmitters += src
 

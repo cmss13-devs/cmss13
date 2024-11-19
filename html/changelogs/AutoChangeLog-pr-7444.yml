@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - imageadd: "tacmap icon for sensor tower (displayed to all factions)"

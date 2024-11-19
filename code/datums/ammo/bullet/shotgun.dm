@@ -24,7 +24,6 @@
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
-
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 6)
 

@@ -71,9 +71,8 @@
 			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', H, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
-		else
-			if(default_color)
-				rank_icon_image.color = "#e61919"
+		elseif(default_color)
+			rank_icon_image.color = "#e61919"
 		holder.overlays += rank_icon_image
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()

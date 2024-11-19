@@ -1,11 +1,11 @@
-GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 GLOBAL_LIST_INIT(donator_items, generate_donor_kits(FALSE))
-GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions(FALSE))
+GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 /proc/generate_donor_kits(assign_to_glob = TRUE)
 	. = list()
 
-	for(var/current_line in GLOB.custom_items)
+	var/list/custom_items = file2list("config/custom_items.txt")
+	for(var/current_line in custom_items)
 		if(!length(current_line)) //empty line
 			continue
 		if(copytext(current_line, 1, 2) == "#") //comment line
@@ -43,16 +43,13 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions(FALSE)
 
 	return .
 
-/proc/generate_random_possessions(assign_to_glob = TRUE)
+/proc/generate_random_possessions()
 	. = list()
 
 	for(var/datum/gear/current_gear as anything in subtypesof(/datum/gear))
 		if(!initial(current_gear.display_name))
 			continue
 		. += initial(current_gear.path)
-
-	if(assign_to_glob)
-		GLOB.random_personal_possessions = .
 
 	return .
 

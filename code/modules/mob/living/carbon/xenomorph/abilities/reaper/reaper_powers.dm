@@ -48,7 +48,7 @@
 /datum/action/xeno_action/activable/haul_corpse/proc/corpse_add(mob/living/corpse)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] stabs a wing-like back limb through the gaping hole on [corpse]'s chest."), \
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] stabs a wing-like back limb through the gaping hole on [corpse]'s chest, lifting them into the air."), \
 	SPAN_XENONOTICE("We hoist the corpse onto one of our back limbs for hauling."))
 	xeno.corpses_hauled.Add(corpse)
 	xeno.corpse_no += 1

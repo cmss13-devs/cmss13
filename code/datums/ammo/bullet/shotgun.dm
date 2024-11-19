@@ -7,7 +7,7 @@
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
-/datum/ammo/bullet/shotgun/setup_hvh_values()
+/datum/ammo/bullet/shotgun/setup_faction_clash_values()
 	. = ..()
 	accuracy = accuracy * 2 + 85 //we revert accuracy reduction that is applied on other bullets shotguns are accurate but already have short range only
 

@@ -14,7 +14,7 @@
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pistol/setup_hvh_values()
+/datum/ammo/bullet/pistol/setup_faction_clash_values()
 	.=..()
 	accuracy += 20
 	accurate_range -= 2 //we want pistols to be more accurate but only at short range

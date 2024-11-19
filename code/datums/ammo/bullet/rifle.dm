@@ -202,7 +202,7 @@
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_3
 
-/datum/ammo/bullet/rifle/type71/setup_hvh_values()
+/datum/ammo/bullet/rifle/type71/setup_faction_clash_values()
 	if(istype(src,/datum/ammo/bullet/rifle/type71/ap)||istype(src,/datum/ammo/bullet/rifle/type71/heap))
 		penetration = ARMOR_PENETRATION_TIER_6
 	else

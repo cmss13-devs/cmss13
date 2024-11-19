@@ -89,14 +89,8 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
-
-
 /datum/ammo/New()
 	set_bullet_traits()
-
-/datum/ammo/proc/setup_hvh_values()
-	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
-		setup_faction_clash_values()
 
 /datum/ammo/proc/setup_faction_clash_values()
 	accuracy = (accuracy - 85)/2
@@ -105,8 +99,6 @@
 
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
-
-
 
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()

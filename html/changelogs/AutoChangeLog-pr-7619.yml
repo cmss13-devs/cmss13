@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed xenos sometimes becoming immortal with warding pheros (xenos do not cap brute/fire damage now)"

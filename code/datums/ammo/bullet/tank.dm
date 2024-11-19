@@ -92,5 +92,5 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/tank/setup_faction_clash_values()
-	.=..()
+	. = ..()
 	damage = 15

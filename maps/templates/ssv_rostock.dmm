@@ -21394,7 +21394,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/engineering_lower_access)
 "qhx" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /obj/structure/closet/fireaxecabinet{
 	pixel_x = -32
 	},
@@ -26036,7 +26035,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
 "tUJ" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/obj/structure/machinery/cm_vending/clothing/synth/upp,
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "tUN" = (

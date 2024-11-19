@@ -85,7 +85,6 @@
 	name = "Shiva's Snowball - Fort Biceps Communications Relay"
 	icon_state = "hangars0"
 	minimap_color = MINIMAP_AREA_LZ
-	linked_lz = DROPSHIP_LZ1
 
 /area/shiva/interior/telecomm/lz1_flight
 	name = "Shiva's Snowball - LZ1 Aerodrome Communications Relay"
@@ -136,6 +135,7 @@
 /area/shiva/exterior/cp_colony_grounds
 	name = "Shiva's Snowball - Colony Grounds"
 	icon_state = "junkyard2"
+	unoviable_timer = FALSE
 
 /area/shiva/exterior/junkyard
 	name = "Shiva's Snowball - Junkyard"
@@ -148,10 +148,12 @@
 /area/shiva/exterior/junkyard/cp_bar
 	name = "Shiva's Snowball - Bar Grounds"
 	icon_state = "bar0"
+	unoviable_timer = FALSE
 
 /area/shiva/exterior/cp_s_research
 	name = "Shiva's Snowball - Research Hab Exterior"
 	icon_state = "junkyard1"
+	unoviable_timer = FALSE
 
 /area/shiva/exterior/cp_lz2
 	name = "Shiva's Snowball - North Colony Grounds"
@@ -236,11 +238,6 @@
 	icon_state = "res0"
 	unoviable_timer = FALSE
 
-/area/shiva/interior/colony/deck
-	name = "Shiva's Snowball - Colony MegaStruct(TM) Open Deck"
-	icon_state = "res1"
-	ceiling = CEILING_GLASS
-
 /area/shiva/interior/aerodrome
 	name = "Shiva's Snowball - Aerodrome"
 	icon_state = "hangars0"
@@ -266,23 +263,28 @@
 /area/shiva/interior/valley_huts
 	name = "Shiva's Snowball - Valley Bunker 1"
 	icon_state = "hangars1"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/valley_huts/no2
 	name = "Shiva's Snowball - Valley Bunker 2"
 	icon_state = "hangars2"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/valley_huts/disposals
 	name = "Shiva's Snowball - Valley Disposals"
 	icon_state = "hangars3"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/garage
 	name = "Shiva's Snowball - Cargo Tug Repair Station"
 	icon_state = "hangars2"
+	unoviable_timer = FALSE
 
 /area/shiva/interior/lz2_habs
 	name = "Shiva's Snowball - Argentinian Research Headquarters"
 	icon_state = "bar1"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/shiva/interior/aux_power
 	name = "Shiva's Snowball - Auxiliary Generator Station"

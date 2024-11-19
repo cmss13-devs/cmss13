@@ -656,6 +656,12 @@
 	item_state = "nailgun"
 	current_mag = /obj/item/ammo_magazine/smg/nailgun
 
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
+	)
+
 	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'

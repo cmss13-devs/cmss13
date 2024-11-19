@@ -34,7 +34,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/pixel_shift_x = 16 //Determines the amount of pixels to move the icon state for the overlay.
 	var/pixel_shift_y = 16 //Uses the bottom left corner of the item.
 
-	flags_atom =  FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1

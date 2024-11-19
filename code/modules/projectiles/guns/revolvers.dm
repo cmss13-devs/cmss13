@@ -5,6 +5,7 @@
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
 	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/revolvers.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_righthand.dmi'

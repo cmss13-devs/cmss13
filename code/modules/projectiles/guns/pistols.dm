@@ -772,7 +772,10 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "c70"
 	item_state = "c70"
-
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_righthand.dmi',
+		)
 	current_mag = /obj/item/ammo_magazine/pistol/chimp
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM
@@ -839,7 +842,11 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "skorpion"
 	item_state = "skorpion"
-
+	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smgs.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
+	)
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED

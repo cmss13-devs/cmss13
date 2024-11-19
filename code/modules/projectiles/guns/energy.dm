@@ -180,6 +180,7 @@
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
 	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
 	)

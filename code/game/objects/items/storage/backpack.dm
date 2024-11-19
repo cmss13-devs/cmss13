@@ -804,18 +804,23 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		if("jungle")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/snow.dmi'
 		if("urban")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/urban.dmi'
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)

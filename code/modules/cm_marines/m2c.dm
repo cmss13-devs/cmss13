@@ -17,8 +17,8 @@
 	caliber = "10x28mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
-	icon_state = "M2C"
-	item_state = "M2C"
+	icon_state = "m2c"
+	item_state = "m2c"
 	max_rounds = 125
 	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null

@@ -836,6 +836,13 @@
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals."
 	icon_state = "mar50"
 	item_state = "mar50"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'

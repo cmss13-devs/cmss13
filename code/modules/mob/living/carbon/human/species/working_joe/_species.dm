@@ -24,8 +24,13 @@
 
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	var/sound_to_play
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		playsound(dying_joe.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 75, 'sound/voice/joe/death_silence.ogg' = 10, 'sound/voice/joe/death_tomorrow.ogg' = 10,'sound/voice/joe/death_dream.ogg' = 5)), 25, FALSE)
+		if(src.name == SYNTH_WORKING_JOE)
+			sound_to_play = "wj_death"
+		if(src.name == SYNTH_HAZARD_JOE)
+			sound_to_play = "hj_death"
+		playsound(dying_joe.loc, sound_to_play, 25, FALSE)
 	return ..()
 
 /// Open the WJ's emote panel, which allows them to use voicelines

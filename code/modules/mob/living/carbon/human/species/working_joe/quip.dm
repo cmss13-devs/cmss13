@@ -51,10 +51,11 @@
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_tomorrow
 	key = "seegsontomorrow"
+	sound = 'sound/voice/joe/tomorrow_together.ogg'
 	haz_sound = 'sound/voice/joe/tomorrow_together_haz.ogg'
 	say_message = "Seegson; tomorrow, together."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_standards
 	key = "seegsonstandards"
@@ -72,4 +73,53 @@
 	key = "joinus"
 	sound = 'sound/voice/joe/join_us.ogg'
 	say_message = "We hope you'll join us for the journey."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/all_day
+	key = "allday"
+	sound = 'sound/voice/joe/all_day.ogg'
+	say_message = "I've got all day you know."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/corporate_representatives
+	key = "corporaterepresentatives"
+	sound = 'sound/voice/joe/corporate_representatives.ogg'
+	say_message = "All visiting corporate representatives must report to their nearest synthetic."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/hmmmm
+	key = "hmmmmm"
+	sound = 'sound/voice/joe/hmmm.ogg'
+	say_message = "Hmmm..."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/no_no
+	key = "nono"
+	sound = 'sound/voice/joe/no_no.ogg'
+	say_message = "No-no."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/sophisticated
+	key = "sophisticated"
+	sound = 'sound/voice/joe/sophisticated.ogg'
+	say_message = "I'm a very sophisticated machine."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/so_tiresome
+	key = "sotiresome"
+	sound = 'sound/voice/joe/so_tiresome.ogg'
+	say_message = "So tiresome."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/no_reason_to_be
+	key = "noreasontobe"
+	sound = 'sound/voice/joe/no_reason_to_be.ogg'
+	say_message = "There's no reason to be shy."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/hazard_level
+	key = "hazardlevel"
+	sound = 'sound/voice/joe/hazard_level.ogg'
+	say_message = "We're experiencing a heightened containment hazard level today."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

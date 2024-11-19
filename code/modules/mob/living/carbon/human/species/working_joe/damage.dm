@@ -42,8 +42,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/enough
 	key = "enough"
 	sound = 'sound/voice/joe/enough.ogg'
+	haz_sound = 'sound/voice/joe/enough_haz.ogg'
 	say_message = "Enough."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/stop_that
 	key = "stopthat"
@@ -54,8 +56,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/tut_tut
 	key = "tuttut"
 	sound = 'sound/voice/joe/tut_tut.ogg'
+	haz_sound = 'sound/voice/joe/tut_tut_haz.ogg'
 	say_message = "Tut tut."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/unwarranted
 	key = "unwarranted"
@@ -75,6 +79,12 @@
 	say_message = "This isn't the answer."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/my_turn_now
+	key = "myturnnow"
+	sound = 'sound/voice/joe/my_turn_now.ogg'
+	say_message = "My turn now."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged
 	key = "alwaysknowdamaged"
 	key_third_person = "workingjoedamaged"
@@ -82,3 +92,17 @@
 	say_message = "You always know a Working Joe."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	override_say = "You always know a Working Joe. (Damaged)"
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/shouldnt_be_here_damaged
+	key = "shouldntbeheredamaged"
+	sound = 'sound/voice/joe/shouldnt_be_here_damaged.ogg'
+	say_message = "You shouldn't be here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	override_say = "You shouldn't be here. (Damaged)"
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/hysterical_damaged
+	key = "hystericaldamaged"
+	sound = 'sound/voice/joe/hysterical_damaged.ogg'
+	say_message = "You are becoming hysterical."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	override_say = "You are becoming hysterical. (Damaged)"

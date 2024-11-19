@@ -10,8 +10,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
 	key = "gladweresolved"
 	sound = 'sound/voice/joe/glad_we_resolved.ogg'
+	haz_sound = 'sound/voice/joe/glad_we_resolved_haz.ogg'
 	say_message = "I'm glad we resolved this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
 	key = "pity"

@@ -18,8 +18,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_are_you
 	key = "howareyou"
 	sound = 'sound/voice/joe/how_are_you.ogg'
+	sound = 'sound/voice/joe/how_are_you_haz.ogg'
 	say_message = "How are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help
 	key = "howcanihelp"
@@ -32,14 +34,18 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/need_to_know
 	key = "needtoknow"
 	sound = 'sound/voice/joe/what_do_you_need.ogg'
+	haz_sound = 'sound/voice/joe/what_do_you_need_haz.ogg'
 	say_message = "What do you need to know today?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/had_the_pleasure
 	key = "pleasure"
 	sound = 'sound/voice/joe/had_the_pleasure.ogg'
+	haz_sound = 'sound/voice/joe/had_the_pleasure_haz.ogg'
 	say_message = "I don't believe I've had the pleasure."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/anybody_there
 	key = "anybodythere"
@@ -50,11 +56,25 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/still_here
 	key = "stillhere"
 	sound = 'sound/voice/joe/still_here.ogg'
+	haz_sound = 'sound/voice/joe/still_here_haz.ogg'
 	say_message = "Ah, you're still here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/been_looking_for_you
 	key = "beenlooking"
 	sound = 'sound/voice/joe/been_looking_for_you.ogg'
 	say_message = "I've been looking for you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/speak_to_you
+	key = "speaktoyou"
+	sound = 'sound/voice/joe/speak_to_you.ogg'
+	say_message = "I need to speak to you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/found_you
+	key = "foundyou"
+	sound = 'sound/voice/joe/found_you.ogg'
+	say_message = "Found you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

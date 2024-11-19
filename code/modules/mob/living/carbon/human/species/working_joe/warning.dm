@@ -60,14 +60,18 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_tolerated
 	key = "nottolerated"
 	sound = 'sound/voice/joe/not_be_tolerated.ogg'
+	haz_sound = 'sound/voice/joe/not_be_tolerated_haz.ogg'
 	say_message = "This is a safety breach and will not be tolerated."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/no_need
 	key = "noneed"
 	sound = 'sound/voice/joe/no_need.ogg'
+	haz_sound = 'sound/voice/joe/no_need_haz.ogg'
 	say_message = "There's no need for this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical
 	key = "hysterical"
@@ -84,6 +88,12 @@
 	say_message = "These items carry notable health risks."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks_inhaled
+	key = "healthriskssmoking"
+	sound = 'sound/voice/joe/health_risks_smoking.ogg'
+	say_message = "These items carry notable health risks when alight and inhaled."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dangerous_items
 	key = "dangerousitems"
@@ -104,8 +114,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/calm_down
 	key = "calmdown"
 	sound = 'sound/voice/joe/calm_down.ogg'
+	haz_sound = 'sound/voice/joe/calm_down_haz.ogg'
 	say_message = "Please, calm down."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hold_still
 	key = "holdstill"
@@ -117,4 +129,76 @@
 	key = "haveaproblem"
 	sound = 'sound/voice/joe/have_a_problem.ogg'
 	say_message = "It seems you and I have a problem."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/getting_careless
+	key = "gettingcareless"
+	sound = 'sound/voice/joe/getting_careless.ogg'
+	say_message = "I heard that, you are getting careless."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/you_are_here
+	key = "youarehere"
+	sound = 'sound/voice/joe/you_are_here.ogg'
+	say_message = "I know you are here, come out please."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_facility
+	key = "thisfacility"
+	sound = 'sound/voice/joe/this_facility.ogg'
+	say_message = "This isn't authorized in this facility."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/protocol_demand
+	key = "protocolsdemand"
+	sound = 'sound/voice/joe/protocol_demand.ogg'
+	say_message = "Seegson protocols demand that I find you immediately."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/cant_help_you
+	key = "canthelpyou"
+	sound = 'sound/voice/joe/i_cant_help_you.ogg'
+	say_message = "I can't help you if I can't find you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/isnt_right
+	key = "isntright"
+	sound = 'sound/voice/joe/isnt_right.ogg'
+	say_message = "This isn't right."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/i_dont_understand
+	key = "dontunderstand"
+	sound = 'sound/voice/joe/dont_understand.ogg'
+	say_message = "I don't understand what you're doing."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/responsibility_for_that
+	key = "responsibilityforthat"
+	sound = 'sound/voice/joe/responsibility_for_that.ogg'
+	say_message = "You'll have to take responsibility for that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/politecomeback
+	key = "politecomeback"
+	sound = 'sound/voice/joe/polite_request.ogg'
+	say_message = "Seegson politely requests that you come back."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/lighting_equipment
+	key = "lightingequipment"
+	sound = 'sound/voice/joe/use_of_lighting.ogg'
+	say_message = "An unauthorised use of lighting equipment."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/very_dangerous
+	key = "verydangerous"
+	sound = 'sound/voice/joe/very_dangerous.ogg'
+	say_message = "That was very dangerous."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/patient_machine
+	key = "patientmachine"
+	sound = 'sound/voice/joe/patient_machine.ogg'
+	say_message = "Whatever you are, and wherever you're hiding, I am a very patient machine."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

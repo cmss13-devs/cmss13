@@ -125,6 +125,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_upp_dress_commander, list(
 		list("Officer Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/officer, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
 		list("Soldier Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
 
+		list("Overgarments", 0, null, null, null),
+		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
+
 		list("Headwear", 0, null, null, null),
 		list("UL3 beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
 		list("UL3 peaked cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),

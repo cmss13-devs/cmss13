@@ -1,6 +1,5 @@
 /datum/action/xeno_action/activable/haul_corpse
 	name = "Haul Corpse"
-	ability_name = "haul corpse"
 	action_icon_state = "flesh_harvest"
 	macro_path = /datum/action/xeno_action/verb/verb_haul_corpse
 	action_type = XENO_ACTION_CLICK
@@ -9,7 +8,6 @@
 
 /datum/action/xeno_action/activable/flesh_harvest
 	name = "Flesh Harvest"
-	ability_name = "flesh harvest"
 	action_icon_state = "flesh_harvest"
 	macro_path = /datum/action/xeno_action/verb/verb_flesh_harvest
 	action_type = XENO_ACTION_CLICK
@@ -20,7 +18,6 @@
 
 /datum/action/xeno_action/activable/reap
 	name = "Reap"
-	ability_name = "reap"
 	action_icon_state = "claw_strike"
 	macro_path = /datum/action/xeno_action/verb/verb_reap
 	action_type = XENO_ACTION_CLICK
@@ -32,7 +29,6 @@
 
 /datum/action/xeno_action/onclick/emit_mist
 	name = "Emit Mist"
-	ability_name = "Emit Mist"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_mist
 	action_type = XENO_ACTION_CLICK

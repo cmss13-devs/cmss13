@@ -644,7 +644,6 @@
 	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))
 	#endif
 
-
 	return effective_accuracy
 
 //objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance

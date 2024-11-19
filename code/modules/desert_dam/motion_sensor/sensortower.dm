@@ -28,7 +28,7 @@
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
 
 
 /obj/structure/machinery/sensortower/update_icon()

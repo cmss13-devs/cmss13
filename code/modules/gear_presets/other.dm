@@ -34,7 +34,7 @@
 
 /datum/equipment_preset/other/loyalist/load_status(mob/living/carbon/human/new_human)
 	. = ..()
-	new_human.mob_flags |= MUTINEER
+	new_human.mob_flags |= LOYALIST
 	new_human.hud_set_squad()
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist!"))
@@ -45,7 +45,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/loyalist/leader/load_status(mob/living/carbon/human/new_human)
-	new_human.mob_flags |= MUTINEER
+	new_human.mob_flags |= LOYALIST
 	new_human.hud_set_squad()
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist Leader!"))

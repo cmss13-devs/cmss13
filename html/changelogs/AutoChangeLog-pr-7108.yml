@@ -1,0 +1,8 @@
+author: "BOBAMA"
+delete-after: True
+changes:
+  - rscadd: "Added a new corporate version of the M-39."
+  - rscadd: "Added new PMC TL to the Big Red nightmare insert."
+  - rscadd: "corporate M-39, Mk221, and corporate FP9000 to PMC survivor weapon pool to replace the MAR, FP9000, CMB shotgun, custom shotgun, and MP5."
+  - mapadd: "Changed the PMC Big Red nightmare insert to now have supplies in the second crashed dropship near EVA."
+  - maptweak: "Changed standard M-39 gun lockers in Eta Labs to the new corporate version."

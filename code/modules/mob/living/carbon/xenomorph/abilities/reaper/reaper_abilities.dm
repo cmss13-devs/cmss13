@@ -16,18 +16,18 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 1 SECONDS
 	var/harvest_gain = 30
+	var/affect_living = FALSE // Option to let it be used on living if staff want it to for an event
 
-/datum/action/xeno_action/activable/rapture
-	name = "Rapture"
-	ability_name = "rapture"
+/datum/action/xeno_action/activable/reap
+	name = "Reap"
+	ability_name = "reap"
 	action_icon_state = "claw_strike"
-	macro_path = /datum/action/xeno_action/verb/verb_rapture
+	macro_path = /datum/action/xeno_action/verb/verb_reap
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 15 SECONDS
+	xeno_cooldown = 12 SECONDS
 	plasma_cost = 50
-	var/normal_range = 2
-	var/max_range = 4
+	var/range = 2
 	var/toxin_amount = 1
 
 /datum/action/xeno_action/onclick/emit_mist

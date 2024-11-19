@@ -54,6 +54,7 @@
 /mob/living/carbon/human/Destroy()
 	SSround_recording.recorder.stop_tracking(src)
 	remove_from_all_mob_huds()
+	despawn_fax_responder()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src

@@ -5,7 +5,6 @@
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
-	var/datum/squad/squad = H.assigned_squad
 	var/_role
 	if(H.mind)
 		_role = H.job

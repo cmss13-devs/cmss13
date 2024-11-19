@@ -215,7 +215,7 @@
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
-				src.get_pulse(GETPULSE_HAND) // to update it
+				get_pulse(GETPULSE_HAND) // to update it
 				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
 					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else

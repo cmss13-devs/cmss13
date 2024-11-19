@@ -258,7 +258,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-			//FAX RESPONDER INITIATLIZE\\
+			//FAX RESPONDER INITIALIZE\\
 
 //===================================================\\
 
@@ -320,8 +320,6 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_fax_responder(mob/responder_candidate, sub_job)
-	//set waitfor = FALSE
-
 	if(!(sub_job in FAX_RESPONDER_JOB_LIST))
 		return FALSE
 

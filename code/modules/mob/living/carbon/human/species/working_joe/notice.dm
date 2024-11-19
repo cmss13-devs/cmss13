@@ -162,5 +162,5 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/made_a_mess
 	key = "madeamess"
 	sound = 'sound/voice/joe/made_a_mess.ogg'
-	say_message = "Somebodies made a mess."
+	say_message = "Somebody's made a mess."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

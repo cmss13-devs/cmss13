@@ -291,7 +291,8 @@
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
-	EquipCustomItems(character)
+	if(character.ckey in GLOB.donator_items)
+		to_chat(character, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 	if((GLOB.security_level > SEC_LEVEL_BLUE || SShijack.hijack_status) && player_rank.gets_emergency_kit)
 		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[SShijack.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))

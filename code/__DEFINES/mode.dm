@@ -75,6 +75,7 @@
 #define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
 #define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
 #define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
+#define MODE_LZ_HAZARD_ACTIVATED (1<<15) // Distress Signal: Spawns miasma 3 minutes after round start
 
 
 #define ROUNDSTATUS_FOG_DOWN 1

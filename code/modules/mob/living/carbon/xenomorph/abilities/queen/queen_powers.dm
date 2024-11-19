@@ -672,8 +672,8 @@
 		return
 
 	var/area/AR = get_area(T)
-	if(!AR.is_resin_allowed)
-		if(AR.flags_area & AREA_UNWEEDABLE)
+	if(isnull(AR) || !AR.is_resin_allowed)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))

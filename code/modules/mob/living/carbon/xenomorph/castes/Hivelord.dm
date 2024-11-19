@@ -15,8 +15,7 @@
 
 	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
-	evolution_allowed = TRUE
-	evolves_to = list(XENO_CASTE_REAPER)
+	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1

@@ -344,7 +344,7 @@
 "pq" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/reinforced/prison{
-	dir = 4;
+	dir = 1;
 	flipped = 1
 	},
 /turf/open/floor/prison{
@@ -448,7 +448,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "ud" = (
 /obj/structure/surface/table/reinforced/prison{
-	dir = 4;
+	dir = 1;
 	flipped = 1
 	},
 /turf/open/floor/prison{
@@ -510,6 +510,12 @@
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/highsec/n)
+"xg" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor{
+	icon_state = "hydrofloor"
+	},
+/area/prison/hallway/central/west)
 "xx" = (
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/surface/table/reinforced/prison,
@@ -789,8 +795,8 @@
 	},
 /area/prison/hallway/central/west)
 "OE" = (
-/obj/item/phone,
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "hydrofloor"
 	},
@@ -818,7 +824,7 @@
 /obj/effect/landmark/item_pool_spawner/prison_lock,
 /obj/item/ammo_casing,
 /obj/structure/surface/table/reinforced/prison{
-	dir = 4;
+	dir = 1;
 	flipped = 1
 	},
 /turf/open/floor/prison{
@@ -1203,7 +1209,7 @@ wF
 iG
 OE
 OE
-OE
+xg
 OE
 yX
 "}

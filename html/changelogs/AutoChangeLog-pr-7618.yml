@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - bugfix: "SOF Encryption Keys now properly give you SOF comms."

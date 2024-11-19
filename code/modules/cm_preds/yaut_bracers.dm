@@ -52,8 +52,7 @@
 	. = ..()
 	if(slot == WEAR_HANDS)
 		START_PROCESSING(SSobj, src)
-		if(!owner)
-			owner = user
+		owner = user
 		if(isyautja(owner))
 			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
 		toggle_lock_internal(user, TRUE)
@@ -62,12 +61,14 @@
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	owner = null
 	if(linked_bracer)
 		linked_bracer.linked_bracer = null
 		linked_bracer = null
 	return ..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
+	owner = null
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
 	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
@@ -301,7 +302,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
-	charge = max(charge - (severity * 500), 0)
+	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higer severity so we divide
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
@@ -342,6 +343,8 @@
 /obj/item/clothing/gloves/yautja/hunter/Destroy()
 	QDEL_NULL(caster)
 	QDEL_NULL(embedded_id)
+	QDEL_NULL(left_bracer_attachment)
+	QDEL_NULL(right_bracer_attachment)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/process()
@@ -490,6 +493,10 @@
 
 		if(selected == "Right") //its right, left because in-game itll show up as left, right
 			attach_to_left = FALSE
+
+	if(attacking_item.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot attach [attacking_item] without holding it."))
+		return
 
 	var/bracer_attached = FALSE
 	if(attach_to_left && !left_bracer_attachment)
@@ -861,10 +868,10 @@
 /obj/item/clothing/gloves/yautja/hunter/proc/explode(mob/living/carbon/victim)
 	set waitfor = 0
 
-	if (exploding)
+	if(exploding)
 		return
 
-	notify_ghosts(header = "Yautja self destruct", message = "[victim] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
+	notify_ghosts(header = "Yautja self destruct", message = "[victim.real_name] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
 
 	exploding = 1
 	var/turf/T = get_turf(src)

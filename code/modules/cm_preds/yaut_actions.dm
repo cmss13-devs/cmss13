@@ -15,6 +15,12 @@
 	///If the action is currently on or in use
 	var/active = FALSE
 
+/datum/action/predator_action/remove_from(mob/user)
+	yautja = null
+	bracers = null
+	mask = null
+	. = ..()
+
 /datum/action/predator_action/can_use_action()
 	. = ..()
 	if(!.)
@@ -25,7 +31,7 @@
 	mask = null
 
 	var/mob/living/carbon/human/mob = owner
-	if(!isyautja(mob))
+	if(!ishuman(mob))
 		return FALSE
 	if(mob.is_mob_incapacitated())
 		return FALSE
@@ -268,7 +274,7 @@
 /datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "YautjaEmotes")
+		ui = new(user, src, "Emotes", "Yautja Audio Panel")
 		ui.open()
 
 /datum/yautja_emote_panel/ui_data(mob/user)
@@ -285,6 +291,7 @@
 	var/list/data = list()
 
 	data["categories"] = yautja_categories
+	data["theme"] = "crtgreen"
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)

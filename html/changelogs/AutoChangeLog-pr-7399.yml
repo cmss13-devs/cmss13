@@ -1,6 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "you can no longer see or talk with a hugger on your face"
-  - bugfix: "welding protection now adds correct amount of vision impairment"
-  - bugfix: "blindfold now actually blinds"

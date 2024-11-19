@@ -182,11 +182,18 @@
 	if(severity == 2)
 		probability = 1
 		damage = 3
-	if(prob(probability))
+	if(can_emp_delimb() && prob(probability))
 		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
+		for(var/datum/internal_organ/internal_organ in internal_organs)
+			if(internal_organ.robotic == FALSE)
+				continue
+			internal_organ.emp_act(severity)
 
+/// If this limb can be dropped as a result of an EMP
+/obj/limb/proc/can_emp_delimb()
+	return TRUE
 
 /obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
@@ -1313,6 +1320,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
 
+/obj/limb/groin/can_emp_delimb()
+	if(status & (LIMB_ROBOT | LIMB_SYNTHSKIN))
+		return FALSE
+
+	return TRUE
+
 /obj/limb/leg
 	name = "leg"
 	display_name = "leg"
@@ -1450,6 +1463,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -BODYPARTS_LAYER)
 	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
 	. += eyes
+
+	if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
+		. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
 
 	if(lip_style && (species && species.flags & HAS_LIPS))
 		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)

@@ -49,6 +49,7 @@
 	var/list/data = list()
 
 	var/list/humans = list()
+	var/list/responders = list()
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
@@ -182,6 +183,8 @@
 					marines += list(serialized)
 				else if(issurvivorjob(human.job))
 					survivors += list(serialized)
+				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
 				else
 					humans += list(serialized)
 				continue
@@ -197,6 +200,7 @@
 	data["clf"] = clf
 	data["wy"] = wy
 	data["twe"] = twe
+	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor
 	data["mercenary"] = mercenary

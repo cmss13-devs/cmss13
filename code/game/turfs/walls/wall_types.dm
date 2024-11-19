@@ -770,6 +770,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
+	if(!hull)
+		var/area/area = get_area(src)
+		if(area && area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))

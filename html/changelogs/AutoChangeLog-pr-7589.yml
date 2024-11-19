@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "changes UPP rifleman, medic,engi and squad leader skills to be the same as USCM coutnerparts for HvH events"
+  - bugfix: "UPP CO and synth whitelists work on lobby joning"

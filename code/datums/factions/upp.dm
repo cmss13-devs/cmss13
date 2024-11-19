@@ -7,6 +7,7 @@
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/datum/squad/squad = H.assigned_squad
 	var/_role
+	var/default_color = FALSE //so squad units get red icons as survs and ERTs
 	if(H.mind)
 		_role = H.job
 	else if(ID)
@@ -14,12 +15,16 @@
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"
+			default_color = TRUE
 		if(JOB_UPP_ENGI)
 			hud_icon_state = "sapper"
+			default_color = TRUE
 		if(JOB_UPP_SPECIALIST)
 			hud_icon_state = "spec"
+			default_color = TRUE
 		if(JOB_UPP_LEADER)
 			hud_icon_state = "sl"
+			default_color = TRUE
 		if(JOB_UPP_POLICE)
 			hud_icon_state = "mp"
 		if(JOB_UPP_LT_OFFICER)
@@ -67,7 +72,8 @@
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else
-			rank_icon_image.color = "#e61919"
+			if(default_color)
+				rank_icon_image.color = "#e61919"
 		holder.overlays += rank_icon_image
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()

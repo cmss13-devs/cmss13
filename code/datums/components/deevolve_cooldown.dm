@@ -6,7 +6,7 @@
 /datum/component/deevolve_cooldown
 	/// The xeno that we are bound to
 	var/mob/living/carbon/xenomorph/parent_xeno
-	/// Assoc list of path to timerid of recent de-evolves this xeno has performed that are still on cooldown
+	/// Assoc list of caste define to timerid of recent de-evolves this xeno has performed that are still on cooldown
 	var/list/deevolves_on_cooldown = list()
 
 /datum/component/deevolve_cooldown/Initialize(mob/living/carbon/xenomorph/old_xeno)

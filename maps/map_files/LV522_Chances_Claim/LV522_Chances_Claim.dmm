@@ -16,6 +16,13 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/admin)
+"aaM" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "aaX" = (
 /obj/item/reagent_container/spray/cleaner/drone{
 	pixel_x = -3;
@@ -910,6 +917,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "aFN" = (
@@ -1696,6 +1704,7 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "bei" = (
 /obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement14,
 /area/lv522/landing_zone_1)
 "bel" = (
@@ -1741,6 +1750,13 @@
 "beB" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/corpo/glass)
+"beC" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "beD" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2036,6 +2052,13 @@
 	icon_state = "18"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"bqn" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "bqo" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 5
@@ -2186,6 +2209,10 @@
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/c_block/t_comm)
+"bwI" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/landing_zone_1)
 "bwU" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/corsat,
@@ -2490,6 +2517,7 @@
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement,
 /area/lv522/landing_zone_1)
 "bHg" = (
@@ -2686,6 +2714,7 @@
 "bLK" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/ceiling)
 "bLV" = (
@@ -4259,6 +4288,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/landing_zone_1)
 "cIe" = (
@@ -5025,6 +5055,7 @@
 /area/lv522/atmos/cargo_intake)
 "das" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "daz" = (
@@ -5677,6 +5708,11 @@
 /obj/item/storage/belt/gun/m44/custom,
 /turf/open/floor/corsat/brown/west,
 /area/lv522/oob/w_y_vault)
+"dom" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "doq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -7463,6 +7499,7 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "eiY" = (
@@ -7829,6 +7866,12 @@
 "etx" = (
 /turf/open/gm/river,
 /area/lv522/indoors/a_block/kitchen/damage)
+"etD" = (
+/obj/structure/cargo_container/kelland/right,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "etZ" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river,
@@ -7899,6 +7942,7 @@
 /obj/structure/machinery/power/apc/power/west{
 	start_charge = 20
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "evu" = (
@@ -7988,6 +8032,7 @@
 /area/lv522/indoors/c_block/garage)
 "eyy" = (
 /obj/structure/machinery/landinglight/ds1,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "eyM" = (
@@ -8159,6 +8204,7 @@
 /area/lv522/indoors/a_block/security)
 "eDh" = (
 /obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "eDi" = (
@@ -8241,6 +8287,13 @@
 	},
 /turf/open/floor/corsat/browncorner/west,
 /area/lv522/atmos/cargo_intake)
+"eGM" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "eGQ" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -8297,6 +8350,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/south)
+"eIa" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/landing_zone_1)
 "eIk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -8852,6 +8909,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
+"fan" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "faJ" = (
 /obj/item/trash/uscm_mre{
 	pixel_x = 12;
@@ -9610,6 +9674,11 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
+"fxz" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "fxH" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -9729,6 +9798,7 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "fBL" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
 "fBR" = (
@@ -9800,6 +9870,7 @@
 	pixel_x = 5;
 	registered_name = "John Forklift"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "fEF" = (
@@ -9998,6 +10069,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "fLM" = (
@@ -10235,6 +10307,7 @@
 /area/lv522/atmos/filt)
 "fSo" = (
 /obj/structure/machinery/landinglight/ds1,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
 "fSq" = (
@@ -10499,6 +10572,7 @@
 /area/lv522/outdoors/colony_streets/containers)
 "gag" = (
 /obj/structure/platform/metal/almayer/east,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/landing_zone_1)
 "gat" = (
@@ -10796,6 +10870,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/hallway)
 "ggS" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "ggZ" = (
@@ -11299,6 +11374,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "gwH" = (
@@ -11541,6 +11617,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "gDz" = (
@@ -11990,6 +12067,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "gRi" = (
@@ -12319,6 +12397,7 @@
 /area/lv522/indoors/b_block/bridge)
 "haf" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "hag" = (
@@ -13519,6 +13598,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/landing_zone_1)
 "hJQ" = (
@@ -13915,6 +13995,10 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/cargo)
+"hTB" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "hTI" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -13923,6 +14007,7 @@
 /area/lv522/atmos/east_reactor/south)
 "hTW" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "hTX" = (
@@ -14564,6 +14649,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen/blue/clicky,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "inA" = (
@@ -14991,6 +15077,13 @@
 /obj/item/prop/colony/canister,
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
+"iza" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1)
 "izb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -15196,6 +15289,7 @@
 /area/lv522/landing_zone_2)
 "iGt" = (
 /obj/structure/platform/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement,
 /area/lv522/landing_zone_1)
 "iGy" = (
@@ -15619,6 +15713,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "iSF" = (
@@ -17568,6 +17663,7 @@
 "jQC" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/disposal,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "jRc" = (
@@ -17877,6 +17973,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "jZc" = (
@@ -17894,6 +17991,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/hallway)
 "jZD" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/landing_zone_1)
 "jZI" = (
@@ -17941,6 +18039,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
+"kbl" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "kbn" = (
 /obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison/blue_plate,
@@ -19110,6 +19215,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "kCt" = (
 /obj/structure/platform/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "kCv" = (
@@ -19595,6 +19701,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "kPO" = (
@@ -19685,6 +19792,7 @@
 /area/lv522/atmos/reactor_garage)
 "kRM" = (
 /obj/structure/platform/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement4,
 /area/lv522/landing_zone_1)
 "kRQ" = (
@@ -21264,6 +21372,7 @@
 /area/lv522/atmos/way_in_command_centre)
 "lJq" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_1)
 "lJC" = (
@@ -21277,6 +21386,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen/blue/clicky,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "lKi" = (
@@ -22353,6 +22463,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "moI" = (
@@ -22367,6 +22478,7 @@
 	pixel_x = 8;
 	pixel_y = 20
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "moO" = (
@@ -22401,6 +22513,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue,
 /area/lv522/indoors/a_block/admin)
+"mpv" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "mpF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -22643,6 +22760,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "muP" = (
@@ -22666,6 +22784,7 @@
 /area/lv522/indoors/a_block/security)
 "mvP" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "mwf" = (
@@ -22733,6 +22852,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"mxq" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "mxt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22747,6 +22873,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "mxO" = (
@@ -22799,6 +22926,7 @@
 	dir = 8;
 	pixel_y = 5
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "myZ" = (
@@ -22811,6 +22939,7 @@
 /obj/item/device/flashlight/lamp{
 	pixel_x = 6
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "mzi" = (
@@ -23007,6 +23136,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "mFD" = (
@@ -23331,6 +23461,7 @@
 /obj/item/device/flashlight/lamp{
 	pixel_x = -8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "mOh" = (
@@ -23403,6 +23534,7 @@
 	name = "remote door-control";
 	pixel_y = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "mOQ" = (
@@ -23716,6 +23848,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
+"mYe" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "mYo" = (
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/way_in_command_centre)
@@ -23844,6 +23983,7 @@
 /area/lv522/indoors/a_block/hallway)
 "naS" = (
 /obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "nbg" = (
@@ -24164,6 +24304,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "niA" = (
 /obj/structure/largecrate/random/barrel/green,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/landing_zone_1)
 "niE" = (
@@ -24351,6 +24492,7 @@
 	pixel_y = -8
 	},
 /obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "nnz" = (
@@ -24373,6 +24515,7 @@
 /obj/item/weapon/twohanded/folded_metal_chair,
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "noD" = (
@@ -24593,6 +24736,7 @@
 	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "nsv" = (
@@ -24728,6 +24872,7 @@
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement,
 /area/lv522/landing_zone_1)
 "nxF" = (
@@ -24955,6 +25100,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/containers)
 "nEq" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "nEX" = (
@@ -25022,6 +25168,7 @@
 /area/lv522/indoors/a_block/admin)
 "nGJ" = (
 /obj/structure/cargo_container/kelland/right,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_1)
 "nGO" = (
@@ -25204,6 +25351,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "nMc" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_1)
 "nMd" = (
@@ -25312,6 +25460,10 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
+"nNP" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1)
 "nNR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -26217,6 +26369,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
 "oiY" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement14,
 /area/lv522/landing_zone_1)
 "oiZ" = (
@@ -26230,6 +26383,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "ojn" = (
@@ -26353,6 +26507,7 @@
 	pixel_x = 9;
 	pixel_y = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "omT" = (
@@ -26751,6 +26906,7 @@
 /area/lv522/indoors/a_block/dorms)
 "oyY" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "ozk" = (
@@ -27336,6 +27492,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "oPW" = (
@@ -27406,6 +27563,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "oRU" = (
@@ -27493,6 +27651,11 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_2)
+"oTM" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "oTY" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/organic/grass,
@@ -27531,6 +27694,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "oVL" = (
@@ -27759,6 +27923,7 @@
 /area/lv522/indoors/a_block/dorms)
 "pdx" = (
 /obj/structure/platform_decoration/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement2,
 /area/lv522/landing_zone_1)
 "pdB" = (
@@ -27794,6 +27959,7 @@
 /area/lv522/indoors/a_block/hallway)
 "pez" = (
 /obj/structure/cargo_container/horizontal/blue/top,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "peS" = (
@@ -28011,6 +28177,10 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"pkg" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "pkB" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "9"
@@ -28076,6 +28246,10 @@
 /obj/structure/prop/invuln/ice_prefab,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"pnV" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "poD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -28100,6 +28274,7 @@
 	},
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer/west,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/ceiling)
 "poZ" = (
@@ -28177,6 +28352,13 @@
 /obj/item/tool/pen/blue/clicky,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
+"pqH" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1)
 "pqI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/soap{
@@ -28654,6 +28836,7 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "pFw" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "pFH" = (
@@ -29050,6 +29233,7 @@
 	start_charge = 20
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "pQN" = (
@@ -29231,6 +29415,11 @@
 "pUv" = (
 /turf/open/asphalt/cement/cement9,
 /area/lv522/outdoors/colony_streets/central_streets)
+"pUV" = (
+/obj/structure/cargo_container/kelland/left,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "pVb" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/floor_plate,
@@ -29429,7 +29618,13 @@
 /area/lv522/landing_zone_1/tunnel/far)
 "qbf" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
+"qbl" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
 "qbB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29519,6 +29714,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "qcO" = (
 /obj/structure/machinery/photocopier,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
 "qda" = (
@@ -29750,6 +29946,11 @@
 	},
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/south_street)
+"qjN" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/strata_outpost,
+/area/lv522/landing_zone_1/ceiling)
 "qjO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -29964,6 +30165,7 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "qpc" = (
@@ -30613,6 +30815,7 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "qDL" = (
@@ -32334,6 +32537,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "rnT" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/landing_zone_1)
 "rod" = (
@@ -32791,6 +32995,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "ryu" = (
@@ -32845,6 +33050,7 @@
 /area/lv522/oob)
 "rzz" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "rzG" = (
@@ -33123,6 +33329,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "rIZ" = (
@@ -33559,6 +33766,7 @@
 /area/lv522/indoors/a_block/admin)
 "rSh" = (
 /obj/structure/largecrate/random/barrel/white,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "rSs" = (
@@ -34110,6 +34318,7 @@
 /obj/item/key/cargo_train{
 	icon_state = "keys"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "sje" = (
@@ -34728,6 +34937,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "syW" = (
@@ -34804,6 +35014,13 @@
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
+"sAC" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "sAT" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -35051,6 +35268,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "sIK" = (
@@ -35297,6 +35515,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "sNk" = (
@@ -35595,6 +35814,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "sSW" = (
@@ -35980,6 +36200,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/landing_zone_1)
 "tfg" = (
@@ -35989,6 +36210,7 @@
 "tfl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/railgun_camera_pos,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "tfO" = (
@@ -36255,6 +36477,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tmX" = (
@@ -36370,6 +36593,13 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
+"tpj" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "tpl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -36543,6 +36773,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "tue" = (
@@ -36954,6 +37185,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
 "tFx" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_1/ceiling)
 "tFB" = (
@@ -37188,6 +37420,7 @@
 /area/lv522/atmos/cargo_intake)
 "tKS" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "tLf" = (
@@ -37276,6 +37509,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "tMq" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement2,
 /area/lv522/landing_zone_1)
 "tMD" = (
@@ -37463,6 +37697,7 @@
 	pixel_y = 4
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tSb" = (
@@ -37588,6 +37823,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
 /obj/item/reagent_container/food/snacks/mushroompizzaslice,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tUL" = (
@@ -37605,6 +37841,7 @@
 /area/lv522/indoors/a_block/dorms)
 "tVj" = (
 /obj/structure/largecrate/random/barrel/white,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "tVv" = (
@@ -37720,6 +37957,7 @@
 	},
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "tXW" = (
@@ -38046,6 +38284,7 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "ufU" = (
@@ -38344,6 +38583,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "uok" = (
@@ -38354,10 +38594,12 @@
 /area/lv522/atmos/east_reactor/south)
 "uol" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "uom" = (
 /obj/structure/machinery/disposal,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "uoA" = (
@@ -38395,6 +38637,7 @@
 	pixel_x = 6;
 	pixel_y = 16
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "upr" = (
@@ -38417,6 +38660,7 @@
 /area/lv522/indoors/b_block/hydro)
 "upX" = (
 /obj/structure/machinery/disposal,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "upZ" = (
@@ -38574,6 +38818,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "utq" = (
@@ -38603,6 +38848,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "uue" = (
@@ -39521,6 +39767,7 @@
 /area/lv522/indoors/c_block/cargo)
 "uPo" = (
 /obj/structure/largecrate/guns/russian,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "uPv" = (
@@ -39941,6 +40188,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vbu" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "vbF" = (
@@ -40319,6 +40567,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "vjC" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/ceiling)
 "vjF" = (
@@ -40661,6 +40910,7 @@
 /area/lv522/indoors/c_block/mining)
 "vso" = (
 /obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "vss" = (
@@ -40713,6 +40963,7 @@
 /turf/open/floor/prison/kitchen,
 /area/lv522/indoors/a_block/kitchen)
 "vtN" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement/cement4,
 /area/lv522/landing_zone_1)
 "vtP" = (
@@ -40739,10 +40990,12 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "vuH" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "vuL" = (
@@ -40963,6 +41216,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
 "vAW" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "vAX" = (
@@ -41068,6 +41322,7 @@
 	pixel_y = 19;
 	serial_number = 16
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "vCG" = (
@@ -41208,6 +41463,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vGo" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/asphalt/cement,
 /area/lv522/landing_zone_1)
 "vGp" = (
@@ -41225,6 +41481,13 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
+"vGL" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1)
 "vGP" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
@@ -41417,6 +41680,11 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/casino)
+"vKs" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "vKA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/under/redpyjamas,
@@ -41585,6 +41853,7 @@
 	id = "LZ1_Lockdown_Lo";
 	name = "Emergency Lockdown"
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "vNY" = (
@@ -41785,6 +42054,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "vTT" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "vTW" = (
@@ -41847,6 +42117,7 @@
 /area/lv522/indoors/a_block/admin)
 "vUX" = (
 /obj/structure/powerloader_wreckage/ft,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "vVd" = (
@@ -41870,6 +42141,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "vVi" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "vVp" = (
@@ -42043,6 +42315,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vZv" = (
 /obj/structure/cargo_container/kelland/left,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "vZy" = (
@@ -42224,6 +42497,7 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "wdI" = (
 /obj/structure/cargo_container/kelland/right,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "wee" = (
@@ -42562,6 +42836,7 @@
 /area/lv522/indoors/c_block/cargo)
 "wlY" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1/ceiling)
 "wmk" = (
@@ -42611,6 +42886,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "wob" = (
@@ -43357,6 +43633,7 @@
 	},
 /obj/item/clothing/head/hardhat/white,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "wHv" = (
@@ -44074,6 +44351,7 @@
 	pixel_x = -13;
 	pixel_y = 2
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "xdt" = (
@@ -44471,6 +44749,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "xnk" = (
@@ -44838,6 +45117,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "xzK" = (
@@ -45195,6 +45475,11 @@
 /obj/structure/girder,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/north_street)
+"xIj" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_1)
 "xIr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -45752,6 +46037,11 @@
 "xVd" = (
 /turf/closed/wall/strata_outpost_ribbed,
 /area/lv522/indoors/lone_buildings/engineering)
+"xVm" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1)
 "xVq" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 1;
@@ -45859,6 +46149,7 @@
 /area/lv522/indoors/a_block/dorms)
 "xXO" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "xXP" = (
@@ -46267,6 +46558,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/south_street)
 "yhU" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1/ceiling)
 "yif" = (
@@ -46471,6 +46763,7 @@
 	pixel_x = -7
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "yld" = (
@@ -46503,6 +46796,7 @@
 /area/lv522/indoors/a_block/admin)
 "ymc" = (
 /obj/structure/window/framed/strata/reinforced,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 
@@ -47488,11 +47782,11 @@ cpy
 cpy
 cpy
 cpy
-nGe
+pUV
 pez
 pFw
 qbf
-pxb
+pkg
 paT
 pxb
 pxb
@@ -47694,11 +47988,11 @@ cpy
 cpy
 cpy
 oyY
-paT
-pxb
-pxb
-pxb
-pxb
+etD
+dom
+dom
+dom
+dom
 pxb
 pxb
 tVR
@@ -47900,11 +48194,11 @@ cpy
 cpy
 cpy
 hTW
-pxb
-xqp
-pxb
-pxb
-pxb
+pkg
+eIa
+pkg
+pkg
+pkg
 tVR
 iMr
 gom
@@ -48104,13 +48398,13 @@ cpy
 cpy
 cpy
 cpy
-nGe
-pwa
-pwa
-xqp
-xqp
-xqp
-tVR
+pUV
+bwI
+bwI
+eIa
+eIa
+eIa
+fxz
 gom
 ryU
 ryU
@@ -48311,12 +48605,12 @@ cpy
 cpy
 cpy
 nGJ
-pwa
-pwa
-pxb
-tVR
-iMr
-gom
+bwI
+bwI
+pkg
+fxz
+vKs
+eGM
 ryU
 ryU
 uiM
@@ -48517,12 +48811,12 @@ cpy
 cpy
 cpy
 nMc
-pxb
-tVR
-iMr
-gom
-ryU
-ryU
+pkg
+fxz
+vKs
+eGM
+nNP
+nNP
 ryU
 wuK
 uiM
@@ -48722,12 +49016,12 @@ cpy
 cpy
 cpy
 lJq
-pxb
-tVR
-gom
-ryU
-ryU
-ryU
+pkg
+fxz
+eGM
+nNP
+nNP
+nNP
 wuK
 xfW
 xfW
@@ -48928,14 +49222,14 @@ cpy
 cpy
 cpy
 lJq
-tVR
-gom
-ryU
-rhk
-uTd
-oyf
-tns
-fOc
+fxz
+eGM
+nNP
+pqH
+kbl
+mxq
+tpj
+mYe
 uTd
 oyf
 tns
@@ -49133,15 +49427,15 @@ cpy
 cpy
 cpy
 cpy
-pwa
+bwI
 kCt
-uZc
+xVm
 fSo
-nFj
-pRg
-nFj
-nFj
-nFj
+pnV
+oTM
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -49339,13 +49633,13 @@ tFx
 tFx
 tFx
 niA
-pwa
+bwI
 gwE
-ryU
+nNP
 naS
-nFj
-nFj
-nFj
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -49545,13 +49839,13 @@ wnP
 evg
 syM
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 haf
-nFj
-nFj
-nFj
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -49751,9 +50045,9 @@ mvP
 ggS
 tFx
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 das
 sYH
 sYH
@@ -49957,9 +50251,9 @@ mxD
 uom
 ymc
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 eyy
 sYH
 sYH
@@ -50163,9 +50457,9 @@ myQ
 myZ
 ymc
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 naS
 sYH
 sYH
@@ -50369,9 +50663,9 @@ rIM
 rIM
 tFx
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 haf
 sYH
 sYH
@@ -50575,9 +50869,9 @@ veQ
 fnA
 sSQ
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 das
 sYH
 sYH
@@ -50781,13 +51075,13 @@ max
 osN
 sSQ
 rnT
-pxb
+pkg
 ttT
-ryU
+nNP
 eyy
-nFj
-nFj
-nFj
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -50987,13 +51281,13 @@ max
 osN
 sSQ
 rnT
-pxb
+pkg
 qpa
-ryU
+nNP
 naS
-nFj
-nFj
-nFj
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -51193,15 +51487,15 @@ max
 ien
 ien
 ien
-pxb
+pkg
 kCt
-uZc
+xVm
 fBL
-nFj
-pRg
-nFj
-nFj
-nFj
+pnV
+oTM
+pnV
+pnV
+pnV
 sYH
 sYH
 sYH
@@ -51399,15 +51693,15 @@ max
 osN
 sSQ
 rnT
-pxb
+pkg
 eDh
-gRi
-ryU
-uEH
-vJj
-jIk
-aGS
-dhP
+sAC
+nNP
+iza
+beC
+bqn
+aaM
+vGL
 vJj
 jIk
 aGS
@@ -51605,14 +51899,14 @@ max
 osN
 sSQ
 rnT
-pxb
-pxb
+pkg
+pkg
 eDh
-gRi
-ryU
-ryU
-ryU
-tgq
+sAC
+nNP
+nNP
+nNP
+qbl
 qcO
 qjq
 uiM
@@ -51811,15 +52105,15 @@ max
 ien
 ien
 ien
-pwa
-pxb
-pxb
+bwI
+pkg
+pkg
 eDh
-kqp
-gRi
-ryU
-ryU
-ryU
+mpv
+sAC
+nNP
+nNP
+nNP
 qjq
 qkw
 wuK
@@ -52017,15 +52311,15 @@ max
 osN
 sSQ
 rnT
-pwa
-pwa
-pxb
-pxb
-pxb
+bwI
+bwI
+pkg
+pkg
+pkg
 eDh
-kqp
-gRi
-ryU
+mpv
+sAC
+nNP
 ryU
 uiM
 uiM
@@ -52223,15 +52517,15 @@ max
 osN
 sSQ
 rnT
-pwa
-pwa
-pwa
-pxb
-pxb
-pxb
-pxb
+bwI
+bwI
+bwI
+pkg
+pkg
+pkg
+pkg
 eDh
-gRi
+sAC
 ryU
 ryU
 ryU
@@ -52434,32 +52728,32 @@ jZD
 jZD
 jZD
 oiY
-pxb
-pxb
-pxb
+pkg
+pkg
+pkg
 eDh
 kqp
 gRi
 uZc
-ryU
-ryU
-xcY
-ryU
-ryU
-uZc
-qsp
-kqp
-pSd
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
-xqp
-pwa
-pxb
+nNP
+nNP
+hTB
+nNP
+nNP
+xVm
+fan
+mpv
+xIj
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
+eIa
+bwI
+pkg
 cpy
 eYM
 eYM
@@ -52640,31 +52934,31 @@ tFx
 ymc
 tFx
 rnT
-pxb
-pxb
-pxb
-pxb
-pxb
+pkg
+pkg
+pkg
+pkg
+pkg
 eDh
-kqp
+mpv
 sMW
-ryU
-ryU
-ryU
+nNP
+nNP
+nNP
 iSC
-kqp
-pSd
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
-pwa
-pwa
-xqp
-xqp
+mpv
+xIj
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
+bwI
+bwI
+eIa
+eIa
 cpy
 cpy
 eYM
@@ -52846,31 +53140,31 @@ ojb
 uom
 ymc
 rnT
-pxb
-pxb
-pxb
-pwa
-pwa
-pxb
-pxb
+pkg
+pkg
+pkg
+bwI
+bwI
+pkg
+pkg
 qDD
 rys
 rys
 rys
 jYK
-pxb
-pxb
-pxb
-pxb
-pwa
-pwa
-pxb
-pwa
-pwa
-pwa
-pxb
-xqp
-xqp
+pkg
+pkg
+pkg
+pkg
+bwI
+bwI
+pkg
+bwI
+bwI
+bwI
+pkg
+eIa
+eIa
 cpy
 cpy
 eYM
@@ -53052,31 +53346,31 @@ uol
 rzz
 ymc
 rnT
-pxb
-pxb
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
-pxb
-pxb
-pwa
-xqp
+pkg
+pkg
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
+pkg
+pkg
+bwI
+eIa
 cpy
 cpy
 eYM
@@ -53258,31 +53552,31 @@ nEq
 rzz
 syM
 rnT
-pxb
-pwa
-pwa
-pwa
-xqp
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
-pxb
-pxb
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
-pxb
-pxb
-pxb
-pxb
-pxb
+pkg
+bwI
+bwI
+bwI
+eIa
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
+pkg
+pkg
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
+pkg
+pkg
+pkg
+pkg
+pkg
 cpy
 cpy
 eYM
@@ -53464,23 +53758,23 @@ vbu
 oPR
 ymc
 rnT
-pwa
-pwa
-pwa
-pxb
-xqp
-xqp
-pwa
-pwa
-xqp
-xqp
-xqp
-pwa
-pwa
-pwa
-pwa
-pwa
-pwa
+bwI
+bwI
+bwI
+pkg
+eIa
+eIa
+bwI
+bwI
+eIa
+eIa
+eIa
+bwI
+bwI
+bwI
+bwI
+bwI
+bwI
 tMq
 jZD
 jZD
@@ -53670,14 +53964,14 @@ omG
 oRS
 ymc
 rnT
-pwa
-pwa
-pxb
+bwI
+bwI
+pkg
 cpy
-pxb
-pxb
-pxb
-pwa
+pkg
+pkg
+pkg
+bwI
 pdx
 gag
 hJI
@@ -53685,8 +53979,8 @@ tfb
 cIc
 gag
 bei
-pwa
-pwa
+bwI
+bwI
 vtN
 tFx
 tFx
@@ -53876,13 +54170,13 @@ ymc
 tFx
 tFx
 rnT
-pxb
-pxb
+pkg
+pkg
 cpy
 cpy
-pxb
-pxb
-pxb
+pkg
+pkg
+pkg
 pdx
 bHf
 tFx
@@ -54074,21 +54368,21 @@ max
 max
 tZh
 osN
-tFx
-tFx
+qjN
+qjN
 eiP
 rzz
 jQC
 tFx
 tFx
 rnT
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
 kRM
 tFx
 tFx
@@ -54288,13 +54582,13 @@ vbu
 rzz
 ymc
 rnT
-pxb
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
+pkg
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
 kRM
 tFx
 ykU
@@ -54494,13 +54788,13 @@ uol
 rzz
 syM
 rnT
-pxb
-pxb
-pxb
-pxb
-pxb
-pwa
-pwa
+pkg
+pkg
+pkg
+pkg
+pkg
+bwI
+bwI
 kRM
 ymc
 gQy
@@ -55105,7 +55399,7 @@ max
 max
 gMQ
 fnA
-tFx
+qjN
 rIM
 rIM
 rIM

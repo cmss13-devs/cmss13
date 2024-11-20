@@ -1344,7 +1344,7 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/containment)
 "adq" = (
 /obj/effect/decal/warning_stripes{
@@ -1354,7 +1354,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/containment)
 "adr" = (
 /obj/structure/bed,
@@ -1504,7 +1504,7 @@
 	id = "research_secret";
 	name = "Classified Research Shutters"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/containment)
 "adI" = (
 /obj/effect/decal/warning_stripes{
@@ -1706,7 +1706,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/containment)
 "aec" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -4183,7 +4183,7 @@
 	dir = 8;
 	id = 97
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "akH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -4222,7 +4222,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "akM" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -4477,7 +4477,7 @@
 	dir = 8;
 	id = 97
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "alx" = (
 /turf/open/floor/prison,
@@ -4489,14 +4489,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "alz" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "alA" = (
 /obj/structure/surface/rack,
@@ -4803,9 +4803,10 @@
 "amt" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
 	name = "Research Hangar Door";
-	breakable = 0
+	breakable = 0;
+	explo_proof = 1
 	},
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/open/floor/plating/prison,
 /area/prison/hanger/research)
 "amu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5402,7 +5403,7 @@
 /area/prison/research/RD)
 "anV" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/research_medbay)
 "anW" = (
 /obj/structure/pipes/vents/scrubber{
@@ -8619,7 +8620,7 @@
 /area/prison/medbay)
 "awf" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research)
 "awg" = (
 /obj/structure/pipes/vents/scrubber{
@@ -9164,9 +9165,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10
-	},
+/turf/open/floor/plating/prison,
 /area/prison/hangar_storage/research)
 "axF" = (
 /obj/structure/pipes/vents/pump,
@@ -9794,7 +9793,7 @@
 	name = "Hangar lockdown"
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/hanger/research)
 "azA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -12903,7 +12902,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/prison,
 /area/prison/storage/highsec/n)
 "aHR" = (
 /turf/open/floor/prison,
@@ -13003,7 +13002,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/quarters/research)
 "aIj" = (
 /obj/structure/pipes/vents/pump/on,
@@ -13908,7 +13907,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/staff_research)
 "aKY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -19286,10 +19285,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "kitchen"
-	},
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/vip)
 "baz" = (
 /turf/closed/wall/prison,
@@ -19721,9 +19717,10 @@
 /area/prison/hanger/main)
 "bbF" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	name = "Main Hangar Door"
+	name = "Main Hangar Door";
+	explo_proof = 1
 	},
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/open/floor/plating/prison,
 /area/prison/hanger/main)
 "bbG" = (
 /obj/structure/machinery/light{
@@ -20976,7 +20973,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison,
 /area/prison/storage/vip)
 "bfr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -32400,7 +32397,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/laundry)
 "bMk" = (
 /turf/closed/wall/r_wall/prison,
@@ -34218,12 +34215,6 @@
 	icon_state = "darkred2"
 	},
 /area/prison/security)
-"bRW" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/prison/maintenance/residential/access/south)
 "bRX" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -34845,15 +34836,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/organic/grass,
 /area/prison/residential/south)
-"bTK" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/prison/maintenance/residential/access/south)
 "bTL" = (
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/access/south)
@@ -35921,13 +35903,6 @@
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/south/north)
-"bWQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/prison/laundry)
 "bWR" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -37501,7 +37476,7 @@
 /area/prison/cellblock/mediumsec/north)
 "cbC" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/library)
 "cbE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -37960,7 +37935,7 @@
 /area/prison/cellblock/highsec/south/south)
 "cdr" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "cds" = (
 /obj/structure/surface/table/gamblingtable,
@@ -38291,7 +38266,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/staff_research)
 "cev" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -41053,7 +41028,7 @@
 "cmv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/disposal)
 "cmw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -42193,7 +42168,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "cqq" = (
 /obj/effect/decal/cleanable/blood,
@@ -42869,7 +42844,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/west)
 "csE" = (
 /obj/structure/machinery/light/small{
@@ -42899,7 +42874,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/west)
 "csL" = (
 /obj/structure/bed,
@@ -44436,7 +44411,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "cxO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -45709,7 +45684,7 @@
 /area/prison/residential/south)
 "djN" = (
 /obj/structure/girder,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/maxsec/south)
 "djU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -45936,9 +45911,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/west)
 "dtZ" = (
 /obj/structure/toilet{
@@ -46045,7 +46018,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/residential/north)
 "dyX" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -47117,7 +47090,7 @@
 "eHW" = (
 /obj/structure/window/framed/prison/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/medbay/foyer)
 "eIE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -47443,7 +47416,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/prison,
+/turf/open/floor/plating/prison,
 /area/prison/laundry)
 "fbt" = (
 /obj/structure/machinery/light{
@@ -48048,17 +48021,9 @@
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "fIu" = (
-/obj/structure/monorail,
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	name = "Research Hangar Door";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
-	name = "Research Hangar Door";
-	breakable = 0
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/prison/hanger/research)
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating/prison,
+/area/prison/medbay/foyer)
 "fKS" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
@@ -48387,7 +48352,7 @@
 /area/prison/cellblock/highsec/south/south)
 "gfe" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "gfl" = (
 /obj/effect/decal/cleanable/blood,
@@ -49655,7 +49620,7 @@
 /area/prison/maintenance/residential/sw)
 "hnD" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/quarters/research)
 "hoi" = (
 /obj/structure/surface/table/reinforced{
@@ -52125,7 +52090,7 @@
 /area/prison/hanger/main)
 "jzJ" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/residential/north)
 "jAx" = (
 /obj/effect/decal/warning_stripes{
@@ -52995,13 +52960,14 @@
 	},
 /area/prison/cellblock/lowsec/nw)
 "knf" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
+/obj/structure/window/framed/prison/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "86";
+	name = "Hangar lockdown"
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/prison/cellblock/mediumsec/west)
+/turf/open/floor/plating/prison,
+/area/prison/hanger/research)
 "knm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -53463,7 +53429,7 @@
 "kFR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/residential/north)
 "kFW" = (
 /obj/structure/largecrate/random,
@@ -54432,7 +54398,7 @@
 	name = "Hangar lockdown"
 	},
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/hanger/research)
 "lJo" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -55937,7 +55903,7 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/maintenance/staff_research)
 "ngJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -56064,10 +56030,7 @@
 /area/prison/cellblock/highsec/south/north)
 "npb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/residential/south)
 "npG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -57882,9 +57845,7 @@
 	id = "86";
 	name = "Hangar lockdown"
 	},
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/plating/prison,
 /area/prison/quarters/research)
 "pbM" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -58727,7 +58688,7 @@
 	id = "86";
 	name = "Hangar lockdown"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/RD)
 "pLJ" = (
 /obj/item/shard{
@@ -59945,11 +59906,9 @@
 	},
 /area/prison/cellblock/lowsec/nw)
 "rnH" = (
-/obj/structure/monorail{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/prison/hanger/main)
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating/prison,
+/area/prison/research/RD)
 "rom" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
@@ -60400,9 +60359,7 @@
 /area/prison/hangar_storage/main)
 "rKn" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison,
 /area/prison/cleaning)
 "rKA" = (
 /obj/effect/spawner/random/tool,
@@ -60825,9 +60782,7 @@
 "slL" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison,
 /area/prison/cleaning)
 "slT" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -61690,7 +61645,7 @@
 "tjP" = (
 /obj/structure/window_frame/prison/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/medbay/foyer)
 "tjU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -64582,7 +64537,7 @@
 "wqG" = (
 /obj/structure/window_frame/prison/reinforced,
 /obj/item/stack/rods,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/medbay/foyer)
 "wqK" = (
 /obj/structure/bed,
@@ -65788,9 +65743,10 @@
 /obj/structure/monorail,
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
 	name = "Research Hangar Door";
-	breakable = 0
+	breakable = 0;
+	explo_proof = 1
 	},
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/open/floor/plating/prison,
 /area/prison/hanger/research)
 "xtt" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -82664,9 +82620,9 @@ vdU
 uuw
 bvA
 bSj
-bRW
-bTK
-bRW
+xvB
+gIy
+xvB
 bSj
 twg
 bZO
@@ -85668,7 +85624,7 @@ cYQ
 cYQ
 cYQ
 cYQ
-knf
+csD
 cqM
 rvO
 xjD
@@ -85872,7 +85828,7 @@ crY
 csy
 xzA
 cwr
-knf
+csD
 cpm
 cpm
 cpm
@@ -85880,7 +85836,7 @@ cpm
 cpm
 cpm
 cpm
-knf
+csD
 cqM
 cqM
 cqM
@@ -91356,7 +91312,7 @@ bPf
 bSu
 bQN
 bQN
-bWQ
+bMj
 bXY
 bYU
 caD
@@ -100619,7 +100575,7 @@ apt
 aIE
 aEo
 aFQ
-aBU
+fIu
 jdx
 aAO
 aAO
@@ -102717,8 +102673,8 @@ alR
 ajk
 aqd
 aqd
-anQ
-anQ
+rnH
+rnH
 anv
 aqA
 anv
@@ -104423,12 +104379,12 @@ kDp
 kDp
 qgb
 uxJ
-dLM
-dLM
-dLM
-dLM
-dLM
-dLM
+knf
+knf
+knf
+knf
+knf
+knf
 uxJ
 aDz
 aCb
@@ -104828,7 +104784,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 amP
 lKi
 lKi
@@ -105040,7 +104996,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 amQ
 any
 aoi
@@ -105252,7 +105208,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 ajx
 sZb
 pBl
@@ -105676,7 +105632,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajz
 dpU
 dpU
@@ -105888,7 +105844,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajA
 dpU
 sUB
@@ -106100,7 +106056,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajx
 dpU
 sUB
@@ -106524,7 +106480,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajz
 dpU
 sUB
@@ -106736,7 +106692,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajA
 dpU
 sUB
@@ -106948,7 +106904,7 @@ wjg
 aAO
 aAO
 aAO
-ams
+dpU
 ajx
 dpU
 dpU
@@ -107160,7 +107116,7 @@ lyz
 bDE
 bDE
 bDE
-fIu
+xtq
 ajy
 jbo
 jbo
@@ -107372,7 +107328,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 ajz
 sZb
 pBl
@@ -107584,7 +107540,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 amV
 anz
 aok
@@ -107796,7 +107752,7 @@ aAO
 aAO
 aAO
 aAO
-ams
+dpU
 amW
 dpU
 dpU
@@ -118870,25 +118826,25 @@ aXt
 aXt
 aXt
 aXt
-aXt
-rnH
-aXt
+oCh
+rDb
+oCh
 bbF
-aXt
-aXt
-aXt
+oCh
+oCh
+oCh
 bbF
-aXt
-aXt
-aXt
+oCh
+oCh
+oCh
 bbF
-aXt
-aXt
-aXt
+oCh
+oCh
+oCh
 bbF
-aXt
-aXt
-aXt
+oCh
+oCh
+oCh
 bbF
 aXt
 aXt

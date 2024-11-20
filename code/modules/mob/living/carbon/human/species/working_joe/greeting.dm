@@ -18,7 +18,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_are_you
 	key = "howareyou"
 	sound = 'sound/voice/joe/how_are_you.ogg'
-	sound = 'sound/voice/joe/how_are_you_haz.ogg'
+	haz_sound = 'sound/voice/joe/how_are_you_haz.ogg'
 	say_message = "How are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

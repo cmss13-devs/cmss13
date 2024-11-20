@@ -251,7 +251,7 @@
 
 	return TRUE
 
-// The queen de-evo, but on yourself. Only usable once
+// The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."

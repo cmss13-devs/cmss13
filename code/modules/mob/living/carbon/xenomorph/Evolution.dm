@@ -338,6 +338,9 @@
 			new_xeno.client.pixel_y = 0
 
 	//Regenerate the new mob's name now that our player is inside
+	if(newcaste == XENO_CASTE_LARVA)
+		var/mob/living/carbon/xenomorph/larva/new_larva = new_xeno
+		new_larva.is_bloody = FALSE
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)

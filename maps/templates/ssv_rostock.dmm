@@ -3520,15 +3520,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
-"cKi" = (
-/obj/structure/machinery/prop/almayer/CICmap/upp,
-/obj/item/storage/backpack/marine/satchel/rto/upp_net,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/accessory/armband/engine{
-	name = "Dachu squad armband"
-	},
-/turf/open/floor/corsat/plate,
-/area/rostock/command/cic)
 "cKp" = (
 /obj/structure/stairs,
 /obj/effect/step_trigger/teleporter_vector{
@@ -4594,9 +4585,6 @@
 /obj/structure/machinery/prop/almayer/CICmap/upp,
 /obj/item/storage/backpack/marine/satchel/rto/upp_net,
 /obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/accessory/armband/hydro{
-	name = "Alfa squad armband"
-	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
 "dEd" = (
@@ -6026,15 +6014,11 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "eCy" = (
-/obj/structure/bed/chair/comfy/charlie{
-	desc = "A simple chair permanently attached to the floor.";
-	name = "Cheka squad chair";
-	dir = 4
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4;
+	name = "Bizon Squad Chair"
 	},
-/obj/item/clothing/accessory/armband/science{
-	name = "Cheka squad armband"
-	},
-/turf/open/floor/strata/purp1,
+/turf/open/floor/strata/orange_cover,
 /area/rostock/lower_deck/briefing)
 "eCK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8346,9 +8330,6 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/upper_deck/hallway)
 "grx" = (
-/obj/structure/bed/chair/comfy/lime{
-	dir = 4
-	},
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "grM" = (
@@ -8649,15 +8630,11 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/kitchen)
 "gGE" = (
-/obj/structure/bed/chair/comfy/alpha{
-	name = "Boris squad chair";
-	desc = "A simple chair permanently attached to the floor.";
-	dir = 4
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 4;
+	name = "Chayka squad chair"
 	},
-/obj/item/clothing/accessory/armband{
-	name = "Boris squad armband"
-	},
-/turf/open/floor/strata/red1,
+/turf/open/floor/strata/purp1,
 /area/rostock/lower_deck/briefing)
 "gGK" = (
 /obj/structure/machinery/light{
@@ -8807,7 +8784,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/comfy,
-/turf/open/floor/strata/blue4/east,
+/turf/open/floor/strata/cyan4/east,
 /area/rostock/lower_deck/briefing)
 "gNT" = (
 /obj/effect/landmark/late_join/upp{
@@ -9180,14 +9157,11 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/prep)
 "hae" = (
-/obj/structure/bed/chair/comfy/lime{
+/obj/structure/bed/chair/comfy/delta{
 	dir = 1;
-	name = "Alfa squad chair"
+	name = "Delfin squad chair"
 	},
-/obj/item/clothing/accessory/armband/hydro{
-	name = "Alfa squad armband"
-	},
-/turf/open/floor/strata/green1,
+/turf/open/floor/strata/blue1,
 /area/rostock/lower_deck/briefing)
 "han" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12950,7 +12924,7 @@
 /turf/open/floor/strata/green4/east,
 /area/rostock/lower_deck/m_hallway)
 "jHD" = (
-/turf/open/floor/strata/blue4/east,
+/turf/open/floor/strata/cyan4/east,
 /area/rostock/lower_deck/briefing)
 "jHK" = (
 /obj/structure/machinery/light/small{
@@ -14485,7 +14459,7 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "kIM" = (
-/turf/open/floor/strata/blue4,
+/turf/open/floor/strata/cyan4,
 /area/rostock/lower_deck/briefing)
 "kJK" = (
 /obj/structure/machinery/light{
@@ -16495,7 +16469,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/turf/open/floor/strata/blue3/north,
+/turf/open/floor/strata/cyan3/north,
 /area/rostock/lower_deck/briefing)
 "mvr" = (
 /obj/structure/machinery/cryopod{
@@ -18241,7 +18215,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/hangar/hangarbay)
 "nQo" = (
-/turf/open/floor/strata/blue3/southwest,
+/turf/open/floor/strata/cyan3/southwest,
 /area/rostock/lower_deck/briefing)
 "nQG" = (
 /obj/effect/decal/warning_stripes{
@@ -20081,12 +20055,6 @@
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
-"pkW" = (
-/obj/structure/bed/chair/comfy/orange{
-	pixel_x = -16
-	},
-/turf/open/floor/carpet,
-/area/rostock/command/dining)
 "plE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine{
@@ -21348,9 +21316,6 @@
 /obj/structure/machinery/prop/almayer/CICmap/upp,
 /obj/item/storage/backpack/marine/satchel/rto/upp_net,
 /obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/accessory/armband{
-	name = "Boris squad armband"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -22037,7 +22002,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/turf/open/floor/strata/blue4,
+/turf/open/floor/strata/cyan4,
 /area/rostock/lower_deck/briefing)
 "qGQ" = (
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -22890,7 +22855,7 @@
 /area/space)
 "roK" = (
 /obj/structure/bed/chair/comfy,
-/turf/open/floor/strata/blue3,
+/turf/open/floor/strata/cyan3,
 /area/rostock/lower_deck/briefing)
 "rpa" = (
 /turf/open/floor/corsat/plate,
@@ -24283,19 +24248,6 @@
 /obj/item/prop/almayer/chaff_launcher,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
-"swz" = (
-/obj/structure/machinery/prop/almayer/CICmap/upp,
-/obj/item/storage/backpack/marine/satchel/rto/upp_net,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/accessory/armband/science{
-	name = "Cheka squad armband"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/corsat/plate,
-/area/rostock/command/cic)
 "sxP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -24347,13 +24299,10 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
 "sAw" = (
-/obj/structure/bed/chair/comfy/orange{
-	name = "Dachu squad chair"
+/obj/structure/bed/chair/comfy/alpha{
+	name = "Akula squad chair"
 	},
-/obj/item/clothing/accessory/armband/engine{
-	name = "Dachu squad armband"
-	},
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/red1,
 /area/rostock/lower_deck/briefing)
 "sAA" = (
 /turf/open/floor/strata/orange_icorner/west,
@@ -28206,7 +28155,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "vys" = (
-/turf/open/floor/strata/blue3/northwest,
+/turf/open/floor/strata/cyan3/northwest,
 /area/rostock/lower_deck/briefing)
 "vzz" = (
 /turf/closed/wall/almayer/upp/reinforced,
@@ -31446,7 +31395,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/m_hallway)
 "xUW" = (
-/turf/open/floor/strata/blue3/west,
+/turf/open/floor/strata/cyan3/west,
 /area/rostock/lower_deck/briefing)
 "xUY" = (
 /turf/open/floor/strata/floor3/east,
@@ -51330,7 +51279,7 @@ tEy
 vzz
 vSP
 vTQ
-pkW
+hrQ
 cjI
 hbD
 cjI
@@ -54429,7 +54378,7 @@ uZF
 wdD
 eiJ
 tKG
-swz
+qgQ
 fXQ
 wYt
 ygL
@@ -54437,7 +54386,7 @@ quG
 iMw
 unT
 nrA
-cKi
+dDR
 yhz
 gcL
 mIc

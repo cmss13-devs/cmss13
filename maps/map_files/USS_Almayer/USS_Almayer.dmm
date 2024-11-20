@@ -33,6 +33,13 @@
 "aah" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
+"aai" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "aak" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -64613,7 +64620,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
 "wvo" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvu" = (
@@ -80510,7 +80517,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+aai
 wSm
 kAL
 xkd

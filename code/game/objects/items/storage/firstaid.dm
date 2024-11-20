@@ -345,7 +345,7 @@
 		/obj/item/toy/dice,
 		/obj/item/paper,
 	)
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER|STORAGE_DISABLE_USE_EMPTY
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
@@ -759,7 +759,7 @@
 	max_w_class = 0
 	max_storage_space = 4
 	skilllock = SKILL_MEDICAL_DEFAULT
-	storage_flags = STORAGE_FLAGS_BOX
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_DISABLE_USE_EMPTY
 	display_maptext = FALSE
 
 /obj/item/storage/pill_bottle/packet/Initialize()

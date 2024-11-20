@@ -444,7 +444,7 @@ SPECIAL EGG USED BY EGG CARRIER
 SPECIAL EGG USED WHEN WEEDS LOST
 */
 
-#define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES
+#define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
 
 /obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
 	src.weed_strength_required = weed_strength_required

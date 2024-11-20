@@ -294,22 +294,9 @@
 	name = "Toggle Frontline Mode"
 	action_icon_state = "iff_toggle_on"
 	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
-	cooldown = 1 SECONDS
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_frontline_mode/can_use_action()
-	if(!..())
-		return FALSE
-	return action_cooldown_check()
-
-/datum/action/item_action/smartgun/toggle_frontline_mode/update_button_icon()
-	. = ..()
-	if(!action_cooldown_check())
-		button.color = rgb(120,120,120,200)
-	else
-		button.color = rgb(255,255,255,255)
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
 	. = ..()

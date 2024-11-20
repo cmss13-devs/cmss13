@@ -3520,6 +3520,12 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
+"cKi" = (
+/obj/structure/machinery/prop/almayer/CICmap/upp,
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/clothing/glasses/hud/health,
+/turf/open/floor/corsat/plate,
+/area/rostock/command/cic)
 "cKp" = (
 /obj/structure/stairs,
 /obj/effect/step_trigger/teleporter_vector{
@@ -4581,12 +4587,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
-"dDR" = (
-/obj/structure/machinery/prop/almayer/CICmap/upp,
-/obj/item/storage/backpack/marine/satchel/rto/upp_net,
-/obj/item/clothing/glasses/hud/health,
-/turf/open/floor/corsat/plate,
-/area/rostock/command/cic)
 "dEd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -7318,13 +7318,6 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/lower_deck/p_a_hallway)
-"fww" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
-	},
-/turf/closed/wall/almayer/upp,
-/area/rostock/upperdeck_maint/p_a)
 "fwz" = (
 /turf/open/floor/carpet,
 /area/rostock/command/co)
@@ -41391,7 +41384,7 @@ rCX
 oxy
 arL
 eBZ
-fww
+iid
 arL
 fNK
 uWg
@@ -54386,7 +54379,7 @@ quG
 iMw
 unT
 nrA
-dDR
+cKi
 yhz
 gcL
 mIc
@@ -55296,7 +55289,7 @@ vph
 dNI
 unT
 nrA
-dDR
+cKi
 yhz
 gcL
 mIc

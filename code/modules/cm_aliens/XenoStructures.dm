@@ -34,6 +34,10 @@
 			SP.linked_structure = src
 			blocks.Add(SP)
 
+	var/area/current_area = get_area(src)
+	if(current_area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
+
 /obj/effect/alien/resin/Destroy()
 	if(block_range)
 		for(var/obj/effect/build_blocker/SP as anything in blocks)
@@ -135,7 +139,7 @@
 	health = 500000
 
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	invisibility = 101
 
 	alpha = 0
@@ -375,6 +379,10 @@
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	var/area/area = get_area(src)
+	if(area && area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
 
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam

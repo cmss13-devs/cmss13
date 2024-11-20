@@ -66,22 +66,28 @@
 		compile_paper()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
+	switch(icon_state)
+		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+			return
+
+	if(!info)
+		icon_state = "paper"
 		return
-	if(info)
-		if(icon_state == "paper_wy")
+
+	switch(icon_state)
+		if("paper_wy")
 			icon_state = "paper_wy_words"
 			return
-		if(icon_state == "paper_uscm")
+		if("paper_uscm")
 			icon_state = "paper_uscm_words"
 			return
-		if(icon_state == "paper_flag")
+		if("paper_flag")
 			icon_state = "paper_flag_words"
 			item_state = "paper_flag"
 			return
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		else
+			icon_state = "paper_words"
+	return
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
@@ -956,3 +962,20 @@
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
 	update_icon()
+
+/obj/item/paper/liaison_brief
+	name = "Liaison Colony Briefing"
+	desc = "A brief from the Company about the colony the ship is responding to."
+	icon_state = "paper_wy_words"
+	
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
+
+/obj/item/paper/liaison_brief/Initialize(mapload, ...)
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
+	else
+		info = file2text(placeholder)
+		
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

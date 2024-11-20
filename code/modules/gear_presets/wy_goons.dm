@@ -6,6 +6,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/goon/New()
 	. = ..()
@@ -62,6 +63,7 @@
 	rank = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
+	minimap_icon = "goon_standard"
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -95,6 +97,7 @@
 	rank = JOB_WY_GOON_TECH
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_tech
+	minimap_icon = "goon_engi"
 
 /datum/equipment_preset/goon/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -129,6 +132,7 @@
 	rank = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_lead
+	minimap_icon = "goon_leader"
 
 /datum/equipment_preset/goon/lead/New()
 	. = ..()
@@ -165,6 +169,7 @@
 	rank = JOB_WY_GOON_RESEARCHER
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
+	minimap_icon = "goon_sci"
 
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,
@@ -185,6 +190,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/workwear/blue,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -203,6 +209,10 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
 	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,

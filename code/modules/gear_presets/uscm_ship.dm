@@ -51,7 +51,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background = "background_civillian"
 
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,
@@ -90,6 +90,10 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
 	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,
@@ -163,8 +167,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
-
+	minimap_background = "background_civillian"
 	dress_under = list()
 	dress_over = list()
 	dress_hat = list()
@@ -198,7 +201,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 	minimap_icon = "correspondent"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_background = "background_civillian"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -248,8 +251,8 @@
 	minimum_age = 27
 	skills = /datum/skills/CE
 
-	minimap_icon = list("engi" = MINIMAP_ICON_COLOR_HEAD)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "ce"
+	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
 
@@ -283,7 +286,8 @@
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
-	minimap_icon = "engi"
+	minimap_icon = "mt"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -319,6 +323,7 @@
 	skills = /datum/skills/OT
 
 	minimap_icon = "ot"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -363,8 +368,8 @@
 	minimum_age = 27
 	skills = /datum/skills/RO
 
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
-	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_icon = "cargo"
+	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -397,7 +402,8 @@
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
-	minimap_icon = "ct"
+	minimap_icon = "cargo"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -432,8 +438,9 @@
 	minimum_age = 30
 	skills = /datum/skills/commander
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_COMMANDER)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "co"
+	minimap_background = "background_command"
+
 
 	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -547,8 +554,8 @@
 	minimum_age = 35
 	skills = /datum/skills/XO
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_HEAD)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "xo"
+	minimap_background = "background_command"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
@@ -586,8 +593,8 @@
 	minimum_age = 25
 	skills = /datum/skills/SO
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_BRONZE)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "so"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -618,6 +625,7 @@
 	skills = /datum/skills/SEA
 
 	minimap_icon = "sea"
+	minimap_background = "background_command"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -644,6 +652,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee, client/mob_client)
+	mob_client.toggle_newplayer_ic_hud(TRUE)
 	if(rankee?.client?.prefs?.pref_special_job_options[rank])
 		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[rank])
 		return paygrade_choice
@@ -663,8 +672,8 @@
 	minimum_age = 27
 	skills = /datum/skills/auxiliary_officer
 
-	minimap_icon = list("cic" = COLOR_SILVER)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "aso"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()
 	. = ..()
@@ -698,7 +707,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/alt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/aso(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
@@ -721,7 +730,8 @@
 	role_comm_title = "GP"
 	skills = /datum/skills/pilot
 
-	minimap_icon = "pilot"
+	minimap_icon = "gp"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -772,6 +782,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -822,6 +833,7 @@
 	skills = /datum/skills/crew_chief
 
 	minimap_icon = "dcc"
+	minimap_background = "background_shipside"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -913,6 +925,7 @@
 	skills = /datum/skills/mess_technician
 
 	minimap_icon = "mst"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)

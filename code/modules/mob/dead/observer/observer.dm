@@ -61,6 +61,7 @@
 	var/own_orbit_size = 0
 	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
+	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
 	///Used to bypass time of death checks such as when being selected for larva.
 	var/bypass_time_of_death_checks = FALSE
@@ -376,35 +377,38 @@
 	if(!client || !client.prefs)
 		return
 
-	var/datum/mob_hud/H
+	var/datum/mob_hud/the_hud
 	HUD_toggled = client.prefs.observer_huds
 	for(var/i in HUD_toggled)
 		if(HUD_toggled[i])
 			switch(i)
 				if("Medical HUD")
-					H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-					H.add_hud_to(src, src)
+					the_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+					the_hud.add_hud_to(src, src)
 				if("Security HUD")
-					H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					the_hud.add_hud_to(src, src)
 				if("Squad HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_OBSERVER]
+					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
-					H = GLOB.huds[MOB_HUD_XENO_STATUS]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_UPP]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_UPP]
+					the_hud.add_hud_to(src, src)
 				if("Faction Wey-Yu HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_WY]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_WY]
+					the_hud.add_hud_to(src, src)
 				if("Faction TWE HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_TWE]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_TWE]
+					the_hud.add_hud_to(src, src)
 				if("Faction CLF HUD")
-					H = GLOB.huds[MOB_HUD_FACTION_CLF]
-					H.add_hud_to(src, src)
+					the_hud= GLOB.huds[MOB_HUD_FACTION_CLF]
+					the_hud.add_hud_to(src, src)
+				if(HUD_MENTOR_SIGHT)
+					the_hud= GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
 
@@ -550,7 +554,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
-			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			if(ghost.client)
+				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			else if(persistent_ckey)
+				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+				if(details)
+					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost
@@ -1129,6 +1139,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_responder()
+	set category = "Ghost.Join"
+	set name = "Join as a Fax Responder"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_fax_responder_late_join(src))
+		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

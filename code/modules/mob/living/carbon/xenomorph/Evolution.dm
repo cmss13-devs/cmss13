@@ -38,6 +38,9 @@
 	if(!castepick) //Changed my mind
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
+		return // Message will be handled by component
+
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
@@ -310,6 +313,8 @@
 	if(lock_evolve)
 		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
 		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
 
 	var/xeno_type
 	var/level_to_switch_to = get_vision_level()

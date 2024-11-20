@@ -15,30 +15,24 @@
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] doesn't belong to your hive!"))
 		return
-
 	if(target_xeno.is_ventcrawling)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
 		return
-
 	if(!isturf(target_xeno.loc))
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
 		return
-
 	if(target_xeno.health <= 0)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is too weak to be deevolved."))
 		return
-
 	if(length(target_xeno.caste.deevolves_to) < 1)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved."))
 		return
-
 	if(target_xeno.banished)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is banished and can't be deevolved."))
 		return
 
 
 	var/newcaste
-
 	if(length(target_xeno.caste.deevolves_to) == 1)
 		newcaste = target_xeno.caste.deevolves_to[1]
 	else if(length(target_xeno.caste.deevolves_to) > 1)
@@ -46,12 +40,10 @@
 
 	if(!newcaste)
 		return
-
-	if(newcaste == "Larva")
+	if(newcaste == XENO_CASTE_LARVA)
 		to_chat(user_xeno, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
 		return
-
-	if (user_xeno.observed_xeno != target_xeno)
+	if(user_xeno.observed_xeno != target_xeno)
 		return
 
 	var/confirm = tgui_alert(user_xeno, "Are you sure you want to deevolve [target_xeno] from [target_xeno.caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
@@ -63,33 +55,21 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for deevolving [target_xeno]."))
 		return
 
-	if (!check_and_use_plasma_owner(plasma_cost))
+	if(!check_and_use_plasma_owner(plasma_cost))
 		return
+
 
 	to_chat(target_xeno, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
 
-	var/xeno_type
-	var/level_to_switch_to = target_xeno.get_vision_level()
-	switch(newcaste)
-		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/xenomorph/runner
-		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/xenomorph/drone
-		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/xenomorph/sentinel
-		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/xenomorph/spitter
-		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/xenomorph/lurker
-		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/xenomorph/warrior
-		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/xenomorph/defender
-		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/xenomorph/burrower
-	var/obj/item/organ/xeno/organ = locate() in src
+	SEND_SIGNAL(target_xeno, COMSIG_XENO_DEEVOLVE)
+
+	var/obj/item/organ/xeno/organ = locate() in target_xeno
 	if(!isnull(organ))
 		qdel(organ)
+
+	var/level_to_switch_to = target_xeno.get_vision_level()
+	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
+
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
 
@@ -99,6 +79,9 @@
 		if(new_xeno)
 			qdel(new_xeno)
 		return
+
+	new_xeno.built_structures = target_xeno.built_structures.Copy()
+	target_xeno.built_structures = null
 
 	if(target_xeno.mind)
 		target_xeno.mind.transfer_to(new_xeno)
@@ -113,7 +96,8 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	// If the player has self-deevolved before, don't allow them to do it again
+
+	// If the player has lost the Deevolve verb before, don't allow them to do it again
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in target_xeno.verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
@@ -132,6 +116,7 @@
 		GLOB.round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
+
 	qdel(target_xeno)
 	return
 

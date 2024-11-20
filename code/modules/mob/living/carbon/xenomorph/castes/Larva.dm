@@ -27,7 +27,7 @@
 /mob/living/carbon/xenomorph/larva
 	AUTOWIKI_SKIP(TRUE)
 
-	name = XENO_CASTE_LARVA
+	name = "Bloody Larva"
 	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"

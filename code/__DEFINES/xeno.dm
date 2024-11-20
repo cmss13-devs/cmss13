@@ -667,7 +667,7 @@
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
 
 //XENO CASTES
-#define XENO_CASTE_LARVA  "Bloody Larva"
+#define XENO_CASTE_LARVA  "Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
 #define XENO_CASTE_FACEHUGGER "Facehugger"
 #define XENO_CASTE_LESSER_DRONE "Lesser Drone"

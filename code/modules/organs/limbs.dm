@@ -186,6 +186,10 @@
 		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
+		for(var/datum/internal_organ/internal_organ in internal_organs)
+			if(internal_organ.robotic == FALSE)
+				continue
+			internal_organ.emp_act(severity)
 
 /// If this limb can be dropped as a result of an EMP
 /obj/limb/proc/can_emp_delimb()

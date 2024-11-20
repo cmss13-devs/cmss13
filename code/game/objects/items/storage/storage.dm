@@ -857,7 +857,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(length(contents))
-		empty(user)
+		if (!(storage_flags & STORAGE_DISABLE_USE_EMPTY))
+			empty(user)
 		return
 
 	//Otherwise we'll try to fold it.

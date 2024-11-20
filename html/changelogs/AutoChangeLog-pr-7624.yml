@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - code_imp: "slightly optimised how pulse is checked by checking it when required rather than every lifetick"

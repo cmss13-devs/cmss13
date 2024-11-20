@@ -602,7 +602,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	add_random_survivor_equipment(new_human)
-	add_pmc_survivor_weapon(new_human)
+	add_survivor_weapon_security(new_human)
 	add_survivor_weapon_pistol(new_human)
 
 /datum/equipment_preset/corpse/clf/burst

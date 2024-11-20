@@ -1,5 +1,0 @@
-author: "Drulikar"
-delete-after: True
-changes:
-  - code_imp: "Refactored donator lists to GLOBs that automatically initialize and made ckeys in custom_items.txt more flexible"
-  - config: "Updated example config for custom_items.txt"

@@ -8,6 +8,10 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aac" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -166,6 +170,10 @@
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"aaM" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aaN" = (
 /obj/structure/surface/table,
@@ -16026,6 +16034,11 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/caves/eta/research)
+"bzJ" = (
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/caves/eta/research)
 "bzK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -21458,10 +21471,6 @@
 /obj/effect/decal/cleanable/flour,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
-"fZG" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
 "gad" = (
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
@@ -30853,10 +30862,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"qau" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port_lz2)
 "qaF" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -32187,11 +32192,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
-"rny" = (
-/obj/item/weapon/gun/smg/m39/corporate/no_lock,
-/obj/structure/closet/secure_closet/guncabinet/wy,
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/caves/eta/research)
 "rnV" = (
 /obj/item/stack/sheet/glass,
 /turf/open/floor/dark,
@@ -44692,7 +44692,7 @@ aah
 aah
 aah
 aek
-fZG
+aaM
 aaf
 aaf
 acJ
@@ -48044,7 +48044,7 @@ eWd
 eWd
 eWd
 eWd
-qau
+aac
 eWd
 eWd
 eWd
@@ -64574,11 +64574,11 @@ aBA
 byT
 bzf
 aBv
-rny
-rny
-rny
-rny
-rny
+bzJ
+bzJ
+bzJ
+bzJ
+bzJ
 aBv
 bBl
 xpl

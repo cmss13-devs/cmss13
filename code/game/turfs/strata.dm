@@ -177,9 +177,6 @@
 
 //------------//
 
-/turf/open/floor/
-	icon_state = "orange_tile"
-
 /turf/open/floor/strata/white_cyan1
 	icon_state = "white_cyan1"
 

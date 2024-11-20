@@ -1161,7 +1161,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/accessory/patch/falconalt
 
 /datum/gear/misc/patch_uscm/falconlarge
-	display_name = "Falling Falcons large shoulder patch"
+	display_name = "Falling Falcons large chest patch"
 	path = /obj/item/clothing/accessory/patch/falconlarge
 
 /datum/gear/misc/patch_uscm/uapatch
@@ -1171,6 +1171,18 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/patch_uscm/twepatch
 	display_name = "Three World Empire shoulder patch"
 	path = /obj/item/clothing/accessory/patch/twe
+
+/datum/gear/misc/patch_uscm/wy_black
+	display_name = "Weyland-Yutani shoulder patch, black"
+	path = /obj/item/clothing/accessory/patch/wy
+
+/datum/gear/misc/patch_uscm/wy_white
+	display_name = "Weyland-Yutani shoulder patch, white"
+	path = /obj/item/clothing/accessory/patch/wy_white
+
+/datum/gear/misc/patch_uscm/wy_fury
+	display_name = "Weyland-Yutani Fiornia '161' patch"
+	path = /obj/item/clothing/accessory/patch/wyfury
 
 /datum/gear/misc/family_photo
 	display_name = "Family photo"

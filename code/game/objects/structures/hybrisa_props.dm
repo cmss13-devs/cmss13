@@ -1499,57 +1499,114 @@
 	icon_state = "coffee"
 	var/vends = "coffee"
 	var/base_state = "coffee"
-	var/fiting_cups = list(/obj/item/reagent_container/food/drinks/coffee,/obj/item/reagent_container/food/drinks/coffeecup)
+	var/fiting_cups = list(/obj/item/reagent_container/food/drinks/coffee, /obj/item/reagent_container/food/drinks/coffeecup)
 	var/making_time = 10 SECONDS
+	var/brewing = FALSE
 	var/obj/item/reagent_container/food/drinks/cup = null
 
-/obj/structure/machinery/hybrisa/coffee_machine/attackby(obj/item/reagent_container/attacking_object, mob/user)
-	if(cup)
-		to_chat(user, SPAN_WARNING("There is already cup there."))
-		return
-	if(!is_type_in_list(attacking_object,fiting_cups ))
-		to_chat(user, SPAN_WARNING("\The [attacking_object] does not quite fit in."))
-		return
-	else
+/obj/structure/machinery/hybrisa/coffee_machine/pull_response(mob/puller)
+	. = ..()
+	if(.)
+		pixel_x = initial(pixel_x)
+		pixel_y = initial(pixel_y)
+	return .
+
+/obj/structure/machinery/hybrisa/coffee_machine/inoperable(additional_flags)
+	if(additional_flags & MAINT)
+		return FALSE // Allow attack_hand usage
+	if(!anchored)
+		return TRUE
+	return ..()
+
+/obj/structure/machinery/hybrisa/coffee_machine/attack_hand(mob/living/user)
+	if(..())
+		return TRUE
+
+	if(!brewing && cup && user.Adjacent(src) && user.put_in_hands(cup))
+		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
+		cup = null
+		update_icon()
+		return TRUE
+
+/obj/structure/machinery/hybrisa/coffee_machine/attackby(obj/item/attacking_object, mob/user)
+	if(is_type_in_list(attacking_object, fiting_cups))
+		if(inoperable())
+			to_chat(user, SPAN_WARNING("[src] does not appear to be working."))
+			return TRUE
+
+		if(cup)
+			to_chat(user, SPAN_WARNING("There is already [cup] there."))
+			return TRUE
+
 		playsound(src, "sound/machines/coffee1.ogg", 40, TRUE)
 		cup = attacking_object
 		user.drop_inv_item_to_loc(attacking_object, src)
 		update_icon()
-		addtimer(CALLBACK(src, PROC_REF(vend_coffee), user), making_time)
 
-/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user)
-	var/datum/reagents/current_reagent = cup.reagents
-	var/space = current_reagent.maximum_volume - current_reagent.total_volume
-	if(space<current_reagent.maximum_volume)
-		to_chat(user, SPAN_WARNING("\The [vends] spills around as it does not fit the [cup], you should have emptied it first."))
-	current_reagent.add_reagent(vends,space)
-	cup.reagents = current_reagent
-	if(user.Adjacent(src) && user.put_in_hands(cup))
+		var/datum/reagents/current_reagent = cup.reagents
+		var/space = current_reagent.maximum_volume - current_reagent.total_volume
+		if(space < current_reagent.maximum_volume)
+			to_chat(user, SPAN_WARNING("[capitalize_first_letters(vends)] spills around as it does not fit [cup], you should have emptied it first."))
+
+		brewing = TRUE
+		addtimer(CALLBACK(src, PROC_REF(vend_coffee), user, space), making_time)
+		return TRUE
+
+	if(istype(attacking_object, /obj/item/reagent_container))
+		to_chat(user, SPAN_WARNING("[attacking_object] does not quite fit in."))
+		return TRUE
+
+	return ..()
+
+/obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user, amount)
+	brewing = FALSE
+	cup?.reagents?.add_reagent(vends, amount)
+	if(user?.Adjacent(src) && user.put_in_hands(cup))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
+		cup = null
 	else
-		cup.forceMove(src.loc)
-		to_chat(user, SPAN_WARNING("\The [cup] sits ready in the machine."))
-	cup = null
+		to_chat(user, SPAN_WARNING("[cup] sits ready in the machine."))
+
 	update_icon()
+
+/obj/structure/machinery/hybrisa/coffee_machine/power_change(area/master_area)
+	. = ..()
+	update_icon()
+	return .
+
+/obj/structure/machinery/hybrisa/coffee_machine/toggle_anchored(obj/item/W, mob/user)
+	. = ..()
+	if(.)
+		update_icon()
+	return .
 
 /obj/structure/machinery/hybrisa/coffee_machine/update_icon()
 	if(!cup)
+		if(!anchored)
+			icon_state = ("[base_state]")
+			return
 		if(stat & NOPOWER)
-			icon_state = ("[base_state]_empty_on")
-		else
 			icon_state = ("[base_state]_empty_off")
-	else
-		icon_state = ("[base_state]_cup_generic")
-		switch(cup.type)
-			if(/obj/item/reagent_container/food/drinks/coffeecup)
-				icon_state = ("[base_state]_mug")
-			if(/obj/item/reagent_container/food/drinks/coffee/cuppa_joes)
-				icon_state = ("[base_state]_cup")
-			if(/obj/item/reagent_container/food/drinks/coffeecup/wy)
-				icon_state = ("[base_state]_mug_wy")
-			if(/obj/item/reagent_container/food/drinks/coffeecup/uscm)
-				icon_state = ("[base_state]_mug_uscm")
+			return
+		icon_state = ("[base_state]_empty_on")
+		return
 
+	switch(cup.type)
+		if(/obj/item/reagent_container/food/drinks/coffeecup)
+			icon_state = ("[base_state]_mug")
+		if(/obj/item/reagent_container/food/drinks/coffee/cuppa_joes)
+			icon_state = ("[base_state]_cup")
+		if(/obj/item/reagent_container/food/drinks/coffeecup/wy)
+			icon_state = ("[base_state]_mug_wy")
+		if(/obj/item/reagent_container/food/drinks/coffeecup/uscm)
+			icon_state = ("[base_state]_mug_uscm")
+		else
+			icon_state = ("[base_state]_cup_generic")
+
+/obj/structure/machinery/hybrisa/coffee_machine/get_examine_text(mob/user)
+	. = ..()
+	if(!anchored)
+		. += "It does not appear to be plugged in."
 
 // Big Computer Units 32x32
 

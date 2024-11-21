@@ -27,7 +27,7 @@
 /datum/squad
 	/// Name of the squad
 	var/name
-	/// Equivalent name so that loby prefered squad gets used for toehr factions
+	/// Equivalent name so that loby prefered squad gets used for other factions
 	var/equivalent_name
 	/// Squads ID that is set on New()
 	var/tracking_id = null //Used for the tracking subsystem

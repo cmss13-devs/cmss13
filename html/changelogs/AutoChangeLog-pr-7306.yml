@@ -1,6 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscadd: "Adds the personal gear vendor, where people can get their donator items or a random loadout item"
-  - rscadd: "Custom Items can be gotten from Requisitions instead of spawning with them"
-  - config: "Changes to config/custom_items.txt"

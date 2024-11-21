@@ -65,7 +65,7 @@
 /datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "JoeEmotes")
+		ui = new(user, src, "Emotes", "Working Joe Voice Synthesizer")
 		ui.open()
 
 
@@ -84,6 +84,7 @@
 /datum/joe_emote_panel/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["theme"] = "crtblue"
 	data["categories"] = GLOB.wj_categories
 	data["emotes"] = list()
 

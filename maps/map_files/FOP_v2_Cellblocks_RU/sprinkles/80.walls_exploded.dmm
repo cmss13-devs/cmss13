@@ -6,7 +6,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "c" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "red"

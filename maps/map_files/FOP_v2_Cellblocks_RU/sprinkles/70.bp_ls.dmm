@@ -14,10 +14,11 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "aq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/bed/chair/office,
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10
+	},
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "red"
@@ -197,10 +198,11 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/chapel)
 "kQ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/item/ammo_casing,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -631,9 +633,9 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/storage/highsec/n)
 "DC" = (
-/obj/structure/machinery/light,
 /obj/item/ammo_casing,
 /obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -662,11 +664,12 @@
 	},
 /area/prison/hallway/central/west)
 "GU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -913,11 +916,12 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "Un" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/bed/chair/office{
 	dir = 4
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10
 	},
 /turf/open/floor/prison{
 	dir = 10;

@@ -52,15 +52,20 @@
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
-	var/is_bloody = TRUE //We're still "bloody"
+	/// Whether we're bloody, normal, or mature
+	var/larva_state = LARVA_STATE_BLOODY
 
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
-	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...
+	// Check if no longer bloody or mature
+	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
+		larva_state = LARVA_STATE_NORMAL
 		generate_name()
-		is_bloody = FALSE
+	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
+		larva_state = LARVA_STATE_MATURE
+		generate_name()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
@@ -126,7 +131,7 @@
 /mob/living/carbon/xenomorph/larva/update_icons()
 	var/state = "" //Icon convention, two different sprite sets
 
-	if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	if(larva_state == LARVA_STATE_BLOODY)
 		state = "Bloody "
 
 	if(stat == DEAD)
@@ -213,9 +218,9 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		name_prefix = hive.prefix
 		color = hive.color
 
-	if(evolution_stored >= evolution_threshold)
+	if(larva_state == LARVA_STATE_MATURE)
 		progress = "Mature "
-	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	else if(larva_state == LARVA_STATE_BLOODY)
 		progress = "Bloody "
 
 	name = "[name_prefix][progress]Larva ([nicknumber])"

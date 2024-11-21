@@ -340,7 +340,8 @@
 	//Regenerate the new mob's name now that our player is inside
 	if(newcaste == XENO_CASTE_LARVA)
 		var/mob/living/carbon/xenomorph/larva/new_larva = new_xeno
-		new_larva.is_bloody = FALSE
+		new_larva.larva_state = LARVA_STATE_NORMAL
+		new_larva.update_icons()
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)

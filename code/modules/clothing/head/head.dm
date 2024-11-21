@@ -302,6 +302,10 @@
 	pockets.bypass_w_limit = allowed_hat_items
 	pockets.max_storage_space = storage_max_storage_space
 
+/obj/item/clothing/head/cmcap/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
+
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
 		..(user)

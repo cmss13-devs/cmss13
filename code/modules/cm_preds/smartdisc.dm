@@ -199,7 +199,7 @@
 			var/mob/living/L = A
 			if(L.faction == faction)
 				continue
-			else if(L in friends)
+			else if(WEAKREF(L) in friends)
 				continue
 			else if(isyautja(L))
 				continue

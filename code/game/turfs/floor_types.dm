@@ -322,6 +322,8 @@
 /turf/open/floor/plating/plating_catwalk/aicore
 	icon = 'icons/turf/floors/aicore.dmi'
 	icon_state = "ai_plating_catwalk"
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/plating/plating_catwalk/aicore/update_icon()
 	. = ..()
@@ -350,7 +352,8 @@
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -2104,6 +2107,8 @@
 	name = "wooden floor"
 	icon_state = "oldwood1"
 	tile_type = /obj/item/stack/tile/wood
+	breakable_tile = FALSE // wood-broken icon_state does not exist in this icon
+	burnable_tile = FALSE // wood-broken icon_state does not exist in this icon
 
 /turf/open/floor/interior/wood/is_wood_floor()
 	return TRUE

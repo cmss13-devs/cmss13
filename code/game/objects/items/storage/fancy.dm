@@ -18,7 +18,6 @@
 
 /obj/item/storage/fancy
 	icon = 'icons/obj/items/food.dmi'
-	icon_state = "donutbox"
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"

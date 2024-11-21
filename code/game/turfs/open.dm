@@ -787,7 +787,8 @@
 		LM.spin = TRUE
 		LM.pass_flags = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
-		unlucky_mob.launch_towards(LM)
+		// Entered can occur during Initialize so we need to not sleep
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
 		return
 
 	if(world.time % 5)

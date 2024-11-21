@@ -51,13 +51,13 @@
 	return T
 
 /mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
-	if(target.faction == src.faction && !attack_same)
+	if(target.stat)
 		return FALSE
-	else if(target in friends)
+	if((target.faction == faction || (target.faction in faction_group)) && !attack_same)
 		return FALSE
-	else
-		if(!target.stat)
-			return target
+	if(WEAKREF(target) in friends)
+		return FALSE
+	return target
 
 /mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return

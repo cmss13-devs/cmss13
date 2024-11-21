@@ -721,15 +721,20 @@
 	if(!length(enemies))
 		return list()
 	var/list/see = orange(src, dist)
-	see &= enemies
-	return see
+	var/list/seen_enemies = list()
+	// Remove all entries that aren't in enemies
+	for(var/thing in see)
+		if(WEAKREF(thing) in enemies)
+			seen_enemies += thing
+	return seen_enemies
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/evaluate_target(mob/living/target)
-	//we need to check for monkeys else these guys will tear up all the small hosts for xenos
-	if((target.faction == faction || (target.faction in faction_group)) && !attack_same || ismonkey(target) || (target in friends))
+	if(!..())
 		return FALSE
-	if(target.stat != DEAD)
-		return target
+	//we need to check for monkeys else these guys will tear up all the small hosts for xenos
+	if(ismonkey(target))
+		return FALSE
+	return target
 
 //Mobs in critical state are now fair game. Rip and tear.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/SA_attackable(target_mob)

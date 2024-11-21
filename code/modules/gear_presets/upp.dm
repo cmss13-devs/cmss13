@@ -2114,8 +2114,23 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/co_whitelist
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
+	title = JOB_UPP_CO_OFFICER
+	gear_preset = /datum/equipment_preset/upp/officer/major
+
+/datum/job/antag/upp/officer/co_whitelist/New()
+	. = ..()
+	gear_preset_whitelist = list(
+		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/upp/officer/major,
+		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/upp/officer/podpolkovnik,
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/upp/officer/polkovnik
+	)
+
 /datum/job/antag/upp/officer/major
-	flags_whitelist =  WHITELIST_COMMANDER
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major
 
@@ -2292,6 +2307,7 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/podpolkovnik
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
@@ -2474,7 +2490,8 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/kolonel
-	flags_whitelist = WHITELIST_COMMANDER_COLONEL
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER_COLONEL|WHITELIST_COMMANDER_LEADER
 	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
 

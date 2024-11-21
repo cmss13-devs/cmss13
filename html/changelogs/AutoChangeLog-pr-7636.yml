@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Monkeys in lockers can cause the locker to emote and have a higher chance of escaping"
+  - soundadd: "Monkeys now have a chance to use two different chimpers (existing sfx)"

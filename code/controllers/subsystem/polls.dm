@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(polls)
 	name = "Polls"
+	flags = SS_NO_FIRE
 
 	var/list/datum/poll/active_polls
 	var/list/datum/poll/concluded_polls

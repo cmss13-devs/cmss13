@@ -356,3 +356,9 @@
   - code_imp: Makes the Whitelist Panel use the correct permissions for Overseer.
   stanalbatross:
   - bugfix: made the first-aid pouch descriptions accurately reflect their contents
+2024-11-21:
+  SpypigDev:
+  - bugfix: no longer forces pill bottles to begin emptying on a click
+  stanalbatross:
+  - code_imp: slightly optimised how pulse is checked by checking it when required
+      rather than every lifetick

@@ -2144,6 +2144,7 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/major/co
+	name = "UPP Mayjor (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
 	rank = JOB_UPP_CO_OFFICER
 
@@ -2327,6 +2328,7 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/podpolkovnik/co
+	name = "UPP Podpolkovnik (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
 	rank = JOB_UPP_CO_OFFICER
 
@@ -2340,8 +2342,12 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
+	name = "UPP Flag Officer Base"
 	minimap_icon = "upp_co"
 	skills = /datum/skills/upp/commander
+
+/datum/equipment_preset/upp/officer/flag/dressed
+	name = "UPP Flag Officer Base (Dressed)"
 
 /datum/equipment_preset/upp/officer/flag/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2515,6 +2521,7 @@
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/polkovnik/co
+	name = "UPP Polkovnik (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
 	rank = JOB_UPP_CO_OFFICER
 

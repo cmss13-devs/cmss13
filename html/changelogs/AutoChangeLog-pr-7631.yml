@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Increased orphan egg time from 5 mins to 6 mins."

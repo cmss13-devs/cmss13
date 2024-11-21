@@ -313,5 +313,5 @@ SUBSYSTEM_DEF(polls)
 		"id",
 		"player_id",
 		"poll_id",
-		"answer_id"
+		"answer_id",
 	)

@@ -566,6 +566,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.put_marine_in_squad(human))
 				return
 
+		else if(squad.eqivalent_name == preferred_squad) //eqivalent names so that USCM names are used for squads of other factions
+			if(squad.put_marine_in_squad(human))
+				return
 		if(!lowest)
 			lowest = squad
 

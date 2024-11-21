@@ -1582,11 +1582,6 @@
 /area/rostock/hangar/hangarbay)
 "bky" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter/rotary{
-	pixel_y = -2;
-	pixel_x = 8;
-	phone_id = "Rostock CIC"
-	},
 /obj/structure/machinery/door_control{
 	id = "upp_armory";
 	name = "Armory Lockdown";
@@ -1614,6 +1609,11 @@
 	req_access_txt = "240";
 	pixel_x = 6;
 	pixel_y = 13
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	phone_id = "Rostock CIC";
+	pixel_y = -1;
+	pixel_x = 8
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/rostock/command/cic)
@@ -3367,9 +3367,7 @@
 /area/rostock/stair_clone)
 "cFS" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/upp{
-	dir = 8
-	},
+/obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/rostock/command/cic)
 "cGb" = (
@@ -27947,6 +27945,17 @@
 	dir = 4;
 	invisibility = 101
 	},
+/obj/structure/machinery/prop/almayer/CICmap/upp,
+/obj/item/clothing/accessory/armband/cargo{
+	name = "commander armband"
+	},
+/obj/item/clothing/accessory/armband/cargo{
+	name = "commander armband"
+	},
+/obj/item/clothing/glasses/hud/health,
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/storage/backpack/marine/satchel/rto/upp_net,
+/obj/item/clothing/glasses/hud/health,
 /turf/open/floor/prison/darkyellow2/east,
 /area/rostock/command/cic)
 "vqk" = (
@@ -29833,16 +29842,17 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "wHj" = (
-/obj/structure/machinery/prop/almayer/CICmap/upp,
-/obj/item/storage/backpack/marine/satchel/rto/upp_net,
-/obj/item/storage/backpack/marine/satchel/rto/upp_net,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/accessory/armband/cargo{
-	name = "commander armband"
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/groundside_operations/upp{
+	dir = 4;
+	pixel_y = -9;
+	layer = 2.99;
+	req_access = list(240)
 	},
-/obj/item/clothing/accessory/armband/cargo{
-	name = "commander armband"
+/obj/structure/machinery/computer/overwatch/upp{
+	dir = 8;
+	pixel_y = 5;
+	req_access = list(240)
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/command/cic)
@@ -31606,14 +31616,14 @@
 /area/rostock/lower_deck/m_hallway)
 "ydm" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter/rotary{
-	pixel_y = 5;
-	pixel_x = 6;
-	phone_id = "UPP Vessel Brig"
-	},
 /obj/item/toy/deck/uno{
 	pixel_x = -12;
 	pixel_y = -3
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	pixel_y = 7;
+	pixel_x = 5;
+	phone_id = "Rostock Brig"
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/security/headquarters_lobby)

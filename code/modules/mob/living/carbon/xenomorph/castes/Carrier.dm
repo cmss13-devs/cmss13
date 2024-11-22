@@ -17,7 +17,8 @@
 	available_strains = list(/datum/xeno_strain/eggsac)
 	behavior_delegate_type = /datum/behavior_delegate/carrier_base
 
-	evolution_allowed = FALSE
+	evolution_allowed = TRUE
+	evolves_to = list(XENO_CASTE_REAPER)
 	deevolves_to = list(XENO_CASTE_DRONE)
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1

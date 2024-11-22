@@ -199,6 +199,7 @@
 			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
 			if("queen") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
 			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
+			if("reaper") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/reaper , null, null, delmob)
 
 			if("human") transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey") transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )

@@ -28,6 +28,9 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/not_primary // Good for futureproofing
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"

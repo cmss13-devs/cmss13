@@ -144,6 +144,37 @@
 
 // VAMPIRE LURKER
 
+/datum/action/xeno_action/activable/pounce/rush/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!action_cooldown_check())
+		return
+
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	var/mob/living/carbon/carbon_target = target
+	if(get_dist(xeno, target) > distance)
+		to_chat(xeno, SPAN_XENOWARNING("This is too far, find a closer target."))
+		return FALSE
+	if(!iscarbon(target) || carbon_target.stat == DEAD)
+		for(var/mob/living/carbon/carbon in get_turf(target))
+			carbon_target = carbon
+			if(carbon_target.stat != DEAD)
+				break
+	if(!iscarbon(carbon_target))
+		owner.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lack the target to rush at. Wait a moment to try again."))
+		apply_cooldown_override(click_miss_cooldown)
+		return FALSE
+	. = ..(carbon_target)
+	if(!.)
+		return
+	if(xeno.can_not_harm(carbon_target))
+		xeno.emote("needshelp")
+
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -278,7 +309,10 @@
 	var/stab_direction
 
 	stab_direction = turn(get_dir(xeno, targeted_atom), 180)
-	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+	if(prob(1))
+		playsound(hit_target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
+	else
+		playsound(hit_target, "punch", 50, TRUE)
 
 	var/direction = Get_Compass_Dir(xeno, targeted_atom) //More precise than get_dir.
 
@@ -287,12 +321,12 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if (hit_target.mob_size < MOB_SIZE_BIG)
+		if(hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(1)
 		else
 			hit_target.Slow(1)
 	else
-		if (hit_target.mob_size < MOB_SIZE_BIG)
+		if(hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)
 		else
 			hit_target.Slow(0.5)

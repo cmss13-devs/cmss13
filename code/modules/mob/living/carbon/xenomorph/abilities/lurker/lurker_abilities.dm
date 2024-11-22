@@ -49,9 +49,11 @@
 	plasma_cost = 0
 
 	// Config options
-	distance = 4
+	distance = 5
 	knockdown = FALSE
 	freeze_self = FALSE
+
+	var/click_miss_cooldown = 15
 
 /datum/action/xeno_action/activable/flurry
 	name = "Flurry"
@@ -59,7 +61,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 4 SECONDS
 
 /datum/action/xeno_action/activable/tail_jab
 	name = "Tail Jab"

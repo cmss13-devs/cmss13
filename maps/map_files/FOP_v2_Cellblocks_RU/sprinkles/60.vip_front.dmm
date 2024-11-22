@@ -82,7 +82,21 @@
 "gf" = (
 /obj/structure/window/framed/prison,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	name = "Civilian Residences Emergency Access";
+	explo_proof = 1
+	},
+/turf/open/floor/plating/prison,
+/area/prison/security/monitoring/highsec)
+"gs" = (
+/obj/structure/window/framed/prison,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	name = "Civilian Residences Emergency Access";
+	explo_proof = 1
+	},
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "gH" = (
 /obj/structure/largecrate/random/case/double,
@@ -181,7 +195,7 @@
 /area/prison/security/monitoring/highsec)
 "pm" = (
 /obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/prison,
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "pA" = (
 /obj/item/ammo_casing{
@@ -400,9 +414,10 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	name = "Civilian Residences Emergency Access"
+	name = "Civilian Residences Emergency Access";
+	explo_proof = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "Fo" = (
 /turf/open/floor/prison{
@@ -431,9 +446,10 @@
 "HR" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	name = "Civilian Residences Emergency Access"
+	name = "Civilian Residences Emergency Access";
+	explo_proof = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "Jy" = (
 /obj/structure/barricade/wooden{
@@ -492,7 +508,7 @@
 /obj/structure/window/framed/prison,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "OL" = (
 /obj/structure/barricade/metal/wired{
@@ -520,7 +536,7 @@
 /area/prison/security/monitoring/highsec)
 "QM" = (
 /obj/structure/window/framed/prison,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "RT" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -655,7 +671,7 @@ Vu
 gf
 HR
 Fl
-QM
+gs
 Vu
 Vu
 Vu

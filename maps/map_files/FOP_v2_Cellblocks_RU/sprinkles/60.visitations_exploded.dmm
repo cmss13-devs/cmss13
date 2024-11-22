@@ -156,8 +156,9 @@
 	},
 /area/prison/visitation)
 "lb" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -201,10 +202,12 @@
 /area/prison/visitation)
 "nd" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -238,7 +241,9 @@
 	},
 /area/prison/visitation)
 "pN" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	pixel_y = -1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -529,8 +534,10 @@
 /area/prison/visitation)
 "Zh" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -1
 	},
 /turf/open/floor/prison{
 	dir = 10;

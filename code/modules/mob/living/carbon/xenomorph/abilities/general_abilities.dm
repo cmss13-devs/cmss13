@@ -221,7 +221,6 @@
 	var/throw_speed = SPEED_FAST // Throw speed
 	var/tracks_target = TRUE // Does it track the target atom?
 
-	var/only_target_mobs = FALSE // Can only pounce at mobs
 	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
 

@@ -116,9 +116,8 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-	if(faction == FACTION_MARINE)
-		. += ""
-		. += "<a href='?MapView=1'>View Tactical Map</a>"
+	. += ""
+	. += "<a href='?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -1767,7 +1766,7 @@
 
 /// generates realistic-ish pulse output based on preset levels.
 /// method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate
-/mob/living/carbon/human/proc/get_pulse(method) 
+/mob/living/carbon/human/proc/get_pulse(method)
 	var/temp = 0 //see setup.dm:694
 
 	if(species && species.flags & NO_BLOOD)

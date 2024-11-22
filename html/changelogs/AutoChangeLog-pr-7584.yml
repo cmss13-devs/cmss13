@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "UPP synthetics spawned as part of events may now have access to a Snowflake clothing vendor, to better allow them to customise their appearance."

@@ -142,6 +142,10 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
+/area/adminlevel/ert_station/fax_response_station
+	name = "Sector Comms Relay"
+	icon_state = "green"
+
 //Simulation area
 /area/adminlevel/simulation
 	name = "Simulated Reality"

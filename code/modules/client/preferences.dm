@@ -694,6 +694,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
+		if(job.flags_startup_parameters & ROLE_HIDDEN)
+			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"

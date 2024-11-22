@@ -39,10 +39,12 @@
 	var/datum/ammo/ammo_secondary //Toggled ammo type
 	var/datum/ammo/ammo_primary_def = /datum/ammo/bullet/smartgun
 	var/datum/ammo/ammo_secondary_def = /datum/ammo/bullet/smartgun/armor_piercing
+	//Frontline mode changes the SG to use 2 new bullet types (alt) for each variant of the SG so we can change falloff/damage/range parameters.
 	var/datum/ammo/ammo_primary_alt = /datum/ammo/bullet/smartgun/alt
 	var/datum/ammo/ammo_secondary_alt = /datum/ammo/bullet/smartgun/armor_piercing/alt
 	var/iff_enabled = TRUE //Begin with the safety on.
-	var/frontline_enabled = FALSE //Begins with 'normal IFF' enabled (shoots through friendly marines, instead of Alt-IFF)
+	//This controls if frontline mode is enabled roundstart. E.g. var/frontline_enabled = FALSE means the SG starts with frontline mode disabled.
+	var/frontline_enabled = FALSE
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
@@ -301,7 +303,7 @@
 /datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_frontline_mode(usr)
+	G.toggle_frontline_mode(owner)
 	if(G.frontline_enabled)
 		action_icon_state = "iff_toggle_off"
 	else
@@ -353,7 +355,7 @@
 //more general procs
 
 /obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
+	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
 	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
@@ -385,7 +387,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
+	to_chat(user, "[icon2html(src, user)] You changed [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
 	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary

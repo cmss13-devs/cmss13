@@ -1686,7 +1686,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	projectile_to_fire.shot_from = src
 
-	return 1
+	return  TRUE
 
 //This proc calculates scatter and accuracy
 /obj/item/weapon/gun/proc/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)

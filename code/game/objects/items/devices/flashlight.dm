@@ -488,7 +488,7 @@
 	if(amount < 1)
 		return INITIALIZE_HINT_QDEL
 	var/square_amount = sqrt(amount)
-	// Fuel quickly ramps up to about 14.5 mins then tapers off the more volume there is (6s min)
+	// Fuel quickly ramps up to about 15.5 mins then tapers off the more volume there is (6s min)
 	fuel = max(((-150 / square_amount) - 2 * sqrt(amount + 2000) + 120), 0.1) MINUTES
 	// Range gradually ramps up from 1 to 15
 	light_range = max(min(square_amount - 3, 15), MINIMUM_USEFUL_LIGHT_RANGE)

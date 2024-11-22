@@ -268,3 +268,117 @@
   - bugfix: makes UPP synth lobby joinable for events
   zzzmike:
   - rscadd: tip of the round regarding lesser known cryotube utility
+2024-11-16:
+  BeagleGaming1:
+  - rscadd: Adds the personal gear vendor, where people can get their donator items
+      or a random loadout item
+  - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
+      them
+  - config: Changes to config/custom_items.txt
+2024-11-18:
+  Drulikar:
+  - code_imp: dmm_test now checks if there are pending mapmerge2 conversions.
+  - code_imp: Improved dmm_test error handling
+  - code_imp: mapmerge2 now uses keys sequentially rather than randomly.
+  - code_imp: mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes
+      pending mapmerge2 conversions.
+  SASoperative:
+  - rscadd: Personal Gear Vendor allows retrieval of additional kits for multi-kit
+      donators
+2024-11-19:
+  AlanParkerMasters:
+  - rscdel: A single period from the ABR-40 description that shouldn't be there.
+  An A Jay:
+  - balance: Gave predators the ability to cut through fences
+  Red-byte3D:
+  - code_imp: rewrote tremor code
+  cuberound:
+  - bugfix: emp act is called once on each limb not three time
+  - balance: reduces g2 electroshock grenade stamina damage
+  - bugfix: yauta bracers get properly drained by emp
+  harryob:
+  - ui: adds a search bar to the pred/wj emote panels
+  zzzmike:
+  - qol: nuclear device messaging more helpful for newbies
+2024-11-20:
+  BOBAMA:
+  - rscadd: Added a new corporate version of the M-39.
+  - rscadd: Added new PMC TL to the Big Red nightmare insert.
+  - rscadd: corporate M-39, Mk221, and corporate FP9000 to PMC survivor weapon pool
+      to replace the MAR, FP9000, CMB shotgun, custom shotgun, and MP5.
+  - mapadd: Changed the PMC Big Red nightmare insert to now have supplies in the second
+      crashed dropship near EVA.
+  - maptweak: Changed standard M-39 gun lockers in Eta Labs to the new corporate version.
+  Drathek:
+  - bugfix: Fixed xenos sometimes becoming immortal with warding pheros (xenos do
+      not cap brute/fire damage now)
+  - code_imp: Added sanity checks for whenever AREA_UNWEEDABLE is used or when an
+      area is somehow null
+  - balance: All maps have their round start is_resin_allowed restriction lifted unless
+      out of bounds
+  - maptweak: All maps with OOB areas have now AREA_UNWEEDABLE set to make the restriction
+      permanent
+  - bugfix: Resin walls and doors will now properly get weed killed
+  - bugfix: Fixed corrupted xenos not getting the English language
+  - bugfix: Fixed ammo boxes allowing cramming under north facing platforms
+  Drulikar:
+  - code_imp: Refactored donator lists to GLOBs that automatically initialize and
+      made ckeys in custom_items.txt more flexible
+  - config: Updated example config for custom_items.txt
+  Joe Lampost:
+  - rscadd: Thwei crystals now delete themselves after a set time
+  Steelpoint:
+  - rscadd: UPP synthetics spawned as part of events may now have access to a Snowflake
+      clothing vendor, to better allow them to customise their appearance.
+  - balance: During the 'Faction Clash' (HvH) game mode. Marine Helmets, gloves and
+      boots will have similar armour values to their UPP counterparts.
+  TheGamerdk:
+  - rscadd: Barricades have been covered in petroleum jelly. They can no longer be
+      pixelshifted.
+  cuberound:
+  - balance: add flashing light to mortar impacts for UPP vs USCM gamemode
+  - imageadd: tacmap icon for sensor tower (displayed to all factions)
+  - rscadd: UPP HUD icons get their squad color
+  - balance: launchbay is now useable on transport run
+  - balance: changes UPP rifleman, medic,engi and squad leader skills to be the same
+      as USCM coutnerparts for HvH events
+  - bugfix: UPP CO and synth whitelists work on lobby joning
+  private-tristan:
+  - bugfix: SOF Encryption Keys now properly give you SOF comms.
+  realforest2001:
+  - rscadd: Added unique identifier to all fax machines.
+  - rscadd: Added a new way to contact fax machines directly, titled Specific Machine
+      Code in the select department setting.
+  - rscadd: Added a Fax Responder role, broken down into subsidiary jobs for each
+      faction. This is currently experimental in handling, and access is restricted.
+  - rscadd: Fax Machines will tell you (when selecting a faction's High Command) if
+      a Fax Responder is awake.
+  - code_imp: Makes the Whitelist Panel use the correct permissions for Overseer.
+  stanalbatross:
+  - bugfix: made the first-aid pouch descriptions accurately reflect their contents
+2024-11-21:
+  SpypigDev:
+  - bugfix: no longer forces pill bottles to begin emptying on a click
+  stanalbatross:
+  - code_imp: slightly optimised how pulse is checked by checking it when required
+      rather than every lifetick
+2024-11-22:
+  Drathek:
+  - rscadd: Added 5 minute cooldown when de-evolving to evolve into the same caste
+  - bugfix: Fixed queen de-evolve deleting her own organ rather than target xeno's
+  - bugfix: Fixed queen de-evolve not transferring built_structures list
+  - bugfix: Fixed regular de-evolve not stopping stat tracking on old xeno
+  - bugfix: Fixed de-evolve verb getting restored if it was taken away (Wouldn't without
+      admin intervention currently)
+  - bugfix: Fixed mature larva name never getting applied when full evo threshold
+  - rscdel: De-evolving to larva is now never bloodied (bloody used to only depend
+      on evolution points to determine bloody status)
+  - rscadd: Monkeys in lockers can cause the locker to emote and have a higher chance
+      of escaping
+  - soundadd: Monkeys now have a chance to use two different chimpers (existing sfx)
+  - balance: Increased orphan egg time from 5 mins to 6 mins.
+  - balance: Xeno ammo can no longer push items (e.g. Oppressor Tail Seize)
+  SpartanBobby:
+  - maptweak: Readds LV522 LZ1 shortfog
+  realforest2001:
+  - bugfix: Staff can properly access Fax Responder WL.

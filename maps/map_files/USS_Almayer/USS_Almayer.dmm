@@ -45261,6 +45261,10 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/personal_gear_vendor{
+	dir = 8;
+	pixel_x = -4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "oMi" = (

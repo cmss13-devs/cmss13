@@ -7,6 +7,7 @@ export type OrbitData = {
   survivors: Observable[];
   xenos: Observable[];
   ert_members: Observable[];
+  responders: Observable[];
   upp: Observable[];
   twe: Observable[];
   clf: Observable[];

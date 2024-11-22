@@ -5,6 +5,9 @@
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
+	var/default_color = FALSE //so squad units get red icons as survs and ERT
+	var/datum/squad/squad = H.assigned_squad
+
 	var/_role
 	if(H.mind)
 		_role = H.job
@@ -13,12 +16,16 @@
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"
+			default_color = TRUE
 		if(JOB_UPP_ENGI)
 			hud_icon_state = "sapper"
+			default_color = TRUE
 		if(JOB_UPP_SPECIALIST)
 			hud_icon_state = "spec"
+			default_color = TRUE
 		if(JOB_UPP_LEADER)
 			hud_icon_state = "sl"
+			default_color = TRUE
 		if(JOB_UPP_POLICE)
 			hud_icon_state = "mp"
 		if(JOB_UPP_LT_OFFICER)
@@ -58,7 +65,17 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_background")
+		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		if(istype(squad))
+			rank_icon_image.color = squad.equipment_color
+			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', H, "upp_squad_circle")
+			squad_circle.color = squad.equipment_color
+			holder.overlays += squad_circle
+		else
+			if(default_color)
+				rank_icon_image.color = "#e61919"
+		holder.overlays += rank_icon_image
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

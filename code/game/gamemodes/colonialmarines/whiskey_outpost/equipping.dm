@@ -189,12 +189,12 @@ Ensure power is up, and the bunker is well defended. You share your bunker crew 
 //*************************************
 //---------------MAINT TECH-------------
 //*************************************/
-/datum/job/logistics/tech/maint/whiskey
+/datum/job/logistics/maint/whiskey
 	title = JOB_WO_ORDNANCE_TECH
 	supervisors = "the bunker crew master and the quartermaster"
 	gear_preset = /datum/equipment_preset/wo/bc
 
-/datum/job/logistics/tech/maint/whiskey/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/logistics/maint/whiskey/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You've worked here for a while, figuring it was a pretty comfy job. Now you gotta fight for your life. Have fun with that.
 Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 

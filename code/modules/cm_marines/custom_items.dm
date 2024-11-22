@@ -1,32 +1,11 @@
-GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
-GLOBAL_LIST_EMPTY(donator_items)
+GLOBAL_LIST_INIT(donator_items, generate_donor_kits(FALSE))
+GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
-/obj/structure/machinery/personal_gear_vendor
-	name = "personal gear vendor"
-	desc = "A console that allows the user to retrieve their personal possessions from the ASRS."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "cellconsole"
-	density = TRUE
-	unacidable = TRUE
-	unslashable = TRUE
-	///a random item that can be claimed if there is no valid kit
-	var/static/list/random_personal_possessions = list()
-	///list of ckeys of ckeys who redeemed kits
-	var/static/list/ckeys_redeemed_kits = list()
+/proc/generate_donor_kits(assign_to_glob = TRUE)
+	. = list()
 
-/obj/structure/machinery/personal_gear_vendor/Initialize(mapload, ...)
-	. = ..()
-	if(!length(GLOB.donator_items))
-		generate_donor_kits()
-
-	if(!length(random_personal_possessions))
-		generate_random_possessions()
-
-/obj/structure/machinery/personal_gear_vendor/proc/generate_donor_kits(regenerate_kits = FALSE)
-	if(regenerate_kits)
-		GLOB.donator_items = list()
-
-	for(var/current_line in GLOB.custom_items)
+	var/list/custom_items = file2list("config/custom_items.txt")
+	for(var/current_line in custom_items)
 		if(!length(current_line)) //empty line
 			continue
 		if(copytext(current_line, 1, 2) == "#") //comment line
@@ -38,7 +17,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 
 		var/split_line = splittext(current_line, ":")
 
-		donor_key = trim(split_line[1])
+		donor_key = ckey(trim(split_line[1]))
 		if(length(split_line) > 2) //if someone has multiple kits, name them
 			kit_name = trim(split_line[2])
 
@@ -53,20 +32,37 @@ GLOBAL_LIST_EMPTY(donator_items)
 			stack_trace("Missing gear in Donator Gear. [donor_key] has an empty Donator Kit.")
 			continue
 
-		if(kit_name in GLOB.donator_items[donor_key]) //multiple kits with same name
+		if(kit_name in .[donor_key]) //multiple kits with same name
 			stack_trace("Duplicate kit in Donator Gear. [donor_key] has multiple [kit_name] Donator Kits.")
 			continue
 
-		GLOB.donator_items[donor_key] += list("[kit_name]" = kit_gear)
+		.[donor_key] += list("[kit_name]" = kit_gear)
 
-/obj/structure/machinery/personal_gear_vendor/proc/generate_random_possessions(regenerate_kits = FALSE)
-	if(regenerate_kits)
-		random_personal_possessions = list()
+	if(assign_to_glob)
+		GLOB.donator_items = .
+
+	return .
+
+/proc/generate_random_possessions()
+	. = list()
 
 	for(var/datum/gear/current_gear as anything in subtypesof(/datum/gear))
 		if(!initial(current_gear.display_name))
 			continue
-		random_personal_possessions += initial(current_gear.path)
+		. += initial(current_gear.path)
+
+	return .
+
+/obj/structure/machinery/personal_gear_vendor
+	name = "personal gear vendor"
+	desc = "A console that allows the user to retrieve their personal possessions from the ASRS."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "cellconsole"
+	density = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
+	///assoc list of ckeys to list of kits redeemed
+	var/static/list/ckeys_redeemed_kits = list()
 
 /obj/structure/machinery/personal_gear_vendor/attack_hand(mob/living/user)
 	if(..())
@@ -75,26 +71,32 @@ GLOBAL_LIST_EMPTY(donator_items)
 	if(!ishuman(user))
 		return FALSE
 
-	if(user.ckey in ckeys_redeemed_kits)
-		to_chat(user, SPAN_NOTICE("You have already retrieved your kit."))
-		return TRUE
-
 	var/list/possible_kits = list()
 	if(user.ckey in GLOB.donator_items)
 		possible_kits += GLOB.donator_items[user.ckey]
 
+	if(user.ckey in ckeys_redeemed_kits)
+		if(length(ckeys_redeemed_kits[user.ckey]) >= length(possible_kits))
+			// They are a donator but have gotten everything
+			to_chat(user, SPAN_NOTICE("You have already retrieved your kit(s)."))
+			return TRUE
+
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
-		var/random_item = pick(random_personal_possessions)
-		random_item = new random_item(get_turf(src))
+		var/random_item_path = pick(GLOB.random_personal_possessions)
+		var/random_item = new random_item_path(get_turf(src))
 		user.put_in_any_hand_if_possible(random_item)
 		to_chat(user, SPAN_NOTICE("You take [random_item] from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], random_item_path)
 		return TRUE
+
+	// Remove any kits already grabbed
+	for(var/item in ckeys_redeemed_kits[user.ckey])
+		possible_kits -= item
 
 	if(length(possible_kits) == 1)
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[possible_kits[1]]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], possible_kits[1])
 		return TRUE
 
 	if(length(possible_kits) >= 2)
@@ -107,7 +109,7 @@ GLOBAL_LIST_EMPTY(donator_items)
 			return TRUE
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[kit_choice]))
 		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
-		ckeys_redeemed_kits += user.ckey
+		LAZYADD(ckeys_redeemed_kits[user.ckey], kit_choice)
 		return TRUE
 
 /obj/structure/machinery/personal_gear_vendor/attackby(obj/item/attacking_item, mob/user)

@@ -562,13 +562,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.put_marine_in_squad(human))
 				return
 
-		else if(squad.name == preferred_squad) //fav squad has a spot for us, no more searching needed.
+		else if(squad.name == preferred_squad || squad.equivalent_name == preferred_squad) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))
 				return
 
-		else if(squad.equivalent_name == preferred_squad) //equivalent names so that USCM names are used for squads of other factions
-			if(squad.put_marine_in_squad(human))
-				return
 		if(!lowest)
 			lowest = squad
 

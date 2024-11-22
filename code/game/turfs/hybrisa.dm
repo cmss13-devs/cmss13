@@ -967,6 +967,9 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor13
 	icon_state = "outerhull_dir"
 
+/turf/open/floor/hybrisa/engineership/engineer_floor13/southeast
+	dir = SOUTHEAST
+
 /turf/open/floor/hybrisa/engineership/engineer_floor13/southwest
 	dir = SOUTHWEST
 

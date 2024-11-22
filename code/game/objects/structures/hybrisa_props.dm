@@ -412,8 +412,7 @@
 	density = TRUE
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1
 	icon_state = "boulder_largedark1"
 
@@ -431,8 +430,7 @@
 	density = TRUE
 	bound_height = 32
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1
 	icon_state = "boulderwidedark"
 
@@ -444,8 +442,6 @@
 	icon_state = "bouldersmalldark1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/boulder_small.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
 	density = TRUE
 
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1

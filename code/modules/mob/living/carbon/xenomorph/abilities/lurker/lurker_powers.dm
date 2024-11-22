@@ -165,7 +165,7 @@
 			carbon_target = carbon
 			if(carbon_target.stat != DEAD)
 				break
-	if(!iscarbon(carbon_target) && carbon_target.stat != DEAD)
+	if(!iscarbon(carbon_target) || carbon_target.stat == DEAD)
 		owner.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lack the target to rush at. Wait a moment to try again."))
 		apply_cooldown_override(click_miss_cooldown)
 		return FALSE

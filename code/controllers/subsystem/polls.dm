@@ -2,11 +2,38 @@ SUBSYSTEM_DEF(polls)
 	name = "Polls"
 	flags = SS_NO_FIRE
 
+	/// Stores the polls that have not expired, and set as active
 	var/list/datum/poll/active_polls
+
+	/// Stores the polls that have expired, and set as active
 	var/list/datum/poll/concluded_polls
+
+	/// For storing messages to remind people to vote, that we do not want to get lost in the mess of a server starting
+	VAR_PRIVATE/list/datum/callback/to_send_at_lobby = list()
 
 /datum/controller/subsystem/polls/Initialize()
 	setup_polls()
+
+	for(var/id in active_polls)
+		var/list/datum/view_record/player_poll_answer/completed_polls = DB_VIEW(
+			/datum/view_record/player_poll_answer,
+			DB_COMP("polL_id", DB_EQUALS, id)
+		)
+
+		var/voted_ids = list()
+		for(var/datum/view_record/player_poll_answer/answer as anything in completed_polls)
+			voted_ids += answer.player_id
+
+		var/datum/poll/active_poll = active_polls[id]
+
+		for(var/client/client as anything in GLOB.clients)
+			if(client.player_data.id in voted_ids)
+				continue
+
+			to_send_at_lobby += CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[client.mob];lobby_choice=polls'>here</a> to vote."))
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, PROC_REF(handle_lobby))
+	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_user))
 
 	return SS_INIT_SUCCESS
 
@@ -61,6 +88,39 @@ SUBSYSTEM_DEF(polls)
 		concluded_polls["[poll.id]"] = concluded_poll
 
 	update_static_data_for_all_viewers()
+
+/datum/controller/subsystem/polls/proc/handle_lobby(source)
+	SIGNAL_HANDLER
+
+	for(var/datum/callback/callback as anything in to_send_at_lobby)
+		callback.InvokeAsync()
+
+/datum/controller/subsystem/polls/proc/handle_new_user(source, client/new_client)
+	SIGNAL_HANDLER
+
+	INVOKE_ASYNC(src, PROC_REF(remind_new_user), new_client)
+
+/datum/controller/subsystem/polls/proc/remind_new_user(client/new_client)
+	set waitfor = FALSE
+
+	while(!new_client.player_data)
+		stoplag()
+
+	for(var/id in active_polls)
+		var/voted = length(DB_VIEW(
+			/datum/view_record/player_poll_answer,
+			DB_AND(
+				DB_COMP("player_id", DB_EQUALS, new_client.player_data.id),
+				DB_COMP("poll_id", DB_EQUALS, id)
+			)
+		))
+
+		if(voted)
+			continue
+
+		var/datum/poll/active_poll = active_polls[id]
+
+		to_chat(new_client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[new_client.mob];lobby_choice=polls'>here</a> to vote."))
 
 /datum/controller/subsystem/polls/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

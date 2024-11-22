@@ -362,3 +362,23 @@
   stanalbatross:
   - code_imp: slightly optimised how pulse is checked by checking it when required
       rather than every lifetick
+2024-11-22:
+  Drathek:
+  - rscadd: Added 5 minute cooldown when de-evolving to evolve into the same caste
+  - bugfix: Fixed queen de-evolve deleting her own organ rather than target xeno's
+  - bugfix: Fixed queen de-evolve not transferring built_structures list
+  - bugfix: Fixed regular de-evolve not stopping stat tracking on old xeno
+  - bugfix: Fixed de-evolve verb getting restored if it was taken away (Wouldn't without
+      admin intervention currently)
+  - bugfix: Fixed mature larva name never getting applied when full evo threshold
+  - rscdel: De-evolving to larva is now never bloodied (bloody used to only depend
+      on evolution points to determine bloody status)
+  - rscadd: Monkeys in lockers can cause the locker to emote and have a higher chance
+      of escaping
+  - soundadd: Monkeys now have a chance to use two different chimpers (existing sfx)
+  - balance: Increased orphan egg time from 5 mins to 6 mins.
+  - balance: Xeno ammo can no longer push items (e.g. Oppressor Tail Seize)
+  SpartanBobby:
+  - maptweak: Readds LV522 LZ1 shortfog
+  realforest2001:
+  - bugfix: Staff can properly access Fax Responder WL.

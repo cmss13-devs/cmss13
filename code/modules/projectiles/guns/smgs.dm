@@ -143,6 +143,23 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
+/obj/item/weapon/gun/smg/m39/corporate
+	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition."
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand.dmi',
+		WEAR_BACK = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi',
+		WEAR_J_STORE = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi'
+	)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	map_specific_decoration = FALSE
+	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
+
+/obj/item/weapon/gun/smg/m39/corporate/no_lock //for PMC nightmares.
+	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition. This one had its IFF electronics removed."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
 /obj/item/weapon/gun/smg/m39/elite/whiteout//attachies + heap mag for whiteout.
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap

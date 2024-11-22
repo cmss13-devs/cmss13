@@ -8,6 +8,11 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aac" = (
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/turf/open/floor/redfull/northwest,
+/area/bigredv2/caves/eta/research)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -167,6 +172,18 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"aaM" = (
+/obj/item/prop{
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon_state = "m41ae2";
+	name = "M41AE2 Heavy Pulse Rifle";
+	desc = "A large claw mark across this weapon indicates it is inoperable.";
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/bigredv2/outside/office_complex)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -242,10 +259,36 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"abb" = (
+/obj/item/roller/bedroll{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/obj/item/stack/medical/bruise_pack{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/open/floor/whitegreen/west,
+/area/bigredv2/outside/medical)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abd" = (
+/obj/structure/surface/table,
+/obj/item/clothing/under/color/brown{
+	pixel_y = 7;
+	pixel_x = 12
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
+"abe" = (
+/obj/item/clothing/under/color/brown{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -352,6 +395,10 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/landing/console)
+"abz" = (
+/obj/item/clothing/under/color/darkred,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -411,6 +458,13 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
+"abL" = (
+/obj/item/clothing/under/color/lightbrown{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "abM" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
@@ -459,6 +513,14 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abU" = (
+/obj/item/clothing/under/color/darkred{
+	pixel_y = 7;
+	pixel_x = 10
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "abV" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_north)
@@ -469,6 +531,14 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
+"abX" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/color/lightbrown{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "abY" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -497,6 +567,17 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/obj/structure/machinery/washing_machine,
+/obj/item/clothing/under/color/brown{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/structure/machinery/washing_machine{
+	pixel_y = 13
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -16026,11 +16107,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/caves/eta/research)
-"bzJ" = (
-/obj/item/weapon/gun/smg/m39,
-/obj/structure/closet/secure_closet/guncabinet/wy,
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/caves/eta/research)
 "bzK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19312,17 +19388,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
-"dOl" = (
-/obj/item/roller/bedroll{
-	pixel_x = -5;
-	pixel_y = -4
-	},
-/obj/item/stack/medical/bruise_pack{
-	pixel_x = -8;
-	pixel_y = 2
-	},
-/turf/open/floor/whitegreen/west,
-/area/bigredv2/outside/medical)
 "dOu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -20207,18 +20272,6 @@
 "eJE" = (
 /turf/open/floor/darkpurplecorners2/east,
 /area/bigredv2/caves/lambda/breakroom)
-"eJI" = (
-/obj/item/prop{
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "m41ae2";
-	name = "M41AE2 Heavy Pulse Rifle";
-	desc = "A large claw mark across this weapon indicates it is inoperable.";
-	pixel_x = 4;
-	pixel_y = 7
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor,
-/area/bigredv2/outside/office_complex)
 "eKe" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -21347,14 +21400,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
-"fWb" = (
-/obj/item/clothing/under/color/darkred{
-	pixel_y = 7;
-	pixel_x = 10
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "fWg" = (
 /obj/item/storage/pill_bottle/tramadol{
 	pixel_y = -6;
@@ -26010,14 +26055,6 @@
 /obj/item/stack/sheet/mineral/gold/small_stack,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"kWh" = (
-/obj/structure/surface/table,
-/obj/item/clothing/under/color/brown{
-	pixel_y = 7;
-	pixel_x = 12
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "kWE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -29177,17 +29214,6 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/mars,
 /area/bigredv2/outside/n)
-"opn" = (
-/obj/structure/machinery/washing_machine,
-/obj/item/clothing/under/color/brown{
-	pixel_y = 11;
-	pixel_x = 7
-	},
-/obj/structure/machinery/washing_machine{
-	pixel_y = 13
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "opr" = (
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -29483,13 +29509,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars,
 /area/bigredv2/outside/n)
-"oEz" = (
-/obj/item/clothing/under/color/lightbrown{
-	pixel_x = -7;
-	pixel_y = -4
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "oEB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement/cement15,
@@ -29554,10 +29573,6 @@
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
-"oHW" = (
-/obj/item/clothing/under/color/darkred,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "oIb" = (
 /obj/structure/machinery/computer/crew{
 	density = 0;
@@ -31665,14 +31680,6 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
-"qOK" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/under/color/lightbrown{
-	pixel_x = 10;
-	pixel_y = -5
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "qOM" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -9;
@@ -34013,13 +34020,6 @@
 /obj/structure/machinery/message_server,
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
-"taD" = (
-/obj/item/clothing/under/color/brown{
-	pixel_x = 4;
-	pixel_y = -5
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "taV" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/effect/decal/cleanable/dirt,
@@ -55345,7 +55345,7 @@ sxR
 awO
 awa
 awT
-dOl
+abb
 gwP
 wLw
 qzt
@@ -64566,11 +64566,11 @@ aBA
 byT
 bzf
 aBv
-bzJ
-bzJ
-bzJ
-bzJ
-bzJ
+aac
+aac
+aac
+aac
+aac
 aBv
 bBl
 xpl
@@ -65748,8 +65748,8 @@ ahS
 ahS
 khK
 ako
-fWb
-oHW
+abU
+abz
 apN
 nEB
 maN
@@ -65965,7 +65965,7 @@ ahS
 ahS
 cYC
 ako
-qOK
+abX
 uVd
 ftR
 djV
@@ -66186,7 +66186,7 @@ kGK
 uVd
 mdh
 uVd
-kWh
+abd
 ako
 asN
 atE
@@ -66619,7 +66619,7 @@ ako
 jNE
 pdB
 uVH
-taD
+abe
 kGK
 ako
 asP
@@ -66833,8 +66833,8 @@ aao
 aao
 aao
 ako
-opn
-oEz
+acc
+abL
 poL
 kGK
 wnl
@@ -68839,7 +68839,7 @@ asv
 asv
 veU
 suP
-eJI
+aaM
 asv
 beI
 bbB

@@ -15,14 +15,14 @@ SUBSYSTEM_DEF(polls)
 	setup_polls()
 
 	for(var/id in active_polls)
-		var/list/datum/view_record/player_poll_answer/completed_polls = DB_VIEW(
-			/datum/view_record/player_poll_answer,
+		var/list/datum/view_record/player_poll_vote/votes = DB_VIEW(
+			/datum/view_record/player_poll_vote,
 			DB_COMP("polL_id", DB_EQUALS, id)
 		)
 
 		var/voted_ids = list()
-		for(var/datum/view_record/player_poll_answer/answer as anything in completed_polls)
-			voted_ids += answer.player_id
+		for(var/datum/view_record/player_poll_vote/vote as anything in votes)
+			voted_ids += vote.player_id
 
 		var/datum/poll/active_poll = active_polls[id]
 
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(polls)
 			if(client.player_data.id in voted_ids)
 				continue
 
-			to_send_at_lobby += CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[client.mob];lobby_choice=polls'>here</a> to vote."))
+			to_send_at_lobby += CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[client.mob];poll=1'>here</a> to vote."))
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, PROC_REF(handle_lobby))
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_user))
@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(polls)
 		)
 
 		for(var/datum/view_record/poll_answer/answer as anything in poll_answers)
-			var/total = length(DB_VIEW(/datum/view_record/player_poll_answer, DB_COMP("answer_id", DB_EQUALS, answer.id)))
+			var/total = length(DB_VIEW(/datum/view_record/player_poll_vote, DB_COMP("answer_id", DB_EQUALS, answer.id)))
 
 			concluded_poll.answer_totals[answer.answer] = total
 
@@ -89,6 +89,8 @@ SUBSYSTEM_DEF(polls)
 
 	update_static_data_for_all_viewers()
 
+/// Sends all the queued messages when we enter the
+/// lobby mode, so the messages do not get lost
 /datum/controller/subsystem/polls/proc/handle_lobby(source)
 	SIGNAL_HANDLER
 
@@ -100,6 +102,7 @@ SUBSYSTEM_DEF(polls)
 
 	INVOKE_ASYNC(src, PROC_REF(remind_new_user), new_client)
 
+/// Reminds new users logging in of any uncompleted polls.
 /datum/controller/subsystem/polls/proc/remind_new_user(client/new_client)
 	set waitfor = FALSE
 
@@ -108,7 +111,7 @@ SUBSYSTEM_DEF(polls)
 
 	for(var/id in active_polls)
 		var/voted = length(DB_VIEW(
-			/datum/view_record/player_poll_answer,
+			/datum/view_record/player_poll_vote,
 			DB_AND(
 				DB_COMP("player_id", DB_EQUALS, new_client.player_data.id),
 				DB_COMP("poll_id", DB_EQUALS, id)
@@ -120,7 +123,7 @@ SUBSYSTEM_DEF(polls)
 
 		var/datum/poll/active_poll = active_polls[id]
 
-		to_chat(new_client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[new_client.mob];lobby_choice=polls'>here</a> to vote."))
+		to_chat(new_client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[new_client.mob];poll=1'>here</a> to vote."))
 
 /datum/controller/subsystem/polls/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -155,7 +158,7 @@ SUBSYSTEM_DEF(polls)
 		return
 
 	.["voted_polls"] = list()
-	for(var/datum/view_record/player_poll_answer/answer in DB_VIEW(/datum/view_record/player_poll_answer, DB_COMP("player_id", DB_EQUALS, player.id)))
+	for(var/datum/view_record/player_poll_vote/answer in DB_VIEW(/datum/view_record/player_poll_vote, DB_COMP("player_id", DB_EQUALS, player.id)))
 		.["voted_polls"] += answer.answer_id
 
 /datum/controller/subsystem/polls/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -182,8 +185,8 @@ SUBSYSTEM_DEF(polls)
 			if(!isnum(text2num(selected_answer)) || !selected_poll.answers[selected_answer])
 				return
 
-			var/list/datum/view_record/player_poll_answer/existing_votes = DB_VIEW(
-				/datum/view_record/player_poll_answer,
+			var/list/datum/view_record/player_poll_vote/existing_votes = DB_VIEW(
+				/datum/view_record/player_poll_vote,
 				DB_AND(
 					DB_COMP("player_id", DB_EQUALS, player.id),
 					DB_COMP("poll_id", DB_EQUALS, text2num(voting_in))
@@ -194,20 +197,20 @@ SUBSYSTEM_DEF(polls)
 				if(tgui_alert(ui.user, "Change existing vote?", "Change Vote", list("Yes", "No")) != "Yes")
 					return
 
-				for(var/datum/view_record/player_poll_answer/existing_vote as anything in existing_votes)
-					var/datum/entity/player_poll_answer/answer = DB_ENTITY(/datum/entity/player_poll_answer, existing_vote.id)
-					answer.sync()
+				for(var/datum/view_record/player_poll_vote/existing_vote as anything in existing_votes)
+					var/datum/entity/player_poll_vote/vote = DB_ENTITY(/datum/entity/player_poll_vote, existing_vote.id)
+					vote.sync()
 
-					answer.answer_id = text2num(selected_answer)
-					answer.save()
+					vote.answer_id = text2num(selected_answer)
+					vote.save()
 				return
 
-			var/datum/entity/player_poll_answer/answer = DB_ENTITY(/datum/entity/player_poll_answer)
-			answer.player_id = player.id
-			answer.answer_id = text2num(selected_answer)
-			answer.poll_id = text2num(voting_in)
-			answer.save()
-			answer.detach()
+			var/datum/entity/player_poll_vote/vote = DB_ENTITY(/datum/entity/player_poll_vote)
+			vote.player_id = player.id
+			vote.answer_id = text2num(selected_answer)
+			vote.poll_id = text2num(voting_in)
+			vote.save()
+			vote.detach()
 
 		if("create")
 			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
@@ -347,29 +350,29 @@ SUBSYSTEM_DEF(polls)
 		"answer",
 	)
 
-/datum/entity/player_poll_answer
+/datum/entity/player_poll_vote
 	var/player_id
 	var/poll_id
 	var/answer_id
 
-/datum/entity_meta/player_poll_answer
-	entity_type = /datum/entity/player_poll_answer
-	table_name = "player_poll_answers"
+/datum/entity_meta/player_poll_vote
+	entity_type = /datum/entity/player_poll_vote
+	table_name = "player_poll_votes"
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"poll_id" = DB_FIELDTYPE_BIGINT,
 		"answer_id" = DB_FIELDTYPE_BIGINT,
 	)
 
-/datum/view_record/player_poll_answer
+/datum/view_record/player_poll_vote
 	var/id
 	var/player_id
 	var/poll_id
 	var/answer_id
 
-/datum/entity_view_meta/player_poll_answer
-	root_record_type = /datum/entity/player_poll_answer
-	destination_entity = /datum/view_record/player_poll_answer
+/datum/entity_view_meta/player_poll_vote
+	root_record_type = /datum/entity/player_poll_vote
+	destination_entity = /datum/view_record/player_poll_vote
 	fields = list(
 		"id",
 		"player_id",

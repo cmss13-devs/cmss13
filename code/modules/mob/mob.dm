@@ -985,6 +985,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 		if(client)
 			client.prefs.process_link(src, href_list)
 		return TRUE
+	if(href_list["poll"])
+		SSpolls.tgui_interact(src)
 
 /mob/proc/reset_perspective(atom/A)
 	if(!client)

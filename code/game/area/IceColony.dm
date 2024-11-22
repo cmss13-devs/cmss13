@@ -429,6 +429,7 @@
 /area/ice_colony/surface/requesitions
 	name = "\improper Surface Requesition Warehouse"
 	icon_state = "quartstorage"
+	unoviable_timer = FALSE
 
 /*
  * Surface - Research
@@ -493,6 +494,7 @@
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE // all underground areas can be ovi'd, other than hangar and lower req
 
 /*
  * Underground - Crew Areas
@@ -699,6 +701,7 @@
 	name = "\improper Underground Requesitions"
 	icon_state = "quart"
 	is_resin_allowed = FALSE
+	unoviable_timer = 25 MINUTES
 
 /area/ice_colony/underground/requesition/lobby
 	name = "\improper Underground Requesitions Lobby"
@@ -780,6 +783,7 @@
 	icon_state = "hangar"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
+	unoviable_timer = TRUE
 
 /*
  * Underground - Storage

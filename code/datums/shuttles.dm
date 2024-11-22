@@ -102,21 +102,6 @@
 	name = "Classic Ice Elevator"
 	shuttle_id = "ice_classic_shuttle"
 
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
-	elevator_network = "lab"
-
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
-	elevator_network = "dorm"
-
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals
-	elevator_network = "Arrivals"
-
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/omicorn
-	elevator_network = "Omicorn"
-
-/datum/map_template/shuttle/trijent_elevator/ice_elevator/requisitions
-	elevator_network = "Requisitions"
-
 /datum/map_template/shuttle/trijent_elevator/post_load(obj/docking_port/mobile/M)
 	. = ..()
 	var/obj/docking_port/mobile/trijent_elevator/elev = M

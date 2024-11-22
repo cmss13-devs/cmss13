@@ -296,6 +296,15 @@
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 
+	S["fax_name_uscm"] >> fax_name_uscm
+	S["fax_name_pvst"] >> fax_name_pvst
+	S["fax_name_wy"] >> fax_name_wy
+	S["fax_name_upp"] >> fax_name_upp
+	S["fax_name_twe"] >> fax_name_twe
+	S["fax_name_cmb"] >> fax_name_cmb
+	S["fax_name_press"] >> fax_name_press
+	S["fax_name_clf"] >> fax_name_clf
+
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -380,6 +389,16 @@
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
+
+	fax_name_uscm = fax_name_uscm ? sanitize_text(fax_name_uscm, initial(fax_name_uscm)) : generate_name(FACTION_MARINE)
+	fax_name_pvst = fax_name_pvst ? sanitize_text(fax_name_pvst, initial(fax_name_pvst)) : generate_name(FACTION_MARINE)
+	fax_name_wy = fax_name_wy ? sanitize_text(fax_name_wy, initial(fax_name_wy)) : generate_name(FACTION_WY)
+	fax_name_upp = fax_name_upp ? sanitize_text(fax_name_upp, initial(fax_name_upp)) : generate_name(FACTION_UPP)
+	fax_name_twe = fax_name_twe ? sanitize_text(fax_name_twe, initial(fax_name_twe)) : generate_name(FACTION_TWE)
+	fax_name_cmb = fax_name_cmb ? sanitize_text(fax_name_cmb, initial(fax_name_cmb)) : generate_name(FACTION_MARSHAL)
+	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
+	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
+
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
@@ -497,6 +516,15 @@
 	S["co_affiliation"] << affiliation
 	S["yautja_status"] << yautja_status
 	S["synth_status"] << synth_status
+
+	S["fax_name_uscm"] << fax_name_uscm
+	S["fax_name_pvst"] << fax_name_pvst
+	S["fax_name_wy"] << fax_name_wy
+	S["fax_name_upp"] << fax_name_upp
+	S["fax_name_twe"] << fax_name_twe
+	S["fax_name_cmb"] << fax_name_cmb
+	S["fax_name_press"] << fax_name_press
+	S["fax_name_clf"] << fax_name_clf
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors

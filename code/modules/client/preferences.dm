@@ -124,6 +124,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/commander_status = WHITELIST_NORMAL
 	var/synth_status = WHITELIST_NORMAL
 
+	// Fax Responder Names
+	var/fax_name_uscm
+	var/fax_name_pvst
+	var/fax_name_wy
+	var/fax_name_upp
+	var/fax_name_twe
+	var/fax_name_cmb
+	var/fax_name_press
+	var/fax_name_clf
+
 	//character preferences
 	var/real_name //our character's name
 	var/be_random_name = FALSE //whether we are a random name every round
@@ -655,6 +665,18 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
+			if(owner.check_whitelist_status(WHITELIST_FAX_RESPONDER))
+				dat += "<div id='column3'>"
+				dat += "<h2><b><u>Fax Responder Names:</u></b></h2>"
+				dat += "<b>USCM High Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=uscm'><b>[fax_name_uscm]</b></a><br>"
+				dat += "<b>USCM Provost:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=pvst'><b>[fax_name_pvst]</b></a><br>"
+				dat += "<b>Weyland-Yutani:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=wy'><b>[fax_name_wy]</b></a><br>"
+				dat += "<b>UPP Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=upp'><b>[fax_name_upp]</b></a><br>"
+				dat += "<b>TWE Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=twe'><b>[fax_name_twe]</b></a><br>"
+				dat += "<b>Colonial Marshal Bureau:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
+				dat += "<b>Free Press:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
+				dat += "<b>CLF Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+				dat += "</div>"
 
 	dat += "</div></body>"
 
@@ -1365,6 +1387,24 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 
 					synth_status = options[new_synth_status]
+
+				if("fax_name")
+					var/faction = href_list["fax_faction"]
+					var/raw_name = input(user, "Choose your Fax Responder's name:", "Character Preference")  as text|null
+					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
+						var/new_name = reject_bad_name(raw_name)
+						if(!new_name)
+							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+						else
+							switch(faction)
+								if("uscm") fax_name_uscm = new_name
+								if("pvst") fax_name_pvst = new_name
+								if("wy") fax_name_wy = new_name
+								if("upp") fax_name_upp = new_name
+								if("twe") fax_name_twe = new_name
+								if("cmb") fax_name_cmb = new_name
+								if("press") fax_name_press = new_name
+								if("clf") fax_name_clf = new_name
 
 				if("xeno_prefix")
 					if(xeno_name_ban)
@@ -2225,3 +2265,37 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL
+
+/datum/preferences/proc/generate_name(faction = FACTION_MARINE)
+	var/female = prob(40)
+	var/name = "John Doe"
+	if(female)
+		name = "Jane Doe"
+
+	switch(faction)
+		if(FACTION_MARINE)
+			if(female)
+				name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+			else
+				name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+		if(FACTION_WY, FACTION_TWE)
+			if(female)
+				name = "[pick(GLOB.first_names_female_pmc)] [pick(GLOB.last_names_pmc)]"
+			else
+				name = "[pick(GLOB.first_names_male_pmc)] [pick(GLOB.last_names_pmc)]"
+		if(FACTION_COLONIST, FACTION_MARSHAL)
+			if(female)
+				name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+			else
+				name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(FACTION_UPP)
+			if(female)
+				name = "[pick(GLOB.first_names_female_upp)] [pick(GLOB.last_names_upp)]"
+			else
+				name = "[pick(GLOB.first_names_male_upp)] [pick(GLOB.last_names_upp)]"
+		if(FACTION_CLF)
+			if(female)
+				name = "[pick(GLOB.first_names_female_clf)] [pick(GLOB.last_names_clf)]"
+			else
+				name = "[pick(GLOB.first_names_male_clf)] [pick(GLOB.last_names_clf)]"
+	return name

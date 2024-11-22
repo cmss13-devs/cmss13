@@ -28,6 +28,41 @@
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
 	return ..()
 
+/datum/equipment_preset/fax_responder/load_name(mob/living/carbon/human/new_human, randomise)
+	var/final_name = "John Doe"
+	if(new_human.gender == FEMALE)
+		final_name = "Jane Doe"
+
+	if(new_human.client && new_human.client.prefs)
+		var/new_name = get_fax_responder_name(new_human.client)
+		if(new_name)
+			final_name = new_name
+
+	new_human.change_real_name(new_human, final_name)
+
+/datum/equipment_preset/fax_responder/proc/get_fax_responder_name(client/target_client)
+	var/datum/preferences/target_prefs = target_client.prefs
+	var/new_name
+	switch(assignment)
+		if(JOB_FAX_RESPONDER_USCM_HC)
+			new_name = target_prefs.fax_name_uscm
+		if(JOB_FAX_RESPONDER_USCM_PVST)
+			new_name = target_prefs.fax_name_pvst
+		if(JOB_FAX_RESPONDER_WY)
+			new_name = target_prefs.fax_name_wy
+		if(JOB_FAX_RESPONDER_UPP)
+			new_name = target_prefs.fax_name_upp
+		if(JOB_FAX_RESPONDER_CLF)
+			new_name = target_prefs.fax_name_clf
+		if(JOB_FAX_RESPONDER_CMB)
+			new_name = target_prefs.fax_name_cmb
+		if(JOB_FAX_RESPONDER_PRESS)
+			new_name = target_prefs.fax_name_press
+		if(JOB_FAX_RESPONDER_TWE)
+			new_name = target_prefs.fax_name_twe
+
+	return new_name
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/uscm

@@ -485,11 +485,17 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = floor(amount * 0.04)
-	if(!light_range)
+	if(amount < 1)
 		return INITIALIZE_HINT_QDEL
-	set_light(light_range)
-	fuel = amount * 5 SECONDS
+	var/square_amount = sqrt(amount)
+	// Fuel quickly ramps up to about 14.5 mins then tapers off the more volume there is (6s min)
+	fuel = max(((-150 / square_amount) - 2 * sqrt(amount + 2000) + 120), 0.1) MINUTES
+	// Range gradually ramps up from 1 to 15
+	light_range = max(min(square_amount - 3, 15), MINIMUM_USEFUL_LIGHT_RANGE)
+	// Power slowly ramps up from 1 to 5
+	light_power = min(0.1 * square_amount + 1, 5)
+	set_light(light_range, light_power)
+
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL

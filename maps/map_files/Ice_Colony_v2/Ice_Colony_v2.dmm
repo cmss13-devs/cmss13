@@ -372,15 +372,7 @@
 	},
 /area/shuttle/elevator4/ground)
 "abz" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Lower_Requisitions";
-	name = "Lower Requisitions";
-	airlock_exit = "elevator";
-	elevator_network = "Requisitions";
-	airlock_area = /area/shuttle/elevator4/underground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/req/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -563,16 +555,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "aco" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Upper_Requisitions";
-	name = "Upper Requisitions";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/requisitions;
-	airlock_exit = "elevator";
-	elevator_network = "Requisitions";
-	airlock_area = /area/shuttle/elevator4/ground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/req/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -5265,16 +5248,7 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "apt" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Upper_Dorms";
-	name = "Upper Dorms";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm;
-	airlock_exit = "elevator";
-	elevator_network = "dorm";
-	airlock_area = /area/shuttle/elevator2/ground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -12611,15 +12585,7 @@
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator1/ground)
 "aJC" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Lower_Arrivals";
-	name = "Lower Arrivals";
-	airlock_exit = "elevator";
-	elevator_network = "Arrivals";
-	airlock_area = /area/shuttle/elevator1/underground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/arrivals/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -12696,16 +12662,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
 "aJY" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Upper_Arrivals";
-	name = "Upper Arrivals";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals;
-	airlock_exit = "elevator";
-	elevator_network = "Arrivals";
-	airlock_area = /area/shuttle/elevator1/ground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/arrivals/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -14271,16 +14228,7 @@
 	},
 /area/ice_colony/surface/research)
 "aPg" = (
-/obj/docking_port/stationary/trijent_elevator{
-	airlock_area = /area/shuttle/elevator3/ground;
-	airlock_exit = "elevator";
-	elevator_network = "Omicorn";
-	height = 5;
-	width = 8;
-	name = "Upper Omicorn";
-	id = "Upper_Omicorn";
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator/omicorn
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/omicron/upper,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -35245,15 +35193,7 @@
 	},
 /area/ice_colony/underground/research/storage)
 "oqw" = (
-/obj/docking_port/stationary/trijent_elevator{
-	height = 5;
-	width = 8;
-	id = "Lower_Dorms";
-	name = "Lower Dorms";
-	airlock_exit = "elevator";
-	elevator_network = "dorm";
-	airlock_area = /area/shuttle/elevator2/underground
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"
@@ -35790,15 +35730,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "xYW" = (
-/obj/docking_port/stationary/trijent_elevator{
-	airlock_area = /area/shuttle/elevator3/underground;
-	airlock_exit = "elevator";
-	elevator_network = "Omicorn";
-	height = 5;
-	width = 8;
-	name = "Lower Omicorn";
-	id = "Lower_Omicorn"
-	},
+/obj/docking_port/stationary/trijent_elevator/ice_classic/omicron/lower,
 /turf/open/floor/plating/icefloor{
 	dir = 10;
 	icon_state = "warnplate"

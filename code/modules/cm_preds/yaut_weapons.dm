@@ -1540,7 +1540,8 @@
 	max_w_class = SIZE_LARGE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 	can_hold = list(
 		/obj/item/weapon/gun/bow,

@@ -186,7 +186,7 @@ There are several things that need to be remembered:
 	remove_overlay(UNDERSHIRT_LAYER)
 
 	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
-	if(w_uniform && !undershirt_datum.shown_under_uniform)
+	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform)
 		return
 
 	var/image/undershirt_icon = undershirt_datum.get_image(gender)

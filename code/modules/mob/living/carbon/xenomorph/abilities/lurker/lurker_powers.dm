@@ -214,9 +214,10 @@
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
 			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(30)
 			xeno.animation_attack_on(target)
+			if (!xeno.on_fire)
+				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+				xeno.gain_health(30)
 
 	xeno.emote("roar")
 	return ..()
@@ -266,11 +267,7 @@
 				break
 
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-		if(targeted_atom == hit_target) //reward for a direct hit
-			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
-			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
-		else
-			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
+		to_chat(xeno, SPAN_XENODANGER("We slam [hit_target], throwing them back with our tail!"))
 	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -291,9 +288,15 @@
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 		if (hit_target.mob_size < MOB_SIZE_BIG)
+			hit_target.KnockDown(1)
+		else
+			hit_target.Slow(1)
+	else
+		if (hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)
 		else
 			hit_target.Slow(0.5)
+
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
@@ -304,8 +307,6 @@
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
-	hit_target.Slow(0.5)
 
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
@@ -374,10 +375,11 @@
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
-	xeno.gain_health(150)
-	xeno.xeno_jitter(1 SECONDS)
-	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-	xeno.emote("roar")
+	if (!xeno.on_fire)
+		xeno.gain_health(150)
+		xeno.xeno_jitter(1 SECONDS)
+		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+		xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
 	apply_cooldown()
 	return ..()

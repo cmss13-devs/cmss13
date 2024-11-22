@@ -21,7 +21,7 @@
 	lurker.plasmapool_modifier = 0
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
-	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
+	lurker.armor_modifier += XENO_ARMOR_MOD_MED
 	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
 

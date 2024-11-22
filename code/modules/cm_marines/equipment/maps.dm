@@ -70,7 +70,7 @@
 /obj/item/map/ice_colony_map/v1
 	html_link = "https://cm-ss13.com/w/images/8/88/Ice_V1.png"
 
-/obj/item/map/ice_colony_map_/v2
+/obj/item/map/ice_colony_map/v2
 	html_link = "https://cm-ss13.com/w/images/c/cf/Ice_Colony_v2.png"
 
 /obj/item/map/ice_colony_map_v3

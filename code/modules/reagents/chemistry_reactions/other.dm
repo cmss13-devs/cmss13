@@ -160,7 +160,7 @@
 
 /datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.my_atom)
-	var/datum/effect_system/spark_spread/sparker = new /datum/effect_system/spark_spread
+	var/datum/effect_system/spark_spread/sparker = new
 	sparker.set_up(2, 1, location)
 	sparker.start()
 	var/obj/item/device/flashlight/flare/on/illumination/chemical/light = new(holder.my_atom, created_volume)

@@ -231,9 +231,9 @@
 	if(!my_atom) return
 	if(my_atom.flags_atom & NOREACT) return //Yup, no reactions here. No siree.
 
-	var/reaction_occurred = 0
+	var/reaction_occurred = FALSE
 	do
-		reaction_occurred = 0
+		reaction_occurred = FALSE
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
 			if(R.original_id) //Prevent synthesised chem variants from being mixed
 				for(var/datum/reagent/O in reagent_list)
@@ -258,8 +258,7 @@
 				if(C.required_catalysts)
 					total_required_catalysts = length(C.required_catalysts)
 				var/total_matching_catalysts= 0
-				var/matching_container = 0
-				var/matching_other = 0
+				var/matching_container = FALSE
 				var/list/multipliers = new/list()
 
 				for(var/B in C.required_reagents)
@@ -279,16 +278,11 @@
 					continue
 
 				if(!C.required_container)
-					matching_container = 1
+					matching_container = TRUE
+				else if(ispath(my_atom.type, C.required_container))
+					matching_container = TRUE
 
-				else
-					if(my_atom.type == C.required_container)
-						matching_container = 1
-
-				if(!C.required_other)
-					matching_other = 1
-
-				if(total_matching_reagents == total_required_reagents && total_matching_catalysts == total_required_catalysts && matching_container && matching_other)
+				if(total_matching_reagents == total_required_reagents && total_matching_catalysts == total_required_catalysts && matching_container)
 					var/multiplier = min(multipliers)
 					var/preserved_data = null
 					for(var/B in C.required_reagents)
@@ -314,7 +308,7 @@
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
 					C.on_reaction(src, created_volume)
-					reaction_occurred = 1
+					reaction_occurred = TRUE
 					break
 
 	while(reaction_occurred)

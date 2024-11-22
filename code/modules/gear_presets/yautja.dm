@@ -32,51 +32,19 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	var/using_legacy = "None"
-	var/armor_number = 1
-	var/boot_number = 1
-	var/mask_number = 1
-	var/armor_material = "ebony"
-	var/greave_material = "ebony"
 	var/caster_material = "ebony"
-	var/mask_material = "ebony"
 	var/translator_type = "Modern"
-	var/cape_type = default_cape_type
-	var/cape_color = "#654321"
 
 	if(!mob_client)
 		mob_client = new_human.client
 	if(mob_client?.prefs)
-		using_legacy = mob_client.prefs.predator_use_legacy
-		armor_number = mob_client.prefs.predator_armor_type
-		boot_number = mob_client.prefs.predator_boot_type
-		mask_number = mob_client.prefs.predator_mask_type
-		armor_material = mob_client.prefs.predator_armor_material
-		greave_material = mob_client.prefs.predator_greave_material
-		mask_material = mob_client.prefs.predator_mask_material
 		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
-		cape_type = mob_client.prefs.predator_cape_type
-		cape_color = mob_client.prefs.predator_cape_color
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_IN_BELT)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(new_human, boot_number, greave_material), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(new_human, armor_number, armor_material, using_legacy), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(new_human, mask_number, mask_material, using_legacy), WEAR_FACE)
-
-	var/cape_path = GLOB.all_yautja_capes[cape_type]
-	if(ispath(cape_path))
-		new_human.equip_to_slot_or_del(new cape_path(new_human, cape_color), WEAR_BACK)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
-	var/final_name = "Le'pro"
+	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.gender = MALE
 	new_human.age = 100
 	new_human.flavor_text = ""
@@ -89,7 +57,7 @@
 		new_human.flavor_text = new_human.client.prefs.predator_flavor_text
 		new_human.flavor_texts["general"] = new_human.flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			final_name = "Le'pro"
+			final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.change_real_name(new_human, final_name)
 
 // YOUNG BLOOD
@@ -111,6 +79,11 @@
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
+/datum/equipment_preset/yautja/blooded/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
+
+
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
@@ -118,6 +91,10 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
+
+/datum/equipment_preset/yautja/elite/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()

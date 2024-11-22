@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/autocannon
 	name = "\improper AC3-E Autocannon"
-	desc = "A primary autocannon for tanks that shoots explosive flak rounds"
+	desc = "A primary autocannon for tanks that shoots explosive flak rounds."
 
 	icon_state = "ace_autocannon"
 	disp_icon = "tank"

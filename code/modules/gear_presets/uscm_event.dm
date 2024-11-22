@@ -67,7 +67,7 @@
 	minimap_icon = "deputy"
 	minimap_background = "background_command"
 	skills = /datum/skills/general
-	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/general, /obj/item/clothing/under/marine/officer/bridge)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/general, /obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -451,6 +451,9 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_event/uaac
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/uscm_event/uaac/tis
 	name = "UAAC-TIS"
 
@@ -470,6 +473,7 @@
 	rank = "UAAC-TIS Intelligence Officer"
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-IO"
+	minimap_icon = "cmb_syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/uaac/tis/io/load_gear(mob/living/carbon/human/new_human)
@@ -497,6 +501,7 @@
 	rank = "UAAC-TIS Special Agent"
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TIS-SA"
+	minimap_icon = "tissa"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/uaac/tis/sa/load_gear(mob/living/carbon/human/new_human)

@@ -4,6 +4,7 @@
 
 $font-family: monospace;
 $background-radial-opacity: 0.2 !default;
+$scrollbar-color-multiplier: 0.5 !default;
 
 @use '../base.scss';
 
@@ -74,7 +75,7 @@ $background-radial-opacity: 0.2 !default;
   );
   @include meta.load-css(
     '../layouts/Layout.scss',
-    $with: ('scrollbar-color-multiplier': 0.5)
+    $with: ('scrollbar-color-multiplier': $scrollbar-color-multiplier)
   );
   @include meta.load-css(
     '../components/Section.scss',
@@ -168,6 +169,9 @@ $background-radial-opacity: 0.2 !default;
     font-family: $font-family;
     font-weight: bold;
     border: 1px solid base.$color-fg;
+  }
+
+  .Button:not(.Button--selected) {
     &:hover,
     &:focus,
     &:visited,
@@ -210,6 +214,13 @@ $background-radial-opacity: 0.2 !default;
       .Dropdown__arrow-button {
         color: base.$color-fg;
       }
+    }
+  }
+
+  .Dropdown__control {
+    & > .Dropdown__selected-text,
+    & > .Dropdown__arrow-button {
+      color: rgba(0, 0, 0, 1);
     }
   }
 

@@ -1917,7 +1917,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/corsat/darkgreen/east,
+/turf/open/floor/corsat/blue/east,
 /area/rostock/command/cic)
 "bxM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3367,7 +3367,12 @@
 /area/rostock/stair_clone)
 "cFS" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer3/laptop/secure_data,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP";
+	dir = 4
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/rostock/command/cic)
 "cGb" = (
@@ -4834,6 +4839,7 @@
 /area/space)
 "dNb" = (
 /obj/structure/window/framed/upp/hull,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/rostock/lower_deck/engineering_lower_access)
 "dNE" = (
@@ -7584,9 +7590,10 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "fIL" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/rostock/lower_deck/engineering_lower_access)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/corsat/marked,
+/area/rostock/hangar/hangarbay)
 "fJM" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -15103,9 +15110,6 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
-"ljR" = (
-/turf/open/floor/corsat/cargo,
-/area/rostock/hangar/repairbay)
 "lkx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
@@ -16423,11 +16427,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lower_deck/briefing)
-"msx" = (
-/obj/structure/girder/displaced,
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating,
-/area/rostock/lower_deck/engineering_lower_access)
 "msL" = (
 /obj/structure/cargo_container/seegson/left,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -18197,13 +18196,16 @@
 /turf/open/floor/plating,
 /area/rostock/engineering/reactor)
 "nQl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	name = "Remote dropship navigation computer";
+	pixel_y = -1;
+	pixel_x = 13;
+	req_one_access = null;
+	faction = "UPP"
 	},
-/obj/structure/dropship_equipment/fuel/cooling_system,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "nQo" = (
 /turf/open/floor/strata/cyan3/southwest,
@@ -21642,15 +21644,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_armory)
-"qtx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata/multi_tiles/west,
-/area/rostock/hangar/hangarbay)
 "qtB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -26294,7 +26287,7 @@
 /area/rostock/req)
 "udu" = (
 /obj/structure/machinery/computer/crew/upp,
-/turf/open/floor/corsat/darkgreen/east,
+/turf/open/floor/corsat/blue/east,
 /area/rostock/command/cic)
 "udy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26406,6 +26399,7 @@
 	name = "Storage";
 	unacidable = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
 "uiq" = (
@@ -29546,10 +29540,8 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/lifeboat)
 "wwx" = (
-/obj/vehicle/powerloader/jd{
-	dir = 4
-	},
-/turf/open/floor/strata/floor3,
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/corsat/marked,
 /area/rostock/hangar/hangarbay)
 "wxc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48464,7 +48456,7 @@ amf
 amf
 amf
 pCV
-ixD
+fIL
 bbY
 pCV
 pCV
@@ -48830,7 +48822,7 @@ eFn
 pCV
 pCV
 pCV
-pCV
+wwx
 pCV
 gRI
 uen
@@ -49196,7 +49188,7 @@ amf
 amf
 amf
 amf
-qJl
+nQl
 uen
 rcX
 bZO
@@ -49739,7 +49731,7 @@ tdb
 xdj
 ueI
 ueI
-wwx
+ueI
 ueI
 ueI
 kIs
@@ -49921,8 +49913,8 @@ cQl
 jSt
 lHV
 lHV
-qtx
-nQl
+lHV
+lHV
 lHV
 lHV
 tAi
@@ -56836,7 +56828,7 @@ fSj
 hke
 mRq
 lic
-ljR
+mRq
 kAR
 vMc
 nuo
@@ -65909,8 +65901,8 @@ nsP
 nsP
 nsP
 tUx
-msx
-fIL
+nsP
+nsP
 nsP
 dLA
 nYE

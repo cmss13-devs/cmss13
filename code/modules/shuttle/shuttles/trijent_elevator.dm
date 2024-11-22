@@ -114,11 +114,12 @@
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"
 
-//ice v1 and v2
+//ice v1
 
 /obj/docking_port/stationary/trijent_elevator/ice_classic
 	width = 8
 	height = 5
+	airlock_exit = "elevator"
 
 /obj/docking_port/mobile/trijent_elevator/ice_classic
 	name = "Ice Classic Elevator (Dorm)"
@@ -132,7 +133,6 @@
 
 /obj/docking_port/stationary/trijent_elevator/ice_classic/dorm
 	elevator_network = "dorm"
-	airlock_exit = "elevator_dorm"
 
 /obj/docking_port/stationary/trijent_elevator/ice_classic/dorm/upper
 	name = "Dormitory Upper Floor"
@@ -159,45 +159,3 @@
 	name = "Laboratory Lower Floor"
 	id = "ice_lab_lower"
 	airlock_area = /area/shuttle/elevator3/underground
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/req
-	elevator_network = "Requisitions"
-	airlock_exit = "elevator_req"
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/req/upper
-	id = "Upper_Requisitions"
-	name = "Upper Requisitions"
-	airlock_area = /area/shuttle/elevator4/ground
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/req/lower
-	id = "Lower_Requisitions"
-	name = "Lower Requisitions"
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/omicron
-	elevator_network = "omicron"
-	airlock_exit = "elevator_omicron"
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/omicron/upper
-	id = "Upper_Omicron"
-	name = "Upper Omicron"
-	airlock_area = /area/shuttle/elevator3/ground
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/omicron/lower
-	id = "Lower_Omicron"
-	name = "Lower Omicron"
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/arrivals
-	elevator_network = "arrivals"
-	airlock_exit = "elevator_arrivals"
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/arrivals/upper
-	id = "Upper_Arrivals"
-	name = "Upper Arrivals"
-	airlock_area = /area/shuttle/elevator1/ground
-	roundstart_template = /datum/map_template/shuttle/trijent_elevator/ice_elevator
-
-/obj/docking_port/stationary/trijent_elevator/ice_classic/arrivals/lower
-	id = "Lower_Arrivals"
-	name = "Lower Arrivals"

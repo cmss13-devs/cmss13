@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV_624 = new /obj/item/map/lazarus_landing_map(),
 		MAP_ICE_COLONY = new /obj/item/map/ice_colony_map(),
 		MAP_ICE_COLONY_V1 = new /obj/item/map/ice_colony_map/v1(),
-		MAP_ICE_COLONY_V2 = new /obj/item/map/ice_colony_map_/v2(),
+		MAP_ICE_COLONY_V2 = new /obj/item/map/ice_colony_map/v2(),
 		MAP_ICE_COLONY_V3 = new /obj/item/map/ice_colony_map_v3(),
 		MAP_WHISKEY_OUTPOST = new /obj/item/map/whiskey_outpost_map(),
 		MAP_BIG_RED = new /obj/item/map/big_red_map(),

@@ -795,6 +795,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	set_fire_delay(FIRE_DELAY_TIER_11)
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		set_fire_delay(FIRE_DELAY_TIER_AMR)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_10

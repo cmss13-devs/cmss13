@@ -119,4 +119,5 @@ GAMEMODE_DECORATOR(/obj/item/clothing/suit/storage/marine/M35, /datum/game_mode/
 	ARMOR_EDIT(armor_internaldamage, CLOTHING_ARMOR_HIGH)
 ))
 
+
 //*********************** ------------------ ***********************//

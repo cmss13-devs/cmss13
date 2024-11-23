@@ -84,8 +84,6 @@
 
 	handle_regular_hud_updates()
 
-	pulse = handle_pulse()
-
 	if(!client && !mind && species)
 		species.handle_npc(src)
 

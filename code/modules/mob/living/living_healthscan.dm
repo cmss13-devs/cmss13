@@ -693,7 +693,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
 		// Show pulse
-		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</span>\n"
+		var/target_pulse = H.get_pulse(GETPULSE_TOOL)
+		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[target_pulse] bpm.</span>\n"
 		if((H.stat == DEAD && !H.client))
 			unrevivable = 1
 		if(!unrevivable)

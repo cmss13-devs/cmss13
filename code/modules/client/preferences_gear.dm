@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
-	cost = 5
+	cost = 4
 
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
@@ -500,11 +500,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/paperwork
 	category = "Paperwork"
+	cost = 1
 
 /datum/gear/paperwork/pen
 	display_name = "Pen, black"
 	path = /obj/item/tool/pen
-	cost = 1
 
 /datum/gear/paperwork/pen_blue
 	display_name = "Pen, blue"
@@ -521,7 +521,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/paperwork/pen_fountain
 	display_name = "Pen, fountain"
 	path = /obj/item/tool/pen/fountain
-	cost = 3
+	cost = 2
 
 /datum/gear/paperwork/paper
 	display_name = "Sheet of paper"
@@ -570,10 +570,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/toy
 	category = "Recreational"
+	cost = 1
 
 /datum/gear/toy/camera
 	display_name = "Camera"
 	path = /obj/item/device/camera
+	cost = 2
 
 /datum/gear/toy/mags
 	cost = 1
@@ -657,6 +659,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/toy/walkman
 	display_name = "Walkman"
 	path = /obj/item/device/walkman
+	cost = 2
 
 /datum/gear/toy/crayon
 	display_name = "Crayon"
@@ -730,7 +733,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/plush/therapy/random
 	display_name = "Therapy plush (???)"
 	path = /obj/item/toy/plush/therapy/random_color
-	cost = 7
 
 /datum/gear/weapon
 	category = "Weapons"
@@ -776,6 +778,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife
 
+/datum/gear/weapon/swiss_army_knife
+	display_name = "Colonial Companion Mk. II"
+	path = /obj/item/weapon/swiss_army_knife
+
 /datum/gear/weapon/clfpistol
 	display_name = "D18 Holdout Pistol"
 	path = /obj/item/storage/box/clf
@@ -798,6 +804,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/drink
 	category = "Canned drinks"
+	cost = 1
 
 /datum/gear/drink/water
 	display_name = "Bottled water"
@@ -839,14 +846,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/drink/boda
 	display_name = "Boda Soda"
 	path = /obj/item/reagent_container/food/drinks/cans/boda
-	cost = 3 //Legally imported from UPP.
+	cost = 2 //Legally imported from UPP.
 
 /datum/gear/drink/boda/plus
 	display_name = "Boda Cola"
 	path = /obj/item/reagent_container/food/drinks/cans/bodaplus
 
 /datum/gear/drink/alcohol
-	cost = 3 //Illegal in military.
+	cost = 2 //Illegal in military.
 
 /datum/gear/drink/alcohol/ale
 	display_name = "Weyland-Yutani IPA Ale"
@@ -866,6 +873,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/flask
 	category = "Flasks"
+	cost = 1
 
 /datum/gear/flask/canteen
 	display_name = "Canteen"
@@ -897,6 +905,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_sweet
 	category = "Food (sweets)"
+	cost = 1
 
 /datum/gear/snack_sweet/candy
 	display_name = "Bar of candy"
@@ -933,6 +942,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_packaged
 	category = "Food (packaged)"
+	cost = 1
 
 /datum/gear/snack_packaged/beef_jerky
 	display_name = "Beef jerky"
@@ -964,6 +974,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_grown
 	category = "Food (healthy)"
+	cost = 1
 
 /datum/gear/snack_grown/apple
 	display_name = "Apple"
@@ -995,6 +1006,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/smoking
 	category = "Smoking"
+	cost = 1
 
 /datum/gear/smoking/cigarette
 	display_name = "Cigarette"
@@ -1012,6 +1024,16 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/mask/cigarette/cigar
 	cost = 2
 
+/datum/gear/smoking/cigarette/tarbacks
+	display_name = "Tarbacks case"
+	path = /obj/item/storage/fancy/cigar/tarbacks
+	cost = 6
+
+/datum/gear/smoking/cigarette/tarbacktube
+	display_name = "Tarback tube"
+	path = /obj/item/storage/fancy/cigar/tarbacktube
+	cost = 2
+
 /datum/gear/smoking/pack_emerald_green
 	display_name = "Pack Of Emerald Greens"
 	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
@@ -1020,10 +1042,37 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Pack Of Lucky Strikes"
 	path = /obj/item/storage/fancy/cigarettes/lucky_strikes
 
+/datum/gear/smoking/arcturian_ace
+	display_name = "Pack Of Arcturian Ace"
+	path = /obj/item/storage/fancy/cigarettes/arcturian_ace
+
+/datum/gear/smoking/lady_finger
+	display_name = "Pack Of Lady Fingers"
+	path = /obj/item/storage/fancy/cigarettes/lady_finger
+
+/datum/gear/smoking/lucky_strikes_4
+	display_name = "Pack Of Lucky Strikes Mini"
+	path = /obj/item/storage/fancy/cigarettes/lucky_strikes_4
+
+/datum/gear/smoking/wypacket
+	display_name = "Pack Of Weyland-Yutani Gold"
+	path = /obj/item/storage/fancy/cigarettes/wypacket
+	cost = 2
+
+/datum/gear/smoking/blackpack
+	display_name = "Pack Of Executive Select"
+	path = /obj/item/storage/fancy/cigarettes/blackpack
+	cost = 2
+
+/datum/gear/smoking/kpack
+	display_name = "Pack Of Koorlander Gold"
+	path = /obj/item/storage/fancy/cigarettes/kpack
+	cost = 2
+
 /datum/gear/smoking/weed_joint
 	display_name = "Joint of space weed"
 	path = /obj/item/clothing/mask/cigarette/weed
-	cost = 4
+	cost = 2
 
 /datum/gear/smoking/lighter
 	display_name = "Lighter, cheap"
@@ -1038,6 +1087,16 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Black lighter, zippo"
 	path = /obj/item/tool/lighter/zippo/black
 
+/datum/gear/smoking/zippo/gold
+	display_name = "Golden lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/gold
+	cost = 3
+
+/datum/gear/smoking/zippo/executive
+	display_name = "Weyland-Yutani executive Zippo lighter"
+	path = /obj/item/tool/lighter/zippo/executive
+	cost = 3
+
 /datum/gear/smoking/zippo/blue
 	display_name = "Blue lighter, zippo"
 	path = /obj/item/tool/lighter/zippo/blue
@@ -1045,12 +1104,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/smoking/electronic_cigarette
 	display_name = "Electronic cigarette"
 	path = /obj/item/clothing/mask/electronic_cigarette
-	cost = 3
 
 /datum/gear/smoking/electronic_cigarette/cigar
 	display_name = "Electronic cigar"
 	path = /obj/item/clothing/mask/electronic_cigarette/cigar
-	cost = 4
 
 /datum/gear/misc
 	category = "Miscellaneous"
@@ -1168,25 +1225,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "United Americas shoulder patch"
 	path = /obj/item/clothing/accessory/patch/ua
 
-/datum/gear/misc/patch_uscm/twepatch
-	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twe
-
-/datum/gear/misc/patch_uscm/wy_black
-	display_name = "Weyland-Yutani shoulder patch, black"
-	path = /obj/item/clothing/accessory/patch/wy
-
-/datum/gear/misc/patch_uscm/wy_white
-	display_name = "Weyland-Yutani shoulder patch, white"
-	path = /obj/item/clothing/accessory/patch/wy_white
-
-/datum/gear/misc/patch_uscm/wy_fury
-	display_name = "Weyland-Yutani Fiornia '161' patch"
-	path = /obj/item/clothing/accessory/patch/wyfury
-
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo
+	cost = 1
 
 /datum/gear/misc/compass
 	display_name = "Compass"
@@ -1196,8 +1238,32 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/bug_spray
 	display_name = "Bug spray"
 	path = /obj/item/prop/helmetgarb/bug_spray
+	cost = 1
 
 /datum/gear/misc/straight_razor
 	display_name = "Cut-throat razor"
 	path = /obj/item/weapon/straight_razor
-	cost = 3
+	cost = 2
+
+// Civilian only
+/datum/gear/civilian
+	category = "Civilian only (restricted)"
+	allowed_origins = ORIGIN_CIVILIAN
+
+/datum/gear/civilian/patch
+	display_name = "Weyland-Yutani shoulder patch, black"
+	path = /obj/item/clothing/accessory/patch/wy
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/wy_white
+	display_name = "Weyland-Yutani shoulder patch, white"
+	path = /obj/item/clothing/accessory/patch/wy_white
+
+/datum/gear/civilian/patch/wy_fury
+	display_name = "Weyland-Yutani Fury '161' patch"
+	path = /obj/item/clothing/accessory/patch/wyfury
+
+/datum/gear/civilian/patch/twepatch
+	display_name = "Three World Empire shoulder patch"
+	path = /obj/item/clothing/accessory/patch/twe

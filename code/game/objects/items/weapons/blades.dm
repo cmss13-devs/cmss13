@@ -138,6 +138,161 @@
 	throwforce = MELEE_FORCE_STRONG
 	edge = 1
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Colonial Companion Mk. II - Swiss Army Knife with multiple modes - sprites by Crowford.
+
+/obj/item/weapon/swiss_army_knife
+	name = "Colonial Companion Mk. II"
+	desc = "Your reliable partner in every adventure. This versatile multi-tool seamlessly folds and switches between seven essential modes, each crafted for a specific purpose. Whether you need a razor-sharp blade, a precise screwdriver, or even a handy spoon, it's always ready—just a flick of the wrist away, ready to tackle whatever challenge lies ahead."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "swiss_stock"  // Default state when all tools are folded
+	force = 0
+	throwforce = 0
+	sharp = 0
+	throw_range = 6
+	w_class = SIZE_SMALL  // Size for all modes
+
+// The tool modes list
+	var/list/tool_modes = list(
+	"/obj/item/weapon/swiss_army_knife/knife",
+	"/obj/item/weapon/swiss_army_knife/screwdriver",
+	"/obj/item/weapon/swiss_army_knife/wirecutters",
+	"/obj/item/weapon/swiss_army_knife/spoon",
+	"/obj/item/weapon/swiss_army_knife/can_opener",
+	"/obj/item/weapon/swiss_army_knife/corkscrew"
+)
+
+/obj/item/weapon/swiss_army_knife/knife
+	icon_state = "swiss_knife"
+	desc = "A sharp knife for cutting things."
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_NORMAL
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	hitsound = 'sound/weapons/slash.ogg'
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+	flags_item = CAN_DIG_SHRAPNEL
+
+/obj/item/weapon/swiss_army_knife/screwdriver
+	icon_state = "swiss_screwdriver"
+	desc = "A trusty screwdriver for all your fastening needs."
+	force = 2
+	throwforce = 0
+	flags_atom = FPRINT|CONDUCT
+	matter = list("metal" = 75)
+	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
+	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
+
+/obj/item/weapon/swiss_army_knife/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+	if(!istype(M))
+		return ..()
+	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
+		return ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
+		if(E)
+			var/safety = H.get_eye_protection()
+			if(!safety)
+				user.visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with [src]!"),
+					SPAN_DANGER("You stab [H] in the eyes with [src]!"))
+				E.take_damage(rand(8,20))
+	return ..()
+
+/obj/item/weapon/swiss_army_knife/wirecutters
+	icon_state = "swiss_wirecutters"
+	desc = "Cutters for cutting through wires and various materials."
+	attack_verb = list("pinched", "nipped")
+	force = 5
+	throwforce = 0
+	flags_atom = FPRINT|CONDUCT
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = 1
+	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+
+/obj/item/weapon/swiss_army_knife/wirecutters/attack(mob/living/carbon/C, mob/user)
+	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
+		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
+		"You cut \the [C]'s restraints with \the [src]!",\
+		"You hear cable being cut.")
+		C.handcuffed = null
+		C.handcuff_update()
+		return
+	else
+		..()
+
+/obj/item/weapon/swiss_army_knife/spoon
+	icon_state = "swiss_spoon"
+	desc = "A simple spoon."
+	attack_verb = list("scoop", "stir")
+	force = 0
+	throwforce = 0
+	sharp = 0
+
+	var/loaded
+
+	/obj/item/weapon/swiss_army_knife/spoon/Initialize()
+		. = ..()
+		if (prob(60))
+			src.pixel_y = rand(0, 4)
+		create_reagents(5)
+		return
+
+	/obj/item/weapon/swiss_army_knife/spoon/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+		if(!istype(M))
+			return ..()
+		if(user.a_intent != INTENT_HELP)
+			return ..()
+
+		if (reagents.total_volume > 0)
+			var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+			if(fullness > NUTRITION_HIGH)
+				to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
+				return
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, reagents.total_volume)
+			if(M == user)
+				for(var/mob/O in viewers(M, null))
+					O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
+				M.reagents.add_reagent("nutriment", 1)
+			else
+				for(var/mob/O in viewers(M, null))
+					O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
+				M.reagents.add_reagent("nutriment", 1)
+			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
+			overlays.Cut()
+			return
+		else
+			..()
+
+/obj/item/weapon/swiss_army_knife/can_opener
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "swiss_can_opener"
+	desc = "A simple can opener, can be used as a knife, although weaker."
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = MELEE_FORCE_WEAK
+	throwforce = MELEE_FORCE_WEAK
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	hitsound = 'sound/weapons/slash.ogg'
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+	flags_item = CAN_DIG_SHRAPNEL
+
+/obj/item/weapon/swiss_army_knife/corkscrew
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "swiss_corkscrew"
+	desc = "A simple corkscrew."
+	attack_verb = list("turn", "screw", "poke", "twist")
+	force = 0
+	throwforce = 0
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(user.a_intent == INTENT_HELP && (target == user || skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))) //Squad medics and above, or yourself

@@ -341,6 +341,14 @@
 "abz" = (
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/shuttle/elevator4/ground)
+"abA" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/darkgreen2/west,
+/area/ice_colony/underground/hallway/north_west)
 "abC" = (
 /turf/open/floor/plating/icefloor/warnplate/northeast,
 /area/shuttle/elevator4/ground)
@@ -5645,12 +5653,6 @@
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
-/area/ice_colony/surface/dorms)
-"atT" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator2{
-	pixel_y = 30
-	},
-/turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
 "atU" = (
 /obj/structure/machinery/colony_floodlight,
@@ -17625,14 +17627,6 @@
 	dir = 4
 	},
 /area/ice_colony/exterior/underground/caves)
-"boV" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/darkgreen2/north,
-/area/ice_colony/underground/hallway/north_west)
 "boW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41146,7 +41140,7 @@ bkC
 bkP
 bkP
 bkC
-boV
+bnz
 bkr
 bpD
 bqq
@@ -47066,7 +47060,7 @@ bkq
 bmE
 bkq
 bkq
-bkq
+abA
 bkq
 bkq
 bkr
@@ -59074,7 +59068,7 @@ apZ
 asw
 apZ
 apZ
-atT
+apZ
 apZ
 auN
 ark

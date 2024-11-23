@@ -6373,6 +6373,9 @@
 /obj/item/trash/syndi_cakes{
 	pixel_y = 20
 	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "ePO" = (
@@ -7590,10 +7593,11 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "fIL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/turf/open/floor/corsat/marked,
-/area/rostock/hangar/hangarbay)
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lowerdeck_maint/s_m)
 "fJM" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -11050,6 +11054,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1;
 	light_color = "#ffd4d4"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
@@ -15110,6 +15117,12 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
+"ljR" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lowerdeck_maint/p_f)
 "lkx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
@@ -16427,6 +16440,11 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lower_deck/briefing)
+"msx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/corsat/marked,
+/area/rostock/hangar/hangarbay)
 "msL" = (
 /obj/structure/cargo_container/seegson/left,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -18196,16 +18214,8 @@
 /turf/open/floor/plating,
 /area/rostock/engineering/reactor)
 "nQl" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 8;
-	name = "Remote dropship navigation computer";
-	pixel_y = -1;
-	pixel_x = 13;
-	req_one_access = null;
-	faction = "UPP"
-	},
-/turf/open/floor/plating,
+/obj/structure/dropship_equipment/fuel/cooling_system,
+/turf/open/floor/corsat/marked,
 /area/rostock/hangar/hangarbay)
 "nQo" = (
 /turf/open/floor/strata/cyan3/southwest,
@@ -21644,6 +21654,18 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_armory)
+"qtx" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	name = "Remote dropship navigation computer";
+	pixel_y = -1;
+	pixel_x = 13;
+	req_one_access = null;
+	faction = "UPP"
+	},
+/turf/open/floor/plating,
+/area/rostock/hangar/hangarbay)
 "qtB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -26660,6 +26682,9 @@
 	pixel_y = -15;
 	pixel_x = 11
 	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "usE" = (
@@ -29540,9 +29565,11 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/lifeboat)
 "wwx" = (
-/obj/structure/dropship_equipment/fuel/cooling_system,
-/turf/open/floor/corsat/marked,
-/area/rostock/hangar/hangarbay)
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lowerdeck_maint/s_m)
 "wxc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -45481,7 +45508,7 @@ hfN
 hfN
 hfN
 qyA
-hSN
+fIL
 lpK
 rpa
 mtf
@@ -45663,7 +45690,7 @@ nNe
 sPB
 tdi
 qyA
-hSN
+fIL
 lpK
 gZL
 gZL
@@ -45797,7 +45824,7 @@ ejR
 qOI
 tyD
 gnq
-ofg
+idi
 ofg
 jVL
 vmc
@@ -45979,7 +46006,7 @@ mTT
 qOI
 eba
 nTV
-ofg
+idi
 nTV
 oik
 vmc
@@ -46027,7 +46054,7 @@ mPW
 wqK
 xqh
 qyA
-hSN
+fIL
 lpK
 ugN
 ipu
@@ -46161,7 +46188,7 @@ qRH
 qOI
 wqm
 nTV
-ofg
+idi
 ofg
 gTk
 gTY
@@ -46209,7 +46236,7 @@ kma
 wqK
 dtF
 qyA
-hSN
+fIL
 lpK
 ugN
 ipu
@@ -46343,7 +46370,7 @@ etP
 qOI
 wbl
 lQK
-ofg
+idi
 nTV
 rhA
 tVj
@@ -46525,7 +46552,7 @@ aTk
 aTk
 ofg
 ofg
-ofg
+idi
 vSx
 xBK
 lQn
@@ -46573,7 +46600,7 @@ kma
 sKZ
 gVT
 qyA
-hSN
+wwx
 dRD
 dRD
 jzo
@@ -46707,7 +46734,7 @@ iFa
 dOc
 dGe
 edD
-iZR
+ljR
 iZR
 nTV
 cot
@@ -48456,7 +48483,7 @@ amf
 amf
 amf
 pCV
-fIL
+msx
 bbY
 pCV
 pCV
@@ -48822,7 +48849,7 @@ eFn
 pCV
 pCV
 pCV
-wwx
+nQl
 pCV
 gRI
 uen
@@ -49188,7 +49215,7 @@ amf
 amf
 amf
 amf
-nQl
+qtx
 uen
 rcX
 bZO

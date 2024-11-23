@@ -43,49 +43,47 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "ak" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	welded = 1
-	},
-/turf/open/shuttle/dropship/can_surgery,
-/area/bigredv2/outside/general_offices)
-"al" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"am" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Dormitories Tool Storage";
-	welded = 1
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
-"ao" = (
-/obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
-	},
-/area/bigredv2/outside/general_offices)
-"ap" = (
+"al" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
-"aq" = (
+"am" = (
 /obj/item/stack/sandbags/small_stack,
 /turf/open/floor/wall_thermite,
 /area/bigredv2/outside/general_offices)
-"ar" = (
+"an" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/mars,
+/area/bigredv2/caves_north)
+"ao" = (
 /obj/item/ammo_magazine/rifle/nsg23/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"as" = (
+"ap" = (
 /obj/structure/barricade/sandbags/wired,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"aq" = (
+/obj/item/ammo_box/magazine/nsg23/heap/empty,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"ar" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/down,
+/obj/item/stack/sandbags/small_stack,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"as" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "at" = (
@@ -100,10 +98,17 @@
 /area/bigredv2/caves_north)
 "av" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/barricade/sandbags/wired,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
+"aw" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "wy20"
+	},
+/area/bigredv2/caves_north)
 "ax" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy27"
@@ -115,21 +120,27 @@
 	},
 /area/bigredv2/caves_north)
 "az" = (
-/obj/item/ammo_box/magazine/nsg23/heap/empty,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "aA" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/down,
-/obj/item/stack/sandbags/small_stack,
-/turf/open/floor/platingdmg1,
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/ammo_magazine/rifle/ap,
+/obj/item/ammo_magazine/rifle/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "aB" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/general_offices)
 "aC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/platingdmg1,
+/obj/item/ammo_magazine/smg/m39,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "aD" = (
 /turf/closed/shuttle/ert{
@@ -137,9 +148,8 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/nsg23/heap{
-	current_rounds = 0
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibleg"
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
@@ -157,36 +167,29 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/general_offices)
 "aJ" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
+/obj/item/ammo_box/rounds/heap/empty,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "aK" = (
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aL" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/ammo_magazine/rifle/ap,
-/obj/item/ammo_magazine/rifle/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/ap,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/obj/item/stack/sheet/cardboard/small_stack,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "aM" = (
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/wall_thermite,
 /area/bigredv2/outside/general_offices)
 "aN" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgibleg"
-	},
-/turf/open/floor/platingdmg1,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "aO" = (
-/obj/item/ammo_box/rounds/heap/empty,
+/obj/item/prop/colony/used_flare,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "aQ" = (
@@ -197,13 +200,16 @@
 "aS" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
+"aT" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
+/area/bigredv2/outside/general_offices)
 "aU" = (
-/obj/structure/surface/rack,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/stack/medical/advanced/bruise_pack/upgraded{
+	amount = 2
+	},
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/general_offices)
 "aV" = (
 /turf/closed/shuttle/ert{
@@ -211,97 +217,6 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aW" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
-/obj/item/device/motiondetector/hacked/pmc,
-/obj/item/defenses/handheld/planted_flag/wy,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
-/area/bigredv2/outside/general_offices)
-"aX" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"aY" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"aZ" = (
-/obj/structure/window_frame/solaris,
-/obj/item/shard,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"ba" = (
-/obj/item/stack/sheet/cardboard/small_stack,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bb" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
-/turf/open/floor/wall_thermite,
-/area/bigredv2/outside/general_offices)
-"bc" = (
-/obj/structure/surface/table,
-/obj/item/clothing/under/color/brown{
-	pixel_y = 7;
-	pixel_x = 12
-	},
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_x = 8
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"bd" = (
-/obj/item/reagent_container/food/drinks/flask/weylandyutani,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"be" = (
-/obj/structure/surface/table,
-/obj/item/ammo_magazine/rifle/nsg23/heap{
-	current_rounds = 0
-	},
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bf" = (
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"bg" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship/can_surgery,
-/area/bigredv2/outside/general_offices)
-"bh" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"bi" = (
-/obj/item/paper/crumpled/bloody,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "u_psycopath_l"
-	},
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bj" = (
-/obj/item/prop/colony/used_flare,
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bk" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bl" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/stack/medical/advanced/bruise_pack/upgraded{
-	amount = 2
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/bigredv2/outside/general_offices)
-"bm" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
@@ -310,7 +225,7 @@
 	},
 /turf/open/floor/wall_thermite,
 /area/bigredv2/outside/general_offices)
-"bn" = (
+"aX" = (
 /obj/structure/closet/crate/secure/weyland,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23,
@@ -328,7 +243,7 @@
 /obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
-"bo" = (
+"aY" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"
@@ -342,22 +257,17 @@
 	},
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/general_offices)
-"bp" = (
-/obj/structure/surface/table,
-/obj/structure/bedsheetbin,
+"aZ" = (
+/obj/structure/window_frame/solaris,
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
-"bq" = (
+"ba" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"br" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy16"
-	},
-/area/bigredv2/outside/general_offices)
-"bs" = (
+"bb" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
@@ -365,33 +275,30 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
-"bt" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bu" = (
+"bc" = (
 /obj/structure/bed/bedroll,
 /obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"bv" = (
+"bd" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
-"bw" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy17"
-	},
-/area/bigredv2/outside/general_offices)
-"bx" = (
+"be" = (
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
-"by" = (
+"bf" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
+"bg" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/shuttle/dropship/can_surgery,
+/area/bigredv2/outside/general_offices)
+"bh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	dir = 1;
@@ -402,29 +309,109 @@
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"bz" = (
-/obj/item/stack/rods,
-/obj/item/ammo_magazine/rifle/nsg23/heap{
+"bi" = (
+/obj/item/paper/crumpled/bloody,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "u_psycopath_l"
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"bj" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
+"bk" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"bl" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/general_offices)
+"bm" = (
+/obj/item/ammo_magazine/smg/m39/heap{
 	current_rounds = 0
 	},
-/turf/open/floor/plating/platingdmg3,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
+"bn" = (
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/blue,
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
+"bo" = (
+/obj/item/xeno_restraints,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"bp" = (
+/obj/structure/surface/table,
+/obj/structure/bedsheetbin,
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
+"bq" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds{
+	bullet_amount = 145
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"br" = (
+/turf/closed/shuttle/ert{
+	icon_state = "wy16"
+	},
+/area/bigredv2/outside/general_offices)
+"bs" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"bt" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
+"bu" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"bv" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/item/weapon/gun/smg/m39/corporate/no_lock{
+	current_mag = null
+	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"bw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "wy17"
+	},
+/area/bigredv2/outside/general_offices)
+"bx" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"by" = (
+/obj/item/frame/rack,
+/obj/item/storage/box/m94,
+/obj/item/storage/box/m94,
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
+"bz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sandbags_empty/small_stack,
+/turf/open/mars,
+/area/bigredv2/caves_north)
 "bA" = (
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bB" = (
-/obj/item/clothing/under/color/darkred,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"bC" = (
-/obj/structure/machinery/washing_machine,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"bD" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/general_offices)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/shovel,
+/turf/open/mars,
+/area/bigredv2/caves_north)
 "bE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy14"
@@ -442,25 +429,9 @@
 	icon_state = "wy15"
 	},
 /area/bigredv2/outside/general_offices)
-"bH" = (
-/obj/item/ammo_magazine/smg/m39/heap{
+"bJ" = (
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
-	},
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bI" = (
-/obj/item/stack/rods,
-/obj/item/stack/cable_coil/blue,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"bK" = (
-/obj/item/xeno_restraints,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bL" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/rounds{
-	bullet_amount = 145
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
@@ -474,107 +445,29 @@
 	icon_state = "wy13"
 	},
 /area/bigredv2/outside/general_offices)
-"bO" = (
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bP" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bQ" = (
-/obj/item/prop/colony/used_flare,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bR" = (
-/obj/item/clothing/under/color/darkred{
-	pixel_y = 7;
-	pixel_x = 10
-	},
-/obj/structure/surface/rack,
-/obj/item/clothing/under/color/darkred,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"bS" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/under/color/lightbrown{
-	pixel_x = 10;
-	pixel_y = -5
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"bT" = (
-/obj/effect/spawner/gibspawner/human,
-/obj/effect/decal/cleanable/blood{
-	layer = 3
-	},
-/obj/item/weapon/gun/smg/m39/corporate/no_lock{
-	current_mag = null
-	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bU" = (
-/obj/structure/girder/displaced,
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/general_offices)
-"bV" = (
-/obj/item/frame/rack,
-/obj/item/storage/box/m94,
-/obj/item/storage/box/m94,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"bW" = (
-/obj/item/ammo_magazine/smg/fp9000,
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
-/area/bigredv2/outside/general_offices)
-"bX" = (
-/obj/item/stack/rods,
-/obj/effect/decal/cleanable/blood{
-	dir = 1;
-	icon_state = "gib6"
-	},
-/turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/general_offices)
-"bY" = (
-/obj/item/stack/sheet/metal,
-/obj/structure/girder/displaced,
-/turf/open/floor/plating,
-/area/bigredv2/caves_north)
-"bZ" = (
-/obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
-/area/bigredv2/caves_north)
 "ca" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
 /area/bigredv2/outside/general_offices)
-"cb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stack/rods,
-/turf/open/mars,
-/area/bigredv2/caves_north)
 "cc" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/bigredv2/outside/general_offices)
-"ce" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sandbags_empty/small_stack,
-/turf/open/mars,
-/area/bigredv2/caves_north)
+"cd" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/obj/item/device/motiondetector/hacked/pmc,
+/obj/item/defenses/handheld/planted_flag/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
+/area/bigredv2/outside/general_offices)
 "cf" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy5"
 	},
 /area/bigredv2/outside/general_offices)
-"cg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/shovel,
-/turf/open/mars,
-/area/bigredv2/caves_north)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -616,6 +509,20 @@
 "cv" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3";
+	opacity = 0
+	},
+/area/bigredv2/outside/general_offices)
+"cA" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Dormitories Tool Storage";
+	welded = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
+"cC" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
 	opacity = 0
 	},
 /area/bigredv2/outside/general_offices)
@@ -684,6 +591,11 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"cV" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/bigredv2/caves_north)
 "di" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -710,6 +622,13 @@
 "eF" = (
 /turf/template_noop,
 /area/template_noop)
+"eL" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	welded = 1
+	},
+/turf/open/shuttle/dropship/can_surgery,
+/area/bigredv2/outside/general_offices)
 "fm" = (
 /obj/structure/dispenser/oxygen,
 /turf/open/floor/platingdmg1,
@@ -721,6 +640,10 @@
 "fB" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"fY" = (
+/obj/item/clothing/under/color/darkred,
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "ge" = (
 /obj/effect/decal/cleanable/dirt,
@@ -741,6 +664,14 @@
 "hs" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
+"id" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "ig" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -913,6 +844,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/ne)
+"tQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
 "uj" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
@@ -930,6 +867,15 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/hydroponics)
+"xt" = (
+/obj/item/clothing/under/color/darkred{
+	pixel_y = 7;
+	pixel_x = 10
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/under/color/darkred,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "xU" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 1;
@@ -937,6 +883,13 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/hydroponics)
+"xW" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/general_offices)
 "yy" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/plastic,
@@ -955,6 +908,11 @@
 	dir = 4
 	},
 /turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
+"AX" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/m39,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "Bb" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -999,6 +957,14 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/ne)
+"Dg" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/general_offices)
 "Dh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -1008,6 +974,10 @@
 "Dk" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"Fw" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "FF" = (
 /obj/structure/bed,
@@ -1021,6 +991,17 @@
 /obj/structure/machinery/camera/autoname,
 /obj/item/stack/sheet/plasteel,
 /turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
+"GM" = (
+/obj/structure/surface/table,
+/obj/item/clothing/under/color/brown{
+	pixel_y = 7;
+	pixel_x = 12
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8
+	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "Hj" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -1036,6 +1017,10 @@
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
+"Hw" = (
+/obj/item/reagent_container/food/drinks/flask/weylandyutani,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "HG" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/panelscorched,
@@ -1045,6 +1030,13 @@
 	name = "\improper Dormitories Lavatory"
 	},
 /turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
+"HS" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/nsg23/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "Id" = (
 /obj/structure/surface/rack,
@@ -1141,6 +1133,14 @@
 	icon_state = "gib6"
 	},
 /turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"RI" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/color/lightbrown{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "Tz" = (
 /obj/structure/surface/rack,
@@ -1398,7 +1398,7 @@ eF
 eF
 eF
 aB
-bR
+xt
 PI
 AA
 PI
@@ -1429,7 +1429,7 @@ eF
 eF
 eF
 aB
-bS
+RI
 CA
 dR
 PI
@@ -1464,7 +1464,7 @@ PI
 sm
 dR
 CA
-bc
+GM
 aB
 Yg
 PO
@@ -1492,9 +1492,9 @@ eF
 eF
 aB
 PI
-bB
+fY
 Jv
-bh
+aN
 bf
 nD
 Yg
@@ -1523,15 +1523,15 @@ eF
 eF
 aB
 oD
-bC
-bp
 bj
+bp
+aO
 Dk
 wM
 Yg
 qb
-ar
-am
+ao
+cA
 Yg
 ag
 PN
@@ -1553,14 +1553,14 @@ eF
 eF
 eF
 aB
-bH
-bD
-bs
+bm
 bl
+bb
+aU
 Yg
 pt
-ar
-aC
+ao
+as
 TX
 aK
 ge
@@ -1584,15 +1584,15 @@ eF
 eF
 eF
 aB
-bT
-bH
+bv
+bm
 PN
 HG
 Yg
+az
 aJ
-aO
-aE
-as
+av
+ap
 pt
 OI
 dX
@@ -1615,15 +1615,15 @@ eF
 ab
 ab
 aB
-bU
+bx
 ag
-bu
-bm
+bc
+aW
 dX
 pt
 dX
-aJ
-av
+az
+tQ
 oW
 aj
 ah
@@ -1644,10 +1644,10 @@ eF
 eF
 eF
 aQ
-bY
+cV
 dX
 bf
-bI
+bn
 br
 bE
 bM
@@ -1655,7 +1655,7 @@ bg
 ca
 cn
 cs
-ao
+cC
 cG
 Yg
 gP
@@ -1676,14 +1676,14 @@ eF
 eF
 aQ
 cI
-bU
-bV
-bK
+bx
+by
+bo
 Hq
 Hq
 Hq
 pM
-aU
+id
 co
 ca
 ca
@@ -1706,7 +1706,7 @@ eF
 eF
 eF
 at
-bZ
+aw
 aD
 dX
 bi
@@ -1715,10 +1715,10 @@ bF
 bF
 bF
 cc
-aL
-az
-ap
-ak
+aA
+aq
+al
+eL
 gP
 Gn
 Yg
@@ -1740,11 +1740,11 @@ aQ
 ax
 Bv
 cm
-bL
-bv
-bn
+bq
 bd
-aY
+aX
+Hw
+bJ
 aS
 bk
 bk
@@ -1770,17 +1770,17 @@ eF
 au
 ay
 aF
-bW
-bO
-bx
+aT
+bs
+be
 bk
 bk
-ba
-aW
-aM
+aL
+cd
+aC
 qo
-ap
-ak
+al
+eL
 Ml
 Ro
 lv
@@ -1799,15 +1799,15 @@ eF
 eF
 eF
 aQ
-cb
-bU
+an
+bx
 pn
-bP
+Fw
 ig
 ig
 ig
 Ul
-aX
+AX
 cp
 cf
 cf
@@ -1830,7 +1830,7 @@ eF
 eF
 eF
 Bb
-ce
+bz
 aH
 aV
 bg
@@ -1861,18 +1861,18 @@ eF
 eF
 eF
 XK
-cg
-bX
+bB
+Dg
 Ml
 Ro
-by
-bo
+bh
+aY
 Yg
-bb
+aM
 qb
 ad
-ar
-aq
+ao
+am
 PO
 fB
 ae
@@ -1896,15 +1896,15 @@ ab
 aB
 PN
 PO
-bz
-bq
+xW
+ba
 fB
 dX
 kL
-aN
-aA
+aE
+ar
 JW
-al
+ak
 ai
 af
 wM
@@ -1926,10 +1926,10 @@ Hj
 ab
 aB
 Pg
-bQ
+bu
 Yg
 fm
-be
+HS
 wM
 Oh
 Oh
